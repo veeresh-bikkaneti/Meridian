@@ -30,8 +30,9 @@ test("hit: the result card renders the place blurb/story, not just the score", a
   const card = resultCard(page);
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 5_000 });
 
-  // The hit branch renders the story in a scrollable div (max-h-44).
-  const storyPara = card.locator(".max-h-44 p");
+  // Cartographer's Plate PR3: the hit story flows in the single card-body
+  // scroll region (the nested max-h-44 scrollers are folded into it).
+  const storyPara = card.locator(".result-body p.result-story").first();
   await expect(storyPara).toBeVisible({ timeout: 5_000 });
   const text = (await storyPara.textContent()) ?? "";
   expect(
@@ -42,8 +43,8 @@ test("hit: the result card renders the place blurb/story, not just the score", a
   // Source attribution link must be present too.
   await expect(card.getByRole("link")).toBeVisible();
 
-  // The story scroller must be keyboard-scrollable (tabindex + labeled region).
-  const scroller = card.getByRole("region", { name: "Place story" });
+  // The body region must be keyboard-scrollable (tabindex + labeled region).
+  const scroller = card.getByRole("region", { name: "Place details — scroll for more" });
   await expect(scroller).toBeVisible();
   expect(await scroller.getAttribute("tabindex")).toBe("0");
 });

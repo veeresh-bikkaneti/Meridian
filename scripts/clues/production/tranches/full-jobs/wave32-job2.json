@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 6266,
+    "attempt": 6221,
+    "place_id": "gn-3045332",
+    "input": {
+      "place": {
+        "place_id": "gn-3045332",
+        "name": "Siófok",
+        "country": "Hungary",
+        "subdivision": "Somogy County",
+        "lat": 46.90413,
+        "lon": 18.058
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Siófok",
+          "url": "https://en.wikipedia.org/wiki/Siófok",
+          "text": "Siófok (Hungarian pronunciation: [ˈʃijoːfok]; German: Fock; Latin: Fuk) is a town in Somogy County, Hungary on the southern bank of Lake Balaton. It is the second largest municipality in Somogy County and the seat of Siófok District. It covers an area of about 124.66 km2 (48.13 sq mi) between Lake Balaton, the Mezőföld and the Outer Somogy-Hills. Lying at the mouth of the Sió Channel, it serves as the most important logistic station for goods between Lake Balaton and the River Danube.\nThe town is Hungary's second most popular holiday destination (after Budapest) due to its 17-kilometre-long (11-mile) coast, over 1,000 hotels, and plenty of bars, restaurants and nightclubs. Siófok is one of the richest municipalities of Hungary due to tourism. Hungarians often call the town \"the capital of Lake Balaton\", as it is the largest town on its shores and acts as the financial, cultural, media, commercial and tourist hub of the northern part of Somogy County and the southern shore of Lake Balaton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "siofok",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6267,
+    "attempt": 6222,
+    "place_id": "gn-3057379",
+    "input": {
+      "place": {
+        "place_id": "gn-3057379",
+        "name": "Štúrovo",
+        "country": "Slovakia",
+        "subdivision": "Nitra Region",
+        "lat": 47.79495,
+        "lon": 18.7175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Štúrovo",
+          "url": "https://en.wikipedia.org/wiki/Štúrovo",
+          "text": "Štúrovo () is the southernmost town of Slovakia, situated on the river Danube not far from the mouth of the Hron. Connected by the Mária Valéria Bridge it forms a cross-border urban area with the city of Esztergom in Hungary. In 2023 the town had a population of 9,361, two-thirds of whom belong to the Hungarian minority. Administratively, it is part of the Nitra Region and the Nové Zámky District.\nŠtúrovo / Párkány is a popular summer holiday destination with the Vadas Thermal Resort, the biggest aquapark in Slovakia. It is also an industrial and commercial center of local importance with lively cross-border traffic, an industrial park, railway junction, hotels, casinos, supermarkets and the annual Fair of Saints Simon and Jude."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "sturovo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6268,
+    "attempt": 6223,
+    "place_id": "gn-3088676",
+    "input": {
+      "place": {
+        "place_id": "gn-3088676",
+        "name": "Podjuchy",
+        "country": "Poland",
+        "subdivision": "West Pomerania",
+        "lat": 53.36223,
+        "lon": 14.59953
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Podjuchy",
+          "url": "https://en.wikipedia.org/wiki/Podjuchy",
+          "text": "Podjuchy is a municipal neighborhood of the city of Szczecin, Poland situated on the right bank of the East Oder river, south-east of the Szczecin Old Town, and south-west of Szczecin-Dąbie.\nThe area became part of the emerging Duchy of Poland under its first ruler Mieszko I around 967, and following Poland's fragmentation in 1138, it formed part of the Duchy of Pomerania.\nDuring the Thirty Years' War, the settlement fell to the Swedish Empire under the suzerainty of the Holy Roman Empire. Later on, it passed to Prussia. From 1871, it was part of Germany until the defeat of Nazi Germany in World War II. In 1945, the area was reintegrated into Poland, within which it was known as Podejuch."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "podjuchy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6269,
+    "attempt": 6224,
+    "place_id": "gn-3110881",
+    "input": {
+      "place": {
+        "place_id": "gn-3110881",
+        "name": "Sant Andreu de Llavaneres",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.56667,
+        "lon": 2.48333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Andreu de Llavaneres",
+          "url": "https://en.wikipedia.org/wiki/Sant_Andreu_de_Llavaneres",
+          "text": "Sant Andreu de Llavaneres (Catalan pronunciation: [ˌsant ənˈdɾew ðə ʎəβəˈneɾəs]) is a municipality located 36 km north of Barcelona (Catalonia) (Spain), along the Mediterranean coast, between Mataró and Sant Vicenç de Montalt. It belongs to the Maresme comarca and the Barcelona province. The short name is simply Llavaneres.\nLlavaneres faces the sea to the east and a natural park to the west. The village has a mixed agricultural and residential character and has become a popular vacation and summer-residence location for people living in Barcelona over the last forty years.\nGood connections with Barcelona, the Maresme coast and the Mediterranean axis of France and Spain include a train line to Barcelona, as well as the C-32 highway and the N-2 road.\nSant Andreu de Llavaneres is today well known for its upscale sailing in summer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "sant andreu de llavaneres",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "andreu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "llavaneres",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6270,
+    "attempt": 6225,
+    "place_id": "gn-3128071",
+    "input": {
+      "place": {
+        "place_id": "gn-3128071",
+        "name": "Betanzos",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 43.28042,
+        "lon": -8.21467
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Betanzos",
+          "url": "https://en.wikipedia.org/wiki/Betanzos",
+          "text": "Betanzos (Galician pronunciation: [beˈtanθʊs]) is a municipality in the autonomous community of Galicia in northwestern Spain in the province of A Coruña. It belongs to the comarca of Betanzos. In Roman times Betanzos was called Flauvium Brigantium or Brigantium, this claim is disputed by the neighboring town of A Coruña along with many historians. During the Medieval period the settlement was known as Carunio. \nThe town is located in a fertile valley close to the Atlantic Ocean, and it has one of the best preserved old quarters in Galicia. Noteworthy is the Igrexa de San Francisco (St Francis Church), erected in 1387 by order of count Fernán Pérez de Andrade, whose tomb, decorated with hunting scenes, is inside of the church.  The Igrexa de Santiago (St James Church), built in the 15th century by the guild of tailors, has a main portal decorated with a horseback statue of Saint James. The town is on the English Way path of the Camino de Santiago.\nOther sights in the town are several town palaces, a 16th-century clock tower, and the town walls, which preserve three of their original four gates.\nThere are two celebrations in Betanzos in August each year. At the festival of San Roque, a very large paper balloon is launched. Later in August, decorated boats sail along the Mandeo river to the nearby Os Caneiros."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 226
+    },
+    "banned_terms": [
+      {
+        "term": "betanzos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6271,
+    "attempt": 6226,
+    "place_id": "gn-3165919",
+    "input": {
+      "place": {
+        "place_id": "gn-3165919",
+        "name": "Tarquinia",
+        "country": "Italy",
+        "subdivision": "Lazio",
+        "lat": 42.25419,
+        "lon": 11.75657
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarquinia",
+          "url": "https://en.wikipedia.org/wiki/Tarquinia",
+          "text": "Tarquinia (Italian: [tarˈkwiːnja]), formerly known as Corneto, is a town and comune (municipality) in the Province of Viterbo in the region of Lazio in central Italy. The ancient burial grounds (necropoleis), dating from the Iron Age (9th century BC, or Villanovan period) to Roman times, were on the adjacent promontories including that of today's Tarquinia. It has 15,862 inhabitants.\nIt is renowned for its extensive Etruscan necropoleis, which contain some of the most important painted tombs of the ancient world. In recognition of its cultural significance, Tarquinia was designated a UNESCO World Heritage Site as part of the Etruscan Necropolises of Cerveteri and Tarquinia.\n\nThe modern town was renamed in 1922 after the ancient city of Tarquinii (Latin) or Tarch(u)na (Etruscan). Although little remains above ground of the once-flourishing city, archaeological excavations continue to uncover important remnants of its Etruscan and Roman past."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "tarquinia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6272,
+    "attempt": 6227,
+    "place_id": "gn-3172483",
+    "input": {
+      "place": {
+        "place_id": "gn-3172483",
+        "name": "Muggia",
+        "country": "Italy",
+        "subdivision": "Friuli Venezia Giulia",
+        "lat": 45.60419,
+        "lon": 13.76754
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muggia",
+          "url": "https://en.wikipedia.org/wiki/Muggia",
+          "text": "Muggia (Triestine: Muja; Friulian: Mugle; Slovene: Milje) is an Italian comune (municipality) in the regional decentralization entity of Trieste, in the region of Friuli-Venezia Giulia on the border with Slovenia. It has 12,703 inhabitants.\nLying on the eastern flank of the Gulf of Trieste in the northern Adriatic Sea, Muggia is the only Italian port town in Istria. The town's architecture is marked by its Venetian and Austrian history, and its harbour hosts a modern 500-berth marina for yachts (Porto San Rocco).\nMuggia lies in northern Istria. Its territory, limited on the sea-side by a shoreline of more than 7 kilometres (4 mi) featuring a coastal road and on the border side by a hill system, Monti di Muggia, including Mt. Castellier, Mt. S. Michele, Mt. Zuc and Monte d'Oro, that dominate over a vast landscape of Triestinian and Istrian coast, is characterized by a rich sub-continental vegetation of both Karstic and Istrian type.\nIt has a border crossing, known as San Bartolomeo, with Slovenia and the extreme east of the comune at Lazzaretto. The Slovenian border crossing is called Lazaret in the Municipality of Koper."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "muggia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6273,
+    "attempt": 6228,
+    "place_id": "gn-3464971",
+    "input": {
+      "place": {
+        "place_id": "gn-3464971",
+        "name": "Curiúva",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -24.0325,
+        "lon": -50.45833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Curiúva",
+          "url": "https://en.wikipedia.org/wiki/Curiúva",
+          "text": "Curiúva is a Brazilian municipality located in the interior of the state of Paraná. It belongs to the Intermediate Geographic Region of Ponta Grossa and the Immediate Geographic Region of Telêmaco Borba and is situated northwest of the state capital, approximately 287 km (178 mi) away. It covers an area of 576.263 km2 (222.496 sq mi), of which 2,085.9 m2 (22,452 sq ft) are in the urban area. According to 2018 IBGE estimates, its population was 15,003 inhabitants.\nThe municipal seat has an average annual temperature of 19.1 °C (66.4 °F), and the predominant vegetation in the municipality is the mixed ombrophilous forest. With 68.77% of its residents living in the urban area, the municipality had nine healthcare facilities in 2009. Its Human Development Index (HDI) is 0.675, which is considered to be in the medium range compared to the state average.\nThe territory where Curiúva is located began to be colonized around 1947. The original name of Curiúva was Caetê, and its earliest inhabitants were the Kaingang people. Founded through State Law No. 2 on October 10, 1947, and officially established on October 26 of the same year, it was emancipated from São Jerônimo da Serra. Today, the main economic activities in Curiúva are agriculture and service provision."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "curiuva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6274,
+    "attempt": 6229,
+    "place_id": "gn-3981516",
+    "input": {
+      "place": {
+        "place_id": "gn-3981516",
+        "name": "Tingüindín",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 19.73892,
+        "lon": -102.48163
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tingüindín",
+          "url": "https://en.wikipedia.org/wiki/Tingüindín",
+          "text": "Tingüindín is a municipality in the Mexican state of Michoacán. The municipality has an area of 174.24 square kilometres (0.29% of the surface of the state) and is bordered to the north by the municipalities of Villamar, Tangamandapio and Tangancícuaro, to the east by Los Reyes,  and to the south and west by Tocumbo.  The municipality had a population of 12,414 inhabitants according to the 2005 census.  Its municipal seat is the city of the same name.\nBefore the arrival of the Spaniards to Tingüindín in 1530 the area was known as Tzinguitzuri or \"Place of worship\" by the mostly Purepecha population.\nThe economy of the municipality is based mostly on avocado harvest ranching and the cultivation of maize and wheat.\nThe principal festivity takes place on August 15 in honor of the Assumption of the Blessed Virgin Mary into Heaven. During this festivity, Tingüindín undergoes a complete transformation. The local plaza (town square) is filled with carnival rides and booths.  There are booths that sell many varieties of Mexican food. These festivities start on August 1 and end with a great celebration on August 15."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "tinguindin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6275,
+    "attempt": 6230,
+    "place_id": "gn-4364759",
+    "input": {
+      "place": {
+        "place_id": "gn-4364759",
+        "name": "Oxon Hill",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.80345,
+        "lon": -76.9897
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oxon Hill, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Oxon_Hill,_Maryland",
+          "text": "Oxon Hill is an unincorporated area and census-designated place (CDP) in southern Prince George's County, Maryland, United States. Oxon Hill is a close suburb of Washington, located southeast of the downtown district and east of Alexandria, Virginia. In 2008, the 300-acre (120 ha) National Harbor development on the shore of the Potomac River opened in Oxon Hill; it has since become a CDP of its own.\nFor the 1990 and 2000 censuses, the United States Census Bureau defined a census-designated place consisting of Oxon Hill and the adjacent community of Glassmanor, designated Oxon Hill-Glassmanor, for statistical purposes. As of the 2010 census, Oxon Hill was delineated separately and had a population of 17,722. Per the 2020 census, the population was 18,791."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "oxon hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "oxon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6276,
+    "attempt": 6231,
+    "place_id": "gn-4943297",
+    "input": {
+      "place": {
+        "place_id": "gn-4943297",
+        "name": "Mashpee",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 41.64844,
+        "lon": -70.48114
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mashpee, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Mashpee,_Massachusetts",
+          "text": "Mashpee ( Wampanoag: Mâseepee) is a town on Cape Cod in Barnstable County, Massachusetts. It is bordered by Sandwich, Barnstable, and Falmouth, and to the south by Nantucket Sound. Settled in 1660 and incorporated on May 28, 1870, Mashpee had a population of 15,060 at the 2020 census. The town is the historic and contemporary home of the Mashpee Wampanoag Tribe—federally recognized in 2007—which maintains its headquarters in Mashpee. \nMashpee contains South Cape Beach State Park and part of the Waquoit Bay National Estuarine Research Reserve, as well as the Mashpee River Reservation. The town also contains Mashpee Commons, a redevelopment project recognized as an early example of New Urbanism, located at the Mashpee Rotary where Routes 28 and 151 meet."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "mashpee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6277,
+    "attempt": 6232,
+    "place_id": "gn-5100604",
+    "input": {
+      "place": {
+        "place_id": "gn-5100604",
+        "name": "Lodi",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.88232,
+        "lon": -74.0832
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lodi, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Lodi,_New_Jersey",
+          "text": "Lodi (English pronunciation: /ˈloʊdaɪ/ ) is a borough in Bergen County, New Jersey, United States. As of the 2020 United States census, the borough's population was 26,207, an increase of 2,070 (+8.6%) from the 2010 census count of 24,136, which in turn reflected an increase of 165 (+0.7%) from the 23,971 counted in the 2000 census.\nLodi owes its name to the Italian city of Lodi, Lombardy. It was incorporated as a borough on December 22, 1894, from portions of the now-defunct municipalities of Lodi Township (now South Hackensack) and Saddle River Township (now Saddle Brook), at the height of Bergen County's \"Boroughitis\" phenomenon then sweeping through Bergen County, based on the results of a referendum held on the previous day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "lodi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6278,
+    "attempt": 6233,
+    "place_id": "gn-5103086",
+    "input": {
+      "place": {
+        "place_id": "gn-5103086",
+        "name": "Ramsey",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.05732,
+        "lon": -74.14098
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ramsey, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Ramsey,_New_Jersey",
+          "text": "Ramsey is a borough in Bergen County, in the U.S. state of New Jersey. It is a suburb of New York City, located 26 miles (42 km) northwest of Midtown Manhattan. As of the 2020 United States census, the borough's population was 14,798, an increase of 325 (+2.2%) from the 2010 census count of 14,473, which in turn reflected an increase of 122 (+0.9%) from the 14,351 counted in the 2000 census.\nRamsey was incorporated as a borough by an act of the New Jersey Legislature on March 10, 1908, from portions of Hohokus Township (whose remnants are now Mahwah Township). Additional territory was annexed from Waldwick in 1921, and portions of the borough were ceded to Saddle River in 1925."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "ramsey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6279,
+    "attempt": 6234,
+    "place_id": "gn-5202535",
+    "input": {
+      "place": {
+        "place_id": "gn-5202535",
+        "name": "Mountain Top",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 41.16953,
+        "lon": -75.87742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mountain Top, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Mountain_Top,_Pennsylvania",
+          "text": "Mountain Top is an unincorporated area and census-designated place (CDP) in Luzerne County, Pennsylvania, United States. As of the 2020 census, its population was 11,489. If Mountain Top were an incorporated municipality, it would rank 4th out of 76 in Luzerne County (in terms of population), just ahead of Hanover Township.\nThe census-designated place of Mountain Top is located along Pennsylvania Route 309, south of Wilkes-Barre, in Dorrance, Fairview, Rice, and Wright townships. However, many equate the Mountain Top area with the Crestwood School District footprint, which has roughly 20,563 residents, covers over 110 square miles (280 km2), and includes Dennison Township, Dorrance Township, Fairview Township, Nuangola Borough, Rice Township, Slocum Township, White Haven Borough, Wright Township, and Penn Lake Borough."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "mountain top",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mountain",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "top",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6280,
+    "attempt": 6235,
+    "place_id": "gn-5338929",
+    "input": {
+      "place": {
+        "place_id": "gn-5338929",
+        "name": "Commerce",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.00057,
+        "lon": -118.15979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Commerce, California",
+          "url": "https://en.wikipedia.org/wiki/Commerce,_California",
+          "text": "Commerce is a city located in southeast Los Angeles County, California, United States. The population was 12,378 at the 2020 census, down from 12,823 at the 2010 census. It is usually referred to as the City of Commerce to distinguish it from the common noun. It is bordered by Vernon on the west, Los Angeles on the northwest, East Los Angeles on the north, Montebello on the east, Downey and Bell Gardens on the south, and Maywood on the southwest. The Los Angeles River forms part of its southwestern boundary, and the Rio Hondo separates it from Downey.  Commerce is served by the Long Beach and Santa Ana freeways, as well as the Metrolink commuter rail service at the Commerce station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "commerce",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6281,
+    "attempt": 6236,
+    "place_id": "gn-548781",
+    "input": {
+      "place": {
+        "place_id": "gn-548781",
+        "name": "Kideksha",
+        "country": "Russia",
+        "subdivision": "Vladimir Oblast",
+        "lat": 56.42381,
+        "lon": 40.52146
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kideksha",
+          "url": "https://en.wikipedia.org/wiki/Kideksha",
+          "text": "Kideksha (Russian: Кидекша) is a village (selo) in Seletskoye Rural Settlement, Suzdalsky District of Vladimir Oblast, Russia, located at the confluence of the Kamenka and Nerl Rivers, 4 kilometers (2.5 mi) east of Suzdal. The name derives from keaδkē (stone) and śäčä (flood), hence \"stony river\"; the Russian \"Kamenka\" has a similar meaning.\nThe settlement was founded before the Church of Boris and Gleb was built in 1152 by Yuri Dolgoruky.\nKideksha used to be a town, but, after having been destroyed during the Mongol invasion of Rus, it degraded to a small village.\nKideksha is a part of the Golden Ring of Russia and, since 1992, is one of Russia's World Heritage Sites (see White Monuments of Vladimir and Suzdal)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "kideksha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6282,
+    "attempt": 6237,
+    "place_id": "gn-5790562",
+    "input": {
+      "place": {
+        "place_id": "gn-5790562",
+        "name": "College Place",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 46.0493,
+        "lon": -118.3883
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "College Place, Washington",
+          "url": "https://en.wikipedia.org/wiki/College_Place,_Washington",
+          "text": "College Place is a city in Walla Walla County, Washington, United States. It neighbors the larger city of Walla Walla, and had a population of 10,090 per Washington State Office of Financial Management (OFM) population estimates. \nCollege Place is the home of Walla Walla University (formerly Walla Walla College, thus the city's name), a Seventh-day Adventist Church operated liberal arts university.\nThe City has a quaint downtown primarily centered along College Avenue from Rose Street to 13th Street. It is anchored by small businesses such as Happy Wanderer, Andy's Market, Enable Art, and Rogers Bakery. Many businesses downtown are owned by Seventh-Day Adventist owners so they close two hours before sunset on Fridays and then reopen at sunset on Saturday evenings. Downtown has seen significant reinvestment after College Avenue/Rose Street (CARS) Project fully reconstructed the corridor between 2015 and 2017. Economic Development in the corridor is shepherded by the Downtown College Place Association as well as the Cowalla (College Place - Walla Walla) Creative District. Both cities were recognized as a State of Washington Creative District in 2025. \nBig box retailers in the city are primarily centered along State Route 125 and Myra Rd. The City in recent years has made significant reinvestment into its park system with Kiwanis Park being rehabbed with pickleball courts in 2017, Veterans Park donated to the City from Hayden Homes out at Homestead in 2019, Korean War Memorial at Veterans Park in 2024, and then the massive Lions Park reconstruction of 2024-2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "college place",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "college",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "place",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6283,
+    "attempt": 6238,
+    "place_id": "gn-6179602",
+    "input": {
+      "place": {
+        "place_id": "gn-6179602",
+        "name": "Wetaskiwin",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 52.96683,
+        "lon": -113.36869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wetaskiwin",
+          "url": "https://en.wikipedia.org/wiki/Wetaskiwin",
+          "text": "Wetaskiwin ( wə-TAS-k(ə-)win) is a city in the province of Alberta, Canada. The city is 70 kilometres (43 mi) south of the provincial capital of Edmonton. The city name comes from the Cree word wītaskiwinihk, meaning \"the hills where peace was made\".\nWetaskiwin is home to the Reynolds-Alberta Museum, a museum dedicated to celebrating \"the spirit of the machine\" as well as the Wetaskiwin and District Heritage Museum, which documents the pioneer arrival and lifestyle in Wetaskiwin's early years. Southeast of Wetaskiwin, the Alberta Central Railway Museum acknowledges the impact that the railway had on Central Alberta.\nThe city is well known in Western Canada for the slogan and jingle \"Cars cost less in Wetaskiwin\", from the Wetaskiwin Auto Dealers Association. Both have been in print, radio, and television advertisements since the mid-1970s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "wetaskiwin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6284,
+    "attempt": 6239,
+    "place_id": "gn-667121",
+    "input": {
+      "place": {
+        "place_id": "gn-667121",
+        "name": "Simeria",
+        "country": "Romania",
+        "subdivision": "Hunedoara County",
+        "lat": 45.85,
+        "lon": 23.01667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Simeria",
+          "url": "https://en.wikipedia.org/wiki/Simeria",
+          "text": "Simeria (Romanian pronunciation: [siˈmeri.a]; German: Fischdorf; Hungarian: Piski) is a town in Hunedoara County, Transylvania, Romania, and an important railway junction with a hump yard. Six villages are administered by the town: Bârcea Mare (Nagybarcsa), Cărpiniș (Gyertyános), Simeria Veche (Ópiski), Sântandrei (Szentandrás), Șăulești (Sárfalva), and Uroi (Arany).\nThe town lies on the banks of the Mureș River, near where the Strei River discharges into it. It is located in the central part of Hunedoara County, between the Apuseni Mountains to the north and the Retezat Mountains to the south. The county seat, Deva, is 8.5 km (5.3 mi) to the northwest.\nSimeria is crossed by the A1 motorway (part of European route E68) and by national road DN7 (part of E79). The Simeria train station serve the CFR Main Line 200, which links Bucharest with the Banat region, in western Romania; it also serves Line 202, which links runs south to Filiași, Dolj County, and Line 207, which runs southwest to Hunedoara.\nThe local football club, CS CFR Simeria, competes in Liga IV Hunedoara; its home ground is Stadionul CFR."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "simeria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6285,
+    "attempt": 6240,
+    "place_id": "gn-6690794",
+    "input": {
+      "place": {
+        "place_id": "gn-6690794",
+        "name": "Sagrada Família",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.40408,
+        "lon": 2.17332
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sagrada Família",
+          "url": "https://en.wikipedia.org/wiki/Sagrada_Família",
+          "text": "Basílica i Temple Expiatori de la Sagrada Família, or simply Sagrada Família, is a Catholic church in the Eixample district of Barcelona, Catalonia, Spain. Designed by the Catalan architect Antoni Gaudí, it is the tallest church \nin the world. On 7 November 2010, Pope Benedict XVI consecrated the church and proclaimed it a basilica. In 2005, parts of the Sagrada Família (Nativity façade and Crypt) were declared a UNESCO World Heritage Site, under \"Works of Antoni Gaudí\". \nOn 19 March 1882, construction of Sagrada Família began under the architect Francisco de Paula del Villar. In 1883, when Villar resigned, Gaudí took over as chief architect, transforming the project with his architectural and engineering style, combining Gothic and curvilinear Art Nouveau forms. Gaudí devoted the remainder of his life to the project, and he is buried in the church's crypt. At the time of his death in 1926, less than a quarter of the project was complete.\nRelying solely on private donations, Sagrada Família's construction progressed slowly and was interrupted by the Spanish Civil War. In July 1936, anarchists from the Iberian Anarchist Federation (Federación Anarquista Ibérica, or FAI) set fire to the crypt and broke their way into the workshop, partially destroying Gaudí's original plans. In 1939, Francesc de Paula Quintana took over site management, which was able to go on with the material that was saved from Gaudí's workshop and that was reconstructed from published plans and photographs. Construction resumed with intermittent progress in the 1950s. Advancements in technologies such as computer-aided design and computer numerical control (CNC) have since enabled faster progress, and construction passed the midpoint in 2010. In 2014, it was anticipated that the building would be completed by 2026, the centenary of Gaudí's death, but this schedule was threatened by work slowdowns caused by the COVID-19 pandemic.\nThe central Tower of Jesus Christ reached structural completion on 20 February 2026, when the final piece was installed, and it was inaugurated and blessed by Pope Leo XIV on 10 June 2026 during his visit to Spain, coinciding with the centenary of Gaudí's death. The tower, with a height of 172.5 m (566 ft), makes the Sagrada Família the world's tallest church.\nDescribing Sagrada Família, the art critic Rainer Zerbst said \"it is probably impossible to find a church building anything like it in the entire history of art\", and Paul Goldberger describes it as \"the most extraordinary personal interpretation of Gothic architecture since the Middle Ages\".\nThough sometimes described as a cathedral, the basilica is not the cathedral church of the Archdiocese of Barcelona; that title belongs to the Cathedral of the Holy Cross and Saint Eulalia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 441
+    },
+    "banned_terms": [
+      {
+        "term": "sagrada familia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sagrada",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "familia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

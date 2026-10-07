@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 266,
+    "attempt": 261,
+    "place_id": "gn-4898015",
+    "input": {
+      "place": {
+        "place_id": "gn-4898015",
+        "name": "Joliet",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.52519,
+        "lon": -88.0834
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Joliet, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Joliet,_Illinois",
+          "text": "Joliet ( JOH-lee-et, -⁠ET) is a city in Will and Kendall counties in the U.S. state of Illinois. Located 40 miles (64 km) southwest of Chicago, it is the county seat of Will County. Originally settled in 1852 as a steel mill town on the Des Plaines River, Joliet later became known for being the first major city outside of Chicago on U.S. Route 66. It is home to Old Joliet Prison, a historic decommissioned correctional facility that was the largest in the state at the time of its construction. The prison has been featured prominently in several films and television shows, including the 1980 film The Blues Brothers. As of the 2020 census, the population was 150,362, making it the third-most populous city in Illinois."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "joliet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 267,
+    "attempt": 262,
+    "place_id": "gn-532288",
+    "input": {
+      "place": {
+        "place_id": "gn-532288",
+        "name": "Magnitogorsk",
+        "country": "Russia",
+        "subdivision": "Chelyabinsk",
+        "lat": 53.39808,
+        "lon": 59.0066
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Magnitogorsk",
+          "url": "https://en.wikipedia.org/wiki/Magnitogorsk",
+          "text": "Magnitogorsk (Russian: Магнитого́рск, pronounced [məɡnʲɪtɐˈɡorsk], lit. '[city] of the magnetic mountain') is an industrial city in Chelyabinsk Oblast, Russia, on the eastern side of the southern Ural Mountains by the Ural River. Its population is currently 410,594 (2021 census).\nMagnitogorsk was named after Mount Magnitnaya, a geological anomaly that once consisted almost completely of iron ore, around 55% to 60% iron.  It is the second-largest city in Russia that is not the administrative centre of any federal subject or district, after Tolyatti. Magnitogorsk contains the largest iron and steel works in the country: Magnitogorsk Iron and Steel Works. The official motto of the city is \"the place where Europe and Asia meet\" (Russian: Место, где встречаются Европа и Азия), as the city straddles von Strahlenberg's line.\nMagnitogorsk is one of a small number of planned socialist realist settlements established in the Soviet bloc during the Cold War (others including Nowa Huta in Poland, Havířov in Czechoslovakia and Eisenhüttenstadt in the GDR)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "magnitogorsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 268,
+    "attempt": 263,
+    "place_id": "gn-6986104",
+    "input": {
+      "place": {
+        "place_id": "gn-6986104",
+        "name": "Zhongshan",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 22.52306,
+        "lon": 113.37912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhongshan",
+          "url": "https://en.wikipedia.org/wiki/Zhongshan",
+          "text": "Zhongshan (Chinese: 中山 [ʈʂʊ́ŋ ʂán]), alternately romanized via Cantonese as Jungsaan, is a prefecture-level city in the south of the Pearl River Delta in Guangdong province, China. As of the 2020 census, the whole city with 4,418,060 inhabitants is now part of the Guangzhou–Shenzhen conurbation with 65,565,622 inhabitants. The city-core subdistricts used to be called Shiqi or Shekki (Chinese: 石岐).\nZhongshan is one of the few Chinese cities to be named after a person. It was originally named Xiangshan (香山, \"Fragrant Mountain\"; Cantonese: Heung-saan), but was renamed in 1925 in honor of Sun Yat-sen, who is known in China as \"Sun Zhongshan\". Sun, a local of the area, was the founding father of the Republic of China who is also regarded positively by the People's Republic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "zhongshan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 269,
+    "attempt": 264,
+    "place_id": "gn-116402",
+    "input": {
+      "place": {
+        "place_id": "gn-116402",
+        "name": "Semnan",
+        "country": "Iran",
+        "subdivision": "Semnan",
+        "lat": 35.57691,
+        "lon": 53.39205
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Semnan, Iran",
+          "url": "https://en.wikipedia.org/wiki/Semnan,_Iran",
+          "text": "Semnan (Persian: سمنان; pronounced [semˈnɒːn] ) is a city in the Central District of Semnan County, Semnan province, Iran, serving as capital of the province, the county and the district. The city is on the alluvial fan of the Golrudbar creek in the north-central part of the country, 216 km east of Tehran and 640 km west of Mashhad. With a population of 185,129 people in 2016, Semnan is the hub of the Semnani language, a sub-branch of the Iranian languages spoken to the north. It is home to the Semnani ethnic group.\nSemnan offers various recreational activities; historical and religious sites; festivals, gardens and parks; and centers of higher education and Semnani culture. The city is the cultural and political capital of Semnan province. The city's main souvenirs are daffodil flowers, Shirmal pastry, Koloocheh cookies, kilim rugs, and shortbread."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "semnan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 270,
+    "attempt": 265,
+    "place_id": "gn-12495083",
+    "input": {
+      "place": {
+        "place_id": "gn-12495083",
+        "name": "Chirmiri",
+        "country": "India",
+        "subdivision": "Chhattisgarh",
+        "lat": 23.19073,
+        "lon": 82.35314
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chirmiri",
+          "url": "https://en.wikipedia.org/wiki/Chirmiri",
+          "text": "Chirmiri is a hill station city and a Municipal Corporation in the Manendragarh-Chirmiri-Bharatpur district in the Indian state of Chhattisgarh. It was a part of Koriya district until 15 August 2021 when the separate Manendragarh-Chirmiri-Bharatpur district was created. It is famously known for its coal extraction as the area is rich in coal.\nChirmiri, secured the top position in the Swacch Survekshan 2022 rankings for the '50,000-1 lakh' population category in the Eastern zone. The city was given the award for 'Fastest mover' city under the same category during Swacchh Survekshan 2020. For the 2022 Survekshan, Chirmiri scored 100% under categories like Waste generation vs processing, Remediation of Dumpsites, Cleanliness of Residential Areas, Cleanliness of Market Areas, Cleanliness Of Drains, and Cleanliness of Water Bodies.\nChirimiri is referred to as the ‘Heaven/Jannat of Chhattisgarh’. The lush greenery, mountains and rivers make it a perfect getaway destination for anyone looking to relax. This scenic town is also known for its coal mines. There are several temples and other notable places that are famous among tourists. Chirimiri is well connected to major cities via rail and road. Chirimiri is situated at an altitude of 579 m above sea level. It lies along the bank of Hasdeo River. The river is one of the most prominent tributaries of the Mahanadi River. The weather is pleasant all year round, and there are dense forests in the region which houses exotic flora and fauna."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 239
+    },
+    "banned_terms": [
+      {
+        "term": "chirmiri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 271,
+    "attempt": 266,
+    "place_id": "gn-1268865",
+    "input": {
+      "place": {
+        "place_id": "gn-1268865",
+        "name": "Jodhpur",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 26.26841,
+        "lon": 73.00594
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jodhpur",
+          "url": "https://en.wikipedia.org/wiki/Jodhpur",
+          "text": "Jodhpur (Hindi pronunciation: [ˈd͡ʑoːd̪ʱ.pʊr] ) is the second-largest city of the north-western Indian state of Rajasthan, after its capital Jaipur. As of 2025, the city has a population of 1.6 million. It serves as the administrative headquarters of the Jodhpur district and Jodhpur division. It is the historic capital of the Kingdom of Marwar, founded in 1459 by Rao Jodha, a Rajput chief of the Rathore clan. On 11 August 1947, 4 days prior to the Indian independence, Maharaja Hanwant Singh the last ruler of Jodhpur state signed the Instrument of Accession and merged his state in Union of India. On 30 March 1949, it became part of the newly formed state of Rajasthan, which was created after merging the states of the erstwhile Rajputana.\nJodhpur is a famous tourist spot with a palace, fort, and temples, set in the stark landscape of the Thar Desert. It is also known as the 'Blue City' due to the dominant color scheme of its buildings in the old town. The old city circles the Mehrangarh Fort and is bounded by a wall with several gates. Jodhpur lies near the geographic centre of the Rajasthan state, which makes it a convenient base for travel in a region much frequented by tourists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "jodhpur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 272,
+    "attempt": 267,
+    "place_id": "gn-2729907",
+    "input": {
+      "place": {
+        "place_id": "gn-2729907",
+        "name": "Longyearbyen",
+        "country": "Svalbard & Jan Mayen",
+        "subdivision": "Svalbard",
+        "lat": 78.22334,
+        "lon": 15.64689
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Longyearbyen",
+          "url": "https://en.wikipedia.org/wiki/Longyearbyen",
+          "text": "Longyearbyen (Urban East Norwegian: [ˈlɔ̀ŋjɛrˌbyːən], locally [ˈlɔ̀ŋjɑrˌbyːən], 'Longyear town') is one of the world's northernmost settlements, with an estimated population of around 2,400–2,800, and is the capital and largest settled area of Svalbard. It stretches along the foot of the left bank of the Longyear Valley and on the shore of Adventfjorden, the short estuary leading into Isfjorden on the west coast of Spitsbergen, the island's broadest inlet. As of 2002, Longyearbyen Community Council is an official Norwegian municipality. It is the seat of the Governor of Svalbard. As of 2024, the town's mayor is Leif Terje Aunevik.\nKnown as Longyear City until 1926, the town was established by and named after American John Munro Longyear, whose Arctic Coal Company started coal-mining there in 1906. Store Norske Spitsbergen Kulkompani (SNSK) took over the mining operations in 1916, and still conducts mining. The German Kriegsmarine almost completely destroyed the town on 8 September 1943, but rebuilding took place after the Second World War. Historically, Longyearbyen was a company town, but most mining operations moved to Sveagruva during the 1990s, and production ceased in 2017 due to immense financial losses suffered by SNSK since 2014 due to market conditions. Meanwhile, the town has seen a large increase in tourism and research. This includes the arrival of institutions such as the University Centre in Svalbard, the Svalbard Global Seed Vault and Svalbard Satellite Station. Svalbard Airport, Svalbard Church and the Svalbardbutikken department store serve the community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 243
+    },
+    "banned_terms": [
+      {
+        "term": "longyearbyen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 273,
+    "attempt": 268,
+    "place_id": "gn-3464975",
+    "input": {
+      "place": {
+        "place_id": "gn-3464975",
+        "name": "Curitiba",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -25.42778,
+        "lon": -49.27306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Curitiba",
+          "url": "https://en.wikipedia.org/wiki/Curitiba",
+          "text": "Curitiba ( KOOR-ih-CHEE-bə; Brazilian Portuguese: [kuɾiˈtʃibɐ]) is the capital and largest city in the state of Paraná in Southern Brazil. The city's population was 1,829,225 as of 2024, making it the eighth most populous city in Brazil and the largest in Brazil's South Region. The Curitiba metropolitan area comprises 29 municipalities with a total population of over 3,559,366, making it the ninth most populous metropolitan area in the country.\nThe city sits on a plateau at 932 m (3,058 ft) above sea level. It is located west of the seaport of Paranaguá and is served by the Afonso Pena International and Bacacheri airports. Curitiba is an important cultural, political, and economic center in Latin America and hosts the Federal University of Paraná, established in 1912.\nIn the 19th century, Curitiba's favorable location between cattle-breeding countryside and marketplaces led to a successful cattle trade and the city's first major expansion. Later, between 1850 and 1950, it grew due to logging and agricultural expansion in Paraná State (first Araucaria angustifolia logging, later mate and coffee cultivation and in the 1970s wheat, corn and soybean cultivation). In the 1850s, waves of European immigrants arrived in Curitiba, mainly Germans, Italians, Poles and Ukrainians, contributing to the city's economic and cultural development and richness in diversity. Nowadays, only small numbers of immigrants arrive, primarily from Middle Eastern and other South American countries.\nCuritiba's biggest expansion occurred after the 1960s, with innovative urban planning that allowed the population to grow from some hundreds of thousands to more than a million people. Curitiba's economy is based on industry and services and is the seventh largest in Brazil. Economic growth occurred in parallel to a substantial inward flow of Brazilians from other parts of the country, as approximately half of the city's population was not born in Curitiba.\nCuritiba is one of the 40 Brazilian cities with a very high Human Development Index (0.856) and in 2010 it was awarded the Global Sustainable City Award, given to cities and municipalities that excel in sustainable urban development. According to US magazine Reader's Digest, Curitiba is the best \"Brazilian Big City\" in which to live. Curitiba's crime rate is considered low by Brazilian standards and the city is considered one of the safest cities in Brazil for youth. The city is also regarded as the best in which to invest in Brazil. Curitiba was one of the host cities of the 1950 FIFA World Cup, and again for the 2014 FIFA World Cup. Curitiba’s unemployment rate was one of the lowest recorded in Brazil in 2025, at 4.3%, ranking third in terms of the economically active population, behind Palmas (TO) and Florianópolis (SC)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 443
+    },
+    "banned_terms": [
+      {
+        "term": "curitiba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 274,
+    "attempt": 269,
+    "place_id": "gn-3608248",
+    "input": {
+      "place": {
+        "place_id": "gn-3608248",
+        "name": "La Ceiba",
+        "country": "Honduras",
+        "subdivision": "Atlántida Department",
+        "lat": 15.75971,
+        "lon": -86.78221
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Ceiba",
+          "url": "https://en.wikipedia.org/wiki/La_Ceiba",
+          "text": "La Ceiba (Spanish pronunciation: [la ˈsejβa]) is a municipality, the capital of the Honduran department of Atlántida and a port city on the northern coast of Honduras in Central America. It is located on the southern edge of the Caribbean, forming part of the south eastern boundary of the Gulf of Honduras. With an estimated population of 209,000 living in approximately 170 residential areas (called colonias or barrios), it is the fourth most populous and third most important city in the country.\nLa Ceiba was officially founded on 23 August 1877. The city was named after a giant ceiba tree that grew near the old dock. The city has been officially proclaimed the \"Eco-Tourism Capital of Honduras,\" as well as the \"Entertainment Capital of Honduras\". Every year, on the third or fourth Saturday of May, the city holds its famous carnival to commemorate Isidore the Laborer (Spanish San Isidro Labrador), which is attended by approximately 500,000 tourists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "la ceiba",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ceiba",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 275,
+    "attempt": 270,
+    "place_id": "gn-3644768",
+    "input": {
+      "place": {
+        "place_id": "gn-3644768",
+        "name": "Cumaná",
+        "country": "Venezuela",
+        "subdivision": "Sucre",
+        "lat": 10.4639,
+        "lon": -64.17859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cumaná",
+          "url": "https://en.wikipedia.org/wiki/Cuman%C3%A1",
+          "text": "Cumaná (Spanish pronunciation: [kumaˈna]) is the capital city of Venezuela's Sucre State. It is located 402 kilometres (250 mi) east of Caracas. Cumaná was one of the first cities founded by Spain in the mainland Americas and is the oldest continuously-inhabited Hispanic-established city in South America. Its early history includes several successful counters by the indigenous people of the area who were attempting to prevent Spanish incursion into their land, resulting in the city being refounded several times. The municipality of Sucre, which includes the capital city, Cumaná, had a population of 358,919 at the 2011 Census; the latest estimate (as of mid-2016) is 423,546.\nThe city is located at the mouth of the Manzanares River on the Caribbean coast, in the northeast of Venezuela. It is home to the first and most important of the five campuses of the Universidad de Oriente, and is a busy maritime port, home to one of the largest tuna fleets in Venezuela. The city is close to Mochima National Park, whose beaches are a popular tourist destination among Venezuelans.\nKey heroes of and contributors to the Venezuelan independence movement were born in Cumaná, including Antonio José de Sucre, the 'Gran Mariscal de Ayacucho', a leading general who also served as president of Bolivia and president of Peru. Cumaná is also the birthplace of eminent poets, writers, and politicians like Andrés Eloy Blanco, an important figure in Latin American literature who later rose to the national political scene, as well as José Antonio Ramos Sucre, another distinguished poet and diplomat. Several significant scientists, including Pehr Löfling from Sweden, Alexander von Humboldt from Germany, and Aimé Bonpland from France accomplished experimental works and discoveries while visiting or living in Cumaná in the 18th century. The city is also home to a Toyota plant, which manufactured from 1981 to 2013 the Hilux and Toyota Fortuner."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 309
+    },
+    "banned_terms": [
+      {
+        "term": "cumana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 276,
+    "attempt": 271,
+    "place_id": "gn-5894171",
+    "input": {
+      "place": {
+        "place_id": "gn-5894171",
+        "name": "Barrie",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.40011,
+        "lon": -79.66634
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barrie",
+          "url": "https://en.wikipedia.org/wiki/Barrie",
+          "text": "Barrie is a city in Central Ontario, Canada, about 90 kilometres (56 mi) north of Toronto. The city is located along the shores of Kempenfelt Bay and geographically within Simcoe County, although it is a single-tier municipality that is politically independent from the surrounding county.\nThe city is part of the extended urban area in Southern Ontario known as the Greater Golden Horseshoe. As of the 2021 census, the city's population was 147,829, while the census metropolitan area had a population of 212,856 residents. The area was first settled during the War of 1812 as a supply depot for British forces, and Barrie was named after Sir Robert Barrie. The city has grown significantly in recent decades due to the emergence of the technology industry.\nIt is connected to the Greater Golden Horseshoe by Highway 400 and GO Transit's Barrie line. Significant sectors of the city's diversified economy include education, healthcare, information technology, and manufacturing. Communities to its south, particularly Innisfil, New Tecumseth, and Newmarket have developed rapidly since the turn of the 21st century. The city is notable for being one of the centres of the 1985 United States–Canada tornado outbreak."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "barrie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 277,
+    "attempt": 272,
+    "place_id": "gn-8556321",
+    "input": {
+      "place": {
+        "place_id": "gn-8556321",
+        "name": "La Ceiba",
+        "country": "Honduras",
+        "subdivision": "Atlántida Department",
+        "lat": 15.76667,
+        "lon": -86.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Ceiba",
+          "url": "https://en.wikipedia.org/wiki/La_Ceiba",
+          "text": "La Ceiba (Spanish pronunciation: [la ˈsejβa]) is a municipality, the capital of the Honduran department of Atlántida and a port city on the northern coast of Honduras in Central America. It is located on the southern edge of the Caribbean, forming part of the south eastern boundary of the Gulf of Honduras. With an estimated population of 209,000 living in approximately 170 residential areas (called colonias or barrios), it is the fourth most populous and third most important city in the country.\nLa Ceiba was officially founded on 23 August 1877. The city was named after a giant ceiba tree that grew near the old dock. The city has been officially proclaimed the \"Eco-Tourism Capital of Honduras,\" as well as the \"Entertainment Capital of Honduras\". Every year, on the third or fourth Saturday of May, the city holds its famous carnival to commemorate Isidore the Laborer (Spanish San Isidro Labrador), which is attended by approximately 500,000 tourists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "la ceiba",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ceiba",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 278,
+    "attempt": 273,
+    "place_id": "gn-890299",
+    "input": {
+      "place": {
+        "place_id": "gn-890299",
+        "name": "Harare",
+        "country": "Zimbabwe",
+        "subdivision": "Harare",
+        "lat": -17.82772,
+        "lon": 31.05337
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harare",
+          "url": "https://en.wikipedia.org/wiki/Harare",
+          "text": "Harare ( hə-RAR-eh) is the capital and largest city of Zimbabwe. The city proper has an area of 982.3 km2 (379.3 sq mi), a population of 1,849,600 as of the 2022 census, and an estimated 2,487,209 people in its metropolitan province. The city is situated in north-eastern Zimbabwe in the country's Mashonaland region. Harare Metropolitan Province incorporates the city and the municipalities of Chitungwiza, Epworth and Ruwa. The city sits on a plateau at an elevation of 1,483 metres (4,865 feet) above sea level, and its climate falls into the subtropical highland category.\nThe city was founded in 1890 by the Pioneer Column, a small military force of the British South Africa Company, and was named Fort Salisbury after the British Prime Minister Lord Salisbury. Company administrators demarcated the city and ran it until Southern Rhodesia achieved responsible government in 1923. Salisbury was thereafter the seat of the Southern Rhodesian (later Rhodesian) government and, between 1953 and 1963, the capital of the Central African Federation. It retained the name Salisbury until 1982 when it was renamed Harare on the second anniversary of Zimbabwe's independence from the United Kingdom. The national parliament moved out of Harare upon completion of the New Parliament Building in Mount Hampden in April 2022.\nBeing the commercial capital of Zimbabwe, it remains an important center of commerce and government, as well as finance, real estate, manufacturing, healthcare, education, art, culture, tourism, agriculture, mining and regional affairs. Harare had the African headquarters of the World Health Organization up to 2006.\nHarare has hosted multiple international conferences and events, including the 1995 All-Africa Games and the 2003 Cricket World Cup. In 2018, Harare was ranked as a Gamma World City. It is also home to Dynamos FC, the club with the most titles in Zimbabwean football."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 298
+    },
+    "banned_terms": [
+      {
+        "term": "harare",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 279,
+    "attempt": 274,
+    "place_id": "gn-1172451",
+    "input": {
+      "place": {
+        "place_id": "gn-1172451",
+        "name": "Lahore",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 31.558,
+        "lon": 74.35071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lahore",
+          "url": "https://en.wikipedia.org/wiki/Lahore",
+          "text": "Lahore is the capital and largest city of the Pakistani province of Punjab. It is the second-largest city in Pakistan, after Karachi, and 27th largest in the world, with a population of over 14 million. Lahore is one of country's major industrial, educational and economic hubs, and is considered the historic capital and cultural centre of the wider Punjab region.\nThe site of the city has been inhabited for over two millennia, although Lahore itself rose to prominence in the late 10th century. At times Lahore has served as the capital of several empires, including the Odi Shahi dynasty, Ghaznavid Empire and Delhi Sultanate. It was one of the principal cities in the Mughal Empire, being its capital city during the reign of Akbar. During this period, it was one of the largest cities in the world. In the 18th century Lahore fell into a period of decay while being contested among the Durranis and the Sikhs; it regained some of its former grandeur when it became capital of the Sikh Kingdom of Lahore in the early 19th century. It was annexed by the East India Company in 1849 and became the capital of Punjab Province. Lahore was central to the independence movements of British India, with the city being the site of both the Declaration of Indian Independence and the resolution for the establishment of Pakistan. It suffered rioting during the partition of British India in 1947. Following the independence of Pakistan, Lahore remained the capital of Punjab province.\nLahore is located in central-eastern Punjab, along the Ravi River, and has a strong cultural and political influence over the country being capital of its most populated province. It is considered a major socially liberal, progressive, and cosmopolitan city in the country. It is a UNESCO City of Literature and major centre for Pakistan's publishing industry, and is as such a foremost centre of Pakistan's literary scene. The city is also a major centre of education, with some of the country's leading universities based there. Lahore is home to Pakistan's Punjabi film industry, and is a major centre of Qawwali music. The city hosts a significant portion of Pakistan's tourism industry, with major attractions including the Walled City, the Badshahi and Wazir Khan mosques, as well as several Sikh and Sufi shrines. Lahore is also home to the Lahore Fort and Shalimar Gardens, both of which are UNESCO World Heritage Sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 401
+    },
+    "banned_terms": [
+      {
+        "term": "lahore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 280,
+    "attempt": 275,
+    "place_id": "gn-2949186",
+    "input": {
+      "place": {
+        "place_id": "gn-2949186",
+        "name": "Bielefeld",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 52.03333,
+        "lon": 8.53333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bielefeld",
+          "url": "https://en.wikipedia.org/wiki/Bielefeld",
+          "text": "Bielefeld (German pronunciation: [ˈbiːləfɛlt] ) is a city in the Ostwestfalen-Lippe region in the north-east of North Rhine-Westphalia, Germany. With a population of 342,952, it is also the most populous city in the administrative region (Regierungsbezirk) of Detmold and the 18th largest city in Germany.\nThe historical centre of the city is situated in the Ravensberg Basin north of the Teutoburg Forest hill range, but modern Bielefeld extends across the range and further south into the flat Westphalian Basin. The city is situated on the Hermannsweg, a hiking trail that runs for 156 km along the ridges of the Teutoburg Forest.\nBielefeld is home to a significant number of internationally operating companies, including Dr. Oetker, DMG Mori (former Gildemeister), Möller Group, Goldbeck and Schüco. It has a university and several technical colleges (Fachhochschulen). Bielefeld is also known for the Bethel Foundation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "bielefeld",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 281,
+    "attempt": 276,
+    "place_id": "gn-298299",
+    "input": {
+      "place": {
+        "place_id": "gn-298299",
+        "name": "Uşak",
+        "country": "Türkiye",
+        "subdivision": "Uşak",
+        "lat": 38.67351,
+        "lon": 29.4058
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uşak",
+          "url": "https://en.wikipedia.org/wiki/U%C5%9Fak",
+          "text": "Uşak (Turkish pronunciation: [ˈuʃak]) is a city in the interior part of the Aegean Region of Turkey. It is the seat of Uşak Province and Uşak District. Its population is 236,366 (2022).\nUşak is located 210 km (130 mi) from İzmir, the region's principal metropolitan center and port city. Benefiting from its location at the crossroads of the Central Anatolian plateau and the coastal Aegean Region, and from a climate and agricultural production incorporating elements of both of these zones, Uşak has also traditionally had a strong industrial base. Uşak was the first city in Turkey to have an urban electricity network, and the first city where a collective labor relations agreement was signed, during the Ottoman era, between leather industry employees and workers. It was here that the first factory of Republican Turkey, a sugar refinery, was set up through a private sector initiative among local businessmen. The tradition of industriousness continues today around two industrial zones."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "usak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 282,
+    "attempt": 277,
+    "place_id": "gn-3583361",
+    "input": {
+      "place": {
+        "place_id": "gn-3583361",
+        "name": "San Salvador",
+        "country": "El Salvador",
+        "subdivision": "San Salvador Department",
+        "lat": 13.68935,
+        "lon": -89.18718
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Salvador",
+          "url": "https://en.wikipedia.org/wiki/San_Salvador",
+          "text": "San Salvador (Spanish pronunciation: [san salβaˈðoɾ]) is the capital and largest city of El Salvador and of its eponymous department. It is the country's largest agglomeration, serving as the country's political, cultural, educational and financial center. The municipality of San Salvador has 525,990 inhabitants (2024). The Metropolitan Area of San Salvador, which comprises the capital itself and 13 of its municipalities, has a population of 2,404,097. The urban area of San Salvador has a population of 1,600,000 inhabitants.\nThe city is home to the Consejo de Ministros de El Salvador (Council of Ministries of El Salvador), the Legislative Assembly of El Salvador, the Supreme Court of El Salvador, and other governmental institutions, as well as the official residence of the president of El Salvador. San Salvador is located in the Salvadoran highlands, surrounded by volcanoes and prone to earthquakes. The city is also home to the Roman Catholic Archdiocese of San Salvador, as well as many Protestant branches of Christianity, including Evangelicals, Baptists, and Pentecostals, and the restorationist Christian sect the Church of Jesus Christ of Latter-day Saints.\nSan Salvador has been the host city for regional and international sporting, political, and social events. It hosted the Central American and Caribbean Games in 1935, 2002, and in 2023 and the Central American Games in 1977 and 1994, as well as the Miss Universe pageant in 1975 and in 2023. San Salvador was also the host city of the 18th Ibero-American Summit in 2008, the most important sociopolitical event in the Spanish and Portuguese sphere. The Central American Integration System has its headquarters in San Salvador."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 265
+    },
+    "banned_terms": [
+      {
+        "term": "san salvador",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "salvador",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 283,
+    "attempt": 278,
+    "place_id": "gn-3654667",
+    "input": {
+      "place": {
+        "place_id": "gn-3654667",
+        "name": "Loja",
+        "country": "Ecuador",
+        "subdivision": "Loja",
+        "lat": -3.99313,
+        "lon": -79.20422
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Loja, Ecuador",
+          "url": "https://en.wikipedia.org/wiki/Loja,_Ecuador",
+          "text": "Loja (Spanish pronunciation: [ˈlo.xa]), formerly Loxa and fully City of the Immaculate Conception of Loja (Spanish: Ciudad de la Inmaculada Concepción de Loja), is the capital of Ecuador's Loja Province. It is located in the Cuxibamba valley in the south of the country, sharing borders with the provinces of Zamora-Chinchipe and other cantons of the province of Loja. Loja holds a rich tradition in the arts, and for this reason is known as the Music and Cultural Capital of Ecuador. The city is home to two major universities.\nThe city has a population of about 203,000, and is situated 2060 m (6758 ft) above sea level. It has a mild Andean climate, ranging between 16 and 30 °C.\nThe Pan-American Highway runs past Loja."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "loja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 284,
+    "attempt": 279,
+    "place_id": "gn-5139568",
+    "input": {
+      "place": {
+        "place_id": "gn-5139568",
+        "name": "Staten Island",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.56233,
+        "lon": -74.13986
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Staten Island",
+          "url": "https://en.wikipedia.org/wiki/Staten_Island",
+          "text": "Staten Island  ( STAT-ən) is the southernmost of the five boroughs of New York City. It is separated from New Jersey by the Arthur Kill and the Kill Van Kull and from the rest of New York by New York Bay. With a population of 495,747 in the 2020 census, Staten Island is the least populated borough but the third largest in land area at 58.5 sq mi (152 km2). It is the least densely populated and most suburban borough of the city. The borough is coextensive with Richmond County, one of the 62 counties of New York state, and includes the southernmost point of the state.\nOriginally home to Lenape Native Americans, the island was settled by Dutch colonists in the 17th century. When the British took over, Richmond County became one of the 12 original counties of New York. Staten Island became one of the five boroughs of New York City during consolidation in 1898. Always called Staten Island (anglicized from the original Dutch Staaten Eylandt), the borough was legally the Borough of Richmond until 1975, when its name was officially changed to Borough of Staten Island. Staten Island has sometimes been called \"the forgotten borough\" by inhabitants who feel neglected by the city government and the media. It has also been referred to as the \"borough of parks\" due to its 12,300 acres of protected parkland and over 170 parks.\nThe North Shore—especially the neighborhoods of St. George, Tompkinsville, Clifton, and Stapleton—is the island's most urban area. It includes the St. George Historic District and the St. Paul's Avenue-Stapleton Heights Historic District, both of which feature large Victorian houses. The East Shore is home to the 2+1⁄2-mile (4-kilometer) FDR Boardwalk, the world's fourth-longest boardwalk. The South Shore, site of the 17th-century Dutch and French Huguenot settlement, developed rapidly beginning in the 1960s and 1970s and is now very suburban. The West Shore has the island's fewest residents and the most industrial development.\nMotor traffic can reach the borough from Brooklyn by the Verrazzano–Narrows Bridge and from New Jersey by the Outerbridge Crossing, Goethals Bridge, and Bayonne Bridge. Staten Island has Metropolitan Transportation Authority (MTA) bus lines and one MTA rapid transit line, the Staten Island Railway, which runs from the ferry terminal at St. George to Tottenville. Staten Island is the only borough not connected to the New York City Subway system. The free Staten Island Ferry connects the borough to Manhattan across New York Harbor, providing views of the Statue of Liberty, Ellis Island, and Lower Manhattan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 421
+    },
+    "banned_terms": [
+      {
+        "term": "staten island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "staten",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 285,
+    "attempt": 280,
+    "place_id": "gn-5403022",
+    "input": {
+      "place": {
+        "place_id": "gn-5403022",
+        "name": "Torrance",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.83585,
+        "lon": -118.34063
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torrance, California",
+          "url": "https://en.wikipedia.org/wiki/Torrance,_California",
+          "text": "Torrance is a city in the Los Angeles metropolitan area in southwestern Los Angeles County, California, United States, founded in 1912, neighboring Redondo Beach, Rolling Hills Estates, Palos Verdes Estates, Lomita, Gardena, Lawndale, and Alondra Park, as well as the Los Angeles neighborhoods of Harbor City and Harbor Gateway. The city is part of what is known as the South Bay region. \nTorrance has a moderate year-round climate with average rainfall of 12 inches (300 mm) per year. Torrance has one and a half miles (2.4 km) of beachfront abutting Santa Monica Bay and 30 parks. It is the birthplace of the American Youth Soccer Organization (AYSO). The population was 147,067 at the 2020 census, decreasing by 5.1% to an estimated 139,576 in 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "torrance",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

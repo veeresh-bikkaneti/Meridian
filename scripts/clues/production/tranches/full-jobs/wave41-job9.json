@@ -1,0 +1,837 @@
+[
+  {
+    "rank": 8218,
+    "attempt": 8161,
+    "place_id": "gn-2634478",
+    "input": {
+      "place": {
+        "place_id": "gn-2634478",
+        "name": "West Byfleet",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.33764,
+        "lon": -0.50649
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Byfleet",
+          "url": "https://en.wikipedia.org/wiki/West_Byfleet",
+          "text": "West Byfleet is a village in Surrey which grew up around its relatively minor stop on the London & South Western Railway: the station, originally Byfleet and Woodham, opened in 1887. More than 1 mile (1.6 km) from the medieval village of Byfleet, the initial concentration of a new development soon established its own economy apart from that of a dependent London commuter village and spread in most directions to its borders including to the border of the old settlement, divided by the shielded M25 motorway today. The first place of worship was dedicated in 1912, the parish of West Byfleet associated with it was established in 1917. The village is bounded to the north by the Basingstoke Canal and to the east by the M25 and the Wey Navigation Canal. Forming part of the contiguous development centred on London and its stockbroker belt just outside the M25 motorway, it is 18 miles from London Heathrow and equidistant between the business parks of Woking and Brooklands. In local government it forms a ward on the same basis as its parish in the Borough of Woking."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 185,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "west byfleet",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "byfleet",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8219,
+    "attempt": 8162,
+    "place_id": "gn-5102136",
+    "input": {
+      "place": {
+        "place_id": "gn-5102136",
+        "name": "Ocean Grove",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.21206,
+        "lon": -74.00653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocean Grove, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Ocean_Grove,_New_Jersey",
+          "text": "Ocean Grove is an unincorporated community and census-designated place (CDP) that is part of Neptune Township, in Monmouth County, New Jersey, United States. It had a population of 3,057 at the 2020 census, down from 3,342 in 2010. It is located on the Atlantic Ocean's Jersey Shore, between Asbury Park to the north and Bradley Beach to the south. Listed on the National Register of Historic Places, Ocean Grove is noted for its abundant examples of Victorian architecture and for the Great Auditorium, acclaimed as \"the state's most wondrous wooden structure, soaring and sweeping, alive with the sound of music.\" Another building, a former high school, is now the Jersey Shore Arts Center.\nOcean Grove was founded in 1869 as an outgrowth of the camp meeting movement in the United States, when a group of Methodist clergymen, led by William B. Osborn and Ellwood H. Stokes, formed the Ocean Grove Camp Meeting Association to develop and operate a summer camp meeting site on the New Jersey seashore. By the early 20th century, the popular Christian meeting ground became known as the \"Queen of Religious Resorts\". The community's land is still owned by the Camp Meeting Association and leased to individual homeowners and businesses. Ocean Grove remains the longest-active camp meeting site in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 185,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "ocean grove",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocean",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grove",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8220,
+    "attempt": 8163,
+    "place_id": "gn-2070165",
+    "input": {
+      "place": {
+        "place_id": "gn-2070165",
+        "name": "Hamersley",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.84898,
+        "lon": 115.80757
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hamersley, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Hamersley,_Western_Australia",
+          "text": "Hamersley is a residential suburb 14 kilometres (8.7 miles) north-northwest of the Perth central business district in Western Australia, and six kilometres (4 mi) from the Indian Ocean. The suburb adjoins two major arterial roads—Mitchell Freeway to the west and Reid Highway to the south—and is within the City of Stirling local government area. It was built during the late 1960s and 1970s as part of the Government of Western Australia's response to rapidly increasing land prices across the metropolitan area.\nBefore development, Hamersley was a remote district covered in jarrah, marri, banksia and other vegetation typical of the Swan Coastal Plain, with small areas cleared for small-scale agriculture such as market gardening and poultry farming. By 1974, six years after the first subdivision, Hamersley was home to the district's first community hall, an annual parade and fair which were broadcast on Perth TV and radio, an active progress association, and its own newspaper, the Hamersley Gazette, a forerunner to today's Stirling Times. Rapid growth further north removed the focus from Hamersley, which was completed in 1981 and has remained relatively stable since then.\nSignificant reserves of remnant bushland remain in parts of the suburb. The largest of these is an exclusion zone around the 180-metre-high (590-foot) ABC radio tower in the suburb's southeast, which broadcasts AM stations to the Perth metropolitan area. The guyed tower was built in 1939 and is a landmark in the region, although it has been a local political issue since the 1980s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 184,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "hamersley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8221,
+    "attempt": 8164,
+    "place_id": "gn-2634502",
+    "input": {
+      "place": {
+        "place_id": "gn-2634502",
+        "name": "West Bay",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.71084,
+        "lon": -2.76107
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Bay, Dorset",
+          "url": "https://en.wikipedia.org/wiki/West_Bay,_Dorset",
+          "text": "West Bay, originally known as Bridport Harbour, is a small harbour settlement and resort on the English Channel coast in Dorset, England, sited at the mouth of the River Brit approximately 1.5 miles (2.4 km) south of Bridport. The area is part of the Jurassic Coast, a World Heritage Site.\nThe harbour at West Bay is not a natural landscape feature and it has a long history of having been silted up, blocked by shingle and damaged by storms, and each time repairs, improvements and enlargements have subsequently been made. The harbour has been moved twice: it was originally 1 mile (1.6 km) inland, then was moved to the coast beside the East Cliff, then was moved again 270 metres (300 yd) along the coast to the west, where it is located today.\nThe previous main commercial trade of the harbour—exporting Bridport's ropes and nets—declined in the second half of the 19th century. When the railway arrived in 1884, attempts were made to provide the settlement with the facilities of a resort, and today West Bay has a mixed economy of tourism and fishing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 184,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "west bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8222,
+    "attempt": 8165,
+    "place_id": "gn-2634772",
+    "input": {
+      "place": {
+        "place_id": "gn-2634772",
+        "name": "Wargrave",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.50068,
+        "lon": -0.86577
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wargrave",
+          "url": "https://en.wikipedia.org/wiki/Wargrave",
+          "text": "Wargrave () is a historic village and civil parish in Berkshire, England. The village is primarily on the River Thames but also along the confluence of the River Loddon and lies on the border with southern Oxfordshire. The village has many old listed buildings, two marinas with chandlery services for boats, a boating club and rises steeply to the northeast in the direction of Bowsey Hill, with higher parts of the village generally known as Upper Wargrave. In Upper Wargrave is a Recreation Ground with a cricket club, bowls club, football pitches and tennis club.\nWargrave is situated in the A321 road 7 miles (11 km) from both Maidenhead and Reading and 3 miles (4.8 km) from Henley-on-Thames. The  village is larger than the county average, having its own railway station on the Henley Branch Line, off the Great Western Main Line from London Paddington; the village is quickly accessible to nearby parts of the M4 corridor, particularly Berkshire and Heathrow Airport and local major centres of employment include Reading and Maidenhead, with smaller businesses and additional commercial facilities in nearby Henley-on-Thames and Wokingham."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 184,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "wargrave",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8223,
+    "attempt": 8166,
+    "place_id": "gn-6697375",
+    "input": {
+      "place": {
+        "place_id": "gn-6697375",
+        "name": "Donnington",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.95135,
+        "lon": -1.72142
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Donnington, Gloucestershire",
+          "url": "https://en.wikipedia.org/wiki/Donnington,_Gloucestershire",
+          "text": "Donnington is a small village and civil parish in Gloucestershire, near the Roman Fosse Way in the Cotswold District Council area of south west England. It is situated on a hill a mile and a half north of Stow-on-the-Wold, of which until 1894 it formed a detached hamlet, so that the north transept in the parish church was reserved for the parish. There are fine views over the Evenlode valley.\nIt is notable for its Cotswold stone houses. They include Donnington mill, on a medieval site, where the river Dikler emerges to form an artificial lake and mill pond of nearly five acres, which became Richard Arkell's Donnington Brewery in 1865; Little Barrow, a late Arts and Crafts movement country house on a medieval site remodelled and extended from a house of about 1800 in Cotswold manorial style with gardens by the distinguished Sussex architect Walter Godfrey in the 1930s; and Donnington Manor, just north of the village, which dates to the 18th century, when it may have been rebuilt on the site of an earlier house. Crawthorne Wood of over 50 a. is the only large area of woodland.\nOn 21 March 1646 the Battle of Stow-on-the-Wold, the last pitched battle of the English Civil War, is believed to have taken place in the parish, when Lord Astley and 3,000 Royalists were defeated by Parliamentarian forces."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 183,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "donnington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8224,
+    "attempt": 8167,
+    "place_id": "gn-2765278",
+    "input": {
+      "place": {
+        "place_id": "gn-2765278",
+        "name": "Seefeld in Tirol",
+        "country": "Austria",
+        "subdivision": "Tyrol",
+        "lat": 47.33016,
+        "lon": 11.18786
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seefeld in Tirol",
+          "url": "https://en.wikipedia.org/wiki/Seefeld_in_Tirol",
+          "text": "Seefeld in Tirol is an old farming village, now a major tourist resort, in Innsbruck-Land District in the Austrian state of Tyrol with a local population of 3,312 (as of 1 January 2013). The village is located about 17 km (11 mi) northwest of Innsbruck on a plateau between the Wetterstein mountains and the Karwendel on a historic road from Mittenwald to Innsbruck that has been important since the Middle Ages. It was first mentioned in 1022 and since the 14th century has been a pilgrimage site, benefiting not only from the visit of numerous pilgrims but also from its stacking rights as a trading station between Augsburg and the Venice. Also since the 14th century, Tyrolean shale oil has been extracted in the area. Seefeld was a popular holiday resort even before 1900 and, since the 1930s, has been a well known winter sports centres and amongst the most popular tourist resorts in Austria. The municipality, which has been the venue for several Winter Olympics Games, is the home village of Anton Seelos, the inventor of the parallel turn.\nWith more than one million overnight stays each year, it is one of the most popular Tyrolean tourist destinations especially for skiing in winter, but also for walking holidays in the summer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 180,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "seefeld in tirol",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "seefeld",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "in",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "tirol",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8225,
+    "attempt": 8168,
+    "place_id": "gn-3026231",
+    "input": {
+      "place": {
+        "place_id": "gn-3026231",
+        "name": "Châteauneuf-en-Thymerais",
+        "country": "France",
+        "subdivision": "Centre-Val de Loire",
+        "lat": 48.58112,
+        "lon": 1.24085
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Châteauneuf-en-Thymerais",
+          "url": "https://en.wikipedia.org/wiki/Châteauneuf-en-Thymerais",
+          "text": "Châteauneuf-en-Thymerais (French pronunciation: [ʃɑtonœf ɑ̃ timʁɛ]) is a commune in Eure-et-Loir  department in northern France.\nThe commune was once an important stronghold reigning over the whole natural and historic province of Thymerais.\nBorn of the fierce determination of its first lords to face the threat brought by the Duke of Normandy upon the Kingdom of France, and devastated and much fought over through the ages, the castle that rose out of it was eventually demolished, but the city remained. It gradually lost its importance and a dynastic feud was the center of which it was dismembered, so that it became a barony in the eighteenth century, although it was far from having the same extent that it did in the thirteenth century.\nThe city known since the end of the Second World War subsequently went through a fragile revival by taking advantage of its location due to its proximity to Paris, and the employment areas of Chartres and Dreux. It managed to attract some industrial enterprises to retain part of its business while achieving a low but steady demographic development. Already a head of its Canton, belonging to the Drouais region, the city became in 2003 the center of the Community of communes of Thymerais."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 180,
+      "fullExtractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "chateauneuf en thymerais",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chateauneuf",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "en",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "thymerais",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8226,
+    "attempt": 8169,
+    "place_id": "gn-5873776",
+    "input": {
+      "place": {
+        "place_id": "gn-5873776",
+        "name": "Seward",
+        "country": "United States",
+        "subdivision": "Alaska",
+        "lat": 60.10426,
+        "lon": -149.4435
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seward, Alaska",
+          "url": "https://en.wikipedia.org/wiki/Seward,_Alaska",
+          "text": "Seward (Alutiiq: Qutalleq; Dena'ina: Tl'ubugh) is an incorporated home rule city in Alaska, United States. Located on Resurrection Bay, a fjord of the Gulf of Alaska on the Kenai Peninsula, Seward is situated on Alaska's southern coast, approximately 120 miles (190 km) by road from Alaska's largest city, Anchorage.\nWith a population of 2,717 people as of the 2020 census, Seward is the fourth-largest city in the Kenai Peninsula Borough, behind Kenai, Homer, and the borough seat of Soldotna. The city is named for former United States Secretary of State William H. Seward, who orchestrated the United States' purchase of Alaska from the Russian Empire in 1867 while serving in this position as part of President Andrew Johnson's administration.\nSeward is the southern terminus of the Alaska Railroad and the historic starting point of the original Iditarod Trail to Interior Alaska, with Mile 0 of the trail marked on the shoreline at the southern end of town.\nIn 2015, President Barack Obama visited Seward, first stopping at Exit Glacier to discuss the visible impacts of climate change with Bear Grylls. Obama characterized Exit Glacier's receding edge as, \"...as good a signpost of what we're dealing with when it comes to climate change as just about anything... We want to make sure that our grandkids can see this.\" He also toured Downtown Seward, visiting a local ice cream shop, and explored Resurrection Bay and Bear Glacier from the water aboard the Viewfinder, which launched from Seward Harbor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 180,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "seward",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8227,
+    "attempt": 8170,
+    "place_id": "gn-3516612",
+    "input": {
+      "place": {
+        "place_id": "gn-3516612",
+        "name": "Soconusco",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 15.31502,
+        "lon": -92.72645
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Soconusco",
+          "url": "https://en.wikipedia.org/wiki/Soconusco",
+          "text": "Soconusco is a region in the southwest corner of the state of Chiapas in southeastern Mexico along its border with Guatemala. It is a narrow strip of land wedged between the Sierra Madre de Chiapas mountains and the Pacific Ocean. It is the southernmost part of the Chiapas coast extending south from the Ulapa River to the Suchiate River, distinguished by its history and economic production. Abundant moisture and volcanic soil has always made it rich for agriculture, contributing to the flowering of the Mokaya and Olmec cultures, which were based on Theobroma cacao and rubber of Castilla elastica.\nIn the 19th century, the area was disputed between Mexico and Guatemala until a treaty signed in 1882 fixed the modern border by dividing the area's historical extension, with most going to Mexico and a smaller portion east of the Suchiate to Guatemala. In 1890, Mexican president Porfirio Díaz and German chancellor Otto von Bismarck collaborated to take advantage of southern Mexico's agricultural potential by sending 450 German families to Soconusco near Tapachula in the southern state of Chiapas. Extensive coffee cultivation quickly made Soconusco one of the most successful German colonies, and between 1895 and 1900, 11.5 million kg of coffee had been harvested. Fincas (estates) were erected in the Chiapaneco jungle and given German names such as Hamburgo, Bremen, Lübeck, Argovia, Bismarck, Prussia, and Hanover.\nThis area has experienced a boom-and-bust economy with well-studied migration patterns of agricultural workers. After exporting cacao to central Mexico for thousands of years, the first modern crop for export was coffee.  Since then other crops such as tropical fruits, flowers and more have been introduced. The most recent addition is the rambutan, a southeast Asian fruit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "soconusco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8228,
+    "attempt": 8171,
+    "place_id": "gn-6148373",
+    "input": {
+      "place": {
+        "place_id": "gn-6148373",
+        "name": "Sioux Lookout",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 50.09906,
+        "lon": -91.92158
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sioux Lookout",
+          "url": "https://en.wikipedia.org/wiki/Sioux_Lookout",
+          "text": "Sioux Lookout is a town in Northwestern Ontario, Canada, with a population of 5,838 people (up 10.8% since 2016). Known locally as the \"Hub of the North\", it is serviced by the Sioux Lookout Airport, Highway 72, and the Sioux Lookout railway station. According to a 2011 study commissioned by the municipality, health care and social services ranked as the largest sources of employment, followed by the retail trade, public administration, transportation and warehousing, manufacturing, accommodation and food services, and education.\nAlthough downtown Sioux Lookout is located 71 kilometres (44 mi) from the Trans-Canada Highway, the municipality covers the ends or beginnings of provincial highways 664, 642, 516, and 72. Sioux Lookout is also a key airport hub for numerous northern and Indigenous communities in Northwestern Ontario and remains a service stop for The Canadian, a transcontinental passenger train operated by Via Rail, and a busy railway junction for the northwestern Ontario segment of Canadian National Railway's transcontinental Class 1 railroad.\nFishing camps in the area allow access to an extensive lake system fed by the English River. The town is surrounded by several beaches, including Umphreville Park, a historical site that predates the town itself. During the summer months, Sioux Lookout's population rises as tourists, mostly American, arrive to take advantage of the multitude of lakes and rivers in the area. Experienced guides, employed by the camps, can locate the best locations and also provide an educated tour of the unique land known affectionately as \"sunset country\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "sioux lookout",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sioux",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lookout",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8229,
+    "attempt": 8172,
+    "place_id": "gn-6148374",
+    "input": {
+      "place": {
+        "place_id": "gn-6148374",
+        "name": "Sioux Lookout",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 50.06676,
+        "lon": -91.98358
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sioux Lookout",
+          "url": "https://en.wikipedia.org/wiki/Sioux_Lookout",
+          "text": "Sioux Lookout is a town in Northwestern Ontario, Canada, with a population of 5,838 people (up 10.8% since 2016). Known locally as the \"Hub of the North\", it is serviced by the Sioux Lookout Airport, Highway 72, and the Sioux Lookout railway station. According to a 2011 study commissioned by the municipality, health care and social services ranked as the largest sources of employment, followed by the retail trade, public administration, transportation and warehousing, manufacturing, accommodation and food services, and education.\nAlthough downtown Sioux Lookout is located 71 kilometres (44 mi) from the Trans-Canada Highway, the municipality covers the ends or beginnings of provincial highways 664, 642, 516, and 72. Sioux Lookout is also a key airport hub for numerous northern and Indigenous communities in Northwestern Ontario and remains a service stop for The Canadian, a transcontinental passenger train operated by Via Rail, and a busy railway junction for the northwestern Ontario segment of Canadian National Railway's transcontinental Class 1 railroad.\nFishing camps in the area allow access to an extensive lake system fed by the English River. The town is surrounded by several beaches, including Umphreville Park, a historical site that predates the town itself. During the summer months, Sioux Lookout's population rises as tourists, mostly American, arrive to take advantage of the multitude of lakes and rivers in the area. Experienced guides, employed by the camps, can locate the best locations and also provide an educated tour of the unique land known affectionately as \"sunset country\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 248
+    },
+    "banned_terms": [
+      {
+        "term": "sioux lookout",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sioux",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lookout",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8230,
+    "attempt": 8173,
+    "place_id": "gn-6220364",
+    "input": {
+      "place": {
+        "place_id": "gn-6220364",
+        "name": "Dallington",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -43.50833,
+        "lon": 172.67013
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dallington, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Dallington,_New_Zealand",
+          "text": "Dallington is a suburb of Christchurch, New Zealand, on the north-east side of the city.\nIt is bounded mainly by the Avon River / Ōtākaro, stretching in a circular area from the intersection of Gayhurst Road, Dallington Terrace and Locksley Avenue along to New Brighton Road, North Parade and Banks Avenue where it meets the intersection at the other end of Dallington Terrace and River Road.  Its neighbouring suburbs are Burwood, Shirley, Richmond, and Avonside.\nFirst mentioned in The Press in 1883 when \"beautiful suburban villa sites on the banks of the Avon in the suburb of Dallington, lately known as Broom Farm\" are advertised for sale by Henry Jekyll.\nOn 4 September 2010, it was severely hit by a 7.1 magnitude earthquake, causing immense damage. Consequently, the St Paul's parish church and school which had suffered greatly from the effects of the quake, were forced to relocate their church services to the Marian College chapel and the students to the Catholic Cathedral College site, for the following couple of years estimated that it would take to rebuild. The college accommodated the entire primary school community of St Paul's School for a short time. But the February 2011 Christchurch earthquake (6.3 magnitude) caused far worse devastation to the city than the September 2010 earthquake. Large areas of Dallington were placed into a residential red zone, under which houses were acquired and demolished by the Crown."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 178,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "dallington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8231,
+    "attempt": 8174,
+    "place_id": "gn-2760510",
+    "input": {
+      "place": {
+        "place_id": "gn-2760510",
+        "name": "Zistersdorf",
+        "country": "Austria",
+        "subdivision": "Lower Austria",
+        "lat": 48.54252,
+        "lon": 16.76136
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zistersdorf",
+          "url": "https://en.wikipedia.org/wiki/Zistersdorf",
+          "text": "Zistersdorf is a town in the district of Gänserndorf in the Austrian state of Lower Austria.\nThe town became renowned for oil discoveries when crude oil was first extracted in August 1930, though initial production was too low for commercial use. By 1934, the Gösting 2 well significantly boosted output to 30 tons daily, critically supporting the Wehrmacht during WWII. Allied bombings on June 16 and 26, 1944, targeted these facilities, causing severe fuel shortages. As the last functioning oil fields of the Third Reich were in Zistersdorf, it was a key objective for the Red Army, which crossed the Morava River and overran the heavily defended area by the Wehrmacht and Waffen-SS in April 1945.\nThe RAG, the company that has operated in the area, has produced over 6,660,000 tonnes of crude oil from the Zistersdorf reserves. Modern and sustainable production methods were introduced early on, including eco-friendly extraction processes emphasized during a 2011 visit by OPEC's Secretary General, who praised the area for its integration of productive and sustainable practices within Austria's oldest wine-growing regions. The Gaiselberg field has been particularly productive, with its Gaiselberg 1 well, among the world's oldest active oil wells, yielding significant quantities of oil and gas since 1938. This site alone has produced over 126,000 tonnes of oil, with current operations generating about 97 tonnes of saltwater daily, which is treated and reinjected to maintain reservoir pressure. The integration of advanced drilling technologies and environmental stewardship has been central to the region's longevity and productivity in oil production.\nToday, the fields, operated by ADX Energy, produce approximately 26.5 tons of oil equivalent per day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 177,
+      "fullExtractWords": 271
+    },
+    "banned_terms": [
+      {
+        "term": "zistersdorf",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8232,
+    "attempt": 8175,
+    "place_id": "gn-3182295",
+    "input": {
+      "place": {
+        "place_id": "gn-3182295",
+        "name": "Bassano Romano",
+        "country": "Italy",
+        "subdivision": "Lazio",
+        "lat": 42.22228,
+        "lon": 12.18785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bassano Romano",
+          "url": "https://en.wikipedia.org/wiki/Bassano_Romano",
+          "text": "Bassano Romano is a town and comune situated in the hills of Monti Sabatini in the province of Viterbo, in northern Lazio (Italy).\nWith its origins about 1000 as the agricultural hamlet of Bassano di Sutri the village's future was founded in 1160 by the wealthy landowner Enotrio Serco, who initiated the construction at the top of the slope of a fortified residence that over the centuries became a princely dwelling, frescoed by famous artists. In 1482 Pope Sixtus IV assigned the Foedus Bassani to the Anguillara, Roman patricians (patrizii di Roma). The growth of the comune redoubled after 1565, when the signory was reassigned by Pope Clement VIII to the Giustiniani, merchants of Genoese origin settled at Rome.  In 1605 the signory was raised to a marquessate: a hunting lodge (casina di caccia) called \"La Rocca\", granaries, a stone bridge (the ponte delle Vaschie) and the church dedicated to San Vincenzo were all constructed. During the Giustiniani residence, artists were commissioned to carry out frescoes: Francesco Albani, Domenico Zampieri \"Domenichino\" and Antonio Tempesta are all represented. In 1644, a bulla of Pope Innocent X made the marchese of Bassano a prince, and the flock of papal and noble visitors included James Stuart, pretender to the thrones of England and Scotland. In 1735, under Giustiniani patronage the maiolica manufactory of Bartolomeo Terchi was transferred here from Siena.\nVarious epidemics struck Bassano during the 18th century, in 1709, 1770 and 1786. In 1799, the French forces of Napoleon attacked Bassano no less than four times.\nIn 1854 the fief passed from the Giustiniani to the Odescalchi. During World War II Bassano was the site of several conflicts. In 1964 the commune's name was changed to Bassano Romano."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 177,
+      "fullExtractWords": 286
+    },
+    "banned_terms": [
+      {
+        "term": "bassano romano",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bassano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "romano",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8233,
+    "attempt": 8176,
+    "place_id": "gn-2967108",
+    "input": {
+      "place": {
+        "place_id": "gn-2967108",
+        "name": "Blaye",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 45.12764,
+        "lon": -0.66225
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blaye",
+          "url": "https://en.wikipedia.org/wiki/Blaye",
+          "text": "Blaye (French: [blaj] ; Occitan: Blaia pronounced [ˈblajɔ]) is a commune and subprefecture in the Gironde department in Nouvelle-Aquitaine in southwestern France. For centuries, Blaye was a particularly convenient crossing point for those who came from the north and went to Bordeaux or further south, to Spain and Portugal. Fortified since antiquity, this eminently strategic site located on the bank of a large river, was modernized at the end of the 17th century, thanks to Vauban. \nIn 1685, the  Commissaire general des fortifications of Louis XIV proposed the construction of a real lock on the Gironde in order to \"take control of the river\" and to hold Bordeaux in case of a revolt. It is then that the Citadel de Blaye was built, constituting the major element of the estuary control system. Dominating the urban landscape, this imposing building has been listed as a UNESCO World Heritage Site since 2008, as part of a group of structures engineered by Vauban, in testimony to their global influence on military architecture and planning over the next few centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 176,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "blaye",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8234,
+    "attempt": 8177,
+    "place_id": "gn-3177952",
+    "input": {
+      "place": {
+        "place_id": "gn-3177952",
+        "name": "Cortina d'Ampezzo",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 46.5369,
+        "lon": 12.13903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cortina d'Ampezzo",
+          "url": "https://en.wikipedia.org/wiki/Cortina_d'Ampezzo",
+          "text": "Cortina d'Ampezzo (Italian: [korˈtiːna damˈpɛttso]; local Ladin: Anpezo, elsewhere Ampëz; historical Austrian German: Hayden), often abbreviated to Cortina, is a town and comune (municipality) in the province of Belluno, in the Veneto region of Northern Italy. Situated on the Boite river, in an alpine valley in the heart of the southern Dolomitic Alps, it is an upscale summer and winter sport resort known for its skiing trails, scenery, accommodation, shops and its jet-set-dominated après-ski scene. It is part of the linguistic and cultural region of Ladinia. The town's Latin motto, granted in 1928 on its flag and coat of arms, reads: MODO VIVO AC TUTA QUIESCO (roughly, \"I live frugally and rest quietly\".)\nDuring the Middle Ages, Cortina d'Ampezzo fell under the jurisdiction of the Patriarchate of Aquileia and the Holy Roman Empire. In 1420 it was conquered by the Republic of Venice. From 1508, it then spent much of its history under Habsburg rule, briefly undergoing some territorial changes under Napoleon, before being returned to the Austrian Empire (later Austria-Hungary), which held it until 1918. From the 19th century, Cortina d'Ampezzo became a regional centre for crafts. The local handmade products were appreciated by early British and German holidaymakers as tourism emerged in the late 19th century. Among the specializations of the town were crafting wood for furniture, the production of tiled stoves, and iron, copper and glass items. \nToday, the local economy thrives on tourism, particularly during the winter season, when the population of the town typically increases from about 7,000 to 40,000. The Basilica Minore dei Santi Filippo e Giacomo was built between 1769 and 1775 on the site of two former 13th- and 16th-century churches; it is home to the parish and the deanery of Cortina d'Ampezzo. The town also contains the Rinaldo Zardini Palaeontology Museum, the Mario Rimoldi Modern Art Museum, and the Regole of Ampezzo Ethnographic Museum. \nAlthough Cortina d'Ampezzo was unable to go ahead with the scheduled 1944 Winter Olympics because of World War II, it hosted the Winter Olympics in 1956 and subsequently hosted a number of world winter-sports events. In 2026, Cortina d'Ampezzo hosted the  Winter Olympics for a second time, co-hosting with Milan. The town is home to SG Cortina, a top league professional ice hockey team, and is also the start and end point of the annual Dolomites Gold Cup Race. \nSeveral films have been shot in the town, most notably The Pink Panther (1963), For Your Eyes Only (1981), and Cliffhanger (1993)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 176,
+      "fullExtractWords": 414
+    },
+    "banned_terms": [
+      {
+        "term": "cortina d ampezzo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cortina",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ampezzo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8235,
+    "attempt": 8178,
+    "place_id": "gn-2735172",
+    "input": {
+      "place": {
+        "place_id": "gn-2735172",
+        "name": "Ribeira de Pena",
+        "country": "Portugal",
+        "subdivision": "Vila Real",
+        "lat": 41.52147,
+        "lon": -7.80237
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ribeira de Pena",
+          "url": "https://en.wikipedia.org/wiki/Ribeira_de_Pena",
+          "text": "Ribeira de Pena (Portuguese pronunciation: [ʁiˈβɐjɾɐ ðɨ ˈpenɐ] ) is a town and a municipality in the Vila Real District, in the North of Portugal. In 2024, the municipality had 5,840 inhabitants across an area of 217.46 square kilometres (83.96 mi2). The town itself had approximately 2,608 inhabitants in 2021.\nLocated on a zone of transition between the harsh and mountainous Trás-os-Montes and the verdant Minho, the municipality of Ribeira de Pena, crossed by the calm waters of the Tâmega River, displays unique characteristics and also offers visitors the unmistakable flavour of the region's \"green wine.\" Equally rich is the heritage left by man since remote times, visible at abundant prehistoric remains such as the Stone Age engravings of Lamelas, several dolmens and archaeological monuments and fortified settlements such as the ruins found at Monte do Cabriz, near the village of Cerva.\nThe current mayor is João Noronha, elected in 2017 by PS. The municipal holiday is August 16.\nThere are two hydroelectric dams in Ribeira de Pena municipality, Daivões Dam and Alto Tâmega Dam. These, together with Gouvães Dam, form the Gigabattery of the Tâmega, a renewable energy storage project by Iberdrola."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 175,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "ribeira de pena",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ribeira",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pena",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8236,
+    "attempt": 8179,
+    "place_id": "gn-5952337",
+    "input": {
+      "place": {
+        "place_id": "gn-5952337",
+        "name": "Fermont",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 52.79445,
+        "lon": -67.08378
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fermont",
+          "url": "https://en.wikipedia.org/wiki/Fermont",
+          "text": "Fermont (; French pronunciation: [fɛʁmɔ̃]) is a mining city in Côte-Nord region, Quebec, Canada, near the Quebec-Labrador border about 23 kilometres (14 mi) from Labrador City on Route 389, which connects to the Trans-Labrador Highway (Newfoundland and Labrador Route 500).  It is the seat of the Regional County Municipality of Caniapiscau.\nThe city is located about 565 km (351 mi) from Baie-Comeau, about 867 km (539 mi) from Saguenay, and about 1,000 km (621 mi) from Quebec City.\nFermont (French contraction of \"Fer Mont\", meaning \"Iron Mountain\") was founded as a company town in the early 1970s to exploit rich iron ore deposits from Mont Wright, which is about 25 kilometres (16 mi) to the west.\nThe town is notable for the huge self-contained structure containing apartments, stores, schools, bars, a hotel, restaurants, a supermarket and swimming pool; the large building shelters a community of smaller apartment buildings and homes on its leeward side. Popularly known as The Wall (Le Mur), the structure was designed to be a windscreen to the rest of the town. It permits residents (other than mine workers) to never leave the building during the long winter, which usually lasts about seven months. The town, designed by Maurice Desnoyers and Norbert Schoenauer, was inspired by similar projects in Sweden designed by Ralph Erskine, notably that of Svappavaara, an iron mining town in Sweden. The building measures 1.3 kilometres (4,300 ft) long  and stands 15 metres (49 ft) high."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 175,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "fermont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8237,
+    "attempt": 8180,
+    "place_id": "gn-2645611",
+    "input": {
+      "place": {
+        "place_id": "gn-2645611",
+        "name": "Kilmacolm",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.8947,
+        "lon": -4.62643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kilmacolm",
+          "url": "https://en.wikipedia.org/wiki/Kilmacolm",
+          "text": "Kilmacolm ( ) is a village and civil parish in the Inverclyde council area, and the historic county of Renfrewshire in the west central Lowlands of Scotland. It lies on the northern slope of the Gryffe Valley, 7+1⁄2 miles (12 kilometres) southeast of Greenock and around 15 miles (24 km) west of the city of Glasgow. The village has a population of around 4,000 and is part of a wider civil parish which covers a large rural hinterland of 15,000 hectares (150 km2; 58 sq mi) containing within it the smaller settlement of Quarrier's Village, originally established as a 19th-century residential orphans' home.\nThe area surrounding the village was settled in prehistoric times and emerged as part of a feudal society with the parish divided between separate estates for much of its history. The village itself remained small, providing services to nearby farm communities and acting as a religious hub for the parish. The name of the village derives from the Scottish Gaelic Cill MoCholuim, indicating the dedication of its church to St Columba. The parish church was mentioned in a papal bull of 1225 showing its appropriation to Paisley Abbey, and it sits on the site of an ancient religious community dating to the 5th or 6th centuries. Again in the 13th century, Duchal Castle was constructed in the parish and is notable for being besieged by King James IV of Scotland in 1489, following the resident Lyle family's support of an insurrection against him. Feuding between the noble families of Kilmacolm was commonplace in the Middle Ages, and in the 16th and 17th centuries, the parish again came to the attention of the Crown for providing support to outlawed religious Covenanters.\nThe character of the village changed significantly in the Victorian era, with the arrival of the railway in Kilmacolm in 1869. Many of Kilmacolm's modern buildings were constructed between this date and the outbreak of World War I. The emergence of such transport links enabled the village to expand as an affluent dormitory village serving the nearby urban centres of Glasgow, Paisley and Greenock. The economy of the village reflected this population change, moving away from its traditional reliance on agriculture to providing tertiary sector services to residents and visitors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 174,
+      "fullExtractWords": 373
+    },
+    "banned_terms": [
+      {
+        "term": "kilmacolm",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

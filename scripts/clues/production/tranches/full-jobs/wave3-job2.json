@@ -1,0 +1,737 @@
+[
+  {
+    "rank": 427,
+    "attempt": 421,
+    "place_id": "gn-1255647",
+    "input": {
+      "place": {
+        "place_id": "gn-1255647",
+        "name": "Srikakulam",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 18.2989,
+        "lon": 83.89751
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Srikakulam",
+          "url": "https://en.wikipedia.org/wiki/Srikakulam",
+          "text": "Srikakulam is a city and the headquarters of Srikakulam district in the Indian state of Andhra Pradesh. As of 2011 census, it has a population of 165,735. There are many other places of Buddhist Tourism such as Salihundam, Kalinga Patnam, Dabbaka Vaani Peta, Nagari Peta, Jagati Metta, Singupuram etc. in Srikakulam District. The Buddhist heritage site of Salihundam has some unique features. It has a beautiful star atop a stupa, rock cut massive stupas inside chaitya grihas, brick stupas with wheel pattern plan, votive stupas, inscriptions on the steps leading to the stupas and museum housing over two dozen sculpted statue and figurines of Buddha, Jain Teerthankars and other deities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "srikakulam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 428,
+    "attempt": 422,
+    "place_id": "gn-1259166",
+    "input": {
+      "place": {
+        "place_id": "gn-1259166",
+        "name": "Purnia",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 25.77895,
+        "lon": 87.47422
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Purnia",
+          "url": "https://en.wikipedia.org/wiki/Purnia",
+          "text": "Purnia (; also romanized and officially known as Purnea) is the fourth largest city of Bihar and is emerging as the largest economic hub in North Bihar. It serves as the administrative headquarters of both Purnia district and Purnia division in the Indian state of Bihar. It is well known for its favourable climate like Darjeeling and has an abundance of resources for human settlements and economic activities.\nThe total geographical area of Purnia Urban Agglomeration is 92 km2 (35.52 sq mi) which is next only to Patna. The population density of the city is 3058 persons per km sq. making it the 4th largest city of Bihar by population. It is nearly 315 km from Patna, as well as 171 km from Siliguri, 90 km from Bhagalpur. It is 640 km from Guwahati (approximately) and 450 km from Kolkata, the capital of the adjacent state of West Bengal and the largest city in East India. Purnia district covers 3202.31 sq. km of the state of Bihar. The Indian Army, Indian Air Force, and three of five branches of India's Central Armed Police Forces – the Border Security Force (BSF), the Sashastra Seema Bal (SSB), and the Indo-Tibetan Border Police (ITBP) – have bases around the district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "purnia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 429,
+    "attempt": 423,
+    "place_id": "gn-1260728",
+    "input": {
+      "place": {
+        "place_id": "gn-1260728",
+        "name": "Palakkad",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 10.77319,
+        "lon": 76.65366
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palakkad",
+          "url": "https://en.wikipedia.org/wiki/Palakkad",
+          "text": "Palakkad (Malayalam: [pɐːlɐkːɐːɖɨ̆] ), also known as Palghat, historically known as Palakkattussery, is a city in the Indian state of Kerala. It is the administrative headquarters of Palakkad district. Palakkad is the most densely populated municipality and the fourth-most densely populated city in the state. It was established before Indian independence under British rule and known by the name Palghat. Palakkad is famous for the ancient Palakkad Fort, which is in the heart of the city and was captured and rebuilt by Hyder Ali in 1766 which later fell into the hands of Zamorin in 1784. The city is about 347 kilometres (216 mi) northeast of the state capital, Thiruvananthapuram.\nThe 18th-century Palakkad Fort has sturdy battlements, a moat, and a Hanuman temple on its grounds. North on the Kalpathy River, the 15th-century Viswanatha Swamy Temple is the main venue of the Ratholsavam chariot festival. The river Bharathappuzha flows through Palakkad. Palakkad is on the northern bank of Bharathappuzha River.\nPalakkad was included in the South Malabar region of Malabar District during the British Raj. The municipality of Palakkad was formed on 1 November 1866 according to the Madras Act 10 of 1865 (Amendment of the Improvements in Towns act 1850) of the British Indian Empire, along with the municipalities of Kozhikode, Kannur, Thalassery, and Fort Kochi, making them Kerala's oldest modern municipalities.\nIndian Institute of Technology, Palakkad is the first and only Indian Institute of Technology in Kerala. It is also home to Government Victoria College, one of the state's oldest institutes of higher education, opened in 1888, and NSS College of Engineering, the fourth engineering college in Kerala, opened in 1960.\nMercy College is a women's college located in the city which was established in 1964. It is the first Women's college in the Palakkad District.\nPalakkad Railway Division of Southern Railway Zone, one of India's oldest Railway Divisions, is headquartered here. A residential colony of the railway employees of Palakkad Railway Division known as Hemambika Nagar Railway Colony, one of the residential colonies under Southern Railway, is also near the office. The only school in the state run by Southern Railways is within the colony. Multi-Disciplinary Divisional Training Institute (MDDTI) for Group C and D employees of the division is also inside the colony."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 377
+    },
+    "banned_terms": [
+      {
+        "term": "palakkad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 430,
+    "attempt": 424,
+    "place_id": "gn-1266928",
+    "input": {
+      "place": {
+        "place_id": "gn-1266928",
+        "name": "Khargone",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 21.82292,
+        "lon": 75.61394
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khargone",
+          "url": "https://en.wikipedia.org/wiki/Khargone",
+          "text": "Khargone is a city and administrative headquarters of the Khargone district in the Indian state of Madhya Pradesh. The city is located on the bank of the Kunda river and is known for its cotton and chili pepper production. It is also known for Navgraha Mandir, a temple devoted to the nav grahas (nine planets). Khargone topped the nation in municipality and received a national award for 'India's Fastest Moving City' under a population of two lakh. Khargone was ranked 10th cleanest city in India in Swachh Survekshan 2020, the 15th cleanest city in India in Swachh Survekshan 2018, and the 17th cleanest city in India in Swachh Survekshan 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "khargone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 431,
+    "attempt": 425,
+    "place_id": "gn-1283318",
+    "input": {
+      "place": {
+        "place_id": "gn-1283318",
+        "name": "Janakpur",
+        "country": "Nepal",
+        "subdivision": "Madhesh",
+        "lat": 26.72882,
+        "lon": 85.92628
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Janakpur",
+          "url": "https://en.wikipedia.org/wiki/Janakpur",
+          "text": "Janakpur or Janakpurdham (Maithili: जनकपुर, pronounced [/dʒənəkpuɾ/]), is the capital city of Madhesh Province in Nepal. This sub-metropolitan city is a central hub for the Maithili language, as well as for religious and cultural tourism in Nepal. \nThe city was founded in the early 18th century but was retrospectively designated as the location of the capital of the Videha kingdom and the birthplace of Hindu deity Sita. The founder of modern Janakpur is considered to be the 17th century's ascetic Hindu saint Sannyasi Shurkishordas.\nJanakpur is located about 225 km (140 mi) southeast of Kathmandu. As of 2021, the city had a population of 195,438, with a density of 2,125/km2. Janakpur is currently the fourth most densely populated city in Nepal. Janakpur is located about 23 km from the Bhitthamore border with India. Nepal Railways operates a service between Janakpur and Jainagar in India."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "janakpur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 432,
+    "attempt": 426,
+    "place_id": "gn-1818379",
+    "input": {
+      "place": {
+        "place_id": "gn-1818379",
+        "name": "Wan Chai",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Wan Chai",
+        "lat": 22.28142,
+        "lon": 114.17258
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wan Chai",
+          "url": "https://en.wikipedia.org/wiki/Wan_Chai",
+          "text": "Wan Chai (Chinese: 灣仔; Jyutping: waan1 zai2) is located in the western part of Wan Chai District on the northern shore of Hong Kong Island, Hong Kong. It is bounded by Canal Road to the east, Arsenal Street to the west, and Bowen Road to the south. The area north of Gloucester Road is often called Wan Chai North.\n\nWan Chai is one of the busiest commercial areas in Hong Kong with offices of many small and medium-sized companies. Wan Chai North features office towers, parks, hotels and an international conference and exhibition centre. Wan Chai is also well known for its famous night life which has evolved over decades. As one of the first areas developed in Hong Kong, the locale is densely populated but facing urban decay. The government has undertaken several urban renewal projects in recent years. There are various landmarks and skyscrapers within the area, most notably the Hong Kong Convention and Exhibition Centre (HKCEC), Central Plaza and Hopewell Centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "wan chai",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "chai",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 433,
+    "attempt": 427,
+    "place_id": "gn-2892518",
+    "input": {
+      "place": {
+        "place_id": "gn-2892518",
+        "name": "Kassel",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 51.31667,
+        "lon": 9.5
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kassel",
+          "url": "https://en.wikipedia.org/wiki/Kassel",
+          "text": "Kassel (German pronunciation: [ˈkasl̩] ; in Germany, spelled Cassel until 1926) is a city on the Fulda River in northern Hesse, in central Germany. It is the administrative seat of the Regierungsbezirk Kassel and the district of the same name, and had 201,048 inhabitants in December 2020. The former capital of the state of Hesse-Kassel, it has many palaces and parks, including the Bergpark Wilhelmshöhe, which is a UNESCO World Heritage Site. Kassel is also known for the documenta exhibitions of contemporary art. Kassel has a public university, the University of Kassel with 25,000 students (2018) and a multicultural population (39% of the citizens in 2017 had a migration background)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "kassel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 434,
+    "attempt": 428,
+    "place_id": "gn-2895044",
+    "input": {
+      "place": {
+        "place_id": "gn-2895044",
+        "name": "Jena",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.92878,
+        "lon": 11.5899
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jena",
+          "url": "https://en.wikipedia.org/wiki/Jena",
+          "text": "Jena (; German: [ˈjeːna] ) is a city in Germany and the second largest city in Thuringia. Together with the nearby cities of Erfurt and Weimar, it forms the central metropolitan area of Thuringia with approximately 500,000 inhabitants, while the city itself has a population of about 110,000. Jena is a centre of education and research. The University of Jena (Friedrich Schiller University) was founded in 1558 and had 18,000 students in 2017 and the Ernst-Abbe-Hochschule Jena serves another 5,000 students. Furthermore, there are many institutes of the leading German research societies.\nJena was first mentioned in 1182 and stayed a small town until the 19th century, when industry developed. For most of the 20th century, Jena was a world centre of the optical industry around companies such as Carl Zeiss, Schott and Jenoptik (since 1990). As one of only a few medium-sized cities in Germany, it has some high-rise buildings in the city centre, such as the JenTower. These also have their origin in the former Carl Zeiss factory.\nBetween 1790 and 1850, Jena was a focal point of the German Vormärz as well as of the student liberal and unification movement and German Romanticism. Notable persons of this period in Jena were Friedrich Schiller, Alexander von Humboldt, Johann Gottlieb Fichte, Georg Wilhelm Friedrich Hegel, Novalis, August Wilhelm Schlegel, and Arthur Schopenhauer.\nJena's economy is largely built upon its high-technology infrastructure and research. The precision optical instruments industry is its leading branch to date, although software engineering, other digital businesses, and biotechnology are of growing importance. Furthermore, Jena is also a service hub for its regional environs.\nJena lies in a hilly landscape in the east of Thuringia, within the wide valley of the Saale river. Due to its rocky landscape, varied substrate and mixed forests, Jena is known in Germany for the wide variety of wild orchids, which can be found within walking distance of the town. Local nature reserves are maintained by volunteers and NABU."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 328
+    },
+    "banned_terms": [
+      {
+        "term": "jena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 435,
+    "attempt": 429,
+    "place_id": "gn-3523183",
+    "input": {
+      "place": {
+        "place_id": "gn-3523183",
+        "name": "Minatitlán",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 18.00011,
+        "lon": -94.5569
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minatitlán, Veracruz",
+          "url": "https://en.wikipedia.org/wiki/Minatitl%C3%A1n,_Veracruz",
+          "text": "Minatitlán is a city in the Mexican state of Veracruz. It is located in the southeastern part of the state, in the Olmeca region, to the north of the Isthmus of Tehuantepec, along the Coatzacoalcos River.\nIn 2010 the greater metropolitan area had a population of 356,020.\nMinatitlán is home to the Refinería Gral. Lázaro Cárdenas del Río (now named for President Lázaro Cárdenas) a 1906 oil refinery that was the first such facility built in Latin America.  The refinery underwent an expansion that started in 2003 to bring the capacity of the plant up to 240,000 barrels per day, up from its previous capacity of 185,000 barrels per day.\nIt is a sister city of Minatitlán, in the state of Colima, on the other side of the country.\nThe local economy is largely dependent on the oil industry and trade.\nThe Feria del Café y Minería (Coffee and Mining Fair) is held each year in January."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "minatitlan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 436,
+    "attempt": 430,
+    "place_id": "gn-372753",
+    "input": {
+      "place": {
+        "place_id": "gn-372753",
+        "name": "Kassala",
+        "country": "Sudan",
+        "subdivision": "Kassala",
+        "lat": 15.45099,
+        "lon": 36.39998
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kassala",
+          "url": "https://en.wikipedia.org/wiki/Kassala",
+          "text": "Kassala (Arabic: كسلا, Tigrinya: ከሰላ) is the capital of the state of Kassala in eastern Sudan.  In 2003 its population was recorded to be 530,950. Built on the banks of the Gash River, it is a market city and is famous for its fruit gardens. Many of its inhabitants are from the Hadendawa sub-tribe of the Beja ethnic group.\nThe city was formerly a railroad hub, however, as of 2006 there was no operational railway station in Kassala and much of the track leading to and from the city has been salvaged or fallen into disrepair. Kassala's location along the main Khartoum-Port Sudan highway makes it an important trade center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "kassala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 437,
+    "attempt": 431,
+    "place_id": "gn-3843123",
+    "input": {
+      "place": {
+        "place_id": "gn-3843123",
+        "name": "Neuquén",
+        "country": "Argentina",
+        "subdivision": "Neuquen",
+        "lat": -38.95078,
+        "lon": -68.0592
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Neuquén",
+          "url": "https://en.wikipedia.org/wiki/Neuqu%C3%A9n",
+          "text": "Neuquén (Spanish pronunciation: [newˈken]; Mapudungun: Nehuenken) is the capital city of the Argentine province of Neuquén and of the Confluencia Department within that province, located in the extreme east of the province. It occupies a strip of land west of the confluence of the Limay and Neuquén rivers which form the Río Negro, making it part of the ecoregion of Alto Valle del Río Negro. The city had 287,787 inhabitants, and the surrounding Neuquén – Plottier – Cipolletti conurbation had a population of more than 500,000 at the 2022 Census, making it the largest urban agglomeration in Patagonia.\nFounded in 1904, it is the newest provincial capital city in Argentina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "neuquen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 438,
+    "attempt": 432,
+    "place_id": "gn-3931276",
+    "input": {
+      "place": {
+        "place_id": "gn-3931276",
+        "name": "Puno",
+        "country": "Peru",
+        "subdivision": "Puno",
+        "lat": -15.84003,
+        "lon": -70.02198
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puno",
+          "url": "https://en.wikipedia.org/wiki/Puno",
+          "text": "Puno (Aymara and Quechua: Punu) is a city in southeastern Peru, located on the shore of Lake Titicaca. It is the capital city of the eponymous Puno Province and Puno Region; in 2017, it had a population of 135,288 (2017 census). The city was established in 1668 by viceroy Pedro Antonio Fernández de Castro as capital of the province of Paucarcolla with the name San Juan Bautista de Puno. The name was later changed to San Carlos de Puno, in honor of king Charles II of Spain. Puno has several churches dating back from the colonial period; they were built to service the Spanish population and evangelize the Quechua people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "puno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 439,
+    "attempt": 433,
+    "place_id": "gn-5174035",
+    "input": {
+      "place": {
+        "place_id": "gn-5174035",
+        "name": "Toledo",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 41.66394,
+        "lon": -83.55521
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Toledo, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Toledo,_Ohio",
+          "text": "Toledo ( tə-LEE-doh) is a city in Lucas County, Ohio, United States, of which it is also the county seat. It is located at the western end of Lake Erie along the Maumee River. Toledo is the 4th-most populous city in Ohio and 88th-most populous city in the U.S., with a population of 270,871 at the 2020 census. The Toledo metropolitan area has an estimated 601,000 residents. Toledo also serves as a major trade center for the Midwest; its port is the fifth-busiest on the Great Lakes.\nThe city was founded in 1833 on the west bank of the Maumee River and originally incorporated as part of the Michigan Territory. It was re-founded in 1837 after the conclusion of the Toledo War, when it was incorporated in Ohio. After the 1845 completion of the Miami and Erie Canal, Toledo grew quickly; it also benefited from its position on the railway line between New York City and Chicago. The first of many glass manufacturers arrived in the 1880s, eventually earning Toledo its nickname as \"The Glass City\". Downtown Toledo has been subject to major revitalization efforts, including a growing entertainment district. Toledo is home to the University of Toledo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "toledo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 440,
+    "attempt": 434,
+    "place_id": "gn-6696918",
+    "input": {
+      "place": {
+        "place_id": "gn-6696918",
+        "name": "Taoyuan",
+        "country": "Taiwan",
+        "subdivision": "Taiwan",
+        "lat": 24.99368,
+        "lon": 121.29696
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taoyuan, Taiwan",
+          "url": "https://en.wikipedia.org/wiki/Taoyuan,_Taiwan",
+          "text": "Taoyuan() is a special municipality located in northwestern Taiwan, neighboring New Taipei City to the north-east, Yilan County to the south-east, and Hsinchu County to the south-west. Taoyuan District is the seat of the municipal government and which, along with Zhongli District, forms a large metropolitan area. Taoyuan developed from a satellite city of Taipei metropolitan area to become the fourth-largest metropolitan area, and fifth-largest populated city in Taiwan. \"Taoyuan\" literally means \"peach garden\" in Chinese, since the area used to have many peach trees. Formerly a county, Taoyuan became the latest new founding special municipality in 2014.\nTaoyuan City is home to many industrial parks and tech company headquarters. Due to the city's proximity to Taipei, and the lower cost of living, Taoyuan has had the fastest population growth of any city in Taiwan in recent decades. The city is also home to 116,000 foreign workers, with many coming from Southeast Asia and working in factories or as household caregivers. Taoyuan International Airport, which serves the capital, Taipei and the rest of northern Taiwan, is located in this city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "taoyuan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 441,
+    "attempt": 435,
+    "place_id": "gn-740483",
+    "input": {
+      "place": {
+        "place_id": "gn-740483",
+        "name": "Rize",
+        "country": "Türkiye",
+        "subdivision": "Rize Province",
+        "lat": 41.02083,
+        "lon": 40.52194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rize",
+          "url": "https://en.wikipedia.org/wiki/Rize",
+          "text": "Rize (Turkish pronunciation: [ɾi'ze]; Greek: Ριζούντα, romanized: Rizoúnta; Laz: რიზინი, romanized: Rizini; Georgian: რიზე) is a coastal city in the eastern part of the Black Sea Region of Turkey. It is the seat of Rize Province and Rize District. Its population is 119,828 (2021). Rize is a typical Turkish provincial capital with little in the way of nightlife or entertainment. Since the border with Georgia was opened in the early 1990s, the Black Sea coast road has been widened and the town is much wealthier than it used to be. Current Turkish President Recep Tayyip Erdoğan's family has its roots in Rize and the local university is named after him. The city is linked by road with Trabzon (41 miles [66 km] west), Hopa (55 miles [88 km] east on the Georgian border), and Erzurum (south). The Rize–Artvin Airport started operating in 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 110,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "rize",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 442,
+    "attempt": 436,
+    "place_id": "gn-3884373",
+    "input": {
+      "place": {
+        "place_id": "gn-3884373",
+        "name": "La Serena",
+        "country": "Chile",
+        "subdivision": "Coquimbo Region",
+        "lat": -29.90591,
+        "lon": -71.25014
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Serena, Chile",
+          "url": "https://en.wikipedia.org/wiki/La_Serena,_Chile",
+          "text": "La Serena (Spanish pronunciation: [la seˈɾena]) is a city and commune in northern Chile, capital of the Coquimbo Region. Founded in 1544, it is the country's second oldest city after the national capital, Santiago. As of 2012, it had a communal population of roughly 200,000, and was one of the fastest-growing areas of Chile.\nThe city is an important tourist destination for Chileans and Argentines, especially during the summer, where people go to visit the beaches. It is the headquarters of the University of La Serena and also is home to the Roman Catholic Archdiocese of La Serena, one of five Catholic Archdioceses of the Catholic Church in Chile."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "la serena",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "serena",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 443,
+    "attempt": 437,
+    "place_id": "gn-4300488",
+    "input": {
+      "place": {
+        "place_id": "gn-4300488",
+        "name": "Meads",
+        "country": "United States",
+        "subdivision": "Kentucky",
+        "lat": 38.41258,
+        "lon": -82.70905
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Meads, Kentucky",
+          "url": "https://en.wikipedia.org/wiki/Meads,_Kentucky",
+          "text": "Meads is an unincorporated community in Boyd County, Kentucky, United States. It is located along the U.S. Highway 60 corridor south of Ashland.\nMeads is centered on the junction of U.S. Route 60, Kentucky Route 538 and Mead-Springer Road.  It was named for the long closed Mead's station, a train station and general store located on the C&O(now CSX) railroad that still runs through the community.  Very little if anything remains of the original community besides the railroad and a few homes.  With the upgrading of U.S. 60 beginning in the early 1970s, new growth began to happen at Meads, as it was reborn as a suburb of Ashland.  In 1974 a large subdivision named Rockdale was developed on the hills above Meads, with several hundred tract homes.  In 1991, Mead Station Plaza was constructed with over 20 commercial units and serves the nearby communities along U.S. 60.  Several other commercial units have followed suit in recent years.  Meads is a part of the Huntington-Ashland Metropolitan Statistical Area (MSA). As of the 2010 census, the MSA had a population of 287,702. New definitions from February 28, 2013, placed the population at 363,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "meads",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 444,
+    "attempt": 438,
+    "place_id": "gn-4738214",
+    "input": {
+      "place": {
+        "place_id": "gn-4738214",
+        "name": "Tyler",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 32.35126,
+        "lon": -95.30106
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tyler, Texas",
+          "url": "https://en.wikipedia.org/wiki/Tyler,_Texas",
+          "text": "Tyler is a city in and the county seat of Smith County, Texas, United States. As of 2020, the population is 105,995. Tyler is the 38th most populous city in Texas (as well as the most populous in Northeast Texas) and 289th in the United States. It is the principal city of the Tyler metropolitan statistical area, which is the 198th most populous metropolitan area in the U.S. and 16th in Texas after Waco and the College Station–Bryan areas, with a population of 233,479 in 2020. The city is named for John Tyler, the tenth President of the United States.\nIn 1985, the international Adopt-a-Highway movement began in Tyler. After appeals from local Texas Department of Transportation officials, the local Civitan International chapter adopted a two-mile (three kilometer) stretch of U.S. Route 69 to maintain. Drivers and other motorists traveling on this segment of U.S. 69 (between Tyler and nearby Lindale) will see brown road signs that read \"First Adopt-A-Highway in the World\".\nTyler is known as the \"Rose Capital of America\" (also the \"Rose City\" and the \"Rose Capital of the World\"), a nickname it earned from a long history of rose production, cultivation, and processing. It is home to the largest rose garden in the United States, a 14-acre public garden complex that has over 38,000 rose bushes of at least 500 different varieties. The Tyler Rose Garden Center is also home to the annual Texas Rose Festival which attracts thousands of tourists each October.\nAs Northeast Texas and Smith County's major economic, educational, financial, medical and cultural hub, Tyler is host to more than 20,000 higher-education students; the University of Texas at Tyler; a university health science center; and regional hospital systems. It is the headquarters for Brookshire Grocery Company and many other large employers. Tyler is also home to the Caldwell Zoo and Broadway Square Mall, and the seat of the Roman Catholic Diocese of Tyler and its Cathedral of the Immaculate Conception."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 327
+    },
+    "banned_terms": [
+      {
+        "term": "tyler",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 445,
+    "attempt": 439,
+    "place_id": "gn-4843564",
+    "input": {
+      "place": {
+        "place_id": "gn-4843564",
+        "name": "Stamford",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.05343,
+        "lon": -73.53873
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stamford, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Stamford,_Connecticut",
+          "text": "Stamford () is a city in Fairfield County, Connecticut, United States, 34 miles (55 kilometers) outside of New York City. It is the sixth-most populous city in New England. Stamford is also the largest city in the Western Connecticut Planning Region, and Connecticut's second-most populous city, behind Bridgeport. With a population of 135,470, Stamford surpassed Hartford and New Haven in population as of the 2020 census. It is in the Bridgeport–Stamford–Danbury metropolitan statistical area, which is part of the New York City metropolitan area (specifically, the New York–Newark, NY–NJ–CT–PA Combined Statistical Area).\nAs of 2023, Stamford is home to eight Fortune 500 companies and numerous divisions of large corporations. This gives it the largest financial district in the New York metropolitan region outside New York City and one of the nation's largest concentrations of corporations. Dominant sectors of Stamford's economy include financial services, real estate, tourism, information technology, healthcare, telecommunications, transportation, and retail. Its metropolitan division is home to multiple colleges and universities including UConn Stamford and Norwalk Community College."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "stamford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 446,
+    "attempt": 440,
+    "place_id": "gn-5387877",
+    "input": {
+      "place": {
+        "place_id": "gn-5387877",
+        "name": "Riverside",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.95335,
+        "lon": -117.39616
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riverside, California",
+          "url": "https://en.wikipedia.org/wiki/Riverside,_California",
+          "text": "Riverside is a city in and the county seat of Riverside County, California, United States. It is named for its location beside the Santa Ana River in Southern California. It is the most populous city in the Inland Empire and Riverside County, 12th-most populous city in California, and 62nd-most populous city in the U.S. with a population of 314,998 at the 2020 census. The Riverside–San Bernardino metropolitan area at 4.74 million residents is the 12th-largest metropolitan area in the nation. Riverside is about 50 miles (80 km) east of downtown Los Angeles and is also part of the Greater Los Angeles area.\nRiverside was founded in the early 1870s. It is the birthplace of the California citrus industry and home of the Mission Inn, the nation's largest Mission Revival Style building. It is also home to the Riverside National Cemetery and the Eastern Division of the Federal District Court for the Central District of California.\nThe University of California, Riverside, is in the northeastern part of the city. The university hosts the Riverside Sports Complex. Other attractions in Riverside include the Fox Performing Arts Center, Museum of Riverside, which houses exhibits and artifacts of local history, The Cheech Marin Center for Chicano Art & Culture, the California Museum of Photography, the California Citrus State Historic Park, Castle Park, and the Parent Washington Navel Orange Tree, the last of California's two original navel orange trees."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "riverside",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

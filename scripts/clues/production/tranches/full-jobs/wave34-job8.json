@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 6789,
+    "attempt": 6741,
+    "place_id": "gn-4987617",
+    "input": {
+      "place": {
+        "place_id": "gn-4987617",
+        "name": "Cadillac",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 44.25195,
+        "lon": -85.40116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cadillac, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Cadillac,_Michigan",
+          "text": "Cadillac ( KAD-ə-lak) is a city in and seat of government of Wexford County in the U.S. state of Michigan. The population was 10,371 at the 2020 census, making it the second most-populated city in the Northern Michigan region, after Traverse City.\nCadillac was settled as early as 1871 and formerly known as the village of Clam Lake before incorporating as a city in 1877. The city is located upon the shores of Lake Cadillac, connected by the Clam Lake Canal to Lake Mitchell. The Clam River, which begins in Cadillac, is part of the Muskegon River watershed. Cadillac is the junction of three major highways: US Highway 131, M-55, and M-115. The geographic center of Michigan is approximately five miles (8.0 km) north-northwest of Cadillac. Cadillac is the primary city of the Cadillac micropolitan area, which includes all of Wexford County and Missaukee County to the east, and had population of 48,725 at the 2020 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "cadillac",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6790,
+    "attempt": 6742,
+    "place_id": "gn-5322553",
+    "input": {
+      "place": {
+        "place_id": "gn-5322553",
+        "name": "Agoura Hills",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.13639,
+        "lon": -118.77453
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Agoura Hills, California",
+          "url": "https://en.wikipedia.org/wiki/Agoura_Hills,_California",
+          "text": "Agoura Hills ( ) is a city situated in the Santa Monica Mountains region of Los Angeles County, California, United States. Its population was 20,330 as of the 2010 census, and decreased to 20,299 in 2020. A suburb of Los Angeles, Agoura Hills lies in the eastern Conejo Valley, between the Simi Hills and the Santa Monica Mountains. Located 35 miles (56 km) northwest of Downtown Los Angeles and less than 10 miles (16 km) west of the Los Angeles city limits at Woodland Hills, Agoura Hills is bordered by Bell Canyon and Ventura County. Neighboring communities include Calabasas, Oak Park, and Westlake Village, while the unincorporated area of Agoura sits adjacent."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "agoura hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "agoura",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6791,
+    "attempt": 6743,
+    "place_id": "gn-5356521",
+    "input": {
+      "place": {
+        "place_id": "gn-5356521",
+        "name": "Hermosa Beach",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.86224,
+        "lon": -118.39952
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hermosa Beach, California",
+          "url": "https://en.wikipedia.org/wiki/Hermosa_Beach,_California",
+          "text": "Hermosa Beach (Hermosa, Spanish for \"Beautiful\") is a beachfront city in Los Angeles County, California, United States. Its population was 19,728 at the 2020 U.S. census. The city is located in the South Bay region of the Greater Los Angeles area; it is one of the three Beach Cities. Hermosa Beach is bordered by the other two, Manhattan Beach to the north and Redondo Beach to the south and east.\nThe city's beach is popular for sunbathing, beach volleyball, surfing, paddleboarding, bars, cycling and running. The city itself extends only about 15 blocks from east to west and 40 blocks from north to south, with Pacific Coast Highway running down the middle. Situated on the Pacific Ocean, Hermosa's average temperature is 70 °F (21 °C) in the summer and 55 °F (13 °C) in the winter. Westerly sea breezes lessen what can be high summertime temperatures in Los Angeles and elsewhere in the county and help keep the smog away 360 days of the year.\nA paved path, called The Strand, runs along Hermosa's beach from Torrance Beach in the south approximately twenty miles north to Santa Monica. The Hermosa Beach Pier is at the end of Pier Avenue, which is one of the beach community's main shopping, dining and entertainment areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "hermosa beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hermosa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6792,
+    "attempt": 6744,
+    "place_id": "gn-5515743",
+    "input": {
+      "place": {
+        "place_id": "gn-5515743",
+        "name": "Guymon",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 36.6828,
+        "lon": -101.48155
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guymon, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/Guymon,_Oklahoma",
+          "text": "Guymon ( GHY-mən) is a city in and the county seat of Texas County, in the panhandle of Oklahoma, United States. As of the 2020 census, the city population was 12,965, an increase of 13.3% from 11,442 in 2010, and represents more than half of the population of the county, along with being the largest city in the Oklahoma Panhandle. Cattle feedlots, corporate pork farms, and natural gas production dominate its economy, with wind energy production and transmission recently diversifying landowners' farms. Guymon was the only municipality in the state of Oklahoma in which the majority of the population was Hispanic as recorded in the 2010 and 2020 United States Census reports."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "guymon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6793,
+    "attempt": 6745,
+    "place_id": "gn-5779451",
+    "input": {
+      "place": {
+        "place_id": "gn-5779451",
+        "name": "Park City",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.64606,
+        "lon": -111.49797
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Park City, Utah",
+          "url": "https://en.wikipedia.org/wiki/Park_City,_Utah",
+          "text": "Park City is a city in Utah, United States. Most of the city is within Summit County, with some portions extending into Wasatch County. It is considered to be part of the Wasatch Back. The population was 8,396 at the 2020 census, and on average, the tourist population greatly exceeds the number of permanent residents. The city is 32 miles (51 km) southeast of downtown Salt Lake City and 20 miles (32 km) from Salt Lake City's east edge of Sugar House along Interstate 80.\nAfter a population decline following the shutdown of the area's mining industry, the city rebounded during the 1980s and 1990s through an expansion of its tourism business. According to 2021 data, the city brought in a yearly average of $529.8 million to the Utah economy as a tourist hot spot, $80 million of which was attributed to the Sundance Film Festival. The city has two major ski resorts: Deer Valley Resort and Park City Mountain Resort (combined with Canyons Village at Park City) and one minor resort: Woodward Park City (an action sports training and fun center). Both Deer Valley and Park City Mountain Resorts were the major locations for ski and snowboarding events at the 2002 Winter Olympics, and are expected to reprise these roles for the 2034 Winter Olympics. Although they receive less snow and have a shorter ski season than do their counterparts in Salt Lake County, such as Snowbird resort, they are much easier to access.\nIn 2015, Park City Ski Resort and Canyons resorts merged, creating the largest ski area in the U.S. In all, the resort boasts 17 slopes, 14 bowls, 300 trails and 22 miles (35 km) of lifts.\nThe city was the original location of the United States' largest independent film festival, the Sundance Film Festival, which was held in the city for 48 years, with Park City still currently serving as the headquarters of the Sundance Institute's Utah office; home of the United States Ski Team; training center for members of the Australian Freestyle Ski Team; the largest collection of factory outlet stores in northern Utah; the 2002 Olympic bobsled/skeleton/luge track at the Utah Olympic Park; and golf courses. Some scenes from the 1994 film Dumb and Dumber were shot in the city. Outdoor-oriented businesses such as backcountry.com, Rossignol USA, and Skullcandy have their headquarters in Park City. The city has many retailers, clubs, bars, and restaurants, and has nearby reservoirs, hot springs, forests, and hiking and biking trails.\nIn the summertime, many valley residents of the Wasatch Front visit the town to escape high temperatures. Park City is usually cooler than Salt Lake City as it lies mostly higher than 7,000 feet (2,100 m) above sea level, while Salt Lake City is situated at an elevation of about 4,300 feet (1,300 m)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 467
+    },
+    "banned_terms": [
+      {
+        "term": "park city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6794,
+    "attempt": 6746,
+    "place_id": "gn-6117731",
+    "input": {
+      "place": {
+        "place_id": "gn-6117731",
+        "name": "Rayside-Balfour",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 46.60873,
+        "lon": -81.20763
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rayside-Balfour",
+          "url": "https://en.wikipedia.org/wiki/Rayside-Balfour",
+          "text": "Rayside-Balfour (1996 census population 16,050) was a town in Ontario, Canada, which existed from 1973 to 2000. It is now part of the city of Greater Sudbury.\nThe town was created as part of the Regional Municipality of Sudbury and took its name from the townships of Rayside and Balfour, which fell within the boundaries of the new town; prior to the town's creation in 1973, Rayside and Balfour were separately incorporated as township municipalities.\nAlthough the Regional Municipality of Sudbury was a very important centre of Franco-Ontarian population and culture, Rayside-Balfour was the only town in the regional municipality which had a majority francophone population. It remains as such still today."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "rayside balfour",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rayside",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "balfour",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6795,
+    "attempt": 6747,
+    "place_id": "gn-632370",
+    "input": {
+      "place": {
+        "place_id": "gn-632370",
+        "name": "Varkaus",
+        "country": "Finland",
+        "subdivision": "North Savo",
+        "lat": 62.31533,
+        "lon": 27.873
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Varkaus",
+          "url": "https://en.wikipedia.org/wiki/Varkaus",
+          "text": "Varkaus, before 1929 known as Warkaus, is a Middle-Savonian industrial town and municipality of Finland. It is located in the former province of Eastern Finland and is part of the North Savo region, between the city of Kuopio and the town of Savonlinna.\nThe municipality has a population of 19,433 (31 December 2025) and covers an area of 524.48 square kilometres (202.50 sq mi) of which 138.45 km2 (53.46 sq mi) is water. The population density is 50.39 inhabitants per square kilometre (130.5/sq mi).\nThe municipality is unilingually Finnish. In old Finnish 'Varkaus' meant strait, and this city is located in the lake district on straits between two parts of Lake Saimaa. An extension of the Saimaa Canal passes through the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "varkaus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6796,
+    "attempt": 6748,
+    "place_id": "gn-649302",
+    "input": {
+      "place": {
+        "place_id": "gn-649302",
+        "name": "Laitila",
+        "country": "Finland",
+        "subdivision": "Southwest Finland",
+        "lat": 60.87575,
+        "lon": 21.69765
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laitila",
+          "url": "https://en.wikipedia.org/wiki/Laitila",
+          "text": "Laitila (Finnish: [ˈlɑi̯tilɑ]; Swedish: Letala) is a town and a municipality of Finland. It is located in the Southwest Finland region, and it is 59 kilometres (37 mi) from Laitila to Turku. The municipality has a population of 8,400 (31 December 2025) and covers an area of 545.32 square kilometres (210.55 sq mi) of which 13.65 km2 (5.27 sq mi) is water. The population density is 15.79 inhabitants per square kilometre (40.9/sq mi). The municipality is monolingually Finnish.\nLaitila is renowned for its poultry farms and \"egg festival\" (Laitilan Munamarkkinat), which is why the subject of the municipal coat of arms of Laitila also refers to the parish's fame for chicken care. There is much demand for Laitila-based chicken eggs, as the local egg producer company Munax, among other things, has even planned to export eggs to South Korea. Laitila has also been called the \"egg capital of Finland\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "laitila",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6797,
+    "attempt": 6749,
+    "place_id": "gn-6534212",
+    "input": {
+      "place": {
+        "place_id": "gn-6534212",
+        "name": "Pieve Emanuele",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.35052,
+        "lon": 9.20268
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pieve Emanuele",
+          "url": "https://en.wikipedia.org/wiki/Pieve_Emanuele",
+          "text": "Pieve Emanuele (Lombard: Piev [ˈpjeːf]) is a comune (municipality) of 15,876 inhabitants in the Italian region of Lombardy, located about 13 kilometres (8 mi) south of Milan, and about 20 kilometres (12 mi) north of Pavia. It is located inside of the Parco Agricolo Sud Milano.\nThe Lambro meridionale flows through the comune's territory, and its erosive action has created the Valle delle Volpi (English: Valley of the Foxes), which is located entirely in the town's territory. Pieve Emanuele is also lapped by the river Olona. The great presence of water made the construction of a network of artificial canals possible, thus causing the great development of agricultural activity in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "pieve emanuele",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pieve",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "emanuele",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6798,
+    "attempt": 6750,
+    "place_id": "gn-6534273",
+    "input": {
+      "place": {
+        "place_id": "gn-6534273",
+        "name": "Alba Adriatica",
+        "country": "Italy",
+        "subdivision": "Abruzzo",
+        "lat": 42.83176,
+        "lon": 13.9259
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alba Adriatica",
+          "url": "https://en.wikipedia.org/wiki/Alba_Adriatica",
+          "text": "Alba Adriatica is a town and comune with 12,386 residents (2014) in the province of Teramo in the Abruzzo region of central eastern Italy.\nIt is known as one of the \"seven sisters\" of the northern Abruzzo coast, i.e. the seven coastal towns in the province of Teramo, the other six being (from north to south) Martinsicuro, Tortoreto, Giulianova, Roseto degli Abruzzi, Pineto and Silvi Marina.\nIt is also nicknamed Spiaggia d'argento (Silver Beach) because of the high quality standard of its beach, which earned the town the European Blue Flag in years from 2000 to 2013.\nThe comune of Alba Adriatica was created in 1956 by splitting it off from Tortoreto."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "alba adriatica",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alba",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "adriatica",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6799,
+    "attempt": 6751,
+    "place_id": "gn-654047",
+    "input": {
+      "place": {
+        "place_id": "gn-654047",
+        "name": "Karis",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.07178,
+        "lon": 23.66163
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karis",
+          "url": "https://en.wikipedia.org/wiki/Karis",
+          "text": "Karis (Finland Swedish: [ˈkɑːris] ; Finnish: Karjaa [ˈkɑrjɑː]) is a town and former municipality in Finland. On January 1, 2009, it was consolidated with Ekenäs and Pohja to form the new municipality of Raseborg (Finnish: Raasepori).\nIt is located in the Finnish province of Southern Finland and is part of Uusimaa, one of the regions of Finland. The town had a population of 9,155 (as of 31 December 2008) and covered a land area of 196.82 square kilometres (75.99 sq mi). The population density was 46.51 inhabitants per square kilometre (120.5/sq mi).\nThe municipality was bilingual, with a majority (59%) being Swedish language speakers and a minority (38%) being Finnish language speakers.\nKaris railway station is on both the Rantarata line, connecting Helsinki Central railway station and Turku Central railway station; and on the Hanko–Hyvinkää railway where it is the junction station for branch line services to Hanko railway station. By driving along the national road 51 to Helsinki, the minimum distance is about 75 kilometers.\nStage magician Simo Aalto came from the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "karis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6800,
+    "attempt": 6752,
+    "place_id": "gn-6615542",
+    "input": {
+      "place": {
+        "place_id": "gn-6615542",
+        "name": "Thorpe Hamlet",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.6277,
+        "lon": 1.31175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thorpe Hamlet",
+          "url": "https://en.wikipedia.org/wiki/Thorpe_Hamlet",
+          "text": "Thorpe Hamlet is a suburb of Norwich, to the east of the city centre, in the Norwich District, in the English county of Norfolk. It was constituted a separate ecclesiastical parish on 9 March 1852, from the civil parish of Old Thorpe, and in 1912, was in the rural deanery of Blofield.\nThe population of the Thorpe Hamlet ward in Norwich was 10,557 at the 2011 Census.\nThe Church of St Matthew in Thorpe Hamlet was erected in 1851 upon land given by the Dean and Chapter of Norwich, on the slope of a hill close by the River Wensum.\nUntil 1852 it was part of the Dean and Chapter of Norwich."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "thorpe hamlet",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "thorpe",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hamlet",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6801,
+    "attempt": 6753,
+    "place_id": "gn-6690865",
+    "input": {
+      "place": {
+        "place_id": "gn-6690865",
+        "name": "Hainault",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.60836,
+        "lon": 0.10716
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hainault, London",
+          "url": "https://en.wikipedia.org/wiki/Hainault,_London",
+          "text": "Hainault (, ) is a large suburban area of East London, England, in the London Borough of Redbridge, 12.5 miles (20.1 km) northeast of Charing Cross. Most of the housing in Hainault was built by the London County Council between 1947 and 1953. Originally spanning the parishes of Chigwell, Dagenham, and Ilford, in 1965 the estate was combined in a single London borough and became part of Greater London. \nIt is adjacent to the Metropolitan Green Belt, bordered on the east by Hainault Forest Country Park and to the north by open land and the boundary with the Epping Forest District of Essex. The area is served by London Underground's Central Line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "hainault",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6802,
+    "attempt": 6754,
+    "place_id": "gn-674885",
+    "input": {
+      "place": {
+        "place_id": "gn-674885",
+        "name": "Leordeni",
+        "country": "Romania",
+        "subdivision": "Arges",
+        "lat": 44.78333,
+        "lon": 25.11667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leordeni",
+          "url": "https://en.wikipedia.org/wiki/Leordeni",
+          "text": "Leordeni is a commune in Argeș County, Muntenia, Romania. It is composed of fourteen villages: Baloteasca, Băila, Bântău, Budișteni, Ciolcești, Ciulnița, Cârciumărești, Cotu Malului, Glâmbocata, Glâmbocata-Deal, Glodu, Leordeni, Moara Mocanului, and Schitu Scoicești.\nThe commune is situated in the Wallachian Plain, at an altitude of 226 m (741 ft). It lies on the banks of the Argeș River and its left tributaries, the Budișteanca and the Sabar. \nLeordeni is located in the eastern part of Argeș County, 24 km (15 mi) southeast of the county seat, Pitești, on the border with Dâmbovița County. It is crossed by national road DN7, which connects Bucharest, 93 km (58 mi) to the southeast, to Pitești. The Leordeni train station serves the CFR Line 901, which starts at Bucharest North, goes through Pitești, and ends in Craiova.\nFounded in 1985, the Dinu Lipatti Memorial House is located in Ciolcești and is administered by the Argeș County Museum in Pitești."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "leordeni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6803,
+    "attempt": 6755,
+    "place_id": "gn-750214",
+    "input": {
+      "place": {
+        "place_id": "gn-750214",
+        "name": "Büyükdere",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 41.16048,
+        "lon": 29.04154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Büyükdere, Sarıyer",
+          "url": "https://en.wikipedia.org/wiki/Büyükdere,_Sarıyer",
+          "text": "Büyükdere is a neighbourhood in the municipality and district of Sarıyer, Istanbul Province, Turkey. Its population is 8,586 (2022). It is situated on the European shore of the Bosphorus strait about 2 km (1.2 mi) southwest of Sarıyer. Its name means 'big stream' in Turkish, in reference to the river that used to flow into the Bosphorus here.\nA 14-kilometre-long (8.7 mi) major road, Büyükdere Avenue, starts south of Büyükdere, and runs inland as far as  Şişli.\nIn the 19th century Büyükdere, like neighbouring Tarabya, was a popular summer retreat for members of Istanbul's foreign and diplomatic community and it still has several churches and embassy buildings dating back to that period. There was then a Büyükdere ferry terminal but although it has been restored it has not been put back into use (partly because of the road that was built in front of it on reclaimed land), meaning that most access to the neighbourhood is by bus along the coast road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "buyukdere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6804,
+    "attempt": 6756,
+    "place_id": "gn-8347809",
+    "input": {
+      "place": {
+        "place_id": "gn-8347809",
+        "name": "Frenchs Forest",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.74821,
+        "lon": 151.22322
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Frenchs Forest",
+          "url": "https://en.wikipedia.org/wiki/Frenchs_Forest",
+          "text": "Frenchs Forest (pron. frenches) is a suburb of northern Sydney, in the state of New South Wales, Australia. Frenchs Forest is \n20 kilometres north of the Sydney central business district in the local government area of Northern Beaches Council. Frenchs Forest is part of Sydney's Northern Beaches region and also considered to be part of the Forest District, colloquially known as The Forest by its locals.\nDuring the 2010s, the suburb underwent rezoning which includes a new hospital, town centre, new relocated high school, 2,200 new homes and $500 million to upgrade the roads around the new Northern Beaches Hospital.\nThe rezoning was completed in time for the hospital opening in 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "frenchs forest",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "frenchs",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "forest",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6805,
+    "attempt": 6757,
+    "place_id": "gn-8348843",
+    "input": {
+      "place": {
+        "place_id": "gn-8348843",
+        "name": "Viewbank",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.73991,
+        "lon": 145.09323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Viewbank",
+          "url": "https://en.wikipedia.org/wiki/Viewbank",
+          "text": "Viewbank is a suburb of Melbourne, Victoria, Australia, 14 km north-east of Melbourne's Central Business District, located within the City of Banyule local government area. Viewbank recorded a population of 7,030 at the 2021 census.\nThe area now known as Viewbank is on the traditional lands of the Wurundjeri people. The Birrarung (Yarra River) and large tracts of the Yarra Valley Parkland run along one border of the suburb. The Plenty River forms Viewbank's eastern boundary, whilst its northern boundary is defined by Lower Plenty Road (a main road linking Heidelberg and Eltham).  Although mainly a residential area, there is a small commercial strip on Martins Lane adjacent to Viewbank Primary School."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "viewbank",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6806,
+    "attempt": 6758,
+    "place_id": "gn-12048038",
+    "input": {
+      "place": {
+        "place_id": "gn-12048038",
+        "name": "Wealdstone",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.59983,
+        "lon": -0.33711
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wealdstone",
+          "url": "https://en.wikipedia.org/wiki/Wealdstone",
+          "text": "Wealdstone () is a district located in the centre of the London Borough of Harrow, England. It is located just north of Harrow town centre and is south of Harrow Weald, west of Belmont and Kenton, and east of Headstone.\nThe area accommodates most of Harrow's industrial and business designated land. Wealdstone was the location of the Kodak Harrow factory; it closed in 2016. Wealdstone is centred on the High Street, and much traffic is bypassed from here by the George Gange Way flyover built in 1996. Its western boundary is formed by Harrow View, across which Headstone Manor lies, whereas on the east is Byron Park and the Belmont Trail. Harrow & Wealdstone station and the council offices are located at its southern end."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "wealdstone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6807,
+    "attempt": 6759,
+    "place_id": "gn-1635814",
+    "input": {
+      "place": {
+        "place_id": "gn-1635814",
+        "name": "Atauro",
+        "country": "Timor-Leste",
+        "subdivision": "Dili Municipality",
+        "lat": -8.26667,
+        "lon": 125.60139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Atauro",
+          "url": "https://en.wikipedia.org/wiki/Atauro",
+          "text": "Atauro (Portuguese: Ilha de Ataúro, Tetun: Illa Ataúru, Indonesian: Pulau Atauro), also known as Kambing Island (Indonesian: Pulau Kambing), is an island and municipality (Portuguese: Município Ataúro, Tetun: Munisípiu Atauro or Ata'uro) of Timor-Leste. Atauro is a small oceanic island situated north of Dili, on the extinct Wetar segment of the volcanic Inner Banda Arc, between the Indonesian islands of Alor and Wetar. The nearest island is the Indonesian island of Liran, 13.0 km (8.1 mi) to the northeast. At the 2015 census, it had 9,274 inhabitants.\nAtauro was one of the administrative posts (formerly subdistricts) of Dili Municipality until it became a separate municipality with effect from 1 January 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "atauro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6808,
+    "attempt": 6760,
+    "place_id": "gn-1702166",
+    "input": {
+      "place": {
+        "place_id": "gn-1702166",
+        "name": "Managok",
+        "country": "Philippines",
+        "subdivision": "Northern Mindanao",
+        "lat": 8.02889,
+        "lon": 125.18861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Managok",
+          "url": "https://en.wikipedia.org/wiki/Managok",
+          "text": "Managok is an urbanizing barangay in the Basakan District of Malaybalay, Bukidnon, Philippines. According to the 2015 census, it has a population of 7,200 people.\nIt is bounded to the north by Linabo and Maligaya, to the east by Miglamin, to the south by San Martin, to the southwest by Simaya, and to the west by Violeta. Situated on a fertile plain of the Sawaga Valley, it is a major rice producing area in the city. It is drained by the Abuhan and Balongkot Rivers, which is a source for irrigation for many farmers. It is the most populous village in the Basakan District and it serves as the district's center. The village was home to Bukidnon National Agricultural School which was later transferred to Musuan as Central Mindanao University. Mount Capistrano, a culturally important landmark, is shared by Managok, Simayà, and San Martin. The trail in Managok is the easiest to trek."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "managok",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

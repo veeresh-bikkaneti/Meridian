@@ -1,0 +1,922 @@
+[
+  {
+    "rank": 834,
+    "band": 1,
+    "place_id": "gn-1647142",
+    "input": {
+      "place": {
+        "place_id": "gn-1647142",
+        "name": "Cianjur",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.82222,
+        "lon": 107.13944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cianjur",
+          "url": "https://en.wikipedia.org/wiki/Cianjur",
+          "text": "Cianjur (Sundanese: ᮎᮤᮃᮔ᮪ᮏᮥᮁ) is a town and district in the West Java province of Indonesia, and is the seat of Cianjur Regency. The district of Cianjur is located along one of the main roads between Jakarta (120 km to the northwest) and Bandung (60 km to the east). The population was 158,125 at the 2010 Census and 173,265 at the 2020 Census; the official estimate as of 2025 was 178,798. Because of its location, some of Cianjur's residents commute to work in Bandung.\nThe road on which Cianjur is located used to be the main (extremely busy) road from Jakarta to Bandung but was in effect replaced as the main road link between these two main cities when the Jakarta-Bandung tollroad was fully completed in 2005. However, due to its low traffic, Cianjur returned as one of the alternative routes for travellers from Jakarta and Bandung."
+        },
+        {
+          "article": "Cianjur (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Cianjur#Climate",
+          "text": "Cianjur has a tropical rainforest climate (Af) with moderate rainfall from June to September and heavy rainfall from October to May."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 21,
+      "leadWords": 146,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a West Java town on the road between Jakarta and Bandung and commuting patterns but states no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism, record/extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "cianjur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 899,
+    "band": 1,
+    "place_id": "gn-1791249",
+    "input": {
+      "place": {
+        "place_id": "gn-1791249",
+        "name": "Wuhai",
+        "country": "China",
+        "subdivision": "Inner Mongolia",
+        "lat": 39.68442,
+        "lon": 106.81583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wuhai",
+          "url": "https://en.wikipedia.org/wiki/Wuhai",
+          "text": "Wuhai (Chinese: 乌海市; Mongolian: Üqai qota, Mongolian Cyrillic: Үхай хот) is a prefecture-level city and regional center in the Inner Mongolia Autonomous Region, China, and is by area the smallest prefecture-level division of the region. It is located on the Yellow River between the Gobi and Ordos deserts. Wuhai became a single city occupying both banks of the Yellow River with the amalgamation in 1976 of Wuda on the left (west) bank (then administrated by Bayan Nuur League) together with Haibowan on the right (east) bank (then administrated by Ikh Juu league). Wuhai is one of very few cities with an antipode which is not only on land (as opposed to open ocean), but which is another inhabited city; the antipode of Wuhai is almost exactly on the city of Valdivia, Chile. Football commentator and Television host Huang Jianxiang was born here."
+        },
+        {
+          "article": "Wuhai (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Wuhai#Climate",
+          "text": "Wuhai experiences a cool arid climate (Köppen: BWk), characterized by freezing, dry winters and hot summers. Spring is dry, with occasional dust storms, followed by early summer heat waves. Summer tends to be hot with the greatest precipitation occurring in July and August. Because of the aridity, there tends to be considerable diurnal variation in temperature, except during the summer. The monthly 24-hour average temperature range from in January to in July, while the annual mean is . Approximately 45 percent of the average annual precipitation falls in July and August."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 91,
+      "leadWords": 142,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract locates the city on the Yellow River between the Gobi and Ordos deserts but states no climate mechanism, extreme, seasonal rhythm, or paradox; desert location alone is geography",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "wuhai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 904,
+    "band": 1,
+    "place_id": "gn-2806654",
+    "input": {
+      "place": {
+        "place_id": "gn-2806654",
+        "name": "Wolfsburg",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.4236,
+        "lon": 10.77597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wolfsburg",
+          "url": "https://en.wikipedia.org/wiki/Wolfsburg",
+          "text": "Wolfsburg (German: [ˈvɔlfsbʊʁk] ; Eastphalian: Wulfsborg) is the fifth-largest city in the German state of Lower Saxony. It lies on the river Aller, 75 kilometres (47 mi) east of Hanover and 230 kilometres (143 mi) west of Berlin.\nWolfsburg is famous as the location of Volkswagen AG's headquarters and, until it was overtaken by Tesla Gigafactory Texas in 2022, the world's biggest car plant. The Autostadt is a visitor attraction next to the Volkswagen factory that features the company's model range: Audi, Bentley, Ducati, Lamborghini, Porsche, SEAT, Škoda Auto and Volkswagen Commercial Vehicles. Wolfsburg is one of the few German cities built during the first half of the 20th century as a planned city. From its founding on 1 July 1938 as a home for workers producing the KdF-Wagen until 25 May 1945, the city was called Stadt des KdF-Wagens bei Fallersleben. In 1972, the population first exceeded 100,000. In 2019, the GRP was €188,453 per capita."
+        },
+        {
+          "article": "Wolfsburg (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Wolfsburg#Climate",
+          "text": "The total annual precipitation is about which is quite low as it belongs to the lowest tenth of the measured data in Germany. Only 7% of all observation stations of the Deutscher Wetterdienst (German weather service) record lower measurements. The warmest month is July and the driest month is April, while the wettest are July and August."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 57,
+      "leadWords": 157,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Lower Saxony location on the Aller and Volkswagen history but no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "wolfsburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 971,
+    "band": 1,
+    "place_id": "gn-1259229",
+    "input": {
+      "place": {
+        "place_id": "gn-1259229",
+        "name": "Pune",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 18.51957,
+        "lon": 73.85535
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pune",
+          "url": "https://en.wikipedia.org/wiki/Pune",
+          "text": "Pune (Marathi: Puṇē, pronounced [ˈpuɳeː] ), previously spelled in English as Poona (the official name until 1978), is a city in the state of Maharashtra in the Deccan Plateau in Western India. It is the administrative headquarters of the Pune district, and of Pune division. In terms of the total amount of land under its jurisdiction, Pune is the largest city in Maharashtra by area, with a geographical area of 516.18km2, though by population it comes in a distant second to Mumbai. The city of Pune is part of Pune Metropolitan Region, which according to the 2011 Census of India, has 7.2 million residents, making it the seventh-most populous metropolitan area in India.  Pune is one of the largest IT hubs in India. It is also one of the most important automobile and manufacturing hubs of India. Pune is often referred to as the \"Oxford of the East\" because of its educational institutions. It has been ranked \"the most liveable city in India\" several times.\nPune at different points in time has been ruled by the Rashtrakuta dynasty, Ahmadnagar Sultanate, the Mughals, and the Adil Shahi dynasty. In the 18th century, the city was part of the Maratha Empire, and the seat of the Peshwas, the prime ministers of the Maratha Empire. Pune was seized by the British East India Company in the Third Anglo-Maratha War; it gained municipal status in 1858, the year in which Crown rule began. Many historical landmarks like Shaniwarwada, Shinde Chhatri, and Vishrambaug Wada date to this era. Historical sites from different eras dot the city.\nPune has historically been a major cultural centre, with important figures like Dnyaneshwar, Shivaji, Tukaram, Baji Rao I, Balaji Baji Rao, Madhavrao I, Nana Fadnavis, Mahadev Govind Ranade, Gopal Krishna Gokhale, Mahatma Jyotirao Phule, Savitribai Phule, Gopal Ganesh Agarkar, Tarabai Shinde, Dhondo Keshav Karve, and Pandita Ramabai doing their life's work in Pune City or in an area that falls in Pune Metropolitan Region. Pune was a major centre of resistance to the British Raj, with people like Gopal Krishna Gokhale and Bal Gangadhar Tilak playing leading roles in the struggle for Indian independence."
+        },
+        {
+          "article": "Pune (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Pune#Climate",
+          "text": "Pune has a tropical wet and dry (Köppen Aw) climate, closely bordering upon a hot semi-arid climate (Köppen BSh) with average temperatures ranging between . Pune experiences three seasons: summer, monsoon, and winter. Typical summer months are from mid-March to mid-June, with maximum temperatures sometimes reaching . The warmest month in Pune is May. The city often has heavy dusty winds in May, with humidity remaining high. Even during the hottest months, the nights are usually cool due to Pune's high altitude. The highest temperature recorded was on 30April 1897.\nThe monsoon lasts from June to October, with moderate rainfall and temperatures ranging from . Most of the of annual rainfall in the city falls between June and September, and July is the wettest month of the year. Hailstorms are not unheard of.\nFor most of December and January the daytime temperature hovers around while overnight temperatures are below .\nOn 11 May 2023, Koregaon Park recorded a temperature of 44.4 °C (112 °F)\nPune has been ranked 23rd best \"National Clean Air City\" (under Category 1 >10L Population cities) in India according to 'Swachh Vayu Survekshan 2024 Results'"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 189,
+      "leadWords": 355,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location, history and culture but no climate mechanism, extreme, seasonal rhythm, or paradox; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism, record/extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "pune",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 990,
+    "band": 1,
+    "place_id": "gn-5304391",
+    "input": {
+      "place": {
+        "place_id": "gn-5304391",
+        "name": "Mesa",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 33.42227,
+        "lon": -111.82264
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mesa, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Mesa,_Arizona",
+          "text": "Mesa (  MAY-sə) is a city in Maricopa County, Arizona, United States. The population was 504,258 at the 2020 census. It is the third-most populous city in Arizona, after Phoenix and Tucson, the 38th-most populous city in the U.S., and the most populous city that is not a county seat (except for independent cities Washington, D.C. and Baltimore which are not part of any county). It is the most populous city in the East Valley of the Phoenix metropolitan area. It borders Tempe on the west, the Salt River Pima–Maricopa Indian Community on the north, Chandler and Gilbert on the south along with Queen Creek, and Apache Junction on the east.\nAt least ten colleges and universities were located in Mesa, as is the Mesa Arizona Temple, one of the first Mormon temples constructed outside of Utah. The city is home to the largest relief airport in the Phoenix area, Mesa Gateway Airport, located in the southeastern corner of the city."
+        },
+        {
+          "article": "Mesa, Arizona (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Mesa,_Arizona#Climate",
+          "text": "Located in the Sonoran Desert, Mesa has a hot desert climate (Köppen: BWh), with mild winters and very hot summers."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 20,
+      "leadWords": 161,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes location in the East Valley, a Mormon temple, colleges and a relief airport, with no climate mechanism, extreme, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "mesa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1001,
+    "band": 1,
+    "place_id": "gn-1806097",
+    "input": {
+      "place": {
+        "place_id": "gn-1806097",
+        "name": "Ningde",
+        "country": "China",
+        "subdivision": "Fujian",
+        "lat": 26.66167,
+        "lon": 119.52278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ningde",
+          "url": "https://en.wikipedia.org/wiki/Ningde",
+          "text": "Ningde, previously romanized as Ningteh and Ning-Taik, is a city located along the northeastern coast of Fujian, China. It borders the provincial capital of Fuzhou City to the south, Wenzhou Prefecture of Zhejiang to the north, and Nanping to the west.\nThe prefecture-level Ningde City administers 1 district, 2 cities, 6 counties, as well as 124 towns, townships and subdistricts. Listed below are the district, cities and counties, first four of which are coastal whereas the rest are located in mountainous areas.\nSituated roughly 300 kilometres (190 mi) north of the Tropic of Cancer, the prefecture of Ningde spans 13,500 square kilometres (5,200 sq mi) in land area. Like the rest of the province, Ningde sits in a mountainous region but it also enjoys almost 200 kilometres (120 mi) of coastline facing the East China Sea. Ningde is listed No.2 in China Integrated City Index 2016's environmental ranking, a study conducted by the National Development and Reform Commission."
+        },
+        {
+          "article": "Ningde (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Ningde#Climate",
+          "text": "It is subjected to a humid subtropical climate, with occasional threat of typhoons. Within the prefecture, the mean annual temperature ranges from , while mean annual rainfall ranges from ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 30,
+      "leadWords": 158,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a coastal mountainous prefecture and an environmental ranking, with no climate mechanism, extreme, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "ningde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1003,
+    "band": 1,
+    "place_id": "gn-2174003",
+    "input": {
+      "place": {
+        "place_id": "gn-2174003",
+        "name": "Brisbane",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -27.46794,
+        "lon": 153.02809
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brisbane",
+          "url": "https://en.wikipedia.org/wiki/Brisbane",
+          "text": "Brisbane (  BRIZ-bən; Turrbal/Yagara: Meanjin) is the capital and largest city of the Australian state of Queensland and the third-most populous city in Australia, with a population of about 2.8 million. Brisbane lies at the centre of South East Queensland, a bio-geographical and urban region with an estimated population of 4.1 million as of 2024. The central business district is situated within a peninsula of the Brisbane River approximately 15 kilometres (9 mi) from its mouth at Moreton Bay. Greater Brisbane sprawls across the hilly floodplain of the Brisbane River Valley between the Pacific Ocean and the Taylor and D'Aguilar mountain ranges, encompassing several local government areas (LGAs). The City of Brisbane LGA forms the inner area of Greater Brisbane, and is the most populous local government area in Australia. The demonym of Brisbane is Brisbanite.\nThe Moreton Bay penal settlement was established in 1824 at Redcliffe as a place for secondary offenders from the Sydney colony, but in May 1825, the settlement moved to North Quay on the banks of the Brisbane River, named for the Governor of New South Wales, Sir Thomas Brisbane. German Lutherans established the first free settlement of Zion Hill at Nundah in 1838, and in 1859, Brisbane was chosen as Queensland's capital when the state separated from New South Wales. During World War II, the Allied command in the South West Pacific was based in the city, along with the headquarters of General Douglas MacArthur of the United States Army.\nBrisbane is a major transport hub, served by large rail, bus and ferry networks, as well as Brisbane Airport and the Port of Brisbane, Australia's third-busiest airport and seaport, respectively. A diverse city with over 36% of its metropolitan population being foreign-born, Brisbane is frequently ranked highly in lists of the world's most liveable cities. Brisbane has hosted major events including the 1982 Commonwealth Games, World Expo 88 and the 2014 G20 summit, and will host the 2032 Summer Olympics and Paralympics.\nSouth Bank and its extensive parklands attract an estimated 16 million visitors each year. The surrounding region includes the UNESCO World Heritage Gondwana Rainforests, the Glass House Mountains, and Moreton Bay which is sheltered by the barrier sand islands of Moreton and North Stradbroke Island. Within the bay lie the historic sites of Teerk Roo Ra and St Helena Island National Park."
+        },
+        {
+          "article": "Brisbane (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Brisbane#Climate",
+          "text": "Brisbane has a humid subtropical climate (Köppen climate classification: Cfa ) with hot, wet summers and moderately drier, mild winters. Brisbane experiences an annual mean minimum of and mean maximum of , making it Australia's second-hottest capital city after Darwin. Seasonality is not pronounced, and average maximum temperatures of above persist from October through to April.\nDue to its proximity to the Coral Sea and a warm ocean current, Brisbane's overall temperature variability is somewhat less than most Australian capitals. Summers are long, hot, and wet, but temperatures only occasionally reach or more. Eighty percent of summer days record a maximum temperature of . Winters are short and warm, with average maximums of about ; maximum temperatures below are rare.\nThe city's highest recorded temperature was on Australia Day 1940 at the Brisbane Regional Office, with the highest temperature at the current station being on 22 February 2004; but temperatures above are uncommon. On 19 July 2007, Brisbane's temperature fell below the freezing point for the first time since records began, registering at the airport station. The city station has never dropped below ,\nIn 2009, Brisbane recorded its hottest winter day (from June to August) at on 24 August; The average July day however is around with sunny skies and low humidity, occasionally as high as , whilst maximum temperatures below are uncommon and usually associated with brief periods of cloud and winter rain. On an annual basis, Brisbane averages 124 clear days, with overcast skies more common in the warmer months. Dewpoints in the summer average at around ; the apparent temperature exceeds on almost all summer days. Brisbane's wettest day occurred on 21 January 1887, when of rain fell on the city, the highest maximum daily rainfall of Australia's capital cities. The wettest month on record was February 1893, when of rain fell. Very occasionally a whole month will pass with no recorded rainfall, the last time this happened was August 1991.\nThe temperature of the ocean ranges from in August to in February."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 337,
+      "leadWords": 390,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes the capital of Queensland, its river, penal settlement history and coming Olympics, with no climate mechanism, extreme, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "brisbane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1040,
+    "band": 1,
+    "place_id": "gn-3037656",
+    "input": {
+      "place": {
+        "place_id": "gn-3037656",
+        "name": "Angers",
+        "country": "France",
+        "subdivision": "Pays de la Loire",
+        "lat": 47.47156,
+        "lon": -0.55202
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Angers",
+          "url": "https://en.wikipedia.org/wiki/Angers",
+          "text": "Angers (UK: , US: ; French: [ɑ̃ʒe] ) is a city in western France, about 300 km (190 mi) southwest of Paris. It is the prefecture of the Maine-et-Loire department and was the capital of the province of Anjou until the French Revolution. The inhabitants of both the city and the province are called Angevins or, more rarely, Angeriens.\nAngers proper covers 42.70 square kilometres (16.49 sq mi) and has a population of 157,555 inhabitants, while around 443,900 live in its metropolitan area (aire d'attraction). The Angers Loire Métropole is made up of 29 communes covering 667 square kilometres (258 sq mi) with 308,800 inhabitants (2022). Not including the broader metropolitan area, Angers is the third most populous commune in northwestern France after Nantes and Rennes and the 18th most populous commune in France.\nFor centuries, Angers was an important stronghold in northwestern France. It was the cradle of the Plantagenet dynasty and became one of the intellectual centers of Europe during the reign of René of Anjou. Angers developed at the confluence of three rivers, the Mayenne, the Sarthe, and the Loir, all coming from the north and flowing south towards the Loire. Their confluence, just north of Angers, creates the Maine, a short but wide river that flows into the Loire several kilometres south.\nToday, Angers stands out for its specialization in the plant sector: Végépolys is Europe's leading horticultural competitiveness cluster, and the city is also home to the headquarters of the Community Plant Variety Office. In addition, the Angers metropolitan area is a major economic centre in western France, particularly active in industry and tourism. Angers enjoys a rich cultural life, made possible by its universities and museums. The old medieval center is still dominated by the massive château of the Plantagenêts, home of the Apocalypse Tapestry, the biggest medieval tapestry ensemble in the world. Angers is also both at the edge of the Val de Loire, a World Heritage Site, and the Loire-Anjou-Touraine regional natural park."
+        },
+        {
+          "article": "Angers (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Angers#Climate",
+          "text": "Angers has an oceanic climate, with moderate rain year-round. Winters have scarce frosts and snowfalls, and summers are warm and sunny."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 21,
+      "leadWords": 331,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives river confluence, Plantagenet history, plant sector and tapestry, but no climate fact at all; no mechanism, extreme, seasonal rhythm or paradox is stated",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "angers",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1066,
+    "band": 1,
+    "place_id": "gn-5387428",
+    "input": {
+      "place": {
+        "place_id": "gn-5387428",
+        "name": "Richmond",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.93576,
+        "lon": -122.34775
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Richmond, California",
+          "url": "https://en.wikipedia.org/wiki/Richmond,_California",
+          "text": "Richmond is a city in western Contra Costa County, California, United States. The city was incorporated on August 3, 1905, and has a city council. Located in the San Francisco Bay Area's East Bay region, Richmond borders San Pablo, Albany, El Cerrito and Pinole in addition to the unincorporated communities of North Richmond, Hasford Heights, Kensington, El Sobrante, Bayview-Montalvin Manor, Tara Hills, and East Richmond Heights, and for a short distance San Francisco on Red Rock Island in the San Francisco Bay.\nRichmond is one of two cities, the other being San Rafael, that sits on the shores of both San Francisco Bay and San Pablo Bay. Its population was 116,448 as of the 2020 United States census making it the second largest city in the United States named Richmond after Richmond, Virginia."
+        },
+        {
+          "article": "Richmond, California (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Richmond,_California#Climate",
+          "text": "Richmond, like the rest of the East Bay, has a Mediterranean climate. The climate is slightly warmer than the coastal areas of San Francisco, the Peninsula, and Marin County; it is however more temperate than areas further inland. The average highs range from and the lows range from year round. Richmond usually enjoys an \"Indian summer\", and September is, on average, the warmest month. January is on average the coldest month.\nThe highest recorded temperature in Richmond was in September 1971 while the coldest was in December 1990.\nThe rainy season begins in late October and ends in April, with some showers in May. Most of the rain occurs during stronger storms which occur between November and March and drop of rain per month. January and February are the rainiest months.\nLike most of the Bay Area, Richmond is made up of several microclimates. Southern parts of the city and the ridges receive more fog than northern areas. Summer temperatures are higher in inland areas, where the moderating influence of San Francisco Bay is lessened. The average wind speed is with stronger winds from March through August; the strongest winds are in June. The city also enjoys more than 80% sunshine seven months out of the year and ten months with 60% or more. December and January are the darkest months with about 45% average brightness. The city experiences virtually no snowfall, and brief hail annually."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 236,
+      "leadWords": 133,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives geography and other facts but no verbatim-traceable climate mechanism, record or extreme, seasonal rhythm, or paradox; a non-redundant climate clue cannot be sourced without inventing",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "richmond",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1176,
+    "band": 1,
+    "place_id": "gn-6075357",
+    "input": {
+      "place": {
+        "place_id": "gn-6075357",
+        "name": "Mississauga",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.5789,
+        "lon": -79.6583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mississauga",
+          "url": "https://en.wikipedia.org/wiki/Mississauga",
+          "text": "Mississauga is a city in Peel Region, Ontario, Canada. Situated on the northwestern shore of Lake Ontario, it borders Toronto (Etobicoke) to the east, Brampton to the north, Milton to the northwest, and Oakville to the southwest. With a population of 717,961 as of 2021, Mississauga is the seventh-most populous municipality in Canada, third largest city in Ontario, and second-most populous in the Greater Toronto Area after Toronto itself. However, for the first time in its history, the city's population declined according to the 2021 census, from a 2016 population of 721,599 to 717,961, a 0.5 per cent decrease.\nThe growth of Mississauga was initially attributed to its proximity to Toronto. However, during the latter half of the 20th century, the city attracted a diverse and multicultural population. Over time, it built up a transit-oriented central business district of its own: Mississauga City Centre. Malton, a neighbourhood of the city located in its northeast end, is home to Toronto Pearson International Airport, Canada's busiest airport, as well as the headquarters of many Canadian and multinational corporations. Mississauga is not a traditional city, but is instead an amalgamation of three former Ontario villages and two townships which contained a number of rural hamlets (a general pattern common to several suburban GTA cities) that were significant population centres, with none being clearly dominant, prior to the city's incorporation that later coalesced into a single urban area.\nIndigenous people have lived in the area for thousands of years, and Mississauga is situated on the traditional territory of the Wendat, Haudenosaunee and Anishinaabeg people, including the namesake Mississaugas. Most of present-day Mississauga was founded in 1805 as Toronto Township within York County, and became part of Peel County when new counties were formed by splitting off parts of the original county in 1851. Mississauga itself was established in 1968 as a town, and was reincorporated as a city in 1974, when Peel was restructured into a regional municipality."
+        },
+        {
+          "article": "Mississauga (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Mississauga#Climate",
+          "text": "Mississauga's climate is similar to that of Toronto and is considered to be moderate, located in plant hardiness zone 7a. Under the Köppen climate classification, Mississauga has a humid continental climate (Dfa/Dfb). Summers can bring periods of high temperatures accompanied with high humidity. Winters can be cold with temperatures that are frequently below freezing."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 54,
+      "leadWords": 324,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate mechanism, record or extreme, seasonal rhythm, or paradox that is verbatim-traceable; a non-redundant climate clue cannot be sourced without inventing one",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "mississauga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1238,
+    "band": 1,
+    "place_id": "gn-2637627",
+    "input": {
+      "place": {
+        "place_id": "gn-2637627",
+        "name": "Slough",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.50949,
+        "lon": -0.59541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Slough",
+          "url": "https://en.wikipedia.org/wiki/Slough",
+          "text": "Slough () is a town in Berkshire, England, in the Thames Valley, 20 miles (32 km) west of central London and 19 miles (31 km) north-east of Reading, at the intersection of the M4, M40 and M25 motorways. It is part of the historic county of Buckinghamshire. In 2021, the population of the town was 143,184. The wider Borough of Slough had a population of 158,500.\nSlough's population is one of the most ethnically diverse in the United Kingdom, attracting people from across the country and the world for labour since the 1920s, which has helped shape it into a major trading centre. In 2021, 46.9% of the population was Asian, 35.9% White, 7.5% Black, 4% Mixed, 1.2% Arab and 4.5% of other ethnic heritage.\nOther than London, Slough has the highest concentration of global company  headquarters in the UK. Blackberry, McAfee, Burger King, DHL, Telefonica and Lego have head offices in the town. Slough Trading Estate is the largest industrial estate in single private ownership in Europe, with over 17,000 jobs in 400 businesses."
+        },
+        {
+          "article": "Slough (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Slough#Climate",
+          "text": "The nearest Met Office weather observing station to Slough is Heathrow Airport, about east of Slough town centre. This part of the Thames Valley is notable for generally having the warmest daytime summer temperatures on average in the British Isles. Typically, according to 1981–2010 normals, the average high temperature in July is 23.5 °C (74.3 °F.)\nRainfall is low compared to most of the British Isles, with under annually, and 105 days reporting over 1 mm of rain."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 78,
+      "leadWords": 175,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Thames Valley location, population diversity, and company headquarters only, with no climate mechanism, extreme, seasonal rhythm, or paradox; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "slough",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1245,
+    "band": 1,
+    "place_id": "gn-5367929",
+    "input": {
+      "place": {
+        "place_id": "gn-5367929",
+        "name": "Long Beach",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.76696,
+        "lon": -118.18923
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Long Beach, California",
+          "url": "https://en.wikipedia.org/wiki/Long_Beach,_California",
+          "text": "Long Beach is a coastal city in southeastern Los Angeles County, California, United States. It is the 44th-most populous city in the United States, with a population of 450,469 as of 2025. A charter city, Long Beach is the 7th-most populous city in California, the 2nd-most populous city in Los Angeles County, and the largest city in California that is not a county seat.\nIncorporated in 1897, Long Beach is in Southern California, in the southern part of Los Angeles County. Long Beach is approximately 20 miles (32 km) south of downtown Los Angeles, and is part of the Gateway Cities region. The Port of Long Beach is the second busiest container port in the United States and is among the world's largest shipping ports. The city is over an oilfield with minor wells both directly beneath the city as well as offshore.\nThe city is known for its waterfront attractions, including the permanently docked RMS Queen Mary and the Aquarium of the Pacific. Long Beach also hosts the Grand Prix of Long Beach, an IndyCar race and the Long Beach Pride Festival and Parade. California State University, Long Beach, one of the largest universities in California."
+        },
+        {
+          "article": "Long Beach, California (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Long_Beach,_California#Climate",
+          "text": "Long Beach has a climate that can either be described as a hot semi-arid climate (BSh) or a hot-summer Mediterranean climate (Csa). In general, the city features hot summers and mild to warm winters with occasional rainfall. Days in Long Beach are mostly sunny, as in Southern California in general. Temperatures recorded at the weather station at the Long Beach Airport, inland from the ocean, range more greatly than those along the immediate coast. During the summer months, low clouds and fog occur frequently, developing overnight and blanketing the area on many mornings. This fog usually clears by the afternoon, and a westerly sea breeze often develops, keeping temperatures mild. Heat and high humidity can sometimes coincide in summer, which may cause discomfort due to the heat index.\nAccording to data analysis provided by the NWS, The annual average temperature of Long Beach is , of which August is the hottest month with an average temperature of , while December is the coldest month with an average temperature of . The annual precipitation in Long Beach is , of which the precipitation from December to March of the following year accounts for 81% of the whole year. June to September is usually rainless, especially August."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 205,
+      "leadWords": 197,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives coastal location, port rank, oilfield, docked ship, aquarium, and race only, with no climate mechanism, extreme, seasonal rhythm, or paradox; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "long beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "long",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1277,
+    "band": 1,
+    "place_id": "gn-1805844",
+    "input": {
+      "place": {
+        "place_id": "gn-1805844",
+        "name": "Jieshou",
+        "country": "China",
+        "subdivision": "Anhui",
+        "lat": 33.26338,
+        "lon": 115.36108
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jieshou",
+          "url": "https://en.wikipedia.org/wiki/Jieshou",
+          "text": "Jieshou (Chinese: 界首; pinyin: Jièshǒu) is a county-level city under the administration of Fuyang City, located on the Huang-Huai Plain in northwestern Anhui province, People's Republic of China. Jieshou, an important commercial port and gateway, borders Henan Province on the west and the Ying River, a major tributary of the Huai River flows in a southeasterly direction across the county to Fuyang. According to the \"China Statistical Yearbook\" the population of Jieshou city stood at 109,103 in 2010, while GeoNames, puts the population at over 140,000 inhabitants. Covering a total area of 667 square kilometers, the county-level city comprises three urban sub-districts of Jieshou, and in the surrounding rural area a further 15 towns and townships make up the total population of 740,000."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 123,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a plain location, river and population with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "jieshou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1348,
+    "band": 1,
+    "place_id": "gn-3408404",
+    "input": {
+      "place": {
+        "place_id": "gn-3408404",
+        "name": "Abreu e Lima",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -7.91167,
+        "lon": -34.90278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abreu e Lima",
+          "url": "https://en.wikipedia.org/wiki/Abreu_e_Lima",
+          "text": "Abreu e Lima (Recifense portuguese pronunciation: [ɐˈbɾew i ˈlimɐ]) is a Brazilian municipality in the state of Pernambuco. It is located in the Metropolitan Region of Recife, also known as Greater Recife. Abreu e Lima covers 126.193 km2 (48.723 mi2), and has a population of 98,462 with a population density of 780 inhabitants per square kilometer (2022 Census). 75% of the area of the municipality is rural, but only 8% of the population lives outside of the urban center.\nThe city was named in honor of José Inácio de Abreu e Lima (1794-1869), also known as \"Inácio Pernambucano\". Abreu e Lima participated in battles in Pernambuco and fought alongside Simón Bolivar in the wars of independence of Venezuela and Colombia.\nFolklore is one of Abreu e Lima's main attractions. Visitors can enjoy the energetic drum rhythms of Maracatu dance performance, as well as Ciranda dance groups such as the one led by Dona Odete do Coco. The city's main festival is the Emancipation Festival, every May 14. Over 70 percent of Abreu e Lima's territory is covered by unspoilt Atlantic Forest and environmental reserves, such as those of São Bento and Caetés.\nOn March 31, 1983, the city held the first public event of Diretas Já, a popular movement against the military dictatorship."
+        },
+        {
+          "article": "Abreu e Lima (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Abreu_e_Lima#Geography",
+          "text": "Boundaries - Igarassu and Araçoiaba (N); Paulista (S and E), Paudalho (W)\nHydrography - Small coast rivers\nVegetation - Atlantic forest, Capoeirinha, sugarcane plantation and mangrove\nClima - Hot tropical and humid\nAnnual average temperature -\nMain roads - BR 101\nDistance to Recife -"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 45,
+      "leadWords": 213,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; Atlantic Forest cover is vegetation, not a stated climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "abreu e lima",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "abreu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "e",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "lima",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1359,
+    "band": 1,
+    "place_id": "gn-1248991",
+    "input": {
+      "place": {
+        "place_id": "gn-1248991",
+        "name": "Colombo",
+        "country": "Sri Lanka",
+        "subdivision": "Western Province",
+        "lat": 6.93548,
+        "lon": 79.84868
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Colombo",
+          "url": "https://en.wikipedia.org/wiki/Colombo",
+          "text": "Colombo ( kə-LUM-boh; Sinhala: කොළඹ, romanised: Koḷam̆ba, IPA: [ˈkoləᵐbə]; Tamil: கொழும்பு, romanised: Koḻumpu, IPA: [koɻumbɯ]) is Sri Lanka's executive and judicial capital, as well as the country's most populous city. It is also the financial centre of the island and a tourist destination. The Colombo metropolitan area is estimated to have a population of 5.6 million, and 752,993 within the municipal limits. It is located on the west coast of the island. It is also the administrative capital of the Western Province and the district capital of Colombo District.\nIt was made the capital of the island when Sri Lanka was ceded to the British Empire in 1815, retaining its capital status when Sri Lanka gained independence in 1948. In 1978, when administrative functions were moved to Sri Jayawardenepura Kotte, Colombo was designated as the commercial capital of Sri Lanka."
+        },
+        {
+          "article": "Colombo (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Colombo#Climate",
+          "text": "Colombo features a tropical rainforest climate (Af). Colombo's climate is hot throughout the year. From March to April the average high temperature is around . The only major change in the Colombo weather occurs during the monsoon seasons from April to June and September to November, when heavy rains occur. Colombo sees little relative diurnal range of temperature, although this is more marked in the drier winter months, where minimum temperatures average . Rainfall in the city averages around a year."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 81,
+      "leadWords": 140,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate fact at all, so no mechanism, extreme, seasonal rhythm or paradox can be traced verbatim",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "colombo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1425,
+    "band": 1,
+    "place_id": "gn-2044757",
+    "input": {
+      "place": {
+        "place_id": "gn-2044757",
+        "name": "Chongjin",
+        "country": "North Korea",
+        "subdivision": "North Hamgyong",
+        "lat": 41.79556,
+        "lon": 129.77583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chongjin",
+          "url": "https://en.wikipedia.org/wiki/Chongjin",
+          "text": "Chongjin (Korean pronunciation: [tsʰʌŋ.dʑin]; Korean: 청진시; MR: Ch'ŏngjin-si) is the capital of North Korea's North Hamgyong Province. It is the country's third-largest city by population and an important port city on the northeastern coast. Originally a small fishing village, it industrialized significantly under Japanese rule and later under the North Korean government.\nThe city is a hub of trade and industry, despite having suffered heavily during the famine of the 1990s. Sometimes called the \"City of Iron\", Chongjin is one of North Korea's major industrial centers for steel and fiber. Chongjin also functions as a regional center of transport, culture, and education, and hosts foreign consulates from both China and Russia, a rarity in North Korea."
+        },
+        {
+          "article": "Chongjin (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Chongjin#Climate",
+          "text": "Chongjin has a humid continental climate (Köppen climate classification: Dwa, bordering on Dwb) with cold, dry winters and warm, rainy summers."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 21,
+      "leadWords": 116,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers port status, fishing village origins, industry and famine hardship with no climate mechanism, extreme, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "chongjin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1542,
+    "band": 1,
+    "place_id": "gn-1841811",
+    "input": {
+      "place": {
+        "place_id": "gn-1841811",
+        "name": "Gwangju",
+        "country": "South Korea",
+        "subdivision": "Gwangju",
+        "lat": 35.15472,
+        "lon": 126.91556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gwangju",
+          "url": "https://en.wikipedia.org/wiki/Gwangju",
+          "text": "Gwangju (Korean: 광주; Korean: [kwaŋ.dʑu] ), formerly romanized as Kwangju, was a city in South Korea. In July 2026, the city was merged with South Jeolla Province into a new provincial-level city called Jeonnam-Gwangju.\nGwangju was the sixth-largest metropolis in the country. It was a designated metropolitan city under the direct control of the central government's Home Minister. The city was also the capital of South Jeolla Province until its promotion to a metropolitan city in 2005, upon which the provincial office moved to the southern village of Namak in Muan County.\nIts name is composed of the words gwang (Korean: 광; Hanja: 光) meaning \"light\" and ju (주; 州) meaning \"province\". Gwangju was historically recorded as Muju (무주; 武州), in which \"Silla merged all of the land to establish the provinces of Gwangju, Ungju, Jeonju, Muju and various counties, plus the southern boundary of Goguryeo and the ancient territories of Silla\" in the Samguk sagi. In the heart of the agricultural Jeolla region, the city is also famous for its rich and diverse cuisine."
+        },
+        {
+          "article": "Gwangju (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Gwangju#Climate",
+          "text": "Gwangju has a cooler version of the humid subtropical climate (Köppen: Cfa/Cwa) with four distinct seasons and rainfall year-round but particularly during the East Asian Monsoon Season in the summer months.\nWinters, while still somewhat cold, are milder than in Seoul and cities further north due to the city's southwesterly position in the Korean peninsula.\nSummers are hot and humid with abundant precipitation, particularly in the form of thunderstorms. Gwangju is one of the warmest cities in Korea in the summer due to its geographic location."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 86,
+      "leadWords": 175,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers South Korean metropolitan status, former South Jeolla capital role, name meaning of light and province, and famous cuisine with no climate mechanism, extreme, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "gwangju",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1585,
+    "band": 1,
+    "place_id": "gn-98463",
+    "input": {
+      "place": {
+        "place_id": "gn-98463",
+        "name": "Sulaymaniyah",
+        "country": "Iraq",
+        "subdivision": "Sulaymaniyah",
+        "lat": 35.56496,
+        "lon": 45.4329
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sulaymaniyah",
+          "url": "https://en.wikipedia.org/wiki/Sulaymaniyah",
+          "text": "Sulaymaniyah (Arabic: السليمانية, romanized: as-Sulaymāniyyah) or Slemani (Kurdish: سلێمانی, romanized: Silêmanî), is a city in the east of the Kurdistan Region of Iraq and is the capital of the Sulaymaniyah Governorate. It is surrounded by the Azmar, Goizha and Qaiwan Mountains in the northeast, Baranan Mountain in the south and the Tasluja Hills in the west.\nThe modern city of Slemani was founded in 1784 by the Ottoman-Kurdish prince Ibrahim Pasha Baban in Collaboration with Azim Beg and Haji Aziz Bey Aghal Dwanze Swarey Meriwane Jawamer Agha Rangena, who named it after his father Sulayman Pasha. Slemani was the capital of the historic Kurdish principality of Baban from 1784 to 1850."
+        },
+        {
+          "article": "Sulaymaniyah (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Sulaymaniyah#Geography_and_climate",
+          "text": "The city is located in Northern Iraq. Of the main population centres in the country, it is characterized by its cooler summer temperatures and its rainier winters. Average temperatures range from . In the winters, there can be a significant amount of snow. Snow falls every year or two.\nThe Köppen-Geiger climate classification system classifies its climate as hot-summer Mediterranean climate (Csa)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Geography and climate",
+      "sectionWords": 62,
+      "leadWords": 111,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract lists surrounding mountains and hills and the 1784 founding, with no climate mechanism, extreme, seasonal rhythm, or paradox stated",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sulaymaniyah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1607,
+    "band": 1,
+    "place_id": "gn-3980760",
+    "input": {
+      "place": {
+        "place_id": "gn-3980760",
+        "name": "Uruapan",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 19.41677,
+        "lon": -102.05842
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uruapan",
+          "url": "https://en.wikipedia.org/wiki/Uruapan",
+          "text": "Uruapan del Progreso, simply known as Uruapan (Spanish pronunciation: [uˈɾwa.pan]), is the second largest city in the Mexican state of Michoacán. It is located at the western edge of the Purépecha highlands, just to the east of the Tierra Caliente region. Since the colonial period, it has been an important city economically due to its location. The city was conquered by the Spanish in 1522, when the last Purépecha ruler fled the Pátzcuaro area to here. The modern city was laid out in 1534 by Friar Juan de San Miguel. It played an important role in the War of Independence, and was the capital of Michoacán during the French Intervention. Today it is the center of Mexico's avocado growing region, with most of the crop distributed from here nationally and internationally."
+        },
+        {
+          "article": "Uruapan (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Uruapan#Climate",
+          "text": "The municipality has a humid subtropical climate (Cwa in the Köppen climate classification) with very wet summers, dry winters and lush forests. It is part of the Trans-Mexican Volcanic Belt and mountainous. Principal peaks include Charanda, La Cruz, Jicalán and Magdalena. The climate is between temperate and tropical, with most rain falling in the summer. Average annual rainfall is 1,759.3 mm and average annual temperatures are between 8 and 37.5 C."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 71,
+      "leadWords": 131,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives highlands-edge location, conquest in 1522, founding in 1534, and avocado region, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "uruapan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1654,
+    "band": 1,
+    "place_id": "gn-2036973",
+    "input": {
+      "place": {
+        "place_id": "gn-2036973",
+        "name": "Heihe",
+        "country": "China",
+        "subdivision": "Heilongjiang",
+        "lat": 50.24413,
+        "lon": 127.49016
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heihe",
+          "url": "https://en.wikipedia.org/wiki/Heihe",
+          "text": "Heihe (Chinese: 黑河; pinyin: Hēihé; lit. 'Black River'; Russian: Хэйхэ) is a prefecture-level city of northern Heilongjiang province, China, located on the Russian border, on the south bank of the Amur (Heilong) River, across the river from Blagoveshchensk. At the 2020 census, 1,286,401 people lived in the prefecture-level city of whom 223,832 lived in the built-up area (or metro) made of Aihui District. At the end of 2024, the resident population of the city was 1.23 million, including 823,000 in urban areas and 407,000 in rural areas.\nHeihe marks the northeast terminus of the diagonal Heihe–Tengchong Line, which is sometimes used to divide China into east and west."
+        },
+        {
+          "article": "Heihe (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Heihe#Climate",
+          "text": "Heihe experiences a monsoon-influenced humid continental climate (Köppen climate classification Dwb), but Dwa in the south of the prefecture, with long, bitterly cold, windy, but dry winters due to the influence of the Siberian high, and warm, wet summers, due to the East Asian monsoon. Based on data from 1981 to 2010, the monthly daily mean temperature in January, the coldest month, is , and July, the warmest month, averages , with an average annual temperature . Close to two-thirds of the annual precipitation falls in the months of June to August. Extreme temperatures have ranged from to ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 99,
+      "leadWords": 108,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives border and river location, census figures, and a dividing-line fact but extract contains no climate information at all; no mechanism, extreme, seasonal rhythm, or paradox is sourceable",
+      "priorMissing": "place-specific climate mechanism, extreme, or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "heihe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

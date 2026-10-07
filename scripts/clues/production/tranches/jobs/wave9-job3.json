@@ -1,0 +1,722 @@
+[
+  {
+    "rank": 8667,
+    "place_id": "gn-6693640",
+    "input": {
+      "place": {
+        "place_id": "gn-6693640",
+        "name": "Peaslake",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.19156,
+        "lon": -0.44658
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peaslake",
+          "url": "https://en.wikipedia.org/wiki/Peaslake",
+          "text": "Peaslake, Hoe and Colman's Hill are in the centre of the Surrey Hills National Landscape and mid-west of the Greensand Ridge about 5 miles (8.0 km) ESE of Guildford. Surrounded by denser pine and other coniferous forest-clad hills, the three conjoined settlements have a small core in Peaslake itself with the amenities of a village, but are otherwise lightly scattered settlements at a higher elevation than the centre of Shere, the civil parish.\nThe area referred to by the 2011 census covers 302 hectares (750 acres). Friends of the Hurtwood maintains and coppices 3,000 acres (1,200 ha) of surrounding forest, the Hurtwood, which comprises: Holmbury Hill, Pitch Hill, Winterfold, Shere Heath, Farley Heath and part of Blackheath Common. It is in the civil parish of Shere."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "peaslake",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8674,
+    "place_id": "gn-2401357",
+    "input": {
+      "place": {
+        "place_id": "gn-2401357",
+        "name": "Cocobeach",
+        "country": "Gabon",
+        "subdivision": "Estuaire",
+        "lat": 1.00019,
+        "lon": 9.58229
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cocobeach",
+          "url": "https://en.wikipedia.org/wiki/Cocobeach",
+          "text": "Cocobeach is a town in northwestern Gabon, lying on the south bank of the Muni River.  It is the capital of the Noya Department. It has a beach and is the main border town for Equatorial Guinea, ferries sailing to Cogo across the river and the border.\nThe town is very small, containing just a fishing village, a small market and a number of adjacent beaches. It is one of the major travel destinations in the region owing to the Crystal Mountains inland from the town, which contain some of the oldest rainforests in Gabon. These were able to largely escape the drying effect of glacial periods of the Quaternary due to the persistent fog from the Benguela Current providing moisture during the dry season."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "cocobeach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8680,
+    "place_id": "gn-2804135",
+    "input": {
+      "place": {
+        "place_id": "gn-2804135",
+        "name": "Zingst",
+        "country": "Germany",
+        "subdivision": "Mecklenburg-Vorpommern",
+        "lat": 54.43572,
+        "lon": 12.6888
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zingst",
+          "url": "https://en.wikipedia.org/wiki/Zingst",
+          "text": "Zingst  (German pronunciation: [ˈtsɪŋst]; Polabian Sgoni) is the easternmost portion of the three-part Fischland-Darß-Zingst Peninsula, located in Mecklenburg-Vorpommern, Germany, between the cities of Rostock and Stralsund on the southern shore of the Baltic Sea.\nThe area is part of the Pomeranian coast. The Zingst Peninsula forms an eastward-running spit, nearly 20 km (12 mi) in length, and has a width of just 2 to 4 km (1.2 to 2.5 mi).\nZingst separates the Baltic Sea from the lagoon of Barther Bodden, which is part of the Darss-Zingst Bodden Chain, a large estuary. The shallow waters of the inlet are a major stopover for the migratory European crane. In spring and autumn, up to 3,000 birds gather here on their migration route to and from Spain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "zingst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8686,
+    "place_id": "gn-3178630",
+    "input": {
+      "place": {
+        "place_id": "gn-3178630",
+        "name": "Cisternino",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 40.74326,
+        "lon": 17.42587
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cisternino",
+          "url": "https://en.wikipedia.org/wiki/Cisternino",
+          "text": "Cisternino (Barese: Cïsterninë) is a comune in the province of Brindisi in Apulia, on the coast of south-eastern Italy, approximately 50 kilometres (31 mi) north-west of the city of Brindisi. It is one of I Borghi più belli d'Italia (\"The most beautiful villages of Italy\"). Its main economic activities are tourism, the growing of olives and grapes, and dairy farming.\nCisternino sits in a historic zone of Itria Valley (in Italian: Valle d'Itria), known for its prehistoric conical, dry stone houses called trulli, which are preserved under UNESCO safeguards due to their cultural significance, dry stone walls (muretti a secco), and its fertile soil which makes it the home of the Salento wine region.\nIn 2014, Cisternino was declared the Cittaslow City of the Year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "cisternino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8698,
+    "place_id": "gn-2185423",
+    "input": {
+      "place": {
+        "place_id": "gn-2185423",
+        "name": "Oropi",
+        "country": "New Zealand",
+        "subdivision": "Bay of Plenty",
+        "lat": -37.83948,
+        "lon": 176.16105
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oropi",
+          "url": "https://en.wikipedia.org/wiki/Oropi",
+          "text": "Oropi is a rural settlement located in the Bay of Plenty region of the North Island of New Zealand. It is located 20 kilometres (12 mi) south of Tauranga and 43 kilometres (27 mi) north of Rotorua.\nOropi is mainly a farming community of both agriculture and horticulture ranging from kiwifruit orchards to dairy farms. Recently there has been some subdivision of farms into lifestyle blocks to take advantage of views of the coastline towards the Coromandel Peninsula and islands in the Bay of Plenty including Karewa Island, Mayor Island (Tuhua) and Mōtītī Island.\nLocal facilities include a 9-hole golf course, hot pools, a paintball course and mountain bike tracks. The Oropi Memorial Hall and Community Centre includes a 170-square-metre (1,800 sq ft) auditorium."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "oropi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8699,
+    "place_id": "gn-2524290",
+    "input": {
+      "place": {
+        "place_id": "gn-2524290",
+        "name": "Marano Marchesato",
+        "country": "Italy",
+        "subdivision": "Calabria",
+        "lat": 39.31274,
+        "lon": 16.17354
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marano Marchesato",
+          "url": "https://en.wikipedia.org/wiki/Marano_Marchesato",
+          "text": "Marano Marchesato is a town and comune in the province of Cosenza in the Calabria region of southern Italy.\nThe origins of the town's name are widely disputed. One claim is that the name derives from the medieval Marano family, who, throughout the course of the Saracen occupation of the nearby emirate of Amantea, provided refuge to those fleeing the Muslim conquest. A second hypothesis is that Marano refers to the Spanish word \"marrano\", a derogatory term given to Iberian Jews who had converted to Christianity before the Spanish Inquisition. Many of these early converts, or \"conversos\", fled to southern Italy given the region's climate and linguistic similarity. This theory is furthered by the existence of a thriving silk trade in the town's history."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "marano marchesato",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "marano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marchesato",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8703,
+    "place_id": "gn-2682570",
+    "input": {
+      "place": {
+        "place_id": "gn-2682570",
+        "name": "Rimbo",
+        "country": "Sweden",
+        "subdivision": "Stockholm",
+        "lat": 59.75,
+        "lon": 18.36667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rimbo",
+          "url": "https://en.wikipedia.org/wiki/Rimbo",
+          "text": "Rimbo (Swedish pronunciation: [ˈrɪ̌mːbʊ]) is a locality situated in Norrtälje Municipality, Stockholm County, Sweden, with 4,629 inhabitants in 2010. Rimbo is located about 20 km (12 mi) west of the municipal seat of Norrtälje.\nRimbo grew up as a railhead at the junction between the narrow gauge railways to Uppsala and Norrtälje (1884), Stockholm (1885) and Hallstavik (1896). The last line (to Stockholm, part of Roslagsbanan) was closed in 1981. A formal decision has been taken to reopen the 14 km line to Kårsta (the present northern terminus of Roslagsbanan), but no funds have been allocated.\nRimbo has a successful men's handball team, Rimbo HK Roslagen, which played in the first tier of the Swedish handball system (Elitserien (men's handball)) in the 2013–2014 season."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "rimbo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8710,
+    "place_id": "gn-5240399",
+    "input": {
+      "place": {
+        "place_id": "gn-5240399",
+        "name": "Rockingham",
+        "country": "United States",
+        "subdivision": "Vermont",
+        "lat": 43.18758,
+        "lon": -72.48898
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rockingham, Vermont",
+          "url": "https://en.wikipedia.org/wiki/Rockingham,_Vermont",
+          "text": "Rockingham is a town along the Connecticut River in Windham County, Vermont, United States. As of the 2020 census, the population was 4,832. Rockingham includes the incorporated villages of Bellows Falls and Saxtons River, as well as a large rural area west of Interstate 91.\nRockingham has no formal town center; instead, town offices and the Rockingham Public Library are located in the village of Bellows Falls. The approximate center is the Rockingham Meeting House, passed by Route 103, a popular east–west route across the state. The Meeting House was built in Rockingham Village, once the main settlement in the town, but with the increased use of water power for manufacturing, population shifted to other villages located on the two rivers in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "rockingham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8712,
+    "place_id": "gn-592279",
+    "input": {
+      "place": {
+        "place_id": "gn-592279",
+        "name": "Elva",
+        "country": "Estonia",
+        "subdivision": "Tartu",
+        "lat": 58.2225,
+        "lon": 26.42111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elva, Estonia",
+          "url": "https://en.wikipedia.org/wiki/Elva,_Estonia",
+          "text": "Elva is a town in Elva Parish, Tartu County, Estonia.\nElva has two large lakes:  Lake Verevi, with a sandy and well-developed beach area that is very popular in the summer, and Lake Arbi, with wet reed grown shores.\nElva's largest employer (and in all of southern Estonia) is GPV Estonia AS, subsidiary of GPV Group, providing electronics manufacturing services in industrial electronics. Elva has one school, Elva Gümnaasium, offering education from 1st grade to high school graduation.\nA dominant element in Elva is the train station which today is a visitors' information center, and which used to be an important trade route in the past centuries.\nDetailed information on hikes on foot or by bicycle can be obtained from the visitors' information center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "elva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8713,
+    "place_id": "gn-638803",
+    "input": {
+      "place": {
+        "place_id": "gn-638803",
+        "name": "Ruokolahti",
+        "country": "Finland",
+        "subdivision": "South Karelia",
+        "lat": 61.28333,
+        "lon": 28.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ruokolahti",
+          "url": "https://en.wikipedia.org/wiki/Ruokolahti",
+          "text": "Ruokolahti (Finnish: [ˈruo̯koˌlɑhti]; Swedish: Ruokolax; literally translated the \"Reed Bay\") is a municipality of Finland, situated in south-eastern Finland, in the region of South Karelia. Neighbouring municipalities are Imatra, Lappeenranta, Taipalsaari, Puumala, Sulkava, Punkaharju, Parikkala and Rautjärvi. Ruokolahti covers an area of 1,219.85 square kilometres (470.99 sq mi) of which 23% is water.\nThe municipality has 4,679 inhabitants\n(31 December 2025), but the population doubles in summer as holidaymakers occupy the 3,000 summer cottages in the region.\nRuokolahti is known for its natural environment, for example Kummakivi is a balancing rock located at 61° 29' 36.4596\" N, 28° 25' 45.5016\" E in Ruokolahti and is protected. In the west there is the Lake Saimaa and in the east there are hundreds of smaller lakes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "ruokolahti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8735,
+    "place_id": "gn-3137091",
+    "input": {
+      "place": {
+        "place_id": "gn-3137091",
+        "name": "Stavern",
+        "country": "Norway",
+        "subdivision": "Vestfold",
+        "lat": 59,
+        "lon": 10.03333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stavern",
+          "url": "https://en.wikipedia.org/wiki/Stavern",
+          "text": "Stavern (until 1930 named Fredriksvern) is a town in Larvik Municipality in Vestfold county, Norway. The town is located at the mouth of the Larviksfjorden along the Skagerrak coast, about 7 kilometres (4.3 mi) south of the town of Larvik. Historically, Stavern was a self-governing municipality from 1838 until 1988 when it became part of the large Larvik Municipality.\nThe 3.75-square-kilometre (930-acre) town has a population (2022) of 5,902 and a population density of 1,575 inhabitants per square kilometre (4,080/sq mi).\nStavern is a small town where tourism is one of the most important sources of income. During summer, the population increases to around 30,000-40,000 people, due to camping sites and cottages around the town centre as well as boats visiting the harbour."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "stavern",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8736,
+    "place_id": "gn-3199954",
+    "input": {
+      "place": {
+        "place_id": "gn-3199954",
+        "name": "Okrug Gornji",
+        "country": "Croatia",
+        "subdivision": "Split-Dalmatia",
+        "lat": 43.49473,
+        "lon": 16.26531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Okrug Gornji",
+          "url": "https://en.wikipedia.org/wiki/Okrug_Gornji",
+          "text": "Okrug Gornji is a village in the municipality of Okrug, Croatia, located on the western side of the island of Čiovo. Okrug Gornji (lit. 'Upper Okrug') is a traditional Dalmatian village, paired with Okrug Donji (lit. 'Lower Okrug').\nNewly built holiday homes and hotels along the island's coast have linked Trogir and Okrug Gornji into a continuous urban and suburban area. Okrug Gornji is a traditional fishing harbor at the end of a beach, while Okrug Donji remains a separate village further west. The region has a mild Mediterranean climate, dense subtropical and Mediterranean vegetation, an archipelago of little islands, little bays and beaches. \nThere are many restaurants and taverns in Okrug Gornji and Donji with a varied choice of original Dalmatian specialities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "okrug gornji",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "okrug",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gornji",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8740,
+    "place_id": "gn-4629986",
+    "input": {
+      "place": {
+        "place_id": "gn-4629986",
+        "name": "Hohenwald",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 35.54785,
+        "lon": -87.55196
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hohenwald, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Hohenwald,_Tennessee",
+          "text": "Hohenwald is a city in and the county seat of Lewis County, Tennessee, United States. As of the 2020 census, Hohenwald had a population of 3,668. The name \"Hohenwald\" derives from German meaning “High Forest\".\nMeriwether Lewis, of the Lewis and Clark Expedition, died and was buried seven miles east of the town at Grinder's Stand in 1809. Rod Brasfield, an old Grand Ole Opry comedy star, made his home in Hohenwald and referred to it in his routines. David Sisco, who in 1974 placed ninth in points in the Winston Cup Series, is a native of Hohenwald, as was author William Gay, whose books include The Long Home, Provinces of Night, I Hate to See That Evening Sun Go Down, and Twilight."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "hohenwald",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8745,
+    "place_id": "gn-6220356",
+    "input": {
+      "place": {
+        "place_id": "gn-6220356",
+        "name": "Merivale",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -43.50833,
+        "lon": 172.61013
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Merivale, Christchurch",
+          "url": "https://en.wikipedia.org/wiki/Merivale,_Christchurch",
+          "text": "Merivale is a suburb of Christchurch, New Zealand, north of the city centre. Like all suburbs in Christchurch, it has no defined boundaries and is a general area, but for the purposes of statistical analysis only, Statistics New Zealand defines it as being Heaton Street to the north, Papanui Road to the east, Harper and Bealey Avenues to the south and Rossall Street to the west, although Real Estate advertising often will claim residences outside this area, especially St Albans to the east of Papanui Road, as being Merivale due to the perceived desirability of the area. The area directly west of Rossall Street, which is called Holmwood by Statistics New Zealand, is sometimes considered part of Merivale.\nThe area is predominantly residential."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "merivale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8749,
+    "place_id": "gn-2205989",
+    "input": {
+      "place": {
+        "place_id": "gn-2205989",
+        "name": "Grays Point",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34.05873,
+        "lon": 151.08604
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grays Point, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Grays_Point,_New_South_Wales",
+          "text": "Grays Point is a suburb in Southern Sydney, in the state of New South Wales, Australia 29 kilometres south of the Sydney central business district, in the local government area of the Sutherland Shire.\nGrays Point is a small suburb with extensive views of the Port Hacking estuary. Grays Point is adjacent to the Royal National Park and the suburbs of Gymea Bay and Kirrawee. There is only one road available for vehicular access however multiple walking and mountain bike tracks link it with locations such as Audley in the Royal National Park, Engadine and Heathcote. This, in turn, contributes to the exclusive atmosphere of the suburb. \nGrays Point house prices are higher than comparable real estate in the southern Sydney region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "grays point",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grays",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "point",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8753,
+    "place_id": "gn-2642384",
+    "input": {
+      "place": {
+        "place_id": "gn-2642384",
+        "name": "Moffat",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.33527,
+        "lon": -3.44142
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moffat, Dumfries and Galloway",
+          "url": "https://en.wikipedia.org/wiki/Moffat,_Dumfries_and_Galloway",
+          "text": "Moffat is a historic market town, burgh and parish in Dumfries and Galloway, Scotland. Historically part of Dumfriesshire, it lies on the River Annan, and was a centre of the wool trade and a spa town. It had a population of 2,497 in 2022.\nMoffat is around 59 miles (95 kilometres) to the southeast of Glasgow, 51 miles (82 kilometres) southwest of Edinburgh, 21 miles (34 kilometres) northeast of Dumfries and 44 miles (71 kilometres) northwest of Carlisle.\nThe Moffat House Hotel, located at the northern end of the High Street, was designed by John Adam. The nearby Star Hotel, a mere 20 ft (6 m) wide, was listed in the Guinness Book of Records as the narrowest hotel in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "moffat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8754,
+    "place_id": "gn-2759342",
+    "input": {
+      "place": {
+        "place_id": "gn-2759342",
+        "name": "Beekbergen",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 52.16,
+        "lon": 5.96389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beekbergen",
+          "url": "https://en.wikipedia.org/wiki/Beekbergen",
+          "text": "Beekbergen (Dutch pronunciation: [ˈbeːɡbɛrɣə(n)]; Low German: Bekbargen or Beekbargen) is a village and former municipality in the Dutch province of Gelderland. It is located in the municipality of Apeldoorn on the edge of the Veluwe. The rural area on the southwestern side of the village is dominated by forests and the rural area on the northeastern side by agricultural land. A hamlet called Engeland is situated inside the rural area that is part of Beekbergen, as well as several holiday villages, campsites and hotels. The village also houses a number of retirement homes and a homeless shelter, called \"Het Hoogeland\". Beekbergen had 4,546 residents on 1 January 2016, of which about three out of five people were living inside the urban area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "beekbergen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8762,
+    "place_id": "gn-3833211",
+    "input": {
+      "place": {
+        "place_id": "gn-3833211",
+        "name": "Valle Hermoso",
+        "country": "Argentina",
+        "subdivision": "Cordoba",
+        "lat": -31.11205,
+        "lon": -64.48114
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valle Hermoso, Argentina",
+          "url": "https://en.wikipedia.org/wiki/Valle_Hermoso,_Argentina",
+          "text": "Valle Hermoso is a small town in the province of Córdoba, Argentina, located 75 km (47 mi) from the city of Córdoba and 800 km (500 mi) from Buenos Aires. It had about 5,500 inhabitants at the 2001 census [INDEC].\nValle Hermoso ('Beautiful Valley') is one of a number of small towns straddling Route 38 and the now disused railway line, which runs through the Punilla Valley from the south, and the city of Córdoba, north to La Rioja.  The town's central district contains commercial stores and a number of hotels.\nValle Hermoso sits at an altitude of about 1,000 m (3,300 ft) providing a temperate climate. It is high enough to moderate summer heat yet low enough that winters are mild."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "valle hermoso",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "valle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hermoso",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8775,
+    "place_id": "gn-2659950",
+    "input": {
+      "place": {
+        "place_id": "gn-2659950",
+        "name": "Lenzerheide",
+        "country": "Switzerland",
+        "subdivision": "Grisons",
+        "lat": 46.72215,
+        "lon": 9.55905
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lenzerheide",
+          "url": "https://en.wikipedia.org/wiki/Lenzerheide",
+          "text": "Lenzerheide (Romansh: Lai) is a mountain resort in the canton of Graubünden, Switzerland at the foot of the Parpaner Rothorn. The village lies in the municipality Vaz/Obervaz in the district of Albula, sub-district Alvaschein.\nThe village lies in a broad section of the valley between the cantonal capital Chur to the north and Tiefencastel, beyond which are the Julier Pass and St Moritz. The high valley forms a pass of no official name, often referred to as Lenzerheide pass, with a culmination point located 5 km north of the village.\nLenzerheide is popular as skiing resort and for its lake (Heidsee), which is frozen in winter. The Lenzerheide Bergbahnen offers access to the skiing areas of Stätzerhorn, Danis, Scalottas, and Rothorn."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "lenzerheide",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8776,
+    "place_id": "gn-2760129",
+    "input": {
+      "place": {
+        "place_id": "gn-2760129",
+        "name": "Aalst",
+        "country": "Netherlands",
+        "subdivision": "North Brabant",
+        "lat": 51.39667,
+        "lon": 5.47778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aalst, North Brabant",
+          "url": "https://en.wikipedia.org/wiki/Aalst,_North_Brabant",
+          "text": "Aalst is a village located 6 km south of Eindhoven, the Netherlands, on the Tongelreep stream and the road to Valkenswaard. It was an independent municipality until 1923, when it merged with the municipality of Waalre.\nAalst experienced rapid growth during the 1970s and 1980s as housing estates were built in the Ekenrooi area, which served as an overflow area for Eindhoven. Despite this development, the area remains very green and pleasant with large stretches of managed forest and heathland. \nIn September 1944, Aalst saw the British XXX Corps pass along the main road from Valkenswaard to Eindhoven as part of Operation Market Garden.\nThe spoken language is Kempenlands (an East Brabantian dialect, one of the many southern dialects of Dutch)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "aalst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

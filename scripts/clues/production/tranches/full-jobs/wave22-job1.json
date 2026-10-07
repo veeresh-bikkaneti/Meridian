@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 4232,
+    "attempt": 4201,
+    "place_id": "gn-3530915",
+    "input": {
+      "place": {
+        "place_id": "gn-3530915",
+        "name": "Chicxulub Puerto",
+        "country": "Mexico",
+        "subdivision": "Yucatán",
+        "lat": 21.29618,
+        "lon": -89.59867
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chicxulub Puerto",
+          "url": "https://en.wikipedia.org/wiki/Chicxulub_Puerto",
+          "text": "Chicxulub Puerto (Spanish: [tʃikʃuˈlub ˈpweɾto] ) is a small coastal town in Progreso Municipality in the Mexican state of Yucatán. It is located on the Gulf of Mexico, in the northwestern region of the state about 8 km (5 mi) east of the city port of Progreso, the municipality seat, and 42 km (26 mi) north of the city of Mérida, the state capital. According to the INEGI census conducted in 2020, the port town had a population of 7,591 inhabitants.\nChicxulub Puerto is most famous for being near the geographic center of the Chicxulub crater, an impact crater discovered by geologists on the Yucatán Peninsula and extending into the ocean. It was created by the impact some 66 million years ago of the Chicxulub impactor, an asteroid or comet which caused the Cretaceous–Paleogene extinction event, which led to the extinction of all non-avian dinosaurs. Chicxulub Puerto lies almost exactly on the geographic center of the crater, and has used its notoriety for tourism, having opened tourist attractions such as a museum dedicated to the meteor impact.\nThe town of Chicxulub Pueblo, located farther inland in the peninsula, is often confused with this coastal town.\nThe name Chicxulub is from the Yucatec Maya language meaning 'the devil's flea'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 177,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "chicxulub puerto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chicxulub",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4233,
+    "attempt": 4202,
+    "place_id": "gn-4004126",
+    "input": {
+      "place": {
+        "place_id": "gn-4004126",
+        "name": "Jamay",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 20.29479,
+        "lon": -102.7094
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jamay",
+          "url": "https://en.wikipedia.org/wiki/Jamay",
+          "text": "The municipality and town of Jamay is located in the eastern portion of Jalisco, Mexico, at  coordinates 20°17.4′N 102°42.6′W, at a height of 1,530 meters (5,020 ft) above sea level. The municipality extends from  20° 25' to  20° 13' N, and from 102° 38' to 102° 44' W.\nIt covers 174.49 km2, representing 0.14% of the total surface area of the state. The municipality of Jamay adjoins to the north with the municipalities of Ocotlán and La Barca; to the east with the municipality of La Barca; to the south with the municipality of La Barca, the state of Michoacán and the municipality of Ocotlán; to the west with the municipality of Ocotlán and Lake Chapala.\nThe municipality has 17 towns, including Jamay (the municipal seat), San Miguel de la Paz, San Agustín, Maltaraña and Los Capulines.\nJamay is famous for a monument located in the center of the main square in memory of Pope Pius IX.\nJamay is one of the fastest-growing municipalities in Jalisco, hosting pageants every independence day in September and major sporting events."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 177,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "jamay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4234,
+    "attempt": 4203,
+    "place_id": "gn-2653960",
+    "input": {
+      "place": {
+        "place_id": "gn-2653960",
+        "name": "Calverton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.03728,
+        "lon": -1.08263
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calverton, Nottinghamshire",
+          "url": "https://en.wikipedia.org/wiki/Calverton,_Nottinghamshire",
+          "text": "Calverton () is a village and civil parish in Nottinghamshire, England and of some 4,247 acres (6.636 sq mi; 1,719 ha; 17.19 km2) in size. It is in the Gedling district, about 7 miles (11 km) north-east of Nottingham, 10 miles (16 km) south-east of Mansfield, and situated, like nearby Woodborough and Lambley, on one of the small tributaries of the Dover Beck. The 2021 census found 7,282 inhabitants in 3,120 households. About 2 miles (3.2 km) miles to the north of the village is the site of the supposed deserted settlement of Salterford.\nThe parish is bounded on the south-east by Woodborough, to the south-west by Arnold, Papplewick and Ravenshead, to the north by Blidworth, and to the north-east by Oxton and Epperstone.\nDuring most of its existence Calverton was a forest village, in that part of Sherwood known as Thorney Wood Chase, with a rural economy limited by a lack of grazing land, in which handicrafts (like woodworking and the knitting of stockings), must in consequence have assumed a more than usual importance. The parliamentary enclosure of 1780 brought some agrarian progress to the village, but it was not until the opening of a colliery by the National Coal Board in 1952, that the village began to assume its present identity, with new housing estates and marked population growth. \nThe colliery closed in 1999 and while a small industrial estate provides some local employment, Calverton has taken on the character of a large commuter village.\nIn May 1974 the village was officially twinned with Longué-Jumelles, in the Loire valley of France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 175,
+      "fullExtractWords": 263
+    },
+    "banned_terms": [
+      {
+        "term": "calverton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4235,
+    "attempt": 4204,
+    "place_id": "gn-2641168",
+    "input": {
+      "place": {
+        "place_id": "gn-2641168",
+        "name": "Notting Hill",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.5115,
+        "lon": -0.20587
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Notting Hill",
+          "url": "https://en.wikipedia.org/wiki/Notting_Hill",
+          "text": "Notting Hill is a district of West London, England, in the Royal Borough of Kensington and Chelsea. Notting Hill is known for being a cosmopolitan and multicultural neighbourhood, hosting the annual Notting Hill Carnival and the Portobello Road Market. From around 1870, Notting Hill had an association with artists.\nFor much of the 20th century, the large houses were subdivided into multi-occupancy rentals. Continental Europeans, Caribbeans (African Caribbeans, Indian Caribbeans, and White Caribbeans), Africans, Indians, Arabs, Asians, Jewish, Central Americans, South Americans, Pacific Islanders, Irish, Northern Irish, Scottish, Welsh, and other immigrants were drawn to the area in the 1950s and 1960s, partly because of the cheap rents, but were exploited by slum landlords like Peter Rachman and also became the target of white Teddy Boys in the 1958 Notting Hill race riots.\nBy the early 21st century, after decades of gentrification, Notting Hill had gained a reputation as an affluent and fashionable area, known for attractive terraces of large Victorian townhouses and high-end shopping and restaurants (particularly around Westbourne Grove and Clarendon Cross). A Daily Telegraph article in 2004 used the phrase \"the Notting Hill set\" to refer to a group of emerging Conservative politicians, such as David Cameron and George Osborne, who would become respectively Prime Minister and Chancellor of the Exchequer and were once based in Notting Hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 174,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "notting hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "notting",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4236,
+    "attempt": 4205,
+    "place_id": "gn-5130334",
+    "input": {
+      "place": {
+        "place_id": "gn-5130334",
+        "name": "Ozone Park",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.67677,
+        "lon": -73.84375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ozone Park",
+          "url": "https://en.wikipedia.org/wiki/Ozone_Park",
+          "text": "Ozone Park is a neighborhood in the southwestern section of the New York City borough of Queens, New York, United States. It is next to the Aqueduct Racetrack in South Ozone Park, a popular spot for Thoroughbred racing and home to the Resorts World Casino & Hotel. Home to a large Italian-American population, Ozone Park has also grown in recent decades to have many residents of Caribbean, Hispanic, and Asian backgrounds.\nWhile New York City neighborhoods do not have formal boundaries, Ozone Park is considered to have a northern border at Atlantic Avenue; the southern border is North Conduit Avenue, the western border is the Brooklyn/Queens border line; and the eastern border is up to 108th Street and Aqueduct Racetrack.\nOzone Park is in two community districts, divided by Liberty and 103rd Avenues. The southern half of the neighborhood is in Queens Community District 10, which is covered by New York City Police Department's 106th Precinct, while the northern half is in Queens Community District 9 and covered by the NYPD's 102nd Precinct. Its ZIP Codes are 11416 and 11417."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 173,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "ozone park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ozone",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4237,
+    "attempt": 4206,
+    "place_id": "gn-5101427",
+    "input": {
+      "place": {
+        "place_id": "gn-5101427",
+        "name": "Morristown",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.79677,
+        "lon": -74.48154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morristown, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Morristown,_New_Jersey",
+          "text": "Morristown () is a town in and the county seat of Morris County, in the U.S. state of New Jersey. Morristown has been called \"the military capital of the American Revolution\" because of its strategic role in the war for independence from Great Britain. Morristown's history is visible in a variety of locations that collectively make up Morristown National Historical Park, the country's first National Historical Park.\nMorristown was incorporated as a town by an act of the New Jersey Legislature on April 6, 1865, within Morris Township, and it was formally set off from the township in 1895. As of the 2020 United States census, the town's population was 20,180, its highest decennial census count ever and an increase of 1,769 (+9.6%) from the 2010 census count of 18,411, which in turn had reflected a decline of 133 (−0.7%) from the 18,544 counted at the 2000 census.\nAccording to British colonial records, the first permanent settlement in Morristown was New Hanover, founded in 1715 by colonists from New York and Connecticut. Morris County was created on March 15, 1739, from portions of Hunterdon County. The county, and ultimately Morristown itself, was named for the popular Governor of the Province, Lewis Morris, who championed land ownership rights for colonists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 172,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "morristown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4238,
+    "attempt": 4207,
+    "place_id": "gn-2642534",
+    "input": {
+      "place": {
+        "place_id": "gn-2642534",
+        "name": "Milford Haven",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.71278,
+        "lon": -5.0341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milford Haven",
+          "url": "https://en.wikipedia.org/wiki/Milford_Haven",
+          "text": "Milford Haven (Welsh: Aberdaugleddau, lit. 'mouth of the two rivers Cleddau' ) is a town and community in Pembrokeshire, Wales. It is on the north side of the Milford Haven Waterway, an estuary forming a natural harbour that has been used as a port since the Middle Ages.\nThe town was founded in 1790 by Sir William Hamilton, who designed a grid street pattern. He intended it to be a whaling centre, but by 1800 it was developing as a Royal Navy dockyard which it remained until the dockyard was transferred to Pembroke in 1814. It then became a commercial dock, with the focus moving in the 1960s, after the construction of an oil refinery built by Esso, to logistics for fuel oil and liquid gas. By 2010, the town's port had become the fourth largest in the United Kingdom in terms of tonnage, and continues its important role in the United Kingdom's energy sector with several oil refineries and one of the biggest liquefied natural gas terminals in the world.\nMilford Haven is the most populous community in the county, with a population of 13,907 within the community boundary at the 2011 census. When measured in terms of urban area the population was 13,582, making it the second largest urban area in the county after Haverfordwest (where the urban area extends beyond its community boundary).\nThe natural harbour of the Haven was known as a safe port and was exploited for several historical military operations throughout the second millennium. Campaigns conducted from the Haven included part of the invasion of Ireland in 1171 by Henry II and by Cromwell in 1649. Forces which have disembarked at the point include Jean II de Rieux's 1405 reinforcement of the Glyndŵr Rising. In 1485, the future Henry VII landed close to his birthplace in Mill Bay before marching on to England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 171,
+      "fullExtractWords": 309
+    },
+    "banned_terms": [
+      {
+        "term": "milford haven",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "milford",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "haven",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4239,
+    "attempt": 4208,
+    "place_id": "gn-12022722",
+    "input": {
+      "place": {
+        "place_id": "gn-12022722",
+        "name": "San Siro",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.47815,
+        "lon": 9.12609
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Siro",
+          "url": "https://en.wikipedia.org/wiki/San_Siro",
+          "text": "The Stadio Giuseppe Meazza, commonly known as the San Siro, is a football stadium in the San Siro district of Milan, Italy. Nicknamed \"La Scala del calcio\" (Italian for 'La Scala of football'), it has a seating capacity of 75,817, making it the largest stadium in Italy and one of the largest stadiums in Europe. It is the home stadium of the city's principal professional football clubs, AC Milan and Inter Milan, who contest the Derby della Madonnina.\nIn March 1980, the stadium was named in honour of Giuseppe Meazza, the two-time World Cup winner (1934, 1938) who played for Inter (and briefly for other teams like Milan) in the 1920s, 1930s, and 1940s, and served two stints as Inter's manager.\nThe San Siro is a UEFA category four stadium. It hosted three games at the 1934 FIFA World Cup, the opening ceremony and six games at the 1990 FIFA World Cup, three games at the UEFA Euro 1980 and four European Cup finals, in 1965, 1970, 2001 and 2016. The stadium also hosted the opening ceremony of the 2026 Winter Olympics, held in both Milan and Cortina d'Ampezzo.\nThe stadium is expected to be demolished in 2031 or 2032 after a replacement stadium is built."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 170,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "san siro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "siro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4240,
+    "attempt": 4209,
+    "place_id": "gn-4046704",
+    "input": {
+      "place": {
+        "place_id": "gn-4046704",
+        "name": "Fort Hunt",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.73289,
+        "lon": -77.05803
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Hunt, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Fort_Hunt,_Virginia",
+          "text": "Fort Hunt is a census-designated place (CDP) in Fairfax County, Virginia, United States. The area is named after Fort Hunt, which was built on the bank of the Potomac River in 1897 to defend Washington, D.C. from naval attack and is now a public park. The area is also notable for its high population of senior citizens and for being one of the first suburbs in wealthy Fairfax County. The population was 17,231 at the 2020 census.\nFort Hunt encompasses the 22308 ZIP code of Alexandria, composed of much of the most affluent section of southeast Fairfax County, close to the George Washington Memorial Parkway and Potomac River, including the neighborhoods of Riverside Gardens, Tauxemont, Herbert Springs, Waynewood, Plymouth Haven, Potomac Valley – River Bend, Collingwood, Stratford Landing, Stratford on the Potomac, Hollin Hall, Wellington, Arcturus and (in ZIP code 22307) Villamay and Marlan Forest. As of the 2010 census, Fort Hunt also includes the neighborhood of Hollindale in ZIP code 22306 and much of Hollin Hills in 22307. Prominent Fort Hunt residents include U.S. Senator Tim Johnson, former House Speaker Bob Livingston and Supreme Court Justice Samuel Alito."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 169,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "fort hunt",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hunt",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4242,
+    "attempt": 4210,
+    "place_id": "gn-5182529",
+    "input": {
+      "place": {
+        "place_id": "gn-5182529",
+        "name": "Bustleton",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.08261,
+        "lon": -75.03156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bustleton, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Bustleton,_Philadelphia",
+          "text": "The Bustleton section of Northeast Philadelphia, United States is located in the Far Northeast, north of Rhawnhurst and Fox Chase and south of Somerton; sitting between Roosevelt Boulevard to the east, the city boundary to the west, Red Lion Road to the north, and Pennypack Park to the south, it is centered at the intersection of Grant Avenue and Bustleton Avenue (PA-532) and is completely included in the 19115 postal ZIP code.\nIn the early history of the city,  the neighborhood was centered on the Bustleton Tavern, a local bar established before the American Revolution. Pennypack Park is part of the Fairmount Park system and was the site of much industry, including mills. The area was a trading center and had hotels drawing farmers bringing goods for sale via horse and buggy. Much of the commerce was also conducted via small streams and rivers of the present-day Pennypack Watershed. The old Paul's Run waterway once provided navigation from the Bustleton Tavern all the way to the Delaware River.\nBustleton was originally part of Lower Dublin Township, also known as Dublin Township, a defunct township that was located in Philadelphia County, Pennsylvania. The township ceased to exist and was incorporated into the City of Philadelphia following the passage of the Act of Consolidation, 1854.\nBustleton is home to the Lower Dublin Baptist Church, one of the oldest churches in America. Its burial ground contains the remains of many notable Americans and Revolutionary War Soldiers. Another church is the Protestant Episcopal Church of Saint Luke The Beloved Physician. It is the only church in Philadelphia that was designed by the architect Richard Upjohn of New York. It is located on Welsh Road and has a burial ground, now home to the veterans from the Civil War to present. It was consecrated on August 30, 1861.\nThe 1870 Roman Catholic Church of Maternity, Blessed Virgin Mary on Old Bustleton Ave in Pennypack Park is the large Roman Catholic parish that served as a mother church for most of the parishes in the Northeast section of Philadelphia. Saint Katherine Drexel attended Mass in the Old BVM Church.\nOne of the early schools went by the name: Bustleton Academy, also known as The academy at Bustelton, not to be confused with Lower Dublin Academy which is an older school, located in the Holmesburg section of Lower Dublin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 168,
+      "fullExtractWords": 392
+    },
+    "banned_terms": [
+      {
+        "term": "bustleton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4243,
+    "attempt": 4211,
+    "place_id": "gn-253394",
+    "input": {
+      "place": {
+        "place_id": "gn-253394",
+        "name": "Sparta",
+        "country": "Greece",
+        "subdivision": "Peloponnese",
+        "lat": 37.07446,
+        "lon": 22.43009
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sparta",
+          "url": "https://en.wikipedia.org/wiki/Sparta",
+          "text": "Sparta was a prominent ancient Greek polis in Laconia. In classical antiquity, the state was known as Lacedaemon (Λακεδαίμων, Lakedaímōn), while Sparta referred to its capital, a group of villages in the valley of the Evrotas River in Laconia, in southeastern Peloponnese. During the 7th century BC, it rose to become the most prominent land military power in the Greek world, a status it retained until its defeat at Leuctra in 371 BC. \nIn the 6th century BC Sparta founded the Peloponnesian League, establishing its hegemony over most of Peloponnese. During the second Persian invasion of Greece, Sparta was recognised as the leading land force of the Hellenic alliance that also included the rising maritime power of Athens. The Spartan army was crucial in the battles of Thermopylae and Plataea under the leadership of Leonidas and Pausanias respectively.\nSparta led the Peloponnesian League against the Athenian Empire during the Peloponnesian War (431–404 BC), from which it emerged victorious after Lysander's victory at the naval Battle of Aegospotami. A short period of Spartan hegemony followed, when Spartan armies under Agesilaus II led a series of campaigns in western Anatolian satrapies of the Achaemenid empire to protect the Ionian cities.\nHowever, Epaminondas' victory over Sparta at Leuctra in 371 BC started the Theban hegemony while Messenia was freed from Spartan rule; the loss of the slave labour this region provided sent the city into terminal decline as a military power. \nNonetheless, Sparta tried to reclaim its hegemony in Peloponnese several times until it was annexed by the Achaean League in early 2nd century BC.\nThe city recovered some autonomy after the Roman conquest of Greece in 146 BC and became a tourist destination during the Roman era, restoring some measure of prosperity. However, Sparta was sacked in 396 AD by the Visigothic king Alaric, and underwent a long period of decline into the medieval period, when much of its population relocated to the nearby Mystras. Modern Sparta is a provincial town and the seat of the Laconia regional administration.\nSparta was unique in ancient Greece for its social system and constitution, which were supposedly introduced by the semi-mythical lawgiver Lycurgus. Spartan society was exceptionally militarised, focusing the entire attention of the Spartiate class on military training and physical development to the point of legally barring them from productive economic activity. The inhabitants of Sparta were rigidly stratified into Spartiates (citizens with full rights), mothakes and perioikoi (free non-citizens), and helots (state-owned enslaved non-Spartan locals), with helots making up the vast majority of the population; social mobility was nearly nonexistent. Spartiate men underwent the harsh agoge training regimen, and Spartan phalanx units were widely considered to be among the best in battle, though this was as much a matter of propaganda as battlefield prowess. Free Spartiate women enjoyed somewhat greater legal rights than elsewhere in classical antiquity, though helots suffered exceptionally harsh treatment at the hands of the Spartiates (particularly the Crypteia), causing repeated revolts. Sparta was a subject of fascination in its own day, as well as in later Western culture following the revival of classical learning. The admiration of Sparta is known as Laconophilia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 167,
+      "fullExtractWords": 523
+    },
+    "banned_terms": [
+      {
+        "term": "sparta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4244,
+    "attempt": 4212,
+    "place_id": "gn-2659869",
+    "input": {
+      "place": {
+        "place_id": "gn-2659869",
+        "name": "Locarno",
+        "country": "Switzerland",
+        "subdivision": "Ticino",
+        "lat": 46.17086,
+        "lon": 8.79953
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Locarno",
+          "url": "https://en.wikipedia.org/wiki/Locarno",
+          "text": "Locarno (Italian: [loˈkarno]; German: [loˈkaʁno] ; Ticinese: Locarno [loˈkɑːrno]; formerly in German: Luggarus [luˈɡaːrʊs]) is a southern Swiss town and municipality in the district Locarno (of which it is the capital), located on the northern shore of Lake Maggiore at its northeastern tip in the canton of Ticino at the southern foot of the Swiss Alps. It has a population of about 16,000 (proper), and about 56,000 for the agglomeration of the same name including Ascona besides other municipalities.\nThe town of Locarno is located on the northeastern part of the river Maggia's delta; across the river lies the town of Ascona on the southwestern part of the delta.\nLocarno is the 74th largest city in Switzerland by population and the third largest in the Ticino canton, after Lugano and Bellinzona.\nThe official language of Locarno is Italian.\nThe town is known for hosting the Locarno International Film Festival which takes place every year in August and involves open-air screenings at the main square, the Piazza Grande. It is also known for the Locarno Treaties, a series of European territorial agreements negotiated here in October 1925."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 167,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "locarno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4245,
+    "attempt": 4213,
+    "place_id": "gn-3522451",
+    "input": {
+      "place": {
+        "place_id": "gn-3522451",
+        "name": "Ocotlán de Morelos",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 16.79183,
+        "lon": -96.67504
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocotlán de Morelos",
+          "url": "https://en.wikipedia.org/wiki/Ocotl%C3%A1n_de_Morelos",
+          "text": "Ocotlán de Morelos is a town and municipality in the state of Oaxaca, about 35 km south of the center of the city of Oaxaca along Highway 175.\nIt is part of the Ocotlán District in the south of the Valles Centrales Region. The area was a significant population center at the time of the Spanish Conquest, and for that reason an important Dominican monastery was established here  in the 16th century.  The complex still exists, with the church still being used for worship and the cloister area used as a museum.  While mostly quiet, the city is an important distribution and transportation center for the south of the Central Valleys region of Oaxaca, a function which is expected to be reinforced with the opening of new highway being built to connect the city of Oaxaca with the Pacific coast. The city is known for artist Rodolfo Morales, who painted aspects of his hometown in his works and sponsored projects to save and restore historic monuments here. For generations the municipality has been known for its crafts, with the ceramics making Aguilar family producing some of the best known craftsmen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 167,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "ocotlan de morelos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocotlan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "morelos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4246,
+    "attempt": 4214,
+    "place_id": "gn-4264617",
+    "input": {
+      "place": {
+        "place_id": "gn-4264617",
+        "name": "Seymour",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 38.95922,
+        "lon": -85.89025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seymour, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Seymour,_Indiana",
+          "text": "Seymour is a city in Jackson County, Indiana, United States. The population was 21,569 at the 2020 census, making it the largest city in Jackson County. It was platted in 1852 by landowner Meedy Shields and named after a railroad engineer.\nSeymour developed as a railroad town after the north–south Jeffersonville Railroad and the east–west Ohio and Mississippi Railroad intersected in the early 1850s, leading to the city to be nicknamed the \"Crossroads of Southern Indiana.\" In October 1866, the local Reno Gang carried out what is considered to be the first peacetime train robbery in the United States—an episode that brought vigilante reprisals and lasting notoriety. During World War II the U.S. Army Air Forces operated Freeman Army Airfield southwest of the city, a training base later known for the 1945 Freeman Field mutiny, a milestone in the desegregation of the U.S. military.\nThe modern economy is anchored by manufacturing and distribution led by the automotive-parts maker Aisin, which opened a Seymour plant in the 1980s. Beginning in the late 1980s, the city drew substantial immigration from San Sebastián Coatán, Guatemala. Its Hispanic population grew rapidly in the early 21st century, reshaping the community and drawing state scrutiny of the city's policing policies in 2024. Seymour is the hometown of rock musician John Mellencamp and holds an annual Oktoberfest reflecting its 19th-century German heritage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 167,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "seymour",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4247,
+    "attempt": 4215,
+    "place_id": "gn-4502129",
+    "input": {
+      "place": {
+        "place_id": "gn-4502129",
+        "name": "Hammonton",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.63651,
+        "lon": -74.80239
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hammonton, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Hammonton,_New_Jersey",
+          "text": "Hammonton is a town in Atlantic County, in the U.S. state of New Jersey, that has been referred to as the \"Blueberry Capital of the World\". As of the 2020 United States census, the town's population was 14,711, a decrease of 80 (−0.5%) from the 2010 census count of 14,791, which in turn reflected an increase of 2,187 (+17.4%) from the 12,604 counted in the 2000 census. Geographically, the town, and all of Atlantic County, is part of the South Jersey region of the state and of the Atlantic City-Hammonton metropolitan statistical area, which in turn is included in the Philadelphia metropolitan area.\nThe first European settlement of Hammonton was in 1812. It was named for John Hammond Coffin, a son of one of the community's earliest settlers, William Coffin, with the \"d\" in what was originally Hammondton disappearing over time. It was incorporated as a town by an act of the New Jersey Legislature on March 5, 1866, from portions of Hamilton Township and Mullica Township.\nThe town is located directly between Philadelphia and the resort town of Atlantic City, along a former route of the Pennsylvania Railroad with Hammonton station directly in the downtown area. The route is now used by NJ Transit's Atlantic City Line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 167,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "hammonton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4248,
+    "attempt": 4216,
+    "place_id": "gn-6073743",
+    "input": {
+      "place": {
+        "place_id": "gn-6073743",
+        "name": "Mill Bay",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 48.65,
+        "lon": -123.55
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mill Bay, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Mill_Bay,_British_Columbia",
+          "text": "Mill Bay is a commuter town of about 7,200 people located on Vancouver Island, British Columbia, Canada, about 30 km (19 mi) north of Victoria, the capital. It is part of the Cowichan Valley Regional District.\nMill Bay was founded in the 1860s with lumber and milling as its primary industries, done at the mill on the bay. It was named for the sawmill built in the area in 1861 by Henry S. Shepherd soon purchased by William Sayward.    It is known for its ferry to Brentwood Bay on the Saanich Peninsula and the historic Malahat Drive, which is also a source of criticism due to frequent closures from either automobile accidents or weather conditions.  Numerous suggestions have been made by various groups regarding a 'bypass' route (possibly a bridge), though as of 2007, the Brentwood-Mill Bay Ferry and the Malahat remain the best routes to Greater Victoria from the rest of Vancouver Island (a third route goes south from Lake Cowichan via Port Renfrew to Victoria).  The ferry MV Mill Bay that has served the route since 1956 was named for the town but was taken out of service in 2011 and the route is now served by MV Klitsa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 167,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "mill bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mill",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4249,
+    "attempt": 4217,
+    "place_id": "gn-2687636",
+    "input": {
+      "place": {
+        "place_id": "gn-2687636",
+        "name": "Nynäshamn",
+        "country": "Sweden",
+        "subdivision": "Stockholm",
+        "lat": 58.90337,
+        "lon": 17.94793
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nynäshamn",
+          "url": "https://en.wikipedia.org/wiki/Nyn%C3%A4shamn",
+          "text": "Nynäshamn is a locality and the seat of Nynäshamn Municipality, Stockholm County, Sweden with 16 447 inhabitants in 2023.\nWhile interest in the area as a potentially useful port grew from the mid-19th century, it was only with the opening of the railway station to Stockholm in 1901 that Nynäshamn started to develop.\nDuring the early 20th Century, Nynäshamn also became well known as a spa town, though most such facilities were closed down before the end of World War I. Main industries arrived through Telegrafverkets verkstäder (the factories of the Government owned telephone company) in 1916 and an oil refinery built in 1928–29 by Axel Ax:son Johnson & Co. The latter still remains though under different ownership and under the name Nynas.\nNynäshamn was the venue of the Olympic sailing regatta in 1912.\n\nNynäshamn, which lies about 60 km (37 mi) south of Stockholm, is well known for being one of the places on the Swedish mainland from where ferries to the island Gotland depart. This is a hugely popular destination for Swedes of all ages in the summer months. The Polferries terminal also offer regular routes to Gdańsk in Poland. Several cruise ships on tours in the Baltic Sea also stay in the harbour, because they are too large to go into Stockholm.\nA harbour party is hosted each summer, as well as local craft fairs. During these events a steam train often runs routes to and from Stockholm. During the summer months, the harbour is packed with boats of all sizes, and bustles with both visitors and locals. There are a number of eateries and boutiques with locally made produce. The main town is mainly modern and the buildings uninteresting generally. A library and one screen cinema is centrally located, and a limited number of shops catering to mainly to local trade.\nMany people in Nynäshamn live in apartment blocks, situated in estates, although they are not more than 10 stories high. There are also plenty of villas scattered throughout the town, and terraced houses. Life in Nynäshamn is generally relaxed, in contrast to the bustle of Stockholm. The surrounding nature and sea provides plenty of photographic opportunities, once you get out of the town centre. The crime rates here are considered to be very low.\nNynäshamn is served by Stockholm commuter rail (Pendeltåg) and several bus routes.\nPopular singer Meja, and ice hockey player Kent Nilsson were born in Nynäshamn."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 166,
+      "fullExtractWords": 404
+    },
+    "banned_terms": [
+      {
+        "term": "nynashamn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4250,
+    "attempt": 4218,
+    "place_id": "gn-4908033",
+    "input": {
+      "place": {
+        "place_id": "gn-4908033",
+        "name": "Rogers Park",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.00864,
+        "lon": -87.66672
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rogers Park, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Rogers_Park,_Chicago",
+          "text": "Rogers Park is one of the 77 community areas of Chicago in Illinois, United States, located on the North Side of Chicago. Located 9 miles (14 km) north of the Loop along the shore of Lake Michigan, it features green spaces, early 20th-century architecture, live theater, bars, restaurants, and beaches. Rogers Park is known for its racial and cultural diversity: according to the Chicago Sun-Times, it is the community that most closely matches the city's ethnic makeup as a whole.\nThe community is bounded by the city of Evanston along Juneway Terrace and Howard Street to the north, Ridge Boulevard to the west, Devon Avenue and the Edgewater neighborhood to the south, and Lake Michigan to the east. West Ridge, just to the west, was part of Rogers Park until the 1890s and is still sometimes referred to as \"West Rogers Park.\" In the early 1900s, what is today the main campus of Loyola University Chicago was established at the neighborhood's southeastern end, along the lake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 166,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "rogers park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rogers",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4251,
+    "attempt": 4219,
+    "place_id": "gn-5100830",
+    "input": {
+      "place": {
+        "place_id": "gn-5100830",
+        "name": "Manville",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.54094,
+        "lon": -74.58766
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manville, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Manville,_New_Jersey",
+          "text": "Manville is a borough in Somerset County, in the central portion of the U.S. state of New Jersey. The borough is located in the heart of the Raritan Valley region and is a part of the New York metropolitan area. As of the 2020 United States census, the borough's population was 10,953, an increase of 609 (+5.9%) from the 2010 census count of 10,344, which in turn had reflected an increase of one person from the 10,343 residents counted at the 2000 census. Manville was named after the Johns-Manville Corporation, which maintained a large manufacturing facility in the borough for decades.\nHistorically, many of Manville's residents are of Slavic—mostly eastern Polish (23.1% of the borough's population in 2000) and western Ukrainian descent—with many businesses and restaurants geared towards the Polish American community located along Main Street (County Route 533).\nManville was formed by an act of the New Jersey Legislature on April 1, 1929, subject to the results of a referendum held on April 18, 1929."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 166,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "manville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4252,
+    "attempt": 4220,
+    "place_id": "gn-5103286",
+    "input": {
+      "place": {
+        "place_id": "gn-5103286",
+        "name": "Ringwood",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.11343,
+        "lon": -74.24543
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ringwood, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Ringwood,_New_Jersey",
+          "text": "Ringwood is a borough in Passaic County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 11,735, a decrease of 493 (−4.0%) from the 2010 census count of 12,228, which in turn reflected a decrease of 168 (−1.4%) from the 12,396 counted in the 2000 census.\nIt is the home of Ringwood State Park which contains the New Jersey Botanical Garden at Skylands (plus Skylands Manor), the Shepherd Lake Recreation Area and historic Ringwood Manor.\nThe Borough of Ringwood was incorporated by an act of the New Jersey Legislature on February 23, 1918, from a \"portion of the Township of Pompton\", as one of three boroughs formed from Pompton Township, joining Bloomingdale and Wanaque, based on the results of a referendum held on March 22, 1918. The first organizational meeting of the borough council took place in the existing Borough Hall on May 6, 1918. The borough was named for an iron mining company in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 166,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "ringwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

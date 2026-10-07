@@ -1,0 +1,328 @@
+[
+  {
+    "rank": 10584,
+    "place_id": "gn-2155085",
+    "input": {
+      "place": {
+        "place_id": "gn-2155085",
+        "name": "Normanton",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -17.67183,
+        "lon": 141.07721
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Normanton, Queensland",
+          "url": "https://en.wikipedia.org/wiki/Normanton,_Queensland",
+          "text": "Normanton is an outback town and coastal locality in the Shire of Carpentaria, Queensland, Australia. At the 2021 census, the locality of Normanton had a population of 1,391 people, and the town of Normanton had a population of 1,326 people.\nIt is the administrative centre of the Shire of Carpentaria. It has a tropical savanna climate and the main economy of the locality is cattle grazing.\nThe town is one terminus of the isolated Normanton to Croydon railway line, which was built during gold rush days in the 1890s. The Gulflander passenger train operates once a week along the railway line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "normanton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10590,
+    "place_id": "gn-2641629",
+    "input": {
+      "place": {
+        "place_id": "gn-2641629",
+        "name": "Newington",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.35217,
+        "lon": 0.66768
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newington, Swale",
+          "url": "https://en.wikipedia.org/wiki/Newington,_Swale",
+          "text": "Newington is a village and civil parish in the borough of Swale in Kent, England.  The parish is located beside the A2 road (originally a Roman road) between Rainham to the west and Sittingbourne to the east. The population of the parish in 2011 was 2,551.\nThe village has its own railway station which is situated on the Chatham Main Line between Sittingbourne and Rainham.\nThe parish church, dedicated to St Mary the Virgin, is a grade I listed building. It was built between 1163 and 1177 by Richard de Lucy, with additions being made in the 13th and 14th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "newington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10595,
+    "place_id": "gn-2720004",
+    "input": {
+      "place": {
+        "place_id": "gn-2720004",
+        "name": "Bräcke",
+        "country": "Sweden",
+        "subdivision": "Jämtland",
+        "lat": 62.75067,
+        "lon": 15.42193
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bräcke",
+          "url": "https://en.wikipedia.org/wiki/Bräcke",
+          "text": "Bräcke is a locality and the seat of Bräcke Municipality in Jämtland County, Sweden with 1,651 inhabitants as of 2010.\nThe community is located next to Lake Revsundssjön, 70 km south-east of Östersund.   \nThe railway has been an important factor in Bräcke's development. The town is located along the Central line and serves as the starting point of the Main Line Through Upper Norrland. European route E14 also passes through Bräcke and Länsväg 323 starts in Bräcke and goes towards Kälarne.\nBräcke Church (Bräcke kyrka) was built in the summer of 1859 following a drawing by Abraham Rafael Ulric Pettersson (1824-1866)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "bracke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10598,
+    "place_id": "gn-3052640",
+    "input": {
+      "place": {
+        "place_id": "gn-3052640",
+        "name": "Fertőrákos",
+        "country": "Hungary",
+        "subdivision": "Győr-Moson-Sopron",
+        "lat": 47.72017,
+        "lon": 16.6504
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fertőrákos",
+          "url": "https://en.wikipedia.org/wiki/Fertőrákos",
+          "text": "Fertőrákos (German: Kroisbach) is a village in the county of Győr-Moson-Sopron in Hungary. In 2025 it had a population of 2,473.\nIt is located at 47°43′15″N 16°39′0″E, about 10 km (6 mi) from Sopron, near Lake Fertő (German: Neusiedler See) and the Austrian border. In summer, a border checkpoint for pedestrians and cyclists connects it to the Austrian municipality of Mörbisch am See (Hungarian: Meggyes). The Fertorakos mithraeum is visible near the border. Fertőrákos also features a small port with a border checkpoint, and a sand beach swimming area, access to which prior to 1989 was restricted to the communist elite."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "fertorakos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10611,
+    "place_id": "gn-11810378",
+    "input": {
+      "place": {
+        "place_id": "gn-11810378",
+        "name": "Fogo Island",
+        "country": "Canada",
+        "subdivision": "Newfoundland and Labrador",
+        "lat": 49.71649,
+        "lon": -54.16981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fogo Island, Newfoundland and Labrador",
+          "url": "https://en.wikipedia.org/wiki/Fogo_Island,_Newfoundland_and_Labrador",
+          "text": "Fogo Island is the largest of the offshore islands of Newfoundland and Labrador, Canada. It lies off the northeast coast of Newfoundland, northwest of Musgrave Harbour across Hamilton Sound, just east of the Change Islands. The island is about 25 km (16 mi) long and 14 km (8.7 mi) wide. The total area is 237.71 km2 (91.78 sq mi).\nOn March 1, 2011, the Town of Fogo Island was incorporated, encompassing the island in its entirety and consisting of the former towns of Fogo, Joe Batt's Arm-Barr'd Islands-Shoal Bay, Seldom-Little Seldom, Tilting and the previously unincorporated areas of the island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "fogo island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fogo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10618,
+    "place_id": "gn-2648314",
+    "input": {
+      "place": {
+        "place_id": "gn-2648314",
+        "name": "Goostrey",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.22731,
+        "lon": -2.33919
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Goostrey",
+          "url": "https://en.wikipedia.org/wiki/Goostrey",
+          "text": "Goostrey is a village and civil parish in the unitary authority of Cheshire East and the ceremonial county of Cheshire, England. It is in open countryside, 14 miles (23 km) north-east of Crewe and 12 miles (19 km) west of Macclesfield. The parish contains the Lovell Radio Telescope at Jodrell Bank Observatory, a UNESCO World Heritage site. At the 2011 census, it had a population of 2,179 in 956 housesholds. It contains 24 listed heritage assets and one scheduled monument (a bowl barrow near Jodrell Bank Farm).  The parish also includes the hamlets of Blackden, Blackden Heath and Jodrell Bank."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "goostrey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10636,
+    "place_id": "gn-662530",
+    "input": {
+      "place": {
+        "place_id": "gn-662530",
+        "name": "Voineasa",
+        "country": "Romania",
+        "subdivision": "Vâlcea County",
+        "lat": 45.41667,
+        "lon": 23.95
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Voineasa, Vâlcea",
+          "url": "https://en.wikipedia.org/wiki/Voineasa,_Vâlcea",
+          "text": "Voineasa is a commune located in Vâlcea County, Oltenia, Romania. It is composed of three villages: Valea Măceșului, Voineasa, and Voineșița.\nSituated on the valley of the Lotru River, the commune is also a spa resort, with a Communist-era hotel dominating the locality, as well as several other tourist facilities. 25 km (16 mi) upstream of the valley is Vidra Lake, one of the largest dams and reservoirs in Romania, built between 1965 and 1972, and also the newly built Transalpina ski resort on lake's shore (Transalpina Resort is not on Transalpina Road but is connected to it by road)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "voineasa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 10644,
+    "place_id": "gn-8348046",
+    "input": {
+      "place": {
+        "place_id": "gn-8348046",
+        "name": "Nichols Point",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -34.21028,
+        "lon": 142.21122
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nichols Point",
+          "url": "https://en.wikipedia.org/wiki/Nichols_Point",
+          "text": "Nichols Point is a town in Victoria, Australia, located approximately 4 km from Mildura, Victoria. The Post Office opened on 8 April 1908 although known as Nicholl's Point until around 1949. The Post Office includes a small general store and bottle shop. In the 2021 census, Nichols Point had a population of 1,723.\nThe town has a Primary School with over 300 students. The Nichols Point School opened in May 1892, and classes were initially held in a \"bough shelter\" structure until the local Methodist Church was leased in July 1892 (on the corner of 5th Street and Koorlong Avenue)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "nichols point",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nichols",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "point",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 10645,
+    "place_id": "gn-8348054",
+    "input": {
+      "place": {
+        "place_id": "gn-8348054",
+        "name": "Glenside",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.94275,
+        "lon": 138.63375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glenside, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Glenside,_South_Australia",
+          "text": "Glenside is a suburb in the local government area of the City of Burnside, Adelaide, South Australia. The suburb is 4.9 kilometres south-east of the Adelaide city centre, home to 2,852 people in a total land area of 1.40 km2.\nIt is bordered on the north by Greenhill Road, on the east by Portrush Road, on the south by Flemington Street and Windsor Road and the west by Fullarton Road. The suburb has a rectangular layout. A number of residential streets in the suburb contain avenues of jacaranda trees, which provide a lush purple colour when they flower in Spring."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "glenside",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

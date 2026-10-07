@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 4354,
+    "attempt": 4321,
+    "place_id": "gn-730919",
+    "input": {
+      "place": {
+        "place_id": "gn-730919",
+        "name": "Ihtiman",
+        "country": "Bulgaria",
+        "subdivision": "Sofia",
+        "lat": 42.43821,
+        "lon": 23.81608
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ihtiman",
+          "url": "https://en.wikipedia.org/wiki/Ihtiman",
+          "text": "Ihtiman (Bulgarian: Ихтиман [ixtiˈman]) is a town in western Bulgaria, part of Sofia Province. It is located in the Ihtiman Valley of the Ihtimanska Sredna Gora mountain range and lies in a valley 48 km from Sofia and 95 km from Plovdiv, close to the Trakiya motorway.\nFormerly a Roman defensive station guarding the important roads to the Bosphorus, Ihtiman was then called Stipon. It continued to play this role under the Byzantine Empire and later under the First and Second Bulgarian Empires, with the main defensive centre in the region of the Gate of Trajan hill pass. In 986 the Bulgarian Emperor Samuel dealt a crushing defeat on the Byzantines in the battle of the Gates of Trajan.\nFollowing the Ottoman conquest of Bulgaria in the 14th century, the town's name was changed to Ihtiman, which is thought to be of Ottoman Turkish origin.\nThe traditional and dominant religion is Eastern Orthodox Christianity.\nIhtiman Hook on Livingston Island in the South Shetland Islands, Antarctica is named after Ihtiman."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "ihtiman",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4355,
+    "attempt": 4322,
+    "place_id": "gn-7669018",
+    "input": {
+      "place": {
+        "place_id": "gn-7669018",
+        "name": "Aldergrove",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.05801,
+        "lon": -122.47087
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aldergrove, Langley",
+          "url": "https://en.wikipedia.org/wiki/Aldergrove,_Langley",
+          "text": "Aldergrove is a community in the Township of Langley within British Columbia, Canada, approximately 59 km (37 mi) east of Vancouver. The community is urban in nature and, although not incorporated as a town, is often referred to as one. Aldergrove is located at the southeastern edge of both the Township of Langley and the Greater Vancouver metropolitan area, near the western edge of the Abbotsford metropolitan area. It is home to the Lynden–Aldergrove Border Crossing, one of the Lower Mainland's five land border crossings, connecting it with Lynden, Washington.\nThis is a predominantly agricultural area, with crops including medical cannabis, grown by Canopy Growth Corporation, in the British Columbia Agricultural Land Reserve area. This grow operation is the largest federally licensed cannabis facility in the world, with 3.7 hectares (400,000 sq ft) of growing space and may eventually reach 12 hectares (1,300,000 sq ft)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "aldergrove",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4356,
+    "attempt": 4323,
+    "place_id": "gn-11962406",
+    "input": {
+      "place": {
+        "place_id": "gn-11962406",
+        "name": "Mandaqui",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.45947,
+        "lon": -46.64086
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mandaqui",
+          "url": "https://en.wikipedia.org/wiki/Mandaqui",
+          "text": "Mandaqui is a district in the city of São Paulo, Brazil. Its official day is October 6th, along with the neighborhood of the same name. It is home to part of the Serra da Cantareira and the Cantareira Park, one of the largest native urban forests in the world.\nThe neighborhoods in the Mandaqui district are: Vila Santo Antônio; Jardim Pícolo; Santa Terezinha Residential Complex; Mandaqui Park; Chácara do Encosto; Vila Vitória Mazzei; Vila Aurora; Jardim Paraíso; Jardim Vieira de Carvalho; Jardim Ormendina; Jardim Sônia; Jardim Santa Inês; Santo Antônio Residential Complex; Jardim Carlu; Vila Amélia; Vila Romero; Jardim Malba; Jardim Maninos; Vila Basiléa; Lauzane Paulista; Jardim Emília; Vila Santos; Jardim Flamingo; Cantareira Park; Pedra Branca; Jardim Itatinga; Much of the northernmost part of the district is occupied by the Serra da Cantareira, in addition to the Albert Löefgren State Park - Horto Florestal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "mandaqui",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4357,
+    "attempt": 4324,
+    "place_id": "gn-2636564",
+    "input": {
+      "place": {
+        "place_id": "gn-2636564",
+        "name": "Sudbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.0389,
+        "lon": 0.73117
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sudbury, Suffolk",
+          "url": "https://en.wikipedia.org/wiki/Sudbury,_Suffolk",
+          "text": "Sudbury (, locally ) is a market town and civil parish in the south west of Suffolk, England, on the River Stour near the Essex border, 60 miles (97 km) north-east of London. It is the largest town in the Babergh local government district and part of the South Suffolk constituency. In 2021, the built-up area had a population of 23,912 and the parish had a population of 13,619.\nSudbury was an Anglo-Saxon settlement from the end of the 8th century, and its market was established in the early 11th century. Its textile industries prospered in the Late Middle Ages, the wealth of which funded many of its buildings and churches. The town became notable for its art in the 18th century, being the birthplace of Thomas Gainsborough, whose landscapes offered inspiration to John Constable, another Suffolk painter of the surrounding Stour Valley area. The 19th century saw the arrival of the railway with the opening of a station on the historic Stour Valley Railway, and Sudbury railway station forms the current terminus of the Gainsborough Line. In World War II, US Army Air Forces bombers operated from RAF Sudbury.\nToday, Sudbury retains its status as a market town with a twice-weekly market in the town centre in front of St Peter's Church, which is now a cultural venue for events such as concerts and exhibitions. In sport, the town has a semi-professional football club, A.F.C. Sudbury, which competes at the seventh level of the football pyramid.\nIt is home to the Gainsborough's House museum, celebrating the work of the artist."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 261
+    },
+    "banned_terms": [
+      {
+        "term": "sudbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4358,
+    "attempt": 4325,
+    "place_id": "gn-3368962",
+    "input": {
+      "place": {
+        "place_id": "gn-3368962",
+        "name": "Darling",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.37817,
+        "lon": 18.37938
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Darling, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Darling,_South_Africa",
+          "text": "Darling is a small town in a farming area on the West Coast region of the Western Cape, about 75 km (46.6 mi) from Cape Town, like many small towns situated along the West Coast it is primarily inhabited by Afrikaans speaking people. It is also home to a dairy company bearing the same name.\nAt the beginning of the 18th century, about 29 farmers lived in an area called Groenkloof and on one of these farms, Langfontein, Darling was founded in 1853. It was named after Sir Charles Henry Darling who came in 1851 to the Cape as Lieutenant Governor.\nThe Darling Museum showcases the history of the town and the Darling creamery which was established in 1899 by two Swedish settlers, Nils Georg Moller and G. Threnstrom, and was closed in 1950. The museum also holds a collection of large agricultural machines. Darling is famous for its wildflowers and since 1917 the annual Darling Wildflower show is held by the Darling Wildflower Society in the beginning of Spring in September, founded in 1915 by Mrs. Suzanne Malan and Mr. Frederick Duckitt of Waylands.\nThe Darling Wind Farm is situated between Darling and the coastal town of Yzerfontein. It is operational with plans for expansion.\nThe South African satirist Pieter-Dirk Uys performs many of his shows as Evita Bezuidenhout at Evita se Perron, a cabaret venue and restaurant in Darling. The adjacent arts and crafts market has been taken over in 2006 by the Darling Trust, a charitable organisation which addresses the problems of impoverished communities in the area through the establishment of grassroots projects. In 1998 the first private school opened its doors in the Swartland area, Darling College, which is close to the entrance of the town on the Malmesbury, South Africa\nIn 2006, the city launched the Darling Music Experience with the aim to organise small concerts in a rural setting for both classical and more popular music. The festival offers chamber music, popular choir works and jazz. A young local composer is commissioned every year to write a piece for the festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 347
+    },
+    "banned_terms": [
+      {
+        "term": "darling",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4359,
+    "attempt": 4326,
+    "place_id": "gn-4167003",
+    "input": {
+      "place": {
+        "place_id": "gn-4167003",
+        "name": "Opa-locka",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 25.90232,
+        "lon": -80.25033
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Opa-locka, Florida",
+          "url": "https://en.wikipedia.org/wiki/Opa-locka,_Florida",
+          "text": "Opa-locka is a city in Miami-Dade County, Florida, United States. Spanning roughly 4.2 square miles (11 km2), it is part of the Miami metropolitan area of South Florida. As of the 2020 Census, the population was 16,463, up from 15,219 in 2010.\nOpa-locka was founded in 1926 by American aviator and industrialist Glenn Curtiss, who was inspired by the Middle Eastern folk tales of the One Thousand and One Nights. As such, the city is noted as having one of the largest collection of Moorish Revival architecture in the Western Hemisphere, and many of its roads bear names such as Sharazad Boulevard, Sinbad Avenue, Sabur Lane, Sultan Avenue, Ali Baba Avenue, Perviz Avenue, and Sesame Street.\nThe name Opa-locka is an abbreviation of a Seminole place name, Opa-tisha-wocka-locka, meaning \"wooded hummock\", \"high, dry hummock\", or \"a big island covered with many trees and swamps\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "opa locka",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "opa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "locka",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4360,
+    "attempt": 4327,
+    "place_id": "gn-5416005",
+    "input": {
+      "place": {
+        "place_id": "gn-5416005",
+        "name": "Cañon City",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 38.44098,
+        "lon": -105.24245
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cañon City, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Ca%C3%B1on_City,_Colorado",
+          "text": "Cañon City ( KAN-yən) is the home rule city that is the county seat of and the most populous municipality in Fremont County, Colorado, United States. The city population was 17,141 at the 2020 United States census. Cañon City is the principal city of the Cañon City, CO Micropolitan Statistical Area and it is a part of the Front Range Urban Corridor. Cañon City straddles the easterly flowing Arkansas River and is a popular tourist destination for sightseeing, whitewater rafting, and rock climbing. The city is known for its many public parks, fossil discoveries, Skyline Drive, The Royal Gorge Railroad, the Royal Gorge, and extensive natural hiking paths. In 1994, the United States Board on Geographic Names approved adding the tilde to the official name of Cañon City, a change from Canon City as the official name in its decisions of 1906 and 1975. It is one of the few U.S. cities to have the Spanish Ñ in its name, others being La Cañada Flintridge, California; Española, New Mexico; Peñasco, New Mexico; and Peñitas, Texas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "canon city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "canon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4362,
+    "attempt": 4328,
+    "place_id": "gn-2177394",
+    "input": {
+      "place": {
+        "place_id": "gn-2177394",
+        "name": "Bacchus Marsh",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.67268,
+        "lon": 144.43829
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bacchus Marsh",
+          "url": "https://en.wikipedia.org/wiki/Bacchus_Marsh",
+          "text": "Bacchus Marsh (Wathawurrung: Pullerbopulloke) is a town in Victoria, Australia, located approximately 50 kilometres (30 mi) north-west of the state capital Melbourne, at a near equidistance to the major cities of Melbourne, Ballarat and Geelong. \nAs of the 2021 census, Bacchus Marsh has a population of 7,808, while its statistical urban area (including the suburbs Darley, Maddingley, and Hopetoun Park, among others) has a population of 24,717. Bacchus Marsh is the largest urban area in the Shire of Moorabool local government area.\nTraditionally a market garden area producing a large amount of the region's fruits and vegetables, in recent decades it has transformed into the main commuter town on the Melbourne–Ballarat corridor.\nIt was named after the colonial settler Captain William Henry Bacchus, who saw the great value of this locality as it was situated on two rivers – the Lerderderg and Werribee."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "bacchus marsh",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bacchus",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marsh",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4363,
+    "attempt": 4329,
+    "place_id": "gn-2206089",
+    "input": {
+      "place": {
+        "place_id": "gn-2206089",
+        "name": "Sandy Bay",
+        "country": "Australia",
+        "subdivision": "Tasmania",
+        "lat": -42.89449,
+        "lon": 147.32439
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sandy Bay, Tasmania",
+          "url": "https://en.wikipedia.org/wiki/Sandy_Bay,_Tasmania",
+          "text": "Sandy Bay is a suburb of the city of Hobart, Tasmania, Australia, located immediately south of the Hobart central business district, and adjoining the suburb of Battery Point. Sandy Bay is bounded on the east by the River Derwent, and has several beaches along the shore, the main beaches with public access are Short Beach, Nutgrove Beach, Long Beach and Lords Beach.\nThe suburb has many large homes, and is known as one of the city's prestigious areas. In the more southern areas of Sandy Bay, close to the water and also high on the slopes of Mt Nelson, are some of Tasmania's most expensive real estate. It is also the site of the Hobart campus of the University of Tasmania, and the private schools, Fahan School, The Hutchins School, and Mount Carmel College, Sandy Bay. There is considerable diversity within the suburb. The area surrounding the University of Tasmania is home to considerable student accommodation.\nSandy Bay is accessible from the city via Sandy Bay Road, which runs from Davey Street in the city all the way to the Kingborough municipal boundary at Taroona where it becomes the Channel Highway. Before the construction of the Southern Outlet, the road was the primary route to and from Kingston. The higher parts of Sandy Bay are accessible via Regent Street, which bypasses the main shopping district and goes through the University of Tasmania to Churchill Avenue and Lower Sandy Bay.\nAustralia's first legal casino, Wrest Point Hotel Casino, was opened in 1973 at the site of the former Wrest Point Riviera hotel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 261
+    },
+    "banned_terms": [
+      {
+        "term": "sandy bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sandy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4364,
+    "attempt": 4330,
+    "place_id": "gn-2651294",
+    "input": {
+      "place": {
+        "place_id": "gn-2651294",
+        "name": "Devizes",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.35084,
+        "lon": -1.99421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Devizes",
+          "url": "https://en.wikipedia.org/wiki/Devizes",
+          "text": "Devizes () is a market town and civil parish in Wiltshire, England. It developed around Devizes Castle, an 11th-century Norman castle, and received a charter in 1141. The castle was besieged during the Anarchy, a 12th-century civil war between Stephen of England and Empress Matilda, and again during the English Civil War when the Cavaliers lifted the siege at the Battle of Roundway Down and the  Parliamentarian Army of the West under Sir William Waller was routed. Devizes remained under Royalist control until 1645, when Oliver Cromwell attacked and forced the Royalists to surrender. The castle was destroyed in 1648 on the orders of Parliament, and today little remains of it.\nFrom the 16th century Devizes became known for its textiles, and by the early 18th century it held the largest corn market in the West Country, constructing the Corn Exchange in 1857. In the 18th century, brewing, curing of tobacco, and snuff-making were established. The Wadworth Brewery was founded in the town in 1875.\nStanding at the west edge of the Vale of Pewsey and the northwestern edge of Salisbury Plain, Devizes is about 10+1⁄2 miles (17 kilometres) southeast of Chippenham and 11 miles (18 km) northeast of the county town of Trowbridge. The town has nearly five hundred listed buildings, some notable churches, a town hall and a green in the centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "devizes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4365,
+    "attempt": 4331,
+    "place_id": "gn-5095409",
+    "input": {
+      "place": {
+        "place_id": "gn-5095409",
+        "name": "Basking Ridge",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.70621,
+        "lon": -74.54932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Basking Ridge, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Basking_Ridge,_New_Jersey",
+          "text": "Basking Ridge is an unincorporated community and census-designated place (CDP) located within Bernards Township in the Somerset Hills region of Somerset County, in the U.S. state of New Jersey.\nSettled during colonial times, Basking Ridge is in the Raritan Valley and is a commercial hub for northern-central New Jersey and is a commuter town of New York City. It was home to the old AT&T Headquarters, now operated by Verizon. Basking Ridge is the current headquarters for Verizon Wireless and Peraton Labs (both AT&T successors), Collabera, and Lawyer.com. The community also hosts a train station along the Gladstone Branch (one of the two branches of the Morris & Essex Lines), which connects to Hoboken Terminal and New York Penn Station.\nThe community of Basking Ridge is part of greater Bernards Township, which also includes the neighborhoods of Liberty Corner, Lyons and West Millington.\nIt was first listed as a CDP in the 2020 census with a population of 7,196."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "basking ridge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "basking",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ridge",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4366,
+    "attempt": 4332,
+    "place_id": "gn-5103580",
+    "input": {
+      "place": {
+        "place_id": "gn-5103580",
+        "name": "Rutherford",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.82649,
+        "lon": -74.10681
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rutherford, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Rutherford,_New_Jersey",
+          "text": "Rutherford is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 18,834, an increase of 773 (+4.3%) from the 2010 census count of 18,061, which in turn reflected a decline of 49 (−0.3%) from the 18,110 counted in the 2000 census.\nRutherford was formed as a borough by an act of the New Jersey Legislature on September 21, 1881, from portions of Union Township, based on the results of a referendum held on the previous day. The borough was named for John Rutherfurd, a U.S. Senator who owned land in the area.\nRutherford has been called the \"Borough of Trees\" and \"The First Borough of Bergen County\", and is known as well for its pedestrian-focused downtown area adjacent to the borough's Bergen County Line (New Jersey Transit) railway station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "rutherford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4367,
+    "attempt": 4333,
+    "place_id": "gn-5345844",
+    "input": {
+      "place": {
+        "place_id": "gn-5345844",
+        "name": "El Rio",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.23578,
+        "lon": -119.16383
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Rio, California",
+          "url": "https://en.wikipedia.org/wiki/El_Rio,_California",
+          "text": "El Rio ( ; Spanish: El Río, meaning \"The River\") is a small, rural unincorporated town in Ventura County, California, United States, on the northeast side of the 101 Freeway and Oxnard, and south of the Santa Clara River. The town was founded in 1875 and named New Jerusalem by the owner of general store who became the first postmaster in 1882. In 1885, a school and Santa Clara Catholic Church were built. Located near where the coastal railroad line crosses the Santa Clara River, the town's name was changed to El Rio around 1900. The former wagon river crossing route became the Ventura Freeway which separates the community from the commercial developments that grew up on the southwest side of the freeway. That portion of the historic community and sections closer to the river have been annexed to the city of Oxnard.  Vineyard Avenue (State Route 232) is the central business district for the largely residential community.\nThe population was 7,037 at the 2020 census, down from 7,198 at the 2010 census. For statistical purposes, the United States Census Bureau has defined a portion of the unincorporated area as El Rio census-designated place (CDP) which does not precisely correspond to the historical community that is much larger with significant portions having been annexed to the city of Oxnard."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "el rio",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4368,
+    "attempt": 4334,
+    "place_id": "gn-6165406",
+    "input": {
+      "place": {
+        "place_id": "gn-6165406",
+        "name": "Thompson",
+        "country": "Canada",
+        "subdivision": "Manitoba",
+        "lat": 55.7435,
+        "lon": -97.85579
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thompson, Manitoba",
+          "url": "https://en.wikipedia.org/wiki/Thompson,_Manitoba",
+          "text": "Thompson is a city in north-central Manitoba, Canada, the largest city and most populated municipality in Northern Manitoba.\nSituated along the Burntwood River, Thompson is located 210 kilometres (130 mi) north of Lake Winnipeg and 761 km (473 mi) north of the City of Winnipeg. Originally founded in 1956 as a mining town, it is one of the largest fully planned communities in Canada. It now primarily serves as the \"Hub of the North\", providing goods and services such as health care and retail trade to the surrounding communities.\nThompson has fewer than 15,000 residents, with many of the smaller communities accessible only by air or winter road. Despite its isolated location in the heart of Canada's boreal forest, the city is served by an all-weather road and Manitoba Highway 6, Thompson station (served by the Winnipeg–Churchill train), and by the Thompson Airport.\nThompson's natural and undisturbed surroundings make it popular with outdoor enthusiasts. The largest marina in Manitoba is 38 km (24 mi) south in Paint Lake Provincial Park. The lack of light pollution and Thompson's northern latitude allows for occasional viewing of the northern lights, even within the city limits."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "thompson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4369,
+    "attempt": 4335,
+    "place_id": "gn-8224859",
+    "input": {
+      "place": {
+        "place_id": "gn-8224859",
+        "name": "Marconia",
+        "country": "Italy",
+        "subdivision": "Basilicate",
+        "lat": 40.36355,
+        "lon": 16.68823
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marconia",
+          "url": "https://en.wikipedia.org/wiki/Marconia",
+          "text": "Marconia is the main hamlet of the municipality of Pisticci in the Italian province of Matera. It is only 10 km from the Ionian coast of the same municipality and together with the peripheral urban agglomerations of Tinchi, Centro Agricolo, Casinello and the coastal area has approximately 13,000 inhabitants.\nMarconia is the newest and most populous town in the municipality of Pisticci and is located in a flat and central position in the Metapontino area.\nMarconia was established during the Second World War as a fascist exile colony inhabited by political dissidents. After the dissolution of the colony, which occurred with the fall of fascism in Italy in 1943, some of the internees returned to their hometowns, others moved to Pisticci, but many decided to remain there.\nMarconia is named for Guglielmo Marconi, an Italian 20th-century inventor credited with the invention of radio."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "marconia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4370,
+    "attempt": 4336,
+    "place_id": "gn-942683",
+    "input": {
+      "place": {
+        "place_id": "gn-942683",
+        "name": "Vredefort",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -27.00805,
+        "lon": 27.3646
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vredefort",
+          "url": "https://en.wikipedia.org/wiki/Vredefort",
+          "text": "Vredefort (locally , Afrikaans: [ˈfriədəfɔrt]) is a small farming town in the Free State province of South Africa with cattle, peanuts, sorghum, sunflowers and maize being farmed.  It is home to 3,000 residents.\nThe town was established in 1876 on a farm called Visgat, on the Vredefort impact structure, the largest and oldest visible bolide impact crater in the world (with a diameter of 300 kilometres (190 mi)). It was this approximately 10-kilometre (6.2 mi) wide bolide that led to the preservation of the gold-bearing reefs of the Free State some 2.02 billion years ago. The town's name, which translates to \"peace fort\" in Afrikaans and Dutch, was derived from the peaceful conclusion to a threatened war between the Transvaal and the Orange Free State. The British built a concentration camp here during the Second Boer War to house Boer women and children.\nThe Vredefort Dome is currently the largest and one of the oldest known asteroid impact sites in the world. It is South Africa's seventh World Heritage Site and its status is largely due to the efforts of research scientists from Wits University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 143,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "vredefort",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4371,
+    "attempt": 4337,
+    "place_id": "gn-11669854",
+    "input": {
+      "place": {
+        "place_id": "gn-11669854",
+        "name": "Stamford Hill",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.56872,
+        "lon": -0.07334
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stamford Hill",
+          "url": "https://en.wikipedia.org/wiki/Stamford_Hill",
+          "text": "Stamford Hill is an area in Inner London, England, about 5+1⁄2 miles (9 kilometres) northeast of Charing Cross. The neighbourhood is a sub-district of Hackney, the major component of the London Borough of Hackney, and is known for its Hasidic community, the largest concentration of orthodox Ashkenazi in Europe.\nThe district takes its name from the eponymous hill, which reaches a height of 108 feet (33 metres) AOD, and the originally Roman A10 also takes the name \"Stamford Hill\", as it makes its way through the area.\nThe hill is believed to be named after the ford where the A10 crossed the Hackney Brook on the southern edge of the hill. Sanford and Saundfordhill are referred to in documents from the 1200s, and mean \"sand Ford\". Roque's map of 1745 shows a bridge, which replaced the ford, referred to as \"Stamford Bridge\".\nThe hill rises gently from the former course of the Hackney Brook to the south, and its steeper northern slope provided a natural boundary for the traditional (parish and borough) extent of Hackney, and now does so for the wider modern borough."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "stamford hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stamford",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4372,
+    "attempt": 4338,
+    "place_id": "gn-1256470",
+    "input": {
+      "place": {
+        "place_id": "gn-1256470",
+        "name": "Shirud",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 20.73527,
+        "lon": 74.89187
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shirud",
+          "url": "https://en.wikipedia.org/wiki/Shirud",
+          "text": "Shirud is a village in the Dhule district of Maharashtra, India, with a population of 8,455 as of the 2011 Census. Known for its historical and cultural landmarks, the village is home to the Kalika Devi Temple, a Hindu shrine dedicated to Goddess Kali. Constructed around 1200 CE and later renovated during the Maratha Empire (17th–19th century), the temple is recognized as a protected archaeological site for its ancient architecture and serene natural surroundings. Pilgrims flock to the temple during Navratri, a nine-day festival honoring the goddess, and an annual Khandoba Jatra fair in February attracts visitors for religious observances and local shopping over ten days.\nSituated at the confluence of the Bori and Mandur rivers, Shirud features a small dam that supports local water resources. The village lies near the Shirud-Vinchur Chowfuli, a key road junction connecting it to neighboring regions. As a commercial and educational hub, Shirud hosts a weekly Friday bazaar where agricultural goods and handicrafts are traded, and its schools serve students from surrounding villages.\nThe village’s 2011 census data reflects a gender distribution of 51% males and 49% females, with a literacy rate of 76%. Road connectivity via state highways links Shirud to Dhule, the nearest major city approximately 25 kilometers away."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "shirud",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4373,
+    "attempt": 4339,
+    "place_id": "gn-13512546",
+    "input": {
+      "place": {
+        "place_id": "gn-13512546",
+        "name": "Downtown Eastside",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.2818,
+        "lon": -123.09351
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Downtown Eastside",
+          "url": "https://en.wikipedia.org/wiki/Downtown_Eastside",
+          "text": "The Downtown Eastside (DTES) is a neighbourhood in Vancouver, British Columbia, Canada. One of the city's oldest neighbourhoods, the DTES is the site of a complex set of social issues, including disproportionately high levels of drug use, homelessness, poverty, crime, mental illness and sex work.\nAround the beginning of the 20th century, the DTES was Vancouver's political, cultural and retail centre. Over several decades, the city centre gradually shifted westwards, and the DTES became a poor, albeit relatively stable, neighbourhood. In the 1980s, the area began a rapid decline due to several factors, including an influx of hard drugs, policies that pushed sex work and drug-related activity out of nearby areas, and the cessation of federal funding for social housing. By 1997, an epidemic of HIV infection and drug overdoses in the DTES led to the declaration of a public health emergency. As of 2018, critical issues include opioid overdoses, especially those involving the drug fentanyl; decrepit and squalid housing; a shortage of low-cost rental housing; and mental illness, which often co-occurs with addiction.\nThe population of the DTES is estimated to be around 7,000 people. Compared to the city, the neighbourhood is home to a significant Indigenous population, which reflects the ongoing impacts of colonial displacement and systemic inequities that have shaped the area’s demographics. Additionally, historical factors such as de-institutionalization, housing shortages, and limited access to mental health care have contributed to the concentration of poverty and substance use in the community. Residents experience Canada's highest rate of death from encounters with police, and there is mutual mistrust between police and many residents experiencing homelessness.\nSince Vancouver's real-estate boom began in the early 21st century, the area has been increasingly experiencing gentrification. Some see gentrification as a force for revitalization, while others believe it has led to higher displacement and homelessness. Numerous efforts have been made to improve the DTES at an estimated cost of over $1.4 billion as of 2009. Services in the greater DTES area are estimated to cost $360 million per year. Commentators from across the political spectrum have said that little progress has been made in resolving the issues of the neighbourhood as a whole, although there are individual success stories. Proposals for addressing the issues of the area include increasing investment in social housing, increasing capacity for treating people with addictions and mental illness, making services more evenly distributed across the city and region instead of concentrated in the DTES, and improving coordination of services. However, little agreement exists between the municipal, provincial and federal governments regarding long-term plans for the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 429
+    },
+    "banned_terms": [
+      {
+        "term": "downtown eastside",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "downtown",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "eastside",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4374,
+    "attempt": 4340,
+    "place_id": "gn-2638157",
+    "input": {
+      "place": {
+        "place_id": "gn-2638157",
+        "name": "Shaftesbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.00528,
+        "lon": -2.19333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shaftesbury",
+          "url": "https://en.wikipedia.org/wiki/Shaftesbury",
+          "text": "Shaftesbury () is a town and civil parish in Dorset, England. It is on the A30 road, 20 miles (32 kilometres) west of Salisbury and 23 miles (37 kilometres) north-northeast of Dorchester, near the border with Wiltshire. It is the only significant hilltop settlement in Dorset, being built about 215 metres (705 feet) above sea level on a greensand hill on the edge of Cranborne Chase.\nThe town looks over the Blackmore Vale, part of the River Stour basin.\nShaftesbury is the site of the former Shaftesbury Abbey, which was founded in 888 by King Alfred and became one of the richest religious establishments in the country, before being destroyed in the dissolution in 1539. Adjacent to the abbey site is Gold Hill, a steep cobbled street used in the 1970s as the setting for Ridley Scott's television advertisement for Hovis bread.\nIn the 2021 census the town's civil parish had a population of 9,160."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 142,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "shaftesbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

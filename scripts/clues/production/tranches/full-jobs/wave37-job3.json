@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 7291,
+    "attempt": 7241,
+    "place_id": "gn-2152286",
+    "input": {
+      "place": {
+        "place_id": "gn-2152286",
+        "name": "Queanbeyan",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -35.35493,
+        "lon": 149.232
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Queanbeyan",
+          "url": "https://en.wikipedia.org/wiki/Queanbeyan",
+          "text": "Queanbeyan ( KWEEN-bee-ən) is a city in south-eastern New South Wales, Australia, located adjacent to the Australian Capital Territory in the Southern Tablelands region. Located on the Queanbeyan River, the city is the council seat of the Queanbeyan-Palerang Regional Council. At the 2021 census, the Queanbeyan part of the Canberra–Queanbeyan built-up area had a population of 37,511.\nQueanbeyan's economy is based on light construction, manufacturing, service, retail and agriculture. Canberra, Australia's capital, is located 15 kilometres (9 miles) to the west, and Queanbeyan is a commuter town. The word Queanbeyan is the anglicised form of Quinbean or *Kuwinbiyan, a Ngarigo word meaning \"clear waters\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "queanbeyan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7292,
+    "attempt": 7242,
+    "place_id": "gn-2154481",
+    "input": {
+      "place": {
+        "place_id": "gn-2154481",
+        "name": "Officer",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.05916,
+        "lon": 145.40947
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Officer, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Officer,_Victoria",
+          "text": "Officer is a suburb of Melbourne, Victoria, Australia, 48 km south-east of Melbourne's Central Business District and the second most populous in the Shire of Cardinia after Pakenham. Officer recorded a population of 18,503 at the 2021 census.\nOfficer serves as the Council seat of the shire.\nMost of the land around Officer is currently being developed for residential use with medium density housing. Population and demographic mixes are changing, with construction of a 4,000 lot housing estate to be completed in late 2019. Current estates that have been announced and under construction include:\nTimbertop, \nArcadia,\nKaduna Park,\nSavannah, Officer Fields and Officer Central."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "officer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7293,
+    "attempt": 7243,
+    "place_id": "gn-2156694",
+    "input": {
+      "place": {
+        "place_id": "gn-2156694",
+        "name": "Mount Colah",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.68333,
+        "lon": 151.11667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Colah",
+          "url": "https://en.wikipedia.org/wiki/Mount_Colah",
+          "text": "Mount Colah is an outer suburb of Northern Sydney, in the state of New South Wales, Australia 24 kilometres north of the Sydney central business district, in the local government area of Hornsby Shire.\nMount Colah is 5 km north of Hornsby, the nearest major town centre.  It is one of the most northerly suburbs of Sydney and is where the \"Welcome to Sydney\" sign is located. Mount Colah is the second highest suburb in Sydney by elevation.  Considered one of Sydney's leafier suburbs, streets are clustered around the Pacific Highway.  Mount Colah is bordered to the east by the Ku-ring-gai Chase National Park.\nMount Colah varies in altitude from 68 m to about 206-217 m above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "mount colah",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "colah",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7294,
+    "attempt": 7244,
+    "place_id": "gn-2208241",
+    "input": {
+      "place": {
+        "place_id": "gn-2208241",
+        "name": "Mosgiel",
+        "country": "New Zealand",
+        "subdivision": "Otago",
+        "lat": -45.875,
+        "lon": 170.34722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mosgiel",
+          "url": "https://en.wikipedia.org/wiki/Mosgiel",
+          "text": "Mosgiel () is a town on the Taieri Plain in Otago, New Zealand, 17 km (11 mi) west of Dunedin. Since the re-organisation of New Zealand local government in 1989 it has been administered by the Dunedin City Council. Mosgiel has a population of approximately 15,100 as of June 2025. A nickname for Mosgiel is \"The pearl of the plain\". Its low-lying nature does pose problems, making it prone to flooding after heavy rains. Mosgiel takes its name from Mossgiel Farm, Ayrshire, the farm of the poet Robert Burns, the uncle of the co-founder in 1848 of the Otago settlement, the Reverend Thomas Burns.\nMosgiel stands at the north-eastern extremity of the Taieri Plain. The Silver Stream, a tributary of the Taieri River, runs through its north end. Between Mosgiel and the centre of Dunedin stand the rugged Three Mile Hill and Scroggs Hill, which form part of the crater-wall of a long-extinct volcano, the crater being the Otago Harbour. To the south of the town lies one of the many peaks that formed part of the volcano: Saddle Hill, a prominent landmark, visible from a considerable distance and notable for its distinctive shape, lies south of State Highway One where Kinmont Park, a new housing subdivision is located at the foot of the hill.\nThe Dunedin Southern Motorway, upgraded in 2003, links Mosgiel with the centre of Dunedin. State Highway 87 to Kyeburn starts at a junction with State Highway 1 at the southeastern edge of Mosgiel, the first part of the highway being the main street of Mosgiel, Gordon Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "mosgiel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7295,
+    "attempt": 7245,
+    "place_id": "gn-2338772",
+    "input": {
+      "place": {
+        "place_id": "gn-2338772",
+        "name": "Igbeti",
+        "country": "Nigeria",
+        "subdivision": "Oyo State",
+        "lat": 8.74921,
+        "lon": 4.13113
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Igbeti",
+          "url": "https://en.wikipedia.org/wiki/Igbeti",
+          "text": "Igbeti-Okeogun () is a town located in the northern part of Oyo State, Nigeria. The town's population was approximately 81,000 at the 2006 census. Igbeti is also known as \"Marble City\" for its rich marble deposits. It is situated in Olorunsogo Local Government area which is one of the thirty three local governments in Oyo State. It has Ilorin, the Kwara state capital to her East, Ikoyi Ile to the South, Igboho and Saki to her West, while the Old Oyo National Park lies to the North. Iya Mopo and Agbele Rock are the two most visited of the 16 hills surrounding the town. Iya Mopo Hill, the highest hill in Igbeti, which occupies over six kilometers of land mass and is as high as one thousand one hundred and fifty feet, was once used as shelter against attacks. Agbele Rock is a naturally formed statue said to depict a mother with load on her head carrying her child and also Bata Erugba named because of it Drum like structure.\nThere are annual activities of interest and tourist attractions in Igbeti such as annual mountain hiking and picnics for the Easter holidays, especially on Easter Mondays. This attracts tourists inflow into the town. Igbeti is known to have hosted many cultural programmes such as the Oyo State Celebration of world tourism day on September 27."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "igbeti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7296,
+    "attempt": 7246,
+    "place_id": "gn-2438409",
+    "input": {
+      "place": {
+        "place_id": "gn-2438409",
+        "name": "Torodi",
+        "country": "Niger",
+        "subdivision": "Tillabéri Region",
+        "lat": 13.11915,
+        "lon": 1.79869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torodi",
+          "url": "https://en.wikipedia.org/wiki/Torodi",
+          "text": "Torodi is a small town and a rural commune in Niger. As of 2012, it had a population of 109,342. As a rural center, Torodi hosts a large weekly market and the seat of local tribal authority (canton). Torodi is in the Say Department of the Tillaberi Region, which surrounds the national capital, Niamey.  Say Department, with its capital at the large Niger River town of Say, abuts Niamey to the southwest and across the river to the west. The town of Torodi lies about 60 km due west of the city of Say and 50 km east of the border with Burkina Faso.  Torodi itself lies on a tributary of the Niger, the Gourbi river.\nTorodi has historically been a crossroads of Zarma and Songhay people form the north, and the Gourma people, who dominated most of the area that is now Say Department until the 18th century CE.  The 18th century saw expansion of Fulani people, south along the Niger from Gao and the Inland Niger Delta, as well as east from what is now northeast Burkina Faso.  While the dominant Fulani Muslim Emirates of this period were based in Liptako to the north and Say to the east, Torodi itself was capital of a smaller Fulani state, which persisted into the colonial period.\nTorodi rural commune includes several villages, supported by seasonal millet agriculture, pastoral cattle raising, and the collection of firewood to be sold in Niamey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "torodi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7297,
+    "attempt": 7247,
+    "place_id": "gn-2472380",
+    "input": {
+      "place": {
+        "place_id": "gn-2472380",
+        "name": "Bir el Hafey",
+        "country": "Tunisia",
+        "subdivision": "Sidi Bouzid Governorate",
+        "lat": 34.93212,
+        "lon": 9.19321
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bir El Hafey",
+          "url": "https://en.wikipedia.org/wiki/Bir_El_Hafey",
+          "text": "Bir El Hafey (Arabic: بئر الحفي) is a town and commune located at 34°55′48″N 9°12′00″E in the Sidi Bouzid Governorate, in Tunisia (Maghreb, North Africa). As of 2004 it had a population of 6,405.\nBir El Hafey is located about thirty kilometers south of Sidi Bouzid, in the southern foothills of the Tunisian ridge. Attached to the governorate of Sidi Bouzid, it is a municipality with 6,475 inhabitants in 2014. It is also the capital of a delegation.\nIt is in crossroads position on the Kairouan-Gafsa axis because crossed by the RN3 while being connected to Sidi Bouzid, the chief town of the governorate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "bir el hafey",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bir",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hafey",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7298,
+    "attempt": 7248,
+    "place_id": "gn-2519477",
+    "input": {
+      "place": {
+        "place_id": "gn-2519477",
+        "name": "Chipiona",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.73663,
+        "lon": -6.43703
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chipiona",
+          "url": "https://en.wikipedia.org/wiki/Chipiona",
+          "text": "Chipiona is a town and municipality located on the Atlantic coast in the province of Cádiz, Spain. According to the 2012 census, the city has a population of 18,849 inhabitants, but this amount increases greatly during the summer holiday period. The town covers an area of 33 km2. Being in the lower valley of the River Guadalquivir it is very flat with a maximum terrestrial height of 4 metres. It is bordered on the north-west by Sanlúcar de Barrameda and on the south-east by the port of Rota.\nIt is the town of birth of singer Rocío Jurado and where her body now rests.\nChipiona is also home to the lighthouse Punta del Perro. The town is also well known for several varieties of Moscatel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "chipiona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7299,
+    "attempt": 7249,
+    "place_id": "gn-2563115",
+    "input": {
+      "place": {
+        "place_id": "gn-2563115",
+        "name": "Fgura",
+        "country": "Malta",
+        "subdivision": "Il-Fgura",
+        "lat": 35.87028,
+        "lon": 14.51333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fgura",
+          "url": "https://en.wikipedia.org/wiki/Fgura",
+          "text": "Fgura (Maltese: Il-Fgura, Italian: Figura) is a town in the Port Region of Malta. It has a population of 13,066 as of 2021. Its northern fringes are bordered by the Cottonera Lines of fortifications while it merges with the towns of Żabbar to the east and Paola and Tarxien to the West. A modern settlement, Fgura expanded to the outskirts of the Grand Harbour area and was one of the fastest-growing towns of Malta. Fgura has grown to become one of the foremost commercial areas in the central-southern part of the island. Today, Fgura has one of the highest population densities in the country. Six Phoenician tombs dating to the 3rd or 4th century B.C. were found in Fgura in 1948. The town's name comes from the Ficura family, who owned land in the area when it was a rural village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "fgura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7300,
+    "attempt": 7250,
+    "place_id": "gn-2610734",
+    "input": {
+      "place": {
+        "place_id": "gn-2610734",
+        "name": "Vanløse",
+        "country": "Denmark",
+        "subdivision": "Capital Region",
+        "lat": 55.68361,
+        "lon": 12.48713
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vanløse",
+          "url": "https://en.wikipedia.org/wiki/Vanløse",
+          "text": "Vanløse is one of the 10 official districts of Copenhagen Municipality, Denmark. It lies on the western border of the municipality.  Vanløse covers an area of 6.69 km2, and has a population of 36,115, making Vanløse the smallest district of Copenhagen, by population.\nNeighboring city districts are:\n\nto the southeast is Frederiksberg municipality, which is not a part of Copenhagen municipality but rather an enclave surrounded by the municipality\nto the northeast is Bispebjerg\nto the north is Brønshøj-Husum\nto the west is Rødovre municipality, which is outside the Copenhagen municipality area\nto the south is Valby, partially separated by Damhus Lake (Damhus Sø)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "vanl se",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vanl",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "se",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7301,
+    "attempt": 7251,
+    "place_id": "gn-2624144",
+    "input": {
+      "place": {
+        "place_id": "gn-2624144",
+        "name": "Billund",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.73349,
+        "lon": 9.10785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Billund, Denmark",
+          "url": "https://en.wikipedia.org/wiki/Billund,_Denmark",
+          "text": "Billund (Danish pronunciation: [ˈpiˌlɔnˀ]) is a town in Jutland, Denmark. With a population of 7,446 (as of 1 January 2026), Billund is the second largest town in Billund Municipality, behind the municipal seat of Grindsted. It is located approximately 13 kilometers (8.1 miles) east of Grindsted and 27 kilometers (17 miles) west of Vejle.\nBillund is the home of the Lego Group's head office. The town's economy developed from the 1930s when the Lego factory was established. In the 1960s, Billund grew rapidly, driven by the success of the company and the opening of Billund Airport, which is the second largest airport in Denmark.\nLocated in the town is the first Legoland theme park, Legoland Billund Resort, which opened in 1968 and attracts two million tourists per year. Other tourist attractions include Lalandia, the largest water park in Scandinavia, Wow Park, an outdoors park featuring Denmark's longest freefall slide, and an experience centre named Lego House."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "billund",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7302,
+    "attempt": 7252,
+    "place_id": "gn-2635524",
+    "input": {
+      "place": {
+        "place_id": "gn-2635524",
+        "name": "Treharris",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.66457,
+        "lon": -3.30725
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Treharris",
+          "url": "https://en.wikipedia.org/wiki/Treharris",
+          "text": "Treharris is a town and community (and electoral ward) in the Taff Bargoed Valley in the south of Merthyr Tydfil County Borough, South Wales. It is located about 0.6 miles (1.0 km) west of Trelewis, from which it is separated by the Taff Bargoed river, and 0.9 miles (1.4 km) from Nelson in Caerphilly county borough and has a population of 6,356 from the 2011 Census. As a community, Treharris includes the villages of Quakers Yard and Edwardsville. Due to steepness and narrowness of both the Taff and Taff Bargoed valleys at Treharris several notable bridges and viaducts have been built in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "treharris",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7303,
+    "attempt": 7253,
+    "place_id": "gn-2637845",
+    "input": {
+      "place": {
+        "place_id": "gn-2637845",
+        "name": "Sileby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.73286,
+        "lon": -1.10773
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sileby",
+          "url": "https://en.wikipedia.org/wiki/Sileby",
+          "text": "Sileby is a former industrial village and civil parish in the Soar Valley in the Charnwood borough of Leicestershire, England. It is located between Leicester and Loughborough. The village is close to Barrow upon Soar, Mountsorrel, Ratcliffe-on-the-Wreake, Seagrave and Cossington. The population of the civil parish at the 2011 census was 7,835, rising to 8,959 at the 2021 census.\nThe origins of the village date back to around 840 AD when the area was settled by the Danes - Leicestershire forming part of the Danelaw along with other counties in the vicinity. The name Sileby may in fact come from the Danish name \"Sighulf\".\nThe village lies at the bottom of an ancient valley created by the nearby River Soar, meaning that surrounding farmland is particularly prone to flooding during persistent or heavy rain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "sileby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7304,
+    "attempt": 7254,
+    "place_id": "gn-2642766",
+    "input": {
+      "place": {
+        "place_id": "gn-2642766",
+        "name": "Meltham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.59305,
+        "lon": -1.84861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Meltham",
+          "url": "https://en.wikipedia.org/wiki/Meltham",
+          "text": "Meltham is a town and civil parish within the Metropolitan Borough of Kirklees, in West Yorkshire, England. It lies in the Holme Valley, below Wessenden Moor, 5 miles (8 kilometres) south-west of Huddersfield on the edge of the Peak District National Park. It had a population of 8,089 at the 2001 census, which was estimated to have increased to 8,600 by 2005. The population assessed at the 2011 Census was 8,534. According to the 2021 Census, the civil parish of Meltham had a population of 8,590 people living in 3,695 households.\n\nIt has 12 elected council members who meet up around every 6 weeks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "meltham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7305,
+    "attempt": 7255,
+    "place_id": "gn-2642910",
+    "input": {
+      "place": {
+        "place_id": "gn-2642910",
+        "name": "Matlock",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.13838,
+        "lon": -1.5556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Matlock, Derbyshire",
+          "url": "https://en.wikipedia.org/wiki/Matlock,_Derbyshire",
+          "text": "Matlock is the county town of Derbyshire, England. It is in the south-eastern part of the Peak District, with the National Park directly to the west.  The spa resort of Matlock Bath is immediately south of the town as well as Cromford lying further south still. The civil parish of Matlock Town had a population in the 2021 UK census of 10,000.\nMatlock is 9 miles (14 km) south-west of Chesterfield and in close reach of the cities of Derby (19 miles), Sheffield (20 miles) and Nottingham (29 miles). Matlock is within the Derbyshire Dales district and is the headquarters of Derbyshire County Council."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "matlock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7306,
+    "attempt": 7256,
+    "place_id": "gn-2651739",
+    "input": {
+      "place": {
+        "place_id": "gn-2651739",
+        "name": "Cullompton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.8553,
+        "lon": -3.39268
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cullompton",
+          "url": "https://en.wikipedia.org/wiki/Cullompton",
+          "text": "Cullompton () is a town and civil parish in the district of Mid Devon and the county of Devon, England. It is 13 miles (21 km) north-east of Exeter and lies on the River Culm. In 2021, the parish as a whole had a population of 10,017, while the built-up area of the town had a population of 10,492.\nThe earliest evidence of occupation is from the Roman period: there was a fort on the hill above the town and occupation in the current town centre. Columtune was mentioned in Alfred the Great's will, which left it to his youngest son Æthelweard (c. 880–922).\nIn the past, the town's economy had a large component of wool and cloth manufacture, then, later, leather working and paper manufacture.\nA large proportion of the town's inhabitants are commuters, but there is some local manufacturing, including flour and paper mills. It has a monthly farmers' market held on the second Saturday of every month, which is the oldest event of its kind in the South West. It is home to two grade I listed buildings: the fifteenth-century St Andrew's parish church and the seventeenth-century house known as The Walronds. The centre of the town is a conservation area; there are seven grade II*-listed buildings and ninety grade II-listed buildings in the parish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "cullompton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7307,
+    "attempt": 7257,
+    "place_id": "gn-2655273",
+    "input": {
+      "place": {
+        "place_id": "gn-2655273",
+        "name": "Bodmin",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.47151,
+        "lon": -4.7243
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bodmin",
+          "url": "https://en.wikipedia.org/wiki/Bodmin",
+          "text": "Bodmin (Cornish: Bosvena [bɔzˈvɛnə] ) is a town and civil parish in Cornwall, England, United Kingdom. It is situated south-west of Bodmin Moor.\nThe extent of the civil parish corresponds fairly closely to that of the town so is mostly urban in character. It is bordered to the east by Cardinham parish, to the southeast by Lanhydrock parish, to the southwest and west by Lanivet parish, and to the north by Helland parish. At the 2021 census the population of the parish was 16,909.\nBodmin became the county town of Cornwall in 1838 when the main courts for the county moved there from Launceston. Bodmin gradually lost county town functions to Truro; in 1889 the new Cornwall County Council chose to base itself in Truro, and the county's main courthouse moved to Truro in 1988."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "bodmin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7308,
+    "attempt": 7258,
+    "place_id": "gn-2661176",
+    "input": {
+      "place": {
+        "place_id": "gn-2661176",
+        "name": "Chiasso",
+        "country": "Switzerland",
+        "subdivision": "Ticino",
+        "lat": 45.83203,
+        "lon": 9.03119
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chiasso",
+          "url": "https://en.wikipedia.org/wiki/Chiasso",
+          "text": "Chiasso (Italian pronunciation: [ˈkjasso]; Lombard: Ciass [ˈtʃas]) is a town and a municipality in the district of Mendrisio in the canton of Ticino in Switzerland.\nAs the southernmost of Switzerland's municipalities, Chiasso is on the border with Italy, in front of Ponte Chiasso (a frazione of Como, Italy). The municipality of Chiasso includes the villages of Boffalora, Pedrinate and Seseglio.\nIn 2007, the three mayors of Chiasso, Vacallo and Morbio Inferiore decided to unite into one commune. The new united commune with a population of ~15,300 people over a territory of 9.2 km2 (3.6 sq mi), was rejected by the population in November 2007."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "chiasso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7309,
+    "attempt": 7259,
+    "place_id": "gn-2753197",
+    "input": {
+      "place": {
+        "place_id": "gn-2753197",
+        "name": "Joure",
+        "country": "Netherlands",
+        "subdivision": "Friesland",
+        "lat": 52.9657,
+        "lon": 5.80301
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Joure",
+          "url": "https://en.wikipedia.org/wiki/Joure",
+          "text": "Joure (Dutch pronunciation: [ˈjʌurə]; West Frisian: De Jouwer) is a town in the north of the Netherlands. It is the administrative center of De Fryske Marren, Friesland. With 13,090 inhabitants, it is also the most populous town in the municipality.\nResidents of Joure are called Jousters; they are also commonly referred to as Jouster Keallepoaten. The Frisian keallepoat (calf's leg) refers to a baked offering, which early Jousters made to a water spirit, offering gratitude for bestowing so much water on their lands. The product consists of two elongated pastries that are baked next to and against each other and therefore resemble calf legs. They are made from rye flour, honey and various herbs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "joure",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7310,
+    "attempt": 7260,
+    "place_id": "gn-2760634",
+    "input": {
+      "place": {
+        "place_id": "gn-2760634",
+        "name": "Zell am See",
+        "country": "Austria",
+        "subdivision": "Salzburg",
+        "lat": 47.32306,
+        "lon": 12.79839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zell am See",
+          "url": "https://en.wikipedia.org/wiki/Zell_am_See",
+          "text": "Zell am See  is the administrative capital of the Zell am See District in the Austrian state of Salzburg. Located in the Kitzbühel Alps, the town is an important tourist destination due to its ski resorts and shoreline on Lake Zell. While Zell am See has been a favoured winter and summer resort for the European aristocracy since the 19th century, it is known as a hub of the international jet set today. Today, Zell am See is an internationally renowned holiday destination and one of the most important summer and winter sports resorts in Austria and an important transport hub in the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "zell am see",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "zell",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "am",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "see",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

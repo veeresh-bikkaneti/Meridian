@@ -1,0 +1,837 @@
+[
+  {
+    "rank": 8116,
+    "attempt": 8061,
+    "place_id": "gn-12035862",
+    "input": {
+      "place": {
+        "place_id": "gn-12035862",
+        "name": "Ville Haute",
+        "country": "Luxembourg",
+        "subdivision": "Luxembourg",
+        "lat": 49.61173,
+        "lon": 6.12648
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ville Haute",
+          "url": "https://en.wikipedia.org/wiki/Ville_Haute",
+          "text": "The Ville-Haute (French pronunciation: [vil ot]; Luxembourgish: Uewerstad, pronounced [ˈu̯əvɐʃtaːt] ; German: Oberstadt, pronounced [ˈoːbɐʃtat]; all lit. 'High City') is a district in central Luxembourg City, in southern Luxembourg. It is the historic center of Luxembourg City and is involved in its UNESCO World Heritage Site status. As of 31 December 2025, the Ville-Haute has a population of 3,513 inhabitants.\nThe Ville-Haute is home to prestigious squares, buildings and monuments such as Place Guillaume II, Place d'Armes, Notre-Dame Cathedral and Grand Ducal Palace, as well as many government institutions. The Gëlle Fra Monument of Remembrance war memorial is situated on Place de la Constitution."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "ville haute",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ville",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "haute",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8117,
+    "attempt": 8062,
+    "place_id": "gn-13405660",
+    "input": {
+      "place": {
+        "place_id": "gn-13405660",
+        "name": "Baengnyeongdo",
+        "country": "South Korea",
+        "subdivision": "Incheon",
+        "lat": 37.95139,
+        "lon": 124.6732
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baengnyeongdo",
+          "url": "https://en.wikipedia.org/wiki/Baengnyeongdo",
+          "text": "Baengnyeongdo (Korean: 백령도; Korean pronunciation: [pɛŋnjʌŋdo]), sometimes Baekryeong Island, is an island in Ongjin County, Incheon, South Korea. It is an inhabited island located near the Northern Limit Line, and is closer to North Korea than it is to the South Korean Mainland.\nSince the 1945 division of Korea, the island has remained under South Korean control. This was affirmed by the 1953 Korean Armistice Agreement which ended the Korean War. Since then, the island has hosted both North Korean defectors and skirmishes between the two countries.\nThe island is now a popular tourist destination, and is known for its scenic cliffs and beaches. It has three Natural Monuments of South Korea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "baengnyeongdo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8118,
+    "attempt": 8063,
+    "place_id": "gn-2523519",
+    "input": {
+      "place": {
+        "place_id": "gn-2523519",
+        "name": "San Biagio Platani",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 37.50927,
+        "lon": 13.52844
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Biagio Platani",
+          "url": "https://en.wikipedia.org/wiki/San_Biagio_Platani",
+          "text": "San Biagio Platani (Sicilian: San Mrasi or San Brasi) is a comune (municipality) in the Province of Agrigento in the Italian region Sicily, located about 70 kilometres (43 mi) south of Palermo and about 20 kilometres (12 mi) north of Agrigento. As of 31 December 2004, it had a population of 3,689 and an area of 42.4 square kilometres (16.4 mi2). San Biagio Platani is famous for its \"Easter Arches\" (Gli Archi di Pasqua.)\nSan Biagio Platani borders the following municipalities: Alessandria della Rocca, Casteltermini, Sant'Angelo Muxaro, Santo Stefano Quisquina.\nThe village has substantial diaspora populations in Chicago, Tampa, Quilmes, Berazategui, Remchigen, and Pforzheim."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "san biagio platani",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "biagio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "platani",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8119,
+    "attempt": 8064,
+    "place_id": "gn-2611610",
+    "input": {
+      "place": {
+        "place_id": "gn-2611610",
+        "name": "Tjæreborg",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.46457,
+        "lon": 8.57968
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tjæreborg, Denmark",
+          "url": "https://en.wikipedia.org/wiki/Tj%C3%A6reborg,_Denmark",
+          "text": "Tjæreborg is a village with a population of 2,959 (1 January 2026) on the west coast of Denmark, in Esbjerg Municipality about 9 km (5.6 mi) east of Esbjerg. It is situated in the parish with the same name, which was a part of Esbjerg Municipality also before the municipal mergers 1 January 2007. The village has formerly been well known for naming the multinational travel company of same name. The later years Tjæreborg has increased its fame by being undefeated in the international 3 day team golf masters [DLJ Masters]\nTjæreborg is served by Tjæreborg railway station, located on the Lunderskov–Esbjerg railway line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "tj reborg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tj",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "reborg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8120,
+    "attempt": 8065,
+    "place_id": "gn-2806770",
+    "input": {
+      "place": {
+        "place_id": "gn-2806770",
+        "name": "Wolframs-Eschenbach",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.22675,
+        "lon": 10.72769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wolframs-Eschenbach",
+          "url": "https://en.wikipedia.org/wiki/Wolframs-Eschenbach",
+          "text": "Wolframs-Eschenbach (German pronunciation: [ˈvɔlfʁams ˈɛʃn̩bax] ) is a town in the district of Ansbach, in Bavaria, Germany. It is situated 14 km southeast of Ansbach, and 36 km southwest of Nuremberg.\nWolframs-Eschenbach, formerly named \"Eschenbach\" and \"Ober-Eschenbach\", is a small town, founded in the Middle Ages, which still today preserves architecture about 500 years old.\nThe town claims that the medieval knight and poet Wolfram von Eschenbach is from it. In 1917, the town was named after him, though it is not certain that this is the exact \"Eschenbach\" which Wolfram came from. A notable church is the Liebfrauenmünster (Minster of our Dear Lady)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "wolframs eschenbach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wolframs",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "eschenbach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8121,
+    "attempt": 8066,
+    "place_id": "gn-3449940",
+    "input": {
+      "place": {
+        "place_id": "gn-3449940",
+        "name": "Santana do Deserto",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.95,
+        "lon": -43.16639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santana do Deserto",
+          "url": "https://en.wikipedia.org/wiki/Santana_do_Deserto",
+          "text": "Santana do Deserto is a municipality located in the state of Minas Gerais, Brazil. It is part of the Zona da Mata region, known for its mountainous terrain and rich history. The municipality, with its rural landscape, is also recognized for its agricultural activity, particularly the cultivation of crops suited to the area's temperate climate.\nThe town's name, Santana do Deserto, refers to the patron saint Santana and the term Deserto, which may indicate its historical isolation in the desert-like areas of the region. It offers a glimpse into rural Brazilian life, with an emphasis on small-scale farming and the preservation of local traditions.."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "santana do deserto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santana",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "deserto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8122,
+    "attempt": 8067,
+    "place_id": "gn-4004116",
+    "input": {
+      "place": {
+        "place_id": "gn-4004116",
+        "name": "Janos",
+        "country": "Mexico",
+        "subdivision": "Chihuahua",
+        "lat": 30.88867,
+        "lon": -108.19331
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Janos, Chihuahua",
+          "url": "https://en.wikipedia.org/wiki/Janos,_Chihuahua",
+          "text": "Janos is a town located in the northern Mexican state of Chihuahua.  It serves as the municipal seat of government for the surrounding Janos Municipality of the same name. As of 2010, the town of Janos had a population of 2,738. Janos was possibly the site of a Franciscan mission established about 1640 and destroyed by Indian attack in the 1680s.  The Spanish established a fort in Janos in 1686 which became a key element in the Spanish attempt to suppress raids and attacks by the Apache people. Several hundred Apaches often lived near the presidio during the late 18th and early 19th centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "janos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8123,
+    "attempt": 8068,
+    "place_id": "gn-4160604",
+    "input": {
+      "place": {
+        "place_id": "gn-4160604",
+        "name": "Juno Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.87978,
+        "lon": -80.05337
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Juno Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Juno_Beach,_Florida",
+          "text": "Juno Beach is a town in Palm Beach County, Florida, United States. Juno Beach is home to the headquarters of Florida Power & Light, the Loggerhead Marinelife Center and the Seminole Golf Club. It is home to one of the most dense sea turtle nesting areas in the world.   In 2023, the Loggerhead Marinelife Center recorded a record-breaking 25,025 sea turtle nests on their 9.5-mile stretch of beach. This included 15,672 loggerhead nests, 9,137 green turtle nests, and 216 leatherback nests, producing more than one million hatchlings.  It was also the original county seat for the area that was then known as Dade County. Juno Beach is in the Miami metropolitan area. The political climate in Juno Beach is leaning liberal. The property crime rate is around the US national average, with the violent crime rate well below average. The Town of Juno Beach was officially incorporated in 1953. As of the 2020 census, Juno Beach had a population of 3,858."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "juno beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "juno",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8124,
+    "attempt": 8069,
+    "place_id": "gn-4161195",
+    "input": {
+      "place": {
+        "place_id": "gn-4161195",
+        "name": "Lake Clarke Shores",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.64534,
+        "lon": -80.07588
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake Clarke Shores, Florida",
+          "url": "https://en.wikipedia.org/wiki/Lake_Clarke_Shores,_Florida",
+          "text": "Lake Clarke Shores is a town in Palm Beach County, Florida, United States. The town is part of the Miami metropolitan area of South Florida. The 2020 census recorded a population of 3,564.\nThe town was named after John Newton Clarke, who first filed a  homestead claim in the area in 1889. Clarke intended to capitalize on the business of growing pineapples, but his efforts were ultimately unsuccessful. Very few people lived in the area until local attorney Walter Travers created a plan to develop a community around Lake Clarke and purchased 250 acres (100 ha) of land for $10,000 in the late 1940s. The completion of a bridge across the West Palm Beach Canal in 1953 spurred a further growth in population. With rumors spreading that West Palm Beach intended to annex the community, residents voted by a wide margin to support the incorporation of Lake Clarke Shores as a town on April 10, 1956, which the Florida Legislature officially approved on July 1, 1957.\nToday, Lake Clarke Shores maintains a small population. The town is primarily a bedroom community, with most of its businesses and other commercial buildings located along Forest Hill Boulevard (State Road 882)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "lake clarke shores",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "clarke",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "shores",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8125,
+    "attempt": 8070,
+    "place_id": "gn-5301641",
+    "input": {
+      "place": {
+        "place_id": "gn-5301641",
+        "name": "Laveen",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 33.36282,
+        "lon": -112.16932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laveen, Phoenix",
+          "url": "https://en.wikipedia.org/wiki/Laveen,_Phoenix",
+          "text": "Laveen ( lə-VEEN) is a community in Maricopa County, Arizona, United States, situated eight miles (13 km) southwest of Downtown Phoenix, between South Mountain and the confluence of the Gila and Salt rivers. Parts of Laveen constitute an unincorporated community in Maricopa County, while the remainder falls within the city limits of Phoenix, constituting the city's \"Laveen Village\" an urban village. Laveen Village is split between District 7 and District 8, both notable as minority-majority districts for the city. Although Laveen has been home to \"pastoral alfalfa, cotton, and dairy farms\" since the 1880s, housing and commercial developments have been increasingly urbanizing the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "laveen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8126,
+    "attempt": 8071,
+    "place_id": "gn-5710035",
+    "input": {
+      "place": {
+        "place_id": "gn-5710035",
+        "name": "West Wendover",
+        "country": "United States",
+        "subdivision": "Nevada",
+        "lat": 40.7391,
+        "lon": -114.07335
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Wendover, Nevada",
+          "url": "https://en.wikipedia.org/wiki/West_Wendover,_Nevada",
+          "text": "West Wendover is a city in Elko County, Nevada, United States. The population was 4,512 at the 2020 census. It is part of the Elko micropolitan area. West Wendover is located on the eastern border of Nevada and the western edge of the Great Salt Lake Desert and is contiguous with Wendover, Utah, with which it is sometimes confused. It is home to five casinos and a cannabis dispensary which attract many visitors from neighboring Utah, where both casino gambling and non-medical cannabis are illegal. Interstate 80 runs just north of the cities, while Interstate 80 Business (Wendover Boulevard) runs through the two cities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "west wendover",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wendover",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8127,
+    "attempt": 8072,
+    "place_id": "gn-5812483",
+    "input": {
+      "place": {
+        "place_id": "gn-5812483",
+        "name": "Sultan",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.8626,
+        "lon": -121.81651
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sultan, Washington",
+          "url": "https://en.wikipedia.org/wiki/Sultan,_Washington",
+          "text": "Sultan is a city in Snohomish County, Washington, United States. It is located approximately 23 miles (37 km) east of Everett at the confluence of the Skykomish River and the Sultan River, a minor tributary. The city had a population of 5,146 at the 2020 census.\nThe city was founded in 1880 at the site of a Skykomish village and initially settled during a small gold rush. Sultan was platted in 1889, just prior to the arrival of the Great Northern Railway, and was a hub for mining and the lumber industry. It was incorporated on June 28, 1905, with a population of 700. The city was home to a Civilian Conservation Corps camp during the Great Depression and undertook several civic improvements in the post-war years.\nSultan has since become a bedroom community for large employment centers in the Puget Sound region. The city has several public parks, a historic museum, and is located near outdoor recreation areas in the Cascade Mountains. It is connected to nearby cities by U.S. Route 2."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "sultan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8128,
+    "attempt": 8073,
+    "place_id": "gn-6217261",
+    "input": {
+      "place": {
+        "place_id": "gn-6217261",
+        "name": "Temuka",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -44.22834,
+        "lon": 171.2801
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Temuka",
+          "url": "https://en.wikipedia.org/wiki/Temuka",
+          "text": "Temuka is a town on New Zealand's Canterbury Plains, 15 kilometres north of Timaru and 142 km south of Christchurch. It is located at the centre of a rich sheep and dairy farming region, for which it is a service town. It lies on the north bank of the Temuka River, just above its confluence with the Ōpihi River.\nTemuka is the second largest town in South Canterbury after Timaru. Temuka is home to three schools, two primary schools and one secondary school. Temuka is accessed by New Zealand's State Highway Number 1 and the Main South Line railway allowing for major cargo handling. Temuka is north of the Opihi and Temuka rivers. The local secondary school, Opihi College, takes its name from the Opihi River. Both rivers are popular with locals and tourists. Almost all traffic passing north or south goes through or around Temuka. Temuka has recently had the redevelopment of the local Domain by incorporating a skate park to join the other facilities which include a swimming pool, mini golf, golf, netball, outdoor bowls and tennis. There are also rugby and football fields, a stadium complex and a holiday park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "temuka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8129,
+    "attempt": 8074,
+    "place_id": "gn-725611",
+    "input": {
+      "place": {
+        "place_id": "gn-725611",
+        "name": "Yablanitsa",
+        "country": "Bulgaria",
+        "subdivision": "Lovech",
+        "lat": 43.02813,
+        "lon": 24.10244
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yablanitsa",
+          "url": "https://en.wikipedia.org/wiki/Yablanitsa",
+          "text": "Yablanitsa (Bulgarian: Ябланица; also Jablanica, Iablanica, Yablanica, Jablanitsa, Iablanitsa, Jablanitza, Yablanitza, Iablanitza, pronounced [ˈjabwɐnit͡sɐ]) is a small town in the westernmost part of Lovech Province, central-north Bulgaria, located in the area of the Pre-Balkan, north of the Stara Planina mountain. It is the administrative centre of the homonymous Yablanitsa Municipality. The town is situated 70 kilometres from the capital Sofia, near the Hemus motorway linking Sofia and Varna. It was proclaimed a town in 1968. As of December 2011, Yablanitsa had a population of 2,854.\nThe town is a noted confectionery production centre, particularly well known for the local halva and lokum (Turkish delight)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "yablanitsa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8131,
+    "attempt": 8075,
+    "place_id": "gn-2616176",
+    "input": {
+      "place": {
+        "place_id": "gn-2616176",
+        "name": "Nordborg",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.05732,
+        "lon": 9.7408
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nordborg",
+          "url": "https://en.wikipedia.org/wiki/Nordborg",
+          "text": "Nordborg (German: Norburg), is a town with a population of 5,661 (1 January 2026), which was the seat of the former Nordborg municipality (Danish, kommune) in Sønderborg Municipality, Region of Southern Denmark on the northwest half of the island of Als off the east coast of the Jutland peninsula in south Denmark.\nWithin the town is Nordborg Castle, a historic castle whose premises are currently used as a boarding school.\nThe town has been greatly influenced by the presence of Danfoss, a global producer of components for refrigeration and airconditioning, heating and motion control applications, headquartered in the town and founded in 1933."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "nordborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8132,
+    "attempt": 8076,
+    "place_id": "gn-2677644",
+    "input": {
+      "place": {
+        "place_id": "gn-2677644",
+        "name": "Skillingaryd",
+        "country": "Sweden",
+        "subdivision": "Jönköping",
+        "lat": 57.43044,
+        "lon": 14.09383
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Skillingaryd",
+          "url": "https://en.wikipedia.org/wiki/Skillingaryd",
+          "text": "Skillingaryd is a locality in Vaggeryd Municipality, Jönköping County, Sweden, with  over 13,200 inhabitants in 2013, together with Vaggeryd, the seat of Vaggeryd Municipality.\nSkillingaryd is an old industrial town with many large companies, such as Thor Ahlgren AB, Kinnarps, Krahners, Presso, Skillmech, Stilexo, Stack Hydraulic, and Mechanical Uppåkra AB. The town lies on the railway line Halmstad Nässjö, formerly part of the Halmstad-Nässjö Railways, HNJ. Skillingaryd is also known for the Skillingaryd firing range, which still works as a military firing and training ground. The owner of the military training ground is Zackarias Hedström. Skillingaryd is also associated with the Skillingaryd ointment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "skillingaryd",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8133,
+    "attempt": 8077,
+    "place_id": "gn-2806474",
+    "input": {
+      "place": {
+        "place_id": "gn-2806474",
+        "name": "Wolkenstein",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.65552,
+        "lon": 13.07132
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wolkenstein",
+          "url": "https://en.wikipedia.org/wiki/Wolkenstein",
+          "text": "Wolkenstein (German pronunciation: [ˈvɔlkn̩ˌʃtaɪn] ) is a town in the district Erzgebirgskreis, in Saxony, Germany. It is situated in the Ore Mountains, on the river Zschopau, 22 km southeast of Chemnitz.\nThe town is situated on a rocky spur near the confluence of  the Zschopau and Preßnitz rivers. Its name is derived from the eponymous castle which is situated ca. 70 m above the river, and whose name signifies a rock that rises into the clouds. Aside from the town itself, Wolkenstein consists of the following subdivisions:\n\nWarmbad is a spa town known for its hot spring with a variety of medicinal uses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "wolkenstein",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8134,
+    "attempt": 8078,
+    "place_id": "gn-2918770",
+    "input": {
+      "place": {
+        "place_id": "gn-2918770",
+        "name": "Gößnitz",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.88902,
+        "lon": 12.43292
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gößnitz",
+          "url": "https://en.wikipedia.org/wiki/G%C3%B6%C3%9Fnitz",
+          "text": "Gößnitz (German pronunciation: [ˈɡœsnɪts] ) is a town in the Altenburger Land district, in Thuringia, Germany. It is situated on the river Pleiße, 12 km south of Altenburg, and 20 km northwest of Zwickau.\nGößnitz received its town charter in 1718.\nIt is known for the railroad junction of the Leipzig-Hof railway connection and the Central-Germany connection (Dresden - Chemnitz - Gößnitz - Gera - Erfurt) and its station prides itself having Europe's longest platform, as well as the Gößnitz Open-Air. The town's greatest prosperity was at the time of industrialization; Hence Viktor Grimm's representative malt factory from 1889 still characterizes the cityscape."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "go nitz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "go",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "nitz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8135,
+    "attempt": 8079,
+    "place_id": "gn-3038249",
+    "input": {
+      "place": {
+        "place_id": "gn-3038249",
+        "name": "Albigny-sur-Saône",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.86667,
+        "lon": 4.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Albigny-sur-Saône",
+          "url": "https://en.wikipedia.org/wiki/Albigny-sur-Sa%C3%B4ne",
+          "text": "Albigny-sur-Saône (French pronunciation: [albiɲi syʁ son], literally Albigny on Saône, before 1962: Albigny) is a commune in the Metropolis of Lyon in the Auvergne-Rhône-Alpes region in central-eastern France. The town was founded thousands of years ago in Roman times, probably around 40 BC over sacred ground of the Gallic Segusiavi tribe, and likely re-named after Clodius Albinus in the early 3rd century AD.\nAn affluent community the town has two schools, including a Montessori bilingual French-English school, a public library, a church of the Roman Catholic Archdiocese of Lyon, a 12th-century castle, two doctors, two dentists, a pharmacy, and a small shopping centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "albigny sur saone",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "albigny",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "saone",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8136,
+    "attempt": 8080,
+    "place_id": "gn-3179333",
+    "input": {
+      "place": {
+        "place_id": "gn-3179333",
+        "name": "Cavalese",
+        "country": "Italy",
+        "subdivision": "Trentino-Alto Adige",
+        "lat": 46.29048,
+        "lon": 11.45862
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cavalese",
+          "url": "https://en.wikipedia.org/wiki/Cavalese",
+          "text": "Cavalese (Cavalés in local dialect, Gablöss in local german dialect) is a comune of 4,004 inhabitants in Trentino, northern Italy, a ski resort and the main center in the Fiemme Valley. It is part of the Magnifica Comunità di Fiemme (Magnificent Community of Fiemme) and, together with Predazzo, is the administrative, cultural and historical center of the valley.\nThe town is a renowned tourist location, during winter for cross-country and alpine skiing, and during summer for excursions. The cable car from Cavalese to the nearby mountain Cermis has been the site of two major cable-car accidents, one in 1976 and one in 1998."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "cavalese",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

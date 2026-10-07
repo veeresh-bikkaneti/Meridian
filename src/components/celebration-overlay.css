@@ -1,0 +1,65 @@
+/* Celebration overlay keyframes — transform/opacity only, no layout thrash. */
+
+@keyframes celebrate-pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(0.97);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes celebrate-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes celebrate-twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Bounce-in overshoot for the card. */
+.celebration-pop {
+  animation: celebrate-pop 0.55s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+}
+
+/* Gentle bob for the floating character. */
+.celebration-float {
+  animation: celebrate-float 3.2s ease-in-out infinite;
+}
+
+/* Sparkle pulse for star accents. */
+.celebration-twinkle {
+  animation: celebrate-twinkle 1.8s ease-in-out infinite;
+}
+
+/* Reduced-motion backstop (spec §7.4): no celebration animation survives. */
+@media (prefers-reduced-motion: reduce) {
+  .celebration-overlay,
+  .celebration-overlay * {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

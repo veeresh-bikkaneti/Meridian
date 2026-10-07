@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 3368,
+    "attempt": 3341,
+    "place_id": "gn-2790869",
+    "input": {
+      "place": {
+        "place_id": "gn-2790869",
+        "name": "Mons",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.45413,
+        "lon": 3.95229
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mons, Belgium",
+          "url": "https://en.wikipedia.org/wiki/Mons,_Belgium",
+          "text": "Mons (French: [mɔ̃s] ; German and Dutch: Bergen, Dutch pronunciation: [ˈbɛrɣə(n)] ; Walloon and Picard: Mont) is a city and municipality of Wallonia, and the capital of the province of Hainaut, Belgium.\nMons was made into a fortified city by Count Baldwin IV of Hainaut in the 12th century. The population grew quickly, trade flourished, and several commercial buildings were erected near the Grand-Place. In 1814, King William I of the Netherlands increased the fortifications, following the fall of the First French Empire. The Industrial Revolution and coal mining made Mons a centre of heavy industry. In 1830, Belgium gained its independence and the decision was made to dismantle the fortifications, allowing the creation of large boulevards and other urban projects. In 1914, Mons was the location of the Battle of Mons. The British were forced to retreat by a numerically superior German force and the town remained occupied by the Germans until its liberation by the Canadian Corps during the final days of the war. There are several memorial placards related to the World War I battles.\nToday, the city is an important university town and commercial centre. The main square is the centre of the old city. It is paved in the manner of old cities and is home to many cafes and restaurants, as well as the Town Hall and Belfry. It is forbidden to park in or drive through the centre. Together with the Czech city of Plzeň, Mons was the European Capital of Culture in 2015."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 251
+    },
+    "banned_terms": [
+      {
+        "term": "mons",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3369,
+    "attempt": 3342,
+    "place_id": "gn-3024783",
+    "input": {
+      "place": {
+        "place_id": "gn-3024783",
+        "name": "Clamart",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.80299,
+        "lon": 2.26692
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clamart",
+          "url": "https://en.wikipedia.org/wiki/Clamart",
+          "text": "Clamart (French pronunciation: [klamaʁ] ) is a commune in the southwestern suburbs of Paris, France. It is in Hauts-de-Seine, 8.7 km (5.4 mi) from the centre of Paris, on the border with both Essonne and Yvelines.\nThe town is divided into two parts, separated by a forest (the Bois de Clamart, part of the larger Forêt domaniale de Meudon): Bas-Clamart, the historical centre, and Petit-Clamart, with urbanisation developed in the 1960s replacing pea fields. The canton of Clamart includes only part of the commune; the other part of the commune belongs to the canton of Le Plessis-Robinson.\nIt is a relatively wealthy suburb of Paris. It is above Clamart that renowned photographer Nadar took the world's first aerial photograph in 1858."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "clamart",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3370,
+    "attempt": 3343,
+    "place_id": "gn-3117814",
+    "input": {
+      "place": {
+        "place_id": "gn-3117814",
+        "name": "Lugo",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 43.00992,
+        "lon": -7.55602
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lugo",
+          "url": "https://en.wikipedia.org/wiki/Lugo",
+          "text": "Lugo (Galician: [ˈluɣo], Spanish: [ˈluɣo] ) is a city in northwestern Spain in the autonomous community of Galicia. It is the capital of the province of Lugo. The municipality had a population of 100,060 in 2024, making it the fourth most populous city in Galicia.\nLugo is the only city in the world to be surrounded by completely intact Roman walls, which reach a height of 10 to 15 metres (33 to 49 feet) along a 2,117-metre (6,946 ft) circuit ringed with 71 towers. The walk along the top is continuous around the circuit and features ten gates. The 3rd century Roman walls, the only one of its kind in the world, are protected by UNESCO as a World Heritage Site. The city's historic bridge over the Miño is also essentially of Roman date. The city of Lugo is along the Camino Primitivo path of the Camino de Santiago."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "lugo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3371,
+    "attempt": 3344,
+    "place_id": "gn-3193161",
+    "input": {
+      "place": {
+        "place_id": "gn-3193161",
+        "name": "Pljevlja",
+        "country": "Montenegro",
+        "subdivision": "Pljevlja",
+        "lat": 43.3567,
+        "lon": 19.35843
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pljevlja",
+          "url": "https://en.wikipedia.org/wiki/Pljevlja",
+          "text": "Pljevlja (Montenegrin: Пљевља, pronounced [pʎêʋʎa]) is a town located in the Northern Region of Montenegro, situated along Ćehotina river.\nThe town lies at an altitude of 770 m (2,530 ft). In the Middle Ages, Pljevlja had been a crossroad of the important commercial roads and cultural streams, with important roads connecting the littoral with the Balkan interior.  In 2023, the municipality of Pljevlja had a population of 24,134, while the city itself had a population of 16,111. The municipality borders those of Žabljak, Bijelo Polje and Mojkovac in Montenegro, as well as Bosnia and Herzegovina to the west and Serbia to the northeast. With a total area of 1,346 km2 (520 sq mi), it is the second largest municipality in Montenegro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "pljevlja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3372,
+    "attempt": 3345,
+    "place_id": "gn-3395458",
+    "input": {
+      "place": {
+        "place_id": "gn-3395458",
+        "name": "Maragogi",
+        "country": "Brazil",
+        "subdivision": "Alagoas",
+        "lat": -9.01222,
+        "lon": -35.2225
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maragogi",
+          "url": "https://en.wikipedia.org/wiki/Maragogi",
+          "text": "Maragogi (Central northeastern portuguese pronunciation: [mɐɾɐɡoˈʒi]) is a municipality in the Brazilian state of Alagoas, 125 km north of the capital city of Maceió. It has 33,032 inhabitants, a city situated on the northern coast of Alagoas state, Brazil, being the easternmost city of that state.\nAs the main destination in the State of Alagoas after its capital city, Maragogi attracts visitors from Maceió. From Japaratinga beach, on the southern tip, a ferryboat crosses Manguaba River into Porto das Pedras, where visitors find virtually deserted beaches. Maragogi was initially a small village called Gamela. In 1887, it was granted the status of an adopted the name of Isabel, to honor the Brazilian Princess who signed a law ending slavery in Brazil. Later on, in 1892, it was named as Maragogi after the river that baths the city. \"Maragogi\", according to some historians, comes from “Marahub-gy”, or river of the Marauba tribes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "maragogi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3373,
+    "attempt": 3346,
+    "place_id": "gn-3453622",
+    "input": {
+      "place": {
+        "place_id": "gn-3453622",
+        "name": "Piraí do Sul",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -24.52611,
+        "lon": -49.94861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piraí do Sul",
+          "url": "https://en.wikipedia.org/wiki/Piraí_do_Sul",
+          "text": "Piraí do Sul is a  municipality in the state of Paraná in the Southern Region of Brazil.\nThe agriculture, production and industrialization of wood are the main sources of economy of Piraí do Sul with high industrial rate: 177 companies operate in town. Agricultural production is also an important sector, especially the harvest of corn, soybeans and wheat. By the end of 2012, total consumption of its 23700 inhabitants should reach BRL 260 million, being the 84th in the state ranking. Piraí do Sul also has tourism potential, especially religious one the city is the fourth destination in the most sought religious tourism in Brazil thanks to the Shrine of Our Lady of the sprout, the patron saint of Drovers Route."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "pirai do sul",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pirai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sul",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3374,
+    "attempt": 3347,
+    "place_id": "gn-4503136",
+    "input": {
+      "place": {
+        "place_id": "gn-4503136",
+        "name": "Mount Laurel",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.934,
+        "lon": -74.891
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Laurel, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Mount_Laurel,_New_Jersey",
+          "text": "Mount Laurel is a township in Burlington County in the U.S. state of New Jersey. The township, and all of Burlington County, is a part of the Philadelphia metropolitan area. As of the 2020 United States census, the township's population was 44,633, its highest decennial count ever and an increase of 2,769 (+6.6%) from the 2010 census count of 41,864, which in turn reflected an increase of 1,643 (+4.1%) from the 40,221 counted in the 2000 census. It is the home of NFL Films.\nIn 2020, Mount Laurel was ranked 16th in Money magazine's list of the 50 best places to live in the United States, citing a kid-friendly environment, affordable housing, and easy access to Philadelphia and the Jersey Shore."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "mount laurel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "laurel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3375,
+    "attempt": 3348,
+    "place_id": "gn-4568451",
+    "input": {
+      "place": {
+        "place_id": "gn-4568451",
+        "name": "Trujillo Alto",
+        "country": "Puerto Rico",
+        "subdivision": "Trujillo Alto",
+        "lat": 18.35467,
+        "lon": -66.00739
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trujillo Alto, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Trujillo_Alto,_Puerto_Rico",
+          "text": "Trujillo Alto (Spanish pronunciation: [tɾuˈxiʝo ˈalto]) is a town and municipality of Puerto Rico. Located on the northeastern coastal plain on the boundary between the Northern Karst Belt and Sierra de Luquillo, it is north of Caguas and Gurabo, southeast of San Juan, and west of Carolina. Its geography features river lowlands and mountains. Part of the San Juan metropolitan area, Trujillo Alto is spread over 6 barrios and the downtown area and administrative center of Trujillo Alto Pueblo. \nTrujillo Alto was officially founded in 1801, but gained more importance during the 20th century. Due to its proximity to the capital, San Juan, the city has become a suburb of the metropolitan area, which has sparked its growth during recent years. The population of Trujillo Alto has increased through the last century from 9,576 (1930) to 74,482 (2010). According to the 2010 Census, it is Puerto Rico's tenth-most populated municipality. The urban setting of Trujillo Alto is compact, being divided into the barrios Carraízo, Cuevas, Dos Bocas, La Gloria, Quebrada Grande, Quebrada Negrito, Saint Just and Pueblo.\nIn 1953–54, the Carraízo hydroelectric dam was constructed in Trujillo Alto by the Sumner Sollitt Construction Company of Chicago, under contract by the Puerto Rico Water Resources Authority. The dam forms the Loíza Lake, a reservoir which serves as the main source of the water supply for San Juan, Puerto Rico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "trujillo alto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "trujillo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3376,
+    "attempt": 3349,
+    "place_id": "gn-4999311",
+    "input": {
+      "place": {
+        "place_id": "gn-4999311",
+        "name": "Lincoln Park",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.25059,
+        "lon": -83.17854
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lincoln Park, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Lincoln_Park,_Michigan",
+          "text": "Lincoln Park is a city in Wayne County in the U.S. state of Michigan. A Downriver suburb of Detroit, Lincoln Park is located roughly 11 miles (17.7 km) southwest of downtown Detroit. As of the 2020 census, Lincoln Park had a population of 40,245, and was the second most-densely populated municipality in the state, after Hamtramck.\nLincoln Park contains Council Point Park, which dates back to 1763 when Chief Pontiac met with other tribal leaders along the banks of the Ecorse River to plot a rebellion against increasing European settlers, specifically those in nearby Fort Detroit.  The Potawatomi eventually ceded the land to the French in 1776.\nLincoln Park is considered part of the Downriver collection of communities within Metro Detroit.  The city borders Detroit to the north and also shares borders with Allen Park to the west, Ecorse to the east, Melvindale to the north, and Southgate and Wyandotte to the south.  It developed as a bedroom community, providing homes to workers in the nearby steel mills and automobile plants of the Detroit area, while having no industries of its own.  Lincoln Park was originally part of the now-defunct Ecorse Township, incorporating as a village in 1921 and again as a city in 1925.\nOne of the most enduring landmarks in the city was the Sears water tower located at the Lincoln Park Shopping Plaza. It was demolished in 2026."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "lincoln park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lincoln",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3377,
+    "attempt": 3350,
+    "place_id": "gn-5287565",
+    "input": {
+      "place": {
+        "place_id": "gn-5287565",
+        "name": "Bullhead City",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 35.14778,
+        "lon": -114.5683
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bullhead City, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Bullhead_City,_Arizona",
+          "text": "Bullhead City is a city located on the Colorado River in Mohave County, Arizona, United States, 97 miles (156 km) south of Las Vegas, Nevada, and directly across the Colorado River from Laughlin, Nevada, whose casinos and ancillary services supply much of the employment for Bullhead City. Bullhead City is located at the southern end of Lake Mohave.\nAs of the 2020 census, the population of Bullhead City was 41,348. The nearby communities of Laughlin, Needles, Fort Mohave and Mohave Valley bring the Bullhead area's total population to over 77,000, making it the largest economic region in Mohave County.\nWith over 60 square miles (160 km2), Bullhead City is the largest city in Mohave County in terms of total land area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "bullhead city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bullhead",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3378,
+    "attempt": 3351,
+    "place_id": "gn-5460459",
+    "input": {
+      "place": {
+        "place_id": "gn-5460459",
+        "name": "Carlsbad",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 32.42067,
+        "lon": -104.22884
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carlsbad, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Carlsbad,_New_Mexico",
+          "text": "Carlsbad ( KARLZ-bad) is a city in and the county seat of Eddy County, New Mexico, United States. As of the 2020 census, the city population was 32,238. Carlsbad is centered at the intersection of U.S. Routes 62/180 and 285, and is the principal city of the Carlsbad-Artesia Micropolitan Statistical Area, which has a total population of 62,314. Located in the southeastern part of New Mexico, Carlsbad straddles the Pecos River and sits at the eastern edge of the Guadalupe Mountains.\nCarlsbad is a hub for potash mining, petroleum production, and tourism. Carlsbad Caverns National Park is located 20 miles (32 km) southwest of the city, and Guadalupe Mountains National Park lies 54 miles (87 km) southwest across the Texas border. The Lincoln National Forest is to the northwest of town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "carlsbad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3379,
+    "attempt": 3352,
+    "place_id": "gn-602913",
+    "input": {
+      "place": {
+        "place_id": "gn-602913",
+        "name": "Skellefteå",
+        "country": "Sweden",
+        "subdivision": "Västerbotten",
+        "lat": 64.75067,
+        "lon": 20.95279
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Skellefteå",
+          "url": "https://en.wikipedia.org/wiki/Skellefteå",
+          "text": "Skellefteå (Swedish: [ɧɛˈlɛ̌ftɛɔ], locally [ʂɛˈlɛ̌ftɛ] ; Meänkieli: Heletti) is a city in Västerbotten County, Sweden, with a population of 36,388. It is the seat of Skellefteå Municipality, which had 77,322 inhabitants in 2024.\nThe city is historically industrial, with mining being a large part of that industry, especially for gold, leading to the city being nicknamed Guldstaden (\"gold town\"). Politically, Skellefteå is a Social Democratic stronghold. The city is a well-known ice hockey town, with its main team Skellefteå AIK playing in the Swedish top division: the SHL, which they have won on several occasions; most recently in 2026.\nThe city was incorporated in 1845 and grew to its current population size in the 1950s and 1960s, growing only slowly since. It is the second largest city in Västerbotten after Umeå and is located roughly halfway between it and Luleå. The Skellefte River passes through the city and it is located around 15 kilometres (9.3 mi) from the Bothnian Bay open sea. Skellefteå is served by Skellefteå Airport, IATA airport code SFT but locally known as Falmark because of the village nearby, also around 15 kilometres (9.3 mi) from the city centre to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "skelleftea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3380,
+    "attempt": 3353,
+    "place_id": "gn-6085772",
+    "input": {
+      "place": {
+        "place_id": "gn-6085772",
+        "name": "Nanaimo",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.16638,
+        "lon": -123.94003
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanaimo",
+          "url": "https://en.wikipedia.org/wiki/Nanaimo",
+          "text": "Nanaimo ( nə-NY-moh) is a city on the east coast of Vancouver Island, in British Columbia, Canada. The city lies on the western shores of the eponymous Nanaimo Harbour, for which it has become known as the \"Harbour City\". The city is also called the \"Hub City\", which is attributed to its original layout design with streets radiating from the shoreline like the spokes of a wagon wheel, and to its relatively central location on Vancouver Island. Nanaimo is the headquarters of the Regional District of Nanaimo.\nNanaimo is served by the Island Highway that runs along the east coast of Vancouver Island, the BC Ferries system, and the city's regional airport. It is also on the dormant Island Rail Corridor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "nanaimo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3381,
+    "attempt": 3354,
+    "place_id": "gn-646005",
+    "input": {
+      "place": {
+        "place_id": "gn-646005",
+        "name": "Mikkeli",
+        "country": "Finland",
+        "subdivision": "South Savo",
+        "lat": 61.68857,
+        "lon": 27.27227
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mikkeli",
+          "url": "https://en.wikipedia.org/wiki/Mikkeli",
+          "text": "Mikkeli (Finnish: [ˈmikːeli]; Swedish: S:t Michel) is a city in, and the regional capital of, South Savo, Finland, located in the Finnish Lakeland. The population is approximately 52,000, while the Mikkeli sub-region of South Savo has a population of approximately 68,000. Mikkeli is the 18th most-populous municipality of Finland and the 19th most-populous urban area in the country.\nMikkeli is located on the shores of Lake Saimaa, the largest lake in the country, and Europe's fourth largest. Prior to being located within South Savo, the city was in Mikkeli Province (until 1997), before becoming part of Eastern Finland Province (1997-2009). The city covers an area of 3,229.57 square kilometres (1,246.94 sq mi), of which 424.7 km2 (164.0 sq mi) is water. Mikkeli is one of the largest towns in the South Savo region, and one of the main hubs in the region's hospital districts, along with Savonlinna.\nDuring World War II, Mikkeli served as the headquarters for the Finnish Defence Forces, thus the town's coat of arms features a pair of crossed Marshal C. G. E. Mannerheim batons in honour of the armed forces. The town was awarded the Cross of Liberty, 4th Class, which is displayed alongside the coat of arms."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "mikkeli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3382,
+    "attempt": 3355,
+    "place_id": "gn-725712",
+    "input": {
+      "place": {
+        "place_id": "gn-725712",
+        "name": "Vratsa",
+        "country": "Bulgaria",
+        "subdivision": "Vratsa",
+        "lat": 43.21052,
+        "lon": 23.56312
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vratsa",
+          "url": "https://en.wikipedia.org/wiki/Vratsa",
+          "text": "Vratsa (Bulgarian: Враца [ˈvrat͡sɐ]) is the largest city in northwestern Bulgaria and the administrative and economic centre of the municipality of Vratsa and Vratsa district. It is about 112 km (70 mi) north of Sofia, 40 km (25 mi) southeast of Montana.\nSituated at the foot of the Vrachanski Balkan, the town is near numerous caves, waterfalls, and rock formations. The most famous of them are the Ledenika Cave, Skaklya Waterfall, and the Vratsata Pass.\nThe Vratsa History Museum holds the Rogozen treasure, which is the largest Thracian treasure.\nBotev Days are held annually in the city, culminating in the rally-dawn on 1 June, held at Hristo Botev Square, as well as the national worship on 2 June at Mount Okolchitsa.\nVratsa's motto is \"A city like the Balkan – ancient and young\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "vratsa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3383,
+    "attempt": 3356,
+    "place_id": "gn-1626698",
+    "input": {
+      "place": {
+        "place_id": "gn-1626698",
+        "name": "Sofifi",
+        "country": "Indonesia",
+        "subdivision": "North Maluku",
+        "lat": 0.73729,
+        "lon": 127.5588
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sofifi",
+          "url": "https://en.wikipedia.org/wiki/Sofifi",
+          "text": "Sofifi is a town on the west coast of the Indonesian island of Halmahera, and since 2010 has been the capital of the province of North Maluku. It straddles between the North Oba (Oba Utara) District of the city of Tidore Islands as well parts of the South Jailolo (Jailolo Selatan) District of the West Halmahera Regency. At the 2020 Census, the town had a population of 2,498, while North Oba District had a population of 19,552. Previously, Ternate had been the province's capital.\nTourism-wise, Sofifi is far from being a popular destination. It is a spread-out place connected by wide roads and interspersed with forlorn-looking government buildings, Sofifi serves travellers mainly as a junction on the route to Tobelo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "sofifi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3384,
+    "attempt": 3357,
+    "place_id": "gn-182701",
+    "input": {
+      "place": {
+        "place_id": "gn-182701",
+        "name": "Nyeri",
+        "country": "Kenya",
+        "subdivision": "Nyeri County",
+        "lat": -0.42013,
+        "lon": 36.94759
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nyeri",
+          "url": "https://en.wikipedia.org/wiki/Nyeri",
+          "text": "Nyeri is a town situated in the Central Highlands of Kenya, at an average elevation of about 1,750 to 1,812 metres (5,750 to 5,945 feet) above sea level. It is the headquarters of Nyeri County and was the central administrative headquarters of the country's former Central Province. The town is situated about 150 km north of Nairobi, in the country's densely populated and fertile Central Highlands. The town lies between the eastern base of the Nyandarua (Aberdare) Range, which forms part of the eastern side of the Great Rift Valley, and the western slopes of Mount Kenya.\nThe town's population, according to the 2019 Kenya Population and Housing Census, was estimated at 140,338 inhabitants. However, the number is rapidly growing. There is, a significant population of primarily Government and corporate workers who ordinarily reside in Nyeri but who, during the census, choose to be counted in their areas of origin or the areas where their families are residents. The town has a relatively low cost of living compared to Nairobi and other major urban centres in Kenya. Located in Kenya's fertile highlands, food and water are plentiful and relatively affordable.\nThe tomb of Robert Baden-Powell, the founder of the Scout movement is in the local cemetery. It is the home town of the late Nobel laureate Wangarĩ Maathai. It is also the home of Dedan Kimathi University of Technology (DeKUT), founded by the local community in the early 1970s as an institute of technology, and converted into a fully fledged university in 2012."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 253
+    },
+    "banned_terms": [
+      {
+        "term": "nyeri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3385,
+    "attempt": 3358,
+    "place_id": "gn-206047",
+    "input": {
+      "place": {
+        "place_id": "gn-206047",
+        "name": "Rutshuru",
+        "country": "Congo - Kinshasa",
+        "subdivision": "North Kivu",
+        "lat": -1.18666,
+        "lon": 29.44669
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rutshuru",
+          "url": "https://en.wikipedia.org/wiki/Rutshuru",
+          "text": "Rutshuru is a town located in the North Kivu province of the eastern Democratic Republic of the Congo, and is headquarters of an administrative district, the Rutshuru Territory. The town lies in the western branch of the Albertine Rift between Lakes Edward and Kivu. The Ugandan border is 15 km (9.3 mi) east and the Rwandan border is 30 km (19 mi) south-east.\nLava flows from the Nyamuragira volcano, 40 km (25 mi) south-west, have come within 7 km (4.3 mi) of the town in recent years. The town has over 800,000 inhabitants from many tribal backgrounds Nande, hunde and Pygmee.\nIt was the largest town controlled by the former National Congress for the Defence of the People rebel group. By November 2012, the town had become a stronghold of the March 23 Movement in their conflict with the Congolese government. After the defeat of the M23 rebellion the town was retaken by the Congolese army, and President Joseph Kabila paid a visit to the town in November 2013 after driving from Kisangani.\nAs part of M23's resurgence the group recaptured Rutshuru in October 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "rutshuru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3386,
+    "attempt": 3359,
+    "place_id": "gn-2077895",
+    "input": {
+      "place": {
+        "place_id": "gn-2077895",
+        "name": "Alice Springs",
+        "country": "Australia",
+        "subdivision": "Northern Territory",
+        "lat": -23.69748,
+        "lon": 133.88362
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alice Springs",
+          "url": "https://en.wikipedia.org/wiki/Alice_Springs",
+          "text": "Alice Springs (Eastern Arrernte: Mparntwe, [ᵐbaⁿɖʷə], colloquially in English The Alice or Alice) is a town in the Northern Territory, Australia; it is the third-largest settlement in the Northern Territory after Darwin and Palmerston. The name Alice Springs was given by surveyor William Whitfield Mills after Alice, Lady Todd (née Alice Gillam Bell), wife of the telegraph pioneer Charles Todd. The town is situated roughly in Australia's geographic centre, nearly equidistant from Adelaide and Darwin.\nThe area's original inhabitants, the Arrernte, have lived in the Central Australian desert for tens of thousands of years.\nAlice Springs had a population of 34,783 as of June 2025. The town's population accounts for approximately 10 percent of the population of the Northern Territory.\nThe town straddles the usually dry Todd River on the northern side of the MacDonnell Ranges. The surrounding region is known as Central Australia, or the Red Centre, an arid environment consisting of several deserts. Alice Springs experiences a wide temperature range, with an average maximum in summer of 35.6 °C (96.1 °F) and an average minimum in winter of 5.1 °C (41.2 °F)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "alice springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alice",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3387,
+    "attempt": 3360,
+    "place_id": "gn-2129211",
+    "input": {
+      "place": {
+        "place_id": "gn-2129211",
+        "name": "Misawa",
+        "country": "Japan",
+        "subdivision": "Aomori",
+        "lat": 40.68682,
+        "lon": 141.38969
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Misawa, Aomori",
+          "url": "https://en.wikipedia.org/wiki/Misawa,_Aomori",
+          "text": "Misawa (三沢市, Misawa-shi) is a city in Aomori Prefecture, Japan. As of 30 November 2025, the city had an estimated population of 37,065 in 19557 households, and a population density of 310 persons per km2. The total area of the city is 119.87 square kilometers (46.28 sq mi).\nMisawa is the location of a large military base, Misawa Air Base, which is under joint operation of the United States Air Force's 35th Fighter Wing, Naval Air Facility, and the Japan Air Self-Defense Force's 3rd Fighter Wing. It is also an important US base for signals intelligence and related activities. The city population figures do not include the estimated 10,000 American military personnel and their dependents stationed at Misawa Air Base."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "misawa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

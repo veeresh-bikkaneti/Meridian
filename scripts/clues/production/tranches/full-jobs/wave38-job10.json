@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 7633,
+    "attempt": 7581,
+    "place_id": "gn-2953424",
+    "input": {
+      "place": {
+        "place_id": "gn-2953424",
+        "name": "Bad Kissingen",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 50.20228,
+        "lon": 10.07784
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Kissingen",
+          "url": "https://en.wikipedia.org/wiki/Bad_Kissingen",
+          "text": "Bad Kissingen (German pronunciation: [baːt ˈkɪsɪŋən] ) is a German spa town in the Bavarian region of Lower Franconia and seat of the district Bad Kissingen. Situated to the south of the Rhön Mountains on the Franconian Saale river, it is one of the health resorts, which became famous as a \"Weltbad\" in the 19th century.\nIn 2021 the town became part of the transnational UNESCO World Heritage Site under the name \"Great Spa Towns of Europe\", because of its famous mineral springs and its architecture exemplifying the popularity of spa resorts in Europe during the 18th through 20th centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "bad kissingen",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kissingen",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7634,
+    "attempt": 7582,
+    "place_id": "gn-2960777",
+    "input": {
+      "place": {
+        "place_id": "gn-2960777",
+        "name": "Bettembourg",
+        "country": "Luxembourg",
+        "subdivision": "Esch-sur-Alzette",
+        "lat": 49.51861,
+        "lon": 6.10278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bettembourg",
+          "url": "https://en.wikipedia.org/wiki/Bettembourg",
+          "text": "Bettembourg (French pronunciation: [bɛtɑ̃buʁ]; Luxembourgish: Beetebuerg [ˈbeːtəbu̯əɕ] ; German: Bettemburg [ˈbɛtm̩ˌbʊʁk]) is a commune and town in southern Luxembourg. The country's eighth-most populous commune, it is part of the canton of Esch-sur-Alzette.\nAs of 2025, the town of Bettembourg, which lies in the east of the commune, has a population of 9,248. Other towns within the commune include Abweiler, Fennange, Huncherange, and Noertzange.\nThe Parc Merveilleux children's amusement park is located just outside Bettembourg. Bettembourg Castle, located in the centre of the town, has a history starting in 1733 when it was built as the residence of a farming family. Today it houses the offices and services of the local commune and acts as the town hall of Bettembourg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "bettembourg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7635,
+    "attempt": 7583,
+    "place_id": "gn-2961107",
+    "input": {
+      "place": {
+        "place_id": "gn-2961107",
+        "name": "Trim",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.555,
+        "lon": -6.79167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trim, County Meath",
+          "url": "https://en.wikipedia.org/wiki/Trim,_County_Meath",
+          "text": "Trim is a town in County Meath, Ireland. It is situated on the River Boyne and, as of the 2022 census, had a population of 9,563. The town is in a civil parish of the same name.\nThe town is noted for Trim Castle – the largest Norman castle in Ireland. One of the two cathedrals of the Church of Ireland United Dioceses of Meath and Kildare – St Patrick's cathedral – is located north of the river. Trim won the Irish Tidy Towns Competition in 1972, 1984, 2014 and 2022, and was the joint winner with Ballyconnell in 1974. Trim was historically the county town of Meath, but this title was passed on in 1898 to the larger, neighbouring town of Navan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "trim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7636,
+    "attempt": 7584,
+    "place_id": "gn-2971482",
+    "input": {
+      "place": {
+        "place_id": "gn-2971482",
+        "name": "Tulle",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 45.26582,
+        "lon": 1.77233
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tulle, France",
+          "url": "https://en.wikipedia.org/wiki/Tulle,_France",
+          "text": "Tulle (French: [tyl] ; Occitan: Tula [ˈtylɔ]) is a commune in central France. It is the prefecture and the second-largest town (after Brive-la-Gaillarde) of the department of Corrèze, in the region of Nouvelle-Aquitaine. Tulle is also the episcopal see of the Roman Catholic Diocese of Tulle.\nStretching over more than three kilometres in the narrow and tortuous Corrèze valley, Tulle spreads its old quarters on the hillside overlooking the river, while the Notre-Dame cathedral emerges from the heart of the town. Known sometimes as \"the town on seven hills\", Tulle rose to prominence through the development of its manufacturing sector."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "tulle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7637,
+    "attempt": 7585,
+    "place_id": "gn-2975233",
+    "input": {
+      "place": {
+        "place_id": "gn-2975233",
+        "name": "Sélestat",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 48.26195,
+        "lon": 7.4489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sélestat",
+          "url": "https://en.wikipedia.org/wiki/Sélestat",
+          "text": "Sélestat (French: [selɛsta]; Alsatian: Schlettstàdt; German: Schlettstadt) is a commune in the Grand Est region of France. An administrative division (sous-préfecture) of the Bas-Rhin department, the town lies on the Ill river, 17 kilometres (11 mi) from the Rhine and the German border. Sélestat is located between the largest communes of Alsace, Strasbourg and Mulhouse. In 2023, Sélestat had a total population of 19,589.\nFirst mentioned in the 8th century, Sélestat later became a free imperial city of the Holy Roman Empire and prospered as a member of the Décapole. During the Renaissance, it was a noted centre of humanism. Sélestat's fortunes declined amid the turmoil of the Reformation and experienced constant warfare. Following the Peace of Westphalia in 1648, it was formally annexed by France, under which its decline continued though it remained a town of strategic importance.\nSélestat's city walls, reconstructed by Vauban in the late 17th century, were demolished in 1874 after the town (as part of Alsace–Lorraine) was annexed by the German Empire. It became French again after the First World War, was again (informally) annexed by Germany during the Second World War, before finally returning to France. Since 1945, Sélestat has experienced steady growth and become a regional industrial centre and commercial hub.\nSélestat's well-preserved old town features a distinct blend of French and German cultural heritage and is site to numerous architectural landmarks from the Middle Ages and Renaissance. The Humanist Library, inscribed by UNESCO in its Memory of the World Register, houses one of the oldest and most homogeneous collections of medieval and Renaissance works in Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 264
+    },
+    "banned_terms": [
+      {
+        "term": "selestat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7638,
+    "attempt": 7586,
+    "place_id": "gn-3013196",
+    "input": {
+      "place": {
+        "place_id": "gn-3013196",
+        "name": "Hombourg-Haut",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 49.12819,
+        "lon": 6.77066
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hombourg-Haut",
+          "url": "https://en.wikipedia.org/wiki/Hombourg-Haut",
+          "text": "Hombourg-Haut (French pronunciation: [ɔ̃buʁ o]; German: Oberhomburg) is a commune located in the department of Moselle, region of Grand Est, in the cultural and historical region Lorraine, north-eastern France.\nHombourg-Haut is an old medieval fortress town, built in the thirteenth century by the bishops of Metz. The old village lies at the foot of the imposing collegiate church in a green and wooded landscape.\nNowadays, the city has several neighbourhoods: the old Hombourg, the old village of Hellering, urban areas with HLMs built in the 1950s-1960s and residential district. The inhabitants of the commune are known as Hombourgeois and Hombourgeoises."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "hombourg haut",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hombourg",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "haut",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7639,
+    "attempt": 7587,
+    "place_id": "gn-3062439",
+    "input": {
+      "place": {
+        "place_id": "gn-3062439",
+        "name": "Vrchlabí",
+        "country": "Czechia",
+        "subdivision": "Hradec Králové Region",
+        "lat": 50.62697,
+        "lon": 15.60937
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vrchlabí",
+          "url": "https://en.wikipedia.org/wiki/Vrchlabí",
+          "text": "Vrchlabí (Czech pronunciation: [ˈvr̩xlabiː]; German: Hohenelbe) is a town in Trutnov District in the Hradec Králové Region of the Czech Republic. It has about 12,000 inhabitants. The town is located on the Elbe River at the foot of the Giant Mountains and is known as a centre of tourism and winter sports. Industry in the town is represented by a Škoda Auto factory.\nThe main landmarks of Vrchlabí are the Vrchlabí Castle and Church of Saint Lawrence. The town centre with the castle complex, monastery complex and town park is well preserved and is protected as an urban monument zone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "vrchlabi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7640,
+    "attempt": 7588,
+    "place_id": "gn-3080047",
+    "input": {
+      "place": {
+        "place_id": "gn-3080047",
+        "name": "Żnin",
+        "country": "Poland",
+        "subdivision": "Kujawsko-Pomorskie",
+        "lat": 52.84958,
+        "lon": 17.71992
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Żnin",
+          "url": "https://en.wikipedia.org/wiki/Żnin",
+          "text": "Żnin (Polish: [ʐɲin] ) is a town in central Poland with a population of 14,181 (June 2014). It is in the Kuyavian-Pomeranian Voivodeship and is the capital of Żnin County.\nEstablished in the 11th century, Żnin is a historical town with a preserved medieval urban layout containing heritage sites in various styles, including Gothic, Baroque, Neoclassical and Neo-Gothic. It is considered the capital of the historic and ethnocultural region of Pałuki, and contains the Museum of the Pałuki Land. Żnin is located in the Greater Poland Lake District on the river Gąsawka between the Żnińskie Duże and Żnińskie Małe lakes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "znin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7641,
+    "attempt": 7589,
+    "place_id": "gn-3093785",
+    "input": {
+      "place": {
+        "place_id": "gn-3093785",
+        "name": "Łaziska Górne",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.14952,
+        "lon": 18.84215
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Łaziska Górne",
+          "url": "https://en.wikipedia.org/wiki/Łaziska_Górne",
+          "text": "Łaziska Górne [waˈʑiska ˈɡurnɛ] (German: Ober Lazisk, Silesian: Gōrne Łaziska) is a town in Silesia in southern Poland, near Katowice. Outer town of the Metropolis GZM – metropolis with a population of 2 million. Located in the Silesian Highlands.\nIt is situated in the Silesian Voivodeship since its formation in 1999, previously in Katowice Voivodeship, and before then, of the Autonomous Silesian Voivodeship. Łaziska is one of the towns of the 2,7 million conurbation - Katowice urban area and within a greater Katowice-Ostrava metropolitan area populated by about 5,294,000 people. The population of the town is 22,298 as of 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "aziska gorne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "aziska",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gorne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7642,
+    "attempt": 7590,
+    "place_id": "gn-3107765",
+    "input": {
+      "place": {
+        "place_id": "gn-3107765",
+        "name": "Torrelodones",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.57654,
+        "lon": -3.92658
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torrelodones",
+          "url": "https://en.wikipedia.org/wiki/Torrelodones",
+          "text": "Torrelodones is a municipality in the northwest of the Autonomous Community of Madrid, Spain. It is situated 29 kilometers northwest from the city of Madrid. Because of its location between the Sierra de Guadarrama and the metropolitan area of the capital, it is linked to two districts in Madrid: the agricultural area of Guadarrama and the metropolitan area of Madrid.\nIt lies at an average altitude of 845 meters. According to the 2022 census, 24,775 people live in the municipality, distributed among seven towns.\nThe people of Torrelodones earn among the highest per capita incomes of the Community of Madrid. Services, hotels, and construction are the main economic activities. In 2012 it had about 22,680 inhabitants. With over three colleges and four developments, Torrelodones is usually divided into two parts: Torrelodones town, where there is the Town Hall, and the Torrelodones colony, where there are schools, homes and small businesses.\nThe town has an interesting artistic and natural heritage and is part of two tourist routes in the Community of Madrid. One of them is the Imperial Route, which partially follows the historic route used in the 16th century by King Philip II in his travels from the city of Madrid to the Royal Site of El Escorial. The other is the Route through the Castles, Fortresses and Watchtowers, to which it is linked by the Watchtower of Torrelodones.\nTorrelodones is bordered to the north by Hoyo de Manzanares, to the south by Las Rozas de Madrid, to the west by Galapagar, and to the east by Madrid (through El Monte de El Pardo).\nHistorically the municipality was named Torrelodones (Lodones' Tower). That name led to the current name of the town of Torrelodones. One source for the name comes from that of the Muslim watchtower that Muslims used during the Al-andalus era to guard the city from the attacks of Christian people during the Iberian peninsula's reconquest. Another namesake, lodon (hack berry), is a type of tree that was abundant in the area, whose scientific name is Celtis australis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 340
+    },
+    "banned_terms": [
+      {
+        "term": "torrelodones",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7643,
+    "attempt": 7591,
+    "place_id": "gn-3117010",
+    "input": {
+      "place": {
+        "place_id": "gn-3117010",
+        "name": "Medina del Campo",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 41.31239,
+        "lon": -4.91413
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Medina del Campo",
+          "url": "https://en.wikipedia.org/wiki/Medina_del_Campo",
+          "text": "Medina del Campo is a town and municipality of Spain located in the autonomous community of Castile and León. Part of the Province of Valladolid, it is the centre of a farming area.\nIt lies on the banks of the Zapardiel river, in the central part of the Douro basin. Initially a Berber settlement, it was repopulated after 1085. By the 12th century the walled town had become a major population centre of the Kingdom of Castile, drawing large-scale trading operations. It was later granted right to hold its well-known free fairs, which attracted a notable presence of international dealers.\nIt is located on the A-6 road route."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "medina del campo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "medina",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "campo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7644,
+    "attempt": 7592,
+    "place_id": "gn-3121245",
+    "input": {
+      "place": {
+        "place_id": "gn-3121245",
+        "name": "Gràcia",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.40237,
+        "lon": 2.15641
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gràcia",
+          "url": "https://en.wikipedia.org/wiki/Gràcia",
+          "text": "Gràcia (Catalan pronunciation: [ˈɡɾasi.ə], lit. 'Grace', Spanish: [ˈɡɾaθja]), is a district of the Mediterranean city of Barcelona, in the northeastern autonomous community of Catalonia, Spain. It comprises the barris (neighborhoods) of Vila de Gràcia, Vallcarca i els Penitents, El Coll, La Salut and Camp d'en Grassot i Gràcia Nova. Gràcia is bordered by the districts of Eixample to the south, Sarrià-Sant Gervasi to the west, and Horta-Guinardó to the east. A vibrant and diverse enclave of Catalan life, Gràcia was an independent municipality for centuries before being formally annexed by Barcelona in 1897, as a part of the city's expansions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "gracia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7645,
+    "attempt": 7593,
+    "place_id": "gn-3181061",
+    "input": {
+      "place": {
+        "place_id": "gn-3181061",
+        "name": "Campagnano di Roma",
+        "country": "Italy",
+        "subdivision": "Lazio",
+        "lat": 42.1357,
+        "lon": 12.37358
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Campagnano di Roma",
+          "url": "https://en.wikipedia.org/wiki/Campagnano_di_Roma",
+          "text": "Campagnano di Roma is a comune (municipality) in the Metropolitan City of Rome in the Italian region of Latium, located about 30 kilometres (19 miles) northwest of Rome. It was first mentioned in 1076, having been carved out of the great estate assembled on the Roman pattern by Pope Adrian I, ca. 780, his Domusculta Capracorum. In medieval times, Campagnano di Roma was on the via Francigena. Here, Sigeric, Archbishop of Canterbury, sojourned on his return journey from Rome about 990.\nCampagnano di Roma borders the following municipalities: Anguillara Sabazia, Formello, Magliano Romano, Mazzano Romano, Nepi, Rome, Sacrofano, Trevignano Romano.\nThe Archaeological Park of Veii is nearby.\nThe town hosts the ACI Vallelunga Circuit racing circuit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "campagnano di roma",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "campagnano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "roma",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7646,
+    "attempt": 7594,
+    "place_id": "gn-3526966",
+    "input": {
+      "place": {
+        "place_id": "gn-3526966",
+        "name": "Huehuetán",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 15.01929,
+        "lon": -92.38309
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huehuetán",
+          "url": "https://en.wikipedia.org/wiki/Huehuetán",
+          "text": "Huehuetán is a town and municipality in the state of Chiapas in southern Mexico. It covers an area of 313 km2.\nAs of 2010, the municipality had a total population of 33,444, up from 31,464 as of 2005.\nAs of 2010, the town of Huehuetán had a population of 7,755. Other than the town of Huehuetán, the municipality had 114 localities, the largest of which (with 2010 populations in parentheses) were: Ignacio Zaragoza (2,464), and Texcaltic (1,743), classified as rural., Huehuetán Estación FFCC (6,314), classified as urban, and Guadalupe (1,687), Plan de Ayala (1,443), and Chamulapita (1,337), classified as rural."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "huehuetan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7647,
+    "attempt": 7595,
+    "place_id": "gn-3589671",
+    "input": {
+      "place": {
+        "place_id": "gn-3589671",
+        "name": "San Pablo Jocopilas",
+        "country": "Guatemala",
+        "subdivision": "Suchitepeque",
+        "lat": 14.58882,
+        "lon": -91.45188
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pablo Jocopilas",
+          "url": "https://en.wikipedia.org/wiki/San_Pablo_Jocopilas",
+          "text": "San Pablo Jocopilas is a town, with a population of 16,872 (2018 census), and a municipality east-northeast of Samayac and west of highway CA 2 in the Suchitepéquez department of Guatemala, located 8 km from Mazatenango, which is the department's capital. The Colonial Church was chosen as one of the seven most wonderful in Guatemala in a contest run by the Industrial Bank.\nSan Pablo Jocopilas also boasts other monuments, such as the centenary clock of Chocolá, built in 1800. The commune is located along the banks of the Ixtacapa River, which is a popular tourist spot during the holidays."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "san pablo jocopilas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pablo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jocopilas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7648,
+    "attempt": 7596,
+    "place_id": "gn-363383",
+    "input": {
+      "place": {
+        "place_id": "gn-363383",
+        "name": "Delvinë",
+        "country": "Albania",
+        "subdivision": "Vlorë County",
+        "lat": 39.95111,
+        "lon": 20.09778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Delvinë",
+          "url": "https://en.wikipedia.org/wiki/Delvinë",
+          "text": "Delvinë (Albanian: Delvinë or Delvina, Greek: Δέλβινο, romanized: Delvino) is a town and a municipality in Vlorë County, southern Albania, 16 kilometres (10 miles) northeast of Sarandë. It was formed in the 2015 local government reform by the merger of the former municipalities Delvinë and Vergo, which became municipal units. The seat of the municipality is the town Delvinë. The population of the municipal unit Delvinë at the 2023 census was 4,952 and of the municipality was 6,166.\nThe town is built on a mountain slope. It has a mosque, a Catholic church, a Protestant church, and an Orthodox church. Nearby are the remainders of a medieval castle.\nThe town's population consists of a majority of Albanians and a substantial Greek minority. Other communities include Balkan Egyptians and until WWII, Jews. There is little local employment apart from that provided by the state, and Delvinë benefits little from the tourist boom in Sarandë."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "delvine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7649,
+    "attempt": 7597,
+    "place_id": "gn-3660478",
+    "input": {
+      "place": {
+        "place_id": "gn-3660478",
+        "name": "Atuntaqui",
+        "country": "Ecuador",
+        "subdivision": "Imbabura",
+        "lat": 0.32759,
+        "lon": -78.21908
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Atuntaqui",
+          "url": "https://en.wikipedia.org/wiki/Atuntaqui",
+          "text": "Atuntaqui is a city, with a population of 25,115, in the Imbabura Province in the northern region of Ecuador. The city is located at an altitude of 2,400 metres (7,900 ft). Atuntaqui is located just 13 kilometres (8.1 mi) from the larger city of Ibarra, north along the Panamerican Highway. Although the sector name is Antonio Ante, those who visit or have heard of it identify it more as Atuntaqui, a name that has acquired several meanings through history. According to Father Juan de Velasco, it is composed of two words - hatun (large) and taqui (drum), i.e. 'big drum'. Jacinto Jijón y Caamano identifies it as a 'land rich in truth'; González Suárez rejects this meaning and translates it as 'big barn'. Others call it 'place of the inn' or 'tightly closed town'. The Montalvo Family is very important in Atuntaqui history, they are known for agriculture and civic changes in Atuntaqui, Responsible for paving roads and bringing electricity to the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "atuntaqui",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7650,
+    "attempt": 7598,
+    "place_id": "gn-3699188",
+    "input": {
+      "place": {
+        "place_id": "gn-3699188",
+        "name": "Caballococha",
+        "country": "Peru",
+        "subdivision": "Loreto",
+        "lat": -3.90583,
+        "lon": -70.51639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caballococha",
+          "url": "https://en.wikipedia.org/wiki/Caballococha",
+          "text": "Caballococha (Cabalo Cocha) is a town in the Loreto Region in northeastern Peru, located on the Amazon River and right across the river from Colombia.\nIt is the capital of both Mariscal Ramón Castilla Province and Ramón Castilla District. As of 1993, it had a population of 4,028 (1993).\nThe name of the town is a combination of Spanish and Quechua, meaning \"Horse Lake\", a nearby body of water. It is a poor town and people live by farming, trading, and fishing. Television has arrived as has the internet and there is even an internet cafe in the market square.\nThe town saw itself participating in the Leticia Incident, an event which led to war between Peru and Colombia in 1932. Today a statue exists in the main square dedicated to the soldiers who had to carry ammo and equipment through the jungle during the war."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "caballococha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7651,
+    "attempt": 7599,
+    "place_id": "gn-3980177",
+    "input": {
+      "place": {
+        "place_id": "gn-3980177",
+        "name": "Villa García",
+        "country": "Mexico",
+        "subdivision": "Zacatecas",
+        "lat": 22.16244,
+        "lon": -101.95488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa García, Zacatecas",
+          "url": "https://en.wikipedia.org/wiki/Villa_García,_Zacatecas",
+          "text": "Villa García Municipality is one of the 58 municipalities of the Mexican state of Zacatecas.\nIt is located 140 kilometers (87 mi) from the city of Zacatecas, the capital of the state.\nVilla García borders the municipality of Loreto in the north, Pinos in the southeast, and the states of Aguascalientes in the east and Jalisco in the south. Villa García has a population of 18,269 with an elevation of 2,100 meters (6,900 ft) above sea level.\nThe primary communities are Villa Garcia, the administrative seat of the municipality, with a population of 5,499, El Copetillo (pop. 1,159), Aguagorda (pop. 1,042), Granadas (pop. 1,056), and Aguagordita (pop. 695).\nThe region holds an annual fair from 1 to 12 December in honor of Our Lady of Guadalupe. The municipality has a vibrant industry of sarapes which has been in decline in the last years, many locals call sarapes tapetes or forongos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "villa garcia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "garcia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7652,
+    "attempt": 7600,
+    "place_id": "gn-3985797",
+    "input": {
+      "place": {
+        "place_id": "gn-3985797",
+        "name": "San Julián",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 21.01035,
+        "lon": -102.17967
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Julián, Jalisco",
+          "url": "https://en.wikipedia.org/wiki/San_Julián,_Jalisco",
+          "text": "San Julián is a town and a municipality, with a population of 16,792, in the Los Altos region of the Mexican state of Jalisco.\nSan Julian is a town and municipality of the state of Jalisco, Mexico. Located northeast of Jalisco, in the Southern Highlands Region, on a land area of 261.9 km2. According to Count II of Population and Housing, the population is mainly engaged in the tertiary and secondary sectors of the economy. Nearly the whole population is Catholic. This devoutness of the religion led to the first armed uprising against the government, commanded by General Miguel Hernández. This uprising was the  beginning of the Cristero War A consequence of this was martyred saint Julio Alvarez Mendoza who was tortured to death. The torture included acts such as walking on hot rocks after have the skin from the bottom of his foot cut off.\nThe main festivity is La Candelaria, celebrated each year on February 2, where revelers can attend carnivals, a certamen, dances, rodeos, theater, and some years, the circus. The carnivals last approximately two weeks. This includes multiple food stands, games with prizes, and a variety of entertaining rides."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "san julian",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "julian",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

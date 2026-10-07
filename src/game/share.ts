@@ -1,4 +1,6 @@
 import { BRAND } from "./brand.ts";
+import type { LoopGuess, LoopStatus } from "./loop/types.ts";
+import { LOOP_MAX_GUESSES } from "./loop/types.ts";
 
 /**
  * Per-place grade for the share-text emoji strip (Wordle-style).
@@ -47,4 +49,47 @@ export function shareText(input: {
     `${input.totalScore.toLocaleString("en-US")} over ${input.placesPlayed} places · ` +
     `${input.averagePerPlace} avg/place${streak} · ${input.regionName}`
   );
+}
+
+/**
+ * Grade one GeoDetective guess for the share-text strip. The winning guess
+ * (the last guess of a won day) is always green, regardless of residual
+ * distance; every other guess grades by distance. Spoiler-free: no names,
+ * no distances.
+ */
+function loopGuessMark(guess: LoopGuess, isWinningGuess: boolean): string {
+  if (isWinningGuess) return "🟩";
+  if (guess.distKm < 500) return "🟨";
+  if (guess.distKm < 2000) return "🟧";
+  return "🟥";
+}
+
+/**
+ * GeoDetective share text, in the same three-line shape as shareText:
+ *   line 1: "meridian geodetective <date label>"
+ *   line 2: the site URL on its own line (auto-linkified by messaging apps)
+ *   line 3: the emoji strip (one slot per guess, ⬜ for unused guesses)
+ *            plus the result ("solved in N" / "not solved").
+ *   line 4 (only when streak > 0): `🔥 N` — the consecutive-solve streak.
+ * Spoiler-free: no place names, no distances.
+ */
+export function shareLoopText(input: {
+  /** Guesses in play order. */
+  guesses: LoopGuess[];
+  status: LoopStatus;
+  dateKey: string;
+  now?: Date;
+  /** Consecutive solves. Appended as a `🔥 N` line when > 0; hidden when
+   * 0 or unset so a cold or reset streak stays out of the share. */
+  streak?: number;
+}): string {
+  const when = shareDateLabel(input.dateKey, input.now ?? new Date());
+  const marks = input.guesses.map((guess, i) =>
+    loopGuessMark(guess, input.status === "won" && i === input.guesses.length - 1),
+  );
+  while (marks.length < LOOP_MAX_GUESSES) marks.push("⬜");
+  const result = input.status === "won" ? `solved in ${input.guesses.length}` : "not solved";
+  const streakLine =
+    typeof input.streak === "number" && input.streak > 0 ? `\n🔥 ${input.streak}` : "";
+  return `${BRAND.shareHost} geodetective ${when}\n${BRAND.siteUrl}\n${marks.join("")} ${result}${streakLine}`;
 }

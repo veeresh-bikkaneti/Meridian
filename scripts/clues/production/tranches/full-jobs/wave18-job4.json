@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 3489,
+    "attempt": 3461,
+    "place_id": "gn-196742",
+    "input": {
+      "place": {
+        "place_id": "gn-196742",
+        "name": "Homa Bay",
+        "country": "Kenya",
+        "subdivision": "Homa Bay County",
+        "lat": -0.52731,
+        "lon": 34.45714
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Homa Bay",
+          "url": "https://en.wikipedia.org/wiki/Homa_Bay",
+          "text": "Homa Bay is a town (and eponymous bay) on the south shore of Winam Gulf of Lake Victoria, in western Kenya. It lies near Mount Homa (in the Luo language Got Marahuma or God Uma [\"famous mountain\"]) and Ruma National Park, the latter noted for Jackson's hartebeests and roan antelope (the government has also released reticulated giraffes into the park).\nHoma Bay was once the District Headquarters for all of South Nyanza District, Nyanza Province, but has now been divided into at least three districts. Homa Bay is now the capital of Homa Bay County per the new constitution. The town of Homa Bay hosts a Municipal Council. The municipality had a population of 44,949 in 2019.\nHoma Bay municipality has six wards: Central, Kalanya, Kanyabala, Kanyadier/Kothidha, Katuma, and Posta/Bonde. All of them belong to the Rangwe Constituency, which has a total of fourteen wards. The remaining eight are located within Homa Bay County Council, the rural council of Homa Bay District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "homa bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "homa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3490,
+    "attempt": 3462,
+    "place_id": "gn-2339150",
+    "input": {
+      "place": {
+        "place_id": "gn-2339150",
+        "name": "Idanre",
+        "country": "Nigeria",
+        "subdivision": "Ondo State",
+        "lat": 7.1127,
+        "lon": 5.1159
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Idanre",
+          "url": "https://en.wikipedia.org/wiki/Idanre",
+          "text": "Idanre (), known formerly as Ufẹ̀ Òkè is a historic town in Ondo State, and the headquarters of the Idanre Local Government Area which carries its name. The town is located at the foot of the scenic Idanre Hill which is of unique cultural and environmental significance, and attracts many tourists.\nThe town is about 20 km (12 mi) southeast of the state's capital Akure, it has an area of 1,543.4 km2 (595.9 mi2) and a population of 129,795 as of the 2006 census. The postal code of the area is 340. Idanre is Nigeria's largest cocoa producing area. The residents of Idanre are mainly a Yoruba speaking people (with a tongue similar to the Ondo dialect). A majority of its people are into farming and trading."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "idanre",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3491,
+    "attempt": 3463,
+    "place_id": "gn-2460013",
+    "input": {
+      "place": {
+        "place_id": "gn-2460013",
+        "name": "Bla",
+        "country": "Mali",
+        "subdivision": "Ségou",
+        "lat": 12.95083,
+        "lon": -5.75557
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bla, Mali",
+          "url": "https://en.wikipedia.org/wiki/Bla,_Mali",
+          "text": "Bla (Bambara: ߓߟߊ tr. Bla) is a rural commune, town and capital of the Cercle of Bla in Mali's Ségou Region, located 85 kilometers south of Ségou along Mali's main highway.  Bla serves as a central location for NGO activity in the region and is a crossroads for transportation going northeast to Mopti and Gao, as well as south to Sikasso, Burkina Faso, and Côte d'Ivoire. Bla is also the main town for the Djonka, a sub-group of the Bamana. The town's population as of 2004 was around 15,000 people.\nBla was established as an outpost by Biton Mamary Coulibaly during the expansion of the Ségou (or Bamana) Empire around the first half of the 18th century. The verb \"ka bila\" means to \"leave behind\" in Bamana, thus Bla's name relates to the town's original function, a supply outpost where the Bamana Empire's military left arms and grain for later use."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "bla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3492,
+    "attempt": 3464,
+    "place_id": "gn-2476301",
+    "input": {
+      "place": {
+        "place_id": "gn-2476301",
+        "name": "Tindouf",
+        "country": "Algeria",
+        "subdivision": "Tindouf",
+        "lat": 27.67111,
+        "lon": -8.14743
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tindouf",
+          "url": "https://en.wikipedia.org/wiki/Tindouf",
+          "text": "Tindouf (Arabic: تندوف, romanized: Tindūf) is a commune and the main town in Tindouf Province, Algeria, close to the Mauritanian, Western Saharan and Moroccan borders.\nThe region is considered of strategic significance as it houses Algerian military bases and an airport with regular flights to Algiers, as well as flights to other domestic destinations. The settlement of Garet Djebilet lies within the municipal territory of Tindouf near the border with Mauritania; the settlement has an iron mine and a defunct airport, and is approximately 70 kilometres (43 mi) northwest of Âouinet Bel Egrâ. Since 1975, it also contains several Sahrawi refugee camps operated by the Polisario Front, a national liberation movement seeking the self-determination of Western Sahara."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "tindouf",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3493,
+    "attempt": 3465,
+    "place_id": "gn-2479609",
+    "input": {
+      "place": {
+        "place_id": "gn-2479609",
+        "name": "Sig",
+        "country": "Algeria",
+        "subdivision": "Mascara",
+        "lat": 35.52832,
+        "lon": -0.19369
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sig, Algeria",
+          "url": "https://en.wikipedia.org/wiki/Sig,_Algeria",
+          "text": "Sig (Arabic: سيق Sīq; called Saint-Denis-de-Sig under French rule; Latin: Tasacora) is a town in northwestern Algeria. Formerly located in Oran Province and now located in Mascara Province, north-western Algeria. Its population was 61,373 in 2008.\nThe town's public garden is on the bank of the Sig River just down stream the confluence of the le-Mebtoûh and the Matarah. Sig is surrounded by fertile land irrigated by the Barrages des Cheurfas (dams) 25 kilometres (16 mi) upstream with the overflow stored in the Petit Barrage (little dams) 3.2 kilometres (2.0 mi) upstream from the town. The local land supports the growing of olives, cotton, flax, grains, tobacco, and wine, much of which is processed locally and exported. The other local industry is mineral mining, primarily for diatomite.\nSig is located about 29 kilometres (18 mi) south the Gulf of Arzew, separated by the Sig plains and north-west of Mount Touakas (349 metres (1,145 ft) high). Sig is about 44 kilometres (27 mi) east of Oran and 450 kilometres (280 mi) from Algiers. The temperatures usually rise from May to the end of August."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "sig",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3494,
+    "attempt": 3466,
+    "place_id": "gn-2493456",
+    "input": {
+      "place": {
+        "place_id": "gn-2493456",
+        "name": "Illizi",
+        "country": "Algeria",
+        "subdivision": "Illizi",
+        "lat": 26.48333,
+        "lon": 8.46667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Illizi",
+          "url": "https://en.wikipedia.org/wiki/Illizi",
+          "text": "Illizi (Amazigh language: Ilizi) is an Algerian town and commune, coextensive with Illizi District, situated in the south-eastern part of Algeria, and capital of Illizi Province. According to the 2008 census it is the largest commune by population in the province, with a population of 17,252, up from 10,163 in 1998, and an annual population growth rate of 5.5%, the highest in the province. It is one of the gates to the Tassili N'Ajjer National Park with caves and partly enclosed rock shelters containing prehistoric drawings dating from 6000 years BC. There are a hotel and two camping sites, as well as many local tourist agencies. During French colonial rule, the town was called Fort Polignac (1909–1962)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "illizi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3495,
+    "attempt": 3467,
+    "place_id": "gn-2509463",
+    "input": {
+      "place": {
+        "place_id": "gn-2509463",
+        "name": "Villena",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.6373,
+        "lon": -0.86568
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villena",
+          "url": "https://en.wikipedia.org/wiki/Villena",
+          "text": "Villena is a city and municipality in Spain, in the Valencian Community. It is located at the northwest part of Alicante, and borders to the west with Castilla-La Mancha and Murcia, to the north with the province of Valencia and to the east and south with the province of Alicante. It is the capital of the comarca of the Alto Vinalopó. The municipality has an area of 345.6 km² and a population of 34,144 inhabitants as of INE 2023.\nThere is evidence of settlement in the area from Middle Paleolithic. However, it is on dispute if the current city dates from visigothic times or before, though certainly it existed in the 11th century, during the Muslim period. After the Christian conquest, it became Seigneury, Principality, Duchy and finally Marquisate, until the people, encouraged by the Catholic Monarchs, revolted against the marquis. In 1525 Charles V conceded the title of City to Villena. This is the most economically prosperous period, as shown by the monuments that survived to nowadays. Although a railway station was inaugurated in 1858, economy kept being mainly agricultural until the rural exode that took place in the 1960s. Then, the economic model changed rapidly so that currently economy is based mainly on tertiary sector and industry, chiefly footwear, construction and furniture.\nThe historical city and surroundings contain an important group of historical remains, including two castles and several churches, hermitages, palaces and squares, as well as a number of museums, standing out the Archaeological Museum \"José María Soler\". Among the main cultural events are the Moors and Christians festival and the Concurso de Jóvenes Intérpretes \"Ruperto Chapí\" (Young Interpreters Contest)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 273
+    },
+    "banned_terms": [
+      {
+        "term": "villena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3496,
+    "attempt": 3468,
+    "place_id": "gn-2510279",
+    "input": {
+      "place": {
+        "place_id": "gn-2510279",
+        "name": "Torrent",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 39.43705,
+        "lon": -0.46546
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torrent, Valencia",
+          "url": "https://en.wikipedia.org/wiki/Torrent,_Valencia",
+          "text": "Torrent, in Valencian (known in Spanish as Torrente), is a city and municipality located within the metropolitan area of the city of Valencia, Spain. It is the largest municipality of the Horta Oest comarca, with 83,962 inhabitants (2020). It is situated some 7 km from Valencia city proper, to which it is connected via the metro. The two metro stations in Torrent are called Torrent and Torrent Avinguda on lines 1, 2 and 7.\nIt is bordered by Aldaia, Alaquàs and Xirivella in the north, Picanya and Catarroja in the east, Alcàsser and Picassent in the south and Montserrat, Godelleta, Turís and Xiva in the West. All of the cities are part of the province of Valencia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "torrent",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3497,
+    "attempt": 3469,
+    "place_id": "gn-2638879",
+    "input": {
+      "place": {
+        "place_id": "gn-2638879",
+        "name": "Saddleworth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.54846,
+        "lon": -2.00455
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saddleworth",
+          "url": "https://en.wikipedia.org/wiki/Saddleworth",
+          "text": "Saddleworth is a civil parish of the Metropolitan Borough of Oldham in Greater Manchester, England. It comprises several villages and hamlets as well as suburbs of Oldham on the west side of the Pennine hills.\nAreas include Austerlands, Delph, Denshaw, Diggle, Dobcross, Friezland, Grasscroft, Greenfield, Grotton, Lydgate, Scouthead, Springhead and Uppermill.\nSaddleworth lies east of Oldham and 11 miles (18 kilometres) northeast of Manchester. It is broadly rural and had a population of 25,460 at the 2011 Census, making it one of the larger civil parishes in the United Kingdom.\nHistorically in the West Riding of Yorkshire and following the Industrial Revolution, in the 18th and 19th centuries, Saddleworth became a centre for cotton spinning and weaving. By the end of Queen Victoria's reign, mechanised textile production had become a vital part of the local economy. The Royal George Mill, owned by the Whitehead family, manufactured felt used for pianofortes, billiard tables and flags.\nFollowing the Great Depression Saddleworth's textile sector declined. Much of Saddleworth's architecture and infrastructure dates from its textile processing days however, notably the Saddleworth Viaduct and several cottages and terraces, many built by the local mill owners.\nFor centuries Saddleworth was linked, ecclesiastically, with the parish of Rochdale and was long talked of as the part of Yorkshire where Lancastrians lived. The former Saddleworth Urban District was the only part of the West Riding to have been amalgamated into Greater Manchester in 1974. However, strong cultural links with Yorkshire remain amongst its communities. There are several brass bands in the parish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 255
+    },
+    "banned_terms": [
+      {
+        "term": "saddleworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3499,
+    "attempt": 3470,
+    "place_id": "gn-2655583",
+    "input": {
+      "place": {
+        "place_id": "gn-2655583",
+        "name": "Bishop Auckland",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.65554,
+        "lon": -1.67706
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bishop Auckland",
+          "url": "https://en.wikipedia.org/wiki/Bishop_Auckland",
+          "text": "Bishop Auckland ( AWK-lənd) is a market town and civil parish at the confluence of the River Wear and the River Gaunless in County Durham, England. It is 12 miles (19 km) northwest of Darlington and 12 miles (19 km) southwest of Durham. It had a population of 23,354 at the 2021 census.\nMuch of the town's early history surrounds the Bishops of Durham and the establishment of Auckland Castle's predecessor, a hunting lodge, which became the main residence of Durham Bishops. This is reflected in the first part of the town's name. During the Industrial Revolution, the town grew rapidly as coal mining became its largest industry. Decline in the coal mining industry during the late twentieth century has changed the town's largest sector to manufacturing.\nSince 1 April 2009, the town's local authority has been Durham County Council. The unitary authority replaced the previous Wear Valley District and Durham County councils. The parliamentary constituency of Bishop Auckland is named after the town. It is currently held by Sam Rushworth of the Labour Party. The town is twinned with the French town of Ivry-sur-Seine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "bishop auckland",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bishop",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "auckland",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3500,
+    "attempt": 3471,
+    "place_id": "gn-2796491",
+    "input": {
+      "place": {
+        "place_id": "gn-2796491",
+        "name": "Hasselt",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.93106,
+        "lon": 5.33781
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hasselt",
+          "url": "https://en.wikipedia.org/wiki/Hasselt",
+          "text": "Hasselt (Dutch pronunciation: [ˈɦɑsəlt] , Limburgish pronunciation: [ˈɦɑsəlt], French pronunciation: [ʔasɛlt]) is the capital and largest city of the province of Limburg in the Flemish Region of Belgium.\nAs of 1 January 2025, Hasselt had a total population of 90,249. The old town of Hasselt is surrounded by a number of satellite hamlets including Kiewit, Runkst, Banneuxwijk, Godsheide and Rapertingen. Further away are several sub-municipalities which were once within other municipalities, including Guigoven, Kermt, Kortessem, Kuringen, Sint-Lambrechts-Herk, Spalbeek, Stevoort, Stokrooie, Wimmertingen, Vliermaal, Vliermaalroot, and Wintershoven.\nGeographically, Hasselt is located between the Campine region, north of the Demer river, and the Hesbaye region, to the south.  Both the Demer river and the Albert Canal run through the municipality.\nIn terms of economic regions, Hasselt is within the transnational Meuse-Rhine Euroregion, connecting neighbouring regions in Wallonia, the Netherlands and Germany."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "hasselt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3501,
+    "attempt": 3472,
+    "place_id": "gn-2940451",
+    "input": {
+      "place": {
+        "place_id": "gn-2940451",
+        "name": "Buxtehude",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.46994,
+        "lon": 9.68968
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buxtehude",
+          "url": "https://en.wikipedia.org/wiki/Buxtehude",
+          "text": "Buxtehude (German pronunciation: [bʊkstəˈhuːdə] ; Low German: Buxthu, pronounced [bʊkstˈhu]), officially the Hanseatic City of Buxtehude (German: Hansestadt Buxtehude), is a town on the Este River in Northern Germany, belonging to the district of Stade in Lower Saxony. It is part of the Hamburg Metropolitan Region and attached to the city's S-Bahn rapid transit network. Buxtehude is a medium-sized town and the second largest municipality in the Stade district (Landkreis). It lies on the southern border of the Altes Land in close proximity to the city-state of Hamburg. To the west lie the towns of Horneburg and Stade and to the south there are a number of  incorporated villages featuring mostly upscale housing; e.g., Ottensen and Apensen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "buxtehude",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3502,
+    "attempt": 3473,
+    "place_id": "gn-2953568",
+    "input": {
+      "place": {
+        "place_id": "gn-2953568",
+        "name": "Backnang",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.94743,
+        "lon": 9.43718
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Backnang",
+          "url": "https://en.wikipedia.org/wiki/Backnang",
+          "text": "Backnang (German pronunciation: [ˈbaknaŋ] ; Swabian: Baggana) is a town in Germany in the Bundesland of Baden-Württemberg, roughly 30 km (19 mi) northeast of Stuttgart. Its population has increased greatly over the past century, from 7,650 in 1900 to 37,957 in 2022.\nBacknang was ceded to Württemberg by the Baden (Zähringer family) in 1325. Backnang has been known as Gerberstadt due to several tanneries and leather factories, and wool and cloth mills that dominated Backnang's industries. Today, all of these have vanished, and instead, telecommunication companies, such as Ericsson (formerly AEG, Telefunken, ANT Nachrichtentechnik, Bosch and Marconi) and Tesat-Spacecom, dominate the town's industries. The Stiftskirche, formerly the church of Backnang Abbey, dates back to the 12th century.\nBacknang hosts the annual Strassenfest during the last weekend in June where the monday is also in June. It has been founded as a street festival where local sports and cultural clubs offered drinks and foods. The traditional opening of the Strassenfest is marked with cannon shots from the city tower at 6 pm on Friday and ends with the Zapfenstreich on the following Monday at 11 pm. The Strassenfest typically attracts more than 100,000 spectators."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "backnang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3503,
+    "attempt": 3474,
+    "place_id": "gn-295657",
+    "input": {
+      "place": {
+        "place_id": "gn-295657",
+        "name": "Arad",
+        "country": "Israel",
+        "subdivision": "Southern District",
+        "lat": 31.25882,
+        "lon": 35.21282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arad, Israel",
+          "url": "https://en.wikipedia.org/wiki/Arad,_Israel",
+          "text": "Arad (Hebrew: עֲרָד ) is a city in the Southern District of Israel. It is located on the border of the Negev and the Judaean deserts, 25 kilometres (16 miles) west of the Dead Sea and 45 kilometres (28 miles) east of Beersheba. The city is home to a diverse population of 29,504 in 2024, including Ashkenazi and Sephardi Jews (both secular and religious), Bedouins and Black Hebrews, as well as new immigrants.\nAfter attempts to settle the area in the 1920s, Arad was founded in November 1962 as an Israeli development town, the first planned city in Israel. Arad's population grew significantly with the Aliyah from the former Soviet Union. It became a city in 1995.\nLandmarks in Arad include the ruins of Tel Arad, Arad Park, a domestic airfield and Israel's first legal race circuit. The city is known for its annual summer music festival, the Arad Festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "arad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3504,
+    "attempt": 3475,
+    "place_id": "gn-3110834",
+    "input": {
+      "place": {
+        "place_id": "gn-3110834",
+        "name": "Sant Boi de Llobregat",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.34357,
+        "lon": 2.03659
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Boi de Llobregat",
+          "url": "https://en.wikipedia.org/wiki/Sant_Boi_de_Llobregat",
+          "text": "Sant Boi de Llobregat (IPA: [ˌsam ˈbɔj ðə ʎuβɾəˈɣat]) is a city in the Province of Barcelona in Catalonia, Spain, located on the banks of the Llobregat river. In 2019 it had 83,605 inhabitants.\nThe city is divided into six neighborhoods (named barris in Catalan): Ciutat Cooperativa-Molí Nou, Marianao-Can Paulet, Barri Centre, Vinyets-Molí Vell, Camps Blancs-Canons-Orioles, and Casablanca.\nIt is bordered on the north by the towns of Santa Coloma de Cervelló and Sant Joan Despí and the village of Sant Climent de Llobregat; on the east by the town of Cornellà de Llobregat; on the west by Viladecans; and on the south by El Prat de Llobregat and the Mediterranean Sea (via a narrow southward salient)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "sant boi de llobregat",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "boi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "llobregat",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3505,
+    "attempt": 3476,
+    "place_id": "gn-3164039",
+    "input": {
+      "place": {
+        "place_id": "gn-3164039",
+        "name": "Viterbo",
+        "country": "Italy",
+        "subdivision": "Lazio",
+        "lat": 42.41937,
+        "lon": 12.1056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Viterbo",
+          "url": "https://en.wikipedia.org/wiki/Viterbo",
+          "text": "Viterbo (Italian: [viˈtɛrbo] ; Viterbese: Veterbe; Medieval Latin: Viterbium) is a city and comune (municipality) in the Lazio region of Italy, the capital of the province of Viterbo.\nIt conquered and absorbed the neighboring town of Ferento (see Ferentium) in its early history. It is approximately 80 kilometres (50 miles) north of the Autostrada A90 on the Via Cassia, and it is surrounded by the Monti Cimini and Monti Volsini. The historic center is surrounded by the medieval walls of Viterbo, which are still mainly intact, built during the 11th and 12th centuries. Entrance to the walled center of the city is through ancient gates.\nApart from agriculture, Viterbo's main resources are pottery, peperino stone, and wood. The town is home to the Italian gold reserves, an important Academy of Fine Arts, the University of Tuscia, and the Italian Army's Aviation Command headquarters and training centre. It is located in a wide thermal area, attracting many tourists from all over central Italy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "viterbo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3506,
+    "attempt": 3477,
+    "place_id": "gn-3174051",
+    "input": {
+      "place": {
+        "place_id": "gn-3174051",
+        "name": "Mantua",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.16031,
+        "lon": 10.79784
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mantua",
+          "url": "https://en.wikipedia.org/wiki/Mantua",
+          "text": "Mantua ( MAN-tew-ə; Italian: Mantova [ˈmantova] ; Lombard and Latin: Mantua) is a city and comune (municipality) in the region of Lombardy in northern Italy and capital of the eponymous province. It has 50,215 inhabitants.\nMantua is surrounded on three sides by artificial lakes, created during the 12th century as the city's defence system. These lakes receive water from the Mincio river, a tributary of the Po river, which descends from Lake Garda. The three lakes are called Lago Superiore, Lago di Mezzo, and Lago Inferiore (\"Upper\", \"Middle\", and \"Lower\" Lakes, respectively). A fourth lake, Lake Pajolo, which once served as a defensive water ring around the city, dried up at the end of the 18th century.\nThe area and its environs are important not only in naturalistic terms, but also anthropologically and historically; research has highlighted a number of human settlements scattered between Barche di Solferino and Bande di Cavriana, Castellaro, and Isolone del Mincio. These dated, without interruption, from Neolithic times (5th–4th millennium BC) to the Bronze Age (2nd–1st millennium BC) and the Gallic phases (2nd–1st centuries BC), and ended with Roman residential settlements, which can be traced to the 3rd century AD.\nUnder the House of Gonzaga  in 1328- 1708, Mantua became one of the main artistic, cultural, and musical hubs of Northern Italy and  Italy as a whole. It was one of the leading courts of Europe of the fifteenth, sixteenth, and early seventeenth centuries. Mantua is noted for its significant role in the history of opera; the city is also known for its architectural treasures and artifacts, elegant palaces, and the medieval and Renaissance cityscape. It is the city where the composer Claudio Monteverdi premiered his opera L'Orfeo in 1607. It is the nearest town to the birthplace of the Roman classical poet Virgil, who is commemorated by a statue at the lakeside park \"Piazza Virgiliana\".\nIn 2008, Mantua's centro storico (old town) and the nearby town of Sabbioneta were declared by UNESCO to be a World Heritage Site. In 2016, Mantua was designated as the \"Italian Capital of Culture\". and in 2017, it was named as the \"European Capital of Gastronomy\", included in the Eastern Lombardy District (together with the cities of Bergamo, Brescia, and Cremona).\nIn 2017, Legambiente ranked Mantua as the best Italian city for quality of life and environment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 388
+    },
+    "banned_terms": [
+      {
+        "term": "mantua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3507,
+    "attempt": 3478,
+    "place_id": "gn-3455161",
+    "input": {
+      "place": {
+        "place_id": "gn-3455161",
+        "name": "Pará de Minas",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -19.86028,
+        "lon": -44.60833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pará de Minas",
+          "url": "https://en.wikipedia.org/wiki/Pará_de_Minas",
+          "text": "Pará de Minas is a Brazilian municipality located in the state of Minas Gerais, in the Southeast Region of Brazil. It is part of the metropolitan belt of Belo Horizonte and is situated west of the state capital, approximately 75 km (47 mi) away in the Central region of Minas Gerais. The municipality covers an area of 551.247 km2 (212.838 sq mi), with 9.9 km2 (3.8 sq mi) within the urban area. Its population was estimated at 102,033 inhabitants in 2024.\nThe municipality's average annual temperature is 21.8 °C (71.2 °F), and its original vegetation is predominantly Atlantic Forest. With 95% of the population residing in the urban area, the city had 50 healthcare facilities in 2009. Its Human Development Index (HDI) is 0.725, classified as high compared to the national average.\nThe exploration of the area that is now Pará de Minas began in the second half of the 17th century, following the establishment of a rest stop for bandeirantes traveling to and from the mines of Pitangui, some of whom settled in the area. The construction of the Our Lady of Mercy Chapel in the 18th century marks the establishment of the settlement, which developed over decades through subsistence agriculture. It was elevated to district status in 1846 and achieved municipal emancipation in 1859. Throughout the 20th century, the textile industry, steel industry, and agribusiness gained prominence, establishing Pará de Minas as a key regional hub for pig farming and poultry farming.\nEvents such as the city's carnival (ParáFolia), the Pará de Minas Cavalcade, and the Fest Frango (State Chicken and Pork Fair) are among the main attractions of Pará de Minas, alongside cultural programs at the House of Culture, Cine Café, and the Geraldina Campos de Almeida Municipal Theater. Within the urban area, Bariri Park offers spaces for walking, relaxation, and children's recreation. On the Santa Cruz Ridge, the Christ the Redeemer monument of Pará de Minas, inspired by the Christ the Redeemer in Rio de Janeiro, has become one of the municipality's most iconic landmarks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 339
+    },
+    "banned_terms": [
+      {
+        "term": "para de minas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "para",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "minas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3508,
+    "attempt": 3479,
+    "place_id": "gn-3460834",
+    "input": {
+      "place": {
+        "place_id": "gn-3460834",
+        "name": "Itajubá",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -22.42556,
+        "lon": -45.45278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itajubá",
+          "url": "https://en.wikipedia.org/wiki/Itajubá",
+          "text": "Itajubá is a municipality in southeastern Minas Gerais state of the Federative Republic of Brazil. It lies in a valley by the Sapucaí river and has terrain elevations ranging from 827 to 1500 metres, occupying an area of 290.45 km2 (112.14 mi2), with a population of 97,334 people (2020 est). Neighboring the city are the mountain slopes of the Serra da Mantiqueira range. The climate sees heavy rain in the summer months with dry weather in the winter.\nThe city is a center with direct influence over 14 other municipalities of a region (called \"Microregião do Sapucaí\") that contains  6% of the population of Minas Gerais state. The local economy is based mainly on industry and agriculture.  There are industries of auto parts, fiber optics, textile, electronic components, helicopters (Helibrás), and military weapons (IMBEL). In agriculture, most of the production is coffee, banana, potatoes, and is centred in the vicinity of Maria da Fé city where the climate is cooler."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "itajuba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3509,
+    "attempt": 3480,
+    "place_id": "gn-3496831",
+    "input": {
+      "place": {
+        "place_id": "gn-3496831",
+        "name": "Mao",
+        "country": "Dominican Republic",
+        "subdivision": "Valverde Province",
+        "lat": 19.54908,
+        "lon": -71.07808
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mao, Dominican Republic",
+          "url": "https://en.wikipedia.org/wiki/Mao,_Dominican_Republic",
+          "text": "Santa Cruz de Mao, or simply Mao, is the head municipality of the Valverde province, in the Dominican Republic.\nIt is the largest city of the Dominican northwest and the centre of the region. Its name, a Taíno word, comes from the River Mao, near the city. Its nickname is Ciudad de los Bellos Atardeceres (lit. 'City of the Beautiful Sunsets'); this was given by Juan De Jesus Reyes, renowned poet and Dominican literary icon. There are no mountains to the west of the city and it is common to see a \"red\" sky at sunset; it is a very dry region and there is much dust in the air which gives the sky a red color."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "mao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

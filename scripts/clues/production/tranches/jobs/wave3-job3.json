@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 1985,
+    "place_id": "gn-1019704",
+    "input": {
+      "place": {
+        "place_id": "gn-1019704",
+        "name": "Bethlehem",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -28.23078,
+        "lon": 28.30707
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bethlehem, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Bethlehem,_South_Africa",
+          "text": "Bethlehem is a city in the eastern Free State province of South Africa that is situated on the Liebenbergs River (also called Liebenbergs Vlei) along a fertile valley just north of the Rooiberg Mountains on the N5 road. It is the fastest growing city in the Free State province, with its target of being the third largest city after Bloemfontein and Welkom.\nIt is a wheat growing area and named after the biblical Bethlehem, from Hebrew: בֵּית לֶחֶם (\"Beit Lechem\"), meaning \"house of bread\".\nThe city lies at an altitude of 1,700 metres (5,600 ft), which contributes to its cool climate, with frosty winters and mild summers. The average annual temperature is around 14 °C (57 °F).\nBethlehem is situated approximately 240 kilometres (150 mi) north-east of Bloemfontein, 140 kilometres (87 mi) east of Kroonstad and 90 kilometres (56 mi) north-west of Harrismith."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "bethlehem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1987,
+    "place_id": "gn-1623424",
+    "input": {
+      "place": {
+        "place_id": "gn-1623424",
+        "name": "Tondano",
+        "country": "Indonesia",
+        "subdivision": "North Sulawesi",
+        "lat": 1.3054,
+        "lon": 124.91261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tondano",
+          "url": "https://en.wikipedia.org/wiki/Tondano",
+          "text": "Tondano is the capital of Minahasa Regency, mainly in the district of West Tondano (Kecamatan Tondano Barat), in Sulawesi, Indonesia. The city is located in the highlands on the shores of Lake Tondano near Mount Tondano, and enjoys cool temperatures. The city can be reached from Manado around 35 km to the south via Tomohon city, through an eastern route via Kecamatan Tombulu, or through north-east via Airmadidi (the capital of North Minahasa Regency).\n\nIn Tondano city there is a Manado State University (UNIMA) campus in Tonsaru area, South Tondano. Tondano was the birthplace of Indonesian national hero Doctor Sam Ratulangi, that also the first governor of Sulawesi.\n\nTha name \"tondano\" in the Minahasa language is called toulour, which means \"water people\" (tou means people, lour means body of water).The largest lake in this province located here named after the city, Lake Tondano."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "tondano",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1988,
+    "place_id": "gn-2270437",
+    "input": {
+      "place": {
+        "place_id": "gn-2270437",
+        "name": "Caldas da Rainha",
+        "country": "Portugal",
+        "subdivision": "Leiria",
+        "lat": 39.40326,
+        "lon": -9.13839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caldas da Rainha",
+          "url": "https://en.wikipedia.org/wiki/Caldas_da_Rainha",
+          "text": "Caldas da Rainha is a medium-sized Portuguese city in the Oeste region, in the historical province of Estremadura, and in the district of Leiria. The city serves as the seat of the larger municipality of the same name and of the Comunidade Intermunicipal do Oeste (OesteCIM, Intermunicipal Community of the West). At the 2011 census, the municipality had a population of 51,729 in an area of 255.69 square kilometres (98.72 sq mi), with 30,343 residing in the city. Although the city itself lies about 10.5 kilometres (6.5 mi) inland, three of the municipality's civil parishes lie on the Atlantic Ocean. Caldas da Rainha is best known for its sulphurous hot springs and ceramic pottery.\nThe settlement was founded in the 15th century by Queen Leonor (Rainha Dona Leonor), who established a hospital and a church at the site of some therapeutic hot springs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "caldas da rainha",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "caldas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rainha",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1990,
+    "place_id": "gn-4952629",
+    "input": {
+      "place": {
+        "place_id": "gn-4952629",
+        "name": "Taunton",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 41.9001,
+        "lon": -71.08977
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taunton, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Taunton,_Massachusetts",
+          "text": "Taunton is a city in and the county seat of Bristol County, Massachusetts, United States. Taunton is situated on the Taunton River, which winds its way through the city on its way to Mount Hope Bay, 10 miles (16 km) to the south. As of the 2020 census, the city had a population of 59,408; this makes Taunton the third most populated municipality in Bristol County behind New Bedford and Fall River. Shaunna O'Connell is the mayor of Taunton.\nFounded in 1637 by members of the Plymouth Colony, Taunton is one of the oldest towns in the United States. Taunton is also known as the \"Silver City\", as it was a historic center of the silver industry beginning in the 19th century when companies such as Reed & Barton, F. B. Rogers, Poole Silver, and others produced fine-quality silver goods in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "taunton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1997,
+    "place_id": "gn-3175121",
+    "input": {
+      "place": {
+        "place_id": "gn-3175121",
+        "name": "L'Aquila",
+        "country": "Italy",
+        "subdivision": "Abruzzo",
+        "lat": 42.35055,
+        "lon": 13.39954
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "L'Aquila",
+          "url": "https://en.wikipedia.org/wiki/L'Aquila",
+          "text": "L'Aquila ( LAK-wil-ə; Italian: [ˈlaːkwila] ; Neapolitan: [ˈlaːkwiːlə]) is the capital city of the region of Abruzzo in central Italy. With 70,421 inhabitants as of 2025, it is also the second-largest city in the region. Laid out within medieval walls on a hill in the wide valley of the Aterno river, it is surrounded by the Apennine Mountains, with the Gran Sasso d'Italia to the north-east.\nL'Aquila sits on a hillside in the middle of a narrow valley; the snow-capped mountains of the Gran Sasso massif flank the town. A maze of narrow streets, lined with Baroque and Renaissance buildings and churches, open onto elegant piazzas. Home to the University of L'Aquila, it is a lively college town and, as such, has many cultural institutions: a repertory theatre, a symphony orchestra, a fine art academy, a state conservatory and a film institute."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "l aquila",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "l",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "aquila",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1998,
+    "place_id": "gn-3601627",
+    "input": {
+      "place": {
+        "place_id": "gn-3601627",
+        "name": "Santa Cruz de Yojoa",
+        "country": "Honduras",
+        "subdivision": "Cortés Department",
+        "lat": 14.98086,
+        "lon": -87.89091
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Cruz de Yojoa",
+          "url": "https://en.wikipedia.org/wiki/Santa_Cruz_de_Yojoa",
+          "text": "Santa Cruz de Yojoa is a town, with a population of 20,960 (2023 calculation), and a municipality in the Honduran department of Cortés.\nSanta Cruz de Yojoa is located approximately 50 miles south of San Pedro Sula on top of a large hillside on the way to the dam that supplies power to many Central American cities.  Santa Cruz de Yojoa, over the years, has become a large populated city, with its central park known as \"Parque Central de Santa Cruz de Yojoa\" which translated into English means \"Santa Cruz de Yojoa Central Park\".  SCDY is home to 2 churches, one being Catholic and the other Christian of a different denomination.  Santa cruz owns more than 10 transportation buses which have its route through Santa Cruze's only paved street.  1 of said buses are stored in SCDY's main hotel, Los Amigos hotel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "santa cruz de yojoa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cruz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "yojoa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2002,
+    "place_id": "gn-5102443",
+    "input": {
+      "place": {
+        "place_id": "gn-5102443",
+        "name": "Passaic",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.85677,
+        "lon": -74.12848
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Passaic, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Passaic,_New_Jersey",
+          "text": "Passaic ( pə-SAY-ik or locally  pə-SAYK) is a city in Passaic County, in the U.S. state of New Jersey. As of the 2020 United States census, the city was the state's 16th-most-populous municipality, with a population of 70,537, falling behind Bayonne (ranked 16th in 2010), an increase of 756 (+1.1%) from the 2010 census count of 69,781, which in turn reflected an increase of 1,920 residents (+2.8%) from the 2000 census population of 67,861. The Census Bureau's Population Estimates Program calculated a population of 68,903 for 2023, making it the 552nd-most populous municipality in the nation. Among cities with more than 50,000 people, Passaic was the fifth-most densely populated municipality in the United States, with more than 22,000 people per square mile.\nLocated north of Newark on the Passaic River, it was first settled in 1678 by Dutch traders, as Acquackanonk Township."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "passaic",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2007,
+    "place_id": "gn-175967",
+    "input": {
+      "place": {
+        "place_id": "gn-175967",
+        "name": "Mporokoso",
+        "country": "Zambia",
+        "subdivision": "Northern Province",
+        "lat": -9.37273,
+        "lon": 30.12501
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mporokoso",
+          "url": "https://en.wikipedia.org/wiki/Mporokoso",
+          "text": "Mporokoso (also spelled and pronounced 'Mpolokoso' and 'Mumpolokoso') is a town in the Northern Province of Zambia, lying at an elevation of nearly 1500 m on the flat plateau about 75 km south east of Lake Mweru Wantipa and 100 km south-west of Lake Tanganyika. It is named for Chief Mporokoso (also spelled 'Mumpolokoso') a senior chief of the Bemba people whose palace is located at Chishamwamba close to the town. Mporokoso District is also one of the 12 administrative districts of the Northern Province.\nA large population of refugees from the Second Congo War living at the UNHCR-administered refugee camp at Mwange, 32 km west of the town, are being repatriated after the end of that war. \nA number of waterfalls lie within 50 km of the town. The closest is the Kapumo Falls, 7km south-west of the town centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "mporokoso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2011,
+    "place_id": "gn-3180792",
+    "input": {
+      "place": {
+        "place_id": "gn-3180792",
+        "name": "Canosa di Puglia",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 41.21954,
+        "lon": 16.06768
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canosa di Puglia",
+          "url": "https://en.wikipedia.org/wiki/Canosa_di_Puglia",
+          "text": "Canosa di Puglia, generally known simply as Canosa (Canosino: Canaus), is a town and comune in the province of Barletta-Andria-Trani, Apulia, southern Italy. It is located between Bari and Foggia, not far from Barletta on the northwestern edge of the plateau of the Murgia which dominates the Ofanto valley and the extensive plains of Tavoliere delle Puglie, ranging from Mount Vulture at the Gargano, to the Adriatic coast. Canosa, the Roman Canusium, is considered the principal archaeological center of Apulia, and is one of the oldest continually inhabited cities in Italy.  A number of vases and other archaeological finds are located in local museums and private collections. It is not far from the position on the Ofanto River where the Romans found refuge after the defeat of the Battle of Cannae and is the burial place of Bohemund I of Antioch."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "canosa di puglia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "canosa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "puglia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2025,
+    "place_id": "gn-2712414",
+    "input": {
+      "place": {
+        "place_id": "gn-2712414",
+        "name": "Gävle",
+        "country": "Sweden",
+        "subdivision": "Gävleborg",
+        "lat": 60.67452,
+        "lon": 17.14174
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gävle",
+          "url": "https://en.wikipedia.org/wiki/G%C3%A4vle",
+          "text": "Gävle ( YEV-lay or YEV-lə; Swedish: [ˈjɛ̌ːvlɛ] ) is a city in Sweden, the seat of Gävle Municipality and the capital and largest city of Gävleborg County. It had 86534 inhabitants in 2023, which makes it the 13th-most-populated city in Sweden. It is the oldest city in Norrland, having received its charter in 1446 from Christopher of Bavaria and lying around 14 kilometres (8.7 mi) northwest of Dalälven, the traditional boundary line between Norrland and Svealand. The location of the city also gives it a milder climate than that of most other cities in Norrland.\nIn recent years, the city has received much international attention due to its large Yule Goat figure made of straw – the Gävle Goat. The goat is erected in December each year and is often subsequently vandalized, usually by being set on fire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "gavle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2029,
+    "place_id": "gn-4588718",
+    "input": {
+      "place": {
+        "place_id": "gn-4588718",
+        "name": "Myrtle Beach",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 33.68906,
+        "lon": -78.88669
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Myrtle Beach, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Myrtle_Beach,_South_Carolina",
+          "text": "Myrtle Beach is a resort city in Horry County, South Carolina, United States. It is located in the center of a long and continuous 60-mile (97 km) stretch of beach known as the \"Grand Strand” in the northeastern part of the state, on the East Coast of the United States. Its year-round population was 35,682 as of the 2020 census, making it the 13th-most populous city in South Carolina.\nMyrtle Beach is one of the major centers of tourism in South Carolina and the United States. The city's warm subtropical climate, miles of beaches, 86 golf courses, and 1,800 restaurants attract over 20 million visitors each year, making Myrtle Beach one of the most visited destinations in the country.\nLocated along the historic King's Highway (modern day US 17), the region was once home to the Waccamaw people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "myrtle beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "myrtle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2031,
+    "place_id": "gn-5768233",
+    "input": {
+      "place": {
+        "place_id": "gn-5768233",
+        "name": "Rapid City",
+        "country": "United States",
+        "subdivision": "South Dakota",
+        "lat": 44.08054,
+        "lon": -103.23101
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rapid City, South Dakota",
+          "url": "https://en.wikipedia.org/wiki/Rapid_City,_South_Dakota",
+          "text": "Rapid City is a city in and the county seat of Pennington County, South Dakota, United States. It is located on the eastern slope of the Black Hills in western South Dakota and was named after Rapid Creek, where the settlement developed. It is the second-most populous city in the state (after Sioux Falls) with a population of 74,703 as of the 2020 census. The Rapid City metropolitan area has 156,000 residents.\nKnown as the \"Gateway to the Black Hills\" and the \"City of Presidents\" because of the life-size bronze president statues downtown, Rapid City is split by a low mountain ridge that divides the city's western and eastern parts, called ‘The Gap.’ Ellsworth Air Force Base is on the city's outskirts. Camp Rapid, part of the South Dakota Army National Guard, is in the city's western part."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "rapid city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rapid",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2038,
+    "place_id": "gn-2969392",
+    "input": {
+      "place": {
+        "place_id": "gn-2969392",
+        "name": "Vichy",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 46.12709,
+        "lon": 3.42577
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vichy",
+          "url": "https://en.wikipedia.org/wiki/Vichy",
+          "text": "Vichy (, French: [viʃi]; Occitan: Vichèi [viˈtʃɛj]) is a city in the central French department of Allier. Located on the Allier river, it is a major spa and resort town and during World War II was the de facto administrative capital of Vichy France. Its population is about 25,000.\nKnown for its mineral springs since the Roman times, Vichy had become a major destination for the French nobility and the wealthy by the late 18th century. The town developed further under the patronage of Napoleon III. Following the 1940 armistice, the pro-German collaborationist government headed by Philippe Pétain was set up at Vichy, which remained the de facto capital of the French rump state for the next four years. After the war, the city experienced a period of great prosperity but went into decline from the 1960s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "vichy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2045,
+    "place_id": "gn-3036938",
+    "input": {
+      "place": {
+        "place_id": "gn-3036938",
+        "name": "Arles",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.67681,
+        "lon": 4.63031
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arles",
+          "url": "https://en.wikipedia.org/wiki/Arles",
+          "text": "Arles (French: [aʁl]; Provençal: Arle [ˈaʀle]) is a coastal city and commune in southern France, a subprefecture in the Bouches-du-Rhône department of the Provence-Alpes-Côte d'Azur region, in the former province of Provence.\nA large part of the Camargue, the largest wetlands in France, is located within the territory of the commune, which is the largest in Metropolitan France in terms of geographic territory. In non-metropolitan France, Maripasoula in French Guiana is the largest French commune in general. \nThe city has a long history, and was of considerable importance in the Roman province of Gallia Narbonensis. The Roman and Romanesque Monuments of Arles were listed as UNESCO World Heritage Sites in 1981 for their testimony to the history of the region.\nThe city is famous for being the archdiocese of Caesarius of Arles and Hilary of Arles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "arles",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2048,
+    "place_id": "gn-4565908",
+    "input": {
+      "place": {
+        "place_id": "gn-4565908",
+        "name": "Lares",
+        "country": "Puerto Rico",
+        "subdivision": "Lares",
+        "lat": 18.29467,
+        "lon": -66.87712
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lares, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Lares,_Puerto_Rico",
+          "text": "Lares (Spanish pronunciation: [ˈlaɾes], locally [ˈlaɾeʔ]) is a mountain town and municipality of Puerto Rico's central-western area. Lares is located north of Maricao and Yauco; south of Camuy, east of San Sebastián and Las Marias; and west of Hatillo, Utuado and Adjuntas. Lares is spread over 10 barrios and Lares Pueblo (Downtown Lares). It is part of the Aguadilla-Isabela-San Sebastián Metropolitan Statistical Area.\nA city adorned with Spanish-era colonial-style churches and small downtown stores, Lares is located on a mountainous, breezy area that is about 1.5 hours from the capital San Juan by car.\nIn 1868, Lares was the site of the Grito de Lares (literally, The Cry of Lares, or Lares Revolt), an uprising brought on by pro-independence rebels and members of the Revolutionary Committee of Puerto Rico striving for Puerto Rican independence from Spain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "lares",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2054,
+    "place_id": "gn-11073561",
+    "input": {
+      "place": {
+        "place_id": "gn-11073561",
+        "name": "Kakkanad",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 10.01636,
+        "lon": 76.34168
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kakkanad",
+          "url": "https://en.wikipedia.org/wiki/Kakkanad",
+          "text": "Kakkanad is a suburb and major urban center in the eastern part of the Kochi metropolitan area in the Indian state of Kerala. It serves as the administrative headquarters of Ernakulam district and is one of Kerala's major information technology and business hubs. Located about 10 km east of central Kochi, Kakkanad is home to major technology parks, including Infopark and SmartCity Kochi, as well as several government institutions and educational establishments. It also houses multiple industrial projects including the Cochin Special Economic Zone and KINFRA.\nHistorically a cluster of villages surrounded by paddy fields and wetlands, Kakkanad experienced rapid urbanization from the late 20th century onward. The establishment of government offices and the growth of the information technology sector transformed the area into one of the fastest-growing parts of the Kochi metropolitan region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "kakkanad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2067,
+    "place_id": "gn-3674885",
+    "input": {
+      "place": {
+        "place_id": "gn-3674885",
+        "name": "Melgar",
+        "country": "Colombia",
+        "subdivision": "Tolima Department",
+        "lat": 4.20475,
+        "lon": -74.64075
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Melgar, Tolima",
+          "url": "https://en.wikipedia.org/wiki/Melgar,_Tolima",
+          "text": "Melgar (Spanish pronunciation: [melˈɣaɾ]) is a Colombian municipality and town in the Department of Tolima, 98 km (61 mi) southwest of Bogotá and 1 hour east of Ibagué, the capital city of Tolima.\nMelgar is located in the Sumapaz River Valley and borders the Department of Cundinamarca and Sumapaz River to the north, town of Icononzo to the east, the towns of Cunday at the south and Carmen de Apicala to the west.\nThe town is home to a major military base called Tolemaida Air Base.\nMelgar is a very popular weekend destination for Bogota residents. Temperature ranges between 28 and 35 °C (82 and 95 °F). It is known in Colombia as the \"City of the Swimming Pools\"  or the \"Sea of Swimming Pools\" because of its more than 5,000 swimming pools."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "melgar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2069,
+    "place_id": "gn-3874930",
+    "input": {
+      "place": {
+        "place_id": "gn-3874930",
+        "name": "Puerto Varas",
+        "country": "Chile",
+        "subdivision": "Los Lagos Region",
+        "lat": -41.31946,
+        "lon": -72.98538
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Varas",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Varas",
+          "text": "Puerto Varas, also known as \"La Ciudad de Las Rosas\" or \"The City Of Roses\", is a city and commune located in the southern Chilean province of Llanquihue, in the Los Lagos Region.\nThe city is famous for its German traditions, its natural environment, and its popularity as a tourist destination. It enjoys a scenic location close to mountains, lakes, forests and national parks. It is located 20 kilometres (12 mi) from the city of Puerto Montt on the shore of Llanquihue Lake, the second largest lake in Chile.  The conical Osorno volcano and the snow capped peaks of Calbuco volcano and Mt.Tronador are clearly visible from the lakefront. Puerto Varas is the southernmost of a string of towns on the western shore of Llanquihue Lake that includes Frutillar, Llanquihue and Puerto Octay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "puerto varas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "varas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2071,
+    "place_id": "gn-4839292",
+    "input": {
+      "place": {
+        "place_id": "gn-4839292",
+        "name": "New Britain",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.66121,
+        "lon": -72.77954
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Britain, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/New_Britain,_Connecticut",
+          "text": "New Britain is a city in Hartford County, Connecticut, United States. About 9 miles (14 km) southwest of Hartford, the city is part of the Capitol Planning Region. According to the 2020 Census, the population of the city is 74,135.\nAmong the southernmost of the communities encompassed within the Hartford-Springfield Knowledge Corridor metropolitan region, New Britain is home to Central Connecticut State University and Charter Oak State College. The city was noted for its industry during the 19th and early 20th centuries, and sites listed on the National Register of Historic Places include Walnut Hill Park, developed by the landscape architect Frederick Law Olmsted and Downtown New Britain.\nThe city's official nickname is the \"Hardware City\" because of its history as a manufacturing center and as the headquarters of Stanley Black & Decker."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "new britain",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "britain",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2082,
+    "place_id": "gn-5338783",
+    "input": {
+      "place": {
+        "place_id": "gn-5338783",
+        "name": "Colton",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.0739,
+        "lon": -117.31365
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Colton, California",
+          "url": "https://en.wikipedia.org/wiki/Colton,_California",
+          "text": "Colton is a city in San Bernardino County, California, United States. Nicknamed \"Hub City\", Colton is located in the Inland Empire region of the state and is a suburb of San Bernardino, approximately 4 miles (6.4 km) south of the city's downtown. The population of Colton is 53,909 according to the 2020 census, up from 52,154 at the 2010 census.\nColton is the site of Colton Crossing, which was one of the busiest at-grade railroad crossings in the United States. The crossing was installed in 1882 by the California Southern Railroad to cross the Southern Pacific Railroad tracks while building northward from San Diego. As a result of railroad acquisitions and mergers, this became the point at which the Burlington Northern Santa Fe's \"Southern Transcontinental Route\" crossed the Union Pacific's \"Sunset Route\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "colton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

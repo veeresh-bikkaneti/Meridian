@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 8318,
+    "attempt": 8261,
+    "place_id": "gn-3003713",
+    "input": {
+      "place": {
+        "place_id": "gn-3003713",
+        "name": "Le Lavandou",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.137,
+        "lon": 6.366
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Le Lavandou",
+          "url": "https://en.wikipedia.org/wiki/Le_Lavandou",
+          "text": "Le Lavandou (pronounced [lə lavɑ̃du]; Occitan: Lo Lavandor) is a seaside resort town and commune in the Var department in the Provence-Alpes-Côte d'Azur region in Southeastern France. Le Lavandou derives its name either from the flower lavender (lavanda in Provençal) that is prevalent in the area, or more prosaically from the local form of the Occitan name for lavoir, lavandor (for lavador, a public place for washing clothes).\nThe (then) village is where the famous popular song A Nightingale Sang in Berkeley Square was written in the summer of 1939. The words were by Eric Maschwitz and the music by Manning Sherwin, with its title \"stolen\" from a story by Michael Arlen. The song had its first performance in a local bar, where the melody was played on piano by Sherwin with the help of the resident saxophonist. Maschwitz sang the words while holding a glass of wine, but nobody seemed impressed.\nIn the spring of 2002, an attempt was made to find the bar where this classic song was first performed with the view to having a blue plaque set up. With the help of the local tourist office, elderly residents were questioned, but it proved impossible to establish the venue.\nIn September 2000, the mayor passed an unusual bylaw making it illegal to die in the town. The mayor described his own bylaw as \"absurd ... to counter an absurd situation\"; the \"absurd situation\" was that with the town's cemetery already full, a court in Nice had denied permission for a new cemetery because it would mar the beauty of the selected site.\nAfter the fall of nobility, the title of Duke of Lavandou was passed on the Governor of Provence and Languedoc, and from there by primogeniture to the Duchess of Gandia. She married Lev Obolensky in 1980 and had a son, Arnaud Henry Salas-Perez, Prince Obolensky, who became Duke of Gandia, Languedoc and Lavandou, making a Russian prince the titleholder for Le Lavandou."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 327
+    },
+    "banned_terms": [
+      {
+        "term": "le lavandou",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lavandou",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8319,
+    "attempt": 8262,
+    "place_id": "gn-3128419",
+    "input": {
+      "place": {
+        "place_id": "gn-3128419",
+        "name": "Becerreá",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 42.8561,
+        "lon": -7.1636
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Becerreá",
+          "url": "https://en.wikipedia.org/wiki/Becerreá",
+          "text": "Becerreá is a municipality in the province of Lugo, in the autonomous community of Galicia, Spain. It belongs to the comarca of Os Ancares.\nSituated in the eastern mountain range of the province, Becerreá occupies an extension of 173.3 km2 and forms part of the Region of Los Ancares, which contains the departure points of the access routes. It accounts for 113 entities of population, and 26 parishes (Agueira, Armesto, Becerreá, Cadoalla, Cascallá, Cereixal, Cruzul, Ferreiros de Balboa, Fontarón, Furco, Guilfrei, Guillen, Liber, Morcelle, Oselle, Ousón, Pando, Penamaior, Quintá, Sevane, Vilar de Ouson, Veiga, Vilacha, Vilaiz, Vilamane, Vilouta).\nThe town is part of the Via Küning; an historic route of the Camino de Santiago, offering an alternative path to the more popular French Way, particularly for the last stretch into Santiago de Compostela. It follows the original route described by the German monk Hermann Künig, incorporating historical sections and avoiding challenging terrain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "becerrea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8320,
+    "attempt": 8263,
+    "place_id": "gn-3520260",
+    "input": {
+      "place": {
+        "place_id": "gn-3520260",
+        "name": "Río Frío de Juárez",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.35336,
+        "lon": -98.67057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Río Frío de Juárez",
+          "url": "https://en.wikipedia.org/wiki/Río_Frío_de_Juárez",
+          "text": "Río Frío de Juárez, originally Río Frío (Cold River), a Mexican populated place, is located in the municipality of Ixtapaluca in the State of Mexico.  Río Frío de Juárez is located at the highest point on the highway between Mexico City to Puebla de Zaragoza being located at the top of the pass on the historic road between the two cities.\nRio Frio de Juárez, is located near the far eastern border of the State of Mexico, almost on the border of the State of Puebla, at an altitude of 3,000 meters above sea level.  It is located on the main roads of the Federal Highway 150D and Mexico-Puebla Highway 190 or Mexico-Puebla Highway.\nThe results of the Census of Population and Housing 2005 conducted by the National Institute of Statistics and Geography state that the total population of Rio Frio is 5,272 and that there are 2,620 men and 2,655 women."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "rio frio de juarez",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "frio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juarez",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8321,
+    "attempt": 8264,
+    "place_id": "gn-5095561",
+    "input": {
+      "place": {
+        "place_id": "gn-5095561",
+        "name": "Belmar",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.17845,
+        "lon": -74.0218
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belmar, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Belmar,_New_Jersey",
+          "text": "Belmar is a borough located on the Jersey Shore in Monmouth County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 5,907, an increase of 113 (+2.0%) from the 2010 census count of 5,794, which in turn reflected a decline of 251 (−4.2%) from the 6,045 counted in the 2000 census.\nWhat is now Belmar was originally incorporated as Ocean Beach borough by an act of the New Jersey Legislature on April 9, 1885, from portions of Wall Township, based on the results of a referendum held two days earlier. On April 16, 1889, it became the City of Elcho borough, which lasted for a few weeks until the name was changed to the City of Belmar Borough on May 14, 1889. The city acquired its current name, Borough of Belmar, on November 20, 1890. The borough's name means \"beautiful sea\" in Italian."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "belmar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8322,
+    "attempt": 8265,
+    "place_id": "gn-2611817",
+    "input": {
+      "place": {
+        "place_id": "gn-2611817",
+        "name": "Taulov",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.54582,
+        "lon": 9.61553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taulov",
+          "url": "https://en.wikipedia.org/wiki/Taulov",
+          "text": "Taulov is a town located in Fredericia Municipality in the eastern part of the Jutland peninsula in Denmark.  The town is, with a population of 3,593 (1 January 2026), the second largest in the municipality. \nTaulov's history is not that well known and it was nothing more than a village until the first railroads in Jutland were built in the 1860s during the industrial revolution. It is now divided into Gammel Taulov (Old Taulov) and Taulov by the motorway, despite Taulov Church being located in Taulov. Old Taulov grew up around the train station and the new main street while the majority of Taulov is squeezed in between the E20 motorway and Kolding Landevej, the old main road between Kolding and Snoghøj, which was the main way to access Eastern Denmark for many centuries.\nTaulov Church is a medieval church in traditional Danish style, and was constructed in the 13th century. It functioned as a seamark for sailors on Kolding Fjord and Little Belt until modern navigation was introduced. As the natural centre of Taulov, it is located approximate 9 km (5.6 mi) from Fredericia, 10 km (6.2 mi) from Kolding and 20 km (12 mi) from Vejle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "taulov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8323,
+    "attempt": 8266,
+    "place_id": "gn-2638901",
+    "input": {
+      "place": {
+        "place_id": "gn-2638901",
+        "name": "Ryhill",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.62204,
+        "lon": -1.41071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ryhill",
+          "url": "https://en.wikipedia.org/wiki/Ryhill",
+          "text": "Ryhill is a small village and civil parish situated on the B6428 road in West Yorkshire, England approximately 6 miles (10 km) north-east of Barnsley. It has a population of 2,628, increasing to 2,894 at the 2011 census.\nHistorically Ryhill is part of the West Riding of Yorkshire in the Wapentake of Staincross. The Wapentake almost corresponds with the current Barnsley Metropolitan Area, although a few settlements and townships within the Staincross Wapentake such as Ryhill were put outside the Metropolitan Borough of Barnsley and now lie within the current West Yorkshire Metropolitan Area  since April 1974.\nLike many of the surrounding villages, it is still recovering from the effects of pit closures which has seen the demise of the many collieries which once surrounded the village. The local economy is currently enjoying a return to prosperity as new housing developments have made the village popular with commuters to nearby towns.\nThe first mention of Ryhill in recorded history is an entry in the 1086 Domesday Book which describes 'Rihella' as having 4 ploughlands and an area of pasturable woodland.\nThe name \"Ryhill\" itself is almost self-explanatory: it simply means \"hill where rye is grown\". Originating in Old English, the name is formed of the elements ryge and hyll.\nAn alternative interpretation is for 'Ra', which refers to Roe Deer. \nBoth of the interpretations seem feasible; the village itself has a long-standing history in farming, but the naming of surrounding connected areas poses an interesting possibility for Roe Deer, Wintersett immediately below Ryhill being a place to take livestock during the winter months, Nostell being a Roman stable, Newstead being grazing land, Cold Hiendley and South Hiendley also suggestive of clearings for livestock, possibly with connections to the larger settlement at Ringstone Hill, Brierley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 294
+    },
+    "banned_terms": [
+      {
+        "term": "ryhill",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8324,
+    "attempt": 8267,
+    "place_id": "gn-4012121",
+    "input": {
+      "place": {
+        "place_id": "gn-4012121",
+        "name": "Cuquío",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 20.92757,
+        "lon": -103.02393
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuquío",
+          "url": "https://en.wikipedia.org/wiki/Cuquío",
+          "text": "Cuquío is a town and municipality, in Jalisco in central-western Mexico. The municipality covers an area of 248 square miles (643 km2). It limits to the North with the municipality of Yahualica and the State of Zacatecas; to the South, Zapotlanejo and Acatic; to the East, Yahualica and Tepatitlán; and to the West, Ixtlahuacán del Río. Its name derives from the word Cuixui, which in the Náhuatl language means kite, and is interpreted as \"place of kites\", or in Purépecha language, \"place of frogs or toads\". The foundation of the town is awarded to the Purépechas (Tarascans) who repeatedly ventured through these valleys after the Saltpeter War (1480-1510) (Guerra del Salitre). As a third version about the origins of the municipality name, it is well known that the tribe of coquias settled in La Cofradía, two kilometers (1.24 miles) from the current town, whose name is conjectured the denomination comes from. Cuquío also depended on the Tonalteca kingdom.\nAs of 2005, the municipality had a total population of 19,176."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 151,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "cuquio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8325,
+    "attempt": 8268,
+    "place_id": "gn-2093177",
+    "input": {
+      "place": {
+        "place_id": "gn-2093177",
+        "name": "Kulumadau",
+        "country": "Papua New Guinea",
+        "subdivision": "Milne Bay Province",
+        "lat": -9.08511,
+        "lon": 152.7185
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kulumadau",
+          "url": "https://en.wikipedia.org/wiki/Kulumadau",
+          "text": "Kulumadau is a large, rural non-village (as per the official 1990 Woodlark Island census) on Woodlark Island, Milne Bay Province Papua New Guinea. It is served by Guasopa Airport. Its population during the 1990 census was 242, though it has since grown extensively; its current population is reported to be about 2,500 people, but there are no official sources for this number, as the last official census was taken in 1990 (this is the case in many rural islands of Milne Bay). There is a large primary school in Kulumadau (Kulumadau Primary School), where 200 students are taught (60 coming from outer islands). Students must travel to Alotau on the mainland to attend secondary school. Kulumadau (along with Guasopa) was built in the post-colonial times, and as such, is not considered a traditional village of Woodlark, however, since its inception, Kulumadau has been the primary population center on Woodlark Island.\nKulumadau is located near the head of Kwaiapan Bay, 14 km (8.7 mi) north of the village of Bonagai and 18 km (11 mi) south of the village of Dikoias. Modern gold exploration was initiated in 1962 with the Bureau of Mineral Resources undertaking surface geochemistry, limited geophysics and diamond drilling during 1962 and 1963 at Kulumadau.   Since 1990, Kulumadau has gained a medium-sized timber company (Milne Bay Logging) and a mining exploration camp (BHP)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "kulumadau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8326,
+    "attempt": 8269,
+    "place_id": "gn-2160751",
+    "input": {
+      "place": {
+        "place_id": "gn-2160751",
+        "name": "Lake Illawarra",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34.54658,
+        "lon": 150.85645
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake Illawarra",
+          "url": "https://en.wikipedia.org/wiki/Lake_Illawarra",
+          "text": "Lake Illawarra (Aboriginal Tharawal language: various adaptions of Elouera, Eloura, or Allowrie; Illa, Wurra, or Warra meaning pleasant place near the sea, or, high place near the sea, or, white clay mountain) is an open and trained intermediate wave dominated barrier estuary or large coastal lagoon. It is located in the Illawarra region of New South Wales, situated about 100 kilometres (62 mi) south of Sydney, Australia.\nUntil 2014, the lake environment was administered by the Lake Illawarra Authority (LIA), a New South Wales statutory authority established pursuant to the Lake Illawarra Authority Act 1987 (NSW) with the aim of transforming the degraded waters and foreshores of Lake Illawarra into an attractive recreational and tourist resource. In 2014, the LIA was replaced by the Lake Illawarra Estuary Management Committee (LIEMC), including representatives from Wollongong and Shellharbour City Councils, as well as independent scientific advisors, community members, and local Aboriginal representatives."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "lake illawarra",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "illawarra",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8327,
+    "attempt": 8270,
+    "place_id": "gn-3177292",
+    "input": {
+      "place": {
+        "place_id": "gn-3177292",
+        "name": "Fagagna",
+        "country": "Italy",
+        "subdivision": "Friuli Venezia Giulia",
+        "lat": 46.10698,
+        "lon": 13.09361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fagagna",
+          "url": "https://en.wikipedia.org/wiki/Fagagna",
+          "text": "Fagagna (Friulian: Feagne) is a comune (municipality) in the Regional decentralization entity of Udine in the Italian region Friuli-Venezia Giulia, located about 80 kilometres (50 mi) northwest of Trieste and about 13 kilometres (8 mi) northwest of Udine. As of 2011, it had a population of 6,279 and an area of 37.0 square kilometres (14.3 mi2). It is one of I Borghi più belli d'Italia (\"The most beautiful villages of Italy\").\nThe municipality of Fagagna contains the frazioni (boroughs) Ciconicco, Villalta, San Giovanni in Colle, Battaglia, and Madrisio. Fagagna borders the following municipalities: Basiliano, Colloredo di Monte Albano, Martignacco, Mereto di Tomba, Moruzzo, Rive d'Arcano, San Vito di Fagagna.\nIt is well known among nature-lovers for being the municipality which holds the nature reserve which bred the critically endangered Northern Bald Ibis or Waldrapp, from which 37 of the many individuals present were released in 2014 (under somewhat mysterious circumstances).\nThe local festival held every September includes two traditional events which attract tourists: the donkey race (since 1891), and the Palio dei Borghi, theatre performances given by the inhabitants of the four borghi, the districts of the town, on the main square."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "fagagna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8328,
+    "attempt": 8271,
+    "place_id": "gn-3446674",
+    "input": {
+      "place": {
+        "place_id": "gn-3446674",
+        "name": "Tavares",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -31.28722,
+        "lon": -51.09361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tavares, Rio Grande do Sul",
+          "url": "https://en.wikipedia.org/wiki/Tavares,_Rio_Grande_do_Sul",
+          "text": "Tavares is a municipality in the state of Rio Grande do Sul, Brazil. It has received some newsworthy highlights as several parts of the municipality were abandoned in the late 1990s due to dune and sea reclaiming the area. Some families left the area as early as 1986 due to harsh conditions to keep access and the area from eroding.\nThe area has been eventually turned into a reserve, called \"Parque Nacional da Lagoa do Peixe\" (National Park of the Fish Lagoon). Villages like Barra da Lagoa (which once held over 200 families) and Balneário Paiva (around 25 families) are all but faded remains, the later having almost nothing left. In Balneário de Lagamarzinho, where once a community of at least 250 families lived, due streets were swallowed by the sea, The only settlement as of 2015 was Balneário de Talha-Mar, where once 180 families lived, only a few remain. These abandoned villages are now called \"The phantom villages\" of Tavares.\nSome other neighborhoods eventually also relocated due to the loss of the other villages claimed by the sea, such as Villa da Barra da Lagoa, 2 km away from the sea, which has abandoned buildings now being buried by the dunes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "tavares",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8329,
+    "attempt": 8272,
+    "place_id": "gn-5854535",
+    "input": {
+      "place": {
+        "place_id": "gn-5854535",
+        "name": "Waimānalo Beach",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 21.33407,
+        "lon": -157.70003
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waimānalo Beach, Hawaii",
+          "url": "https://en.wikipedia.org/wiki/Waimānalo_Beach,_Hawaii",
+          "text": "Waimānalo Beach is a census-designated place (CDP) located in the City & County of Honolulu, in the District of Koʻolaupoko, on the island of Oʻahu in the U.S. state of Hawaiʻi.  This small windward community is located near the eastern end of the island, and the climate is dry. As of the 2020 census, the CDP had a population of 4,823. This neighborhood is close to, but somewhat separate from Waimānalo, although the two form a single community.\nWaimānalo Beach (the town) lies along the eastern half of Waimānalo Beach (the beach), with an overall length of nearly 5.5 mi (8.9 km), the longest stretch of sandy shoreline on Oʻahu. Waimānalo Beach has sparse commercial development along Kalanianaole Highway, and is noteworthy for its local flavor and proximity to Makapuʻu Beach and Sea Life Park, which lie closer to Makapuʻu Point at the east end of the island of Oʻahu. There are no hotels here.\nThe U.S. postal code for Waimānalo Beach and Waimānalo is 96795.\nKazuo Sakamaki, the first prisoner of war taken by U.S. forces during World War II, was captured on December 8, 1941, on Waimānalo Beach the day after the surprise attack on Pearl Harbor and surrounding targets in Honolulu by Imperial Japanese Navy forces.\nThe Anderson Estate, which was featured in the TV series Magnum, P.I. as \"Robin's Nest\", is located in Waimānalo Beach."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "waimanalo beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "waimanalo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8330,
+    "attempt": 8273,
+    "place_id": "gn-7290933",
+    "input": {
+      "place": {
+        "place_id": "gn-7290933",
+        "name": "Howald",
+        "country": "Luxembourg",
+        "subdivision": "Luxembourg",
+        "lat": 49.58387,
+        "lon": 6.14277
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Howald",
+          "url": "https://en.wikipedia.org/wiki/Howald",
+          "text": "Howald (German pronunciation: [ˈhoːvalt]; Luxembourgish: Houwald) is a town in the commune of Hesperange, in southern Luxembourg.  The town merges almost seamlessly with Luxembourg City's south-eastern suburban quarter of South Bonnevoie, which lies to the north of Howald.  As of 2025, the town has a population of 5,914, making it the most populous town in the commune and the 22nd-most populous in Luxembourg.\nThrough Howald runs the route de Thionville, one of Luxembourg's historically most-important roads, which runs from Luxembourg City to the French town of Thionville (which had been a part of Luxembourg until 1659).  However, for cross-border travel, this has since been supplanted by the A3 motorway, which connects the same two cities via Bettembourg and Dudelange, and the northern terminus of which is just to the west of the town, on the other side of the railway track. A railway station opened in Howald in December 2017.\nFrom 20 February 1882 until 22 May 1955 a steam railway line from Luxembourg to Remich ran alongside the route de Thionville through Howald.  The train was affectionately referred to as the \"Jangeli\", a name evoking the sound that the train made.  The name Jangeli is still maintained as the bus stop location on the Route de Thionville in Howald.\nHowald's role as a suburb of Luxembourg City is highlighted by the town's youth.  As recently as 1885, the town had a population of only 21 people.  Even until the Second World War, the town was limited almost exclusively to lining the sides of the route de Thionville.  However, since the 1960s, the creation of two development zoning areas, on either side of the route de Thionville, has seen the town expand dramatically, such that it is now the largest town in the commune of Hesperange."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 296
+    },
+    "banned_terms": [
+      {
+        "term": "howald",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8331,
+    "attempt": 8274,
+    "place_id": "gn-7870989",
+    "input": {
+      "place": {
+        "place_id": "gn-7870989",
+        "name": "Newtownmountkennedy",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.09052,
+        "lon": -6.11149
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newtownmountkennedy",
+          "url": "https://en.wikipedia.org/wiki/Newtownmountkennedy",
+          "text": "Newtownmountkennedy (Irish: Baile an Chinnéidigh, meaning 'Kennedy's town') is a small town in County Wicklow, Ireland. It developed within the historic townland of Ballygarny (Irish: Baile Ó gCearnaigh) (now Mount Kennedy Demesne), although all that remains is a motte where a church, graveyard and a castle or tower house once stood just 0.85 km (0.53 mi) north of the town. It acquired its present name in the mid-seventeenth-century, when Sir Robert Kennedy, M.P. for Kildare, made it his principal residence. It is just off the N11 road to Wexford, just south of Kilpedder and south-west of Greystones. It is about 15 km (9.3 mi) north of Wicklow town, 15 km (9.3 mi) south of Bray and approximately 35 km (22 mi) from Dublin. This town has one of the longest place names in Ireland, so is sometimes abbreviated to NTMK and it often referred to by locals as simply Newtown.\nBetween the 2011 and 2016 census, the population of the town increased by 17.6% (from 2,410 to 2,835 inhabitants), one of the highest growth rates in County Wicklow on the period. The area is a dormitory town for some workers commuting to Bray and Dublin.\nThe headquarters of Coillte, the Irish Forestry Board, are situated in the village forest. Newtownmountkennedy is in the Roman Catholic parish of Kilquade, and one of the Kilquade parish's two chapels of ease is located in the village at the junction with the Roundwood Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 150,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "newtownmountkennedy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8332,
+    "attempt": 8275,
+    "place_id": "gn-2167799",
+    "input": {
+      "place": {
+        "place_id": "gn-2167799",
+        "name": "Eden",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -37.06675,
+        "lon": 149.90029
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eden, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Eden,_New_South_Wales",
+          "text": "Eden (/ˈiːdən/ EE-dən) is a coastal town in the South Coast region of New South Wales, Australia.  The town is 478 kilometres (297 mi) south of the state capital Sydney and is the most southerly town in New South Wales, located between Nullica Bay to the south and Calle Calle Bay, the northern reach of Twofold Bay, and built on undulating land adjacent to the third-deepest natural harbour in the southern hemisphere, and Snug Cove on its western boundary. At the 2021 census, Eden had a population of 3,425.\nThe eastern coastline has rugged cliffs at the southern end and a wide, sandy surf beach, Aslings Beach, north of the cliffs. The beach ends at the entrance to Lake Curalo, a safe boating inlet of Twofold Bay. Although the urban settlement of Eden commenced in 1843 the settlement was not officially proclaimed as a township until 20 March 1885. The town's main industries include fishing, forestry, and tourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "eden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8333,
+    "attempt": 8276,
+    "place_id": "gn-2965471",
+    "input": {
+      "place": {
+        "place_id": "gn-2965471",
+        "name": "Claremorris",
+        "country": "Ireland",
+        "subdivision": "Connacht",
+        "lat": 53.71667,
+        "lon": -9
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Claremorris",
+          "url": "https://en.wikipedia.org/wiki/Claremorris",
+          "text": "Claremorris (; Irish: Clár Chlainne Mhuiris) is a town in County Mayo in the west of Ireland, at the junction of the N17 and the N60 national routes. As of the 2017, it was the fastest growing town in the county, having seen a 31% increase in population between 2006 and 2011, and a 23% increase between 2002 and 2006. Between the 2016 census and the 2022 census, the population of Claremorris grew further, from 3,687 to 3,857 inhabitants.\nThe town sits at the bottom of a valley, all roads leading to the town follow hills, in particular the old Knock road (known as the Knock hill) and Courthouse road. Although low-lying, the town does not experience flooding. There is no major river through the town although there are two lakes in the town centre: Clare Lough where the 'Land of the Giants' amenity is located and Mayfield Lough. A small river flows between the two."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "claremorris",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8334,
+    "attempt": 8277,
+    "place_id": "gn-3024932",
+    "input": {
+      "place": {
+        "place_id": "gn-3024932",
+        "name": "Cintegabelle",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.31386,
+        "lon": 1.53146
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cintegabelle",
+          "url": "https://en.wikipedia.org/wiki/Cintegabelle",
+          "text": "Cintegabelle (French pronunciation: [sɛ̃tɡabɛl]; Occitan: Senta Gabèla, Occitan pronunciation: ['sentɔ ga'βɛlɔ]) is a commune in the Haute-Garonne department in southwestern France. Historically and culturally, the commune is in the Aganaguès region or Ariège plain, sometimes called lower Ariège, or Ariège foothills.\nExposed to an altered oceanic climate, it is mainly drained by the Ariège River and its tributary, the Hers, which flows into the Ariège within its boundaries. Various small rivers irrigate the commune, such as the Galage, the Jade, the Calers stream, the Aure de Canté, the Cornus stream, and the Palanquelle stream. The commune boasts a remarkable natural heritage: a Natura 2000 site (\"Garonne, Ariège, Hers, Salat, Pique, and Neste\"), a protected area (\"Garonne, Ariège, Hers Vif, and Salat\"), and six natural areas of ecological, faunal, and floristic interest.\nCintegabelle is a rural commune with 2,994 inhabitants in 2022, having experienced a significant population increase since 1975. It is part of the Toulouse catchment area. Its inhabitants are called Cintegabellois (French pronunciation: [sɛ̃tɡabɛlwa]) or Cintegabelloises (French pronunciation: [sɛ̃tɡabɛlwaz]).\nThe town's architectural heritage includes four buildings protected as historic monuments: the Bouyssou Dovecote, listed in 1946; Boulbonne Abbey, listed in 1981; Notre-Dame Church, listed in 1984; and Secourieu Park, listed in 1988."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "cintegabelle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8335,
+    "attempt": 8278,
+    "place_id": "gn-3111065",
+    "input": {
+      "place": {
+        "place_id": "gn-3111065",
+        "name": "Saldaña",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 42.52146,
+        "lon": -4.73605
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saldaña, Palencia",
+          "url": "https://en.wikipedia.org/wiki/Saldaña,_Palencia",
+          "text": "Saldaña is a town and municipality in the province of Palencia in the autonomous community of Castile and León, Spain, and may be the town of \"Eldana\"  mentioned by the historian Ptolemy as being conquered by the Roman Empire.\nGeographically, the town is situated on the banks of the River Carrión.\nThe town's connection to the Roman Era is reflected in the beautiful remains of a villa attributed to the emperor Theodosius I.\nFrom the 10th to the 11th century, Saldaña was the seat of a family of powerful counts, the Banu Gómez.  The medieval counts of Saldaña figure in local history and literature.  Anachronistically, they appear in tales related to the exploits of the semi-legendary figure Bernardo del Carpio, while their legendary scions, the Infantes de Carrión, prove rivals of the hero in the Cantar de Mio Cid.\nIt was here in 1149 that Berenguela of Barcelona died.\nSaldaña is also known for its popular open-air market day held each Tuesday in the town's central plaza.\nIts old stone-surfaced town square, known as the \"Plaza Vieja,\" is believed to date to the 10th century. Work started in September, 2019 to reconstruct the plaza's pavement to make it safer for pedestrians and more easily accessible to persons with disabilities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "saldana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8336,
+    "attempt": 8279,
+    "place_id": "gn-5098214",
+    "input": {
+      "place": {
+        "place_id": "gn-5098214",
+        "name": "Franklin",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.12204,
+        "lon": -74.58044
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Franklin, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Franklin,_New_Jersey",
+          "text": "Franklin is a borough in Sussex County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 4,912, a decrease of 133 (−2.6%) from the 2010 census count of 5,045, which in turn reflected a decline of 115 (−2.2%) from the 5,160 counted in the 2000 census.\nFranklin, known as the \"Fluorescent Mineral Capital of the World,\" is located over a rich ore body containing more than 150 minerals, many of them fluorescent and 25 of which are found nowhere else on earth. Settled in the 17th century, the village known as Franklin Furnace after Benjamin Franklin, developed near iron mines and iron smelting operations located along the Wallkill River. In the early 19th century, zinc deposits in the area began to be developed commercially. For most of the century many small companies mined zinc and iron in the Franklin area. In 1897 all zinc mining efforts merged into the New Jersey Zinc Company, which was a major controlling factor in the development of Franklin. Immigrants from Russia, Britain, Hungary and Poland joined the work force at the mine. The population, 500 in 1897, had swelled to 3,000 by 1913. On March 18, 1913, the Borough of Franklin was incorporated from portions of Hardyston Township, based on the results of a referendum held on April 23, 1913."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "franklin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8337,
+    "attempt": 8280,
+    "place_id": "gn-6071400",
+    "input": {
+      "place": {
+        "place_id": "gn-6071400",
+        "name": "Meadowgreen",
+        "country": "Canada",
+        "subdivision": "Saskatchewan",
+        "lat": 52.11893,
+        "lon": -106.71145
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Meadowgreen, Saskatoon",
+          "url": "https://en.wikipedia.org/wiki/Meadowgreen,_Saskatoon",
+          "text": "Meadowgreen is a neighbourhood located on the west side of the city in the Confederation Suburban Development Area in the city of Saskatoon, Saskatchewan, Canada.  Meadowgreen is surrounded by an abundance of green space and walking trails without being a riverside neighbourhood.  The buffer zone along Circle Drive has a newly created walking trail. The southern buffer zone along 11th Street connects to the east with Fred Mendel Park of the Pleasant Hill neighbourhood and to the west with the off leash dog run located in the Confederation Urban Centre neighbourhood.  As well the newly re-located Meadowgreen Park and Peter Pond Park provide leisure activities such as basketball courts and playgrounds.  Within the Confederation SDA of Saskatoon, the neighborhood of Meadowgreen comprises the area south of 22nd Street, north of the buffer zone between 11th Street and Appleby Drive, east of Circle Drive, and west of Avenue W South. Until the 1990s the portion of the community north of 18th Street was considered part of the Pleasant Hill community until the City of Saskatoon reorganized its community boundaries.\nWith a population of 3,860, Meadowgreen has a slightly higher population than Adelaide/Churchill at 3,535.  The nearby community of Mount Royal is the next largest of Saskatoon's subdivisions at 4,110 persons.  The Saskatchewan provincial town of Battleford is the rural area in with the closest population size.  Battleford's population was 3,685 on the 2006 Census, and 3,820 persons as of 2001 compared to the Saskatoon neighbourhood of Meadowgreen's population of 2001 at 3,860.    Battleford is sprawled over 5,764.968 acres (23.33000 km2) or 23.33 km², whereas Meadowgreen is within 303.53 acres (1.2283 km2) or 1.22834 km².  Where Battleford shows total dwellings of 1,485, Meadowgreen has 1,560 dwellings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 149,
+      "fullExtractWords": 284
+    },
+    "banned_terms": [
+      {
+        "term": "meadowgreen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

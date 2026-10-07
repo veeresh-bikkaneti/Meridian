@@ -1,0 +1,822 @@
+[
+  {
+    "rank": 5100,
+    "attempt": 5061,
+    "place_id": "gn-3093902",
+    "input": {
+      "place": {
+        "place_id": "gn-3093902",
+        "name": "Łask",
+        "country": "Poland",
+        "subdivision": "Łódź Voivodeship",
+        "lat": 51.59056,
+        "lon": 19.13278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Łask",
+          "url": "https://en.wikipedia.org/wiki/%C5%81ask",
+          "text": "Łask ([wask]) is a town in central Poland with 16,925 inhabitants (2020). It is the capital of Łask County, and is situated in Łódź Voivodeship. It is located in the Sieradz Land.\nA town with some 1,000 years of history, Łask is a former residential town of the Łaski noble family under whose patronage it was developed into a notable regional center of trade and crafts. It contains heritage Gothic and Baroque churches and a local historical museum. It is located near the Route of the Heroes of the Battle of Warsaw 1920, the main highway connecting Wrocław with Łódź, Warsaw and Białystok. The Polish Air Force's 32nd Air Base is located nearby."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "ask",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5101,
+    "attempt": 5062,
+    "place_id": "gn-3183581",
+    "input": {
+      "place": {
+        "place_id": "gn-3183581",
+        "name": "Abbadia San Salvatore",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 42.8812,
+        "lon": 11.6722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abbadia San Salvatore",
+          "url": "https://en.wikipedia.org/wiki/Abbadia_San_Salvatore",
+          "text": "Abbadia San Salvatore is a comune (municipality) in the Province of Siena in the Italian region Tuscany, located about 110 kilometres (68 mi) southeast of Florence and about 60 kilometres (37 mi) southeast of Siena, in the area of Monte Amiata.\nThe town is named after the Abbey of the same name. The area was once important for the extraction of cinnabar. Attractions in the town include the medieval borough, the Palazzo della Potesta (15th century) and the church of Santa Croce.\nAbbadia San Salvatore borders the following municipalities: Castel del Piano, Castiglione d'Orcia, Piancastagnaio, Radicofani, San Casciano dei Bagni, Santa Fiora, Seggiano."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "abbadia san salvatore",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "abbadia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "salvatore",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5102,
+    "attempt": 5063,
+    "place_id": "gn-3515811",
+    "input": {
+      "place": {
+        "place_id": "gn-3515811",
+        "name": "Tepoztlán",
+        "country": "Mexico",
+        "subdivision": "Morelos",
+        "lat": 18.98564,
+        "lon": -99.1016
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tepoztlán",
+          "url": "https://en.wikipedia.org/wiki/Tepoztl%C3%A1n",
+          "text": "Tepoztlán (Spanish: [tepos'tlan] ) is a town in the central Mexican state of Morelos. It is located at 18°59′07″N 99°05′59″W in the heart of the Tepoztlán Valley. The town serves as the seat of government for the municipality of the same name.  The town had a population of 14,130 inhabitants, while the municipality reported 41,629 inhabitants in the 2010 national census.\nThe town is a popular tourist destination near Mexico City. The town is famous for the remains of El Tepozteco temple built on top of the nearby Tepozteco Mountain, as well as for the exotic ice cream flavors prepared by the townspeople.\nTepoztlán was named a \"Pueblo Mágico\" (or magic town) in 2002 but its title was removed in 2009 for failure to maintain the requirements. In 2010, Tepoztlán addressed these problems and recovered the Pueblo Mágico title."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "tepoztlan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5103,
+    "attempt": 5064,
+    "place_id": "gn-3670370",
+    "input": {
+      "place": {
+        "place_id": "gn-3670370",
+        "name": "Salamina",
+        "country": "Colombia",
+        "subdivision": "Caldas Department",
+        "lat": 5.40733,
+        "lon": -75.48749
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salamina, Caldas",
+          "url": "https://en.wikipedia.org/wiki/Salamina,_Caldas",
+          "text": "Salamina is a town and municipality in the Colombian department of Caldas.  It is located north of the department and has a township called San Felix. It was declared a national monument and historic heritage of mankind.\n\nSalamina was founded in 1825 by Fermin Lopez,  Francisco Marulanda and others. Salamina is known as the \"city of light\" because there Caldas has produced many poets, musicians, actors and writers. It is also known as \"Mother of Nations\" because it was one of the centers from where the founders and first settlers of Neira, Aranzazu, Manizales, Santa Rosa de Cabal, Pereira, Armenia, among others parted. It was elevated to a municipality in 1861.\nIt has a population of about 20,000 inhabitants, an area of 40,354 hectares and an average temperature of 22 °C (71.6 °F). Its economy is based on coffee, dairy and livestock.\nSalamina was named a Pueblo Patrimonio (heritage town) of Colombia in 2010. It is the only municipality in the Eje Cafetero that was selected to be part of the Red Turística de Pueblos Patrimonio original cohort. In addition, the town was named part of the \"Coffee Cultural Landscape\" UNESCO World Heritage Site in 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "salamina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5104,
+    "attempt": 5065,
+    "place_id": "gn-3875235",
+    "input": {
+      "place": {
+        "place_id": "gn-3875235",
+        "name": "Pozo Almonte",
+        "country": "Chile",
+        "subdivision": "Tarapacá",
+        "lat": -20.25585,
+        "lon": -69.7863
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pozo Almonte",
+          "url": "https://en.wikipedia.org/wiki/Pozo_Almonte",
+          "text": "Pozo Almonte (Spanish pronunciation: [ˈposo alˈmonte]) is a city and commune of Chile located in the interior of Atacama Desert. It has been the capital of Tamarugal Province since this province was established in 2007. The city is located at 52 km (32 mi) from Tarapacá Region's capital, Iquique. It has over 15,000 inhabitants. The commune has an area of 13,766 km (8,554 mi) and borders the following communes: Iquique, Alto Hospicio, Huara, Pica, María Elena and Tocopilla (the last two being in Tocopilla Province).\nMining company Cosayach extracts iodine and nitrate in the commune and processes it in the village of Cala-Cala."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "pozo almonte",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pozo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "almonte",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5105,
+    "attempt": 5066,
+    "place_id": "gn-4099647",
+    "input": {
+      "place": {
+        "place_id": "gn-4099647",
+        "name": "Arkadelphia",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 34.12093,
+        "lon": -93.05378
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arkadelphia, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Arkadelphia,_Arkansas",
+          "text": "Arkadelphia is a city in and the county seat of Clark County, Arkansas, United States. The city is located near the Ouachita River at the foothills of the Ouachita Mountains, along the Interstate 30 corridor between Little Rock and Texarkana. As of the 2020 census, the population was 10,380.\nArkadelphia developed as a river and railroad trading center and later became known as an educational center in southwest Arkansas. It is home to Henderson State University and Ouachita Baptist University, whose neighboring campuses and football rivalry, the Battle of the Ravine, are central to the city's college-town identity. Arkadelphia was incorporated in 1857."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "arkadelphia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5106,
+    "attempt": 5067,
+    "place_id": "gn-4190542",
+    "input": {
+      "place": {
+        "place_id": "gn-4190542",
+        "name": "Dahlonega",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 34.53259,
+        "lon": -83.98491
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dahlonega, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Dahlonega,_Georgia",
+          "text": "Dahlonega ( də-LON-ig-ə) is the county seat of Lumpkin County, Georgia, United States. As of the 2020 census, Dahlonega had a population of 7,537.\nDahlonega is located at the north end of Georgia highway 400, a freeway which connects Dahlonega to Atlanta. The city is also a college town, home to the main campus of the University of North Georgia.\nDahlonega was the site of the second major Gold Rush in the United States beginning in 1829. The Dahlonega Gold Museum Historic Site which is located in the middle of the public square, was originally built in 1836 as the Lumpkin County Courthouse. In 1849, when local gold miners were considering heading west to join the California Gold Rush, Dr. Matthew Fleming Stephenson, the assayer at the Dahlonega Branch Mint, tried to persuade miners to stay in Dahlonega. Standing on the courthouse balcony and pointing at the distant Findley Ridge, Dr. Stephenson was recalled in his speech as saying: \"Why go to California? In yonder hill lies more riches than anyone ever dreamed of. There's millions in it,\" This phrase was repeated by those miners who did make the journey to California and was shared in the mining camps of the west. Years later, the young Samuel Clemens, better known as the author Mark Twain, also heard of Stephenson's phrase. Twain was so enthralled by the phrase \"There's Millions In It,\" that he used it frequently in his book The Gilded Age. Over time, the phrase has been misquoted to the better-known \"Thar's gold in them thar hills.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "dahlonega",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5107,
+    "attempt": 5068,
+    "place_id": "gn-4474274",
+    "input": {
+      "place": {
+        "place_id": "gn-4474274",
+        "name": "Kill Devil Hills",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 36.03072,
+        "lon": -75.67601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kill Devil Hills, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Kill_Devil_Hills,_North_Carolina",
+          "text": "Kill Devil Hills is a town in Dare County, North Carolina, United States. The population was 7,633 at the 2020 census. It is the most populous settlement in both Dare County and on the Outer Banks of North Carolina. The Kill Devil Hills micropolitan statistical area, consisting of all of Dare County, is part of the larger Virginia Beach–Norfolk combined statistical area.\nThe town was founded and developed on the site of the Wright brothers' first controlled, powered airplane flights on December 17, 1903, chosen for its good winds. It was commemorated by the Wright Brothers National Memorial, which was dedicated in 1932. At the time of the Wright Flyer flights, the town of Kill Devil Hills did not exist, and it did not receive its municipal charter until 1953. Kitty Hawk, approximately 4 miles (6.4 km) north, was the nearest settlement at the time and is popularly noted as the site of the first flight."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "kill devil hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kill",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "devil",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5108,
+    "attempt": 5069,
+    "place_id": "gn-4693940",
+    "input": {
+      "place": {
+        "place_id": "gn-4693940",
+        "name": "Gonzales",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 29.50163,
+        "lon": -97.45249
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gonzales, Texas",
+          "url": "https://en.wikipedia.org/wiki/Gonzales,_Texas",
+          "text": "Gonzales is a city in the U.S. state of Texas, with a population of 7,165 at the 2020 census. It is the county seat of Gonzales County. Gonzales was the site of several integral events in the Texas Revolution, including the Battle of Gonzales, the \"Come and Take It\" incident, the ride of the Immortal 32 to the Battle of the Alamo, and the subsequent Runaway Scrape.\nThe city's cattle and poultry economy is enhanced by oilfield services and light manufacturing enterprises, a short rail connection to a major Union-Pacific rail line, and lodging oil field workers from the nearby Eagle Ford Shale."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "gonzales",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5109,
+    "attempt": 5070,
+    "place_id": "gn-4700550",
+    "input": {
+      "place": {
+        "place_id": "gn-4700550",
+        "name": "Jacksonville",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 31.96378,
+        "lon": -95.2705
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jacksonville, Texas",
+          "url": "https://en.wikipedia.org/wiki/Jacksonville,_Texas",
+          "text": "Jacksonville is a city located in Cherokee County, Texas, United States. Its population was 13,997 at the 2020 U.S. census. It is the principal city of the Jacksonville micropolitan statistical area, which includes all of Cherokee County.\nJacksonville is located in East Texas, north of the county seat, Rusk, and south of Tyler, in Smith County.\nArea production and shipping of tomatoes gained the town the title \"Tomato Capital of the World\". The impressive red iron ore rock Tomato Bowl, built by Works Progress Administration workers during the Great Depression, is home to the Jacksonville High School \"Fightin' Indians\" football and soccer teams. Annual events include the \"Tops in Texas Rodeo\" held in May and the \"Tomato Fest\" celebration in June."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "jacksonville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5110,
+    "attempt": 5071,
+    "place_id": "gn-4984565",
+    "input": {
+      "place": {
+        "place_id": "gn-4984565",
+        "name": "Auburn Hills",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.68753,
+        "lon": -83.2341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Auburn Hills, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Auburn_Hills,_Michigan",
+          "text": "Auburn Hills is a city in Oakland County in the U.S. state of Michigan. A northern suburb of Detroit, Auburn Hills is located about 26 miles (42 km) north of downtown Detroit. As of the 2020 census, the city had a population of 24,360.\nAuburn Hills is notable as the home of Oakland University, and the site of the North American headquarters of Stellantis. The city is a major hub of manufacturing and commerce, particularly in the automotive industry, with facilities of more than 50 automotive corporations. Before incorporating as a city in 1983, the area was part of the now-defunct Pontiac Township."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "auburn hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "auburn",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5111,
+    "attempt": 5072,
+    "place_id": "gn-5354943",
+    "input": {
+      "place": {
+        "place_id": "gn-5354943",
+        "name": "Half Moon Bay",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.46355,
+        "lon": -122.42859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Half Moon Bay, California",
+          "url": "https://en.wikipedia.org/wiki/Half_Moon_Bay,_California",
+          "text": "Half Moon Bay is a coastal city in San Mateo County, California, United States, approximately 25 miles (40 kilometers) south of San Francisco. Its population was 11,795 as of the 2020 census. Immediately north of Half Moon Bay is Pillar Point Harbor and the unincorporated community of Princeton-by-the-Sea. Half Moon Bay is known for Mavericks, a big-wave surf location. It is called Half Moon Bay because of its crescent shape.\nOriginally an agricultural outpost to Mission San Francisco de Asís, the town was founded in the 1840s first as San Benito, and then as its Anglo fishing community grew, it was renamed Spanishtown. In 1874, it was again renamed Half Moon Bay. After rail and road connections in the early 1900s, the town grew. The foggy weather of the coast made the town a popular destination for booze-running during Prohibition.\nThe city's infrastructure is heavily integrated with the coast, including the Pillar Point Harbor, major roads, and the fire department. The economy of Half Moon Bay is dominated by a few businesses, the biggest of which is the Ritz-Carlton Half Moon Bay. Because of this geography, a 2022 study found that the city had over 123 buildings vulnerable to sea level rise."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "half moon bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "half",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "moon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5112,
+    "attempt": 5073,
+    "place_id": "gn-5368618",
+    "input": {
+      "place": {
+        "place_id": "gn-5368618",
+        "name": "Los Serranos",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.97279,
+        "lon": -117.70811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Los Serranos, Chino Hills, California",
+          "url": "https://en.wikipedia.org/wiki/Los_Serranos,_Chino_Hills,_California",
+          "text": "Los Serranos is a neighborhood within the city of Chino Hills in southwestern San Bernardino County, California. It is named after the Los Serranos Golf Course within the east-central portion of the Chino Hills city limits, near the Chino Valley Freeway (SR 71). The U.S. Census reported Los Serranos as a separate Census-designated place in the 1990 Census until it was incorporated into the city of Chino Hills on December 1, 1991. The area is known for its unique architectural legacy of narrow golf course bungalows with an average lot width of 30 feet, resulting from the subdivision's origin as a 1920s resort."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "los serranos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "serranos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5113,
+    "attempt": 5074,
+    "place_id": "gn-5811995",
+    "input": {
+      "place": {
+        "place_id": "gn-5811995",
+        "name": "Stanwood",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.24121,
+        "lon": -122.37071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stanwood, Washington",
+          "url": "https://en.wikipedia.org/wiki/Stanwood,_Washington",
+          "text": "Stanwood is a city in Snohomish County, Washington, United States. The city is located 50 miles (80 km) north of Seattle, at the mouth of the Stillaguamish River near Camano Island. As of the 2020 census, its population is 7,705.\nThe Stanwood area has been home to the Stillaguamish people for thousands of years, who originally had a village at the present site of Stanwood. The modern city of Stanwood was later founded in 1866 as Centerville, adopting its current name in 1877 after the arrival of postmaster Daniel O. Pearson. It was platted in 1888 and incorporated as a city in 1903. The city was bypassed by the Great Northern Railway, which built a depot one mile (1.6 km) east that grew into its own separate town, incorporated in 1922 as East Stanwood. The two Stanwoods were civic rivals for several decades, until their governments were consolidated after a 1960 referendum was approved by voters.\nThe city was historically home to several food processing plants, which were its largest employers, and was mainly populated by Scandinavians. Since the 1990s, Stanwood has grown into a bedroom community for Seattle and Everett and has annexed uphill areas that were developed into suburban subdivisions. Stanwood is primarily served by State Route 532, which connects Camano Island to Interstate 5, and also has a train station that opened in 2009."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 227
+    },
+    "banned_terms": [
+      {
+        "term": "stanwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5114,
+    "attempt": 5075,
+    "place_id": "gn-5923101",
+    "input": {
+      "place": {
+        "place_id": "gn-5923101",
+        "name": "Clarence-Rockland",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.5501,
+        "lon": -75.29101
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clarence-Rockland",
+          "url": "https://en.wikipedia.org/wiki/Clarence-Rockland",
+          "text": "Clarence-Rockland is a city in Eastern Ontario, Canada, in the United Counties of Prescott and Russell on the Ottawa River. Clarence-Rockland, located immediately to the east of Ottawa, was formed on January 1, 1998, through the amalgamation of the Town of Rockland with Clarence Township.\nThe geographic Township of Clarence was established in 1798 and named after Prince William Henry, Duke of Clarence. Communities were established in the township since the early 1840s. In July 1853, the Township Municipality of Clarence was created when it separated from the United Township of Russell, Cambridge and Clarence. Rockland was incorporated as a town in 1908."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "clarence rockland",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "clarence",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rockland",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5115,
+    "attempt": 5076,
+    "place_id": "gn-5967687",
+    "input": {
+      "place": {
+        "place_id": "gn-5967687",
+        "name": "Guildford",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.19167,
+        "lon": -122.8
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guildford, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Guildford,_British_Columbia",
+          "text": "Guildford is a town centre and neighbourhood of Surrey, British Columbia, Canada. It is known for its retail corridors along 104 Avenue and 152 Street. At the intersection of these two streets sits the 200-store Guildford Town Centre shopping mall. The community is named after Guildford in Surrey, England.\nAlthough Guildford is geographically large, the Guildford neighbourhood is locally considered to centre around the Guildford Town Centre mall and its surrounding blocks. A notable landmark in Guildford is the 86-metre (282 ft) tall flagpole, which had been located at the Expo 86 fairgrounds and was then the record holder for world's tallest flagpole. It is also home to the Guildford Recreation Centre, which is owned and operated by the City of Surrey to serve the recreational needs of local residents.\nAs of the 2016 census, the population of Guildford is 60,745."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "guildford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5116,
+    "attempt": 5077,
+    "place_id": "gn-6115107",
+    "input": {
+      "place": {
+        "place_id": "gn-6115107",
+        "name": "Queensborough",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.18333,
+        "lon": -122.93333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Queensborough, New Westminster",
+          "url": "https://en.wikipedia.org/wiki/Queensborough,_New_Westminster",
+          "text": "Queensborough is a neighbourhood in the city of New Westminster, British Columbia, Canada. It is on the eastern tip of Lulu Island on the Fraser River.\nAt the north end of Queensborough is a new development called Port Royal. To the south is Thompson's Landing, to the west is the industrial area of Tree Island, and to the east is the Fraser River.  Access to Annacis Island, an industrial park area and site of one of the GVRD's sewage plants, is via a bridge towards the east end of Queensborough, though the island itself is not part of the City of New Westminster."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "queensborough",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5117,
+    "attempt": 5078,
+    "place_id": "gn-6232229",
+    "input": {
+      "place": {
+        "place_id": "gn-6232229",
+        "name": "Ellerslie",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.8982,
+        "lon": 174.81019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ellerslie, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Ellerslie,_New_Zealand",
+          "text": "Ellerslie is a suburb of the city of Auckland, in the North Island of New Zealand. Ellerslie lies seven kilometres to the southeast of the city centre, close to State Highway 1.\nAdministratively, Ellerslie forms part of the Ōrākei Local Board, which also includes the suburbs of Orakei, Mission Bay, Kohimarama, Saint Heliers, Glendowie, St Johns, Meadowbank and Remuera. To the west, Ellerslie borders on the One Tree Hill area and Cornwall Park. Largely a residential suburb, the area is arguably best-known as the site of Auckland's main horse-racing venue, Ellerslie Racecourse, as well as the original site of the Ellerslie Flower Show. (From 2008 the Flower Show moved to Christchurch in the South Island.)"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "ellerslie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5118,
+    "attempt": 5079,
+    "place_id": "gn-6325478",
+    "input": {
+      "place": {
+        "place_id": "gn-6325478",
+        "name": "Beauport",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.85884,
+        "lon": -71.19201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beauport, Quebec City",
+          "url": "https://en.wikipedia.org/wiki/Beauport,_Quebec_City",
+          "text": "Beauport (French pronunciation: [bopɔʁ]) is a borough of Quebec City, Quebec, Canada on the Saint Lawrence River.\nBeauport is a northeastern suburb of Quebec City. Manufacturers include paint, construction materials, printers, and hospital supplies. Food transportation is important to the economy. Attractions include Parc de la Chute-Montmorency (Montmorency Falls Park), which contains a fortification built in 1759 by James Wolfe and Manoir Montmorency, the home from 1791 to 1794 of Prince Edward, Duke of Kent and Strathearn.\nThe city's historic district contains many interesting churches and homes, including Bélanger-Girardin House, a National Historic Site of Canada where visitors can learn about Beauport's heritage. Annual events include the spring arts festival Salon de Mai and the summer Festival Folklorique des enfants du monde, a multicultural and international children's folklore festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "beauport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5119,
+    "attempt": 5080,
+    "place_id": "gn-6534251",
+    "input": {
+      "place": {
+        "place_id": "gn-6534251",
+        "name": "San Cipriano d'Aversa",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.99881,
+        "lon": 14.13173
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Cipriano d'Aversa",
+          "url": "https://en.wikipedia.org/wiki/San_Cipriano_d'Aversa",
+          "text": "San Cipriano d'Aversa (Italian pronunciation: [san tʃiˈprjaːno daˈvɛrsa]) is an Italian commune and municipality in the Province of Caserta, region of Campania, located about 20 kilometres (12 mi) northwest of Naples and about 20 kilometres (12 mi) southwest of Caserta. The town is located on the territory of Agro aversano, a rural area with 19 comunes spread on its land, and is directly linked to the comune of Casal di Principe on a side, to the comune of Casapesenna on the other side.\nSan Cipriano d’Aversa is also known for the export of buffalo mozzarella and for the strong presence of organised crime."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "san cipriano d aversa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cipriano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "aversa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

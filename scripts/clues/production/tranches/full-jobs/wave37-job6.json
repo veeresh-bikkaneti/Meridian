@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 7352,
+    "attempt": 7301,
+    "place_id": "gn-1164306",
+    "input": {
+      "place": {
+        "place_id": "gn-1164306",
+        "name": "Surab",
+        "country": "Pakistan",
+        "subdivision": "Balochistan",
+        "lat": 28.49276,
+        "lon": 66.25999
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Surab, Pakistan",
+          "url": "https://en.wikipedia.org/wiki/Surab,_Pakistan",
+          "text": "Surab (Balochi, and Urdu: سوراب) is a town in central Balochistan, Pakistan with a population of 36,468. It serves as the administrative centre of Surab Tehsil and Surab District, which was established on 1 August 2017 following its separation from Kalat District. The town is located in a valley of the Central Brahui Range at the junction of the N-25 and N-85 national highways.\nOn 30 May 2025, Surab was attacked by militants of the Balochistan Liberation Army, resulting in the killing of a local government official, the burning of his residence, the looting of a bank, and assaults on other key sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "surab",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7353,
+    "attempt": 7302,
+    "place_id": "gn-12524521",
+    "input": {
+      "place": {
+        "place_id": "gn-12524521",
+        "name": "Abbaspur",
+        "country": "India",
+        "subdivision": "Jammu and Kashmir",
+        "lat": 33.8174,
+        "lon": 73.97568
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abbaspur, Poonch",
+          "url": "https://en.wikipedia.org/wiki/Abbaspur,_Poonch",
+          "text": "Abbaspur, (name after Chaudhry Ghulam Abbas) commonly known as Bandi or Bandi Abbaspur is a Tehsil located near the line of control which divides Pakistan administered Kashmir and Indian administered Kashmir. It used to be called Bandi Gopalpur before its name was changed. The tehsil is made up of different areas, everything north of Bandi Abbaspur. The mountain facing toward the city in front of it and up to Mehmood Gali is called Tangyran. The mountain side facing toward the Poonch River or Rangard between Abbaspur and Potha is called Choyi. It is the sub-divisional headquarters of Poonch district, Rawalakot, Poonch, Azad Kashmir.\nAbdul Qayyum Khan Niazi, a politician and current president of Pakistan Tehreek-e-Insaf in Azad Kashmir who has been a former Prime Minister of Azad Kashmir, belongs Dulli family residing in this tehsil.\nSardar Usama Zahid is a Pakistani politician from Abbaspur, Poonch District, Azad Jammu and Kashmir. He is associated with the LA-18 (Abbaspur) constituency of the Azad Jammu and Kashmir Legislative Assembly. He has been involved in local politics, youth engagement, and community development initiatives in the Abbaspur region.\nMajor Tribes\nGujjars, Mughals, Rajputs, Awan, Jats, Khawaja, Syeds, Khokhar,"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "abbaspur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7354,
+    "attempt": 7303,
+    "place_id": "gn-12547009",
+    "input": {
+      "place": {
+        "place_id": "gn-12547009",
+        "name": "Selangau",
+        "country": "Malaysia",
+        "subdivision": "Sarawak",
+        "lat": 2.52477,
+        "lon": 112.32543
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Selangau",
+          "url": "https://en.wikipedia.org/wiki/Selangau",
+          "text": "Selangau, Sarawak, (Malay: Pekan Selangau) is a small town located by the Pan Borneo Highway (Sibu-Bintulu Road). It is also located by Batang Mukah, a river which flows to the South China Sea. It is located approximately 74 km (46 mi) from Sibu city, 84 km (52 mi) from Mukah town and 134 km (83 mi) from Bintulu town. Selangau town is the administrative centre for the Selangau District.\nAccording to the 2020 Malaysian Population and Housing Census, the population of Selangau was 51,335. The population was 91.3% Malaysian citizens and 8.7% non-citizens, with a gender split of 54.0% male and 46.0% female."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "selangau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7355,
+    "attempt": 7304,
+    "place_id": "gn-151211",
+    "input": {
+      "place": {
+        "place_id": "gn-151211",
+        "name": "Nyalikungu",
+        "country": "Tanzania",
+        "subdivision": "Simiyu",
+        "lat": -3.18333,
+        "lon": 33.78333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nyalikungu",
+          "url": "https://en.wikipedia.org/wiki/Nyalikungu",
+          "text": "Nyalikungu is a locality in Maswa District, Simiyu Region, Tanzania. It is inhabited by the Sukuma people.It serves as the administrative center for the district and is predominantly inhabited by the Sukuma people.\nGeographical Location: Nyalikungu is located at approximately 3.1833°S latitude and 33.7833°E longitude, with an elevation of about 1,354 meters (4,442 feet) above sea level.\nPopulation: According to the 2022 census, Nyalikungu has a population of 9,534 residents.\nNearby Localities: The town is near other localities such as Shanwa, Buchambi, and Iborogero, and is approximately 6 km east of the town of Maswa, which is the administrative seat of the district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "nyalikungu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7356,
+    "attempt": 7305,
+    "place_id": "gn-1707204",
+    "input": {
+      "place": {
+        "place_id": "gn-1707204",
+        "name": "Lasam",
+        "country": "Philippines",
+        "subdivision": "Cagayan Valley",
+        "lat": 18.06519,
+        "lon": 121.60065
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lasam",
+          "url": "https://en.wikipedia.org/wiki/Lasam",
+          "text": "Lasam, officially the Municipality of Lasam (Ibanag: Ili nat Lasam; Ilocano: Ili ti Lasam; Tagalog: Bayan ng Lasam), is a 1st class municipality in the province of Cagayan, Philippines. According to the 2024 census, it has a population of 42,042 people.\nThe town was once a part of the Municipality of Gattaran, that stretches the width of the province and bisected by the Cagayan River. The barangays west of the river was established as the separate town of Lasam in 1950 by Republic Act No. 507.  The new municipality of Lasam became part of the Second Legislative District of the Province of Cagayan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "lasam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7357,
+    "attempt": 7306,
+    "place_id": "gn-1733376",
+    "input": {
+      "place": {
+        "place_id": "gn-1733376",
+        "name": "Kuala Penyu",
+        "country": "Malaysia",
+        "subdivision": "Sabah",
+        "lat": 5.5714,
+        "lon": 115.5984
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kuala Penyu",
+          "url": "https://en.wikipedia.org/wiki/Kuala_Penyu",
+          "text": "Kuala Penyu Town (Malay: Pekan Kuala Penyu) is the capital of the Kuala Penyu District in the Interior Division of Sabah, Malaysia. This district can be reached by road or by boat via the sea route. It is only 145 kilometres from Kota Kinabalu via the Beaufort route, and if travelling through Membakut/Pimping, the distance is now just 106 kilometres. Besides saving travel time, visitors taking the Membakut/Pimping route also have the opportunity to use the ferry service to cross Setompok Bay. Its population was estimated to be around 659 in 2010, with ethnic Dusun Tatana sub-group forming the largest single ethnic group."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "kuala penyu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kuala",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "penyu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7358,
+    "attempt": 7307,
+    "place_id": "gn-1819339",
+    "input": {
+      "place": {
+        "place_id": "gn-1819339",
+        "name": "Mount Davis",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Central and Western",
+        "lat": 22.27862,
+        "lon": 114.11777
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Davis, Hong Kong",
+          "url": "https://en.wikipedia.org/wiki/Mount_Davis,_Hong_Kong",
+          "text": "Mount Davis (Chinese: 摩星嶺) or Mo Sing Leng is an area surrounding and including the westernmost hill on Hong Kong Island, Hong Kong. It is 269 m tall. Home to mostly luxury residences, Mount Davis was originally settled after the construction of Victoria Road by prominent Hong Kong families who were unable to live on Peak due to the zoning restriction in Peak District Reservation Ordinance, 1904.It is named after Sir John Francis Davis, who was the 2nd governor of Hong Kong, from 1844 to 1848.\nThe summit is reached via Mount Davis Path, which comes off Mount Davis Road and Victoria Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "mount davis",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "davis",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7359,
+    "attempt": 7308,
+    "place_id": "gn-2147826",
+    "input": {
+      "place": {
+        "place_id": "gn-2147826",
+        "name": "Surrey Hills",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.81667,
+        "lon": 145.1
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Surrey Hills, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Surrey_Hills,_Victoria",
+          "text": "Surrey Hills is a suburb of Melbourne, Victoria, Australia, 11 km east of Melbourne's Central Business District, located within the Cities of Boroondara and Whitehorse local government areas. Surrey Hills recorded a population of 13,655 at the 2021 census.\nSurrey Hills was settled in the late 19th century and evolved with slightly smaller blocks and slightly simpler housing than its neighbour Canterbury. Most of Surrey Hills' streets are lined with now-mature European trees, mostly plane and pin oak.\nIt is bordered by Elgar Road in the east, Riversdale Road in the south, Highfield Road in the west and Whitehorse Road in the north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "surrey hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "surrey",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7360,
+    "attempt": 7309,
+    "place_id": "gn-2163654",
+    "input": {
+      "place": {
+        "place_id": "gn-2163654",
+        "name": "Heidelberg",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.75,
+        "lon": 145.06667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heidelberg, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Heidelberg,_Victoria",
+          "text": "Heidelberg () is a suburb of Melbourne, Victoria, Australia, 11 kilometres (7 mi) northeast of Melbourne's central business district, located within the City of Banyule local government area. Heidelberg recorded a population of 7,360 at the 2021 census.\nOnce a large town on Melbourne's outskirts, Heidelberg was absorbed into Melbourne as part of the latter's northward expansion after World War II. Heidelberg once had its own historic central business district including its own municipality in the former City of Heidelberg.\nHeidelberg lends its name to the Heidelberg School, an impressionist art movement that developed in and around the town in the late 19th-century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "heidelberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7361,
+    "attempt": 7310,
+    "place_id": "gn-2262917",
+    "input": {
+      "place": {
+        "place_id": "gn-2262917",
+        "name": "Sines",
+        "country": "Portugal",
+        "subdivision": "Setúbal",
+        "lat": 37.95622,
+        "lon": -8.86979
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sines",
+          "url": "https://en.wikipedia.org/wiki/Sines",
+          "text": "Sines (Portuguese pronunciation: [ˈsinɨʃ] ) is a town  and a municipality in Portugal. The municipality, divided into two parishes, has around 14,214 inhabitants (2021) in an area of 203.30 km2 (78.49 sq mi). Sines holds an important oil refinery and several petrochemical industries. It is also a popular beach spot and the main fishing harbour of Alentejo region.\nThe municipality is bordered to the north and east by the municipality of Santiago do Cacém, south by Odemira and west by the Atlantic Ocean. The coastline of the city, south of São Torpes, is part of the Southwest Alentejo and Vicentine Coast Natural Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "sines",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7362,
+    "attempt": 7311,
+    "place_id": "gn-2361373",
+    "input": {
+      "place": {
+        "place_id": "gn-2361373",
+        "name": "Diapaga",
+        "country": "Burkina Faso",
+        "subdivision": "Est",
+        "lat": 12.0729,
+        "lon": 1.78835
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Diapaga",
+          "url": "https://en.wikipedia.org/wiki/Diapaga",
+          "text": "Diapaga is a city in, and the capital of, Tapoa Province, situated in eastern Burkina Faso. The main ethnic group in the city are the Gourmantché. It is a major centre for health services in the region. The W Park militant group of Burkina Faso are reported to have their headquarters in the town.\n\nOn November 21, 2023, a mass shooting occurred in Diapaga, when coordinated and synchronized attacks that killed at least 15, predominately civilians. The attacks targeted two neighborhoods in Diapaga, inflicting casualties including three Volunteers for the Defense of the Homeland (VDP, civilian auxiliaries to the army) and twelve civilians.\nOn March 28, 2025, Jama'at Nasr al-Islam wal-Muslimin (JNIM) launched an assault on the Burkinabe army and VDP base in the city, which led to the deaths of over 100 people, including civilians and the commander of the station, Yannick Sawadogo. JNIM claimed the attack was revenge for the Solenzo Massacre, in which over 58 Fulani civilians were massacred by Volunteers for the Defense of the Homeland and the Burkina Faso Armed Forces.\nAnother attack occurred in Diapaga on May 12, where JNIM proceeded to raid the city, attacking a prison, destroying monuments, and setting fires to businesses. During the prison attack, prisoners were freed, with some being recruited into the ranks of JNIM. On May 21, a video was taken showing armed militants speaking to residents stating that city was completely under their control. On June 9, a Burkinabe military convoy entered the city according to a broadcast from Radio Télévision du Burkina, having left from Fada N'gourma two weeks prior."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 265
+    },
+    "banned_terms": [
+      {
+        "term": "diapaga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7363,
+    "attempt": 7312,
+    "place_id": "gn-2413106",
+    "input": {
+      "place": {
+        "place_id": "gn-2413106",
+        "name": "Kanifing",
+        "country": "Gambia",
+        "subdivision": "Banjul",
+        "lat": 13.44639,
+        "lon": -16.67444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kanifing",
+          "url": "https://en.wikipedia.org/wiki/Kanifing",
+          "text": "Kanifing is a municipality, local government area and district in the Gambia. It is part of the Greater Banjul Area, to the west of Banjul, and is governed by Kanifing Municipal Council (KMC).\nThe population of Kanifing expanded in the post-colonial era, and it is now one of the country's most-densely populated places and its second most-populated district. It received many migrants from the rest of the Gambia and abroad.\nKanifing is the economic centre of the Gambia, and Serekunda is its largest population center. Tourism is a major industry, and here are several higher education institutes, including the University of the Gambia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "kanifing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7364,
+    "attempt": 7313,
+    "place_id": "gn-2515701",
+    "input": {
+      "place": {
+        "place_id": "gn-2515701",
+        "name": "la Nucia",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.61372,
+        "lon": -0.1269
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Nucia",
+          "url": "https://en.wikipedia.org/wiki/La_Nucia",
+          "text": "La Nucia (Valencian: [la nuˈsi.a]; Spanish: La Nucía [la nuˈθi.a]) is a municipality in the comarca of Marina Baixa, Alicante, Valencian Community, Spain. It borders the municipalities of Altea, Callosa d'en Sarrià, Benidorm, Polop and L'Alfàs del Pi.\nLa Nucia is located in a fruit valley between Benidorm and Callosa d'en Sarrià, 3 kilometres (1.9 mi) from the coast of Altea. The urban center is on a promontory overlooking the Mediterranean Sea, 51 kilometres (32 mi) north of Alicante and 8 kilometres (5 mi) north of Benidorm.\nThe municipality includes the following housing estates: Barranco Hondo, Coloma, Bello Horizonte, Panorama, and El Tossal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "la nucia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nucia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7365,
+    "attempt": 7314,
+    "place_id": "gn-2521985",
+    "input": {
+      "place": {
+        "place_id": "gn-2521985",
+        "name": "Alhaurín el Grande",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.643,
+        "lon": -4.68728
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alhaurín el Grande",
+          "url": "https://en.wikipedia.org/wiki/Alhaurín_el_Grande",
+          "text": "Alhaurín el Grande is a town located in the province of Málaga in the autonomous community of Andalusia in  southern Spain.\nIt covers an area of 73.1 km2 extending from the northern slope of the Sierra de Mijas and the plain of the Guadalhorce river, where orchards of citrus and other fruit trees are found. The population is 27,552, as of 2025.\nThe origin of the name was given by the Moors, who called it \"Alhaurin\", where the Catholic Monarchs added \"el Grande\" to distinguish it from the neighbouring town of Alhaurín de la Torre after the conquest of both sites in 1485."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "alhaurin el grande",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alhaurin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grande",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7366,
+    "attempt": 7315,
+    "place_id": "gn-2561124",
+    "input": {
+      "place": {
+        "place_id": "gn-2561124",
+        "name": "Ahfir",
+        "country": "Morocco",
+        "subdivision": "Oriental",
+        "lat": 34.95368,
+        "lon": -2.10027
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ahfir",
+          "url": "https://en.wikipedia.org/wiki/Ahfir",
+          "text": "Ahfir (Arabic: احفير, romanized: Āḥfīr, Standard Moroccan Tamazight: ⴰⵃⴼⵉⵔ) is a town in Berkane Province, Morocco, located in the Oriental region. It is situated on the left bank of the Kiss river, adjacent to the border with Algeria.\nThe majority of the population belongs to the Beni Snassen (At Iznasen) confederation. Since French colonization in the 19th and 20th centuries, most of the population has shifted to Arabic, with only a minority still speaking Berber. However, following the officialization of Berber in Morocco in 2011, a Berber language teaching program was introduced in schools.\nDuring the French protectorate, the town was named Martimprey-du-Kiss."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "ahfir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7367,
+    "attempt": 7316,
+    "place_id": "gn-2636066",
+    "input": {
+      "place": {
+        "place_id": "gn-2636066",
+        "name": "Thame",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.7484,
+        "lon": -0.97624
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thame",
+          "url": "https://en.wikipedia.org/wiki/Thame",
+          "text": "Thame ( ) is a market town and civil parish in Oxfordshire, England. It is located about 13 miles (21 km) east of the city of Oxford, 10 miles (16 km) south-west of Aylesbury and 40 miles (64 km) north-west of London. It derives its name from the River Thame, which flows along the north side of the town and forms part of the county border with Buckinghamshire. The parish includes the hamlet of Moreton, just south of the town. The 2011 Census recorded the parish's population as 11,561. Thame was founded in the Anglo-Saxon era and was in the kingdom of Wessex."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "thame",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7368,
+    "attempt": 7317,
+    "place_id": "gn-2636174",
+    "input": {
+      "place": {
+        "place_id": "gn-2636174",
+        "name": "Tavistock",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.54944,
+        "lon": -4.14418
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tavistock",
+          "url": "https://en.wikipedia.org/wiki/Tavistock",
+          "text": "Tavistock (  TAV-iss-tok) is a market town and civil parish in the West Devon district of Devon, England. It is an ancient stannary situated on the River Tavy, from which its name derives. The town is approximately 12 miles (19 km) north of Plymouth, 29 miles (47 km) southwest of Exeter, and 44 miles (71 km) east northeast of Truro. It had a population of 12,675 at the 2021 census.\nThe town traces its recorded history back to at least 961 when Tavistock Abbey, whose ruins lie in the centre of the town, was founded. Its most famous son is Sir Francis Drake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "tavistock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7369,
+    "attempt": 7318,
+    "place_id": "gn-2639388",
+    "input": {
+      "place": {
+        "place_id": "gn-2639388",
+        "name": "Richmond",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.4036,
+        "lon": -1.73434
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Richmond, North Yorkshire",
+          "url": "https://en.wikipedia.org/wiki/Richmond,_North_Yorkshire",
+          "text": "Richmond is a market town and civil parish in North Yorkshire, England. It is located at the point where Swaledale, the upper valley of the River Swale, opens into the Vale of Mowbray. The town's population at the 2011 census was 8,413. The town is 13 miles (21 km) north-west of Northallerton, the county town, and 41 miles (66 km) north-west of York.\nIn the Domesday Book of 1086 the area was collected under Yorkshire and the town was in the Gilling Wapentake. After the book it became the centre for wapentakes in the Honour of Richmond for the North Riding of Yorkshire. Between 1974 and 2023 the town was the administrative centre of the Richmondshire district of the North Yorkshire non-metropolitan county. Richmond is located near the eastern boundary of the Yorkshire Dales National Park, for which it has become a tourist centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "richmond",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7370,
+    "attempt": 7319,
+    "place_id": "gn-2642537",
+    "input": {
+      "place": {
+        "place_id": "gn-2642537",
+        "name": "Milford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.17272,
+        "lon": -0.65042
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milford, Surrey",
+          "url": "https://en.wikipedia.org/wiki/Milford,_Surrey",
+          "text": "Milford is a village in the civil parish of Witley and Milford south west of Godalming in Surrey, England. It was a small village in the early medieval period — it grew significantly after the building of the Portsmouth Direct Line which serves Godalming railway station and its own minor stop railway station. The village, served by a wide array of shops and amenities, has to one side an all-directions junction of the A3, one of Britain's trunk roads. Nearby settlements are Eashing, Shackleford,\nWitley and Elstead, and the hamlets of Enton and Hydestile, all of which are in the Borough of Waverley. The west of the parish is in the Surrey Hills AONB."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "milford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7371,
+    "attempt": 7320,
+    "place_id": "gn-2654255",
+    "input": {
+      "place": {
+        "place_id": "gn-2654255",
+        "name": "Burntisland",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.05865,
+        "lon": -3.23664
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burntisland",
+          "url": "https://en.wikipedia.org/wiki/Burntisland",
+          "text": "Burntisland ( , Scots: Bruntisland) is a former Royal burgh and parish in Fife, Scotland, on the northern shore of the Firth of Forth. It was previously known as Wester Kinghorn or Little Kinghorn. The town has a population of 6,269 (2011) 6,254 (2022).\n\nBurntisland is known locally for its award-winning sandy beach, the 15th-century Rossend Castle, as well as the traditional summer fair and Highland games day. To the north of the town there is a hill called the Binn, which is a landmark of the Fife coastline; it is a volcanic plug, and rises 193 metres (632 ft) above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "burntisland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

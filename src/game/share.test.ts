@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { shareText } from "./share.ts";
+import { shareText, shareLoopText } from "./share.ts";
+import type { LoopGuess } from "./loop/types.ts";
 
 const now = new Date(Date.UTC(2026, 8, 28));
 
@@ -89,4 +90,43 @@ test("no strip without per-place scores", () => {
     bestStreak: 1,
   });
   assert.equal(text.includes("🎯"), false);
+});
+
+test("geodetective share appends the streak line when streak > 0", () => {
+  const guesses: LoopGuess[] = [
+    { name: "Kota, India", placeId: "geonames:1266049", distKm: 2073, octant: "south", warmer: null },
+    { name: "Colombo, Sri Lanka", placeId: "geonames:1248991", distKm: 0, octant: "north", warmer: true },
+  ];
+  const text = shareLoopText({
+    guesses,
+    status: "won",
+    dateKey: "2026-10-06",
+    now,
+    streak: 7,
+  });
+  assert.equal(
+    text,
+    "meridian geodetective October 6\nhttps://veeresh-bikkaneti.github.io/Meridian/\n🟥🟩⬜⬜⬜ solved in 2\n🔥 7",
+  );
+});
+
+test("geodetective share hides the streak line when streak is 0 or unset", () => {
+  const guesses: LoopGuess[] = [
+    { name: "Kota, India", placeId: "geonames:1266049", distKm: 2073, octant: "south", warmer: null },
+  ];
+  const base = {
+    guesses,
+    status: "lost" as const,
+    dateKey: "2026-10-06",
+    now,
+  };
+  const zero = shareLoopText({ ...base, streak: 0 });
+  const unset = shareLoopText(base);
+  for (const text of [zero, unset]) {
+    assert.equal(text.includes("🔥"), false);
+    assert.equal(
+      text,
+      "meridian geodetective October 6\nhttps://veeresh-bikkaneti.github.io/Meridian/\n🟥⬜⬜⬜⬜ not solved",
+    );
+  }
 });

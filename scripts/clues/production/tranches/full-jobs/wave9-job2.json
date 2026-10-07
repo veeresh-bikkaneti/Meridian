@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 1635,
+    "attempt": 1621,
+    "place_id": "gn-4005492",
+    "input": {
+      "place": {
+        "place_id": "gn-4005492",
+        "name": "Guadalupe",
+        "country": "Mexico",
+        "subdivision": "Nuevo León",
+        "lat": 25.67663,
+        "lon": -100.25907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guadalupe, Nuevo León",
+          "url": "https://en.wikipedia.org/wiki/Guadalupe,_Nuevo_León",
+          "text": "Guadalupe is a city and surrounding municipality located in the state of Nuevo León, which is located in northern Mexico. It is part of the Greater Monterrey Metropolitan area.\nThe municipality of Guadalupe, which lies adjacent to the east side of Monterrey, also borders the municipalities of San Nicolás de los Garza, Apodaca, Pesquería, and Juárez. Covering a territory of 117.7 km2 (45.4 sq mi), it is located at 25°40′39″N 100°15′35″W, \nat an altitude of 500 meters above sea level. As of the 2005 census its official population was 691,434 in the city and 691,931 in the entire municipality. It is the second-largest city and municipality in the state. The municipality has an area of 117.7 km2 (45.4 sq mi) (58.42 sq mi).\nThe city was founded on 4 January 1716, but the land was inhabited long before the official founding. When Monterrey was founded in 1596, the land, which was populated by various indigenous tribes, was ceded to Diego de Montemayor, the founder of Monterrey, but he did not make use of the land. In 1627, the land was turned into large plantations, where sugar cane and corn was raised. The owner of the land around the turn of the 18th century was named Capitán Nicolás Ochoa de Elejalde, but the land was taken from him by the Spanish government and converted into a mission in February 1715. In 1756, the city was renamed the \"Pueblo de la Nueva Tlaxcala de Nuestra Señora de Guadalupe de Horcasitas\". On 5 March 1825, the city was declared a municipality of Nuevo León and categorized as a villa, even though for many years it continued to be called the \"Villa de Guadalupe\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 280
+    },
+    "banned_terms": [
+      {
+        "term": "guadalupe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1636,
+    "attempt": 1622,
+    "place_id": "gn-4718097",
+    "input": {
+      "place": {
+        "place_id": "gn-4718097",
+        "name": "Pearland",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 29.56357,
+        "lon": -95.28605
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pearland, Texas",
+          "url": "https://en.wikipedia.org/wiki/Pearland,_Texas",
+          "text": "Pearland ( PEHR-land) is a city in Brazoria County, with portions extending into Fort Bend and Harris Counties, in Texas, United States. The city of Pearland is a principal city within the Houston–Pasadena–The Woodlands metropolitan statistical area. As of the 2020 census, Pearland had a population of 125,828, up from a population of 91,252 at the 2010 census. Pearland's population growth rate from 2000 to 2010 was 142%, which ranked Pearland as the 15th-fastest-growing city in the U.S. during that time, compared to other cities with a population of 10,000 or greater in 2000. Pearland is the third-largest city in the Greater Houston area after Houston and Pasadena, Texas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "pearland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1637,
+    "attempt": 1623,
+    "place_id": "gn-491687",
+    "input": {
+      "place": {
+        "place_id": "gn-491687",
+        "name": "Smolensk",
+        "country": "Russia",
+        "subdivision": "Smolensk Oblast",
+        "lat": 54.77826,
+        "lon": 32.05088
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Smolensk",
+          "url": "https://en.wikipedia.org/wiki/Smolensk",
+          "text": "Smolensk is a city and the administrative center of Smolensk Oblast, Russia, located on the Dnieper River, 360 kilometers (220 mi) west-southwest of Moscow. Population: 316,570 (2021 census).\nFirst mentioned in 863, Smolensk is one of the oldest cities in Russia. During the early medieval period, Smolensk lay on the historic route from the Varangians to the Greeks. It has been a regional capital for most of the past millennium, first serving as the capital of the Principality of Smolensk, one of several dominant Russian principalities, from the 11th to the 15th centuries. It then became the capital of Smolensk Voivodeship within Lithuania before passing to Russia in 1514. Smolensk passed to the Polish–Lithuanian Commonwealth in 1611 before becoming part of Russia again in 1654, after which it became the capital of Smolensk Governorate in 1708.\nIn the late modern period, it was the site of two major battles, in 1812 and 1941, during the French and German invasions of Russia, respectively, as their forces advanced towards Moscow."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "smolensk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1638,
+    "attempt": 1624,
+    "place_id": "gn-617239",
+    "input": {
+      "place": {
+        "place_id": "gn-617239",
+        "name": "Tiraspol",
+        "country": "Moldova",
+        "subdivision": "Transnistria",
+        "lat": 46.84275,
+        "lon": 29.6284
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tiraspol",
+          "url": "https://en.wikipedia.org/wiki/Tiraspol",
+          "text": "Tiraspol (Romanian pronunciation: [tiˈraspol], Moldovan Cyrillic: Тираспол; also Tirișpolea, Тиришполя; Russian: Тирасполь, romanized: Tiraspol', [tʲɪˈraspəlʲ]; Ukrainian: Тирасполь, romanized: Tyraspol', [tɪˈrɑspolʲ]) is the capital and largest city of Transnistria, a breakaway state of Moldova, where it is the second-largest city. The city is located on the eastern bank of the Dniester River. Tiraspol is a regional hub of culture, economy, tourism, and light industry, such as furniture and electrical goods production.\nThe modern city of Tiraspol was founded by the Russian generalissimo Alexander Suvorov in 1792, although the area had been inhabited for thousands of years by varying ethnic groups. The city celebrates its anniversary every year on 14 October."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "tiraspol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1639,
+    "attempt": 1625,
+    "place_id": "gn-681290",
+    "input": {
+      "place": {
+        "place_id": "gn-681290",
+        "name": "Cluj-Napoca",
+        "country": "Romania",
+        "subdivision": "Cluj County",
+        "lat": 46.76667,
+        "lon": 23.6
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cluj-Napoca",
+          "url": "https://en.wikipedia.org/wiki/Cluj-Napoca",
+          "text": "Cluj-Napoca (, KLOOZH-na-POH-kə; Romanian: [ˈkluʒ naˈpoka] ), or simply Cluj (Hungarian: Kolozsvár [ˈkoloʒvaːr] ; German: Klausenburg), is a city in northwestern Romania. It is the second-most populous city in the country and the seat of Cluj County. Geographically, it is roughly equidistant from Bucharest (445 km; 277 mi), Budapest (461 km; 286 mi) and Belgrade (483 km; 300 mi). Located in the Someșul Mic river valley, the city is considered the unofficial capital of the historical province of Transylvania. For some decades prior to the Austro-Hungarian Compromise of 1867, it was the official capital of the Grand Principality of Transylvania.\nAs of 2021, 286,598 inhabitants lived in the city. The Cluj-Napoca metropolitan area had a population of 411,379 people, while the population of the peri-urban area is approximately 420,000. According to a 2007 estimate, the city hosted an average population of over 20,000 students and other non-residents each year from 2004 to 2007. The city spreads out from St. Michael's Church in Unirii Square, built in the 14th century and named after the Archangel Michael, Cluj's patron saint. The municipality covers an area of 179.52 square kilometres (69.31 sq mi).\nCluj experienced a decade of decline during the 1990s, its international reputation suffering from the policies of its mayor at the time, Gheorghe Funar. In the early 21st century, the city is one of the most important academic, cultural, industrial and business centres in Romania. Among other institutions, it hosts the country's largest university, Babeș-Bolyai University, with its botanical garden; nationally renowned cultural institutions such as the National Theatre and Opera; and the largest Romanian-owned commercial bank. Cluj-Napoca held the titles of European Youth Capital in 2015, and European City of Sport in 2018. In 2021, the city joined the UNESCO Creative Cities Network and was named a UNESCO City of Film."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 302
+    },
+    "banned_terms": [
+      {
+        "term": "cluj napoca",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cluj",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "napoca",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1640,
+    "attempt": 1626,
+    "place_id": "gn-776069",
+    "input": {
+      "place": {
+        "place_id": "gn-776069",
+        "name": "Białystok",
+        "country": "Poland",
+        "subdivision": "Podlasie",
+        "lat": 53.13333,
+        "lon": 23.16433
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Białystok",
+          "url": "https://en.wikipedia.org/wiki/Białystok",
+          "text": "Białystok is the largest city in northeastern Poland and the capital of the Podlaskie Voivodeship. It is the tenth-largest city in Poland, second in terms of population density, and thirteenth in area.\nBiałystok is located in the Białystok Uplands of the Podlachian Plain on the banks of the Biała River, 200 km (124 mi) (124 mi) northeast of Warsaw. It has historically attracted migrants from elsewhere in Poland and beyond, particularly from Central and Eastern Europe. This is facilitated by the nearby border with Belarus also being the eastern border of the European Union, as well as the Schengen Area. The city and its adjacent municipalities constitute Metropolitan Białystok. The city has a warm summer continental climate, characterized by warm summers and long frosty winters. Forests are an important part of Białystok's character and occupy around 1,846 ha (4,560 acres) (18% of the administrative area of the city) which places it as the fifth-most forested city in Poland.\nThe first settlers arrived in the 14th century. The town grew and received its municipal charter in 1692. Białystok has traditionally been one of the leading centers of academic, cultural, and artistic life in Podlachia, and the most important economic center in northeastern Poland. Białystok was once an important center for light industry, which was the reason for the substantial growth of the city's population. The city continues to reshape itself into a modern middle-sized city. Białystok, in 2010, was on the short-list, but ultimately lost the competition, to become a finalist for European Capital of Culture in 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "bia ystok",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ystok",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1641,
+    "attempt": 1627,
+    "place_id": "gn-7802746",
+    "input": {
+      "place": {
+        "place_id": "gn-7802746",
+        "name": "Sadr City",
+        "country": "Iraq",
+        "subdivision": "Baghdad",
+        "lat": 33.3889,
+        "lon": 44.4583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sadr City",
+          "url": "https://en.wikipedia.org/wiki/Sadr_City",
+          "text": "Sadr City (Arabic: مدينة الصدر, romanized: Madīnat aṣ-Ṣadr), formerly known as Al-Thawra (Arabic: الثورة, romanized: aṯ-Ṯawra) and Saddam City (Arabic: مدينة صدام, romanized: Madīnat Ṣaddām), is a suburb district of the city of Baghdad, Iraq. It was built in 1959 by Prime Minister Abdul Karim Qassim and named Al-Rafidain District. After the US-led invasion of Iraq and the toppling of Saddam, it was unofficially renamed Sadr City after Ayatollah Mohammed al-Sadr.\nSadr City – or more accurately Thawra District (Arabic: حيّ الثورة, romanized: Ḥayy ath-Thawra) – is one of nine administrative districts in Baghdad. A public housing project neglected by Saddam Hussein, Sadr City holds around 1 million residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "sadr city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sadr",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1642,
+    "attempt": 1628,
+    "place_id": "gn-786712",
+    "input": {
+      "place": {
+        "place_id": "gn-786712",
+        "name": "Prizren",
+        "country": "Kosovo",
+        "subdivision": "Prizren",
+        "lat": 42.21389,
+        "lon": 20.73972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prizren",
+          "url": "https://en.wikipedia.org/wiki/Prizren",
+          "text": "Prizren (Albanian definite form: Prizreni, pronounced [pɾizˈɾɛni]; Serbian Cyrillic: Призрен) is the second most populous city and municipality of Kosovo and seat of the eponymous municipality and district. It is located on the banks of the Prizren River between the foothills of the Sharr Mountains in southern Kosovo. Prizren experiences a continental climate with some mediterranean influences.\nPrizren is constitutionally designated as the historical capital of the country. Archaeological excavations in Prizren Fortress indicate that its fortress area has seen habitation and use since the Bronze Age. Prizren has been traditionally identified with the settlement of Theranda in Roman Dardania, although other locations have been suggested in recent research. In late antiquity it was part of the defensive fortification system in western Dardania and the fort was reconstructed in the era of eastern Roman Emperor Justinian. Byzantine rule in the region ended definitively in 1219-20 as the Serbian Nemanjić dynasty took control of the fort and the town. Prizren served as the capital of the Serbian Empire under the reign of Stefan Dušan, as it bloomed to become an important center of trade and commerce during Dušan's reign. From 1371, a series of regional feudal rulers controlled Prizren, including the Mrnjavčević family, the Balšić noble family, the Branković dynasty. Ottoman Turks captured Prizren from Serbian Despotate in 1455 and almost immediately served as the capital of Sanjak of Prizren in the Ottoman Empire. While standing as an important administrative city for the Ottomans, Prizren became an important political center of the Albanian Renaissance during the late 19th century.\nPrizren was the seat of the League of Prizren, serving as the center of Albanian nationalism and resistance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "prizren",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1643,
+    "attempt": 1629,
+    "place_id": "gn-10063567",
+    "input": {
+      "place": {
+        "place_id": "gn-10063567",
+        "name": "Iskandar Puteri",
+        "country": "Malaysia",
+        "subdivision": "Johor",
+        "lat": 1.39324,
+        "lon": 103.62322
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iskandar Puteri",
+          "url": "https://en.wikipedia.org/wiki/Iskandar_Puteri",
+          "text": "Iskandar Puteri (formerly known as Nusajaya) is a city and the administrative capital of the state of Johor, Malaysia. It is situated along the Straits of Johor at the southern end of the Malay Peninsula and the southernmost city of continental Eurasia. Together with the adjacent cities of Johor Bahru and Pasir Gudang, it is located within the Johor Bahru District, the second largest district in Malaysia by population. The 15th busiest container port in the world, Port of Tanjung Pelepas, is also located in the city.\nIskandar Puteri hosts Kota Iskandar, which represents the seat of government of the state of Johor (Executive branch & Legislative branch)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "iskandar puteri",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "iskandar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "puteri",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1644,
+    "attempt": 1630,
+    "place_id": "gn-107304",
+    "input": {
+      "place": {
+        "place_id": "gn-107304",
+        "name": "Buraydah",
+        "country": "Saudi Arabia",
+        "subdivision": "Al-Qassim Region",
+        "lat": 26.32599,
+        "lon": 43.97497
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buraydah, Saudi Arabia",
+          "url": "https://en.wikipedia.org/wiki/Buraydah,_Saudi_Arabia",
+          "text": "Buraidah (Arabic: بريدة; also spelled as Buraydah)  is the capital and largest city of Al-Qassim Province in north-central Saudi Arabia. The city is regarded as the agricultural capital of Saudi Arabia and has been described as the Kingdom's breadbasket due to the diversity of its produce. Buraidah is particularly renowned for its date production, hosting one of the largest date markets in the world. In addition, its farms produce a variety of fruits and vegetables, including figs, strawberries, grapes, and pomegranates.\nIn 2021, Buraidah was recognized by UNESCO as a Creative City in Gastronomy, becoming the first Gulf city and the second Arab city to receive this designation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "buraydah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1645,
+    "attempt": 1631,
+    "place_id": "gn-1185162",
+    "input": {
+      "place": {
+        "place_id": "gn-1185162",
+        "name": "Mymensingh",
+        "country": "Bangladesh",
+        "subdivision": "Mymensingh Division",
+        "lat": 24.75636,
+        "lon": 90.40646
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mymensingh",
+          "url": "https://en.wikipedia.org/wiki/Mymensingh",
+          "text": "Mymensingh (Bengali: ময়মনসিংহ, romanized: Maẏamanasinha, pronounced [mɔjmɔnʃiŋɦɔ] ) is a metropolitan city and capital of Mymensingh Division, Bangladesh. Located on the bank of the Brahmaputra River, about 120 km (75 mi) north of the national capital Dhaka, it is a major financial center and educational hub of north-central Bangladesh. The population density of Mymensingh city is 44,458/km² (115,150/mi²), which makes it one of the most densely populated cities in Bangladesh. It is the administrative center of Mymensingh District and Mymensingh Division. \nThe city was constituted by the British East India Company on 1 May 1787. According to Ministry of Public Administration, Mymensingh is ranked 4th in district status. Mymensingh attracts 25 percent of all the health tourists visiting Bangladesh due to quality healthcare. Mymensingh elevation is over 19 m above sea level, the highest of Bangladesh's major cities. Mymensingh is located near Tura, a city in Meghalaya, accessible through the Gobrakura Land Port.\nThe city is associated with the Old Brahmaputra river, the traditional embroidered quilt called Nakshikantha (Bengali: নকশীকাঁথা), and the rural ballad collection Maimansingha Gitika. The cadet college established in Tangail in 1963 was called Momenshahi Cadet College. The city is well-known for educational institutions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "mymensingh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1646,
+    "attempt": 1632,
+    "place_id": "gn-1309937",
+    "input": {
+      "place": {
+        "place_id": "gn-1309937",
+        "name": "Pyin Oo Lwin",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Mandalay Region",
+        "lat": 22.03501,
+        "lon": 96.45683
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pyin Oo Lwin",
+          "url": "https://en.wikipedia.org/wiki/Pyin_Oo_Lwin",
+          "text": "Pyin Oo Lwin (Burmese: ပြင်ဦးလွင်မြို့, MLCTS: prang u: lwang mrui., pronounced [pjɪ̀ɰ̃ ʔú lwɪ̀ɰ̃]; Shan: ဝဵင်းပၢင်ႇဢူႈ, Weng Pang U), formerly and colloquially known as Maymyo (Burmese: မေမြို့, MLCTS: me mrui.), is a hill town in the Mandalay Region of Myanmar, located approximately 67 kilometers (42 mi) east of Mandalay at an elevation of 1,070 metres (3,510 ft). Known as the \"City of Flowers\" (Pan Myodaw), it served as the summer capital of British Burma and remains one of Myanmar's most popular resort destinations owing to its cool highland climate. The township had a population of 361,088 at the 2024 census, of which 149,439 resided in the urban area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "pyin oo lwin",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pyin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oo",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "lwin",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1647,
+    "attempt": 1633,
+    "place_id": "gn-146268",
+    "input": {
+      "place": {
+        "place_id": "gn-146268",
+        "name": "Nicosia",
+        "country": "Cyprus",
+        "subdivision": "Nicosia",
+        "lat": 35.17284,
+        "lon": 33.35397
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nicosia",
+          "url": "https://en.wikipedia.org/wiki/Nicosia",
+          "text": "Nicosia, also known as Lefkosia or Lefkoşa, is the capital of Cyprus. It is the southeasternmost capital city among European Union member states. Its northern part is the de facto capital of Northern Cyprus. \nNicosia has been continuously inhabited for over 5,500 years and has been the capital of Cyprus since the 10th century. It is the last divided capital in Europe. Three years after Cyprus gained independence from British rule in 1960, the Bloody Christmas conflict between Greek Cypriots and Turkish Cypriots triggered island-wide intercommunal violence, and in 1964, Nicosia's Greek Cypriot and Turkish Cypriot communities segregated into the south and the north of the city, respectively. A decade later, in 1974, Turkey invaded Cyprus just days after a Greek junta-backed coup aimed to unite the island with Greece. Following the invasion the island was split between Cyprus in the south and a Turkish-occupied zone in the north, with the dividing line running through Nicosia.\nApart from its legislative and administrative functions, Nicosia has established itself as the island's financial capital and its main international business centre. In 2018, Nicosia was the 32nd richest city in the world in relative purchasing power. In the 2022 Globalisation and World Cities (GaWC) ranking, Nicosia was classified as a Beta− city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "nicosia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1648,
+    "attempt": 1634,
+    "place_id": "gn-1645457",
+    "input": {
+      "place": {
+        "place_id": "gn-1645457",
+        "name": "Dili",
+        "country": "Timor-Leste",
+        "subdivision": "Dili Municipality",
+        "lat": -8.55861,
+        "lon": 125.57361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dili",
+          "url": "https://en.wikipedia.org/wiki/Dili",
+          "text": "Dili (Portuguese: Díli) is the capital and largest city of Timor-Leste. It lies on the northern coast of the island of Timor, in a small area of flat land hemmed in by mountains. The climate is tropical with distinct wet and dry seasons.\nThe city has served as the economic hub and chief port of what is now Timor-Leste since its designation as the capital of Portuguese Timor in 1769. It also serves as the capital of the Dili Municipality, which includes some rural subdivisions in addition to the urban ones that make up the city itself. Dili's growing population is relatively youthful, being mostly of working age. The local language is Tetum; however, residents include many internal migrants from other areas of the country.\nThe initial settlement was situated in what is now the old quarter in the eastern side of the city. Centuries of Portuguese rule were interrupted in World War II, when Dili became the site of a battle between Allied and Japanese forces. The damaged city returned to Portuguese control following the war. In 1975, a civil war between Timorese political parties broke out, leading to a declaration of independence and a subsequent invasion by Indonesia. Under Indonesian rule infrastructure in the city was developed, with landmarks such as the Immaculate Conception Cathedral and Cristo Rei of Dili being built during this time. The city expanded as its population grew to over 100,000 people.\nResistance to Indonesian rule faced violent repression, and a massacre in Dili led to international pressure culminating in an independence referendum. Following a vote for independence violence erupted in the city, destroying huge amounts of its infrastructure and leading to an exodus of refugees. A period of United Nations rule followed, during which international agencies began the reconstruction of the city. Dili became the capital of an independent Timor-Leste in 2002. A period of violence in 2006 saw another period of infrastructure damage and population displacement. In 2009, the government launched the City of Peace campaign to reduce tensions. As the population has continued to grow and the original site of the city has filled up, the urban area has expanded into coastal areas to the east and west of the main city.\nInfrastructure in Dili continues to be developed; the city was the first location in Timor-Leste to see 24 hours of electricity, although its water infrastructure remains relatively limited. Levels of education are higher than the national average, and the country's universities are located in the city. An international port and airport lie within the city limits. Most economic activity comes from the tertiary sector and public employment. To further build the economy, the Timorese government has been developing the tourism-based potential of the city, focusing on cultural, environmental, and historical attractions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 462
+    },
+    "banned_terms": [
+      {
+        "term": "dili",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1649,
+    "attempt": 1635,
+    "place_id": "gn-1688830",
+    "input": {
+      "place": {
+        "place_id": "gn-1688830",
+        "name": "San Pablo",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.0683,
+        "lon": 121.3256
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pablo, Laguna",
+          "url": "https://en.wikipedia.org/wiki/San_Pablo,_Laguna",
+          "text": "San Pablo, officially the City of San Pablo (Filipino: Lungsod ng San Pablo), is a  component city in the province of Laguna, Philippines. According to the 2024 census, it has a population of 300,166 people.\nThe city is also known as the \"City of Seven Lakes\" (Filipino: Lungsod ng Pitong Lawa), referring to the Seven Lakes of San Pablo: Lake Sampaloc (or Sampalok), Lake Palakpakin, Lake Bunot, Lakes Pandin and Yambo, Lake Muhikap, and Lake Calibato.\nSan Pablo was part of the Roman Catholic Archdiocese of Lipa beginning in 1910. On November 28, 1967, it became an independent diocese and became the Roman Catholic Diocese of San Pablo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "san pablo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pablo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1650,
+    "attempt": 1636,
+    "place_id": "gn-1697175",
+    "input": {
+      "place": {
+        "place_id": "gn-1697175",
+        "name": "Olongapo",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 14.82917,
+        "lon": 120.28278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Olongapo",
+          "url": "https://en.wikipedia.org/wiki/Olongapo",
+          "text": "Olongapo ([ʔoˌloːŋ.ɡɐˈpo]), officially the City of Olongapo (Filipino: Lungsod ng Olongapo; Ilocano: Siudad ti Olongapo; Sambal: Siyodad nin Olongapo; Kapampangan: Lakanbalen/Ciudad ning Olongapo), is a highly urbanized city situated in the Central Luzon region of the Philippines. According to the 2024 census, it has a population of 264,903 people.\nIt is geographically situated and grouped under the province of Zambales by the Philippine Statistics Authority but governed independently and is also its largest city. Portions of the city also form part of the Subic Special Economic and Freeport Zone.\nAlong with the municipality of Subic, it comprises Metro Olongapo, one of the twelve metropolitan areas in the Philippines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "olongapo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1651,
+    "attempt": 1637,
+    "place_id": "gn-1734586",
+    "input": {
+      "place": {
+        "place_id": "gn-1734586",
+        "name": "Taiping",
+        "country": "Malaysia",
+        "subdivision": "Perak",
+        "lat": 4.85,
+        "lon": 100.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taiping, Perak",
+          "url": "https://en.wikipedia.org/wiki/Taiping,_Perak",
+          "text": "Taiping (Malay: [taipeŋ]) is a city located in Larut, Matang and Selama District, in the state of Perak, Malaysia. It is located approximately 48 km (30 mi) northwest of Ipoh, the capital of Perak, and 78 km (48 mi) southeast of George Town, Penang. With a population of 245,182 (in 2013), it is the second largest city in Perak after Ipoh, the state capital.\nTaiping took over Kuala Kangsar's role as the state capital from 1876 to 1937, but was then replaced by Ipoh. Its growth slowed after that, but in recent years the town has been developing rapidly again. Perak State Museum is located in the town.\nTaiping also receives some limelight for being the wettest town in Peninsular Malaysia. Its average annual rainfall of about 2757mm of precipitation has led to fertile flora and rain trees in the Taiping Lake Gardens.\nTaiping was ranked in the Top 3 Sustainable Cities in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "taiping",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1652,
+    "attempt": 1638,
+    "place_id": "gn-1787331",
+    "input": {
+      "place": {
+        "place_id": "gn-1787331",
+        "name": "Zhangjiagang",
+        "country": "China",
+        "subdivision": "Jiangsu",
+        "lat": 31.865,
+        "lon": 120.53889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhangjiagang",
+          "url": "https://en.wikipedia.org/wiki/Zhangjiagang",
+          "text": "Zhangjiagang (simplified Chinese: 张家港; traditional Chinese: 張家港; pinyin: Zhāngjiāgǎng; Wade–Giles: Chang¹-chia¹-kang³; lit. 'Zhang family port'), formerly Shazhou County (Chinese: 沙洲县), is a county-level city under the administration of Suzhou, Jiangsu province, China and one of the many ports along the Yangtze river.\nWith 1,246,762 inhabitants as of the 2010 census, the city is now part of Jiangyin-Zhangjiagang-Jingjiang built-up or metropolitan area with 3,526,260 inhabitants. Continued growth will encompass the Yangtze River Delta metropolitan region. It borders the prefecture-level cities of Taizhou and Nantong across the Yangtze River, as well as Wuxi to the west.  Its total area is 986.53 square kilometers, including a land area of 791.05 kilometers.\nIn the top 100 county-level city list in China, Zhangjiagang ranks the third in 2019, and 2020.\nZhangjiagang is named a National Civilized City in China in 2020, and this is the sixth time that the city achieves this honor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "zhangjiagang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1653,
+    "attempt": 1639,
+    "place_id": "gn-1795860",
+    "input": {
+      "place": {
+        "place_id": "gn-1795860",
+        "name": "Shaoshan",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 27.91667,
+        "lon": 112.51667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shaoshan",
+          "url": "https://en.wikipedia.org/wiki/Shaoshan",
+          "text": "Shaoshan (Chinese: 韶山; pinyin: Sháoshān) is a county-level city in Hunan province, China. It is under the administration of the prefecture-level city of Xiangtan. Qingxi Town is its seat.\nLocated on the mid-eastern Hunan and the mid-north of Xiangtan, Shaoshan is bordered by Ningxiang to the north, Xiangxiang to the west and southwest, Xiangtan County to the east and southeast. It covers an area of 247.3 km2 (95.5 sq mi), as of 2015, it has a census registered population of 118,236  and a permanent resident population of 97,800. It is the smallest administrative unit by size or by population in the counties and county-level cities in Hunan province.\nAs the birthplace of Mao Zedong, the founder of the People's Republic of China, Shaoshan was an important base during the Chinese Communist Revolution. Mao remains a popular figure in the area, and red tourism to Shaoshan is a significant driver of the local economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "shaoshan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1654,
+    "attempt": 1640,
+    "place_id": "gn-2036973",
+    "input": {
+      "place": {
+        "place_id": "gn-2036973",
+        "name": "Heihe",
+        "country": "China",
+        "subdivision": "Heilongjiang",
+        "lat": 50.24413,
+        "lon": 127.49016
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heihe",
+          "url": "https://en.wikipedia.org/wiki/Heihe",
+          "text": "Heihe (Chinese: 黑河; pinyin: Hēihé; lit. 'Black River'; Russian: Хэйхэ) is a prefecture-level city of northern Heilongjiang province, China, located on the Russian border, on the south bank of the Amur (Heilong) River, across the river from Blagoveshchensk. At the 2020 census, 1,286,401 people lived in the prefecture-level city of whom 223,832 lived in the built-up area (or metro) made of Aihui District. At the end of 2024, the resident population of the city was 1.23 million, including 823,000 in urban areas and 407,000 in rural areas.\nHeihe marks the northeast terminus of the diagonal Heihe–Tengchong Line, which is sometimes used to divide China into east and west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "heihe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

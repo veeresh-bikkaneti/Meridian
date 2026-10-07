@@ -1,0 +1,822 @@
+[
+  {
+    "rank": 2661,
+    "attempt": 2641,
+    "place_id": "gn-2645418",
+    "input": {
+      "place": {
+        "place_id": "gn-2645418",
+        "name": "Kingswood",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.45278,
+        "lon": -2.50833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kingswood, South Gloucestershire",
+          "url": "https://en.wikipedia.org/wiki/Kingswood,_South_Gloucestershire",
+          "text": "Kingswood is a town and civil parish in the South Gloucestershire district of the ceremonial county of Gloucestershire, England. The town is in the Bristol Built-up Area, situated 3 miles (4.8 km) east-northeast of Bristol city centre. In 2023 it had a population of 48,474.\nBroadly speaking, Kingswood spans the area from John Cabot Academy in the west to the A4174 ring road in the east. Some areas which are in close proximity to Kingswood, such as Two Mile Hill and St George East (both located within the City of Bristol) and parts of Hanham and Warmley Hill are often considered to be part of Kingswood by locals. The border between South Gloucestershire and the City of Bristol is situated at the western end of Kingswood's High Street, meaning that anything west of this point is no longer Kingswood civil parish, though locals often consider the shops and residential areas that fringe Two Mile Hill to be a continuation of Kingswood neighbourhood."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "kingswood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2662,
+    "attempt": 2642,
+    "place_id": "gn-3124408",
+    "input": {
+      "place": {
+        "place_id": "gn-3124408",
+        "name": "Coslada",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.42378,
+        "lon": -3.56129
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coslada",
+          "url": "https://en.wikipedia.org/wiki/Coslada",
+          "text": "Coslada (Spanish pronunciation: [kosˈlaða]) is a city and municipality in the autonomous community of Madrid in central Spain. It has an area of 11.7 km2.\nThe Dry Port of the Community of Madrid is located in Coslada, which has become a major logistics hub in the country. Due to the area's close proximity to the Madrid–Barajas Airport and the Dry Port, the stretch of industrial cities from Madrid to Guadalajara along the A-2 freeway (known as the Corredor del Henares and more recently the \"golden mile\" of online sales) has, since the 1990s, grown into a logistics hub, similar to East Midlands in England, with the entire area now boasting 5.7 million m2 of logistics space in total. With investment from foreign funds and socimis, the logistics sector has grown rapidly thanks to increases in internet shopping. As Coslada runs out of space, other logistics companies have started to move into nearby cities such as Marchamalo, San Fernando de Henares, and Torija.\nA large percentage of Coslada's population works at the airport. Most Spanish transportation and shipping companies have branch offices in Coslada; the city is host to 706 logistics companies, the most in the country. El Corte Inglés operates a distribution center in the city, and delivery company Nacex opened a new distribution center in November 2018.\nAs of 2019, the mayor of Coslada is Ángel Viveros (PSOE)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "coslada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2663,
+    "attempt": 2643,
+    "place_id": "gn-3619194",
+    "input": {
+      "place": {
+        "place_id": "gn-3619194",
+        "name": "Estelí",
+        "country": "Nicaragua",
+        "subdivision": "Estelí Department",
+        "lat": 13.09291,
+        "lon": -86.35589
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Estelí",
+          "url": "https://en.wikipedia.org/wiki/Estelí",
+          "text": "Estelí (Spanish pronunciation: [esteˈli]), officially Villa de San Antonio de Pavia de Estelí is a city and municipality within the Estelí department. It is the 8th largest city in Nicaragua due to the high urbanization of its municipality, at 84.8%, with an urban population of 111,244 (2022 estimate). It is also the eighth-largest municipality, and an active commercial center in the north, known as \"the Diamond of the Segovia\" (this name being created by Oscar Corea Molina in his radio show \"Trampolin 43”) and the de facto capital of the north.\nEstelí is on the Pan-American Highway, 150 km north of Managua. It enjoys a temperate climate most of the year due to its location in the north central highlands at a mean elevation of 844 m (2769 ft) above sea level.  The city is also surrounded by forested mountains of pines, oaks, and walnuts, and plateaus up to 1600 m above sea level, some of which are protected as natural reserves."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "esteli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2664,
+    "attempt": 2644,
+    "place_id": "gn-4363843",
+    "input": {
+      "place": {
+        "place_id": "gn-4363843",
+        "name": "North Bethesda",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.04455,
+        "lon": -77.11887
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Bethesda, Maryland",
+          "url": "https://en.wikipedia.org/wiki/North_Bethesda,_Maryland",
+          "text": "North Bethesda is a census-designated place in Montgomery County, Maryland, United States, located just north-west of the U.S. capital of Washington, D.C. It had a population of 50,094 as of the 2020 census. Among its neighborhoods, the centrally located, urbanizing district of White Flint is the commercial and residential hub of North Bethesda. The Pike & Rose development and the Pike District is an initiative of Montgomery County to brand and market this region as \"North Bethesda's Urban Core\". The WMATA North Bethesda (formerly White Flint) metro station and Grosvenor-Strathmore metro station serve the region.\nFour of the National Institutes of Health as well other federal agencies, including the Nuclear Regulatory Commission, the Health Resources and Services Administration, and the United States Public Health Service Commissioned Corps, are headquartered in North Bethesda. A number of corporate headquarters are headquartered in North Bethesda, as well as nonprofits such as the American Kidney Fund, the Society of American Foresters and United States Pharmacopeia (USP).\nThe region is also known for a number of its long-standing institutions, such as the Neo-Georgian Mansion at Strathmore and the Georgetown Preparatory School. The Music Center at Strathmore is also located in North Bethesda."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "north bethesda",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bethesda",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2665,
+    "attempt": 2645,
+    "place_id": "gn-6157390",
+    "input": {
+      "place": {
+        "place_id": "gn-6157390",
+        "name": "Stoney Creek",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.21681,
+        "lon": -79.76633
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stoney Creek, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Stoney_Creek,_Ontario",
+          "text": "Stoney Creek is a community in the city of Hamilton in the Canadian province of Ontario located 10 km east of Downtown Hamilton and 57 km south-west of Toronto. It was a municipality until 2001, when it was amalgamated with Hamilton, Dundas, Ancaster,  Flamborough and Glanbrook to form the City of Hamilton.\nThe community of Stoney Creek is located on the south shore of western Lake Ontario, east of downtown Hamilton, into which feed the watercourses of Stoney Creek as well as several other minor streams. The historic area, known as the \"Old Town\", is below the Niagara Escarpment.\nStoney Creek experienced an increase in residential growth, particularly in the lower city in the 1970s and 1980s, and in the west mountain in the 1990s and 2000s, but most of the land mass of Stoney Creek remains agricultural. The communities of Elfrida, Fruitland, Tapleytown, Tweedside, Vinemount, and Winona serve as distinct reminders of the agricultural legacy of Stoney Creek and Saltfleet Township."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "stoney creek",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stoney",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "creek",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2666,
+    "attempt": 2646,
+    "place_id": "gn-776175",
+    "input": {
+      "place": {
+        "place_id": "gn-776175",
+        "name": "Biała Podlaska",
+        "country": "Poland",
+        "subdivision": "Lublin",
+        "lat": 52.03238,
+        "lon": 23.11652
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Biała Podlaska",
+          "url": "https://en.wikipedia.org/wiki/Biała_Podlaska",
+          "text": "Biała Podlaska (Polish: [ˈbjawa pɔdˈlaska] ; Latin: Alba Ducalis) is a city in the Lublin Voivodeship in eastern Poland with 56,498 inhabitants as of December 2021. It is the capital of Biała County, although the city is not part of the county (it constitutes a separate city county). The city lies on the Krzna river.\nFirst recorded in the medieval period, Biała Podlaska is a former residential city of the once influential magnate Radziwiłł family, whose landmarks include a Palace and Park ensemble and Renaissance and Baroque churches. It is the location of one of the oldest high schools in Poland, whose student was the most prolific Polish 19th-century writer Józef Ignacy Kraszewski, the birthplace of virtuoso violinist George Bridgetower, a former pioneering centre of faience manufacturing in Poland, and a former aircraft manufacturing centre. It was a place of Nazi German-perpetrated atrocities against Jews, Poles and Italians during the German occupation of Poland in World War II with over 4,000 victims. In 1975–1998, it was the capital of the Biała Podlaska Voivodeship."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 162,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "bia a podlaska",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "a",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "podlaska",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2667,
+    "attempt": 2647,
+    "place_id": "gn-2639022",
+    "input": {
+      "place": {
+        "place_id": "gn-2639022",
+        "name": "Royal Tunbridge Wells",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.13321,
+        "lon": 0.26256
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Royal Tunbridge Wells",
+          "url": "https://en.wikipedia.org/wiki/Royal_Tunbridge_Wells",
+          "text": "Royal Tunbridge Wells (formerly, until 1909, and still commonly Tunbridge Wells) is a town in Kent, England, 30 miles (50 kilometres) southeast of Central London. It lies close to the border with East Sussex on the northern edge of the High Weald, whose sandstone geology is exemplified by the rock formation High Rocks. The town was a spa in the Restoration and a fashionable resort in the mid-1700s under Beau Nash when the Pantiles, and its chalybeate spring, attracted visitors who wished to take the waters. Though its popularity as a spa town waned with the advent of sea bathing, the town still derives much of its income from tourism. The prefix \"Royal\" was granted to it in 1909 by King Edward VII; it is one of only four towns in England with the title.\nThe town had a population of 59,947 in 2016, and is the administrative centre of Tunbridge Wells Borough and in the parliamentary constituency of Tunbridge Wells."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "royal tunbridge wells",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "royal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tunbridge",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wells",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2668,
+    "attempt": 2648,
+    "place_id": "gn-2925192",
+    "input": {
+      "place": {
+        "place_id": "gn-2925192",
+        "name": "Freiberg",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.91089,
+        "lon": 13.33881
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Freiberg",
+          "url": "https://en.wikipedia.org/wiki/Freiberg",
+          "text": "Freiberg (German pronunciation: [ˈfʁaɪbɛʁk] ) is a university and former mining town in Saxony, Germany, with around 41,000 inhabitants. The city lies in the foreland of the Ore Mountains, in the Saxon urbanization axis, which runs along the northern edge of the Elster and Ore Mountains, stretching from Plauen in the southwest via Zwickau, Chemnitz and Freiberg to Dresden in the northeast. It sits on the Freiberger Mulde, a tributary of the Mulde River. It is a Große Kreisstadt (large district town), and the administrative seat of Landkreis Mittelsachsen (district Central Saxony). Freiberg is connected to Dresden by the S3 line of the Dresden S-Bahn.\nThe entire historic center of the Silver City is under monument protection, and together with local monuments of mining history such as the Reiche Zeche ore mine, it has been part of the UNESCO World Heritage Site Erzgebirge/Krušnohoří Mining Region since 2019 due to its exceptional testimony to the development of mining techniques across many centuries.\nFreiberg University of Mining and Technology (Technische Universität Bergakademie Freiberg), founded in 1765, is the oldest university of mining and metallurgy in the world. Until 1969, the town was dominated for around 800 years by the mining and smelting industries. Since then it has restructured into a high technology site in the fields of semiconductor manufacture and solar technology, part of Silicon Saxony.\nFreiberg Cathedral is one of the most richly furnished houses of worship in Saxony and contains important works of art such as the tulip pulpit, two Gottfried Silbermann organs, the choir, which was converted into a burial place for the Albertine Wettins, and the Golden Gate (Goldene Pforte), of which exist three replicas, in Moscow, Budapest, and Cambridge, Massachusetts.\nFreiberg's christmas market Freiberger Christmarkt is typical for christmas markets in the Ore Mountain region, which are characterized by a strong connection to mining and the typical christmas decorations of this region like Raachermannel, Schwibbögen and Christmas pyramids."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 321
+    },
+    "banned_terms": [
+      {
+        "term": "freiberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2669,
+    "attempt": 2649,
+    "place_id": "gn-3988050",
+    "input": {
+      "place": {
+        "place_id": "gn-3988050",
+        "name": "Salvatierra",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.21615,
+        "lon": -100.88208
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salvatierra, Guanajuato",
+          "url": "https://en.wikipedia.org/wiki/Salvatierra,_Guanajuato",
+          "text": "Salvatierra (Spanish: [salβaˈtjera] ) is a Mexican city (and municipality) located in the valley of Huatzindeo in the lowlands of the state of Guanajuato. It is rich in civil and religious architecture; haciendas, bridges, convents and large houses surrounded in tradition and history. With an area of 507.70 square kilometres, Salvatierra accounts for 1.66% the total area of the state.  It is bordered to the north by Tarimoro and Cortazar, to the south by Acámbaro and the state of Michoacán, to the west by Yuriria and Santiago Maravatío, and to the northeast by Jaral del Progreso. The municipality had a total of 94,558 inhabitants of which 34,066 lived in the city of Salvatierra, according to the 2005 census. As of 2020 the municipality had a total of 94,126 inhabitants, compared to 2010, the population in Salvatierra decreased by −3.02%\nIn pre-Columbian times the area was known as Huatzindeo (or Guatzindeo) which means \"Place of beautiful vegetation\" by the mostly Purépecha inhabitants. In 1646 Salvatierra became the first city of Guanajuato, thus making it the oldest city in the state. Salvatierra was declared a Pueblo Magico in 2012 by the Mexican government."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "salvatierra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2670,
+    "attempt": 2650,
+    "place_id": "gn-6146279",
+    "input": {
+      "place": {
+        "place_id": "gn-6146279",
+        "name": "Sherwood Park",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 53.51684,
+        "lon": -113.3187
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sherwood Park",
+          "url": "https://en.wikipedia.org/wiki/Sherwood_Park",
+          "text": "Sherwood Park is a large suburban hamlet in Alberta, Canada within Strathcona County that is recognized as an urban service area. It is adjacent to the City of Edmonton's eastern boundary. While long confined to generally south of Highway 16 (Yellowhead Trail), west of Highway 21 and north of Highway 630 (Wye Road), portions of Sherwood Park have expanded beyond Yellowhead Trail and Wye Road since the start of the 21st century. Anthony Henday Drive (Highway 216) separates Refinery Row, in a portion of the Sherwood Park Urban Service Area to the west, from the residential and commercial hamlet to the east.\nSherwood Park was established in 1955 on farmland of the Smeltzer family, east of Edmonton. With a population of 75,575 in 2024, Sherwood Park has enough people to be Alberta's sixth largest city, but it retains the status of a hamlet, though the Government of Alberta officially recognizes the Sherwood Park Urban Service Area as equivalent to a city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "sherwood park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sherwood",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2671,
+    "attempt": 2651,
+    "place_id": "gn-2639897",
+    "input": {
+      "place": {
+        "place_id": "gn-2639897",
+        "name": "Prestwich",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.53333,
+        "lon": -2.28333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prestwich",
+          "url": "https://en.wikipedia.org/wiki/Prestwich",
+          "text": "Prestwich ( PREST-witch) is a town in the Metropolitan Borough of Bury, Greater Manchester, England, three miles (five kilometres) north of Manchester, three miles (five kilometres) north of Salford and five miles (eight kilometres) south of Bury.\nWithin the boundaries of the historic county of Lancashire, Prestwich was the seat of the ancient parish of Prestwich-cum-Oldham, centred around the Grade I listed Church of St Mary the Virgin. In recent times, it has grown in popularity as a commuter town of Manchester, being consistently named one of the best places to live in the UK by The Sunday Times, and has been nicknamed the 'new Didsbury' in comparison with the affluent suburb in the south of the city.\nThe oldest part of Prestwich, around Bury New Road, is known as Prestwich Village. There is a large Jewish community in Prestwich which, together with neighbouring Whitefield, Broughton and Crumpsall, makes up the second largest Jewish community in the UK outside London."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "prestwich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2672,
+    "attempt": 2652,
+    "place_id": "gn-3467677",
+    "input": {
+      "place": {
+        "place_id": "gn-3467677",
+        "name": "Campos Novos",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -27.40167,
+        "lon": -51.225
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Campos Novos",
+          "url": "https://en.wikipedia.org/wiki/Campos_Novos",
+          "text": "Campos Novos is a Brazilian municipality located in the western part of the state of Santa Catarina, in the Southern Region of Brazil. It belongs to the Chapecó Intermediate Geographic Region and the Joaçaba-Herval d'Oeste Immediate Geographic Region, situated approximately 370 km west of the state capital. The municipality covers an area of about 1,717 km2 (663 sq mi), with an estimated population of 36,932 inhabitants in 2022, making it the 41st most populous municipality in the state.\nThe region was first explored in the 18th century, initially inhabited solely by the Kaingang indigenous people. Established in 1881, Campos Novos experienced significant population growth in the early 20th century due to the arrival of immigrants seeking employment and refugees from the Contestado War. The municipality's agricultural potential was revealed during this period, propelling it to the forefront of crop production in Santa Catarina, with major crops including maize, soybean, bean, wheat, and barley, while also excelling in livestock and beekeeping.\nCampos Novos boasts several cultural and historical attractions, including the São João Batista Parish Church, the Coronel Gasparino Zorzi Cultural Center, and the Pilgrimage of Our Lady of Aparecida, which attracts an average of 70,000 devotees. The Campos Novos Hydroelectric Plant, constructed in 2006, generates a quarter of Santa Catarina's energy supply."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "campos novos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "campos",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "novos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2673,
+    "attempt": 2653,
+    "place_id": "gn-5018739",
+    "input": {
+      "place": {
+        "place_id": "gn-5018739",
+        "name": "Bloomington",
+        "country": "United States",
+        "subdivision": "Minnesota",
+        "lat": 44.8408,
+        "lon": -93.29828
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bloomington, Minnesota",
+          "url": "https://en.wikipedia.org/wiki/Bloomington,_Minnesota",
+          "text": "Bloomington is a city in Hennepin County, Minnesota, United States. It is located on the north bank of the Minnesota River above its confluence with the Mississippi River, 10 miles (16 km) south of downtown Minneapolis and just south of the Interstate 494/694 Beltway. The population was 89,987 at the 2020 census, making it Minnesota's fourth-largest city, and the largest suburb of the Twin Cities.\nBloomington was established as a post–World War II housing boom suburb connected to Minneapolis's urban street grid, and is serviced by four major freeways: Interstate 35W running north–south through the approximate middle of the city, Minnesota State Highway 77, also signed as Cedar Avenue, running north–south near the eastern end of the city, U.S. Highway 169, running north–south along the western boundary of the city, and Interstate 494 running east–west at the northern border. Minnesota State Highway 100 also terminates within city limits at Interstate 494. Large-scale commercial development is concentrated along the I-494 corridor. Besides an extensive city park system, with over 1,000 square feet (93 m2) of parkland per capita, Bloomington is also home to Hyland Lake Park Reserve in the west and Minnesota Valley National Wildlife Refuge in the southeast.\nBloomington has more jobs per capita than either Minneapolis or Saint Paul, due in part to the United States' largest enclosed shopping center, the Mall of America, which is located inside of the city. The mall has over 500 stores and contains an amusement park. The headquarters of Dayforce, Donaldson Company, Great Clips, Dairy Queen, HealthPartners, and Toro, and major operations of Pearson, General Dynamics, Seagate Technologies, and Express Scripts are also based in the city.\nThe city was named after Bloomington, Illinois."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 281
+    },
+    "banned_terms": [
+      {
+        "term": "bloomington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2674,
+    "attempt": 2654,
+    "place_id": "gn-5389126",
+    "input": {
+      "place": {
+        "place_id": "gn-5389126",
+        "name": "Rowland Heights",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.97612,
+        "lon": -117.90534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rowland Heights, California",
+          "url": "https://en.wikipedia.org/wiki/Rowland_Heights,_California",
+          "text": "Rowland Heights is an unincorporated community and census designated place (CDP) in and below the Puente Hills in the San Gabriel Valley, in Los Angeles County, California, United States. The population was 48,231 at the 2020 census. Rowland Heights is in the Los Angeles metropolitan area and represented by the County of Los Angeles (County Board of Supervisors) and is the second largest census designated place in Los Angeles County by area, behind Topanga, and the county's fifth largest CDP by population. The area has a high Taiwanese population and was known as \"Little Taipei\" in the 1980s and 1990s, when it saw an influx of wealthy immigrants from Taiwan.\nA number of corporations, such as Newegg, FedEx, DIRECTV, and Fashion Nova, as well as other technology and import and export businesses, are located in neighboring City of Industry. Many business owners and employees reside in Rowland Heights as well as neighboring Hacienda Heights and Walnut due to their proximity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "rowland heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rowland",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2675,
+    "attempt": 2655,
+    "place_id": "gn-5830062",
+    "input": {
+      "place": {
+        "place_id": "gn-5830062",
+        "name": "Laramie",
+        "country": "United States",
+        "subdivision": "Wyoming",
+        "lat": 41.31137,
+        "lon": -105.5911
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laramie, Wyoming",
+          "url": "https://en.wikipedia.org/wiki/Laramie,_Wyoming",
+          "text": "Laramie () is a city in and the county seat of Albany County, Wyoming, United States, known for its high elevation at 7,200 feet (2,200 m), for its railroad history, and as the home of the University of Wyoming. The population was 31,407 at the 2020 census, making it the fourth-most populous city in Wyoming. Located on the Laramie River, the city is west of Cheyenne and 25 miles (40 km) north of the Colorado state line, at the junction of Interstate 80 and U.S. Route 287.\nAfter 12,000 years or more of Indigenous populations living in the area, Laramie was settled by European Americans in 1868 with the completion of the Union Pacific Railroad line to the area, which crosses the Laramie River at Laramie. The river and several creeks fed by freshwater springs made the area an attractive place for settlement. It is home to the University of Wyoming, WyoTech, and a branch of Laramie County Community College. Laramie Regional Airport serves Laramie. The ruins of Fort Sanders, an army fort predating Laramie, lie just south of the city along Route 287. Located in the Laramie Valley between the Snowy Range and the Laramie Range, the city draws outdoor enthusiasts with its abundance of outdoor activities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "laramie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2676,
+    "attempt": 2656,
+    "place_id": "gn-755475",
+    "input": {
+      "place": {
+        "place_id": "gn-755475",
+        "name": "Włochy",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 52.17941,
+        "lon": 20.94612
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Włochy",
+          "url": "https://en.wikipedia.org/wiki/Włochy",
+          "text": "Włochy (Polish: [ˈvwɔ.xɘ̟] ) is a district of the city of Warsaw, Poland. It has an area of 28.63 km2 (11.05 sq mi), and in 2024, it was inhabited by 50,753 people, making it the 16th in the city by both population and area, and as such, its 3rd smallest district by both metrics. It is located in the southwest part of the city, bordering Bemowo, Ochota, and Wola to the north, Mokotów and Ursynów to the east, and Ursus, to the northwest. Its southwestern boundary was marked by the city border with the municipalities of Michałowice and Raszyn in Pruszków County. The district is predominantly a residential area featuring low-rise single-family housing, with lesser presence of apartment buildings, with neighbourhoods such Włochy in the northwest, as well as Okęcie, Opacz Wielka, and Załuski in the central south. The area in the northeast is dominated by several housing estates with mid-rise apartment buildings, including Jadwisin, Okęcie Lotnisko, Raków, and Salomea.\nThe southeastern area of the district features the Warsaw Chopin Airport, which, in 2024, it was the busiest airport in Poland and the 28th busiest airport in Europe, with 21.3 million passengers in 2024, handling approximately 40% of the country's total air passenger traffic. It forms a central hub for the LOT Polish Airlines. The area around the airport features factories and warehouses partially dedicated to the aviation industry, as well as the Institute of Aviation, a state-owned research institution specialised in the aviation and astronautics. The area also includes numerous railway stations, such as Chopin Airport, Aleje Jerozolimskie, Warszawa Okęcie, Warszawa Ursus Północny, and Warszawa Włochy. Włochy includes historical buildings, such as the Koelichen Palace, a neoclassical residence, from 1859, and Fort V \"Włochy\". It also has two historic churches, the Church of the Epiphany, from 1939, and the Church of Saints Teresa of the Child Jesus and the Roman Martyrs, built between 1946 and 1962. They belong to the Lutheran and Roman Catholic denominations, respectively. The district also features a few parks, including: Black Grouse Ponds Park, Combatants Park, Goat Pond Park, and Space Gardens.\nThe villages of Sopęchy and Stojarty were first recorded in the area of modern Włochy in 1395 and 1493, respectively. They were founded by the Rakowski family of the clan of Radwan, descending from count Gotard of Służew. The village Raków was also founded in the area in the 13th century, and in the following century, the village of Okęcie was separated from it. In 1452, a portion of Porzucewo was sold to Jan Włoch, and the village was eventually renamed after him to Włochy in the following century. In the 15th century, villages of Gorzkiewki, Opacz, and Zbarż. In 1447, Raków received Kulm law rights, and was followed by Gorzkiewki and Zbarż in 1451. In the 16th century, the village of Górki was founded in the area, and was later destroyed together with Sopęchy (from 16th century known as Witki) by Swedish forces in 1656, during the Second Northern War. In the 17th century, the villages of Paluch and Załuski were founded, while Stojarty was recorded for the last time. In 1795, the estate of Włochy was acquired by count Tadeusz Antoni Mostowski, who developed there his residence together with an English landscape garden, which now forms the Combatants Park. In 1859, in its place was constructed the neoclassical residence, known as the Koelichen Palace. In 1888, three forts were built in the area, as part of the city fortifications, known as the Warsaw Fortress, now surviving as ruins. In the second half of the 19th century, the manufacturing industry developed in Włochy. The hamlets of Budki Szczęśliwickie and Wiktoryn were also founded nearby. In 1926, the estate was partitioned and sold off for the development of a residential neighbourhood with villa houses. In 1959, a railway station was opened in Włochy, and later, three more stations were opened in nearby Raków, Salomea, and Wiktoryn, as part of the Electric Commuter Railway. In 1930, Włochy became the seat of a new municipality, named after it, which also included Solipse and Wiktoryn. In 1934, the Warsaw Chopin Airport was opened in the area, becoming the largest airport in the country, and the hub of the LOT Polish Airlines. Numerous factories also developed around it. In 1939, Solipse, Włochy, and Wiktoryn were merged together, forming the town of Włochy. The same year, Okęcie became the seat of the municipality named after it, which also incorporated the neighbouring settlements.\nThe area was captured by German Wehrmacht on 8 September 1939, during the first days of the Second World War, and was later sight of battle during the siege of Warsaw on 12 September, when a few companies from the 360th Infantry Regiment of the Polish Armed Forces, together with two tank companies, attacked German positions in Okęcie, briefly recapturing the airport, before being pushed back in the area of Załuski, after experiencing heavy casualties. While the area remained under the German occupation, the airport was used for cargo transportation, and as a base for the German Air Force. From November 1940 to February 1941, a ghetto operated near Solipse, with around 300 Jewish residents, before being closed with its population relocated to the Warsaw Ghetto. On 1 August 1944, a small company of the 7th Infantry Regiment of the Home Army, attacked the airport on the first day of the Warsaw Uprising. The attack ended in failure, with majority of the attackers being killed. On 16 September 1944, German authorities rounded up over 4,000 men, between the ages of 16 and 50, constituting almost the entire working-age male population of the town. Majority of them were subsequently sent to concentration camps to perform forced labour, with around half being estimated to have died as the consequence.\nThe area was incorporated into Warsaw in 1951, becoming part of the Ochota district. Between 1958 and 1972, two housing estates, known as Jadwisin and Okęcie Lotnisko, were constructed in its northeastern portion, for a total of around 12,800 residents. The airport was expanded and modernised between the 1960s and 1980s. In 1994, the area of was separated from Ochota, forming its own administrative unit as the municipality of Warsaw-Włochy. In 2002, it was restructured into the Włochy district. Throughout 2010s and 2020s, the neighbourhood of Raków transformed into a residential neighbourhood with modernist apartment buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 1057
+    },
+    "banned_terms": [
+      {
+        "term": "w ochy",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "w",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "ochy",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2677,
+    "attempt": 2657,
+    "place_id": "gn-2525448",
+    "input": {
+      "place": {
+        "place_id": "gn-2525448",
+        "name": "Caltanissetta",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 37.49025,
+        "lon": 14.06216
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caltanissetta",
+          "url": "https://en.wikipedia.org/wiki/Caltanissetta",
+          "text": "Caltanissetta (Sicilian: Cartanissètta) is a city and municipality in the autonomous region of Sicily in Italy, and the capital of the free municipal consortium of Caltanissetta. In 2025, it has a population of 58,045.\nThe earliest inhabitants of the surrounding territory were the Sicani, who established various settlements as early as the 19th century BC. However, the modern city was likely founded in the 10th century during the Islamic period in Sicily, when the name \"Caltanissetta\" is believed to have originated, though alternative theories have been proposed over time. Under the Normans, it was transformed into a feudal holding, and after various transitions, it came under the control of the Montcada of Paternò in 1405. This noble family governed the County of Caltanissetta until 1812, leaving behind the Baroque-style Palazzo Moncada, constructed in the 17th century.\nFrom the 19th century onward, Caltanissetta experienced significant industrial growth due to its extensive sulfur deposits, establishing it as a key mining center. Its prominence in the sulfur industry earned it the nickname \"world sulfur capital,\" and in 1862, it became home to Italy's first mining institute, the Sebastiano Mottura Institute. During the 1930s, despite fascist censorship, the city enjoyed a period of cultural vibrancy, leading Leonardo Sciascia to describe it as a \"little Athens.\" After World War II, the mining sector declined, plunging the local economy into crisis. Today, the city's economy relies predominantly on the tertiary sector."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "caltanissetta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2678,
+    "attempt": 2658,
+    "place_id": "gn-3037543",
+    "input": {
+      "place": {
+        "place_id": "gn-3037543",
+        "name": "Annecy",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.90878,
+        "lon": 6.12565
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Annecy",
+          "url": "https://en.wikipedia.org/wiki/Annecy",
+          "text": "Annecy (US:  AN-ə-SEE, ahn-SEE; French: [an(ə)si] ) is the prefecture and largest city of the Haute-Savoie department in the Auvergne-Rhône-Alpes region of Southeastern France. It lies on the northern tip of Lake Annecy, 35 kilometres (22 mi) south of Geneva, Switzerland. \nNicknamed the \"Pearl of the French Alps\" in Raoul Blanchard's monograph describing its location between lake and mountains, the town  controls the northern entrance to the lake gorge. Due to a lack of available building land between the lake and the protected Semnoz mountain, its population has remained stable, around 50,000 inhabitants, since 1950. However, the 2017 merger with several ex-communes extended the population of the city to 128,199 inhabitants and that of the urban area to 177,622, placing Annecy seventh in the Auvergne-Rhône-Alpes region.\nSwitching from the counts of Geneva's dwelling in the 13th century, to the counts of Savoy's in the 14th century, the city became Savoy's capital in 1434 during the Genevois-Nemours prerogative until 1659. Its role increased in 1536, during the Calvinist Reformation in Geneva, while the bishop took refuge in Annecy. Saint Francis de Sales gave Annecy its advanced Catholic citadel role known as Counter-Reformation. The annexation of Savoy merged the city to France in 1860. \nSometimes called \"Venice of the Alps\", this idyllic and touristic representation comes from the three canals and the Thiou river, which passes through the old city. The city experienced an industrial development in the 19th century with silk manufacturing. Some of its industrial legacy remains today with the headquarters of NTN-SNR bearings, Salomon and Dassault Aviation.\nFrom the end of the 20th century, Annecy developed tourism around its lake summer facilities, winter resorts proximity and cultural attraction with its castle renovation and fine art museum opening in 1956 and the Animated Film Festival since 1963, hosted in Bonlieu's cultural centre. The municipal environmental policy managed to keep 40.3% of green spaces, and the city was awarded the \"Golden Flower\" in 2015, given to the nine most-flowered French cities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 330
+    },
+    "banned_terms": [
+      {
+        "term": "annecy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2679,
+    "attempt": 2659,
+    "place_id": "gn-3061186",
+    "input": {
+      "place": {
+        "place_id": "gn-3061186",
+        "name": "Banská Bystrica",
+        "country": "Slovakia",
+        "subdivision": "Banská Bystrica Region",
+        "lat": 48.73947,
+        "lon": 19.14932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banská Bystrica",
+          "url": "https://en.wikipedia.org/wiki/Banská_Bystrica",
+          "text": "Banská Bystrica (Slovak pronunciation: [ˈbanskaː ˈbistritsa] , Hungarian: Besztercebánya, German: Neusohl) is a city in central Slovakia, located on the Hron River in a long and wide valley encircled by the mountain chains of the Low Tatras, the Veľká Fatra, and the Kremnica Mountains. With approximately 76,000 inhabitants, Banská Bystrica is the sixth most populous municipality in Slovakia. The present-day town was founded by German settlers who were invited by the Hungarian Árpád kings during the Middle Ages (as part of the Ostsiedlung), but it was built upon a former Slavic/Slovak/Avar settlement. It became a part of Zólyom County after Hungarian conquest. In 1255, during the reign of Béla IV of Hungary, it obtained the municipal privileges of a free royal town of the Kingdom of Hungary and was resettled by Germans from Thüringen. The copper mining town acquired its present picturesque look in the late Middle Ages when the prosperous burghers built its central churches, mansions, and fortifications. It is the capital of the kraj (more specifically Banská Bystrica Region) and the okres (Banská Bystrica District). It is also the home of Matej Bel University. As a historical town with easy access to the surrounding mountains, Banská Bystrica is a popular winter and summer tourist destination."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "banska bystrica",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "banska",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bystrica",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2680,
+    "attempt": 2660,
+    "place_id": "gn-3374083",
+    "input": {
+      "place": {
+        "place_id": "gn-3374083",
+        "name": "Bathsheba",
+        "country": "Barbados",
+        "subdivision": "Saint Joseph",
+        "lat": 13.21133,
+        "lon": -59.52596
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bathsheba, Barbados",
+          "url": "https://en.wikipedia.org/wiki/Bathsheba,_Barbados",
+          "text": "Bathsheba is the main fishing village in the parish of Saint Joseph with some 5,000 inhabitants on the east coastline of Barbados. The town has a number of quaint churches; Saint Joseph Anglican Church was built on Horse Hill in the town as early as 1640 but was rebuilt in 1839 following a hurricane in 1831. Little Saint Joseph chapel was built nearby in 1837 but was restored and dedicated to Saint Aiden in 1904 following a landslide. It has a number of attractions including the Flower Forest and Cotton Tower which is renowned for its dramatic scenery and views of Scotland District. The ecologically rich Joe's River Tropical Rainforest is located on the outskirts of the town with some 85 acres (340,000 m2) of woodland and rainforest with giant ficus, citrifolia, fid woods, white woods, cabbage palm trees and mahogany trees. Bathsheba beach is known as the Soup Bowl where local and international surfing competitions take place annually. Another notable feature of Bathsheba beach is the large boulder that sits slightly offshore, known by some as Bathsheba Rock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "bathsheba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

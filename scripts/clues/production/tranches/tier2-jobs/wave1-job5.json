@@ -1,0 +1,902 @@
+[
+  {
+    "rank": 86,
+    "place_id": "gn-2759661",
+    "input": {
+      "place": {
+        "place_id": "gn-2759661",
+        "name": "Arnhem",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 51.98,
+        "lon": 5.91111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arnhem",
+          "url": "https://en.wikipedia.org/wiki/Arnhem",
+          "text": "Arnhem (Dutch: [ˈɑrnɛm]  or [ˈɑr(ə)nɦɛm] ; German: Arnheim [ˈaʁnhaɪm] ; Ernems: Èrnem) is a city and municipality situated in the eastern part of the Netherlands, near the German border. It is the capital of the province of Gelderland and its second-most populous municipality (after Nijmegen), located on both banks of the rivers Nederrijn and Sint-Jansbeek, which was the source of the city's development.\nArnhem is home to the Hogeschool van Arnhem en Nijmegen, ArtEZ Institute of the Arts, Netherlands Open Air Museum, Royal Burgers' Zoo, NOC*NSF and National Sports Centre Papendal. The north corner of the municipality is part of the Hoge Veluwe National Park. It is approximately 55 square kilometres (21 sq mi) in area, consisting of heathlands, sand dunes, and woodlands.\nArnhem is the namesake of the Dutch East India Company (VOC) ship Arnhem, which in turn gave its name to Arnhem Land and the Arnhem Land tropical savanna in northern Australia."
+        },
+        {
+          "article": "Arnhem (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Arnhem#Climate",
+          "text": "Arnhem features the same climate (Cfb, oceanic climate) as all of the Netherlands; however, its location on the foothills of the Veluwe, the largest forest in the Netherlands, contributes to some higher precipitation values."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 34,
+      "leadWords": 154,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives river banks and national-park land cover of heath, dunes and woods, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "arnhem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 87,
+    "place_id": "gn-4685907",
+    "input": {
+      "place": {
+        "place_id": "gn-4685907",
+        "name": "Denton",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 33.21484,
+        "lon": -97.13307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Denton, Texas",
+          "url": "https://en.wikipedia.org/wiki/Denton,_Texas",
+          "text": "Denton is a city in the U.S. state of Texas and the county seat of Denton County. With a population of 139,869 as of 2020, it is the 20th-most populous city in Texas, the 177th-most populous city in the United States, and the 10th-most populous city in the Dallas–Fort Worth metroplex.\nA Texas land grant led to the formation of Denton County in 1846, and the city was incorporated in 1866. Both were named after pioneer and Texas militia captain John B. Denton. The arrival of a railroad line in the city in 1881 spurred population, and the establishment of the University of North Texas in 1890 and Texas Woman's University in 1901 distinguished the city from neighboring regions. After the construction of Dallas/Fort Worth International Airport finished in 1974, the city had more rapid growth; between 2022 and 2023, Denton was the 13th largest-gaining city in population nationwide in terms of numeric change.\nLocated on the far north end of the Dallas–Fort Worth metroplex in North Texas on Interstate 35, Denton is known for its active music scene; the North Texas State Fair and Rodeo, Denton Arts and Jazz Festival, and Thin Line Fest attract over 300,000 people to the city each year. The city has hot, humid summers and few extreme weather events. Its diverse citizenry is represented by a nonpartisan city council, and numerous county and state departments have offices in the city. With over 45,000 students enrolled at the two universities within its city limits, Denton is often characterized as a college town. As a result of the universities' growth, educational services play a large role in the city's economy. Residents are served by the Denton County Transportation Authority, which provides commuter rail and bus service to the area."
+        },
+        {
+          "article": "Denton, Texas (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Denton,_Texas#Climate",
+          "text": "With its hot, humid summers and cool winters, Denton's climate is characterized as humid subtropical and is within USDA hardiness zone 8a. The city's all-time high temperature is , recorded in 1954. Dry winds affect the area in the summer and can bring temperatures of over , although the average summer temperature highs range from between June and August. The all-time recorded low is , set on February 16, 2021, and the coolest month is January, with daily low temperatures averaging . Flash floods and severe thunderstorms are frequent in the spring. Average snowfall is similar to the Dallas–Fort Worth average of per year."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 104,
+      "leadWords": 293,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract only states hot, humid summers and few extreme weather events, a bare seasonal label with no mechanism, stated extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, stated extreme, or seasonal paradox beyond the hot, humid summer label."
+    },
+    "banned_terms": [
+      {
+        "term": "denton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 88,
+    "place_id": "gn-5907990",
+    "input": {
+      "place": {
+        "place_id": "gn-5907990",
+        "name": "Brantford",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.1334,
+        "lon": -80.26636
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brantford",
+          "url": "https://en.wikipedia.org/wiki/Brantford",
+          "text": "Brantford is a city in Ontario, Canada, founded on the Grand River in Southwestern Ontario. It is surrounded by Brant County but is politically separate with a municipal government of its own that is fully independent of the county's municipal government.\nBrantford is situated on the Haldimand Tract, and is named after Joseph Brant, a Mohawk leader, soldier, farmer and slave owner. Brant was an important Loyalist leader during the American Revolutionary War and later, after the Haudenosaunee moved to the Brantford area in Upper Canada. Many of his descendants and other First Nations people live on the nearby Six Nations of the Grand River reserve south of Brantford; it is the most populous reserve in Canada.\nBrantford is known as the \"Telephone City\" because resident Alexander Graham Bell invented the first telephone at his father's homestead, Melville House, now the Bell Homestead National Historic Site, located in Tutela Heights south of the city."
+        },
+        {
+          "article": "Brantford (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Brantford#Climate",
+          "text": "Brantford has a humid continental climate (Dfb) with Summer Day Highs around 30 °C and Winter nights can fall to −20 °C, Snow usually falls from October–April.\n*Note Not All Sources Are The Same*"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 34,
+      "leadWords": 154,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a Grand River location and the telephone invention story, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "brantford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 89,
+    "place_id": "gn-6174041",
+    "input": {
+      "place": {
+        "place_id": "gn-6174041",
+        "name": "Victoria",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 48.4359,
+        "lon": -123.35155
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Victoria, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Victoria,_British_Columbia",
+          "text": "Victoria is the capital city of the Canadian province of British Columbia, located on the southern tip of Vancouver Island off Canada's Pacific coast. The city has a population of 91,867, and the Greater Victoria area has a population of 397,237. The city of Victoria is the seventh most densely populated city in Canada with 4,406 inhabitants per square kilometre (11,410/sq mi).\nVictoria is the southernmost major city in Western Canada and is about 100 kilometres (62 mi) southwest from British Columbia's largest city, Vancouver, on the mainland. The city is about 100 kilometres (62 mi) from Seattle, Washington, United States, by airplane, seaplane, ferry, or the Victoria Clipper passenger-only ferry, and 25 miles (40 km) from Port Angeles, Washington, United States, by the ferry Coho across the Strait of Juan de Fuca.\nNamed for Queen Victoria, the city is one of the oldest in the Pacific Northwest, with British settlement beginning in 1843. The city has retained a large number of its historic buildings, in particular its two most famous landmarks, the Parliament Buildings (finished in 1897 and home of the Legislative Assembly of British Columbia) and the Empress Hotel (opened in 1908). The city's Chinatown is the second oldest in North America, after San Francisco. The region's Coast Salish First Nations peoples established communities in the area long before European settlement, which had large populations at the time of European exploration.\nKnown as \"the Garden City\", Victoria is an attractive city and a popular tourism destination and has a regional technology sector that has risen to be its largest revenue-generating private industry. In 2019, Victoria was in the top 20 world cities for quality of life, according to Numbeo."
+        },
+        {
+          "article": "Victoria, British Columbia (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Victoria,_British_Columbia#Climate",
+          "text": "Depending on the classification used, Victoria either has a warm-summer Mediterranean or oceanic climate (Köppen: Csb, Trewartha: Do); with fresh, dry, sunny summers, and cool, cloudy, rainy winters.\nVictoria is farther north than many \"cold-winter\" cities, such as Ottawa, Quebec City, and Minneapolis. However, westerly winds and Pacific Ocean currents keep Victoria's winter temperatures substantially higher, with an average January temperature of to in Port Renfrew just away on the more exposed southwest coast of Vancouver Island. Vancouver measures annually and Seattle is at .\nOne feature of Victoria's climate is its distinct dry and rainy seasons. Over 60% of the annual precipitation falls during the four wettest months, November to February at Gonzales Heights.\nVictoria averages just of snow annually, about half that of Vancouver. Roughly one third of winters see virtually no snow, with less than falling during the entire season. When snow does fall, it rarely lasts long on the ground. Victoria averages just two or three days per year with at least of snow on the ground. Every few decades Victoria receives very large snowfalls including the record breaking of snow that fell in December 1996. That amount places Victoria 3rd for biggest snowfall among major cities in Canada.\nWith 2,193 hours of bright sunshine annually during the last available measurement period, Victoria is effectively tied with Cranbrook as the sunniest city in British Columbia. In July 2013, Victoria received 432.8 hours of bright sunshine, which is the most sunshine ever recorded in any month in British Columbia history.\nVictoria's equable climate has also added to its reputation as the \"City of Gardens\". The city takes pride in the many flowers that bloom during the winter and early spring, including crocuses, daffodils, early-blooming rhododendrons, cherry and plum trees. Every March, the annual Greater Victoria Flower Count kicks off while the rest of the country and most of the province is still in the dead of winter.\nDue to its mild climate, Victoria and its surrounding area (southeastern Vancouver Island, Gulf Islands, and parts of the Lower Mainland and Sunshine Coast) are also home to many rare, native plants found nowhere else in Canada, including Quercus garryana (Garry oak), Arctostaphylos columbiana (hairy manzanita), and Canada's only broad-leaf evergreen tree, Arbutus menziesii (Pacific madrone). Many of these species exist here, at the northern end of their range, and are found as far south as southern California and parts of Mexico.\nNon-native plants grown in Victoria include the cold-hardy palm Trachycarpus fortunei, which can be found in gardens and public areas of Victoria. One of these Trachycarpus palms stands in front of City Hall."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 435,
+      "leadWords": 281,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives an island tip and Pacific coast location, landmarks and settlement history, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "victoria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 90,
+    "place_id": "gn-1647003",
+    "input": {
+      "place": {
+        "place_id": "gn-1647003",
+        "name": "Cibinong",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.48167,
+        "lon": 106.85417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cibinong",
+          "url": "https://en.wikipedia.org/wiki/Cibinong",
+          "text": "Cibinong (Sundanese: ᮎᮤᮘᮤᮔᮧᮀ) is a large town and an administrative district (kecamatan) in Bogor Regency, West Java Province, Indonesia which serves as the Regency's administrative seat - not to be confused with the district of the same name in Cianjur Regency. The town is located immediately due south of the city of Depok, which itself lies just south of Jakarta, with both Depok and Cibinong being part of the Jakarta Metropolitan Area. The town and district are named after the Binong River (the prefix \"ci\" means \"river\"). Cibinong District covers a land area of 44.27 km2, and had 326,519 inhabitants at the 2010 Census and 363,424 inhabitants at the 2020 Census; the official estimate as at mid 2024 was 379,786 (comprising 190,790 males and 188,996 females}. The administrative headquarters are in the town of Cirimekar.\nThe Science Center of the Indonesian Institute of Sciences (Lembaga Ilmu Pengetahuan Indonesia) is located in the district. Cibinong contains a swamp forest, which was already mentioned by van Steenis in 1933, called Rawa (Swamp) Siradayah, and it is still preserved until the present time."
+        },
+        {
+          "article": "Cibinong (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Cibinong#Climate",
+          "text": "Cibinong has a tropical rainforest climate (Af) with heavy to very heavy rainfall year-round."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 14,
+      "leadWords": 180,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a location south of Jakarta and a preserved swamp forest, but states no climate mechanism, extreme, or paradox; a swamp forest is not climate.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "cibinong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 91,
+    "place_id": "gn-4990729",
+    "input": {
+      "place": {
+        "place_id": "gn-4990729",
+        "name": "Detroit",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.33143,
+        "lon": -83.04575
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Detroit",
+          "url": "https://en.wikipedia.org/wiki/Detroit",
+          "text": "Detroit (  dih-TROYT, locally also  DEE-troyt) is the most populous city in the U.S. state of Michigan. It is situated on the bank of the Detroit River across from the Canadian city of Windsor, Ontario. It is the 26th-most populous city in the United States and the largest U.S. city on the Canada–United States border, with a population of 639,111 at the 2020 census, and an estimated 2025 population of 649,095, its first population increase since 1950. The Metro Detroit area, at over 4.4 million people, is the 14th-largest metropolitan area in the nation and second-largest in the Midwest (after the Chicago metropolitan area). The county seat of Wayne County, Detroit is a significant cultural center known for its contributions to music, art, architecture, and design, in addition to its historical automotive and industrial background.\nIn 1701, French explorers Antoine de la Mothe Cadillac and Alphonse de Tonty founded Fort Pontchartrain du Détroit. During the late 19th and early 20th centuries, it became an important industrial hub at the center of the Great Lakes region. The city's population rose to be the fourth-largest in the nation by 1920, with the expansion of the automotive industry in the early 20th century. One of its main features, the Detroit River, became the busiest commercial hub in the world. In the mid-20th century, Detroit entered a state of urban decay that has continued to the present, as a result of industrial restructuring, the loss of jobs in the auto industry, and rapid suburbanization. Since reaching a peak of 1.85 million at the 1950 census, Detroit's population has declined by more than 65 percent. In 2013, Detroit became the largest U.S. city to file for bankruptcy, but successfully exited in 2014. In 2025, the U.S. Census Bureau reported that Detroit's population grew for a second consecutive year and led population growth in Michigan for the first time since the 1950s.\nDetroit is a port on the Detroit River, one of the four major straits that connect the Great Lakes system to the St. Lawrence Seaway. The city anchors the third-largest regional economy in the Midwest and the 16th-largest in the United States. It is also best known as the center of the U.S. automotive industry, and the \"Big Three\" auto manufacturers—General Motors, Ford, and Stellantis North America (Chrysler)—are all headquartered in Metro Detroit. Metro Detroit houses the Detroit Metropolitan Airport, one of the most important hub airports in the United States. Detroit and the adjacent Canadian city of Windsor constitute the second-busiest international crossing in North America, after San Diego–Tijuana.\nDetroit's culture is marked with diversity, having both local and international influences. Detroit gave rise to the music genres of Motown and techno, and also played an important role in the development of jazz, hip-hop, rock, and punk. As a result of the city's rapid growth in its boom years, Detroit has many globally unique architectural monuments and historic places. Since the 2000s, conservation efforts have managed to save many architectural pieces and achieve several large-scale revitalizations, including the restoration of several historic theaters and entertainment venues, high-rise renovations, new sports stadiums, and a riverfront revitalization project. Detroit is an increasingly popular tourist destination which caters to about 16 million visitors per year. In 2015, Detroit was designated a \"City of Design\" by UNESCO, the first and only U.S. city to receive this designation."
+        },
+        {
+          "article": "Detroit (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Detroit#Climate",
+          "text": "Detroit and the rest of southeastern Michigan have a hot-summer humid continental climate (Köppen: Dfa) which is influenced by the Great Lakes like other places in the state; the city and close-in suburbs are part of USDA Hardiness zone 6b, while the more distant northern and western suburbs generally are included in zone 6a. Winters are cold, with moderate snowfall and temperatures not rising above freezing on an average 44 days annually, while dropping to or below on an average 4.4 days a year; summers are warm to hot with temperatures exceeding on 12 days."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 95,
+      "leadWords": 560,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a river-border location, car industry history and music heritage, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "detroit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 92,
+    "place_id": "gn-1253914",
+    "input": {
+      "place": {
+        "place_id": "gn-1253914",
+        "name": "Ujjain",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 23.18239,
+        "lon": 75.77643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ujjain",
+          "url": "https://en.wikipedia.org/wiki/Ujjain",
+          "text": "Ujjain (,  Hindi pronunciation: [ʊ̯d͡ːʑæn] , [əʋən̪t̪ɪkaː]), also known as Ujjayini, is a city in Ujjain district of the Indian state of Madhya Pradesh. It is the fifth-largest city in Madhya Pradesh by population and is the administrative as well as religious centre of Ujjain district and Ujjain division. It is one of the Hindu pilgrimage centres of Sapta Puri famous for the Kumbh Mela (Simhastha) held there every 12 years. The ancient and world famous temple of Mahakaleshwar Jyotirlinga is located in the center of the city. The city has been one of the most prominent trade and political centres of the Indian subcontinent from the time of the ancient Mahājanapadas until the British colonisation of India.\nAn ancient city situated on the eastern bank of the Shipra River, then known as Avantika, it was the most prominent city on the Malwa plateau of central India for much of its history. It emerged as the political centre of central India around 600 BCE. It was the capital of the ancient Avanti kingdom, one of the sixteen Mahājanapadas. During the 18th century, the city briefly became the capital of the Scindia state of the Maratha Confederacy, when Ranoji Scindia established his capital at Ujjain in 1731. It remained an important political, commercial, and cultural centre of Central India until the early 19th century, when the British administrators decided to develop Indore as an alternative to it. Ujjain continues to be an important place of pilgrimage for Shaivites, Vaishnavites and Shaktas. Bathing in the holy Shipra river of Ujjain liberates one from sins. Therefore, Ujjain is also called the 'Mokshadayini city'. The name of this river is taken among the holy rivers like Kaveri, Narmada, Godavari and Krishna.\nAccording to Puranic legend, Ujjain, along with Haridwar, Nashik, and Prayag, is one of four sites where drops of amrita, the elixir of immortality, accidentally spilled over from a kumbha (pitcher) while being carried by the celestial bird Garuda during the Samudra Manthana, or the churning of the ocean of milk.\nUjjain has been selected as one of the hundred Indian cities to be developed as a smart city under Prime Minister Narendra Modi's flagship Smart Cities Mission."
+        },
+        {
+          "article": "Ujjain (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Ujjain#Climate",
+          "text": "Climate of the city features a typical version of the humid subtropical climate (Köppen Cwa). Summers usually starts by the middle of March which lasts up until late June. During which temperatures normally reaches up to 45 °C, with average maximum peaking in May with 41 °C. Monsoon starts in late June and ends in late September. These months see about 36 inches (914 mm) of precipitation, frequent thunderstorms and flooding. This season usually features wet phase of comfortable with average temperatures around 24 °C (76 °F) but this is accompanied with frequent downpours. This wet phase is followed by dry phase which results in humid weather with high temperatures. Temperatures rise again up to early November when winter starts, which lasts up to early March. Winters are cool, dry and sunny with occasional cold snaps during which temperature may drop to close to freezing (0° to 3 °C). Otherwise temperatures are very much comfortable, with average daily temperatures around 16 °C (61 °F).\nUjjain has been ranked the 26th best \"National Clean Air City\" under Category 2 3-10L population cities in India."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 183,
+      "leadWords": 365,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a river-bank location, pilgrimage tradition and ancient history, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "ujjain",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 94,
+    "place_id": "gn-1692192",
+    "input": {
+      "place": {
+        "place_id": "gn-1692192",
+        "name": "Quezon City",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.6488,
+        "lon": 121.0509
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quezon City",
+          "url": "https://en.wikipedia.org/wiki/Quezon_City",
+          "text": "Quezon City (UK: , US: ; Filipino: Lungsod Quezon [luŋˈsod ˈkɛson] ), also known as the City of Quezon and Q.C. (read and pronounced in Filipino as Kyusi), is the most populous city in the Philippines. According to the 2024 census, it has a population of 3,084,270 people. It was founded on October 12, 1939, and was named after Manuel L. Quezon, the second president of the Philippines. Quezon City served as the capital of the Philippines from 1948 until 1976, when the designation was returned to Manila.\nThe city was intended to be the national capital of the Philippines that would replace Manila, as the latter was suffering from overcrowding, lack of housing, poor sanitation, and traffic congestion. To create Quezon City, several barrios were carved out from the towns of Caloocan, Marikina, San Juan and Pasig, in addition to the eight vast estates the Philippine government purchased for this purpose. It was officially proclaimed the national capital on October 12, 1949, and several government departments and institutions moved out of Manila and settled into the new capital city. This necessitated the expansion of the city northward, carving out Novaliches from Caloocan, which divided it into two non-contiguous parts. Several barrios were also taken from San Mateo and parts of Montalban. However, on June 24, 1976, Presidential Decree No. 940 was enacted, which reverted national capital status to Manila while the whole of Metro Manila was designated as the seat of government. The city was also chosen as the regional center of Southern Tagalog, which was created in 1965, along with the provinces of Quezon and Aurora, the birthplace of Manuel L. Quezon; however, its status of regional center became ineffective when the region was divided into Calabarzon and Mimaropa, through the effect of Executive Order No. 103 in May 2002 under the presidency of Gloria Macapagal Arroyo, and Aurora was transferred to the authority of Central Luzon, with Southern Tagalog limited to being a cultural-geographic region.\nQuezon City is known for its culture, entertainment industry, and media, and is aptly called the \"City of Stars\". Major broadcasting networks have their headquarters and studios in the city. It is also known for its commerce, education, research, technology, politics, tourism, art, and sports. Several national government branches including the Batasang Pambansa Complex, the seat of House of Representatives of the Philippines, call the city home. As the home of major government institutions, universities, and national media networks, Quezon City has played a central role in the political, educational, and civic development of the modern Philippines.\nQuezon City is a planned city. It covers a total area of 161.11 square kilometers (62.20 sq mi), making it the largest city in Metro Manila/NCR in terms of land area. It is politically subdivided into six congressional districts, which represent the city in the Lower House of the Congress of the Philippines. The city has 142 barangays under the City Government. National government departments and agencies are mostly situated in the first National Government Center (NGC) in Diliman and the second National Government Center in Batasan Hills, where the Lower House of the Philippine Congress is located. Most of the city's northern part lies at the foothills of the Sierra Madre mountain range, including the La Mesa Watershed Reservation, the largest watershed in Metro Manila and a designated protected area.\nAccording to its 2023 estimated census, Quezon City had 3.1 million people in its boundaries, and ₱1.27 trillion (US$93.8 billion) in its gross domestic product (GDP), and it is the only planned city in the National Capital Region of the Philippines."
+        },
+        {
+          "article": "Quezon City (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Quezon_City#Climate",
+          "text": "According to the Köppen climate classification, Quezon City has a tropical monsoon climate (Am). The city has a dry season from December to April, in which in turn, divided into cool and warm dry seasons, and a prolonged wet season from May to November that brings heavy rains in some areas.\nThe primary weather station of the city is located at the PAGASA Science Garden. It has been observed that extreme temperatures ranged from a record high of to a record low of .\nAbout 20 typhoons enter the Philippines every year, affecting Quezon City and the rest of Metro Manila. In recent years, heavy rainfalls from Habagat (south west monsoon) became as destructive as typhoons, triggering floods and landslides which endangers the city's residents living near the riverbanks."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 129,
+      "leadWords": 597,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives planned-capital history, government buildings and foothills of a mountain range, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "quezon city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "quezon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 95,
+    "place_id": "gn-2934246",
+    "input": {
+      "place": {
+        "place_id": "gn-2934246",
+        "name": "Düsseldorf",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.22319,
+        "lon": 6.77927
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Düsseldorf",
+          "url": "https://en.wikipedia.org/wiki/D%C3%BCsseldorf",
+          "text": "Düsseldorf (German: [ˈdʏsl̩dɔʁf] ) is the capital city of North Rhine-Westphalia, the most populous state of Germany. It is the second-largest city in the state after Cologne and the seventh-largest city in Germany, with a 2025 population of 619,444. Most of Düsseldorf lies on the right bank of the Rhine, and the city has grown together with Neuss, Krefeld, Hilden, Langenfeld, Ratingen, Meerbusch, Dormagen, Erkrath, Solingen, and Monheim. Düsseldorf is the central city of Rhine-Ruhr, the second-biggest metropolitan region by GDP in the European Union, which stretches from Bonn via Cologne and Düsseldorf to the Ruhr.\nDüsseldorf began as a small settlement at the mouth of the Düssel River, gaining city rights in 1288 after the Battle of Worringen. In the Late Middle Ages and Renaissance, it grew into a regional political and cultural centre under the Dukes of Berg and later as the capital of the United Duchies of Jülich-Cleves-Berg. The 17th and 18th centuries saw flourishing arts and architecture, with Düsseldorf becoming known for its court culture and early art academy. During the Napoleonic era, it was briefly part of the Grand Duchy of Berg before coming under Prussian control in 1815, where it industrialised rapidly in the 19th century. During the 20th century, Düsseldorf developed into one of Germany's most important centres for administration, business, and culture. In 1946, it became the capital of the newly created state of North Rhine-Westphalia, strengthening its political role.\nDüsseldorf is classified as a GaWC Alpha- world city. It is an international business and financial centre, known for its fashion and trade fairs, and is headquarters to two Fortune Global 500 (Uniper and Metro) and three DAX companies (Rheinmetall, Henkel and GEA). Messe Düsseldorf organises nearly one-fifth of premier trade shows. Düsseldorf Airport is Germany's fourth-busiest airport, serving as the main international hub for the Ruhr, Germany's largest urban area. Mercer's 2023 Quality of Living survey ranked Düsseldorf the tenth most livable city in the world.\nThere are 22 institutions of higher education in the city including the Heinrich-Heine-Universität Düsseldorf, the university of applied sciences (Hochschule Düsseldorf), the academy of arts (Kunstakademie Düsseldorf, whose members include Joseph Beuys, Emanuel Leutze, August Macke, Gerhard Richter, Sigmar Polke, and Andreas Gursky), and the university of music (Robert-Schumann-Musikhochschule Düsseldorf). The city is also known for its influence on electronic/experimental music (Kraftwerk) and its Japanese community. As the second-largest city of the Rhineland, Düsseldorf holds Rhenish Carnival celebrations in February and March, which rank as the third most prominent in Germany after those of Cologne and Mainz."
+        },
+        {
+          "article": "Düsseldorf (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/D%C3%BCsseldorf#Climate",
+          "text": "The city has an oceanic climate (Köppen: Cfb, mild in relation to East Germany). Like the rest of the lower Rhineland, Düsseldorf experiences moderate winters with little snowfall and mild to warm summers. The average annual temperature is with an average yearly precipitation of . The dominant wind direction is from the west with velocities in the range of , with gusts of . The wind is calm (defined as being under 2 m/s or 4.5 mph) about 35% of the time, more frequently at night and in the winter."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 90,
+      "leadWords": 422,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a Rhine bank location, trade fairs and carnival, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "dusseldorf",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 96,
+    "place_id": "gn-2946447",
+    "input": {
+      "place": {
+        "place_id": "gn-2946447",
+        "name": "Bonn",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 50.73438,
+        "lon": 7.09549
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bonn",
+          "url": "https://en.wikipedia.org/wiki/Bonn",
+          "text": "Bonn (German pronunciation: [bɔn] ), officially the Federal City of Bonn (German: Bundesstadt Bonn), is a federal city in the German state of North Rhine-Westphalia, located on the banks of the Rhine. With a population exceeding 320,000, it lies about 24 km (15 mi) south-southeast of Cologne, in the southernmost part of the Rhine-Ruhr region. Bonn served as the capital of West Germany from 1949 until 1990 and was the seat of government for reunified Germany until 1999, when the government relocated to Berlin. The city holds historical significance as the birthplace of Germany's current constitution, the Basic Law.\nFounded in the 1st century BC as a settlement of the Ubii and later part of the Roman province Germania Inferior, Bonn is among Germany's oldest cities. It was the capital city of the Electorate of Cologne from 1597 to 1794 and served as the residence of the Archbishops and Prince-electors of Cologne. The period during which Bonn was the capital of West Germany is often referred to by historians as the Bonn Republic.\nFollowing the German reunification, a political compromise known as the Berlin-Bonn Act ensured that the German federal government retained a significant presence in Bonn. As of 2019, approximately one-third of all ministerial jobs remain in the city. Bonn is considered an unofficial secondary capital of Germany and is the location of the secondary seats of the president, the chancellor, and the Bundesrat. Bonn is also the location of the primary seats of six federal ministries and twenty federal authorities. The city's title as Federal City (German: Bundesstadt) underscores its political importance.\nThe global headquarters of Deutsche Post DHL and Deutsche Telekom, both DAX-listed corporations, are in Bonn. The city is home to the Rheinische Friedrich-Wilhelms-Universität Bonn university, and a total of 20 United Nations institutions, the highest number in all of Germany. These institutions include the headquarters for Secretariat of the UN Framework Convention Climate Change (UNFCCC), the Secretariat of the UN Convention to Combat Desertification (UNCCD), and the UN Volunteers programme. Birthplace of composer Ludwig van Beethoven, a center of Rhenish carnival, and its geography by the Middle Rhine make it an important tourist destination. In Bonn the Bönnsch Platt, a dialect of the Ripuarian language is spoken by all generations, especially during carnival."
+        },
+        {
+          "article": "Bonn (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Bonn#Climate",
+          "text": "Bonn has an oceanic climate (Köppen: Cfb; Trewartha: Dobk). In the south of the Cologne lowland in the Rhine valley, Bonn is in one of Germany's warmest regions.\nThe Bonn weather station has recorded the following extreme values:\nIts highest temperature was on 25 July 2019.\nIts lowest temperature was on 27 January 1942.\nIts greatest annual precipitation was in 2007.\nIts least annual precipitation was in 1959.\nThe longest annual sunshine was 2013.9 hours in 2018.\nThe shortest annual sunshine was 1240.7 hours in 1981."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 86,
+      "leadWords": 378,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a Rhine location, former capital history and a famous composer birthplace, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "bonn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 98,
+    "place_id": "gn-2651123",
+    "input": {
+      "place": {
+        "place_id": "gn-2651123",
+        "name": "Doncaster",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.52285,
+        "lon": -1.13116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Doncaster",
+          "url": "https://en.wikipedia.org/wiki/Doncaster",
+          "text": "Doncaster ( DONK-ə-stər, DONK-ast-ər) is a city in South Yorkshire, England. Named after the River Don, it is the administrative centre of the City of Doncaster metropolitan borough, and is the second largest settlement in South Yorkshire after Sheffield. Noted for its racing and railway history, it is situated in the Don Valley on the western edge of the Humberhead Levels and east of the Pennines. It had a population of 87,455 at the 2021 census, whilst its built-up area had a population of 160,220, and the wider metropolitan borough had a population of 308,100.\nAdjacent to Doncaster to its east is the Isle of Axholme in Lincolnshire, which contains the towns of Haxey, Epworth and Crowle, and directly south is Harworth Bircotes in Nottinghamshire. Also, within the city's vicinity are Barnsley, Wakefield, Pontefract, Selby, Goole, Scunthorpe, Gainsborough, Retford, Worksop and Rotherham, to which Doncaster is linked by road and rail.\nAs part of the Platinum Jubilee Civic Honours, Doncaster received city status by Letters Patent. A ceremony to confer city status took place at Mansion House on 9 November 2022 as part of a tour of Yorkshire by King Charles III and Queen Camilla."
+        },
+        {
+          "article": "Doncaster (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Doncaster#Climate",
+          "text": "Doncaster has a maritime climate lacking extreme temperatures, like much of the British Isles. Its low elevation in the Don Valley, in the lee of the Pennines, and inland from the North Sea, mean daytime summer temperatures are no lower than parts of South East England, despite the more northerly location. The nearest weather station is RAF Finningley, now known as Doncaster Sheffield Airport, about to the south-east of Doncaster city centre and at a similar elevation.\nThe Doncaster area is about as far north as the average July maximum temperature isotherm reaches. The nearby town of Bawtry, slightly further south, still holds the UK's September monthly record high temperature of , set in 1906. Typically, the warmest day of the year reaches and 12 or 13 days report a daytime maximum of or above.\nThe lowest known temperature is , set during December 1981. Online records only go back to 1960, and lower temperatures may have been recorded earlier. During the 1991–2020 period, an average of 38.1 nights of the year recorded an air frost.\nTypically 113.6 days of the year report 1 mm or more of rainfall. Total annual precipitation is slightly above , which is comparable to the driest parts of the UK, due to Doncaster's location in the rain shadow of the Pennines."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 217,
+      "leadWords": 195,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a valley location and racing and railway history, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "doncaster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 99,
+    "place_id": "gn-3181928",
+    "input": {
+      "place": {
+        "place_id": "gn-3181928",
+        "name": "Bologna",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.49381,
+        "lon": 11.33875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bologna",
+          "url": "https://en.wikipedia.org/wiki/Bologna",
+          "text": "Bologna (Bolognese: Bulåggna) is the capital and largest city of the Emilia-Romagna region in northern Italy. It is the seventh most populous city in Italy, with 391,473 inhabitants from 150 different nationalities. Its metropolitan province is home to more than 1 million people as of 2026. Bologna is most famous for being the home to the oldest university in continuous operation, the University of Bologna, established in AD 1088.\nThe city has been an important urban center for centuries, first under the Etruscans (who called it Felsina), then under the Celts as Bona, later under the Romans (Bonōnia), then again in the Middle Ages, as a free municipality and later signoria, when it was among the largest European cities by population. Famous for its towers, churches and lengthy porticoes, Bologna has a well-preserved historical centre, thanks to a careful restoration and conservation policy which began at the end of the 1970s. In 2000, it was declared European capital of culture and in 2006, a UNESCO \"City of Music\" and part of the Creative Cities Network. In 2021, UNESCO recognized the lengthy porticoes of the city as a World Heritage Site.\nBologna is an important agricultural, industrial, financial and transport hub, where many large mechanical, electronic and food companies have their headquarters, and is also home to one of the largest permanent trade fairs in Europe. In 2022, Il Sole 24 Ore named Bologna the best city in Italy for overall quality of life, although it dropped to 4th place in 2025. Bologna intends to become carbon neutral by 2040 and raise female employment rates, focusing on sustainable and equitable urban development. The city is also increasing its investment in sustainability as part of a 2022–2024 program that integrates gender perspectives into urban planning, with an emphasis on sustainable mobility, public infrastructure, and green spaces."
+        },
+        {
+          "article": "Bologna (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Bologna#Climate",
+          "text": "Bologna has a mid-latitude, four-season subtropical climate (Köppen climate classification: Cfa). Here are other classifications for the climate of this city:\nAnnual precipitation is around 650–750 mm (25.5–29.5 in), with the majority generally falling in spring and autumn. Snow is not uncommon between late November and early March; one of the snowiest months of the past decade was February 2012. Here are climate normals for the weather station of Bologna Borgo Panigale (at the airport), unaffected by the heat dome of the city, for both 1961–1990 and 1991–2020 periods, in order to highlight changes between the two periods (snow averages are referred to the city of Bologna, since there is not a complete archive for the Borgo Panigale area):"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 119,
+      "leadWords": 304,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a northern Italy location, the oldest university and famous towers, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "bologna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 100,
+    "place_id": "gn-3390760",
+    "input": {
+      "place": {
+        "place_id": "gn-3390760",
+        "name": "Recife",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -8.05389,
+        "lon": -34.88111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Recife",
+          "url": "https://en.wikipedia.org/wiki/Recife",
+          "text": "Recife ( riss-EE-fee, -⁠fə; Brazilian Portuguese: [ʁeˈsifi] ) is the state capital of Pernambuco, Brazil, on the northeastern Atlantic coast of South America. It is the largest urban area within both the North and the Northeast Region of Brazil. It is the largest city in Pernambuco state, and the fourth-largest urban area in all of Brazil; the metro population of the city of Recife was 3,726,974 in 2022. Recife was founded in 1537, serving as the main harbor of the Captaincy of Pernambuco—known for its large-scale production of sugar cane. At one point, it was known as Mauritsstad, when it served as the capital city of the 17th century colony of New Holland of Dutch Brazil (founded by the Dutch West India Company). Situated at the confluence of the Beberibe and Capibaribe rivers, before they drain into the South Atlantic Ocean, Recife is a major seaport along the Brazilian Atlantic coast. Its name is an allusion to the stone reefs that are present offshore. Together with the urban presence of the Beberibe and Capibaribe rivers and their tributaries, the many additional unique, small islands—and more than 50 bridges linking them throughout the city—create a distinct maritime or \"riviera\" atmosphere, leading to Recife being known as the \"Venice of Brazil\".\nAs of 2010, Recife has maintained the highest HDI of any state capital in Northeastern Brazil, and the second-highest of the entire Northern and Northeastern regions (second only to Palmas). However, the city also is known as having some of the highest rates of gun violence in the entire country, despite also being considered the \"safest state capital\" in the Northeast. Although Recife often has a consistently higher crime rate than Brazil's South Region, it typically has a much lower crime rate than other regional capitals—such as Salvador or São Luís. Nonetheless, crime rose nearly 440% in 2015. The waters along the coastline are also considered to be among the most dangerous \"on earth\", as there have been many recorded shark attacks on swimmers at the beaches, including fatal incidents.\nThe Metropolitan Region of Recife is the main industrial zone of the State of Pernambuco, major products are those derived from cane (sugar and ethanol), motor vehicles, ships, oil platforms, electronics, software, and others. With fiscal incentives by the government, many industrial companies were started in the 1970s and 1980s. Recife has a tradition of being the most important commercial hub of the North/Northeastern region of Brazil, with more than 52,500 business enterprises in Recife plus 32,500 in the Metro Area, totaling more than 85,000.\nA combination of a large supply of labor and significant private investments turned Recife into Brazil's second largest medical hub (the first being São Paulo); modern hospitals with state-of-the-art equipment receive patients from several neighbouring States.\nRecife stands out as a major tourist site within the Brazilian Northeast, known for the city itself, its beaches and for its historical sites, with many places of significance dating back to both the Portuguese and the Dutch colonies in the region. The beach of Porto de Galinhas, located 60 kilometers (37 mi) south of the city, has been repeatedly awarded the title of best beach in Brazil and has drawn many tourists. The Historic Centre of Olinda, 7 kilometers (4.3 mi) north of the city, was declared a UNESCO World Heritage Site in 1982, and both cities' Brazilian Carnival are among the world's most famous. According to The Herald, Recife has the biggest consumption of whisky around the world.\nThe city is an education hub, and home to the Federal University of Pernambuco, the largest university in Pernambuco. Several Brazilian historical figures, such as the poet and abolitionist Castro Alves, moved to Recife for their studies. Recife and Natal are the only Brazilian cities with direct flights to the islands of Fernando de Noronha, a World Heritage Site.\nRecife was one of the host cities of the 2014 FIFA World Cup, and previously hosted the 2013 FIFA Confederations Cup and the 1950 FIFA World Cup."
+        },
+        {
+          "article": "Recife (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Recife#Climate",
+          "text": "Recife has a tropical monsoon climate (Am) under the Köppen climate classification, with warm to hot temperatures and high relative humidity throughout the year. However, these conditions are relieved by pleasant westwardly trade winds blowing in from the ocean. January and February are the warmest months, with mean temperatures ranging from to , with sun. July is the second cloudiest month and experiences the coolest temperatures, with mean temperatures ranging from to . The wettest month is June, receiving an average of of rain. Recife features a short dry season which lasts from October to December. The driest and sunniest month is November, when maximum temperatures hover around and an average of of rain is recorded."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 116,
+      "leadWords": 666,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives an Atlantic coast and river location, a 1537 founding and shark-danger waters, but states no climate mechanism, extreme, or paradox; shark danger is not climate.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "recife",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 101,
+    "place_id": "gn-3169921",
+    "input": {
+      "place": {
+        "place_id": "gn-3169921",
+        "name": "Prato",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.8805,
+        "lon": 11.09699
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prato",
+          "url": "https://en.wikipedia.org/wiki/Prato",
+          "text": "Prato ( PRAH-toh; Italian: [ˈpraːto] ) is a city and comune (municipality) in the region of Tuscany in Italy, and is the capital of the Province of Prato. The city lies in the northeast of Tuscany, at an elevation of 65 metres (213 ft), at the foot of Monte Retaia (the last peak in the Calvana chain). The distance between Prato and Florence is approximately 15–17 kilometers (about 9–10 miles). With a population of 198,327 as of 2026, Prato is Tuscany's 2nd-largest city after Florence, and the 18th-largest in Italy.\nHistorically, Prato's economy has been based on the textile industry which has continued in recent years leading to it becoming Italy's fast fashion manufacturing hub. The city's textile district, the largest in Europe, is home to about 5000 fashion companies which are largely small, Chinese-run subcontractors engaging in illegal activity known as the \"Prato system\" run by Chinese organized crime. The left wing Partito Democratico (PD) has been implicated in the crimes with the PD mayor Ilaria Bugetti resigning after the opening of a corruption investigation against her in July 2025.\nThe city boasts important historical and artistic attractions, with a cultural span that started with the Etruscans and then expanded in the Middle Ages and reached its peak with the Renaissance, when artists such as Donatello, Filippo Lippi and Botticelli left their testimonies in the city. The renowned Datini archives are a significant collection of late medieval documents concerning economic and trade history, produced between 1363 and 1410.\nCantucci, a type of biscotti invented in Prato during the Middle Ages, are still produced by local traditional bakers."
+        },
+        {
+          "article": "Prato (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Prato#Climate",
+          "text": "Prato has a humid subtropical climate which has sunny hot summers and cool damp winters. July is the driest month of the year."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 23,
+      "leadWords": 268,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a location near Florence, a textile industry and a medieval biscuit, but states no climate mechanism, extreme, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "prato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 102,
+    "place_id": "gn-3204541",
+    "input": {
+      "place": {
+        "place_id": "gn-3204541",
+        "name": "Banja Luka",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Srpska",
+        "lat": 44.77879,
+        "lon": 17.20629
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banja Luka",
+          "url": "https://en.wikipedia.org/wiki/Banja_Luka",
+          "text": "Banja Luka (Serbian Cyrillic: Бања Лука, pronounced [bǎɲa lǔːka] ) or Banjaluka (Serbian Cyrillic: Бањалука, pronounced [baɲalǔːka]) is the second-largest city in Bosnia and Herzegovina, and the most populous in Republika Srpska. It is Republika Srpska's main economic, political, and administrative centre. Banja Luka is the traditional centre of the densely forested Bosanska Krajina region of northwestern Bosnia and Herzegovina. According to the 2013 census, the city proper has a population of 138,963, while its administrative area comprises a total of 185,042 inhabitants. The City Day of Banja Luka is celebrated on 22 April, commemorating the liberation of the city at the end of World War II.\nThe city is home to the University of Banja Luka and the University Clinical Center of the Republika Srpska, as well as numerous entity- and state-level institutions of Republika Srpska and Bosnia and Herzegovina, respectively. The city is located on the Vrbas river. Banja Luka was declared a European City of Sport in 2018 and designated a UNESCO City of Music in 2023."
+        },
+        {
+          "article": "Banja Luka (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Banja_Luka#Climate",
+          "text": "Banja Luka has a moderate humid subtropical climate with mild winters, infrequent frosts, and warm summers. The warmest month of the year is July, with an average temperature of . The coldest month of the year is January, when temperatures average around .\nThe annual precipitation for the city is about . Banja Luka has an average of 104 rainy days a year.\nHighest recorded temperature: on 10 August 2017"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 70,
+      "leadWords": 170,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a river location in a densely forested region and university facts, but states no climate mechanism, extreme, or paradox; forest cover is not climate.",
+      "priorMissing": "A place-specific climate mechanism, extreme, or seasonal paradox verbatim-traceable to the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "banja luka",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "banja",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "luka",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 103,
+    "place_id": "gn-3363094",
+    "input": {
+      "place": {
+        "place_id": "gn-3363094",
+        "name": "Paarl",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.73378,
+        "lon": 18.97523
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paarl",
+          "url": "https://en.wikipedia.org/wiki/Paarl",
+          "text": "Paarl (; Afrikaans: [ˈpæːrəl]; derived from parel, meaning \"pearl\" in Dutch) is a town with 294,457 inhabitants in the Western Cape province of South Africa. It is the largest town in the Cape Winelands. Due to the growth of the Mbekweni township, it is now a de facto urban unit with Wellington. It is situated about 60 kilometres (37 mi) northeast of Cape Town in the Western Cape Province and is known for its scenic environment and viticulture and fruit-growing heritage.\nPaarl is the seat of the Drakenstein Local Municipality; although not part of the Cape Town metropolitan area, it falls within its economic catchment. Paarl is unusual among South African place-names, in being pronounced differently in English than in Afrikaans; likewise unusual about the town's name is Afrikaners customary attachment to it, saying not  in Paarl, but rather in die Paarl, or in die Pêrel (literally, \"in the Paarl\").\nPaarl gained additional international attention when, on 11 February 1990, Nelson Mandela walked, with live international television coverage, out of Victor Verster Correctional Centre (now known as Drakenstein Correctional Centre) in Paarl ending his 27 years of imprisonment, and beginning a course to South Africa's post-apartheid era and, notably, to multi-racial elections. Mandela spent three years in prison here living in a private house within the walls.  Today, a bronze statue of Mandela stands outside the prison.\nPaarl hosted three matches of the ICC Cricket World Cup 2003.  The headquarters of Ceres Fruit Juices is located in the city, although its namesake and source of much of the fruit, Ceres Valley, lies around one hour's drive to the northeast.\nThe district is particularly well known for its Pearl Mountain or \"Paarl Rock\". This huge granite rock consists of three rounded outcrops. Paarl Rock consists of intrusive igneous rock."
+        },
+        {
+          "article": "Paarl (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Paarl#Climate",
+          "text": "Paarl has a Mediterranean climate (Köppen: Csa)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 7,
+      "leadWords": 298,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract mentions scenic environment and viticulture and fruit-growing heritage but states no climate mechanism, extreme, paradox, seasonal rhythm, or record; a non-redundant climate clue cannot be sourced without inventing weather details",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated rainfall, temperature, wind, or seasonal pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "paarl",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 104,
+    "place_id": "gn-3513090",
+    "input": {
+      "place": {
+        "place_id": "gn-3513090",
+        "name": "Willemstad",
+        "country": "Curaçao",
+        "subdivision": "Curaçao",
+        "lat": 12.12246,
+        "lon": -68.88641
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Willemstad",
+          "url": "https://en.wikipedia.org/wiki/Willemstad",
+          "text": "Willemstad ( WIL-əm-staht, VIL-; Dutch: [ˈʋɪləmstɑt]; Papiamento: [wiləmˈstad]) is the capital and largest city of Curaçao, an island in the southern Caribbean Sea that is a constituent country of the Kingdom of the Netherlands. It was the capital of the Netherlands Antilles prior to that entity's dissolution in 2010. The city accounts for around 90% of Curaçao's population, with 136,660 inhabitants as of 2011. The historic centre of the city consists of four quarters: the Punda and Otrobanda, which are separated by the Sint Anna Bay, an inlet that leads into the large natural harbour called the Schottegat, as well as the Scharloo and Pietermaai Smal quarters, which are across from each other on the smaller Waaigat harbour. Willemstad is home to the Curaçao synagogue, the oldest surviving synagogue in the Americas. The city centre, with its unique architecture and harbour entry, has been designated a UNESCO World Heritage Site."
+        },
+        {
+          "article": "Willemstad (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Willemstad#Climate",
+          "text": "Willemstad has a hot semi-arid climate (Köppen: BSh), experiencing hot summers and winters."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 13,
+      "leadWords": 150,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes the capital, harbour, quarters, synagogue, and UNESCO centre but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated trade-wind, rainfall, heat, or storm pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "willemstad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 105,
+    "place_id": "gn-4613868",
+    "input": {
+      "place": {
+        "place_id": "gn-4613868",
+        "name": "Clarksville",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 36.52977,
+        "lon": -87.35945
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clarksville, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Clarksville,_Tennessee",
+          "text": "Clarksville is a city in Montgomery County, Tennessee, United States, its county seat, and only incorporated municipality. The city had a population of 166,722 as of the 2020 census, making it the fifth-most populous city in Tennessee. It is the principal city of the Clarksville metropolitan area, which consists of Montgomery and Stewart counties in Tennessee and Christian and Trigg counties in Kentucky.\nThe city was founded in 1785 and incorporated in 1807, and named for General George Rogers Clark, frontier fighter and Revolutionary War hero, and brother of William Clark of the Lewis and Clark Expedition.\nClarksville is the home of Austin Peay State University; The Leaf-Chronicle, the oldest newspaper in Tennessee; and neighbor to the Fort Campbell, United States Army post. The site of the 101st Airborne Division (Air Assault), Fort Campbell is located about 10 miles (16 km) from downtown Clarksville and straddles the Tennessee-Kentucky state line."
+        },
+        {
+          "article": "Clarksville, Tennessee (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Clarksville,_Tennessee#Climate",
+          "text": "The climate is humid subtropical (Köppen: Cfa) with hot summers and cold winters but interspersed with milder times due to its location between the warmer climates of the Gulf of Mexico and the colder ones of the Midwest. Freezing temperatures are not uncommon but usually the averages are above zero in January (around 2 °C) and in July can often pass through 25 °C. Snow in winter is common, but large accumulated amounts are more sporadic; usually the soil is covered by a thin layer during some time of winter. Precipitation is abundant year-round without any major difference, but May tends to have the highest cumulative amount of 142 mm in the form of rain. The wet season runs from February through July, while the dry season runs from August through January with a September nadir of 85 mm and secondary December peak of 125 mm."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 146,
+      "leadWords": 150,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers founding in 1785, the university, newspaper, and nearby Fort Campbell but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated seasonal weather, storm, flood, or temperature pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "clarksville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 106,
+    "place_id": "gn-1176615",
+    "input": {
+      "place": {
+        "place_id": "gn-1176615",
+        "name": "Islamabad",
+        "country": "Pakistan",
+        "subdivision": "Islamabad",
+        "lat": 33.72148,
+        "lon": 73.04329
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Islamabad",
+          "url": "https://en.wikipedia.org/wiki/Islamabad",
+          "text": "Islamabad is the capital city of Pakistan. It is the country's tenth-most populous city with a population of over 1.1 million and is federally administered by the Pakistani government as part of the Islamabad Capital Territory — with a metropolitan population of over 2.3 million. Built as a planned city along the Margalla Hills in the 1960s and established in 1967, Islamabad replaced Karachi as Pakistan's national capital. It is located in the northern Punjab region, north of the city of Rawalpindi — with which it forms a metropolitan area of over 5.7 million inhabitants.\nThe Greek architect Constantinos Apostolou Doxiadis developed Islamabad's master plan, in which he divided it into eight zones. The city comprises administrative areas, a diplomatic enclave, residential areas, educational and industrial sectors, commercial areas, as well as rural and green areas administered by the Islamabad Metropolitan Corporation with support from the Capital Development Authority. Islamabad is known for its parks and forests, including the Margalla Hills National Park and the Shakarparian. It is home to several landmarks, including the country's flagship Faisal Mosque. Other prominent landmarks include the Pakistan Monument and Democracy Square.\nRated as Gamma+ by the Globalization and World Cities Research Network, Islamabad has one of the highest costs of living in Pakistan. The city's populace is dominated by both middle- and upper-middle-class citizens. Islamabad is home to more than twenty universities, including Bahria University, Quaid-e-Azam University, PIEAS, COMSATS University, FAST-NUCES, and NUST. It is also rated as one of the safest cities in Pakistan and has an expansive RFID-enabled surveillance system with almost 2,000 active CCTV cameras."
+        },
+        {
+          "article": "Islamabad (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Islamabad#Climate",
+          "text": "Islamabad has a humid subtropical climate (Köppen: Cwa), with five seasons: Winter (November–February), Spring (March and April), Summer (May and June), Rainy Monsoon (July and August) and Autumn (September and October). The hottest month is June, where average highs routinely exceed . The wettest month is July, with heavy rainfalls and evening thunderstorms with the possibility of cloudburst and flooding. The coolest month is January.\nIslamabad's micro-climate is regulated by three artificial reservoirs: Rawal, Simli, and Khanpur Dam. The latter is located on the Haro River near the town of Khanpur, about from Islamabad. Simli Dam is north of Islamabad. of the city consists of Margalla Hills National Park. Loi Bher Forest is situated along the Islamabad Highway, covering an area of . The highest monthly rainfall of was recorded during July 1995. Winters generally feature dense fog in the mornings and sunny afternoons. In the city, temperatures stay mild, with snowfall over the higher-elevation points on nearby hill stations, notably Murree and Nathia Gali. The temperatures range from in January to in June. The highest recorded temperature was on 23 June 2005 while the lowest temperature was on 17 January 1967. Light snowfall sometimes happens on the peaks of the hills visible from the city, though this is rare. Snowfall does not occur in the city itself. On 23 July 2001, Islamabad received a record-breaking of rainfall in just 10 hours. It was the heaviest rainfall in Islamabad in the past 100 years and the highest rainfall in 24 hours as well. Water supply is strained, leading to project proposals like the Ghazi Barotha water supply project."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 268,
+      "leadWords": 265,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes the planned capital, parks, forests, landmarks, and universities but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record; greenery alone is not climate",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated monsoon, heat, rainfall, or seasonal pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "islamabad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 107,
+    "place_id": "gn-1277013",
+    "input": {
+      "place": {
+        "place_id": "gn-1277013",
+        "name": "Bareilly",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 28.36678,
+        "lon": 79.43167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bareilly",
+          "url": "https://en.wikipedia.org/wiki/Bareilly",
+          "text": "Bareilly, also spelled Bareli, is a city in Bareilly district in the Indian state of Uttar Pradesh. It is among the largest metropolises in Western Uttar Pradesh and is the centre of the Bareilly division as well as the historical region of Rohilkhand. The city lies in the Indo-Gangetic Plains, about 252 kilometres (157 mi) northwest of the state capital, Lucknow, and 265 kilometres (165 mi) east of the national capital, New Delhi. With a population of 903,668 in 2011, it is the eighth most populous city in the state, 17th in northern India and 54th in India. It is located on the bank of Ramganga River and is the site of the Ramganga Barrage built for canal irrigation.\nThe earliest settlement in what is now Bareilly was established in 1537 by a local chieftain Jagat Singh Katehriya who named it 'Bans-Bareli' after his two sons Bansaldev and Bareldev. The town came under the rule of the Mughals in 1569 and had become the capital of a local pargana by 1596. The foundation of the modern city of Bareilly was laid by Mughal governor Mukrand Rai in 1657, and in 1658 it became the seat of the governor of Budaun. The weakening of Mughal Empire lead to the rise of the Kingdom of Rohilkhand, of which Bareilly was a major centre. The city came under the control of Oudh State in 1774 after the fall of Rohillas in the First Rohilla War and was then ceded to the British East India Company by the Nawab of Oudh in 1801. A Military station was established in 1811 to the south of the city, where a fort was constructed in 1816. Bareilly was freed by the rebels during the Indian Rebellion of 1857 and remained independent under the rule of Khan Bahadur Khan until it was re-annexed by the British in 1858.\nBareilly is renowned for being the place of origin of the Barelvi movement, a Sunni Islamic movement formed by Islamic scholar Ahmad Raza Khan to counter the growing influence of the Deobandi movement and Wahhabism. His shrine, located at the Bareilly Dargah, is visited by millions of his followers every year on the occasion of Urs-e-Razavi.\nThe city has been known as Nath Nagri due to the presence of several ancient Shiva temples, and more recently as Jumka City. It is a centre for furniture manufacturing and trade in cotton, cereal and sugar. Bareilly is one of the 100 Smart Cities being developed in India, and one of the nine counter magnet cities of the National Capital Region (NCR). The city is served by the Bareilly Airport which has direct flights to Delhi, Lucknow, Mumbai and Bangalore. The Bareilly Junction railway station located in the city is among the top 100 booking stations of Indian Railways while Izzatnagar is the divisional headquarters of one of the three divisions of North Eastern Railways."
+        },
+        {
+          "article": "Bareilly (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Bareilly#Climate",
+          "text": "Bareilly has a humid subtropical climate (Köppen climate classification: Cwa) with hot summers and cool winters. The average temperature for the year is 25 °C. June, with an average temperature of 32.8 °C is the warmest month, while the coolest month of the year is January, with an average temperature of 15 °C."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 53,
+      "leadWords": 482,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers plains location, river, long history, religious movement, and trade but contains no climate mechanism, extreme, paradox, seasonal rhythm, or record",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract, such as stated monsoon, heat, rainfall, or flood pattern"
+    },
+    "banned_terms": [
+      {
+        "term": "bareilly",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

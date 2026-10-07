@@ -1,0 +1,887 @@
+[
+  {
+    "rank": 259,
+    "place_id": "gn-1813253",
+    "input": {
+      "place": {
+        "place_id": "gn-1813253",
+        "name": "Lijiang",
+        "country": "China",
+        "subdivision": "Yunnan",
+        "lat": 26.86879,
+        "lon": 100.22072
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lijiang",
+          "url": "https://en.wikipedia.org/wiki/Lijiang",
+          "text": "Lijiang (Chinese: 丽江), formerly romanized as Likiang, is a prefecture-level city in the northwest of Yunnan Province, China. It has an area of 21,219 square kilometres (8,193 sq mi) and had a population of 1,253,878 at the 2020 census whom 288,787 lived in the built-up area (metro) made of Gucheng District. By the end of 2024, the registered population of the city was 1,243,700. Lijiang is famous for its UNESCO Heritage Site, the Old Town of Lijiang, which contains a mixture of different historical architecture styles and a complex, ancient water-supply system. It borders Liangshan Yi Autonomous Prefecture and Panzhihua City in Sichuan Province to the east and it has one municipality and four counties.\nLijiang City is located on the Yungui Plateau, abutting the Qinghai-Tibet Plateau. It is one of the key forest areas in Yunnan Province, and one of the west–east power transmission bases of China's hydropower industry. Lijiang City is a multi-ethnic settlement: apart from the Han nationality, there are a total of 22 ethnic minorities.\nLijiang is the only prefecture-level city with three World Heritage Sites. It is rich in tourism resources, with 104 widely recognised tourist attractions, including the Old Town of Lijiang, Yulong Snow Mountain, Tiger Leaping Gorge, and Laojun Mountain."
+        },
+        {
+          "article": "Lijiang (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Lijiang#Climate",
+          "text": "Owing to its low latitude and high elevation, the city centre of Lijiang experiences a mild subtropical highland climate (Köppen Cwb). Winters are mild, very dry and sunny (>70% possible sunshine), although average lows in December and January are just above the freezing mark; January is the coolest month, with an average temperature of . Spring begins early and remains dry and sunny until late May, when there is a dramatic uptick in frequency and amount of rainfall that lasts until late September. Summers are warm, rainy and damp, with June, the warmest month, averaging . Autumn sees an abrupt reduction in rainfall and return to sunniness. The annual mean temperature is , while precipitation averages , around 80% of which occurs from June to September. With monthly percent possible sunshine ranging from 29% in July to 80% in December, the city receives 2,412 hours of sunshine annually."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 148,
+      "leadWords": 207,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate information; a snow mountain listed among tourist sights and an old water-supply system are not a climate mechanism, extreme, or paradox",
+      "priorMissing": "any source passage stating a place-specific climate mechanism, extreme, or seasonal rhythm"
+    },
+    "banned_terms": [
+      {
+        "term": "lijiang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 260,
+    "place_id": "gn-2561668",
+    "input": {
+      "place": {
+        "place_id": "gn-2561668",
+        "name": "Agadir",
+        "country": "Morocco",
+        "subdivision": "Souss-Massa",
+        "lat": 30.42018,
+        "lon": -9.59815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Agadir",
+          "url": "https://en.wikipedia.org/wiki/Agadir",
+          "text": "Agadir (Arabic: أكادير or أڭادير, romanized: ʾagādīr, pronounced [ʔaɡaːdiːr]; Tachelhit: ⴰⴳⴰⴷⵉⵔ) is a major city in Morocco, on the shore of the Atlantic Ocean near the foot of the Atlas Mountains, just north of the point where the Souss River flows into the ocean, and 509 kilometres (316 mi) south of Casablanca. Agadir is the capital of the Agadir Ida-U-Tanan Prefecture and of the Souss-Massa economic region.\nAgadir is one of the major urban centres of Morocco. The municipality of Agadir recorded a population of 924,000 in the 2014 Moroccan census. According to the 2004 census, there were 346,106 inhabitants in that year and the population of the Prefecture of Agadir-Ida Outanane was 487,954 inhabitants.\nAgadir is known for being the capital of Amazigh culture in Morocco. It is one of the few big Moroccan cities where Tamazight, one of Morocco's two official languages, is spoken by more than half of the population. The native variety to the region, Tachelhit, is spoken by 222,000 speakers, representing 53.7% of the entire population. Agadir is also a place for many festivals related to Amazigh culture, such as The New Amazigh Year, celebrated on 13 January every year throughout the city, especially in the downtown area. The Bilmawen Festival is another old Berber tradition celebrated in the suburbs of the city. Additionally, the Issni N’Ourgh International festival is a festival for Amazigh films. Agadir is also the birthplace of many of the pillars of Shilha and Amazigh music, such as Izenzaren, Oudaden, and many others.\nIt was the site of the 1911 Agadir Crisis that exposed tensions between France and Germany, foreshadowing World War I. The city was destroyed by an earthquake in 1960; it has been completely rebuilt with mandatory seismic standards. It is now the largest seaside resort in Morocco, where foreign tourists and many residents are attracted by an unusually mild year-round climate. Since 2010 it has been well served by low-cost flights and a motorway from Tangier.\nThe mild winter climate (January average midday temperature 20.5 °C/69 °F) and good beaches have made it a major \"winter sun\" destination for northern Europeans."
+        },
+        {
+          "article": "Agadir (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Agadir#Climate",
+          "text": "Agadir has a semi-arid climate (Köppen: BSh) with warm summers and mild winters. Located along the Atlantic Ocean, Agadir has a very mild climate. The daytime temperature generally stays in the 20s °C (70s °F) every day with averages around , with the winter highs typically reaching in January.\nRainfall is almost entirely confined to the winter months and is heavily influenced by the NAO, with negative NAO indices producing wet winters and positive NAO correlating with drought. For instance, in the wettest month on record of December 1963, as much as fell, whereas in the positive NAO year from July 1960 to June 1961 a mere occurred over the twelve months. The wettest year has been from July 1955 to June 1956 with . This makes Agadir one of few coastal locations in the world to have recorded a temperature above 50 °C. The record of 51.7 °C degrees, which was on 19 August 1940, is disputed.\nIn 1950, a poster from the Navigation Company Pacquet proclaimed: \"Winter or summer, I bathe in Agadir\"."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 175,
+      "leadWords": 353,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives only a mild year-round climate label and a January average midday temperature; mild labels and average temperatures alone do not qualify, and no mechanism, extreme, or paradox is stated",
+      "priorMissing": "a stated mechanism, extreme, record, or paradox behind the mild weather, not just the label and an average temperature"
+    },
+    "banned_terms": [
+      {
+        "term": "agadir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 261,
+    "place_id": "gn-358619",
+    "input": {
+      "place": {
+        "place_id": "gn-358619",
+        "name": "Port Said",
+        "country": "Egypt",
+        "subdivision": "Port Said",
+        "lat": 31.26531,
+        "lon": 32.3019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Said",
+          "url": "https://en.wikipedia.org/wiki/Port_Said",
+          "text": "Port Said ( sah-EED, Egyptian Arabic: بورسعيد, romanized: Bōrsaʿīd, pronounced [boɾsæˈʕiːd, poɾ-]) is a port city that lies in northeast Egypt extending about 30 km (19 mi) along the coast of the Mediterranean Sea, straddling the west bank of the northern mouth of the Suez Canal. The city is the capital of the Port Said Governorate and forms the majority of the governorate, comprising seven of the governorate's eight administrative regions. In 2024, it had a population of 790,000 people.\nThe city was established in 1859 during the building of the Suez Canal. There are numerous old houses with grand balconies on all floors, giving the city a distinctive look. Port Said's twin city is Port Fuad, which lies on the eastern bank of the Suez Canal. The two cities coexist, to the extent that there is hardly any town centre in Port Fuad. The cities are connected by free ferries running all through the day, and together they form a metropolitan area with over a million residents that extends both on the African and the Asian sides of the Suez Canal.\nPort Said has acted as a global city since its establishment, flourishing particularly during the nineteenth and the first half of the twentieth century. It was inhabited by various nationalities and religions, mostly from Mediterranean countries, and they coexisted in tolerance, forming a cosmopolitan community. Referring to this fact, Rudyard Kipling once said, \"If you truly wish to find someone you have known and who travels, there are two points on the globe you have but to sit and wait, sooner or later your man will come there: the docks of London and Port Said\". Port Said is an important city in Egypt for trade and business due to its location on the Suez Canal and Mediterranean coast."
+        },
+        {
+          "article": "Port Said (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Port_Said#Climate",
+          "text": "Port Said has a hot desert climate (BWh) according to Köppen climate classification, but blowing winds from the Mediterranean Sea greatly moderates the temperatures. This is typical of the northern coast of Egypt, making its summers moderately hot and humid while its winters mild and moderately wet when sleet and hail are also common, yet less common than in Alexandria because Port Said is drier. January and February are the coolest months while the hottest are July and August.\nThe record high temperature was , recorded on 20 June 1988, while the record low temperature was , recorded on 25 December 1979.\nPort Said, Kosseir, Ras El Bar, Baltim, Damietta and Alexandria have the least temperature variation in Egypt. Additionally, Mersa Matruh and Port Said have the coolest summer days of any other cities or resorts, although not significantly cooler than other northern coastal places."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 145,
+      "leadWords": 300,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate information; it covers the canal and Mediterranean coast location, the twin city, and the trade role only",
+      "priorMissing": "any source passage stating a place-specific climate mechanism, extreme, or seasonal rhythm"
+    },
+    "banned_terms": [
+      {
+        "term": "port said",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "said",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 262,
+    "place_id": "gn-2224827",
+    "input": {
+      "place": {
+        "place_id": "gn-2224827",
+        "name": "Ngaoundéré",
+        "country": "Cameroon",
+        "subdivision": "Adamaoua",
+        "lat": 7.32765,
+        "lon": 13.58472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ngaoundéré",
+          "url": "https://en.wikipedia.org/wiki/Ngaound%C3%A9r%C3%A9",
+          "text": "Ngaoundéré or N'Gaoundéré (Fula: N'gamdere, نغَمْدٜرٜ, 𞤲'𞤺𞤢𞤥𞤣𞤫𞥅𞤪𞤫𞥅) is the capital of the Adamawa Region of Cameroon. It had a population of 152,700 at the 2005 census. According to the film Les Mairuuwas – Maitre de l'eau produced by the University of Tromsø, the population has rapidly risen to 1,200,000 (as of October 2023) owing to mass immigration from the Central African Republic and the perceived danger from Boko Haram in northern Cameroon.\nThe city lies at the northern end of the railway to Yaoundé and is also home to Ngaoundéré Airport. Attractions in the city include the Lamido Palace and the Lamido Grand Mosque. The town is named after a nearby mountain on its eponymous plateau; the mountain's name is the Mbum word for \"navel mountain\". \"Ngaou\" mean mountain in Mbum,  and \"Ndare\" mean navel in Mbum language. Because of this some people call the navel of Adamwa. Mount Ngaoundéré is rockey. On the top of mountain, large stone lies on it. Ngaoundéré is close to Lake Tison."
+        },
+        {
+          "article": "Ngaoundéré (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Ngaound%C3%A9r%C3%A9#Climate",
+          "text": "Ngaoundéré has a tropical savanna climate (Köppen climate classification Aw)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 10,
+      "leadWords": 168,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate information; it covers the capital role, the railway end, the palace and mosque, and the nearby navel mountain only",
+      "priorMissing": "any source passage stating a place-specific climate mechanism, extreme, or seasonal rhythm"
+    },
+    "banned_terms": [
+      {
+        "term": "ngaoundere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 263,
+    "place_id": "gn-2756669",
+    "input": {
+      "place": {
+        "place_id": "gn-2756669",
+        "name": "Dordrecht",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.81,
+        "lon": 4.67361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dordrecht",
+          "url": "https://en.wikipedia.org/wiki/Dordrecht",
+          "text": "Dordrecht (Dutch: [ˈdɔrdrɛxt] ), historically known in English as Dordt (still colloquially used in Dutch, pronounced [dɔrt] ) or Dort, is a city and municipality in the Western Netherlands, located in the province of South Holland. It is the province's fifth-largest city after Rotterdam, The Hague, Leiden, and Zoetermeer, with a population of 123,000 (2025).\nThe municipality covers the entire Dordrecht Island, also often called Het Eiland van Dordt (\"the Island of Dordt\"), bordered by the rivers Oude Maas, Beneden Merwede, Nieuwe Merwede, Hollands Diep, and Dordtsche Kil. Dordrecht is the largest and most important city in the Drechtsteden and is also part of the Randstad, the main conurbation in the Netherlands.\nDordrecht is the oldest city in Holland and has a rich history and culture."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 126,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate information; it covers its river island, city borders, and status as the oldest city in Holland only",
+      "priorMissing": "any source passage stating a place-specific climate mechanism, extreme, or seasonal rhythm"
+    },
+    "banned_terms": [
+      {
+        "term": "dordrecht",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 264,
+    "place_id": "gn-314830",
+    "input": {
+      "place": {
+        "place_id": "gn-314830",
+        "name": "Gaziantep",
+        "country": "Türkiye",
+        "subdivision": "Gaziantep",
+        "lat": 37.05944,
+        "lon": 37.3825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gaziantep",
+          "url": "https://en.wikipedia.org/wiki/Gaziantep",
+          "text": "Gaziantep, historically Aintab and still informally called Antep, is a major city in south-central Turkey. It is the capital of the Gaziantep Province, in the westernmost part of Turkey's Southeastern Anatolia Region and partially in the Mediterranean Region. It is located approximately 185 km (115 mi) east of Adana and 97 km (60 mi) north of Aleppo, Syria and situated on the Sajur River.\nThe city is thought to be located on the site of ancient Antiochia ad Taurum and is near ancient Zeugma. Sometime after the Byzantine-ruled city came under the Seljuk Empire, the region was administered by Armenian warlords. In 1098, it became part of the County of Edessa, a Crusader state, though it continued to be administered by Armenians, such as Kogh Vasil.\nAintab rose to prominence in the 14th century as the fortress became a settlement, hotly contested by the Mamluk Sultanate, Dulkadirids, and the Ilkhanate. It was besieged by Timur in 1400 and the Aq Qoyunlu in 1420. The Dulkadirid-controlled city fell to the Ottoman Empire in 1516 sometime before the Battle of Marj Dabiq.\nAt the end of 2025, Gaziantep province was home to 2,222,415 inhabitants, of whom around 1.9 million lived in the urban area. It is the fifth-most populous city in Turkey. Gaziantep is a diverse city inhabited mostly by ethnic Turks and a significant minority of Kurds and Syrian refugees. It was historically populated by Turkomans, Armenians, Jews, and a plethora of other ethnic groups.\nIn February 2023, the city was significantly damaged by the 2023 Turkey–Syria earthquake. Although three of the four most significant quakes of the earthquake occurred within the Gaziantep Province, the overall destruction to the city was reportedly less intense than that of Kahramanmaraş, Hatay, Malatya, and Adıyaman provinces, making it the fifth most affected province at 944 buildings collapsed. The destruction was reportedly much higher in the rural districts of Nurdağı and Islahiye, although a number of historic sites within the city such as mosques and Gaziantep Castle also suffered significant damages. Due to its size, location and relative intactness, the city served as a regional hub for international organizations and NGOs for earthquake relief and reconstruction after the earthquake."
+        },
+        {
+          "article": "Gaziantep (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Gaziantep#Climate",
+          "text": "Gaziantep has a hot-summer Mediterranean climate (Köppen: Csa, Trewartha: Cs), with very hot, dry summers and cool, wet and often snowy winters.\nAccording to 1966 data, on average, Gaziantep experiences 4.6 snowy days per winter with 10 days of snow cover, along with 2.5 days of hail.\nHighest recorded temperature: on 29 July 2000 and 14 August 2023 Lowest recorded temperature: on 15 January 1950"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 65,
+      "leadWords": 364,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate mechanism, extreme, or paradox; the 2023 earthquake is a one-off seismic event, not climate, and the rest is location and history",
+      "priorMissing": "a verbatim-traceable place-specific climate mechanism, extreme, or seasonal rhythm"
+    },
+    "banned_terms": [
+      {
+        "term": "gaziantep",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 265,
+    "place_id": "gn-4006163",
+    "input": {
+      "place": {
+        "place_id": "gn-4006163",
+        "name": "Fresnillo",
+        "country": "Mexico",
+        "subdivision": "Zacatecas",
+        "lat": 23.1749,
+        "lon": -102.86785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fresnillo",
+          "url": "https://en.wikipedia.org/wiki/Fresnillo",
+          "text": "Fresnillo (Spanish pronunciation: [fres'nijo]) is a city in north central Mexico, founded in 1554 by Francisco de Ibarra. It is the second largest city in  the state of Zacatecas and the seat of Fresnillo municipality. As a rail and highway junction, Fresnillo is the center of a rich mining area known especially for silver, and the location of one of the world's richest silver mines, the Mina Proaño or Fresnillo Mine, which belongs to the Peñoles mining company. Other important economic activities include agriculture (cereals, beans), cattle raising, and a mining school. Fresnillo is also the municipal seat of the municipality of the same name which surrounds it. The municipality had a population of 196,538 and an areal extent of 4,947 square kilometres (1,910 sq mi).\nIt is the location of religious pilgrimages to see the famous Santo Niño de Atocha (\"Holy Child of Atocha\"), a Roman Catholic devotional statue brought to Mexico from Spain."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 155,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate information; it covers founding in 1554, silver mining, rail links, farming, and pilgrimages only",
+      "priorMissing": "any source passage stating a place-specific climate mechanism, extreme, or seasonal rhythm"
+    },
+    "banned_terms": [
+      {
+        "term": "fresnillo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 266,
+    "place_id": "gn-4898015",
+    "input": {
+      "place": {
+        "place_id": "gn-4898015",
+        "name": "Joliet",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.52519,
+        "lon": -88.0834
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Joliet, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Joliet,_Illinois",
+          "text": "Joliet ( JOH-lee-et, -⁠ET) is a city in Will and Kendall counties in the U.S. state of Illinois. Located 40 miles (64 km) southwest of Chicago, it is the county seat of Will County. Originally settled in 1852 as a steel mill town on the Des Plaines River, Joliet later became known for being the first major city outside of Chicago on U.S. Route 66. It is home to Old Joliet Prison, a historic decommissioned correctional facility that was the largest in the state at the time of its construction. The prison has been featured prominently in several films and television shows, including the 1980 film The Blues Brothers. As of the 2020 census, the population was 150,362, making it the third-most populous city in Illinois."
+        },
+        {
+          "article": "Joliet, Illinois (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Joliet,_Illinois#Climate",
+          "text": "Joliet has a hot summer humid continental climate (Köppen Dfa) with hot, humid summers, and cold winters with moderate to heavy snowfall."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 22,
+      "leadWords": 126,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives location, steel-mill origin, Route 66 and prison facts but no climate mechanism, extreme, or paradox; no climate description at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "joliet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 267,
+    "place_id": "gn-532288",
+    "input": {
+      "place": {
+        "place_id": "gn-532288",
+        "name": "Magnitogorsk",
+        "country": "Russia",
+        "subdivision": "Chelyabinsk",
+        "lat": 53.39808,
+        "lon": 59.0066
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Magnitogorsk",
+          "url": "https://en.wikipedia.org/wiki/Magnitogorsk",
+          "text": "Magnitogorsk (Russian: Магнитого́рск, pronounced [məɡnʲɪtɐˈɡorsk], lit. '[city] of the magnetic mountain') is an industrial city in Chelyabinsk Oblast, Russia, on the eastern side of the southern Ural Mountains by the Ural River. Its population is currently 410,594 (2021 census).\nMagnitogorsk was named after Mount Magnitnaya, a geological anomaly that once consisted almost completely of iron ore, around 55% to 60% iron.  It is the second-largest city in Russia that is not the administrative centre of any federal subject or district, after Tolyatti. Magnitogorsk contains the largest iron and steel works in the country: Magnitogorsk Iron and Steel Works. The official motto of the city is \"the place where Europe and Asia meet\" (Russian: Место, где встречаются Европа и Азия), as the city straddles von Strahlenberg's line.\nMagnitogorsk is one of a small number of planned socialist realist settlements established in the Soviet bloc during the Cold War (others including Nowa Huta in Poland, Havířov in Czechoslovakia and Eisenhüttenstadt in the GDR)."
+        },
+        {
+          "article": "Magnitogorsk (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Magnitogorsk#Climate",
+          "text": "Magnitogorsk has a distinct four-season humid continental climate (Dfb) with relatively severe winters for the latitude. This climate type is typical for southerly Russian areas far from large bodies of water. The average July high is around with lows of with January averages ranging from in daytime high to in average low. Temperatures approaching or above have been measured from May to September with real severe frosts below have been measured in all other months than that except transitional months April and October."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 83,
+      "leadWords": 161,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Ural Mountains location, iron-ore mountain and steel works but no climate mechanism, extreme, or paradox; no climate description at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "magnitogorsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 268,
+    "place_id": "gn-6986104",
+    "input": {
+      "place": {
+        "place_id": "gn-6986104",
+        "name": "Zhongshan",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 22.52306,
+        "lon": 113.37912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhongshan",
+          "url": "https://en.wikipedia.org/wiki/Zhongshan",
+          "text": "Zhongshan (Chinese: 中山 [ʈʂʊ́ŋ ʂán]), alternately romanized via Cantonese as Jungsaan, is a prefecture-level city in the south of the Pearl River Delta in Guangdong province, China. As of the 2020 census, the whole city with 4,418,060 inhabitants is now part of the Guangzhou–Shenzhen conurbation with 65,565,622 inhabitants. The city-core subdistricts used to be called Shiqi or Shekki (Chinese: 石岐).\nZhongshan is one of the few Chinese cities to be named after a person. It was originally named Xiangshan (香山, \"Fragrant Mountain\"; Cantonese: Heung-saan), but was renamed in 1925 in honor of Sun Yat-sen, who is known in China as \"Sun Zhongshan\". Sun, a local of the area, was the founding father of the Republic of China who is also regarded positively by the People's Republic."
+        },
+        {
+          "article": "Zhongshan (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Zhongshan#Climate",
+          "text": "Like nearly all of southern China, Zhongshan's climate is warm and humid most of the year, with an average temperature of and of rainfall each year. According to the Köppen climate classification, it has a humid subtropical climate. Southern China experiences fairly frequent typhoons and thunderstorms, and most rain falls between April and September.\n.]]"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 55,
+      "leadWords": 126,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Pearl River Delta location and the 1925 renaming for Sun Yat-sen but no climate mechanism, extreme, or paradox; no climate description at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "zhongshan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 269,
+    "place_id": "gn-116402",
+    "input": {
+      "place": {
+        "place_id": "gn-116402",
+        "name": "Semnan",
+        "country": "Iran",
+        "subdivision": "Semnan",
+        "lat": 35.57691,
+        "lon": 53.39205
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Semnan, Iran",
+          "url": "https://en.wikipedia.org/wiki/Semnan,_Iran",
+          "text": "Semnan (Persian: سمنان; pronounced [semˈnɒːn] ) is a city in the Central District of Semnan County, Semnan province, Iran, serving as capital of the province, the county and the district. The city is on the alluvial fan of the Golrudbar creek in the north-central part of the country, 216 km east of Tehran and 640 km west of Mashhad. With a population of 185,129 people in 2016, Semnan is the hub of the Semnani language, a sub-branch of the Iranian languages spoken to the north. It is home to the Semnani ethnic group.\nSemnan offers various recreational activities; historical and religious sites; festivals, gardens and parks; and centers of higher education and Semnani culture. The city is the cultural and political capital of Semnan province. The city's main souvenirs are daffodil flowers, Shirmal pastry, Koloocheh cookies, kilim rugs, and shortbread."
+        },
+        {
+          "article": "Semnan, Iran (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Semnan,_Iran#Climate",
+          "text": "Semnan has a hot desert climate (BWh) bordering a cold desert climate (BWk) according to the Köppen climate classification. The city enjoys the traditional four seasons of winter, spring, summer, and autumn each year.\nThe rain season starts in December and lasts into May, however, precipitation throughout the rain season is generally very light. During some winters, moisture-abundant blizzards make their way down from the Alborz mountains to the north of the city and dump several centimeters of snow in a single twenty-four-hour period. As a result of the city's position straddling the open desert plain, many winter days are dominated by a cold and gusty wind that often produces a potent windchill factor which makes the city feel much colder than the actual air temperature. According to Iranian Meteorological statistics, Semnan experiences around 44.5 days in which the minimum temperature falls below freezing each year.\nSpring is characterized by mild to warm day temperatures and cold to cool nights. Minimum temperatures do not fall below freezing from May to October and rarely do so in March, April and November.\nSummers are often hot during the day and mildly warm at night. Summer months remain extremely dry with only trace amounts of rain. Occasionally, moisture from the Caspian Sea passes over the High Alborz. With the right amount of heat and moisture, thunderstorms may develop during the afternoon and evening hours. Though the amount of precipitation is light, these thunderstorms often produce strong and gusty winds with frequent lightning strikes.\nAutumn is mostly a transitional season."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 256,
+      "leadWords": 140,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives north-central location, distances from Tehran and Mashhad, language and souvenirs but no climate mechanism, extreme, or paradox; no climate description at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "semnan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 270,
+    "place_id": "gn-12495083",
+    "input": {
+      "place": {
+        "place_id": "gn-12495083",
+        "name": "Chirmiri",
+        "country": "India",
+        "subdivision": "Chhattisgarh",
+        "lat": 23.19073,
+        "lon": 82.35314
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chirmiri",
+          "url": "https://en.wikipedia.org/wiki/Chirmiri",
+          "text": "Chirmiri is a hill station city and a Municipal Corporation in the Manendragarh-Chirmiri-Bharatpur district in the Indian state of Chhattisgarh. It was a part of Koriya district until 15 August 2021 when the separate Manendragarh-Chirmiri-Bharatpur district was created. It is famously known for its coal extraction as the area is rich in coal.\nChirmiri, secured the top position in the Swacch Survekshan 2022 rankings for the '50,000-1 lakh' population category in the Eastern zone. The city was given the award for 'Fastest mover' city under the same category during Swacchh Survekshan 2020. For the 2022 Survekshan, Chirmiri scored 100% under categories like Waste generation vs processing, Remediation of Dumpsites, Cleanliness of Residential Areas, Cleanliness of Market Areas, Cleanliness Of Drains, and Cleanliness of Water Bodies.\nChirimiri is referred to as the ‘Heaven/Jannat of Chhattisgarh’. The lush greenery, mountains and rivers make it a perfect getaway destination for anyone looking to relax. This scenic town is also known for its coal mines. There are several temples and other notable places that are famous among tourists. Chirimiri is well connected to major cities via rail and road. Chirimiri is situated at an altitude of 579 m above sea level. It lies along the bank of Hasdeo River. The river is one of the most prominent tributaries of the Mahanadi River. The weather is pleasant all year round, and there are dense forests in the region which houses exotic flora and fauna."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 239,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract only says the weather is pleasant all year round, with lush greenery and forests; a mild/pleasant label with no mechanism, extreme, or paradox verbatim-traceable to the extract",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox beyond a pleasant-weather label"
+    },
+    "banned_terms": [
+      {
+        "term": "chirmiri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 271,
+    "place_id": "gn-1268865",
+    "input": {
+      "place": {
+        "place_id": "gn-1268865",
+        "name": "Jodhpur",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 26.26841,
+        "lon": 73.00594
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jodhpur",
+          "url": "https://en.wikipedia.org/wiki/Jodhpur",
+          "text": "Jodhpur (Hindi pronunciation: [ˈd͡ʑoːd̪ʱ.pʊr] ) is the second-largest city of the north-western Indian state of Rajasthan, after its capital Jaipur. As of 2025, the city has a population of 1.6 million. It serves as the administrative headquarters of the Jodhpur district and Jodhpur division. It is the historic capital of the Kingdom of Marwar, founded in 1459 by Rao Jodha, a Rajput chief of the Rathore clan. On 11 August 1947, 4 days prior to the Indian independence, Maharaja Hanwant Singh the last ruler of Jodhpur state signed the Instrument of Accession and merged his state in Union of India. On 30 March 1949, it became part of the newly formed state of Rajasthan, which was created after merging the states of the erstwhile Rajputana.\nJodhpur is a famous tourist spot with a palace, fort, and temples, set in the stark landscape of the Thar Desert. It is also known as the 'Blue City' due to the dominant color scheme of its buildings in the old town. The old city circles the Mehrangarh Fort and is bounded by a wall with several gates. Jodhpur lies near the geographic centre of the Rajasthan state, which makes it a convenient base for travel in a region much frequented by tourists."
+        },
+        {
+          "article": "Jodhpur (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Jodhpur#Geography_and_climate",
+          "text": "Jodhpur has a hot desert climate (Köppen BWh), due to its very high potential evapotranspiration. Although the average rainfall is around , which falls mostly from June to September, it fluctuates greatly. In the famine year of 1899, Jodhpur received only , but in the flood year of 1917, it received as much as . Jojari river, a tributary of Luni River, flows from Banad to Salawas in Jodhpur Urban Area. A riverfront development project for the Jojari River, covering a 35 km stretch within the Jodhpur urban Area, was approved in January 2021 under the Namami Gange programme of the Ministry of Jal Shakti. Previously, the project was overseen by the Jodhpur Development Authority. Pin Code of Jodhpur is 342001 which comes under Jodhpur postal division (Jodhpur Region).\nTemperatures are extreme from March to October, except when the monsoonal rain produces thick clouds to lower it slightly. In April, May, and June, high temperatures routinely exceed 40 °C. During the monsoon season, average temperatures decrease slightly, but the city's generally low humidity rises, which adds to the perception of the heat.\nThe highest temperature recorded in Jodhpur was on 20 May 2016, when it rose to .\nJodhpur has been ranked 30th best “National Clean Air City” (under Category 1 >10L Population cities) in India."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Geography and climate",
+      "sectionWords": 216,
+      "leadWords": 208,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract mentions the stark landscape of the Thar Desert but states no climate mechanism, extreme, or paradox; a desert landscape label alone is not a sourceable climate clue",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "jodhpur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 272,
+    "place_id": "gn-2729907",
+    "input": {
+      "place": {
+        "place_id": "gn-2729907",
+        "name": "Longyearbyen",
+        "country": "Svalbard & Jan Mayen",
+        "subdivision": "Svalbard",
+        "lat": 78.22334,
+        "lon": 15.64689
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Longyearbyen",
+          "url": "https://en.wikipedia.org/wiki/Longyearbyen",
+          "text": "Longyearbyen (Urban East Norwegian: [ˈlɔ̀ŋjɛrˌbyːən], locally [ˈlɔ̀ŋjɑrˌbyːən], 'Longyear town') is one of the world's northernmost settlements, with an estimated population of around 2,400–2,800, and is the capital and largest settled area of Svalbard. It stretches along the foot of the left bank of the Longyear Valley and on the shore of Adventfjorden, the short estuary leading into Isfjorden on the west coast of Spitsbergen, the island's broadest inlet. As of 2002, Longyearbyen Community Council is an official Norwegian municipality. It is the seat of the Governor of Svalbard. As of 2024, the town's mayor is Leif Terje Aunevik.\nKnown as Longyear City until 1926, the town was established by and named after American John Munro Longyear, whose Arctic Coal Company started coal-mining there in 1906. Store Norske Spitsbergen Kulkompani (SNSK) took over the mining operations in 1916, and still conducts mining. The German Kriegsmarine almost completely destroyed the town on 8 September 1943, but rebuilding took place after the Second World War. Historically, Longyearbyen was a company town, but most mining operations moved to Sveagruva during the 1990s, and production ceased in 2017 due to immense financial losses suffered by SNSK since 2014 due to market conditions. Meanwhile, the town has seen a large increase in tourism and research. This includes the arrival of institutions such as the University Centre in Svalbard, the Svalbard Global Seed Vault and Svalbard Satellite Station. Svalbard Airport, Svalbard Church and the Svalbardbutikken department store serve the community."
+        },
+        {
+          "article": "Longyearbyen (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Longyearbyen#Climate",
+          "text": "Longyearbyen has a polar tundra climate (Köppen: ET, Trewartha: Ftkc) tempered by the North Atlantic Current. The west coast of Svalbard is the warmest and wettest part of the archipelago (except for Bear Island). This is caused by the convergence of mild and humid air from the south and cold air from the north. Longyearbyen generally has lower humidity than other settlements within the Arctic Circle. Longyearbyen experiences midnight sun from 18 April to 24 August (128 days), polar night from 27 October to 15 February (111 days), and civil polar night from 13 November to 29 January. However, due to shading from mountains, the sun is not visible in Longyearbyen until around 8 March. Snow typically covers the town from November to March. The warmest temperature ever recorded in Longyearbyen was in July 2020 Svalbard and Longyearbyen are among the places in the world that have warmed fastest in the latest decades.\n, Longyearbyen is the fastest-warming town in the world. Since 1971, temperatures on Svalbard have risen five times faster than the global average, by roughly . Winters now are more than warmer than they were in the 1970s. In 2020, Svalbard recorded its hottest ever temperature, , following 111 months of above-average heat. According to the Norwegian Meteorological Institute, annual precipitation on Svalbard has increased by 30 to 45 per cent over the past 50 years, mostly in the form of winter rain. Since 2009, deep permafrost temperatures have increased at rates between per year.\nAlthough Alert, Canada, likely has a lower average UV index, Longyearbyen has the lowest recorded average UV index for any current or previously inhabited place on Earth. Between April and September, the UV index typically ranges from 1 to 2, with May, June, and July having the highest UV index of 2. All other months average at 0, giving Longyearbyen a mean UV index of 0.75 over 12 months."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 317,
+      "leadWords": 243,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives northernmost-settlement status, fjord location and coal-mining history but no climate mechanism, extreme, or paradox; no climate description at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "longyearbyen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 273,
+    "place_id": "gn-3464975",
+    "input": {
+      "place": {
+        "place_id": "gn-3464975",
+        "name": "Curitiba",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -25.42778,
+        "lon": -49.27306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Curitiba",
+          "url": "https://en.wikipedia.org/wiki/Curitiba",
+          "text": "Curitiba ( KOOR-ih-CHEE-bə; Brazilian Portuguese: [kuɾiˈtʃibɐ]) is the capital and largest city in the state of Paraná in Southern Brazil. The city's population was 1,829,225 as of 2024, making it the eighth most populous city in Brazil and the largest in Brazil's South Region. The Curitiba metropolitan area comprises 29 municipalities with a total population of over 3,559,366, making it the ninth most populous metropolitan area in the country.\nThe city sits on a plateau at 932 m (3,058 ft) above sea level. It is located west of the seaport of Paranaguá and is served by the Afonso Pena International and Bacacheri airports. Curitiba is an important cultural, political, and economic center in Latin America and hosts the Federal University of Paraná, established in 1912.\nIn the 19th century, Curitiba's favorable location between cattle-breeding countryside and marketplaces led to a successful cattle trade and the city's first major expansion. Later, between 1850 and 1950, it grew due to logging and agricultural expansion in Paraná State (first Araucaria angustifolia logging, later mate and coffee cultivation and in the 1970s wheat, corn and soybean cultivation). In the 1850s, waves of European immigrants arrived in Curitiba, mainly Germans, Italians, Poles and Ukrainians, contributing to the city's economic and cultural development and richness in diversity. Nowadays, only small numbers of immigrants arrive, primarily from Middle Eastern and other South American countries.\nCuritiba's biggest expansion occurred after the 1960s, with innovative urban planning that allowed the population to grow from some hundreds of thousands to more than a million people. Curitiba's economy is based on industry and services and is the seventh largest in Brazil. Economic growth occurred in parallel to a substantial inward flow of Brazilians from other parts of the country, as approximately half of the city's population was not born in Curitiba.\nCuritiba is one of the 40 Brazilian cities with a very high Human Development Index (0.856) and in 2010 it was awarded the Global Sustainable City Award, given to cities and municipalities that excel in sustainable urban development. According to US magazine Reader's Digest, Curitiba is the best \"Brazilian Big City\" in which to live. Curitiba's crime rate is considered low by Brazilian standards and the city is considered one of the safest cities in Brazil for youth. The city is also regarded as the best in which to invest in Brazil. Curitiba was one of the host cities of the 1950 FIFA World Cup, and again for the 2014 FIFA World Cup. Curitiba’s unemployment rate was one of the lowest recorded in Brazil in 2025, at 4.3%, ranking third in terms of the economically active population, behind Palmas (TO) and Florianópolis (SC)."
+        },
+        {
+          "article": "Curitiba (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Curitiba#Climate",
+          "text": "]]\nCuritiba features a temperate oceanic climate (Köppen: Cfb, Trewartha: Cfbl). Its location on a plateau and the flat terrain with flooded areas contributes to its somewhat mild and damp winters, with an average minimum temperature of in July. Nighttime temperatures can drop below on the coldest days. Daytime temperatures in winter are usually pleasant, around . However, during cold snaps, daytime temperatures might not rise above , and on rare occasions, above .\nBecause it is located in a temperate zone, temperatures in Curitiba show marked seasonal variation, resulting in highly variable weather conditions in the city, especially during autumn and winter. Temperature variations over the course of a single day can also be significant, particularly in autumn and winter. The passage of frontal systems and air masses with different characteristics can cause rapid changes in atmospheric conditions. After the passage of a cold front, for example, temperatures may drop significantly; in other situations, the influence of dry air masses favors a large temperature range between the early morning hours and the afternoon.\nDuring winter, cold days are common due to the passage of polar air masses, alternating with days of large temperature ranges or even warm days, caused by the advance of the dry air mass that settles over the interior of Brazil at this time of year. During summer, the significant altitude, combined with the rainfall typical of the season, helps prevent temperatures—both minimum and maximum—from rising excessively. Autumn and spring are transitional seasons.\nSnowfall was experienced in 1889, 1892, 1912, 1928 (snowstorm, two days), 1942, 1955, 1957, 1962, 1975, 1988, 2013 and 2020. Huge accumulation, however, is rarer.\nDuring summertime, the average temperature is around at daytime, but it can get above on the hottest days. However, temperatures above at night are rare.\nThe terrain's flatness hinders water drainage after rain, therefore providing water vapor for the atmosphere. Cold fronts come year round, often from Antarctica and Argentina, bringing extratropical cyclones , and cold winds and frost in the winter. They can move very quickly, with no more than one day between the start of the southern winds and the start of rain. Curitiba's weather is also influenced by the dry air masses that dominate Brazil's midwest most of the year, bringing hot and dry weather, sometimes even in winter."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 384,
+      "leadWords": 443,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives plateau elevation, cattle trade, logging and immigration history but no climate mechanism, extreme, or paradox; no climate description at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "curitiba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 274,
+    "place_id": "gn-3608248",
+    "input": {
+      "place": {
+        "place_id": "gn-3608248",
+        "name": "La Ceiba",
+        "country": "Honduras",
+        "subdivision": "Atlántida Department",
+        "lat": 15.75971,
+        "lon": -86.78221
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Ceiba",
+          "url": "https://en.wikipedia.org/wiki/La_Ceiba",
+          "text": "La Ceiba (Spanish pronunciation: [la ˈsejβa]) is a municipality, the capital of the Honduran department of Atlántida and a port city on the northern coast of Honduras in Central America. It is located on the southern edge of the Caribbean, forming part of the south eastern boundary of the Gulf of Honduras. With an estimated population of 209,000 living in approximately 170 residential areas (called colonias or barrios), it is the fourth most populous and third most important city in the country.\nLa Ceiba was officially founded on 23 August 1877. The city was named after a giant ceiba tree that grew near the old dock. The city has been officially proclaimed the \"Eco-Tourism Capital of Honduras,\" as well as the \"Entertainment Capital of Honduras\". Every year, on the third or fourth Saturday of May, the city holds its famous carnival to commemorate Isidore the Laborer (Spanish San Isidro Labrador), which is attended by approximately 500,000 tourists."
+        },
+        {
+          "article": "La Ceiba (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/La_Ceiba#Climate",
+          "text": "La Ceiba features a tropical monsoon climate (Köppen Am), with substantial rainfall throughout the course of the year. Due to its northerly aspect, there is a peak between October and February when the trade winds are strongest and extreme orographic rainfalls occur. The average annual rainfall is about , making it one of the wettest cities in Central America, second only to Colón, Panama among urbanised areas with more than 100,000 people."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 72,
+      "leadWords": 157,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Caribbean port location, 1877 founding and carnival facts but no climate mechanism, extreme, or paradox; no climate description at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "la ceiba",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ceiba",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 275,
+    "place_id": "gn-3644768",
+    "input": {
+      "place": {
+        "place_id": "gn-3644768",
+        "name": "Cumaná",
+        "country": "Venezuela",
+        "subdivision": "Sucre",
+        "lat": 10.4639,
+        "lon": -64.17859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cumaná",
+          "url": "https://en.wikipedia.org/wiki/Cuman%C3%A1",
+          "text": "Cumaná (Spanish pronunciation: [kumaˈna]) is the capital city of Venezuela's Sucre State. It is located 402 kilometres (250 mi) east of Caracas. Cumaná was one of the first cities founded by Spain in the mainland Americas and is the oldest continuously-inhabited Hispanic-established city in South America. Its early history includes several successful counters by the indigenous people of the area who were attempting to prevent Spanish incursion into their land, resulting in the city being refounded several times. The municipality of Sucre, which includes the capital city, Cumaná, had a population of 358,919 at the 2011 Census; the latest estimate (as of mid-2016) is 423,546.\nThe city is located at the mouth of the Manzanares River on the Caribbean coast, in the northeast of Venezuela. It is home to the first and most important of the five campuses of the Universidad de Oriente, and is a busy maritime port, home to one of the largest tuna fleets in Venezuela. The city is close to Mochima National Park, whose beaches are a popular tourist destination among Venezuelans.\nKey heroes of and contributors to the Venezuelan independence movement were born in Cumaná, including Antonio José de Sucre, the 'Gran Mariscal de Ayacucho', a leading general who also served as president of Bolivia and president of Peru. Cumaná is also the birthplace of eminent poets, writers, and politicians like Andrés Eloy Blanco, an important figure in Latin American literature who later rose to the national political scene, as well as José Antonio Ramos Sucre, another distinguished poet and diplomat. Several significant scientists, including Pehr Löfling from Sweden, Alexander von Humboldt from Germany, and Aimé Bonpland from France accomplished experimental works and discoveries while visiting or living in Cumaná in the 18th century. The city is also home to a Toyota plant, which manufactured from 1981 to 2013 the Hilux and Toyota Fortuner."
+        },
+        {
+          "article": "Cumaná (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Cuman%C3%A1#Climate",
+          "text": "Cumaná has a hot semi-arid climate (Köppen: BSh), narrowly bordering a tropical savanna climate (Aw)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 15,
+      "leadWords": 309,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Caribbean coast location at a river mouth and early Spanish-founded history but no climate mechanism, extreme, or paradox; no climate description at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "cumana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 276,
+    "place_id": "gn-5894171",
+    "input": {
+      "place": {
+        "place_id": "gn-5894171",
+        "name": "Barrie",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.40011,
+        "lon": -79.66634
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barrie",
+          "url": "https://en.wikipedia.org/wiki/Barrie",
+          "text": "Barrie is a city in Central Ontario, Canada, about 90 kilometres (56 mi) north of Toronto. The city is located along the shores of Kempenfelt Bay and geographically within Simcoe County, although it is a single-tier municipality that is politically independent from the surrounding county.\nThe city is part of the extended urban area in Southern Ontario known as the Greater Golden Horseshoe. As of the 2021 census, the city's population was 147,829, while the census metropolitan area had a population of 212,856 residents. The area was first settled during the War of 1812 as a supply depot for British forces, and Barrie was named after Sir Robert Barrie. The city has grown significantly in recent decades due to the emergence of the technology industry.\nIt is connected to the Greater Golden Horseshoe by Highway 400 and GO Transit's Barrie line. Significant sectors of the city's diversified economy include education, healthcare, information technology, and manufacturing. Communities to its south, particularly Innisfil, New Tecumseth, and Newmarket have developed rapidly since the turn of the 21st century. The city is notable for being one of the centres of the 1985 United States–Canada tornado outbreak."
+        },
+        {
+          "article": "Barrie (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Barrie#Climate",
+          "text": "Barrie has a humid continental climate (Köppen climate classification Dfb), with warm, humid summers, and cold, snowy winters.\nWinters are cold with frequent snowfall, the January average high temperature being , with a mean temperature of . Barrie is located in a snowbelt, a region that experiences regular lake-effect snow every year. Snow squalls are a common occurrence between November and January when the water temperature is often higher than the cold air passing over Lake Huron and Georgian Bay. The city averages of snow annually, the brunt of which coming from lake-effect snow events. Alberta clippers and Colorado lows also generate ample snowfall in the region. Snow cover begins to build by the end of November, accumulating through December, and then lies through the end of February. March sees the spring thaw commence, with the snow cover being essentially gone by the beginning of April. Temperatures commonly drop to and occasionally drop to on the coldest nights of the year.\nSummers in Barrie are warm with sometimes short stretches of hot, humid conditions. The average temperature in July is .Thunderstorms are very common in the summer months in Barrie due to the city being in a Great Lakes breeze convergence zone. Also a result, there storms are occasionally severe, bringing with them torrential rain, very strong winds and hail. Tornadoes are generally rare in the city however the deadly F4 rated Tornado did strike Barrie. In July 2021, an EF2 Tornado also hit the city. Barrie's average frost-free period is from May 26 to September 16, allowing a growing season of 113 days.\nPrecipitation falls year round but is typically heaviest in the summer months due to thunderstorm activity. The driest months are February through April, receiving around of precipitation each month per annum. The wettest months are August and September, seeing upwards of of precipitation each month. November is also a wet month, receiving of precipitation in the form of both rain and snow. October remains relatively dry in comparison to the months preceding and succeeding it. Despite this however, October has the most precipitation days and rainy days out of every month with 15.6 and 15.5 respectively.\nThe coldest temperature ever recorded in Barrie was on January 8, 1886. The hottest temperature ever recorded was on July 5, 1911."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 382,
+      "leadWords": 192,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives lake-shore location north of Toronto and War of 1812 origin; its only weather fact is being a centre of the 1985 tornado outbreak, a one-off historical weather event which does not qualify as climate, with no mechanism, extreme pattern, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox describing a recurring climate pattern, not a single tornado outbreak"
+    },
+    "banned_terms": [
+      {
+        "term": "barrie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 277,
+    "place_id": "gn-8556321",
+    "input": {
+      "place": {
+        "place_id": "gn-8556321",
+        "name": "La Ceiba",
+        "country": "Honduras",
+        "subdivision": "Atlántida Department",
+        "lat": 15.76667,
+        "lon": -86.83333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Ceiba",
+          "url": "https://en.wikipedia.org/wiki/La_Ceiba",
+          "text": "La Ceiba (Spanish pronunciation: [la ˈsejβa]) is a municipality, the capital of the Honduran department of Atlántida and a port city on the northern coast of Honduras in Central America. It is located on the southern edge of the Caribbean, forming part of the south eastern boundary of the Gulf of Honduras. With an estimated population of 209,000 living in approximately 170 residential areas (called colonias or barrios), it is the fourth most populous and third most important city in the country.\nLa Ceiba was officially founded on 23 August 1877. The city was named after a giant ceiba tree that grew near the old dock. The city has been officially proclaimed the \"Eco-Tourism Capital of Honduras,\" as well as the \"Entertainment Capital of Honduras\". Every year, on the third or fourth Saturday of May, the city holds its famous carnival to commemorate Isidore the Laborer (Spanish San Isidro Labrador), which is attended by approximately 500,000 tourists."
+        },
+        {
+          "article": "La Ceiba (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/La_Ceiba#Climate",
+          "text": "La Ceiba features a tropical monsoon climate (Köppen Am), with substantial rainfall throughout the course of the year. Due to its northerly aspect, there is a peak between October and February when the trade winds are strongest and extreme orographic rainfalls occur. The average annual rainfall is about , making it one of the wettest cities in Central America, second only to Colón, Panama among urbanised areas with more than 100,000 people."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 72,
+      "leadWords": 157,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Caribbean port location, 1877 founding and carnival facts but no climate mechanism, extreme, or paradox; no climate description at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "la ceiba",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ceiba",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 278,
+    "place_id": "gn-890299",
+    "input": {
+      "place": {
+        "place_id": "gn-890299",
+        "name": "Harare",
+        "country": "Zimbabwe",
+        "subdivision": "Harare",
+        "lat": -17.82772,
+        "lon": 31.05337
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harare",
+          "url": "https://en.wikipedia.org/wiki/Harare",
+          "text": "Harare ( hə-RAR-eh) is the capital and largest city of Zimbabwe. The city proper has an area of 982.3 km2 (379.3 sq mi), a population of 1,849,600 as of the 2022 census, and an estimated 2,487,209 people in its metropolitan province. The city is situated in north-eastern Zimbabwe in the country's Mashonaland region. Harare Metropolitan Province incorporates the city and the municipalities of Chitungwiza, Epworth and Ruwa. The city sits on a plateau at an elevation of 1,483 metres (4,865 feet) above sea level, and its climate falls into the subtropical highland category.\nThe city was founded in 1890 by the Pioneer Column, a small military force of the British South Africa Company, and was named Fort Salisbury after the British Prime Minister Lord Salisbury. Company administrators demarcated the city and ran it until Southern Rhodesia achieved responsible government in 1923. Salisbury was thereafter the seat of the Southern Rhodesian (later Rhodesian) government and, between 1953 and 1963, the capital of the Central African Federation. It retained the name Salisbury until 1982 when it was renamed Harare on the second anniversary of Zimbabwe's independence from the United Kingdom. The national parliament moved out of Harare upon completion of the New Parliament Building in Mount Hampden in April 2022.\nBeing the commercial capital of Zimbabwe, it remains an important center of commerce and government, as well as finance, real estate, manufacturing, healthcare, education, art, culture, tourism, agriculture, mining and regional affairs. Harare had the African headquarters of the World Health Organization up to 2006.\nHarare has hosted multiple international conferences and events, including the 1995 All-Africa Games and the 2003 Cricket World Cup. In 2018, Harare was ranked as a Gamma World City. It is also home to Dynamos FC, the club with the most titles in Zimbabwean football."
+        },
+        {
+          "article": "Harare (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Harare#Climate",
+          "text": "trees in Montagu Ave, Salisbury in 1975]]\nUnder the Köppen climate classification, Harare has a subtropical highland climate (Köppen Cwb), an oceanic climate variety. Because the city is situated on a plateau, its high altitude and cool south-easterly airflow cause it to have a climate that is cooler and drier than a tropical or subtropical climate.\nThe average annual temperature is , rather low for the tropics. This is due to its high altitude position and the prevalence of a cool south-easterly airflow.\nThere are three main seasons: a warm, wet summer from November to March/April; a cool, dry winter from May to August (corresponding to winter in the Southern Hemisphere); and a warm to hot, dry season in September/October. Daily temperature ranges are about in July (the coldest month), about in October (the hottest month) and about in January (midsummer). The hottest year on record was 1914 with and the coldest year was 1965 with .\nThe average annual rainfall is about in the southwest, rising to on the higher land of the northeast (from around Borrowdale to Glen Lorne). Very little rain typically falls during the period May to September, although sporadic showers occur most years. Rainfall varies a great deal from year to year and follows cycles of wet and dry periods from 7 to 10 years long. Records begin in October 1890 but all three Harare stations stopped reporting in early 2004.\nThe climate supports a natural vegetation of open woodland. The most common tree of the local region is the Msasa Brachystegia spiciformis that colours the landscape wine red with its new leaves in late August. Two introduced species of trees, the jacaranda and the flamboyant from South America and Madagascar respectively, which were introduced during the colonial era, contribute to the city's colour palette with streets lined with either the lilac blossoms of the jacaranda or the flame red blooms from the flamboyant. They flower in October/November and are planted on alternative streets in the capital. Also prevalent is bougainvillea. Some trees from Northern Hemisphere middle latitudes are also cultivated, including American sweetgum, English oak, Japanese oak and Spanish oak."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 356,
+      "leadWords": 298,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract only states its climate falls into the subtropical highland category, a bare classification with no mechanism, extreme, or paradox verbatim-traceable to the extract",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox beyond the subtropical highland classification"
+    },
+    "banned_terms": [
+      {
+        "term": "harare",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

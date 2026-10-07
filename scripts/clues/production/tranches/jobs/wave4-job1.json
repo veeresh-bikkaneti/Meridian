@@ -1,0 +1,737 @@
+[
+  {
+    "rank": 2938,
+    "place_id": "gn-3717546",
+    "input": {
+      "place": {
+        "place_id": "gn-3717546",
+        "name": "Saint-Raphaël",
+        "country": "Haiti",
+        "subdivision": "Nord",
+        "lat": 19.43877,
+        "lon": -72.1991
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Raphaël, Haiti",
+          "url": "https://en.wikipedia.org/wiki/Saint-Raphaël,_Haiti",
+          "text": "Saint-Raphaël (French pronunciation: [sɛ̃ ʁafaɛl] ; Haitian Creole: Sen Rafayèl) is a commune in the Saint-Raphaël Arrondissement, Nord department of Haiti. It is the seat of Saint-Raphaël Arrondissement.\nSaint-Raphaël is located at the intersection of Route 307 and National Route 3 between Cap-Haïtien and Hinche.\nIn plantations in Saint-Raphael, workers harvest green, bitter oranges, quarter them and then separate the peel from the pulp by hand. The peels are dried in the sun and then shipped to France, where they are macerated, distilled and blended with other ingredients to produce the world-famous liqueurs Grand Marnier and Cointreau manufactured by the French companies, Société des Produits Marnier-Lapostolle and Rémy Cointreau.\nIt was founded as San Rafael de La Angostura in 1761 by Canary Island colonists, mostly from Gran Canaria, although some important canaries came from the nearby town of Hinche."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "saint raphael",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "raphael",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2939,
+    "place_id": "gn-4562485",
+    "input": {
+      "place": {
+        "place_id": "gn-4562485",
+        "name": "Adjuntas",
+        "country": "Puerto Rico",
+        "subdivision": "Adjuntas",
+        "lat": 18.16274,
+        "lon": -66.72212
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Adjuntas, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Adjuntas,_Puerto_Rico",
+          "text": "Adjuntas (Spanish pronunciation: [aðˈxuntas]) is a small mountainside town and municipality in Puerto Rico located in the central midwestern portion of the island on the Cordillera Central, north of Yauco, Guayanilla, and Peñuelas; southeast of Utuado; east of Lares and Yauco; and northwest of Ponce. Adjuntas is spread over 16 barrios and Adjuntas Pueblo (the downtown area and the administrative center of the city). Adjuntas is about two hours by car westward from the capital, San Juan.\nAdjuntas is nicknamed \"the Switzerland of Puerto Rico\" because of its relatively chilly weather. Many Puerto Rican mountain towns have cooler weather than the rest of the island; Adjuntas is no exception: the average yearly weather is 70 °F (21 °C) (High: 83 °F/28 °C; Low: 58 °F/14 °C). Puerto Rico's lowest temperature were recorded in Adjuntas at 38 °F in 2018."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "adjuntas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2941,
+    "place_id": "gn-1730398",
+    "input": {
+      "place": {
+        "place_id": "gn-1730398",
+        "name": "Aparri",
+        "country": "Philippines",
+        "subdivision": "Cagayan Valley",
+        "lat": 18.3566,
+        "lon": 121.6406
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aparri",
+          "url": "https://en.wikipedia.org/wiki/Aparri",
+          "text": "Aparri, officially the Municipality of Aparri (Ibanag: Ili nat Aparri, Ilocano: Ili ti Aparri, Tagalog: Bayan ng Aparri), is a municipality in the province of Cagayan, Philippines. According to the 2024 census, it has a population of 68,368 people.\nThe town is a bustling municipality and the primary growth center of northern Cagayan. It serves as the center of education, commerce and culture in the northern part of the region, which includes towns of the first and second districts of Cagayan, as well as the towns of Apayao and some towns of Ilocos Norte. It serves as the show window of commerce and finance, economic transformation, information technology, livelihood development, fashion and culture, leisure and entertainment, agricultural modernization, and good local governance.\nThere is a meteorological station in Barangay Punta where the Cagayan River meets the Babuyan Channel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "aparri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2950,
+    "place_id": "gn-5799841",
+    "input": {
+      "place": {
+        "place_id": "gn-5799841",
+        "name": "Kirkland",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.68149,
+        "lon": -122.20874
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kirkland, Washington",
+          "url": "https://en.wikipedia.org/wiki/Kirkland,_Washington",
+          "text": "Kirkland is a city in King County, Washington, United States. A suburb east of Seattle, its population was 92,175 in the 2020 U.S. census which made it the sixth largest city in King County and the twelfth largest city in the state of Washington.\nThe city's downtown waterfront has restaurants, art galleries, a performing arts center, public parks, beaches, and a collection of public art that includes bronze sculptures.\nKirkland was the original home of the Seattle Seahawks; the NFL team's headquarters and training facility were located at the Lake Washington Shipyard (now Carillon Point) along Lake Washington for their first ten seasons (1976–85), then at nearby Northwest University through 2007. Warehouse chain Costco previously had its headquarters in Kirkland. While Costco is now headquartered in Issaquah, the city is the namesake of its \"Kirkland Signature\" store brand."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "kirkland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2953,
+    "place_id": "gn-757692",
+    "input": {
+      "place": {
+        "place_id": "gn-757692",
+        "name": "Świdnik",
+        "country": "Poland",
+        "subdivision": "Lublin",
+        "lat": 51.21898,
+        "lon": 22.69621
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Świdnik",
+          "url": "https://en.wikipedia.org/wiki/Świdnik",
+          "text": "Świdnik (Polish pronunciation: [ˈɕfidɲik]) is a town in southeastern Poland with 40,186 inhabitants (2012), situated in the Lublin Voivodeship, 10 kilometres (6 miles) southeast of the city of Lublin. It is the capital of Świdnik County. Świdnik belongs to the historic province of Lesser Poland, and was first mentioned in historical records in the year 1392. It remained a village until the end of the 19th century when it began to develop as a spa, due to its location and climate.\n\nIn the early Middle Ages, the area of Świdnik was under the authority of a castellan from nearby Lublin. In the location of the current city three villages existed: Adampol, Świdnik and Krępiec (the name of the city itself was later taken from the village which was located in the immediate vicinity of the PZL Świdnik factory)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "swidnik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2954,
+    "place_id": "gn-898905",
+    "input": {
+      "place": {
+        "place_id": "gn-898905",
+        "name": "Sesheke",
+        "country": "Zambia",
+        "subdivision": "Western Province",
+        "lat": -17.47593,
+        "lon": 24.29684
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sesheke",
+          "url": "https://en.wikipedia.org/wiki/Sesheke",
+          "text": "Sesheke is a border town in the Western Province of Zambia, in a district of the same name. It lies on the northern bank of the Zambezi River which forms the border with Namibia's Caprivi Strip at that point.\nThe Katima Mulilo Bridge, completed in May 2004, spans the river here, connecting Sesheke with the Namibian border town of Katima Mulilo on the southern bank of the Zambezi. The M10 road, which connects Sesheke to Livingstone and the Victoria Falls 200 km to the east, was upgraded in 2004. The new bridge and road were financed by German donor bank Kreditanstalt für Wiederaufbau and were the last missing link in the \"Trans Caprivi Corridor\" (today known as the Walvis Bay-Ndola-Lubumbashi Development Road). This 2500 km long asphalt road now connects Zambia's Copperbelt with Namibia's sea port (Walvis Bay)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "sesheke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2955,
+    "place_id": "gn-1733468",
+    "input": {
+      "place": {
+        "place_id": "gn-1733468",
+        "name": "Tambunan",
+        "country": "Malaysia",
+        "subdivision": "Sabah",
+        "lat": 5.71667,
+        "lon": 116.4
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tambunan",
+          "url": "https://en.wikipedia.org/wiki/Tambunan",
+          "text": "Tambunan (Malay: Pekan Tambunan) is the capital of Tambunan District in the Interior Division of Sabah, Malaysia. Its population was estimated to be around 2,553 in 2010. The town is located 80 kilometres (50 miles) east of the state capital, Kota Kinabalu (to which is connected by the Malaysia Federal Route 500), 63 kilometres (39 miles) south of Ranau and 49 kilometres (30 miles) north of Keningau. At an average altitude of 750 metres (820 yards), the valley town, which is part of the Crocker Range, experiences a mild tropical climate all year long. The valley is peppered with terraced paddy fields and 70 villages. The dense forests of bamboo around Tambunan are a legacy of the British colonial period, during which an edict stated that 20 bamboo sprouts had to be planted for every bamboo cut."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "tambunan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2963,
+    "place_id": "gn-2648997",
+    "input": {
+      "place": {
+        "place_id": "gn-2648997",
+        "name": "Fulham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.48026,
+        "lon": -0.1993
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fulham",
+          "url": "https://en.wikipedia.org/wiki/Fulham",
+          "text": "Fulham () is an area of the London Borough of Hammersmith and Fulham in West London, England, 3.7 miles (6.0 km) southwest of Charing Cross. It lies in a loop on the north bank of the River Thames, bordering Hammersmith, Kensington and Chelsea, with which it shares the area known as West Brompton. Over the Thames, Fulham faces Wandsworth, Putney, the London Wetland Centre in Barnes in the London Borough of Richmond upon Thames.\nFirst recorded by name in 691, it was an extensive Anglo-Saxon estate, the Manor of Fulham, and then a parish. Its domain stretched from modern-day Chiswick in the west to Chelsea in the southeast; and from Harlesden in the northwest to Kensal Green in the northeast bordered by the littoral of Counter's Creek and the Manor of Kensington. It originally included today's Hammersmith."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "fulham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2973,
+    "place_id": "gn-6317166",
+    "input": {
+      "place": {
+        "place_id": "gn-6317166",
+        "name": "Fraiburgo",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -27.02611,
+        "lon": -50.92139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fraiburgo",
+          "url": "https://en.wikipedia.org/wiki/Fraiburgo",
+          "text": "Fraiburgo (nicknamed  Frai) is a Brazilian municipality located in the countryside of the Santa Catarina state. The city is strongly influenced by European immigrants, especially Germans and Italians. However, other nationalities also contributed to the formation of the city's character in terms of e.g.: architecture, gastronomy, religion and economy, amongst other factors. Its multiculturality is a remarkable characteristic not exclusively attributed to Fraiburgo but many other Southern Brazilian municipalities.\nThe city is famous in Brazil for the large production of apples which its plantation is favored by the low temperatures in the winter season in the Southern Hemisphere that takes place in July, August and September. Depending on the period of the year tourists can experience first-hand the whole apple production cycle as well other products made from apple such as: cider, juices, snacks and so forth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "fraiburgo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2979,
+    "place_id": "gn-2636534",
+    "input": {
+      "place": {
+        "place_id": "gn-2636534",
+        "name": "Sunbury-on-Thames",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.40424,
+        "lon": -0.41817
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunbury-on-Thames",
+          "url": "https://en.wikipedia.org/wiki/Sunbury-on-Thames",
+          "text": "Sunbury-on-Thames, known locally as Sunbury, is a town on the north bank of the River Thames in the Borough of Spelthorne, Surrey, England, 13 mi (21 km) southwest of central London. Sunbury and other surrounding towns, historically part of the county of Middlesex, were in 1965 intended to form part of the newly created county of Greater London, but were instead transferred to Surrey. Sunbury adjoins Feltham to the north, Hampton to the east, Ashford to the northwest and Shepperton to the southwest. Walton-on-Thames is to the south, on the opposite bank of the Thames.\nThe town has two main focal points: Lower Sunbury (known locally as Sunbury Village), adjoining the river. Sunbury Common (known locally as Sunbury Cross) is to the north and surrounds the railway station and the London end of the M3 motorway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "sunbury on thames",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sunbury",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "on",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "thames",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2983,
+    "place_id": "gn-2747596",
+    "input": {
+      "place": {
+        "place_id": "gn-2747596",
+        "name": "Schiedam",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.91917,
+        "lon": 4.38889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schiedam",
+          "url": "https://en.wikipedia.org/wiki/Schiedam",
+          "text": "Schiedam (Dutch pronunciation: [sxiˈdɑm] ) is a town and municipality in the west of the Netherlands. It is located in the Rotterdam–The Hague metropolitan area, west of the city Rotterdam, east of the town Vlaardingen, and south of the city Delft. In the south, Schiedam is also connected to the village of Pernis via the Benelux tunnel.\nThe town's historical center is ringed with canals and contains the tallest windmill in the world.\nSchiedam is a centre for the production of jenever, including as the internationally renowned Ketel One; in French and English, the word schiedam (usually without a capital s-) refers to the town's jenever. This was the town's main industry during the early Industrial Revolution in the 18th and 19th century, a period to which it owed its former nickname \"Zwart Nazareth\"  (\"Black Nazareth\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "schiedam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2989,
+    "place_id": "gn-3944797",
+    "input": {
+      "place": {
+        "place_id": "gn-3944797",
+        "name": "Cerro de Pasco",
+        "country": "Peru",
+        "subdivision": "Pasco",
+        "lat": -10.66577,
+        "lon": -76.25309
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cerro de Pasco",
+          "url": "https://en.wikipedia.org/wiki/Cerro_de_Pasco",
+          "text": "Cerro de Pasco is a city in central Peru, located at the top of the Andean Mountains. It is the capital of both the Pasco Province and the Department of Pasco, and an important mining center of silver, copper, zinc and lead. At an elevation of 4,330 metres (14,210 ft), it is one of the highest cities in the world, and with a population of 58,899, it is the highest or the second highest city with over 50,000 inhabitants. The elevation reaches up to 4,380 metres (14,370 ft) in the Yanacancha area. The city has a very intense cold climate and it is connected by road and by rail (via Ferrocarril Central Andino) to the capital Lima, 300 kilometres (190 mi) away. Its urban area is formed by the districts of Chaupimarca, Yanacancha and Simón Bolívar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "cerro de pasco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cerro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pasco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2997,
+    "place_id": "gn-2096742",
+    "input": {
+      "place": {
+        "place_id": "gn-2096742",
+        "name": "Goroka",
+        "country": "Papua New Guinea",
+        "subdivision": "Eastern Highlands Province",
+        "lat": -6.085,
+        "lon": 145.38667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Goroka",
+          "url": "https://en.wikipedia.org/wiki/Goroka",
+          "text": "Goroka is the capital of the Eastern Highlands Province of Papua New Guinea. It is a town of approximately 29,333 people (2021), 1,600 meters (5,200 feet) above sea level. It has an airport (in the centre of town) and is on the \"Highlands Highway\", about 285 km (177 mi) from Lae in Morobe province and 90 km (56 mi) from the nearby town of Kainantu also in the Eastern Highlands. Other nearby towns include Kundiawa in Simbu Province and Mount Hagen in Western Highlands Province. It has a mild climate, known as a \"perpetual Spring\".\nIt is the home of several national institutions: CRMF Christian Radio Missionary Fellowship, the PNG Institute of Medical Research, the National Film Institute, the Liturgical Catechetical Institute, the Melanesian Institute, the Raun Raun Theatre Company and the University of Goroka."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "goroka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3010,
+    "place_id": "gn-5380668",
+    "input": {
+      "place": {
+        "place_id": "gn-5380668",
+        "name": "Palm Springs",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.8303,
+        "lon": -116.54529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palm Springs, California",
+          "url": "https://en.wikipedia.org/wiki/Palm_Springs,_California",
+          "text": "Palm Springs (Cahuilla: Séc-he) is a desert resort city in Riverside County, California, United States, within the Colorado Desert's Coachella Valley. The city covers approximately 94 square miles (240 km2), making it the largest city in Riverside County by land area. With multiple plots in checkerboard pattern, more than 10% of the city is part of the Agua Caliente Band of Cahuilla Indians reservation land and is the administrative capital of the most populated reservation in California.\nThe population of Palm Springs was 44,575 as of the 2020 census, but because Palm Springs is a retirement location and a winter snowbird destination, the city's population triples between November and March. The majority of the snowbirds are Canadians.\nThe city is noted for its mid-century modern architecture, design elements, arts and cultural scene, and recreational activities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "palm springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "palm",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3011,
+    "place_id": "gn-5710756",
+    "input": {
+      "place": {
+        "place_id": "gn-5710756",
+        "name": "Albany",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 44.63651,
+        "lon": -123.10593
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Albany, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Albany,_Oregon",
+          "text": "Albany ( AL-bə-nee) is a city in and the county seat of Linn County, Oregon, and is the 11th most populous city in the state. Albany is located in the Willamette Valley at the confluence of the Calapooia River and the Willamette River in both Linn and Benton counties, just east of Corvallis and south of Salem. It is predominantly a farming and manufacturing city that settlers founded around 1848. As of the 2020 United States census, the population of Albany, Oregon was 56,472.\nAlbany has a home rule charter, a council–manager government, and a full-time unelected city manager. The city provides the population with access to over 30 parks and trails, a senior center, and many cultural events such as the Northwest Art & Air Festival, River Rhythms, Summer Sounds and Movies at Monteith."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "albany",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3019,
+    "place_id": "gn-2649578",
+    "input": {
+      "place": {
+        "place_id": "gn-2649578",
+        "name": "Felling",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.95297,
+        "lon": -1.57152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Felling, Tyne and Wear",
+          "url": "https://en.wikipedia.org/wiki/Felling,_Tyne_and_Wear",
+          "text": "Felling is a town in the Metropolitan Borough of Gateshead in Tyne and Wear, England. Historically part of County Durham, the town became part of the metropolitan borough of Gateshead in 1974. It lies on the B1426 Sunderland Road and the A184 Felling bypass, less than 1 mile (1.6 km) east of Gateshead, 1 mile (1.6 km) south east of Newcastle-upon-Tyne and 10 miles north west of the City of Sunderland. In 2011, Felling had a population of 8,908.\nThe three distinct settlements at Low Felling, High Felling and Felling Shore amalgamated with other surrounding villages to form the town of Felling, which was administered by the Felling Urban District Council. The areas covered by Felling council were Felling, High Felling, Windy Nook, Whitehills Estate, Leam-Lane Estate, Pelaw, Wardley, Heworth, Bill Quay and Follingsby."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "felling",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3021,
+    "place_id": "gn-2653947",
+    "input": {
+      "place": {
+        "place_id": "gn-2653947",
+        "name": "Camberley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.33705,
+        "lon": -0.74261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Camberley",
+          "url": "https://en.wikipedia.org/wiki/Camberley",
+          "text": "Camberley  is a town in north-west Surrey, England, around 29 miles (47 kilometres) south-west of central London. It is in the Borough of Surrey Heath and is close to the county boundaries with Hampshire and Berkshire. Known originally as \"Cambridge Town\", it was assigned its current name by the General Post Office in 1877.\nUntil the start of the 19th century, the area was a sparsely populated area of infertile land known as Bagshot or Frimley Heath. Following the construction of the Royal Military College at Sandhurst in 1812, a small settlement grew up to the south and became known as Yorktown (also spelled York Town). A second British Army institute, the Staff College, opened to the east in 1862, and the nucleus of Cambridge Town was laid out at around the same time."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "camberley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3034,
+    "place_id": "gn-5655240",
+    "input": {
+      "place": {
+        "place_id": "gn-5655240",
+        "name": "Great Falls",
+        "country": "United States",
+        "subdivision": "Montana",
+        "lat": 47.50024,
+        "lon": -111.30081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Great Falls, Montana",
+          "url": "https://en.wikipedia.org/wiki/Great_Falls,_Montana",
+          "text": "Great Falls is the third most populous city in the U.S. state of Montana and the county seat of Cascade County. The population was 60,442 according to the 2020 census. The city covers an area of 22.9 square miles (59 km2) and is the principal city of the Great Falls, Montana, Metropolitan Statistical Area, which encompasses all of Cascade County. The Great Falls MSA's population was 84,414 according to the 2020 census.\nA cultural, commercial and financial center in the central part of the state, Great Falls is located just east of the Rocky Mountains and is bisected by the Missouri River. It is 180 miles (290 km) from the eastern entrance to Glacier National Park in northern Montana, and 264 miles (425 km) from Yellowstone National Park in southern Montana and northern Wyoming."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "great falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "great",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3037,
+    "place_id": "gn-1280517",
+    "input": {
+      "place": {
+        "place_id": "gn-1280517",
+        "name": "Nagqu",
+        "country": "China",
+        "subdivision": "Tibet",
+        "lat": 31.47678,
+        "lon": 92.05729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nagqu",
+          "url": "https://en.wikipedia.org/wiki/Nagqu",
+          "text": "Nagqu (also Naqu, Nakchu,  or Nagchu; Tibetan: ནག་ཆུ།, Wylie: Nag-chu, ZWPY: Nagqu; Chinese: 那曲; lit. 'black river') is a prefecture-level city in the north of the Autonomous Prefecture of Tibet. On May 7, 2018, the former Nagqu Prefecture was officially declared the sixth prefecture-level city in Tibet after Lhasa, Shigatse, Chamdo, Nyingchi and Shannan. The regional area, covering an area of 450,537 km2 (173,953 sq mi),  is bordered by Bayingolin and Hotan Prefectures of Xinjiang to the north, Haixi, Yushu Prefectures of Qinghai and Chamdo to the east, Nyingchi, Lhasa and Shigatse to the south, Ngari Prefecture to the west. As of the 2010 census, it had a population of 462,381. Since its official establishment in 2018, it is the largest prefecture-level city by area in the world, being slightly larger than Sweden."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "nagqu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3044,
+    "place_id": "gn-2656396",
+    "input": {
+      "place": {
+        "place_id": "gn-2656396",
+        "name": "Bangor",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.66079,
+        "lon": -5.66802
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bangor, County Down",
+          "url": "https://en.wikipedia.org/wiki/Bangor,_County_Down",
+          "text": "Bangor (  BANG-gər; from Irish Beannchar [ˈbʲaːn̪ˠəxəɾˠ]) is a seaside city and civil parish in County Down, Northern Ireland, on the southern side of Belfast Lough. It is within the Belfast metropolitan area and is 13 miles (22 km) east of Belfast city centre, to which it is linked by the A2 road and the Belfast–Bangor railway line. The population was 64,596 at the 2021 census. \nBangor Abbey was an important and influential monastery founded in the 6th century by Saint Comgall. Bangor grew during the 17th century Plantation of Ulster, when many Scottish settlers arrived. Today, tourism is important to the local economy, particularly in the summer months, and plans are being made for the long-delayed redevelopment of the seafront; a notable historical building in the city is Bangor Old Custom House."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "bangor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

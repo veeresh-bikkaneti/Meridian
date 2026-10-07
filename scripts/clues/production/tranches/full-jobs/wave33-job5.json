@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 6528,
+    "attempt": 6481,
+    "place_id": "gn-3992996",
+    "input": {
+      "place": {
+        "place_id": "gn-3992996",
+        "name": "La Peñita de Jaltemba",
+        "country": "Mexico",
+        "subdivision": "Nayarit",
+        "lat": 21.03829,
+        "lon": -105.25024
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Peñita de Jaltemba",
+          "url": "https://en.wikipedia.org/wiki/La_Peñita_de_Jaltemba",
+          "text": "La Peñita de Jaltemba, commonly called La Peñita, is a small beach town in Nayarit, Mexico, with a population of  approximately 20,000 inhabitants. It is located on Jaltemba Bay, 64 kilometers north of Puerto Vallarta at kilometer 90 on Mexico Highway 200.\nThe surrounding area is noted for pineapple, banana, mango, and other fruit production. The main street, or \"La Avenida\" as it is known, runs east–west from the highway to the beach and has a central boulevard lined with palm trees and benches. A number of tourist shops, clothing stores, shoe stores, restaurants, and other merchants face the street. Two blocks south of the beach end of La Avenida there is a large shady plaza. Each Thursday, a four-block long tianguis (street market) takes place in La Peñita de Jaltemba. This market sells a wide range of goods, from fresh fruits, vegetables, and seafoods to housewares, clothing, hardware, and arts and crafts.\nIt is the main service community for the busy resort of Rincón de Guayabitos immediately to the south. The two communities are separated only by a narrow river. Rincón de Guayabitos is a community of hotels, bungalows, small tourist shops, and restaurants, while La Peñita de Jaltemba provides banking services, grocery stores, and vegetable markets, as well as public facilities such as the library and post office.\nTransport: In La Peñita de Jaltemba at the east end of La Avenida, where it meets Highway 200, the shuttle system (colectivos) is available to transport you between the communities for a fee of 9 pesos (2014). It runs from La Colonia through La Peñita de Jaltemba and Rincón de Guayabitos to Los Ayala and back, making stops where requested. Taxis too are inexpensive, costing about 40 pesos from Guayabitos to La Peñita de Jaltemba (2015).   Bus service to Puerto Vallarta is regularly scheduled, running every 20-30 minutes.\nTwo main service clubs serve the area: the Jaltemba Bay Rotary Club - La Peñita and Los Amigos de Jaltemba."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 328
+    },
+    "banned_terms": [
+      {
+        "term": "la penita de jaltemba",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "penita",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jaltemba",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6529,
+    "attempt": 6482,
+    "place_id": "gn-4004267",
+    "input": {
+      "place": {
+        "place_id": "gn-4004267",
+        "name": "Ixtlán del Río",
+        "country": "Mexico",
+        "subdivision": "Nayarit",
+        "lat": 21.03514,
+        "lon": -104.3688
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ixtlán del Río",
+          "url": "https://en.wikipedia.org/wiki/Ixtlán_del_Río",
+          "text": "Ixtlán del Río (Spanish pronunciation: [iksˈtlan]) is both a municipality and the municipal seat in the Mexican state of Nayarit. In 2018, the population of the municipality was 33,289, with 35,180 residents living in the municipal seat. The total area of the municipality is 581.4 km2 (224.5 sq mi).\nIn 2023, Ixtlán was designated a Pueblo Mágico by the Mexican government, recognizing its cultural and historical importance.\nIxtlán, as it is known to locals, is located 149 kilometers south of the state capital Tepic and is connected to that city and Guadalajara by both rail and highway connections. The important coastal highway Route 15 passes through the city, while a toll road passes to the east.\nIxtlán has boundaries with the municipalities of La Yesca and Jala in the north; Amatlán de Cañas and the state of Jalisco in the south, Jalisco in the east and Ahuacatlán in the west.\nThe land is mainly mountainous (60%) with some flat lands near the small rivers where the agricultural lands and settlements are located.  The climate is hot and sub-humid with rains falling from March to July.  The average annual temperature varies between 21 °C and 25 °C, with maximum lows of 0 °C and highs of 48 °C. The average annual rainfall is around 859.8 mm.\nThe economy is based on services, due to the town's location on the important Mexico-Nogales highway, small industries (brickworks, furniture, pottery), and agriculture.  The main crops are maize, sorghum, beans, and green chile.  There were about 36,000 head of cattle in 1995.\nEast of the city lies Toriles, the most important archaeological site in northwestern Mexico. Here is found the temple of Quetzalcoatl, from the Toltec culture.  The ceramic and gold jewelry extracted here can be seen in the Regional Museum of Ixtlán.\nThe Río Grande de Santiago crosses the eastern edge of the municipality but is not to be confused with the larger Río Grande de Santiago of the same name that flows from Jalisco into Nayarit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 333
+    },
+    "banned_terms": [
+      {
+        "term": "ixtlan del rio",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ixtlan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6530,
+    "attempt": 6483,
+    "place_id": "gn-4355670",
+    "input": {
+      "place": {
+        "place_id": "gn-4355670",
+        "name": "Friendly",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.75178,
+        "lon": -76.97859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Friendly, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Friendly,_Maryland",
+          "text": "Friendly is an unincorporated area and census-designated place (CDP) in Prince George's County, Maryland, United States, with an African-American majority population, located a few miles south of Washington, D.C. The population was 9,937 at the 2020 census.\nFriendly had its own rural post office in the early 20th century, and is now under the mailing address Fort Washington. The name \"Friendly\" is most associated with Friendly High School, which serves most of the greater Fort Washington area. The Friendly area was largely rural until about 1960 and has steadily grown with single-family housing developments. At least five new residential neighborhoods are currently under construction in the area. Allentown Road connects Friendly with Andrews Air Force Base."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "friendly",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6531,
+    "attempt": 6484,
+    "place_id": "gn-463828",
+    "input": {
+      "place": {
+        "place_id": "gn-463828",
+        "name": "Zelenogradsk",
+        "country": "Russia",
+        "subdivision": "Kaliningrad Oblast",
+        "lat": 54.95893,
+        "lon": 20.47668
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zelenogradsk",
+          "url": "https://en.wikipedia.org/wiki/Zelenogradsk",
+          "text": "Zelenogradsk (Russian: Зеленогра́дск IPA: [zʲɪlʲɪnɐˈgratsk] ), prior to 1946 known by its German name Cranz (Lithuanian and Old Prussian: Krantas), is a town and the administrative center of Zelenogradsky District in Kaliningrad Oblast, Russia, located 34 kilometers (21 mi) north of Kaliningrad, on the Sambian coastline near the Curonian Spit on the Baltic Sea. Population: 17,296 (2021 census); 13,026 (2010 census); 12,509 (2002 census); 10,786 (1989 Soviet census).\nIn its heyday, Zelenogradsk (as Cranz) was a popular seaside resort on Germany's eastern Baltic coast, comparable to Bognor Regis in England. However, at the end of World War II, the Soviets took over the town, and much of its tourist traffic has been diverted to nearby Svetlogorsk."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "zelenogradsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6532,
+    "attempt": 6485,
+    "place_id": "gn-4984075",
+    "input": {
+      "place": {
+        "place_id": "gn-4984075",
+        "name": "Alpena",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 45.06168,
+        "lon": -83.43275
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alpena, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Alpena,_Michigan",
+          "text": "Alpena ( al-PEE-nə) is the only city in and the county seat of Alpena County, Michigan, United States. The population was 10,197 at the 2020 census, making it the third most populated city in the Northern Michigan region, after Traverse City and Cadillac. The city is surrounded by Alpena Township, but the two are administered autonomously. It is the core city of the Alpena micropolitan statistical area, which encompasses all of Alpena County and had a total population of 28,907 at the 2020 census.\nAlpena is located at the head of Thunder Bay, a bay of Lake Huron. Offshore of Alpena is the Thunder Bay National Marine Sanctuary, which protects an estimated 116 historically significant shipwrecks. Alpena is the second-largest American city on Lake Huron, behind Port Huron."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "alpena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6533,
+    "attempt": 6486,
+    "place_id": "gn-4996832",
+    "input": {
+      "place": {
+        "place_id": "gn-4996832",
+        "name": "Huntington Woods",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.48059,
+        "lon": -83.16687
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huntington Woods, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Huntington_Woods,_Michigan",
+          "text": "Huntington Woods is a city in Oakland County in the U.S. state of Michigan. An inner-ring suburb of Detroit on the Woodward Corridor, Huntington Woods is located roughly 12 miles (19.3 km) northwest of downtown Detroit. As of the 2020 census, the city had a population of 6,388.\nHuntington Woods is situated along the Woodward Corridor (M-1) and is bounded by Ten and Eleven Mile Roads to the north and south, and by Woodward and Coolidge Highway to the east and west. Rackham Golf Course is located in the central southern side of the city. The western portion of the Detroit Zoo is located within the city limits and is a contributor to its tax base."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "huntington woods",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "huntington",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "woods",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6534,
+    "attempt": 6487,
+    "place_id": "gn-5115614",
+    "input": {
+      "place": {
+        "place_id": "gn-5115614",
+        "name": "Dyker Heights",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.62149,
+        "lon": -74.00958
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dyker Heights, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Dyker_Heights,_Brooklyn",
+          "text": "Dyker Heights is a predominantly residential neighborhood in the southwest corner of the borough of Brooklyn in New York City. It is on a hill between Bay Ridge, Bensonhurst, Borough Park, and Gravesend Bay. The neighborhood is bounded by 7th and 14th Avenues, 65th Street, and the Belt Parkway on the west, east, north, and south, respectively.\nDyker Heights originated as a speculative luxury housing development in October 1895 when Walter Loveridge Johnson developed a portion of woodland into a suburban community. It maintained its status as a wealthy neighborhood through the 20th century. During the height of his development, the boundaries were primarily between Tenth and Thirteenth Avenues and from 79th Street to 86th Street. The finest homes of the development were situated along the top of the 110-foot (34 m) hill, at about Eleventh Avenue and 82nd Street.\nDyker Heights has a suburban character with detached and semi-detached one-and two-family homes, many of which have driveways and private yards, which are uncommon in parts of New York City. The neighborhood contains tree-lined streets, and there are very few apartment buildings. Dyker Heights can be divided in roughly three sections. The southernmost section, south of 86th Street and east of 7th Avenue, contains Dyker Beach Park and Golf Course. The central section between Bay Ridge Parkway and 86th Street, and between 14th Avenue and Fort Hamilton Parkway, is more exclusive in character. The northern border of the neighborhood is more closely integrated with surrounding areas. The Dyker Heights Civic Association, founded in 1928, is a civic group that represents the community's interests. The area as a whole is known for its Christmas lighting displays, which are often elaborate.\nDyker Heights is part of Brooklyn Community District 10, and its primary ZIP Code is 11228. It is patrolled by the 68th Precinct of the New York City Police Department. Politically it is represented by the New York City Council's 43rd District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 321
+    },
+    "banned_terms": [
+      {
+        "term": "dyker heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dyker",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6535,
+    "attempt": 6488,
+    "place_id": "gn-5133825",
+    "input": {
+      "place": {
+        "place_id": "gn-5133825",
+        "name": "Richmond Hill",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.69983,
+        "lon": -73.83125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Richmond Hill, Queens",
+          "url": "https://en.wikipedia.org/wiki/Richmond_Hill,_Queens",
+          "text": "Richmond Hill is a commercial and residential neighborhood located in the southwestern section of the New York City borough of Queens. The area borders Kew Gardens and Forest Park to the north, Jamaica and South Jamaica to the east, South Ozone Park to the south, and Woodhaven and Ozone Park to the west. The neighborhood is split between Queens Community Board 9 and 10.\nMain commercial streets in the neighborhood include Jamaica Avenue, Atlantic Avenue and Liberty Avenue. The portion of the neighborhood south of Atlantic Avenue is also known as South Richmond Hill. The Long Island Rail Road provides freight access via the Montauk Branch, which runs diagonally through the neighborhood from northwest to southeast. Many residents own homes, though some also rent within small apartment buildings.\nSouth Richmond Hill is known as Little Guyana for its large Indo-Caribbean American (mostly Indo-Guyanese and some Indo-Trinidadians) population. It is also called Little Punjab due to its large Punjabi American (especially Sikh American) population. Richmond Hill is home to a density of Hindu, Roman Catholic, Eastern Orthodox, Protestant, Sikh, Jewish, and Muslim places of worship.\nRichmond Hill is located in Queens Community District 9 and its ZIP Codes are 11418 and 11419. It is patrolled by the New York City Police Department's 102nd Precinct. Politically, Richmond Hill is represented by the New York City Council's 28th, 30th, and 32nd Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "richmond hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "richmond",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6536,
+    "attempt": 6489,
+    "place_id": "gn-5143056",
+    "input": {
+      "place": {
+        "place_id": "gn-5143056",
+        "name": "Wakefield",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.89788,
+        "lon": -73.85236
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wakefield, Bronx",
+          "url": "https://en.wikipedia.org/wiki/Wakefield,_Bronx",
+          "text": "Wakefield is a working-class and middle-class section of the northern borough of the Bronx in New York City. It is bounded by the city's border with Westchester County to the north, East 222nd Street to the south, and the Bronx River Parkway to the west.\nWakefield is the northernmost neighborhood in New York City (although, because of the slant of the Hudson and the grid system relative to true north, the city's northernmost point is actually in Riverdale, at the University of Mount Saint Vincent). The neighborhood is part of Bronx Community District 12 and its ZIP Codes are 10466 and 10470. Wakefield is patrolled by the 47th Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "wakefield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6537,
+    "attempt": 6490,
+    "place_id": "gn-5322317",
+    "input": {
+      "place": {
+        "place_id": "gn-5322317",
+        "name": "Acton",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.46999,
+        "lon": -118.19674
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Acton, California",
+          "url": "https://en.wikipedia.org/wiki/Acton,_California",
+          "text": "Acton () is an unincorporated community and census-designated place (CDP) in Los Angeles County, California, United States. According to the 2020 census, Acton had a population of 7,431.\nActon is a small residential community located between the Sierra Pelona Mountains and the San Gabriel Mountains, near the Antelope Valley. It is off the Antelope Valley Freeway (California State Route 14) south of Palmdale. Acton is roughly 20 miles (32 km) northeast of the San Fernando Valley, and 47 miles (76 km) north of downtown Los Angeles by highway. The town has a rural western theme which can be seen in its homes, commercial buildings and historical buildings, some of which date back to the late 1800s. The homes in the mountains around Acton have views of the valley below. In the valley are ranch style homes, often with equestrian facilities. Acton is grouped together with the Antelope Valley in the Los Angeles County General Plan. Acton has a Metrolink commuter rail station at Vincent Grade that is themed in an \"old western\" style and has been seen in various movies and commercials."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "acton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6538,
+    "attempt": 6491,
+    "place_id": "gn-5731070",
+    "input": {
+      "place": {
+        "place_id": "gn-5731070",
+        "name": "Hermiston",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 45.84041,
+        "lon": -119.28946
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hermiston, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Hermiston,_Oregon",
+          "text": "Hermiston () is a city in Umatilla County, Oregon, United States. Its population of 20,322 makes it the largest city in Eastern Oregon. Hermiston is the largest and fastest-growing city in the Hermiston-Pendleton Micropolitan Statistical Area, the eighth largest  Core Based Statistical Area in Oregon with a combined population of 92,261 at the 2020 census.  Hermiston sits near the junction of I-82 and I-84, and is 7 miles (11 km) south of the Columbia River, the Washington state line, Lake Wallula, and the McNary Dam. The Hermiston area has become a hub for logistics and data center activity due to the proximity of the I-82 and I-84 interchange, Pacific Northwest fiber-optic backbone, and low power costs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "hermiston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6539,
+    "attempt": 6492,
+    "place_id": "gn-5775346",
+    "input": {
+      "place": {
+        "place_id": "gn-5775346",
+        "name": "Grantsville",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.59994,
+        "lon": -112.4644
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grantsville, Utah",
+          "url": "https://en.wikipedia.org/wiki/Grantsville,_Utah",
+          "text": "Grantsville is the second most populous city in Tooele County, Utah, United States. It is part of the Salt Lake City metropolitan area.  The population was 12,627 at the 2020 census. The city has grown slowly and steadily throughout most of its existence, but rapid increases in growth occurred during the 1970s, 1990s, and 2010s.  Recent rapid growth has been attributed to being close to Salt Lake City, small town community feel, lower housing costs than Salt Lake County, the nearby Deseret Peak recreational center, the Utah Motorsports Campus raceway, and the newly built Wal-Mart distribution center located just outside the city.  It is quickly becoming a bedroom community for commuters into the Salt Lake Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "grantsville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6540,
+    "attempt": 6493,
+    "place_id": "gn-5854496",
+    "input": {
+      "place": {
+        "place_id": "gn-5854496",
+        "name": "Wailuku",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 20.89133,
+        "lon": -156.50604
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wailuku, Hawaii",
+          "url": "https://en.wikipedia.org/wiki/Wailuku,_Hawaii",
+          "text": "Wailuku is a census-designated place (CDP) in and county seat of Maui Island, Maui County, Hawaii, United States. The population was 17,697 at the 2020 census.\nWailuku is just west of Kahului, at the mouth of the ʻĪao Valley. In the early 20th century, Wailuku was Maui's main tourist destination. It has since been eclipsed by resort towns such as Kihei.\nHistoric sites in the town include Kaʻahumanu Church (named after Queen Kaʻahumanu, wife of Kamehameha I), which dates to 1876; the Wailuku Civic Center Historic District; the site of the Chee Kung Tong Society Building; and the Bailey House, a 19th-century former seminary and home that houses a history museum and the Maui Historical Society.\nThere are two ancient temples near Wailuku, called heiau—the Halekiʻi Heiau and the Pihanakalani Heiau. Both date back hundreds of years and were used for religious purposes by native Hawaiians.\nWailuku is served by Kahului Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "wailuku",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6541,
+    "attempt": 6494,
+    "place_id": "gn-5921147",
+    "input": {
+      "place": {
+        "place_id": "gn-5921147",
+        "name": "Chibougamau",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 49.91684,
+        "lon": -74.36586
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chibougamau",
+          "url": "https://en.wikipedia.org/wiki/Chibougamau",
+          "text": "Chibougamau (French pronunciation: [ʃibuɡamo]) is the largest town in Nord-du-Québec, central Quebec, Canada. Located on Lake Gilman, it has a population of 7,233 people (2021 Canadian census). Chibougamau is surrounded by, but not part of, the local municipality of Eeyou Istchee James Bay. Chibougamau means \"gathering place\" in the Cree language.\nIts remoteness from Lac Saint-Jean (over 200 km (120 mi) south-east) and Abitibi-Témiscamingue (over 250 km (160 mi) south-west) areas causes Chibougamau to provide services for a few smaller communities surrounding it (Mistissini, Oujé-Bougoumou, and Chapais) and for the regional resource-based industries. Despite Chibougamau's remoteness, it is only about as far north as Winnipeg and is south of any part of the mainland of England.\nAccess to the town is by Route 167 from Lac Saint-Jean and by Route 113 from Lebel-sur-Quévillon. Chibougamau/Chapais Airport is along Route 113, about halfway to Chapais."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "chibougamau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6542,
+    "attempt": 6495,
+    "place_id": "gn-6178999",
+    "input": {
+      "place": {
+        "place_id": "gn-6178999",
+        "name": "West Hill",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.76737,
+        "lon": -79.1795
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Hill, Toronto",
+          "url": "https://en.wikipedia.org/wiki/West_Hill,_Toronto",
+          "text": "West Hill is a neighbourhood in Toronto, Ontario, Canada. It is located in the eastern end of the city, in the former suburb of Scarborough. It is roughly bounded by Scarborough Golf Club Road and a branch of Highland Creek on the west, the CNR railway tracks and Lake Ontario on the south, and Highland Creek on the north-east. The name comes from its elevated position on the west side of Highland Creek, a deep glacial ravine.\nThe section east of Manse Road, which roughly splits this neighbourhood in half, is often now referred to as the Manse Valley neighbourhood.  It has less commercial development and more industrial development than the western part of the neighbourhood.  However, both parts were treated as part of West Hill prior to development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "west hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6543,
+    "attempt": 6496,
+    "place_id": "gn-644187",
+    "input": {
+      "place": {
+        "place_id": "gn-644187",
+        "name": "Nurmes",
+        "country": "Finland",
+        "subdivision": "North Karelia",
+        "lat": 63.54205,
+        "lon": 29.13965
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nurmes",
+          "url": "https://en.wikipedia.org/wiki/Nurmes",
+          "text": "Nurmes is a town and municipality of Finland, located in the county of North Karelia. The town has a population of 8,760 (31 December 2025) and covers an area of 1,854.78 square kilometres (716.13 sq mi) of which 253.7 km2 (98.0 sq mi)\nis water. The population density is 3.65 inhabitants per square kilometre (9.5/sq mi). Neighbouring municipalities are Juuka, Kuhmo, Lieksa, Rautavaara and Sotkamo.\nNurmes railway station is the northern terminus of a twice-daily VR passenger train service from Joensuu. The service has been under threat of closure but is currently part of rail services that the Ministry of Transport and Communications requires VR to run in exchange for its monopoly on more attractive routes. The agreement is currently valid through 2030.\nKarelian village and spa hotel Break Sokos Hotel Bomba are situated in Nurmes. Bomba Karelian Village is a tourist destination for Karelian construction and food culture and traditions. Hotel Hyvärilä Youth and Holiday Centre, and Pielis-Golf golf course are located near the Bomba area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "nurmes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6544,
+    "attempt": 6497,
+    "place_id": "gn-6690595",
+    "input": {
+      "place": {
+        "place_id": "gn-6690595",
+        "name": "Shadwell",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.51135,
+        "lon": -0.05663
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shadwell",
+          "url": "https://en.wikipedia.org/wiki/Shadwell",
+          "text": "Shadwell is an area in the London Borough of Tower Hamlets in East London, England. It also forms part of the city's East End. Shadwell is on the north bank of the River Thames between Wapping (to the west) and Ratcliff and Limehouse (to the east) and is 3 miles (4.8 km) east of Charing Cross. This riverside location has meant the area's history and character have been shaped by the maritime trades.\nHistorically a hamlet of the Manor and Ancient Parish of Stepney, it became a parish in its own right in 1670. the area of the Hamlet and Parish included areas south of Cable Street including Shadwell Basin and the King Edward Memorial Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "shadwell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6545,
+    "attempt": 6498,
+    "place_id": "gn-690823",
+    "input": {
+      "place": {
+        "place_id": "gn-690823",
+        "name": "Vuhledar",
+        "country": "Ukraine",
+        "subdivision": "Donetsk",
+        "lat": 47.77973,
+        "lon": 37.24999
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vuhledar",
+          "url": "https://en.wikipedia.org/wiki/Vuhledar",
+          "text": "Vuhledar (Ukrainian: Вугледар, IPA: [wʊɦleˈdɑr] ; Russian: Угледар, romanized: Ugledar, IPA: [ʊɡlʲɪˈdar]), is a city in Volnovakha Raion, Donetsk Oblast, eastern Ukraine. It is the administrative center of Vuhledar urban hromada. At the beginning of 2022, its population was 14,144.\nVuhledar is a coal mining city in the cultural and economic Donbas region of eastern Ukraine, with its origins in the 1960s development of the coal industry in the region. It was planned to be a major economic center, but failed to meet expectations, and has remained a minor economic node in the 21st century.\nFor more than two years beginning in March 2022 during the Russian invasion of Ukraine, Vuhledar was the site of fighting. The battle for the city almost completely destroyed and depopulated it, with reportedly less than 500 civilians remaining in the city in early 2023. The city has been under Russian occupation since October 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "vuhledar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6546,
+    "attempt": 6499,
+    "place_id": "gn-699677",
+    "input": {
+      "place": {
+        "place_id": "gn-699677",
+        "name": "Novoaidar",
+        "country": "Ukraine",
+        "subdivision": "Luhansk",
+        "lat": 48.96288,
+        "lon": 39.00376
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Novoaidar",
+          "url": "https://en.wikipedia.org/wiki/Novoaidar",
+          "text": "Novoaidar (Ukrainian and Russian: Новоайдар) is a rural settlement in Shchastia Raion, Luhansk Oblast, in the Donbas region of eastern Ukraine. Resirence of Novoaidar settlement hromada. Novoaidar is 57 km, by road from regional centre Luhansk, 43 km from Sieverodonetsk, and 747 km from Kyiv. Novoaidar is located on the river Aidar, and is on Highway H21, which runs from Donetsk to Starobilsk.\nOn March 3, 2022, just over a week after the 2022 Russian invasion of Ukraine began, Novoaidar was taken by Russian forces. Following the highly disputed 2022 annexation referendums in Russian-occupied Ukraine, Russia has claimed the settlement as part of their Luhansk People's Republic (LPR / LNR), and it remains under Russian control. Novoaidar has an estimated population of 7,773 (2022 estimate)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "novoaidar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6547,
+    "attempt": 6500,
+    "place_id": "gn-741570",
+    "input": {
+      "place": {
+        "place_id": "gn-741570",
+        "name": "Mesudiye",
+        "country": "Türkiye",
+        "subdivision": "Ordu",
+        "lat": 40.45446,
+        "lon": 37.77353
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mesudiye, Ordu",
+          "url": "https://en.wikipedia.org/wiki/Mesudiye,_Ordu",
+          "text": "Mesudiye, formerly Hamidiye, (in Greek Μεσουδιέ and Μιλάς) is a municipality and district of Ordu Province, Turkey. Its area is 1,046 km2, and its population is 13,221 (2022). The town lies at an elevation of 1,100 m (3,609 ft).\nMesudiye is a large area of hilly countryside, villages and pasture far inland from the Black Sea coast, south-west of the city of Ordu, in the direction of Sivas. This is a low-income district that since the 1950s has seen successive generations migrate away to jobs in Istanbul and elsewhere. Today Mesudiye itself is a small town of 5,600 people and the whole district is sparsely populated, although busier in summer with returning Mesudiye families on vacation. Efforts are being made by the state to boost the local economy including the opening of a college of a higher education college. Mesudiye is a home to sizeable Chepni Turkmen population. also, was capital of Chepni Beylik Hacıemiroğulları."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "mesudiye",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

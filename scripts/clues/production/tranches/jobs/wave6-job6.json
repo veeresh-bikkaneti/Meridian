@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 5689,
+    "place_id": "gn-3361142",
+    "input": {
+      "place": {
+        "place_id": "gn-3361142",
+        "name": "Springbok",
+        "country": "South Africa",
+        "subdivision": "Northern Cape",
+        "lat": -29.66434,
+        "lon": 17.8865
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springbok, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Springbok,_South_Africa",
+          "text": "Springbok (Khoekhoe: ǁgũǀ’aos) is the largest town in the Namaqualand area in the Northern Cape province of South Africa. It was called Springbokfontein until 1911, when it was shortened to Springbok. Springbok is located on the N7 national route which connects the Cape with Namibia, and at the western end of the N14, which connects it with Upington and Pretoria. It is the main town of the Nama Khoi Local Municipality, which also includes a number of surrounding towns such as Okiep and Nababeep.\nThe town lies at an elevation of 1,007 metres (3,304 feet) in a narrow valley between the high granite domes of the Klein Koperberge (Small Copper Mountains). This name gives away the reason for the early settlement which gradually turned into a major commercial and administrative centre for copper mining operations in the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "springbok",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5690,
+    "place_id": "gn-4140176",
+    "input": {
+      "place": {
+        "place_id": "gn-4140176",
+        "name": "Riggs Park",
+        "country": "United States",
+        "subdivision": "District of Columbia",
+        "lat": 38.95428,
+        "lon": -76.99414
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riggs Park",
+          "url": "https://en.wikipedia.org/wiki/Riggs_Park",
+          "text": "Riggs Park is a residential neighborhood in Ward 4 of Northeast Washington, D.C. It is part of the greater Lamond-Riggs community (comprising the Lamond neighborhood to the north, and Riggs Park to the south). Riggs Park is bounded by South Dakota Ave NE to the west, Eastern Ave NE to the east, Galloway St NE to the south, and New Hampshire Ave NE to the north. Riggs Park is adjacent to the neighborhoods of Michigan Park, and Fort Totten, located in Ward 5 of Northeast Washington D.C. In addition to these neighborhoods, Riggs Park also borders the city/neighborhood Chillum, which is located in Prince George's County, Maryland. The WMATA Red Line train tracks pass through the Riggs Park neighborhood when traveling between the Takoma and Fort Totten Metro stations, alongside the adjacent CSX, MARC, and Amtrak train tracks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "riggs park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "riggs",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5692,
+    "place_id": "gn-5145067",
+    "input": {
+      "place": {
+        "place_id": "gn-5145067",
+        "name": "Woodside",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.74538,
+        "lon": -73.90541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodside, Queens",
+          "url": "https://en.wikipedia.org/wiki/Woodside,_Queens",
+          "text": "Woodside is a neighborhood in the western portion of the borough of Queens in New York City. It is bordered on the south by Maspeth, on the north by Astoria, on the west by Sunnyside, and on the east by Elmhurst, Jackson Heights, and East Elmhurst. Some areas are widely residential and very quiet, while other parts, especially the ones around Roosevelt Avenue, are busier.\nIn the 19th century the area was part of the Town of Newtown (now Elmhurst). The adjacent area of Winfield was largely incorporated into the post office serving Woodside and as a consequence Winfield lost much of its identity distinct from Woodside. However, with large-scale residential development in the 1860s, Woodside became the largest Irish American community in Queens, being approximately 80% Irish by the 1930s and maintaining a strong Irish culture today."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "woodside",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5694,
+    "place_id": "gn-5397664",
+    "input": {
+      "place": {
+        "place_id": "gn-5397664",
+        "name": "South Lake Tahoe",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 38.93324,
+        "lon": -119.98435
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Lake Tahoe, California",
+          "url": "https://en.wikipedia.org/wiki/South_Lake_Tahoe,_California",
+          "text": "South Lake Tahoe is the most populous city in El Dorado County, California, United States, in the Sierra Nevada mountains. The city's population was 21,330 at the 2020 census, down from 21,403 at the 2010 census. The city, along the southern edge of Lake Tahoe, extends about 5 miles (8 km) west-southwest along U.S. Route 50, also known as Lake Tahoe Boulevard. The east end of the city, on the California–Nevada state line right next to the town of Stateline, Nevada, is mainly geared towards tourism, restaurants, hotels, and Heavenly Mountain Resort with the Nevada casinos just across the state line in Stateline. The western end of town is mainly residential, and clusters around \"The Y\", the intersection of US 50, State Route 89, and the continuation of Lake Tahoe Boulevard after it loses its federal highway designation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "south lake tahoe",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tahoe",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5696,
+    "place_id": "gn-605859",
+    "input": {
+      "place": {
+        "place_id": "gn-605859",
+        "name": "Haparanda",
+        "country": "Sweden",
+        "subdivision": "Norrbotten",
+        "lat": 65.83549,
+        "lon": 24.13676
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haparanda",
+          "url": "https://en.wikipedia.org/wiki/Haparanda",
+          "text": "Haparanda (Swedish: [hapaˈrǎnːda]; Meänkieli and Finnish: Haaparanta, lit. 'aspen shore or bank') is a locality and the seat of Haparanda Municipality in Norrbotten County, Sweden. It is adjacent to Tornio, Finland. Haparanda has a population of 9,166 inhabitants (2024).\nHaparanda is located near the Sweden-Finland border, at the northerly extreme of the Swedish coastline, as well as the easternmost point in Sweden, far removed from large cities. Its summers are very warm  for a coastal location so far north, and winters are normally not extremely cold in spite of the relative proximity to the Arctic Circle.\nAs a twin city, Haparanda has strong connections to Tornio and the Finnish side of the river and bilingualism of Swedish and Finnish is common although Swedish is the sole official language and the mother tongue of a vast majority of inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "haparanda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5701,
+    "place_id": "gn-2637357",
+    "input": {
+      "place": {
+        "place_id": "gn-2637357",
+        "name": "South Norwood",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.39944,
+        "lon": -0.07469
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Norwood",
+          "url": "https://en.wikipedia.org/wiki/South_Norwood",
+          "text": "South Norwood is a district of South London, England, within the London Borough of Croydon, Greater London and formerly in the historic county of Surrey. It is located 7.8 miles (12.5 km) south-east of Charing Cross, north of Woodside and Addiscombe, east of Selhurst and Thornton Heath, south of Crystal Palace/Upper Norwood and Anerley, and south-west of Penge.\nTogether with Norwood New Town, it forms the electoral ward of South Norwood in the local authority of Croydon. The ward as a whole had a resident population in 2001 of just over 14,000.\nThe south-eastern side of the district is dominated by the 125-acre (0.51 km2) country park which opened in 1989. At the northern end of the town is South Norwood Lake, which was created after the reservoir for the unsuccessful Croydon Canal went out of use."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "south norwood",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "norwood",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5710,
+    "place_id": "gn-5369906",
+    "input": {
+      "place": {
+        "place_id": "gn-5369906",
+        "name": "Malibu",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.02577,
+        "lon": -118.7804
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malibu, California",
+          "url": "https://en.wikipedia.org/wiki/Malibu,_California",
+          "text": "Malibu (  MAL-ih-boo; Chumash: Humaliwo; Spanish: Malibú) is a beach city in the Santa Monica Mountains region of Los Angeles County, California, United States,  about 30 miles (48 km) west of Los Angeles. It is known for its Mediterranean climate, its strip of beaches stretching 21 miles (34 km) along the Pacific coast, and for its longtime status as the home of numerous Hollywood celebrities and executives with several of its residents in the entertainment industry. The Pacific Coast Highway (State Route 1) traverses the city, following along the South Coast of California. As of the 2020 census, the city's population was 10,654. The 2025 Palisades Fire devastated Malibu, with almost all of the beachfront homes in the east of the city being destroyed.\nNicknamed \"The 'Bu\" by surfers and locals, Malibu is noted for its beaches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "malibu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5711,
+    "place_id": "gn-5582371",
+    "input": {
+      "place": {
+        "place_id": "gn-5582371",
+        "name": "Steamboat Springs",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 40.48498,
+        "lon": -106.83172
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Steamboat Springs, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Steamboat_Springs,_Colorado",
+          "text": "Steamboat Springs is a home rule municipality that is the county seat of and the most populous municipality in Routt County, Colorado, United States. The population was 13,224 at the 2020 census. Steamboat Springs is the principal city of the Steamboat Springs Micropolitan Statistical Area, and it is the largest city in northwestern Colorado.\nThe city is a winter ski resort destination, including the Steamboat Ski Resort on Mount Werner in the Park Range just east of the town and the much smaller Howelsen Hill Ski Area. Steamboat Springs has produced more athletes for the Winter Olympics than any other town in North America.\nSteamboat Springs – known colloquially as \"The Boat\" – is located in the upper valley of the Yampa River, along U.S. Highway 40, just west of the Continental Divide and Rabbit Ears Pass."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "steamboat springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "steamboat",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5718,
+    "place_id": "gn-13526886",
+    "input": {
+      "place": {
+        "place_id": "gn-13526886",
+        "name": "Capitol Riverfront",
+        "country": "United States",
+        "subdivision": "District of Columbia",
+        "lat": 38.87796,
+        "lon": -77.00314
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Capitol Riverfront",
+          "url": "https://en.wikipedia.org/wiki/Capitol_Riverfront",
+          "text": "The Capitol Riverfront is a business improvement district (BID) located just south of the United States Capitol between Capitol Hill and the Anacostia River in Washington, D.C. It was created by the District of Columbia City Council and approved by Mayor Fenty in August 2007. The BID is a mixed-use neighborhood. It was a former industrial area transformed into a business center, urban neighborhood, entertainment district, and waterfront destination. The project involves adding over 9,000 new apartments, condominiums, lofts, modern office towers, 1,200 hotel rooms, one million square feet of retail amenities, two grocery stores, new restaurants, shops, and cafes. Over 33,900,000 square feet (3,150,000 m2) of office, residential, hotel, and retail space, as well as four new parks, were planned over 10–15 years. The new 5-acre (20,000 m2) riverfront Yards Park opened in fall 2010."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "capitol riverfront",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "capitol",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "riverfront",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5721,
+    "place_id": "gn-2178378",
+    "input": {
+      "place": {
+        "place_id": "gn-2178378",
+        "name": "Abbotsford",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.8,
+        "lon": 145
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abbotsford, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Abbotsford,_Victoria",
+          "text": "Abbotsford (Woiwurrung: Carran-carramulk) is an inner-city suburb in Melbourne, Victoria, Australia, 2 km (1.2 mi) north-east of Melbourne's Central Business District, located within the City of Yarra local government area. Abbotsford recorded a population of 9,088 at the 2021 census.\nAbbotsford is bounded by Collingwood, Richmond and Clifton Hill and separated from Kew by the meandering Yarra River. Formerly part of the City of Collingwood, it is now part of the City of Yarra. Victoria Street forms the southern boundary to Abbotsford (with Richmond); Hoddle Street forms the western boundary (with Collingwood); the Eastern Freeway forms the northern boundary (with Clifton Hill) while the Yarra forms the eastern boundary with Kew, in Boroondara.\nSome well-known Abbotsford landmarks include the Skipping Girl Sign, Dights Falls, the former Collingwood Town Hall, Victoria Park Football Stadium and Abbotsford Convent."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "abbotsford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5724,
+    "place_id": "gn-2518277",
+    "input": {
+      "place": {
+        "place_id": "gn-2518277",
+        "name": "El Paso",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.65007,
+        "lon": -17.88274
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Paso, La Palma",
+          "url": "https://en.wikipedia.org/wiki/El_Paso,_La_Palma",
+          "text": "El Paso, also known as Ciudad de El Paso, is a Spanish municipality located on the island of La Palma, province of Santa Cruz de Tenerife, Canary Islands.\nGeographically it is located in the center of the island of La Palma, covering to the west with the Caldera de Taburiente, part of the Aridane Valley, the Cumbre Nueva and the Cumbre Vieja. It is on the surface the largest municipality of the island, being the only one of the 14 municipalities of La Palma that lacks coastal strip. In 2016 it had a population of 7457 inhabitants.\nThe nucleus of population had to have its origins in the pre-Hispanic stage of the island. Almost certainly, because of the engravings found in the area, it consisted of a first moment in a temporary settlement of Benahoarite shepherds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "el paso",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "paso",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5732,
+    "place_id": "gn-2940381",
+    "input": {
+      "place": {
+        "place_id": "gn-2940381",
+        "name": "Bad Camberg",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.29695,
+        "lon": 8.26896
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Camberg",
+          "url": "https://en.wikipedia.org/wiki/Bad_Camberg",
+          "text": "Bad Camberg (German: [baːt ˈkambɛʁk] ) is, with 14,500 inhabitants, the second largest town in Limburg-Weilburg district in Hesse, Germany, as well as the southernmost town in the Regierungsbezirk of Gießen. It is located in the eastern Taunus in the Goldener Grund (“Golden Ground”) some 30 km north of Wiesbaden, 18 km southeast of Limburg an der Lahn, and 44 km northwest of Frankfurt, as well as on the German Timber-Frame Road. Bad Camberg is the central community of the Goldener Grund with good infrastructure, and a lower centre partly with a middle centre's function.\nThe recognized Kneipp resort is Hesse's oldest and Germany's third oldest. In the outlying centre of Oberselters is found a mineral spring that gives forth the well known Selterswasser, often known in English as “seltzer”. The town's landmark is the Kreuzkapelle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "bad camberg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "camberg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5734,
+    "place_id": "gn-3432079",
+    "input": {
+      "place": {
+        "place_id": "gn-3432079",
+        "name": "La Paz",
+        "country": "Argentina",
+        "subdivision": "Entre Rios",
+        "lat": -30.74179,
+        "lon": -59.64517
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Paz, Entre Ríos",
+          "url": "https://en.wikipedia.org/wiki/La_Paz,_Entre_Ríos",
+          "text": "La Paz is a city in the province of Entre Ríos in the Argentine Mesopotamia. It has about 24,000 inhabitants as per the 2010 census [INDEC], and is the head town of the department of the same name.\nThe city lies in the north-west of the province, on the left-hand (eastern) shore of the Paraná River. It was already settled in the 18th century as a natural port, appearing in maps of the time as Cabayú Cuatiá (the name of a stream that empties into the Paraná at this point). It formally became a city on 1 January 1873.\nLike other cities in the area, La Paz has a hot springs complex and takes touristic advantage of its river beaches and the possibility of excellent sport fishing, with access to the Curuzú Chalí Provincial Fish Reserve."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "la paz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "paz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5745,
+    "place_id": "gn-5994839",
+    "input": {
+      "place": {
+        "place_id": "gn-5994839",
+        "name": "Labrador City",
+        "country": "Canada",
+        "subdivision": "Newfoundland and Labrador",
+        "lat": 52.94626,
+        "lon": -66.91137
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Labrador City",
+          "url": "https://en.wikipedia.org/wiki/Labrador_City",
+          "text": "Labrador City is a town in western Labrador (part of the Canadian province of Newfoundland and Labrador), near the Quebec border. With a population of 7,412 as of 2021, it is the second-largest population centre in Labrador, behind Happy Valley-Goose Bay. Neighbouring Labrador City is Wabush, a smaller town with a population of approximately 1,964 as of 2021. Together, the \"twin towns\" are known as Labrador West.\nIn the 1960s, Labrador City was founded to accommodate employees of the Iron Ore Company of Canada; iron ore mining continues to be the primary industry in the town.\nThe Labrador City town motto is Kamistiatusset, a Naskapi word meaning \"land of the hard-working people.\"  The Labrador City town crest is that of a snowy owl holding a scroll atop a black spade on a mound of red earth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "labrador city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "labrador",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5752,
+    "place_id": "gn-8347982",
+    "input": {
+      "place": {
+        "place_id": "gn-8347982",
+        "name": "Lynbrook",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.05588,
+        "lon": 145.25615
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lynbrook, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Lynbrook,_Victoria",
+          "text": "Lynbrook is a suburb in Melbourne, Victoria, Australia, 36 km south-east of Melbourne's central business district, located within the City of Casey local government area. Lynbrook recorded a population of 9,121 at the 2021 census.\nLynbrook is positioned on the South Gippsland Highway, slightly north-west of Cranbourne, and just south of the residential suburb of Hampton Park. Lynbrook is bounded by the Western Port Highway in the west, the South Gippsland Freeway in the north, by a line north of Merinda Park railway station in the east, and the railway line in the south.\nThe suburb was developed by VicUrban, starting in 1994. A special feature of the VicUrban development is the stormwater catchment which flows into the lake and wetlands where it is purified before being released into Dandenong Creek and into Port Phillip Bay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "lynbrook",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5753,
+    "place_id": "gn-898947",
+    "input": {
+      "place": {
+        "place_id": "gn-898947",
+        "name": "Senanga",
+        "country": "Zambia",
+        "subdivision": "Western Province",
+        "lat": -16.11667,
+        "lon": 23.26667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Senanga",
+          "url": "https://en.wikipedia.org/wiki/Senanga",
+          "text": "Senanga is the capital of the Senanga District, which is located in the Western Province of Zambia. The town is situated on the eastern bank of the Zambezi River, at the southern end of the Barotse Floodplain. It lies on the main road running parallel to the river from Livingstone and Sesheke to Mongu. Recently the Kaunga Lyeti Bridge was completed to cross the Kaunga Lyeti River near the junction to Sioma, traveling from Sesheke and Katima Mulilo. On top of the bridgework, recent road projects (the roads to Mongu and Sesheke) have improved travel conditions and inspired economic confidence and growth.\nIn addition to the river and floodplain with its wildlife and fishing opportunities, Senanga is about 120 km (75 mi) from Sioma Ngwezi National Park and about 80 km (50 mi) from Ngonye Falls."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "senanga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5759,
+    "place_id": "gn-2633851",
+    "input": {
+      "place": {
+        "place_id": "gn-2633851",
+        "name": "Windermere",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.38086,
+        "lon": -2.90709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Windermere",
+          "url": "https://en.wikipedia.org/wiki/Windermere",
+          "text": "Windermere (historically Winder Mere) is a ribbon lake in Cumbria, England. It is within the Lake District and is the largest lake in England by length, area, and volume, although considerably smaller than the largest Scottish lochs and Northern Irish loughs.\nWindermere is about 11 miles (18 km) in length and 1 mile (1.6 km) at its widest, has a maximum depth of 64 metres (210 ft), and has an elevation of 39 metres (128 ft) above sea level. Its outflow is the River Leven, which drains into Morecambe Bay. For administrative purposes the lake is in the unitary authority area of Westmorland and Furness, and it historically formed part of the boundary between Westmorland and Lancashire. \nThe lake has been popular with tourists since the Kendal and Windermere Railway's branch line opened in 1847."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "windermere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5766,
+    "place_id": "gn-2867445",
+    "input": {
+      "place": {
+        "place_id": "gn-2867445",
+        "name": "Murnau am Staffelsee",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.68085,
+        "lon": 11.20125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murnau am Staffelsee",
+          "url": "https://en.wikipedia.org/wiki/Murnau_am_Staffelsee",
+          "text": "Murnau am Staffelsee (often shortened to Murnau) is a market town in the district of Garmisch-Partenkirchen, in the Oberbayern region of Bavaria, Germany.\nThe market originated in the 12th century around Murnau Castle. Murnau is on the edge of the Bavarian Alps, about 70 kilometres (43 mi) south of Munich. Directly to its west is the Staffelsee lake and to the south are the peaks and ridges of the Ammergau Alps beginning with the Hörnle and extending up to the Ettaler Manndl, southwest of the Wetterstein. This mountain range is formed by the Zugspitze and the Alpspitze in the south as well as the Estergebirge with their striking Kistenkar and the Walchensee mountains including Heimgarten and Herzogstand in the southeast.\nTo the south, the  is the largest continuous wetland of its kind in Central Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "murnau am staffelsee",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "murnau",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "am",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "staffelsee",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5767,
+    "place_id": "gn-2950622",
+    "input": {
+      "place": {
+        "place_id": "gn-2950622",
+        "name": "Bergen",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.80837,
+        "lon": 9.96374
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bergen, Lower Saxony",
+          "url": "https://en.wikipedia.org/wiki/Bergen,_Lower_Saxony",
+          "text": "Bergen (German pronunciation: [ˈbɛʁɡn̩] ; Eastphalian: Bargen) is a town in the north of Celle district on the Lüneburg Heath, in Lower Saxony, Germany. Administratively it acts as a municipal borough divided into 12 subordinate parishes based on the town and its surrounding villages: Becklingen, Belsen, Bergen, Bleckmar, Diesten, Dohnsen, Eversen, Hagen, Hassel, Offen, Sülze and Wardböhmen. Bergen-Belsen concentration camp was located in the area of Belsen.\nThe town had 13,099 inhabitants according to the census conducted in December 2008. Members of the British military and their families, who were not included in the census, brought the actual population to about 17,000. These soldiers occupied a NATO base and exercise on the Bergen-Hohne Training Area just outside the town, but the base closed in summer 2015 as part of the British Army's withdrawal from Germany."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "bergen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5769,
+    "place_id": "gn-326333",
+    "input": {
+      "place": {
+        "place_id": "gn-326333",
+        "name": "Wenago",
+        "country": "Ethiopia",
+        "subdivision": "South Ethiopia Regional State",
+        "lat": 6.31667,
+        "lon": 38.26667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wenago",
+          "url": "https://en.wikipedia.org/wiki/Wenago",
+          "text": "Wenago is one of the woredas in the Southern Nations, Nationalities, and Peoples' Region of Ethiopia. Part of the Gedeo Zone, Wenago is bordered on the southwest by Yirgachefe, on the northwest by the Oromia Region, on the northeast by Dila Zuria, and on the southeast by Bule. Towns in Wenago include Wenago. Dila Zuria woreda and Dila town were separated from Wenago.\nAccording to a 2004 report, Wenago had 12 kilometers of asphalt roads, 56 kilometers of all-weather roads and 17 kilometers of dry-weather roads, for an average road density of 333 kilometers per 1000 square kilometers. Local landmarks include the Qallu compound (galma) of the Guji Oromo, which that group claims ought to be annexed to the Guji Zone of the Oromia Region, a claim which has led to violence in the past."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "wenago",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

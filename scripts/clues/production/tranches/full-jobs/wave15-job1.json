@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 2823,
+    "attempt": 2801,
+    "place_id": "gn-3676623",
+    "input": {
+      "place": {
+        "place_id": "gn-3676623",
+        "name": "Leticia",
+        "country": "Colombia",
+        "subdivision": "Amazonas Department",
+        "lat": -4.21079,
+        "lon": -69.93944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leticia, Amazonas",
+          "url": "https://en.wikipedia.org/wiki/Leticia,_Amazonas",
+          "text": "Leticia (Spanish pronunciation: [leˈtisja]) is the southernmost city in the Republic of Colombia, capital of the department of Amazonas, Colombia's southernmost town (4.09° south 69.57° west) and one of the major ports on the Amazon River. It has an elevation of 96 meters (315') above sea level and an average temperature of 27 °C (80.6 °F). Leticia has long been Colombia's shipping point for tropical fish for the aquarium trade. Leticia has a population of 33,503 located on the left bank of the Amazon River at the point where the borders of Colombia, Brazil and Peru meet in an area called Tres Fronteras. It is the largest Colombian settlement in the Southern Hemisphere.\n\nA long-standing border dispute involving Leticia, between Colombia and Peru, was decided in 1934 by the League of Nations after these two nations were engulfed in an armed conflict known as the Colombia-Peru War. It is adjacent to the larger Brazilian city of Tabatinga. Together with the Peruvian city of Santa Rosa de Yavari, the entire urban area has more than 120,000 residents spread along the Amazon River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "leticia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2824,
+    "attempt": 2802,
+    "place_id": "gn-1276988",
+    "input": {
+      "place": {
+        "place_id": "gn-1276988",
+        "name": "Bargarh",
+        "country": "India",
+        "subdivision": "Odisha",
+        "lat": 21.33348,
+        "lon": 83.61905
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bargarh",
+          "url": "https://en.wikipedia.org/wiki/Bargarh",
+          "text": "Bargarh (IPA: [bɔɾgɔɽʰ]) is a town and the administrative headquarters of Bargarh district in the state of Odisha,India.It is an important town of Odisha because it is known as the \"rice bowl of Odisha\" due to its intense rice production. It is an agro-industrial hub and is also known as \"city of handloom\" because sambalpuri sari originated from here.\"Dhanu jatra\" of Bargarh is world famous and is known as the \"world's largest open air theater\". Bargarh is also one of the most densely populated town of Odisha because it has a higher population density than most towns of Odisha according to the 2011 census.\n\nBPCL’s first integrated 2G+1G BioEthanol refinery at Bargarh, Odisha is scheduled for mechanical completion . This will be using biomass from non-edible whole plants or food grain residues for 2G ethanol and sugarcane juice, molasses & damaged grains for making 1G ethanol."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "bargarh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2825,
+    "attempt": 2803,
+    "place_id": "gn-1634680",
+    "input": {
+      "place": {
+        "place_id": "gn-1634680",
+        "name": "Muntilan",
+        "country": "Indonesia",
+        "subdivision": "Central Java",
+        "lat": -7.58111,
+        "lon": 110.29278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muntilan",
+          "url": "https://en.wikipedia.org/wiki/Muntilan",
+          "text": "Muntilan is an administrative district (kecamatan) in the Magelang Regency, Central Java.  Muntilan is located about 15 km south of Magelang, 10 km from Mungkid, 25 km from Yogyakarta, and 90 km from the main town of Semarang located on the northern coast of Java. The town of Muntilan is on the old railway route between Kebon Polo station in Magelang and the main Tugu station in Yogyakarta. Tourists on their way to the famous Buddhist temple Borobudur usually pass through Muntilan.  \n\nMuntilan township is one of the main market centers on the western slopes of Mount Merapi, a major volcano in central Java within the administrative ambit of the regional government in Magelang.  The locality of this district is densely populated; in mid-2024 there was a population of 81,555 people living in an area of 30.36 km2, indicating a population density of 2,686 per km2."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "muntilan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2826,
+    "attempt": 2804,
+    "place_id": "gn-2515812",
+    "input": {
+      "place": {
+        "place_id": "gn-2515812",
+        "name": "La Línea de la Concepción",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.16809,
+        "lon": -5.34777
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Línea de la Concepción",
+          "url": "https://en.wikipedia.org/wiki/La_Línea_de_la_Concepción",
+          "text": "La Línea de la Concepción (Spanish pronunciation: [la ˈlinea ðe la konθeβˈθjon]), often referred to simply as La Línea, is a municipality of Spain belonging to the  province of Cádiz, Andalusia.\nThe city lies on the sandy isthmus which is part of the eastern flank of the Bay of Gibraltar, and includes the entire Gibraltar–Spain border to the south. La Línea has close economic and social links with the British overseas territory of Gibraltar. It is part of the comarca of Campo de Gibraltar.\nThe first dwellings, which date back to the 18th century, were behind the Spanish fortification lines drawn up during the Sieges of Gibraltar which took place during the 18c and 19c wars in Europe.\nThe population of La Línea was a part of the municipality of San Roque until the community was decreed on 17 January 1870 to be a standalone municipality.\nThe people of La Línea have traditionally found work in Gibraltar, from the days in the 18th century when Gibraltar was an important naval port.\nLa Línea was, and still is, a supplier of fresh produce from its open and fertile land area as well as its population supplying workers, mainly for the Gibraltar Dockyard.\nThis provision stopped with the total closure of the border by the Spanish government between 9 June 1969 and 15 December 1982 as a result of the dispute between Spain and Britain regarding the sovereignty of Gibraltar. \nThe border was fully reopened on 5 February 1985.\nLa Línea is a major supplier of fruit and vegetables to Gibraltar; other industries include the manufacture of cork, liquor, and fish paste. It also had an important military garrison with substantial fortifications and a port."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "la linea de la concepcion",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "linea",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "concepcion",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2827,
+    "attempt": 2805,
+    "place_id": "gn-2640085",
+    "input": {
+      "place": {
+        "place_id": "gn-2640085",
+        "name": "Portadown",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.42302,
+        "lon": -6.44434
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portadown",
+          "url": "https://en.wikipedia.org/wiki/Portadown",
+          "text": "Portadown (From Irish: Port an Dúnáin, 'landing place of the little fort' pronounced [pɔɾˠt̪ˠ ə ˈd̪ˠuːnˠaːnʲ]) is a town in County Armagh, Northern Ireland. The town stands on the River Bann in the north of the county, about 24 miles (39 km) southwest of Belfast. It is in the Armagh City, Banbridge and Craigavon Borough Council area and had a population of about 22,000 at the 2021 Census. For some purposes, Portadown is treated as part of the \"Craigavon Urban Area\", alongside Craigavon and Lurgan.\nAlthough Portadown was founded during the early 17th century British Plantation of Ulster, it was not until the Victorian era and the arrival of the railway that it developed as a major town. It earned the nickname \"hub of the North\" because it was a major railway junction; here the Great Northern Railway's line diverged for Belfast, Dublin, Armagh and Derry. In the 19th and 20th centuries, Portadown was also a major centre for the production of textiles (mainly linen).\nPortadown is the site of the long-running Drumcree dispute. Catholics have opposed yearly marches by the Protestant Orange Order through a majority-Catholic part of town. This often sparked protests and violence. In the 1990s, the dispute escalated and prompted a massive police and army operation, drawing worldwide attention to Portadown."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "portadown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2828,
+    "attempt": 2806,
+    "place_id": "gn-2640677",
+    "input": {
+      "place": {
+        "place_id": "gn-2640677",
+        "name": "Paisley",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.83173,
+        "lon": -4.43254
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paisley, Renfrewshire",
+          "url": "https://en.wikipedia.org/wiki/Paisley,_Renfrewshire",
+          "text": "Paisley ( PAYZ-lee; Scottish Gaelic: Pàislig [ˈpʰaːʃlɪkʲ]) is a town in Renfrewshire, Scotland. Located north of the Gleniffer Braes and immediately west of Glasgow, it straddles the banks of the White Cart Water, a tributary of the River Clyde. It serves as the administrative centre for the Renfrewshire council area, and is the largest town in the historic county of Renfrewshire, with a population of 79,369 in 2022. As the fifth-largest settlement in Scotland, behind the cities of Glasgow, Edinburgh, Aberdeen and Dundee, it is often cited as Scotland's largest town.\nThe town became prominent in the 12th century with the establishment of Paisley Abbey, an important religious hub which formerly had control over other local churches. Paisley expanded significantly during the Industrial Revolution as a result of its location beside White Cart Water, with access to the Clyde and nearby ore, mineral and agricultural resources. Factories and mills developed leading to an increase in the town's population. The town's associations with political radicalism were highlighted by its involvement in the Radical War of 1820, with striking weavers being instrumental in the protests.\nBy the late 19th century Paisley was a global centre of the weaving industry, giving its name to the Paisley shawl and the Paisley pattern. However, industrial decline followed in the 20th century. By 1993, all of Paisley's mills had closed, although they are memorialised in the town's museums and civic history. The town now functions as a regional centre for local governance and services as well as a residential commuting area within the Greater Glasgow urban region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 261
+    },
+    "banned_terms": [
+      {
+        "term": "paisley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2829,
+    "attempt": 2807,
+    "place_id": "gn-2891951",
+    "input": {
+      "place": {
+        "place_id": "gn-2891951",
+        "name": "Kehl",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.57297,
+        "lon": 7.81523
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kehl",
+          "url": "https://en.wikipedia.org/wiki/Kehl",
+          "text": "Kehl (German pronunciation: [keːl] ; Low Alemannic: Kaal) is a city with around 38,000 inhabitants in the southwestern German state of Baden-Württemberg. It lies in the region of Baden on the Rhine River, at the confluence with the smaller Kinzig River, directly opposite the French and Alsatian city of Strasbourg. It is the third-largest city of the Ortenaukreis (Ortenau District) after Offenburg and Lahr/Schwarzwald.\nKehl is mostly known because of its proximity to Strasbourg and as a border city. Strasbourg and Kehl are connected by four Rhine bridges which are from south to north: the Passerelle des Deux Rives (pedestrians and cyclists), the Bridge of Europe (motorists, pedestrians and cyclists), the Beatus-Rhenanus Bridge (tramway, pedestrians and cyclists), and the Rhine Bridge (railway).\nLine D of the Strasbourg tramway was extended in 2017 to reach Kehl station, and since 2018 there are another two stations within Kehl. It is therefore possible to directly reach the city centre of Strasbourg (stations Homme de Fer and Langstross Grand'Rue) as well as Strasbourg Main Station (station Gare Centrale) by tramway without having to change.\nThe Jardin des Deux Rives/Garten der zwei Ufer extends on both sides of the Rhine, connected by the Passerelle des Deux Rives. Strasbourg and Kehl further share some municipal services. Kehl has a large port on the Rhine, the Häfen Kehl (Kehl Ports), south of the mouth of the Kinzig, and is the seat of the Kehl University of Applied Sciences (Hochschule Kehl)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 243
+    },
+    "banned_terms": [
+      {
+        "term": "kehl",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2830,
+    "attempt": 2808,
+    "place_id": "gn-2977921",
+    "input": {
+      "place": {
+        "place_id": "gn-2977921",
+        "name": "Saint-Nazaire",
+        "country": "France",
+        "subdivision": "Pays de la Loire",
+        "lat": 47.27506,
+        "lon": -2.2179
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Nazaire",
+          "url": "https://en.wikipedia.org/wiki/Saint-Nazaire",
+          "text": "Saint-Nazaire (French: [sɛ̃ nazɛːʁ] ; Breton: Sant-Nazer; Gallo: Saint-Nazère/Saint-Nazaer) is a port town and commune in the Loire-Atlantique department in western France, in traditional Brittany.\nThe town has a major harbour on the right bank of the Loire estuary, near the Atlantic Ocean. The town is at the south of the second-largest swamp in France, called \"la Brière\". Given its location, Saint-Nazaire has a long tradition of fishing and shipbuilding. The Chantiers de l'Atlantique, one of the largest shipyards in the world, constructed notable ocean liners such as SS Normandie, SS France, Queen Mary 2 and the cruise ship Symphony of the Seas, the largest passenger ship in the world until 2022.\nSaint-Nazaire was a small village until the Industrial Revolution but became a large town in the second half of the 19th century, thanks to the construction of railways and the growth of the seaport. Saint-Nazaire progressively replaced upstream Nantes as the main haven on the Loire estuary.\nAs a major submarine base for the Kriegsmarine, Saint-Nazaire was subject to a successful British raid in 1942 and was heavily bombed by the Allies until 1945. Being one of the Atlantic pockets, Saint-Nazaire was one of the last territories in Europe to be liberated from German occupation, on 11 May 1945. The town was one of the most damaged in France during World War II."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "saint nazaire",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nazaire",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2831,
+    "attempt": 2809,
+    "place_id": "gn-3084093",
+    "input": {
+      "place": {
+        "place_id": "gn-3084093",
+        "name": "Świdnica",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 50.84378,
+        "lon": 16.48859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Świdnica",
+          "url": "https://en.wikipedia.org/wiki/Świdnica",
+          "text": "Świdnica (Polish: [ɕfidˈɲit͡sa] ; German: Schweidnitz [ˈʃvaɪtnɪts]; Czech: Svídnice [ˈsviːdɲitsɛ]; Silesian: Swidnica) is a city on the Bystrzyca River in south-western Poland in the Lower Silesian Voivodeship. As of 2021, it has a population of 55,413 inhabitants. It is the seat of Świdnica County, and also of the smaller district of Gmina Świdnica, though it forms a separate urban gmina. It is the seventh largest city of the Lower Silesian Voivodeship. Świdnica became part of the Wałbrzych agglomeration on 23 January 2014.\nA city with almost a thousand years of history, recorded in 1070, Świdnica was one of the main cities of Silesia and southwestern Poland in the Middle Ages, the second most important center of culture and art in the region (after Wrocław), a famed brewing center, and in 1291–1392 the capital of an eponymous principality ruled by a local line of the Piast dynasty. The city has a preserved Old Town with several Gothic and Baroque churches, including the St. Stanislaus and St. Wenceslaus Cathedral and the Church of Peace, two landmark churches listed as Historic Monuments of Poland with the latter also listed as a UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "swidnica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2832,
+    "attempt": 2810,
+    "place_id": "gn-3462378",
+    "input": {
+      "place": {
+        "place_id": "gn-3462378",
+        "name": "Goianésia",
+        "country": "Brazil",
+        "subdivision": "Goiás",
+        "lat": -15.3175,
+        "lon": -49.1175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Goianésia",
+          "url": "https://en.wikipedia.org/wiki/Goianésia",
+          "text": "Goianésia  (Brazilian Portuguese pronunciation: [ɡojaˈnɛzjɐ]) is a municipality in central Goiás, Brazil. It belongs to the Immediate Geographic Region of Ceres-Rialma-Goianésia and, since 2024, has been part of the Integrated Development Region of the Federal District and Surrounding Areas (RIDE-DF).\nRoughly 170 kilometers from the state capital, Goiânia, and about 230 kilometers from the federal capital, Brasília, Goianésia has a population of 73,707, according to the 2022 census by the Brazilian Institute of Geography and Statistics (IBGE). It is the most populous city among the 23 municipalities in the São Patrício Valley and is known locally as the \"Princess of the Valley\" due to its growth and regional influence.\nSettlement in the area came relatively late, driven by families from Minas Gerais and other states. This movement gained momentum in the second half of the 20th century, fueled by the expansion of agriculture in Brazil's Central-West. Today, Goianésia is a major center for sugar and ethanol production in the state, with three active mills and a strong agro-industrial presence."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "goianesia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2833,
+    "attempt": 2811,
+    "place_id": "gn-3531862",
+    "input": {
+      "place": {
+        "place_id": "gn-3531862",
+        "name": "Cadereyta Jiménez",
+        "country": "Mexico",
+        "subdivision": "Nuevo León",
+        "lat": 25.59051,
+        "lon": -100.00095
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cadereyta Jiménez",
+          "url": "https://en.wikipedia.org/wiki/Cadereyta_Jiménez",
+          "text": "Cadereyta Jiménez is the name of a city as well as of a municipality in the Mexican state of Nuevo León.\nThe municipality of Cadereyta Jiménez is located in the central part of the state, 360 meters above sea level, at 25' 36\" N latitude and 100' 00\" W longitude. The municipality has a territorial extension of 1,141 km2 (441 sq mi). It borders the following municipalities, all of which are in the state of Nuevo León: to the north, Juárez and Pesquería; to the south, Allende, Montemorelos and General Terán; to the east, General Terán and Los Ramones; to the west, Juárez and Santiago. It is the most easterly municipality of the Monterrey metropolitan area.\nThe city of Cadereyta Jiménez, which is the seat of the municipality and its main population center had a 2005 census population of 56,552, the ninth-largest city in the state. However, within the municipality there are numerous other villages, the largest of which are: San Juan, Ejido Palmitos, La Calzada, El Alamito, Pueblo Nuevo, Cereso Cadereyta, Atongo de Abajo and Palmitos. The municipality had an official population of 73,746, also the ninth-largest in the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "cadereyta jimenez",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cadereyta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jimenez",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2834,
+    "attempt": 2812,
+    "place_id": "gn-3649959",
+    "input": {
+      "place": {
+        "place_id": "gn-3649959",
+        "name": "Zamora",
+        "country": "Ecuador",
+        "subdivision": "Zamora Chinchipe",
+        "lat": -4.06446,
+        "lon": -78.95123
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zamora, Ecuador",
+          "url": "https://en.wikipedia.org/wiki/Zamora,_Ecuador",
+          "text": "Zamora (Spanish pronunciation: [saˈmoɾa]) is a city in southeastern Ecuador; it is the capital of Zamora-Chinchipe province and the seat of Zamora Canton. Zamora is the principal and most populous city in Zamora-Chinchipe. It is located in the Oriente region at the base of the eastern portion of the Andes mountains in Ecuador, at 970 m above sea level, at the convergence of the Zamora, Bombuscaro and Jamboé rivers.\nZamora, which has experienced a boom in growth in since the recent discovery of gold in the surrounding region,  is known as the \"Mining Capital of Ecuador'\", and as the \"City of Birds and Waterfalls'\", referring to the presence of various species of birds and several waterfalls on the streams that surround the city.\nThe city stretches from west to east towards Cumbaratza. It is connected by several bus and coach trips to other cantons and provinces."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "zamora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2835,
+    "attempt": 2813,
+    "place_id": "gn-4019827",
+    "input": {
+      "place": {
+        "place_id": "gn-4019827",
+        "name": "Acámbaro",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.03248,
+        "lon": -100.72434
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Acámbaro",
+          "url": "https://en.wikipedia.org/wiki/Acámbaro",
+          "text": "Acámbaro (Otomi: Mä'wada) is a city and municipality in the southeastern corner of the Mexican state of Guanajuato, on the banks of the Lerma River, and the oldest of the 46 municipalities of Guanajuato. Acámbaro was originally a Purépecha settlement which was invaded by the Spanish, and their Otomi allies, in 1526. Acámbaro is noted, as a major railway junction, a local transport hub, and the origin of the nationally famous Acámbaro bread. The 2005 census population of the municipality was 101,762, and that of the city proper 55,082. The municipality covers an area of 877.8 km2 (335.01 sq mi) and includes many small outlying communities, the largest of which are Iramuco and Parácuaro.\nThe municipality of Acámbaro is bordered to the north by Tarimoro and Jerécuaro, to the southeast by Tarandacuao, to the south by the state of Michoacán, and to the west by Salvatierra."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "acambaro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2836,
+    "attempt": 2814,
+    "place_id": "gn-5125086",
+    "input": {
+      "place": {
+        "place_id": "gn-5125086",
+        "name": "Long Beach",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.58844,
+        "lon": -73.65791
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Long Beach, New York",
+          "url": "https://en.wikipedia.org/wiki/Long_Beach,_New_York",
+          "text": "Long Beach is an oceanfront city in Nassau County, New York, on Long Island. The city rests on a central section of the Long Beach Barrier Island, which is the westernmost of the outer barrier islands off the South Shore of Long Island. The city's population was 35,029 at the 2020 United States census.\nThe City of Long Beach was incorporated in 1922, and is nicknamed \"The City by the Sea\" (the Latin form, Civitas ad mare, is the city's motto). Long Beach is bordered by East Atlantic Beach to the west, and Lido Beach to the east, on the Long Beach Barrier Island—which in turn is surrounded by the Reynolds Channel to the north, east and west, and the Atlantic Ocean to the south.\nIn 2022, Long Beach was named one of the best East Coast towns for a summer getaway by Time Out magazine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "long beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "long",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2837,
+    "attempt": 2815,
+    "place_id": "gn-662476",
+    "input": {
+      "place": {
+        "place_id": "gn-662476",
+        "name": "Voluntari",
+        "country": "Romania",
+        "subdivision": "Ilfov",
+        "lat": 44.49002,
+        "lon": 26.17338
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Voluntari",
+          "url": "https://en.wikipedia.org/wiki/Voluntari",
+          "text": "Voluntari (Romanian pronunciation: [volunˈtarʲ]) is a town in Ilfov County, Muntenia, Romania. It is located at a distance of 1 km from the northern border of Bucharest (on the DN2 road towards Urziceni) and is thus frequently viewed as a suburb of Bucharest.\nThe population is 47,366 inhabitants according to the 1 December 2021 census, with an ethnic composition, among those for whom data are available, of 94.8% Romanians, 1.3% Romani, 0.9% Chinese, 0.5% Turks, and 2.5% of other ethnic groups.\nThe low price of land, the proximity to Bucharest, and the easy and reliable access to both the railway network and the road network have allowed a steady development of industrial and commercial facilities, especially in the light industry and import/export commerce. The town's output estimate increased by over 25% between 2001 and 2005. Even with such high development rates, many residents commute to Bucharest. Voluntari is the site of a shopping centre known as Jolie Ville Galleria, as well as the headquarters of the Vodafone Romania company.\nVoluntari literally means \"Volunteers\", in Romanian, having been founded by the volunteer soldiers who fought for Romania in World War I and were given plots to build their homes there after the war. The settlement received city status in 2004."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "voluntari",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2838,
+    "attempt": 2816,
+    "place_id": "gn-674295",
+    "input": {
+      "place": {
+        "place_id": "gn-674295",
+        "name": "Lupeni",
+        "country": "Romania",
+        "subdivision": "Hunedoara County",
+        "lat": 45.36029,
+        "lon": 23.23832
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lupeni",
+          "url": "https://en.wikipedia.org/wiki/Lupeni",
+          "text": "Lupeni (Romanian pronunciation: [luˈpenʲ]; German: Schylwolfsbach, Hungarian: Lupény) is a mining city in the Jiu Valley in Hunedoara County, Romania, in the historical region of Transylvania. It is one of the oldest and largest cities in the Jiu Valley. It is located on the banks of the Western Jiu River within the Jiu Valley, at a height varying between 630 metres (2,070 ft) (in the east) and 760 metres (2,490 ft). The distance from Lupeni to Petroșani is 18 kilometres (11 mi) on the DN66A road, and to Deva (the capital of Hunedoara County) it is 114 km (71 mi).\nThe name is derived from the Romanian \"lup\", meaning \"wolf\". Throughout the second part of the 19th century and most of the 20th century, the city's economy was based on mining, but since the 1990s the economy has become more diverse, after many mines were closed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "lupeni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2839,
+    "attempt": 2817,
+    "place_id": "gn-1785805",
+    "input": {
+      "place": {
+        "place_id": "gn-1785805",
+        "name": "Wulingyuan",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 29.34936,
+        "lon": 110.54407
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wulingyuan",
+          "url": "https://en.wikipedia.org/wiki/Wulingyuan",
+          "text": "Wulingyuan ([ù.lǐŋ.ɥɛ̌n], Chinese: 武陵源) is a scenic and historical site in the Wulingyuan District of South Central China's Hunan Province. It is noted for more than 3,000 quartzite sandstone pillars and peaks across most of the site, many over 200 metres (660 ft) in height, along with many ravines and gorges with picturesque streams, pools, lakes, rivers, and waterfalls. It features 40 caves, many with large calcite deposits and a natural bridge named Tianqiaoshengkong (meaning 'bridge across the sky'), which is one of the highest natural bridges in the world. The site also provides habitat for many vulnerable species, including the dhole, Asiatic black bear, and Chinese water deer. \nThe site is situated in Zhangjiajie City and lies about 270 kilometres (170 mi) to the northwest of Changsha, the capital of Hunan Province. The park covers an area of 690 square kilometers (266 square miles). Wulingyuan forms part of the Wuling Mountain Range. The scenic area consists of four national parks, which are the Zhangjiajie National Forest Park, Suoxi Valley Nature Reserve, Tianzi Mountain Nature Reserve, and the recently added Yangjiajie Scenic Area. Overall there are over 560 attraction sights to view.  The site was inscribed as a UNESCO World Heritage Site in 1992."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "wulingyuan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2840,
+    "attempt": 2818,
+    "place_id": "gn-2149645",
+    "input": {
+      "place": {
+        "place_id": "gn-2149645",
+        "name": "Shepparton",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -36.38047,
+        "lon": 145.39867
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shepparton",
+          "url": "https://en.wikipedia.org/wiki/Shepparton",
+          "text": "Shepparton ( SHEP-ər-tən; Yorta Yorta: Kanny-goopna) is a regional city located on the floodplain of the Goulburn River in northern Victoria, Australia, approximately 181 kilometres (112 mi) north-northeast of Melbourne. As of the 2021 census, the locality of Shepparton had a population of 32,067. The broader urban area, including the adjacent town of Mooroopna, had a combined population of 53,841.\nIt began as a sheep station and river crossing in the mid-19th century, before undergoing a major transformation as a railway town. Today it is an agricultural and manufacturing centre, and the centre of the Goulburn Valley irrigation system, one of the largest centres of irrigation in Australia. It is also a major regional service city and the seat of local government and civic administration for the City of Greater Shepparton, which includes the surrounding towns of Tatura, Merrigum, Mooroopna, Murchison, Dookie, Toolamba and Grahamvale."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "shepparton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2841,
+    "attempt": 2819,
+    "place_id": "gn-2273312",
+    "input": {
+      "place": {
+        "place_id": "gn-2273312",
+        "name": "Voinjama",
+        "country": "Liberia",
+        "subdivision": "Lofa County",
+        "lat": 8.42194,
+        "lon": -9.74778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Voinjama",
+          "url": "https://en.wikipedia.org/wiki/Voinjama",
+          "text": "Voinjama is a small city that serves as the capital of Lofa County, Liberia and is located in the hilly, far northern part of the country near the Guinean border. As of the 2008 national census, the population stood at 26,594.\n\nBefore the Liberian civil war it was a busy crossroads town, with a large weekly market.  The population was principally from the Lorma and Mandingo tribes, with other ethnic groups from surrounding areas also present.  It boasted a number of schools, including the public Voinjama Multilateral High School, as well as Saint Joseph's Catholic school under the direction of Sister Joan Margaret Kelly, and private schools run by Swedish missionaries and other groups.  The Voinjama airport, outside of town on the road to Zorzor, featured a grass landing strip and flight service several times a week from Monrovia through the national carrier, Air Liberia.\nThe city had an electric generating station (with power in the evening) and a water treatment plant that supplied running water for most of the town.  There were numerous general goods stores on the main road and a large parking station in the central plaza where one could catch a ride on a public car south to Zorzor, Gbarnga and Monrovia, west to Kolahun, Foya and Sierra Leone, or north to the Guinean border, four miles away.\nVoinjama featured numerous churches of many different denominations as well as a mosque situated in the predominantly Muslim area of town known as the Mandingo Quarter.  As capital of the county, it served as a government headquarters housing county officials and offices as well as being home to numerous international development projects, including the Lofa County Agricultural Development Project.  It is served by a number of US Peace Corps Volunteers (Tarnue and Akoi) and Japan Overseas Cooperation Volunteers.\nSubsistence rice farming was the principal occupation of most of the population.  The rice generally grown in Liberia is dryland rice, on ground cleared through slashing and burning of the abundant forest land, and not paddy rice as in other parts of the world. Other prominent crops grown in the Voinjama area were cassava, potato greens, collard greens, and palm nuts, from which the popular red palm oil was extracted.  \"Palm wine\" harvested from certain palm trees was also popular."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 380
+    },
+    "banned_terms": [
+      {
+        "term": "voinjama",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2842,
+    "attempt": 2820,
+    "place_id": "gn-2513947",
+    "input": {
+      "place": {
+        "place_id": "gn-2513947",
+        "name": "Melilla",
+        "country": "Spain",
+        "subdivision": "Melilla",
+        "lat": 35.29369,
+        "lon": -2.93833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Melilla",
+          "url": "https://en.wikipedia.org/wiki/Melilla",
+          "text": "Melilla (, Spanish: [meˈliʝa] ; Tarifit: Mřič) is an autonomous city of Spain on the North African coast. It lies on the eastern side of the Cape Three Forks, on the Morocco–Spain border, adjacent to the Moroccan port town of Beni Ansar, and faces the Mediterranean Sea. It has an area of 12.3 km2 (4.7 sq mi).\nThe trading outpost of Rusadir was established on the current site by seafaring Phoenicians. Passed over among several powers during Antiquity and the middle ages, the place was forsaken amid strife between the Kingdoms of Fez and Tlemcen, and it was seized by Christians in 1497, constituting a condominium between the House of Medina Sidonia and the Crown of Castile until 1556. Integrated in the Hispanic Monarchy, the fortress of Melilla la Vieja remained a military praesidium with limited civilian population for much of the early modern period. After the expansion of Melilla's perimetre to its current limits in the wake of the Treaty of Wad Ras (1860), the area in between Melilla la Vieja and the outer forts was urbanised and populated by mainland Spaniards, Sephardi Jews and Riffians, and the local economy thrived from the mining (iron ore) operations in the eastern Rif. Prior to the passing of its Statute of Autonomy in 1995, Melilla was a regular municipality of the province of Málaga.\nMelilla is one of the special territories of the member states of the European Union. Movements to and from the rest of the EU and Melilla are subject to specific rules, provided for in the Accession Agreement of Spain to the Schengen Convention. As of 2025, Melilla had a population of 87,067. It has a small airport and its port is connnected to the ports of Málaga, Motril, and Almería via ferry. The population is chiefly divided between people of Iberian and Riffian extraction. There are also small numbers of Sephardic Jews and Sindhi Hindus. Melilla features a diglossia between the official Spanish and Tarifit. Like the autonomous city of Ceuta and Spain's other territories along the northern African coast, Melilla is subject to an irredentist claim by Morocco."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 352
+    },
+    "banned_terms": [
+      {
+        "term": "melilla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

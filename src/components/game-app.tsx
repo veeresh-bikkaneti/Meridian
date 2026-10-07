@@ -3,7 +3,7 @@ import { distanceKm, formatDistance } from "@/game/geo";
 import { isHit, radiusKm } from "@/game/radius";
 import { placesFor, poolSizeFor } from "@/game/generated-places";
 import { isNewBuildDeployed } from "@/game/build-staleness";
-import { preloadAdmin1Boundaries } from "@/game/reverse-geocode";
+import { preloadAdmin1Boundaries, preloadAdmin1ForCountry, admin1ChunkIso2ForRegion } from "@/game/reverse-geocode";
 import {
   clearRunAfterUncleanShutdown,
   handlePageHide,
@@ -43,13 +43,33 @@ import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrat
 import { resolveRunPool } from "@/game/pool";
 import type { MapMark, MapVariation } from "@/map/satellite-map";
 import { MapErrorBoundary } from "./map-error-boundary";
-import { Compass } from "lucide-react";
-import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { Compass, Flag, Globe2, MapPin, Volume2, VolumeX } from "lucide-react";
+import {
+  initAudio,
+  isSoundEnabled,
+  playCardTap,
+  playDifficultySelect,
+  playEditionEntrance,
+  playLose,
+  playWin,
+  setSoundEnabled,
+} from "@/game/audio/sfx";
+import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
+import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
+import { CometMascot } from "./comet-mascot";
+import {
+  CelebrationOverlay,
+  celebrationSeamSpec,
+  celebrationSpec,
+  hasCelebratedFirstWin,
+  markFirstWinCelebrated,
+  type CelebrationSpec,
+} from "./celebration-overlay";
 import {
   buildCollisionCounts,
   buildQuestionLabel,
@@ -67,6 +87,17 @@ import {
   setObservabilityEndpoint,
 } from "@/lib/observability";
 import {
+  TUTORIAL_EDITION,
+  TUTORIAL_PLACE_ID,
+  TUTORIAL_REGION_ID,
+  TUTORIAL_REGION_NAME,
+  hasSeenTutorial,
+  isTutorialRunPool,
+  markTutorialSeen,
+  type TutorialBeat,
+} from "@/game/tutorial";
+import { TutorialInvite, TutorialOverlay } from "./tutorial-overlay";
+import {
   emptyLearningStore,
   growthLineFor,
   growthSummary,
@@ -75,6 +106,124 @@ import {
   writeLearningStore,
   type LearningStore,
 } from "@/game/learning";
+import { LoopScreen } from "@/game/loop/LoopScreen";
+import { readLoopOpen, writeLoopOpen, peekLoopProgress } from "@/game/loop/store";
+import {
+  REVIEW_DECK_COPY,
+  REVIEW_DECK_REGION_ID,
+  REVIEW_DECK_REGION_NAME,
+  deckCounts,
+  deckStarter,
+  dueEntries,
+  emptyReviewDeck,
+  readReviewDeck,
+  recordReview,
+  removeDeckEntry,
+  upsertMiss,
+  writeReviewDeck,
+  type DeckEntry,
+  type DeckPlaceSnapshot,
+} from "@/game/review-deck";
+
+/**
+ * A review-deck session is a Run with this regionId (typed edition "globe")
+ * so the PlayLoaded game loop is reused instead of forked. Every
+ * review-specific branch keys off this predicate. Review runs never consult
+ * the no-repeat history of real regions and never bank into the session —
+ * review is practice, not scoring.
+ */
+function isReviewRun(run: Run): boolean {
+  return run.regionId === REVIEW_DECK_REGION_ID;
+}
+
+/**
+ * Speaker toggle (SFX audio spec §4): persisted under `meridian.sound`,
+ * default ON, and the single control for ALL sounds (the 7 shipped + the
+ * 9 celebration recipes — every play call goes through the
+ * `isSoundEnabled()` gate). Turning ON plays the card tap as confirmation;
+ * OFF is silent. This toggle is the "reduced sound" control — reduced
+ * motion never mutes audio (spec §4.6).
+ *
+ * One instance lives in the Chart Room home header; a second lives in the
+ * game chrome so sound is reachable mid-game (Veeresh's explicit ask).
+ * The two never co-mount — each reads the persisted value on mount, so a
+ * toggle flipped on one screen is correct on the next.
+ */
+function SoundToggle({
+  testId,
+  className,
+  style,
+  iconClassName = "size-5",
+}: {
+  testId: string;
+  className?: string;
+  style?: CSSProperties;
+  iconClassName?: string;
+}) {
+  const [soundOn, setSoundOn] = useState<boolean>(() => isSoundEnabled());
+  const toggleSound = () => {
+    try {
+      const next = !soundOn;
+      setSoundEnabled(next);
+      setSoundOn(next);
+      if (next) playCardTap();
+    } catch {
+      // Sound is enhancement-only; the toggle itself never throws.
+    }
+  };
+  return (
+    <button
+      type="button"
+      data-testid={testId}
+      aria-pressed={soundOn}
+      aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
+      title={soundOn ? "Sound on" : "Sound off"}
+      onClick={toggleSound}
+      className={className}
+      style={style}
+    >
+      {soundOn ? (
+        <Volume2 className={iconClassName} aria-hidden="true" />
+      ) : (
+        <VolumeX className={iconClassName} aria-hidden="true" />
+      )}
+    </button>
+  );
+}
+
+/**
+ * Snapshot a missed place's full question context for the deck: a review
+ * card replays the exact question the player missed (same framing, same
+ * hit radius, same label), with no region-chunk fetch at review time.
+ */
+function snapshotForDeck(
+  place: Starter,
+  run: Run,
+  radiusKm: number,
+): DeckPlaceSnapshot {
+  return {
+    id: place.id,
+    name: place.name,
+    lon: place.lon,
+    lat: place.lat,
+    story: place.story,
+    history: place.history,
+    fact: place.fact,
+    curated: place.curated,
+    difficulty: place.difficulty,
+    edition: run.edition,
+    regionId: run.regionId,
+    regionName: run.regionName,
+    subdivision: place.subdivision,
+    iso2: place.iso2,
+    originRegionId: place.originRegionId,
+    sourceLabel: place.sourceLabel,
+    sourceHref: place.sourceHref,
+    mapMode: run.edition === "globe" ? "globe" : "flat",
+    regionBounds: run.edition === "globe" ? undefined : boundsFor(run),
+    radiusKm,
+  };
+}
 
 /**
  * Session flag marking that this tab already reloaded for a stale build.
@@ -512,15 +661,100 @@ function useSessionState() {
   return { session, update, replace: persist, get };
 }
 
+/**
+ * Review-deck entry status for the edition picker. Gated on the
+ * `learningOutcomes` flag like the other growth surfaces: flag off = no
+ * deck entry at all (the deck only populates while the flag is on). Re-read
+ * whenever the app returns to the picker (`run` → null): a review session
+ * reschedules cards and a normal game adds misses, so a boot-time snapshot
+ * would go stale — and a stale "N cards due" with an empty queue would make
+ * "Start review" silently no-op.
+ */
+function useDeckStatus(run: Run | null): { enabled: boolean; due: number; total: number } {
+  const [status, setStatus] = useState({ enabled: false, due: 0, total: 0 });
+  const onPicker = run === null;
+  useEffect(() => {
+    let active = true;
+    loadFlags().then(() => {
+      if (!active) return;
+      if (!isEnabled("learningOutcomes")) {
+        setStatus({ enabled: false, due: 0, total: 0 });
+        return;
+      }
+      const deck = readReviewDeck() ?? emptyReviewDeck();
+      if (!active) return;
+      const { total, due } = deckCounts(deck, Date.now());
+      setStatus({ enabled: true, total, due });
+    });
+    return () => {
+      active = false;
+    };
+  }, [onPicker]);
+  return status;
+}
+
 export function GameApp() {
+  // SFX autoplay gate (audio spec §7): the AudioContext is created on the
+  // first user gesture ONLY. `{ once: true }` listeners — load-bearing, not
+  // optional: creating the context before a gesture leaves it `suspended`
+  // and every sound silently no-ops. StrictMode-safe: the cleanup removes
+  // the listeners on the double-mount's unmount, the remount re-registers.
+  useEffect(() => {
+    const boot = () => initAudio();
+    window.addEventListener("pointerdown", boot, { once: true });
+    window.addEventListener("keydown", boot, { once: true });
+    return () => {
+      window.removeEventListener("pointerdown", boot);
+      window.removeEventListener("keydown", boot);
+    };
+  }, []);
   const [ready, setReady] = useState(false);
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
+  // GeoDetective mounts its own screen outside the endless-run state
+  // machine; it persists under meridian.loop.v2 and never touches the
+  // run/drop keys. The open flag (meridian.loop.open) restores the screen
+  // after a reload so a mid-game refresh resumes the mystery, not the menu.
+  const [loopOpen, setLoopOpen] = useState<boolean>(() => readLoopOpen());
   // Cleared-mode celebration: set when a difficulty band's full cycle is
   // celebrated (primary onContinue trigger or the run-start backstop). The
   // dialog renders over the current screen; dismissing returns the player
   // to exactly where they were.
   const [cleared, setCleared] = useState<ClearedInfo | null>(null);
+  // Celebration overlay (spec §7.2): the parent owns the spec; dismiss →
+  // null → unmount. Set by first-win (endless game), streak milestones via
+  // sound only, and GeoDetective's 387 completion (via onCelebrate).
+  // E2E seam: ?celebration=<variant> renders the overlay on boot,
+  // mirroring ?loop-puzzle=.
+  const [celebration, setCelebration] = useState<CelebrationSpec | null>(() =>
+    typeof window === "undefined" ? null : celebrationSeamSpec(window.location.search),
+  );
+  const dismissCelebration = useCallback(() => setCelebration(null), []);
+  const celebrationOverlay = celebration ? (
+    <CelebrationOverlay
+      variant={celebration.variant}
+      character={celebration.character}
+      title={celebration.title}
+      body={celebration.body}
+      onDismiss={dismissCelebration}
+    />
+  ) : null;
+  // Celebration audio (spec §3): the cleared-mode dialog's opening beat.
+  // Easy/Medium get the medium applause; Hard gets the grand fanfare
+  // (coronation — the 60 s grand cooldown drops it to applause instead of
+  // stacking). First clear only: the cleared mark is set before the dialog
+  // opens, so the ref guard fires once per open — an Escape dismissal
+  // still sounds, because the trigger is the open, never the close.
+  const clearedSoundRef = useRef<ClearedInfo | null>(null);
+  useEffect(() => {
+    if (!cleared) {
+      clearedSoundRef.current = null;
+      return;
+    }
+    if (clearedSoundRef.current === cleared) return;
+    clearedSoundRef.current = cleared;
+    playCelebrationSound(cleared.choice === "hard" ? "grandFanfare" : "mediumApplause");
+  }, [cleared]);
   // Difficulty picker: one choice applies across Globe → Country → State and
   // survives edition switches. Persisted so it survives reloads too.
   const [difficultyChoice, setDifficultyChoiceState] = useState<PickerDifficulty>(readDifficultyChoice);
@@ -528,6 +762,21 @@ export function GameApp() {
     setDifficultyChoiceState(choice);
     writeDifficultyChoice(choice);
   }, []);
+  /** Edition card press: the cartographer's tap, then open (SFX audio spec §2.6).
+   *  Veeresh 2026-10-06: also tells Comet which edition was picked so the
+   *  mascot can look at the card and react. */
+  const withCardTap = useCallback(
+    (edition: string, open: () => void) => (e: ReactMouseEvent) => {
+      playCardTap();
+      window.dispatchEvent(
+        new CustomEvent("comet:edition-select", {
+          detail: { x: e.clientX, y: e.clientY, edition },
+        }),
+      );
+      open();
+    },
+    [],
+  );
   // Region-selection async boundary: the GeoNames chunk(s) for the chosen
   // region load here — whole-country runs fetch every subdivision chunk —
   // before any run exists. `starting` shows the loading
@@ -544,6 +793,14 @@ export function GameApp() {
   // on the home screen after the idle kill.
   const [idleWarn, setIdleWarn] = useState(false);
   const [idleEndedNote, setIdleEndedNote] = useState(false);
+  // First-run tutorial: null when inactive, otherwise the current beat
+  // (1 = aim coachmark, 2 = reveal feedback, 3 = completion hook). Owned
+  // by GameApp so the menu invitation, the run, and the cleanup paths all
+  // share one source of truth; Play/PlayLoaded only render from it.
+  const [tutorial, setTutorial] = useState<TutorialBeat | null>(null);
+  // The menu invitation is shown at most once per page load; the
+  // localStorage seen-flag persists the decision across visits.
+  const [inviteDismissed, setInviteDismissed] = useState(false);
   // E2E seam: ?idle-ms=<n> shortens the 2-minute timeout (see session.ts).
   const idleTimeoutMs = useMemo(
     () => (typeof window === "undefined" ? IDLE_TIMEOUT_MS : idleTimeoutFromSearch(window.location.search)),
@@ -590,6 +847,7 @@ export function GameApp() {
     }
     setRun(null);
     setMenu(null);
+    setTutorial(null);
     replaceSession(null);
     setIdleWarn(false);
     setIdleEndedNote(true);
@@ -638,6 +896,33 @@ export function GameApp() {
       return;
     }
     const saved = readRun();
+    // Review sessions never resume across reloads: the deck (localStorage)
+    // is the durable state; the session queue is rebuilt fresh on every
+    // start. Fail closed to the edition picker.
+    if (saved && saved.regionId === REVIEW_DECK_REGION_ID) {
+      clearDrop();
+      try {
+        sessionStorage.removeItem(RUN_KEY);
+      } catch {
+        // Storage blocked; the in-memory run is dropped regardless.
+      }
+      setReady(true);
+      return;
+    }
+    // A persisted tutorial practice round never resumes: the tour is a
+    // single-place practice round, so resuming it would recycle the same
+    // place forever with no tutorial UI (beat state is in-memory only).
+    // Drop it and land on the menu — the invitation is already marked
+    // seen, so the player simply starts a real game.
+    let resumable = saved;
+    if (resumable && isTutorialRunPool(resumable.poolIds)) {
+      try {
+        sessionStorage.removeItem(RUN_KEY);
+      } catch {
+        // Storage blocked; treating it as absent is enough.
+      }
+      resumable = null;
+    }
     const now = Date.now();
     const dateKey = trailDate();
     const savedSession = readSession();
@@ -648,11 +933,11 @@ export function GameApp() {
       setReady(true);
       return;
     }
-    if (saved) {
+    if (resumable) {
       const today = {
-        edition: saved.edition,
-        regionId: saved.regionId,
-        regionName: saved.regionName,
+        edition: resumable.edition,
+        regionId: resumable.regionId,
+        regionName: resumable.regionName,
         dateKey,
         // A changed difficulty choice never resumes: switching bands starts
         // a fresh run instead.
@@ -663,8 +948,8 @@ export function GameApp() {
       // restored. (The old `restored === saved` check could never pass:
       // resumeRun always returns a new object, so reloads silently dropped
       // to the menu instead of resuming.)
-      if (isResumable(saved, today)) {
-        const restored = resumeRun(saved, today);
+      if (isResumable(resumable, today)) {
+        const restored = resumeRun(resumable, today);
         commit(restored);
         ensureSession(restored);
       }
@@ -691,8 +976,15 @@ export function GameApp() {
       // The celebration's replay/promotion buttons always pass it: the
       // just-finished run (phase "done") is resumable, so resumeRun would
       // return it unchanged and the replay would never restart.
-      opts?: { fresh?: boolean },
+      // `tutorial` starts the isolated first-run practice round: a single
+      // fixed famous place, no seen-history side effects, no cleared-mode
+      // backstop — the tour is unscored practice, never a real run.
+      opts?: { fresh?: boolean; tutorial?: boolean },
     ) => {
+      // Edition entrance fanfare: the player is making their grand arrival
+      // into an edition (gladiator-into-the-arena energy). Not for the
+      // tutorial (quiet practice round).
+      if (!opts?.tutorial && soundAudible()) safePlay(playEditionEntrance);
       setStarting({ regionName });
       setStartError(null);
       recordMilestone("run_start", { edition, regionId, chunkId: regionId });
@@ -722,21 +1014,34 @@ export function GameApp() {
         const dateKey = trailDate();
         // The picker's difficulty band narrows the catalog BEFORE the dealer
         // pool is built. Fail-closed: an empty band yields an empty pool,
-        // never a widened one.
-        const banded = filterByTier(places, choice);
-        const { poolIds, prevLastId, cycleCompleted } = poolForRunStart(banded, edition, regionId, choice);
-        // Cleared-mode backstop: a completed cycle at run start means the
-        // band was fully played through. If it was already celebrated, the
-        // new cycle begins silently (retire the mark); if not — a clear
-        // from before this feature existed, or a crash before the
-        // celebration — celebrate immediately instead of silently
-        // repeating. One celebration per clear: the mark is set either way.
-        if (cycleCompleted) {
-          if (wasClearedCelebrated(edition, regionId, choice)) {
-            clearClearedMark(edition, regionId, choice);
-          } else {
-            markClearedCelebrated(edition, regionId, choice);
-            setCleared({ edition, regionId, regionName, choice });
+        // never a widened one. The tutorial bypasses banding entirely: its
+        // pool is the single fixed practice place, so the tour always asks
+        // the same easy famous question regardless of picker choice — and
+        // poolForRunStart is skipped so the tour never touches (or wipes)
+        // the band's persistent no-repeat history.
+        let poolIds: string[];
+        let prevLastId: string | null;
+        if (opts?.tutorial) {
+          poolIds = [TUTORIAL_PLACE_ID];
+          prevLastId = null;
+        } else {
+          const banded = filterByTier(places, choice);
+          const started = poolForRunStart(banded, edition, regionId, choice);
+          poolIds = started.poolIds;
+          prevLastId = started.prevLastId;
+          // Cleared-mode backstop: a completed cycle at run start means the
+          // band was fully played through. If it was already celebrated, the
+          // new cycle begins silently (retire the mark); if not — a clear
+          // from before this feature existed, or a crash before the
+          // celebration — celebrate immediately instead of silently
+          // repeating. One celebration per clear: the mark is set either way.
+          if (started.cycleCompleted) {
+            if (wasClearedCelebrated(edition, regionId, choice)) {
+              clearClearedMark(edition, regionId, choice);
+            } else {
+              markClearedCelebrated(edition, regionId, choice);
+              setCleared({ edition, regionId, regionName, choice });
+            }
           }
         }
         // A celebration replay/promotion starts FRESH: at the onContinue
@@ -747,14 +1052,24 @@ export function GameApp() {
         // in-progress run) — `fresh` is opt-in only, and isResumable's
         // semantics are deliberately unchanged (other flows depend on them).
         const today = { edition, regionId, regionName, dateKey, difficultyChoice: choice };
-        const next = opts?.fresh
-          ? startRun(today, poolIds, prevLastId)
-          : resumeRun(readRun(), today, poolIds, prevLastId);
+        // The tutorial practice round always starts fresh (it is never a
+        // resumed run) and arms beat 1; any other run clears tutorial state
+        // (e.g. a normal run started after an idle-killed tour).
+        const next =
+          opts?.tutorial || opts?.fresh
+            ? startRun(today, poolIds, prevLastId)
+            : resumeRun(readRun(), today, poolIds, prevLastId);
         commit(next);
         // Switching editions keeps the session (and its score) alive: a new
         // session starts only when none is live.
         ensureSession(next);
         setMenu(null);
+        setTutorial(opts?.tutorial ? 1 : null);
+        if (opts?.tutorial) {
+          // The tour run started: the invitation has been handled, whether
+          // or not the player finishes the tour.
+          markTutorialSeen();
+        }
         // Warm the admin-1 boundary cache during play so it's ready by reveal.
         // Deferred 10 s past run start: firing the ~2 MB JSON fetch during
         // map mount starves the tile requests (net::ERR_ABORTED) and flips
@@ -763,8 +1078,15 @@ export function GameApp() {
         // "idle" fires while tiles are still in flight). resolvePin fails
         // closed to country-only until the cache populates. Fire-and-forget:
         // preloadAdmin1Boundaries is specified non-throwing.
+        // Country editions with a vendored admin-1 chunk (EG/FR/DE/IT/JP/
+        // MX/GB) warm just that chunk on the same tick — the reveal's
+        // pin-compare line can then name departments/provinces instead of
+        // falling back to the "near <city>" line. Null for other editions:
+        // no fetch attempted.
         window.setTimeout(() => {
           void preloadAdmin1Boundaries();
+          const chunkIso2 = admin1ChunkIso2ForRegion(regionId);
+          if (chunkIso2) void preloadAdmin1ForCountry(chunkIso2);
         }, 10000);
       } catch (err) {
         // Fail closed: no chunk, no run. The player stays on the menu with
@@ -789,11 +1111,87 @@ export function GameApp() {
     [commit, ensureSession],
   );
 
+  // Review-deck status for the picker entry (flag-gated; re-read whenever
+  // the app returns to the picker — see useDeckStatus).
+  const deckStatus = useDeckStatus(run);
+
+  /**
+   * Start a review session over the currently-due deck cards. The session is
+   * a synthetic Run (regionId "review-deck") whose pool is the due queue in
+   * due order. Deliberately no ensureSession: review answers never bank
+   * into the session — review is practice, not scoring.
+   */
+  const startReview = useCallback(() => {
+    const deck = readReviewDeck() ?? emptyReviewDeck();
+    const due = dueEntries(deck, Date.now());
+    // Fail closed: the entry points only render when due > 0, so this is
+    // unreachable in practice — never start a run with an empty queue.
+    if (due.length === 0) return;
+    const next = startRun(
+      {
+        edition: "globe",
+        regionId: REVIEW_DECK_REGION_ID,
+        regionName: REVIEW_DECK_REGION_NAME,
+        dateKey: trailDate(),
+        difficultyChoice,
+      },
+      due.map((entry) => entry.place.id),
+      null,
+    );
+    commit(next);
+    setMenu(null);
+  }, [commit, difficultyChoice]);
+
+  /**
+   * "Review my misses" from the end-game summary: the session already ended
+   * there, so just leave the summary behind and start the review session.
+   */
+  const handleReviewDeck = useCallback(() => {
+    clearDrop();
+    setRun(null);
+    setMenu(null);
+    startReview();
+  }, [startReview]);
+
+  /**
+   * First-run tutorial handlers. The invitation marks the tour seen whether
+   * the player takes it or dismisses it — it is shown at most once ever.
+   * endTutorial tears down a practice round and returns to the menu: the
+   * tour run is removed from storage (it must never resume — see
+   * isTutorialRunPool), and the player keeps a clean menu.
+   */
+  const onTakeTour = useCallback(() => {
+    // The seen-flag is marked inside openRun once the tour run actually
+    // starts: a failed chunk load leaves the invitation for next visit
+    // instead of silently consuming it. inviteDismissed hides it for this
+    // page load either way.
+    setInviteDismissed(true);
+    void openRun(TUTORIAL_EDITION, TUTORIAL_REGION_ID, TUTORIAL_REGION_NAME, difficultyChoice, {
+      tutorial: true,
+    });
+  }, [openRun, difficultyChoice]);
+  const onDismissInvite = useCallback(() => {
+    markTutorialSeen();
+    setInviteDismissed(true);
+  }, []);
+  const endTutorial = useCallback(() => {
+    clearDrop();
+    try {
+      sessionStorage.removeItem(RUN_KEY);
+    } catch {
+      // Storage blocked; the in-memory run is dropped below regardless.
+    }
+    setRun(null);
+    setTutorial(null);
+    setMenu(null);
+  }, []);
+
   // Bank one scored place into the session (exactly-once: called only from
   // the pin-commit path, which appends exactly one result per commit).
   const bankScoredPlace = useCallback(
     (input: { edition: Edition; score: number; hit: boolean; distanceKm: number; streakAfter: number; difficultyChoice: PickerDifficulty; regionId: string; regionName: string }) => {
       const dateKey = trailDate();
+      const prevBest = getSession()?.bestStreak ?? 0;
       updateSession((prev) => {
         // Sessions are date-scoped like runs: a UTC-midnight rollover starts
         // a fresh session rather than silently dropping banks into a stale one.
@@ -801,8 +1199,27 @@ export function GameApp() {
         const base = prev.dateKey === dateKey ? prev : startSession(dateKey, Date.now());
         return bankPlace(base, input);
       });
+      // Celebration audio (spec §3): streak milestones + first-ever win.
+      // Only hits celebrate — a miss resets the streak, never a milestone.
+      if (input.hit) {
+        // Streak milestones 10/25/50: one small cheer per crossing of the
+        // live streak, with the 5 s anti-annoyance spacing in the guard.
+        const crossed = [10, 25, 50].find(
+          (m) => input.streakAfter >= m && prevBest < m,
+        );
+        if (crossed !== undefined) playCelebrationSound("smallCheer");
+        // First-ever win in any edition, once per lifetime: the Parade
+        // overlay. The endless game plays its own playWin here (GeoDetective
+        // already played its win on the solve — the mystery-solved variant
+        // plays nothing more, so it never doubles).
+        if (!hasCelebratedFirstWin()) {
+          markFirstWinCelebrated();
+          if (soundAudible()) safePlay(playWin);
+          setCelebration(celebrationSpec("mystery-solved", "first-win"));
+        }
+      }
     },
-    [updateSession],
+    [updateSession, getSession],
   );
 
   // End game: the session's totals (not the run's) become the summary, and
@@ -908,6 +1325,9 @@ export function GameApp() {
           onRun={commit}
           onBankPlace={bankScoredPlace}
           onEndGame={handleEndGame}
+          tutorial={tutorial}
+          onTutorialAdvance={setTutorial}
+          onTutorialEnd={endTutorial}
           onEditions={() => {
             // Back to the picker WITHOUT ending the game: the session (and
             // its score) stays alive across the edition switch.
@@ -927,6 +1347,7 @@ export function GameApp() {
             // summary, so the replay starts a brand-new session.
             replaceSession(startSession(trailDate(), Date.now()));
           }}
+          onReviewDeck={handleReviewDeck}
           onCleared={(info) => setCleared(info)}
           celebrationOpen={cleared !== null}
         />
@@ -959,6 +1380,23 @@ export function GameApp() {
             }}
           />
         ) : null}
+        {celebrationOverlay}
+        {idleToast}
+      </>
+    );
+  }
+
+  // GeoDetective lives outside the run machine: its own screen, its own
+  // storage namespace, its own deck rhythm. An in-progress run takes
+  // precedence (the player is mid-game); otherwise the open flag wins.
+  if (loopOpen) {
+    return (
+      <>
+        <LoopScreen
+          onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }}
+          onCelebrate={(spec) => setCelebration(spec)}
+        />
+        {celebrationOverlay}
         {idleToast}
       </>
     );
@@ -976,6 +1414,7 @@ export function GameApp() {
           Fetching this region&rsquo;s places&hellip;
         </p>
       </main>
+      {celebrationOverlay}
       {idleToast}
       </>
     );
@@ -1032,6 +1471,7 @@ export function GameApp() {
           }
         }}
       />
+      {celebrationOverlay}
       {idleToast}
       </>
     );
@@ -1059,6 +1499,7 @@ export function GameApp() {
           setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "states" })
         }
       />
+      {celebrationOverlay}
       {idleToast}
       </>
     );
@@ -1080,19 +1521,32 @@ export function GameApp() {
         onBack={() => setMenu({ kind: menu.from })}
         onChoose={(region) => openRun("state", region.id, region.name, difficultyChoice)}
       />
+      {celebrationOverlay}
       {idleToast}
       </>
     );
   }
 
+  // The first-run tutorial invitation: an inline banner on the top-level
+  // menu only. It never blocks play — every edition button stays one tap
+  // away — and it appears at most once ever (the seen-flag persists).
+  const showTutorialInvite = !inviteDismissed && !hasSeenTutorial();
   return (
     <>
     <Choose
-      onState={() => setMenu({ kind: "states" })}
-      onCountry={() => setMenu({ kind: "countries" })}
-      onGlobe={() => openRun("globe", "globe", "Globe", difficultyChoice)}
+      onState={withCardTap("State", () => setMenu({ kind: "states" }))}
+      onCountry={withCardTap("Country", () => setMenu({ kind: "countries" }))}
+      onGlobe={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
+      onLoop={withCardTap("mystery", () => { writeLoopOpen(true); setLoopOpen(true); })}
+      onReview={startReview}
+      deck={deckStatus}
       difficultyChoice={difficultyChoice}
       onDifficultyChoice={setDifficultyChoice}
+      tutorialInvite={
+        showTutorialInvite ? (
+          <TutorialInvite onTakeTour={onTakeTour} onDismiss={onDismissInvite} />
+        ) : null
+      }
       notice={
         <>
           {idleNotice}
@@ -1100,6 +1554,7 @@ export function GameApp() {
         </>
       }
     />
+    {celebrationOverlay}
     {idleToast}
     </>
   );
@@ -1116,40 +1571,65 @@ function Choose({
   onState,
   onCountry,
   onGlobe,
+  onLoop,
+  onReview,
+  deck,
   notice,
   difficultyChoice,
   onDifficultyChoice,
+  tutorialInvite,
 }: {
-  onState: () => void;
-  onCountry: () => void;
-  onGlobe: () => void;
+  onState: (e: ReactMouseEvent) => void;
+  onCountry: (e: ReactMouseEvent) => void;
+  onGlobe: (e: ReactMouseEvent) => void;
+  /** Open the GeoDetective edition (unlimited mysteries). */
+  onLoop: (e: ReactMouseEvent) => void;
+  /** Start a review session over the due deck cards. */
+  onReview: () => void;
+  /** Deck entry status (flag-gated; see useDeckStatus). */
+  deck: { enabled: boolean; due: number; total: number };
   notice?: ReactNode;
   difficultyChoice: PickerDifficulty;
   onDifficultyChoice: (choice: PickerDifficulty) => void;
+  tutorialInvite?: ReactNode;
 }) {
+  // GeoDetective progress for the edition card: the resume variant and the
+  // streak line. Read on mount (the menu remounts when the loop screen
+  // closes, so this is always fresh on return).
+  const [loopProgress] = useState(() => peekLoopProgress());
+  // Stagger order for the orchestrated entrance (110ms steps in CSS).
+  const rise = (d: number) => ({ "--d": d }) as CSSProperties;
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
+    <>
+    <main className="atlas-home mx-auto flex min-h-dvh w-full max-w-4xl flex-col px-5 py-8">
+      <AtlasBackdrop />
       {notice}
+      {tutorialInvite}
       <header>
-        <p className="flex items-center gap-2 text-sm text-muted">
-          <Compass className="size-5" aria-hidden="true" />
-          {trailDate()} UTC
-        </p>
-        <h1 className="mt-3 font-display text-5xl text-fg">{BRAND.name}</h1>
-        <p className="mt-4 max-w-md text-lg text-muted">
+        <div className="flex items-start justify-between gap-3">
+          <p className="atlas-eyebrow home-rise" style={rise(0)}>
+            <Compass className="size-4" aria-hidden="true" />
+            Field atlas · {trailDate()} UTC
+          </p>
+          <SoundToggle
+            testId="sound-toggle"
+            className="atlas-sound-toggle home-rise"
+            style={rise(0)}
+          />
+        </div>
+        <h1 className="atlas-title home-rise mt-4" style={rise(1)}>
+          {BRAND.name}
+        </h1>
+        <p className="atlas-tagline home-rise mt-4" style={rise(2)}>
           Pick the globe, a country, or a state. A place name, then one pin. Your score keeps
           adding up across editions until you choose to end the game, or if you&rsquo;re idle for
           2 minutes.
         </p>
-        <div className="mt-6">
-          <p id="difficulty-label" className="text-sm font-medium text-fg">
+        <div className="home-rise mt-7" style={rise(3)}>
+          <p id="difficulty-label" className="atlas-difficulty-label">
             How do you want to grow your map today?
           </p>
-          <div
-            role="group"
-            aria-labelledby="difficulty-label"
-            className="mt-2 inline-flex rounded-full border border-line bg-surface p-1"
-          >
+          <div role="group" aria-labelledby="difficulty-label" className="atlas-seg mt-3">
             {(
               [
                 { value: "easy", label: "Easy" },
@@ -1163,66 +1643,216 @@ function Choose({
                   key={option.value}
                   type="button"
                   aria-pressed={selected}
-                  onClick={() => onDifficultyChoice(option.value)}
-                  className={
-                    selected
-                      ? "rounded-full bg-fg px-5 py-2 text-sm font-medium text-bg"
-                      : "rounded-full px-5 py-2 text-sm font-medium text-muted hover:text-fg"
-                  }
+                  onClick={() => {
+                    // SFX audio spec §2.6: the select chirps only on an
+                    // actual change — re-tapping the active band stays silent.
+                    if (option.value !== difficultyChoice) playDifficultySelect();
+                    onDifficultyChoice(option.value);
+                  }}
                 >
                   {option.label}
                 </button>
               );
             })}
           </div>
-          <p className="mt-2 text-sm text-muted" aria-live="polite">
+          <p className="atlas-hint" aria-live="polite">
             {DIFFICULTY_HINTS[difficultyChoice]}
           </p>
         </div>
+        <div className="atlas-rule home-rise" style={rise(3)} aria-hidden="true" />
       </header>
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
-        <EditionCard
-          title="State"
-          detail="Pick a country, then one of its states. Each state is its own run."
-          action="Choose a state"
-          onClick={onState}
-        />
-        <EditionCard
-          title="Country"
-          detail="Play a country whole, or drill into its states where available."
-          action="Choose a country"
-          onClick={onCountry}
-        />
-        <EditionCard
-          title="Globe"
-          detail="The whole earth. Continent outlines at a distance, countries as you close in."
-          action="Play the globe"
-          onClick={onGlobe}
-        />
+      {/* GeoDetective leads: the flagship case file, unlimited mysteries. */}
+      <article
+        aria-labelledby="geodetective-title"
+        className="atlas-dossier home-rise mt-8"
+        style={rise(4)}
+      >
+        <span className="atlas-stamp" style={rise(4)} aria-hidden="true">
+          Open
+        </span>
+        <p className="atlas-eyebrow">Case file · Unlimited</p>
+        <h2 id="geodetective-title" className="atlas-dossier-title">
+          GeoDetective
+        </h2>
+        <p className="atlas-dossier-detail">
+          Five guesses, one mystery place. Each guess unlocks a clue — solve as many cases as
+          you can.
+        </p>
+        {loopProgress.streak > 0 ? (
+          <p className="atlas-streak">🔥 Streak: {loopProgress.streak}</p>
+        ) : null}
+        <button
+          type="button"
+          className="atlas-btn atlas-btn-brass mt-5"
+          onClick={onLoop}
+        >
+          {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
+        </button>
+      </article>
+      <div className="home-rise mt-10" style={rise(5)}>
+        <p className="atlas-eyebrow">Choose your expedition</p>
+        <div className="mt-4 grid gap-4 sm:grid-cols-3">
+          <EditionCard
+            index="01"
+            icon={<MapPin className="size-6" aria-hidden="true" />}
+            title="State"
+            detail="Pick a country, then one of its states. Each state is its own run."
+            action="Choose a state"
+            onClick={onState}
+          />
+          <EditionCard
+            index="02"
+            icon={<Flag className="size-6" aria-hidden="true" />}
+            title="Country"
+            detail="Play a country whole, or drill into its states where available."
+            action="Choose a country"
+            onClick={onCountry}
+          />
+          <EditionCard
+            index="03"
+            icon={<Globe2 className="size-6" aria-hidden="true" />}
+            title="Globe"
+            detail="The whole earth. Continent outlines at a distance, countries as you close in."
+            action="Play the globe"
+            onClick={onGlobe}
+          />
+        </div>
       </div>
+      {deck.enabled ? (
+        <section
+          aria-label={REVIEW_DECK_COPY.pickerTitle}
+          className="atlas-fieldnotes home-rise mt-8"
+          style={rise(6)}
+        >
+          <h2 className="atlas-fieldnotes-title">{REVIEW_DECK_COPY.pickerTitle}</h2>
+          {deck.due > 0 ? (
+            <>
+              <p className="mt-2 text-sm">{REVIEW_DECK_COPY.pickerDueLine}</p>
+              <p className="mt-1 text-sm font-medium" data-testid="deck-due-count">
+                {deck.due} {deck.due === 1 ? "card" : "cards"} due
+              </p>
+              <button
+                type="button"
+                className="atlas-btn atlas-btn-line mt-4"
+                onClick={onReview}
+              >
+                {REVIEW_DECK_COPY.startReview}
+              </button>
+            </>
+          ) : deck.total > 0 ? (
+            <p className="mt-2 text-sm">{REVIEW_DECK_COPY.pickerCaughtUp}</p>
+          ) : (
+            <p className="mt-2 text-sm">{REVIEW_DECK_COPY.pickerEmpty}</p>
+          )}
+        </section>
+      ) : null}
     </main>
+    {/* Comet hosts the Chart Room home page only — never in-game, never in
+        GeoDetective, never in review. The fixed wrapper is pointer-events
+        gated so it never blocks page scroll or taps. */}
+    <CometMascot />
+    </>
+  );
+}
+
+/**
+ * Full-viewport chart-room atmosphere behind the home screen: brass
+ * graticule, topographic contour lines, vignette. Decorative only.
+ */
+function AtlasBackdrop() {
+  return (
+    <div className="atlas-bg" aria-hidden="true">
+      <svg
+        className="atlas-contours"
+        viewBox="0 0 800 600"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+      >
+        <g fill="none" stroke="currentColor" strokeWidth="1">
+          <path d="M-20,110 C140,80 260,150 420,120 S700,100 830,140" />
+          <path d="M-20,150 C140,120 260,190 420,160 S700,140 830,180" />
+          <path d="M-20,470 C160,440 300,510 470,480 S720,460 830,500" />
+          <path d="M-20,510 C160,480 300,550 470,520 S720,500 830,540" />
+          <path d="M120,300 c40,-55 130,-55 170,0 c40,55 -40,110 -85,80 c-45,-30 -110,-25 -85,-80 Z" />
+          <path d="M150,300 c28,-38 92,-38 120,0 c28,38 -28,76 -60,56 c-32,-20 -78,-18 -60,-56 Z" />
+          <path d="M620,380 c40,-55 130,-55 170,0 c40,55 -40,110 -85,80 c-45,-30 -110,-25 -85,-80 Z" />
+          <path d="M650,380 c28,-38 92,-38 120,0 c28,38 -28,76 -60,56 c-32,-20 -78,-18 -60,-56 Z" />
+          <path d="M540,180 c30,-42 100,-42 130,0 c30,42 -30,84 -65,62 c-35,-22 -85,-20 -65,-62 Z" />
+        </g>
+      </svg>
+    </div>
   );
 }
 
 function EditionCard({
+  index,
+  icon,
   title,
   detail,
   action,
   onClick,
 }: {
+  /** Mono expedition number, e.g. "01". */
+  index: string;
+  /** Brass line icon. */
+  icon: ReactNode;
   title: string;
   detail: string;
   action: string;
-  onClick: () => void;
+  onClick: (e: ReactMouseEvent) => void;
 }) {
   return (
-    <article className="flex flex-col rounded-xl border border-line bg-surface p-5">
-      <h2 className="font-display text-3xl text-fg">{title}</h2>
-      <p className="mt-2 flex-1 text-sm text-muted">{detail}</p>
-      <Button className="mt-4" onClick={onClick}>
+    <article className="atlas-card">
+      <p className="atlas-card-index">N° {index}</p>
+      <div className="atlas-card-icon" aria-hidden="true">
+        {icon}
+      </div>
+      <h2 className="atlas-card-title">{title}</h2>
+      <p className="atlas-card-detail">{detail}</p>
+      <button type="button" className="atlas-btn atlas-btn-line mt-4 w-full" onClick={onClick}>
         {action}
-      </Button>
+      </button>
     </article>
+  );
+}
+
+/**
+ * End of a review session: the due queue is exhausted. Bounded and
+ * completable by design (ADHD-friendly). Cards answered correctly come
+ * back later — further out every time; missed cards are due again right
+ * away, so a quick retry is always one tap away from the picker.
+ */
+function ReviewComplete({
+  results,
+  total,
+  onDone,
+}: {
+  results: PlaceResult[];
+  total: number;
+  onDone: () => void;
+}) {
+  const remembered = results.filter((r) => r.hit).length;
+  return (
+    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+      <p className="text-sm tracking-wide text-muted uppercase">
+        {REVIEW_DECK_COPY.pickerTitle}
+      </p>
+      <h1 className="mt-2 font-display text-4xl text-fg" data-testid="review-complete">
+        {total === 0
+          ? "Nothing to review."
+          : `${REVIEW_DECK_COPY.completeTitle} You remembered ${remembered} of ${total}.`}
+      </h1>
+      <p className="mt-4 max-w-md text-lg text-muted">
+        {total === 0
+          ? REVIEW_DECK_COPY.pickerEmpty
+          : remembered === total
+            ? "Each card comes back later — further out every time you get it right."
+            : "The ones you missed are due again right away. One more round locks them in."}
+      </p>
+      <div className="mt-6">
+        <Button onClick={onDone}>{REVIEW_DECK_COPY.backToEditions}</Button>
+      </div>
+    </main>
   );
 }
 
@@ -1288,8 +1918,12 @@ function Play({
   onEditions,
   onSummaryDone,
   onReplayed,
+  onReviewDeck,
   onCleared,
   celebrationOpen,
+  tutorial,
+  onTutorialAdvance,
+  onTutorialEnd,
 }: {
   run: Run;
   session: Session | null;
@@ -1312,6 +1946,8 @@ function Play({
   onSummaryDone: () => void;
   /** A fresh run started via Play again; starts a fresh session. */
   onReplayed: (run: Run) => void;
+  /** "Review my misses" from the end-game summary. */
+  onReviewDeck: () => void;
   /** A difficulty band was just cleared: show the celebration dialog. */
   onCleared: (info: ClearedInfo) => void;
   /**
@@ -1320,9 +1956,19 @@ function Play({
    * the dialog (the dialog's own handler), never the result card beneath.
    */
   celebrationOpen: boolean;
+  /** First-run tutorial beat (null when inactive); owned by GameApp. */
+  tutorial: TutorialBeat | null;
+  /** Advance the tutorial to a beat. */
+  onTutorialAdvance: (beat: TutorialBeat) => void;
+  /** Skip/finish the tutorial: tear down the practice round. */
+  onTutorialEnd: () => void;
 }) {
   const [places, setPlaces] = useState<Starter[] | null>(null);
   const [poolError, setPoolError] = useState<string | null>(null);
+  // Review sessions: the due deck entries in session order (the poolIds
+  // order). Null for normal runs.
+  const [reviewEntries, setReviewEntries] = useState<DeckEntry[] | null>(null);
+  const review = isReviewRun(run);
 
   // Observability: the run is interactive once its places are loaded and
   // it is in the aim phase — the last milestone of a healthy run start.
@@ -1336,6 +1982,30 @@ function Play({
     let cancelled = false;
     setPlaces(null);
     setPoolError(null);
+    setReviewEntries(null);
+    if (review) {
+      // Review deck: no chunk fetch — due cards carry their own snapshots.
+      // Aligned to the run's poolIds (the session queue); a deck that
+      // changed since session start fails closed to the currently-due list.
+      try {
+        const deck = readReviewDeck() ?? emptyReviewDeck();
+        const due = dueEntries(deck, Date.now());
+        const byId = new Map(due.map((entry) => [entry.place.id, entry]));
+        const ordered = run.poolIds
+          .map((id) => byId.get(id))
+          .filter((entry): entry is DeckEntry => entry !== undefined);
+        const entries = ordered.length > 0 ? ordered : due;
+        if (!cancelled) {
+          setReviewEntries(entries);
+          setPlaces(entries.map(deckStarter));
+        }
+      } catch {
+        if (!cancelled) setPoolError("Could not load your review deck.");
+      }
+      return () => {
+        cancelled = true;
+      };
+    }
     placesFor(run.edition, run.regionId).then(
       (loaded) => {
         if (!cancelled) setPlaces(loaded);
@@ -1389,8 +2059,13 @@ function Play({
       onEditions={onEditions}
       onSummaryDone={onSummaryDone}
       onReplayed={onReplayed}
+      onReviewDeck={onReviewDeck}
       onCleared={onCleared}
       celebrationOpen={celebrationOpen}
+      reviewEntries={reviewEntries}
+      tutorial={tutorial}
+      onTutorialAdvance={onTutorialAdvance}
+      onTutorialEnd={onTutorialEnd}
     />
   );
 }
@@ -1405,8 +2080,13 @@ function PlayLoaded({
   onEditions,
   onSummaryDone: finishSummary,
   onReplayed,
+  onReviewDeck,
   onCleared,
   celebrationOpen,
+  reviewEntries,
+  tutorial,
+  onTutorialAdvance,
+  onTutorialEnd,
 }: {
   run: Run;
   places: Starter[];
@@ -1428,9 +2108,35 @@ function PlayLoaded({
   onReplayed: (run: Run) => void;
   /** A difficulty band was just cleared: show the celebration dialog. */
   onCleared: (info: ClearedInfo) => void;
-  /** Whether the cleared-mode celebration dialog is open (M5 Escape yields to it). */
+  /** "Review my misses" from the end-game summary. */
+  onReviewDeck: () => void;
+  /**
+   * Whether the cleared-mode celebration dialog is open. The M5 Escape
+   * handler yields while it is open so one Escape press dismisses only
+   * the dialog (the dialog's own handler), never the result card beneath.
+   */
   celebrationOpen: boolean;
+  /**
+   * Review sessions only: the due deck entries in session order (null for
+   * normal runs). Each entry's snapshot carries the card's original
+   * question context.
+   */
+  reviewEntries: DeckEntry[] | null;
+  /** First-run tutorial beat (null when inactive); owned by GameApp. */
+  tutorial: TutorialBeat | null;
+  /** Advance the tutorial to a beat. */
+  onTutorialAdvance: (beat: TutorialBeat) => void;
+  /** Skip/finish the tutorial: tear down the practice round. */
+  onTutorialEnd: () => void;
 }) {
+  // Review-deck session: a synthetic Run reusing this game loop. The deck
+  // queue (due order) is the pool; review answers never bank into the
+  // session and the cleared-mode celebration never fires here.
+  const review = isReviewRun(run);
+  const reviewEntryById = useMemo(
+    () => new Map((reviewEntries ?? []).map((entry) => [entry.place.id, entry] as const)),
+    [reviewEntries],
+  );
   // Session pool: the catalog filtered to this run's persisted poolIds.
   // Computed once at session start and saved on the run, so a reload
   // rebuilds the identical pool (not a reshuffled smaller one). An empty
@@ -1466,30 +2172,50 @@ function PlayLoaded({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [pool, run.seed, run.dateKey, run.edition, run.regionId, run.difficultyChoice, run.prevLastId],
   );
-  const place = dealer.at(run.index);
+  const place = review ? pool[run.index] : dealer.at(run.index);
+  /** The deck entry behind the dealt card (review sessions only). */
+  const reviewEntry = review && place ? reviewEntryById.get(place.id) : undefined;
   // The qualified question label ("Manhattan, Nebraska, United States" in
   // globe; "Manhattan, Nebraska" in country; bare name in state). Computed
   // once per place and shared by the question bubble and the result card so
   // what you were asked matches what you're shown. Fail-closed inside
   // buildQuestionLabel: unresolvable parents fall back to the bare name.
-  const questionLabel = useMemo(
-    () =>
-      place
-        ? buildQuestionLabel({
-            edition: run.edition,
-            place,
-            countryRegionId: run.edition === "country" ? run.regionId : null,
-            hasCollision: collisionCounts
-              ? hasNameCollision(place, collisionCounts)
-              : false,
-          })
-        : "",
-    [place, run.edition, run.regionId, collisionCounts],
-  );
+  const questionLabel = useMemo(() => {
+    if (!place) return "";
+    if (review) {
+      // Review cards replay the original question verbatim: the label uses
+      // the card's original edition (never the synthetic review run).
+      const edition = reviewEntry?.place.edition ?? "globe";
+      return buildQuestionLabel({
+        edition,
+        place,
+        countryRegionId:
+          edition === "country" ? (reviewEntry?.place.regionId ?? null) : null,
+        hasCollision: false,
+      });
+    }
+    return buildQuestionLabel({
+      edition: run.edition,
+      place,
+      countryRegionId: run.edition === "country" ? run.regionId : null,
+      hasCollision: collisionCounts ? hasNameCollision(place, collisionCounts) : false,
+    });
+  }, [place, review, reviewEntry, run.edition, run.regionId, collisionCounts]);
   // Record dealt places into the no-repeat history as the run advances.
+  // Skipped for review sessions and the tutorial practice round: the deck
+  // queue is the dealing order (and the review namespace must never pollute
+  // real regions' histories), and the tour must not pollute the France
+  // band's persistent history with its practice place.
   useEffect(() => {
+    if (review || tutorial) return;
     dealer.markDealtThrough(run.index);
-  }, [dealer, run.index]);
+  }, [dealer, review, run.index, tutorial]);
+  // Tutorial beat 1 → 2: the pin was committed (phase left "aim"), so the
+  // reveal feedback takes over. Any later phase change is a real run's
+  // business — tutorial is already 2 or 3 by then.
+  useEffect(() => {
+    if (tutorial === 1 && run.phase !== "aim") onTutorialAdvance(2);
+  }, [tutorial, run.phase, onTutorialAdvance]);
   const [aim, setAim] = useState<{ lon: number; lat: number } | null>(null);
   // A11y (WCAG 4.1.3): the sr-only live region announces aim transitions so
   // screen-reader users get feedback for place/move/clear. Cleared whenever
@@ -1497,6 +2223,10 @@ function PlayLoaded({
   const [aimAnnouncement, setAimAnnouncement] = useState<string | null>(null);
   // Pairing rule: every writeDrop/setDrop site must pair with clearDrop — see RUN_DROP_KEY.
   const [drop, setDrop] = useState<Drop | null>(null);
+  // Ref mirror of the drop's hit outcome for the reveal-complete sound.
+  // (Avoids stale closure: onRevealComplete fires from the map's animation
+  // controller, which may hold an older render's callback.)
+  const dropHitRef = useRef<boolean | null>(null);
   const [story, setStory] = useState<string | null>(null);
   const [bubble, setBubble] = useState<BubbleViewState>("open");
   const [cardDismissed, setCardDismissed] = useState(false);
@@ -1641,9 +2371,12 @@ function PlayLoaded({
   }, [run.phase, aim, celebrationOpen]);
 
   useEffect(() => {
+    // Review sessions: an exhausted queue (place undefined) renders the
+    // review-complete screen — never the run "done" phase.
+    if (review) return;
     if (place || run.phase === "done" || run.phase === "summary") return;
     onRun({ ...run, phase: "done" });
-  }, [onRun, place, run]);
+  }, [onRun, place, review, run]);
 
   useEffect(() => {
     if (run.phase !== "story" || !place) {
@@ -1684,12 +2417,14 @@ function PlayLoaded({
       pin: { lon: drop.lon, lat: drop.lat },
       spot: { lon: place.lon, lat: place.lat },
       kilometers: drop.distanceKm,
-      radiusKm:
-        run.edition === "globe"
+      // Review cards replay the original question's hit radius.
+      radiusKm: review
+        ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
+        : run.edition === "globe"
           ? radiusKm("globe", 0)
           : radiusKm(run.edition, greaterSideKm(boundsFor(run))),
     };
-  }, [drop, place, run]);
+  }, [drop, place, review, reviewEntry, run]);
 
   function onAim(lon: number, lat: number) {
     if (run.phase !== "aim" || !place) return;
@@ -1711,25 +2446,30 @@ function PlayLoaded({
   function onConfirm(lon: number, lat: number) {
     if (run.phase !== "aim" || !place) return;
     const distance = distanceKm([lon, lat], [place.lon, place.lat]);
-    const radius =
-      run.edition === "globe"
+    // Review cards are judged against the hit radius of the original
+    // question (snapshotted at miss time) — the same bar as the first try.
+    const radius = review
+      ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
+      : run.edition === "globe"
         ? radiusKm("globe", 0)
         : radiusKm(run.edition, greaterSideKm(boundsFor(run)));
     const hit = isHit(distance, radius);
     // v3: the place is scored with the streak engine + difficulty multiplier;
-    // a miss scores 0 and resets the streak (handled in dropPin).
-    const scored = hit
-      ? scorePlace({
-          distanceKm: distance,
-          ring: scoreRingForEdition(run.edition),
-          difficulty: place.difficulty,
-          streakBefore: run.streak,
-          edition: run.edition,
-          regionId: run.regionId,
-          pin: [lon, lat],
-          target: [place.lon, place.lat],
-        })
-      : null;
+    // a miss scores 0 and resets the streak (handled in dropPin). Review is
+    // practice, not scoring: no points, so nothing can leak into the session.
+    const scored =
+      !review && hit
+        ? scorePlace({
+            distanceKm: distance,
+            ring: scoreRingForEdition(run.edition),
+            difficulty: place.difficulty,
+            streakBefore: run.streak,
+            edition: run.edition,
+            regionId: run.regionId,
+            pin: [lon, lat],
+            target: [place.lon, place.lat],
+          })
+        : null;
     setAim(null);
     setAimAnnouncement(null);
     const nextDrop: Drop = {
@@ -1741,6 +2481,9 @@ function PlayLoaded({
       streakBefore: run.streak,
     };
     setDrop(nextDrop);
+    // Mirror the hit outcome for the reveal-complete fanfare (ref avoids
+    // stale closures in the map's animation callback).
+    dropHitRef.current = scored !== null;
     // Persisted so a reload during the result card can rehydrate it; the
     // mount restore validates the shape and the place match before use.
     writeDrop(nextDrop);
@@ -1749,47 +2492,90 @@ function PlayLoaded({
     onRun(nextRun);
     // Bank the scored place into the session exactly once: dropPin appends
     // exactly one result per aim-phase commit, so the length check guards
-    // the (unreachable here) no-op path.
-    if (nextRun.results.length > bankedBefore) {
-      onBankPlace({
-        edition: run.edition,
-        score: hit && scored ? scored.score : 0,
-        hit,
-        distanceKm: distance,
-        streakAfter: nextRun.streak,
-        difficultyChoice: run.difficultyChoice,
-        regionId: run.regionId,
-        regionName: run.regionName,
-      });
+    // the (unreachable here) no-op path. Skipped for the tutorial practice
+    // round — the tour is unscored practice. Review sessions record their
+    // learning record and deck sync below but never bank into the session's
+    // totals and streaks.
+    if (!tutorial && nextRun.results.length > bankedBefore) {
+      if (!review) {
+        onBankPlace({
+          edition: run.edition,
+          score: hit && scored ? scored.score : 0,
+          hit,
+          distanceKm: distance,
+          streakAfter: nextRun.streak,
+          difficultyChoice: run.difficultyChoice,
+          regionId: run.regionId,
+          regionName: run.regionName,
+        });
+      }
       // Learning record: observational, flag-gated, fail closed. Runs
       // *beside* bankPlace — never inside dropPin/bankPlace — and can never
       // throw into the pin-commit path or corrupt the session. The growth
       // line on the reveal card is derived from the stored record at render
       // time, so it survives a reload exactly like the drop does.
+      //
+      // Review answers record against the card's ORIGINAL edition/region
+      // (never the synthetic review run), so retention, mastery, and
+      // region trends stay truthful — and the deck sync lives here too:
+      // a normal-play miss joins the deck, a review answer reschedules its
+      // card, and a newly mastered place leaves the deck.
       if (learningEnabled) {
         try {
           setLearningStore((prev) => {
-            const next = recordAnswer(prev ?? emptyLearningStore(), {
+            const at = Date.now();
+            const answered = recordAnswer(prev ?? emptyLearningStore(), {
               placeId: place.id,
-              edition: run.edition,
-              regionId: run.regionId,
-              regionName: run.regionName,
+              edition: review ? (reviewEntry?.place.edition ?? "globe") : run.edition,
+              regionId: review ? (reviewEntry?.place.regionId ?? run.regionId) : run.regionId,
+              regionName: review ? (reviewEntry?.place.regionName ?? run.regionName) : run.regionName,
               distanceKm: distance,
               radiusKm: radius,
               hit,
               score: hit && scored ? scored.score : 0,
-              at: Date.now(),
+              at,
             });
             // recordAnswer is pure (same input → same output), so even if
             // React re-invokes this updater the write is idempotent.
-            writeLearningStore(next.store);
-            return next.store;
+            writeLearningStore(answered.store);
+            try {
+              const deck = readReviewDeck() ?? emptyReviewDeck();
+              let nextDeck = deck;
+              // Idempotency guard: the updater above must stay pure — if
+              // React ever re-invokes it, the second pass must not advance
+              // the Leitner streak a second time for the same attempt.
+              const alreadyRecorded =
+                deck.entries[place.id]?.lastReviewedAt === at;
+              if (!alreadyRecorded) {
+                if (review) {
+                  nextDeck = recordReview(deck, place.id, hit, at);
+                } else if (!hit) {
+                  nextDeck = upsertMiss(deck, snapshotForDeck(place, run, radius), at);
+                }
+              }
+              if (answered.event.newlyMastered) {
+                nextDeck = removeDeckEntry(nextDeck, place.id);
+              }
+              writeReviewDeck(nextDeck);
+            } catch {
+              // Deck storage failure must never break the game.
+            }
+            return answered.store;
           });
         } catch {
           // Storage failure must never break the game.
         }
       }
     }
+  }
+
+  function onTutorialCardAdvance() {
+    // The tutorial practice round has no "next place" (its single-place
+    // pool would recycle the same question): the card's Next place button
+    // and the beat-2 "Got it" button both advance the tour to the closing
+    // hook instead.
+    setCardDismissed(true);
+    onTutorialAdvance(3);
   }
 
   function onContinue() {
@@ -1803,7 +2589,9 @@ function PlayLoaded({
     const justAnswered = dealer.at(run.index);
     // The mark check comes first: once celebrated, no later tap in this
     // cycle can re-trigger, so the catalog/history scan below is skipped.
-    if (justAnswered && !wasClearedCelebrated(run.edition, run.regionId, run.difficultyChoice)) {
+    // Review sessions never celebrate clears: the deck is a practice queue,
+    // not a difficulty band.
+    if (!review && justAnswered && !wasClearedCelebrated(run.edition, run.regionId, run.difficultyChoice)) {
       // The band catalog is the unfiltered region catalog narrowed by the
       // run's difficulty band — the same filter the replay path uses.
       const bandCatalogIds = filterByTier(places, run.difficultyChoice).map(
@@ -1836,6 +2624,11 @@ function PlayLoaded({
     setAimAnnouncement(null);
     setRevealDone(false);
     onRun(continueRun(run));
+    // Celebration audio (spec §3): the next chart unrolls — fired when the
+    // player taps "Next place" and a new question actually deals. The
+    // cleared path above returns early, so the celebration never
+    // double-sounds the applause; reload-restores advance silently.
+    playCelebrationSound("nextPlace");
   }
 
   function onEndGame() {
@@ -1917,8 +2710,52 @@ function PlayLoaded({
     onReplayed(freshRun);
   }
 
-  const mode = run.edition === "globe" ? "globe" : "flat";
-  const bounds = run.edition === "globe" ? undefined : boundsFor(run);
+  // Review sessions replay each card's original question context: the map
+  // reframes per card. The satellite-map effect remounts on edition/region/
+  // bounds change — but a review advance can change ONLY the card (same
+  // edition/region/mode, new bounds identity), and the in-place effect
+  // remount does not reliably re-run the narrow beat (live bug: Nebraska
+  // card 2 stuck on the intro globe). Keying by review card forces the
+  // proven fresh-mount path per card, exactly like the replay remount.
+  const mapKeyForCard = review && place ? `review:${place.id}:${mapKey}` : mapKey;
+  const mapEdition: Edition = review ? (reviewEntry?.place.edition ?? "globe") : run.edition;
+  const mapRegionName = review
+    ? (reviewEntry?.place.regionName ?? REVIEW_DECK_REGION_NAME)
+    : run.regionName;
+  const mode = review
+    ? (reviewEntry?.place.mapMode ?? "globe")
+    : run.edition === "globe"
+      ? "globe"
+      : "flat";
+  const bounds = review
+    ? reviewEntry?.place.regionBounds
+    : run.edition === "globe"
+      ? undefined
+      : boundsFor(run);
+  // The reveal card describes the question as originally asked: the card's
+  // original edition/region, never the synthetic review run.
+  const displayRun: Run =
+    review && reviewEntry
+      ? { ...run, edition: reviewEntry.place.edition, regionName: reviewEntry.place.regionName }
+      : run;
+  // Cards due right now (for the end-game "Review my misses" invitation).
+  // Read fresh when the summary opens — the deck may have grown during
+  // the session that just ended.
+  const reviewDueCount = useMemo(
+    () =>
+      learningEnabled && run.phase === "summary"
+        ? deckCounts(readReviewDeck() ?? emptyReviewDeck(), Date.now()).due
+        : 0,
+    [learningEnabled, run.phase],
+  );
+
+  // Review session complete: the due queue is exhausted. A bounded,
+  // completable session — ADHD-friendly — never the endless run.
+  if (review && run.index >= pool.length) {
+    return (
+      <ReviewComplete results={run.results} total={pool.length} onDone={onEditions} />
+    );
+  }
 
   return (
     <main className="relative h-dvh bg-bg">
@@ -1926,10 +2763,10 @@ function PlayLoaded({
         <MapErrorBoundary>
           <Suspense fallback={<MapLoadingFallback />}>
             <SatelliteMap
-              key={mapKey}
+              key={mapKeyForCard}
               mode={mode}
-              edition={run.edition}
-              regionName={run.regionName}
+              edition={mapEdition}
+              regionName={mapRegionName}
               bounds={bounds}
               onAim={onAim}
               onConfirm={onConfirm}
@@ -1937,14 +2774,39 @@ function PlayLoaded({
               marks={marks}
               variation={variation}
               spot={place ? { lon: place.lon, lat: place.lat } : null}
-              onRevealComplete={() => setRevealDone(true)}
+              onRevealComplete={() => {
+                setRevealDone(true);
+                // Guess outcome fanfare: hit → triumphant win, miss →
+                // descending lose. Uses the ref (not stale closure).
+                if (soundAudible() && dropHitRef.current !== null) {
+                  safePlay(dropHitRef.current ? playWin : playLose);
+                }
+              }}
             />
           </Suspense>
         </MapErrorBoundary>
         <div className="pointer-events-none absolute top-3 right-3 left-3 z-30 flex items-start justify-between gap-3">
-          <Button variant="secondary" className="pointer-events-auto" onClick={onEditions}>
-            Editions
-          </Button>
+          <div className="flex items-start gap-2">
+            <Button variant="secondary" className="pointer-events-auto" onClick={onEditions}>
+              {review ? REVIEW_DECK_COPY.exitReview : "Editions"}
+            </Button>
+            {/* In-game mute (Veeresh's ask): the same meridian.sound toggle
+                as the home header, reachable mid-game. Mutes every sound —
+                all play calls go through the isSoundEnabled() gate. */}
+            <SoundToggle
+              testId="sound-toggle-game"
+              className="pointer-events-auto rounded-md border border-line bg-surface px-2.5 py-2 text-fg transition-colors hover:text-white"
+            />
+          </div>
+          {review ? (
+            <p
+              data-testid="review-progress"
+              className="pointer-events-auto rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold text-fg"
+            >
+              {REVIEW_DECK_COPY.progressOf} {Math.min(run.index + 1, pool.length)} of{" "}
+              {pool.length}
+            </p>
+          ) : (
           <div className="flex flex-col items-end gap-2">
             <div className="relative">
               <button
@@ -2027,6 +2889,7 @@ function PlayLoaded({
               </button>
             ) : null}
           </div>
+          )}
         </div>
       </div>
       <p className="sr-only" aria-live="polite">
@@ -2046,8 +2909,8 @@ function PlayLoaded({
       </p>
       {run.phase === "aim" && place ? (
         <QuestionBubble
-          edition={run.edition}
-          regionName={run.regionName}
+          edition={mapEdition}
+          regionName={mapRegionName}
           placeName={questionLabel}
           difficulty={place.difficulty}
           hasPin={aim !== null}
@@ -2068,7 +2931,7 @@ function PlayLoaded({
       ) : null}
       {run.phase !== "aim" && run.phase !== "summary" && revealDone ? (
         <ResultCard
-          run={run}
+          run={displayRun}
           place={place}
           placeLabel={questionLabel}
           drop={drop}
@@ -2076,7 +2939,11 @@ function PlayLoaded({
           empty={places.length === 0}
           dismissed={cardDismissed}
           onDismissedChange={setCardDismissed}
-          onContinue={onContinue}
+          onContinue={tutorial ? onTutorialCardAdvance : onContinue}
+          // Full dealing pool (not the banded subset): the nearest-place
+          // fallback for the "Your pin" line scans it for the closest
+          // same-territory place. Same array reference — no copy.
+          poolPlaces={places}
           // The growth line is derived from the place's recorded attempts
           // (including the commit that just revealed it), so it recomputes
           // identically after a reload. Null when the flag is off.
@@ -2085,6 +2952,25 @@ function PlayLoaded({
               ? growthLineFor(learningStore?.records[place.id]?.attempts ?? [])
               : null
           }
+        />
+      ) : null}
+      {/* First-run tutorial beats. Beats 1–2 float over the map without
+          intercepting taps (the overlay is pointer-transparent except its
+          own buttons); beat 3 is the closing dialog. The tour never reaches
+          the summary phase (its card advance goes to beat 3 instead), and
+          the overlay stays out of the way if it ever does. */}
+      {tutorial !== null && run.phase !== "summary" ? (
+        <TutorialOverlay
+          beat={tutorial}
+          distanceKm={drop?.distanceKm ?? null}
+          hit={
+            run.results.length > 0
+              ? run.results[run.results.length - 1]!.hit
+              : false
+          }
+          onSkip={onTutorialEnd}
+          onGotIt={() => onTutorialAdvance(3)}
+          onFinish={onTutorialEnd}
         />
       ) : null}
       {run.phase === "summary" && summary ? (
@@ -2099,6 +2985,8 @@ function PlayLoaded({
           }
           onDone={onSummaryDone}
           onPlayAgain={onSummaryPlayAgain}
+          onReview={onReviewDeck}
+          reviewDueCount={reviewDueCount}
         />
       ) : null}
     </main>

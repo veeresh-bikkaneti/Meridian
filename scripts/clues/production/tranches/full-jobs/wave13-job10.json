@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 2601,
+    "attempt": 2581,
+    "place_id": "gn-1272061",
+    "input": {
+      "place": {
+        "place_id": "gn-1272061",
+        "name": "Ellenabad",
+        "country": "India",
+        "subdivision": "Haryana",
+        "lat": 29.45282,
+        "lon": 74.66122
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ellenabad",
+          "url": "https://en.wikipedia.org/wiki/Ellenabad",
+          "text": "Ellenabad, previously known as Kharial, is a city with a municipal committee, near Sirsa City in the Sirsa district of the state of Haryana, India. It is located on the south bank of the Ghaggar River in the heart of the Bagar tract areas of Punjab, Haryana and Rajasthan and serves as a port of entry into the state of Haryana from the Rajasthan side. It has a strategic location as not only is it located near the Rajasthan border in Haryana but the Punjab border is also near to it. Because of this, the city has a kind off cosmopolitan culture of Punjabis, particularly Malwayi culture, Rajasthani Marwadi culture, Deshwali Haryanvi culture and native Bagri culture and traditions or a mix of all of them or some of them. The city of Ellenabad  is divided into 17 wards with elections held every five years. As of 2011, the city had a population of 52,285, divided between two governing bodies: the Ellenabad Municipal Committee with 44,452 persons and the Ellenabad Rural Gram panchayat with 7,833. As of 2022, the city is estimated to have a population exceeding 60,000. There has been a rising demand to merge both administrative bodies and upgrade it to the Municipal Council level. Ellenabad Municipal Committee has total administration over 8,387 houses to which it supplies basic amenities like water and sewerage. It is also authorized to build roads within Municipal Committee limits and impose taxes on properties under its jurisdiction.\nIt is a constituency of Haryana Vidhan Sabha. The current Member of the Legislative Assembly is Bharat Singh Beniwal of Indian National Congress. \nEllenabad is the headquarters of Ellenabad tehsil, block, RTO and sub-divisions in Sirsa district and holds a seat for tehsildar, BDO, TC and SDM respectively. Big villages like Talwara with 9,000 people, Mallekan with 7,000 people and Jiwan nagar with 16,000 people come under jurisdiction of at least one of the mentioned governing bodies. Their population is a nearest thousandth estimation of the 2011 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 175,
+      "fullExtractWords": 333
+    },
+    "banned_terms": [
+      {
+        "term": "ellenabad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2602,
+    "attempt": 2582,
+    "place_id": "gn-167357",
+    "input": {
+      "place": {
+        "place_id": "gn-167357",
+        "name": "Manbij",
+        "country": "Syria",
+        "subdivision": "Aleppo",
+        "lat": 36.52815,
+        "lon": 37.95495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manbij",
+          "url": "https://en.wikipedia.org/wiki/Manbij",
+          "text": "Manbij (Arabic: منبج, romanized: Manbiǧ) is a city in the northeast of Aleppo Governorate in northern Syria, 30 kilometers (19 miles) west of the Euphrates. The 2004 census gives its population as nearly 100,000. The population of Manbij is largely Arab, with Kurdish, Turkmen, Circassian, and Chechen minorities. Many of its residents practice Naqshbandi Sufism.\nDuring the Syrian civil war, the city was first captured by rebels in 2012, overrun by the Islamic State of Iraq and the Levant in 2014 and finally captured by the Syrian Democratic Forces (SDF) in 2016, bringing it into the Autonomous Administration of North and East Syria (AANES). \nFrom 2018 to 2024, after an agreement with the SDF, the Syrian Arab Army had been deployed on the city's periphery as a buffer between the Turkish occupation of Northern Syria and the AANES. \nOn December 9, 2024, it was reported that the city came under the control of the Syrian caretaker government after a deal was reached between the U.S. and Turkey to allow the safe exit of SDF fighters. The pro-Turkish forces' control over the area did not end until the SIG was incorporated into the Syrian transitional government at the end of January 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 175,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "manbij",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2603,
+    "attempt": 2583,
+    "place_id": "gn-2540850",
+    "input": {
+      "place": {
+        "place_id": "gn-2540850",
+        "name": "Ouarzazate",
+        "country": "Morocco",
+        "subdivision": "Drâa-Tafilalet",
+        "lat": 30.91894,
+        "lon": -6.89341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ouarzazate",
+          "url": "https://en.wikipedia.org/wiki/Ouarzazate",
+          "text": "Ouarzazate (; Standard Moroccan Tamazight: ⵡⴰⵔⵣⴰⵣⴰⵜ Arabic: ورزازات, romanized: Warzāzāt, IPA: [warzaːˈzaːt]) is a city and capital of Ouarzazate Province in the region of Drâa-Tafilalet, south-central Morocco. \nOuarzazate is a primary tourist destination as well as a starting point for excursions into and across the Draa Valley and the desert. The fortified village Aït Benhaddou west of the city is a UNESCO World Heritage Site.\nThe Ouarzazate area is a noted film-making location, with Morocco's biggest studios inviting many international companies to work here. Films such as Lawrence of Arabia (1962), The Man Who Would Be King (1975), The Living Daylights (1987), The Last Temptation of Christ (1988), The Mummy (1999), Gladiator (2000), Kingdom of Heaven (2005), Kundun (1997), Legionnaire (1998), The Hills Have Eyes (2006), Salmon Fishing in the Yemen (2011), The Wages of Fear (2024) and The Odyssey (2026) were shot here, as was part of the TV series Game of Thrones. It was the filming location for the fictional city of Agapenta in the fourth season of the Netflix series Outer Banks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 175,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "ouarzazate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2604,
+    "attempt": 2584,
+    "place_id": "gn-3110921",
+    "input": {
+      "place": {
+        "place_id": "gn-3110921",
+        "name": "Sant Adrià de Besòs",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.43073,
+        "lon": 2.21855
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Adrià de Besòs",
+          "url": "https://en.wikipedia.org/wiki/Sant_Adrià_de_Besòs",
+          "text": "Sant Adrià de Besòs (Catalan pronunciation: [ˌsant əðɾiˈa ðə βəˈzɔs]) is a city and a municipality within the comarca of Barcelonès in Catalonia, north-eastern Spain. It is situated on the Mediterranean coast, at the mouth of river Besòs, extending to both sides of the estuary although the original settlement with the parish church lies on the left bank of the river, in the northern part of town. Sant Adrià is the smallest municipality of Barcelonès and has close ties with the neighbouring cities of Barcelona, Badalona and Santa Coloma de Gramenet, forming a uniform urban area within Barcelona metropolitan area.\nThe municipality straddles major transportation networks and is served by several modes of public transport. Sant Adrià is currently a town dominated by the service sector, but with a diverse manufacturing sector (especially in the areas of metal-work, chemistry, and construction) consisting mostly of medium-sized companies. Historically, it has experienced several massive migration flows attracted by the important industrialisation of the area during the last century and has been subject of various major urban redevelopments. In 2004, Sant Adrià de Besòs was part of the Universal Forum of Cultures."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 175,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "sant adria de besos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "adria",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "besos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2605,
+    "attempt": 2585,
+    "place_id": "gn-4633419",
+    "input": {
+      "place": {
+        "place_id": "gn-4633419",
+        "name": "Johnson City",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 36.31344,
+        "lon": -82.35347
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Johnson City, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Johnson_City,_Tennessee",
+          "text": "Johnson City is a city in Washington, Carter, and Sullivan counties in the U.S. state of Tennessee, mostly in Washington County. Located in an Appalachian valley near the Boone Lake impoundment of the Watauga River, Johnson City is Tennessee's eighth-most populous city, with a population of 71,046 as of the 2020 Census. Johnson City is the largest city of the Johnson City Metropolitan Statistical Area, as well as the Tri-Cities (Tennessee-Virginia) region of Northeast Tennessee and Southwest Virginia, which contains Kingsport, Tennessee and Bristol, Tennessee and had a population of 585,041 at the 2020 Census.\nJohnson City is the nearest city to the first permanent European-American settlement in present-day Tennessee, which was built in 1768 by William Bean. Johnson City was founded as Johnson Depot in 1856, and incorporated as Johnson City in 1869. Once a railroad boomtown, Johnson City is today a hub for medicine and education, as the home to East Tennessee State University, the largest university in Northeast Tennessee, as well as the headquarters of Ballad Health, the region's largest health system."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 175,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "johnson city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "johnson",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2606,
+    "attempt": 2586,
+    "place_id": "gn-2510409",
+    "input": {
+      "place": {
+        "place_id": "gn-2510409",
+        "name": "Toledo",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 39.8581,
+        "lon": -4.02263
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Toledo, Spain",
+          "url": "https://en.wikipedia.org/wiki/Toledo,_Spain",
+          "text": "Toledo (UK:  tol-AY-doh; Spanish: [toˈleðo] ) is a city and municipality in Spain. It is the capital of the province of Toledo and the de jure seat of the government and parliament of the autonomous community of Castilla–La Mancha.\nToledo is primarily located on the right (north) bank of the Tagus in central Iberia, nestled in a bend of the river.\nBuilt on a previous Carpetanian settlement, Toledo developed into an important Roman city of Hispania, later becoming the capital of the Visigothic Kingdom and seat of a powerful archdiocese. Often unsubmissive to Umayyad central rule during the Islamic period, Toledo nonetheless acquired a status as a major cultural centre promoting productive cultural exchanges between the Islamic world and Latin Christendom, which it retained after the collapse of the caliphate and the creation of the Taifa of Toledo in the early 11th century. Following the Christian conquest in 1085, Toledo continued to enjoy an important status within the Crown of Castile and remained open to Muslim and Jewish influences for the next two centuries. In the early modern period, the economy stayed afloat for a while after the loss of political power to Madrid thanks to the silk industry, but Toledo entered a true decline in the 1630s, in the context of overall economic recession.\nIn the 21st century, population growth in the municipality has largely concentrated in the Santa María de Benquerencia (a.k.a. Polígono) district, a modern residential area detached from the historic centre located upstream on the left (south) bank of the Tagus. As of January 2024, the municipality had a population of 86,526. The municipality has an area of 232.1 km2 (89.6 sq mi).\nThe city has a Gothic cathedral and a long history in the production of bladed weapons, which are now commonly sold as souvenirs. Toledo was declared a World Heritage Site by UNESCO in 1986 for its extensive monumental and cultural heritage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 174,
+      "fullExtractWords": 318
+    },
+    "banned_terms": [
+      {
+        "term": "toledo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2607,
+    "attempt": 2587,
+    "place_id": "gn-2645605",
+    "input": {
+      "place": {
+        "place_id": "gn-2645605",
+        "name": "Kilmarnock",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.61171,
+        "lon": -4.49581
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kilmarnock",
+          "url": "https://en.wikipedia.org/wiki/Kilmarnock",
+          "text": "Kilmarnock  ( kil-MAR-nək; Scots: Kilmaurnock; Scottish Gaelic: Cill Mheàrnaig, IPA: [kʲʰiːʎ ˈvaːɾnəkʲ]), meaning \"the church of Mernóc\", also colloquially referred to as Killie, is a town and former burgh in East Ayrshire situated in southwest Scotland. The town has served as the administrative centre of East Ayrshire Council since 1996, and is the region's main commercial and industrial centre. The town has a total of 284 listed buildings and structures as designed by Historic Environment Scotland, including the Dick Institute, Dean Castle, Loanhead School and the original 1898 building of Kilmarnock Academy, with post-war developments of the controversial 1970s regeneration including the Clydesdale Bank building receiving Category C status in 2026.\nThe first passenger conveying railway in Scotland originated in Kilmarnock in 1812 as a horse-drawn four-foot-gauge (1.2 m) plateway and became known as the Kilmarnock and Troon Railway. The first printed collection of works by Scottish poet Robert Burns was published in 1786 in Kilmarnock. Poems, Chiefly in the Scottish Dialect, was published by John Wilson, and became known as the Kilmarnock Edition. The whisky Johnnie Walker was established in the town in the 19th century and was produced and bottled at the Hill Street plant until closure in 2012, following an announcement by owners Diageo in 2009 that the plant would close as part of company restructuring.\nThe town grew considerably during the 1870s and the town's growth subsumed the village of Bonnyton, and by the 1960s, new purpose built suburbs such as New Farm Loch were constructed to accommodate the increasing population of Kilmarnock. In 2022, the population of the town was 47,064, making Kilmarnock the 15th most populated settlement in Scotland as well as the largest town in Ayrshire by population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 174,
+      "fullExtractWords": 285
+    },
+    "banned_terms": [
+      {
+        "term": "kilmarnock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2608,
+    "attempt": 2588,
+    "place_id": "gn-3029030",
+    "input": {
+      "place": {
+        "place_id": "gn-3029030",
+        "name": "Cambrai",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 50.17596,
+        "lon": 3.23472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cambrai",
+          "url": "https://en.wikipedia.org/wiki/Cambrai",
+          "text": "Cambrai (US: , French: [kɑ̃bʁɛ] ; Picard: Kimbré; Dutch: Kamerijk), formerly Cambray and historically in English Camerick or Camericke, is a city in the Nord department and in the Hauts-de-France region of France on the Scheldt river, which is known locally as the Escaut river.\nA sub-prefecture of the department, Cambrai is a town with about 31,000 inhabitants. It is in the heart of the urban unit of Cambrai with 46,000 inhabitants, and a functional area with 93,000 inhabitants. With Lille and the towns of the former Nord-Pas de Calais Mining Basin, it is also part of the Metropolitan area of Lille which has more than 3.8 million inhabitants.\nTowards the end of the Roman Empire, Cambrai replaced Bavay as the \"capital\" of the land of the Nervii. At the beginning of the Merovingian era, Cambrai became the seat of an immense archdiocese covering all the right bank of the Scheldt and the centre of a small ecclesiastical principality, roughly coinciding with the shire of Brabant, including the central part of the Low Countries. The bishopric had some limited secular power and depended on the Holy Roman Empire until annexation to France in 1678. Fénelon, nicknamed the \"Swan of Cambrai\", was the most renowned of the archbishops.\nThe fertile lands which surround it and the textile industry gave it prosperity in the Middle Ages, but in modern times it is less industrialised than its neighbours of Nord-Pas-de-Calais.\nCambrai was the Duke of Wellington's headquarters, for the British Army of Occupation, from 1815 to 1818. Occupied by the German army during World War I, Cambrai suffered partial destruction in the First Battle of Cambrai from British artillery attacks on the town, including the nearby Bourlon Wood.  The fighting around Cambrai, known as the Battle of Cambrai (20 November 1917 – 3 December 1917) is notable in that it is considered to be the first mass use of tanks in battle.  A second Battle of Cambrai took place between 8 and 10 October 1918 as part of the Hundred Days Offensive. World War II was followed by reconstructions and a rapidly developing economy and population, abruptly reversed by the 1973 oil crisis.\nCambrai today is a lively city and, despite the past destruction, maintains a rich monumental heritage. Cambrai is affirmed as the urban centre of Cambrésis. Its economic life is strengthened by its position on the main local highway and river."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 174,
+      "fullExtractWords": 400
+    },
+    "banned_terms": [
+      {
+        "term": "cambrai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2609,
+    "attempt": 2589,
+    "place_id": "gn-3449933",
+    "input": {
+      "place": {
+        "place_id": "gn-3449933",
+        "name": "Santana do Paraíso",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -19.36361,
+        "lon": -42.56861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santana do Paraíso",
+          "url": "https://en.wikipedia.org/wiki/Santana_do_Paraíso",
+          "text": "Santana do Paraíso is a Brazilian municipality located in the interior of the state of Minas Gerais, in the Southeast Region of the country. It is situated in the Vale do Rio Doce and is part of the Vale do Aço Metropolitan Region, approximately 240 kilometres (150 mi) east of the state capital. The municipality covers an area of just over 276 square kilometres (107 sq mi), with 11 square kilometres (4.2 sq mi) constituting the urban area, and its population was estimated at 48,286 inhabitants in 2024.\nThe exploration of the region where the city now stands began in the 19th century, through expeditions ordered by John VI of Portugal aimed at occupying the area, which became feasible only after the evangelization of local indigenous peoples by Guido Marlière after 1819. Marlière also facilitated the construction of roads, later used by tropeiros. Near the present-day city center, at Cachoeira do Engenho Velho, a rest stop was established, which evolved into a farm and commercial hub, around which the settlement known as Taquaraçu formed. This settlement became the district of Santana do Paraíso in 1892.\nThe area experienced further development due to the influence of industrial complexes in the current Vale do Aço region during the 1940s and 1950s. In 1959, it was selected as the site for the Ipatinga Airport, which remains the only airport in the region. Its proximity to Ipatinga, the headquarters of Usiminas, spurred urban growth and the formation of a new urban nucleus in a conurbation with the neighboring city, parallel to the original district seat. With its status as a dormitory city and recent industrial investments within its territory, emancipation occurred in 1992. The sustained industrial activity in the region contributed to the establishment of the Vale do Aço Metropolitan Region, one of the main urban centers in the state's interior.\nBeyond its economic and demographic significance, the municipality is home to numerous trails, forests, lagoons, and waterfalls open to visitors. A key landmark in the city is the Santana Mother Church, maintained by the local parish. Cultural expressions include a congado group, handicrafts, and festive events such as the city’s anniversary celebrations, the Feast of the Divine, and the day of Saint Anne, the municipal patron saint."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 174,
+      "fullExtractWords": 374
+    },
+    "banned_terms": [
+      {
+        "term": "santana do paraiso",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santana",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paraiso",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2610,
+    "attempt": 2590,
+    "place_id": "gn-3660401",
+    "input": {
+      "place": {
+        "place_id": "gn-3660401",
+        "name": "Bahía de Caráquez",
+        "country": "Ecuador",
+        "subdivision": "Manabí",
+        "lat": -0.60033,
+        "lon": -80.42444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bahía de Caráquez",
+          "url": "https://en.wikipedia.org/wiki/Bahía_de_Caráquez",
+          "text": "Bahía de Caráquez, officially known as San Antonio de Caraquez and founded under the name of Villa de San Antonio de la Bahía de Caráquez or simply known today as Bahía, formerly called Bahía de los Caras during the period of the Spanish conquest,  is a coastal city belonging to the Sucre county, in the Ecuadorian province of Manabí. The city is located on a sandy peninsula on the country's western coast at the mouth of the Río Chone and has considerable tourism infrastructure that positions it as the main regional town. It has seen significant development during the last 15 to 20 years, particularly because it has become a vacation destination for people from Quito and Guayaquil. The city is located one hour north of the city of Manta and in the pre-Columbian era was host to the ancient Indian city of Caran. Across the bay is the town of San Vicente.\nBahía became an Ecocity on February 23, 1999, due to the devastation caused by two natural disasters in 1997 and 1998.\nAcross the Rio Chone is the city of San Vicente. Locals cross the river by bridge and boat. The bridge was completed as of November 2010. Bahia differs greatly from the neighboring San Vicente. The city is a popular tourist destination for the wealthy.\nThe city also boasts a well-known archeological museum, which displays artifacts found in Manabi from very different periods. The collection includes statues from the Valdivia culture as well as several other lesser-known historical communities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 174,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "bahia de caraquez",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bahia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "caraquez",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2611,
+    "attempt": 2591,
+    "place_id": "gn-5180225",
+    "input": {
+      "place": {
+        "place_id": "gn-5180225",
+        "name": "Bethlehem",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.62593,
+        "lon": -75.37046
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bethlehem, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Bethlehem,_Pennsylvania",
+          "text": "Bethlehem is a city in Northampton and Lehigh counties in the Lehigh Valley region of eastern Pennsylvania, United States. As of the 2020 census, Bethlehem had a total population of 75,781, making it the second-largest city in the Lehigh Valley after Allentown and the seventh-largest city in the state. Among its total population as of 2020, 55,639 were in Northampton County and 19,343 were in Lehigh County. The city is located along the Lehigh River, a 109-mile-long (175 km) tributary of the Delaware River.\nBethlehem lies in the geographic center of the Lehigh Valley, a metropolitan region of 731 sq mi (1,890 km2) with a population of 861,899 people as of the 2020 census that is Pennsylvania's third-most populous metropolitan area and the 68th-most populated metropolitan area in the U.S. Bethlehem borders Allentown to its west and is 48 miles (77 km) north of Philadelphia and 72 miles (116 km) west of New York City.\nThere are four sections to the city: central Bethlehem, the south side, the east side, and the west side. Each of these sections blossomed at different times in the city's development and each contains areas recognized under the National Register of Historic Places. Norfolk Southern Railway's Lehigh Line, formerly the main line of the Lehigh Valley Railroad, runs through Bethlehem heading east to Easton and across the Delaware River to Phillipsburg, New Jersey. The Norfolk Southern Railway's Reading Line runs through Bethlehem and west to Allentown and Reading.\nBethlehem has a long historical relationship with the celebration of Christmas. The city was christened as Bethlehem on Christmas Eve 1741 by Nicolaus Zinzendorf, a Moravian bishop. In 1749, Bethlehem was the first U.S. city to feature a decorated Christmas tree. On December 7, 1937, at a grand ceremony during the Great Depression, the city adopted the nickname Christmas City USA. It is one of several Lehigh Valley locations, including Egypt, Emmaus, Jordan Creek, and Nazareth, whose names were inspired by locations in the Bible."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 174,
+      "fullExtractWords": 328
+    },
+    "banned_terms": [
+      {
+        "term": "bethlehem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2612,
+    "attempt": 2592,
+    "place_id": "gn-2644726",
+    "input": {
+      "place": {
+        "place_id": "gn-2644726",
+        "name": "Leatherhead",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.29652,
+        "lon": -0.3338
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leatherhead",
+          "url": "https://en.wikipedia.org/wiki/Leatherhead",
+          "text": "Leatherhead is a town in the Mole Valley district of Surrey, England, about 17 mi (27 km) south of Central London. The settlement grew up beside a ford on the River Mole, from which its name is thought to derive. During the late Anglo-Saxon period, Leatherhead was a royal vill and is first mentioned in the will of Alfred the Great in 880 AD. The first bridge across the Mole may have been constructed in around 1200 and this may have coincided with the expansion of the town and the enlargement of the parish church.\nFor much of its history, Leatherhead was primarily an agricultural settlement, with a weekly market being held until the mid-Elizabethan era. The construction of turnpike roads in the mid-18th century and the arrival of the railways in the second half of the 19th century attracted newcomers and began to stimulate the local economy. Large-scale manufacturing industries arrived following the end of the First World War and companies with factories in the town included Ronson and Goblin Vacuum Cleaners. Several organisations working with disabled people also opened treatment and training facilities, including The Royal School for the Blind, Queen Elizabeth's Foundation and the Ex-services Welfare Society.\nTowards the end of the 20th century, manufacturing in Leatherhead had begun to decline and the town was instead starting to attract service sector employers. The former industrial areas were converted to business parks, which attracted multinational companies, including Esso and Unilever. A controversial redevelopment took place in the town centre in the early 1980s, which included the construction of the Swan Centre. The work, which also included the pedestrianisation of the main shopping area, was widely blamed for a decline in the local retail economy. In 2002, the BBC identified Leatherhead as having one of the worst High Streets in England, but in 2007, the local press described the town centre as \"bustling\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 173,
+      "fullExtractWords": 314
+    },
+    "banned_terms": [
+      {
+        "term": "leatherhead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2613,
+    "attempt": 2593,
+    "place_id": "gn-2652730",
+    "input": {
+      "place": {
+        "place_id": "gn-2652730",
+        "name": "Clydebank",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.90137,
+        "lon": -4.4057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clydebank",
+          "url": "https://en.wikipedia.org/wiki/Clydebank",
+          "text": "Clydebank (Scottish Gaelic: Bruach Chluaidh) is a town in West Dunbartonshire, Scotland. Situated on the north bank of the River Clyde, it borders the village of Old Kilpatrick (with Bowling and Milton beyond) to the west, and the Yoker and Drumchapel areas of the adjacent City of Glasgow immediately to the east. Depending on the definition of the town's boundaries, the suburban areas of Duntocher, Faifley and Hardgate either surround Clydebank to the north, or are its northern outskirts, with the Kilpatrick Hills beyond.\nHistorically part of Dunbartonshire and founded as a police burgh on 18 November 1886, Clydebank is part of the registration County of Dumbarton, the Dunbartonshire Crown Lieutenancy area, and the wider urban area of Greater Glasgow.\nA native of Clydebank is locally known as a 'Bankie', as distinct from a 'Glaswegian' (Glasgow itself is regarded as a separate place by locals, despite Clydebank being contiguous with the Glasgow urban area), whilst the term forms the nickname for the town's football team Clydebank FC who are known as 'The Bankies'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 173,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "clydebank",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2614,
+    "attempt": 2594,
+    "place_id": "gn-2804008",
+    "input": {
+      "place": {
+        "place_id": "gn-2804008",
+        "name": "Zittau",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.89772,
+        "lon": 14.80764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zittau",
+          "url": "https://en.wikipedia.org/wiki/Zittau",
+          "text": "Zittau (German: [ˈtsɪtaʊ] ; Upper Sorbian: Žitawa [ˈʒitawa] ; Lower Sorbian: Žytawa [ˈʒɨtawa]; Polish: Żytawa [ˈʐɨtava] ; Czech: Žitava; Upper Lusatian dialect: Sitte) is a city in the German state of Saxony, belonging to the district of Görlitz, Germany's easternmost district.\nZittau is located in Upper Lusatia, the southern part of Lusatia, on the Mandau and Lusatian Neisse rivers, in the foreland of the Zittau Mountains. The city has a population of around 25,000 and is located directly on the western edge of the Turów Coal Mine, one of the largest artificial holes visible from space, on the other side of the Lusatian Neisse.\nThe Großes Zittauer Fastentuch (Great Zittau Lenten Cloth) is, along with the Bayeux Tapestry, one of the most impressive textile works in Western tradition. It is the third-largest existing Lenten veil. It was made in Zittau in 1472 and is now exhibited in the secularized Kirche zum Heiligen Kreuz, that belongs to the Zittau Municipal Museums, where it is kept in the largest museum display case in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 173,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "zittau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2615,
+    "attempt": 2595,
+    "place_id": "gn-3185672",
+    "input": {
+      "place": {
+        "place_id": "gn-3185672",
+        "name": "Fier",
+        "country": "Albania",
+        "subdivision": "Fier County",
+        "lat": 40.7251,
+        "lon": 19.55823
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fier",
+          "url": "https://en.wikipedia.org/wiki/Fier",
+          "text": "Fier (pronounced [fiˈɛɾ]; Albanian definite form: Fieri, Latin: Fierum) is the seventh most populous city of the Republic of Albania and seat of Fier County and Fier Municipality. It is situated on the bank of Gjanica River in the Myzeqe Plain between the Seman in the north, the Vjosë in the south and the foothills of the Mallakastra Mountains in the southeast. Fier experiences a seasonal Mediterranean climate affected by its proximity to the Adriatic Sea in the west.\nFier was founded in the 19th century by the Vrioni family and officially in 1864 by Omer Pasha Vrioni II, the father of Kahreman Pasha Vrioni (1889-1955). It is 7 km (4 mi) from the ruins of the ancient settlement of Apollonia which was founded in 588 BCE by Ancient Greek colonists from Corfu and Corinth, on a site occupied by Illyrian tribes.\nFier is an important terminus in southwestern Albania and is served by the A2 motorway and SH 4 highway, forming a north–south corridor in Albania and part of the Adriatic–Ionian motorway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 173,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "fier",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2616,
+    "attempt": 2596,
+    "place_id": "gn-2871039",
+    "input": {
+      "place": {
+        "place_id": "gn-2871039",
+        "name": "Minden",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 52.28953,
+        "lon": 8.91455
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minden",
+          "url": "https://en.wikipedia.org/wiki/Minden",
+          "text": "Minden (German: [ˈmɪndn̩] ) is a middle-sized town in the very north-east of North Rhine-Westphalia, Germany, the largest town in population between Bielefeld and Hanover. It is the capital of the district (Kreis) of Minden-Lübbecke, situated in the cultural region of Ostwestfalen-Lippe (OWL) and the administrative region of Detmold. The town extends along both sides of the River Weser, and is crossed by the Mittelland Canal, which is led over the river on the Minden Aqueduct.\nIn its 1,200-year written history, Minden had functions as diocesan town from 800 CE to the Peace of Westphalia in 1648 CE, as capital of the Prince-Bishopric of Minden as imperial territory since the 12th century, afterwards as capital of Prussia's Minden-Ravensberg until the end of the Holy Roman Empire in 1806, and as capital of the East-Westphalian region from the Congress of Vienna until 1947. Furthermore, Minden has been of great military importance with fortifications from the 15th to the late 19th century, and is still a garrison town.\nMinden hosts diverse industries, none predominant. The town has been terminus of one of the oldest German railway trunks since 1847, adding to the multimodal transport hub between its harbour, federal roads, and a nearby highway (Autobahn) junction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 172,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "minden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2617,
+    "attempt": 2597,
+    "place_id": "gn-460413",
+    "input": {
+      "place": {
+        "place_id": "gn-460413",
+        "name": "Daugavpils",
+        "country": "Latvia",
+        "subdivision": "Daugavpils",
+        "lat": 55.88333,
+        "lon": 26.53333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Daugavpils",
+          "url": "https://en.wikipedia.org/wiki/Daugavpils",
+          "text": "Daugavpils (see also other names) is a state city in southeastern Latvia, located on the banks of the Daugava River, from which the city derives its name. The parts of the city to the north of the river belong to the historical Latvian region of Latgale, and those to the south lie in Selonia. It is the second-largest city in the country after the capital Riga, which is located some 230 kilometres (143 miles) northwest and is the ninth most populous city in the Baltic states. In addition to being a state city with its own municipality, the administration of the surrounding Augšdaugava Municipality is located in Daugavpils as well.\nDaugavpils is located relatively close to Belarus and Lithuania (distances of 33 km (21 mi) and 25 km (16 mi), respectively), and some 120 km (75 mi) from the Latvian border with Russia. Daugavpils is a major railway junction and industrial centre, and was an historically important garrison city lying approximately midway between Riga and Minsk, and between Warsaw and Saint Petersburg.\nDaugavpils, then called Dyneburg, was the capital of Polish Livonia while in Polish–Lithuanian Commonwealth. Following the first partition of Poland in 1772, the city became part of the Russian Empire. Since the Second World War, it has maintained an overwhelmingly Russian-speaking population, with Latvians and Poles being significant minorities. Historically, German and Yiddish were additional prominent native languages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 172,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "daugavpils",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2618,
+    "attempt": 2598,
+    "place_id": "gn-2521139",
+    "input": {
+      "place": {
+        "place_id": "gn-2521139",
+        "name": "Benalmádena",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.5961,
+        "lon": -4.57267
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Benalmádena",
+          "url": "https://en.wikipedia.org/wiki/Benalmádena",
+          "text": "Benalmádena (Spanish pronunciation: [benalˈmaðena]) is a town in Andalusia in southern Spain, 12 km west of Málaga, on the Costa del Sol between Torremolinos and Fuengirola.\nBenalmádena is rich in attractive beaches and interesting places like the Colomares Castle, the 33-metre-tall Buddhist Benalmádena Stupa, the largest Buddhist stupa in Europe, the Benalmádena Marina and the Benalmádena Cable Car.\nBenalmádena covers an area of just over 27 km2 that extends from the summits of the Sierra de Mijas to the sea, falling in some places as a cliff. The territory is crossed from east to west on Highway A-7, which connects with the provincial capital and other centres of the Mediterranean coast.\nWith 61,383 inhabitants according to the INE census of 2010, Benalmádena is the eighth most populous municipality in the province and the third largest metropolitan area, behind Málaga and Torremolinos. The population is concentrated in three main centers: Benalmádena Pueblo, Arroyo de la Miel and Benalmádena Costa, although the high urban growth and demographic tends to unify the three cores.\nBenalmádena has been inhabited since prehistoric times. Benalmádena experienced a remarkable development during the period of Muslim domination. Its development was paralyzed after joining the Crown of Castile in 1485 due to various natural disasters and the intensity of the activity of privateers in the area. The paper industry and vineyard cultivation reactivated the local economy during the 18th and 19th centuries.\nIn the early 21st century Benalmádena is one of the main tourist destinations on the Costa del Sol, with leisure facilities including an amusement park, two aquariums, a casino, a cable car and one of the largest marinas of Andalusia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 273
+    },
+    "banned_terms": [
+      {
+        "term": "benalmadena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2619,
+    "attempt": 2599,
+    "place_id": "gn-2960596",
+    "input": {
+      "place": {
+        "place_id": "gn-2960596",
+        "name": "Esch-sur-Alzette",
+        "country": "Luxembourg",
+        "subdivision": "Esch-sur-Alzette",
+        "lat": 49.49583,
+        "lon": 5.98056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Esch-sur-Alzette",
+          "url": "https://en.wikipedia.org/wiki/Esch-sur-Alzette",
+          "text": "Esch-sur-Alzette (French pronunciation: [ɛʃ syʁ alzɛt], lit. 'Esch on Alzette'; Luxembourgish: Esch-Uelzecht [ˌæʒ ˈu̯əltsəɕt] ; German: Esch an der Alzette [ˈɛʃ ʔan deːɐ̯ ʔalˈzɛt] or Esch an der Alzig) is a city in Luxembourg and the country's second-most populous commune, with a population of 37,922 inhabitants, as of 2025. It lies in the south-west of the country, on the border with France and in the valley of the Alzette, which flows through the city. The city is usually referred to as just Esch; however, the full name distinguishes it from the village and commune of Esch-sur-Sûre which lies 45 kilometres (28 miles) further north. The country's capital, Luxembourg City, is roughly 15 km (9.3 mi) to the north-east.\nThe town, first mentioned in the Middle Ages, remained a modest settlement for centuries until the discovery of iron ore in the 19th century transformed it into one of Luxembourg's main industrial centres. The rapid expansion of mining and steel production attracted workers from across Europe, shaping Esch into a multicultural urban community. After the decline of the steel industry in the late 20th century, the city underwent structural change.\nEsch was selected as the European Capital of Culture for 2022, alongside Kaunas and Novi Sad."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "esch sur alzette",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "esch",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alzette",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2620,
+    "attempt": 2600,
+    "place_id": "gn-3093524",
+    "input": {
+      "place": {
+        "place_id": "gn-3093524",
+        "name": "Leszno",
+        "country": "Poland",
+        "subdivision": "Greater Poland",
+        "lat": 51.84034,
+        "lon": 16.57494
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leszno",
+          "url": "https://en.wikipedia.org/wiki/Leszno",
+          "text": "Leszno (Polish pronunciation: [ˈlɛʂnɔ] ; German: Lissa [ˈlɪsa]) is a historic city in western Poland, seat of Leszno County within the Greater Poland Voivodeship. It is the seventh-largest city in the province with an estimated population of 59 521, as of 2024.\nLeszno is a former residential city of prominent Polish magnate families of Leszczyński and Sułkowski, including King Stanisław Leszczyński, under whose patronage it flourished to become one of the major economic and cultural centers of Greater Poland, as reflected in the variety of landmarks, especially of the Baroque period.\nLocated on a highway and railway line at about half the distance between the two main cities of western Poland, Poznań and Wrocław, Leszno is the largest city of south-western Greater Poland and a major location for industry, services and tourism. It is particularly well known as the location of an annual air show with attendance reaching tens of thousands of people from various countries, and as the home of Unia Leszno, one of the most accomplished motorcycle speedway clubs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 171,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "leszno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

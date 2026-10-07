@@ -1,0 +1,722 @@
+[
+  {
+    "rank": 317,
+    "place_id": "gn-3458449",
+    "input": {
+      "place": {
+        "place_id": "gn-3458449",
+        "name": "Londrina",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -23.31028,
+        "lon": -51.16278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Londrina",
+          "url": "https://en.wikipedia.org/wiki/Londrina",
+          "text": "Londrina (Portuguese pronunciation: [lõˈdɾĩnɐ], literally \"from London\") is a city located in the north of the state of Paraná, Brazil, and is 388 km (241 miles) north-west of the state capital Curitiba. It is the second largest city in the state and fourth largest in the southern region of the country, with 555,965 inhabitants in the whole municipality (2022).\nLondrina was originally explored by British settlers, and then officially established in 1930 by a small group of Italian, Japanese and German settlers. It rapidly became the commercial, political, and cultural centre of the state's northern pioneer zone. Its universities include the Universidade Estadual de Londrina (Londrina State University) and the Universidade Tecnológica Federal do Paraná (Federal University of Technology – Paraná)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "londrina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 319,
+    "place_id": "gn-479561",
+    "input": {
+      "place": {
+        "place_id": "gn-479561",
+        "name": "Ufa",
+        "country": "Russia",
+        "subdivision": "Bashkortostan Republic",
+        "lat": 54.74306,
+        "lon": 55.96779
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ufa",
+          "url": "https://en.wikipedia.org/wiki/Ufa",
+          "text": "Ufa is the capital and largest city of Bashkortostan, Russia. The city lies at the confluence of the Belaya and Ufa rivers, in the centre-north of Bashkortostan, on hills forming the Ufa Plateau to the west of the southern Ural Mountains, with a population of over 1.1 million residents, up to 1.4 million residents in the urban agglomeration. Ufa is the tenth-most populous city in Russia, and the fourth-most populous city in the Volga Federal District.\nThe city was founded in 1574, when a fortress was built on the site by the order of Ivan the Terrible. Ufa was made capital of Ufa Governorate in 1865 when the governorate split from Orenburg Governorate. Ufa's population expanded during the early 20th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "ufa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 321,
+    "place_id": "gn-1258044",
+    "input": {
+      "place": {
+        "place_id": "gn-1258044",
+        "name": "Roorkee",
+        "country": "India",
+        "subdivision": "Uttarakhand",
+        "lat": 29.86632,
+        "lon": 77.89118
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roorkee",
+          "url": "https://en.wikipedia.org/wiki/Roorkee",
+          "text": "Roorkee (Rūṛkī; Hindi: [ɾuːɽkiː]), formerly also anglicized as Rurki, is a city and municipal corporation in the Haridwar district of the state of Uttarakhand, India. It is 31 km (19 mi) from Haridwar, the district headquarters. It is spread over a flat terrain under the Sivalik Hills of the Himalayas. The city is developed on the banks of the Ganges Canal, its dominant feature, which flows from north–south through the middle of the city. \nRoorkee is home to Asia's Second engineering college the Indian Institute of Technology Roorkee, formerly known as Thomson College of Civil Engineering. Roorkee is also known for the Roorkee Cantonment, one of the country's oldest military establishments and the headquarters of Bengal Engineer Group since 1853."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "roorkee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 322,
+    "place_id": "gn-1799629",
+    "input": {
+      "place": {
+        "place_id": "gn-1799629",
+        "name": "Nanyang",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 33.00524,
+        "lon": 112.54659
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanyang, Henan",
+          "url": "https://en.wikipedia.org/wiki/Nanyang,_Henan",
+          "text": "Nanyang is a prefecture-level city in the southwest of Henan province, China. The city with the largest administrative area in Henan, Nanyang borders Xinyang to the southeast, Zhumadian to the east, Pingdingshan to the northeast, Luoyang to the north, Sanmenxia to the northwest, the province of Shaanxi to the west, and the province of Hubei to the south.\nNanyang was the home of various important figures in Chinese history. It nurtured the \"sage of science\" Zhang Heng, \"sage of medicine\" Zhang Zhongjing, \"sage of commerce\" Fan Li, and \"sage of intelligence\" Zhuge Liang. It has also been home to contemporary celebrities such as philosopher Feng Youlan, military strategist Peng Xuefeng, novelist Yao Xueyin, inventor Wang Yongmin, and writer Er Yuehe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "nanyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 323,
+    "place_id": "gn-1835553",
+    "input": {
+      "place": {
+        "place_id": "gn-1835553",
+        "name": "Suwon",
+        "country": "South Korea",
+        "subdivision": "Gyeonggi-do",
+        "lat": 37.29111,
+        "lon": 127.00889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suwon",
+          "url": "https://en.wikipedia.org/wiki/Suwon",
+          "text": "Suwon (Korean: 수원; Korean pronunciation: [sʰu.wʌn]) is the largest city and capital of Gyeonggi Province, South Korea's most populous province. The city lies approximately 30 km (19 mi) south of the national capital, Seoul. With a population of 1.2 million, Suwon has more inhabitants than the metropolitan city of Ulsan, though it enjoys a lesser degree of self-governance as a 'special city'.\nTraditionally known as the 'City of Filial Piety', modern Suwon retains a variety of historical landmarks. As a walled city, it is a popular destination for day-trippers from Seoul, with the wall itself—Hwaseong Fortress—receiving 1½ million visits in 2015.\nSuwon plays an important economic role as it is home to Samsung Electronics, Korea's largest and most profitable company."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "suwon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 325,
+    "place_id": "gn-2545957",
+    "input": {
+      "place": {
+        "place_id": "gn-2545957",
+        "name": "Inezgane",
+        "country": "Morocco",
+        "subdivision": "Souss-Massa",
+        "lat": 30.35535,
+        "lon": -9.53639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Inezgane",
+          "url": "https://en.wikipedia.org/wiki/Inezgane",
+          "text": "Inezgane (Arabic: إنزكان) is the capital of Inezgane-Aït Melloul Prefecture located on the north bank of the Sous River, about 11.5 km (7.1 mi) south of Agadir, on the Atlantic Ocean coast of Morocco. It is in some ways a suburb to the larger Agadir, but unlike the tourism-centered Agadir, Inezgane is a typical Moroccan city. Located where the N1, N8 and N10 highways meet, Inezgane is an important transport hub in the region of Souss-Massa.\nInezgane is well known for its souks and silver jewellery, as well as for its vegetable, fruit, and spice market. Tuesday is the main market day, when people come from all the villages nearby to sell their goods and buy provisions for the week."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "inezgane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 326,
+    "place_id": "gn-2853969",
+    "input": {
+      "place": {
+        "place_id": "gn-2853969",
+        "name": "Pforzheim",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.88436,
+        "lon": 8.69892
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pforzheim",
+          "url": "https://en.wikipedia.org/wiki/Pforzheim",
+          "text": "Pforzheim (German pronunciation: [ˈpfɔʁtshaɪm] ) is a city of over 135,000 inhabitants in the federal state of Baden-Württemberg, in the southwest of Germany.\nIt is known for its jewelry and watch-making industry, and as such has gained the nickname Goldstadt (\"Gold City\"). With an area of 97.8 square kilometres (37.8 sq mi), it is situated about halfway between the cities of Stuttgart and Karlsruhe at the confluence of three rivers (Enz, Nagold and Würm). It lies on the border of Baden and Württemberg, on the Baden side. From 1535 to 1565, it was the home to the Margraves of Baden-Durlach.\nThe City of Pforzheim is a Stadtkreis, meaning it is both a municipality and a district at the same time."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "pforzheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 327,
+    "place_id": "gn-2944368",
+    "input": {
+      "place": {
+        "place_id": "gn-2944368",
+        "name": "Bremerhaven",
+        "country": "Germany",
+        "subdivision": "Bremen",
+        "lat": 53.55357,
+        "lon": 8.57553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bremerhaven",
+          "url": "https://en.wikipedia.org/wiki/Bremerhaven",
+          "text": "Bremerhaven (German pronunciation: [ˌbʁeːmɐˈhaːfn̩] ; Low German: Bremerhoben) is a port city on the east bank of the Weser estuary in northern Germany. It forms an exclave of the city-state of Bremen. The River Geeste flows through the city before emptying into the Weser.\nBremerhaven was founded in 1827 as a seaport for Bremen, and it remains one of the busiest ports in the country. It was historically rivalled by Geestemünde [de] on the opposite side of the Geeste, which belonged to Hanover (and later Prussia). Geestemünde united with neighbouring Lehe [de] to form the city of Wesermünde [de] in 1924, and Bremerhaven was itself annexed to Wesermünde in 1939, but the entire conurbation was restored to Bremen in 1947."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "bremerhaven",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 329,
+    "place_id": "gn-4049979",
+    "input": {
+      "place": {
+        "place_id": "gn-4049979",
+        "name": "Birmingham",
+        "country": "United States",
+        "subdivision": "Alabama",
+        "lat": 33.52066,
+        "lon": -86.80249
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Birmingham, Alabama",
+          "url": "https://en.wikipedia.org/wiki/Birmingham,_Alabama",
+          "text": "Birmingham ( BUR-ming-ham) is a city in the north central region of Alabama, United States. It is the third-most populous city in the state, with an estimated population of 196,357 as of 2024. The Birmingham metropolitan area, with over 1.19 million residents, is the largest metropolitan area in Alabama and 47th-most populous in the US. Birmingham serves as a major regional economic, medical, and educational hub of the Deep South, Piedmont, and Appalachian regions. It is the county seat of Jefferson County.\nFounded in 1871 during the Reconstruction era, Birmingham was formed through the merger of three smaller communities, most notably Elyton. It quickly grew into an industrial and transportation center, with a focus on mining, steel production, and railroads."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "birmingham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 330,
+    "place_id": "gn-4682464",
+    "input": {
+      "place": {
+        "place_id": "gn-4682464",
+        "name": "College Station",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 30.62798,
+        "lon": -96.33441
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "College Station, Texas",
+          "url": "https://en.wikipedia.org/wiki/College_Station,_Texas",
+          "text": "College Station is a city in Brazos County, Texas, United States, situated in East-Central Texas in the Brazos Valley, towards the eastern edge of the region known as the Texas Triangle. It is 83 miles (130 kilometers) northwest of Houston and 87 miles (140 km) east-northeast of Austin. As of the 2020 census, College Station had a population of 120,511. College Station and Bryan make up the Bryan-College Station metropolitan area, the 15th-largest metropolitan area in Texas, with an estimated population 287,476 as of 2026.\nCollege Station is home to the main campus of Texas A&M University, the flagship institution of the Texas A&M University System. The city owes its name and existence to the university's location along a railroad."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "college station",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "college",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "station",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 332,
+    "place_id": "gn-5374732",
+    "input": {
+      "place": {
+        "place_id": "gn-5374732",
+        "name": "Moreno Valley",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.93752,
+        "lon": -117.23059
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moreno Valley, California",
+          "url": "https://en.wikipedia.org/wiki/Moreno_Valley,_California",
+          "text": "Moreno Valley is a city in Riverside County, California, United States, and is part of the Riverside–San Bernardino metropolitan area. It is the second-largest city in Riverside County by population and one of the Inland Empire's population centers. The city's population was 208,634 at the 2020 census. Moreno Valley is also part of the greater Los Angeles metropolitan area.\nThe city derived its name from the small community of Moreno, which became part of the city of Moreno Valley when the city was incorporated in 1984. Frank E. Brown, one of the founders of the community of Moreno in 1882, declined to have the town named after him, but to honor him, the town was named Moreno, Spanish for brown."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "moreno valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "moreno",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 333,
+    "place_id": "gn-5388881",
+    "input": {
+      "place": {
+        "place_id": "gn-5388881",
+        "name": "Roseville",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 38.75212,
+        "lon": -121.28801
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roseville, California",
+          "url": "https://en.wikipedia.org/wiki/Roseville,_California",
+          "text": "Roseville is the most populous city in Placer County, California, located within the Sacramento metropolitan area. At the 2020 census, the city's population was 147,773, making it the third-largest city in the Sacramento area. Interstate 80 runs through Roseville and State Route 65 runs through part of the northern edge of the city.\nRoseville has been a charter city, and is known for its city owned utilities under Environmental Utilities and Roseville Electric Utility. It is historically associated with the railroad and the city underwent significant urban renewal in the 1980s and 1990s. Today it has become a major commercial hub, attracting regular shoppers and visitors from a large swath of rural southeastern Sacramento Valley and the Sierra Nevada foothills."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "roseville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 334,
+    "place_id": "gn-1002145",
+    "input": {
+      "place": {
+        "place_id": "gn-1002145",
+        "name": "George",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.963,
+        "lon": 22.46173
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "George, South Africa",
+          "url": "https://en.wikipedia.org/wiki/George,_South_Africa",
+          "text": "George is a city in the Western Cape province of South Africa. The city is a popular holiday and conference centre, as well as the administrative and commercial hub and the seat of the Garden Route District Municipality. It is named after the British King George III.\nThe city is situated roughly halfway between Cape Town and Gqeberha (Port Elizabeth) on the Garden Route. It is situated on a 10-kilometre plateau between the Outeniqua Mountains to the north and the Indian Ocean to the south. The former township of Pacaltsdorp, now a fully incorporated suburb, lies to the south.\nGeorge is well known for being the burial place of former South African Prime Minister and President P. W. Botha."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "george",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 335,
+    "place_id": "gn-1631766",
+    "input": {
+      "place": {
+        "place_id": "gn-1631766",
+        "name": "Pekalongan",
+        "country": "Indonesia",
+        "subdivision": "Central Java",
+        "lat": -6.8886,
+        "lon": 109.6753
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pekalongan",
+          "url": "https://en.wikipedia.org/wiki/Pekalongan",
+          "text": "Pekalongan (Javanese: ꦥꦼꦏꦭꦺꦴꦁꦔꦤ꧀) is a city of Central Java, Indonesia. It was formerly the seat of Pekalongan Regency on the northern coast of the province, but is now an independent municipality within the province. It covers a land area of 45.25 km2 and had a population of 281,434 at the 2010 Census and 307,150 at the 2020 Census; the official estimate as of mid-2025 was 324,564 (comprising 163,880 males and 160,690 females). The city is Central Java's most important port, and is known for its batik. Since December 2014, Pekalongan has been a member of UNESCO's World's Creative Cities Network, the first Southeast Asian city to be added to the list.\nThe Dutch name of the city is 'Pacalongan'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "pekalongan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 337,
+    "place_id": "gn-3100946",
+    "input": {
+      "place": {
+        "place_id": "gn-3100946",
+        "name": "Częstochowa",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.79646,
+        "lon": 19.12409
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Częstochowa",
+          "url": "https://en.wikipedia.org/wiki/Cz%C4%99stochowa",
+          "text": "Częstochowa ( CHEN-stə-KOH-və, Polish: [t͡ʂɛ̃stɔˈxɔva] ) is a city in southern Poland on the Warta with 214,342 inhabitants, making it the thirteenth-largest city in Poland. It is situated in the Silesian Voivodeship. However, Częstochowa is historically part of Lesser Poland, not Silesia, and before the 1795 Partition of Poland, it belonged to the Kraków Voivodeship. Częstochowa is located in the Kraków-Częstochowa Upland. It is the largest economic, cultural and administrative hub in the northern part of the Silesian Voivodeship.\nThe city is known for the famous Jasna Góra Monastery of the Order of Saint Paul the First Hermit of the Catholic Church, which is the home of the Black Madonna of Częstochowa, a shrine to Mary, mother of Jesus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "czestochowa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 339,
+    "place_id": "gn-4330145",
+    "input": {
+      "place": {
+        "place_id": "gn-4330145",
+        "name": "Lafayette",
+        "country": "United States",
+        "subdivision": "Louisiana",
+        "lat": 30.22409,
+        "lon": -92.01984
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lafayette, Louisiana",
+          "url": "https://en.wikipedia.org/wiki/Lafayette,_Louisiana",
+          "text": "Lafayette ( LA(H)-fee-YET, French: [lafajɛt]) is a city in Louisiana and the parish seat of Lafayette Parish. It is located along the Vermilion River. It is Louisiana's fourth-most populous city with a 2020 census population of 121,374; the consolidated city-parish's population was 241,753 in 2020. The Lafayette metropolitan area was Louisiana's third largest metropolitan statistical area with a population of 478,384 at the 2020 census. The Acadiana region containing Lafayette is the largest population and economic corridor between Houston, Texas and New Orleans.\nOriginally established as Vermilionville in the 1820s and incorporated in 1836, Lafayette developed as an agricultural community until the introduction of retail and entertainment centers, and the discovery of oil in the area in the 1940s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "lafayette",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 340,
+    "place_id": "gn-456172",
+    "input": {
+      "place": {
+        "place_id": "gn-456172",
+        "name": "Riga",
+        "country": "Latvia",
+        "subdivision": "Riga",
+        "lat": 56.946,
+        "lon": 24.10589
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riga",
+          "url": "https://en.wikipedia.org/wiki/Riga",
+          "text": "Riga (  REE-gə), officially Riga State City (Latvian: Rīgas valstspilsēta), is the capital, primate, and largest city of Latvia and the second most-populous city in the Baltics. Home to 588,911 inhabitants (as of 2026), the city accounts for a third of Latvia's total population. The population of Riga metropolitan area, which stretches beyond the city limits, is estimated at 847,162 (as of 2025). The city lies on the Gulf of Riga at the mouth of the Daugava river where it meets the Baltic Sea. Riga's territory covers 307.17 km2 (118.60 sq mi) and lies 1–10 m (3–33 ft) above sea level on a flat and sandy plain.\nRiga was founded in 1201, and is a former Hanseatic League member."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "riga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 342,
+    "place_id": "gn-4795467",
+    "input": {
+      "place": {
+        "place_id": "gn-4795467",
+        "name": "Charlotte Amalie",
+        "country": "U.S. Virgin Islands",
+        "subdivision": "Saint Thomas Island",
+        "lat": 18.3419,
+        "lon": -64.9307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charlotte Amalie, U.S. Virgin Islands",
+          "url": "https://en.wikipedia.org/wiki/Charlotte_Amalie,_U.S._Virgin_Islands",
+          "text": "Charlotte Amalie ( SHAR-lət ə-MAH-lee(-ə); Danish: [ʃɑˈlʌtʰə ɑˈmɑːljə]), on Saint Thomas, is the capital and largest town of the U.S. Virgin Islands. It is on the island's southern shore at the head of Charlotte Amalie Harbor. The town is known for its historic sites, Danish colonial architecture, harbor, and shopping. In 2020, it had a population of 8,194, making it the most densely populated town in the U.S. Virgin Islands.\nIt has a deep-water harbor that was once a haven for pirates (including Blackbeard) and is now one of the busiest ports of call for cruise ships in the Caribbean. About 1.5 million cruise ship passengers land there annually, and hundreds of ferries and yachts pass by each week."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "charlotte amalie",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "charlotte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "amalie",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 343,
+    "place_id": "gn-4942618",
+    "input": {
+      "place": {
+        "place_id": "gn-4942618",
+        "name": "Lowell",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.63342,
+        "lon": -71.31617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lowell, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Lowell,_Massachusetts",
+          "text": "Lowell ( ) is a city in Massachusetts, United States. Alongside Cambridge, it is one of the two traditional seats of Middlesex County. With an estimated population of 115,554 in 2020, it was the fifth most populous city in Massachusetts as of the last census, and the third most populous in the Boston metropolitan statistical area. The city is also part of a smaller Massachusetts statistical area, called Greater Lowell, and of New England's Merrimack Valley region.\nIncorporated in 1826 to serve as a mill town, Lowell was named after Francis Cabot Lowell, a local figure in the Industrial Revolution. The city became known as the cradle of the American Industrial Revolution because of its textile mills and factories."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "lowell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 345,
+    "place_id": "gn-1168021",
+    "input": {
+      "place": {
+        "place_id": "gn-1168021",
+        "name": "Pindi Bhattian",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 31.89844,
+        "lon": 73.27339
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pindi Bhattian",
+          "url": "https://en.wikipedia.org/wiki/Pindi_Bhattian",
+          "text": "Pindi Bhattian (Punjabi, Urdu: پِنڈى بھٹياں) is a city and the administrative headquarters of Pindi Bhattian Tehsil, Hafizabad District in Punjab, Pakistan. It is famous for being the birthplace of the 16th-century Punjabi folk hero, Dulla Bhatti, who led a revolt against the Mughal rule in the Punjab.\nCommercially, Pindi Bhattian lies at the heart of Punjab and North Pakistan. Pindi Bhattian is connected through the M2 motorway to major cities like Lahore, Sheikhupura, Islamabad, and Peshawar. Through M3, Pindi Bhattian is connected with Faisalabad, Multan and connecting to major cities of Baluchistan and Sindh like Karachi. E3 (Expressway) is being upgraded to connect Sialkot via Wazirabad, whereas Pindi Bhattian is also connected to Hafizabad, Gujranwala, and Daska."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "pindi bhattian",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pindi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bhattian",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

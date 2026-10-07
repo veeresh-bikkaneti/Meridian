@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 1675,
+    "attempt": 1661,
+    "place_id": "gn-1261529",
+    "input": {
+      "place": {
+        "place_id": "gn-1261529",
+        "name": "Nellore",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 14.44992,
+        "lon": 79.98697
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nellore",
+          "url": "https://en.wikipedia.org/wiki/Nellore",
+          "text": "Nellore, also spelt as Nelluru, is a city located on the banks of Penna River, in Nellore district of Andhra Pradesh, India. It serves as the headquarters of the district, as well as Nellore Urban mandal, Nellore Rural mandal and Nellore revenue division. It is the fourth most populous city in the state. It is at a distance of 279 kilometres (173 mi) from Vijayawada, 660 kilometres (410 mi) from Visakhapatnam, 455 kilometres (283 mi) from Hyderabad and about 170 km (110 mi) north of Chennai, Tamil Nadu and also about 380 km (240 mi) east-northeast of Bangalore, Karnataka. It is the administrative headquarters of Nellore District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "nellore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1676,
+    "attempt": 1662,
+    "place_id": "gn-1307835",
+    "input": {
+      "place": {
+        "place_id": "gn-1307835",
+        "name": "Myingyan",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Mandalay Region",
+        "lat": 21.46002,
+        "lon": 95.3884
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Myingyan",
+          "url": "https://en.wikipedia.org/wiki/Myingyan",
+          "text": "Myingyan (Burmese: မြင်းခြံ, MLCTS: mrang:hkram, [mjɪ́ɰ̃d͡ʑàɰ̃]) is a city and district in the Mandalay Division of central Myanmar, previously, it was a district in the Meiktila Division of Upper Burma. It is currently the capital of Myingyan Township and lies along the National Highway 2. As of 2014, the city had a population of 276,096 and the district had 1,055,957.\nIt lies in the valley of the Ayeyarwady River, to the south of Mandalay, on the east bank of the river. The area around the city is flat, especially to the north and along the banks of the Ayeyarwady. Inland the country rises in gently undulating slopes. The most noticeable feature is Popa Hill, an extinct volcano, to the south-east. The highest peak is 4,962 feet (1,512 m). above sea-level. The climate is dry, with high south winds from March until September. The annual rainfall averages about 35 inches (890 mm). The temperature varies between 70 and 106 °F (21 and 41 °C). The ordinary crops are millet, sesame, cotton, maize, rice and a great variety of peas and beans. There are no forests, but a great deal of low scrubland. Myingyan is the head of the branch railway to Thazi and the main line between Yangon and Mandalay.\nMyingyan Prison in Myingyan District was known as the most infamous detention center among Burma's political prisoners for its atrocities from early 1990s' to October 1999 when the International Committee for Red Cross (ICRC) was granted an access to the prison.\nClashes broke out in and around the town in August 2024 between Myanmar's military junta and the People's Defense Force, during the country's ongoing civil war."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "myingyan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1677,
+    "attempt": 1663,
+    "place_id": "gn-1631393",
+    "input": {
+      "place": {
+        "place_id": "gn-1631393",
+        "name": "Prabumulih",
+        "country": "Indonesia",
+        "subdivision": "South Sumatra",
+        "lat": -3.43447,
+        "lon": 104.23056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prabumulih",
+          "url": "https://en.wikipedia.org/wiki/Prabumulih",
+          "text": "Prabumulih is a city in South Sumatra, Indonesia. It was originally part of Muara Enim Regency, from which it was separated to become an independent city on 21 June 2001. It has an area of 447.31 km² and had a population of 161,814 at the 2010 Census and 193,196 at the 2020 Census; the official estimate as at mid 2025 was 214,821 (comprising 108,178 males and 106,643 females). Geographically, this city is located at 3°25′58″ South and 104°14′8″ East in the heart of the province, and it is surrounded on all sides by Muara Enim Regency, apart from a short stretch bordering Penukal Abab Lematang Ilir Regency."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "prabumulih",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1678,
+    "attempt": 1664,
+    "place_id": "gn-1632276",
+    "input": {
+      "place": {
+        "place_id": "gn-1632276",
+        "name": "Parung",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.42139,
+        "lon": 106.73306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parung",
+          "url": "https://en.wikipedia.org/wiki/Parung",
+          "text": "Parung (Sundanese:ᮕᮛᮥᮀ) is a town and administrative district (kecamatan) in Indonesia located near the southwestern suburb of South Jakarta, but officially still within the area of the Bogor Regency. Parung District covers 25.86 km2, and had a population of 112,529 at the 2010 Census and 123,078 at the 2020 Census. The official estimate as at mid-2023 was 128,905, comprising 65,568 males and 63,337 females. Those who travel from Jakarta to Bogor through the western alternative road have to pass through Parung.\nParung has a traditional market, Pasar Parung, as its commercial centre. It is situated on both sides of the main road, which causes daily traffic congestion. Pasar Parung features a very large tree called Pohon Jubleg by locals, according to whom Jubleg means 'idle' and 'not going anywhere'. Locals often attributed mystical elements to the tree because of its old age."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "parung",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1679,
+    "attempt": 1665,
+    "place_id": "gn-1790842",
+    "input": {
+      "place": {
+        "place_id": "gn-1790842",
+        "name": "Wuzhong",
+        "country": "China",
+        "subdivision": "Ningxia",
+        "lat": 37.9867,
+        "lon": 106.201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wuzhong, Ningxia",
+          "url": "https://en.wikipedia.org/wiki/Wuzhong,_Ningxia",
+          "text": "Wuzhong (simplified Chinese: 吴忠; traditional Chinese: 吳忠; pinyin: Wúzhōng; Xiao'erjing: وُجْو شِ) is a prefecture-level city in the Ningxia autonomous region of the People's Republic of China. It was known as Yinnan Prefecture (银南地区; 銀南地區; Yínnán Dìqū; Xiao'erjing: ءٍنًا دِٿِيُوِ) before it was upgraded to a prefecture-level city in 1998. Wuzhong is located in the Northwest of China, with the Yellow River flowing through the center of the city.In 2019, Wuzhong had a population of 1.4 million. By the end of 2024, the resident population of the city was 1,415,300, an increase of 12,600 over the end of the previous year, including 833,100 residents in urban areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "wuzhong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1680,
+    "attempt": 1666,
+    "place_id": "gn-1809078",
+    "input": {
+      "place": {
+        "place_id": "gn-1809078",
+        "name": "Haikou",
+        "country": "China",
+        "subdivision": "Hainan",
+        "lat": 20.03421,
+        "lon": 110.34651
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haikou",
+          "url": "https://en.wikipedia.org/wiki/Haikou",
+          "text": "Haikou is the capital and most populous city of the Chinese province of Hainan. Haikou city is situated on the northern coast of Hainan, by the mouth of the Nandu River. The northern part of the city is on the Haidian Island, which is separated from the main part of Haikou by the Haidian River, a branch of the Nandu. Administratively, Haikou is a prefecture-level city, comprising four districts, and covering 2,280 square kilometres (880 sq mi). There are 2,046,189 inhabitants in the built-up area, all living within the four urban districts of the city.\nHaikou was originally a port city, serving as the port for Qiongshan. During the Chinese Civil War, Haikou was one of the last Nationalist strongholds to be taken by the Communists with the Battle of Hainan Island in 1950. Currently, more than half of the island's total trade still goes through Haikou's ports.\nThe city is home to Hainan University, a comprehensive research university under the Project 211 and the Double First Class University Plan in certain disciplines, which has its main campus on Haidian Island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "haikou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1681,
+    "attempt": 1667,
+    "place_id": "gn-1809858",
+    "input": {
+      "place": {
+        "place_id": "gn-1809858",
+        "name": "Guangzhou",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 23.11667,
+        "lon": 113.25
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guangzhou",
+          "url": "https://en.wikipedia.org/wiki/Guangzhou",
+          "text": "Guangzhou, also known as Canton, is the capital and largest city of Guangdong in southern China. Located on the Pearl River, about 120 kilometres (75 mi) northwest of Hong Kong and 145 kilometres (90 mi) north of Macau, Guangzhou has a history of over 2,200 years and was a major terminus of the Silk Road. \nThe port of Guangzhou serves as a transportation hub. Guangzhou is also one of China's three largest cities. For a long time, it was the only Chinese port accessible to the Europeans. Guangzhou was captured by the British during the First Opium War and no longer enjoyed a monopoly after the war. Consequently, it lost trade to other ports such as Hong Kong and Shanghai, but continued to serve as a major entrepôt at China.\nGuangzhou is at the center of the Guangdong–Hong Kong–Macau Greater Bay Area, the most populous built-up metropolitan region in the world. The area extends into neighboring cities such as Foshan, Dongguan, Zhongshan, Shenzhen, parts of Jiangmen and Huizhou, as well as Zhuhai and Macau, forming an urban agglomeration of about 70 million residents. It is also part of the Pearl River Delta Economic Zone. Administratively, the city holds subprovincial status and is one of China's nine National Central Cities. In the late 1990s and early 2000s, nationals of sub-Saharan Africa who had initially settled in the Middle East and Southeast Asia moved in unprecedented numbers to Guangzhou in response to the 1997/98 Asian financial crisis. The domestic migrant population from other provinces of China in Guangzhou was 40% of the city's total population in 2008. Guangzhou has one of the most expensive real estate markets in China. As of the 2020 census, the registered population of the city's expansive administrative area was 18,676,605 individuals (up 47 percent from the previous census in 2010), of whom 16,492,590 lived in 9 urban districts (all but Conghua and Zengcheng). Due to worldwide travel restrictions at the beginning of the COVID-19 pandemic, Guangzhou Baiyun International Airport, the major airport of Guangzhou, briefly became the world's busiest airport by passenger traffic in 2020. Guangzhou is the fifth most populous city by urban resident population in China after Shanghai, Beijing, Shenzhen and Chongqing.\nIn modern commerce, Guangzhou is best known for its annual Canton Fair, the oldest and largest trade fair in China. For three consecutive years (2013–2015), Forbes ranked Guangzhou as the best commercial city in mainland China. Guangzhou is highly ranked as an Alpha (global first-tier) city together with San Francisco and Stockholm. It is a major Asia-Pacific finance hub, ranking  21st globally in the 2020 Global Financial Centres Index. Guangzhou also has the fifth largest number of skyscrapers in the world. As an important international city, Guangzhou has hosted numerous international and national sporting events, the most notable being the 2010 Asian Games, the 2010 Asian Para Games, and the 2019 FIBA Basketball World Cup. The city hosts 65 foreign representatives, making it the major city hosting the third most foreign representatives in China, after Beijing and Shanghai. As of 2020, Guangzhou ranked 10th in the world and 5th in China—after Beijing, Shanghai, Hong Kong and Shenzhen—for the number of billionaire residents by the Hurun Global Rich List. Guangzhou is one of the nation's leading hubs for academia and academic research, ranking 6th globally, and is home to numerous Double First-Class Universities, including Sun Yat-sen University and SCUT."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 565
+    },
+    "banned_terms": [
+      {
+        "term": "guangzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1682,
+    "attempt": 1668,
+    "place_id": "gn-1841066",
+    "input": {
+      "place": {
+        "place_id": "gn-1841066",
+        "name": "Mokpo",
+        "country": "South Korea",
+        "subdivision": "Jeollanam-do",
+        "lat": 34.81282,
+        "lon": 126.39181
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mokpo",
+          "url": "https://en.wikipedia.org/wiki/Mokpo",
+          "text": "Mokpo (Korean: 목포; Korean pronunciation: [mok̚.pʰo]) is a city in Jeonnam-Gwangju, South Korea. It is located at the southwestern tip of the Korean Peninsula, close to the mountain Yudalsan. Mokpo has frequent high-speed train services to Seoul, and is the terminus for a number of ferry routes serving islands in the adjacent Yellow Sea and Dadohae National Maritime Park. To the southwest of the city is Yudalsan Mountain, which is surrounded by strange cliffs like a wall. There are six populated and five uninhabited islands.\nThe Mokpo Special Tourist Zone covers 6.9 kilometres (4.3 mi) from the northern port to Yudalsan, Old Town Area, Samhakdo, and Gatbawi. It is home to attractions such as the Mokpo Natural History Museum and the National Maritime Museum. To live up to its name as a coastal city, the city's traditional dishes include a variety of seafood dishes, including raw croaker, braised hairtail, skate, and seasoned crab.\nThe city was once part of South Jeolla Province, but on 1 July 2026, that province was dissolved and merged with Gwangju into the provincial-level city of Jeonnam-Gwangju. Now, the city is directly managed under Jeonnam-Gwangju."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "mokpo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1683,
+    "attempt": 1669,
+    "place_id": "gn-1846266",
+    "input": {
+      "place": {
+        "place_id": "gn-1846266",
+        "name": "Jeju City",
+        "country": "South Korea",
+        "subdivision": "Jeju-do",
+        "lat": 33.50972,
+        "lon": 126.52194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jeju City",
+          "url": "https://en.wikipedia.org/wiki/Jeju_City",
+          "text": "Jeju City (Korean: 제주; Korean pronunciation: [tɕe.dʑu]) is the capital of the Jeju Province in South Korea and the largest city on Jeju Island. The city is served by Jeju International Airport (IATA code CJU).\nLocated on an island off the Korean Peninsula, Jeju has mild, warm weather during much of the year. The city is a well-known resort, with prestigious hotels and public casino facilities. In 2011, 9.9 million passengers flew between the two cities of Seoul and Jeju, making the Gimpo–Jeju route the world's busiest passenger air route.\nJeju welcomes over ten million visitors every year, mainly from the South Korean mainland, Japan, and China. The population of Jeju City is 486,604 people and 225,139 households (244,468 men and 245,136 women, May 2024). The population density is 503.18 (per square km, 2020)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "jeju city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jeju",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1684,
+    "attempt": 1670,
+    "place_id": "gn-184707",
+    "input": {
+      "place": {
+        "place_id": "gn-184707",
+        "name": "Naivasha",
+        "country": "Kenya",
+        "subdivision": "Nakuru County",
+        "lat": -0.71383,
+        "lon": 36.43261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Naivasha",
+          "url": "https://en.wikipedia.org/wiki/Naivasha",
+          "text": "Naivasha () is a town in Nakuru County, Kenya, 92.8 km (57.7 mi) north west of Nairobi. From 1969, the population expanded by a factor of 17 times to over 355,383 at the 2019 census. It is situated on the shores of Lake Naivasha, from which it takes its name. The name Naivasha derives from the local Maasai word ɛnaɨpɔ́sha, meaning \"that which heaves\", a common Maasai word for bodies of water larger enough to have wave action when it is windy or stormy. Naivasha arose as the British attempted to pronounce the Maasai name.  Literally, Lake Naivasha means \"Lake Lake\" and Naivasha Town means \"Lake Town\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "naivasha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1685,
+    "attempt": 1671,
+    "place_id": "gn-2082539",
+    "input": {
+      "place": {
+        "place_id": "gn-2082539",
+        "name": "Merauke",
+        "country": "Indonesia",
+        "subdivision": "South Papua",
+        "lat": -8.49958,
+        "lon": 140.40613
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Merauke",
+          "url": "https://en.wikipedia.org/wiki/Merauke",
+          "text": "Merauke is a large town (kelurahan) and an administrative district (distrik) in Merauke Regency of South Papua Province, Indonesia. It is also the administrative centre of Merauke Regency, and is considered to be the easternmost city in Indonesia, although it currently lacks city status. The town was originally called Ermasoe.\nMerauke is next to the Maro River where the Port of Merauke is located. Merauke District covers a land area of 500.41 km2, and had a population of 87,634 at the 2010 Census. which at the 2020 Census had increased to 102,351; the official estimate as at mid 2024 was 116,864 (comprising 60,068 males and 56,796 females)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "merauke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1686,
+    "attempt": 1672,
+    "place_id": "gn-2236967",
+    "input": {
+      "place": {
+        "place_id": "gn-2236967",
+        "name": "Soyo",
+        "country": "Angola",
+        "subdivision": "Zaire",
+        "lat": -6.1349,
+        "lon": 12.36894
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Soyo",
+          "url": "https://en.wikipedia.org/wiki/Soyo",
+          "text": "Soyo (formerly known as Santo António do Zaire) is a city, with a population of 200,920 (2014 census), and a municipality, with a population of 221,555 (2024 census), located in the province of Zaire in Angola, at the mouth of the Congo River. Historically, Soyo was a significant city in conflicts between the Kingdom of Kongo, Portuguese Angola, and the Dutch West India Company. Soyo became an independent state in the 17th century and had significant influence on politics in Kongo during the Kongo Civil War.\nSoyo has recently become the largest oil-producing region in Angola, with an estimated production of 1,200,000 barrels per day (190,000 m3/d)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "soyo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1687,
+    "attempt": 1673,
+    "place_id": "gn-2542715",
+    "input": {
+      "place": {
+        "place_id": "gn-2542715",
+        "name": "Meknes",
+        "country": "Morocco",
+        "subdivision": "Fes-Meknes",
+        "lat": 33.89352,
+        "lon": -5.54727
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Meknes",
+          "url": "https://en.wikipedia.org/wiki/Meknes",
+          "text": "Meknes is one of the four imperial cities of Morocco, located in northern central Morocco and the sixth largest city by population in the kingdom. Founded in the 11th century by the Almoravids as a military settlement, Meknes became the capital of Morocco during the reign of Sultan Ismail Ibn Sharif (1672–1727), son of the founder of the Alaouite dynasty. Sultan Ismail created a massive imperial palace complex and endowed the city with extensive fortifications and monumental gates.\nThe city recorded a population of 551,503 in the 2024 Moroccan census. It is the seat of Meknès Prefecture and an important economic hub in the region of Fez-Meknes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "meknes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1688,
+    "attempt": 1674,
+    "place_id": "gn-2655237",
+    "input": {
+      "place": {
+        "place_id": "gn-2655237",
+        "name": "Bolton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.58333,
+        "lon": -2.43333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bolton",
+          "url": "https://en.wikipedia.org/wiki/Bolton",
+          "text": "Bolton (  BOHL-tən, locally  BOH-tən) is a town in Greater Manchester in England. In the foothills of the West Pennine Moors, Bolton is between Manchester, Blackburn, Wigan, Bury and Salford. It is surrounded by several towns and villages that form the wider borough, of which Bolton is the administrative centre. The town is within the historic county boundaries of Lancashire.\nA former mill town, Bolton has been a centre for textile production since the 14th century when Flemish weavers settled in the area, introducing a wool and cotton-weaving tradition. It was a 19th-century boomtown, development largely coincided with the introduction of textile manufacture during the Industrial Revolution. At its peak in 1929, its 216 cotton mills and 26 bleaching and dyeing works made it one of the largest and most productive centres of cotton spinning in the world. The British cotton industry declined sharply after the First World War and, by the 1980s, cotton manufacture had virtually ceased in the town.\nThe town has a population of 184,073, whilst the wider metropolitan borough has a population of 296,169. Bolton originated as a small settlement in the moorland known as Bolton le Moors. In the English Civil War, the town was a Parliamentarian outpost in 1644 in a staunchly Royalist region and, as a result, the Royalist Prince Rupert of the Rhine led the 1644 storming of Bolton of 3,000 Royalist troops, which is also referred to as The Bolton Massacre, with 1,600 residents perished and 700 were taken prisoner.\nBolton Wanderers football club now play home games at the Toughsheet Community Stadium in Horwich. Cultural interests include the Octagon Theatre and the Bolton Museum and Art Gallery, as well as one of the earliest public libraries established after the Public Libraries Act 1850.\nBolton is of high strategic importance, being the location of missile production for the Ministry of Defence through the MBDA facility at Over Hulton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 317
+    },
+    "banned_terms": [
+      {
+        "term": "bolton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1689,
+    "attempt": 1675,
+    "place_id": "gn-2661552",
+    "input": {
+      "place": {
+        "place_id": "gn-2661552",
+        "name": "Bern",
+        "country": "Switzerland",
+        "subdivision": "Bern",
+        "lat": 46.94809,
+        "lon": 7.44744
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bern",
+          "url": "https://en.wikipedia.org/wiki/Bern",
+          "text": "Bern (Swiss Standard German: [bɛrn] ), or Berne (French: [bɛʁn] ), is the de facto capital of Switzerland, referred to as the \"federal city\". With a population of about 146,000 (as of 2024), Bern is the fifth-most populous city in Switzerland, behind Zurich, Geneva, Basel and Lausanne. The Bern agglomeration, which includes 36 municipalities, had a population of 406,900 in 2014. The metropolitan area had a population of 660,000 in 2000.\nBern is also the capital of the canton of Bern, the second-most populous of Switzerland's cantons. In 1983, the historic old town (in German: Altstadt) in the centre of Bern became a UNESCO World Heritage Site. It is surrounded by the Aare, a major river of the Swiss Plateau.\nAlthough fortified settlements were established since antiquity, the medieval city proper was founded by the Zähringer ruling family, probably in 1191 by Berthold V, Duke of Zähringen. Bern was made a free imperial city in 1218 and, in 1353, it joined the Swiss Confederacy, becoming one of its eight early cantons. Since then, Bern became a large city-state and a prominent actor of Swiss history by pursuing a policy of sovereign territorial expansion. Since the 15th century, the city was progressively rebuilt and acquired its current characteristics. Bern was made the federal city in 1848. From about 5,000 inhabitants in the 15th century, the city passed the 100,000 mark in the 1920s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 232
+    },
+    "banned_terms": [
+      {
+        "term": "bern",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1690,
+    "attempt": 1676,
+    "place_id": "gn-299817",
+    "input": {
+      "place": {
+        "place_id": "gn-299817",
+        "name": "Tarsus",
+        "country": "Türkiye",
+        "subdivision": "Mersin",
+        "lat": 36.91766,
+        "lon": 34.89277
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarsus, Mersin",
+          "url": "https://en.wikipedia.org/wiki/Tarsus,_Mersin",
+          "text": "Tarsus (; Hittite: 𒋫𒅈𒊭 Tārša; Greek: Ταρσός Tarsós; Armenian: Տարսոն Tarson; Arabic: طَرسُوس Ṭarsūs) is a municipality and district of Mersin Province, Turkey. Its area is 2,029 km2, and its population is 350,732 (2022). It is a historic city, 20 km (12 miles) inland from the Mediterranean Sea. It is part of the Adana-Mersin metropolitan area, the fourth-largest metropolitan area in Turkey. Tarsus forms an administrative district in the eastern part of Mersin Province and lies at the heart of the Çukurova region.\nWith a history going back over 6,000 years, Tarsus has long been an important stop for traders and a focal point of many civilisations. During the Roman Empire, it was the capital of the province of Cilicia. It was the scene of the first meeting between Mark Antony and Cleopatra, and the birthplace of Paul the Apostle.\nTarsus was served by Adana Şakirpaşa Airport, replaced in August 2024 by Çukurova International Airport; and is connected by Turkish State Railways to both Adana and Mersin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "tarsus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1691,
+    "attempt": 1677,
+    "place_id": "gn-3451329",
+    "input": {
+      "place": {
+        "place_id": "gn-3451329",
+        "name": "Ribeirão Pires",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.71056,
+        "lon": -46.41333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ribeirão Pires",
+          "url": "https://en.wikipedia.org/wiki/Ribeirão_Pires",
+          "text": "Ribeirão Pires (Pires Stream) is a city in the Metropolitan Region of the city of São Paulo, in the state of São Paulo, Brazil. It is part of the \"ABC Region” of Greater São Paulo. The population is 115,559 (2022 Census) in an area of 99.1 km2. The elevation is 763 m.\nIts neighboring cities are Ferraz de Vasconcelos to the north, Suzano to the northeast and east, Rio Grande da Serra to the southeast and south, Santo André southwest, and Mauá northwest. The city is served by trains from Line 10 of CPTM. It became its own municipality in 1953, following its emancipation from Santo André."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "ribeirao pires",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ribeirao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pires",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1692,
+    "attempt": 1678,
+    "place_id": "gn-3462315",
+    "input": {
+      "place": {
+        "place_id": "gn-3462315",
+        "name": "Governador Valadares",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -18.85111,
+        "lon": -41.94944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Governador Valadares, Minas Gerais",
+          "url": "https://en.wikipedia.org/wiki/Governador_Valadares,_Minas_Gerais",
+          "text": "Governador Valadares is a Brazilian municipality in the countryside of Minas Gerais. In 2025, its population was 266,561 inhabitants, thus being the ninth most populated city in the state. It is an economical axis of the middle valley of the Doce River (Rio Doce, lit. \"Sweet River\"), having a significant influence on the east and northeast portion of Minas Gerais and local authorities of the state of Espírito Santo. Governador Valadares sits on the bank of the Doce River (Rio Doce), 324 km from Belo Horizonte, the state's capital. Governador Valadares has an area of about 2 342 km2, of which only 58 km2 is urban area.\nThe discovery of the city started at the beginning of the 16th century, that explored the Doce River searching for precious metals. The settlement began between the 18th and 19th centuries, constructing barracks destined to keep an eye at the Amerindians, who used to attack the settlers and merchants. With the construction of the EFVM (Vitória-Minas Railway), in 1907, the settlements were consolidated. The growth of the population and commercial development was improved due to the location of the city, that was near to coffee farms and wood extraction fields. The municipality was emancipated from Peçanha in the 1930s.\nAfter the 1940s, the extraction of precious metals brought a notable population growth, along with livestock and commerce. However, with the decline of natural resources, the money could only be earned through the investment of immigrants, who would later go to other countries. Commerce is the most important source of income in the city, along with agribusiness and regional manufactured products."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 267
+    },
+    "banned_terms": [
+      {
+        "term": "governador valadares",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "governador",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valadares",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1693,
+    "attempt": 1679,
+    "place_id": "gn-3665900",
+    "input": {
+      "place": {
+        "place_id": "gn-3665900",
+        "name": "Villavicencio",
+        "country": "Colombia",
+        "subdivision": "Meta Department",
+        "lat": 4.13238,
+        "lon": -73.62564
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villavicencio",
+          "url": "https://en.wikipedia.org/wiki/Villavicencio",
+          "text": "Villavicencio (Latin American Spanish pronunciation: [biʝaβiˈsensjo]) is a city and municipality in Colombia. The capital of Meta Department, it was founded on April 6, 1840. The municipality had a population of 531,275 in 2018. The city is located at 4°08'N, 73°40'W, 75 km (about 45 mi) southeast of the Colombian capital city of Bogotá (DC) by the Guatiquía River. It is the most important commercial center in the Llanos Orientales (eastern plains) of Colombia.\nVillavicencio has a hot and very wet climate, with average daily temperatures ranging from 21 to 30 °C (70 to 86 °F) and an annual rainfall of around 4,500 millimetres or 180 inches. It is affectionately called \"Villavo la bella\". Villavicencio lies on the great Colombian-Venezuelan plain called the Llanos, situated to the east of the Andes mountains. Villavicencio is also called \"La Puerta al Llano\", or \"The Gateway to the Plains\", due to its location on the historical path from the Colombian interior to the vast savannas that lie between the Andes range and the Amazon rainforest.\nVillavicencio's proximity to huge mountains and great plains make the city an example of Colombia's geodiversity. Because it is located in the foothills of the Andes, the morning and evening breezes cool the city, which is very hot for most of the day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "villavicencio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1694,
+    "attempt": 1680,
+    "place_id": "gn-3838233",
+    "input": {
+      "place": {
+        "place_id": "gn-3838233",
+        "name": "Salta",
+        "country": "Argentina",
+        "subdivision": "Salta",
+        "lat": -24.80645,
+        "lon": -65.41999
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salta",
+          "url": "https://en.wikipedia.org/wiki/Salta",
+          "text": "Salta (Spanish: [ˈsalta]) is the capital and largest city in the Argentine province of the same name. With a population of 627,704 according to the 2022 census, it is also the 7th most-populous city in Argentina. The city serves as the cultural and economic center of the Valle de Lerma Metropolitan Area (Spanish: Área Metropolitana del Valle de Lerma, AMVL), which is home to over 50.9% of the population of Salta Province and also includes the municipalities of La Caldera, Vaqueros, Campo Quijano, Rosario de Lerma, Cerrillos, La Merced and San Lorenzo. Salta is the seat of the Capital Department, the most populous department in the province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "salta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

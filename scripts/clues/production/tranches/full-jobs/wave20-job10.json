@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 4011,
+    "attempt": 3981,
+    "place_id": "gn-2404433",
+    "input": {
+      "place": {
+        "place_id": "gn-2404433",
+        "name": "Port Loko",
+        "country": "Sierra Leone",
+        "subdivision": "North West",
+        "lat": 8.76609,
+        "lon": -12.78696
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Loko",
+          "url": "https://en.wikipedia.org/wiki/Port_Loko",
+          "text": "Port Loko is the capital of Port Loko District and since 2017 the North West Province of Sierra Leone. The city had a population of 21,961 in the 2004 census and current estimate of 44,900. Port Loko lies approximately 57 km (35 mi) north-east of Freetown. The area in and around Port Loko is a major bauxite mining and trade centre. The town lies on the main highway linking Freetown to Guinea's capital Conakry. It also lies on the over-land highway between Freetown and its major airport, Lungi International Airport, although most travellers complete this journey via the much shorter ferry or helicopter transit.\nThe population of Port Loko is diverse, though the \nTemne is the largest ethnic group. Although the Temne language is spoken alongside, the Krio language of the Sierra Leone Creole people is by far the most widely spoken in the town.\nPort Loko is home to the Port Loko Teacher's College, one of the oldest and best known colleges in Sierra Leone. Port Loko has its own local radio station called Radio Bankasoka.\nPort Loko has its own professional football club named the Bai Bureh Warriors of Port Loko, which is one of the oldest and most famous football clubs in Sierra Leone. The club currently plays in the Sierra Leone National First Division, the second highest football league in Sierra Leone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 226
+    },
+    "banned_terms": [
+      {
+        "term": "port loko",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "loko",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4012,
+    "attempt": 3982,
+    "place_id": "gn-2507877",
+    "input": {
+      "place": {
+        "place_id": "gn-2507877",
+        "name": "Aïn Touta",
+        "country": "Algeria",
+        "subdivision": "Batna",
+        "lat": 35.37675,
+        "lon": 5.90001
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aïn Touta",
+          "url": "https://en.wikipedia.org/wiki/Aïn_Touta",
+          "text": "Aïn Touta is a town in eastern Algeria. It is located 35 km southwest of Batna and 82 km north of Biskra. It has an area of about five square kilometers (2 square miles).\nAïn Touta is one of the interesting cities in Algeria because of its strategic location; it passes upon the national road number 3 making this city more active than other cities.\nThere are four lycées, seven middle schools, a hospital, a car market, a multi-sports hall, two stadiums, and more base structures. There exists also a train gare which is considered the biggest gare during the colonial period - France.\nConcerning population, the throne of Ouled Sidi Yahia occupies the first place not only in this city but also in Batna the capital, and Tazoult - Lambèse."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "ain touta",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ain",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "touta",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4013,
+    "attempt": 3983,
+    "place_id": "gn-2526452",
+    "input": {
+      "place": {
+        "place_id": "gn-2526452",
+        "name": "Zagora",
+        "country": "Morocco",
+        "subdivision": "Drâa-Tafilalet",
+        "lat": 30.33241,
+        "lon": -5.8384
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zagora, Morocco",
+          "url": "https://en.wikipedia.org/wiki/Zagora,_Morocco",
+          "text": "Zagora (Arabic: زاكورة, Standard Moroccan Tamazight: ⵜⴰⵣⴰⴳⵓⵔⵜ) is a city located in the Draa River valley, it is the capital of Zagora Province, Drâa-Tafilalet region, Morocco.\nOn the base of the Zagora Mountain the remains of an Almoravid fortress can still be seen. The exact location of the former Almoravid mosque is still a matter of dispute. Each year the moussem (festival) of the Sufi saint Moulay Abdelkader Jilali is celebrated at Zagora.\nLanguages spoken in the city include Moroccan Arabic, Tachelhit and Tamazight.\nA sign at the town border states \"Tombouctou 52 days\", the supposed time it takes to get to Timbuktu, Mali on foot or camel. The original sign has been replaced by a mural painting."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "zagora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4014,
+    "attempt": 3984,
+    "place_id": "gn-2614030",
+    "input": {
+      "place": {
+        "place_id": "gn-2614030",
+        "name": "Silkeborg",
+        "country": "Denmark",
+        "subdivision": "Central Jutland",
+        "lat": 56.1697,
+        "lon": 9.54508
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silkeborg",
+          "url": "https://en.wikipedia.org/wiki/Silkeborg",
+          "text": "Silkeborg (Danish: [ˈse̝lkəˌpɒˀ]) is a Danish town with a population of 53,058 (1 January 2026). Silkeborg is the seat of Silkeborg Municipality, with a population of 102,753 as of 2026. \nSilkeborg is located in the middle of the Jutlandic peninsula, slightly west of the geographical centre of Denmark. The city is situated on the Gudenå River in the hilly and lush landscape of Søhøjlandet, surrounded by Denmark's largest forest district and a great number of lakes. Silkeborg is also known as Denmark's outdoor capital. The lakes between Silkeborg and Ry that are linked by the Gudenå, are known collectively as Silkeborgsøerne (the Silkeborg lakes).\nThe city is divided along an east–west axis by the lake of Silkeborg Langsø, which at the eastern side of the city, flows into the Gudenå River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "silkeborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4015,
+    "attempt": 3985,
+    "place_id": "gn-2639563",
+    "input": {
+      "place": {
+        "place_id": "gn-2639563",
+        "name": "Redcar",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.61657,
+        "lon": -1.05999
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Redcar",
+          "url": "https://en.wikipedia.org/wiki/Redcar",
+          "text": "Redcar   is a seaside town on the Yorkshire Coast in the Redcar and Cleveland district. It is in the ceremonial county of North Yorkshire, England, and is located 7 miles (11 km) east of Middlesbrough.\nThe Teesside built-up area's Redcar subdivision had a population of 37,073 at the 2011 census. The town is made up of Coatham, Dormanstown, Kirkleatham, Newcomen, West Dyke, Wheatlands and Zetland.\nIt gained a town charter in 1922, from then until 1968 it was governed by the municipal borough of Redcar. Since the abolition of County Borough of Teesside, which existed from 1968 until 1974, the town has been unparished."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "redcar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4016,
+    "attempt": 3986,
+    "place_id": "gn-2643736",
+    "input": {
+      "place": {
+        "place_id": "gn-2643736",
+        "name": "Derry",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.9981,
+        "lon": -7.30934
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Derry",
+          "url": "https://en.wikipedia.org/wiki/Derry",
+          "text": "Derry, officially Londonderry, is a cathedral city in Northern Ireland. Located in County Londonderry, the city now covers both banks of the River Foyle. Cityside and the old walled city are on the west bank and Waterside is on the east, with two road bridges and one footbridge crossing the river in between.\nThe population of the city was 85,279 in the 2021 census, making it the second-largest city in Northern Ireland after Belfast. The Derry Urban Area had a population of 105,066 in 2011. The district administered by Derry City and Strabane District Council contains both Londonderry Port and City of Derry Airport. Derry is close to the border with County Donegal, with which it has had a close link for many centuries. The person traditionally seen as the founder of the original Derry is Saint Colmcille, a holy man from Tír Chonaill, the old name for almost all of modern County Donegal, of which the west bank of the Foyle was part before 1610.\nIn 2013, Derry was the inaugural UK City of Culture, having been awarded the title in 2010."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "derry",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4017,
+    "attempt": 3987,
+    "place_id": "gn-2647349",
+    "input": {
+      "place": {
+        "place_id": "gn-2647349",
+        "name": "Hatfield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.76338,
+        "lon": -0.22419
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hatfield, Hertfordshire",
+          "url": "https://en.wikipedia.org/wiki/Hatfield,_Hertfordshire",
+          "text": "Hatfield is a town and civil parish in Hertfordshire, England, in the borough of Welwyn Hatfield. It had a population of 29,616 in 2001, 39,201 at the 2011 census, and 41,265 at the 2021 census. The settlement is of Saxon origin. Hatfield House, home of the Marquess of Salisbury, forms the nucleus of the old town. From the 1930s when de Havilland opened a factory, until the 1990s when British Aerospace closed it, aircraft design and manufacture employed more people there than any other industry. Hatfield was one of the post-war New Towns built around London and has much modernist architecture from the period. The University of Hertfordshire is based there.\nHatfield lies 20 miles (30 kilometres) north of London beside the A1(M) motorway and has direct trains to London King's Cross railway station, London St Pancras railway station, Finsbury Park and Moorgate. There has been a strong increase in commuters who work in London moving into the area.\nIn 2022, TV property expert Phil Spencer named Hatfield as the second best place to live for regular commuters to London, based on train times, house prices and the attractions the town has. In 2024, World Bucket List named Hatfield as the fifth most boring place in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "hatfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4018,
+    "attempt": 3988,
+    "place_id": "gn-2647972",
+    "input": {
+      "place": {
+        "place_id": "gn-2647972",
+        "name": "Greenford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.52866,
+        "lon": -0.35508
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greenford",
+          "url": "https://en.wikipedia.org/wiki/Greenford",
+          "text": "Greenford () is a large town in the London Borough of Ealing in West London, London, England, lying 11 miles (18 km) west from Charing Cross.  It has a population of 46,787 inhabitants.\nGreenford is served by Greenford Station (London Underground Central Line and Greenford branch of the Great Western Railway mainline service). South Greenford mainline station (on the A40 Western Avenue, also on the Greenford branch of the GWR) is actually in Perivale. Neither station is in Greenford Town Centre (Greenford Broadway), which instead is served by many local buses.\nNearby places include Yeading, Hanwell, Perivale, Southall, Northolt, Ealing, Sudbury and Sudbury Hill. The most prominent landmark in the suburb is Horsenden Hill, 279 feet (85 m) above sea level.\nGreenford covers a large area, including the two miles of Greenford Road, giving it three  localities: North Greenford, Greenford Green, and Greenford Broadway – this is also reflected in the names of the electoral wards. Though a separate \"town\" within the borough of Ealing, the Royal Mail includes Perivale within the Greenford post area and as such the two share the UB6 postcode."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "greenford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4019,
+    "attempt": 3989,
+    "place_id": "gn-2648208",
+    "input": {
+      "place": {
+        "place_id": "gn-2648208",
+        "name": "Grantham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.91149,
+        "lon": -0.64184
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grantham",
+          "url": "https://en.wikipedia.org/wiki/Grantham",
+          "text": "Grantham ( ) is a market town and civil parish in the South Kesteven district of Lincolnshire, England. It is situated on the banks of the River Witham and bounded to the west by the A1 road; it lies 23 miles (37 km) south of Lincoln and 22 miles (35 km) east of Nottingham. The population in 2016 was 44,580. The town is the largest settlement and the administrative centre of the South Kesteven District. The villages of Manthorpe, Great Gonerby, Barrowby, Londonthorpe and Harlaxton form outlying suburbs of the town.\nThe UK's former prime minister Margaret Thatcher was born and raised in Grantham. The mathematician and scientist Isaac Newton was educated at the King's School. The town was the workplace of the UK's first warranted female police officer, Edith Smith, in 1914. The UK's first running diesel engine was made there in 1892 and the first tractor in 1896. Thomas Paine worked there as an excise officer in the 1760s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "grantham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4020,
+    "attempt": 3990,
+    "place_id": "gn-2651286",
+    "input": {
+      "place": {
+        "place_id": "gn-2651286",
+        "name": "Dewsbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.69076,
+        "lon": -1.62907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dewsbury",
+          "url": "https://en.wikipedia.org/wiki/Dewsbury",
+          "text": "Dewsbury is a market town in the Metropolitan Borough of Kirklees, West Yorkshire, England. It is sited on the River Calder and on an arm of the Calder and Hebble Navigation waterway. It lies to the west of Wakefield, east of Huddersfield and south of Leeds. Historically a part of the West Riding of Yorkshire, after undergoing a period of major growth in the 19th century as a mill town, Dewsbury went through a period of decline. It forms part of the Heavy Woollen District, of which it is the largest town. The population of the built-up area was 63,722 at the 2021 Census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "dewsbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4021,
+    "attempt": 3991,
+    "place_id": "gn-2656235",
+    "input": {
+      "place": {
+        "place_id": "gn-2656235",
+        "name": "Barry",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.39979,
+        "lon": -3.2838
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barry, Vale of Glamorgan",
+          "url": "https://en.wikipedia.org/wiki/Barry,_Vale_of_Glamorgan",
+          "text": "Barry (; Welsh: Y Barri; pronounced [ə ˈbari]) is a coastal town and community in the Vale of Glamorgan, Wales. It is on the north coast of the Bristol Channel approximately 9 miles (14 km) south-southwest of Cardiff. Barry is a seaside resort, with attractions including several beaches and the resurrected Barry Island Pleasure Park. According to the 2021 census, the population of Barry was 56,605.\nThe town of Barry has absorbed its larger neighbouring villages of Cadoxton and Barry Island. It grew significantly from the 1880s with the development of Barry Docks, which, in 1913, was the largest coal port in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "barry",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4022,
+    "attempt": 3992,
+    "place_id": "gn-2687700",
+    "input": {
+      "place": {
+        "place_id": "gn-2687700",
+        "name": "Nyköping",
+        "country": "Sweden",
+        "subdivision": "Södermanland",
+        "lat": 58.753,
+        "lon": 17.00788
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nyköping",
+          "url": "https://en.wikipedia.org/wiki/Nyköping",
+          "text": "Nyköping (Swedish pronunciation: [ˈnŷːˌɕøːpɪŋ]) is a locality and the seat of Nyköping Municipality, Södermanland County, Sweden, with 32,759 inhabitants as of 2017. The city is also the capital of Södermanland County.\nIncluding Arnö, the locality on the southern shore of the bay just a couple of kilometres from the city centre, Nyköping would have above 36,000 inhabitants. Commonly, Arnö is referred to as a part of the city proper. It forms a wider conurbation with the neighbouring minor municipality and town of Oxelösund 10 kilometres (6.2 mi) south of its outskirts. The municipality is much larger, although sparsely populated outside of the urban area.\nNyköping directly translates to \"New Chipping\" in English. The prefix ny is translated as \"new\" and köping is an archaic Swedish word and cognate to the English chipping, commonly used as a suffix for cities in the south central region of the country. Nyköping is the name that appears on coins in 1230 and in historical records from the 13th century. Aros is the name of the town found in the archaeological records from before 1230, indicating a new era and a new name sometime around 1230. The city is located near the open Baltic Sea on the Stadsfjärden inlet, and is regarded as a coastal location. Rivers Nyköpingsån and Kilaån reach the Baltic Sea through the southern end of downtown. The former river splits the town down the middle into an eastern and western part. The river Svärtaån empties into the sea by the locality Sjösa, east of the town. There are multiple other inlets in the municipality, which has an extensive shoreline.\nTypical of the region, the landscape is influenced by post-glacial rebound after the latest ice age. For thousands of years, the land of downtown Nyköping was an archipelago where the hills in town today formed many islands, while the flatter parts of the town were the seafloor. With four peaks above 50 metres (160 ft), the highest point within town limits is 59 metres (194 ft) at Ekensberg in the northeastern fringes.\nNyköping is also the home of Stockholm Skavsta Airport, which is located less than 10 kilometres (6.2 mi) from the city centre. Nyköping is part of the wider area of the Mälaren Valley, located around 100 kilometres (62 mi) south of inner Stockholm and 60 kilometres (37 mi) east of Norrköping, the nearest larger city. The municipal border between Nyköping and Norrköping marks the point where the historical lands Götaland and Svealand converge on the east coast.\nIt retains an oceanic/continental climate hybrid, causing warm summers and winters around the freezing point with variable snow cover."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 436
+    },
+    "banned_terms": [
+      {
+        "term": "nykoping",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4023,
+    "attempt": 3993,
+    "place_id": "gn-2797779",
+    "input": {
+      "place": {
+        "place_id": "gn-2797779",
+        "name": "Geel",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.16557,
+        "lon": 4.98917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Geel",
+          "url": "https://en.wikipedia.org/wiki/Geel",
+          "text": "Geel (Dutch pronunciation: [ɣeːl] ) is a municipality and city located in the Belgian province of Antwerp, which acquired city status in the 1980s. It comprises Central-Geel which is composed of four old parishes or towns: Sint-Amand, Sint-Dimpna, Holven and Elsum. Further on around the center are the parish-towns of Ten Aard (N), Bel (E), Winkelomheide (SE), Stelen, Oosterlo and Zammel (S), Punt (SW) and Larum (W). In 2021, Geel had a total population of 40,781. The total area is 109.85 km2 (42 sq mi). Geel's patron saint, the Irish Saint Dymphna, inspired the town's pioneering de-institutionalized method of care for the mentally ill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "geel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4024,
+    "attempt": 3994,
+    "place_id": "gn-2799645",
+    "input": {
+      "place": {
+        "place_id": "gn-2799645",
+        "name": "Dendermonde",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.02869,
+        "lon": 4.10106
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dendermonde",
+          "url": "https://en.wikipedia.org/wiki/Dendermonde",
+          "text": "Dendermonde (Dutch pronunciation: [ˌdɛndərˈmɔndə] ; French: Termonde, French pronunciation: [tɛʁmɔ̃d]) is a city in the Flemish province of East Flanders in Belgium. The municipality comprises the city of Dendermonde and the towns of Appels, Baasrode, Grembergen, Mespelare, Oudegem, Schoonaarde, and Sint-Gillis-bij-Dendermonde. Dendermonde is located at the mouth of the river Dender, where it flows into the Scheldt. The town has a long-standing folkloric feud with Aalst, south along the same river, which dates back to the Middle Ages.\nThe city is an administrative, commercial, educational, and medical centre for the surrounding region. The current mayor of Dendermonde is Leen Dierick (Christian Democratic and Flemish)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "dendermonde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4025,
+    "attempt": 3995,
+    "place_id": "gn-2803429",
+    "input": {
+      "place": {
+        "place_id": "gn-2803429",
+        "name": "Aarschot",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.98715,
+        "lon": 4.83695
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aarschot",
+          "url": "https://en.wikipedia.org/wiki/Aarschot",
+          "text": "Aarschot (Dutch pronunciation: [ˈaːrsxɔt] ) is a city and municipality in the province of Flemish Brabant, in Flanders, Belgium. The municipality comprises the city of Aarschot proper and the towns of Gelrode, Langdorp and Rillaar. On 1 January 2019, Aarschot had a total population of 30,106. The total area is 62.52 km2 (24.14 sq mi) which gives a population density of 446 inhabitants per km2.\nIt is located in the part of Flemish Brabant called Hageland, located to the east of Leuven. Aarschot is a very typical town with a long history, dating back to the era of the Roman emperors, according to myths.  The church, which dominates the look of the city, is built with the typical brown stone quarried from the hills in the surrounding areas.  These same hills were in the Middle Ages home to some of the most well-regarded vineyards of Europe. Today the chain hills, which originate in Bolderberg, Heusden-Zolder, and continue as far as Calais in France, are mainly covered with woods and fruit yards.\nThe title of Duke of Aarschot, created in 1533, is the oldest (not-Sovereign) Ducal title in Belgium (title created for the House of Croÿ, later inherited by the House of Arenberg that still holds it).\nWhile the Church of Our Lady (Onze-Lieve-Vrouwekerk) definitely leaves its mark on the appearance of the city, nothing defines Aarschot better than the river that passes through it: the Demer. Aarschot is situated in the valley of this brown-colored river.\nAarschot was hit very hard in World War I. When German troops occupied the city on 19 August 1914, Colonel Stenger, commander of the 8th German Infantry Brigade, was shot dead on the balcony of the house of Mayor Tielemans, in which he was quartered. Later on it was established that the deadly shots were fired by one of his own German soldiers. The German reprisal was extremely harsh.\nMany houses were set alight and 156 people were executed, including Mayor Tielemans and his 15-year-old son. The next day, the entire population was ordered to evacuate the city. Aarschot is known as one of the seven Martyr cities of Belgium because of this event."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 360
+    },
+    "banned_terms": [
+      {
+        "term": "aarschot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4026,
+    "attempt": 3996,
+    "place_id": "gn-3032833",
+    "input": {
+      "place": {
+        "place_id": "gn-3032833",
+        "name": "Béziers",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.34122,
+        "lon": 3.21402
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Béziers",
+          "url": "https://en.wikipedia.org/wiki/Béziers",
+          "text": "Béziers (French: [bezje] ; Occitan: Besièrs) is a city in southern France. It is a subprefecture of the Hérault department in the Occitanie region. Every August Béziers hosts the famous Feria de Béziers, which is centred on bullfighting. A million visitors are attracted to the five-day event.\nThe town is located on a small bluff above the river Orb, about ten kilometres (six miles) from the Mediterranean coast and 75 kilometres (47 miles) southwest of Montpellier. At Béziers, the Canal du Midi passes over the river Orb by means of the Pont-canal de l'Orb, an aqueduct claimed to be the first of its kind."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "beziers",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4027,
+    "attempt": 3997,
+    "place_id": "gn-3058986",
+    "input": {
+      "place": {
+        "place_id": "gn-3058986",
+        "name": "Lučenec",
+        "country": "Slovakia",
+        "subdivision": "Banská Bystrica Region",
+        "lat": 48.33249,
+        "lon": 19.66708
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lučenec",
+          "url": "https://en.wikipedia.org/wiki/Lučenec",
+          "text": "Lučenec (Slovak pronunciation: [ˈlutʂeɲets] ; German: Lizenz; Hungarian: Losonc; Yiddish: לאשאנץ, romanized: Lashantz; Latin: Lutetia Hungarorum) is a town in the Banská Bystrica Region of south-central Slovakia. Historically, it was part, and in the 18th century the capital, of Nógrád County of the Kingdom of Hungary. In 1920, as a result of the Treaty of Trianon, it became a part of Czechoslovakia. The town has a large synagogue, built in 1924, which served a large Jewish population before World War II. The synagogue underwent renovations in 2016.\nLučenec is the economic centre of the whole Novohrad region, which includes districts Poltár and Veľký Krtíš."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "lucenec",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4028,
+    "attempt": 3998,
+    "place_id": "gn-3124132",
+    "input": {
+      "place": {
+        "place_id": "gn-3124132",
+        "name": "Cuenca",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 40.06667,
+        "lon": -2.13333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuenca, Spain",
+          "url": "https://en.wikipedia.org/wiki/Cuenca,_Spain",
+          "text": "Cuenca (Spanish: [ˈkweŋka] ) is a city and municipality of Spain located in the autonomous community of Castilla–La Mancha and the capital of the province of Cuenca.\nThe primitive urban core developed on a narrow escarpment caged between the Júcar and the Huécar rivers, on the western fringes of the Iberian System mountains. It was probably founded towards the 10th century CE, becoming a stronghold of the Arabised Berber lineage of the Banū Zennum, featuring a fortress, Qal'at Kūnka, which was conquered for the Kingdom of Castile in 1177. In the early modern period, the city boasted of a thriving textile and tapestry industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "cuenca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4029,
+    "attempt": 3999,
+    "place_id": "gn-3133895",
+    "input": {
+      "place": {
+        "place_id": "gn-3133895",
+        "name": "Tromsø",
+        "country": "Norway",
+        "subdivision": "Troms",
+        "lat": 69.6489,
+        "lon": 18.95508
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tromsø",
+          "url": "https://en.wikipedia.org/wiki/Tromsø",
+          "text": "Tromsø is a city in Tromsø Municipality in Troms county, Norway. The city is the administrative centre of the municipality and the county. The city is located on the island of Tromsøya which sits in the Tromsøysundet strait, just off the mainland of Northern Norway. The mainland suburb of Tromsdalen is connected to the city centre on Tromsøya by the Tromsø Bridge and the Tromsøysund Tunnel. The suburb of Kvaløysletta on the island of Kvaløya is connected to the city centre by the Sandnessund Bridge.\nThe city centre contains the highest number of old wooden houses in Northern Norway, the oldest dating from 1789. Tromsø is a cultural hub for the region, with several festivals taking place in the summer.\nThe 13.8-square-kilometre (3,400-acre) town has a population (2024) of 42,782 and a population density of 3,100 inhabitants per square kilometre (8,000/sq mi).\nIn 2026, Tromsø holds the title of European Youth Capital, becoming the northernmost city to ever receive this designation. The year-long programme focuses on empowering young people in the Arctic region and fostering youth participation in local governance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "troms",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4030,
+    "attempt": 4000,
+    "place_id": "gn-3173180",
+    "input": {
+      "place": {
+        "place_id": "gn-3173180",
+        "name": "Moncalieri",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 44.9994,
+        "lon": 7.68236
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moncalieri",
+          "url": "https://en.wikipedia.org/wiki/Moncalieri",
+          "text": "Moncalieri (Italian: [moŋkaˈljɛːri]; Piedmontese: Moncalé [mʊŋkaˈle] ) is a comune (municipality) about 8 kilometres (5 mi) directly south of the center of Turin (to whose Metropolitan City it belongs), in the region of Piedmont in northern Italy. With a population of 55,442, it is the most populous suburb of Turin.\nIt is notable for its castle, built in the 12th century and enlarged in the 15th century, which later became the favorite residence of King Victor Emmanuel II of Italy and of his daughter Princess Maria Clotilde of Savoy. It is part of the World Heritage Site Residences of the Royal House of Savoy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "moncalieri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

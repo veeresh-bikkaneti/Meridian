@@ -1,0 +1,882 @@
+[
+  {
+    "rank": 218,
+    "place_id": "gn-1845457",
+    "input": {
+      "place": {
+        "place_id": "gn-1845457",
+        "name": "Jeonju",
+        "country": "South Korea",
+        "subdivision": "Jeollabuk-do",
+        "lat": 35.82194,
+        "lon": 127.14889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jeonju",
+          "url": "https://en.wikipedia.org/wiki/Jeonju",
+          "text": "Jeonju (Korean: 전주; Korean pronunciation: [t͡ɕʌɲ.d͡ʑu], lit. 'Perfect region') is the capital and largest city of the state of Jeonbuk, South Korea. It is both urban and rural due to the closeness of Wanju County which almost entirely surrounds Jeonju (Wanju County has many residents who work in Jeonju). It is an important tourist center famous for South Korean cuisine, historic buildings, sports activities, and innovative festivals.\nIn May 2012, Jeonju was chosen as a Creative City for Gastronomy as part of UNESCO's Creative Cities Network. This honor recognizes the city's traditional home cooking handed down over thousands of years, its active public and private food research, a system of nurturing talented chefs, and its hosting of distinctive food festivals.\nJeonju is a city with over 1,300 years of history and culture. The city has produced many scholars and has a developed publishing industry."
+        },
+        {
+          "article": "Jeonju (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Jeonju#Climate",
+          "text": "Jeonju has a cooler version of a humid subtropical climate (Köppen climate classification Cwa), with winter being warm enough to avoid being classified as an humid continental (Dwa) if the 0 °C isotherm is used.\nJeonju, like all of Korea, has four distinct seasons (spring, summer, fall, and winter). The winters can have a mix of days that are cool to days that are quite cold. The colder days are often influenced by a high pressure front that brings cold air from Siberia.\nIn the summer, the humidity of Southeast Asia comes over the Korean peninsula from June through September. Temperatures in spring (late April and through May) and fall (after September 25 and through October) are often in the mid-20s°C and with low humidity."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 125,
+      "leadWords": 144,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a gastronomy honour, food research and publishing history, but no climate mechanism, extreme, or paradox; no weather or climate fact is stated at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "jeonju",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 219,
+    "place_id": "gn-1886760",
+    "input": {
+      "place": {
+        "place_id": "gn-1886760",
+        "name": "Suzhou",
+        "country": "China",
+        "subdivision": "Jiangsu",
+        "lat": 31.30408,
+        "lon": 120.59538
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suzhou",
+          "url": "https://en.wikipedia.org/wiki/Suzhou",
+          "text": "Suzhou is a prefecture-level city in Jiangsu province, Eastern China. Suzhou is a major tourist destination and industrial hub of Eastern China, specializing in high-end manufacturing. Renowned as the cradle of Wu culture, Suzhou flourished as a hub of trade, arts, and intellectual life along the Grand Canal, helping shape China's economic and cultural development for centuries. The city is internationally famous for its classical gardens, which harmonize architecture, water, rocks, and plants into poetic expressions of nature. Long admired for its silk production, refined cuisine, and lyrical Kunqu opera, Suzhou has been praised in Chinese poetry, along with Hangzhou, as \"paradise on earth,\" a reputation that endures today as the city blends its timeless canals, whitewashed lanes, and scholarly heritage with modern industries. Suzhou is part of the Yangtze Delta megalopolis.\nFounded in 514 BC, Suzhou rapidly grew in size by the Eastern Han dynasty, mostly due to emigration from northern China. From the 10th century onwards, it has been an important economic, cultural, and commercial center, as well as the largest non-capital city in the world, until it was overtaken by Shanghai in approximately 1850. Since the reform and opening up began in 1978, Suzhou attained GDP growth rates of about 14% in 35 years. In 2023, Suzhou had 5 million registered residents. Suzhou is the 33rd global city by scientific output according to Nature Index 2025. The city is home to universities, including Soochow University, Suzhou University of Science and Technology, Xi'an Jiaotong–Liverpool University, and Changshu Institute of Technology.\nThe city's tourist attractions include canals, stone bridges, pagodas, and gardens. Along with Hangzhou, it is sometimes described as heaven on earth. The Classical Gardens of Suzhou were added to the list of the UNESCO World Heritage Sites in 1997 and 2000."
+        },
+        {
+          "article": "Suzhou (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Suzhou#Climate",
+          "text": "Suzhou has a four-season humid subtropical climate with hot, humid summers and cool, cloudy, damp winters with occasional snowfall (Köppen climate classification Cfa). Northwesterly winds blowing from Siberia during winter can cause temperatures to fall below freezing at night, while southerly or southwesterly winds during the summer can push temperatures above . The average annual temperature is . The hottest temperature recorded since 1951 at Wuzhong District was at on 7 August 2013, and the lowest at on 16 January 1958."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 81,
+      "leadWords": 294,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives canals, gardens, silk, opera and founding in 514 BC, but no climate mechanism, extreme, or paradox; no weather or climate fact is stated at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "suzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 220,
+    "place_id": "gn-2498611",
+    "input": {
+      "place": {
+        "place_id": "gn-2498611",
+        "name": "Chlef",
+        "country": "Algeria",
+        "subdivision": "Chlef",
+        "lat": 36.16525,
+        "lon": 1.33452
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chlef",
+          "url": "https://en.wikipedia.org/wiki/Chlef",
+          "text": "Chlef (Arabic: الشلف, romanized: aš-Šalif) is the capital of Chlef Province, Algeria. Located in the north of Algeria, 200 kilometres (120 mi) west of the capital, Algiers, it was founded in 1843, as Orléansville, on the ruins of Roman Castellum Tingitanum. In 1962, it was renamed al-Asnam, but after the devastating earthquake on October 10, 1980, it has borne its present name, Chlef, which is derived from the name of the Chelif River, the longest river in Algeria.\nIt is home to the soccer club ASO Chlef, the Hassiba Ben Bouali university, and the ruins of the basilica of Reparatus, who was bishop of Castellum Tingitanum from 465 to 475. A corner of the flooring of the basilica contained a mosaic labyrinth, the oldest known example of Christian use of this motif."
+        },
+        {
+          "article": "Chlef (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Chlef#Climate",
+          "text": "Chlef has a hot semi-arid climate (Köppen climate classification BSh) bordering a Mediterranean climate (Csa), with very hot, dry summers and mild, moist winters."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 24,
+      "leadWords": 132,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives founding in 1843, an earlier Roman site and a devastating 1980 earthquake, which is a one-off geologic event, not climate; no climate mechanism, extreme, or paradox is stated",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract, not a single earthquake"
+    },
+    "banned_terms": [
+      {
+        "term": "chlef",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 221,
+    "place_id": "gn-3170647",
+    "input": {
+      "place": {
+        "place_id": "gn-3170647",
+        "name": "Pisa",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.70853,
+        "lon": 10.4036
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pisa",
+          "url": "https://en.wikipedia.org/wiki/Pisa",
+          "text": "Pisa ( PEE-zə; Italian: [ˈpiːza]  or [ˈpiːsa]) is a city and comune (municipality) in Tuscany, Central Italy, straddling the Arno just before it empties into the Ligurian Sea. It is the capital city of the Province of Pisa. Although Pisa is known worldwide for the Leaning Tower of Pisa, the city contains more than twenty other historic churches, and several medieval and Renaissance palaces, mostly facing each other on the avenues along the Arno (\"Lungarno\"). Much of the city's architecture was financed from its history as one of the Italian maritime republics.\nThe city is also home to the University of Pisa, which has a history going back to the 12th century, the Scuola Normale Superiore di Pisa, founded by Napoleon in 1810, and its offshoot, the Sant'Anna School of Advanced Studies."
+        },
+        {
+          "article": "Pisa (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Pisa#Climate",
+          "text": "Pisa has a borderline humid subtropical climate (Köppen climate classification: Cfa) and Mediterranean climate (Köppen climate classification: Csa). The city is characterized by cool to mild winters and hot summers. This transitional climate allows Pisa to have summers with moderate rainfall. Rainfall peaks in autumn. Snow is rare. The highest officially recorded temperature was on 22 August 2011 and the lowest was on 12 January 1985."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 66,
+      "leadWords": 132,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a river location before the sea, historic churches and universities, but no climate mechanism, extreme, or paradox; no weather or climate fact is stated at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "pisa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 222,
+    "place_id": "gn-5101798",
+    "input": {
+      "place": {
+        "place_id": "gn-5101798",
+        "name": "Newark",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.73566,
+        "lon": -74.17237
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newark, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Newark,_New_Jersey",
+          "text": "Newark ( NEW-ərk, locally  NOORK) is the most populous city in the U.S. state of New Jersey, the county seat of Essex County, and a principal city of the New York metropolitan area. As of the 2020 census, the city's population was 311,549. The Population Estimates Program calculated a population of 323,808 for 2025, making it the 61st-most populous municipality in the nation.\nSettled in 1666 by Puritans from New Haven Colony, Newark is one of the oldest cities in the United States. Its location at the mouth of the Passaic River, where it flows into Newark Bay, has made the city's waterfront an integral part of the Port of New York and New Jersey. Port Newark–Elizabeth is the primary container shipping terminal of the busiest seaport on the U.S. East Coast. Newark Liberty International Airport was the first municipal commercial airport in the United States and has become one of the busiest.\nSeveral companies are headquartered in Newark, including Prudential, PSEG, Panasonic Corporation of North America, Audible.com, IDT Corporation, Manischewitz, Horizon Blue Cross Blue Shield of New Jersey and Mars Snacking. Higher education institutions in the city include the Newark campus of Rutgers University, which includes law and medical schools and the Rutgers Institute of Jazz Studies; University Hospital; the New Jersey Institute of Technology; and Seton Hall University's law school. Newark is home to numerous governmental offices, largely concentrated at Government Center and the Essex County Government Complex. Cultural venues include the New Jersey Performing Arts Center, Newark Symphony Hall, the Prudential Center, The Newark Museum of Art, and the New Jersey Historical Society. Branch Brook Park is the oldest county park in the United States and is home to the nation's largest collection of ornamental cherry trees, numbering over 5,000.\nNewark is divided into five political wards (East, West, South, North and Central). The majority of black residents reside in the South, Central, and West Wards of the city, while the North and East Wards are mostly populated by Latinos. Ras Baraka has served as Mayor of Newark since 2014."
+        },
+        {
+          "article": "Newark, New Jersey (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Newark,_New_Jersey#Climate",
+          "text": "Newark lies in the transition between a humid subtropical and humid continental climate (Köppen Cfa/Dfa), with cold winters and hot humid summers. The January daily mean is , sub- readings are rare; conversely, some days may warm up to . The average seasonal snowfall is , though variations in weather patterns may bring sparse snowfall in some years and several major nor'easters in others, with the heaviest 24-hour fall of occurring on December 26, 1947. Spring and autumn in the area are generally unstable yet mild. The July daily mean is , and highs exceed on an average 28.3 days per year, not factoring in the often higher heat index. Precipitation is evenly distributed throughout the year with the summer months being the wettest and fall and winter months being the driest.\nThe city receives precipitation ranging from per month, usually falling on 8 to 12 days per month. Extreme temperatures have ranged from on February 9, 1934, to on July 22, 2011. The January freezing isotherm that separates Newark into Dfa and Cfa zones approximates the NJ Turnpike."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 179,
+      "leadWords": 343,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives river mouth location, port and airport history, companies and cherry trees, but no climate mechanism, extreme, or paradox; no weather or climate fact is stated at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "newark",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 223,
+    "place_id": "gn-704147",
+    "input": {
+      "place": {
+        "place_id": "gn-704147",
+        "name": "Kremenchuk",
+        "country": "Ukraine",
+        "subdivision": "Poltava",
+        "lat": 49.06253,
+        "lon": 33.40484
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kremenchuk",
+          "url": "https://en.wikipedia.org/wiki/Kremenchuk",
+          "text": "Kremenchuk is an city in central Ukraine which stands on the banks of the Dnieper River. The city serves as the administrative center of Kremenchuk Raion and Kremenchuk urban hromada within Poltava Oblast. Its population is approximately 215,271 (2022 estimate), making it the second-largest city in Poltava Oblast and the 31st largest city in Ukraine. In 2001, the Ukrainian government included the city in the list of historical settlements.\nKremenchuk is believed to have been founded in 1571, when a fortress was nominally established in the city after the signing of the Union of Lublin. Despite this, the area remained depopulated for decades afterward until 1635, when French engineer Guillaume Le Vasseur de Beauplan actually built a small fortress for Kremenchuk, which was the year the city was granted Magdeburg law rights. The city was then seized by the Cossack Hetmanate in the Khmelnytsky Uprising, before finally being burned down in a siege as part of the Polish–Russian War (1654–1667) in 1663. Kremenchuk was then revived by the Russian Empire following the Treaty of Andrusovo under the name of Kremenchug, when it became the capital of the Novorossiya Governorate for a short time, before being demoted again. During this time, the fortress fell into decay, and the city shifted towards being of industrial importance on the Dnieper. After the Russian Civil War, the city was claimed by the Ukrainian SSR in 1919, and in 1922 the city was annexed into the Soviet Union, initially as the capital of the short-lived Kremenchuk Governorate. The city was then affected by World War II, which saw the massacre of its sizable Jewish population - 22% before the war - as part of the Holocaust and the killing of tens of thousands in prisoner of war camps before being liberated during the Battle of the Dnieper. After it recovered, the city became an industrial powerhouse due to the opening of KrAZ and the Kremenchuk Oil Refinery. After the collapse of the Soviet Union, the city became part of a newly independent Ukraine.\nKremenchuk remains heavily industrialised, with some of its largest enterprises being KrAZ, Kryukiv Railway Car Building Works, and the Kremenchuk Oil Refinery, although the latter was destroyed in 2022. Cultural landmarks include Peace Park and the Stone Tower, which was built in the late 1700s. The city has multiple museums, including the Kremenchuk Museum of Local Lore, the All-Ukrainian Museum of the History of Uniforms, and the Museum of the History of Aviation, among others. The city is home to the association football team FC Kremin Kremenchuk, which play their home games at Kremin-Arena, and the ice hockey club HC Kremenchuk, which plays at Aisberg Arena. The city is also home to multiple institutions of higher education, most notably Kremenchuk National University."
+        },
+        {
+          "article": "Kremenchuk (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Kremenchuk#Climate",
+          "text": "Konotop has a warm-summer humid continental climate (Köppen Dfb). During the summer months, Kremenchuk is warm to hot, with an average temperature in June being and July being . The record high recorded in the city is around , which was recorded in August. The coldest months are during the wintertime in January and February, when the average temperature is around in January and in February. The record low recorded in the village is around , which was recorded in December. The wettest month by average precipitation is June, which has an average of 64mm of precipitation, with January being the driest at around 40mm of precipitation. The annual precipitation averages to be around 545mm per year."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 117,
+      "leadWords": 460,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a river location and a long political and industrial history, but no climate mechanism, extreme, or paradox; no weather or climate fact is stated at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kremenchuk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 224,
+    "place_id": "gn-727523",
+    "input": {
+      "place": {
+        "place_id": "gn-727523",
+        "name": "Ruse",
+        "country": "Bulgaria",
+        "subdivision": "Ruse",
+        "lat": 43.84872,
+        "lon": 25.9534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ruse, Bulgaria",
+          "url": "https://en.wikipedia.org/wiki/Ruse,_Bulgaria",
+          "text": "Ruse (also transliterated as Rousse, Russe; Bulgarian: Русе [ˈrusɛ]) is the sixth-largest city in Bulgaria. Ruse is in the northeastern part of the country, on the right bank of the Danube, opposite the Romanian city of Giurgiu, approximately 67 km (42 mi) south of Bucharest, Romania's capital, 172 km (107 mi) from Varna, and 249 km (155 mi) from the capital Sofia. Thanks to its location and its railway and road bridge over the Danube (Danube or Friendship Bridge), it is the most significant Bulgarian river port, serving an important part of the international trade of the country. It is the 12th-largest of all cities on the river Danube.\nRuse is known for its 19th- and 20th-century Neo-Baroque and Neo-Rococo architecture, which attracts many tourists. It is often called the Little Vienna. The Friendship Bridge between Ruse and Giurgiu was the only one to join the Bulgarian and Romanian banks of the Danube until 14 June 2013, when the New Europe Bridge was built between Vidin and Calafat.\nRuse is the birthplace of the Nobel laureate in Literature Elias Canetti and the writer Michael Arlen.\nRuse is on the right bank of the river Danube, which is the high bank, having two underwater terraces and three river terraces at 15 to 22 m (49.21–72.18 ft), 30 to 66 m (98.43–216.54 ft), and 54 to 65 m (177.17–213.25 ft). The average altitude is 45.5 m (149.28 ft) AMSL. The urban area is an approximately 11-km ellipse running along the river. The city extends from the land-connected Matey (Матей) island and the mouth of Rusenski Lom on the west to Srabcheto (Сръбчето) hill on the east. During the 20th century, the west end of the city was significantly modified by moving the mouth of Rusenski Lom to the west, as well as by moving the bank itself with its fairway considerably to the north. Sarabair (саръбаир, from Turkish Sarıbayır meaning \"Yellow Slope\") hill is to the south of the city and is 159 m (521.65 ft) high. The Rousse TV Tower is built there on the remains of Leventtabia, a former Turkish fortification."
+        },
+        {
+          "article": "Ruse, Bulgaria (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Ruse,_Bulgaria#Climate",
+          "text": "Ruse has a humid continental climate (Köppen climate classification Dfa) with hot summers and relatively cold winters. Owing to its position on the Danubian Plain, the city's winters can get windy.\nWinter temperatures often dip below , sometimes even to . In summer, the average temperature is . Temperatures frequently reach in mid-summer in the city centre and stay as low as during the nights. During spring and autumn, daytime temperatures vary between , and precipitation during this time tends to be higher than in summer, with more frequent yet milder periods of rain. The highest temperature recorded was 43.7 C and the lowest was −27.7 C."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 107,
+      "leadWords": 351,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Danube bank location, river terraces and average altitude, which are landform and elevation facts, not a climate mechanism, extreme, or paradox; no weather effect is described",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "ruse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 225,
+    "place_id": "gn-1298824",
+    "input": {
+      "place": {
+        "place_id": "gn-1298824",
+        "name": "Yangon",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Yangon",
+        "lat": 16.80528,
+        "lon": 96.15611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yangon",
+          "url": "https://en.wikipedia.org/wiki/Yangon",
+          "text": "Yangon, also romanized in English as Rangoon,  is the capital city of the Yangon Region and the largest city of Myanmar. Yangon was the capital city of Myanmar until 2005 and served as such until 2006, when the military government relocated the administrative functions to the purpose-built capital city of Naypyidaw in north central Myanmar. With over five million people, Yangon is Myanmar's most populous city and its most important commercial centre.\nYangon boasts the largest number of colonial-era buildings in Southeast Asia, and has a unique colonial-era urban core that is remarkably intact. The colonial-era commercial core is centred around the Sule Pagoda, which is reputed to be over 2,000 years old. The city is also home to the gilded Shwedagon Pagoda – Myanmar's most sacred and famous Buddhist pagoda.\nYangon suffers from profoundly inadequate infrastructure, especially compared to other major cities in Southeast Asia, such as Jakarta, Bangkok or Hanoi. Especially rail transport is lacking. Though many historic residential and commercial buildings have been renovated throughout central Yangon, most satellite towns that ring the city remain chronically impoverished and lack basic infrastructure."
+        },
+        {
+          "article": "Yangon (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Yangon#Climate",
+          "text": "Yangon has a tropical monsoon climate (Am) under the Köppen climate classification system. The city features a lengthy wet season from May through October where a substantial amount of rainfall is received; and a dry season from November through April, where little rainfall is seen. It is primarily due to the heavy rainfall received during the rainy season that makes Yangon fall under the tropical monsoon climate category. From 1961 to the 1990s, average temperatures show little variance, with average highs ranging from and average lows ranging from .\nYangon is prone to tropical cyclones. In 2008, Cyclone Nargis made landfall as a Category 4 cyclone, making it the worst cyclone on record in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 116,
+      "leadWords": 184,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives former capital status, colonial buildings and pagodas, and weak infrastructure, but no climate mechanism, extreme, or paradox; no weather or climate fact is stated at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "yangon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 226,
+    "place_id": "gn-1522203",
+    "input": {
+      "place": {
+        "place_id": "gn-1522203",
+        "name": "Kokshetau",
+        "country": "Kazakhstan",
+        "subdivision": "Aqmola",
+        "lat": 53.28414,
+        "lon": 69.39364
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kokshetau",
+          "url": "https://en.wikipedia.org/wiki/Kokshetau",
+          "text": "Kokshetau, formerly known as Kokchetav, between 1868 and 1993, is a lakeside city in northern Kazakhstan and the capital of Akmola Region. It stretches along the southern shore of Lake Kopa, lying in the north of Kokshetau Hills, a northern subsystem of the Kokshetau Uplands (Saryarka) and the southern edge of the Ishim Steppe. It is named after Mount Kokshe.\nKokshetau is the 17th-most populous city in Kazakhstan, the 4th-most populous city in northern part of the country, and the largest city in Akmola Region. It was the administrative center of Kokshetau Region (oblast) from 1944 to 1991 as part of the Soviet Union and from 1991 as part of Kazakhstan to 1997 when it was abolished. It is also situated at the junction of the Trans-Kazakhstan and South Siberian railways. Kokshetau lies at an elevation of approximately 234 m (768 ft) above sea level. The climate of Kokshetau features hot summers and cold winters.\nIt has 183,170 inhabitants (2026 est.), up from 123,389 (1999 census), while Akmola Region had a total population of 738,587 (2019 est.), down from 1,061,820 (1989 census), making it the tenth most populous region in Kazakhstan. The city's history has been influenced by people of many nations and religions. Kokshetau retains multiethnic population, with 59% ethnic Kazakhs (up from 36%), the rest being mostly 28% ethnic Russians (down from 42%) and other ethnic groups such as Ukrainians, Tatars and Germans. Kokshetau City Administration (area of 425 km2 [164 sq mi]), with a population of roughly 165,153 residents, includes one settlement administration (which consists of the work settlement of Stantsyonny) and the Krasnoyarsk rural district, which includes two rural settlements (the villages of Krasny Yar and Kyzyl-Zhuldyz).\nThe city is considered to have been founded in 1824 as a military fortress, while it was granted city status in 1895. It was the centre of Kokshetau Region, which was abolished in 1997. It is well known for its nature and tourist sites, such as Burabay and Zerendi, among others. The city's main football team is FC Okzhetpes. Kokshetau is about 185 km (115 mi) from Petropavl, 300 km (190 mi) northwest of the national capital Astana along the A1, 318 km (198 mi) from Omsk along the A13, and 384 km (239 mi) from Kostanay. The city is served by Kokshetau Airport (KOV). The akim (mayor) is Anuar Kumpekeev from the Amanat Party.\nKokshetau is an important economic, educational, and cultural centre of the Akmola Region. Attractions in and around Kokshetau include Akmola Regional Museum of History and Local Lore, Bukpa Hill, Kokshetau City Park, Kokshetau City History Museum, Museum of Literature and Art. The northwest entrance to Burabay National Park (Kazakh: «Бурабай» мемлекеттік ұлттық табиғи паркі, romanized: «Burabai» memlekettık ūlttyq tabiği parkı) and Burabay spa town is a little over 43 miles (70 km) from Kokshetau. Kokshetau was awarded the title Kazakhstan City of Culture for the year 2021."
+        },
+        {
+          "article": "Kokshetau (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Kokshetau#Climate",
+          "text": "According to the Köppen climate classification, Kokshetau lies in a cold semi-arid climate zone (Köppen climate classification: BSk) with extreme continental influences. The city has an extreme continental climate with long, very cold, frigid, snowy, dry winters and warm, dry, sunny summers (featuring occasional brief rain showers). Winter is frosty and long (more than 5 months). In spring, prevails clear and dry weather, with a large number of sunny days. Autumn begins in August or September, and the weather is observed from clear at the beginning of the season, to cloudy in October–November. The average annual temperature in Kokshetau is . Summer temperatures occasionally reach 35 °C (95 °F) while −30 to −35 °C (−22 to −31 °F) is not unusual between mid-December and early March.\nThe warmest month is July with daily mean temperature near , and the coldest month is January, with a daily mean of . Snow and ice are dominant during the winter season. July is the wettest month (averaging of precipitation) while March is the driest (averaging of precipitation). Yearly precipitation amounts to . Typically, the city's Lake Kopa and rivers of Kylshakty and Shagalaly are frozen over between the second week of November and the beginning of April.\nAverage January temperature:\nAverage July temperature:\nAverage annual precipitation: to"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 214,
+      "leadWords": 483,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract states only 'hot summers and cold winters' with no mechanism, extreme, or paradox verbatim-traceable to the text; a bare temperature classification is not enough",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kokshetau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 227,
+    "place_id": "gn-2111149",
+    "input": {
+      "place": {
+        "place_id": "gn-2111149",
+        "name": "Sendai",
+        "country": "Japan",
+        "subdivision": "Miyagi",
+        "lat": 38.26667,
+        "lon": 140.86667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sendai",
+          "url": "https://en.wikipedia.org/wiki/Sendai",
+          "text": "Sendai (仙台市, Sendai-shi; [seꜜn.dai, sen.daꜜi.ɕi] ) is the capital city of Miyagi Prefecture and the largest city in the Tōhoku region. As of 1 August 2023, the city had a population of 1,098,335 in 539,698 households, making it the twelfth most populated city in Japan.\nThe modern city was founded in 1600 by the daimyō Date Masamune. It is nicknamed the City of Trees (杜の都, Mori no Miyako); there are Japanese zelkova trees lining many of the main thoroughfares such as Jōzenji Street (定禅寺通, Jōzenji dōri) and Aoba Street (青葉通, Aoba dōri).\nIn the summer, the Sendai Tanabata Festival, the largest Tanabata festival in Japan, is held. In winter, the trees are decorated with thousands of lights for the Pageant of Starlight (光のページェント, Hikari no pējento), lasting through most of December. The city is also home to Tohoku University, one of the former Imperial Universities. On 11 March 2011, coastal areas of the city suffered catastrophic damage from a magnitude 9.0 offshore earthquake, which triggered a destructive tsunami."
+        },
+        {
+          "article": "Sendai (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Sendai#Climate",
+          "text": "Sendai has a humid subtropical climate (Köppen Cfa), which features warm and wet summers, and cool and dry winters. Sendai summers are not as hot as Tokyo to the south, while the winters are much milder than Sapporo to the north, but retains significant seasonal differences in temperature and rainfall. Extremes range from . Of Japan's prefectural capitals, Sendai experiences the fewest days of extreme temperatures (highs outside ) at 19.6 per year, compared to Tokyo's average of 49.\nWinters are cool and relatively dry, with January temperatures averaging . Snowfall is much lower than cities on the Sea of Japan coast, such as Niigata and Tottori. Summers are very warm and much of the year's precipitation is delivered at this time, with an August average of . The city is rarely hit by typhoons, and experiences only 6 days with more than of rainfall on average. Sendai's monsoon season usually begins in late April to early October, which is later than in most cities in Japan. During this season, cold winds from the Okhotsk air mass, called \"Yamase\", blow in and depress daytime highs."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 185,
+      "leadWords": 168,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate mechanism, extreme, or paradox; it covers founding, tree-lined streets, festivals, a university, and the 2011 earthquake and tsunami, with no climate description",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sendai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 228,
+    "place_id": "gn-2210247",
+    "input": {
+      "place": {
+        "place_id": "gn-2210247",
+        "name": "Tripoli",
+        "country": "Libya",
+        "subdivision": "Tripoli",
+        "lat": 32.88743,
+        "lon": 13.18733
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tripoli, Libya",
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya",
+          "text": "Tripoli, historically known as Tripoli-of-the-West, is the capital and largest city of Libya, with a population of about 3.246 million people in 2021. It is located in the northwest of Libya on the edge of the desert, on a point of rocky land projecting into the Mediterranean Sea and forming a bay. It includes the port of Tripoli and the country's largest commercial and manufacturing center. It is also the site of the University of Tripoli.\nTripoli was founded in the 7th century BC by the Phoenicians, who gave it the Libyco-Berber name Oyat (Punic: 𐤅𐤉‬‬𐤏‬𐤕, romanized: Wyʿt), before passing into the hands of the Greek rulers of Cyrenaica as Oea (Ancient Greek: Ὀία, romanized: Oía). Due to the city's long history, there are many sites of archeological significance in Tripoli. Tripoli may also refer to the sha'biyah (top-level administrative division in the Libyan system), the Tripoli District."
+        },
+        {
+          "article": "Tripoli, Libya (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Tripoli,_Libya#Climate",
+          "text": "Tripoli has a hot semi-arid climate (Köppen: BSh) with some characteristics of a hot-summer Mediterranean climate (Köppen: Csa) with hot and dry, prolonged summers and relatively wet mild winters. Although virtually rainless, summers are hot and muggy with temperatures that often exceed ; average July temperatures are between . In December, temperatures have reached as low as , but the average remains at between . The average annual rainfall is less than . Snowfall has occurred in past years.\nThe Great Manmade River, a network of pipelines that transport water from the desert to the coastal cities, supplies Tripoli with its water. The grand scheme was initiated by Gaddafi in 1982.\nClimate change\nA 2019 paper published in PLOS One estimated that under Representative Concentration Pathway 4.5, a \"moderate\" scenario of climate change where global warming reaches ~ by 2100, the climate of Tripoli in the year 2050 would most closely resemble the current climate of Taiz. The annual temperature would increase by , and the temperature of the warmest month by , while the temperature of the coldest month would increase by . According to Climate Action Tracker, the current warming trajectory appears consistent with , which closely matches RCP 4.5."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 202,
+      "leadWords": 148,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate mechanism, extreme, or paradox; it describes a desert-edge Mediterranean location and Phoenician founding only, with no weather or climate detail",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "tripoli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 229,
+    "place_id": "gn-3515062",
+    "input": {
+      "place": {
+        "place_id": "gn-3515062",
+        "name": "Tulancingo",
+        "country": "Mexico",
+        "subdivision": "Hidalgo",
+        "lat": 20.08055,
+        "lon": -98.36831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tulancingo",
+          "url": "https://en.wikipedia.org/wiki/Tulancingo",
+          "text": "Tulancingo (officially Tulancingo de Bravo, for Nicolás Bravo; Otomi: Ngu̱hmu) is the second-largest city in the Mexican state of Hidalgo. It is located in the southeastern part of the state and also forms one of the 84 municipalities of Hidalgo, as well as the Archdiocese of Tulancingo. Located 93 km from Mexico City, this area is the most important wool textile producer in the country and was home to El Santo, Mexico's most famous lucha libre wrestler, and to Gabriel Vargas (cartoonist), author of the popular cartoon La Familia Burrón. It is also home to the Huapalcalco archeological site, which was the forerunner to the Teotihuacan civilization. The name derives from the Nahuatl words \"tule\" and \"tzintle\" which mean \"in or behind the reeds.\" This is confirmed by its Aztec glyph."
+        },
+        {
+          "article": "Tulancingo (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Tulancingo#Climate",
+          "text": "The climate is temperate to cold with an annual average temperature of 14C and average rainfall of between 500 and 550 mm per year. Most rain falls from June to October."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 31,
+      "leadWords": 131,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate mechanism, extreme, or paradox; it covers wool textiles, famous residents, an archaeological site, and the name origin, with no climate description",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "tulancingo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 230,
+    "place_id": "gn-94824",
+    "input": {
+      "place": {
+        "place_id": "gn-94824",
+        "name": "Karbala",
+        "country": "Iraq",
+        "subdivision": "Karbala",
+        "lat": 32.61603,
+        "lon": 44.02488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karbala",
+          "url": "https://en.wikipedia.org/wiki/Karbala",
+          "text": "Karbala is a major city in Iraq, and the capital of Karbala Governorate. With a population of around 800,000 people in 2024, Karbala is the second-largest city in central Iraq, after Baghdad. The city is located a few miles east of Lake Milh, also known as Razzaza Lake. With presence of the Imam Husayn and Al-Abbas Shrines, Karbala is a profoundly holy city in Shia Islam. It is one of the main political, spiritual, and cultural hubs of Shia Islam. The city was the location of the Battle of Karbala, where Husayn, grandson of the Islamic prophet Muhammad and the third Shia Imam, was massacred alongside most of his family by the forces of the Umayyad caliph Yazid in 680 CE. Karbala went on to become an important center of pilgrimage. After the Siege of Baghdad in 1258, Karbala came under the control of the Mongol Empire led by Hulegu Khan. The city continued to be under multiple successive empires. \nKarbala enjoyed the status of semi-autonomy after the First Saudi State invasion. In 1843, Karbala was besieged by Ottoman troops. In 1915, Karbala was site of an uprising, which drove the Ottomans out of the city. Millions of Shia Muslism visit the city twice a year. The martyrdom of Husayn and Abbas is commemorated annually by over 20 million Muslims inside the city. Up to 34 million pilgrims visit the city to observe Ashura (the tenth day of Muharram), which marks the anniversary of Husayn's martyrdom. However, the main event is the Arba'in pilgrimage (the 40th day after Ashura), where up to 40 million visit the graves, the largest annual public gathering on earth. Most of the pilgrims travel on foot and come from all around Iraq and nearly 60 countries."
+        },
+        {
+          "article": "Karbala (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Karbala#Climate",
+          "text": "Karbala experiences a hot arid climate (BWh in the Köppen climate classification) with extremely hot, long, dry summers and mild winters. Almost all of the yearly rainfall is received between November and April, though no month is wet."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 38,
+      "leadWords": 291,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate mechanism, extreme, or paradox; it covers holy shrines, the 680 CE battle, pilgrimage, and successive empires, with no climate description",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "karbala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 231,
+    "place_id": "gn-1173491",
+    "input": {
+      "place": {
+        "place_id": "gn-1173491",
+        "name": "Kohat",
+        "country": "Pakistan",
+        "subdivision": "Khyber Pakhtunkhwa",
+        "lat": 33.58196,
+        "lon": 71.44929
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kohat",
+          "url": "https://en.wikipedia.org/wiki/Kohat",
+          "text": "Kohat (Urdu and Hindko: کوہاٹ; Pashto: کوهاټ) is a city in Pakistan that serves as the headquarters of the Kohat District in Khyber Pakhtunkhwa province. With a population of over 220,000 people, the city is the fourth most populous in Khyber Pakhtunkhwa and the 35th most populous in Pakistan. Kohat's immediate environs were the site of frequent armed skirmishes between British colonial forces and local tribesmen in the mid to late 19th century. The city is centred on a British-era fort, various bazaars, and a military cantonment. Pashto and the Kohati dialect of Hindko are the main languages spoken in Kohat.\nThe city of Kohat is also the namesake of and largest city in the Kohat Division, being over four times larger than the second-largest city in the division, Karak."
+        },
+        {
+          "article": "Kohat (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Kohat#Climate",
+          "text": "Kohat has a hot semi-arid climate (Köppen climate classification BSh)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 10,
+      "leadWords": 130,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate mechanism, extreme, or paradox; it covers population rank, colonial skirmishes, a fort and cantonment, and languages, with no climate description",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kohat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 232,
+    "place_id": "gn-119505",
+    "input": {
+      "place": {
+        "place_id": "gn-119505",
+        "name": "Qazvin",
+        "country": "Iran",
+        "subdivision": "Qazvin Province",
+        "lat": 36.26877,
+        "lon": 50.0041
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qazvin",
+          "url": "https://en.wikipedia.org/wiki/Qazvin",
+          "text": "Qazvin (Persian: قزوین; ; IPA: [ɢæzˈviːn] ) is a city in the Central District of Qazvin County, Qazvin province, Iran, serving as capital of the province, the county, and the district. It is the largest city in the province.\nQazvin was a capital of the Safavid Empire for over forty years (1555–1598) and nowadays is known as the calligraphy capital of Iran. It is famous for its traditional confectioneries (like Baghlava), carpet patterns, poets, political newspaper and Pahlavi influence on its accent.\nLocated in 150 km (93 mi) northwest of Tehran, in the Qazvin Province, it is at an altitude of about 1,800 m (5,900 ft) above sea level. Due to its position at the south of the rugged Alborz range called KTS Atabakiyam, its climate is cold but dry."
+        },
+        {
+          "article": "Qazvin (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Qazvin#Climate",
+          "text": "Qazvin has a hot-summer Mediterranean climate (Köppen climate classification Csa)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 10,
+      "leadWords": 130,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract states only that the climate is 'cold but dry' due to position south of the Alborz range, with no described mechanism, extreme, or paradox; a bare classification is not enough",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract beyond a cold-but-dry label"
+    },
+    "banned_terms": [
+      {
+        "term": "qazvin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 233,
+    "place_id": "gn-1271715",
+    "input": {
+      "place": {
+        "place_id": "gn-1271715",
+        "name": "Gandhinagar",
+        "country": "India",
+        "subdivision": "Gujarat",
+        "lat": 23.21667,
+        "lon": 72.68333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gandhinagar",
+          "url": "https://en.wikipedia.org/wiki/Gandhinagar",
+          "text": "Gandhinagar (Gujarati: gāndhīnagara, pronounced [ˈɡɑːndʱinəɡəɾ(ə)] ) in India is the capital of the state of Gujarat and of Gandhinagar district. Gandhinagar is located approximately 23 kilometres (14 mi) north of Ahmedabad, on the west central point of the industrial corridor between the megacities of Delhi and Mumbai.\nGandhinagar lies on the west bank of the Sabarmati River, about 545 kilometres (339 mi) north of Mumbai and 901 kilometres (560 mi) southwest of Delhi. \nThe Akshardham temple is located in Gandhinagar. There was a determination to make Gandhinagar a purely Indian enterprise, partly because the state of Gujarat was the birthplace of Mahatma Gandhi. For this reason, the planning was done by two Indian town planners: Prakash M Apte and H. K. Mewada, who had apprenticed with Le Corbusier in Chandigarh."
+        },
+        {
+          "article": "Gandhinagar (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Gandhinagar#Climate",
+          "text": "Gandhinagar has a hot semi-arid climate (Köppen BSh) with three main seasons: summer, monsoon and winter. The climate is generally dry and hot outside of the monsoon season. The weather is hot to severely hot from March to May when the maximum temperature stays in the range of , and the minimum in the range of . It is pleasant in the winter days and quite chilling in the night during December to February. The average maximum temperature is around , the average minimum is , and the climate is extremely dry. The southwest monsoon brings a humid climate from mid-June to mid-September. The average annual rainfall is around ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 110,
+      "leadWords": 130,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate mechanism, extreme, or paradox; it covers location on the Sabarmati River, distance from Ahmedabad, a temple, and its planners, with no climate description",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "gandhinagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 234,
+    "place_id": "gn-1273802",
+    "input": {
+      "place": {
+        "place_id": "gn-1273802",
+        "name": "Cuddalore",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.75617,
+        "lon": 79.76693
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuddalore",
+          "url": "https://en.wikipedia.org/wiki/Cuddalore",
+          "text": "Cuddalore, also spelt as Kadalur ( ), is a heavy industries hub, port city, and headquarters of the Cuddalore District in the Indian state of Tamil Nadu. Situated 5.3 km south of Puducherry (union territory), the city was an important port city  during the British Raj. Cuddalore district is famous for Pichavaram Mangrove Forest.\nWhile the early history of Cuddalore remains unclear, the city first rose to prominence during the Pallavas' and Medieval Cholas' reign. After the fall of the Cholas, the town was ruled by various dynasties like Pandyas, Vijayanagar Empire, Madurai Nayaks, Thanjavur Nayaks, Thanjavur Marathas, Tipu Sultan, the French and the British Empire. Cuddalore was also a theatre of conflict in the Seven Years' War, witnessing the Battle of Cuddalore in 1758 between the French and British. It has been a part of independent India since 1947. During the 2004 Indian Ocean earthquake and tsunami, Cuddalore was one of the affected towns, with 572 recorded casualties.\nApart from fishing and port-related industries, Cuddalore houses chemical, pharmacological and energy industries in SIPCOT, an industrial estate set up by the state government. The city is administered by municipal corporation covering 101.6 km2 . It had a population of 308,781 in 2011. Cuddalore is a part of the Cuddalore legislative assembly constituency, which is a part of the Cuddalore Lok Sabha constituency. There are 25 schools, two science colleges and two engineering colleges in the city. There is one government hospital, six municipal maternity homes, and 42 other private hospitals that take care of the citizens' healthcare needs. Roadways are the primary means of transportation, while the town also has rail connectivity. The nearest airport is in Pondicherry Airport, located at 24 km (15 mi) away and the nearest international airport is Chennai International Airport, located 179 km (112 mi) away from the city, and another local airport is located in the district at Neyveli township is Neyveli Airport. The nearest seaport is Cuddalore Port where it handles small cargo ships, and the construction of port entry is underway. The closest major seaport is Karaikal port, located 100 km (62 mi) away from the town.  Cuddalore is famous for its educational institutions and medical establishments."
+        },
+        {
+          "article": "Cuddalore (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Cuddalore#Climate",
+          "text": "Cuddalore experiences a tropical wet and dry climate (As) under the Köppen climate classification. Cuddalore witnesses heavy rainfall during the North-East monsoon. The weather is pleasant from December to February in Cuddalore, with a climate full of warm days and cool nights. The onset of summer is from March, with the mercury reaching its peak by the end of May and June. The average temperatures range from 37 °C (99 °F) in January to 22.5 °C (72.5 °F) in May and June. Summer rains are sparse and the first monsoon, the South-West monsoon, sets in June and continues till September. North-East monsoon sets in October and continues till January. The rainfall during the South-West monsoon period is much lower than that of North-East monsoon. The average rainfall is 1,400 mm (55 in), most of which is contributed by the North-East monsoon."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 141,
+      "leadWords": 365,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate mechanism, extreme, or paradox; the 2004 tsunami is a one-off disaster event, not climate, and the rest covers port history, rulers, and industries",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "cuddalore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 235,
+    "place_id": "gn-1278130",
+    "input": {
+      "place": {
+        "place_id": "gn-1278130",
+        "name": "Avadi",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 13.1147,
+        "lon": 80.10981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Avadi",
+          "url": "https://en.wikipedia.org/wiki/Avadi",
+          "text": "Avadi (Tamil: [aːʋaɖi]) is a City in Chennai metropolitan area, Thiruvallur district, Tamil Nadu, India. Its the headquarters of Avadi City Police, Avadi City Corporation and Avadi Taluk located within the Thiruvallur district of Tamil Nadu, India. Situated at about 22 kilometres (14 mi) from Chennai Central Railway Station and 24 kilometres (15 mi) from It's district headquarters Tiruvallur and 58 kilometres  (36 mi) from Another Railway Junction Arrakonam. Avadi is surrounded by major defence establishments and is home to various universities and engineering colleges. The neighborhood is served by Avadi Railway Station of the Chennai Suburban Railway and just 7 km from the upcoming Karayanchavadi Metro of Chennai Metro Rail . As of 2011, Avadi had a population of 345,996, which is 10th most populous place in Tamil Nadu. It is home to the Heavy Vehicles Factory (HVF), Ordnance Factory Board (ODF) which houses Engine Factory and Combat Vehicles Research and Development Establishment (CVRDE). The lake in Avadi was known as Paaleripattu, which is now found only in very old land documents."
+        },
+        {
+          "article": "Avadi (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Avadi#Geography",
+          "text": "Avadi is located at . It covers an area of and has an average elevation of .\nAvadi is one of the largest localities in Thiruvallur district, stretching from Poonamalle High Road to MTH Road.\nLake\nAvadi has a lake called Paruthipattu Lake. Spread over 200 acres and in length,"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 50,
+      "leadWords": 173,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate mechanism, extreme, or paradox; it covers location near Chennai, defence factories, colleges, and a lake's old name, with no climate description",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "avadi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 236,
+    "place_id": "gn-162183",
+    "input": {
+      "place": {
+        "place_id": "gn-162183",
+        "name": "Ashgabat",
+        "country": "Turkmenistan",
+        "subdivision": "Ashgabat",
+        "lat": 37.95,
+        "lon": 58.38333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ashgabat",
+          "url": "https://en.wikipedia.org/wiki/Ashgabat",
+          "text": "Ashgabat is the capital and largest city of Turkmenistan. It lies between the Karakum Desert and the Köpetdag mountain range in Central Asia, approximately 50 km (30 mi) away from the Iran-Turkmenistan border. The city has a population of 1,030,063 (2022 census).\n\nThe city was founded in 1881 on the basis of an Ahal Teke tribal village, and made the capital of the Turkmen Soviet Socialist Republic in 1924 when it was known as Poltoratsk. Much of the city was destroyed by the 1948 Ashgabat earthquake, but has since been extensively rebuilt under the rule of Saparmyrat Nyýazow's \"White City\" urban renewal project, resulting in monumental projects sheathed in costly white marble. The Soviet-era Karakum Canal runs through the city, carrying waters from the Amu Darya from east to west.\nToday, as the capital of an independent Turkmenistan, Ashgabat retains a multiethnic population, with ethnic Turkmen as the majority. In 2021, it celebrated 140 years of its written history. Ashgabat joined the UNESCO Global Network of Learning Cities in 2025."
+        },
+        {
+          "article": "Ashgabat (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Ashgabat#Climate",
+          "text": "The Köpetdag mountain range is about to the south, and Ashgabat's northern boundary touches the Kara-Kum desert. Because of this Ashgabat has a cold arid climate (Köppen climate classification: BWk) bordering on a cold semi-arid climate (Köppen climate classification: BSk) with mediterranean influences. It features very hot, dry summers and cool, short, somewhat moist, winters. The average high temperature in July is . Nighttimes in the summer are warm, with an average minimum temperature in July of . The average January high temperature is , and the average low temperature is . The highest temperature ever recorded in Ashgabat is , recorded in June 2015."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 105,
+      "leadWords": 170,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate mechanism, extreme, or paradox; lying between a desert and mountains is geography only, and the rest covers founding in 1881, the 1948 earthquake, and white-marble rebuilding",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "ashgabat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 237,
+    "place_id": "gn-346030",
+    "input": {
+      "place": {
+        "place_id": "gn-346030",
+        "name": "Zefta",
+        "country": "Egypt",
+        "subdivision": "Gharbia",
+        "lat": 30.7142,
+        "lon": 31.24425
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zefta",
+          "url": "https://en.wikipedia.org/wiki/Zefta",
+          "text": "Zefta (Egyptian Arabic: زفتى  pronounced [ˈzeftæ], Coptic: ⲍⲉⲃⲉⲑⲉ Zevethe) is an Egyptian city in the Nile Delta, within the Gharbia governorate, and is the capital of the Zefta center. It is across the Nile from Mit Ghamr city of Ad Daqahliyah governorate. It has around 114,983 inhabitants.\nZefta is known for its notable involvement in the 1919 Egyptian Revolution against British occupation. In March 1919, residents of the town, led by lawyer Youssef El-Guindy, declared Zefta a self-governing republic, an event later referred to as the \"Republic of Zefta.\" The group took control of key facilities, including the police station, railway station, and telegraph office, and established a local council to manage the town’s affairs. A newspaper was also published under the republic’s name to communicate developments to the public.\nThe initiative saw participation from a wide range of local residents, including farmers, merchants, and others. The republic lasted for approximately ten days before it was suppressed by British forces, including an Australian unit, on 29 March 1919."
+        },
+        {
+          "article": "Zefta (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Zefta#Climate",
+          "text": "Zefta has an arid desert climate (Köppen: BWh)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 8,
+      "leadWords": 168,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives no climate mechanism, extreme, or paradox; it covers Nile Delta location and the ten-day 1919 self-governing republic, with no climate description",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "zefta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 4610,
+    "place_id": "gn-3614797",
+    "input": {
+      "place": {
+        "place_id": "gn-3614797",
+        "name": "Belén Gualcho",
+        "country": "Honduras",
+        "subdivision": "Ocotepeque Department",
+        "lat": 14.48333,
+        "lon": -88.8
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belén Gualcho",
+          "url": "https://en.wikipedia.org/wiki/Bel%C3%A9n_Gualcho",
+          "text": "Belén Gualcho is a municipality in the Honduran department of Ocotepeque. \nThis small village founded in 1715 is a jewel in the middle of the Honduran mountains, located in the department of Ocotepeque and close to Gracias and San Sebastian to the south. The highlights of the village are the colonial Church of La Trinidad and Sunday Market where the Lenca people come to sale and get basic supplies. In 1871, it was listed as the head of the Curato de Gualcho, later it was called Belén de Copán or Belén de Occidente; on September 2, 1907, it became part of the Ocotepeque Department, calling it Belén de Ocotepeque and on February 15, 1922 it was called Belén Gualcho, belonging to the Sensenti district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "belen gualcho",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "belen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gualcho",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4617,
+    "place_id": "gn-2268436",
+    "input": {
+      "place": {
+        "place_id": "gn-2268436",
+        "name": "Estoril",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.70571,
+        "lon": -9.39773
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Estoril",
+          "url": "https://en.wikipedia.org/wiki/Estoril",
+          "text": "Estoril (Portuguese pronunciation: [ɨʃtuˈɾil]) is a town in the civil parish of Cascais e Estoril of the Portuguese Municipality of Cascais, on the Portuguese Riviera.  It is a popular tourist destination known for its hotels, beaches, and the Casino Estoril, and has historically been home to numerous royal families and celebrities. The town has also hosted high-profile events, including the Estoril Open and the Lisbon & Estoril Film Festival.\nEstoril is considered one of the most expensive places to live in Portugal and the Iberian Peninsula. It is home to a sizable foreign community and known for its luxury restaurants, hotels, and entertainment. Cascais is consistently ranked for its high quality of living, making it one of the most livable places in Portugal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "estoril",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4623,
+    "place_id": "gn-3104316",
+    "input": {
+      "place": {
+        "place_id": "gn-3104316",
+        "name": "Zarautz",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.28444,
+        "lon": -2.16992
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zarautz",
+          "url": "https://en.wikipedia.org/wiki/Zarautz",
+          "text": "Zarautz (Basque: [s̻aɾaut͡s̻] , Spanish: Zarauz) is a coastal town located in central Gipuzkoa, Basque Country, in Spain. It is bordered by Aia to the east and the south and Getaria to the west, located about 15 kilometres (9.3 mi) west of Donostia/San Sebastián. It has four enclaves limiting the aforementioned municipalities: Alkortiaga, Ekano, Sola, and Arbestain. As of 2014, Zarautz has a population of 22,890, which usually swells to about 60,000 in the summer.\nThe Palace of Narros, located adjacent to Zarautz's 2.8 km (1.7 mi) long beach, is where Queen Isabella II and Fabiola of Belgium once spent their summer holidays. The beach is known for being the longest in the Basque Country and one of longest of the Cantabrian cornice."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "zarautz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4625,
+    "place_id": "gn-3616064",
+    "input": {
+      "place": {
+        "place_id": "gn-3616064",
+        "name": "Ticuantepe",
+        "country": "Nicaragua",
+        "subdivision": "Managua Department",
+        "lat": 12.02263,
+        "lon": -86.20493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ticuantepe",
+          "url": "https://en.wikipedia.org/wiki/Ticuantepe",
+          "text": "Ticuantepe (Nawat: Tēkwāntepēk), is a town and a municipality in the Managua department of Nicaragua with an estimated population of 39,012. The municipality is named after the Nahua chiefdom of Tekwantepek which was located in the modern municipality of Ticuantepe and the surrounding area. According to Spanish conquistador and historian Gonzalo Fernández de Oviedo y Valdés, Tekwantepek was a militarily strong chiefdom that was one of the last to fall to the conquistadors and their central-Mexican allies. The Nahuas chose to settle in Ticuantepe due to its highly rich agriculture. Located on the slopes of the Meseta de los Pueblos, its fertile volcanic soils and cooler microclimate made it an exceptionally productive area for the Nahuas to grow maize, cacao, beans, and avocados."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "ticuantepe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4640,
+    "place_id": "gn-2873291",
+    "input": {
+      "place": {
+        "place_id": "gn-2873291",
+        "name": "Marktoberdorf",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.77964,
+        "lon": 10.61713
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marktoberdorf",
+          "url": "https://en.wikipedia.org/wiki/Marktoberdorf",
+          "text": "Marktoberdorf (German: [maʁktˈʔoːbɐdɔʁf] ) is the capital of the Bavarian district of Ostallgäu in the Regierungsbezirk of Swabia.\nMarktoberdorf is near the town of Kempten, Füssen, known for the castle Neuschwanstein, Bad Wörishofen, and Schongau. The nearest larger city is Kaufbeuren, eleven kilometers away.\nMarktoberdorf plays host to the International Chamber Choir Competition Marktoberdorf every two years. In computer science, it is known for its hosting of the annual International Summer School Marktoberdorf every year since 1970. This Advanced Study Institute of the NATO Security Through Science Committee (now NATO Science for Peace) and the computer science department of the Technical University of Munich is a two-week course for young computer scientists and mathematicians working in the field of formal systems' development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "marktoberdorf",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4642,
+    "place_id": "gn-3123667",
+    "input": {
+      "place": {
+        "place_id": "gn-3123667",
+        "name": "El Astillero",
+        "country": "Spain",
+        "subdivision": "Cantabria",
+        "lat": 43.40094,
+        "lon": -3.82051
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Astillero",
+          "url": "https://en.wikipedia.org/wiki/El_Astillero",
+          "text": "El Astillero (English: \"The Shipyard\") is a town and municipality in the province and autonomous community of Cantabria, northern Spain. It is near the provincial capital of Santander, and it is known for its shipyard, and for hosting of Spanish national Rowing Championships. Its location is geographically defined by the estuaries that surround it. It is located between the municipalities of Camargo (formerly part of El Astillero), Villaescusa, Piélagos, Medio Cudeyo and Marina de Cudeyo. Located at the foot of Peña Cabarga, is 7.5 kilometres away from the capital, Santander, and is 20 metres above sea level.\nThe confluence of the rivers and the coast of the bay is a large expanse of wetlands where various migratory birds nest throughout the year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "el astillero",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "astillero",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4651,
+    "place_id": "gn-6180144",
+    "input": {
+      "place": {
+        "place_id": "gn-6180144",
+        "name": "Whistler",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 50.11817,
+        "lon": -122.95396
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whistler, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Whistler,_British_Columbia",
+          "text": "Whistler is a resort municipality in Squamish-Lillooet Regional District, British Columbia, Canada. It is located in the southern Pacific Ranges of the Coast Mountains, approximately 125 km (78 mi) north of Vancouver and 36 km (22 mi) south of Pemberton. It has a permanent population of approximately 13,982 (2021), and 3,241 seasonal residents (estimated). \nOver two million people visit Whistler annually, primarily for alpine skiing and snowboarding and, in the summer, mountain biking at Whistler Blackcomb. Its pedestrian village has won numerous design awards, and Whistler has been voted among the top destinations in North America by major ski magazines since the mid-1990s. During the 2010 Vancouver Winter Olympics, Whistler hosted most of the alpine events, Nordic, luge, skeleton, and bobsled events."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "whistler",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4653,
+    "place_id": "gn-2270184",
+    "input": {
+      "place": {
+        "place_id": "gn-2270184",
+        "name": "Carcavelos",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.69105,
+        "lon": -9.32215
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carcavelos",
+          "url": "https://en.wikipedia.org/wiki/Carcavelos",
+          "text": "Carcavelos (Portuguese pronunciation: [kɐɾkɐˈvɛluʃ]) was, until 2013, a civil parish in the Portuguese municipality of Cascais, about 12 kilometres (7.5 mi) west of Lisbon. In 2013, the parish merged into the new parish Carcavelos e Parede. The parish was known for the Carcavelos wine. With the decline of the winemaking industry in the region, the attractiveness of its beaches have made the parish a destination for surfing, due to the waves here. \nAt the mouth of the Tagus River and east of the main beach is the fortification of Fort of São Julião da Barra. It was used to protect the Tagus from enemy ships, but in the 20th century it became the official summer residence of the Minister of Defense."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "carcavelos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4659,
+    "place_id": "gn-2875846",
+    "input": {
+      "place": {
+        "place_id": "gn-2875846",
+        "name": "Loschwitz",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 51.05386,
+        "lon": 13.81393
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Loschwitz",
+          "url": "https://en.wikipedia.org/wiki/Loschwitz",
+          "text": "Loschwitz (German pronunciation: [ˈlɔʃvɪts]) is a borough (Stadtbezirk) of Dresden, Germany, incorporated in 1921. It consists of ten quarters (Stadtteile):\n\nLoschwitz is a villa quarter located at the slopes north of the Elbe river. At the top of the hillside is the quarter of Weißer Hirsch, named after a former inn erected in 1685 by the Saxon kapellmeister Christoph Bernhard, where in 1888 the naturopathic physician Heinrich Lahmann opened a sanatorium. The quarters of Wachwitz and Pillnitz are adjacent in the east and the Rosengarten park in the west. Loschwitz is connected with the borough of Blasewitz south of the Elbe by the Blue Wonder (Blaues Wunder) bridge. Furthermore, the borough encompasses large parts of the Dresden Heath, the city's forest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "loschwitz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4670,
+    "place_id": "gn-5752024",
+    "input": {
+      "place": {
+        "place_id": "gn-5752024",
+        "name": "Silverton",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 45.00512,
+        "lon": -122.78315
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silverton, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Silverton,_Oregon",
+          "text": "Silverton is a city in Marion County, Oregon, United States. The city is situated along the 45th parallel about 14 miles (23 km) northeast of Salem, in the eastern margins of the broad alluvial plain of the Willamette Valley. The city is named after Silver Creek, which flows through the town from Silver Falls into the Pudding River, and thence into the Willamette River. The community of Milford was founded in 1846 with a sawmill, store and several other buildings two miles upstream from the present location of Silverton. In about 1853 a second sawmill was built on Silver Creek near where the Silverton city hall now stands. In 1854 the town of Silverton was platted and registered with Marion County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "silverton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4677,
+    "place_id": "gn-2746609",
+    "input": {
+      "place": {
+        "place_id": "gn-2746609",
+        "name": "Strijen",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.74521,
+        "lon": 4.55083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Strijen",
+          "url": "https://en.wikipedia.org/wiki/Strijen",
+          "text": "Strijen (Dutch pronunciation: [ˈstrɛiə(n)] ) is a town and former municipality in the western Netherlands, in the province of South Holland. The municipality, covering an area of 57.70 km2 (22.28 sq mi) of which 6.85 km2 (2.64 sq mi) is water, is located on the Hoeksche Waard island along the Hollands Diep estuary. On 1 January 2019 it was merged with the municipalities of Binnenmaas, Cromstrijen, Korendijk, and Oud-Beijerland to form the municipality of Hoeksche Waard.\n\nStrijen hosts a public library, swimming pool, a small shopping centre and a local museum.\nFurthermore, Strijen is home to an important and welcome resting stop for migrating birds, especially geese. During winter, the endangered Eurasian spoonbill uses this area as a foraging ground."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "strijen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4683,
+    "place_id": "gn-3862254",
+    "input": {
+      "place": {
+        "place_id": "gn-3862254",
+        "name": "Catriel",
+        "country": "Argentina",
+        "subdivision": "Rio Negro",
+        "lat": -37.87552,
+        "lon": -67.79451
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Catriel",
+          "url": "https://en.wikipedia.org/wiki/Catriel",
+          "text": "Colonia Catriel, or simply Catriel, is a town in the northern tip of the province of Río Negro, Argentina, near the border with La Pampa Province. It has a population of about 18,000, with postal code 8307 and telephone prefix 0299.\nCatriel was named after Cacique Catriel, a Native American who according to several stories participated in the defence of Argentine government interests against aborigines.\nThe town has a dry and temperate climate, with hot summers and winters which barely see snow. A characteristic dry strong wind is also common.\nThe main economic activity in and around the town is oil extraction, which started in 1959 and made the city grow fast, as state owned YPF set extraction points nearby."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "catriel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4686,
+    "place_id": "gn-5143966",
+    "input": {
+      "place": {
+        "place_id": "gn-5143966",
+        "name": "West Point",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.39148,
+        "lon": -73.95597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Point, New York",
+          "url": "https://en.wikipedia.org/wiki/West_Point,_New_York",
+          "text": "West Point is a census-designated place in Orange County, New York, United States. It is the oldest continuously occupied military post in the United States.\nLocated on the Hudson River in New York, General George Washington stationed his headquarters in West Point in the summer and fall of 1779 during the American Revolutionary War, and later called it \"the most important Post in America\" in 1781 following the war's end. West Point was also the site of General Benedict Arnold's failed attempt at treason during the Revolutionary War.\nWest Point was first occupied by the United States Armed Forces in January 1778 by Brigadier General Samuel Holden Parsons. Since then, West Point has been occupied by the United States Army."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "west point",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "point",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4687,
+    "place_id": "gn-5558857",
+    "input": {
+      "place": {
+        "place_id": "gn-5558857",
+        "name": "Anderson",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 40.44821,
+        "lon": -122.29778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anderson, California",
+          "url": "https://en.wikipedia.org/wiki/Anderson,_California",
+          "text": "Anderson is a city in Shasta County, California, United States, approximately 10 miles (16 km) south of Redding. Its population is 11,323 as of the 2020 census, up from 9,932 from the 2010 census.\nLocated 138 miles (222 km) north of Sacramento, the city's roots are as a railroad town near the northern tip of the Central Valley of California.\nThe city was named after ranch owner Elias Anderson, who granted the Oregon and California Railroad trackage rights and land for a station.  Elias Anderson was a farmer, hotel owner, and postmaster. Elias married Elizabeth Summers in 1839 and built the Prairie House in the community of Cottonwood in 1856 on the south side of Cottonwood Creek (now Tehama County)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "anderson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4688,
+    "place_id": "gn-5962442",
+    "input": {
+      "place": {
+        "place_id": "gn-5962442",
+        "name": "Goderich",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.74171,
+        "lon": -81.71339
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Goderich, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Goderich,_Ontario",
+          "text": "Goderich ( GOD-rich or GOD-ə-rich) is a town in the Canadian province of Ontario and is the county seat of Huron County. The town was founded by John Galt and William \"Tiger\" Dunlop of the Canada Company in 1827. First laid out in 1828, the town is named after Frederick John Robinson, 1st Viscount Goderich, who was prime minister of the United Kingdom at the time. It was incorporated as a town in 1850.\nAs of the Canada 2021 Census, the population is 7,881 in a land area of 8.54 square kilometres.\nLocated on the eastern shore of Lake Huron at the mouth of the Maitland River, Goderich faces the lake to the west and is notable for its sunsets."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "goderich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4695,
+    "place_id": "gn-3166243",
+    "input": {
+      "place": {
+        "place_id": "gn-3166243",
+        "name": "Spinetta Marengo",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 44.88554,
+        "lon": 8.6775
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spinetta Marengo",
+          "url": "https://en.wikipedia.org/wiki/Spinetta_Marengo",
+          "text": "Spinetta Marengo (Piedmontese: Marengh) is a town in Piedmont, Italy located within the municipal boundaries of the comune of Alessandria. The population is 6,417.\nOn 14 June 1800 the village was the scene of an important battle between the French army commanded by Napoleon and an Austrian army led by Melas. Every second Sunday in June, there is traditionally a costumed commemoration of the battle, drawing many international visitors. According to local legend, Majno, a thief who was said to have robbed Pope Pius VII while on his way to Paris in 1804 to crown Napoleon emperor, laid up in hiding in the woods of Fraschetta, just by Spinetta Marengo.\nThe dish Chicken Marengo is named after the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "spinetta marengo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spinetta",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marengo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4698,
+    "place_id": "gn-4371053",
+    "input": {
+      "place": {
+        "place_id": "gn-4371053",
+        "name": "Temple Hills",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.814,
+        "lon": -76.94553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Temple Hills, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Temple_Hills,_Maryland",
+          "text": "Temple Hills is an unincorporated area and census-designated place (CDP) in Prince George's County, Maryland, United States. Temple Hills borders the communities of Hillcrest Heights, Marlow Heights, Camp Springs and Oxon Hill. Per the 2020 census, the population was 8,350.\nThe community was named after Edward Temple, who in the 1860s lived in a home beside Henson Creek known as Moor Park. Within the area are numerous garden apartments, duplexes, and single family communities constructed mostly from the 1950s through 1970s. The adjacent, unincorporated communities of Hillcrest Heights and Marlow Heights, which are home to both the Iverson Mall & Marlow Heights Shopping Center, which both serve the community of Temple Hills, are assigned Temple Hills addresses and zipcodes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "temple hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "temple",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4702,
+    "place_id": "gn-7257905",
+    "input": {
+      "place": {
+        "place_id": "gn-7257905",
+        "name": "Fort Drum",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 44.05843,
+        "lon": -75.76189
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Drum",
+          "url": "https://en.wikipedia.org/wiki/Fort_Drum",
+          "text": "Fort Drum is a U.S. Army military reservation and a census-designated place (CDP) in Jefferson County, near the western border of northern New York, United States. The population of the CDP portion of the base was 12,955 at the 2010 census. It is home to the 10th Mountain Division.\nFort Drum consists of 107,265 acres (434.09 km2). In the region, winter temperatures can reach as low as −30 °F (−34 °C). Its mission includes command of active component units assigned to the installation, providing administrative and logistical support to tenant units, support to active and reserve units from all services in training at Fort Drum, and planning and support for the mobilization and training of almost 80,000 troops annually."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "fort drum",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "drum",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4703,
+    "place_id": "gn-753276",
+    "input": {
+      "place": {
+        "place_id": "gn-753276",
+        "name": "Zielonka",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 52.30376,
+        "lon": 21.16018
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zielonka",
+          "url": "https://en.wikipedia.org/wiki/Zielonka",
+          "text": "Zielonka [ʑɛˈlɔnka] is a town in Wołomin County, Masovian Voivodeship, Poland, with 17,398 inhabitants (2013). It is located about 13 km (8 mi) to the north-east of the centre of Warsaw.\nZielonka borders Warsaw and several other towns of the Warsaw metropolitan area: Ząbki and Marki in the west, Kobyłka in the north, and Sulejówek in the south. It was granted town rights in 1960.\nIn August 1920, the Battle of Ossów was fought nearby, as part of the Battle of Warsaw in which the Poles were victorious and repulsed the Soviet invasion. Within the town limits, near the village of Ossów, there is a cemetery of the fallen Polish soldiers with a chapel of Our Lady of Victory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "zielonka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4704,
+    "place_id": "gn-8478264",
+    "input": {
+      "place": {
+        "place_id": "gn-8478264",
+        "name": "Herzliya Pituah",
+        "country": "Israel",
+        "subdivision": "Tel Aviv",
+        "lat": 32.17409,
+        "lon": 34.8028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Herzliya Pituah",
+          "url": "https://en.wikipedia.org/wiki/Herzliya_Pituah",
+          "text": "Herzliya Pituah (also, Herzliya Pituach) (Hebrew: הרצליה פיתוח) is an affluent beachfront neighbourhood in the western part of the city of Herzliya, Israel, in the Tel Aviv District. Established in 1925, it has about 10,000 residents. Home to many wealthy Israelis, it is known for its hotels, restaurants and high-tech industry, and has the largest marina in Israel. It is considered one of Israel's most prestigious neighbourhoods.\nMost buildings in the residential areas of Herzliya Pituah are villas, though there are also luxury apartments. Galei Tchelet Street, located on a cliff adjacent to the beach in the north-western part of the neighborhood, is the most expensive street in Israel, and is home to the residences of several foreign ambassadors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "herzliya pituah",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "herzliya",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pituah",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

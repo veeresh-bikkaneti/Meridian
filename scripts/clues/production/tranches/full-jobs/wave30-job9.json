@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 6004,
+    "attempt": 5961,
+    "place_id": "gn-5095826",
+    "input": {
+      "place": {
+        "place_id": "gn-5095826",
+        "name": "Boonton",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.9026,
+        "lon": -74.4071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boonton, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Boonton,_New_Jersey",
+          "text": "Boonton () is a town in Morris County, in the U.S. state of New Jersey. As of the 2020 United States census, the town's population was 8,815, an increase of 468 (+5.6%) from the 2010 census count of 8,347, which in turn reflected a decline of 149 (−1.8%) from the 8,496 counted in the 2000 census. The settlement was originally called \"Boone-Towne\" in 1761 in honor of the Colonial Governor Thomas Boone.\nBoonton was originally formed on March 16, 1866, within portions of Hanover Township and Pequannock Township. The town was reincorporated and became fully independent on March 18, 1867.\nThe development of Boonton began in about 1829, as a result of the construction of the Morris Canal and the formation of the New Jersey Iron Company. The original location of the town is now largely under the Jersey City Reservoir, completed in 1904. In 1908, the waters from this reservoir were the first municipal water supply in the United States to be chlorinated. The decision to build the chlorination system was made by John L. Leal and the facility was designed by George W. Fuller."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "boonton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6005,
+    "attempt": 5962,
+    "place_id": "gn-5105733",
+    "input": {
+      "place": {
+        "place_id": "gn-5105733",
+        "name": "Upper Saddle River",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.05843,
+        "lon": -74.09848
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Upper Saddle River, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Upper_Saddle_River,_New_Jersey",
+          "text": "Upper Saddle River is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 8,353, an increase of 145 (+1.8%) from the 2010 census count of 8,208, which in turn reflected an increase of 467 (+6.0%) from the 7,741 counted in the 2000 census.\nUpper Saddle River had a per capita income of $73,639 and was ranked 20th in New Jersey based on data from the 2006–2010 American Community Survey (ACS) from the United States Census Bureau, more than double the statewide average of $34,858. In the 2013–2017 ACS, Upper Saddle River had a median household income of $176,674 (ranked 8th in the state) and included 42.9% of households earning more than $200,000 annually."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "upper saddle river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "upper",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "saddle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6006,
+    "attempt": 5963,
+    "place_id": "gn-5191024",
+    "input": {
+      "place": {
+        "place_id": "gn-5191024",
+        "name": "Germantown",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.04344,
+        "lon": -75.18018
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Germantown, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Germantown,_Philadelphia",
+          "text": "Germantown (German: Deutschstadt [ˈdɔʏtʃˌʃtat]) is an area in Northwest Philadelphia, Pennsylvania, United States. Founded by Palatine, Quaker, and Mennonite families in 1683 as an independent borough, it was absorbed into Philadelphia in 1854. The area, which is about six miles northwest from the city center, now consists of two neighborhoods: Germantown and East Germantown.\nThe area is rich in historic sites and buildings from the colonial era, some of which are open to the public. Germantown played a significant role in American history; it was the birthplace of the American antislavery movement, the site of a Revolutionary War battle, the temporary residence of George Washington, the location of the first bank of the United States, and the residence of many notable politicians, scholars, artists, and social activists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "germantown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6007,
+    "attempt": 5964,
+    "place_id": "gn-5373497",
+    "input": {
+      "place": {
+        "place_id": "gn-5373497",
+        "name": "Mira Mesa",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 32.9156,
+        "lon": -117.14392
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mira Mesa, San Diego",
+          "url": "https://en.wikipedia.org/wiki/Mira_Mesa,_San_Diego",
+          "text": "Mira Mesa (Spanish for \"Table View\"), which was established in the late 1960s, is a community and neighborhood in San Diego, California. The city-recognized Mira Mesa Community Plan Area is roughly bounded by Interstate 15 on the east, Interstate 805 on the west, the Los Peñasquitos Canyon on the north and Marine Corps Air Station Miramar on the south. Most of the community plan area is referred to as Mira Mesa; the community plan area also includes the neighborhoods of Sorrento Valley and Sorrento Mesa.\nThe Mira Mesa neighborhood, as defined by the San Diego Police Department's neighborhood map, is roughly bounded by Interstate 15 to the east, Camino Santa Fe to the west, the Los Peñasquitos Canyon to the north and Carroll Canyon to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "mira mesa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mira",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mesa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6008,
+    "attempt": 5965,
+    "place_id": "gn-5385793",
+    "input": {
+      "place": {
+        "place_id": "gn-5385793",
+        "name": "Ramona",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.04171,
+        "lon": -116.86808
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ramona, San Diego County, California",
+          "url": "https://en.wikipedia.org/wiki/Ramona,_San_Diego_County,_California",
+          "text": "Ramona is a census-designated place (CDP) in San Diego County, California, United States.  The population was 21,468 at the 2020 census, up from 20,292 at the 2010 census.\nThe name Ramona also refers to an unincorporated community of San Diego (with some plans to incorporate) that includes both the Ramona CDP and the adjacent CDP of San Diego Country Estates. The population of the two CDPs, which does not include the fringe areas surrounding the CDPs, was 30,301 at the 2010 census, up from 25,223 at the 2000 census. The Ramona Community Planning Area had a population of 33,404 at the 2000 census. The January 1, 2006, population of the Ramona Community Planning Area is estimated to be 36,405 by the San Diego Association of Governments (SANDAG). USDA Hardiness Zones are 9b and 10a."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "ramona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6010,
+    "attempt": 5966,
+    "place_id": "gn-604419",
+    "input": {
+      "place": {
+        "place_id": "gn-604419",
+        "name": "Malmberget",
+        "country": "Sweden",
+        "subdivision": "Norrbotten",
+        "lat": 67.17529,
+        "lon": 20.65495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malmberget",
+          "url": "https://en.wikipedia.org/wiki/Malmberget",
+          "text": "Malmberget (lit. 'The Ore Mountain'; Finnish: Malmivaara; Meänkieli: Malmivaara) is a locality and mining town situated in Gällivare Municipality, Norrbotten County, Sweden. It had 5,590 inhabitants in 2010, reduced to 927 by December 2020. It is situated five kilometres (3 mi) from the municipal seat of Gällivare.\nThe entire Malmberget town was moved in 2020/2021 due to mining activities in the area.\nMalmberget is known as a major site for the extraction of iron ore from deep mines by Swedish mining company LKAB. Iron ore mining started in 1741 at Illuvaara mountain, later known as Gällivare Malmberg and eventually just Malmberget. The first train  transporting iron ore was loaded in 1888—the beginning of the great iron ore rush that would change the entire area of Northern Lapland. In Malmberget there was plentiful employment, but no dwellings—a striking resemblance to the conditions during some of the gold rushes in North America. During the first years, workers lived in shacks built from waste dynamite crates.\nIn the centre of Malmberget, the deep mine has reached daylight and created a large hole called Kaptensgropen ('The Captain's Pit'). In March 2012, Kaptensgropen was joined with a new pit resulting from the planned sub-level caving of the Fabian deposit, and has grown southwards as the deep mining continues, dividing the town and making the old town centre uninhabitable, forcing many institutions, such as two cinemas and a church, to move to the western part of Malmberget or, even more commonly, to the neighbouring town of Gällivare.\nToday, Kaptensgropen is being back-filled with waste rock produced by the underground mines. Kaptensgropen will eventually be filled in, but the uninhabitable area is continually growing as underground mining undermines the area and seismic events caused by the mining regularly shake the remaining parts of Malmberget. The future of Malmberget was for a long time uncertain, but exploration by LKAB indicated that even more of Malmberget may need to be moved in the future. The moving of several large residential houses owned by the mining company, as well as private villas, has been a major issue locally for the past few years.\nThe iron ore extracted from Malmberget is transported by rail southeast to the port of Luleå."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 369
+    },
+    "banned_terms": [
+      {
+        "term": "malmberget",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6011,
+    "attempt": 5967,
+    "place_id": "gn-6179268",
+    "input": {
+      "place": {
+        "place_id": "gn-6179268",
+        "name": "Weston",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.70359,
+        "lon": -79.51513
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Weston, Toronto",
+          "url": "https://en.wikipedia.org/wiki/Weston,_Toronto",
+          "text": "Weston is a neighbourhood and former town in Toronto, Ontario, Canada. The neighbourhood is situated in the northwest of the city, south of Highway 401 and Highway 400/Black Creek Drive, east of the Humber River, north of Eglinton Avenue, and west of Jane Street. The eponymous Weston Road, just north of Lawrence Avenue is the historic core of Weston, with many small businesses and services. Weston was incorporated as a village in the 19th century and was absorbed into the Borough of York in the late 1960s. York itself was amalgamated into Toronto in 1998. Weston is one of the few former towns and villages in Toronto located in a generally suburban setting, although it is contiguous with the inner city to the southeast along Weston Road. It is also one of the few not developed as a planned satellite town, as is the case with Leaside or New Toronto."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "weston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6012,
+    "attempt": 5968,
+    "place_id": "gn-6620310",
+    "input": {
+      "place": {
+        "place_id": "gn-6620310",
+        "name": "Didsbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.41698,
+        "lon": -2.23145
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Didsbury",
+          "url": "https://en.wikipedia.org/wiki/Didsbury",
+          "text": "Didsbury is a suburb of Manchester, England, on the north bank of the River Mersey, 5 miles (8 kilometres) south of Manchester city centre. The population at the 2021 census was 21,913.\nWithin the boundaries of the historic county of Lancashire, there are records of Didsbury existing as a small hamlet as early as the 13th century. Its early history was dominated by being part of the Manor of Withington, a feudal estate that covered a large part of what is now the south of Manchester. Didsbury was described during the 18th century as a township separate from outside influence. In 1745 a section of the Jacobite army including the Duke of Perth crossed the Mersey at Didsbury in the Jacobite march south from Manchester to Derby.\nDidsbury was largely rural until the mid-19th century, when it underwent development and urbanisation during the Industrial Revolution. It became part of Manchester in 1904.\nThe Royal Society for the Protection of Birds was formed in Didsbury in 1889."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "didsbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6013,
+    "attempt": 5969,
+    "place_id": "gn-6690870",
+    "input": {
+      "place": {
+        "place_id": "gn-6690870",
+        "name": "Becontree",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.5529,
+        "lon": 0.129
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Becontree",
+          "url": "https://en.wikipedia.org/wiki/Becontree",
+          "text": "Becontree ( or ) is an area of the London Borough of Barking and Dagenham, England, 11 miles (17.7 km) northeast of Charing Cross. It was constructed between 1921 and 1935 as the largest public housing estate in the world. The Housing, Town Planning, &c. Act 1919 allowed London County Council to build housing outside the County of London and Becontree was designed to cottage estate principles in Barking, Dagenham and Ilford, then in the administrative county of Essex. The official completion of the estate was celebrated in 1935, by which time the estate had a population of around 100,000 people in 26,000 homes.\nThe building of the estate caused a huge increase in population density, which led to demands on services and reforms of local government. An additional 1,000 houses were added in later phases. The estate had no industrial and very little commercial development until the May & Baker and Ford Dagenham sites opened nearby, and a shopping area was built at Heathway. The estate has formed part of Greater London since 1965, when the Barking section was combined with Dagenham, and has been within a single London borough since boundary changes caused the Ilford section to be transferred from Redbridge to Barking and Dagenham in 1994."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "becontree",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6014,
+    "attempt": 5970,
+    "place_id": "gn-7932643",
+    "input": {
+      "place": {
+        "place_id": "gn-7932643",
+        "name": "Caulfield South",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.89562,
+        "lon": 145.02597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caulfield South",
+          "url": "https://en.wikipedia.org/wiki/Caulfield_South",
+          "text": "Caulfield South is a suburb in Melbourne, Victoria, Australia, 10 km south-east of Melbourne's Central Business District, located within the City of Glen Eira local government area. Caulfield South recorded a population of 12,328 at the 2021 census.\nCaulfield South is bounded by Glen Huntly Road to the north, Booran Road to the east, North Road to the south and Kooyong Road to the west. Although it has no railway station, it is serviced by tram routes 64 and 67. Elsternwick, Glen Huntly and Caulfield railway stations are all within a short drive, with both Elsternwick and Glenhuntly stations accessible via the number 67 tram.\nOne landmark of note is the Caulfield General Medical Centre, which began life as one of the local mansions, the Glen Eira. This was purchased in 1915 by the Australian Department of Defence and turned into No. 11 Army General Hospital where it served as a rehabilitation centre for returned servicemen from the Great War who sustained permanent or severe injuries. It has since undergone many changes of purpose and management and currently caters primarily for rehabilitation and geriatric medicine.\nThe Brighton Cemetery is also located in Caulfield South, and pre-dates the Caulfield Roads Board - the first official recognition of the suburb of Caulfield. Opened in 1855 it became, together with St Kilda Cemetery, an alternative resting place for those who had lived south of the Yarra River. There are up 70,000 people interred, including famous Australian artists, politicians and military heroes.\nCaulfield South has many parks and gardens, the most notable of which is Princes Park. The area was a council landfill up until the middle of the twentieth century, when it was transformed into public park lands. It has been improved further and now includes several ovals and playing fields, sports clubs, pavillons, open spaces, children's playgrounds and many paved walking tracks with dog walking welcome.\nThe Rosstown Railway once ran through Caulfield South, and its traversal through several suburban blocks remains public land to this day, an easy identifier of where the track once ran.\nThe architecture of Caulfield South is predominately period-style detached 2 and 3 bedroom family homes with both front and rear gardens. Not all properties have off-street parking and rely on space available on the street. The architectural styles range from the early 1900s and onwards with common styles being Edwardian weather board to Californian Bungalow to Red Brick Clinker pairs which share a common wall. An increasing trend is the demolition of the original house to construct a large, two-storey modern house. There are also a growing number of higher density apartments and flats appearing, especially close to the tram lines.\nNative wildlife that inhabit the suburb include both ring tail and brush tail possums, magpies, crested pigeons, rainbow lorikeets and wattle birds.\nBased on findings from the 2011 census and their own research, The Australian Centre for Jewish Civilisation at Monash University estimates that the suburb has 5,005 Jewish residents, comprising 44.4% of the suburb's population. Results from the 2016 census indicated a Jewish population of 4,008, a percentage of 33.9."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 516
+    },
+    "banned_terms": [
+      {
+        "term": "caulfield south",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "caulfield",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6015,
+    "attempt": 5971,
+    "place_id": "gn-8541937",
+    "input": {
+      "place": {
+        "place_id": "gn-8541937",
+        "name": "Dubai Festival City",
+        "country": "United Arab Emirates",
+        "subdivision": "Dubai",
+        "lat": 25.22177,
+        "lon": 55.35733
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dubai Festival City",
+          "url": "https://en.wikipedia.org/wiki/Dubai_Festival_City",
+          "text": "Dubai Festival City (DFC) (Arabic: دبي فستيفال سيتي), also known as Al Kheeran, is a large-scale mixed-use waterfront development on the eastern bank of Dubai Creek. Developed by Al-Futtaim Real Estate, the project spans 5.2 million square metres and functions as a self-contained \"city-within-a-city.\"\nIt has residential and commercial properties, including Marsa Plaza, Al Badia Residences, Al Badia Hillside, Al Badia Living, the Dubai Festival City Mall with over 400 outlets, an IHG hotel complex with over 1,600 rooms, a marina, and a golf course. Other features include the IMAGINE light and water show, the BOUNCE-X Freestyle Terrain Park, Market Island, and a 3.3 km waterfront promenade. Located two kilometres from Dubai International Airport, it is one of the largest privately developed projects in the Middle East."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "dubai festival city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dubai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "festival",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6016,
+    "attempt": 5972,
+    "place_id": "gn-9973121",
+    "input": {
+      "place": {
+        "place_id": "gn-9973121",
+        "name": "Hallett Cove",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -35.07923,
+        "lon": 138.5146
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hallett Cove, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Hallett_Cove,_South_Australia",
+          "text": "Hallett Cove is a coastal suburb of Adelaide, South Australia located in the City of Marion 21 kilometres (13 miles) south of the Adelaide city centre. It has a population of more than 12,000 people. Adjoining suburbs are Marino to the north, Trott Park and Sheidow Park to the east and Lonsdale to the south.\nThe name Kareildung has been mistakenly ascribed to Hallett Cove as an Indigenous name. The Kaurna name of Murrkangga was derived from the meaning of Kareildung and applied specifically to the Amphitheatre in the Hallett Cove Conservation Park.\nSites within the conservation park are of great geological and archaeological significance, as well as containing sites of great cultural significance to the Kaurna people, including a significant site on the Tjilbruke Dreaming Track. The park features Aboriginal artefacts used by the Kaurna people about 2,000 and the Kartan people up to 40,000 years ago. Geological features include glacial striations on the clifftop which form part of the evidence for the Permian glaciation of southern Australia, then part of Gondwana.\nHallett Cove itself is a small rocky beach, named after John Hallett, who came across it in 1837 whilst searching for missing stock. The Field River runs out to sea at the southern end. The cliffs to the north are part of the conservation park.\nThe Hallett Cove Shopping Centre (now named the Hallett Cove Pavilion) is the suburb's largest shopping centre, and includes underground parking, a food court, a Big W department store, and Woolworths and Drake's supermarkets."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "hallett cove",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hallett",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cove",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6017,
+    "attempt": 5973,
+    "place_id": "gn-1861261",
+    "input": {
+      "place": {
+        "place_id": "gn-1861261",
+        "name": "Itsukaichi",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.72528,
+        "lon": 139.21778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itsukaichi, Tokyo",
+          "url": "https://en.wikipedia.org/wiki/Itsukaichi,_Tokyo",
+          "text": "Itsukaichi (五日市町, Itsukaichi-machi) was a town located in Nishitama District, Tokyo Metropolis, Japan.\nItsukaichi Town, a medieval settlement, was promoted to town status within Kanagawa Prefecture in 1879, and merged with Konakano Village on April 1, 1889. The entire district was transferred to the administrative control of Tokyo Metropolis on April 1, 1893. The town expanded through annexation of the neighboring villages of Mitsusato and Meiji in 1918, and with Masuko, Tokura and Komiya in 1955. In 1995, the town of Itsukaichi merged with the city of Akigawa to form the new city of Akiruno, and thus no longer exists as an independent municipality.\nAt the time of its merger, the town had an estimated population of 22,252 and a density of 437 persons per km2. The total area was 50.90 km2."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "itsukaichi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6018,
+    "attempt": 5974,
+    "place_id": "gn-200304",
+    "input": {
+      "place": {
+        "place_id": "gn-200304",
+        "name": "Bondo",
+        "country": "Kenya",
+        "subdivision": "Siaya County",
+        "lat": 0.23522,
+        "lon": 34.28086
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bondo, Kenya",
+          "url": "https://en.wikipedia.org/wiki/Bondo,_Kenya",
+          "text": "Bondo is a municipality in Siaya County of Kenya. It has traditionally been a fishing town and its entire economy rotates around the fish from Lake Victoria. It the largest and most populous town of the county. Located 64 kilometers west of Kisumu, Bondo was established in the early 1920s as a market centre. In the 1990s, it became the headquarters of Bondo district which was carved out of the larger Siaya District.\nThe municipality has developed and expanded over the years and is currently a busy and vibrant economic and educational hub with not only a university, Jaramogi Oginga Odinga University of Science and Technology, but also other tertiary institutions such as Kenya Medical Training College, Bondo Teachers Training College and Bondo Technical Training Institute. It had a population of 22,712 (2019 census). Some secondary schools in Bondo include Nyamira girls high school, Maranda boys high school, Jaramogi Oginga Odinga secondary school, Barkowino secondary school, Kapiyo secondary school and Bondo township.\nFinancial institutions which have offices and branches in the town include Cooperative Bank, Kenya Commercial Bank, Equity Holdings, Diamond Trust Bank and Post Bank. They are all located along the town's main road.\nBondo Municipal council has five wards: Ajigo, Bar Kowino East, Bar Kowino West, Bondo Town and Nyawita which is also known as Maranda. All of them are part of Bondo Constituency."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 226
+    },
+    "banned_terms": [
+      {
+        "term": "bondo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6019,
+    "attempt": 5975,
+    "place_id": "gn-2268615",
+    "input": {
+      "place": {
+        "place_id": "gn-2268615",
+        "name": "Elvas",
+        "country": "Portugal",
+        "subdivision": "Portalegre",
+        "lat": 38.8815,
+        "lon": -7.16282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elvas",
+          "url": "https://en.wikipedia.org/wiki/Elvas",
+          "text": "Elvas (Portuguese pronunciation: [ˈɛlvɐʃ] ), officially the City of Elvas (Portuguese: Cidade de Elvas), is a Portuguese municipality, former episcopal city and frontier fortress of easternmost central Portugal, located in the district of Portalegre in Alentejo. It is situated about 200 kilometres (120 mi) east of Lisbon, and about 8 kilometres (5.0 mi) west of the Spanish fortress of Badajoz, by the Madrid-Badajoz-Lisbon railway. The municipality population as of 2011 was 23,078, in an area of 631.29 square kilometres (243.74 sq mi). The city itself had a population of 16,640 as of 2011.\nElvas is among the finest examples of intensive usage of the trace italienne (star fort) in military architecture, and including is old town, has been a World Heritage Site since 30 June 2012."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "elvas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6020,
+    "attempt": 5976,
+    "place_id": "gn-2272379",
+    "input": {
+      "place": {
+        "place_id": "gn-2272379",
+        "name": "A dos Cunhados",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 39.15237,
+        "lon": -9.2972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "A dos Cunhados",
+          "url": "https://en.wikipedia.org/wiki/A_dos_Cunhados",
+          "text": "A dos Cunhados (European Portuguese pronunciation: [ɐ ðuʃ kuˈɲaðuʃ]) is a civil parish in the municipality of Torres Vedras in the central Oeste subregion of Portugal. Covering an area of approximately 44.33 square kilometres (17.12 mi2), its population in 2016 was 8001 residents.\nThe name A dos Cunhados reflects the first inhabitants: three brothers-in-law (cunhados) who lived on a large estate that was later divided among them and their descendants. However, writings by the bishop of Targa indicate that there were two brothers-in-law rather than three. Depending on the account, the estate was called either Quinta dos Dos Cunhados (Farm of the two brothers-in-law) or Quinta dos Cunhados (Farm of the brothers-in-law). Local people sometimes refer to the original name as casal (hamlet) rather than quinta."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "a dos cunhados",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "a",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "cunhados",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6021,
+    "attempt": 5977,
+    "place_id": "gn-2523890",
+    "input": {
+      "place": {
+        "place_id": "gn-2523890",
+        "name": "Pantelleria",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 36.82836,
+        "lon": 11.94611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pantelleria",
+          "url": "https://en.wikipedia.org/wiki/Pantelleria",
+          "text": "Pantelleria (Italian: [pantelleˈriːa]; Sicilian: Pantiḍḍirìa [pandɪɖɖɪˈɾiːa]), known in ancient times as Cossyra or Cossura, is an island and comune (municipality) in the Strait of Sicily in the Mediterranean Sea, 106 kilometres (55 nautical miles) southwest of Sicily and 68 km (35 nmi) east of the Tunisian coast. Administratively, Pantelleria's comune belongs to the Province of Trapani in the autonomous island region of Sicily in southern Italy. It has 7,150 inhabitants.\nWith an area of 83 km2 (32 sq mi), Pantelleria is the largest volcanic satellite island of Sicily. The last eruption occurred below sea level in 1891, and today phenomena related to volcanic activity are present, such as hot springs and fumaroles. The highest peak, the Montagna Grande, reaches 836 m (2,743 ft) above sea level. The islanders speak Pantesco, a dialect of Sicilian influenced by Arabic.\nSpecchio di Venere lake is a soda lake.\nOn clear days, Tunisia is visible from the island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "pantelleria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6022,
+    "attempt": 5978,
+    "place_id": "gn-257056",
+    "input": {
+      "place": {
+        "place_id": "gn-257056",
+        "name": "Mykonos",
+        "country": "Greece",
+        "subdivision": "South Aegean",
+        "lat": 37.44529,
+        "lon": 25.32872
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mykonos",
+          "url": "https://en.wikipedia.org/wiki/Mykonos",
+          "text": "Mykonos (, UK also ; Greek: Μύκονος [ˈmikonos]) is a Greek island, part of the Cyclades, lying between Tinos, Syros, Paros and Naxos. The island has an area of 85.5 square kilometres (33.0 sq mi) and rises to an elevation of 341 metres (1,119 feet) at its highest point. At the 2021 census, there were 10,704 inhabitants, most of whom lived in the largest town, Mykonos, which is on the west coast. The town is also known as Chora (i.e. 'Town' in Greek, following the common practice in Greece when the name of the island itself is the same as the name of the principal town).\nMykonos's nickname is \"The Island of the Winds\", due to the very strong winds that usually blow on the island. Tourism is a major industry and Mykonos is known for its vibrant nightlife."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "mykonos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6023,
+    "attempt": 5979,
+    "place_id": "gn-2610020",
+    "input": {
+      "place": {
+        "place_id": "gn-2610020",
+        "name": "Vordingborg",
+        "country": "Denmark",
+        "subdivision": "Zealand",
+        "lat": 55.00801,
+        "lon": 11.91057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vordingborg",
+          "url": "https://en.wikipedia.org/wiki/Vordingborg",
+          "text": "Vordingborg (Danish pronunciation: [ˌvɒːte̝ŋˈpɒˀ]) is a market town and old ferry town on the south coast of the island of Zealand in Denmark. Because of three large estates surrounding the town, a coherent urban development has not been possible, which is the reason why three satellite towns (former villages) have emerged around the town. Within the ring of estates, the town has a population of 11,850 (1 January 2026), and a population of 17,940 when including the three satellite towns of Ørslev, Nyråd, and Stensved, situated 1, 3 and 5 kilometres, respectively, from the town of Vordingborg. Vordingborg is located in Vordingborg Municipality in Region Zealand. Vordingborg Municipality (Kommune) has a population of 44,831.\nVordingborg is situated on the southern coast of the island of Zealand. It lies adjacent to the Storstrømmen, a strait separating the island of Zealand from the island of Falster."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "vordingborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6024,
+    "attempt": 5980,
+    "place_id": "gn-2635412",
+    "input": {
+      "place": {
+        "place_id": "gn-2635412",
+        "name": "Truro",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.26526,
+        "lon": -5.05436
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Truro",
+          "url": "https://en.wikipedia.org/wiki/Truro",
+          "text": "Truro ( ; Cornish: Truru [ˈtrʏryː] ) is a cathedral city and civil parish in Cornwall, England. It is the southernmost city in the United Kingdom and lies 232 miles (373 km) west-south-west of London. It is Cornwall's county town, only city and a centre for administration, leisure and shopping. At the 2021 census the population of the parish was 21,046 and that of the built-up area was 23,060, as defined by the Office for National Statistics, which included the Gloweth and Treliske areas in the neighbouring parish of Kenwyn.\nTruro grew as a trade centre through its port and as a stannary town for tin mining. It was awarded city status in 1877, following the creation of the Diocese of Truro in the previous year. Truro Cathedral was built between 1880 and 1910. The city is home to Cornwall Council, the Cornwall Museum and Art Gallery, the Hall for Cornwall and the county's Courts of Justice."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "truro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

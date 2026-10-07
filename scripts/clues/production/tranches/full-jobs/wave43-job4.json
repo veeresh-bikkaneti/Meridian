@@ -1,0 +1,867 @@
+[
+  {
+    "rank": 8519,
+    "attempt": 8461,
+    "place_id": "gn-2647343",
+    "input": {
+      "place": {
+        "place_id": "gn-2647343",
+        "name": "Hatfield Peverel",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.77591,
+        "lon": 0.59489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hatfield Peverel",
+          "url": "https://en.wikipedia.org/wiki/Hatfield_Peverel",
+          "text": "Hatfield Peverel is a village and civil parish at the centre of Essex, England.  It is located 6 miles (10 km) north-east from Chelmsford, the nearest large city, to which it is connected by road and rail. The parish includes the hamlets of Nounsley and Mowden. Hatfield means a 'heathery space in the forest'; Peverel refers to William Peverel, the Norman knight granted lands in the area by William the Conqueror after the Norman invasion of 1066. Sited on high ground east of the River Ter, between Boreham and Witham on the A12, it is situated in the southern extremity of the Braintree District Council area (to which it elects two members).\nAt the 2021 census the parish had a population of 4,285 and the built up area had a population of 3,797.\nHatfield Peverel is the site of a priory founded by the Saxon Ingelrica, wife of Ranulph Peverel and reputed to be the mistress of William the Conqueror, to atone for her sins, and dissolved by Henry VIII."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "hatfield peverel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hatfield",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "peverel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8520,
+    "attempt": 8462,
+    "place_id": "gn-2649428",
+    "input": {
+      "place": {
+        "place_id": "gn-2649428",
+        "name": "Finedon",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.33917,
+        "lon": -0.65008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Finedon",
+          "url": "https://en.wikipedia.org/wiki/Finedon",
+          "text": "Finedon is a town and civil parish in North Northamptonshire, \nEngland, with a population at the 2021 census of 4,552. In 1086 when the Domesday Book was completed, Finedon (then known as Tingdene) was a large royal manor, previously held by Queen Edith, wife of Edward the Confessor.\nFrom the 1860s the parish was much excavated for its iron ore, which lay underneath a layer of limestone and was quarried over the course of 100 years or more. Local furnaces produced pig iron and later the quarries supplied ore for the steel works at Corby. A disused quarry face in the south of the parish is a geological SSSI. Finedon is situated 4 miles (6.4 km) to the north east of Wellingborough. Nearby towns and villages include Irthlingborough, Burton Latimer and Great Harrowden."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "finedon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8521,
+    "attempt": 8463,
+    "place_id": "gn-3163443",
+    "input": {
+      "place": {
+        "place_id": "gn-3163443",
+        "name": "Åkrehamn",
+        "country": "Norway",
+        "subdivision": "Rogaland",
+        "lat": 59.26053,
+        "lon": 5.18689
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Åkrehamn",
+          "url": "https://en.wikipedia.org/wiki/Åkrehamn",
+          "text": "(commonly known as simply Åkra) is a small town in Karmøy Municipality in Rogaland county, Norway.  The town is located on the west side of the island of Karmøy in the traditional district of Haugaland and the Haugesund Region, a statistical metropolitan area. The town sits about 5 kilometres (3.1 mi) west of the town of Kopervik, about 12 kilometres (7.5 mi) north of the town of Skudeneshavn, and about 25 kilometres (16 mi) southwest of the town of Haugesund. The village of Veavågen lies immediately to the northeast of Åkrehamn (and it is considered part of the urban area of Åkrehamn).\nThe 4.37-square-kilometre (1,080-acre) town has a population (2025) of 8,202 and a population density of 1,877 inhabitants per square kilometre (4,860/sq mi). The village of Åkrehamn gained town status in 2002. Since it declared town status, Åkrehamn has blossomed and is now the second largest town in Karmøy Municipality, after the nearby town of Kopervik. The good economy of Norway has brought capital and investments to Åkrehamn, and in the last couple of years, the town has been expanded. Apartments and houses have been built and new fields of industry introduced.\nThe northern part of Åkrehamn now encompasses the old fishing village of Sævelandsvik. It is centered on the protected harbor area called Mannes.  The economy of this area is centered on fishing and some other small industries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "akrehamn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8522,
+    "attempt": 8464,
+    "place_id": "gn-4400427",
+    "input": {
+      "place": {
+        "place_id": "gn-4400427",
+        "name": "New Madrid",
+        "country": "United States",
+        "subdivision": "Missouri",
+        "lat": 36.58645,
+        "lon": -89.52785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Madrid, Missouri",
+          "url": "https://en.wikipedia.org/wiki/New_Madrid,_Missouri",
+          "text": "New Madrid ( MAD-rid; Spanish: Nueva Madrid) is a city in and the county seat of New Madrid County, Missouri, United States. The population was 2,787 at the 2020 census. The city is located 42 miles (68 km) southwest of Cairo, Illinois, and north of an exclave of Fulton County, Kentucky, across the Mississippi River.\nThe town is on the north side of the Kentucky Bend in the Mississippi River, which is also known as \"New Madrid Bend\" or \"Madrid Bend.\" The river curves in an oxbow around an exclave of Fulton County, Kentucky. Scientists expect the river eventually to cut across the neck of the peninsula and make a more direct channel, leaving the Kentucky territory as an island.\nNew Madrid was the epicenter of the very powerful 1811–12 New Madrid earthquakes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "new madrid",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "madrid",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8523,
+    "attempt": 8465,
+    "place_id": "gn-5095691",
+    "input": {
+      "place": {
+        "place_id": "gn-5095691",
+        "name": "Beverly",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.06539,
+        "lon": -74.91906
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beverly, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Beverly,_New_Jersey",
+          "text": "Beverly is a city in Burlington County in the U.S. state of New Jersey. As of the 2020 United States census, the city's population was 2,499, a decrease of 78 (−3.0%) from the 2010 census count of 2,577, which in turn had reflected a decline of 84 (−3.2%) from the 2,661 counted in the 2000 census. The city and all of Burlington County constitute a part of the Philadelphia metropolitan area.\nBeverly was originally incorporated as a borough on March 5, 1850, within Willingboro Township. Beverly was incorporated as a city by an act of the New Jersey Legislature on April 13, 1857, replacing Beverly borough, based on the results of a referendum held that day. Beverly Township, formed in 1859, co-existed alongside Beverly City and was renamed as Delanco Township in 1926. The borough was named for Beverley, England.\nThe city had the 15th-highest property tax rate in New Jersey, with an equalized rate of 4.550% in 2020, compared to 2.676% in the county as a whole and a statewide average of 2.279%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "beverly",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8524,
+    "attempt": 8466,
+    "place_id": "gn-5104798",
+    "input": {
+      "place": {
+        "place_id": "gn-5104798",
+        "name": "South Bound Brook",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.55344,
+        "lon": -74.53154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Bound Brook, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/South_Bound_Brook,_New_Jersey",
+          "text": "South Bound Brook is a borough in Somerset County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 4,863, an increase of 300 (+6.6%) from the 2010 census count of 4,563, which in turn reflected an increase of 71 (+1.6%) from the 4,492 counted in the 2000 census.\nWhat is now South Bound Brook was originally formed as a town within Franklin Township. On March 16, 1869, the name of the community was changed to Bloomington, which lasted until May 29, 1891, when the name reverted to South Bound Brook town. South Bound Brook was incorporated as an independent borough by an act of the New Jersey Legislature on April 11, 1907, based on the results of a referendum held on May 1, 1907."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "south bound brook",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bound",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "brook",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8525,
+    "attempt": 8467,
+    "place_id": "gn-5182064",
+    "input": {
+      "place": {
+        "place_id": "gn-5182064",
+        "name": "Bryn Mawr",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.01983,
+        "lon": -75.30463
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bryn Mawr, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Bryn_Mawr,_Pennsylvania",
+          "text": "Bryn Mawr ( brin MAR; from Welsh for 'big hill', IPA: [brɨn ˈmaur]) is a census-designated place (CDP) located in Delaware County, Pennsylvania, United States. It is located just west of Philadelphia along Lancaster Avenue, also known as U.S. Route 30. As of 2020, the CDP is defined to include sections of Lower Merion Township, Montgomery County, as well as portions of Haverford Township and Radnor Township.\nBryn Mawr is located toward the center of what is known as the Main Line, a group of affluent Philadelphia suburban villages stretching from the city limits to Malvern. They became home to sprawling country estates belonging to Philadelphia's wealthiest families during the Gilded Age, and over the decades became a bastion of old money. As of the 2020 census, it had a population of 5,879. Bryn Mawr is home to Bryn Mawr College, and contains a sizable amount of student rentals, with roughly half of the community's population aged 18–24."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "bryn mawr",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bryn",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mawr",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8526,
+    "attempt": 8468,
+    "place_id": "gn-5370464",
+    "input": {
+      "place": {
+        "place_id": "gn-5370464",
+        "name": "Marin City",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.86854,
+        "lon": -122.50914
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marin City, California",
+          "url": "https://en.wikipedia.org/wiki/Marin_City,_California",
+          "text": "Marin City is an unincorporated community and census-designated place (CDP) in Marin County, California, United States. As of the 2020 census, it had a population of 2,993, up from 2,666 in 2010. It is located 1.5 miles (2.4 kilometers) northwest of downtown Sausalito, 8 miles (13 km) south-southeast of San Rafael, and about 5 miles (8 km) north of San Francisco from the Golden Gate Bridge, at an elevation of 23 feet (7.0 m). Marin City was developed for housing starting in 1942, to accommodate wartime shipyard workers and other migrants to California. Among those were African Americans from the South in the Great Migration, which continued until 1970.\nAfter World War II, the area became predominantly African-American, as White residents were able to move freely to private housing elsewhere in Marin County. Since the 1980s, additional development has changed the makeup of the population while providing more local jobs. While Marin City has not had a Black majority since the 1990s, Marin City's socioeconomic and racial makeup nevertheless contrasts with the largely White and wealthy population in Marin County overall, having a far higher Black population per capita and less than half the median household income."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "marin city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "marin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8527,
+    "attempt": 8469,
+    "place_id": "gn-682478",
+    "input": {
+      "place": {
+        "place_id": "gn-682478",
+        "name": "Ceamurlia de Jos",
+        "country": "Romania",
+        "subdivision": "Tulcea County",
+        "lat": 44.73333,
+        "lon": 28.71667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ceamurlia de Jos",
+          "url": "https://en.wikipedia.org/wiki/Ceamurlia_de_Jos",
+          "text": "Ceamurlia de Jos (Romanian pronunciation: [t͡ʃe̯amurˈli.a de ʒos]; meaning \"Lower Ceamurlia\") is a commune in the southeast of Tulcea County, Northern Dobruja, Romania. It has a total population of 2,620 and it has an area of 119,43 km². The Golovița Lake is located south of this commune. Its name is derived from Turkish Çamurlu, meaning \"muddy\".\nA part of the inhabitants of this commune are Aromanians that were deported from Southern Dobruja, where they settled from the Southern Balkans during the Romanian rule of the region, after it was ceded back to Bulgaria in 1940 according to the terms of the Treaty of Craiova.\nAt the 2021 census Ceamurlia de Jos had a population of 2,122 with a majority of Romanians (92.37%) and a minority of Bulgarians (0.51%), others (0.19%) and unknown (6.93%).\nCeamurlia de Jos commune is composed of two villages:\n\nCeamurlia de Jos, with a population of 1,258 and an area of 1,69 km²\nLunca, with a population of 1,362 and an area of 1,66 km², located 4 km east of the Ceamurlia de Jos village.\nCeamurlia de Jos was the place where the H5N1 strain of the avian influenza was found for the first time in Europe, being brought by migrating birds from Asia that passed through the nearby Danube Delta."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "ceamurlia de jos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ceamurlia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8528,
+    "attempt": 8470,
+    "place_id": "gn-710556",
+    "input": {
+      "place": {
+        "place_id": "gn-710556",
+        "name": "Pulyny",
+        "country": "Ukraine",
+        "subdivision": "Zhytomyr Oblast",
+        "lat": 50.46745,
+        "lon": 28.27
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pulyny",
+          "url": "https://en.wikipedia.org/wiki/Pulyny",
+          "text": "Pulyny (Ukrainian: Пулини), from 1935 until 2016 called Chervonoarmiisk (Червоноармійськ, Russian: Червоноарме́йск), is a rural settlement in Zhytomyr Raion, Zhytomyr Oblast, Ukraine. Prior to the 2020 administrative reform, it was the administrative center of Pulyny Raion. Population: 5,141 (2022 estimate)\nThe town was first mentioned in the middle of the twelfth century under the name Chortolisy (Ukrainian: Чортоліси). In the annals there was a mention of a \"Devil's Wood\" (Ukrainian: Чортів ліс) nearby, which presumably lies behind the name; it was so called because of impenetrable thickets, swamps, and the debris of dead trees. Chortolisy was located on one of the ancient paths leading from Kyiv to the lands further west. In the fourteenth century the settlement belonged to the Grand Duchy of Lithuania, and from the sixteenth century to Polish feudal lords. In 1578, the settlement was mentioned under a new name, Pulyny.\nFrom 1793, right-bank Ukraine became part of Russia, the village of Pulyny became part of the Zhitomir district. Villagers engaged in agriculture and trade. After the abolition of serfdom in 1861, handicrafts and industry developed in the village; there were a candle factory, a furniture factory, two workshops, and a match factory. By the beginning of the twentieth century there were an iron foundry, a steam mill, two breweries, and a brickyard which also manufactured tiles and ceramic ware. By 1899 there was a population of 2,125 people.\nAs a result of the October Revolution and the Russian Civil War, the Soviet government was finally established in Pulyny in June 1920. On June 20, 1930, the town became the administrative center of the Pulin German Autonomous Region (Russian: Пулинский немецкий национальный район), which included thirty selsoviets. From February 1931 it belonged to the Kyiv Oblast. By 1934 the Autonomous Region became subject to serious repression; the low rate of collectivization (only 34 percent, as compared to 98 percent for German colonies in Left Bank Ukraine) was attributed to \"kulak-wreckers,\" and Germans were now often seen as agents of Nazi Germany. The Autonomous Region was liquidated in 1935, and on October 3, 1935, the town was renamed Krasnoarmeysk (Russian: Красноармейск).\nDuring World War II, 207 soldiers from the town did not return from the front.\nIn 2016, Verkhovna Rada adopted decision to rename Chervonoarmiisk back to former name Pulyny.\nPulyny is the birthplace of the writers Svyatoslav Borodulin, G.Y. Diamant, and Ernst Kontschak.\nUntil 26 January 2024, Pulyny was designated urban-type settlement. On this day, a new law entered into force which abolished this status, and Pulyny became a rural settlement."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 424
+    },
+    "banned_terms": [
+      {
+        "term": "pulyny",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8529,
+    "attempt": 8471,
+    "place_id": "gn-728124",
+    "input": {
+      "place": {
+        "place_id": "gn-728124",
+        "name": "Polski Trambesh",
+        "country": "Bulgaria",
+        "subdivision": "Veliko Tarnovo",
+        "lat": 43.37233,
+        "lon": 25.63525
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Polski Trambesh",
+          "url": "https://en.wikipedia.org/wiki/Polski_Trambesh",
+          "text": "Polski Trambesh (Bulgarian: Полски Тръмбеш [ˈpɔɫski trɐmˈbɛʃ]) is a town in central northern Bulgaria, part of Veliko Tarnovo Province. It is the administrative centre of the homonymous Polski Trambesh Municipality, which lies in the northeastern part of the Province. The town is located 36 kilometres from the provincial capital of Veliko Tarnovo, 45 km from Svishtov, 35 km from Pavlikeni, 33 km from Gorna Oryahovitsa, 22 km from Byala, Rousse Province, and 40 km from Strazhitsa. As of December 2009, Polski Trambesh had a population of 4,546.\nThe town is situated near the Yantra River, in the central Danubian Plain. Polski Trambesh's name means \"Trambesh of the fields\", to distinguish it from Gorski Goren Trambesh (\"upper Trambesh of the forests\") and Gorski Dolen Trambesh (\"lower Trambesh of the forests\") in Gorna Oryahovitsa municipality. It is not known when Polski Trambesh was established, but in 1865 it was a village of 40-50 houses populated by Bulgarians and Turks. The construction of the Rousse-Gorna Oryahovitsa railway boosted its development in 1917, the village turned into an important merchant centre and some industry was established after World War I. Polski Trambesh was proclaimed a town in 1964."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "polski trambesh",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "polski",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "trambesh",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8530,
+    "attempt": 8472,
+    "place_id": "gn-8349123",
+    "input": {
+      "place": {
+        "place_id": "gn-8349123",
+        "name": "Mount Austin",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -35.13684,
+        "lon": 147.35304
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Austin, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Mount_Austin,_New_South_Wales",
+          "text": "Mount Austin is an inner southern suburb of Wagga Wagga, New South Wales, Australia. Its boundaries are Fernleigh Road and Leavenworth Drive to the north and south respectively, whilst Glenfield Road and Willans Hill form the western and eastern extents.\nThe suburb is dominated by former and present Housing NSW residences.\nMount Austin Public School is located within the suburb however Mount Austin High School is situated in the neighbouring suburb of Tolland.\nDespite its name, the Turvey Tops Shopping centre is located in Mount Austin, and not neighbouring Turvey Park. The shopping centre was first planned by the New South Wales Housing Commission in the 1950s, but it was not until the 1960s, when Great Southern Enterprises Pty Ltd took over ownership of the land that work on the shopping centre started. Turvey Tops opened 3 December 1963, with a crowd of 3000 people in attendance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "mount austin",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "austin",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8531,
+    "attempt": 8473,
+    "place_id": "gn-9973208",
+    "input": {
+      "place": {
+        "place_id": "gn-9973208",
+        "name": "Ferryden Park",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.86616,
+        "lon": 138.5618
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ferryden Park, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Ferryden_Park,_South_Australia",
+          "text": "Ferryden Park (postcode 5010) is a north-western suburb of Adelaide 6.3 km from the central business district, in the state of South Australia, Australia. Situated in the City of Port Adelaide Enfield local government area, it is adjacent to Kilkenny, Angle Park, Woodville Gardens, Croydon Park, and Regency Park. It is bounded to the north by Murray Street, west by Liberty Grove and Hassell Street, south by Regency Road and to the east by Days Road.\nThe name derives from the seaport village of Ferryden on the southern fringe of Montrose, Scotland. This was the port from which the family of the suburb's founder, William Duthie, emigrated in the 1850s. The suburb contains many street names deriving from traditional Scottish place and family names, such as Montrose, Orkney, Nairn, McDonald, McRostie and Lachlan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 133,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "ferryden park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ferryden",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8532,
+    "attempt": 8474,
+    "place_id": "gn-11549421",
+    "input": {
+      "place": {
+        "place_id": "gn-11549421",
+        "name": "Welham Green",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.7346,
+        "lon": -0.22084
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Welham Green",
+          "url": "https://en.wikipedia.org/wiki/Welham_Green",
+          "text": "Welham Green is a village in the parish of North Mymms, Hertfordshire, England. It is situated a mile to the west of the Great North Road coaching route that used to run through the neighbouring hamlet of Bell Bar from London to York and the north. The Great North Road has since been replaced as the main artery by the A1(M). Even so, Welham Green has developed into a small village over the last 100 years, helped by the 1986 opening of its own railway station between Brookmans Park and Hatfield on the East Coast Main Line. Recent housing development has portended the joining of the village with the neighbouring town of Hatfield. Some residents, including the North Mymms Green Belt Society, wishing to maintain Welham Green's character, have resisted such development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "welham green",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "welham",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "green",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8533,
+    "attempt": 8475,
+    "place_id": "gn-13118738",
+    "input": {
+      "place": {
+        "place_id": "gn-13118738",
+        "name": "Capel Sound",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.36727,
+        "lon": 144.87877
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Capel Sound",
+          "url": "https://en.wikipedia.org/wiki/Capel_Sound",
+          "text": "Capel Sound is a suburb on the Mornington Peninsula in Melbourne, Victoria, Australia, 61 km (38 mi) south of Melbourne's central business district, located within the Shire of Mornington Peninsula local government area. Capel Sound recorded a population of 5,246 at the 2021 census.\n\nA distinguishing landmark feature of Capel Sound is the Tootgarook Swamp, the largest example left of a shallow freshwater marsh in the Port Phillip bay region. The swamp is also described by Melbourne Water as a ground water dependent ecosystem. The 381 hectare swamp is found on the lower section of the Mornington Peninsula in Victoria, Australia. A large portion of the Tootgarook Swamp is zoned as residential and industrial, with roughly half of the actual swamp inside the green wedge and half within the urban growth boundary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "capel sound",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "capel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sound",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8534,
+    "attempt": 8476,
+    "place_id": "gn-2521207",
+    "input": {
+      "place": {
+        "place_id": "gn-2521207",
+        "name": "Beas de Segura",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 38.2524,
+        "lon": -2.88875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beas de Segura",
+          "url": "https://en.wikipedia.org/wiki/Beas_de_Segura",
+          "text": "Beas de Segura is a town located in the province of Jaén, Spain. According to 2024 INE figures, the town had a population of 4,968 inhabitants.\nBeas de Segura is part of the Sierra de Segura, with almost a quarter of its territory within Sierras de Cazorla, Segura y Las Villas Natural Park. As of 2019, Beas de Segura has an area of 159.25 km2. As of 2016 its padrón municipal registered a population of 5,380 inhabitants, making it the most populated municipality in the region, as well as a center of influence over the neighboring towns.\nThe majority of its lands are agricultural areas dedicated mainly to the production of olive oil, which is why it is integrated into the Jaén province of the Spanish Association of Olive Producing Municipalities (AEMO). Its olive oil production has allowed its oil industry to be included in the Sierra de Segura denomination of origin. Olive oil production, livestock ranching, and tourism constitute Beas de Segura's main economic activities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "beas de segura",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "beas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "segura",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8535,
+    "attempt": 8477,
+    "place_id": "gn-2524160",
+    "input": {
+      "place": {
+        "place_id": "gn-2524160",
+        "name": "Miggiano",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 39.9618,
+        "lon": 18.31119
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Miggiano",
+          "url": "https://en.wikipedia.org/wiki/Miggiano",
+          "text": "Miggiano (Salentino: Misciànu [mɪʃˈʃaːnʊ]) is an Italian city of 3,702 inhabitants in the province of Lecce in Apulia. Located in the lower Salento, a few kilometres from the Adriatic coast, it lies 50 kilometres (31 mi) from the chief town and 22 kilometres (14 mi) from Santa Maria di Leuca. Formerly considered a town, in 2003 Miggiano was elevated to the status of City.\nThe town or city of Miggiano, located in the central part of the Capo di Leuca at the foot of the Serre Salento, has a flat shape and is between 101 and 115 metres (331 and 377 ft) above sea level. The commune's surface geology is composed of Melissano limestone, formed in the Cretaceous. The karst terrain favours the creation of long underground rivers that feed the aquifers. \nThe town, whose area covers about 7.64 square kilometres (2.95 mi2), borders to the north Montesano Salentino, to the east Tricase, to the south Mirror, and to the west Ruffano."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "miggiano",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8536,
+    "attempt": 8478,
+    "place_id": "gn-2643661",
+    "input": {
+      "place": {
+        "place_id": "gn-2643661",
+        "name": "Long Melford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.07481,
+        "lon": 0.71639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Long Melford",
+          "url": "https://en.wikipedia.org/wiki/Long_Melford",
+          "text": "Long Melford, colloquially and historically also referred to as Melford, is a large village and civil parish in the Babergh district, in the county of Suffolk, England. It is on Suffolk's border with Essex, which is marked by the River Stour, 3 miles (4.8 km) from Sudbury, approximately 16 miles (26 km) from Colchester and 14 miles (23 km) from Bury St Edmunds. It is one of Suffolk's \"wool towns\" and is a former market town. The parish also includes the hamlets of Bridge Street and Cuckoo Tye. In 2011 the parish had a population of 3918.\nIts name is derived from the nature of the village's layout (originally concentrated along a 3-mile stretch of a single road) and the Mill ford crossing the Chad Brook (a tributary of the River Stour)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "long melford",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "long",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "melford",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8537,
+    "attempt": 8479,
+    "place_id": "gn-2647291",
+    "input": {
+      "place": {
+        "place_id": "gn-2647291",
+        "name": "Hawkhurst",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.0479,
+        "lon": 0.51095
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hawkhurst",
+          "url": "https://en.wikipedia.org/wiki/Hawkhurst",
+          "text": "Hawkhurst is a village and civil parish in the borough of Tunbridge Wells in Kent, England. The village is located close to the border with East Sussex, around 12 miles (19 km) south-east of Royal Tunbridge Wells and within the High Weald Area of Outstanding Natural Beauty.\nHawkhurst is virtually two villages: The Moor, to the south, consists mainly of cottages clustered around a large triangular green, while Highgate, to the north, features a colonnade of independent shops, two country pubs, hotels, a digital cinema in a converted lecture hall, and Waitrose and Tesco supermarkets.\nThere are four designated conservation areas in Hawkhurst parish – one at Sawyers Green, two in Highgate (Highgate and All Saints' Church) and one at The Moor. There are also over 200 listed buildings across the parish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "hawkhurst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8538,
+    "attempt": 8480,
+    "place_id": "gn-2749573",
+    "input": {
+      "place": {
+        "place_id": "gn-2749573",
+        "name": "Oog in Al",
+        "country": "Netherlands",
+        "subdivision": "Utrecht",
+        "lat": 52.08636,
+        "lon": 5.0847
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oog in Al",
+          "url": "https://en.wikipedia.org/wiki/Oog_in_Al",
+          "text": "Oog in Al (Dutch pronunciation: [ˌoːx ɪn ˈɑl], Utrecht dialect: [ˌouχ ɪn ˈæl]) is a residential area in the west of the city of Utrecht in the Netherlands. The Amsterdam–Rhine Canal, the Merwede Canal and the Leidse Rijn canal form the area's limits, rendering it a man-made island in the shape of a triangle.\nFrom the 12th century, the area of present-day Oog in Al was part of the 'Trechter Weide', the communal meadow of the city of Utrecht. The meadow was divided in the 'Hoge Weide' and 'Lage Weide' (high meadow and low meadow), divided by a canal, the Vletsloot. Oog in Al was later built in the 'Hoge Weide' part of the communal meadow.\nThe Leidse Rijn was dug in 1663–1664 as a water transport link between Utrecht and Leiden. The Utrecht nobleman Everard Meyster built a residential estate in a curve of the new canal, where a new city expansion planned by mayor Hendrik Moreelse, could best be viewed. For this reason Meyster called his estate \"Oog in Al\" (Eye on All).\nWhen the Merwede Canal was dug at the end of the 19th century, the area surrounding the estate underwent a radical change. As the Canal could only be crossed by way of a limited number of bridges, it constituted a barrier to further city expansion in the Oog in Al area. The City of Utrecht nevertheless purchased the ground in 1918 with a view to the development of a new residential area.\nThe architects Berlage and Holsboer designed the layout of Utrecht's western expansion, which included plans for the residential area Oog in Al. Adjacent to the present-day Park Oog in Al, a first batch of 381 spacious middle-class homes was constructed in 1921. Meyster's estate was preserved and converted to public use. It housed the area's public library before that was moved to a refurbished factory, and currently houses a cafe.\nThe street pattern of the south eastern part of present-day Oog in Al reflects the original design of Berlage and Holsboer. The Robert Schumannstraat, in the oldest part of the area, boasts a row of terraced houses designed by Gerrit Rietveld."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 358
+    },
+    "banned_terms": [
+      {
+        "term": "oog in al",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "oog",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "in",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  }
+]

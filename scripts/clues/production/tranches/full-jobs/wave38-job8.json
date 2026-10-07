@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 7593,
+    "attempt": 7541,
+    "place_id": "gn-689159",
+    "input": {
+      "place": {
+        "place_id": "gn-689159",
+        "name": "Volochysk",
+        "country": "Ukraine",
+        "subdivision": "Khmelnytskyi",
+        "lat": 49.53606,
+        "lon": 26.20681
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Volochysk",
+          "url": "https://en.wikipedia.org/wiki/Volochysk",
+          "text": "Volochysk (Ukrainian: Волочиськ, IPA: [woloˈtʃɪsʲk] ; Polish: Wołoczyska; Yiddish: וואָלאָטשיסק) is a small city located on the left bank of the Zbruch River in Khmelnytskyi Raion, Khmelnytskyi Oblast (province) of western Ukraine. It hosts the administration of Volochysk urban hromada, one of the hromadas of Ukraine. The population according to the 2001 census was 20958. Current population is 18,295 (2022 estimate).\nLocated on the left bank of Zbruch, the city along with its vis-a-vis Pidvolochysk on the opposite bank of the river was an important border checkpoint between Russia and the countries of Central Europe. Volochysk is an important transport center. Railroads and highways of national importance go through the town.\nVolochysk is located on  E50/ M 12 between Ternopil and Khmelnytskyi. In the city is located a train station which is a final stop of Southwestern Railways before continuing to territory of Lviv Railways."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "volochysk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7594,
+    "attempt": 7542,
+    "place_id": "gn-704138",
+    "input": {
+      "place": {
+        "place_id": "gn-704138",
+        "name": "Kreminna",
+        "country": "Ukraine",
+        "subdivision": "Luhansk",
+        "lat": 49.04811,
+        "lon": 38.21552
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kreminna",
+          "url": "https://en.wikipedia.org/wiki/Kreminna",
+          "text": "Kreminna (Ukrainian: Кремінна; Russian: Кременная, romanized: Kremennaya) is a city in Sievierodonetsk Raion, Luhansk Oblast, eastern Ukraine. Prior to 2020, it served as the administrative center of former Kreminna Raion. Its population was estimated at 18,116, as of January 2022. It is located in the historic region of Sloboda Ukraine.\nFollowing the Russian invasion of Ukraine that was launched in February 2022, the city has been the scene of heavy fighting, with both Ukraine and Russia claiming control at times. Russia has claimed it as part of the Luhansk People's Republic following its declared annexation of the region in September 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "kreminna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7595,
+    "attempt": 7543,
+    "place_id": "gn-7932631",
+    "input": {
+      "place": {
+        "place_id": "gn-7932631",
+        "name": "Box Hill North",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.80266,
+        "lon": 145.12656
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Box Hill North",
+          "url": "https://en.wikipedia.org/wiki/Box_Hill_North",
+          "text": "Box Hill North is a suburb of Melbourne, Victoria, Australia, 14 km east from the Melbourne central business district, located within the City of Whitehorse local government area. Box Hill North recorded a population of 12,337 at the 2021 census.\nBox Hill North's boundaries are Koonung Creek in the north, Elgar Road in the west, Middleborough Road in the east, and Thames Street in the south. The eastern part of Box Hill North is also known as Kerrimuir.\nIn the 12-month period to January 2020, Box Hill North reported a median house price of A$1.03 million for a three bedroom house."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "box hill north",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "box",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7596,
+    "attempt": 7544,
+    "place_id": "gn-8348596",
+    "input": {
+      "place": {
+        "place_id": "gn-8348596",
+        "name": "Ellenbrook",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.76737,
+        "lon": 115.96936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ellenbrook, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Ellenbrook,_Western_Australia",
+          "text": "Ellenbrook is an outer suburb and planned community in Perth, Western Australia, within the City of Swan local government area. It is 28 km (17 mi) north-east of Perth's central business district and 18 km (11 mi) north of the regional metropolitan centre of Midland. It was first developed in the 1990s as a joint venture between the Government of Western Australia and private landowners in the area.\nEllenbrook is a designated secondary activity centre within the Perth metropolitan area, serving Perth's north-eastern corridor. It forms a contiguous urban area with the adjoining communities of The Vines, Aveley and Henley Brook."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "ellenbrook",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7597,
+    "attempt": 7545,
+    "place_id": "gn-841968",
+    "input": {
+      "place": {
+        "place_id": "gn-841968",
+        "name": "Varissuo",
+        "country": "Finland",
+        "subdivision": "Southwest Finland",
+        "lat": 60.44806,
+        "lon": 22.35611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Varissuo",
+          "url": "https://en.wikipedia.org/wiki/Varissuo",
+          "text": "Varissuo (/ˈvɑrɪs.suo/ VAH-ris-suo; Finnish: Varissuo [ˈʋɑris.suo]; Swedish: Kråkkärret (/ˈkrɔːkˌɕærːɛt/) is a district and the largest suburb of the city of Turku, in Finland. It is located seven kilometres to the east of the city centre, and is the easternmost major suburb of Turku, bordering on the neighbouring city of Kaarina. Varissuo has 9,000 inhabitants, the majority of whom are foreign immigrants. It is thus the second largest district of Turku, after Runosmäki. The name consists of the words varis, meaning \"crow\" and suo, meaning \"bog\" or \"swamp\".\n15.72% of Varissuo's population are under 15 years old, while 12.56% are over 65. Around 60% of the population speaks an immigrant language, reflecting the suburb's wide cultural variety. 90% of students at Varissuo school speak a mother tongue other than Finnish or Swedish.\nThe suburb was constructed from scratch on an area of previously uninhabited wetland (suo in Finnish) starting in the mid-1970s as migration from rural areas to the city increased heavily in volume.\n\nVarissuo has several schools, a library, an underground ice arena, a Lutheran church, a health centre, a post office and a social security (KELA) office. In addition, the Itäkeskus shopping centre is located in Varissuo, as well as a University of Turku teacher training school (Turun normaalikoulu) and Turku International School. As many other parts of Turku, Varissuo has many public transport connections, with frequent bus links to the city centre as well as other nearby districts and cities.\nVarissuo has a very high percentage of immigrants who lack proficiency in the Finnish language; many speak a form of Finnish known as Varissuomi with simplified grammar and a limited vocabulary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 273
+    },
+    "banned_terms": [
+      {
+        "term": "varissuo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7598,
+    "attempt": 7546,
+    "place_id": "gn-11203928",
+    "input": {
+      "place": {
+        "place_id": "gn-11203928",
+        "name": "Silver Berry",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 53.45787,
+        "lon": -113.3817
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silver Berry, Edmonton",
+          "url": "https://en.wikipedia.org/wiki/Silver_Berry,_Edmonton",
+          "text": "Silver Berry is a residential neighbourhood in south east Edmonton, Alberta, Canada. It is one of the neighbourhoods located within The Meadows area.\nResidences in Silver Berry are a mixture of single-family dwellings (80%), duplexes (15%) and row houses (5%).  The majority of residences (96%) in the neighbourhood are owner occupied.\nThe neighbourhood is bounded on the east by 17 Street, on the west by 34 Street, on the north by Mill Creek Ravine and the south by 23 Avenue. 34 Avenue stops at 34 Street, turning into Silver Berry Road, going through Silver Berry and stopping at 17 Street."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "silver berry",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "silver",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "berry",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7599,
+    "attempt": 7547,
+    "place_id": "gn-11281273",
+    "input": {
+      "place": {
+        "place_id": "gn-11281273",
+        "name": "Greasby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.373,
+        "lon": -3.1233
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greasby",
+          "url": "https://en.wikipedia.org/wiki/Greasby",
+          "text": "Greasby (locally ) is a large village on the Wirral Peninsula, Merseyside, England. A predominantly residential area, it is contiguous with Upton to the east and Saughall Massie to the north. The small village of Frankby is to the immediate west. Historically within the county of Cheshire, it is part of the Greasby, Frankby and Irby Ward of the Metropolitan Borough of Wirral and is in the parliamentary constituency of Wirral West.\nAt the 2001 census, Greasby had 9,830 inhabitants, with the total population of the ward at 14,667. \nIn the 2011 census the population of Greasby was not measured. However the total population of Greasby, Frankby and Irby Ward was 13,991."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "greasby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7600,
+    "attempt": 7548,
+    "place_id": "gn-1261512",
+    "input": {
+      "place": {
+        "place_id": "gn-1261512",
+        "name": "Neral",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 19.02475,
+        "lon": 73.31688
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Neral, India",
+          "url": "https://en.wikipedia.org/wiki/Neral,_India",
+          "text": "Neral is a town in Raigad district in the Indian state of Maharashtra. It is 83 km+ developing city of Raigad district which is well connected to Panvel, Mumbai, Thane and Pune. Local people from communities like Agri, Kumbhar, Brahmin, Muslim, etc. settled here because this place was key route to Matheran and Vikatgad which were politically important for Maratha empire, Mughal empire and East India Company. Neral to Matheran Train Route was developed by East India Company for trading and colonial purposes. Hutatma Veer Bhai Kotwal was a great hero who rebelled against British Police in Neral - Matheran. Villages followed the same in following years to safeguard themselves from regular floods affecting their homes, farms and animals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "neral",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7601,
+    "attempt": 7549,
+    "place_id": "gn-13353530",
+    "input": {
+      "place": {
+        "place_id": "gn-13353530",
+        "name": "Thiruvankulam",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 9.94679,
+        "lon": 76.36662
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thiruvankulam",
+          "url": "https://en.wikipedia.org/wiki/Thiruvankulam",
+          "text": "Thiruvankulam is a census town in Thrippunithura municipality, in Ernakulam district, Kerala, India. The area is a part of the Kochi metropolitan area. NH 85 passes through Thiruvankulam. The Karingachira junction is the location of the southern terminus of the Seaport-Airport Road, which connects the Cochin International Airport and the Cochin Port.\nIn the present day, Thiruvankulam's proximity to the city as well as industrial areas comprising the Kochi refineries and allied industries have contributed to its growth. The economic development of Kochi, as well as the nearby refinery industry have resulted in Thiruvankulam emerging as a major residential area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "thiruvankulam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7602,
+    "attempt": 7550,
+    "place_id": "gn-1849442",
+    "input": {
+      "place": {
+        "place_id": "gn-1849442",
+        "name": "Udono",
+        "country": "Japan",
+        "subdivision": "Mie",
+        "lat": 33.737,
+        "lon": 136.01113
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Udono, Mie",
+          "url": "https://en.wikipedia.org/wiki/Udono,_Mie",
+          "text": "Udono (鵜殿村, Udono-mura) was a village located in Minamimuro District, Mie Prefecture, Japan.\nAs of 2004 (the last official figures before its dissolution), the village had an estimated population of 4,852 and a population density of 1684.7 persons per km2. The total area was 2.88 km2.\nOn January 10, 2006, Udono was merged into the expanded town of Kihō and thus no longer exists as an independent municipality. As a result, this merger, all villages in Mie Prefecture have ceased to exist.\nThe village of Udono was founded on February 13, 1894, with the early Meiji period establishment of municipalities. The basis of the village's economy was a paper mill operated by Hokuetsu Paper Mills."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "udono",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7603,
+    "attempt": 7551,
+    "place_id": "gn-2020013",
+    "input": {
+      "place": {
+        "place_id": "gn-2020013",
+        "name": "Mikhaylovka",
+        "country": "Russia",
+        "subdivision": "Primorye",
+        "lat": 43.93356,
+        "lon": 132.00895
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mikhaylovka, Mikhaylovsky District, Primorsky Krai",
+          "url": "https://en.wikipedia.org/wiki/Mikhaylovka,_Mikhaylovsky_District,_Primorsky_Krai",
+          "text": "Mikhaylovka (Russian: Михайловка) is a rural locality (a selo) and the administrative center of Mikhaylovsky District, Primorsky Krai, Russia. Population:  9,153 (2010 census); 9,319 (2002 census); 10,290 (1989 Soviet census).\nThe town has a small settlement of Koryo-saram: ethnic Koreans of the former Soviet Union. The Korean ancestors of the Koryo-saram lived in the area in the early 1900s, but were forced to go to Central Asia during a forced migration in 1937. Their descendants subsequently returned to this village when movement restrictions were eased. As of 2019, there were around 30 households in the area, with a Korean-language school. The Korean residents are mainly farmers. However, the population is significantly aging."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "mikhaylovka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7604,
+    "attempt": 7552,
+    "place_id": "gn-2148876",
+    "input": {
+      "place": {
+        "place_id": "gn-2148876",
+        "name": "South Yarra",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.83834,
+        "lon": 144.99149
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Yarra",
+          "url": "https://en.wikipedia.org/wiki/South_Yarra",
+          "text": "South Yarra is an inner-city suburb in Melbourne, Victoria, Australia, 4 km south-east of Melbourne's Central Business District, located within the Cities of Melbourne and Stonnington local government areas. South Yarra recorded a population of 25,028 at the 2021 census.\n\nPunt Road divides the suburb between Stonnington (east) and Melbourne (west). The main shopping region of South Yarra runs along Toorak Road and Chapel Street. Trade along these two arteries are focused on trendy and upmarket shopping, restaurants, nightclubs and cafe culture. The area of South Yarra centred along Commercial Road was for several decades one of Melbourne's gay villages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "south yarra",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "yarra",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7605,
+    "attempt": 7553,
+    "place_id": "gn-2166819",
+    "input": {
+      "place": {
+        "place_id": "gn-2166819",
+        "name": "Fawkner",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.71667,
+        "lon": 144.96667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fawkner",
+          "url": "https://en.wikipedia.org/wiki/Fawkner",
+          "text": "Fawkner is a suburb in Melbourne, Victoria, Australia, 12 km (7.5 mi) north of Melbourne's Central Business District, located within the Cities of Hume and Merri-bek local government areas. Fawkner recorded a population of 14,274 at the 2021 census.\nThe major portion within the City of Merri-bek is bounded by Merri Creek on the east, Sydney Road and the Upfield railway line on the west, the Western Ring Road on the north and Boundary Road on the south separating the suburb from Coburg North. The smaller portion within the City of Hume extends north to Camp Road and Mahoneys Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "fawkner",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7606,
+    "attempt": 7554,
+    "place_id": "gn-2176639",
+    "input": {
+      "place": {
+        "place_id": "gn-2176639",
+        "name": "Batemans Bay",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -35.70658,
+        "lon": 150.17541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Batemans Bay",
+          "url": "https://en.wikipedia.org/wiki/Batemans_Bay",
+          "text": "Batemans Bay is a town in the South Coast region of the state of New South Wales, Australia. Batemans Bay is administered by the Eurobodalla Shire council. The town is situated on the shores of an estuary formed where the Clyde River meets the southern Pacific Ocean.\nBatemans Bay is located on the Princes Highway (Highway 1) about 280 kilometres (170 mi) from Sydney and 760 km (470 mi) from Melbourne. Canberra is located about 151 km (94 mi) to the west of Batemans Bay, via the Kings Highway. At the 2021 census, Batemans Bay had a population of 17,519.\nIt is the closest seaside town to Canberra, making Batemans Bay a popular holiday destination for residents of Australia's national capital. Geologically, it is situated in the far southern reaches of the Sydney Basin. \nBatemans Bay is also a popular retiree haven, but has begun to attract young families seeking affordable housing and a relaxed seaside lifestyle. Other local industries include oyster farming, forestry, eco-tourism and retail services."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "batemans bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "batemans",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7607,
+    "attempt": 7555,
+    "place_id": "gn-2177026",
+    "input": {
+      "place": {
+        "place_id": "gn-2177026",
+        "name": "Balwyn",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.80914,
+        "lon": 145.0789
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balwyn",
+          "url": "https://en.wikipedia.org/wiki/Balwyn",
+          "text": "Balwyn ( ) is a suburb of Melbourne, Victoria, Australia, 10 km (6.2 mi) east of Melbourne's Central Business District, located within the City of Boroondara local government area. Balwyn recorded a population of 13,495 at the 2021 census.\nThe suburb's post-European settlement character was initially agricultural with several large estates built around a small village centre. Since the early 20th century, farms and mansions gave way to suburban development as the population of Melbourne rapidly grew. Today Balwyn is almost entirely residential and one of Victoria's most affluent suburbs, regularly ranking in the state's top 10 most expensive suburbs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "balwyn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7608,
+    "attempt": 7556,
+    "place_id": "gn-2177069",
+    "input": {
+      "place": {
+        "place_id": "gn-2177069",
+        "name": "Ballina",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -28.86414,
+        "lon": 153.56541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ballina, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Ballina,_New_South_Wales",
+          "text": "Ballina ( BAL-i-na) is a town in the Northern Rivers region of New South Wales, Australia, and the seat of the Ballina Shire local government area. It lies 740 km (460 mi) north of Sydney and 185 km (115 mi) south of Brisbane. Ballina's urban population at the end of 2021 was 46,190.\nThe town lies on the Richmond River and serves as a gateway to Byron Bay.\nBallina is located on the ancestral land of the Bundjalung people, who are its traditional owners and original inhabitants. Archaeological evidence demonstrates Bundjalung occupation of the region for at least 6000 years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "ballina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7609,
+    "attempt": 7557,
+    "place_id": "gn-2189028",
+    "input": {
+      "place": {
+        "place_id": "gn-2189028",
+        "name": "Karori",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -41.28374,
+        "lon": 174.74141
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karori",
+          "url": "https://en.wikipedia.org/wiki/Karori",
+          "text": "Karori is a suburb located at the western edge of the urban area of Wellington, New Zealand, 4 kilometres (2.5 miles) from the city centre and is one of New Zealand's most populous suburbs, with a population of 15,100 in June 2025. No Māori lived in the area when the first European settlers came to Karori in the 1840s. The first settler in Karori cleared 20 acres of forest on his section with his younger brother Moses and advertised its sale in December 1841.\nAmenities in Karori include a community garden, a library, a swimming pool, and several church buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "karori",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7610,
+    "attempt": 7558,
+    "place_id": "gn-2206005",
+    "input": {
+      "place": {
+        "place_id": "gn-2206005",
+        "name": "Illawong",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34,
+        "lon": 151.03333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Illawong",
+          "url": "https://en.wikipedia.org/wiki/Illawong",
+          "text": "Illawong is a suburb in southern Sydney, in the state of New South Wales, Australia. Illawong is located 27 kilometres south of the Sydney Central Business District, in the local government area of the Sutherland Shire in the area commonly called Menai. The postcode is 2234, which is also assigned to the contiguous suburbs of Menai, Bangor, Barden Ridge and Alfords Point.\nIllawong sits between the southern shore of the Georges River and the northern shore of the Woronora River. Illawong consists mainly of residential homes, a nursing home, two primary schools, a high school and a small shopping centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "illawong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7611,
+    "attempt": 7559,
+    "place_id": "gn-2207762",
+    "input": {
+      "place": {
+        "place_id": "gn-2207762",
+        "name": "Lilyfield",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.87499,
+        "lon": 151.1653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lilyfield",
+          "url": "https://en.wikipedia.org/wiki/Lilyfield",
+          "text": "Lilyfield is a suburb in the Inner West of Sydney, in the state of New South Wales, Australia. Lilyfield is located 6 kilometres west of the Sydney central business district, in the local government area of the Inner West Council.\nLilyfield is nestled in between the suburbs of Annandale, Rozelle and Leichhardt and is bounded to the west by Iron Cove. Originally a working-class area, today Lilyfield like many inner-city suburbs is becoming increasingly gentrified. Property investors, eager to capitalise on the suburb's proximity to the Sydney CBD, have purchased many of the original workers' cottages to renovate or develop."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "lilyfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7612,
+    "attempt": 7560,
+    "place_id": "gn-2328153",
+    "input": {
+      "place": {
+        "place_id": "gn-2328153",
+        "name": "Obubra",
+        "country": "Nigeria",
+        "subdivision": "Cross River State",
+        "lat": 6.07672,
+        "lon": 8.33241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Obubra",
+          "url": "https://en.wikipedia.org/wiki/Obubra",
+          "text": "Obubra  is a town and Local Government Area (LGA) of Cross River State, Nigeria. The Ibrahim Babangida College of Agriculture is located in Obubra.\nThe National Youth Service Corps, Cross River State Orientation Camp is situated in Obubra town.\nThe word Obubra is derived from 'Ubibira or Ubira', the name of Obubra main village at the bank of the Cross river. Obubra however, was used to represent an administrative unit under the British colonial empire in the late 19th century. The exact history of the signed treaties of Community heads and the representatives of the British empire are in antiquity.\nIt covered areas bounded by Abakaliki and Ikom to the North, and Afikpo and Calabar to the South. This meant that its jurisdiction extended from parts of present-day Biase and Akamkpa local government areas through  Abi, Yakurr and Etung to  parts of Ikom and Ogoja local government areas.\nPresently Obubra Local Government Area has eleven Council wards of Ababene, Ofat, Ofodua, Ovonum, Apiapum, Iyamoyong, Ochon, Obubra Urban, Ofumbongha/Yala, Osopong I and Osopong II.\nMost of the communities emerged as settlements of intercommunal wars. The lines of friction which had existed from ancestral origin are heated up and the people divided by their political elites who disagree to agree on a common political leadership or a channel for socioeconomic development of Obubra Urban, wherein lies the headquarters, and then spread to all communities. Obubra has 98 villages some of which include; Obubra Village,  Ogada, Owakande, Imabana Itamtet, Apiapum, Yala, Iyamoyong, Ohana, Ochon, Isabang,  Ovunom, Ofodua, Ofat, Ababene, Oderegha, Okorogbana, Onyedama, Ebo, and Iko, Ogurude, Ofonmana, Ogurokpon, Okimbongha, Ofonagama, Omene,  Ofonamma, Ofonekom, Appiapumtet, Idoru 1 and 2, Ijutum, Eja, Ijagha Orangha, Aragharagha, Ogamina, the list continuous.\nIt has an area of 1,115 km2 and a population of 172,444 at the 2006 census. St. Francis Xavier Parish, which today has given birth to five (5) other parishes, was originally founded in 1965. However, the first Holy Mass was celebrated in 1961, as missionaries visited to source for land for a Secondary school (St Brendan's) later located at Iyamoyong, about 15 kilometers away.  \nThe postal code of the area is 551."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 357
+    },
+    "banned_terms": [
+      {
+        "term": "obubra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

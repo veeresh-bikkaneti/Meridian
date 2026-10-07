@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 7573,
+    "attempt": 7521,
+    "place_id": "gn-5149007",
+    "input": {
+      "place": {
+        "place_id": "gn-5149007",
+        "name": "Cambridge",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 40.03118,
+        "lon": -81.58846
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cambridge, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Cambridge,_Ohio",
+          "text": "Cambridge ( KAYM-brij) is a city in Guernsey County, Ohio, United States, and its county seat. The population was 10,089 at the 2020 census. It lies in the Appalachian Plateau of the Appalachian Mountains in southeastern Ohio. It is the principal city of the Cambridge micropolitan area and is located adjacent to the intersection of Interstates 70 and 77.\nCambridge is well known among glass collectors as being the location for the Cambridge Glass, Boyd Glass and Mosser Glass plants. The Cambridge area is also noted for its S-shaped bridges, dating back to the building of the National Road in 1828."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "cambridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7574,
+    "attempt": 7522,
+    "place_id": "gn-5344817",
+    "input": {
+      "place": {
+        "place_id": "gn-5344817",
+        "name": "East Rancho Dominguez",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.89807,
+        "lon": -118.19535
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Rancho Dominguez, California",
+          "url": "https://en.wikipedia.org/wiki/East_Rancho_Dominguez,_California",
+          "text": "East Rancho Dominguez, () also known as East Compton, is an unincorporated community and census-designated place (CDP) located in southern Los Angeles County, California, United States. The population was 15,114 at the 2020 census, down from 15,135 at the 2010 census. East Rancho Dominguez is an accepted city name according to the United States Postal Service, and shares the 90221 ZIP Code with Compton.\nEast Rancho Dominguez is an unincorporated enclave surrounded by Compton within five blocks east and west of Atlantic Ave. Alondra Boulevard is the southern border, and three blocks north of Rosecrans Ave. is roughly the northern border. East Rancho Dominguez County Park is in the center of the community.\nTo the north is the city of Lynwood. To the east is the Long Beach Freeway, the Los Angeles River, and then the city of Paramount. To the south and southeast is the city of Long Beach.\nIts sphere of influence is the city of Compton, which has tried to annex East Rancho Dominguez, but business and property owners in the area have opposed the annexation. Rancho Dominguez is a separate unincorporated, mostly industrial area south of the city of Compton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "east rancho dominguez",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rancho",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dominguez",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7575,
+    "attempt": 7523,
+    "place_id": "gn-5399901",
+    "input": {
+      "place": {
+        "place_id": "gn-5399901",
+        "name": "Sun City",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.70919,
+        "lon": -117.19726
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sun City, Menifee, California",
+          "url": "https://en.wikipedia.org/wiki/Sun_City,_Menifee,_California",
+          "text": "Sun City is a former census-designated place (CDP) in Riverside County, California, United States, and now a neighborhood of the city of Menifee, California. Along with the neighboring communities of Quail Valley and Menifee, it was incorporated as part of the City of Menifee on October 1, 2008. The population when Sun City was a CDP was 17,773 at the 2000 census. Sun City is located along Interstate 215 just south of the city of Perris.\nAs of 2022, there are 26,987 residents in Sun City, with a median age of 47. Of this, 49.17% are males and 50.83% are females. US-born citizens make up 85.81% of the resident pool in Sun City, while non-US-born citizens account for 9.77%.\nSun City is a master-planned community for senior citizens over age 55. The four-square-mile residential community has one public golf course, two recreation centers with tennis courts, paddle ball courts, lawn bowling grassed courts and two swimming pools, and a commercial center consisting of supermarkets, small retail shops, full service restaurants, and quick-service restaurants. The site planning of the planned community began in 1960, making it the second retirement community originated by Del Webb, and groundbreaking occurred in December 1961. This original Sun City SoCal (Southern California) was one of the four \"Sun Cities\" designed hands-on by Del Webb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "sun city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sun",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7576,
+    "attempt": 7524,
+    "place_id": "gn-5407841",
+    "input": {
+      "place": {
+        "place_id": "gn-5407841",
+        "name": "West Athens",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.92335,
+        "lon": -118.30341
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West Athens, California",
+          "url": "https://en.wikipedia.org/wiki/West_Athens,_California",
+          "text": "West Athens is a census-designated place (CDP) in Los Angeles County, California, United States. The population was 9,393 at the 2020 census. It is an unincorporated community within the 2nd Supervisorial District of Los Angeles County. West Athens is served by the Los Angeles County Sheriff's Department, operating out of the South Los Angeles Station. The approximate boundaries for West Athens are: 87th Street to the north, Vermont Avenue to the east, El Segundo Boulevard to the south, and approximately Western Avenue to Van Ness Avenue to the west. West Athens is predominantly residential, with commercial uses along its main corridors. Los Angeles Southwest Community College lies within the West Athens neighborhood and city limits."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "west athens",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "athens",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7577,
+    "attempt": 7525,
+    "place_id": "gn-5416113",
+    "input": {
+      "place": {
+        "place_id": "gn-5416113",
+        "name": "Carbondale",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 39.40221,
+        "lon": -107.21116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carbondale, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Carbondale,_Colorado",
+          "text": "The Town of Carbondale is a home rule municipality located in Garfield County, Colorado, United States. The town population was 6,434 at the 2020 United States census. Carbondale is a part of the Rifle, CO Micropolitan Statistical Area.\nThe town is located in the Roaring Fork Valley, downstream from Aspen and upstream from the mouth of the Roaring Fork River at Glenwood Springs. The town proper sits on the south bank of the river, near its confluence with the Crystal River. Carbondale's horizon is dominated by the 12,953 ft (3,952 m) tall Mount Sopris several miles to the south of town. Carbondale is the northern terminus of the West Elk Loop Scenic and Historic Byway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "carbondale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7578,
+    "attempt": 7526,
+    "place_id": "gn-553615",
+    "input": {
+      "place": {
+        "place_id": "gn-553615",
+        "name": "Kamenka",
+        "country": "Russia",
+        "subdivision": "Leningradskaya Oblast'",
+        "lat": 60.44639,
+        "lon": 29.0829
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kamenka, Vyborgsky District, Leningrad Oblast",
+          "url": "https://en.wikipedia.org/wiki/Kamenka,_Vyborgsky_District,_Leningrad_Oblast",
+          "text": "Kamenka (Russian: Ка́менка; Finnish: Kaukjärvi) is a rural locality (a logging depot settlement) in Vyborgsky District of Leningrad Oblast, Russia, it is located on the Karelian Isthmus to the west of Kirillovskoye railway station. Population: 8,212 (2010 census); 8,112 (2002 census).\nWithin the framework of municipal divisions, it is a part of Polyanskoye Rural Settlement (with the administrative center in Polyany) in Vyborgsky Municipal District.\nThe Nikolayevsky artillery range (now Bobochinsky military tank training range) has been situated to the east of Kamenka since 1913. The 138th Guards Motor Rifle Brigade, formerly the 45th Guards Motor Rifle Division, is located here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "kamenka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7579,
+    "attempt": 7527,
+    "place_id": "gn-568429",
+    "input": {
+      "place": {
+        "place_id": "gn-568429",
+        "name": "Chertkovo",
+        "country": "Russia",
+        "subdivision": "Rostov",
+        "lat": 49.38364,
+        "lon": 40.15231
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chertkovo, Rostov Oblast",
+          "url": "https://en.wikipedia.org/wiki/Chertkovo,_Rostov_Oblast",
+          "text": "Chertkovo (Russian and Ukrainian: Чертково) is a rural locality (a settlement) and the administrative center of Chertkovsky District in Rostov Oblast, Russia. Population:  10,814 (2010 census); 11,029 (2002 census); 10,751 (1989 Soviet census).\nIt is separated from the urban-type settlement of Milove in Milove Raion of Luhansk Oblast, Ukraine partially by the North Caucasus Railway. The railway together with surrounding infrastructure is located on the Russian side of the border. Both localities were served by Chertkovo railway station until the Russo-Ukrainian War. A bypass avoiding the border was completed between Zhuravka and Millerovo in 2017 after which traffic to Chertkovo ceased. The railway station was liquidated in 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "chertkovo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7580,
+    "attempt": 7528,
+    "place_id": "gn-575948",
+    "input": {
+      "place": {
+        "place_id": "gn-575948",
+        "name": "Bobrov",
+        "country": "Russia",
+        "subdivision": "Voronezh Oblast",
+        "lat": 51.09843,
+        "lon": 40.03008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bobrov, Bobrovsky District, Voronezh Oblast",
+          "url": "https://en.wikipedia.org/wiki/Bobrov,_Bobrovsky_District,_Voronezh_Oblast",
+          "text": "Bobrov (Russian: Бобро́в) is a town and the administrative center of Bobrovsky District in central Voronezh Oblast, Russia, located on the right bank of the Bityug River, 148 kilometers (92 mi) southeast of Voronezh, the administrative center of the oblast. Population: 20,871 (2021 census); 19,738 (2010 census); 20,806 (2002 census); 21,258 (1989 Soviet census). It was previously known as Bobrovskaya Sloboda (until 1779).\nThose shot in the Great Terror were reburied in a nearby quarry in the 1960s. A memorial was added in 2002 and children of the victims asked to be buried near their parents when a graveyard developed there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "bobrov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7581,
+    "attempt": 7529,
+    "place_id": "gn-5917158",
+    "input": {
+      "place": {
+        "place_id": "gn-5917158",
+        "name": "Carleton Place",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.13341,
+        "lon": -76.14938
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carleton Place",
+          "url": "https://en.wikipedia.org/wiki/Carleton_Place",
+          "text": "Carleton Place is a town in Eastern Ontario, Canada, in Lanark County, about 55 kilometres (34 mi) west of downtown Ottawa. It is located at the crossroads of Highway 15 and Highway 7, halfway between the towns of Perth, Almonte, Smiths Falls, and the nation's capital, Ottawa. Canada's Mississippi River, a tributary of the Ottawa River flows through the town.  Mississippi Lake is just upstream by boat, as well as by car.\nThe town is situated on the edge of a large limestone plain, just south of the edge of the Canadian Shield in the deciduous forest ecoregion of North America."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "carleton place",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "carleton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "place",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7582,
+    "attempt": 7530,
+    "place_id": "gn-6147512",
+    "input": {
+      "place": {
+        "place_id": "gn-6147512",
+        "name": "Signal Hill",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 51.02361,
+        "lon": -114.17361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Signal Hill, Calgary",
+          "url": "https://en.wikipedia.org/wiki/Signal_Hill,_Calgary",
+          "text": "Signal Hill is a community in Calgary, Alberta. It contains the residential neighbourhoods of Sienna Hills and Signal Ridge. It is bounded by Sarcee Trail to the east, 17th Ave to the north, Stoney Trail to the south and 69th Street to the west.\nBattalion Park is established on the southern slopes of Cairn Hill, overlooking the south of the community. The shopping centres at Westhills Towne Centre, Signal Hill Centre, West Market Square and Signature Park Plaza serve the community. Located in the Signal Hill Centre area is a public library called Signal Hill Library, which serves the surrounding communities.\nThe land was annexed to the City of Calgary in 1956, and Signal Hill was established in 1986. It is represented in the Calgary City Council by the Ward 6 councillor John Pantazopoulos, on a provincial level by Calgary West MLA Mike Ellis, and at federal level by Calgary Signal Hill MP David McKenzie."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "signal hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "signal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7583,
+    "attempt": 7531,
+    "place_id": "gn-6226000",
+    "input": {
+      "place": {
+        "place_id": "gn-6226000",
+        "name": "Carterton",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -41.01827,
+        "lon": 175.5302
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carterton, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Carterton,_New_Zealand",
+          "text": "Carterton (Māori: Taratahi) is a small town in the Wellington Region of New Zealand and the seat of the Carterton District (a territorial authority or local government district). It lies in a farming area of the Wairarapa in New Zealand's North Island. It is located 14 km (8.7 mi) southwest of Masterton and 80 km (50 mi) northeast of Wellington. The town has a population of 5,930 (June 2025), out of a total district population of 10,300.\nCarterton was founded in 1857. Originally known as Three Mile Bush, it served as housing for workers building the road between Wellington and Masterton. It was later renamed after Charles Carter, who was in charge of the building of the Black Bridge over the Waiohine River south of the town. The town describes itself as New Zealand's daffodil capital, holding a Daffodil Festival each year on the second Sunday in September, with the main event taking place at Middle Run along Gladstone Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "carterton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7584,
+    "attempt": 7532,
+    "place_id": "gn-6232242",
+    "input": {
+      "place": {
+        "place_id": "gn-6232242",
+        "name": "Sandringham",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.8882,
+        "lon": 174.73019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sandringham, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Sandringham,_New_Zealand",
+          "text": "Sandringham (Māori: Hanaringihama) is a suburb of Auckland, New Zealand. It is a multi-ethnic suburb with a population of over 12,000.\nSandringham Village is a walk of a few hundred metres south along Sandringham Rd from the Outer Link bus route, and has a strong South Asian influence in restaurants and small supermarkets, Halal butchers and Bollywood movies. Nearby are Mt Eden, Kingsland, and Chinese-influenced Balmoral. The village has a post office, pharmacy, medical and legal practices, a real estate agency and a community centre.\nThe village architecture is art deco influenced, and most has survived, except the original village cinema.  The surrounding streets are wooden villas and bungalows from the 1920s and 1930s.\nThe volcanic cone of Owairaka (Mt Albert) forms Sandringham’s view to the west, and the Roy Clements Treeway on Meola Creek leads from nearby Ferguson Avenue to Rocket Park and the Mt Albert Community Centre.\nSandringham was named after the country house of Edward, Prince of Wales in Norfolk, England, still used by the present royal family.\nThe main road is Sandringham Road which runs more or less north-south. At the northern end, Kingsland is located near the Eden Park stadium. Sandringham Village is located at the southern end of Sandringham Road just before it connects with Mount Albert Road. The top New Zealand football club Central United play at the Kiwitea Street Stadium in Sandringham. SPiCE (Sandringham Project in Community Empowerment) is an active community-led development organisation set up by local residents in 2013 that runs activities, events and projects in and around Sandringham. The local secondary schools are Mount Albert Grammar School, Marist College and St Peter's College."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 274
+    },
+    "banned_terms": [
+      {
+        "term": "sandringham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7585,
+    "attempt": 7533,
+    "place_id": "gn-6316697",
+    "input": {
+      "place": {
+        "place_id": "gn-6316697",
+        "name": "Caibi",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -27.07167,
+        "lon": -53.24778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caibi",
+          "url": "https://en.wikipedia.org/wiki/Caibi",
+          "text": "Caibi is a municipality in the state of Santa Catarina in the South region of Brazil. It covers 174.84 km2 (67.51 mi2), and has a population of 6,130 with a population density of 35.57 inhabitants per square kilometer.\nCaibi was settled in two waves. The first, in 1926, were settlers were gauchos from the municipality of Guaporé in the state of Rio Grande do Sul. The second, in 1930, were ethnic Germans from Siberia brought to the region by the Companhia Colonizadora Sul Brasil. The second group were refugees of First World War and sought new land to avoid the war. Many of the group desired to return to Paraná, but settled in the area permanently due to the difficulty of the voyage from Siberia. The German residents were unaccustomed to the food and climate of southern Brazil. Other settlers came to the area in the early part of the 20th century. In 1964 Caibi, a district of Palmitos, became a separate municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "caibi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7586,
+    "attempt": 7534,
+    "place_id": "gn-633221",
+    "input": {
+      "place": {
+        "place_id": "gn-633221",
+        "name": "Uusikaupunki",
+        "country": "Finland",
+        "subdivision": "Southwest Finland",
+        "lat": 60.80043,
+        "lon": 21.40841
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uusikaupunki",
+          "url": "https://en.wikipedia.org/wiki/Uusikaupunki",
+          "text": "Uusikaupunki (Finnish: [ˈuːsiˌkɑu̯puŋki] ; Swedish: Nystad, Finland Swedish: [nyːstɑːd]; also known as Vasaborg) is a town and municipality of Finland. It is located in the Southwest Finland region, 71 kilometres (44 mi) northwest of Turku and 97 kilometres (60 mi) south of Pori. The municipality has a population of 14,783 (31 December 2025) and covers an area of 551.65 square kilometres (212.99 sq mi) of which 49.04 km2 (18.93 sq mi) is inland water. The population density is 29.38 inhabitants per square kilometre (76.1/sq mi).\nThe municipality is unilingually Finnish. Both its Finnish and Swedish names translate literally to \"new town\". The original name of the main village that was incorporated into Uusikaupunki was Kalainen (roughly translated from Finnish as \"rich in fish\"). The surrounding region, and especially the neighboring town of Kalanti, which merged with Uusikaupunki in 1993, was already a lively marketplace for wooden objects and salt in the early Middle Ages. Uusikaupunki was founded to legalize this trade."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "uusikaupunki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7587,
+    "attempt": 7535,
+    "place_id": "gn-638104",
+    "input": {
+      "place": {
+        "place_id": "gn-638104",
+        "name": "Säkylä",
+        "country": "Finland",
+        "subdivision": "Satakunta",
+        "lat": 61.03333,
+        "lon": 22.33333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Säkylä",
+          "url": "https://en.wikipedia.org/wiki/Säkylä",
+          "text": "Säkylä (Finnish pronunciation: [ˈsækylæ]) is a municipality of Finland. It is located in the Satakunta region, 65 kilometres (40 mi) southeast of the city of Pori. The municipality has a population of 6,221 (31 December 2025) and the municipality covers an area of  527.71 square kilometres (203.75 sq mi) of which 107.89 square kilometres (41.66 sq mi) is inland water (2018-01-01). The population density is 15 inhabitants per square kilometre (39/sq mi) (31 December 2025). The municipality is unilingually Finnish.\nSäkylä is known as the home of the Pori Brigade of the Finnish Defence Forces and for the large food industry.\nThe municipality of Köyliö was merged to Säkylä on 1 January 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "sakyla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7588,
+    "attempt": 7536,
+    "place_id": "gn-652615",
+    "input": {
+      "place": {
+        "place_id": "gn-652615",
+        "name": "Kitee",
+        "country": "Finland",
+        "subdivision": "North Karelia",
+        "lat": 62.1,
+        "lon": 30.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kitee",
+          "url": "https://en.wikipedia.org/wiki/Kitee",
+          "text": "Kitee (Finnish: [ˈkiteː]; Swedish: Kides) is a town and a municipality of Finland. It is located in the province of Eastern Finland and is part of the North Karelia region, about 65 kilometres (40 mi) south of Joensuu and about 175 kilometres (109 mi) northeast of Lappeenranta. The municipality has a population of 9,397 (31 December 2025) and covers an area of 1,724.41 square kilometres (665.80 sq mi) of which 275.61 km2 (106.41 sq mi) is water. The population density is 7.49 inhabitants per square kilometre (19.4/sq mi).\nThe municipality is unilingually Finnish. Neighbouring municipalities are Parikkala, Rääkkylä, Savonlinna and Tohmajärvi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "kitee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7589,
+    "attempt": 7537,
+    "place_id": "gn-6534238",
+    "input": {
+      "place": {
+        "place_id": "gn-6534238",
+        "name": "Pero",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.51017,
+        "lon": 9.08704
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pero, Lombardy",
+          "url": "https://en.wikipedia.org/wiki/Pero,_Lombardy",
+          "text": "Pero (Milanese: Per [ˈpeːr]) is a comune (municipality) in the Province of Milan in the Italian region Lombardy, located about 9 kilometres (6 mi) northwest of Milan. As of 31 December 2004, it had a population of 10,378 and an area of 5.0 square kilometres (1.9 mi2).\nThe municipality of Pero contains the frazioni (subdivisions, mainly villages and hamlets) Cerchiate and Cerchiarello.\nIt's existence is first mentioned in a document from 962 as Cassina del Pero, which also references the presence of vineyards in the area. Cassina, Lombard variant of cascina, means \"large farmhouse\".\nPero borders the following municipalities: Rho, Milan.\nPero is linked to Milan and Rho by the underground line M1 (a.k.a. \"red line\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "pero",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7590,
+    "attempt": 7538,
+    "place_id": "gn-6534921",
+    "input": {
+      "place": {
+        "place_id": "gn-6534921",
+        "name": "Gorla Minore",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.64117,
+        "lon": 8.90264
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gorla Minore",
+          "url": "https://en.wikipedia.org/wiki/Gorla_Minore",
+          "text": "Gorla Minore is a comune (municipality) in the Province of Varese in the Italian region Lombardy, located about 30 kilometres (19 mi) northwest of Milan and about 15 kilometres (9 mi) southeast of Varese. As of 31 December 2018, it had a population of 8,364 and an area of 7.7 square kilometres (3.0 mi2).\nThe municipality of Gorla Minore contains the frazione (subdivision) of Prospiano.\nGorla Minore borders the following municipalities: Cislago, Gorla Maggiore, Marnate, Mozzate, Olgiate Olona, Rescaldina, Solbiate Olona.\nBetween the boundaries of Marnate and Olgiate Olona is located a military monument of World War II called Marnate's Bunker."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "gorla minore",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gorla",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "minore",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7591,
+    "attempt": 7539,
+    "place_id": "gn-6620293",
+    "input": {
+      "place": {
+        "place_id": "gn-6620293",
+        "name": "Yateley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.34305,
+        "lon": -0.82985
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yateley",
+          "url": "https://en.wikipedia.org/wiki/Yateley",
+          "text": "Yateley () is a town and civil parish in the English county of Hampshire. It lies in the north-eastern corner of Hart District Council area, and is approximately 33 mi (53 km) southwest of Central London. It includes the settlements of Frogmore and Darby Green to the east. Yateley's population was 20,334 at the 2021 census.\nYateley Town Council is one of the few local councils recognised under the national 'Quality Council' award scheme.\nIn 2011, Hart district was named the UK's most desirable place to live, and Yateley was mentioned in a BBC News article as one of its towns. Yateley is known for hosting a family music festival every summer, Gig on the Green, and a beer and wine festival every autumn."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "yateley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7592,
+    "attempt": 7540,
+    "place_id": "gn-669405",
+    "input": {
+      "place": {
+        "place_id": "gn-669405",
+        "name": "Răcari",
+        "country": "Romania",
+        "subdivision": "Dâmbovița County",
+        "lat": 44.63333,
+        "lon": 25.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Răcari",
+          "url": "https://en.wikipedia.org/wiki/Răcari",
+          "text": "Răcari is a town located in Dâmbovița County, Muntenia, Romania. It administers seven villages: Bălănești, Colacu, Ghergani, Ghimpați, Mavrodin, Săbiești, and Stănești. It was declared a town in 2004.\nThe town is located in the southeastern part of the county, 40 km (25 mi) northwest of Bucharest, on road DN7. It lies in the Wallachian Plain, at an altitude of 140 m (460 ft), and is traversed by the rivers Colentina and Ilfov. Răcari borders the following communes: Bilciurești and Cojasca to the north, Tărtășești and Ciocănești to the south, Butimanu to the east, and Conțești and Cornățelu to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "racari",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

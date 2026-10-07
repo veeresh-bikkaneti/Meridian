@@ -1,0 +1,917 @@
+[
+  {
+    "rank": 7466,
+    "band": 5,
+    "place_id": "gn-316746",
+    "input": {
+      "place": {
+        "place_id": "gn-316746",
+        "name": "Dicle",
+        "country": "Türkiye",
+        "subdivision": "Diyarbakır Province",
+        "lat": 38.36571,
+        "lon": 40.0645
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dicle",
+          "url": "https://en.wikipedia.org/wiki/Dicle",
+          "text": "Dicle (Kurdish: Pîran Ottoman Turkish: پيران) is a municipality and district of Diyarbakır Province, Turkey. Its area is 738 km2, and its population is 36,114 (2022). It is populated by Kurds. The mayor is Felat Aygören from the HDP.\nDicle is the Kurdish and Turkish name of the Tigris river, which runs through the district and gave its name to it. The name derives from tighri- (arrow) from Avestan and cognate with \"tîj, tîr\" (sharp, arrow) in Kurdish and tigra- (sharp, pointed) in Old Persian. Some claim that it derives from Akkadian Idiqlat through the original Sumerian name for the river, Idigna."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 102,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives area, population, mayor and the Tigris river name origin, but states no climate mechanism, extreme, record, seasonal weather rhythm or paradox",
+      "priorMissing": "A verbatim place-specific climate mechanism, extreme, record or seasonal weather rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "dicle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7476,
+    "band": 5,
+    "place_id": "gn-3521344",
+    "input": {
+      "place": {
+        "place_id": "gn-3521344",
+        "name": "Platón Sánchez",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 21.27182,
+        "lon": -98.37456
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Platón Sánchez, Veracruz",
+          "url": "https://en.wikipedia.org/wiki/Platón_Sánchez,_Veracruz",
+          "text": "Platón Sánchez is a town (villa) in the Mexican state of Veracruz. It is located in the state's Huasteca Alta region. It serves as the municipal seat for the surrounding municipality of Platón Sánchez.\nIn the 2005 INEGI Census, the town reported a total population of 10,009.\nThe town's name honours Rafael Platón Sánchez (1831–1867), a native of the area who fought in the Battle of Puebla of 5 May 1862 and later chaired the court martial that sentenced Emperor Maximilian and his generals Miguel Miramón and Tomás Mejía to death by firing squad in Santiago de Querétaro on 19 June 1867."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 102,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Huasteca Alta location, 2005 population and the soldier its name honours, with no climate mechanism, extreme, record, seasonal weather rhythm or paradox",
+      "priorMissing": "Any verbatim climate material in the extract, such as a place-specific mechanism, extreme, record or seasonal weather rhythm"
+    },
+    "banned_terms": [
+      {
+        "term": "platon sanchez",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "platon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sanchez",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7523,
+    "band": 5,
+    "place_id": "gn-2158151",
+    "input": {
+      "place": {
+        "place_id": "gn-2158151",
+        "name": "Melton",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.68339,
+        "lon": 144.58543
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Melton, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Melton,_Victoria",
+          "text": "Melton is a suburb on the outskirts of Melbourne, Victoria. The suburb is located 37 kilometres (23 mi) west of  Melbourne's Central Business District on the city's western rural-urban fringe. It is the administrative centre of the City of Melton local government area. As of the 2021 Australian census, the suburb has a population of 7,953. \nOriginally a country town along the Ballarat — Melbourne growth corridor, Melton was designated a satellite city of Melbourne in 1974. Along with the rest of the City of Melton, it forms a part of Greater Melbourne and counts as part of its population statistic. In 2023, Melbourne's significant urban area boundary was expanded to include Melton.\nLike the overall local government area, Melton was named after Melton Mowbray in the United Kingdom."
+        },
+        {
+          "article": "Melton, Victoria (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Melton,_Victoria#Geography_and_climate",
+          "text": "Melton is located on mostly flat, largely featureless, former volcanic plains.\nTo the south-east of Melton is Mount Cottrell, a blast-shield volcano, and to the north-east of the suburb is Mount Kororoit. Mount Cottrell produced some of the largest lava flows in the western Victoria. These two volcanoes are some of the easternmost volcanoes on the Victorian Volcanic Plain which extends to the South Australian border.\nMelton receives less rainfall than Melbourne due to the area's position within the Otway Ranges rain shadow. The area has a profound urban heat island effect due to its ongoing rapid suburban development. There is some concern over how continued development and climate change will affect Melton, with particular concern focused on the loss of several threatened animal species' habitat, and an increased risk of bushfires and extreme weather events in the near future. The Melton City Council has noted that the area is \"particularly exposed to the impacts of climate change due to its moderate level of socio-economic disadvantage and large proportion of overseas-born residents\", along with \"significant structural barriers to participating in low-carbon lifestyles including limited local employment opportunities, lack of access to public transport, and inefficient new housing developments\".\nPrecipitation records for Melton follow."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Geography and climate",
+      "sectionWords": 203,
+      "leadWords": 129,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a Melbourne fringe suburb west of the city centre, its role as an administrative centre, its designation as a satellite city in 1974, and its naming for an English town, but no climate mechanism, extreme, record, seasonal rhythm, or paradox",
+      "priorMissing": "a place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "melton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7534,
+    "band": 5,
+    "place_id": "gn-2649730",
+    "input": {
+      "place": {
+        "place_id": "gn-2649730",
+        "name": "Fakenham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.82996,
+        "lon": 0.8477
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fakenham",
+          "url": "https://en.wikipedia.org/wiki/Fakenham",
+          "text": "Fakenham ( FAKE-un-um) is a market town and civil parish in Norfolk, England. It is situated on the River Wensum, about 25 miles (40 kilometres) north-west of Norwich. The town is at the junction of several roads, including the A148 from King's Lynn to Cromer, the A1067 to Norwich and the A1065 to Swaffham.\nThe civil parish has an area of 3.49 mi2 (9.0 km2). In the 2001 census, it had a population of 7,357 in 3,292 households; this increased to 7,617 at the 2011 census. For the purposes of local government, the parish lies within the district of North Norfolk.\nand within the County of Norfolk.\nFakenham has been a market town since 1250, known particularly for its corn, barley and wheat trading; in the 19th century, it became noted for its printing. Fakenham Racecourse is a thoroughbred horse racing venue to the south of the town.\nThe town has a long name of Fakenham Lancaster which derives from the ownership of the manor in 1377 being transferred to John of Gaunt, the Duke of Lancaster. The name continues to be used today, including on recently placed history trail plaques around the town; it is also used to name the town's two wards, for the purpose of electing councillors to North Norfolk District Council: Lancaster North and Lancaster South.\nThe town is part of the County Division of Fakenham and the Raynhams for the purpose of electing a county councillor to Norfolk County Council."
+        },
+        {
+          "article": "Fakenham (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Fakenham#Geography",
+          "text": "Fakenham is situated in the North Norfolk district, between Pudding Norton and Barsham, on the north bank of the River Wensum.\nTo the south-east of Fakenham is Pensthorpe Natural Park, which contains over 700 acres of woodland and lakes, and four gardens."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 42,
+      "leadWords": 245,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers a Norfolk market town on the River Wensum, its roads, corn and wheat trading since 1250, printing, a racecourse and a 1377 manor transfer, but states no climate mechanism, extreme, record, seasonal rhythm or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, seasonal rhythm or paradox stated in the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "fakenham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7616,
+    "band": 5,
+    "place_id": "gn-2638033",
+    "input": {
+      "place": {
+        "place_id": "gn-2638033",
+        "name": "Sherborne",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.94599,
+        "lon": -2.51776
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sherborne",
+          "url": "https://en.wikipedia.org/wiki/Sherborne",
+          "text": "Sherborne is a market town and civil parish in north-west Dorset, England. It is sited on the River Yeo, on the edge of the Blackmore Vale, 6 miles (9.7 km) east of Yeovil. The parish includes the hamlets of Nether Coombe and Lower Clatcombe. The A30 road, which connects London with Penzance, runs through the town. In the 2021 census the population of Sherborne was 10,361.\nSherborne's historic buildings include Sherborne Abbey, independent schools, its manor house and two castles: the ruins of a 12th-century fortified palace and the 16th-century mansion known as Sherborne Castle built by Sir Walter Raleigh. Much of the old town, including much of the abbey and many medieval and Georgian buildings, is built from distinctive honey-brown coloured Sherborne Stone."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 124,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers its position on the River Yeo at the edge of the Blackmore Vale, its abbey, schools, manor house, two castles including one built by Sir Walter Raleigh, and its honey-brown stone; it states no climate mechanism, extreme, record, seasonal rhythm, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, record or superlative, seasonal rhythm, or paradox stated in the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "sherborne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7661,
+    "band": 5,
+    "place_id": "gn-5117663",
+    "input": {
+      "place": {
+        "place_id": "gn-5117663",
+        "name": "Fort Hamilton",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.61872,
+        "lon": -74.0332
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Hamilton",
+          "url": "https://en.wikipedia.org/wiki/Fort_Hamilton",
+          "text": "Fort Hamilton is a United States Army installation in the southwestern corner of the New York City borough of Brooklyn, surrounded by the communities of Bay Ridge and Dyker Heights. It is one of several posts that are part of the region which is headquartered by the Military District of Washington. Its mission is to provide the New York metropolitan area with military installation support for the Army National Guard and the United States Army Reserve. The original fort was completed in 1831, with major additions made in the 1870s and 1900s. About half of the original fort defenses remains."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 100,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives only army-installation location in a borough corner, its mission, and fort construction dates, with no climate mechanism, extreme, record, seasonal rhythm, or paradox",
+      "priorMissing": "Place-specific climate mechanism, extreme, record, or seasonal rhythm verbatim in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "fort hamilton",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hamilton",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7682,
+    "band": 5,
+    "place_id": "gn-695740",
+    "input": {
+      "place": {
+        "place_id": "gn-695740",
+        "name": "Rozdolne",
+        "country": "Ukraine",
+        "subdivision": "Crimea",
+        "lat": 45.77019,
+        "lon": 33.49092
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rozdolne",
+          "url": "https://en.wikipedia.org/wiki/Rozdolne",
+          "text": "Rozdolne (Ukrainian: Роздольне; Russian: Раздольное; Crimean Tatar: Aqşeyh [Акъшейх]; German: Deutsch-Akscheich; until December 1944, Aksheykh (Ак-Шейх) is an urban-type settlement in the Autonomous Republic of Crimea, a territory recognized by a majority of countries as part of Ukraine and incorporated by Russia as the Republic of Crimea. The town also serves as the administrative center of the Rozdolne Raion (district), housing the district's local administration buildings.\nAs of the 2001 Ukrainian Census, its population was 8,163. Current population: 7,352 (2014 Census).\nThe village of Deutsch-Akscheich (Ак-Шеих Немецкий) was founded by Black Sea German settlers from the Berdyansk area in 1897."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 100,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives only settlement and district-centre status in a disputed peninsula territory, former names, and founding by settlers in 1897, with no climate mechanism, extreme, record, seasonal rhythm, or paradox",
+      "priorMissing": "Place-specific climate mechanism, extreme, record, or seasonal rhythm verbatim in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "rozdolne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7696,
+    "band": 5,
+    "place_id": "gn-8348804",
+    "input": {
+      "place": {
+        "place_id": "gn-8348804",
+        "name": "Turvey Park",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -35.12849,
+        "lon": 147.36264
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Turvey Park, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Turvey_Park,_New_South_Wales",
+          "text": "Turvey Park is an inner southern suburb of Wagga Wagga in southern New South Wales, Australia. Its boundaries are defined by Fernleigh Road to the south, Glenfield Road to the west, Coleman Street to the north and to the east by Willans Hill. Turvey Park is characterised by single detached dwellings, constructed in the period from the early 1900s through to the 1960s. These dwellings vary from the very substantial, as found in parts of Coleman Street and Grandview Parade, to the brick bungalows of the northern end of the suburb between Urana and Coleman Streets, to modest public housing, and a mixture of brick and fibro and weatherboard cottages at the southern end of the suburb. Another feature of Turvey Park are many corner shops, such on the corner of Heath and Urana Street, the corner of Norman and Coleman Streets, and the Corner of Bourke and Urana Streets.\nTurvey Park was named after the property \"Turvey Park\" established by Thomas Turvey (died 14 January 1889), a licensee and store owner. A large family vault on the property was moved to the Church of England proportion of the Wagga Wagga Monumental Cemetery to allow for the construction of the intersection of Mitchelmore St and Hodson Ave in 1941. A commemorative plaque now marks the vicinity of the original site.\n\nA number of Wagga Wagga facilities are located in Turvey Park including the Wagga Wagga Botanic Gardens, the Willans Hill Miniature Railway, Wagga Wagga Showground, Turvey Park Public School, Wagga Wagga High School, Kildare Catholic College, Henschke Primary School, Wagga Wagga TAFE, 2AAA FM Studios, Hopwood Park Tennis Club, Gissing Oval, a Fire and Rescue NSW Station, the Riverina Juvenile Justice Centre, the Kay Hull Veterinary Teaching Hospital of Charles Sturt University, Our Lady of Fatima Catholic Church and St Paul's Anglican Church. The Turvey Tops shopping centre, despite taking its name from the suburb, is actually located in the adjoining suburb of Mt. Austin. A number of Wagga Wagga sporting clubs have their origins in Turvey Park, and share the Turvey Park name, including the Turvey Park Bulldogs of the Riverina Football League (Australian Rules), the former Turvey Park Lions of Group 9 Rugby League (later merging with Wagga Wagga Magpies to create South City Bulls), and the Turvey Park Softball Club.\nFormer Canterbury-Bankstown, New South Wales and Australian Rugby League player Steve Mortimer is nicknamed Turvey after the Turvey Park Rugby League club for whom he played for growing up in Wagga Wagga."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 415,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes suburb boundaries, housing periods, corner shops, and local facilities with no climate mechanism, extreme, record, seasonal weather rhythm, or paradox at all",
+      "priorMissing": "any place-specific climate mechanism, extreme, record, or seasonal weather rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "turvey park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "turvey",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7738,
+    "band": 5,
+    "place_id": "gn-614891",
+    "input": {
+      "place": {
+        "place_id": "gn-614891",
+        "name": "Dmanisi",
+        "country": "Georgia",
+        "subdivision": "Kvemo Kartli",
+        "lat": 41.33183,
+        "lon": 44.20296
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dmanisi",
+          "url": "https://en.wikipedia.org/wiki/Dmanisi",
+          "text": "Dmanisi (Georgian: დმანისი, romanized: dmanisi, pronounced [dmanisi], Azerbaijani: Başkeçid) is a town and archaeological site in the Kvemo Kartli region of Georgia approximately 93 km southwest of the nation's capital Tbilisi in the river valley of Mashavera. \nAbandoned in the 1700s, Bashkichet (Башкичети) was resettled in 1844 to 2000 by Russian sectarian Dukhobortsy exiled from Taurida Governorate. It was renamed Dmansi (Дманиси) from the ancient Mongol duman, meaning \"military or administrative unit\".   \nIt is the site of Dmanisi Hominid Skulls, which are dated to 1.8 million years ago, making them the earliest dated human remains in Eurasia. A series of skulls which had diverse physical traits, discovered at Dmanisi in the early 2000s, led to the hypothesis that many separate species in the genus Homo were in fact a single lineage. Also known as Skull 5, D4500 is the fifth skull to be discovered in Dmanisi."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 146,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers a river valley site, resettlement in 1844 and hominid skulls dated to very early times, with no climate mechanism, extreme, record, seasonal rhythm, or paradox",
+      "priorMissing": "a place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "dmanisi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7753,
+    "band": 5,
+    "place_id": "gn-3801621",
+    "input": {
+      "place": {
+        "place_id": "gn-3801621",
+        "name": "San Antonino Castillo Velasco",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 16.80144,
+        "lon": -96.68262
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Antonino Castillo Velasco",
+          "url": "https://en.wikipedia.org/wiki/San_Antonino_Castillo_Velasco",
+          "text": "San Antonino Castillo Velasco is a town and municipality located south of the city of Oaxaca, in the Mexican state of Oaxaca. \nIt is part of the Ocotlán District in the south of the Valles Centrales Region\nIts population is less than 5,000, but it was the scene of a number of violent confrontations in the 2000s.  The town is known for its crafts, especially fine embroidery and items made with a flower known as flor inmortal (\"immortal flower\"), so called because it does not lose its color when it is dried.  The name San Antonino is in honor of Anthony of Padua, who is the town's patron saint.   “Castillo Velasco” (sometimes “Castillo Velazco”) was added  in honor of José María Castillo Velasco, who was born here in 1820 and played important roles in the Reform War and French Intervention in Mexico."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 142,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers fine embroidery, a dried flower craft and a hero born here in 1820, with no climate mechanism, extreme, record, seasonal rhythm, or paradox for the town",
+      "priorMissing": "a place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "san antonino castillo velasco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "antonino",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "castillo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "velasco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7785,
+    "band": 5,
+    "place_id": "gn-2644809",
+    "input": {
+      "place": {
+        "place_id": "gn-2644809",
+        "name": "Laurencekirk",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.83338,
+        "lon": -2.4654
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laurencekirk",
+          "url": "https://en.wikipedia.org/wiki/Laurencekirk",
+          "text": "Laurencekirk (, Scots: Lowrenkirk, Scottish Gaelic: Eaglais Labhrainn), locally known as Lournie or simply 'The Kirk', is a small town in the historic county of Kincardineshire, Scotland, just off the A90 Dundee to Aberdeen main road. It is administered as part of Aberdeenshire. It is the largest settlement in the Howe o' the Mearns area and houses the local secondary school; Mearns Academy, which was established in 1895 and awarded the Charter Mark in 2003.\nIts old name was Conveth, an anglification of the Gaelic Coinmheadh, referring to an obligation to provide free food and board to passing troops.  Laurencekirk is in the Howe of the Mearns, a wide valley between the Hill of Garvock and the Cairn O' Mount. The famous landmark of the Johnston Tower can be seen on the peak of the Garvock.\nLaurencekirk was, in the past, known for making snuff boxes with a special type of airtight hinge (known as a \"Laurencekirk hinge\") invented by James Sandy.\nThe Laurencekirk Golf Club, now defunct, was founded in the early 1900s but by 1951 it had been wound up."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 182,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives valley geography between two hills and a history of snuff-box making, with no climate mechanism, extreme or seasonal pattern stated",
+      "priorMissing": "any climate mechanism, extreme, record or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "laurencekirk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7795,
+    "band": 5,
+    "place_id": "gn-5947954",
+    "input": {
+      "place": {
+        "place_id": "gn-5947954",
+        "name": "Ellison",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.93307,
+        "lon": -119.36907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ellison, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Ellison,_British_Columbia",
+          "text": "Ellison is an unincorporated community located approximately midway up the Okanagan valley within the local government jurisdiction of the Regional District of Central Okanagan. The Ellison community is founded upon a heritage of agriculture, rural acreages and scattered residential neighbourhoods within scenic valley terrain.\nThe name Ellison was adopted 1 December 1955, and is named after Price Ellison (1852-1932), a stock raiser and wheat grower that settled here in 1876, and at one time owned or controlled 80% of the property in the area. The Ellison Post Office was opened 1 May 1912, with Thomas Clinton as postmaster, and closed 15 May 1920.\nThe geography of Ellison contains many small and rare dryland ecosystems of open, arid grasslands and pine forest savannahs. Streams that support a diversity of animals and plants cross these dry ecosystems. Water is a precious resource and a focus for biodiversity and wildlife corridors.\nThere are three main streams that cross the Ellison area; Scotty Creek, Whelan Creek and Mill Creek. These streams and their tributaries are an important habitat in their own right and drain into spawning streams for kokanee, trout and other fish. Ellison also has aspen and cottonwood ecosystems that are wet islands in a dry landscape. These wetlands act as a sponge and a filter that maintain water quality and help maintain the quantity of water in aquifers and streams."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 228,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes dryland grassland habitats and wetlands that filter water and store it in the ground; that is habitat ecology and water filtering, not a stated weather mechanism, extreme, record or seasonal rhythm",
+      "priorMissing": "a climate mechanism, extreme, record or seasonal weather rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "ellison",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7805,
+    "band": 5,
+    "place_id": "gn-2646499",
+    "input": {
+      "place": {
+        "place_id": "gn-2646499",
+        "name": "Howden",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.7463,
+        "lon": -0.86994
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Howden",
+          "url": "https://en.wikipedia.org/wiki/Howden",
+          "text": "Howden () is a market town and civil parish in the East Riding of Yorkshire, England. It lies in the Vale of York to the north of the M62, on the A614 road about 16 miles (26 km) south-east of York and 3 miles (4.8 km) north of Goole, which lies across the River Ouse. It is known for Howden Minster, one of the largest churches in the East Riding. At the 2021 census, the parish had a population of 4,571.\nWilliam the Conqueror gave the town to the Bishops of Durham in 1080. The wapentake of Howdenshire was named after the town, and remained an exclave of County Durham until as late as 1846. The original boundaries of the wapentake were used for the current two government wards of Howden and Howdenshire, which had a combined population of 19,753 at the 2011 census."
+        },
+        {
+          "article": "Howden (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Howden#Geography",
+          "text": "bridge crossing over the River Ouse]]\nHowden is situated in the Vale of York, on the A614, although the town itself has been bypassed. Howden lies close to the M62 and the M18 motorways, nearby to Goole which lies at the opposite side of the River Ouse. The town is served by Howden railway station, which is situated in North Howden and has services to Leeds, Selby, York, Hull and London.\nHowden is surrounded by largely flat land and in some places marshland. Much of the land surrounding Howden is separated by many drainage dykes.\nHowden lies within the Parliamentary constituency of Goole and Pocklington."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 105,
+      "leadWords": 144,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers a large minster church and a town grant in 1080, with no climate content at all",
+      "priorMissing": "any climate mechanism, extreme, record or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "howden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7855,
+    "band": 5,
+    "place_id": "gn-5181063",
+    "input": {
+      "place": {
+        "place_id": "gn-5181063",
+        "name": "Boalsburg",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.77562,
+        "lon": -77.7925
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boalsburg, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Boalsburg,_Pennsylvania",
+          "text": "Boalsburg is an unincorporated community and census-designated place (CDP) in Harris Township, Centre County, Pennsylvania, United States, with a small portion of its northwest corner extending into College Township. It is part of the State College, Pennsylvania Metropolitan Statistical Area. The population was 3,722 at the 2010 census. The village claims to be the birthplace of Memorial Day. However, that claim was brought into question by Bellware and Gardiner in their book, The Genesis of the Memorial Day Holiday in America, in 2014. In their book, Bellware and Gardiner point out that the Boalsburg story was first published in 1904, forty years after the fact with no indication that General Logan drew inspiration from any activities in Boalsburg and no evidence that it started the holiday."
+        },
+        {
+          "article": "Boalsburg, Pennsylvania (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Boalsburg,_Pennsylvania#Geography",
+          "text": "Boalsburg is located in southern Centre County at (40.782670, -77.786899). It occupies the central and northern sections of Harris Township and extends northwest barely into College Township. It borders Rothrock State Forest.\nAccording to the United States Census Bureau, the CDP has a total area of , all land. It is centered upon Pennsylvania Route 45 and Business U.S. Route 322. 322 begins as the Mount Nittany Expressway in the CDP and travels northwest from Boalsburg, bypassing State College to the east and north, while Business 322 begins as Boal Avenue and proceeds into the center of State College, northwest of Boalsburg, as Atherton Street. In the other direction US 322 leads east and then south to Lewistown.\nSpring Creek flows northward through Boalsburg towards Bald Eagle Creek, a tributary of the West Branch Susquehanna River. The Tussey Mountain Ski Area is located on the eastern edge of Boalsburg."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 149,
+      "leadWords": 126,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract only discusses the disputed claim to be the birthplace of Memorial Day and gives no weather or climate information of any kind",
+      "priorMissing": "any climate mechanism, extreme, record or seasonal rhythm stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "boalsburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7929,
+    "band": 5,
+    "place_id": "gn-3575721",
+    "input": {
+      "place": {
+        "place_id": "gn-3575721",
+        "name": "Marigot",
+        "country": "Dominica",
+        "subdivision": "Saint Andrew Parish",
+        "lat": 15.53743,
+        "lon": -61.282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marigot, Dominica",
+          "url": "https://en.wikipedia.org/wiki/Marigot,_Dominica",
+          "text": "Marigot  is the largest settlement of Saint Andrew Parish in northeastern Dominica. The village has a population of 2,676 people, and is home to a Fisheries Complex as well as the island's main airport. Kokoy is the main language spoken in the village, a dialect of Antiguan and Barbudan Creole brought to the village by Antiguan and Montserratian settlers.\nIt is the birthplace of Wills Stratmore Stevens, a local Educationist and B.O Robinson, a former education officer. Along with Doctor Watts and local politician Edison James, (former Prime Minister) and cricket umpire Billy Doctrove. Marigot served as the leading community in Dominica at one point, with its people serving in all aspects of government and local community development. Former police Commissioner O N Philip and Customs Comptroller Victoria Watty are also from the village of Marigot. Marigot can boast of being the leader in job creation, agriculture and entrepreneurship. Marigot is also the home of former Government Senator Allan Jerry E Samuel, the youngest member to serve in parliament in the entire Caribbean region. It is also home to current leader of the Opposition Lennox Linton."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 186,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes the largest settlement of a northeastern Dominica parish, its fisheries complex, the island's main airport, its Creole dialect and many notable residents, but contains no climate mechanism, extreme, record, seasonal rhythm or paradox",
+      "priorMissing": "a place-specific climate mechanism, extreme, record, seasonal rhythm or paradox stated in the source extract"
+    },
+    "banned_terms": [
+      {
+        "term": "marigot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7935,
+    "band": 5,
+    "place_id": "gn-2141050",
+    "input": {
+      "place": {
+        "place_id": "gn-2141050",
+        "name": "Hienghène",
+        "country": "New Caledonia",
+        "subdivision": "North Province",
+        "lat": -20.68333,
+        "lon": 164.93333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hienghène",
+          "url": "https://en.wikipedia.org/wiki/Hiengh%C3%A8ne",
+          "text": "Hienghène (French pronunciation: [jɛ̃ɡɛn] ,; Fwâi: Hyehen) is a commune in the North Province of New Caledonia, an overseas territory of France in the Pacific Ocean. It is located on a bay called Hienghène Bay, known for its eroded limestone islets.\nThe islets are remnants of a limestone and silica formation that once covered the whole of the bay, some 40 million years ago. Erosion from wind and water carved away the softer limestone, leaving the harder silica behind in eye-catching formations. Several of these formations have been given fanciful names, such as the Sphinx, the Towers of Notre Dame, and the Hen (pictured).\nThe commune is home to New Caledonia Super Ligue football club Hienghène Sport."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 117,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes a Pacific bay and limestone islets eroded by wind and water over millions of years, but states no present-day climate mechanism, extreme, record, seasonal rhythm, or paradox; geological erosion is not the place's weather",
+      "priorMissing": "place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "hienghene",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8116,
+    "band": 5,
+    "place_id": "gn-12035862",
+    "input": {
+      "place": {
+        "place_id": "gn-12035862",
+        "name": "Ville Haute",
+        "country": "Luxembourg",
+        "subdivision": "Luxembourg",
+        "lat": 49.61173,
+        "lon": 6.12648
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ville Haute",
+          "url": "https://en.wikipedia.org/wiki/Ville_Haute",
+          "text": "The Ville-Haute (French pronunciation: [vil ot]; Luxembourgish: Uewerstad, pronounced [ˈu̯əvɐʃtaːt] ; German: Oberstadt, pronounced [ˈoːbɐʃtat]; all lit. 'High City') is a district in central Luxembourg City, in southern Luxembourg. It is the historic center of Luxembourg City and is involved in its UNESCO World Heritage Site status. As of 31 December 2025, the Ville-Haute has a population of 3,513 inhabitants.\nThe Ville-Haute is home to prestigious squares, buildings and monuments such as Place Guillaume II, Place d'Armes, Notre-Dame Cathedral and Grand Ducal Palace, as well as many government institutions. The Gëlle Fra Monument of Remembrance war memorial is situated on Place de la Constitution."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 104,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes the historic centre of a capital city in southern Luxembourg, with famous squares, a cathedral, a palace, government buildings, and a war memorial, but states no climate mechanism, extreme, record, seasonal rhythm, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, record, seasonal weather rhythm, or paradox stated in the extract."
+    },
+    "banned_terms": [
+      {
+        "term": "ville haute",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ville",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "haute",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8206,
+    "band": 5,
+    "place_id": "gn-5101585",
+    "input": {
+      "place": {
+        "place_id": "gn-5101585",
+        "name": "Mountain Lakes",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.89482,
+        "lon": -74.43293
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mountain Lakes, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Mountain_Lakes,_New_Jersey",
+          "text": "Mountain Lakes is a borough in Morris County, in the U.S. state of New Jersey, and a suburb of New York City. As of the 2020 United States census, the borough's population was 4,472, an increase of 312 (+7.5%) from the 2010 census count of 4,160, which in turn had reflected a decline of 96 (−2.3%) from the 4,256 recorded at the 2000 census.\nOriginally a planned community, the borough was named for a pair of lakes which served to distinguish Mountain Lakes as \"the first year-round residential lake community in northwestern New Jersey.\" Mountain Lakes was incorporated as a borough by an act of the New Jersey Legislature on March 3, 1924, from portions of Boonton Township and Hanover Township, subject to the results of a referendum passed on April 29, 1924.\nThe borough has been one of the state's highest-income communities. In the 2013–2017 American Community Survey, Mountain Lakes had a median household income of $175,556 (ranked 12th in the state) and included 45.6% of households earning more than $200,000 annually.\nIn 2010, Forbes.com listed Mountain Lakes as 210th in its listing of \"America's Most Expensive ZIP Codes\", with a median home price of $1,045,401.\nMountain Lakes ranked among the highest annual property tax bills in New Jersey, and was the highest in Morris County, at $20,471 in 2018, compared to a statewide average of $8,767. New Jersey Monthly magazine ranked Mountain Lakes as the 26th best place to live in New Jersey in its rankings of the \"New Jersey's Top Towns 2011–2012\" in New Jersey.\nThe Mountain Lakes station provides NJ Transit commuter train service. The station offers service on the Montclair-Boonton Line and is the first train station heading eastbound not concurrent with the nearby Morris & Essex Lines."
+        },
+        {
+          "article": "Mountain Lakes, New Jersey (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Mountain_Lakes,_New_Jersey#Geography",
+          "text": "According to the United States Census Bureau, the borough had a total area of 2.91 square miles (7.53 km 2 ), including 2.64 square miles (6.84 km 2 ) of land, and 0.27 square miles (0.69 km 2 ) of water (9.11%).\nThe borough borders Parsippany-Troy Hills to the east and south, the town of Boonton to the northeast, Boonton Township to the northwest, and Denville to the west, all of which are located in Morris County.\nLakes\nMan-made lakes in Mountain Lakes include Birchwood Lake, Crystal Lake, Mountain Lake, Shadow Lake, Sunset Lake, Wildwood Lake, and Cove Lake. There are town private swimming beaches in Birchwood Lake, and Mountain Lake. The Mountain Lakes Club is located on the northern end of Mountain Lake.\nBeaches are open from sunrise to sunset, and facilities are available between the hours of 10 am and 6 pm every day between the months of June and August, with beach badges purchased at the borough hall. Beach badges are available to Mountain Lakes residents only."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 170,
+      "leadWords": 293,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers a planned community incorporated in 1924 and named for a pair of lakes, plus its high incomes, home prices and property taxes; lakes are geography, and no weather mechanism, extreme, record or rhythm is described",
+      "priorMissing": "A place-specific climate mechanism, extreme, record or seasonal rhythm stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "mountain lakes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mountain",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lakes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8214,
+    "band": 5,
+    "place_id": "gn-5493811",
+    "input": {
+      "place": {
+        "place_id": "gn-5493811",
+        "name": "Taos",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 36.40725,
+        "lon": -105.57307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taos, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Taos,_New_Mexico",
+          "text": "Taos () is a town in Taos County, in the north-central region of New Mexico. Situated between the Rio Grande Gorge and the Sangre de Cristo Mountains, it is located roughly 50 miles (80 km) south of the Colorado border. Taos serves as the county seat of Taos County, of which it is the largest municipality, with an estimated population of 6,567 as of 2021.\nThe town of Taos was incorporated in 1934, although humans have lived in the adjacent Taos Pueblo—a UNESCO World Heritage Site and the town's namesake—for roughly a millennium; the town's name derives from the native Taos language meaning \"(place of) red willows\". Initially founded by Spanish colonists in 1615 as Don Fernando de Taos, it was only intermittently occupied until the late 18th century, due to recurring conflict between European and indigenous peoples, most notably the Pueblo Revolt.\nTaos was formally established as a permanent settlement in 1795 by Nuevo México Governor Fernando Chacón, serving as a fortified plaza and trading outpost for the neighboring Taos Pueblo and Hispano communities, including Ranchos de Taos, Cañon, Taos Canyon, Ranchitos, El Prado, and Arroyo Seco. During the Mexican–American War, the region was occupied by the United States, triggering a rebellion among Hispanics and American Indians known as the Taos Revolt.\nFollowing U.S. annexation of Nuevo México, Taos became a stopover for American and European settlers along the vast western frontier. During this period, the town developed its existing reputation as a cultural enclave, with the first artist colony being established in 1898 by painters Ernest Blumenschein and Bert Phillips. Taos has since developed a reputation as a \"counterculture mecca\" and \"beacon for artists\", attracting the likes of painter Georgia O'Keeffe, English poet and writer D.H. Lawrence, and actor Dennis Hopper."
+        },
+        {
+          "article": "Taos, New Mexico (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Taos,_New_Mexico#Geography_and_climate",
+          "text": ")]]\nTaos is located at (36.393979, −105.576705).\nThe town has a total area of , all land.\nTaos is located within two watersheds, categorized as subwatersheds or HUC12s in the United States. The town is mostly located in the Outlet Rio Fernando del Taos Watershed, where its two waterbodies are rated as impaired. A coalition of local organizations are working to improve the watershed's health. The northern edge of town is within the Rio Fernando del Taos-Rio Pueblo del Taos Watershed.\nJust to the west of Taos is the Rio Grande Gorge, cutting through the basalt flows of the Taos Plateau volcanic field and crossed by the Rio Grande Gorge Bridge, now a part of U.S. Route 64.\nThe elevation of the town is . Just north of Taos is Wheeler Peak, at , the highest point in New Mexico."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Geography and climate",
+      "sectionWords": 140,
+      "leadWords": 293,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract covers a town between a river gorge and a mountain range, a neighbouring pueblo lived in for about a thousand years, settlement in 1615 and 1795, a revolt and an artist colony from 1898, with no weather or climate content",
+      "priorMissing": "A place-specific climate mechanism, extreme, record or seasonal rhythm stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "taos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8229,
+    "band": 5,
+    "place_id": "gn-6148374",
+    "input": {
+      "place": {
+        "place_id": "gn-6148374",
+        "name": "Sioux Lookout",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 50.06676,
+        "lon": -91.98358
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sioux Lookout",
+          "url": "https://en.wikipedia.org/wiki/Sioux_Lookout",
+          "text": "Sioux Lookout is a town in Northwestern Ontario, Canada, with a population of 5,838 people (up 10.8% since 2016). Known locally as the \"Hub of the North\", it is serviced by the Sioux Lookout Airport, Highway 72, and the Sioux Lookout railway station. According to a 2011 study commissioned by the municipality, health care and social services ranked as the largest sources of employment, followed by the retail trade, public administration, transportation and warehousing, manufacturing, accommodation and food services, and education.\nAlthough downtown Sioux Lookout is located 71 kilometres (44 mi) from the Trans-Canada Highway, the municipality covers the ends or beginnings of provincial highways 664, 642, 516, and 72. Sioux Lookout is also a key airport hub for numerous northern and Indigenous communities in Northwestern Ontario and remains a service stop for The Canadian, a transcontinental passenger train operated by Via Rail, and a busy railway junction for the northwestern Ontario segment of Canadian National Railway's transcontinental Class 1 railroad.\nFishing camps in the area allow access to an extensive lake system fed by the English River. The town is surrounded by several beaches, including Umphreville Park, a historical site that predates the town itself. During the summer months, Sioux Lookout's population rises as tourists, mostly American, arrive to take advantage of the multitude of lakes and rivers in the area. Experienced guides, employed by the camps, can locate the best locations and also provide an educated tour of the unique land known affectionately as \"sunset country\"."
+        },
+        {
+          "article": "Sioux Lookout (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Sioux_Lookout#Climate",
+          "text": "Sioux Lookout experiences a humid continental climate (Dfb) with long, cold winters and short, warm summers.\nThe coldest temperature ever recorded was on 18 February 1966. The highest temperature ever recorded in Sioux Lookout was on 29 June 1931 and 11 July 1936."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 43,
+      "leadWords": 248,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract mentions only that tourists arrive in summer months for the lakes and beaches, with no climate mechanism, extreme, record, seasonal contrast or paradox; summer tourism alone is not a stated weather pattern",
+      "priorMissing": "a place-specific climate mechanism, extreme, record or seasonal rhythm stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sioux lookout",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sioux",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lookout",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 6668,
+    "attempt": 6621,
+    "place_id": "gn-6544099",
+    "input": {
+      "place": {
+        "place_id": "gn-6544099",
+        "name": "Moncloa-Aravaca",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.43547,
+        "lon": -3.7317
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moncloa-Aravaca",
+          "url": "https://en.wikipedia.org/wiki/Moncloa-Aravaca",
+          "text": "Moncloa-Aravaca (Spanish pronunciation: [moŋˈklo.a aɾaˈβaka]) is a district of the municipality of Madrid, Spain. It is located to the northwest of the city centre, spanning across both banks of the Manzanares. It is made up of the neighborhoods of Aravaca, Argüelles, Casa de Campo, Ciudad Universitaria, El Plantío, Valdemarín and Valdezarza.\nMoncloa-Aravaca is one of the 21 districts of Madrid, Spain, located in the northwestern part of the city. It is characterized by its blend of urban areas, extensive green spaces, and significant educational and governmental institutions. The district's varied landscape includes dense residential neighborhoods, sprawling university campuses, and large natural parks, making it one of Madrid's most diverse and significant districts [1, 5].\nGeography and Layout\nMoncloa-Aravaca spans both banks of the Manzanares River, with the river acting as a natural boundary within parts of the district. It borders the districts of Centro, Chamberí, Tetuán, Fuencarral-El Pardo, and Latina, as well as the municipalities of Pozuelo de Alarcón and Majadahonda to the west. The district’s terrain includes urban cores, leafy \nThe Palace of Moncloa, located in Ciudad Universitaria, is the residence of the Spanish Prime Minister."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "moncloa aravaca",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "moncloa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "aravaca",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6669,
+    "attempt": 6622,
+    "place_id": "gn-674733",
+    "input": {
+      "place": {
+        "place_id": "gn-674733",
+        "name": "Lipova",
+        "country": "Romania",
+        "subdivision": "Arad County",
+        "lat": 46.09085,
+        "lon": 21.69628
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lipova, Arad",
+          "url": "https://en.wikipedia.org/wiki/Lipova,_Arad",
+          "text": "Lipova (Romanian pronunciation: [ˈlipova]; German and Hungarian: Lippa; Serbian: Липова,  Lipova; Turkish: Lipva) is a town in Romania, Arad County, located in the Banat region. It is situated at a distance of 34 km (21 mi) from Arad, the county capital, at the contact zone of the river Mureș with the Zarand Mountains, the Western Plateau, and the Lipova Hills. It administers two villages, Radna (Máriaradna) and Șoimoș (Solymosvár), and its total surface is 134.6 km2 (52.0 sq mi).\nThe first written record of the town dates back to 1315 under the name Lipwa. In 1324 the settlement was mentioned as castellanus de Lypua, a place-name that reflects its reinforced character of that time."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "lipova",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6670,
+    "attempt": 6623,
+    "place_id": "gn-675606",
+    "input": {
+      "place": {
+        "place_id": "gn-675606",
+        "name": "Ineu",
+        "country": "Romania",
+        "subdivision": "Arad County",
+        "lat": 46.43372,
+        "lon": 21.84048
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ineu",
+          "url": "https://en.wikipedia.org/wiki/Ineu",
+          "text": "Ineu (Romanian pronunciation: [iˈnew]; Hungarian: Borosjenő) is a town in Arad County, western Transylvania, Romania. It is situated at a distance of 57 km (35 mi) from the county capital, Arad, and occupies a 116.6 km2 (45.0 sq mi) surface at the contact point of Crișul Alb Basin and Crișurilor Plateau. Ineu is the main entrance gate into the Zărand Land (Țara Zarandului). The town administers one village, Mocrea (Apatelek).\nIneu was first attested in documents in 1214 under the name \"Villa Ieneu\". It was a sanjak centre in the Temeşvar and Varat eyalets and it was known as \"Yanova\" during the Ottoman rule between 1564 and 1595 and again between 1658 and 1693."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "ineu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6671,
+    "attempt": 6624,
+    "place_id": "gn-675703",
+    "input": {
+      "place": {
+        "place_id": "gn-675703",
+        "name": "Ighiu",
+        "country": "Romania",
+        "subdivision": "Alba County",
+        "lat": 46.15,
+        "lon": 23.51667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ighiu",
+          "url": "https://en.wikipedia.org/wiki/Ighiu",
+          "text": "Ighiu (Hungarian: Magyarigen; German: Grabendorf) is a commune located in Alba County, Transylvania, Romania. The commune is composed of five villages: Bucerdea Vinoasă (Borosbocsárd), Ighiel (Igenpataka), Ighiu, Șard (Sárd), and Țelna (Celna). \nThe commune is located in the southeastern corner of the Transylvanian Plateau, about 10 km (6.2 mi) northwest of Alba Iulia and 17 km (11 mi) southwest of Teiuș. The Ighiu river passes through Ighiel and Ighiu villages before discharging into the Ampoi river in Șard.\nBoth Șard and Ighiu have fortified churches. The latter one, the Reformed Church of Ighiu, is part of an architectural ensemble dating back to the 15th century, with the present church having been built in 1781–1783. The Hungarian theologian and historian Péter Bod was pastor there from 1749 to his death, in 1768; his tomb is in the church's courtyard."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "ighiu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6672,
+    "attempt": 6625,
+    "place_id": "gn-710915",
+    "input": {
+      "place": {
+        "place_id": "gn-710915",
+        "name": "Chasiv Yar",
+        "country": "Ukraine",
+        "subdivision": "Donetsk",
+        "lat": 48.58768,
+        "lon": 37.83409
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chasiv Yar",
+          "url": "https://en.wikipedia.org/wiki/Chasiv_Yar",
+          "text": "Chasiv Yar (Ukrainian: Часів Яр, pronounced [ˈtʃɑs⁽ʲ⁾iu̯ ˈjɑr] ) is a city in Bakhmut Raion, Donetsk Oblast, Ukraine. Largely in ruins since the mid-2020s as a result of the Russo-Ukraine War, the January 2022 pre-war population of 12,250 had decreased to approximately 600 by May 2024 due to evacuations from Russian shelling and fighting within the city, according to RBC News.\nIt is located 10 kilometres (6.2 mi) west of Bakhmut and was the administrative center of Chasiv Yar urban hromada before the war.\nThe Siverskyi Donets – Donbas Canal runs through the east of Chasiv Yar. Just a small part of the city – the Kanal microdistrict – is east of the canal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "chasiv yar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chasiv",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "yar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6673,
+    "attempt": 6626,
+    "place_id": "gn-710958",
+    "input": {
+      "place": {
+        "place_id": "gn-710958",
+        "name": "Chahor",
+        "country": "Ukraine",
+        "subdivision": "Chernivtsi",
+        "lat": 48.2433,
+        "lon": 25.99392
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chahor",
+          "url": "https://en.wikipedia.org/wiki/Chahor",
+          "text": "Chahor (Ukrainian: Чагор; Romanian: Ceahor; German: Czahor) is a village in Chernivtsi Raion, Chernivtsi Oblast, Ukraine. It hosts the administration of Chahor rural hromada, one of the hromadas of Ukraine.\nUntil 18 July 2020, Chahor belonged to Hlyboka Raion. The raion was abolished in July 2020 as part of the administrative reform of Ukraine, which reduced the number of raions of Chernivtsi Oblast to three. The area of Hlyboka Raion was merged into Chernivtsi Raion. According to the 2001 Ukrainian census, Chahor had a population of 4,264 inhabitants, out of which 3,776 (88.56%) were Ukrainian-speakers, 433 (10.15%) Romanian-speakers (including 238 self-identified Moldovan-speakers or 5.59%, and 195 self-identified Romanians-speakers, or 4.57%) and 48 Russian-speakers (1.13%). The village was one of the localities where during the Soviet period before 1989, more people were listed as ethnic Moldovans than as ethnic Romanians. In 1989, a majority of the 3,840 inhabitants of the village were Ukrainians, but 1,095 were Romanians (28.52%) and 221 (5.76%) were Moldovans. The village was rather unique in that there was a significant number of self-identified ethnic Romanians who called their language Moldovan in 2001, which largely explains why in the raion there were 333 ethnic Romanians who called their language Moldovan. In the locality, a suburb of the city of Chernivtsi, a large number of rich ethnic Ukrainians have settled, and this partly explains the increase in the proportion of ethnic Ukrainians and Ukrainian-speakers, but so does Ukrainization in a village without a Romanian-language school, which also largely explains why many self-identified local ethnic Romanians called their language Moldovan in 2001."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "chahor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6674,
+    "attempt": 6627,
+    "place_id": "gn-715839",
+    "input": {
+      "place": {
+        "place_id": "gn-715839",
+        "name": "Sátoraljaújhely",
+        "country": "Hungary",
+        "subdivision": "Borsod-Abaúj-Zemplén",
+        "lat": 48.39492,
+        "lon": 21.65871
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sátoraljaújhely",
+          "url": "https://en.wikipedia.org/wiki/Sátoraljaújhely",
+          "text": "Sátoraljaújhely (German: Neustadt am Zeltberg; Slovak: Nové Mesto pod Šiatrom) is a town located in Borsod-Abaúj-Zemplén county in northern Hungary along the Slovak border. It is 82 kilometres (51 miles) east from the county capital Miskolc."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 36
+    },
+    "banned_terms": [
+      {
+        "term": "satoraljaujhely",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6675,
+    "attempt": 6628,
+    "place_id": "gn-772748",
+    "input": {
+      "place": {
+        "place_id": "gn-772748",
+        "name": "Działdowo",
+        "country": "Poland",
+        "subdivision": "Warmia-Masuria",
+        "lat": 53.23958,
+        "lon": 20.17004
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Działdowo",
+          "url": "https://en.wikipedia.org/wiki/Działdowo",
+          "text": "Działdowo (pronounced [d͡ʑau̯ˈdɔvɔ]) is a town in northern Poland with 20,935 inhabitants as of December 2021, the capital of Działdowo County. As part of Masuria, it is situated in the Warmian-Masurian Voivodeship.\nFounded in the Middle Ages and granted town rights in 1344, the town features heritage sites in various styles, including Gothic, Baroque, Gothic Revival and Baroque Revival, a preserved medieval urban layout with a market square and a medieval castle. It is particularly known as the location of the Soldau concentration camp during the German occupation of Poland in World War II. The town is a major railroad junction connecting the capital city of Warsaw with Gdańsk and Olsztyn to the north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "dzia dowo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dzia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dowo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6676,
+    "attempt": 6629,
+    "place_id": "gn-8468758",
+    "input": {
+      "place": {
+        "place_id": "gn-8468758",
+        "name": "Mattru Jong",
+        "country": "Sierra Leone",
+        "subdivision": "Southern Province",
+        "lat": 7.59973,
+        "lon": -12.16667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mattru Jong",
+          "url": "https://en.wikipedia.org/wiki/Mattru_Jong",
+          "text": "Mattru Jong commonly known as Mattru (sometimes spelled Matru) is the capital of Bonthe District in the Southern Province of Sierra Leone.  Mattru Jung is located on the mainland of Bonthe District, along the Jong River, 52 miles southwest of Bo.  The town is the seat of  Jong Chiefdom, and is the home of Mongerewa Jong Paramount Chief Alie Badara Sheriff III.  The town's current estimated population is about 20,000 people.  In 2010 it was 8,199, and in the 2004 census the town had a population of 7,647.\nThe main industries in Mattru Jong are fishing, rice-growing, cassava-farming, and palm oil production. The town is largely inhabited by the native Sherbro and Mende people.  The town has several secondary schools, a major hospital and a police station, operated by the Sierra Leone Police Force."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "mattru jong",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mattru",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jong",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6677,
+    "attempt": 6630,
+    "place_id": "gn-8604716",
+    "input": {
+      "place": {
+        "place_id": "gn-8604716",
+        "name": "Osterley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.48026,
+        "lon": -0.35401
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Osterley",
+          "url": "https://en.wikipedia.org/wiki/Osterley",
+          "text": "Osterley ( OST-ər-lee) is a district of Isleworth in west London, England, 8.7 miles (14.0 km) from Charing Cross in the London Borough of Hounslow.  Most of its land use is mixed agricultural and aesthetic parkland at Osterley House (National Trust), charity-run, much of which is open to paying visitors.\nOsterley is on elevated soil, bisected by the A4 (Great West Road), and extends north of the M4 motorway. Syon Lane forms the border to the east, while the border with Heston is to the west. Osterley extends south of the A4, including St Mary's Church.\nMost of the land of Osterley is the large ancestral private estate of Osterley Park and its mansion. These were formerly owned by the Jersey family and were used during World War II as the home for Tom Wintringham's Home Guard training school. They are now National Trust property. In the 1930s, when the Great West Road was completed, ribbon development housing appeared, and this gradually expanded to form the comparatively small residential sections within Osterley.\nBesides Osterley House and Park, the district is also known for one of the London residences of The Sultan of Brunei (Aviary Farm in Windmill Lane)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "osterley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6678,
+    "attempt": 6631,
+    "place_id": "gn-1010586",
+    "input": {
+      "place": {
+        "place_id": "gn-1010586",
+        "name": "Dewetsdorp",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -29.58274,
+        "lon": 26.66511
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dewetsdorp",
+          "url": "https://en.wikipedia.org/wiki/Dewetsdorp",
+          "text": "Dewetsdorp is a small town in the Free State province of South Africa, 68 km south-east of Bloemfontein. The town was set up, without approval of the Volksraad, by field-cornet Jacobus de Wet, father of the Second Anglo-Boer War general Christiaan de Wet. Eventually recognized officially, the town became a municipality and named De Wet in 1890. General Christiaan de Wet successfully attacked English forces stationed there in November 1900.\nIt was laid out on the farm Kareefontein in 1876 and at first bore this name. Applications to the Volksraad in 1876 for the establishment of a village failed, but another request in 1879 led to recognition in 1880 under the name Dewetsdorp. Municipal status was attained in 1890. Dewetsdorp was the scene of heavy fighting in the Second Anglo-Boer War. In 1927, three officials died when the town hall was blown up by one Huibrecht Jacob de Leeuw in an attempt to cover up evidence of his embezzlement of town funds. The new Town Hall, built in 1928, was declared a South African Heritage Site in 1995."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "dewetsdorp",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6679,
+    "attempt": 6632,
+    "place_id": "gn-12022702",
+    "input": {
+      "place": {
+        "place_id": "gn-12022702",
+        "name": "Downtown Vancouver",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.28277,
+        "lon": -123.11935
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Downtown Vancouver",
+          "url": "https://en.wikipedia.org/wiki/Downtown_Vancouver",
+          "text": "Downtown Vancouver is the city centre of Vancouver, British Columbia, Canada. Situated on the northwestern shore of the Burrard Peninsula in the Lower Mainland region, it occupies most of the north shore of the False Creek inlet, which cuts into the Burrard Peninsula creating the Downtown Peninsula, where the West End and Stanley Park are located.\nAlong with the West End, Stanley Park and the nearby Downtown Eastside, Downtown makes up Central Vancouver, one of the city's three main areas (the others being East Vancouver and the West Side).\nWith a disproportionately large amount of residential towers for a geographically constrained area, Downtown Vancouver is one of the densest areas in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "downtown vancouver",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "downtown",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vancouver",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6680,
+    "attempt": 6633,
+    "place_id": "gn-12070755",
+    "input": {
+      "place": {
+        "place_id": "gn-12070755",
+        "name": "Lake Country",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 50.0088,
+        "lon": -119.39672
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake Country",
+          "url": "https://en.wikipedia.org/wiki/Lake_Country",
+          "text": "Lake Country is a district municipality with a population of approximately 15,000 in the Okanagan Valley region of British Columbia, Canada. It is a part of the Central Okanagan Regional District, and of the Kelowna metropolitan area. The city of Kelowna lies to the south, while the city of Vernon lies to the north. As its name suggests, there are a number of lakes in the vicinity of Lake Country, and outside the municipal boundaries in the hills to the east. Okanagan Lake defines the western boundary of the municipality, while the entirety of Wood Lake and the southernmost portion of Kalamalka Lake are encompassed by it.\nLake Country was incorporated in 1995. The previously unincorporated communities of Winfield, Okanagan Centre, Oyama, and Carr's Landing were united to form the new municipality, and they remain as separate wards within it. In the municipal government, one councillor is drawn from each of these wards, while the mayor and two additional councillors are elected by the people at large."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "lake country",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "country",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6681,
+    "attempt": 6634,
+    "place_id": "gn-1253257",
+    "input": {
+      "place": {
+        "place_id": "gn-1253257",
+        "name": "Vengurla",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 15.86125,
+        "lon": 73.63182
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vengurla",
+          "url": "https://en.wikipedia.org/wiki/Vengurla",
+          "text": "Vengurla is a town in Sindhudurg district of Maharashtra, India just north of Goa. It is surrounded by a semicircular range of hills with lush green foliage mainly of cashew, mango, coconut, and different kinds of berry trees. The hills of Dabholi, Tulas, and Mochemad respectively lie in the north, the east, and the south of Vengurla, while the Arabian Sea is located on its west.\nThe town has a rich cultural heritage. Vengurla Taluka has some temples including those of Devi Sateri, Shri Rameshwar, Shri Navadurga at Kanyale Redi, Shri Mauli at Redi and Shiroda, Shri Vetoba at Aaravali, Shri Rampurush Temple at Kanyale Redi, Shri Ganesh at Redi and Shri Ravalnath."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "vengurla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6682,
+    "attempt": 6635,
+    "place_id": "gn-1254904",
+    "input": {
+      "place": {
+        "place_id": "gn-1254904",
+        "name": "Tharangambadi",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.02764,
+        "lon": 79.85425
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tharangambadi",
+          "url": "https://en.wikipedia.org/wiki/Tharangambadi",
+          "text": "Tharangambadi (Tamil: [t̪aɾaŋgambaːɖi]), formerly Tranquebar (Danish: Trankebar, pronounced [ˈtsʰʁɑŋkəˌpɑˀ]), is a town in the Mayiladuthurai district of the Indian state of Tamil Nadu on the Coromandel Coast. It lies 15 kilometres (9.3 mi) north of Karaikal, near the mouth of a distributary named Uppanar of the Kaveri River. It was established on 19 November 1620 as the first Danish trading post in India. King Christian IV had sent his envoy Ove Gjedde who established contact with Raghunatha Nayak of Thanjavur. An annual tribute was paid by the Danes to the Rajah of Tanjore until the colony was sold to the British East India Company in 1845.\nTharangambadi is the headquarters of Tharangambadi taluk. Its name means \"place of the singing waves\"; the old designation Trankebar remains current in modern Danish. Tharangambadi is located at the distance of 285 km from Chennai. The nearest airport is Tiruchirappalli International Airport, 172 km away and the nearest port is at Karaikal at 26 km. It is served by Tharangambadi railway station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "tharangambadi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6683,
+    "attempt": 6636,
+    "place_id": "gn-1273088",
+    "input": {
+      "place": {
+        "place_id": "gn-1273088",
+        "name": "Devipattinam",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 9.47763,
+        "lon": 78.89558
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Devipattinam",
+          "url": "https://en.wikipedia.org/wiki/Devipattinam",
+          "text": "Devipattinam is a coastal town of Ramanathapuram district, Tamil Nadu, India.\nDevipattinam is an ancient coastal town and a port, located in the southern state of Tamil Nadu. It was a flourishing sea port and a gateway to places as far as Madurai until the early 20th century. The famous pearl belt known as the Gulf of Mannar in the Bay of Bengal is dotted with small islands; Appa Tivu, Nallathanni Theevu, Shuli Tivu, Uppu Tanni Tivu, Talari Tivu and Musal Tivu. The coastal line of Devipattinam is formed by series of small bays and finest coral reefs in Thiruppaalaikudi.\nThe prime occupations of the people were pearl, conch, sea trade and transport. The mid-20th century saw a decline in the occupations of the people of Devipattinam. With the advent of the surface transport the Merchant Navies faded away and Devipattinam ceased to be a harbour and port. The cultured pearl industry and the mindless dragnet fishing that destroyed the coral reefs, choked the once robust pearl trade or Muthu Salabam. The conch and coral industries declined due to new regulations and restrictions.\nDevipattinam has 7 Masjids. They are Periya pallivasal, Mela pallivasal, Thaqua pallivasal, Bukhariya pallivasal, Masjid Al Aqsa, Towheed Pallivasal and Darul Uloom Haqqaniyya pallivasal.\nArabian Traders during the sea trade era settled here and adopted the local language. They developed a dialect called ‘Arwi’ which is a combination of Arabic and Tamil. Arabian food and traditions are still followed. Islam is the dominant religion and they mostly practice the ‘Sha'fi school of thought. The Arab descendants are called Maraikayars and are found all over the coastal regions of India and Sri Lanka.\nThe migration of the people after the decline of the marine trade and industry resulted in people exploring the other parts of the globe. Devipattinam has a large expatriate population and a very high literacy rate.[2] This enabled the people of Devipattinam to span the globe and find new riches in the Gulf, Far East, Americas and Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 333
+    },
+    "banned_terms": [
+      {
+        "term": "devipattinam",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6684,
+    "attempt": 6637,
+    "place_id": "gn-13308383",
+    "input": {
+      "place": {
+        "place_id": "gn-13308383",
+        "name": "Tebela",
+        "country": "Ethiopia",
+        "subdivision": "South Ethiopia Regional State",
+        "lat": 6.70608,
+        "lon": 37.76966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tebela",
+          "url": "https://en.wikipedia.org/wiki/Tebela",
+          "text": "Tebela (Geʽez: ጠበላ) or (Wolayttattuwa: Xabala) is a city in Wolaita Zone South Ethiopia Regional State. Tebela is an administrative capital of Humbo district of Wolayita Zone. Tebela is located about 345 km away from Addis Ababa to the south. And also, Tebela is located 20 km, South from Sodo, the capital of the region and also Wolayita Zone. The coordinate point of the city in map is 6°42′24″N 37°46′10″E. The amenities in the city are; 24 hours electricity, pure public water, banks, primary and secondary schools, postal service, telecommunications services health centre, private clinics, drugs store, public market, public road light around high ways, internal and town crossing asphalt roads and others."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "tebela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6685,
+    "attempt": 6638,
+    "place_id": "gn-1731441",
+    "input": {
+      "place": {
+        "place_id": "gn-1731441",
+        "name": "Alimodian",
+        "country": "Philippines",
+        "subdivision": "Western Visayas",
+        "lat": 10.82139,
+        "lon": 122.43111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alimodian",
+          "url": "https://en.wikipedia.org/wiki/Alimodian",
+          "text": "Alimodian, officially the Municipality of Alimodian (Kinaray-a: Banwa kang Alimodian; Hiligaynon: Banwa sang Alimodian; Tagalog: Bayan ng Alimodian), is a municipality in the province of Iloilo, Philippines. According to the 2024 census, it has a population of 39,814 people.\nKnown as the Banana Capital of Western Visayas, it produces not only the most harvest in Western Visayas, but also the sweetest banana in the region. The town also boasts of producing maize, mangoes, root crops, sweet potatoes, legumes, bamboo, coconuts, as well as high yielding crops such as carrots, cauliflower, broccoli and strawberries, thus widely regarded as the Strawberry Capital of Iloilo, as it produces substantial amount of strawberries in its strawberry farms."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "alimodian",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6686,
+    "attempt": 6639,
+    "place_id": "gn-189190",
+    "input": {
+      "place": {
+        "place_id": "gn-189190",
+        "name": "Lokichar",
+        "country": "Kenya",
+        "subdivision": "Turkana County",
+        "lat": 2.38116,
+        "lon": 35.65123
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lokichar",
+          "url": "https://en.wikipedia.org/wiki/Lokichar",
+          "text": "Lokichar is a small town in Kenya's Turkana County.\nLokichar is situated in the heart of the dusty and arid Turkana basin (desert) in the Rift Valley, 550 km north-east of Nairobi.\nUntil 2010 it was a forgotten backwater of Turkana cattle-based pastoralists with a pre-2010 population under 1,000. The principal activity was basket weaving and other native crafts to cater for the sparse traffic.\nThe 2011 discovery of oil by Tullow Oil, talk of the Uganda/South Sudan oil pipeline to Lamu passing through, and the opening of the border to the new state of South Sudan has started to transform its prospects. The 2012 population for the area was 2,000 and rising. There is a small non-commercial airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "lokichar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6687,
+    "attempt": 6640,
+    "place_id": "gn-201229",
+    "input": {
+      "place": {
+        "place_id": "gn-201229",
+        "name": "Ahero",
+        "country": "Kenya",
+        "subdivision": "Kisumu County",
+        "lat": -0.17359,
+        "lon": 34.9189
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ahero",
+          "url": "https://en.wikipedia.org/wiki/Ahero",
+          "text": "Ahero is a town close to the city of Kisumu, the third largest city in Kenya and the second largest city, after Kampala, in the Lake Victoria Basin. It is an agricultural town in Kenya that is part of Kisumu County. The town has a retail market serving as the main trading center for food and goods coming from Kisii, Homabay, and Nandi. It hosts a town council and has an urban population of 7,891 and a total population of 61,556 (1999 census).\nAhero is located 20 kilometres east of the county capital, Kisumu. Two major roads meet at Ahero, the B3 road from Nakuru To Kisumu and A1 road from Tanzanian border. The Nyando River flows through central Ahero and helps irrigate its many rice fields."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "ahero",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

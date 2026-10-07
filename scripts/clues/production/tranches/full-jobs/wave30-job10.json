@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 6025,
+    "attempt": 5981,
+    "place_id": "gn-2636062",
+    "input": {
+      "place": {
+        "place_id": "gn-2636062",
+        "name": "Thames Ditton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.38964,
+        "lon": -0.33928
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thames Ditton",
+          "url": "https://en.wikipedia.org/wiki/Thames_Ditton",
+          "text": "Thames Ditton is a large suburban village on the River Thames, in the Elmbridge borough of Surrey, England. Apart from a large inhabited island in the river, it lies on the southern bank, centred 12.2 miles (19.6 km) south-west of Charing Cross in central London. Thames Ditton is just outside Greater London but within the Greater London Urban Area, as defined by the Office for National Statistics. Its clustered village centre and shopping area on a winding High Street is surrounded by housing, schools and sports areas. Its riverside faces the Thames Path and Hampton Court Palace Gardens and golf course in the London Borough of Richmond upon Thames. Its most commercial area is spread throughout its conservation area and contains restaurants, cafés, shops and businesses.\nThames Ditton joins Long Ditton and Weston Green in occupying the land between Surbiton, Esher and East Molesey. Although reduced to less than one square mile (2.6 km2), it formerly covered more than four square miles (10 km2)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "thames ditton",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "thames",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ditton",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6026,
+    "attempt": 5982,
+    "place_id": "gn-2643027",
+    "input": {
+      "place": {
+        "place_id": "gn-2643027",
+        "name": "Market Harborough",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.4776,
+        "lon": -0.92053
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Market Harborough",
+          "url": "https://en.wikipedia.org/wiki/Market_Harborough",
+          "text": "Market Harborough is a market town in the Harborough district of Leicestershire, England, close to the border with Northamptonshire. The population was 24,779 at the 2021 census. It is the administrative headquarters of the Harborough district.\nMarket Harborough was part of Rockingham Forest, a royal hunting forest used by medieval monarchs, whose boundaries stretched from Market Harborough to Stamford and included Corby, Kettering, Desborough, Rothwell, Thrapston and Oundle. The town was at a crossroads for both road and rail, but the A6 now bypasses it to the east and the A14 to the south. Market Harborough railway station is served by East Midlands Railway services on the Midland Main Line with direct services north to Leicester, Nottingham, Derby and Sheffield, and south to London St Pancras. Rail services to Rugby and Peterborough ended in 1966.\nThe steeple of St Dionysius' Church rises directly from the street, as there is no churchyard. It was constructed in grey stone in 1300 with the church itself a later building of about 1470. Next to the church stands the Old Grammar School, a small timber building dating from 1614. The ground floor is open, creating a covered market area and there is a single room on the first floor. It has become a symbol of the town. The nearby square is largely pedestrianised and surrounded by buildings of varying styles. The upper end of the High Street is wide and contains mostly unspoilt Georgian buildings.\nMarket Harborough has two villages within its confines: Great Bowden lies over a hill about a mile from the town centre, and Little Bowden is less than half a mile from the town centre. The three centres have largely coalesced through ribbon development and infill, although Great Bowden continues to retain a strong village identity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 296
+    },
+    "banned_terms": [
+      {
+        "term": "market harborough",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "market",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "harborough",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6027,
+    "attempt": 5983,
+    "place_id": "gn-2644120",
+    "input": {
+      "place": {
+        "place_id": "gn-2644120",
+        "name": "Llandudno",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 53.32498,
+        "lon": -3.83148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Llandudno",
+          "url": "https://en.wikipedia.org/wiki/Llandudno",
+          "text": "Llandudno (, Welsh: [ɬanˈdɨdnɔ] ) is a seaside resort, town and community in Conwy County Borough, Wales, located on the Creuddyn peninsula, which protrudes into the Irish Sea. In the 2021 UK census, the Llandudno community, which includes Gogarth, Penrhyn Bay, Craigside, Glanwydden, Penrhynside and Bryn Pydew had a population of around 19,700. The town takes its name from Saint Tudno, with Llandudno meaning \"Church of Saint Tudno\".\nLlandudno is a major seaside resort in Wales, and as early as 1861 was being called 'the Queen of the Welsh Watering Places' (a phrase later also used in connection with Tenby and Aberystwyth; the word 'resort' came a little later). Historically a part of Caernarfonshire, Llandudno was formerly in the district of Aberconwy within Gwynedd until 1996."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "llandudno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6028,
+    "attempt": 5984,
+    "place_id": "gn-2644419",
+    "input": {
+      "place": {
+        "place_id": "gn-2644419",
+        "name": "Liphook",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.07673,
+        "lon": -0.8032
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Liphook",
+          "url": "https://en.wikipedia.org/wiki/Liphook",
+          "text": "Liphook is a village in the East Hampshire district of Hampshire, England. It is 4.1 miles (6.6 km) west of Haslemere, bypassed by the A3 road, and lies on the Hampshire/West Sussex/Surrey borders. It is in the civil parish of Bramshott and Liphook, which includes Bramshott, Griggs Green, Conford, Passfield, Hammer Bottom (also called Hammer Vale), Ludshott Common and Waggoners Wells, and has an area of 6,540 acres (2,650 ha) and a population of 8,491 in 2011.\nLiphook has a railway station, on the Portsmouth Direct line.\nThe village grew as a coaching stop between London and Portsmouth during the 17th and 18th centuries. It served as a base during the First World War and the Second World War for Canadian troops stationed in Southern England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "liphook",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6029,
+    "attempt": 5985,
+    "place_id": "gn-2644867",
+    "input": {
+      "place": {
+        "place_id": "gn-2644867",
+        "name": "Larbert",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.02246,
+        "lon": -3.82872
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Larbert",
+          "url": "https://en.wikipedia.org/wiki/Larbert",
+          "text": "Larbert (Scottish Gaelic: Leth-Pheairt, Scots: Lairbert) is a town in the Falkirk council area of Scotland. The town lies in the Forth Valley above the River Carron which flows from the west. Larbert is three miles (five kilometres) from the shoreline of the Firth of Forth and 2+1⁄2 miles (4 kilometres) northwest of Falkirk. Stenhousemuir lies directly east of Larbert, with both settlements being contiguous and sharing certain public amenities with one another.\nIn medieval times, the Larbert area was heavily forested, but this was cleared and gave rise to much of the agricultural land which surrounds the town. The coming of industry and especially the arrival in the 1840s of the Scottish Central Railway, which passes through the village, provided a base for economic growth. From the late 18th century until the mid-20th century heavy industry, such as boilermaking, casting and manufacturing underpinned the economy of Larbert. The Victorian era also saw the opening of the Stirling District Lunatic Asylum at Bellsdyke and Scottish National Institution for Children on the Stenhouse Estate. This made Larbert central in providing care, both locally and nationally.\nAlthough the traditional economic base of Larbert dwindled with the decline of heavy industry, it has latterly experienced considerable growth as a commuter town. Many residents work in the nearby towns of Falkirk and Stirling, as well as the cities of Edinburgh and Glasgow. Scotland's Census of 2011 reveals that the population of Larbert has increased to 9,143 from the 2001 Census figure of 6,425 and it continues to grow with large-scale housing development on the northern periphery of the town as well as on brownfield sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 271
+    },
+    "banned_terms": [
+      {
+        "term": "larbert",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6030,
+    "attempt": 5986,
+    "place_id": "gn-2659422",
+    "input": {
+      "place": {
+        "place_id": "gn-2659422",
+        "name": "Nyon",
+        "country": "Switzerland",
+        "subdivision": "Vaud",
+        "lat": 46.38318,
+        "lon": 6.23955
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nyon",
+          "url": "https://en.wikipedia.org/wiki/Nyon",
+          "text": "Nyon (French pronunciation: [njɔ̃] ; historically German: Neuis or Neuss and Italian: Nione, [ˈnjoːne]) is a municipality in Nyon District in the canton of Vaud in Switzerland. It is located some 25 kilometers north east of Geneva's city centre, and since the 1970s it has been part of the Geneva metropolitan area. It lies on the shores of Lake Geneva and is the seat of Nyon District. The town has (as of December 2020) a population of 21,718 and is famous in the sporting world for being the headquarters of the Union of European Football Associations (UEFA) and European Football Clubs (EFC). It is connected to the rest of Switzerland by way of the Route Suisse, the A1 motorway and the railways of the Arc Lémanique."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "nyon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6031,
+    "attempt": 5987,
+    "place_id": "gn-2794860",
+    "input": {
+      "place": {
+        "place_id": "gn-2794860",
+        "name": "Jumet",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.4422,
+        "lon": 4.43745
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jumet",
+          "url": "https://en.wikipedia.org/wiki/Jumet",
+          "text": "Jumet (Walloon: Djumet) is a town of Wallonia and a district of the municipality of Charleroi, located in the province of Hainaut, Belgium.\nIt was a municipality of its own before the merger of the municipalities in 1977. Church of Saint-Sulpice, Jumet is a Roman Catholic church in Jumet.\nThe historic Union brewery at Jumet produced a local speciality Cuvee and a range of top-fermenting beers for its parent, Maes, but was closed in 2007. Grimbergen was one of the beers moved to Brasserie Union in Jumet, but since the closure of the plant in Jumet in 2007, the production moved to the Brouwerij van Alken.\nIn 1995, Jumet was the site of the murder of two teenage girls by notorious Belgian serial killer, Marc Dutroux. The property has since been demolished and in its place now stands a monument to the victims."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "jumet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6032,
+    "attempt": 5988,
+    "place_id": "gn-2916936",
+    "input": {
+      "place": {
+        "place_id": "gn-2916936",
+        "name": "Großbottwar",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.00147,
+        "lon": 9.29348
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Großbottwar",
+          "url": "https://en.wikipedia.org/wiki/Großbottwar",
+          "text": "Großbottwar (German pronunciation: [ɡʁoːsˈbɔtvaʁ] , lit. 'Big Bottwar', in contrast to \"Little Bottwar\") is a town in the Ludwigsburg district of Baden-Württemberg, Germany.  It sits within the Neckar River basin and is located on a tourist route through the Württemberg wine region.  The Großbottwar region has been inhabited since at least the Stone Age and was occupied by the Romans.  The town itself was founded sometime during the mid-13th century by an alliance of prominent families.  In 1971, Großbottwar incorporated the formerly independent communities of Hof und Lembach and Winzerhausen.\nUnlike most towns in the region, Großbottwar was neither heavily damaged by war nor by urban fires, so there are many old buildings from the 15th through the 17th centuries with original and well-preserved timber framing.  The 16th century Rathaus, or town hall, is noted for its half-timber construction and decoratively carved façade.  The Stadtschänke, approximately dated to 1434, is the oldest half-timber building in the Ludwigsburg district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "gro bottwar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bottwar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6033,
+    "attempt": 5989,
+    "place_id": "gn-2923529",
+    "input": {
+      "place": {
+        "place_id": "gn-2923529",
+        "name": "Furth im Wald",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.30955,
+        "lon": 12.84156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Furth im Wald",
+          "url": "https://en.wikipedia.org/wiki/Furth_im_Wald",
+          "text": "Furth im Wald (German pronunciation: [ˈfʊʁt ʔɪm ˈvalt] , lit. 'Furth in the Forest'; Czech: Brod nad Lesy or Bavorský Brod) is a town in Bavaria, Germany, near the Czech border in the Bavarian Forest, 16 kilometres (9.9 miles) northeast of Cham, and 17 kilometres (11 miles) southwest of Domažlice. The city is known as Drachenstadt (Dragon City), a reference to Furth im Wald's annual Drachenstich (Slaying of the Dragon) play. The Drachenstich, originally part of a Corpus Christi procession, was first mentioned in 1590. As one of the oldest folk plays in the German language, each year actors re-enact the legend of Saint George slaying the dragon. In 2010, the play became notable for using the world's largest walking robot, an animatronic dragon called Tradinno."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "furth im wald",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "furth",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "im",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "wald",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6034,
+    "attempt": 5990,
+    "place_id": "gn-2933101",
+    "input": {
+      "place": {
+        "place_id": "gn-2933101",
+        "name": "Eggenstein-Leopoldshafen",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.09006,
+        "lon": 8.39879
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eggenstein-Leopoldshafen",
+          "url": "https://en.wikipedia.org/wiki/Eggenstein-Leopoldshafen",
+          "text": "Eggenstein-Leopoldshafen is a municipality of almost 17,000 inhabitants located in the federal state of Baden-Württemberg in the Federal Republic of Germany. It lies about 12 km north of Karlsruhe and is the site of the northern campus of the research centre Karlsruhe Institute of Technology (with the former Forschungsreaktor 2 (FR2). In the west, Eggenstein-Leopoldshafen borders on the Rhine River and in the east it is connected with the Bundesstraße 36.\nThe two villages that make up the incorporated municipality evolved from medieval villages specializing in freshwater fishing and farming. Today, gravel extraction for construction purposes is important to the local economy, as is the cultivation of white asparagus (Spargel). Because of its location in the Rhine valley, hot humid summers are the norm for Eggenstein-Leopoldshafen. Numerous public beaches exist on the shores of artificial lakes that have been formed by extensive gravel extraction. Eggenstein-Leopoldshafen has numerous active community associations and sports clubs such as most notably TG Eggenstein 1894 e.V.. Eggenstein-Leopoldshafen is also home to the Sportpark Fassbender, a noted tennis school and training facility."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "eggenstein leopoldshafen",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "eggenstein",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "leopoldshafen",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6035,
+    "attempt": 5991,
+    "place_id": "gn-2969562",
+    "input": {
+      "place": {
+        "place_id": "gn-2969562",
+        "name": "Vesoul",
+        "country": "France",
+        "subdivision": "Bourgogne-Franche-Comté",
+        "lat": 47.62604,
+        "lon": 6.14251
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vesoul",
+          "url": "https://en.wikipedia.org/wiki/Vesoul",
+          "text": "Vesoul (French pronunciation: [vəzul]  və-ZOOL) is a commune in the predominantly rural Haute-Saône department, of which it is the prefecture, or capital, in the region of Bourgogne-Franche-Comté in eastern France.\nIt is the most populous municipality of the department, with 15,078 inhabitants in 2023. The Communauté d'agglomération de Vesoul, which covers 20 municipalities, together had 32,339 inhabitants (2022), while its functional area, comprising 158 municipalities, had 67,202 inhabitants. Its inhabitants are known in French as Vésuliens.\nBuilt on top of the hill of La Motte in the first millennium under the name of Castrum Vesulium, the city gradually evolved into a European commercial and economic center. At the end of the Middle Ages, the city experienced a challenging period beset with plagues, epidemics, and localized conflict.\nThe main urban center of the department, Vesoul is also home to a major PSA parts manufacturing plant and to the Vesoul International Film Festival of Asian Cinema. It was immortalized by Jacques Brel in his 1968 song \"Vesoul\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "vesoul",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6036,
+    "attempt": 5992,
+    "place_id": "gn-2985143",
+    "input": {
+      "place": {
+        "place_id": "gn-2985143",
+        "name": "Puget-sur-Argens",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.45576,
+        "lon": 6.68519
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puget-sur-Argens",
+          "url": "https://en.wikipedia.org/wiki/Puget-sur-Argens",
+          "text": "Puget, officially Puget-sur-Argens (French pronunciation: [pyʒɛ syʁ aʁʒɑ̃(s)] , literally Puget on Argens; Occitan: Lo Puget d'Argenç) is a commune in the Var department in the Provence-Alpes-Côte d'Azur region in southeastern France.\nIt is located at 687 kilometres south-east of Paris. It is called Lo Pugeton or Lo Puget d'Argènç in Occitan and Le Petit Puget in the province to distinguish it from the city formerly more important from Puget-Ville. and is located at the crossing of the Route nationale 7 and the A8 autoroute. The population of Puget-on-Argens has multiplied by four since 1950 and many companies have come to the town. In fact, the strong demographic and economic expansion in direct periphery tends to transform the commune into a suburban residential and working area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "puget sur argens",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puget",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "argens",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6037,
+    "attempt": 5993,
+    "place_id": "gn-3025809",
+    "input": {
+      "place": {
+        "place_id": "gn-3025809",
+        "name": "Chauvigny",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 46.56979,
+        "lon": 0.64346
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chauvigny",
+          "url": "https://en.wikipedia.org/wiki/Chauvigny",
+          "text": "Chauvigny (French pronunciation: [ʃoviɲi]; Poitevin: Chôvigni) is a commune in the Vienne department in the Nouvelle-Aquitaine region in western France.\nChauvigny is located 20 miles (32 km) east of Poitiers by rail. The town is situated overlooking the river Vienne and a small brook. Chauvigny is twinned with Billericay in Essex, England.\nThe composer Fernand Lamy (1881–1966) was born in Chauvigny.\nChauvigny was among the places visited by Roger Fry the British artist, art critic and member of the Bloomsbury group in October 1911 when, after his visit to Paris to see the Salon d’Automne, he joined Clive Bell (husband of the celebrated English artist Vanessa Bell) and Duncan Grant (also a celebrated English artist) on a bicycle tour of the region to explore Romanesque churches. Fry produced a charming painting of Chauvigny"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "chauvigny",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6038,
+    "attempt": 5994,
+    "place_id": "gn-303642",
+    "input": {
+      "place": {
+        "place_id": "gn-303642",
+        "name": "Oğuzeli",
+        "country": "Türkiye",
+        "subdivision": "Gaziantep",
+        "lat": 36.96572,
+        "lon": 37.51339
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oğuzeli",
+          "url": "https://en.wikipedia.org/wiki/Oğuzeli",
+          "text": "Oğuzeli is a municipality and district of Gaziantep Province, Turkey. Its area is 689 km2, and its population is 36 644 (2025). It is the 6th most populated district of Gaziantep, making it one of the smaller and rural districts alongside Araban, Karkamış, Nurdağı, Yavuzeli. Nevertheless, it is the closest district to the two urban districts of Şehitkamil and Şahinbey that make up Gaziantep City, with its municipal center located just Southeast of the city and the district bordering Hasan Kalyoncu University located at the edge of Şahinbey. As a suburban district, large areas of the district are made of agricultural farms, most particularly used for growing pistachios.\nThe town is historically inhabited by Turkmens of the Barak tribe and Abdals of the Maya Sekenler tribe.\nThe suburban district is most significant for housing the Gaziantep GZT Airport, historically referred to as Oğuzeli International Airport, as the 10th busiest airport in Türkiye as of 2025, connecting Gaziantep to many domestic and international destinations. The district is not linked with rail connections and while scheduled shuttle busses going to and from the airport exist, the only ways of reaching the municipal settlement of Oğuzeli remain to be busses and private cars. It is reached through the E90 European motorway, connecting to the O-54 Gaziantep Ring Road, exiting it at its Southeastern edge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "oguzeli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6039,
+    "attempt": 5995,
+    "place_id": "gn-3089566",
+    "input": {
+      "place": {
+        "place_id": "gn-3089566",
+        "name": "Paczków",
+        "country": "Poland",
+        "subdivision": "Opole Voivodeship",
+        "lat": 50.46395,
+        "lon": 17.00658
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paczków",
+          "url": "https://en.wikipedia.org/wiki/Paczków",
+          "text": "Paczków [ˈpat͡ʂkuf] (German: Patschkau; Silesian: Paczkōw) is a town in Nysa County, Opole Voivodeship, in southern Poland, with 7,460 inhabitants (2019). It is one of the few towns in Europe in which medieval fortifications have been almost completely preserved. Located in the southeastern outskirts of the historical province of Lower Silesia, along the medieval road from Lesser Poland to Klodzko Valley and Prague, Paczków is called \"Polish Carcassonne\", thanks to its well-preserved medieval fortifications. However, while the famous French Carcassonne is a 19th-century reconstruction, all historic buildings of Paczków are authentic.\nThe old town and its medieval fortifications are listed as one of Poland's official national Historic Monuments (Pomnik historii), as designated November 13, 2012.  Its listing is maintained by the National Heritage Board of Poland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "paczkow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6040,
+    "attempt": 5996,
+    "place_id": "gn-3098288",
+    "input": {
+      "place": {
+        "place_id": "gn-3098288",
+        "name": "Grodzisk Wielkopolski",
+        "country": "Poland",
+        "subdivision": "Greater Poland",
+        "lat": 52.22762,
+        "lon": 16.36534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grodzisk Wielkopolski",
+          "url": "https://en.wikipedia.org/wiki/Grodzisk_Wielkopolski",
+          "text": "Grodzisk Wielkopolski [ˈɡrɔd͡ʑizɡ‿vʲɛlkɔˈpɔlskʲi] is a town in western Poland, in Greater Poland Voivodeship (Wielkopolskie), with a population of 13,703 (2006). It is the seat of Grodzisk County, and also of the smaller administrative district called Gmina Grodzisk Wielkopolski. It is situated on the Letnica River. The suffix \"Wielkopolski\" distinguishes it from the town of Grodzisk Mazowiecki in east-central Poland.\nA town that developed from an early medieval fortified stronghold, Grodzisk is a historic center for brewing and meat production. It has become known as the place of origin of the Grodziskie beer style, and in modern times as the home of the Dyskobolia Grodzisk Wielkopolski football club, which competed in European competitions in the 2000s, achieving victories against much higher ranked and more acclaimed European clubs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "grodzisk wielkopolski",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grodzisk",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wielkopolski",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6041,
+    "attempt": 5997,
+    "place_id": "gn-3121058",
+    "input": {
+      "place": {
+        "place_id": "gn-3121058",
+        "name": "Guadarrama",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.6727,
+        "lon": -4.08949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guadarrama",
+          "url": "https://en.wikipedia.org/wiki/Guadarrama",
+          "text": "Guadarrama is a town and municipality in the Cuenca del Guadarrama comarca, in the Community of Madrid, Spain.\nIts population is 17,063 according to the Continuous Register of 2023; the population swells to approximately 60,000 in summer. In the 2023 Spanish general election, for the Congress of Spain the residents voted 41.29% for the People's Party, 24.54% for the Spanish Socialist Workers' Party, and 19.45% voted for Vox.\nIts name comes from Arabic Wadi-l-ramla river (the sandy river).\nGuadarrama achieved the status of \"villa\" under Fernando V of Castile (II of Aragon) on November 22, 1504. Fernando VI ordered the building of a road to A Coruña through the Guadarrama Pass, through which passed the Grande Armée with Napoleon searching for John Moore's Army in 1808.\nThis town was absolutely destroyed during the Spanish Civil War, as it was for almost three years a battlefront.  All one can see in this town today is new, built in the mid-20th century.\nIt was the location for some scenes in the 1964 film The Fall of the Roman Empire.\nIt is close to Sierra de Guadarrama, a mountain range that is visited by Madrid residents seeking cooler temperatures, especially in summer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "guadarrama",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6042,
+    "attempt": 5998,
+    "place_id": "gn-3123473",
+    "input": {
+      "place": {
+        "place_id": "gn-3123473",
+        "name": "Empuriabrava",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 42.24691,
+        "lon": 3.12059
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Empuriabrava",
+          "url": "https://en.wikipedia.org/wiki/Empuriabrava",
+          "text": "Empuriabrava (Spanish: Ampuriabrava) is a community in the municipality of Castelló d'Empúries, in the Alt Empordà (Costa Brava, province of Girona, Catalonia, Spain). It is located in the Gulf of Roses, surrounded by the Natural Park of the Aiguamolls de l'Empordà, and is the largest residential marina in Europe, with some 24 km of navigable waterways.\nOriginally built on a swamp, Empuriabrava was transformed into a tourist community, initially planned in 1964 and completed in 1975.  The town has more than 40 km of canals and a seasonal, summer population of around 80,000.  The Greco-Roman acropolis of Sant Martí d'Empúries is nearby.\nIts aerodrome (ICAO-code LEAP), immediately to the north of the town, offers a variety of air sports with services for all levels of skydiving."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "empuriabrava",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6043,
+    "attempt": 5999,
+    "place_id": "gn-3496284",
+    "input": {
+      "place": {
+        "place_id": "gn-3496284",
+        "name": "Monción",
+        "country": "Dominican Republic",
+        "subdivision": "Santiago Rodríguez",
+        "lat": 19.41083,
+        "lon": -71.15257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monción",
+          "url": "https://en.wikipedia.org/wiki/Monción",
+          "text": "Monción is one of the 3 municipalities of the province in Santiago Rodriguez, Dominican Republic.\nPreviously it was called Guaraguanó, a name from the Taíno, but in 1898, the President of the Republic at that time, Ulises Heureaux, assigned the name of Monción, in honor of the hero of the Dominican Restoration War, General Benito Monción. In 1907, Monción became the official municipality of the Monte Cristi Province. Then in 1948, when the Province of Santiago Rodríguez was created, it became its municipality. It is located specifically in the southwest part of the province.\nIts main economic source is the production of Cassava, being this municipality, the largest producer of this product in the country, for this reason it is known as the capital of Cassava."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "moncion",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6044,
+    "attempt": 6000,
+    "place_id": "gn-3517937",
+    "input": {
+      "place": {
+        "place_id": "gn-3517937",
+        "name": "Villa de Etla",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 17.20615,
+        "lon": -96.7989
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa de Etla",
+          "url": "https://en.wikipedia.org/wiki/Villa_de_Etla",
+          "text": "Villa de Etla is a town and municipality located in the Mexican state of Oaxaca. It is located in the far northwestern part of the Central Valley of Oaxaca, about seventeen km from the capital. The town is centered on the church and former monastery of San Pedro y San Pablo, and as municipal seat functions as the local government for six other communities. Most of the town's history has been lost due to the lack of records, but oral tradition states that it was founded sometime in the 15th century. Today, the town is noted for its weekly Wednesday market, where one can find traditional merchandise such a local variety of white cheese, tamales, frames for donkeys and goat barbacoa prepared in an earthen oven."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "villa de etla",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "etla",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

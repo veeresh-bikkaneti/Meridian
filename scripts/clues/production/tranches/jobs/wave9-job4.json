@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 8779,
+    "place_id": "gn-3372472",
+    "input": {
+      "place": {
+        "place_id": "gn-3372472",
+        "name": "Vila Franca do Campo",
+        "country": "Portugal",
+        "subdivision": "Azores",
+        "lat": 37.71603,
+        "lon": -25.43225
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vila Franca do Campo",
+          "url": "https://en.wikipedia.org/wiki/Vila_Franca_do_Campo",
+          "text": "Vila Franca do Campo (Portuguese pronunciation: [ˈvilɐ ˈfɾɐ̃kɐ ðu ˈkɐ̃pu] ) is a Portuguese town on the island of São Miguel in the Autonomous Region of the Azores. It covers an area of 78.00 km2 and has a population of 10,323 inhabitants (2021). The municipality is divided into six parishes and is bordered to the north by the municipality of Ribeira Grande, to the east by Povoação, to the west by Lagoa, and to the south it has a coastline along the Atlantic Ocean.\nThe Vila Franca Islet, an uninhabited coastal tuff cone, lies 1,200 metres (3,900 ft) from Vila Franca do Campo. Since 1993, the Ilhéu de Vila Franca has been a natural reserve and remains an important summer destination."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "vila franca do campo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vila",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "franca",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "campo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8781,
+    "place_id": "gn-3577152",
+    "input": {
+      "place": {
+        "place_id": "gn-3577152",
+        "name": "Palm Beach",
+        "country": "Aruba",
+        "subdivision": "Aruba",
+        "lat": 12.56847,
+        "lon": -70.03887
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palm Beach, Aruba",
+          "url": "https://en.wikipedia.org/wiki/Palm_Beach,_Aruba",
+          "text": "Palm Beach is a tourism district about 6 kilometers (3.7 miles) northwest of Oranjestad, the capital of Aruba. Many high-rise hotels are located there, such as Hyatt Regency Aruba Resort & Casino, Aruba Marriott Resort & Stellaris Casino, Barceló, Holiday Inn SunSpree Resort, Ritz Carlton Resort, and RIU Palace Aruba. A shopping district adjacent to the hotels was finished in 2009 and includes two large malls called Paseo Herencia and Palm Beach Plaza Mall. Little North of Palm Beach is Malmok Beach, a small sandy strip running all the way to the northern tip of Aruba. Smaller apartment complexes and luxurious holiday homes are located along this dead-end Boulevard. Hadicurari Beach (kiting), Arashi Beach and Boca Catalina (snorkeling) are popular locations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "palm beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "palm",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8789,
+    "place_id": "gn-7257396",
+    "input": {
+      "place": {
+        "place_id": "gn-7257396",
+        "name": "Oxoboxo River",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.44391,
+        "lon": -72.12502
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oxoboxo River, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Oxoboxo_River,_Connecticut",
+          "text": "Oxoboxo River () is a census-designated place (CDP) in the town of Montville in New London County, Connecticut, United States. The population was 2,938 at the 2000 census, 3,165 at the 2010 census, and 2,955 at the 2020 census. The statistical area encompasses the town center of Montville, as well as the adjacent villages of Palmertown and Uncasville. The name of the statistical area is from the river of the same name running through the CDP.\nThe U.S. Postal Service includes the entire area of the CDP in ZIP code 06382, for which the USPS uses \"Uncasville\" as the place name. The Uncasville ZIP code also encompasses the Mohegan reservation, including the Mohegan Sun casino complex, and other parts of Montville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "oxoboxo river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "oxoboxo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8792,
+    "place_id": "gn-2266268",
+    "input": {
+      "place": {
+        "place_id": "gn-2266268",
+        "name": "Monchique",
+        "country": "Portugal",
+        "subdivision": "Faro",
+        "lat": 37.31775,
+        "lon": -8.55529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monchique",
+          "url": "https://en.wikipedia.org/wiki/Monchique",
+          "text": "Monchique (Portuguese pronunciation: [mõˈʃikɨ] ) is a municipality of southern Portugal, in Faro District (province of Algarve). The population in 2011 was 6,045, in an area of 395.30 km2.\nThe Municipality of Monchique is situated in the Serra de Monchique and together with the town of Monchique is a tourist destination. Attractions include a historic town centre, views from the two peaks of Foia and Picota, hiking, bird watching and biking. There are hot sulfur springs, with baths and health spas 6 kilometres (4 mi) south in 'Caldas de Monchique' (Spring of Monchique). Eucalyptus, cork oak, oranges, lemons, honey, olive oil, chestnuts, scissor chairs made from chestnut wood, black pork and black pork ham and sausages are the chief products."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "monchique",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8797,
+    "place_id": "gn-2641710",
+    "input": {
+      "place": {
+        "place_id": "gn-2641710",
+        "name": "Newbold Verdon",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.62959,
+        "lon": -1.3422
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newbold Verdon",
+          "url": "https://en.wikipedia.org/wiki/Newbold_Verdon",
+          "text": "Newbold Verdon is a village and civil parish in the county of Leicestershire, England. The parish includes Newbold Heath to the north and Brascote to the south. Originally an agricultural centre Newbold Verdon grew in size during the 1850s with the expansion of coal mining in the area. That industry has now ceased leaving Newbold Verdon as a commuter village primarily serving Leicester (9 .5 miles east) and Hinckley (8.5 miles south). The 2001 census recorded a population of 3,193, which had reduced to 3,012 at the 2011 census.\nNewbold Verdon is situated on the B582 route between the similar-sized villages of Barlestone and Desford, and is 4 miles (6.4 km) east of the small market town of Market Bosworth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "newbold verdon",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "newbold",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "verdon",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8800,
+    "place_id": "gn-2955822",
+    "input": {
+      "place": {
+        "place_id": "gn-2955822",
+        "name": "Apelern",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.28979,
+        "lon": 9.3358
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Apelern",
+          "url": "https://en.wikipedia.org/wiki/Apelern",
+          "text": "Apelern is a municipality in the Samtgemeinde of Rodenberg in the district of Schaumburg, in Lower Saxony, Germany. It lies in the Deister-Süntel valley and is situated close to the A2 Autobahn at Lauenau and south of Rodenberg, between the Deister, Süntel and Bückeberg ridges. The Riesbach stream flows through the village and into the Rodenberger Aue (stream).\nAs well as the village of Apelern itself, the community of Apelern includes the villages of Gross Hegesdorf, Kleinhegesdorf, Lyhren, Reinsdorf and Soldorf.\nThe existence of Apelern is documented as far back as 1162 when the church was built. The name means roughly \"at the apple trees\", and there are apple trees in the park of the Münchhausen estate  to this day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "apelern",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8802,
+    "place_id": "gn-3116595",
+    "input": {
+      "place": {
+        "place_id": "gn-3116595",
+        "name": "Molina de Aragón",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 40.84358,
+        "lon": -1.88762
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Molina de Aragón",
+          "url": "https://en.wikipedia.org/wiki/Molina_de_Aragón",
+          "text": "Molina de Aragón is a municipality located in the province of Guadalajara, Castile-La Mancha, Spain. According to the 2009 census (INE), the municipality had a population of 3,671 inhabitants. It held the record (−28.2 °C) for the lowest temperature measured by a meteorological station in Spain, and now it is in third place.\nIt was the seat of the taifa of Molina, a Moorish independent state, before it was reconquered by the Christians of Alfonso I of Aragon in 1129. On 21 April 1154 Manrique Pérez de Lara issued a sweeping fuero to the town of Molina, which he was building into a semi-independent fief. He and his descendants claimed to rule Molina Dei gratia (\"by the grace of God\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "molina de aragon",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "molina",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "aragon",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8805,
+    "place_id": "gn-3166498",
+    "input": {
+      "place": {
+        "place_id": "gn-3166498",
+        "name": "Sirolo",
+        "country": "Italy",
+        "subdivision": "The Marches",
+        "lat": 43.52246,
+        "lon": 13.61498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sirolo",
+          "url": "https://en.wikipedia.org/wiki/Sirolo",
+          "text": "Sirolo is a comune (municipality) in the Province of Ancona in the Italian region of Marche. As of 28 February 2009 it had a population of 3,747 inhabitants and an area of 16.68 square kilometres (6.44 mi2).\nThe town is situated near Monte Conero and in medieval times it was a castle which belonged to the Conti Cortesi family. It is a tourist destination, especially in summer times and it has continuously been awarded one of the eleven blue flags in the region of Marche since 1994. It features a restored medieval town centre, which culminates with a particular little square with view on the sea and on the Monte Conero. As tourist destination, Sirolo has many restaurants and bars."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "sirolo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8806,
+    "place_id": "gn-3183130",
+    "input": {
+      "place": {
+        "place_id": "gn-3183130",
+        "name": "Amalfi",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.6349,
+        "lon": 14.60238
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amalfi",
+          "url": "https://en.wikipedia.org/wiki/Amalfi",
+          "text": "Amalfi (UK: , US: , Italian: [aˈmalfi]) is a town and comune in the province of Salerno, in the region of Campania, Italy, on the Gulf of Salerno. It lies at the mouth of a deep ravine, at the foot of Monte Cerreto (1,315 metres, 4,314 feet), surrounded by dramatic cliffs and coastal scenery. The town of Amalfi was the capital of the maritime republic known as the Duchy of Amalfi, an important trading power in the Mediterranean between 839 and around 1200. It has 4,611 inhabitants.\nThe town became a popular seaside resort beginning in the Edwardian era, with members of the British upper class spending their winters in Amalfi. Amalfi is included in the UNESCO World Heritage Sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "amalfi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8812,
+    "place_id": "gn-3666363",
+    "input": {
+      "place": {
+        "place_id": "gn-3666363",
+        "name": "Útica",
+        "country": "Colombia",
+        "subdivision": "Cundinamarca",
+        "lat": 5.18727,
+        "lon": -74.48105
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Útica",
+          "url": "https://en.wikipedia.org/wiki/Útica",
+          "text": "Utica is a town and municipality in the Cundinamarca Department, Colombia located some 127 kilometers from Bogotá. The village lies at an altitude of 506 meters above sea level and has an average daily temperature of 26 °C.\nUtica grew from a small fishing community, with the Rio Negro and the Quebradanegra running through it. The village is prone to flooding, caused by heavy rains further up the Andes causing the rivers to burst their banks. The most severe flood washed away the village bridge and unearthed the corpses from the cemetery.\nThe village is a vacation spot particularly promoting extreme sports such as rafting and abseiling.\nThe village is said to have been founded by Manuel Murillo Toro c."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "utica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8813,
+    "place_id": "gn-4556241",
+    "input": {
+      "place": {
+        "place_id": "gn-4556241",
+        "name": "Airville",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.83232,
+        "lon": -76.40635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Airville, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Airville,_Pennsylvania",
+          "text": "Airville is an unincorporated community in Lower Chanceford Township, York County, Pennsylvania, United States. Airville is located in the southeastern part of the county where Pennsylvania Route 74 and Pennsylvania Route 425 intersect and is approximately four miles outside Woodbine.\nAirville has an estimated population of 3100 and includes residents from Lower Chanceford, Peach Bottom, and Fawn townships.  The Susquehanna River separates Airville from Lancaster County on its eastern side.  Travelers can cross the river via the Norman Wood Bridge along Pennsylvania Route 372, which connects to Quarryville in Lancaster County.\nAttractions in Airville include Mill Creek Falls Retreat, the Otter Creek Campground and the historical Indian Steps Museum, which are located along Pennsylvania Route 425 and the Susquehanna River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "airville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8817,
+    "place_id": "gn-5490374",
+    "input": {
+      "place": {
+        "place_id": "gn-5490374",
+        "name": "Santa Teresa",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 31.85594,
+        "lon": -106.63916
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Teresa, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Santa_Teresa,_New_Mexico",
+          "text": "Santa Teresa is an unincorporated community in Dona Ana County, New Mexico, United States. It is home to the Santa Teresa Port of Entry and is part of the Las Cruces Metropolitan Statistical Area, although geographically it is considerably closer to El Paso, Texas, than to Las Cruces. While the United States Census Bureau defined Santa Teresa as a census-designated place (CDP), the census definition of the area may not precisely correspond to local understanding of the area with the same name. The population was 4,258 at the 2010 census and 5,044 at the 2020 census. The National Weather Service El Paso Weather Forecast Office that serves extreme western Texas and Southwestern New Mexico states is based in Santa Teresa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "santa teresa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "teresa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8827,
+    "place_id": "gn-7626289",
+    "input": {
+      "place": {
+        "place_id": "gn-7626289",
+        "name": "ByWard Market",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.4271,
+        "lon": -75.69234
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "ByWard Market",
+          "url": "https://en.wikipedia.org/wiki/ByWard_Market",
+          "text": "The ByWard Market (French: Marché By) is a retail and entertainment district in the downtown core of Ottawa, Ontario, Canada to the east of Parliament Hill and Major's Hill Park. The market buildings are open all year long. Weather permitting, vendors at the outdoor markets along George, York, ByWard, and William streets sell fresh produce, flowers, crafts, and souvenirs.\nThe district is bounded by: \n\nSussex Drive and Mackenzie Avenue (to the west),\nCumberland Street (east)\nCathcart Street (north), and\nRideau Street (south).\nThe market's name refers to the old \"By Ward\" of the City of Ottawa, from the name of engineer and surveyor John By. The district comprises the main commercial part of the historic Lower Town area of Ottawa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "byward market",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "byward",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "market",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8829,
+    "place_id": "gn-8349011",
+    "input": {
+      "place": {
+        "place_id": "gn-8349011",
+        "name": "Stirling North",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -32.47986,
+        "lon": 137.83804
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stirling North, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Stirling_North,_South_Australia",
+          "text": "Stirling North (known by locals as Catninga) is a town located 8 kilometres (5 miles) east of Port Augusta in the Australian state of South Australia. Its origin was as a reliable watering point in low-rainfall country, used by Aboriginal people since time immemorial, and by settlers since the 1850s. Few people lived there until about 100 houses were built in the 1980s for railway employees and their families – Stirling North railway station has been an important railway junction for up to four main lines. Subsequent residential development was substantial; now the town serves essentially as a satellite to Port Augusta. From a population of 350 in 2008, Stirling North had a population of 2793 at the 2021 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "stirling north",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stirling",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8837,
+    "place_id": "gn-320606",
+    "input": {
+      "place": {
+        "place_id": "gn-320606",
+        "name": "Bozkurt",
+        "country": "Türkiye",
+        "subdivision": "Denizli",
+        "lat": 37.82417,
+        "lon": 29.60972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bozkurt, Denizli",
+          "url": "https://en.wikipedia.org/wiki/Bozkurt,_Denizli",
+          "text": "Bozkurt is a municipality and district of Denizli Province, Turkey. Its area is 462 km2,  The town is situated on a plain 52 km (32 mi) east of the city of Denizli. The altitude of the town is 867 m. It is quite close to the Lake Acıgöl and the neighboring town of Çardak and İnceler Kasabası\nThis is high country inland from the Aegean and Mediterranean, and has hot, dry summers and cold, wet winters.\nDuring the Russo-Turkish War (1877–1878) refugees from Bulgaria were settled on the plain, which was then known as Hanabat after a Seljuk Turkish caravanserai that stands within the boundaries of the present-day neighboring district of Çardak. Immigration from Bulgaria continued until recent times."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "bozkurt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8839,
+    "place_id": "gn-3588460",
+    "input": {
+      "place": {
+        "place_id": "gn-3588460",
+        "name": "Tejutla",
+        "country": "Guatemala",
+        "subdivision": "San Marcos",
+        "lat": 15.12254,
+        "lon": -91.80635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tejutla, San Marcos",
+          "url": "https://en.wikipedia.org/wiki/Tejutla,_San_Marcos",
+          "text": "Tejutla (Spanish pronunciation: [teˈxutla]) is a municipality in the western highlands of Guatemala, in the department of San Marcos. Tejutla was officially founded on 25 July 1672, although it was already an important town within the Mam kingdom in 1524, at the time of the Spanish conquest of Guatemala. It is situated high in the mountains, the so-called \"cold zone\", at about 2500 m altitude.\nTejutla is primarily a Ladino municipality in that the majority of its inhabitants speak Spanish and are not indigenous.  Tejutla has about 31,139 inhabitants, with about 6,000 living within the urban center (casco urbano).  The municipio of Tejutla includes 67 communities, 20 of which are Aldeas and the rest are Caserios, Cantones and Colonias."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "tejutla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8853,
+    "place_id": "gn-2152681",
+    "input": {
+      "place": {
+        "place_id": "gn-2152681",
+        "name": "Port Douglas",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -16.48383,
+        "lon": 145.46725
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Douglas",
+          "url": "https://en.wikipedia.org/wiki/Port_Douglas",
+          "text": "Port Douglas (Kuku-Yalanji: Jabulkanji) is a coastal town and locality in the Shire of Douglas, Queensland, Australia, approximately 60 km (37 mi) north of Cairns. In the 2021 census, the locality of Port Douglas had a population of 3,650 people. The town is situated adjacent to two World Heritage areas, the Great Barrier Reef and the Daintree Rainforest.\nPort Douglas was originally established as a port town after the discovery of gold on the Hodgkinson goldfield in 1876 but developed as a tourist destination in the 1980s. It was named in honour of a former Premier of Queensland, John Douglas. Previous names for the town included Jabulkanji (in Kuku-Yalandji language), Terrigal, Island Point, Port Owen and Port Salisbury."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "port douglas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "douglas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8859,
+    "place_id": "gn-2656632",
+    "input": {
+      "place": {
+        "place_id": "gn-2656632",
+        "name": "Bagshot",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.36069,
+        "lon": -0.68802
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bagshot",
+          "url": "https://en.wikipedia.org/wiki/Bagshot",
+          "text": "Bagshot is a large village in the Surrey Heath borough of Surrey, England, approximately 27 miles (43 km) southwest of central London. In the past, Bagshot served as an important staging post between London, Southampton and the West Country, evidenced by the original coaching inns still present in the village today.\nMuch of the land surrounding Bagshot is owned by the Ministry of Defence. The village is adjacent to junction 3 of the M3 motorway. Bagshot railway station is on the line between Ascot and Aldershot and train services are run by South Western Railway\nBagshot is part of the civil parish of Windlesham, which has a population of 17,000 and also includes the neighbouring village of Lightwater."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "bagshot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8865,
+    "place_id": "gn-3905951",
+    "input": {
+      "place": {
+        "place_id": "gn-3905951",
+        "name": "Samaipata",
+        "country": "Bolivia",
+        "subdivision": "Santa Cruz Department",
+        "lat": -18.17754,
+        "lon": -63.87563
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Samaipata, Bolivia",
+          "url": "https://en.wikipedia.org/wiki/Samaipata,_Bolivia",
+          "text": "Samaipata or Samaypata (Quechua samay to rest, pata elevated place / above, at the top / edge, bank (of a river), shore) is a small town in the Florida Province of the Santa Cruz Department in Bolivia. It has a subtropical climate and an altitude of 1600–1800 m. It lies about 120 kilometers to the southwest of the city of Santa Cruz de la Sierra in the foothills of the Andes on the way to Sucre. It is a popular resort for the inhabitants of Santa Cruz due to its cool climate. As such, there is a regular bus and taxi service to Santa Cruz. The town is small, with numerous vibrant colonial buildings and narrow cobbled streets."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "samaipata",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8867,
+    "place_id": "gn-5130915",
+    "input": {
+      "place": {
+        "place_id": "gn-5130915",
+        "name": "Penn Yan",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.6609,
+        "lon": -77.05386
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Penn Yan, New York",
+          "url": "https://en.wikipedia.org/wiki/Penn_Yan,_New_York",
+          "text": "Penn Yan is an incorporated village in and the county seat of Yates County, New York, United States. As of the 2020 census, Penn Yan had a population of 5,056. It lies at the north end of the east branch of Keuka Lake, one of the Finger Lakes.\nAs tourism has grown in the Finger Lakes, Penn Yan has become a summertime hub for visitors to local vineyards, breweries, and Mennonite craft markets. Since the 1970s, farmland in Yates County has been increasingly purchased by Mennonite families from Lancaster County, Pennsylvania. Today, Penn Yan is the center of the largest Old Order Mennonite community in New York State, and horse-drawn buggies are a common sight in the village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "penn yan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "penn",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "yan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

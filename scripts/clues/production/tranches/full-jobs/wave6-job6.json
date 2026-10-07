@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 1110,
+    "attempt": 1101,
+    "place_id": "gn-3137115",
+    "input": {
+      "place": {
+        "place_id": "gn-3137115",
+        "name": "Stavanger",
+        "country": "Norway",
+        "subdivision": "Rogaland",
+        "lat": 58.97005,
+        "lon": 5.73332
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stavanger",
+          "url": "https://en.wikipedia.org/wiki/Stavanger",
+          "text": "Stavanger, officially the Stavanger Municipality, is a city and municipality in Norway. It is the third largest city and third largest metropolitan area in Norway (through conurbation with neighboring Sandnes Municipality) and the administrative center of Rogaland county. The municipality is the fourth most populous in Norway. Located on the Stavanger Peninsula in southwest Norway, Stavanger counts its official founding year as 1125, the year the Stavanger Cathedral was completed. Stavanger's core is to a large degree 18th- and 19th-century wooden houses that are protected and considered part of the city's cultural heritage. This has caused the town center and inner city to retain a small-town character with an unusually high ratio of detached houses, and has contributed significantly to spreading the city's population growth to outlying parts of Greater Stavanger.\nThe city's population rapidly grew in the late 20th century due to its oil industry. Stavanger is known today as the Oil Capital of Norway. Norwegian energy company Equinor, the largest company in the Nordic region, has its headquarters in Stavanger. Multiple educational institutions for higher education are located in Stavanger. The largest of these is the University of Stavanger.\nDomestic and international military installations are located in Stavanger, including the NATO Joint Warfare Centre. Other international establishments, and especially local branches of foreign oil and gas companies, contribute further to a significant foreign population in the city. The city has a strong international profile and 22.1% of the population has an immigrant background. In 2020, it was rated as the most liveable city for European expatriates in Norway as well as 5th in Europe by ECA International. Stavanger has, since the early 2000s, consistently had an unemployment rate significantly lower than the European average. In August 2022, the unemployment rate was 1.6%. The city also appears on various lists of most expensive cities in the world, and it has even been ranked as the world's most expensive city by certain indices.\nThe climate of the city is very mild by Nordic standards due to a strong maritime influence. As a result, winter usually remains above freezing whereas heat waves are rare and seldom long. Rainfall is common, although less so than in areas further north on the coastline.\nStavanger is served by international airport Stavanger Airport, Sola, which offers flights to cities in most major European countries, as well as a limited number of intercontinental charter flights. The airport was rated as one of the world's most punctual airports of its category by OAG in 2020.\nEvery two years, Stavanger organizes the Offshore Northern Seas (ONS), which is the second largest exhibition and conference for the energy sector. The Gladmat food festival is also held each year and is considered to be one of Scandinavia's leading food festivals. The city is also known for being one of the nation's premier culinary clusters. Stavanger was awarded the 2008 European Capital of Culture alongside Liverpool."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 485
+    },
+    "banned_terms": [
+      {
+        "term": "stavanger",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1111,
+    "attempt": 1102,
+    "place_id": "gn-3359041",
+    "input": {
+      "place": {
+        "place_id": "gn-3359041",
+        "name": "Worcester",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.64651,
+        "lon": 19.44852
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Worcester, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Worcester,_South_Africa",
+          "text": "Worcester (  WUUST-ər) is a town in the Western Cape, South Africa. It is located 120 kilometres (75 mi) north-east of Cape Town on the N1 highway north to Johannesburg.\nBeing the largest town in the Western Cape's interior region, it serves as the administrative capital of the Breede Valley Local Municipality and as the regional headquarters for most central and Provincial Government Departments. Its mayor is Antoinette Steyn. The town also serves as the hub of the Western Cape's interior commercial, distribution and retail activity with a shopping mall, well developed central business district and infrastructure.\nWorcester is located at an elevation of 220 metres (720 ft) and can be reached by road either travelling on the N1 highway through the Huguenot Tunnel or by driving through spectacular mountain passes. From Cape Town Du Toitskloof, from Wellington Bainskloof, from Malmesbury, Western Cape Nieuwekloof, from Ceres Mitchells, from Robertson Goree, from Hermanus Rooihoogte and from Johannesburg Hex River, with vistas over the Hex River Valley.\nGeographically, the district is delimited mainly by mountains; to the southwest lies the massive Stettyns mountain range with an annual rainfall in excess of 2000 mm. To the west lie the Du Toitskloof Mountains and northwest lies the Slanghoek, Little Drakenstein, Elandskloof and Lemiet mountain ranges. To the north rises the Hex River Mountains which include the towering peaks of Chavonnes, Brandwacht, Fonteintjiesberg and Audensberg. Northeast of the town the colourful Keerom Mountain runs into the Langeberg range.\nWorcester and its surroundings form part of the Breede River catchment area, which is fed by a number of smaller rivers supplemented by the run-off from the winter snows in the mountains. The district also includes the Hex River Valley."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "worcester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1112,
+    "attempt": 1103,
+    "place_id": "gn-3448136",
+    "input": {
+      "place": {
+        "place_id": "gn-3448136",
+        "name": "São Vicente",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.96306,
+        "lon": -46.39194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São Vicente, São Paulo",
+          "url": "https://en.wikipedia.org/wiki/São_Vicente,_São_Paulo",
+          "text": "São Vicente (after Saint Vincent of Saragossa, the patron Saint of Lisbon, Portugal) is a coastal municipality in southern São Paulo and the first city of Brazil. It is part of the Metropolitan Region of the Baixada Santista. The population is 329,911 (2022 census) in an area of 148.151 square kilometres (57.20 square miles).\nFounded in 1532, by the Portuguese explorer and colonial administrator Martim Afonso de Sousa, it is the first permanent colonial settlement established in Brazil, and the first colonial election on the American continent also took place there. Because of this, it is considered the \"cradle of American democracy\".\nSão Vicente is one of the 15 municipalities in São Paulo considered seaside resorts by the state of São Paulo, as they meet certain prerequisites defined by State Law. This status guaranteed the municipality a larger budget from the State to promote regional tourism. Furthermore, the municipality acquires the right to add, next to its name, the title of \"Estância Balneária\" (Balneary Resort), a term by which it is designated both by official municipal records and by state references. Historical tourism and beach tourism are among the most relevant sectors of its economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "sao vicente",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vicente",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1113,
+    "attempt": 1104,
+    "place_id": "gn-3466296",
+    "input": {
+      "place": {
+        "place_id": "gn-3466296",
+        "name": "Chapecó",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -27.09639,
+        "lon": -52.61833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chapecó",
+          "url": "https://en.wikipedia.org/wiki/Chapecó",
+          "text": "Chapecó (Portuguese pronunciation: [ʃapeˈkɔ]) is a municipality in the state of Santa Catarina, in the Southern Region of Brazil. Located in the western part of the state, it has an estimated population of 289,170 inhabitants as of 2026, making it the sixth-most populous municipality in Santa Catarina.\nChapecó is a major regional center for industry, commerce, services, finance and education. Its economy is strongly associated with agribusiness and the food-processing industry, particularly the production and processing of poultry and pork.\nThe city serves as an economic and service center for a broader region encompassing western Santa Catarina and parts of northwestern Rio Grande do Sul and southwestern Paraná.\nLocated approximately 553 km (344 mi) by road from the state capital, Florianópolis, Chapecó is the seat of the Metropolitan Region of Chapecó. It is also an important center for higher education, with institutions including the Federal University of Fronteira Sul (UFFS), Santa Catarina State University (UDESC), Unochapecó, Unoesc and UCEFF.\nInternationally, Chapecó is best known as the home of Chapecoense, a professional association football club. The city and the club received worldwide attention following the crash of LaMia Flight 2933 in 2016, which killed 71 people, including most of Chapecoense's first-team players and staff."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "chapeco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1114,
+    "attempt": 1105,
+    "place_id": "gn-3718426",
+    "input": {
+      "place": {
+        "place_id": "gn-3718426",
+        "name": "Port-au-Prince",
+        "country": "Haiti",
+        "subdivision": "Ouest",
+        "lat": 18.54349,
+        "lon": -72.33881
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port-au-Prince",
+          "url": "https://en.wikipedia.org/wiki/Port-au-Prince",
+          "text": "Port-au-Prince ( PORT oh PRINSS; French: [pɔʁ o pʁɛ̃s] ; Haitian Creole: Pòtoprens, [pɔtopɣɛ̃s]) is the capital and most populous city of Haiti. The city's population was estimated at 1,200,000 in 2022 with the metropolitan area estimated at a population of 2,618,894.  The metropolitan area is defined by the IHSI as including the communes of Port-au-Prince, Delmas, Cité Soleil, Tabarre, Carrefour, and Pétion-Ville.\nThe city of Port-au-Prince is on the Gulf of Gonâve: the bay on which the city lies, which acts as a natural harbor, has sustained economic activity since the civilizations of the Taíno. It was first incorporated under French colonial rule in 1749. The city's layout is similar to that of an amphitheater; commercial districts are near the water, while residential neighborhoods are located on the hills above. Its population is difficult to ascertain due to the rapid growth of slums in the hillsides above the city; however, recent estimates place the metropolitan area's population at around 3.7 million, nearly a third of the country's national population. The city was catastrophically affected by a massive earthquake in 2010, with large numbers of structures damaged or destroyed. Haiti's government estimated the death toll to be 230,000. Since 2020, Port-au-Prince has been paralyzed by extensive gang violence; kidnappings, massacres, and gang rapes are common occurrences, often with the complicity of police officers and politicians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "port au prince",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "au",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "prince",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1115,
+    "attempt": 1106,
+    "place_id": "gn-3885273",
+    "input": {
+      "place": {
+        "place_id": "gn-3885273",
+        "name": "Lampa",
+        "country": "Chile",
+        "subdivision": "Santiago Metropolitan",
+        "lat": -33.2863,
+        "lon": -70.87561
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lampa, Chile",
+          "url": "https://en.wikipedia.org/wiki/Lampa,_Chile",
+          "text": "Lampa is a Chilean commune and city in the Chacabuco province, Santiago Metropolitan Region. Lampa is situated near the Chicauma mountain range, part of which was added to the La Campana National Park.\nLampa (in Quechua: Lampa, ‘the miner’s shovel’) is a community located in the rural zone northwest of Santiago, Chile. It belongs to the administrative providence of Chacabuco, in the Metropolitan Region of Santiago.\nAccording to the census of 2017, Lampa has a population of 201,034 inhabitants, being the community with the greatest growth in comparison with the census before (2002), when it only had 40228 inhabitants.\nIn the trimester of the year 2016, Lampa was selected as first place as the community with the most sales in living area, reaching 28%, with respect to Colina and Puente Alto.\nThe community of Lampa adjoins the communities of Til Til, Colina, Pudahuel, Curacaví, Quilicura and Quilpué."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "lampa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1116,
+    "attempt": 1107,
+    "place_id": "gn-4724129",
+    "input": {
+      "place": {
+        "place_id": "gn-4724129",
+        "name": "Round Rock",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 30.50826,
+        "lon": -97.6789
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Round Rock, Texas",
+          "url": "https://en.wikipedia.org/wiki/Round_Rock,_Texas",
+          "text": "Round Rock is a city in Williamson and Travis counties in the U.S. state of Texas. The population was 119,468 at the 2020 census. It is part of the Greater Austin metropolitan area.\nThe city straddles the Balcones Escarpment, a fault line in which the areas roughly east of I-35 are flat and characterized by having black, fertile soils of the Blackland Prairie, and the west side of the Escarpment, which consists mostly of hilly, karst-like terrain with little topsoil and higher elevations and which is part of the Texas Hill Country. Located about 15 miles (24 km) north of Austin, Round Rock shares a common border with Austin near State Highway 45.\nRound Rock is the international headquarters of Dell, which employs about 16,000 people at its Round Rock facilities. Retailers in Round Rock include IKEA, Premium Outlets, and the mixed-use La Frontera center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "round rock",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "round",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rock",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1117,
+    "attempt": 1108,
+    "place_id": "gn-5435464",
+    "input": {
+      "place": {
+        "place_id": "gn-5435464",
+        "name": "Pueblo",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 38.25445,
+        "lon": -104.60914
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pueblo, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Pueblo,_Colorado",
+          "text": "Pueblo ( PWEB-loh; Spanish for \"town\") is the home rule municipality that is the county seat of, and the most populous municipality in, Pueblo County, Colorado, United States. The city population was 111,876 at the 2020 United States census, making Pueblo the ninth most populous city in Colorado. Pueblo is the principal city of the Pueblo, CO Metropolitan Statistical Area and a major city of the Front Range Urban Corridor.\nPueblo is situated at the confluence of the Arkansas River and Fountain Creek, 112 miles (180 km) south of the Colorado State Capitol in Denver. The area is considered semi-arid desert land, with approximately 12 inches (304.80 mm) of precipitation annually. With its location in the \"Banana Belt\", Pueblo tends to get less snow than the other major cities in Colorado.\nPueblo is one of the largest steel-producing cities in the United States, for which reason Pueblo is referred to as the \"Steel City\". The city is also a hub of higher education, enrolling nearly 14,000 students between Colorado State University Pueblo and Pueblo Community College. The Historic Arkansas River Project (HARP) is a riverwalk in the Union Avenue Historic Commercial District, and shows the history of the devastating Pueblo Flood of 1921."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "pueblo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1118,
+    "attempt": 1109,
+    "place_id": "gn-5989045",
+    "input": {
+      "place": {
+        "place_id": "gn-5989045",
+        "name": "Kamloops",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 50.66648,
+        "lon": -120.3192
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kamloops",
+          "url": "https://en.wikipedia.org/wiki/Kamloops",
+          "text": "Kamloops ( KAM-loops) is a city in south-central British Columbia, Canada, at the confluence of the North and South Thompson Rivers, which join to become the Thompson River in Kamloops, and east of Kamloops Lake. The city is a commercial centre for, and largest city within, Thompson Country, a region of the British Columbia Interior.\nThe city was incorporated in 1893 with about 500 residents.  The Canadian Pacific Railway was completed through downtown in 1886, and the Canadian National arrived in 1912, making Kamloops an important transportation hub. Kamloops North station is the first stop on VIA Rail's eastbound transcontinental service, The Canadian, while the Rocky Mountaineer and the Kamloops Heritage Railway both use Kamloops station.\nWith a 2025 population of 109,633, it is the twelfth largest municipality in the province. The Kamloops census agglomeration is ranked 36th among census metropolitan areas and agglomerations in Canada with a 2025 population of 127,198.\nKamloops is home to Thompson Rivers University as well as the Royal Inland Hospital and the British Columbia Lottery Corporation, all of which significantly shape the city's economy. The city is promoted as the Tournament Capital of Canada. It hosts more than 100 sporting tournaments each year  at facilities such as the Tournament Capital Centre, Sandman Centre, and Tournament Capital Ranch. More recently, Kamloops has become a mountain biking destination; home to Canada's largest municipal bike park, the 26-hectare Kamloops Bike Ranch, the city is often described as the birthplace of freeride mountain biking."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "kamloops",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1119,
+    "attempt": 1110,
+    "place_id": "gn-1215355",
+    "input": {
+      "place": {
+        "place_id": "gn-1215355",
+        "name": "Binjai",
+        "country": "Indonesia",
+        "subdivision": "North Sumatra",
+        "lat": 3.6001,
+        "lon": 98.4854
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Binjai",
+          "url": "https://en.wikipedia.org/wiki/Binjai",
+          "text": "Binjai (English:  or BEEN-jayh, Jawi: بينجاي), formally Kota Binjai (Binjai City), is an independent city in the North Sumatra province of Indonesia, bordered by Deli Serdang Regency to the east and Langkat Regency to the west. Binjai is connected to Medan (the provincial capital), about 22 km to the east, by the Sumatra highway that goes to Banda Aceh, and effectively forms a part of Greater Medan. The city's population was 181,904 in the 1990 Census, 224,516 in the 2000 Census, 246,154 in the 2010 Census, and 291,842 in the 2020 Census; the official estimate as of mid 2025 was 310,932 (comprising 155,462 males and 155,470 females). In mid 2025, 50,654 inhabitants lived in the Binjai District of Langkat Regency, outside the city limits but immediately north of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "binjai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1120,
+    "attempt": 1111,
+    "place_id": "gn-1510853",
+    "input": {
+      "place": {
+        "place_id": "gn-1510853",
+        "name": "Barnaul",
+        "country": "Russia",
+        "subdivision": "Altai Krai",
+        "lat": 53.36199,
+        "lon": 83.72786
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barnaul",
+          "url": "https://en.wikipedia.org/wiki/Barnaul",
+          "text": "Barnaul (Russian: Барнау́л, IPA: [bərnɐˈul] ) is the largest city and administrative centre of Altai Krai, Russia, located at the confluence of the Barnaulka and Ob rivers in the West Siberian Plain. As of the 2021 census, its population was 630,877, making it the 20th-largest city in Russia and the fourth-largest in the Siberian Federal District.\nLocated in the south of western Siberia on the left bank of the Ob River, Barnaul is a major transport, industrial, cultural, medical and educational hub of Siberia. Barnaul was founded by the wealthy Demidov family, who intended to develop the production of copper and silver, which continued after the factories were taken over by the Crown. Barnaul became a major centre of silver production in Russia. Barnaul was granted city status in 1771."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "barnaul",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1121,
+    "attempt": 1112,
+    "place_id": "gn-1649378",
+    "input": {
+      "place": {
+        "place_id": "gn-1649378",
+        "name": "Bekasi",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.2349,
+        "lon": 106.9896
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bekasi",
+          "url": "https://en.wikipedia.org/wiki/Bekasi",
+          "text": "Bekasi (Indonesian pronunciation: [bəˈkasi] ) is the largest city in the province of West Java and the third-largest city in Indonesia. Located on the eastern border of Jakarta, it serves as a commuter city within the Jakarta metropolitan area. According to the 2020 Census by Statistics Indonesia (BPS), Bekasi had 2,543,676 inhabitants. The official estimate for mid 2025 was 2,648,272 (comprising 1,328,712 males and 1,319,560 females). The city is bordered by Bekasi Regency (from which the city was separated administratively on 16 December 1996) to the north and the east, Bogor Regency and Depok City to the south, and the city of East Jakarta to the west.\nBekasi is one of the oldest cities in Indonesia, and has a history of being the capital city of the Kingdom of Tarumanagara. At that time, the name of Bekasi was Dayeuh Sundasembawa or Jayagiri. The earliest evidence of its existence dates from the fifth century according to the Tugu inscription, which describes the name of two rivers that run through the city, i.e. Candrabhaga and Gomati and one of those rivers, i.e. Candrabhaga is the origin of the name Bekasi where the name Candrabhaga evolved into \"Bhagasasi\" – due to the Sanskrit word candra (which means moon) evolved into Old Sundanese word 'sasi' which also means moon – and then the name Bhagasasi was mis-spelt as \"Bhagasi\", and then the Dutch colonial government also mis-spelt the name Bhagasi as \"Bacassie\", and finally it became \"Bekasi\". During the Dutch East Indies period, Bekasi was a part of Batavia residency. As a dormitory city, many middle-upper class satellite areas have been developed in Bekasi, complete with their own shopping malls, schools, hospitals, club houses, water park, and shuttle bus services to central Jakarta. The large number of multinational companies has apparently attracted many expatriates (mainly Japanese and Korean) to settle in Bekasi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 308
+    },
+    "banned_terms": [
+      {
+        "term": "bekasi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1122,
+    "attempt": 1113,
+    "place_id": "gn-1784658",
+    "input": {
+      "place": {
+        "place_id": "gn-1784658",
+        "name": "Zhengzhou",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 34.75778,
+        "lon": 113.64861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhengzhou",
+          "url": "https://en.wikipedia.org/wiki/Zhengzhou",
+          "text": "Zhengzhou, previously romanized as Chengchow, is the capital and the largest city of Henan Province, China. With a population of 12.6 million people in 2021, it is China's 11th largest city by population. Zhengzhou is situated in north-central Henan Province at the eastern foothills of the Xiong'er Mountains and on the southern bank of the Yellow River; where its valley widens into the North China Plain. Zhengzhou is a major city within the Zhongyuan region, an area that has been continuously inhabited for over 4,000 years, and is considered a cradle of Chinese civilization. It is one of China's nine national central cities, serving as a major political, economic and transport hub. The Zhengzhou metropolitan area, including Zhengzhou and Kaifeng, is the core area of the Central Plains Economic Zone.\nOriginally an early Shang dynasty urban center, the area that is now Zhengzhou was the site of the Shang capital Áo (隞) or Bó (亳) (c. 1600-1046 BC). Following the Shang dynasty, Zhengzhou remained an important regional city due to its strategic location on the North China Plains, and the city first became the seat of a prefectural administration in 587 CE in the Sui dynasty. In the Republican period, Nationalist forces breached the dikes at Huayuankou in June 1938, north of Zhengzhou, to hinder the Japanese advance during the Second Sino-Japanese War. The resulting flood inundated large areas of Henan, Anhui and Jiangsu provinces; the Yellow River did not return to its original course until 1947.\nIn the 1990s, following China's reform and opening up supported by Deng Xiaoping, Zhengzhou's economy expanded rapidly: its gross domestic product grew from ¥2.03 billion in 1978 to over ¥100 billion by 2003. As state monopoly reforms progressed throughout this decade, Zhengzhou pioneered commercial reforms among inland regions, with numerous wholesale markets forming near railway freight stations to facilitate the growth of private enterprises. The city had a total GDP of 1.524 trillion (RMB) in 2025. It is the home of the Zhengzhou Commodity Exchange, the first futures exchange approved by the State Council of China in October 1990. The first Airport Economy Zone in China was established in Zhengzhou Airport Economy Zone. Zhengzhou has been classified as a Beta (global second-tier) city together with nine other cities in China, including Chongqing, Xiamen, Nanjing and Jinan by the Globalization and World Cities Research Network. Greater Zhengzhou was named as one of the 13 emerging megacities in China in a July 2012 report by the Economist Intelligence Unit, and was officially named as the eighth National Central City in 2017 by the central government in Beijing. The city holds the title of National Civilized City, and is also a National Famous Historical and Cultural City.\n\nZhengzhou is also a major city for scientific research, often appearing among the world's top 60 cities as tracked by the Nature Index. The city is home to multiple institutes of higher education, notably Zhengzhou University, Henan University, Henan Agricultural University, Henan University of Chinese Medicine, and Henan University of Technology. There are two World Heritage Sites in Zhengzhou  and one UNESCO Global Geopark in Songshan, Dengfeng. The city is home to the headquarters of Yutong Bus, the largest bus manufacturer in the world by sales volume."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 538
+    },
+    "banned_terms": [
+      {
+        "term": "zhengzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1123,
+    "attempt": 1114,
+    "place_id": "gn-1785286",
+    "input": {
+      "place": {
+        "place_id": "gn-1785286",
+        "name": "Zibo",
+        "country": "China",
+        "subdivision": "Shandong",
+        "lat": 36.79056,
+        "lon": 118.06333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zibo",
+          "url": "https://en.wikipedia.org/wiki/Zibo",
+          "text": "Zibo (Chinese: 淄博; pinyin: Zībó) is a prefecture-level city in central Shandong province, China. It borders the provincial capital Jinan to the west, Tai'an to the southwest, Linyi to the south, Weifang to the east, Dongying to the northeast, and Binzhou to the north.\nZibo spans 5,938 square kilometres (2,293 sq mi). As of the 2020 census, Zibo's population was 4,704,138, of which 4.41 million lived in the metro area comprising five urban districts—Zhangdian, Zichuan, Boshan, Zhoucun and Linzi–and parts of neighboring counties Huantai, Gaoqing, and Yiyuan.\nThe Zibo area was the centre of the ancient State of Qi, whose capital Linzi was the most populous city in China at its peak. Pu Songling, a well-known writer of the Qing dynasty, is one of the most famous people from Zibo. As the birthplace of Qi culture, Zibo is a notable tourist city.\nManufacturingholds an important place in the city’s economy, particularly ceramics manufacturing.\nOther key industries include the petrochemical industry, pharmaceuticals, metallurgy, construction materials, machinery and textiles. New industries and high-technology industries, such new materials, fine chemicals, electronics, IT, and biopharmaceutics are also developing rapidly.\nAccording to the 2007-08 Global City Competitiveness Report released by the Chinese Academy of Social Sciences, Zibo was among the top 20 cities in the world in terms of fast economic growth between 2001 and 2005. According to the Oriental Outlook Magazine, Zibo ranks No. 1 on the list of cities that have reasonable real estate prices in China, also ranking No. 2 on the list of cities with good public security in China in 2008. In 2009, the city received the award of \"Best 10 Harmonious Cities that enjoy Sustainable Development in China\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 279
+    },
+    "banned_terms": [
+      {
+        "term": "zibo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1124,
+    "attempt": 1115,
+    "place_id": "gn-2146268",
+    "input": {
+      "place": {
+        "place_id": "gn-2146268",
+        "name": "Toowoomba",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -27.56056,
+        "lon": 151.95386
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Toowoomba",
+          "url": "https://en.wikipedia.org/wiki/Toowoomba",
+          "text": "Toowoomba ( tə-WUUM-bə) is a city on the border of the South East Queensland and Darling Downs regions of Queensland, Australia. It is located 132 km (82 mi) west of Queensland's capital, Brisbane. The urban population of Toowoomba as of the 2021 census was 142,163, having grown at an average annual rate of 1.45% over the previous two decades. Toowoomba is the second-most-populous inland city in Australia after the nation's capital, Canberra. It is also the second-largest regional centre in Queensland and is often referred to as the capital of the Darling Downs, or the 4th biggest city in South East Queensland after Brisbane, Gold Coast and the Sunshine Coast. The city serves as the council seat of the Toowoomba Region which has a population of 186,276 as of 2025.\nToowoomba, one of Australia's oldest inland cities, was founded in 1849 on the lands of the Giabal and Jarowair people. The city's central streets were named after the history of the House of Stuart. The city became the viceregal summer retreat of Queensland's governors. The city witnessed several significant events during Australia's Victorian period, including the War of Southern Queensland and Battle of One Tree Hill. During the Federation period, Toowoomba emerged as a major artistic and cultural centre with the establishment of the Austral Society.\nToowoomba is celebrated for its preserved Victorian-era and traditional Queenslander architecture, historic churches and gardens, and vibrant food, and coffee culture. The city boasts street art, laneways, and numerous nature trails. The city experiences a distinct four seasons and is home to festivals including the Carnival of Flowers. Notable landmarks include Queens and Laurel Bank Park, the Queensland State Rose Garden, the Empire Theatre, St James' Palace, and Mt Meewah."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 286
+    },
+    "banned_terms": [
+      {
+        "term": "toowoomba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1125,
+    "attempt": 1116,
+    "place_id": "gn-2416969",
+    "input": {
+      "place": {
+        "place_id": "gn-2416969",
+        "name": "Nzérékoré",
+        "country": "Guinea",
+        "subdivision": "Nzérékoré Region",
+        "lat": 7.75624,
+        "lon": -8.8179
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nzérékoré",
+          "url": "https://en.wikipedia.org/wiki/Nzérékoré",
+          "text": "Nzérékoré (N’ko: ߒߛߙߍߜߘߺߍ߬, Adlam: 𞤟𞤫𞤪𞤫𞤳𞤮𞤪𞤫; also spelled N'Zérékoré) is the third largest city in Guinea by population after the capital, Conakry and Kankan, and the largest city in the Guinée forestière region of southeastern Guinea. The city is the capital of Nzérékoré Prefecture. Nzérékoré is a commercial and economic center and lies approximately 354 mi (570 km) southeast of Conakry.\nIt was the centre of an uprising against French rule in 1911 and is now known as a market town and for its silversmithing. The population number lied between ~110,000 and ~290,000 in 1996 based on the Census, and is growing significantly since the start of civil wars in the neighboring Liberia, Sierra Leone, and Ivory Coast sparking inward migration, with the current population number lying between ~230,000 and ~400,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "nzerekore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1126,
+    "attempt": 1117,
+    "place_id": "gn-276781",
+    "input": {
+      "place": {
+        "place_id": "gn-276781",
+        "name": "Beirut",
+        "country": "Lebanon",
+        "subdivision": "Beirut",
+        "lat": 33.89332,
+        "lon": 35.50157
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beirut",
+          "url": "https://en.wikipedia.org/wiki/Beirut",
+          "text": "Beirut (  bay-ROOT; Arabic: بيروت, romanised: ) is the capital and largest city of Lebanon. As of 2025, Greater Beirut has a population of 2.4 million, just under half of Lebanon's population, which makes it the twelfth-largest city in the Levant region and the sixteenth-largest in the Arab world. The city is situated on a peninsula at the midpoint of Lebanon's Mediterranean coast. Beirut has been inhabited for more than 5,000 years, making it one of the oldest cities in the world.\nBeirut is Lebanon's seat of government and plays a central role in the Lebanese economy, with many banks and corporations based in the city. Beirut is an important seaport for the country and region, and rated a Beta- World City by the Globalization and World Cities Research Network. Beirut was severely damaged by the Lebanese Civil War, the 2006 Lebanon War, and the 2020 explosion in the Port of Beirut, and was subsequently rebuilt after each of these events. Its architectural and demographic structure underwent major change in recent decades."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "beirut",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1127,
+    "attempt": 1118,
+    "place_id": "gn-3193044",
+    "input": {
+      "place": {
+        "place_id": "gn-3193044",
+        "name": "Podgorica",
+        "country": "Montenegro",
+        "subdivision": "Podgorica",
+        "lat": 42.44124,
+        "lon": 19.26309
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Podgorica",
+          "url": "https://en.wikipedia.org/wiki/Podgorica",
+          "text": "Podgorica is the capital and largest city of Montenegro. The city is located in central Montenegro, at the confluence of Ribnica and Morača rivers, where the southern foothills of Dinaric Alps meet the northernmost part of Zeta Plain.\nFollowing the Allied victory in World War II, Podgorica was renamed Titograd in 1946, and simultaneously designated as capital of Socialist Republic of Montenegro. This marked the beginning of rapid growth of Podgorica, transforming a small town into a primate city of Montenegro, a home for nearly a third of the country's population. The city's original name was restored in 1992, and it became a capital of independent Montenegro in 2006.\nDuring the Yugoslav era, Podgorica economy developed around heavy industries and manufacturing, which have since gave way to service based economy. Owing to its central location within the country, Podgorica is a hub of Montenegro rail and road network, while Podgorica Airport is country's main gateway for international air travel. Podgorica is center of Montenegro education, science and healthcare.\nWhile Podgorica is home to National Theatre of Montenegro and various other cultural institutions, significant national cultural and historic heritage is still preserved in Cetinje, which served as capital and seat of the throne for much of Montenegrin history."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "podgorica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1128,
+    "attempt": 1119,
+    "place_id": "gn-3530599",
+    "input": {
+      "place": {
+        "place_id": "gn-3530599",
+        "name": "Ciudad del Carmen",
+        "country": "Mexico",
+        "subdivision": "Campeche",
+        "lat": 18.64592,
+        "lon": -91.82991
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad del Carmen",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_del_Carmen",
+          "text": "Ciudad del Carmen or Carmen is the second-largest city of the Mexican state of Campeche. Ciudad del Carmen is located in the southwest of the state at 18.63°N 91.83°W﻿ / 18.63; -91.83 on the southwest of Carmen Island, which stands in the Laguna de Términos on the coast of the Gulf of Mexico. As of 2010, Ciudad del Carmen had a population of 169,466, up from the 2005 census of 154,197.\nThe Puente del Zacatal, constructed in 1994, is one of the longest bridges in Latin America.\nThis border area at the western edge of the Yucatán Peninsula was previously part of the state of Yucatán, then of Tabasco; since 1863 it has been part of the state of Campeche.  In 1840 the city had a population of about 7,000.\nThe city is also the seat of the state of Campeche's Carmen municipality, which includes the city and the surrounding area.  The 2010 census population of the municipality of Carmen was 221,094 people, second only to the capital municipality of Campeche.\nThe main university in Ciudad del Carmen is the Universidad Autónoma del Carmen (UNACAR)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad del carmen",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "carmen",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1129,
+    "attempt": 1120,
+    "place_id": "gn-3865086",
+    "input": {
+      "place": {
+        "place_id": "gn-3865086",
+        "name": "Bahía Blanca",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -38.7176,
+        "lon": -62.26545
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bahía Blanca",
+          "url": "https://en.wikipedia.org/wiki/Bahía_Blanca",
+          "text": "Bahía Blanca (Spanish pronunciation: [baˈi.a ˈβlaŋka]; lit. 'White Bay'), colloquially referred to by its own local inhabitants as simply Bahía, is a city in the Buenos Aires province of Argentina, centered on the northwestern end of the eponymous Blanca Bay of the Argentine Sea. It is the 4th largest city in the province, and the 16th largest in the country by metropolitan population. It is the seat of government of the Bahía Blanca Partido, with 336,574 inhabitants according to the 2022 census [INDEC]. Bahía Blanca is the principal city in the Greater Bahía Blanca metropolitan area.\nThe city has an important seaport with a depth of 15 m (49 ft), kept consistent along almost the entire length of the bay, where the Napostá Stream drains.\nBahía Blanca means \"White Bay\". The name is due to the color of the salt covering the local soil surrounding the shores. The bay (which is an estuary) was seen by Ferdinand Magellan during his first circumnavigation of the world on the order of Charles I of Spain in 1520, looking for a canal connecting the Atlantic to the Pacific Ocean along the coasts of South America."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "bahia blanca",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bahia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "blanca",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

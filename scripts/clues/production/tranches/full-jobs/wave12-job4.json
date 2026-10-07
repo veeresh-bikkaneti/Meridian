@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 2280,
+    "attempt": 2261,
+    "place_id": "gn-5408406",
+    "input": {
+      "place": {
+        "place_id": "gn-5408406",
+        "name": "Westminster",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.75918,
+        "lon": -118.00673
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westminster, California",
+          "url": "https://en.wikipedia.org/wiki/Westminster,_California",
+          "text": "Westminster is a city in western Orange County, California, United States. Westminster was founded in 1870 by Rev. Lemuel Webber as a Presbyterian temperance colony and was incorporated in 1957. \nWestminster is bordered by the city of Seal Beach on the west, by Garden Grove on the north and east, and by Huntington Beach and Fountain Valley on the south. Santa Ana, the county seat of Orange County, is east of Westminster.\nWestminster has one of the largest Vietnamese populations in the US. They settled largely in Little Saigon,  and the city is known as the \"capital\" of overseas Vietnamese with 39,799 Vietnamese Americans, or 43.8% of the total population, as of the 2020 United States census.\nIn the 1947 court case Mendez v. Westminster, Sylvia Mendez and her family challenged the segregation of Mexican American students in the Westminster School District. The case resulted in a federal ruling that ended school segregation practices in California, marking an important step toward broader desegregation in the United States.\nWestminster won the All-America City Award in 1996.\nIn 2026, Westminster went viral for the decision of its City Council (4-1) and mayor to name a street after Charlie Kirk."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "westminster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2281,
+    "attempt": 2262,
+    "place_id": "gn-6180550",
+    "input": {
+      "place": {
+        "place_id": "gn-6180550",
+        "name": "Whitehorse",
+        "country": "Canada",
+        "subdivision": "Yukon",
+        "lat": 60.71611,
+        "lon": -135.05375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whitehorse",
+          "url": "https://en.wikipedia.org/wiki/Whitehorse",
+          "text": "Whitehorse is the capital of Yukon, and the largest city in Northern Canada. It was incorporated in 1950 and is located at kilometre 1426 (Historic Mile 918) on the Alaska Highway in southern Yukon. Whitehorse's downtown and Riverdale areas occupy both shores of the Yukon River, which rises in British Columbia and meets the Bering Sea in Alaska. The city was named after the White Horse Rapids for their resemblance to the mane of a white horse.\nBecause of the city's location in the Whitehorse valley and relative proximity to the Pacific Ocean, the climate tends to be milder. At this latitude, winter days are short and summer days have up to about 19 hours of daylight.\nAs of the 2021 Canadian census, the population was 28,201 within city boundaries and 31,913 in the census agglomeration. These figures represent approximately 70 and 79 percent, respectively, of the total population of Yukon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "whitehorse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2282,
+    "attempt": 2263,
+    "place_id": "gn-7874216",
+    "input": {
+      "place": {
+        "place_id": "gn-7874216",
+        "name": "Santa Teresa",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.91769,
+        "lon": -43.18812
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Teresa, Rio de Janeiro",
+          "url": "https://en.wikipedia.org/wiki/Santa_Teresa,_Rio_de_Janeiro",
+          "text": "Santa Teresa (Portuguese pronunciation: [ˈsɐ̃tɐ teˈɾezɐ]) is a neighborhood in the city of Rio de Janeiro, Brazil. It is located on top of the Santa Teresa hill, by the centre of Rio, and is famous for its winding, narrow streets which are a favourite spot for artists and tourists.\nThe neighborhood originated around the Santa Teresa Convent, built in the 1750s on the Desterro hill. At the end of the 19th and early 20th century it was an upper class borough, as testified by its many opulent villas. Santa Teresa ceased being an upper-class neighbourhood long ago, but it has been revived as a fashionable hotspot. It is home to several artists and art studios and galleries. The offer of restaurants and bars is also varied.\nOne of Santa Teresa's most illustrious inhabitants was Raymundo Ottoni de Castro Maia, an art collector who lived in his Chácara do Céu mansion in the neighborhood. The estate was turned into a museum (Museu da Chácara do Céu) and its exhibits include works by Matisse, Jean Metzinger, Eliseu Visconti, Di Cavalcanti, and Candido Portinari. It is located near the adjacent to the cultural center Glória Maria Municipal Park. In 2006, some paintings were stolen, and have not yet been recovered.\nAnother museum is the Museu do Bonde, which tells the history of the famous Santa Teresa Tram since its historic origins. A ride on the tram is a popular attraction among tourists. It sports crossing the old Carioca Aqueduct, going through picturesque streets of the Santa Teresa neighbourhood and wonderful views of the city downhill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "santa teresa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "teresa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2283,
+    "attempt": 2264,
+    "place_id": "gn-107312",
+    "input": {
+      "place": {
+        "place_id": "gn-107312",
+        "name": "Abqaiq",
+        "country": "Saudi Arabia",
+        "subdivision": "Eastern Province",
+        "lat": 25.93402,
+        "lon": 49.6688
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abqaiq",
+          "url": "https://en.wikipedia.org/wiki/Abqaiq",
+          "text": "Abqaiq (Arabic: بقيق, romanized: Biqayq) is a city in the Eastern Province of Saudi Arabia, located in the desert 60 km southwest of the Dhahran-Dammam-Khobar metropolitan area, and north of the Rub' al-Khali, the second largest sand desert in the world also known as the \"Empty Quarter\". \nNotably, it is home to a residential community for Saudi Aramco employees and their families. The Abqaiq Saudi Aramco residential community had a population of approximately 1,500 in 2012. Inclusion of the population outside the Saudi Aramco community brings this number closer to 45,000 (2022 census).\nAbqaiq has organized a Safari Festival since 2017. The 10-day festival aims at presenting the Arab and desert heritage by presenting different shows."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "abqaiq",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2284,
+    "attempt": 2265,
+    "place_id": "gn-171451",
+    "input": {
+      "place": {
+        "place_id": "gn-171451",
+        "name": "Binnish",
+        "country": "Syria",
+        "subdivision": "Idlib",
+        "lat": 35.95664,
+        "lon": 36.7138
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Binnish",
+          "url": "https://en.wikipedia.org/wiki/Binnish",
+          "text": "Binnish (Arabic: بِنِّش, romanized: Binniš, also spelled Binsh) is a city in northwestern Syria, administratively belonging to the Idlib Governorate, located just east of Idlib. Nearby localities include Kafriya and Maarrat Misrin to the northwest, al-Fu'ah to the north,  Ta'um and Taftanaz to the northeast, Afs to the southeast and Sarmin to the south. According to the Syria Central Bureau of Statistics (CBS), Binnish had a population of 52,000 in the 2011 census. Its inhabitants are predominantly Sunni Muslim.\nThe city is situated on a hill. The city name Binnish is mentioned in the Tablets of Ebla 2400 BC. The city is famous for olive, vine and fig trees besides its varied crops of all kinds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "binnish",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2285,
+    "attempt": 2266,
+    "place_id": "gn-2647356",
+    "input": {
+      "place": {
+        "place_id": "gn-2647356",
+        "name": "Hastings",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.85568,
+        "lon": 0.58009
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hastings",
+          "url": "https://en.wikipedia.org/wiki/Hastings",
+          "text": "Hastings (  HAY-stingz) is a seaside town and borough in East Sussex on the south coast of England,\n24 mi (39 km) east of Lewes and 53 mi (85 km) south east of London. The town gives its name to the Battle of Hastings, which took place 8 mi (13 km) to the north-west at Senlac Hill in 1066. It later became one of the medieval Cinque Ports. In the 19th century, it was a popular seaside resort, as the railway allowed tourists and visitors to reach the town. Hastings remains a popular seaside resort and is also a fishing port, with the UK's largest beach-based fishing fleet. The town's estimated population was 91,100 in 2021."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "hastings",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2286,
+    "attempt": 2267,
+    "place_id": "gn-2647400",
+    "input": {
+      "place": {
+        "place_id": "gn-2647400",
+        "name": "Hartlepool",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.68554,
+        "lon": -1.21028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hartlepool",
+          "url": "https://en.wikipedia.org/wiki/Hartlepool",
+          "text": "Hartlepool ( HART-lih-pool) is an industrial port town in County Durham, England. It is governed by a unitary authority borough named after the town. The borough is part of the devolved Tees Valley area, approximately 25 miles (40 km) northwest of Newcastle upon Tyne, 17 miles (27 km) north of Sunderland, and 8 miles (13 km) south of Middlesbrough. The built-up area had a population of 87,984 at the 2021 Census.\nThe old town was founded in the 7th century, around the monastery of Hartlepool Abbey, on a headland. As the village grew into a town, in the Middle Ages, its harbour served as the County Palatine of Durham's official port. The new town of West Hartlepool was created, in 1835, after a new port was built and railway links from the South Durham coal fields (to the west) and from Stockton-on-Tees (to the south) were created. A parliamentary constituency covering both the old town and West Hartlepool was created, in 1867, called The Hartlepools. The two towns were formally merged into a single borough called Hartlepool, in 1967. Following the merger, the name of the constituency was changed from The Hartlepools to just Hartlepool, in 1974. The modern town centre and main railway station are both at what was West Hartlepool; the old town is now generally known as the Headland.\nIndustrialisation and the start of a shipbuilding industry in the later part of the 19th century meant it was a target for the Imperial German Navy at the beginning of the First World War. A bombardment of 1,150 shells on 16 December 1914 resulted in the death of 117 people in the town. A severe decline in heavy industries and shipbuilding following the Second World War caused periods of high unemployment until the 1990s when major investment projects and the redevelopment of the docks area into the Hartlepool Marina saw a rise in the town's prospects. The town also has a seaside resort called Seaton Carew."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 328
+    },
+    "banned_terms": [
+      {
+        "term": "hartlepool",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2287,
+    "attempt": 2268,
+    "place_id": "gn-2650278",
+    "input": {
+      "place": {
+        "place_id": "gn-2650278",
+        "name": "Eccles",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.48333,
+        "lon": -2.33333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eccles, Greater Manchester",
+          "url": "https://en.wikipedia.org/wiki/Eccles,_Greater_Manchester",
+          "text": "Eccles () is a market town in the City of Salford in Greater Manchester, England,  \n3 miles (4.8 km) west of Salford city centre and 4 miles (6.4 km) west of Manchester, split by the M602 motorway and bordered by the Manchester Ship Canal to the south. The town is famous for the Eccles cake.\nEccles grew around the 13th-century Parish Church of St Mary. Evidence of pre-historic human settlement has been discovered locally, but the area was predominantly agricultural until the Industrial Revolution, when a textile industry was established in the town. The arrival of the Liverpool and Manchester Railway led to the town's expansion along the route of the track linking those two cities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "eccles",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2288,
+    "attempt": 2269,
+    "place_id": "gn-2654252",
+    "input": {
+      "place": {
+        "place_id": "gn-2654252",
+        "name": "Burntwood",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.68075,
+        "lon": -1.92759
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burntwood",
+          "url": "https://en.wikipedia.org/wiki/Burntwood",
+          "text": "Burntwood is a former mining town and civil parish in the Lichfield District of Staffordshire, England. It is approximately 4 miles (6 km) west of Lichfield and north east of Brownhills, with a population of 26,049 and forming part of Lichfield district. \nThe town forms one of the largest urbanised parishes in England. Samuel Johnson opened an academy in nearby Edial in 1736. The town is home to the smallest park (opened to commemorate the marriage of the Prince of Wales in 1863) in the UK, Prince's Park, which is located next to Christ Church on the junction of Farewell Lane and Church Road. The town expanded in the nineteenth century around the coal mining industry.\n\nAreas of Burntwood are Boney Hay, Chase Terrace, Chasetown, Gorstey Lea, Burntwood Green, and Summerfield & All Saints. Nearby places are Brownhills, Cannock, Cannock Wood, Norton Canes, Gentleshaw, Pipehill, Muckley Corner, Hammerwich and Lichfield.\nIn July 2009 a Burntwood man, Terry Herbert, discovered a hoard of Saxon treasure with a metal detector in a field in the adjoining village of Hammerwich. Known as the Staffordshire Hoard, it is the largest hoard of Anglo-Saxon gold yet found."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "burntwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2289,
+    "attempt": 2270,
+    "place_id": "gn-2842632",
+    "input": {
+      "place": {
+        "place_id": "gn-2842632",
+        "name": "Saarlouis",
+        "country": "Germany",
+        "subdivision": "Saarland",
+        "lat": 49.31366,
+        "lon": 6.75154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saarlouis",
+          "url": "https://en.wikipedia.org/wiki/Saarlouis",
+          "text": "Saarlouis (German: [zaːɐ̯ˈlʊɪ̯] ; French: Sarrelouis, [saʁlwi]; formerly Sarre-Libre and Saarlautern) is a town in the state of Saarland, in western Germany, located on the banks of the Saar river. With a population of over 37,000 (2024), it is the fifth-largest city of Saarland and serves as an important regional center. Saarlouis lies near the border with France and Luxembourg. The town functions as the administrative seat of the district of Saarlouis and is part of the cross-border SaarLorLux Euroregion.\nSaarlouis was founded in 1680 by order of Louis XIV of France as a fortress town designed by the military engineer Vauban. The stronghold was intended to secure France’s new frontier after the Treaty of Nijmegen. The star-shaped fortifications gave the city its characteristic layout, parts of which remain visible today. Saarlouis became part of Prussia following the Treaty of Paris of 1815.\nIn the 20th century, Saarlouis shared the turbulent history of the Saar region, which changed hands multiple times due to its strategic and economic importance. Following the Treaty of Versailles, the town became part of the Territory of the Saar Basin administered by the League of Nations, before rejoining Germany in 1935 after a plebiscite. After World War II, Saarlouis was again included in the French-occupied Saar protectorate before the Saar Treaty of 1956 paved the way for its return to Germany in 1957.\nToday, Saarlouis is a regional centre of commerce, culture, and industry. It is known for its French-inspired urban layout, historic fortifications, and cultural events such as the annual “Emmes” town festival. Its location close to France and Luxembourg makes it a key part of the SaarLorLux region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 274
+    },
+    "banned_terms": [
+      {
+        "term": "saarlouis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2290,
+    "attempt": 2271,
+    "place_id": "gn-4168773",
+    "input": {
+      "place": {
+        "place_id": "gn-4168773",
+        "name": "Plant City",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.01888,
+        "lon": -82.11469
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plant City, Florida",
+          "url": "https://en.wikipedia.org/wiki/Plant_City,_Florida",
+          "text": "Plant City is an incorporated city in Hillsborough County, Florida, United States, approximately midway between Brandon and Lakeland along Interstate 4. It is part of the Tampa Bay area. The population was 39,764 at the 2020 census.\nDespite many thinking it was named for flora grown at plant nurseries (especially vegetables and fruits, as well as tropical houseplants) in its subtropical Gulf Coast climate, it was named after prominent railroad developer Henry B. Plant (see Plant System).\nPlant City is known as the winter strawberry capital of the world and hosts the annual Florida Strawberry Festival in the late winter (usually in February or early March), which is attended by people from all over the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "plant city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "plant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2291,
+    "attempt": 2272,
+    "place_id": "gn-4518264",
+    "input": {
+      "place": {
+        "place_id": "gn-4518264",
+        "name": "Middletown",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 39.51506,
+        "lon": -84.39828
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Middletown, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Middletown,_Ohio",
+          "text": "Middletown is a city in Butler and Warren counties in the U.S. state of Ohio. The population was 50,987 at the 2020 census. It is part of the Cincinnati metropolitan area in southwest Ohio, 29 miles (47 km) northeast of Cincinnati and 20 miles (32 km) southwest of Dayton.\nIncorporated in 1833 and designated a city in 1886, Middletown was formed from parts of Lemon, Turtlecreek, and Franklin townships. It was home to AK Steel Holding Corporation, formerly known as Armco and founded in 1900, whose steel factory in Middletown still operates as part of Cleveland-Cliffs. The city also features Hook Field Municipal Airport, now serving only general aviation, and a regional campus of Miami University. In 1957, Middletown was named an All-America City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "middletown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2292,
+    "attempt": 2273,
+    "place_id": "gn-4815352",
+    "input": {
+      "place": {
+        "place_id": "gn-4815352",
+        "name": "Morgantown",
+        "country": "United States",
+        "subdivision": "West Virginia",
+        "lat": 39.62953,
+        "lon": -79.9559
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morgantown, West Virginia",
+          "url": "https://en.wikipedia.org/wiki/Morgantown,_West_Virginia",
+          "text": "Morgantown is a city and the county seat of Monongalia County, West Virginia, United States. It lies along the Monongahela River near the state border with Pennsylvania. With a population of 30,347 at the 2020 census, Morgantown is the third-most populous city in West Virginia. The city is a principal center of north-central West Virginia and anchors the broader Morgantown metropolitan area, which has an estimated population of 140,000. Morgantown is home to West Virginia University, the state's flagship public research university.\nFounded in 1785 by Zackquill Morgan, for whom it is named, Morgantown developed during the 19th century as a regional trading and transportation hub before emerging as a college town in the 20th century. West Virginia University and its Robert C. Byrd Health Sciences Center have played a central role in shaping the city's economy and demographics. Morgantown is also known for attractions such as the Core Arboretum and for the Morgantown Personal Rapid Transit system, one of the few automated people mover systems in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "morgantown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2293,
+    "attempt": 2274,
+    "place_id": "gn-6050177",
+    "input": {
+      "place": {
+        "place_id": "gn-6050177",
+        "name": "LaSalle",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 42.24481,
+        "lon": -83.06095
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "LaSalle, Ontario",
+          "url": "https://en.wikipedia.org/wiki/LaSalle,_Ontario",
+          "text": "LaSalle is a town in Essex County, Ontario, Canada. It is a bedroom community of the City of Windsor, part of the Windsor Census Metropolitan Area, and located south of that city. LaSalle, along with Windsor, is the oldest French settlement area in Southwestern Ontario and the oldest continually-inhabited European settlement in Canada west of the Quebec border. The town was named for explorer René-Robert Cavelier, Sieur de La Salle.\nThe current Town of Lasalle was originally organized as the Township of Sandwich West in 1861 when Sandwich Township was divided into two parts. A portion of the township incorporated as the Town of Lasalle in 1924, but was dissolved in 1959 and rejoined Sandwich West. In 1991, the Township changed its status to that of a town and was renamed Lasalle. It is the second most populous municipality within Essex County, after the Municipality of Lakeshore. The town's land area includes Fighting Island in the Detroit River on its western side. Fighting Island is privately owned by BASF, the world's largest chemical company."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "lasalle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2294,
+    "attempt": 2275,
+    "place_id": "gn-688533",
+    "input": {
+      "place": {
+        "place_id": "gn-688533",
+        "name": "Yalta",
+        "country": "Ukraine",
+        "subdivision": "Crimea",
+        "lat": 44.50218,
+        "lon": 34.16624
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yalta",
+          "url": "https://en.wikipedia.org/wiki/Yalta",
+          "text": "Yalta (Ukrainian and Russian: Ялта) is a resort city on the south coast of the Crimean Peninsula surrounded by the Black Sea. It serves as the administrative center of Yalta Municipality, one of the regions within Crimea. Yalta, along with the rest of Crimea, is internationally recognised as part of Ukraine, and is considered part of the Autonomous Republic of Crimea. However, it is controlled de facto by Russia, which annexed Crimea in 2014 and regards the town as part of the Republic of Crimea. According to the most recent census, its population was 76,746 (2014 Census). \nThe city is located on the site of the ancient Greek colony of Yalita (Greek: Γιαλός, romanized: Gialós [ʝaˈlos̠]). It is said to have been founded by Greek settlers who were looking for a safe shore on which to land. It is situated on a deep bay facing south towards the Black Sea, surrounded by the mountain range Ai-Petri. It has a humid subtropical climate and is surrounded by numerous vineyards and orchards.\nThe area became famous in 1945 when the city held the Yalta Conference as part of the Allied World War II conferences of major wartime national leaders.\nThe term \"Greater Yalta\" is used to designate a part of the Crimean southern coast spanning from Foros in the west to Gurzuf in the east, and including the city of Yalta and multiple adjacent urban settlements."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "yalta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2295,
+    "attempt": 2276,
+    "place_id": "gn-6946944",
+    "input": {
+      "place": {
+        "place_id": "gn-6946944",
+        "name": "North Brunswick",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.454,
+        "lon": -74.482
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Brunswick, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/North_Brunswick,_New_Jersey",
+          "text": "North Brunswick is a township in Middlesex County, in the U.S. state of New Jersey. It is centrally located in the Raritan Valley region within the New York metropolitan area. As of the 2020 United States census, the township's population was 43,905, an increase of 3,163 (+7.8%) from the 2010 census count of 40,742, which in turn reflected an increase of 3,455 (+12.3%) from the 36,287 counted in the 2000 census.\nNorth Brunswick is located south of New Brunswick. It was named for its earlier-established neighbor, South Brunswick. Brunswick comes from New Brunswick, which was named after the German city of Braunschweig, formerly translated in English as Brunswick or for the British royal House of Brunswick. North and South Brunswick, in turn, became the namesakes for East Brunswick. Alternatively, the city gets its name from King George II of Great Britain, the Duke of Brunswick-Lüneburg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "north brunswick",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "brunswick",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2296,
+    "attempt": 2277,
+    "place_id": "gn-1688363",
+    "input": {
+      "place": {
+        "place_id": "gn-1688363",
+        "name": "Santa Catalina",
+        "country": "Philippines",
+        "subdivision": "Central Visayas",
+        "lat": 9.3337,
+        "lon": 122.8637
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Catalina, Negros Oriental",
+          "url": "https://en.wikipedia.org/wiki/Santa_Catalina,_Negros_Oriental",
+          "text": "Santa Catalina, officially the Municipality of Santa Catalina (Cebuano: Lungsod sa Santa Catalina; Tagalog: Bayan ng Santa Catalina), is a municipality in the province of Negros Oriental, Philippines. According to the 2024 census, it has a population of 80,382 people.\nThe town is home to the Minagahat language, the indigenous language of Southern Negros as listed by the Komisyon sa Wikang Filipino. The language is vital to the culture and arts of the people. The town is also known for its boat-building tradition which originated from the pre-colonial era. Its boat-building tradition has been granted funding by UNESCO in 2015 for proper documentation and future inscription in the UNESCO Lists of Intangible Cultural Heritage elements. However, no public information about the outcome of the funding has been made."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "santa catalina",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "catalina",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2297,
+    "attempt": 2278,
+    "place_id": "gn-1694403",
+    "input": {
+      "place": {
+        "place_id": "gn-1694403",
+        "name": "Pateros",
+        "country": "Philippines",
+        "subdivision": "National Capital Region",
+        "lat": 14.5391,
+        "lon": 121.0726
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pateros",
+          "url": "https://en.wikipedia.org/wiki/Pateros",
+          "text": "Pateros (Tagalog: [pɐˈtɛɾɔs]), officially the Municipality of Pateros (Filipino: Bayan ng Pateros), is the sole municipality of Metro Manila, Philippines. According to the 2024 census, it has a population of 67,319 people.\nThis municipality is famous for its duck-raising industry and especially for producing balut, a Filipino delicacy, which is a boiled, fertilized duck egg. Pateros is also known for the production of red salty eggs and \"inutak\", a local rice cake. Moreover, the town is known for manufacturing of \"alfombra\", a locally made footwear with a carpet-like fabric on its top surface. Pateros is bordered by the highly urbanized cities of Pasig to the north, and by Taguig to the east, west and south.\nPateros is the smallest municipality in the Philippines by land area, and is the smallest administrative division in Metro Manila by population, but it is the third most densely populated within Metro Manila at around 37,000 inhabitants per square kilometer or 96,000 inhabitants per square mile. Unlike its neighbors in Metro Manila, Pateros is the only municipality in the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "pateros",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2298,
+    "attempt": 2279,
+    "place_id": "gn-1735077",
+    "input": {
+      "place": {
+        "place_id": "gn-1735077",
+        "name": "Perai",
+        "country": "Malaysia",
+        "subdivision": "Penang",
+        "lat": 5.38333,
+        "lon": 100.38333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Perai",
+          "url": "https://en.wikipedia.org/wiki/Perai",
+          "text": "Perai is a suburb of Seberang Perai in the Malaysian state of Penang. It lies at the southern bank of the Perai River and borders Butterworth to the north.\nThe area now known as Perai was obtained by the British East India Company in 1800, with the Perai River serving as the boundary between the newly acquired British territory and Kedah to the north. A nascent railway line was built between Perai and Perak in the 1890s, transforming Perai into a transit point for the export of tin. Perai became heavily industrialised in the late 20th century.\nToday, Perai is home to an eponymous industrial zone, as well as the adjacent township of Seberang Jaya. The town is connected to Penang Island via the Penang Bridge and contains several facilities of the Port of Penang."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "perai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2299,
+    "attempt": 2280,
+    "place_id": "gn-2651269",
+    "input": {
+      "place": {
+        "place_id": "gn-2651269",
+        "name": "Didcot",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.60928,
+        "lon": -1.24214
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Didcot",
+          "url": "https://en.wikipedia.org/wiki/Didcot",
+          "text": "Didcot ( DID-kot, -⁠kət) is a railway town and civil parish in South Oxfordshire, England, located 15 miles (24 km) south of Oxford, 10 miles (16 km) east of Wantage and 15 miles (24 km) north west of Reading. Historically part of Berkshire, the town is noted for its railway heritage, Didcot station opening as a junction station on the Great Western Main Line in 1844. \nToday the town is known for the railway museum and as the gateway town to the Science Vale: three large science and technology centres in the surrounding villages of Milton (Milton Park), Culham (Culham Science Centre) and Harwell (Harwell Science and Innovation Campus which includes the Rutherford Appleton Laboratory)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "didcot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

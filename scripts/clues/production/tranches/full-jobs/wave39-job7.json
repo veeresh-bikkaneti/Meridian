@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 7773,
+    "attempt": 7721,
+    "place_id": "gn-5127321",
+    "input": {
+      "place": {
+        "place_id": "gn-5127321",
+        "name": "Montauk",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.03594,
+        "lon": -71.95451
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montauk, New York",
+          "url": "https://en.wikipedia.org/wiki/Montauk,_New_York",
+          "text": "Montauk ( MON-tawk) is a hamlet and census-designated place (CDP) in East Hampton and Suffolk County, New York, on the eastern end of the South Shore of Long Island in the United States. As of the 2020 United States census, the CDP's population was 4,318.\nThe CDP encompasses an area that stretches approximately 13 miles (21 km) from Napeague to the easternmost tip of New York State at Montauk Point Light. The hamlet encompasses a small area about halfway between the two points.\nLocated at the tip of the South Fork peninsula of Long Island, 118 miles (190 km) east of New York City, Montauk has been used as an Army, Navy, Coast Guard, and Air Force base. The Montauk Point Lighthouse is the oldest lighthouse in New York State and was commissioned by President George Washington in 1792.\nMontauk is a major tourist destination with six state parks. It is particularly famous for its fishing, claiming to have more world saltwater fishing records than any other port in the world.  Located 20 miles (32 km) off the Connecticut coast, it is home to the largest commercial and recreational fishing fleet in New York state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "montauk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7774,
+    "attempt": 7722,
+    "place_id": "gn-726963",
+    "input": {
+      "place": {
+        "place_id": "gn-726963",
+        "name": "Sozopol",
+        "country": "Bulgaria",
+        "subdivision": "Burgas",
+        "lat": 42.41801,
+        "lon": 27.6956
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sozopol",
+          "url": "https://en.wikipedia.org/wiki/Sozopol",
+          "text": "Sozopol (Bulgarian: Созопол [soˈzɔpoɫ]; Greek: Σωζόπολις, romanized: Sozopolis; Turkish: سوزەبولى  Süzebolu) is an ancient seaside town located 35 km south of Burgas on the southern Bulgarian Black Sea Coast. One of the major seaside resorts in the country, it is known for the Apollonia art and film festival (which takes place in early September) that is named after one of the town's ancient names. Part of Burgas Province and administrative centre of the homonymous Sozopol Municipality, as of December 2009, the town has a population of 5,410 inhabitants.\nIn antiquity, the place was the site of a prosperous Greek colony named Antheia and later known as Apollonia. In 72 BC it was devastated by a Roman siege, and became a small town of lesser importance. By the first century AD, the name Sozopolis began to appear in written records.\nThe busiest times of the year are the summer months, ranging from May to September, as tourists from around the world come for the weather, sandy beaches, history and culture, fusion cuisine (Balkan and Mediterranean), and atmosphere of the resort."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "sozopol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7775,
+    "attempt": 7723,
+    "place_id": "gn-965471",
+    "input": {
+      "place": {
+        "place_id": "gn-965471",
+        "name": "Philipstown",
+        "country": "South Africa",
+        "subdivision": "Northern Cape",
+        "lat": -30.43733,
+        "lon": 24.47261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Philipstown, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Philipstown,_South_Africa",
+          "text": "Philipstown is a town in the eastern Karoo region of South Africa.\nTown 56 km north-east of De Aar. It was established in May 1863 on the farm Rietfontein and became a municipality in August 1876. Named after Sir Philip Wodehouse (1811–1887), Governor of the Cape Colony from 1861 to 1870.\nAt the jailhouse to the west of town is the building where a small force of the 65th Imperial Yeomanry and Native Police held off a large force of General De Wet's men during the Second Anglo-Boer War. During this action, Corporal William Sopp of the Imperial Yeomanry was awarded the Distinguished Conduct Medal for courage under fire when he rode out from this building to warn the approaching Australian Bushmen who were coming to relieve them that there were hundreds of Boers lying in wait for them. The Boers fired at this lone horseman as he raced to the Australians then raced back, arriving back at the jail without injury. This caused De Wet to delay his movements for several hours and turned him back towards a large pursuing British column."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 139,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "philipstown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7776,
+    "attempt": 7724,
+    "place_id": "gn-1013706",
+    "input": {
+      "place": {
+        "place_id": "gn-1013706",
+        "name": "Charlestown",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -27.41112,
+        "lon": 29.87375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charlestown, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Charlestown,_South_Africa",
+          "text": "Charlestown is a small town situated at the top of Laing's Nek pass in KwaZulu-Natal, South Africa between Newcastle and Volksrust. It started out as an important railway station and customs post between Natal and Transvaal in 1891 until the Union of South Africa came into being in 1910, and customs tariffs were abolished. It is named after Sir Charles Mitchell, governor of Natal.\nIt became a dormitory suburb of Volksrust, just across the border in the Transvaal, and many black people bought freehold land in the town. During the 1960s, however, the apartheid policy of the government led to most of the black inhabitants being forcibly removed to Madadeni, near Newcastle, and Charlestown became a ghost town.\nIn 1927, a shooting took place on the outskirts of town in one of South Africa's first mass shooting instances."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "charlestown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7777,
+    "attempt": 7725,
+    "place_id": "gn-2642505",
+    "input": {
+      "place": {
+        "place_id": "gn-2642505",
+        "name": "Millom",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.21072,
+        "lon": -3.272
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Millom",
+          "url": "https://en.wikipedia.org/wiki/Millom",
+          "text": "Millom is a town and civil parish on the north shore of the estuary of the River Duddon in southernmost Cumberland, Cumbria, England. It is situated just outside the Lake District National Park, about 6 miles (10 km) north of Barrow-in-Furness (23 miles or 37 kilometres by road) and 26 miles (42 km) south of Whitehaven.\nMillom was a small village centred on Holy Trinity Church and Millom Castle until the 19th century. The modern town developed following the opening of Millom Ironworks in 1866. Built around the ironworks, the town subsumed the village of Holborn Hill and grew to a size of over 10,000 people by the 1960s, but has struggled since the works were closed in 1968. Culturally, Millom is notable as the birthplace of poet Norman Nicholson, and for its historical links with rugby league."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "millom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7778,
+    "attempt": 7726,
+    "place_id": "gn-2659700",
+    "input": {
+      "place": {
+        "place_id": "gn-2659700",
+        "name": "Meiringen",
+        "country": "Switzerland",
+        "subdivision": "Bern",
+        "lat": 46.72709,
+        "lon": 8.1872
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Meiringen",
+          "url": "https://en.wikipedia.org/wiki/Meiringen",
+          "text": "Meiringen (Swiss Standard German pronunciation: [ˈmaɪrɪŋən]) is a municipality in the Interlaken-Oberhasli administrative district in the canton of Bern in Switzerland. Besides the village of Meiringen, the municipality includes the settlements of Balm, Brünigen, Eisenbolgen, Hausen, Prasti, Sand, Stein, Unterbach, Unterheidon, Wylerli and Zaun. The municipal coat of arms shows a black eagle in a yellow field. (\"Or an Eagle displayed Sable crowned, beaked, langued and membered of the first.\")\nFormerly the coat of arms of the entire Oberhasli Talschaft, this design continues the imperial coat of arms.\nMeiringen is famous for the nearby Reichenbach Falls, a waterfall that was the setting for the final showdown between Sir Arthur Conan Doyle's fictional detective Sherlock Holmes and his nemesis Professor Moriarty. The village is also known for its claim to have been the place where meringue was first created."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "meiringen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7779,
+    "attempt": 7727,
+    "place_id": "gn-4256184",
+    "input": {
+      "place": {
+        "place_id": "gn-4256184",
+        "name": "Corydon",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 38.21201,
+        "lon": -86.12192
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corydon, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Corydon,_Indiana",
+          "text": "Corydon is a town in Harrison Township and the county seat of Harrison County, Indiana, located north of the Ohio River in the extreme southern part of the US state. Corydon was founded in 1808 and served as the capital of the Indiana Territory from 1813 to 1816. It was the site of Indiana's first constitutional convention, which was held June 10–29, 1816. Forty-three delegates convened to consider statehood for Indiana and drafted its first state constitution. Under Article XI, Section 11, of the Indiana 1816 constitution, Corydon was designated as the capital of the state, which it remained until 1825, when the seat of state government was moved to Indianapolis. In 1863, during the American Civil War, Corydon was the site of the Battle of Corydon, the only official pitched battle waged in Indiana during the war. More recently, the town's numerous historic sites have helped it become a tourist destination. A portion of its downtown area is listed in the National Register of Historic Places as the Corydon Historic District. As of the 2020 census, Corydon had a population of 3,153."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "corydon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7780,
+    "attempt": 7728,
+    "place_id": "gn-5197163",
+    "input": {
+      "place": {
+        "place_id": "gn-5197163",
+        "name": "Lansford",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.83176,
+        "lon": -75.88242
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lansford, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Lansford,_Pennsylvania",
+          "text": "Lansford is a county-border borough (town) in Carbon County, Pennsylvania, United States. It is part of Northeastern Pennsylvania. It is located 37 miles (60 km) northwest of Allentown and 19 miles south of Hazleton in the Panther Creek Valley about 72 miles (116 km) from Philadelphia and abutting the cross-county sister-city of Coaldale in Schuylkill County.\nThe whole valley was owned and subdivided into separate lots by the historically important Lehigh Coal & Navigation Company, locally called the Old Company, which likely settled some structures on the lands by 1827.\nLansford grew with the development of local anthracite coal mines and was named after Asa Lansford Foster, who was an advocate for merging the small patch towns that developed in the area surrounding the anthracite coal mines.\nAs of the 2020 census, Lansford had a population of 4,141. This was a steep decline from a high of 9,632 at the 1930 census, a pattern common to many mining towns in Northeastern Pennsylvania."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "lansford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7781,
+    "attempt": 7729,
+    "place_id": "gn-672602",
+    "input": {
+      "place": {
+        "place_id": "gn-672602",
+        "name": "Murighiol",
+        "country": "Romania",
+        "subdivision": "Tulcea County",
+        "lat": 45.03333,
+        "lon": 29.16667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murighiol",
+          "url": "https://en.wikipedia.org/wiki/Murighiol",
+          "text": "Murighiol (Independența from 1983 to 1996) is a commune in Tulcea County, Northern Dobruja, Romania. It is composed of seven villages:\n\nMurighiol\nPlopul (formerly Beibudzac)\nColina (Russian: Калина)\nDunavățu de Jos (Russian: Долни Дунавец)\nDunavățu de Sus (Russian: Горни Дунавец)\nSarinasuf\nUzlina\nThe commune lies in the southeastern part of the county, on the southern side of the Danube Delta. It covers an area of 804.49 km2 (310.62 sq mi), bordered to the north by the Sfântu Gheorghe branch of the Danube, Lake Razelm to the west, and the Black Sea to the south.\nAt the 2011 census, 94.6% of the inhabitants were Romanians, 4.5% Ukrainians, and 0.4% Turks. \nThe commune's name is of Turkish origin: moru (\"violet\") and göl (\"lake\") compounded to mean \"violet lake\".\nThe archaeological site of Halmyris is located near the village of Murighiol. Halmyris was a Roman legionary fort from the 1st–4th centuries CE. It is currently under excavation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 138,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "murighiol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7782,
+    "attempt": 7730,
+    "place_id": "gn-2644115",
+    "input": {
+      "place": {
+        "place_id": "gn-2644115",
+        "name": "Llandybie",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.82044,
+        "lon": -4.0071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Llandybie",
+          "url": "https://en.wikipedia.org/wiki/Llandybie",
+          "text": "Llandybie (Welsh: Llandybïe [ˌɬandəˈbiːɛ] , \"Saint Tybie's church\") is a village and community in Carmarthenshire, Wales, with the village being situated 2 miles (3.2 km) north of Ammanford.\nAccording to the United Kingdom Census 2001, Llandybie village itself is home to a population of 3,800, while the community – which also includes the villages of Blaenau, Caerbryn, Capel Hendre, Cwmgwili, Pentregwenlais, Penybanc, Pen-y-groes, and Saron – has 8,800 inhabitants, increasing to 10,994 at the 2011 census.\nIt was in Llandybie, in 1943, that the mineral Brammallite was found for the first time. Llandybie hosted the National Eisteddfod of Wales in 1944.\nThe village is served by Llandybie railway station on the Heart of Wales Line and the A483 road which is the main road. Llandybie Community Primary School is located in the north-easterly fringe of the village.\nThe community is bordered by the communities of: Dyffryn Cennen; Cwmamman; Betws; Ammanford; Llanedi; Llannon; Gorslas; and Llanfihangel Aberbythych, all being in Carmarthenshire."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "llandybie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7783,
+    "attempt": 7731,
+    "place_id": "gn-3113957",
+    "input": {
+      "place": {
+        "place_id": "gn-3113957",
+        "name": "Peñafiel",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 41.60165,
+        "lon": -4.11418
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peñafiel, Spain",
+          "url": "https://en.wikipedia.org/wiki/Pe%C3%B1afiel,_Spain",
+          "text": "Peñafiel is a town in the Valladolid Province and the greater autonomous community of Castile and León, Spain. It is best known for the Peñafiel Castle and for its medieval square used for bullfights and named \"Plaza del Coso\" (English: \"Bullring Square\"). The square is surrounded by private homes, but since medieval times the rights to use their windows, balconies and doorways during bullfights are owned by the town (see easement), which auctions them to the highest bidders.\nThe town is full of deep excavated caves which were traditionally used to store the wine because of the constant temperature they kept all year around. These caves have chimney vents for ventilation and to evacuate the gases generated by the fermentation of the wine. These chimney vents dot the landscape in and around the town and the castle.\nIn 2006 Peñafiel had a population of about 5,434.\nPeñafiel was a very important centre in the Middle Ages, as evidenced by the fact that it had up to 19 churches.\nThe town witnessed a clear expansion when the Spanish Rail System reached it, and this also profited the surrounding region. Rail facilitated distribution of goods, of which wheat was the most important. Three factories were established dedicated to the production of flour. This expansion did not, however, serve to develop animal husbandry in the region.\n\nThe name of Peñafiel derives from the Latin Pinna Fidelis (the loyal Rock or Mountain). The name is not casual: the \"Peña\" served as protection through the years, as the Castle at its top attests. The castle can be seen from kilometers away, and it is a typical postcard of the town. The castle now hosts the Wine Museum of Valladolid, and offers an impressive view of the town and the surrounding region. Below the castle, but above the town, many of wine caves were built. The mountain contains tens of such caves, some of which are as large as 200 metres (660 ft). Many wineries are located near Peñafiel: the town is at the heart of the Wine Region of Ribera del Duero. Guided winery visits in La Ribera del Duero  are a growing tourist activity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 137,
+      "fullExtractWords": 360
+    },
+    "banned_terms": [
+      {
+        "term": "penafiel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7784,
+    "attempt": 7732,
+    "place_id": "gn-1693941",
+    "input": {
+      "place": {
+        "place_id": "gn-1693941",
+        "name": "Piddig",
+        "country": "Philippines",
+        "subdivision": "Ilocos",
+        "lat": 18.1655,
+        "lon": 120.7175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piddig",
+          "url": "https://en.wikipedia.org/wiki/Piddig",
+          "text": "Piddig, officially the Municipality of Piddig (Ilocano: Ili ti Piddig; Filipino: Bayan ng Piddig) is a municipality in the province of Ilocos Norte, Philippines. According to the 2024 census, it has a population of 22,781 people.\nThe town is known for its role in the Basi Revolt which was led by Pedro Mateo, a native of Piddig.  Today, Piddig is known for its basi and for their sariwagwag, a dish made out of gabi leaves with fresh shrimps that are freshly gathered from their rich river. The municipio (town hall) is located on top of a hill offering panoramic views of fields and mountains.\nPiddig is also the birthplace of Teófilo Yldefonso, a Filipino swimmer who is the first Filipino and Southeast Asian to win an Olympic medal, and the first Filipino to win multiple medals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "piddig",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7785,
+    "attempt": 7733,
+    "place_id": "gn-2644809",
+    "input": {
+      "place": {
+        "place_id": "gn-2644809",
+        "name": "Laurencekirk",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.83338,
+        "lon": -2.4654
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laurencekirk",
+          "url": "https://en.wikipedia.org/wiki/Laurencekirk",
+          "text": "Laurencekirk (, Scots: Lowrenkirk, Scottish Gaelic: Eaglais Labhrainn), locally known as Lournie or simply 'The Kirk', is a small town in the historic county of Kincardineshire, Scotland, just off the A90 Dundee to Aberdeen main road. It is administered as part of Aberdeenshire. It is the largest settlement in the Howe o' the Mearns area and houses the local secondary school; Mearns Academy, which was established in 1895 and awarded the Charter Mark in 2003.\nIts old name was Conveth, an anglification of the Gaelic Coinmheadh, referring to an obligation to provide free food and board to passing troops.  Laurencekirk is in the Howe of the Mearns, a wide valley between the Hill of Garvock and the Cairn O' Mount. The famous landmark of the Johnston Tower can be seen on the peak of the Garvock.\nLaurencekirk was, in the past, known for making snuff boxes with a special type of airtight hinge (known as a \"Laurencekirk hinge\") invented by James Sandy.\nThe Laurencekirk Golf Club, now defunct, was founded in the early 1900s but by 1951 it had been wound up."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "laurencekirk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7786,
+    "attempt": 7734,
+    "place_id": "gn-2674672",
+    "input": {
+      "place": {
+        "place_id": "gn-2674672",
+        "name": "Gamla Stan",
+        "country": "Sweden",
+        "subdivision": "Stockholm",
+        "lat": 59.32627,
+        "lon": 18.07251
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gamla Stan",
+          "url": "https://en.wikipedia.org/wiki/Gamla_Stan",
+          "text": "Gamla Stan (Swedish: [ˈɡâmːla ˈstɑːn], \"The Old Town\"), until 1980 officially Staden mellan broarna (\"The Town between the Bridges\"), is the old town of Stockholm, Sweden. Gamla Stan consists primarily of the island Stadsholmen and includes the surrounding islets Riddarholmen, Helgeandsholmen and Strömsborg. It has a population of approximately 3,000.\nGamla Stan has played a prominent role in the history of Swedish architecture, with many of Sweden's most renowned architects shaping the area; these include figures such as Nicodemus Tessin and Carl Hårleman, who worked on the Stockholm Palace, still located in the area.\nOther notable buildings in the old town include the Parliament House, Tessin Palace, the Stockholm Stock Exchange Building, Bonde Palace (seat of the Swedish Supreme Court) and the House of Nobility; the last of these buildings hosted the parliament for many years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "gamla stan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gamla",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "stan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7787,
+    "attempt": 7735,
+    "place_id": "gn-3167875",
+    "input": {
+      "place": {
+        "place_id": "gn-3167875",
+        "name": "San Pellegrino Terme",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.83443,
+        "lon": 9.66753
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Pellegrino Terme",
+          "url": "https://en.wikipedia.org/wiki/San_Pellegrino_Terme",
+          "text": "San Pellegrino Terme (Italian pronunciation: [sam pelleˈɡriːno ˈtɛrme]; Lombard: San Pelegrì Terme) is a commune in the province of Bergamo, Lombardy, Italy. Located in the Val Brembana, it is the location of the beverage company San Pellegrino, where its carbonated mineral water drinks are produced.\nNamed for Saint Peregrine of Auxerre, the town is home to several Art Nouveau edifices from the early 20th century, including the Casinò, the Grand Hotel and the Terme ('Baths').\nLeonardo da Vinci visited the source in Lombardy to sample the town's \"miraculous\" water.\nDuring the 15th and 16th centuries, the town was referred to frequently as Mathusanash Pellegrino in writings coming from the Papal States, France and the Holy Roman Empire. It may have originated from satire concerning the Italian Wars which happened around San Pellegrino from 1494 and 1559.\nThe 18th stage of the 2011 Giro d'Italia finished in San Pellegrino Terme."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "san pellegrino terme",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pellegrino",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "terme",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7788,
+    "attempt": 7736,
+    "place_id": "gn-3894483",
+    "input": {
+      "place": {
+        "place_id": "gn-3894483",
+        "name": "Cochrane",
+        "country": "Chile",
+        "subdivision": "Aysén",
+        "lat": -47.2557,
+        "lon": -72.5695
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cochrane, Chile",
+          "url": "https://en.wikipedia.org/wiki/Cochrane,_Chile",
+          "text": "Cochrane is a Chilean town and commune in Capitán Prat Province of the Aisén Region. According to the 2002 census it has a population of 2,867. The urban population in 2002 was 2,217 and the rural population was 650.\n\nCochrane was founded in 1954 (as Pueblo Nuevo), but didn't have road access to the rest of Chile until 1988, when the Carretera Austral was opened.  The town was later named Cochrane in honour of Thomas Cochrane, 10th Earl of Dundonald, a British naval captain and radical politician who was appointed the first Admiral of the Chilean Navy in 1818 and made a major contribution to winning independence for the young nation from Spain. Cochrane remains the southernmost town along the highway, with only a few villages south of it, among them Caleta Tortel and Villa O'Higgins. Cochrane is just south of the newly established Patagonia National Park. The center of town includes a park surrounded by various shops, including a general store, a bakery, a small supermarket, a tourist information kiosk, and more.\nReportedly, the many pines in the city square of Cochrane were planted on a suggestion dictator Augusto Pinochet made during one of his annual visits to the Carretera Austral. Nearby is the prominent peak of Monte San Lorenzo, also known as Cerro Cochrane."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 136,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "cochrane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7789,
+    "attempt": 7737,
+    "place_id": "gn-2621710",
+    "input": {
+      "place": {
+        "place_id": "gn-2621710",
+        "name": "Galten",
+        "country": "Denmark",
+        "subdivision": "Central Jutland",
+        "lat": 56.15902,
+        "lon": 9.91691
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Galten, Denmark",
+          "url": "https://en.wikipedia.org/wiki/Galten,_Denmark",
+          "text": "Galten is a former railway town in central Denmark, at the Aarhus-Hammel-Thorsø railroad which was closed in 1956. The town is located in Skanderborg Municipality, Region Midtjylland, Jutland – about 17 kilometres (11 miles) – west of Aarhus and is now more or less a satellite town of Aarhus. Today, Galten has almost fused with the neighbouring eastern town of Skovby into an urban area with a population of 9,442 (1 January 2026).\nTo the west of the town of Galten, there are beautiful landscapes. The scenery between Galten and the nearby lakeside town of Ry is characterised by the gently rolling hilly landscape, that is so characteristic of eastern Jutland.\nGalten is home to the STARCO Europe A/S, a global group for specialty tire and wheel engineering and manufacturing, and furniture maker Skovby Møbelfabrik.\nIn 2022, Galten became twin city with the German city Würzburg located in Franconia. A small wine shop exists in Galten selling only Franconian wines.\nThere is a movement to have a stop in Galten on the new Aarhus-Silkeborg railway line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "galten",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7790,
+    "attempt": 7738,
+    "place_id": "gn-2634447",
+    "input": {
+      "place": {
+        "place_id": "gn-2634447",
+        "name": "West End",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.92741,
+        "lon": -1.33282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "West End, Hampshire",
+          "url": "https://en.wikipedia.org/wiki/West_End,_Hampshire",
+          "text": "West End is a parish in Hampshire in the borough of Eastleigh, five miles (8.0 km) east of the city of Southampton. The village of West End is small and generally classed as an area in the outer suburbs or rural urban fringe of the borough of Eastleigh because of the surrounding woodland and countryside, including Telegraph Woods and Itchen Valley Country Park.\nThe village is known for being home of the Utilita Bowl, the stadium where Hampshire County Cricket Club plays, and occasionally England. Aside from a typical number of listed houses, the other main landmarks of the parish are Moorgreen Hospital — a large, ornate Victorian building, the original St James School, built in 1901, on the high street, and West End Fire Station — a museum in the centre of the village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "west end",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "end",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7791,
+    "attempt": 7739,
+    "place_id": "gn-2656100",
+    "input": {
+      "place": {
+        "place_id": "gn-2656100",
+        "name": "Beaminster",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.809,
+        "lon": -2.7391
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beaminster",
+          "url": "https://en.wikipedia.org/wiki/Beaminster",
+          "text": "Beaminster ( BEM-in-stər) is a town and civil parish in Dorset, England, approximately 15 miles (24 km) northwest of the county town Dorchester. It is sited in a bowl-shaped valley near the source of the small River Brit. The population of Beaminster parish was recorded as 3,177 in the 2021 census.\nBeaminster is the product of the Anglo-Saxon age, dating back to around the 7th century, when it was known as Bebingmynster, meaning the church of Bebbe although the date of origin of the town is unknown. The place name and historic evidence indicates that it was probably the site of a primary Saxon minster church and was at the centre of a large episcopal estate. These are likely to have acted as a focus for a settlement, but evidence of its formation is lacking.\nIn its history Beaminster has been a centre of manufacture of linen and woollens, the raw materials for which were produced in the surrounding countryside. The town experienced three serious fires in the 17th and 18th centuries; the first of these, during the English Civil War, almost destroyed the fabric of the town.\nBeaminster's parish church – the Church of St Mary – is notable for its architecture, particularly its tower, and is grade I listed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "beaminster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7792,
+    "attempt": 7740,
+    "place_id": "gn-2787962",
+    "input": {
+      "place": {
+        "place_id": "gn-2787962",
+        "name": "Robertville",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.45406,
+        "lon": 6.12205
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Robertville, Belgium",
+          "url": "https://en.wikipedia.org/wiki/Robertville,_Belgium",
+          "text": "Robertville (Walloon: Li Rbiveye (locally as Rebîveye or Rubîveye)) is a village of Wallonia and a district of the municipality of Waimes, located in the province of Liège, Belgium.\nOn 1 January 2005 it had 2402 inhabitants.\nIt was a separate municipality (formed in 1922 by the fusion of the villages of Robertville, Ovifat, Sourbrodt and Outrewarche) before the 1977 merger of the municipalities. Prior to that date it was also the highest municipality in Belgium, marked by the Signal de Botrange, at 694 metres (2,277 feet).\nIt is the site of Reinhardstein Castle. It is also known for its dam across the Warche, built in 1928, which created the 62-hectare (150-acre) Lake Robertville to provide the Malmedy region with drinking water and to supplement the supply of electricity to Malmedy's now district of Bévercé."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "robertville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

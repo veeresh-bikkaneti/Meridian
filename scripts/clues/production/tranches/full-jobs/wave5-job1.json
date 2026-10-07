@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 810,
+    "attempt": 801,
+    "place_id": "gn-2928810",
+    "input": {
+      "place": {
+        "place_id": "gn-2928810",
+        "name": "Essen",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.45657,
+        "lon": 7.01228
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Essen",
+          "url": "https://en.wikipedia.org/wiki/Essen",
+          "text": "Essen (German pronunciation: [ˈɛsn̩] ) is the central and, after Dortmund, second-largest city of the Ruhr, the largest urban area in Germany. Its population of 573,618 makes it the fourth-largest city of North Rhine-Westphalia after Cologne, Düsseldorf and Dortmund, as well as the tenth-largest city of Germany. Essen lies in the larger Rhine-Ruhr metropolitan region, second largest by GDP in the EU, and is part of the cultural area of Rhineland. Due to its central location in the Ruhr, Essen is often regarded as the Ruhr's \"secret capital\".\nTwo rivers flow through the city: the Emscher in the north, and the Ruhr River in the south, which is dammed in Essen to form the Lake Baldeney and Lake Kettwig reservoirs. The central and northern boroughs of Essen historically belong to the Low German Westphalian dialects area, and the south of the city to the Low Franconian Bergish area.\nEssen is seat to several of the region's authorities, as well as to eight of the 100 largest publicly held German corporations by revenue, including four DAX-listed corporations. Essen is often considered the energy capital of Germany with E.ON and RWE, Germany's largest energy providers, both headquartered in the city.\nEssen is also known for its impact on the arts through the Folkwang University of the Arts, its Zollverein School of Management and Design, and the Red Dot industrial product design award. In early 2003, the universities of Essen and the nearby city of Duisburg were merged into the University of Duisburg-Essen with campuses in both cities and a university hospital in Essen. In 1958, Essen was chosen as the seat of the Roman Catholic Diocese of Essen, often referred to as the diocese of the Ruhr (Ruhrbistum).\nFounded around 845, Essen remained a small town within the sphere of influence of an important ecclesiastical principality, Essen Abbey, until the onset of industrialization. The city then—especially through the Krupp family's iron works—became one of Germany's most important coal and steel centres. Essen, until the 1970s, attracted workers from all over the country; it was the fifth-largest city in Germany between 1929 and 1988, peaking at over 730,000 inhabitants in 1962. Following the region-wide decline of heavy industries in the last decades of the 20th century, the city has seen the development of a strong tertiary sector of the economy. The most notable witness of this structural change (Strukturwandel) is the Zollverein Coal Mine Industrial Complex, which had once been the largest of its kind in Europe. Ultimately closed in 1993, both the coking plant and the mine have been listed by UNESCO as a World Heritage Site since 2001.\nNotable accomplishments of the city in recent years include the title of European Capital of Culture on behalf of the whole Ruhr area in 2010 and being selected as the European Green Capital for 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 472
+    },
+    "banned_terms": [
+      {
+        "term": "essen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 811,
+    "attempt": 802,
+    "place_id": "gn-2983990",
+    "input": {
+      "place": {
+        "place_id": "gn-2983990",
+        "name": "Rennes",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.11109,
+        "lon": -1.67431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rennes",
+          "url": "https://en.wikipedia.org/wiki/Rennes",
+          "text": "Rennes (French: [ʁɛn] ) is a city in the east of Brittany in Northwestern France at the confluence of the rivers Ille and Vilaine. Rennes is the prefecture of the Brittany region and Ille-et-Vilaine department. In 2023, the city had a population of 230,890 inhabitants, while the larger metropolitan area is the 10th most populated in France with a population of 789,516. The inhabitants of Rennes are called Rennais (masculine) and Rennaises (feminine) in French.\nRennes's history goes back more than 2,000 years to a time when it was a small Gallican village named \"Condate.\" Together with Vannes and Nantes, it was one of the major cities of the ancient Duchy of Brittany. From the early sixteenth century until the French Revolution, Rennes was a parliamentary, administrative and garrison city of the historic province of Brittany in the Kingdom of France, as evidenced by its 17th-century Parliament's Palace. Rennes played an important role in the Stamped Paper Revolt (Revolt of the papier timbré) in 1675. After the destructive fire of 1720, the medieval wooden center of the city was partially rebuilt in stone. Remaining mostly rural until the Second World War, Rennes underwent significant development in the twentieth century.\nSince the 1950s, Rennes has grown in importance through rural flight and modern industrial development, partly in the automotive sector. The city developed extensive building plans to accommodate upwards of 200,000 inhabitants. During the 1980s, Rennes became one of the main centres in telecommunications and high-tech industry. It is now a significant digital innovation centre in France. From 2002 to 2008, Rennes was the smallest city in the world to have a metro.\nLabeled a city of art and history, it has preserved an important medieval and classical heritage within its historic center, with over 90 buildings protected as historic monuments. Home to more than 70,000 students in 2026, it is also the eighth-largest university campus of France. In 2018, L'Express named Rennes as the most liveable city in France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 329
+    },
+    "banned_terms": [
+      {
+        "term": "rennes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 812,
+    "attempt": 803,
+    "place_id": "gn-3164527",
+    "input": {
+      "place": {
+        "place_id": "gn-3164527",
+        "name": "Verona",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.43854,
+        "lon": 10.9938
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Verona",
+          "url": "https://en.wikipedia.org/wiki/Verona",
+          "text": "Verona ( və-ROH-nə; Italian: [veˈroːna] ; Venetian: Verona or Veròna) is the largest city in the region of Veneto in Italy, with a population of 255,139 as of 2026. It is one of the seven provincial capitals of the region, and is also the 2nd-largest city in northeast Italy. The metropolitan area of Verona covers an area of 1,426 km2 (550.58 sq mi) and has a population of 714,310 inhabitants. It is one of the main tourist destinations in Northern Italy because of its artistic heritage and several annual fairs and shows as well as the opera season in the Arena, an ancient Roman amphitheater.\nBetween the 13th and 14th centuries, the city was ruled by the della Scala family. Under the rule of the family, in particular of Cangrande I della Scala, the city experienced great prosperity, becoming rich and powerful and was surrounded by new walls. The della Scala era is preserved in numerous monuments around Verona.\nThree of William Shakespeare's plays are set in Verona: Romeo and Juliet (which also features Romeo's visit to Mantua), The Taming of the Shrew and The Two Gentlemen of Verona. Among Verona's Shakespeare-related landmarks is the Casa di Giulietta, a medieval house associated with the Cappello family. Its identification with Shakespeare's Capulets developed later, and the building was converted into a museum in the 1930s, when its courtyard balcony was added. It is unknown if Shakespeare ever visited Verona or Italy, but his plays have lured many visitors to Verona and surrounding cities. Verona was also the birthplace of Isotta Nogarola, who is said to be the first major female humanist and one of the most important humanists of the Renaissance. In November 2000, the city was declared a World Heritage Site by UNESCO because of its urban structure and architecture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 300
+    },
+    "banned_terms": [
+      {
+        "term": "verona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 813,
+    "attempt": 804,
+    "place_id": "gn-3388713",
+    "input": {
+      "place": {
+        "place_id": "gn-3388713",
+        "name": "São Gonçalo do Amarante",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Norte",
+        "lat": -5.79333,
+        "lon": -35.32944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São Gonçalo do Amarante, Rio Grande do Norte",
+          "url": "https://en.wikipedia.org/wiki/São_Gonçalo_do_Amarante,_Rio_Grande_do_Norte",
+          "text": "São Gonçalo do Amarante is a Brazilian municipality located in the Metropolitan Region of Natal, in the state of Rio Grande do Norte, in the Northeast Region of Brazil. It spans a territorial area of approximately 249.800 km2. It is the fourth most populous municipality in the state, following Natal, Mossoró, and Parnamirim, with a population of 124,495 inhabitants in 2025.\nThe municipality is known for being the site of one of the most significant events in the history of Rio Grande do Norte and Brazilian Catholicism, when Dutch forces massacred eighty individuals in an event known as the Uruaçu Massacre, which occurred in 1645. In 2017, these martyrs were canonized as saints in Saint Peter's Square, in a ceremony presided over by Pope Francis.\nThroughout its history, São Gonçalo do Amarante lost its autonomy several times until achieving definitive emancipation in 1958, when it separated from Macaíba. Since 2014, it has been home to the Governador Aluízio Alves International Airport, a Brazilian airport complex, which was the first Brazilian airport to be privatized and serves the cargo and passenger transport demands of the Natal Metropolitan Region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "sao goncalo do amarante",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "goncalo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "amarante",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 814,
+    "attempt": 805,
+    "place_id": "gn-3459505",
+    "input": {
+      "place": {
+        "place_id": "gn-3459505",
+        "name": "Juiz de Fora",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.76417,
+        "lon": -43.35028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Juiz de Fora",
+          "url": "https://en.wikipedia.org/wiki/Juiz_de_Fora",
+          "text": "Juiz de Fora (Brazilian Portuguese pronunciation: [ˈʒwiz dʒi ˈfɔɾɐ]; lit. 'Outsider Judge'), also known as J.F., is a city in the southeastern Brazilian state of Minas Gerais, approximately 40 kilometres (25 mi) from the state border with Rio de Janeiro.  As of the 2022 census the population was 540,756.  The geographical area of the municipality is 1,437 km2 (555 sq mi).\nThe city's location was a key factor in its economic and demographic development since it is situated between the three most important financial and economic metropolises of southeast Brazil (and also the three largest urban sprawls of the country):  Rio de Janeiro (189 km (117 mi)), Belo Horizonte (260 km (160 mi)) and São Paulo (486 km (302 mi)). Major highways connect Juiz de Fora with these three metropolitan areas. The most important is the BR 040 which connects Brasília with Rio de Janeiro via Belo Horizonte. The city is built on the Paraibuna, a major tributary of the Paraíba do Sul river."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "juiz de fora",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "juiz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fora",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 815,
+    "attempt": 806,
+    "place_id": "gn-3493175",
+    "input": {
+      "place": {
+        "place_id": "gn-3493175",
+        "name": "Puerto Plata",
+        "country": "Dominican Republic",
+        "subdivision": "Puerto Plata",
+        "lat": 19.79344,
+        "lon": -70.6884
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Plata",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Plata",
+          "text": "Puerto Plata, officially known as San Felipe de Puerto Plata; (French: Port-de-Plate) is a major coastal city in the Dominican Republic, and capital of the Puerto Plata Province. The city is a major trading port as well as a tourism hub; Puerto Plata has resorts such as Playa Dorada and Costa Dorada, which are located east of the city proper. There are 100,000 hotel beds in the city. The first aerial tramway of the Caribbean is located in Puerto Plata, in which visitors can ride up to the Pico Isabel de Torres, a 793-meter (2600-foot) high mountain within the city.\nThe city's history dates back to the early 16th century, when Spanish colonists founded a small colonial settlement in the region. During the first decades of the existence of the Captaincy General of Santo Domingo, the settlement was considered the main commercial and maritime port of the island. In 1605, it was depopulated and destroyed during the Devastations of Osorio to counter raids by privateers and pirates. A hundred years later, the city was repopulated with farmers from the Canary Islands. From 1822 to 1844 the city was under Haitian control. From 1844 on began the period of the republic, in which the city began to recover its maritime and commercial boom. Beginning in 1865, the current Puerto Plata began to be built with much of its current architecture and a popular tourist destination. By the end of the 19th century, Puerto Plata had become important for its cultural, social, maritime, and economic development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 148,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "puerto plata",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "plata",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 816,
+    "attempt": 807,
+    "place_id": "gn-1278483",
+    "input": {
+      "place": {
+        "place_id": "gn-1278483",
+        "name": "Arrah",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 25.55629,
+        "lon": 84.66335
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arrah",
+          "url": "https://en.wikipedia.org/wiki/Arrah",
+          "text": "Arrah (also spelled as Arra, Arah, transliterated as Ara) is a city, a municipal corporation and the administrative headquarters of Bhojpur district (formerly known as Shahabad district) in the Indian state of Bihar. During British Raj, it served as the administrative headquarters and was considered the most populous urban centre of the historical Shahabad district. It is the headquarters of Bhojpur district, located near the confluence of the Ganges and Sone rivers, some 24 miles (39 km) from Danapur and 36 miles (58 km) from Patna.\nThe city holds an important position in Indian history, mainly because of its role in the Siege of Arrah, an important event during the Indian Rebellion of 1857. Today, Arrah is a cultural centre for the Bhojpuri speaking region of India. Its economy is driven by agriculture and the trade of building materials, mainly sand and bricks from the riverine plains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "arrah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 817,
+    "attempt": 808,
+    "place_id": "gn-1692685",
+    "input": {
+      "place": {
+        "place_id": "gn-1692685",
+        "name": "Puerto Princesa",
+        "country": "Philippines",
+        "subdivision": "Mimaropa",
+        "lat": 9.73917,
+        "lon": 118.73528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Princesa",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Princesa",
+          "text": "Puerto Princesa, officially the City of Puerto Princesa (Cuyonon: Siyudad i'ang Puerto Princesa; Filipino: Lungsod ng Puerto Princesa), is a highly urbanized city in the Mimaropa region of the Philippines. According to the 2024 census, it has a population of 316,384 people.\nIt is a city located in the western Philippine province of Palawan and is the westernmost city in the Philippines. Though the seat of government and capital of the province, the city itself is one of 38 independent cities within the Philippines not controlled by the province in which it is geographically located and is therefore an independent area located within Palawan for its geographical and statistical purposes by the Philippine Statistics Authority. It is the largest city in the province of Palawan and the Mimaropa region.\nIt is the least densely populated city in the Philippines with 110 inhabitants per square kilometer (280 inhabitants/mi2). In terms of land area, the city is the second largest geographically after Davao City with an area of 2,381.02 square kilometers (919.32 sq mi). Puerto Princesa is the location of the Philippines' Western Command headquarters.\nToday, Puerto Princesa is a tourist city with beach resorts and seafood restaurants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "puerto princesa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "princesa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 818,
+    "attempt": 809,
+    "place_id": "gn-1708522",
+    "input": {
+      "place": {
+        "place_id": "gn-1708522",
+        "name": "Koronadal",
+        "country": "Philippines",
+        "subdivision": "Soccsksargen",
+        "lat": 6.50306,
+        "lon": 124.84694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Koronadal",
+          "url": "https://en.wikipedia.org/wiki/Koronadal",
+          "text": "Koronadal, officially the City of Koronadal (Hiligaynon: Syudad sang Koronadal; Cebuano: Dakbayan sa Koronadal; Ilocano: Siudad ti Koronadal; Maguindanaon: Kuta nu Kurunadal, Filipino: Lungsod ng Koronadal) and also known as Marbel, is a component city and capital of the province of South Cotabato, Philippines. According to the 2024 census, it has a population of 201,844 people.\nKoronadal is the capital city of the province of South Cotabato and serves as the regional administrative center of Soccsksargen (Region XII). It is also the second most populous city in both South Cotabato and the entire Soccsksargen region, following General Santos.\nKoronadal is one of the two cities in Mindanao with a predominantly Hiligaynon-speaking population, comprising approximately 95% of its residents. In 2003 and 2005 the city was recognized as \"Most Competitive City\" in the small-city category, and in 2005 and 2006 as the most business friendly city in Mindanao."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "koronadal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 819,
+    "attempt": 810,
+    "place_id": "gn-1722186",
+    "input": {
+      "place": {
+        "place_id": "gn-1722186",
+        "name": "Butuan",
+        "country": "Philippines",
+        "subdivision": "Caraga",
+        "lat": 8.94917,
+        "lon": 125.54361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Butuan",
+          "url": "https://en.wikipedia.org/wiki/Butuan",
+          "text": "Butuan (pronounced ), officially the City of Butuan (Cebuano: Dakbayan sa Butuan; Butuanon: Dakbayan hong Butuan; Filipino: Lungsod ng Butuan), is a highly urbanized city and the regional center of Caraga, Philippines. It is the de facto capital of the province of Agusan del Norte where it is geographically situated but has an administratively independent government. According to the 2024 census, it has a population of 385,530 people making it the most populous city in Caraga Region.\nIt served as the former capital of the Rajahnate of Butuan before 1001 until about 1521. The city used to be known during that time as the best in gold and boat manufacturing in the entire Philippine archipelago, having traded with places as far as Champa, Ming, Srivijaya, Majapahit, and the Bengali coasts. It is located at the northeastern part of the Agusan Valley, Mindanao, sprawling across the Agusan River. It is bounded to the north, west and south by Agusan del Norte, to the east by Agusan del Sur and to the northwest by Butuan Bay.\nButuan was the capital of the province of Agusan del Norte until 2000, when Republic Act 8811 transferred the capital to Cabadbaran. For statistical and geographical purposes by the Philippine Statistics Authority, Butuan is grouped with Agusan del Norte but governed administratively independent from the province while legislatively administered by the province's 1st congressional district and also the most populous city in the province. However, the provincial government still holds office in Butuan, since the actual transfer of provincial offices to the new capital is still pending."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 261
+    },
+    "banned_terms": [
+      {
+        "term": "butuan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 820,
+    "attempt": 811,
+    "place_id": "gn-2013159",
+    "input": {
+      "place": {
+        "place_id": "gn-2013159",
+        "name": "Yakutsk",
+        "country": "Russia",
+        "subdivision": "Sakha",
+        "lat": 62.03114,
+        "lon": 129.72288
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yakutsk",
+          "url": "https://en.wikipedia.org/wiki/Yakutsk",
+          "text": "Yakutsk is the capital and largest city of Sakha, Russia, located about 450 km (280 mi) south of the Arctic Circle. Fueled by the mining industry, Yakutsk has become one of Russia's most rapidly growing regional cities, with a population of 355,443 at the 2021 census.\nYakutsk has an average annual temperature of −8.0 °C (17.6 °F), winter high temperatures consistently well below −20 °C (−4 °F), and a record low of −64.4 °C (−83.9 °F) has been recorded.\nAs a result, Yakutsk is the coldest city of over 200,000 people in the world (though a number of smaller towns in that region (and the Northwest Territories and Nunavut) are colder). Yakutsk is also the largest city located in continuous permafrost; the only other large city is Norilsk, also in Siberia. Yakutsk is in the Central Yakutian Lowland and is a major port on the Lena River. It is served by the Yakutsk Airport as well as the smaller Magan Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "yakutsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 821,
+    "attempt": 812,
+    "place_id": "gn-3046526",
+    "input": {
+      "place": {
+        "place_id": "gn-3046526",
+        "name": "Pécs",
+        "country": "Hungary",
+        "subdivision": "Baranya",
+        "lat": 46.07617,
+        "lon": 18.22814
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pécs",
+          "url": "https://en.wikipedia.org/wiki/Pécs",
+          "text": "Pécs ( PAYTCH, Hungarian: [ˈpeːt͡ʃ] ; Croatian: Pečuh; Slovak: Päťkostolie; also known by alternative names) is the fifth largest city in Hungary, on the slopes of the Mecsek mountains in the country's southwest, close to the border with Croatia. It is the administrative and economic centre of Baranya County, and the seat of the Roman Catholic Diocese of Pécs.\nA city dating back to ancient times, settled by the Celts and the Romans, it was made an episcopal see in early medieval Hungary. It has the oldest university in the country, and is one of its major cultural centers. Pécs has a rich cultural and architectural heritage stemming from 150 years of Ottoman rule, and it contains the largest number of Turkish Ottoman buildings found in any city in Central Europe. It is historically a multi-ethnic city where many cultures have interacted through 2,000 years of history. In recent times, it has been recognized for its cultural heritage, including being named as one of the European Capital of Culture cities. The Roman-era Christian necropolis in Pécs was inscribed as a World Heritage Site in 2000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "pecs",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 822,
+    "attempt": 813,
+    "place_id": "gn-308464",
+    "input": {
+      "place": {
+        "place_id": "gn-308464",
+        "name": "Kayseri",
+        "country": "Türkiye",
+        "subdivision": "Kayseri",
+        "lat": 38.73222,
+        "lon": 35.48528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kayseri",
+          "url": "https://en.wikipedia.org/wiki/Kayseri",
+          "text": "Kayseri (Turkish pronunciation: [ˈkajseɾi]) is a large city in Central Anatolia, Turkey, and the capital of Kayseri province. Historically known as Caesarea, it has been the historical capital of Cappadocia since ancient times. The Kayseri Metropolitan Municipality area is composed of five districts: the two central districts of Kocasinan and Melikgazi, and since 2004, also outlying Hacılar, İncesu, and Talas.\nAs of 31 December 2024, the province had a population of 1,452,458 of whom 1,210,983 lived in the four urban districts (Melikgazi, Kocasinan, Talas, Incesu), excluding İncesu which is not conurbated, meaning it is not contiguous and has a largely non-protected buffer zone.\nKayseri sits at the foot of Mount Erciyes (Turkish: Erciyes Dağı), a dormant volcano that reaches an altitude of 3,917 metres (12,851 feet), more than 1,500 metres above the city's mean altitude. It contains a number of historic monuments, particularly from the Seljuk period. Tourists often pass through Kayseri en route to the attractions of Cappadocia to the west. Kayseri is known for local dishes such as sucuk, pastırma, and mantı, which are commonly associated with the region.\nKayseri is served by Erkilet International Airport and is home to Erciyes University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "kayseri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 823,
+    "attempt": 814,
+    "place_id": "gn-3121424",
+    "input": {
+      "place": {
+        "place_id": "gn-3121424",
+        "name": "Gijón",
+        "country": "Spain",
+        "subdivision": "Asturias",
+        "lat": 43.53573,
+        "lon": -5.66152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gijón",
+          "url": "https://en.wikipedia.org/wiki/Gijón",
+          "text": "Gijón (Spanish: [xiˈxon] ) or Xixón (Asturian: [ʃiˈʃoŋ]) is a city and municipality in northwestern Spain. It is the largest city and municipality by population in the autonomous community of Asturias. \nIt is located on the coast of the Cantabrian Sea in the Bay of Biscay, in the central-northern part of Asturias; it is approximately 24 km (15 mi) northeast of Oviedo, the capital of Asturias, and 26 km (16 mi) from Avilés. With a population of 270,219 as of 2024, Gijón is the 16th-largest city in Spain.\nGijón forms part of a large metropolitan area that includes twenty councils in the center of the region, structured with a dense network of roads, highways and railways and with a population of 835,053 inhabitants in 2011, making it the 7th-largest in Spain.\nDuring the 20th century, Gijón developed as an industrial city in the steel and naval industries. However, due to the decline in manufacturing in these industries, in recent years Gijón is undergoing a transformation into an important tourist, university, commercial and R&D center. Gijón is the location of the Radiotelevisión del Principado de Asturias, the neighbourhood of Cimavilla, the Universidad Laboral de Gijón, the Revillagigedo Palace, and the adjoining Collegiate Church of San Juan Bautista.\nGijón is part of the statistical (not yet developed from an administrative standpoint) comarca of Gijón."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "gijon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 824,
+    "attempt": 815,
+    "place_id": "gn-3127461",
+    "input": {
+      "place": {
+        "place_id": "gn-3127461",
+        "name": "Burgos",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 42.34106,
+        "lon": -3.70184
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burgos",
+          "url": "https://en.wikipedia.org/wiki/Burgos",
+          "text": "Burgos (Spanish: [ˈbuɾɣos] ) is a city in the autonomous community of Castile and León in Spain. It is the capital city of the province of Burgos and, with a population of approximately 178,370, it is also the second most populated city in Castile and León.\nBurgos is situated in the north of the Iberian Peninsula, near the confluence of the Arlanzón and the Vena rivers and at the edge of the central plateau. \nBurgos was settled in 884 by Diego Rodríguez Porcelos, Count of Castile, on behalf of the Leonese monarch. In the 11th century, urban development increased with the installment of a diocese, while the arrival of Frankish foreign elements fostered economic activity. By the 13th century, Burgos had already become the most important trading hub in the north of the Kingdom of Castile, influenced for its strategic location both along the Way of St. James and along north-south trade networks connecting the Castilian hinterland with the emerging Cantabrian port towns. Burgos experienced a long decline from the 17th century onwards.\nBurgos became the headquarters of the Francoist proto-government (1936–1939) following the start of the Spanish Civil War. Declared in 1964 as Pole of Industrial Promotion and in 1969 as Pole of Industrial Development, the city has grown since then in terms of economic activity. At the regional level, Burgos forms part of an economic axis together with the cities of Valladolid and Palencia. In 2008, the international Burgos Airport started to service commercial flights.\nThe Museum of Human Evolution opened in Burgos in 2010. It features remains of the first hominids in Europe, who lived in the area 750,000–800,000 years ago. The Cathedral of Burgos is a World Heritage Site. Burgos was selected as the \"Spanish Gastronomy Capital\" of 2013. In 2015 UNESCO named it \"City of Gastronomy\", and it has been part of the Creative Cities Network since then."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 313
+    },
+    "banned_terms": [
+      {
+        "term": "burgos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 825,
+    "attempt": 816,
+    "place_id": "gn-3173435",
+    "input": {
+      "place": {
+        "place_id": "gn-3173435",
+        "name": "Milan",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.46427,
+        "lon": 9.18951
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milan",
+          "url": "https://en.wikipedia.org/wiki/Milan",
+          "text": "Milan is the capital and largest city of the region of Lombardy, in northern Italy, and the seat of the Metropolitan City of Milan. It is the second-largest city in Italy after the country’s capital, Rome, with a population of 1,362,863 in 2026. The city's wider metropolitan area is the largest in Italy, and the fourth-largest in the European Union, with an estimated population of 6.55 million. Milan is considered Italy's economic capital, and its metropolitan area accounts for about 20% of the country's GDP.\nFounded around 590 BC by a Celtic tribe, Milan was conquered by the Romans in 222 BC, who Latinized the name of the city into Mediolanum. From AD 284 to 402, it served as capital of the western part of the Roman Empire. In the Late Medieval period, the wealthy Duchy of Milan was one of the greatest forces behind the Renaissance. As a  major center of the Italian Enlightenment during the Early modern period, Milan's cultural and political struggle against Austrian domination was crucial in the reunification of the Kingdom of Italy. From the 19th century onwards, Milan led the industrial and financial development of Italy.\nMilan is a major international center of industry, finance, science, communications, fashion, art and tourism. Milan was classified as an \"Alpha\" city by the Globalization and World Cities Research Network. Milan's business district hosts Borsa Italiana, Italy's main stock exchange (part of the Euronext consortium, the world's sixth-largest by market capitalization) and the headquarters of numerous national corporations, including eight Fortune 500 Europe companies. As of 2023, Milan and its special metropolitan authority have the largest GDP and the highest per-capita GDP of any Italian province.\nMilan is a global fashion capital and a major international tourist destination, being one of the most visited cities in the world, ranked second in Italy after Rome, fifth in Europe and sixteenth in the world. The city is a major cultural center, with museums and art galleries that feature some of the most important collections in the world, including major works by Leonardo da Vinci. Milan hosts numerous educational institutions, including academies and universities that account for 11% of the national total of enrolled students. Milan hosts several international events and fairs, including Milan Fashion Week and the Milan Furniture Fair, which are among the world's largest in terms of revenue, visitors and growth. Milan has many luxury hotels and is the fifth most starred in the world by Michelin Guide. It hosted the Universal Exposition in 1906 and 2015. In the field of sports, Milan is home to two of Europe's most successful football teams, AC Milan and Internazionale Milano (Inter Milan), and one of Europe's main basketball teams, Olimpia Milano. The city also co-hosted the Winter Olympic and Paralympic games in 2026."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 463
+    },
+    "banned_terms": [
+      {
+        "term": "milan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 826,
+    "attempt": 817,
+    "place_id": "gn-3183719",
+    "input": {
+      "place": {
+        "place_id": "gn-3183719",
+        "name": "Vlorë",
+        "country": "Albania",
+        "subdivision": "Vlorë County",
+        "lat": 40.4696,
+        "lon": 19.48379
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vlorë",
+          "url": "https://en.wikipedia.org/wiki/Vlorë",
+          "text": "Vlorë ( VLOR-ə; Albanian: [ˈvlɔɾə]; Albanian definite form: Vlora) is the third most populous city of Albania and seat of Vlorë County and Vlorë Municipality. Located in southwestern Albania, Vlorë sprawls on the Bay of Vlorë and is surrounded by the foothills of the Ceraunian Mountains along the Albanian Adriatic and Ionian Sea Coasts. It experiences a Mediterranean climate, which is affected by the Ceraunian Mountains and the proximity to the Mediterranean Sea.\nThe coastal area of Vlorë was one of the Illyrian sites that had experienced pre-urban activity beginning from the 11th–10th centuries BC. The area was colonized by Ancient Greeks. A large fortified port-town that was inhabited from the 6th century BC to the 2nd century AD is placed, now partially submerged, in Triport, northwest of present-day Vlorë. Substantial port activity in this site occurred from at least the archaic period to the medieval period. It has been suggested that a transfer of the ancient city from the site of Triport to the site of modern Vlorë occurred. The center of the modern city features archaeological remains dating from late antiquity. Aulon, from which the modern city took its name, appears in historical sources starting from the 2nd century AD. It was conquered at different periods throughout history by Romans, Byzantines, Normans, Venetians and Ottomans.\nBetween the 18th and 19th centuries, the Albanians gathered both spiritual and intellectual strength for national consciousness, which conclusively led to the Albanian Renaissance. Vlorë played an instrumental role in Albanian Independence as an epicenter for the founders of modern Albania, who signed the Declaration of Independence on 28 November 1912 at the Assembly of Vlorë.\nVlorë is one of the most significant cities of southern Albania and the region of Labëria which is traditionally noted for its culture, traditions and folklore. Vlorë is served by the Port of Vlorë, the SH 8 highway, and the A2 motorway, collectively representing part of the Adriatic–Ionian Corridor and the Pan-European Corridor VIII."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 327
+    },
+    "banned_terms": [
+      {
+        "term": "vlore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 827,
+    "attempt": 818,
+    "place_id": "gn-3645528",
+    "input": {
+      "place": {
+        "place_id": "gn-3645528",
+        "name": "Ciudad Guayana",
+        "country": "Venezuela",
+        "subdivision": "Bolívar",
+        "lat": 8.35122,
+        "lon": -62.64102
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad Guayana",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_Guayana",
+          "text": "Ciudad Guayana (Spanish pronunciation: [sjuˈðað ɣwaˈʝana]) (English: Guayana City) is a city in Bolívar State, Venezuela. It stretches 40 kilometers along the south bank of the Orinoco river, at the point where it is joined by its main tributary, the Caroní River. The Caroní flows through the city from south to north, dividing it into its predominant halves — the old town of San Félix, to the east, and the newer area of Puerto Ordaz (Spanish pronunciation: [ˈpweɾto oɾˈðas]), to the west. \nCiudad Guayana was officially founded in 1961 by the unification of two former settlements, but the modern history of San Félix can be traced back to the eighteenth century. Located within the city limits are Cachamay Falls (part of Parque Cachamay) and Llovizna Falls. There are three bridges across the Caroní, and another crossing over the Orinoco, the Orinoquia Bridge, which was inaugurated in 2006. With approximately one million people in the greater metro area, Ciudad Guayana is Venezuela's fastest-growing city with its important iron, steel, aluminum and hydroelectric industries. Additionally, Ciudad Guayana is one of Venezuela's top-five most vital shipping locations (especially for most of the goods produced in Bolívar state), as ships and barges can easily access the port from the Atlantic Ocean via the Orinoco River.\nDue to its planned nature, the city has a drastically different feel from many other South American cities. The towers of the Alta Vista district recall Barranquilla, and many of the residential neighborhoods have architecture and landscaping that are similar to suburbs in the United States from the 1950s through 1980s, such as subdivisions and 'cookie-cutter' homes, neatly-paved sidewalks, and manicured, patterned lawns. This is partly due to the presence, in the 1960s and early 1970s, of US Steel, an American company with ironworks operations in the region. US Steel built housing for hundreds of its American immigrant workers and their families, who lived in Puerto Ordaz (and other communities) until the nationalization of the Venezuelan steel industry forced the company and its workers to cease operations.\nCiudad Guayana is located in a strategic spot for the country of Venezuela. Many international visitors have traveled there throughout its history, including Pope John Paul II to several former American presidents, such as G.W. Bush; various musicians, artists, and filmmakers, like Steven Spielberg, have visited. \nCiudad Guayana is served by Manuel Carlos Piar International Airport in Puerto Ordaz."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 397
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad guayana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "guayana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 828,
+    "attempt": 819,
+    "place_id": "gn-3698350",
+    "input": {
+      "place": {
+        "place_id": "gn-3698350",
+        "name": "Chiclayo",
+        "country": "Peru",
+        "subdivision": "Lambayeque",
+        "lat": -6.77008,
+        "lon": -79.85495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chiclayo",
+          "url": "https://en.wikipedia.org/wiki/Chiclayo",
+          "text": "Chiclayo (Spanish pronunciation: [tʃiˈklaʝo]; Mochica: Cɥiclaiæp) is the principal city and capital of the Lambayeque region and Chiclayo Province in northern Peru. It is located 13 km (8.1 mi) from the Pacific coast, 208 km (129 mi) from the city of Trujillo, and 770 km (480 mi) from the country's capital, Lima. \nThe city was originally founded by Spanish Franciscan priests as \"Santa María de los Valles de Chiclayo\" in the 16th century, acting as a small town of passage and rest of travelers. It was declared an official city on 15 April 1835 by president Felipe Santiago Salaverry. He named Chiclayo \"the Heroic City\" to recognize the courage of its citizens in the fight for independence, a title it still holds. Other nicknames for Chiclayo include \"The Capital of Friendship\" and the \"Pearl of the North\", due to its kind and friendly nature of its people.\nChiclayo is Peru's fourth-largest city, after Lima, Arequipa, and Trujillo, with a population of 738,000 as of 2011. The Lambayeque region is the fourth most populous metropolitan area of Peru, with a population of 972,713 in 2009. The city is divided into three urban districts, Chiclayo, La Victoria, and José Leonardo Ortiz. The Chiclayo metropolitan area comprises 12 districts. It is the second most populous city in Northwestern Peru, after its city rival, Trujillo. The city was founded near an important prehistoric archaeological site, the Northern Wari ruins, which constitute the remains of a city from the 7th to 12th century of the Wari Empire. The city was also once part of the Moche culture, which dominated Northern Peru 100 to 700 AD. The Lord of Sipán was the ruler of the Moche and the Sipán mummies are the most popular tourist attraction of city of Lambayeque and Chiclayo, with most tourists arriving from Chiclayo. The Royal Tombs of Sipán Museum in Lambayeque houses thousands of Moche artifacts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 315
+    },
+    "banned_terms": [
+      {
+        "term": "chiclayo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 829,
+    "attempt": 820,
+    "place_id": "gn-4257227",
+    "input": {
+      "place": {
+        "place_id": "gn-4257227",
+        "name": "Evansville",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 37.97476,
+        "lon": -87.55585
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Evansville, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Evansville,_Indiana",
+          "text": "Evansville is a city in Vanderburgh County, Indiana, United States, and its county seat. With a population of 118,414 at the 2020 census, it is the third-most populous city in Indiana (after Indianapolis and Fort Wayne), the most populous city in Southern Indiana, and the 249th-most populous city in the United States. It is the central city of the Evansville metropolitan area, a hub of commercial, medical, and cultural activity of southwestern Indiana and the Illinois–Indiana–Kentucky tri-state area, which is home to over 911,000 people. The 38th parallel north crosses the north side of the city and is marked on Interstate 69 immediately north of its junction with Indiana 62 within the city's east side.\nSituated on a meander in the Ohio River, the city is often referred to as the \"Crescent Valley\" or \"River City\". Early French explorers named it La Belle Rivière (\"The Beautiful River\"). The area has been inhabited by various indigenous cultures for millennia, dating back at least 10,000 years. Angel Mounds was a permanent settlement of the Mississippian culture from AD 1000 to around 1400. The city of Evansville was founded in 1812.\nEvansville anchors a regional economic hub based primarily on trade, transportation, and utilities; professional and business services; education and health services; government; leisure and hospitality; and manufacturing. Two NYSE-listed companies (Berry Global and OneMain Financial) are headquartered in Evansville, and three companies traded on NASDAQ (Escalade, Old National Bank, and Shoe Carnival) are also headquartered in Evansville.\nEvansville is home to Bally's Evansville, the state's first casino; Mesker Park Zoo and Botanic Garden, one of the state's oldest and largest zoos; and sports tourism industry. The city has several notable educational institutions. The University of Evansville is a private school on the city's east side, while the University of Southern Indiana is a larger public institution just outside the city's westside limits. The Indiana University School of Medicine also maintains a campus in Evansville. Other local educational institutions include the nationally ranked Signature School, the Evansville Vanderburgh Public Library, and the Evansville Vanderburgh School Corporation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 343
+    },
+    "banned_terms": [
+      {
+        "term": "evansville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 7472,
+    "attempt": 7421,
+    "place_id": "gn-3445571",
+    "input": {
+      "place": {
+        "place_id": "gn-3445571",
+        "name": "Wanderley",
+        "country": "Brazil",
+        "subdivision": "Bahia",
+        "lat": -12.12,
+        "lon": -43.8875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wanderley, Bahia",
+          "url": "https://en.wikipedia.org/wiki/Wanderley,_Bahia",
+          "text": "Wanderley is a municipality in the state of Bahia in the North-East region of Brazil. It has a population of roughly 12000 people. It is very dependent on the agricultural industry in the region with a large portion of the people owning cattle. In the centre of the city there is a church, a market, and an abandoned gas station. It is approximately 2 hours from the main city in the region, Barreiras, and eleven hours driving from the capital of the state Bahia, Salvador. It also 9 hours from the Brazilian capital, \nSignificant Points\nThere are several significant points in Wanderley.\n\n•Praca Do Milho\n•Panificadora E Mercearia Central"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "wanderley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7473,
+    "attempt": 7422,
+    "place_id": "gn-3447856",
+    "input": {
+      "place": {
+        "place_id": "gn-3447856",
+        "name": "Senador Amaral",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -22.58722,
+        "lon": -46.17667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Senador Amaral",
+          "url": "https://en.wikipedia.org/wiki/Senador_Amaral",
+          "text": "Senador Amaral is the second highest city in Brazil (1,505 m [4,938 ft]), reaching near 1,620 m (5,310 ft) in some parts in the northern areas, nearly the Ponte Segura district, the highest point is an unnamed mount in Bom Repouso border at approximately 1,660 m (5,450 ft) above sea level.  It is located in the Mantiqueira Mountains, south of Minas Gerais state. It is a small city, with a population of 5,361 inhabitants and approximately 2980 people living in the urban area. There was no asphalt or mobile phone signal in the municipality before 2007. Only Cambuí access, MG-295 is asphalted."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "senador amaral",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "senador",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "amaral",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7474,
+    "attempt": 7423,
+    "place_id": "gn-3450963",
+    "input": {
+      "place": {
+        "place_id": "gn-3450963",
+        "name": "Rolante",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -29.65056,
+        "lon": -50.57583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rolante",
+          "url": "https://en.wikipedia.org/wiki/Rolante",
+          "text": "Rolante (Rolling) is a municipality in the state of Rio Grande do Sul, Brazil.\nLike many towns in the state, which were settled by German-speaking Europeans in the 19th century, the German language is still present in daily family and community life, if not as much in the public sphere since World War II; the regional German dialect is called Riograndenser Hunsrückisch, as it is a Brazilian variant of the dialect spoken in the Hunsrück region (Southwest Germany). In 2012 the state chamber of deputies voted unanimously in favor of recognizing this German dialect an official historical culture good to be preserved."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "rolante",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7475,
+    "attempt": 7424,
+    "place_id": "gn-3467493",
+    "input": {
+      "place": {
+        "place_id": "gn-3467493",
+        "name": "Canitar",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.00639,
+        "lon": -49.78333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canitar",
+          "url": "https://en.wikipedia.org/wiki/Canitar",
+          "text": "Canitar is a municipality in the southwestern part of the state of São Paulo in Brazil. The population is 5,292 (2020 est.) in an area of 57.5 km2 (22.2 sq mi). It was a district of the municipality of Chavantes until 1991, when it became an independent municipality. Like Chavantes, Canitar belongs to the comarca of Ourinhos, its neighboring city and seat of the comarca to the West. Canitar also has borders with Chavantes to the North, East & South. The Raposo Tavares state road separates Canitar from Irapé, a district in Chavantes and one of the oldest settlements in the region. The economy is based on agriculture, particularly sugar cane plantations of the Sao Luis processing plant in Ourinhos, one of the major cities in the Paranapanema River valley area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "canitar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7476,
+    "attempt": 7425,
+    "place_id": "gn-3521344",
+    "input": {
+      "place": {
+        "place_id": "gn-3521344",
+        "name": "Platón Sánchez",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 21.27182,
+        "lon": -98.37456
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Platón Sánchez, Veracruz",
+          "url": "https://en.wikipedia.org/wiki/Platón_Sánchez,_Veracruz",
+          "text": "Platón Sánchez is a town (villa) in the Mexican state of Veracruz. It is located in the state's Huasteca Alta region. It serves as the municipal seat for the surrounding municipality of Platón Sánchez.\nIn the 2005 INEGI Census, the town reported a total population of 10,009.\nThe town's name honours Rafael Platón Sánchez (1831–1867), a native of the area who fought in the Battle of Puebla of 5 May 1862 and later chaired the court martial that sentenced Emperor Maximilian and his generals Miguel Miramón and Tomás Mejía to death by firing squad in Santiago de Querétaro on 19 June 1867."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "platon sanchez",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "platon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sanchez",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7477,
+    "attempt": 7426,
+    "place_id": "gn-3526355",
+    "input": {
+      "place": {
+        "place_id": "gn-3526355",
+        "name": "Juchitepec",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.10059,
+        "lon": -98.8788
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Juchitepec",
+          "url": "https://en.wikipedia.org/wiki/Juchitepec",
+          "text": "Juchitepec is a municipality in State of Mexico in central Mexico. The municipal seat is the city of Juchitepec de Mariano Rivas.  Juchitepec means “Hill of the Flowers” in Nahuatl. The municipality covers an area of 149.56 km2. It has one major community outside the seat called San Matias Cuijingo. The municipality is located at the southwest of the state, and borders the municipalities of Tenango del Aire, Tepetlixpa, Ozumba and Ayapango in the State of Mexico, and with Totolapan and Tlalnepantla in the state of Morelos to the south, and the borough of Milpa Alta in Mexico City to the west. A large part of the population is employed in commerce. Other major economic activities include agriculture and livestock. As of the 2010 census, the municipality had a total population of 23,497 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "juchitepec",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7478,
+    "attempt": 7427,
+    "place_id": "gn-3530267",
+    "input": {
+      "place": {
+        "place_id": "gn-3530267",
+        "name": "Copainalá",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 17.09331,
+        "lon": -93.21063
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Copainalá",
+          "url": "https://en.wikipedia.org/wiki/Copainalá",
+          "text": "Copainalá is a town and municipality in the Mexican state of Chiapas in southern Mexico. It covers an area of 330.4 km2. In 2023, Copainalá was designated a Pueblo Mágico by the Mexican government, recognizing its cultural and historical importance.\nAs of 2010, the municipality had a total population of 21,050, up from 19,298 as of 2005.\nAs of 2010, the town of Copainalá had a population of 6,550. Other than the town of Copainalá, the municipality had 174 localities, the largest of which (with 2010 populations in parentheses) were: Ángel Albino Corzo (Guadalupe) (1,469), and Benito Juárez (1,153), classified as rural.\nThe Copainalá Zoque dialect is spoken, in addition to Spanish.\nIts name derives from the Nahuatl Koa-Painal, which means \"place of the snakes that ran\". Copainalá was founded in the sixteenth century with Zoque inhabitants, who came from scattered villages and who during the first years of the Colony had been evangelized by Dominican missionaries.\nThe town is a splendid set of vernacular architecture, and is considered one of the most authentic and rich in Chiapas. It is located at 400 m above sea level and always has a pleasant temperature. At all times, a sweet aroma comes from the citrus trees, which abound in this region and are found in practically every backyard."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "copainala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7479,
+    "attempt": 7428,
+    "place_id": "gn-3589770",
+    "input": {
+      "place": {
+        "place_id": "gn-3589770",
+        "name": "San Mateo Ixtatán",
+        "country": "Guatemala",
+        "subdivision": "Huehuetenango",
+        "lat": 15.83194,
+        "lon": -91.47806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Mateo Ixtatán",
+          "url": "https://en.wikipedia.org/wiki/San_Mateo_Ixtatán",
+          "text": "San Mateo Ixtatán is a municipality in the Guatemalan department of Huehuetenango. It is situated at 2,540 metres (8,330 ft) above sea level in the Cuchumatanes mountain range and covers 560 km² (220 sq mi) of terrain. It has a cold climate and is located in a cloud forest. The temperature fluctuates between 0.5 and 20 °C (32.9 and 68.0 °F). The coldest months are from November to January and the warmest months are April and May. The town has a population of 15,090 (2018 census) and is the municipal center for an additional 28,000 people living in the surrounding mountain villages. It has a weekly market on Thursday and Sunday. The annual town festival takes place from September 19 to September 21, honoring their patron Saint Matthew. The residents of San Mateo belong to the Chuj Maya ethnic group and speak the Mayan Chuj language, not to be confused with Chuj baths, or wood-fired steam rooms, that are common throughout the central and western highlands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "san mateo ixtatan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mateo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ixtatan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7480,
+    "attempt": 7429,
+    "place_id": "gn-3663516",
+    "input": {
+      "place": {
+        "place_id": "gn-3663516",
+        "name": "Mâncio Lima",
+        "country": "Brazil",
+        "subdivision": "Acre",
+        "lat": -7.61417,
+        "lon": -72.89583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mâncio Lima",
+          "url": "https://en.wikipedia.org/wiki/Mâncio_Lima",
+          "text": "Mâncio Lima (Brazilian Portuguese pronunciation: [ˈmɐ̃sju ˈlimɐ]) is a municipality in the Brazilian state of Acre. Located deep within the Amazon rainforest, it is the country's westernmost municipality and the state's northernmost. As of 2022, it had a population of 19,294.\nMâncio Lima grew out of a small village named Vila Japiim. The population ballooned with the arrival of settlers from northeast Brazil, who sought a better livelihood in the area amid the Brazilian rubber booms of the 20th century. Vila Japiim became a municipality in 1976 and was renamed Mâncio Lima after one of the settlers who came from the northeast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "mancio lima",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mancio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lima",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7481,
+    "attempt": 7430,
+    "place_id": "gn-3859904",
+    "input": {
+      "place": {
+        "place_id": "gn-3859904",
+        "name": "Crespo",
+        "country": "Argentina",
+        "subdivision": "Entre Rios",
+        "lat": -32.03077,
+        "lon": -60.30619
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crespo, Entre Ríos",
+          "url": "https://en.wikipedia.org/wiki/Crespo,_Entre_Ríos",
+          "text": "Crespo is a city in the Argentine province of Entre Ríos, some 40 km from the provincial capital Paraná. It has around 19,500 inhabitants (as per the 2010 census [INDEC]), most of whom are descendants of Volga Germans who migrated from Russia to Argentina from 1875 onwards. The town's German heritage is reflected in the annual beer festival, based on the Oktoberfest but held in January. The economy is centered in avicultural and other agricultural products.\nSuccessful footballer Gabriel Heinze (former player of Paris Saint Germain, Manchester United, Olympique de Marseille, Real Madrid, Real Valladolid and A.S. Roma) was born in Crespo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "crespo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7482,
+    "attempt": 7431,
+    "place_id": "gn-3991218",
+    "input": {
+      "place": {
+        "place_id": "gn-3991218",
+        "name": "Puruarán",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 19.09748,
+        "lon": -101.52204
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puruarán",
+          "url": "https://en.wikipedia.org/wiki/Puruarán",
+          "text": "Puruarán is an inhabited place in Mexico. It is located in the municipality of Turicato in the state of Michoacán, in the western part of the country, 250 km west of the capital Mexico City. Puruarán is situated 1,117 meters above sea level and the number of inhabitants is 7,162.\nThe terrain around Puruarán is somewhat mountainous. The highest point nearby is Cerro Nombre de Dios, 1,655 meters above sea level, 3.8 km west of Puruarán.The area around Puruarán is quite sparsely populated, with 45 inhabitants per square kilometer. The nearest larger community is Tacámbaro de Codallos, 16,8 km north of Puruarán. In the surroundings around Puruarán, mainly savannah forest grows."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "puruaran",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7483,
+    "attempt": 7432,
+    "place_id": "gn-4304713",
+    "input": {
+      "place": {
+        "place_id": "gn-4304713",
+        "name": "Pleasure Ridge Park",
+        "country": "United States",
+        "subdivision": "Kentucky",
+        "lat": 38.14535,
+        "lon": -85.8583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pleasure Ridge Park, Louisville",
+          "url": "https://en.wikipedia.org/wiki/Pleasure_Ridge_Park,_Louisville",
+          "text": "Pleasure Ridge Park (PRP) is a former census-designated place (CDP) in southwest Jefferson County, Kentucky, United States. The population was 26,212 at the 2010 census. In 2003, the area was annexed to the city of Louisville due to a merger between the city and Jefferson County's unincorporated communities. Pleasure Ridge Park is now said to be a neighborhood within the city limits of Louisville by local media.\nThis community is served by the Pleasure Ridge Park Fire Protection District. The Pleasure Ridge Park Fire Protection District is one of seven volunteer and combination departments that make up the Jefferson County Fire Service. This department covers 62 square miles and serves the citizens of Pleasure Ridge Park, Valley Station, Lake Dreamland and Rubbertown Area in southwestern Jefferson County, Kentucky.\nPleasure Ridge Park High School is located in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "pleasure ridge park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pleasure",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ridge",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7484,
+    "attempt": 7433,
+    "place_id": "gn-4440397",
+    "input": {
+      "place": {
+        "place_id": "gn-4440397",
+        "name": "Pascagoula",
+        "country": "United States",
+        "subdivision": "Mississippi",
+        "lat": 30.36576,
+        "lon": -88.55613
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pascagoula, Mississippi",
+          "url": "https://en.wikipedia.org/wiki/Pascagoula,_Mississippi",
+          "text": "Pascagoula ( PASS-kə-GOO-lə) is a city in Jackson County, Mississippi, United States, and its county seat. Its population was 22,010 at the 2020 census, down from 22,392 at the 2010 census. It is part of the Gulfport–Biloxi metropolitan area.\nThe city is served by three airports: Mobile Regional Airport, 34 miles (55 km) to the northeast in Alabama; Gulfport-Biloxi International Airport, about 40 miles (64 km) west of Pascagoula; and the Trent Lott International Airport, 9 miles (14 km) to the north in Jackson County. Amtrak service also began serving the city when the Mardi Gras Service debuted on August 18, 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "pascagoula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7485,
+    "attempt": 7434,
+    "place_id": "gn-4557870",
+    "input": {
+      "place": {
+        "place_id": "gn-4557870",
+        "name": "Fairmount",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.97233,
+        "lon": -75.18101
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fairmount, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Fairmount,_Philadelphia",
+          "text": "Fairmount is a neighborhood within Lower North Philadelphia, Pennsylvania, United States. Its boundaries are north of Fairmount Avenue, west of Corinthian Avenue, south of Girard Avenue and east of The Schuylkill River. \nWhile this may be the most accurate demarcation, the area's boundaries fluctuate depending how the neighborhood is defined. Several other neighborhoods near Fairmount are sometimes also collectively called Fairmount, including Spring Garden, Franklintown and Francisville. Fairmount and neighboring Spring Garden are commonly referred to as the \"Art Museum Area,\" for their proximity to and association with the Philadelphia Art Museum. Fairmount is also the location of the Eastern State Penitentiary.\nThe name \"Fairmount\" derives from the prominent hill on which the Philadelphia Museum of Art now sits and where William Penn intended to build his manor house. Later, the name was applied to the street originally called Hickory Lane that runs from the foot of Fairmount Hill through the heart of the neighborhood."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "fairmount",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7486,
+    "attempt": 7435,
+    "place_id": "gn-4862760",
+    "input": {
+      "place": {
+        "place_id": "gn-4862760",
+        "name": "Johnston",
+        "country": "United States",
+        "subdivision": "Iowa",
+        "lat": 41.67304,
+        "lon": -93.69772
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Johnston, Iowa",
+          "url": "https://en.wikipedia.org/wiki/Johnston,_Iowa",
+          "text": "Johnston is a city in Polk County, Iowa, United States. The population was 24,064 in the 2020 census, a large increase from the 8,649 population in 2000. It is part of the Des Moines–West Des Moines Metropolitan Statistical Area.\nJohnston is the location of the headquarters of Pioneer Hi-Bred Seeds, Iowa Public Television, and The Gardeners of America/Men's Garden Clubs of America. Also located here are the Camp Dodge Military Reservation as well as the Paul J. and Ida Trier House, a private residence designed by architect Frank Lloyd Wright, and the Des Moines Weather Forecast Office of the National Weather Service."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "johnston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7487,
+    "attempt": 7436,
+    "place_id": "gn-4899012",
+    "input": {
+      "place": {
+        "place_id": "gn-4899012",
+        "name": "Lake Forest",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.25863,
+        "lon": -87.84063
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake Forest, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Lake_Forest,_Illinois",
+          "text": "Lake Forest is a city in Lake County, Illinois, United States, 31 miles (50 km) north of downtown Chicago. The population was 19,367 at the 2020 census. The city is along the shore of Lake Michigan, and is part of the Chicago metropolitan area and the North Shore. Lake Forest was founded with Lake Forest College and was laid out as a town in 1857, a stop for travelers making their way south to Chicago. The Lake Forest City Hall, designed by Charles Sumner Frost, was completed in 1898. It originally housed the fire department, the Lake Forest Library, and city offices."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "lake forest",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "forest",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7488,
+    "attempt": 7437,
+    "place_id": "gn-4983611",
+    "input": {
+      "place": {
+        "place_id": "gn-4983611",
+        "name": "York Beach",
+        "country": "United States",
+        "subdivision": "Maine",
+        "lat": 43.17148,
+        "lon": -70.60894
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "York Beach, Maine",
+          "url": "https://en.wikipedia.org/wiki/York_Beach,_Maine",
+          "text": "York Beach is a community within the town of York, Maine, United States. The York Beach area consists of Long Sands and Short Sands beaches on the Atlantic Ocean in the Gulf of Maine. The two beaches are separated by Cape Neddick. York Beach and Cape Neddick together comprise the Cape Neddick census-designated place, with a year-round population of 2,568 as of the 2010 census. The town of York consists of the communities of York Beach, Cape Neddick, York Harbor, and the village of York. The town is home to 12,529 residents, though rising to an estimated 52,000 during the summer months.\nThe 1992 American romantic comedy film Bed & Breakfast was filmed and set in York Beach."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "york beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "york",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7489,
+    "attempt": 7438,
+    "place_id": "gn-5118670",
+    "input": {
+      "place": {
+        "place_id": "gn-5118670",
+        "name": "Glendale",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.70149,
+        "lon": -73.8868
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glendale, Queens",
+          "url": "https://en.wikipedia.org/wiki/Glendale,_Queens",
+          "text": "Glendale is a neighborhood in the west-central portion of the New York City borough of Queens. It is bounded by Forest Hills to the east, Ridgewood to the west, Woodhaven to the south, and Middle Village to the north.\nGlendale was built on a swampy area previously called Fresh Pond. The neighborhood was later developed into an industrial area, though it is now a more residential neighborhood. Glendale's land area is long on its east-west axis and narrow on its north-south axis. The area is surrounded mainly by cemeteries, although the neighborhood also contains several large parks, including part of Forest Park.\nGlendale is located in Queens Community District 5 and its ZIP Code is 11385. It is patrolled by the New York City Police Department's 104th Precinct. Politically, Glendale is represented by the New York City Council's 30th District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "glendale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7490,
+    "attempt": 7439,
+    "place_id": "gn-5262596",
+    "input": {
+      "place": {
+        "place_id": "gn-5262596",
+        "name": "Menasha",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 44.20221,
+        "lon": -88.4465
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Menasha, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Menasha,_Wisconsin",
+          "text": "Menasha () is a city in Winnebago and Calumet counties in the U.S. state of Wisconsin. The population was 18,268 at the 2020 census, of which 15,144 were in Winnebago County and 2,209 were in Calumet County. The city's name comes from the Menominee language, in which it is known as Menāēhsaeh, meaning \"little island\". At the time of European contact, a Ho-Chunk village known as \"Menashay\" stood on what is now Doty Island, led by Chief Hootschope (Four Legs). It is part of the Fox Cities region of Wisconsin. Doty Island is located partially in Menasha, which it shares with Neenah.\nThe Menominee people inhabited the Fox River Valley for over 10,000 years. In the Treaty of the Cedars (1836), the Menominee ceded approximately 4,000,000 acres of land, including present-day Menasha, to the United States for $700,000 (approximately 17 cents per acre). This cession opened the region to logging and European-American settlement. Menasha's location on the Fox River and Lake Winnebago subsequently led to its development as a transportation hub and later a center for paper production and wooden ware products."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "menasha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7491,
+    "attempt": 7440,
+    "place_id": "gn-5364275",
+    "input": {
+      "place": {
+        "place_id": "gn-5364275",
+        "name": "Laguna Beach",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.54225,
+        "lon": -117.78311
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laguna Beach, California",
+          "url": "https://en.wikipedia.org/wiki/Laguna_Beach,_California",
+          "text": "Laguna Beach ( lə-GOO-nə; laguna, Spanish for \"lagoon\") is a city in Orange County, California, United States. Located in Southern California along the Pacific Ocean, this seaside resort city has a mild year-round climate, scenic coves, and environmental preservation efforts. The population in the 2020 census was 23,032.\nHistorically settled by Paleoindians, the Tongva people, and then Mexico, the location became part of the United States following the Mexican–American War. Laguna Beach was settled in the 1870s, officially founded in 1887, and in 1927 its current government was incorporated as a city. The city adopted the council–manager form of government in 1944. The city has remained relatively isolated from urban encroachment by its surrounding hills, limited highway access, and dedicated greenbelt. The Laguna Beach coastline is protected by 5.88 miles (9.46 km) of state marine reserve and an additional 1.21 miles (1.95 km) of state conservation area.\nTourism is the primary industry with an estimated six million people visiting the community annually. Large annual events include the Pageant of the Masters, Festival of Arts, Sawdust Art Festival, Art-A-Fair, Bluewater Music Festival, and Kelpfest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "laguna beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "laguna",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

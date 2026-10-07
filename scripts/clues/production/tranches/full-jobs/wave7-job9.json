@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 1373,
+    "attempt": 1361,
+    "place_id": "gn-727011",
+    "input": {
+      "place": {
+        "place_id": "gn-727011",
+        "name": "Sofia",
+        "country": "Bulgaria",
+        "subdivision": "Sofia-Capital",
+        "lat": 42.69751,
+        "lon": 23.32415
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sofia",
+          "url": "https://en.wikipedia.org/wiki/Sofia",
+          "text": "Sofia is the capital and largest city of Bulgaria. It is situated in the Sofia Valley at the foot of the Vitosha mountain, in the western part of the country. The city is built west of the Iskar river and has many mineral springs, such as the Sofia Central Mineral Baths. It has a humid continental climate.\nKnown as Serdica in antiquity, Sofia has been an area of human habitation since at least 7000 BC. The recorded history of the city begins with the attestation of the conquest of Serdica by the Roman Republic in 29 BC from the Celtic tribe Serdi. During the decline of the Roman Empire, the city was raided by Huns, Visigoths, Avars, and Slavs. In 809, Serdica was incorporated into the First Bulgarian Empire by Khan Krum and became known as Sredets. In 1018, the Byzantines ended Bulgarian rule until 1194, when it was reincorporated by the Second Bulgarian Empire. Sredets became a major administrative, economic, cultural and literary hub until its conquest by the Ottomans in 1382. From 1530 to 1836, Sofia was the regional capital of Rumelia Eyalet, the Ottoman Empire's largest and most important province. Bulgarian rule was restored in 1878. Sofia was selected as the capital of the Third Bulgarian State in the next year, ushering a period of intense demographic and economic growth.\nSofia is the 14th-largest city in the European Union. It is surrounded by mountains including Vitosha to the south, Lyulin to the west, and the Balkan Mountains to the north. It is the fourth highest European capital after Andorra la Vella, San Marino and Madrid. Sofia is home to several universities, cultural institutions and commercial companies. The city has been described as the \"triangle of religious tolerance\". This is because three temples of three major world religions—Christianity, Islam and Judaism—are situated close together: Sveta Nedelya Church, Banya Bashi Mosque and Sofia Synagogue. This triangle was recently expanded to a \"square\" and includes the Catholic Cathedral of St Joseph.\nThe Boyana Church in Sofia, constructed during the Second Bulgarian Empire and holding much patrimonial symbolism to the Bulgarian Orthodox Church, was included on the World Heritage List in 1979. With its cultural significance in Southeast Europe, Sofia is home to the National Opera and Ballet of Bulgaria, the National Palace of Culture, the Vasil Levski National Stadium, the Ivan Vazov National Theatre, the National Archaeological Museum, and the Serdica Amphitheatre. The Museum of Socialist Art includes many sculptures and posters that educate visitors about the lifestyle in communist Bulgaria.\nThe population of Sofia declined from 70,000 in the late 18th century, through 19,000 in 1870, to 11,649 in 1878, after which it began increasing. Sofia hosts some 1.28 million residents within a territory of 500 km2, a concentration of 17.9% of the country's population within the 200th percentile of the country's territory. The urban area of Sofia hosts some 1.5 million residents within 5,723 km2, which comprises Sofia City Province and parts of Sofia Province (Dragoman, Slivnitsa, Kostinbrod, Bozhurishte, Svoge, Elin Pelin, Gorna Malina, Ihtiman, Kostenets) and Pernik Province (Pernik, Radomir), representing 5.16% of the country territory. The metropolitan area of Sofia is based upon one hour of car travel time, stretches internationally and includes Dimitrovgrad in Serbia. The metropolitan region of Sofia is inhabited by a population of 1.6 million."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 119,
+      "fullExtractWords": 553
+    },
+    "banned_terms": [
+      {
+        "term": "sofia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1374,
+    "attempt": 1362,
+    "place_id": "gn-12358576",
+    "input": {
+      "place": {
+        "place_id": "gn-12358576",
+        "name": "Wanzhou",
+        "country": "China",
+        "subdivision": "Chongqing",
+        "lat": 30.76451,
+        "lon": 108.39586
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wanzhou, Chongqing",
+          "url": "https://en.wikipedia.org/wiki/Wanzhou,_Chongqing",
+          "text": "Wanzhou District (Chinese: 万州区; pinyin: Wànzhōu Qū) is Chongqing's second most populated urban core area on the upper reaches of the Three Gorges of the Yangtze River in China. It is currently governed as a district of Chongqing Municipality, bordering Sichuan to the northwest and Hubei to the southeast. It was formerly known as Wanxian or Wan County (simplified Chinese: 万县; traditional Chinese: 萬縣; pinyin: Wànxiàn). Prior to Chongqing's formation as a direct-controlled municipality, Wanzhou was part of Sichuan province. The urban core of Wanzhou  is 228 km (142 mi) away from Chongqing's city proper.\nThe characters for \"Wanzhou\" mean \"myriad-prefecture\"; which is derived from the phrase \"the place where myriad rivers converge and myriad traders gather\" (万川毕汇、万商云集). Due to the construction of the Three Gorges Dam, 47% of Wanzhou's old urban area was submerged and had to be relocated."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "wanzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1375,
+    "attempt": 1363,
+    "place_id": "gn-1254187",
+    "input": {
+      "place": {
+        "place_id": "gn-1254187",
+        "name": "Thrissur",
+        "country": "India",
+        "subdivision": "Kerala",
+        "lat": 10.51667,
+        "lon": 76.21667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thrissur",
+          "url": "https://en.wikipedia.org/wiki/Thrissur",
+          "text": "Thrissur (Malayalam: തൃശൂർ, pronounced [triˈʃ(ː)uːr] ), formerly Trichur, also known by its historical name Thrissivaperur, is a city and the headquarters of the Thrissur district in Kerala, India. It is the third largest urban agglomeration in Kerala after Kochi and Kozhikode, and the 21st largest in India. Thrissur is classified as a Tier-2 city by the Government of India. The city is built around a 65-acre (26 ha) hillock called Thekkinkadu Maidanam which seats the Vadakkumnathan temple. It is located 284 kilometres (176 mi) north-west of the state's capital city, Thiruvananthapuram. Thrissur was once the capital of the Kingdom of Cochin, and was a point of contact for the Assyrians, Greeks, Persians, Arabs, Romans, Portuguese, Dutch and English.\nThrissur is known as City of Celebrations and also called the cultural capital of Kerala because of its cultural, spiritual and religious leanings throughout history. The city centre contains the Kerala Sangeetha Nadaka Academy, Kerala Lalithakala Akademi and Kerala Sahitya Academy. The city hosts the Thrissur Pooram, one of the largest temple festival in the state. The festival is held at the Thekkinkadu Maidan of Vadakumnathan temple in April or May in the Malayalam month 'medam'.\nThe city has historically been a centre of Hindu scholarship, and Christianity, Islam and Judaism are believed to have entered the Indian subcontinent through Thrissur and its surrounding areas. Thrissur has a large number of well-known temples including the Vadakkumnathan temple, Thiruvambadi Sri Krishna Temple,  and Paramekkavu Bagavathi temple. There are three major Catholic churches, the St. Antony's Syro-Malabar Catholic Forane, Our Lady of Lourdes Syro-Malabar Catholic Metropolitan Cathedral and Our Lady of Dolours Syro-Malabar Catholic Basilica, the largest Christian church in India. Thrissur is home to the Academy of Sharia and Advanced Studies an Islamic institute that is unusual in that it teaches Sanskrit and aspart of the Sanskrit syllabus it includes study of several key Hindu texts.\nThe city is the headquarters of four major scheduled banks, South Indian Bank Ltd, CSB Bank, Dhanalakshmi Bank and ESAF Small Finance Bank as well as several chit funds. The city is also known for its silks and gold jewellery industry.\nThrissur is also a major academic hub and is home to several educational institutions, including the Kerala Kalamandalam, Kerala Agricultural University, Kerala University of Health Sciences, College of Veterinary and Animal Sciences, Sree Kerala Varma College, St Thomas College, Jawahar Bal Bhavan Thrissur, Kerala Institute of Local Administration, Kerala Forest Research Institute, Kerala Police Academy, Police Dog Training Centre, Kerala Fire and Rescue Services Academy, Excise Academy and Research Centre, Government College Of Music And Performing Arts, Government College of Fine Arts, Government Law College, Government Engineering College, Government Medical College and Vaidyaratnam Ayurveda College. UNESCO has included Thrissur in its Global Network of Learning Cities (GNLC) in recognition of the city's outstanding efforts to make lifelong learning a reality for all at the local level."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 480
+    },
+    "banned_terms": [
+      {
+        "term": "thrissur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1376,
+    "attempt": 1364,
+    "place_id": "gn-1275163",
+    "input": {
+      "place": {
+        "place_id": "gn-1275163",
+        "name": "Budaun",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 28.03811,
+        "lon": 79.12668
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Budaun",
+          "url": "https://en.wikipedia.org/wiki/Budaun",
+          "text": "Budaun (romanised: Badāʾūn or Badāyūn, Hindi pronunciation: [bəd̪aːjũː]) is a medieval city and headquarters of Budaun district, in the Indian state of Uttar Pradesh. It is located about a mile east of the Sot river, and 27 km north of the Ganges, in the Rohilkhand region of Uttar Pradesh. According to the 2011 census, Budaun has a population of 159,221, which is projected to be 161,555 at present. Budaun rose to historical importance as the capital of the Delhi Sultanate for four years from 1210 CE to 1214 CE during the reign of Sultan Iltutmish. It was the most important post of Northern Frontier during Mughal reign. Budaun is a big market, historically famous and religiously important city. Budaun is 230 km south-east of New Delhi and 245 km north-west of Lucknow, both taking about 6 hours by road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "budaun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1377,
+    "attempt": 1365,
+    "place_id": "gn-1798654",
+    "input": {
+      "place": {
+        "place_id": "gn-1798654",
+        "name": "Pingxiang",
+        "country": "China",
+        "subdivision": "Jiangxi",
+        "lat": 27.61672,
+        "lon": 113.85353
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pingxiang",
+          "url": "https://en.wikipedia.org/wiki/Pingxiang",
+          "text": "Pingxiang (simplified Chinese: 萍乡; traditional Chinese: 萍鄉; pinyin: Píngxiāng; Wade–Giles: P'ing-hsiang) is a medium-sized prefecture-level city located in western Jiangxi province, People's Republic of China. Pingxiang City is located in the west of Jiangxi Province, bordering Yichun and Ji'an of this province to the east and south, and Zhuzhou and Changsha of Hunan to the northwest.\nPingxiang has a world-famous history and culture and various natural landscapes. There are a large number of old revolutionary sites such as Zongping Alley, the Anyuan Road Miners Club, the Anyuan Road Miners Consumer Cooperative, the Autumn Harvest Uprising military conference site, and the location of the Red Front Army Front Committee. Natural landscapes include Yilong Cave, Wugong Mountain, Yangqi Mountain, etc."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "pingxiang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1378,
+    "attempt": 1366,
+    "place_id": "gn-1814934",
+    "input": {
+      "place": {
+        "place_id": "gn-1814934",
+        "name": "Chizhou",
+        "country": "China",
+        "subdivision": "Anhui",
+        "lat": 30.66134,
+        "lon": 117.47783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chizhou",
+          "url": "https://en.wikipedia.org/wiki/Chizhou",
+          "text": "Chizhou (Chinese: 池州; pinyin: Chízhōu) is a prefecture-level city in the south of Anhui province, China. It borders Anqing to the northwest, Tongling and Wuhu to the northeast, Xuancheng to the east, Huangshan to the southeast, and the province of Jiangxi to the southwest, respectively. The geographical coordinates of Chizhou City are Latitude: 30.664800 Longitude: 117.491568. Its population was 1,342,764 as of the 2020 census, of whom 615,274 lived in the built-up (or metro) area made of Guichi District. Mount Jiuhua (Jǐuhuáshān), located in Qingyang county, is one of the four sacred mountains of Chinese Buddhism. Historical celebrities from Chizhou include Du Xunhe, Hua Yue, Wu Mingdao, Liu Fang, Lu Zhongyuan, Zhang Yunxian, Luo Shangzhong, Chen Yifu, etc.\nIn May 1949, the Chizhou Special Administrative Region was established under the jurisdiction of the people's Administrative Office of Southern Anhui and the Chizhou Special Administrative Office in Guichi county.\nFrom February 1952 to May 1965, Chizhou Special Area was abolished, and the counties under its jurisdiction were divided into Anqing Special Area, Huizhou Special Area, and Wuhu Special Area, respectively.\nFrom May 1965 to January 1980, the Chizhou special zone was set up, directly under jurisdiction of Anhui province.\nFrom January 1980 to August 1988, Chizhou Special Area was abolished and the counties under its jurisdiction were incorporated into Anqing Special Area, Xuancheng Special Area, and Huizhou Special Area.\nIn August 1988, the Chizhou area was relocated to Anhui province.\nOn 26 June 2000, Guichi District, Dongzhi County, Qingyang County, Shitai County, Jiuhua Mountain Scenic Area, and Chizhou Economic and Technological Development Zone were withdrawn and built."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "chizhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1380,
+    "attempt": 1367,
+    "place_id": "gn-2319133",
+    "input": {
+      "place": {
+        "place_id": "gn-2319133",
+        "name": "Warri",
+        "country": "Nigeria",
+        "subdivision": "Delta",
+        "lat": 5.51737,
+        "lon": 5.75006
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warri",
+          "url": "https://en.wikipedia.org/wiki/Warri",
+          "text": "The city of Warri is an oil hub within South-South Nigeria and houses an annex of the Delta State Government House. Warri is one of the major hubs of the petroleum industry in Nigeria. Warri, Udu, Okpe and Uvwie are the commercial capital of Delta State with a population of over 311,970 people in 2006. The city is the indigenous territory of Itsekiri, Urhobo and Ijaw people.\nWarri shares boundaries with Uvwie to the east, Udu to the south east, Ogbe-ijoh to the south, and other communities in Warri South LGA to the west. \nWarri sits on the bank of Warri River which joins Forcados River and Escravos River through Jones Creek in the lower Niger Delta Region. The city has a modern seaport, which serves as the cargo transit point between the Niger River and the Atlantic Ocean for import and export.\nWarri served as the capital of the colonial Warri Province during the early 1900s when this part of Delta State was under the Colony and Protectorate of Southern Nigeria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "warri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1381,
+    "attempt": 1368,
+    "place_id": "gn-2338106",
+    "input": {
+      "place": {
+        "place_id": "gn-2338106",
+        "name": "Ikot Ekpene",
+        "country": "Nigeria",
+        "subdivision": "Akwa Ibom State",
+        "lat": 5.18194,
+        "lon": 7.71481
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ikot Ekpene",
+          "url": "https://en.wikipedia.org/wiki/Ikot_Ekpene",
+          "text": "Ikot Ekpene, also known as The Raffia City, or IK in short form is a historic town in the south-southern state of Akwa Ibom, Nigeria. It is the political and cultural capital of the Annang ethnic group in Nigeria. The town is located on the A342 highway that parallels the coast, between Calabar to the southeast and Aba to the west, with the state capital, Uyo, on this road just to the east. Umuahia is the next major town to the north. The population of the Ikot Ekpene Local government area was estimated to be 180,500 in 2022.\nKannan Nair, the noted historian described the town as a cultural and political capital of the Annangs and the Ibibios. The Ibibios live to the east and most of the Annangs live to the south of the town.\nIkot Ekpene is known as a regional centre of commerce, with notable exports of palm products, especially palm oil, kernels, raffia products including raffia fibers and its wine, and ground crops of yams, cassava, taro, and corn. The population is made up primarily of the Annang people with a small number of Igbo traders and Hausa Suya vendors. Significant exports also include basket weaving, sculpture, and, most notably, raffia cane furniture (hence the colloquial name of the town).\nIkot Ekpene is also known for its technological innovations due to the emergence of FutureLabs an innovation hub dedicated to training young technical talents and helping entrepreneurs build tech startups in Ikot Ekpene in partnership with organizations like NITDA and JICA. The Raffia City Entrepreneurs Scheme committee was inaugurated by Hon. John Cleton Etim. \nIkot Ekpene is also the headquarters of some notable seminaries and the Catholic Diocese in the south-south region of Nigeria. The Akwa Ibom State Polytechnic, Ikot Osurua, and Ritman University is located in the city. The city houses the notable mini stadium at GRA road, Nteps Super Markets, Four Point by Sheraton Hotels etc."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 322
+    },
+    "banned_terms": [
+      {
+        "term": "ikot ekpene",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ikot",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ekpene",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1382,
+    "attempt": 1369,
+    "place_id": "gn-2636486",
+    "input": {
+      "place": {
+        "place_id": "gn-2636486",
+        "name": "Sutton Coldfield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.56667,
+        "lon": -1.81667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sutton Coldfield",
+          "url": "https://en.wikipedia.org/wiki/Sutton_Coldfield",
+          "text": "Sutton Coldfield ( SUT-ən KOHLD-feeld ) is a town and civil parish in the city of Birmingham, West Midlands, England. The town lies around 7.5 miles northeast of Birmingham city centre, 11.5 miles south of Lichfield, 10.1 miles southwest of Tamworth, and 9.2 miles east of Walsall.\nSutton Coldfield and its surrounding suburbs are governed under Birmingham City Council for local government purposes but the town has its own town council which governs the town and its surrounding areas by running local services and electing a mayor to the council. It is in the historic county of Warwickshire, and in 1974 it became part of Birmingham and the West Midlands metropolitan county under the Local Government Act 1972."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "sutton coldfield",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sutton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "coldfield",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1383,
+    "attempt": 1370,
+    "place_id": "gn-2639577",
+    "input": {
+      "place": {
+        "place_id": "gn-2639577",
+        "name": "Reading",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.45625,
+        "lon": -0.97113
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Reading, Berkshire",
+          "url": "https://en.wikipedia.org/wiki/Reading,_Berkshire",
+          "text": "Reading (  RED-ing) is a town and borough in Berkshire, England, and the county town of Berkshire. It is Berkshire's largest town, with a total population of 203,795 in its built-up area as of 2021. Most of its built-up area lies within the Borough of Reading, although some outer suburbs are parts of neighbouring local authority areas. It is located in the Thames Valley at the confluence of the rivers Thames and Kennet.\nReading is a major commercial centre, especially for information technology and insurance. It is also a regional retail centre, serving a large area of the Thames Valley with its shopping centres, including the Oracle, the Broad Street Mall, and the pedestrianised area around Broad Street. It is home to the University of Reading. Every year it hosts the Reading Festival, one of England's biggest music festivals. Reading has a professional association football team, Reading F.C., and participates in many other sports.\nReading dates from the 8th century. It was a trading and ecclesiastical centre in the Middle Ages, the site of Reading Abbey, one of the largest and richest monasteries of medieval England with royal connections, of which the 12th-century abbey gateway and significant ancient ruins remain. By 1525, Reading was the largest town in Berkshire, and tenth in England for taxable wealth. The town was seriously affected by the English Civil War, with a major siege and loss of trade, but played a pivotal role in the Glorious Revolution, whose only significant military action was fought on its streets. The 18th century saw the beginning of a major ironworks in the town and the growth of the brewing trade for which Reading was to become famous. The 19th century saw the coming of the Great Western Railway and the development of the town's brewing, baking and seed-growing businesses, and the town grew rapidly as a manufacturing centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 311
+    },
+    "banned_terms": [
+      {
+        "term": "reading",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1384,
+    "attempt": 1371,
+    "place_id": "gn-2874545",
+    "input": {
+      "place": {
+        "place_id": "gn-2874545",
+        "name": "Magdeburg",
+        "country": "Germany",
+        "subdivision": "Saxony-Anhalt",
+        "lat": 52.13129,
+        "lon": 11.63189
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Magdeburg",
+          "url": "https://en.wikipedia.org/wiki/Magdeburg",
+          "text": "Magdeburg (  MAG-də-burg, German: [ˈmakdəbʊʁk] , locally [ˈmaχdəbʊɐ̯ç]; Low Saxon: Meideborg [ˈmaˑɪ̯debɔɐ̯x]) is the capital and most populous city of the German state of Saxony-Anhalt. The city is on the Elbe river. The city was mentioned for the first time in a documentary record as \"Magadoburg\" in the Capitulary of Diedenhofen by Charlemagne in 805.\nOtto I, the Holy Roman Emperor and the founder of the Archbishopric of Magdeburg, was buried in the city's cathedral after his death. Magdeburg's version of German town law, known as Magdeburg rights, spread throughout Central and Eastern Europe. In the Late Middle Ages, Magdeburg was one of the largest and most prosperous German cities and a notable member of the Hanseatic League. One of the most notable people from the city was Otto von Guericke, famous for his experiments with the Magdeburg hemispheres.\nMagdeburg has experienced three major devastations in its history. In 1207 the first catastrophe struck the city, with a fire burning down large parts of the city, including the Ottonian cathedral. The Catholic League sacked Magdeburg in 1631, resulting in the death of 25,000 non-combatants, the largest loss of the Thirty Years' War. During World War II the Allies bombed the city in 1945 and destroyed much of the city centre. Today, around 46% of the city consists of buildings from before 1950.\nAfter World War II, the city belonged to the German Democratic Republic from 1949 to 1990. Since then, many new construction projects have been implemented and old buildings have been restored. Magdeburg celebrated its 1,200th anniversary in 2005.\nMagdeburg is on Autobahn 2 and Autobahn 14, connecting Eastern and Western Europe as well as northern and southern Germany. Significant industries include machines, healthcare, mechanical engineering, environmental technology, circular economy, logistics, culture, wood and information and communications technology.\nThere are numerous cultural institutions in the city, including the Theater Magdeburg and the Museum of Cultural History. The city is also the location of two universities, the Otto von Guericke University Magdeburg and the Magdeburg-Stendal University of Applied Sciences."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 339
+    },
+    "banned_terms": [
+      {
+        "term": "magdeburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1385,
+    "attempt": 1372,
+    "place_id": "gn-292672",
+    "input": {
+      "place": {
+        "place_id": "gn-292672",
+        "name": "Sharjah",
+        "country": "United Arab Emirates",
+        "subdivision": "Sharjah",
+        "lat": 25.3342,
+        "lon": 55.41221
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sharjah",
+          "url": "https://en.wikipedia.org/wiki/Sharjah",
+          "text": "Sharjah (; Arabic: ٱلشَّارقَة aš-Šāriqah, Gulf Arabic: aš-Šārja) is a major port city and the third-most populous city in the United Arab Emirates, after Dubai and Abu Dhabi. It is the capital of the Emirate of Sharjah and forms part of the Dubai-Sharjah-Ajman metropolitan area. The emirate shares legal, political, military and economic functions with the other emirates of the UAE within a federal framework. Each emirate has jurisdiction over some functions such as civil law enforcement and provision and upkeep of local facilities. Sharjah has been ruled by the Al Qasimi dynasty since the 18th century.\nThe city is a center for culture and industry, and alone contributes 7.4% of the GDP of the United Arab Emirates. The city covers approximately 235 km2 and has a population of over 1,800,000 (2022–2023). Sharjah has been officially named as a WHO healthy city. The 2025 edition of QS Best Student Cities ranked Sharjah as the 76th best city in the world to be a university student. Sharjah is regarded as the cultural capital of the UAE, and was the Islamic culture capital of 2014 and Sharjah World Book Capital for 2019 by UNESCO.\nOn 1 January 2022, Sharjah made history when its public sector adopted a four-day working week and a three-day weekend, becoming the first government sector in the Gulf region and the entire Middle East to fully adopt a four-day working week."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 233
+    },
+    "banned_terms": [
+      {
+        "term": "sharjah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1386,
+    "attempt": 1373,
+    "place_id": "gn-3080165",
+    "input": {
+      "place": {
+        "place_id": "gn-3080165",
+        "name": "Zielona Góra",
+        "country": "Poland",
+        "subdivision": "Lubusz",
+        "lat": 51.93548,
+        "lon": 15.50643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zielona Góra",
+          "url": "https://en.wikipedia.org/wiki/Zielona_Góra",
+          "text": "Zielona Góra (Polish: [ʑɛˈlɔna ˈɡura] ; lit. 'Green Mountain'; German: Grünberg in Schlesien) is the largest city in Lubusz Voivodeship, located in western Poland, with 140,403 inhabitants (2021). The region is closely associated with vineyards and holds an annual Wine Fest. Zielona Góra is one of the two capital cities of Lubusz Voivodeship, hosting the province's elected assembly, while the seat of the centrally appointed governor is in the city of Gorzów Wielkopolski.\nIn 1222 Duke Henry the Bearded from the Piast dynasty brought the first settlers to the area. In 1323 Zielona Góra was granted town privileges. The town was incorporated into the Kingdom of Bohemia in 1506 and became part of the Habsburg Empire in 1526. It experienced a wave of witch trials in the 17th century. As a result of the First Silesian War, the city became part of the Kingdom of Prussia in 1742. It then was part of the North German Confederation and the German Reich until the end of World War II in 1945, when it became part of Poland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "zielona gora",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "zielona",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gora",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1387,
+    "attempt": 1374,
+    "place_id": "gn-3395503",
+    "input": {
+      "place": {
+        "place_id": "gn-3395503",
+        "name": "Marabá",
+        "country": "Brazil",
+        "subdivision": "Pará",
+        "lat": -5.38146,
+        "lon": -49.13232
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marabá, Pará",
+          "url": "https://en.wikipedia.org/wiki/Marabá,_Pará",
+          "text": "Marabá is a municipality in the state of Pará, Brazil. Its greatest geographic reference is the confluence of two large rivers near the historic city center, the Itacaiunas River and the Tocantins River, forming a \"Y\" if seen from space. It basically consists of six urban centers linked by five highways.\nMarabá is the fourth-most-populous municipality in the state of Pará, approximately 283,542 inhabitants according to the IBGE/2020, and the fourth largest GDP in the state of Pará, with US$1.543.254,34 according to the IDESP/2010. It's the main center of political, social, and economic development in southern of Pará and one of the most dynamic municipalities in Brazil.\nMarabá has a strategic position and is crossed by five highways. It also has a large logistics infrastructure, with a port, airport, and railway. The municipality has a growing industrial park. The steel industry is especially important to Marabá's vast agricultural frontier. Marabá also has a strong trade and services sector.\nMarabá is characterized by its broad mix of peoples and cultures that do justice to the meaning of the town's nickname: \"Son of Miscegenation.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "maraba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1388,
+    "attempt": 1375,
+    "place_id": "gn-3449324",
+    "input": {
+      "place": {
+        "place_id": "gn-3449324",
+        "name": "São Caetano do Sul",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.62306,
+        "lon": -46.55111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São Caetano do Sul",
+          "url": "https://en.wikipedia.org/wiki/São_Caetano_do_Sul",
+          "text": "São Caetano do Sul (Brazilian Portuguese: [sɐ̃w kajˈtɐnu du ˈsuw]; \"Saint Cajetan of the South\"), or simply São Caetano, is a city in São Paulo state in Brazil. It is part of the Metropolitan Region of São Paulo. The population is 165,655 (2022 Census) in an area of 15.33 km2. It is the city with the highest per capita income in Brazil (US$31,322.00 in 2010)\nIt is intensely conurbated with São Paulo, Santo André and São Bernardo do Campo, causing the physical limits between cities to be lost. São Caetano do Sul, together with Ferraz de Vasconcelos, is one of two cities in the state of São Paulo that are not crossed by any state or federal highway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "sao caetano do sul",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "caetano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sul",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1389,
+    "attempt": 1376,
+    "place_id": "gn-3457692",
+    "input": {
+      "place": {
+        "place_id": "gn-3457692",
+        "name": "Marília",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.21389,
+        "lon": -49.94583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marília",
+          "url": "https://en.wikipedia.org/wiki/Marília",
+          "text": "Marília (Portuguese pronunciation: [maˈɾiʎɐ]) is a Brazilian municipality in the midwestern region of the state of São Paulo. Its distance from the state capital São Paulo is 443 km (275 mi) by highway, 529 km (329 mi) by railway and 376 km (234 mi) in a straight line. It is located at an altitude of 675 meters. The population is 247,348 (2025 est.) in an area of 1170 km2.\nThe municipality is emerging as an educational hub in São Paulo, with four public technical and higher education institutions (Unesp, Famema, Univesp and Fatec) and private institutions such as Unimar, Faef, Univem and Anhanguera. In 2017, 74 undergraduate courses were offered, with administration and pedagogy being the most offered. Marília has an average of one university student for every 18 inhabitants. The municipality also has the rural scientific research unit Agência Paulista de Tecnologia dos Agronegócios/APTA Regional de Marília)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "marilia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1390,
+    "attempt": 1377,
+    "place_id": "gn-3664980",
+    "input": {
+      "place": {
+        "place_id": "gn-3664980",
+        "name": "Boa Vista",
+        "country": "Brazil",
+        "subdivision": "Roraima",
+        "lat": 2.81972,
+        "lon": -60.67333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boa Vista, Roraima",
+          "url": "https://en.wikipedia.org/wiki/Boa_Vista,_Roraima",
+          "text": "Boa Vista (Brazilian Portuguese: [ˈbo(w)ɐ ˈvistɐ], literally Good View; figuratively \"Fairview\") is the capital of the Brazilian state of Roraima. Situated on the western bank of the Branco River, the city lies 109 km from Brazil's border with Venezuela, and 58 km away from the border with Guyana. It is the only Brazilian state capital located entirely north of the equator.\nBoa Vista is the most populous municipality in the state of Roraima; approximately half of the population of the state lives in the city. Commerce mostly occurs with Manaus, the capital of the State of Amazonas. Business also takes place between Boa Vista and the cities of Lethem, in Guyana and Santa Elena de Uairén, in Venezuela. Boa Vista also has a cultural and commercial brotherhood relationship with the city of Caruaru. These three foreign cities are the only major cities that can be accessed from Boa Vista by road, although roads connect other smaller state municipalities with the capital city. Travel by airplane is the only means of transportation with other regions of the country.\nAs a modern city, Boa Vista stands out among the other capitals of the North Region of Brazil as it is a planned city with a radial plan. It was planned by the architect Darci Aleixo Derenusson who based his design for the city on one that is similar to that of Paris, France.  The city was built under the direction of Captain Ene Garcez, the first governor of Roraima."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 247
+    },
+    "banned_terms": [
+      {
+        "term": "boa vista",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "boa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vista",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1391,
+    "attempt": 1378,
+    "place_id": "gn-472757",
+    "input": {
+      "place": {
+        "place_id": "gn-472757",
+        "name": "Volgograd",
+        "country": "Russia",
+        "subdivision": "Volgograd Oblast",
+        "lat": 48.71378,
+        "lon": 44.4976
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Volgograd",
+          "url": "https://en.wikipedia.org/wiki/Volgograd",
+          "text": "Volgograd, formerly Tsaritsyn (1589–1925) and Stalingrad (1925–1961), is the administrative centre and largest city of Volgograd Oblast, Russia. The city lies on the western bank of the Volga, covering an area of 859.4 square kilometres (331.8 square miles), with a population of slightly over one million residents. Volgograd is the 16th-largest city by population size in Russia, the third-largest city of the Southern Federal District, and the fourth-largest city on the Volga.\nThe city was founded as the fortress of Tsaritsyn in 1589. By the 19th century, Tsaritsyn had become an important river-port and commercial centre, leading to its rapid population growth. In November 1917, at the start of the Russian Civil War, Tsaritsyn came under Bolshevik control. It fell briefly to the White Army in mid-1919 but returned to Bolshevik control in January 1920. In 1925, the city was renamed Stalingrad in honor of Joseph Stalin, who took part in defending the city against the White Army. During World War II, Axis forces attacked the city, leading to the Battle of Stalingrad, the largest and bloodiest battle in World War II, from which it received the title of Hero City. The Soviet victory at Stalingrad is widely held to be the turning point of World War II. In 1961, Nikita Khrushchev's administration renamed the city to Volgograd as part of de-Stalinization.\nVolgograd today is the site of The Motherland Calls, an 85-metre (279 ft) high statue dedicated to the heroes of the Battle of Stalingrad, which is the tallest statue in Europe, as well as the second tallest statue of a woman in the world. The city has many tourist attractions, such as museums, sandy beaches, and a self-propelled floating church. Volgograd was one of the host cities of the 2018 FIFA World Cup."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 295
+    },
+    "banned_terms": [
+      {
+        "term": "volgograd",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1392,
+    "attempt": 1379,
+    "place_id": "gn-6316298",
+    "input": {
+      "place": {
+        "place_id": "gn-6316298",
+        "name": "Açailândia",
+        "country": "Brazil",
+        "subdivision": "Maranhão",
+        "lat": -4.94667,
+        "lon": -47.50472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Açailândia",
+          "url": "https://en.wikipedia.org/wiki/Açailândia",
+          "text": "Açailândia (Portuguese pronunciation: [asa.iˈlɐ̃dʒiɐ]) is a Brazilian municipality in the western part of Maranhão State, at an elevation of 787 feet (240 m). Its population in 2022 Census was estimated to be 106,550, making it the eighth largest city in the state. The name of the city means \"land of the açaí.\"\nThe city is an important center of agribusiness, the area having the largest cattle stock in Maranhão. The production of pig iron is the municipality's biggest single economic activity. Açailândia is part of the Carajas Development Corridor and the city houses many of the workers who produce charcoal in the area. The city has one of the most important railway stations on the Carajás Railway line.\nAçailândia's origins are recent, lying in the construction of the Belém-Brasília highway in 1958, when the fertile lands in the vicinity of the Açailândia Creek came to the attention of those engaged in building the highway. For some time, Açailândia was considered a district of the city of Imperatriz, the second largest city in the state of Maranhão."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "acailandia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1393,
+    "attempt": 1380,
+    "place_id": "gn-971421",
+    "input": {
+      "place": {
+        "place_id": "gn-971421",
+        "name": "Newcastle",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -27.75796,
+        "lon": 29.9318
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newcastle, KwaZulu-Natal",
+          "url": "https://en.wikipedia.org/wiki/Newcastle,_KwaZulu-Natal",
+          "text": "Newcastle is the third-largest city in the province of KwaZulu-Natal, South Africa and is the province's industrial centre. The city has four industrial areas. The majority of its citizens reside in Newcastle East in the main townships of Madadeni and Osizweni, with the balance residing in Newcastle West (the two sides of Newcastle are separated by the N11 road). Set at the foothills of the northern KwaZulu-Natal Drakensberg Mountains, Newcastle is located in the northwest corner of the province along the Ncandu River.\nNewcastle is the seat of the local municipality, and the Amajuba District Municipality. Newcastle's municipal area is 1,855 square kilometres (716 square miles), ranking Newcastle as South Africa's 15th-largest city and consists of 34 wards.\nThe N11 and R34 are the principal roads linking the city to the rest of South Africa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 118,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "newcastle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

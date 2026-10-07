@@ -1,0 +1,212 @@
+/* Comet — the Chart Room mascot. Transform/opacity-only animation. */
+
+.comet-wrap {
+  position: fixed;
+  right: max(14px, env(safe-area-inset-right, 0px));
+  bottom: max(14px, env(safe-area-inset-bottom, 0px));
+  z-index: 40; /* above page content, below modals/dialogs/toasts (z-50) */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  pointer-events: none; /* the page stays scrollable/tappable around Comet */
+}
+
+.comet-mascot {
+  pointer-events: auto;
+  width: 132px;
+  height: 132px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.comet-mascot svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.comet-mascot:focus-visible {
+  outline: 3px solid var(--atlas-brass);
+  outline-offset: 4px;
+  border-radius: 24px;
+}
+
+/* 120–140px desktop · 72–88px mobile · 64px on short viewports */
+@media (max-width: 1023.5px) {
+  .comet-mascot {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-height: 599.5px) {
+  .comet-mascot {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+/* Eye-state swaps: opacity only, never layout. */
+.comet-eyes-open,
+.comet-eyes-happy,
+.comet-eyes-dizzy {
+  transition: opacity 120ms linear;
+}
+
+.comet-svg[data-eyes="open"] .comet-eyes-happy,
+.comet-svg[data-eyes="open"] .comet-eyes-dizzy,
+.comet-svg[data-eyes="happy"] .comet-eyes-open,
+.comet-svg[data-eyes="happy"] .comet-eyes-dizzy,
+.comet-svg[data-eyes="dizzy"] .comet-eyes-open,
+.comet-svg[data-eyes="dizzy"] .comet-eyes-happy {
+  opacity: 0;
+}
+
+/* Tail sparkle while the greeting is up — pure transform/opacity. */
+.comet-wrap[data-greeting="open"] .comet-tail-star {
+  animation: comet-twinkle 1.1s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes comet-twinkle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.35);
+  }
+}
+
+/* ---- Daily greeting bubble ---- */
+
+.comet-greeting {
+  pointer-events: auto;
+  position: relative;
+  margin: 0 4px 12px 0;
+  max-width: 252px;
+  padding: 10px 12px 10px 14px;
+  background: var(--atlas-card);
+  border: 2px solid var(--atlas-card-line);
+  border-radius: 14px;
+  color: var(--atlas-ink);
+  font-family: var(--font-atlas-body);
+  font-size: 14px;
+  line-height: 1.45;
+  text-align: left;
+  cursor: pointer;
+  transform-origin: bottom right;
+  animation: comet-bubble-in 220ms ease-out;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+/* Speech tail pointing down at Comet. */
+.comet-greeting::after {
+  content: "";
+  position: absolute;
+  right: 30px;
+  bottom: -9px;
+  width: 14px;
+  height: 14px;
+  background: var(--atlas-card);
+  border-right: 2px solid var(--atlas-card-line);
+  border-bottom: 2px solid var(--atlas-card-line);
+  transform: rotate(45deg);
+}
+
+@keyframes comet-bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes comet-bubble-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.comet-greeting-text {
+  margin: 0;
+}
+
+/* Word-by-word reveal: hidden words keep their layout so the bubble
+   never resizes mid-reveal. Screen readers get the full line via aria-label. */
+.comet-greeting-word {
+  opacity: 0;
+  transition: opacity 160ms linear;
+}
+
+.comet-greeting-word.shown {
+  opacity: 1;
+}
+
+/* Sound-OFF opt-in: hear the greeting without flipping the global toggle. */
+.comet-greeting-speaker {
+  position: absolute;
+  top: -13px;
+  right: -13px;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--atlas-brass);
+  color: var(--atlas-brass-ink);
+  border: 2px solid var(--atlas-brass-ink);
+  border-radius: 999px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.comet-greeting-speaker:focus-visible {
+  outline: 3px solid var(--atlas-ink);
+  outline-offset: 2px;
+}
+
+.comet-speaker-icon {
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 480px) {
+  .comet-greeting {
+    max-width: 210px;
+    font-size: 13px;
+  }
+}
+
+/* Reduced motion: bubble fades in ≤150ms, text appears whole, no twinkle,
+   no bounce. Audio timing is unchanged (handled in the component). */
+@media (prefers-reduced-motion: reduce) {
+  .comet-greeting {
+    animation-name: comet-bubble-fade;
+    animation-duration: 150ms;
+  }
+
+  .comet-greeting-word {
+    transition: none;
+  }
+
+  .comet-wrap[data-greeting="open"] .comet-tail-star {
+    animation: none;
+  }
+}

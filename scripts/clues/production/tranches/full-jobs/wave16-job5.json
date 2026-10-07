@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 3103,
+    "attempt": 3081,
+    "place_id": "gn-2649911",
+    "input": {
+      "place": {
+        "place_id": "gn-2649911",
+        "name": "Esher",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.36969,
+        "lon": -0.36693
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Esher",
+          "url": "https://en.wikipedia.org/wiki/Esher",
+          "text": "Esher (  EE-shər) is a town in the borough of Elmbridge in north Surrey, England, to the east of the River Mole.\nEsher is an outlying suburb of London, close to the London–Surrey border; with Esher Commons at its southern end, the town marks a southern limit of the Greater London Built-Up Area. Elevations range from 10m to 47m above sea level.\nEsher has a linear commercial high street and is otherwise suburban in density, with varying elevations, few high rise buildings and very short sections of dual carriageway within the ward itself. Esher covers a large area, between 13 and 15.4 miles southwest of Charing Cross. In the south it is bounded by the A3 Portsmouth Road which is of urban motorway standard and buffered by the Esher Commons.\nEsher is bisected by the A307, historically the Portsmouth Road, which for approximately 1 mile (1.6 km) forms its high street. Esher railway station (served by the South West Main Line) connects the town to London Waterloo.\nSandown Park Racecourse is in the town near the station. In the south, Claremont Landscape Garden owned and managed by the National Trust, once belonged to Princess Charlotte and her husband Leopold I of Belgium. Accordingly, the town was selected to have a fountain by Queen Victoria and has an adjacent Diamond Jubilee column embossed with a relief of the monarch and topped by a statue of Britannia.  Unite, the union, trains representatives at its Esher Place centre, and the town has the offices of Elmbridge Borough Council in its high street."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 259
+    },
+    "banned_terms": [
+      {
+        "term": "esher",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3104,
+    "attempt": 3082,
+    "place_id": "gn-2784821",
+    "input": {
+      "place": {
+        "place_id": "gn-2784821",
+        "name": "Verviers",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.58907,
+        "lon": 5.86241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Verviers",
+          "url": "https://en.wikipedia.org/wiki/Verviers",
+          "text": "Verviers (French pronunciation: [vɛʁvje] ; Walloon: Vervî) is a city and municipality of Wallonia located in the province of Liège, Belgium.\nThe municipality consists of the following districts: Ensival, Heusy, Lambermont, Petit-Rechain, Stembert, and Verviers. It is also the center of an agglomeration that includes Dison and Pepinster, making it the second biggest in the province and an important regional center, located roughly halfway between Liège and the German border.\nWater has played an important role in the town's economy, notably in the development first of its textile and later its tourist industries. As a result, many fountains have been built in Verviers, leading it to be named Wallonia's \"Water Capital\". The seats of the two Walloon public institutions for water distribution and water treatment are located in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "verviers",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3105,
+    "attempt": 3083,
+    "place_id": "gn-293100",
+    "input": {
+      "place": {
+        "place_id": "gn-293100",
+        "name": "Safed",
+        "country": "Israel",
+        "subdivision": "Northern District",
+        "lat": 32.96465,
+        "lon": 35.496
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Safed",
+          "url": "https://en.wikipedia.org/wiki/Safed",
+          "text": "Safed ( SAH-fed; Arabic: صَفَد, romanized: Ṣafad), also known as Tzfat  and officially as Zefat (Hebrew: צְפַת, romanized: Ṣəp̄aṯ), is a city in the Northern District of Israel. Located at an elevation of up to 937 m (3,074 ft), Safed is the highest city in the Galilee and in Israel. In 2022, 93.2% of the population was Jewish and 6.8% was counted as other.\nSafed has been identified with Sepph (Σέπφ), a fortified town in the Upper Galilee mentioned in the writings of the Roman Jewish historian Josephus. The Jerusalem Talmud mentions Safed as one of five elevated spots where fires were lit to announce the Rosh Chodesh and holidays during the Second Temple period. Safed attained local prominence under the Crusaders, who built a large fortress there in 1168. It was conquered by Saladin 20 years later, and demolished by his grandnephew al-Mu'azzam Isa in 1219. After a treaty with the Crusaders in 1240, a larger fortress was erected and expanded and reinforced in 1268 by the Mamluk sultan Baybars, who developed Safed into a major town and the capital of a new province spanning the Galilee.\nAfter a century of general decline, the stability brought by the 1517 Ottoman conquest ushered in nearly a century of growth and prosperity in Safed, during which time Jewish immigrants from across Europe developed the city into a center for wool and textile production and the mystical Kabbalah movement. It became known as one of the Four Holy Cities of Judaism. As the capital of Safed Sanjak, it was the main population center of the Galilee, with large Muslim and Jewish communities. Despite the fortunate governorship of Fakhr al-Din II in the early 17th century, the city underwent a general decline and, by the mid-18th century, was eclipsed by Acre. Druze and Muslim locals raided the Jewish community in 1834 and 1838. Many Jewish residents perished in the 1837 Galilee earthquake; through the philanthropy of Moses Montefiore, its synagogues and homes were rebuilt. Safed's population reached 24,000 toward the end of the 19th century, divided roughly equally between Jews and Muslims, with a small Christian community. Muslim merchants played a key role as middlemen in the grain trade between local farmers and traders in Acre, while the Ottomans promoted the city as a center of Sunni jurisprudence. Safed's conditions improved during this period, with the establishment of a municipal council and several banks.\nBy 1922, Safed's population had dropped to around 8,700; roughly 60% Muslim, 33% Jewish, and the remainder Christian. Amid rising ethnic tension throughout Mandatory Palestine, Safed's Jews were attacked in an massacre of 19 August 1929 and 22 Jews were killed. The city's population had risen to 13,700 by 1948, overwhelmingly Arab, though the city was proposed to be part of a Jewish state in the United Nations Partition Plan for Palestine. During the 1948 Palestine war, Arab factions attacked and besieged the Jewish quarter, which held out until Jewish paramilitary forces captured the city after heavy fighting, precipitating British forces to withdraw. Most of the city's predominantly non-Jewish population fled or were expelled as a result of Operation Yiftach and the nearby Ein al-Zeitun massacre, and were not allowed to return after the war, such that today the city has an almost exclusively Jewish population. That year, the city became part of the then-newly established state of Israel.\n\nSafed has a large Haredi community and remains a center for Jewish religious studies. It hosts Ziv Medical Center and the Zefat Academic College. Safed is a major subject in Israeli art; it hosts an Artists' Quarter. Several prominent art movements played a role in the city, most notably the School of Paris. However the Artists' quarter has declined since its golden age in the second half of the 20th century. Due to its high elevation, the city has warm summers and cold, often snowy winters. Its mild climate and scenic views have made Safed a popular holiday resort frequented by Israelis and foreign visitors. In 2024 it had a population of 38,687."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 673
+    },
+    "banned_terms": [
+      {
+        "term": "safed",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3106,
+    "attempt": 3084,
+    "place_id": "gn-2964180",
+    "input": {
+      "place": {
+        "place_id": "gn-2964180",
+        "name": "Galway",
+        "country": "Ireland",
+        "subdivision": "Connacht",
+        "lat": 53.27245,
+        "lon": -9.05095
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Galway",
+          "url": "https://en.wikipedia.org/wiki/Galway",
+          "text": "Galway ( GAWL-way; Irish: Gaillimh, pronounced [ˈɡal̠ʲɪvʲ] ) is a city in (and the county town of) County Galway. It lies on the River Corrib between Lough Corrib and Galway Bay. It is the most populous settlement in the province of Connacht, the fifth most populous city on the island of Ireland and the fourth most populous in the Republic of Ireland, with a population at the 2022 census of 85,910.\nLocated near an earlier settlement, Galway grew around a fortification built by the King of Connacht, Tairrdelbach Ua Conchobair in 1124. A municipal charter in 1484 allowed citizens of the by then walled city to form a council and mayoralty. Controlled largely by a group of merchant families, the Tribes of Galway, the city grew into a trading port. Following a period of decline, as of the 21st century, Galway is a tourist destination known for festivals and events including the Galway International Arts Festival.\nIn 2018, Galway was named the European Region of Gastronomy. The city was the European Capital of Culture for 2020, alongside Rijeka, Croatia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "galway",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3107,
+    "attempt": 3085,
+    "place_id": "gn-2990611",
+    "input": {
+      "place": {
+        "place_id": "gn-2990611",
+        "name": "Neuilly-sur-Seine",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.8846,
+        "lon": 2.26965
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Neuilly-sur-Seine",
+          "url": "https://en.wikipedia.org/wiki/Neuilly-sur-Seine",
+          "text": "Neuilly-sur-Seine (French pronunciation: [nøji syʁ sɛn] ; lit. 'Neuilly-on-Seine'), also known simply as Neuilly, is an urban commune in Hauts-de-Seine, Île-de-France, France. An immediate western suburb of Paris, it is physically separated from the capital centre only by the Périphérique to its east and the Bois de Boulogne to its south.\nNeuilly is mainly made up of residential neighborhoods and hosts several corporate headquarters and foreign embassies. One of the most affluent areas of France, it is the wealthiest and most expensive suburb of Paris. Although, as of 2020, it is the commune with only the fourth highest median per capita income (€52,570 per year) in France, if Neuilly is grouped together with the city's adjacent 16th and 17th arrondissements, they form the most affluent residential area in the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "neuilly sur seine",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "neuilly",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "seine",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3108,
+    "attempt": 3086,
+    "place_id": "gn-3012649",
+    "input": {
+      "place": {
+        "place_id": "gn-3012649",
+        "name": "Issy-les-Moulineaux",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.82104,
+        "lon": 2.27718
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Issy-les-Moulineaux",
+          "url": "https://en.wikipedia.org/wiki/Issy-les-Moulineaux",
+          "text": "Issy-les-Moulineaux (French pronunciation: [isi le mulino]) is a commune in the southwestern suburban area of Paris, France, lying on the left bank of the river Seine. Its citizens are called Isséens in French. It is one of Paris's entrances and is located 6.6 km (4.1 mi) from Notre Dame Cathedral, which is considered Kilometre Zero in France. On 1 January 2010, Issy-les-Moulineaux became part of the  Grand Paris Seine Ouest agglomeration community, which merged into the Métropole du Grand Paris in January 2016.\nIssy-les-Moulineaux has successfully moved its economy from an old manufacturing base to high value-added service sectors and is at the heart of the Val de Seine business district, the largest cluster of telecommunication and media businesses in France, hosting the headquarters of most major French television networks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "issy les moulineaux",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "issy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "moulineaux",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3109,
+    "attempt": 3087,
+    "place_id": "gn-3028641",
+    "input": {
+      "place": {
+        "place_id": "gn-3028641",
+        "name": "Carcassonne",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.21649,
+        "lon": 2.34863
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carcassonne",
+          "url": "https://en.wikipedia.org/wiki/Carcassonne",
+          "text": "Carcassonne is a French city in the department of Aude, region of Occitania. It is the prefecture of the department.\nInhabited since the Neolithic Period, Carcassonne is located in the plain of the Aude between historic trade routes, linking the Atlantic to the Mediterranean Sea and the Massif Central to the Pyrénées. Its strategic importance was quickly recognised by the Romans, who occupied its hilltop until the demise of the Western Roman Empire. In the fifth century, the region of Septimania was taken over by the Visigoths, who founded the city of Carcassonne in the newly established Visigothic Kingdom.\nIts citadel, known as the Cité de Carcassonne, is a medieval fortress dating back to the Gallo-Roman period and restored by the theorist and architect Eugène Viollet-le-Duc between 1853 and 1879. It was added to the UNESCO list of World Heritage Sites in 1997 because of the exceptional preservation and restoration of the medieval citadel. Consequently, Carcassonne relies heavily on tourism but also counts manufacturing and winemaking as some of its other key economic sectors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "carcassonne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3110,
+    "attempt": 3088,
+    "place_id": "gn-3097257",
+    "input": {
+      "place": {
+        "place_id": "gn-3097257",
+        "name": "Jelenia Góra",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 50.89973,
+        "lon": 15.72899
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jelenia Góra",
+          "url": "https://en.wikipedia.org/wiki/Jelenia_Góra",
+          "text": "Jelenia Góra ([jɛˈlɛɲa ˈɡura] ; German: Hirschberg; lit. 'deer mountain') is a historic city in southwestern Poland, within the regions of Silesia and Lower Silesia. Jelenia Góra is situated in the Lower Silesian Voivodeship, close to the Karkonosze mountain range, with ski resorts such as Karpacz and Szklarska Poręba situated 10 to 15 kilometres (6 to 9 miles) from the city. Jelenia Góra constitutes a separate urban gmina as well as being the seat of surrounding Karkonosze County. In 2021, the population was 77,366. The area, including the oldest spa district of Cieplice Śląskie-Zdrój, is one of the most valued recreational and leisure locations in Poland.\nThe city's history dates back to as early as the 10th century, but the settlement was granted town rights under Polish rule in 1288. Jelenia Góra was founded on important trade routes linking the Holy Roman Empire and Bohemia with Eastern Europe. The region flourished as a result of trade privileges that became the basis for the establishment of weaving and mining industries during the Late Middle Ages and early Renaissance periods. Jelenia Góra witnessed many historical conflicts such as the Thirty Years' War and the decisive Silesian Wars. Spared from damage during World War II, the German-speaking population of the city was expelled following 1945 and the city was repopulated by Poles.\nThe central suburb of Jelenia Góra possesses many historical and architectural structures of great significance, including the 17th-century town hall, baroque churches and a restored central marketplace as well as parks and gardens. The nearby Karkonosze National Park, visited by over 1.5 million tourists annually, has its headquarters in the southwestern neighbourhood of Sobieszów. On 6 May 2015, the city, together with 18 surrounding municipalities, signed an agreement establishing the Jelenia Góra Agglomeration, with a population of 252,300 inhabitants.\nCurrently, the Jelenia Góra Agglomeration (AJ) consists of the city of Jelenia Góra (a city with county rights) and 25 municipalities of urban, urban-rural, and rural character."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 325
+    },
+    "banned_terms": [
+      {
+        "term": "jelenia gora",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jelenia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gora",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3111,
+    "attempt": 3089,
+    "place_id": "gn-3404558",
+    "input": {
+      "place": {
+        "place_id": "gn-3404558",
+        "name": "Cabedelo",
+        "country": "Brazil",
+        "subdivision": "Paraíba",
+        "lat": -6.98111,
+        "lon": -34.83389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cabedelo",
+          "url": "https://en.wikipedia.org/wiki/Cabedelo",
+          "text": "Cabedelo is a municipality of the Metropolitan Region of João Pessoa, in the state of Paraíba in the Northeast Region of Brazil.\nIt has an area of 29,873 square kilometers, with singular measures: 18 kilometers long and only three kilometers wide. Its population in 2020 was estimated by the Brazilian Institute of Geography and Statistics (IBGE) at 68,767 inhabitants. On 17th century Dutch maps, it appeared as an island because of the Jaguaribe and Mandacaru rivers. Its geophysical age also differs from neighbouring municipalities that tend to have older sedimentary plateaus and therefore divergent average altitude and climate.\nCurrently, it is troubled by the capital of Paraíba, João Pessoa, and serves as an extension of certain tertiary activities of the headquarters, such as tourism but also private higher education, etc. CBTU urban trains and Estrada de Cabedelo (BR-230) are the main connections between the two cities. It is the richest municipality in the state in terms of gross domestic product per capita, as it has a gross domestic product of more than 2.2 billion reais according to updated data from 2007, that is, more than half of the economy of Campina Grande (another large city in the state) in a much smaller area and with a much lower population. It has one of the largest proportional gross domestic products in the Northeast, comparable to cities like Ipojuca and Guamaré.\nThe municipality contains the 103-hectare (250-acre) Restinga de Cabedelo National Forest, created in 2004."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 243
+    },
+    "banned_terms": [
+      {
+        "term": "cabedelo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3112,
+    "attempt": 3090,
+    "place_id": "gn-3438735",
+    "input": {
+      "place": {
+        "place_id": "gn-3438735",
+        "name": "Encarnación",
+        "country": "Paraguay",
+        "subdivision": "Itapúa",
+        "lat": -27.33176,
+        "lon": -55.86662
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Encarnación, Paraguay",
+          "url": "https://en.wikipedia.org/wiki/Encarnación,_Paraguay",
+          "text": "Encarnación (Spanish pronunciation: [eŋkaɾnaˈsjon]) is a district and the capital city of Itapúa Department in Paraguay, located at the south-east of the department, on the right-hand (western) shore of the Paraná River, opposite Posadas, Argentina. The city has an area of 274 km2 \nand a population of 106,842 (2022 Census), and the Greater Encarnacion area has a population of around 200,000. Encarnación is the third-largest city of Paraguay. The city was originally named Nuestra Señora de la Anunciación de Itapúa. \nEncarnación is connected to the Argentine city of Posadas by the San Roque González de Santa Cruz Bridge and the International Train. The city is located on Route 1, some 370 km (225 miles) from Asunción, and located on Route 6, some 280 km (175 miles) from Ciudad del Este. Due to its proximity, many Argentines travel to the city. The city is an important financing centre of Paraguay and maintains a commercial relationship with Argentine Posadas.\nThe Teniente Amin Ayub Gonzalez Airport (IATA: ENO, ICAO: SGEN), at coordinates 27°13′23″S 55°50′03″W, is 12 kilometres from the city and is the third most important airport of the country."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "encarnacion",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3113,
+    "attempt": 3091,
+    "place_id": "gn-3521108",
+    "input": {
+      "place": {
+        "place_id": "gn-3521108",
+        "name": "Progreso",
+        "country": "Mexico",
+        "subdivision": "Yucatán",
+        "lat": 21.28217,
+        "lon": -89.66289
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Progreso, Yucatán",
+          "url": "https://en.wikipedia.org/wiki/Progreso,_Yucatán",
+          "text": "Progreso (Spanish pronunciation: [pɾoˈɣɾeso]) is a port city in the Mexican state of Yucatán, located on the Gulf of Mexico in the north-west of the state some 30 minutes north of state capital Mérida (the biggest city on the Yucatán Peninsula) by highway. As of the Mexican census of 2010, Progreso had an official population of 37,369 inhabitants, the sixth largest community in the state in population. The city is also the municipal seat of the surrounding municipality of the same name. The municipality's area is 270.10 km2 (104.29 sq mi) and its population at the census was 49,454 inhabitants. It includes Scorpion Reef with its five islets 130 km offshore (north) on the outer edge of Campeche Bank. Its largest other towns are Chicxulub Puerto, Campestre Flamboyanes, and Chelem."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "progreso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3114,
+    "attempt": 3092,
+    "place_id": "gn-3836620",
+    "input": {
+      "place": {
+        "place_id": "gn-3836620",
+        "name": "San Ramón de la Nueva Orán",
+        "country": "Argentina",
+        "subdivision": "Salta",
+        "lat": -23.13705,
+        "lon": -64.32426
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Ramón de la Nueva Orán",
+          "url": "https://en.wikipedia.org/wiki/San_Ramón_de_la_Nueva_Orán",
+          "text": "San Ramón de la Nueva Orán (usually referred to simply as Orán) is a city in northwest province of Salta, Argentina, about 270 km (170 mi) from the provincial capital, Salta. It is the head town of the Orán Department, and it has about 73,000 inhabitants as per the 2001 census [INDEC], which makes it the second-most populated in the province.\nOrán is the seat of a Catholic diocese and a regional center of the Universidad Nacional de Salta. It is linked to other cities in the area by National Route 50 near National Route 34. Air traffic to the provincial capital is serviced by the Orán Airport (IATA: ORA, ICAO: SASO).\nThe city of Oran is the most important geopolitical center in the north of the province of Salta. Having AFIP, ANES, Banco Nación, INTA, and a Federal Court, among other important offices, makes the city a point of reference to the entire Bermejo Region.  It has active commercial centers, and methods of transit to the Bolivian border. Currently there is construction of a freeway from the south of the town connecting it to the city of Pichanal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "san ramon de la nueva oran",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ramon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "nueva",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "oran",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3115,
+    "attempt": 3093,
+    "place_id": "gn-3987246",
+    "input": {
+      "place": {
+        "place_id": "gn-3987246",
+        "name": "San Felipe",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 21.47882,
+        "lon": -101.21581
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Felipe, Guanajuato",
+          "url": "https://en.wikipedia.org/wiki/San_Felipe,_Guanajuato",
+          "text": "San Felipe (Spanish pronunciation: [saɱ feˈlipe]), known colloquially as \"San Felipe Torres Mochas\" (Spanish pronunciation: [saɱ feˈlipe ˈtores ˈmotʃas]), is a Mexican city and municipality located in the northwest region of the state of Guanajuato. The municipality has an area of 2,969.79 square kilometers (9.50% of the state's surface), making it the biggest municipality in terms of size. It is bordered to the north by the municipality of Ocampo, to the south by the municipalities of León and Guanajuato, to the southeast by the municipality of Dolores Hidalgo and to the east by the municipality of San Diego de la Unión. It borders to the north with the state of San Luis Potosí and to the west with the state of Jalisco. The municipality had 106,952 inhabitants as of 2010."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "san felipe",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "felipe",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3116,
+    "attempt": 3094,
+    "place_id": "gn-4063619",
+    "input": {
+      "place": {
+        "place_id": "gn-4063619",
+        "name": "Gadsden",
+        "country": "United States",
+        "subdivision": "Alabama",
+        "lat": 34.01434,
+        "lon": -86.00639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gadsden, Alabama",
+          "url": "https://en.wikipedia.org/wiki/Gadsden,_Alabama",
+          "text": "Gadsden is a city in and the county seat of Etowah County, Alabama, United States. The population was 33,945 as of the 2020 census, and was estimated at 33,367 in 2025, making it is the eighteenth-largest city in Alabama.\nIt is located on the Coosa River about 56 miles (90 km) northeast of Birmingham, 90 miles (140 km) southwest of Chattanooga, Tennessee, and 72 miles (116 km) southeast of Huntsville.\nIn the 19th century, Gadsden was Alabama's second-most important center of commerce and industry, trailing only the seaport of Mobile. The two cities were important shipping centers: Gadsden for riverboats and Mobile for international trade.\nFrom the late 19th century through the 1980s, Gadsden was a center of heavy industry, including the Goodyear Tire and Rubber Company and Republic Steel. In 1991, following more than a decade of sharp decline in industry, Gadsden was awarded the honor of All-America City by the National Civic League."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "gadsden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3117,
+    "attempt": 3095,
+    "place_id": "gn-4133367",
+    "input": {
+      "place": {
+        "place_id": "gn-4133367",
+        "name": "Texarkana",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 33.44179,
+        "lon": -94.03769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Texarkana, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Texarkana,_Arkansas",
+          "text": "Texarkana is a city in the U.S. state of Arkansas and the county seat of Miller County, on the southwest border of the state. As of the 2020 census, it had a population of 29,387. It is the twin city of Texarkana, Texas, located just across the state line. The city was founded at a railroad intersection on December 8, 1873, and was incorporated in Arkansas on August 10, 1880. Texarkana and its Texas counterpart are the principal cities of the Texarkana metropolitan area, which in 2021 was ranked 289th in the United States with a population of 147,174, according to the United States Census Bureau.\nWithin the Ark-La-Tex subregion of southwest Arkansas, Texarkana is located in the Piney Woods, an oak–hickory forest that dominates the flat Gulf Coastal Plain. Texarkana's economy is based on agriculture. The city has long been a trading center, first located at the intersection of major railroads serving Texas, Arkansas and north into Missouri. Since then three major Interstate highways constructed crossroads here: Interstate 30 (I-30), I-49, and the future I-69.  The Red River Army Depot is the largest single employer in the city.\nThe Texarkana Arkansas School District is the largest public school district on the Arkansas side. The city has a branch campus of the University of Arkansas Hope-Texarkana (UAHT). Texarkana College is located on the Texas side."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "texarkana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3118,
+    "attempt": 3096,
+    "place_id": "gn-4473083",
+    "input": {
+      "place": {
+        "place_id": "gn-4473083",
+        "name": "Jacksonville",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 34.75405,
+        "lon": -77.43024
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jacksonville, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Jacksonville,_North_Carolina",
+          "text": "Jacksonville is the county seat of and the most populous community in Onslow County, North Carolina, which is coterminous with the Jacksonville, NC Metropolitan Statistical Area. As of the 2020 census, the population was 72,723, which makes Jacksonville the 14th-most populous city in North Carolina. Demographically, Jacksonville is the youngest city in the United States, with an average age of 22.8 years old, which can be attributed to the large military presence. The low age may also be in part due to the population drastically increasing over the past 80 years, from 783 in the 1930 census to 72,723 in the 2020 census.\nIt is the home of the United States Marine Corps' Camp Lejeune and New River Air Station. Jacksonville is located adjacent to North Carolina's Crystal Coast area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "jacksonville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3119,
+    "attempt": 3097,
+    "place_id": "gn-4503078",
+    "input": {
+      "place": {
+        "place_id": "gn-4503078",
+        "name": "Millville",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.40206,
+        "lon": -75.03934
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Millville, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Millville,_New_Jersey",
+          "text": "Millville is a city in Cumberland County, in the U.S. state of New Jersey. As of the 2020 United States census, the city's population was 27,491, a decrease of 909 (−3.2%) from the 2010 census count of 28,400, which in turn reflected an increase of 1,553 (+5.8%) from the 26,847 counted in the 2000 census.\nMillville was originally incorporated as a township by an act of the New Jersey Legislature on February 24, 1801, from portions of Fairfield Township. Portions of the township were taken to form Landis Township on March 7, 1864. Millville was reincorporated as a city on March 1, 1866, based on the results of a referendum passed that same day. The city derives its name from a proposal to create a mill town in the area.\nMillville is part of the South Jersey region of the state and is located within the Vineland-Bridgeton metropolitan statistical area, and it is ultimately part of the larger Philadelphia metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "millville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3120,
+    "attempt": 3098,
+    "place_id": "gn-4715292",
+    "input": {
+      "place": {
+        "place_id": "gn-4715292",
+        "name": "North Richland Hills",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 32.8343,
+        "lon": -97.2289
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Richland Hills, Texas",
+          "url": "https://en.wikipedia.org/wiki/North_Richland_Hills,_Texas",
+          "text": "North Richland Hills, commonly known as NRH, is a city in the U.S. state of Texas, located in Tarrant County. It is a mid-to-high end suburb of Fort Worth and forms part of the Mid-Cities region of the Dallas-Fort Worth Metroplex. The population was 69,917 at the 2020 census, making it the third largest city in Tarrant County.\nThe 2025-2026 Best Places to Live as ranked by U.S. News & World Report places North Richland Hills #64 in the nation and #19 in Texas. North Richland Hills was also named one of 2025's Most Livable Small Cities in America by SmartAsset, ranking #48 out of 279 small cities (population 65,000 to 1000,000) evaluated. It was one of only two Texas cities to make the top 50, along with Flower Mound.\nIn 2006, North Richland Hills was selected as one of the \"Top 100 Best Places to live in America\" according to Money magazine. In 2016, the Dallas Morning News ranked North Richland Hills #9 on its list of best Dallas–Fort Worth neighborhoods. In 2012, North Richland Hills was ranked at #44 as one of the Best Dallas Suburbs according to D Magazine.\nMajor streets and highways include: FM 1938 (Davis Boulevard), Mid Cities Boulevard, Bedford-Euless Road, Interstate Highway 820, North Tarrant Parkway, FM 3029 (Precinct Line Road), and TX SH 26. It is home to the Birdville Independent School District, and the northern portion is served by Keller ISD.\nNRH notably houses the headquarters of HealthMarkets, Give Me The Vin and GRITR Sports & Outdoors. North Richland Hills features popular businesses and locations, including Peppa Pig Theme Park Dallas Fort Worth, Malibu Jack's Indoor Theme Park, NRH2O Family Water Park, Iron Horse Golf Course, NYTEX Sports Centre - home of the Lone Star Brahmas hockey team, Medical City North Hills, and its own state-of-the-art public library and recreation center. Additionally, NRH is surrounded by numerous communities, such as Haltom City, Keller, Hurst, Colleyville, and Southlake. It also housed the now-demolished North Hills Mall, which ceased operations in 2004. As of 2016, that site is now the new location of the North Richland Hills City Hall."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 355
+    },
+    "banned_terms": [
+      {
+        "term": "north richland hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "richland",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3121,
+    "attempt": 3099,
+    "place_id": "gn-4736096",
+    "input": {
+      "place": {
+        "place_id": "gn-4736096",
+        "name": "Texarkana",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 33.42513,
+        "lon": -94.04769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Texarkana, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Texarkana,_Arkansas",
+          "text": "Texarkana is a city in the U.S. state of Arkansas and the county seat of Miller County, on the southwest border of the state. As of the 2020 census, it had a population of 29,387. It is the twin city of Texarkana, Texas, located just across the state line. The city was founded at a railroad intersection on December 8, 1873, and was incorporated in Arkansas on August 10, 1880. Texarkana and its Texas counterpart are the principal cities of the Texarkana metropolitan area, which in 2021 was ranked 289th in the United States with a population of 147,174, according to the United States Census Bureau.\nWithin the Ark-La-Tex subregion of southwest Arkansas, Texarkana is located in the Piney Woods, an oak–hickory forest that dominates the flat Gulf Coastal Plain. Texarkana's economy is based on agriculture. The city has long been a trading center, first located at the intersection of major railroads serving Texas, Arkansas and north into Missouri. Since then three major Interstate highways constructed crossroads here: Interstate 30 (I-30), I-49, and the future I-69.  The Red River Army Depot is the largest single employer in the city.\nThe Texarkana Arkansas School District is the largest public school district on the Arkansas side. The city has a branch campus of the University of Arkansas Hope-Texarkana (UAHT). Texarkana College is located on the Texas side."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "texarkana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3122,
+    "attempt": 3100,
+    "place_id": "gn-5100619",
+    "input": {
+      "place": {
+        "place_id": "gn-5100619",
+        "name": "Long Branch",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.30428,
+        "lon": -73.99236
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Long Branch, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Long_Branch,_New_Jersey",
+          "text": "Long Branch is a beachside city in Monmouth County, in the U.S. state of New Jersey. As of the 2020 United States census, the city's population was 31,667, an increase of 948 (+3.1%) from the 2010 census count of 30,719, which in turn reflected a decline of 621 (−2.0%) from the 31,340 counted in the 2000 census. As of the 2020 census, it was the 6th-most-populous municipality in Monmouth County and had the 74th-highest population of any municipality in New Jersey.\n\nLong Branch was formed on April 11, 1867, as the Long Branch Commission, from portions of Ocean Township. Long Branch was incorporated as a city by an act of the New Jersey Legislature on April 8, 1903, based on the results of a referendum, replacing the Long Branch Commission."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "long branch",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "long",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "branch",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

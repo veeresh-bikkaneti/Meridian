@@ -1,0 +1,722 @@
+[
+  {
+    "rank": 1518,
+    "place_id": "gn-3450404",
+    "input": {
+      "place": {
+        "place_id": "gn-3450404",
+        "name": "Santa Bárbara d'Oeste",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.75361,
+        "lon": -47.41361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Bárbara d'Oeste",
+          "url": "https://en.wikipedia.org/wiki/Santa_Bárbara_d'Oeste",
+          "text": "Santa Bárbara d'Oeste is a municipality in the State of São Paulo in Brazil. It is part of the Metropolitan Region of Campinas. It lies about 138 kilometres (86 mi) northwest of the State capital. It occupies an area of 272.2 square kilometres (105.1 sq mi), of which 43.1 square kilometres (16.6 sq mi) is urban. In 2020, the population was estimated at 194,390 by the Brazilian Institute of Geography and Statistics, making it the 43rd most populous city in São Paulo and the sixth largest in the metropolitan region of Campinas.\nSanta Bárbara d'Oeste has an annual average temperature of 22.2 °C (72.0 °F), and the original vegetation of the area predominates."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "santa barbara d oeste",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "barbara",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "oeste",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1533,
+    "place_id": "gn-1254241",
+    "input": {
+      "place": {
+        "place_id": "gn-1254241",
+        "name": "Tonk",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 26.16638,
+        "lon": 75.78824
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tonk, India",
+          "url": "https://en.wikipedia.org/wiki/Tonk,_India",
+          "text": "Tonk is a city in Tonk district of the Indian state of Rajasthan. The city of Tonk is situated 95 km (60 mi) by road south from Jaipur, near the right bank of the Banas River. It is the administrative headquarters of Tonk District. Tonk was also the capital of the eponymous princely state of British India from 1817 to 1947. Kamal Amrohi's movie Razia Sultan was shot in Tonk in 1981–82. Famous places in Tonk include: Shahi Jama Masjid, Bisalpur Dam, Arabic Persian Research Institute, Sunhari Kothi, Hathi Bhata, haadi rani ka kund, Annapurna Dungri Ganesh Temple, Rasiya Ki Tekri, Kidwai Park, Ghantaghar, Kamdhenu Circle, Nehru Garden, and Chaturbhuj Talab Lake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "tonk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1534,
+    "place_id": "gn-1256237",
+    "input": {
+      "place": {
+        "place_id": "gn-1256237",
+        "name": "Shimla",
+        "country": "India",
+        "subdivision": "Himachal Pradesh",
+        "lat": 31.10442,
+        "lon": 77.16662
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shimla",
+          "url": "https://en.wikipedia.org/wiki/Shimla",
+          "text": "Shimla, also known as Simla (the official name until 1972), (Hindi: [ʃɪmla] ) is the capital and the largest city of the northern Indian state of Himachal Pradesh. In 1864, Shimla was declared the summer capital of British India. After independence, the city became the capital of East Punjab and was later made the capital city of Himachal Pradesh. It is the largest and most developed city of Himachal Pradesh, as well as the state's principal commercial, cultural and educational centre.\nSmall hamlets were recorded before 1815 when British forces took control of the area. The climatic conditions attracted the British to establish the city in the dense forests of the Himalayas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "shimla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1537,
+    "place_id": "gn-1293960",
+    "input": {
+      "place": {
+        "place_id": "gn-1293960",
+        "name": "Taunggyi",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Shan State",
+        "lat": 20.78919,
+        "lon": 97.03776
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taunggyi",
+          "url": "https://en.wikipedia.org/wiki/Taunggyi",
+          "text": "Taunggyi is the capital and largest city of Shan State, Myanmar. It also serves as the administrative seat of Southern Shan State. Situated on the eastern mountains of Myanmar at an elevation of 4,712 feet (1,436 meters) above sea level, it is a city known for its pleasant and cool climate. Unlike many other cities, Taunggyi is built directly along the mountain ridges rather than on the valley floor.\n\nDue to its high-altitude location, the beauty of the surrounding valleys and mountain ranges can be viewed from almost any part of the city. Taunggyi is renowned as a healthy hill station where residents and visitors can enjoy fresh, clean mountain air year-round."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "taunggyi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1541,
+    "place_id": "gn-1799869",
+    "input": {
+      "place": {
+        "place_id": "gn-1799869",
+        "name": "Nanning",
+        "country": "China",
+        "subdivision": "Guangxi",
+        "lat": 22.81667,
+        "lon": 108.31667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanning",
+          "url": "https://en.wikipedia.org/wiki/Nanning",
+          "text": "Nanning is the capital of the Guangxi Zhuang Autonomous Region in southern China. It is known as the \"Green City (绿城)\" because of its abundance of lush subtropical foliage. Located in the South of Guangxi, Nanning is surrounded by a hilly basin, with a warm, monsoon-influenced humid subtropical climate.\nBeginning in 1949, as it underwent sustained industrial growth, Nanning's economy began developing beyond its former role, and the city became essentially a commercial and administrative centre. Today, Nanning is considered the economic, financial and cultural center of Guangxi, and the chief centre for the training of the Zhuang minority in Guangxi. The People's Park is located in the center of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "nanning",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1544,
+    "place_id": "gn-2377450",
+    "input": {
+      "place": {
+        "place_id": "gn-2377450",
+        "name": "Nouakchott",
+        "country": "Mauritania",
+        "subdivision": "Mauritania",
+        "lat": 18.08581,
+        "lon": -15.9785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nouakchott",
+          "url": "https://en.wikipedia.org/wiki/Nouakchott",
+          "text": "Nouakchott ( nwa(h)k-SHOT) is the capital and largest city of Mauritania. Located in the southwestern part of the country, it is one of the largest cities in the Sahara. The city also serves as the administrative and economic center of Mauritania.\nOnce a mid-sized coastal village, Nouakchott was selected as the capital for the nascent nation of Mauritania, with construction beginning in 1958. It was originally designed to accommodate a population of 15,000, but experienced significant population growth in the 1970s when many Mauritanians fled their home villages due to drought and increasing desertification. Many of the newcomers settled in slum areas of the city that were poorly maintained and extremely overcrowded."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "nouakchott",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1547,
+    "place_id": "gn-2965140",
+    "input": {
+      "place": {
+        "place_id": "gn-2965140",
+        "name": "Cork",
+        "country": "Ireland",
+        "subdivision": "Munster",
+        "lat": 51.89797,
+        "lon": -8.47061
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cork, Blackrock and Passage Railway",
+          "url": "https://en.wikipedia.org/wiki/Cork,_Blackrock_and_Passage_Railway",
+          "text": "The Cork, Blackrock and Passage Railway (CB&PR) was a 3 ft (914 mm) narrow gauge railway in County Cork, Ireland. The line originally opened in 1850 as a 5 ft 3 in (1,600 mm) Irish standard gauge railway between Cork and Passage West and operated steam feeder ferries to other locations round Cork Harbour.  The company was heavily dependent on summer tourist traffic for a considerable proportion of its revenue.  The railway was converted to 3 ft (914 mm) narrow gauge in 1900 in conjunction with extensions southwards to Crosshaven which were completed in 1904. The railway closed in 1932 and has since been replaced by a public pathway and nature area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "cork",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1555,
+    "place_id": "gn-5014051",
+    "input": {
+      "place": {
+        "place_id": "gn-5014051",
+        "name": "Warren",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.49044,
+        "lon": -83.01304
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warren, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Warren,_Michigan",
+          "text": "Warren is a city in Macomb County, Michigan, United States. An inner-ring suburb of Detroit, Warren borders Detroit to the north, roughly 13 miles (20.9 km) north of downtown Detroit. The population was 139,387 at the 2020 census, making Warren the largest community in Macomb County, the third-largest city in Michigan, and Detroit's largest suburb. The town has a history as a sundown town.\nThe city is home to a wide variety of businesses, including the General Motors Technical Center, the United States Army Detroit Arsenal, home of the United States Army TACOM Life Cycle Management Command, the Tank Automotive Research, Development and Engineering Center (TARDEC), and the headquarters of Asset Acceptance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "warren",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1556,
+    "place_id": "gn-5097598",
+    "input": {
+      "place": {
+        "place_id": "gn-5097598",
+        "name": "Elizabeth",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.66399,
+        "lon": -74.2107
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elizabeth, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Elizabeth,_New_Jersey",
+          "text": "Elizabeth is a city in and the county seat of Union County, in the U.S. state of New Jersey. As of the 2020 United States census, the city retained its ranking as the state's fourth-most-populous city behind neighboring Newark, Jersey City and Paterson, with a population of 137,298, an increase of 12,329 (+9.9%) from the 2010 census count of 124,969, which in turn reflected an increase of 4,401 (3.7%) from the 120,568 counted in the 2000 census.\nThe Population Estimates Program calculated a population of 141,675 for 2025, making it the 199th-most populous city in the nation and the fifth-most populous municipality of any type in the state, falling behind Lakewood Township."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "elizabeth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1565,
+    "place_id": "gn-183595",
+    "input": {
+      "place": {
+        "place_id": "gn-183595",
+        "name": "Ngong",
+        "country": "Kenya",
+        "subdivision": "Kajiado County",
+        "lat": -1.3527,
+        "lon": 36.6699
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ngong, Kenya",
+          "url": "https://en.wikipedia.org/wiki/Ngong,_Kenya",
+          "text": "Ngong is a town near the Ngong Hills along the Great Rift Valley within Kajiado County, located in the southwest of Nairobi, in southern Kenya.\nThe word \"Ngong\" is a Maasai word derived from the word \"enkong'u\" meaning both \"the 'eye'\" and \"eye of water\" or thus spring of water.  The original place name is ɛnkɔŋʉ́ ɛ́ mʉny, literally the eye of the rhinoceros but functionally Rhinoceros Spring; an alternative name is ɔlchɔ́rrɔ ɛ́ mʉny (olchorro is a synonym of enkong'u). Ngong is the anglicization of ɛnkɔŋʉ́.  Seemingly the British found enkong'u e muñ too difficult to pronounce. A widespread false etymology is linked with the knuckle shape of the hills."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "ngong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1569,
+    "place_id": "gn-2377457",
+    "input": {
+      "place": {
+        "place_id": "gn-2377457",
+        "name": "Nouadhibou",
+        "country": "Mauritania",
+        "subdivision": "Dakhlet Nouadhibou",
+        "lat": 20.94188,
+        "lon": -17.03842
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nouadhibou",
+          "url": "https://en.wikipedia.org/wiki/Nouadhibou",
+          "text": "Nouadhibou (; Arabic: نواذيبو, romanized: Nwādhībū, Hassaniyya: [nwaðiːbu] ), formerly named Port-Étienne, is the second largest city in Mauritania and serves as a major commercial center. The city has about 173,000 inhabitants. It is situated on a 65-kilometre peninsula or headland called Ras Nouadhibou, Cap Blanc, or Cabo Blanco, of which the western side has the city of La Güera. Nouadhibou is consequently located merely a couple of kilometers from the border between Mauritania and Western Sahara. Its current mayor is Elghassem Ould Bellali, who was installed on 15 October 2018.\nNouadhibou is a major hotspot for migrant smuggling, serving as a key departure point for those attempting to reach Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "nouadhibou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1586,
+    "place_id": "gn-1141269",
+    "input": {
+      "place": {
+        "place_id": "gn-1141269",
+        "name": "Ghazni",
+        "country": "Afghanistan",
+        "subdivision": "Ghazni",
+        "lat": 33.55391,
+        "lon": 68.42096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ghazni",
+          "url": "https://en.wikipedia.org/wiki/Ghazni",
+          "text": "Ghazni, historically known as Ghaznayn or Ghazna, also transliterated as Ghuznee, and anciently known as Alexandria in Opiana, is a city in southeastern Afghanistan, serving as the capital of Ghazni Province. It is within the jurisdiction of Ghazni District and has an estimated population of 205,965 people. Mawlawi Muhammad Nabi Hamzah is the current mayor of the city.\nGhazni is a thriving city with a number of factories, bazaars, business centers, banks, historical sites, public parks, hotels, restaurants, mosques, hospitals, universities, and places to play sports or just walk around. In 2015 there were 15,931 dwelling units in the city. Many tourists visit the city for leisure and pleasure purposes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "ghazni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1600,
+    "place_id": "gn-2644487",
+    "input": {
+      "place": {
+        "place_id": "gn-2644487",
+        "name": "Lincoln",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.22683,
+        "lon": -0.53792
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lincoln, England",
+          "url": "https://en.wikipedia.org/wiki/Lincoln,_England",
+          "text": "Lincoln () is a cathedral city and district in Lincolnshire, England, of which it is the county town. In the 2021 census, the city's district had a population of 103,813. The 2021 census gave the urban area of Lincoln, including Bracebridge Heath, North Hykeham, South Hykeham and Waddington, a recorded population of 127,540.\nRoman Lindum Colonia developed from an Iron Age settlement of Britons on the River Witham, near the Fosse Way road. Over time its name was shortened to Lincoln, after successive settlements, including by Anglo-Saxons and Danes. Landmarks include Lincoln Cathedral (English Gothic architecture; for over 200 years the world's tallest building) and the 11th-century Norman Lincoln Castle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "lincoln",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1601,
+    "place_id": "gn-2655459",
+    "input": {
+      "place": {
+        "place_id": "gn-2655459",
+        "name": "Blackpool",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.81667,
+        "lon": -3.05
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blackpool",
+          "url": "https://en.wikipedia.org/wiki/Blackpool",
+          "text": "Blackpool is a seaside town in Lancashire, England. It is located on the Irish Sea coast of the Fylde peninsula, approximately 27 miles (43 km) north of Liverpool and 14 miles (23 km) west of Preston. It is the main settlement in the borough of the same name.\nBlackpool was originally a hamlet; it began to grow in the mid-eighteenth century, when sea bathing for health purposes became fashionable. Blackpool's beach was suitable for this activity and, by 1781, several hotels had been built. The opening of a railway station in 1846 allowed more visitors to reach the resort, which continued to grow for the remainder of the nineteenth century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "blackpool",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1614,
+    "place_id": "gn-12541728",
+    "input": {
+      "place": {
+        "place_id": "gn-12541728",
+        "name": "South Fulton",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 33.59259,
+        "lon": -84.67294
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Fulton, Georgia",
+          "url": "https://en.wikipedia.org/wiki/South_Fulton,_Georgia",
+          "text": "South Fulton is a city in Fulton County, Georgia, in the Atlanta metropolitan area of the United States. The city was incorporated in 2017 from parts of southwest Fulton County and includes the communities of Red Oak, Cooks Crossing, Stonewall, Fife, Ben Hill, Sandtown, Cliftondale, Ono, Cedar Grove, Boat Rock/Dry Pond, Maude, Lester, Enon, Welcome All, Peters Woods, and part of Campbellton. As of 2020, it had a population of 107,436, making it the state's eighth-largest city in population. According to the 2020 census, South Fulton had the highest percentage of African American residents among U.S. cities with a population over 100,000, exceeding the proportions in Detroit and Jackson."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "south fulton",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fulton",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1620,
+    "place_id": "gn-1821306",
+    "input": {
+      "place": {
+        "place_id": "gn-1821306",
+        "name": "Phnom Penh",
+        "country": "Cambodia",
+        "subdivision": "Phnom Penh",
+        "lat": 11.56245,
+        "lon": 104.91601
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Phnom Penh",
+          "url": "https://en.wikipedia.org/wiki/Phnom_Penh",
+          "text": "Phnom Penh is the capital and most populous city of Cambodia. It has been the national capital since 1865 and has grown to become the nation's primate city and its political, economic, industrial, and cultural centre. The city's name derives from Wat Phnom, a Buddhist temple, and Lady Penh, the city's founder. It sits at the confluence of the Tonlé Sap and Mekong rivers, and is the start of the Bassac River. It is also the seat of Cambodia's monarchy, based at the Royal Palace.\nFounded in 1372, Phnom Penh succeeded Angkor Thom as the national capital in 1434 following the fall of Angkor, and remained so until 1497."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "phnom penh",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "phnom",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "penh",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1621,
+    "place_id": "gn-2239862",
+    "input": {
+      "place": {
+        "place_id": "gn-2239862",
+        "name": "Malanje",
+        "country": "Angola",
+        "subdivision": "Malanje",
+        "lat": -9.54015,
+        "lon": 16.34096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malanje",
+          "url": "https://en.wikipedia.org/wiki/Malanje",
+          "text": "Malanje is the capital city of Malanje Province in Angola, with a population of 455,000 (2014 census), and a municipality, with a population of 506,847 (2014 census). Projected to be the thirteenth fastest growing city on the African continent between 2020 and 2025, with a 5.17% growth. It is located 380 kilometres (240 mi) east of Angola's capital Luanda. Near it are the Calandula waterfalls, the rock formations of Pungo Andongo, and the Capanda Dam. The climate is mainly humid, with average temperatures between 20 and 24 °C (68 and 75 °F) and rainfall 900 to 130 millimetres (35.4 to 5.1 in) in the rainy season (October to April)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "malanje",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1622,
+    "place_id": "gn-2513416",
+    "input": {
+      "place": {
+        "place_id": "gn-2513416",
+        "name": "Murcia",
+        "country": "Spain",
+        "subdivision": "Murcia",
+        "lat": 37.98704,
+        "lon": -1.13004
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murcia",
+          "url": "https://en.wikipedia.org/wiki/Murcia",
+          "text": "Murcia ( MOOR-see-ə, US also  MUR-sh(ee-)ə, Spanish: [ˈmuɾθja] ) is a city in south-eastern Spain, and the capital and most populous city of the autonomous community of the Region of Murcia. As of 2024, with a population of 471,982, it is the 7th-largest city in Spain. The total population of the metropolitan area was 672,773 in 2020, covering an urban area of 1,230.9 km2. It is located on the Segura River, in the southeast of the Iberian Peninsula. It has a climate with hot summers, mild winters, and relatively low precipitation.\nMurcia was founded by Abd ar-Rahman II, Emir of Cordoba, in 825 with the name Mursiyah (Arabic: مرسية)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "murcia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1629,
+    "place_id": "gn-325303",
+    "input": {
+      "place": {
+        "place_id": "gn-325303",
+        "name": "Afyonkarahisar",
+        "country": "Türkiye",
+        "subdivision": "Afyonkarahisar Province",
+        "lat": 38.75667,
+        "lon": 30.54333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Afyonkarahisar",
+          "url": "https://en.wikipedia.org/wiki/Afyonkarahisar",
+          "text": "Afyonkarahisar (Turkish pronunciation: [ɑfˌjon.kɑˈɾɑhisɑɾ], Turkish: afyon 'poppy, opium', kara 'black', hisar 'fortress') is a major city in western Turkey. It is the administrative centre of Afyonkarahisar Province and Afyonkarahisar District. Its urban population is 260,577,\nwhile its district has a population of 328,319 (2024). Afyonkarahisar joined the UNESCO Global Network of Learning Cities in 2020. \nAfyon is in the mountainous countryside inland from the Aegean coast, 250 km (155 mi) south-west of Ankara along the Akarçay River. In Turkey, Afyonkarahisar stands out as a capital city of hot springs and spas, an important junction of railway, highway and air traffic in West-Turkey, and the place where independence was won."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "afyonkarahisar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1642,
+    "place_id": "gn-786712",
+    "input": {
+      "place": {
+        "place_id": "gn-786712",
+        "name": "Prizren",
+        "country": "Kosovo",
+        "subdivision": "Prizren",
+        "lat": 42.21389,
+        "lon": 20.73972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prizren",
+          "url": "https://en.wikipedia.org/wiki/Prizren",
+          "text": "Prizren (Albanian definite form: Prizreni, pronounced [pɾizˈɾɛni]; Serbian Cyrillic: Призрен) is the second most populous city and municipality of Kosovo and seat of the eponymous municipality and district. It is located on the banks of the Prizren River between the foothills of the Sharr Mountains in southern Kosovo. Prizren experiences a continental climate with some mediterranean influences.\nPrizren is constitutionally designated as the historical capital of the country. Archaeological excavations in Prizren Fortress indicate that its fortress area has seen habitation and use since the Bronze Age. Prizren has been traditionally identified with the settlement of Theranda in Roman Dardania, although other locations have been suggested in recent research."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "prizren",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

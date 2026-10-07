@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 4736,
+    "attempt": 4701,
+    "place_id": "gn-4437982",
+    "input": {
+      "place": {
+        "place_id": "gn-4437982",
+        "name": "Natchez",
+        "country": "United States",
+        "subdivision": "Mississippi",
+        "lat": 31.56017,
+        "lon": -91.40329
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Natchez, Mississippi",
+          "url": "https://en.wikipedia.org/wiki/Natchez,_Mississippi",
+          "text": "Natchez ( NATCH-iz) is the only city in and the county seat of Adams County, Mississippi, United States. The population was 14,520 at the 2020 census. Located on the Mississippi River across from Vidalia, Louisiana, Natchez was a prominent city in the antebellum years, a center of cotton planters and Mississippi River trade.\nNatchez is approximately 90 miles (140 km) southwest of the capital of Jackson and 85 miles (137 km) north of Baton Rouge, Louisiana, located on the lower Mississippi River. Natchez is the 28th-largest city in the state. The city was named for the Natchez people, who, with their ancestors, inhabited much of the area from the 8th century AD through the French colonial period."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "natchez",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4737,
+    "attempt": 4702,
+    "place_id": "gn-4558202",
+    "input": {
+      "place": {
+        "place_id": "gn-4558202",
+        "name": "Girard Estate",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.92345,
+        "lon": -75.18462
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Girard Estate, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Girard_Estate,_Philadelphia",
+          "text": "Girard Estate, also known as Girard Estates, is part of South Philadelphia, Pennsylvania, United States. Its boundaries stretch from South 22nd Street on the west to South 17th Street on the east.  The southern boundary is clearly defined as the south side of Shunk Street, but its northern boundary is irregular in stretching from the north side of Porter Street between South 17th Street and South 21st Streets, along the east side of South 21st Street to West Passyunk Avenue, then along the south side of West Passyunk Avenue to its northwestern tip at South 22nd Street. It is named after Stephen Girard, whose South Philadelphia property was developed in the 1920s by the City of Philadelphia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "girard estate",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "girard",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "estate",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4738,
+    "attempt": 4703,
+    "place_id": "gn-5188075",
+    "input": {
+      "place": {
+        "place_id": "gn-5188075",
+        "name": "East Stroudsburg",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.99954,
+        "lon": -75.18129
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Stroudsburg, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/East_Stroudsburg,_Pennsylvania",
+          "text": "East Stroudsburg is a borough in Monroe County, Pennsylvania, and part of the Pocono Mountains region of the state. Originally known as Dansbury, East Stroudsburg was renamed for geographic reasons when the Delaware, Lackawanna, and Western Railroad opened a station in East Stroudsburg. Despite its name being derivative of its bordering borough, Stroudsburg, it has almost twice the population.\nEast Stroudsburg is the largest municipality in Monroe County and in the East Stroudsburg, PA Micropolitan Statistical Area.\nAs of the 2020 census, the population of East Stroudsburg was 9,847.\nEast Stroudsburg is located 42 miles (68 km) northeast of Allentown, 102 miles (164 km) north of Philadelphia, and 75 miles (121 km) west of New York City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "east stroudsburg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "stroudsburg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4739,
+    "attempt": 4704,
+    "place_id": "gn-5262634",
+    "input": {
+      "place": {
+        "place_id": "gn-5262634",
+        "name": "Menomonie",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 44.87552,
+        "lon": -91.91934
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Menomonie, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Menomonie,_Wisconsin",
+          "text": "Menomonie ( mə-NOM-ə-nee) is a city and the county seat of Dunn County located in the Western Upland region of Wisconsin, United States.\nMenomonie forms the core of the United States Census Bureau's Menomonie Micropolitan Statistical Area (MSA), which includes all of Dunn County (2020 population: 45,440). The Menomonie MSA and the Eau Claire–Chippewa Falls metropolitan area to the east form the Census Bureau's Eau Claire-Menomonie Consolidated Metropolitan Statistical Area. Menomonie is home to the University of Wisconsin–Stout Polytechnic, the state's designated polytechnic university which enrolls nearly 7,000 students. According to the 2020 census, the city's population was 16,843.\nThe city center is at the south end of Lake Menomin, a reservoir on the Red Cedar River. The name Menomonie is derived from manoomin, the Ojibwe word for wild rice, and is usually translated as \"wild rice people\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "menomonie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4740,
+    "attempt": 4705,
+    "place_id": "gn-5378880",
+    "input": {
+      "place": {
+        "place_id": "gn-5378880",
+        "name": "Ojai",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.44805,
+        "lon": -119.24289
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ojai, California",
+          "url": "https://en.wikipedia.org/wiki/Ojai,_California",
+          "text": "Ojai (  OH-hy; Ventureño: ’Awhay̓) is a city in Ventura County, California. Located in the Ojai Valley, it is northwest of Los Angeles and east of Santa Barbara. The valley is part of the east–west trending Western Transverse Ranges and is about 10 miles (16 km) long by 3 miles (5 km) wide and divided into a lower and an upper valley, each of similar size, surrounded by hills and mountains. To the north, the Ojai Valley is bordered by the Los Padres National Forest.\nThe population was 7,637 at the 2020 census, up from 7,461 at the 2010 census.\nOjai is known for its boutique hotels, recreation opportunities, hiking, and farmers' market of local organic agriculture. It has small businesses specializing in local and ecologically friendly art, design, and home improvement. Chain stores are prohibited by city ordinance to encourage local small business development and retain the town's character.\nThe name Ojai is derived from the Mexican-era Rancho Ojai, which in turn took its name from the Ventureño Chumash word ’awhay̓, meaning \"Moon\". The city's self-styled nickname is \"Shangri-La\" referencing the natural environment of this health and spirituality-focused region as well as the mystical sanctuary of the 1937 film adaptation of James Hilton's novel Lost Horizon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "ojai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4741,
+    "attempt": 4706,
+    "place_id": "gn-5384339",
+    "input": {
+      "place": {
+        "place_id": "gn-5384339",
+        "name": "Port Hueneme",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.14778,
+        "lon": -119.19511
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Hueneme, California",
+          "url": "https://en.wikipedia.org/wiki/Port_Hueneme,_California",
+          "text": "Port Hueneme (  wy-NEE-mee; Chumash: Wene Me) is a small beach city in Ventura County, California, surrounded by the city of Oxnard and the Santa Barbara Channel. Both the Port of Hueneme and Naval Base Ventura County lie within the city limits.\nPort Hueneme has a south-facing sand beach, known for its surfing. The beach has a wooden fishing pier and is about a mile long between Ormond Beach downcoast and Point Hueneme Light at the harbor entrance shared by the naval base and the port. The Waterfront Promenade, also known as the Lighthouse Promenade, provides a paved public access along the shoreline with two historic sites at viewpoints, the 1872 Wharf and the Oxnard Packing House."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "port hueneme",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hueneme",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4742,
+    "attempt": 4707,
+    "place_id": "gn-5393701",
+    "input": {
+      "place": {
+        "place_id": "gn-5393701",
+        "name": "Sawtelle",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.0363,
+        "lon": -118.44949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sawtelle, Los Angeles",
+          "url": "https://en.wikipedia.org/wiki/Sawtelle,_Los_Angeles",
+          "text": "Sawtelle  is a neighborhood in West Los Angeles, on the Westside of Los Angeles, California. The short-lived City of Sawtelle grew around the Pacific Branch of the National Home for Disabled Volunteer Soldiers, later the Sawtelle Veterans Home, and was incorporated as a city in 1899. Developed by the Pacific Land Company and named for its manager, W. E. Sawtelle, the City of Sawtelle was independent for fewer than 30 years before it was annexed by the City of Los Angeles.\nSawtelle is noted for its thriving Japanese American community, busy restaurants and arthouse movie theaters. It has strong roots in Japanese-American history. In recognition of its historical heritage, the area was designated Sawtelle Japantown in 2015."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "sawtelle",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4743,
+    "attempt": 4708,
+    "place_id": "gn-5804191",
+    "input": {
+      "place": {
+        "place_id": "gn-5804191",
+        "name": "Mountlake Terrace",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.78815,
+        "lon": -122.30874
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mountlake Terrace, Washington",
+          "url": "https://en.wikipedia.org/wiki/Mountlake_Terrace,_Washington",
+          "text": "Mountlake Terrace is a suburban city in Snohomish County, Washington, United States. It lies on the southern border of the county, adjacent to Shoreline and Lynnwood, and is 13 miles (21 km) north of Seattle. The city had a population of 21,286 as of the 2020 census.\nMountlake Terrace was founded in 1949 by real estate developers on the site of a disused airfield, intending to provide low-cost housing for veterans. Within five years, the community had grown to over 5,000 people and was incorporated as a city in 1954 to provide municipal services. An industrial park was developed at the northwest corner of the city, which was connected by Interstate 5 after it opened in 1965. Mountlake Terrace originally had several small shopping centers that declined due to the local economy and a pair of arsons in 1990.\nThe city government began developing a downtown revitalization plan with mixed-use buildings in the 2000s, with hopes of growing beyond a bedroom community for Seattle commuters. Mountlake Terrace station, a major bus hub, opened in 2009 and is also served by Link light rail service, which began in 2024. The city has several parks, including access to Lake Ballinger, and hosts an annual summer festival that is part of Seafair."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "mountlake terrace",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mountlake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "terrace",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4744,
+    "attempt": 4709,
+    "place_id": "gn-5935804",
+    "input": {
+      "place": {
+        "place_id": "gn-5935804",
+        "name": "Dawson Creek",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 55.75984,
+        "lon": -120.2403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dawson Creek",
+          "url": "https://en.wikipedia.org/wiki/Dawson_Creek",
+          "text": "Dawson Creek is a city in northeastern British Columbia, Canada. The municipality of 24.37 square kilometres (9.41 sq mi) had a population of 12,978 in 2016. Dawson Creek derives its name from the creek of the same name that runs through the community. The creek was named after George Mercer Dawson by a member of his land survey team when they passed through the area in August 1879. Once a small farming community, Dawson Creek became a regional centre after the western terminus of the Northern Alberta Railways was extended there in 1932. The community grew rapidly in 1942 as the US Army used the rail terminus as a transshipment point during construction of the Alaska Highway. In the 1950s, the city was connected to the interior of British Columbia via a highway and a railway through the Rocky Mountains. Since the 1960s, growth has slowed, but the area population has increased.\nDawson Creek is located in the dry and windy prairie land of the Peace River Country. As the seat of the Peace River Regional District and a service centre for the rural areas south of the Peace River, the city has been called the \"Capital of the Peace\". It is also known as the \"Mile 0 City\", referring to its location at the southern end of the Alaska Highway. It also has a heritage interpretation village, an art gallery, and a museum. Annual events include a fall fair and rodeo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "dawson creek",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dawson",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "creek",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4745,
+    "attempt": 4710,
+    "place_id": "gn-6545249",
+    "input": {
+      "place": {
+        "place_id": "gn-6545249",
+        "name": "Pimlico",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.48897,
+        "lon": -0.13699
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pimlico",
+          "url": "https://en.wikipedia.org/wiki/Pimlico",
+          "text": "Pimlico () is a district in Central London, in the City of Westminster, built as a southern extension to neighbouring Belgravia.\nIt is known for its garden squares and distinctive Regency architecture. Pimlico is demarcated to the north by Victoria Station, by the River Thames to the south, Vauxhall Bridge Road to the east and the former Grosvenor Canal to the west. At its heart is a grid of residential streets laid down by the planner Thomas Cubitt, beginning in 1825 and now protected as the Pimlico Conservation Area. The most prestigious are those on the three garden squares: St George's Square, Warwick Square, Eccleston Square, and the wider avenues of Belgrave Road and St. George's Drive. \nThe area has over 350 Grade II–listed buildings and several Grade II* listed churches. At the western edge of Pimlico, on the borders of Chelsea, Pimlico Road has in recent years seen a loss of traditional local retail, replaced by upscale interiors and design stores.\nAdditions have included Dolphin Square, which is pre–Second World War, and the Churchill Gardens and Lillington and Longmoore Gardens estates which are post-War. (All, including Dolphin Square, are now conservation areas in their own right.)"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "pimlico",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4746,
+    "attempt": 4711,
+    "place_id": "gn-6621548",
+    "input": {
+      "place": {
+        "place_id": "gn-6621548",
+        "name": "Langley Green",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.12817,
+        "lon": -0.19835
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Langley Green, West Sussex",
+          "url": "https://en.wikipedia.org/wiki/Langley_Green,_West_Sussex",
+          "text": "Langley Green is a one of 14 neighbourhoods within the town of Crawley in West Sussex, England. Langley Green is in the north-west of the town and is bordered by Manor Royal to the east, Northgate to the south east, West Green to the south across the ring road and Ifield to the west. The main streets running through the community are Stagelands, Martyrs Avenue and Langley Drive. Many of the streets are named after trees and plants (Honeysuckle Lane, Hawthorn Close) animals (Hare Lane, Fox Close) or birds (Jackdaw Close, Swallow Road, Raven Lane). A small shopping parade, St Leonards Church, The Dr. Johnson Pub and Langley Green Primary School formed the centre of the community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "langley green",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "langley",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "green",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4747,
+    "attempt": 4712,
+    "place_id": "gn-7874631",
+    "input": {
+      "place": {
+        "place_id": "gn-7874631",
+        "name": "Tamuning",
+        "country": "Guam",
+        "subdivision": "Tamuning",
+        "lat": 13.48754,
+        "lon": 144.78143
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tamuning, Guam",
+          "url": "https://en.wikipedia.org/wiki/Tamuning,_Guam",
+          "text": "Tamuning, also known as Tamuning-Tumon-Harmon (Chamorro: Tamuneng), is a village located on the western shore of the United States territory of Guam. The village of Tamuning is the economic center of Guam, containing tourist center Tumon, Harmon Industrial Park, and other commercial districts. Its central location along Marine Corps Drive, the island's main thoroughfare, has aided in its development.\n\nTamuning is the site of the access roads and the old passenger terminal of Antonio B. Won Pat International Airport, the passenger airport for Guam. Fort Juan Muña, in Harmon, is a facility for the Guam Army National Guard.\nThe present and former locations of Guam Memorial Hospital, Guam's only civilian and government operated hospital, are in Tamuning. With Guam's only private birthing center also in the village, most modern civilian births on Guam take place in Tamuning."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "tamuning",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4748,
+    "attempt": 4713,
+    "place_id": "gn-933186",
+    "input": {
+      "place": {
+        "place_id": "gn-933186",
+        "name": "Orapa",
+        "country": "Botswana",
+        "subdivision": "Central",
+        "lat": -21.3115,
+        "lon": 25.37642
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orapa",
+          "url": "https://en.wikipedia.org/wiki/Orapa",
+          "text": "Orapa is a town located in the Central District of Botswana. It is the site of the Orapa diamond mine, the largest diamond-producing mine in the world, and is considered to be the diamond capital of the country. Nearby is another kimberlite mine owned by Lucara Diamond, thought to have very large reserves of diamonds.\nThe town has four schools, one of which teaches in English, serving a community containing a high proportion of immigrants. The population in 1996 was approximately 10,000 which increased in the next 10 years and is still increasing due to mining output in line with development targets.\nAccording to the 2022 Population and Household census, the population of Orapa stood at 8,648."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "orapa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4749,
+    "attempt": 4714,
+    "place_id": "gn-958441",
+    "input": {
+      "place": {
+        "place_id": "gn-958441",
+        "name": "Sabie",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -25.0999,
+        "lon": 30.78001
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sabie",
+          "url": "https://en.wikipedia.org/wiki/Sabie",
+          "text": "Sabie is a forestry town situated on the banks of the Sabie River in Mpumalanga, South Africa. The name Sabie is derived from the Xitsonga language word \"Sava\" which means \"Sand\" because of the rich Sand in the area . The word Sava was adapted by the Afrikaner settlers who changed it from Sava (Xitsonga) into the Afrikaans \"Sabie\"   .\nThe town was started after H.T. Glynn and J.C. Ingle found gold there and formed the Glynns-Lydenburg Gold Mining Company.\nSabie is located 360 km (220 mi) east of Johannesburg and 64 km (40 mi) west of the popular Kruger National Park. It is known for its scenery and beautiful waterfalls, and is a popular tourist destination.\nIts main industry is forestry. The plantations surrounding Sabie form one of the world's largest man-made forests.\nIt is situated approximately 1,066 metres (3,497 feet) above sea level and is in the summer rainfall area. During the winter period, there is little rainfall, and the area can become intensely dry. Forest fires are prevalent during this time, therefore precautions are taken beforehand to create fire breaks, as well as to incorporate block burning.\nSabie is also a tourism based town and relies on the steady flow of tourists year round to keep the community economy going. There are many attractions in and around the town itself. Of these the most popular is the Lone Creek Falls about 10 km (6 mi) outside town. There are many other waterfalls in the area, such as the Bridal Veil, Maria Shire, Horseshoe, Forest Falls, and the Sabie River falls situated within the town itself."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 268
+    },
+    "banned_terms": [
+      {
+        "term": "sabie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4750,
+    "attempt": 4715,
+    "place_id": "gn-2208091",
+    "input": {
+      "place": {
+        "place_id": "gn-2208091",
+        "name": "Waitara",
+        "country": "New Zealand",
+        "subdivision": "Taranaki Region",
+        "lat": -39.00158,
+        "lon": 174.23836
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waitara, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Waitara,_New_Zealand",
+          "text": "Waitara is a town in the northern part of the Taranaki region of the North Island of New Zealand. Waitara is located just off State Highway 3, 15 kilometres (9.3 mi) northeast of New Plymouth.\nWaitara was the site of the outbreak of the Taranaki Wars in 1860 following the attempted purchase of land for British settlers from its Māori owners. Disputes over land that was subsequently confiscated by the Government continue to this day.\n\nThere are several different stories regarding the origin of the name Waitara. One is that it was originally Whai-tara – \"path of the dart\" – so named because Whare Matangi followed the path of a dart to find his father Ngarue. Another is that Turi named it from his wide stride when crossing the water of the river. Another is that Turi named it Waitarangia because the coldness of the water affected his skin. Yet another is that it means \"mountain stream\". In 1867 the settlement was named Raleigh, after Sir Walter Raleigh. It reverted to its former name with the establishment of the borough of Waitara in 1904."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "waitara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4751,
+    "attempt": 4716,
+    "place_id": "gn-2521510",
+    "input": {
+      "place": {
+        "place_id": "gn-2521510",
+        "name": "Aspe",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.34511,
+        "lon": -0.76721
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aspe",
+          "url": "https://en.wikipedia.org/wiki/Aspe",
+          "text": "Aspe (Spanish pronunciation: [ˈaspe], Valencian: Asp) is a town and municipality located in the comarca of Vinalopó Mitjà, in the province of Alicante, Spain.\nThe town is located in the valley of the river Vinalopó, 25 km (16 mi) from Alicante city. The economy of Aspe is based on textile and footwear industries, as well as farming of vegetables and fruits.\nAspe is also famous for growing a special kind of grape, which is eaten at the stroke of midnight, every New Year's Eve, all across Spain. The grapes are eaten one at a time, according to the clock striking 12, to signal the new year.\nAspe has a small foreign population, mainly Dutch and English. The local Castilian dialect is known for dropping the \"s\" and seseo.\nAspe has many traditions and during the summer large fiestas take place. Every other year La Virgen De Las Nieves, the patron of the town, comes to Aspe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "aspe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4752,
+    "attempt": 4717,
+    "place_id": "gn-2633404",
+    "input": {
+      "place": {
+        "place_id": "gn-2633404",
+        "name": "Yatton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.38839,
+        "lon": -2.82353
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yatton",
+          "url": "https://en.wikipedia.org/wiki/Yatton",
+          "text": "Yatton is a village and civil parish within the unitary authority of North Somerset, which falls within the ceremonial county of Somerset, England. It is located 11 miles (18 km) south-west of Bristol. Its population in 2011 was 7,552. The parish includes Claverham, a small village which was originally a farming hamlet.\nThe origins of the village and its name are unclear; however, there is evidence of Iron Age hill fort and a Roman villa in the area. The arrival of the railway in the 19th century and more recent road building have led to expansion of the village with Yatton now acting as a home to many commuters, while also supporting manufacturing industry and commerce. The village is located on the North Somerset Levels, where the low-lying land, a mixture of peat, estuarine alluvium and low hills of sand and gravel, is crossed by a myriad of watercourses, providing a habitat for several scarce species.\nSt Mary's Church dates from the 14th century and there are a range of other places of worship. In addition to religious groups, Yatton has several sporting clubs and other community groups."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "yatton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4753,
+    "attempt": 4718,
+    "place_id": "gn-2745906",
+    "input": {
+      "place": {
+        "place_id": "gn-2745906",
+        "name": "Vaals",
+        "country": "Netherlands",
+        "subdivision": "Limburg",
+        "lat": 50.77083,
+        "lon": 6.01806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vaals",
+          "url": "https://en.wikipedia.org/wiki/Vaals",
+          "text": "Vaals (Dutch: [vaːls] ; Vaals dialect: Vols [vɔls]) is a town in the extreme southeastern part of the Dutch province of Limburg, itself in the southeast of the Netherlands. \nThe municipality covers an area of 23.90 km2 (9.23 sq mi).It is situated in the western foothills of the Ardennes–Eifelrange and lies some 23 km (14 mi) east of Maastricht and 5 km (3.1 mi) west of the German city of Aachen.\nVaals directly adjoins both Belgium and Germany. As such three national borders meet at a point known as the Drielandenpunt and very near the highest point in the Netherlands, the Vaalserberg. The Vaalserberg was previously known as \"Hubertusberg\", so named for the eighth century St.Hubertus."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "vaals",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4754,
+    "attempt": 4719,
+    "place_id": "gn-2773538",
+    "input": {
+      "place": {
+        "place_id": "gn-2773538",
+        "name": "Kremsmünster",
+        "country": "Austria",
+        "subdivision": "Upper Austria",
+        "lat": 48.0529,
+        "lon": 14.12919
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kremsmünster",
+          "url": "https://en.wikipedia.org/wiki/Kremsm%C3%BCnster",
+          "text": "Kremsmünster is a town in Kirchdorf an der Krems District, in the Austrian state of Upper Austria. Settled in 777, it is home to the Kremsmünster Abbey.\nThe Abbey was founded 777 by Duke Tassilo III of Bavaria and is one of the oldest abbeys of central Europe. On a striking ice-age terrace above the town, it dominates the whole Krems valley. The monks (Order of Saint Benedict), lead a famous gymnasium which has existed since 1549, and an astronomical and geophysical observatory (\"Mathematical tower\"). The First Slovak Republic ceased to exist here when the exiled Slovak government capitulated to General Walton Walker leading the XX Corps of the 3rd US Army on 8 May 1945."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "kremsmunster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4755,
+    "attempt": 4720,
+    "place_id": "gn-2914064",
+    "input": {
+      "place": {
+        "place_id": "gn-2914064",
+        "name": "Grünwald",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 48.03947,
+        "lon": 11.5232
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grünwald, Bavaria",
+          "url": "https://en.wikipedia.org/wiki/Gr%C3%BCnwald,_Bavaria",
+          "text": "Grünwald (German pronunciation: [ˈɡʁyːnvalt] , \"Greenwood\" or \"green forest\") is a municipality in the district of Munich, in the state of Bavaria, Germany. It is located on the right bank of the Isar, 12 km southwest of Munich (centre). As of 31 December 2020 it had a population of 11,303.\nGrünwald is best known for medieval Grünwald Castle (Burg Grünwald), the Bavaria Film Studios (one of Europe's biggest and most famous movie production studios), and as a domicile for many prominent and rich people (Grünwald is the wealthiest municipality in Germany). The castle serves as a branch of the Bavarian Archaeological Museum.\nFor the 1972 Summer Olympics, the municipality hosted the individual road race cycling event. A nearly 23 km (14 mi) circuit to be traversed eight times was used."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "grunwald",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

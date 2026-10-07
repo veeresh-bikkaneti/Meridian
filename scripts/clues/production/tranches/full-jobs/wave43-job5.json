@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 8539,
+    "attempt": 8481,
+    "place_id": "gn-3166010",
+    "input": {
+      "place": {
+        "place_id": "gn-3166010",
+        "name": "Sutri",
+        "country": "Italy",
+        "subdivision": "Lazio",
+        "lat": 42.24596,
+        "lon": 12.21715
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sutri",
+          "url": "https://en.wikipedia.org/wiki/Sutri",
+          "text": "Sutri (Latin Sutrium) is an Ancient town, modern comune and former bishopric (now a Latin titular see) in the province of Viterbo, about 50 kilometres (31 mi) from Rome and about 30 kilometres (19 mi) south of Viterbo. It is picturesquely situated on a narrow tuff hill, surrounded by ravines, a narrow neck on the west alone connecting it with the surrounding country. It is one of I Borghi più belli d'Italia (\"The most beautiful villages of Italy\").\nThe modern comune of Sutri has a few more than 5,000 inhabitants. Its ancient remains are a major draw for tourism: a Roman amphitheatre excavated in the tuff rock, an Etruscan necropolis with dozens of rock-cut tombs, a Mithraeum incorporated in the crypt of its church of the Madonna del Parto, a Romanesque Duomo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "sutri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8540,
+    "attempt": 8482,
+    "place_id": "gn-3169670",
+    "input": {
+      "place": {
+        "place_id": "gn-3169670",
+        "name": "Quiliano",
+        "country": "Italy",
+        "subdivision": "Liguria",
+        "lat": 44.29215,
+        "lon": 8.41406
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quiliano",
+          "url": "https://en.wikipedia.org/wiki/Quiliano",
+          "text": "Quiliano (Ligurian: Cuggen) is a comune (municipality) in the Province of Savona in the Italian region Liguria, located about 45 kilometres (28 mi) southwest of Genoa and about 5 kilometres (3 mi) west of Savona. As of 31 December 2004, it had a population of 7,225 and an area of 49.5 square kilometres (19.1 mi2).\nThe municipality of Quiliano contains these frazioni (subdivisions, mainly villages and hamlets) : Cadibona, astride the watershed between the Alps and Apennines,  Valleggia, Montagna, Roviasca, Faia and Tiassano.\nIn the environs of Quiliano remain several Roman archaeological sites: a Roman bridge still functions in the valley of Quazzola and remains of a Roman villa may be seen at San Pietro in Carpignano.\nQuiliano borders the following municipalities: Altare, Mallare, Orco Feglino, Savona, Vado Ligure, and Vezzi Portio."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "quiliano",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8541,
+    "attempt": 8483,
+    "place_id": "gn-3182112",
+    "input": {
+      "place": {
+        "place_id": "gn-3182112",
+        "name": "Besnate",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.69858,
+        "lon": 8.76734
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Besnate",
+          "url": "https://en.wikipedia.org/wiki/Besnate",
+          "text": "Besnate is a town and comune in the province of Varese in Lombardy in Northern Italy.\nThe Commune of Besnate has a land area of 7.68 square kilometres (2.97 mi2) and an average elevation of 300 metres (980 ft) above sea level. Its highest point, in the hills of Ravellino, reaches 330 metres (1,080 ft). It includes the following locations: Besnate, Buzzano, Centenate, and Villaggio Veneto.\nIt is bordered to the north by the municipality of Sumirago, north-east to Jerago with Orago, south-east to Cavaria with Premezzo, south to Gallarate, in the south-west to north-and Arsago Seprio west with that of Mornago. Besnate is about 17 kilometres (11 mi) from Varese, 7 kilometres (4 mi) from Gallarate, 13 kilometres (8 mi) from Busto Arsizio and 7 kilometres (4 mi) from Somma Lombardo.\nThe Commune of Besnate has always been independent until 1869, when, by Royal Decree No. 4919, was suppressed and aggregated with that of Casorate Sempione, the municipality of Arsago Seprio. Just a few years later, however, from 1 August 1872, Besnate broke away from Arsago Seprio to join Jerago: thus was born the town of Jerago with Besnate, which from 1 July 1892, was also the location of aggregate Orago.\nFinally with the law n ° 48 of 28 February 1907, the municipality of Jerago with Besnate and Orago was dissolved and from 1 July 1907 Besnate finally became an independent municipality. In 2007 the municipality of Besnate, on the occasion of the centenary of the establishment of the town had it printed by the Italian postal souvenir postcards and stamps."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 263
+    },
+    "banned_terms": [
+      {
+        "term": "besnate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8542,
+    "attempt": 8484,
+    "place_id": "gn-3218705",
+    "input": {
+      "place": {
+        "place_id": "gn-3218705",
+        "name": "Orsago",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.92965,
+        "lon": 12.42712
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orsago",
+          "url": "https://en.wikipedia.org/wiki/Orsago",
+          "text": "Orsago is a comune (municipality) in the province of Treviso, in the Italian region of Veneto, located about 60 kilometres (37 mi) north of Venice and about 30 kilometres (19 mi) northeast of Treviso. As of 31 December 2004, it had a population of 3,817 and an area of 10.7 square kilometres (4.1 mi2).\nOrsago borders the following municipalities: Cordignano, Gaiarine, Godega di Sant'Urbano.\nImportant buildings:\n\nVilla Sbrojavacca – Maffei, 18th century. This construction was built by the Sbrojavacca nobles in the 18th century, but presents also some older elements such as the boundary walls surrounding the construction being the first site for cellars and barns, with rectangular openings as a range of loop-holes. The villa was purchased by Maffei Marconi in 1835 and afterwards passed to the Zanin family of Orsago.\nVilla Priuli – Chastonay, 17th century. By crossing the large entrance gateway, with columns adorned by white stone swirls and statues, and following the pathway, you come upon a second gateway having the statues of Ercole and Prometeo. The villa is majestic, with an elevated central body."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "orsago",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8543,
+    "attempt": 8485,
+    "place_id": "gn-4018100",
+    "input": {
+      "place": {
+        "place_id": "gn-4018100",
+        "name": "Asientos",
+        "country": "Mexico",
+        "subdivision": "Aguascalientes",
+        "lat": 22.23806,
+        "lon": -102.08929
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Asientos",
+          "url": "https://en.wikipedia.org/wiki/Asientos",
+          "text": "Asientos is a municipality in the Mexican state of Aguascalientes. It stands at 22°14′N 102°05′W. The town of Real de Asientos serves as its municipal seat.\nReal de Asientos was declared a Pueblo Mágico by the Mexican Secretariat of Tourism (SECTUR) in 2006. As of March 2021 it is one of three Pueblos Mágicos in the state of Aguascalientes.\nAs of 2010, the municipality (and before the separation of Villa Juárez) had a total population of 45,492.\nOther than the town of Real de Asientos, the municipality had 250 localities, the largest of which (with 2010 populations in parentheses) were: Ciénega Grande (3,348), classified as urban, and Guadalupe de Atlas (2,259), Lázaro Cárdenas (1,583), Bimbaletes Aguascalientes (El Álamo) (1,223), Molinos (1,219), Noria del Borrego (Norias) (1,186), and Jarillas (1,041), classified as rural."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "asientos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8544,
+    "attempt": 8486,
+    "place_id": "gn-4130821",
+    "input": {
+      "place": {
+        "place_id": "gn-4130821",
+        "name": "Sheridan",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 34.30704,
+        "lon": -92.40127
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sheridan, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Sheridan,_Arkansas",
+          "text": "Sheridan, officially the City of Sheridan, is a city in and the county seat of Grant County, Arkansas, United States. The community is located deep in the forests of the Arkansas Timberlands. It sits at the intersection of U.S. highways 167 and 270.\nEarly settlers were drawn to the area by the native timber, which is still a very important part of Sheridan's economy, although the city has diversified into several other industries. The city's history also includes a college, Missionary Baptist College, until its closure in 1934, and a series of conflicts during the Civil Rights Movement.\nLocated at the southern end of the Central Arkansas region, Sheridan has been experiencing a population boom in recent years, as indicated by a 49% growth in population between the 1990 and 2010 censuses. As of the 2020 census, Sheridan had a population of 4,920."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "sheridan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8545,
+    "attempt": 8487,
+    "place_id": "gn-4492300",
+    "input": {
+      "place": {
+        "place_id": "gn-4492300",
+        "name": "Sneads Ferry",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 34.55267,
+        "lon": -77.39718
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sneads Ferry, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Sneads_Ferry,_North_Carolina",
+          "text": "Sneads Ferry is a census-designated place (CDP) in Onslow County, North Carolina, United States. It is the second largest municipality in Onslow County, behind Jacksonville and is part of the Jacksonville, North Carolina Metropolitan Statistical Area.\nOnce a rural fishing village, Sneads Ferry has experienced a surge in development since 2000. Based on U.S. Census data, the study area has grown from 5,425 residents in 2000 to approximately 9,750 residents in 2014, an 80% increase. Growth primarily has been driven by accessibility to MCB Camp Lejeune from the gate on NC 172 and expansion of the United States Marine Corps Special Operations Command (MARSOC) accessed from NC 210. Sneads Ferry is expected to continue growing rapidly at 3.3% annually, adding 17,500 new residents through 2040 reaching 20,000 in total population by 2030."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "sneads ferry",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sneads",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ferry",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8546,
+    "attempt": 8488,
+    "place_id": "gn-5101687",
+    "input": {
+      "place": {
+        "place_id": "gn-5101687",
+        "name": "Neptune City",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.20011,
+        "lon": -74.02792
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Neptune City, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Neptune_City,_New_Jersey",
+          "text": "Neptune City is a borough in Monmouth County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 4,626, a decrease of 244 (−5.0%) from the 2010 census count of 4,869, which in turn reflected a decline of 349 (−6.7%) from the 5,218 counted in the 2000 census.\nThe Borough of Neptune City was incorporated on October 4, 1881, based on a referendum held on March 19, 1881. The boundaries included all of present-day Neptune City, along with what is now Avon-by-the-Sea and the southern portion of Bradley Beach. On March 23, 1900, a bill approved in the New Jersey Legislature created the Borough of Avon-by-the-Sea. On March 13, 1907, the eastern portion of Neptune City was annexed to the Borough of Bradley Beach. The borough was named for Neptune, the Roman water deity, and its location on the Atlantic Ocean.\nThe earliest borough hall was erected in 1902 at the northwest corner of Evergreen Avenue and Railroad Avenue (now Memorial Drive)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "neptune city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "neptune",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8547,
+    "attempt": 8489,
+    "place_id": "gn-5103497",
+    "input": {
+      "place": {
+        "place_id": "gn-5103497",
+        "name": "Roseland",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.82066,
+        "lon": -74.29376
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roseland, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Roseland,_New_Jersey",
+          "text": "Roseland is a borough in western Essex County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 6,299, an increase of 480 (+8.2%) from the 2010 census count of 5,819, which in turn reflected an increase of 521 (+9.8%) from the 5,298 counted in the 2000 census.\nIn 2015, New Jersey Monthly magazine ranked Roseland as its seventh-best place to live in its \"Best Places To Live\" in New Jersey rankings. The borough was ranked 14th best place to live in the magazine's 2008 rankings. In 2017, New Jersey Monthly Ranked Roseland as its 106th best place to live in its 2017 Rankings. New Jersey Monthly magazine ranked Roseland as its 14th best place to live in New Jersey in its 2019 ranking. Roseland has both a First Aid Squad and Fire Department that serves its community. They also have tennis, pickleball, soccer courts, as well as turf fields for its residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "roseland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8548,
+    "attempt": 8490,
+    "place_id": "gn-5143610",
+    "input": {
+      "place": {
+        "place_id": "gn-5143610",
+        "name": "Wesley Hills",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.15926,
+        "lon": -74.06986
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wesley Hills, New York",
+          "url": "https://en.wikipedia.org/wiki/Wesley_Hills,_New_York",
+          "text": "Wesley Hills is a village in the town of Ramapo, Rockland County, New York, United States. It is located north of Viola, east of Harriman State Park, south of Pomona, and west of New Hempstead. As of the 2020 census, Wesley Hills had a population of 6,116.\nJoseph Berger of The New York Times said in a 1997 article that Wesley Hills was one of several Ramapo villages formed by non-Jews and secular Jews \"to preserve the sparse Better Homes and Garden [sic] ambiance that attracted them to Rockland County.\"\nMayor Marshall Katz was appointed by the village board after Mayor David Goldsmith resigned in August 2014 citing \"increased responsibilities at my day job and some health issues.\" After finishing the remainder of the term, Mayor Katz ran unopposed in March 2015."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "wesley hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wesley",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8549,
+    "attempt": 8491,
+    "place_id": "gn-684995",
+    "input": {
+      "place": {
+        "place_id": "gn-684995",
+        "name": "Beriu",
+        "country": "Romania",
+        "subdivision": "Hunedoara County",
+        "lat": 45.78333,
+        "lon": 23.18333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beriu",
+          "url": "https://en.wikipedia.org/wiki/Beriu",
+          "text": "Beriu (Hungarian: Berény, German: Bärendorf) is a commune in Hunedoara County, Transylvania, Romania. It is composed of eight villages: Beriu, Căstău (Kasztó), Cucuiș (Kukuis), Măgureni (Magureny), Orăștioara de Jos (Alsóvárosvíz), Poieni (Pojénytanya), Sereca (Szereka), and Sibișel (Ósebeshely).\nThe commune is located in the western part of Hunedoara County, 7 km (4.3 mi) south of Orăștie and 31 km (19 mi) southeast of the county seat, Deva, on the border with Alba County. It is situated at the southwestern edge of the Transylvanian Plateau, north of the Șureanu Mountains, at the western end of the historic Seven Seats region. It lies on the banks of the river Orăștie and its tributary, the Sibișel, with its own tributary, the Cucuiș. \nIn Cucuiș village there are two Dacian fortresses, at Dealul Golu and Vârful Berianului. The Colnic mine is a large open pit gold and copper mine situated on the territory of the commune.\n\nAt the 2021 census, the commune had a population of 3,281, of which 91.04% were Romanians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "beriu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8550,
+    "attempt": 8492,
+    "place_id": "gn-693285",
+    "input": {
+      "place": {
+        "place_id": "gn-693285",
+        "name": "Sokyrnytsia",
+        "country": "Ukraine",
+        "subdivision": "Zakarpattia",
+        "lat": 48.12233,
+        "lon": 23.39997
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sokyrnytsia",
+          "url": "https://en.wikipedia.org/wiki/Sokyrnytsia",
+          "text": "Sokyrnytsia (Ukrainian: Сокирниця, Romanian: Seclenț, Hungarian: Szeklence) is a village located on the Khust-Synevyr highway near the H09 (Mukachevo-Ivano-Frankivsk-Rohatyn-Lviv) motorway, 10 km from the district center, Khust. It is a village in Khust Raion of Zakarpattia Oblast (province) of western Ukraine.\nThe first mention in the documents dates back to 1389.  It is thought that Slavic tribes lived here who fought with the Tatars, and later with the Hungarian feudal lords.  The Bailova River which flows into the Tisza River, was the location of a large massacre there during the war with the Tatars, in which many people died.  The village was linked to the construction of Khust Castle, which allegedly guarded the \"Salt Way\", which ran along the banks of the Tisza from Aknaszlatina (today Solotvyno), deep into the Hungarian Empire.\nThis is evidenced by the name of the street in the village, which is still called \"Tatar\" by locals (A. Hodynky Street, near the primary school). The street was named due to the camping location of the Tatar army, which moved from east to west, plundering villages.\nPrior to World War II, there was a Jewish population established in the village.  Like other Jews in the Khust region, they were departed to and killed at Auschwitz by May, 1944.  There is a Jewish cemetery in the village.  It dates to 1865."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "sokyrnytsia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8551,
+    "attempt": 8493,
+    "place_id": "gn-703514",
+    "input": {
+      "place": {
+        "place_id": "gn-703514",
+        "name": "Kuty",
+        "country": "Ukraine",
+        "subdivision": "Ivano-Frankivsk",
+        "lat": 48.26249,
+        "lon": 25.17943
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kuty",
+          "url": "https://en.wikipedia.org/wiki/Kuty",
+          "text": "Kuty (Ukrainian: Кути; Polish: Kuty; German: Kutten; Romanian: Cuturi), also known historically as Kitów (Yiddish: קיטעוו, romanized: Kitev, German: Kitau), is a rural settlement in Kosiv Raion, Ivano-Frankivsk Oblast, western Ukraine. It is situated on the Cheremosh River. It is one of the historical centres of the ancient region of Pokuttia, the name of which may derive from the township. The current population estimate is 4,001 (2022 estimate). Kuty hosts the administration of Kuty settlement hromada, one of the hromadas of Ukraine, which consists of Kuty township and 6 villages.\nKuty is often associated with Kitów, Poland, as both settlements have historic familial connections, both communities suffered the destruction of their Jews during the Holocaust, both are the originators of the Kitowski surname, and the two towns share a placename in Polish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "kuty",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8552,
+    "attempt": 8494,
+    "place_id": "gn-7732488",
+    "input": {
+      "place": {
+        "place_id": "gn-7732488",
+        "name": "Norway House",
+        "country": "Canada",
+        "subdivision": "Manitoba",
+        "lat": 53.98214,
+        "lon": -97.83265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Norway House",
+          "url": "https://en.wikipedia.org/wiki/Norway_House",
+          "text": "Norway House is a population centre of over 5,000 people, some 30 km (19 mi) north of Lake Winnipeg, on the eastern channel of the Nelson River, in the province of Manitoba, Canada. Norway House has three meanings: the unincorporated community; the First Nation reserve of the Norway House Cree Nation (Kinosao Sipi Cree Nation); and both together. Thus, Norway House has both a chief and a mayor.\nThe community is located 456 km (283 mi) by air north of Winnipeg, 208 km (129 mi) by air east of The Pas, and 190 km (120 mi) by air south of Thompson. To drive from Winnipeg, it is approximately 800 km (500 mi); from Thompson, it is about 300 km (190 mi). Major economic activities include commercial fishing, trapping, logging, and government services. Unemployment varies seasonally, with peaks as high as 70%.\nNorway House was a major depot of the Hudson's Bay Company for most of the 19th century, and from the 1830s it was the seat of the Council of the Northern Department of Rupert's Land."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "norway house",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "norway",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "house",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8553,
+    "attempt": 8495,
+    "place_id": "gn-9972616",
+    "input": {
+      "place": {
+        "place_id": "gn-9972616",
+        "name": "Bilgola Plateau",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.64781,
+        "lon": 151.31212
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bilgola Plateau",
+          "url": "https://en.wikipedia.org/wiki/Bilgola_Plateau",
+          "text": "Bilgola Plateau is a suburb in Sydney's Northern Beaches in the state of New South Wales, Australia.\nThe suburb is mainly residential, with two small rows of shops, a small park and a primary school located on the top of the plateau. Bilgola Beach on the eastern side features a surf club and kiosk.  Rising to an elevation of 150m above sea level, the suburb has views of the beach and the ocean on the eastern side, and views of the body of water, Pittwater on the western side. To the north are the suburbs of Avalon Beach, Whale Beach, and Palm Beach, with Careel Bay being a minor bay in between the latter two, as well as Clareville to the North West. To the south are Newport, Mona Vale and Narrabeen.\nThe plateau was previously named Mount Loftus, after governor of NSW Lord Augustus Loftus. Given its modest elevation, designating it as a plateau is more appropriate, and is now named for the Aboriginal derived name of Bilgola (derived from the local aboriginal language meaning \"swirling water\"), likely describing Bilgola Beach to the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "bilgola plateau",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bilgola",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "plateau",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8554,
+    "attempt": 8496,
+    "place_id": "gn-9972849",
+    "input": {
+      "place": {
+        "place_id": "gn-9972849",
+        "name": "North Epping",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.75944,
+        "lon": 151.09248
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Epping",
+          "url": "https://en.wikipedia.org/wiki/North_Epping",
+          "text": "North Epping is a suburb of Sydney, in the state of New South Wales, Australia 19 kilometres north-west of the Sydney central business district in the local government area of Hornsby Shire. North Epping is in the Northern Sydney region, and is often referred to as part of the \"North-West\" or North Shore. Epping is a separate suburb to the south and under the Parramatta City Council, which shares the postcode of 2121.\nNorth Epping is a leafy suburb, surrounded by bushland of the upper section of Lane Cove National Park. \nNorth Epping is an exclave of Hornsby Shire Council, geographically cut off from the bush land shire by the Lane Cove National Park. \nNorth Epping relies on nearby Epping for much of its infrastructure, including transport, libraries, and public swimming pools.\nThere are many walking trails, including the Great North Walk which also links residing suburbs such as South Turramurra, Marsfield and West Pymble. One of the well known landmarks is Whale Rock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 132,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "north epping",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "epping",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8555,
+    "attempt": 8497,
+    "place_id": "gn-10965202",
+    "input": {
+      "place": {
+        "place_id": "gn-10965202",
+        "name": "Kanda-jinbōchō",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.69559,
+        "lon": 139.75642
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kanda-Jinbōchō",
+          "url": "https://en.wikipedia.org/wiki/Kanda-Jinbōchō",
+          "text": "Kanda-Jinbōchō (神田神保町), commonly known as Jinbōchō or Jimbōchō, is a district of Chiyoda, Tokyo, Japan. Jimbōchō Book Town is known as Tokyo's center of used-book stores and publishing houses, and as a popular antique and curio shopping area.\nThe center of Jinbōchō is at the crossing of Yasukuni-dōri and Hakusan-dōri, above Jimbōchō Station on the Tokyo Metro Hanzōmon Line, Toei Mita Line and Toei Shinjuku Line. The prestigious Tokyo Book Binding Club and Literature Preservation Society are located in Jinbōchō, and the area is within walking distance of a number of major universities, including Nihon, Senshu, Meiji, Hosei and Juntendo.\nJinbōchō is officially known (in addresses, etc.) as Kanda-Jinbōchō (神田神保町), and is part of the former ward of Kanda.\nIn 2025 Time Out named it the coolest neighborhood in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "kanda jinbocho",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kanda",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jinbocho",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8556,
+    "attempt": 8498,
+    "place_id": "gn-11203933",
+    "input": {
+      "place": {
+        "place_id": "gn-11203933",
+        "name": "Larkspur",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 53.47942,
+        "lon": -113.38142
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Larkspur, Edmonton",
+          "url": "https://en.wikipedia.org/wiki/Larkspur,_Edmonton",
+          "text": "Larkspur is a southeast residential neighbourhood in Edmonton, Alberta, Canada. It is part of The Meadows area, located just to the east of the Mill Woods area.\nIt is bounded on the west by 34 Street, on the east by 17 Street, on the north by Whitemud Drive and on the south by 38 Avenue.  Because of curves in  the routes followed by Whitemud Drive and 38 Avenue, the neighbourhood's east end is much narrower than its west end.\nThe neighbourhood includes the Meadowbrook retail area at the southwest corner and a new and larger retail area that is still under development at its east end.\nSurrounding residential neighbourhoods are Kiniski Gardens to the west and south west, Wild Rose to the south, and Tamarack to the east and south east.  To the north is the South East Industrial subdivision, the north west is the Pylypow Industrial subdivision, and to the north east is the Maple Ridge Industrial subdivision.\nLarkspur is a newer neighbourhood with most residential construction occurring between 1985 and 2005. Almost all (98%) of the housing in the neighbourhood is owner occupied, with the most common housing type being single family homes (88%).  The remaining 12% are duplexes. The average number of residents per household is 3.4, with almost half (46%) or households having four or five people. In 2006, the City of Edmonton named Larkspur as one of the 20 sites that will be part of their long term multi-pronged housing strategy to create a wider range of housing options to address the city's growing needs, called the First Place Home Ownership Program.\nThelma Chalifoux School (7-9), and Velma E. Baker School (K-6), which is located adjacent to Larkspur park, are the only schools in the neighbourhood."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 291
+    },
+    "banned_terms": [
+      {
+        "term": "larkspur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8557,
+    "attempt": 8499,
+    "place_id": "gn-1713185",
+    "input": {
+      "place": {
+        "place_id": "gn-1713185",
+        "name": "Garcia Hernandez",
+        "country": "Philippines",
+        "subdivision": "Central Visayas",
+        "lat": 9.6144,
+        "lon": 124.2946
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Garcia Hernandez",
+          "url": "https://en.wikipedia.org/wiki/Garcia_Hernandez",
+          "text": "Garcia Hernandez, officially the Municipality of Garcia Hernandez (Cebuano: Munisipalidad sa Garcia Hernandez; Tagalog: Bayan ng Garcia Hernandez),  is a  municipality in the province of Bohol, Philippines. According to the 2024 census, it has a population of 24,450 people.\nGarcia Hernandez is 57 kilometres (35 mi) from Tagbilaran.\nIt was declared an independent municipality on May 27, 1854, from Jagna by the Spanish Superior Government in Manila, through its representative Voraledez. It was Voraledez who renamed this town from its old name Sinugbuan to what it is presently known today, as an expression of gratitude to Fathers Victor Garcia and Narciso Hernandez, then Parish Priests of the towns of Loay and Guindulman, respectively. These two Spanish Friars were instrumental in the realization of the residents desire to be independent from Jagna.\nThe town is home to the sacred burial cave of Kalagan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "garcia hernandez",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "garcia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hernandez",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8558,
+    "attempt": 8500,
+    "place_id": "gn-2068655",
+    "input": {
+      "place": {
+        "place_id": "gn-2068655",
+        "name": "Katherine",
+        "country": "Australia",
+        "subdivision": "Northern Territory",
+        "lat": -14.46517,
+        "lon": 132.26347
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Katherine, Northern Territory",
+          "url": "https://en.wikipedia.org/wiki/Katherine,_Northern_Territory",
+          "text": "Katherine (/ˈkæθɹɪn/; Australian Kriol: Gajadein) is a town in the Northern Territory of Australia. It is situated on the Katherine River, after which it is named, 320 kilometres (200 mi) southeast of Darwin. The fourth largest settlement in the Territory, it is known as the place where \"the outback meets the tropics\". \nKatherine had an urban population of 9,643 at the 2021 Australian census.\nKatherine is also the closest major town to RAAF Base Tindal, located 17 km (11 mi) southeast, and provides education, health, local government services and employment opportunities for the families of Defence personnel stationed there. In the 2016 census, the base had a residential population of 857, with only around 20% of the workforce engaged in employment outside of defence, the majority commuting to work in Katherine. Katherine is also the central hub of the great \"Savannah Way\" which stretches from Cairns in north Queensland to Broome in the Kimberley region of Western Australia.\nBeginning as an outpost established with the Australian Overland Telegraph Line on the north–south transport route between Darwin and Adelaide, Katherine has grown with the development of transport and local industries including mining – particularly gold mining; a strategic military function with RAAF Base Tindal; also as a tourism gateway to the attractions of nearby Nitmiluk National Park, particularly Nitmiluk (Katherine) Gorge and its many ancient rock paintings. The region floods heavily during the wet season."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 131,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "katherine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

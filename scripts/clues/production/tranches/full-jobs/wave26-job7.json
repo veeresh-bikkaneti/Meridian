@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 5160,
+    "attempt": 5121,
+    "place_id": "gn-3933874",
+    "input": {
+      "place": {
+        "place_id": "gn-3933874",
+        "name": "Oxapampa",
+        "country": "Peru",
+        "subdivision": "Pasco",
+        "lat": -10.5775,
+        "lon": -75.40167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oxapampa",
+          "url": "https://en.wikipedia.org/wiki/Oxapampa",
+          "text": "Oxapampa is the capital of Oxapampa District and Oxapampa Province in Peru in the eastern part of the Pasco Region. Oxapampa belongs to the natural region known as Selva Alta or high jungle. 80 kilometres (50 miles) northward down the valley of the Huancabamba River is the settlement of Pozuzo (altitude 800 m). The most important agricultural pursuits in the region are raising cattle and growing coffee.\nOxapampa was founded in 1891 by settlers of Austrian and Germanic origin from Pozuzo. The town and the region retains a Germanic flavor in its Tyrolean architecture and celebrates its origins in public celebrations. Oxapampa, due to its mild climate and scenic surroundings, has become a tourist destination since access was improved by highway construction beginning in the 1980s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "oxapampa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5161,
+    "attempt": 5122,
+    "place_id": "gn-4115181",
+    "input": {
+      "place": {
+        "place_id": "gn-4115181",
+        "name": "Hope",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 33.66706,
+        "lon": -93.59157
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hope, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Hope,_Arkansas",
+          "text": "Hope is a city in Hempstead County in southwestern Arkansas, United States. Hope is the county seat of Hempstead County and the principal city of the Hope Micropolitan Statistical Area, which includes all of Hempstead and Nevada counties. As of the 2010 census the population was 10,095, and for the 2020 census, the population was 8,952.\nHope is the birthplace of three Arkansas governors: Bill Clinton (also president of the United States from 1993 to 2001), Mike Huckabee (who ran for the Republican presidential nomination in 2008 and 2016), and Sarah Huckabee Sanders (the incumbent governor and daughter of Mike Huckabee)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "hope",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5162,
+    "attempt": 5123,
+    "place_id": "gn-4233586",
+    "input": {
+      "place": {
+        "place_id": "gn-4233586",
+        "name": "Benton",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 37.99672,
+        "lon": -88.92007
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Benton, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Benton,_Illinois",
+          "text": "Benton is a city in and the county seat of Franklin County, Illinois. The population was 6,709 at the 2020 census. In 1839, Franklin County was split roughly in half and the county seat was permanently fixed \"at a hill at the south end of Rowling's Prairie\", the site of the future city of Benton. Benton's namesake is Missouri senator Thomas Hart Benton. The village of Benton was organized in 1841 on 20 acres (8.1 ha) of property donated by John Ewing and Walter S. Akin. In 1902, the village became a city, and incorporated under the mayor/commissioner form of government.\nThe Franklin County Courthouse sat in the center of the Public Square. It was the fourth courthouse that served the people of Franklin County. The Italianate building was constructed in 1874–75 for $27,500. Much of Benton's growth in the past was due to an abundance of high sulfur coal, multiple railroads that pass through the town, fertile soil, and its industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "benton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5163,
+    "attempt": 5124,
+    "place_id": "gn-4477525",
+    "input": {
+      "place": {
+        "place_id": "gn-4477525",
+        "name": "Lumberton",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 34.61834,
+        "lon": -79.01045
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lumberton, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Lumberton,_North_Carolina",
+          "text": "Lumberton is a city in and the county seat of Robeson County, North Carolina, United States. As of 2020, its population was 19,025.\nLocated in southern North Carolina's Inner Banks region, Lumberton is located on the Lumber River. It was founded in 1787 by John Willis, an officer in the American Revolution. This was developed as a shipping point for lumber used by the Navy, and logs were guided downriver to Georgetown, South Carolina. Most of the town's growth took place after World War II.\nDavid Lynch's 1986 film Blue Velvet was set in Lumberton; however filming took place in Wilmington."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "lumberton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5164,
+    "attempt": 5125,
+    "place_id": "gn-4828890",
+    "input": {
+      "place": {
+        "place_id": "gn-4828890",
+        "name": "Chillicothe",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 39.33312,
+        "lon": -82.9824
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chillicothe, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Chillicothe,_Ohio",
+          "text": "Chillicothe ( CHIL-ih-KOTH-ee) is a city in Ross County, Ohio, United States, and its county seat. The population was 22,059 at the 2020 census. The town's population peaked around 25,000 in 1960 and has held steady in the intervening decades.\nLocated along the Scioto River 45 miles (72 km) south of Columbus, Chillicothe was the first and third capital of Ohio. It is the only city in Ross County and the center of the Chillicothe micropolitan area, which is a part of the Columbus, Ohio Combined Statistical Area. Chillicothe is a designated Tree City USA by the National Arbor Day Foundation.\nChillicothe is the birthplace of Tecumseh, the Shawnee leader during the War of 1812. The town was an important waypoint during the American Revolutionary War and American Civil War eras. Indigenous tribes, white settlers, and freed slaves all traversed the area. A number of well-known Ohio politicians, sports stars, and professionals have been native to Chillicothe. The town has a 19th century theater and opera house and hosts a number of summer fairs. Beginning in 1973, a drama, Tecumseh!, has been staged annually in Chillicothe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "chillicothe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5165,
+    "attempt": 5126,
+    "place_id": "gn-5172078",
+    "input": {
+      "place": {
+        "place_id": "gn-5172078",
+        "name": "Sidney",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 40.28422,
+        "lon": -84.1555
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sidney, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Sidney,_Ohio",
+          "text": "Sidney is a city in Shelby County, Ohio, United States, and its county seat. The population was 20,589 at the 2020 census. It is approximately 36 miles (58 km) north of Dayton and 100 miles (160 km) south of Toledo, and is a part of the Dayton metropolitan area. The city is named after English poet Philip Sidney, and many of Sidney's elementary schools are named after famous writers, including Ralph Waldo Emerson, Henry Wadsworth Longfellow, and John Greenleaf Whittier. Sidney was the recipient of the 1964 All-America City Award. In 2009, it was the subject of the documentary film 45365."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "sidney",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5166,
+    "attempt": 5127,
+    "place_id": "gn-5178081",
+    "input": {
+      "place": {
+        "place_id": "gn-5178081",
+        "name": "Allegheny West",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.00845,
+        "lon": -75.17796
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Allegheny West, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Allegheny_West,_Philadelphia",
+          "text": "Allegheny West is a neighborhood in the North Philadelphia section of Philadelphia, Pennsylvania, United States. It is named after its location in the vicinity of Allegheny Avenue on the western side of Broad Street.\nLike many neighborhoods in North Philadelphia, Allegheny West has suffered post-industrial decline and disinvestment. It faced one of the largest population losses of any neighborhood in Philadelphia between the 1990 and 2000 census. Vacant industrial sites, such as those once used to build commuter rail trains by Budd Steel (later obtained by Krupp), have in recent years been used in film productions. The former Tasty Baking Co. food production facility is undergoing renovation as a mixed-use site; The former headquarters has been leveled to make way for a 75000 sq. ft grocery-anchored outlet mall.\nHousing in Allegheny West is very affordable. In 2005, the 19132 zip code, which contains sections of Allegheny West and North Central, had a median home sale price of $26,450. This was the lowest median price of any zip code in Philadelphia. Housing appreciated by 9% between 2004 and 2005. Allegheny West, per modern definition of the area, also contains sections of the 19129 zip code which is disputably East Falls."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "allegheny west",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "allegheny",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5167,
+    "attempt": 5128,
+    "place_id": "gn-523206",
+    "input": {
+      "place": {
+        "place_id": "gn-523206",
+        "name": "Naurskaya",
+        "country": "Russia",
+        "subdivision": "Chechnya",
+        "lat": 43.64999,
+        "lon": 45.31127
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Naurskaya",
+          "url": "https://en.wikipedia.org/wiki/Naurskaya",
+          "text": "Naurskaya (Russian: Наурская, Chechen: Новр-ГӀала, Novr-Ġala) is a rural locality (a stanitsa) and the administrative center of Naursky District, the Chechen Republic, Russia. Population:  9,050 (2010 census); 8,531 (2002 census); 7,617 (1989 Soviet census).\nIn early 2011, on the site of the old church, destroyed in 1937, construction began in Naurskaya of a new church of the Nativity of Christ, the construction of which was financed by the owner of the \"Russian Copper Company\" Igor Altushkin. On April 24, 2016, the opening of the temple took place. He was consecrated by Bishop Varlaam of Makhachkala and Grozny on March 4, 2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "naurskaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5168,
+    "attempt": 5129,
+    "place_id": "gn-5319311",
+    "input": {
+      "place": {
+        "place_id": "gn-5319311",
+        "name": "Vail",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 32.04786,
+        "lon": -110.71203
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vail, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Vail,_Arizona",
+          "text": "Vail is a census-designated place (CDP) in Pima County, Arizona, United States. It is 24 miles (39 km) southeast of Tucson. The population was 10,208 at the 2010 census, up from 2484 in the 2000 census. The area is known for the nearby Colossal Cave, a large cave system, and the Rincon Mountains District of Saguaro National Park, a top tourism spot within Arizona.\nVail was originally a siding and water stop on the Southern Pacific Railroad. It was located on the last section of flat land before the train tracks followed the old wagon road into the Cienega Creek bed. Vail was named after pioneer ranchers Edward and Walter Vail, who established ranches in the area in the late 19th century. Vail deeded a right of way across his ranch to the railroad. Vail owned the Vail Ranch, his brother Walter Vail owned the nearby Empire Ranch, now part of the Las Cienegas National Conservation Area. Attempts to incorporate the town were defeated in 2013 and 2023."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "vail",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5169,
+    "attempt": 5130,
+    "place_id": "gn-5385393",
+    "input": {
+      "place": {
+        "place_id": "gn-5385393",
+        "name": "Quartz Hill",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.64526,
+        "lon": -118.21813
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Quartz Hill, California",
+          "url": "https://en.wikipedia.org/wiki/Quartz_Hill,_California",
+          "text": "Quartz Hill is an unincorporated community in Los Angeles County, California, United States. The name is also shared with the neighboring district areas of its border cities, Palmdale, and Lancaster. Quartz Hill was once home to the Quartz Hill Airport. For statistical purposes, the United States Census Bureau has defined Quartz Hill as a census-designated place (CDP). The population was 11,447 at the 2020 census, up from 10,912 at the 2010 census. According to the Greater Antelope Valley Economic Alliance report of 2009, the Palmdale / Lancaster urban area of which Quartz Hill is a part, has a population of 483,998."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "quartz hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "quartz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5170,
+    "attempt": 5131,
+    "place_id": "gn-5394165",
+    "input": {
+      "place": {
+        "place_id": "gn-5394165",
+        "name": "Sebastopol",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 38.40214,
+        "lon": -122.82388
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sebastopol, California",
+          "url": "https://en.wikipedia.org/wiki/Sebastopol,_California",
+          "text": "Sebastopol ( sib-AST-ə-pohl, -⁠pool) is a city in Sonoma County, California, United States with a recorded population of 7,521, per the 2020 U.S. census.\nSebastopol was once primarily a plum- and apple-growing region. The creation of The Barlow, a $32 million mall on a floodplain in Sebastopol, has converted old agricultural warehouses into a marketplace for dining, tasting rooms, and art, and has made Sebastopol a Wine Country destination.\nHorticulturist Luther Burbank had gardens in this region. The city hosts an annual Apple Blossom Festival in April, Gravenstein Apple Fair in August, and is home to the Sebastopol Documentary Film Festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "sebastopol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5171,
+    "attempt": 5132,
+    "place_id": "gn-5769489",
+    "input": {
+      "place": {
+        "place_id": "gn-5769489",
+        "name": "Sturgis",
+        "country": "United States",
+        "subdivision": "South Dakota",
+        "lat": 44.40971,
+        "lon": -103.50908
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sturgis, South Dakota",
+          "url": "https://en.wikipedia.org/wiki/Sturgis,_South_Dakota",
+          "text": "Sturgis is a city in Meade County, South Dakota, United States. The population was 7,020 as of the 2020 census. It is the county seat of Meade County and is named after Samuel D. Sturgis, a Union general during the Civil War.\nSturgis is notable as the location of one of the largest annual motorcycle events in the world: the Sturgis Motorcycle Rally, which lasts for 10 days beginning on the first Friday of August. It attracts large numbers of motorcycle enthusiasts from around the world. Sturgis is also noted for hosting WCW's Hog Wild/Road Wild events from 1996 to 1999."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "sturgis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5172,
+    "attempt": 5133,
+    "place_id": "gn-6220587",
+    "input": {
+      "place": {
+        "place_id": "gn-6220587",
+        "name": "Kaiapoi",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -43.37832,
+        "lon": 172.64013
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kaiapoi",
+          "url": "https://en.wikipedia.org/wiki/Kaiapoi",
+          "text": "Kaiapoi is a town in the Waimakariri District of the Canterbury region, in the South Island of New Zealand. The town is located approximately 17 kilometres north of central Christchurch, close to the mouth of the Waimakariri River. It is considered a satellite town of Christchurch and is part of the Christchurch functional urban area. The town is named after the nearby Kaiapoi Pā.\nKaiapoi suffered extensive damage in the 2010 Canterbury and also the February 2011 Christchurch earthquakes, which rendered many homes uninhabitable and businesses inoperable. Large areas were condemned as part of a residential red zone covering uninhabitable areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "kaiapoi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5173,
+    "attempt": 5134,
+    "place_id": "gn-6692280",
+    "input": {
+      "place": {
+        "place_id": "gn-6692280",
+        "name": "Canary Wharf",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.50519,
+        "lon": -0.02085
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canary Wharf",
+          "url": "https://en.wikipedia.org/wiki/Canary_Wharf",
+          "text": "Canary Wharf is a privately owned central business district in London, England, located in the Isle of Dogs, Tower Hamlets. With the City of London and the West End, it constitutes one of the main financial centres in the United Kingdom and the world, and it is home to many of the world’s major financial corporations, including the headquarters of more than 150 major businesses.\nThe district was developed on the site of the former West India Docks in East London. Canary Wharf, together with Heron Quays and Wood Wharf, forms the Canary Wharf Estate, covering around 97 acres (39 ha)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "canary wharf",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "canary",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wharf",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5174,
+    "attempt": 5135,
+    "place_id": "gn-8348154",
+    "input": {
+      "place": {
+        "place_id": "gn-8348154",
+        "name": "Petersham",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.8946,
+        "lon": 151.15495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Petersham, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Petersham,_New_South_Wales",
+          "text": "Petersham is a suburb in the Inner West of Sydney, in New South Wales, Australia. Petersham is located 6 kilometres south-west of the Sydney central business district, in the local government area of Inner West Council. Petersham is known for its extensive Portuguese businesses, with many Portuguese shops and restaurants, despite only 156 (1.9%) of the population being born in Portugal.\nPetersham is bordered by the suburbs of Leichhardt to the north, Stanmore to the east, Marrickville to the south and Lewisham to the west. Taverner's Hill, named after Fred Taverner, is a locality in the western part of the suburb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "petersham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5175,
+    "attempt": 5136,
+    "place_id": "gn-937246",
+    "input": {
+      "place": {
+        "place_id": "gn-937246",
+        "name": "Zastron",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -30.30225,
+        "lon": 27.08395
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zastron",
+          "url": "https://en.wikipedia.org/wiki/Zastron",
+          "text": "Zastron is a small agricultural town in the Free State province of South Africa, some 30 km from the border of Lesotho. It is situated at the foot of Aasvoëlberg (Vulture Mountain), named for the rare Cape vultures attracted by a feeding project a short distance out of town. The township is named  \"Matlakeng\", Sesotho for Vultures. A curious rock formation in the mountain, Die Oog (The Eye), has been adopted as the town's unofficial emblem.\nThe town was founded in 1875 on the farm Verliesfontein, and named after the maiden name of President Brand's wife, Johanna Sibella Brand, née Zastron."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "zastron",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5176,
+    "attempt": 5137,
+    "place_id": "gn-941976",
+    "input": {
+      "place": {
+        "place_id": "gn-941976",
+        "name": "Warden",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -27.85452,
+        "lon": 28.9653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warden, Free State",
+          "url": "https://en.wikipedia.org/wiki/Warden,_Free_State",
+          "text": "Warden is a town situated in the Free State province of South Africa on the N3 highway between Johannesburg and Durban.\nThe town is 56 km north of Harrismith and 106 kilometres (66 mi) south-south-east of Villiers. It was laid out on the farm Rietvlei in 1912, proclaimed in 1913, and attained municipal status in 1920. It is said to be named after Charles Frederick Warden, landdrost of Harrismith from 1884 to 1900.\nWarden and Dirkie Uys School celebrated their centenary during September 2013. The town has one of the largest Dutch Reformed Churches in South Africa, with seating for 1,750.\nAfter the African National Congress came into power in 1994, the town's infrastructure deteriorated. Most roads are now unpaved and most public buildings have been in decline. A young group of residents took part in restoring Warden. A new main road and several buildings has since been built or upgraded. One of the biggest municipal dams is also being built. Warden's locality (in the middle of SA and on the N3 highway connecting Gauteng and Durban), water supply, industrial land and labour makes it an ideal place for industrial development. Houses in Warden are reasonably priced. Industrial and residential land are also available.\nThe farming area around Warden produces a big part of the country's potatoes, maize and red meat."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "warden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5177,
+    "attempt": 5138,
+    "place_id": "gn-1005040",
+    "input": {
+      "place": {
+        "place_id": "gn-1005040",
+        "name": "Eshowe",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -28.88649,
+        "lon": 31.4699
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eshowe",
+          "url": "https://en.wikipedia.org/wiki/Eshowe",
+          "text": "Eshowe is the oldest town of European settlement in Zululand,  historically also known as Eziqwaqweni, Ekowe or kwaMondi. Eshowe's name is said to be inspired by the sound of wind blowing through the more than 4 km2 of the indigenous Dlinza Forest, the most important and striking feature of the town. Although the name is most likely to be derived from the Zulu word for the Xysmalobium shrubs, showe or shongwe.\nToday Eshowe is a market town, with a 100 km radius catchment area, two shopping centres, a main bus station serving the hinterland, a major hospital, and several schools."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "eshowe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5178,
+    "attempt": 5139,
+    "place_id": "gn-1688998",
+    "input": {
+      "place": {
+        "place_id": "gn-1688998",
+        "name": "San Miguel",
+        "country": "Philippines",
+        "subdivision": "Western Visayas",
+        "lat": 10.78,
+        "lon": 122.46556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Miguel, Iloilo",
+          "url": "https://en.wikipedia.org/wiki/San_Miguel,_Iloilo",
+          "text": "San Miguel, officially the Municipality of San Miguel (Hiligaynon: Banwa sang San Miguel, Kinaray-a: Banwa kang San Miguel, Tagalog: Bayan ng San Miguel), is a municipality in the province of Iloilo, Philippines. According to the 2024 census, it has a population of 31,093 people. San Miguel is a part of the Metro Iloilo–Guimaras area, centered on Iloilo City.\nIt is the site of Aganan River Dam, which is an agricultural purpose dam used for irrigation of the ricefields in the surrounding towns. Pepsi Bottlers Philippines Inc. has a bottling plant in San Miguel, which supplies Pepsi products in Panay Island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "san miguel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "miguel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5179,
+    "attempt": 5140,
+    "place_id": "gn-1819554",
+    "input": {
+      "place": {
+        "place_id": "gn-1819554",
+        "name": "Lam Tin",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Kwun Tong District",
+        "lat": 22.30933,
+        "lon": 114.23634
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lam Tin",
+          "url": "https://en.wikipedia.org/wiki/Lam_Tin",
+          "text": "Lam Tin is an area in the Kwun Tong District in southeastern New Kowloon, Hong Kong. Lam Tin is primarily a residential area but also hosts a major transport interchange and several shopping attractions. Lam Tin was once a large field in the vicinity of Kowloon Bay. During the Song dynasty, it was a site of salt production. Since the 1980s, a number of housing estates were constructed in Lam Tin.\nA high-density residential district built on a coastal knoll, Lam Tin hosts residential housing estates, transport infrastructure, mass-transit facilities, shopping centres, recreational areas and many other buildings and structures. It is home to 130,000 residents, making up a fifth of Kwun Tong District's population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "lam tin",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lam",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tin",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

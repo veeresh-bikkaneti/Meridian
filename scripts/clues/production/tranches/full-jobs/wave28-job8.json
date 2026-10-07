@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 5584,
+    "attempt": 5541,
+    "place_id": "gn-2511503",
+    "input": {
+      "place": {
+        "place_id": "gn-2511503",
+        "name": "Salobreña",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.74277,
+        "lon": -3.58717
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salobreña",
+          "url": "https://en.wikipedia.org/wiki/Salobreña",
+          "text": "Salobreña (pronounced [saloˈβɾeɲa])  is a town on the Costa Granadina in Granada, Spain. It claims a history stretching back 6,000 years.\nThere are two main parts of Salobreña; The first is The Old Town which sits atop a rocky prominence and is a cluster of whitewashed houses and steep narrow streets leading up to a tenth-century Moorish castle, called 'Castillo de Salobreña' and it is one of its main tourist attractions.\nThe second part of Salobreña is new developments which spread from the bottom of the Old Town right to the beach. The whole town is almost surrounded by sugarcane fields on each side along the coast and further inland.\nAnother tourist attraction in Salobreña is 'El Peñón' (The Rock), which divides two of Salobreña's five beaches and juts out between Playa La Guardia and Playa de la Charca/Solamar and into the sea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "salobrena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5585,
+    "attempt": 5542,
+    "place_id": "gn-2706982",
+    "input": {
+      "place": {
+        "place_id": "gn-2706982",
+        "name": "Hedemora",
+        "country": "Sweden",
+        "subdivision": "Dalarna",
+        "lat": 60.27973,
+        "lon": 15.98855
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hedemora",
+          "url": "https://en.wikipedia.org/wiki/Hedemora",
+          "text": "Hedemora is a town in Dalarna County and the seat of Hedemora Municipality, Sweden, with 7,273 inhabitants in 2010.\nDespite its small population, Hedemora is for historical reasons normally still referred to as a city, and as such the oldest in the county. \nJonas Nilsson comes from Hedemora, as well as Kerstin Thorborg, Martin Matsbo, Edvin Anger, Bertil Norman and Ulf Stenlund. The diesel engines from Hedemora Diesel can be found in many ships built by Kockums, such as HSwMS Orion, the Collins class submarines in the Royal Australian Navy Submarine Service and the Archer class submarines in the Republic of Singapore Navy.\nHedemora is the home of Clifftop Games, an independent game developer whose published works include Kathy Rain and Whispers of a Machine, and also of Killmonday Games, the independent game developer that produced the games Fran Bow and Little Misfortune."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "hedemora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5586,
+    "attempt": 5543,
+    "place_id": "gn-2734483",
+    "input": {
+      "place": {
+        "place_id": "gn-2734483",
+        "name": "São João da Pesqueira",
+        "country": "Portugal",
+        "subdivision": "Viseu",
+        "lat": 41.14805,
+        "lon": -7.40489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São João da Pesqueira",
+          "url": "https://en.wikipedia.org/wiki/São_João_da_Pesqueira",
+          "text": "São João da Pesqueira (European Portuguese pronunciation: [sɐ̃w ʒuˈɐ̃w ðɐ pɨʃˈkɐjɾɐ] ) is a municipality and town in the district of Viseu, in northern Portugal.  As of the 2021 census, the municipality had a population of 6,775, covering an area of 266.11 square kilometres (102.75 mi2).  The town itself is located in the civil parish of São João da Pesqueira e Várzea de Trevões, which had 2,273 inhabitants in the same year. The present mayor is Manuel Cordeiro, elected by a citizens' movement and the municipal holiday is June 24.\nHuman presence in the region dates back at least 7,000 years. The town is notable for having received, together with the nearby locations of Penela, Paredes da Beira, Linhares and Ansiães, the earliest known royal charter (foral) in the territory of modern Portugal, issued between 1055 and 1065 by Ferdinand I of León. Culturally, the municipality maintains a strong calendar of religious and seasonal traditions, including pilgrimages, Easter rituals, and May festivals.\nGeographically, São João da Pesqueira comprises 11 civil parishes and sits at an altitude of 850 metres (2,790 ft), bordered by the Douro River to the north. The landscape is marked by terraced vineyards, river valleys, and elevated viewpoints such as those at São Salvador do Mundo, offering panoramic views over the Valeira Dam and the Douro valley. São João da Pesqueira lies within the Alto Douro Wine Region, a UNESCO World Heritage Site, and accounts for approximately 20% of the classified area. The municipality is known for its production of Port and Douro wines, with vineyards forming the backbone of the local economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "sao joao da pesqueira",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "joao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pesqueira",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5587,
+    "attempt": 5544,
+    "place_id": "gn-2784548",
+    "input": {
+      "place": {
+        "place_id": "gn-2784548",
+        "name": "Visé",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.7376,
+        "lon": 5.69907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Visé",
+          "url": "https://en.wikipedia.org/wiki/Visé",
+          "text": "Visé (French pronunciation: [vize] ; Dutch: Wezet, Dutch pronunciation: [ˈʋeːzɛt]; Walloon: Vizé) is a city and municipality of Wallonia, located on the river Meuse in the province of Liège, Belgium.\nThe municipality consists of the following districts: Argenteau, Cheratte, Lanaye, Lixhe, Richelle, and Visé.\nIn the north-east (on the eastern bank of the Meuse) the area of the municipality extends up to the village of Moelingen in the Limburgian municipality of Voeren, while in the north-west (on the western bank of the Meuse) it extends  up to the border between Belgium and the Netherlands (on the other side of which the Dutch municipality of Maastricht is situated).\nThe city of Visé is located some 20 km (12.4 miles) north-east of Liège and some 15 km (9,3 miles) south of Maastricht.\nIn addition to the Meuse, the Albert Canal also passes through this town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "vise",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5588,
+    "attempt": 5545,
+    "place_id": "gn-3163948",
+    "input": {
+      "place": {
+        "place_id": "gn-3163948",
+        "name": "Vomero",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.84282,
+        "lon": 14.23075
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vomero",
+          "url": "https://en.wikipedia.org/wiki/Vomero",
+          "text": "Vomero (pronounced [ˈvɔːmero]; Neapolitan: Vommero) is a hilltop quarter of Naples, Italy — comprising approximately two square kilometres (0.77 sq mi) and a population of 48,000.\nVomero is noted for its central square, Piazza Vanvitelli; the ancient Petraio, its earliest path up and down to the original city of Naples; its ancient district of Rione Antignano; Floridiana Park and Villa Floridiana; the medieval fortress, Castel Sant'Elmo; three funiculars connecting to downtown historic districts; its active pedestrian zone (ZTL) — and its prominent location overlooking greater Naples, Mount Vesuvius, the Bay of Naples and the Tyrrhenian Sea.\nAdjacent to the Arenella, Soccavo, Fuorigrotta, Chiaia, Montecalvario and Avvocata districts, the street and placenames within Vomero are typically named after noted artists, painters, sculptors, musicians, composers or architects, each with a prominent Neopolitan connection at the time of Vomero's development.\nResidents go by the demonym, Vomeresi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "vomero",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5589,
+    "attempt": 5546,
+    "place_id": "gn-3315315",
+    "input": {
+      "place": {
+        "place_id": "gn-3315315",
+        "name": "Ballymun",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.39807,
+        "lon": -6.26693
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ballymun",
+          "url": "https://en.wikipedia.org/wiki/Ballymun",
+          "text": "Ballymun (Irish: Baile Munna) is a suburb of Dublin, Ireland, at the northern edge of the city's Northside. The population was 22,321 at the 2022 census. Ballymun is close to Dublin Airport and borders the suburbs of Finglas, Glasnevin and Santry.\nThe area was noted for the rapid and massive development of publicly funded housing in the 1960s, especially the high-rise Ballymun Flats, and subsequent social issues, as well as a strong culture of community organisation.  In the early 2000s, it was the subject of a billion euro regeneration scheme, which delivered new housing stock to replace the towers of flats, but left the area with few retail facilities, and was connected with the closure of many community groups.  As part of the regeneration, major arts projects were funded, including the establishment of a civic theatre and the mass tree-planting social artwork amaptocare."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "ballymun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5590,
+    "attempt": 5547,
+    "place_id": "gn-3653967",
+    "input": {
+      "place": {
+        "place_id": "gn-3653967",
+        "name": "Muisne",
+        "country": "Ecuador",
+        "subdivision": "Esmeraldas",
+        "lat": 0.61045,
+        "lon": -80.0186
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muisne",
+          "url": "https://en.wikipedia.org/wiki/Muisne",
+          "text": "Muisne is a coastal town in the southwest of the province of Esmeraldas in northwestern Ecuador, with a population of 5,574 in the last Ecuadorian census in 2022. It is the seat of the namesake canton.\nThe town is located on the northern tip of the small coastal island known as Isla de Muisne in the Ensenada de Mompiche bay. The channel of the Muisne River estuary between the mainland and the eastern side of the island is crossed mainly by small outboard-motor boats for passengers and by barges for cars and small trucks.\nOn the western side of the island there is a beach which attracts both local and foreign tourists.\nThe canton of Muisne contains several other parroquias (small villages or parishes), including Pedro Carlo, San Francisco del Cabo (the oldest parish), Bunche, Union of Daule, Tola, Maldonado, Bellavista, and Daule."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "muisne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5591,
+    "attempt": 5548,
+    "place_id": "gn-4174383",
+    "input": {
+      "place": {
+        "place_id": "gn-4174383",
+        "name": "Sunny Isles Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 25.95065,
+        "lon": -80.12282
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunny Isles Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Sunny_Isles_Beach,_Florida",
+          "text": "Sunny Isles Beach is a city located on a barrier island in northeast Miami-Dade County, Florida, United States. The city is part of the Miami metropolitan area of South Florida, and is bounded by the Atlantic Ocean on the east and the Intracoastal Waterway on the west. As of the 2020 census, it had a population of 22,342.\nSunny Isles Beach is an area of cultural diversity with stores lining Collins Avenue, the main thoroughfare through the city. It has the 14th tallest skyline in the United States, and according to the 2020 U.S. Census it was the mostly densely populated incorporated place in the United States outside of the New York City metropolitan area.\nDevelopers like Michael Dezer have invested heavily in construction of high-rise hotels and condominiums while licensing the Donald Trump name for some of the buildings for promotional purposes. Sunny Isles Beach has a central location, minutes from Bal Harbour to the south, and Aventura to the north and west.\nSunny Isles Beach was the 2008 site of MTV's annual Spring Break celebration, with headquarters at the local Newport Beachside Resort."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 143,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "sunny isles beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sunny",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "isles",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5592,
+    "attempt": 5549,
+    "place_id": "gn-11838094",
+    "input": {
+      "place": {
+        "place_id": "gn-11838094",
+        "name": "Brera",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.47154,
+        "lon": 9.18763
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brera, Milan",
+          "url": "https://en.wikipedia.org/wiki/Brera,_Milan",
+          "text": "Brera is a district (\"quartiere\") of Milan, Italy. It is located within the Zone 1 (the historical core of the city) and it is centred on Via Brera. The name stems from Medieval Italian \"braida\" or \"brera\", derived from Old Lombardic \"brayda\" (often Latinized as \"praedium\"), meaning a land expanse either cleared of trees or naturally lacking them. This is because around the year 900, the Brera district was situated just outside Milan's city walls and was kept clear for military reasons. The root of the word is the same as that of the Dutch city of Breda's name and the English word \"broad\".\nBrera houses the Brera Academy of Fine Arts and the Brera Art Gallery, which prominently contributed to the development of Brera as an artists' neighbourhood and a place of bohemian atmosphere, sometimes referred to as \"the milanese Montmartre\". Both the academy and the gallery are located in Palazzo Brera, the main historical building of the area; this same building also houses Milan's botanical garden as well as an astronomical observatory and the Braidense National Library. Other features that contribute to the character of Brera include restaurants, bars, nightclubs, antique and art shops, colourful street markets, as well as fortune tellers' booths.\nFrom 1998 to 2002 novelist Paolo Brera, along with Franco Brera and Francesca Brera, edited and published the magazine Brera, devoted to the Brera district. Well-known journalists, art critics and fiction writers contributed over the years, including Rossana Bossaglia, Giuseppe Pontiggia, Guido Vergani, Vittoria Colpi, Carlo Castellaneta and Giulio Signori."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 255
+    },
+    "banned_terms": [
+      {
+        "term": "brera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5593,
+    "attempt": 5550,
+    "place_id": "gn-12324554",
+    "input": {
+      "place": {
+        "place_id": "gn-12324554",
+        "name": "Minning",
+        "country": "China",
+        "subdivision": "Ningxia",
+        "lat": 38.2487,
+        "lon": 105.97068
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minning, Ningxia",
+          "url": "https://en.wikipedia.org/wiki/Minning,_Ningxia",
+          "text": "Minning (simplified Chinese: 闽宁; traditional Chinese: 閩寧; pinyin: Mǐnníng) is a town under the administration of Yongning County, Ningxia, China. As of 2021, it administers Funing Community (福宁社区) and the following six villages:\n\nFuning Village (福宁村)\nMulan Village (木兰村)\nWuhe Village (武河村)\nYuanyi Village (园艺村)\nYuhai Village (玉海村)\nYuanlong Village (原隆村)\nMinning, which literally means \"Fujian–Ningxia\", was named by Xi Jinping in 1997, then deputy secretary of the Fujian Provincial Party Committee and the leader of the Fujian-Ningxia poverty-alleviation leading group. The town was officially established in 2001 after its population swelled to 14,000. Most of its residents are resettled farmers from Xihaigu in southern Ningxia, one of the poorest places in China and a main target of the government's poverty-alleviation resettlement program.\nThe 2021 TV series Minning Town is based on the history of this town. It depicts poverty alleviation efforts. Starring Huang Xuan, Zu Feng, Rayzha Alimjan, Zhang Jiayi, Huang Yao, Bai Yufan, Guo Jingfei, You Yongzhi, Yao Chen, Huang Jue, Tao Hong, Yan Ni with Wang Kai and Bai Yu, the show was a huge critical success and described as \"a new standard for Chinese dramas\". It won Best Television Series and three other awards at the 2021 Shanghai Television Festival. It is one of the CGTN shows most popular with foreign audiences, particularly in the Arab countries.\nNCPA commissioned an opera of the same name premiered September 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 232
+    },
+    "banned_terms": [
+      {
+        "term": "minning",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5594,
+    "attempt": 5551,
+    "place_id": "gn-12747064",
+    "input": {
+      "place": {
+        "place_id": "gn-12747064",
+        "name": "Hong Kong Island",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Hong Kong SAR China",
+        "lat": 22.26302,
+        "lon": 114.18419
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hong Kong Island",
+          "url": "https://en.wikipedia.org/wiki/Hong_Kong_Island",
+          "text": "Hong Kong Island is an island in the southern part of Hong Kong. The island, known originally and on road signs simply as Hong Kong, has a land area of approximately 78.59 square kilometres (30.34 sq mi) and a population of 1,289,500 with a population density of 16,390 per square kilometre (42,400/sq mi), as of 2023. It is the second largest island in Hong Kong, with the largest being Lantau Island. Hong Kong Island forms one of the three areas of Hong Kong, with the other two being Kowloon and the New Territories.\nIn 1842, following the Qing dynasty's defeat at the First Opium War (1839–1842), Hong Kong Island was formally ceded in perpetuity to the United Kingdom under the Treaty of Nanking. The City of Victoria was then established on the island by British forces, named in honour of Queen Victoria. At that time, the island had a population of about 3,000 inhabitants scattered in a dozen fishing villages.\nThe northern-east part of the island, being known as the Central area is the historical, political, and economic centre of Hong Kong, with many government buildings being in the area, namely the Government House, Central Government Complex, Legislative Council Complex, Hong Kong Court of Final Appeal, and Hong Kong High Court. Many financial institutes and banks such as the Hong Kong Stock Exchange, Hong Kong Monetary Authority, HSBC, and Bank of China (Hong Kong) are also based in the area.\nThe northern coast of the island forms the southern shore of the Victoria Harbour, which is largely responsible for the development of Hong Kong due to its deep waters favoured by large trade ships. The island is home to many famous tourists sights, such as \"The Peak\", Ocean Park, Former Central Police Station Compound, Murray House, and many other historical sites and various large shopping centres. The mountain ranges across the island are also famous for hiking.\n\nThe northern part of Hong Kong Island, together with Kowloon and Tsuen Wan New Town, forms the \"core urban area\" of Hong Kong. Their combined area is approximately 88.30 square kilometres (34.1 square miles) and their combined population is approximately 3,156,500, reflecting a higher population density of 35,700 people/km2 (92,000 people/mi2). The island is often referred to locally as \"Hong Kong side\" or \"Island side\". The suffix \"-side\" is also applied to other locations in Hong Kong, the sole remnant of which being \"Kowloon side\" when referring to the other side of Victoria Harbour."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 411
+    },
+    "banned_terms": [
+      {
+        "term": "hong kong island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hong",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kong",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5595,
+    "attempt": 5552,
+    "place_id": "gn-2265388",
+    "input": {
+      "place": {
+        "place_id": "gn-2265388",
+        "name": "Ourém",
+        "country": "Portugal",
+        "subdivision": "Santarém",
+        "lat": 39.64167,
+        "lon": -8.5919
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ourém",
+          "url": "https://en.wikipedia.org/wiki/Ourém",
+          "text": "Ourém (European Portuguese: [oˈɾɐ̃j] , locally [ɔˈɾɐ̃j]), formerly known as Vila Nova de Ourém, is a municipality in the district of Santarém in Portugal. The population in 2011 was 45,932, in an area of 416.68 km2.\nThe municipality of Ourém contains two cities: Ourém (about 12,000 residents) and Fátima (about 11,000 inhabitants).\nThe municipality is bordered by the municipalities of Pombal (to the north), Alvaiázere (to the northeast), Ferreira do Zêzere and Tomar (to the east), Torres Novas (to the southeast), Alcanena (to the southwest), and Batalha and Leiria (to the west). The main historical attraction of the municipality is the mighty Castle of Ourém. Nevertheless, millions of faithful Catholics come to the parish of Fátima every year to visit Cova da Iria, the site where three child shepherds are said to have had visions of Our Lady of Fátima in 1917. The Sanctuary of Our Lady of Fátima has become one of the largest religious tourism sites in the world.\nThe present Mayor is Luís Miguel Albuquerque, elected by the Social Democratic Party.\nThe municipal holiday is June 20."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "ourem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5596,
+    "attempt": 5553,
+    "place_id": "gn-2469341",
+    "input": {
+      "place": {
+        "place_id": "gn-2469341",
+        "name": "Maktar",
+        "country": "Tunisia",
+        "subdivision": "Siliana Governorate",
+        "lat": 35.85798,
+        "lon": 9.20072
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maktar",
+          "url": "https://en.wikipedia.org/wiki/Maktar",
+          "text": "Maktar or Makthar (Arabic: مكثر), also known by other names during antiquity, is a town and archaeological site in Siliana Governorate, Tunisia.\nMaktar was founded by the Berber Numidians as a defense post against Carthaginian expansion. At the end of the Third Punic War, it was settled by many Punic refugees after the Romans' destruction of Carthage in 146 BC. Under Roman rule, it obtained the status of a free city under Julius Caesar in 46 BC and became a Roman colony in AD 146. It formed part of the province of Byzacena and was the seat of a Christian bishop. Under the Romans and Byzantines, it reversed its earlier role to serve as a defense post against local Berber attacks. The town survived the Muslim invasions but was destroyed by the Banu Hilal tribe in the 11th century before being reëstablished. The present town had a population of 13,576 in 2014."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "maktar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5597,
+    "attempt": 5554,
+    "place_id": "gn-2513113",
+    "input": {
+      "place": {
+        "place_id": "gn-2513113",
+        "name": "Onil",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.62606,
+        "lon": -0.67313
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Onil",
+          "url": "https://en.wikipedia.org/wiki/Onil",
+          "text": "For people with the given name, see Onil (given name).\n\nOnil (Valencian: [oˈnil]; Spanish: [oˈnil]) is a town and municipality located in the comarca of L'Alcoià, in the province of Alicante, Valencian Community, Spain. It has an area of 48.41 km2 and, according to the 2021 census, a total population of 7,612 inhabitants and a population density of 154.22 inhabitants/km2. Onil is located next to the mountain called Serra d'Onil in the Serra de Mariola, 36 km from Alicante city.\nThe economy of Onil is based on the industries of toy, construction and farming (almonds and olives).\nThe most important monuments in Onil are the Palace–Fortress from the 16th century, which is the headquarters of the town council; the Catholic church of Saint James Apostles (from the 17th-18th century) and the Hermitages of Saint Bonaventure (from the 17th century) and Saint Anna.\nThe Moros i Cristians festival of Onil is celebrated each April."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "onil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5598,
+    "attempt": 5555,
+    "place_id": "gn-2516902",
+    "input": {
+      "place": {
+        "place_id": "gn-2516902",
+        "name": "Guardamar del Segura",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.09031,
+        "lon": -0.65556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guardamar del Segura",
+          "url": "https://en.wikipedia.org/wiki/Guardamar_del_Segura",
+          "text": "Guardamar del Segura (Valencian: [ˌɡwaɾðaˈmaɾ ðel seˈɣuɾa]), or briefly Guardamar, is a municipality of the province of Alicante located at the mouth of the river Segura in southern Valencia (autonomous community), Spain. It is a Mediterranean resort, with a large pine forest abutting an 11-km-long white sand beach.\nHistorically, it was an area of fishermen and farmers. A Phoenician colony, called Herna by Roman geographer Avienius in his book Ora Maritima was the first settlement near the mouth of Segura river,  In Valencian, guardar means safekeeping and mar means sea, and this is another possible basis for its current name.\nGuardamar is the southernmost Valencian-speaking town and in 1991 41.8% of the town's residents could speak it. Guardamar is also the only municipality of the Vega Baja del Segura comarca (known locally as Baix Segura) where Valencian is traditionally and widely spoken.\nGuardamar hosts local festivals like Moros i Cristians (Moros y Cristianos), L'Encantà, and Fogueres de Sant Joan (Hogueras de San Juan), which commemorate its history."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "guardamar del segura",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "guardamar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "segura",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5599,
+    "attempt": 5556,
+    "place_id": "gn-2610802",
+    "input": {
+      "place": {
+        "place_id": "gn-2610802",
+        "name": "Valby",
+        "country": "Denmark",
+        "subdivision": "Capital Region",
+        "lat": 55.66613,
+        "lon": 12.51388
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valby",
+          "url": "https://en.wikipedia.org/wiki/Valby",
+          "text": "Valby ([vælpyˀ] ) is one of the 10 official districts of Copenhagen Municipality, Denmark. It is in the southwestern corner of Copenhagen Municipality, and has a mixture of different types of housing. This includes apartment blocks, terraced housing, areas with single-family houses and allotments, plus the remaining part of the old Valby village, around which the district has formed, intermingled with past and present industrial sites.\nValby Hill marks the boundary between Valby and the more central and urban neighbouring Vesterbro district. The expression \"west of Valby Hill\" is in Danish often used as a metonym for \"the provinces\" or \"outside Copenhagen\". Separated from the rest of Copenhagen by Vestre Cemetery, Denmark's largest cemetery, towards Vesterbro/Kongens Enghave and Søndermarken-Frederiksberg Gardens towards Frederiksberg, the Carlsberg brewery site, and areas of low density, Valby retains a certain air of 'independence', or isolation, even today. With the progressing redevelopment of the Carlsberg area into a new lively, high-density neighbourhood, this is likely to change. Other former industrial sites are also under redevelopment and Valby is today one of the districts in Copenhagen with the fastest growing population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "valby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5600,
+    "attempt": 5557,
+    "place_id": "gn-2656169",
+    "input": {
+      "place": {
+        "place_id": "gn-2656169",
+        "name": "Bathgate",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.90204,
+        "lon": -3.64398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bathgate",
+          "url": "https://en.wikipedia.org/wiki/Bathgate",
+          "text": "Bathgate (Scots: Bathket or Bathkit, Scottish Gaelic: Both Chèit) is a town in West Lothian, Scotland, 5 miles (8 km) west of Livingston and adjacent to the M8 motorway. Nearby towns are Linlithgow, Livingston, and West Calder. A number of villages fall under the umbrella of Bathgate, including Blackburn, Whitburn, Stoneyburn, Armadale, Torphichen and Fauldhouse.\nSituated 2 miles (3 km) south of the ancient Neolithic burial site at Cairnpapple Hill, Bathgate and the surrounding area show signs of habitation since about 3500 BC and the world's oldest known reptile fossil has been found in the town. By the 12th century, Bathgate was a small settlement, with a church at Kirkton and a castle north of the present day town centre. Local mines were established in the 17th century but the town remained small in size until the coming of the industrial revolution. By the Victorian era, Bathgate grew in prominence as an industrial and mining centre, principally associated with the coal and shale oil industries. By the early 20th century, much of the mining and heavy industry around the town had ceased and the town developed manufacturing industries, principally in vehicle production and later electronics before these factories closed in the late 20th century.\nToday Bathgate is the second largest town in West Lothian, after Livingston and serves as a regional commuter town within the Scottish Central Belt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "bathgate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5601,
+    "attempt": 5558,
+    "place_id": "gn-2748591",
+    "input": {
+      "place": {
+        "place_id": "gn-2748591",
+        "name": "Pijnacker",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.01954,
+        "lon": 4.42946
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pijnacker",
+          "url": "https://en.wikipedia.org/wiki/Pijnacker",
+          "text": "Pijnacker (Dutch pronunciation: [ˈpɛinɑkər]) is a town in the Dutch province of South Holland. It is bordered by Zoetermeer to the north, by Nootdorp to the northwest, by Delfgauw to the southwest, by Rotterdam (specifically Overschie) to the south and by Berkel en Rodenrijs to the east.\nPijnacker was a separate municipality until 2002, when it merged with Nootdorp to form Pijnacker-Nootdorp, which is a part of Greater The Hague. However, Pijnacker does not border The Hague (Nootdorp does), and it does border Rotterdam especially since Nootdorp and Pijnacker, while technically contiguous, have about 2 km of nature between them. While it may then seem strange that the two towns would want to merge, they did so preemptively to avoid potential annexing by the cities.\n\nPijnacker has two stops on the Randstadrail E-lijn between The Hague and Rotterdam: Pijnacker Centrum and Pijnacker-Zuid.\nIn and around Pijnacker there are big and attractive nature areas, of which one is the Ackerdijkse Plassen, one of the most important bird areas in the Netherlands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "pijnacker",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5602,
+    "attempt": 5559,
+    "place_id": "gn-2877550",
+    "input": {
+      "place": {
+        "place_id": "gn-2877550",
+        "name": "Lindau",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.54612,
+        "lon": 9.68431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lindau",
+          "url": "https://en.wikipedia.org/wiki/Lindau",
+          "text": "Lindau (German: Lindau (Bodensee), Lindau im Bodensee; German: [ˈlɪndaʊ] ; Low Alemannic: Lindou) is a major town and island on the eastern side of Lake Constance (Bodensee in German) in Bavaria, Germany. It is the capital of the county (Landkreis) of Lindau, Bavaria and is near the borders of the Austrian state of Vorarlberg, and the Swiss cantons of St. Gallen and Thurgau. The coat of arms of Lindau town is a linden tree, referring to the supposed origin of the town's name. The historic town of Lindau is located on the 0.68-square-kilometre (0.26 sq mi) island of the same name, which is connected with the mainland by a road bridge and a railway causeway leading to Lindau station.\nLindau is located near the meeting point of the Austrian-German-Swiss tripoint and is nestled on the lake in front of Austria's Pfänder mountain. Lindau is popular with sightseers and vacationers for its medieval town centre and picturesque location on Lake Constance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "lindau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5603,
+    "attempt": 5560,
+    "place_id": "gn-3014392",
+    "input": {
+      "place": {
+        "place_id": "gn-3014392",
+        "name": "Guérande",
+        "country": "France",
+        "subdivision": "Pays de la Loire",
+        "lat": 47.32829,
+        "lon": -2.42934
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guérande",
+          "url": "https://en.wikipedia.org/wiki/Guérande",
+          "text": "Guérande (French pronunciation: [ɡeʁɑ̃d] ; Breton: Gwenrann, pronounced [ɡwɛnˈrãnː]; Gallo: Geraundd) is a medieval town located in the department of Loire-Atlantique, and the region of Pays de la Loire, Western France.\nThe inhabitants are referred to as Guérandais (masculine), and Guérandaise (feminine).\nThe Guérande Peninsula overlooks two contrasting landscapes: the \"Pays Blanc\" (White Land), because of its salt marshes, and the \"Pays Noir\", with the Brière peat bog. The town's salt marshes have made it a renowned producer of salt, and it is the traditional source of fleur de sel, a type of garnishing salt.\nSince 2004, the medieval town of Guérande has been a member of a national network of 120 towns, the Villes et Pays d'Art et d'Histoire (Towns and Regions of Art and History). The fortified wall of Guérande is one of the best preserved and complete in France. Its circumference stretches 1434 meters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "guerande",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

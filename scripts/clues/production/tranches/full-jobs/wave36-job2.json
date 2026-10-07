@@ -1,0 +1,827 @@
+[
+  {
+    "rank": 7070,
+    "attempt": 7021,
+    "place_id": "gn-2656970",
+    "input": {
+      "place": {
+        "place_id": "gn-2656970",
+        "name": "Ashby-de-la-Zouch",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.74632,
+        "lon": -1.4732
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ashby-de-la-Zouch",
+          "url": "https://en.wikipedia.org/wiki/Ashby-de-la-Zouch",
+          "text": "Ashby-de-la-Zouch (), also spelled Ashby de la Zouch and commonly shortened to Ashby, is a market town and civil parish in the North West Leicestershire district of Leicestershire, England, near to the Derbyshire and Staffordshire borders. Its population at the 2021 census was 16,491. Ashby de la Zouch Castle was an important fort in the 15th to 17th centuries. During the 19th century, the town's main industry was ribbon manufacturing.\nThe civil parish includes the hamlets of Shellbrook to the west and Boundary to the north-west. Swadlincote, Burton upon Trent, Melbourne and Coalville are within 10 miles (16 km), with Derby 12 miles (19 km) due north. It lies at the heart of the National Forest, 24 miles (39 km) south of the Peak District National Park, on the A42 between Tamworth and Nottingham."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "ashby de la zouch",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ashby",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "zouch",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7071,
+    "attempt": 7022,
+    "place_id": "gn-2752409",
+    "input": {
+      "place": {
+        "place_id": "gn-2752409",
+        "name": "Kortenhoef",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.23917,
+        "lon": 5.10694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kortenhoef",
+          "url": "https://en.wikipedia.org/wiki/Kortenhoef",
+          "text": "Kortenhoef (Dutch pronunciation: [ˈkɔrtə(n)ɦuf] or [kɔrtə(n)ˈɦuf]) is a village in North Holland, Netherlands with a population of about 6,780. It is an important part of the municipality of Wijdemeren, and lies about 5 km northwest of Hilversum. Kortenhoef was a separate municipality until 1966, when it was merged with 's-Graveland retaining the latter name; it merged with Loosdrecht and Nederhorst den Berg to form the new municipality of Wijdemeren in 2002.\nThe village was first mentioned in 1235 as Curtenhoven, and means \"short piece of land\". It refers to the narrow plots of the peat excavation area. Kortenhoef developed in the 12th century as a linear settlement.\nThe Dutch Reformed church is a single aisled church with needle spire. The tower and choir were built during the second half of the 14th century. The former town hall was built in Renaissance Revival style in 1910. It was extended in 1930.\nKortenhoef was home to 534 people in 1840. Around 1900, it became a painter's village due to the landscape surrounding the village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "kortenhoef",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7073,
+    "attempt": 7023,
+    "place_id": "gn-2786769",
+    "input": {
+      "place": {
+        "place_id": "gn-2786769",
+        "name": "Silly",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.64877,
+        "lon": 3.92363
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silly, Belgium",
+          "url": "https://en.wikipedia.org/wiki/Silly,_Belgium",
+          "text": "Silly (French pronunciation: [sili] ; Dutch: Opzullik; Walloon: Chili) is a municipality of Wallonia located in the province of Hainaut, Belgium. \nOn January 1, 2018, Silly had a total population of 8,407. The total area is 67.68 square kilometres (26.13 sq mi) which gives a population density of 118 inhabitants per km2.\nThe name of the town derives from its stream, called the Sille (French) or Zulle (Dutch), and has no relation to the English word. In the English-speaking world, it has frequently been noted on lists of unusual place names.\nThe municipality consists of the following districts: Fouleng, Gondregnies, Graty, Hellebecq, Hoves, Silly, Thoricourt, and Bassilly."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "silly",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7074,
+    "attempt": 7024,
+    "place_id": "gn-2790756",
+    "input": {
+      "place": {
+        "place_id": "gn-2790756",
+        "name": "Mont-Saint-Guibert",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.63427,
+        "lon": 4.61061
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mont-Saint-Guibert",
+          "url": "https://en.wikipedia.org/wiki/Mont-Saint-Guibert",
+          "text": "Mont-Saint-Guibert (French pronunciation: [mɔ̃ sɛ̃ ɡibɛʁ]; Walloon: Mont-Sint-Wubert) is a municipality of Wallonia located in the Belgian province of Walloon Brabant. On January 1, 2012, Mont-Saint-Guibert had a total population of 7000. The total area is 18.63 km2 (7.19 sq mi) which gives a population density of 344 inhabitants per square kilometre (890/sq mi).\nIn addition to Mont-Saint-Guibert itself, the municipality includes the villages of Corbais and Hévillers.\nBefore the owners of Stella Artois brewery bought the business, Leffe beer was brewed in the village along with Vieux Temps. The brewery was subsequently closed and production was moved to Leuven in the Flemish part of the country.\nThe commune is now fast developing with the arrival of many commuters who have moved from the capital city of Brussels. They are served by a local station and the nearby E411 Brussels to Luxembourg highway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "mont saint guibert",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mont",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "guibert",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7075,
+    "attempt": 7025,
+    "place_id": "gn-2798276",
+    "input": {
+      "place": {
+        "place_id": "gn-2798276",
+        "name": "Florennes",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.25127,
+        "lon": 4.60636
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Florennes",
+          "url": "https://en.wikipedia.org/wiki/Florennes",
+          "text": "Florennes (French pronunciation: [flɔ.ʁɛn]; Walloon: Florene) is a municipality of Wallonia located in the province of Namur, Belgium. As of 1 January 2006, Florennes has a total population of 10,754. The total area is 133.55 km2 which gives a population density of 81 inhabitants per km2.\nThe municipality consists of the following districts: Corenne, Flavion, Florennes, Hanzinelle, Hanzinne, Hemptinne, Morialmé, Morville, Rosée, Saint-Aubin and Thy-le-Bauduin.\nFlorennes hosts Florennes Air Base, a Belgian military airfield which is the home base for F-16 Fighting Falcon jets.\nThe first week-end of every July, Florennes is a large festival due to the folk walk with a couple of thousand valorous walkers.\nCyclists Firmin Lambot, who won the Tour de France in 1919 and in 1922 and Léon Scieur, who won the Tour in 1921, were born in Florennes.\nThe village was formerly the site of Florennes Abbey, dissolved during the French Revolution and since entirely demolished."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "florennes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7076,
+    "attempt": 7026,
+    "place_id": "gn-2811354",
+    "input": {
+      "place": {
+        "place_id": "gn-2811354",
+        "name": "Welzheim",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.87675,
+        "lon": 9.63434
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Welzheim",
+          "url": "https://en.wikipedia.org/wiki/Welzheim",
+          "text": "Welzheim (German pronunciation: [ˈvɛltsˌhaɪm] ) is a town in the Rems-Murr district, in Baden-Württemberg, Germany. It is located 35 km east of Stuttgart, and 15 km northwest of Schwäbisch Gmünd.\nWelzheim has 11,239 (2005) inhabitants and is located in the 'Welzheimer Wald', a forest in the north-east of Württemberg.\nThe district of Welzheim and its surrounding villages are mainly rural and agricultural. Because of the big forest areas, the timber industry remains a big part of local business.\nThere are many beautiful natural areas near Welzheim, including the lake 'Ebnisee' and a hiking trail 'Mühlenwanderweg' (mill hiking trail), which follows many mills located in the 'Welzheimer Wald'. In the town itself, there are sights such as the St. Gallus Church and the town hall."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "welzheim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7077,
+    "attempt": 7027,
+    "place_id": "gn-2813700",
+    "input": {
+      "place": {
+        "place_id": "gn-2813700",
+        "name": "Wassertrüdingen",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.04328,
+        "lon": 10.59906
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wassertrüdingen",
+          "url": "https://en.wikipedia.org/wiki/Wassertrüdingen",
+          "text": "Wassertrüdingen (German pronunciation: [vasɐˈtʁyːdɪŋən] ) is a town in the district of Ansbach, Middle Franconia, Bavaria, Germany. It is between the Hesselberg, the only Franconian mountain with a view on the Alps, the wooded heights of the Oettinger Forest and the foothills of the Hahnenkamm. The Fränkisches Seenland (Franconian Lake District) recreation area is 15 kilometers away. Altentrüdingen, Fürnheim, Geilsheim, Obermögersheim, Reichenbach und Schobdach are part of Wassertrüdingen\nFirst documentary evidence in 836 is as truth muntiga. In 1524 Wassertrüdingen was occupied by peasants during the German Peasants' War. During the Thirty Years' War it was severely damaged and had not fully recovered yet 150 years later. In the last weeks of the Second World War the train station was bombarded."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "wassertrudingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7078,
+    "attempt": 7028,
+    "place_id": "gn-2872225",
+    "input": {
+      "place": {
+        "place_id": "gn-2872225",
+        "name": "Meiningen",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.56787,
+        "lon": 10.41521
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Meiningen",
+          "url": "https://en.wikipedia.org/wiki/Meiningen",
+          "text": "Meiningen (German: [ˈmaɪnɪŋən] ) is a town in the southern part of the German state of Thuringia. It is located in the region of Franconia and has a population of around 26,000 (2024). Meiningen is the capital and the largest town of the Schmalkalden-Meiningen district. From 1680 to 1918, Meiningen was the capital of the Duchy of Saxe-Meiningen and from 1918 to 1920 of the Free State of Saxe-Meiningen.\nMeiningen is considered the cultural, judicial and financial centre of southern Thuringia and thus hosts the state theatre, justice center, state archives, bank buildings and many museums. It is economically reliant on mechanical engineering, high-tech industry and tourism. The dialect and language of the inhabitants is East Franconian."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "meiningen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7079,
+    "attempt": 7029,
+    "place_id": "gn-3018174",
+    "input": {
+      "place": {
+        "place_id": "gn-3018174",
+        "name": "Foix",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 42.96535,
+        "lon": 1.60705
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Foix",
+          "url": "https://en.wikipedia.org/wiki/Foix",
+          "text": "Foix ( fwah; French: [fwa] ; Occitan: Fois [ˈfujs], also [ˈfujʃ]; Catalan: Foix [ˈfo(j)ʃ]) is a commune, the former capital of the County of Foix. It is the capital of the department of Ariège as it is the seat of the prefecture of that department. Foix is located in the Occitanie region of southwestern France. It is the second least populous French departmental capital, the least populous being Privas. Foix lies south of Toulouse, close to the borders with Spain and Andorra.\nIt is only the second biggest town in Ariège, the biggest being Pamiers, which is one of the two sub-prefectures, the other being St Girons. Foix is twinned with the English cathedral city of Ripon, with the Spanish towns of Sarroca de Lleida, Lleida and the Andorran capital Andorra la Vella."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "foix",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7080,
+    "attempt": 7030,
+    "place_id": "gn-3070720",
+    "input": {
+      "place": {
+        "place_id": "gn-3070720",
+        "name": "Mikulov",
+        "country": "Czechia",
+        "subdivision": "South Moravian",
+        "lat": 48.80556,
+        "lon": 16.6378
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mikulov",
+          "url": "https://en.wikipedia.org/wiki/Mikulov",
+          "text": "Mikulov (Czech pronunciation: [ˈmɪkulof]; German: Nikolsburg) is a town in Břeclav District in the South Moravian Region of the Czech Republic. It has about 7,600 inhabitants. Mikulov is located on the border with Austria, mainly in the Mikulov Highlands and within the Pálava Protected Landscape Area.\nFrom the 16th to the 19th century, Mikulov was the cultural centre of the Jewish community of Moravia. The historic centre of Mikulov is well preserved and is protected as an urban monument reservation. The most important monument is the pilgrimage area of the hill Svatý kopeček with the Chapel of Saint Sebastian, which is protected as a national cultural monument."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "mikulov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7081,
+    "attempt": 7031,
+    "place_id": "gn-3092082",
+    "input": {
+      "place": {
+        "place_id": "gn-3092082",
+        "name": "Miasteczko Śląskie",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.50262,
+        "lon": 18.93949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Miasteczko Śląskie",
+          "url": "https://en.wikipedia.org/wiki/Miasteczko_Śląskie",
+          "text": "Miasteczko Śląskie [mʲasˈtɛt͡ʂkɔ ˈɕlɔ̃skʲɛ] (originally Żyglińskie Góry; formerly also Miasteczko; German: Georgenberg) is a town in Upper Silesia in southern Poland, near Katowice. It borders the Metropolis GZM - a large metropolitan area with a population of over 2 million. It is located in the Silesian Highlands.\nIt is situated in the Silesian Voivodeship since its formation in 1999, previously in Katowice Voivodeship, and before World War II, in the Autonomous Silesian Voivodeship. Miasteczko Śląskie is one of the towns within the Katowice urban area and within the greater Katowice-Ostrava metropolitan area with a population of about 5,294,000 people. The population of the town is 7,437 (2019).\nThe settlement was founded between 1526 and 1543. In 1561, it was granted town rights."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "miasteczko slaskie",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "miasteczko",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "slaskie",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7082,
+    "attempt": 7032,
+    "place_id": "gn-3105247",
+    "input": {
+      "place": {
+        "place_id": "gn-3105247",
+        "name": "Villanueva de la Cañada",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.44689,
+        "lon": -4.00428
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villanueva de la Cañada",
+          "url": "https://en.wikipedia.org/wiki/Villanueva_de_la_Cañada",
+          "text": "Villanueva de la Cañada is a municipality in the Community of Madrid, Spain. Located 30 km north-west from Madrid, the municipality covers an area of 34.92 km2. Geographically, it sits on a large plain, in which there are several promontories, on one of which is found the castle of Aulencia, its main landmark. The ESA's European Space Astronomy Centre lies close to the former, on the Guadarrama riverfront. Villafranca del Castillo, a well-off urban area detached from the main nucleus, is located within the municipal bounds. Villanueva de la Cañada hosts the main campus of the Alfonso X El Sabio University as well as the Aquópolis waterpark."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "villanueva de la canada",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villanueva",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "canada",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7083,
+    "attempt": 7033,
+    "place_id": "gn-3106090",
+    "input": {
+      "place": {
+        "place_id": "gn-3106090",
+        "name": "Bergara",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.1151,
+        "lon": -2.4175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bergara",
+          "url": "https://en.wikipedia.org/wiki/Bergara",
+          "text": "Bergara (Basque pronunciation: [berɣaɾa]; Spanish: Vergara) is a town and municipality located in the province of Gipuzkoa, in the autonomous community of Basque Country, in the north of Spain.\nAn Enlightened center of education operated by the Real Sociedad Bascongada de Amigos del País (\"Royal Basque Society of Friends of the Country\"), it was the place where brothers Juan José and Fausto Elhuyar discovered Tungsten .\nDuring the Carlist Wars, it operated as the capital and royal court of the Carlists. It was there where the agreement symbolized in the Vergara Embrace between Rafael Maroto and Baldomero Espartero, Prince of Vergara ended one of the period wars."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "bergara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7084,
+    "attempt": 7034,
+    "place_id": "gn-3109551",
+    "input": {
+      "place": {
+        "place_id": "gn-3109551",
+        "name": "Sant Joan de Vilatorrada",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.74549,
+        "lon": 1.80476
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Joan de Vilatorrada",
+          "url": "https://en.wikipedia.org/wiki/Sant_Joan_de_Vilatorrada",
+          "text": "Sant Joan de Vilatorrada (Catalan pronunciation: [ˈsaɲ ʒuˈan də ˌβilətuˈraðə]) is a municipality in the comarca of the Bages in Catalonia, Spain. It is about 50 kilometres (31 mi) away from Barcelona.\nThe town of Sant Joan de Vilatorrada is located at 3 km. from Manresa, the capital of the Bages comarca (county). The municipal limits are in the North Sant Mateu de Bages and Callús, in the Northeast Santpedor; in the East Sant Fruitós de Bages, in the South-east Manresa and in the West Fonollosa.\nIn addition to the main namesake town, the municipality also contains the population entities of Sant Martí de Torroella and Joncadella."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "sant joan de vilatorrada",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "joan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vilatorrada",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7085,
+    "attempt": 7035,
+    "place_id": "gn-3113576",
+    "input": {
+      "place": {
+        "place_id": "gn-3113576",
+        "name": "Piera",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.52232,
+        "lon": 1.75076
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piera",
+          "url": "https://en.wikipedia.org/wiki/Piera",
+          "text": "Piera (Catalan pronunciation: [piˈeɾə]) is a municipality that covers a large portion of the southeastern corner of the comarca of Anoia in Catalonia, Spain, on the left bank of the Anoia river. The agricultural land, mostly non-irrigated, is used for the cultivation of cereals, grapes, olives and almonds. The town itself hosts a number of light industries: textiles, plastics and construction materials. Tourism during the summer months is also relatively important for the local economy.\nThe FGC railway line R6 from Martorell and Barcelona to Igualada runs through the town, while local roads lead to Capellades and Sant Sadurní d'Anoia.\nNotable monuments include the castle of Fontanet. The castle which was restored in 1916 by Ramon de Viala d'Aiguavives, Baron of Almenar is documented in 955 a.c. and now used for private functions.\nThe sister of the Baron of Almenar, Isabel de Viala d'Aiguavives also financed and patroned the modernist church of Ca n'Aguilera which was donated to Barcelona's Bishop by Zaragoza de Viala family in 1921. The architect of Ca n'Aguilera modernist church is Francesc Berenguer i Mestres, who was Antoni Gaudí's disciple and personal friend.\nAnother Piera relevant monument is the church of Santa Maria, with both Gothic and Roman elements."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "piera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7086,
+    "attempt": 7036,
+    "place_id": "gn-3121404",
+    "input": {
+      "place": {
+        "place_id": "gn-3121404",
+        "name": "Xinzo de Limia",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 42.0635,
+        "lon": -7.72459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Xinzo de Limia",
+          "url": "https://en.wikipedia.org/wiki/Xinzo_de_Limia",
+          "text": "Xinzo de Limia  is a town and municipality in the province of Ourense, in the autonomous community of Galicia, Spain. It belongs to the comarca of A Limia. It lies on the important Autovia das Rias Baixas in the fertile valley of Antela, approximately 33 km from Verín and 43 km from Ourense.  The Límia (Lima in Portuguese) river passes through the town on its way south towards the Portuguese border.\nXinzo is a town of services and an important stopping point on the main Vigo-Madrid highway.  There are several small industries, including a glass factory, and many pig, cow and dairy farms in the surrounding area.  The drained lakebed of Antela, once Spain's largest freshwater lake until the 1950s, produces cereals, hay, and especially potatoes.  Xinzo is in fact one of Spain's largest producers of potatoes.\nThere is a legend connected to Xinzo.  Several classical authors of antiquity reproduce the myth of the loss of memory connected to crossing the Límia River, referred by them as Lethes or Oblivionis (compare the river Lethe of Greek mythology).  In 138 BC the Roman chieftain Decimus Junius Brutus put an end to the myth told by the Galicians when, on crossing the river, he began to call each one of his legionnaires by their names from the opposite bank. That historical fact has been now represented in an historical party called Festa do Esquecemento. Seeing the Límia today it is difficult to imagine this tiny river provoking such a fear.\nXinzo has few monuments but is famous for hosting one of Galicia's most typical carnivals.  The characteristic figure is the pantalla, which symbolizes the devil. The pantalla is the guardian of the carnival, and runs through the streets in groups of two or three with two swollen pig bladders in the hands making huge noise. If the pantallas finds a male relative or neighbour of Xinzo de Limia not dressed with carnival clothes, they will take him into a bar, to pay the fee for not been dressed properly, which is a glass of wine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 343
+    },
+    "banned_terms": [
+      {
+        "term": "xinzo de limia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "xinzo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "limia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7087,
+    "attempt": 7037,
+    "place_id": "gn-3126890",
+    "input": {
+      "place": {
+        "place_id": "gn-3126890",
+        "name": "Cambre",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 43.29438,
+        "lon": -8.34736
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cambre",
+          "url": "https://en.wikipedia.org/wiki/Cambre",
+          "text": "Cambre is a municipality in the Province of A Coruña, in the autonomous community of Galicia in northwestern Spain. It is located 12 km from the capital city of A Coruña and ten minutes away from the city's airport, Alvedro.\nAccording to the 2010 census, the municipality of Cambre includes 23,621 inhabitants spread over its 12 parishes, which occupy 41 square kilometres. The parishes are those of O Temple, Cambre, Sigrás, Anceis, San Lorenzo, Cela, Andeiro, Santa María de Vigo, Bribes, Brexo-Lema, Cecebre and Pravio. It shares municipal boundaries with the neighbouring municipalities of Culleredo, Carral and Oleiros.\nThe town of Cambre has many sites of interest. Among them are:\nThe Church of Our Lady Mary of Cambre (Spanish: Iglesia de Santa María de Cambre, Galician: Igrexa de Santa María de Cambre), built around the 12th century; an archaeological museum with a permanent exhibition of the remains of a Roman bathroom and latrine; and the house of Galician writer Wenceslao Fernández Flórez (1885–1964).\nThe town is located on the Way of St. James (Camino de Santiago), though on the English Way (Camino inglés), used mainly by pilgrims coming from England and Ireland via ship to A Coruña or Ferrol, and from there on foot to Santiago de Compostela."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "cambre",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7088,
+    "attempt": 7038,
+    "place_id": "gn-3406846",
+    "input": {
+      "place": {
+        "place_id": "gn-3406846",
+        "name": "Baía Formosa",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Norte",
+        "lat": -6.36944,
+        "lon": -35.00778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baía Formosa",
+          "url": "https://en.wikipedia.org/wiki/Baía_Formosa",
+          "text": "Baía Formosa (lit. \"beautiful bay\") is the easternmost municipality in the Brazilian state of Rio Grande do Norte and the first coastal city (going south–north) of that state, lying near the border with Paraíba. With an area of 247.484 square kilometers (95.554 sq mi), of which 1.665 square kilometres (0.643 sq mi) is urban, it is located 72 km from Natal, the state capital, and 1,748 km from Brasília, the federal capital. Its population in the 2022 demographic census was 8,825 inhabitants, according to the Brazilian Institute of Geography and Statistics (IBGE), ranking as the 78th most populous municipality in the state of Rio Grande do Norte."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "baia formosa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "baia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "formosa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7089,
+    "attempt": 7039,
+    "place_id": "gn-3408577",
+    "input": {
+      "place": {
+        "place_id": "gn-3408577",
+        "name": "São João da Baliza",
+        "country": "Brazil",
+        "subdivision": "Roraima",
+        "lat": 0.95,
+        "lon": -59.91181
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São João da Baliza",
+          "url": "https://en.wikipedia.org/wiki/São_João_da_Baliza",
+          "text": "São João da Baliza (Brazilian Portuguese pronunciation: [ˈsɐ̃w ʒuˈɐ̃w da baˈlizɐ]) is a municipality located in the southeast of the state of Roraima in Brazil. Its population is 8.858 (2022) and its area is 4,284 km2. São João da Baliza was first settled in 1974 after the BR-210 highway made the area accessible. It was called São João, because three of the initial settlers were called João. Da Baliza refers to a stream near the town, Igarapé Baliza, which itself comes from the Portuguese word baliza, meaning a ranging rod. It gained this name when a surveyor lost a ranging rod near the stream during highway construction. It became an independent municipality in 1982."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "sao joao da baliza",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "joao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "baliza",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7090,
+    "attempt": 7040,
+    "place_id": "gn-3415021",
+    "input": {
+      "place": {
+        "place_id": "gn-3415021",
+        "name": "Mosfellsbær",
+        "country": "Iceland",
+        "subdivision": "Capital Region",
+        "lat": 64.16667,
+        "lon": -21.7
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mosfellsbær",
+          "url": "https://en.wikipedia.org/wiki/Mosfellsbær",
+          "text": "Mosfellsbær (Icelandic pronunciation: [ˈmɔːsˌfɛlsˌpaiːr̥] , colloquially Mosó) is a town in south-west Iceland, 12 kilometres (7 miles) east of the country's capital, Reykjavík. The coat of arms of the municipality is a tightly-knotted triquetra, a symbol often used in Celtic knotwork and strongly associated with the Celtic nations (which featured prominently in Celtic spirituality as well as Ancient Celtic religion in the past and, to some extent, to this day). The coat of arms might denote the Gaelic heritage of Mosfellsbær as Icelanders are also descended from Gaelic-speaking settlers who voyaged or were brought by the Norsemen in Iceland during the country's settlement in the Viking Age."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "mosfellsb r",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mosfellsb",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "r",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  }
+]

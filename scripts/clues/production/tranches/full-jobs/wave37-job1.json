@@ -1,0 +1,817 @@
+[
+  {
+    "rank": 7251,
+    "attempt": 7201,
+    "place_id": "gn-3519396",
+    "input": {
+      "place": {
+        "place_id": "gn-3519396",
+        "name": "San Fernando",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 16.87131,
+        "lon": -93.20699
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Fernando, Chiapas",
+          "url": "https://en.wikipedia.org/wiki/San_Fernando,_Chiapas",
+          "text": "San Fernando is a town and municipality in the Mexican state of Chiapas in southern Mexico. \nAs of 2020, the municipality had a total population of 41,793, up from 26,436 as of 2005. It covers an area of 258.3 km2.\nAs of 2010, the town of San Fernando had a population of 9,651. Other than the town of San Fernando, the municipality had 196 localities, the largest of which (with 2010 populations in parentheses) were: El Progreso (2,704), El Copalar (2,039), Francisco I. Madero (1,993), Gabriel Esquinca (1,968), Benito Juárez (1,488), Viva Cárdenas (1,431), Álvaro Obregón (1,126), and 16 de Septiembre (1,020), classified as rural."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "san fernando",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fernando",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7252,
+    "attempt": 7202,
+    "place_id": "gn-3526488",
+    "input": {
+      "place": {
+        "place_id": "gn-3526488",
+        "name": "Jiquipilas",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 16.66806,
+        "lon": -93.64667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jiquipilas",
+          "url": "https://en.wikipedia.org/wiki/Jiquipilas",
+          "text": "Jiquipilas is a town and municipality in the Mexican state of Chiapas in southern Mexico.\nAs of 2010, the municipality had a total population of 37,818, up from 34,937 as of 2005. It covers an area of 1197.3 km2.\nAs of 2010, the town of Jiquipilas had a population of 9,894. Other than the town of Jiquipilas, the municipality had 580 localities, the largest of which (with 2010 populations in parentheses) were: Tierra y Libertad (2,600), classified as urban, and José María Pino Suárez (2,091), Tiltepec (2,007), Vicente Guerrero (1,383), Cuauhtémoc (1,300), Julián Grajales (1,293), Quintana Roo (1,243), and Nueva Palestina (1,116), classified as rural."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "jiquipilas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7253,
+    "attempt": 7203,
+    "place_id": "gn-3591060",
+    "input": {
+      "place": {
+        "place_id": "gn-3591060",
+        "name": "Puerto San José",
+        "country": "Guatemala",
+        "subdivision": "Escuintla",
+        "lat": 13.92216,
+        "lon": -90.81906
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto San José",
+          "url": "https://en.wikipedia.org/wiki/Puerto_San_José",
+          "text": "Puerto San José, also known as Port of San José, is a town on Guatemala's Pacific Ocean coast,  in the department of Escuintla. It has a population of 23,887 (2018 census), making it the largest town on the nation's Pacific coast. \nFor centuries it served as the Pacific port for Guatemala, but was superseded in the 20th century by Puerto Quetzal, four kilometres to the east. The Puerto Quetzal complex is the major employer in the district. \nThe local tourist industry caters largely to weekenders from Guatemala City. San José Airport has been refurbished lately and is now the official alternate airport for Guatemala City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "puerto san jose",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7254,
+    "attempt": 7204,
+    "place_id": "gn-4139953",
+    "input": {
+      "place": {
+        "place_id": "gn-4139953",
+        "name": "Park View",
+        "country": "United States",
+        "subdivision": "District of Columbia",
+        "lat": 38.93206,
+        "lon": -77.02359
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Park View (Washington, D.C.)",
+          "url": "https://en.wikipedia.org/wiki/Park_View_(Washington,_D.C.)",
+          "text": "Park View is a neighborhood in Washington, D.C., located in Northwest D.C. The neighborhood is primarily residential with its main commercial corridor of shops and restauarants located along Georgia Avenue. It is bordered to the west by  Columbia Heights, the north by Petworth, and the south by McMillan Reservoir and Pleasant Plains.\nPark View was developed at the turn of the 19th and 20th centuries, along the western boundary of the U.S. Soldiers' Home. The name of the neighborhood is derived from its relation to the park-like setting of the Soldier's Home, which was formerly open to the public as a park into the 1960s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "park view",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "view",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7255,
+    "attempt": 7205,
+    "place_id": "gn-4389418",
+    "input": {
+      "place": {
+        "place_id": "gn-4389418",
+        "name": "Hannibal",
+        "country": "United States",
+        "subdivision": "Missouri",
+        "lat": 39.70838,
+        "lon": -91.35848
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hannibal, Missouri",
+          "url": "https://en.wikipedia.org/wiki/Hannibal,_Missouri",
+          "text": "Hannibal is a city along the Mississippi River in Marion and Ralls counties in Missouri, United States. According to the 2020 U.S. census, the population was 17,108, making it the largest city in Marion County. The bulk of the city is in Marion County, with a tiny sliver in the south extending into Ralls County.\nNestled on the Mississippi River, commerce and traffic has long been an integral part of Hannibal's development, including by river, rail and the interstate/highway system. Today the city is intersected by Interstate 72 and U.S. Routes 24, 36, and 61. Hannibal is approximately 110 miles (180 km) northwest of St. Louis (also bordering the Mississippi), 195 miles (314 km) east-northeast of Kansas City and  194 miles (312 km) miles east of Saint Joseph (both cities on the Missouri River), and approximately 100 miles (160 km) west of Springfield, Illinois.\nHannibal is not the county seat, but it has one of two county courthouses. There is also one in Palmyra, the county seat of Marion County, which is located more centrally in the county. Hannibal is the principal city of the Hannibal, Missouri micropolitan area, which consists of both Marion and Ralls counties."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "hannibal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7256,
+    "attempt": 7206,
+    "place_id": "gn-4684480",
+    "input": {
+      "place": {
+        "place_id": "gn-4684480",
+        "name": "Crystal City",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 28.67748,
+        "lon": -99.82811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crystal City, Texas",
+          "url": "https://en.wikipedia.org/wiki/Crystal_City,_Texas",
+          "text": "Crystal City is a city in and the county seat of Zavala County, Texas, United States. The population was 6,354 as of the 2020 census, and was estimated at 6,009 in 2024. It was settled as a farming and ranching community and was a major railroad stop being 110 miles (180 km) from San Antonio. Spinach became a major crop and the city has promoted itself as \"Spinach Capital of the World.\" During World War II, a large internment camp was located here. The town is also noteworthy in the history of Mexican American political self-determination for the founding of the La Raza Unida Party."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "crystal city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "crystal",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7257,
+    "attempt": 7207,
+    "place_id": "gn-4839704",
+    "input": {
+      "place": {
+        "place_id": "gn-4839704",
+        "name": "North Haven",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.39093,
+        "lon": -72.85954
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Haven, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/North_Haven,_Connecticut",
+          "text": "North Haven is a town in New Haven County, Connecticut, United States on the outskirts of New Haven. The town is part of the South Central Connecticut Planning Region. As of the 2020 census, it had a population of 24,253.\nNorth Haven is home of the Quinnipiac University School of Health Sciences, the School of Nursing, School of Law, School of Education, and School of Medicine on Bassett Road.  North Haven has easy access to Interstate 91 and the Wilbur Cross Parkway (Route 15). It is near Sleeping Giant State Park and less than 10 miles (16 km) from downtown New Haven and Yale University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "north haven",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "haven",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7258,
+    "attempt": 7208,
+    "place_id": "gn-4914557",
+    "input": {
+      "place": {
+        "place_id": "gn-4914557",
+        "name": "Uptown",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.9659,
+        "lon": -87.65262
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uptown, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Uptown,_Chicago",
+          "text": "Uptown is one of the 77 community areas of Chicago in Illinois, United States. It is bounded by Foster Avenue to the north; Montrose Avenue and Irving Park Road to the south; Lake Michigan to the east; and Ravenswood Avenue and Clark Street to the west.\nUptown rose to prominence in the early twentieth century as Chicagoland's largest commercial and entertainment center outside of the Loop thanks to its plentiful theaters, clubs, shops and parkland. It was also a center for early film-making. To this day Uptown remains a hub for live entertainment, particularly Uptown Square.\nUptown's amenities include Montrose Beach and multiple nature reserves. It is also home to Truman College and the historic Graceland Cemetery."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "uptown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7259,
+    "attempt": 7209,
+    "place_id": "gn-5012495",
+    "input": {
+      "place": {
+        "place_id": "gn-5012495",
+        "name": "Traverse City",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 44.76306,
+        "lon": -85.62063
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Traverse City, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Traverse_City,_Michigan",
+          "text": "Traverse City ( TRAV-ərss) is a city in the U.S. state of Michigan. It is the county seat of Grand Traverse County, although it partly extends into Leelanau County. The city's population was 15,678 at the 2020 census, while the four-county Traverse City metropolitan area had  153,448 residents. Traverse City is the largest city in Northern Michigan.\nTraverse City is at the head of the East and West arms of Grand Traverse Bay, a 32-mile-long (51 km) bay of Lake Michigan. Grand Traverse Bay is divided into arms by the 18-mile-long (29 km) Old Mission Peninsula, which is attached at its base to Traverse City. The city borders four townships–East Bay, Elmwood, Garfield, and Peninsula–all of which are primarily suburban.\nTraverse City is nicknamed \"the Cherry Capital of the World\", as the area surrounding Grand Traverse Bay is a hotspot for cherry production. The city hosts the National Cherry Festival, attracting approximately 500,000 visitors annually. The Traverse City area is also known for its wine production. Two American Viticultural Areas are adjacent to the city. The city is also home to the Traverse City State Hospital, a former state psychiatric institution, and Coast Guard Air Station Traverse City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "traverse city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "traverse",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7260,
+    "attempt": 7210,
+    "place_id": "gn-5113779",
+    "input": {
+      "place": {
+        "place_id": "gn-5113779",
+        "name": "Corona",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.74705,
+        "lon": -73.86014
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corona, Queens",
+          "url": "https://en.wikipedia.org/wiki/Corona,_Queens",
+          "text": "Corona is a neighborhood in the borough of Queens in New York City. It borders Flushing and Flushing Meadows–Corona Park to the east, Jackson Heights and  Elmhurst to the west, Forest Hills and Rego Park to the south, and East Elmhurst to the north. Corona's main thoroughfares include Corona Avenue, Roosevelt Avenue, Northern Boulevard, Junction Boulevard, and 108th Street.\nCorona has a multicultural population with a Latino majority, and is the site of historic African-American and Italian-American communities. After World War II, the majority of the neighborhood's residents were mostly Italian, German, Irish and of other European ancestries. Corona also has a significant Chinese population.\nCorona is mostly part of Queens Community District 4. The section north of Roosevelt Avenue, known as North Corona, is the northern section of Corona and is in Community District 3. Corona is patrolled by the 110th and 115th Precincts of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "corona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7261,
+    "attempt": 7211,
+    "place_id": "gn-5117388",
+    "input": {
+      "place": {
+        "place_id": "gn-5117388",
+        "name": "Flatlands",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.62122,
+        "lon": -73.93486
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Flatlands, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Flatlands,_Brooklyn",
+          "text": "Flatlands is a neighborhood in the southeast part of the borough of Brooklyn in New York City. The current neighborhood borders are roughly defined by the Bay Ridge Branch to the north, Avenue U to the south, Ralph Avenue to the east, and Flatbush Avenue to the southwest.\nOriginally an independent town, Flatlands became part of the City of Brooklyn in 1896.\nFlatlands is part of Brooklyn Community District 18, and its primary ZIP Code is 11234. It is patrolled by the 63rd Precinct of the New York City Police Department. Politically it is represented by the New York City Council's 45th and 46th Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "flatlands",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7262,
+    "attempt": 7212,
+    "place_id": "gn-5128568",
+    "input": {
+      "place": {
+        "place_id": "gn-5128568",
+        "name": "New Square",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.13956,
+        "lon": -74.02942
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Square, New York",
+          "url": "https://en.wikipedia.org/wiki/New_Square,_New_York",
+          "text": "New Square (Yiddish: שיכון סקווירא, romanized: Shikun Skvira) is an all-Hasidic village in the town of Ramapo, Rockland County, New York, United States. It is located north of Hillcrest, east of Viola, south of New Hempstead, and west of New City. As of the 2020 United States census, it had a population of 9,679. Its inhabitants are predominantly members of the Skverer Hasidic movement who seek to maintain a Hasidic lifestyle disconnected from the secular world. It is the poorest town (measured by median income) in New York, and the eighth poorest in the United States. It also has the highest poverty rate, at 64.4%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "new square",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "square",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7263,
+    "attempt": 7213,
+    "place_id": "gn-5142182",
+    "input": {
+      "place": {
+        "place_id": "gn-5142182",
+        "name": "Van Nest",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.84843,
+        "lon": -73.86375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Van Nest, Bronx",
+          "url": "https://en.wikipedia.org/wiki/Van_Nest,_Bronx",
+          "text": "Van Nest is a working-class neighborhood geographically located in the East Bronx section of the Bronx, New York City. Going clockwise, its boundaries are Bronxdale Avenue to the northeast, the Amtrak tracks to the southeast, and Bronx Park to the west. Van Nest predated Morris Park by 20 years and is considered the older of the two communities.  Morris Park Avenue and White Plains Road are the primary commercial thoroughfares through Van Nest.\nThe neighborhood is part of Bronx Community Board 11, and its ZIP Codes include 10460 and 10462. The area is patrolled by the 49th Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "van nest",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nest",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7264,
+    "attempt": 7214,
+    "place_id": "gn-523443",
+    "input": {
+      "place": {
+        "place_id": "gn-523443",
+        "name": "Narimanov",
+        "country": "Russia",
+        "subdivision": "Astrakhan Oblast",
+        "lat": 46.69306,
+        "lon": 47.85071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Narimanov, Astrakhan Oblast",
+          "url": "https://en.wikipedia.org/wiki/Narimanov,_Astrakhan_Oblast",
+          "text": "Narimanov (Russian: Нарима́нов) is a town and the administrative center of Narimanovsky District in Astrakhan Oblast, Russia, located on the western bank of the Volga River, 40.3 kilometers (25.0 mi) northwest from Astrakhan, the administrative center of the oblast. Population: 11,521 (2010 census); 11,202 (2002 census); 11,084 (1989 Soviet census); 3,400 (1979).\nSadovska (presumably part of Narimanov today) is just about four miles east of the easternmost and farthest point that German troops both occupied in the Soviet Union during World War II, and fought against Soviet troops in a battle, in September 1942. There is no monument about this historic event near Narimanov today."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "narimanov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7265,
+    "attempt": 7215,
+    "place_id": "gn-5345860",
+    "input": {
+      "place": {
+        "place_id": "gn-5345860",
+        "name": "El Segundo",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.91918,
+        "lon": -118.41647
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Segundo, California",
+          "url": "https://en.wikipedia.org/wiki/El_Segundo,_California",
+          "text": "El Segundo ( EL sə-GUN-doh, Spanish: [el seˈɣundo]; Spanish for 'The Second') is a city in Los Angeles County, California, United States. Located on Santa Monica Bay, it was incorporated on January 18, 1917, and is part of the South Bay Cities Council of Governments. The population was 17,272 as of the 2020 census, a 3.7% increase from 16,654 in the 2010 census. A significant center of the oil and aerospace industries in Southern California, roughly three quarters of the city's land is dedicated exclusively to industrial and commercial uses, including a Chevron oil refinery which takes up more than a quarter of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "el segundo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "segundo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7266,
+    "attempt": 7216,
+    "place_id": "gn-5357527",
+    "input": {
+      "place": {
+        "place_id": "gn-5357527",
+        "name": "Hollywood",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.09834,
+        "lon": -118.32674
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hollywood, Los Angeles",
+          "url": "https://en.wikipedia.org/wiki/Hollywood,_Los_Angeles",
+          "text": "Hollywood, sometimes informally called Tinseltown, is a neighborhood in Central Los Angeles, California. Its name has become synonymous with the American film industry and the people associated with it. Many notable film studios such as Universal Pictures, Paramount Pictures, Warner Bros., Walt Disney Studios and Sony Pictures are located in or near Hollywood.\nHollywood was incorporated as an independent municipality on November 9, 1903. The municipality of Hollywood was consolidated with the City of Los Angeles on February 7, 1910 following a referendum. Soon thereafter, large portions of the American film industry migrated to the area, although now its film industry may be in decline."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "hollywood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7267,
+    "attempt": 7217,
+    "place_id": "gn-5402961",
+    "input": {
+      "place": {
+        "place_id": "gn-5402961",
+        "name": "Topanga",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.09362,
+        "lon": -118.60147
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Topanga, California",
+          "url": "https://en.wikipedia.org/wiki/Topanga,_California",
+          "text": "Topanga (Tongva: Topaa'nga) is an unincorporated community in western Los Angeles County, California, United States. Located in the Santa Monica Mountains, the community exists in Topanga Canyon and the surrounding hills. The narrow southern portion of Topanga at the coast is between the city of Malibu and the Los Angeles neighborhood of Pacific Palisades. For statistical purposes, the United States Census Bureau has defined Topanga as a census-designated place (CDP). As of the 2020 census the population of the Topanga CDP was 8,560. The ZIP Code is 90290 and the area code is primarily 310, with 818 only at the north end of the canyon. It is in the 3rd County Supervisorial district.\nTopanga is the largest unincorporated area in Los Angeles County by area, although a majority of it is undeveloped. The 2025 Palisades Fire had a severe impact on the community with the devastation of structures destroyed, forcing evacuations, and multiple road closures."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "topanga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7268,
+    "attempt": 7218,
+    "place_id": "gn-5576859",
+    "input": {
+      "place": {
+        "place_id": "gn-5576859",
+        "name": "Erie",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 40.05026,
+        "lon": -105.04998
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erie, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Erie,_Colorado",
+          "text": "The Town of Erie is a home rule town located in Weld and Boulder counties, Colorado, United States. The town population was 30,038 at the 2020 United States census, a +65.64% increase since the 2010 United States census. At the 2020 census, 17,387 (58%) Erie residents lived in Weld County and 12,651 (42%) lived in Boulder County. Erie is a part of the Denver-Aurora-Greeley, CO Combined Statistical Area and the Front Range Urban Corridor. Erie is the most populous statutory town in Colorado.\nErie is located just west of Interstate 25, with easy access to Interstate 70, Denver International Airport and Colorado's entire Front Range. Erie's Planning Area spans 48 square miles (120 km2), extending from the north side of State Highway 52 south to State Highway 7, and between US 287 on the west and Interstate 25 to the east. Erie is approximately 35 minutes from Denver International Airport, 25 minutes from Denver and 20 minutes from Boulder."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "erie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7269,
+    "attempt": 7219,
+    "place_id": "gn-5789817",
+    "input": {
+      "place": {
+        "place_id": "gn-5789817",
+        "name": "Chehalis",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 46.66205,
+        "lon": -122.96402
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chehalis, Washington",
+          "url": "https://en.wikipedia.org/wiki/Chehalis,_Washington",
+          "text": "Chehalis (  shə-HAY-liss) is a city in and the county seat of Lewis County, Washington, United States. The population was 7,439 at the time of the 2020 census.\nThe city is located in the Chehalis valley and is split by Interstate 5 (I-5) and State Route 6. It is twinned with the bordering city of Centralia. The community of Newaukum and the city of Napavine lie directly south, with the community of Adna to the west. Due to the city's location on the Chehalis River, and the nearby confluences of the Newaukum and Skookumchuck rivers, Chehalis has experienced several historic flooding events during its history.\nIncorporated in 1883, Chehalis was primarily a logging and railroad town, with a shift towards farming in the mid-20th century. The city has bolstered its economy in the 21st century with a focus in manufacturing and warehousing.\nChehalis is home to the historic neighborhood of Claquato, the Chehalis–Centralia Airport, and the Southwest Washington Fairgrounds. The city has several distinct historical areas and boasts 11 locations on the list of National Register of Historic Places, more than any other region in Lewis County. Several museums that highlight motorcycles, veterans and military history, and the Chehalis history of railroads are located within the city limits. Chehalis contains approximately 273 acres (110 ha) of parks, most begun by land donations and are overseen by volunteer community efforts. The community is known locally for its annual summer event, ChehalisFest.\nThe city anchors the beginning trailhead for the Willapa Hills Trail and accommodates riders during the Seattle to Portland Bicycle Classic. Chehalis once was home to a championship minor league baseball team and often welcomed barnstorming ballclubs and competitions featuring teams from Negro league baseball.\nIn the 21st century, Chehalis initiated several charity, volunteer, and local government sponsored groups to revitalize the city, with focus on renovations to its historic downtown district, the upgrading of the community's transit sector, and increasing the education and graduation rate within the school district. Additional efforts of improvements were led via art programs and renovations to its parks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 344
+    },
+    "banned_terms": [
+      {
+        "term": "chehalis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7270,
+    "attempt": 7220,
+    "place_id": "gn-5945707",
+    "input": {
+      "place": {
+        "place_id": "gn-5945707",
+        "name": "East Gwillimbury",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.10087,
+        "lon": -79.43785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Gwillimbury",
+          "url": "https://en.wikipedia.org/wiki/East_Gwillimbury",
+          "text": "East Gwillimbury is a town (lower-tier municipality) on the East Holland River in the upper-tier municipality the Regional Municipality of York. It is part of the Greater Toronto Area of southern Ontario, in Canada. It was formed by the amalgamation of the Township of East Gwillimbury with all the previously incorporated villages and hamlets within the township. The main centres in East Gwillimbury are the villages of Holland Landing, Queensville, Sharon, and Mount Albert. The Civic Centre (municipal offices) are located along Leslie Street in Sharon. The northernmost interchange of Highway 404 is at the North edge of East Gwillimbury, just south of Ravenshoe Road. The hamlets of Holt and Brown Hill are also within town limits.\nEast Gwillimbury takes its name from the family of Elizabeth Simcoe, née Gwillim, wife of Sir John Graves Simcoe, the first Lieutenant Governor of Ontario."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "east gwillimbury",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gwillimbury",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

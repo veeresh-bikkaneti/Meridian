@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 6488,
+    "attempt": 6441,
+    "place_id": "gn-5306611",
+    "input": {
+      "place": {
+        "place_id": "gn-5306611",
+        "name": "Nogales",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 31.34038,
+        "lon": -110.93425
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nogales, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Nogales,_Arizona",
+          "text": "Nogales (Spanish pronunciation: [noˈɣales] ; English:  or ) is a city in and the county seat of Santa Cruz County, Arizona, United States. As of 2026, the population of Nogales is 20,072. Nogales forms part of the larger Tucson–Nogales combined statistical area, with a total population of 1,027,683 as of the 2010 Census.\nNogales forms Arizona's largest transborder agglomeration with its adjacent, much larger twin Nogales, Sonora, across the Mexican border. The southern terminus of Interstate 19 is located in Nogales at the U.S.–Mexico border; the highway continues south into Mexico as Mexico Federal Highway 15. The highways meeting in Nogales are a major road intersection in the CANAMEX Corridor, connecting Canada, the United States, and Mexico. Nogales also is the beginning of the Arizona Sun Corridor, an economically important trade region stretching from Nogales to Prescott, including the Tucson and Phoenix metropolitan areas.\nNogales is home to four international ports of entry, including the Morley Pedestrian Port of Entry, Dennis Deconcini Pedestrian and Passenger Vehicle Port of Entry, Union Pacific rail, Nogales International Airport, and the Mariposa Port of Entry. The Nogales-Mariposa Port of Entry has twelve passenger vehicle inspection lanes and eight commercial inspection lanes.\nDue to its location on the border and its major ports of entry, Nogales funnels an estimated $30 billion worth of international trade into Arizona and the United States, per year, in fresh produce and manufactured goods from Mexico and the world through the deep sea port in Guaymas, Sonora, Mexico. This trade helps to support tens of thousands of jobs and the overall economies in Ambos Nogales and throughout the American state of Arizona and the Mexican state of Sonora.\nThe town is named for the black walnut trees which once grew abundantly in the mountain pass between the cities of Nogales, Arizona, and Nogales, Sonora, and can still be found around the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 312
+    },
+    "banned_terms": [
+      {
+        "term": "nogales",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6489,
+    "attempt": 6442,
+    "place_id": "gn-5328152",
+    "input": {
+      "place": {
+        "place_id": "gn-5328152",
+        "name": "Big Bear City",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.26112,
+        "lon": -116.84503
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Big Bear City, California",
+          "url": "https://en.wikipedia.org/wiki/Big_Bear_City,_California",
+          "text": "Big Bear City is an unincorporated community and census-designated place in San Bernardino County, California, United States along the east shore of Big Bear Lake and surrounded by the San Bernardino National Forest. It is 27 miles (43 km) northeast of the city of San Bernardino, and immediately east of the incorporated city of Big Bear Lake. Its population was 12,738 at the 2020 census, up from 12,304 at the 2010 census. Big Bear City is mostly residential, with smaller houses and cabins laid out in typical square block fashion. Big Bear is on the Pacific Crest Trail.\nStandard Air Lines of Los Angeles began a regular airline service to the community in the summer of 1929. Its post office was founded as Van Duesen in 1927 but changed its name to Big Bear City six months later. The Big Bear City Post Office opened in 1928 and still operates.\nDespite the name, Big Bear City is not an incorporated city, and should not be confused with the adjacent incorporated city of Big Bear Lake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "big bear city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "big",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bear",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6490,
+    "attempt": 6443,
+    "place_id": "gn-5946656",
+    "input": {
+      "place": {
+        "place_id": "gn-5946656",
+        "name": "Edgemont",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 51.12561,
+        "lon": -114.14881
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Edgemont, Calgary",
+          "url": "https://en.wikipedia.org/wiki/Edgemont,_Calgary",
+          "text": "Edgemont is a residential neighbourhood in northwest Calgary, Alberta, Canada, and is located north of the community of Dalhousie. It is also bounded by John Laurie Boulevard to the south, Sarcee Trail to the west, Country Hills Boulevard to the north, and Shaganappi Trail to the east.\nMuch of Edgemont is a northwest extension of Nose Hill, as evidenced by the steep escarpments at the southeast end of the community. The elevated position of Edgemont (1245m at its highest) provides views of the city to the south and the Rocky Mountains to the west.\nThe community began development in 1978, and was recently completed. It is represented in the Calgary City Council by the Ward 4 councillor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "edgemont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6491,
+    "attempt": 6444,
+    "place_id": "gn-6144054",
+    "input": {
+      "place": {
+        "place_id": "gn-6144054",
+        "name": "Selkirk",
+        "country": "Canada",
+        "subdivision": "Manitoba",
+        "lat": 50.1436,
+        "lon": -96.88452
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Selkirk, Manitoba",
+          "url": "https://en.wikipedia.org/wiki/Selkirk,_Manitoba",
+          "text": "Selkirk is a city in the western Canadian province of Manitoba, located on the Red River about 22 kilometres (14 mi) northeast of Winnipeg, the provincial capital. It has a population of 10,504 as of the 2021 census.\nThe mainstays of the local economy are tourism, a steel mill, and a psychiatric hospital. A vertical lift bridge over the Red River connects Selkirk with the smaller town of East Selkirk. The city is connected to Winnipeg via Highway 9 and is served by the Canadian Pacific Railway.\nThe city was named in honour of the Scotsman Thomas Douglas, 5th Earl of Selkirk, who obtained the grant to establish a colony in the Red River area in 1813."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "selkirk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6492,
+    "attempt": 6445,
+    "place_id": "gn-614622",
+    "input": {
+      "place": {
+        "place_id": "gn-614622",
+        "name": "Gagra",
+        "country": "Georgia",
+        "subdivision": "Abkhazia",
+        "lat": 43.27858,
+        "lon": 40.27124
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gagra",
+          "url": "https://en.wikipedia.org/wiki/Gagra",
+          "text": "Gagra (Georgian: გაგრა; Abkhaz and Russian: Гагра) is a town in Abkhazia/Georgia, sprawling for 5 km on the northeast coast of the Black Sea, at the foot of the Caucasus Mountains. Its subtropical climate made Gagra a popular health resort since the Imperial Russian times.\nIt had a population of 26,636 in 1989, but this has declined considerably as a result of ethnic cleansing of Georgians in Abkhazia and other demographic shifts during and after the War in Abkhazia (1992–93).\nGagra is the center of the district of the same name. It is located in the western part of the region of Abkhazia, and the Psou River serves as the border with the Krasnodar Krai of Russia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "gagra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6493,
+    "attempt": 6446,
+    "place_id": "gn-616108",
+    "input": {
+      "place": {
+        "place_id": "gn-616108",
+        "name": "Vardenis",
+        "country": "Armenia",
+        "subdivision": "Gegharkunik",
+        "lat": 40.1827,
+        "lon": 45.73156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vardenis",
+          "url": "https://en.wikipedia.org/wiki/Vardenis",
+          "text": "Vardenis (Armenian: Վարդենիս [vɑɾtʰɛˈnis]) is a town in the Vardenis Municipality of Gegharkunik Province, Armenia. It is in the Masrik River valley, on the territory of the Masrik artesian basin at 2,006 metres (6,581 feet) above sea level, near the southeastern shores of Lake Sevan. It is  170 kilometres (110 miles) by road east of the capital Yerevan, and 75 kilometres (47 miles) southeast of the provincial centre Gavar. The administrative territory of Vardenis comprises 3,006 hectares (7,430 acres), of which 736 hectares (1,820 acres) is occupied by the town itself. Vardenis obtained its status as an urban settlement in 1995. In the 2011 census the population was 12,685, and in the 2022 census it was 12,466."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "vardenis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6494,
+    "attempt": 6447,
+    "place_id": "gn-6227739",
+    "input": {
+      "place": {
+        "place_id": "gn-6227739",
+        "name": "Hokowhitu",
+        "country": "New Zealand",
+        "subdivision": "Manawatu-Wanganui",
+        "lat": -40.3626,
+        "lon": 175.63379
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hokowhitu",
+          "url": "https://en.wikipedia.org/wiki/Hokowhitu",
+          "text": "Hokowhitu is a riverside suburb of the New Zealand city of Palmerston North, with some of the highest property values in the city.\nThe Hokowhitu Lagoon, Caccia Birch House, Jickell Street Reserve and Manawatu Golf Course are located next to the former education campus. Wallace Park, the home of the Ruahine Association Football Club and local cricket teams, is located nearby. Other local features include the Hokowhitu Domain, Crewe Crescent Reserve, Franklin Reserve, Fitzroy Bend Park, Milverton Park and playground, Awatea Reserve and stream, Hardie St Park and Centennial Drive Reserve.\nHokowhitu is part of the Palmerston North and Te Tai Hauāuru electorates.\nUntil 2013, it had its own ward councilors on the Palmerston North City Council."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "hokowhitu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6495,
+    "attempt": 6448,
+    "place_id": "gn-631204",
+    "input": {
+      "place": {
+        "place_id": "gn-631204",
+        "name": "Vuokatti",
+        "country": "Finland",
+        "subdivision": "Kainuu",
+        "lat": 64.14466,
+        "lon": 28.28196
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vuokatti",
+          "url": "https://en.wikipedia.org/wiki/Vuokatti",
+          "text": "Vuokatti is an urban area that is a physically separate part of the municipality of Sotkamo, Finland. It is home to more than 6,000 inhabitants, making it the second most populous urban area in the region of Kainuu, after the main urban area of the municipality of Kajaani. Vuokatti is also the name of the nearby forested hill range and the urban area's train station.\nThe highest hill in the area is the 345 meter high Porttivaara, the second highest being Vuokatinvaara.\nVuokatti has a ski resort, sports academy, a SuperPark, and the Katinkulta resort. There is also a skiing tunnel, which makes cross-country skiing possible in all seasons, and there are also snowboarding and snowtubing tunnels.\nVuokatti has a national Olympic Training Center for winter sports such as Cross-Country skiing, Biathlon and Nordic Combined. Also Vuokatti-Ruka sports academy operates mostly in Vuokatti.\nVuokatti has hosted multiple international sports events, including the European Youth Olympic Days, the World Orienteering Championships, the Nordic Junior World Ski Championships, and the European Youth Olympic Festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "vuokatti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6496,
+    "attempt": 6449,
+    "place_id": "gn-933238",
+    "input": {
+      "place": {
+        "place_id": "gn-933238",
+        "name": "Nata",
+        "country": "Botswana",
+        "subdivision": "Central",
+        "lat": -20.21667,
+        "lon": 26.18333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nata, Botswana",
+          "url": "https://en.wikipedia.org/wiki/Nata,_Botswana",
+          "text": "Nata is a village in the Central District of Botswana. Located in the north of the district about 200 km (124 miles) from the city of Francistown, the village is served by Nata Airport. The population was 7,713 at the 2022 census, with a growth rate of 1.3% from 6,714 at the 2011 census. The village of Nata lies along the Nata River, which carries its rainy season flow to the Makgadikgadi Pans, a seasonal hypersaline lake, in one of the largest salt flats in the world. The village serves as a crossroads for routes to Maun and Kasane, providing essential services to travelers. \nThe village has 6 wards, namely: Sekao, Maaloso, Kachikao, Manakanagore, Makwenaejang and Basimane."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "nata",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6497,
+    "attempt": 6450,
+    "place_id": "gn-11204237",
+    "input": {
+      "place": {
+        "place_id": "gn-11204237",
+        "name": "Ivory Park",
+        "country": "South Africa",
+        "subdivision": "Gauteng",
+        "lat": -26.002,
+        "lon": 28.19
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ivory Park",
+          "url": "https://en.wikipedia.org/wiki/Ivory_Park",
+          "text": "Ivory Park is a densely populated residential suburb of Midrand in the Gauteng province of South Africa. It is located in Region A of the City of Johannesburg.\nIvory Park is occupied by more than 182 000 black people and is located in the town of Midrand in the City of Johannesburg Metropolitan Municipality. It is situated adjacent to the township of Tembisa in the neighbouring City of Ekurhuleni Metropolitan Municipality and is usually but inaccurately treated as being part of it. Services in Ivory Park have improved since the early 1990s. It has five clinics, eight schools, a police station, two libraries and is served by the popular Voice of Tembisa FM community radio station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "ivory park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ivory",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6498,
+    "attempt": 6451,
+    "place_id": "gn-11551058",
+    "input": {
+      "place": {
+        "place_id": "gn-11551058",
+        "name": "Mortlake",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.46945,
+        "lon": -0.26749
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mortlake",
+          "url": "https://en.wikipedia.org/wiki/Mortlake",
+          "text": "Mortlake is a suburban district of the London Borough of Richmond upon Thames on the south bank of the River Thames between Kew and Barnes. Historically it was part of Surrey and until 1965 was in the Municipal Borough of Barnes. Its Stuart and Georgian history was economically one of malting, brewing, farming, watermen and the Mortlake Tapestry Works (1617–1704) Britain's most important producer. A London landmark, the former Mortlake Brewery or Stag Brewery, is on the edge of Mortlake.\nThe Waterloo to Reading railway line runs through Mortlake, which has a pedestrianised riverside, two riverside pubs and a village green.  The Boat Race between Oxford and Cambridge universities' rowing teams finishes at Mortlake every March/April."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "mortlake",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6499,
+    "attempt": 6452,
+    "place_id": "gn-11979992",
+    "input": {
+      "place": {
+        "place_id": "gn-11979992",
+        "name": "Hamilton Hills",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.36277,
+        "lon": -76.56505
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hamilton Hills, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Hamilton_Hills,_Baltimore",
+          "text": "Hamilton Hills is a mixed-use suburban neighborhood located in the northeastern corner of Baltimore, Maryland. Hamilton Hills represents a section of Hamilton, a larger historic area that includes other neighborhoods in Northeast Baltimore. The neighborhood's borders are Old Harford Road and Harford Road to the east, Echodale Avenue to the south, Perring Parkway to the west and the Baltimore County line to the north. The main thoroughfare in Hamilton Hills is Harford Road, which has been an integral part of the area's history.\nThe larger Hamilton area was sparsely populated until the late 18th century, the period when Harford Road was built. Hamilton began as a small, rural village surrounded by farmland during the 19th century. The land that became Hamilton Hills was a part of Baltimore County until 1918, when Baltimore City annexed it. Real estate developers arrived in the 20th century to build houses, and entrepreneurs formed a main street corridor on Harford Road. The Hamilton area was described throughout the 20th century as a desirable, family-oriented suburb in Baltimore City. The community has experienced White flight and been challenged by urban decay since the end of World War II. Residents in the 21st century have attempted to revive and protect Harford Road's main street economy as well as the reputation of the Hamilton area. Hamilton Hills was formalized in 2003 when the neighborhood association renamed the neighborhood.\nHamilton Hills' population in the 21st century has remained relatively stable compared to Baltimore's overall population decline. As of 2020, Hamilton Hills was the 5th largest neighborhood in the city by total population. Compared to Baltimore as a whole, median household incomes among Hamilton Hills residents in the 2010s were higher, life expectancy was longer, crime was lower, and voter participation was higher. Hamilton Hills residents have been more likely to graduate high school than all Baltimoreans but less likely to complete college.\nHamilton Hills is represented within the Baltimore City Council's 3rd District. Elementary and middle school students are zoned into three public schools, and the neighborhood is served by three post offices and a public library branch. It has two urban green spaces, one park, and a variety of cultural amenities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 363
+    },
+    "banned_terms": [
+      {
+        "term": "hamilton hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hamilton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6500,
+    "attempt": 6453,
+    "place_id": "gn-1271777",
+    "input": {
+      "place": {
+        "place_id": "gn-1271777",
+        "name": "Gajwel",
+        "country": "India",
+        "subdivision": "Telangana",
+        "lat": 17.84816,
+        "lon": 78.68291
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gajwel",
+          "url": "https://en.wikipedia.org/wiki/Gajwel",
+          "text": "Gajwel, officially Gajwel–Pragnapur, is a town and a municipality in Siddipet district of the Indian state of Telangana. The jurisdiction of the civic body is spread over an area of 49.00 km2 (18.92 mi2). Gajwel, located about 53 km from Hyderabad on the Rajiv highway, is one of the fastest-developing towns in Telangana. It serves as a major political center and is the home constituency of the former Chief Minister of Telangana, K. Chandrashekar Rao. Gajwel has seen development in various sectors, including infrastructure projects like the Outer Ring Road (ORR) construction. The ORR, spanning approximately 21.92 kilometers, connects Gajwel with cities such as Hyderabad, Nagpur, Mumbai, Pune, and Nizamabad, improving connectivity and facilitating smoother travel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "gajwel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6501,
+    "attempt": 6454,
+    "place_id": "gn-13495376",
+    "input": {
+      "place": {
+        "place_id": "gn-13495376",
+        "name": "Fairview",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.26305,
+        "lon": -123.13212
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fairview, Vancouver",
+          "url": "https://en.wikipedia.org/wiki/Fairview,_Vancouver",
+          "text": "Fairview is a neighbourhood on the west side of the city of Vancouver, British Columbia, Canada. It runs from False Creek in the north to 16th Avenue in the south, and from Burrard Street in the west to Cambie Street in the east.\nCentral Broadway is an important commercial and employment centre focused around Vancouver General Hospital and other health-related institutions, including the BC Cancer Agency, BC Cancer Research Centre, BC Healthy Living Alliance, and the BC Centre for Disease Control. Other shopping areas in the neighbourhood are South Granville Rise, City Square Shopping Centre, and Granville Island.\nSome city offices are located on the eastern fringe of Fairview, across Cambie Street from Vancouver City Hall."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "fairview",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6502,
+    "attempt": 6455,
+    "place_id": "gn-13580119",
+    "input": {
+      "place": {
+        "place_id": "gn-13580119",
+        "name": "Lisovyi Masyv",
+        "country": "Ukraine",
+        "subdivision": "Kyiv City",
+        "lat": 50.4725,
+        "lon": 30.63113
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lisovyi masyv",
+          "url": "https://en.wikipedia.org/wiki/Lisovyi_masyv",
+          "text": "Lisovyi masyv (Ukrainian: Лісовий масив literally: Forest neighbourhood) is a neighbourhood (city superblock) located in the northeast part of the city of Kyiv, the capital of Ukraine.\nIt is located next to the Bykivnia Forest and the residential neighborhood appeared in 1965–73, originally known as Vodopark.\nIts northern and eastern boundaries are bordered with forests, hence its name; its western boundary is bordered by the Bratyslavska Street, and its southern boundary by the Brovarskyi Prospect.\nAside of kindergartens and general education schools, the Lisovyi masyv contains the Kyiv National University of Trade and Economics.\nThe Lisovyi masyv is served by the Kyiv Metro station, Lisova, from which travel the city's buses, trolleybuses, and marshrutkas (private minibuses)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "lisovyi masyv",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lisovyi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "masyv",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6503,
+    "attempt": 6456,
+    "place_id": "gn-1712819",
+    "input": {
+      "place": {
+        "place_id": "gn-1712819",
+        "name": "Glan",
+        "country": "Philippines",
+        "subdivision": "Soccsksargen",
+        "lat": 5.82417,
+        "lon": 125.20333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glan, Sarangani",
+          "url": "https://en.wikipedia.org/wiki/Glan,_Sarangani",
+          "text": "Glan, officially the Municipality of Glan (Cebuano: Lungsod sa Glan; Maguindanaon: Inged nu Glan, Jawi: ايڠد نوڠلن; Tagalog: Bayan ng Glan), is a municipality in the province of Sarangani, Philippines. According to the 2024 census, it has a population of 117,017 people.\nGlan is the most populous municipality in Sarangani and it is located east of Sarangani Bay, west of Davao Occidental, and north of the Celebes Sea. Barangay Sufatubo as the largest barangay in Glan, It is largely based on agriculture with a high level production of copra. Aquaculture is the second biggest income earner, notably milkfish and shrimps culture. Other agricultural products are coconuts, maize, sugarcane, bananas, pineapples, mangoes, pork, eggs, beef, and fish.\nThe economy accelerated in 2010s due to advances in global communication technology and the finishing of a modern highway, which improved trade and transport. The municipality is classified as he \"heritage town\" by cultural conservationists, including members of the National Commission for Culture and the Arts due to the many well-preserved ancestral houses and heritage structures within the municipality. The Heritage Conservation Society suggested an ordinance, similar to the ordinance in Vigan, that would protect Glan's heritage houses and aesthetics in 2014 for centuries to come. Some conservationists have also suggested for the town's inclusion in the Philippines tentative list for UNESCO World Heritage Site enlistment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "glan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6504,
+    "attempt": 6457,
+    "place_id": "gn-2176373",
+    "input": {
+      "place": {
+        "place_id": "gn-2176373",
+        "name": "Belconnen",
+        "country": "Australia",
+        "subdivision": "Australian Capital Territory",
+        "lat": -35.23798,
+        "lon": 149.06627
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belconnen",
+          "url": "https://en.wikipedia.org/wiki/Belconnen",
+          "text": "Belconnen () is a district in the Australian Capital Territory in Australia. The district is subdivided into 27 divisions (suburbs), sections and blocks. As at the 2021 census, the district had a population of 106,061 people; and was the most populous district within the Australian Capital Territory (ACT).\nBelconnen is situated approximately 7 kilometres (4.3 mi) to the north-west of the central business district of Canberra, and surrounds an artificially created, ornamental lake, Lake Ginninderra. Lake Ginninderra was made possible by building a dam at an elbow of Ginninderra Creek. Exiting the lake, via a simple overflow, Ginninderra Creek continues, and runs north-west to its confluence with the Murrumbidgee River just beyond the north-western ACT border."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "belconnen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6505,
+    "attempt": 6458,
+    "place_id": "gn-2206068",
+    "input": {
+      "place": {
+        "place_id": "gn-2206068",
+        "name": "New Town",
+        "country": "Australia",
+        "subdivision": "Tasmania",
+        "lat": -42.85758,
+        "lon": 147.30869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Town, Tasmania",
+          "url": "https://en.wikipedia.org/wiki/New_Town,_Tasmania",
+          "text": "New Town is a suburb of the city of Hobart, Tasmania, Australia, about 4 kilometres (2 mi) north of the central business district of Hobart. It is generally considered Hobart's oldest suburb, settled just a week after Sullivans Cove. It was historically the home of many of Hobart's wealthiest citizens, and New Town features a large number of grand residences, churches, and public buildings. The large farms were broken up following the world wars and it is now an inner city residential suburb. Many of its streets are lined with Federation style cottages. It is surrounded by the suburbs of North Hobart, Mount Stuart, Lenah Valley and Moonah, with the Queens Domain just to the south-east. Most of the locality is within the Hobart local government area, with 2.5% within Glenorchy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "new town",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "town",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6506,
+    "attempt": 6459,
+    "place_id": "gn-2306224",
+    "input": {
+      "place": {
+        "place_id": "gn-2306224",
+        "name": "Aboso",
+        "country": "Ghana",
+        "subdivision": "Western",
+        "lat": 5.36073,
+        "lon": -1.94856
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aboso",
+          "url": "https://en.wikipedia.org/wiki/Aboso",
+          "text": "Aboso is a town near Tarkwa, and is the capital of Wassa West district, a district in the Western Region of Ghana. Aboso is the 78th most populous settlement in Ghana, with a population of 9,945 people. At the Ghana census of 18 March 1984, there were 4,700 inhabitants living in the town.\nThe town has been in an important center in the goldfields in the Tarkwa hills since the late 19th century. The town is the namesake for Aboso Goldfield Ltd, a subsidiary of Gold Fields which operates the nearby Damang mine.\nThe town used to be the location for the Aboso Glass Factory, a major manufacturer and supplier of bottles for the beverage industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "aboso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6507,
+    "attempt": 6460,
+    "place_id": "gn-2408088",
+    "input": {
+      "place": {
+        "place_id": "gn-2408088",
+        "name": "Kambia",
+        "country": "Sierra Leone",
+        "subdivision": "Northern Province",
+        "lat": 9.12504,
+        "lon": -12.91816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kambia, Sierra Leone",
+          "url": "https://en.wikipedia.org/wiki/Kambia,_Sierra_Leone",
+          "text": "Kambia also commonly known as Kambia Town is the capital and largest town of Kambia District in the North West Province of Sierra Leone. Kambia is a major trading town; and lies approximately 120 miles north-east of Freetown. The town had a population of 11,842 in the 2004 census, with a 2010 estimate being 12,471 [link removed] and a current estimate of 40,000 [2] Archived 2014-07-14 at the Wayback Machine. Kambia is a major trading route along the main highway linking Sierra Leone's capital Freetown to Conakry, the capital of Guinea.\nKambia town is inhabited by different ethnic groups. The Krio language is the primary language of communication among the different ethnic groups in Kambia town. The town is predominantly Muslim."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "kambia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

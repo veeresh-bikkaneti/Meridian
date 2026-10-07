@@ -1,0 +1,707 @@
+[
+  {
+    "rank": 1190,
+    "place_id": "gn-3471374",
+    "input": {
+      "place": {
+        "place_id": "gn-3471374",
+        "name": "Assis",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.66167,
+        "lon": -50.41222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Assis",
+          "url": "https://en.wikipedia.org/wiki/Assis",
+          "text": "Assis is a city and a municipality in the southwestern part of the state of São Paulo in Brazil. The population is 101,409 (2022 Census) in an area of 460.61 km2. The town was founded on July 5, 1905, and became a municipality in 1917, when it was separated from Platina. It is the largest city of its microregion, and the 2nd of its mesoregion, and is 434 km away from the capital, São Paulo. \nThe town has an annual average temperature of 21,37 °C, annual rainfall 1,441 mm (56.7 in), and the vegetation predominates Mata Atlântica and Cerrado, is then a transition zone of vegetation. Its Human Development Index (HDI) is 0.805, considered high if compared to state and is in 28th place among Brazilian cities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "assis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1203,
+    "place_id": "gn-1843491",
+    "input": {
+      "place": {
+        "place_id": "gn-1843491",
+        "name": "Iksan",
+        "country": "South Korea",
+        "subdivision": "Jeollabuk-do",
+        "lat": 35.94389,
+        "lon": 126.95444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Iksan",
+          "url": "https://en.wikipedia.org/wiki/Iksan",
+          "text": "Iksan (Korean: 익산; Korean pronunciation: [ik̚.s͈an]) is a city and major railway junction in North Jeolla Province, South Korea.\nThe city center and railway junction was formerly called \"Iri\" (Korean: 이리시; Hanja: 裡里市), but merged with Iksan County (Iksan-gun) in 1995.\nThe railway junction is located at the point where Jeolla and Janghangs meet the Honam Line and the Honam HSR and is served by frequent train service to/from Seoul, Daejeon, Gwangju, Mokpo, Jeonju, Suncheon, and Yeosu.\nJeonbuk National University Iksan campus (before, it was Iksan National College), the Won Buddhism Graduate School, Wonkwang Health Science College, and Wonkwang University are all located in Iksan.\nThis city is called \"The City of Jewelry\". The Iksan Jewelry Museum opened in May 2002 next to a Dinosaur museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "iksan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1204,
+    "place_id": "gn-2033536",
+    "input": {
+      "place": {
+        "place_id": "gn-2033536",
+        "name": "Yakeshi",
+        "country": "China",
+        "subdivision": "Inner Mongolia",
+        "lat": 49.28333,
+        "lon": 120.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yakeshi",
+          "url": "https://en.wikipedia.org/wiki/Yakeshi",
+          "text": "Yakeshi (Mongolian: ᠶᠠᠭᠰᠢ ᠬᠣᠲᠠ; Chinese: 牙克石) is a county-level city of Hulunbuir, Inner Mongolia, China.\nYakeshi has a population of 391,627 and an area of 27,590 square kilometres (10,650 sq mi). It is situated next to the Hailar River 70 kilometres (43 mi) east of Hailar District, the seat of Hulunbuir, and on the north side of the Greater Khingan Range.\nThe city's economy is based on forestry industry, wood products, traditional Chinese medicines, gold, coal, iron, copper, wheat, rapeseed farming, sheep raising and dairy industries.\nIn 2008 several major players in the automobile industry established car testing facilities in Yakeshi. As part of the Electronic stability control (ESC)-development for new cars, special prototype cars are tested under winter conditions on frozen lakes and special snow-tracks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "yakeshi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1210,
+    "place_id": "gn-3083829",
+    "input": {
+      "place": {
+        "place_id": "gn-3083829",
+        "name": "Szczecin",
+        "country": "Poland",
+        "subdivision": "West Pomerania",
+        "lat": 53.42894,
+        "lon": 14.55302
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Szczecin",
+          "url": "https://en.wikipedia.org/wiki/Szczecin",
+          "text": "Szczecin, historically known in English as Stettin, is the capital and largest city of the West Pomeranian Voivodeship in northwestern Poland. Located near the Baltic Sea and the German border, it is a major seaport, the largest city of northwestern Poland, and seventh-largest city of Poland. As of 31 December 2022, the population was 391,566.\nSzczecin is located on the Oder River, south of the Szczecin Lagoon and the Bay of Pomerania. The city is situated along the southwestern shore of Dąbie Lake, on both sides of the Oder and on several large islands between the western and eastern branches of the river. It is also surrounded by dense forests, shrubland and heaths, chiefly the Wkrzańska Heath shared with Germany (Ueckermünde) and the Szczecin Landscape Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "szczecin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1223,
+    "place_id": "gn-1258315",
+    "input": {
+      "place": {
+        "place_id": "gn-1258315",
+        "name": "Rourkela",
+        "country": "India",
+        "subdivision": "Odisha",
+        "lat": 22.22496,
+        "lon": 84.86414
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rourkela",
+          "url": "https://en.wikipedia.org/wiki/Rourkela",
+          "text": "Rourkela (Odia: [ɾauɾɔkela] ) officially Raurkela is a planned city located in the northern district Sundargarh of Odisha, India. It is a Tier-2 city and the third-largest city in Odisha after Bhubaneswar and Cuttack. It is situated about 328 kilometres (204 mi) west of the state capital Bhubaneswar and is surrounded by a range of hills and encircled by the rivers  Koel, Sankha, and Brahmani. The city is also popularly known as Ispat Nagar and Steel City of Odisha.\nThe town has one of the largest integrated steel plants set up with German collaboration Known as Rourkela Steel Plant, of Steel Authority of India Limited (SAIL). It also has one of the premier national level technical institute known as National Institutes of Technology (NIT Rourkela)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "rourkela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1224,
+    "place_id": "gn-1273313",
+    "input": {
+      "place": {
+        "place_id": "gn-1273313",
+        "name": "Dehradun",
+        "country": "India",
+        "subdivision": "Uttarakhand",
+        "lat": 30.32443,
+        "lon": 78.03392
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dehradun",
+          "url": "https://en.wikipedia.org/wiki/Dehradun",
+          "text": "Dehradun (Hindi: Dēhrādūn, pronounced [ˈd̪ɛɦɾaːd̪uːn]), also known as Dehra Doon ( DAIR-ə DOON) is the Winter capital and most populous city of the Indian state of Uttarakhand. It is the administrative headquarters of Dehradun district. Dehradun has served as the state's interim capital since the formation of Uttarakhand in 2000; Gairsain was designated the summer capital in 2020. The city lies in the Doon Valley in the foothills of the Himalayas, between the Shivalik Range to the south and the outer Himalayan ranges to the north. Dehradun has a generally temperate climate, with hot summers, cool winters and substantial monsoon rainfall.\nDehradun came under the rule of the Gorkhas in the early 19th century before being incorporated into the British-administered territories following the Anglo-Gorkha War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "dehradun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1235,
+    "place_id": "gn-2335953",
+    "input": {
+      "place": {
+        "place_id": "gn-2335953",
+        "name": "Jos",
+        "country": "Nigeria",
+        "subdivision": "Plateau State",
+        "lat": 9.92849,
+        "lon": 8.89212
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jos",
+          "url": "https://en.wikipedia.org/wiki/Jos",
+          "text": "Jos  is a city in Plateau State of North-Central region of Nigeria with a population of about 900,000 residents based on the 2006 census. Popularly called \"J-Town\", it is the administrative capital and largest city of Plateau State. The city is situated on the Jos plateau which lies within the Guinea Savannah of North-Central Nigeria. It connects most of the North-Eastern capitals to the Federal Capital Territory Abuja, by road. Driving in and out of Jos, traffic encounters very steep and windy bends and mountainous sceneries typical of the plateau, from which the state derives its name.\nDuring the period of British colonial rule, Jos became an important centre for tin mining after large deposits of cassiterite, the main ore for the metal, were discovered."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "jos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1239,
+    "place_id": "gn-2646057",
+    "input": {
+      "place": {
+        "place_id": "gn-2646057",
+        "name": "Ipswich",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.05917,
+        "lon": 1.15545
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ipswich",
+          "url": "https://en.wikipedia.org/wiki/Ipswich",
+          "text": "Ipswich ( ) is a port town and borough in Suffolk, England, located on the River Orwell. It is the county town, and largest in Suffolk, followed by Lowestoft and Bury St Edmunds, and the third-largest population centre in East Anglia, after Peterborough and Norwich. It is 65 miles (105 km) northeast of London. In 2021, Ipswich had a population of 139,600, while the Ipswich built-up area had a population of 151,562 in that same year, making it the fourth-largest in the East of England and the 42nd-largest in England and Wales. It includes the towns and villages of Kesgrave, Woodbridge, Bramford and Martlesham Heath.\nIpswich was first recorded during the medieval period as Gippeswic, the town has also been recorded as Gyppewicus and Yppswyche."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "ipswich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1252,
+    "place_id": "gn-1678228",
+    "input": {
+      "place": {
+        "place_id": "gn-1678228",
+        "name": "Keelung",
+        "country": "Taiwan",
+        "subdivision": "Taiwan",
+        "lat": 25.13089,
+        "lon": 121.74094
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Keelung",
+          "url": "https://en.wikipedia.org/wiki/Keelung",
+          "text": "Keelung ( kee-LUUNG; Chinese: 基隆; pinyin: Jīlóng; Pe̍h-ōe-jī: Ke-lâng), Chilung or Jilong ( jee-LUUNG), officially known as Keelung City, is a major port city in northeastern Taiwan. The city is part of the Taipei–Keelung metropolitan area with neighboring New Taipei City and Taipei. Nicknamed the Rainy Port for its frequent rain and maritime role, the city is Taiwan's second largest seaport (after Kaohsiung), and was the world's 7th largest port in 1984.\nIn 1626, the Spanish established Fort San Salvador at present-day Keelung, an area inhabited by the Taiwanese indigenous peoples. Control of the area eventually passed to the Qing dynasty. Fighting between the Chinese and the Europeans around Keelung occurred in the 19th century during the First Opium War and the Sino-French War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "keelung",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1271,
+    "place_id": "gn-3631412",
+    "input": {
+      "place": {
+        "place_id": "gn-3631412",
+        "name": "Ocumare del Tuy",
+        "country": "Venezuela",
+        "subdivision": "Miranda",
+        "lat": 10.1182,
+        "lon": -66.77513
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocumare del Tuy",
+          "url": "https://en.wikipedia.org/wiki/Ocumare_del_Tuy",
+          "text": "Ocumare del Tuy is a city located in Miranda State in northern Venezuela, the shire town of the Lander Municipality. Located around 30 kilometres (19 mi) from the capital Caracas, The city is noted for its warm and clear weather, with year-round sunshine and 60 days of rainfall annually, and an average temperature that ranges from 64 to 83 °F (18 to 28 °C), but with relatively low humidity.\nOcumare del Tuy has a population of around 197,952 (2016), mainly dedicated to agriculture (cocoa, coffee, sugar cane) and livestock farming (pigs, but also cattle), with leafy forest and meadows.\nOcumare del Tuy was the capital of the state of Miranda between 1904 and 1928, when it moved to Petare and later to Los Teques."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "ocumare del tuy",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocumare",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tuy",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1275,
+    "place_id": "gn-1514581",
+    "input": {
+      "place": {
+        "place_id": "gn-1514581",
+        "name": "Angren",
+        "country": "Uzbekistan",
+        "subdivision": "Tashkent Region",
+        "lat": 41.01667,
+        "lon": 70.14361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Angren, Uzbekistan",
+          "url": "https://en.wikipedia.org/wiki/Angren,_Uzbekistan",
+          "text": "Angren (Uzbek: Angren/Ангрен; Tajik: Ангрен) is a district-level city in Tashkent Region, eastern Uzbekistan. The city is located on the Angren River 70 mi (110 km) to the east of Tashkent. The City of Angren was created in 1946 from the villages of Jigariston, Jartepa, Teshiktosh, and Qoʻyxona which had emerged in the rich Angren coal basin during World War II. It has an area of 150 km2 (58 sq mi) and the population of the city is 191,300 (2021).\nThere were several large coal mines and factories in Angren during Soviet times. Following the collapse of the USSR, the majority of these factories were abandoned. A lack of professionals and machinery, mismanagement, and falling income levels — all contributed to this downfall."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "angren",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1285,
+    "place_id": "gn-3099759",
+    "input": {
+      "place": {
+        "place_id": "gn-3099759",
+        "name": "Elbląg",
+        "country": "Poland",
+        "subdivision": "Warmia-Masuria",
+        "lat": 54.1522,
+        "lon": 19.40884
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elbląg",
+          "url": "https://en.wikipedia.org/wiki/Elbląg",
+          "text": "Elbląg (Polish: [ˈɛlblɔŋk] ; German: Elbing [ˈɛlbɪŋ] ) is a city in the Warmian-Masurian Voivodeship, in northern Poland, located in the eastern edge of the Żuławy region with 127,390 inhabitants, as of December 2021. It is the capital of Elbląg County.\nElbląg is one of the oldest cities in the province, founded in 1237. As a member of the Hanseatic League, the city was linked to other major ports of northern and central Europe. Elbląg joined Poland in 1454, and then was one of the country's chief ports, and a major port for English–Polish trade, until the First Partition of Poland in 1772, when it was annexed by Prussia. Its trading role greatly weakened, until the era of industrialization in the 19th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "elblag",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1287,
+    "place_id": "gn-3515463",
+    "input": {
+      "place": {
+        "place_id": "gn-3515463",
+        "name": "Tláhuac",
+        "country": "Mexico",
+        "subdivision": "Mexico City",
+        "lat": 19.28689,
+        "lon": -99.00507
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tláhuac",
+          "url": "https://en.wikipedia.org/wiki/Tláhuac",
+          "text": "Tláhuac is one of the sixteen boroughs (demarcación territorial) of Mexico City, located at the southeastern edge of the metropolitan area. Though Tláhuac still contains rural communities within its borders, mostly in the southern and eastern portions, the borough has undergone massive urbanization in the 20th century, especially in the northwest. Tláhuac has experienced the fastest rate of population growth in Mexico City since the 1960s.\nMuch of the borough's area is former lakebed where Lake Chalco and Lake Xochimilco met, with the town of San Pedro Tláhuac originally on an island. There are still some lake areas in the present day, along with four major canals and wetlands, also under conservation status. The urbanization has led to serious traffic and transportation problems."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "tlahuac",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1305,
+    "place_id": "gn-1256451",
+    "input": {
+      "place": {
+        "place_id": "gn-1256451",
+        "name": "Shivpuri",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 25.42378,
+        "lon": 77.66223
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shivpuri",
+          "url": "https://en.wikipedia.org/wiki/Shivpuri",
+          "text": "Shivpuri, previously known as Sipri, is a town and a municipality in Shivpuri district, located in the central Indian state of Madhya Pradesh. It is in the Gwalior Division of northwest Madhya Pradesh and is the administrative headquarters of Shivpuri District. It is located approximately 125 km (78 mi) from Gwalior, 104 km (65 mi) from Jhansi 103 km (64 mi) from Guna and 337 km (211 mi) from Bhopal. It is situated at an altitude of 1,515 feet (462 m) above sea level.\nThe town is a tourist destination in the monsoon season as it has a number of waterfalls, like Bhura kho and Tunda Bharkha kho.\nLakes in Shivpuri include Chandpatha jheel, Jadhav Sagar jheel, and other small lakes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "shivpuri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1319,
+    "place_id": "gn-3114711",
+    "input": {
+      "place": {
+        "place_id": "gn-3114711",
+        "name": "Oviedo",
+        "country": "Spain",
+        "subdivision": "Asturias",
+        "lat": 43.36029,
+        "lon": -5.84476
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oviedo",
+          "url": "https://en.wikipedia.org/wiki/Oviedo",
+          "text": "Oviedo (Spanish: [oˈβjeðo] ), officially known by the bilingual name Oviedo / Uviéu (Asturian: [uˈβjew], locally Uvieo [uˈβje.o]) is the capital city of the Principality of Asturias in northern Spain and the administrative and commercial centre of the region. With a population of 220,027, it is also the 2nd-largest city in Asturias.\nOviedo is located approximately 24 km (15 mi) southwest of Gijón and 23 km (14 mi) southeast of Avilés, both of which lie on the shoreline of the Bay of Biscay. Oviedo's proximity to the ocean of less than 30 kilometres (19 mi) in combination with its elevated position with areas of the city more than 300 metres above sea level causes the city to have a maritime climate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "oviedo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1326,
+    "place_id": "gn-973111",
+    "input": {
+      "place": {
+        "place_id": "gn-973111",
+        "name": "Mpumalanga",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -29.81292,
+        "lon": 30.63646
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mpumalanga, KwaZulu-Natal",
+          "url": "https://en.wikipedia.org/wiki/Mpumalanga,_KwaZulu-Natal",
+          "text": "Mpumalanga, also widely known as Hammarsdale, is a township located in the eThekwini Metropolitan Municipality in the KwaZulu-Natal province of South Africa. It is situated some 10 km south-south-east of Cato Ridge and some 50 km west of Durban. Derived from Zulu, the name means 'sunrise', 'the sun comes out'.\nThe township boasts of a local library known as Mpumalanga Library and a shopping center which has become the heart of the township known as the Hammarsdale Junction. There is a local stadium and an Elangeni College campus located in the heart of Mpumalanga. Among amenities such as clinics, police stations, a SASSA and a home affairs office, the township has a variety of schools, some of which are mentioned below."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "mpumalanga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1329,
+    "place_id": "gn-1625929",
+    "input": {
+      "place": {
+        "place_id": "gn-1625929",
+        "name": "Sungai Penuh",
+        "country": "Indonesia",
+        "subdivision": "Jambi",
+        "lat": -2.0561,
+        "lon": 101.3913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sungai Penuh",
+          "url": "https://en.wikipedia.org/wiki/Sungai_Penuh",
+          "text": "Sungai Penuh (Indonesian: Kota Sungai Penuh) is a city in Jambi province, Indonesia, on the island of Sumatra. It is an enclave within Kerinci Regency, of which it was formerly part but from which it became administratively separate on 24 June 2008. It covers an area of 364.92 km2 and had a population of 82,293 at the 2010 Census and 96,610 at the 2020 Census; the official estimate as at mid 2025 was 102,708 (comprising 51,555 males and 51,153 females). Historically, it has been the center of administration for the whole Kerinci highlands region since the Dutch colonial era. Today, it is one of only two cities in Jambi and the largest settlement on the western part of the province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "sungai penuh",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sungai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "penuh",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1334,
+    "place_id": "gn-2342490",
+    "input": {
+      "place": {
+        "place_id": "gn-2342490",
+        "name": "Funtua",
+        "country": "Nigeria",
+        "subdivision": "Katsina State",
+        "lat": 11.52351,
+        "lon": 7.31174
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Funtua",
+          "url": "https://en.wikipedia.org/wiki/Funtua",
+          "text": "Funtua is a town and local government area in Katsina State, Nigeria.\nIt is one of the premier local governments in Nigeria created after the local government reforms in 1976. It is the headquarters of the Katsina South senatorial district, which comprises eleven local governments: Bakori, Danja, Dandume, Faskari, Sabuwa, Kankara, Malumfashi, Kafur, Musawa, Matazu and Funtua.\nFuntua has a conducive weather condition as it lies at latitude and longitude 11°32'N, 7°19'E. The city has an average temperature of 32 °C and humidity of 44%.\nIt has an area of 448 square kilometres (173 sq mi) and a population of 225,571 at the 2006 census and 570,110 according to 2016 estimate. The chairman is the official head of local government."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "funtua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1338,
+    "place_id": "gn-2514256",
+    "input": {
+      "place": {
+        "place_id": "gn-2514256",
+        "name": "Málaga",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.72016,
+        "lon": -4.42034
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Málaga",
+          "url": "https://en.wikipedia.org/wiki/Málaga",
+          "text": "Málaga ( ; Spanish: [ˈmalaɣa] ) is a municipality of Spain and the capital of the province of Málaga, in the autonomous community of Andalusia. With a population of 592,346 in 2024, it is the 2nd-largest city in Andalusia and the 6th-largest in the country. It lies in Southern Iberia on the Costa del Sol ('Coast of the Sun') of the Mediterranean, primarily on the left bank of the Guadalhorce. The urban core originally developed in the space between the Gibralfaro Hill and the Guadalmedina.\nMálaga's history spans about 2,800 years, making it one of the oldest continuously inhabited cities in Western Europe. According to most scholars, it was founded about 770 BC by the Phoenicians from Tyre as Malaka."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "malaga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1352,
+    "place_id": "gn-3903320",
+    "input": {
+      "place": {
+        "place_id": "gn-3903320",
+        "name": "Tarija",
+        "country": "Bolivia",
+        "subdivision": "Tarija Department",
+        "lat": -21.53549,
+        "lon": -64.72956
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarija",
+          "url": "https://en.wikipedia.org/wiki/Tarija",
+          "text": "Tarija or San Bernardo de la Frontera de Tarixa is a city in southern Bolivia. Founded in 1574, Tarija is the largest city and capital and municipality within the Tarija Department, with an airport offering regular service to primary Bolivian cities, like Bolivia capital La Paz, as well as a regional bus terminal with domestic and international connections. Its climate is semi-arid (BSh) with generally mild temperatures in contrast to the harsh cold of the Altiplano (e.g., La Paz) and the year-round humid heat of the Amazon Basin (e.g., Santa Cruz de la Sierra). Tarija has a population of 234,442 as of 2013.\nThe cities lies in a depression in the eastern Andes known as the Central Valley of Tarija."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "tarija",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

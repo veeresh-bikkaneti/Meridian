@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 4111,
+    "attempt": 4081,
+    "place_id": "gn-3528756",
+    "input": {
+      "place": {
+        "place_id": "gn-3528756",
+        "name": "Ciudad Mante",
+        "country": "Mexico",
+        "subdivision": "Tamaulipas",
+        "lat": 22.74277,
+        "lon": -98.97172
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad Mante",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_Mante",
+          "text": "Mante, formally Ciudad Mante, is a city in the Mexican state of Tamaulipas.  The city is the municipal seat of El Mante municipality in extreme southern Tamaulipas, and lies in the northwestern portion of the municipality. It had a 2005 census population of 81,884 inhabitants, or about 73 percent of El Mante's total of 112,061. The city is the state's ninth-largest community in population. El Mante has an area of 1,699.98 km2 (656.37 sq mi), and includes smaller outlying communities such as Celaya, El Limón, El Abra, Nueva Apolonia, and El Naranjo. Ciudad Mante is served by the Ciudad Mante National Airport.\nMante's official slogan is Donde el Azucar es mas Dulce que la Miel. (\"Where sugar is sweeter than honey.\")"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad mante",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mante",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4112,
+    "attempt": 4082,
+    "place_id": "gn-3868158",
+    "input": {
+      "place": {
+        "place_id": "gn-3868158",
+        "name": "Villarrica",
+        "country": "Chile",
+        "subdivision": "Araucania",
+        "lat": -39.28569,
+        "lon": -72.2279
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villarrica, Chile",
+          "url": "https://en.wikipedia.org/wiki/Villarrica,_Chile",
+          "text": "Villarrica is a city and commune in southern Chile located on the western shore of Villarrica Lake in the Province of Cautín, Araucanía Region 746 km (464 mi) south of Santiago and close to the Villarrica Volcano ski center to the south east. Residents of Villarrica are known as Villarricences.\nTourism, grain and dairy farming, and forestry are the main economic activities of the community. The climate is mild and humid with the greatest rainfall experienced between May and July (autumn and winter). The dry season is between December and February (Summer).\nOther lakes found nearby include Calafquén, Caburgua, Huilipilún and Colico. In the summer water sports and sunbathing are popular activities in the warm temperatures experienced at the low altitudes ranging from 200 to 500m above sea level.\nFishing and rafting are popular activities in the various rivers in the area, which include the Toltén, Voipir, Trancura, Llancahue and Lincura. Popular waterfalls include León, La China, Palguín, Ojos del Caburga. Thanks to the numerous volcanos, hot springs with temperatures ranging from 48 °C to 90 °C, are found nearby. Included are Coñaripe (48 °C), San Luis (43 °C), Huife (49 °C), Palguín (57 °C) and Liquiñe (87 °C).\nVillarrica National Park is 36 km (22 mi) away, and was created to preserve the natural beauty of the volcano. The area is noted for using wood as its principal building material."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "villarrica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4113,
+    "attempt": 4083,
+    "place_id": "gn-4565119",
+    "input": {
+      "place": {
+        "place_id": "gn-4565119",
+        "name": "Guaynabo",
+        "country": "Puerto Rico",
+        "subdivision": "Guaynabo",
+        "lat": 18.35745,
+        "lon": -66.111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guaynabo, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Guaynabo,_Puerto_Rico",
+          "text": "Guaynabo (Spanish pronunciation: [ɡwajˈnaβo], locally [wajˈnaβo]) is a city and municipality on the  northeastern coastal plain of Puerto Rico. Located west of the capital San Juan, east of Bayamón, south of Cataño and San Juan Bay, and north of Aguas Buenas, Guaynabo is spread over 9 barrios and the downtown area and administrative center of Guaynabo Pueblo. With a land area of 27.13 square miles (70.3 km2) and a population of 89,780 as of the 2020 census, it is part of the San Juan metropolitan area. The studios of WAPA-TV, the most watched television station in Puerto Rico, are located in Guaynabo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "guaynabo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4114,
+    "attempt": 4084,
+    "place_id": "gn-4566022",
+    "input": {
+      "place": {
+        "place_id": "gn-4566022",
+        "name": "Loíza",
+        "country": "Puerto Rico",
+        "subdivision": "Loíza",
+        "lat": 18.43134,
+        "lon": -65.88016
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Loíza, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Loíza,_Puerto_Rico",
+          "text": "Loíza (pronounced [loˈisa]) is a town and municipality on the northeastern coast of Puerto Rico, located east of Carolina, west of Río Grande, and north of Canóvanas. An outer municipality within the San Juan metropolitan area, it is spread over 5 barrios and the downtown area and administrative center of Loíza Pueblo. Loíza is renowned for its rich Afro-Puerto Rican culture and heritage. The vendors of Puerto Rican street food in kiosks, the unrestricted beaches, and the Australian pine and mangrove state forest in the district of Piñones in the barrio of Torrecilla Baja are popular destinations among domestic and foreign tourists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "loiza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4115,
+    "attempt": 4085,
+    "place_id": "gn-4670592",
+    "input": {
+      "place": {
+        "place_id": "gn-4670592",
+        "name": "Alvin",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 29.42385,
+        "lon": -95.2441
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alvin, Texas",
+          "url": "https://en.wikipedia.org/wiki/Alvin,_Texas",
+          "text": "Alvin is a city in the U.S. state of Texas within the Houston–Pasadena–The Woodlands metropolitan area and Brazoria County. As of the 2020 census, Alvin had a population of 27,098. Alvin's claim to fame is Baseball Hall of Famer Nolan Ryan, who moved with his family to the city in 1947 as an infant and lived there until he moved to Round Rock in 2003. The Nolan Ryan Museum is in the Nolan Ryan Foundation and Exhibit Center on the campus of Alvin Community College. Alvin is also the home town of professional pitcher Nathan Eovaldi and professional football quarterback Joe Ferguson."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "alvin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4116,
+    "attempt": 4086,
+    "place_id": "gn-5323163",
+    "input": {
+      "place": {
+        "place_id": "gn-5323163",
+        "name": "Aliso Viejo",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.56504,
+        "lon": -117.72712
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aliso Viejo, California",
+          "url": "https://en.wikipedia.org/wiki/Aliso_Viejo,_California",
+          "text": "Aliso Viejo (uh-LEE-so vee-AY-ho; Spanish for \"old alder tree\") is a city in the San Joaquin Hills of southern Orange County, California. It had a population of 52,176 as of the 2020 census, up from 47,823 as of the 2010 census. It became Orange County's 34th city on July 1, 2001, the only city in Orange County to be incorporated since 2000. It is bordered by the cities of Laguna Beach on the west and southwest, Laguna Hills on the east, Laguna Niguel on the southeast, and Laguna Woods on the north. It is similarly named to another nearby city, Mission Viejo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "aliso viejo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "aliso",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "viejo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4117,
+    "attempt": 4087,
+    "place_id": "gn-5374322",
+    "input": {
+      "place": {
+        "place_id": "gn-5374322",
+        "name": "Montebello",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.00946,
+        "lon": -118.10535
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montebello, California",
+          "url": "https://en.wikipedia.org/wiki/Montebello,_California",
+          "text": "Montebello (Italian for \"Beautiful Mountain\") is a city in Los Angeles County, California, United States, located just east of East Los Angeles and southwest of San Gabriel Valley. It is 8 mi (13 km) east of downtown Los Angeles. It is considered part of the Gateway Cities and San Gabriel Valley Cities, and is a member of the Gateway Cities Council of Governments and the San Gabriel Valley Council of Governments.\nIn the early 20th century, Montebello was a well-known source for oil reserves. At the 2020 census, the population estimate was 63,833. The population estimate for July 1, 2024, was 60,617."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "montebello",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4118,
+    "attempt": 4088,
+    "place_id": "gn-5392567",
+    "input": {
+      "place": {
+        "place_id": "gn-5392567",
+        "name": "San Rafael",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.97353,
+        "lon": -122.53109
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Rafael, California",
+          "url": "https://en.wikipedia.org/wiki/San_Rafael,_California",
+          "text": "San Rafael ( SAN rə-FEL; Spanish for \"St. Raphael\", Spanish pronunciation: [san rafaˈel]) is a city in and the county seat of Marin County, California, United States. The city is located in the North Bay region of the San Francisco Bay Area. As of the 2020 census, San Rafael had a population of 61,271.\nSan Rafael was founded by the Spanish in 1817, when Vicente Francisco de Sarría established Mission San Rafael Arcángel, initially as an asistencia (sub-mission). San Rafael Arcángel was upgraded to full mission status in 1822, a month before Alta California declared independence from Spain as part of Mexico. Following the American Conquest of California, the community of San Rafael incorporated as a city in 1874."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "san rafael",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rafael",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4119,
+    "attempt": 4089,
+    "place_id": "gn-617026",
+    "input": {
+      "place": {
+        "place_id": "gn-617026",
+        "name": "Abovyan",
+        "country": "Armenia",
+        "subdivision": "Kotayk",
+        "lat": 40.2717,
+        "lon": 44.63342
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abovyan",
+          "url": "https://en.wikipedia.org/wiki/Abovyan",
+          "text": "Abovyan or Abovian (Armenian: Աբովյան [ɑbɔvˈjɑn]) is a town and urban municipal community in Armenia within the Kotayk Province. It is located 16 kilometres (10 miles) northeast of Yerevan and 32 kilometres (20 miles) southeast of the province centre Hrazdan. As of the 2022 census, the population of the town was 46,434.\nWith a motorway and railway running through the city connecting Yerevan with the areas of the northeast, Abovyan is considered a satellite city of the Armenian capital. Therefore, Abovyan is generally known as the \"northern gate of Yerevan\".\nAbovyan covers an area of around 11 square kilometres (4.2 square miles)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "abovyan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4120,
+    "attempt": 4090,
+    "place_id": "gn-650946",
+    "input": {
+      "place": {
+        "place_id": "gn-650946",
+        "name": "Kotka",
+        "country": "Finland",
+        "subdivision": "Kymenlaakso",
+        "lat": 60.4664,
+        "lon": 26.94582
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kotka",
+          "url": "https://en.wikipedia.org/wiki/Kotka",
+          "text": "Kotka (Finnish pronunciation: [ˈkotkɑ]; lit. 'eagle') is a town in Finland, located on the southeastern coast of the country at the mouth of the Kymi River. The population of Kotka is approximately 50,000, while the sub-region has a population of approximately 79,000. It is the 21st most populous municipality in Finland, and the 16th most populous urban area in the country.\nKotka is situated in the southern part of the Kymenlaakso province of Finland. Kotka is a major port and industrial city situated on the coast of the Gulf of Finland. Kotka is a culturally diverse city with a variety of schools. It was previously a part of the former Kymi parish. Kymi, Haapasaari island, and Karhula, which was once a separate market town, were later incorporated into Kotka. Kotka's neighboring municipalities are Hamina, Kouvola, and Pyhtää. Kotka is situated in the Kotka-Hamina subdivision and, along with Kouvola, is one of the main centres of the Kymenlaakso region.\nThe city centre of Kotka is located on an island in the sea called Kotkansaari (\"Island of Kotka\").  The main road in Kotka is the Finnish national road 7 (E18), which runs west through Porvoo to Helsinki, the capital of Finland, and extends east to St. Petersburg, Russia.  The Port of Kotka is a major Finnish seaport serving both Finnish and Russian foreign trade. The municipality is officially unilingually Finnish, with 87% being native Finnish speakers, 1% Swedish, and 10% speaking some other language."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "kotka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4121,
+    "attempt": 4091,
+    "place_id": "gn-8741024",
+    "input": {
+      "place": {
+        "place_id": "gn-8741024",
+        "name": "Sunabeda",
+        "country": "India",
+        "subdivision": "Odisha",
+        "lat": 18.7284,
+        "lon": 82.82932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunabeda",
+          "url": "https://en.wikipedia.org/wiki/Sunabeda",
+          "text": "Sunabeda is an industrial town and a municipality in the state of Odisha, India, located in the valleys of the Koraput region. The Engine division and Sukhoi division of the aircraft manufacturing company Hindustan Aeronautics Limited (HAL), a public sector undertaking (PSU) of Ministry of Defence, which manufactures the Saturn AL-31 engines for the Sukhoi Su-30MKI Flanker fighter jet fleet of the Indian Air Force, is in Sunabeda.\nOther major establishments of this town are Naval Armament Depot (NAD), State government offices, Sports Authority of India hostel, Central University of Orissa  (CUO) and Battalion headquarter of Commando Battalion for Resolute Action (CoBRA)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "sunabeda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4122,
+    "attempt": 4092,
+    "place_id": "gn-905846",
+    "input": {
+      "place": {
+        "place_id": "gn-905846",
+        "name": "Mpika",
+        "country": "Zambia",
+        "subdivision": "Muchinga",
+        "lat": -11.83431,
+        "lon": 31.45287
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mpika",
+          "url": "https://en.wikipedia.org/wiki/Mpika",
+          "text": "Mpika is a town in the Muchinga Province of Zambia, lying at the junction of the M1 road to Kasama and Mbala and the Tanzam Highway (Great North Road) to Dar es Salaam, Tanzania in the north-east and Lusaka in the south-west. It also has a railway station on the TAZARA Railway about 5 kilometres (3 mi) west of the town centre. Mpika is situated between the Muchinga Escarpment to the east and vast miombo plains to the west. The town has an estimated population of 40,000 inhabitants (2008), while the district population is 149,063 inhabitants as of the 2022 Zambian census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "mpika",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4123,
+    "attempt": 4093,
+    "place_id": "gn-909299",
+    "input": {
+      "place": {
+        "place_id": "gn-909299",
+        "name": "Lundazi",
+        "country": "Zambia",
+        "subdivision": "Eastern Province",
+        "lat": -12.29292,
+        "lon": 33.1782
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lundazi",
+          "url": "https://en.wikipedia.org/wiki/Lundazi",
+          "text": "Lundazi is a town in the Eastern Province of Zambia, lying near the border with Malawi, around 116 mi (187 km) north of Chipata. Lundazi is known as a \"Boma\" or administrative centre (boma derives from the Swahili word for a thorn fence, built to protect livestock or travelers' camps). It was a former colonial headquarters. Lundazi is the seat for Lundazi District. It is perched high above the eastern side of the Luangwa Valley, and close to a quiet border crossing (the Mqocha/Mtyocha Border) to Malawi.\n\nIt has an airstrip, schools and a hotel in the form of a Norman castle. The building of the castle was begun in 1948 by the Kenyan born District Commissioner Errol Lancelot Button (1913-1991), who reputedly sketched out its design on the back of a cigarette packet. The castle overlooked a swamp where the Lundazi and Msuzi Rivers met, which Button dammed using soil carried to the site in grass baskets. The dam now supplies Lundazi's water and used to be home to several hippos.\nThe town also has a district hospital, a post office, two banks, two filling stations, a market, and some small shops.\nLundazi's local political system is made up of 25 wards and 11 chiefdoms. Each ward is represented by an elected councillor and the 11 chiefdoms by two representative councillors in the Lundazi District Council.\n\nThe spoken language is Tumbuka. The main source of income is agriculture and trading. Most of the traders are Zambians of Asian origin. Lundazi has a popular name 'Box One Kanele' (apparently a corruption of 'Colonel')."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 263
+    },
+    "banned_terms": [
+      {
+        "term": "lundazi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4124,
+    "attempt": 4094,
+    "place_id": "gn-120954",
+    "input": {
+      "place": {
+        "place_id": "gn-120954",
+        "name": "Poldasht",
+        "country": "Iran",
+        "subdivision": "West Azerbaijan",
+        "lat": 39.348,
+        "lon": 45.071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Poldasht",
+          "url": "https://en.wikipedia.org/wiki/Poldasht",
+          "text": "Poldasht (Persian: پلدشت) is a city in the Central District of Poldasht County in Iran's West Azerbaijan province, serving as capital of both the county and the district. The city lies on the western bank of the Aras River. \nPoldasht is a Persian word meaning arable land by the bridge. The city is situated near the border crossing with the Nakhchivan Autonomous Republic of Azerbaijan. Across the Poldasht-Shah Takhti Bridge over the Aras is the Azerbaijani village of Şahtaxtı. It is one of the two Iran-Nakhchivan border crossings; the other is located near the city of Jolfa in East Azerbaijan province. Also adjacent to Poldasht is the Aras River Dam."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "poldasht",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4125,
+    "attempt": 4095,
+    "place_id": "gn-1256047",
+    "input": {
+      "place": {
+        "place_id": "gn-1256047",
+        "name": "Sirsi",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 14.62072,
+        "lon": 74.83554
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sirsi, Karnataka",
+          "url": "https://en.wikipedia.org/wiki/Sirsi,_Karnataka",
+          "text": "Sirsi or Shirasi is a city located in the Uttara Kannada district of Karnataka state in India. Administratively, Sirsi functions as the headquarters for the eponymous taluk, subdivision, and educational district. The Sirsi subdivision comprises four taluks: Sirsi, Siddapur, Yellapur, and Mundgod. The broader Sirsi Educational District encompasses these four, along with the taluks of Joida, Dandeli, and Haliyal.\nThe primary cash crop cultivated in the surrounding rural areas is the areca nut locally referred to as Adike (or supāri). Notably, the 'Sirsi Supari' variety of areca nut, grown in the Sirsi subdivision, has been accorded the Geographical Indication (GI) Tag.\nThe area is also renowned for its cultivation of various spices, including  cardamom, pepper, betel leaves, and vanilla. Rice constitutes the principal food crop grown here. The Spices Board of India lists the prices of black pepper from Sirsi and Kochi, making them the only two markets officially designated as primary price reference centers for the black pepper in India."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "sirsi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4126,
+    "attempt": 4096,
+    "place_id": "gn-1261086",
+    "input": {
+      "place": {
+        "place_id": "gn-1261086",
+        "name": "Obra",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 24.41863,
+        "lon": 82.98797
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Obra, Uttar Pradesh",
+          "url": "https://en.wikipedia.org/wiki/Obra,_Uttar_Pradesh",
+          "text": "Obra is a town, Tehsil, and Assembly constituency of the Indian state of Uttar Pradesh. It is located in the Sonebhadra district. It has been upgraded from the stature of Nagar Panchayat, and was previously a part of the Mirzapur District. Obra is located 137 km from Varanasi at the Banks of Renu & Sone River with population of  46,574 as per the 2011 India Census. State-owned UPRVUNL and UPJVUNL have a coal-fired thermal power plant and a hydroelectric power plant in Obra, respectively. The thermal and hydroelectric power industries are the major source of employment, either directly or indirectly . Obra is not very well connected by rail. The nearest railway station is Chopan, which is about 10 kilometers from Obra, and has connectivity to other major cities of India. Recreational places in Obra include Jawahar Bal Udayan (Children's Park), Ambedkar Stadium, Lord Shiva's temple, Sone river banks, and Parsoi and Kharatiya villages. Restructuring of government residential colony is ongoing (as of 2020) as new power plants are being constructed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "obra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4127,
+    "attempt": 4097,
+    "place_id": "gn-1269415",
+    "input": {
+      "place": {
+        "place_id": "gn-1269415",
+        "name": "Jalesar",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 27.47315,
+        "lon": 78.3031
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jalesar",
+          "url": "https://en.wikipedia.org/wiki/Jalesar",
+          "text": "Jalesar is a Nagar Palika in Etah Sub District, Etah district in the Indian state of Uttar Pradesh. There is a fort of Awagarh near Jalesar, Awagarh is 15 kilometres (9.3 mi) from Jalesar It is connected by road to other towns such as Hathras, Etah, Aligarh, Firozabad and Agra.\nJalesar is located on National Highway 321G approximately 48 km (30 mi) from Agra. There is road connectivity from Agra, Tundla, Awagarh, Etah, Kasganj, Soron, Ujhani, Badaun, and Bareily. Rail Connectivity exists from Jalesar to Tundla, Etah. Recently a new line also added to connect Jalesar through Rail Network to Agra."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "jalesar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4128,
+    "attempt": 4098,
+    "place_id": "gn-12958682",
+    "input": {
+      "place": {
+        "place_id": "gn-12958682",
+        "name": "Bom Jardim",
+        "country": "Brazil",
+        "subdivision": "Maranhão",
+        "lat": -3.54281,
+        "lon": -45.60852
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bom Jardim, Maranhão",
+          "url": "https://en.wikipedia.org/wiki/Bom_Jardim,_Maranhão",
+          "text": "Bom Jardim is a municipality in the state of Maranhão in the Northeast region of Brazil. The population is 41,822. The former mayor of Bom Jardim, Lidiane Leite, was arrested for the embezzlement of US$4 million from the municipality.\nThe municipality contains a small part of the Baixada Maranhense Environmental Protection Area, a 1,775,035.6 hectares (4,386,208 acres) sustainable use conservation unit created in 1991 that has been a Ramsar Site since 2000.\nThe municipality also contains part of the 271,197-hectare (670,140-acre) Gurupi Biological Reserve, a full protected conservation unit created in 1988. The average annual rainfall is 2,169 millimetres (85.4 in).\nTemperatures range from 22 to 32 °C (72 to 90 °F) with an average of 27 °C (81 °F)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "bom jardim",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bom",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jardim",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4129,
+    "attempt": 4099,
+    "place_id": "gn-146617",
+    "input": {
+      "place": {
+        "place_id": "gn-146617",
+        "name": "Famagusta",
+        "country": "Cyprus",
+        "subdivision": "Ammochostos",
+        "lat": 35.12489,
+        "lon": 33.94135
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Famagusta",
+          "url": "https://en.wikipedia.org/wiki/Famagusta",
+          "text": "Famagusta (Greek: Αμμόχωστος; Turkish: Gazimağusa), also known by several other names, is a city located in the Famagusta District on the eastern coast of the island of Cyprus. The district is mostly controlled by Northern Cyprus but some remains in the Republic of Cyprus. It is located east of the capital, Nicosia, and possesses the island's deepest harbour. During the Middle Ages (especially under the maritime republics of Genoa and Venice), Famagusta was the island's most important port city and a gateway to trade with the ports of the Levant, from where Silk Road merchants carried their goods to Western Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "famagusta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4130,
+    "attempt": 4100,
+    "place_id": "gn-2234794",
+    "input": {
+      "place": {
+        "place_id": "gn-2234794",
+        "name": "Banyo",
+        "country": "Cameroon",
+        "subdivision": "Adamaoua",
+        "lat": 6.75,
+        "lon": 11.81667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banyo, Cameroon",
+          "url": "https://en.wikipedia.org/wiki/Banyo,_Cameroon",
+          "text": "Banyo (Fula: Banyo 𞤦𞤢𞤲𞤴𞤮) is a town and commune in Adamawa Province, Cameroon. It is located at around 6.78°N 11.82°E﻿ / 6.78; 11.82, and is predominantly Muslim. Though a government prefect serves in the town, the lamido still holds great sway among the population. The current lamido, S. E. Mohaman Gabdo Yahya, has written his own history (2009). The geographer Jean Hurault has published on the demography of the area, and summarized some of the history in his 1955 work (see references below). In the nineteenth century, Banyo separated from Koncha and Tibati (see Adama, H. & T. M. Bah 2001)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "banyo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

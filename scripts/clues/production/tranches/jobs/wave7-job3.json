@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 6385,
+    "place_id": "gn-4945848",
+    "input": {
+      "place": {
+        "place_id": "gn-4945848",
+        "name": "Northbridge",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.15148,
+        "lon": -71.64951
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Northbridge, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Northbridge,_Massachusetts",
+          "text": "Northbridge is a town in Worcester County, Massachusetts, United States. The population was 16,335 at the 2020 census.  The Northbridge Town Hall is located at 7 Main Street in Whitinsville. The town is now a part of the Blackstone River Valley National Heritage Corridor, of the National Park Service. Northbridge claims to history include: Native American Nipmuc lands, Colonel John Spring, who led the Uxbridge militia training company in the American Revolution, Samuel Spring, Revolutionary War Chaplain, the Residence of Ezra T. Benson 1830–1832, the birthplace of President Millard Fillmore's mother, Phoebe, and home to the Whitin Machine Works from 1831 to 1964.\nFor geographic and demographic information on the village of Whitinsville, please see the article Whitinsville, Massachusetts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "northbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6387,
+    "place_id": "gn-5137622",
+    "input": {
+      "place": {
+        "place_id": "gn-5137622",
+        "name": "Seneca Falls",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.91062,
+        "lon": -76.79662
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seneca Falls, New York",
+          "url": "https://en.wikipedia.org/wiki/Seneca_Falls,_New_York",
+          "text": "Seneca Falls is a town in Seneca County, New York, United States. The population was 9,027 at the 2020 census.\nThe Town of Seneca Falls contains the former village also called Seneca Falls. The town is east of Geneva, New York, in the northern part of the Finger Lakes District.\nSeneca Falls is a historic location along a branch of the Erie Canal and is often association with women's rights in the United States due to the 1848 Seneca Falls convention, which produced the Declaration of Rights and Sentiments. This event was looked back upon by women's rights activists in the later 19th and early 20th centuries as a \"birth\" or \"beginning\" of women's rights in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "seneca falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "seneca",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6388,
+    "place_id": "gn-5190311",
+    "input": {
+      "place": {
+        "place_id": "gn-5190311",
+        "name": "Frankford",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.01384,
+        "lon": -75.07859
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Frankford, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Frankford,_Philadelphia",
+          "text": "Frankford is a neighborhood in the Northeast section of Philadelphia situated about six miles (10 km) northeast of Center City. Although its borders are vaguely defined, the neighborhood is bounded roughly by the original course of Frankford Creek on the south to Castor Ave and Roosevelt boulevard on the northwest and southwest, to Cheltenham Avenue on the north, and to Aramingo Avenue and I-95 on the east. Adjacent neighborhoods are Bridesburg, Juniata, Northwood, Summerdale, and Wissinoming.\nHistorically, Frankford had an unofficial division separating Frankford (proper) from East Frankford, which encompassed the area east of Frankford Avenue. The division divided the community first along racial lines, with African Americans to the east of Frankford Avenue and Caucasians to the west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "frankford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6389,
+    "place_id": "gn-5347742",
+    "input": {
+      "place": {
+        "place_id": "gn-5347742",
+        "name": "Farmersville",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 36.29773,
+        "lon": -119.20678
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Farmersville, California",
+          "url": "https://en.wikipedia.org/wiki/Farmersville,_California",
+          "text": "Farmersville is a city in Tulare County, California, United States. It is situated in the San Joaquin Valley near the foothills of the Sierra Nevada, just east of Visalia, California. The population was 10,397 at the 2020 census, down from 10,588 at the 2010 census.\nThe city hosts a number of annual events, including a Memorial Day Parade in May that draws around 4,000 visitors from the surrounding area, a Fall Festival held on the downtown boulevard each October, and a Christmas Tree Lighting event in December at the Old Methodist Church building. A little history on the Memorial Day Parade. It originated in 1954 after the completion of the Veteran's Memorial Building on E Front and N Magnolia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "farmersville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6404,
+    "place_id": "gn-2268563",
+    "input": {
+      "place": {
+        "place_id": "gn-2268563",
+        "name": "Ericeira",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.96275,
+        "lon": -9.41563
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ericeira",
+          "url": "https://en.wikipedia.org/wiki/Ericeira",
+          "text": "Ericeira (Portuguese pronunciation: [eɾiˈsɐjɾɐ]) is a civil parish and seaside community on the western coast of Portugal (in Mafra municipality, located 35km northwest of the center of Lisbon, about 45km by road) considered the surfing capital of Europe. It is also one of only two European spots among the World Surfing Reserves because of its exceptional coastline conditions. Ericeira's population in 2011 was estimated in 10,260, covering an area of 12 km2.\nEriceira was a popular summer retreat for many of Lisbon's families in the 1940s and 1950s. Today, it is a popular destination for local and visiting tourists, as well as surfers from around the world (owing to the forty beaches with good conditions in the area)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "ericeira",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6414,
+    "place_id": "gn-2704613",
+    "input": {
+      "place": {
+        "place_id": "gn-2704613",
+        "name": "Hudiksvall",
+        "country": "Sweden",
+        "subdivision": "Gävleborg",
+        "lat": 61.72744,
+        "lon": 17.10558
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hudiksvall",
+          "url": "https://en.wikipedia.org/wiki/Hudiksvall",
+          "text": "Hudiksvall (Swedish pronunciation: [hɵdɪksˈvalː]) is a city and the seat of Hudiksvall Municipality, in Hälsingland, Gävleborg County, Sweden with 16,792 inhabitants as of 2024. Hudiksvall is also known as Glada Hudik (English: Happy Hudik), a term that originated in the 19th century as word spread of its friendly hospitality and its lively social life. The city is located along the E4, on the east coast of Sweden deep inside the bay Hudiksvallsfjärden, about 80 km south of Sundsvall and about 130 km north of Gävle. Hudiksvall is one of Sweden's 80 largest urban area and also the largest urban area in Hälsingland. Around Hudiksvall within the municipality lay the communities of Delsbo, Iggesund, Enånger,  Njutånger, Näsviken and Sörforsa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "hudiksvall",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6416,
+    "place_id": "gn-2953460",
+    "input": {
+      "place": {
+        "place_id": "gn-2953460",
+        "name": "Bad Feilnbach",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.77331,
+        "lon": 12.00973
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Feilnbach",
+          "url": "https://en.wikipedia.org/wiki/Bad_Feilnbach",
+          "text": "Bad Feilnbach (German pronunciation: [baːt ˈfaɪlnbax]) is a municipality in the Upper Bavarian district of Rosenheim at the foot of the Wendelstein in Germany. As a famous 'Moorheilbad' (moor healing spa) the municipality was awarded in 1973 the title \"Bad\". Since the 19th century the peat deposits were the basis for a continued expansion of the spa and health facilities. The recognized healing success of \"black gold\" on a variety of diseases were the basis for the development of a well-known spa and tourist community. Due to its wooded surroundings and the mild climate Feilnbach is called the \"Bavarian Meran\". The entire municipality is recognized as a healing spa resort except for parts of the former municipality Dettendorf."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "bad feilnbach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "feilnbach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6424,
+    "place_id": "gn-3925590",
+    "input": {
+      "place": {
+        "place_id": "gn-3925590",
+        "name": "Yauri",
+        "country": "Peru",
+        "subdivision": "Cuzco Department",
+        "lat": -14.79083,
+        "lon": -71.40986
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yauri, Peru",
+          "url": "https://en.wikipedia.org/wiki/Yauri,_Peru",
+          "text": "Yauri, or Espinar, is a town in southern Peru, the capital of Espinar Province in the Cusco Region. It is a city located at an elevation of 3,976 metres above sea level,; its district had a population of 41,587 in the 2025 national census. Average temperatures in the province range between 7.2 and 8.6 °C, and snowfall in the town is occasional.\nNearby is the archaeological site Taqrachullo (also known as “María Fortaleza”), which dates to pre-Inca and Inca periods and has been designated as part of the Cultural Heritage of the Nation. The town serves as an access point to the surrounding areas of the Cusco Department, offering a base for exploring the region’s history and culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "yauri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6426,
+    "place_id": "gn-4371334",
+    "input": {
+      "place": {
+        "place_id": "gn-4371334",
+        "name": "Thurmont",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.62371,
+        "lon": -77.41082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thurmont, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Thurmont,_Maryland",
+          "text": "Thurmont is a town in Frederick County, Maryland, United States. The population was 6,935 at the 2020 census. The town is located in the northern part of Frederick County (north of Frederick, the county seat), approximately ten miles from the Pennsylvania border, along U.S. Highway 15. It is very close to Cunningham Falls State Park and Catoctin Mountain Park, the latter of which contains the presidential retreat of Camp David. Thurmont is also home to Catoctin Colorfest, an arts and crafts festival that draws in about 125,000 people each autumn.\nIn 2005, Thurmont was designated as a Maryland Main Street Community, and in that year was designated a National Main Street under the National Trust for Historic Preservation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "thurmont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6430,
+    "place_id": "gn-5143443",
+    "input": {
+      "place": {
+        "place_id": "gn-5143443",
+        "name": "Wawarsing",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.75898,
+        "lon": -74.35738
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wawarsing, New York",
+          "url": "https://en.wikipedia.org/wiki/Wawarsing,_New_York",
+          "text": "Wawarsing  is a town in Ulster County, New York, United States. The population was 12,771 at the 2020 census. The name Wawarsing was once believed to mean \"a place where the streams wind\" in the Lenape language, referring to the geography in the hamlet of Wawarsing; specifically, the joining of the Ver Nooy Kill and the Rondout Creek at Port Ben. The name Wawarsing was used by the Lenape to designate the current hamlet and the fields to the north and south of it for at least six miles in both directions. It is the only Lenape name known to refer to an exact location in Ulster County.\nThe town is in the western part of the county."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "wawarsing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6431,
+    "place_id": "gn-5223505",
+    "input": {
+      "place": {
+        "place_id": "gn-5223505",
+        "name": "Narragansett",
+        "country": "United States",
+        "subdivision": "Rhode Island",
+        "lat": 41.4501,
+        "lon": -71.4495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Narragansett, Rhode Island",
+          "url": "https://en.wikipedia.org/wiki/Narragansett,_Rhode_Island",
+          "text": "Narragansett is a town in Washington County, Rhode Island, United States. The population was 14,532 at the 2020 census. However, during the summer months the town's population more than doubles to near 34,000. The town of Narragansett occupies a narrow strip of land running along the eastern bank of the Pettaquamscutt River (aka Narrow River) to the shore of Narragansett Bay on the Atlantic Ocean. It was separated from South Kingstown in 1888 and incorporated as a town in 1901. With several ocean beaches and a walkable strip along the ocean front, Narragansett is a resort area in the summer season as well as a popular East Coast surfing spot due to frequent southerly swells from Atlantic Ocean."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "narragansett",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6433,
+    "place_id": "gn-6111529",
+    "input": {
+      "place": {
+        "place_id": "gn-6111529",
+        "name": "Portage la Prairie",
+        "country": "Canada",
+        "subdivision": "Manitoba",
+        "lat": 49.97282,
+        "lon": -98.29263
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Portage la Prairie",
+          "url": "https://en.wikipedia.org/wiki/Portage_la_Prairie",
+          "text": "Portage la Prairie () is a small city in the Central Plains Region of Manitoba, Canada. In 2016, the population was 13,304 and the land area was 24.68 square kilometres (9.53 sq mi).\nPortage la Prairie is approximately 75 kilometres (47 mi) west of Winnipeg, alongside the Trans-Canada Highway (exactly halfway between the provincial boundaries of Saskatchewan and Ontario). It sits on the Assiniboine River, which flooded the town persistently until a diversion channel north to Lake Manitoba (the Portage Diversion) was built to divert the flood waters. The city is surrounded by the Rural Municipality of Portage la Prairie.\nAccording to Environment Canada, Portage la Prairie has the most sunny days during the warm months in Canada."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "portage la prairie",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "portage",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "prairie",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6445,
+    "place_id": "gn-2162255",
+    "input": {
+      "place": {
+        "place_id": "gn-2162255",
+        "name": "Jindabyne",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -36.41745,
+        "lon": 148.62254
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jindabyne",
+          "url": "https://en.wikipedia.org/wiki/Jindabyne",
+          "text": "Jindabyne () is a town in south-east New South Wales, Australia that overlooks Lake Jindabyne near the Snowy Mountains, in Snowy Monaro Regional Council. It is a popular holiday destination year round, especially in winter. This is due to its proximity to major ski resort developments within the Kosciuszko National Park, including Thredbo, Perisher and Charlotte Pass.\nOriginally situated on land that is now under Lake Jindabyne, the township was transferred to its present location in the 1960s due to the construction of Jindabyne Dam, on the Snowy River, as part of the Snowy Mountains Scheme. At the 2021 census, Jindabyne had a population of 2,986. The town's name is derived from an Aboriginal word meaning \"valley\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "jindabyne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6447,
+    "place_id": "gn-2327521",
+    "input": {
+      "place": {
+        "place_id": "gn-2327521",
+        "name": "Oguta",
+        "country": "Nigeria",
+        "subdivision": "Imo State",
+        "lat": 5.71044,
+        "lon": 6.80936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oguta",
+          "url": "https://en.wikipedia.org/wiki/Oguta",
+          "text": "Oguta is a town and Local government area in Imo State. The town is located on the eastern bank of Oguta Lake in southeastern Nigeria.\nOguta is called \"Oguta-Ameshi\" or \"Ameshi\"- by its aborigines. Indigenes - consists of two parts, the old part which holds the 27 villages of Oguta, and the new part, called the \"Oguta New Layout\".\nOguta New Layout, as a rule, is strict compliance with its original master plan. Oguta Town by location is embedded between Oguta Lake on the eastern side, and Obana River that joined Okposha River, on the western side, leaving only the Egwe Gateway as the only dry land route into Oguta without passing through water or a bridge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "oguta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6454,
+    "place_id": "gn-2638138",
+    "input": {
+      "place": {
+        "place_id": "gn-2638138",
+        "name": "Shanklin",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.62613,
+        "lon": -1.1785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shanklin",
+          "url": "https://en.wikipedia.org/wiki/Shanklin",
+          "text": "Shanklin () is a seaside resort town and civil parish on the Isle of Wight, England, located on Sandown Bay. Shanklin is the southernmost of three settlements which occupy the bay, and is close to Lake and Sandown. The sandy beach, its Old Village and a wooded ravine, Shanklin Chine, are its main attractions. The esplanade along the beach is occupied by hotels and restaurants for the most part, and is one of the most tourist-oriented parts of the town. The other is the Old Village, at the top of Shanklin Chine.\nTogether with Lake and Sandown to the north, Shanklin forms a built up area of around 25,000 inhabitants, Shanklin alone contributing around 9,123 of this."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "shanklin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6467,
+    "place_id": "gn-3129661",
+    "input": {
+      "place": {
+        "place_id": "gn-3129661",
+        "name": "Arenys de Mar",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.5819,
+        "lon": 2.54936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arenys de Mar",
+          "url": "https://en.wikipedia.org/wiki/Arenys_de_Mar",
+          "text": "Arenys de Mar (Catalan: [əˈɾɛɲz ðə ˈmaɾ], locally [əˈɾɛɲʒ ðə ˈmaɾ]; arenys being Catalan for \"sands (of a seasonal creek)\", and de mar for \"by the sea\" as opposed to Arenys de Munt, \"sands up hill\") is one of the main municipalities of the comarca of Maresme, Barcelona Province, Catalonia, Spain. It is situated on the coast between Caldes d'Estrac and Canet de Mar, about 40 kilometres (25 miles) northeast of Barcelona. As of 2022, it had a population of 16,155.\nArenys' harbour was  for many years the only existing port on the north coast of Barcelona. The beaches, framed by hills which run right down to the sea, give a view of the neighbouring Costa Brava."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "arenys de mar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "arenys",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6471,
+    "place_id": "gn-3460599",
+    "input": {
+      "place": {
+        "place_id": "gn-3460599",
+        "name": "Itatiaiuçu",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -20.19667,
+        "lon": -44.42111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itatiaiuçu",
+          "url": "https://en.wikipedia.org/wiki/Itatiaiuçu",
+          "text": "Itatiaiuçu is a municipality in the state of Minas Gerais in the Southeast region of Brazil.\nNestled amidst the Ridge Mountains, on the slopes of the Sierra Itatiaiuçu in Metal Zone, the municipality with 267 square kilometers, whose main economic activity is the mining of iron. It is also great horticultural producer and also has beef and dairy cattle. In a temperate climate tending to the cold, the host city is 890 meters above sea level and is 70 kilometers from Belo Horizonte, located along the BR-381 (Fernão Dias Highway) connecting the Minas Gerais state to the state of São Paulo.\nThe municipality is divided into eight villages and two districts: Santa Terezinha de Minas and Pinheiros."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "itatiaiucu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6477,
+    "place_id": "gn-4439506",
+    "input": {
+      "place": {
+        "place_id": "gn-4439506",
+        "name": "Ocean Springs",
+        "country": "United States",
+        "subdivision": "Mississippi",
+        "lat": 30.41131,
+        "lon": -88.82781
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocean Springs, Mississippi",
+          "url": "https://en.wikipedia.org/wiki/Ocean_Springs,_Mississippi",
+          "text": "Ocean Springs is a city in Jackson County, Mississippi, United States, approximately 2 miles (3.2 km) east of Biloxi and west of Gautier. It is part of the Pascagoula metropolitan area. The population was 18,429 at the 2020 U.S. Census, down from 18,434 in 2010.\nThe town has a reputation as an arts community and is a popular tourist destination. The town was voted as a top 10 Happiest Seaside Town by Coastal Living in 2015 and was also voted as a top 10 Best Coastal Small Town by USA Today in 2022. Its historic and secluded down town area, with streets lined by live oak trees, is home to several art galleries, shops, restaurants, and bars."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "ocean springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocean",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6478,
+    "place_id": "gn-4493990",
+    "input": {
+      "place": {
+        "place_id": "gn-4493990",
+        "name": "Summerfield",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 36.20875,
+        "lon": -79.90476
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Summerfield, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Summerfield,_North_Carolina",
+          "text": "Summerfield is a town in Guilford County, North Carolina. As of the 2020 census, the population was 10,951.\nThe town is largely regarded as a suburb of Greensboro and as development has grown, the town has slowly transformed from a rural farming area into a bedroom community primarily from Northern transplants. It features a town hall, along Oak Ridge Road (aka NC 150), west of Battleground Avenue (aka US 220), as well as a shopping center east of Battleground Avenue and Auburn Road, located on the eastern portion of NC 150. Interstate 73 passes just west of the town's center, connecting with NC 150, and also connecting with US 158 in the northernmost part of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "summerfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6487,
+    "place_id": "gn-5221341",
+    "input": {
+      "place": {
+        "place_id": "gn-5221341",
+        "name": "Central Falls",
+        "country": "United States",
+        "subdivision": "Rhode Island",
+        "lat": 41.89066,
+        "lon": -71.39228
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Central Falls, Rhode Island",
+          "url": "https://en.wikipedia.org/wiki/Central_Falls,_Rhode_Island",
+          "text": "Central Falls is a city in Providence County, Rhode Island, United States. The population was 22,583 at the 2020 census. With an area of only 1.29 square miles (3.3 km2), it is the smallest and most densely populated city in the smallest state, and the 23rd most densely populated incorporated place in the United States.\nIt is one of only four incorporated places in New England that have a higher population density than the city of Boston, ranking second, behind the Massachusetts city of Somerville, an inner suburb of Boston. The city takes its name from a waterfall on the Blackstone River.\nCentral Falls went into receivership in May 2010, then filed for bankruptcy in August 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "central falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "central",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

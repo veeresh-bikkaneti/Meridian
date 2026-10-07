@@ -1,0 +1,837 @@
+[
+  {
+    "rank": 6769,
+    "attempt": 6721,
+    "place_id": "gn-2652204",
+    "input": {
+      "place": {
+        "place_id": "gn-2652204",
+        "name": "Cowes",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.76252,
+        "lon": -1.29781
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cowes",
+          "url": "https://en.wikipedia.org/wiki/Cowes",
+          "text": "Cowes () is an English seaport town and civil parish on the Isle of Wight, England. Cowes is located on the west bank of the estuary of the River Medina, facing the smaller town of East Cowes on the east bank. The two towns are linked by the Cowes Floating Bridge, a chain ferry.\nCowes has a population of 14,370 according to the 2021 Census.\nCharles Godfrey Leland's 19th-century verses describe the towns poetically as \"The two great Cowes that in loud thunder roar/This on the eastern, that the western shore\".\nCowes has been seen as a home for international yacht racing since the founding of the Royal Yacht Squadron in 1815. It gives its name to one of the world's oldest regular regatta, Cowes Week, which occurs annually in the first week of August. Later, powerboat races are held.\nMuch of the town's architecture is still heavily influenced by the style of ornate building that Prince Albert popularised."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "cowes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6770,
+    "attempt": 6722,
+    "place_id": "gn-2702908",
+    "input": {
+      "place": {
+        "place_id": "gn-2702908",
+        "name": "Jordbro",
+        "country": "Sweden",
+        "subdivision": "Stockholm",
+        "lat": 59.14972,
+        "lon": 18.11667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jordbro",
+          "url": "https://en.wikipedia.org/wiki/Jordbro",
+          "text": "Jordbro is a suburban locality situated in Haninge Municipality, Stockholm County, Sweden, with 10,291 inhabitants in 2010.\nThe suburb is separated in two parts by the Stockholm commuter rail. Route 73 (Nynäsvägen), passes just east of Jordbro and connects Stockholm and Nynäshamn.\nEast of the railway lies a housing area built as part of the Million Programme, in the 1960s and 1970s. The housing area is made up of blocks of flats, with single family homes to the north and to the south.\nTo the west of the housing area and the railway lies a relatively large industrial area, containing the main offices and production plant of The Coca-Cola Company in Sweden. Dagab, Lagena, Osram and Åhlens also have distribution warehouses in the industrial area.\nJust to the south, between Jordbro and Västerhaninge is Jordbro Grave Field, a burial ground, thought to have been used somewhere between 500 BC and 500 CE.\nJordbro has three schools, Kvarnbäcksskolan, Höglundaskolan and Fredsduvan, which are lower primary schools with preschools.\nStarting in 1973, filmmaker Rainer Hartleb has made a series of documentaries focusing on the lives of a number of Jordbro residents, collectively known as the Jordbro suite.\nThose with a foreign background made up 40.4% in 1997, rising to 59.1% in 2008."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "jordbro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6771,
+    "attempt": 6723,
+    "place_id": "gn-2744174",
+    "input": {
+      "place": {
+        "place_id": "gn-2744174",
+        "name": "Wormer",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.495,
+        "lon": 4.80556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wormer",
+          "url": "https://en.wikipedia.org/wiki/Wormer",
+          "text": "Wormer is a town in the Dutch province of North Holland. It is a part of the municipality of Wormerland, and lies about 13 km northwest of Amsterdam.\nThe town is situated in the Zaan district, on the eastern side of the river Zaan, across from Wormerveer. The town is surrounded by the nature area Wormer- en Jisperveld.\nThe village of Oostknollendam, the polder Schaalsmeer (reclaimed in 1631), the polder Enge Wormer (reclaimed in 1634) and a part of the Markerpolder also historically belong to the area of Wormer.\nWormer, together with Engewormer (Wormer c.a.), was a separate municipality until 1991, when it became a part of the new municipality of Wormerland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "wormer",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6772,
+    "attempt": 6724,
+    "place_id": "gn-2775020",
+    "input": {
+      "place": {
+        "place_id": "gn-2775020",
+        "name": "Judenburg",
+        "country": "Austria",
+        "subdivision": "Styria",
+        "lat": 47.16667,
+        "lon": 14.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Judenburg",
+          "url": "https://en.wikipedia.org/wiki/Judenburg",
+          "text": "Judenburg (German: [juːdn̩.buɐ̯k, juːdn̩.buʁk]; Bavarian: Judnbuag) is a historic town and municipality in Styria, Austria. It is located in Upper Styria in the Murtal region, on the Mur river and near the Aichfeld basin. The town is the administrative centre of the Murtal District, which was formed on 1 January 2012 through the merger of the former Judenburg District and Knittelfeld District. Until 31 December 2011, Judenburg was the capital of Judenburg District.\n\nAs of 1 January 2025, Judenburg had 9,623 residents with a main residence in the municipality, or 9,908 including secondary residences. The municipality covers 63.77 km2 (24.62 sq mi) and lies at an elevation of 737 m (2,418 ft). Its localities include Murdorf, Strettweg, Oberweg and Reifling. On 1 January 2015, the adjoining municipalities of Oberweg and Reifling were merged into Judenburg as part of the Styrian municipal structural reform.\nThe area around Judenburg was settled long before the medieval town developed. Archaeological evidence from the nearby Falkenberg shows iron mining and smelting activity during the early Iron Age, and the wider area is associated with important Hallstatt-period finds. In the Middle Ages, Judenburg grew into a significant trading and administrative centre in the southeastern Alpine region. Its name reflects the historical presence of Jewish merchants and residents; the earliest documentary reference to Jews in Judenburg dates from 1290. Judenburg does not have any Jewish residents currently, with the last Jews of the town ousted by the Nazis in 1938.\nJudenburg reached its greatest economic importance in the late Middle Ages, when it held commercial privileges and served as a centre of trade and administration for large parts of Upper Styria. The Stadtturm, built around 1500, is the town’s best-known landmark and a symbol of its former prosperity. Since 2006, the tower has housed a planetarium.\nToday, Judenburg functions as a regional administrative, educational, commercial and service centre for the western part of the Murtal. Its old town preserves several historic buildings, including burgher houses around the main square, churches and remnants of the town’s medieval urban structure."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 341
+    },
+    "banned_terms": [
+      {
+        "term": "judenburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6773,
+    "attempt": 6725,
+    "place_id": "gn-2890202",
+    "input": {
+      "place": {
+        "place_id": "gn-2890202",
+        "name": "Kissing",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 48.30375,
+        "lon": 10.97088
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kissing, Bavaria",
+          "url": "https://en.wikipedia.org/wiki/Kissing,_Bavaria",
+          "text": "Kissing (German pronunciation: [ˈkɪsɪŋ]) is a municipality in the Aichach-Friedberg district, in Bavaria, Germany. It is located just 10 km (6.2 mi) south of Augsburg and has about 11,200 inhabitants (2007).\nKissing was first mentioned in a document in 1050 AD as Chissingin, it was a minor regional centre of rule and jurisdiction called a Hofmark. In even earlier times, around 500, there was a thing hill nearby, which was later swept away by the floods of the river Lech.\nThe surname Kissinger (as in Henry Kissinger) means inhabitant of Kissing or Kissingen. The English meaning of the village's name has resulted in its being the butt of jokes in popular media. For instance, The Grand Tour featured the village in the 2017 episode \"[censored] to [censored]\", as part of a road trip from Wank via Kissing, Petting, and Fucking to Wedding."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "kissing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6774,
+    "attempt": 6726,
+    "place_id": "gn-2931521",
+    "input": {
+      "place": {
+        "place_id": "gn-2931521",
+        "name": "Eisenberg",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.9686,
+        "lon": 11.90207
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eisenberg, Thuringia",
+          "url": "https://en.wikipedia.org/wiki/Eisenberg,_Thuringia",
+          "text": "Eisenberg (German pronunciation: [ˈaɪzn̩bɛʁk]) is a town in Thuringia, Germany. It is the capital of the district Saale-Holzland.\nNeighboring municipalities are Jena (25 kilometres (16 miles) in west) and Gera (15 kilometres (9 miles) in south east). West of Eisenberg runs the motorway A 9 from Berlin to Munich. A tradition in Eisenberg on Christmas Eve is that the people of the city meet at the market place by 6 to listen to live Christmas music from the tower of the city hall - played by the brass choir of the Lutheran parish.\nThe main attraction of the town is the baroque Castle Church, built in 1692 by Christian, Duke of Saxe-Eisenberg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "eisenberg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6775,
+    "attempt": 6727,
+    "place_id": "gn-2960143",
+    "input": {
+      "place": {
+        "place_id": "gn-2960143",
+        "name": "Rodange",
+        "country": "Luxembourg",
+        "subdivision": "Esch-sur-Alzette",
+        "lat": 49.54639,
+        "lon": 5.84083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rodange",
+          "url": "https://en.wikipedia.org/wiki/Rodange",
+          "text": "Rodange (French pronunciation: [ʁɔdɑ̃ʒ]; German: Rodingen) (Luxembourgish: Réiden op der Kor, Réidéng) is a town in the commune of Pétange, in south-western Luxembourg.  It lies next to the border with Belgium, across which is the town of Athus.  The town is to the south-west of the town of Pétange and to the west of the smaller town of Lamadelaine.  As of 2025, Rodange has a population of 7,878.\nThe town has a railway station served by CFL trains.  Rodange is situated on Line 70, which connects the south-west of the country to Luxembourg City; at Rodange, the line branches, and connects to both Athus and the French town of Longuyon (via Longwy)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "rodange",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6776,
+    "attempt": 6728,
+    "place_id": "gn-2965260",
+    "input": {
+      "place": {
+        "place_id": "gn-2965260",
+        "name": "Cobh",
+        "country": "Ireland",
+        "subdivision": "Munster",
+        "lat": 51.85046,
+        "lon": -8.2948
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cobh",
+          "url": "https://en.wikipedia.org/wiki/Cobh",
+          "text": "Cobh ( KOHV, Irish: An Cóbh), known from 1849 until 1920 as Queenstown, is a seaport town on the south coast of County Cork, Ireland. With a population of 14,148 inhabitants at the 2022 census, Cobh is on the south side of Great Island in Cork Harbour and home to Ireland's only dedicated cruise terminal. Tourism in the area draws on the maritime and emigration legacy of the town.\nFacing the town are Spike and Haulbowline islands. On a high point in the town stands St Colman's, the cathedral church of the Roman Catholic Diocese of Cloyne. It is one of the tallest buildings in Ireland, standing at 91.4 metres (300 ft)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "cobh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6777,
+    "attempt": 6729,
+    "place_id": "gn-2980933",
+    "input": {
+      "place": {
+        "place_id": "gn-2980933",
+        "name": "Saint-Cyr-sur-Mer",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.18048,
+        "lon": 5.7012
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Cyr-sur-Mer",
+          "url": "https://en.wikipedia.org/wiki/Saint-Cyr-sur-Mer",
+          "text": "Saint-Cyr-sur-Mer (French pronunciation: [sɛ̃ siʁ syʁ mɛʁ], lit. \"Saint-Cyr-on-Sea\"; Provençal Occitan: Sant Ceri) is a commune in the Var department in the Provence-Alpes-Côte d'Azur region in Southeastern France. It is located on the Mediterranean coast, on the departmental border with Bouches-du-Rhône.\nSaint-Cyr-sur-Mer neighbours the communes of La Ciotat to the west, Bandol to the east and La Cadière-d'Azur to the north. In addition to the urban centre of Saint-Cyr itself, the commune includes the communities of Les Lecques, a port and beach resort, as well as La Madrague, a small port. The town square of Saint-Cyr contains a replica of the Statue of Liberty donated by Frédéric Bartholdi, sculptor of the original."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "saint cyr sur mer",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cyr",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mer",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6778,
+    "attempt": 6730,
+    "place_id": "gn-2993207",
+    "input": {
+      "place": {
+        "place_id": "gn-2993207",
+        "name": "Mons-en-Barœul",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 50.63333,
+        "lon": 3.11667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mons-en-Barœul",
+          "url": "https://en.wikipedia.org/wiki/Mons-en-Barœul",
+          "text": "Mons-en-Barœul (French pronunciation: [mɔ̃s ɑ̃ baʁœl]) is a commune in the Nord department in northern France.\nIt is a suburb of the city of Lille, and is adjacent to it on the northeast. The name Mons-en-Barœul means mount in the Barœul, the city is built on a slight hill; the Barœul was a former territory (see also Marcq-en-Barœul). Before the sixteenth century, little is known of this county, which was only rural. Plans of the eighteenth century show Mons-en-Barœul as a small village without a church, with farms scattered along the high road from Lille to Roubaix. It is a former dependency of Fives, a district which is now part of Lille."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "mons en bar ul",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mons",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "en",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "bar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ul",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6779,
+    "attempt": 6731,
+    "place_id": "gn-3166753",
+    "input": {
+      "place": {
+        "place_id": "gn-3166753",
+        "name": "Senago",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.57562,
+        "lon": 9.1262
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Senago",
+          "url": "https://en.wikipedia.org/wiki/Senago",
+          "text": "Senago (Lombard: Senagh [seˈnaːk]) is a comune (municipality) in the Metropolitan City of Milan in the Italian region Lombardy, located about 13 kilometres (8 mi) north of Milan. As of 30 November 2017, it had a population of 21,519 and an area of 8.6 square kilometres (3.3 mi2).\nSenago borders the following municipalities: Limbiate, Cesate, Paderno Dugnano, Garbagnate Milanese, Bollate.\nThe Villa San Carlo Borromeo is located in Senago. A historical residence, which was built in the XIV century, is immersed in a secular park of eleven hectares, 12 kilometres from Milan.\nIt is the home town of Don Ambrogio Gianotti, a partigiano and the first priest of the church of St. Edward, Busto Arsizio"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "senago",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6780,
+    "attempt": 6732,
+    "place_id": "gn-3167243",
+    "input": {
+      "place": {
+        "place_id": "gn-3167243",
+        "name": "Santo Stefano di Magra",
+        "country": "Italy",
+        "subdivision": "Liguria",
+        "lat": 44.14891,
+        "lon": 9.92185
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santo Stefano di Magra",
+          "url": "https://en.wikipedia.org/wiki/Santo_Stefano_di_Magra",
+          "text": "Santo Stefano di Magra (Ligurian: San Steva, Lunigiano Emilian: Sa' Steu) is a comune (municipality) in the Province of La Spezia in the Italian region Liguria, located about 80 kilometres (50 mi) southeast of Genoa and about 11 kilometres (7 mi) northeast of La Spezia. It is located near the confluence of torrent Vara into the Magra river. It is part of the Montemarcello-Magra Natural Regional Park. It has an entrance and exit to the toll-paying \"Autostrada\"\nThe municipality of Santo Stefano di Magra contains the frazioni (subdivisions, mainly villages and hamlets) Ponzano Magra, Ponzano Belaso, and Ponzano Superiore.\nSanto Stefano di Magra borders the following municipalities: Aulla, Bolano, Sarzana, Vezzano Ligure."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "santo stefano di magra",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "stefano",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "magra",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6781,
+    "attempt": 6733,
+    "place_id": "gn-3448638",
+    "input": {
+      "place": {
+        "place_id": "gn-3448638",
+        "name": "São José do Vale do Rio Preto",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.15214,
+        "lon": -42.92335
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "São José do Vale do Rio Preto",
+          "url": "https://en.wikipedia.org/wiki/São_José_do_Vale_do_Rio_Preto",
+          "text": "São José do Vale do Rio Preto (Portuguese pronunciation: [sɐ̃w ʒuˈzɛ du ˈvali du ˈʁi.u ˈpɾetu]) is a municipality located in the Brazilian state of Rio de Janeiro. Its population was 21,916 (2020) and its area is 240 km2.\nThe municipality contains the 346-hectare (850-acre) Pedra das Flores Natural Monument, created in 2005.\nIt contains the 13,223-hectare (32,670-acre) Maravilha Environmental Protection Area and the 1,979-hectare (4,890-acre) Araponga Municipal Nature Park, both created in 2006.\nIt is part of the Central Rio de Janeiro Atlantic Forest Mosaic of conservation units, created in 2006.\nSão José do Vale borders the municipalities of  Sapucaia, Areal, and Chiador, and is located 29 km northeast of Teresópolis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "sao jose do vale do rio preto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jose",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vale",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "preto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6782,
+    "attempt": 6734,
+    "place_id": "gn-3522926",
+    "input": {
+      "place": {
+        "place_id": "gn-3522926",
+        "name": "Motozintla",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 15.36615,
+        "lon": -92.24673
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Motozintla",
+          "url": "https://en.wikipedia.org/wiki/Motozintla",
+          "text": "Motozintla (Motozintla de Mendoza) is a city and municipality in the Mexican state of Chiapas in southern Mexico.\nMotozintla occupies part of Mexico's border with Guatemala and is adjacent to the municipalities of Siltepec (to the north), Escuintla and Huixtla (to the west), Tuzantán and Tapachula (to the south), and Mazapa de Madero and El Porvenir (to the northeast). It covers an area of 782.5 km2.\nAs of 2010, the municipality had a total population of 69,119, up from 59,875 as of 2005.\nThe municipality had 416 localities, the largest of which (with 2010 populations in parentheses) were: Motozintla de Mendoza (23,755), classified as urban, and Belisario Domínguez (2,011), classified as rural."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "motozintla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6783,
+    "attempt": 6735,
+    "place_id": "gn-3676591",
+    "input": {
+      "place": {
+        "place_id": "gn-3676591",
+        "name": "Liborina",
+        "country": "Colombia",
+        "subdivision": "Antioquia",
+        "lat": 6.6779,
+        "lon": -75.81218
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Liborina",
+          "url": "https://en.wikipedia.org/wiki/Liborina",
+          "text": "Liborina is a municipality in Colombia, located in the Western subregion of the Antioquia Department. It borders the municipalities of Sabanalarga, San Andrés de Cuerquia, and San José de la Montaña to the north; San José de la Montaña and Belmira to the east; Santa Fe de Antioquia and Olaya to the south; and Buriticá to the west. Its town center is 80 kilometers via Sopetrán and 77 kilometers via Santa Fe de Antioquia (only accessible by motorcycles) from Medellín, the capital of Antioquia. The municipality covers an area of 217 square kilometers and is connected by road to the municipalities of Sabanalarga, San José de la Montaña, Belmira, Olaya, and Buriticá."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "liborina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6784,
+    "attempt": 6736,
+    "place_id": "gn-3720811",
+    "input": {
+      "place": {
+        "place_id": "gn-3720811",
+        "name": "Mirebalais",
+        "country": "Haiti",
+        "subdivision": "Centre",
+        "lat": 18.83455,
+        "lon": -72.1048
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mirebalais",
+          "url": "https://en.wikipedia.org/wiki/Mirebalais",
+          "text": "Mirebalais (French pronunciation: [miʁbalɛ]; Haitian Creole: Mibalè) is a commune in the Centre department of Haiti, approximately 60 km northeast of Port-au-Prince on National Road 3. The city was established in 1702.\nAmerican Rotarians have made a number of mission-type trips to the city and surrounding areas since the 1980s. Located along the hydroelectric power transmission grid, the city normally has electricity throughout the day and night.\nDuring the United Nations occupation of 2005, Nepalese troops were stationed in the city, using the city jail as their headquarters.\nA U.S. military C-17 cargo plane carried out a large airdrop of food and supplies here in the wake of the 2010 Haiti earthquake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "mirebalais",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6785,
+    "attempt": 6737,
+    "place_id": "gn-3899680",
+    "input": {
+      "place": {
+        "place_id": "gn-3899680",
+        "name": "Andacollo",
+        "country": "Chile",
+        "subdivision": "Coquimbo Region",
+        "lat": -30.23449,
+        "lon": -71.08534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Andacollo",
+          "url": "https://en.wikipedia.org/wiki/Andacollo",
+          "text": "Andacollo (Spanish pronunciation: [an.da.ˈko.ʝo], from quechua anta, copper, gold; coya, queen) is a city and commune in the Elqui Province, Coquimbo Region, Chile. It is one of Chile's oldest and best known pilgrimage centers with Our Lady of Andacollo attracting thousands of devotees and tourists each year. \nEconomically, Andacollo is the central town of a mining district dominated by medium-scale mining. There are gold placers and gold mineralizations within felsic volcanic rock in its vicinity. The large open-pit copper mine Carmen de Andacollo lies next to the town and most of its workers live in the town.\nAndacollo has the first project in Chile of reforestation aided by the creation of technosols. The project has been carried out on top of old mine tailings in the vicinity of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "andacollo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6786,
+    "attempt": 6738,
+    "place_id": "gn-3994594",
+    "input": {
+      "place": {
+        "place_id": "gn-3994594",
+        "name": "Nuevo San Juan Parangaricutiro",
+        "country": "Mexico",
+        "subdivision": "Michoacán",
+        "lat": 19.41751,
+        "lon": -102.13064
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nuevo San Juan Parangaricutiro",
+          "url": "https://en.wikipedia.org/wiki/Nuevo_San_Juan_Parangaricutiro",
+          "text": "Nuevo San Juan Parangaricutiro is a small village in the Mexican state of Michoacán near the Parícutin volcano. It is the municipal seat for the municipality of Nuevo Parangaricutiro. The city is called Nuevo (Spanish for \"new\") because the original San Juan Parangaricutiro was destroyed during the formation of the Parícutin volcano in 1943.  Along with the village of Parícutin, San Juan Parangaricutiro was buried beneath ash and lava. The top of the church of old San Juan Parangaricutiro still protrudes from the volcanic deposits.\nNuevo San Juan Parangaricutiro is about 8 kilometers (5.0 mi) west of Uruapan and 16 kilometers (9.9 mi) east of the peak of Parícutin in central Michoacán. The village’s postal code is 60490.\nLike many places in Mexico, it is locally known by several unofficial names:  \"San Juan\", \"Nuevo San Juan\", and \"Parangaricutiro\" are all variations.  San Juan Parangaricutiro is also famously known as Parangaricutirimícuaro, the longest toponym in Mexico. Some believe that the name is an urban legend and does not exist. It is the object of the folklore of many fictitious fables. The word itself is a tongue-twister and is also used in longer tongue-twisters that include nonsense words similar to Parangaricutirimícuaro, for example: \"El pueblo de Parangaricutirimícuaro se va a desparangaricutirimicuarizar. Quien logre desparangaricutirimicuarizarlo buen desparangaricutirimicuarizador será.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "nuevo san juan parangaricutiro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nuevo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "parangaricutiro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6787,
+    "attempt": 6739,
+    "place_id": "gn-4538142",
+    "input": {
+      "place": {
+        "place_id": "gn-4538142",
+        "name": "Guthrie",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 35.87894,
+        "lon": -97.42532
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guthrie, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/Guthrie,_Oklahoma",
+          "text": "Guthrie is a city in and the county seat in Logan County, Oklahoma, United States, and a part of the Oklahoma City Metroplex. As of the 2020 census, Guthrie had a population of 10,749. First known as a railroad station stop, after the Land Run of 1889, Guthrie immediately gained 10,000 new residents, who began to develop the town. It was rapidly improved and was designated as the territorial capital, and in 1907 as the first state capital of Oklahoma. In 1910, state voters chose the larger Oklahoma City as the new capital in a special election.\nGuthrie is nationally significant for its collection of late 19th- and early 20th-century commercial architecture. The Guthrie Historic District includes more than 2,000 buildings and is designated as a National Historic Landmark. Historic tourism is important to the city, and its Victorian architecture provides a backdrop for Wild West and territorial-style entertainment, carriage tours, replica trolley cars, specialty shops, and art galleries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "guthrie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6788,
+    "attempt": 6740,
+    "place_id": "gn-4903360",
+    "input": {
+      "place": {
+        "place_id": "gn-4903360",
+        "name": "Near North Side",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.90003,
+        "lon": -87.6345
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Near North Side, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Near_North_Side,_Chicago",
+          "text": "The Near North Side is one of the 77 community areas of Chicago in Illinois, United States. It is the northernmost of the three areas that constitute central Chicago, the others being the Loop and the Near South Side. The community area is located north and east of the Chicago River. To its east is the shore of Lake Michigan, and its northern boundary is the early 19th-century city limit of Chicago, North Avenue. In 2020 the Near North Side had 105,481 residents, surpassing Lake View as the largest Chicago community area by population. It is also the most densely populated community area and has the second most skyscrapers, after the Loop. With the exception of areas near Goose Island in the northwest (which is undergoing development), the Near North Side is known for its affluence, typified by the Gold Coast, Magnificent Mile, Navy Pier, and residential skyscrapers.\nThe Near North Side is arguably the oldest part of Chicago. In the 1780s, in what is now the Near North Side, on the northern banks of the Chicago River near today's Michigan Avenue Bridge, Jean Baptiste Point du Sable built the first known permanent settlement in what was called \"Eschecagou.\" Today, this is marked by Pioneer Court.\nEspecially in the vicinity of Rush and Erie streets, the Near North Side was once known as McCormickville; so named because it is here where many branches of the famous McCormick family of mechanical reaper and publishing fame built their mansions in the late 1800s and early 1900s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 112,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "near north side",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "near",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "side",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

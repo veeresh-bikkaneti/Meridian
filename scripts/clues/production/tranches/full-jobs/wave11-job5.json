@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 2097,
+    "attempt": 2081,
+    "place_id": "gn-3533389",
+    "input": {
+      "place": {
+        "place_id": "gn-3533389",
+        "name": "Actopan",
+        "country": "Mexico",
+        "subdivision": "Hidalgo",
+        "lat": 20.26896,
+        "lon": -98.94216
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Actopan, Hidalgo",
+          "url": "https://en.wikipedia.org/wiki/Actopan,_Hidalgo",
+          "text": "Actopan (from Nahuatl: Ātocpan 'thick, humid and fertile land') is a Mexican city, head of the municipality of Actopan in the state of Hidalgo. Actopan is widely known for its gastronomy, especially for ximbo and barbacoa, as well as for the Church and ex-convent of San Nicolás de Tolentino.\nThe city is located north of Mexico City, from which it is 120 km away, and only 37 km from the city of Pachuca de Soto, the capital of the state of Hidalgo. It is located within the geographical region known as Mezquital Valley. According to the results of the 2020 Population and Housing Census of INEGI, the town has a population of 32,276 inhabitants, which represents 52.91% of the municipal population.\nThe city was a settlement of the Otomi people. In 1117 it was conquered by Chichimeca groups and became a dependency of Acolhuacan in 1120. It was conquered by the Tepanecs of Azcapotzalco at the end of the 14th century. The Mexica conquest took place in 1427 during the reign of Itzcoatl. After the Conquest of Mexico, an encomienda was established in Actopan. According to the Universal Dictionary of History and Geography, the city was founded on July 16, 1546; although the date on which the anniversary of its founding is celebrated corresponds to July 8. In 1575 Actopan was elevated to the category of village.\nIt was elevated to Alcaldía Mayor in 1568; Actopan was the head and the towns around it were then República de Indios (Republic of Indigenous People). Later it became Subdelegation in the period of the Bourbon Reforms; and it acquired the character of City Hall and head of party, dependent on the district of Tula, on August 6, 1824. On April 26, 1847, by decree of the Congress of the State of Mexico, Actopan was elevated to the category of town.\nOn October 15, 1861, Actopan was declared a district of the State of Mexico. On June 7, 1862, it became part of the military canton number 3 of the Second Military District of the State of Mexico, created to confront the French intervention in Mexico. At the beginning, Actopan was temporarily the capital of the district, but it was changed to Pachuca. During the Second Mexican Empire, Actopan became part of the department of Tula. In 1869, the decree of establishment of the state of Hidalgo confirmed the character of District head of the new entity.\nThe Constitution of Hidalgo of 1870 recognized Actopan as the 1st district, category that would be confirmed in the 1st article of the electoral laws of 1880 and 1894. In the 3rd article of the Constitution of Hidalgo of 1 October 1920 it appears in the list as municipal seat, and in it is included as municipal seat of the municipality number 3 of Hidalgo. When commemorating the fourth centennial of the foundation of Actopan, on July 8, 1946, the XXXVIII Legislature of the Congress of the state of Hidalgo, gave it the category of city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 500
+    },
+    "banned_terms": [
+      {
+        "term": "actopan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2098,
+    "attempt": 2082,
+    "place_id": "gn-4369596",
+    "input": {
+      "place": {
+        "place_id": "gn-4369596",
+        "name": "Silver Spring",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.99067,
+        "lon": -77.02609
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silver Spring, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Silver_Spring,_Maryland",
+          "text": "Silver Spring is a census-designated place (CDP) in southeastern Montgomery County, Maryland, United States, near Washington, D.C. Although officially unincorporated, it is an edge city. As of 2026, the population is around 84,593, making it the 6th most populated city in Maryland.\nDowntown Silver Spring, located next to the northern tip of Washington, D.C., is the oldest and most urbanized area of Silver Spring, surrounded by several inner suburban residential neighborhoods inside the Capital Beltway. Many mixed-use developments combining retail, residential, and office space have been built since 2004.\nSilver Spring takes its name from a mica-flecked spring discovered there in 1840 by Francis Preston Blair, who subsequently bought much of the area's surrounding land. Acorn Park, south of downtown, is believed to be the site of the original spring."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "silver spring",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "silver",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "spring",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2099,
+    "attempt": 2083,
+    "place_id": "gn-5015618",
+    "input": {
+      "place": {
+        "place_id": "gn-5015618",
+        "name": "Wyoming",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 42.91336,
+        "lon": -85.70531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wyoming, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Wyoming,_Michigan",
+          "text": "Wyoming is a city in Kent County in the U.S. state of Michigan. The population was 76,501 at the 2020 census. Part of the Grand Rapids metropolitan area, Wyoming is bordered by Grand Rapids to the northeast and, after Grand Rapids, it is the second most-populous city in West Michigan.\nEuropean-Americans settled the area in 1832 along Buck Creek, and it was organized as Wyoming Township in 1848 after separating from Byron Township. Through the 19th and early 20th centuries, Wyoming remained a rural area providing goods to Grand Rapids, until the Grand Rapids, Holland and Chicago Railway spurred suburbanization. After Grandville was incorporated in 1933 and the General Motors Stamping Division Plant opened, Wyoming faced annexation disputes with Grand Rapids and Grandville until incorporating as a city in 1959.\nAs a city, Wyoming became a regional retail and entertainment hub on the 28th Street corridor with the opening of Rogers Plaza and Studio 28. Development declined in the 1980s. Growth then shifted to Wyoming's southwest near RiverTown Crossings and later around Metro Health Hospital after 2007, though the GM plant closed in 2009. Since the mid-2010s, the city has focused on redeveloping 28th Street through the City Center project and repurposing the 74-acre former GM property, now called Site 36."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "wyoming",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2100,
+    "attempt": 2084,
+    "place_id": "gn-5161723",
+    "input": {
+      "place": {
+        "place_id": "gn-5161723",
+        "name": "Mansfield",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 40.75839,
+        "lon": -82.51545
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mansfield, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Mansfield,_Ohio",
+          "text": "Mansfield is a city in Richland County, Ohio, United States, and its county seat. The population was 47,534 at the 2020 census. Located approximately halfway between Cleveland and Columbus via Interstate 71, it is part of the Northeast Ohio region in the western foothills of the Allegheny Plateau.\nThe city was founded in 1808 on a fork of the Mohican River in a hilly region surrounded by fertile farmlands, and became a manufacturing center owing to its location with numerous railroad lines. After the decline of heavy industry, the city's economy has since diversified into a service economy, including retailing, education, and healthcare sectors.\nThe city anchors the Mansfield metropolitan area, which had a population of 124,936 residents in 2020, while the greater Mansfield–Ashland–Bucyrus combined statistical area had 219,408 residents. Mansfield is the largest city in the Mid-Ohio region. Its official nickname is \"The Fun Center of Ohio\"; Mansfield is also known as the \"Carousel Capital of Ohio.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "mansfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2101,
+    "attempt": 2085,
+    "place_id": "gn-5391791",
+    "input": {
+      "place": {
+        "place_id": "gn-5391791",
+        "name": "San Clemente",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.42697,
+        "lon": -117.61199
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Clemente, California",
+          "url": "https://en.wikipedia.org/wiki/San_Clemente,_California",
+          "text": "San Clemente ( san kleh-MEN-teh; Spanish for 'St. Clement' Spanish: [saŋ kleˈmente]) is a coastal city in southern Orange County, California, United States. It was named in 1925 after the Spanish colonial island (which was named after a Pope from the first century). Located in the Orange Coast region of the South Coast of California, San Clemente's population was 64,293 in the 2020 census. Situated roughly midway between Los Angeles and San Diego, San Clemente is a popular tourist destination in Southern California, known for its beaches, Spanish Colonial Revival architecture, and hospitality industry. San Clemente's city slogan is \"Spanish Village by the Sea.\"\nSome locals anglicize the town's Spanish name as ( san kleh-MEN-tee), with members of the San Clemente Historical Society using both the anglicized and Spanish pronunciations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "san clemente",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "clemente",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2102,
+    "attempt": 2086,
+    "place_id": "gn-706448",
+    "input": {
+      "place": {
+        "place_id": "gn-706448",
+        "name": "Kherson",
+        "country": "Ukraine",
+        "subdivision": "Kherson",
+        "lat": 46.63695,
+        "lon": 32.61458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kherson",
+          "url": "https://en.wikipedia.org/wiki/Kherson",
+          "text": "Kherson (Ukrainian and Russian: Херсон, Ukrainian: [xerˈsɔn] , Russian: [xʲɪrˈson]) is a port city in southern Ukraine that serves as the administrative centre of Kherson Oblast. Located by the Black Sea and on the Dnieper River, Kherson is the home to a major ship-building industry and is a regional economic centre. At the beginning of 2022, its population was estimated at 279,131.\nThe city was founded as a base for the Russian Empire's Black Sea Fleet on the site of a fortress previously established by Zaporozhian Cossacks. During the 19th and early 20th century Kherson served as the regional capital of eponymous governorate, becoming a major centre of trade and transport. Under the Soviet rule the city became a major scientific, cultural and industrial centre known for its shipbuilding industry. In modern Ukraine the city is also famous for its watermelons.\nFrom March to November 2022, the city was occupied by Russian forces during their invasion of Ukraine. Ukrainian forces recaptured the city on 11 November 2022. In June 2023, part of the city was flooded following the Russian destruction of the nearby Kakhovka Dam. Since liberation, Kherson has become a target of the human safari Russian terror campaign of deliberate drone targeting of civilians, killing about 200 people as of October 2025 per the UN report."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "kherson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2103,
+    "attempt": 2087,
+    "place_id": "gn-724144",
+    "input": {
+      "place": {
+        "place_id": "gn-724144",
+        "name": "Michalovce",
+        "country": "Slovakia",
+        "subdivision": "Košice Region",
+        "lat": 48.75434,
+        "lon": 21.9195
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Michalovce",
+          "url": "https://en.wikipedia.org/wiki/Michalovce",
+          "text": "Michalovce (; Hungarian: Nagymihály, German: Großmichel, Romani: Mihalya, Yiddish: מיכאלאָווצע Mikhaylovets or Mykhaylovyts; Ukrainian: Михайлівці) is a town on the Laborec river in eastern Slovakia. Originally named after the Archangel St Michael,  it is the second-largest city in the Košice Region and the seat of the Michalovce District.\nThe city is located on the shore of Lake Sirava, approximately 360 kilometres (224 miles) east of the capital Bratislava and immediately adjacent to the border with Ukraine. Michalovce is mostly recognized for its adjacent lakes and volcanic mountains, which generates tourism, and for agriculture as well as the passing Druzhba pipeline. According to the latest census, the population of the town stood at 40,255, with a metropolitan population of 109,121, which ranks it among the largest population centers in eastern Slovakia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "michalovce",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2104,
+    "attempt": 2088,
+    "place_id": "gn-11185528",
+    "input": {
+      "place": {
+        "place_id": "gn-11185528",
+        "name": "Malkapur",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 17.26214,
+        "lon": 74.17574
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malkapur, Karad",
+          "url": "https://en.wikipedia.org/wiki/Malkapur,_Karad",
+          "text": "For other places with the same name, see Malkapur (disambiguation)\n\nMalkapur is a town located in karad taluka of Satara district in the southern part of the Indian state of Maharashtra.  It lies beside the city of Karad and along the NH4 highway. It had one of the highest revenue-generating (through taxes) Gram Panchayats in Maharashtra. Later on due to increasing population and urbanization it was given the status of a town having Municipal Council. The town is well known for its 24×7 water supply to each and every house. It is also implementing Solar City Project in which municipal council gives subsidy on purchasing any solar-powered equipment and reducing power dependency on MSEB. Malkapur town is divided into 17 wards for which elections are held every 5 years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "malkapur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2105,
+    "attempt": 2089,
+    "place_id": "gn-1275194",
+    "input": {
+      "place": {
+        "place_id": "gn-1275194",
+        "name": "Brajarajnagar",
+        "country": "India",
+        "subdivision": "Odisha",
+        "lat": 21.81667,
+        "lon": 83.91667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brajarajnagar",
+          "url": "https://en.wikipedia.org/wiki/Brajarajnagar",
+          "text": "Brajrajnagar is a town and a municipality in Jharsuguda district  in the state of Odisha, India. Popular legend says the town was named after Braj Mohan Birla after he set up Orient Paper Mills in 1936. It is a small sleepy town on rocky terrain, built on the banks of Ib river, with temples mostly built by the Birlas. Later it became famous for MCL-owned coal mines after Orient Paper Mills of Birlas managed by dulichand Hanuman Prasad shah closed down in 1999.\nMost of the population in this city were working for Orient Paper Mills, which belonged to Birla Group of industries. Brajrajnagar has in its vicinity numerous open-cast and underground coal mines of Ib Valley Coalfield and Orient Colliery Area belonging to government-owned Mahanadi Coalfields Limited (MCL)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "brajarajnagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2106,
+    "attempt": 2090,
+    "place_id": "gn-2494029",
+    "input": {
+      "place": {
+        "place_id": "gn-2494029",
+        "name": "Hassi Messaoud",
+        "country": "Algeria",
+        "subdivision": "Ouargla",
+        "lat": 31.68041,
+        "lon": 6.07286
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hassi Messaoud",
+          "url": "https://en.wikipedia.org/wiki/Hassi_Messaoud",
+          "text": "Hassi Messaoud (Arabic: حاسي مسعود) is a town in Ouargla Province, eastern Algeria, located 85 kilometres (53 mi) southeast of Ouargla. As of 2008 it had a population of 45,147 people, up from 40,360 in 1998, and an annual population growth rate of 1.1%, the lowest in the province. Oil was discovered there in 1956 and the town's prominence has grown rapidly since then; it is considered as the First Energy town in Algeria where all the big oil and gas companies have offices and bases. It is an oil refinery town named after the first oil well. A water well, dug in 1917, can be found on the airport side of town. Today there are over 800 wells within a 25 kilometres (16 mi) radius of the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "hassi messaoud",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hassi",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "messaoud",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2107,
+    "attempt": 2091,
+    "place_id": "gn-2562280",
+    "input": {
+      "place": {
+        "place_id": "gn-2562280",
+        "name": "Xagħra",
+        "country": "Malta",
+        "subdivision": "Ix-Xagħra",
+        "lat": 36.05003,
+        "lon": 14.26421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Xagħra",
+          "url": "https://en.wikipedia.org/wiki/Xag%C4%A7ra",
+          "text": "Xagħra (Maltese: Ix-Xagħra) is an administrative unit of Malta on the island of Gozo. It is one of the earliest inhabited parts of Gozo, being home to the Ġgantija megalithic temples, which date back to 3600 BC, and the Xagħra Stone Circle. Natural underground features such as Xerri's Grotto and Ninu's Cave are located in this town, along with Calypso's Cave, which overlooks the red sandy beach of Ramla Bay. It is the second-largest town in Gozo, with a population of 5,161 according to the 2021 census, and it is located northeast of Victoria, the capital of Gozo.\nXagħra is a popular tourist destination due to its historical heritage and lively Victory Square. Thousands of visitors flock to Ramla Bay in summer and to the temples all year round. \nDuring the British period, Xagħra was also known as Casal Caccia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "xag ra",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "xag",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ra",
+        "tokenOnly": true,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2108,
+    "attempt": 2092,
+    "place_id": "gn-273140",
+    "input": {
+      "place": {
+        "place_id": "gn-273140",
+        "name": "Jounieh",
+        "country": "Lebanon",
+        "subdivision": "Mount Lebanon",
+        "lat": 33.98083,
+        "lon": 35.61778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jounieh",
+          "url": "https://en.wikipedia.org/wiki/Jounieh",
+          "text": "Jounieh (Levantine Arabic: جونيه, romanized: Jūniyeh, or Juniya, جونية) is a coastal city in Keserwan District, about 16 km (10 mi) north of Beirut, Lebanon. Since 2017, it has been the capital of Keserwan-Jbeil Governorate. Jounieh is known for its seaside resorts and bustling nightlife, as well as its old stone souk, ferry port, paragliding site and gondola lift (le téléphérique), which takes passengers up the mountain to the shrine of Our Lady of Lebanon in Harissa.\nAbove Jounieh, and on the way to Harissa, a small hill named Bkerké (Arabic: بكركي, or Bkerki), overlooking the Jounieh bay, is the seat of the Patriarch of the Maronite Catholic Church of Lebanon. Residents of Jounieh and the surrounding towns are overwhelmingly Maronite Catholics. Maameltein is a district of Ghazir village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "jounieh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2109,
+    "attempt": 2093,
+    "place_id": "gn-2757345",
+    "input": {
+      "place": {
+        "place_id": "gn-2757345",
+        "name": "Delft",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.00667,
+        "lon": 4.35556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Delft",
+          "url": "https://en.wikipedia.org/wiki/Delft",
+          "text": "Delft (Dutch pronunciation: [ˈdɛl(ə)ft] ) is a city and municipality in the province of South Holland, Netherlands. It is located between Rotterdam, to the southeast, and The Hague, to the northwest. Together with them, it is a part of both the Rotterdam–The Hague metropolitan area and the Randstad.\nDelft is a popular tourist destination in the Netherlands, famous for its historical connections with the reigning House of Orange-Nassau, for its blue pottery, for being home to the painter Jan Vermeer, and for hosting Delft University of Technology (TU Delft). Historically, Delft played a highly influential role in the Dutch Golden Age. In terms of science and technology, thanks to the pioneering contributions of Antonie van Leeuwenhoek and Martinus Beijerinck, Delft can be considered to be the birthplace of microbiology."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "delft",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2110,
+    "attempt": 2094,
+    "place_id": "gn-301256",
+    "input": {
+      "place": {
+        "place_id": "gn-301256",
+        "name": "Selçuk",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 37.95137,
+        "lon": 27.36849
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Selçuk",
+          "url": "https://en.wikipedia.org/wiki/Sel%C3%A7uk",
+          "text": "Selçuk is a municipality and district of İzmir Province, Turkey. Its area is 317 km2, and its population is 38,151 (2022). The town Selçuk is located 2 kilometres (1 mile) northeast of the ancient city of Ephesus, that was once home to the Temple of Artemis, one of the Seven Wonders of the Ancient World.\nSelçuk is one of the most visited tourist destinations within Turkey, known for its closeness to the ancient city of Ephesus, House of the Virgin Mary, and Seljuk works of art. The ruins of the 6th century Basilica of Saint John the Theologian, which, some claim, is built on the site of the Apostle's tomb, is also inside the town. Procopius said that the basilica was a most sacred and honoured place in Ephesus. It was severely damaged and sacked by the Seljuks in 1090 and by the Aydinids and Menteshe in 1308. The place was excavated in 1927, and Pope Paul VI paid it a visit and prayed there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "selcuk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2111,
+    "attempt": 2095,
+    "place_id": "gn-3165201",
+    "input": {
+      "place": {
+        "place_id": "gn-3165201",
+        "name": "Treviso",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.66673,
+        "lon": 12.2416
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Treviso",
+          "url": "https://en.wikipedia.org/wiki/Treviso",
+          "text": "Treviso (US:  tray-VEE-zoh; Italian: [treˈviːzo] ; Venetian: Trevixo [tɾeˈvizo]) is a city and comune (municipality) in the Veneto region of northern Italy. It is the capital of the province of Treviso and the municipality has 86,076 inhabitants (as of December 2025). Some 3,000 live within the Venetian walls (le Mura) or in the historical and monumental center; some 80,000 live in the urban center while the city hinterland has a population of approximately 170,000.\nThe province is home to the headquarters of clothing retailer Benetton, Sisley, Stefanel, Geox, Diadora and Lotto Sport Italia, appliance maker De'Longhi, and bicycle maker Pinarello.\nTreviso is also known for being the original production area of Prosecco wine and radicchio, and is thought to have been the origin of the popular Italian dessert tiramisù."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "treviso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2112,
+    "attempt": 2096,
+    "place_id": "gn-3175986",
+    "input": {
+      "place": {
+        "place_id": "gn-3175986",
+        "name": "Gorizia",
+        "country": "Italy",
+        "subdivision": "Friuli Venezia Giulia",
+        "lat": 45.94088,
+        "lon": 13.62167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gorizia",
+          "url": "https://en.wikipedia.org/wiki/Gorizia",
+          "text": "Gorizia (Italian: [ɡoˈrittsja] ; Slovene: Gorica [ɡɔˈɾìːtsa]; Standard Friulian: Gurize, Southeastern Friulian: Guriza; Bisiacco: Gurissa; German: Görz [ɡœʁts] ) is a town and municipality in the autonomous region of Friuli-Venezia Giulia of northeast Italy. It is located at the foot of the Julian Alps, bordering Slovenia. It is the capital of the Regional decentralization entity of Gorizia and is a local center of tourism, industry, and commerce. It has 33,620 inhabitants.\nSince 1947, a twin town of Nova Gorica has developed on the other side of the modern-day Italy–Slovenia border. The region was subject to territorial dispute between Italy and Yugoslavia after World War II: after the new boundaries were established in 1947 and the old town was left to Italy, Nova Gorica was built on the Yugoslav side. The two towns constitute a conurbation, which also includes the Slovenian municipality of Šempeter-Vrtojba. Since May 2011, these three towns have been joined in a common trans-border metropolitan zone, administered by a joint administration board."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "gorizia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2113,
+    "attempt": 2097,
+    "place_id": "gn-336350",
+    "input": {
+      "place": {
+        "place_id": "gn-336350",
+        "name": "Goba",
+        "country": "Ethiopia",
+        "subdivision": "Oromiya",
+        "lat": 7.01667,
+        "lon": 39.98333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Goba",
+          "url": "https://en.wikipedia.org/wiki/Goba",
+          "text": "Goba  (Oromo: Gobbaa, Amharic: ጎባ) is a town and separate woreda located in the Bale Zone of the Oromia Region, Ethiopia, approximately 446 km (277 mi) southeast of Addis Ababa, this city has a latitude and longitude of 7°0′N 39°59′E and an elevation of 2,743 meters (8,999 ft) above sea level.\nThe town is known for its Wednesday market and for honey, basketry, and cotton shawl making; Bale National Park is 10 km (6.2 mi) to the southwest. A few kilometers (miles) outside of Goba are the remains of an old rock church. Goba shares Robe Airport (ICAO code HAGB, IATA GOB) with neighbouring Robe.\nEthiopian Airlines has a scheduled flight four times a week connecting Goba to the capital Addis Ababa and to the southern city Arba Minch."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "goba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2114,
+    "attempt": 2098,
+    "place_id": "gn-3531013",
+    "input": {
+      "place": {
+        "place_id": "gn-3531013",
+        "name": "Chiapa de Corzo",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 16.7075,
+        "lon": -93.01216
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chiapa de Corzo, Chiapas",
+          "url": "https://en.wikipedia.org/wiki/Chiapa_de_Corzo,_Chiapas",
+          "text": "Chiapa de Corzo (Spanish: [ˈtʃjapa ðe ˈkoɾso] ) is a small city and municipality situated in the west-central part of the Mexican state of Chiapas. Located in the Grijalva River valley of the Chiapas highlands, Chiapa de Corzo lies some 15 km (9.3 mi) to the east of the state capital, Tuxtla Gutiérrez. Chiapa has been occupied since at least 1400 BCE, with a major archeological site which reached its height between 700 BCE and 200 CE. It is important because the earliest inscribed date, the earliest form of hieroglyphic writing and the earliest Mesoamerican tomb burial have all been found here. Chiapa is also the site of the first Spanish city founded in Chiapas in 1528. The \"de Corzo\" was added to honor Liberal politician Angel Albino Corzo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "chiapa de corzo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chiapa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "corzo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2115,
+    "attempt": 2099,
+    "place_id": "gn-3574810",
+    "input": {
+      "place": {
+        "place_id": "gn-3574810",
+        "name": "Chaguanas",
+        "country": "Trinidad & Tobago",
+        "subdivision": "Chaguanas",
+        "lat": 10.51667,
+        "lon": -61.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chaguanas",
+          "url": "https://en.wikipedia.org/wiki/Chaguanas",
+          "text": "The Borough of Chaguanas is the largest municipality (83,489 at the 2011 census) and fastest-growing town in Trinidad and Tobago. Located in west-central Trinidad, south of Port of Spain, north of Couva and San Fernando, and named after the indigenous tribe who originally settled there, it grew in size due to its proximity to the Woodford Lodge sugar refinery. It remained a minor town until the 1980s when it began to grow rapidly as it drew people for its bargain shopping and moderately priced housing. Its rapid growth has seen property values increase dramatically, however.\nChaguanas became a borough in 1990; prior to that, it was part of Caroni County. The current mayor is Faaiq Mohammed, and the Borough Council has historically been dominated by the United National Congress. Chaguanas has also been a hub for Indo-Trinidadian and Tobagonian culture and even the broader Indo-Caribbean culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "chaguanas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2116,
+    "attempt": 2100,
+    "place_id": "gn-4809537",
+    "input": {
+      "place": {
+        "place_id": "gn-4809537",
+        "name": "Huntington",
+        "country": "United States",
+        "subdivision": "West Virginia",
+        "lat": 38.41925,
+        "lon": -82.44515
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huntington, West Virginia",
+          "url": "https://en.wikipedia.org/wiki/Huntington,_West_Virginia",
+          "text": "Huntington is a city in Cabell and Wayne counties in the U.S. state of West Virginia. It is the county seat of Cabell County and sits at the confluence of the Ohio and Guyandotte rivers in the southwestern part of the state. With a population of 46,842 at the 2020 census (estimated at 44,942 in 2024), Huntington is the second-most populous city in West Virginia. The Huntington–Ashland metropolitan area, spanning seven counties across West Virginia, Kentucky and Ohio, has an estimated 368,000 residents.\nSurrounded by extensive natural resources, the area was first settled in 1775 as Holderby's Landing. Its location was selected as ideal for the western terminus of the Chesapeake and Ohio Railway, which founded Huntington as one of the nation's first planned communities to facilitate transportation industries. The city quickly developed after the railroad's completion in 1871 and is eponymously named for the railroad company's founder, Collis Potter Huntington. The city became a hub for manufacturing, transportation, and industrialization, with an industrial sector based in coal, oil, chemicals and steel. After World War II, due to the shutdown of these industries, the city lost nearly 46% of its population, from a peak of 86,353 in 1950 to 54,844 in 1990.\nHuntington is a vital rail-to-river transfer point for the marine transportation industry. It is home to the Port of Huntington Tri-State, the second-busiest inland port in the United States. Also, it is considered a scenic locale in the western foothills of the Appalachian Mountains. The city is the home of Marshall University as well as the Huntington Museum of Art, Marshall Health Network Arena, Camden Park, one of the world's oldest amusement parks; and the headquarters of the CSX Transportation-Huntington Division."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 129,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "huntington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

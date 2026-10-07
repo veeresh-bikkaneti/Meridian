@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 1474,
+    "attempt": 1461,
+    "place_id": "gn-1627610",
+    "input": {
+      "place": {
+        "place_id": "gn-1627610",
+        "name": "Sepatan",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.11889,
+        "lon": 106.575
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sepatan",
+          "url": "https://en.wikipedia.org/wiki/Sepatan",
+          "text": "Sepatan is a town and an administrative district (kecamatan) within Tangerang Regency in the province of Banten on Java, Indonesia. The former northern and eastern half of this district were split off in 1992 and 2006 to form a new Pakuhaji District and Sepatan Timur District, respectively; the residual district now covers an area of 19.22 km2 and had a population of 92,353 in 2010 and 116,290 in 2020; the official estimate as at mid 2024 was 117,734 (comprising 60,357 males and 57,377 females). It borders on the city of Tangerang to the southwest, and comprises the town (kelurahan) of Sepatan together with seven rural villages (desa), all eight sharing the postcode of 15520."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "sepatan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1476,
+    "attempt": 1462,
+    "place_id": "gn-1720681",
+    "input": {
+      "place": {
+        "place_id": "gn-1720681",
+        "name": "Calamba",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 14.21167,
+        "lon": 121.16528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calamba, Laguna",
+          "url": "https://en.wikipedia.org/wiki/Calamba,_Laguna",
+          "text": "Calamba, officially the City of Calamba (Filipino: Lungsod ng Calamba), is a component city in the province of Laguna, Philippines. According to the 2024 census, it has a population of 575,046 people.\nCalamba is the regional center of the Calabarzon region. It is situated 50 kilometers (31 mi) south of Manila and 37 kilometers (23 mi) west of Santa Cruz. The city is known as the \"Spring Resort Capital of the Philippines\" because of its numerous hot spring resorts, which are mostly located in Barangays Pansol, Bucal, Bagong Kalsada, and Lingga.\nAccording to the 2024 census, Calamba has a population of 575,046 people, making it the second most populous local government unit in Laguna. It is the fifth-densest city in the province with more than 2,600 people per square kilometer after San Pedro, Biñan, Cabuyao, and Santa Rosa. Based on the overall rankings of the 2014 Cities and Municipalities Index, the city ranked 18th in the overall competitiveness (cities ranking) and first among cities in the Calabarzon region. Calamba is known to be Calabarzon's richest city because of its numerous industries.\nCalamba is the hometown of the de facto Philippine national hero, José Rizal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "calamba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1477,
+    "attempt": 1463,
+    "place_id": "gn-1777077",
+    "input": {
+      "place": {
+        "place_id": "gn-1777077",
+        "name": "Cheras",
+        "country": "Malaysia",
+        "subdivision": "Selangor",
+        "lat": 3.108,
+        "lon": 101.726
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cheras, Kuala Lumpur",
+          "url": "https://en.wikipedia.org/wiki/Cheras,_Kuala_Lumpur",
+          "text": "Cheras is a suburb and a district, straddling both the Federal Territory of Kuala Lumpur and Hulu Langat District in the state of Selangor, Malaysia.\nThe township is located to the south-east of downtown Kuala Lumpur. Cheras is also adjacent to Ampang to the north and Kajang to the south, both of which are major towns that administer some townships in Cheras such as Taman Segar Perdana, Taman Bukit Segar, Cheras Hartamas and Kampung Cheras Baru. These townships are either administered in whole or part by both MPKJ and MPAJ due to its close proximity.\nThe district mainly consist of Chinese residents, which also make up the majority of voters for the Cheras electorate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "cheras",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1478,
+    "attempt": 1464,
+    "place_id": "gn-1793743",
+    "input": {
+      "place": {
+        "place_id": "gn-1793743",
+        "name": "Suzhou",
+        "country": "China",
+        "subdivision": "Anhui",
+        "lat": 33.63611,
+        "lon": 116.97889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suzhou, Anhui",
+          "url": "https://en.wikipedia.org/wiki/Suzhou,_Anhui",
+          "text": "Suzhou (Chinese: 宿州; pinyin: Sùzhōu) is a prefecture-level city in northern Anhui, China. The city straddles the Tuohe and Xinbian rivers, which fork at its western end. The Tuohe was formerly a left tributary of the Huai River, while the latter is a modern artificial canal, but now both drain into Hongze Lake. It borders the prefectural cities of Huaibei and Bengbu to the southwest and south respectively, and the provinces of Jiangsu to the east, Shandong to the north, and Henan to the northwest.\nIts population was 5,324,476 inhabitants at the 2020 census, of whom 1,766,285 lived in the built-up area (or metro) of Yongqiao District, even though that district remains largely rural."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "suzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1479,
+    "attempt": 1465,
+    "place_id": "gn-1801640",
+    "input": {
+      "place": {
+        "place_id": "gn-1801640",
+        "name": "Luzhou",
+        "country": "China",
+        "subdivision": "Sichuan",
+        "lat": 28.8903,
+        "lon": 105.42575
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Luzhou",
+          "url": "https://en.wikipedia.org/wiki/Luzhou",
+          "text": "Luzhou (Chinese: 泸州; pinyin: Lúzhōu; Sichuanese Pinyin: Nu2zou1; Luzhou dialect: [nu˨˩tsəu˥]) is a prefecture-level city located in the southeast of Sichuan Province, China. It is also known as the \"Liquor City\" (酒城). It was named Jiangyang (simplified Chinese: 江阳; traditional Chinese: 江陽; pinyin: Jiāngyáng) until the Northern and Southern dynasties. Situated at the confluence of the Tuo River and the Yangtze River, Luzhou has been Sichuan province's largest port in both size and output since Chongqing's separation from Sichuan in 1997. \nAs of the 2020 Chinese census, its population was 4,254,149. Of these, 1,241,273 lived in the built-up (or metro) area made of Jiangyang and Longmatan districts, as Naxi district is not conurbated yet.\nLuzhou borders Yunnan, Guizhou provinces and the Chongqing municipality. As the only geographic junction of the four provinces, it was an important port location in ancient China. After the PRC was founded in 1949, Luzhou became the capital of southern Sichuan province. In 1983, Luzhou was upgraded to prefecture-level city status.\nLuzhou is best known for its alcoholic beverages, particularly baijiu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "luzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1480,
+    "attempt": 1466,
+    "place_id": "gn-1816971",
+    "input": {
+      "place": {
+        "place_id": "gn-1816971",
+        "name": "Baoding",
+        "country": "China",
+        "subdivision": "Hebei",
+        "lat": 38.87288,
+        "lon": 115.46246
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baoding",
+          "url": "https://en.wikipedia.org/wiki/Baoding",
+          "text": "Baoding is a prefecture-level city in central Hebei province, approximately 150 kilometres (93 mi) southwest of Beijing. As of the 2020 census, Baoding City had 11,544,036 inhabitants, of which 2,549,787 lived in the metropolitan area made of 4 out of 5 urban districts: Lianchi, Jingxiu, Qingyuan, and Mancheng all of which are largely conurbated. Accounting for about one-sixth of the population of Hebei Province. At the end of 2024, the city's resident population is 9,046,200, of which the urban resident population is 5,527,200. Baoding is among 13 Chinese cities with a population of over 10 million, ranking seventh. Zhuozhou City in the northern part has now grown into part of the Beijing metro area.\nBaoding was the capital of Zhili Province and the residence of the Viceroy of Zhili in the Qing dynasty. The city was also the capital of Hebei province until 1968, and is now a national historical and cultural city and one of the central cities in the Jing-Jin-Ji cluster, with the Xiong'an new area located within its jurisdiction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "baoding",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1481,
+    "attempt": 1467,
+    "place_id": "gn-1857843",
+    "input": {
+      "place": {
+        "place_id": "gn-1857843",
+        "name": "Maebashi",
+        "country": "Japan",
+        "subdivision": "Gunma",
+        "lat": 36.4,
+        "lon": 139.08333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maebashi",
+          "url": "https://en.wikipedia.org/wiki/Maebashi",
+          "text": "Maebashi (前橋市, Maebashi-shi; Japanese pronunciation: [ma.eꜜ.ba.ɕi, maꜜ.e-, ma.e.ba.ɕiꜜ.ɕi], locally [ma.e.ba.ɕi]) is the capital city of Gunma Prefecture, in the northern Kantō region of Japan. As of 31 August 2020, the city had an estimated population of 335,352 in 151,171 households, and a population density of 1100 persons per km2. The total area of the city is 311.59 km2 (120.31 sq mi).  It was the most populous city within Gunma Prefecture until Takasaki merged with nearby towns between 2006 and 2009. Maebashi is known to be the \"City of Water, Greenery and Poets\" because of its pure waters, its rich nature and because it gave birth to several Japanese contemporary poets, such as Sakutarō Hagiwara."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "maebashi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1482,
+    "attempt": 1468,
+    "place_id": "gn-1860063",
+    "input": {
+      "place": {
+        "place_id": "gn-1860063",
+        "name": "Karatsu",
+        "country": "Japan",
+        "subdivision": "Saga",
+        "lat": 33.4425,
+        "lon": 129.96972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karatsu, Saga",
+          "url": "https://en.wikipedia.org/wiki/Karatsu,_Saga",
+          "text": "Karatsu (唐津市, Karatsu-shi) is a city located in Saga Prefecture on the island of Kyushu, Japan.  Its name, formed from the Japanese word roots 唐 kara (China, or continental East Asia in general), and 津 tsu (port), signifies its historical importance as an ancient trading port between Japan with China and Korea. As of 1 September 2026, the city had an estimated population of 111,413 in 51,678 households, and a population density of 228.5 persons per km2. The total area of the city is 487.58 km2 (188.26 sq mi). The same Chinese characters are used in the name of the city (唐津市) as for the city of Dangjin in South Chungcheong Province, South Korea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "karatsu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1483,
+    "attempt": 1469,
+    "place_id": "gn-2033413",
+    "input": {
+      "place": {
+        "place_id": "gn-2033413",
+        "name": "Yichun",
+        "country": "China",
+        "subdivision": "Heilongjiang",
+        "lat": 47.72143,
+        "lon": 128.87529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yichun, Heilongjiang",
+          "url": "https://en.wikipedia.org/wiki/Yichun,_Heilongjiang",
+          "text": "Yichun (Chinese: 伊春; pinyin: Yīchūn) is a prefecture-level city on the Songhua river in Heilongjiang province, China. The city is separated from Russia by the Amur River and has an international border of 246 kilometres (153 mi). According to the 2010 census, it had a total population of 1,148,126 with 729,202 people living in 15 districts separated by forests.据According to the statistics of the public security department, the total registered population of the city by the end of 2024 will be 1.033 million. Among them, the urban population is 900.000 and the rural population is 133,000. The urbanization rate of the registered population is 87.1%. The greening rate of Yichun is up to 83%. The nickname of Yichun is Lindu (Chinese: 林都; pinyin: Líndū; lit. 'forest capital')."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "yichun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1484,
+    "attempt": 1470,
+    "place_id": "gn-2279755",
+    "input": {
+      "place": {
+        "place_id": "gn-2279755",
+        "name": "Yamoussoukro",
+        "country": "Côte d’Ivoire",
+        "subdivision": "Lacs District",
+        "lat": 6.82055,
+        "lon": -5.27674
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yamoussoukro",
+          "url": "https://en.wikipedia.org/wiki/Yamoussoukro",
+          "text": "Yamoussoukro (; French pronunciation: [jamusukʁo] , locally [jamsokʁo]) is the capital city of Ivory Coast and an autonomous district. As of the 2014 census, Yamoussoukro is the third most populous city in the Ivory Coast, with a population of 361,893. Located 240 kilometers (150 mi) north-west of Abidjan, the district of Yamoussoukro covers 2,075 square kilometers (801 sq mi) among rolling hills and plains.\nYamoussoukro became the legal capital of Ivory Coast in 1983, although the former capital Abidjan retains several political functions. Prior to 2011, what is now the district of Yamoussoukro was part of Lacs Region. The district was created in 2011 and is split into the departments of Attiégouakro and Yamoussoukro. In total, the district contains 169 settlements. Yamoussoukro is a sub-prefecture in Yamoussoukro Department and is also a commune: since 2012, the city of Yamoussoukro has been the sole commune in the autonomous district of Yamoussoukro."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "yamoussoukro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1485,
+    "attempt": 1471,
+    "place_id": "gn-2497411",
+    "input": {
+      "place": {
+        "place_id": "gn-2497411",
+        "name": "El Oued",
+        "country": "Algeria",
+        "subdivision": "El Oued",
+        "lat": 33.35608,
+        "lon": 6.86319
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Oued",
+          "url": "https://en.wikipedia.org/wiki/El_Oued",
+          "text": "El Oued (Arabic: اﻟﻮادي, romanized: al-Wādī), Souf or Oued Souf is a city, and the capital of El Oued Province, in Algeria. The oasis town is watered by an underground river, hence its name is El Oued which enables date palm cultivation and the rare use (for the desert) of brick construction for housing. As most roofs are domed, it is known as the \"City of a Thousand Domes\".\nEl Oued is located 400 miles (640 km) south east of Algiers (the capital city of Algeria), near the Tunisian border. The population of El Oued was 134,699 as of the 2008 census, up from 105,256 in 1998, with a population growth rate of 2.5%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "el oued",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "oued",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1486,
+    "attempt": 1472,
+    "place_id": "gn-2518559",
+    "input": {
+      "place": {
+        "place_id": "gn-2518559",
+        "name": "Elche",
+        "country": "Spain",
+        "subdivision": "Valencia",
+        "lat": 38.26218,
+        "lon": -0.70107
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elche",
+          "url": "https://en.wikipedia.org/wiki/Elche",
+          "text": "Elche, in Spanish, or Elx, in Valencian (officially: Elx / Elche), is a city and municipality of Spain, belonging to the province of Alicante, in the Valencian Community. With of 242,317 inhabitants as of 2024, it is the 3rd-most populated municipality in the region. It is part of the comarca of Baix Vinalopó.\nPart of the municipality is coastal yet the city proper is roughly 15 km (9 mi) away from the Mediterranean Sea. Elche is the centre of the footwear industry in Spain. The main airport of the province of Alicante (Alicante–Elche Miguel Hernández Airport) is located inside Elche's municipality, and it serves both Elche and Alicante, being the fifth-busiest airport in Spain.\nTogether with Alicante and other municipalities, Elche forms a conurbation of around 0.8 million inhabitants. The city is noted for its urban Palm Grove, designated as World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "elche",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1487,
+    "attempt": 1473,
+    "place_id": "gn-2646277",
+    "input": {
+      "place": {
+        "place_id": "gn-2646277",
+        "name": "Ilford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.55765,
+        "lon": 0.07278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ilford",
+          "url": "https://en.wikipedia.org/wiki/Ilford",
+          "text": "Ilford is a large town in East London, England, 9 miles (14 km) northeast of Charing Cross. Part of the London Borough of Redbridge, Ilford is within the ceremonial county of Greater London. It had a population of 168,168 in 2011, compared to 303,858 for the entire borough.\nIdentified as a metropolitan centre in the London Plan, Ilford's commercial and retail centre is surrounded by extensive residential development. The town is on the transport corridor between London and coastal Essex, with both the A12 and the central railway station linking the regions. In recent years, as a result of increased levels of immigration, Ilford has become one of the most multicultural towns in England.\nHistorically a small rural settlement in the ancient parish of Barking in the Becontree hundred of the historic county of Essex, its strategic position on the River Roding and the London to Colchester road made it a coaching town. The arrival of the railway in 1839 accelerated its growth, leading to the area becoming part of the conurbation with London. It split from the parish of Barking in 1888, and, in the 20th century, Ilford significantly expanded and increased in population, becoming a municipal borough in 1926. In 1965, it merged with Wanstead and Woodford, also incorporating parts of neighbouring districts, to form the London Borough of Redbridge, part of Greater London."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 226
+    },
+    "banned_terms": [
+      {
+        "term": "ilford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1488,
+    "attempt": 1474,
+    "place_id": "gn-3003796",
+    "input": {
+      "place": {
+        "place_id": "gn-3003796",
+        "name": "Le Havre",
+        "country": "France",
+        "subdivision": "Normandy",
+        "lat": 49.49346,
+        "lon": 0.10785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Le Havre",
+          "url": "https://en.wikipedia.org/wiki/Le_Havre",
+          "text": "Le Havre is a major port city in the Seine-Maritime department in the Normandy region of northern France. It is situated on the right bank of the estuary of the river Seine on the English Channel southwest of the Pays de Caux, very close to the Prime Meridian. Le Havre is the busiest port on the northern French Coast and largest container port in France. it is the second largest city in the Normandy region of France with total population of the greater Le Havre conurbation being smaller than that of Rouen. It is also the second largest subprefecture in France, after only Reims. The name Le Havre means 'the harbour' or 'the port'. Its inhabitants are known as Havrais (masculine) or Havraises (feminine).\nThe city and port were founded by King Francis I in 1517. Economic development in the early modern period was hampered by religious wars, conflicts with the English, epidemics, and storms. It was from the end of the 18th century that Le Havre started growing and the port took off first with the slave trade then other international trade. After the 1944 bombings the firm of Auguste Perret began to rebuild the city in concrete. The oil, chemical, and automotive industries were dynamic during the Trente Glorieuses (postwar boom) but the 1970s marked the end of the golden age of ocean liners and the beginning of the economic crisis: the population declined, unemployment increased and remains at a high level today.\nChanges in years 1990–2000 were numerous. The right won the municipal elections and committed the city to the path of reconversion, seeking to develop the service sector and new industries (aeronautics, wind turbines). The Port 2000 project increased the container capacity to compete with ports of northern Europe, transformed the southern districts of the city, and ocean liners returned. Modern Le Havre remains deeply influenced by its employment and maritime traditions. Its port is the second largest in France, after that of Marseille, for total traffic, and the largest French container port.\nIn 2005, UNESCO inscribed the central city of Le Havre as a World Heritage Site because of its unique post-WWII reconstruction and architecture. The André Malraux Modern Art Museum is the second of France for the number of impressionist paintings. The city has been awarded two flowers by the National Council of Towns and Villages in Bloom in the Competition of Cities and Villages in Bloom."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 403
+    },
+    "banned_terms": [
+      {
+        "term": "le havre",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "havre",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1489,
+    "attempt": 1475,
+    "place_id": "gn-3345439",
+    "input": {
+      "place": {
+        "place_id": "gn-3345439",
+        "name": "Telford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.67659,
+        "lon": -2.44926
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Telford",
+          "url": "https://en.wikipedia.org/wiki/Telford",
+          "text": "Telford ( ) is a town in the Telford and Wrekin borough in Shropshire, England. The wider borough covers the town, its suburbs and surrounding towns and villages. The town is close to the county's eastern boundary, and near the River Severn. The notable hill near the town called The Wrekin is part of the Shropshire Hills, an Area of Outstanding Natural Beauty. To the south of the town is the Ironbridge Gorge, a UNESCO World Heritage Site. Places around the Ironbridge Gorge area, which were developed into the town itself, are internationally recognised as being \"The Birthplace of Industry\" being to a large extent constructed during the Industrial Revolution on the Shropshire Coalfield. The town is the main administrative centre for Telford and Wrekin Council.\nThe M54 motorway was completed in 1983, improving the town's road links with the West Midlands conurbation, Wolverhampton is 19 miles (31 km) south east and Birmingham is 28 miles (45 km) in the same direction. In the 2021 census, the town had a population of 156,896 while the wider borough had an estimated population of 185,600. It is the most populous settlement in Shropshire and is nearly twice the size of Shropshire's historic county town, Shrewsbury, 15 miles (24 km) to the west. It is near Staffordshire: Stafford is 21 miles (34 km) to the east and Stoke-on-Trent is 25 miles (40 km) north east from the town.\nThe town is polycentric, having been designated under the New Towns Acts in 1963 and 1968 and developed between the 1960s to the 1970s. Centred on a shopping centre and a public park, the new town is named after Thomas Telford, a civil engineer on many road, canal and rail projects in the county. It was originally designated under the name Dawley New Town. As well as multiple villages and Dawley, the other constituent towns are Coalbrookdale, Madeley, Newport, Oakengates and Wellington."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 317
+    },
+    "banned_terms": [
+      {
+        "term": "telford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1490,
+    "attempt": 1476,
+    "place_id": "gn-3452465",
+    "input": {
+      "place": {
+        "place_id": "gn-3452465",
+        "name": "Praia Grande",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -24.00583,
+        "lon": -46.40278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Praia Grande",
+          "url": "https://en.wikipedia.org/wiki/Praia_Grande",
+          "text": "Praia Grande is a municipality in the Baixada Santista Metropolitan Region, on the southern coast of the Brazilian state of São Paulo. It is part of the Immediate Region of Santos and its population measured in the IBGE census review in 2010 was 262,051 inhabitants. In the 2022 IBGE census, the population of Praia Grande was 349,935 inhabitants, being the city in Baixada Santista that grew the most in the period 2010–2022. It is the second most populous city on the coast of São Paulo, after only Santos. With an area of 149.652 km2, the population density in 2022 was 2,338.32 inhabitants/km2. The municipality is formed by the headquarters and the district of Solemar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "praia grande",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "praia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grande",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1491,
+    "attempt": 1477,
+    "place_id": "gn-3458575",
+    "input": {
+      "place": {
+        "place_id": "gn-3458575",
+        "name": "Limeira",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -22.56472,
+        "lon": -47.40167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Limeira",
+          "url": "https://en.wikipedia.org/wiki/Limeira",
+          "text": "Limeira is a city in the eastern part of the Brazilian state of São Paulo. With a population of approximately 291,869 people (2022 IBGE.) and covering an area of 581 square kilometers, it sits at an elevation of 588 meters. The city is situated 154 kilometers from São Paulo, the capital of the state, and 1011 kilometers from Brasilia, the capital of Brazil. Limeira is conveniently accessible from São Paulo via two highways: Rodovia Anhanguera and Rodovia dos Bandeirantes.\nIn the past, Limeira was a significant center for coffee cultivation and played a strategic role in the industry. It also earned the nickname \"Brazilian orange capital\" due to its extensive production of citrus fruits. However, the primary agricultural focus in the city has now shifted to sugar cane cultivation. Limeira has gained international recognition as \"Brazil's plated jewelry capital\" due to its thriving industry in plated and semi-jewelry. More than 450 companies in Limeira are responsible for half of Brazil's exports in this sector.\nLimeira is part of the São Paulo metropolitan complex, which is the largest in the southern hemisphere, with an estimated population of around 30 million people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "limeira",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1492,
+    "attempt": 1478,
+    "place_id": "gn-3471830",
+    "input": {
+      "place": {
+        "place_id": "gn-3471830",
+        "name": "Araguari",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -18.64722,
+        "lon": -48.18722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Araguari",
+          "url": "https://en.wikipedia.org/wiki/Araguari",
+          "text": "Araguari is a municipality in western Minas Gerais state, Brazil. It is in the northern Triângulo Mineiro region, on the Jordão River, a tributary of the Paranaíba River, at an elevation between 940 and 1,087 metres (3,084 and 3,566 ft). The municipality of Araguari has an area of 2,774 km2 (1,071 sq mi), with 54 km2 (21 sq mi) in the urban zone and 2,675 km2 (1,033 sq mi) in the rural zone. The population in 2020 was 117,825, making it the third-most important city in the Triângulo Mineiro, after Uberlândia and Uberaba. Araguari has also been one of the fastest-growing cities in Brazil, growing more than the rest of the country in proportion."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "araguari",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1493,
+    "attempt": 1479,
+    "place_id": "gn-3532497",
+    "input": {
+      "place": {
+        "place_id": "gn-3532497",
+        "name": "Azcapotzalco",
+        "country": "Mexico",
+        "subdivision": "Mexico City",
+        "lat": 19.48698,
+        "lon": -99.18594
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Azcapotzalco",
+          "url": "https://en.wikipedia.org/wiki/Azcapotzalco",
+          "text": "Azcapotzalco (Classical Nahuatl: Āzcapōtzalco [aːskapoːˈt͡saɬko] ; Spanish pronunciation: [askapoˈtsalko] ; from āzcapōtzalli \"anthill\" + -co \"place\"; literally, \"In the place of the anthills\") is a borough (demarcación territorial) in Mexico City. Azcapotzalco is in the northwestern part of Mexico City.\nThe town was founded in the pre-Hispanic era and was the seat of the Tepanec dominion until the Aztec Triple Alliance overthrew it. In the centuries that followed it was a rural farming area. In the mid-19th century it became part of the Federal District of Mexico City, and in the 20th century it was engulfed by the urban sprawl of Mexico City. Today it is 100% urbanized and is a centre of industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "azcapotzalco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1494,
+    "attempt": 1480,
+    "place_id": "gn-3666608",
+    "input": {
+      "place": {
+        "place_id": "gn-3666608",
+        "name": "Tunja",
+        "country": "Colombia",
+        "subdivision": "Boyacá",
+        "lat": 5.54481,
+        "lon": -73.35756
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tunja",
+          "url": "https://en.wikipedia.org/wiki/Tunja",
+          "text": "Tunja (Spanish pronunciation: [ˈtuŋxa]) is a municipality and city on the Eastern Ranges of the Colombian Andes, in the region known as the Altiplano Cundiboyacense, 130 km northeast of Bogotá. In 2018 the municipality had a population of 172,548. It is the capital of Boyacá department and the Central Boyacá Province. Tunja is an important educational centre of well-known universities. In the time before the Spanish conquest of the Muisca, there was an indigenous settlement,  called Hunza, seat of the hoa Quemuenchatocha, conquered by the Spanish conquistadors on August 20, 1537. The Spanish city was founded by captain Gonzalo Suárez Rendón on August 6, 1539, exactly one year after the capital Santafé de Bogotá. The city hosts the most remaining Muisca architecture: Hunzahúa Well, Goranchacha Temple and Cojines del Zaque.\nTunja is a tourist destination, especially for religious colonial architecture, with the Casa Fundador Gonzalo Suárez Rendón recognized as the oldest remnant. In addition to its religious and historical sites it is host to several internationally known festivals and is a jumping-off point for regional tourist destinations such as Villa de Leyva, Paipa, and Sierra Nevada del Cocuy. It is a stop on the Pan American Highway which connects Tunja to Bogotá and Santa Marta and eventually to the northern and southernmost parts of South America."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 114,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "tunja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

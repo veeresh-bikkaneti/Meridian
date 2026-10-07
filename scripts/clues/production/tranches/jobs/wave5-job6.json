@@ -1,0 +1,722 @@
+[
+  {
+    "rank": 4712,
+    "place_id": "gn-3234498",
+    "input": {
+      "place": {
+        "place_id": "gn-3234498",
+        "name": "East Cowes",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.75774,
+        "lon": -1.28815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Cowes",
+          "url": "https://en.wikipedia.org/wiki/East_Cowes",
+          "text": "East Cowes is a town and civil parish in the north of the Isle of Wight, on the east bank of the River Medina, next to its west bank neighbour Cowes. It has a population of 8,428 according to the 2021 Census.\nThe two towns are connected by the Cowes Floating Bridge, a chain ferry operated by the Isle of Wight Council.\nEast Cowes is the site of Norris Castle, and Osborne House, the former summer residence of Queen Victoria and Prince Albert. The Prince had a major influence on the architecture of the area, for example on the building of St Mildred's Church in nearby Whippingham, which features distinctive turrets imitating those found on a German castle."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "east cowes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cowes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4714,
+    "place_id": "gn-5085374",
+    "input": {
+      "place": {
+        "place_id": "gn-5085374",
+        "name": "Derry",
+        "country": "United States",
+        "subdivision": "New Hampshire",
+        "lat": 42.88064,
+        "lon": -71.32729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Derry, New Hampshire",
+          "url": "https://en.wikipedia.org/wiki/Derry,_New_Hampshire",
+          "text": "Derry is a town in Rockingham County, New Hampshire, United States. The population was 34,317 at the 2020 census. Although it is a town and not a city, Derry is the most populous community in Rockingham County and the 4th most populous in the state. The town's nickname, \"Spacetown\", derives from the fact that Derry is the birthplace of Alan Shepard, the first astronaut from the United States in space. Derry was also for a time the home of the poet Robert Frost and his family.\nThe Derry census-designated place, with a 2020 population of 22,879, occupies the central part of the town, extending from Derry's downtown in the west to the town of Hampstead in the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "derry",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4716,
+    "place_id": "gn-5112493",
+    "input": {
+      "place": {
+        "place_id": "gn-5112493",
+        "name": "Chestnut Ridge",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.08426,
+        "lon": -74.0557
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chestnut Ridge, New York",
+          "url": "https://en.wikipedia.org/wiki/Chestnut_Ridge,_New_York",
+          "text": "Chestnut Ridge is a village in the town of Ramapo, Rockland County, New York, United States, located north of the state of New Jersey, east of Airmont, south of Spring Valley, and west of Nanuet. The population was 10,505 at the 2020 census.\nChestnut Ridge was incorporated in 1986. Prior to 1986, Chestnut Ridge was an unincorporated area within the town of Ramapo often referred to as \"South Spring Valley\" (its fire district), as many postal addresses carried the Spring Valley designation. In April 2020, mayor Rosario Presti appointed Chaim Rose to fill a vacancy on the village board of trustees; Rose thus became the first Hasidic member of the board since the village was incorporated in 1986."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "chestnut ridge",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chestnut",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ridge",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4728,
+    "place_id": "gn-3127889",
+    "input": {
+      "place": {
+        "place_id": "gn-3127889",
+        "name": "Boiro",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 42.64725,
+        "lon": -8.88459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boiro",
+          "url": "https://en.wikipedia.org/wiki/Boiro",
+          "text": "Boiro is a municipality in the province of A Coruña in the autonomous community of Galicia in northwestern Spain. It is located in the comarca of Barbanza. Boiro has an area of 86.58 km2.\nBoiro was where the controversial assisted suicide of quadriplegic Ramón Sampedro took place. The town was later used as a setting for the 2004 film Mar Adentro, chronicling Sampedro's later life.\nBoiro is also well known for local tourists that come from inner Spain to enjoy the milder climate and landscape, most notably the Barbanza mountain chain, Praia de Barraña (which lies close to the town center), and Carragueiros and Mañóns beaches (one in O Castro parish and the other in Abanqueiro parish)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "boiro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4731,
+    "place_id": "gn-3660573",
+    "input": {
+      "place": {
+        "place_id": "gn-3660573",
+        "name": "Archidona",
+        "country": "Ecuador",
+        "subdivision": "Napo",
+        "lat": -0.9095,
+        "lon": -77.80772
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Archidona, Ecuador",
+          "url": "https://en.wikipedia.org/wiki/Archidona,_Ecuador",
+          "text": "Archidona is a colonial town, founded in 1560, north of Tena, Ecuador in the Napo Province. Archidona still serves as one of the region's main missionary outposts. It's also a business and social center for the small Kichwa communities in the vicinity. \nArchidona's festivals attract people from all around and several times throughout the year there are Kichwa beauty and culture pageants, in which contestants, drawn from the many Kichwa communities in the area, compete for the title of \"Queen of the Kichwa\". The pageants are a unique opportunity to hear Kichwa spoken and sung and to see some very old dances and customs. There are several eliminatory rounds and the finale is usually held in April."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "archidona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4735,
+    "place_id": "gn-4350327",
+    "input": {
+      "place": {
+        "place_id": "gn-4350327",
+        "name": "Canton",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.28039,
+        "lon": -76.56663
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canton, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Canton,_Baltimore",
+          "text": "Canton is a historic waterfront neighborhood in Baltimore, Maryland, United States. The neighborhood is along Baltimore's outer harbor in the southeastern section of the city, roughly 2 miles (3 km) east of Baltimore's downtown district and next to or near the neighborhoods of Patterson Park, Fell's Point, Highlandtown, and Brewers Hill.\nCanton is considered one of Baltimore's trendiest and vibrant neighborhoods, known for its family-friendly community, urban lifestyle and hot spot for the social scene. The inclusive neighborhood continues to see rapid growth as more development opportunities come into the area. Since the late 1990s, the neighborhood has undergone significant gentrification and has been ranked the 16th most-gentrified zip code in the nation from 2000 to 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "canton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4739,
+    "place_id": "gn-5262634",
+    "input": {
+      "place": {
+        "place_id": "gn-5262634",
+        "name": "Menomonie",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 44.87552,
+        "lon": -91.91934
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Menomonie, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Menomonie,_Wisconsin",
+          "text": "Menomonie ( mə-NOM-ə-nee) is a city and the county seat of Dunn County located in the Western Upland region of Wisconsin, United States.\nMenomonie forms the core of the United States Census Bureau's Menomonie Micropolitan Statistical Area (MSA), which includes all of Dunn County (2020 population: 45,440). The Menomonie MSA and the Eau Claire–Chippewa Falls metropolitan area to the east form the Census Bureau's Eau Claire-Menomonie Consolidated Metropolitan Statistical Area. Menomonie is home to the University of Wisconsin–Stout Polytechnic, the state's designated polytechnic university which enrolls nearly 7,000 students. According to the 2020 census, the city's population was 16,843.\nThe city center is at the south end of Lake Menomin, a reservoir on the Red Cedar River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "menomonie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4740,
+    "place_id": "gn-5378880",
+    "input": {
+      "place": {
+        "place_id": "gn-5378880",
+        "name": "Ojai",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.44805,
+        "lon": -119.24289
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ojai, California",
+          "url": "https://en.wikipedia.org/wiki/Ojai,_California",
+          "text": "Ojai (  OH-hy; Ventureño: ’Awhay̓) is a city in Ventura County, California. Located in the Ojai Valley, it is northwest of Los Angeles and east of Santa Barbara. The valley is part of the east–west trending Western Transverse Ranges and is about 10 miles (16 km) long by 3 miles (5 km) wide and divided into a lower and an upper valley, each of similar size, surrounded by hills and mountains. To the north, the Ojai Valley is bordered by the Los Padres National Forest.\nThe population was 7,637 at the 2020 census, up from 7,461 at the 2010 census.\nOjai is known for its boutique hotels, recreation opportunities, hiking, and farmers' market of local organic agriculture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "ojai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4752,
+    "place_id": "gn-2633404",
+    "input": {
+      "place": {
+        "place_id": "gn-2633404",
+        "name": "Yatton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.38839,
+        "lon": -2.82353
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yatton",
+          "url": "https://en.wikipedia.org/wiki/Yatton",
+          "text": "Yatton is a village and civil parish within the unitary authority of North Somerset, which falls within the ceremonial county of Somerset, England. It is located 11 miles (18 km) south-west of Bristol. Its population in 2011 was 7,552. The parish includes Claverham, a small village which was originally a farming hamlet.\nThe origins of the village and its name are unclear; however, there is evidence of Iron Age hill fort and a Roman villa in the area. The arrival of the railway in the 19th century and more recent road building have led to expansion of the village with Yatton now acting as a home to many commuters, while also supporting manufacturing industry and commerce."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "yatton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4755,
+    "place_id": "gn-2914064",
+    "input": {
+      "place": {
+        "place_id": "gn-2914064",
+        "name": "Grünwald",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 48.03947,
+        "lon": 11.5232
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grünwald, Bavaria",
+          "url": "https://en.wikipedia.org/wiki/Gr%C3%BCnwald,_Bavaria",
+          "text": "Grünwald (German pronunciation: [ˈɡʁyːnvalt] , \"Greenwood\" or \"green forest\") is a municipality in the district of Munich, in the state of Bavaria, Germany. It is located on the right bank of the Isar, 12 km southwest of Munich (centre). As of 31 December 2020 it had a population of 11,303.\nGrünwald is best known for medieval Grünwald Castle (Burg Grünwald), the Bavaria Film Studios (one of Europe's biggest and most famous movie production studios), and as a domicile for many prominent and rich people (Grünwald is the wealthiest municipality in Germany). The castle serves as a branch of the Bavarian Archaeological Museum.\nFor the 1972 Summer Olympics, the municipality hosted the individual road race cycling event."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "grunwald",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4756,
+    "place_id": "gn-2971154",
+    "input": {
+      "place": {
+        "place_id": "gn-2971154",
+        "name": "Vaison-la-Romaine",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 44.23896,
+        "lon": 5.07461
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vaison-la-Romaine",
+          "url": "https://en.wikipedia.org/wiki/Vaison-la-Romaine",
+          "text": "Vaison-la-Romaine (French pronunciation: [vɛzɔ̃ la ʁɔmɛn]; lit. 'Vaison-the-Roman'; Occitan: Veisoun) is a commune in the Vaucluse department in the Provence-Alpes-Côte d'Azur region in southeastern France.\nIts inhabitants are called the Vaisonnais. It has 6,237 residents (17,386 for the Communauté de Communes). \nLabeled the \"Plus Beaux Détours de France\" and \"Petites Cités de Caractère\", it is known for it rich Roman ruins, including a large theater and a unique single-arch bridge, its two cathedrals, as well as its medieval town (Haute-Ville) and urban palaces. \nIt is also famous for its Provençal market, one of the oldest and most important in Provence, with nearly 500 merchants in the summer season - authorized by Pope Sixtus IV in 1483."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "vaison la romaine",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vaison",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "romaine",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4768,
+    "place_id": "gn-6325529",
+    "input": {
+      "place": {
+        "place_id": "gn-6325529",
+        "name": "Montmagny",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.98043,
+        "lon": -70.55493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montmagny, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Montmagny,_Quebec",
+          "text": "Montmagny (French pronunciation: [mɔ̃maɲi] ) is a city in the Montmagny Regional County Municipality within the Chaudière-Appalaches region of Quebec, Canada. It is the county seat and had a population, as of the 2021 Canadian census, of 10,999.\nThe city is on the south shore of the St. Lawrence River, 80 kilometres (50 mi) east of Quebec City, and was founded more than 350 years ago. It is Canada's Snow Goose Capital, and festivals include the International Accordion Festival in September and the Festival of the Snow Geese in October.\nThe city was named after Charles de Montmagny, the first to have the title of governor of New France; Samuel de Champlain was commander in chief."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "montmagny",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4772,
+    "place_id": "gn-2145875",
+    "input": {
+      "place": {
+        "place_id": "gn-2145875",
+        "name": "Tumut",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -35.30642,
+        "lon": 148.21818
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tumut",
+          "url": "https://en.wikipedia.org/wiki/Tumut",
+          "text": "Tumut () is a town in the Riverina region of New South Wales, Australia, situated on the banks of the Tumut River.\nTumut sits on the north-west foothills of the Snowy Mountains and is located on the traditional lands of the Wiradjuri, Wolgalu and Ngunnawal Aboriginal peoples.\nTumut is often referred to as the 'gateway to the snowy' Snowy Mountains Scheme. The former Tumut Shire was administered from offices located in the town. Tumut is approximately 410 kilometres (250 mi) south-west of Sydney and 525 kilometres (330 mi) north-east of Melbourne.\nTumut is home to a number of historic buildings, including an Anglican church designed by Edmund Blacket and a Courthouse designed by James Barnet."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "tumut",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4774,
+    "place_id": "gn-2647097",
+    "input": {
+      "place": {
+        "place_id": "gn-2647097",
+        "name": "Henlow",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.03021,
+        "lon": -0.28599
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Henlow",
+          "url": "https://en.wikipedia.org/wiki/Henlow",
+          "text": "Henlow is a village and civil parish in the Central Bedfordshire district of the county of Bedfordshire, England, about 11 miles (18 km) south-east of the county town of Bedford. The name Henlow is believed to derive from the old English henna hlaw, meaning in old English \"hill of birds\" or “hill frequented by birds”.\nAt the 2011 census the population of the village was 2,253, and 3,815 for the parish. Since 2023, Henlow has been in the parliamentary constituency of Hitchin.\nHenlow is home to Henlow Hurricanes FC. Despite being surrounded by much bigger clubs - Henlow Hurricanes FC have been hugely successful. 2023-24 U14 Division 1 winners and 2024-25 U14 Division 2 winners."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "henlow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4782,
+    "place_id": "gn-3129660",
+    "input": {
+      "place": {
+        "place_id": "gn-3129660",
+        "name": "Arenys de Munt",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.61424,
+        "lon": 2.53972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arenys de Munt",
+          "url": "https://en.wikipedia.org/wiki/Arenys_de_Munt",
+          "text": "Arenys de Munt (Catalan: [əˈɾɛɲz ðə ˈmun], locally [əˈɾɛɲʒ ðə ˈmun]; arenys being Catalan for \"sands (of a seasonal creek)\", and de munt for \"up hill\" as opposed to Arenys de Mar, \"sands by the sea\") is a municipality in the comarca of the Maresme in Catalonia, Spain. It is situated inland from the coast, in the el Corredor range and including the peak of el Montalt (595 m). It retains a textile industry specialised in the production of towels, and is also known for the production of strawberries, cherries and liqueurs. The B-511 road links the town with Arenys de Mar, Vallgorguina and Sant Celoni.\nIt is also the hometown of actor Daniel Brühl."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "arenys de munt",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "arenys",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "munt",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4784,
+    "place_id": "gn-4717232",
+    "input": {
+      "place": {
+        "place_id": "gn-4717232",
+        "name": "Palestine",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 31.76212,
+        "lon": -95.63079
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palestine, Texas",
+          "url": "https://en.wikipedia.org/wiki/Palestine,_Texas",
+          "text": "Palestine ( PAL-ist-een) is a city in and the seat of Anderson County in the U.S. state of Texas. It was named after Palestine, Illinois, by preacher Daniel Parker, who had migrated from that town.\nThe city had a 2020 U.S. census population of 18,544, making it the sixth-largest incorporated municipality in Northeast Texas by population. Palestine is a relatively small city located in the Piney Woods, equidistant from the major cities of Dallas, Houston, and Shreveport, Louisiana.\n\nIt is notable for its natural environment, and has a notable dogwood blooming season. It has 23 historical sites on the National Register of Historic Places, and was the western terminus of the historic Texas State Railroad."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "palestine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4788,
+    "place_id": "gn-5401297",
+    "input": {
+      "place": {
+        "place_id": "gn-5401297",
+        "name": "Tehachapi",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 35.13219,
+        "lon": -118.44897
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tehachapi, California",
+          "url": "https://en.wikipedia.org/wiki/Tehachapi,_California",
+          "text": "Tehachapi ( ; Kawaiisu: Tihachipia, meaning \"hard climb\") is a city in Kern County, California, United States, in the Tehachapi Mountains, at an elevation of 3,970 feet (1,210 m), between the San Joaquin Valley and the Mojave Desert. Tehachapi is 35 miles (56 km) east-southeast of Bakersfield, and 20 miles (32 km) west of Mojave. According to the United States Census Bureau, the city has a total area of 10 square miles (26 km2). As of the 2020 census, Tehachapi had a population of 12,939. The Tehachapi area is known for the nearby Tehachapi Loop (a popular railfan site), the Pacific Crest Trail and for the favorable weather conditions for the aerial sport of gliding."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "tehachapi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4792,
+    "place_id": "gn-5906836",
+    "input": {
+      "place": {
+        "place_id": "gn-5906836",
+        "name": "Bowness",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 51.08344,
+        "lon": -114.16866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bowness, Calgary",
+          "url": "https://en.wikipedia.org/wiki/Bowness,_Calgary",
+          "text": "Bowness is the oldest neighbourhood and former town in west Calgary, Alberta, Canada. The former town was amalgamated into the City of Calgary in 1964.\nThe neighbourhood is bordered by the Bow River to the north and east, 16 Avenue to the south, and Stoney Trail to the west. The neighbourhood of Montgomery, another former town amalgamated into the City of Calgary a year earlier in 1963, is located across the river to the east.\nOn the northwest end of the community is one of Calgary's most popular parks, Bowness Park. The park sits between the Bow River and a lagoon, and is popular for picnics, summer sports, ice skating in the winter, and boating."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "bowness",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4795,
+    "place_id": "gn-12037388",
+    "input": {
+      "place": {
+        "place_id": "gn-12037388",
+        "name": "Den Den",
+        "country": "Tunisia",
+        "subdivision": "Manouba",
+        "lat": 36.80753,
+        "lon": 10.11061
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Den Den",
+          "url": "https://en.wikipedia.org/wiki/Den_Den",
+          "text": "Den Den, (Arabic: الدندان) is a town and commune in the Manouba Governorate, Tunisia, part of the western banlieue of Tunis. As of 2022, it had a population of 30,293. This population count includes both Den Den and the town of Ksar Saïd.\nFormerly mainly devoted to farming as located within the part of Tunisia suitable for market gardening, it has been progressively integrated in the Tunisian urban area. Within the city are located several palaces who belonged to the Beys of Tunis of the Husainid dynasty, they were used as winter residences. The most lavish one, the Zarrouk palace, named after minister Mohamed Larbi Zarrouk, is still in use for various entertainment purposes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "den den",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4796,
+    "place_id": "gn-2160413",
+    "input": {
+      "place": {
+        "place_id": "gn-2160413",
+        "name": "Leeton",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34.55105,
+        "lon": 146.40483
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leeton, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Leeton,_New_South_Wales",
+          "text": "Leeton is a town in the Riverina region of New South Wales, Australia. It is situated in the Murrumbidgee Irrigation Area. It is the administrative centre of the Leeton Shire Council local government area, which includes neighbouring suburbs, towns and localities such as Yanco, Wamoon, Whitton, Gogeldrie, Stanbridge and Murrami. \nThe town was designed by Walter Burley Griffin and built for the New South Wales government early 20th century irrigation schemes. Leeton is home to citrus, rice, cotton, grape, walnut, and wheat farming. It is known as Australia's Rice Capital, as well as The Heart of SunRice Country, as it is home to the headquarters of SunRice corporation, one of Australia's largest food exporters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "leeton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

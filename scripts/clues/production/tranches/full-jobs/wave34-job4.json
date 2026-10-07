@@ -1,0 +1,832 @@
+[
+  {
+    "rank": 6709,
+    "attempt": 6661,
+    "place_id": "gn-3369179",
+    "input": {
+      "place": {
+        "place_id": "gn-3369179",
+        "name": "Caledon",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -34.22997,
+        "lon": 19.4265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caledon, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Caledon,_South_Africa",
+          "text": "Caledon, originally named Swartberg, is a town in the Overberg region in the Western Cape province of South Africa, located about 100 kilometres (62 mi) east of Cape Town next to mineral-rich hot springs. As of 2011 it had a population of 13,020. It is located in, and the seat of, the Theewaterskloof Local Municipality.\nThe town continues to be inhabited by Khoikhoi communities who, before the arrival of colonizing forces, were the wealthiest on this land.\nCaledon is situated on the N2 national route, 113 kilometres (70 mi) by road from central Cape Town. At Caledon the N2 is met by the R316 from Arniston and Bredasdorp, and the R320 from Hermanus. It is also located on the Overberg branch railway line, 141 kilometres (88 mi) by rail from Cape Town station.\nThe Caledon district is primarily an agricultural region. Most agricultural activities involve grain production with a certain amount of stock farming. The town is locally well known for the Caledon Spa and Casino, and for its rolling hills and yellow canola fields in spring."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "caledon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6710,
+    "attempt": 6662,
+    "place_id": "gn-3387305",
+    "input": {
+      "place": {
+        "place_id": "gn-3387305",
+        "name": "Sobradinho",
+        "country": "Brazil",
+        "subdivision": "Bahia",
+        "lat": -9.47184,
+        "lon": -40.80155
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sobradinho, Bahia",
+          "url": "https://en.wikipedia.org/wiki/Sobradinho,_Bahia",
+          "text": "Sobradinho (Portuguese pronunciation: [subɾɐˈdʒĩɲu]) is a municipality in the state of Bahia, in Brazil. It has a population of approximately 23,233 with a land area of 1,238.9 km2 (478.3 mi2). Once part of the municipality of Juazeiro it grew with the construction of the Sobradinho Dam and the flooding of the huge Sobradinho Reservoir. With the creation of the reservoir, the inhabitants of four cities and thirty villages had to leave their homes. In all 11,853 families (more than 70 thousand people) abandoned the old towns before the end of 1977.  Of this total, 5,806 families remained in rural lots around the lake and 3,851 families moved to the new towns, including Sobradinho."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "sobradinho",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6711,
+    "attempt": 6663,
+    "place_id": "gn-3462318",
+    "input": {
+      "place": {
+        "place_id": "gn-3462318",
+        "name": "Governador Lindenberg",
+        "country": "Brazil",
+        "subdivision": "Espírito Santo",
+        "lat": -19.25278,
+        "lon": -40.46
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Governador Lindenberg",
+          "url": "https://en.wikipedia.org/wiki/Governador_Lindenberg",
+          "text": "Governador Lindenberg is the name of a Brazilian municipality in the southeastern state of Espírito Santo.  Its population was 12,880 (2020) and its area is 360 km2 (140 sq mi).\nAs of 2001, an official flag was adopted, and the coat of arms designed by Andreia Freitas dos Santos won a school competition to choose the city's coat of arms, in which the prize was a television.\nLocated in the north of the state, roughly 200km from the capital of Vitória, this municipality gained independence from Colatina on 29 July 1997. Its colonization was made primarily through the access of the Doce River, by Italian immigrants, who settled there during the 19th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "governador lindenberg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "governador",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lindenberg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6712,
+    "attempt": 6664,
+    "place_id": "gn-3470162",
+    "input": {
+      "place": {
+        "place_id": "gn-3470162",
+        "name": "Bela Vista do Paraíso",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -22.99667,
+        "lon": -51.19056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bela Vista do Paraíso",
+          "url": "https://en.wikipedia.org/wiki/Bela_Vista_do_Paraíso",
+          "text": "Bela Vista do Paraíso is a municipality in the state of Paraná in the Southern Region of Brazil. Bela Vista do Paraiso is a municipality in the Brazilian state of Paraná, belonging to the metropolitan area of Londrina. Its population in 2020 is 15,399 inhabitants. A history of Bela Vista of Paraíso: In the late 1920s, the lands were part of the current municipality of Creek Red Forest large farm owned by a Colonization Company. In 1928 the Company made the subdivision of their land into smaller plots in the hope of attracting buyers for the planting of coffee. The venture was successful and attracted people flocking conditions for creation of a village. Was elevated to the category of municipality on 10 October 1947, being dismembered in Sertanópolis only on December 14, 1953"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "bela vista do paraiso",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bela",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vista",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paraiso",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6713,
+    "attempt": 6665,
+    "place_id": "gn-3473665",
+    "input": {
+      "place": {
+        "place_id": "gn-3473665",
+        "name": "Leme",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.9621,
+        "lon": -43.16831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leme, Rio de Janeiro",
+          "url": "https://en.wikipedia.org/wiki/Leme,_Rio_de_Janeiro",
+          "text": "Leme (Portuguese pronunciation: [ˈlẽmi], rudder) is an upper-middle-class neighborhood in the South Zone of the City of Rio de Janeiro, Brazil, next to Copacabana, Urca and Botafogo. The neighborhood takes its name from a nearby rock formation whose shape resembles the rudder of a ship.\nIn 1975 the hotel Le Méridien, one of the tallest buildings in the Leme beach, was built.  Le Méridien closed in 2007 and was sold in 2009 to Windsor Hotels for around R$170 million. After a refurbishment, it was reopened in January 2011 as the Windsor Atlantica Hotel.\nEvery year in the days leading up to New Year's on December 31 the traditional processions honoring Yemaja begin here. The famous party of Réveillon or New Year's Eve in Copacabana extends completely into Leme as well."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "leme",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6714,
+    "attempt": 6666,
+    "place_id": "gn-3527596",
+    "input": {
+      "place": {
+        "place_id": "gn-3527596",
+        "name": "Fortín de las Flores",
+        "country": "Mexico",
+        "subdivision": "Veracruz",
+        "lat": 18.90806,
+        "lon": -97
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fortín de las Flores",
+          "url": "https://en.wikipedia.org/wiki/Fortín_de_las_Flores",
+          "text": "Fortín de las Flores is a city in the Mexican state of Veracruz. Fortín de las Flores is the municipal seat of Fortín municipality, which borders the municipalities of Córdoba, Naranjal and Ixtaczoquitlán. It stands on Federal Highways 190 and 180 and the Mexico City to Veracruz railway.\nIn the 2005 INEGI Census, the city reported a total population of 18,965, with 53,311 in the surrounding municipality.\nThe ravine of Metlac, which borders the Cañón del Río Blanco National Park, is the most famous feature of Fortín de las Flores.\nThe residents of Fortín de las Flores are considered by freighthopping Central American migrants to be some of the most generous in Mexico.\nFortín de las Flores is home to many insects due to its pleasant weather all year round, with minimal fluctuation in temperature, ranging from 20-32 °C daily. Most notably, it serves as a significant habitat for the Mexican colonial orb-weaving spider, Metepeira incrassata."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "fortin de las flores",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fortin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "flores",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6715,
+    "attempt": 6667,
+    "place_id": "gn-3530598",
+    "input": {
+      "place": {
+        "place_id": "gn-3530598",
+        "name": "Ciudad del Maíz",
+        "country": "Mexico",
+        "subdivision": "San Luis Potosí",
+        "lat": 22.40187,
+        "lon": -99.60468
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad del Maíz",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_del_Maíz",
+          "text": "Ciudad del Maíz is a town and municipality in the Mexican state of San Luis Potosí.\nIn 2023, Zaragoza was designated a Pueblo Mágico by the Mexican government, recognizing its cultural and historical importance.\nCiudad del Maíz dates back to the prehistoric era with nomadic groups. Obsidian objects have been discovered here, such as blades, scrapers and arrowheads, as well as cave paintings that are not Huastecan. As time went by, the native settlers of Pame origin were the ones who gave the name M'Pu 'N'Tjua, which means Valley of Corn.\nCiudad del Maíz is located in the northwest of the state and approximately 145 kilometers from the city of San Luis Potosí. In addition, the municipality borders Tamaulipas to the north; to the east by El Naranjo; to the south by the municipality of Alaquines; and to the west by the municipalities of Rioverde, Villa Juárez, Cerritos and Guadalcázar.\nAmong its attractions, the Temple of the Immaculate Conception stands out. A jewel of colonial architecture over 300 years old, its dome is the work of the late Baroque style and an emblem of the city. The temple contains several relics in the image of the Immaculate Conception.\nThe Plaza de Armas, whose kiosk is one of the first to be imported from Europe to Mexico, is a French-style iron structure. It contains a bust that belongs to the Generalissimo of the Americas, the priest Miguel Hidalgo y Costilla.\nThe Town Hall building is the work of local architecture, the former house of the Barragán. The arches were added in the early twentieth century.\nThe main dish is the \"drunken stew,\" made from pulque, various types of meat, vegetables, cooked all this in pulque. Gorditas, which is a medium corn tortilla stuffed with different stews. As well as nopales, pumpkins, chochas, tunitas and cottage cheese.\nThe enchiladas potosinas are different because they are prepared in extended tortillas scrambled with red chiles, stuffed with potatoes with carrots and chorizo, tomato, onion, lettuce, cheese and salsa. Corn husk tamales, stuffed with pork carnitas, chicken, beans, and goat cheese."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 346
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad del maiz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maiz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6716,
+    "attempt": 6668,
+    "place_id": "gn-4012341",
+    "input": {
+      "place": {
+        "place_id": "gn-4012341",
+        "name": "Cuerámaro",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.62586,
+        "lon": -101.67173
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuerámaro",
+          "url": "https://en.wikipedia.org/wiki/Cuerámaro",
+          "text": "Cuerámaro is a Mexican city (and municipality) located in Southwest region of the state of Guanajuato. The municipality has an area of 254.85 square kilometres (0.83% of the surface of the state) and is bordered to the north by Romita, to the east by Abasolo, to the south by Pénjamo, and to the west by Manuel Doblado. The municipality had a population of 25,610 inhabitants according to the 2005 census.\nIn pre-Columbian times, the area was inhabited by Guachichil people and eventually dominated by Purépecha, who gave the municipality its current name of Cuerámaro or \"Coat of the Swamps.\"\nThe municipal president of Cuerámaro and its many smaller outlying communities is Ana Bueno."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "cueramaro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6717,
+    "attempt": 6669,
+    "place_id": "gn-4558510",
+    "input": {
+      "place": {
+        "place_id": "gn-4558510",
+        "name": "Hartranft",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.98483,
+        "lon": -75.14712
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hartranft, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Hartranft,_Philadelphia",
+          "text": "Hartranft is a neighborhood in the central part of North Philadelphia section of Philadelphia, Pennsylvania.\nHartranft is on the border of the predominantly Black central region of North Philadelphia and the predominantly Hispanic eastern section of North Philadelphia. Bounded by 6th Street to the east, Broad Street to the west, Allegheny Avenue to the north, and Cecil B. Moore Avenue to the south. Bordering neighborhoods are Fairhill to the north, West Kensington to the east, Cecil B. Moore to the west, and Ludlow to the south.\nThe neighborhood falls into the ZIP Codes 19122 and 19133.\nThe demolished Northern National Bank building was added to the National Register of Historic Places in 1985."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "hartranft",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6718,
+    "attempt": 6670,
+    "place_id": "gn-4748305",
+    "input": {
+      "place": {
+        "place_id": "gn-4748305",
+        "name": "Bon Air",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 37.52487,
+        "lon": -77.55777
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bon Air, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Bon_Air,_Virginia",
+          "text": "Bon Air is a census-designated place (CDP) in Chesterfield County, Virginia, United States. The population was 18,022 at the 2020 census. The community is considered a suburb of the independent city of Richmond in the Richmond-Petersburg region and is a part of the Southside neighborhoods. Originally developed as a resort, a central portion of Bon Air has been designated as a National Historic District with many structures of Victorian design from the late 19th and early 20th centuries. Its name means \"good air,\" reflecting its role as a resort getaway that wealthy Richmonders enjoyed for its fresh air as opposed to the dirty air of Richmond's industrial downtown of the late 19th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "bon air",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6719,
+    "attempt": 6671,
+    "place_id": "gn-4901944",
+    "input": {
+      "place": {
+        "place_id": "gn-4901944",
+        "name": "Mendota",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.54725,
+        "lon": -89.11759
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mendota, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Mendota,_Illinois",
+          "text": "Mendota is a city in LaSalle County, Illinois, United States, in the state's north-central region. The population was 7,061 at the 2020 census. It is part of the Ottawa, IL Micropolitan Statistical Area. Mendota is located approximately 85 miles (137 km) west of Chicago, 70 miles (110 km) east of Moline and 55 miles (89 km) south of Rockford. The current mayor is David W. Boelk, an independent elected to a four-year term.\nThe name \"Mendota\" is derived from a Lakota word meaning \"junction of two trails\", which was found appropriate for the city since there was a nearby railroad junction for the Illinois Central Railroad and the Chicago, Burlington and Quincy Railroad."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "mendota",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6720,
+    "attempt": 6672,
+    "place_id": "gn-5115204",
+    "input": {
+      "place": {
+        "place_id": "gn-5115204",
+        "name": "Dongan Hills",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.58844,
+        "lon": -74.09625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dongan Hills, Staten Island",
+          "url": "https://en.wikipedia.org/wiki/Dongan_Hills,_Staten_Island",
+          "text": "Dongan Hills is a neighborhood located within the New York City borough of Staten Island. It is on the island's East Shore. Dongan Hills is bounded by Laconia Avenue to the southeast, Jefferson Avenue on the southwest, Richmond Road on the northwest, and Old Town Road to the north. It is adjacent to New Dorp and Grant City to the southwest, Todt Hill to the northwest, Old Town/Concord to the northeast, and South Beach and Midland Beach to the southeast.\nDongan Hills is part of Staten Island Community District 2 and its ZIP Codes are 10304 and 10305. Dongan Hills is patrolled by the 122nd Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "dongan hills",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dongan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hills",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6721,
+    "attempt": 6673,
+    "place_id": "gn-5121407",
+    "input": {
+      "place": {
+        "place_id": "gn-5121407",
+        "name": "Howard Beach",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.65788,
+        "lon": -73.83625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Howard Beach",
+          "url": "https://en.wikipedia.org/wiki/Howard_Beach",
+          "text": "Howard Beach is a neighborhood in the southwestern portion of the New York City borough of Queens. It is bordered to the north by the Belt Parkway and Conduit Avenue in Ozone Park, to the south by Jamaica Bay in Broad Channel, to the east by 102nd–104th Streets in South Ozone Park, and to the west by 75th Street in East New York, Brooklyn. The area consists mostly of low-rise single-family detached houses.\nHoward Beach is located in Queens Community District 10 and its ZIP Code is 11414. It is patrolled by the New York City Police Department's 106th Precinct. Politically, Howard Beach is represented by the New York City Council's 32nd District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "howard beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "howard",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6722,
+    "attempt": 6674,
+    "place_id": "gn-5122638",
+    "input": {
+      "place": {
+        "place_id": "gn-5122638",
+        "name": "Jericho",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.79204,
+        "lon": -73.53985
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jericho, New York",
+          "url": "https://en.wikipedia.org/wiki/Jericho,_New_York",
+          "text": "Jericho  is a hamlet and census-designated place (CDP) located within the Town of Oyster Bay in Nassau County, on the North Shore of Long Island, in New York, United States, approximately 29 miles (47 km) east of Midtown Manhattan. The population was 14,808 at the time of the 2020 census.\nThe area is served by the Jericho Union Free and the Syosset Central School Districts, the boundaries of which differ somewhat from those of the hamlet. The boundaries of the Jericho Post Office vary from both the hamlet and the school district boundaries, including a portion of Jericho in the Westbury ZIP code and a portion of Syosset in the Jericho ZIP code."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "jericho",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6723,
+    "attempt": 6675,
+    "place_id": "gn-5126787",
+    "input": {
+      "place": {
+        "place_id": "gn-5126787",
+        "name": "Middle Island",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.88427,
+        "lon": -72.93733
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Middle Island, New York",
+          "url": "https://en.wikipedia.org/wiki/Middle_Island,_New_York",
+          "text": "Middle Island is a hamlet and census-designated place (CDP) located within the Town of Brookhaven, in Suffolk County, on Long Island, in New York, United States. The population was 10,546 at the time of the 2020 census.\nThe community is situated between the hamlets of Coram and Ridge to the west and east, respectively – and the hamlets of Rocky Point and Yaphank to the north and south, respectively. The name derives from the fact that it lies approximately halfway between the eastern and western ends of Long Island (Montauk Point and the East River) as well as halfway between the northern and southern boundaries (the Long Island Sound and the Atlantic Ocean)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "middle island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "middle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6724,
+    "attempt": 6676,
+    "place_id": "gn-5127134",
+    "input": {
+      "place": {
+        "place_id": "gn-5127134",
+        "name": "Mineola",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.74927,
+        "lon": -73.64068
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mineola, New York",
+          "url": "https://en.wikipedia.org/wiki/Mineola,_New_York",
+          "text": "Mineola (, min-ee-OH-lə) is a village and the county seat of Nassau County, on Long Island, New York, United States. The population was 20,800 at the time of the 2020 census. It is considered the anchor community of the Greater Mineola area.\nThe Incorporated Village of Mineola is located primarily in the Town of North Hempstead, with the exception being a small portion of its southern edge within the Town of Hempstead. Old Country Road (CR 25) runs along the village's southern border.\nThe area serviced by the Mineola Post Office extends farther south into the adjacent village of Garden City, where the Old Nassau County Courthouse and other county offices are located. Offices of many Nassau County agencies are in both Mineola and Garden City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "mineola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6725,
+    "attempt": 6677,
+    "place_id": "gn-5127670",
+    "input": {
+      "place": {
+        "place_id": "gn-5127670",
+        "name": "Mott Haven",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.80899,
+        "lon": -73.92291
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mott Haven, Bronx",
+          "url": "https://en.wikipedia.org/wiki/Mott_Haven,_Bronx",
+          "text": "Mott Haven is a primarily residential neighborhood in the southwestern section of the New York City borough of the Bronx. It is generally bounded by East 149th Street to the north, the Bruckner Expressway to the east and south, and the Harlem River to the west, although these boundaries are not precise. East 138th Street is the primary east–west thoroughfare through Mott Haven.\nThe neighborhood is part of Bronx Community Board 1, and is located within ZIP Codes 10451, 10454, and 10455. Mott Haven is patrolled by the New York City Police Department's 40th Precinct.\nThe local subway line is the IRT Pelham Line (6 and <6>​ trains), operating along East 138th Street. The local buses are the Bx1, Bx2, Bx17, Bx19, Bx21, Bx32, Bx33, M125. Mott Haven is served by the Triborough Bridge, the Third Avenue Bridge, the Madison Avenue Bridge, the 145th Street Bridge, and the Willis Avenue Bridge. The closest Metro-North Railroad stops are Harlem – 125th Street and Yankees – East 153rd Street."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "mott haven",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mott",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "haven",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6726,
+    "attempt": 6678,
+    "place_id": "gn-5137421",
+    "input": {
+      "place": {
+        "place_id": "gn-5137421",
+        "name": "Scotchtown",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.48148,
+        "lon": -74.36015
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Scotchtown, New York",
+          "url": "https://en.wikipedia.org/wiki/Scotchtown,_New_York",
+          "text": "Scotchtown is a hamlet (and census-designated place) in the Town of Wallkill, in Orange County, New York, United States. The population was 10,578 at the 2020 census. It has the ZIP Code 10941. The hamlet is located east of the City of Middletown. It is part of the Kiryas Joel–Poughkeepsie–Newburgh, NY Metropolitan Statistical Area as well as the larger New York–Newark–Bridgeport, NY-NJ-CT-PA Combined Statistical Area.\nThe Mills Industrial Park at 874 Silver Lake Scotchtown Road (41°28′39″N 74°21′49″W) was the original planned location for the 1969 Woodstock Festival; however, after the Town of Walkill's board voted against holding the festival, it was moved to Bethel, where it was held less than a month later."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "scotchtown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6727,
+    "attempt": 6679,
+    "place_id": "gn-5324903",
+    "input": {
+      "place": {
+        "place_id": "gn-5324903",
+        "name": "Arvin",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 35.20913,
+        "lon": -118.82843
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arvin, California",
+          "url": "https://en.wikipedia.org/wiki/Arvin,_California",
+          "text": "Arvin is a city in Kern County, California, United States. Arvin is located 15 miles (24 km) southeast of Bakersfield, at an elevation of 449 feet (137 m). As of the 2020 census, the population was 19,495, up from 19,304 at the 2010 census.\nIn 2007, the United States Environmental Protection Agency (EPA) listed Arvin as having the highest levels of smog of any community in the United States.  The city's level of ozone, smog's primary component, exceeded the EPA's acceptable limits on an average of 73 days per year between 2004 and 2006.\nWired telephone numbers in Arvin follow the format (661) 854-xxxx or (661) 855-xxxx and the ZIP Code is 93203."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "arvin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6728,
+    "attempt": 6680,
+    "place_id": "gn-5343202",
+    "input": {
+      "place": {
+        "place_id": "gn-5343202",
+        "name": "Discovery Bay",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.90854,
+        "lon": -121.60023
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Discovery Bay, California",
+          "url": "https://en.wikipedia.org/wiki/Discovery_Bay,_California",
+          "text": "Discovery Bay is a census-designated place (CDP) in eastern Contra Costa County, California, United States, approximately 60 miles (97 km) from San Francisco.  It is located in the San Francisco Bay Area. As of 2020, its population was 15,358, a 15% percent gain from 13,352 at the 2010 census.\nDiscovery Bay was originally a waterfront community built on a network of man-made waterways and residential islands, except for the southeastern quadrant, which comprises the golf course of Discovery Bay Country Club. The homes generally have private docks with access to the Sacramento–San Joaquin River Delta. Newer developments have been added on former agricultural land to the north and west of the initial town-site. Road access is via Route 4."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 113,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "discovery bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "discovery",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

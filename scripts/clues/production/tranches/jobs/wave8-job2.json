@@ -1,0 +1,822 @@
+[
+  {
+    "rank": 7577,
+    "place_id": "gn-5416113",
+    "input": {
+      "place": {
+        "place_id": "gn-5416113",
+        "name": "Carbondale",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 39.40221,
+        "lon": -107.21116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carbondale, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Carbondale,_Colorado",
+          "text": "The Town of Carbondale is a home rule municipality located in Garfield County, Colorado, United States. The town population was 6,434 at the 2020 United States census. Carbondale is a part of the Rifle, CO Micropolitan Statistical Area.\nThe town is located in the Roaring Fork Valley, downstream from Aspen and upstream from the mouth of the Roaring Fork River at Glenwood Springs. The town proper sits on the south bank of the river, near its confluence with the Crystal River. Carbondale's horizon is dominated by the 12,953 ft (3,952 m) tall Mount Sopris several miles to the south of town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "carbondale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7581,
+    "place_id": "gn-5917158",
+    "input": {
+      "place": {
+        "place_id": "gn-5917158",
+        "name": "Carleton Place",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.13341,
+        "lon": -76.14938
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carleton Place",
+          "url": "https://en.wikipedia.org/wiki/Carleton_Place",
+          "text": "Carleton Place is a town in Eastern Ontario, Canada, in Lanark County, about 55 kilometres (34 mi) west of downtown Ottawa. It is located at the crossroads of Highway 15 and Highway 7, halfway between the towns of Perth, Almonte, Smiths Falls, and the nation's capital, Ottawa. Canada's Mississippi River, a tributary of the Ottawa River flows through the town.  Mississippi Lake is just upstream by boat, as well as by car.\nThe town is situated on the edge of a large limestone plain, just south of the edge of the Canadian Shield in the deciduous forest ecoregion of North America."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "carleton place",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "carleton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "place",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7615,
+    "place_id": "gn-2636005",
+    "input": {
+      "place": {
+        "place_id": "gn-2636005",
+        "name": "Thornaby-on-Tees",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.53333,
+        "lon": -1.3
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thornaby-on-Tees",
+          "url": "https://en.wikipedia.org/wiki/Thornaby-on-Tees",
+          "text": "Thornaby-on-Tees, commonly referred to as Thornaby, is a town and civil parish in North Yorkshire, England, 41 miles (66 km) north of York and 3.5 miles (5.6 km) south-east of Middlesbrough. On the south bank of the River Tees, Thornaby falls within the Borough of Stockton-on-Tees and the Tees Valley area. The parish had a population of 24,741 at the 2011 census.\nThe town was incorporated as a municipal borough in 1892, during the Victorian era. The borough was abolished in 1968 on the creation of the County Borough of Teesside. A civil parish called Thornaby was re-created in 1996."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "thornaby on tees",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "thornaby",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "on",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "tees",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7633,
+    "place_id": "gn-2953424",
+    "input": {
+      "place": {
+        "place_id": "gn-2953424",
+        "name": "Bad Kissingen",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 50.20228,
+        "lon": 10.07784
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Kissingen",
+          "url": "https://en.wikipedia.org/wiki/Bad_Kissingen",
+          "text": "Bad Kissingen (German pronunciation: [baːt ˈkɪsɪŋən] ) is a German spa town in the Bavarian region of Lower Franconia and seat of the district Bad Kissingen. Situated to the south of the Rhön Mountains on the Franconian Saale river, it is one of the health resorts, which became famous as a \"Weltbad\" in the 19th century.\nIn 2021 the town became part of the transnational UNESCO World Heritage Site under the name \"Great Spa Towns of Europe\", because of its famous mineral springs and its architecture exemplifying the popularity of spa resorts in Europe during the 18th through 20th centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "bad kissingen",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kissingen",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7639,
+    "place_id": "gn-3062439",
+    "input": {
+      "place": {
+        "place_id": "gn-3062439",
+        "name": "Vrchlabí",
+        "country": "Czechia",
+        "subdivision": "Hradec Králové Region",
+        "lat": 50.62697,
+        "lon": 15.60937
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vrchlabí",
+          "url": "https://en.wikipedia.org/wiki/Vrchlabí",
+          "text": "Vrchlabí (Czech pronunciation: [ˈvr̩xlabiː]; German: Hohenelbe) is a town in Trutnov District in the Hradec Králové Region of the Czech Republic. It has about 12,000 inhabitants. The town is located on the Elbe River at the foot of the Giant Mountains and is known as a centre of tourism and winter sports. Industry in the town is represented by a Škoda Auto factory.\nThe main landmarks of Vrchlabí are the Vrchlabí Castle and Church of Saint Lawrence. The town centre with the castle complex, monastery complex and town park is well preserved and is protected as an urban monument zone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "vrchlabi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7660,
+    "place_id": "gn-4952487",
+    "input": {
+      "place": {
+        "place_id": "gn-4952487",
+        "name": "Swansea",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 41.74816,
+        "lon": -71.18977
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Swansea, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Swansea,_Massachusetts",
+          "text": "Swansea is a town in Bristol County in southeastern Massachusetts, United States.\nIt is located at the mouth of the Taunton River, just west of Fall River, 47 miles (76 km) south of Boston, and 12 miles (19 km) southeast of Providence, Rhode Island. The population was 17,144 at the 2020 census. The villages of Hortonville, Barneyville and Ocean Grove are located in the town.\nSwansea is a part of the South Coast region of Massachusetts which encompasses the cities and towns that surround Buzzards Bay (excluding the Elizabeth Islands, Bourne and Falmouth), Mount Hope Bay and the Sakonnet River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "swansea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7686,
+    "place_id": "gn-967238",
+    "input": {
+      "place": {
+        "place_id": "gn-967238",
+        "name": "Ottosdal",
+        "country": "South Africa",
+        "subdivision": "North West",
+        "lat": -26.80908,
+        "lon": 26.00538
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ottosdal",
+          "url": "https://en.wikipedia.org/wiki/Ottosdal",
+          "text": "Ottosdal is a small town situated at an altitude of 1,479 meters (4,855 feet) on the branch railway line from Makwassie in the central North West Province of South Africa. Ottosdal is a farming community engaged in the growing of grains such as maize (mielies), sunflower and peanuts. In addition, local farmers raise cattle, sheep, pigs, dairy cows and chicken. A major pyrophyllite mine lies near it on the farm Gestoptefontein. This town originated from the establishment of a Dutch Reformed Church parish in 1913. To this was added a church building on Korannafontein, the farm of Gerhardus Petrus Otto."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "ottosdal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7693,
+    "place_id": "gn-4504010",
+    "input": {
+      "place": {
+        "place_id": "gn-4504010",
+        "name": "Seaside Heights",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.94429,
+        "lon": -74.07291
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seaside Heights, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Seaside_Heights,_New_Jersey",
+          "text": "Seaside Heights is a borough situated on the Jersey Shore, within Ocean County in the U.S. state of New Jersey. As of the 2020 census, the borough's population was 2,440, a decrease of 447 (−15.5%) from the 2010 census count of 2,887, which in turn had reflected a decline of 268 (−8.5%) from the 3,155 counted in the 2000 census. Seaside Heights is located on the Barnegat Peninsula, a long, narrow barrier peninsula that separates the Barnegat Bay from the Atlantic Ocean. During the summer, the borough attracts a crowd largely under the age of 21, mainly highschoolers and young adults, drawn to a community with boardwalk entertainment and one of the few shore communities with sizable numbers of apartments, attracting as many as 65,000 people who are often out until early morning visiting bars and restaurants.\nBased on the results of a referendum held on March 25, 1913, Seaside Heights was incorporated as a borough by an act of the New Jersey Legislature on February 26, 1913, from portions of both Berkeley Township and Dover Township (now Toms River). The borough was named for its location on the Atlantic Ocean."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "seaside heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "seaside",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7696,
+    "place_id": "gn-8348804",
+    "input": {
+      "place": {
+        "place_id": "gn-8348804",
+        "name": "Turvey Park",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -35.12849,
+        "lon": 147.36264
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Turvey Park, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Turvey_Park,_New_South_Wales",
+          "text": "Turvey Park is an inner southern suburb of Wagga Wagga in southern New South Wales, Australia. Its boundaries are defined by Fernleigh Road to the south, Glenfield Road to the west, Coleman Street to the north and to the east by Willans Hill. Turvey Park is characterised by single detached dwellings, constructed in the period from the early 1900s through to the 1960s. These dwellings vary from the very substantial, as found in parts of Coleman Street and Grandview Parade, to the brick bungalows of the northern end of the suburb between Urana and Coleman Streets, to modest public housing, and a mixture of brick and fibro and weatherboard cottages at the southern end of the suburb. Another feature of Turvey Park are many corner shops, such on the corner of Heath and Urana Street, the corner of Norman and Coleman Streets, and the Corner of Bourke and Urana Streets.\nTurvey Park was named after the property \"Turvey Park\" established by Thomas Turvey (died 14 January 1889), a licensee and store owner."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "turvey park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "turvey",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7697,
+    "place_id": "gn-7259489",
+    "input": {
+      "place": {
+        "place_id": "gn-7259489",
+        "name": "Scott Air Force Base",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 38.5427,
+        "lon": -89.85035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Scott Air Force Base",
+          "url": "https://en.wikipedia.org/wiki/Scott_Air_Force_Base",
+          "text": "Scott Air Force Base (IATA: BLV, ICAO: KBLV, FAA LID: BLV) is a United States Air Force base in St. Clair County, Illinois, near Belleville and O'Fallon, 17 miles (27 km) east-southeast of downtown St. Louis. Originally Scott Field, it was one of 32 Air Service training camps established after the United States entered World War I in April 1917. The present base serves as the headquarters of Air Mobility Command (AMC) and its showcase wing, and it is also the headquarters of the U.S. Transportation Command, a unified combatant command that coordinates transportation across all the services.\nThe base is operated by the 375th Air Mobility Wing (375 AMW) and is also home to the Air Force Reserve Command's 932d Airlift Wing (932 AW) and the Illinois Air National Guard's 126th Air Refueling Wing (126 ARW), the latter two units being operationally under AMC.\nAs of this date, the base employs 13,000 people, 5,100 civilians with 5,500 active-duty Air Force, and an additional 2,400 Air National Guard and Reserve personnel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "scott air force base",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "scott",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "air",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "force",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "base",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7701,
+    "place_id": "gn-4504856",
+    "input": {
+      "place": {
+        "place_id": "gn-4504856",
+        "name": "Wildwood",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 38.99178,
+        "lon": -74.81489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wildwood, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Wildwood,_New_Jersey",
+          "text": "Wildwood is a city in Cape May County in the U.S. state of New Jersey. The city, and all of Cape May County, is part of the Ocean City metropolitan statistical area, and is part of the Philadelphia metropolitan area. As of the 2020 United States census, the city's year-round population was 5,157, a decrease of 168 (−3.2%) from the 2010 census count of 5,325, which in turn reflected a decline of 111 (−2.0%) from the 5,436 counted in the 2000 census. A popular Jersey Shore resort destination, the population can swell to 250,000 during the summer. Wildwood was the first city in New Jersey to have a female mayor, Doris W. Bradway, who was ousted in a 1938 recall election.\nThe city of Wildwood proper constitutes the center of the island communities collectively known as The Wildwoods, which is used as a collective term to describe four communities on the island with the name Wildwood attached to them: North Wildwood, West Wildwood, Wildwood, and Wildwood Crest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "wildwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7703,
+    "place_id": "gn-2963155",
+    "input": {
+      "place": {
+        "place_id": "gn-2963155",
+        "name": "Kinsale",
+        "country": "Ireland",
+        "subdivision": "Munster",
+        "lat": 51.7075,
+        "lon": -8.53056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kinsale",
+          "url": "https://en.wikipedia.org/wiki/Kinsale",
+          "text": "Kinsale ( kin-SAYL; Irish: Cionn tSáile, meaning 'head of the brine') is a historic port and fishing town in County Cork, Ireland. Located approximately 25 km (16 mi) south of Cork City on the southeast coast near the Old Head of Kinsale, it sits at the mouth of the River Bandon, and has a population of 5,991 (as of the 2022 census) which increases in the summer when tourism peaks. The town is in a civil parish of the same name.\nKinsale is a holiday destination for both Irish and overseas tourists. The town is known for its restaurants, including the Michelin-starred Bastion restaurant, and holds a number of annual gourmet food festivals.\nAs a historically strategic port town, Kinsale's notable buildings include Desmond Castle (associated with the Earls of Desmond and also known as the French Prison) of c. 1500, the 17th-century pentagonal bastion fort of James Fort on Castlepark peninsula, and Charles Fort, a partly restored star fort of 1677 in nearby Summercove."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "kinsale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7706,
+    "place_id": "gn-3028271",
+    "input": {
+      "place": {
+        "place_id": "gn-3028271",
+        "name": "Castillon-la-Bataille",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 44.85308,
+        "lon": -0.04506
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castillon-la-Bataille",
+          "url": "https://en.wikipedia.org/wiki/Castillon-la-Bataille",
+          "text": "Castillon-la-Bataille (French pronunciation: [kastijɔ̃ la bataj]; Occitan: Castilhon de la Batalha) is a commune in the Gironde department in Nouvelle-Aquitaine in southwestern France. It lies on the right (northern) bank of the river Dordogne. Castillon station has rail connections to Bordeaux, Bergerac and Sarlat-la-Canéda.\nThis area was the site of the last battle of the Hundred Years' War, the Battle of Castillon, fought 17 July 1453. The battle in which John Talbot, 1st Earl of Shrewsbury, charged valiantly but foolishly at the French artillery and was slain at the age of nearly 70, along with his son, John Talbot, 1st Viscount Lisle, and most of the small English force that had gone out to prevent Bordeaux falling to the French king.\nNear La Mothe-Montraval, on the right bank of the Dordogne, a tumulus is pointed out under the name of Talbot's tomb; but it is known that his body was removed by his friends to St Alkmund's Church, Whitchurch, in Shropshire in England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "castillon la bataille",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "castillon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bataille",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7715,
+    "place_id": "gn-2063031",
+    "input": {
+      "place": {
+        "place_id": "gn-2063031",
+        "name": "Port Noarlunga",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -35.14802,
+        "lon": 138.47099
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Noarlunga, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Port_Noarlunga,_South_Australia",
+          "text": "Port Noarlunga is a suburb in the City of Onkaparinga, South Australia. It is a small sea-side suburb, with a population of 2,918 (2016 census), about 30 kilometres (19 miles) to the south of the Adelaide city centre and was originally created as a sea port. This area is now popular as a holiday destination or for permanent residents wishing to commute to Adelaide or work locally. There is a jetty that connects to a 1.6 kilometres (0.99 miles) natural reef that is exposed at low tide.\nIt is known as Tainbarang or Tainbarilla by the traditional owners, the Kaurna people, and is of significance as being the site of a freshwater spring said to be created by the tears of Tjilbruke, the creator being. A reserve known as the Tutu Wirra Reserve, on Witton Bluff, is the location of the stone cairn commemorating the second spring created by Tjilbruke on his journey down the coast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "port noarlunga",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "noarlunga",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7723,
+    "place_id": "gn-3111855",
+    "input": {
+      "place": {
+        "place_id": "gn-3111855",
+        "name": "Ribadesella",
+        "country": "Spain",
+        "subdivision": "Asturias",
+        "lat": 43.46145,
+        "lon": -5.05955
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ribadesella",
+          "url": "https://en.wikipedia.org/wiki/Ribadesella",
+          "text": "Ribadesella (Asturian: Ribeseya) is a small 84-square-kilometre (32 mi2) municipality in the Autonomous Community of the Principality of Asturias, Spain. Known for its location on the Cantabrian Sea, at the outlet of the River Sella, Ribadesella is located near the Picos de Europa and serves as a gateway to the region. It is bordered on the east by Llanes, on the south by Cangas de Onís and Parres, and on the west by Caravia. Queen Letizia of Spain has family ties to Ribadesella, although she was born in Oviedo.\nOn the first weekend of August, the International Sella River Descent takes place; kayakers from all over the world gather here to attempt the final 20 kilometres (12.4 miles) of the Sella River in record time. The town is also known for its prehistoric cave, known as the Cave of Tito Bustillo, which is open to visitors during scheduled seasons and with limited access."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "ribadesella",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7725,
+    "place_id": "gn-3439156",
+    "input": {
+      "place": {
+        "place_id": "gn-3439156",
+        "name": "Carmen del Paraná",
+        "country": "Paraguay",
+        "subdivision": "Itapúa",
+        "lat": -27.22232,
+        "lon": -56.15243
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carmen del Paraná",
+          "url": "https://en.wikipedia.org/wiki/Carmen_del_Paran%C3%A1",
+          "text": "Carmen del Paraná is a district in the Itapúa Department of Paraguay. It is located in the southern part of the country, about 350 kilometers south of the national capital, Asunción and 35 kilometers northwest of the department capital, Encarnación. Founded in 1843 by Carlos Antonio López and Mariano Roque Alonso, the district is historically revered as the \"Cradle of Independence of Paraguay\" due to the pivotal Battle of Tacuarí in 1811.\nCovering an area of 302.5 square kilometers, Carmen del Paraná has a predominantly urban and working age population of 6,417 inhabitants per the 2022 Paraguayan census. Economically, the district is a major agricultural hub famously known as the \"Capital of Rice,\" hosting three of Paraguay's largest rice processing mills. In recent years, infrastructure developments following the construction of the Yacyretá Dam have transformed the district into a popular summer destination, drawing thousands of tourists to its 10-kilometer waterfront and beaches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "carmen del parana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "carmen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "parana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7729,
+    "place_id": "gn-6065568",
+    "input": {
+      "place": {
+        "place_id": "gn-6065568",
+        "name": "Maple Bay",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 48.81633,
+        "lon": -123.61936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maple Bay, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Maple_Bay,_British_Columbia",
+          "text": "Maple Bay is a seaside community located in the Cowichan Valley of southern Vancouver Island, British Columbia, Canada. A narrow inlet and surrounded by smooth, pebbled beaches, Maple Bay is home to marine activity all year round. Maple Bay is a small town with a population of 2,640.\nThe sheltered haven of Maple Bay is situated halfway up Sansum Narrows, which separates Vancouver Island from Saltspring Island, the largest and nearest of the southern Gulf Islands.\nMaple Bay is serviced by floatplane, Salt Spring Air and Harbour Air Seaplanes that fly regular scheduled flights several times a day from Maple Bay Marina, to Ganges (Ganges Water Aerodrome) on Saltspring Island and then on to Vancouver (Vancouver International Water Airport/Vancouver International Airport and Vancouver Harbour Flight Centre).\nThere are three commercial marinas, a public dock, as well as the Maple Bay Yacht Club and the Maple Bay Rowing Club."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "maple bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "maple",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7732,
+    "place_id": "gn-672023",
+    "input": {
+      "place": {
+        "place_id": "gn-672023",
+        "name": "Ocna Sibiului",
+        "country": "Romania",
+        "subdivision": "Sibiu County",
+        "lat": 45.88333,
+        "lon": 24.05
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocna Sibiului",
+          "url": "https://en.wikipedia.org/wiki/Ocna_Sibiului",
+          "text": "Ocna Sibiului (German: Salzburg; Hungarian: Vízakna) is a town in the centre of Sibiu County, in southern Transylvania, central Romania, 10 km (6.2 mi) to the north-west of the county seat, Sibiu. The town administers a single village, Topârcea (Tschapertsch; Toporcsa).\nThe first spa resort was established here in 1845, and since then Ocna Sibiului has earned a reputation thanks to its heliothermal lakes formed on the site of old salt mines that had collapsed.\nThere are several salt lakes (former collapsed salt mines) on the salt massif.\nThe temperate climate, aerosol-rich air, annual temperatures above the regional average, and recent renovations of the spa infrastructure have helped restore the town’s popularity as a health resort.\nOcna Sibiului is also of archaeological interest: Bronze Age tools (dating from approximately 1900–800 BC) have been discovered in the area and are currently exhibited at the Brukenthal Museum in Sibiu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "ocna sibiului",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocna",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sibiului",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7733,
+    "place_id": "gn-2060436",
+    "input": {
+      "place": {
+        "place_id": "gn-2060436",
+        "name": "Tennant Creek",
+        "country": "Australia",
+        "subdivision": "Northern Territory",
+        "lat": -19.6497,
+        "lon": 134.19147
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tennant Creek",
+          "url": "https://en.wikipedia.org/wiki/Tennant_Creek",
+          "text": "Tennant Creek (Warumungu: Jurnkkurakurr) is a town in the Northern Territory of Australia. It is the seventh largest town in the Northern Territory, and is located on the Stuart Highway, just south of the intersection with the western terminus of the Barkly Highway. At the 2021 census, Tennant Creek had a population of 3,080 people, of whom 55% (1,707) identified as Indigenous.\nThe town is approximately 1,000 kilometres south of the capital of the Northern Territory, Darwin, and 500 kilometres north of Alice Springs. It is named after a nearby watercourse of the same name, and is the hub of the sprawling Barkly Tableland – vast elevated plains of black soil with golden Mitchell grass that cover more than 240,000 square kilometres. Tennant Creek is also near well-known attractions including the Devils Marbles, Mary Ann Dam, Battery Hill Mining Centre and the Nyinkka Nyunyu Culture Centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "tennant creek",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tennant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "creek",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7734,
+    "place_id": "gn-2177207",
+    "input": {
+      "place": {
+        "place_id": "gn-2177207",
+        "name": "Balaclava",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.86667,
+        "lon": 145
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balaclava, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Balaclava,_Victoria",
+          "text": "Balaclava is an inner suburb in Melbourne, Victoria, Australia, 7 km south-east of Melbourne's Central Business District, located within the City of Port Phillip local government area. Balaclava recorded a population of 5,392 at the 2021 census.\nBalaclava is located in the south-east of the city, in the St Kilda East area and is bounded by Inkerman Street to the north, Chapel Street to the west, Hotham Street to the east and Oak Grove and Los Angeles Court to the south. In terms of its cadastral division, Balaclava is in the parish of Prahran, within the County of Bourke\nThe suburb was named after the Battle of Balaclava that took place on 25 October 1854, during the Crimean War.\nWell-known comedian Graham Kennedy spent part of his childhood in Balaclava. After his death, the local council placed a commemorative plaque on the house where he lived."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "balaclava",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 2701,
+    "attempt": 2681,
+    "place_id": "gn-973709",
+    "input": {
+      "place": {
+        "place_id": "gn-973709",
+        "name": "Mossel Bay",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -34.18307,
+        "lon": 22.14605
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mossel Bay",
+          "url": "https://en.wikipedia.org/wiki/Mossel_Bay",
+          "text": "Mossel Bay (Afrikaans: Mosselbaai) is a harbour town of about 170,000 people on the Garden Route of South Africa. It is an important tourism and farming region of the Western Cape Province. Mossel Bay lies 400 kilometres east of the country's seat of parliament, Cape Town (which is also the capital city of the Western Cape), and 400 km west of Gqeberha, the largest city in the Eastern Cape. The older parts of the town occupy the north-facing side of the Cape St Blaize Peninsula, whilst the newer suburbs straddle the Peninsula and have spread eastwards along the sandy shore of the Bay.\nThe town's economy relied heavily on farming, fishing and its commercial harbour (the smallest in the Transnet Port Authority's stable of South African commercial harbours), until the 1969 discovery of natural offshore gas fields led to the development of the gas-to-liquids refinery operated by PetroSA. Tourism is another important driver of Mossel Bay's economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 157,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "mossel bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mossel",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2702,
+    "attempt": 2682,
+    "place_id": "gn-1263181",
+    "input": {
+      "place": {
+        "place_id": "gn-1263181",
+        "name": "Mehsi",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 26.35574,
+        "lon": 85.09251
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mehsi, Bihar",
+          "url": "https://en.wikipedia.org/wiki/Mehsi,_Bihar",
+          "text": "Mehsi (; pronounced Mayh-see) is a town and Nagar Parishad in the East Champaran district of the Indian state of Bihar. Situated in the Tirhut division on the National Highway 27 corridor, it is an important commercial, agricultural and transportation centre of northern Bihar and East Champaran district, serving the surrounding region through its road and railway connectivity.\nMehsi is widely recognised for its litchi orchards, fruit trade and historic pearl button industry. The town forms part of Bihar's litchi-producing belt, a product recognised under the Government of India's One District One Product (ODOP) initiative for East Champaran. The East Champaran district administration describes the Mehsi pearl button industry as a unique traditional industry that has provided employment to thousands of people and contributed significantly to the local economy.\nOwing to its strategic location between Muzaffarpur, Sheohar and northern East Champaran, Mehsi has developed as an important urban, market and service centre for the surrounding region. The town also has historical significance in the Champaran Satyagraha, where Mahatma Gandhi received a public welcome at Mehsi railway station on 15 April 1917 before proceeding to Motihari."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 156,
+      "fullExtractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "mehsi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2703,
+    "attempt": 2683,
+    "place_id": "gn-2328617",
+    "input": {
+      "place": {
+        "place_id": "gn-2328617",
+        "name": "Numan",
+        "country": "Nigeria",
+        "subdivision": "Adamawa",
+        "lat": 9.46374,
+        "lon": 12.03062
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Numan, Nigeria",
+          "url": "https://en.wikipedia.org/wiki/Numan,_Nigeria",
+          "text": "Numan , also known as Nomweh (meaning 'hilltop'), is a town and a Local Government Area in Adamawa State, Nigeria. It is a port town that lies on the confluence of Benue River and Gongola River.\nThe predominant ethnic group in the town are the Bwatiye (Bachama) people who have a reputation of being unconquered warriors in all their history. The Bwatiye people are led by a First Class King known as the Hama Bachama, who is the paramount ruler of the Bachama Kingdom, whose Voti (palace) is in Numan the administrative seat of the throne while Lamurde has another palace for the King as that is the spiritual or ancestral home of the Bwatiye people. The name of the current King is Homun (King) Dr Daniel Ismaila Shaga OON, who ascended the throne in 2020. The Queen of the Bachama kingdom is referred to as Mbamto (Queen) and she is Mbamto Rosaline Daniel Ismaila Shaga. They currently have four children whose names aren't identified yet.\nThe town is the location of Adamawa State Polytechnic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 156,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "numan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2704,
+    "attempt": 2684,
+    "place_id": "gn-2513882",
+    "input": {
+      "place": {
+        "place_id": "gn-2513882",
+        "name": "Mijas",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.59575,
+        "lon": -4.63728
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mijas",
+          "url": "https://en.wikipedia.org/wiki/Mijas",
+          "text": "Mijas ( MEE-həs; Spanish: [ˈmixas]) is a municipality in the Province of Málaga, in the autonomous community of Andalusia. Located on the southeastern coast of Spain, Mijas belongs to the region of Costa del Sol Occidental. Its center is a typical Andalusian white-washed village, Mijas Pueblo, located on a mountainside about 430 metres or 1,476 feet above sea level, in the heart of the Costa del Sol region.\nThe municipality has three nuclei, gathering the majority of its population:\n\nMijas Pueblo (a hillside village, administrative center of the municipality)\nLa Cala de Mijas (a coastal village and a seaside resort)\nLas Lagunas (a suburban and commercial area to the north and west of, and largely integrated with, Fuengirola).\nMijas Costa is used to denominate the coastal area of Mijas, especially the villages Calahonda, Riviera and La Cala de Mijas.\nThe economy of Mijas is primarily based on tourism, featuring local historical museums and many souvenir shops. The municipality has seven golf courses (four more are under construction), including the La Cala Resort, which is the biggest golf resort in Spain. Agricultural products include potatoes, cereals, and avocados."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 156,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "mijas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2705,
+    "attempt": 2685,
+    "place_id": "gn-2636910",
+    "input": {
+      "place": {
+        "place_id": "gn-2636910",
+        "name": "Stirling",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.11903,
+        "lon": -3.93682
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stirling",
+          "url": "https://en.wikipedia.org/wiki/Stirling",
+          "text": "Stirling is a city in central Scotland, 26 miles (42 km) north-east of Glasgow and 37 miles (60 km) north-west of Edinburgh. The city is surrounded by rich farmland and had a royal citadel, the medieval old town with its merchants and tradesmen, the Old Bridge and the port are all linked in to its history. Situated on the River Forth, Stirling is the administrative centre for the Stirling council area, and is traditionally the county town and historic county of Stirlingshire. Stirling's key position as the lowest bridging point of the River Forth before it broadens towards the Firth of Forth made it a focal point for travel north or south. It has been said that \"Stirling, like a huge brooch clasps Highlands and Lowlands together\". The city's status as \"Gateway to the Highlands\" also historically lent it great strategic importance—the credo \"he who holds Stirling, holds Scotland\" is sometimes attributed to Robert the Bruce.\nWhen Stirling was temporarily under Anglo-Saxon sway, according to a 9th-century legend, it was attacked by Danish invaders. The sound of a wolf roused a sentry, however, who alerted his garrison, which forced a Viking retreat. This led to the wolf being adopted as a symbol of the town as is shown on the 1511 Stirling Jug. The area is today known as Wolfcraig. Even today the wolf appears with a goshawk on the council's coat of arms along with the recently chosen motto: \"Steadfast as the Rock\".\nOnce the capital of Scotland, Stirling is visually dominated by Stirling Castle. Stirling also has a medieval parish church, the Church of the Holy Rude, where, on 29 July 1567, the infant James VI was anointed King of Scots by Adam Bothwell, the Bishop of Orkney, with the service concluding after a sermon by John Knox. The poet King was educated by George Buchanan and grew up in Stirling. He was later also crowned King of England and Ireland on 25 July 1603, bringing closer the countries of the United Kingdom. Modern Stirling is a centre for local government, higher education, tourism, retail, and industry. The 2022 census for the population of the city is 38,587; the wider Stirling council area has a population of about 93,750.\nOne of the principal royal strongholds of the Kingdom of Scotland, Stirling was created a royal burgh by David I between 1124 and 1127. In 2002, as part of the Golden Jubilee celebrations, Stirling was granted city status. In the run up to 2024, it was decided to celebrate Stirling's 900th anniversary at the earliest point it could have happened, the coronation of David I."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 156,
+      "fullExtractWords": 436
+    },
+    "banned_terms": [
+      {
+        "term": "stirling",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2706,
+    "attempt": 2686,
+    "place_id": "gn-2655009",
+    "input": {
+      "place": {
+        "place_id": "gn-2655009",
+        "name": "Bracknell",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.41363,
+        "lon": -0.75054
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bracknell",
+          "url": "https://en.wikipedia.org/wiki/Bracknell",
+          "text": "Bracknell () is a town and civil parish in Berkshire, England, the westernmost area within the Greater London Urban Area and the administrative centre of the borough of Bracknell Forest. It lies 11 miles (18 km) to the east of Reading, 9 miles (14 km) south of Maidenhead, 10 miles (16 km) southwest of Windsor and 25 miles (40 km) west of central London. Bracknell is the third largest town in Berkshire.\nThe name Bracknell is derived from the Saxon Braccan Heal or Braccan Heale, first recorded in a charter boundary of 942 AD. In the Middle Ages, Bracknell developed into two small market villages, Old Bracknoll and New Bracknoll. By the 19th century, the two Bracknells had combined into a single market town, which was an important centre of local industry, most notably for its brick trade. In the 20th century, Bracknell experienced a period of rapid growth after it was declared a New Town. Planned at first for a population of 25,000, Bracknell New Town was further expanded in the 1960s to accommodate a population of 45,000. During this time, Bracknell absorbed many of its surrounding villages including Easthampstead, Ramslade and Old Bracknell. As of 2021, Bracknell Forest has an estimated population of around 113,205. Today, the town is a busy commercial centre within the so-called Silicon Thames Valley and the UK headquarters for several technology companies.\nBracknell is bordered to the south by Swinley Forest and by Crowthorne Woods to the south-east and south. Its neighbouring villages of Binfield, Warfield and Winkfield are part of the borough of Bracknell Forest and are gradually becoming absorbed into the Bracknell metropolitan area. To the east, the urban area joins up with Ascot to form a continuous conurbation that extends to Central London."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 156,
+      "fullExtractWords": 293
+    },
+    "banned_terms": [
+      {
+        "term": "bracknell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2707,
+    "attempt": 2687,
+    "place_id": "gn-3080231",
+    "input": {
+      "place": {
+        "place_id": "gn-3080231",
+        "name": "Zgorzelec",
+        "country": "Poland",
+        "subdivision": "Lower Silesia",
+        "lat": 51.14942,
+        "lon": 15.00835
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zgorzelec",
+          "url": "https://en.wikipedia.org/wiki/Zgorzelec",
+          "text": "Zgorzelec ([zɡɔˈʐɛlɛt͡s] , German: Görlitz, Upper Sorbian: Zhorjelc [ˈzhɔʁʲɛlts] , Czech: Zhořelec, Lower Sorbian: Zgórjelc) is a town in Lower Silesian Voivodeship, in southwestern Poland, with 30,374 inhabitants (2019). It is the seat of Zgorzelec County and of Gmina Zgorzelec (although it is not part of the territory of the latter, as the town is an urban gmina in its own right).\nZgorzelec is located on the Lusatian Neisse river, on the Polish-German border adjoining the German town of Görlitz, of which it constituted the eastern part up to 1945. Through its history it has been at various times under German, Polish, and Czech rule. In recent history, it became known as the location of a major German-operated prisoner-of-war camp for Allied soldiers of various nationalities during World War II, the place of signing of the Treaty of Zgorzelec, and the home of the successful Turów Zgorzelec basketball team, which played in the Euroleague and EuroCup."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 156,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "zgorzelec",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2708,
+    "attempt": 2688,
+    "place_id": "gn-5105262",
+    "input": {
+      "place": {
+        "place_id": "gn-5105262",
+        "name": "Teaneck",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.8976,
+        "lon": -74.01597
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Teaneck, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Teaneck,_New_Jersey",
+          "text": "Teaneck (English pronunciation: /ˈtiːnɛk/ ) is a township in Bergen County, in the U.S. state of New Jersey. It is a bedroom community in the New York metropolitan area. As of the 2020 United States census, the township's population was 41,246, an increase of 1,470 (+3.7%) from the 2010 census count of 39,776, which in turn reflected an increase of 516 (+1.3%) from the 39,260 counted in the 2000 census. As of 2020, Teaneck was the second-most populous among the 70 municipalities in Bergen County, behind Hackensack, which had a population of 46,030.\nTeaneck was created on February 19, 1895, by an act of the New Jersey Legislature from portions of Englewood Township and Ridgefield Township, both of which are now defunct (despite existing municipalities with similar names), along with portions of Bogota and Leonia. Independence followed the result of a referendum held on January 14, 1895, in which voters favored incorporation by a 46–7 margin. To address the concerns of Englewood Township's leaders, the new municipality was formed as a township, rather than succumbing to the borough craze sweeping across Bergen County at the time. On May 3, 1921, and again on June 1, 1926, portions of what had been Teaneck were transferred to Overpeck Township.\nTeaneck lies at the junction of Interstate 95 and the eastern terminus of Interstate 80. The township is bisected into north and south portions by Route 4 and east and west by the River Subdivision of CSX Transportation. Commercial development is concentrated in four main shopping areas, on Cedar Lane, Teaneck Road, DeGraw Avenue, and West Englewood Avenue and Queen Anne Road, more commonly known as \"The Plaza\".\nTeaneck's location at the crossroads of river, road, train and other geographical features has made it a site of many momentous events across the centuries. After the American defeat at the Battle of Fort Washington, George Washington and the troops of the Continental Army retreated across New Jersey from the British Army, traveling through Teaneck and crossing the Hackensack River at New Bridge Landing, which has since been turned into a state park and historic site commemorating the events of 1776 and of early colonial life. In 1965, Teaneck voluntarily integrated its public schools, after the Board of Education approved a plan to adopt a bussing program by a 7–2 vote on May 13, 1964. Teaneck has a diverse population, with large Jewish and African American communities, and growing numbers of Hispanic and Asian residents."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 156,
+      "fullExtractWords": 410
+    },
+    "banned_terms": [
+      {
+        "term": "teaneck",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2709,
+    "attempt": 2689,
+    "place_id": "gn-5336537",
+    "input": {
+      "place": {
+        "place_id": "gn-5336537",
+        "name": "Chino",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.01223,
+        "lon": -117.68894
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chino, California",
+          "url": "https://en.wikipedia.org/wiki/Chino,_California",
+          "text": "Chino ( CHEE-noh; Spanish for 'Curly') is a city in the western end of the Inland Empire region of San Bernardino County, California, United States, with Los Angeles County to its west and Orange County to its south in the Southern California region.\nChino's surroundings have long been a center of agriculture and dairy farming, providing milk products in Southern California and much of the southwestern United States. Chino's agricultural history dates back to the Spanish land grant forming Rancho Santa Ana del Chino. The area specialized in fruit orchards, row crops, and dairy.\nChino is bounded by Chino Hills and Los Angeles County to the west, Pomona to the northwest, unincorporated San Bernardino County (near Montclair) to the north, including the unincorporated community of Narod, Ontario to the northeast, Eastvale to the southeast in Riverside County and Orange County to the southwest. It is easily accessible via the Chino Valley (71) and Pomona (60) freeways. The population was 91,403 at the 2020 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 156,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "chino",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2710,
+    "attempt": 2690,
+    "place_id": "gn-2525755",
+    "input": {
+      "place": {
+        "place_id": "gn-2525755",
+        "name": "Alcamo",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 37.9779,
+        "lon": 12.96473
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alcamo",
+          "url": "https://en.wikipedia.org/wiki/Alcamo",
+          "text": "Alcamo (Italian: [ˈalkamo]; Sicilian: Àrcamu [ˈaɾkamʊ]) is the fourth-largest town and municipality of the Province of Trapani, Sicily, with a population of 44,925 inhabitants. It is in the north-west of the island, on the border of the Metropolitan City of Palermo, about 50 kilometres (31 mi) from Palermo and Trapani.\nThe current municipality covers an area of 130.79 km2 (50.50 sq mi) and it is the second most densely populated in the province of Trapani, after Erice.\nAlcamo is bounded by the Tyrrhenian Sea on the north, Balestrate and Partinico on the east, Camporeale on the south and Calatafimi-Segesta and Castellammare del Golfo on the west. Its main hamlet is Alcamo Marina, about 6 km (4 mi) from the town centre.\nTogether with other municipalities is a participant in the Associazione Città del Vino, the Patto dei Sindaci movement, the Progetto Città dei Bambini project, Rete dei Comuni Solidali and Patto Territoriale Golfo di Castellammare."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "alcamo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2711,
+    "attempt": 2691,
+    "place_id": "gn-2639842",
+    "input": {
+      "place": {
+        "place_id": "gn-2639842",
+        "name": "Purley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.33678,
+        "lon": -0.11201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Purley, London",
+          "url": "https://en.wikipedia.org/wiki/Purley,_London",
+          "text": "Purley is an area of the London Borough of Croydon in Greater London, England, on the border with Sutton. It is 11.5 miles (18.5 km) south of Charing Cross and 2.5 miles (4.0 km) northeast of the London/Surrey border, with a history going back at least 800 years. It was originally granted as an estate from holdings at Sanderstead and until as a district of Surrey and then, with neighbouring Coulsdon, as an urban district that became an electoral ward of the London Borough of Croydon, becoming part of the ceremonial county of London, in 1965. In 2018 the Purley ward was divided into two: Purley and Woodcote, and Purley Oaks and Riddlesdown.\nPurley is a suburban area of South London, and the quintessential suburban environment has been referenced in fictional and popular culture, most notably as the setting for the long running Terry and June sitcom.\nPurley had a population of 15,184 in 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "purley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2712,
+    "attempt": 2692,
+    "place_id": "gn-2807465",
+    "input": {
+      "place": {
+        "place_id": "gn-2807465",
+        "name": "Wismar",
+        "country": "Germany",
+        "subdivision": "Mecklenburg-Vorpommern",
+        "lat": 53.89218,
+        "lon": 11.45563
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wismar",
+          "url": "https://en.wikipedia.org/wiki/Wismar",
+          "text": "Wismar (German pronunciation: [ˈvɪsmaʁ] ; Low German: Wismer), officially the Hanseatic City of Wismar (German: Hansestadt Wismar) is, with around 43,000 inhabitants, the sixth-largest city of the northeastern German state of Mecklenburg-Vorpommern, and the fourth-largest city of Mecklenburg after Rostock, Schwerin and Neubrandenburg. The city was the third-largest port city in former East Germany after Rostock and Stralsund.\nWismar is located on the Bay of Wismar of the Baltic Sea, directly opposite the island of Poel, that separates the Bay of Wismar from the larger Bay of Mecklenburg. The city lies in the middle between the two larger port cities of Lübeck in the west, and Rostock in the east, and the state capital of Schwerin is located south of the city on Lake Schwerin. Wismar lies in the northeastern corner of the Hamburg Metropolitan Region, and is the capital of the district of Northwestern Mecklenburg. The city's natural harbour is protected by a promontory. The uninhabited island of Walfisch, lying between Wismar and the island of Poel, administratively belongs to the borough of Wismar-Wendorf.\nIt is estimated that Wismar was founded in 1226 under Henry Borwin I, Lord of Mecklenburg from the House of Mecklenburg, a German dynasty of Slavic origin also known as the Obotrites or Niklotides. In 1259, the city became part of the Hanseatic League. Throughout its history, the city has been under control of various German states as well as the Swedish Empire. It was part of Sweden from 1648 until 1803 (de jure until 1903, when Sweden officially renounced its claims to the city), and this Swedish chapter of the city is celebrated annually with a large \"Sweden Celebration\". From 1815 until 1918, Wismar lay in the Grand Duchy of Mecklenburg-Schwerin and later in the Free State of Mecklenburg-Schwerin.\nWismar is a typical representative of the Hanseatic League with its city-wide Brick Gothic structures and iconic gabled patrician houses and was inscribed on the UNESCO World Heritage List alongside the historical old town of Stralsund in 2002. Wismar is the seat of Hochschule Wismar, a university of applied sciences, one of nine institutions of higher education in Mecklenburg-Vorpommern. With MV Werften Wismar, the city is one of three cruise ship-producing locations of MV Werften (along with Rostock and Stralsund), and the shipyard with its tall white-blue hall is one of the city's largest employers. St. George's, St. Nicholas' and St. Mary's, of which only the tower is left standing, are the three iconic sacred buildings dominating the skyline of Wismar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 416
+    },
+    "banned_terms": [
+      {
+        "term": "wismar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2713,
+    "attempt": 2693,
+    "place_id": "gn-2824948",
+    "input": {
+      "place": {
+        "place_id": "gn-2824948",
+        "name": "Suhl",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.60911,
+        "lon": 10.69401
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suhl",
+          "url": "https://en.wikipedia.org/wiki/Suhl",
+          "text": "Suhl (German pronunciation: [zuːl] ) is a city in Thuringia, Germany, located   SW of Erfurt, 110 kilometres (68 miles) NE of Würzburg and 130 kilometres (81 miles) N of Nuremberg. With its 37,000 inhabitants, it is the smallest of the six urban districts within Thuringia. Together with its northern neighbour-town Zella-Mehlis, Suhl forms the largest urban area in the Thuringian Forest with a population of 46,000. The region around Suhl is marked by up to 1,000-meter-high mountains, including Thuringia's highest peak, the Großer Beerberg (983 m), approximately 5 kilometres (3 miles) NE of the city centre.\nSuhl was first mentioned in 1318 and stayed a small mining and metalworking town, until industrialization broke through in late 19th century and Suhl became a centre of Germany's arms production, specialized on rifles and guns with companies such as Sauer & Sohn. Furthermore, the engineering industry was based in Suhl with Simson, a famous car and moped producer. In 1952, Suhl became one of East Germany's 14 district capitals, which led to a government-directed period of urban growth and conversion. Its results – a typical 1960s concrete architecture-marked city centre – are defining to the present. With the loss of its administrative and industrial functions, Suhl saw a lasting period of urban decline starting in 1990.\nSuhl is known for its sportsmen, especially in shooting, winter sports, and volleyball.\nSuhl is a significant setting in science fiction writer Eric Flint’s 1632 series, based on a 20th-century West Virginia town transported through time to Thuringia in the 17th century, most notably in Mike Watson's novel The Marshalls."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 263
+    },
+    "banned_terms": [
+      {
+        "term": "suhl",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2714,
+    "attempt": 2694,
+    "place_id": "gn-3046686",
+    "input": {
+      "place": {
+        "place_id": "gn-3046686",
+        "name": "Pápa",
+        "country": "Hungary",
+        "subdivision": "Veszprém",
+        "lat": 47.33004,
+        "lon": 17.4674
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pápa",
+          "url": "https://en.wikipedia.org/wiki/Pápa",
+          "text": "Pápa [ˈpaːpɒ] is a historical town in Veszprém county, Hungary, located close to the northern edge of the Bakony Hills, and noted for its baroque architecture. With its 28,549 inhabitants (2024), it is the cultural, economic and tourism centre of the region.\nPápa is one of the centres of the Reformed faith in Transdanubia, as the existence of numerous ecclesiastical heritage sites and museums suggest. Due to the multitude of heritage buildings the centre of the town is now protected.\nPápa has a large historical centre, with renovated old burgher's houses, cafes, and museums, including the Blue-Dyeing Museum (Kékfestő Múzeum), set up in a former factory which produced clothes and other textiles dyed with indigo blue under a unique method.\nThe town is also noted for its thermal baths, particularly a newly constructed swimming complex, the Esterházy family's palace, its grand Roman Catholic church, and Calvinist secondary school; the town is an important religious centre. It also boasts a large park near the centre of town.\nThe town has been the main center of trade in the wines of the Somló wine region. Pápa was an administrative regional capital from 1945 to 1983."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "papa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2715,
+    "attempt": 2695,
+    "place_id": "gn-3118848",
+    "input": {
+      "place": {
+        "place_id": "gn-3118848",
+        "name": "Las Rozas de Madrid",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.49292,
+        "lon": -3.87371
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Las Rozas de Madrid",
+          "url": "https://en.wikipedia.org/wiki/Las_Rozas_de_Madrid",
+          "text": "Las Rozas de Madrid (Spanish: [las ˈɾoθas ðe maˈðɾið] , or simply, Las Rozas [las ˈɾoθas]) is a municipality in the autonomous community of Madrid, Spain, with an area of 59 km² (22¾ sq. mi.).[1]\nThe municipality is served by three Renfe railway stations–  Las Rozas, Pinar de Las Rozas and Las Matas. Additional stops at Peñascales and El Tejar were closed. The municipality shares borders with Torrelodones to the north, Villanueva del Pardillo and Galapagar to the west, the park of Monte del Pardo in the east and Majadahonda (south).\nLas Rozas has one of the highest average per capita incomes in the Madrid region, and it has become a right-wing stronghold.\nDuring the final decades of the 20th century the town has experienced a vigorous building program, mostly as a dormitory town for Madrid, with a correspondingly strong population growth, which more than doubled between 1991 and 2005 (from 35,137 to 76,246 inhabitants).\nThe provisioning for local services (such as schools and new dwellings) has at times been outpaced by the locality's high birth and immigration rates. However, by 2010 the community was well served in all health, education and social sectors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "las rozas de madrid",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rozas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "madrid",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2716,
+    "attempt": 2696,
+    "place_id": "gn-3346661",
+    "input": {
+      "place": {
+        "place_id": "gn-3346661",
+        "name": "Porto Amboim",
+        "country": "Angola",
+        "subdivision": "Kwanza Sul",
+        "lat": -10.73251,
+        "lon": 13.76844
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porto Amboim",
+          "url": "https://en.wikipedia.org/wiki/Porto_Amboim",
+          "text": "Porto Amboim is a port town in Cuanza Sul Province, Angola with a population of 65,000; it comprises an area of 4,638 km2.  In the past Porto Amboim was connected by an isolated 123 km 610 mm (2 ft) narrow gauge railway to Gabela, albeit closed in 1987 due to the civil war and to the abandonment of most coffee plantations, the biggest source of revenue from Gabela.  Originally Porto Amboim was known as Kissonde, a small village later colonized in 1587 by the Portuguese naming it Benguela and later Benguela Velha (Old Benguela) due to the creation of another village today known as Benguela located 350 km south of Benguela Velha.  In 1923, the name was changed to Porto Amboim.\nToday (2014) Porto Amboim is one of the growing areas for the offshore industry. The pre-salt in front of the coast of Angola, with Porto Amboim in the centre is a planned development area. With companies as Paenal, a joint venture between Sonangol, SBM and DSME and Heerema Porto Amboim, the two major offshore fabrication yards, Porto Amboim is developing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "porto amboim",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "porto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "amboim",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2717,
+    "attempt": 2697,
+    "place_id": "gn-4006783",
+    "input": {
+      "place": {
+        "place_id": "gn-4006783",
+        "name": "Encarnación de Díaz",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 21.52631,
+        "lon": -102.24024
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Encarnación de Díaz",
+          "url": "https://en.wikipedia.org/wiki/Encarnación_de_Díaz",
+          "text": "Encarnación de Díaz is a town and municipality located in the far northeast of the state of Jalisco in north-central Mexico. It is located in a natural pass that connects the Los Altos region of Jalisco to points north, and from pre-Hispanic times until the 20th century, it was a major thoroughfare for north-south travel. The town began as a way station along a road built through this pass in the 17th century, formally becoming a town in 1760.  It began to function as a municipality in the latter 19th century, but this status was not confirmed until the early 20th. Transport, along with numerous prosperous haciendas supported the economy of the area until the early 20th century, when travel patterns and the Mexican Revolution spurred its decline. In the 1920s, it was a centre of rebellion during the Cristero War, and the town contains Mexico's only museum exclusively dedicated to this episode in history. It also contains a museum dedicated to various naturally occurring mummies which have been found in the municipal cemetery."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "encarnacion de diaz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "encarnacion",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "diaz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2718,
+    "attempt": 2698,
+    "place_id": "gn-4565980",
+    "input": {
+      "place": {
+        "place_id": "gn-4565980",
+        "name": "Las Piedras",
+        "country": "Puerto Rico",
+        "subdivision": "Las Piedras",
+        "lat": 18.18301,
+        "lon": -65.86627
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Las Piedras, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Las_Piedras,_Puerto_Rico",
+          "text": "Las Piedras (Spanish pronunciation: [las ˈpjeðɾas]), is a town and municipality in east Puerto Rico located in the central eastern region of the island, north of Yabucoa; south of Canóvanas and Río Grande; east of Juncos and San Lorenzo; and west of Naguabo and Humacao. Las Piedras has 8 barrios including Las Piedras Pueblo (the downtown area and the administrative center of the city). It is part of the San Juan-Caguas-Guaynabo Metropolitan Statistical Area.\nLas Piedras has many natural attractions such as Cueva del Indio which contains original Taino caves and paintings that denote some characteristics of the island's natives. Las Piedras is located about 45 minutes from San Juan, Puerto Rico's capital and 5 minutes from Palmas del Mar, Humacao which is one of the biggest resorts in the Caribbean.\nEl Toro, the highest point in the Sierra de Luquillo, is located in the boundary between the municipalities of Las Piedras and Río Grande."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "las piedras",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "piedras",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2719,
+    "attempt": 2699,
+    "place_id": "gn-5098706",
+    "input": {
+      "place": {
+        "place_id": "gn-5098706",
+        "name": "Hackensack",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.88593,
+        "lon": -74.04347
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hackensack, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Hackensack,_New_Jersey",
+          "text": "Hackensack is the most populous municipality in and the county seat of Bergen County, in the U.S. state of New Jersey. The area was officially named New Barbadoes Township until 1921, but has informally been known as Hackensack since at least the 18th century. As of the 2020 United States census, the city's population was 46,030, its highest decennial count ever and an increase of 3,020 (+7.0%) from the 2010 census count of 43,010, which in turn reflected an increase of 333 (+0.8%) from the 42,677 counted in the 2000 census.\nAn inner suburb of New York City, Hackensack is located approximately 12 miles (19 km) northwest of Midtown Manhattan and about 7 miles (11 km) from the George Washington Bridge. From a number of locations, including portions of Prospect Avenue, the New York City skyline can be seen.\nThe Metropolitan Campus of Fairleigh Dickinson University straddles the Hackensack River in both Hackensack and Teaneck. Hackensack is also the home of the former New Jersey Naval Museum and the World War II submarine USS Ling. Astronaut Wally Schirra is perhaps Hackensack's most famous native son.\nThe city has diverse neighborhoods and land uses located close to one another. Within its borders are the Hackensack University Medical Center, a residential high-rise district about a mile long (along Prospect Avenue between Beech Street and Passaic Street), suburban neighborhoods of single-family houses, stately older homes on acre-plus lots, older two-family neighborhoods, large garden apartment complexes, industrial areas, the Bergen County Jail, a tidal river, Hackensack River County Park, Borg's Woods Nature Preserve, various city parks, large office buildings, a major college campus, the Bergen County Court House, a vibrant small-city downtown district, and various small neighborhood business districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 285
+    },
+    "banned_terms": [
+      {
+        "term": "hackensack",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2720,
+    "attempt": 2700,
+    "place_id": "gn-5106331",
+    "input": {
+      "place": {
+        "place_id": "gn-5106331",
+        "name": "Westfield",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.65899,
+        "lon": -74.34737
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westfield, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Westfield,_New_Jersey",
+          "text": "Westfield is a town in Union County, in the U.S. state of New Jersey. Located within the heart of the Rahway Valley region, Westfield is a bustling commercial and cultural hub in northern–central New Jersey, and it is a wealthy bedroom community of New York City within the New York metropolitan area (located 16 miles (26 km) southwest of New York City). In March 2018, Bloomberg ranked Westfield as the 99th highest-income place in the United States, and the 18th highest-income location in New Jersey. According to a 2014 nationwide survey, Westfield was ranked as the 30th-safest city to live in the United States.\nAs of the 2020 United States census, the town's population was 31,032, an increase of 716 (+2.4%) from the 2010 census count of 30,316, which in turn reflected an increase of 672 (+2.3%) from the 29,644 counted in the 2000 census. The town has been one of the state's highest-income communities. Based on data from the American Community Survey for 2013–2017, Westfield residents had a median household income of $159,923, ranked 8th in the state among municipalities with more than 10,000 residents, more than double the statewide median of $76,475."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 155,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "westfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

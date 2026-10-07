@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 2641,
+    "attempt": 2621,
+    "place_id": "gn-3464073",
+    "input": {
+      "place": {
+        "place_id": "gn-3464073",
+        "name": "Erechim",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -27.63461,
+        "lon": -52.2754
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Erechim",
+          "url": "https://en.wikipedia.org/wiki/Erechim",
+          "text": "Erechim (Portuguese pronunciation: [eɾe'ʃi᷉]) is a municipality in the state of Rio Grande do Sul, located in the South Region of Brazil. Recognized as a subregional hub in the country, it serves as the central city of the Alto Uruguai region in Rio Grande do Sul and is the second most populous city in the northern part of the state, with an estimated population of 105,705 inhabitants in 2022 Census, according to the IBGE. According to the Socioeconomic Development Index (IDESE), Erechim ranks as the second most developed city in Rio Grande do Sul among municipalities with over 100,000 inhabitants, leading in the education sector. The Atlas of Violence identifies it as the second safest municipality in the state. In 2015, Erechim held the 15th position in GDP among municipalities in Rio Grande do Sul.\nErechim is one of Brazil’s earliest planned modern cities. Its urban layout drew inspiration from urban planning concepts used in Washington, D.C. (1791), Paris (1850), Buenos Aires (1580), and Belo Horizonte (1897). However, recent modifications to its road network have enhanced traffic flow, characterized by wide streets, a clear hierarchy, and the creation of convergence points through diagonal streets intersecting the basic grid. Key elements of its urban design include a perpendicular street grid intersected by diagonal avenues, uniformly sized city blocks, and a perimeter avenue encircling the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "erechim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2642,
+    "attempt": 2622,
+    "place_id": "gn-5099133",
+    "input": {
+      "place": {
+        "place_id": "gn-5099133",
+        "name": "Hoboken",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.74399,
+        "lon": -74.03236
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hoboken, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Hoboken,_New_Jersey",
+          "text": "Hoboken ( HOH-boh-kən; Unami: Hupokàn) is a city in Hudson County in the U.S. state of New Jersey. Hoboken is part of the New York metropolitan area and is the site of Hoboken Terminal, a major transportation hub. As of the 2020 United States census, the city's population was 60,419, an increase of 10,414 (+20.8%) from the 2010 census count of 50,005, which in turn reflected an increase of 11,428 (+29.6%) from the 38,577 counted in the 2000 census. The Census Bureau's Population Estimates Program calculated a population of 59,149 for 2024. With more than 42,400 inhabitants per square mile (16,400/km2) in data from the 2010 census, Hoboken was ranked as the third-most densely populated municipality in the United States among cities with a population above 50,000. In the 2020 census, the city's population density climbed to more than 48,300 inhabitants per square mile (18,600/km2) of land, ranked fourth in the county behind Guttenberg, Union City and West New York, all of which are in Hudson County.\nHoboken was first settled by Europeans as part of the Pavonia, New Netherland colony in the 17th century. During the early 19th century, the city was developed by Colonel John Stevens, first as a resort and later as a residential neighborhood. Originally part of Bergen Township and later North Bergen Township, it became a separate township in 1849 and was incorporated as a city in 1855. Hoboken is the location of the first recorded game of baseball and of the Stevens Institute of Technology, one of the oldest technological universities in the United States.\nIt is also known as the birthplace and hometown of the world-famous singer and actor Frank Sinatra (1915–1998); various streets and parks in the city have been named after him.\nLocated on the Hudson Waterfront, the city was an integral part of the Port of New York and New Jersey and was home to major industries for most of the 20th century. The character of the city has changed from an artsy industrial vibe from the days when Maxwell House coffee, Lipton tea, Hostess Cupcakes, and Wonder Bread called Hoboken home, to one of trendy shops and expensive condominiums. It was ranked 2nd in Niche's \"2019 Best Places to Live in Hudson County\" list, and 1st in 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 167,
+      "fullExtractWords": 379
+    },
+    "banned_terms": [
+      {
+        "term": "hoboken",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2643,
+    "attempt": 2623,
+    "place_id": "gn-1651591",
+    "input": {
+      "place": {
+        "place_id": "gn-1651591",
+        "name": "Amahai",
+        "country": "Indonesia",
+        "subdivision": "Maluku",
+        "lat": -3.33984,
+        "lon": 128.91975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Amahai",
+          "url": "https://en.wikipedia.org/wiki/Amahai",
+          "text": "Amahai is a village (desa or negeri) and an administrative district (kecamatan) on the south coast of the island of Seram, in Central Maluku Regency. The village, which serves as the administrative centre of the eponymous district, lies to the south of Masohi town, both being situated on the coast of Elpaputih Bay, and they are surrounded on the landward sides by Amahai District. Teon Nila Serua District is also a semi-enclave within Amahai District, which surrounds it on all sides except the west (where it is bordered by Teluk Elpaputih District). Daily speedboats connect Tulehu (the port of Salahutu District on Ambon Island) with Amahai, which is Seram's main port.\nAmahai District covers a land area of 1,619.07 km2 and had a population of 38,932 at the 2010 Census and 50,028 at the 2020 Census; the official estimate as at mid 2023 was 50,478 inhabitants. \nThe district is subdivided into 14 rural villages (desa) plus the kelurahan of Hollo, all sharing the postcode of 97516."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "amahai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2644,
+    "attempt": 2624,
+    "place_id": "gn-2637490",
+    "input": {
+      "place": {
+        "place_id": "gn-2637490",
+        "name": "Southall",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.50896,
+        "lon": -0.3713
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Southall",
+          "url": "https://en.wikipedia.org/wiki/Southall",
+          "text": "Southall () is a large suburban town in West London, England, part of the London Borough of Ealing and is one of its seven major towns.\nIt is situated 10.7 mi (17.2 km) west of Charing Cross and had a population of 69,857 as of 2011. It is generally divided in three parts: the mostly residential area around Lady Margaret Road (Dormers Wells); the main commercial centre at High Street and Southall Broadway (part of the greater Uxbridge Road); and Old Southall/Southall Green to the south consisting of Southall railway station, industries and Norwood Green bounded by the M4.\nIt was historically a municipal borough of Middlesex administered from Southall Town Hall until 1965. Southall is located on the Grand Union Canal (formerly the Grand Junction Canal) which first linked London with the rest of the growing canal system. It was one of the last canals to carry significant commercial traffic (through the 1950s) and is still open to traffic and is used by pleasure craft. The canal separates it from Hayes on the west, whereas to the east the River Brent separates the town from Hanwell.\nFrom the 1950s the town's local factories and proximity to Heathrow Airport attracted large numbers of Asian immigrants. This town is known for its diverse communities, and some parts of the town eventually became home to the largest Punjabi community outside the Indian subcontinent which become a major centre of South Asian culture, and sometimes known as known as an example of a Little India."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "southall",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2645,
+    "attempt": 2625,
+    "place_id": "gn-3455671",
+    "input": {
+      "place": {
+        "place_id": "gn-3455671",
+        "name": "Ouro Preto",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -20.39484,
+        "lon": -43.50517
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ouro Preto",
+          "url": "https://en.wikipedia.org/wiki/Ouro_Preto",
+          "text": "Ouro Preto (Portuguese pronunciation: [ˈo(w)ɾu ˈpɾetu], lit. 'Black Gold'), formerly Vila Rica (Portuguese pronunciation: [ˈvilɐ ˈʁikɐ], lit. 'Rich Town'), is a municipality in the state of Minas Gerais, Brazil. The city, a former colonial mining town located in the Serra do Espinhaço mountains, was designated a World Heritage Site by UNESCO due to its Baroque colonial architecture. Ouro Preto used to be the capital of Minas Gerais from 1720 until the foundation of Belo Horizonte in 1897.\nThe municipality became one of the most populous cities of Latin America, counting on about 40,000 people in 1730, and 80,000 in 1750. At that time, the population of New York was less than half of that number of inhabitants and the population of São Paulo did not surpass 8,000. Officially, 800 tons of gold were sent to Portugal in the eighteenth century, not to mention what was circulated in an illegal manner, nor what remained in the colony, such as gold used in the ornamentation of the churches.\nOther historical cities in Minas Gerais are São João del-Rei, Diamantina, Mariana, Tiradentes, Congonhas and Sabará."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "ouro preto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ouro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "preto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2646,
+    "attempt": 2626,
+    "place_id": "gn-3470597",
+    "input": {
+      "place": {
+        "place_id": "gn-3470597",
+        "name": "Barra Velha",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -26.63222,
+        "lon": -48.68472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barra Velha",
+          "url": "https://en.wikipedia.org/wiki/Barra_Velha",
+          "text": "Barra Velha is a resort town and county seat of about 30,000 inhabitants in the Northern region of Santa Catarina, Brazil. Its nine beaches extend from the Rio Itapocu in the North to the resort town of Piçarras on its Southern border. Additionally, it is the only resort in the area to have a freshwater lake separated from the ocean by an old sand bar, from which it derives its name.\nLocated between Joinville and Itajaí on BR-101, the principal north–south highway in Southern Brazil, it is an important resort destination for residents of the industrial region to the North and West of the State, with summer weekend population exceeding 100,000.\nSettled initially by Azorian whale fishermen in 1812, it retains its fishing village characteristics with boats drawn up onto the beach and the daily catch sold directly from them by the fishermen every morning. In the center of downtown a hill rises sharply from the beach which provides views of the lake and town center. A replica of the statute of Christ on Corcovado rises from the summit.\nBarra Velha is home of the annual \"Festa Nacional do Pirão\", a festival celebrating the Azorian dish \"Pirão\" having a sauce-like consistency and normally made from fish or shellfish. Held in early September, it attracts over 30,000 visitors annually."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "barra velha",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "barra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "velha",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2647,
+    "attempt": 2627,
+    "place_id": "gn-4581832",
+    "input": {
+      "place": {
+        "place_id": "gn-4581832",
+        "name": "Hilton Head Island",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 32.19382,
+        "lon": -80.73816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hilton Head Island, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Hilton_Head_Island,_South_Carolina",
+          "text": "Hilton Head Island (sometimes referred to as simply Hilton Head) is a resort town in Beaufort County, South Carolina, United States. It is a barrier island within the South Carolina Lowcountry, located 20 miles (32 km) northeast of Savannah, Georgia, and 95 miles (153 km) southwest of Charleston. The year-round population was 37,661 at the 2020 census, although during the peak of summer vacation season the population can swell to 150,000. It is the principal city of the Hilton Head Island metropolitan area, which had an estimated population of 232,523 in 2023.\nThe island is named after Captain William Hilton, who in 1663 identified a headland near the entrance to Port Royal Sound, which mapmakers named \"Hilton's Headland.\" The island has a rich history that started with seasonal occupation by Native Americans thousands of years ago and continued with European exploration and the sea island cotton trade. It became an important base of operations for the Union blockade of the Southern ports during the Civil War. Once the island fell to Union troops, hundreds of ex-slaves flocked to Hilton Head, which is still home to many of their descendants, who are known as the Gullah (or Geechee).  They have managed to hold on to much of their ethnic and cultural identity.\nThe island features 12 miles (19 km) of beachfront on the Atlantic Ocean and is a popular vacation destination for 2.5 million visitors each year.  Hilton Head Island offers an unusual number of cultural opportunities for a community its size, including plays at the Arts Center of Coastal Carolina, the 120-member full chorus of the Hilton Head Choral Society, the Hilton Head Symphony Orchestra, an annual outdoor, tented wine tasting event on the east coast, and several other annual community festivals. It also hosts the RBC Heritage, a PGA Tour tournament played on the Harbour Town Golf Links in Sea Pines Resort.\nHilton Head Island was incorporated as a municipality in 1983 and is well known for its eco-friendly development. The town's Natural Resources Division enforces the Land Management Ordinance which minimizes the impact of development and governs the style of buildings and how they are situated amongst existing trees. As a result, Hilton Head Island enjoys an unusual amount of tree cover relative to the amount of development. \nApproximately 70% of the island, including most of the tourist areas, is located inside gated communities. However, the town maintains several public beach access points, including one for the exclusive use of town residents, who have approved several multimillion-dollar land-buying bond referendums to control commercial growth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 426
+    },
+    "banned_terms": [
+      {
+        "term": "hilton head island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hilton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "head",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2648,
+    "attempt": 2628,
+    "place_id": "gn-741855",
+    "input": {
+      "place": {
+        "place_id": "gn-741855",
+        "name": "Lüleburgaz",
+        "country": "Türkiye",
+        "subdivision": "Kırklareli",
+        "lat": 41.40173,
+        "lon": 27.35746
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lüleburgaz",
+          "url": "https://en.wikipedia.org/wiki/Lüleburgaz",
+          "text": "Lüleburgaz (Turkish: [lyˈlebuɾɡaz]; Modern Greek: Λουλέ Μπουργκάς Lule Burgas; Bulgarian: Люлебургаз Lyuleburgaz), Bergoule (Ancient Greek: Βεργούλη), Arcadiopolis (Ancient Greek: Ἀρκαδιούπολις Arkadiópolis) or colloquially referred as Burgaz is the largest city of Kırklareli Province in the Marmara region of Turkey. It is the seat of Lüleburgaz District. Its population is 125,404 (2022). Located near the border with Bulgaria and Greece within the historic region of East Thrace in Rumelia, the city is home to many Balkan Turks from Albania, Bulgaria, Greece, Romania and ex-Yugoslavia who immigrated to Turkey since the 19th century.\nLüleburgaz is a hub for road and rail transportation, with the city being connected to Istanbul and Edirne by the Istanbul-Kapıkule Regional Train and to Plovdiv, Sofia, Belgrade, Bucharest and Budapest by the Bosphorus Express and the Istanbul-Sofia Express.\nIts best known attraction is the 16th-century Sokollu Mehmed Pasha Mosque, named after the Grand Vizier Mehmet Paşa Sokolović and designed by the Ottoman chief architect Mimar Sinan who also designed a bridge for the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 166,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "luleburgaz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2649,
+    "attempt": 2629,
+    "place_id": "gn-1276589",
+    "input": {
+      "place": {
+        "place_id": "gn-1276589",
+        "name": "Behror",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 27.88832,
+        "lon": 76.28108
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Behror",
+          "url": "https://en.wikipedia.org/wiki/Behror",
+          "text": "Behror (IPA: [bɛɦɾoːɽ] ) is a city in the Kotputli-Behror district of Rajasthan of the Jaipur division. It serves as the administrative headquarters of the eponymous Behror tehsil and shares headquarters for Kotputli-Behror district with Kotputli. It is equidistant from both the state capital Jaipur and the national capital New Delhi. Located 120 km southwest of New Delhi and a part of National Capital Region, it is regulated under National Capital Region Planning Board which is a federal authority for urban planning purposes in NCR. Along with Shahjahanpur and Neemrana, it is grouped as SNB Complex (Shahjahanpur-Neemrana-Behror) of NCR- which includes 137 revenue villages, in which Behror municipality is the largest urban conglomeration. This region is also known as 'Ahirwal region' or simply as Raath and is an important industrial hub for the state of Rajasthan.  Behror municipality spreads out in an area of 15 km2 is divided into four revenue villages namely Behror tarf Gangabishan,  Behror tarf Doongrasi, Behror tarf Nainsukh, Behror tarf Balram."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "behror",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2650,
+    "attempt": 2630,
+    "place_id": "gn-3164433",
+    "input": {
+      "place": {
+        "place_id": "gn-3164433",
+        "name": "Viareggio",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.86693,
+        "lon": 10.2502
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Viareggio",
+          "url": "https://en.wikipedia.org/wiki/Viareggio",
+          "text": "Viareggio (Italian pronunciation: [vjaˈreddʒo; vi.aˈreddʒo]) is a city and comune in northern Tuscany, Italy, on the coast of the Ligurian Sea. With a population of over 62,000, it is the second largest city in the province of Lucca, after Lucca.\nIt is known as a seaside resort as well as being the home of the famous carnival of Viareggio (dating back to 1873), and its papier-mâché floats, which (since 1925), parade along the promenade known as \"Passeggiata a mare\", in the weeks of Carnival. The symbol of the carnival of Viareggio and its official mask is Burlamacco, designed and invented by Uberto Bonetti in 1930.\nThe city traces its roots back to the first half of the 16th century when it became the only sea port for the Republic of Lucca. The oldest building in Viareggio, known as Torre Matilde, dates back to this time and was built by the Lucchesi in 1541 as a defensive fortification to fight the constant menace of corsair incursions.\nViareggio is also an active industrial and manufacturing centre; its shipbuilding industry has long been renowned around the world and its fishing and floricultural industries are still fundamental sectors to the city's economy.\nViareggio hosts the Premio letterario Viareggio Répaci for literature, established in 1929. Amongst the other events organized around the year, is the Festival Gaber, which has been held every August since 2004 to celebrate the memory of Giorgio Gaber, and is attended by several high-profile Italian musicians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 245
+    },
+    "banned_terms": [
+      {
+        "term": "viareggio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2651,
+    "attempt": 2631,
+    "place_id": "gn-455812",
+    "input": {
+      "place": {
+        "place_id": "gn-455812",
+        "name": "Saulkrasti",
+        "country": "Latvia",
+        "subdivision": "Saulkrasti Municipality",
+        "lat": 57.26224,
+        "lon": 24.41471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saulkrasti",
+          "url": "https://en.wikipedia.org/wiki/Saulkrasti",
+          "text": "Saulkrasti (; German: Neubad, literally Sun shores in Latvian) is a town and the administrative center of Saulkrasti Municipality in the Vidzeme region of Latvia, on the east coast of the Gulf of Riga. Made up of a number of historic fishing settlements, the town stretches for some 17 km from the Inčupe river in the south to the village of Skulte in the north. The town itself spans across 4.8 square kilometres (1.9 sq mi) and includes an additional 42 square kilometres (16 sq mi) of fields and forests.\nThe center of Saulkrasti is situated about 40 km from Sigulda, 45 km from Riga, 47 km from Limbaži, and 58 km from Salacgrīva. The territory of the Saulkrasti municipality is crossed by the European route E67, known locally as Via Baltica or the A1 road. There are six train stations in Saulkrasti and its suburbs - Inčupe, Pabaži, Saulkrasti, Ķīšupe, Zvejniekciems, and Skulte, the latter being the final stop on the Zemitāni-Skulte Railway line.\nThe coat of arms of Saulkrasti represents the four rivers (white stripes) of Inčupe, Pēterupe, Ķīšupe, and Aģe, and the five villages (green stripes) – Bādciems, Katrīnbāde or Pabaži, Pēterupe, Neibāde, and Zvejniekciems that make up the town. The top parts represent the sea and the sun. A part of the historic Livonian Metsepole land and later known as Neibāde or Neubad, Saulkrasti received its present name in 1933 when the five adjoining villages were merged into one common municipal structure. It received town rights in 1991.\nSaulkrasti is the home of the annual Saulkrasti Jazz Festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 165,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "saulkrasti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2652,
+    "attempt": 2632,
+    "place_id": "gn-1170436",
+    "input": {
+      "place": {
+        "place_id": "gn-1170436",
+        "name": "Mian Sahib",
+        "country": "Pakistan",
+        "subdivision": "Sindh",
+        "lat": 28.15341,
+        "lon": 68.64182
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mian Sahib",
+          "url": "https://en.wikipedia.org/wiki/Mian_Sahib",
+          "text": "Mian Sahib (Sindhi: ميان صاحب), Mian Jo Goth (Sindhi: ميان جو گوٺ) is the town of Shikarpur District in the Sindh Province of Pakistan, is a union council. It is located at 28°9'17\"N   68°38'32\"E at an altitude of 59 metres (196 feet). Mian Sahib, is a historical village of Shikarpur District, although Mian Sahib is now a relatively small city, it borders with the nearest town Mubarakpur, Jacobabad town of Jacobabad District and it's also the largest town of the tehsil Khanpur, Sindh Of Shikarpur District.\nThe city has long been an educational and art centre: it is renowned for its intact historic personalities many prominent Sindhi literary figures, philosophers, poets, writers, artists and musicians live or have lived in the city, and it was the place where the Sindhu Magazine was started. In the 20th century the Hindi-Urdu writer Khialdas Fani and the Boolchand Wasoomal. Famous Pakistani poet Shaikh Ayaz was student of Khialdas Fani and studied poetry from him at Mian Sahib. Later education in Mian Sahib was greatly influenced by the rise of Raees Kareem bakhsh Tanwiri, Yar Muhammad Tanwri  the late 19th century.  Boolchand Wasoomal founded the weekly magazine named Sindhu  in 1932 till 1936.\nIn 1980, Agha Gulam Nabi pathan founded the Al-Shabaaz Goth Sudhaar organization; it was the first movement of city. Sindhi Adabi Sangat was established by Ustaad Rahi in 1983, and Mian Sahib is widely famous for its three shrines dedicated to Muslim mystics (Sufis) from the 17th to 19th centuries that are embellished with extensive tile work, and were built in the distinct  architectural style of Iran."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "mian sahib",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mian",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sahib",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2653,
+    "attempt": 2633,
+    "place_id": "gn-1706188",
+    "input": {
+      "place": {
+        "place_id": "gn-1706188",
+        "name": "Lingayen",
+        "country": "Philippines",
+        "subdivision": "Ilocos",
+        "lat": 16.02182,
+        "lon": 120.23194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lingayen",
+          "url": "https://en.wikipedia.org/wiki/Lingayen",
+          "text": "Lingayen, officially the Municipality of Lingayen ([ˌliŋgɐˈjɛn]; Pangasinan: Baley na Lingayen; Ilocano: Ili ti Lingayen; Tagalog: Bayan ng Lingayen), is a first-class municipality and the capital of the province of Pangasinan in the Philippines. It serves as the political, administrative, and historical center of the province, hosting key provincial government offices and institutions. According to the 2024 census, it has a population of 108,510 people., making it one of the most significant urban centers in the province in terms of governance and public administration.\nThe municipality occupies a strategic location along the Lingayen Gulf, which has historically contributed to its importance in trade, transportation, and military operations. Because of this geographic advantage, Lingayen played a crucial role during World War II, particularly as a major landing site for Allied forces during the liberation of Luzon in 1945. The town’s coastal position and infrastructure made it a vital strategic point, and its wartime history remains an important part of its local and national historical identity.\nLingayen is also notable as the birthplace of Fidel V. Ramos, the 12th President of the Philippines, who served from 1992 to 1998. His legacy has contributed to the town’s national prominence, and several landmarks and institutions in the municipality commemorate his life and public service. Through its historical significance, political role, and cultural heritage, Lingayen continues to play an important role in the development and governance of Pangasinan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 233
+    },
+    "banned_terms": [
+      {
+        "term": "lingayen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2654,
+    "attempt": 2634,
+    "place_id": "gn-1792592",
+    "input": {
+      "place": {
+        "place_id": "gn-1792592",
+        "name": "Tongren",
+        "country": "China",
+        "subdivision": "Guizhou",
+        "lat": 27.71722,
+        "lon": 109.18528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tongren",
+          "url": "https://en.wikipedia.org/wiki/Tongren",
+          "text": "Tongren (simplified Chinese: 铜仁; traditional Chinese: 銅仁; pinyin: Tóngrén) is a prefecture-level city in eastern Guizhou province, People's Republic of China, located within a tobacco planting and crop agricultural area. Tongren was known as Tongren Prefecture (铜仁地区) until November 2011, when it was converted into a prefecture-level city. By the end of 2024 and the beginning of 2025, Tongren City had a permanent population of 3.1615 million and a registered population of 4.494 million.\nTongren City borders Hunan to the east and Chongqing to the north, and is known as the \"Gateway to Eastern Guizhou\". The city covers an area of 18,000 square kilometers, and has jurisdiction over 2 districts, 8 counties, 8 provincial economic development zones, 2 provincial high-tech industrial development zones, and 1 provincial health and medicine industry demonstration zone.\nTongren is the location of Fanjingshan (Mount Fanjing), a mountain of significance in Buddhism and the highest peak of the Wuling Mountains, which was designated a UNESCO World Heritage Site in 2018. The surrounding national nature reserve is the only natural habitat of the endangered Guizhou snub-nosed monkey. Additionally, the city's Wanshan District was historically known as the \"Cinnabar Capital of China\" due to its mercury and cinnabar mining."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 201
+    },
+    "banned_terms": [
+      {
+        "term": "tongren",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2655,
+    "attempt": 2635,
+    "place_id": "gn-2181133",
+    "input": {
+      "place": {
+        "place_id": "gn-2181133",
+        "name": "Timaru",
+        "country": "New Zealand",
+        "subdivision": "Canterbury",
+        "lat": -44.39672,
+        "lon": 171.25364
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Timaru",
+          "url": "https://en.wikipedia.org/wiki/Timaru",
+          "text": "Timaru (English:  ; Māori: Te Tihi-o-Maru) is a port city in the southern Canterbury region of New Zealand, 157 km (98 mi) southwest of Christchurch and about 196 km (122 mi) northeast of Dunedin, on the eastern Pacific coast of the South Island. The urban area's population of 29,300 people is the largest in South Canterbury, and the third-largest in the Canterbury Region overall, after Christchurch and Rolleston. The town is the seat of the Timaru District, which includes the surrounding rural area and the towns of Geraldine, Pleasant Point and Temuka, which combined have a total population of 49,500.\nCaroline Bay beach is a popular recreational area close to Timaru's main centre, just to the north of the substantial port facilities. Beyond Caroline Bay, the industrial suburb of Washdyke is at a major junction with State Highway 8, the main route into the Mackenzie Country. This provides a road link to Pleasant Point, Fairlie, Twizel, Lake Tekapo, Aoraki / Mount Cook and Queenstown.\nTimaru is built on rolling hills created from lava flows of the extinct Mt Horrible volcano, which last erupted 2 to 2.5 Ma. The result is that most of the main streets are undulating, a clear contrast with the flat landscape of the Canterbury Plains to the north. The volcanic rock is referred to as bluestone, and is used in the construction of local buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 229
+    },
+    "banned_terms": [
+      {
+        "term": "timaru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2656,
+    "attempt": 2636,
+    "place_id": "gn-295277",
+    "input": {
+      "place": {
+        "place_id": "gn-295277",
+        "name": "Eilat",
+        "country": "Israel",
+        "subdivision": "Southern District",
+        "lat": 29.55805,
+        "lon": 34.94821
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eilat",
+          "url": "https://en.wikipedia.org/wiki/Eilat",
+          "text": "Eilat ( ay-LAHT, UK also  ay-LAT; Hebrew: אֵילַת [eˈlat] ; Arabic: إِيلَات, romanized: Īlāt) is Israel's southernmost city, with a population of 56,004, a port and popular resort at the northern tip of the Red Sea, on what is known in Israel as the Gulf of Eilat and in Jordan as the Gulf of Aqaba. The city is considered a tourist destination for domestic and international tourists heading to Israel.\nEilat is located at the southernmost tip of Israel, at the southern end of the Arava valley and the Negev desert, adjacent to the Egyptian resort city of Taba to the south, the Jordanian port city of Aqaba to the east, and within sight of Haql, Saudi Arabia, across the gulf to the southeast.\nEilat hosts numerous hotels, holiday resorts, and beaches. Its renowned coral reefs make it a popular destination for diving tourism, with activities such as snorkeling and scuba diving. The city's shopping centers benefit from its status as a tax-free zone. Notable attractions include the Dolphin Reef, where visitors can swim with dolphins; the Coral Beach Nature Reserve, the northernmost shallow coral reef on Earth; the Coral World Underwater Observatory, the Ice Mall, and the city's marina and sea-side promenade, home to many bars, restaurants and shops. The city also offers opportunities for hiking and exploration in nearby natural reserves like Timna Valley Park and the Eilat Mountains.\nEilat's arid desert climate and low humidity are moderated by proximity to a warm sea. Temperatures often exceed 40 °C (104 °F) in summer, and 21 °C (70 °F) in winter, while water temperatures range between 20 and 26 °C (68 and 79 °F). Eilat averages 360 sunny days a year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 282
+    },
+    "banned_terms": [
+      {
+        "term": "eilat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2657,
+    "attempt": 2637,
+    "place_id": "gn-3470709",
+    "input": {
+      "place": {
+        "place_id": "gn-3470709",
+        "name": "Barra do Garças",
+        "country": "Brazil",
+        "subdivision": "Mato Grosso",
+        "lat": -15.89,
+        "lon": -52.25667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barra do Garças",
+          "url": "https://en.wikipedia.org/wiki/Barra_do_Garças",
+          "text": "Barra do Garças is a city with a population of 61,135 located in the Brazilian state of Mato Grosso, around 550 km (340 mi) from the capital city of Cuiabá. It was founded on 13 June 1924, but it became politically independent on 15 September 1948. Nowadays, Barra do Garças is the 8th biggest city in Mato Grosso. The city is situated on the border between the Mato Grosso and Goiás states and due to this the area is considered a geodesic center.\nA small but developed tourist city due to high agriculture exportation and a strong military presence, Barra do Garças also has a Cristo Redentor (Christ the Redeemer) statue and is known as Rio de Janeiro do Oeste (Rio de Janeiro of the West.)\nThe municipality contains the 11,002 hectares (27,190 acres) Serra Azul State Park, created in 1994.\nBarra do Garças has many other tourist attractions: a Discoporto, (UFOport), water parks, as well as hot springs, mountains, and fresh water beaches.\nThe city is served by Barra do Garças Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "barra do garcas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "barra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "garcas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2658,
+    "attempt": 2638,
+    "place_id": "gn-3833875",
+    "input": {
+      "place": {
+        "place_id": "gn-3833875",
+        "name": "Trenque Lauquen",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -35.97334,
+        "lon": -62.73275
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trenque Lauquen",
+          "url": "https://en.wikipedia.org/wiki/Trenque_Lauquen",
+          "text": "Trenque Lauquen is a city in the west of the province of Buenos Aires, Argentina, 444 km (276 mi) from Buenos Aires City and 80 km (50 mi) from the border with the province of La Pampa, on the intersection of National Routes 5 and 33. Trenque Lauquen is the largest city of the district (partido) of the same name, and has a population of about 40,000 inhabitants as per the 2001 census [INDEC].\nThe name of the city means \"Round Lagoon\" in the Mapuche language. It was founded on 12 April 1876 by the advancing troops of Colonel Conrado Excelso Villegas, under orders from the Minister of War Adolfo Alsina, as the center of operations of the North Division of the Border Commandancy, during the Conquest of the Desert (the campaign to subject the territories originally occupied by aboriginal tribes to the government of Buenos Aires). The partido was officially created on 28 July 1886.\nThe city is served by Ñanco Lauquen Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 164,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "trenque lauquen",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "trenque",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lauquen",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2659,
+    "attempt": 2639,
+    "place_id": "gn-3571913",
+    "input": {
+      "place": {
+        "place_id": "gn-3571913",
+        "name": "Marsh Harbour",
+        "country": "Bahamas",
+        "subdivision": "Central Abaco",
+        "lat": 26.54124,
+        "lon": -77.0636
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marsh Harbour",
+          "url": "https://en.wikipedia.org/wiki/Marsh_Harbour",
+          "text": "Marsh Harbour is a town in Abaco Islands, Bahamas, with a population of 6,283 as of 2012.\nThe settlement lies on a peninsula just off the Great Abaco Highway, which runs south through Great Abaco to Cherokee Point and Little Harbour. North of town, the road becomes S.C. Bootle Highway, another smooth stretch that runs north and west toward Treasure Cay and Little Abaco.\nMarsh Harbour has the majority of services available in all of the Abacos, including a post office, bookstore, grocery stores, specialty shops, travel agencies, and laundries. Visitors come to boat, swim or snorkel, and stay at one of the lodges located near Bay Street on the waterfront, though some adventurers reserve a day or two to kayak in the Marls on trips conducted by naturalist guides. The Marls are an extensive region of pristine mangrove habitat and open shallows called \"flats\" that harbour a rich variety of wildlife and offer an important fisheries, for local sustenance and for sport.\nIn 2019, Marsh Harbour was directly impacted by category 5 Hurricane Dorian, severely damaging most structures and infrastructure in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "marsh harbour",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "marsh",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "harbour",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2660,
+    "attempt": 2640,
+    "place_id": "gn-4356050",
+    "input": {
+      "place": {
+        "place_id": "gn-4356050",
+        "name": "Germantown",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.17316,
+        "lon": -77.27165
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Germantown, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Germantown,_Maryland",
+          "text": "Germantown is an urbanized census-designated place in Montgomery County, Maryland, United States. With a population of 91,249 as of the 2020 census, it is the third-most populous community in Maryland, after Baltimore and Columbia. Germantown is located approximately 28 miles (45 km) outside the U.S. capital of Washington, D.C., and is an important part of the Washington metropolitan area.\nGermantown was founded in the early 19th century by European immigrants, though much of the area's development did not take place until the mid-20th century. The original plan for Germantown divided the area into a downtown and six town villages: Gunners Lake Village, Kingsview Village, Churchill Village, Middlebrook Village, Clopper's Mill Village, and Neelsville Village. The Churchill Town Sector at the corner of Maryland Route 118 and Middlebrook Road most closely resembles the center of Germantown because of the location of the Upcounty Regional Services Center, the Germantown Public Library, the Black Rock Arts Center, and pedestrian shopping that features an array of restaurants. Three exits to Interstate 270 are less than one mile away, the Maryland Area Regional Commuter train is within walking distance, and the Germantown Transit Center that provides Ride On shuttle service to the Shady Grove station of the Washington Metro's Red Line is also available.\nGermantown has the assigned ZIP codes of 20874 and 20876 for delivery and 20875 for post office boxes. It is the only \"Germantown, Maryland\" recognized by the United States Postal Service, though three other Maryland counties have unincorporated communities with the same name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 163,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "germantown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,882 @@
+[
+  {
+    "rank": 384,
+    "place_id": "gn-1640344",
+    "input": {
+      "place": {
+        "place_id": "gn-1640344",
+        "name": "Kendari",
+        "country": "Indonesia",
+        "subdivision": "Southeast Sulawesi",
+        "lat": -3.9778,
+        "lon": 122.51507
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kendari",
+          "url": "https://en.wikipedia.org/wiki/Kendari",
+          "text": "Kendari is the capital city of the Indonesian province of Southeast Sulawesi. It had a population of 289,966 at the 2010 Census and 345,107 at the 2020 census, making it the most populous city in the province, and the fourth most on Sulawesi. The official estimate as at mid 2025 was 375,829 (comprising 188,853 males and 186,976 females). The city covers an area of 270.14 square kilometers (104.30 sq mi), or about 0.7 percent of Southeast Sulawesi's land area.\nLocated on Kendari Bay, it continues to be an important trade center, with the province's main port and airport. It is the economic and educational center of the province, home to various universities and colleges. Kendari has the highest Human Development Index (HDI) in Sulawesi."
+        },
+        {
+          "article": "Kendari (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Kendari#Climate",
+          "text": "Kendari has a tropical rainforest climate (Köppen Af) with heavy rainfall from December to July and moderate rainfall from August to November. The city's average maximum temperature is .\nThe lowest average minimum temperature is usually recorded in August and can be as low as , while the highest average maximum temperature is observed during November: reaching over . The average humidity level is between 81 and 87 percent regardless of the month, and wind speed on average sits between and with stronger winds observed in December."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 87,
+      "leadWords": 124,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives bay location, trade, port, airport, universities and development index, but no climate mechanism, extreme, or paradox, and no weather description at all",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kendari",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 385,
+    "place_id": "gn-1735076",
+    "input": {
+      "place": {
+        "place_id": "gn-1735076",
+        "name": "Butterworth",
+        "country": "Malaysia",
+        "subdivision": "Penang",
+        "lat": 5.3991,
+        "lon": 100.36382
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Butterworth, Seberang Perai",
+          "url": "https://en.wikipedia.org/wiki/Butterworth,_Seberang_Perai",
+          "text": "Butterworth is the city centre of Seberang Perai in the Malaysian state of Penang. It lies about 3 km (1.9 mi) east of George Town, the capital city of Penang, across the Penang Strait. As of 2020, Butterworth had a total population of 80,378 residents.\nButterworth was named after William John Butterworth, a former Governor of the Straits Settlements during the mid-19th century. Under the British Raj, the town came into being as a transportation hub, due to its proximity to George Town. While the British East India Company initially obtained Seberang Perai (then named Province Wellesley) for agricultural purposes, Butterworth has also witnessed massive industrialisation during the latter half of the 20th century. In 1974, the Port of Penang was relocated into the town.\nA cross-strait ferry service provides a direct link between Butterworth and George Town. The Port of Penang handled 1.52 million TEUs of cargo as of 2017, making it one of the busiest seaports in Malaysia. In addition, the Butterworth railway station, situated adjacent to the town's ferry terminal, is a major Malayan Railway station, with train services operated by both the Malayan Railway and the State Railway of Thailand."
+        },
+        {
+          "article": "Butterworth, Seberang Perai (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Butterworth,_Seberang_Perai#Geography",
+          "text": "Butterworth lies at the southernmost tip of the North Seberang Perai District, between the Perai River to the south and the Penang Strait to the west. The Perai River forms a natural boundary between Butterworth and the neighbouring suburb of Perai, with the latter situated on the southern banks of the river. Both areas are connected via the Prai River Bridge, which spans the width of the Perai River. Butterworth spans an area of , and includes neighbourhoods such as Bagan Ajam, Bagan Dalam, Bagan Jermal and Bagan Luar."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 89,
+      "leadWords": 194,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives naming, transport hub, industrialisation, port, ferry and railway, but no climate mechanism, extreme, or paradox, and no weather description at all",
+      "priorMissing": "Place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "butterworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 386,
+    "place_id": "gn-1798760",
+    "input": {
+      "place": {
+        "place_id": "gn-1798760",
+        "name": "Pingliang",
+        "country": "China",
+        "subdivision": "Gansu",
+        "lat": 35.53917,
+        "lon": 106.68611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pingliang",
+          "url": "https://en.wikipedia.org/wiki/Pingliang",
+          "text": "Pingliang (simplified Chinese: 平凉; traditional Chinese: 平涼; pinyin: Píngliàng; lit. 'Pacify Liang') is a prefecture-level city in eastern Gansu province, China, bordering Shaanxi province to the south and east and the Ningxia Hui Autonomous Region to the north. The city was established in 376 AD. It has a residential population of 2,125,300 in 2019. The urban population is almost 900,000.\nPingliang is well known for the nearby Kongtong Mountains, which are sacred to Taoism and location of the mythical meeting place of the Yellow Emperor and Guangchengzi, an immortal.\nThe Book of Sui and Tongdian record that the Ashina tribe who founded the First Turkic Khaganate (also known as Göktürk Khaganate) were from Pingliang."
+        },
+        {
+          "article": "Pingliang (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Pingliang#Geography_and_climate",
+          "text": "Pingliang ranges in latitude from 34° 54' to 35° 46' N and in longitude from 105° 20' to 107° 51' E. Bordering prefecture-level cities are Xianyang (Shaanxi) to the east, Baoji (Shaanxi) and Tianshui to the south, Dingxi and Baiyin to the west, and Guyuan (Ningxia) and Qingyang to the north. It is located on the Loess Plateau with elevations ranging from ; the city proper itself is at an elevation of around .\nDue to its elevation of around , Pingliang has a monsoon-influenced, four-season, humid continental climate (Köppen Dwb), with cold but dry winters, and warm and humid summers. The monthly 24-hour average temperature ranges from in January to in July. Much of the annual rainfall occurs from June to September, and the annual mean temperature is . With monthly percent possible sunshine ranging from 46% in September to 65% in December, the city receives 2,381 hours of bright sunshine annually."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Geography and climate",
+      "sectionWords": 153,
+      "leadWords": 114,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives eastern Gansu location, 376 AD establishment, and nearby sacred mountains with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "pingliang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 387,
+    "place_id": "gn-1838343",
+    "input": {
+      "place": {
+        "place_id": "gn-1838343",
+        "name": "Pyeongtaek",
+        "country": "South Korea",
+        "subdivision": "Gyeonggi-do",
+        "lat": 36.99472,
+        "lon": 127.08889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pyeongtaek",
+          "url": "https://en.wikipedia.org/wiki/Pyeongtaek",
+          "text": "Pyeongtaek (Korean: 평택; Korean pronunciation: [pʰjʌŋ.tʰɛk̚]) is a city in Gyeonggi Province, South Korea. Located in the southwestern part of the province, Pyeongtaek was founded as a union of two districts in 1940. It was elevated to city status in 1986 and is home to a South Korean naval base and a large concentration of United States troops. The South Korean government plans to transform Pyeongtaek into an international economic hub to coincide with the move of United States Forces Korea (USFK) to Pyeongtaek. During the Korean War, it was the site of the Battle of Pyongtaek, an early battle between U.S. and North Korean forces. It is also the location of Pyeongtaek University."
+        },
+        {
+          "article": "Pyeongtaek (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Pyeongtaek#Climate",
+          "text": "Pyeongtaek has a humid continental climate (Köppen: Dwa) but can be considered a borderline humid subtropical climate (Köppen: Cwa) using the isotherm.\nWith its low average elevation, Pyeongtaek has the warmest January average temperature in Gyeonggi Province at -4.5°C and the hottest average temperature in August at 26.4°C. The annual average precipitation is 1,100 millimeters with an average of 283.4 millimeters in July and 207.3 millimeters in August, the lowest in the province. This is due to the relatively low occurrence of orographic rainfall compared to other regions."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 88,
+      "leadWords": 114,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives southwestern Gyeonggi location, 1940 founding, naval base, and Korean War battle with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "pyeongtaek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 388,
+    "place_id": "gn-2992166",
+    "input": {
+      "place": {
+        "place_id": "gn-2992166",
+        "name": "Montpellier",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 43.61093,
+        "lon": 3.87635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montpellier",
+          "url": "https://en.wikipedia.org/wiki/Montpellier",
+          "text": "Montpellier (UK: ; US: ) is a city in southern France near the Mediterranean Sea. One of the largest urban centres in the region of Occitania, Montpellier is the prefecture of the department of Hérault. As of 2023, 310,240 people live in the city proper, while its metropolitan area has a population of 842,923. Montpellier is the third-largest French city near the Mediterranean coast, behind Marseille and Nice, and the seventh-largest city of France overall. The inhabitants are called Montpelliérains and Montpelliéraines.\nIn the Middle Ages, Montpellier was an important city of the Crown of Aragon (and was the birthplace of James I), and then of Majorca, before its sale to France in 1349. Established in 1220, the University of Montpellier is one of the oldest universities in the world and has the oldest medical school still in operation, with notable alumni such as Petrarch, Nostradamus and François Rabelais. Above the medieval city, the ancient citadel of Montpellier is a stronghold built in the seventeenth century by Louis XIII.\nSince the 1990s, Montpellier has experienced one of the strongest economic and demographic growths in the country. Its urban area has experienced the highest population growth in France since the year 2000. Numbering 70,000, students comprise nearly one-fourth of its population, one of the highest such proportions in Europe. Its living environment, with one of Europe's largest pedestrian areas, along with its rich cultural life and Mediterranean climate, explains the enthusiasm for the city, which is nicknamed the \"Gifted\". Montpellier was nominated for \"Best Emerging Culture City of the Year 2017\" by the think tank LCD. It is ranked as a Sufficiency city by the Globalization and World Cities Research Network."
+        },
+        {
+          "article": "Montpellier (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Montpellier#Climate",
+          "text": "Montpellier has a Mediterranean climate (Köppen Csa), with cool, damp winters, and hot, rather dry summers. The monthly mean ranges from in January to in July. Precipitation is around , and is greatest in fall and winter, but not absent in summer, either. Extreme temperatures have ranged from recorded on 5 February 1963 and up to on 28 June 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 60,
+      "leadWords": 280,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract only labels a Mediterranean climate as part of the living environment, with no mechanism, extreme, or paradox behind it",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox beyond the bare Mediterranean classification"
+    },
+    "banned_terms": [
+      {
+        "term": "montpellier",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 389,
+    "place_id": "gn-3171457",
+    "input": {
+      "place": {
+        "place_id": "gn-3171457",
+        "name": "Parma",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.79935,
+        "lon": 10.32618
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parma",
+          "url": "https://en.wikipedia.org/wiki/Parma",
+          "text": "Parma (Italian: [ˈparma] ; Parmigiano: Pärma [ˈpɛːʁmɐ]) is a city in the region of Emilia-Romagna in northern Italy, known for its architecture, music, art, prosciutto (ham), cheese and surrounding countryside. With a population of 199,450 as of 2026, Parma is the second most populous city in Emilia-Romagna after Bologna, the region's capital.\nThe city is home to the University of Parma, one of the oldest universities in the world. Parma is divided into two parts by the stream of the same name. The district on the west side of the river is Oltretorrente, meaning The other side of the stream. Parma's Etruscan name was adapted by Romans to describe the round shield called Parma."
+        },
+        {
+          "article": "Parma (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Parma#Climate",
+          "text": "In Parma, the average annual high temperature is , the annual low temperature is , and the annual precipitation is .\nThe following data comes from the weather station located at the university in the city center. It is affected by the urban heat island phenomenon. Parma has a mid-latitude, four-season humid subtropical climate (Köppen: Cfa) with heavy continental influences due to the city's inland position. Relatively nearby coastal areas like Genoa have far milder climates with cooler summers and milder winters, with the mountains separating Parma from the Mediterranean Sea acting as a barrier to the sea air. The city receives approximately 45 cm of snow each winter."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 109,
+      "leadWords": 114,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives northern Italy location, foods, university, and a stream dividing the city with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "parma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 390,
+    "place_id": "gn-3177090",
+    "input": {
+      "place": {
+        "place_id": "gn-3177090",
+        "name": "Ferrara",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.83804,
+        "lon": 11.62057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ferrara",
+          "url": "https://en.wikipedia.org/wiki/Ferrara",
+          "text": "Ferrara (; Italian: [ferˈraːra] ; Emilian: Fràra [ˈfraːra]) is a city and comune (municipality) in the region of Emilia-Romagna in northern Italy, capital of the province of Ferrara. As of 2026, with a population of 129,048, it is the 29th-largest city in Italy.\nIt is situated 44 kilometres (27 miles) northeast of Bologna, on the Po di Volano, a branch channel of the main stream of the Po River, located 5 km (3 miles) north. The town has broad streets and numerous palaces dating from the Renaissance, when it hosted the court of the House of Este. For its beauty and cultural importance, it has been designated by UNESCO as a World Heritage Site."
+        },
+        {
+          "article": "Ferrara (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Ferrara#Climate",
+          "text": "The climate of the Po valley is classified as humid subtropical (Cfa) under the Köppen climate classification, a type of climate commonly referred to as \"warm temperate\" that features mild winters and hot summers, heavy rains in spring and autumn but there is also a lot of rain even in the driest month of January for Ferrara."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 57,
+      "leadWords": 114,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives northern Italy location near Bologna on a Po branch channel and Renaissance palaces with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "ferrara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 391,
+    "place_id": "gn-3451668",
+    "input": {
+      "place": {
+        "place_id": "gn-3451668",
+        "name": "Resende",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.46889,
+        "lon": -44.44667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Resende, Rio de Janeiro",
+          "url": "https://en.wikipedia.org/wiki/Resende,_Rio_de_Janeiro",
+          "text": "Resende (Brazilian Portuguese pronunciation: [ʁeˈzẽdʒi]) is a municipality located in the Brazilian state of Rio de Janeiro. The population is 132,312 (2020 est.) in an area of 1094 km2. Resendense refers to people or things that come from or inhabit Resende. It is the oldest town in this region, which has boundaries with the state of São Paulo and Minas Gerais. It is an important industrial, automotive, metallurgical, and tourist center, and headquarters of the world's second-largest military complex, the Academia Militar das Agulhas Negras (AMAN). Resende is of national importance and houses the Nuclear Fuel Factory complex of the \"Indústrias Nucleares\" of Brasil (Brazilian Nuclear Factories), the only one able to enrich uranium. Resende's automotive area holds  MAN Latin America (former Volkswagen Trucks and Buses), the biggest truck and bus factory of Brazil, limited to PSA Peugeot Citroën and Michelin.\nThe town has the following tourist attractions: Visconde de Mauá, Parque Nacional do Itatiaia, Engenheiro Passos, AMAN, Serrinha do Alambari, Penedo (which belong the city of Itatiaia), the Cachoeira da Fumaça, and some of the city's houses. Resende is home to the largest theater in Latin America, The Academy Theater with a capacity of 2,884 people. Resende is crossed by Rodovia Presidente Dutra, the most important Brazilian road, also called Rio - São Paulo. The municipality has a big territorial extension, 1.144 km2, as mentioned before, the biggest in the area between Rio and São Paulo, between the municipalities traversed by the road which connects them. Resende is served by  Resende Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 253,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Rio de Janeiro state location, industry, nuclear fuel factory, and tourist sites with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "resende",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 392,
+    "place_id": "gn-3463237",
+    "input": {
+      "place": {
+        "place_id": "gn-3463237",
+        "name": "Florianópolis",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -27.59667,
+        "lon": -48.54917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Florianópolis",
+          "url": "https://en.wikipedia.org/wiki/Florian%C3%B3polis",
+          "text": "Florianópolis (English:  FLOR-ee-ə-NOP-əl-iss, Brazilian Portuguese: [floɾiaˈnɔpolis]) is the capital and second largest city of the state of Santa Catarina, in the South Region of Brazil. The city encompasses Santa Catarina Island and surrounding small islands, as well as part of the mainland. It has a population of 537,211, according to the 2022 Brazilian census, the second-most populous city in the state (after Joinville), and the 39th in Brazil. The metropolitan area has an estimated population of 1,111,702, the 21st largest in the country. The city is known for having the country's third-highest Human Development Index score among all Brazilian cities (0.847).\nThe economy of Florianópolis is heavily based on information technology, tourism, and services. The city has 60 beaches and is a center of surfing activity. Lagoa da Conceição is the most famous area for tourism, recreation, nature, and extreme sports. The New York Times reported that \"Florianopolis is the party destination of the year in 2009.\" Newsweek placed Florianópolis in its \"ten most dynamic cities of the world\" list in 2006. Veja, a Brazilian publication, named the city as \"the best place to live in Brazil.\" As a result of this exposure, Florianópolis is growing as a second home destination for many Paulistas, Argentines, Uruguayans, Americans, and Europeans.\nFlorianópolis is also commonly known by the nicknames Floripa and Ilha da Magia (Magic Island). Most of the population lives on the mainland and on the island's central and northern parts. The southern half is less inhabited. Many small commercial fishermen populate the island.\nThe Hercílio Luz International Airport serves the city. Florianópolis is home to the Universidade Federal de Santa Catarina (Federal University of Santa Catarina). There are also the Santa Catarina Federal Institute of Education, Science and Technology (Instituto Federal de Santa Catarina), and two campuses of the Universidade do Estado de Santa Catarina (State University of Santa Catarina), among other institutions of higher and professional education.\nThe city has been ranked as the safest capital to live in Brazil in 2024, according to the 2024 Security Atlas, released by the Institute for Applied Economic Research (IPEA) and the Brazilian Public Security Forum (FBSP). Among other rankings, it has been placed as well as the 5th best place to retire, in Brazil and the USA, by the Mongeral Aegon Longevity Institute in partnership with FGV."
+        },
+        {
+          "article": "Florianópolis (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Florian%C3%B3polis#Climate",
+          "text": "Florianópolis experiences a warm humid subtropical climate (Koppen: Cfa), falling just short of a true tropical climate. The seasons of the year are distinct, with a well-defined summer and winter, and characteristic weather for autumn and spring. Due to the proximity of the sea, the relative humidity of the atmosphere is 80% on average. The city has exact same latitude and climate as Brisbane. Both cities have an average temperature of 21.5°C, and Florianópolis has cooler summers but warmer winters.\nThe area is threatened by climate change, with rising sea levels expected to lead to increased coastal erosion. Mangroves are being planted in and around the city to help mitigate potential damage while restoring local ecosystems.\nThe maximum temperatures of the hottest month varies from and the minimum temperatures are from . The lowest temperature ever recorded was in July 2000 while the highest temperature ever recorded was in February 1973."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 151,
+      "leadWords": 386,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives island and mainland location in southern Brazil, 60 beaches, and surfing with no climate mechanism, extreme, or paradox; beaches alone are not climate",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "florianopolis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 393,
+    "place_id": "gn-358840",
+    "input": {
+      "place": {
+        "place_id": "gn-358840",
+        "name": "Bilbeis",
+        "country": "Egypt",
+        "subdivision": "Sharqia",
+        "lat": 30.42039,
+        "lon": 31.56223
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bilbeis",
+          "url": "https://en.wikipedia.org/wiki/Bilbeis",
+          "text": "Bilbeis (Arabic: بلبيس pronounced [belˈbeːs]; Bohairic Coptic: Ⲫⲉⲗⲃⲉⲥ/Ⲫⲉⲗⲃⲏⲥ Phelbes/Phelbēs) is an ancient fortress city on the eastern edge of the southern Nile Delta in Egypt, the site of the ancient city and former bishopric of Phelbes and a Latin Catholic titular see. It is located 20 km from the city of 10th of Ramadan and roughly 50 km from the city of Cairo.\nThe city is small in size but densely populated, with over 407,300 residents. It also houses the Egyptian Air Force Academy complex, which contains the town's largest public school in Al-Zafer.\nCoptic tradition says that Bilbeis was one of the stopping places of the Holy Family during the Flight into Egypt."
+        },
+        {
+          "article": "Bilbeis (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Bilbeis#Climate",
+          "text": "Bilbeis is classified by Köppen-Geiger climate classification system as hot desert (BWh), as the rest of Egypt."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 17,
+      "leadWords": 114,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives eastern Nile Delta location, ancient fortress history, and an air force academy with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "bilbeis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 394,
+    "place_id": "gn-4409896",
+    "input": {
+      "place": {
+        "place_id": "gn-4409896",
+        "name": "Springfield",
+        "country": "United States",
+        "subdivision": "Missouri",
+        "lat": 37.21533,
+        "lon": -93.29824
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Springfield, Missouri",
+          "url": "https://en.wikipedia.org/wiki/Springfield,_Missouri",
+          "text": "Springfield is the third most populous city in the U.S. state of Missouri and the county seat of Greene County. The city's population was 169,176 at the 2020 census. It is the principal city of the Springfield metropolitan area, which had an estimated population of 487,061 in 2022 and includes the counties of Christian, Dallas, Greene, Polk, and Webster. Springfield is the largest city in the Ozarks region, and sits on the Springfield Plateau, which ranges from nearly level to rolling hills.\nSpringfield's nicknames include \"Queen City of the Ozarks\" and \"The Birthplace of Route 66\". The city has been called the \"Buckle of the Bible Belt\" due to its association with evangelical Christianity. The city is the headquarters for Bass Pro Shops, Cabela's, and the adjoining Wonders of Wildlife Museum & Aquarium. It is also home to O'Reilly Auto Parts, which began as a family business with 13 employees in 1957. Springfield is close to Wilson's Creek National Battlefield and is along the national historic Trail of Tears. In 2020, Springfield's largest ethnicities were 87.6% white, 4% black, and 5% two or more races, placing it among the least diverse cities in the United States. The city is a regional center of medical care, with the two largest hospitals, CoxHealth and Mercy, being the largest employers in the city. Springfield hosts several universities and colleges, including Missouri State University, Drury University, and Evangel University. Springfield is an important regional center for distribution, logistics, and manufacturing."
+        },
+        {
+          "article": "Springfield, Missouri (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Springfield,_Missouri#Climate",
+          "text": "Springfield has an average surface wind velocity comparable to that of Chicago, according to information compiled at the National Climatic Data Center at NOAA. It is placed within \"Power Class 3\" in the Wind Energy Resource Atlas published by a branch of the U.S. Department of Energy; having an average wind speed range of 6.4 to 7.0 miles per hour.\nSpringfield lies in the northern limits of a humid subtropical climate (Cfa), as defined by the Köppen climate classification system. As such, it experiences times of exceptional humidity; especially in late summer. The monthly daily average temperature ranges from in January to in July. On average, there are 40 days with high temperatures of or greater, 2 days of or greater, 15 days where the high temperature fails to rise above freezing, and 1.3 nights of lows at or below per year. This was only the second instance of measurable May snowfall in Springfield since record keeping began in 1888."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 160,
+      "leadWords": 246,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Ozarks location on a plateau of level to rolling hills, nicknames, and shops with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "springfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 395,
+    "place_id": "gn-482283",
+    "input": {
+      "place": {
+        "place_id": "gn-482283",
+        "name": "Tolyatti",
+        "country": "Russia",
+        "subdivision": "Samara Oblast",
+        "lat": 53.5303,
+        "lon": 49.3461
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tolyatti",
+          "url": "https://en.wikipedia.org/wiki/Tolyatti",
+          "text": "Tolyatti or Togliatti, known before 1964 as Stavropol, is a city in Samara Oblast, Russia. It is the largest city in Russia which is neither the administrative center of a federal subject, nor the largest city of a subject. Population: 684,709 (2021 census); 719,632 (2010 census); 702,879 (2002 census); 630,543 (1989 Soviet census). The city is best known as the home of Russia's largest car manufacturer AvtoVAZ (Lada). For this reason, Tolyatti is often dubbed \"Russia's motor city\" or \"Russia's Motown\" (in reference to Detroit in the United States—the spiritual home of the American automotive industry). It was renamed after Italian communist politician Palmiro Togliatti in 1964, upon his death in the Soviet Union."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 114,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Samara Oblast location, car manufacturing, and a 1964 renaming with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "tolyatti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 396,
+    "place_id": "gn-5577592",
+    "input": {
+      "place": {
+        "place_id": "gn-5577592",
+        "name": "Greeley",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 40.42331,
+        "lon": -104.70913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greeley, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Greeley,_Colorado",
+          "text": "Greeley is the home rule city that is the county seat of, and the most populous municipality in, Weld County, Colorado United States. The city population was 108,795 at the 2020 United States census, an increase of 17.12% since the 2010 United States census. Greeley is the tenth most populous city in Colorado. Greeley is the principal city of the Greeley, CO Metropolitan Statistical Area and is a major city of the Front Range Urban Corridor. Greeley is located in northern Colorado and is situated 49 miles (79 km) north-northeast of the Colorado State Capitol in Denver. The city is a college town, home to the University of Northern Colorado and Aims Community College."
+        },
+        {
+          "article": "Greeley, Colorado (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Greeley,_Colorado#Climate",
+          "text": "Greeley experiences a semi-arid climate (Köppen BSk). High temperatures are generally around 90–95 °F (32 °C) in the summer and 40-45 °F (4 °C) in the winter, although significant variation occurs. The hottest days generally occur around the third week of July and the coldest in January. Nighttime lows are near 60 °F (16 °C) in the summer and around 15–20 °F (−9 °C) in the winter. Record high temperatures of 112 °F (44.4 °C) have been recorded, as have record low temperatures of –25 °F (–32 °C). The first freeze typically occurs around October 4 and the last around May 4. Extratropical cyclones which disrupt the weather for the eastern two-thirds of the US often originate in or near Colorado, which means Greeley does not experience many fully developed storm systems. Warm fronts, sleet, and freezing rain are practically nonexistent here. In addition, the city's proximity to the Rocky Mountains and lower elevation, compared to the mountains west of the city, result in less precipitation and fewer thunderstorms. This is paradoxical, because adjacent areas (mostly farmland) experience between 7 and 9 hail days per year.\nThe climate in Greeley, as well as all of Colorado, is extremely dry. The Chinook winds coming off the mountains often raise temperatures to near 70 °F (21 °C) in January and February, and sometimes to near 90 °F (32 °C) in April. Greeley's elevation and low year-round humidity means that nighttime low temperatures are practically never above 68 °F (20 °C), even in the hottest part of the summer. The diurnal temperature range is usually rather wide, with a 50-degree (Fahrenheit) difference between daytime highs and nighttime lows not uncommon, especially in the spring and fall. Rapid day-to-day and diurnal fluctuation in temperature is also common."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 293,
+      "leadWords": 114,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives northern Colorado location 49 miles from Denver and college-town status with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "greeley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 397,
+    "place_id": "gn-1174625",
+    "input": {
+      "place": {
+        "place_id": "gn-1174625",
+        "name": "Kasur",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 31.11866,
+        "lon": 74.45025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kasur",
+          "url": "https://en.wikipedia.org/wiki/Kasur",
+          "text": "Kasur (Punjabi / Urdu: قصور; Punjabi pronunciation: [ˈkɐsuːɾᵊ]; Urdu pronunciation: [ˈqəsuːɾ] also romanized as Qasūr; from pluralized Arabic word Qasr meaning \"palaces\" or \"forts\") is a city to the south of Lahore, in the Pakistani province of Punjab. The city serves as the headquarters of Kasur District. Kasur is the 16th largest city in Punjab and 24th largest in Pakistan, by population. It is also known for being the burial place of the 17th-century Sufi-poet Bulleh Shah. It is near the border with India, and borders the Lahore, Sheikhupura and Okara Districts of Punjab. The city is an aggregation of 26 fortified hamlets overlooking the alluvial valleys of the Beas and Sutlej rivers."
+        },
+        {
+          "article": "Kasur (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Kasur#Climate",
+          "text": "Kasur has a sub humid subtropical climate (Trewartha climate classification Cf), bordering a humid subtropical climate (Koppen: Cwa)in north(Lahore)and a Semi-arid climate in south (Okara). Kasur has extremes of climate; the summer season begins from May and continues till August. June is the hottest month. The mean maximum and minimum temperature for this month are about and respectively. The winter seasons lasts from November to February. January is the coldest month. The mean maximum and minimum temperatures for the coldest month are and respectively. With rainfall towards the end of June, monsoon conditions appear and during the following two and a half months the rainy season alternates with sultry weather. The winter rain falls during January, February and March, ranging from to .According to a 30 year average from Pakistan Meteorological Department Kasur receives an annual of 700 to 850mm rainfall with 47 percent falling in monsoon season and rest falling outside monsoon season. Water logging tannery pollution and salinity have affected a large area of the district, making the underground water brackish and contaminated with heavy metals ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 179,
+      "leadWords": 113,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location south of Lahore near the India border and fortified hamlets over river valleys with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kasur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 398,
+    "place_id": "gn-1259005",
+    "input": {
+      "place": {
+        "place_id": "gn-1259005",
+        "name": "Raigarh",
+        "country": "India",
+        "subdivision": "Chhattisgarh",
+        "lat": 21.89764,
+        "lon": 83.3966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Raigarh",
+          "url": "https://en.wikipedia.org/wiki/Raigarh",
+          "text": "Raigarh is a city in northern Chhattisgarh known as the 'Cultural capital of Chhattisgarh'; Raigarh is famous for its dance form “SUWA” (as Raigarh Gharana) and classical music; Raigarh is also known as Sanskritidhani.\nIt is also known for its coal reserves and power generation for the state and the country. With a population of just about 150,019 (2011) it is a rapidly growing industrial city. Raigarh is one of the major rice-producing districts in India.\nRich in culture and tradition, Raigarh City is the administrative headquarters of Raigarh district. Apart from its cultural heritage, the city of Raigarh is also known for its Kosa (a fine silk) and rich deposits of coal.\nRaigarh is home to one of the oldest jute mills in India and is major producer of steel, iron ore and electricity in the country. The most spoken language of the people living here are Odia, Chattisgarhi and Hindi. It is rapidly emerging as an industrial city on the map of Chhattisgarh and India."
+        },
+        {
+          "article": "Raigarh (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Raigarh#Geography_and_climate",
+          "text": "Raigarh is located at . It has an average elevation of 215 metres (705 feet). The Kelo river flows through the city, which is one of its main water sources.\nThe minimum-maximum temperature range is 29.5 - 49 °C in summer, and 8 - 25 °C in winter."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Geography and climate",
+      "sectionWords": 48,
+      "leadWords": 167,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives northern Chhattisgarh location, cultural fame, coal, rice, silk, and steel with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "raigarh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 399,
+    "place_id": "gn-1262482",
+    "input": {
+      "place": {
+        "place_id": "gn-1262482",
+        "name": "Munger",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 25.37459,
+        "lon": 86.47455
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Munger",
+          "url": "https://en.wikipedia.org/wiki/Munger",
+          "text": "Munger, formerly spelt as Monghyr, is a twin city and a Municipal Corporation situated in the Indian state of Bihar. It is the administrative headquarters of Munger district and Munger Division. Munger was one of the major cities in Eastern India and undivided Bengal during Mughal period and British Raj. It is one of the major political, cultural, educational and commercial centers of Bihar and Eastern India. Munger is situated about 180 km (110 mi) east of capital city Patna, about 480 km (300 mi) west of Eastern India's largest city Kolkata and 1,200 km (750 mi) from country's capital New Delhi.\nHistorically, Munger is known for being an ancient seat of rule. The twin city comprises Munger and Jamalpur situated on the southern bank of the river Ganges. It is situated 8 km (5.0 mi) from Jamalpur Junction, 180 km (110 mi) east of capital city Patna and 430 km (270 mi) from Kolkata the capital of West Bengal.\n\nMunger is said to have been founded by the Guptas (4th century CE) and contains a fort that houses the tomb of the Muslim saint Shah Mushk Nafā (died 1497). In 1763, the Nawab of Bengal Mir Qasim made Munger his capital and built an arsenal and several palaces. It was constituted a municipality in 1864."
+        },
+        {
+          "article": "Munger (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Munger#Climate",
+          "text": "The climate of Munger is subtropical (warm in summer and cold during winter). The Köppen climate classification sub-type for this climate is humid subtropical."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 24,
+      "leadWords": 216,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Bihar location on the southern bank of the Ganges, Gupta founding, and 1763 capital history with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "munger",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 400,
+    "place_id": "gn-1274040",
+    "input": {
+      "place": {
+        "place_id": "gn-1274040",
+        "name": "Chittorgarh",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 24.88963,
+        "lon": 74.62403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chittorgarh",
+          "url": "https://en.wikipedia.org/wiki/Chittorgarh",
+          "text": "Chittorgarh (Hindi pronunciation: [t͡ʃɪt̪ːɔːɽ.gəɽʱ] ; also Chitror or Chittor or Chittaurgarh) is a major city in the state of Rajasthan in western India. It lies on the Berach River, a tributary of the Banas, and is the administrative headquarters of Chittorgarh District. It was a major stronghold of the Rajput State of Medapata (modern Mewar). The city of Chittorgarh is located on the banks of the rivers Gambhiri and Berach.\nChittorgarh is home to the Chittor Fort, one of the largest forts in India and Asia. It was sacked thrice; first in 1303 by Alauddin Khalji, again in 1535 by Bahadur Shah of Gujarat, and lastly by the Mughal Emperor Akbar in 1568. Chittor has been a land of worship for Meera. It is also known for Panna Dai and Rani Padmini."
+        },
+        {
+          "article": "Chittorgarh (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Chittorgarh#Climate",
+          "text": "The climate is a tropical savanna climate (Koppen: Aw), showing traits of a humid subtropical climate (Koppen: Cwa), narrowly being precluded from being a semi-arid climate (Koppen: BSh), with almost all its rainfall occurring during the summer monsoon."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 38,
+      "leadWords": 132,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Rajasthan location on river banks, a large fort, and three historical sackings with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "chittorgarh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 401,
+    "place_id": "gn-2033467",
+    "input": {
+      "place": {
+        "place_id": "gn-2033467",
+        "name": "Yanji",
+        "country": "China",
+        "subdivision": "Jilin",
+        "lat": 42.88825,
+        "lon": 129.50241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yanji",
+          "url": "https://en.wikipedia.org/wiki/Yanji",
+          "text": "Yanji (Chinese: 延吉; Korean: 연길 Yŏn'gil; alternately romanized as Yenki or Yenji) is a county-level city in the east of China's Jilin Province, and is the seat of the Yanbian Korean Autonomous Prefecture. Yanji City is located in the eastern part of Jilin Province. It is the seat of the government of Yanbian Korean Autonomous Prefecture and the political, economic and cultural center of the entire autonomous prefecture. Its population is approximately 400,000 of which a significant portion is ethnic Korean.  Yanji is a busy hub of transport and trade between China and North Korea. The city is home to Yanbian University, a comprehensive university and the only Project 211 university in Yanji."
+        },
+        {
+          "article": "Yanji (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Yanji#Geography_and_climate",
+          "text": "The geographical coordinates are between 42°50' and 43°23' north latitude, and between 129°01' and 129°48' east longitude. Yanji is situated among foothills, with the main metropolitan area contained in a small, very flat area. It is ringed by mountains dotted with small, remote farming communities. It has a four-season, monsoon-influenced, humid continental climate (classified in the Köppen system as Dwb), with long, very cold winters, and short, but very warm, humid summers. Spring and autumn constitute very short transitions with some, but usually not heavy, rainfall. The monthly 24-hour average temperature ranges from in January to in August, while the annual mean is and a total precipitation of , most of it falling during the summer. Sunshine is generous but falling far short of the central and western parts of Jilin; with monthly percent possible sunshine ranging from 39% in July to 62% in February, there are 2,280 hours of bright sunshine annually."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Geography and climate",
+      "sectionWords": 153,
+      "leadWords": 113,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives eastern Jilin location, Korean autonomous prefecture seat, and trade hub status with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "yanji",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 402,
+    "place_id": "gn-2523630",
+    "input": {
+      "place": {
+        "place_id": "gn-2523630",
+        "name": "Reggio Calabria",
+        "country": "Italy",
+        "subdivision": "Calabria",
+        "lat": 38.11047,
+        "lon": 15.66129
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Reggio Calabria",
+          "url": "https://en.wikipedia.org/wiki/Reggio_Calabria",
+          "text": "Reggio Calabria, also known as Reggio di Calabria and often simply as Reggio, is the largest city in Calabria as well as the seat of the Metropolitan City of Reggio Calabria. As of 2026, with a population of 167,925, it is the 22nd most populous city in Italy, after Reggio Emilia. Reggio Calabria is located near the center of the Mediterranean and is known for its climate, and ethnic and cultural diversity. It is the third economic centre of mainland Southern Italy. About 511,935 people live in its metropolitan area.\nReggio is located on the \"toe\" of the Italian Peninsula and is separated from the island of Sicily by the Strait of Messina. It is situated on the slopes of the Aspromonte, a long, craggy mountain range that runs up through the centre of the region.\nAs a major functional pole in the region, it has strong historical, cultural and economic ties with the city of Messina, which lies across the strait in Sicily, forming a metro city of less than 1 million people.\nReggio is the oldest city in the region, and during ancient times, it was an important and flourishing colony of Magna Graecia. Reggio has a modern urban system, set up after the catastrophic earthquake of 1908, which destroyed most of the city. Before that seismic event, the region had been subject to several other previous earthquakes. The seismicity is caused by Reggio being on the Eurasian Plate near the faultline where it meets the African Plate that runs through the strait, dividing the two European regions of Calabria and Sicily into two different tectonic regions.\nIt is a major economic centre for regional services and transport on the southern shores of the Mediterranean. Reggio, with Naples and Taranto, is home to one of the most important archaeological museums, the National Archaeological Museum of Magna Græcia, dedicated to Ancient Greece (which houses the Bronzes of Riace, rare example of Greek bronze sculpture, which became one of the symbols of the city). Reggio is the seat, since 1907, of the Archeological Superintendence of Bruttium and Lucania. The city is home to football club Reggina, which previously played in the Italian top flight.\nThe city centre, consisting primarily of Liberty buildings, has a linear development along the coast with parallel streets, and the promenade is dotted with rare magnolias and exotic palms. Reggio has several commonly used nicknames: The \"City of Bronzes\", after the Bronzes of Riace that are testimonials of its Greek origins; the \"City of bergamot\", which is exclusively cultivated in the region; and the \"City of Fatamorgana\", an optical phenomenon visible in Italy only from the Reggio seaside."
+        },
+        {
+          "article": "Reggio Calabria (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Reggio_Calabria#Climate",
+          "text": "According to the Köppen climate classification, Reggio Calabria possesses a typical Mediterranean climate (Köppen: Csa). Its climate has warmer days and cooler nights than Messina which lies on the other side of the strait. Precipitation is another big difference since Messina receives approximately more."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 44,
+      "leadWords": 442,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract only says the city is known for its climate with no stated mechanism, extreme, seasonal rhythm, or paradox; the described earthquake mechanism is geology, not climate",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "reggio calabria",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "reggio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "calabria",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 403,
+    "place_id": "gn-2651347",
+    "input": {
+      "place": {
+        "place_id": "gn-2651347",
+        "name": "Derby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.92277,
+        "lon": -1.47663
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Derby",
+          "url": "https://en.wikipedia.org/wiki/Derby",
+          "text": "Derby (  DAR-bee) is a cathedral city and unitary authority area on the River Derwent in Derbyshire, England. Derbyshire is named after Derby, which was its original county town. As a unitary authority, Derby is administratively independent from Derbyshire County Council. The population of Derby is 275,344 (2025).\nThe Romans established the town of Derventio, which was later captured by the Anglo-Saxons and then by the Vikings who made Djúra-bý one of the Five Boroughs of the Danelaw. Initially a market town, Derby grew rapidly in the industrial era and was home to Lombe's Mill, an early British factory and it contains the southern part of the Derwent Valley Mills World Heritage Site. With the arrival of the railways in the 19th century, Derby became a centre of the British rail industry. Despite having a cathedral since 1927, Derby did not gain city status until 1977.\nDerby is a centre for advanced transport manufacturing. It is home to engine manufacturer Rolls-Royce and Alstom (formerly Bombardier Transportation) has a production facility at the Derby Litchurch Lane Works; Toyota's UK headquarters is located south-west of the city at Burnaston."
+        },
+        {
+          "article": "Derby (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Derby#Climate",
+          "text": "Derby's climate is classified as a warm and temperate oceanic climate (Cfb) according to the Köppen climate classification, along with the rest of the British Isles. Precipitation averages 694 mm and there is precipitation even during the driest month. The average annual temperature is 9.7 °C and the highest temperature ever recorded in Derby was , recorded at Markeaton Park on 3 August 1990."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 64,
+      "leadWords": 187,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a river location in England, Roman and Viking history, an early factory, and rail industry with no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "derby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 6105,
+    "attempt": 6061,
+    "place_id": "gn-1819031",
+    "input": {
+      "place": {
+        "place_id": "gn-1819031",
+        "name": "Sai Wan",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Central and Western",
+        "lat": 22.28124,
+        "lon": 114.12554
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sai Wan",
+          "url": "https://en.wikipedia.org/wiki/Sai_Wan",
+          "text": "Sai Wan (Chinese: 西環), also known as Western district (Chinese: 西區), or simply Western, is an area in Hong Kong Island, Hong Kong that corresponds to Sai Ying Pun, Shek Tong Tsui, Belcher Bay and Kennedy Town.  It formed part of the City of Victoria. West Point, a former cape close to major government structures in Sai Wan, also used to refer to Sai Wan.\nAfter Hong Kong's handover to People's Republic of China, Sai Wan become the location for the Liaison Office of the Central People's Government in the Hong Kong Special Administrative Region and people in Hong Kong, including the former head of the Liaison Office Zhang Xiaoming, colloquially refer the name Sai Wan as a metonym for the Liaison office itself."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "sai wan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sai",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6106,
+    "attempt": 6062,
+    "place_id": "gn-2145299",
+    "input": {
+      "place": {
+        "place_id": "gn-2145299",
+        "name": "Vaucluse",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.85549,
+        "lon": 151.27754
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vaucluse, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Vaucluse,_New_South_Wales",
+          "text": "Vaucluse is an eastern suburb of Sydney, in the state of New South Wales, Australia. It is located 8 kilometres (5 mi) east of the Sydney central business district, in the local government areas of Waverley Council and the Municipality of Woollahra.\nVaucluse is located on the South Head peninsula, just South of The Gap with Sydney Harbour on the west and the Tasman Sea to the east. The Sydney Harbour side of the suburb commands views across the harbour to the Sydney Harbour Bridge. The adjacent suburbs are Watsons Bay to the north and Rose Bay and Dover Heights to the south.\nVaucluse is predominantly a residential area, but possesses a small commercial district along a short stretch of New South Head Road. The suburb's landmarks and attractions include sections of Sydney Harbour National Park, the Hermitage Foreshore track, the clifftop Diamond Bay Reserve, Macquarie Lighthouse, Signal Hill Battery, and the historic Vaucluse House.\nSeveral harbour-facing beaches line Vaucluse's western coast. Running south to north, these are Queens, Hermit, Milk, Shark, Parsley Bay, Kutti, and Gibsons beaches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "vaucluse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6107,
+    "attempt": 6063,
+    "place_id": "gn-2155562",
+    "input": {
+      "place": {
+        "place_id": "gn-2155562",
+        "name": "Nelson Bay",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -32.72043,
+        "lon": 152.14398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nelson Bay, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Nelson_Bay,_New_South_Wales",
+          "text": "Nelson Bay is a significant township of the Port Stephens local government area in the Hunter Region of New South Wales, Australia. It is located on a bay of the same name on the southern shore of Port Stephens about 60 kilometres (37 mi) by road north-east of Newcastle, its nearest rail link. At the 2021 census, the suburb of Nelson Bay had a population of 6,141.\nIt is a major tourism centre, particularly for dolphin and whale watching, surfing, diving, fishing and other recreational aquatic activities. The eastern boundaries of Nelson Bay lie within the Tomaree National Park while the southeastern section is almost entirely within the park. Nelson Head Light, an unusual lighthouse built in 1875, is positioned on the northeast corner."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "nelson bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nelson",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6108,
+    "attempt": 6064,
+    "place_id": "gn-2180118",
+    "input": {
+      "place": {
+        "place_id": "gn-2180118",
+        "name": "Wainuiomata",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -41.26667,
+        "lon": 174.95
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wainuiomata",
+          "url": "https://en.wikipedia.org/wiki/Wainuiomata",
+          "text": "Wainuiomata () is a large dormitory suburb of Lower Hutt, in the Wellington metropolitan area in New Zealand. Its population was estimated as being 20,450 as of June 2025, with a density of 1,600 people per km2. European settlement of Wainuiomata began in the 1850s with timber-felling and farming and began to grow in the 1920s. After World War 2 there was rapid population expansion, with Wainuiomata earning the nickname 'Nappy Valley' because of the large number of families with young children. From the late 1980s the economy slowed and the population decreased, but since about 2020 there has been a housing boom and corresponding increase in population. Wainuiomata is noted for being the origin of New Zealand's kōhanga reo (Māori-language immersion preschool) movement."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "wainuiomata",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6109,
+    "attempt": 6065,
+    "place_id": "gn-2517350",
+    "input": {
+      "place": {
+        "place_id": "gn-2517350",
+        "name": "Garachico",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.37365,
+        "lon": -16.76342
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Garachico",
+          "url": "https://en.wikipedia.org/wiki/Garachico",
+          "text": "Garachico is a municipality and town on the northern coast of Tenerife, about 52 km West of the capital Santa Cruz de Tenerife, 50 km from Tenerife North Airport and 67 km from Tenerife South Airport. The town itself nestles below a 500m+ (1500 ft) cliff.\nThe city of Garachico with its port was founded by a Jewish Genoan banker Cristóbal de Ponte after the conquest of Tenerife in 1496.\nOn 5 May 1706, the eruption originating from the northwest rift zone of the Trevejo volcano was a major event in the town's history. Before then, Garachico was an important  port exporting Malmsey wine and other local produce. However, a several-week-long eruption poured lava into the old bay and effectively destroyed the town's livelihood. The town itself was partially destroyed. (Contrary to the 'Tourist trade' myth, which will tell you that the town was completely destroyed, except for the church where the townfolk took refuge.)\nGarachico has always taken care of its environment and protected the most diverse cultural manifestations. For all these reasons, the Spanish government awarded the town the Gold Medal of Fine Arts, which was presented in 1980 by the King.[1]"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "garachico",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6110,
+    "attempt": 6066,
+    "place_id": "gn-2636032",
+    "input": {
+      "place": {
+        "place_id": "gn-2636032",
+        "name": "Thetford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.41667,
+        "lon": 0.75
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thetford",
+          "url": "https://en.wikipedia.org/wiki/Thetford",
+          "text": "Thetford is a market town and civil parish in the Breckland District of Norfolk, England. It is on the A11 road between Norwich and London, just east of Thetford Forest. The civil parish, covering an area of 29.55 km2 (11.41 sq mi), in 2011 had a population of 24,340.\nThere has been a settlement at Thetford since the Iron Age, and parts of the town predate the Norman Conquest; Thetford Castle was established shortly thereafter. Roger Bigod founded the Cluniac Priory of St Mary in 1104, which became the largest and most important religious institution in Thetford. The town was badly hit by the Dissolution of the Monasteries, including the castle's destruction, but was rebuilt in 1574 when Elizabeth I established a town charter. After World War II, Thetford became an \"overspill town\", taking people from London, as a result of which its population increased substantially.\nThetford railway station is located on the Breckland line and is one of the best surviving pieces of 19th-century railway architecture in East Anglia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "thetford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6111,
+    "attempt": 6067,
+    "place_id": "gn-2639970",
+    "input": {
+      "place": {
+        "place_id": "gn-2639970",
+        "name": "Potters Bar",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.69353,
+        "lon": -0.17835
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Potters Bar",
+          "url": "https://en.wikipedia.org/wiki/Potters_Bar",
+          "text": "Potters Bar is a town in Hertfordshire, England, 13 miles (21 km) north of central London. In 2011, it had a population of 21,882. In the 2021 census, the four wards that make up Potters Bar – Bentley Heath & The Royds, Furzefield, Oakmere and Parkfield – had a combined population of 22,536; this includes several smaller outlying hamlets contained in the Bentley Heath & The Royds ward, such as Bentley Heath and Ganwick Corner. In 2022, the population was around 23,325.\nWithin the historic county of Middlesex until 1965, the town dates to the early 13th century but remained a small, mainly agricultural, settlement until the arrival of the Great Northern Railway in 1850. It is now part of the London commuter belt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "potters bar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "potters",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6112,
+    "attempt": 6068,
+    "place_id": "gn-2643309",
+    "input": {
+      "place": {
+        "place_id": "gn-2643309",
+        "name": "Lymm",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.38105,
+        "lon": -2.47763
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lymm",
+          "url": "https://en.wikipedia.org/wiki/Lymm",
+          "text": "Lymm ( LIM) is a village and civil parish in Cheshire, North West England, now in the Borough of Warrington. It incorporates the hamlets of Booths Hill, Broomedge, Church Green, Deansgreen, Heatley, Heatley Heath, Little Heatley, Oughtrington, Reddish, Rush Green and Statham. At the 2021 United Kingdom census, the parish comprised a population of 12,660, with the built-up area having a population of 11,545.\nSituated just over a mile south of the Manchester Ship Canal and River Mersey, historically the county boundary between Lancashire and Cheshire, Lymm's neighbouring villages are Warburton, Thelwall and High Legh. Warrington is its nearest town 6 miles (9.7 km) to the west, with Altrincham being 7 miles (11 km) due east and Knutsford 9 miles (14 km) south east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "lymm",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6113,
+    "attempt": 6069,
+    "place_id": "gn-2649686",
+    "input": {
+      "place": {
+        "place_id": "gn-2649686",
+        "name": "Faringdon",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.65644,
+        "lon": -1.58676
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Faringdon",
+          "url": "https://en.wikipedia.org/wiki/Faringdon",
+          "text": "Faringdon  is a historic market town in the Vale of White Horse, Oxfordshire, England, 18 miles (29 km) south-west of Oxford, 10 miles (16 km) north-west of Wantage and 12 miles (19 km) east-north-east of Swindon. Its views extend to the River Thames in the north and the highest ground visible is on the Ridgeway in the south. Faringdon was Berkshire's westernmost town until the 1974 boundary changes transferred its administration to Oxfordshire. The civil parish is formally known as Great Faringdon, to distinguish it from Little Faringdon in West Oxfordshire. The 2011 Census gave a population of 7,121; it was estimated at 7,992 in 2019. On 1 February 2004, Faringdon became the first place in south-east England to be awarded Fairtrade Town status."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "faringdon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6114,
+    "attempt": 6070,
+    "place_id": "gn-2653265",
+    "input": {
+      "place": {
+        "place_id": "gn-2653265",
+        "name": "Chelsea",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.48755,
+        "lon": -0.16936
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chelsea, London",
+          "url": "https://en.wikipedia.org/wiki/Chelsea,_London",
+          "text": "Chelsea is an area in West London, England, due south-west of Charing Cross by approximately 2.5 miles (4 km). It lies on the north bank of the River Thames and for postal purposes is part of the south-western postal area.\nChelsea historically formed a manor and parish in the Ossulstone hundred of Middlesex, which became the Metropolitan Borough of Chelsea in 1900. It merged with the Metropolitan Borough of Kensington, forming the Royal Borough of Kensington and Chelsea upon the creation of Greater London in 1965.\nThe exclusivity of Chelsea as a result of its high property prices historically resulted in the coining of the term \"Sloane Ranger\" in the 1970s to describe some of its residents, and some of those of nearby areas. Chelsea is home to one of the largest communities of Americans living outside the United States, with 6.53% of Chelsea residents in 2001 born in the U.S."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "chelsea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6115,
+    "attempt": 6071,
+    "place_id": "gn-2657293",
+    "input": {
+      "place": {
+        "place_id": "gn-2657293",
+        "name": "Annan",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 54.98839,
+        "lon": -3.25647
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Annan, Dumfries and Galloway",
+          "url": "https://en.wikipedia.org/wiki/Annan,_Dumfries_and_Galloway",
+          "text": "Annan ( AN-ən; Scottish Gaelic: Inbhir Anainn) is a historic market town and former royal burgh in Dumfries and Galloway, south-west Scotland. It is 15 miles (24 km) from Dumfries by rail, in the region of Dumfries and Galloway on the Solway Firth in the south of Scotland. Eastriggs is about 3 miles (5 km) to the east, while Gretna and the English border is about 8 miles (13 km) to the east. It had a population of 8,695 in 2022.\nEach year on the first Saturday in July, Annan celebrates the Royal Charter and the boundaries of the Royal Burgh are confirmed when a mounted cavalcade undertakes the Riding of the Marches. Entertainment includes a procession, sports, field displays and massed pipe bands. Annan's in America first migrated to New York and Virginia.  Annandale Virginia is an early settlement which celebrates The Scottish Games annually."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "annan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6116,
+    "attempt": 6072,
+    "place_id": "gn-2799779",
+    "input": {
+      "place": {
+        "place_id": "gn-2799779",
+        "name": "De Haan",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.27261,
+        "lon": 3.03446
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "De Haan, Belgium",
+          "url": "https://en.wikipedia.org/wiki/De_Haan,_Belgium",
+          "text": "De Haan (Dutch pronunciation: [də ˈɦaːn]; French: Le Coq, French pronunciation: [lə kɔk]; West Flemish: D'n Oane; English: The Cock or Cockerel; (USA/Canada) Rooster) is a place and a municipality located in the Belgian province of West Flanders. The municipality comprises the villages of De Haan proper, Wenduine, Klemskerke, Vlissegem and Harendijk. On January 1, 2020 De Haan had a total population of 12,700. The total area is 46.14 km2 (26.2 Miles) which gives a population density of 275.26 inhabitants per km2.\nThe coastal village of De Haan proper has maintained a low skyline so its many buildings in Belle Époque style are still prominently visible.\nThe town has an 18-hole golf course situated in its dunes, founded by King Leopold II in 1903. Today, it is the only links course in the country.\nIts most famous resident was Albert Einstein, who lived in the villa \"Savoyarde\" for six months in 1933 after leaving Nazi Germany. Belgian TV crime drama series, Juliet (2024), was filmed and set in De Haan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "de haan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "haan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6117,
+    "attempt": 6073,
+    "place_id": "gn-2914801",
+    "input": {
+      "place": {
+        "place_id": "gn-2914801",
+        "name": "Groß-Zimmern",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 49.8741,
+        "lon": 8.82898
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Groß-Zimmern",
+          "url": "https://en.wikipedia.org/wiki/Groß-Zimmern",
+          "text": "Groß-Zimmern (German pronunciation: [ɡʁoːs ˈtsɪmɐn], lit. 'Big Zimmern', in contrast to \"Little Zimmern\") is a municipality in the district of Darmstadt-Dieburg, in Hessen, Germany. It is situated 10 kilometres (6.2 mi) east of Darmstadt and right next to Dieburg.\nIn 1846, over 700 town residents emigrated in the Great Migration to New York City.  The town paid for the passage of 674 passengers and about 100 more paid their own way.  The emigrants sailed on at least five ships – the Atlas (46%), the Sardinia (37%), the Manchester (6%), the Montezuma (7%), and the Pontiac (6%). 425 of the emigrants had no funds or food when they landed in New York city and entered the Bellevue Almshouse which overloaded the capacity of the Almshouse.  New York City petitioned the US Congress to pass laws that would prevent the arrival of paupers on overcrowded ships to the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "gro zimmern",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "zimmern",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6118,
+    "attempt": 6074,
+    "place_id": "gn-2915438",
+    "input": {
+      "place": {
+        "place_id": "gn-2915438",
+        "name": "Großkarolinenfeld",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.89102,
+        "lon": 12.08101
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Großkarolinenfeld",
+          "url": "https://en.wikipedia.org/wiki/Großkarolinenfeld",
+          "text": "Großkarolinenfeld (German pronunciation: [ɡʁoːskaʁoˈliːnənfɛlt]) is a municipality in the district of Rosenheim in Bavaria in Germany.\nIt is located at the Munich–Rosenheim railway. The Großkarolinenfeld station is served about once per hour by local trains of the company Bayerische Regiobahn.\nThere are 41 official boroughs of Großkarolinenfeld. The larger ones are Großkarolinenfeld itself, Jarezöd (also known as Dred), Hilperting, Tattenhausen and Thann, the smaller ones are mostly farmsteads, namely Alsterloh, Ametsbichl, Aschach, Auberg, Bach, Bichl, Buchrain, Deutlstätt, Ester, Filzen, Frauenholz, Gröben, Gutmart, Haslau, Hohenaich, Hub, Kirchsteig, Kolberg, Krabichl, Lehen, Linden, Mühlbach, Naglstätt, Öd, Ödenhub, Petzenbichl, Rann, Ried, Riedhof, Rott, Schlimmerstätt, Schwaig, Stolz, Thonbichl, Vogl, and Zweckstätt.\nThree rivers are located in the borough of Großkarolinenfeld: The Aschach and the Erlbach discharge into the Rott."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "gro karolinenfeld",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "karolinenfeld",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6119,
+    "attempt": 6075,
+    "place_id": "gn-2941283",
+    "input": {
+      "place": {
+        "place_id": "gn-2941283",
+        "name": "Burghaun",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.69684,
+        "lon": 9.72453
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burghaun",
+          "url": "https://en.wikipedia.org/wiki/Burghaun",
+          "text": "Burghaun is a municipality in the district of Fulda in the state of Hessen in Germany.\nBurghaun itself is a small town with about 3,800 residents. Following the administrative reorganization of Germany in 1972 when smaller communities were grouped together, Burghaun took in the nearby villages of\nGroßenmoor,\nGruben,\nHechelmannskirchen,\nHünhan, (shippo muito)\nLangenschwarz,\nRothenkirchen,\nSchlotzau and\nSteinbach.\nThe municipality of Burghaun (the town itself plus these nearby villages) currently has a total of about 7,000 inhabitants.\nAs the name \"Burghaun\" suggests, the town is in the valley of the Haune, a small river that flows into the river Fulda. Burghaun is situated about 5 km north of Hünfeld which, in turn, is about 18 km to the northeast of the city of Fulda. Burghaun is about 150 km northeast of Frankfurt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "burghaun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6120,
+    "attempt": 6076,
+    "place_id": "gn-302986",
+    "input": {
+      "place": {
+        "place_id": "gn-302986",
+        "name": "Özdere",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.01611,
+        "lon": 27.12806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Özdere",
+          "url": "https://en.wikipedia.org/wiki/Özdere",
+          "text": "Özdere (English:  , Turkish pronunciation: [œzdeɾe]) is a neighbourhood in the municipality and district of Menderes, İzmir Province, Turkey. Its population is 1,499 (2022). It is a coastal settlement and resort town along the Aegean Sea coast. With adjacent neighbourhoods it has a permanent population of around 15,000 people, which can rise to nearly 100,000 during the summer as a result of its popularity amongst tourists.\nIt is located approximately 40 kilometres (25 mi) northwest of the nearby resort town of Kuşadası, 45 kilometres (28 mi) south of Menderes, the district seat, and 65 kilometres (40 mi) to the south of İzmir, the provincial seat. The town is situated in close proximity to numerous historical sites and is accessible via the Kuşadası-Selçuk-Seferihisar-Urla provincial road.\nThe area was settled and cultivated long before Turkish administration of the area, which is reflected in the several historical names the town once bore. During the Ottoman period the town was known as Kesri. In the 1960s, the village underwent a considerable increase in density and population and started to be generally referred to by its current name, Özdere. On June 3, 1979, a municipality was established in Menderes district under this name, with the official borders of the town being drawn. It was merged into the municipality of Menderes in 2008.\nWith a temperate climate and favorable location, the town is a local center of tourism, which its economy is primarily and steadfastly centered upon. The customs and culture revolve around the behaviors of local business owners, the attire of residents, and its cuisine. Although several pharmacies and doctors practice in the area, as of 2015 the town no longer has an independent municipal health department (Turkish: sağlık ocağı), and such affairs are operated and administered by the district. Numerous schools are located within or near the town and its vicinity.\nThe ease of access to the town makes the administration of several shuttle buses and share taxis by the province and from central İzmir to Özdere and its beaches possible. Dolmuş and coach buses also operate from the İzmir bus station and from other nearby towns such as Kuşadası and Seferihisar. The town can be reached from the İzmir Adnan Menderes International Airport, where rental car services and taxis can be used to the reach the town center, its neighborhoods, and nearby areas. Ferry and yacht services can be found at several harbors within and near town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 404
+    },
+    "banned_terms": [
+      {
+        "term": "ozdere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6121,
+    "attempt": 6077,
+    "place_id": "gn-3127035",
+    "input": {
+      "place": {
+        "place_id": "gn-3127035",
+        "name": "Caldes de Montbui",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.63333,
+        "lon": 2.16667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caldes de Montbui",
+          "url": "https://en.wikipedia.org/wiki/Caldes_de_Montbui",
+          "text": "Caldes de Montbui (Catalan pronunciation: [ˈkaldəz ðə mumˈbuj]) is a Spanish town and municipality in the comarca[1] of the Vallès Oriental in Catalonia. It is situated in the upper valley of the Caldes river, and the highest point of the municipality is the peak of el Farell at 816 m. It lies about 30 km from Barcelona and it part of its metropolitan area.\n\nThe hot springs have been exploited since Roman times, and the remnants of the Roman baths and other Roman buildings can still be seen. The source of la Font del Lleó (\"Lion Springs\") in the main square emerges at more than 70 °C (158 °F). The town conserves parts of its medieval fortifications and the Torre de la Presó (prison). The hermitage of la Mare de Déu del Remei dates from the sixteenth century, as does the church of Santa Maria with its baroque entrance. The Roman church of Sant Sebastià de Montmajor, in the village of the same name at the extreme north-west of the municipality, is particularly well preserved.\nThe artist Manolo Hugué lived and worked in Caldes de Montbui, and his house has been converted into a museum displaying both his works and those of other artists. The town also has an archeological museum and the Delger museum of furniture, paintings and sculptures.\nContinuing in this artistic tradition is the master landscape painter Ramon Vilanova, a native son of the city and lifetime resident."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "caldes de montbui",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "caldes",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "montbui",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6122,
+    "attempt": 6078,
+    "place_id": "gn-3174856",
+    "input": {
+      "place": {
+        "place_id": "gn-3174856",
+        "name": "Lerici",
+        "country": "Italy",
+        "subdivision": "Liguria",
+        "lat": 44.07587,
+        "lon": 9.91121
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lerici",
+          "url": "https://en.wikipedia.org/wiki/Lerici",
+          "text": "Lerici (Ligurian: Lerxi, locally Lerze) is a comune in the province of La Spezia, in the Italian region of Liguria, part of the Italian Riviera. It is situated on the coast of the Gulf of La Spezia, 8 kilometres (5 mi) southeast of La Spezia. It is known as the place where the poet Percy Bysshe Shelley drowned. The town is connected by ferry to the Cinque Terre and Porto Venere.\nOne of the main sights of Lerici is its castle which since its first founding in 1152 was used to help control the entrance of the Gulf of La Spezia. For a long time, the castle contained a museum of palaeontology inspired by a local lad (Walter) finding dinosaur bones in the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "lerici",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6123,
+    "attempt": 6079,
+    "place_id": "gn-3315322",
+    "input": {
+      "place": {
+        "place_id": "gn-3315322",
+        "name": "Walkinstown",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.32964,
+        "lon": -6.33963
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Walkinstown",
+          "url": "https://en.wikipedia.org/wiki/Walkinstown",
+          "text": "Walkinstown (Irish: Baile Bhailcín) is a suburb of Dublin, Ireland, approximately 6 km (4 mi) southwest of Dublin city centre. It is surrounded by Drimnagh to the north, Crumlin to the east, Greenhills to the south, and Ballymount, Bluebell, and Clondalkin to the west. It lies within the postal district of Dublin 12.\nIt consists mainly of privately owned housing, with some social housing remaining in the Dublin City Council area between the Walkinstown and Long Mile Roads and Ballymount Lower. It was built as an estate of starter homes after World War II.\nWalkinstown has a library, community centre, sports grounds, schools, pubs and a Catholic church. The 2022 census recorded a population of 7,422 people for all electoral divisions labelled as Walkinstown."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "walkinstown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6124,
+    "attempt": 6080,
+    "place_id": "gn-3386024",
+    "input": {
+      "place": {
+        "place_id": "gn-3386024",
+        "name": "Triunfo",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -7.83806,
+        "lon": -38.10167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Triunfo, Pernambuco",
+          "url": "https://en.wikipedia.org/wiki/Triunfo,_Pernambuco",
+          "text": "Triunfo (Central northeastern portuguese pronunciation: [tɾiˈũfŭ]) is a municipality in the Northeastern Brazilian state of Pernambuco. The estimated population in 2020, according to the Brazilian Institute of Geography and Statistics (IBGE) was 15,243. The area of the municipality is 191.52 km2, and in 2010 the population density was 78 inhabitants/km2.\nTriunfo sits at an elevation of 1,004 metres (3,294 ft) in a forested part of the Sertão, and is the highest municipality in Pernambuco.\nFar inland and with a milder climate than the surrounding semi-arid plateau, the city has the nickname \"Oasis of the Sertão\", and tourism is a significant part of the economy. Its current mayor is Luciano Fernando de Sousa (better known as Luciano Bonfim) of the Avante party, elected in 2020."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "triunfo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

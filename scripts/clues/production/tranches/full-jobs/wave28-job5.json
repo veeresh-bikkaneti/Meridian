@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 5523,
+    "attempt": 5481,
+    "place_id": "gn-8299577",
+    "input": {
+      "place": {
+        "place_id": "gn-8299577",
+        "name": "Warren Township",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.60822,
+        "lon": -74.51803
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warren Township, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Warren_Township,_New_Jersey",
+          "text": "Warren Township is a township in Somerset County, in the U.S. state of New Jersey. The township is a bedroom suburb of New York City in the much larger New York metropolitan area, located within the Raritan Valley region. As of the 2020 United States census, the township's population was 15,923, an increase of 612 (+4.0%) from the 2010 census count of 15,311, which in turn reflected an increase of 1,052 (+7.4%) from the 14,259 counted in the 2000 census. Warren is situated in northeastern Somerset County bordering both Morris (along the Passaic River) and Union counties.\nThe township has been one of the state's highest-income communities. Based on data from the American Community Survey for 2013–2017, Warren Township residents had a median household income of $154,647, ranked 12th in the state among municipalities with more than 10,000 residents, more than double the statewide median of $76,475.\nIn 2012, Forbes.com listed Warren as 334th in its listing of \"America's Most Expensive ZIP Codes\", with a median home price of $842,750."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "warren township",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "warren",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "township",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5524,
+    "attempt": 5482,
+    "place_id": "gn-939930",
+    "input": {
+      "place": {
+        "place_id": "gn-939930",
+        "name": "Wilderness",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.99385,
+        "lon": 22.57574
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wilderness, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Wilderness,_South_Africa",
+          "text": "Wilderness is a seaside town on the Garden Route of the southern Cape in South Africa. It is situated a short distance to the east from the city of George, on the N2 down the Kaaiman's River Pass.\nThe area around Wilderness has yielded significant palaeoclimatological data on the prehistoric climate of South Africa. Sediment core data from the nearby coastal lake Eilandvlei indicate higher aridity relative to the present day during the intervals spanning ~8,900-7,900 years BP and ~6,400-3,000 years BP, whereas the interval from 7,900 to 6,400 years BP was relatively moist and similar to the present day.\nThe town is also known for having been both the retirement and death place of P. W. Botha, who served as Prime Minister of South Africa from 1978 to 1984 and as the first executive State President of South Africa from 1984 until his resignation in 1989."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 147,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "wilderness",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5525,
+    "attempt": 5483,
+    "place_id": "gn-2261598",
+    "input": {
+      "place": {
+        "place_id": "gn-2261598",
+        "name": "Vila Real de Santo António",
+        "country": "Portugal",
+        "subdivision": "Faro",
+        "lat": 37.195,
+        "lon": -7.41766
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vila Real de Santo António",
+          "url": "https://en.wikipedia.org/wiki/Vila_Real_de_Santo_António",
+          "text": "Vila Real de Santo António (pronounced [ˈvilɐ ʁiˈal d(ɨ) ˈsɐ̃t(u) ɐ̃ˈtɔni.u, - ɐ̃ˈtɔnju] ) is a city, civil parish, and municipality in the Algarve, Portugal. The population in 2011 was 19,156, in an area of 61.25 km2 (23.65 sq mi). It is one of the few municipalities in Portugal without territorial continuity: its territory comprises two parts, with the municipal seat located in the eastern part. Vila Real de Santo António was founded after the 1755 Lisbon earthquake, and largely expanded in 1774 using the same architectural and construction techniques employed in the reconstruction of Lisbon after the disaster.\nThe city is situated next to the Guadiana river. Before the construction of the Guadiana International Bridge (in its neighboring upstream municipality of Castro Marim), it used to be the easiest access to Portugal from Andalusia (via ferry from the Spanish city of Ayamonte across the river). Nevertheless, international movement of people and goods is still intense and quite visible in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "vila real de santo antonio",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vila",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "real",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "santo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "antonio",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5526,
+    "attempt": 5484,
+    "place_id": "gn-2640967",
+    "input": {
+      "place": {
+        "place_id": "gn-2640967",
+        "name": "Omagh",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.6,
+        "lon": -7.3
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Omagh",
+          "url": "https://en.wikipedia.org/wiki/Omagh",
+          "text": "Omagh (; from Irish: An Ómaigh [ənˠ ˈoːmˠiː], meaning 'the virgin plain') is the county town of County Tyrone, Northern Ireland. It is situated where the rivers Drumragh and Camowen meet to form the Strule. Northern Ireland's capital city, Belfast, is 68 miles (109.5 km) to the east of Omagh, and Derry is 34 miles (55 km) to the north.\nThe town had a population of 20,458 at the 2021 census. At the time of 2011 census, the former district council, which was the largest in County Tyrone, had a population of 51,356. Omagh contains the headquarters of the Western Education and Library Board, and also houses offices for the Department of Agriculture, Environment and Rural Affairs at Sperrin House, the Department for Infrastructure and the Northern Ireland Roads Service at the Tyrone County Hall and the Northern Ireland Land & Property Services at Boaz House."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "omagh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5527,
+    "attempt": 5485,
+    "place_id": "gn-2647265",
+    "input": {
+      "place": {
+        "place_id": "gn-2647265",
+        "name": "Haydock",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.46723,
+        "lon": -2.68166
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haydock",
+          "url": "https://en.wikipedia.org/wiki/Haydock",
+          "text": "Haydock is a village within the Metropolitan Borough of St Helens, in Merseyside, England. At the 2011 Census, it had a population of 11,416 Haydock's historic area covers the Haydock electoral ward and a section of the Blackbrook ward.\nHaydock is located within the boundaries of the historic county of Lancashire. The village is located to the north-east of the adjacent St Helens, with most of its residential estates and commercial property built either side of the A599. Historically a township and large pastoral area, Haydock was found to be rich with coal and the area grew in significance during the Industrial Revolution particularly with the coming of the canals and railways. In the 1930s, the north side of Haydock was bisected by the A580 East Lancashire Road; this dual carriageway connected the cities of Liverpool and Manchester, with several junctions serving St Helens and Haydock. The area to the south of the East Lancs road saw large post-war residential development, while the area to the north, that was initially open pits, saw large scale industrialisation. More recently, the area north of the road has seen the development of distribution centres encouraged by the proximity of junction 23 of the M6 motorway and Haydock's convenient transport links to Liverpool and Manchester.\nHaydock is the home of the Haydock Park Racecourse, while the old mining tip and spoil areas south of the village have been developed into the Lyme & Wood Pits Country Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 243
+    },
+    "banned_terms": [
+      {
+        "term": "haydock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5528,
+    "attempt": 5486,
+    "place_id": "gn-2652819",
+    "input": {
+      "place": {
+        "place_id": "gn-2652819",
+        "name": "Clitheroe",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.86667,
+        "lon": -2.4
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clitheroe",
+          "url": "https://en.wikipedia.org/wiki/Clitheroe",
+          "text": "Clitheroe () is a town and civil parish in the Borough of Ribble Valley, Lancashire, England; it is located 34 miles (55 km) north-west of Manchester. It is near the Forest of Bowland and is often used as a base for tourists visiting the area. In 2018, the Clitheroe built-up area had an estimated population of 16,279.\nThe town was listed in the 2017 The Sunday Times report on the best places to live in Northern England, while the wider Ribble Valley, of which Clitheroe is the most populous settlement, was listed in the 2018 and 2024 Sunday Times report on the best places to live. Clitheroe and the wider Ribble Valley have also been listed as healthiest and happiest place to live in the United Kingdom.\nThe town's most notable building is Clitheroe Castle, which is one of the smallest Norman keeps in Great Britain. Several manufacturing companies have sites here, including Dugdale Nutrition, Hanson Cement, Johnson Matthey and Tarmac."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "clitheroe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5529,
+    "attempt": 5487,
+    "place_id": "gn-2656666",
+    "input": {
+      "place": {
+        "place_id": "gn-2656666",
+        "name": "Bacup",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.70336,
+        "lon": -2.2007
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bacup",
+          "url": "https://en.wikipedia.org/wiki/Bacup",
+          "text": "Bacup ( BAY-kəp, ) is a town in the Rossendale Borough in Lancashire, England, in the South Pennines close to Lancashire's boundaries with West Yorkshire and Greater Manchester. The town is in the Rossendale Valley and the upper Irwell Valley, 4 miles (6.4 km) east of Rawtenstall, 6 miles (9.7 km) north of Rochdale, and 7 miles (11 km) south of Burnley. At the 2011 Census, Bacup had a population of 13,323.\nBacup emerged as a settlement following the Anglo-Saxon settlement of Britain in the Early Middle Ages. For centuries, it was a small and obscure centre of domestic flannel and woollen cloth production, and many of the original weavers' cottages survive today as listed buildings. Following the Industrial Revolution, Bacup became a mill town, growing up around the now covered over bridge crossing the River Irwell and the north–south / east-west crossroad at its centre. During that time its landscape became dominated by distinctive and large rectangular woollen and cotton mills. Bacup received a charter of incorporation in 1882, giving it municipal borough status and its own elected town government, consisting of a mayor, aldermen and councillors to oversee local affairs.\nIn 1974, Bacup became part of the borough of Rossendale. Bacup's historic character, culture and festivities have encouraged the town to be seen as one of the best preserved mill towns in England. English Heritage has proclaimed Bacup town centre as a designated protected area for its special architectural qualities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "bacup",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5530,
+    "attempt": 5488,
+    "place_id": "gn-2661374",
+    "input": {
+      "place": {
+        "place_id": "gn-2661374",
+        "name": "Brugg",
+        "country": "Switzerland",
+        "subdivision": "Aargau",
+        "lat": 47.48096,
+        "lon": 8.20869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brugg",
+          "url": "https://en.wikipedia.org/wiki/Brugg",
+          "text": "Brugg (sometimes written as Brugg AG in order to distinguish it from other Bruggs) is a Swiss municipality and a town in the canton of Aargau and is the seat of the district of the same name. The town is located at the confluence of the Aare, Reuss, and Limmat, with the Aare flowing through its medieval part. It is located approximately 16 kilometers (9.9 mi) from the cantonal capital of Aarau; 28 kilometers (17 mi) from Zürich; and about 45 kilometers (28 mi) from Basel.\nBrugg is the Swiss German term for bridge (German: Brücke). This is an allusion to the purpose of the medieval town's establishment under the Habsburgs, as the town is located at the narrowest point on the Aare in the Swiss midlands. The Habsburgs’ oldest known residence is located in the neighborhood of Altenburg, which had previously been an independent community. Prior to their relocation to Austria, Brugg was the center of the Habsburgs' territory. Between 1415 and Napoleon’s invasion in 1798, Brugg was a subject territory of Bern. Since then it has belonged to the canton of Aargau.\nThe town is the home of the Swiss Farmers’ Union and is the location of a campus of the University of Applied Sciences and Arts Northwestern Switzerland. Brugg's Vindonissa museum is listed as a heritage site of national significance. An engineer training unit of the Swiss army is also based in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 237
+    },
+    "banned_terms": [
+      {
+        "term": "brugg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5531,
+    "attempt": 5489,
+    "place_id": "gn-2878673",
+    "input": {
+      "place": {
+        "place_id": "gn-2878673",
+        "name": "Leopoldshöhe",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 52.01246,
+        "lon": 8.69834
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leopoldshöhe",
+          "url": "https://en.wikipedia.org/wiki/Leopoldshöhe",
+          "text": "Leopoldshöhe (German pronunciation: [ˈleːopɔltsˌhøːə]; Low German: Höchte) is a municipality in the Lippe district of North Rhine-Westphalia, Germany, with ca. 17,000 inhabitants (2025).\nLocated in the rolling plains north of the Teutoburger Wald range, Leopoldshöhe consists of eight formerly independent municipalities: Asemissen, Bechterdissen and Greste to the south, Leopoldshöhe proper, Krentrup and Schuckenbaum at the center, and Nienhagen and Bexterhagen to the north. Both Asemissen and Leopoldshöhe proper have a pronounced infrastructure (supermarkets, gas stations, specialized shops, etc.).\nLocated only 10 km  from the city of Bielefeld, the southern and central parts of the municipality today have a mostly suburban feel to them, but also contain several industrial zones, whereas the north is still mainly rural.\nAsemissen is only a few hundred meters away from the A2 autobahn motorway, and (with the Oerlinghausen railway station) is on the railway line from Bielefeld to Detmold and Lemgo.  A bus service connects almost all villages to the railway station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "leopoldshohe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5532,
+    "attempt": 5490,
+    "place_id": "gn-3094831",
+    "input": {
+      "place": {
+        "place_id": "gn-3094831",
+        "name": "Kozy",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 49.84756,
+        "lon": 19.14891
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kozy",
+          "url": "https://en.wikipedia.org/wiki/Kozy",
+          "text": "Kozy [ˈkɔzɨ] (German: Seiffersdorf, Seibersdorf, Kosy (1941–45); Wymysorys: Zajwyśdiüf) is a large village with a population of 12,457 (2013) within Bielsko County, located in the historical and geographical south-west region of Lesser Poland, between Kęty and Bielsko-Biała, and about 65 kilometres south-west of Kraków and south of Katowice. It is the second largest village in Poland (by comparison - the population of Opatowiec, the smallest town in Poland, is only 338. Józefosław is the largest village with early 15,000 residents and surpassed Kozy in 2021). The village name translates to 'Goats' in English, and has an area of 26,9 km2.\nSince 1 January 1999, following Polish local government reforms adopted in 1998, Kozy has been part of the newly established Silesian Voivodeship (province); between 1975 and 1998 it was formerly part of the Bielsko-Biała Voivodeship. The village is well connected with the nearby city of Bielsko-Biała. It has a railway transport station, and lies on National Road No. 52. Kozy is the centre of the administrative district of Gmina Kozy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "kozy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5533,
+    "attempt": 5491,
+    "place_id": "gn-3120929",
+    "input": {
+      "place": {
+        "place_id": "gn-3120929",
+        "name": "Guissona",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.78333,
+        "lon": 1.3
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guissona",
+          "url": "https://en.wikipedia.org/wiki/Guissona",
+          "text": "Guissona (Catalan pronunciation: [giˈsona]) is a town and municipality located in the north of the  comarca (county) of Segarra, in the Province of Lleida, Catalonia, Spain. With a population of 7,774 (register office, 2025)  and a rapid demographic growth  (5,170 inhabitants in 2010) Guissona is the principal municipality in the northern half of Segarra and the second most populated in the county after Cervera (9,603). In addition to the populated place of Guissona, the municipality integrates the smaller place of Guarda-si-venes (31 inhabitants in 2007). The municipality is split into two parts, the bigger eastern part containing almost all the population.\nIn the last half century, the town has experienced an important economic development mainly due to meat production and the creation of a meat packing industry. Such development has run parallel to a fast demographic growth, from 3,060 inhabitants in 1998 to 6,145 in 2010. As a consequence, the municipality accounts for the highest percentage of immigrant population registered in the whole province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "guissona",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5534,
+    "attempt": 5492,
+    "place_id": "gn-4019819",
+    "input": {
+      "place": {
+        "place_id": "gn-4019819",
+        "name": "Acaponeta",
+        "country": "Mexico",
+        "subdivision": "Nayarit",
+        "lat": 22.49046,
+        "lon": -105.36074
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Acaponeta",
+          "url": "https://en.wikipedia.org/wiki/Acaponeta",
+          "text": "Acaponeta is both a municipality and a town in the northern part of the Mexican state of Nayarit. The town is located at the geographical coordinates of 22°29′47″N 105°21′34″W. The population of the municipality was 34,665 in the 2005 census, living in a total area of 1,667.7 km2 (643.9 sq mi). The population of the municipal seat was 18,066, the fifth-largest community in the state (after Tepic, Xalisco, Ixtlán del Río, and Tuxpan). The Acaponeta River flows through the town.\nAcaponeta means, \"Place near the river where the bean tangled in the  reed-grows\"; which is formed by joining the translation of the Tepehuano word Acaponeta (Caponeta) which means, \"place near the river\"; and the Nahuatl Acatl-pol-etl-tlan, which means, \"place where the bean tangled in the reed grows\".\nThe municipality is crossed by the Nogales, Sonora-Mexico City railroad and there is a station in the municipal seat. Distances to some major cities are: Mazatlán 150.3 km.; Tepic 166.2 km.; Mexicali 1,707.4 km.; Mexico City 1,056.8 km.; Guadalajara 443.9 km."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "acaponeta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5535,
+    "attempt": 5493,
+    "place_id": "gn-4167583",
+    "input": {
+      "place": {
+        "place_id": "gn-4167583",
+        "name": "Palm Springs",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.6359,
+        "lon": -80.09615
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palm Springs, Florida",
+          "url": "https://en.wikipedia.org/wiki/Palm_Springs,_Florida",
+          "text": "Palm Springs is a village in Palm Beach County, Florida, United States, situated approximately 61 mi (98 km) north of Miami. The village's name was likely derived from the resort city of Palm Springs, California. Located in the east-central part of the county, Palm Springs is situated north of Atlantis, east of Greenacres, west of Lake Clarke Shores and Lake Worth Beach, and southwest of West Palm Beach. The 2010 United States census recorded the village's population at 18,928, which increased to 26,890 in the 2020 census. Palm Springs is also located within the Miami metropolitan area of South Florida, which had a population of approximately 6,138,333 people as of 2020.\nWilliam A. Boutwell operated a dairy farm on 5 acres (2.0 ha) of land in modern-day Palm Springs beginning in 1927, which expanded to about 700 acres (280 ha) prior to his retirement in 1956. One year later, the Florida Legislature approved a charter establishing the village of Palm Springs as Palm Beach County's 30th municipality on May 31, 1957. At the time of incorporation, the village consisted only of farmland, a dairy barn, and no permanent residents. Within two years, around 800 homes had been built, and four schools were constructed in or near Palm Springs between 1959 and 1970. The first village hall was erected in 1960.\nPalm Springs has been expanding through annexation since 1998, more than doubling the village's land area and population within a few decades. Also around that time, the village government began planning for a new municipal complex, which opened in the mid-2000s. By 2010, Palm Springs became the first municipality in Palm Beach County in which a majority of its residents are of Hispanic or Latino ancestry. The village is also the home of the Fulton-Holland Educational Services Center, the headquarters of the School District of Palm Beach County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 308
+    },
+    "banned_terms": [
+      {
+        "term": "palm springs",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "palm",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "springs",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5536,
+    "attempt": 5494,
+    "place_id": "gn-4240284",
+    "input": {
+      "place": {
+        "place_id": "gn-4240284",
+        "name": "Harrisburg",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 37.73838,
+        "lon": -88.54061
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Harrisburg, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Harrisburg,_Illinois",
+          "text": "Harrisburg () is a city in and the county seat of Saline County, Illinois, United States. It is located about 55 miles (88.51392 km) southwest of Evansville, Indiana, and 111 mi (179 km) southeast of St. Louis, Missouri. Its 2020 population was 8,219, and the surrounding Harrisburg Township had a population of 10,037, including the city residents. Harrisburg is included in the Illinois–Indiana–Kentucky tri-state area and is the principal city in the Harrisburg micropolitan statistical area with a combined population of 24,913.\nLocated at the concurrency of U.S. Route 45, Illinois Route 13, Illinois Route 145, and Illinois Route 34, Harrisburg is known as the \"Gateway to the Shawnee National Forest\", and is also known for the Ohio River flood of 1937, the old Crenshaw House (also known as the Old Slave House), the Tuttle Bottoms Monster, prohibition-era gangster Charlie Birger, and the 2012 EF4 tornado. A Cairo and Vincennes Railroad boomtown, the city was one of the leading bituminous coal-mining distribution hubs of the American Midwest between 1900 and 1937.\nAt its peak, Harrisburg's population reached 16,000 by the early 1930s. The city had one of the largest downtown districts in Southern Illinois. The city was the 20th-most populated city in Illinois outside the Chicago metropolitan area and the most-populous city in Southern Illinois outside the Metro East in 1930. However, the city has seen an economic decline due to the decreased demand for high-sulfur coal, the removal of the New York Central railroad, and tributary lowlands leaving much area around the city unfit for growth due to flood risks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 261
+    },
+    "banned_terms": [
+      {
+        "term": "harrisburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5537,
+    "attempt": 5495,
+    "place_id": "gn-5097357",
+    "input": {
+      "place": {
+        "place_id": "gn-5097357",
+        "name": "Dumont",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.94065,
+        "lon": -73.99681
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dumont, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Dumont,_New_Jersey",
+          "text": "Dumont is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 17,863, an increase of 384 (+2.2%) from the 2010 census count of 17,479, which in turn reflected a decrease of 24 (−0.1%) from the 17,503 counted in the 2000 census.\nThe borough was originally formed on July 20, 1891, as the Borough of Schraalenburgh from portions of Harrington Township and Palisades Township, based on the results of a referendum held the previous day. The borough was formed during the \"Boroughitis\" phenomenon then sweeping through Bergen County, in which 26 boroughs were formed in the county in 1894 alone. On March 7, 1898, portions of the borough were annexed to Palisades Township. On June 13, 1898, the borough's name was changed to Dumont in honor of Dumont Clarke, the borough's first mayor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "dumont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5538,
+    "attempt": 5496,
+    "place_id": "gn-5128266",
+    "input": {
+      "place": {
+        "place_id": "gn-5128266",
+        "name": "Nanuet",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.08871,
+        "lon": -74.01347
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanuet, New York",
+          "url": "https://en.wikipedia.org/wiki/Nanuet,_New_York",
+          "text": "Nanuet (English pronunciation: /ˈnænjuɛːt/ ) is a hamlet and census-designated place in the town of Clarkstown, New York, United States. The third largest hamlet in Clarkstown, it is located north of Pearl River, south of New City, east of Spring Valley, and west of West Nyack. It is located midway between Manhattan and Bear Mountain, 19 miles (31 km) north and south of each respectively; and 2 miles (3 km) north of the New Jersey border. It has one of three Rockland County stations on New Jersey Transit's Pascack Valley Line. As of the 2020 census, Nanuet had a population of 18,886.\nThe opening of the New York State Thruway (Interstate 87/287), the Tappan Zee Bridge, and the Palisades Interstate Parkway in the mid-1950s helped usher in decades of population growth and real estate development, including the construction of the Nanuet Mall and local shopping centers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "nanuet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5539,
+    "attempt": 5497,
+    "place_id": "gn-6952201",
+    "input": {
+      "place": {
+        "place_id": "gn-6952201",
+        "name": "East Melbourne",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.81667,
+        "lon": 144.9879
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Melbourne",
+          "url": "https://en.wikipedia.org/wiki/East_Melbourne",
+          "text": "East Melbourne is an inner-city suburb in Melbourne, Victoria, Australia, 2 km (1.2 mi) east of Melbourne's Central Business District, located within the City of Melbourne local government area. East Melbourne recorded a population of 4,896 at the 2021 census.\nEast Melbourne is a small area of inner Melbourne, located between Richmond and the Central Business District. Broadly, it is bounded by Spring Street, Victoria Parade, Punt Road/Hoddle Street and Brunton Avenue.\nOne of Melbourne's earliest suburbs, East Melbourne has long been home to many significant government, health and religious institutions, including the Parliament of Victoria and offices of the Victoria State Government in the Parliamentary and Cathedral precincts, which are located on a gentle hill at the edge of the Melbourne's Hoddle Grid, known as Eastern Hill. The world-famous Melbourne Cricket Ground (MCG) is located in Yarra Park, in the East Melbourne locality of Jolimont. East Melbourne has been affluent since its first establishment and contains some of the oldest Victorian homes and terrace houses and parks and gardens in Melbourne."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "east melbourne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "melbourne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5540,
+    "attempt": 5498,
+    "place_id": "gn-847513",
+    "input": {
+      "place": {
+        "place_id": "gn-847513",
+        "name": "Kontula",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.23764,
+        "lon": 25.08393
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kontula, Helsinki",
+          "url": "https://en.wikipedia.org/wiki/Kontula,_Helsinki",
+          "text": "Kontula (Swedish: Gårdsbacka) is a quarter of Helsinki, Finland, part of the Mellunkylä neighbourhood. Kontula was built mostly in the 1960s and 1970s when more housing was required in Helsinki. Many people from the city centre moved to Kontula; due to its little higher than average concentration of government tenant housing complexes, immigrant and refugee population it is regarded as an average eastern Helsinki suburb.\nKontula has generally been considered one of the most notorious suburbs in East Helsinki largely due to prevailing incidents of violence and drug dealing, the latter of which local youths actively run a drug trade near the shopping area and the metro station. Despite its mixed reputation, it might also be the clue to its attractiveness, because Kontula pops up in many movies, books, and songs.\nThe metro was expanded to Kontula in 1986, which made the area easy to reach. The Kontula Metro Station is daily used by 20,000 people.\nIn 2006, the Finnish Local Heritage Foundation picked Kontula as the Borough of the Year in Finland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 146,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "kontula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5541,
+    "attempt": 5499,
+    "place_id": "gn-12156895",
+    "input": {
+      "place": {
+        "place_id": "gn-12156895",
+        "name": "Humber Heights-Westmount",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.69223,
+        "lon": -79.52242
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Humber Heights-Westmount",
+          "url": "https://en.wikipedia.org/wiki/Humber_Heights-Westmount",
+          "text": "Humber Heights-Westmount, also known as Humbervale, is a neighbourhood in Toronto, Ontario, Canada. The neighbourhood is bounded by the west bank of the Humber River, west to Royal York Road and south to Eglinton Avenue West.  The Humber Creek divides the area into the northern 'Humber Heights' (originally the Etobicoke side of York Township's Weston) and the southern 'Westmount' (originally part of the 'Richview' farming district) centred along Scarlett Road and La Rose Avenue.\n'Richview' district (and Richview Sideroad) originated in Westmount at Scarlett Road (at the now Eglinton Avenue intersection) and its elevation in the scenic neighbourhood gave birth to the name 'rich'-'view'. Richview Sideroad was changed to Eglinton Avenue in 1970 when a 4-lane bridge was built from the east side of the Humber River to Scarlett Road in Etobicoke. This caused the morphing of Richview Sideroad with Eglinton Avenue, and the name-change. Toronto City planners had hoped to turn Richview Sideroad into The Richview Expressway to connect mid-town Toronto to the western townships down to Hamilton. Local opposition from Westmount/James Gardens/Richmond Gardens districts put up strong and influential fight to eventually kill the plan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "humber heights westmount",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "humber",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "westmount",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5542,
+    "attempt": 5500,
+    "place_id": "gn-13546315",
+    "input": {
+      "place": {
+        "place_id": "gn-13546315",
+        "name": "Kahnawake",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.41076,
+        "lon": -73.68139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kahnawake",
+          "url": "https://en.wikipedia.org/wiki/Kahnawake",
+          "text": "The Kahnawà꞉ke Mohawk Territory (French: Territoire Mohawk de Kahnawake, pronounced [ɡahnaˈwâːɡe] in the Mohawk language) is a First Nations reserve on the south shore of the Saint Lawrence River in Quebec, Canada, across from Montreal. Established as Seigneury Sault du St-Louis by French Canadians in 1719 as a Jesuit mission, it was formerly known as Caughnawaga (after the ancestral Mohawk villages named Caughnawaga (Kahnàwa꞉ke) in the Mohawk Valley of New York). There are 17 European spelling variations of the Mohawk Kahnawake and the name Kahnawà꞉ke refers to at least three historical places in New York State, in addition to the latest one.\nKahnawà꞉ke's territory totals an area of 48.05 km2 (18.55 sq mi). Its resident population numbers slightly above 8,000, with a significant number living off reserve. Its land base today is unevenly distributed due to the federal Indian Act, which governs individual land possession. It has rules that are different from those applying to Canadian non-reserve areas. Most Kahnawà꞉ke residents originally spoke Kanien'kéha, the Mohawk language, and some learned French when trading with and allied with French colonists. Together with most of four Haudenosaunee nations, including the Mohawk, they allied with the British government during the American Revolutionary War and the Lower Canada Rebellion. They have since become mostly English speaking.\nAlthough people of European descent traditionally refer to the residents of Kahnawake as Mohawk, their autonym is Kanien’kehá꞉ka (the \"People of the Flint\"). Another meaning is \"those who speak [the language] Kanien'kéha\"). The Kanien’kehá꞉ka were historically the most easterly nation of the Haudenosaunee (Six Nations Iroquois Confederacy) and are known as the \"Keepers of the Eastern Door\". They controlled territory on both sides of the Mohawk River and west of the Hudson River in present-day New York, where they protected other parts of the confederacy to the west against invasion by tribes from present-day New England and the coastal areas.\nKahnawake is one of several self-governing Kanien’kehá꞉ka territories of the Mohawk Nation within the borders of Canada, including Kanesatake on the north shore of the Saint Lawrence River northwest of Montreal; Tyendinaga in Ontario; Akwesasne, which straddles the borders of Quebec, Ontario and New York across the Saint Lawrence River; and the Six Nations of the Grand River in Ontario north of Lake Erie. In the late 18th and early 19th centuries, the British considered Kahnawake one of the Seven Nations of Canada.\nThe name is derived from the Mohawk word kahnawà꞉ke, meaning \"place of the rapids\", referring to their major village Caughnawaga near the rapids of the Mohawk River in what is today central New York. When converted Catholic Mohawk moved to the Montréal area, they named the new settlement after their former one. The proximity of the Lachine Rapids also influenced their naming decision."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 145,
+      "fullExtractWords": 458
+    },
+    "banned_terms": [
+      {
+        "term": "kahnawake",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

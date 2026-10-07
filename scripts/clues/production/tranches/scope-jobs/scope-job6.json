@@ -1,0 +1,927 @@
+[
+  {
+    "rank": 4176,
+    "band": 3,
+    "place_id": "gn-12750575",
+    "input": {
+      "place": {
+        "place_id": "gn-12750575",
+        "name": "Bangsar",
+        "country": "Malaysia",
+        "subdivision": "Kuala Lumpur",
+        "lat": 3.12945,
+        "lon": 101.67004
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bangsar",
+          "url": "https://en.wikipedia.org/wiki/Bangsar",
+          "text": "Bangsar is a residential suburb on the outskirts of Kuala Lumpur, lying about 4 kilometres (2.5 mi) south-west of the city centre. It is part of the Lembah Pantai parliamentary constituency. Bangsar is administered by Dewan Bandaraya Kuala Lumpur (DBKL), unlike other townships in the Klang Valley such as Petaling Jaya and Subang Jaya which have their municipal councils. Neighbourhood residents' associations and business councils play a part in communicating with the local authority, but they exercise no legal or administrative power. Malays make up most of the population at 61%, followed by the Chinese at 24%, Indians at 15%."
+        },
+        {
+          "article": "Bangsar (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Bangsar#Geography",
+          "text": "Bangsar lies respectively to the north and south of the neighbouring areas of Pantai Dalam and Damansara, and south-west of Kuala Lumpur city centre.\nBangsar is bounded by Jalan Bangsar and Jalan Pantai Baharu to the south, Universiti Malaya to the west, Jalan Damansara (Sprint Expressway and Bukit Damansara) to the north and Bukit Persekutuan to the east. It has the following neighbourhoods or housing estates: Bangsar Utama, Bukit Bangsar, Bangsar Park, Bukit Bandaraya, Taman SA, Bangsar Baru, Lucky Garden, Pantai Hills, and the areas off Jalan Bangsar. Jalan Maarof is Bangsar's main thoroughfare, dividing Bangsar into two main areas: east and west. On the east side lies Taman SA, Bangsar Park, Bukit Bangsar, Bangsar Utama and one-half of Bukit Bandaraya. The remainder of the other neighbourhoods lie on the west.\nBangsar is rather flat in the southern neighbourhoods of Bangsar Utama, Bangsar Park and the Off Jalan Bangsar area. This makes Jalan Bangsar in the south prone to flooding during heavy downpours. The terrain progressively rises towards the north up Bangsar Baru before making a steep drop in elevation after Bukit Bandaraya."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 183,
+      "leadWords": 100,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a residential suburb near a capital city centre with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "bangsar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4237,
+    "band": 3,
+    "place_id": "gn-5101427",
+    "input": {
+      "place": {
+        "place_id": "gn-5101427",
+        "name": "Morristown",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.79677,
+        "lon": -74.48154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morristown, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Morristown,_New_Jersey",
+          "text": "Morristown () is a town in and the county seat of Morris County, in the U.S. state of New Jersey. Morristown has been called \"the military capital of the American Revolution\" because of its strategic role in the war for independence from Great Britain. Morristown's history is visible in a variety of locations that collectively make up Morristown National Historical Park, the country's first National Historical Park.\nMorristown was incorporated as a town by an act of the New Jersey Legislature on April 6, 1865, within Morris Township, and it was formally set off from the township in 1895. As of the 2020 United States census, the town's population was 20,180, its highest decennial census count ever and an increase of 1,769 (+9.6%) from the 2010 census count of 18,411, which in turn had reflected a decline of 133 (−0.7%) from the 18,544 counted at the 2000 census.\nAccording to British colonial records, the first permanent settlement in Morristown was New Hanover, founded in 1715 by colonists from New York and Connecticut. Morris County was created on March 15, 1739, from portions of Hunterdon County. The county, and ultimately Morristown itself, was named for the popular Governor of the Province, Lewis Morris, who championed land ownership rights for colonists."
+        },
+        {
+          "article": "Morristown, New Jersey (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Morristown,_New_Jersey#Climate",
+          "text": "Morristown has a humid continental climate (Köppen climate classification Dfa) with hot, humid summers and moderately cold winters. The hardiness zone is 7a."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 23,
+      "leadWords": 209,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes Revolutionary War history and town incorporation with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "morristown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4276,
+    "band": 3,
+    "place_id": "gn-6074409",
+    "input": {
+      "place": {
+        "place_id": "gn-6074409",
+        "name": "Mimico",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.61616,
+        "lon": -79.51269
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mimico",
+          "url": "https://en.wikipedia.org/wiki/Mimico",
+          "text": "Mimico (, MIH-mih-koh) is a neighbourhood (and a former municipality) in Toronto, Ontario, Canada, being located in the south-west area of Toronto on Lake Ontario. It is in the south-east corner of the former Township (and later, City) of Etobicoke, and was an independent municipality from 1911 to 1967.\nMimico, which was named after the passenger pigeon, is the oldest of the former Lakeshore Municipalities. The Town of Mimico was established by a plan of sub-division in 1856, but was not sub-divided from the former Township of Etobicoke until 1911. The land area of Mimico originated mainly from three family farms, namely: Stock Estate (North of Portland), Hendry Estate (between Royal York and Queens Ave), Van Every Estate (between Royal York Rd and Dwight Ave). Mimico was an independent municipality until 1967, when it was amalgamated into the new Borough of Etobicoke (later, City of, in 1984), which was itself amalgamated in 1998 into the current city of Toronto.\nToday, Mimico is primarily a residential area with two commercial strips; one along Royal York Road and the other along Lake Shore Boulevard West, parallel to the shoreline (from Louisa Avenue to Allen Avenue). There is also a former commercial strip along Mimico Avenue connecting Royal York Road and Lake Shore Boulevard West. Some areas of industrial use exist along the railway corridor. In early 2012, Toronto Life magazine ranked Mimico first on their \"Where to Buy Now\" list of Toronto neighbourhoods."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 241,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a lakeside former municipality, its farm origins and residential streets, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism, record or extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "mimico",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4287,
+    "band": 3,
+    "place_id": "gn-3861824",
+    "input": {
+      "place": {
+        "place_id": "gn-3861824",
+        "name": "Chamical",
+        "country": "Argentina",
+        "subdivision": "La Rioja",
+        "lat": -30.35942,
+        "lon": -66.31387
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chamical",
+          "url": "https://en.wikipedia.org/wiki/Chamical",
+          "text": "Chamical is a small city in, and the seat of government of, Chamical Department in the south of La Rioja Province of Argentina. With a population numbering 15,666 permanent residents at the 2022 census [INDEC], up from 12,919 at the time of the 2010 census, it is the fourth-most populous settlement in La Rioja Province after Aimogasta. It is home to the CELPA aerospace test center, founded in 1961 and operated by the Argentine Air Force. The town, which is crossed by the Tirante wadi, lies on the Ruta 38 (Spanish Wikipedia), around 135 km from La Rioja (1 hour 24 minutes by car), and some 295 km from Córdoba (3 hours 3 minutes by car).\nThis young urban habitation has been an important site in several stages of Argentine history during the past fifty years.\nChamical has plentiful wilderness touristic spots, such as \"Las Ollitas\" (a natural waterfall lake) and\n\"La Salina\" (a long salt flat).\nChamical is regarded as the tango hub in La Rioja Province.\nThe local demonym for Chamical is a Chamicalense."
+        },
+        {
+          "article": "Chamical (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Chamical#Geography",
+          "text": "Chamical is located in the droughty Llanos Riojanos (Spanish for \"Riojan Plains\") and has four marked seasons, giving it a BSh hot semi-arid climate under the Köppen climate classification. The dry period of April to October is mild to cool, with the normal monthly mean temperature reaching its lowest in July at . The rainy period of November to March is warm to hot, with the normal monthly mean temperature peaking in January at . There has hardly ever been any snow or frost, but there has often been hail.\nTotal yearly precipitation averages a scanty with plentiful sunny days, and the rainfall centers in summer. The wettest month is January, during which time Chamical receives an average of .\nWinters are quite cool, but usually sunny; rather, snowfall is an odd occurrence. The Servicio Meteorológico Nacional reports that July is the coldest month with a mean high of and a mean low of . Springtime is mild, windy and usually warm. Summers are hot (as is common with La Rioja Province), somewhat rainy and, most often, the mercury rises to 38 degrees Celsius (≈100 Fahrenheit) or higher in the shade, which means unpleasant. The rain brings some relief from the stifling Riojan heat. January, the warmest month, has an average high of and an average low of . Fall is mild and pleasant, but can go chilly.\nThe highest temperature ever recorded was on December 25, 2013 while the lowest temperature on record was on July 31, 1993.\nNeighboring towns"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 251,
+      "leadWords": 176,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a wadi crossing, a salt flat, a waterfall lake and a test centre, with no climate mechanism, extreme, seasonal rhythm, or paradox; a wadi and salt flat alone are not a stated climate mechanism",
+      "priorMissing": "place-specific climate mechanism, record or extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "chamical",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4329,
+    "band": 3,
+    "place_id": "gn-5102825",
+    "input": {
+      "place": {
+        "place_id": "gn-5102825",
+        "name": "Pompton Lakes",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.00538,
+        "lon": -74.2907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pompton Lakes, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Pompton_Lakes,_New_Jersey",
+          "text": "Pompton Lakes is a borough in Passaic County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 11,127, an increase of 30 (+0.3%) from the 2010 census count of 11,097, which in turn reflected an increase of 457 (+4.3%) from the 10,640 counted in the 2000 census.\nPompton Lakes was established on February 26, 1895, from portions of Pompton Township, based on the results of a referendum held three days earlier. The borough was named for the Pompton people, a sub-tribe of Native Americans who lived in the area. It was the first borough to be formed in Passaic County as part of the \"boroughitis\" that had struck the state at the time. Pompton Lakes did not acquire territory from more than one township, which would have entitled the borough to a seat on the County's Board of Chosen Freeholders.\nAn outer-ring suburb of New York City, Pompton Lakes is located approximately 20 miles (32 km) northwest of Midtown Manhattan. From the higher mountains in and around the borough one can see the New York skyline. Three rivers, the Ramapo, Pequannock and Wanaque, run through the borough, which historically provided much of the energy for various industries in the borough. In the mid-20th century, Pompton Lakes served as a local shopping destination, but lost its status as shopping malls opened in the area in the 1970s and 1980s."
+        },
+        {
+          "article": "Pompton Lakes, New Jersey (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Pompton_Lakes,_New_Jersey#Geography",
+          "text": "According to the United States Census Bureau, the borough had a total area of 3.16 square miles (8.19 km 2 ), including 2.89 square miles (7.48 km 2 ) of land and 0.27 square miles (0.71 km 2 ) of water (8.67%).\nMuch of the borough sits in a valley formed by the confluence of the Ramapo, Pequannock, and Wanaque rivers, which leads to common flooding events, the most recent of which was in 2011. A few taller hills ring the valley, including Federal Hill, which is notable as the site of the Pompton Mutiny, a revolt of Continental Army troops that occurred there on January 20, 1781, under the command of Colonel Israel Shreve."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 115,
+      "leadWords": 237,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers 1895 founding and three rivers that provided industrial energy, with no climate mechanism, extreme, seasonal rhythm or paradox; river power does not qualify",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "pompton lakes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pompton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lakes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4371,
+    "band": 3,
+    "place_id": "gn-11669854",
+    "input": {
+      "place": {
+        "place_id": "gn-11669854",
+        "name": "Stamford Hill",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.56872,
+        "lon": -0.07334
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stamford Hill",
+          "url": "https://en.wikipedia.org/wiki/Stamford_Hill",
+          "text": "Stamford Hill is an area in Inner London, England, about 5+1⁄2 miles (9 kilometres) northeast of Charing Cross. The neighbourhood is a sub-district of Hackney, the major component of the London Borough of Hackney, and is known for its Hasidic community, the largest concentration of orthodox Ashkenazi in Europe.\nThe district takes its name from the eponymous hill, which reaches a height of 108 feet (33 metres) AOD, and the originally Roman A10 also takes the name \"Stamford Hill\", as it makes its way through the area.\nThe hill is believed to be named after the ford where the A10 crossed the Hackney Brook on the southern edge of the hill. Sanford and Saundfordhill are referred to in documents from the 1200s, and mean \"sand Ford\". Roque's map of 1745 shows a bridge, which replaced the ford, referred to as \"Stamford Bridge\".\nThe hill rises gently from the former course of the Hackney Brook to the south, and its steeper northern slope provided a natural boundary for the traditional (parish and borough) extent of Hackney, and now does so for the wider modern borough."
+        },
+        {
+          "article": "Stamford Hill (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Stamford_Hill#Geography_and_boundaries",
+          "text": "Stamford Hill is a gravel topped feature, overlooking the Lower and Middle Lea Valley, which reaches a height of 108 ft (33m) AOD. Much of the higher part of the hill is shared with Upper Clapton. Under typical wind conditions, and in the absence of noise pollution, the hill is the furthest point at which the sound of Bow Bells, a determinant of Cockney identity, can be heard.\nThe district's usual definition is based on the physical feature of the hill and the neighbourhood's location within the Ancient Parish and subsequent (with almost identical boundaries) Metropolitan Borough of Hackney.\nSouthern Boundary with West Hackney: The east–west course of the Hackney Brook, which may have been as wide as 22m at this point, provided a natural southern boundary for the district, however the river was culverted and it is now difficult to discern its former course on the ground. This has led to very ambiguous boundary, along its former course, in the Cazenove\\Northwold Road area.\nEast and south-east boundary with Upper Clapton: Upper Clapton is also part of Hackney and shares much of the eastern side of the hill. There is little tradition of a particular border. The post code boundary is sometimes used but this is arbitrary: post code areas are not intended to define districts."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography and boundaries",
+      "sectionWords": 216,
+      "leadWords": 184,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a London area, its community, and the naming of its hill and road, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "stamford hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stamford",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4378,
+    "band": 3,
+    "place_id": "gn-5223593",
+    "input": {
+      "place": {
+        "place_id": "gn-5223593",
+        "name": "Newport",
+        "country": "United States",
+        "subdivision": "Rhode Island",
+        "lat": 41.4901,
+        "lon": -71.31283
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newport, Rhode Island",
+          "url": "https://en.wikipedia.org/wiki/Newport,_Rhode_Island",
+          "text": "Newport is a seaside city on Aquidneck Island in Rhode Island, United States. It is located in Narragansett Bay, approximately 33 miles (53 km) southeast of Providence, 20 miles (32 km) south of Fall River, Massachusetts, 74 miles (119 km) south of Boston, and 180 miles (290 km) northeast of New York City. It is known as a New England summer resort and is famous for its historic mansions and its rich sailing history. As of the 2020 census, Newport had a population of 25,163.\nNewport hosted the first U.S. Open tournaments in both tennis and golf, as well as every challenge for the America's Cup between 1930 and 1983. It is also the home of Salve Regina University and Naval Station Newport, which houses the United States Naval War College, the Naval Undersea Warfare Center, and an important Navy training center. It was a major 18th-century port city and has many buildings from the colonial era.\nNewport is the county seat of Newport County, which has no governmental functions other than court administrative and sheriff corrections boundaries. It was the location of \"Summer White Houses\" of presidents Dwight D. Eisenhower and John F. Kennedy."
+        },
+        {
+          "article": "Newport, Rhode Island (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Newport,_Rhode_Island#Geography_and_climate",
+          "text": "looking south from the cliff side at east end of Narragansett Avenue]]\nNewport is located on, and is the most populous municipality of, Aquidneck Island in Narragansett Bay. According to the United States Census Bureau, the city has a total area of , of which is land and , or 32.64%, is water. The Newport Bridge, the longest suspension bridge in New England, connects Newport to neighboring Conanicut Island across the East Passage of the Narragansett.\nNewport has a humid continental climate (Köppen Dfa/Dfb), bordering on a humid subtropical climate (Köppen Cfa) and oceanic climate (Köppen Cfb). Being surrounded by ocean water, Newport is often cooler in the summer than some coastal cities further north, such as Boston. According to the USDA, Newport is located in plant hardiness zone 7a."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Geography and climate",
+      "sectionWords": 130,
+      "leadWords": 195,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a seaside summer resort, sailing history, historic mansions and naval sites, but no climate mechanism, extreme, seasonal rhythm, or paradox is described",
+      "priorMissing": "a place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "newport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4452,
+    "band": 3,
+    "place_id": "gn-5109790",
+    "input": {
+      "place": {
+        "place_id": "gn-5109790",
+        "name": "Borough Park",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.63399,
+        "lon": -73.99681
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Borough Park, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Borough_Park,_Brooklyn",
+          "text": "Borough Park (also spelled Boro Park) is a neighborhood in the southwestern part of the borough of Brooklyn, in New York City. The neighborhood is bordered by Bensonhurst to the south, Dyker Heights to the southwest, Sunset Park to the west, Kensington and Green-Wood Cemetery to the north, Flatbush to the east, and Mapleton to the southeast.\nIt is economically diverse and home to one of the largest Orthodox Jewish communities outside Israel, with one of the largest concentrations of Jews in the United States. With Orthodox and Haredi families having an average of 6.72 children, Boro Park is experiencing a sharp growth in population.\nThe neighborhood is part of Brooklyn Community District 12, and its primary ZIP Code is 11219. It is patrolled by the 66th Precinct of the New York City Police Department. Politically, it is represented by the New York City Council's 38th, 39th, and 44th districts."
+        },
+        {
+          "article": "Borough Park, Brooklyn (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Borough_Park,_Brooklyn#Climate",
+          "text": "Borough Park falls under different climate types depending on the climate classification system used. However, the Köppen climate classification system is the most widely used climate classification scheme."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 28,
+      "leadWords": 150,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes Brooklyn neighborhood borders, Orthodox Jewish community, family size, and district details, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox verbatim in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "borough park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "borough",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4467,
+    "band": 3,
+    "place_id": "gn-692315",
+    "input": {
+      "place": {
+        "place_id": "gn-692315",
+        "name": "Sudak",
+        "country": "Ukraine",
+        "subdivision": "Crimea",
+        "lat": 44.84924,
+        "lon": 34.97471
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sudak",
+          "url": "https://en.wikipedia.org/wiki/Sudak",
+          "text": "Sudak (Ukrainian and Russian: Судак; Crimean Tatar: Sudaq; Greek: Σουγδαία; sometimes spelled Sudac or Sudagh) is a city and a multiple former Eastern Orthodox bishopric and double Latin Catholic titular see. It is of regional significance in Crimea, a territory recognized by most countries as part of Ukraine but annexed by Russia as the Republic of Crimea. Sudak serves as the administrative center of Sudak Municipality, one of the regions Crimea is divided into. It is situated 57 km (35 mi) to the west of Feodosia (the nearest railway station) and 104 km (65 mi) to the east of Simferopol, the republic's capital. Population: 16,492 (2014 Census).\nA city of antiquity, today it is a popular resort, best known for its Genoese fortress, the best preserved on the northern shore of the Black Sea."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 134,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives a resort and a Genoese fortress on the Black Sea shore, with no climate mechanism, extreme, seasonal rhythm or paradox; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sudak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4477,
+    "band": 3,
+    "place_id": "gn-681160",
+    "input": {
+      "place": {
+        "place_id": "gn-681160",
+        "name": "Cogealac",
+        "country": "Romania",
+        "subdivision": "Constanța County",
+        "lat": 44.55,
+        "lon": 28.56667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cogealac",
+          "url": "https://en.wikipedia.org/wiki/Cogealac",
+          "text": "Cogealac (Romanian pronunciation: [kod͡ʒe̯aˈlak]) is a commune in Constanța County, Northern Dobruja, Romania.\nThe commune includes six villages:\n\nCogealac (historical names: Domnești, Turkish: Kocalak)\nGura Dobrogei (historical names: Câvârgic, Turkish: Kıvırcık)\nRâmnicu de Jos\nRâmnicu de Sus\nTariverde (historical name: Dorotea)\nThe territory of the commune also includes the former village of Colelia (Turkish: Kuleli), at 44°36′10″N 28°24′39″E, disestablished by Presidential Decree in 1977. The former village was populated by Dobrujan Germans until 1942 and it is now the site of the Colilia Monastery.\nThe Fântânele-Cogealac Wind Farm (with an installed nameplate capacity of 600 MW) is partly located on the territory of the commune.\nOn 2 March 2022, while searching for a crashed MiG-21 LanceR in the area, an IAR 330 military transport helicopter crashed near Gura Dobrogei, killing 7 military personnel."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 133,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract mentions a wind farm, which is wind-as-power and does not qualify, and states no climate mechanism, extreme, record, seasonal rhythm, or paradox; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "cogealac",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4490,
+    "band": 3,
+    "place_id": "gn-3046353",
+    "input": {
+      "place": {
+        "place_id": "gn-3046353",
+        "name": "Piliscsaba",
+        "country": "Hungary",
+        "subdivision": "Pest County",
+        "lat": 47.63417,
+        "lon": 18.82886
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Piliscsaba",
+          "url": "https://en.wikipedia.org/wiki/Piliscsaba",
+          "text": "Piliscsaba (Hungarian pronunciation: [ˈpiliʃt͡ʃɒbɒ]) is a town in Budapest metropolitan area, Hungary, located in northwestern Pest County, near the border of Komárom-Esztergom in a valley between the Buda and Pilis hills. It is accessible by Highway 10 and lies on the Budapest-Esztergom rail line, 24 km (15 mi) from the center of Budapest. The surrounding hills are 200–400 metres (660–1,310 ft) metres high.\nUnemployment is about 4%, and a large proportion of the population commutes to Budapest (mostly for work or school).\nThe town is surrounded by forested hills: hills of the Pilis Mountains to the north and hills of the Budai Mountains to the south. Faculty of the Pázmány Péter Catholic University (at the Eastern gate of the city) is built on the site of former Soviet barracks (previously Hungarian barracks).\nImre Makovecz, a Hungarian architect designed a famous building called the Stephaneum in the city.\nThe 11th International Congress for Finno-Ugric Studies was held in Piliscsaba during 9–14 August 2010."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 162,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a town in a valley between forested hills, commuting to Budapest, and a university faculty but states no climate mechanism, extreme, record, seasonal rhythm, or paradox; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "piliscsaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4507,
+    "band": 3,
+    "place_id": "gn-5125125",
+    "input": {
+      "place": {
+        "place_id": "gn-5125125",
+        "name": "Long Island City",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.74482,
+        "lon": -73.94875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Long Island City",
+          "url": "https://en.wikipedia.org/wiki/Long_Island_City",
+          "text": "Long Island City (LIC) is a neighborhood within the New York City borough of Queens. It is bordered by Astoria to the north; the East River to the west; Sunnyside to the east; and Newtown Creek, which separates Queens from Greenpoint, Brooklyn, to the south.  Its name refers to its location on the western tip of Long Island.\nIncorporated as a city in 1870, Long Island City was originally the seat of government of the Town of Newtown, before becoming part of the City of Greater New York in 1898.  In the early 21st century, Long Island City became known for its rapid and ongoing residential growth and gentrification, its waterfront parks, and its thriving arts community. The area has a high concentration of art galleries, art institutions, and studio space. Long Island City is the eastern terminus of the Queensboro Bridge, the only non-tolled automotive route connecting Queens and Manhattan. Northeast of the bridge are the Queensbridge Houses, a development of the New York City Housing Authority and the largest public housing complex in the Western Hemisphere.\nLong Island City is part of Queens Community District 1 to the north and Queens Community District 2 to the south. It is patrolled by the New York City Police Department's 108th Precinct. Politically, Long Island City is represented by the New York City Council's 26th District."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 225,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it covers borough borders, incorporation, residential growth, arts, a bridge, and public housing",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "long island city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "long",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4564,
+    "band": 3,
+    "place_id": "gn-527581",
+    "input": {
+      "place": {
+        "place_id": "gn-527581",
+        "name": "Mendeleyevo",
+        "country": "Russia",
+        "subdivision": "Moscow Oblast",
+        "lat": 56.03333,
+        "lon": 37.21667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mendeleyevo, Moscow Oblast",
+          "url": "https://en.wikipedia.org/wiki/Mendeleyevo,_Moscow_Oblast",
+          "text": "Mendeleyevo (Russian: Менделе́ево) is an urban locality (a work settlement) in Solnechnogorsky District of Moscow Oblast, Russia. It stands on the Klyazma River, about 10 kilometers (6.2 mi) from its source, near the city of Zelenograd, and opposite the ancient Russian village of Lyalovo. Population:  7,927 (2010 census); 8,030 (2002 census); 9,172 (1989 Soviet census).\nIt was founded in 1957 as a closed town associated with the All-Union (now All-Russian) Scientific Research Institute for Physical-Engineering and Radiotechnical Metrology (VNIIFTRI).  It is named after the famous Russian chemist Dmitry Mendeleyev who was also an eminent metrologist. Although it is no longer officially listed as a Russian naukograd, it remains close to this classification, as the VNIIFTRI scientific institute continues to be one of the most important local employers. Aeroflot Flight 411 crashed near the town in July 1982."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 137,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives river location and science-town history with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism, record or extreme, seasonal rhythm, or paradox verbatim-traceable to the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "mendeleyevo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4662,
+    "band": 3,
+    "place_id": "gn-3719436",
+    "input": {
+      "place": {
+        "place_id": "gn-3719436",
+        "name": "Ouanaminthe",
+        "country": "Haiti",
+        "subdivision": "Nord-Est",
+        "lat": 19.54934,
+        "lon": -71.72475
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ouanaminthe",
+          "url": "https://en.wikipedia.org/wiki/Ouanaminthe",
+          "text": "Ouanaminthe (French pronunciation: [wanamɛ̃t]; Haitian Creole: Wanament or Wanamèt; Spanish: Juana Méndez) is a commune or town located in the Nord-Est department of Haiti. It lies along the Massacre River, which forms part of the border between Haiti and the Dominican Republic. Ouanaminthe is the largest commune of northeastern Haiti and of the Nord-Est Department. The bridge connecting Ouanaminthe to the Dominican city of Dajabón is one of the four main border crossings between the two countries. Throughout its history, the city has repeatedly been a site of mediation in international disputes, first between French and Spanish colonists, and in more modern times as part of the long-standing Haitian-Dominican conflict.\nThe population stands at roughly 100,000 people, including the immediate vicinity. Haitians living in Ouanaminthe are allowed to cross the border freely without documents two days per week, mainly for the market on Mondays and Fridays at Dajabón, where they buy and sell goods. In 2010, a new bridge and the new market store, funded by the European Union, was opened."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 171,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a river border crossing, market days and dispute mediation, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "ouanaminthe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4777,
+    "band": 3,
+    "place_id": "gn-2794724",
+    "input": {
+      "place": {
+        "place_id": "gn-2794724",
+        "name": "Kapelle-op-den-Bos",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.0097,
+        "lon": 4.36303
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kapelle-op-den-Bos",
+          "url": "https://en.wikipedia.org/wiki/Kapelle-op-den-Bos",
+          "text": "Kapelle-op-den-Bos (Dutch pronunciation: [kaːˈpɛlə ʔɔb dɛm ˈbɔs]) is a municipality located in the Belgian province of Flemish Brabant. The municipality comprises the towns of Kapelle-op-den-Bos proper, Nieuwenrode and Ramsdonk. On January 1, 2006, Kapelle-op-den-Bos had a total population of 8,904. The total area is 15.25 km2 which gives a population density of 584 inhabitants per km2.\nLocated at the intersection of the Willebroek to Brussels shipping canal and the Mechelen-Ghent railway line, the town is home to the Etex Group NV group of companies, which manufacture piping, roofing, gyprock and cement products.  Numerous other industrial companies call Kapelle-op-den-Bos home, and the General Secondary College Sint-Theresia College (STK) has a wide catchment extending beyond municipal boundaries.\nThe town was a target for heavy bombing during the First World War due to its proximity to transport routes.  Among the many buildings destroyed was the parish church dedicated to Saint Nicholas, which was later rebuilt with a modern flavour; the nave retained its original arched windows, but the steeple now appears as a crown.\nKapelle-op-den-Bos is heavily polluted with asbestos. Many inhabitants of the village died due to this mortal pollution. Health problems caused by the asbestos pollution still remain a major problem for the whole area."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 204,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers a canal and railway location, wartime bombing, and asbestos pollution, with no climate or weather information at all",
+      "priorMissing": "a place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kapelle op den bos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kapelle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "op",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "bos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4790,
+    "band": 3,
+    "place_id": "gn-5807212",
+    "input": {
+      "place": {
+        "place_id": "gn-5807212",
+        "name": "Port Angeles",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.11815,
+        "lon": -123.43074
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Angeles, Washington",
+          "url": "https://en.wikipedia.org/wiki/Port_Angeles,_Washington",
+          "text": "Port Angeles ( AN-jəl-əs) is a city in and the county seat of Clallam County, Washington, United States. The population was 19,960 at the 2020 census, it is the most populous city in the county, as well as the most populous city on the Olympic Peninsula. The population was estimated at 20,112 in 2024.\nThe city's harbor was dubbed Puerto de Nuestra Señora de los Ángeles (Port of Our Lady of the Angels) by Spanish explorer Francisco de Eliza in 1791. By the mid-19th century, after settlement by English speakers from the United States, the name was shortened and partially anglicized to its current form, Port Angeles Harbor.\nPort Angeles is home to Peninsula College. It is the birthplace of football hall of famer John Elway and residents include writers and other celebrities. The city is served by William R. Fairchild International Airport. Ferry service is provided across the Strait of Juan de Fuca to Victoria, British Columbia, Canada on the MV Coho."
+        },
+        {
+          "article": "Port Angeles, Washington (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Port_Angeles,_Washington#Climate",
+          "text": "Port Angeles has a warm summer mediterranean climate (Köppen Csb). It is heavily moderated by the Pacific Ocean, resulting in cool summers and mild winters for its latitude. Summers are far cooler than those of nearby Seattle. On June 27, 2021, Port Angeles set a new all-time record high of , breaking the city's previous all-time record high of . Port Angeles is in the rain shadow of the Olympic Mountains, resulting in much lower precipitation (only per year) than locations to the west outside of the rain shadow."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 89,
+      "leadWords": 163,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers a harbour named in 1791, a college, an airport, and ferry service, with no climate or weather information at all",
+      "priorMissing": "a place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "port angeles",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "angeles",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4888,
+    "band": 3,
+    "place_id": "gn-2170430",
+    "input": {
+      "place": {
+        "place_id": "gn-2170430",
+        "name": "Cootamundra",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34.64095,
+        "lon": 148.02838
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cootamundra",
+          "url": "https://en.wikipedia.org/wiki/Cootamundra",
+          "text": "Cootamundra, nicknamed Coota, is a town in the South West Slopes region of New South Wales, Australia and within the Riverina. It is within the Cootamundra-Gundagai Regional Council. It is located on the Olympic Highway at the point where it crosses the Muttama Creek, between Junee and Cowra. Its railway station is on the Main Southern line, part of the Melbourne-to-Sydney line.\nCootamundra is the birthplace of Sir Donald Bradman , an Australian cricketer universally regarded as the greatest batsman of all time. It is also known for being the site of Cootamundra Domestic Training Home for Aboriginal Girls, an institution housing Aboriginal girls who were forcibly taken from their families.\nIt is also the home of the Cootamundra wattle.  Every year there is a large \"Wattle Time\" Festival held at the time the wattle starts to bloom, with an art show and festivities."
+        },
+        {
+          "article": "Cootamundra (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Cootamundra#Climate",
+          "text": "Cootamundra has hot, dry summers interspersed with severe thunderstorms and the odd cold front, and cool, mostly cloudy winters with many rain days. Snow can occur during the winter months, with the most recent snowfall having occurred in August 2019. Under the Köppen climate classification scheme, the town has a humid subtropical climate (Cfa), receiving enough precipitation to avoid the cold semi-arid (BSk) climate classification."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 65,
+      "leadWords": 144,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives slopes and riverina location, railway, Bradman birthplace, and a wattle bloom festival; bloom timing states no climate mechanism, extreme, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "cootamundra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4928,
+    "band": 3,
+    "place_id": "gn-965581",
+    "input": {
+      "place": {
+        "place_id": "gn-965581",
+        "name": "Petrusburg",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -29.11597,
+        "lon": 25.41435
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Petrusburg",
+          "url": "https://en.wikipedia.org/wiki/Petrusburg",
+          "text": "Petrusburg is a small mixed farming town in the Free State province of South Africa. It started out as a Dutch Reformed Church serving the farms in 1891. When it became a town, it was originally started on a farm close to \"Emmaus\", a railway station on the line between Bloemfontein and Kimberley. The original foundations are still there, but they ran out of water, and had to move to the present location where a strong fountain was available. So much so that the first houses had free running water from the fountain for irrigation. The town was named after Petrus Albertus Venter, whose farm, Diepfontein, provided the original land. It is situated on the N8 National Route between Bloemfontein (80 km east) and Kimberley (80 km west).\nEvery year in March, a big music festival is held called the Aartappelfees (Potato Festival). The main street in town is Pretorius Street, but the busiest street is Ossewa street.\nA. J. C. Jooste High School is a coeducational boarding high school. Together with the associated primary school it is known as the AJC Jooste Combined School.\nThe town is facing significant poverty issues, with a substantial number of its population unemployed. The agricultural sector is the primary source of employment in the area.\nThe town's squatter camp, Bolokanang, is home to around 8,300 people, with Boiketlo Street being the main point of entry to the area."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 235,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract notes a move for fountain water with no climate mechanism, extreme, seasonal rhythm, or paradox; a local fountain is not a qualifying climate fact",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "petrusburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4947,
+    "band": 3,
+    "place_id": "gn-5173048",
+    "input": {
+      "place": {
+        "place_id": "gn-5173048",
+        "name": "Steubenville",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 40.36979,
+        "lon": -80.63396
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Steubenville, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Steubenville,_Ohio",
+          "text": "Steubenville ( STEW-bən-vil) is a city in Jefferson County, Ohio, United States, and its county seat. The city is located on the eastern border of Ohio along the Ohio River, abutting the northern panhandle of West Virginia and 33 miles (53 km) west of Pittsburgh, Pennsylvania. Steubenville had a population of 18,161 at the 2020 census. The Weirton–Steubenville metropolitan area has an estimated 113,000 residents. The city's name is derived from Fort Steuben, a 1786 fort that sat within the city's current limits and was named for Prussian military officer Baron Friedrich Wilhelm von Steuben.\nSteubenville's nickname is the \"City of Murals\" after its more than 25 downtown murals. Historically, it was known as the hometown of Edwin Stanton, secretary of war during the American Civil War, as well as popular Rat Pack entertainer Dean Martin. It has recently attracted attention for the Steubenville Nutcracker Village, an annual Christmastime event. It is home to the campus of Franciscan University of Steubenville."
+        },
+        {
+          "article": "Steubenville, Ohio (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Steubenville,_Ohio#Climate",
+          "text": "The climate in this area is characterized by hot summers and relatively cold winters and evenly distributed precipitation throughout the year. As detailed in a March 2022 guide from the Climate Receiver Places Project at the PLACE initiative, Steubenville is a climate resilient geography based on its relatively low climate change risk exposure. According to the Köppen Climate Classification system, Steubenville has a humid continental climate, abbreviated \"Dfa\" on climate maps."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 71,
+      "leadWords": 161,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers only the Ohio River location, Fort Steuben, and downtown murals, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "steubenville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4949,
+    "band": 3,
+    "place_id": "gn-5422534",
+    "input": {
+      "place": {
+        "place_id": "gn-5422534",
+        "name": "Fruita",
+        "country": "United States",
+        "subdivision": "Colorado",
+        "lat": 39.15887,
+        "lon": -108.72899
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fruita, Colorado",
+          "url": "https://en.wikipedia.org/wiki/Fruita,_Colorado",
+          "text": "Fruita () is a home rule municipality located in western Mesa County, Colorado, United States. The city population was 13,395 at the 2020 United States census. Fruita is a part of the Grand Junction, Colorado Metropolitan Statistical Area and lies within the Grand Valley. The geography is identified by the bordering Colorado River (historically known as the Grand River) on the southern edge of the town, the Uncompahgre Plateau known for its pinyon-juniper landscape, and the Book Cliffs range on the northern edge of the Grand Valley. Originally home to the Ute people, farmers settled the town after founder William Pabor in 1884. Ten years later, Fruita was incorporated."
+        },
+        {
+          "article": "Fruita, Colorado (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Fruita,_Colorado#Climate",
+          "text": "Under the Köppen climate classification, Fruita has a cool semi-arid climate (BSk). Seasonal differences between the hot summers and cold winters are drastic. Even so, winter days average well above freezing due to solar warming during daytime. The coldest and hottest months of the year are January and July respectively. The annual average precipitation is ; the wettest year being 1957 with and the driest 1952 with The wettest month has been August 1957 with and the wettest day October 15, 1928 with .\nDue to the low precipitation, in spite of winter average lows of about , the average year sees just of snow on the ground at the accumulation maximum. The most snowfall in one month has been in January 1957 and the most in a season between July 1938 and June 1939. In contrast, only of snow fell between July 1980 and June 1981. The most snowfall in one day has been on November 27, 1919.\nThe average annual freeze-free period is 145 days. The average annual temperature is around . Fruita experiences an average of 300 days of sunshine per year."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 185,
+      "leadWords": 109,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives only river, plateau, and cliffs geography; the pinyon-juniper landscape is a vegetation label with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "fruita",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

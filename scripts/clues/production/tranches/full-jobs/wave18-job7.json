@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 3550,
+    "attempt": 3521,
+    "place_id": "gn-4224413",
+    "input": {
+      "place": {
+        "place_id": "gn-4224413",
+        "name": "Statesboro",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 32.44879,
+        "lon": -81.78317
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Statesboro, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Statesboro,_Georgia",
+          "text": "Statesboro is the most populous city in and the county seat of Bulloch County, Georgia, United States. Located in the southeastern part of the state, its population was 33,438 at the 2020 census. It is the principal city of the Statesboro micropolitan area, which had 81,099 residents, and is part of the Savannah–Hinesville–Statesboro combined statistical area.\nThe city was chartered in 1803, starting as a small trading community providing basic essentials for surrounding cotton plantations. This drove the economy throughout the 19th century, both before and after the American Civil War. In 1906, Statesboro was selected as the home of the First District A&M School, a land grant college that eventually developed into Georgia Southern University.\nStatesboro inspired the blues song \"Statesboro Blues\", written by Blind Willie McTell in the 1920s, and covered in a well-known version by the Allman Brothers Band. In 2017, Statesboro was selected in the top three of the national America's Best Communities competition and was named one of nine Georgia \"live, work, play\" cities by the Georgia Municipal Association."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "statesboro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3551,
+    "attempt": 3522,
+    "place_id": "gn-4355585",
+    "input": {
+      "place": {
+        "place_id": "gn-4355585",
+        "name": "Frederick",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.41427,
+        "lon": -77.41054
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Frederick, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Frederick,_Maryland",
+          "text": "Frederick is a city in and the county seat of Frederick County, Maryland, United States. Frederick's population was 78,171 people as of the 2020 census, making it the second-largest incorporated city in Maryland behind Baltimore. It is a part of the Washington metropolitan area and the greater Washington–Baltimore combined statistical area.\nThe city is located at an important crossroads at the intersection of a major north–south Native American trail and east–west routes to the Chesapeake Bay, both at Baltimore and what became Washington, D.C., and across the Appalachian Mountains to the Ohio River watershed.\nFrederick Municipal Airport accommodates general aviation, and Fort Detrick, a U.S. Army bioscience and communications research installation and Frederick County's largest employer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "frederick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3552,
+    "attempt": 3523,
+    "place_id": "gn-4373349",
+    "input": {
+      "place": {
+        "place_id": "gn-4373349",
+        "name": "Wheaton",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.03983,
+        "lon": -77.05526
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wheaton, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Wheaton,_Maryland",
+          "text": "Wheaton is a census-designated place in Montgomery County, Maryland, United States, situated north of Washington, D.C., and northwest of downtown Silver Spring. Wheaton takes its name from Frank Wheaton (1833–1903), a career officer in the United States Army and volunteer from Rhode Island in the Union Army who rose to the rank of major-general while serving before, during, and after the Civil War.\nWheaton had a population of 52,150 at the 2020 census. The United States Postal Service has assigned ZIP code 20902 to Wheaton, but the Wheaton Post Office is a part of the larger Silver Spring area. Downtown Wheaton is located around the triangle formed by Veirs Mill Road, University Boulevard, and Georgia Avenue."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "wheaton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3553,
+    "attempt": 3524,
+    "place_id": "gn-4392768",
+    "input": {
+      "place": {
+        "place_id": "gn-4392768",
+        "name": "Joplin",
+        "country": "United States",
+        "subdivision": "Missouri",
+        "lat": 37.08423,
+        "lon": -94.51328
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Joplin, Missouri",
+          "url": "https://en.wikipedia.org/wiki/Joplin,_Missouri",
+          "text": "Joplin is a city in Jasper and Newton counties in the U.S. state of Missouri. Most of the city lies in Jasper County, with the southern portion of Joplin extending into Newton County. With a population of 51,762 at the 2020 census, Joplin is the 12th most-populous city in the state. The city covers an area of 38.21 square miles (99.0 km2) on the outer edge of the Ozark Mountains in southwestern Missouri. Joplin is the principal city of the three-county Joplin metropolitan area, which is home to 210,077 people and is the fifth-largest metropolitan area in Missouri. In May 2011, a violent EF5 tornado killed more than 150 people and destroyed one-third of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "joplin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3554,
+    "attempt": 3525,
+    "place_id": "gn-4778626",
+    "input": {
+      "place": {
+        "place_id": "gn-4778626",
+        "name": "Petersburg",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 37.22793,
+        "lon": -77.40193
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Petersburg, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Petersburg,_Virginia",
+          "text": "Petersburg is an independent city in the U.S. state of Virginia. As of the 2020 census, the population was 33,458. The Bureau of Economic Analysis combines Petersburg (along with the city of Colonial Heights) with Dinwiddie County for statistical purposes. The city is 21 miles (34 km) south of the commonwealth (state) capital city of Richmond. It sits at the fall line of the Appomattox River, a tributary of the longer, larger James River which flows east to meet the southern mouth of the Chesapeake Bay at the Hampton Roads harbor and the Atlantic Ocean. \nIn 1645, the Virginia House of Burgesses ordered the building of Fort Henry, which attracted traders and settlers to the area. Three settlements were incorporated into the Town of Petersburg in 1748. Petersburg rebuilt after a devastating 1815 fire and became a transportation and industrial hub. It was the final destination on the Upper Appomattox Canal Navigation System, which opened in 1816. When its Appomattox River port silted up, investors built an 8-mile railroad to City Point on the James River, which opened in 1838—one of four railroads built before the American Civil War. \nIn 1860, it was the state's second-largest city, after Richmond. It connected commerce from Farmville, Virginia, at the foothills of the Blue Ridge and the Appalachian Mountains chain, to shipping into the Chesapeake Bay and North Atlantic Ocean.\nDuring the American Civil War (1861–1865), the railroad network made Petersburg critical to Union plans to capture Richmond, the Confederate States' national capital. The city was devastated by the 1864–65 Siege of Petersburg, which included the Battle of the Crater and nine months of trench warfare. Battlefield sites are partly preserved as Petersburg National Battlefield by the National Park Service of the U.S. Department of the Interior. Petersburg rebuilt its railroads, including a connecting terminal, by 1866, but it never  regained its economic position because much shipping traffic continued to the Norfolk seaport. After the consolidations of smaller railroads, the CSX and Norfolk Southern railway networks serve Petersburg.\nPetersburg has the oldest free black settlements in the state, at Pocahontas Island. Two Baptist churches in the city, whose congregations were founded in the late 18th century, are among the oldest black congregations and churches in the United States. In the post-bellum period, a historically black college which later developed as the Virginia State University was established nearby in Ettrick in Chesterfield County. In the 20th century, these and other black churches were leaders in the national Civil Rights Movement of the 1950s-1960s. Richard Bland College, located in nearby Prince George, was originally established as a branch of Williamsburg's famed College of William and Mary.\nPetersburg remains a transportation hub. Area highways include Interstate Highways 85, 95, and U.S. Route highways with 1, 301, and 460. Both CSX and Norfolk Southern rail systems maintain transportation centers at Petersburg. Amtrak serves the city with daily Northeast Regional passenger trains to Norfolk, Virginia, and long-distance routes from states to the South.\nIn the early 21st century, Petersburg civic leaders promote the city's historical attractions for heritage tourism, as well as industrial sites reachable by the transportation infrastructure. The federal government is also a major employer, with nearby Fort Lee, as home of the United States Army's Sustainment Center of Excellence, and the Army's Logistics Branch, Ordnance, Quartermaster, and Transportation Corps."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 554
+    },
+    "banned_terms": [
+      {
+        "term": "petersburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3555,
+    "attempt": 3526,
+    "place_id": "gn-490068",
+    "input": {
+      "place": {
+        "place_id": "gn-490068",
+        "name": "Sovetsk",
+        "country": "Russia",
+        "subdivision": "Kaliningrad Oblast",
+        "lat": 55.08392,
+        "lon": 21.87851
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sovetsk, Kaliningrad Oblast",
+          "url": "https://en.wikipedia.org/wiki/Sovetsk,_Kaliningrad_Oblast",
+          "text": "Sovetsk (Russian: Сове́тск; German: Tilsit [ˈtɪlzɪt] ; Lithuanian: Tilžė; Polish: Tylża) is a town in Kaliningrad Oblast, Russia, located on the south bank of the Neman River which forms the border with Lithuania.\nFounded in the medieval period and granted municipal rights in 1552, it is one of the historically most important towns of the oblast and the traditional capital of the region of Lithuania Minor. It was the place where two treaties were concluded, of great importance in the history of France, Poland, Lithuania, Germany and Russia. It is the place of origin of the Tilsit cheese.\nWith a population of 38,614 as of 2023 it is the second largest city of the Kaliningrad Oblast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "sovetsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3556,
+    "attempt": 3527,
+    "place_id": "gn-5375480",
+    "input": {
+      "place": {
+        "place_id": "gn-5375480",
+        "name": "Mountain View",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.38605,
+        "lon": -122.08385
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mountain View, California",
+          "url": "https://en.wikipedia.org/wiki/Mountain_View,_California",
+          "text": "Mountain View is a city in Santa Clara County, California, United States, part of the San Francisco Bay Area. Named for its views of the Santa Cruz Mountains, the population was 82,376 at the 2020 census.\nMountain View was integral to the early history and growth of Silicon Valley, and is the location of many high technology companies. In 1956, William Shockley established Shockley Semiconductor Laboratory in Mountain View, the first company to develop silicon semiconductor devices in Silicon Valley. Mountain View houses the headquarters of many of the world's largest technology companies, including Google and Alphabet Inc., Intuit, NASA Ames Research Center, and former or existing headquarters for Symantec, 23andMe, LinkedIn, Samsung, Quora and Synopsys."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "mountain view",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mountain",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "view",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3557,
+    "attempt": 3528,
+    "place_id": "gn-5847411",
+    "input": {
+      "place": {
+        "place_id": "gn-5847411",
+        "name": "Kahului",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 20.88933,
+        "lon": -156.47293
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kahului, Hawaii",
+          "url": "https://en.wikipedia.org/wiki/Kahului,_Hawaii",
+          "text": "Kahului (Hawaiian pronunciation: [kəhuˈluwi]) is an unincorporated community and a census-designated place in Maui County in the U.S. state of Hawaii. It hosts the county's main airport (Kahului Airport), a deep-draft harbor, light industrial areas, and commercial shopping centers. The population was 28,219 at the 2020 census. Kahului is part of the Kahului-Wailuku-Lahaina Metropolitan Statistical Area which comprises all of Maui County, including nearby Wailuku and the West Maui town of Lahaina.\nKahului is a retail center for Maui County and contains several shopping centers, including the Queen Kaahumanu Center. Attractions in Kahului include the Alexander & Baldwin Sugar Museum, Kanaha Pond State Wildlife Sanctuary, Kanaha Beach County Park, and the Maui Arts and Cultural Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "kahului",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3558,
+    "attempt": 3529,
+    "place_id": "gn-675918",
+    "input": {
+      "place": {
+        "place_id": "gn-675918",
+        "name": "Hunedoara",
+        "country": "Romania",
+        "subdivision": "Hunedoara County",
+        "lat": 45.75,
+        "lon": 22.9
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hunedoara",
+          "url": "https://en.wikipedia.org/wiki/Hunedoara",
+          "text": "Hunedoara (Romanian: [huneˈdo̯ara] ; German: Eisenmarkt; Hungarian: Vajdahunyad [ˈvɒjdɒhuɲɒd] ) is a city in Hunedoara County, Transylvania, Romania. It is located in southwestern Transylvania near the Poiana Ruscă Mountains, and administers five villages: Boș (Bós), Groș (Grós), Hășdat (Hosdát; Hochstätten), Peștișu Mare (Alpestes), and Răcăștia (Rákosd).\nThe city includes the most important Gothic-style secular building in Transylvania: the Hunyad Castle, which is closely connected with the Hunyadi family. The castle was destroyed by fire five times, but underwent many reconstructions from Austro-Hungarian and later Romanian authorities. Besides the castle, the town developed as a production center for iron and a market for the mountain regions nearby. During the 20th century, Hunedoara's population increased to 86,000 inhabitants. The city contained the largest steel works in Romania (until Galați took the lead), but activity gradually diminished after the Romanian revolution of 1989 due to the loss of the market. This was a blow to the overall prosperity of the town, which is now recovering through new investments.\nThe population consists of a Romanian majority, with Hungarians and Roma as the most important minorities. The city contains numerous parks, with poplars and chestnut trees flanking the streets. There are many tourist attractions, including a large dam with tourist facilities, located in the mountains a few kilometers from the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "hunedoara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3559,
+    "attempt": 3530,
+    "place_id": "gn-713174",
+    "input": {
+      "place": {
+        "place_id": "gn-713174",
+        "name": "Bakhmut",
+        "country": "Ukraine",
+        "subdivision": "Donetsk",
+        "lat": 48.59419,
+        "lon": 37.99886
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bakhmut",
+          "url": "https://en.wikipedia.org/wiki/Bakhmut",
+          "text": "Bakhmut is a city in eastern Ukraine. Officially the administrative center of Bakhmut urban hromada and Bakhmut Raion in Donetsk Oblast, it is on the Bakhmutka River, about 90 kilometres (55 miles) north of Donetsk, the administrative center of the oblast. Bakhmut was designated a city of regional significance until 2020, when the designation was abolished. In January 2022, it had an estimated population of 71,094.\nBakhmut was originally founded in the 16th century as a minor border post on the southern border of the Russian state. Its population grew in the early 18th century, and it served as the capital of Slavo-Serbia (1753–1764), a colony in the Russian Empire established by settlers from the Balkans.\nIt received city status in 1783, and underwent major industrialization over the following few centuries. In 1920–1924, the city was an administrative center of the newly created Donets Governorate of the Ukrainian SSR in the Soviet Union. The city was known as Artemivsk or Artemovsk between 1924 and 2016. During World War II, it was the site of the Artemivsk massacre of Soviet Jews by Nazi Germany.\nDuring the beginning of the war in Donbas between the independent Ukrainian government and pro-Russian separatists, the city was the site of the battle of Artemivsk in 2014. During the full-scale Russian invasion of Ukraine which commenced in February 2022, Bakhmut was the site of a major battle between Russian and Ukrainian forces. The city was largely destroyed, with most of its population having fled, and what remained being placed under Russian occupation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 256
+    },
+    "banned_terms": [
+      {
+        "term": "bakhmut",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3560,
+    "attempt": 3531,
+    "place_id": "gn-7279734",
+    "input": {
+      "place": {
+        "place_id": "gn-7279734",
+        "name": "Kotkapura",
+        "country": "India",
+        "subdivision": "Punjab",
+        "lat": 30.5819,
+        "lon": 74.83298
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kotkapura",
+          "url": "https://en.wikipedia.org/wiki/Kotkapura",
+          "text": "Kotkapura is a historic city in Faridkot district, Punjab, India. 15 km from Faridkot City, 50 km from Bathinda, 40 km from Moga and 30 km from Muktsar in the state of Punjab, India. It is the largest city in the Faridkot district and has a large cotton market. It takes around 15 minutes by bus from Faridkot, 4 hours by road from Chandigarh and 2 hours from Ludhiana, and 8 hours from New Delhi to reach the city. It is a central city on route to Ganganagar, Ludhiana, Bathinda, Firozpur, etc. Kotkapura takes its name from its founder, Nawab Kapur Singh, and the word 'Kot', meaning a small fort – literally the 'Fort of Kapura'.\nKotkapura, like many other small cities in India, is undergoing modernization. Shastri Market or Maheshwari Street established by Bansi Dhar Maheshwari (1875-1935) is one of the most populous and largest markets in Punjab. KotkKapura has also been called the 'City of White Gold' due to its cotton market, which was once the largest cotton market in Asia.\nThe city is known for its \"Dhodha Sweet\" and \"Atta Chicken\" both of which are exported outside India. Kotkapura was also famous for its ever-closed railway crossing gate on the Kotkapura–Muktsar highway. However, a flyover has saved the town from this notorious landmark."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "kotkapura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3561,
+    "attempt": 3532,
+    "place_id": "gn-767470",
+    "input": {
+      "place": {
+        "place_id": "gn-767470",
+        "name": "Krosno",
+        "country": "Poland",
+        "subdivision": "Subcarpathia",
+        "lat": 49.68866,
+        "lon": 21.77058
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Krosno",
+          "url": "https://en.wikipedia.org/wiki/Krosno",
+          "text": "Krosno [ˈkrɔsnɔ]  (in full The Royal Free Town of Krosno, Polish: Królewskie Wolne Miasto Krosno) is a town and county in the Subcarpathian Voivodeship, in southeastern Poland. As of 2024, the population of the town county was 43,594, with the surrounding wider Krosno County having 108,922 inhabitants.\nKrosno is a medieval fortified town, a former Royal Free Town and centre of cloth, linen, canvas, baize and Hungarian wine trade. Nicknamed Parva Cracovia (\"Little Kraków\"), Krosno contains a preserved old town with architecture in various styles, including Gothic, Renaissance and Baroque and several museums. It is also notable for its glassmaking traditions, which became known as the Krosno Glassware. It is a centre of  motorcycle speedway racing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "krosno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3562,
+    "attempt": 3533,
+    "place_id": "gn-786234",
+    "input": {
+      "place": {
+        "place_id": "gn-786234",
+        "name": "Rožaje",
+        "country": "Montenegro",
+        "subdivision": "Rožaje Municipality",
+        "lat": 42.83299,
+        "lon": 20.16652
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rožaje",
+          "url": "https://en.wikipedia.org/wiki/Rožaje",
+          "text": "Rožaje (Montenegrin Cyrillic: Рожаје, pronounced [rɔ̂ʒajɛ]; Albanian: Rozhajë, pronounced [roʒajə]) is a town located in the Northern Region of Montenegro, situated along the Ibar river. The town is the cultural center of the Bosniaks in Montenegro.\nAs of 2023, the town has a population of 13,608 inhabitants.\nSurrounded by hills to its west and mountains to its east (notably Mount Hajla), the town is divided in half by, and contains the source of the river Ibar, which gives its name to the local sports clubs FK Ahmad, KK Ibar and OK Ibar. Rožaje is the centre of the Rožaje Municipality within the 25 municipalities of Montenegro.\nRožaje celebrates its foundation day on 30 September each year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "rozaje",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3563,
+    "attempt": 3534,
+    "place_id": "gn-9072777",
+    "input": {
+      "place": {
+        "place_id": "gn-9072777",
+        "name": "Kadodara",
+        "country": "India",
+        "subdivision": "Gujarat",
+        "lat": 21.1616,
+        "lon": 72.9623
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kadodara",
+          "url": "https://en.wikipedia.org/wiki/Kadodara",
+          "text": "Kadodara is a Suburban area and Municipality in the Surat City in the Indian state of Gujarat. Kadodara is a junction of NH 6 and NH 8 highways and kadodara is the middle way on Surat-Bardoli road. The civil agency of Kadodara. A boom in kadodara's real estate attracted many industrialists and due to its proximity to Surat. Many residential projects are under construction in Kadodara arpit pandey\n.\nKadodara is known for the famous hanumanji temple which is located nearby to the station.and also Residency project in bardoli road like Shri Niwas Green City society who cover more than 100 apartment like Shiv Residency, prince residency, opera, and also school named vidhya bharti high school. The nearest airport of kadodara is surat airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "kadodara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3564,
+    "attempt": 3535,
+    "place_id": "gn-985885",
+    "input": {
+      "place": {
+        "place_id": "gn-985885",
+        "name": "Kwaggafontein",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -25.32729,
+        "lon": 28.94224
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kwaggafontein",
+          "url": "https://en.wikipedia.org/wiki/Kwaggafontein",
+          "text": "Kwaggafontein, officially Ekukhanyeni, is a town along the Moloto Road (R573) in the Thembisile Hani Local Municipality of the Nkangala District Municipality, which is located in the Mpumalanga province of South Africa. It was established in the late 1940s by the AmaNdebele tribe of South Africa. The Ndebele people who currently occupy the town came from nearby farms that are today in the Mpumalanga and Gauteng provinces. Many people came from current day Bronkhorstspruit, Delmas, Balmoral and other surrounding areas.\nIt is a modern, civilised area consisting of schools, Kwagga Mall (formerly Kwagga Plaza), and a market. There is also a Marble Mine nearby currently producing limestones as concrete crushed slabs currently operating around the clock."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "kwaggafontein",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3565,
+    "attempt": 3536,
+    "place_id": "gn-1176233",
+    "input": {
+      "place": {
+        "place_id": "gn-1176233",
+        "name": "Jamrud",
+        "country": "Pakistan",
+        "subdivision": "Khyber Pakhtunkhwa",
+        "lat": 34.00152,
+        "lon": 71.38007
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jamrud",
+          "url": "https://en.wikipedia.org/wiki/Jamrud",
+          "text": "Jamrūd (Pashto/Urdu: جمرود) or Jam (Pashto: جم) is a town in the Khyber District of Khyber Pakhtunkhwa, Pakistan. Located in the Valley of Peshawar, on the western fringe of Peshawar city, Jamrud is the doorway to the Khyber Pass which is just to the west of the town. The pass connects Jamrud with Landi Kotal to the west, located near the border of Afghanistan's Nangarhar Province.\nJamrud has remained a location on the trade route between Central Asia and South Asia, and a strategic military location. It is located at an altitude of 461 metres (1,512 ft) above sea level. The Jamrud Fort is located 17 km (11 mi) west of the city of Peshawar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "jamrud",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3566,
+    "attempt": 3537,
+    "place_id": "gn-12503616",
+    "input": {
+      "place": {
+        "place_id": "gn-12503616",
+        "name": "Bhadravati",
+        "country": "India",
+        "subdivision": "Maharashtra",
+        "lat": 20.1001,
+        "lon": 79.11442
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bhadravati, Maharashtra",
+          "url": "https://en.wikipedia.org/wiki/Bhadravati,_Maharashtra",
+          "text": "Bhadravati (formerly Bhandak) is a city and a municipal council in Chandrapur district  in the state of Maharashtra, India. It lies 26 km from Chandrapur city. \nBhadravati city has recently bagged the Best City in 'Innovation & Best Practices' award under the population Category - 50K to 1 Lakh from the Government of India under Swach Surverkshan Awards-2021. \nIt has also bagged 8th Rank in being the cleanest city under category population Category - 50K to 1 Lakh under Swach Surverkshan Awards-2021 amongst 132 cities nominated. [1]\nChandrapur district is famous for tribal folk dances such as Dandar, Gondi and Rela.Adiwasi folk dance in Diwali known as Dandar. Speciely in the respect of lord Krishna.\nIt has an ordnance factory and several open-cast coal mines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "bhadravati",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3567,
+    "attempt": 3538,
+    "place_id": "gn-2269514",
+    "input": {
+      "place": {
+        "place_id": "gn-2269514",
+        "name": "Castelo Branco",
+        "country": "Portugal",
+        "subdivision": "Castelo Branco",
+        "lat": 39.82364,
+        "lon": -7.49101
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Castelo Branco, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Castelo_Branco,_Portugal",
+          "text": "Castelo Branco (European Portuguese pronunciation: [kɐʃˈtɛlu ˈβɾɐ̃ku] ), officially the City of Castelo Branco (Portuguese: Cidade de Castelo Branco), is an inland city and municipality in Central Portugal. It has 34,455 inhabitants in its urban area (2021) and is the seat of the district of the same name. The municipality, with 52,272 inhabitants, is made up of 19 freguesias (civil parishes) spread through 1,438.19 km2 (555.29 sq mi), making it the 3rd largest municipality in Portugal by total land area.\nThe municipality is bounded in the north by Fundão, in the east by Idanha-a-Nova, in the south by Spain, in the southwest by Vila Velha de Ródão, and in the west by Proença-a-Nova and Oleiros."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "castelo branco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "castelo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "branco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3568,
+    "attempt": 3539,
+    "place_id": "gn-2300182",
+    "input": {
+      "place": {
+        "place_id": "gn-2300182",
+        "name": "Japekrom",
+        "country": "Ghana",
+        "subdivision": "Bono",
+        "lat": 7.5758,
+        "lon": -2.78516
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Japekrom",
+          "url": "https://en.wikipedia.org/wiki/Japekrom",
+          "text": "Japekrom is the Municipal Capital of Jaman South Municipality of the Bono Region of Ghana. It has been an important town since the colonial Gold Coast days in Ghana's History, then referred to as Pruano (on the riverbank of Pru-river) but spelled as Pulliano in colonial Gold Coast maps. The Japekromhene is part of Asanteman council. The township was built on a foundation of solid stone and as a result of resistance to any form of suppression or oppression.\nTraditional leaders of the Japekrom strongly uphold the principles of truth, fairness, hard work, a welcoming heart, inclusion and preservation of culture. The people of Japekrom are very welcoming of people from other tribes and cultures.\nThe original settlers on the riverbank of Pru (Pruano) prospected for gold and other minerals along the banks of river Pru. Two major rivers in the Japekrom city are Pru and Papasu.\nThe chiefs and people of Mpuasu-Japekrom Traditional Area are known for the celebration of the annual Munufie Festival (annual yam harvest festival). This is usually celebrated at Japekrom in the last quarter of every year and brings together chiefs, queen mothers, dignitaries and several people (both in Ghana and abroad) to participate and witness the events. It is celebrated to mark the close of the farming season and to set the tone for the commencement of the yet another farming season. It is the major festival of the Mpuasu-Japekrom Traditional Area.\nThe central point of Japekrom and its environs (including villages within 10 kilometers) has a total population of about 34,107. This implies that a greater portion of the population of the municipality lives around Japekrom. Japekrom has a settlement population of about 34,107."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 281
+    },
+    "banned_terms": [
+      {
+        "term": "japekrom",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3569,
+    "attempt": 3540,
+    "place_id": "gn-2314523",
+    "input": {
+      "place": {
+        "place_id": "gn-2314523",
+        "name": "Kimpese",
+        "country": "Congo - Kinshasa",
+        "subdivision": "Bas-Congo",
+        "lat": -5.5615,
+        "lon": 14.43159
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kimpese",
+          "url": "https://en.wikipedia.org/wiki/Kimpese",
+          "text": "Kimpese is a town in the Cataractes District of Kongo Central province, Democratic Republic of the Congo. It lies on the main road and railway between Kinshasa and the provincial capital Matadi, at an altitude of 990 ft (301 m) above sea level.\nThere are tributaries of the Congo River to the north and south of the town. Kimpese has a hospital, medical training centre, high school, technical training institute and an agricultural college. The 400 bed Kimpese hospital serves 150,000 people in the local area and another 600,000 in the surrounding district. The town also contains an office of the UNHCR, which provides assistance to the nearly 60,000 Angolan refugees in Kongo Central province. Kimpeses population is approximately 40,000; and although DRC is a mainly catholic country, the town has a Protestant majority."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "kimpese",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

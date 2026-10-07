@@ -365,3 +365,53 @@ behavior — no deletion required to make the app safe).
   histories. Merging is out of scope (no backend, by guarantee).
 - **The flag is the experiment.** Until Veeresh rules on the decisions above
   and flips `learningOutcomes`, nothing here touches production behavior.
+
+---
+
+## 11. Misses-review deck (game-review improvement #1, built 2026-10-05)
+
+**Status:** implemented on `feat/misses-review-deck` behind the
+`learningOutcomes` flag (the deck only populates while the flag is on).
+Module: `src/game/review-deck.ts` (+ `review-deck.test.ts`); integration in
+`src/components/game-app.tsx` (`Play`/`PlayLoaded`) and
+`src/components/run-summary.tsx`.
+
+**Concept.** The reveal's growth line ("Good try — you'll get this one")
+opens a learning loop; the deck closes it by dealing missed places back as
+a flashcard-style review round. Spaced repetition, Leitner-lite: a fresh
+miss is due immediately; each successful review pushes the card out along
+[0, 1, 3, 7, 14, 30] days; a miss resets the streak to due-now; a newly
+mastered place (§3) leaves the deck.
+
+**Data model.** The deck does NOT duplicate learning records — attempts and
+mastery stay the single source of truth in `src/game/learning.ts`. It adds
+only what records can't carry, in `meridian:review-deck:v1` (localStorage,
+fail-closed like learning.ts):
+- a per-card **question-context snapshot** taken at miss time (coords,
+  story, original edition/region, hit radius, map mode, region bounds), so
+  a review card replays the exact original question with no chunk fetch;
+- **scheduling state** (`streak`, `nextDueAt`, `lastReviewedAt`, `reviews`).
+Capped at 60 cards (least-urgent evicted); malformed entries dropped.
+No backfill: misses from before this feature have learning records but no
+snapshots, so the deck grows from new misses only — the empty state says
+so honestly ("Miss a place and it'll land here for review.").
+
+**Game-loop integration.** A review session is a synthetic `Run`
+(`regionId "review-deck"`, typed edition `"globe"`) through the existing
+`PlayLoaded` loop — no forked map/reveal code. The due queue (due order)
+is the pool. Review answers record into learning records with the card's
+**original** edition/region (metrics stay truthful) but never bank into
+the session — review is practice, not scoring. The cleared-mode
+celebration never fires in review; the no-repeat history of real regions
+is never consulted. A reload mid-review fails closed to the picker (the
+deck is the durable state; the queue rebuilds fresh each start).
+
+**Entry points (invitations, never gates).** A "Review my misses" banner on
+the edition picker (due count + Start review; "all caught up" / "miss a
+place and it'll land here" empty states) and a "Review my misses (N)"
+button in the end-game "My growth" section. The session ends on a
+bounded, completable review-complete screen ("You remembered X of Y").
+
+**Non-interference.** Every review branch is guarded by
+`isReviewRun(run)`; normal play is byte-identical with the flag off, and
+the deck adds no network, no backend, nothing leaving the device.

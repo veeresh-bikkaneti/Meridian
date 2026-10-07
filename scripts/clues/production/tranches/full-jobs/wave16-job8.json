@@ -1,0 +1,737 @@
+[
+  {
+    "rank": 3163,
+    "attempt": 3141,
+    "place_id": "gn-8096217",
+    "input": {
+      "place": {
+        "place_id": "gn-8096217",
+        "name": "Eastvale",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.96358,
+        "lon": -117.56418
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eastvale, California",
+          "url": "https://en.wikipedia.org/wiki/Eastvale,_California",
+          "text": "Eastvale is a city in northwestern Riverside County, California, in the Inland Empire region of Southern California. The area transitioned from a dairy farm enclave to a developed community starting in the 1990s and was incorporated on October 1, 2010. As of the 2020 census, the city had a population of 69,757. The city's name is derived from \"East Vale\" as a listed school district in 1893 by the Riverside County Board of Commissioners.\nCity boundaries extend from Hellman Avenue to the west (the San Bernardino County line), State Route 60 to the north (also the San Bernardino County line), the Santa Ana River and Norco to the south, and Interstate 15 to the east. It is surrounded by the cities of Chino, Ontario, Jurupa Valley, Norco, and Corona.\nThe city is served by the Corona Norco Unified School District. According to the 2020 United States Census, Eastvale has a median household income at one of the top earning percentiles in the country at $151,615."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "eastvale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3164,
+    "attempt": 3142,
+    "place_id": "gn-9972729",
+    "input": {
+      "place": {
+        "place_id": "gn-9972729",
+        "name": "Pallikaranai",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 12.9377,
+        "lon": 80.2153
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pallikaranai",
+          "url": "https://en.wikipedia.org/wiki/Pallikaranai",
+          "text": "Pallikaranai is a neighborhood and a residential area in south Chennai, Tamil Nadu, India. Located in proximity to the IT industry in Old Mahabalipuram Road, Chennai's central business districts and the automobile hub in GST road has attracted more population to Pallikaranai in the 2000s. Pallikaranai became a part of the Chennai Corporation in July 2011.\nPallikaranai place surrounded by various natural lands, water resources, ponds, lakes and different varieties of birds.\nAccording to a 2012 report by global property consultant Knight Frank, the neighborhood has emerged as India's 11th largest destination for investment in the residential real estate, in the list of 13-top residential destinations in the country from an investment point of view, where housing prices are expected to increase by 93 percent over the period 2012–2017."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 129,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "pallikaranai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3165,
+    "attempt": 3143,
+    "place_id": "gn-1258803",
+    "input": {
+      "place": {
+        "place_id": "gn-1258803",
+        "name": "Rajpura",
+        "country": "India",
+        "subdivision": "Punjab",
+        "lat": 30.47856,
+        "lon": 76.59284
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rajpura",
+          "url": "https://en.wikipedia.org/wiki/Rajpura",
+          "text": "Rajpura (Punjabi pronunciation: [ɾədʒpʊɾɑː]) is a city and a municipal council in Patiala district in the Indian state of Punjab, India, situated along the border of the Indian state of Haryana. It is located 26 km from Patiala city, towards East from district headquarter. It is a Tehsil headquarter, here the Mini-Secretariat is an administrative building that houses various government offices, including those related to the judiciary. The Rajpura Mini-Secretariat serves as an important hub for various government functions, including services for the sub-tehsil Ghanaur, providing residents with essential services without the need to travel to the district headquarter. Rajpura is the largest tehsil of the district.\nAs of 2025, Rajpura is undergoing a major industrial and commercial expansion, transforming into North India's premier manufacturing and logistics hub. This growth is driven by a 1,099-acre Integrated Manufacturing Cluster (IMC) near NH-44 and NH-64, which represents a ₹7,500 crore investment projected to create over 64,000 jobs. Additionally, the region's development is accelerated by large-scale private estates like SBP SIEL, a ₹1,500 crore JSW Steel facility, and a major green cement plant."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "rajpura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3167,
+    "attempt": 3144,
+    "place_id": "gn-2633765",
+    "input": {
+      "place": {
+        "place_id": "gn-2633765",
+        "name": "Wishaw",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.76667,
+        "lon": -3.91667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wishaw",
+          "url": "https://en.wikipedia.org/wiki/Wishaw",
+          "text": "Wishaw ( ; Scots: Wishae or Wisha  ) is a town in North Lanarkshire, Scotland; it is sited on the edge of the Clyde Valley, 15 miles (24 km) south-east of Glasgow city centre. The town forms part of the Motherwell and Wishaw parliamentary constituency.\nThe Burgh of Wishaw was formed in 1855 within Lanarkshire. The town developed extensively during the Victorian era, in particular during the Second Industrial Revolution. New industry and factories were established, including those in steel and iron production, as well as manufacturing, textiles and the processing of coal. The town's population increased as a result and new homes were built; Wishaw formed a joint large burgh with its neighbour Motherwell from 1920, until its dissolution when Scottish local authorities were restructured in 1975. It was then part the Motherwell district, within the Strathclyde region, until 1996. The town suffered during deindustrialisation, as businesses closed in the mid-to-late 20th century. In the 21st century, the town has a mixed economy with services industries and is a residential area within North Lanarkshire.\nCambusnethan, Coltness, Dimsdale, Greenhead, Pather, Waterloo and Wishawhill are considered as suburbs of Wishaw; Craigneuk and Netherton are too, though they are separated by the Argyle and West Coast railway lines. The \"Wishaw area\", however, is sometimes taken to mean the entire ML2 postcode area, which extends to the east and south and includes Morningside, Newmains and Overtown."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 233
+    },
+    "banned_terms": [
+      {
+        "term": "wishaw",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3168,
+    "attempt": 3145,
+    "place_id": "gn-2638978",
+    "input": {
+      "place": {
+        "place_id": "gn-2638978",
+        "name": "Rugby",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.37092,
+        "lon": -1.26417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rugby, Warwickshire",
+          "url": "https://en.wikipedia.org/wiki/Rugby,_Warwickshire",
+          "text": "Rugby is a market town in eastern Warwickshire, England, close to the River Avon. At the 2021 census, its population was 78,117, making it the second-largest town in Warwickshire. It is the main settlement within the larger Borough of Rugby, which had a population of 114,400 in 2021.\nRugby is situated on the eastern edge of Warwickshire, near to the borders with Leicestershire and Northamptonshire. It is the most easterly town within the West Midlands region, with the nearby county borders also marking the regional boundary with the East Midlands. It is 83 miles (134 km) north of London, 30 miles (48 km) east-south-east of Birmingham, 11.5 miles (18.5 km) east of Coventry, 18 miles (29 km) north-west of Northampton and 19 miles (31 km) south-south-west of Leicester.\nRugby became a market town in 1255. In 1567, Rugby School was founded as free grammar school for local boys but, by the 18th century, it had gained a national reputation and eventually became a fee paying public school. The school is the birthplace of rugby football which, according to legend, was invented in 1823 by a Rugby schoolboy named William Webb Ellis. Rugby remained a small and fairly unimportant town until the mid-19th century, when a major railway junction was established there, which spurred the development of industry and the rapid growth of population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "rugby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3169,
+    "attempt": 3146,
+    "place_id": "gn-2656070",
+    "input": {
+      "place": {
+        "place_id": "gn-2656070",
+        "name": "Bebington",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.35,
+        "lon": -3.01667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bebington",
+          "url": "https://en.wikipedia.org/wiki/Bebington",
+          "text": "Bebington () is a town in the Metropolitan Borough of Wirral, in Merseyside, England. Historically part of Cheshire, it is 5 miles (8 km) south of Liverpool, close to the River Mersey on the eastern side of the Wirral Peninsula. Nearby towns include Birkenhead and Wallasey to the north-northwest, and Heswall to the west-southwest.\nBebington was an ancient parish, which included the two villages of Lower Bebington around the parish church of St Andrew's and Higher Bebington to the west, as well as several other surrounding hamlets. Following the 2021 census, the Office for National Statistics defined a Bebington built up area which had a population of 57,600. The Bebington electoral ward covers a much smaller area around the original village centres of Higher Bebington and Lower Bebington. Some definitions of Bebington include adjoining areas such as Port Sunlight (an early planned factory town), New Ferry, Spital and Storeton. The former Municipal Borough of Bebington, a local authority between 1937 and 1974, also included within its boundaries Bromborough, Eastham, Raby, Thornton Hough and Brimstage, which now fall within the electoral wards of Bromborough, Eastham and Clatterbridge.\nAccording to a 2015 study commissioned by Royal Mail from the Centre for Economic and Business Research, Bebington's postcode area, CH63, is the most desirable in England in which to live and work. The study found that the area had \"the ideal balance\" of housing close to places of work, good schools and high employment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "bebington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3170,
+    "attempt": 3147,
+    "place_id": "gn-2657402",
+    "input": {
+      "place": {
+        "place_id": "gn-2657402",
+        "name": "Altrincham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.38752,
+        "lon": -2.34848
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Altrincham",
+          "url": "https://en.wikipedia.org/wiki/Altrincham",
+          "text": "Altrincham (  OL-tring-əm, locally ) is a market town in the Metropolitan Borough of Trafford, Greater Manchester, England. It is located south of the River Mersey, 8 miles (13 km) south-west of Manchester, 3 miles (5 km) south-west of Sale and 10 miles (16 km) east of Warrington. At the 2021 census, the built up area had a population of 49,680.\nIt lies within the historic county boundaries of Cheshire and became part of Greater Manchester in 1974. Altrincham developed as a market town following the right to hold a market being granted in 1290; the market continues today. Further socioeconomic development came with the extension of the Bridgewater Canal to Altrincham in 1765 and the arrival of the railway in 1849, stimulating industrial activity in the town. Outlying villages were absorbed by Altrincham's subsequent growth, along with the grounds of Dunham Massey Hall, formerly the home of the Earl of Stamford and now a tourist attraction, with three Grade I listed buildings and a deer park.\nAltrincham has good transport links to Manchester, Sale, Stretford and Stockport, among other destinations. The town has a strong middle-class presence; there has been a steady increase in Altrincham's middle classes since the 19th century. It is also home to Altrincham F.C. and three ice hockey clubs: Manchester Storm, Altrincham Aces and Trafford Tornados."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "altrincham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3171,
+    "attempt": 3148,
+    "place_id": "gn-2659496",
+    "input": {
+      "place": {
+        "place_id": "gn-2659496",
+        "name": "Neuchâtel",
+        "country": "Switzerland",
+        "subdivision": "Neuchâtel",
+        "lat": 46.99179,
+        "lon": 6.931
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Neuchâtel",
+          "url": "https://en.wikipedia.org/wiki/Neuchâtel",
+          "text": "Neuchâtel (UK: , US: ; French: [nøʃɑtɛl] ; German: Neuenburg [ˈnɔʏənbʊrɡ] ) is a town, a municipality, and the capital of the Swiss canton of Neuchâtel on Lake Neuchâtel. Since the fusion in 2021 of the municipalities of Neuchâtel, Corcelles-Cormondrèche, Peseux, and Valangin, the city has approximately 45,000 inhabitants (86,000 in the metropolitan area). The city is sometimes referred to historically by the German name Neuenburg; both the French and German names mean 'New Castle'.\nThe castle after which the city is named was built by Rudolph III of Burgundy and completed in 1011. Originally part of the Kingdom of Burgundy, the city was absorbed into the Holy Roman Empire in 1033. The domain of the counts of Neuchâtel was first referred to as a city in 1214. The city came under Prussian control from 1707 until 1848, with an interruption during the Napoleonic Wars from 1806 to 1814. In 1848, Neuchâtel became a republic and a canton of Switzerland.\nNeuchâtel is a centre of the Swiss watch industry, the site of micro-technology and high-tech industries, and home to research centres and organizations such as the Swiss Center for Electronics and Microtechnology (CSEM), and Philip Morris International's Cube."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "neuchatel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3172,
+    "attempt": 3149,
+    "place_id": "gn-2820456",
+    "input": {
+      "place": {
+        "place_id": "gn-2820456",
+        "name": "Uelzen",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.96449,
+        "lon": 10.56704
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uelzen",
+          "url": "https://en.wikipedia.org/wiki/Uelzen",
+          "text": "Uelzen (German: [ˈʏltsn̩] ; Low German: Ülz'n), officially the Hanseatic City of Uelzen (German: Hansestadt Uelzen), is a town in northeast Lower Saxony, Germany, and capital of the district of Uelzen. It is part of the Hamburg Metropolitan Region, a Hanseatic town and an independent municipality.\nUelzen is characterised by timber-framed architecture and also has some striking examples of North German brick Gothic. The town earned pan-regional fame when Friedensreich Hundertwasser was selected to redesign the railway station: the final work of the celebrated Viennese artist and architect was ceremonially opened in 2000 as the Hundertwasser Station, Uelzen, and remains a popular tourism destination.\nThe Polabian name for Uelzen is Wilcaus (spelled Wiltzaus in older German reference material), possibly derived from wilca or wilsa (< Slavic *olăša) 'alder'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "uelzen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3173,
+    "attempt": 3150,
+    "place_id": "gn-2911051",
+    "input": {
+      "place": {
+        "place_id": "gn-2911051",
+        "name": "Hamminkeln",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 51.73262,
+        "lon": 6.59031
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hamminkeln",
+          "url": "https://en.wikipedia.org/wiki/Hamminkeln",
+          "text": "Hamminkeln (German pronunciation: [haˈmɪŋkl̩n] ) is a town in the district of Wesel, in North Rhine-Westphalia, Germany. It is situated on the river Issel, approximately 10 kilometers north of Wesel and 15 km south of Bocholt. It is twinned with Sedgefield, United Kingdom and the largest town in the district of Wesel.\nThe town is separated into the villages Ringenberg, Dingden, Mehrhoog, Brünen, Marienthal, Loikum and Wertherbruch.\nThe city has 3 major employers:\n\nThunderbike - A motorcycle manufacturer and well known customizer of Harley-Davidson\nMax Bögl - A manufacturer of concrete parts for tunnels and bridges, who has worked on projects like Eurotunnel\nBonita - A big fashion brand in Germany\nHamminkeln has its own exit from the Bundesautobahn 3 which is used for many nearby larger cities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "hamminkeln",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3174,
+    "attempt": 3151,
+    "place_id": "gn-2995387",
+    "input": {
+      "place": {
+        "place_id": "gn-2995387",
+        "name": "Martigues",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.40735,
+        "lon": 5.05526
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Martigues",
+          "url": "https://en.wikipedia.org/wiki/Martigues",
+          "text": "Martigues (Occitan: Lo Martegue in classical norm, Lou Martegue in Mistralian norm) is a commune northwest of Marseille. It is part of the Bouches-du-Rhône department in the Provence-Alpes-Côte d'Azur region on the eastern end of the Canal de Caronte.\nA direct translation from the Martigues Tourisme website states the following about Martigues:\n\nNicknamed the \"Provençale Venice\", Martigues is a point of passage between the Mediterranean Sea and the Sea of Martigues (now Etang de Berre), close to the Côte d'Azur. The charm of its canals, its docks and bridges made it \"The Venice of Provence\". Martigues possesses also its cooperative winery \"La Venise provençale\": Coteaux d'Aix en Provence, rosé, red and white wines, fruit juices and natural oils in the region. Main varietals: Grenache, Syrah, Cinsault, Carignan, Clairette."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "martigues",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3175,
+    "attempt": 3152,
+    "place_id": "gn-3433663",
+    "input": {
+      "place": {
+        "place_id": "gn-3433663",
+        "name": "Gualeguay",
+        "country": "Argentina",
+        "subdivision": "Entre Rios",
+        "lat": -33.14091,
+        "lon": -59.31257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gualeguay, Entre Ríos",
+          "url": "https://en.wikipedia.org/wiki/Gualeguay,_Entre_Ríos",
+          "text": "Gualeguay is a city in the province of Entre Ríos, Argentina, on the Gualeguay River, about 226 km from the provincial capital Paraná and 234 km north-west from Buenos Aires. It has a population of about 39,000 inhabitants as per the 2001 census [INDEC]. It should not be confused with Gualeguaychú (another city, 86 km away).\nGualeguay was founded on March 20, 1783, by a military surveyor, Tomás de Rocamora, sent by the Viceroy of the Río de la Plata, Juan José de Vértiz y Salcedo. Rocamora was also the official founder of Gualeguaychú and Concepción del Uruguay and the one who named the province Entre Ríos (\"Between Rivers\"). The new village received the name of San Antonio de Gualeguay because it was under the protection of St. Anthony.\nGualeguay was the birthplace of post-impressionist painter Cesáreo Bernaldo de Quirós and anthropologist Juan Bautista Ambrosetti (both among the best-known Argentines in their fields), as well as Jorge Burruchaga, a football player and manager and scorer of the winning goal in the 1986 FIFA World Cup final and Fernando Ayala, a major Argentine cinema director and producer. Notable actress and comedian Beatriz Bonnet was born in Gualeguay as well. Lisandro Martínez, centre-back for Manchester United F.C., who won the World Cup with Argentina in 2022, was born in the city in 1998."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 221
+    },
+    "banned_terms": [
+      {
+        "term": "gualeguay",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3176,
+    "attempt": 3153,
+    "place_id": "gn-3515827",
+    "input": {
+      "place": {
+        "place_id": "gn-3515827",
+        "name": "Tepotzotlán",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 19.72116,
+        "lon": -99.22391
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tepotzotlán",
+          "url": "https://en.wikipedia.org/wiki/Tepotzotlán",
+          "text": "Tepotzotlán (Spanish: [tepotsoˈtlan] ) is a city and a municipality in the Mexican state of Mexico. It is located 40 km (25 mi) northwest of Mexico City about a 45-minute drive along the Mexico City–Querétaro road at marker number 41. In Aztec times, the area was the center of a dominion that negotiated to keep most of its independence in return with being allied with the Aztec Triple Alliance. Later, it would also be part of a \"Republic of the indigenous,\" allowing for some autonomy under Spanish rule as well. The town became a major educational center during the colonial period when the Jesuits established the College of San Francisco Javier. The college complex that grew from its beginnings in 1580 would remain an educational center until 1914. Today this complex houses the Museo del Virreinato (Museum of the Vice Regal or Colonial Period), with one of the largest collections of art and other objects from this time period.\nThe name Tepotzotlán is of Nahuatl origin and means \"among humpbacks,\" referring to the shape of the hills that surround this area. The oldest surviving Aztec glyph for this area is found in the Codex Osuna, which features a humpbacked person sitting on top of a hill. This is now the symbol of the municipality. Another version of the glyph shows a humpbacked person defending a \"teocalli\" or sacred precinct. The municipality also has a lesser-known European-style coat-of-arms. This contains the officially adopted version of the glyph in the upper part, a representation of the Arcos del Sitio, the facade of the Church of San Francisco Javier and chimneys and a tractor representing both the agriculture and industry found here. Underneath these are written the words \"Libertad, Cultura y Trabajo\" (Liberty, Culture and Work)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 293
+    },
+    "banned_terms": [
+      {
+        "term": "tepotzotlan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3177,
+    "attempt": 3154,
+    "place_id": "gn-3859828",
+    "input": {
+      "place": {
+        "place_id": "gn-3859828",
+        "name": "Cruz del Eje",
+        "country": "Argentina",
+        "subdivision": "Cordoba",
+        "lat": -30.72644,
+        "lon": -64.80387
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cruz del Eje",
+          "url": "https://en.wikipedia.org/wiki/Cruz_del_Eje",
+          "text": "Cruz del Eje is a city in the province of Córdoba, Argentina. It had about 30,000 inhabitants at the 2010 census [INDEC]. It is the head town of the department of the same name, which has a population of about 52,000.\nThe area of the city was originally inhabited by Comechingón aboriginals, which were thoroughly displaced or exterminated by the Spanish conquistadores by the end of the 17th century. The first official owner of the lands was Francisco de Baigorri, as recorded on September 22, 1735, which is taken as the foundation date of the city.\n\nThe settlement was linked by a road to the provincial capital, Córdoba, in 1878, and it was declared a municipality on May 8, 1890; at the time it had about 4,000 inhabitants. On the latter year the train station was also opened. Cruz del Eje's position as a railroad node would lead to a rapid growth in importance; the railway workshops were dismantled in the 1970s. The Cruz del Eje Reservoir, initiated by Governor Amadeo Sabattini, was completed in 1943. The city grew subsequently as a tourist destination.\nPresident Arturo Illia maintained a medical practice in Cruz del Eje from 1928 until his election as President of Argentina in 1963. President Illia's Cruz del Eje home was made a museum in 2003.\nMario Rubén González Pierotti, Jairo, was born in Cruz del Eje, on June 16, 1949. Jairo is an Argentine singer-songwriter and composer from Cruz del Eje, Córdoba. Throughout his career, he has performed more than 500 songs in Spanish, French and Italian.\nAmong its most widespread songs they are: «Tu alma golondrina», «Por si tú quieres saber», «Tristezas», «De pronto sucedió», «El valle y el volcán», «Si vuelves será cansancio», «Amigos míos me enamoré», «Hoy dejó la ciudad», «Nos verán llegar», «Revólver» and «Me encanta esta hora del día»."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 307
+    },
+    "banned_terms": [
+      {
+        "term": "cruz del eje",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cruz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "eje",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3178,
+    "attempt": 3155,
+    "place_id": "gn-3980777",
+    "input": {
+      "place": {
+        "place_id": "gn-3980777",
+        "name": "Uriangato",
+        "country": "Mexico",
+        "subdivision": "Guanajuato",
+        "lat": 20.14162,
+        "lon": -101.17875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uriangato",
+          "url": "https://en.wikipedia.org/wiki/Uriangato",
+          "text": "Uriangato is a city and one of  46 municipalities of Guanajuato, located just north of the border between the states of Guanajuato and Michoacán in west central Mexico. Uriangato city is geographically united with Moroleon city and Yuriria city, these three cities form a metropolitan area. Since October 2010, this metropolitan area is the 75th biggest city of Mexico and the 5th biggest in Guanajuato. It is smallest of the 56 metropolitan areas in Mexico.\n\nAccording to the United Nations/PNUD, in 2005 Uriangato was a municipality of High Human Development, with an index of 0.8147 (scale 0 to 1). This puts Uriangato at 432nd place in the country (2,454 municipalities of México) and 8th in all Guanajuato state (46 municipalities of Guanajuato), in terms of quality of life.\nAn average person in Uriangato earned $8,607 US dollars ($110,200 pesos) during one year (2005), which puts Uriangato in 365th place in the country and 12th place in Guanajuato state.\nUriangato, like all of Guanajuato state, is considered by CONAPO to be a High Migration Municipality, because more than 10% of its families receive money from their relatives in the United States. This situation has improved the quality of life in Uriangato, most of whose emigrants live in California, Texas, Illinois, Indiana, Missouri, Pennsylvania and New York."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "uriangato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3179,
+    "attempt": 3156,
+    "place_id": "gn-4844459",
+    "input": {
+      "place": {
+        "place_id": "gn-4844459",
+        "name": "Trumbull",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.24287,
+        "lon": -73.20067
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trumbull, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Trumbull,_Connecticut",
+          "text": "Trumbull is a town located in Fairfield County, Connecticut, United States. The town is part of the Greater Bridgeport Planning Region, and borders on the cities of Bridgeport and Shelton, as well as the towns of Stratford, Fairfield, Easton and Monroe. The population was 36,827 during the 2020 census. The Trumbull area was the home of the Golden Hill Paugussett Indian Nation for thousands of years before the English settlement was made in 1639.\nAfter independence, the successful American Yankees named the town after one of their own, Jonathan Trumbull (1710–1785), a merchant, Patriot (American soldier) and statesman. Aviation pioneer Igor Sikorsky lived in Trumbull during his active years, when he designed, built, and flew fixed-wing aircraft and put the helicopter into mass production for the first time."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "trumbull",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3180,
+    "attempt": 3157,
+    "place_id": "gn-727462",
+    "input": {
+      "place": {
+        "place_id": "gn-727462",
+        "name": "Samokov",
+        "country": "Bulgaria",
+        "subdivision": "Sofia",
+        "lat": 42.33855,
+        "lon": 23.55805
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Samokov",
+          "url": "https://en.wikipedia.org/wiki/Samokov",
+          "text": "Samokov (Bulgarian: Самоков [ˈsamokof]) is a town in Sofia Province in the southwest of Bulgaria. It is in the Samokov Valley between the mountain ranges of Rila, Vitosha, and Sredna Gora, 55 kilometres from the capital Sofia. Due to the suitable winter sports conditions, Samokov, together with the nearby resort Borovets, is a major tourist centre.\nIn the past, Samokov was a centre of handicrafts and art, with notable Bulgarian National Revival figures like Zahari Zograf, Hristo Dimitrov and Nikola Obrazopisov. The town's name is a compound word of \"samo\" and \"kov\", respectively meaning \"self\" and the root of the verb \"forge, hammer\", and comes from the samokov, a mechanical forge powered by water, since the town of Samokov was a major iron-producing centre during the Middle Ages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 128,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "samokov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3181,
+    "attempt": 3158,
+    "place_id": "gn-1275572",
+    "input": {
+      "place": {
+        "place_id": "gn-1275572",
+        "name": "Bindki",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 26.03613,
+        "lon": 80.57617
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bindki",
+          "url": "https://en.wikipedia.org/wiki/Bindki",
+          "text": "Bindki is a city, sub-district and a municipality in Fatehpur district in the state of Uttar Pradesh, India.\nIt is one of the few Indian towns which has separate markets for different commodities. The markets are Bajaja Gali for clothes, Sarafa Bajar for jewellery, Bartan Bajar for utensils, Kirana Gali for spices, Shoe market for footwears, Fatak Bajar for stationery and books, Najahi Gali for food grains, Ghihai Gali for ghee, etc. Bindki is an assembly constituency and Jaiki Patel from AD(S) is the present MLA. Dayanand Inter College, Nagar Palika Nehru Inter College and Sohan Lal Dwivedi Government Girls Inter College are various inter colleges in this town. 'Bindki Road' is the nearest railway station on Delhi Howrah route, 10 km (6.2 mi) away from Bindki."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "bindki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3182,
+    "attempt": 3159,
+    "place_id": "gn-1298482",
+    "input": {
+      "place": {
+        "place_id": "gn-1298482",
+        "name": "Sagaing",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Sagaing Region",
+        "lat": 21.8787,
+        "lon": 95.97965
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sagaing",
+          "url": "https://en.wikipedia.org/wiki/Sagaing",
+          "text": "Sagaing (Burmese: စစ်ကိုင်းမြို့, MLCTS: cac kuing: mrui., pronounced [zəɡáɪɰ̃ mjo̰]), classical name: Jeyyapura (Victorious city) or Atulavatī (Unmatched realm), is a major city in Sagaing Region of Myanmar. It is located on the Irrawaddy River, 20 km (12 mi) to the south-west of Mandalay on the opposite bank of the river. Sagaing, with its numerous Buddhist monasteries, is an important religious and monastic centre. The pagodas and monasteries crowd the numerous hills along the ridge running parallel to the river. The central pagoda, Soon U Ponya Shin Pagoda, is connected by a set of covered staircases that run up the 240 m (790 ft) hill.\nToday, with about 70,000 inhabitants, the city is part of Mandalay metropolitan area, home to more than 1,022,000 inhabitants as of 2011. It is a frequent tourist destination for day trippers, usually as part of the \"three former capitals\" itinerary alongside Amarapura and Innwa.\nThe city is home to five institutions of higher learning: the Sagaing Institute of Education, Sagaing Education College, Sagaing Technological University, Sagaing University of Co-operative and Management, and Sagaing University. The latter was established on 11 February 2012; it is located in Pakatoe Quarter, Sagaing Township, with an area of 121.55 ha (300.35 acres)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "sagaing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3183,
+    "attempt": 3160,
+    "place_id": "gn-1639002",
+    "input": {
+      "place": {
+        "place_id": "gn-1639002",
+        "name": "Kuta",
+        "country": "Indonesia",
+        "subdivision": "Bali",
+        "lat": -8.72332,
+        "lon": 115.17234
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kuta, Bali",
+          "url": "https://en.wikipedia.org/wiki/Kuta,_Bali",
+          "text": "Kuta (Balinese: ᬓᬸᬢ/ᬓᬹᬝ) is a tourist area, administratively an urban village (kelurahan), and the capital of Kuta District, Badung Regency, southern Bali, Indonesia. Kuta is a part of the Denpasar metropolitan area, 12 km (7.5 mi) south of downtown Denpasar. Originally known as a fishing village, it was one of the first towns on Bali to see substantial tourism, and as a beach resort remains one of Indonesia's major tourist destinations. It is known internationally for its long sandy beach, varied accommodations, restaurants and bars, and many renowned surfers who visit from Australia. It is near Bali's Ngurah Rai Airport.\nThe Balinese Provincial Government has taken the view that the preservation of the Balinese culture, natural resources, and wildlife are of primary importance in the island's development. To this end, it has limited tourist development to the peninsula on the island's extreme southern aspect; Kuta beach is on this peninsula's western side and Sanur is on the east. To the north of the peninsula no new tourist development is supposedly permitted.\nTo the south, Kuta Beach extends beyond the airport into Jimbaran. Other nearby towns and villages include Seseh (6.4 nm), Denpasar (4.5 nm), Ujung (1.8 nm), Pesanggaran (2.0 nm), Kedonganan (2.9 nm), and Tuban (1.0 nm)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 127,
+      "fullExtractWords": 207
+    },
+    "banned_terms": [
+      {
+        "term": "kuta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,742 @@
+[
+  {
+    "rank": 2943,
+    "attempt": 2921,
+    "place_id": "gn-2739868",
+    "input": {
+      "place": {
+        "place_id": "gn-2739868",
+        "name": "Espinho",
+        "country": "Portugal",
+        "subdivision": "Aveiro",
+        "lat": 41.00763,
+        "lon": -8.64125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Espinho, Portugal",
+          "url": "https://en.wikipedia.org/wiki/Espinho,_Portugal",
+          "text": "Espinho (Portuguese pronunciation: [ɨʃˈpiɲu] ), officially the City of Espinho (Portuguese: Cidade de Espinho), is a city and a municipality located in the Aveiro District, Portugal. It is located in both the Greater Porto and the Metropolitan Area of Porto, 16 km from its city centre. It is one of the smallest municipalities in Portugal and was, until 1899, part of the Santa Maria da Feira Municipality.\nIn 2021, Espinho had a population of 31,027, a slight decrease from the previous census in 2011, when 31,786 were registered, in an area of 21.06 km2.\nThe current mayor is Jorge Ratola, elected by the PSD.\nIt is a beach resort and a zone of legal gambling with a casino - Casino Solverde.  Its fair - Feira de Espinho, having been first organised in 1894, is well known in Portugal. The city is home to CINANIMA - Festival Internacional de Cinema de Animação, an international animation festival, and FEST - New Directors New Films Festival, an international film festival. The municipal holiday is June 16."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "espinho",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2944,
+    "attempt": 2922,
+    "place_id": "gn-2951881",
+    "input": {
+      "place": {
+        "place_id": "gn-2951881",
+        "name": "Bautzen",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 51.18035,
+        "lon": 14.43494
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bautzen",
+          "url": "https://en.wikipedia.org/wiki/Bautzen",
+          "text": "Bautzen (German pronunciation: [ˈbaʊtsn̩] ) or Budyšin  (Upper Sorbian pronunciation: [ˈbudɨʃin] ), until 1868 Budissin in German, is a town in eastern Saxony, Germany, and the administrative centre of the district of Bautzen. It is located on the Spree river, is the eighth most populous town in Saxony, and is the seat of Saxony's largest district. Bautzen lies in the bilingual Sorbian settlement area of Lusatia, and is Lusatia's third-largest town after Cottbus and Görlitz, as well as the second-largest town in Upper Lusatia.\nThe town lies in the hilly Upper Lusatian Gefilde, a part of the northwesternmost foothills of the Sudetes, just north of the Lusatian Highlands. Bautzen is the first larger town on the Spree River, and the Bautzen Reservoir lies in the north of the town. In 2021, Bautzen had a population of around 38,000.\nAlthough Görlitz is larger, it is Bautzen that is regarded as the historical capital of Upper Lusatia. Bautzen is the political and cultural center of the entirety of the Slavic minority of the Sorbs (Upper and Lower), although Lower Lusatia and the Lower Sorbian-speaking Sorbs have their own, second center, which is Cottbus. About 10 percent of Bautzen's population is Upper Sorbian-speaking. The use of the language is more widespread in the countryside surrounding the town than in the town itself. Bautzen is the seat of several Sorbian institutions like the Domowina, the German-Sorbian People's Theater (Němsko-Serbske ludowe dźiwadło), and Sorbian Broadcasting.\nFrom 1346 until 1815, the town was a member of the Lusatian League. The Bautzen Wenceslaus' Market (Bautzener Wenzelsmarkt, Upper Sorbian: Budyske Wjacławske wiki) is \"Germany's oldest Christmas market mentioned in a chronicle\". Asteroid 11580 Bautzen is named in honour of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "bautzen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2945,
+    "attempt": 2923,
+    "place_id": "gn-3098218",
+    "input": {
+      "place": {
+        "place_id": "gn-3098218",
+        "name": "Grudziądz",
+        "country": "Poland",
+        "subdivision": "Kujawsko-Pomorskie",
+        "lat": 53.48411,
+        "lon": 18.75366
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grudziądz",
+          "url": "https://en.wikipedia.org/wiki/Grudziądz",
+          "text": "Grudziądz ([ˈɡrud͡ʑɔnt͡s] ; German: Graudenz) is a city in northern Poland, with 92,552 inhabitants (2021). Located on the Vistula River, it lies within the Kuyavian-Pomeranian Voivodeship and is the fourth-largest city in its province.\nGrudziądz is one of the oldest cities in north-central Poland, founded by King Bolesław I the Brave over 1000 years ago. The well-preserved Old Town has various Gothic and Baroque landmarks, several included on the European Route of Brick Gothic, most notably the unique Grudziądz Granaries, declared a Historic Monument of Poland. Grudziądz is a former royal city of Poland, and became known as the \"City of Uhlans\" being the location of the former Polish Cavalry Training Centre. Situated at the crossroads of important highways, it is a city of industry and services, and a noted centre for water sports and motorcycle speedway racing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "grudziadz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2946,
+    "attempt": 2924,
+    "place_id": "gn-3180423",
+    "input": {
+      "place": {
+        "place_id": "gn-3180423",
+        "name": "Carrara",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 44.07926,
+        "lon": 10.09789
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carrara",
+          "url": "https://en.wikipedia.org/wiki/Carrara",
+          "text": "Carrara ( kə-RAR-ə; Italian: [kaˈraːɾa]; Emilian: Carara, Emilian: [kaˈɾaːɾa]) is a town and comune in Tuscany, in central Italy, of the province of Massa and Carrara, and notable for the white or blue-grey marble quarried there. It is on the Carrione River, some 100 kilometres (62 mi) west-northwest of Florence. Its motto is Latin: \"Fortitudo mea in rota\" (\"My strength is in the wheel\"), a reference firstly to the marble shipping industry from Roman times onwards.\nDuring the contemporary era, the city and the surrounding region are closely linked to the history of the anarchist movement, with a significant part of its population being anarchist and many congresses being held there—one of the most notable being the Congress of Carrara (1968), which founded the International of Anarchist Federations (IAF), one of the main anarchist organizations to this day."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "carrara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2947,
+    "attempt": 2925,
+    "place_id": "gn-4681976",
+    "input": {
+      "place": {
+        "place_id": "gn-4681976",
+        "name": "Cleburne",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 32.34764,
+        "lon": -97.38668
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cleburne, Texas",
+          "url": "https://en.wikipedia.org/wiki/Cleburne,_Texas",
+          "text": "Cleburne (/ˈkliːbɜːrn/ KLEE-burn) is a city in the U.S. state of Texas and the county seat of Johnson County. Located within the prairies and lakes region of North Texas, the city is located south of Fort Worth and southwest of Dallas. The closest neighboring state is Oklahoma to the north, and the closest international border is to the south with Mexico. Cleburne is the second-most-populous city in Johnson County at 31,352 in 2020. The Dallas-Fort Worth Metroplex, of which Cleburne is a part, has a total population of 8,477,157 in 2025, fourth-largest in the U.S.\nCleburne was founded near Buffalo Creek as Camp Henderson in 1862 and incorporated in 1871, changing its name to honor Patrick R. Cleburne. Ready access to fresh water and being located at the center of the county accounted for the town's early growth. Water access played a key role in luring the Santa Fe shops, where it became the largest employer for the next century. The population grew steadily until the Great Depression, when it contracted until the postwar boom after 1945. The city from then on saw steady growth as people moved to the DFW Metroplex.\nCleburne is crisscrossed with many railroads, thus sees much freight move through, which BNSF Railways controls. Industry makes up a large portion of the economy and is concentrated in the north of town in the industrial parks, many using the railroads. Public services such as city/county employees and school district employees make up large numbers of employed people, as well as retail stores. Proximity to the DFW Metroplex has led to a construction boom in both the residential and industrial sectors.\nCleburne houses many cultural centers, including the Layland Museum of History, Chisholm Trail Outdoor Museum, Cleburne Railroad Museum, J.N. Long Cultural Arts Center, Cleburne Public Library, Dudley Hall, Plaza Main Street Theatre, Helmcamp Community Theatre, and the Hill College extension. The city has many parks, including the Cleburne State Park to the south and Lake Pat Cleburne. Cleburne hosts the Cleburne Railroaders (baseball; AA)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 337
+    },
+    "banned_terms": [
+      {
+        "term": "cleburne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2948,
+    "attempt": 2926,
+    "place_id": "gn-4920808",
+    "input": {
+      "place": {
+        "place_id": "gn-4920808",
+        "name": "Goshen",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 41.58227,
+        "lon": -85.83444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Goshen, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Goshen,_Indiana",
+          "text": "Goshen ( GOH-shən) is a city in and the county seat of Elkhart County, Indiana, United States. It is the smaller of the two principal cities of the Elkhart–Goshen Metropolitan Statistical Area, which in turn is part of the South Bend–Elkhart–Mishawaka Combined Statistical Area. It is located in the northern part of Indiana near the Michigan border, in a region known as Michiana. Goshen is located 10 miles southeast of Elkhart, 25 miles southeast of South Bend, 120 miles east of Chicago, and 150 miles north of Indianapolis. The population of Goshen was 34,517 at the 2020 census.\nThe city is known as a prominent recreational vehicle and accessories manufacturing center, the home of Goshen College, a small Mennonite liberal arts college, and the Elkhart County 4-H Fair, one of the largest county fairs in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "goshen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2949,
+    "attempt": 2927,
+    "place_id": "gn-5219488",
+    "input": {
+      "place": {
+        "place_id": "gn-5219488",
+        "name": "Wilkes-Barre",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 41.24591,
+        "lon": -75.88131
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wilkes-Barre, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Wilkes-Barre,_Pennsylvania",
+          "text": "Wilkes-Barre ( WILKS-bair(-ee) or  WILKS-bar) is a city in Pennsylvania, which functions as both the administrative hub and the primary population center of Luzerne County. Located along the Susquehanna River in Northeastern Pennsylvania, it had an estimated population of 44,523 in 2025. It is part of the Wyoming Valley metropolitan area, which includes five cities and more than 40 boroughs forming a contiguous urban corridor with an estimated 574,000 residents.\nWilkes-Barre is surrounded by the Pocono Mountains to the east, the Endless Mountains to the north and west, and the Lehigh Valley to the south. The city was founded in 1769, incorporated as a borough in 1806, and re-incorporated as a city in 1869. It experienced significant growth in the 19th century due to the development of nearby anthracite coal mines and a large influx of immigrant labor. As its industry continued to expand into the 20th century, the population peaked at over 86,000 in 1930. \nFollowing World War II, the city's economy declined due to the collapse of industry and the 1959 Knox Mine disaster, which rendered much of the region's coal mining infrastructure unusable. In the 21st century, the city's population is approximately half its 1930 peak, but it remains the largest city in Luzerne County and the 11th-largest city in Pennsylvania. Wilkes-Barre is located 49 miles (79 km) north-northwest of Allentown, 97 miles (156 km) north-northwest of Philadelphia, and 106 miles (171 km) west-northwest of New York City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 241
+    },
+    "banned_terms": [
+      {
+        "term": "wilkes barre",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wilkes",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "barre",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2950,
+    "attempt": 2928,
+    "place_id": "gn-5799841",
+    "input": {
+      "place": {
+        "place_id": "gn-5799841",
+        "name": "Kirkland",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.68149,
+        "lon": -122.20874
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kirkland, Washington",
+          "url": "https://en.wikipedia.org/wiki/Kirkland,_Washington",
+          "text": "Kirkland is a city in King County, Washington, United States. A suburb east of Seattle, its population was 92,175 in the 2020 U.S. census which made it the sixth largest city in King County and the twelfth largest city in the state of Washington.\nThe city's downtown waterfront has restaurants, art galleries, a performing arts center, public parks, beaches, and a collection of public art that includes bronze sculptures.\nKirkland was the original home of the Seattle Seahawks; the NFL team's headquarters and training facility were located at the Lake Washington Shipyard (now Carillon Point) along Lake Washington for their first ten seasons (1976–85), then at nearby Northwest University through 2007. Warehouse chain Costco previously had its headquarters in Kirkland. While Costco is now headquartered in Issaquah, the city is the namesake of its \"Kirkland Signature\" store brand. American video game company Valve was also founded in Kirkland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "kirkland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2951,
+    "attempt": 2929,
+    "place_id": "gn-64013",
+    "input": {
+      "place": {
+        "place_id": "gn-64013",
+        "name": "Bosaso",
+        "country": "Somalia",
+        "subdivision": "Bari",
+        "lat": 11.28421,
+        "lon": 49.18158
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bosaso",
+          "url": "https://en.wikipedia.org/wiki/Bosaso",
+          "text": "Bosaso (Somali: Boosaaso; Arabic: بوصاصو), historically known as Bender Qassim or Badraan, is a city in the northeastern Bari province of Somalia in Puntland. It is the administrative capital of the Bosaso District and the principal commercial center of the Puntland regional state. Located on the southern coast of the Gulf of Aden, Bosaso serves as a major port facilitating trade between Somalia, the Arabian Peninsula, East Africa, and international markets.\nThe city is the economic hub of Puntland, with a diversified economy that includes maritime trade, fisheries, livestock exports, mining, and commerce. The Port of Bosaso is the largest in Puntland and among the busiest in Somalia, handling exports such as livestock, fish, frankincense, and gold. Bosaso also hosts regional government offices, educational institutions, and service facilities, connecting the coast to inland areas through its road networks.\nBosaso has experienced rapid urban growth, attracting traders, migrants, and job seekers from across Somalia and neighboring regions. As of 2020, its population was estimated at around 700,000. The city is informally nicknamed “Bosaso Deeqa,” reflecting its perception as a place of opportunity and economic activity. Its strategic location along the Gulf of Aden continues to shape its role as a center of commerce, administration, and social life in northern Somalia.\nThe city has a diverse economy centered on education, government, banking, tourism, aviation, food, clothes, logistics, steel, energy, health care, hospitality, retail and technology. The area's many colleges and universities make it a regional hub of higher education, including law, medicine, engineering, business and entrepreneurship."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 254
+    },
+    "banned_terms": [
+      {
+        "term": "bosaso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2952,
+    "attempt": 2930,
+    "place_id": "gn-6618856",
+    "input": {
+      "place": {
+        "place_id": "gn-6618856",
+        "name": "Santutxu",
+        "country": "Spain",
+        "subdivision": "Basque Country",
+        "lat": 43.25347,
+        "lon": -2.9161
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santutxu",
+          "url": "https://en.wikipedia.org/wiki/Santutxu",
+          "text": "Santutxu is a neighbourhood of the Spanish city of Bilbao. It belongs to the 4th urban district, named Begoña. It is a popular residential neighbourhood which has a significant number of small businesses and has received some waves of immigration in the last years, particularly Romanians. The Begoña district consists of three neighbourhoods: Santutxu, Begoña and Bolueta.\nAccording to research on population density, and data from the Bilbao City Council, Santutxu has the third most densely populated sq/km in Europe, with about 41.378 residents per sq/km, when considering districts of a certain size coming in third place after L'Hospitalet de Llobregat in Greater Barcelona and La Goutte d’or in Paris, neighbourhoods which have slightly more than 50.000 residents per sq/km. However, there is a popular myth among locals that Santutxu is the most densely populated neighbourhood in Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "santutxu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2953,
+    "attempt": 2931,
+    "place_id": "gn-757692",
+    "input": {
+      "place": {
+        "place_id": "gn-757692",
+        "name": "Świdnik",
+        "country": "Poland",
+        "subdivision": "Lublin",
+        "lat": 51.21898,
+        "lon": 22.69621
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Świdnik",
+          "url": "https://en.wikipedia.org/wiki/Świdnik",
+          "text": "Świdnik (Polish pronunciation: [ˈɕfidɲik]) is a town in southeastern Poland with 40,186 inhabitants (2012), situated in the Lublin Voivodeship, 10 kilometres (6 miles) southeast of the city of Lublin. It is the capital of Świdnik County. Świdnik belongs to the historic province of Lesser Poland, and was first mentioned in historical records in the year 1392. It remained a village until the end of the 19th century when it began to develop as a spa, due to its location and climate.\n\nIn the early Middle Ages, the area of Świdnik was under the authority of a castellan from nearby Lublin. In the location of the current city three villages existed: Adampol, Świdnik and Krępiec (the name of the city itself was later taken from the village which was located in the immediate vicinity of the PZL Świdnik factory).\nŚwidnik, due to its location, is often considered to be a Satellite town of Lublin. The town is host to various industrial and advanced technology companies. It is a part of the Lublin Agglomeration, extending its business-oriented capabilities.\nThere are other villages named Świdnik in Poland, as well as Svidník, a town in Slovakia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "swidnik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2954,
+    "attempt": 2932,
+    "place_id": "gn-898905",
+    "input": {
+      "place": {
+        "place_id": "gn-898905",
+        "name": "Sesheke",
+        "country": "Zambia",
+        "subdivision": "Western Province",
+        "lat": -17.47593,
+        "lon": 24.29684
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sesheke",
+          "url": "https://en.wikipedia.org/wiki/Sesheke",
+          "text": "Sesheke is a border town in the Western Province of Zambia, in a district of the same name. It lies on the northern bank of the Zambezi River which forms the border with Namibia's Caprivi Strip at that point.\nThe Katima Mulilo Bridge, completed in May 2004, spans the river here, connecting Sesheke with the Namibian border town of Katima Mulilo on the southern bank of the Zambezi. The M10 road, which connects Sesheke to Livingstone and the Victoria Falls 200 km to the east, was upgraded in 2004. The new bridge and road were financed by German donor bank Kreditanstalt für Wiederaufbau and were the last missing link in the \"Trans Caprivi Corridor\" (today known as the Walvis Bay-Ndola-Lubumbashi Development Road). This 2500 km long asphalt road now connects Zambia's Copperbelt with Namibia's sea port (Walvis Bay). As a direct result, the amount of road freight traffic has greatly increased.\nImproved road access and the construction of new lodges and other tourist facilities have also increased the number of tourists passing through Sesheke on their way to the Victoria Falls, to the Sioma Ngwezi National Park 50 km west of the town, or to the upper Zambezi and the Barotse Floodplain.\nThe M10 road also connects Sesheke to Sioma, Senanga and Mongu 300 km north-north-west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "sesheke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2955,
+    "attempt": 2933,
+    "place_id": "gn-1733468",
+    "input": {
+      "place": {
+        "place_id": "gn-1733468",
+        "name": "Tambunan",
+        "country": "Malaysia",
+        "subdivision": "Sabah",
+        "lat": 5.71667,
+        "lon": 116.4
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tambunan",
+          "url": "https://en.wikipedia.org/wiki/Tambunan",
+          "text": "Tambunan (Malay: Pekan Tambunan) is the capital of Tambunan District in the Interior Division of Sabah, Malaysia. Its population was estimated to be around 2,553 in 2010. The town is located 80 kilometres (50 miles) east of the state capital, Kota Kinabalu (to which is connected by the Malaysia Federal Route 500), 63 kilometres (39 miles) south of Ranau and 49 kilometres (30 miles) north of Keningau. At an average altitude of 750 metres (820 yards), the valley town, which is part of the Crocker Range, experiences a mild tropical climate all year long. The valley is peppered with terraced paddy fields and 70 villages. The dense forests of bamboo around Tambunan are a legacy of the British colonial period, during which an edict stated that 20 bamboo sprouts had to be planted for every bamboo cut."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "tambunan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2956,
+    "attempt": 2934,
+    "place_id": "gn-1863293",
+    "input": {
+      "place": {
+        "place_id": "gn-1863293",
+        "name": "Hamakita",
+        "country": "Japan",
+        "subdivision": "Shizuoka",
+        "lat": 34.8,
+        "lon": 137.78333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hamakita, Shizuoka",
+          "url": "https://en.wikipedia.org/wiki/Hamakita,_Shizuoka",
+          "text": "Hamakita (浜北市, Hamakita-shi) was a city located in western Shizuoka Prefecture, Japan.\nOn April 1, 2005, the city had an estimated population of 86,653 and a density of 1,300.00 persons per km2. The total area was 66.64 km2. It is now part of ward of Hamakita when the city of Hamamatsu became a designated city on April 1, 2007.\nOn July 1, 2005, Hamakita, along with the city of Tenryū, the town of Haruno (from Shūchi District), the towns of Hosoe, Inasa and Mikkabi (all from Inasa District), the towns of Sakuma and Misakubo, the village of Tatsuyama (all from Iwata District), and the towns of Maisaka and Yūtō (both from Hamana District), was merged into the expanded city of Hamamatsu.\nThe name \"Hamakita\" is often mistaken to come from \"North of the city of Hamamatsu\" (浜松市の北). However, when the town of Hamakita was formed, the town took one letter each from the component villages of Hamana Village and Kitahama Village to form the name \"Hamakita\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "hamakita",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2957,
+    "attempt": 2935,
+    "place_id": "gn-2151437",
+    "input": {
+      "place": {
+        "place_id": "gn-2151437",
+        "name": "Rockhampton",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -23.38032,
+        "lon": 150.50595
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rockhampton",
+          "url": "https://en.wikipedia.org/wiki/Rockhampton",
+          "text": "Rockhampton is a city in the Rockhampton Region of Central Queensland, Australia. In the 2021 census, the population of Rockhampton was 79,293. A common nickname for Rockhampton is \"Rocky\", and the demonym of Rockhampton is Rockhamptonite.\nThe Scottish-Norwegian explorers Charles and William Archer came across the Toonooba River in 1853 and named it in-honour of Sir Charles FitzRoy; they also named many local landmarks after figures in Norse mythology, including the Berserker Range named after the Norse warrior \"Baresark\". The Archer brothers took-up a run near Gracemere in 1855, and more settlers arrived soon thereafter, enticed by the fertile valleys. The town of Rockhampton was proclaimed in 1858, and surveyed to a design that closely resembled the Hoddle Grid of Melbourne, and consisted of a grid of wide boulevards and laneways, which was uncommon for Queensland cities. Within a year, gold was found at Canoona, and led to the first North Australian gold rush. The Canoona gold rush led to an influx of migrants that transformed Rockhampton into the second-largest port in the state; during this period, Rockhampton became infamous for crime and violence, and was described by the then visiting English novelist, Anthony Trollope as the \"City of the Three S's\"—\"sin, sweat, and sorrow\". Subsequent gold discoveries at the Mount Morgan Mine, which was at that time one of the most-productive gold mines in the world, laid the foundations for much of the city's Victorian architecture, and recast Rockhampton into a grand northern city.\nThe economy of Rockhampton has strengths in tourism, health, and agriculture, with a GRP of $5.7 billion as of 2023. The Central Queensland University founded in 1967, has its main campus at Norman Gardens, and is the only Australian university with a campus presence in every mainland state. The city is served by Rockhampton Airport, and Port Alma, located at the south end of the Fitzroy river delta.\nRockhampton is renowned for its architecture, cuisine, and music, in particular for its jazz scene, and has been sometimes referred to as the \"Melbourne of the North\", in reference to the city's tree-lined boulevards and laneways. The city's historic quarter is one of Australia's most significant 19th-century streetscapes and is listed on the National Trust; the quarter comprises three city blocks along Quay street, from Fitzroy to Derby street, and is known for its neoclassical architecture, dining and nightlife. \nSome of the historical sites and landmarks of the city include: St Aubins, Kenmore House, the Alexandra Railway Bridge, St Joseph's Cathedral and the nearby Central Park. The Rockhampton Botanic Gardens are one of the oldest public gardens in the country, being founded in 1869 and is also the location of the Rockhampton War Memorial, as well as the Rockhampton Zoo. Rockhampton has nationally prominent cultural institutions, including the Rockhampton Museum of Art, one of the most extensive regional galleries in Australia, and the Dreamtime Cultural Centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 479
+    },
+    "banned_terms": [
+      {
+        "term": "rockhampton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2958,
+    "attempt": 2936,
+    "place_id": "gn-2348395",
+    "input": {
+      "place": {
+        "place_id": "gn-2348395",
+        "name": "Badagry",
+        "country": "Nigeria",
+        "subdivision": "Lagos",
+        "lat": 6.41502,
+        "lon": 2.88132
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Badagry",
+          "url": "https://en.wikipedia.org/wiki/Badagry",
+          "text": "Badagry, also spelled Badagri, (Gun: Gbagli) is a coastal city and Local Government Area (LGA) in the Badagry Division of Lagos State, Nigeria. It is quite close to the city of Lagos, and located on the north bank of Porto Novo Creek, an inland waterway that connects Lagos (Nigeria's largest city and economic capital) to the Beninese capital of Porto-Novo. The same route connects Lagos, Ilaro, and Porto-Novo, and shares a border with the Republic of Benin. As of the preliminary 2006 census results, the municipality had a population of 241,093.\nServing as a lagoon and an Atlantic port, Badagry emerged as a commercial center on the West African coast between 1736 and 1851. Its connecting and navigable lakes, creeks and inland lagoons acted as a means to facilitate trade and as a security bar for residents. During the Trans-Atlantic slave trade, the town was a middleman between European traders on the coast and traders from the hinterland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "badagry",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2959,
+    "attempt": 2937,
+    "place_id": "gn-2511306",
+    "input": {
+      "place": {
+        "place_id": "gn-2511306",
+        "name": "Sanlúcar de Barrameda",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.77808,
+        "lon": -6.3515
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sanlúcar de Barrameda",
+          "url": "https://en.wikipedia.org/wiki/Sanlúcar_de_Barrameda",
+          "text": "Sanlúcar de Barrameda (Spanish pronunciation: [sanˈlukaɾ ðe βaraˈmeða]), or simply Sanlúcar, is a city in the northwest of Cádiz province, part of the autonomous community of Andalucía in southern Spain. Sanlúcar is located on the left bank at the mouth of the Guadalquivir River opposite the Doñana National Park, 52 km from the provincial capital Cádiz and 119 km from Sevilla, capital of the autonomous region Andalucía.  Its population is 68,656 inhabitants (National Institute of Statistics 2019).\nSanlúcar has been inhabited since ancient times, and is assumed to have belonged to the realm of the Tartessian civilization. The town of San Lucar was granted to the Spanish nobleman Alonso Pérez de Guzmán in 1297.\nIts strategic location made the city a starting point for the exploration, colonization and evangelization of America between the 15th and 17th centuries. Sanlúcar lost much of its strategic value after 1645 because of the disgrace of the House of Medina Sidonia, the general decline of Spain under Charles II, the relocation of the Casa de Contratación to the town of Cadiz in 1717, and the Lisbon earthquake of 1755.\nIn the 19th century the economy of the city was converted to viticulture and summer tourism.  The 20th century brought destruction and political upheaval as it did elsewhere in Spain during the Spanish Civil War.  Sanlúcar was declared a Cultural Historical-artistic site in 1973.  Since the restoration of democracy (1975–1982) its town council has borrowed heavily, making Sanlúcar the city with the lowest per capita income in Spain.\nSanlúcar is a summer tourist destination famous for its cuisine, especially manzanilla (a variety of fino sherry) and prawns. It is internationally renowned for beach horse racing and flamenco music.  Less well known but equally important are the historical archives of the House of Medina Sidonia (Archivo de la Casa de Medina Sidonia); the major part of the patrimony of the House of Medina Sidonia is located in the palace of the same name.  The patron saint of the city is Our Lady of Charity, to whom it was dedicated in 1917."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 344
+    },
+    "banned_terms": [
+      {
+        "term": "sanlucar de barrameda",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sanlucar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "barrameda",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2960,
+    "attempt": 2938,
+    "place_id": "gn-2638419",
+    "input": {
+      "place": {
+        "place_id": "gn-2638419",
+        "name": "Scarborough",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.27966,
+        "lon": -0.40443
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Scarborough, North Yorkshire",
+          "url": "https://en.wikipedia.org/wiki/Scarborough,_North_Yorkshire",
+          "text": "Scarborough () is a seaside town and civil parish in the district and ceremonial county of North Yorkshire, England. With a population of 61,749, Scarborough is the largest town on the Yorkshire Coast and the fourth-largest settlement in the county.\nIt is located on the North Sea coast and is on the Cleveland Way long distance footpath which follows the coast through the town. Historically in the North Riding of Yorkshire, the town lies between 10 and 230 feet (3–70 m) above sea level, from Scarborough Harbour rising steeply north and west towards limestone cliffs. The older part of the town lies around the harbour and is protected by a rocky headland that extends into the North Sea.\nThe town has fishing and service industries, including a growing digital and creative economy, and is a tourist destination. Residents of the town are known as Scarborians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "scarborough",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2961,
+    "attempt": 2939,
+    "place_id": "gn-2639272",
+    "input": {
+      "place": {
+        "place_id": "gn-2639272",
+        "name": "Rochdale",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.61766,
+        "lon": -2.1552
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rochdale",
+          "url": "https://en.wikipedia.org/wiki/Rochdale",
+          "text": "Rochdale ( ROTCH-dayl) is a town in Greater Manchester, England, and the administrative centre of the Metropolitan Borough of Rochdale. In the 2021 Census, the town had a population of 111,261, compared to 223,773 for the wider borough. Rochdale is in the foothills of the South Pennines and lies in the dale (valley) of the River Roch, 5 miles (8 km) north-west of Oldham and 10 miles (16 km) north-east of Manchester.\nRochdale's recorded history begins with an entry in the Domesday Book of 1086 as Recedham Manor, but can be traced back to the 9th century. The ancient parish of Rochdale was a division of the Salford Hundred and one of the larger ecclesiastical parishes in England, comprising several townships. By 1251, the town had become of such importance that it was granted a royal charter.\nThe town became a centre of northern England's woollen trade and, by the early 18th century, was described as being \"remarkable for its many wealthy merchants.\" In the 19th century, it became a mill town and centre for textile manufacture during the Industrial Revolution. The town lies within the historic county of Lancashire and was a county borough within it before 1974."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "rochdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2962,
+    "attempt": 2940,
+    "place_id": "gn-2648182",
+    "input": {
+      "place": {
+        "place_id": "gn-2648182",
+        "name": "Grays",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.47566,
+        "lon": 0.32521
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grays, Essex",
+          "url": "https://en.wikipedia.org/wiki/Grays,_Essex",
+          "text": "Grays, historically also known as Grays Thurrock, is the largest town and administrative headquarters of the borough of Thurrock, in Essex, England. The town is located on the north bank of the River Thames, approximately 20 miles (32 kilometres) east of central London, and two miles (three kilometres) east of the M25 motorway. Its economy is linked to Port of London industries, its own offices, retail and the Lakeside Shopping Centre at West Thurrock. At the 2021 census the Grays built up area as defined by the Office for National Statistics (which does not include the adjoining Chafford Hundred) had a population of 44,345.\nGrays Thurrock was an ancient parish. It was abolished as a civil parish in 1936 on the creation of Thurrock Urban District, which in turn became the modern borough of Thurrock in 1974. Grays Thurrock remains the name of one of Thurrock's Church of England parishes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "grays",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 2137,
+    "attempt": 2121,
+    "place_id": "gn-2320920",
+    "input": {
+      "place": {
+        "place_id": "gn-2320920",
+        "name": "Uga",
+        "country": "Nigeria",
+        "subdivision": "Anambra",
+        "lat": 5.93576,
+        "lon": 7.0793
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uga, Anambra State",
+          "url": "https://en.wikipedia.org/wiki/Uga,_Anambra_State",
+          "text": "Uga is a town in Aguata Local Government Area  of Anambra State, Nigeria. It is 13 km South East of Igbo-Ukwu, 12 km South of Ekwulobia, and 45 km South of Awka, the Anambra State Capital. It has four (4) communities namely : Umueze, Oka, Umuoru and Awarasi. It has recognised landmarks and tourist attractions such as the \"Obizi Uga\", a natural spring and a spectacular scenery which was the site of an ancient tale in the Uga oral tradition. Uga is the site of an annual traditional celebration known as the \"OBUOFOR\" festival held every 26 December. Uga has one of the largest markets in the Aguata local government area known as \"ORIE\" which supports the economic activities of the local community and other surrounding towns.\nThe town has an official Post Office."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "uga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2138,
+    "attempt": 2122,
+    "place_id": "gn-2943560",
+    "input": {
+      "place": {
+        "place_id": "gn-2943560",
+        "name": "Bruchsal",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.12426,
+        "lon": 8.59804
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bruchsal",
+          "url": "https://en.wikipedia.org/wiki/Bruchsal",
+          "text": "Bruchsal (German pronunciation: [ˈbʁʊxzaːl] ; orig. Bruohselle, Bruaselle, historically known in English as Bruxhall) is a city at the western edge of the Kraichgau, approximately 20 km northeast of Karlsruhe in the state of Baden-Württemberg, Germany. It is located on Bertha Benz Memorial Route.\nBruchsal is the largest city in the district of Karlsruhe and is known for being Europe's largest asparagus producer and one of the economic centers of the region of Karlsruhe. The Bruchsal area also includes the cities and towns of Bad Schönborn, Forst, Hambrücken, Karlsdorf-Neuthard, Kraichtal, Kronau, Oberhausen-Rheinhausen, Östringen, Philippsburg, Ubstadt-Weiher and Waghäusel. Until 1972 Bruchsal was the seat of the district of Bruchsal, which was merged into the district of Karlsruhe as a result of the district reform, effective January 1, 1973.\nBruchsal's population passed the 20,000 mark around 1955. When the new Body of Municipal Law for Baden-Württemberg went into effect on April 1, 1956, the city was therefore immediately awarded Große Kreisstadt status. In addition, Bruchsal cooperates with the neighboring communities of Forst, Hambrücken and Karlsdorf-Neuthard in administrative matters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "bruchsal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2139,
+    "attempt": 2123,
+    "place_id": "gn-5372253",
+    "input": {
+      "place": {
+        "place_id": "gn-5372253",
+        "name": "Merced",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.30216,
+        "lon": -120.48297
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Merced, California",
+          "url": "https://en.wikipedia.org/wiki/Merced,_California",
+          "text": "Merced (  mur-SED; from Spanish for 'Mercy', pronounced [meɾˈseð]) is a city in and the county seat of Merced County, California, United States, in the San Joaquin Valley. As of the 2020 census, the city had a population of 86,333, up from 78,958 in 2010. Incorporated on April 1, 1889, Merced is a charter city that operates under a council–manager government. It is named after the Merced River, which flows nearby.\nMerced, known as the \"Gateway to Yosemite\", is less than two hours by automobile from Yosemite National Park to the east and Monterey Bay, the Pacific Ocean, and multiple beaches to the west. The community is served by the passenger rail service Amtrak, a minor, heavily subsidized airline through Merced Regional Airport, and three bus lines. It is approximately 110 miles (180 km) from Sacramento, 130 miles (210 km) from San Francisco, 55 miles (89 km) from Fresno, and 270 miles (430 km) from Los Angeles.\nIn 2005, the city became home to the 10th University of California campus, University of California, Merced (UC Merced), the first research university built in the U.S. in the 21st century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "merced",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2140,
+    "attempt": 2124,
+    "place_id": "gn-6157977",
+    "input": {
+      "place": {
+        "place_id": "gn-6157977",
+        "name": "Stratford",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.36679,
+        "lon": -80.94972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stratford, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Stratford,_Ontario",
+          "text": "Stratford is a city on the Avon River geographically within (but administratively separated from) Perth County in southwestern Ontario, Canada, with a 2021 population of 33,232 in a land area of 30.02 square kilometres (11.59 sq mi). Stratford is the seat of Perth County, which was settled by English, Irish, Scottish and German immigrants, in almost equal numbers, starting in the 1820s but primarily in the 1830s and 1840s. Most became farmers; even today, the area around Stratford is known for mixed farming, dairying and hog production.\nThe area was settled by Europeans in 1832, and the town and river were named after Stratford-upon-Avon, England. Stratford was incorporated as a town in 1859 and as a city in 1886. The first mayor was John Corry Wilson Daly. The swan has become a symbol of the city. Each year, twenty-four white swans are released into the Avon River. The town is noted for the Stratford Festival, which performs Shakespearean plays and other genres from May to October."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 127,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "stratford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2141,
+    "attempt": 2125,
+    "place_id": "gn-189741",
+    "input": {
+      "place": {
+        "place_id": "gn-189741",
+        "name": "Lamu",
+        "country": "Kenya",
+        "subdivision": "Lamu",
+        "lat": -2.27169,
+        "lon": 40.90201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lamu",
+          "url": "https://en.wikipedia.org/wiki/Lamu",
+          "text": "Lamu or Lamu Town is a small town on Lamu Island, which in turn is a part of the Lamu Archipelago in Kenya on the continent of Africa. Situated 341 kilometres (212 mi) by road northeast of Mombasa that ends at Mokowe Jetty, from where the sea channel has to be crossed to reach Lamu Island, it is the headquarter of Lamu County and a UNESCO World Heritage Site.\nThe town contains the Lamu Fort on the seafront, constructed under Fumo Madi ibn Abi Bakr, the Sultan of Pate, and completed after his death in the early 1820s. Lamu is also home to 23 mosques, including the Riyadha Mosque that was  built in 1900 and a donkey sanctuary. Today, the majority of Lamu's population is Muslim."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "lamu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2142,
+    "attempt": 2126,
+    "place_id": "gn-2525790",
+    "input": {
+      "place": {
+        "place_id": "gn-2525790",
+        "name": "Acireale",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 37.60886,
+        "lon": 15.16577
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Acireale",
+          "url": "https://en.wikipedia.org/wiki/Acireale",
+          "text": "Acireale (Italian: [ˌatʃireˈaːle]; Sicilian: Jaciriali, locally shortened to Jaci or Aci) is a coastal city and municipality in the north-east of the Metropolitan City of Catania in the autonomous island region of Sicily in Italy, at the foot of Mount Etna, on the coast facing the Ionian Sea. With a population of 50,528, it is the second-largest city in the metropolitan city.\nIt is home to numerous churches, including the Neo-Gothic St. Pietro's Basilica, St. Sebastiano's Basilica in the Sicilian Baroque style, and the 17th century Acireale Cathedral, and a seminary, for the training of priests. Acireale is also noted for its art and paintings: the oldest academy in Sicily, the Accademia di scienze, lettere e belle arti degli Zelanti e dei Dafnici, is located here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "acireale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2143,
+    "attempt": 2127,
+    "place_id": "gn-2645972",
+    "input": {
+      "place": {
+        "place_id": "gn-2645972",
+        "name": "Jarrow",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.98036,
+        "lon": -1.48423
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jarrow",
+          "url": "https://en.wikipedia.org/wiki/Jarrow",
+          "text": "Jarrow ( or ) is a town in South Tyneside in the county of Tyne and Wear, England. Historically in County Durham, it is on the south bank of the River Tyne, about three miles (five kilometres) from the east coast. It is home to the southern portal of the Tyne Tunnel and six miles (ten kilometres) North of Sunderland. At the 2021 census the Jarrow built up area as defined by the Office for National Statistics had a population of 29,470.\nIn the eighth century, St Paul's Monastery in Jarrow (now Monkwearmouth–Jarrow Abbey) was the home of the Venerable Bede, who is regarded as the greatest Anglo-Saxon scholar and the father of English history. The town is part of the historic County Palatine of Durham. From the middle of the 19th century until 1935, Jarrow was a centre for shipbuilding, and was the starting point of the Jarrow March against unemployment in 1936."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "jarrow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2144,
+    "attempt": 2128,
+    "place_id": "gn-3652758",
+    "input": {
+      "place": {
+        "place_id": "gn-3652758",
+        "name": "Puerto Baquerizo Moreno",
+        "country": "Ecuador",
+        "subdivision": "Galápagos",
+        "lat": -0.90172,
+        "lon": -89.61021
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Baquerizo Moreno",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Baquerizo_Moreno",
+          "text": "Puerto Baquerizo Moreno (Spanish pronunciation: [ˈpweɾto βakeˈɾiso moˈɾeno]) is the capital of Galápagos Province, Ecuador. It is located on the southwestern coast of San Cristóbal, the easternmost island in the archipelago, and is the capital of San Cristóbal Canton. It was founded by General Villamil Playas in the mid-19th century, and takes its name from President Alfredo Baquerizo (1859–1951). Today, fishing is the main activity of the locals, but tourism is on the increase along the waterfront with numerous hotels and shops.\n\nThe town has a cathedral, a post office, police station, a hospital, and a branch of the Universidad San Francisco de Quito. It also contains the Centro de Interpretación of the Galápagos National Park, which was established in 1988, and a natural history museum. It is served by San Cristóbal Airport, which connects to mainland Ecuador."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "puerto baquerizo moreno",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "baquerizo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "moreno",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2145,
+    "attempt": 2129,
+    "place_id": "gn-5038108",
+    "input": {
+      "place": {
+        "place_id": "gn-5038108",
+        "name": "Moorhead",
+        "country": "United States",
+        "subdivision": "Minnesota",
+        "lat": 46.87386,
+        "lon": -96.76951
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moorhead, Minnesota",
+          "url": "https://en.wikipedia.org/wiki/Moorhead,_Minnesota",
+          "text": "Moorhead ( MOR-hed) is a city in and the county seat of Clay County, Minnesota, United States, on the banks of the Red River of the North. Located in the Red River Valley, an extremely fertile and active agricultural region, Moorhead is home to several corporations and manufacturing industries. Across the river from Fargo, North Dakota and next to Dilworth, Minnesota, Moorhead forms part of the core of the Fargo–Moorhead ND-MN Metropolitan Area. The population was 44,505 at the 2020 census. Moorhead is a hub of higher education in Minnesota, home to Minnesota State University Moorhead, Concordia College, and a campus of Minnesota State Community and Technical College.\nPlatted in 1871, the city was named for William Galloway Moorhead, an official of the Northern Pacific Railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "moorhead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2146,
+    "attempt": 2130,
+    "place_id": "gn-5122432",
+    "input": {
+      "place": {
+        "place_id": "gn-5122432",
+        "name": "Ithaca",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.44063,
+        "lon": -76.49661
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ithaca, New York",
+          "url": "https://en.wikipedia.org/wiki/Ithaca,_New_York",
+          "text": "Ithaca () is a city in the U.S. state of New York. It is situated on the southern shore of Cayuga Lake in the Finger Lakes region of Upstate New York. With a population of 32,108 as of the 2020 census, Ithaca is the largest community in the Ithaca metropolitan statistical area, which includes all 103,558 residents of Tompkins County, of which it is the county seat. The city is named after the Greek island of Ithaca, home of the protagonist Odysseus in Homer's Odyssey.\nIthaca is a college town best known for hosting Cornell University, an Ivy League university founded in 1865, as well as Ithaca College. Until the late 18th century, present-day Ithaca was inhabited by the Cayuga people of the Haudenosaunee (Iroquois) Confederacy. In 1789, the federal and state governments began granting land in the area, known as the Central New York Military Tract, to compensate veterans of the American Revolutionary War. Located in the township of Ulysses, or Tract 22, Ithaca was populated by white settlers in 1794 and formally established in 1821."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "ithaca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2147,
+    "attempt": 2131,
+    "place_id": "gn-5787829",
+    "input": {
+      "place": {
+        "place_id": "gn-5787829",
+        "name": "Bothell",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.76232,
+        "lon": -122.2054
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bothell, Washington",
+          "url": "https://en.wikipedia.org/wiki/Bothell,_Washington",
+          "text": "Bothell () is a city in King and Snohomish counties in the U.S. state of Washington. It is part of the Seattle metropolitan area, situated near the northeast end of Lake Washington in the Eastside region. It had a population of 48,161 residents as of the 2020 census.\nThe city lies along the Sammamish River, the historic home of the indigenous Sammamish people, and is adjacent to Kenmore and Woodinville. It was established in 1870 and platted by David Bothell and his family in 1888, shortly before the arrival of railroads in the area. The town was incorporated in 1909 and originally relied on logging and farming; in the mid-20th century, it became a bedroom community for workers commuting to Seattle and later other Eastside cities. Interstate 405 connects the city to other areas of the Eastside and functions as a bypass of Seattle.\nBothell's modern economy is centered around biotechnology and high-tech companies that have facilities that were developed in the late 20th century along North Creek and in the Canyon Park neighborhood, which was annexed by the city in 1992. The annexation also expanded the city limits into Snohomish County. The University of Washington Bothell was established in 1990 and opened its permanent shared campus with Cascadia College in 2000. Bothell redeveloped its downtown in the 2010s and 2020s and has seen an increase in residential density and its population as a result."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 235
+    },
+    "banned_terms": [
+      {
+        "term": "bothell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2148,
+    "attempt": 2132,
+    "place_id": "gn-730435",
+    "input": {
+      "place": {
+        "place_id": "gn-730435",
+        "name": "Haskovo",
+        "country": "Bulgaria",
+        "subdivision": "Haskovo",
+        "lat": 41.93415,
+        "lon": 25.55557
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haskovo",
+          "url": "https://en.wikipedia.org/wiki/Haskovo",
+          "text": "Haskovo (Bulgarian: Хасково [ˈxaskovo]) is a city in the region of Northern Thrace in southern Bulgaria and the administrative centre of the Haskovo Province, not far from the borders with Greece and Turkey. According to Operative Program Regional Development of Bulgaria, the urban area of Haskovo is the seventh largest in Bulgaria and has a population of 184,731 inhabitants. Haskovo has a population of 64,564 as of 2022, making it Bulgaria's 12th largest city.\nThe first settlement found in Haskovo is from circa 5000 BC. Haskovo celebrated its 1,000th anniversary as a town in 1985. To mark the event, a new clock tower was erected in the centre of the town.\nHaskovo Cove in Greenwich Island in the South Shetland Islands, Antarctica, is named after Haskovo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "haskovo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2149,
+    "attempt": 2133,
+    "place_id": "gn-759603",
+    "input": {
+      "place": {
+        "place_id": "gn-759603",
+        "name": "Sandomierz",
+        "country": "Poland",
+        "subdivision": "Świętokrzyskie",
+        "lat": 50.68265,
+        "lon": 21.74898
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sandomierz",
+          "url": "https://en.wikipedia.org/wiki/Sandomierz",
+          "text": "Sandomierz (pronounced: [sanˈdɔmjɛʂ] ; Latin: Sandomiria, Yiddish: צויזמר, צוזמיר, romanized: Tsouzmer, Tsoyzmer) is a historic town in south-eastern Poland with 23,863 inhabitants (as of 2017), situated on the Vistula River near its confluence with the San, in the Sandomierz Basin. It is the capital of Sandomierz County within the Świętokrzyskie Voivodeship. Sandomierz is known for its preserved Old Town, a major cultural and tourist attraction which the President of Poland declared a National Monument of Poland in 2017.\nIn the past, Sandomierz was one of the most important urban centers not only of Lesser Poland, but also of the whole country. It was a royal city of the Polish Crown and functioned as a regional administrative centre from the High Middle Ages to the 19th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "sandomierz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2150,
+    "attempt": 2134,
+    "place_id": "gn-1253956",
+    "input": {
+      "place": {
+        "place_id": "gn-1253956",
+        "name": "Udhampur",
+        "country": "India",
+        "subdivision": "Jammu and Kashmir",
+        "lat": 32.92431,
+        "lon": 75.13573
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Udhampur",
+          "url": "https://en.wikipedia.org/wiki/Udhampur",
+          "text": "Udhampur (Hindi pronunciation: [ˌʊd̪ʱəmpur]) is a city and a municipal council in Udhampur district in the Indian union territory of  Jammu and Kashmir in the disputed Kashmir region.It is the headquarters of Udhampur District. Named after Raja Udham Singh, it serves as the district capital and the Northern Command headquarters of the Indian Army. A Forward Base Support Unit (FBSU) of the Indian Air Force is also stationed here. Udhampur is used by the Armed Forces as a transit point between Jammu and Srinagar when travelling by road on National Highway 1A, which has since been renamed as National Highway 44.\nTourist attractions include Patnitop, Panchari Landhar, Ladha Dhar, Dudu Basantgarh, Ramnagar, Yug Dhar, Shivgarh, Sudhmahadev, Mantali International Yoga Center, Benesangh, and Chenani Nashri Tunnel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "udhampur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2151,
+    "attempt": 2135,
+    "place_id": "gn-1267154",
+    "input": {
+      "place": {
+        "place_id": "gn-1267154",
+        "name": "Khajuraho Group of Monuments",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 24.84809,
+        "lon": 79.93351
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khajuraho Group of Monuments",
+          "url": "https://en.wikipedia.org/wiki/Khajuraho_Group_of_Monuments",
+          "text": "The Khajuraho Group of Monuments are a group of Hindu and Digambara Jain temples in Chhatarpur district, Madhya Pradesh, India. They are about 46 km (28.6 mi) from Chhatarpur city, the district headquarters, 283 km (177 mi) from Gwalior, 175 kilometres (109 mi) southeast of Jhansi, 10 kilometres (6.2 mi) from Khajwa and 9 kilometres (5.6 mi) from Rajnagar. The temples are famous for their Nagara-style architectural symbolism and a few erotic sculptures. \nMost Khajuraho temples were built between 885 CE and 1000 CE by the Chandela dynasty. Historical records note that the Khajuraho temple site had 85 temples by the 12th century, spread over 20 square kilometres (7.7 mi2). Of these, only about 25 temples have survived, spread over six square kilometres (2.3 mi2). Of the surviving temples, the Kandariya Mahadeva Temple is decorated with a profusion of sculptures with intricate details, symbolism, and expressiveness of ancient Indian art. The temple complex was forgotten and overgrown by the jungle until 1838 when Captain T.S. Burt, a British engineer, visited the complex and reported his findings in the Journal of the Asiatic Society of Bengal.\nWhen these monuments were built, the boys in the place lived in hermitages, by being brahmacharyas (bachelors) until they attained manhood and these sculptures helped them to learn about the worldly role of 'householder'. The Khajuraho group of temples were built together but were dedicated to two religions, Hinduism and Jainism, suggesting a tradition of acceptance and respect for diverse religious views among Hindus and Jains in the region. Because of their outstanding architecture, diversity of temple forms, and testimony to the Chandela civilization, the monuments at Khajuraho were inscribed on the UNESCO World Heritage List in 1986."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "khajuraho group of monuments",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "khajuraho",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "group",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "monuments",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2152,
+    "attempt": 2136,
+    "place_id": "gn-1273751",
+    "input": {
+      "place": {
+        "place_id": "gn-1273751",
+        "name": "Dabra",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 25.88572,
+        "lon": 78.33221
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dabra, Madhya Pradesh",
+          "url": "https://en.wikipedia.org/wiki/Dabra,_Madhya_Pradesh",
+          "text": "Dabra (Hindi: डबरा) is a town and municipality in Gwalior district in the state of Madhya Pradesh, India located near National Highway 44 (NH-44). It is known for its cascading landscape and production of dhaan, a type of rice. It serves as the headquarters for both a tehsil and a coterminous community development block.\nDabra is the largest municipality in Madhya Pradesh, with the Sind River located 5 km (3 mi) away. Sonagir, a Jain pilgrimage, and Datia, an ancient town, are located 16 km (10 mi) and 32 km (20 mi) from Dabra respectively. Other nearby places of interest are the Temple of Bamrauli Hanuman Ji, the Dhumeshwar Mahadev Temple, the Baba Thakur Temple, the Vankhandeshwar Mahadev Mandir and the tomb of Pir Baba. Abul Fazal, one of Akbar's navratnas (nine gems), on the behest of Jahangir by Vir Singh Deo, raja of Orchha, was killed and buried in a tomb at Antri (31 km (19 mi) from Dabra towards Gwalior).\nNavagraha Temple (also known as Navgrah Mandir or Navgrah Shakti Peeth) is a prominent modern Hindu temple dedicated to the Navagraha (nine celestial bodies/planets). Claimed to be Asia's largest Navagraha temple, it spans over 12 acres and features idols of all nine planets along with their consorts, a unique feature.\n\nThe temple incorporates Dravidian architecture coupled with Vastu Shastra and Jyotish principles, established on the sacred number 108. It serves as a major pilgrimage site for devotees seeking astrological remedies, planetary peace, and spiritual solace. The Pran Pratishtha (consecration) was held in February 2026.\nIt is located near Magrora in Dabra, therefore increasing its accessibility and growth in attraction alongside other local temples."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 275
+    },
+    "banned_terms": [
+      {
+        "term": "dabra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2153,
+    "attempt": 2137,
+    "place_id": "gn-1732672",
+    "input": {
+      "place": {
+        "place_id": "gn-1732672",
+        "name": "Tanjong Malim",
+        "country": "Malaysia",
+        "subdivision": "Perak",
+        "lat": 3.681,
+        "lon": 101.5198
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tanjong Malim",
+          "url": "https://en.wikipedia.org/wiki/Tanjong_Malim",
+          "text": "Tanjong Malim, or Tanjung Malim, is a town in Muallim District, Perak, Malaysia. It is approximately 70 km (43 mi) north of Kuala Lumpur and 120 km south of Ipoh via the North–South Expressway. It lies on the Perak-Selangor state border, with Sungai Bernam serving as the natural divider.\n\"Tanjong Malim\" usually refers to the territory under administration of Tanjong Malim District Council or Majlis Daerah Tanjong Malim (MDTM), which includes the smaller towns adjacent to the town such as Proton City, Behrang, Behrang 2020, Sungkai and Slim River. \"Tanjong Malim\" is also referred to the Old Town and New Town divided by the KTM Komuter rail at its heart. Tanjong Malim is home to the main campus of the Sultan Idris Education University (UPSI)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "tanjong malim",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tanjong",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "malim",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2154,
+    "attempt": 2138,
+    "place_id": "gn-1785566",
+    "input": {
+      "place": {
+        "place_id": "gn-1785566",
+        "name": "Yuzhou",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 34.15474,
+        "lon": 113.46811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yuzhou, Henan",
+          "url": "https://en.wikipedia.org/wiki/Yuzhou,_Henan",
+          "text": "Yuzhou (Chinese: 禹州; pinyin: Yǔzhōu; Wade–Giles: Yü-chou) is a county-level city in the central part of Henan, People's Republic of China. Yuzhou City, referred to as \"Jun\", was called Yangzhai, Junzhou and Yingchuan in ancient times, and also called Xiadu, Jundu and Medicine Capital. It occupies the northwest corner of the prefecture-level city of Xuchang. The city is named for Yu the Great, the founder of the Xia Dynasty, which the city's government claims was founded in present-day Yuzhou, and that the dynasty's capital was located in present-day Yuzhou. There is a statue of Yu the Great in Yuzhou, and he serves as a symbol of the city.\nThe famous Jun ware (钧瓷) of porcelain originates in Yuzhou, specifically, in the town of Shenhou (神垕镇). Jun ware comprises one of the Five Great Kilns, a group of highly esteemed porcelain types from the Song dynasty. Yuzhou has historically served as a major center of traditional Chinese medicine, and the city's historic medicinal tradition has been recognized by the national government. Famous Chinese doctor Sun Simiao (孙思邈) had been a doctor in Yuzhou for a long period of time during the Tang dynasty.\nNicknames for the city include \"Summer Capital\" (Chinese: 夏都; pinyin: xià dū), \"Jun Capital\" (Chinese: 钧都; pinyin: jūn dū), and \"Medicine Capital\" (Chinese: 药都; pinyin: yào dū). Yuzhou was named the first historical and cultural city in Henan Province in 1989. In 2011, it was named \"China Ceramics Historical and Cultural City\", and in 2018, it was named \"National Health City\" by the National Patriotic Health Campaign Committee."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 260
+    },
+    "banned_terms": [
+      {
+        "term": "yuzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2155,
+    "attempt": 2139,
+    "place_id": "gn-2633842",
+    "input": {
+      "place": {
+        "place_id": "gn-2633842",
+        "name": "Windsor",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.48333,
+        "lon": -0.6
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Windsor, Berkshire",
+          "url": "https://en.wikipedia.org/wiki/Windsor,_Berkshire",
+          "text": "Windsor is a historic town in the Royal Borough of Windsor and Maidenhead in Berkshire, England. It is home to Windsor Castle, one of the official residences of the British monarch. The town is located 21.8 miles (35.1 km) west of Charing Cross in central London, 5.8 miles (9.3 km) southeast of Maidenhead, and 15.8 miles (25.4 km) east of the modern county town of Reading. It lies immediately south of the River Thames, which forms its boundary with the smaller and historic town of Eton. The village of Old Windsor, just over 2 miles (3 km) to the south, predates what is now called Windsor by, possibly, 300 years. Until 1974, Windsor was sometimes officially referred to as New Windsor to distinguish the two."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "windsor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2156,
+    "attempt": 2140,
+    "place_id": "gn-2647044",
+    "input": {
+      "place": {
+        "place_id": "gn-2647044",
+        "name": "Hertford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.79588,
+        "lon": -0.07854
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hertford",
+          "url": "https://en.wikipedia.org/wiki/Hertford",
+          "text": "Hertford ( , HART-fərd) is a market town and civil parish in the East Hertfordshire district of the county of Hertfordshire, England. It is the county town of Hertfordshire and lies 20 miles (32 km) north of Charing Cross in Central London. At the 2021 census the parish had a population of 29,418 and the built up area had a population of 28,800.\nThe town grew around a ford on the River Lea, near its confluences with the rivers Mimram, Beane, and Rib. The Lea is navigable from the Thames up to Hertford. Fortified settlements were established on each side of the ford at Hertford in 913 AD. The county of Hertfordshire was established at a similar time, being named after and administered from Hertford. Hertford Castle was built shortly after the Norman Conquest and remained a royal residence until the early seventeenth century.\nHertfordshire County Council and East Hertfordshire District Council both have their main offices in the town and are major local employers, as is McMullen's Brewery, which has been based in the town since 1827. The town is also popular with commuters, having two railway lines connecting it to London."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 125,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "hertford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

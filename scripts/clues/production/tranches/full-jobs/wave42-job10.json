@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 8439,
+    "attempt": 8381,
+    "place_id": "gn-727628",
+    "input": {
+      "place": {
+        "place_id": "gn-727628",
+        "name": "Rila",
+        "country": "Bulgaria",
+        "subdivision": "Kyustendil",
+        "lat": 42.12625,
+        "lon": 23.13283
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rila, Bulgaria",
+          "url": "https://en.wikipedia.org/wiki/Rila,_Bulgaria",
+          "text": "Rila (Bulgarian: Рила, pronounced [ˈriɫɐ]) is a town in southwestern Bulgaria, the administrative centre of Rila Municipality, in the southeastern part of Kyustendil Province.\nThe town lies in a mountainous region at the foot of the southwestern Rila Mountains, 20 km (12 mi) from the Rila Monastery, 34 km (21 mi) from Dupnitsa, and 65 km (40 mi) from Kyustendil. It is situated on the banks of the Rilska River at the entrance of the Rila Monastery Nature Park. In antiquity, the area was inhabited by the Thracians and Romans; it was known as Sportela and then as Roligera. In the Middle Ages it was part of the Bulgarian Empire. In the 14th century, the village was a feudal possession of the Rila Monastery and may have been mentioned in Tsar Ivan Shishman of Bulgaria's Rila Charter as Driska. Later on, it was mentioned as İrlie in Ottoman tax registers of 1576."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "rila",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8440,
+    "attempt": 8382,
+    "place_id": "gn-8348607",
+    "input": {
+      "place": {
+        "place_id": "gn-8348607",
+        "name": "Glen Forrest",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.91929,
+        "lon": 116.10726
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glen Forrest, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Glen_Forrest,_Western_Australia",
+          "text": "Glen Forrest is a suburb within the Shire of Mundaring, south of John Forrest National Park, west of Mahogany Creek, east of Darlington, and north of the Helena River. Its northern boundary is determined by the Great Eastern Highway.\nThe area was originally named Smith's Mill, after A. C. Smith & Son's jarrah saw mill, established in October 1877. In 1915 local residents petitioned to change the area's name to Glen Forrest, to honour Sir John Forrest, first Premier of Western Australia.\nThe suburb is bisected by a disused railway track - the original route of the Eastern Railway - which is now known as the Railway Reserve Heritage Trail, and Nyaania Creek.\nIt has a number of significant conservation reserves including the Glen Forrest Super Block, which is adjacent to Ryecroft Road (the main connecting road to Darlington).\nThe major early industries were forestry, and the Stathams Brickworks, which had its own siding, just east of the railway yard. The brickworks was located on a patch of white clay that is now a park and recreation area.\nIt has two commercial areas - one adjacent to and just north of the former railway station site, and the other at the intersection of Hardey Road and Great Eastern Highway.\nLike Darlington to the west, Glen Forrest had at its earliest times a winery, Glen Hardey, on the valley edge down which Hardey Road passes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "glen forrest",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "glen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "forrest",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8441,
+    "attempt": 8383,
+    "place_id": "gn-2159454",
+    "input": {
+      "place": {
+        "place_id": "gn-2159454",
+        "name": "Lower Plenty",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.73333,
+        "lon": 145.11667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lower Plenty, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Lower_Plenty,_Victoria",
+          "text": "Lower Plenty is a suburb of Melbourne, Victoria, Australia, 16 km north-east from Melbourne's Central Business District, located within the City of Banyule local government area. Lower Plenty recorded a population of 3,962 at the 2021 census.\nLower Plenty, in earlier times part of Eltham, almost certainly got its name from the Lower Plenty Toll Bridge, built in 1860 to collect tolls across the Plenty River. This bluestone bridge still stands as part of the Lower Plenty Trail. A report of a court case, in The Argus newspaper, dated 1 May 1879, reveals two lads, Corkhill and Hodgson, \"broke the windows of the old tollhouse, Lower Plenty bridge\", some 19 years after the bridge was built.\nThe suburb is bounded by the Plenty River in the west until it joins the Yarra River, which forms the southern boundary. Fitzsimons Lane forms the eastern boundary and Airlie Road north of Main Road (a continuation of Lower Plenty Road from the west) forms the northern boundary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "lower plenty",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lower",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "plenty",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8442,
+    "attempt": 8384,
+    "place_id": "gn-2639076",
+    "input": {
+      "place": {
+        "place_id": "gn-2639076",
+        "name": "Rothley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.70916,
+        "lon": -1.13739
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rothley",
+          "url": "https://en.wikipedia.org/wiki/Rothley",
+          "text": "Rothley ( ROHTH-lee) is a village and civil parish within the Borough of Charnwood in Leicestershire, England. Situated around one-half mile (800 metres) west of the River Soar and five miles (eight kilometres) north of Leicester, it had a population of 3,612 inhabitants the 2001 census. The population measured at the 2011 census was 3,897.\nRothley centres on two greens, Cross Green and the Town Green, both of which are accessed by a road that leads from the crossroads. The crossroads lies on the old route of the A6 road, which now bypasses the village.\nRothley is one of Leicestershire's most affluent areas based on number of houses worth more than £1 million – especially in some streets such as The Ridgeway, identified in the Sunday Times as the most expensive place to live in the East Midlands.\nMost children of primary schooling age attend Rothley (Church of England) Primary School. The main shopping street in the village is Woodgate. Rothley has four churches, Rothley Baptist Church, the Methodist Church, Sacred Heart RC, and the main parish church St Mary & St John's Church of England.\nRothley has close links with its neighbouring village, Mountsorrel, which is two miles (three kilometres) to the north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "rothley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8443,
+    "attempt": 8385,
+    "place_id": "gn-2645020",
+    "input": {
+      "place": {
+        "place_id": "gn-2645020",
+        "name": "Lakenheath",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.41755,
+        "lon": 0.52211
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lakenheath",
+          "url": "https://en.wikipedia.org/wiki/Lakenheath",
+          "text": "Lakenheath is a village and civil parish in the West Suffolk district of Suffolk in eastern England. It has a population of 4,691 according to the 2011 Census,  and is situated close to the county boundaries of both Norfolk and Cambridgeshire, and at the meeting point of The Fens and the Breckland natural environments.\nLakenheath is host to the largest United States Air Force base in the United Kingdom, RAF Lakenheath.\nLakenheath Fen Nature Reserve, created in 1996, restored wetlands from agricultural fields that were growing carrots. In May 2007, it was reported that cranes were nesting in the site for the first time since the fen lands were drained in the 16th century.\nThe village has a single Victorian primary school, constructed in 1878, which was extended in 1969, again in 2004 and most recently in 2010/2011. There is a small shopping street on which a variety of multi-cultural shops, restaurants, and services are available. Horse-riding services are also present. The village has a modern library with various amenities. Along this main road there is a small hotel, skate park, and a children's play park.\nLakenheath has one pub (The Brewers Tap) though historically it had at least sixteen more. The Royal British Legion was a members-only club, but closed in April 2012. The Villagers managed to raise the funds to purchase the property, and it now houses The Lakenheath Peace Memorial Hall, with a 130 seat theatre and stage, The Old Legion (Lakenheath) Community centre and bar. It is now dedicated to providing a safe place for families and children of the village to exercise and enjoy.\nLakenheath is remarkable for its medieval church, built about 900 years ago in wood, eventually being rebuilt in the local flint construction style. The church on the exterior has an embattled parapet that has an array of gargoyles and other carved faces at the string course at the base. The interior includes medieval paintings and carvings on the pews. The faces of the church's wooden angels bear the scars of the English Civil War, as none of the angels retained their original facial detail, due to religiously motivated vandalism by puritan soldiers. In early 2009, the church received a large grant from the Heritage Lottery Fund and local organisations to restore its rare medieval wall paintings. The wall paintings, depicting local saint St Edmund, angels, and birds amongst other subjects, are believed to date from the 13th century.\nAs well as the Anglican parish church, Lakenheath has churches representing the Methodist, Strict Baptist and Pentecostal (AOG) denominations. All three of the non-Anglican church buildings are also primarily constructed of local flint, albeit with later modifications in brick.\nThe recently built pavilion now houses the local cricket club and hosts various events.\nLakenheath also boasts a football club playing at ‘The PIt’ stadium in the village. The club, in 2021 won promotion to the Thurlow Nunn League Premier Division, the highest they have ever been and, won the Suffolk Senior Cup for the second time in their history."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 506
+    },
+    "banned_terms": [
+      {
+        "term": "lakenheath",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8444,
+    "attempt": 8386,
+    "place_id": "gn-2660253",
+    "input": {
+      "place": {
+        "place_id": "gn-2660253",
+        "name": "Interlaken",
+        "country": "Switzerland",
+        "subdivision": "Bern",
+        "lat": 46.68387,
+        "lon": 7.86638
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Interlaken",
+          "url": "https://en.wikipedia.org/wiki/Interlaken",
+          "text": "Interlaken (Swiss Standard German: [ˈɪntərlaːkn̩]; lit.: between lakes) is a Swiss town and municipality in the Interlaken-Oberhasli administrative district in the canton of Bern. It is a tourist destination in the Bernese Oberland region of the Swiss Alps, and the main transport gateway to the mountains and lakes of that region.\nThe town is located on flat alluvial land called Bödeli between two lakes, Brienz to the east and Thun to the west, and alongside the river Aare, which flows between them. Transport routes to the east and west alongside the lakes are complemented by a route southwards into the near mountain resorts and high mountains, including the high Alpine peaks of Eiger, Mönch and Jungfrau, following the course of the Lütschine.\nInterlaken is the central town of a small agglomeration with the same name of 23,300 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "interlaken",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8445,
+    "attempt": 8387,
+    "place_id": "gn-2966925",
+    "input": {
+      "place": {
+        "place_id": "gn-2966925",
+        "name": "Ardee",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.85972,
+        "lon": -6.54056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ardee",
+          "url": "https://en.wikipedia.org/wiki/Ardee",
+          "text": "Ardee (; Irish: Baile Átha Fhirdhia, pronounced [ˈbˠalʲə aːhə ˈɪɾʲjiə]) is a town and townland in County Louth, Ireland. It is located at the intersection of the N2, N52, and N33 roads. The town shows evidence of development from the thirteenth century onward but as a result of the continued development of the town since then much of the fabric of the medieval town has been removed. The town is in a civil parish of the same name.\nArdee is on the banks of the River Dee and is equidistant between the county's two biggest towns - approximately 20 kilometres (12 mi) from Dundalk and Drogheda, while it is also close to Slane and Carrickmacross.\nIn the 20 years between the 1996 and 2016 census, the population of Ardee increased by approximately 30%, from 3,791 to 4,928 inhabitants. By 2022, it had a population of 5,478."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "ardee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8446,
+    "attempt": 8388,
+    "place_id": "gn-3057304",
+    "input": {
+      "place": {
+        "place_id": "gn-3057304",
+        "name": "Svätý Jur",
+        "country": "Slovakia",
+        "subdivision": "Bratislava Region",
+        "lat": 48.25216,
+        "lon": 17.21539
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Svätý Jur",
+          "url": "https://en.wikipedia.org/wiki/Svätý_Jur",
+          "text": "Svätý Jur (Slovak pronunciation: [sʋɛɐtiː ˈjur] ; German: Sankt Georgen; Hebrew: Yergen; Hungarian: Szentgyörgy; formerly Jur pri Bratislave)  is a small historical town northeast of Bratislava, located in the Bratislava Region. The city is situated on the slopes of Little Carpathians mountains and surrounded by typical terraced vineyards with more than 700 years of winemaking tradition. In 1990, the intact city center was declared a protected city reservation. Cadastrially, Svätý Jur includes also the natural reserve Šúr, established in 1952 to protect one of the last and largest remnants of a tall-stem swamp alder forest in Central Europe. \nToday, Svätý Jur has a population of almost 6,000 citizens. The town is well connected with a major road between Pezinok and Bratislava passing through and the Svätý Jur railway station situated on the main Košice - Bratislava railway line. The city is bordered by the Little Carpathian mountains to the west, Bratislava to the south, natural reserve Šúr to the east and Limbach and Pezinok to the north and northeast respectively."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "svaty jur",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "svaty",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jur",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8447,
+    "attempt": 8389,
+    "place_id": "gn-4503944",
+    "input": {
+      "place": {
+        "place_id": "gn-4503944",
+        "name": "Salem",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.57178,
+        "lon": -75.46714
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salem, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Salem,_New_Jersey",
+          "text": "Salem is a city in and the county seat of Salem County, the most rural county in the U.S. state of New Jersey. The name Salem, for both the city and county, is derived from the Hebrew word shalom, meaning peace. As of the 2020 United States census, the city's population was 5,296, an increase of 150 (+2.9%) from the 2010 census count of 5,146, which in turn reflected a decrease of 711 (−12.1%) from the 5,857 counted in the 2000 census. Salem is part of the Philadelphia metropolitan area.\nThe town and colony of Salem was laid out in 1675 by John Fenwick and the community was given permission to choose officers in October 1693. It was incorporated on February 21, 1798, as part of the initial group of 104 townships established by the New Jersey Legislature. On February 25, 1858, it was reincorporated as Salem City.\nSalem had the second-highest property tax rate in New Jersey, with an equalized rate of 6.519% in 2020, compared to 3.476% in Salem County and a statewide average of 2.279%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "salem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8448,
+    "attempt": 8390,
+    "place_id": "gn-4794457",
+    "input": {
+      "place": {
+        "place_id": "gn-4794457",
+        "name": "Woodbridge",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.65817,
+        "lon": -77.2497
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodbridge, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Woodbridge,_Virginia",
+          "text": "Woodbridge is a census-designated place (CDP) in Prince William County, Virginia, United States, located 20 miles (32 km) south of Washington, D.C. Bounded by the Occoquan and Potomac rivers, Woodbridge had 44,668 residents at the 2020 census.\nWoodbridge offers a variety of amenities for residents and visitors, including Potomac Mills Mall and Stonebridge at Potomac Town Center. Woodbridge is served by the Prince William County Public Schools, and the Woodbridge campus of Northern Virginia Community College borders the district. Sentara Northern Virginia Medical Center, a non-profit hospital, formerly Potomac Hospital, recently expanded and now has the capacity to serve 183 patients. Transportation includes access to Interstate 95, two VRE commuter train stations, bus service, and a local \"slugging\" system, offering residents a variety of transit options.\nWoodbridge offers a wide range of recreational opportunities for resident and visitors. The Occoquan Bay National Wildlife Refuge is a natural habitat for a variety of plant and animal life including the bald eagles and ospreys. Veteran's Park and Leesylvania State Park are located on the Potomac River and provide swimming, boating, picnic and hiking services. Close by is Rippon Lodge, the oldest house in Prince William County, which is open for tours throughout the summer. Trails at Leesylvania Park lead to the ancestral home of the Lee family."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "woodbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8449,
+    "attempt": 8391,
+    "place_id": "gn-5743796",
+    "input": {
+      "place": {
+        "place_id": "gn-5743796",
+        "name": "Oakridge",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 43.74651,
+        "lon": -122.46172
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oakridge, Oregon",
+          "url": "https://en.wikipedia.org/wiki/Oakridge,_Oregon",
+          "text": "Oakridge is a city in Lane County, Oregon, United States. The population was 3,206 as of the 2020 census. It is located east of Westfir on Oregon Route 58, about 40 miles (64 km) east of Eugene and 150 miles (240 km) southeast of Portland.  Surrounded by the Willamette National Forest and the Cascade Range, Oakridge is popular with outdoor enthusiasts for its hiking, mountain biking, wildflowers, fly fishing, birding, watersports, and the nearby Willamette Pass Resort.\nThe city was originally a community called \"Hazeldell\", and its post office was established on July 26, 1888. When a station on the Southern Pacific Railroad opened in May 1912, it was named \"Oak Ridge\" by a railroad executive for the surrounding topography, and on July 19 of that year, the name was changed to be spelled as a single word.\nThe economy of Oakridge and that of nearby Westfir is centered on recreation. Since the lumber mills closed in the 1980s, the economy has been transitioning, with a new general store opening in 2010, a bakery in 2011, and a brewery and mercantile."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "oakridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8450,
+    "attempt": 8392,
+    "place_id": "gn-589223",
+    "input": {
+      "place": {
+        "place_id": "gn-589223",
+        "name": "Raasiku",
+        "country": "Estonia",
+        "subdivision": "Harjumaa",
+        "lat": 59.36639,
+        "lon": 25.18306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Raasiku",
+          "url": "https://en.wikipedia.org/wiki/Raasiku",
+          "text": "Raasiku (German: Rasik) is a borough (Estonian: alevik) in Raasiku Parish, Harju County, Estonia, with a population of 1,372 (2020). Although situated in a parish with the same name, Raasiku is not the official administrative centre of the municipality (which is Aruküla, located some kilometres or one railway station closer to Tallinn). The settlement started to grow in the 19th century around the railway station. The Raasiku manor (first mentioned in 1497) was established on the grounds of the earlier Kaemla (Keamol) village and in the middle ages it belonged to Padise Abbey.\nThere is a primary school (since 1717), community centre, library, health care centre, pharmacy, kindergarten and two grocery stores in Raasiku. Also, some industrial manufacturers operate there: AS Mistra-Autex produces car carpets and wall finishing materials; AS Raasiku Elekter makes electrical equipment and metal products.\nHarju-Jaani John the Baptist Lutheran Church is in Raasiku. The current church building was built in 1863, but there are preserved foundations of the old chapel. There is the churchyard, the old and the new cemetery and a manor park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "raasiku",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8451,
+    "attempt": 8393,
+    "place_id": "gn-6153111",
+    "input": {
+      "place": {
+        "place_id": "gn-6153111",
+        "name": "Spaniard's Bay",
+        "country": "Canada",
+        "subdivision": "Newfoundland and Labrador",
+        "lat": 47.61659,
+        "lon": -53.28138
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spaniard's Bay",
+          "url": "https://en.wikipedia.org/wiki/Spaniard's_Bay",
+          "text": "Spaniard's Bay is a town in the Canadian province of Newfoundland and Labrador. It is located on the northwest side of Conception Bay and consists of Vokey's Shore, Northern Cove, Mint Cove, Green Head, and Goddenville. The name Spaniard's Bay came from the Basque and Portuguese fishermen who frequented the port in the 16th century and 17th century, and were referred to by the English as ‘Spaniards’.\nOccupation of the area was seasonal at first, as with most of Newfoundland, but gradually English fishermen began to make permanent homes in Spaniard's Bay around 1776.  American Traders were visiting Spaniard's Bay before 1776 and they exchanged salt, rum, and tobacco for cod.  By 1805, there were 400 people living in the area; according to the 1871 Lovell's Directory, the population would rise to 1,182 in less than 70 years. The majority of the settlers were English and had Dorset origin, but there was a strong Irish population. By the end of 1991, the population would be close to 2,200.\nThe initial settlement at Spaniard's Bay centred on Mint Cove and Northern Cove.  Some of the people living in Mint Cove before 1800 were Jonathan Sheppard, John Warford, Timothy Collins, and William Chipman.  William Gosse and Robert Gosse, Jr. had a dockyard in Northern Cove in 1790, while Thomas Noseworthy and William Porter were living at Green Head in 1796.\nThe Smith and Barrett families occupied Bread and Cheese Cove (Bishop's Cove), with the Smiths claiming to have been in possession of the land since 1625.  There were 400 people in 38 families occupying 36 registered properties in Spaniard's Bay.  Some of the family names included Peddle, Kelly, Neil, Besom, Brown, Forter, Phelan, Seymour, Vokey, Butt, Baggs, Baker, Larry, and Menchions. Recently the new family name of Cutler has been added to the list of Spaniard's Bay settlers, originating from the Kleinburg region of Southern Ontario.\nThere is a site at Spaniard's Bay listed on the Canadian Register of Historic Places: the Mark Gosse Residence, number 6039."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 335
+    },
+    "banned_terms": [
+      {
+        "term": "spaniard s bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spaniard",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "s",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8452,
+    "attempt": 8394,
+    "place_id": "gn-6155298",
+    "input": {
+      "place": {
+        "place_id": "gn-6155298",
+        "name": "Stanstead",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.01455,
+        "lon": -72.09131
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stanstead, Quebec",
+          "url": "https://en.wikipedia.org/wiki/Stanstead,_Quebec",
+          "text": "Stanstead is a town in the Memphrémagog Regional County Municipality in the Estrie region of Quebec, located on the Canada–United States border across from Derby Line, Vermont.\nThe Town of Stanstead was created in 1995 by the merger of the former villages of Stanstead Plain and Beebe (formerly Beebe Plain) and the Town of Rock Island. It is not to be confused with the township of Stanstead, which is nearby although not directly adjacent (the municipality of Ogden lies in between). Not only is Stanstead home to the Haskell Free Library and Opera House—the only heritage building deliberately constructed straddling the border between both countries—it also features Canusa Street (Rue Canusa), one of a number of streets in the world where the country border corresponds to the middle line marker, effectively making across-the-street neighbors residents of two countries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "stanstead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8453,
+    "attempt": 8395,
+    "place_id": "gn-665521",
+    "input": {
+      "place": {
+        "place_id": "gn-665521",
+        "name": "Tarcău",
+        "country": "Romania",
+        "subdivision": "Neamț County",
+        "lat": 46.86667,
+        "lon": 26.13333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tarcău",
+          "url": "https://en.wikipedia.org/wiki/Tarcău",
+          "text": "Tarcău is a commune in Neamț County, Western Moldavia, Romania. It is composed of six villages: Ardeluța, Brateș, Cazaci, Schitu Tarcău, Straja, and Tarcău.\nThe commune is located in the southwestern part of the county, on the border with Bacău County. It is nestled in the foothills of the Tarcău Mountains, a mountain range of the Eastern Carpathians. It lies on the banks of the Bistrița River; the Tarcău River discharges into the Bistrița in Tarcău village, while the Tărcuța flows into the Tarcău in Ardeluța village and the Bolovăniș flows into the Tarcău in Schitu Tarcău village.\nTarcău commune is traversed by National Road DN15, which connects it to the town of Bicaz, 5 km (3.1 mi) to the west, and to the county seat, the city of Piatra Neamț, 24 km (15 mi) to the east. The Tarcău Neamț train station serves CFR Line 509, which runs from Bacău to Piatra Neamț to Bicaz.\nThe Sihăstria Tarcăului Monastery is located în Schitu Tarcău village. The Brateș fauna reserve is also located on the administrative territory of the commune."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "tarcau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8454,
+    "attempt": 8396,
+    "place_id": "gn-680880",
+    "input": {
+      "place": {
+        "place_id": "gn-680880",
+        "name": "Corbi",
+        "country": "Romania",
+        "subdivision": "Arges",
+        "lat": 45.28333,
+        "lon": 24.8
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corbi",
+          "url": "https://en.wikipedia.org/wiki/Corbi",
+          "text": "Corbi is a commune in Argeș County, Muntenia, Romania. It is composed of six villages: Corbi, Corbșori, Jgheaburi, Poduri, Poenărei, and Stănești. \nCorbi is located in the northern part of Argeș County: its neighbours are Nucșoara commune to the north, Domnești commune to the south, Aninoasa commune to the east, and Brăduleț and Mușătești communes to the west.\nThe commune covers an area of 5,652 ha (13,970 acres). The agricultural surface of the entire locality is 5,664 hectares, of which 198 ha is arable land, 2,829 ha pastures, 1,809 ha hay fields, 828 ha meadows, and 200 ha forests.The sum of those surfaces is 5,864 ha, which is greater than the agricultural surface (5,664 ha), which in turn is greater than the total surface (5,652 ha).\nAs of the 2021 census, Corbu had a population of 3,420 people. At the 2011 census, the commune had 3,784 inhabitants, of which 97.82% were Romanians. The main occupations are sheep-keeping (20,000 sheep), cattle-keeping (1,700 heads of cattle), and animal husbandry.\nThe commune's villages have six schools, six Romanian Orthodox churches, five kindergartens, three community centres, a medical unit, a veterinary office, a pharmacy, a post office, a bakery and other businesses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "corbi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8455,
+    "attempt": 8397,
+    "place_id": "gn-689144",
+    "input": {
+      "place": {
+        "place_id": "gn-689144",
+        "name": "Voloka",
+        "country": "Ukraine",
+        "subdivision": "Chernivtsi",
+        "lat": 48.1971,
+        "lon": 25.93668
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Voloka, Chernivtsi Raion, Chernivtsi Oblast",
+          "url": "https://en.wikipedia.org/wiki/Voloka,_Chernivtsi_Raion,_Chernivtsi_Oblast",
+          "text": "Voloka (Ukrainian: Волока; Romanian: Voloca pe Derelui or Romanian: Voloca; German: Woloka am Derelui) is a village in Chernivtsi Raion, Chernivtsi Oblast, Ukraine. It hosts the administration of Voloka rural hromada, one of the hromadas of Ukraine.\nThe current population of the village is 3,035 (3,028 at the time of the 2001 Ukrainian census).\nMost inhabitants are Romanians and they are almost exclusively engaged in the creation of bridal gowns, a business that has proved quite successful in the past decade, as the village has managed to make a name for itself in almost all of Ukraine and Russia as well as Romania.\nUntil 18 July 2020, Voloka belonged to Hlyboka Raion. The raion was abolished in July 2020 as part of the administrative reform of Ukraine, which reduced the number of raions of Chernivtsi Oblast to three. The area of Hlyboka Raion was merged into Chernivtsi Raion. In 2001, 97.56% of the inhabitants of Voloka spoke Romanian as their native language (2,960 called it Romanian, or 97.53%, and 1 called it \"Moldovan\", or 0.03%), while 2.08% spoke Ukrainian. In the 1989 census, the number of residents who declared themselves Romanian plus Moldovan was 2,907 (1,060 Romanians, or 33.68%, plus 1,847 Moldovans, or 58.69%), representing 92.37% of the locality's population of 3,147. A large majority of the population switched their declared census identities from Moldovan and Moldovan-speaking to Romanian and Romanian-speaking between the 1989 and 2001 censuses.\nIn 2001, the Volokivska or  Voloka rural community had 6,086 inhabitants, including 4,919 Romanian-speakers (80.82%, including 4,749 self-identified Romanian-speakers, or 78.03% and 170 self-identified 170 \"Moldovan-speakers\", or 2.79%), 1,090 Ukrainian-speakers (17.91%), and 55 Russian-speakers (0.9%). In addition to the villages of Voloka and Valia Kuzmyna, it also included the village of Hrushivka village (see the Romanian-language Wikipedia article on Hrushivka at https://ro.wikipedia.org/wiki/Gru%C8%99%C4%83u%C8%9Bi,_Ad%C3%A2ncata). According to the 2001 Ukrainian census, the majority of the population of 1,187 people of Hrushivka was Romanian-speaking (97.98% or 1,163 people, including 1,144 self-identified Romanian-speakers, or 96.38%, and 19 self-identified \"Moldovan-speakers\", or 1.6%), with a minority of Ukrainian speakers (1.43%, or 17 people) and of Russian-speakers (0.51%, or 6 people). In the 1989 census, the number of residents who declared themselves Romanian plus Moldovan was 1,089, or 96.71% (495 Romanians, or 43.96%, plus 594 Moldovans, or 52.75%), but there were also 17 Ukrainians (1.51%) and 6 Russians (0.53%). A majority of the population switched their declared census identities from Moldovan and Moldovan-speaking to Romanian and Romanian-speaking between the 1989 and 2001 censuses.\nIn 2001, out of 6,086 individuals who lived in the Voloka rural hromada, 1,090 were Ukrainian-speaking (17.91%), 4,929 were Romanian-speaking (80.99%), including 4,759 who called the language Romanian (78.2%) and 170 who called it Moldovan (2.79%), and 40 were Russian-speaking (0.66%). In 1989, out 5,928 inhabitants, 821 (13.85%) were ethnic Ukrainians, 1,693 were ethnic Romanians (28.56%), 3,348 were ethnic Moldovans (56.48%) and 44 were Russians (0.74%). A majority of the Romanian plus Moldovan population switched their declared census identities from Moldovan and Moldovan-speaking to Romanian and Romanian-speaking between the 1989 and 2001 censuses. The reason why the \"Moldovan\" identity was dominant during the Soviet period, but was replaced by the \"Romanian\" one after 1989, including in Voloka and the Voloka rural hromada, was that the inhabitants of the Chernivtsi and Sadagura rural raions, and of the Bukovinian part of the Novoselytsia rural raion, were pressured in 1944 to adopt a \"Moldovan\" national/ethnic identity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 138,
+      "fullExtractWords": 565
+    },
+    "banned_terms": [
+      {
+        "term": "voloka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8456,
+    "attempt": 8398,
+    "place_id": "gn-1818923",
+    "input": {
+      "place": {
+        "place_id": "gn-1818923",
+        "name": "Sha Tau Kok",
+        "country": "Hong Kong SAR China",
+        "subdivision": "North District",
+        "lat": 22.54569,
+        "lon": 114.22379
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sha Tau Kok",
+          "url": "https://en.wikipedia.org/wiki/Sha_Tau_Kok",
+          "text": "Sha Tau Kok (Chinese: 沙頭角; Cantonese Yale: Sā Tàuh Gok) is a closed town in North District, Hong Kong. It is the last remaining major settlement in the Frontier Closed Area and is Hong Kong's northernmost town. Its residents are mostly descendants of Hakka farmers and Hoklo fishermen who settled the area as a consequence of the Qing dynasty's \"Great Clearance\" in the 17th century.\nThe town can be accessed via Sha Tau Kok Road and public transit beginning in Sheung Shui. However, visitors who do not possess a valid Closed Area Permit and identification are turned away at the police checkpoint guarding the entrance to the town. There are additional restrictions on access to Chung Ying Street, which separates the Hong Kong portion of Sha Tau Kok from the mainland Chinese portion in Shenzhen (Shatoujiao Subdistrict). Although the Hong Kong government now promotes tourism in the historically isolated town, Chung Ying Street remains closed off to most outsiders, including Hong Kong residents without permits."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "sha tau kok",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sha",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tau",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kok",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8457,
+    "attempt": 8399,
+    "place_id": "gn-1849417",
+    "input": {
+      "place": {
+        "place_id": "gn-1849417",
+        "name": "Ueno",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.70524,
+        "lon": 139.77352
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ueno",
+          "url": "https://en.wikipedia.org/wiki/Ueno",
+          "text": "Ueno (上野; Japanese pronunciation: [ɯ.e.no]) is a district in Taitō, Tokyo. The area extending from Ueno to Asakusa is part of the historical Shitamachi (literally \"low city\") district of Tokyo, which is often associated with working-class traditions and culture as well as their distinct accent. The district's name roughly translates into \"Upper Field\" in English.\nThe Ueno area, in the strict sense, centres around Ueno Station, which has historically been the terminus for long-distance trains bound for northern Japan, such as the Blue trains and the Shinkansen. To the north, Ueno Park stretches to the area just behind the University of Tokyo's Hongo Campus. Ueno Park houses some of Tokyo's finest cultural sites, including the Tokyo National Museum, the National Museum of Western Art, the National Museum of Nature and Science, and a major public concert hall. Numerous Buddhist temples can also be found in the park, including the Bentendo, dedicated to the goddess Benzaiten, on an island in Shinobazu Pond. The Kan'ei-ji, a major temple for the Tokugawa shōguns, also stands in this area, with its pagoda now located within the grounds of Ueno Zoo. Nearby is Ueno Tōshō-gū, a Shinto shrine dedicated to Tokugawa Ieyasu. The International Library of Children's Literature is also in the area.\nTo the south of the station lies Ameya-yokochō, a street market district that evolved from an open-air black market that sprang up during the privation following the Second World War, leading towards Okachimachi. Part of Ueno has also been known as a gay village since the Edo period, when the area had a large number of gay brothels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 266
+    },
+    "banned_terms": [
+      {
+        "term": "ueno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8458,
+    "attempt": 8400,
+    "place_id": "gn-2143131",
+    "input": {
+      "place": {
+        "place_id": "gn-2143131",
+        "name": "Wonthaggi",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.60586,
+        "lon": 145.59355
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wonthaggi",
+          "url": "https://en.wikipedia.org/wiki/Wonthaggi",
+          "text": "Wonthaggi  is a town located 132 kilometres (82 mi) south east of Melbourne via the South Gippsland and Bass highways, in the Bass Coast Shire of Gippsland, Victoria, Australia. Known originally for its coal mining, it is now the largest town in South Gippsland, a regional area with extensive tourism, beef and dairy industries.\nThe name \"Wonthaggi\" is an Australian Aboriginal name meaning \"home\" from the Boonwurrung (south-central Kulin). It was used in the area some time before 1 August 1910 when the town was founded.\nThe Boonwurrung Aboriginal people were custodians of this stretch of coast for thousands of years prior to White settlement. The Boakoolawal clan lived in the Kilcunda area south of the Bass River, and the Yowenjerre were west of the Tarwin River along what is now the Bunurong Marine and Coastal Park. Middens containing charcoal and shellfish mark the location of their campsites along the coast.\nCoal was discovered by explorer William Hovell at Cape Paterson in 1826, and was subsequently mined from the Powlett River fields in the region, between 1859 and 1864. However transporting the coal by whale boat through the surf to larger ships anchored offshore proved costly and dangerous and mining activity was soon curtailed. The coastal sands off Wonthaggi occasionally uncover the remains of ships wrecked along the coast.\nA tent city was established adjacent to the Powlett River, on what were then known as the Powlett River Coalfields. The tent city had no permanent buildings and healthcare was provided by a Dr Sleeman, who was later instrumental in establishing a permanent hospital in the township of Wonthaggi, proclaimed in 1910.\nMuch of the coal for the colony of Victoria was sourced from Newcastle and the Hunter Valley in New South Wales, along with local supplies from private and co-operative coal mines at Outtrim, Jumbunna and Korumburra in Gippsland. After the 1909–1910 strike by coal miners in the Hunter Valley, the Victorian state government were determined to ensure stability in local supplies of coal. The State Coal Mine and the town of Wonthaggi came into being in 1910 to supply coal for the Victorian Railways. It was one of the largest and most dangerous collieries in Australia. At its peak in 1926 the mine produced 2,435 long tons (2,474 t) per day, with the Victorian Railways buying 90% of production. In 1928, Wonthaggi coal accounted for around 60% of Victorian Railways coal consumption.\nA Post Office opened on 11 November 1887 in a nearby area. On 1 August 1910, this office was renamed St Clair and on the same day Powlett Coal Mine Post Office, opened earlier that year, was renamed Wonthaggi. That is when the town was given a permanent name.\nWonthaggi celebrated its centenary in 2010 and a book presenting interviews with local residents about the town history was published in 2012.\n\nThe Wonthaggi Wind Farm in Campbell Street was built in 2005. It is an environmentally friendly wind power station with six turbines. The Bass Coast Shire Council was opposed to the wind farm along with some local residents. Protesters argued that it would taint the view of Cape Paterson on the trip from Anderson to Wonthaggi and would affect the \"recreational tourism and landscape values of the coastline\". By September 2005 the six towers had been built, but were themselves a tourist attraction, seen clearly as you drive down the hill towards Wonthaggi from Anderson. The wind farm generates power up to 80% of the time, providing electricity for up to 6000 homes. It can be seen when visiting Williamsons Beach and the Victorian Desalination Plant.\n\nThe State Coal Mine in Wonthaggi was operational from 1910 to 1968 and is now operated by Parks Victoria as a tourist attraction and cafe.\n\nWonthaggi golf course – 18 hole\nWonthaggi Museum\nArtSpace – a community art gallery that doubles as an Information Centre\nWalking, cycling and horse riding is the modern use of the old Wonthaggi railway line all year round. The Bass Coast Rail Trail, Victoria's only coastal rail trail, stretches 16 kilometres from the mine whistle tower in the centre of Wonthaggi to the roundabout to Phillip Island in Anderson.\n\nWilliamsons Beach on Lower Powlett Road is located next to the Wonthaggi Wind Farm and the Victorian Desalination Plant. The Victorian Desalination Plant also has a 225-hectare park and 8 km of walking, riding and cycling tracks. Seashell collecting is permitted on Wonthaggi Beaches.\n\nSafety Beach on Surf Beach Road Cape Paterson is a popular beach because it has a modified rockpool for swimming. The rockpool was built by miners in the 1960s, at a time when the environment was less of a priority in Australia.\nHarmers Haven and Wreck Beach on Berrys Road are popular for surf and rock fishing. Williamsons Beach and Baxters Beach are popular for fishing day and night, catching mostly Salmon and Mullet. Powlett River mouth is popular for catching Bream, Perch, Salmon and Mullet.\n\nBunurong Marine Park – explore/snorkel, Surf Beach Road, Cape Paterson\nBunurong Marine National Park – protected state park, explore/snorkel, Inverloch-Cape Paterson Road"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 846
+    },
+    "banned_terms": [
+      {
+        "term": "wonthaggi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

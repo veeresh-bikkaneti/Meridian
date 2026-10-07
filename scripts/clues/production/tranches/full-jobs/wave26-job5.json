@@ -1,0 +1,817 @@
+[
+  {
+    "rank": 5120,
+    "attempt": 5081,
+    "place_id": "gn-745026",
+    "input": {
+      "place": {
+        "place_id": "gn-745026",
+        "name": "İznik",
+        "country": "Türkiye",
+        "subdivision": "Bursa Province",
+        "lat": 40.42861,
+        "lon": 29.72111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "İznik",
+          "url": "https://en.wikipedia.org/wiki/%C4%B0znik",
+          "text": "İznik (Turkish pronunciation: [izˈnik]) is a municipality and district of Bursa Province, Turkey. Its area is 753 km2, and its population 44,236 (2022). The town is at the site of the ancient city of Nicaea, from which the modern name derives. The town lies in a fertile basin at the eastern end of Lake İznik, with ranges of hills to the north and south. As the crow flies, the town is only 90 kilometres (56 miles) southeast of Istanbul but by road it is 200 km (124 miles) around the Gulf of İzmit. It is 80 km (50 miles) by road from Bursa.\nİznik has been a district centre of the province of Bursa since 1930 but belonged to the district of Kocaeli between 1923 and 1927. It was a township of Yenişehir district (connected to Bilecik before 1926)  between 1927 and 1930.\nAncient Nicaea was ringed with walls that survive to this day, despite having been pierced in places to accommodate roads. Inside the walls stands the Ayasofya Mosque where the Second Council of Nicaea was held in A.D. 787. The town is famous for the Iznik tiles and pottery."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "iznik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5121,
+    "attempt": 5082,
+    "place_id": "gn-934736",
+    "input": {
+      "place": {
+        "place_id": "gn-934736",
+        "name": "Belle Vue Harel",
+        "country": "Mauritius",
+        "subdivision": "Pamplemousses",
+        "lat": -20.06583,
+        "lon": 57.59417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belle Vue Harel",
+          "url": "https://en.wikipedia.org/wiki/Belle_Vue_Harel",
+          "text": "Belle Vue Harel is a village in Mauritius that is located in the Pamplemousses District in the northern part of the island. It is located next to Plaine des Papayes village. It is part of the larger Plaine des Papayes area which as of 2011 had 7,607 inhabitants.\nThe village is the site of the Stade Anjalay, which is a prominent football venue for the nation, with the national football team and two top division teams (Pamplemousses SC, AS Rivière du Rempart) being resident. Athletics is also accommodated at the stadium and the 1992 African Championships in Athletics was held in the village."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 103,
+      "fullExtractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "belle vue harel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "belle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vue",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "harel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5122,
+    "attempt": 5083,
+    "place_id": "gn-11549989",
+    "input": {
+      "place": {
+        "place_id": "gn-11549989",
+        "name": "Aluche",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.39191,
+        "lon": -3.75669
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aluche",
+          "url": "https://en.wikipedia.org/wiki/Aluche",
+          "text": "Aluche [aˈlutʃe] is a barrio of the city of Madrid, situated in the southwest of the city, in the Latina district. It is bounded by the barrios of Campamento, Las Águilas, Lucero, Los Cármenes, and the Carabanchel district. Casa de Campo is also nearby. Aluche takes its name from the Luche creek that formerly flowed through the neighbourhood.\nWith 75,871 inhabitants, it is the largest of Madrid's barrios (according to the 2001 census). Many of its streets are named after towns and villages of the province of Toledo and also towns and villages of Extremadura an example would be Paseo de Extremadura. Intercambiador de Aluche is located in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "aluche",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5123,
+    "attempt": 5084,
+    "place_id": "gn-1265163",
+    "input": {
+      "place": {
+        "place_id": "gn-1265163",
+        "name": "Lalgudi",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 10.87419,
+        "lon": 78.81935
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lalgudi",
+          "url": "https://en.wikipedia.org/wiki/Lalgudi",
+          "text": "Lalgudi is a prominent town located in the Tiruchirapalli district of Tamil Nadu, India. This region has historical and cultural significance, serving as the administrative center for various divisions including Lalgudi taluk, Lalgudi Educational District, and Lalgudi DSP. Its importance stems from its governance structure, educational institutions, and constituency representation, as it has been part of the legislative assembly since 1952.\nKnown for its agricultural activities, Lalgudi benefits from fertile lands irrigated by the Cauvery River, making it a key region for rice and other crop cultivation. It is also known for traditional handicrafts and brassware production, contributing to the local economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "lalgudi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5124,
+    "attempt": 5085,
+    "place_id": "gn-13561904",
+    "input": {
+      "place": {
+        "place_id": "gn-13561904",
+        "name": "Manor Park",
+        "country": "Canada",
+        "subdivision": "Nova Scotia",
+        "lat": 44.67164,
+        "lon": -63.54898
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manor Park, Nova Scotia",
+          "url": "https://en.wikipedia.org/wiki/Manor_Park,_Nova_Scotia",
+          "text": "Manor Park is a neighbourhood of Dartmouth, Nova Scotia, Canada. The main entrance to the neighbourhood is from the east on Portland Street (Route 207).  A secondary entrance, from the west, is by way of Celtic Drive, rising from the low-lying area around Lake Banook.\nWithin this neighbourhood is Brownlow Park, one of Dartmouth's local parks.  The park, named after Dan Brownlow, a former Mayor of Dartmouth, includes two tennis courts, a basketball court, a soccer field, a children's playground, and a pathway for joggers. The area also abuts Oathill Lake, which is surrounded by a wooded area with a walking trail. This lake is enjoyed by many including fishermen and swimmers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "manor park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "manor",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5125,
+    "attempt": 5086,
+    "place_id": "gn-1514829",
+    "input": {
+      "place": {
+        "place_id": "gn-1514829",
+        "name": "Istiqlol",
+        "country": "Tajikistan",
+        "subdivision": "Sughd",
+        "lat": 40.57017,
+        "lon": 69.64175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Istiqlol",
+          "url": "https://en.wikipedia.org/wiki/Istiqlol",
+          "text": "Istiqlol (Russian: Истиклол; Tajik: Истиқлол, formerly Taboshar) is a city in Tajikistan, located in Sughd Region. Istiqlol is a city of regional subordination, administratively subordinated to the regional capital of Khujand.\nThe first Soviet uranium mine was established in Taboshar during the Second World War. Taboshar was the first of many officially secret Soviet closed cities related to uranium mining and production. In 2022, a contract was agreed for a subsidiary of TVEL to reclaim land on the 8 ha (20 acres) tailings dump, which contains 1.12×10^6 m3 (40×10^6 ft3) of material.\nThe population of Istiqlol in 2020 is estimated at 17,600."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "istiqlol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5126,
+    "attempt": 5087,
+    "place_id": "gn-2129365",
+    "input": {
+      "place": {
+        "place_id": "gn-2129365",
+        "name": "Kutchan",
+        "country": "Japan",
+        "subdivision": "Hokkaido",
+        "lat": 42.90111,
+        "lon": 140.74056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kutchan, Hokkaido",
+          "url": "https://en.wikipedia.org/wiki/Kutchan,_Hokkaido",
+          "text": "Kutchan (倶知安町, Kutchan-chō) is a town located in Shiribeshi Subprefecture, Hokkaido, Japan. Kutchan lies slightly north of the volcano Mount Yōtei, and is approximately 50 kilometers west of Sapporo. The subprefecture government offices are located in this town, making it the capital of the subprefecture.\nAs of April 30, 2017, the town has an estimated population of 15,573 and a population density of 60 persons per km². The total area is 261.24 km2 (100.87 sq mi).\nThroughout Hokkaido, Kutchan is known for its proximity to the world famous Niseko powder snow region and for its production of quality potatoes and potato products. Among these products, Kutchan is most famous for manufacturing gosetsu-udon, a Japanese noodle made from potato flour. Jagata-kun, the skiing potato that is the cartoon mascot of Kutchan, indicates Kutchan's two most celebrated aspects. Jagata-kun roughly translates as, \"little, fat potato boy\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "kutchan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5127,
+    "attempt": 5088,
+    "place_id": "gn-2153784",
+    "input": {
+      "place": {
+        "place_id": "gn-2153784",
+        "name": "Parkdale",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.99187,
+        "lon": 145.08128
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parkdale, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Parkdale,_Victoria",
+          "text": "Parkdale is a suburb in Melbourne, Victoria, Australia, 23 km south-east of Melbourne's Central Business District, located within the City of Kingston local government area. Parkdale recorded a population of 12,308 at the 2021 census.\nIt is situated between the suburbs of Mentone and Mordialloc, and is located on the Frankston railway line.\nParkdale was founded in 1920, and named for early homesteader William Parker when engineers decided to build a railway station alongside a cluster of five bayside shops. Parkdale Post Office opened on 6 January 1921.\nParkdale's local library, Kingston Library, is located on Parkers Road adjacent to Parkdale station. Parkdale is also a noted beach-side suburb. The beach is a 750-metre walk from the station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "parkdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5128,
+    "attempt": 5089,
+    "place_id": "gn-2405013",
+    "input": {
+      "place": {
+        "place_id": "gn-2405013",
+        "name": "Moyamba",
+        "country": "Sierra Leone",
+        "subdivision": "Southern Province",
+        "lat": 8.15898,
+        "lon": -12.43168
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moyamba",
+          "url": "https://en.wikipedia.org/wiki/Moyamba",
+          "text": "Moyamba is the capital and largest city of Moyamba District, in the Southern Province of Sierra Leone. There has been a recorded population of 10,249 in the 2015 census. The city is ethnically diverse, although the Mende people make up the majority. The city is home to the Hatford Secondary School for Girls, which is one of the elite secondary schools in Sierra Leone. The school attract some of the most gifted students from all parts of Sierra Leone, along with students abroad. The school is an all-girls secondary school, and the students are in a boarding home in the school campus. The city has a history of producing some of Sierra Leone's most prominent politicians, including the country's first president, Siaka Stevens."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "moyamba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5129,
+    "attempt": 5090,
+    "place_id": "gn-2624502",
+    "input": {
+      "place": {
+        "place_id": "gn-2624502",
+        "name": "Assens",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.27023,
+        "lon": 9.90081
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Assens, Denmark",
+          "url": "https://en.wikipedia.org/wiki/Assens,_Denmark",
+          "text": "Assens (Danish: [ˈæsn̩s]) is a town with a population of 5,817 (1 January 2026) on the west coast of the island of Funen on the eastern side of the Little Belt in central Denmark. By road, Assens is located 41.2 kilometres (25.6 mi) southwest of Odense, 34 kilometres (21 mi)  northwest of Faaborg, and 33.34 kilometres (20.72 mi) southeast of Middelfart. Assens is the municipal seat of Assens Municipality in Region of Southern Denmark. It was the birthplace of sculptor Jens Adolf Jerichau who married the well-known portraitist Elisabeth Jerichau-Baumann; both artists' works are exhibited at the local art museum, Vestfyns Kunstmuseum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "assens",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5130,
+    "attempt": 5091,
+    "place_id": "gn-2941501",
+    "input": {
+      "place": {
+        "place_id": "gn-2941501",
+        "name": "Burg bei Magdeburg",
+        "country": "Germany",
+        "subdivision": "Saxony-Anhalt",
+        "lat": 52.27152,
+        "lon": 11.85493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Burg bei Magdeburg",
+          "url": "https://en.wikipedia.org/wiki/Burg_bei_Magdeburg",
+          "text": "Burg (German pronunciation: [bʊʁk] ; also known as Burg bei Magdeburg to distinguish from other places with the same name) is a town of about 22,400 inhabitants on the Elbe–Havel Canal in northeastern Germany, 25 km (16 mi) northeast of Magdeburg. It is the capital of the Jerichower Land district in the state of Saxony-Anhalt.\nThe town is known for its mediaeval churches and towers. Due to the numerous towers and steeples Burg also carries the sobriquet City of Towers. Like other German towns and cities, Burg shows its connection to the Roland saga with a statue, which was restored in 1999."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "burg bei magdeburg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "burg",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bei",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "magdeburg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5131,
+    "attempt": 5092,
+    "place_id": "gn-294492",
+    "input": {
+      "place": {
+        "place_id": "gn-294492",
+        "name": "Kfar Yona",
+        "country": "Israel",
+        "subdivision": "Central District",
+        "lat": 32.31517,
+        "lon": 34.9357
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kfar Yona",
+          "url": "https://en.wikipedia.org/wiki/Kfar_Yona",
+          "text": "Kfar Yona (Hebrew: כפר יונה, lit. 'Yona's Village') is a city in the Central District of Israel. It is located between the cities Netanya and Tulkarm in the West Bank, about 8 km east of Netanya in the central junction between Highway 6  and Highway 4. The village was established in 1932 by Maurice Fischer and was declared a local council in the year 1940. Following developments in the fields of construction, industry, and education, the local council received city status on February 11, 2014. With a jurisdiction of 11,550 dunams (~11.55 km2), in 2024 the city had a population of 29,820."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "kfar yona",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kfar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "yona",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5132,
+    "attempt": 5093,
+    "place_id": "gn-3690592",
+    "input": {
+      "place": {
+        "place_id": "gn-3690592",
+        "name": "Abejorral",
+        "country": "Colombia",
+        "subdivision": "Antioquia",
+        "lat": 5.78928,
+        "lon": -75.42725
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abejorral",
+          "url": "https://en.wikipedia.org/wiki/Abejorral",
+          "text": "Abejorral is a town and municipality in Antioquia Department, Colombia. Part of the subregion of Eastern Antioquia. It borders to the north with the municipalities of Montebello, La Ceja and La Unión, to the east with municipality of Sonsón, to the south with the department of Caldas and to the west with the municipalities of Santa Bárbara y Montebello. The population was 17,599 at the 2018 census.\nIt was founded in 1805 by José Antonio Villegas, although some believe it was in 1811. The latter was the year when the titles of the land were officially donated to the then existing residents.\nAbejorral is one of the oldest municipalities in the Antioquia Subdivision and Colombia. It is known for its colonial times homes which are part of the Historical National Registry. Its topography is ideal for hiking  and cycling activities with panoramic views of river and valleys;  some of them  will provide beautiful conditions for wild camping specially along the Arma River or the Aures River. Abejorral has some touristic features like \"La Casa en el Aire\" and the \"Aures River Waterfall\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "abejorral",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5133,
+    "attempt": 5094,
+    "place_id": "gn-3835943",
+    "input": {
+      "place": {
+        "place_id": "gn-3835943",
+        "name": "Santa Rosa de Calamuchita",
+        "country": "Argentina",
+        "subdivision": "Cordoba",
+        "lat": -32.06439,
+        "lon": -64.53961
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Rosa de Calamuchita",
+          "url": "https://en.wikipedia.org/wiki/Santa_Rosa_de_Calamuchita",
+          "text": "Santa Rosa de Calamuchita is a small village in the province of Córdoba, Argentina. It had about 10,000 inhabitants at the 2001 census [INDEC]. The village is located in the central part of the Calamuchita Valley, surrounded by hills (the Sierras), rivers, and lakes, which makes the area a major tourist attraction. The village has a Mediterranean climate, characterized by warm summers with considerable rainfall, where temperatures can exceed 35°C, and cold, dry winters with minimum temperatures dropping below zero. Other important nearby towns in the Valley are Villa General Belgrano and Embalse (the latter is home to a nuclear power plant)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "santa rosa de calamuchita",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rosa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "calamuchita",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5134,
+    "attempt": 5095,
+    "place_id": "gn-4161373",
+    "input": {
+      "place": {
+        "place_id": "gn-4161373",
+        "name": "Lake Mary",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.75888,
+        "lon": -81.31784
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake Mary, Florida",
+          "url": "https://en.wikipedia.org/wiki/Lake_Mary,_Florida",
+          "text": "Lake Mary is a suburban city in Seminole County, Florida, United States, and part of the Orlando–Kissimmee–Sanford metropolitan area in Central Florida. The population was 16,798 at the 2020 census, up from 13,822 in 2010.\nThe modern community developed in the late 19th century along the railroad between Sanford and Orlando as a citrus-growing and agricultural settlement. Lake Mary was incorporated in 1973 and experienced substantial residential and commercial growth beginning in the 1970s, developing into a suburban residential and employment center in the Orlando metropolitan area.\nThe city was home to the team that won the 2024 Little League World Series."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "lake mary",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mary",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5135,
+    "attempt": 5096,
+    "place_id": "gn-4877655",
+    "input": {
+      "place": {
+        "place_id": "gn-4877655",
+        "name": "Storm Lake",
+        "country": "United States",
+        "subdivision": "Iowa",
+        "lat": 42.64109,
+        "lon": -95.20972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Storm Lake, Iowa",
+          "url": "https://en.wikipedia.org/wiki/Storm_Lake,_Iowa",
+          "text": "Storm Lake is a city in and the county seat of Buena Vista County, Iowa, United States. The population was 11,269 in the 2020 census, an increase from 10,076 in the 2000 census. It has one of the only cities in Iowa with a non-white majority population.\nLocated along the northern shore of Storm Lake, the city is home to King's Pointe Waterpark Resort, the Living Heritage Tree Museum, the Santa's Castle holiday attraction, and Buena Vista University, a private university. Housing a large Tyson Foods meatpacking plant, the town is responsible for some 3.5% of pork production in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "storm lake",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "storm",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5136,
+    "attempt": 5097,
+    "place_id": "gn-4912845",
+    "input": {
+      "place": {
+        "place_id": "gn-4912845",
+        "name": "Summit",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.78809,
+        "lon": -87.81033
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Summit, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Summit,_Illinois",
+          "text": "Summit is a city in Cook County, Illinois, United States. The population was 11,161 at the 2020 census. The name Summit, in use since 1836, refers to the highest point on the Chicago Portage between the northeast-flowing Chicago River and the southwest-flowing Des Plaines River located just north of the city.\nArgo is a subdivision annexed by Summit in 1911 when it was new. Named for the nearby cornstarch and baking powder manufacturing plant, it developed separately from the older part of the city. The name \"Argo\" is still widely used but is not part of the name of the city itself."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "summit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5137,
+    "attempt": 5098,
+    "place_id": "gn-4940764",
+    "input": {
+      "place": {
+        "place_id": "gn-4940764",
+        "name": "Jamaica Plain",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.30982,
+        "lon": -71.12033
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jamaica Plain",
+          "url": "https://en.wikipedia.org/wiki/Jamaica_Plain",
+          "text": "Jamaica Plain is a neighborhood of 4.4 square miles (11 km2) in Boston, Massachusetts, United States. Settled by Puritans seeking farmland to the south, it was originally part of Roxbury. The community seceded from Roxbury during the formation of West Roxbury in 1851 and became part of Boston when West Roxbury was annexed in 1874. In the 19th century, Jamaica Plain became one of the first streetcar suburbs in America and home to a significant portion of Boston's Emerald Necklace of parks, designed by Frederick Law Olmsted.\nIn 2020, Jamaica Plain had a population of 41,012 according to the United States Census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "jamaica plain",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jamaica",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "plain",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5138,
+    "attempt": 5099,
+    "place_id": "gn-4953804",
+    "input": {
+      "place": {
+        "place_id": "gn-4953804",
+        "name": "Uxbridge",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.07732,
+        "lon": -71.62951
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uxbridge, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Uxbridge,_Massachusetts",
+          "text": "Uxbridge, a town in Worcester County, Massachusetts, was incorporated in 1727 from a part of Mendon, and named for the Earl of Uxbridge. The town is located 36 mi (58 km) southwest of Boston and 15 mi (24 km) south-southeast of Worcester. The historical society says Uxbridge is the \"Heart of The Blackstone Valley\" and a “Cradle of the Industrial Revolution\". Uxbridge, an early Textile center in the American Industrial Revolution, became a rural hub in the abolition movement. Uxbridge has a credible claim as an early incubator of the American woolen industry.\nSachems of the Nipmuc deeded land to 17th-century settlers. Uxbridge history claims a first colonial woman voter, Lydia Taft, and Massachusetts’ first women jurors. The first private hospital for mental illness was here. Deborah Sampson posed as an Uxbridge soldier, and fought in the American Revolution. A 140-year legacy of manufacturing military uniforms, cashmeres and clothing began with 1820 power looms. \"Uxbridge Blue\", was the first US Air Force Dress Uniform.\nIn 2026, BJ's Wholesale Club, Amazon, and other distribution centers reflect the transformation of the towns economy from historic textile looms to modern logistics. World Atlas named Uxbridge to a list of top places to live in Massachusetts Uxbridge had a population of 14,162 at the 2020 United States census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "uxbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5139,
+    "attempt": 5100,
+    "place_id": "gn-5118398",
+    "input": {
+      "place": {
+        "place_id": "gn-5118398",
+        "name": "Geneva",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 42.86896,
+        "lon": -76.97774
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Geneva, New York",
+          "url": "https://en.wikipedia.org/wiki/Geneva,_New_York",
+          "text": "Geneva is a city in Ontario and Seneca counties in the U.S. state of New York. It is at the northern end of Seneca Lake; all land portions of the city are within Ontario County; the water portions are in Seneca County. The population was 12,812 at the 2020 census. The city is supposedly named after the city and canton of Geneva in Switzerland. The main settlement of the Seneca was spelled Zoneshio by early European settlers, and was described as being two miles north of Seneca Lake.\nThe city borders the town of Geneva and was once a part of it. The city identifies as the \"Lake Trout Capital of the World.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "geneva",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

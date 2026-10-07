@@ -1,0 +1,932 @@
+[
+  {
+    "rank": 3332,
+    "band": 3,
+    "place_id": "gn-788709",
+    "input": {
+      "place": {
+        "place_id": "gn-788709",
+        "name": "Leskovac",
+        "country": "Serbia",
+        "subdivision": "Central Serbia",
+        "lat": 42.99806,
+        "lon": 21.94611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leskovac",
+          "url": "https://en.wikipedia.org/wiki/Leskovac",
+          "text": "Leskovac (Serbian Cyrillic: Лесковац, pronounced [lěskoʋats]) is a city and the administrative center of the Jablanica District in southern Serbia. It is situated in the Leskovac Depression (Leskovačka kotlina), by the small river of Veternica, near the confluence point with South Morava. According to the 2022 census, the city itself has a population of 58,338 while the city administrative area has 123,950 inhabitants.\nThe town, as a village, was first mentioned during the reign of emperor Stefan Dušan (r.  1331–1355). During the Ottoman period, Leskovac became an administrative centre and a notable craftsman's and merchant town. Following liberation in the late 19th century, the town became important in the textile industry and expanded to become the third largest urban area in the state. After German occupation in World War II, it was heavily bombed by the Allies in 1944, which left much of the town destroyed. Located in the southeast of Serbia, Leskovac is regarded the meat capital, with an annual six-day grill festival showcasing specialties such as Pljeskavica, Ćevapi, Mućkalica, rotisserie, and paprika."
+        },
+        {
+          "article": "Leskovac (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Leskovac#Climate",
+          "text": "Leskovac has a humid subtropical climate (Cfa) with continental influences, with long, hot summers and short but cold, cloudy winters."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 20,
+      "leadWords": 174,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers depression and river location, textile history and a grill festival with no climate mechanism, extreme, seasonal rhythm or paradox stated; non-redundant climate clue not sourceable without inventing",
+      "priorMissing": "place-specific climate mechanism, record/extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "leskovac",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3333,
+    "band": 3,
+    "place_id": "gn-899825",
+    "input": {
+      "place": {
+        "place_id": "gn-899825",
+        "name": "Petauke",
+        "country": "Zambia",
+        "subdivision": "Eastern Province",
+        "lat": -14.24117,
+        "lon": 31.31975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Petauke",
+          "url": "https://en.wikipedia.org/wiki/Petauke",
+          "text": "Petauke is a town and seat of Petauke District located in the Eastern Province of Zambia.\nPetauke is 400 km east of Lusaka, the capital city of Zambia, just off the Great East Road. The main spoken language of the 14,000 residents is Nsenga.\nMost telecommunication is by two local radio stations; Radio PASME, 91.3 and Radio Explorers, 88.1fm, which cover up to 120 km; mainly used by local businessmen, political leaders and traditional chiefs to disseminate their information.\nThe town is situated in an agricultural area; farmers produce maize, cotton, sunflower, groundnut, soya beans and many other crops. Industries include two cotton ginneries, one roofing industry, a number of small scale maize millers and cooking-oil refiners, three breweries, and small scale saw-mills. Government is putting up a milling plant for prisons.\nThe region around Petauke contains copper, amethyst, and gold. However, the minerals in the region are low grade and no serious mining investment has been made in the region. In the early 17th century, gold was mined and that contributed to high rate of slave trade. Mostly, the Swahili speaking peoples invaded the area."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 186,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers farming, minerals and radio stations with no climate mechanism, extreme, seasonal rhythm or paradox stated; non-redundant climate clue not sourceable without inventing",
+      "priorMissing": "place-specific climate mechanism, record/extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "petauke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3379,
+    "band": 3,
+    "place_id": "gn-602913",
+    "input": {
+      "place": {
+        "place_id": "gn-602913",
+        "name": "Skellefteå",
+        "country": "Sweden",
+        "subdivision": "Västerbotten",
+        "lat": 64.75067,
+        "lon": 20.95279
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Skellefteå",
+          "url": "https://en.wikipedia.org/wiki/Skellefteå",
+          "text": "Skellefteå (Swedish: [ɧɛˈlɛ̌ftɛɔ], locally [ʂɛˈlɛ̌ftɛ] ; Meänkieli: Heletti) is a city in Västerbotten County, Sweden, with a population of 36,388. It is the seat of Skellefteå Municipality, which had 77,322 inhabitants in 2024.\nThe city is historically industrial, with mining being a large part of that industry, especially for gold, leading to the city being nicknamed Guldstaden (\"gold town\"). Politically, Skellefteå is a Social Democratic stronghold. The city is a well-known ice hockey town, with its main team Skellefteå AIK playing in the Swedish top division: the SHL, which they have won on several occasions; most recently in 2026.\nThe city was incorporated in 1845 and grew to its current population size in the 1950s and 1960s, growing only slowly since. It is the second largest city in Västerbotten after Umeå and is located roughly halfway between it and Luleå. The Skellefte River passes through the city and it is located around 15 kilometres (9.3 mi) from the Bothnian Bay open sea. Skellefteå is served by Skellefteå Airport, IATA airport code SFT but locally known as Falmark because of the village nearby, also around 15 kilometres (9.3 mi) from the city centre to the south."
+        },
+        {
+          "article": "Skellefteå (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Skellefteå#Climate",
+          "text": "Skellefteå has a subarctic climate (Dfc) with mild summers and cold, long and snowy winters. The climate is somewhat moderated by the Bothnia Bay, although maritime effects are limited, ensuring warm summer temperatures for a coastal area so far north. In the last century, as part of global climate warming, an increase in summer temperatures as well as an earlier arrival of spring and a later onset of winter have been observed. Precipitation is moderate, the maximum precipitation is in the second half of summer. The difference in average hours of sunshine between months is large: December has very little due to both very short days and high cloud cover, while June has a lot due to long days and relatively clear weather."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 123,
+      "leadWords": 195,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes gold mining, ice hockey, a river, and distance from the Bothnian Bay, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "skelleftea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3408,
+    "band": 3,
+    "place_id": "gn-5314328",
+    "input": {
+      "place": {
+        "place_id": "gn-5314328",
+        "name": "Sierra Vista",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 31.55454,
+        "lon": -110.30369
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sierra Vista, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Sierra_Vista,_Arizona",
+          "text": "Sierra Vista (; Spanish: [ˈsjera ˈβista]) is a city in Cochise County, Arizona, United States. According to the 2020 Census, the population of the city is 45,308, and is the 27th most populous city in Arizona. The city is part of the Sierra Vista-Douglas Metropolitan Area, with a 2010 population of 131,346. Fort Huachuca, a U.S. Army post, has been incorporated and is located in the northwest part of the city. Sierra Vista is bordered by the cities of Huachuca City and Whetstone to the north and Sierra Vista Southeast to the South.\nSierra Vista, Spanish for 'mountain view', is 75 miles (121 km) southeast of Tucson and serves as the main commercial, cultural, and recreational hub of Cochise County. Sierra Vista is located on the southwestern side of Cochise County and is 15 miles (24 km) southwest of Tombstone, 20 miles (32 km) northwest of Bisbee, and 15 miles (24 km) from the border of Mexico. The closest port of entry to Mexico is Naco in the Mexican state of Sonora which is 24 miles (39 km) from Sierra Vista to the southeast. Sierra Vista is home to University of Arizona, College of Applied Science and Technology, a Defense Intelligence Agency (DIA) designated Intelligence Community - Center of Academic Excellence (IC-CAE) university, Cochise College, and Wick Communications, a media company operating 27 newspapers and 18 specialty publications in 11 states."
+        },
+        {
+          "article": "Sierra Vista, Arizona (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Sierra_Vista,_Arizona#Climate",
+          "text": "In the Köppen climate classification system, Sierra Vista falls within the typical cold semi-arid climate (BSk) of mid-altitude Arizona. Fall and spring, like most other parts of Arizona, are very dry. Winters are cool to cold with frosts which can occasionally be hard freezes; frost can be expected to stop in mid- to late April. Spring, like fall, spends about half of itself within the frost season. Summer starts off dry, but progressively gets wetter as the monsoon season approaches. The city has a fairly stable climate with very little humidity. However, the North American Monsoon can bring torrential rains during the months of July and August and will produce almost half the yearly rainfall in just those two months alone. Due to the dry climate the rest of the year and the city's high elevation, daily winter low temperatures range from on average and up to on rare occasions when moist fronts bring warm air from the Gulf of California. Snow is not a common sight on the streets of Sierra Vista though some years the city can receive several inches of snow and other years it will receive none. However, a snow-capped Miller Peak and Carr Peak in the Huachuca Mountains is a common sight for four to five months every year.\nThe highest recorded temperature was on June 20, 2017.\nThe lowest recorded temperature was on February 3, 2011.\nThe maximum average rainfall occurs in August."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 239,
+      "leadWords": 231,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location near Tucson and Mexico, an army post, and a commercial hub role, but states no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sierra vista",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sierra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vista",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3434,
+    "band": 3,
+    "place_id": "gn-3583102",
+    "input": {
+      "place": {
+        "place_id": "gn-3583102",
+        "name": "Sonsonate",
+        "country": "El Salvador",
+        "subdivision": "Sonsonate Department",
+        "lat": 13.71726,
+        "lon": -89.72304
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sonsonate, El Salvador",
+          "url": "https://en.wikipedia.org/wiki/Sonsonate,_El_Salvador",
+          "text": "Sonsonate (Spanish pronunciation: [sonsoˈnate]) is a city and district of El Salvador, of which it is also its municipal seat. It has an estimated population of 71,980 inhabitants for the year 2020. Sonsonate is the second most important city in western El Salvador. The town was founded under the name of \"Villa del Espíritu Santo\" on vacant lots near the town of los Izalcos in 1552. However, this foundation would be extremely ephemeral, because the following year, in 1553, this villa would be transferred to its current location, with the name of \"Villa de la Santísima Trinidad de Sonsonate\", in a cocoa-producing area. With the passage of time, the town would be known simply by the name of Sonsonate. This name was taken from the Rio Grande or Sonsonate in the Nahuat language, which crosses it from north to south across the entire plain until it flows into the Pacific Ocean. This was the third Spanish population founded in the territories that currently constitute El Salvador, although, it is worth clarifying, during the entire period of Spanish domination of America, Sonsonate was the capital of the Mayor's Office of Sonsonate, a territory apart from the one administered by San Salvador, today the capital of El Salvador.\nOn the other hand, one of the main cultural attractions of this city is the celebration of Holy Week, which is considered part of the religious heritage of the country, thus recognized by decree of the Legislative Assembly of El Salvador since 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 249,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate mechanism, extreme, seasonal rhythm, or paradox; a non-redundant climate clue cannot be sourced without inventing one",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sonsonate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3471,
+    "band": 3,
+    "place_id": "gn-4908237",
+    "input": {
+      "place": {
+        "place_id": "gn-4908237",
+        "name": "Round Lake Beach",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.37169,
+        "lon": -88.09008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Round Lake Beach, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Round_Lake_Beach,_Illinois",
+          "text": "Round Lake Beach is a northern suburb of Chicago in Lake County, Illinois, United States. Per the 2020 census, the population was 27,252.\nThe United States Census Bureau defines an urban area of northwest Chicago-area suburbs that are separated from Chicago's urban area, with Round Lake Beach as the principal city: the Round Lake Beach–McHenry–Grayslake, IL–WI urban area had a population of 261,835 as of the 2020 census, making it the 155th largest in the United States. The village, along with the rest of the Round Lake area, has a significant Mexican population with many Latino businesses, restaurants, and shops throughout the town. Round Lake Beach has the second highest Latino population in Lake County, after nearby Waukegan."
+        },
+        {
+          "article": "Round Lake Beach, Illinois (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Round_Lake_Beach,_Illinois#Geography",
+          "text": "According to the 2021 census gazetteer files, Round Lake Beach has a total area of , of which (or 96.96%) is land and (or 3.04%) is water.\nMajor streets\nMonaville Road\nFairfield Road\nRollins Road\nCedar Lake Road\nHook Drive\nHainesville Road"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 42,
+      "leadWords": 118,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a Chicago suburb and its Latino population with no climate mechanism, extreme, seasonal rhythm, or paradox; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "round lake beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "round",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3601,
+    "band": 3,
+    "place_id": "gn-949683",
+    "input": {
+      "place": {
+        "place_id": "gn-949683",
+        "name": "Thabazimbi",
+        "country": "South Africa",
+        "subdivision": "Limpopo",
+        "lat": -24.59165,
+        "lon": 27.41155
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thabazimbi",
+          "url": "https://en.wikipedia.org/wiki/Thabazimbi",
+          "text": "Thabazimbi was an iron mining town in the Limpopo province of South Africa. The town is at the feet of the Ysterberg and is surrounded by the Witfonteinrand and Boshofberg with the Kransberg in the background. The name Thabazimbi means mountain of iron because of the large iron ore reef that was discovered in 1919 by J. H. Williams. \nUp until the mine closure in 2015, due to a 65 million ton rock fall, two million tonnes of ore was once hauled by train to Mittal's iron and steel works. The railway line from Rustenburg reached the area in the 1930s and full scale iron and steel production began. The town was proclaimed in 1953. Kumba Iron Ore, previously Kumba Resources, is now the principal operator of the iron ore mine.\n\nThe Marakele National Park about 20 km north-east of the town and in the heart of Waterberg Mountains is characterised by contrasting mountain landscapes, hills and valleys, as well a variety of wildlife. Marakele National Park is also the home of some of the Tuli elephants that were caught up in controversy in 1999 involving animal cruelty in South Africa.\nIn the post-apartheid era, the town made headlines in 2003 as the site of Kamp Staaldraad, the Springboks' infamous training camp prior to the Rugby World Cup.  The excesses of Kamp Staaldraad helped lead to an almost complete housecleaning of the upper administrative levels of South African rugby union."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 240,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives mountain setting, iron mining history, and a nearby national park, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "thabazimbi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3607,
+    "band": 3,
+    "place_id": "gn-2738752",
+    "input": {
+      "place": {
+        "place_id": "gn-2738752",
+        "name": "Guimarães",
+        "country": "Portugal",
+        "subdivision": "Braga",
+        "lat": 41.44443,
+        "lon": -8.29619
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guimarães",
+          "url": "https://en.wikipedia.org/wiki/Guimarães",
+          "text": "Guimarães is a city and municipality located in northern Portugal.\nIts historic town centre has been listed as a UNESCO World Heritage Site since 2001, in recognition for being an \"exceptionally well-preserved and authentic example of the evolution of a medieval settlement into a modern town\" in Europe. The Nicolinas are the city's main festivities.\nGuimarães is referred to as the capital of the Ave Subregion (one of the most industrialised subregions in the country), and located in the historical Minho Province. The municipality has a population of 156,789 inhabitants according to the most recent data of 2023 in an area of 240.95 square kilometres (93.03 sq mi). The current mayor is Ricardo Araújo. Guimarães, along with Maribor, Slovenia, was the European Capital of Culture in 2012. Guimarães also received the 2026 European Green Capital Award.\nThe city was settled in the 9th century, at which time it was called Vimaranes. This name might have had its origin in the warrior Vímara Peres, who chose this area as the main government seat for the County of Portugal which he conquered for the Kingdom of Galicia. Guimarães has a significant historical importance due to the role it played in the foundation of Portugal. The city is commonly referred to as the \"birthplace of Portugal\" or \"the cradle city\" (Cidade Berço in Portuguese) because it was in Guimarães that Portugal's first King, Afonso Henriques was born, and also because the Battle of São Mamede – which is considered the seminal event for the foundation of the Kingdom of Portugal – was fought in the vicinity of the city. It was declared the most beautiful small city in Europe by the Condé Nast Traveler magazine in 2022."
+        },
+        {
+          "article": "Guimarães (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Guimarães#Climate",
+          "text": "Guimarães is located in a valley surrounded by hills, at some distance from the sea. Summers tend to be lightly humid and hot, though still with some oceanic moderation compared to other locations further inland. Winters are generally cool and rainy, with about 29 days with frost per year on average. The last time it snowed with accumulation in the city was in January 2009, though nearby hills such as Penha may experience it more often. The average annual temperature is 14 °C."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 83,
+      "leadWords": 284,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives northern location, heritage status, and founding history, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "guimaraes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3620,
+    "band": 3,
+    "place_id": "gn-3690465",
+    "input": {
+      "place": {
+        "place_id": "gn-3690465",
+        "name": "Aguachica",
+        "country": "Colombia",
+        "subdivision": "Cesar Department",
+        "lat": 8.30844,
+        "lon": -73.6166
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aguachica",
+          "url": "https://en.wikipedia.org/wiki/Aguachica",
+          "text": "Aguachica (Spanish pronunciation: [aɣwaˈtʃika]) is a city and municipality in the southern region of the Cesar Department, Colombia, located between the inter-Andean valley of Magdalena Medio and the Motilones. It is the second most populated municipality in the department and an important livestock and commercial center in the southeast of the Colombian Caribbean.\nIn terms of transportation infrastructure, its geographically strategic position connects the Colombian Caribbean with the Santanderes through the Ruta del Sol, and is also a key communication point for the Catatumbo region via National Route 70. It also has air transportation through the Hacaritama Airport, a railway system, and in parallel with the Magdalena River waterway through the port of Gamarra."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 114,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives valley location, livestock and trade role and transport links, with no climate mechanism, extreme, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "aguachica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3636,
+    "band": 3,
+    "place_id": "gn-877178",
+    "input": {
+      "place": {
+        "place_id": "gn-877178",
+        "name": "Katima Mulilo",
+        "country": "Namibia",
+        "subdivision": "Zambezi Region",
+        "lat": -17.50467,
+        "lon": 24.27574
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Katima Mulilo",
+          "url": "https://en.wikipedia.org/wiki/Katima_Mulilo",
+          "text": "Katima Mulilo, or simply Katima is the capital of the Zambezi Region in Namibia. It had 46,401 inhabitants in 2023 and comprises two electoral constituencies, Katima Mulilo Rural and Katima Mulilo Urban. It is located  on the B8 national road on the banks of the Zambezi River in the Caprivi Strip in lush riverine vegetation with tropical birds and monkeys. The town receives annual average rainfall of 654 millimetres (25.7 in).\nThe nearest Namibian town to Katima Mulilo is Rundu, about 500 km (310 mi) to the west. About 40 km (25 mi) east of Katima Mulilo lies the village of Bukalo, where the road to Ngoma branches off and joins Namibia to Botswana."
+        },
+        {
+          "article": "Katima Mulilo (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Katima_Mulilo#Climate",
+          "text": "Katima Mulilo has a hot semi-arid climate (Köppen BSh), bordering on a dry-winter humid subtropical climate (Cwa). Almost all rainfall occurs from November to March, when the weather is hot and humid although substantially moderated by altitude. In the long dry season between April and October the weather remains hot although less humid at the beginning and finish, but very warm weather with chilly mornings occurs at the middle of this dry season during the Southern Hemisphere winter."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 78,
+      "leadWords": 114,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract states lush riverine vegetation and annual average rainfall of 654 millimetres with no mechanism, record or extreme, seasonal rhythm, or paradox; an average rainfall figure alone does not qualify",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "katima mulilo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "katima",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mulilo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3678,
+    "band": 3,
+    "place_id": "gn-1257928",
+    "input": {
+      "place": {
+        "place_id": "gn-1257928",
+        "name": "Sabalgarh",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 26.24918,
+        "lon": 77.40786
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sabalgarh",
+          "url": "https://en.wikipedia.org/wiki/Sabalgarh",
+          "text": "Sabalgarh is a municipality in Morena district in the Indian state of Madhya Pradesh.\nThe town was founded byJadoun Rajput King, living near Chambal river beside Karaoli, The town has a strong fort called Sabalgarh Fort is situated on a large rock in northeastern. \nPresently, the fortress is in ruins and is infamous for stories of hauntings and ghosts. The fort consists of a defensive structure and one main palaces and many other buildings. The fort has been controlled by a number of different rulers in its history.\nAbout 50 km from the town is Asia's largest siphon, built at the intersection of the Kuno River and the Chambal Right Main canal. \nThe Chambal River is 20 km from town and is a habitat for Indian alligator."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 127,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes the fort, nearby rivers, a large siphon and alligator habitat, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sabalgarh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3711,
+    "band": 3,
+    "place_id": "gn-5335006",
+    "input": {
+      "place": {
+        "place_id": "gn-5335006",
+        "name": "Cathedral City",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.77974,
+        "lon": -116.46529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cathedral City, California",
+          "url": "https://en.wikipedia.org/wiki/Cathedral_City,_California",
+          "text": "Cathedral City is a desert resort city in Riverside County, California, United States, within the Colorado Desert's Coachella Valley. Situated between Palm Springs and Rancho Mirage, the city has the second largest population, after Indio, of the nine cities in the Coachella Valley. Its population was 51,493 at the 2020 census, a slight increase from 51,200 at the 2010 census.\nPrior to the arrival of European colonists, the land was part of the territory inhabited by the Cahuilla Indians. Today every other square mile of the city is part of the Agua Caliente Band of Cahuilla Indians reservation land. Development of a town began when a housing subdivision was built in 1925. It became an incorporated municipality in 1981.\nThe city's name is derived from Cathedral Canyon located to the south of the city in the foothills of the Santa Rosa and San Jacinto Mountains National Monument. The canyon is said to have received its name because certain rock formations in the canyon were reminiscent of a cathedral. A flood in August 1946 significantly altered the cathedral-like features of the canyon.\nIn the United Kingdom a population center needs to have city status, and a cathedral, in order to be called a cathedral city. This prompted Robert Ripley to include the town of Cathedral City in his December 9, 1939, Believe It Or Not column stating, \"Believe it or not … there is no church in Cathedral City, Calif. It is named after a canyon\"."
+        },
+        {
+          "article": "Cathedral City, California (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Cathedral_City,_California#Geography",
+          "text": "According to the United States Census Bureau, Cathedral City has a total area of , of which of it is land and of it (1.13%) is water."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 27,
+      "leadWords": 245,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract calls it a desert resort city and recounts a one-off flood in August 1946, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "a verbatim-traceable climate mechanism, record/extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "cathedral city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cathedral",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3722,
+    "band": 3,
+    "place_id": "gn-2641557",
+    "input": {
+      "place": {
+        "place_id": "gn-2641557",
+        "name": "Newton Abbot",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.52858,
+        "lon": -3.61186
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newton Abbot",
+          "url": "https://en.wikipedia.org/wiki/Newton_Abbot",
+          "text": "Newton Abbot is a market town and civil parish on the River Teign in the Teignbridge District of Devon, England. It lies near the River Teign and Whitelake, approximately 26 miles (42 km) southwest of Plymouth, 13 miles (21 km) southwest of Exeter, and 40 miles (64 km) north-northeast of Taunton. It had a population of 26,746 at the 2021 census, which was previously estimated at 26,655 in 2019.\nNewton Abbot grew rapidly in the Victorian era as the home of the South Devon Railway locomotive works. This later became a major steam engine shed, retained to service British Railways diesel locomotives until 1981. It now houses the Brunel industrial estate. The town has a race course nearby, the most westerly in England, and a country park, Decoy."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 128,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives river location and railway history, with no climate information at all",
+      "priorMissing": "a verbatim-traceable climate mechanism, record/extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "newton abbot",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "newton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "abbot",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3896,
+    "band": 3,
+    "place_id": "gn-1635984",
+    "input": {
+      "place": {
+        "place_id": "gn-1635984",
+        "name": "Masamba",
+        "country": "Indonesia",
+        "subdivision": "South Sulawesi",
+        "lat": -2.5537,
+        "lon": 120.3279
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Masamba",
+          "url": "https://en.wikipedia.org/wiki/Masamba",
+          "text": "Masamba  is a small river town and district (kecamatan) in the North Luwu Regency of South Sulawesi Province of Indonesia which serves as the seat of the regency. The town lies on the Patikala River. It is served by Andi Jemma Airport. The district covers an area of 1,068.85 km2 and had a population of 38,024 at the 2020 Census; the official estimate as at mid 2023 was 39,266 (comprising 19,481 males and 19,785 females).\nMuch of the land in the region is swampy coastal plains with mangroves found in its shallow waters. \nA population of Bugis who are known to be Muslims come from Masamba. A number of these Islamic Bugis moved out of the village into Rompu in the 1940s and into the lowlands of the region into Tabalu and Saatu in the 1950s and 1960s. Rattan trading and making is said to be important to the local economy. Coconuts are also grown near the coast in this region of Sulawesi."
+        },
+        {
+          "article": "Masamba (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Masamba#Climate",
+          "text": "Masamba has a tropical rainforest climate (Af) with moderate rainfall in September and October and heavy to very heavy rainfall in the remaining months."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 24,
+      "leadWords": 163,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract mentions swampy coastal plains with mangroves in shallow waters, which is land cover, not a climate mechanism, extreme, seasonal rhythm, or paradox; no non-redundant climate clue is sourceable",
+      "priorMissing": "a place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "masamba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3948,
+    "band": 3,
+    "place_id": "gn-1177446",
+    "input": {
+      "place": {
+        "place_id": "gn-1177446",
+        "name": "Gwadar",
+        "country": "Pakistan",
+        "subdivision": "Balochistan",
+        "lat": 25.12163,
+        "lon": 62.32541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gwadar",
+          "url": "https://en.wikipedia.org/wiki/Gwadar",
+          "text": "Gwadar (Urdu: گوادر, Urdu pronunciation: [ɡəʋɑːd̪əɾ]) is a port city on the southwestern coast of the Pakistani province of Balochistan. It is on the shores of the Arabian Sea, opposite Oman, and had a population of over 90,000 in 2017 census. It was an overseas possession of the Sultanate of Muscat and Oman from 1783 to 1958, when it was purchased by Pakistan. It is about 120 km (75 mi) southwest of Turbat. The sister port city of Chabahar in Iran's Sistan and Baluchestan province is about 170 km (110 mi) to the west. In October 2011, Gwadar was declared the winter capital of Balochistan.\nFounded in the late 17th century as a fishing settlement, Gwadar became a regional trade hub within the Omani Empire in the 20th century before being ceded to Pakistan (1958). Modest investment from China helped accelerate Gwadar's development from 2013 to 2020 when the city started to develop its economy. In 2025, overall investment reached 1 billion USD.\nThe main industrial concern is a fish-processing factory.\nGwadar came in the focus of attention after the 1999 Kargil War when Pakistan felt the need of having a military naval port and the Karachi-Gwadar Road (Coastal Highway) was built for defence purposes. For most of its history, Gwadar was a small to medium-sized settlement with an economy largely based on artisanal fishing. The strategic value of its location was first recognized in 1954 when it was identified as a suitable site for a deep-water port by the United States Geological Survey at the request of Pakistan while the territory was still under Omani rule. Until 2001, the area's potential to be a major deep-water port remained untapped under successive Pakistani governments, when construction on the first phase of Gwadar Port was initiated in 2007. The first phase cost $248 million. The port initially remained underutilized after construction for a variety of reasons, including lack of investment, security concerns, and the Government of Pakistan's failure to transfer land as promised to the port operator, Port of Singapore Authority.\nIn April 2015, Pakistan and China announced their intention to develop the $46 billion China–Pakistan Economic Corridor (CPEC), which in turn forms part of China's One Belt, One Road initiative. Gwadar features heavily in CPEC, and is envisaged to be the link between the One Belt, One Road and Maritime Silk Road project. $1.153 billion worth of infrastructure projects will be invested into the city as part of CPEC, with the aim of linking northern Pakistan and western China to the deep-water seaport. The city will also be the site of a floating liquefied natural gas facility that will be built as part of the larger $2.5 billion Gwadar–Nawabshah segment of the Iran–Pakistan gas pipeline project. Despite concerns over the United States sanctions on Iran, Pakistan is going ahead with the construction of a pipeline from the Iranian border to Gwadar as of 2024. This is partly to avoid contractual penalties and partly to avoid overreliance on the Gwadar Coal–Power Plant which requires imported coal. In addition to investments directly under the aegis of CPEC in Gwadar city, the China Overseas Port Holding Company in June 2016 began construction on the $2 billion Gwadar Special Economic Zone, which is being modelled on the special economic zones of China. In September 2016, the Gwadar Development Authority published a request for tenders for the preparation of expropriation and resettlement of Old Town Gwadar."
+        },
+        {
+          "article": "Gwadar (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Gwadar#Climate",
+          "text": "Gwadar has a hot desert climate (Köppen BWh), characterised by little precipitation and high variation between summer and winter temperatures. Oceanic influence from the cool currents of the Arabian Sea moderates temperatures, resulting in notably cooler summer temperatures compared to areas inland and cities in the Persian Gulf such as Dubai. The Arabian Sea also moderates winter temperatures, resulting in warmer winter nights as compared to inland areas.\nThe mean temperature in the hottest month (June) remains between 31 °C and 32 °C. The mean temperature in the coolest month (January) varies from 18 °C to 19 °C. The uniformity of temperature is a unique characteristic of the Makran Coastal region. Occasionally, winds moving down the Balochistan plateau bring brief cold spells, otherwise the winter is pleasant. In Gwadar, winters are shorter than summers. Although Gwadar is situated outside the monsoon belt, it receives light monsoon showers in summer (June–August). However, in winter, Western Disturbance can cause heavy rainfall. Annual rainfall is only 100 mm (3 inches). In June 2010, Gwadar was lashed by Cyclone Phet with record-breaking rains of 372 mm and winds up to .\nOn 27–28 February 2024, Gwadar received a rainfall of 180 millimeters over 30 hours resulting in the flooding of the coastal town. Pakistan's uniformed forces and local authorities evacuated families from submerged localities. The floodings blocked all traffic between Gwadar and Karachi due to the damaged coastal highway that connects both the cities."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 240,
+      "leadWords": 571,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract declares the place a winter capital but gives no climate reason, mechanism, extreme, seasonal rhythm, or paradox for that designation, and the rest covers fishing, Oman possession, and port development only",
+      "priorMissing": "a place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract explaining the winter-capital designation"
+    },
+    "banned_terms": [
+      {
+        "term": "gwadar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3960,
+    "band": 3,
+    "place_id": "gn-2639409",
+    "input": {
+      "place": {
+        "place_id": "gn-2639409",
+        "name": "Rhyl",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 53.31929,
+        "lon": -3.49228
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rhyl",
+          "url": "https://en.wikipedia.org/wiki/Rhyl",
+          "text": "Rhyl ( ; Welsh: Y Rhyl, pronounced [ə ˈr̥ɨl]) is a seaside town and community in Denbighshire in Wales. The town lies on the north coast of Wales, at the mouth of the River Clwyd. \nTo the west is Kinmel Bay and Towyn, to the east Prestatyn, and to the south-east Rhuddlan and St Asaph. \nAt the 2021 Census, Rhyl had a population of 27,325. Rhyl forms a conurbation with Prestatyn and its two outlying villages, the Rhyl/Prestatyn Built-up area, whose 2021 population of 45,250 makes it North Wales's most populous non-city. Adding to that the adjoining town of Kinmel Bay it is around 50,000.\nRhyl was once an elegant Victorian resort town, but suffered rapid decline around the 1990s and 2000s; attempts have been made to reverse this through county investment, equal to around £15 million from Denbighshire County, however, the outcomes have been perceived with varying levels of success. \nPrior to being in Denbighshire since 1996, it was in the Clwyd district of Rhuddlan, and before that the historic county of Flintshire."
+        },
+        {
+          "article": "Rhyl (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Rhyl#Climate",
+          "text": "The climate is cool and temperate in Rhyl. The climate here is classified as Cfb by the Köppen climate classification. The average temperature in Rhyl is . Annual precipitation averages ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 31,
+      "leadWords": 174,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives seaside location and resort decline but no climate mechanism, extreme, seasonal rhythm or paradox; a non-redundant climate clue cannot be sourced",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "rhyl",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3973,
+    "band": 3,
+    "place_id": "gn-3029162",
+    "input": {
+      "place": {
+        "place_id": "gn-3029162",
+        "name": "Calais",
+        "country": "France",
+        "subdivision": "Hauts-de-France",
+        "lat": 50.95194,
+        "lon": 1.85635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calais",
+          "url": "https://en.wikipedia.org/wiki/Calais",
+          "text": "Calais (UK:  KAL-ay, US:  kal-AY, traditionally  KAL-iss, French: [kalɛ] ) is a French major port city in the Pas-de-Calais department, of which it is a subprefecture. Calais is the largest city in Pas-de-Calais. The population of the city proper is 67,585; that of the urban area is 144,488 (2022). Calais overlooks the Strait of Dover, the narrowest point in the English Channel, which is only 34 km (21 mi) wide here, and is the closest French town to England.  The White Cliffs of Dover can easily be seen from Calais on a clear day.  Calais is a major port for ferries between France and England. The Channel Tunnel has connected Calais and Folkestone since 1994.\nBecause of its position, Calais has been a major port and an important centre for transport and trading with England since the Middle Ages. Calais came under English control after Edward III of England captured the city in 1347, followed by a treaty in 1360 that formally assigned Calais to English rule.  Calais grew into a thriving centre for wool production, and came to be called the \"brightest jewel in the English crown\" because of its importance as the gateway for the tin, lead, lace and wool trades (or \"staples\"). Calais remained under English control until its recapture by France in 1558.\nDuring World War II, the town was virtually razed to the ground. In May 1940, it was a strategic bombing target of the invading German forces, who took it during the siege of Calais.  The Germans built massive bunkers along the coast, in preparation for launching missiles at England.\nThe old part of the town, Calais-Nord, is on an artificial island surrounded by canals and harbours. The modern part of the town, St-Pierre, lies to the south and south-east. In the centre of the old town is the Place d'Armes, in which stands the Tour du Guet, or watch-tower, a structure built in the 13th century, which was used as a lighthouse until 1848 when a new lighthouse was built by the port. South east of the Place is the church of Notre-Dame, built during the English occupancy of Calais. Arguably, it is the only church built in the English perpendicular style in all of France. In this church, former French President Charles de Gaulle married Yvonne Vendroux. South of the Place and opposite the Parc St Pierre is the Hôtel-de-ville (the town hall), and the belfry from the early 20th century. Today, Calais is visited by more than 10 million annually. Aside from being a key transport hub, Calais is also a notable fishing port and a centre for fish marketing, and some 3,000 people are still employed in the lace industry for which the town is also famed."
+        },
+        {
+          "article": "Calais (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Calais#Geography_and_climate",
+          "text": "Calais is located on the Pas de Calais, which marks the boundary between the English Channel and North Sea and located at the opposite end of the Channel Tunnel, from Dover. On a clear day the White Cliffs of Dover can be viewed across the channel. Aside from being an important port and boarding point between France and England, it is at the nucleus of many major railway and highway networks and connected by road to Arras, Lens, Béthune and St. Omer. Dunkirk is located about to the east. Calais is located north of the French capital of Paris, or around by car. The commune of Calais is bordered by the English channel to the north, Sangatte and Coquelles to the west, Coulogne to the south and Marck to the east. The core area of the city is divided into the Old Town area within the old city walls, and the younger suburbs of St. Pierre, which are connected by a boulevard.\nCalais is part of the Côte d'Opale (Opal Coast), a cliff-lined section of northern French coast that parallels the white cliffs on the British coast and is part of the same geological formation. It is known for its scenic cliffs such as Cape Blanc Nez and Cape Gris Nez and for its wide area of dunes. Many artists have been inspired by its landscapes, among them the composer Henri Dutilleux, the writers Victor Hugo and Charles Dickens, and the painters J. M. W. Turner, Carolus-Duran, Maurice Boitel and Eugène Boudin. It was the painter who coined the name for this area in 1911 to describe the distinctive quality of its light.\nCalais has a temperate oceanic climate (Cfb in the Köppen climate classification). Temperature ranges are moderate and the winters are cool with unstable weather. It rains on average about per year.\nThe commune of Calais is divided into 13 quartiers:\nBeau Marais\nCailloux\nCalais-nord\nFontinettes\nFort-Nieulay\nGambetta\nNouvelle-France\nMi-voix\nPetit Courgain\nPlage\nPont-du-Leu\nSaint-Pierre"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Geography and climate",
+      "sectionWords": 327,
+      "leadWords": 457,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a port overlooking the Strait of Dover and its history with England, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "calais",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3979,
+    "band": 3,
+    "place_id": "gn-3190103",
+    "input": {
+      "place": {
+        "place_id": "gn-3190103",
+        "name": "Sremska Mitrovica",
+        "country": "Serbia",
+        "subdivision": "Vojvodina",
+        "lat": 44.97639,
+        "lon": 19.61222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sremska Mitrovica",
+          "url": "https://en.wikipedia.org/wiki/Sremska_Mitrovica",
+          "text": "Sremska Mitrovica (Serbian pronunciation: [srêːmskaː mîtroʋitsa]; Serbian Cyrillic: Сремска Митровица, Hungarian: Szávaszentdemeter, Latin: Sirmium) is a city in Serbia. It is situated on the left bank of the Sava river. As of 2022, the city has a total population of 36,764 inhabitants, while its administrative area has a population of 72,580 inhabitants.\nAs Sirmium, it was a capital of the Roman Empire during the Tetrarchy of 4th century CE. Ten Roman emperors were born in or near this city, Emperors Herennius Etruscus (251), Hostilian (251), Decius Traian (249–251), Claudius Gothicus (268–270), Quintillus (270), Aurelian (270–275), Probus (276–282), Maximian (285–310), Constantius II (337–361) and Gratian (367–383)."
+        },
+        {
+          "article": "Sremska Mitrovica (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Sremska_Mitrovica#Climate",
+          "text": "Sremska Mitrovica has a humid subtropical climate bordering very closely on a humid continental climate (Köppen climate classification: Dfb) as well as an oceanic climate (Köppen climate classification: Cfb)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 29,
+      "leadWords": 105,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a city on the Sava River that was Roman Sirmium and birthplace of emperors, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox verbatim-traceable in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "sremska mitrovica",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sremska",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mitrovica",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4006,
+    "band": 3,
+    "place_id": "gn-1636029",
+    "input": {
+      "place": {
+        "place_id": "gn-1636029",
+        "name": "Maros",
+        "country": "Indonesia",
+        "subdivision": "South Sulawesi",
+        "lat": -5.006,
+        "lon": 119.5727
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maros",
+          "url": "https://en.wikipedia.org/wiki/Maros",
+          "text": "Maros is a town in the South Sulawesi province of Indonesia close to the provincial capital of Makassar. It is the capital of the Maros Regency.\nMaros is the location of the  Indonesian Cereals Research Institute, a branch of the  Indonesian Agency for Agricultural Research and Development.\nIn 2012, regional cement producer PT Semen Bosowa Maros began construction in Maros of a new clinker plant estimated to cost over $300 million. The clinker plant was expected to help the cement company increase production in the region in response to the growing demand for cement to support construction activities.\nMaros Water Park is in Maros."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 104,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no place-specific climate mechanism, record or extreme, seasonal rhythm, or paradox; a non-redundant climate clue cannot be sourced without inventing",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "maros",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4100,
+    "band": 3,
+    "place_id": "gn-3055685",
+    "input": {
+      "place": {
+        "place_id": "gn-3055685",
+        "name": "Baja",
+        "country": "Hungary",
+        "subdivision": "Bács-Kiskun",
+        "lat": 46.18299,
+        "lon": 18.95307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baja, Hungary",
+          "url": "https://en.wikipedia.org/wiki/Baja,_Hungary",
+          "text": "Baja (Hungarian pronunciation: [ˈbɒjɒ]) is a city with county rights in Bács-Kiskun County, southern Hungary. It is the second-largest city in the county, after the county seat of Kecskemét, and is home to some 35,000 people. Baja is the seat of Baja Municipality.\nThe Baja region has been continuously inhabited since the end of the Iron Age, but there is evidence of human presence since prehistoric times. The settlement itself was most likely established in the 14th century. After the Ottoman Empire conquered Hungary, it grew to prominence more than the other nearby settlements, and it was granted town rights in 1696.\nToday, Baja plays an important role in the life of Northern Bácska as a local commercial centre and the provider of public services such as education and healthcare. It has several roads and a railway connection to other parts of the country and also offers local public transport for its residents. Being close to the Danube and the forest of Gemenc and having its own cultural sights, Baja has become a candidate for tourism, which, however, is not well established yet."
+        },
+        {
+          "article": "Baja, Hungary (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Baja,_Hungary#Climate",
+          "text": "Baja is at the meeting of the continental and mediterranean regions of Hungary. Summer is hot (temperatures sometimes reach 36–37 °C) and stifling, and extreme torrential rains are getting common in the region. Winter is cold and snowy. There is often rain in the spring."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 45,
+      "leadWords": 183,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives southern location, long habitation, town rights and closeness to a river and forest only, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "baja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

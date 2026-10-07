@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 5343,
+    "attempt": 5301,
+    "place_id": "gn-5126827",
+    "input": {
+      "place": {
+        "place_id": "gn-5126827",
+        "name": "Middle Village",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.71649,
+        "lon": -73.88125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Middle Village, Queens",
+          "url": "https://en.wikipedia.org/wiki/Middle_Village,_Queens",
+          "text": "Middle Village is a neighborhood in the central section of the borough of Queens, New York City, bounded to the north by the Long Island Expressway, to the east by Woodhaven Boulevard, to the south by Cooper Avenue and the former LIRR  Montauk Branch railroad tracks, and to the west by Mount Olivet Cemetery.  The small trapezoid-shaped area bounded by Mt. Olivet Crescent to the east, Fresh Pond Road to the west, Eliot Avenue to the north, and Metropolitan Avenue and Admiral Avenue to the south is often counted as part of Middle Village, but is sometimes considered part of nearby Ridgewood.\nMiddle Village is bordered by the neighborhoods of Elmhurst to the north, Maspeth and Ridgewood to the west, Glendale to the south, and Rego Park to the east. Housing in the neighborhood is largely single-family homes with many attached homes, and small apartment buildings.\nMiddle Village is located in Queens Community District 5 and its ZIP Code is 11379. It is patrolled by the New York City Police Department's 104th Precinct. Politically, Middle Village is represented by the New York City Council's 29th and 30th Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "middle village",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "middle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "village",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5344,
+    "attempt": 5302,
+    "place_id": "gn-5132028",
+    "input": {
+      "place": {
+        "place_id": "gn-5132028",
+        "name": "Port Richmond",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.63316,
+        "lon": -74.13653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Richmond, Staten Island",
+          "url": "https://en.wikipedia.org/wiki/Port_Richmond,_Staten_Island",
+          "text": "Port Richmond is a neighborhood situated on the North Shore of Staten Island, a borough of New York City. Port Richmond is bounded by Kill van Kull on the north, Clove Road on the east, Forest Avenue on the south, and the Bayonne Bridge on the west. It is adjacent to West New Brighton to the east, Westerleigh to the south, and Elm Park and Mariners Harbor to the west.\nFormerly an independent village, it is one of the oldest neighborhoods on the island. In the 19th century it was an important transportation and industrial center of the island, but this role has vanished nearly completely, leaving a largely blue collar residential area bypassed by the shift of development of the island to its interior after the 1960s. The formerly bustling commercial center along Richmond Avenue (now Port Richmond Avenue) had been largely abandoned at the time, but many small businesses have opened in the area since the late 20th century.\nPort Richmond is part of Staten Island Community District 1 and its ZIP Code is 10302. Port Richmond is patrolled by the 121st Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 161,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "port richmond",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "richmond",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5345,
+    "attempt": 5303,
+    "place_id": "gn-2184846",
+    "input": {
+      "place": {
+        "place_id": "gn-2184846",
+        "name": "Parnell",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.86667,
+        "lon": 174.78333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parnell, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Parnell,_New_Zealand",
+          "text": "Parnell (Māori: Panēra) is a suburb of Auckland, New Zealand. It is one of New Zealand's most affluent suburbs, consistently ranked within the top three wealthiest, and is often billed as Auckland's \"oldest suburb\" since it dates from the earliest days of the European settlement of Auckland in 1841. It is characterised by its mix of tree-lined streets with large estates; redeveloped industrial zones with Edwardian town houses and 1920s bay villas; and its hilly topography that allows for views of the port, the Waitematā Harbour, Rangitoto Island and the Auckland Domain. To its west lies the Auckland Domain, to the south Newmarket, and to the north the Ports of Auckland.\nParnell Rise and Parnell Road make up the main road through Parnell. Parnell Rise leads to the central business district to the west; Parnell Road runs from Parnell Rise uphill to the top of the suburb, and then bends almost 90 degrees and continues towards Newmarket in the south-east. Parnell Road ends at the intersection of George and Sarawia Streets, where it becomes Broadway. Early European settlers knew Parnell Road as \"Manukau Road\" until well after the formation of Khyber Pass Road in 1845."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "parnell",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5346,
+    "attempt": 5304,
+    "place_id": "gn-2639015",
+    "input": {
+      "place": {
+        "place_id": "gn-2639015",
+        "name": "Royton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.56507,
+        "lon": -2.12267
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Royton",
+          "url": "https://en.wikipedia.org/wiki/Royton",
+          "text": "Royton is a town in the Metropolitan Borough of Oldham, Greater Manchester, England, with a population of 21,284 in 2011. Close to the source of the River Irk, near undulating land at the foothills of the South Pennines, it is 2 miles (3.2 km) northwest of Oldham, 3 miles (4.8 km) southeast of Rochdale and 8 miles (12.9 km) northeast of Manchester.\nWithin the boundaries of the historic county of Lancashire, Royton and its surroundings have provided evidence of ancient British, Roman and Viking activity in the area. During the Middle Ages, Royton formed a small township centred on Royton Hall, a manor house owned by a long succession of dignitaries which included the Byrons and Radcliffes. A settlement expanded outwards from the hall which, by as late as 1780, \"contained only a few straggling and mean-built cottages\". Farming was the main industry of this rural area, with locals supplementing their incomes by hand-loom woollen weaving in the domestic system.\nRoyton has the distinction of being the first town where a powered cotton mill was built; at Thorp in 1764, and is one of the first localities in the world to have adopted the factory system. The introduction of textile manufacture during the Industrial Revolution facilitated a process of unplanned urbanisation in the area, and by the mid-19th century Royton had emerged as a mill town. At its zenith, there were 40 cotton mills—some of the largest in the United Kingdom—employing 80% of the local population. Imports of foreign cotton goods began the decline in Royton's textile industry during the mid-20th century, and its last mill closed in 2002.\nToday, fewer than a dozen mills are still standing, the majority of which are used for light engineering or as distribution centres. Despite an economic depression brought about by the demise of cotton spinning, Royton's population has continued to grow as a result of intensive housing redevelopment which has modernised its former Edwardian districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 323
+    },
+    "banned_terms": [
+      {
+        "term": "royton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5347,
+    "attempt": 5305,
+    "place_id": "gn-2646355",
+    "input": {
+      "place": {
+        "place_id": "gn-2646355",
+        "name": "Hurstpierpoint",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.93388,
+        "lon": -0.18007
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hurstpierpoint",
+          "url": "https://en.wikipedia.org/wiki/Hurstpierpoint",
+          "text": "Hurstpierpoint  is a village in the Mid Sussex district, in the county of West Sussex, England, 4 miles (6.4 km) southwest of Burgess Hill, 1.5 miles (2.4 km) west of Hassocks railway station, and 40 miles south of London (as the crow flies). It sits in the  civil parish of Hurstpierpoint and Sayers Common  which has an area of 2029.88 ha and a population of 7,112.\nThe village was once chiefly one long street running east and west and most of the buildings in it are of the 18th century or later. The late 20th Century and early 21st Century saw Hurstpierpoint expanding greatly with new homes built north, east and west of the village.\nHurstpierpoint hosts the Hurst Festival which takes place every summer and has an active Scouts and Guides Groups.\nEstablished in 1962, the Hurstpierpoint Society is a village organization with over 1,300 members, dedicated to enhancing and safeguarding the village surroundings and examining local planning proposals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "hurstpierpoint",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5348,
+    "attempt": 5306,
+    "place_id": "gn-2654332",
+    "input": {
+      "place": {
+        "place_id": "gn-2654332",
+        "name": "Buncrana",
+        "country": "Ireland",
+        "subdivision": "Ulster",
+        "lat": 55.13333,
+        "lon": -7.45
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buncrana",
+          "url": "https://en.wikipedia.org/wiki/Buncrana",
+          "text": "Buncrana ( bun-KRA-NA; Irish: Bun Cranncha, meaning 'foot of the (River) Crana') is a town in Inishowen in the north of County Donegal in Ulster, the northern province in Ireland. The town sits on the eastern shores of Lough Swilly, being 23 kilometres (14 mi) northwest of Derry and 43 kilometres (27 mi) north of Letterkenny. In the 2022 census, the population was 6,971, making it the second most populous town in County Donegal, after Letterkenny, and the largest in Inishowen.\nBuncrana is the historic home of the Ó Dochartaigh (O'Doherty) clan and originally developed as a town around the defensive tower known as O'Doherty's Keep, at the mouth of the River Crana. The town was moved to its present location, just south of the River Crana, when George Vaughan had the current Main Street laid out in 1718.\nThe town was a major centre for the textile industry in County Donegal from the 19th century until the mid-2000s (decade)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "buncrana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5349,
+    "attempt": 5307,
+    "place_id": "gn-2748826",
+    "input": {
+      "place": {
+        "place_id": "gn-2748826",
+        "name": "Overschie",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.93863,
+        "lon": 4.42766
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Overschie",
+          "url": "https://en.wikipedia.org/wiki/Overschie",
+          "text": "Overschie (Dutch pronunciation: [ˈoːvərˌsxi]) is a neighborhood of Rotterdam, Netherlands, formerly a separate village with its own municipality.\nThe village of Overschie was located on the intersection of four rivers called \"Schie\": the Delftse Schie, Schiedamse Schie, Delfshavense Schie, and Rotterdamse Schie. The \"Schie\"'s were important transport routes in the thirteenth century after the Schielands Hoge dike was constructed between Vlaardingen and Gouda, creating two ports at the Schie and the Rotte. The first became important for the development of Overschie, the second for that of Delfshaven (Delft Harbor indicates that this port was important for the city Delft).  In 1340, the city of Rotterdam received permission to dig a canal between the center and Overschie: the Rotterdamse Schie.\n\"Overschie\" is now also the name of a deelgemeente (borough) of the city of Rotterdam, covering the former village, the neighborhood Overschie, Zestienhoven (which also holds the Rotterdam The Hague Airport), and the countryside to the north including the hamlet Zweth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "overschie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5350,
+    "attempt": 5308,
+    "place_id": "gn-3684266",
+    "input": {
+      "place": {
+        "place_id": "gn-3684266",
+        "name": "El Dovio",
+        "country": "Colombia",
+        "subdivision": "Valle del Cauca Department",
+        "lat": 4.50799,
+        "lon": -76.23644
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Dovio",
+          "url": "https://en.wikipedia.org/wiki/El_Dovio",
+          "text": "El Dovio is a town and municipality located in the Department of Valle del Cauca, Colombia.\nEl Dovio is roughly forty minutes' drive from Roldanillo, a larger town famed internationally for its suitability as a destination for paragliding, and for its museum dedicated to modern art and named for a renowned Colombian modern artist, Omar Rayo. Vans and buses travel approximately hourly on the hour most days between the Occidente bus terminal near Roldanillo's main square and the public transit terminal in El Dovio adjacent El Dovio's town hall.\nWaterfalls named La Alejandria and El Salto can be reached via short journeys from El Dovio. La Alejandria can be accessed by taking a Jeep bound for La Pradera or for El Dumar from the main public transit terminal in El Dovio. The public transport terminal also offers transport to small settlements and villages deep inside the Rio Garrapatas river canyon, as well as to the towns of Versalles and Roldanillo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "el dovio",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dovio",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5351,
+    "attempt": 5309,
+    "place_id": "gn-5103564",
+    "input": {
+      "place": {
+        "place_id": "gn-5103564",
+        "name": "Rumson",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.37205,
+        "lon": -73.99903
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rumson, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Rumson,_New_Jersey",
+          "text": "Rumson is a borough in Monmouth County, in the U.S. state of New Jersey, and is part of the New York Metropolitan Area. As of the 2020 United States census, the borough's population was 7,343, an increase of 221 (+3.1%) from the 2010 census count of 7,122, which in turn reflected a decline of 15 (−0.2%) from 7,137 in 2000.\nRumson was formed by an act of the New Jersey Legislature on March 15, 1907, from portions of Shrewsbury Township, based on results of a referendum held on June 18, 1907.\nThe borough has been one of the state's highest-income communities. In the 2013–2017 American Community Survey, Rumson had a median household income of $158,229 (ranked 24th in the state) and included 43.9% of households earning more than $200,000 annually.\nRumson ranked among the highest annual property tax bills in New Jersey, and was the highest in Monmouth County, at $20,602 in 2018, compared to a statewide average of $8,767.\nIn 2010, Forbes.com listed Rumson as 192nd in its listing of \"America's Most Expensive ZIP Codes\", with a median home price of $1,104,271."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "rumson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5352,
+    "attempt": 5310,
+    "place_id": "gn-5181688",
+    "input": {
+      "place": {
+        "place_id": "gn-5181688",
+        "name": "Bristol",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.10067,
+        "lon": -74.85183
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bristol, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Bristol,_Pennsylvania",
+          "text": "Bristol is a borough in Bucks County, Pennsylvania, United States. It is located 23 miles (37 km) northeast of Center City in Philadelphia opposite Burlington, New Jersey, on the Delaware River.\nBristol was settled in 1681 and first incorporated in 1720. After 1834, it became very important to the development of the American Industrial Revolution as the terminus city of the Delaware Canal, providing greater Philadelphia with the day's high quality anthracite coal from the Lehigh Canal via Easton. The canal and a short trip on the Delaware River also gave the town access to the mineral resources available in Connecticut, New Jersey, and New York via of the Morris Canal, the Delaware and Hudson Canal, and the Delaware and Raritan Canal, respectively, and connected the community to those markets and trade from New York City.\nAlthough its charter was revised in 1905, the original charter remains in effect, making it the third-oldest borough in Pennsylvania after Chester and Germantown. As of the 2020 census, Bristol had a population of 9,861. Its current mayor is Joseph A. Saxton. It is served by SEPTA's Trenton Line.\nBristol is located 70.9 miles (114.1 km) southeast of Allentown and 22.4 miles (36.0 km) northeast of Philadelphia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "bristol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5353,
+    "attempt": 5311,
+    "place_id": "gn-5380378",
+    "input": {
+      "place": {
+        "place_id": "gn-5380378",
+        "name": "Pacific Palisades",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.04806,
+        "lon": -118.52647
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pacific Palisades, Los Angeles",
+          "url": "https://en.wikipedia.org/wiki/Pacific_Palisades,_Los_Angeles",
+          "text": "Pacific Palisades is a neighborhood in the Westside region of the city of Los Angeles, California, situated about 20 miles (32 km) west of downtown. It was founded in 1921 by a Methodist organization, and is known for its seclusion, Mediterranean climate, hilly topography, abundance of parkland and hiking trails, a 3-mile (4.8 km) strip of coastline, and for being home to several architecturally significant homes.\nThe neighborhood is bounded by Brentwood to the east, the unincorporated community of Topanga to the west, Santa Monica to the southeast, the Santa Monica Bay to the southwest, and the Santa Monica Mountains to the north. Parks and beaches in the Palisades include the Santa Monica State Beach, Will Rogers State Beach, Santa Monica Mountains National Recreation Area, and Will Rogers State Historic Park.\nIn January 2025, thousands of structures were destroyed by the Palisades Fire, amounting to several billion dollars in damages, as part of the wider outbreak of Southern California wildfires."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 160,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "pacific palisades",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pacific",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "palisades",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5354,
+    "attempt": 5312,
+    "place_id": "gn-1524243",
+    "input": {
+      "place": {
+        "place_id": "gn-1524243",
+        "name": "Korday",
+        "country": "Kazakhstan",
+        "subdivision": "Zhambyl",
+        "lat": 43.03882,
+        "lon": 74.71287
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Korday",
+          "url": "https://en.wikipedia.org/wiki/Korday",
+          "text": "Korday or Kordoy (Kazakh: Қордай, romanized: Qordai, pronounced [qwʊɾˈdɑj]; Kyrgyz: Кордой) is a village in Jambyl Region of Kazakhstan, and the administrative center of that region's Korday District.  It has been formerly known under its old Russian name of Georgievka.\nEuropean route E40, known locally as Highway M-39 (based on the old USSR highway numbering scheme), on its way from Bishkek to Almaty crosses the Chu River at Korday, making Korday border crossing arguably the most important crossing on the Kazakh-Kyrgyz border. (The Kazakhstan point of entry is known as Korday, while its counterpart on the Kyrgyz side is called Akjol, or Akjol-Shu). Buses, passenger vans, and taxis take passengers from the Kyrgyz side of the crossing to Bishkek and from the Kazakh side to the railway junction of Shu, while others go directly between Bishkek and Almaty through the Korday checkpoint. Trucks carry goods, mostly Chinese imports, from Bishkek's Dordoy Bazaar to Kazakhstan and further on to Russia.\nIncidents of truckers fording the Chu River away from the bridge, to circumvent the customs, have been reported as well."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 179
+    },
+    "banned_terms": [
+      {
+        "term": "korday",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5355,
+    "attempt": 5313,
+    "place_id": "gn-2375181",
+    "input": {
+      "place": {
+        "place_id": "gn-2375181",
+        "name": "Bambadinca",
+        "country": "Guinea-Bissau",
+        "subdivision": "Bafatá",
+        "lat": 12.02342,
+        "lon": -14.86119
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bambadinca",
+          "url": "https://en.wikipedia.org/wiki/Bambadinca",
+          "text": "Bambadinca is a village in one of seven sectors in the Bafatá Region of Guinea-Bissau, situated in some 59 kilometres (37 mi) east of Bissau, the country's capital city. In 2009 it had 33,255 inhabitants.\nBambadinca is the first developing county, in West Africa, with about 7,000 people with the village rural electrification through a microgrid, providing good quality, reliable and affordable electricity to the population, improving health conditions and supporting fundamental economic activities. To ensure economical and financial sustainability, a three-party participatory management model for the Decentralized System for Production and Distribution of Electricity from Renewable Energy, has been implemented by the community of a local association in cooperation with national authorities.\nBambadinca, with its 6500 inhabitants, was the first settlement of Guinea-Bissau to take advantage of renewable energy produced by a hybrid photovoltaic plant 24 hours a day. 312 kW of installed capacity and consisting of 1248 photovoltaic panels, renewable energy has changed the countryside of Bambadinca.\nThe central of the photovoltaic energy has 216 batteries to \"keep\" the solar energy converted into electricity and is hybrid because there are three diesel generators to ensure alternative sources of supply and distribution of energy at all times."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "bambadinca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5356,
+    "attempt": 5314,
+    "place_id": "gn-2613939",
+    "input": {
+      "place": {
+        "place_id": "gn-2613939",
+        "name": "Skagen",
+        "country": "Denmark",
+        "subdivision": "North Denmark",
+        "lat": 57.72093,
+        "lon": 10.58394
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Skagen",
+          "url": "https://en.wikipedia.org/wiki/Skagen",
+          "text": "Skagen (Danish: [ˈskɛˀjn̩] ) is the northernmost town in Denmark, on the east coast of the Skagen Odde peninsula in the far north of Jutland, part of Frederikshavn Municipality in Nordjylland, 41 kilometres (25 mi) north of Frederikshavn and 108 kilometres (67 mi) northeast of Aalborg. The Port of Skagen is Denmark's main fishing port and it also has a thriving tourist industry, attracting 2 million people annually.\nThe name was applied originally to the peninsula but it now also refers to the town. The settlement began during the Middle Ages as a fishing village, renowned for its herring industry. Thanks to its seascapes, fishermen and evening light, towards the end of the 19th century it became popular with a group of impressionist artists now known as the Skagen Painters. In 1879, the Skagen Fishermen's Association was established with the purpose of facilitating the local fishing industry through the Skagensbanen railway, which opened as a narrow-gauged railway in 1890. The modern port of Skagen opened on 20 November 1907, and with the railway connections to Frederikshavn and the rest of Denmark, tourism began to develop.\nBetween the 1930s and 1950s, the town grew rapidly, with the population more than doubling from 4,048 in 1930 to 9,009 in 1955. Skagen reached a maximum population of 14,050 in 1980, after which it gradually declined. As of January 2026, it has a population of 7,250. Thanks to the artistic community that still remains in Skagen, the local arts and crafts trade remains important to the income of the town with its numerous crafts shops and galleries. Chains such as the international jeweller Skagen Designs have branches in the town, and given the abundance of fresh fish coming in at the port of Skagen, seafood forms a staple in Skagen's restaurants.\nSt Lawrence's Church was built just outside the village at the end of the 14th century, but after it was buried in drifting sand it was replaced by Skagen Church in 1841 designed by Christian Frederik Hansen. It was redeveloped in 1909–10 by Ulrik Plesner who also designed a number of other buildings in Skagen, including Klitgaarden and the railway station. Several landmarks in the town are closely associated with the Skagen Painters who used to frequent them, including Brøndums Hotel, Skagens Museum, Michael and Anna Ancher's House, and Drachmann's House.\nSkagen station is the most northerly railway station in Denmark and is the terminus of the Skagensbanen. Nordjyske Jernbaner operates the local train service between Skagen, Frederikshavn and Aalborg with onward national connections by DSB. From Frederikshavn, there are ferries to Gothenburg, Oslo and Læsø. Aalborg Airport is 100 km (62 mi) southwest of Skagen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 443
+    },
+    "banned_terms": [
+      {
+        "term": "skagen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5357,
+    "attempt": 5315,
+    "place_id": "gn-2639941",
+    "input": {
+      "place": {
+        "place_id": "gn-2639941",
+        "name": "Poynton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.35,
+        "lon": -2.11667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Poynton",
+          "url": "https://en.wikipedia.org/wiki/Poynton",
+          "text": "Poynton is a town in the civil parish of Poynton-with-Worth, in the Cheshire East district and the ceremonial county of Cheshire, England; from 1974 to 2009 it was in Macclesfield district. It is located on the easternmost fringe of the Cheshire Plain, 11 miles (18 km) south-east of Manchester, 7 miles (11 km) north of Macclesfield and 5 miles (8 km) south of Stockport. \nThe first mention of the manor of Poynton was in 1289. Coal was mined in Poynton from the 16th century and the collieries, under the ownership of the Lords Vernon from 1832 until their closure in 1935, were the largest in Cheshire. Consequent urbanisation and socioeconomic development necessitated better transport links; these came with the completion of the Macclesfield Canal through Poynton in 1831, the arrival of the Manchester and Birmingham Railway in 1845 and the Macclesfield, Bollington and Marple Railway in 1869. In the late 20th century, Poynton became a commuter town for Manchester. Since 1945, the population has nearly trebled to 14,260 in 2011."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 170
+    },
+    "banned_terms": [
+      {
+        "term": "poynton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5358,
+    "attempt": 5316,
+    "place_id": "gn-2648405",
+    "input": {
+      "place": {
+        "place_id": "gn-2648405",
+        "name": "Glossop",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.44325,
+        "lon": -1.949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glossop",
+          "url": "https://en.wikipedia.org/wiki/Glossop",
+          "text": "Glossop is a market town in the borough of High Peak, Derbyshire, England, 13 miles (21 km) east of Manchester, 24 miles (39 km) west-northwest of Sheffield and 32 miles (51 km) north-east of Matlock. Near Derbyshire's borders with Cheshire, Greater Manchester, South Yorkshire and West Yorkshire, between 150 and 300 metres (492 and 984 ft) above sea level, it is bounded by the Peak District National Park to the south, east and north. In 2021, it had a population of 17,825.\nHistorically, the name Glossop refers to the small hamlet that gave its name to an ancient parish recorded in the Domesday Book of 1086 and then the manor given by William I of England to William Peverel. A municipal borough was created in 1866, which encompassed less than half of the manor's territory. The area now known as Glossop approximates to the villages that used to be called Glossopdale, on the lands of the Duke of Norfolk. Originally a centre of wool processing, Glossop rapidly expanded in the late 18th century when it specialised in the production and printing of calico, a coarse cotton. It became a mill town with many chapels and churches; its fortunes were tied to the cotton industry.\nArchitecturally, the area is dominated by buildings constructed with the local sandstone; a number of these, including Glossop Gasworks, are grade II listed. Two significant former cotton mills and the Dinting railway viaduct remain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 238
+    },
+    "banned_terms": [
+      {
+        "term": "glossop",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5359,
+    "attempt": 5317,
+    "place_id": "gn-2654787",
+    "input": {
+      "place": {
+        "place_id": "gn-2654787",
+        "name": "Brentford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.48619,
+        "lon": -0.3083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brentford",
+          "url": "https://en.wikipedia.org/wiki/Brentford",
+          "text": "Brentford is a suburban town in West London, England and part of the London Borough of Hounslow. It lies at the confluence of the River Brent and the Thames, 8 miles (13 km) west of Charing Cross.\nIts economy has diverse company headquarters buildings which mark the start of the M4 corridor; in transport it also has two railway stations and Boston Manor Underground station on its northwest border with Hanwell. Brentford has a convenience shopping and dining venue grid of streets at its centre. Brentford at the start of the 21st century attracted regeneration of its little-used warehouse premises and docks including the remodelling of the waterfront to provide more economically active shops, townhouses and apartments, some of which comprise Brentford Dock. \nA 19th- and 20th-century mixed social and private housing locality, New Brentford is contiguous with the Osterley neighbourhood of Isleworth and Syon Park and the Great West Road which has most of the largest business premises."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "brentford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5360,
+    "attempt": 5318,
+    "place_id": "gn-2814791",
+    "input": {
+      "place": {
+        "place_id": "gn-2814791",
+        "name": "Waldshut-Tiengen",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 47.62323,
+        "lon": 8.21717
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waldshut-Tiengen",
+          "url": "https://en.wikipedia.org/wiki/Waldshut-Tiengen",
+          "text": "Waldshut-Tiengen (German pronunciation: [ˈvaltshuːt ˈtiːŋən] ; Alemannic: Waldshuet-Düenge), commonly known as Waldshut, is a city in southwestern Baden-Württemberg right at the Swiss border. It is the district seat and at the same time the biggest city in Waldshut district and a \"middle centre\" in the area of the \"high centre\" Lörrach/Weil am Rhein to whose middle area most towns and communities in Waldshut district belong (with the exception of seven communities that belong to Bad Säckingen's area). There are furthermore complexities arising from cross-border traffic between this area and the Swiss cantons of Aargau, Schaffhausen and Zürich. This classification relates to Walter Christaller's Central Place Theory, however, and not to any official administrative scheme.\nThe city, which was newly created in the framework of the 1975 municipal reform, at that time passed the 20,000 mark in population. City council then applied to have the city raised to Große Kreisstadt, which the government of Baden-Württemberg granted on 1 July 1976. Waldshut-Tiengen is also in an \"administrative community\" (Verwaltungsgemeinschaft) with the communities of Dogern, Lauchringen and Weilheim."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 175
+    },
+    "banned_terms": [
+      {
+        "term": "waldshut tiengen",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "waldshut",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tiengen",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5361,
+    "attempt": 5319,
+    "place_id": "gn-2948000",
+    "input": {
+      "place": {
+        "place_id": "gn-2948000",
+        "name": "Blasewitz",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 51.05305,
+        "lon": 13.79831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blasewitz",
+          "url": "https://en.wikipedia.org/wiki/Blasewitz",
+          "text": "Blasewitz (German pronunciation: [ˈblaːzəvɪts]) is a larger borough (Stadtbezirk) of Dresden, Germany in the city's eastern centre on the Elbe river. It consists of seven quarters (Stadtteile):\n\nBlasewitz\nStriesen-Ost\nStriesen-Süd\nStriesen-West\nTolkewitz/Seidnitz-Nord\nSeidnitz/Dobritz\nGruna\nBlasewitz is connected to the borough of Loschwitz north of the river Elbe by the Blue Wonder (Blaues Wunder) bridge, Johannstadt to the west, Striesen to the south, and Tolkewitz to the east. Blasewitz, Loschwitz and Weißer Hirsch form the core of a bigger city area which is known as Germany's largest coherent urban territory architecturally dominated by historic villas. As well as nearby quarters as Wachwitz and Kleinzschachwitz, they were all struck in World War II by the allied bombings but much less than others located closer to the city center. The destruction of whole streets ended at the street Fetscherstraße, which denotes the beginning of the described villa area. It is the biggest but not the only one of its kind in Dresden.   \n\nBlasewitz was first mentioned in 1349. The village of fishermen and wine-growers developed into a suburb of Dresden in the Gründerzeit. Reasonably low taxes made it a popular residence for the wealthy until its incorporation.\nIts main square is Schillerplatz, site of a movie theatre and Schillergalerie mall. Nearby is the Heilig-Geist-Kirche parish church, which was built in Neo-Gothic style in 1893 according to plans by Karl Emil Scherz. Friedrich Schiller eternalized Blasewitz in his play Wallensteins Lager where Justine Renner says: \"Was der Blitz, das ist ja die Gustl von Blasewitz!\" (Like the lightning that is the Gustl from Blasewitz).\nThe Gymnasium Kreuzschule which was first mentioned in 1216, and is thus almost as old as Dresden, has been located in Striesen/Blasewitz since 1945. The Carl Maria von Weber Gymnasium  and the Dresden International School are in Blasewitz as well, as was the Martin Andersen Nexoe Gymnasium high school until it moved to Striesen in 2008. The Waldpark municipal forestry park provides recreational facilities with tennis courts. The quarter on the river is home to the rowing center of TU Dresden. There are a number of hostels and restaurants accompanied with a station of Sächsische Dampfschiffahrt.\nThe areas in proximity to the river, particularly east of the Blue Wonder/ Blaues Wunder bridge, were badly affected by so far all-time record floods which hit Dresden and surroundings in 2002. Purported due to large-scale flood protection measures Dresden largely and Blasewitz almost completely escaped the high tide of the Elbe in 2013. Down the river 2013 many water levels exceeded those of 2002 which got known as Dresden's millennium flood."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 428
+    },
+    "banned_terms": [
+      {
+        "term": "blasewitz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5362,
+    "attempt": 5320,
+    "place_id": "gn-3466187",
+    "input": {
+      "place": {
+        "place_id": "gn-3466187",
+        "name": "Chuí",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -33.69111,
+        "lon": -53.45667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chuí",
+          "url": "https://en.wikipedia.org/wiki/Chuí",
+          "text": "Chuí (Portuguese pronunciation: [ʃuˈi]) is a municipality located in the state of Rio Grande do Sul, Brazil. It is the southernmost town of Brazil, located at latitude 33°41′0″S. A border town, it shares its name with sister city Chuy, Uruguay. The two towns constitute one contiguous urban area, divided by a border street called Avenida Internacional, called Avenida Uruguai in Brazil, a situation also seen in a few other Brazilian border points, such as between Santana do Livramento (Brazil) and Rivera (Uruguay).\nFormerly a village under the jurisdiction of the municipality of Santa Vitória do Palmar, Chuí became its own municipality in Brazil in 1997, when it seceded. It is very close to Brazil's southernmost point, located on a bend of the homonymous river just before its mouth on the Atlantic Ocean, near the hamlet of Barra do Chuí. Both the hamlet and the extreme point itself remained in the territory of Santa Vitória do Palmar after Chuí seceded. Still, Chuí holds the title of the southernmost urban seat of a municipality in Brazil. Its counterparts in the North, West and East are respectively Uiramutã, state of Roraima; Mâncio Lima, Acre; and João Pessoa, Paraíba.\nThe name \"Chuí\" (derived from the Arroio Chuí, a small river that runs through the municipality) is mentioned in the widespread expression \"do Oiapoque ao Chuí\" (\"from the Oiapoque to the Chuí [rivers]\"), referring to the fact that the mouths of these rivers are commonly thought to be the country's two extreme points in the North and South. Actually, they are only the extremities of the Brazilian coast. The saying has approximately the same meaning as the American expression \"from coast to coast\" – i.e., it is used to refer to something that encompasses the whole country.\nChuí has a sizeable community of Palestinian Brazilians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 159,
+      "fullExtractWords": 300
+    },
+    "banned_terms": [
+      {
+        "term": "chui",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

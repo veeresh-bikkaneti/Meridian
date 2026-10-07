@@ -1,0 +1,692 @@
+[
+  {
+    "rank": 101,
+    "place_id": "gn-3169921",
+    "input": {
+      "place": {
+        "place_id": "gn-3169921",
+        "name": "Prato",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.8805,
+        "lon": 11.09699
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prato",
+          "url": "https://en.wikipedia.org/wiki/Prato",
+          "text": "Prato ( PRAH-toh; Italian: [ˈpraːto] ) is a city and comune (municipality) in the region of Tuscany in Italy, and is the capital of the Province of Prato. The city lies in the northeast of Tuscany, at an elevation of 65 metres (213 ft), at the foot of Monte Retaia (the last peak in the Calvana chain). The distance between Prato and Florence is approximately 15–17 kilometers (about 9–10 miles). With a population of 198,327 as of 2026, Prato is Tuscany's 2nd-largest city after Florence, and the 18th-largest in Italy.\nHistorically, Prato's economy has been based on the textile industry which has continued in recent years leading to it becoming Italy's fast fashion manufacturing hub. The city's textile district, the largest in Europe, is home to about 5000 fashion companies which are largely small, Chinese-run subcontractors engaging in illegal activity known as the \"Prato system\" run by Chinese organized crime."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "prato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 102,
+    "place_id": "gn-3204541",
+    "input": {
+      "place": {
+        "place_id": "gn-3204541",
+        "name": "Banja Luka",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Srpska",
+        "lat": 44.77879,
+        "lon": 17.20629
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Banja Luka",
+          "url": "https://en.wikipedia.org/wiki/Banja_Luka",
+          "text": "Banja Luka (Serbian Cyrillic: Бања Лука, pronounced [bǎɲa lǔːka] ) or Banjaluka (Serbian Cyrillic: Бањалука, pronounced [baɲalǔːka]) is the second-largest city in Bosnia and Herzegovina, and the most populous in Republika Srpska. It is Republika Srpska's main economic, political, and administrative centre. Banja Luka is the traditional centre of the densely forested Bosanska Krajina region of northwestern Bosnia and Herzegovina. According to the 2013 census, the city proper has a population of 138,963, while its administrative area comprises a total of 185,042 inhabitants. The City Day of Banja Luka is celebrated on 22 April, commemorating the liberation of the city at the end of World War II.\nThe city is home to the University of Banja Luka and the University Clinical Center of the Republika Srpska, as well as numerous entity- and state-level institutions of Republika Srpska and Bosnia and Herzegovina, respectively. The city is located on the Vrbas river."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "banja luka",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "banja",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "luka",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 103,
+    "place_id": "gn-3363094",
+    "input": {
+      "place": {
+        "place_id": "gn-3363094",
+        "name": "Paarl",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.73378,
+        "lon": 18.97523
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Paarl",
+          "url": "https://en.wikipedia.org/wiki/Paarl",
+          "text": "Paarl (; Afrikaans: [ˈpæːrəl]; derived from parel, meaning \"pearl\" in Dutch) is a town with 294,457 inhabitants in the Western Cape province of South Africa. It is the largest town in the Cape Winelands. Due to the growth of the Mbekweni township, it is now a de facto urban unit with Wellington. It is situated about 60 kilometres (37 mi) northeast of Cape Town in the Western Cape Province and is known for its scenic environment and viticulture and fruit-growing heritage.\nPaarl is the seat of the Drakenstein Local Municipality; although not part of the Cape Town metropolitan area, it falls within its economic catchment. Paarl is unusual among South African place-names, in being pronounced differently in English than in Afrikaans; likewise unusual about the town's name is Afrikaners customary attachment to it, saying not  in Paarl, but rather in die Paarl, or in die Pêrel (literally, \"in the Paarl\")."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "paarl",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 104,
+    "place_id": "gn-3513090",
+    "input": {
+      "place": {
+        "place_id": "gn-3513090",
+        "name": "Willemstad",
+        "country": "Curaçao",
+        "subdivision": "Curaçao",
+        "lat": 12.12246,
+        "lon": -68.88641
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Willemstad",
+          "url": "https://en.wikipedia.org/wiki/Willemstad",
+          "text": "Willemstad ( WIL-əm-staht, VIL-; Dutch: [ˈʋɪləmstɑt]; Papiamento: [wiləmˈstad]) is the capital and largest city of Curaçao, an island in the southern Caribbean Sea that is a constituent country of the Kingdom of the Netherlands. It was the capital of the Netherlands Antilles prior to that entity's dissolution in 2010. The city accounts for around 90% of Curaçao's population, with 136,660 inhabitants as of 2011. The historic centre of the city consists of four quarters: the Punda and Otrobanda, which are separated by the Sint Anna Bay, an inlet that leads into the large natural harbour called the Schottegat, as well as the Scharloo and Pietermaai Smal quarters, which are across from each other on the smaller Waaigat harbour. Willemstad is home to the Curaçao synagogue, the oldest surviving synagogue in the Americas. The city centre, with its unique architecture and harbour entry, has been designated a UNESCO World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "willemstad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 105,
+    "place_id": "gn-4613868",
+    "input": {
+      "place": {
+        "place_id": "gn-4613868",
+        "name": "Clarksville",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 36.52977,
+        "lon": -87.35945
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clarksville, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Clarksville,_Tennessee",
+          "text": "Clarksville is a city in Montgomery County, Tennessee, United States, its county seat, and only incorporated municipality. The city had a population of 166,722 as of the 2020 census, making it the fifth-most populous city in Tennessee. It is the principal city of the Clarksville metropolitan area, which consists of Montgomery and Stewart counties in Tennessee and Christian and Trigg counties in Kentucky.\nThe city was founded in 1785 and incorporated in 1807, and named for General George Rogers Clark, frontier fighter and Revolutionary War hero, and brother of William Clark of the Lewis and Clark Expedition.\nClarksville is the home of Austin Peay State University; The Leaf-Chronicle, the oldest newspaper in Tennessee; and neighbor to the Fort Campbell, United States Army post. The site of the 101st Airborne Division (Air Assault), Fort Campbell is located about 10 miles (16 km) from downtown Clarksville and straddles the Tennessee-Kentucky state line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "clarksville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 106,
+    "place_id": "gn-1176615",
+    "input": {
+      "place": {
+        "place_id": "gn-1176615",
+        "name": "Islamabad",
+        "country": "Pakistan",
+        "subdivision": "Islamabad",
+        "lat": 33.72148,
+        "lon": 73.04329
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Islamabad",
+          "url": "https://en.wikipedia.org/wiki/Islamabad",
+          "text": "Islamabad is the capital city of Pakistan. It is the country's tenth-most populous city with a population of over 1.1 million and is federally administered by the Pakistani government as part of the Islamabad Capital Territory — with a metropolitan population of over 2.3 million. Built as a planned city along the Margalla Hills in the 1960s and established in 1967, Islamabad replaced Karachi as Pakistan's national capital. It is located in the northern Punjab region, north of the city of Rawalpindi — with which it forms a metropolitan area of over 5.7 million inhabitants.\nThe Greek architect Constantinos Apostolou Doxiadis developed Islamabad's master plan, in which he divided it into eight zones. The city comprises administrative areas, a diplomatic enclave, residential areas, educational and industrial sectors, commercial areas, as well as rural and green areas administered by the Islamabad Metropolitan Corporation with support from the Capital Development Authority."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "islamabad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 107,
+    "place_id": "gn-1277013",
+    "input": {
+      "place": {
+        "place_id": "gn-1277013",
+        "name": "Bareilly",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 28.36678,
+        "lon": 79.43167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bareilly",
+          "url": "https://en.wikipedia.org/wiki/Bareilly",
+          "text": "Bareilly, also spelled Bareli, is a city in Bareilly district in the Indian state of Uttar Pradesh. It is among the largest metropolises in Western Uttar Pradesh and is the centre of the Bareilly division as well as the historical region of Rohilkhand. The city lies in the Indo-Gangetic Plains, about 252 kilometres (157 mi) northwest of the state capital, Lucknow, and 265 kilometres (165 mi) east of the national capital, New Delhi. With a population of 903,668 in 2011, it is the eighth most populous city in the state, 17th in northern India and 54th in India. It is located on the bank of Ramganga River and is the site of the Ramganga Barrage built for canal irrigation.\nThe earliest settlement in what is now Bareilly was established in 1537 by a local chieftain Jagat Singh Katehriya who named it 'Bans-Bareli' after his two sons Bansaldev and Bareldev."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "bareilly",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 108,
+    "place_id": "gn-1702540",
+    "input": {
+      "place": {
+        "place_id": "gn-1702540",
+        "name": "Malolos",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 14.8443,
+        "lon": 120.81039
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malolos",
+          "url": "https://en.wikipedia.org/wiki/Malolos",
+          "text": "Malolos [maˈlɔlɔs], officially the City of Malolos (Filipino: Lungsod ng Malolos;  Kapampangan: Ciudad/Lakanbalen ning Malolos), is a  component city and capital of the province of Bulacan, Philippines. According to the 2024 census, it has a population of 269,809 people. It is the capital city of the province of Bulacan as the seat of the provincial government.\nIt was the site of the constitutional convention of 1898, known as the Malolos Convention, that led to the establishment of the First Philippine Republic led by Emilio Aguinaldo, at the sanctuary of the Barasoain Church. The convent of the Malolos Cathedral served as the presidential palace at that time. The First Philippine Republic is sometimes characterized as the first proper constitutional republic in Asia, although there were several Asian republics predating it – for example, the Mahajanapadas of ancient India, the Lanfang Republic, the Republic of Formosa, or the Republic of Ezo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "malolos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 109,
+    "place_id": "gn-1728930",
+    "input": {
+      "place": {
+        "place_id": "gn-1728930",
+        "name": "Baguio",
+        "country": "Philippines",
+        "subdivision": "Cordillera",
+        "lat": 16.41639,
+        "lon": 120.59306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baguio",
+          "url": "https://en.wikipedia.org/wiki/Baguio",
+          "text": "Baguio (UK:  BAG-ee-oh, US:  BAH-ghee-oh, -⁠OH, Tagalog: [ˈbaɡjo]), officially the City of Baguio (Ibaloi: Siudad ne Bagiw; Ilocano: Siudad ti Baguio; Tagalog: Lungsod ng Baguio), is a highly urbanized city in the Cordillera Administrative Region, Philippines. According to the 2024 census, it has a population of 368,426 people.\nIt is known as the \"Summer Capital of the Philippines\", owing to the city's cool climate relative to the lowlands. With an approximate elevation of 1,500 meters (4,900 feet) above mean sea level, Baguio belongs to the Luzon tropical pine forests ecoregion; the climate is conducive for the growth of mossy plants, orchids and pine trees, to which it attributes its other moniker as the \"City of Pines\".\nBaguio was established as a hill station by the United States in 1900 at the site of an Ibaloi village known as Kafagway. It was the United States' only hill station in Asia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "baguio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 110,
+    "place_id": "gn-3099230",
+    "input": {
+      "place": {
+        "place_id": "gn-3099230",
+        "name": "Gliwice",
+        "country": "Poland",
+        "subdivision": "Silesia",
+        "lat": 50.29761,
+        "lon": 18.67658
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gliwice",
+          "url": "https://en.wikipedia.org/wiki/Gliwice",
+          "text": "Gliwice (Polish: [ɡliˈvit͡sɛ] ; Silesian: Glywice/Glajwic, Czech: Hlivice/Glivice; German: Gleiwitz) is a city in Upper Silesia, in southern Poland. The city is located in the Silesian Highlands, on the Kłodnica river (a tributary of the Oder).\nGliwice is the westernmost city of the Metropolis GZM, a conurbation of 2.0 million people, and is the third-largest city of this area, with 175,102 permanent residents as of 2021. It also lies within the larger Katowice-Ostrava metropolitan area which has a population of about 5.3 million people and spans across most of eastern Upper Silesia, western Lesser Poland and the Moravian-Silesian Region in the Czech Republic. Gliwice is bordered by three other cities and towns of the metropolitan area: Zabrze, Knurów and Pyskowice. It is one of the major college towns in Poland, thanks to the Silesian University of Technology, which was founded in 1945 by academics of Lwów University of Technology."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "gliwice",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 111,
+    "place_id": "gn-1625084",
+    "input": {
+      "place": {
+        "place_id": "gn-1625084",
+        "name": "Tangerang",
+        "country": "Indonesia",
+        "subdivision": "Banten",
+        "lat": -6.17806,
+        "lon": 106.63
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tangerang",
+          "url": "https://en.wikipedia.org/wiki/Tangerang",
+          "text": "Tangerang (Indonesian pronunciation: [ˈt̪aŋəɾaŋ] ) is the city with the largest population in the province of Banten, Indonesia. Located on the western border of Jakarta and bordered with South Tangerang city, Tangerang is the sixth largest city proper in the nation (excluding Jakarta, which is classed as a province containing five administrative cities and one regency). Tangerang is home to Soekarno–Hatta International Airport, the primary airport serving the Jakarta metropolitan area.\nThe city is an industrial and manufacturing hub for the island of Java and is home to over 1,000 factories. It has an area of 164.55 km2 (63.53 sq mi) and an official 2010 Census population of 1,798,601, which had risen to 1,895,486 at the 2020 Census, making it the eighth most populated suburb in the world at the latter date. In 2024, the population was estimated to be 1,927,815, consisting of 968,776 men and 959,039 women."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "tangerang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 112,
+    "place_id": "gn-1809152",
+    "input": {
+      "place": {
+        "place_id": "gn-1809152",
+        "name": "Guyuan",
+        "country": "China",
+        "subdivision": "Ningxia",
+        "lat": 36.00667,
+        "lon": 106.28083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guyuan",
+          "url": "https://en.wikipedia.org/wiki/Guyuan",
+          "text": "Guyuan (Chinese: 固原; pinyin: Gùyuán ), formerly known as Xihaigu (Chinese: 西海固; pinyin: xīhǎigù, Xiao'erjing: قُ‌يُوًا شِ) or Dayuan (大原), is a prefecture-level city in the Ningxia Hui Autonomous Region of the People's Republic of China. It occupies the southernmost section of the region, bordering Gansu province to the east, south, and due west. This is also the site of Mount Sumeru Grottoes (须弥山), which is among the ten most famous grottoes in China. As of the end of 2018, the total resident population in Guyuan was 1,124,200. At the end of 2024, the city's resident population was 1,140,800, a decrease of 6,900 compared with the end of the previous year. Among them, the resident population in urban areas was 535,600, accounting for 46.95% of the resident population (the urbanization rate of the resident population), an increase of 1.29 percentage points over the end of the previous year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "guyuan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 113,
+    "place_id": "gn-2312393",
+    "input": {
+      "place": {
+        "place_id": "gn-2312393",
+        "name": "Moanda",
+        "country": "Congo - Kinshasa",
+        "subdivision": "Bas-Congo",
+        "lat": -5.92753,
+        "lon": 12.37148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moanda, Democratic Republic of the Congo",
+          "url": "https://en.wikipedia.org/wiki/Moanda,_Democratic_Republic_of_the_Congo",
+          "text": "Moanda or Muanda is a town and territory lying on the Atlantic Ocean coast of the Democratic Republic of the Congo at the mouth of the Congo River. It is situated in Kongo Central Province, and has a population of 90,812 as of 2012. The town has an airport and is known for its beaches, and has a few limited tourist facilities, but tourism is incidental to the main economic activities of the town.\nThe town of Muanda is 8 kilometres (5.0 mi) north-west of the small port of Banana in the mouth of the Congo, and 6.5 kilometres (4.0 mi) southeast of Point Kipundji. The Moanda Oil Terminal, consisting of various platforms, pipelines and a permanent tanker, lies 10 miles southwest of Point Kipundji. Some 100 km upstream from Muanda, on the north bank of the Congo River, lies the city of Boma, DR Congo's second-largest port."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "moanda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 114,
+    "place_id": "gn-2954172",
+    "input": {
+      "place": {
+        "place_id": "gn-2954172",
+        "name": "Augsburg",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 48.37154,
+        "lon": 10.89851
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Augsburg",
+          "url": "https://en.wikipedia.org/wiki/Augsburg",
+          "text": "Augsburg (UK:  OWGZ-burg, also US:  AWGZ-; German: [ˈaʊksbʊʁk] ; Swabian German: Ougschburg) is a city in the Bavarian part of Swabia, Germany, around 50 kilometres (31 mi) west of the Bavarian capital Munich. It is a university town and the regional seat of the Regierungsbezirk Swabia with a well-preserved Altstadt (historical city centre). Augsburg is an urban district and home to the institutions of the Landkreis Augsburg. It is the third-largest city in Bavaria (after Munich and Nuremberg), with a population of 304,000 and 885,000 in its metropolitan area.\nAfter Neuss, Trier, Worms, Cologne and Xanten, Augsburg is one of Germany's oldest cities, founded in 15 BC by the Romans as Augusta Vindelicorum and named after the Roman emperor Augustus. It was a Free Imperial City from 1276 to 1803 and the home of the patrician Fugger and Welser families that dominated European banking in the 16th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "augsburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 115,
+    "place_id": "gn-5339111",
+    "input": {
+      "place": {
+        "place_id": "gn-5339111",
+        "name": "Concord",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.97798,
+        "lon": -122.03107
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Concord, California",
+          "url": "https://en.wikipedia.org/wiki/Concord,_California",
+          "text": "Concord is the most populous city in Contra Costa County, California, United States. According to an estimate completed by the United States Census Bureau, the city had a population of 123,261 in 2025, making it the tenth most populous city in the San Francisco Bay Area. Founded in 1869 as Todos Santos by Don Salvio Pacheco II, a noted Californio ranchero, the name was later changed to Concord. The city is a major regional suburban East Bay center within the San Francisco Bay Area, and is 29 miles (47 kilometers) east of San Francisco.\nThe United States Census Bureau defines an urban area in the East Bay which is separated from the San Francisco–Oakland urban area and with Concord as the principal city: the Concord–Walnut Creek, CA urban area had a population of 538,583 as of the 2020 census, making it the 80th largest in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "concord",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 116,
+    "place_id": "gn-1253184",
+    "input": {
+      "place": {
+        "place_id": "gn-1253184",
+        "name": "Vijayawada",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 16.50745,
+        "lon": 80.6466
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vijayawada",
+          "url": "https://en.wikipedia.org/wiki/Vijayawada",
+          "text": "Vijayawada (  Vijay-uh-waw-duh), also called as Bezawada, is the second largest city and a major commercial hub in the Indian state of Andhra Pradesh. The city forms an integral part of the Andhra Pradesh Capital Region and is situated on the banks of the Krishna River, flanked by the Eastern Ghats and the Indrakeeladri Hills.\nVijayawada is an important agricultural trade hub in the state of Andhra Pradesh, particularly for mango commerce. The city's surrounding regions, including Nunna and Nuzvid, are well known for extensive mango cultivation and wholesale trading. The mango-growing belt around Vijayawada produces popular varieties such as Banganapalle, Totapuri, Cheruku Rasalu, and Suvarnarekha, which are distributed to several Indian states and export markets.Vijayawada is known for mango trade due to the Nunna mango market. \nIt is renowned for its iconic Kanaka Durga Temple, an important Hindu shrine that attracts millions of devotees each year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "vijayawada",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 117,
+    "place_id": "gn-1529531",
+    "input": {
+      "place": {
+        "place_id": "gn-1529531",
+        "name": "Dunhuang",
+        "country": "China",
+        "subdivision": "Gansu",
+        "lat": 40.16667,
+        "lon": 94.68333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dunhuang",
+          "url": "https://en.wikipedia.org/wiki/Dunhuang",
+          "text": "Dunhuang () is a county-level city in northwestern Gansu Province, Northwestern China. According to the 2010 Chinese census, the city has a population of 186,027, though 2019 estimates put the city's population at about 191,800. Known as Sachu (沙洲), it was a major stop on the ancient Silk Road and is best known for the nearby Mogao Caves.\nDunhuang is situated in an oasis containing Crescent Lake and the Singing Sand Dunes. Dunhuang commands a strategic position at the crossroads of the ancient Southern Silk Route and the main road leading from India via Lhasa to Mongolia and southern Siberia, and also controls the entrance to the narrow Hexi Corridor, which leads straight to the heart of the north Chinese plains and the ancient capitals of Chang'an (today known as Xi'an) and Luoyang.\nAdministratively, the county-level city of Dunhuang is part of the prefecture-level city of Jiuquan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "dunhuang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 118,
+    "place_id": "gn-1817993",
+    "input": {
+      "place": {
+        "place_id": "gn-1817993",
+        "name": "Anqing",
+        "country": "China",
+        "subdivision": "Anhui",
+        "lat": 30.51365,
+        "lon": 117.04723
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anqing",
+          "url": "https://en.wikipedia.org/wiki/Anqing",
+          "text": "Anqing (simplified Chinese: 安庆; traditional Chinese: 安慶; pinyin: Ānqìng, also Yicheng, Nganking and formerly Hwaining, now the name of Huaining County) is a prefecture-level city in the southwest of Anhui province, People's Republic of China. Its population was 4,165,284 as of the 2020 census, with 728,501 living in the built-up (or metro) area made up of three urban districts. Anqing is famous as the birthplace of Chen Duxiu, one of the founding fathers of the Chinese Communist Party, who served as the first General Secretary of the Chinese Communist Party from 1921 to 1928. Huangmei opera, a renowned Chinese opera style, originated in the city of Anqing. This captivating art form gained immense popularity since the 1950s, largely attributed to the exceptional talents of local actors and actresses from Anqing. Huangmei opera is a significant cultural treasure that defines the rich heritage of the city of Anqing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "anqing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 119,
+    "place_id": "gn-3182884",
+    "input": {
+      "place": {
+        "place_id": "gn-3182884",
+        "name": "Arezzo",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.46276,
+        "lon": 11.88068
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arezzo",
+          "url": "https://en.wikipedia.org/wiki/Arezzo",
+          "text": "Arezzo (UK:  ə-RET-soh, arr-ET-soh, US:  ar-ET-soh; Italian: [aˈrettso]) is a city and comune in Italy and the capital of the province of the same name located in Tuscany. Arezzo is about 80 kilometres (50 miles) southeast of Florence at an elevation of 296 metres (971 ft) above sea level. As of 2022, the population was about 97,000.\nKnown as the city of gold and of the high fashion, Arezzo was home to artists and poets such as Giorgio Vasari, Guido of Arezzo and Guittone d'Arezzo and in its province to Renaissance artist Michelangelo. In the artistic field, the city is famous for the frescoes by Piero della Francesca inside the Basilica of San Francesco, and the crucifix by Cimabue inside the Basilica of San Domenico. The city is also known for the important Giostra del Saracino, a game of chivalry that dates back to the Middle Ages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "arezzo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 120,
+    "place_id": "gn-323779",
+    "input": {
+      "place": {
+        "place_id": "gn-323779",
+        "name": "Antakya",
+        "country": "Türkiye",
+        "subdivision": "Hatay",
+        "lat": 36.20655,
+        "lon": 36.15722
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Antakya",
+          "url": "https://en.wikipedia.org/wiki/Antakya",
+          "text": "Antakya (Turkish pronunciation: [anˈtakja]), Turkish form of Antioch, is a municipality and the capital district of Hatay Province, Turkey, with an area of 703 km2 (271 sq mi) and a population of around 400,000 people as of 2022. It is in the Hatay Province, which is the southernmost region of Turkey. The city is located in a well-watered and fertile valley on the Orontes River, about 20 kilometres (12 mi) from the Levantine Sea.\nToday's city stands partly on the site of the ancient Antiochia (also known as \"Antioch on the Orontes\"), which was founded in the fourth century BC by the Seleucid Empire. Antioch later became one of the Roman Empire's largest cities and was made the capital of the provinces of Syria and Coele-Syria. It was also an influential early center of Christianity; the New Testament asserts that the name \"Christian\" first emerged in Antioch."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "antakya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

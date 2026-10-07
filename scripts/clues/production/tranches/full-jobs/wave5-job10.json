@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 990,
+    "attempt": 981,
+    "place_id": "gn-5304391",
+    "input": {
+      "place": {
+        "place_id": "gn-5304391",
+        "name": "Mesa",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 33.42227,
+        "lon": -111.82264
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mesa, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Mesa,_Arizona",
+          "text": "Mesa (  MAY-sə) is a city in Maricopa County, Arizona, United States. The population was 504,258 at the 2020 census. It is the third-most populous city in Arizona, after Phoenix and Tucson, the 38th-most populous city in the U.S., and the most populous city that is not a county seat (except for independent cities Washington, D.C. and Baltimore which are not part of any county). It is the most populous city in the East Valley of the Phoenix metropolitan area. It borders Tempe on the west, the Salt River Pima–Maricopa Indian Community on the north, Chandler and Gilbert on the south along with Queen Creek, and Apache Junction on the east.\nAt least ten colleges and universities were located in Mesa, as is the Mesa Arizona Temple, one of the first Mormon temples constructed outside of Utah. The city is home to the largest relief airport in the Phoenix area, Mesa Gateway Airport, located in the southeastern corner of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "mesa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 991,
+    "attempt": 982,
+    "place_id": "gn-712165",
+    "input": {
+      "place": {
+        "place_id": "gn-712165",
+        "name": "Bila Tserkva",
+        "country": "Ukraine",
+        "subdivision": "Kyiv Oblast",
+        "lat": 49.7994,
+        "lon": 30.1165
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bila Tserkva",
+          "url": "https://en.wikipedia.org/wiki/Bila_Tserkva",
+          "text": "Bila Tserkva (Ukrainian: Біла Церква [ˈbilɐ ˈtsɛrkwɐ] ; lit. ''White Church'', Russian: Белая Церковь, Polish: Biała Cerkiew, Yiddish: שוואַרץ טוּמְאָה) is a city in central Ukraine. It is situated on the Ros River in the historical region of right-bank Ukraine. It is the largest city in Kyiv Oblast (which does not include the city of Kyiv) and serves as the administrative centre of Bila Tserkva Raion and Bila Tserkva urban hromada, and has a population of 207,273 (2022 estimate)., 205,000 (2024 estimate).\nThe oldest preserved document that mentions the city, at that time called Yuryiv, is the Hypatian Codex (1115). Historically, the city has been at the centre of the Porossia (River Ros) region. Founded as a border fortification of Kievan Rus', Bila Tserkva later became property of Polish nobility and served as a prominent commercial centre. Since the 19th century, industry and tourism have been important elements of the city's economy. Under Soviet rule, Bila Tserkva became a centre of agricultural education. During the Cold War, a major Soviet Air Force base was located near the city.\nAs part of independent Ukraine, Bila Tserkva served as a city of regional significance until 2020. In the aftermath of the administrative reform, it became the centre of one of hromadas (communities) of Kyiv Oblast."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "bila tserkva",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bila",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tserkva",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 992,
+    "attempt": 983,
+    "place_id": "gn-738329",
+    "input": {
+      "place": {
+        "place_id": "gn-738329",
+        "name": "Üsküdar",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 41.02274,
+        "lon": 29.01366
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Üsküdar",
+          "url": "https://en.wikipedia.org/wiki/Üsküdar",
+          "text": "Üsküdar (Turkish pronunciation: [ysˈcydaɾ]) is a municipality and district of Istanbul Province, Turkey. Its area is 35 km2, and its population is 524,452 (2022). It is a large and densely populated district on the Anatolian (Asian) shore of the Bosphorus. It is bordered to the north by Beykoz, to the east by Ümraniye, to the southeast by Ataşehir and to the south by Kadıköy; with Karaköy, Kabataş, Beşiktaş, and the historic Sarayburnu quarter of Fatih facing it on the opposite shore to the west. Üsküdar has been a conservative cultural center of the Anatolian side of Istanbul since Ottoman times with its landmark as well as numerous tiny mosques and dergahs.\nPreviously known as Chrysopolis and  Scutari, present-day Üsküdar is a major transport hub, with ferries to Eminönü, Karaköy, Kabataş, Beşiktaş and some of the Bosphorus suburbs. Üsküdar is a stop on the Marmaray rail service at the point where it starts its journey under the Bosphorus, re-emerging on the European side at Sirkeci. Via Marmaray, Üsküdar is linked to Gebze on the Asian side of the city and Halkali on the European side. Üsküdar is also a stop on the M5 Metro line to Çekmeköy. Buses run along the Bosphorus shore all the way up north to Anadolu Kavağı in Beykoz district. A bus service also operates to the summer town of Şile on the Black Sea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 228
+    },
+    "banned_terms": [
+      {
+        "term": "uskudar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 993,
+    "attempt": 984,
+    "place_id": "gn-7645166",
+    "input": {
+      "place": {
+        "place_id": "gn-7645166",
+        "name": "San Miguel",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -34.54335,
+        "lon": -58.71229
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Miguel, Buenos Aires",
+          "url": "https://en.wikipedia.org/wiki/San_Miguel,_Buenos_Aires",
+          "text": "San Miguel is a city in the northwest region of Greater Buenos Aires, 30 km from the City of Buenos Aires. San Miguel is the county seat of San Miguel Partido, and has been a part of Greater Buenos Aires since the early 2000s. The number of inhabitants was 157,532 according to the 2001 census.\nPart of a vast estancia estate owned by General Ángel Pacheco, San Miguel was founded as San José del Pilar by a French Argentine agronomist, Adolfo Sourdeaux, on May 18, 1864. Part of Pilar Partido initially, the town was renamed San Miguel after the former district was subdivided shortly afterward. A Buenos Aires-Pacific Railway line was built along the town in 1870, and its first schools were opened at that time as part of President Domingo Sarmiento's program for education in Argentina. The town was designated as county seat for the newly created General Sarmiento Partido in 1889, and was in turn made the county seat for San Miguel Partido when the former was subdivided in 1994. San Miguel's transition from a rural community to that of a suburban bedroom community with high-rise buildings has caused it to lose its village character and strained its infrastructure. The largely service-oriented economy is complemented by industries such as the IPH steel cable facility.\nCable television provider TeleRed broadcasts from San Miguel, covering audiences in most of the Greater Buenos Aires. Its programming includes a local Catholic channel, Señal Santa Marìa, which offers family-friendly content plus religious programmes, mostly from EWTN.\n\nSan Miguel is home to a number of educational institutions, including the National University of General Sarmiento and the parochial Colegio Máximo de San José, from which Jorge Bergoglio (the future Pope Francis) obtained a degree in philosophy.\nSan Miguel has numerous bus lines running through the center and is served with several stations by the San Martin and Urquiza commuter railroad lines, which provide easy access to Buenos Aires."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 323
+    },
+    "banned_terms": [
+      {
+        "term": "san miguel",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "miguel",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 994,
+    "attempt": 985,
+    "place_id": "gn-89113",
+    "input": {
+      "place": {
+        "place_id": "gn-89113",
+        "name": "Ajdabiya",
+        "country": "Libya",
+        "subdivision": "Al Wahat",
+        "lat": 30.75545,
+        "lon": 20.22625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ajdabiya",
+          "url": "https://en.wikipedia.org/wiki/Ajdabiya",
+          "text": "Ajdabiya ( AHJ-də-BEE-ə; Arabic: أجدابيا, romanized: Aǧdābiyā) is a town in and capital of the Al Wahat District in northeastern Libya. It is some 150 kilometres (93 mi) south of Benghazi. From 2001 to 2007 it was part of and capital of the Ajdabiya District.  The town is divided into three Basic People's Congresses: North Ajdabiya, West Ajdabiya and East Ajdabiya.\nDuring the Libyan Civil War, the city changed hands several times between rebels and pro-Gaddafi forces, with the anti-Gaddafi forces finally securing the town in April 2011.  As many civilians had fled the fighting, one March 2011 report described the city as a \"ghost town.\"  \nLater, during the Second Libyan Civil War, the city was seized by the Ajdabiya Revolutionaries Shura Council until it was taken over by the Libyan National Army on 21 February 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 137,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "ajdabiya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 995,
+    "attempt": 986,
+    "place_id": "gn-10859300",
+    "input": {
+      "place": {
+        "place_id": "gn-10859300",
+        "name": "Lianyungang",
+        "country": "China",
+        "subdivision": "Jiangsu",
+        "lat": 34.59845,
+        "lon": 119.21556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lianyungang",
+          "url": "https://en.wikipedia.org/wiki/Lianyungang",
+          "text": "Lianyungang (simplified Chinese: 连云港; traditional Chinese: 連雲港; pinyin: Liányúngǎng) is a prefecture-level city in northeastern Jiangsu province, China. It borders Yancheng to its southeast, Huai'an and Suqian to its south, Xuzhou to its southwest, and the province of Shandong to its north. Its name derives from Lian Island, the largest island in Jiangsu which lies off its coastline, and Yuntai Mountain, the highest peak in Jiangsu, a few miles from the city center, and the fact that it is a port. The name can be literally translated as the Port Connecting the Clouds.\nLianyungang was home to 4.65 million inhabitants as of the 2020 census whom 1,210,767 lived in the built-up (or metro) area made of Haizhou and Lianyun counties. Lianyungang was known in the West as Haichow (Postal romanization), which means the City of Sea. Haichow was opened to foreign trade by the Qing imperial government in 1905."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "lianyungang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 996,
+    "attempt": 987,
+    "place_id": "gn-1258526",
+    "input": {
+      "place": {
+        "place_id": "gn-1258526",
+        "name": "Ranchi",
+        "country": "India",
+        "subdivision": "Jharkhand",
+        "lat": 23.34316,
+        "lon": 85.3094
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ranchi",
+          "url": "https://en.wikipedia.org/wiki/Ranchi",
+          "text": "Ranchi (Hindi: rāñcī, pronounced [ˈɾaːɲt͡ɕiː]) is the capital city and also the largest district by population of the Indian state of Jharkhand. Ranchi was the centre of the Jharkhand movement, which called for a separate state for the tribal regions of South Bihar, northern Odisha, western West Bengal and the eastern area of what is present-day Chhattisgarh. The Jharkhand state was formed on 15 November 2000 by carving out the Bihar divisions of Chota Nagpur and Santhal Parganas. Ranchi is being developed as a Smart City because it was selected as one of the hundred Indian cities to be developed as a smart city under PM Narendra Modi's flagship Smart Cities Mission.\nRanchi is also one of the oldest cities in Jharkhand. Jagannath Temple and Ratu Palace are some sights which witnessed the history of Ranchi. Ranchi is also nicknamed the City of Waterfalls.\nRanchi is rapidly growing its economy, and certain parks, special economic zones and industrial areas are being developed. Of late, new sectors and modern areas have been built for the city's development."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "ranchi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 997,
+    "attempt": 988,
+    "place_id": "gn-1518980",
+    "input": {
+      "place": {
+        "place_id": "gn-1518980",
+        "name": "Shymkent",
+        "country": "Kazakhstan",
+        "subdivision": "Shymkent",
+        "lat": 42.30988,
+        "lon": 69.60042
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shymkent",
+          "url": "https://en.wikipedia.org/wiki/Shymkent",
+          "text": "Shymkent is a city in southern Kazakhstan, close to the border with Uzbekistan. Shymkent is the third-largest city in Kazakhstan, and serves as a regional cultural and economic center. Administratively, it is one of three cities of republican significance in Kazakhstan, the others being Almaty and Astana. Geographically, Shymkent lies approximately 690 kilometres (430 mi) west of Almaty, 1,483 kilometres (921 mi) south of Astana, and 120 kilometres (75 mi) north of Tashkent, Uzbekistan. Historically, Shymkent dates back to at least the twelfth century, although some archeological finds date back to over 2000 BCE, and it sat along the caravan route of the Silk Road, connecting Central Asia to China, and now functions as a major railway junction for the region. The city also hosts Shymkent International Airport, which connects to various domestic and international destinations.\nShymkent is home to several major historic and cultural sites, and, as of 2024, was among one of the top tourist destinations in Kazakhstan. Shymkent hosts several universities and cultural institutions. Ethnically, the city has sizable Uzbek and Russian communities alongside its majority Kazakh population, reflecting its proximity to Uzbekistan and Soviet past."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "shymkent",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 998,
+    "attempt": 989,
+    "place_id": "gn-1630328",
+    "input": {
+      "place": {
+        "place_id": "gn-1630328",
+        "name": "Purwokerto",
+        "country": "Indonesia",
+        "subdivision": "Central Java",
+        "lat": -7.42139,
+        "lon": 109.23444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Purwokerto",
+          "url": "https://en.wikipedia.org/wiki/Purwokerto",
+          "text": "Purwokerto (Javanese: ꦥꦸꦂꦮꦏꦼꦂꦠ, romanized: Purwåkertå) is a large but non-autonomous town on the island of Java, Indonesia. It is the coordinating centre of local government (Bakorwil 3) and the largest city in southwestern Central Java (known as the Barlingmascakeb region). Currently, Purwokerto is the capital of Banyumas Regency, Central Java province. The population of the four districts which comprise the town at the 2010 census was 233,951 and 229,271 at the 2020 census; the official estimate as of mid 2025 was 237,940. The built-up area of Purwokerto extends beyond these four administrative districts into parts of surrounding districts - notably Sukaraja and Kembaran Districts to the east, Sumbang, Baturraden and Kedungbanteng Districts to the north, and Karanglewas and Cilonggok Districts to the west; and it has a metropolitan area population of 416,964 at the 1990 Census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "purwokerto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 999,
+    "attempt": 990,
+    "place_id": "gn-1685378",
+    "input": {
+      "place": {
+        "place_id": "gn-1685378",
+        "name": "Sultan Kudarat",
+        "country": "Philippines",
+        "subdivision": "Autonomous Region in Muslim Mindanao",
+        "lat": 7.22889,
+        "lon": 124.25778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sultan Kudarat, Maguindanao del Norte",
+          "url": "https://en.wikipedia.org/wiki/Sultan_Kudarat,_Maguindanao_del_Norte",
+          "text": "Sultan Kudarat, officially the Municipality of Sultan Kudarat (Maguindanaon: Inged nu Sultan Kudarat; Iranun: Inged a Sultan Kudarat; Tagalog: Bayan ng Sultan Kudarat), is a municipality of the province of Maguindanao del Norte, Philippines. According to the 2024 census, it had a population of 124,965.\nFormerly known as Nuling, it became the de jure capital of the former Maguindanao province in 1977. It served as the legislative capital of Maguindanao in 2011 as it plays host to the Maguindanao Provincial Board, previously housed in the former capitol at Shariff Aguak. This restored its previous status as provincial capital, which was shared with Buluan which served as the executive capital. In 2022, Republic Act 11550 officially designated Datu Odin Sinsuat as the official capital of Maguindanao del Norte and Buluan as official capital of Maguindanao del Sur. Once a provincial capitol is erected in Datu Odin Sinsuat, the legislature will move to that municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "sultan kudarat",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sultan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kudarat",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1000,
+    "attempt": 991,
+    "place_id": "gn-1799846",
+    "input": {
+      "place": {
+        "place_id": "gn-1799846",
+        "name": "Nanping",
+        "country": "China",
+        "subdivision": "Fujian",
+        "lat": 26.645,
+        "lon": 118.17361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanping",
+          "url": "https://en.wikipedia.org/wiki/Nanping",
+          "text": "Nanping is a third-tier prefecture-level city in northwestern Fujian Province, People's Republic of China. It borders Ningde to the east, Sanming to the south, and the provinces of Zhejiang and Jiangxi to the north and west respectively. Part of the famous Wuyi Mountains range is located in this prefecture. Its population was 2,680,645 as of the 2020 census, of whom 795,448 lived in the built-up (or metro) area made up of Yanping and Jianyang urban districts.At the end of 2024 and the beginning of 2025, the permanent population will be 2.623 million.\nNanping is a picturesque old city, located on a hill near the fall of the Jianxi Brook into the Min, and surrounded by high stone walls, which were used to prevent artillery fire. They formed a considerable obstacle to anything hostile in past conflicts. The city flower is lily.\nThere are towering peaks and widespread low mountains in the territory, with river valleys and small basins scattered among them. Its landscape is dominated by hills and mountains and echoes a traditional Chinese saying that describes southern China as \"eight parts mountain, one part water, and one part farmland\" (八山一水一分田)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 191
+    },
+    "banned_terms": [
+      {
+        "term": "nanping",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1001,
+    "attempt": 992,
+    "place_id": "gn-1806097",
+    "input": {
+      "place": {
+        "place_id": "gn-1806097",
+        "name": "Ningde",
+        "country": "China",
+        "subdivision": "Fujian",
+        "lat": 26.66167,
+        "lon": 119.52278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ningde",
+          "url": "https://en.wikipedia.org/wiki/Ningde",
+          "text": "Ningde, previously romanized as Ningteh and Ning-Taik, is a city located along the northeastern coast of Fujian, China. It borders the provincial capital of Fuzhou City to the south, Wenzhou Prefecture of Zhejiang to the north, and Nanping to the west.\nThe prefecture-level Ningde City administers 1 district, 2 cities, 6 counties, as well as 124 towns, townships and subdistricts. Listed below are the district, cities and counties, first four of which are coastal whereas the rest are located in mountainous areas.\nSituated roughly 300 kilometres (190 mi) north of the Tropic of Cancer, the prefecture of Ningde spans 13,500 square kilometres (5,200 sq mi) in land area. Like the rest of the province, Ningde sits in a mountainous region but it also enjoys almost 200 kilometres (120 mi) of coastline facing the East China Sea. Ningde is listed No.2 in China Integrated City Index 2016's environmental ranking, a study conducted by the National Development and Reform Commission."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "ningde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1002,
+    "attempt": 993,
+    "place_id": "gn-1832847",
+    "input": {
+      "place": {
+        "place_id": "gn-1832847",
+        "name": "Yangju",
+        "country": "South Korea",
+        "subdivision": "Gyeonggi-do",
+        "lat": 37.83311,
+        "lon": 127.06169
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yangju",
+          "url": "https://en.wikipedia.org/wiki/Yangju",
+          "text": "Yangju (Korean: 양주; Korean pronunciation: [jaŋ.dʑu]) is a city in Gyeonggi Province, South Korea.  Yangju is located south of Dongducheon and north of Uijeongbu, not far from Seoul.\nIn the past, it was one region with Uijeongbu-si, Guri-si, Namyangju-si, Dongducheon-si, and some parts of Seoul, so the county office was located in Uijeongbu, which was the largest town in Yangju at the time and the center of all of Yangju, including the current Guri and Namyangju. Even after the separation of Uijeongbu-si in 1963, the county office remained in Uijeongbu city, and it was not until 2000 that it ended its life as Uijeongbu and moved to its current location near the site of the Yangju Mok government office, and when it was promoted to Yangju-si in 2003, it was given the title of city hall."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "yangju",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1003,
+    "attempt": 994,
+    "place_id": "gn-2174003",
+    "input": {
+      "place": {
+        "place_id": "gn-2174003",
+        "name": "Brisbane",
+        "country": "Australia",
+        "subdivision": "Queensland",
+        "lat": -27.46794,
+        "lon": 153.02809
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brisbane",
+          "url": "https://en.wikipedia.org/wiki/Brisbane",
+          "text": "Brisbane (  BRIZ-bən; Turrbal/Yagara: Meanjin) is the capital and largest city of the Australian state of Queensland and the third-most populous city in Australia, with a population of about 2.8 million. Brisbane lies at the centre of South East Queensland, a bio-geographical and urban region with an estimated population of 4.1 million as of 2024. The central business district is situated within a peninsula of the Brisbane River approximately 15 kilometres (9 mi) from its mouth at Moreton Bay. Greater Brisbane sprawls across the hilly floodplain of the Brisbane River Valley between the Pacific Ocean and the Taylor and D'Aguilar mountain ranges, encompassing several local government areas (LGAs). The City of Brisbane LGA forms the inner area of Greater Brisbane, and is the most populous local government area in Australia. The demonym of Brisbane is Brisbanite.\nThe Moreton Bay penal settlement was established in 1824 at Redcliffe as a place for secondary offenders from the Sydney colony, but in May 1825, the settlement moved to North Quay on the banks of the Brisbane River, named for the Governor of New South Wales, Sir Thomas Brisbane. German Lutherans established the first free settlement of Zion Hill at Nundah in 1838, and in 1859, Brisbane was chosen as Queensland's capital when the state separated from New South Wales. During World War II, the Allied command in the South West Pacific was based in the city, along with the headquarters of General Douglas MacArthur of the United States Army.\nBrisbane is a major transport hub, served by large rail, bus and ferry networks, as well as Brisbane Airport and the Port of Brisbane, Australia's third-busiest airport and seaport, respectively. A diverse city with over 36% of its metropolitan population being foreign-born, Brisbane is frequently ranked highly in lists of the world's most liveable cities. Brisbane has hosted major events including the 1982 Commonwealth Games, World Expo 88 and the 2014 G20 summit, and will host the 2032 Summer Olympics and Paralympics.\nSouth Bank and its extensive parklands attract an estimated 16 million visitors each year. The surrounding region includes the UNESCO World Heritage Gondwana Rainforests, the Glass House Mountains, and Moreton Bay which is sheltered by the barrier sand islands of Moreton and North Stradbroke Island. Within the bay lie the historic sites of Teerk Roo Ra and St Helena Island National Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 390
+    },
+    "banned_terms": [
+      {
+        "term": "brisbane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1004,
+    "attempt": 995,
+    "place_id": "gn-2519240",
+    "input": {
+      "place": {
+        "place_id": "gn-2519240",
+        "name": "Córdoba",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.89155,
+        "lon": -4.77275
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Córdoba, Spain",
+          "url": "https://en.wikipedia.org/wiki/Córdoba,_Spain",
+          "text": "Córdoba ( KOR-də-bə; Spanish: [ˈkoɾðoβa] ), or sometimes Cordova ( KOR-də-və), is a city in Andalusia, Spain, and the capital of the province of Córdoba. With a population of 324,902 as of 2024, it is the 12th-largest city in Spain and the 3rd-largest in Andalusia.\nThe city primarily lies on the right bank of the Guadalquivir in the south of the Iberian Peninsula. Once a Roman colony, it was taken over by the Visigothic Kingdom in the sixth century and then conquered by the Muslims in the eighth century. Córdoba became the capital of the Emirate and then Caliphate of Córdoba, from which the Umayyad dynasty ruled al-Andalus. Under Umayyad rule, Córdoba was transformed into a centre of education and learning, and by the 10th century it had grown to be the second-largest city in Europe. The caliphate experienced a manifold political crisis in the early 11th century that brought about state collapse. Following the Christian conquest in 1236, Córdoba became part of the Crown of Castile as the head of the Kingdom of Córdoba.\nCórdoba is the place with the most UNESCO World Heritage Sites in the world, with four separate UNESCO inscriptions. Córdoba is home to notable examples of Moorish architecture such as the Mezquita-Catedral, which was named as a UNESCO World Heritage Site in 1984 and is now a cathedral. The site has since been expanded to encompass the whole historic centre of Córdoba. Madinat al-Zahra near the city is also a World Heritage Site while the Festival de los Patios has been recognized as UNESCO Intangible Cultural Heritage.\nCórdoba has the highest summer temperatures in Spain and Europe, with average high temperatures around 37 °C (99 °F) in July and August. Summers are very dry whereas the mild winters have frequent rainfall."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 296
+    },
+    "banned_terms": [
+      {
+        "term": "cordoba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1005,
+    "attempt": 996,
+    "place_id": "gn-295629",
+    "input": {
+      "place": {
+        "place_id": "gn-295629",
+        "name": "Ashdod",
+        "country": "Israel",
+        "subdivision": "Southern District",
+        "lat": 31.79213,
+        "lon": 34.64966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ashdod",
+          "url": "https://en.wikipedia.org/wiki/Ashdod",
+          "text": "Ashdod (Hebrew: אַשְׁדּוֹד, romanized: ʾašdōḏ, pronounced [ʔaʃˈdod] ; Arabic: أسدود, romanized: ʾasdūd, pronounced [ʔasˈduːd], or إسدود, ʾisdūd [ʔɪsˈduːd]; Philistine: 𐤀𐤔𐤃𐤃‎, romanized: *ʾašdūd) is the sixth-largest city in Israel. Located in the country's Southern District, it lies on the Mediterranean coast 32 kilometres (20 miles) south of Tel Aviv and 20 km (12 mi) north of Ashkelon. Ashdod's port is the largest in Israel, handling 60% of the country's imported goods.\nModern Ashdod was established in 1956 on the sand hills 6 kilometers northwest of the ancient city of Ashdod, known in modern times by its Arabic name Isdud. Isdud had been depopulated during the 1948 Arab–Israeli War, having had a history spanning approximately 3,700 years. In ancient times, ancient Ashdod developed as an active maritime trade center, with its ports identified at Ashdod-Yam and Tel Mor. In biblical times, it was one of the five principal cities of the Philistines.\nAshdod has absorbed extensive immigration from around the world, resulting in one of the highest percentages of new immigrants in Israel. The city is home to the largest Moroccan and Karaite Jewish communities in Israel, and to the largest Georgian Jewish community in the world.  According to the Israel Central Bureau of Statistics (CBS), Ashdod had a population of 228,562 in 2024, with an area of 47,242 dunams (47.242 km2; 18.240 sq mi). Ashdod was incorporated as a city in 1968, with a land-area of approximately 60 square kilometres (23 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "ashdod",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1006,
+    "attempt": 997,
+    "place_id": "gn-3438115",
+    "input": {
+      "place": {
+        "place_id": "gn-3438115",
+        "name": "Fernando de la Mora",
+        "country": "Paraguay",
+        "subdivision": "Central Department",
+        "lat": -25.3386,
+        "lon": -57.52167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fernando de la Mora, Paraguay",
+          "url": "https://en.wikipedia.org/wiki/Fernando_de_la_Mora,_Paraguay",
+          "text": "Fernando de la Mora (Spanish pronunciation: [feɾˈnando ðe la ˈmoɾa]) is a city located in the Central Department, and is part of the metropolitan area of Asunción, Paraguay. It has an estimated population of 110.255 inhabitants according to the 2022 census, making it the tenth most populated city in the country\nThe city is divided in two areas: the Southern area and the Northern area, divided by the Mariscal Lopez Avenue, with a total surface area of 21 square kilometers. The Northern area has 8 neighborhoods, while the Southern area has 6.\nThe city features a municipal sports center, a football stadium equipped for national and international matches, 20 public schools, and approximately 30 private schools.  Among the public institutions is the Colegio Nacional EMD Dr. Fernando de la Mora, the largest school in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "fernando de la mora",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fernando",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mora",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1007,
+    "attempt": 998,
+    "place_id": "gn-3463011",
+    "input": {
+      "place": {
+        "place_id": "gn-3463011",
+        "name": "Franca",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -20.53861,
+        "lon": -47.40083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Franca",
+          "url": "https://en.wikipedia.org/wiki/Franca",
+          "text": "Franca is a municipality in the state of São Paulo, Brazil. The city is located in the northeastern portion of the state, 401 km (249 mi) from the state capital São Paulo, and 676 km (420 mi) from Brasilia. It covers a total area of 605.679 km2 of which 86.92 km2 comprises the urban area. As of the 2022 Census, the city's population was 352,536. \nIt is recognized as the \"National Capital of Footwear\" and \"National Basketball Capital\" in Brazil, serving as the industrial and economic hub for a region of 19 municipalities, with a combined population of 672,053, between the states of São Paulo and Minas Gerais.\nIn 2018, the city was ranked as the fifth best place to live in Brazil, and in 2023, as the sixth safest medium sized city in the country. It has also maintained its position as one of the Brazilian cities with the best urban sanitation ratios.\nFranca was founded as a parish in 1805, initially part of Mogi Mirim until 1824. Its city status was granted in 1856."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "franca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1008,
+    "attempt": 999,
+    "place_id": "gn-4672989",
+    "input": {
+      "place": {
+        "place_id": "gn-4672989",
+        "name": "Beaumont",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 30.08605,
+        "lon": -94.10185
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Beaumont, Texas",
+          "url": "https://en.wikipedia.org/wiki/Beaumont,_Texas",
+          "text": "Beaumont is a city in the U.S. state of Texas. It is the county seat of Jefferson County, within the Beaumont–Port Arthur metropolitan area, located in Southeast Texas on the Neches River about 85 miles (137 km) east of Houston (city center to city center). With a population of 115,282 at the 2020 census, Its metropolitan area was the 10th largest in Texas in 2020, and 130th in the United States.\nThe city of Beaumont was founded in 1838. The pioneer settlement had an economy based on the development of lumber, farming, and port industries. In 1892, Joseph Eloi Broussard opened the first commercially successful rice mill in Texas, stimulating development of rice farming in the area; he also started an irrigation company (since 1933, established as the Lower Neches Valley Authority) to support rice culture. Rice became an important commodity crop in Texas and is now cultivated in 23 counties.\nA big change occurred in 1901 with the Spindletop gusher, which demonstrated that a huge oil field lay underneath and adjacent to the city. With Spindletop, several energy companies developed in Beaumont, and some remain. The area rapidly developed as one of the country's major petrochemical refining areas. Along with Port Arthur and Orange, Beaumont forms the Golden Triangle, a major industrial area on the Texas Gulf Coast.\nBeaumont is home to Lamar University, a national Carnegie doctoral research university with over 14,000 students, including undergraduates and postgraduates. Over the years, several corporations have been based in this city, including Gulf States Utilities, which had its headquarters in Beaumont until its takeover by Entergy Corporation in 1994. GSU's Edison Plaza headquarters remains the tallest building in Beaumont.\nThe ExxonMobil Beaumont Refinery and Petrochemical Complex is the largest private employer in the city and occupies more than 2,000 acres of the city and port."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 304
+    },
+    "banned_terms": [
+      {
+        "term": "beaumont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1009,
+    "attempt": 1000,
+    "place_id": "gn-496527",
+    "input": {
+      "place": {
+        "place_id": "gn-496527",
+        "name": "Serpukhov",
+        "country": "Russia",
+        "subdivision": "Moscow Oblast",
+        "lat": 54.9198,
+        "lon": 37.41618
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Serpukhov",
+          "url": "https://en.wikipedia.org/wiki/Serpukhov",
+          "text": "Serpukhov (Russian: Серпухов, IPA: [ˈsʲerpʊxəf]) is a city in Moscow Oblast, Russia, located at the confluence of the Oka and the Nara Rivers, 99 km (62 miles) south from Moscow and 72 km (45 miles) from Moscow Ring Road on the Moscow—Simferopol highway. The Moscow—Tula railway passes through Serpukhov.   \nSerpukhov is at the centre of the Serpukhov Urban District which in turn lies at the heart of the Serpukhov metropolitan area with a population of more than 260,000 inhabitants.\nIn the 14th and early 15th centuries, Serpukhov was the capital of the principality. It was allocated to an independent administrative and economic unit with direct subordination to the executive committee of the regional council on September 14, 1939. Now a city of regional subordination, it is part of the municipality of the city district of Serpukhov.\nIn the modern era, Serpukhov became a local industrial center with textile, mechanical engineering, furniture, and paper-producing industries. The SeAZ factory produced the Lada Oka microcar since the 1980s. The Prioksko-Terrasny Nature Reserve sprawls within 12 km (7.5 miles) from the city. By a resolution of the Moscow Regional Duma of April 28, 2016, the city was awarded the honorary title \"The Inhabited Point of Military Valor\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 136,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "serpukhov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 748,
+    "attempt": 741,
+    "place_id": "gn-738648",
+    "input": {
+      "place": {
+        "place_id": "gn-738648",
+        "name": "Trabzon",
+        "country": "Türkiye",
+        "subdivision": "Trabzon",
+        "lat": 41.005,
+        "lon": 39.72694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trabzon",
+          "url": "https://en.wikipedia.org/wiki/Trabzon",
+          "text": "Trabzon (Turkish pronunciation: [tɾɑbzon]) is a city on the Black Sea coast of northeastern Turkey and the capital of Trabzon Province. Historically known as Trebizond, the city was founded in 756 BC as Trapezous by Greek colonists from Miletus. It was added into the Achaemenid Empire by Cyrus the Great and was later part of the independent Kingdom of Pontus that challenged Rome until 68 BC. Thenceforth part of the Roman and later Byzantine Empire, the city was the capital of the Empire of Trebizond, one of the successor states of the Byzantine Empire after the Fourth Crusade in 1204. In 1461, it came under Ottoman rule.\nDuring the early modern period, Trabzon, because of the importance of its port, again became a focal point of trade to Persia and the Caucasus. Today, Trabzon is the second largest city and port on the Black Sea coast of Turkey with a population of almost 300,000. The urban population of the city is 330,836 (Ortahisar), with a metropolitan population of 822,270 (whole province). Trabzon province has 18 districts in total."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 154,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "trabzon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 749,
+    "attempt": 742,
+    "place_id": "gn-1252416",
+    "input": {
+      "place": {
+        "place_id": "gn-1252416",
+        "name": "Thimphu",
+        "country": "Bhutan",
+        "subdivision": "Thimphu District",
+        "lat": 27.46609,
+        "lon": 89.64191
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thimphu",
+          "url": "https://en.wikipedia.org/wiki/Thimphu",
+          "text": "Thimphu ( tim-POOH; Dzongkha: ཐིམ་ཕུག་ [tʰim˥.pʰu˥]) is the capital and largest city of Bhutan. It is situated in the western central part of Bhutan, and the surrounding valley is one of Bhutan's dzongkhags, the Thimphu District. The ancient capital city of Punakha was replaced by Thimphu as the capital in 1955, and in 1961 Thimphu was officially declared the capital of the Kingdom of Bhutan by the 3rd Druk Gyalpo Jigme Dorji Wangchuck.\nThe city extends in a north–south direction on the west bank of the valley formed by the Wang Chhu, which flows out into India as the Raidāk River. Thimphu is the fifth highest capital in the world by altitude and the highest capital in Asia, ranging from 2,248 metres (7,375 feet) to 2,648 metres (8,688 feet). Unlike many capitals, Thimphu does not have its own airport, instead relying on the Paro Airport, accessible by road 52 kilometres (32 miles) away.\nThimphu, as the political and economic center of Bhutan, has a dominant agriculture and livestock base, contributing to about 45% of the country's GNP. Tourism, though a contributor to the economy, is strictly regulated, maintaining a balance between tradition, development, and modernization. Thimphu contains most of the important political buildings in Bhutan, including the National Assembly of the parliamentary democracy and Dechencholing Palace, the official residence of the King, located to the north of the city. The city’s development is guided by the \"Thimphu Structure Plan, 2002–2027\", an urban plan aimed at protecting the fragile ecology of the valley. Some development has been supported by the World Bank and Asian Development Bank.\nThe culture of Bhutan is reflected fully in Thimphu, through literature, religion, customs, national dress code, monastic practices, music, dance, and media. The annual Tshechu festival, held in September or October according to the Bhutanese calendar, is a major event featuring mask dances known as Cham dances, performed in the courtyards of the Tashichho Dzong."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 320
+    },
+    "banned_terms": [
+      {
+        "term": "thimphu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 750,
+    "attempt": 743,
+    "place_id": "gn-1680932",
+    "input": {
+      "place": {
+        "place_id": "gn-1680932",
+        "name": "Tuguegarao",
+        "country": "Philippines",
+        "subdivision": "Cagayan Valley",
+        "lat": 17.61577,
+        "lon": 121.72285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tuguegarao",
+          "url": "https://en.wikipedia.org/wiki/Tuguegarao",
+          "text": "Tuguegarao ( or ), officially the City of Tuguegarao (Ibanag: Siyudad nat Tugegaraw; Itawit: Siyudad yo Tugegaraw; Ilocano: Siudad ti Tuguegarao; Filipino: Lungsod ng Tuguegarao [tʊgɛ̝gäˈɾaʊ]), is a component city and capital of the province of Cagayan, Philippines. According to the 2024 census, it has a population of 167,297 people, making it the most populous city in Cagayan Province, Cagayan Valley and Northeastern Luzon.\nIt is a major urban center and the primary growth center in the Northeastern Luzon. It is the regional center of the Cagayan Valley and is also its regional institutional and administrative center. The city is a convergence area for the provinces of Cagayan, Kalinga, Apayao and northern Isabela and is one of the fast-emerging cities in the Philippines.\nDubbed as the \"Gateway to the Ilocandia and the Cordilleras,\" the city is located on the southern border of the province where the Pinacanauan River empties into the Cagayan River. It is surrounded by the Sierra Madre Mountains to the east, Cordillera Mountains to the west, and the Caraballo Mountains to the south.\nThe highest temperature ever recorded in the Philippines—42.2 °C (108.0 °F)—hit Tuguegarao on May 11, 1969."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "tuguegarao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 751,
+    "attempt": 744,
+    "place_id": "gn-2507480",
+    "input": {
+      "place": {
+        "place_id": "gn-2507480",
+        "name": "Algiers",
+        "country": "Algeria",
+        "subdivision": "Algiers",
+        "lat": 36.73225,
+        "lon": 3.08746
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Algiers",
+          "url": "https://en.wikipedia.org/wiki/Algiers",
+          "text": "Algiers ( al-JEERZ; Arabic: الجزائر, romanized: al-Jazāʾir, pronounced [al.d͡ʒazaːʔir] , locally [(ɪ)ˈd͡ːzaːjir]; French: Alger, pronounced [alʒe] ; Algerian Tamazight: ⴷⵣⴰⵢⵔ, romanized: Dzayer), officially Capital City of Algiers (Arabic: الجزائر العاصمة, romanized: al-Jazāʾir al-ʿĀṣima; Algerian Tamazight: ⴷⵣⴰⵢⵔ ⵜⴰⵎⴰⵏⴰⵖⵜ, romanized: Dzayer Tamaneɣt), is the capital and largest city of Algeria, located on the Mediterranean Sea in the north-central portion of the country. In 2025, an estimated 4.325 million people resided within the urban area. Algiers is the third-largest city on the Mediterranean, the tenth-largest city in the Arab world, and the 19th-largest city in Africa by population. Algiers is the capital of the Algiers Province; it extends over many communes without having its own separate governing body. It extends along the Bay of Algiers surrounded by the Mitidja Plain and major mountain ranges. Its favorable location made it the center of Ottoman and French influences for the region, shaping it to be a diverse metropolis.\nAlgiers was formally founded in 972 AD by Buluggin ibn Ziri, though its history goes back to between 1200 and 250 BC as a Phoenician trading settlement. Over time, it came under the control of several powers, including Numidia, the Roman Empire, and various Islamic caliphates. In 1516, it became the capital of the Ottoman Regency of Algiers, a status it held until the French invasion in 1830, after which it served as the capital of French Algeria. During World War II, it briefly functioned as the administrative center of Free France from 1942 to 1944 before returning to French colonial rule. It has remained the capital of the modern Algerian state since the Algerian Revolution in 1962.\nAlgiers is the main tourist destination in Algeria, known for its numerous museums, art galleries, and cultural institutions. Most notable is the historic Casbah, a UNESCO World Heritage Site featuring traditional Algerian, Ottoman, and Andalusian architecture. The city also contains a larger French-built section that showcases diverse architectural styles and trends. Commonly referred to as al bidha (\"the white\") for its whitewashed buildings, Algiers blends colonial and indigenous urban influences. It hosted the 1975 Mediterranean Games and various major international sporting events, and it serves as the seat of the Consultative Council of the Arab Maghreb Union. Numerous Algerian multinational companies and institutions are based in the city, such as Sonatrach Petroleum Corporation, Air Algérie, and Bank of Algeria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 390
+    },
+    "banned_terms": [
+      {
+        "term": "algiers",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 752,
+    "attempt": 745,
+    "place_id": "gn-3119841",
+    "input": {
+      "place": {
+        "place_id": "gn-3119841",
+        "name": "A Coruña",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 43.37135,
+        "lon": -8.396
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "A Coruña",
+          "url": "https://en.wikipedia.org/wiki/A_Coruña",
+          "text": "A Coruña (Galician pronunciation: [ɐ koˈɾuɲɐ] ; in Spanish: La Coruña [la koˈɾuɲa] ; also informally called Coruña; historical English: Corunna or The Groyne) is a city and municipality in Galicia, Spain. With a population of 249,255, it is the 2nd-largest city in Galicia behind Vigo. The city is the capital of the Province of A Coruña, having also been the political capital of the Kingdom of Galicia from the 16th to the 19th centuries, and as a regional administrative centre between 1833 and 1982.\nA Coruña is located on a promontory in the Golfo Ártabro, a large gulf on the Atlantic Ocean. It is the main industrial and financial centre of northern Galicia, and holds the headquarters of the Universidade da Coruña. A Coruña is the city with the tallest mean-height of buildings in Spain, also featuring a population density of 21,972 inhabitants per square kilometre (56,910/sq mi) of built land area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "a coruna",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "a",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "coruna",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 753,
+    "attempt": 746,
+    "place_id": "gn-3247449",
+    "input": {
+      "place": {
+        "place_id": "gn-3247449",
+        "name": "Aachen",
+        "country": "Germany",
+        "subdivision": "North Rhine-Westphalia",
+        "lat": 50.77664,
+        "lon": 6.08342
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aachen",
+          "url": "https://en.wikipedia.org/wiki/Aachen",
+          "text": "Aachen is the 13th-largest city in North Rhine-Westphalia and the 27th-largest city of Germany, with around 264,000 inhabitants. It is the western-most major city in Germany, lying approximately 61 km (38 mi) west of Cologne and Bonn, directly bordering Belgium in the southwest, and the Netherlands in the northwest. The city lies in the Meuse–Rhine Euroregion and is the seat of the district of Aachen (Städteregion Aachen).\nThe once Celtic settlement was equipped with several thermae in the course of colonization by Roman pioneers settling at the warm Aachen thermal springs around the 1st century. After the withdrawal of the Roman troops, the vicus Aquae Granni was Frankized around the 5th century, by which it came under Merovingian and later Carolingian rule. With the completion of the Carolingian Palace of Aachen at the transition to the 9th century, Aachen was constituted as the main royal residence of the Frankish Empire ruled by Charlemagne. Because of that, the city is sometimes called the \"cradle of Europe\". After the Treaty of Verdun, the city was within the borders of Middle Francia, until it became part of East Francia after the Treaty of Meerssen (870). It subsequently was part of the Holy Roman Empire and was granted city rights in 1166 by Emperor Frederick Barbarossa, becoming an imperial city. It served as the coronation site where 31 Holy Roman Emperors were crowned Kings of the Germans from 936 to 1531, until Frankfurt became the preferred place of coronation.\nOne of Germany's leading institutes of higher education in technology, the RWTH Aachen University (Rheinisch-Westfälisch Technische Hochschule Aachen), is located in the city. Its university hospital Uniklinikum Aachen is Europe's largest single-building hospital. Aachen's industries include science, engineering and information technology. In 2009, Aachen was ranked eighth among cities in Germany for innovation.\nAachen is located at the northern foothills of the High Fens and the Eifel Mountains. It sits on the Wurm River, a tributary of the Rur, and together with Mönchengladbach, it is the only larger German city in the drainage basin of the Meuse. The regional dialect spoken in the city is a Central Franconian, Ripuarian variant with strong Limburgish influences from the dialects in the neighbouring Netherlands. As a Rhenish city, Aachen is one of the main centres of carnival celebrations in Germany, along with Cologne and Mainz. The culinary specialty for which the city is best known is Aachener Printen, a type of gingerbread."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 404
+    },
+    "banned_terms": [
+      {
+        "term": "aachen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 754,
+    "attempt": 747,
+    "place_id": "gn-3407327",
+    "input": {
+      "place": {
+        "place_id": "gn-3407327",
+        "name": "Arapiraca",
+        "country": "Brazil",
+        "subdivision": "Alagoas",
+        "lat": -9.7525,
+        "lon": -36.66111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arapiraca",
+          "url": "https://en.wikipedia.org/wiki/Arapiraca",
+          "text": "Arapiraca (Central Northeastern Portuguese pronunciation: [ɐɾɐpiˈɾakɐ]) is a Brazilian municipality in the state of Alagoas, Northeast Region of the country. It is located in Agreste in Alagoas and belongs to the Metropolitan Region of Agreste, being located about 125 km (78 mi) west of state capital. Its population in 2022 was 234,696 inhabitants, making it the second most populous municipality in Alagoas and the ninth in the interior of the Northeast. It occupies an area of just over 345 km2 (133 sq mi), being 59 km2 (23 sq mi) in urban area. \nThe development of the city took place mainly in the 1970s, when the culture of producing tobacco, formerly known \"Green Gold\", one of the main economic activities of the time in the region, elevated the city to the category of municipality. Currently, the city has several large companies and countless small companies that give a great boost to the local economy.\nCurrently, Arapiraquense City has been standing out for being one of the most generating jobs throughout the national territory. According to data from the General Register of Employees and Unemployed, released by the Ministry of Labor and Employment, Arapiraca was the fourth largest generator of formal jobs in the country in 2015. According to the MTE, the city generated 2,076 jobs last year, second only to the cities of Canaã dos Carajás, in Pará, which generated 2,801 formal jobs, Pontal do Paraná, in Paraná, which registered 2,265 job openings and Matão, in the state of São Paulo, with the creation of 2,110 formal jobs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "arapiraca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 755,
+    "attempt": 748,
+    "place_id": "gn-3450554",
+    "input": {
+      "place": {
+        "place_id": "gn-3450554",
+        "name": "Salvador",
+        "country": "Brazil",
+        "subdivision": "Bahia",
+        "lat": -12.97563,
+        "lon": -38.49096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salvador, Bahia",
+          "url": "https://en.wikipedia.org/wiki/Salvador,_Bahia",
+          "text": "Salvador (Brazilian Portuguese: [sawvaˈdoʁ], local pronunciation: [-ˈdo(h)], formerly known as Cidade do São Salvador da Bahia de Todos os Santos, literally \"City of the Holy Savior of the Bay of All the Saints\") is a Brazilian municipality and capital city of the state of Bahia. Situated in the Zona da Mata in the Northeast Region of Brazil, Salvador is recognized throughout the country and internationally for its cuisine, music, and architecture. The African influence in many cultural aspects of the city makes it a center of Afro-Brazilian culture. As the first capital of Colonial Brazil, the city is one of the oldest in the Americas. Its foundation in 1549 by Tomé de Sousa took place on account of the implementation of the General Government of Brazil by the Portuguese Empire.\nCentralization as a capital, along with Portuguese colonization, were important factors in shaping the profile of the municipality, as were certain geographic characteristics. The construction of the city followed the uneven topography, initially with the formation of two levels—Upper Town (Cidade Alta) and Lower Town (Cidade Baixa)—on a steep escarpment, and later with the conception of valley avenues. With 692.818 square kilometers (267.499 mi2) in area, its emerged territory is peninsular, and the coast is bordered by the Bay of All Saints to the west and the Atlantic Ocean to the east. The Historic Center of Salvador, iconized on the outskirts of Pelourinho, is known for its colonial architecture, with historical monuments dating from the 17th century to the beginning of the 20th century, and was declared a World Heritage Site by UNESCO in 1985. The stage of one of the biggest Carnivals in the world (the biggest street party in the world, according to the Guinness World Records), the integration of the municipality to the UNESCO's Creative Cities Network as the \"City of Music\", a unique title in the country, added to the international recognition of Salvador's music.\nWith more than 2.4 million inhabitants as of 2020, it is the most populous municipality in the Northeast, the fifth most populous in Brazil, and the ninth largest Latin American city. It is the core of the metropolitan area known as \"Great Salvador\", which had an estimated 3,957,123 inhabitants in 2020 according to the Brazilian Institute of Geography and Statistics (IBGE). This makes it the second most populous metropolitan area in the Northeast, the seventh in Brazil, and one of the largest in South America. Also due to these urban-population dimensions, it is classified by the IBGE study on the Brazilian urban network as a regional metropolis. In its reports for the years 2014 and 2020, the Research Network of Globalization and World Cities (GaWC) classified Salvador as a global city in the \"Sufficiency\" category (the smallest). Global city surveys by consultancy Kearney also included Salvador in the 2018 and 2020 annual reports, while excluding it in the 2019.\nThe economic center of the state, Salvador is also a port city, administrative and tourist center. Its metropolitan region has the highest GDP among urban concentrations in the Northeast. In 2018, it had the second-highest gross domestic product (GDP) among Northeastern municipalities. Furthermore, it is the headquarters of important regional, national and international companies, such as Novonor, Braskem, Neoenergy Coelba, and Suzano Papel e Celulose. In addition to companies, the city hosts or has hosted many cultural, political, educational, sports events and organizations, such as the Bahia State University, the Federal University of Bahia, the Brazilian Army Complementary Training School, the Brazilian Surfing Confederation, the 12th United Nations Congress on Crime Prevention and Criminal Justice (in 2010), the third Ibero-American Summit (in 1993), the 2003 Pan-American Judo Championship, the second Conference of Intellectuals from Africa and the Diaspora (in 2006), the 1989 Copa América, the 2013 FIFA Confederations Cup, the 2014 FIFA World Cup, and Group E of the women's football tournament in the 2016 Summer Olympics."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 645
+    },
+    "banned_terms": [
+      {
+        "term": "salvador",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 756,
+    "attempt": 749,
+    "place_id": "gn-4931972",
+    "input": {
+      "place": {
+        "place_id": "gn-4931972",
+        "name": "Cambridge",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.3751,
+        "lon": -71.10561
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cambridge, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Cambridge,_Massachusetts",
+          "text": "Cambridge ( KAYM-brij) is a city in Middlesex County, Massachusetts, United States. It is located in the Greater Boston metropolitan area directly across the Charles River from Boston. The city's population as of the 2020 U.S. census was 118,403, making it the most populous city in the county, the fourth-largest in Massachusetts behind Boston, Worcester, and Springfield, and ninth-most populous in New England. The city was named in honor of the University of Cambridge in Cambridge, England, which was an important center of the Puritan theology that was embraced by the town's founders.\nFounded in December 1630 during the colonial era, Cambridge was one among the first cities established in the Thirteen Colonies, and it went on to play a historic role during the American Revolution. In May 1775, approximately 16,000 American patriots assembled in Cambridge Common to begin organizing a military retaliation against British troops following the Battles of Lexington and Concord. On July 2, 1775, two weeks after the Second Continental Congress in Philadelphia formally established the Continental Army and appointed George Washington commander of it, Washington arrived at Cambridge Common to take command of the Patriot soldiers camped there. Many of these soldiers played a role in supporting Washington's successful siege of Boston, which trapped garrisoned British troops from moving by land, forcing the British to ultimately abandon Boston. Cambridge Common is thus celebrated as the birthplace of the Continental Army.\nHarvard University, an Ivy League university founded in Cambridge in 1636, is the oldest institution of higher learning in the United States. The Massachusetts Institute of Technology (MIT), a private research university, has its 168-acre campus in Cambridge. \nKendall Square, near MIT in the eastern part of Cambridge, has been called \"the most innovative square mile on the planet\" due to the high concentration of startup companies that have emerged there since 2010. In 2022, Cambridge was home to over 250 biotech companies, with more than 120 located within the Kendall Square ZIP Code."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 328
+    },
+    "banned_terms": [
+      {
+        "term": "cambridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 757,
+    "attempt": 750,
+    "place_id": "gn-963516",
+    "input": {
+      "place": {
+        "place_id": "gn-963516",
+        "name": "Queenstown",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -31.89756,
+        "lon": 26.87533
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Queenstown, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Queenstown,_South_Africa",
+          "text": "Queenstown, officially Komani, is a town in the middle of the Eastern Cape Province of South Africa, roughly halfway between the smaller towns of Cathcart and Sterkstroom on the N6 national route. The town was established in 1853 and is currently the commercial, administrative, and educational centre of the surrounding farming district. It is administered by the Enoch Mgijima Local Municipality, part of the regional Chris Hani District Municipality, which has become infamous for corruption, failures of governance, infrastructural decay, and financial collapse. The majestic Town Hall (built in 1882) and central Post Office burnt down in a mysterious 2022 fire which destroyed Municipal records and left the buildings in a vandalised ruin.. The town's amenities and famous Hexagon are in a shabby and derelict condition, reducing the town's former appeal to visitors and tourists. Service collapse has led to capital flight and deindustrialisation, worsening already-massive unemployment as significant formal economic activity declines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "queenstown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 758,
+    "attempt": 751,
+    "place_id": "gn-1275817",
+    "input": {
+      "place": {
+        "place_id": "gn-1275817",
+        "name": "Bhubaneswar",
+        "country": "India",
+        "subdivision": "Odisha",
+        "lat": 20.27241,
+        "lon": 85.83385
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bhubaneswar",
+          "url": "https://en.wikipedia.org/wiki/Bhubaneswar",
+          "text": "Bhubaneswar (/bʊbəˈneɪswəɹ/; Odia: [ˈbʱubɔneswɔɾɔ] ) is the capital and the largest city of the Indian state of Odisha. It is located in the Khordha district. The suburban region, especially the old town, was historically often depicted as Chakra Khetra and Ekamra Khetra (Area adorned with a mango tree). Bhubaneswar is dubbed the \"Temple City\", a nickname earned because of many temples which are standing there. In contemporary times, the city is a hub of sports, tourism and IT in the country. Although the modern city of Bhubaneswar was formally established in 1948, the history of the areas in and around the present-day city can be traced to the 1st century BCE. It is a confluence of Hindu, Buddhist and Jain heritage and includes several Kalingan temples, many of them from 6th–13th century CE. With Puri and Konark, it forms the \"Swarna Tribhuja\" (lit. 'Golden Triangle'), one of Eastern India's most visited destinations.\nBhubaneswar replaced Cuttack as the capital of Odisha on 13 April 1948. The modern city was designed by the German architect, Otto Königsberger, in 1946. Along with Jamshedpur and Chandigarh, it was one of modern India's first planned cities. Bhubaneswar and Cuttack are often referred to as the 'twin cities of Odisha'. The area formed by the two cities had a population of 1.7 million in 2011. It is categorised as a Tier-2 city. Bhubaneswar and Rourkela are the two cities in smart city mission from Odisha."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 239
+    },
+    "banned_terms": [
+      {
+        "term": "bhubaneswar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 759,
+    "attempt": 752,
+    "place_id": "gn-1648759",
+    "input": {
+      "place": {
+        "place_id": "gn-1648759",
+        "name": "Bima",
+        "country": "Indonesia",
+        "subdivision": "West Nusa Tenggara",
+        "lat": -8.46006,
+        "lon": 118.72667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bima",
+          "url": "https://en.wikipedia.org/wiki/Bima",
+          "text": "Bima (pronounced [ˈbima]; Bima: Mbojo) is a coastal city on the east of the island of Sumbawa in  Indonesia's province of West Nusa Tenggara.\nIt is the largest city on the island of Sumbawa, with a population of 142,443 at the 2010 census and 155,140 at the 2020 census; the official estimate as at mid 2025 was 166,992 (comprising 83,288 males and 83,704 females). It is separate from (but surrounded on the landward side by) the adjoining Bima Regency which had a population of 545,571 according to the mid 2025 official estimates.\nThe people of Bima and the entire eastern side of Sumbawa speak the Bima language (Indonesia: Bahasa Bima; Bima: Nggahi Mbojo). From 1620 to 1958 it was the capital of the Bima Sultanate. In modern times, Bima city is the largest regional and economic hub of Eastern Sumbawa with transmigrants from other parts of Indonesia, especially Java, Bali, and Lombok. It has a central downtown commercial zone. It is home to the Sultan Salahuddin mosque and the Sultan Salahuddin Museum (former Bima Sultanate palace). It is connected by a provincial road to Dompu to the west and Sape to the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "bima",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 760,
+    "attempt": 753,
+    "place_id": "gn-1790492",
+    "input": {
+      "place": {
+        "place_id": "gn-1790492",
+        "name": "Xiangtan",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 27.85,
+        "lon": 112.9
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Xiangtan",
+          "url": "https://en.wikipedia.org/wiki/Xiangtan",
+          "text": "Xiangtan (Chinese: 湘潭) is a prefecture-level city in east-central Hunan province, south-central China. The hometowns of several founding leaders of the Chinese Communist Party, including Chairman Mao Zedong, President Liu Shaoqi, and Marshal Peng Dehuai, are in Xiangtan's administration, as well as the hometowns of Qing dynasty  and republic era painter Qi Baishi, scholar-general Zeng Guofan, and tennis player Peng Shuai.\nXiangtan forms a part of the Greater Changsha Metropolitan Region with Changsha as the core city along with Zhuzhou, also known as Changzhutan City Cluster, one of the core cities in Central China.\nXiangtan is one of the top 200 cities in the world by scientific research outputs, as tracked by the Nature Index. It is home to Xiangtan University, a Double First-Class Construction university, and two provincial key public universities of Hunan Institute of Engineering and Hunan University of Science and Technology, as well as a high-tech industrial development zone."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "xiangtan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 761,
+    "attempt": 754,
+    "place_id": "gn-1791681",
+    "input": {
+      "place": {
+        "place_id": "gn-1791681",
+        "name": "Weifang",
+        "country": "China",
+        "subdivision": "Shandong",
+        "lat": 36.71,
+        "lon": 119.10194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Weifang",
+          "url": "https://en.wikipedia.org/wiki/Weifang",
+          "text": "Weifang (simplified Chinese: 潍坊; traditional Chinese: 濰坊; pinyin: Wéifāng) is a prefecture-level city in central Shandong province, People's Republic of China. The city borders Dongying to the northwest, Zibo to the west, Linyi to the southwest, Rizhao to the south, Qingdao to the east, and looks out to the Laizhou Bay to the north. Its population was 9,386,705 at the 2020 census, of whom 3,095,520 lived in the built-up (or metro) area made up of four urban districts (Kuiwen, Weicheng, Hanting and Fangzi) and Changle County.\nWeifang has numerous natural and historic sites, such as Shihu Garden (from the Late Ming and early Qing dynasty), Fangong Pavilion (from the Song dynasty), fossil sites (including dinosaur fossils, in Shanwang, Linqu), Mount Yi National Forest Park, Mount Qingyun and the Old Dragon Spring. Painted New Year woodcuts from Yangjiabu are also well-known. The city is served by Weifang Airport to various cities across China."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "weifang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 762,
+    "attempt": 755,
+    "place_id": "gn-1803318",
+    "input": {
+      "place": {
+        "place_id": "gn-1803318",
+        "name": "Linyi",
+        "country": "China",
+        "subdivision": "Shandong",
+        "lat": 35.06306,
+        "lon": 118.34278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Linyi",
+          "url": "https://en.wikipedia.org/wiki/Linyi",
+          "text": "Linyi (simplified Chinese: 临沂; traditional Chinese: 臨沂; pinyin: Línyí) is a prefecture-level city in the south of Shandong province, China. As of 2011, Linyi is the largest prefecture-level city in Shandong, both by area and population, Linyi borders Rizhao to the east, Weifang to the northeast, Zibo to the north, Tai'an to the northwest, Jining to the west, Zaozhuang to the southwest, and the province of Jiangsu to the south. The name of the city Linyi (临沂) literally means \"close to the Yi River\".\nLinyi City, referred to as Yi, the ancient name of Langya, Yizhou. It is located in the transition zone between Shandong hilly Yimeng Mountain area and Yishu River alluvial plain, and the terrain is high in the north and low in the south. The three major mountain ranges of Yishan, Mengshan and Nishan are distributed in the north, with hills in the center and plains in the south. The Yi, Shu, and Si Rivers all originate from the Yimeng Mountains and flow into the East China Sea. The municipal government is located at No.17 Beijing Road, Lanshan District. Linyi is one of the third batch of National Civilized Cities, China's Outstanding Tourist Cities, China's Garden Cities, China's Hygienic Cities, China's Model Environmental Protection Cities and National Forest Cities.\nThe city recently expanded along the Yi River to Nanfang, now called the Beicheng New Area, under the slogan \"Grand Linyi, Beautiful Linyi, New Linyi\". Multiple recreational parks were built, along with new school campuses etc. The development is an achivement of a series of governmental projects, including relocating the city government, which is expected to stimulate the economy.\nThe population was 11,018,365 at the 2010 Chinese census, The population was 10,993,100 at the 2020 Chinese census,  of which 3,651,868 lived in the built-up area made up of Lanshan District, Luozhuang District and Hedong District, as well as Linyi National Hi-Tech Zone.\nAccording to the (China) Shandong Provincial Seventh National Population Census Bulletin - Hongheiku Statistical Bulletin Database (hongheiku. com), the permanent population of Linyi City is 11,018,365, with 51.14% males and 48.86% females. The age structure of 0–14 years old accounts for 23.46%, 15–59 years old accounts for 56.91%, over 60 years old accounts for 19.63%, and over 65 years old accounts for 14.12%, respectively."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 378
+    },
+    "banned_terms": [
+      {
+        "term": "linyi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 763,
+    "attempt": 756,
+    "place_id": "gn-1863967",
+    "input": {
+      "place": {
+        "place_id": "gn-1863967",
+        "name": "Fukuoka",
+        "country": "Japan",
+        "subdivision": "Fukuoka",
+        "lat": 33.6,
+        "lon": 130.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fukuoka",
+          "url": "https://en.wikipedia.org/wiki/Fukuoka",
+          "text": "Fukuoka (福岡市, Fukuoka-shi; [ɸɯ̥.kɯꜜ.o.ka, -kɯ.o.kaꜜ.ɕi] ) is a designated city in the Kyushu region of Japan and the capital city of Fukuoka Prefecture. The city is built along the shores of Hakata Bay, and has been a center of international commerce since ancient times. The area has long been considered the gateway to the country, as it is the nearest point among Japan's main islands to the Asian mainland. Although humans have occupied the area since the Jomon period, some of the earliest settlers of the Yayoi period arrived in the Fukuoka area. The city rose to prominence during the Yamato period, and because of the cross-cultural exposure, and relatively great distance from the social and political centers of Kyoto, Osaka, and later, Edo (Tokyo), Fukuoka gained a distinctive local culture and dialect that has persisted to the present day.\nFukuoka is the most populous city on Kyūshū island, followed by Kitakyushu. It is the largest city and metropolitan area west of Keihanshin. The city was designated by government ordinance on April 1, 1972. Greater Fukuoka, with a population of 2.5 million people (2005 census), is part of the heavily industrialized Fukuoka–Kitakyushu zone.\nAs of 2015, Fukuoka is Japan's sixth largest city, having passed the population of Kobe. In July 2011, Fukuoka surpassed the population of Kyoto. Since the founding of Kyoto in 794, this marks the first time that a city west of the Kansai region has had a larger population than Kyoto."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "fukuoka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 764,
+    "attempt": 757,
+    "place_id": "gn-2013348",
+    "input": {
+      "place": {
+        "place_id": "gn-2013348",
+        "name": "Vladivostok",
+        "country": "Russia",
+        "subdivision": "Primorye",
+        "lat": 43.10562,
+        "lon": 131.87353
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vladivostok",
+          "url": "https://en.wikipedia.org/wiki/Vladivostok",
+          "text": "Vladivostok is the largest city and the administrative center of Primorsky Krai and the capital of the Far Eastern Federal District of Russia. It is located around the Golden Horn Bay on the Sea of Japan, covering an area of 331.16 square kilometers (127.86 square miles), with a population of 603,519 residents as of 2021. Vladivostok is the second-largest city in the Far Eastern Federal District, as well as the Russian Far East, after Khabarovsk. It is located approximately 45 kilometers (28 mi) from the China–Russia border and 134 kilometers (83 mi) from the North Korea–Russia border.\nVladivostok was historically part of Outer Manchuria. Shortly after the signing of the Treaty of Aigun between Qing China and the Russian Empire and affirmed by the Convention of Peking – from which it is also known as the Amur Annexation – the city was founded as a Russian military outpost on July 2, 1860. In 1872, the main Russian naval base on the Pacific Ocean was transferred to the city, stimulating its growth. By 1914 the city had experienced rapid growth economically with a population exceeding over 100,000 ethnically diverse inhabitants of which slightly less than half of the population were Russians. During this time, large Asian communities developed in the city. The public life of the city flourished; many public associations were created, from charities to hobby groups. After the outbreak of the Russian Revolution in 1917, Vladivostok was occupied in 1918 by White Russian and Allied forces, the last of whom, from the Japanese Empire, were not withdrawn until 1922 as its wider intervention in Siberia wound down alongside the collapse of the antirevolutionary White Army forces. The Red Army occupied the city that same year, absorbing the Far Eastern Republic into the Russian Soviet Federative Socialist Republic.\nFollowing the dissolution of the Soviet Union in 1991, the city became a part of the Russian Federation. Vladivostok remains the largest Russian port on the Pacific Ocean, and the chief cultural, economic, scientific, and tourism hub of the Russian Far East. As the terminus of the Trans-Siberian Railway, the city was visited by over three million tourists in 2017. The city is the administrative center of the Far Eastern Federal District, and is the home to the headquarters of the Pacific Fleet of the Russian Navy. Due to its geographical position in Asia combined with its Russian architecture, the city has been referred to as \"Europe in the Far East\". Many foreign consulates and businesses have offices in Vladivostok, and the city hosts the annual Eastern Economic Forum. With a yearly mean temperature of around 5 °C (41 °F), Vladivostok has a cold climate for its mid-latitude coastal setting. This is due to winds from the vast Eurasian landmass in winter and the cooling ocean temperatures."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 465
+    },
+    "banned_terms": [
+      {
+        "term": "vladivostok",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 765,
+    "attempt": 758,
+    "place_id": "gn-2511174",
+    "input": {
+      "place": {
+        "place_id": "gn-2511174",
+        "name": "Santa Cruz de Tenerife",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.46824,
+        "lon": -16.25462
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Cruz de Tenerife",
+          "url": "https://en.wikipedia.org/wiki/Santa_Cruz_de_Tenerife",
+          "text": "Santa Cruz de Tenerife (Spanish pronunciation: [ˈsanta ˈkɾuθ ðe teneˈɾife] ; locally [ˈsanta ˈkɾus ðe teneˈɾife]), commonly abbreviated as Santa Cruz, is a city, the capital of the island of Tenerife, Province of Santa Cruz de Tenerife, and one of the capitals of the Canary Islands, along with Las Palmas. Santa Cruz has a population of 211,436 (2024) within its administrative limits. The urban zone of Santa Cruz extends beyond the city limits with a population of 507,306 and 538,000 within urban area. It is the second largest city in the Canary Islands and the main city on the island of Tenerife, with nearly half of the island's population living in or around it.\nSanta Cruz is located in the northeast quadrant of Tenerife, 210 kilometres (130 mi) off the north-western coast of Africa within the Atlantic Ocean. The distance to the nearest point of mainland Spain is 1,300 kilometres (810 mi). Between the 1833 territorial division of Spain and 1927, Santa Cruz de Tenerife was the sole capital of the Canary Islands, until 1927 when the archipelago was split into the current two provinces. The port is of great importance and is the communications hub between Europe, Africa and Americas, with cruise ships arriving from many nations. The city is the focus for domestic and inter-island communications in the Canary Islands.\nThe city is home to the Parliament of the Canary Islands, the Audience of Accounts of the Canary Islands, the Captaincy General of the Canary Islands, the Canarias Ministry of the Presidency (shared on a four-year cycle with Las Palmas), one half of the Ministries and Boards of the Canarias Government, (the other half being located in Gran Canaria), the Tenerife Provincial Courts and two courts of the Superior Court of Justice of the Canary Islands. There are several faculties of the La Laguna University in Santa Cruz, including the Fine Arts School and the Naval Sciences Faculty. Its harbour is one of Spain's busiest. It is important for commercial and passenger traffic as well as for being a major stopover for cruisers en route from Europe to the Caribbean. The city also has one of the world's largest carnivals. The Carnival of Santa Cruz de Tenerife now aspires to become a World Heritage Site, and is the second largest in the world.\nThe varied architecture of the city stands out, highlighting the Auditorio de Tenerife (Auditorium of Tenerife), which is considered one of the greatest exponents of contemporary architecture or the Masonic Temple, in neo-Egyptian style, a unique building in the country. In the panoramic view of the city, the Torres de Santa Cruz (Santa Cruz Towers) also stand out, with the tallest twin towers in Spain at 120 meters (390 ft) high. Other outstanding places are the Plaza de España (Spain Square), which is the nerve center of the city, and the Parque García Sanabria (García Sanabria Park), a large urban park located at the center of the city. Outside the city but in its municipal district, Playa de Las Teresitas (Las Teresitas) and a large part of the Macizo de Anaga (Anaga Massif) stand out, declared a Biosphere Reserve by UNESCO in 2015. Santa Cruz de Tenerife hosts the first headquarters of the Center UNESCO in the Canary Islands. In recent years the city of Santa Cruz de Tenerife has seen the construction of a significant number of modern structures and the city's skyline is the sixth in height across the country, behind Madrid, Benidorm, Barcelona, Valencia and Bilbao.\nIn 2012, the British newspaper The Guardian included Santa Cruz de Tenerife in the list of the five best places in the world to live, next to the Cihangir district, in Istanbul; the district of Sankt Pauli, in Hamburg, the north coast of Maui, in Hawaii and Portland, in Oregon. The 82% of the municipal territory of Santa Cruz de Tenerife is considered a natural area, this is due in large part to the presence of the Anaga Rural Park. This fact makes Santa Cruz the third largest municipality in Spain with the highest percentage of natural territory, after Cuenca (87%) and Cáceres (83%)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 688
+    },
+    "banned_terms": [
+      {
+        "term": "santa cruz de tenerife",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cruz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tenerife",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 766,
+    "attempt": 759,
+    "place_id": "gn-2935022",
+    "input": {
+      "place": {
+        "place_id": "gn-2935022",
+        "name": "Dresden",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 51.05089,
+        "lon": 13.73832
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dresden",
+          "url": "https://en.wikipedia.org/wiki/Dresden",
+          "text": "Dresden ( DREZ-den; German: [ˈdʁeːsdn̩] ; Upper Saxon: Dräsdn; Upper Sorbian: Drježdźany, pronounced [ˈdʁʲɛʒdʒanɨ]) is the capital city of the German state of Saxony and its second most populous city after Leipzig. It is the 12th most populous city of Germany, the fourth largest by area (after Berlin, Hamburg, and Cologne), and the third-most populous city in the area of former East Germany, after Berlin and Leipzig. Dresden's urban area comprises the towns of Freital, Pirna, Radebeul, Meissen, Coswig, Radeberg, and Heidenau and has around 790,000 inhabitants. The Dresden metropolitan area has over 1.3 million inhabitants.\nDresden is the second largest city on the River Elbe after Hamburg. Most of the city's population lives in the Elbe Valley, but a large, albeit very sparsely populated, area of the city east of the Elbe lies in the West Lusatian Hill Country and Uplands (the westernmost part of the Sudetes) and thus in Lusatia. Many boroughs west of the Elbe lie in the Ore Mountain Foreland, as well as in the valleys of the rivers rising there and flowing through Dresden, the longest of which are the Weißeritz and the Lockwitzbach. The name of the city as well as the names of most of its boroughs and rivers are of Sorbian origin.\nDresden has a long history as the capital and royal residence for the Electors and Kings of Saxony, who for centuries furnished the city with cultural and artistic splendor, and was once by personal union the family seat of Polish monarchs. The city was known as the Jewel Box, because of its Baroque and Rococo city centre. The controversial American and British bombing of Dresden towards the end of World War II killed approximately 25,000 people, most of whom were civilians, and destroyed the entire city centre. After the war, restoration work has helped to reconstruct parts of the historic inner city.\nSince German reunification in 1990, Dresden has once again become a cultural, educational and political centre of Germany. The Dresden University of Technology (TU Dresden) is one of the 10 largest universities in Germany and part of the German Universities Excellence Initiative. The economy of Dresden and its agglomeration is one of the most dynamic in Germany and ranks first in Saxony. It is dominated by high-tech branches, often called \"Silicon Saxony\". According to the Hamburg Institute of International Economics (HWWI) and Berenberg Bank in 2019, Dresden had the seventh best prospects for the future of all cities in Germany.\nDresden is one of the most visited cities in Germany with 4.7 million overnight stays per year. Its most prominent building is the Frauenkirche located at the Neumarkt. Built in the 18th century, the church was destroyed during World War II. The remaining ruins were left for 50 years as a war memorial, before being rebuilt between 1994 and 2005. Other famous landmarks include the Zwinger, the Semperoper and Dresden Castle. Furthermore, the city is home to the Dresden State Art Collections, originating from the collections of the Saxon electors in the 16th century. Dresden's Striezelmarkt is one of the largest Christmas markets in Germany and is considered the first genuine Christmas market in the world. Nearby sights include the National Park of Saxon Switzerland, the Ore Mountains and the countryside around Elbe Valley, Moritzburg Castle and Meissen, home of Meissen porcelain."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 554
+    },
+    "banned_terms": [
+      {
+        "term": "dresden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 767,
+    "attempt": 760,
+    "place_id": "gn-2938913",
+    "input": {
+      "place": {
+        "place_id": "gn-2938913",
+        "name": "Darmstadt",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 49.87167,
+        "lon": 8.65027
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Darmstadt",
+          "url": "https://en.wikipedia.org/wiki/Darmstadt",
+          "text": "Darmstadt ( DARM-stat, UK also  -⁠shtat, US also  -⁠s(h)taht, German: [ˈdaʁmʃtat] ) is a city in the state of Hesse in Germany, located in the southern part of the Rhine-Main-Area (Frankfurt Metropolitan Region). Darmstadt has around 160,000 inhabitants, making it the fourth largest city in the state of Hesse after Frankfurt am Main, Wiesbaden, and Kassel.\nDarmstadt holds the official title \"City of Science\" (German: Wissenschaftsstadt) as it is a major centre of scientific institutions, universities, and high-technology companies. The European Organisation for the Exploitation of Meteorological Satellites (EUMETSAT) and the European Space Agency's European Space Operations Centre (ESA ESOC) are located in Darmstadt, as well as GSI Centre for Heavy Ion Research, where several chemical elements such as darmstadtium, roentgenium, and copernicium were discovered. The existence of several elements was also confirmed at the GSI Centre. The Facility for Antiproton and Ion Research (FAIR) is an international accelerator facility under construction. Darmstadt is also the seat of the world's oldest pharmaceutical company, Merck, which is the city's largest employer.\n\nThe Mathildenhöhe, including the Darmstadt artists' colony, a major centre of the Jugendstil artistic movement, referring both to the group of artists active in the city in the late 19th and early 20th century, as well as the buildings which they designed, together with the Russian Chapel in Darmstadt, were recognized as a World Heritage Site by UNESCO in 2021.\nDarmstadt was formerly the capital of a sovereign state, the Grand Duchy of Hesse and its successor, the People's State of Hesse, a federal state of Germany. As the capital of an increasingly prosperous duchy, the city gained some international prominence and remains one of the wealthiest cities in Europe. In the 20th century, industry (especially chemicals), as well as large science and electronics (and later, information technology) sectors became increasingly important, and are still a major part of the city's economy. It is also home to the football club SV Darmstadt 98. Alexandra Feodorovna (Alix of Hesse), the wife of Nicholas II of Russia, as well as Maria Alexandrovna (Marie of Hesse), the wife of Alexander II of Russia, who were related, were born in this city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 358
+    },
+    "banned_terms": [
+      {
+        "term": "darmstadt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

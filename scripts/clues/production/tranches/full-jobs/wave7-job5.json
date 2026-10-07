@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 1293,
+    "attempt": 1281,
+    "place_id": "gn-1713022",
+    "input": {
+      "place": {
+        "place_id": "gn-1713022",
+        "name": "General Santos",
+        "country": "Philippines",
+        "subdivision": "Soccsksargen",
+        "lat": 6.11278,
+        "lon": 125.17167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "General Santos",
+          "url": "https://en.wikipedia.org/wiki/General_Santos",
+          "text": "General Santos, officially the City of General Santos and abbreviated as GenSan, is a highly urbanized city in the Soccsksargen region of the Philippines. It has a population of 722,059 people according to the 2024 census, making it the most populous city in Soccsksargen Region.\nIt is located on the island of Mindanao, and is the southernmost and 13th-most populous city in the Philippines. It is the regional center for commerce and industry in the Soccsksargen region. It is the largest and the only coastal city in the province of South Cotabato wherein it is geographically situated and grouped under the province by the Philippine Statistics Authority but administered independently of it.\nGeneral Santos was severely affected by the 2026 Mindanao earthquake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "general santos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "general",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "santos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1294,
+    "attempt": 1282,
+    "place_id": "gn-1805611",
+    "input": {
+      "place": {
+        "place_id": "gn-1805611",
+        "name": "Jingmen",
+        "country": "China",
+        "subdivision": "Hubei",
+        "lat": 31.03361,
+        "lon": 112.20472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jingmen",
+          "url": "https://en.wikipedia.org/wiki/Jingmen",
+          "text": "Jingmen (simplified Chinese: 荆门; traditional Chinese: 荆門; pinyin: Jīngmén; Wade–Giles: Ching1mên2) is a prefecture-level city in central Hubei province, People's Republic of China. Jingmen is within an area where cotton and oil crops are planted. The population of the prefecture is 2,873,687 (2010 population census). The urban area of Jingmen City has a population of about 400,000.It covers an area of 12,400 square kilometers and has a total population of more than 3 million. The maximum horizontal distance from east to west is 155 kilometers and the maximum vertical distance from north to south is 131 kilometers. Jingmen is so named as in ancient times it was the gateway to Jingzhou, one of the Nine Provinces and means literally Gateway to Jingzhou.\nJingmen is located in the middle of Hubei, overlooking Wuhan in the east, the Three Gorges in the west, Xiaoxiang in the south, and Sichuan and Shaanxi in the north. It is known as the \"Gateway to Jingchu\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "jingmen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1295,
+    "attempt": 1283,
+    "place_id": "gn-2348773",
+    "input": {
+      "place": {
+        "place_id": "gn-2348773",
+        "name": "Awka",
+        "country": "Nigeria",
+        "subdivision": "Anambra",
+        "lat": 6.21269,
+        "lon": 7.07199
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Awka",
+          "url": "https://en.wikipedia.org/wiki/Awka",
+          "text": "Awka  (Igbo: Ọka) is the capital city of Anambra State, Nigeria. The city was declared capital on 21 August 1991, on the creation of a new Anambra state and Enugu state by bifurcation of the old Anambra State. The city of Enugu remained the capital of Enugu State while Awka (an administrative centre since pre-colonial times), became the capital of the new Anambra State. The city has an estimated population of 301,657 as of the 2006 Nigerian census. The both LGAs of Awka South and North had an estimated population of 430,200 in 2022. The city is located at 199.1 kilometres (123.7 mi), by road, directly north of Port Harcourt in the centre of the densely populated Igbo heartland in South-East Nigeria.\nThe West-East Federal highway links Lagos, Benin City, Asaba, Onitsha, and Enugu to Awka and several local roads link it to other important towns such as Oko, Ekwulobia, Agulu, Enugwu-Ukwu, Abagana and Nnewi.\nStrategically, Awka is located midway between two major cities in Northern Igboland, Onitsha and Enugu, which has played a significant role in its choice as an administrative center for the colonial authorities and today as a base for the Anambra State government. Awka is in Anambra Central senatorial district of Anambra state Nigeria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "awka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1296,
+    "attempt": 1284,
+    "place_id": "gn-2634838",
+    "input": {
+      "place": {
+        "place_id": "gn-2634838",
+        "name": "Walthamstow",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.59067,
+        "lon": -0.02077
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Walthamstow",
+          "url": "https://en.wikipedia.org/wiki/Walthamstow",
+          "text": "Walthamstow ( WAWL-thəm-stoh or   WOL-thəm-stoh) is a town within the London Borough of Waltham Forest in East London. The town borders Chingford to the north, Snaresbrook and South Woodford to the east, Leyton and Leytonstone to the south, and Tottenham to the west. At the 2011 census, Walthamstow had a population of approximately 109,424 and is around 7.5 miles (12 km)\nnorth-east of Central London.\nOccupying most of the town's east-to-west High Street, Walthamstow Market is the second longest outdoor market in Europe. East of the town centre is Walthamstow Village, the oldest part of Walthamstow, and the location of St Mary's Church, the town's parish church. To the north of the town is the former Walthamstow Stadium, which closed in 2008. The William Morris Gallery in Forest Road, a museum that was once the family home of William Morris, is a Grade II* listed building. The town is served by five railway stations, including Walthamstow Central and Blackhorse Road—interchange stations on the Victoria line of the London Underground.\nWalthamstow was a civil parish, originally part of the Becontree Hundred of Essex. As part of the suburban growth of London,  the town expanded rapidly in the 19th century, becoming part of the urban area of the city. It has formed part of the Metropolitan Police District since 1840, and the London postal district since its inception in 1856. The parish became a local board district in 1873, an urban district in 1894 and a municipal borough in 1929. Following reform of local government in London in 1965, it merged with the municipal boroughs of Chingford and Leyton to form the new Waltham Forest local authority district, becoming part of Greater London. The borough council is based at Waltham Forest Town Hall on Forest Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 294
+    },
+    "banned_terms": [
+      {
+        "term": "walthamstow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1297,
+    "attempt": 1285,
+    "place_id": "gn-3093133",
+    "input": {
+      "place": {
+        "place_id": "gn-3093133",
+        "name": "Łódź",
+        "country": "Poland",
+        "subdivision": "Łódź Voivodeship",
+        "lat": 51.77058,
+        "lon": 19.47395
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Łódź",
+          "url": "https://en.wikipedia.org/wiki/Łódź",
+          "text": "Łódź is a city in central Poland and a former industrial centre. It is the capital of Łódź Voivodeship, and is located 120 km (75 mi) south-west of Warsaw. As of 2025, Łódź has a population of 639,890, making it the country's fourth largest city.\nŁódź first appears in records in the 14th century. It was granted town rights in 1423 by the Polish King Władysław II Jagiełło and it remained a private town of the Kuyavian bishops and clergy until the late 18th century. In the Second Partition of Poland in 1793, Łódź was annexed to Prussia before becoming part of the Napoleonic Duchy of Warsaw; the city joined Congress Poland, a Russian client state, at the 1815 Congress of Vienna. The Second Industrial Revolution (from 1850) brought rapid growth in textile manufacturing and in population owing to the inflow of migrants, a sizable part of which were Jews and Germans. Ever since the industrialization of the area, the city had been multinational and struggled with social inequalities, as documented in the novel The Promised Land by Nobel Prize–winning author Władysław Reymont. The contrasts greatly reflected on the architecture of the city, where luxurious mansions coexisted with red-brick factories and dilapidated tenement houses.\nThe industrial development and demographic surge made Łódź one of the largest cities in Poland. During the interwar period, Łódź became an important centre for the Polish artistic avant-garde. Founded in 1931, Muzeum Sztuki became the first museum in Europe dedicated to collecting and showcasing modern art. Under the German occupation during World War II, the city's population was persecuted and its large Jewish minority was forced into a walled zone known as the Litzmannstadt Ghetto, after the Nazi German renaming of the city, from where they were sent to German concentration and extermination camps. The city became Poland's temporary seat of power in 1945.\nŁódź experienced a sharp demographic and economic decline after 1989. It was only in the 2010s that the city began to experience revitalization of its neglected downtown area. Łódź is ranked by the Globalization and World Cities Research Network on the \"Sufficiency\" level of global influence.  The city is internationally known for its National Film School, a cradle for the most renowned Polish actors and directors, including Andrzej Wajda and Roman Polański. In 2017, the city was inducted into the UNESCO Creative Cities Network and named UNESCO City of Film."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 399
+    },
+    "banned_terms": [
+      {
+        "term": "odz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1298,
+    "attempt": 1286,
+    "place_id": "gn-3460718",
+    "input": {
+      "place": {
+        "place_id": "gn-3460718",
+        "name": "Itapevi",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.54889,
+        "lon": -46.93417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itapevi",
+          "url": "https://en.wikipedia.org/wiki/Itapevi",
+          "text": "Itapevi is a municipality in the western area of the São Paulo Metropolitan Region, in the state of São Paulo, in the Southeast Region of Brazil. Originally a village of Cotia, it developed following the arrival of the Estrada de Ferro Sorocabana in the 19th century and became an emancipated municipality in 1959 after a plebiscite. It occupies an area of 82.658 km² (31.9 sq mi), and its population in the 2022 Census was 232,297 inhabitants. It is located 35 kilometers (21.7 mi) from the state capital, São Paulo. It is also located 1,017 km (631 mi) from the federal capital, Brasília.\nIt is also known as the \"Itacity\", \"City of New Roofs\", the \"City of Roses\", and the \"City of Hope\".\nThe formation of the village began around the 18th century, and the first building in the city was a house built around 1720 and used by Bandeirantes. The earliest settlers were probably members of the Abreus family.\nThe name of District of Itapevy (or Itapevi) was associated with the noble title of Baron of Itapevi, granted on December 28, 1878, to the military Emílio Luís Mallet, officer of the Brazilian Imperial Army and later patron of the Arm of Artillery of the Brazilian Army."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "itapevi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1299,
+    "attempt": 1287,
+    "place_id": "gn-3526485",
+    "input": {
+      "place": {
+        "place_id": "gn-3526485",
+        "name": "Jiutepec",
+        "country": "Mexico",
+        "subdivision": "Morelos",
+        "lat": 18.88139,
+        "lon": -99.17778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jiutepec",
+          "url": "https://en.wikipedia.org/wiki/Jiutepec",
+          "text": "Jiutepec is a city and its surrounding municipality in the Mexican state of Morelos.\nThe name Jiutepec comes from the Nahuatl name Xiutepetl, which means \"the precious stones hill\".\nThe city serves as the municipal seat for the surrounding municipality of the same name. Over recent decades Jiutepec has merged into neighboring Cuernavaca so that on its northeasterly edges it forms one geographically contiguous urban area with the latter. The Cuernavaca metropolitan area not only includes these two municipalities, but also Temixco, Emiliano Zapata, Xochitepec, and Tepoztlán municipalities, for a total population of 1,027,562 (February 2018 figure also includes Huitzilac and Tlaltizapán).\nAccording to the 2015 census the city of Jiutepec had a population of 153,704 while the municipality reported 214,137 inhabitants. The city and the municipality rank second in population in the state, behind the city and municipality of Cuernavaca. The municipality has an area of 70.45 km2 (27.20 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "jiutepec",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1300,
+    "attempt": 1288,
+    "place_id": "gn-3628473",
+    "input": {
+      "place": {
+        "place_id": "gn-3628473",
+        "name": "San Cristóbal",
+        "country": "Venezuela",
+        "subdivision": "Táchira",
+        "lat": 7.76593,
+        "lon": -72.23576
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Cristóbal, Táchira",
+          "url": "https://en.wikipedia.org/wiki/San_Cristóbal,_Táchira",
+          "text": "San Cristóbal (Spanish pronunciation: [saŋ kɾisˈtoβal]) is the capital city of the Venezuelan state of Táchira. It is located in a mountainous region of Western Venezuela. The city is situated 818 metres (2,684 ft) above sea level in the northern Andes overlooking the Torbes River, 56 kilometres (35 mi) from the Colombian border. San Cristóbal was founded on 31 March 1561, by Juan de Maldonado. From its inception, the city evolved rapidly as one of the most progressive and important centers of commerce in the country and the region, due primarily to its rich soil and its proximity to the border with Colombia.\n\nThe city was severely damaged by the Earthquake of Cúcuta (also known as Earthquake of the Andes) in 1875."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "san cristobal",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cristobal",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1301,
+    "attempt": 1289,
+    "place_id": "gn-3997479",
+    "input": {
+      "place": {
+        "place_id": "gn-3997479",
+        "name": "Los Mochis",
+        "country": "Mexico",
+        "subdivision": "Sinaloa",
+        "lat": 25.79097,
+        "lon": -108.99825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Los Mochis",
+          "url": "https://en.wikipedia.org/wiki/Los_Mochis",
+          "text": "Los Mochis (Spanish pronunciation: [los ˈmotʃis]) is a coastal city in northern Sinaloa, Mexico. It serves as the municipal seat of the municipality of Ahome. As of the 2010 census, the population was 362,613, which was 61 percent of the municipality's population.\nLos Mochis  is the western terminus of the Chihuahua-Pacific Railroad (El Chepe), which passes through the scenic Copper Canyon. This railway was approved by President Porfirio Díaz as a trade route linking the cattle markets in Kansas City with the nearest port on the Pacific Ocean, Topolobampo.\nToday the North Pacific irrigation region (Sinaloa-Sonora) is the principal agricultural area of Sinaloa, containing over 70% of all irrigated land and producing sugar cane, cotton, rice, flowers, and many types of vegetables. The valley is one of the largest producers of mangoes in Mexico. Air transportation is provided by Los Mochis Airport. Nearby Topolobampo is the second largest natural deepwater port in the world, and is known for its commercial fishing and increasingly important role in shipping."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "los mochis",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mochis",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1302,
+    "attempt": 1290,
+    "place_id": "gn-5913695",
+    "input": {
+      "place": {
+        "place_id": "gn-5913695",
+        "name": "Cambridge",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.3601,
+        "lon": -80.31269
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cambridge, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Cambridge,_Ontario",
+          "text": "Cambridge is a city in the Regional Municipality of Waterloo, Ontario, Canada, located at the confluence of the Grand and Speed rivers, in the central part of the Ontario Peninsula. The city had a population of 138,479 as of the 2021 census. Along with Kitchener and Waterloo, Cambridge is one of the three core cities of the Regional Municipality of Waterloo.\nCambridge was formed in 1973 by the amalgamation of Galt, Preston, Hespeler, and the settlement of Blair in North Dumfries, as well as east and west Galt. The former Galt covers the largest portion of Cambridge, making up the southern half of the city, while Preston and Blair cover the western side. Hespeler makes up the most northeastern section of Cambridge. Historical information and records of each entity are well documented in the Cambridge City Archives."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "cambridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1303,
+    "attempt": 1291,
+    "place_id": "gn-785842",
+    "input": {
+      "place": {
+        "place_id": "gn-785842",
+        "name": "Skopje",
+        "country": "North Macedonia",
+        "subdivision": "Grad Skopje",
+        "lat": 41.99646,
+        "lon": 21.43141
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Skopje",
+          "url": "https://en.wikipedia.org/wiki/Skopje",
+          "text": "Skopje is the capital and largest city of North Macedonia. It lies in the northern part of the country, in the Skopje Valley along the Vardar River, and is the political, economic, and cultural centre of the country. As of the 2021 census, the city had a population of 526,502. Skopje covers 571.46 km2 (220.64 mi2) and includes both urban and rural areas, bordered by several municipalities and close to the borders of Kosovo and Serbia.\nThe area of Skopje has been continuously inhabited since at least the Chalcolithic period. The city — known as Scupi at the time — was founded in the late 1st century during the rule of Domitian, and abandoned in 518 after an earthquake destroyed the city. It was rebuilt under Justinian I. It became a significant settlement under the First Bulgarian Empire, the Serbian Empire (when it served briefly as a capital), and later under the Ottoman Empire, which ruled the city for over five centuries. In 1912, following the Balkan Wars, Skopje was annexed by the Kingdom of Serbia. It became part of Yugoslavia after World War I and, following World War II, became the capital of the Socialist Republic of Macedonia, one of its constituent republics. In 1963, a major earthquake devastated the city, after which it was largely rebuilt with international assistance. Skopje became the capital of independent North Macedonia in 1991.\nThe city has a diverse population, with ethnic Macedonians forming a majority and Albanians a significant minority, alongside Roma, Turks, Serbs, and others. It is also religiously diverse, with Orthodox Christianity and Islam being the most widely practised faiths. Skopje is the site of major educational and cultural institutions, including the Ss. Cyril and Methodius University, the Macedonian Academy of Sciences and Arts, and the National Theatre.\nSkopje is the country's centre of government and business and produces a significant share of the national GDP. Its economy is based on industry, trade, services, and finance. The city has undergone major transformations in recent decades, notably through the controversial Skopje 2014 project, which aimed to reshape the city centre with neoclassical buildings and monuments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 122,
+      "fullExtractWords": 354
+    },
+    "banned_terms": [
+      {
+        "term": "skopje",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1304,
+    "attempt": 1292,
+    "place_id": "gn-1147290",
+    "input": {
+      "place": {
+        "place_id": "gn-1147290",
+        "name": "Balkh",
+        "country": "Afghanistan",
+        "subdivision": "Balkh",
+        "lat": 36.75635,
+        "lon": 66.8972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balkh",
+          "url": "https://en.wikipedia.org/wiki/Balkh",
+          "text": "Balkh is a city in northern Afghanistan, with an estimated population of 148,972 people. It is the second largest city of Balkh Province and is within the jurisdiction of Balkh District. Balkh is located approximately 24 km (15 mi) to the northwest of Mazar-i-Sharif and approximately 74 km (46 mi) to the south of the Amu Darya or the Afghanistan–Uzbekistan border.\nHistorically a hub of Zoroastrianism and Buddhism, the ancient city was also known to the ancient Persians as Zariaspa and to the ancient Greeks as Bactra, giving its name to the wider region of Bactria. Balkh was renowned as the capital of Bactria and later Tokharistan. Prior to the Mongol conquest, Balkh was one of the richest cities in Khorasan. It suffered severely due to the Mongol invasion in the 13th century and never recovered its former status, with nearby Mazar-i-Sharif slowly becoming the more important town in the locality. By the 14th century Balkh had become a part of Timurid Empire, and after the conquest by Shaybani Khan in 1506, continued to be ruled by the Uzbek dynasties for centuries, notably the Khanate of Bukhara and the Khanate of Kunduz, except for the brief Mughal and Afsharid interruptions, until it was captured by Dost Muhammad Khan in 1850 from the Uzbeks and incorporated into the Emirate of Afghanistan.\nThe Italian explorer and writer Marco Polo described Balkh as \"a noble city and a great seat of learning\". Most of the town now consists of ruined buildings, situated some 12 km (7.5 mi) from the right bank of the seasonally flowing Balkh River, at an elevation of about 365 m (1,198 ft). The Green Mosque of Balkh is one of the few surviving monuments.\nWhile it is one of Afghanistan's ethnically diverse settlements, Tajiks account for the majority of Balkh's populace and have continuously inhabited the site for millennia. The main language of the town is Dari, which is spoken by a significant majority. Its current mayor is Maulvi Mohammad Qasim Fazal Subhan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 334
+    },
+    "banned_terms": [
+      {
+        "term": "balkh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1305,
+    "attempt": 1293,
+    "place_id": "gn-1256451",
+    "input": {
+      "place": {
+        "place_id": "gn-1256451",
+        "name": "Shivpuri",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 25.42378,
+        "lon": 77.66223
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shivpuri",
+          "url": "https://en.wikipedia.org/wiki/Shivpuri",
+          "text": "Shivpuri, previously known as Sipri, is a town and a municipality in Shivpuri district, located in the central Indian state of Madhya Pradesh. It is in the Gwalior Division of northwest Madhya Pradesh and is the administrative headquarters of Shivpuri District. It is located approximately 125 km (78 mi) from Gwalior, 104 km (65 mi) from Jhansi 103 km (64 mi) from Guna and 337 km (211 mi) from Bhopal. It is situated at an altitude of 1,515 feet (462 m) above sea level.\nThe town is a tourist destination in the monsoon season as it has a number of waterfalls, like Bhura kho and Tunda Bharkha kho.\nLakes in Shivpuri include Chandpatha jheel, Jadhav Sagar jheel, and other small lakes.\nThe town is known for its greenery, forests, and also as the former summer capital of the Scindia Dynasty, who at one time ruled the Gwalior.  A notable commander of 1857 rebellion, Tatya Tope was hanged in Shivpuri in 1859..  Shivpuri also has Asia's largest crater (the Dhala crater) which is almost 11 km in diameter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "shivpuri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1306,
+    "attempt": 1294,
+    "place_id": "gn-1264521",
+    "input": {
+      "place": {
+        "place_id": "gn-1264521",
+        "name": "Madurai",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 9.919,
+        "lon": 78.11953
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Madurai",
+          "url": "https://en.wikipedia.org/wiki/Madurai",
+          "text": "Madurai is a major city in the Indian state of Tamil Nadu. It is the cultural capital of Tamil Nadu and the administrative headquarters of Madurai district, which is governed by the Madurai Municipal Corporation established on 1 November 1866. As of the 2011 census, it is the third largest metropolis in Tamil Nadu after Chennai and Coimbatore in terms of population and 27th largest urban agglomeration in India. Located on the banks of Vaigai River, Madurai has been a major settlement for two millennia and has a documented history of more than 2500 years. It is often referred to as \"Thoongaa Nagaram\", meaning \"the city that never sleeps\".\nMadurai is one of the oldest cities in India and South Asia. The third Tamil Sangam, a major congregation of Tamil scholars under the Pandyan dynasty, is said to have been held in the city. The recorded history of the city goes back to the 3rd century BCE, being mentioned by Megasthenes, the Greek ambassador to the Mauryan Empire, and Kautilya, a minister of the Mauryan emperor Chandragupta Maurya. Signs of human settlements and Roman trade links dating back to 300 BCE are evident from excavations by the Archeological Survey of India in Keezhadi, Manalur. The city is believed to be of significant antiquity and has been ruled, at different times, by the Pandyan Kingdom, the Chola Empire, the Madurai Sultanate, the Vijayanagar Empire, the Madurai Nayaks, the Carnatic kingdom, and the British East India Company's British Raj. The city has a number of historical monuments, with the Koodal Azhagar temple, the Meenakshi Temple and the Thirumalai Nayakkar Mahal being the most prominent.\nMadurai is an important industrial and educational hub in Tamil Nadu. The city is home to various automobile, rubber, chemical and granite manufacturing industries. Madurai has important government educational institutes such as the Madurai Medical College, the Homeopathic Medical College, the Madurai Law College, the Tamil Nadu Agricultural University (Madurai Campus), the Kamaraj University, and the All India Institute of Medical Sciences, Madurai. The city covers an area of 147.97 km2 (57.13 sq mi) and had a population of 1,470,755 in 2011. The second bench of the Madras High Court is situated in Madurai.\nIt is one amongst the towns and cities selected for the AMRUT mission, undertaken by the Government of India. The Government of Tamil Nadu contributes to the infrastructure development in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 398
+    },
+    "banned_terms": [
+      {
+        "term": "madurai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1307,
+    "attempt": 1295,
+    "place_id": "gn-1497337",
+    "input": {
+      "place": {
+        "place_id": "gn-1497337",
+        "name": "Norilsk",
+        "country": "Russia",
+        "subdivision": "Krasnoyarsk Krai",
+        "lat": 69.3535,
+        "lon": 88.2027
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Norilsk",
+          "url": "https://en.wikipedia.org/wiki/Norilsk",
+          "text": "Norilsk (Russian: Нори́льск, IPA: [nɐˈrʲilʲsk]) is an industrial closed city in Krasnoyarsk Krai, Russia, located south of the western Taymyr Peninsula, around 90 km (56 mi) east of the Yenisey River and 1,500 km (930 mi) north of Krasnoyarsk. Norilsk is 300 km (190 mi) north of the Arctic Circle and 2,400 km from the North Pole. It has a permanent population of 176,735 as of 2024, and up to 220,000 including temporary inhabitants. It is the second-largest city in Krasnoyarsk Krai, after the administrative centre, Krasnoyarsk. It is the world's northernmost city with more than 175,000 inhabitants, and the second-largest city (after Murmansk) inside the Arctic Circle. Norilsk and Yakutsk are the only large cities in the continuous permafrost zone.\nNorilsk is located atop some of the largest nickel deposits on Earth. Consequently, mining and smelting ore are the major industries. Norilsk is the center of a region where nickel, copper, cobalt, platinum, palladium, and coal are mined. The presence of mineral deposits in the Siberian Craton was known for two centuries before Norilsk was founded, but large-scale industrial mining only began after the Soviet Council of People's Commissars approved the construction of Norilsk Plant in 1935, which was completed by 1939. Production started with intermediary products, with the first converter matte being produced in 1942, but the Norilsk mines quickly grew to be a major source of Russia's nickel production. Prior to this, small scale coal mining existed in the region.\nIn 2004, two satellite cities (Talnakh and Kayerkan) became districts of the city of Norilsk, and Oganer became a suburb of Norilsk's Central District. The jurisdiction of Norilsk also extends to the settlement of Snezhnogorsk, which originated in 1963 as a settlement to accommodate the builders of the Ust-Khantai Hydroelectric Power Station. Access to Norilsk is restricted for foreign citizens, who are required to obtain special permission to visit."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 312
+    },
+    "banned_terms": [
+      {
+        "term": "norilsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1308,
+    "attempt": 1296,
+    "place_id": "gn-1578500",
+    "input": {
+      "place": {
+        "place_id": "gn-1578500",
+        "name": "Kon Tum",
+        "country": "Vietnam",
+        "subdivision": "Quang Ngai",
+        "lat": 14.35451,
+        "lon": 108.00759
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kon Tum",
+          "url": "https://en.wikipedia.org/wiki/Kon_Tum",
+          "text": "Kon Tum is a ward of Quảng Ngãi province in Vietnam. It is located inland in the Central Highlands region of Vietnam, near the borders of Laos and Cambodia.\nHistorically, this area has been inhabited by the indigenous Ba Na people, which led to the name Kon Tum, meaning \"Village by the Lake\" in the Ba Na language. Its unique location features flat and fertile land, enriched by the Dak Bla River, and a convergence of various ethnic groups over time. Among these, the Kinh people, hailing from provinces such as Quang Nam, Quang Ngai, and Binh Dinh, have settled here. In the years 1841-1850, French missionaries, en route to the Central Highlands, established the first Christian mission in this region. By 1893, the colonial French authorities established the Kon Tum administrative agency, headed by Father Vialleton, and from that point, the name Kon Tum became officially used. Subsequently, the provincial administrative unit adopted this name. Kon Tum City, once a sparsely populated and desolate area, has evolved into a hub for settlement, commerce, and governance throughout the province's rich history. Prior to 2025, Kon Tum holds the status of Class-2 Provincial city. \nPrior to Vietnam's 2025 administrative reforms, Kon Tum was the capital of the formerly Kon Tum province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "kon tum",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tum",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1309,
+    "attempt": 1297,
+    "place_id": "gn-1638284",
+    "input": {
+      "place": {
+        "place_id": "gn-1638284",
+        "name": "Lawang",
+        "country": "Indonesia",
+        "subdivision": "East Java",
+        "lat": -7.8353,
+        "lon": 112.6947
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lawang, Malang",
+          "url": "https://en.wikipedia.org/wiki/Lawang,_Malang",
+          "text": "Lawang is a district and town in Malang Regency, East Java and is geographically located in the mountains and surrounded by Mount Arjuno and Mount Semeru. It covers an area of 68.23 km2 and had a population of 103,402 at the 2010 Census and 110,981 at the 2020 Census; the official estimate as at mid 2024 was 113,187. It borders with Singosari District to the south (in Malang Regency) and Purwodadi district of Pasuruan Regency to the north.  Lawang is known as a resort town since the Dutch colonial era.\nTourist attractions in Lawang include Wonosari Tea Garden PTP XXIII, Polaman Baths, Swimming Pools, Krabayakan Tourism Village, and Mount Wedon. In addition, many historical buildings in Lawang are of Dutch origin.\n\nTogether with Singosari and Kepanjen, Lawang is known as the main buffer satellite city of Malang, and is included in the area of Malang Raya (Greater Malang).\nHurustiati Subandrio, Sukarno-era politician and wife of Foreign Minister Subandrio, was born in Lawang."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "lawang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1310,
+    "attempt": 1298,
+    "place_id": "gn-1788046",
+    "input": {
+      "place": {
+        "place_id": "gn-1788046",
+        "name": "Xuchang",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 34.03189,
+        "lon": 113.86299
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Xuchang",
+          "url": "https://en.wikipedia.org/wiki/Xuchang",
+          "text": "Xuchang (simplified Chinese: 许昌; traditional Chinese: 許昌; postal: Hsuchang) is a prefecture-level city in central Henan province in Central China. It is bordered by the provincial capital of Zhengzhou to the northwest, Kaifeng to the northeast, Zhoukou to the east, Luohe to the southeast, and Pingdingshan to the southwest.\nIts population was 4,307,488 inhabitants at the final 2010 census, of whom 1,952,666 lived in the built-up (or \"metro\") area made up of Weidu and Jian'an districts (named from Emperor Xian of Han's era name) and Changge City largely being urbanized.  In 2007, the city was named as one of China's top ten livable cities by Chinese Cities Brand Value Report, which was released at 2007 Beijing Summit of China Cities Forum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "xuchang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1311,
+    "attempt": 1299,
+    "place_id": "gn-1810821",
+    "input": {
+      "place": {
+        "place_id": "gn-1810821",
+        "name": "Fuzhou",
+        "country": "China",
+        "subdivision": "Fujian",
+        "lat": 26.06139,
+        "lon": 119.30611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fuzhou",
+          "url": "https://en.wikipedia.org/wiki/Fuzhou",
+          "text": "Fuzhou is the capital of Fujian, China, lying between the Min River estuary to the south and the city of Ningde to the north. Together, Fuzhou and Ningde make up the Mindong linguistic and cultural region.\nFuzhou's population was 8,291,268 as of the 2020 Chinese census. Like other prefecture-level cities in China, its administrative area contains both urban and rural areas: in 2020, 72.49% of inhabitants (6,010,242) were urban, while 27.51% (2,281,026) were rural. As of 31 December 2018, the total population was estimated at 7,740,000 whom 4,665,000 lived in the built-up (or metro) area made of five urban districts plus Minhou County.\n In 2015, Fuzhou was ranked as the 10th fastest growing metropolitan area in the world by Brookings Institution. Fuzhou is listed as No. 20 in the China Integrated City Index 2016's total ranking, a study conducted by the National Development and Reform Commission.\nFuzhou is also a major city for scientific research, appearing in the global top 50 cities as tracked by the Nature Index. The city is home to several major universities, notably Fuzhou University, one of China's key universities and other public universities, including Fujian Normal University and Fujian Agriculture and Forestry University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "fuzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1312,
+    "attempt": 1300,
+    "place_id": "gn-2036986",
+    "input": {
+      "place": {
+        "place_id": "gn-2036986",
+        "name": "Hegang",
+        "country": "China",
+        "subdivision": "Heilongjiang",
+        "lat": 47.34727,
+        "lon": 130.29033
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hegang",
+          "url": "https://en.wikipedia.org/wiki/Hegang",
+          "text": "Hegang (Chinese: 鹤岗; pinyin: Hègǎng, also known as Heli and Xingshan) is a prefecture-level city in Heilongjiang province of China, situated in the southeastern section of the Lesser Khingan Range, facing Jiamusi across the Songhua River to the south and Russia's Jewish Autonomous Oblast across the Amur River to the north. Hegang is one of the principal coal-producing cities in China. Hegang covers an administrative area of 14,679.88 km2 (5,667.93 sq mi) and according to the 2020 Chinese census, has a population of 891,271 inhabitants, of whom 545,404 lived in the built-up (or metro) area made of 6 urban districts. By the end of 2024, the total registered population of the city was estimated at 935,000, including 756,000 in urban areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "hegang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

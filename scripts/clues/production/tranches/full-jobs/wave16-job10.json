@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 3204,
+    "attempt": 3181,
+    "place_id": "gn-1650319",
+    "input": {
+      "place": {
+        "place_id": "gn-1650319",
+        "name": "Bangil",
+        "country": "Indonesia",
+        "subdivision": "East Java",
+        "lat": -7.59939,
+        "lon": 112.8186
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bangil",
+          "url": "https://en.wikipedia.org/wiki/Bangil",
+          "text": "Bangil (Javanese: Bangel, Arabic: بانغيل) is the name of a district and administrative centre of Pasuruan Regency, in the East Java province of Indonesia. Located 30 km from Surabaya, it lies on the southwest coast of the Madura Strait. The district is divided into fifteen villages. \nOn September 11, 2005, the Regency of Pasuruan declared the name Bangkodir (Bangil Kota Bordir) – 'Bangil, the embroidery city' – when the district won the MURI record for the longest embroidered fabric. The embroidered fabric was displayed during the Fashion Show (Fashion on the Street) with its length as long as 1 km.\nThe town of Bangil, lies between the access road from Surabaya to Banyuwangi and Bali, having alternative short routes connecting it to Pandaan, Sukorejo, and Malang. In 2010 the Pasuruan Regency decided to make the town of Bangil the administrative capital of the Regency."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "bangil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3206,
+    "attempt": 3182,
+    "place_id": "gn-204283",
+    "input": {
+      "place": {
+        "place_id": "gn-204283",
+        "name": "Watsa",
+        "country": "Congo - Kinshasa",
+        "subdivision": "Haut-Uele",
+        "lat": 3.03716,
+        "lon": 29.53551
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Watsa",
+          "url": "https://en.wikipedia.org/wiki/Watsa",
+          "text": "Watsa is a community in the Haut-Uele Province of the Democratic Republic of the Congo, administrative center of the Watsa Territory. It is served by Watsa Airport, a grass airstrip 4 kilometres (2.5 mi) south of the town.\nWatsa was the location of the VI battalion of the Force Publique in the 1940s and 1950s.\nBetween 1998 and 2000, co-circulating Marburg virus and Ravn virus caused 154 cases of Marburg virus disease and 128 deaths among illegal gold miners in Watsa and the nearby Durba Mine.\nIn January and February 2011 the Lords Resistance Army attacked people in the territories of Dungu, Faradje, Niangara and Watsa, causing 33,000 people to be displaced. They were slow to return due to the feeble response of government security forces."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "watsa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3207,
+    "attempt": 3183,
+    "place_id": "gn-2176632",
+    "input": {
+      "place": {
+        "place_id": "gn-2176632",
+        "name": "Bathurst",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.41665,
+        "lon": 149.5806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bathurst, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Bathurst,_New_South_Wales",
+          "text": "Bathurst ( BATH-erst, locally /ˈbæθəst/ BATH-əst) is a city in the Central Tablelands of New South Wales, Australia. Bathurst is about 200 kilometres (120 mi) west-northwest of Sydney and is the seat of the Bathurst Regional Council. Founded in 1815, Bathurst is the oldest inland settlement in Australia and had a population of 44,621 in 2023.\nBathurst is often referred to as the Gold Country, as the area was the site of Australia's first discovery of payable gold in 1851, and where Australia's first gold rush occurred. Today education, tourism and manufacturing drive the economy. The internationally known racetrack Mount Panorama, also known as Wahluu, is a landmark of the city which brings in a lot of tourism, especially during the week of the Bathurst 1000. Bathurst has a historic city centre with many ornate buildings remaining from the New South Wales gold rush in the mid to late 19th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "bathurst",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3208,
+    "attempt": 3184,
+    "place_id": "gn-2562619",
+    "input": {
+      "place": {
+        "place_id": "gn-2562619",
+        "name": "Victoria",
+        "country": "Malta",
+        "subdivision": "Victoria",
+        "lat": 36.04473,
+        "lon": 14.24118
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Victoria, Malta",
+          "url": "https://en.wikipedia.org/wiki/Victoria,_Malta",
+          "text": "Victoria (Maltese: Il-Belt Victoria, meaning \"the city Victoria\"), also known among the native Maltese as Rabat (which is the name of the old town centre) or by its title Città Victoria, is an administrative unit of Malta, and the main town on Gozo. Victoria is the most populous settlement in Gozo. Its population was 7,491 in July 2024. This included 3,934 males and 3,557 females; 5,801 Maltese nationals and 1,690 foreign nationals.\nThe area around the town, situated on a hill near the centre of the island, has been settled since Neolithic times. Victoria is the name given on 10 June 1887 by the British government on the occasion of the Golden Jubilee of Queen Victoria, at the request of Pietro Monsignor Pace, Bishop of Gozo. Many Gozitans, mainly older ones, still often refer to it by the name Rabat.  It is usually known as Rabat, Gozo to distinguish it from the town of Rabat on the main island of Malta."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "victoria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3209,
+    "attempt": 3185,
+    "place_id": "gn-2622447",
+    "input": {
+      "place": {
+        "place_id": "gn-2622447",
+        "name": "Esbjerg",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.47028,
+        "lon": 8.45187
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Esbjerg",
+          "url": "https://en.wikipedia.org/wiki/Esbjerg",
+          "text": "Esbjerg (Danish: [ˈesˌpjɛɐ̯ˀ] , Jutish: [ˈɛspʲæa̯]) is a seaport city and seat of Esbjerg Municipality on the west coast of the Jutland peninsula in southwestern Denmark. By road, it is 71 kilometres (44 mi) west of Kolding and 164 kilometres (102 mi) southwest of Aarhus. With an urban population of 71,371 (1 January 2026) it is the fifth-largest city in Denmark, and the largest in West Jutland.\nBefore a decision was made to establish a harbour (now the second largest in Denmark) at Esbjerg in 1868, the area consisted of only a few farms. Esbjerg developed quickly with the population rising to 13,000 by 1901 and 70,000 by 1970. In addition to its fishing and shipping activities, it also became an important centre for agricultural exports. Over the years, many of the city's visitors have arrived by ferry from Harwich, Essex, England, but this service closed in September 2014 having run since 1875. The harbour facilities are being expanded to answer the needs of the wind-turbine industry and container shipping traffic. \nThe town has several notable museums and entertainment venues, including Esbjerg Art Museum, Esbjerg Museum and the privately owned Fisheries and Maritime Museum. The Esbjerg Performing Arts Centre was completed in 1997 to designs by Jan and Jørn Utzon. When approached by sea, the Man Meets the Sea is one of the prominent monuments, consisting of four 9-meter-tall (30-foot) white-coloured men, overlooking Sædding Beach. The sculpture was designed by Svend Wiig Hansen and installed in 1995. Esbjerg hosts branches of the University of Southern Denmark and Aalborg University, and is increasingly recognized for its university facilities and sporting activities. It is home to the Danish football club Esbjerg fB, who play their home matches at Blue Water Arena, and also has an ice hockey division called Esbjerg Elite Ishockey, which plays at the Granly Hockey Arena."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 307
+    },
+    "banned_terms": [
+      {
+        "term": "esbjerg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3210,
+    "attempt": 3186,
+    "place_id": "gn-2649024",
+    "input": {
+      "place": {
+        "place_id": "gn-2649024",
+        "name": "Frome",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.22834,
+        "lon": -2.32211
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Frome",
+          "url": "https://en.wikipedia.org/wiki/Frome",
+          "text": "Frome (  FROOM) is a town and civil parish in Somerset, England, at the eastern end of the Mendip Hills on the River Frome, 13 miles (21 km) south of Bath. At the 2021 census, it had a population of 28,567.\nFrome was one of the largest towns in Somerset until the Industrial Revolution. It first grew due to the wool and cloth industry, and later diversified into metal-working and printing. The town was enlarged during the 20th century but retains a large number of listed buildings, and most of the centre falls within a conservation area.\nThe town has road and rail transport links and acts as an economic, sporting and cultural centre for the surrounding area, including the annual Frome Festival and Frome Museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "frome",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3211,
+    "attempt": 3187,
+    "place_id": "gn-2655315",
+    "input": {
+      "place": {
+        "place_id": "gn-2655315",
+        "name": "Blyth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 55.12708,
+        "lon": -1.50856
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blyth, Northumberland",
+          "url": "https://en.wikipedia.org/wiki/Blyth,_Northumberland",
+          "text": "Blyth ( BLYDHE) is an industrial port town as well as a civil parish in southeast Northumberland, England. It lies on the coast, to the south of the River Blyth. It has a population of 39,731 as of the 2021 census, up 6% from the 2011 census and population of 37,347.\nThe port of Blyth dates from the 12th century, but the development of the modern town only began in the first quarter of the 18th century. The main industries which helped the town prosper were coal mining and shipbuilding, with the salt trade, fishing, and the railways also playing an important role. These industries have largely vanished, but the port still receives paper and pulp from Scandinavia for the newspaper industries of England and Scotland.\nThe town was seriously affected when its principal industries went into decline, and it has undergone regeneration since the early 1990s. The Keel Row Shopping Centre, opened in 1991, brought high street retailers to Blyth, and helped to revitalise the town centre; it closed in 2024 as part of the country council's Energising Blyth initiative. The market place has recently been re-developed, with the aim of attracting further investment to the town.\nThe quayside has been redeveloped into an open space, the centrepiece of which is a sculpture commemorating local industry. On the opposite side of the river are the nine wind turbines of the Blyth Harbour Wind Farm, which were constructed along the East Pier in 1992. They were joined in 2000 by Blyth Offshore Wind Farm, which consisted of two turbines situated 1 kilometre (0.62 mi) out to sea. These were the first two offshore wind turbines in the UK. These wind turbines were all decommissioned, with the final two being removed in 2019. A new windfarm further off the coast, composed of five turbines, was commissioned in 2017.\nBlyth is also the home of the non-League football club Blyth Spartans, known for their 1978 \"giant-killing\" feats in the FA Cup."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 329
+    },
+    "banned_terms": [
+      {
+        "term": "blyth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3212,
+    "attempt": 3188,
+    "place_id": "gn-2959927",
+    "input": {
+      "place": {
+        "place_id": "gn-2959927",
+        "name": "Aalen",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.83777,
+        "lon": 10.0933
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aalen",
+          "url": "https://en.wikipedia.org/wiki/Aalen",
+          "text": "Aalen (German pronunciation: [ˈaːlən] ; Swabian: Oole (Swabian pronunciation: [ˈɔːlɐ̃])) is a town located in the eastern part of the German state of Baden-Württemberg, about 70 kilometres (43 mi) east of Stuttgart and 48 kilometres (30 mi) north of Ulm. It is the seat and largest town of the Ostalbkreis district, as well as the largest in the Ostwürttemberg region.\nSince 1956, Aalen has had the status of Große Kreisstadt (major district town). It is noted for its many half-timbered houses constructed from the 16th century through the 18th century.\nWith an area of 146.63 km2, Aalen is ranked 7th in Baden-Württemberg and 2nd within the Government Region of Stuttgart, after Stuttgart. With a population of about 66,000, Aalen is the 15th most-populated settlement in Baden-Württemberg."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "aalen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3213,
+    "attempt": 3189,
+    "place_id": "gn-3175081",
+    "input": {
+      "place": {
+        "place_id": "gn-3175081",
+        "name": "La Spezia",
+        "country": "Italy",
+        "subdivision": "Liguria",
+        "lat": 44.103,
+        "lon": 9.82375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Spezia",
+          "url": "https://en.wikipedia.org/wiki/La_Spezia",
+          "text": "La Spezia is a city and municipality at the head of the Gulf of La Spezia in the eastern part of the region of Liguria in Italy, the capital of the Province of La Spezia. With a population of 92,711, it is the 2nd-largest municipality in Liguria and the 52-largest in Italy. \nLa Spezia is the second-largest city in the Liguria region, after Genoa. Located roughly midway between Genoa and Pisa, on the Ligurian Sea, it is one of the main Italian military and commercial harbours and a major Italian Navy base. A popular seaside resort, it is also a significant railway junction, and is notable for its museums, for the Palio del Golfo rowing race, and for railway and boat links with the Cinque Terre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "la spezia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spezia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3214,
+    "attempt": 3190,
+    "place_id": "gn-3180208",
+    "input": {
+      "place": {
+        "place_id": "gn-3180208",
+        "name": "Casale Monferrato",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 45.13338,
+        "lon": 8.4525
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Casale Monferrato",
+          "url": "https://en.wikipedia.org/wiki/Casale_Monferrato",
+          "text": "Casale Monferrato (Italian pronunciation: [kaˈzaːle moɱferˈraːto]) is a town in the Piedmont region of northwestern Italy, in the province of Alessandria. It is situated about 60 km (37 mi) east of Turin on the right bank of the Po, where the river runs at the foot of the Montferrat hills. Beyond the river lies the vast plain of the Po valley.\nAn ancient Roman municipium, the town has been the most important trade and manufacturing centre of the area for centuries. After the fall of the Roman Empire, Casale became a free municipality and, in the 15th and early 16th centuries, served as the capital of the House of Palaiologos. Then in 1536, the town passed to the Gonzagas who fortified it with a large citadel. In the 17th century, Casale was heavily involved in the War of the Mantuan Succession and besieged by French and Spanish troops. During the wars of Italian unification the town was a defensive bulwark against the Austrian Empire.\nIn the 1900s Casale, in the middle of the Turin-Milan-Genoa industrial triangle, developed as an important industrial centre, especially known for the production of lime and cement.\nFurthermore, the asbestos cement industry has also developed. A local Eternit factory has been at the centre of a massive environmental scandal, with subsequent high-profile litigation that often made international headlines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "casale monferrato",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "casale",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "monferrato",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3215,
+    "attempt": 3191,
+    "place_id": "gn-338554",
+    "input": {
+      "place": {
+        "place_id": "gn-338554",
+        "name": "Dubti",
+        "country": "Ethiopia",
+        "subdivision": "Āfar",
+        "lat": 11.73292,
+        "lon": 41.082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dubti",
+          "url": "https://en.wikipedia.org/wiki/Dubti",
+          "text": "Dubti is a town Administration in north-east Ethiopia. Located in Awsi Rasu, Afar Region, this town has a latitude and longitude of 11°44′N 41°05′E with an elevation of 378 meters above sea level.\nA UN-EUE mission, accompanied by two non-government organizations, surveying conditions in the Afar Region and visited Dubti 13 December 1995, at which time the town had one of two hospitals in Afar. While it offered the most advanced treatment in the Region, services available stopped short of surgery, providing only minor surgery under local anesthesia.\nBased on figures from the Central Statistical Agency published in 2005, Dubti has an estimated total population of 15,445, of whom 8,501 are men and 6,944 are women. It is the largest of five towns in Dubti woreda."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "dubti",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3216,
+    "attempt": 3192,
+    "place_id": "gn-3437547",
+    "input": {
+      "place": {
+        "place_id": "gn-3437547",
+        "name": "Pedro Juan Caballero",
+        "country": "Paraguay",
+        "subdivision": "Amambay Department",
+        "lat": -22.54925,
+        "lon": -55.7387
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pedro Juan Caballero, Paraguay",
+          "url": "https://en.wikipedia.org/wiki/Pedro_Juan_Caballero,_Paraguay",
+          "text": "Pedro Juan Caballero (Spanish pronunciation: [ˈpeðɾo ˈxwaŋ kaβaˈʎeɾo]) is a Paraguayan city and the capital of the Amambay Department. It lies on the border with the Brazilian city of Ponta Porã in the state of Mato Grosso do Sul and is known as a centre for cheap electronic and consumer goods. This city is the highest city in Paraguay at 670 m (2201 ft) above sea level and is named after Pedro Juan Caballero. Pedro Juan Caballero is serviced by the Dr. Augusto Roberto Fuster International Airport and the country's most modern shopping centre, the Shopping Dubai, which cost US$30million.\nThe Blue Lagoon Amambay Hotel & Residential Complex is located in the city, the hotel is modernly structured and Paraguay.com considered it a First World condominium. The city is home to the Club Sportivo 2 de Mayo, counting with the Monumental Río Parapití which was used for the 1999 Copa América and is Paraguay's fifth biggest football stadium."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "pedro juan caballero",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pedro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "caballero",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3217,
+    "attempt": 3193,
+    "place_id": "gn-3445847",
+    "input": {
+      "place": {
+        "place_id": "gn-3445847",
+        "name": "Ubatuba",
+        "country": "Brazil",
+        "subdivision": "São Paulo",
+        "lat": -23.43389,
+        "lon": -45.07111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ubatuba",
+          "url": "https://en.wikipedia.org/wiki/Ubatuba",
+          "text": "Ubatuba is a Brazilian municipality, located on the northeast coast, in the state of São Paulo. It is part of the Metropolitan Region of Vale do Paraíba e Litoral Norte. The population is 92,819 (2021 est.) in an area of 723.88 km2, of which 83% is located in the Serra do Mar State Park.\nUbatuba is one of fifteen municipalities in São Paulo that the state considers to be coastal resorts because they satisfy specific standards set by state legislation. This classification entitles these communities more money from the state for the development of regional tourism. In addition, the municipality gains the right to add the title of seaside resort to its name, a word used both in the official municipal file and in state references."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "ubatuba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3218,
+    "attempt": 3194,
+    "place_id": "gn-3489577",
+    "input": {
+      "place": {
+        "place_id": "gn-3489577",
+        "name": "Mandeville",
+        "country": "Jamaica",
+        "subdivision": "Manchester",
+        "lat": 18.04168,
+        "lon": -77.50714
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mandeville, Jamaica",
+          "url": "https://en.wikipedia.org/wiki/Mandeville,_Jamaica",
+          "text": "Mandeville (Jamaican Patois: Mandivl) is the capital and largest town in the parish of Manchester in the county of Middlesex, Jamaica. In 2022, the town had an estimated population of 49,695\n. It is located on an inland plateau at an altitude of 628 m (2,060 ft), and is 103 km (64 mi) west of Kingston. It is the only parish capital of Jamaica not located on the coast or on a major river.\nMandeville has a town square, parish church and clock tower, and many large, elegant early nineteenth-century houses line the winding streets in the town centre.\nIn the suburbs of the town many large houses have been built by returning residents from North America and the United Kingdom on an ad hoc basis. Prominent suburbs and surrounding areas include Ingleside, Battersea, Knockpatrick, Clover, Waltham, Bloomfield, Caledonia Meadows, Brumalia, Newport, Spur Tree, Kingsland, French Park, Swabys Hope, Lincoln, Greenvale and Marshalls Pen.\nMandeville is a major commercial centre, and is the location of Northern Caribbean University (formerly West Indies College), a Seventh-day Adventist institution of higher learning.\nThe mayor of Mandeville in 2012 was Brenda Ramsay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "mandeville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3219,
+    "attempt": 3195,
+    "place_id": "gn-3838859",
+    "input": {
+      "place": {
+        "place_id": "gn-3838859",
+        "name": "Río Gallegos",
+        "country": "Argentina",
+        "subdivision": "Santa Cruz",
+        "lat": -51.6253,
+        "lon": -69.25229
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Río Gallegos, Santa Cruz",
+          "url": "https://en.wikipedia.org/wiki/Río_Gallegos,_Santa_Cruz",
+          "text": "Río Gallegos ([ˈri.o ɣaˈʝeɣos]) is the capital and largest settlement of the Patagonian province of Santa Cruz in Argentina. Located in the department of Güer Aike, it had a population of 115,524, according to the 2022 census [INDEC]. The city bears the name of the Gallegos River, and sits on its estuary 2,636 km (1,638 mi) south from the Argentine federal capital Buenos Aires.\nEstablished on 19 December 1885 to increase Argentine power over southern Patagonia, Río Gallegos became the capital of the then Territory of Santa Cruz in 1888, retaining its status when the territory became a province in 1957. Néstor Kirchner, later President of Argentina, served as the city's mayor from 1987 to 1991 and is interred in a mausoleum in the city's cemetery."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "rio gallegos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gallegos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3220,
+    "attempt": 3196,
+    "place_id": "gn-4005219",
+    "input": {
+      "place": {
+        "place_id": "gn-4005219",
+        "name": "Guasave",
+        "country": "Mexico",
+        "subdivision": "Sinaloa",
+        "lat": 25.56792,
+        "lon": -108.46949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guasave",
+          "url": "https://en.wikipedia.org/wiki/Guasave",
+          "text": "Guasave (Spanish pronunciation: [ɡwaˈsaβe]) is a city and the seat of the homonymous municipality known as the Agricultural Heart of Mexico (El Corazon Agricola de Mexico) in the Mexican state of Sinaloa. It is located in the northwestern part of Mexico, 62km (38 miles) southeast of the city of Los Mochis and 150km (93 miles) northeast the state capital Culiacán. It stands at 25°34′04.5″N 108°28′10.8″W.\nIn the 2010 census, the city reported a population of 71,196, making it the fourth-largest community in the state, after Culiacán, Mazatlán, and Los Mochis. The municipality has a land area of 3,464.41 km2 (1,337.62 sq mi) and includes many other outlying communities, the largest of which are Juan José Ríos, Gabriel Leyva Solano, Adolfo Ruiz Cortines, El Burrion and Bamoa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "guasave",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3221,
+    "attempt": 3197,
+    "place_id": "gn-4334971",
+    "input": {
+      "place": {
+        "place_id": "gn-4334971",
+        "name": "New Iberia",
+        "country": "United States",
+        "subdivision": "Louisiana",
+        "lat": 30.00354,
+        "lon": -91.81873
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "New Iberia, Louisiana",
+          "url": "https://en.wikipedia.org/wiki/New_Iberia,_Louisiana",
+          "text": "New Iberia (French: La Nouvelle-Ibérie; Spanish: Nueva Iberia; Louisiana Creole: Nouvèl Ibéri) is the largest city in and the parish seat of Iberia Parish in the U.S. state of Louisiana. The city of New Iberia is located about 21 mi (34 km) southeast of Lafayette and forms part of the Lafayette metropolitan statistical area in the region of Acadiana. The 2020 United States census reported a population of 28,555. New Iberia is served by Amtrak's Sunset Limited, operating between Los Angeles and New Orleans. New Iberia has a major four-lane highway, U.S. 90 (future Interstate 49), and has its own general-aviation airfield, Acadiana Regional Airport.  Scheduled passenger and cargo airline service is available via the nearby Lafayette Regional Airport located adjacent to U.S. 90 in Lafayette."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "new iberia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "new",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "iberia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3222,
+    "attempt": 3198,
+    "place_id": "gn-4470778",
+    "input": {
+      "place": {
+        "place_id": "gn-4470778",
+        "name": "Hickory",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.73319,
+        "lon": -81.3412
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hickory, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Hickory,_North_Carolina",
+          "text": "Hickory is a city in western North Carolina primarily located in Catawba County. The 25th most populous city in the state, it is located approximately 60 miles (97 km) northwest of Charlotte.\nHickory's population in the 2022 United States Census Bureau estimate was 44,084. Hickory is the main city of the Hickory–Lenoir–Morganton Metropolitan Statistical Area, which had a population of 368,347 in the 2022 census, and is included in the larger Charlotte-Concord, NC Combined Statistical Area with a population of 3,387,115 in 2022.\nIn 2014, Reader's Digest named the Hickory metro area as the 10th best place to live and raise a family in the United States. Forbes ranked the Hickory-Lenoir-Morganton MSA the third best MSA in the country for business cost in the same year. The Hickory MSA was described by Smart Growth America in 2014 as being the country's most sprawling metro area. In 2023, Travel and Leisure rated Hickory as the most beautiful and affordable place to live in the U.S."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "hickory",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3223,
+    "attempt": 3199,
+    "place_id": "gn-453754",
+    "input": {
+      "place": {
+        "place_id": "gn-453754",
+        "name": "Valmiera",
+        "country": "Latvia",
+        "subdivision": "Valmiera",
+        "lat": 57.54108,
+        "lon": 25.42751
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valmiera",
+          "url": "https://en.wikipedia.org/wiki/Valmiera",
+          "text": "Valmiera () is the second largest city of the historical Vidzeme region, Latvia, with a total area of 19.35 square kilometres (7 square miles). As of 2002, Valmiera had a population of 27,323, and in 2020, it was at 24,879. It is a state city (although without a separate municipal government), and is the seat of the Valmiera Municipality. Valmiera is one of the oldest cities in Latvia; it was a member of the Hanseatic League. According to the ethnic composition, Valmiera has the largest proportion of ethnic Latvians among the state cities. \nValmiera lies at the crossroads of several important roads, 107 kilometres (66 miles) to the north-east from Riga, the capital of Latvia, and 50 km (31 mi) south of the border with Estonia. Valmiera lies on both banks of the Gauja River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "valmiera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3224,
+    "attempt": 3200,
+    "place_id": "gn-4566385",
+    "input": {
+      "place": {
+        "place_id": "gn-4566385",
+        "name": "Mayagüez",
+        "country": "Puerto Rico",
+        "subdivision": "Mayagüez",
+        "lat": 18.20107,
+        "lon": -67.13962
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mayagüez, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Mayagüez,_Puerto_Rico",
+          "text": "Mayagüez (Spanish pronunciation: [maʝaˈɣwes], locally [maʝaˈweʔ]) is the ninth-largest municipality in Puerto Rico. It was founded as Pueblo de Nuestra Señora de la Candelaria de Mayagüez (Township of Our Lady of Candelaria), and is also known as La Sultana del Oeste (The Sultaness of the West), Ciudad de las Aguas Puras (City of Pure Waters), or Ciudad del Mangó (Mango City). On April 6, 1894, the Spanish Crown granted it the formal title of Excelente Ciudad de Mayagüez (Excellent City of Mayagüez). Mayagüez is located in the center of the western coast on the island of Puerto Rico. It has a population of 73,077, and it is the principal city of the Mayagüez Metropolitan Statistical Area (pop. 213,831) and the Mayagüez–Aguadilla, PR Combined Statistical Area (pop. 467,599)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 126,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "mayaguez",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 6975,
+    "place_id": "gn-4935434",
+    "input": {
+      "place": {
+        "place_id": "gn-4935434",
+        "name": "East Longmeadow",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.06454,
+        "lon": -72.51259
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Longmeadow, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/East_Longmeadow,_Massachusetts",
+          "text": "East Longmeadow is a town in Hampden County, Massachusetts, United States, in the Pioneer Valley region of Western Massachusetts. It had a population of 16,430 at the 2020 census. East Longmeadow is 5 mi (8.0 km) southeast of downtown Springfield, part of the Springfield Metropolitan Statistical Area. It is 25 mi (40 km) north of Hartford, 88 mi (142 km) southwest of Boston, and 142 mi (229 km) northeast of New York City.\nThe development of East Longmeadow around the turn-of-the century was largely reliant on the brownstone quarrying industry. The industry brought many Swedish immigrants, formerly of Connecticut, along with large French and Italian populations to the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "east longmeadow",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "longmeadow",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6979,
+    "place_id": "gn-5126180",
+    "input": {
+      "place": {
+        "place_id": "gn-5126180",
+        "name": "Maspeth",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.72316,
+        "lon": -73.91264
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maspeth, Queens",
+          "url": "https://en.wikipedia.org/wiki/Maspeth,_Queens",
+          "text": "Maspeth is a residential and commercial community in the borough of Queens in New York City. It was founded in the early 17th century by Dutch and English settlers. Neighborhoods sharing borders with Maspeth are Woodside to the north; Sunnyside to the northwest; Greenpoint, Brooklyn, to the west; East Williamsburg, Brooklyn, to the southwest; Fresh Pond and Ridgewood to the south; and Middle Village and Elmhurst to the east.\nMaspeth is located in Queens Community District 5 and its ZIP Code is 11378. It is patrolled by the New York City Police Department's 104th Precinct. Politically, Maspeth is represented by the New York City Council's 26th and 30th districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "maspeth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6998,
+    "place_id": "gn-8504423",
+    "input": {
+      "place": {
+        "place_id": "gn-8504423",
+        "name": "Subang Jaya",
+        "country": "Malaysia",
+        "subdivision": "Selangor",
+        "lat": 3.04384,
+        "lon": 101.58062
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Subang Jaya",
+          "url": "https://en.wikipedia.org/wiki/Subang_Jaya",
+          "text": "Subang Jaya is a city in Petaling District, Selangor, Malaysia. It comprises the southern third district of Petaling. It consists of the neighbourhoods from SS12 to SS19, UEP Subang Jaya (USJ), Putra Heights, Batu Tiga as well as PJS7, PJS9 and PJS11 of Bandar Sunway, the latter of which are partially jurisdictional within Petaling Jaya under the MBPJ. The city is governed by Subang Jaya City Council (MBSJ), which also governs other areas of the Petaling district, such as Puchong and Seri Kembangan. According to Subang Jaya City Council, Subang Jaya has a population of 968,930 in 2020, which makes it the sixth largest city in Malaysia by population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "subang jaya",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "subang",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jaya",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6999,
+    "place_id": "gn-8630153",
+    "input": {
+      "place": {
+        "place_id": "gn-8630153",
+        "name": "Hakuba",
+        "country": "Japan",
+        "subdivision": "Nagano",
+        "lat": 36.69818,
+        "lon": 137.86185
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hakuba",
+          "url": "https://en.wikipedia.org/wiki/Hakuba",
+          "text": "Hakuba (白馬村, Hakuba-mura) is a village located in Nagano Prefecture, Japan. As of April 1, 2019, the village had an estimated population of 9,007 in 4267 households, and a population density of 48 persons per km2. The total area of the village is 189.36 square kilometres (73.11 sq mi). Hakuba is located in the eastern foothills of the Hida Mountains in the northern part of the Japanese Alps and is a popular ski resort. It is also the starting point for trekking Mount Shirouma and Mount Goryu, two of the One Hundred Mountains of Japan. The Hakuba Valley receives an average annual snow fall of 655 cm (258 inches)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "hakuba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7006,
+    "place_id": "gn-1288322",
+    "input": {
+      "place": {
+        "place_id": "gn-1288322",
+        "name": "Pangkham",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Shan State",
+        "lat": 22.17924,
+        "lon": 99.16666
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pangkham",
+          "url": "https://en.wikipedia.org/wiki/Pangkham",
+          "text": "Pangkham (Burmese: ပန်ခမ်းမြို့, MLCTS: pan kham: mrui.; Chinese: 邦康; pinyin: Bāngkāng; Parauk: Pang Kham), known before 1999 as Panghsang (Parauk: Pang Sang, Chinese: 邦桑; pinyin: Bāngsāng; Wade–Giles: Pang1-sang1), is a border town in Myanmar's far eastern Shan State. It is situated at a bend on the Hka River near the border with Yunnan Province, China, opposite of the town of Menglian. Pangkham is the main town of Pangsang Township of Matman District of Shan State.\nIt has hotels, shops, a supermarket, karaoke bars, a bowling alley, and a 24-hour casino. There is a thriving night life centered on the casino.  Food in Pangkham is mostly imported from China."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "pangkham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7010,
+    "place_id": "gn-1851632",
+    "input": {
+      "place": {
+        "place_id": "gn-1851632",
+        "name": "Shuzenji",
+        "country": "Japan",
+        "subdivision": "Shizuoka",
+        "lat": 34.97008,
+        "lon": 138.92187
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shuzenji, Shizuoka",
+          "url": "https://en.wikipedia.org/wiki/Shuzenji,_Shizuoka",
+          "text": "Shuzenji (修善寺町, Shuzenji-chō) was a town located in Tagata District, Shizuoka Prefecture, Japan, in central Izu Peninsula.\nAs of March 1, 2004, final population data before the amalgamation, the town had an estimated population of 16,328 and a density of 236.5 persons per km2. The total area was 69.04 km2.\nOn April 1, 2004 Shuzenji, along with the towns of Amagiyugashima, Nakaizu and Toi (all from Tagata District), was merged to create the city of Izu.\nShuzenji was located in an inland region of Izu Peninsula and was noted for its numerous onsen hot spring resorts. The area was also noted for its production of wasabi and shiitake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "shuzenji",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7012,
+    "place_id": "gn-2163055",
+    "input": {
+      "place": {
+        "place_id": "gn-2163055",
+        "name": "Horsham",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -36.71131,
+        "lon": 142.19981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Horsham, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Horsham,_Victoria",
+          "text": "Horsham () is a regional city in the Wimmera region of western Victoria, Australia. Located on a bend in the Wimmera River, Horsham is approximately 300 kilometres (190 mi) northwest of the state capital Melbourne. As of the 2021 census, Horsham and surrounds had a population of 16,985. It is the most populous city in Wimmera, and the main administrative centre for the Rural City of Horsham local government area. It is the eleventh largest city in Victoria after Melbourne, Geelong, Ballarat, Bendigo, Wodonga, Mildura, Shepparton, Warrnambool, Traralgon, and Wangaratta.\nAn early settler James Monckton Darlot named the settlement after the town of Horsham in his native England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "horsham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7013,
+    "place_id": "gn-2511302",
+    "input": {
+      "place": {
+        "place_id": "gn-2511302",
+        "name": "Sant Lluís",
+        "country": "Spain",
+        "subdivision": "Balearic Islands",
+        "lat": 39.84939,
+        "lon": 4.25819
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Lluís",
+          "url": "https://en.wikipedia.org/wiki/Sant_Lluís",
+          "text": "Sant Lluís (Balearic Catalan: [ˈsaɲ ʎuˈis]; Spanish: San Luis) is a Spanish municipality on the tip of south-east Menorca in the Balearic Islands.\nThe main town is Sant Lluís, founded by the French in 1761 during their occupation of Menorca and dominated by Es Moli de Dalt, a fully restored, traditional windmill which is now a museum open to the public.\nThe area is noteworthy for its varied coastline, with fine sand beaches and cliffs, and the beautiful coves of Binissafúller, Biniancolla and Binibeca, with their typical whitewashed fishermen's houses. There are capes and islets, and medieval defensive towers all along the coast, very characteristic of the island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "sant lluis",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lluis",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7021,
+    "place_id": "gn-2654634",
+    "input": {
+      "place": {
+        "place_id": "gn-2654634",
+        "name": "Broadstone",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.75717,
+        "lon": -1.99406
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Broadstone, Dorset",
+          "url": "https://en.wikipedia.org/wiki/Broadstone,_Dorset",
+          "text": "Broadstone  is a town and civil parish and electoral ward of the Bournemouth, Christchurch and Poole district, in the ceremonial county of Dorset, England. It is located three miles (five kilometres) from Hamworthy railway station and seven miles (eleven kilometres) from Bournemouth Airport. The ward had a population of 10,289 at the 2021 census.\nSince 1840, Broadstone has grown from a small farm to a suburb of 10,000 people. Centred on the main road (the B3074), 'The Broadway' is a busy hub of shops, churches, schools and housing. Broadstone is notable for its large recreation fields and heathland park, as well as an annual Christmas parade and lights."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "broadstone",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7031,
+    "place_id": "gn-3403899",
+    "input": {
+      "place": {
+        "place_id": "gn-3403899",
+        "name": "Calçoene",
+        "country": "Brazil",
+        "subdivision": "Amapá",
+        "lat": 2.4975,
+        "lon": -50.94861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Calçoene",
+          "url": "https://en.wikipedia.org/wiki/Calçoene",
+          "text": "Calçoene (Brazilian Portuguese pronunciation: [kawsoˈeni]) is a municipality located in the east of the state of Amapá, Brazil. It is located on the Atlantic Ocean in the Amazon jungle basin near French Guiana. Calçoene covers 14,269 square kilometres (5,509 mi2) and has a population is 11,306. The name Calçoene is a corruption of \"Calço N\" (North Wedge, one of four mining zones defined by the Brazilian Government at the beginning of the 20th century).\nThe city has the highest rainfall of any in Brazil, with an annual average of 4,165 millimetres (164.0 in). Calçoene is noted for its ancient megalithic observatory, often referred to as the \"Amazon Stonehenge\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "calcoene",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7038,
+    "place_id": "gn-4951766",
+    "input": {
+      "place": {
+        "place_id": "gn-4951766",
+        "name": "Spring Hill",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.38591,
+        "lon": -71.10927
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spring Hill, Somerville, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Spring_Hill,_Somerville,_Massachusetts",
+          "text": "Spring Hill is a ridge in the central part of the city of Somerville, Massachusetts, United States, and the residential neighborhood that sits atop it. It runs northwest to southeast, roughly bounded by Highland Avenue, Somerville Avenue, Elm Street, and Willow Avenue. Summer Street runs along the hill's crest.\nSpring Hill is a drumlin, one of many such hills in the Boston area composed of material deposited as glaciers of the Pleistocene epoch receded.\nHistorically agricultural in character, Spring Hill was sparsely developed until the mid-19th century. Present-day Central, Lowell, and Cedar Streets trace their origins to the mid-17th century, but few other roads broke the open space."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "spring hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spring",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7041,
+    "place_id": "gn-5118693",
+    "input": {
+      "place": {
+        "place_id": "gn-5118693",
+        "name": "Glens Falls",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 43.30952,
+        "lon": -73.64401
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glens Falls, New York",
+          "url": "https://en.wikipedia.org/wiki/Glens_Falls,_New_York",
+          "text": "Glens Falls is a city in Warren County, New York, United States, and is the central city of the Glens Falls Metropolitan Statistical Area. The population was 14,830 at the 2020 census. The name was given by Colonel Johannes Glen, the falls referring to a large waterfall in the Hudson River at the southern end of the city.\nGlens Falls is a city in the southeastern corner of Warren County, surrounded by the town of Queensbury to the north, east, and west, and by the Hudson River and Saratoga County to the south. Glens Falls is known as \"Hometown U.S.A.,\" a title Look magazine gave it in 1944."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "glens falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "glens",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7045,
+    "place_id": "gn-5493403",
+    "input": {
+      "place": {
+        "place_id": "gn-5493403",
+        "name": "Sunland Park",
+        "country": "United States",
+        "subdivision": "New Mexico",
+        "lat": 31.7965,
+        "lon": -106.57999
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunland Park, New Mexico",
+          "url": "https://en.wikipedia.org/wiki/Sunland_Park,_New_Mexico",
+          "text": "Sunland Park is a city in southeastern Doña Ana County, New Mexico, United States, on the borders of Texas and the Mexican state of Chihuahua, with Ciudad Juárez adjoining it on the south and El Paso, Texas, on the east. The community of Santa Teresa adjoins it on the northwest. As of the 2020 census, Sunland Park had a population of 16,702. It was estimated at 17,978 by the United States Census Bureau in 2019. Though it lies adjacent to El Paso, being in Doña Ana County makes it a part of the Las Cruces metropolitan statistical area. Las Cruces is 42 miles (68 km) to the north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "sunland park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sunland",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7046,
+    "place_id": "gn-5800227",
+    "input": {
+      "place": {
+        "place_id": "gn-5800227",
+        "name": "Lake Forest Park",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.75676,
+        "lon": -122.28096
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake Forest Park, Washington",
+          "url": "https://en.wikipedia.org/wiki/Lake_Forest_Park,_Washington",
+          "text": "Lake Forest Park is a suburban city in King County, Washington, United States, located northeast of Seattle. It was developed in the 20th century as a bedroom community with single-family housing on medium to large-sized lots. Less than 4% of the city's land is zoned commercial, largely concentrated in one location, and there are no industrial areas.\nThe city is situated at the northwest end of Lake Washington along State Route 522, which provides connections to Seattle and Bothell. Lake Forest Park includes several parks and nature reserves, access to the Burke–Gilman Trail, and organized summer events. The population of the city was 13,630 at the 2020 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "lake forest park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "forest",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7050,
+    "place_id": "gn-7315234",
+    "input": {
+      "place": {
+        "place_id": "gn-7315234",
+        "name": "Midway",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 30.40648,
+        "lon": -87.00553
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Midway, Santa Rosa County, Florida",
+          "url": "https://en.wikipedia.org/wiki/Midway,_Santa_Rosa_County,_Florida",
+          "text": "Midway is an unincorporated community and census designated place (CDP) in southern Santa Rosa County, Florida. It is part of the Pensacola–Ferry Pass–Brent, Florida Metropolitan Statistical Area. The area is located between the communities of Gulf Breeze and Navarre, on the Fairpoint Peninsula. Midway is often considered to be part of one, if not both, of these communities. Its actual boundaries vary from source to source, but unofficially include most areas from the intersection of Soundside Drive with U.S. Highway 98, eastward until Highway 98 becomes Navarre Parkway.\nMidway Water Systems, Inc., which provides water service to the communities of Gulf Breeze and Navarre, is located in Midway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "midway",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7055,
+    "place_id": "gn-11979979",
+    "input": {
+      "place": {
+        "place_id": "gn-11979979",
+        "name": "Glen",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.35632,
+        "lon": -76.69066
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Glen, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Glen,_Baltimore",
+          "text": "Glen is a neighborhood in Baltimore, Maryland. It was developed in the early 1920s and 1930s, with the remaining development coming in the 1940s through the 1960s.  Glen is one of the largest communities of Northern Park Heights in Baltimore. Glen is a neighborhood of mixed housing types that include Tudor, French Norman and brick ranch houses, along with garden apartments, condominiums and semi-detached single family homes.\nThe neighborhood, and its notable coexistence of African Americans and Orthodox Jews, have at least twice been featured in The Baltimore Sun: April 29, 2001, and May 13, 2004.\nThe neighborhood's motto is \"Glen is a Great Place to Live\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "glen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7057,
+    "place_id": "gn-1255951",
+    "input": {
+      "place": {
+        "place_id": "gn-1255951",
+        "name": "Sivagiri",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 9.34461,
+        "lon": 77.42911
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sivagiri, Tenkasi",
+          "url": "https://en.wikipedia.org/wiki/Sivagiri,_Tenkasi",
+          "text": "Sivagiri is a panchayat town and a tourist place in Tenkasi district in the Indian state of Tamil Nadu. Sivagiri is located at a distance of 50 km north to Tenkasi, 20 km south to Rajapalayam, 95 km north-west to Tirunelveli, 95 km south to Madurai, 540 km south to Bangalore, 150 km north to Thiruvananthapuram and 580 km south to the state capital Chennai.\nIt was one of the Palayams in ancient Madurai. It is located in the leeward side of the Western Ghats. Many seasonal rivers originate from this Mountains. One of the rivers is Kombai river which is located in the Western Ghats, Sivagiri."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "sivagiri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7062,
+    "place_id": "gn-1774217",
+    "input": {
+      "place": {
+        "place_id": "gn-1774217",
+        "name": "Guar Chempedak",
+        "country": "Malaysia",
+        "subdivision": "Kedah",
+        "lat": 5.85846,
+        "lon": 100.45928
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guar Chempedak",
+          "url": "https://en.wikipedia.org/wiki/Guar_Chempedak",
+          "text": "Guar Chempedak is a small town in Yan District, Kedah, Malaysia. Guar Chempedak is situated within the parliamentary constituency of Jerai. Guar Chempedak comes from two words, in which Guar means 'hilly land' and Chempedak or cempedak is a name of a fruit that is believed to be widely available here in any season.\nIt was where the tragic 1989 Taufiqiah Al-Khairiah madrasa fire occurred.\nMajority of the population here are of Malay descent, and a small number of Chinese and Indians also reside here. Although most of the town is relatively rural, in recent years more infrastructure has been developed, including shop houses and residential areas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "guar chempedak",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "guar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "chempedak",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7066,
+    "place_id": "gn-2643776",
+    "input": {
+      "place": {
+        "place_id": "gn-2643776",
+        "name": "Lofthouse",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.72947,
+        "lon": -1.49697
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lofthouse, West Yorkshire",
+          "url": "https://en.wikipedia.org/wiki/Lofthouse,_West_Yorkshire",
+          "text": "Lofthouse is a village between the cities of Wakefield and Leeds in West Yorkshire, England. The village falls within the Ardsley and Robin Hood ward of the City of Leeds Council. It is in the City of Leeds metropolitan borough but with a Wakefield postal address (WF3). It is mentioned as Locthuse, also as Loftose in the 1086 Domesday Book.\nLofthouse has good road connections to its nearby boroughs as well as to the rest of Northern England. It can be found on the main A61 Leeds-Wakefield road and off junction 29 of the M62 and junction 42 of the M1, known locally as the Lofthouse interchange."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "lofthouse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7072,
+    "place_id": "gn-2783850",
+    "input": {
+      "place": {
+        "place_id": "gn-2783850",
+        "name": "Wépion",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.42153,
+        "lon": 4.86403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wépion",
+          "url": "https://en.wikipedia.org/wiki/Wépion",
+          "text": "Wépion (French pronunciation: [wepjɔ̃]) is a sub-municipality of the city of Namur located in the province of Namur, Wallonia, Belgium. It was a separate municipality until 1977. On 1 January 1977, it was merged into Namur.\nLocated 8 kilometres (5.0 mi) south of the city centre, it is considered as Belgian's strawberry capital, with the Wépion strawberry an established concept in Belgian cuisine. The strawberry has been cultivated there for more than 150 years because Wépion benefits from a micro-climate, sun-exposed plantations on west sloping ground and has a perfect ground for this type of culture.\nIt produces a strawberry beer under the brand name La Wépionnaise."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "wepion",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

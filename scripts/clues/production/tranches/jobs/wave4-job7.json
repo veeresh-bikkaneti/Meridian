@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 3622,
+    "place_id": "gn-3919998",
+    "input": {
+      "place": {
+        "place_id": "gn-3919998",
+        "name": "Cobija",
+        "country": "Bolivia",
+        "subdivision": "Pando",
+        "lat": -11.02671,
+        "lon": -68.76918
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cobija",
+          "url": "https://en.wikipedia.org/wiki/Cobija",
+          "text": "Cobija is a city in Bolivia, capital of the department of Pando, and is located about 600 km (373 mi.) north of La Paz in the Amazon Basin on the border with Brazil. Cobija lies on the banks of the Rio Acre across from the Brazilian city of Brasiléia. Cobija lies at an elevation of ca. 280 m (920 ft.) above sea level and has a tropical and rainy climate.\nCobija has approximately 55,000 inhabitants, is the seat of a university and capital of the Bolivian Pando Department. Cobija has two airports and is connected by one road to El Choro in the Beni Department, which is not always passable during the rainy season."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "cobija",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3623,
+    "place_id": "gn-3931470",
+    "input": {
+      "place": {
+        "place_id": "gn-3931470",
+        "name": "Puerto Maldonado",
+        "country": "Peru",
+        "subdivision": "Madre de Dios",
+        "lat": -12.58946,
+        "lon": -69.19948
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Maldonado",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Maldonado",
+          "text": "Puerto Maldonado (Spanish pronunciation: [ˈpweɾto maldoˈnaðo] ) is a city in southeastern Peru in the Amazon rainforest 55 kilometres (34 mi) west of the Bolivian border, located at the confluence of the Tambopata and Madre de Dios rivers. The latter river joins the Madeira River as a tributary of the Amazon. This city is the capital of the Department of Madre de Dios.\nNearby are the Manu National Park, Tambopata National Reserve, and Bahuaja-Sonene National Park, which have been established to protect natural resources. These are some of the most pristine primary rain forests in the world. They include several oxbow lakes and clay licks, where hundreds of birds, including macaws, feed on clay."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "puerto maldonado",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maldonado",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3625,
+    "place_id": "gn-4155995",
+    "input": {
+      "place": {
+        "place_id": "gn-4155995",
+        "name": "Fort Myers",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.62168,
+        "lon": -81.84059
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Myers, Florida",
+          "url": "https://en.wikipedia.org/wiki/Fort_Myers,_Florida",
+          "text": "Fort Myers (or Ft. Myers) is a city in and the county seat of Lee County, Florida, United States. As of the 2020 census, the population was 86,395; it was estimated to have grown to 101,581 in 2025, making it the 25th-most populous city in Florida. Together with the larger and more residential city of Cape Coral, it anchors the Cape Coral–Fort Myers metropolitan statistical area, which encompasses Lee County and has an estimated population of 875,607 as of 2025.\nFort Myers is a gateway to the Southwest Florida region and a major tourist destination within the state. The winter estates of Thomas Edison (\"Seminole Lodge\") and Henry Ford (\"The Mangoes\") are major attractions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "fort myers",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "myers",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3633,
+    "place_id": "gn-7259780",
+    "input": {
+      "place": {
+        "place_id": "gn-7259780",
+        "name": "Four Corners",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.33287,
+        "lon": -81.64738
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Four Corners, Florida",
+          "url": "https://en.wikipedia.org/wiki/Four_Corners,_Florida",
+          "text": "Four Corners is an unincorporated suburban area and census-designated place (CDP) in the U.S. state of Florida, located in the region around where Lake, Orange, Osceola, and Polk counties all meet together. Its population was 56,381 at the 2020 census, up from 26,116 at the 2010 census.\nThe Lake, Orange, and Osceola County portions of Four Corners are part of the Orlando–Kissimmee–Sanford, Florida Metropolitan Statistical Area, while the Polk County portion is part of the Lakeland–Winter Haven Metropolitan Statistical Area.\nSplendid China was a theme park in Four Corners. It opened in 1993, closed on December 31, 2003, and sat abandoned for 10 years after that. Splendid China Florida cost $100 million to build."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "four corners",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "four",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "corners",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3636,
+    "place_id": "gn-877178",
+    "input": {
+      "place": {
+        "place_id": "gn-877178",
+        "name": "Katima Mulilo",
+        "country": "Namibia",
+        "subdivision": "Zambezi Region",
+        "lat": -17.50467,
+        "lon": 24.27574
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Katima Mulilo",
+          "url": "https://en.wikipedia.org/wiki/Katima_Mulilo",
+          "text": "Katima Mulilo, or simply Katima is the capital of the Zambezi Region in Namibia. It had 46,401 inhabitants in 2023 and comprises two electoral constituencies, Katima Mulilo Rural and Katima Mulilo Urban. It is located  on the B8 national road on the banks of the Zambezi River in the Caprivi Strip in lush riverine vegetation with tropical birds and monkeys. The town receives annual average rainfall of 654 millimetres (25.7 in).\nThe nearest Namibian town to Katima Mulilo is Rundu, about 500 km (310 mi) to the west. About 40 km (25 mi) east of Katima Mulilo lies the village of Bukalo, where the road to Ngoma branches off and joins Namibia to Botswana."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "katima mulilo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "katima",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mulilo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3644,
+    "place_id": "gn-1528182",
+    "input": {
+      "place": {
+        "place_id": "gn-1528182",
+        "name": "Kara-Balta",
+        "country": "Kyrgyzstan",
+        "subdivision": "Chuy Region",
+        "lat": 42.81423,
+        "lon": 73.84813
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kara-Balta",
+          "url": "https://en.wikipedia.org/wiki/Kara-Balta",
+          "text": "Kara-Balta (; Dungan, Russian and Kyrgyz: Кара-Балта; lit. 'Black Ax') is a city and municipality on the Kara-Balta River, in Chüy Region, in northern Kyrgyzstan, the capital of Jayyl District. Its population was 48,278 in 2021.\nKara-Balta is located on the northern slopes of the Kyrgyz Ala-Too, in the western part of Chüy Region, 62 km (39 mi) west of the capital of Bishkek. The road continues west through Kaindy toward Taraz, Kazakhstan. Another road goes south through the Töö-Ashuu Pass and then splits, one branch going west to Talas Province and the other south and then east through the Suusamyr valley to Balykchy on Lake Issyk Kul. It has a temperate climate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "kara balta",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kara",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "balta",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3647,
+    "place_id": "gn-2646517",
+    "input": {
+      "place": {
+        "place_id": "gn-2646517",
+        "name": "Hounslow",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.46839,
+        "lon": -0.36092
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hounslow",
+          "url": "https://en.wikipedia.org/wiki/Hounslow",
+          "text": "Hounslow ( HOWNZ-loh) is a large town in West London, England, 10+3⁄4 miles (17.5 kilometres) west-southwest of Charing Cross. It is the administrative centre of the London Borough of Hounslow, and is identified in the London Plan as one of the 14 metropolitan centres in Greater London.\nIt is bounded by Isleworth to the east, Twickenham to its south, Feltham to its west and Southall to its north.\nThe Hounslow post town covers the TW3, TW4, TW5 and TW6 postcodes. Most of the post town is in the London Borough of Hounslow, but parts fall within the London Borough of Richmond upon Thames and the London Borough of Hillingdon, notably including Heathrow Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "hounslow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3655,
+    "place_id": "gn-3169424",
+    "input": {
+      "place": {
+        "place_id": "gn-3169424",
+        "name": "Riccione",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 43.99942,
+        "lon": 12.65689
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riccione",
+          "url": "https://en.wikipedia.org/wiki/Riccione",
+          "text": "Riccione (Italian: [ritˈtʃoːne]; Romagnol: Arciôn [arˈtsoːŋ]) is a comune (municipality) in the Province of Rimini, Emilia-Romagna, northern Italy.\nRiccione is centred on the Rio Melo, a minor river that flows into the Adriatic Sea. In the decades following the construction of the Bologna–Ancona railway in 1861, Riccione grew substantially with the development of tourism and the construction of elegant villas in the Liberty Style. It became independent from the municipality of Rimini in 1922, and was further popularised after the Mussolini family bought a seaside villa for its summer holidays. As of 2023, Riccione had an estimated population of 34,514.\nRiccione's economy is dependent on tourism, especially catering to young people and families."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "riccione",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3660,
+    "place_id": "gn-3832791",
+    "input": {
+      "place": {
+        "place_id": "gn-3832791",
+        "name": "Villa Carlos Paz",
+        "country": "Argentina",
+        "subdivision": "Cordoba",
+        "lat": -31.4183,
+        "lon": -64.49008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa Carlos Paz",
+          "url": "https://en.wikipedia.org/wiki/Villa_Carlos_Paz",
+          "text": "Villa Carlos Paz (locally [ˈbiʝa ˈkaɾlos ˈpas]) is a city in the center-north of the province of Córdoba, Argentina, in the south of the Punilla Valley, lying on the western slope of the Sierras Chicas. It has a population of about 56,000 as per the 2001 census [INDEC]. The area of Punilla is a major tourist destination on the national level, and Villa Carlos Paz is in turn the most important city of Punilla, favoured by its closeness (36 km (22 mi)) to the populous Córdoba City, the capital of the province. Popular tourist activities include bathing in one of the many rivers, fishing, evening shows, kite surfing, windsurfing, hiking and mountain biking."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "villa carlos paz",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "carlos",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "paz",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3664,
+    "place_id": "gn-466990",
+    "input": {
+      "place": {
+        "place_id": "gn-466990",
+        "name": "Yessentuki",
+        "country": "Russia",
+        "subdivision": "Stavropol Kray",
+        "lat": 44.04826,
+        "lon": 42.85638
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yessentuki",
+          "url": "https://en.wikipedia.org/wiki/Yessentuki",
+          "text": "Yessentuki (Russian: Ессентуки́, IPA: [jɪsɪntʊˈkʲiˑ]) is a city in Stavropol Krai, Russia, located in the shadow of Mount Elbrus at the base of the Caucasus Mountains. The city serves as a railway station in the Mineralnye Vody—Kislovodsk branch, and is located 43 kilometers (27 mi) southwest of Mineralnye Vody and 17 kilometers (11 mi) west of Pyatigorsk. The city is renowned for its mineral springs and therapeutic spas, and is part of the Caucasian Mineral Waters region.\nIt is considered the cultural capital of Russia's Greek population and close to ten percent of its population is of Greek descent. Population: 119,658 (2021 census); 100,996 (2010 census); 81,758 (2002 census); 85,082 (1989 Soviet census)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "yessentuki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3666,
+    "place_id": "gn-4784112",
+    "input": {
+      "place": {
+        "place_id": "gn-4784112",
+        "name": "Salem",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 37.29347,
+        "lon": -80.05476
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salem, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Salem,_Virginia",
+          "text": "Salem is an independent city in the Commonwealth of Virginia. As of the 2020 census, the population was 25,346. It is the county seat of Roanoke County, although the two are separate jurisdictions. The Bureau of Economic Analysis combines the city of Salem with Roanoke County, which surrounds both Salem and the neighboring City of Roanoke, for statistical purposes. Salem has its own courthouse and sheriff's office, but shares a jail with Roanoke County, which is located in the Roanoke County Courthouse complex in Salem. The Roanoke County Sheriff's Office and Roanoke County Department of Social Services are also located within Salem, though the county administrative offices are located in unincorporated Cave Spring."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "salem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3667,
+    "place_id": "gn-4832353",
+    "input": {
+      "place": {
+        "place_id": "gn-4832353",
+        "name": "Danbury",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.39482,
+        "lon": -73.45401
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Danbury, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Danbury,_Connecticut",
+          "text": "Danbury ( DAN-berr-ee) is a city in Fairfield County, Connecticut, United States, located approximately 50 miles (80 km) northeast of New York City. Danbury's population as of 2020 was 86,518. It is the third-largest city in Western Connecticut, and the seventh-largest city in Connecticut. The city is part of the Western Connecticut Planning Region. Located within the heart of the Housatonic Valley region, the city is a historic commercial hub of western Connecticut, home to many commuters and summer residents from the New York metropolitan area and New England.\nDanbury is nicknamed the \"Hat City\", because it was once the center of the American hat industry, during the nineteenth and early twentieth centuries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "danbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3671,
+    "place_id": "gn-6138495",
+    "input": {
+      "place": {
+        "place_id": "gn-6138495",
+        "name": "Saint-Jean-sur-Richelieu",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.30713,
+        "lon": -73.26259
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Jean-sur-Richelieu",
+          "url": "https://en.wikipedia.org/wiki/Saint-Jean-sur-Richelieu",
+          "text": "Saint-Jean-sur-Richelieu (French pronunciation: [sɛ̃ ʒɑ̃ syʁ ʁiʃ(ə)ljø], lit. 'Saint-Jean on Richelieu') is a city in eastern Montérégie in the Canadian province of Quebec, about 40 kilometres (25 mi) southeast of Montreal, roughly halfway between Montreal and the Canada–United States border with the state of Vermont. It straddles the west and east banks of the Richelieu River (which is accompanied by a canal) at the northernmost navigable point of Lake Champlain. As of December 2019, the population was 98,036. The city has experienced steady growth, up from the official 2021 Census count of 97,873 residents. It hosts the annual International Balloon Festival of Saint-Jean-sur-Richelieu, a hot air balloon festival which attracts thousands of tourists."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "saint jean sur richelieu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jean",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "richelieu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3675,
+    "place_id": "gn-879431",
+    "input": {
+      "place": {
+        "place_id": "gn-879431",
+        "name": "Victoria Falls",
+        "country": "Zimbabwe",
+        "subdivision": "Matabeleland North",
+        "lat": -17.93285,
+        "lon": 25.83066
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Victoria Falls",
+          "url": "https://en.wikipedia.org/wiki/Victoria_Falls",
+          "text": "Victoria Falls (Lozi: Mosi-oa-Tunya, \"Thundering Smoke/Smoke that Rises\"; Tonga: Shungu Namutitima, \"Boiling Water\") is a waterfall on the Zambezi River, located on the border between Zambia and Zimbabwe. It is one of the world's largest waterfalls, with a width of 1,708 m (5,604 ft). The region around it has a high degree of biodiversity in both plants and animals.\nArchaeology and oral history describe a long record of African knowledge of the site. Although known to some European geographers before the 19th century, Scottish missionary David Livingstone was introduced to the falls in 1855, naming them Victoria Falls after Queen Victoria. Since the mid-20th century, the site has been a major tourist destination."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "victoria falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "victoria",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3677,
+    "place_id": "gn-1175021",
+    "input": {
+      "place": {
+        "place_id": "gn-1175021",
+        "name": "Kandhkot",
+        "country": "Pakistan",
+        "subdivision": "Sindh",
+        "lat": 28.24574,
+        "lon": 69.17974
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kandhkot",
+          "url": "https://en.wikipedia.org/wiki/Kandhkot",
+          "text": "Kandhkot (Sindhi: ڪنڌڪوٽ; Urdu: كندھ كوٹ) is a city in Kashmore District in the Sindh province of Pakistan. It is the 98th largest city of Pakistan with a population of 100,698 according to the 2017 census.\nIn the last quarter of 2022, Kandhkot along with other many cities in Sindh, was struck by major flooding. Many people died in the city due to heavy rainfall resulting in urban flooding.\nThe Sindh government, under the Public Private Partnership initiative, planned to construct a bridge on the River Indus to provide better connectivity between Khairpur, Nathanshah, and Kandiaro. The Chief Minister, Syed Murad Ali Shah, presided over the meeting where the decision was made."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "kandhkot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3681,
+    "place_id": "gn-1262374",
+    "input": {
+      "place": {
+        "place_id": "gn-1262374",
+        "name": "Mussoorie",
+        "country": "India",
+        "subdivision": "Uttarakhand",
+        "lat": 30.45498,
+        "lon": 78.07068
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mussoorie",
+          "url": "https://en.wikipedia.org/wiki/Mussoorie",
+          "text": "Mussoorie (Garhwali: [məsuːɾiː]) is a hill station and a municipal board in the Dehradun district of the Indian state of Uttarakhand. It is about 26 kilometres (16 mi) from the state Winter capital Dehradun and 289 km (180 mi) north of the national capital of New Delhi. The hill station is in the foothills of the Garhwal Himalayan range. The adjoining town of Landour, which includes a military cantonment, is considered part of \"greater Mussoorie\", as are the townships Barlowganj and Jharipani.\nMussoorie is at an average altitude of 2,001 metres (6,565 ft). To the northeast are the Himalayan snow ranges, and to the south, the Doon Valley and Sivalik Hills ranges."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "mussoorie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3698,
+    "place_id": "gn-277130",
+    "input": {
+      "place": {
+        "place_id": "gn-277130",
+        "name": "Baalbek",
+        "country": "Lebanon",
+        "subdivision": "Baalbek-Hermel Governorate",
+        "lat": 34.00583,
+        "lon": 36.21806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baalbek",
+          "url": "https://en.wikipedia.org/wiki/Baalbek",
+          "text": "Baalbek ( BAHL-bek, BAY-əl-bek; Arabic: بَعْلَبَكّ, romanized: Baʿlabakk, Lebanese: Bʿalbak; Syriac: ܒܥܠܒܟ; Phoenician: 𐤁𐤏𐤋𐤁𐤊, romanized: bʿlbk) is a city located east of the Litani River in Lebanon's Beqaa Valley, about 67 km (42 mi) northeast of Beirut. It is the capital of Baalbek-Hermel Governorate. In 1998, the city had a population of 82,608. Most of the population consists of Shia Muslims, followed by Sunni Muslims and Christians; in 2017, there was also a large presence of Syrian refugees.\nBaalbek's history dates back at least 11,000 years. After Alexander the Great conquered the city in 334 BCE, he renamed it Heliopolis (Ancient Greek: Ἡλιούπολις, romanized: Hēlioúpolis, lit. 'Sun City'; Syriac: ܐܝܠܝܘܦܘܠܝܣ, romanized: ʾĪliyōp̄ōlīs)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "baalbek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3703,
+    "place_id": "gn-3617459",
+    "input": {
+      "place": {
+        "place_id": "gn-3617459",
+        "name": "Nueva Guinea",
+        "country": "Nicaragua",
+        "subdivision": "South Caribbean Coast",
+        "lat": 11.68758,
+        "lon": -84.45616
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nueva Guinea",
+          "url": "https://en.wikipedia.org/wiki/Nueva_Guinea",
+          "text": "Nueva Guinea (Spanish pronunciation: [ˈnweβa ɣiˈnea]) is a town and a municipality in the South Caribbean Coast Autonomous Region of Nicaragua.\nNueva Guinea was founded in the 1960s and saw significant growth in the early 1970s as the US Peace Corps helped to move families from the Pacific region of Nicaragua to Nueva Guinea in exchange for free land and agricultural help.\n20 km east of Leon Nicaragua, Cerro Negro erupted on 3 February 1971, causing extensive ash fall to the west. Up to 10 cm of ash were deposited in villages near the volcano. The eruption ended on 14 February. Much farmland was damaged by the ash fall from the eruption."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "nueva guinea",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nueva",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "guinea",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3711,
+    "place_id": "gn-5335006",
+    "input": {
+      "place": {
+        "place_id": "gn-5335006",
+        "name": "Cathedral City",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.77974,
+        "lon": -116.46529
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cathedral City, California",
+          "url": "https://en.wikipedia.org/wiki/Cathedral_City,_California",
+          "text": "Cathedral City is a desert resort city in Riverside County, California, United States, within the Colorado Desert's Coachella Valley. Situated between Palm Springs and Rancho Mirage, the city has the second largest population, after Indio, of the nine cities in the Coachella Valley. Its population was 51,493 at the 2020 census, a slight increase from 51,200 at the 2010 census.\nPrior to the arrival of European colonists, the land was part of the territory inhabited by the Cahuilla Indians. Today every other square mile of the city is part of the Agua Caliente Band of Cahuilla Indians reservation land. Development of a town began when a housing subdivision was built in 1925."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "cathedral city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cathedral",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3716,
+    "place_id": "gn-1267675",
+    "input": {
+      "place": {
+        "place_id": "gn-1267675",
+        "name": "Kurseong",
+        "country": "India",
+        "subdivision": "West Bengal",
+        "lat": 26.88251,
+        "lon": 88.27729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kurseong",
+          "url": "https://en.wikipedia.org/wiki/Kurseong",
+          "text": "Kurseong (Nepali pronunciation: [ˈkʰʌrsaŋ], Bengali pronunciation: [ˈkaɾʃi̯aŋ]) is a town and a municipality in Darjeeling district in the Indian state of West Bengal. It is the headquarters of the Kurseong subdivision.\nLocated at an altitude of 1,482.55 metres (4,864.0 ft), Kurseong is 32 kilometres (20 mi) from Darjeeling and has a pleasant climate throughout the year.\nKurseong is 34 kilometres (21 mi) from Siliguri and is connected to the city by road and the Darjeeling Himalayan Railway. The nearest airport is at Bagdogra and the nearest major railway station is New Jalpaiguri, which is about 45 kilometres (28 mi) from the town. The economy is based primarily on education and tourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "kurseong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

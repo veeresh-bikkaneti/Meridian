@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 2560,
+    "attempt": 2541,
+    "place_id": "gn-2646088",
+    "input": {
+      "place": {
+        "place_id": "gn-2646088",
+        "name": "Inverness",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.47908,
+        "lon": -4.22398
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Inverness",
+          "url": "https://en.wikipedia.org/wiki/Inverness",
+          "text": "Inverness is a city in the Scottish Highlands in the north of Scotland. Long regarded as the de facto capital of the Scottish Highlands, it is the administrative centre for The Highland Council region whose headquarters are located close to the city centre. A regional hub for healthcare, education and research, business and economic services, public administration, culture, music and entertainment, media, communications, transport and leisure, the city provides a range of services for the wider Highlands and Islands Region, a large hinterland encompassing a population of around half a million people and an area of some 39,911 km² or 51% of Scotland's total landmass.\nInverness previously served as the county town of the county of Inverness-shire before becoming the headquarters of the larger Highland Council region. With human settlement dating back to circa 7000 BC and permanent human settlement established by 5,800 BC the city has remained a strategically important location since antiquity and has periodically experienced armed conflict. Today, Inverness lies near two important battle sites: the 11th-century battle of Blàr nam Fèinne against Norway which took place on the Aird and the 18th century Battle of Culloden which took place on Culloden Moor, the last pitched battle fought in the United Kingdom. Lying within the Great Glen (An Gleann Mòr) at its northern extremity, the city's River Ness flows from Loch Ness via Loch Dochfour before it empties into the Moray Firth where the historic Beauly Firth and Inverness Firth met at the Kessock Crossing. The northernmost city in the United Kingdom, it was granted city status in the year 2000 as a Millennium City, having become more prominent in its economic and population growth throughout the preceding decade.\nFollowing the early settlement of Inverness, the city became an established self-governing settlement by the 6th century with the first Royal Charter being granted by Daibhidh I mac Mhaoil Chaluim (King David I) around the year of 1160. Inverness and the surrounding country are closely linked to various influential clans, including the locally powerful Clan Mackintosh, Clan Fraser and Clan MacKenzie. Local clans unique to the city include Donnchaidh (Robertson) of Inshes, MacSheòrais (Cuthbert) of Castlehill, MacLean of Dochgarroch, Fraser of Culduthel and Leys, Baillie of Dunain, Shaw of Essich, and Forbes of Culloden.\nBetween 2001 and 2022, the population of the old urban core of Inverness west of the A9 (historically Rathad Mòr an Rìgh or the King's Great Highway), grew from 40,969 to 48,248. The Greater Inverness area, including areas not previously connected to the rest of Inverness, including Culloden, Balloch, Resaurie, Smithton and Westhill had a population of 56,969 in 2012. Four years later, the population had grown by 6351 to 63,320, an increase of 10%. Inverness is one of Europe's fastest growing cities, with over a quarter of the Highland population living within the city or in its surrounding areas. Recent planning decisions by the Highland Council have approved the construction of housing developments near Inshes which will establish an area of continuous urban land with the potential to provide clarity and continuity for the city's population and growth in the years ahead.\nInverness is noted for its high quality of life and the happiness rankings of its population, frequently ranking high for its quality of life and levels of happiness among its residents. In 2008, Inverness was ranked fifth out of 189 British cities for its quality of life, the highest of any Scottish city. The city was ranked the happiest place to live in Scotland in 2014 and 2015, 5th in terms of quality of life in 2015 repeating its 2008 place as the highest quality of life in Scotland, the second happiest place in 2023 and in 2024, the happiest place to live in the entire United Kingdom."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 205,
+      "fullExtractWords": 627
+    },
+    "banned_terms": [
+      {
+        "term": "inverness",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2561,
+    "attempt": 2542,
+    "place_id": "gn-3684666",
+    "input": {
+      "place": {
+        "place_id": "gn-3684666",
+        "name": "El Carmen de Bolívar",
+        "country": "Colombia",
+        "subdivision": "Bolívar",
+        "lat": 9.7174,
+        "lon": -75.12023
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Carmen de Bolívar",
+          "url": "https://en.wikipedia.org/wiki/El_Carmen_de_Bolívar",
+          "text": "El Carmen de Bolívar is a municipality in the department of Bolívar, Colombia, 114 km southeast of Cartagena de Indias. It is located in the orographic system of the Montes de María, being the largest population, as well as the one that concentrates the economic and commercial movement of the subregion. It is the third most populated municipality in the department and an important agricultural center, considered \"the agricultural and food pantry of the department of Bolívar\" for being a great supplier to the entire department of products, especially avocado, tobacco, cocoa, banana, yam and sesame. This is how it is known as the Sweet City of Colombia since a part of its economy is based on food processing such as Chepacorinas Cookies, Coco Casadilla, Panochas, among others.\nAs for transport infrastructure, its geographically privileged position makes it conducive to the construction of a dry port. Since it connects the Colombian Caribbean with the Santanderes through the Ruta del Sol, it is also a key point of connection of the west of the country to the large ports of Barranquilla and Cartagena by the Troncal de Occidente; and through the Transversal Montes de María communicates this important national road artery with the Gulf of Morrosquillo.\nDuring the time of Independence, the municipality distinguished itself by the support of its inhabitants to the liberating cause led by Colonel Manuel Cortés Campomanes, which earned her the time to be erected in a village in 1812. In the second half of the nineteenth century it acquired strategic and economic importance at the start of trade in agricultural producers such as tobacco and coffee through the Port of Jesus del Río, on the Magdalena River towards Barranquilla, which allowed it to become one of the main export centers of the country until the first half of the twentieth century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 205,
+      "fullExtractWords": 305
+    },
+    "banned_terms": [
+      {
+        "term": "el carmen de bolivar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "carmen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bolivar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2562,
+    "attempt": 2543,
+    "place_id": "gn-3177300",
+    "input": {
+      "place": {
+        "place_id": "gn-3177300",
+        "name": "Faenza",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.29007,
+        "lon": 11.87948
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Faenza",
+          "url": "https://en.wikipedia.org/wiki/Faenza",
+          "text": "Faenza (UK:  fah-ENT-sə, US:  fah-EN-zə, Italian: [faˈɛntsa]; Romagnol: Fènza or Fẽza; Latin: Faventia) is a comune (municipality) with 58,746 inhabitants in the Province of Ravenna in Emilia-Romagna, Italy. The city is historically renowned for its production of artistic ceramics, to the extent that maiolica, due to the fame of local craftsmanship, is known worldwide as faience.\nUnder the rule of the Manfredi, Faenza entered a period of significant growth that peaked during the Renaissance and Baroque eras, shaping its art and architecture. Due to its vibrant artistic and cultural activity, between the 18th and 19th centuries, it became a prominent center of Neoclassicism in Italy and Europe, with the finest example today being the National Museum of Palazzo Milzetti.\nLocated just west of the heart of Romagna, at the foot of the first slopes of the Faenza Apennines, it serves as the administrative seat of the Union of Faenza Romagna and is the episcopal see of the Diocese of Faenza-Modigliana. The economy is based on a productive system that includes agricultural, manufacturing, mechanical, agri-food, and service activities, linked to ceramic production and integrated with research and innovation activities in the fields of advanced materials, environmental sustainability, and technologies applied to agriculture and industry.\nFaenza is recognized as an area with an established ceramic tradition according to the National Ceramic Council. In October 2025, it received the designation of “UNESCO Creative City for Crafts and Folk Arts”."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 203,
+      "fullExtractWords": 236
+    },
+    "banned_terms": [
+      {
+        "term": "faenza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2563,
+    "attempt": 2544,
+    "place_id": "gn-3178229",
+    "input": {
+      "place": {
+        "place_id": "gn-3178229",
+        "name": "Como",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.80819,
+        "lon": 9.0832
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Como",
+          "url": "https://en.wikipedia.org/wiki/Como",
+          "text": "Como (Italian pronunciation: [ˈkɔːmo] , locally [ˈkoːmo] ; Lombard and Comasque: Còmm [ˈkɔm], Cómm [ˈkom] or Cùmm [ˈkum]; Latin: Novum Comum) is a city and commune in Lombardy, Italy. It is the administrative capital of the Province of Como. \nIts prime location on the southwestern branch of Lake Como and its proximity to the Alps has made Como a popular destination for tourists. The city boasts a rich collection of art, religious sites, verdant gardens, museums, theatres, public parks, and opulent palaces, including the iconic Duomo, seat of the Diocese of Como; the Basilica of Sant'Abbondio; Villa Olmo; the public gardens with the Tempio Voltiano; the Teatro Sociale; the Broletto, the city's medieval town hall; and the 20th-century Casa del Fascio, a landmark of modernist architecture.\nComo has been the birthplace of numerous notable historical figures, including the Roman poet Caecilius, mentioned by Catullus in the 1st century BC, the celebrated writers Pliny the Elder and Pliny the Younger, the physician and historian Paolo Giovio, Pope Innocent XI, the pioneering scientist Alessandro Volta, inventor of the electric battery, Cosima Wagner, daughter of Franz Liszt and wife of Richard Wagner, and Antonio Sant'Elia, a futurist architect and pioneer of the modern architectural movement."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 202,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "como",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2564,
+    "attempt": 2545,
+    "place_id": "gn-1780890",
+    "input": {
+      "place": {
+        "place_id": "gn-1780890",
+        "name": "Batu Berendam",
+        "country": "Malaysia",
+        "subdivision": "Melaka",
+        "lat": 2.2487,
+        "lon": 102.246
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Batu Berendam",
+          "url": "https://en.wikipedia.org/wiki/Batu_Berendam",
+          "text": "Batu Berendam (translated as immersed rock) is a town and suburb of Malacca City in the Malaysian state of Malacca. Located 7 km north of the city centre, it is home to the state's principal airport – Malacca Airport which was built in 1952, as well as an eponymous free industrial zone built in 1973, which houses mostly overseas-based electronics factory including German company Infineon Technologies (formerly a semiconductor division of Siemens).\nUntil the 1970s, Batu Berendam was a relatively rural village, with rice farming being the main economic activity. Batu Berendam used to be accessible by train from Pulau Sebang like other towns along the Malacca River during the British colonial era, until the Imperial Japanese Army dismantled the railway track during World War II, part of which ran through what is now the airport runway.\nIn 1990, Batu Berendam became Malacca's premier aerospace manufacturing hub, when Composites Technology Research Malaysia (now CTRM Holdings Sdn Bhd) set up a factory on the west side of Malacca Airport to produce Eagle light aircraft. However, production of these aircraft ceased in 2005 due to low demands, and it shifted its focus towards producing components for Airbus, Boeing and Embraer aircraft."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 199,
+      "fullExtractWords": 199
+    },
+    "banned_terms": [
+      {
+        "term": "batu berendam",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "batu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "berendam",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2566,
+    "attempt": 2546,
+    "place_id": "gn-3653403",
+    "input": {
+      "place": {
+        "place_id": "gn-3653403",
+        "name": "Pasaje",
+        "country": "Ecuador",
+        "subdivision": "El Oro",
+        "lat": -3.32561,
+        "lon": -79.80697
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pasaje",
+          "url": "https://en.wikipedia.org/wiki/Pasaje",
+          "text": "Pasaje, also known as Pasaje de las Nieves, is an Ecuadorian city; the head of Pasaje Cantón, and the second biggest and second most populated city of the El Oro Province. It is located in the southern Coastal Region, seated in a vast plain between the Jubones river to the north and el Palenque to the south, at an altitude of 30 m (98 ft) above sea level and with a tropical climate of 25 °C (77 °F) on average.\nAccording to the 2022 census, Pasaje had a population of 60,147 residents, making it the twenty-third most populated city in Ecuador. Its economic, social, and commercial activity is strongly bound to Machala, as it forms part of the metropolitan area of Machala, being a commuter town for thousands of people who travel there via ground transport daily. The area is home to 576,772 inhabitants and occupies the 7th position among the conurbations of Ecuador.\nThe origins of the city date to the 18th century, but it is around the 20th century, due to banana production, that there was an accelerated population growth, making the city into one of the main urban centers of the province. Pasaje is one of the most important administrative, economic, financial, and commercial centers of El Oro province. The primary activities of the city are the banana industry and trade."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 195,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "pasaje",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2567,
+    "attempt": 2547,
+    "place_id": "gn-687196",
+    "input": {
+      "place": {
+        "place_id": "gn-687196",
+        "name": "Zhovti Vody",
+        "country": "Ukraine",
+        "subdivision": "Dnipropetrovsk",
+        "lat": 48.34518,
+        "lon": 33.49743
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zhovti Vody",
+          "url": "https://en.wikipedia.org/wiki/Zhovti_Vody",
+          "text": "Zhovti Vody (Ukrainian: Жовті Води, IPA: [ˈʒɔu̯t⁽ʲ⁾i ˈwɔdɪ], lit. 'Yellow Waters') is a city in Kamianske Raion, Dnipropetrovsk Oblast, central Ukraine. It is located on the Zhovta River approximately 70 km (43 mi) north of the metropolitan area's center, Kryvyi Rih. It hosts the administration of Zhovti Vody urban hromada, one of the hromadas of Ukraine. Population: 42,052 (2022 estimate).\nSince 1951 and hence forward during the soviet era, the city became a \"secret city\" (possibly a closed city) codenamed \"Mailbox 28\", and did not feature on maps, because of the establishment in the city in 1951 of a uranium mine and mill for the extraction and processing of uranium ore - although mining of uranium locally in the city has since officially ceased.\nPresent day activities of the Eastern Mining and Processing Enterprise (VostGOK) headquartered in the city are reportedly concerned with extraction of iron ore and production of hydrochloric acid as well as the continued milling of uranium ore mined from more distant regions further to the east, and as such VostGOK is the largest European and the only Ukrainian extractor of uranium ore and only Ukrainian producer of uranium concentrate.\nConsiderable parts of the city and its surrounding farmland are severely and dangerously polluted with uranium ore (and consequently radon gas in buildings built on uranium ore found naturally in the granite of the city, or due to the use of uranium containing granite in building foundations), with radioactivity levels in some instances in the city comparable to heavily contaminated areas surrounding Chernobyl, with residents suffering increased incidence of congenital conditions and cancers, many of which have been conclusively linked to radiation exposure. There appears to be evidence of disposal of uranium contaminated machinery at the edge of farmland surrounding the city, which contaminates nearby crops, and when excavated by scrap metal foragers, contaminate the individuals who handle the uranium contaminated scrap-metal, as well as those who come into contact with the individuals contaminated (family members, neighbours, etc)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 193,
+      "fullExtractWords": 331
+    },
+    "banned_terms": [
+      {
+        "term": "zhovti vody",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "zhovti",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vody",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2568,
+    "attempt": 2548,
+    "place_id": "gn-3164617",
+    "input": {
+      "place": {
+        "place_id": "gn-3164617",
+        "name": "Venaria Reale",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 45.12597,
+        "lon": 7.63136
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Venaria Reale",
+          "url": "https://en.wikipedia.org/wiki/Venaria_Reale",
+          "text": "Venaria Reale (Piedmontese: La Venerìa) is a comune (municipality) in the Metropolitan City of Turin in the Italian region Piedmont, located about 8 kilometres (5 mi) northwest of Turin. Venaria Reale borders the municipalities of Robassomero, Caselle Torinese, Druento, Borgaro Torinese, Turin, Pianezza, and Collegno.\nFounded in Roman times and previously known as Altessano (Autsan in the Piedmontese language), it was divided into Altessano Superiore and Altessano Inferiore in the sixteenth century. The upper town was chosen by the House of Savoy as a location for a hunting palace, and its modern name is derived from the Latin for hunting, ars venatoria.\nTurin and Venaria Reale are the only Piedmontese municipalities with more than one Savoy residence: the seventeenth century Royal Palace of Venaria (included in the UNESCO Heritage List in 1997) and the nineteenth-century royal apartments of Borgo Castello, located in La Mandria Regional Park are in Venaria Reale.\nThe historical center of the commune was built by Amedeo di Castellamonte in 1667–1690 as a scenic background for the Royal Palace\nMichele Lessona, an illustrious scientist and decorated Senatore del Regno, was a citizen of Venaria Reale in the 19th Century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 192,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "venaria reale",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "venaria",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "reale",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2569,
+    "attempt": 2549,
+    "place_id": "gn-1256343",
+    "input": {
+      "place": {
+        "place_id": "gn-1256343",
+        "name": "Sihor",
+        "country": "India",
+        "subdivision": "Gujarat",
+        "lat": 21.71134,
+        "lon": 71.96179
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sihor",
+          "url": "https://en.wikipedia.org/wiki/Sihor",
+          "text": "Sihor (Gujarati: સિહોર Sihor) is a town and a municipality in Bhavnagar district in the Indian state of Gujarat. It is placed along the river Gautami, and this erstwhile capital of the Gohil Rajputs, which is surrounded by hills, is situated about 20 km from Bhavnagar. The name 'Sihor' is a corruption of its earlier names, including Saraswatpur, Sinhalpur, Sinhpur, Sinhor, and Shihor.\nRegionally, Sihor is famous for its hills, their rock pattern, Gautameshwar Mahadev & Lake, Sihor's Festivals, Navnath Pilgrimage (Navnath Yatra) of Shiva Temples, Brahma Kund, 'Sihori Rajwadi Penda' (Peda or chocolate cake), the old town's ascends and descends, its walled city and fort, narrow lanes, Nana Sahib Peshwa and the 1857 revolt, its food and delicacy, Copper-ware & Brass-ware, Pottery, snuff manufacturing factories, Rolling Mills and Industrial Plants.\nKnown as 'Saraswatpur' during the  Mahabharata period and 'Sinhpur', and 'Sinhalpur' after that, locally in Gujarat, it is often regarded as 'Chhote Kashi' (sub-version or model of Kashi - Varanasi - Banaras). This may be due to the numerous temples and Shivalayas in and around this medium-sized town, its religious activities and the resemblance of the town's architecture in particular. The town exhibits a definite texture and architecture through its numerous ancient temples and buildings."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 191,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "sihor",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2570,
+    "attempt": 2550,
+    "place_id": "gn-5097402",
+    "input": {
+      "place": {
+        "place_id": "gn-5097402",
+        "name": "East Brunswick",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.42788,
+        "lon": -74.41598
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Brunswick, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/East_Brunswick,_New_Jersey",
+          "text": "East Brunswick is a township in Middlesex County, in the U.S. state of New Jersey. The suburban bedroom community is part of the New York metropolitan area and is located on the southern shore of the Raritan River, directly adjacent to New Brunswick and located roughly 29 miles (47 km) away from New York City. As of the 2020 United States census, the township's population was 49,715, its highest decennial count ever and an increase of 2,203 (+4.6%) from the 2010 census count of 47,512, which in turn reflected an increase of 756 (+1.6%) from the 46,756 counted in the 2000 census.\nEast Brunswick was incorporated as a township by an act of the New Jersey Legislature on February 28, 1860, from portions of both Monroe Township and North Brunswick. Portions of the township were taken to form Washington town within the township (February 23, 1870; became independent as South River on February 28, 1898), Helmetta (March 20, 1888), Milltown (January 29, 1889) and Spotswood (April 15, 1908).\nSince the 2000 census, the United States Census Bureau calculated that New Jersey's center of population was located in the township."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 189,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "east brunswick",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "brunswick",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2571,
+    "attempt": 2551,
+    "place_id": "gn-3129136",
+    "input": {
+      "place": {
+        "place_id": "gn-3129136",
+        "name": "Ávila",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 40.65724,
+        "lon": -4.69951
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ávila",
+          "url": "https://en.wikipedia.org/wiki/Ávila",
+          "text": "Ávila is the capital and most populated municipality of the Province of Ávila, located in the autonomous community of Castile and León in Spain. Located in the centre of the Iberian Peninsula, to the north of the Sistema Central, it lies on the right bank of the Adaja and, at an elevation of over 1,130 metres (3,710 ft) above sea level, is the highest provincial capital in Spain.\nWhile it is not a settled issue, the primitive urban core of Obila was probably founded after the Roman subjugation of the territory through the assimilation of indigenous peoples (Vettones) in connection to the Roman policy enforcing the abandonment of surrounding hilltop oppida. Medieval Christian settlement took hold in the 11th century, with the growing status of milieus associated to the council militias and the discrimination against peasantry deepening the social inequality from a relatively egalitarian starting point.\nÁvila is sometimes called the \"City of Stones and Saints\" due to its well-preserved medieval architecture and its connection to prominent Spanish mystics.\nThe Old Town of Ávila with its extra muros churches were declared a UNESCO World Heritage Site in 1985."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 188,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "avila",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2572,
+    "attempt": 2552,
+    "place_id": "gn-3517517",
+    "input": {
+      "place": {
+        "place_id": "gn-3517517",
+        "name": "Santa Cruz Xoxocotlán",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 17.02958,
+        "lon": -96.73518
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Cruz Xoxocotlán",
+          "url": "https://en.wikipedia.org/wiki/Santa_Cruz_Xoxocotlán",
+          "text": "Santa Cruz Xoxocotlán is a small city and municipality located 5 km from the state capital of Oaxaca in the south of Mexico.\nIt is part of the Centro District in the Valles Centrales region.\nThe name comes from the Nahuatl word “xocotl” which means “sour or sweet and sour fruit” with the duplicative “xo” to indicate “very.” The meaning of the entire phrase means “among the very sour fruits.”  The Mixtec name for the area was Nuunitatnohoyoo which means “land of the moon-faced flowers.” However, the community is most commonly referred to simply as Xoxo.\nFor almost all of its history, the municipality had been exclusively rural; however, since the late 20th century, rapid growth of the Oaxaca city area has spurred housing developments in Xoxo, causing problems with municipal services and encroachment on the Monte Albán archeological zone. There have been efforts to preserve and promote the municipality’s ancient traditions such as “martes de brujas” (Witch Tuesdays) and local customs associated with Day of the Dead. The latter draws a significant number of tourists to observe the vigils, altars and other activities associated with this community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 188,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "santa cruz xoxocotlan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cruz",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "xoxocotlan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2573,
+    "attempt": 2553,
+    "place_id": "gn-1527004",
+    "input": {
+      "place": {
+        "place_id": "gn-1527004",
+        "name": "Balykchy",
+        "country": "Kyrgyzstan",
+        "subdivision": "Issyk-Kul",
+        "lat": 42.46017,
+        "lon": 76.18709
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Balykchy",
+          "url": "https://en.wikipedia.org/wiki/Balykchy",
+          "text": "Balykchy (Kyrgyz: Балыкчы) is a town at the western end of Lake Issyk-Kul in Kyrgyzstan, at an elevation of about 1,900 metres. Its area is 38 square kilometres (15 sq mi), and its resident population was 42,875 in 2021 (both including Orto-Tokoy). A major industrial and transport centre (wool and crop processing, lake shipping, rail terminal, and road junction) during the Soviet era, it lost most of its economic base after the collapse of the Soviet Union and the closure of virtually all of its industrial facilities.\nThe main road from Bishkek, the capital of Kyrgyzstan, to China, a part of the ancient  Great Silk Road, passes through Balykchy before it starts its long and arduous way across the alpine ranges of Naryn Province in central Kyrgyzstan to the Chinese border at Torugart Pass. Plans for the rail road from the Chinese border to Balykchy, where the line from Bishkek currently ends, are under discussion. Two other roads go around the north and south sides of Issyk Kul to Karakol and then around the east end of the Kungey Alatau to the far southeast of Kazakhstan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 186,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "balykchy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2574,
+    "attempt": 2554,
+    "place_id": "gn-2147497",
+    "input": {
+      "place": {
+        "place_id": "gn-2147497",
+        "name": "Tamworth",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -31.09048,
+        "lon": 150.92905
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tamworth, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Tamworth,_New_South_Wales",
+          "text": "Tamworth (/ˈtæmwəɹθ/ TAM-werth) is a major regional city and administrative centre of the north-eastern region of New South Wales, Australia. Situated on the Peel River within the local government area of the Tamworth Regional Council, it is the largest and most populated city in the region, with a population of 43,874 in 2021, making it the third largest inland city in New South Wales. Tamworth is 318 km (198 mi) from the Queensland border and is located almost midway between Brisbane and Sydney.\nThe city is known as the \"First Town of Lights\", being the first place in Australia to use electric street lights in 1888. Tamworth is also famous as the \"Country Music Capital of Australia\" and \"Australia's answer to Nashville\", annually hosting the Tamworth Country Music Festival in late January; the second-biggest country music festival in the world after Nashville. The city is recognised as the National Equine Capital of Australia because of the high number of equine events held in the city and the construction of the world-class Australian Equine and Livestock Events Centre, the biggest of its kind in the Southern Hemisphere."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 186,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "tamworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2575,
+    "attempt": 2555,
+    "place_id": "gn-5359446",
+    "input": {
+      "place": {
+        "place_id": "gn-5359446",
+        "name": "Indio",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.7207,
+        "lon": -116.21677
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Indio, California",
+          "url": "https://en.wikipedia.org/wiki/Indio,_California",
+          "text": "Indio (Spanish for \"Indian\") is a city in central Riverside County, California, United States, in the Coachella Valley of Southern California's Colorado Desert region. Indio is approximately 125 miles (201 km) east of Los Angeles, 23 miles (37 km) east of Palm Springs, and 98 miles (158 km) west of Blythe, California.\nThe population was 89,137 at the 2020 United States census, up from 76,036 at the 2010 census, an increase of 17%. Indio is the most populous city in the Coachella Valley, and was formerly referred to as the \"Hub of the Valley,\" a Chamber of Commerce slogan used in the mid-twentieth century. Indio is now nicknamed the \"City of Festivals,\" a reference to the numerous cultural events held in the city, most notably the Coachella Valley Music and Arts Festival and Stagecoach Festival.\nIndio is the principal city of an urban area defined by the United States Census Bureau that is located in the Coachella Valley: the Indio–Palm Desert–Palm Springs CA urban area had a population of 361,075 as of the 2020 census, making it the 114th-most populous urban area in the United States."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 186,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "indio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2576,
+    "attempt": 2556,
+    "place_id": "gn-2635281",
+    "input": {
+      "place": {
+        "place_id": "gn-2635281",
+        "name": "Tyldesley",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.51393,
+        "lon": -2.46754
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tyldesley",
+          "url": "https://en.wikipedia.org/wiki/Tyldesley",
+          "text": "Tyldesley () is a market town in the Metropolitan Borough of Wigan in Greater Manchester, England. Within the boundaries of the historic county of Lancashire, it is north of Chat Moss near the foothills of the West Pennine Moors, eight miles (13 kilometres) southeast of Wigan and nine miles (14 kilometres) northwest of Manchester. At the 2001 United Kingdom census, the Tyldesley built-up area subdivision, excluding Shakerley, had a population of 16,142.\nThe remains of a Roman road passing through the township on its ancient course between Coccium (Wigan) and Mamucium (Manchester) were evident during the 19th century. Following the Anglo-Saxon settlement of Britain, Tyldesley was part of the manor of Warrington, until the Norman Conquest of England, when the settlement constituted a township called Tyldesley-with-Shakerley in the ancient parish of Leigh.\nThe factory system and textile manufacture during the Industrial Revolution triggered population growth and urbanisation, and by the early 20th century it was said that the mill town was \"eminently characteristic of an industrial district whose natural features have been almost entirely swept away to give place to factories, iron foundries, and collieries\". After industrial activity declined in the late 20th century, land reclamation and post-war residential developments have altered the landscape and encouraged economic activity along Elliott Street."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 185,
+      "fullExtractWords": 211
+    },
+    "banned_terms": [
+      {
+        "term": "tyldesley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2577,
+    "attempt": 2557,
+    "place_id": "gn-2396646",
+    "input": {
+      "place": {
+        "place_id": "gn-2396646",
+        "name": "Oyem",
+        "country": "Gabon",
+        "subdivision": "Woleu-Ntem",
+        "lat": 1.5995,
+        "lon": 11.57933
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oyem",
+          "url": "https://en.wikipedia.org/wiki/Oyem",
+          "text": "Oyem, also known by the Fang name Nkoum Ekiègn, is a city in northern Gabon and the capital of Woleu-Ntem Province and of the Woleu Department. Situated on a plateau in the northern interior of the country, it lies on the N2 road that links Libreville to the Cameroonian border at Kyé-Ossi. With 60,685 inhabitants recorded at the 2013 general census, Oyem ranks as the fifth most populous urban commune in Gabon, after Libreville, Port-Gentil, Franceville and Owendo.\nThe town serves as the main administrative, commercial and religious hub of the Fang-speaking north of Gabon and is the seat of the Roman Catholic Diocese of Oyem. It was founded as a French colonial military post at the beginning of the twentieth century, transferred to the German Empire between 1911 and 1916 as part of Neukamerun, and retaken by French forces during the Kamerun campaign of the First World War. Since the late colonial period Oyem has been the agricultural capital of the Woleu-Ntem, producing the bulk of Gabonese cocoa and coffee, and has functioned as a cross-border logistics node with Cameroon and Equatorial Guinea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 184,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "oyem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2578,
+    "attempt": 2558,
+    "place_id": "gn-4160812",
+    "input": {
+      "place": {
+        "place_id": "gn-4160812",
+        "name": "Key West",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 24.55524,
+        "lon": -81.78163
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Key West",
+          "url": "https://en.wikipedia.org/wiki/Key_West",
+          "text": "Key West (Spanish: Cayo Hueso [kaʝo ˈweso]) is a coral cay island in the Straits of Florida, at the southernmost end of the U.S. state of Florida and its outlying Florida Keys archipelago. Together with all or parts of the separate islands of Dredgers Key, Fleming Key, Sunset Key, and the northern part of Stock Island, it constitutes the City of Key West.\nFor thousands of years, Key West and the surrounding islands were inhabited by various Native American tribes. The island's first recorded European contact occurred in 1513, when an expedition led by Spanish conquistador Juan Ponce de León circumnavigated the Florida Keys amid his voyage along the coast of Florida, though no permanent settlement was established. Over the following centuries, the island remained sparsely populated while passing between periods of Spanish and British control. Following the transfer of Florida to the United States in 1819, Key West rapidly developed into a major maritime center, with its strategic location along the Florida Straits and thriving wrecking industry helping make it one of the wealthiest communities in the United States during the 19th century.\nKey West is the southernmost city in the contiguous United States and the westernmost island in the Florida Keys connected by highway, located about 130 miles (210 km) southwest of Miami and roughly 95 miles (153 km) north of Cuba. The island measures approximately 4 miles (6 km) long and 1 mile (2 km) wide, with a total land area of about 4.2 square miles (11 km²), and the city itself spans roughly 5.6 square miles (14.5 km²).  It serves as the county seat of Monroe County, which includes a majority of the Florida Keys and part of the Everglades, and had a population of 26,444 at the 2020 census, carrying the motto “One Human Family.”  \nKey West functions as a major transportation and tourism hub, serving as the southern terminus of U.S. Route 1 and hosting a passenger cruise port, an international airport, and Naval Air Station Key West. Its main commercial corridor is Duval Street, which runs from the Gulf of Mexico to the Atlantic Ocean. Key West lies within the Florida Keys National Marine Sanctuary and is located near several protected areas, including the Dry Tortugas National Park and the Key West National Wildlife Refuge; due to its proximity to the Great Florida Reef, the island serves as a notable center for recreational diving."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 184,
+      "fullExtractWords": 401
+    },
+    "banned_terms": [
+      {
+        "term": "key west",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "key",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2579,
+    "attempt": 2559,
+    "place_id": "gn-3037598",
+    "input": {
+      "place": {
+        "place_id": "gn-3037598",
+        "name": "Angoulême",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 45.64997,
+        "lon": 0.15345
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Angoulême",
+          "url": "https://en.wikipedia.org/wiki/Angoulême",
+          "text": "Angoulême (French pronunciation: [ɑ̃ɡulɛːm] ; Poitevin-Saintongeais: Engoulaeme; Occitan: Engoleime) is a small city in the southwestern French department of Charente, of which it is the prefecture.\nLocated on a plateau overlooking a meander of the river Charente, the city is nicknamed the \"balcony of the southwest\". The city proper's population is a little less than 42,000 but it is the centre of an urban area of 110,000 people extending more than fifteen kilometres (9.3 miles) from east to west.\nFormerly the capital of Angoumois during the Ancien Régime, Angoulême was a fortified town for a long time, and was highly coveted due to its position at the centre of many roads important to communication, so therefore it suffered many sieges. From its tumultuous past, the city, perched on a rocky spur, inherited a large historical, religious, and urban heritage which attracts a lot of tourists.\nNowadays, Angoulême is at the centre of an agglomeration, which is one of the most industrialised regions between Loire and Garonne (the paper industry was established in the 16th century, a foundry and electromechanical engineering developed more recently). It is also a commercial and administrative city with its own university of technology, and a vibrant cultural life. This life is dominated by the Angoulême International Comics Festival, the FFA Angoulême Francophone Film Festival and the Musiques Métisses Festival that contribute substantially to the international renown of the city. Moreover, Angoulême hosts 40 animation and video game studios that produce half of France's animated production. Wes Anderson's The French Dispatch was filmed in this city.\nAngoulême is called \"Ville de l'Image\" which means literally \"City of the Image\". The commune has been awarded four flowers by the National Council of Towns and Villages in Bloom in the Competition of cities and villages in Bloom."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 183,
+      "fullExtractWords": 298
+    },
+    "banned_terms": [
+      {
+        "term": "angouleme",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2580,
+    "attempt": 2560,
+    "place_id": "gn-4160610",
+    "input": {
+      "place": {
+        "place_id": "gn-4160610",
+        "name": "Jupiter",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.93422,
+        "lon": -80.09421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jupiter, Florida",
+          "url": "https://en.wikipedia.org/wiki/Jupiter,_Florida",
+          "text": "Jupiter is the northernmost town in Palm Beach County, Florida, United States. Located along the Atlantic coast of South Florida at the mouth of the Loxahatchee River, the town is bordered by the Atlantic Ocean to the east, Martin County and the village of Tequesta to the north, unincorporated Palm Beach County to the west, and Juno Beach to the south. The town is connected to the Intracoastal Waterway through the Indian River Lagoon, which reaches its southern terminus at the Jupiter Inlet. Approximately 84 miles (135 km) north of Miami and 15 miles (24 km) north of West Palm Beach, Jupiter, together with the adjacent village of Tequesta, forms the northernmost municipality in the Miami metropolitan area.\nThe Jupiter area has been inhabited for thousands of years, first by Indigenous peoples, such as the Jaega, whose village was located near the inlet. Spanish explorers recorded the area during the 16th century, and the name \"Jupiter\" originated from a mistranslation of the Spanish name Jobe, derived from the Indigenous name Hobe, which was further misunderstood by mapmakers to refer to the Roman god. Permanent American settlement began in the 19th with the construction of the Jupiter Inlet Light in 1860, which became an important maritime landmark along Florida's east coast. The arrival of Henry Flagler's Florida East Coast Railway in the 1890s and later highway development encouraged growth throughout the 20th.\nAccording to the 2020 US Census, the town had a population of 61,047. It was named the 9th Best Southern Beach Town to live in by Stacker Newsletter for 2022 and as the 9th Happiest Seaside Town in the United States by Coastal Living in 2012."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 183,
+      "fullExtractWords": 277
+    },
+    "banned_terms": [
+      {
+        "term": "jupiter",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,797 @@
+[
+  {
+    "rank": 4776,
+    "attempt": 4741,
+    "place_id": "gn-2667847",
+    "input": {
+      "place": {
+        "place_id": "gn-2667847",
+        "name": "Torshälla",
+        "country": "Sweden",
+        "subdivision": "Södermanland",
+        "lat": 59.41667,
+        "lon": 16.46667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torshälla",
+          "url": "https://en.wikipedia.org/wiki/Torsh%C3%A4lla",
+          "text": "Torshälla (Swedish pronunciation: [ˈtɔ̂ʂːˌhɛlːa]) is a locality situated in Eskilstuna Municipality, Södermanland County, Sweden with 7,612 inhabitants in 2010. It is mainly known for steel manufacturing, centered on the Nyby Bruk steel mill, and also for its historic old town centre.\nBecause of its historic town status, from 1317 to 1971, Torshälla is customarily referred to as a stad (town or city) even though it does not have a population of 10,000, which is the threshold presently used by Statistics Sweden to classify localities as stads.\nBefore the local government reform of 1971 Torshälla was an independent municipality. A new proposal to detach Torshälla from Eskilstuna Municipality was turned down in a referendum in 2006."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "torshalla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4777,
+    "attempt": 4742,
+    "place_id": "gn-2794724",
+    "input": {
+      "place": {
+        "place_id": "gn-2794724",
+        "name": "Kapelle-op-den-Bos",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.0097,
+        "lon": 4.36303
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kapelle-op-den-Bos",
+          "url": "https://en.wikipedia.org/wiki/Kapelle-op-den-Bos",
+          "text": "Kapelle-op-den-Bos (Dutch pronunciation: [kaːˈpɛlə ʔɔb dɛm ˈbɔs]) is a municipality located in the Belgian province of Flemish Brabant. The municipality comprises the towns of Kapelle-op-den-Bos proper, Nieuwenrode and Ramsdonk. On January 1, 2006, Kapelle-op-den-Bos had a total population of 8,904. The total area is 15.25 km2 which gives a population density of 584 inhabitants per km2.\nLocated at the intersection of the Willebroek to Brussels shipping canal and the Mechelen-Ghent railway line, the town is home to the Etex Group NV group of companies, which manufacture piping, roofing, gyprock and cement products.  Numerous other industrial companies call Kapelle-op-den-Bos home, and the General Secondary College Sint-Theresia College (STK) has a wide catchment extending beyond municipal boundaries.\nThe town was a target for heavy bombing during the First World War due to its proximity to transport routes.  Among the many buildings destroyed was the parish church dedicated to Saint Nicholas, which was later rebuilt with a modern flavour; the nave retained its original arched windows, but the steeple now appears as a crown.\nKapelle-op-den-Bos is heavily polluted with asbestos. Many inhabitants of the village died due to this mortal pollution. Health problems caused by the asbestos pollution still remain a major problem for the whole area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "kapelle op den bos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kapelle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "op",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "bos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4778,
+    "attempt": 4743,
+    "place_id": "gn-2852217",
+    "input": {
+      "place": {
+        "place_id": "gn-2852217",
+        "name": "Prenzlauer Berg",
+        "country": "Germany",
+        "subdivision": "State of Berlin",
+        "lat": 52.53878,
+        "lon": 13.42443
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prenzlauer Berg",
+          "url": "https://en.wikipedia.org/wiki/Prenzlauer_Berg",
+          "text": "Prenzlauer Berg (German pronunciation: [ˌpʁɛnt͡slaʊ̯ɐ ˈbɛʁk] ) is a locality of Berlin, forming the southerly and most urban district of the borough of Pankow. From its founding in 1920 until 2001, Prenzlauer Berg was a district of Berlin in its own right. However, that year it was incorporated (along with the borough of Weißensee) into the greater district of Pankow.\nFrom the 1960s onward, Prenzlauer Berg was associated with proponents of East Germany's diverse counterculture including Christian activists, bohemians, state-independent artists, and the gay community. It was an important site for the peaceful revolution that brought down the Berlin Wall in 1989. In the 1990s the borough was also home to a vibrant squatting scene. It has since experienced rapid gentrification."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "prenzlauer berg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "prenzlauer",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "berg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4779,
+    "attempt": 4744,
+    "place_id": "gn-2958128",
+    "input": {
+      "place": {
+        "place_id": "gn-2958128",
+        "name": "Alsfeld",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.75185,
+        "lon": 9.27082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alsfeld",
+          "url": "https://en.wikipedia.org/wiki/Alsfeld",
+          "text": "Alsfeld (German pronunciation: [ˈalsfɛlt] ) is a town in the center of Hesse, in Germany.\nLocated about 100 km (62 mi) north of Frankfurt, Alsfeld is part of the densely populated Frankfurt Rhine-Main Metropolitan Region, with nearby Lauterbach (about 15 km (9.3 mi) east), one of the two centre cities of the Vogelsbergkreis district.\nAlsfeld is best described as a blend of a historic bourgeois European town and its rural-agricultural environs and shaped by typical Lutheran-Pietist characteristics, such as austerity and a Protestant work ethic. It is well known for its well-preserved old town with hundreds of picturesque timber-frame houses, and part of the German Timber-Frame Road. The town is twinned with New Mills, England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "alsfeld",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4780,
+    "attempt": 4745,
+    "place_id": "gn-2963436",
+    "input": {
+      "place": {
+        "place_id": "gn-2963436",
+        "name": "Kildare",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.15611,
+        "lon": -6.91444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kildare",
+          "url": "https://en.wikipedia.org/wiki/Kildare",
+          "text": "Kildare (Irish: Cill Dara, meaning 'church of oak') is a town in County Kildare, Ireland. As of 2022, its population was 10,302, making it the 7th largest town in County Kildare. It is home to Kildare Cathedral, historically the site of an important abbey said to have been founded by Saint Brigid of Kildare in the 5th century. The Curragh lies east of the town.\nThe town lies on the R445, some 50 kilometres (31 mi) west of Dublin – near enough for it to have become, despite being a regional centre in its own right, a commuter town for the capital. Although Kildare gives its name to the county, Naas is the county town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "kildare",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4781,
+    "attempt": 4746,
+    "place_id": "gn-2972468",
+    "input": {
+      "place": {
+        "place_id": "gn-2972468",
+        "name": "Tonneins",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 44.39476,
+        "lon": 0.31014
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tonneins",
+          "url": "https://en.wikipedia.org/wiki/Tonneins",
+          "text": "Tonneins (French pronunciation: [tɔnɛ̃s]; Occitan: Tonens) is a town in the Lot-et-Garonne department of south-western France. It stands above the river Garonne, between Marmande to the west and Agen to the east, and is the first major town below the confluence of the Lot and Garonne Rivers after which the department is named. Tonneins station has rail connections to Agen, Langon and Bordeaux.\nUntil the early 2000s, it was the tobacco capital of France. It is known for its quays alongside which the tobacco barges were previously moored. When the tobacco factory closed down in 2004 and production moved to Spain, the town was badly affected economically with the loss of more than 500 jobs. The surrounding countryside still contains many wooden sheds, known locally as 'sechoirs', formerly used to dry the tobacco leaves. The commune of Tonneins is largely agricultural, the principal crops now being maize, rapeseed and sunflowers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "tonneins",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4782,
+    "attempt": 4747,
+    "place_id": "gn-3129660",
+    "input": {
+      "place": {
+        "place_id": "gn-3129660",
+        "name": "Arenys de Munt",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.61424,
+        "lon": 2.53972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arenys de Munt",
+          "url": "https://en.wikipedia.org/wiki/Arenys_de_Munt",
+          "text": "Arenys de Munt (Catalan: [əˈɾɛɲz ðə ˈmun], locally [əˈɾɛɲʒ ðə ˈmun]; arenys being Catalan for \"sands (of a seasonal creek)\", and de munt for \"up hill\" as opposed to Arenys de Mar, \"sands by the sea\") is a municipality in the comarca of the Maresme in Catalonia, Spain. It is situated inland from the coast, in the el Corredor range and including the peak of el Montalt (595 m). It retains a textile industry specialised in the production of towels, and is also known for the production of strawberries, cherries and liqueurs. The B-511 road links the town with Arenys de Mar, Vallgorguina and Sant Celoni.\nIt is also the hometown of actor Daniel Brühl."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "arenys de munt",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "arenys",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "munt",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4783,
+    "attempt": 4748,
+    "place_id": "gn-3863503",
+    "input": {
+      "place": {
+        "place_id": "gn-3863503",
+        "name": "Cafayate",
+        "country": "Argentina",
+        "subdivision": "Salta",
+        "lat": -26.07286,
+        "lon": -65.97766
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cafayate",
+          "url": "https://en.wikipedia.org/wiki/Cafayate",
+          "text": "Cafayate (Spanish pronunciation: [kafaˈʎate]) is a town located at the central zone of the Valles Calchaquíes in the province of Salta, Argentina.\nIt sits 1,683 metres (5,522 ft) above mean sea level, at a distance of 189 kilometres (117 mi) from Salta City and 1,329 kilometres (826 mi) from Buenos Aires. It has about 12,000 inhabitants (2001 census [INDEC]).\nThe town is an important tourist centre for exploring the Calchaquíes valleys, and because of the quality and originality of the wines produced in the area. The town was founded in 1840 by Manuel Fernando de Aramburu, at the site of a mission. In 1863 the Cafayate Department was created, of which Cafayate is the capital."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "cafayate",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4784,
+    "attempt": 4749,
+    "place_id": "gn-4717232",
+    "input": {
+      "place": {
+        "place_id": "gn-4717232",
+        "name": "Palestine",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 31.76212,
+        "lon": -95.63079
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palestine, Texas",
+          "url": "https://en.wikipedia.org/wiki/Palestine,_Texas",
+          "text": "Palestine ( PAL-ist-een) is a city in and the seat of Anderson County in the U.S. state of Texas. It was named after Palestine, Illinois, by preacher Daniel Parker, who had migrated from that town.\nThe city had a 2020 U.S. census population of 18,544, making it the sixth-largest incorporated municipality in Northeast Texas by population. Palestine is a relatively small city located in the Piney Woods, equidistant from the major cities of Dallas, Houston, and Shreveport, Louisiana.\n\nIt is notable for its natural environment, and has a notable dogwood blooming season. It has 23 historical sites on the National Register of Historic Places, and was the western terminus of the historic Texas State Railroad. Today, this steam-and-diesel railroad museum operates tourist trains between Palestine and Rusk."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "palestine",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4785,
+    "attempt": 4750,
+    "place_id": "gn-4884509",
+    "input": {
+      "place": {
+        "place_id": "gn-4884509",
+        "name": "Bensenville",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.95503,
+        "lon": -87.94007
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bensenville, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Bensenville,_Illinois",
+          "text": "Bensenville is a village located near O'Hare International Airport in DuPage County, Illinois, with a portion of the town in Cook County. As of the 2020 census, the village population was 18,813.\nFirst known as Tioga, it was formally established as Bensenville in 1873 along the Milwaukee Road (now Canadian Pacific) right-of-way.  The community is named after Bensen, Germany, a village in the municipality of Sudwalde.  A post office was established in 1873, but because there was an existing \"Benson\", the suffix \"ville\" was added.\nThe Edge Ice Arena is located in Bensenville, former home of the Chicago Steel junior ice hockey team and practices for the Chicago Blackhawks of the National Hockey League (NHL).\nThe Churchville School in Bensenville is listed on the National Register of Historic Places."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "bensenville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4786,
+    "attempt": 4751,
+    "place_id": "gn-5165664",
+    "input": {
+      "place": {
+        "place_id": "gn-5165664",
+        "name": "Ontario",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 40.7595,
+        "lon": -82.59017
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ontario, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Ontario,_Ohio",
+          "text": "Ontario is a city in Richland County, Ohio, United States. As of the 2020 census, the city had a population of 6,656. It is part of the Mansfield metropolitan area.\nIt was founded in 1834 on the western edge of the Allegheny Plateau, just west of the city of Mansfield. After being incorporated in 1958, Ontario became a heavy manufacturing center because of the Erie Railroad line, and its proximity to Mansfield. However, its status in that regard began to decline in the late 20th century, when much of the Erie Railroad that once ran through the city was abandoned; and shifts in the manufacturing industry led to the relocation or repositioning of many factories. The city's industry has since diversified into the service economy, including education, finance and healthcare. The city is also a major regional retail hub serving the entire North-Central Ohio area, with a shopping population of over 150,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "ontario",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4787,
+    "attempt": 4752,
+    "place_id": "gn-5183204",
+    "input": {
+      "place": {
+        "place_id": "gn-5183204",
+        "name": "Carbondale",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 41.57369,
+        "lon": -75.50185
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carbondale, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Carbondale,_Pennsylvania",
+          "text": "Carbondale is a city in Lackawanna County, Pennsylvania, United States. Carbondale is located approximately 15 miles due northeast of the city of Scranton in Northeastern Pennsylvania. The population was 8,828 at the 2020 census.\nThe land area that became Carbondale was developed by William and Maurice Wurts, the founders of the Delaware and Hudson Canal Company, during the rise of the anthracite coal mining industry in the early 19th century. It was also a major terminal of the Delaware and Hudson Railroad. Carbondale was the site of the first deep vein anthracite coal mine in the United States, and was the site of the Carbondale mine fire which burned from 1946 to the early 1970s.\nCarbondale has struggled with the demise of the once-prominent coal mining industry that had once made the region a haven for immigrants seeking work. Immigrants from Wales, England, Scotland, Ireland, Italy and from continental Europe came to Carbondale in the 19th and early 20th centuries to work in the anthracite and railroading industries.\nCarbondale is 92.2 miles (148.4 km) north of Allentown and 130.8 miles (210.5 km) northwest of New York City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 187
+    },
+    "banned_terms": [
+      {
+        "term": "carbondale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4788,
+    "attempt": 4753,
+    "place_id": "gn-5401297",
+    "input": {
+      "place": {
+        "place_id": "gn-5401297",
+        "name": "Tehachapi",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 35.13219,
+        "lon": -118.44897
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tehachapi, California",
+          "url": "https://en.wikipedia.org/wiki/Tehachapi,_California",
+          "text": "Tehachapi ( ; Kawaiisu: Tihachipia, meaning \"hard climb\") is a city in Kern County, California, United States, in the Tehachapi Mountains, at an elevation of 3,970 feet (1,210 m), between the San Joaquin Valley and the Mojave Desert. Tehachapi is 35 miles (56 km) east-southeast of Bakersfield, and 20 miles (32 km) west of Mojave. According to the United States Census Bureau, the city has a total area of 10 square miles (26 km2). As of the 2020 census, Tehachapi had a population of 12,939. The Tehachapi area is known for the nearby Tehachapi Loop (a popular railfan site), the Pacific Crest Trail and for the favorable weather conditions for the aerial sport of gliding."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "tehachapi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4789,
+    "attempt": 4754,
+    "place_id": "gn-5804915",
+    "input": {
+      "place": {
+        "place_id": "gn-5804915",
+        "name": "North Bend",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.49566,
+        "lon": -121.78678
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Bend, Washington",
+          "url": "https://en.wikipedia.org/wiki/North_Bend,_Washington",
+          "text": "North Bend is a city in King County, Washington, United States, on the outskirts of the Seattle metropolitan area. The population was 7,461 at the 2020 census. The city is 30 miles (48 km) east of Seattle on Interstate 90 and lies in the foothills of the Cascade Range near Snoqualmie Pass.\nSince the closure of Weyerhaeuser's Snoqualmie sawmill, North Bend has become a prosperous bedroom community for Seattle and Bellevue. The city was made famous by David Lynch's television series Twin Peaks, which was partially filmed in North Bend. The community is also home to Nintendo North Bend, the main North American production facility and distribution center for the video game console manufacturer Nintendo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "north bend",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bend",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4790,
+    "attempt": 4755,
+    "place_id": "gn-5807212",
+    "input": {
+      "place": {
+        "place_id": "gn-5807212",
+        "name": "Port Angeles",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.11815,
+        "lon": -123.43074
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Angeles, Washington",
+          "url": "https://en.wikipedia.org/wiki/Port_Angeles,_Washington",
+          "text": "Port Angeles ( AN-jəl-əs) is a city in and the county seat of Clallam County, Washington, United States. The population was 19,960 at the 2020 census, it is the most populous city in the county, as well as the most populous city on the Olympic Peninsula. The population was estimated at 20,112 in 2024.\nThe city's harbor was dubbed Puerto de Nuestra Señora de los Ángeles (Port of Our Lady of the Angels) by Spanish explorer Francisco de Eliza in 1791. By the mid-19th century, after settlement by English speakers from the United States, the name was shortened and partially anglicized to its current form, Port Angeles Harbor.\nPort Angeles is home to Peninsula College. It is the birthplace of football hall of famer John Elway and residents include writers and other celebrities. The city is served by William R. Fairchild International Airport. Ferry service is provided across the Strait of Juan de Fuca to Victoria, British Columbia, Canada on the MV Coho."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "port angeles",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "angeles",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4791,
+    "attempt": 4756,
+    "place_id": "gn-5854380",
+    "input": {
+      "place": {
+        "place_id": "gn-5854380",
+        "name": "Waikīkī",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 21.2855,
+        "lon": -157.83594
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waikīkī",
+          "url": "https://en.wikipedia.org/wiki/Waik%C4%ABk%C4%AB",
+          "text": "Waikīkī  (; Hawaiian: [wɐjˈkiːkiː, vɐjˈtiːtiː]) is a Honolulu neighborhood and the eponymous Waikīkī beach on its south shore, on the island of Oʻahu in the U.S. state of Hawaii. (Despite situational use of the spelling \"Waikiki\", typically in materials aimed at tourists, the spelling \"Waikīkī\" is official and common.)\nWaikīkī Beach is one of six beaches in the district, along with Queen's Beach, Kuhio Beach, Gray's Beach, Fort DeRussy Beach, and Kahanamoku Beach. The sandy beach is almost entirely man-made.\nWaikīkī (Hawaii) is home to public places including Kapiʻolani Park, Fort DeRussy, Kahanamoku Lagoon, Kūhiō Beach Park, and Ala Wai Harbor. Waikīkī was the first capital of the Kingdom of Hawaii from 1795 to 1796."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "waikiki",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4792,
+    "attempt": 4757,
+    "place_id": "gn-5906836",
+    "input": {
+      "place": {
+        "place_id": "gn-5906836",
+        "name": "Bowness",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 51.08344,
+        "lon": -114.16866
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bowness, Calgary",
+          "url": "https://en.wikipedia.org/wiki/Bowness,_Calgary",
+          "text": "Bowness is the oldest neighbourhood and former town in west Calgary, Alberta, Canada. The former town was amalgamated into the City of Calgary in 1964.\nThe neighbourhood is bordered by the Bow River to the north and east, 16 Avenue to the south, and Stoney Trail to the west. The neighbourhood of Montgomery, another former town amalgamated into the City of Calgary a year earlier in 1963, is located across the river to the east.\nOn the northwest end of the community is one of Calgary's most popular parks, Bowness Park. The park sits between the Bow River and a lagoon, and is popular for picnics, summer sports, ice skating in the winter, and boating. It is also part of the city's large pedestrian pathway network.\nBowness is represented in the Calgary City Council by the Ward 1 councillor. Residents of the area are called \"Bownesians\" ().\nThe community has an area redevelopment plan in place."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "bowness",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4793,
+    "attempt": 4758,
+    "place_id": "gn-6140750",
+    "input": {
+      "place": {
+        "place_id": "gn-6140750",
+        "name": "Sandy Hill",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 45.42519,
+        "lon": -75.67863
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sandy Hill, Ottawa",
+          "url": "https://en.wikipedia.org/wiki/Sandy_Hill,_Ottawa",
+          "text": "Sandy Hill (French: Côte-de-Sable) is a neighbourhood in Ottawa, Ontario, located just east of downtown.  The neighbourhood is bordered on the west by the Rideau Canal, and on the east by the Rideau River.  To the north it stretches to Rideau Street and the Byward Market area while to the south it is bordered by the Queensway highway and Nicholas Street. The area is named for its hilliness, caused by the river, and its sandy soil, which makes it difficult to erect large buildings. It is home to a number of embassies, residences and parks. Le Cordon Bleu operates its Canadian school there, at the opposite end of Sandy Hill from the University of Ottawa.\nAccording to the 2011 Canadian Census, the population of Sandy Hill was 12,490."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "sandy hill",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sandy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hill",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4794,
+    "attempt": 4759,
+    "place_id": "gn-760584",
+    "input": {
+      "place": {
+        "place_id": "gn-760584",
+        "name": "Rawa Mazowiecka",
+        "country": "Poland",
+        "subdivision": "Łódź Voivodeship",
+        "lat": 51.76437,
+        "lon": 20.25493
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rawa Mazowiecka",
+          "url": "https://en.wikipedia.org/wiki/Rawa_Mazowiecka",
+          "text": "Rawa Mazowiecka [ˈrava mazɔˈvʲɛt͡ska] is a town in central Poland, with 16,090 inhabitants (2022). It lies in the Łódź Voivodeship and is the capital of the Rawa County.\nRawa is a former medieval ducal seat of the Piast dynasty and an early modern provincial capital and royal city of Poland. From 1562 the city hosted the Rawa Treasury for the Polish army. It prospered thanks to its location on important trade routes, then in the 19th century it became a center of cloth manufacturing, and currently it is a center of the food and light industries. The town features heritage sites in a variety of styles, including Gothic, Baroque and Neoclassical and a regional museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "rawa mazowiecka",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rawa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mazowiecka",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4795,
+    "attempt": 4760,
+    "place_id": "gn-12037388",
+    "input": {
+      "place": {
+        "place_id": "gn-12037388",
+        "name": "Den Den",
+        "country": "Tunisia",
+        "subdivision": "Manouba",
+        "lat": 36.80753,
+        "lon": 10.11061
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Den Den",
+          "url": "https://en.wikipedia.org/wiki/Den_Den",
+          "text": "Den Den, (Arabic: الدندان) is a town and commune in the Manouba Governorate, Tunisia, part of the western banlieue of Tunis. As of 2022, it had a population of 30,293. This population count includes both Den Den and the town of Ksar Saïd.\nFormerly mainly devoted to farming as located within the part of Tunisia suitable for market gardening, it has been progressively integrated in the Tunisian urban area. Within the city are located several palaces who belonged to the Beys of Tunis of the Husainid dynasty, they were used as winter residences. The most lavish one, the Zarrouk palace, named after minister Mohamed Larbi Zarrouk, is still in use for various entertainment purposes. A craft village aiming to promote Tunisian handicraft was also built in the commune by the National Office of Tunisian Handicrafts \nDuring the Algerian War, the National Liberation Front establishes a prison there where it incarcerated its political opponents, French film director René Vautier was imprisoned there for several months.\nThe Ksar Saïd Hippodrome is also located within the commune."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 114,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "den den",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

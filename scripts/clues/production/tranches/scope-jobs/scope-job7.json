@@ -1,0 +1,887 @@
+[
+  {
+    "rank": 4980,
+    "band": 4,
+    "place_id": "gn-6232390",
+    "input": {
+      "place": {
+        "place_id": "gn-6232390",
+        "name": "Massey",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.8382,
+        "lon": 174.61019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Massey, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Massey,_New_Zealand",
+          "text": "Massey is a northern suburb in West Auckland, New Zealand. It was formerly a northern suburb of Waitakere City, which existed from 1989 to 2010 before the city was amalgamated into Auckland Council. The suburb was named after former Prime Minister of New Zealand William Massey. Massey is a relatively large suburb and can be divided into three reasonably distinctive areas, Massey West, Massey East (separated by the north-western motorway) and Massey North (situated to the north of Royal Road). Parts of Massey East are also known as 'Royal Heights', which is home to the Royal Heights shopping centre.\nThe suburb features the Massey YMCA Leisure Centre, Library. The Westgate Shopping Centre on Hobsonville Road next to the north-western motorway and NorthWest Shopping Centre (which opened in October, 2015) to the north of Hobsonville Road are north of Massey."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 139,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a West Auckland suburb, its naming, and nearby shopping centres but states no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "massey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5044,
+    "band": 4,
+    "place_id": "gn-3070862",
+    "input": {
+      "place": {
+        "place_id": "gn-3070862",
+        "name": "Mělník",
+        "country": "Czechia",
+        "subdivision": "Central Bohemia",
+        "lat": 50.3505,
+        "lon": 14.47411
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mělník",
+          "url": "https://en.wikipedia.org/wiki/M%C4%9Bln%C3%ADk",
+          "text": "Mělník (Czech pronunciation: [ˈmɲɛlɲiːk] ; German: Melnik) is a town in the Central Bohemian Region of the Czech Republic. It has about 20,000 inhabitants. The town is located at the confluence of the two longest Czech rivers, Elbe and Vltava, and is one of the largest river ports of the Czech Republic. Mělník lies in one of the most important agricultural areas of the country and is known for its production of wine.\nMělník is among the longest continuously inhabited locations in the country. It was promoted to a town in 1274 and then it became a dowry town ruled by the queens of Bohemia. The historic town centre is well preserved and is protected as an urban monument zone. The main landmark of Mělník is the Mělník Castle."
+        },
+        {
+          "article": "Mělník (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/M%C4%9Bln%C3%ADk#Geography",
+          "text": "Mělník is located about north of Prague. It is situated on the right bank of the Elbe, at the confluence of the Elbe and Vltava rivers.\nThe town lies in the Polabí lowlands. The southwestern part of the municipal territory lies in the Central Elbe Table, the northeastern part lies in the Jizera Table. The highest point is the hill Chloumeček at above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 65,
+      "leadWords": 129,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers river confluence location, wine production and farming importance, with no climate mechanism, extreme, seasonal rhythm, or paradox stated",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "melnik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5081,
+    "band": 4,
+    "place_id": "gn-4358701",
+    "input": {
+      "place": {
+        "place_id": "gn-4358701",
+        "name": "Hunt Valley",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.49983,
+        "lon": -76.64108
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hunt Valley, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Hunt_Valley,_Maryland",
+          "text": "Hunt Valley is an unincorporated community in Baltimore County, Maryland, United States, near the site of the Maryland Hunt Cup Steeplechase. It lies just north of the city of Baltimore, along York Road (Maryland Route 45), parallel to Interstate 83. The nearby Loch Raven Reservoir is an important landmark and drinking water resource. Its surrounding forested watershed is one of three reservoirs (along with Prettyboy and Liberty Reservoirs) established for the City of Baltimore. Hunt Valley is located at a latitude of 39.5° North and longitude of 76.7° West.  It is served by the Cockeysville post office, and is also a neighbor of Timonium.  A satellite campus of the Community College of Baltimore County, one of the three supplemental campuses of CCBC, uses a leased building located at 11101 McCormick Road, a business park in Hunt Valley, Maryland."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 138,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location north of Baltimore, reservoirs, and a college campus with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "hunt valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hunt",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5089,
+    "band": 4,
+    "place_id": "gn-5856050",
+    "input": {
+      "place": {
+        "place_id": "gn-5856050",
+        "name": "Hōlualoa",
+        "country": "United States",
+        "subdivision": "Hawaii",
+        "lat": 19.61979,
+        "lon": -155.94831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hōlualoa, Hawaii",
+          "url": "https://en.wikipedia.org/wiki/H%C5%8Dlualoa,_Hawaii",
+          "text": "Hōlualoa (Hawaiian for 'long sled course') is a census-designated place (CDP) in the North Kona District of Hawaii County, Hawaii, United States. The population was 8,538 at the 2010 census, up from 6,107 at the 2000 census.\nHōlualoa's boundaries were altered significantly for the 2020 census. The western portion of the CDP near the coast became part of the neighboring Kailua-Kona CDP, while the eastern portion of Kailua-Kona became part of Hōlualoa. This reduced Holualoa's population to 2,994.\nHarold Sakata, best known for his portrayal of the villain Oddjob in the 1964 James Bond film Goldfinger, was born here in 1920 as Toshiyuki Sakata. Sakata was also a medalist at the 1948 Summer Olympics for America"
+        },
+        {
+          "article": "Hōlualoa, Hawaii (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/H%C5%8Dlualoa,_Hawaii#Geography",
+          "text": "Hōlualoa is located on the west side of the island of Hawaii at . It is bordered by Kailua to the north, Honalo and Kahaluu-Keauhou to the south, and the Pacific Ocean to the west. Hawaii Route 11 is the main highway through the community, running north–south, and Hawaii Route 180 runs parallel to it farther inland.\nAccording to the United States Census Bureau, the CDP has a total area of , of which are land and , or 7.99%, are water."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 82,
+      "leadWords": 116,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives district location, boundary changes, and a famous birthplace with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "holualoa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5120,
+    "band": 4,
+    "place_id": "gn-745026",
+    "input": {
+      "place": {
+        "place_id": "gn-745026",
+        "name": "İznik",
+        "country": "Türkiye",
+        "subdivision": "Bursa Province",
+        "lat": 40.42861,
+        "lon": 29.72111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "İznik",
+          "url": "https://en.wikipedia.org/wiki/%C4%B0znik",
+          "text": "İznik (Turkish pronunciation: [izˈnik]) is a municipality and district of Bursa Province, Turkey. Its area is 753 km2, and its population 44,236 (2022). The town is at the site of the ancient city of Nicaea, from which the modern name derives. The town lies in a fertile basin at the eastern end of Lake İznik, with ranges of hills to the north and south. As the crow flies, the town is only 90 kilometres (56 miles) southeast of Istanbul but by road it is 200 km (124 miles) around the Gulf of İzmit. It is 80 km (50 miles) by road from Bursa.\nİznik has been a district centre of the province of Bursa since 1930 but belonged to the district of Kocaeli between 1923 and 1927. It was a township of Yenişehir district (connected to Bilecik before 1926)  between 1927 and 1930.\nAncient Nicaea was ringed with walls that survive to this day, despite having been pierced in places to accommodate roads. Inside the walls stands the Ayasofya Mosque where the Second Council of Nicaea was held in A.D. 787. The town is famous for the Iznik tiles and pottery."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 191,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a fertile basin at the eastern end of a lake with hills north and south, but gives no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "iznik",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5131,
+    "band": 4,
+    "place_id": "gn-294492",
+    "input": {
+      "place": {
+        "place_id": "gn-294492",
+        "name": "Kfar Yona",
+        "country": "Israel",
+        "subdivision": "Central District",
+        "lat": 32.31517,
+        "lon": 34.9357
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kfar Yona",
+          "url": "https://en.wikipedia.org/wiki/Kfar_Yona",
+          "text": "Kfar Yona (Hebrew: כפר יונה, lit. 'Yona's Village') is a city in the Central District of Israel. It is located between the cities Netanya and Tulkarm in the West Bank, about 8 km east of Netanya in the central junction between Highway 6  and Highway 4. The village was established in 1932 by Maurice Fischer and was declared a local council in the year 1940. Following developments in the fields of construction, industry, and education, the local council received city status on February 11, 2014. With a jurisdiction of 11,550 dunams (~11.55 km2), in 2024 the city had a population of 29,820."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 102,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a city between other cities and its founding in 1932, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kfar yona",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kfar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "yona",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5138,
+    "band": 4,
+    "place_id": "gn-4953804",
+    "input": {
+      "place": {
+        "place_id": "gn-4953804",
+        "name": "Uxbridge",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.07732,
+        "lon": -71.62951
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uxbridge, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Uxbridge,_Massachusetts",
+          "text": "Uxbridge, a town in Worcester County, Massachusetts, was incorporated in 1727 from a part of Mendon, and named for the Earl of Uxbridge. The town is located 36 mi (58 km) southwest of Boston and 15 mi (24 km) south-southeast of Worcester. The historical society says Uxbridge is the \"Heart of The Blackstone Valley\" and a “Cradle of the Industrial Revolution\". Uxbridge, an early Textile center in the American Industrial Revolution, became a rural hub in the abolition movement. Uxbridge has a credible claim as an early incubator of the American woolen industry.\nSachems of the Nipmuc deeded land to 17th-century settlers. Uxbridge history claims a first colonial woman voter, Lydia Taft, and Massachusetts’ first women jurors. The first private hospital for mental illness was here. Deborah Sampson posed as an Uxbridge soldier, and fought in the American Revolution. A 140-year legacy of manufacturing military uniforms, cashmeres and clothing began with 1820 power looms. \"Uxbridge Blue\", was the first US Air Force Dress Uniform.\nIn 2026, BJ's Wholesale Club, Amazon, and other distribution centers reflect the transformation of the towns economy from historic textile looms to modern logistics. World Atlas named Uxbridge to a list of top places to live in Massachusetts Uxbridge had a population of 14,162 at the 2020 United States census."
+        },
+        {
+          "article": "Uxbridge, Massachusetts (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Uxbridge,_Massachusetts#Climate",
+          "text": "A USDA hardiness zone 5 continental climate prevails with snowfall extremes from November to April. The highest recorded temperature was 104 F, in July 1975, and the lowest, −25 F in January 1957."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 33,
+      "leadWords": 214,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes an early textile town and its industrial history, with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "uxbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5142,
+    "band": 4,
+    "place_id": "gn-5527953",
+    "input": {
+      "place": {
+        "place_id": "gn-5527953",
+        "name": "Pampa",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 35.53616,
+        "lon": -100.95987
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pampa, Texas",
+          "url": "https://en.wikipedia.org/wiki/Pampa,_Texas",
+          "text": "Pampa (from the Quechua: pampa, meaning \"plain\") is a city in Gray County, Texas, United States. Its population was 16,867 as of the 2020 census. Pampa is the county seat of Gray County and is the principal city of the Pampa micropolitan statistical area, which includes both Gray and Roberts Counties. Pampa is named after the Pampas Lowlands in Argentina, Uruguay, and southern Brazil.\nEach year in August, Pampa hosts the Top o' Texas Rodeo, which brings competitors from Texas and the surrounding states to Gray County. The White Deer Land Company Museum, which showcases ranching exhibits, is located in downtown Pampa."
+        },
+        {
+          "article": "Pampa, Texas (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Pampa,_Texas#Climate",
+          "text": "According to the Köppen Climate Classification system, Pampa has a humid subtropical climate, abbreviated \"Cfa\" on climate maps. The hottest temperature recorded in Pampa was on June 25, 1980, while the coldest temperature recorded was on January 11, 1962."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 39,
+      "leadWords": 102,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract explains the name means plain and names a rodeo and a ranching museum, with no climate mechanism, extreme, seasonal rhythm or paradox; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "pampa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5157,
+    "band": 4,
+    "place_id": "gn-3354540",
+    "input": {
+      "place": {
+        "place_id": "gn-3354540",
+        "name": "Omaruru",
+        "country": "Namibia",
+        "subdivision": "Erongo Region",
+        "lat": -21.42403,
+        "lon": 15.94611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Omaruru, Namibia",
+          "url": "https://en.wikipedia.org/wiki/Omaruru,_Namibia",
+          "text": "Omaruru is a town in the Erongo Region of central Namibia. The town has 14,000 inhabitants and encompasses 352 square kilometres (136 sq mi) of land. It is situated near Mount Erongo, on the usually dry Omaruru River. It is located on the main paved road from Swakopmund to Otjiwarongo. The name in the Otjiherero language means 'bitter milk', as Herero cattle herds used to graze on the local bush that turned their milk bitter.\nOmaruru is known for its annual festival where the Herero people commemorate their past local chiefs, its winery, and for the dinosaur footprints at nearby Otjihaenamparero."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 101,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract notes a usually dry river, a festival, a winery and dinosaur footprints but states no climate mechanism, extreme, seasonal rhythm or paradox; a dry riverbed alone is not a traceable climate mechanism",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "omaruru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5197,
+    "band": 4,
+    "place_id": "gn-5807236",
+    "input": {
+      "place": {
+        "place_id": "gn-5807236",
+        "name": "Port Orchard",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 47.54037,
+        "lon": -122.63625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Orchard, Washington",
+          "url": "https://en.wikipedia.org/wiki/Port_Orchard,_Washington",
+          "text": "Port Orchard is a city in and the county seat of Kitsap County, Washington, United States. It is located 13 miles (21 km) due west of West Seattle and south from Bremerton across Sinclair Inlet. Port Orchard is connected to Seattle and Vashon Island via the Washington State Ferries run to Southworth. The city is named after Port Orchard, the strait that separates Bainbridge Island from the Kitsap Peninsula.\nThe population was 15,587 in the 2020 census, and estimated to be 17,089 in 2022. Together with its two major suburbs, East Port Orchard and Parkwood, the population is over 28,000."
+        },
+        {
+          "article": "Port Orchard, Washington (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Port_Orchard,_Washington#Geography",
+          "text": "Port Orchard is located in south-central Kitsap County on the south side of Sinclair Inlet, an arm of the Port Orchard strait connecting to Puget Sound. The city is bordered to the north across Sinclair Inlet by the city of Bremerton.\nAccording to the United States Census Bureau, the city has a total area of , of which are land and , or 15.65%, are water."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 66,
+      "leadWords": 100,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a city west of Seattle across an inlet, connected by ferries and named after a strait, but contains no climate or weather information at all",
+      "priorMissing": "a place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "port orchard",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "orchard",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5207,
+    "band": 4,
+    "place_id": "gn-3175960",
+    "input": {
+      "place": {
+        "place_id": "gn-3175960",
+        "name": "Grado",
+        "country": "Italy",
+        "subdivision": "Friuli Venezia Giulia",
+        "lat": 45.67774,
+        "lon": 13.40323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grado, Friuli Venezia Giulia",
+          "url": "https://en.wikipedia.org/wiki/Grado,_Friuli_Venezia_Giulia",
+          "text": "Grado (Venetian: Gravo; Friulian: Grau; Slovene: Gradež; Latin: Gradus) is a town and comune (municipality) of 8,064 residents in the Regional decentralization entity of Gorizia in the north-eastern Italian region of Friuli-Venezia Giulia, located on an island and adjacent peninsula of the Adriatic Sea between Venice and Trieste. \nThe territory of the municipality of Grado extends between the mouth of the Isonzo and the Adriatic Sea and the Grado Lagoon, and covers an area of about 90 square kilometers between Porto Buso and Fossalon. Characteristic of the lagoon is the presence of the casoni, which are simple houses with thatched roofs used in the past by the fishermen of Grado, who remained in the lagoon for a long time, returning to the island of Grado only during the colder period of the year. \nOnce mainly a fishing centre, today it is a popular tourist destination, known commonly as L'Isola del Sole (\"The Island of the Sun\"). It is also famous because it is a spa town; from 1873 a maritime hospice for children called Ospizio Marino wanted by the doctor Giuseppe Barellai was established on the island, because the climate and the environment of the island are a good place for the treatment of some childhood diseases. Subsequently, Grado was the chosen destination for marine thermal treatments, especially by the Austrian population. Together with Marano Lagunare, it is the centre of the Marano-Grado Lagoon, which is famous for its uncontaminated nature. \nGrado is the birthplace of Biagio Marin, a poet who sang about the island in the local Venetian dialect."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 260,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract only says the island climate and environment suit treatment of some childhood diseases at a spa, with no mechanism, extreme, seasonal rhythm, or paradox; a bare suitability claim does not qualify",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract beyond the bare claim that the climate suits childhood treatment"
+    },
+    "banned_terms": [
+      {
+        "term": "grado",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5328,
+    "band": 4,
+    "place_id": "gn-5101848",
+    "input": {
+      "place": {
+        "place_id": "gn-5101848",
+        "name": "Newton",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 41.05815,
+        "lon": -74.75267
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newton, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Newton,_New_Jersey",
+          "text": "Newton, officially the Town of Newton, is an incorporated municipality in and the county seat of Sussex County in the U.S. state of New Jersey, situated approximately 60 miles (97 km) northwest of New York City. As of the 2020 United States census, the town's population was 8,374, its highest decennial population ever, an increase of 377 (+4.7%) from the 2010 census count of 7,997, which in turn reflected a decrease of 247 (−3.0%) from the 8,244 counted in the 2000 census.\nOne of 15 municipalities in the state organized as a town, the municipal government operates under a council-manager structure provided by the Faulkner Act, or Optional Municipal Charter Law. Newton was incorporated by an act of the New Jersey Legislature on April 11, 1864, from portions of Newton Township, which was also partitioned to create Andover Township and Hampton Township, and was then dissolved. Additional land was acquired from Andover Township in 1869 and 1927, and from Fredon Township in 1920."
+        },
+        {
+          "article": "Newton, New Jersey (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Newton,_New_Jersey#Climate_and_weather",
+          "text": "Because of its location in the higher elevations of northwestern New Jersey's Appalachian mountains, Newton, as well as the rest of Sussex County, has a cooler humid continental climate or microthermal climate (Köppen climate classification Dfb) which indicates patterns of significant precipitation in all seasons and at least four months where the average temperature rises above This differs from the rest of the state which is generally a humid mesothermal climate, in which temperatures range between during the year's coldest month. Sussex County is part of USDA Plant Hardiness Zone 6.\nDuring winter and early spring, New Jersey in some years is subject to \"nor'easters\"—significant storm systems that have proven capable of causing blizzards or flooding throughout the northeastern United States. Hurricanes and tropical storms, tornadoes, and earthquakes are relatively rare. The Kittatinny Valley to the north of Newton, part of the Great Appalachian Valley, experiences a snowbelt phenomenon and has been categorized as a microclimate region known as the \"Sussex County Snow Belt.\" This region receives approximately of snow per year and generally more snowfall that the rest of Northern New Jersey and the Northern Climate Zone. This phenomenon is attributed to the orographic lift of the Kittatinny Ridge which impacts local weather patterns by increasing humidity and precipitation.\nIn recent years, average temperatures in the county seat of Newton have ranged from a low of in January to a high of in July. Average monthly precipitation ranged from in February to in June.\nAccording to the USDA Natural Resource Conservation Service soil survey, the area receives sunshine approximately 62% of the time in summer and 48% in winter. Prevailing winds are typically from the southwest for most of year; but in late winter and early spring come from the northwest. The lowest recorded temperature was −26 °F on January 21, 1994. The highest recorded temperature was on September 3, 1953. The heaviest one-day snowfall was recorded on January 8, 1996 (combined with the next day, total snowfall was 40 inches). The heaviest one-day rainfall—— was recorded on August 19, 1955."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate and weather",
+      "sectionWords": 342,
+      "leadWords": 163,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers county-seat status, population, and incorporation with no climate mechanism, extreme, seasonal rhythm, or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "newton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5464,
+    "band": 4,
+    "place_id": "gn-2619154",
+    "input": {
+      "place": {
+        "place_id": "gn-2619154",
+        "name": "Kalundborg",
+        "country": "Denmark",
+        "subdivision": "Zealand",
+        "lat": 55.67954,
+        "lon": 11.08864
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kalundborg",
+          "url": "https://en.wikipedia.org/wiki/Kalundborg",
+          "text": "Kalundborg (Danish: [kʰælɔnˈpɒˀ]) is a Danish city with a population of 16,466 (1 January 2026), the main town of the municipality of the same name and the site of its municipal council. It is situated on the northwestern coast of the largest Danish island, Zealand (or Sjælland in Danish), on the opposite, eastern side of which lies the capital Copenhagen, 110 km (68 mi) away.\nKalundborg is famous as the location of a large broadcasting facility, the Kalundborg Transmitter. The city was also home to the largest coal-fired power station in Denmark, the Asnæs Power Station, which started its transition to biomass in 2017.\nKalundborg is mainly a trading and industrial town, but is also well known for its five-spired Church of Our Lady, which is closely associated with King Valdemar I and the Archbishop Absalon. The church itself is said to have been built by Absalon's brother, Esbern Snare.\nKalundborg is also the traditional seat of the aristocratic Lerche family. Their stately home, Lerchenborg, the best example of rococo architecture in Denmark, can be seen in the town's outskirts.\nFerries connect Kalundborg westward to the island of Samsø."
+        },
+        {
+          "article": "Kalundborg (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Kalundborg#Geography",
+          "text": "in Kalundborg, Denmark]]\nKalundborg is at latitude 55°41′N, longitude 11°6′E, about west of Copenhagen on the island of Zealand (Sjaelland)."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 20,
+      "leadWords": 189,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a northwestern Zealand coast location, a broadcasting transmitter, a coal power station, a five-spired church and ferries, but states no climate mechanism, extreme, paradox or seasonal rhythm",
+      "priorMissing": "place-specific climate mechanism, extreme, paradox or seasonal rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kalundborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5537,
+    "band": 4,
+    "place_id": "gn-5097357",
+    "input": {
+      "place": {
+        "place_id": "gn-5097357",
+        "name": "Dumont",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.94065,
+        "lon": -73.99681
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dumont, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Dumont,_New_Jersey",
+          "text": "Dumont is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 17,863, an increase of 384 (+2.2%) from the 2010 census count of 17,479, which in turn reflected a decrease of 24 (−0.1%) from the 17,503 counted in the 2000 census.\nThe borough was originally formed on July 20, 1891, as the Borough of Schraalenburgh from portions of Harrington Township and Palisades Township, based on the results of a referendum held the previous day. The borough was formed during the \"Boroughitis\" phenomenon then sweeping through Bergen County, in which 26 boroughs were formed in the county in 1894 alone. On March 7, 1898, portions of the borough were annexed to Palisades Township. On June 13, 1898, the borough's name was changed to Dumont in honor of Dumont Clarke, the borough's first mayor."
+        },
+        {
+          "article": "Dumont, New Jersey (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Dumont,_New_Jersey#Geography",
+          "text": "According to the United States Census Bureau, the borough had a total area of 1.95 square miles (5.06 km 2 ), including 1.95 square miles (5.05 km 2 ) of land and 2 ) of water (0.15%).\nMunicipalities bordering the borough include the Bergen County communities of Bergenfield, Cresskill, Demarest, Haworth, New Milford and Oradell."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 55,
+      "leadWords": 146,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers borough formation in 1891 and renaming in 1898, with census data and no climate mechanism, extreme, seasonal rhythm, or paradox; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism, extreme, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "dumont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5585,
+    "band": 4,
+    "place_id": "gn-2706982",
+    "input": {
+      "place": {
+        "place_id": "gn-2706982",
+        "name": "Hedemora",
+        "country": "Sweden",
+        "subdivision": "Dalarna",
+        "lat": 60.27973,
+        "lon": 15.98855
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hedemora",
+          "url": "https://en.wikipedia.org/wiki/Hedemora",
+          "text": "Hedemora is a town in Dalarna County and the seat of Hedemora Municipality, Sweden, with 7,273 inhabitants in 2010.\nDespite its small population, Hedemora is for historical reasons normally still referred to as a city, and as such the oldest in the county. \nJonas Nilsson comes from Hedemora, as well as Kerstin Thorborg, Martin Matsbo, Edvin Anger, Bertil Norman and Ulf Stenlund. The diesel engines from Hedemora Diesel can be found in many ships built by Kockums, such as HSwMS Orion, the Collins class submarines in the Royal Australian Navy Submarine Service and the Archer class submarines in the Republic of Singapore Navy.\nHedemora is the home of Clifftop Games, an independent game developer whose published works include Kathy Rain and Whispers of a Machine, and also of Killmonday Games, the independent game developer that produced the games Fran Bow and Little Misfortune."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 143,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives location, history as oldest city in the county, people and game developers with no climate mechanism, extreme, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "hedemora",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5596,
+    "band": 4,
+    "place_id": "gn-2469341",
+    "input": {
+      "place": {
+        "place_id": "gn-2469341",
+        "name": "Maktar",
+        "country": "Tunisia",
+        "subdivision": "Siliana Governorate",
+        "lat": 35.85798,
+        "lon": 9.20072
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maktar",
+          "url": "https://en.wikipedia.org/wiki/Maktar",
+          "text": "Maktar or Makthar (Arabic: مكثر), also known by other names during antiquity, is a town and archaeological site in Siliana Governorate, Tunisia.\nMaktar was founded by the Berber Numidians as a defense post against Carthaginian expansion. At the end of the Third Punic War, it was settled by many Punic refugees after the Romans' destruction of Carthage in 146 BC. Under Roman rule, it obtained the status of a free city under Julius Caesar in 46 BC and became a Roman colony in AD 146. It formed part of the province of Byzacena and was the seat of a Christian bishop. Under the Romans and Byzantines, it reversed its earlier role to serve as a defense post against local Berber attacks. The town survived the Muslim invasions but was destroyed by the Banu Hilal tribe in the 11th century before being reëstablished. The present town had a population of 13,576 in 2014."
+        },
+        {
+          "article": "Maktar (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Maktar#Geography",
+          "text": "It is located around southwest of Tunis and southeast of El Kef. The modern town lies on a plateau at around above sea level. It sits on the other side of a ravine from the Roman ruins and is known for its scenic views. The town has a continental climate, with cold winters and warm summers and occasional snowfall during the months of January and February."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 66,
+      "leadWords": 152,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes Numidian founding, Punic refugees and Roman colony history with no climate mechanism, extreme, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "maktar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5599,
+    "band": 4,
+    "place_id": "gn-2610802",
+    "input": {
+      "place": {
+        "place_id": "gn-2610802",
+        "name": "Valby",
+        "country": "Denmark",
+        "subdivision": "Capital Region",
+        "lat": 55.66613,
+        "lon": 12.51388
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valby",
+          "url": "https://en.wikipedia.org/wiki/Valby",
+          "text": "Valby ([vælpyˀ] ) is one of the 10 official districts of Copenhagen Municipality, Denmark. It is in the southwestern corner of Copenhagen Municipality, and has a mixture of different types of housing. This includes apartment blocks, terraced housing, areas with single-family houses and allotments, plus the remaining part of the old Valby village, around which the district has formed, intermingled with past and present industrial sites.\nValby Hill marks the boundary between Valby and the more central and urban neighbouring Vesterbro district. The expression \"west of Valby Hill\" is in Danish often used as a metonym for \"the provinces\" or \"outside Copenhagen\". Separated from the rest of Copenhagen by Vestre Cemetery, Denmark's largest cemetery, towards Vesterbro/Kongens Enghave and Søndermarken-Frederiksberg Gardens towards Frederiksberg, the Carlsberg brewery site, and areas of low density, Valby retains a certain air of 'independence', or isolation, even today. With the progressing redevelopment of the Carlsberg area into a new lively, high-density neighbourhood, this is likely to change. Other former industrial sites are also under redevelopment and Valby is today one of the districts in Copenhagen with the fastest growing population."
+        },
+        {
+          "article": "Valby (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Valby#Geography",
+          "text": "]]\nValby covers an area of 9,23 km 2 and has a population of 66.435, giving a population density of 7.197 per km 2 . The district is bounded by Kongens Enghave and Vesterbro to the east, Frederiksberg to the north, Vanløse to the north-east and Hvidovre Municipality to the west, while Kalvebod Beach, the shallow-watered area just south of Copenhagen Harbour, separates it from the island of Amager to the south.\nThe most distinctive geographical features of the district are Valby Hill in its north-eastern corner and Harrestrup Å which marks its western boundary. Valby also borders on Damhus Lake in its extreme north-western corner."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 106,
+      "leadWords": 184,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes housing, a hill boundary, a large cemetery and redevelopment with no climate mechanism, extreme, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "valby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5602,
+    "band": 4,
+    "place_id": "gn-2877550",
+    "input": {
+      "place": {
+        "place_id": "gn-2877550",
+        "name": "Lindau",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.54612,
+        "lon": 9.68431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lindau",
+          "url": "https://en.wikipedia.org/wiki/Lindau",
+          "text": "Lindau (German: Lindau (Bodensee), Lindau im Bodensee; German: [ˈlɪndaʊ] ; Low Alemannic: Lindou) is a major town and island on the eastern side of Lake Constance (Bodensee in German) in Bavaria, Germany. It is the capital of the county (Landkreis) of Lindau, Bavaria and is near the borders of the Austrian state of Vorarlberg, and the Swiss cantons of St. Gallen and Thurgau. The coat of arms of Lindau town is a linden tree, referring to the supposed origin of the town's name. The historic town of Lindau is located on the 0.68-square-kilometre (0.26 sq mi) island of the same name, which is connected with the mainland by a road bridge and a railway causeway leading to Lindau station.\nLindau is located near the meeting point of the Austrian-German-Swiss tripoint and is nestled on the lake in front of Austria's Pfänder mountain. Lindau is popular with sightseers and vacationers for its medieval town centre and picturesque location on Lake Constance."
+        },
+        {
+          "article": "Lindau (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Lindau#Climate",
+          "text": "Lindau is located in a temperate climatic zone (experiencing four distinct seasons) with mountain surroundings and the freshwater lake. Winters can be cold, with temperatures reaching as low as −20 °C on occasion. In some exceptional cases, winters can be so severely cold that major parts of the lake freeze, making crossing of the lake by car possible, however this is a once in 50- to 100-year event. Summers are normally warm to hot and usually humid due to the surrounding lake.\nHeavy storms, rain showers, and thunderstorms are common in summer and heavy winds up to 8 on the Beaufort scale are possible. Usually, the lake is calm; however, there is a warning-light system for boats to indicate if heavy storms are forecast. Due to the surrounding mountains, snow is always in sight and a good indicator of weather. Lake Constance is located at roughly 400m meters above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 151,
+      "leadWords": 160,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a town on a lake island near national borders with no climate mechanism, extreme, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "lindau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5728,
+    "band": 4,
+    "place_id": "gn-2640173",
+    "input": {
+      "place": {
+        "place_id": "gn-2640173",
+        "name": "Polesworth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.61962,
+        "lon": -1.61036
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Polesworth",
+          "url": "https://en.wikipedia.org/wiki/Polesworth",
+          "text": "Polesworth is a large village and civil parish in the North Warwickshire district of Warwickshire, England. It is situated close to the northern tip of the county, adjacent to the border with Staffordshire. It is 3 miles (5 km) east of Tamworth, 4.5 miles (7 km) northwest of Atherstone and 15 miles (24 km) northeast of Birmingham.\nIn the 2021 census, the civil parish of Polesworth had a population of 8,727; it included the contiguous sub-villages of Birchmoor, St Helena and Hall End directly to the south, with Warton to the east. The built-up area of Polesworth, which includes the adjoining village of Dordon to the south, had a population of 9,913 in 2021. The border with Leicestershire is 3 miles (5 km) to the east, while Derbyshire is 6 miles (10 km) to the north. The River Anker runs through the village."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 143,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives only location near county borders, distances to other towns, census figures, and the River Anker, with no climate mechanism, extreme, seasonal rhythm, or paradox; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "polesworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5729,
+    "band": 4,
+    "place_id": "gn-2640460",
+    "input": {
+      "place": {
+        "place_id": "gn-2640460",
+        "name": "Penkridge",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.72556,
+        "lon": -2.1156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Penkridge",
+          "url": "https://en.wikipedia.org/wiki/Penkridge",
+          "text": "Penkridge ( PENG-krij) is a village and civil parish in South Staffordshire District in Staffordshire, England. It is to the south of Stafford, north of Wolverhampton, west of Cannock, east of Telford and south-east of Newport.\nThe wealthiest establishment in Penkridge in the Middle Ages, its collegiate church building survived the abolition of the chantries and is the tallest structure in the village centre. The parish is crossed towards its eastern border by the M6 motorway and a separate junction north of the M6 Toll between the West Midlands and Stoke-on-Trent.  Penkridge has a railway station on the West Coast Main Line railway next to the Grade I listed medieval church. Penkridge Viaduct and the Staffordshire and Worcestershire Canal are to either side of Market Street and the Old Market Square and are among its landmarks."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 136,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives relative location, a medieval collegiate church as the tallest structure, the M6 motorway, a canal and a viaduct, with no climate mechanism, extreme, seasonal rhythm, or paradox; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "penkridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

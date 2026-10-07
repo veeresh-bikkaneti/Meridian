@@ -1,0 +1,727 @@
+[
+  {
+    "rank": 4409,
+    "place_id": "gn-2657430",
+    "input": {
+      "place": {
+        "place_id": "gn-2657430",
+        "name": "Alsager",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.09617,
+        "lon": -2.30649
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alsager",
+          "url": "https://en.wikipedia.org/wiki/Alsager",
+          "text": "Alsager  (  AWL-say-jər) is a town and civil parish in the unitary authority of Cheshire East in Cheshire, England. It is located to the north-west of Stoke-on-Trent and east of Crewe. At the 2021 census, the parish had a population of 13,389 and the built up area population was 15,505.\nThe civil parish is bordered by the parishes of Betchton to the north, Church Lawton to the north-east and east, Kidsgrove to the south-east, Audley Rural to the south, Barthomley to the south-west, Haslington to the west, and Hassall to the north-west.\nAlsager has hosted an annual summer carnival since 1998; it was located in Milton Park until June 2009 and moved temporarily to the Alsager School playing fields to increase capacity, before returning in 2017. In 2008, Alsager was awarded Fairtrade Town status by the Fairtrade Foundation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "alsager",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4414,
+    "place_id": "gn-4360345",
+    "input": {
+      "place": {
+        "place_id": "gn-4360345",
+        "name": "Largo",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.89761,
+        "lon": -76.83025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Largo, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Largo,_Maryland",
+          "text": "Largo () is an unincorporated area and census-designated place in Prince George's County, Maryland, United States. The population was 11,605 at the 2020 census.\nLargo is located just east of the Capital Beltway (I-95/495) and is home to Prince George's Community College and Largo High School. Six Flags America amusement park (formerly known as Wild World and Adventure World) is to the east in Woodmore, and FedExField, the Washington Commanders's stadium, is across the Capital Beltway in Summerfield. Watkins Regional Park in Kettering just to the east of Largo (operated by the Maryland-National Capital Park and Planning Commission) has an old-fashioned carousel, miniature train ride, miniature golf, the Old Maryland Farm, a playground, and animals on display. Largo is not a post office designation, but is at the northern end of the Greater Upper Marlboro ZIP code area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "largo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4419,
+    "place_id": "gn-2930367",
+    "input": {
+      "place": {
+        "place_id": "gn-2930367",
+        "name": "Bad Endorf",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.90901,
+        "lon": 12.29795
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Endorf",
+          "url": "https://en.wikipedia.org/wiki/Bad_Endorf",
+          "text": "Bad Endorf (German pronunciation: [baːt ˈʔɛndɔʁf]) is a municipality and a village in the district of Rosenheim in Bavaria in Germany. The market town is located about 15 km outside of Rosenheim and is in close proximity to Lake Simssee and Chiemsee lake and its larger shore towns, Prien, Gstadt, and Seebruck.\nThe town is home to a large health spa, as well as the German Federal Police winter sports training center which is famous for \"producing\" medal winners at the Winter Olympics such as female speed skater Claudia Pechstein.\nBad Endorf has one main bus station and several minor ones located around the town for regional destinations. The town also has a Deutsche Bahn railway station on the Rosenheim–Salzburg line with service to minor towns in the area as well as Rosenheim, Munich, and Salzburg, Austria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "bad endorf",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "endorf",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4421,
+    "place_id": "gn-3120605",
+    "input": {
+      "place": {
+        "place_id": "gn-3120605",
+        "name": "Hoyo de Manzanares",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.62265,
+        "lon": -3.90733
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hoyo de Manzanares",
+          "url": "https://en.wikipedia.org/wiki/Hoyo_de_Manzanares",
+          "text": "Hoyo de Manzanares is a municipality of the Community of Madrid, Spain, and is located on the northwestern side of the Community of Madrid and to the south of the Sierra de Guadarrama.\nIt has a stable population of roughly 7,457 residents (INE 2008), a statistic that has been increasing consistently from the economic crisis of 2008/9 onwards. The population also greatly increases during the summer due to an influx of various families who own summer houses in the area.\nThis district of Madrid is found inside the Cuenca Alta del Manzanares Regional Park created by the Community of Madrid in 1985. This regional park is the oldest and most protected regional park in the Community of Madrid. As a result, Hoyo de Manzanares is surrounded by mountains and fields that give the town a beautiful location."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "hoyo de manzanares",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hoyo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "manzanares",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4423,
+    "place_id": "gn-4146723",
+    "input": {
+      "place": {
+        "place_id": "gn-4146723",
+        "name": "Bartow",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 27.89641,
+        "lon": -81.84314
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bartow, Florida",
+          "url": "https://en.wikipedia.org/wiki/Bartow,_Florida",
+          "text": "Bartow ( BAR-toh) is a city and the county seat of Polk County, Florida, United States. Founded in 1851 as Fort Blount, the city was renamed in honor of Francis S. Bartow, the first brigade commander of the Confederate Army to die in combat during the American Civil War. It is part of the Lakeland−Winter Haven Metropolitan Statistical Area, which had an estimated population of 787,404, as of July 1, 2022. According to the 2020 Census, the city had a population of 19,309.\nLocated near the source of the Peace River, Bartow is approximately 39 miles (63 km) east of Tampa, Florida and 50 miles (80 km) southwest of the Greater Orlando area. The city is near the center of \"Lightning Alley\" and has frequent afternoon thunderstorms in the summer, but typically has sunny and mild winters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "bartow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4424,
+    "place_id": "gn-6094407",
+    "input": {
+      "place": {
+        "place_id": "gn-6094407",
+        "name": "Oromocto",
+        "country": "Canada",
+        "subdivision": "New Brunswick",
+        "lat": 45.83512,
+        "lon": -66.47917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oromocto",
+          "url": "https://en.wikipedia.org/wiki/Oromocto",
+          "text": "Oromocto is a Canadian town in Sunbury County, New Brunswick.\nThe town is located on the west bank of the Saint John River at the mouth of the Oromocto River, approximately 20 kilometres (12 mi) southeast of Fredericton. The town's name is derived from the name of the Oromocto River; \"oromocto\" is thought to have originated from the Wolastoqey word welamukotuk which means \"deep water\". It appears on early maps as Ramouctou and La Rivière du Kamouctou (Freneuse seigneurial grant, 1684).\nIt is the administrative headquarters of the Oromocto First Nation band government and the site of Canadian Forces Base Gagetown, which dominates its economy and modern history.\nOn 1 January 2023, Oromocto annexed the local service district of the parish of Lincoln, excluding the Fredericton International Airport and a highway strip connecting it to the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "oromocto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4429,
+    "place_id": "gn-2455735",
+    "input": {
+      "place": {
+        "place_id": "gn-2455735",
+        "name": "Kangaba",
+        "country": "Mali",
+        "subdivision": "Koulikoro",
+        "lat": 11.93333,
+        "lon": -8.41667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kangaba",
+          "url": "https://en.wikipedia.org/wiki/Kangaba",
+          "text": "Kangaba is a town, commune, and seat of the Kangaba Cercle in the Koulikoro Region of south-western Mali.\nKangaba is believed to have been founded in 1050 by Mandinka tribesmen and was a vassal state of the Ghana Empire. Once known as Kaba, the area was a core province of the Mali Empire. After winning the Battle of Kirina in 1235, Sundiata Keita proclaimed the Manden Charter, also known as the Kouroukan Fouga after the field near Kangaba where it was created, perhaps the oldest constitution in the world. Ceremonies are still held in the town to honor the ancient traditions and promote a message of peace and fraternity.\nThe Kamablon is a sacred circular mudbrick building with a conical roof in the bara, or large public square, at the center of town, built in 1653."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "kangaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4433,
+    "place_id": "gn-3102677",
+    "input": {
+      "place": {
+        "place_id": "gn-3102677",
+        "name": "Braniewo",
+        "country": "Poland",
+        "subdivision": "Warmia-Masuria",
+        "lat": 54.37971,
+        "lon": 19.81959
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Braniewo",
+          "url": "https://en.wikipedia.org/wiki/Braniewo",
+          "text": "Braniewo ([braˈɲɛvɔ]) (German: Braunsberg in Ostpreußen) is a town in northern Poland, in Warmia, in the Warmian-Masurian Voivodeship, with a population of 16,907 as of June 2021. It is the capital of Braniewo County.\nFounded in the Middle Ages, Braniewo is the oldest city in Warmia, and currently the second largest (after Olsztyn), and was its first capital until 1340. From the late medieval period, it prospered from international trade, and in the early modern period, it was a significant center of higher education in Poland, called the \"Athens of the North.\" Additionally, since the 16th century Braniewo is a noted center for brewing. The town features heritage sites in a variety of styles, including Gothic, Baroque, Neoclassical and Gothic Revival. Braniewo hosts a garrison of the Polish Armed Forces and is a member of Cittaslow."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "braniewo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4448,
+    "place_id": "gn-4209448",
+    "input": {
+      "place": {
+        "place_id": "gn-4209448",
+        "name": "Milledgeville",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 33.08014,
+        "lon": -83.2321
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milledgeville, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Milledgeville,_Georgia",
+          "text": "Milledgeville () is a city in and the county seat of Baldwin County, Georgia, United States. Founded in 1803 along the Oconee River, it served as the state capital of Georgia from 1804 to 1868, including during the American Civil War. The city's layout—modeled after the grid plans of Savannah, Georgia, and Washington, D.C.—reflects Milledgeville's intended role as a seat of government. During its years as the capital, Milledgeville quickly became a hub of political activity and cotton-based commerce before facing significant economic changes after the capital was relocated to Atlanta in 1868.\nToday, Milledgeville lies along the Fall Line Freeway, a major east-west corridor that connects Milledgeville with historically significant cities like Augusta, Macon, and Columbus. Its historic core, including the Old State Capitol, is preserved within the Milledgeville Historic District in downtown Milledgeville."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "milledgeville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4452,
+    "place_id": "gn-5109790",
+    "input": {
+      "place": {
+        "place_id": "gn-5109790",
+        "name": "Borough Park",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.63399,
+        "lon": -73.99681
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Borough Park, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Borough_Park,_Brooklyn",
+          "text": "Borough Park (also spelled Boro Park) is a neighborhood in the southwestern part of the borough of Brooklyn, in New York City. The neighborhood is bordered by Bensonhurst to the south, Dyker Heights to the southwest, Sunset Park to the west, Kensington and Green-Wood Cemetery to the north, Flatbush to the east, and Mapleton to the southeast.\nIt is economically diverse and home to one of the largest Orthodox Jewish communities outside Israel, with one of the largest concentrations of Jews in the United States. With Orthodox and Haredi families having an average of 6.72 children, Boro Park is experiencing a sharp growth in population.\nThe neighborhood is part of Brooklyn Community District 12, and its primary ZIP Code is 11219. It is patrolled by the 66th Precinct of the New York City Police Department."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "borough park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "borough",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4455,
+    "place_id": "gn-12048432",
+    "input": {
+      "place": {
+        "place_id": "gn-12048432",
+        "name": "Westbourne",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.52126,
+        "lon": -0.19378
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Westbourne, London",
+          "url": "https://en.wikipedia.org/wiki/Westbourne,_London",
+          "text": "Westbourne is an area in West London. It has a manorial history spanning many centuries, within a more broadly defined Paddington, before shedding its association in the mid-19th century. It is named after the west bourne, West Bourne, or River Westbourne, a Thames tributary which was encased in 19th-century London in the 1850s. The spring-fed stream and associated manor have led to the place names Westbourne Green, Westbourne Park and more narrowly: Westbourne Gardens, Westbourne Grove, Westbourne Park Road, Westbourne Park tube station, Westbourne Studios and the name of a public house.\nWestbourne forms or resembles an electoral ward of the local authority which is, since 1965, Westminster City Council, and an ecclesiastical parish in the Church of England. Westbourne Conservation Area is a smaller area, designated by the local authority, in Planning Law."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "westbourne",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4458,
+    "place_id": "gn-2634743",
+    "input": {
+      "place": {
+        "place_id": "gn-2634743",
+        "name": "Warrenpoint",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.10148,
+        "lon": -6.25731
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Warrenpoint",
+          "url": "https://en.wikipedia.org/wiki/Warrenpoint",
+          "text": "Warrenpoint is a small port town and civil parish in County Down, Northern Ireland. It sits at the head of Carlingford Lough, south of Newry, and is separated from the Republic of Ireland by a narrow strait. The town is beside the village of Rostrevor and is overlooked by the Mournes and Cooley Mountains. Warrenpoint sprang up within the townland of Ringmackilroy (from Irish  Rinn Mhic Giolla Ruaidh 'McIlroy's point'), and is locally nicknamed \"The Point\", which also represents the town's full name in Irish, An Pointe.\nWarrenpoint is known for its scenic location, the Maiden of Mourne festival, the Blues on the Bay music festival, the passenger ferry service between Warrenpoint and Omeath and the nearby Narrow Water Castle. Warrenpoint Port is second in terms of tonnage handled by ports in Northern Ireland."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "warrenpoint",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4461,
+    "place_id": "gn-4754966",
+    "input": {
+      "place": {
+        "place_id": "gn-4754966",
+        "name": "Culpeper",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.47318,
+        "lon": -77.99666
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Culpeper, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Culpeper,_Virginia",
+          "text": "Culpeper (formerly Culpeper Courthouse, earlier Fairfax) is an incorporated town in Culpeper County, Virginia, United States. It is the county seat and part of the Washington–Baltimore combined statistical area. At the 2020 United States Census, the population was 20,062, an increase from 16,379 in 2010. Culpeper is located along U.S. Route 15, U.S. Route 29, and U.S. Route 522, and is served by intercity passenger rail at Culpeper station and by local and regional bus services operated by Virginia Regional Transit and the Virginia Breeze network.\nThe town was laid out in 1749 by a young George Washington while working as a surveyor for Lord Fairfax, and formally established in 1759 by the Virginia House of Burgesses under the name Fairfax. During the American Revolutionary War, the Culpeper Minutemen militia organized here in 1775."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "culpeper",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4464,
+    "place_id": "gn-5960971",
+    "input": {
+      "place": {
+        "place_id": "gn-5960971",
+        "name": "Gibsons",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.39539,
+        "lon": -123.50555
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gibsons",
+          "url": "https://en.wikipedia.org/wiki/Gibsons",
+          "text": "Gibsons is a town on the Sunshine Coast in southwestern British Columbia, Canada, on the northwest shore of Howe Sound. Located within the Pacific coastal rainforest and serving as the gateway to the rest of the Sunshine Coast, Gibsons is a regional tourist destination. \nEstablished in 1886 by George Gibson, the settlement was incorporated in 1929 as Gibson's Landing and renamed Gibsons in 1947. Historically a centre for forestry and commercial fishing, the town has since developed a more diversified economy. In 2009, it received the International Award for Liveable Communities for \"the world's most liveable community with a population under 20,000\". It is best known as the setting of the long-running CBC Television series The Beachcombers and has served as a filming location for productions including Murder in a Small Town, Charlie St."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "gibsons",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4468,
+    "place_id": "gn-713514",
+    "input": {
+      "place": {
+        "place_id": "gn-713514",
+        "name": "Alupka",
+        "country": "Ukraine",
+        "subdivision": "Crimea",
+        "lat": 44.41952,
+        "lon": 34.04489
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alupka",
+          "url": "https://en.wikipedia.org/wiki/Alupka",
+          "text": "Alupka (Ukrainian and Russian: Алупка; Crimean Tatar: Alupka; Greek: Ἀλώπηξ, Alòpex) is a resort city located in the Crimean peninsula, a de jure territory of Ukraine that is de facto controlled by the Russian Federation since 2014 (see 2014 Crimean crisis). It is located 17 km (11 mi) to the west of Yalta. It is famous for the Vorontsov Palace, designed by English architect Edward Blore in an extravagant mixture of Scottish baronial and Neo-Moorish styles and built in 1828–1846 for prince Mikhail Semyonovich Vorontsov.\nAlupka and its surrounding area is full of resort hotels on the shore of the Black Sea, where thousands of travelers (particularly from the former Soviet Union) travel every year. Public transport to Alupka includes the bus system (bus routes #26 and #27 from Yalta) and other road vehicles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "alupka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4477,
+    "place_id": "gn-681160",
+    "input": {
+      "place": {
+        "place_id": "gn-681160",
+        "name": "Cogealac",
+        "country": "Romania",
+        "subdivision": "Constanța County",
+        "lat": 44.55,
+        "lon": 28.56667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cogealac",
+          "url": "https://en.wikipedia.org/wiki/Cogealac",
+          "text": "Cogealac (Romanian pronunciation: [kod͡ʒe̯aˈlak]) is a commune in Constanța County, Northern Dobruja, Romania.\nThe commune includes six villages:\n\nCogealac (historical names: Domnești, Turkish: Kocalak)\nGura Dobrogei (historical names: Câvârgic, Turkish: Kıvırcık)\nRâmnicu de Jos\nRâmnicu de Sus\nTariverde (historical name: Dorotea)\nThe territory of the commune also includes the former village of Colelia (Turkish: Kuleli), at 44°36′10″N 28°24′39″E, disestablished by Presidential Decree in 1977. The former village was populated by Dobrujan Germans until 1942 and it is now the site of the Colilia Monastery.\nThe Fântânele-Cogealac Wind Farm (with an installed nameplate capacity of 600 MW) is partly located on the territory of the commune.\nOn 2 March 2022, while searching for a crashed MiG-21 LanceR in the area, an IAR 330 military transport helicopter crashed near Gura Dobrogei, killing 7 military personnel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "cogealac",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4488,
+    "place_id": "gn-2820692",
+    "input": {
+      "place": {
+        "place_id": "gn-2820692",
+        "name": "Tutzing",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.90938,
+        "lon": 11.2803
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tutzing",
+          "url": "https://en.wikipedia.org/wiki/Tutzing",
+          "text": "Tutzing (German pronunciation: [ˈtʊtsɪŋ]) is a municipality in the district of Starnberg in Bavaria, Germany, on the west bank of the Starnberger See. Just 40 km south-west of Munich and with good views of the Alps, the town was traditionally a favourite holiday spot for those living in the city.\nIn 1873 Johannes Brahms spent four summer months in Tutzing, completing his String Quartets Opus 51 and writing the Haydn Variations. A small lakeside park is dedicated to him, and a plaque stands near the large house where he lived and worked.\nThe town of 10,000 is home to many commuters to Munich, as well as to retirees. Tutzing station is both a terminus of Munich's S-Bahn rail network and a regional train hub serving Innsbruck, Mittenwald, Garmisch-Partenkirchen, Reutte, Kochel and Oberammergau."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 132
+    },
+    "banned_terms": [
+      {
+        "term": "tutzing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4497,
+    "place_id": "gn-2751385",
+    "input": {
+      "place": {
+        "place_id": "gn-2751385",
+        "name": "Lunteren",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 52.085,
+        "lon": 5.62222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lunteren",
+          "url": "https://en.wikipedia.org/wiki/Lunteren",
+          "text": "Lunteren is a town in Gelderland, the Netherlands. It has a railway station on the line between Amersfoort and Ede.\nIt is well known for three conference centres in the vicinity, including Het Bosgoed, which mostly hosts academic conferences and De Werelt Congress Hotel.\nIt is also famous because the Geographical Center of the Netherlands is located northeast of the village, and because the National Socialist Movement in the Netherlands (\"NSB\") held their annual Hagespraken (propagandistic open-air meetings) there between 1936 and 1940. In 1938, the NSB built what is known as the Muur van Mussert (\"wall of Mussert\") there, which was planned as the first step in a large conglomeration of buildings and monuments for the party.\nLunteren was a separate municipality until 1818, when it was merged with Ede."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "lunteren",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4499,
+    "place_id": "gn-302903",
+    "input": {
+      "place": {
+        "place_id": "gn-302903",
+        "name": "Pamukkale",
+        "country": "Türkiye",
+        "subdivision": "Denizli",
+        "lat": 37.91644,
+        "lon": 29.11729
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pamukkale",
+          "url": "https://en.wikipedia.org/wiki/Pamukkale",
+          "text": "Pamukkale, (Turkish pronunciation: [pa.mukˈka.le]) meaning \"cotton castle\" in Turkish, is a natural site in Denizli Province in southwestern Turkey. The area is famous for a carbonate mineral left by the flowing of thermal spring water. It is located in Turkey's Inner Aegean region, in the River Menderes valley, which has a temperate climate for most of the year.\nThe ancient Greek city of Hierapolis was built on top of the travertine formation which is in total about 2,700 metres (8,860 ft) long, 600 m (1,970 ft) wide and 160 m (525 ft) high. It can be seen from the hills on the opposite side of the valley in the town of Denizli, 20 km away. This area has been drawing visitors to its thermal springs since the time of classical antiquity."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "pamukkale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4507,
+    "place_id": "gn-5125125",
+    "input": {
+      "place": {
+        "place_id": "gn-5125125",
+        "name": "Long Island City",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.74482,
+        "lon": -73.94875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Long Island City",
+          "url": "https://en.wikipedia.org/wiki/Long_Island_City",
+          "text": "Long Island City (LIC) is a neighborhood within the New York City borough of Queens. It is bordered by Astoria to the north; the East River to the west; Sunnyside to the east; and Newtown Creek, which separates Queens from Greenpoint, Brooklyn, to the south.  Its name refers to its location on the western tip of Long Island.\nIncorporated as a city in 1870, Long Island City was originally the seat of government of the Town of Newtown, before becoming part of the City of Greater New York in 1898.  In the early 21st century, Long Island City became known for its rapid and ongoing residential growth and gentrification, its waterfront parks, and its thriving arts community. The area has a high concentration of art galleries, art institutions, and studio space."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "long island city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "long",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

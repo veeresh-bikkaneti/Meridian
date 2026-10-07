@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 8055,
+    "attempt": 8001,
+    "place_id": "gn-680598",
+    "input": {
+      "place": {
+        "place_id": "gn-680598",
+        "name": "Costache Negri",
+        "country": "Romania",
+        "subdivision": "Galați County",
+        "lat": 45.7,
+        "lon": 27.71667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Costache Negri, Galați",
+          "url": "https://en.wikipedia.org/wiki/Costache_Negri,_Gala%C8%9Bi",
+          "text": "Costache Negri is a commune in Galați County, Western Moldavia, Romania. It is composed of a single village, Costache Negri, and is named after Costache Negri, an 1848 revolutionary, who had an estate in the village, which was previously named Mânjina.\nThe commune lies on the banks of the river Geru, at the southern edge of the Moldavian Plateau. It is located in the central part of the county, on county road DJ251, at a distance of 35 km (22 mi) from Tecuci and 45 km (28 mi) from the county seat, Galați.\n\nAt the 2021 census, Costache Negri had a population of 2,078; of those, 90% were Romanians."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "costache negri",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "costache",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "negri",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8056,
+    "attempt": 8002,
+    "place_id": "gn-8348589",
+    "input": {
+      "place": {
+        "place_id": "gn-8348589",
+        "name": "Newton",
+        "country": "Australia",
+        "subdivision": "South Australia",
+        "lat": -34.88207,
+        "lon": 138.68249
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newton, South Australia",
+          "url": "https://en.wikipedia.org/wiki/Newton,_South_Australia",
+          "text": "Newton is a suburb of Adelaide, South Australia, situated in the Adelaide foothills northeast of the city centre. The area features a significant population of people of Italian origin. Part of the City of Campbelltown, Newton is surrounded by the suburbs Paradise, Rostrevor, Athelstone and Campbelltown.\nNewton is home to such public schools as Thorndon Park Primary School and Charles Campbell College and the private St Francis of Assisi School. The area is also home to chain supermarkets and small shops, most notably Newton Village. The Catholic parish church, dedicated to St Francis of Assisi, was served by a community of Capuchin friars from the 1950's until January 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "newton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8057,
+    "attempt": 8003,
+    "place_id": "gn-2835255",
+    "input": {
+      "place": {
+        "place_id": "gn-2835255",
+        "name": "Schwangau",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.57722,
+        "lon": 10.73416
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Schwangau",
+          "url": "https://en.wikipedia.org/wiki/Schwangau",
+          "text": "Schwangau (German pronunciation: [ˈʃvaːnɡaʊ]) is a municipality in the district of Ostallgäu in Bavaria, Germany. The village lies 4 km from the larger town of Füssen and just 1.5 km from Hohenschwangau, a collection of tourist-oriented facilities adjacent to the major tourist attractions of Neuschwanstein Castle and Hohenschwangau Castle.\nSchwangau has no railway station, but is served by buses connecting to Füssen, Hohenschwangau, and other nearby Alpine towns. It is the next-to-last town on the Romantic Road tourist route that terminates in Füssen.\nA castrum Swangowe is attested in 1090. It was situated on the site of Neuschwanstein Castle and was owned by the Elder House of Welf. After the death of Welf VI in 1191, it fell to the Staufer dynasty, and in 1268 to the empire. The coat of arms of the municipality is based on the one shown in the Codex Manesse as that of Hiltbolt von Schwangau (d. 1256)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "schwangau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8058,
+    "attempt": 8004,
+    "place_id": "gn-2873841",
+    "input": {
+      "place": {
+        "place_id": "gn-2873841",
+        "name": "Mantel",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.65412,
+        "lon": 12.04074
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mantel, Germany",
+          "url": "https://en.wikipedia.org/wiki/Mantel,_Germany",
+          "text": "Mantel (German pronunciation: [ˈmantl̩] ) is a municipality located in the district of Neustadt an der Waldnaab in Bavaria, Germany. It is known as a Markt, a town that was historically granted 'market rights'. The town was first mentioned in official documents in 1212, and in 1945 it was incorporated into the municipality of Rupprechtsreuth. As part of the regional reform in Bavaria, parts of the dissolved municipality of Hütten were added to it in 1972. The town's population fell by 77 people, 2.8%, to 2728 between 1988 and 2018. Mantel is best known for its nature preserve, Naturwaldreservat Gscheibte Loh, as well as its castle, Schloss Steinfels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "mantel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8059,
+    "attempt": 8005,
+    "place_id": "gn-2946801",
+    "input": {
+      "place": {
+        "place_id": "gn-2946801",
+        "name": "Bokel",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.39326,
+        "lon": 8.76803
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bokel, Lower Saxony",
+          "url": "https://en.wikipedia.org/wiki/Bokel,_Lower_Saxony",
+          "text": "Bokel (German pronunciation: [ˈboːkl̩]) is a village and a former municipality in the district of Cuxhaven, in Lower Saxony, Germany. Since 1 November 2011, it has been part of the municipality of Beverstedt.\nBokel belonged to the Prince-Archbishopric of Bremen, established in 1180. In 1648 the Prince-Archbishopric was transformed into the Duchy of Bremen, which was first ruled in personal union by the Swedish Crown - interrupted by a Danish occupation (1712–1715) - and from 1715 on by the Hanoverian Crown. The Kingdom of Hanover incorporated the Duchy in a real union and the Ducal territory, including Bokel, became part of the new Stade Region, established in 1823."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "bokel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8060,
+    "attempt": 8006,
+    "place_id": "gn-3021668",
+    "input": {
+      "place": {
+        "place_id": "gn-3021668",
+        "name": "Deauville",
+        "country": "France",
+        "subdivision": "Normandy",
+        "lat": 49.357,
+        "lon": 0.06995
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Deauville",
+          "url": "https://en.wikipedia.org/wiki/Deauville",
+          "text": "Deauville (French pronunciation: [dovil] ) is a commune in the Calvados department, Normandy, northwestern France. Major attractions include its harbour, race course, marinas, conference centre, villas, Grand Casino, and hotels. The first Deauville Asian Film Festival took place in 1999. As the closest seaside resort to Paris, Deauville is one of the most notable seaside resorts in France. The city and its region of the Côte Fleurie (Flowery Coast) have long been home to the French upper class's seaside houses and is often referred to as the Parisian riviera.\nSince the 19th century, the town of Deauville has been a fashionable holiday resort for the international upper class. In France, it is perhaps most well known for its role in Proust's In Search of Lost Time."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "deauville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8061,
+    "attempt": 8007,
+    "place_id": "gn-3046036",
+    "input": {
+      "place": {
+        "place_id": "gn-3046036",
+        "name": "Rácalmás",
+        "country": "Hungary",
+        "subdivision": "Fejér",
+        "lat": 47.02263,
+        "lon": 18.94056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rácalmás",
+          "url": "https://en.wikipedia.org/wiki/R%C3%A1calm%C3%A1s",
+          "text": "Rácalmás (Hungarian pronunciation: [ˈraːt͡sɒlmaːʃ]) is a town in Central Transdanubia, in Fejér county, Hungary. Located on the right side of river Danube  around 61 km south of Budapest.\nThe name Almás first appeared in documents in 1329, named after the noble Almási family who owned estates there. Later, due to the large Serbian population (Rascians) who made up the majority during the 16th and 17th centuries, the place received the prefix Rác, meaning Serbian, with the village already officially being referred to as Rácalmás by 1696. There is also on a Grassed area alongside of a Lake in the Town, A white Tree Called, the Holmar Apple Tree."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "racalmas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8062,
+    "attempt": 8008,
+    "place_id": "gn-3181288",
+    "input": {
+      "place": {
+        "place_id": "gn-3181288",
+        "name": "Cadoneghe",
+        "country": "Italy",
+        "subdivision": "Veneto",
+        "lat": 45.44282,
+        "lon": 11.92749
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cadoneghe",
+          "url": "https://en.wikipedia.org/wiki/Cadoneghe",
+          "text": "Cadoneghe is a town and comune in the province of Padua, in the Veneto region of northern Italy. The town is approximately 50 kilometres (31 mi) from Venice, the capital of the region. The city is situated on the Brenta River.\nCadoneghe was once famous for being the site of the largest and most important slaughterhouse and meat company in Europe, Grosoli SpA. After the Grosoli family sold the company in the early 1980s, the company gradually lost its market and was eventually closed in the early 1990s, leaving Cadoneghe without any major industry.\nCadoneghe in 1975 was chosen as the best city of the Padova and Italy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "cadoneghe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8063,
+    "attempt": 8009,
+    "place_id": "gn-4346928",
+    "input": {
+      "place": {
+        "place_id": "gn-4346928",
+        "name": "Abingdon",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.46233,
+        "lon": -76.27912
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abingdon, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Abingdon,_Maryland",
+          "text": "Abingdon is a census-designated place in Harford County, Maryland, United States. It lies 25 miles (40 km) northeast of Baltimore on Maryland Route 7, near the Bush River, between Exits 77 (MD 24) and 80 (MD 543) of Interstate 95. The region is known for its proximity to key attractions such as the Aberdeen Proving Ground, a major U.S. Army facility, and the nearby town of Bel Air, which serves as the county seat of Harford County. Abingdon's location, combined with its historical roots and modern amenities, makes it an appealing place to live for those seeking a balance between suburban comfort and easy access to urban conveniences."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "abingdon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8064,
+    "attempt": 8010,
+    "place_id": "gn-4561542",
+    "input": {
+      "place": {
+        "place_id": "gn-4561542",
+        "name": "Strasburg",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.98316,
+        "lon": -76.18412
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Strasburg, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Strasburg,_Pennsylvania",
+          "text": "Strasburg (Pennsylvania German: Schtraasebarig or Schtraasbarig) is a borough in Lancaster County, Pennsylvania, United States. It developed as a linear village stretching approximately 2 miles (3 km) along the Great Conestoga Road, later known as the Strasburg Road. The population was 3,117 at the 2020 census.\nThe town was named after the then German city of Strasbourg, (today part of France) the native home of an early settler.\nThe town is often called \"Train Town USA\" because of the many railroad attractions in and around town, including the Strasburg Rail Road and the Railroad Museum of Pennsylvania. Much of the movie Witness was filmed on a farm nearby. Much of the borough was listed as a historic district by the National Register of Historic Places in 1983."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "strasburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8065,
+    "attempt": 8011,
+    "place_id": "gn-5000625",
+    "input": {
+      "place": {
+        "place_id": "gn-5000625",
+        "name": "Manistique",
+        "country": "United States",
+        "subdivision": "Michigan",
+        "lat": 45.95775,
+        "lon": -86.24625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manistique, Michigan",
+          "url": "https://en.wikipedia.org/wiki/Manistique,_Michigan",
+          "text": "Manistique ( man-iss-TEEK) is the only city in and the county seat of Schoolcraft County in the U.S. state of Michigan.  As of the 2020 census, the city population was 2,828.\nThe city borders the adjacent Manistique Township, but the two are administered independently.  The city lies on the north shore of Lake Michigan at the mouth of the Manistique River, which forms a natural harbor that has been improved with breakwaters, dredging, and the Manistique East Breakwater Light.  The city is named after the river.   The economy depends heavily on tourism from Lake Michigan, as well as nearby Indian Lake State Park and Palms Book State Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "manistique",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8066,
+    "attempt": 8012,
+    "place_id": "gn-5102973",
+    "input": {
+      "place": {
+        "place_id": "gn-5102973",
+        "name": "Prospect Park",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.93704,
+        "lon": -74.17431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Prospect Park, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Prospect_Park,_New_Jersey",
+          "text": "Prospect Park is a borough in Passaic County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 6,372, an increase of 507 (+8.6%) from the 2010 census count of 5,865, which in turn reflected an increase of 86 (+1.5%) from the 5,779 counted in the 2000 census.\nThe borough of Prospect Park was formed by an act of the New Jersey Legislature on March 13, 1901, from portions of the now-defunct Manchester Township. The borough was named for Prospect Park, Brooklyn.\nIt is a dry town, where alcohol cannot be sold, as affirmed by an ordinance passed in 1978."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "prospect park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "prospect",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8067,
+    "attempt": 8013,
+    "place_id": "gn-6325486",
+    "input": {
+      "place": {
+        "place_id": "gn-6325486",
+        "name": "Château-Richer",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 46.96031,
+        "lon": -71.03219
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Château-Richer",
+          "url": "https://en.wikipedia.org/wiki/Ch%C3%A2teau-Richer",
+          "text": "Château-Richer (French pronunciation: [ʃato ʁiʃe]) is a small town situated in the Capitale-Nationale region of Quebec, Canada. Located on the north shore of the Saint Lawrence River east of Quebec City. It is the seat for the Côte-de-Beaupré Regional County Municipality.\nThe first rural parish in New France was established in 1678, by the members of La Compagnie-des-Cents-Associés. Château-Richer was the first home to Quebec's oldest families (les Greniers, Giroux, Vachons, Bélangers, Juchereaux, Cloutiers) with descendants remaining to this day. In fact, a fairly large segment of the town's population can be traced back to those enterprising pioneers tasked with establishing a fur-trading post while increasing the population.\nThe town stretches for several miles alongside Route 138. This road, originally known as Le Chemin du Roy (The King’s Road) or Le Chemin-Royal (The Royal Road), would later be renamed l’Avenue Royale . It is among the first roads to be built in North America.\nIn addition to the main namesake population centre, the municipality also includes the hamlets of Le Moyne (46°57′20″N 71°2′42″W), Rivière-Cazeau (46°56′56″N 71°3′0″W), Sault-à-la-Puce (46°58′39″N 71°0′36″W), Saint-Achillée (47°3′4″N 71°1′42″W), and Saint-Ignace (47°2′7″N 71°3′3″W)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 186
+    },
+    "banned_terms": [
+      {
+        "term": "chateau richer",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chateau",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "richer",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8068,
+    "attempt": 8014,
+    "place_id": "gn-9972835",
+    "input": {
+      "place": {
+        "place_id": "gn-9972835",
+        "name": "North Balgowlah",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.78631,
+        "lon": 151.24801
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Balgowlah",
+          "url": "https://en.wikipedia.org/wiki/North_Balgowlah",
+          "text": "North Balgowlah is a suburb of Northern Sydney, in the state of New South Wales, Australia. North Balgowlah is located 13 kilometres north-east of the Sydney central business district, in the local government area of Northern Beaches Council, and part of the Northern Beaches region. North Balgowlah shares the postcode 2093 with the adjacent Balgowlah and Balgowlah Heights.\nThere is access to Manly Dam Memorial Park from many streets in North Balgowlah for bushwalking, kayaking, swimming, and water-skiing. Manly Dam also has a children's playground which is currently being re-developed, and multiple picnic areas\nNorth Balgowlah is home to a primary school, Community Centre, park and local shops."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "north balgowlah",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "balgowlah",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8069,
+    "attempt": 8015,
+    "place_id": "gn-1023281",
+    "input": {
+      "place": {
+        "place_id": "gn-1023281",
+        "name": "Alldays",
+        "country": "South Africa",
+        "subdivision": "Limpopo",
+        "lat": -22.66392,
+        "lon": 29.09336
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alldays, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Alldays,_South_Africa",
+          "text": "Alldays is a small town in the Limpopo province of South Africa that serves a large area of private game and hunting farms. It has a population of 2,987.\nThe Venetia Diamond Mine is situated close to Alldays, located within the 360 square kilometre Venetia Limpopo Nature Reserve. It is one of De Beers’ six remaining diamond mines in South Africa and the only major diamond mine to be developed in the country during the past 25 years. Citrus farming on the banks of the Limpopo River is an important economic activity in the district.\nThe area of is known for its arid bushveld and Mopane bush. Several large game farms are located around Alldays, many of which are known as trophy hunting destinations. The hunting practices carried out at an Alldays game farm sparked significant public outcry in September 2015; however, the Limpopo environmental department found the farm to be compliant with South African hunting legislation. The town is served by the Alldays Airport.\nThe Blouberg ('blue mountain') mountain range is situated close to Alldays, and is a popular rock climbing destination."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 183
+    },
+    "banned_terms": [
+      {
+        "term": "alldays",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8070,
+    "attempt": 8016,
+    "place_id": "gn-1724803",
+    "input": {
+      "place": {
+        "place_id": "gn-1724803",
+        "name": "Biri",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 12.68333,
+        "lon": 124.36361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Biri, Northern Samar",
+          "url": "https://en.wikipedia.org/wiki/Biri,_Northern_Samar",
+          "text": "Biri, officially the Municipality of Biri (Waray: Bungto han Biri; Tagalog: Bayan ng Biri), is a municipality in the province of Northern Samar, Philippines. According to the 2024 census, it has a population of 11,005 people.\nThe archipelagic town is also known for its inakob, a traditional Waray dish made by first cooking grated root crops (gabi) with coconut milk, condensed milk, eggs, brown sugar, and an herb called anuv. Once cooked, the grated gabi is put inside gabi shells which have been peeled. The dish is then boiled with coconut milk. The dish is traditionally eaten hot by the people of Biri during the rainy months."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "biri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8071,
+    "attempt": 8017,
+    "place_id": "gn-2523233",
+    "input": {
+      "place": {
+        "place_id": "gn-2523233",
+        "name": "Saracena",
+        "country": "Italy",
+        "subdivision": "Calabria",
+        "lat": 39.77862,
+        "lon": 16.15913
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saracena",
+          "url": "https://en.wikipedia.org/wiki/Saracena",
+          "text": "Saracena (Greek: Sarakine) is a town and comune in the province of Cosenza in the Calabria region of southern Italy. The town is bordered by Altomonte, Castrovillari, Firmo, Lungro, Morano Calabro, Mormanno, Orsomarso and San Basile and is home to the Church of San Leone, a 12th-century Byzantine church. The town's patron is San Leone di Catania, who is celebrated twice a year, once in the spring, then again in late summer.\nLike Palermo and Tropea, Saracena was renowned for its souk (or street market) during the period of Arab Sicily from the ninth century until the Norman era. Arab-Sicilian influence remained strong until the 13th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "saracena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8072,
+    "attempt": 8018,
+    "place_id": "gn-2638542",
+    "input": {
+      "place": {
+        "place_id": "gn-2638542",
+        "name": "Sandwich",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.27223,
+        "lon": 1.33776
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sandwich, Kent",
+          "url": "https://en.wikipedia.org/wiki/Sandwich,_Kent",
+          "text": "Sandwich is a town and civil parish in the Dover District of Kent, south-east England. It lies on the River Stour and has a population of 4,985. Sandwich was one of the Cinque Ports and still has many original medieval buildings, including several listed public houses and gates in the old town walls, churches, almshouses and the White Mill. While it was once a major port, Sandwich is now 2 miles (3 km) from the sea due to the disappearance of the Wantsum Channel. Its historic centre has been preserved. Sandwich Bay is home to nature reserves and two world-class golf courses, Royal St George's and Prince's. The town is also a home to many educational and cultural events. Sandwich also gave its name to the food by way of John Montagu, 4th Earl of Sandwich, and the word sandwich is now found in several languages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "sandwich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8073,
+    "attempt": 8019,
+    "place_id": "gn-2659900",
+    "input": {
+      "place": {
+        "place_id": "gn-2659900",
+        "name": "Leysin",
+        "country": "Switzerland",
+        "subdivision": "Vaud",
+        "lat": 46.34183,
+        "lon": 7.01151
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leysin",
+          "url": "https://en.wikipedia.org/wiki/Leysin",
+          "text": "Leysin is a municipality of the canton of Vaud in the Aigle district of Switzerland. It is first mentioned around 1231–32 as Leissins, in 1352 as Leisins.\nLocated in the Vaud Alps, Leysin is a sunny alpine resort village at the eastern end of Lake Geneva in proximity to Montreux, Lausanne, and Geneva. In earlier years, Leysin was known for its TB sanatorias; today it is most famous for spectacular Alpine views across the Rhône Valley towards the Dents du Midi and year-round mountain sports and recreational facilities.\nThe village of Leysin and hamlet of Veyges are a designated part of the Inventory of Swiss Heritage Sites."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "leysin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8074,
+    "attempt": 8020,
+    "place_id": "gn-2706054",
+    "input": {
+      "place": {
+        "place_id": "gn-2706054",
+        "name": "Hofterup",
+        "country": "Sweden",
+        "subdivision": "Skåne",
+        "lat": 55.80485,
+        "lon": 12.9797
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hofterup",
+          "url": "https://en.wikipedia.org/wiki/Hofterup",
+          "text": "Hofterup is a locality situated in Kävlinge Municipality, Skåne County, Sweden with 3,501 inhabitants in 2010.\nThe etymology of the name suggests it may originally have meant \"the settlement of Horte\", Horte being and old Scandinavian male name.\nAmong historical landmarks can be noted Hofterupsdösen, a stone chamber tomb from the Neolithic (Stone Age), and the well-preserved medieval Hofterup Church. Järavallen Nature Reserve, one of Skåne's largest public recreation areas, is in Hofterup. In Hofterup lies also Barsebäck Golf & Country Club - regarded as one of the top golf courses in Europe. The 2003 Solheim Cup was hosted here, as well as several Scandinavian Masters tournaments."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "hofterup",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

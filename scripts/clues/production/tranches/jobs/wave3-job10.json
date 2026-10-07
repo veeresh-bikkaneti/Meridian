@@ -1,0 +1,757 @@
+[
+  {
+    "rank": 2804,
+    "place_id": "gn-2655262",
+    "input": {
+      "place": {
+        "place_id": "gn-2655262",
+        "name": "Bognor Regis",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.78206,
+        "lon": -0.67978
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bognor Regis",
+          "url": "https://en.wikipedia.org/wiki/Bognor_Regis",
+          "text": "Bognor Regis (), also known as Bognor, is a town, seaside resort and civil parish in the Arun district, in West Sussex on the south coast of England, 56 miles (90 km) south-west of London, 24 miles (39 km) west of Brighton, 6 miles (10 km) south-east of Chichester and 16 miles (26 km) east of Portsmouth. Other nearby towns include Littlehampton east-north-east and Selsey to the south-west. The nearby villages of Felpham, and Aldwick are now suburbs of Bognor Regis, along with those of North and South Bersted. The population of the Bognor Regis built-up area, including Felpham and Aldwick, was 63,855 at the 2011 census.\nA seaside resort was developed by Sir Richard Hotham in the late 18th century on what was a sand and gravel, undeveloped coastline. It has been claimed that Hotham and his new resort are portrayed in Jane Austen's unfinished novel Sanditon."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "bognor regis",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bognor",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "regis",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2806,
+    "place_id": "gn-2977246",
+    "input": {
+      "place": {
+        "place_id": "gn-2977246",
+        "name": "Saint-Raphaël",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.42332,
+        "lon": 6.7735
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Raphaël, Var",
+          "url": "https://en.wikipedia.org/wiki/Saint-Raphaël,_Var",
+          "text": "Saint-Raphaël (French pronunciation: [sɛ̃ ʁafaɛl] ; Occitan: Sant Rafèu Occitan pronunciation: [ˈsan raˈfɛw]) is a commune in the Var department, Provence-Alpes-Côte d'Azur region, Southeastern France.\nImmediately to the west of Saint-Raphaël lies a larger and older town, Fréjus; together they form an urban agglomeration known as Var Estérel Méditerranée, which also encompasses the smaller communes of Les Adrets-de-l'Estérel, Puget-sur-Argens and Roquebrune-sur-Argens. In the second half of the 19th century, the township came under the influence of Mayor Felix Martin and writer Jean-Baptiste Alphonse Karr; owing to their efforts and its beneficial climate the commune developed into a seaside resort popular with artists, sportsmen and politicians.\nIt is the seat of the canton of Saint-Raphaël, also encompassing Fréjus and Les Adrets-de-l'Estérel, which is the economic and cultural centre of Eastern Var, within the arrondissement of Draguignan. Its inhabitants are called Raphaëlois in French generally, or Rafelencs in Provençal Occitan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "saint raphael",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "raphael",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2815,
+    "place_id": "gn-2633274",
+    "input": {
+      "place": {
+        "place_id": "gn-2633274",
+        "name": "Akureyri",
+        "country": "Iceland",
+        "subdivision": "Northeast",
+        "lat": 65.68353,
+        "lon": -18.0878
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Akureyri",
+          "url": "https://en.wikipedia.org/wiki/Akureyri",
+          "text": "Akureyri (Icelandic pronunciation: [ˈaːkʏrˌeiːrɪ], locally [ˈaːkʰʏrˌeiːrɪ] ) is a town in northern Iceland, the country's fifth most populous municipality (under the official name of Akureyrarbær [-ˌeiːrarˌpaiːr̥], 'town of Akureyri') and the largest outside the Capital Region. The municipality includes the town's neighbourhood at the head of Eyjafjörður and two farther islands: Hrísey at the mouth of Eyjafjörður and Grímsey off the coast.\nNicknamed the \"Capital of North Iceland\", Akureyri is an important port and fishing centre. The area where Akureyri is located was settled in the 9th century, but did not receive a municipal charter until 1786. Allied units were based in the town during World War II. Further growth occurred after the war as the Icelandic population increasingly moved to urban areas.\nThe area has a relatively mild climate because of geographical factors, and the town's ice-free harbour has played a significant role in its history."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "akureyri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2819,
+    "place_id": "gn-3173577",
+    "input": {
+      "place": {
+        "place_id": "gn-3173577",
+        "name": "Merano",
+        "country": "Italy",
+        "subdivision": "Trentino-Alto Adige",
+        "lat": 46.66817,
+        "lon": 11.15953
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Merano",
+          "url": "https://en.wikipedia.org/wiki/Merano",
+          "text": "Merano or Meran is a comune (municipality) in South Tyrol, Northern Italy. The city is located within a basin, surrounded by mountains standing up to 3,335 metres (10,942 feet) above sea level, at the entrance to the Passeier Valley and the Vinschgau. It is the second-largest city in South Tyrol after Bozen/Bolzano and serves as an important cultural and economic centre. \nThe city began as a medieval Tyrolean settlement and became the capital of the County of Tyrol in the 13th century, before political power later shifted to Innsbruck. In the 19th century, its mild Alpine climate transformed Meran into a renowned spa town within the Austro-Hungarian Empire, attracting several scientists, literary people, and artists, including Franz Kafka, Paul Lazarsfeld and also Empress Elisabeth of Austria, who appreciated its mild climate. After World War I, it was annexed by the Kingdom of Italy along with South Tyrol."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "merano",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2823,
+    "place_id": "gn-3676623",
+    "input": {
+      "place": {
+        "place_id": "gn-3676623",
+        "name": "Leticia",
+        "country": "Colombia",
+        "subdivision": "Amazonas Department",
+        "lat": -4.21079,
+        "lon": -69.93944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leticia, Amazonas",
+          "url": "https://en.wikipedia.org/wiki/Leticia,_Amazonas",
+          "text": "Leticia (Spanish pronunciation: [leˈtisja]) is the southernmost city in the Republic of Colombia, capital of the department of Amazonas, Colombia's southernmost town (4.09° south 69.57° west) and one of the major ports on the Amazon River. It has an elevation of 96 meters (315') above sea level and an average temperature of 27 °C (80.6 °F). Leticia has long been Colombia's shipping point for tropical fish for the aquarium trade. Leticia has a population of 33,503 located on the left bank of the Amazon River at the point where the borders of Colombia, Brazil and Peru meet in an area called Tres Fronteras. It is the largest Colombian settlement in the Southern Hemisphere.\n\nA long-standing border dispute involving Leticia, between Colombia and Peru, was decided in 1934 by the League of Nations after these two nations were engulfed in an armed conflict known as the Colombia-Peru War."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "leticia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2836,
+    "place_id": "gn-5125086",
+    "input": {
+      "place": {
+        "place_id": "gn-5125086",
+        "name": "Long Beach",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.58844,
+        "lon": -73.65791
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Long Beach, New York",
+          "url": "https://en.wikipedia.org/wiki/Long_Beach,_New_York",
+          "text": "Long Beach is an oceanfront city in Nassau County, New York, on Long Island. The city rests on a central section of the Long Beach Barrier Island, which is the westernmost of the outer barrier islands off the South Shore of Long Island. The city's population was 35,029 at the 2020 United States census.\nThe City of Long Beach was incorporated in 1922, and is nicknamed \"The City by the Sea\" (the Latin form, Civitas ad mare, is the city's motto). Long Beach is bordered by East Atlantic Beach to the west, and Lido Beach to the east, on the Long Beach Barrier Island—which in turn is surrounded by the Reynolds Channel to the north, east and west, and the Atlantic Ocean to the south.\nIn 2022, Long Beach was named one of the best East Coast towns for a summer getaway by Time Out magazine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "long beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "long",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2846,
+    "place_id": "gn-2978640",
+    "input": {
+      "place": {
+        "place_id": "gn-2978640",
+        "name": "Saint-Malo",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.64738,
+        "lon": -2.00877
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Malo",
+          "url": "https://en.wikipedia.org/wiki/Saint-Malo",
+          "text": "Saint-Malo (UK: , US: , French: [sɛ̃ malo] ; Gallo: Saent-Malô; Breton: Sant-Maloù) is a historic French port commune in Ille-et-Vilaine, Brittany.\nOriginally, the walled city sat on a rocky granite island connected to the mainland only by a natural, narrow sand spit and tidal mudflats called le Sillon. Stonework and a basic road were first established along this sandbar in 1509 to protect the area and create dry access. The original structure was widened, raised, and rebuilt over the centuries — particularly in the 19th century — to form the modern dyke and thoroughfare (La Digue du Sillon) that permanently connects the old town to the rest of the coast.\nThe walled city on the English Channel coast has a long history of piracy, earning much wealth from local extortion and overseas adventures. In 1944, during World War II, the Allies heavily bombed Saint-Malo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "saint malo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "malo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2847,
+    "place_id": "gn-3182043",
+    "input": {
+      "place": {
+        "place_id": "gn-3182043",
+        "name": "Biella",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 45.56304,
+        "lon": 8.05796
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Biella",
+          "url": "https://en.wikipedia.org/wiki/Biella",
+          "text": "Biella (Italian: [ˈbjɛlla] ; Piedmontese: Biela; Latin: Bugella) is a city and comune (municipality) in the region of Piedmont in northern Italy, the capital of the province of the same name. With a population of 43,356, it is the 12th-largest city in Piedmont. It is located about 80 kilometres (50 miles) northeast of Turin and at about the same distance west-northwest of Milan.\nIt lies in the foothills of the Alps, in the Bo mountain range near Mt. Mucrone and Camino, an area rich in springs and lakes fed by the glaciers, the heart of the Biellese Alps irrigated by several mountain streams: the Elvo to the west of the town, the Oropa river and the Cervo to the east. Nearby natural and notable tourist attractions include the Zegna Viewpoint, the Bielmonte Ski Resort, Burcina Natural Reserve, and the moors to the south of town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "biella",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2849,
+    "place_id": "gn-5610810",
+    "input": {
+      "place": {
+        "place_id": "gn-5610810",
+        "name": "Twin Falls",
+        "country": "United States",
+        "subdivision": "Idaho",
+        "lat": 42.56297,
+        "lon": -114.46087
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Twin Falls, Idaho",
+          "url": "https://en.wikipedia.org/wiki/Twin_Falls,_Idaho",
+          "text": "Twin Falls is the county seat of and the largest city in Twin Falls County, Idaho, United States. The population was 51,807 at the 2020 census, and was estimated at 55,589 in 2024. In the Magic Valley region, Twin Falls is the largest city in a 100-mile (160 km) radius, and is the regional commercial center for south-central Idaho and northeastern Nevada. It is the principal city of the Twin Falls metropolitan statistical area, which officially includes the entirety of Twin Falls and Jerome Counties. The border town resort community of Jackpot, Nevada, 50 mi (80 km) south at the state line, is unofficially considered part of the greater Twin Falls area.\nLocated on a broad plain at the south rim of the Snake River Canyon, Twin Falls is where daredevil Evel Knievel attempted to jump across the canyon in 1974 on a steam-powered rocket."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "twin falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "twin",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2859,
+    "place_id": "gn-3834502",
+    "input": {
+      "place": {
+        "place_id": "gn-3834502",
+        "name": "Termas de Río Hondo",
+        "country": "Argentina",
+        "subdivision": "Santiago del Estero",
+        "lat": -27.49362,
+        "lon": -64.85972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Termas de Río Hondo",
+          "url": "https://en.wikipedia.org/wiki/Termas_de_Río_Hondo",
+          "text": "Termas de Río Hondo is a spa city in Santiago del Estero Province, Argentina. It has 27,838 inhabitants as per the 2001 census [INDEC]. It is located on the banks of the Dulce River, 65 km north of the provincial capital Santiago del Estero, near the artificial Río Hondo Lake.\nThe hot springs (Spanish: termas, Quechua: yacu rupaj) of the area have a temperature of over 30 °C (86 °F), and have made the town a popular spa resort for Argentines, who enjoy the waters recommended against high blood pressure and rheumatism. Two public pools, La Olla and the Pileta Municipal, are near the town centre, along with many well-regarded hotels and restaurants.\nNew investments done in the last years were the new Las Termas Airport and Autódromo Termas de Río Hondo, totally rebuilt to host MotoGP World Championship racing starting from April 2014."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "termas de rio hondo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "termas",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hondo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2871,
+    "place_id": "gn-2939951",
+    "input": {
+      "place": {
+        "place_id": "gn-2939951",
+        "name": "Coburg",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 50.25937,
+        "lon": 10.96384
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coburg",
+          "url": "https://en.wikipedia.org/wiki/Coburg",
+          "text": "Coburg ( KOH-burg, German: [ˈkoːbʊʁk] ) is a city located on the River Itz in the Upper Franconia region of Bavaria, Germany. Long part of one of the Thuringian states of the Wettin line, it joined Bavaria by popular vote only in 1920. Until the revolution of 1918, it was one of the capitals of the Duchy of Saxe-Coburg and Gotha and the Duchy of Saxe-Coburg-Saalfeld.\nThrough successful dynastic policies, the ruling princely family married into several of the royal families of Europe, most notably in the person of Prince Albert, who married Queen Victoria in 1840. As a result of these close links with the royal houses of Europe in the late 19th and early 20th centuries, Coburg was frequently visited by the crowned heads of Europe and their families.\nCoburg is the location of Veste Coburg, one of Germany's largest castles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "coburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2879,
+    "place_id": "gn-6947041",
+    "input": {
+      "place": {
+        "place_id": "gn-6947041",
+        "name": "Blackheath",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.4647,
+        "lon": 0.0079
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Blackheath, London",
+          "url": "https://en.wikipedia.org/wiki/Blackheath,_London",
+          "text": "Blackheath is an area in Southeast London, straddling the border of the Royal Borough of Greenwich and the London Borough of Lewisham. Historically within the county of Kent, it is located 1-mile (1.6 km) northeast of Lewisham, 1.5 miles (2.4 km) south of Greenwich and 6.4 miles (10.3 km) southeast of Charing Cross, the traditional centre of London.\nThe area southwest of its station and in its ward is named Lee Park. Its northern neighbourhood of Vanbrugh Park is also known as St John's Blackheath and despite forming a projection has amenities beyond its traditional reach named after the heath. To its west is the core public green area that is the heath and Greenwich Park, in which sit major London tourist attractions including the Greenwich Observatory and the Greenwich Prime Meridian. Blackheath railway station is located in the southern part of Blackheath."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "blackheath",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2884,
+    "place_id": "gn-2510392",
+    "input": {
+      "place": {
+        "place_id": "gn-2510392",
+        "name": "Tomelloso",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 39.15759,
+        "lon": -3.02156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tomelloso",
+          "url": "https://en.wikipedia.org/wiki/Tomelloso",
+          "text": "Tomelloso (Spanish: [tomeˈʎoso] ) is a municipality located in the northeast of the province of Ciudad Real, within the autonomous community of Castile-La Mancha in Spain. Situated in the geographic center of the natural region of La Mancha and with a population of 36,304 (2023) it is the most populous municipality in the comarca and ranks as the eighth largest in Castilla-La Mancha.\nThe municipal territory is predominantly flat, except in the southeast, where the land gently rises to form the Campo de Montiel plateau. The area is characterized by extensive vineyards, with smaller areas dedicated to cereal crops, olive trees, pistachios, almond trees, and other irrigated crops. Tree coverage is sparse. The municipality is crossed only by the Córcoles and Záncara rivers (the latter forming the boundary with Pedro Muñoz), although several seasonal streambeds are evident during periods of heavy rainfall."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "tomelloso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2885,
+    "place_id": "gn-2662689",
+    "input": {
+      "place": {
+        "place_id": "gn-2662689",
+        "name": "Visby",
+        "country": "Sweden",
+        "subdivision": "Gotland",
+        "lat": 57.64089,
+        "lon": 18.29602
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Visby",
+          "url": "https://en.wikipedia.org/wiki/Visby",
+          "text": "Visby (Swedish: [ˈvǐːsbʏ] ) is an urban area in Sweden and the seat of Gotland Municipality in Gotland County on the island of Gotland with 24,330 inhabitants as of 2017. Visby is also the episcopal see for the Diocese of Visby. The Hanseatic city of Visby is one of the best-preserved medieval cities in Scandinavia, and, since 1995, it has been on the UNESCO World Heritage Site list. Among the most notable historical remains are the 3.4 km (2.1 mi) long town wall that encircles the town center, and a number of church ruins and its small decorative alleyways. The decline as a Hanseatic city in the Late Middle Ages was the cause for many stone houses being preserved in their original medieval style.\nVisby is a popular vacation destination for Scandinavians during the summer and receives thousands of tourists every year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "visby",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2888,
+    "place_id": "gn-2973675",
+    "input": {
+      "place": {
+        "place_id": "gn-2973675",
+        "name": "Suresnes",
+        "country": "France",
+        "subdivision": "Île-de-France",
+        "lat": 48.87143,
+        "lon": 2.22929
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suresnes",
+          "url": "https://en.wikipedia.org/wiki/Suresnes",
+          "text": "Suresnes (French pronunciation: [syʁɛn] ) is a commune in Hauts-de-Seine, in the western inner suburbs of Paris, located 9.3 km (5.8 mi) from the centre of Paris. As of 2023, the population of the commune was 48,956.\nSuresnes borders the Bois de Boulogne in the 16th arrondissement of Paris, across the Seine. Its neighbouring communes are Nanterre, Puteaux, Rueil-Malmaison and Saint-Cloud. Suresnes's landmarks include the Mémorial de la France combattante, where an annual ceremony is held on 18 June, as well as Suresnes American Cemetery and Memorial nearby, below Fort Mont-Valérien, in addition to Foch Hospital in the town centre.\nThe commune is served by Suresnes–Mont-Valérien station on the Transilien network and by two stops on Île-de-France tramway Line 2, all three giving access to the La Défense business district and its RER A, RER E and Paris Métro Line 1 services."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "suresnes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2919,
+    "place_id": "gn-2994497",
+    "input": {
+      "place": {
+        "place_id": "gn-2994497",
+        "name": "Menton",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.77649,
+        "lon": 7.50435
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Menton",
+          "url": "https://en.wikipedia.org/wiki/Menton",
+          "text": "Menton (French: [mɑ̃tɔ̃]; Occitan: Menton in classical norm or Mentan in Mistralian norm, pronounced [menˈta], locally [mɛ(n)ˈtã]; Italian: Mentone [menˈtoːne]; Ligurian: Menton or Mentun depending on the orthography) is a resort town and commune in the Alpes-Maritimes department in the Provence-Alpes-Côte d'Azur region on the French Riviera, close to the Italian border. \nMenton has always been a frontier town. Since the end of the 14th century, it has been on the border between the County of Nice, held by the Duke of Savoy, and the Republic of Genoa. It was an exclave of the Principality of Monaco until the disputed French plebiscite of 1860 when it was added to France. It had been always a fashionable tourist centre with grand mansions and gardens. Its temperate Mediterranean climate is especially favourable to the citrus industry, with which it is strongly identified."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "menton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2921,
+    "place_id": "gn-3582883",
+    "input": {
+      "place": {
+        "place_id": "gn-3582883",
+        "name": "Usulután",
+        "country": "El Salvador",
+        "subdivision": "Usulutan",
+        "lat": 13.34467,
+        "lon": -88.43994
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Usulután",
+          "url": "https://en.wikipedia.org/wiki/Usulután",
+          "text": "Usulután (Spanish pronunciation: [usuluˈtan]) is the fifth largest city in El Salvador, and capital of the Usulután Department in the south-east of El Salvador.\nAs of 2006, it is estimated to have population of 71,636 people. Usulután rests in a rich agricultural valley and has very high and humid temperatures most of the year as it is located close to the Pacific Ocean. The city was badly damaged by the Salvadorian earthquakes of February 2001, in addition to Hurricane Mitch in 1998.\nThe main Catholic Church of the town is located in a park area next to the Town Hall (Alcaldia) and next to the Cine Centenario (a cinema) which are roughly located at the center of the town. Recently, Usulután has modernized considerably, having more influence from brand names and eateries that were not available there in the past."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "usulutan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2923,
+    "place_id": "gn-3922414",
+    "input": {
+      "place": {
+        "place_id": "gn-3922414",
+        "name": "Camiri",
+        "country": "Bolivia",
+        "subdivision": "Santa Cruz Department",
+        "lat": -20.04063,
+        "lon": -63.52396
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Camiri",
+          "url": "https://en.wikipedia.org/wiki/Camiri",
+          "text": "Camiri (Camirito, La Bomba, Choreti, Capital Petrolera de Bolivia) is  a city in Bolivia, Santa Cruz Department, Cordillera Province. It is the seat of the Camiri Municipality. The town has an estimated population of 65,897 inhabitants, also known as \"Camireños.\"  Camiri is on the banks of the Parapeti River in a small valley surrounded by rolling hills on the east, north, and south, and by the Aguarague mountain range on the west.\nCamiri's Chaco ecosystem encompasses subtropical dry forests with low canopy, and intense xerophilic overgrowth with a large diversity of wildlife.\nOn February 3, 2007, local protesters shut down a natural gas pipeline in Camiri that serves southern Bolivia. The protesters were seeking an expansion of the nationalization of the natural gas industry and a renewal of the promise of construction of facilities for YPFB, the national petroleum company."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "camiri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2927,
+    "place_id": "gn-5139301",
+    "input": {
+      "place": {
+        "place_id": "gn-5139301",
+        "name": "Spring Valley",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.11315,
+        "lon": -74.04375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spring Valley, New York",
+          "url": "https://en.wikipedia.org/wiki/Spring_Valley,_New_York",
+          "text": "Spring Valley is a  village in the town of Ramapo and Clarkstown in Rockland County, New York, United States. It is located north of Chestnut Ridge, east of Airmont and Monsey, south of Hillcrest, and west of Nanuet. The population was 33,066 at the 2020 census, making it the second most populous community in both Clarkstown and Rockland County, after New City.\nSpring Valley spans the border of two towns, occupying an eastern portion of the town of Ramapo and a small western portion of the town of Clarkstown. The village is next to the New York State Thruway (Interstate 87) and is served by a New Jersey Transit train station at the terminus of the Pascack Valley Line.\nSpring Valley is 22 miles (35 km) north of Manhattan and 5 miles (8 km) north of the New Jersey border."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "spring valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spring",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2937,
+    "place_id": "gn-3434674",
+    "input": {
+      "place": {
+        "place_id": "gn-3434674",
+        "name": "Eldorado",
+        "country": "Argentina",
+        "subdivision": "Misiones",
+        "lat": -26.40453,
+        "lon": -54.61847
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eldorado, Misiones",
+          "url": "https://en.wikipedia.org/wiki/Eldorado,_Misiones",
+          "text": "Eldorado is a city in the center-northeast of the province of Misiones, Argentina. It has 54,189 inhabitants as per the 2001 census [INDEC], making it the third most populated city in the province. It is the head town of the Eldorado Department. It is located on the left-hand (eastern) banks of the Upper Paraná River, on National Route 12, about 100km from the Iguazú Falls and 206km from the provincial capital Posadas, on the Argentina-Paraguay border.\nEldorado was founded on 29 September 1919 as a rural settlement and a port on the Paraná by German-born Adolfo Julius Schwelm, naturalised British subject, who named it as a reference to the legend of El Dorado. The town was the center of the European immigrant colonization of the area (which included groups of people from Germany, Switzerland, Poland, Denmark, England, and others)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "eldorado",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

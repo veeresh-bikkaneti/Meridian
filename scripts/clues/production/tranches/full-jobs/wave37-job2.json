@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 7271,
+    "attempt": 7221,
+    "place_id": "gn-5991370",
+    "input": {
+      "place": {
+        "place_id": "gn-5991370",
+        "name": "Keswick",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.25011,
+        "lon": -79.46632
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Keswick, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Keswick,_Ontario",
+          "text": "Keswick () is a community located in the Canadian province of Ontario. It is located 72km (45mi) from Downtown Toronto and is the northernmost municipality inside of York Region. Situated on Lake Simcoe, there are boat ramps and  water access points in the area. As of the 2016 Census, the municipal population of Keswick was 26,757, however growth rates have increased in recent years due to relatively low housing costs, especially when comparing rates across the GTHA. The cost of living is 14% less than the provincial average.\nRoches Point (44°16′19″N 79°29′59″W) is a small residential community on the shore of Lake Simcoe in Keswick."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "keswick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7272,
+    "attempt": 7222,
+    "place_id": "gn-6317665",
+    "input": {
+      "place": {
+        "place_id": "gn-6317665",
+        "name": "Mundo Novo",
+        "country": "Brazil",
+        "subdivision": "Goiás",
+        "lat": -13.77611,
+        "lon": -50.28111
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mundo Novo, Goiás",
+          "url": "https://en.wikipedia.org/wiki/Mundo_Novo,_Goiás",
+          "text": "Mundo Novo is a municipality in northeastern Goiás state, Brazil. \nMundo Novo is located in the São Miguel do Araguaia Microregion in the extreme north-west of the state.  It is cut by the Rio Palmital, which flows north into the Araguaia River.  It has road connections with São Miguel—72 kilometers to the north, Nova Crixás—42 kilometers to the south, and Uirapuru—67 kilometers to the southeast.\nThe distance to the state capital, Goiânia, is 429 km.  Highway connections are made by GO-070 / Goianira / Inhumas  / Itaberaí / BR-070 / Goiás / GO-164 / Faina / Araguapaz / Nova Crixás / GO-156 for 42 km.\nNeighboring municipalities are:\n\nnorth:  São Miguel do Araguaia\neast:  Amaralina\nsouth and west:  Nova Crixás\nThere are several rivers:  Rio Palmital, Rio Crixás, and Rio Crixás Mirim, all of them tributaries of the Araguaia River\nNovo Mundo began in 1960 on the Nossa Senora Aparecida Ranch owned by Valentim Lourenço, from São Paulo.  In 1963 Lourenço divided lots to create a settlement called \"Mundo Novo\".  In 1968 it became a district of Crixás, and was dismembered in 1980.\nIn January 2005 the Mayor was Maria Beatriz Alves Azambuja and the Vice-mayor was Carlos Osário Lacerda.  The city council had 9 members and in 2007 there were 4,692 eligible voters.\nIn 2007 the population density was 3.20 inhabitants/km2.  The urban population was 3,974 and the rural population was 2,903.  The population grew quickly from 1991 until 2006.  Between 1996 and 2007 the geometric population growth rate was 1.99.%.\nThe economy is based on cattle raising, agriculture, services, government employment, wood extraction, and modest transformation industries.  In 2007 there were 5 industrial establishments and 59 retail establishments.  There was one financial institution: BRADESCO S.A.  The sectors employing most of the workers (2005) were: public administration with 198 salaried workers, commerce with 106 workers, and agriculture and forestry with 53 workers.  In 2007 there were 218 automobiles.\nIn 2007 there were 187,030 head of cattle.  Poultry and swine production was on a minor scale.  In 2006 the main agricultural products were pineapple, squash, cotton, rice, sugarcane, sesame, manioc, watermelon, and corn.  Only corn had a planted area of over 500 hectares, with 900 hectares.\n\nFarms: 744\nPermanent Planted Area: 889 hectares\nPerennial Planted Area: 16,876 hectares\nNatural Pasture: 100,845 hectares\nWoodland and Forest: 30,752 hectares\nWorkers related to the farm owner: 2,029\nWorkers not related to the farm owner: 431\nFarms with tractors: 65\nTractors: 110 (IBGE 2006)\nIn 2007 there was 1 hospital with 20 beds and 2 walk-in health clinics.  The infant mortality rate was 31.85, higher than the national average of 35.0 in the same year.  In 2006 the school system had 6 schools, 42 classrooms, 79 teachers, and 2,240 students.  There was 1 public middle school and no institutions of higher learning.  The adult literacy rate was 81.1%, lower than the national rate of 86.4%.\nMundo Novo is in an isolated and impoverished region of the state.  It ranks 0.692 on the 2000 United Nations Human Development Index and is 216 out of 242 municipalities in the state and 3,118 out of 5,507 in the country.  On the Seplan Economic Development Index (2001) the ranking was 167 out of 246 municipalities (2001). See Seplan and on the Seplan Social Development Index (2000) the ranking was 91 out of 246 municipalities (2000)  See Seplan"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 559
+    },
+    "banned_terms": [
+      {
+        "term": "mundo novo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mundo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "novo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7273,
+    "attempt": 7223,
+    "place_id": "gn-636242",
+    "input": {
+      "place": {
+        "place_id": "gn-636242",
+        "name": "Sörnäinen",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.18643,
+        "lon": 24.96506
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sörnäinen",
+          "url": "https://en.wikipedia.org/wiki/Sörnäinen",
+          "text": "Sörnäinen (Swedish: Sörnäs; Sörkkä or Sörkka in Helsinki slang) is a neighbourhood in the city of Helsinki, Finland.\nSörnäinen is located a little more than one kilometre north from the coastal centre of Helsinki, near the district of Hakaniemi. The east side of Sörnäinen borders the sea.\nSörnäinen used to be primarily an industrial district with many shipping companies and warehouses, however, nowadays it is a thriving urban area divided into four districts: Vilhonvuori, Kalasatama, Sompasaari and Hanasaari. It also has two metro stations: Sörnäinen metro station and Kalasatama metro station in the Kalasatama quarter.\nThe headquarters of Senate Properties (Senaatti-kiinteistöt) is located in Sörnäinen. Also the Helsinki Prison is located there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 112
+    },
+    "banned_terms": [
+      {
+        "term": "sornainen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7274,
+    "attempt": 7224,
+    "place_id": "gn-6615537",
+    "input": {
+      "place": {
+        "place_id": "gn-6615537",
+        "name": "Carnoux-en-Provence",
+        "country": "France",
+        "subdivision": "Provence-Alpes-Côte d'Azur",
+        "lat": 43.25639,
+        "lon": 5.56444
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carnoux-en-Provence",
+          "url": "https://en.wikipedia.org/wiki/Carnoux-en-Provence",
+          "text": "Carnoux-en-Provence (French pronunciation: [kaʁnu ɑ̃ pʁɔvɑ̃s]; Occitan: Carnós de Provença), commonly referred to simply as Carnoux, is a commune in the Bouches-du-Rhône department in the Provence-Alpes-Côte d'Azur region in Southern France. It was created in 1966 from the commune of Roquefort-la-Bédoule.\nCarnoux-de-Provence is located 16.3 km (10.3 mi) to the east-southeast of Marseille. Camp de Carpiagne, the garrison for the 1st Foreign Cavalry Regiment and formerly 1st-11th Cuirassier armoured (tank) regiment of the French Army, is found in the town's western part, as well as with territory in the 9th arrondissement of Marseille, Aubagne and Cassis, north of the renowned road from Marseille to Cassis."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "carnoux en provence",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "carnoux",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "en",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "provence",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7275,
+    "attempt": 7225,
+    "place_id": "gn-662095",
+    "input": {
+      "place": {
+        "place_id": "gn-662095",
+        "name": "Äänekoski",
+        "country": "Finland",
+        "subdivision": "Central Finland",
+        "lat": 62.6,
+        "lon": 25.73333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Äänekoski",
+          "url": "https://en.wikipedia.org/wiki/Äänekoski",
+          "text": "Äänekoski (Finnish pronunciation: [ˈæːneˌkːoski]) is a town in Finland, located in the Central Finland region, about 45 kilometres (28 mi) north of Jyväskylä, the region's capital city. Äänekoski has a population of 17,492, as of 31 December 2025, and covers an area of 1,138.39 square kilometres (439.53 sq mi) of which 253.84 km2 (98.01 sq mi), or 22%, is water. The population density is 19.77 inhabitants per square kilometre (51.2/sq mi).\nNeighbouring municipalities are Kannonkoski, Konnevesi, Laukaa, Saarijärvi, Uurainen, Vesanto and Viitasaari.\nThe municipality is unilingually Finnish.\nThe municipality of Äänekosken maalaiskunta was consolidated to Äänekoski in 1969 and the municipality of Konginkangas in 1993. The municipalities of Sumiainen and Suolahti were consolidated to Äänekoski in 2007."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "aanekoski",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7276,
+    "attempt": 7226,
+    "place_id": "gn-667757",
+    "input": {
+      "place": {
+        "place_id": "gn-667757",
+        "name": "Săveni",
+        "country": "Romania",
+        "subdivision": "Botoșani County",
+        "lat": 47.95,
+        "lon": 26.86667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Săveni",
+          "url": "https://en.wikipedia.org/wiki/Săveni",
+          "text": "Săveni is a small town located in Botoșani County in the Western Moldavia region in northeastern Romania. The town administers five villages: Bodeasa, Bozieni, Chișcăreni, Petricani, and Sat Nou.\nNear Săveni, at 47°56′2.27″N 26°50′19.58″E, there is a 210 metres (690 feet) tall guyed mast for FM-/TV-broadcasting. The town features two Orthodox churches, the Saint Nicholas Church and the Saint George Church.\nThe town's main educational centers are the \"Școala Gimnazială Nr.1 Săveni\" elementary and middle school, with an old decrepit building from the early 1900' which functioned as a Jewish school, and the \"Liceul Teoretic Dr. Mihai Ciucă\", which is an elementary and high school.\nThe \"Spitalul Orășenesc Săveni\" is the local hospital. The old cinema \"Patria\" was recently rehabilitated with funds and has become a modern \"Casă de Cultură\". There is an archaeology museum located in the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "saveni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7277,
+    "attempt": 7227,
+    "place_id": "gn-7249307",
+    "input": {
+      "place": {
+        "place_id": "gn-7249307",
+        "name": "Saddlebrooke",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 32.53945,
+        "lon": -110.90057
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saddlebrooke, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Saddlebrooke,_Arizona",
+          "text": "Saddlebrooke is a census-designated place (CDP) and retirement community in Pinal County, Arizona, United States. The population was 12,574 at the United States 2020 Census\nThere are two communities managed by homeowner associations within the retirement development; SaddleBrooke One, and SaddleBrooke Two, the latter includes the Preserve subdivision. Eagle Crest is a smaller all age subdivision that is part of the SaddleBrooke (CDP).\nSaddleBrooke, Arizona is located just north of Oro Valley, AZ. and close to Tucson AZ . The 3400 ft elevation in the foothills results in cooler year round temperatures compared to many other Arizona locations. In the foothills of the Catalina Mountains. It has rolling and changing in topography and elevation changes"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "saddlebrooke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7278,
+    "attempt": 7228,
+    "place_id": "gn-7538520",
+    "input": {
+      "place": {
+        "place_id": "gn-7538520",
+        "name": "Rocinha",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.98887,
+        "lon": -43.24934
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rocinha",
+          "url": "https://en.wikipedia.org/wiki/Rocinha",
+          "text": "Rocinha (Portuguese pronunciation: [ʁɔˈsĩɲɐ], lit. 'little farm') is a favela, located in Rio de Janeiro's South Zone between the districts of São Conrado and Gávea. Rocinha is built on a steep hillside overlooking Rio de Janeiro and is located about one kilometre (0.62 mi) from a nearby beach. Most of the favela is on a very steep hill, with many trees surrounding it. Around 72,000 people live in Rocinha, making it the most populous favela in Rio de Janeiro.\nAlthough Rocinha is officially categorized as a neighbourhood, many still refer to it as a favela. It developed from a shanty town into an urbanized slum. Today, almost all the houses in Rocinha are made of concrete and brick. Some buildings are three and four storeys tall, and almost all houses have basic plumbing and electricity.  Compared to simple shanty towns or slums, Rocinha has a better developed infrastructure and hundreds of businesses such as banks, medicine stores, bus routes, cable television, including locally based channel TV ROC TV Rocinha, and, at one time, a McDonald's franchise.  These factors help classify Rocinha as a favela bairro, or favela neighborhood."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "rocinha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7279,
+    "attempt": 7229,
+    "place_id": "gn-753895",
+    "input": {
+      "place": {
+        "place_id": "gn-753895",
+        "name": "Zambrów",
+        "country": "Poland",
+        "subdivision": "Podlasie",
+        "lat": 52.9855,
+        "lon": 22.24319
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zambrów",
+          "url": "https://en.wikipedia.org/wiki/Zambrów",
+          "text": "Zambrów [ˈzambruf]  is a town in northeastern Poland with 21,166 inhabitants (2020). It is the capital of Zambrów County in the Podlaskie Voivodeship. It is situated on the Jabłonka River.\nFounded in the Middle Ages, Zambrów is a former royal town of Poland, which prospered as a center of trade and brewing. Before World War II, it was the location of a Polish military school, and until the mid-20th century, it was a garrison town of the Polish Army. It was a place of Nazi German-perpetrated atrocities against prisoners-of-war and civilians during the German occupation of Poland in World War II with over 1,500 victims. It is located on the Route of the Heroes of the Battle of Warsaw 1920, the main highway connecting Białystok with Warsaw, Łódź and Wrocław."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "zambrow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7280,
+    "attempt": 7230,
+    "place_id": "gn-766332",
+    "input": {
+      "place": {
+        "place_id": "gn-766332",
+        "name": "Leżajsk",
+        "country": "Poland",
+        "subdivision": "Subcarpathia",
+        "lat": 50.26257,
+        "lon": 22.41932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leżajsk",
+          "url": "https://en.wikipedia.org/wiki/Leżajsk",
+          "text": "Leżajsk, officially the Free Royal City of Leżajsk, is a town in southeastern Poland with 13,871 inhabitants. Since 1999, it has been situated in the Subcarpathian Voivodeship and is the capital of Leżajsk County.\nLeżajsk is famed for its Bernadine basilica and monastery, built by the architect Antonio Pellacini. The basilica contains a highly regarded pipe organ from the second half of the 17th century and organ recitals take place there. It stands as one of Poland's official national Historic Monuments (Pomnik historii), as designated April 20, 2005, and tracked by the National Heritage Board of Poland. Leżajsk is also home of the Leżajsk brewery. The town is crossed by a forest creek Jagoda."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "lezajsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7281,
+    "attempt": 7231,
+    "place_id": "gn-8310731",
+    "input": {
+      "place": {
+        "place_id": "gn-8310731",
+        "name": "Lennox Head",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -28.79131,
+        "lon": 153.59201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lennox Head, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Lennox_Head,_New_South_Wales",
+          "text": "Lennox Head is a seaside village in the Northern Rivers region of New South Wales, Australia, situated on the stretch of coast between Byron Bay and Ballina in Ballina Shire local government area. It had a population of 7,741 in the 2016 Australian census.\nIt is on the lands of the Bundjalung people, who are the traditional owners of this region.\nCaptain Henry John Rous, on the survey ship Rainbow, named Lennox Head after his friend, Charles Gordon-Lennox, 5th Duke of Richmond in 1828. From 1842, freed convicts who now worked as loggers, formed small colonies in the area which would eventually become the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "lennox head",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lennox",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "head",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7282,
+    "attempt": 7232,
+    "place_id": "gn-933534",
+    "input": {
+      "place": {
+        "place_id": "gn-933534",
+        "name": "Letlhakeng",
+        "country": "Botswana",
+        "subdivision": "Kweneng",
+        "lat": -24.09442,
+        "lon": 25.02977
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Letlhakeng",
+          "url": "https://en.wikipedia.org/wiki/Letlhakeng",
+          "text": "Letlhakeng or Lethakeng is an urban village in Kweneng District of Botswana. The village is located 75 km north-west of Molepolole. The population of Letlhakeng was 7,229 in the 2011 census.\nThe majority of the people of Letlhakeng are considered part of the Bakwena tribe, which is administered from the kgotla in Molepolole. However, aside from the Bakwena version of standard Setswana (known as Se-kwena), many people speak a version of Se-Kgalagadi - a language distinct from but related to Setswana.\nLetlhakeng houses a secondary school (Mphuthe Community Secondary) which moved into new buildings in 2008 following relocation from a previous site prone to subsidence. A clinic serves the community as well as three primary schools and a number of local government offices. Until 2005, the tarred roads ended at the village centre and onward journeys were seasonally interrupted due to the gravel or sand roads. However, it is now possible to travel to most neighbouring villages without difficulty following a major road building programme.\nThere are three schools in Letlhakeng being;\n\nLetlhakeng Primary School\nGothibamang Primary School\nMphuthe Junior Secondary School\nOne of the major roads in the village is named after Bishop Frank Keikanetswe, the founder of the Seventh-day Adventist Church in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 206
+    },
+    "banned_terms": [
+      {
+        "term": "letlhakeng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7283,
+    "attempt": 7233,
+    "place_id": "gn-9972720",
+    "input": {
+      "place": {
+        "place_id": "gn-9972720",
+        "name": "Pammal",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 12.975,
+        "lon": 80.13472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pammal",
+          "url": "https://en.wikipedia.org/wiki/Pammal",
+          "text": "Pammal is a southern suburb in Chennai, Tamil Nadu, India.\nThe neighborhood is around 22 kilometers from Chennai Central Railway Station, in proximity to Pallavaram on the western side of the Grand Southern Trunk Road (GST Road) close to Chennai International Airport.  The neighborhood is served by Pallavaram Railway Station of the Chennai Suburban Railway Network. Formerly a Municipality, Pammal was merged to Tambaram City Municipal Corporation in 2021.\nPallavaram–Thuraipakkam 200-feet Radial Road connects Pammal with Thuraipakkam and other areas in OMR (Rajiv Gandhi Salai) and ECR (East Coast Road). The service road along the Chennai Bypass Flyover in Pammal connects many areas with Pammal. The Chennai Outer Ring Road is 5 km from Pammal. Tambaram Railway Station Terminal is 7 kilometers and is a halt for express trains and 12 km from Poonamallee.\nLeather and tannery factories are present in and around Pammal, which are labour-intensive and employ many people. Pammal Sambandha Mudaliar, the father of modern Tamil theatre, was born in Pammal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "pammal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7284,
+    "attempt": 7234,
+    "place_id": "gn-1057681",
+    "input": {
+      "place": {
+        "place_id": "gn-1057681",
+        "name": "Sadjoavato",
+        "country": "Madagascar",
+        "subdivision": "Diana",
+        "lat": -12.61667,
+        "lon": 49.35
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sadjoavato",
+          "url": "https://en.wikipedia.org/wiki/Sadjoavato",
+          "text": "Sadjoavato is a town and commune (Malagasy: kaominina) in Madagascar. It belongs to the district of Antsiranana II in the Diana Region.\nIt is  situated between Antsiranana and Ambilombe on the National Road No.6 at a distance of approx. 51 km from Antsiranana\nIts name means \"Stonejug\" (Sadjoa = jug; vato = stone) and is derived from a legend of the presence of an invisible jug made from natural stone that is only visible if one makes it to throw a coin or a stone inside. \nAccording to 2009 commune census the population of Sadjoavato was 6,705.\nOnly primary schooling is available in town. The town provides access to hospital services to its citizens. The majority 98% of the population are farmers, while an additional 1.5% receives their livelihood from raising livestock. The most important crop is maize, while other important products are cassava and rice.  Services provide employment for 0.5% of the population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "sadjoavato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7285,
+    "attempt": 7235,
+    "place_id": "gn-10987897",
+    "input": {
+      "place": {
+        "place_id": "gn-10987897",
+        "name": "Adachi",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.76318,
+        "lon": 139.80761
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Adachi, Tokyo",
+          "url": "https://en.wikipedia.org/wiki/Adachi,_Tokyo",
+          "text": "Adachi (足立区, Adachi-ku) is a special ward in the Tokyo Metropolis in Japan. It is located to the north of the heart of Tokyo. The ward consists of two separate areas: a small strip of land between the Sumida River and Arakawa River and a larger area north of the Arakawa River. The ward is bordered by the cities of Kawaguchi, Sōka and Yashio in Saitama and Katsushika, Sumida, Arakawa and Kita in Tokyo. The ward is called Adachi City in English.\nAs of May 1, 2015, the ward has an estimated population of 692,707 and a population density of 13,010 persons per km2. The total area is 53.25 km2.\nThe Adachi Land Transportation Office is located here, and automobiles registered at this office bear Adachi number plates."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "adachi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7286,
+    "attempt": 7236,
+    "place_id": "gn-11790353",
+    "input": {
+      "place": {
+        "place_id": "gn-11790353",
+        "name": "Shinjuku",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.69115,
+        "lon": 139.70854
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shinjuku",
+          "url": "https://en.wikipedia.org/wiki/Shinjuku",
+          "text": "Shinjuku (Japanese: 新宿区, Hepburn: Shinjuku-ku; IPA: [ɕiɲdʑɯkɯ] ), officially called Shinjuku City, is one of the 23 special wards of Tokyo.\nSince the end of World War II, Shinjuku has become a major secondary center of Tokyo (fukutoshin), rivaling the original city center in Marunouchi. Today, it is a major commercial and administrative center and houses the northern half of Shinjuku Station, the busiest railway station in the world, as well as the Tokyo Metropolitan Government Building, the administrative center of the Tokyo Metropolitan Government.\nAs of 2025, the ward has an estimated population of 355,981, living in a total area of 18.23 km2."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "shinjuku",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7287,
+    "attempt": 7237,
+    "place_id": "gn-11808021",
+    "input": {
+      "place": {
+        "place_id": "gn-11808021",
+        "name": "Shibuya",
+        "country": "Japan",
+        "subdivision": "Tokyo",
+        "lat": 35.6589,
+        "lon": 139.70665
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shibuya",
+          "url": "https://en.wikipedia.org/wiki/Shibuya",
+          "text": "Shibuya (渋谷区, Shibuya-ku; IPA: [ɕì.bɯ̈́.jä́, ɕì.bɯ̈́.jä́.kɯ̈̀] ) is a special ward in Tokyo, Japan. A major commercial center, Shibuya houses two of the busiest railway stations in the world, Shibuya Station and Shinjuku Station (southern half).\nAs of January 1, 2024, Shibuya Ward has an estimated population of 230,609 in 142,443 households and a population density of 15,262.01 people per square kilometer (39,528.4 people/mi2). The total area is 15.11 km2 (5.83 sq mi). Notable neighborhoods and districts of Shibuya include Harajuku, Ebisu, Omotesandō, Yoyogi and Sendagaya.\nShibuya came into the possession of the Shibuya clan in the early 1160s, after which the area was named. The branch of the clan that ruled this area was defeated by the Later Hōjō clan on January 13, 1524, during the Sengoku period, and the area then came under their control. During the Edo period, Shibuya, particularly Maruyamachō on Dōgenzaka, prospered as a town on Oyama Road (present-day Route 246), and in the Meiji era, as a Hanamachi. Shibuya emerged as a railway terminus during the expansion of the railway network beginning in the 19th century, and was incorporated as a ward in the City of Tokyo on October 1, 1932.\nShibuya, once a mediocre area developed around the railway terminus, overtook Shinjuku as a hub for youth culture in the 1970s. The coinciding competition between Seibu (whose most notable development projects include Shibuya Parco) and Tokyu (Tokyu Hands, Shibuya 109) to develop the area as a commercial center added to its appeal to young people, which in turn spread to other neighborhoods in the ward, such as Harajuku. Since 2010, the area surrounding Shibuya Station has been undergoing large-scale redevelopment, with the entire project scheduled for completion in fiscal year 2034 (April 2034 to March 2035).\nInternationally recognized tourist attractions include the Shibuya Crossing, known as the busiest pedestrian crossing in the world, the panoramic view of the city from the rooftop of Shibuya Scramble Square, and the statue of Hachikō."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 328
+    },
+    "banned_terms": [
+      {
+        "term": "shibuya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7288,
+    "attempt": 7238,
+    "place_id": "gn-1264792",
+    "input": {
+      "place": {
+        "place_id": "gn-1264792",
+        "name": "Londa",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 15.46907,
+        "lon": 74.51906
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Londa, Karnataka",
+          "url": "https://en.wikipedia.org/wiki/Londa,_Karnataka",
+          "text": "Londa is a census town in Belagavi district in the Indian state of Karnataka.The town is on border with state of Goa. The town is surrounded by lush evergreen forests known as Sahayadri or Western ghats of India. Londa is situated at the border of Belagavi district with Uttara Kannada district. Londa Junction railway station is located on the Belgaum - Goa and Goa to Dharwad railway route. Since it is a junction of two railway routes, Many tourists alight here to visit nearby forests of Kali Tiger Reserve. Londa is also connected by National Highway 748 connecting Goa to Belagavi via Anmod ghat. It is also connected to Uttara Kannada district headquarters Karwar by Karnataka state highway 34 (SH34)via Hankon, Kumbarwada, Anshi, Joida, Ganeshgudi and Ramnagar. Londa is connected by National highway 67 (NH 67) coming from Hubballi and Dharwar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "londa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7289,
+    "attempt": 7239,
+    "place_id": "gn-13118651",
+    "input": {
+      "place": {
+        "place_id": "gn-13118651",
+        "name": "Dlhé diely",
+        "country": "Slovakia",
+        "subdivision": "Bratislava Region",
+        "lat": 48.15454,
+        "lon": 17.04607
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dlhé diely",
+          "url": "https://en.wikipedia.org/wiki/Dlhé_diely",
+          "text": "Dlhé diely is a neighborhood of Bratislava, the capital of Slovakia, part of the Karlova Ves borough in the Bratislava IV district. It is one of the newest residential quarters of the city. It is situated at the foothills of the Little Carpathians overlooking the river Danube, offering extensive views over Bratislava and Austria. Buildings in this part of the city are almost exclusively blocks of flats, most of them relatively new. Formerly consisting of vineyards, woods and meadows next to Karlova Ves proper, a residential area planned for 12,000 people emreged in the 1980s and 1990s. Today, Dlhé diely  houses around 30,000 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "dlhe diely",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dlhe",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "diely",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7290,
+    "attempt": 7240,
+    "place_id": "gn-197768",
+    "input": {
+      "place": {
+        "place_id": "gn-197768",
+        "name": "Garba Tula",
+        "country": "Kenya",
+        "subdivision": "Isiolo County",
+        "lat": 0.53392,
+        "lon": 38.51878
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Garba Tula",
+          "url": "https://en.wikipedia.org/wiki/Garba_Tula",
+          "text": "Garba Tula (also spelled Garbatulla) and popularly nicknamed by the locals El Borte (meaning Bitter Well, probably due to its salty water) is a town in Isiolo County, Northern Kenya. The town has an urban population of about 5,500.\nIn 2007 it was up-graded to a District status. But with the new administrative sub-divisions of Kenya, Garba Tula is a sub-county of Isiolo County, as well as an administrative ward.\nAs the name suggests, Garbatulla is mainly a Borana inhabited town in Isiolo County, Kenya. In the 1940s Garba Tulla was a very small village and only had three shops on the main road.  Mr. Joseph Onyango became the first District Commissioner on 17 November 2007. The town has been known for its famous National School run by NCCK.\nGarba Tula is located 120 km East of Isiolo town. The urban center of Mado Gashi is located about 100 km North East of Garba Tula. It is about 90 km to Maua town via Kinna, up to which the road is an all-weather one, and then tarmac which starts right at the gates of Meru National Park which is about 60 km away from Garba Tula town and about 14 km from Kinna town.  The locals of the town are the Borana people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 104,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "garba tula",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "garba",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "tula",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

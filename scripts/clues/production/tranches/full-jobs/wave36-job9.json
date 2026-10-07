@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 7211,
+    "attempt": 7161,
+    "place_id": "gn-13118419",
+    "input": {
+      "place": {
+        "place_id": "gn-13118419",
+        "name": "Umm Al Sheif",
+        "country": "United Arab Emirates",
+        "subdivision": "Dubai",
+        "lat": 25.13227,
+        "lon": 55.20567
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Umm Al Sheif",
+          "url": "https://en.wikipedia.org/wiki/Umm_Al_Sheif",
+          "text": "Umm Al Sheif (Arabic: أم الشيف) is a locality in Dubai, United Arab Emirates (UAE). Umm Al Sheif is a small, residential locality in western Dubai. It is bordered to the north by Umm Suqeim, the northeast by Al Manara, the south by Al Barsha and Al Quoz and the west by Al Sufouh. It is bounded to the north by route D 92 (Al Wasl Road) and to the south by route E 11 (Sheikh Zayed Road). A local road (Al Thaniya Road) separates Umm Al Sheif from Al Manara.\nUmm Al Sheif is a developing, affluent residential community with villas and town houses. The local road system primarily conforms to the grid plan, however, residential communities are divided typically into lots. Even-numbered roads run northeast–southwest, while odd-numbered roads sun northwest–southeast. The Emirates International School is located in Umm Al Sheif.\nUmm Al Sheif is around a 15-minute drive from Burj khalifa, and around same distance from Palm Jumeirah Island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "umm al sheif",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "umm",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sheif",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7212,
+    "attempt": 7162,
+    "place_id": "gn-1696234",
+    "input": {
+      "place": {
+        "place_id": "gn-1696234",
+        "name": "Palapag",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 12.5458,
+        "lon": 125.1147
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palapag",
+          "url": "https://en.wikipedia.org/wiki/Palapag",
+          "text": "Palapag, officially the Municipality of Palapag (Waray: Bungto san Palapag; Tagalog: Bayan ng Palapag), is a coastal municipality in the province of Northern Samar, Philippines. According to the 2024 census, it has a population of 34,954 people.\nSituated on the northeastern tip of Samar Island facing the Pacific Ocean, Palapag is bordered by Laoang to the west, Mapanas to the southeast, Catubig to the south, and the Philippine Sea to the north and east. Historically, its strategic position near Cape Espiritu Santo and the San Bernardino Strait made it a pivotal mission center and a vital royal port of refuge for the Manila-Acapulco galleon trade."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "palapag",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7213,
+    "attempt": 7163,
+    "place_id": "gn-198636",
+    "input": {
+      "place": {
+        "place_id": "gn-198636",
+        "name": "Eldama Ravine",
+        "country": "Kenya",
+        "subdivision": "Baringo",
+        "lat": 0.05196,
+        "lon": 35.72734
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eldama Ravine",
+          "url": "https://en.wikipedia.org/wiki/Eldama_Ravine",
+          "text": "Eldama Ravine (sometimes known by the short form E/Ravine) is a town in Baringo County, Kenya, a few miles north of the equator, geographical coordinates 0° 30' 0\" North, 35° 43' 0\" East. It was established as an administrative point by British colonialists and later served as a transit route for lumber harvested from surrounding forests.\nIt was previously the headquarters of the former Koibatek District and Eldama Ravine Constituency.\nIt has a population of 45,799 (2009 census). It is largely an agricultural trade point producing world popular commercial rose flowers. It is fairly cosmopolitan, having residents from more than half of Kenya's ethnic tribes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "eldama ravine",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "eldama",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ravine",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7214,
+    "attempt": 7164,
+    "place_id": "gn-2151146",
+    "input": {
+      "place": {
+        "place_id": "gn-2151146",
+        "name": "Rosanna",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.73895,
+        "lon": 145.06735
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rosanna, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Rosanna,_Victoria",
+          "text": "Rosanna is a north-eastern suburb of Melbourne, Victoria, Australia, 12 km north-east from Melbourne's city centre, located within the City of Banyule local government area. Rosanna recorded a population of 8,616 at the 2021 census.\nRosanna is on the fringe of the Yarra Valley green belt. According to \"Liveable Melbourne\", a report published by The Age in 2019, Rosanna was ranked as Melbourne's 99th-most-liveable of 307 suburbs. The suburb was described as, \"Rosanna, located 12 kilometres north-east of the CBD, is very accessible by bus and has decent access to trains. Among other strengths are the low crime and generous tree cover across hilly streets\".\nRosanna has a recently-updated train station and while it does not have its own secondary schools, the suburb is zoned for a number of nearby public secondary schools."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "rosanna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7215,
+    "attempt": 7165,
+    "place_id": "gn-2152339",
+    "input": {
+      "place": {
+        "place_id": "gn-2152339",
+        "name": "Pyrmont",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.86985,
+        "lon": 151.19402
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pyrmont, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Pyrmont,_New_South_Wales",
+          "text": "Pyrmont () is an inner-city suburb of Sydney, in the state of New South Wales, Australia 2 kilometres south-west of the Sydney central business district in the local government area of the City of Sydney. It is also part of the Darling Harbour region.\nAboriginal culture\nBefore European settlement the Eora tribe of Indigenous Australians inhabited the area. Their Aboriginal name for this area was 'Pirrama', which is still the name of a road on the Pyrmont waterfront.\nPyrmont was once a vital component of Sydney's industrial waterfront, with wharves, shipbuilding yards, factories and woolstores. As industry moved out, the population and the area declined. In recent years it has experienced redevelopment with an influx of residents and office workers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "pyrmont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7216,
+    "attempt": 7166,
+    "place_id": "gn-2172311",
+    "input": {
+      "place": {
+        "place_id": "gn-2172311",
+        "name": "Caringbah",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -34.03534,
+        "lon": 151.12468
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caringbah",
+          "url": "https://en.wikipedia.org/wiki/Caringbah",
+          "text": "Caringbah is a suburb in Southern Sydney, in the state of New South Wales, Australia. Caringbah is 24 kilometres (15 mi) south of the Sydney central business district in the local government area of Sutherland Shire.\nCaringbah once stretched from Woolooware Bay on the Georges River to Yowie Bay and Burraneer Bay on the Port Hacking estuary. A number of Caringbah localities have been declared as separate suburbs but still share the postcode 2229. These suburbs include Taren Point to the north on the Georges River, and Port Hacking, Lilli Pilli, Dolans Bay and Caringbah South, located on the Port Hacking River to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "caringbah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7217,
+    "attempt": 7167,
+    "place_id": "gn-2198365",
+    "input": {
+      "place": {
+        "place_id": "gn-2198365",
+        "name": "Sigatoka",
+        "country": "Fiji",
+        "subdivision": "Western",
+        "lat": -18.14307,
+        "lon": 177.50691
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sigatoka",
+          "url": "https://en.wikipedia.org/wiki/Sigatoka",
+          "text": "Sigatoka (Fijian pronunciation: [siŋatoka] , Fiji Hindi: सिन्गातोका) is a town in Fiji. It is on the island of Viti Levu at the mouth of the Sigatoka River, for which it is named, some 61 kilometres from Nadi. Its population at the 2017 census was 17,622. It is the principal urban centre for the province of Nadroga-Navosa.\nAn ornate temple, open to public and built by Hare Krishna devotees, dominates the Sigatoka skyline. Major tourist attractions include the Sigatoka Sand Dunes near Kulukulu village, two kilometres northwest of Sigatoka; and the Kula Eco Park, with some 500 birds of 100 species from many tropical countries. The town is also the principal centre for Fiji's coastal tourism belt—the Coral Coast—which has many of the country's leading hotels and resorts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "sigatoka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7218,
+    "attempt": 7168,
+    "place_id": "gn-2520052",
+    "input": {
+      "place": {
+        "place_id": "gn-2520052",
+        "name": "Cartaya",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 37.28114,
+        "lon": -7.15071
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cartaya",
+          "url": "https://en.wikipedia.org/wiki/Cartaya",
+          "text": "Cartaya is a Spanish locality and municipality in the Province of Huelva, (autonomous community of Andalusia). According to the 2025 municipal register, it has a population of 21,741 inhabitants. Its surface area is 226.4 km2 and has a density of 81.34 people per km2.\nThe present town of Cartaya was founded in the 15th century by the Marquis of Gibraleón, Don Pedro de Zúñiga. Its name comes from the Phoenician word \"Carteia\", meaning city, which implies that the site had been settled much earlier. Traces have been found dating from the late Roman Empire and there is evidence of farmsteads from the early medieval period.\nThe municipality's economy is mainly based on the primary sector. However, more recent development has been encouraged in the service sector focused on leisure and tourism. The per capita income is high in comparison to neighboring municipalities. The newer settlements of El Rompido and Nuevo Portil, along with other developments, have contributed to significant population growth over recent decades.\nAmong the area's noteworthy attractions are: the former Convent of the Blessed Trinity; the Parish Church; the Hermitage of Santa María de Consolación; the Castle of the Zuñiga; and 4 kilometers of beaches (El Rompido, San Miguel Beach, Nuevo Portil beach and the westernmost part of El Portil)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "cartaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7219,
+    "attempt": 7169,
+    "place_id": "gn-2635150",
+    "input": {
+      "place": {
+        "place_id": "gn-2635150",
+        "name": "Upminster",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.55594,
+        "lon": 0.2556
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Upminster",
+          "url": "https://en.wikipedia.org/wiki/Upminster",
+          "text": "Upminster is a suburb in East London, England, located 16.5 miles (26.6 km) northeast of Charing Cross. Part of the London Borough of Havering, it is one of the locally important district centres identified in the London Plan. It comprises a number of shopping streets and a large residential area. It was historically a rural village and formed an ancient parish in the county of Essex. Upminster was first connected to central London by rail in 1885 and has a terminal station on the London Underground network. The economic history of Upminster is characterised by a shift from farming to brick making and garden suburb. As part of the suburban growth of London in the 20th century, Upminster significantly expanded and increased in population, becoming part of Hornchurch Urban District in 1934, and has formed part of Greater London since 1965."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "upminster",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7220,
+    "attempt": 7170,
+    "place_id": "gn-2638278",
+    "input": {
+      "place": {
+        "place_id": "gn-2638278",
+        "name": "Seaton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.70494,
+        "lon": -3.06999
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seaton, Devon",
+          "url": "https://en.wikipedia.org/wiki/Seaton,_Devon",
+          "text": "Seaton () is a seaside town, fishing harbour and civil parish in East Devon on the south coast of England, between Axmouth (to the east) and Beer (to the west). It faces onto Lyme Bay and is on the Jurassic Coast, a World Heritage Site. A sea wall provides access to the mostly shingle beach stretching for about a mile, and a small harbour on the River Axe estuary.\nSeaton is approximately 52 miles (84 km) east-northeast of Plymouth, 20 miles (32 km) east-southeast of Exeter, and 52 miles (84 km) west of Bournemouth. At the 2021 census, the parish had a population of 7,688."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "seaton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7221,
+    "attempt": 7171,
+    "place_id": "gn-2639091",
+    "input": {
+      "place": {
+        "place_id": "gn-2639091",
+        "name": "Rotherhithe",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.5,
+        "lon": -0.05
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rotherhithe",
+          "url": "https://en.wikipedia.org/wiki/Rotherhithe",
+          "text": "Rotherhithe ( RODH-ər-hydhe) is a district of South London, England, and part of the London Borough of Southwark. It is on the south bank of a bend in the Thames, facing Wapping, Shadwell and Limehouse on the north bank, with the Isle of Dogs to the east. It borders Bermondsey to the west and Deptford to the south-east. The district is a part of the Docklands area.\nRotherhithe has a long history as a port, with Elizabethan shipyards and working docks until the 1970s. In the 1980s, the area along the river was redeveloped as housing through a mix of warehouse conversions and new-build developments. The Jubilee line was extended to the area in 1999, giving fast connections to the West End and to Canary Wharf; the East London underground line was converted to part of the London Overground network in 2010, which provides easy access to the City of London. As a result, Rotherhithe is now a gentrifying residential and commuter area, with urban regeneration progressing around Deal Porter Square at Canada Water; a new town centre with restaurant and retail units, as well as new residential developments, is emerging here around the existing freshwater dock and transport hub.\nRotherhithe is 4.5 km (2.8 mi) east of London's centre point at Charing Cross."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "rotherhithe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7222,
+    "attempt": 7172,
+    "place_id": "gn-2640131",
+    "input": {
+      "place": {
+        "place_id": "gn-2640131",
+        "name": "Ponteland",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 55.05024,
+        "lon": -1.74532
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ponteland",
+          "url": "https://en.wikipedia.org/wiki/Ponteland",
+          "text": "Ponteland ( pon-TEE-lənd) is a town and civil parish in Northumberland, England. It is 8 miles (13 km) northwest of Newcastle upon Tyne.\nBuilt on marshland near St Mary's Church and the old bridge, most marshland has now been drained to make way for housing. In the industrial era, the settlement expanded with the development of Darras Hall. Parts of Ponteland have some of North-East England's most expensive houses; being just outside Newcastle, near the airport and on the edge of rural countryside.\nThe civil parish includes the old village of Ponteland, the Darras Hall estate, and the villages of Kirkley, Medburn, Milbourne and Prestwick."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "ponteland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7223,
+    "attempt": 7173,
+    "place_id": "gn-2641216",
+    "input": {
+      "place": {
+        "place_id": "gn-2641216",
+        "name": "Northwood",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.61162,
+        "lon": -0.42454
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Northwood, London",
+          "url": "https://en.wikipedia.org/wiki/Northwood,_London",
+          "text": "Northwood is a town mostly within the London Borough of Hillingdon, located 14.5 miles (23 kilometres) northwest of Charing Cross. Northwood was part of the ancient parish of Ruislip, Middlesex. The majority of the town is situated in the London Borough of Hillingdon but most of the northern part of the town (Parts of Moor Park and Eastbury) is situated in Hertfordshire. Northwood shares post towns with parts of Hertfordshire. Since the Middlesex side of the town being incorporated into Greater London in 1965, has been on the Greater London boundary with that county. It has also been within the Metropolitan Police District since 1840. The Northwood Headquarters is on the Hertfordshire side.\nThe area consists of the elevated settlement of Northwood and Northwood Hills, both of which are served by stations on the Metropolitan line of the London Underground. At the 2011 census, the population of Northwood was 10,949, down from 11,068 in 2008, while the population of Northwood Hills was 11,578, up from 10,833 in 2001.\nNorthwood adjoins Ruislip Woods National Nature Reserve. The area was used for location filming of the Goods' and Leadbetters' houses and surrounding streets in the BBC TV sitcom The Good Life, standing in for Surbiton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "northwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7224,
+    "attempt": 7174,
+    "place_id": "gn-2647021",
+    "input": {
+      "place": {
+        "place_id": "gn-2647021",
+        "name": "Hetton-Le-Hole",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 54.81667,
+        "lon": -1.45
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hetton-le-Hole",
+          "url": "https://en.wikipedia.org/wiki/Hetton-le-Hole",
+          "text": "Hetton-le-Hole is a town in the civil parish of Hetton, in Sunderland, England. Until 1974 it was in County Durham. \nThe A182 road runs through the town, between Houghton-le-Spring and Easington Lane which borders the County Durham District, off the A69t and east of the A1(M).\nThe parish includes the villages of Easington Lane and Warden Law, had a population of 14,402 in 2001. The parish also includes Hetton proper, along with East Rainton, Middle Rainton (West Rainton is a separate parish), Low Moorsley and High Moorsley.\nGreat Eppleton Wind Farm, a wind farm originally of four dual-bladed alternators, provides electricity to the National Grid. The original wind turbines have been replaced by larger three-bladed versions. The turbines are far enough away from local houses not to cause any audible disturbance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "hetton le hole",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "hetton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hole",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7225,
+    "attempt": 7175,
+    "place_id": "gn-2647644",
+    "input": {
+      "place": {
+        "place_id": "gn-2647644",
+        "name": "Hale",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.22946,
+        "lon": -0.78908
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hale, Surrey",
+          "url": "https://en.wikipedia.org/wiki/Hale,_Surrey",
+          "text": "Hale is a village in Surrey, England. It lies just north of Farnham, towards Aldershot, with Badshot Lea to the east. Some maps show Lower Hale and Upper Hale, but the area between the two is indistinct. Hale in part overlaps Weybourne and Heath End, making it difficult to class them as separate villages –all three share amenities and form a neatly buffered settlement. Hale is on the side of the Farnham clay and sandstone range and is quite elevated, with some housing having views southward towards the Greensand Ridge from Hindhead to Ewhurst. The electoral ward Farnham Upper Hale has a population of 4,241."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "hale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7226,
+    "attempt": 7176,
+    "place_id": "gn-2649192",
+    "input": {
+      "place": {
+        "place_id": "gn-2649192",
+        "name": "Forres",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.60997,
+        "lon": -3.62115
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Forres",
+          "url": "https://en.wikipedia.org/wiki/Forres",
+          "text": "Forres (; Scottish Gaelic: Farrais) is a historic market town and former royal burgh in the north of Scotland on the Moray coast, approximately 25 miles (40 km) northeast of Inverness and 12 miles (19 km) west of Elgin. Forres has been a winner of the Scotland in Bloom award on several occasions. There are many geographical and historical attractions nearby such as the River Findhorn, and there are also classical, historical artifacts and monuments within the town itself, such as Forres Tolbooth and Nelson's Tower. Brodie Castle, the home of the Brodie Clan, lies to the west of the town, close to the A96."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "forres",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7227,
+    "attempt": 7177,
+    "place_id": "gn-2649228",
+    "input": {
+      "place": {
+        "place_id": "gn-2649228",
+        "name": "Fordingbridge",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.92747,
+        "lon": -1.79029
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fordingbridge",
+          "url": "https://en.wikipedia.org/wiki/Fordingbridge",
+          "text": "Fordingbridge is a town and broader civil parish with a population of 6,200 on the River Avon in the New Forest District of Hampshire, England. It is located near the Dorset and Wiltshire borders and on the edge of the New Forest.\nIt is 81 miles (130 km) southwest of London, and 10 miles (16 km) south of the city of Salisbury. Fordingbridge is a former market town famed for its seven-arch late medieval bridge, which crosses the River Avon at the centre of the town. The Avon Valley Path passes through the town.\nSince 1982 Fordingbridge has been twinned with Vimoutiers in Normandy, France."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "fordingbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7228,
+    "attempt": 7178,
+    "place_id": "gn-2654410",
+    "input": {
+      "place": {
+        "place_id": "gn-2654410",
+        "name": "Buckingham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.99968,
+        "lon": -0.98779
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buckingham",
+          "url": "https://en.wikipedia.org/wiki/Buckingham",
+          "text": "Buckingham ( BUK-ing-əm) is a market town in north Buckinghamshire, England, close to the borders with Northamptonshire and Oxfordshire. The civil parish of Buckingham had a population of 14,294 at the 2021 census. The town lies approximately 12 miles (19 km) west of Milton Keynes, 19 miles (31 km) south-east of Banbury and 24 miles (39 km) north-east of Oxford.\nThe town was the county town of Buckinghamshire from the 10th century, when it was made the capital of the newly-formed shire of Buckingham, until Aylesbury took over this role in the 18th century. Britain's first private university, the University of Buckingham, is based here."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "buckingham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7229,
+    "attempt": 7179,
+    "place_id": "gn-2655942",
+    "input": {
+      "place": {
+        "place_id": "gn-2655942",
+        "name": "Belper",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.0233,
+        "lon": -1.48119
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belper",
+          "url": "https://en.wikipedia.org/wiki/Belper",
+          "text": "Belper () is a town and civil parish in the Amber Valley district of Derbyshire, England, located about 7 miles (11 km) north of Derby on the River Derwent. Along with Belper, the parish includes the village of Milford and the hamlets of Bargate, Blackbrook, and Makeney.\nAs of the 2021 census, the parish had a population of 21,440. Originally a centre for the nail-making industry since the Middle Ages, Belper expanded during the early Industrial Revolution to become one of the first mill towns with the establishment of several textile mills; as such, it forms part of the Derwent Valley Mills World Heritage Site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "belper",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7230,
+    "attempt": 7180,
+    "place_id": "gn-2759132",
+    "input": {
+      "place": {
+        "place_id": "gn-2759132",
+        "name": "Bergeijk",
+        "country": "Netherlands",
+        "subdivision": "North Brabant",
+        "lat": 51.31917,
+        "lon": 5.35833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bergeijk",
+          "url": "https://en.wikipedia.org/wiki/Bergeijk",
+          "text": "Bergeijk (Dutch: [bɛrxˈɛik]  or [bɛrəxˈʔɛik]; Brabantian: Bérgààjk) is a municipality and town in southern Netherlands, in the province of North Brabant. It consists of an area of 101.75 km2 (39.29 sq mi) and had a population of 18,754 in 2021. It is one of 21 municipalities, including Eindhoven, that make up the Eindhoven Region Cooperative (Samenwerkingsverband Regio Eindhoven).\nThe spoken language is Kempenlands (an East Brabantian dialect, which is very similar to colloquial Dutch).\nBergeijk has traditionally been an agricultural area, but tourism and recreation are steadily gaining importance. Among the facilities in the municipality of Bergeijk is a bungalow park in the village Westerhoven.\nBergeijk is known in the Netherlands as a Rietveld village, for its architecture by De Stijl architect Gerrit Rietveld, and for a program on national radio: Radio Bergeijk, a parody on local radio."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "bergeijk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

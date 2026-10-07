@@ -1,0 +1,692 @@
+[
+  {
+    "rank": 248,
+    "place_id": "gn-3618030",
+    "input": {
+      "place": {
+        "place_id": "gn-3618030",
+        "name": "León",
+        "country": "Nicaragua",
+        "subdivision": "León Department",
+        "lat": 12.43527,
+        "lon": -86.87862
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "León, Nicaragua",
+          "url": "https://en.wikipedia.org/wiki/Le%C3%B3n,_Nicaragua",
+          "text": "León (Spanish pronunciation: [leˈon]) is the second largest city in Nicaragua, after Managua. Founded by the Spanish as Santiago de los Caballeros de León, it is the capital and largest city of León Department. As of 2022, the municipality of León has an estimated population of 213,718.\nLeón is located along the Río Chiquito (Chiquito River), some 90 kilometres (56 miles) northwest of Managua, and some 18 km (11 miles) east of the Pacific Ocean coast. León has long been the political and intellectual center of the nation and its National Autonomous University of Nicaragua (UNAN) was founded in 1812, making it the second oldest university in Central America. León is also an important industrial, agricultural, and commercial center for Nicaragua, exporting sugar cane, cattle, peanut, plantain, and sorghum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "leon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 250,
+    "place_id": "gn-593116",
+    "input": {
+      "place": {
+        "place_id": "gn-593116",
+        "name": "Vilnius",
+        "country": "Lithuania",
+        "subdivision": "Vilnius",
+        "lat": 54.68916,
+        "lon": 25.2798
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vilnius",
+          "url": "https://en.wikipedia.org/wiki/Vilnius",
+          "text": "Vilnius (  VIL-nee-əs; Lithuanian: [ˈvʲɪlʲnʲʊs] ) is the capital and largest city of Lithuania and the most-populous city in the Baltic states. The city's estimated July 2026 population was 619,405, and the Vilnius urban area (which extends beyond the city limits) has an estimated population of 767,907.\nVilnius is notable for the architecture of its Old Town, considered one of Europe's largest and best-preserved old towns. The city was declared a UNESCO World Heritage Site in 1994. The architectural style known as Vilnian Baroque is named after the city, which is the easternmost Baroque city and the largest such city north of the Alps. The Renaissance and Baroque architecture of Vilnius was largely influenced by the Italian architecture as Italian descent architects, artists participated in designing and decorating it."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "vilnius",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 251,
+    "place_id": "gn-726050",
+    "input": {
+      "place": {
+        "place_id": "gn-726050",
+        "name": "Varna",
+        "country": "Bulgaria",
+        "subdivision": "Varna",
+        "lat": 43.21912,
+        "lon": 27.91024
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Varna, Bulgaria",
+          "url": "https://en.wikipedia.org/wiki/Varna,_Bulgaria",
+          "text": "Varna (Bulgarian: Варна, pronounced [ˈvarnɐ]) is the third-largest city in Bulgaria and the largest city and seaside resort on the Bulgarian Black Sea Coast and in the Northern Bulgaria region. Situated strategically in the Gulf of Varna, the city has been a major economic, social, and cultural centre for almost three millennia. Historically known as Odessos (Ancient Greek: Ὀδησσός), Varna developed from a Thracian seaside settlement into a major seaport on the Black Sea.\nVarna is a significant hub for business, transportation, education, tourism, entertainment, and healthcare. The city is referred to as the maritime capital of Bulgaria and is home to the headquarters of the Bulgarian Navy and merchant marine. In 2008, Varna was designated as the seat of the Black Sea Euroregion by the Council of Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "varna",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 252,
+    "place_id": "gn-1798097",
+    "input": {
+      "place": {
+        "place_id": "gn-1798097",
+        "name": "Qibao",
+        "country": "China",
+        "subdivision": "Shanghai",
+        "lat": 31.15267,
+        "lon": 121.35688
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qibao",
+          "url": "https://en.wikipedia.org/wiki/Qibao",
+          "text": "Qibao (simplified Chinese: 七宝镇; traditional Chinese: 七寶鎮; pinyin: Qībǎo Zhèn; Shanghainese: Tshih4pau2) is a town in Minhang District, Shanghai. Its formation can be traced back to the Five Dynasties and Ten Kingdoms period, to the Northern Song Dynasty. The name comes from the local temple, \"Qibao Temple\". Today, Qibao is a tourist attraction, in the area known as Qibao Old Town by the Puhui River with traditional Chinese architecture and a number of attractions, including museums and street food. \nThe town was also once the residence of the noted painter Zhang Chongren, a friend of the Belgian cartoonist Hergé, on whom the character Chang Chong-Chen from \"The Adventures of Tintin\" was based.\nQibao is also known for crickets (with a \"Cricket House\") in the Qibao Old Town area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "qibao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 253,
+    "place_id": "gn-3465038",
+    "input": {
+      "place": {
+        "place_id": "gn-3465038",
+        "name": "Cuiabá",
+        "country": "Brazil",
+        "subdivision": "Mato Grosso",
+        "lat": -15.59611,
+        "lon": -56.09667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuiabá",
+          "url": "https://en.wikipedia.org/wiki/Cuiab%C3%A1",
+          "text": "Cuiabá (Brazilian Portuguese pronunciation: [kujaˈba]) is the capital city and the largest city of the Brazilian state of Mato Grosso. It is located near the geographical centre of South America and also  forms the metropolitan area of Mato Grosso, along with the neighbouring town of Várzea Grande. The city's name is an indigenous Bororo word meaning 'arrow-fishing', The city was founded in 1719, during the gold rush, and it has been the state capital since 1818. The city is a trading centre for an extensive cattle-raising and agricultural area. The capital is among the fastest-growing cities in Brazil, followed by the growth of agribusiness in Mato Grosso, despite the recession that is affecting Brazilian industries. Cuiabá was one of the host cities for the 2014 FIFA World Cup."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "cuiaba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 254,
+    "place_id": "gn-3571824",
+    "input": {
+      "place": {
+        "place_id": "gn-3571824",
+        "name": "Nassau",
+        "country": "Bahamas",
+        "subdivision": "New Providence",
+        "lat": 25.05823,
+        "lon": -77.34306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nassau, Bahamas",
+          "url": "https://en.wikipedia.org/wiki/Nassau,_Bahamas",
+          "text": "Nassau ( NASS-aw) is the capital and largest city of the Bahamas. It is on the island of New Providence, which has a population of 296,522, 74.26% of the country's total population. Nassau is commonly defined as a primate city, dwarfing all other towns in the country. It is the centre of commerce, education, law, administration, and media of the country.\nLynden Pindling International Airport, the major airport for the Bahamas, is located about 16 kilometres (9.9 mi) west of the city centre of Nassau, and has daily flights to and from major cities in Canada, the Caribbean, the United Kingdom and the United States. Nassau is the site of the House of Assembly and various judicial departments and was considered historically to be a stronghold of pirates."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "nassau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 255,
+    "place_id": "gn-5327684",
+    "input": {
+      "place": {
+        "place_id": "gn-5327684",
+        "name": "Berkeley",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.87159,
+        "lon": -122.27275
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Berkeley, California",
+          "url": "https://en.wikipedia.org/wiki/Berkeley,_California",
+          "text": "Berkeley (  BURK-lee) is a city on the eastern shore of San Francisco Bay (part of the San Francisco Bay Area) in northern Alameda County, California, United States. It is named after the 18th-century Anglo-Irish bishop and philosopher George Berkeley. It borders the cities of Oakland and Emeryville to the south and the city of Albany and the unincorporated community of Kensington to the north. Its eastern border with Contra Costa County generally follows the ridge of the Berkeley Hills. The 2020 census recorded a population of 124,321. \nBerkeley is home to the oldest campus in the University of California, the University of California, Berkeley, and the Lawrence Berkeley National Laboratory, which is managed and operated by the university in coordination with the United States Department of Energy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "berkeley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 256,
+    "place_id": "gn-1166993",
+    "input": {
+      "place": {
+        "place_id": "gn-1166993",
+        "name": "Rawalpindi",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 33.59733,
+        "lon": 73.0479
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rawalpindi",
+          "url": "https://en.wikipedia.org/wiki/Rawalpindi",
+          "text": "Rawalpindi, colloquially known as Pindi, is the third-largest city in the Pakistani province of Punjab and the fourth-most populous city in Pakistan. Located along the Soan River in north-western Punjab, Rawalpindi lies adjacent to Pakistan's capital, Islamabad, and the two are jointly known as the \"twin cities\".\nRawalpindi is located on the Pothohar Plateau and is close to the ancient city of Taxila, a UNESCO World Heritage Site. It was founded in 1493 by a Gakhar chief and remained a small town until the 18th century. Following the annexation of Punjab by the East India Company in 1849, Rawalpindi became the largest garrison town of the Northern Command of the British Indian Army with the establishment of the Rawalpindi Cantonment. It was granted municipal status in 1867."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "rawalpindi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 257,
+    "place_id": "gn-1264527",
+    "input": {
+      "place": {
+        "place_id": "gn-1264527",
+        "name": "Chennai",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 13.08784,
+        "lon": 80.27847
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chennai",
+          "url": "https://en.wikipedia.org/wiki/Chennai",
+          "text": "Chennai, also known as Madras, is the capital and largest city of Tamil Nadu, the southernmost state of India. It is located on the Coromandel Coast of the Bay of Bengal. As per the 2011 Indian census, Chennai is the sixth-most-populous city in India and forms the fourth-most-populous urban agglomeration. The city is coterminous with Chennai district, which together with the adjoining suburbs constitutes the Chennai Metropolitan Area, one of the largest metropolitan areas of India. It is administered by the Greater Chennai Corporation, which was incorporated in 1688, and is the second oldest municipal corporation in the world after the City of London Corporation. Being the capital of the state, it houses major government institutions including the Tamil Nadu Legislative Assembly, and the Madras High Court."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "chennai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 258,
+    "place_id": "gn-1528675",
+    "input": {
+      "place": {
+        "place_id": "gn-1528675",
+        "name": "Bishkek",
+        "country": "Kyrgyzstan",
+        "subdivision": "Bishkek",
+        "lat": 42.87,
+        "lon": 74.59
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bishkek",
+          "url": "https://en.wikipedia.org/wiki/Bishkek",
+          "text": "Bishkek, formerly known as Pishpek (until 1926), and then Frunze (1926–1991), is the capital and largest city of Kyrgyzstan, and the capital of the Chüy Region. It is situated near the border with Kazakhstan and has a population of around 1,200,000 people as of 2024.\nThe Khanate of Kokand established the fortress of Pishpek in 1825 to control local caravan routes and to collect tribute from Kyrgyz tribes. On 4 September 1860, with the approval of the Kyrgyz, Russian forces led by Colonel Apollon Zimmermann destroyed the fortress. In the present day, the fortress ruins can be found just north of Jibek Jolu Street, near the new main mosque. A Russian settlement was established in 1868 on the site of the fortress under its original name, Pishpek."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "bishkek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 259,
+    "place_id": "gn-1813253",
+    "input": {
+      "place": {
+        "place_id": "gn-1813253",
+        "name": "Lijiang",
+        "country": "China",
+        "subdivision": "Yunnan",
+        "lat": 26.86879,
+        "lon": 100.22072
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lijiang",
+          "url": "https://en.wikipedia.org/wiki/Lijiang",
+          "text": "Lijiang (Chinese: 丽江), formerly romanized as Likiang, is a prefecture-level city in the northwest of Yunnan Province, China. It has an area of 21,219 square kilometres (8,193 sq mi) and had a population of 1,253,878 at the 2020 census whom 288,787 lived in the built-up area (metro) made of Gucheng District. By the end of 2024, the registered population of the city was 1,243,700. Lijiang is famous for its UNESCO Heritage Site, the Old Town of Lijiang, which contains a mixture of different historical architecture styles and a complex, ancient water-supply system. It borders Liangshan Yi Autonomous Prefecture and Panzhihua City in Sichuan Province to the east and it has one municipality and four counties.\nLijiang City is located on the Yungui Plateau, abutting the Qinghai-Tibet Plateau."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "lijiang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 260,
+    "place_id": "gn-2561668",
+    "input": {
+      "place": {
+        "place_id": "gn-2561668",
+        "name": "Agadir",
+        "country": "Morocco",
+        "subdivision": "Souss-Massa",
+        "lat": 30.42018,
+        "lon": -9.59815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Agadir",
+          "url": "https://en.wikipedia.org/wiki/Agadir",
+          "text": "Agadir (Arabic: أكادير or أڭادير, romanized: ʾagādīr, pronounced [ʔaɡaːdiːr]; Tachelhit: ⴰⴳⴰⴷⵉⵔ) is a major city in Morocco, on the shore of the Atlantic Ocean near the foot of the Atlas Mountains, just north of the point where the Souss River flows into the ocean, and 509 kilometres (316 mi) south of Casablanca. Agadir is the capital of the Agadir Ida-U-Tanan Prefecture and of the Souss-Massa economic region.\nAgadir is one of the major urban centres of Morocco. The municipality of Agadir recorded a population of 924,000 in the 2014 Moroccan census. According to the 2004 census, there were 346,106 inhabitants in that year and the population of the Prefecture of Agadir-Ida Outanane was 487,954 inhabitants.\nAgadir is known for being the capital of Amazigh culture in Morocco."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "agadir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 261,
+    "place_id": "gn-358619",
+    "input": {
+      "place": {
+        "place_id": "gn-358619",
+        "name": "Port Said",
+        "country": "Egypt",
+        "subdivision": "Port Said",
+        "lat": 31.26531,
+        "lon": 32.3019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Said",
+          "url": "https://en.wikipedia.org/wiki/Port_Said",
+          "text": "Port Said ( sah-EED, Egyptian Arabic: بورسعيد, romanized: Bōrsaʿīd, pronounced [boɾsæˈʕiːd, poɾ-]) is a port city that lies in northeast Egypt extending about 30 km (19 mi) along the coast of the Mediterranean Sea, straddling the west bank of the northern mouth of the Suez Canal. The city is the capital of the Port Said Governorate and forms the majority of the governorate, comprising seven of the governorate's eight administrative regions. In 2024, it had a population of 790,000 people.\nThe city was established in 1859 during the building of the Suez Canal. There are numerous old houses with grand balconies on all floors, giving the city a distinctive look. Port Said's twin city is Port Fuad, which lies on the eastern bank of the Suez Canal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "port said",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "said",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 262,
+    "place_id": "gn-2224827",
+    "input": {
+      "place": {
+        "place_id": "gn-2224827",
+        "name": "Ngaoundéré",
+        "country": "Cameroon",
+        "subdivision": "Adamaoua",
+        "lat": 7.32765,
+        "lon": 13.58472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ngaoundéré",
+          "url": "https://en.wikipedia.org/wiki/Ngaound%C3%A9r%C3%A9",
+          "text": "Ngaoundéré or N'Gaoundéré (Fula: N'gamdere, نغَمْدٜرٜ, 𞤲'𞤺𞤢𞤥𞤣𞤫𞥅𞤪𞤫𞥅) is the capital of the Adamawa Region of Cameroon. It had a population of 152,700 at the 2005 census. According to the film Les Mairuuwas – Maitre de l'eau produced by the University of Tromsø, the population has rapidly risen to 1,200,000 (as of October 2023) owing to mass immigration from the Central African Republic and the perceived danger from Boko Haram in northern Cameroon.\nThe city lies at the northern end of the railway to Yaoundé and is also home to Ngaoundéré Airport. Attractions in the city include the Lamido Palace and the Lamido Grand Mosque. The town is named after a nearby mountain on its eponymous plateau; the mountain's name is the Mbum word for \"navel mountain\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "ngaoundere",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 263,
+    "place_id": "gn-2756669",
+    "input": {
+      "place": {
+        "place_id": "gn-2756669",
+        "name": "Dordrecht",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.81,
+        "lon": 4.67361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dordrecht",
+          "url": "https://en.wikipedia.org/wiki/Dordrecht",
+          "text": "Dordrecht (Dutch: [ˈdɔrdrɛxt] ), historically known in English as Dordt (still colloquially used in Dutch, pronounced [dɔrt] ) or Dort, is a city and municipality in the Western Netherlands, located in the province of South Holland. It is the province's fifth-largest city after Rotterdam, The Hague, Leiden, and Zoetermeer, with a population of 123,000 (2025).\nThe municipality covers the entire Dordrecht Island, also often called Het Eiland van Dordt (\"the Island of Dordt\"), bordered by the rivers Oude Maas, Beneden Merwede, Nieuwe Merwede, Hollands Diep, and Dordtsche Kil. Dordrecht is the largest and most important city in the Drechtsteden and is also part of the Randstad, the main conurbation in the Netherlands.\nDordrecht is the oldest city in Holland and has a rich history and culture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "dordrecht",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 264,
+    "place_id": "gn-314830",
+    "input": {
+      "place": {
+        "place_id": "gn-314830",
+        "name": "Gaziantep",
+        "country": "Türkiye",
+        "subdivision": "Gaziantep",
+        "lat": 37.05944,
+        "lon": 37.3825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gaziantep",
+          "url": "https://en.wikipedia.org/wiki/Gaziantep",
+          "text": "Gaziantep, historically Aintab and still informally called Antep, is a major city in south-central Turkey. It is the capital of the Gaziantep Province, in the westernmost part of Turkey's Southeastern Anatolia Region and partially in the Mediterranean Region. It is located approximately 185 km (115 mi) east of Adana and 97 km (60 mi) north of Aleppo, Syria and situated on the Sajur River.\nThe city is thought to be located on the site of ancient Antiochia ad Taurum and is near ancient Zeugma. Sometime after the Byzantine-ruled city came under the Seljuk Empire, the region was administered by Armenian warlords. In 1098, it became part of the County of Edessa, a Crusader state, though it continued to be administered by Armenians, such as Kogh Vasil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "gaziantep",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 265,
+    "place_id": "gn-4006163",
+    "input": {
+      "place": {
+        "place_id": "gn-4006163",
+        "name": "Fresnillo",
+        "country": "Mexico",
+        "subdivision": "Zacatecas",
+        "lat": 23.1749,
+        "lon": -102.86785
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fresnillo",
+          "url": "https://en.wikipedia.org/wiki/Fresnillo",
+          "text": "Fresnillo (Spanish pronunciation: [fres'nijo]) is a city in north central Mexico, founded in 1554 by Francisco de Ibarra. It is the second largest city in  the state of Zacatecas and the seat of Fresnillo municipality. As a rail and highway junction, Fresnillo is the center of a rich mining area known especially for silver, and the location of one of the world's richest silver mines, the Mina Proaño or Fresnillo Mine, which belongs to the Peñoles mining company. Other important economic activities include agriculture (cereals, beans), cattle raising, and a mining school. Fresnillo is also the municipal seat of the municipality of the same name which surrounds it. The municipality had a population of 196,538 and an areal extent of 4,947 square kilometres (1,910 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "fresnillo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 266,
+    "place_id": "gn-4898015",
+    "input": {
+      "place": {
+        "place_id": "gn-4898015",
+        "name": "Joliet",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.52519,
+        "lon": -88.0834
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Joliet, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Joliet,_Illinois",
+          "text": "Joliet ( JOH-lee-et, -⁠ET) is a city in Will and Kendall counties in the U.S. state of Illinois. Located 40 miles (64 km) southwest of Chicago, it is the county seat of Will County. Originally settled in 1852 as a steel mill town on the Des Plaines River, Joliet later became known for being the first major city outside of Chicago on U.S. Route 66. It is home to Old Joliet Prison, a historic decommissioned correctional facility that was the largest in the state at the time of its construction. The prison has been featured prominently in several films and television shows, including the 1980 film The Blues Brothers. As of the 2020 census, the population was 150,362, making it the third-most populous city in Illinois."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "joliet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 267,
+    "place_id": "gn-532288",
+    "input": {
+      "place": {
+        "place_id": "gn-532288",
+        "name": "Magnitogorsk",
+        "country": "Russia",
+        "subdivision": "Chelyabinsk",
+        "lat": 53.39808,
+        "lon": 59.0066
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Magnitogorsk",
+          "url": "https://en.wikipedia.org/wiki/Magnitogorsk",
+          "text": "Magnitogorsk (Russian: Магнитого́рск, pronounced [məɡnʲɪtɐˈɡorsk], lit. '[city] of the magnetic mountain') is an industrial city in Chelyabinsk Oblast, Russia, on the eastern side of the southern Ural Mountains by the Ural River. Its population is currently 410,594 (2021 census).\nMagnitogorsk was named after Mount Magnitnaya, a geological anomaly that once consisted almost completely of iron ore, around 55% to 60% iron.  It is the second-largest city in Russia that is not the administrative centre of any federal subject or district, after Tolyatti. Magnitogorsk contains the largest iron and steel works in the country: Magnitogorsk Iron and Steel Works. The official motto of the city is \"the place where Europe and Asia meet\" (Russian: Место, где встречаются Европа и Азия), as the city straddles von Strahlenberg's line."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "magnitogorsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 269,
+    "place_id": "gn-116402",
+    "input": {
+      "place": {
+        "place_id": "gn-116402",
+        "name": "Semnan",
+        "country": "Iran",
+        "subdivision": "Semnan",
+        "lat": 35.57691,
+        "lon": 53.39205
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Semnan, Iran",
+          "url": "https://en.wikipedia.org/wiki/Semnan,_Iran",
+          "text": "Semnan (Persian: سمنان; pronounced [semˈnɒːn] ) is a city in the Central District of Semnan County, Semnan province, Iran, serving as capital of the province, the county and the district. The city is on the alluvial fan of the Golrudbar creek in the north-central part of the country, 216 km east of Tehran and 640 km west of Mashhad. With a population of 185,129 people in 2016, Semnan is the hub of the Semnani language, a sub-branch of the Iranian languages spoken to the north. It is home to the Semnani ethnic group.\nSemnan offers various recreational activities; historical and religious sites; festivals, gardens and parks; and centers of higher education and Semnani culture. The city is the cultural and political capital of Semnan province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "semnan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

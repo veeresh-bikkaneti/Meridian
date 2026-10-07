@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 1715,
+    "attempt": 1701,
+    "place_id": "gn-2038300",
+    "input": {
+      "place": {
+        "place_id": "gn-2038300",
+        "name": "Benxi",
+        "country": "China",
+        "subdivision": "Liaoning",
+        "lat": 41.28861,
+        "lon": 123.765
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Benxi",
+          "url": "https://en.wikipedia.org/wiki/Benxi",
+          "text": "Benxi (Chinese: 本溪) is a prefecture-level city located in the east of Liaoning province, People's Republic of China, southeast of the provincial capital of Shenyang. As of the 2020 census, its population was 1,326,018 (1,709,538 in 2010), of whom 809,655 lived in the built-up area made of 3 urban districts (Pingshan, Xihu and Mingshan). It was founded as a metallurgical center in 1915. Benxi Iron and Steel Company (Bengang) is the largest employer in the city, and used to be the fourth-largest steel company in China. The second-largest industry in Benxi is coal mining. The city has pollution problems due to steel production and coal mining."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "benxi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1716,
+    "attempt": 1702,
+    "place_id": "gn-2128295",
+    "input": {
+      "place": {
+        "place_id": "gn-2128295",
+        "name": "Sapporo",
+        "country": "Japan",
+        "subdivision": "Hokkaido",
+        "lat": 43.06667,
+        "lon": 141.35
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sapporo",
+          "url": "https://en.wikipedia.org/wiki/Sapporo",
+          "text": "Sapporo is a designated city in Hokkaido, Japan. Located in the southwest of Hokkaido, it lies within the alluvial fan of the Toyohira River, a tributary of the Ishikari River. Sapporo is the capital of Hokkaido Prefecture and Ishikari Subprefecture. As of August 1, 2026, the city has a population of 1,962,596, making it the largest city in Hokkaido and the largest north of Tokyo. It is the fifth-most populous city in Japan and is Hokkaido's cultural, economic, and political center.\nOriginally a plain sparsely inhabited by the indigenous Ainu people, the area contained a few trade posts of the Matsumae domain during the Edo period. The city began as an administrative centre with the establishment of the Hokkaido Development Commission headquarters in 1869. Inspired by the ancient cities of Kyoto and Heijō-kyō, it adopted a grid plan and developed around Odori Park. After World War II, it replaced Otaru as Hokkaido's commercial hub, and its population surpassed one million by 1970.\nAfter being unable to host the 1940 Winter Olympics due to World War II, Sapporo hosted the 1972 Winter Olympics, the first Winter Olympics ever held in Asia, and the second Olympic Games held in Asia after the 1964 Summer Olympics in Tokyo. The Sapporo Dome hosted three matches during the 2002 FIFA World Cup and two matches during the 2019 Rugby World Cup. Additionally, Sapporo has hosted the Asian Winter Games three times, in 1986, 1990, and 2017, and also hosted the 1991 Winter Universiade.\nThe annual Sapporo Snow Festival draws more than 2 million tourists. Other notable sites include the Sapporo Beer Museum and the Sapporo TV Tower located in Odori Park. It is home to Hokkaido University, just north of Sapporo Station. The city is served by Okadama Airport and New Chitose Airport in nearby Chitose."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 301
+    },
+    "banned_terms": [
+      {
+        "term": "sapporo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1717,
+    "attempt": 1703,
+    "place_id": "gn-2657970",
+    "input": {
+      "place": {
+        "place_id": "gn-2657970",
+        "name": "Winterthur",
+        "country": "Switzerland",
+        "subdivision": "Zurich",
+        "lat": 47.50564,
+        "lon": 8.72413
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Winterthur",
+          "url": "https://en.wikipedia.org/wiki/Winterthur",
+          "text": "Winterthur (Swiss Standard German pronunciation: [ˈvɪntərtuːr]; French: Winterthour [vintəʁtuʁ, vintɛʁ-]) is a city and municipality in the canton of Zurich in northern Switzerland. With over 120,000 residents, it is the country's sixth-largest city by population, as well as its ninth-largest agglomeration with about 140,000 inhabitants. Located about 20 kilometres (12 mi) northeast of Zurich, Winterthur is a service and high-tech industrial satellite city within Zurich Metropolitan Area. Winterthur is usually abbreviated as Winti in the local dialect.\nWinterthur is connected to Germany by direct trains and has links to Zurich Airport. It is also a regional transport hub: the A1 motorway from Geneva through to St. Margrethen connects in Winterthur with the A4 motorway heading north toward Schaffhausen and the A7 motorway heading close to the Swiss-German border at Kreuzlingen. There are also roads leading to other places such as Turbenthal. The railway station is the fourth busiest railway station in Switzerland, and is 20 minutes away by train from Zurich."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "winterthur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1718,
+    "attempt": 1704,
+    "place_id": "gn-291074",
+    "input": {
+      "place": {
+        "place_id": "gn-291074",
+        "name": "Ras Al Khaimah",
+        "country": "United Arab Emirates",
+        "subdivision": "Ras Al Khaimah",
+        "lat": 25.78953,
+        "lon": 55.9432
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ras Al Khaimah",
+          "url": "https://en.wikipedia.org/wiki/Ras_Al_Khaimah",
+          "text": "Ras Al Khaimah (Arabic: رَأْس ٱلْخَيْمَة; /raʔs͜ ɪlˈxajma/, Emirati Arabic : [räːs͜ ɪlχe̞ːmɛ] ), often referred to its initials RAK, is an industrial port city and the largest city and capital of the Emirate of Ras Al Khaimah in the United Arab Emirates. The city had a population of 191,753 people in 2025, and is the sixth-most populous city in UAE after Dubai, Abu Dhabi, Sharjah, Al Ain and Ajman. The city is divided by a creek into two parts: old town in the west and Al Nakheel in the east. The town is the successor to the Islamic era port and trading hub of Julfar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "ras al khaimah",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ras",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "khaimah",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1719,
+    "attempt": 1705,
+    "place_id": "gn-2980291",
+    "input": {
+      "place": {
+        "place_id": "gn-2980291",
+        "name": "Saint-Étienne",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.43389,
+        "lon": 4.39
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saint-Étienne",
+          "url": "https://en.wikipedia.org/wiki/Saint-Étienne",
+          "text": "Saint-Étienne (French pronunciation: [sɛ̃t‿etjɛn] ; Franco-Provençal: Sant-Etiève), also written St. Etienne, is a city and the prefecture of the Loire département, in eastern-central France, in the Massif Central, 60 km (37 mi) southwest of Lyon, in the Auvergne-Rhône-Alpes region.\nSaint-Étienne is the thirteenth most populated commune in France and the second most populated commune in Auvergne-Rhône-Alpes. Its metropolis (métropole), Saint-Étienne Métropole, is the second most populous regional metropolis after Lyon. The commune is also at the heart of a vast metropolitan area with 503,351 inhabitants (2023), the eighteenth largest in France by population, comprising 105 communes. Its inhabitants are known as Stéphanois (masculine) and Stéphanoises (feminine).\nLong known as the French city of the \"weapon, cycle and ribbon\" and a major coal mining centre, Saint-Étienne is currently engaged in a vast urban renewal program aimed at leading the transition from the industrial city inherited from the 19th century to the \"design capital\" of the 21st century. This approach was recognised with the entry of Saint-Étienne into the UNESCO Creative Cities network in 2010. The city is currently undergoing renewal, with the installation of the Châteaucreux business district, the ‘Steel’ retail complex and the manufacturing creative district.\nThe city is known for its football club AS Saint-Étienne, which won the Ligue 1 title ten times between 1956/57 and 1980/81)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "saint etienne",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "etienne",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1720,
+    "attempt": 1706,
+    "place_id": "gn-2982652",
+    "input": {
+      "place": {
+        "place_id": "gn-2982652",
+        "name": "Rouen",
+        "country": "France",
+        "subdivision": "Normandy",
+        "lat": 49.44313,
+        "lon": 1.09932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rouen",
+          "url": "https://en.wikipedia.org/wiki/Rouen",
+          "text": "Rouen (UK: , US: ; French: [ʁwɑ̃]  or [ʁu.ɑ̃]) is a city on the River Seine, in northwestern France. It is in the prefecture of region of Normandy and the department of Seine-Maritime. Formerly one of the largest and most prosperous cities of medieval Europe, the population of the metropolitan area (French: aire d'attraction) is 715,239 (2023). People from Rouen are known as Rouennais.\nRouen was the seat of the Exchequer of Normandy during the Middle Ages. It was one of the capitals of the Anglo-Norman and Angevin dynasties, which ruled both England and large parts of modern France from the 11th to the 15th centuries. From the 13th century onwards, the city experienced a remarkable economic boom, thanks in particular to the development of textile factories and river trade. Claimed by both the French and the English during the Hundred Years' War, it was on its soil that Joan of Arc was tried and burned alive on 30 May 1431. Severely damaged by the wave of bombing in 1944, it nevertheless regained its economic dynamism in the post-war period thanks to its industrial sites and its large seaport, which merged with the ports of Le Havre and Paris in 2021 to form the HAROPA Port.\nEndowed with a prestige established during the medieval era, and with a long architectural heritage in its historical monuments, Rouen is an important cultural capital. Several renowned establishments are located here, such as the Museum of Fine Arts, Le Secq des Tournelles museum, and Rouen Cathedral.\nSeat of an archdiocese, it also hosts a court of appeal and a university. Every four to six years, Rouen becomes the showcase for a large gathering of sailing ships called \"L'Armada\"; this event makes the city an occasional capital of the maritime world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 296
+    },
+    "banned_terms": [
+      {
+        "term": "rouen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1721,
+    "attempt": 1707,
+    "place_id": "gn-3120619",
+    "input": {
+      "place": {
+        "place_id": "gn-3120619",
+        "name": "L'Hospitalet de Llobregat",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.35967,
+        "lon": 2.10028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "L'Hospitalet de Llobregat",
+          "url": "https://en.wikipedia.org/wiki/L'Hospitalet_de_Llobregat",
+          "text": "L'Hospitalet de Llobregat (Catalan pronunciation: [luspitəˈlɛd də ʎuβɾəˈɣat]; Spanish: Hospitalet de Llobregat; literally \"the little hospital of Llobregat\"), often shortened to L'Hospitalet or just L'H, is a city and municipality in the autonomous community of Catalonia in Spain. It is part of the Barcelona metropolitan area, the Barcelona province, the Barcelonès comarca and of the Barcelona conurbation. With a population of 282,299 as of 2024, it is the 15th-largest city in Spain and the 2nd-largest city in Catalonia. It is one of the most densely populated cities in the European Union."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 91
+    },
+    "banned_terms": [
+      {
+        "term": "l hospitalet de llobregat",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "l",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "hospitalet",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "llobregat",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1722,
+    "attempt": 1708,
+    "place_id": "gn-3189595",
+    "input": {
+      "place": {
+        "place_id": "gn-3189595",
+        "name": "Subotica",
+        "country": "Serbia",
+        "subdivision": "Vojvodina",
+        "lat": 46.1,
+        "lon": 19.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Subotica",
+          "url": "https://en.wikipedia.org/wiki/Subotica",
+          "text": "Subotica (Serbian Cyrillic: Суботица, pronounced [sǔbotitsa] ; Hungarian: Szabadka, pronounced [ˈsɒbɒtkɒ]) is a city in Central Europe and the administrative center of the North Bačka District in the autonomous province of Vojvodina, Serbia. Formerly the largest city of Vojvodina region, contemporary Subotica is now the second largest city in the province, as well as in the Serbian part of the Bačka geographical region, following the city of Novi Sad. It is the fifth largest city in Serbia, having - according to the 2022 census - a population of 88,752 (the city proper, while the population of the administrative area of the city stands at 123,952 people)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "subotica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1723,
+    "attempt": 1709,
+    "place_id": "gn-3529982",
+    "input": {
+      "place": {
+        "place_id": "gn-3529982",
+        "name": "Cuautla",
+        "country": "Mexico",
+        "subdivision": "Morelos",
+        "lat": 18.81302,
+        "lon": -98.95513
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuautla, Morelos",
+          "url": "https://en.wikipedia.org/wiki/Cuautla,_Morelos",
+          "text": "Cuautla (Nahuatl pronunciation: [ˈkʷaʍt͡ɬa], meaning \"where the eagles roam\"), officially Heroica e Histórica Ciudad de Cuautla de Morelos (Heroic and Historic City of Cuautla of Morelos) or H. H. Cuautla, Morelos, is a city and municipality in the Mexican state of Morelos, about 104 kilometers south of Mexico City. In the 2010 census the city population was 154,358. The municipality covers 153.651 km2 (59.325 sq mi). Cuautla is the third most populous city in the state, after Cuernavaca and Jiutepec. The city was founded on April 4, 1829. The 2020 population figures were 187,118 inhabitants for the municipality and 157,336 inhabitants for the city of Cuatula.\nThe Cuautla Metropolitan Area, the second largest in Morelos, comprises the municipalities of Cuautla, Yautepec, Ayala, Yecapixtla, Atlatlahucan, and Tlayacapan. It covers 1,037.30 km2 (400.50 sq mi), which represents 21.26% of the state's total area. The metropolitan population (2010) is 434,187."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "cuautla",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1724,
+    "attempt": 1710,
+    "place_id": "gn-359493",
+    "input": {
+      "place": {
+        "place_id": "gn-359493",
+        "name": "Zagazig",
+        "country": "Egypt",
+        "subdivision": "Sharqia",
+        "lat": 30.58768,
+        "lon": 31.502
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zagazig",
+          "url": "https://en.wikipedia.org/wiki/Zagazig",
+          "text": "Zagazig (Egyptian Arabic pronunciation: [ez.zæʔæˈziːʔ], locally [ez.zæɡæˈziːɡ]) is a city in Egypt. Situated in the eastern part of the Nile delta, it is the capital of the governorate of Sharqia. It is located on the Muweis Canal and is a hub of the corn and cotton trade. The city contains the Museum of Tal Basta Antiquities, including archaeological exhibits.\nThe city is home to Zagazig University, founded in 1974, one of the largest universities in Egypt, with colleges in different fields of science and arts. The Archaeological Museum of the University of Zagazig exhibits significant finds from the nearby sites, Bubastis (Tell Basta) and Kufur Nigm. The most notable streets in Zagazig are Farouk Street, Government Street, Abu Hamad and El Kawmia Street."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "zagazig",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1725,
+    "attempt": 1711,
+    "place_id": "gn-3610613",
+    "input": {
+      "place": {
+        "place_id": "gn-3610613",
+        "name": "El Progreso",
+        "country": "Honduras",
+        "subdivision": "Yoro Department",
+        "lat": 15.4,
+        "lon": -87.8
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Progreso",
+          "url": "https://en.wikipedia.org/wiki/El_Progreso",
+          "text": "El Progreso (Spanish pronunciation: [el pɾoˈɣɾeso]) is a city, with a population of 120,600 (2023 calculation), and a municipality located in the Honduran department of Yoro.\nRamón Villeda Morales International Airport of San Pedro Sula is located west of the city.  To the east of the city is the mountain range of Mico Quemado (Burned Monkey).\nEl Progreso is located at a crossroads. Due to its strategic location, many travellers or tourists pass through El Progreso in one way or another.  Many travellers going to San Pedro Sula, Tela, La Ceiba, La Lima, and Tegucigalpa make a connection here or use it as a rest area.\nThe territorial extension of the municipality is 534 square kilometres (206 sq mi). Of this territory, 40.5 square kilometres (15.6 sq mi) is defined as urban and 493.5 square kilometres (190.5 sq mi) as rural. The municipality is also divided into three geographic zones that comprise more than 100 barrios, which are home to more than 90,000 people. The climate of the city is humid."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "el progreso",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "progreso",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1726,
+    "attempt": 1712,
+    "place_id": "gn-504341",
+    "input": {
+      "place": {
+        "place_id": "gn-504341",
+        "name": "Pskov",
+        "country": "Russia",
+        "subdivision": "Pskov Oblast",
+        "lat": 57.81922,
+        "lon": 28.33181
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pskov",
+          "url": "https://en.wikipedia.org/wiki/Pskov",
+          "text": "Pskov (Russian: Псков, IPA: [ˈpskof] ; see also names in other languages) is a city in northwestern Russia and the administrative center of Pskov Oblast, located about 20 kilometers (12 mi) east of the Estonian border, on the Velikaya River. Population: 193,082 (2021 census); 203,279 (2010 census); 202,780 (2002 census); 203,789 (1989 Soviet census).\nPskov is one of the oldest cities in Russia. During the Middle Ages, it served as the capital of the Pskov Republic and was a trading post of the Hanseatic League before it was incorporated into the Grand Duchy of Moscow and became an important border fortress in the Tsardom of Russia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "pskov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1727,
+    "attempt": 1713,
+    "place_id": "gn-6059891",
+    "input": {
+      "place": {
+        "place_id": "gn-6059891",
+        "name": "Longueuil",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.5152,
+        "lon": -73.46818
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Longueuil",
+          "url": "https://en.wikipedia.org/wiki/Longueuil",
+          "text": "Longueuil (French pronunciation: [lɔ̃ɡœj] ) is a city in the province of Quebec, Canada. It is the seat of the Montérégie administrative region and the central city of the urban agglomeration of Longueuil. It sits on the south shore of the Saint Lawrence River directly across from Montreal. The population as of the Canada 2021 Census totalled 254,483, making it Montreal's second largest suburb, the fifth most populous city in Quebec and twentieth largest in Canada.\nCharles Le Moyne founded Longueuil  as a seigneurie in 1657. It would become a parish in 1845, a village in 1848, a town in 1874 and a city in 1920. Between  1961 and 2002, Longueuil's borders grew three times, as it was amalgamated with surrounding municipalities; there was a strong de-amalgamation in 2006 (see 2000–2006 municipal reorganization in Quebec).\nLongueuil is a residential, commercial and industrial city. It incorporates some urban features, but is essentially a suburb. Longueuil can be classified as a commuter town as a large portion of its residents commute to work in Montreal. Most buildings are single-family homes constructed in the post-war period. The city consists of three boroughs: Le Vieux-Longueuil, Saint-Hubert and Greenfield Park.\nLongueuil is the seat of the judicial district of Longueuil. Residents of the city are called Longueuillois."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "longueuil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1728,
+    "attempt": 1714,
+    "place_id": "gn-6254843",
+    "input": {
+      "place": {
+        "place_id": "gn-6254843",
+        "name": "Birendranagar",
+        "country": "Nepal",
+        "subdivision": "Karnali Pradesh",
+        "lat": 28.59669,
+        "lon": 81.61658
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Birendranagar",
+          "url": "https://en.wikipedia.org/wiki/Birendranagar",
+          "text": "Birendranagar (Nepali: वीरेन्द्रनगर) officially Birendranagar Municipality is a city in Surkhet District in Karnali Province of Nepal.\nIt is the capital city of Karnali province as well as the district headquarter of Surkhet district. As of March 2022, Birendranagar has a population of 154,886, making it the 17th most populous city of Nepal. Birendranagar is the largest city of Karnali province and 7th largest in Western Nepal. It is one of the fastest growing cities of Nepal and is on two national highways, Ratna Highway and Karnali Highway. It is one of the constituent city of the Ratna Highway Metropolitan Areas along with Nepalgunj and Kohalpur. Birendranagar compromises of panoramic view of Mahabharata and Chure ranges and the plain of the inner Terai. A major trade center in mid-western Nepal, Birendranagar is considered the most expensive city to live in Nepal.\nIn February 2018, the city was made the capital of the province of Karnali. At the 2011 census the city's population was 100,458 in 12,029 households. This city is located in the Surkhet Valley at the northern Bank of Bheri River which separates it from Bheriganga municipality. Birendranagar is named in honour of the late King Birendra, who planned and established it as the first planned town in Nepal.\n\nBirendranagar is located in a valley and surrounded by hills. The Birendranagar municipality includes village development committee are Uttarganga, Latikoili."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 230
+    },
+    "banned_terms": [
+      {
+        "term": "birendranagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1729,
+    "attempt": 1715,
+    "place_id": "gn-6317344",
+    "input": {
+      "place": {
+        "place_id": "gn-6317344",
+        "name": "Jaboatão dos Guararapes",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -8.11278,
+        "lon": -35.01472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jaboatão dos Guararapes",
+          "url": "https://en.wikipedia.org/wiki/Jaboatão_dos_Guararapes",
+          "text": "Jaboatão dos Guararapes (Portuguese pronunciation: [ʒabwaˈtɐ̃w duz ɡwaɾaˈɾapis]) is a city in the state of Pernambuco, Brazil. It is a part of the Recife metro area. The population was 706,867 according to the Brazilian Institute of Geography and Statistics (IBGE) in 2020, making it the second most-populous city in the state of Pernambuco and the 27th in Brazil, ahead of major Brazilian state capitals such as Cuiabá and Aracaju. The city is a very important industrial center, hosting companies like Unilever and Coca-Cola. It is bordered by Recife in the north, Cabo de Santo Agostinho on the south, and Mangue forests to the west in Moreno."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "jaboatao dos guararapes",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "jaboatao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "guararapes",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1730,
+    "attempt": 1716,
+    "place_id": "gn-6929460",
+    "input": {
+      "place": {
+        "place_id": "gn-6929460",
+        "name": "Panzhihua",
+        "country": "China",
+        "subdivision": "Sichuan",
+        "lat": 26.58509,
+        "lon": 101.71276
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Panzhihua",
+          "url": "https://en.wikipedia.org/wiki/Panzhihua",
+          "text": "Panzhihua (Chinese: 攀枝花; pinyin: Pānzhīhuā), formerly Dukou (渡口), is a prefecture-level city located in the far south of Sichuan province, China, at the confluence of the Jinsha and Yalong Rivers. It has an administrative area of 7,423.42 square kilometres (2,866.20 sq mi), and a population at the 2020 census of 1,212,203. 806,395 lived in the built-up (or metro) area made of 3 urban districts.\nIts economy relies almost entirely on its giant mine, one of the country's largest. The economy in Panzhihua is mainly centered on natural resource development and heavy-industry. The city grew into a major city for steel production during the Third Front construction. The urban center was built on top of mountainous terrains. In 2005, Panzhihua won the \"China Excellent Tourist City\" title, in 2008 it won the \"National Health City\" and the \"China Vanadium, Titanium\" titles."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "panzhihua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1731,
+    "attempt": 1717,
+    "place_id": "gn-693805",
+    "input": {
+      "place": {
+        "place_id": "gn-693805",
+        "name": "Simferopol",
+        "country": "Ukraine",
+        "subdivision": "Crimea",
+        "lat": 44.95719,
+        "lon": 34.11079
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Simferopol",
+          "url": "https://en.wikipedia.org/wiki/Simferopol",
+          "text": "Simferopol ( SIM-fər-OH-pəl), also known as Aqmescit, is the second-largest city on the Crimean Peninsula. The city, along with the rest of Crimea, is internationally recognized as part of Ukraine, but controlled by Russia. It is considered the capital of the Autonomous Republic of Crimea.\nSince 2014 it has been under the de facto control of Russia, which annexed Crimea that year and regards Simferopol as the capital of the Republic of Crimea.\nSimferopol is an important political, economic and transport hub of the peninsula, and serves as the administrative centre of both Simferopol Municipality and the surrounding Simferopol District. Its population was 332,317 (2014 Census).\nAfter the 1784 annexation of the Crimean Khanate by the Russian Empire, the Russian empress decreed the foundation of a city named Simferopol on the location of the Crimean Tatar town of Aqmescit (lit. 'White Mosque')."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "simferopol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1732,
+    "attempt": 1718,
+    "place_id": "gn-750269",
+    "input": {
+      "place": {
+        "place_id": "gn-750269",
+        "name": "Bursa",
+        "country": "Türkiye",
+        "subdivision": "Bursa Province",
+        "lat": 40.19559,
+        "lon": 29.06013
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bursa",
+          "url": "https://en.wikipedia.org/wiki/Bursa",
+          "text": "Bursa is a city in northwestern Turkey and the administrative center of Bursa Province. It is the fourth-most populous city in Turkey and second-most populous in the Marmara Region after Istanbul. According to 2025 end of year estimate, the province has a population of 3,263,011 while Bursa city has a population of around 2.5 million. Bursa is one of the centers of Turkey's automotive production, becoming an industrial center of the country. The city provides various places of interest.\nHistorically, Bursa was known as Prusa or Prousa (Ancient Greek: Προῦσα), or Prusa near Olympus or Prusa under Olympus (Προῦσα ἐπὶ τῷ Ὀλύμπῳ, Προῦσα πρὸς τῷ Ὀλύμπῳ). The city became the capital of the Ottoman Empire (back then the Ottoman Beylik) from 1335 until the 1360s.\nA more recent nickname is Yeşil Bursa (\"Green Bursa\") referring to the parks and gardens located across the city, as well as to the vast, varied forests of the surrounding region. Bursa has a rather orderly urban growth and borders a fertile plain. The mausoleums of the early Ottoman sultans are located in Bursa, and the city's main landmarks include numerous edifices built throughout the Ottoman period. Bursa also has thermal baths, old Ottoman mansions, palaces, and several museums. Mount Uludağ, known in classical antiquity as the Mysian Olympus or, alternatively, Bithynian Olympus, towers over the city and has a ski resort. Bursa is historically known to be a safe haven for LGBTQ people.\nThe shadow play characters Karagöz and Hacivat, according to some stories, are based on historic personalities who lived and died in Bursa in the 14th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 106,
+      "fullExtractWords": 265
+    },
+    "banned_terms": [
+      {
+        "term": "bursa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1733,
+    "attempt": 1719,
+    "place_id": "gn-1214882",
+    "input": {
+      "place": {
+        "place_id": "gn-1214882",
+        "name": "Kisaran",
+        "country": "Indonesia",
+        "subdivision": "North Sumatra",
+        "lat": 2.9845,
+        "lon": 99.6158
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kisaran",
+          "url": "https://en.wikipedia.org/wiki/Kisaran",
+          "text": "Kisaran is a large town in the North Sumatra province of Indonesia. Kisaran is the administrative capital of Asahan Regency. Kisaran does not now have the status of an independent city, but is composed of two administrative districts (kecamatan) - West Kisaran District and East Kisaran District. Kisaran is situated on the Trans-Sumatra Highway, and is also located in the path of trains in northern Sumatra.\nThe previous status of Kisaran was an administrative city, independent of the regency, which was then abolished and divided into two districts within the regency in 2003 because it did not meet the increasing requirements of the autonomous region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "kisaran",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1734,
+    "attempt": 1720,
+    "place_id": "gn-1254649",
+    "input": {
+      "place": {
+        "place_id": "gn-1254649",
+        "name": "Thanjavur",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 10.78523,
+        "lon": 79.13909
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thanjavur",
+          "url": "https://en.wikipedia.org/wiki/Thanjavur",
+          "text": "Thanjavur (Tamil: [t̪aɲdʑaːʋuːɾ]), also known as Thanjai, previously known as Tanjore, is a city in the Indian state of Tamil Nadu. It is the 12th biggest city in Tamil Nadu. Thanjavur is an important center of southern Indian religion, art, and architecture. Most of the Great Living Chola Temples, which are UNESCO World Heritage Monuments, are located in and around Thanjavur. The foremost among these, the Rajarajesvaram or Brihadisvara Temple, built by the Chola emperor Rajaraja I, is located in the centre of the city. This temple has one of the largest bull statues (called Nandi) in India carved out of a single granite rock. Thanjavur is also home to Tanjore painting, a painting style unique to the region. Thanjavur is the headquarters of the Thanjavur District. The city is an important agricultural centre located in the Kaveri Delta and is known as the Rice bowl of Tamil Nadu. Thanjavur is administered by a municipal corporation covering an area of 36.31 km2 (14.02 sq mi) and had a population of 222,943. Roadways are the major means of transportation, while the city also has rail connectivity. The nearest airport is Tiruchirapalli International Airport, located 59.6 km (37.0 mi) away from the city. The nearest seaport is Karaikal, which is 94 km (58 mi) away from Thanjavur.\nThe city first rose to prominence during the reign of the Cholas when it served as the capital of the empire. After the fall of the Cholas, the city was ruled by various dynasties such as the Mutharaiyar dynasty, the Pandyas, the Vijayanagar Empire, the Madurai Nayaks, the Thanjavur Nayaks, the Thanjavur Marathas and the British Empire. It has been a part of independent India since 1947."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 105,
+      "fullExtractWords": 282
+    },
+    "banned_terms": [
+      {
+        "term": "thanjavur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

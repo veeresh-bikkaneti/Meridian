@@ -1,0 +1,777 @@
+[
+  {
+    "rank": 6849,
+    "attempt": 6801,
+    "place_id": "gn-5154905",
+    "input": {
+      "place": {
+        "place_id": "gn-5154905",
+        "name": "Fostoria",
+        "country": "United States",
+        "subdivision": "Ohio",
+        "lat": 41.157,
+        "lon": -83.41687
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fostoria, Ohio",
+          "url": "https://en.wikipedia.org/wiki/Fostoria,_Ohio",
+          "text": "Fostoria (, foss-TORR-EE-ə) is a city located at the convergence of Hancock, Seneca, and Wood counties in the northwestern part of the U.S. state of Ohio.  The population was 13,046 at the 2020 census, slightly down from 13,441 at the 2010 census. It is approximately 40 miles (64 km) south of Toledo and 90 miles (140 km) north of Columbus. The community grew substantially during the end of the 19th century, coinciding with the northwest Ohio gas boom. Typical of Rust Belt cities, Fostoria peaked in size in 1970.\nFostoria was a major site for the glass industry, having over a dozen glass factories during the end of the 19th century. As the area's gas supply became depleted, many of the factories closed or moved. The city is now known for its railroads, as approximately 100 trains pass through the city each day. As a result, the city is often visited by railfans, hosted by a railroad viewing park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "fostoria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6850,
+    "attempt": 6802,
+    "place_id": "gn-5204465",
+    "input": {
+      "place": {
+        "place_id": "gn-5204465",
+        "name": "Olney",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.04122,
+        "lon": -75.12379
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Olney, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Olney,_Philadelphia",
+          "text": "Olney ( or locally ) is a neighborhood in the North Philadelphia section of Philadelphia. It is roughly bounded by the Feltonville neighborhood to the south, Lawncrest to the east, East Oak Lane, to the north, and Logan to the West. Portions of the neighborhood do serve as major commercial centers for many surrounding groups. At 5th Street and Olney Avenue, there is a Korean-American business district, and Hispanic businesses are located in southern Olney.\nFisher Park is located in Olney. It is a 23-acre (93,000 m2) public park which was laid out and owned by Joseph Wharton, founder of Swarthmore College and the Wharton School at the University of Pennsylvania. It was donated to the City of Philadelphia by Joseph in 1908 as a \"Christmas gift\" to Philadelphia. Fisher Park has a football field, basketball and tennis courts, and a wooded hiking area.\nOlney is named after the estate of Alexander Wilson (not the ornithologist), who resided on Rising Sun Avenue, near Tacony Creek.  Wilson chose the name for his residence because of his love for the poet William Cowper, of Olney, England. The mansion was demolished in 1924, but the name was applied to the growing village nearby."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "olney",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6851,
+    "attempt": 6803,
+    "place_id": "gn-5359864",
+    "input": {
+      "place": {
+        "place_id": "gn-5359864",
+        "name": "Isla Vista",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.41333,
+        "lon": -119.86097
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Isla Vista, California",
+          "url": "https://en.wikipedia.org/wiki/Isla_Vista,_California",
+          "text": "Isla Vista (English:  EYE-luh VIS-tuh; Spanish: [ˈisla ˈβista], lit. 'island view') is an unincorporated community in Santa Barbara County, California, United States. As of 2020 census, the community had a population of 15,500. For statistical purposes, the United States Census Bureau has defined the community as a census-designated place (CDP). The majority of residents are college students at the University of California, Santa Barbara, or Santa Barbara City College. The beachside community of Isla Vista lies on a flat plateau about 30 feet (9 m) in elevation, separated from the beach by a bluff.\nIsla Vista enjoys a Mediterranean climate and often has slightly less precipitation than Santa Barbara and Goleta. Isla Vista is located on a south-facing portion of the Santa Barbara County coast, between Coal Oil Point and Campus Point in view of the Channel Islands. During El Niño years, precipitation in Isla Vista can be excessive and potentially dangerous. Some homes and apartments built on the south side of Del Playa Drive, most popular with students due to their direct ocean views, are built on eroding bluffs thirty to sixty feet above the Pacific Ocean. Recent erosion has exposed foundation supports in several of the properties closest to the nearby UC Santa Barbara campus.\nAs Isla Vista is on the south coast of Santa Barbara County, which has some of the highest housing prices in the United States, the student population shares densely packed housing with a working class Hispanic population.  While the main campus is to the east, the community is surrounded on three sides by university property governed by the state Board of Regents.\nIsla Vista is home to a student housing cooperative, the Santa Barbara Student Housing Coop, as well as a food cooperative, the Isla Vista Food Co-op."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 295
+    },
+    "banned_terms": [
+      {
+        "term": "isla vista",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "isla",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vista",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6852,
+    "attempt": 6804,
+    "place_id": "gn-5379759",
+    "input": {
+      "place": {
+        "place_id": "gn-5379759",
+        "name": "Oroville",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 39.51394,
+        "lon": -121.55776
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oroville, California",
+          "url": "https://en.wikipedia.org/wiki/Oroville,_California",
+          "text": "Oroville (Oro, Spanish for \"Gold\" and Ville, French for \"town\") is a city in and the county seat of  Butte County of the U.S. state of California. As of the 2020 census, Oroville had a population of 20,042. After the 2018 Camp Fire that destroyed much of the town of Paradise, Oroville's population increased as many people who lost their homes moved there.\nOroville is considered the gateway to Lake Oroville and Feather River recreational areas. The Berry Creek Rancheria of Maidu Indians of California is headquartered in Oroville.\nOroville is adjacent to State Route 70 and in close proximity to State Route 99, which connects Butte County with Interstate 5. The city of Chico is about 23 miles (37 kilometers) northwest of the city, and the state capital, Sacramento, around 70 miles (110 kilometers) to the south.\nOroville's nickname is the \"City of Gold\", which is essentially the Spanish name of the city in English. The National Arbor Day Foundation has declared Oroville a Tree City USA for 41 years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "oroville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6853,
+    "attempt": 6805,
+    "place_id": "gn-5528182",
+    "input": {
+      "place": {
+        "place_id": "gn-5528182",
+        "name": "Pecos",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 31.42291,
+        "lon": -103.49323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pecos, Texas",
+          "url": "https://en.wikipedia.org/wiki/Pecos,_Texas",
+          "text": "Pecos ( PAY-kəs) is the largest city in and the county seat of Reeves County, Texas, United States. It is in the valley on the west bank of the Pecos River at the eastern edge of the Chihuahuan Desert, in the Trans-Pecos region of West Texas and just south of New Mexico's border. Its population was 12,916 at the 2020 census. On January 24, 2012, Pecos City appeared on the Forbes 400 as the second-fastest growing small town in the United States. The city is a regional commercial center for ranching, oil and gas production, and agriculture. The city is most recognized for its association with the local cultivation of cantaloupes. Pecos claims to be the site of the world's first rodeo on July 4, 1883."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "pecos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6854,
+    "attempt": 6806,
+    "place_id": "gn-5828648",
+    "input": {
+      "place": {
+        "place_id": "gn-5828648",
+        "name": "Jackson",
+        "country": "United States",
+        "subdivision": "Wyoming",
+        "lat": 43.47993,
+        "lon": -110.76243
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jackson, Wyoming",
+          "url": "https://en.wikipedia.org/wiki/Jackson,_Wyoming",
+          "text": "Jackson is a resort town in Teton County, Wyoming, United States. The population was 10,760 at the 2020 census, and was estimated at 10,680 in 2024. It is Teton County's only incorporated municipality and its county seat, and it is the largest incorporated town in Wyoming. Jackson is the principal town of the Jackson, WY-ID Micropolitan Statistical Area, which includes Teton County in Wyoming and Teton County in Idaho. The town is often called Jackson Hole, which is the name of the valley in which it is located. Jackson is a popular tourist destination due to its proximity to the ski resorts Jackson Hole Mountain, Snow King Mountain, and Grand Targhee. Jackson also acts as a gateway community for Grand Teton National Park and Yellowstone National Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 127
+    },
+    "banned_terms": [
+      {
+        "term": "jackson",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6855,
+    "attempt": 6807,
+    "place_id": "gn-6176421",
+    "input": {
+      "place": {
+        "place_id": "gn-6176421",
+        "name": "Wasaga Beach",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.5168,
+        "lon": -80.01637
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wasaga Beach",
+          "url": "https://en.wikipedia.org/wiki/Wasaga_Beach",
+          "text": "Wasaga Beach (or simply Wasaga) is a town in Simcoe County, Ontario, Canada. Situated along the longest freshwater beach in the world, it is a popular summer tourist destination. It is located at the southern end of Nottawasaga Bay (a sub-bay of Georgian Bay) approximately 150 km (93 mi) north of Toronto and about 40 km (25 mi) northwest of Barrie. To the west, Collingwood and The Blue Mountains also attract visitors much of the year. The town is situated along a very long sandy beach partly between the bay and the Nottawasaga River. The beaches are part of Wasaga Beach Provincial Park; the park area totals 168 hectares (420 acres). Wasaga Beach has a year-round population of 24,862 as of 2021, but during the summer months the population increases with many seasonal residents.\nThe economy has struggled for some years, particularly since a major fire in late November 2007 destroyed many of the stores. It depends on tourists in an area where the primary shopping season is three to four months per year. In March 2017, the town passed its Downtown Development Master Plan, a 20-year strategy for significant redevelopment of the tourist area and adding a downtown to the business area. The goal is to improve tourism, diversify the economy, and get beyond its \"party town\" image."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 219
+    },
+    "banned_terms": [
+      {
+        "term": "wasaga beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "wasaga",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6856,
+    "attempt": 6808,
+    "place_id": "gn-6240770",
+    "input": {
+      "place": {
+        "place_id": "gn-6240770",
+        "name": "Cambridge",
+        "country": "New Zealand",
+        "subdivision": "Waikato Region",
+        "lat": -37.87822,
+        "lon": 175.4402
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cambridge, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Cambridge,_New_Zealand",
+          "text": "Cambridge (Māori: Kemureti) is a town in the Waipā District of the Waikato region of the North Island of New Zealand. Situated 24 kilometres (15 mi) southeast of Hamilton, on the banks of the Waikato River, Cambridge is known as \"The Town of Trees & Champions\". The town has a population of 22,700, making it the largest town in the Waipā District, and the third largest urban area in the Waikato (after Hamilton and Taupō).\nCambridge was a finalist in the 2017 and 2019 New Zealand's Most Beautiful Large Town awards, run by Keep New Zealand Beautiful. It was awarded the title New Zealand's Most Beautiful Large Town in October 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "cambridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6857,
+    "attempt": 6809,
+    "place_id": "gn-6534505",
+    "input": {
+      "place": {
+        "place_id": "gn-6534505",
+        "name": "Ponteranica",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.73248,
+        "lon": 9.65175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ponteranica",
+          "url": "https://en.wikipedia.org/wiki/Ponteranica",
+          "text": "Ponteranica (Italian: [ponteˈraːnika]; Bergamasque: Potranga or Put de Ranga; lit. 'Bridge to Ranica') is a comune (municipality) in the Province of Bergamo in the Italian region of Lombardy, located about 50 kilometres (31 mi) northeast of Milan and about 4 kilometres (2 mi) northwest of Bergamo. As of 31 December 2004, it had a population of 6,866 and an area of 8.4 square kilometres (3.2 mi2).\nThe source of the river Morla is located in Ponteranica. A part of its surface is occupied by Maresana Hill and some of its territory belongs to Parco dei Colli di Bergamo.\nPonteranica borders the following municipalities: Alzano Lombardo, Bergamo, Ranica, Sorisole, Torre Boldone, Zogno."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "ponteranica",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6858,
+    "attempt": 6810,
+    "place_id": "gn-653559",
+    "input": {
+      "place": {
+        "place_id": "gn-653559",
+        "name": "Kauniainen",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.21209,
+        "lon": 24.72756
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kauniainen",
+          "url": "https://en.wikipedia.org/wiki/Kauniainen",
+          "text": "Kauniainen (Finnish: [ˈkɑu̯niˌɑi̯nen]; Swedish: Grankulla) is a town in Finland, located in the southern interior of the country. Kauniainen is situated in the southern part of the Uusimaa region, and it is enclaved by the City of Espoo. The population of Kauniainen is approximately 10,000. It is the 95th most populous municipality in Finland. Kauniainen is part of the Helsinki Metropolitan Area, which has approximately 1.62 million inhabitants.\nKauniainen was founded by a corporation in 1906, AB Grankulla, that parcelled land and created a suburb for villas; Kauniainen received the status of a market town in 1920, the Finnish name in 1949 and the title of kaupunki (\"city, town\") in 1972.\nThe municipal taxation rate in Kauniainen is the lowest in Finland (%), which has made the city attractive to high-income families. This in turn makes the average income generally high, making it possible to keep the taxation rate low without compromising the service to the inhabitants.\nKauniainen is a bilingual municipality with Finnish and Swedish as its official languages. The population consists of 59% Finnish speakers, 30% Swedish speakers, and 11% speakers of other languages. The dominant party in the city council has traditionally been the Swedish People's Party."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "kauniainen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6859,
+    "attempt": 6811,
+    "place_id": "gn-6558039",
+    "input": {
+      "place": {
+        "place_id": "gn-6558039",
+        "name": "Rheinstetten",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.9685,
+        "lon": 8.30704
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rheinstetten",
+          "url": "https://en.wikipedia.org/wiki/Rheinstetten",
+          "text": "Rheinstetten (German pronunciation: [ʁaɪnˈʃtɛtn̩] ; South Franconian: Rhoischdedde) is a town in the west of Baden-Württemberg on the border to Rhineland-Palatinate. It is situated to the south-west of Karlsruhe and belongs to the rural district of Karlsruhe. The city has fewer inhabitants than Bruchsal, Ettlingen, Bretten and Stutensee and is therefore the fifth largest city in the district of Karlsruhe. Since 2005 it has formed part of a regional organization for economy, science, culture and administration, the Technologieregion Karlsruhe.\nRheinstetten was formed in 1975 by a merger of the former municipalities of Forchheim, Morsch and Neuburgweier. In 2000 it received town privileges and became a district seat on 1 January 2005."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "rheinstetten",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6860,
+    "attempt": 6812,
+    "place_id": "gn-657531",
+    "input": {
+      "place": {
+        "place_id": "gn-657531",
+        "name": "Hollola",
+        "country": "Finland",
+        "subdivision": "Paijat-Hame",
+        "lat": 61,
+        "lon": 25.5
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hollola",
+          "url": "https://en.wikipedia.org/wiki/Hollola",
+          "text": "Hollola (Finnish pronunciation: [ˈholːolɑ]) is a municipality of Finland, located in the western part of the Päijät-Häme region. The municipality is unilingually Finnish and has a population of 22,775 (31 December 2025) and covers an area of 727.47 square kilometres (280.88 sq mi) of which 68.66 km2 (26.51 sq mi) is water. The population density is 34.96 inhabitants per square kilometre (90.5/sq mi).\nHollola's neighboring municipalities are Asikkala in the north, Hausjärvi and Hämeenlinna in the west, Lahti in the east and Kärkölä and Orimattila in the south. Hollola belongs to the Lahti region. It is 111 km (68.97 mi) from Hollola to Helsinki and 121 km (75.18 mi) to Tampere.\nHollola's municipal center is Salpakangas, which is located along highway 12 near the western border of Lahti. The small church village of Hollola remains next to it. Hämeenkoski was merged with Hollola on 1 January 2016. Areas from the municipality of Hollola have been annexed to the city of Lahti several times.\nHollola has the tallest structure in Finland, the Tiirismaa TV-Tower.\nA popular resort in Hollola is Messilä. There you can cross-country ski, downhill skiing, hike, and golf. There is a hotel and a camping site in Messilä. Messilä is located by Vesijärvi.\nIn 2018, Hollola hosted the Jukola Relays. This Orienteering event is a night relay, and one of the most popular orienteering events in the world by number of competitors."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 234
+    },
+    "banned_terms": [
+      {
+        "term": "hollola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6861,
+    "attempt": 6813,
+    "place_id": "gn-686852",
+    "input": {
+      "place": {
+        "place_id": "gn-686852",
+        "name": "Zorynsk",
+        "country": "Ukraine",
+        "subdivision": "Luhansk",
+        "lat": 48.41194,
+        "lon": 38.62361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zorynsk",
+          "url": "https://en.wikipedia.org/wiki/Zorynsk",
+          "text": "Zorynsk (Ukrainian: Зоринськ, Russian: Зоринск), is a city in Alchevsk urban hromada, Alchevsk Raion, Luhansk Oblast (region), Ukraine. Population: 7,096 (2022 estimate). 7,331 (2013 est.)\nZorynsk has been a city since 1963. From 2014 on, and the War in Donbas (2014–2022), Zorynsk has been controlled by the Luhansk People's Republic. Following the 2022 annexation referendums in Russian-occupied Ukraine, Russia has claimed the territory as part of their LNR / LPR.\nOn 12 June 2020, in accordance with the Order of the Cabinet of Ministers of Ukraine No. 717-r \"On the determination of administrative centers and approval of territories of territorial communities of the Luhansk Oblast\", it became part of the Alchevsk urban hromada.\nOn 19 July 2020, as a result of the administrative-territorial reform and liquidation of Perevalsk Raion, it became part of Alchevsk Raion."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "zorynsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6862,
+    "attempt": 6814,
+    "place_id": "gn-690960",
+    "input": {
+      "place": {
+        "place_id": "gn-690960",
+        "name": "Turka",
+        "country": "Ukraine",
+        "subdivision": "Lviv",
+        "lat": 49.15355,
+        "lon": 23.02934
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Turka, Ukraine",
+          "url": "https://en.wikipedia.org/wiki/Turka,_Ukraine",
+          "text": "Turka (Ukrainian: Турка, IPA: [ˈturkɐ] ; Polish: Turka; Yiddish: טורקא), formerly known as Turka nad Stryiom (Ukrainian: Турка над Стрийом; Polish: Turka nad Stryjem) is a city located at the confluence of the Stryi River and the Yablunka River in Sambir Raion, Lviv Oblast, western Ukraine. It is located by the Carpathian Mountains. It hosts the administration of Turka urban hromada, one of the hromadas of Ukraine. Population: 6,925 (2022 estimate).\nUntil 18 July 2020, Turka belonged to Turka Raion and was the administrative center. The raion was abolished in July 2020 as part of the administrative reform of Ukraine, which reduced the number of raions of Lviv Oblast to seven."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "turka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6863,
+    "attempt": 6815,
+    "place_id": "gn-738907",
+    "input": {
+      "place": {
+        "place_id": "gn-738907",
+        "name": "Tekkeköy",
+        "country": "Türkiye",
+        "subdivision": "Samsun",
+        "lat": 41.21167,
+        "lon": 36.46
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tekkeköy",
+          "url": "https://en.wikipedia.org/wiki/Tekkeköy",
+          "text": "Tekkeköy is a municipality and district of Samsun Province, Turkey. Its area is 326 km2, and its population is 56,318 (2022). It covers the easternmost part of the city of Samsun.\nAgriculture and animal breeding are the main sources of income. Black Sea Copper Works Inc., Samsun fertilizer Factory, the Organized Industry Site, Industrial Site and Organized Food Industry Site, fertilizer and forging industry, along with a gas-fired power plant, many surgical instrument manufacturing companies and other manufacturers have facilitated an economically dynamic area.\nTekkeköy is on the coast of the Black Sea, on the western side of the Çarşamba Plain, and located on the 13th km of the Samsun–Trabzon highway. The Samsun tramway ends at Tekkeköy. A third of the district's land is within the delta of the Yeşilırmak, part of the Çarşamba Plain, which supports irrigation. The daily population is between 100–150k due to the industry sites and many big showrooms on the Samsun – Ordu highway.\nThe constructions of the Yaşar Doğu Arena and the new city stadium, the international expo and congress center being located within the district and projects such as the Logistics Village, Science and Technology Center, Arts & Culture Center, and Olympic Swimming Pool has served to modernize the district. There are also many hotels of international brands within Tekkeköy.\nSamsun Çarşamba Airport is also within the district's limits. A 7,500-seat multi-purpose indoor venue, the Tekkeköy Yaşar Doğu Arena, was opened end March 2013 in the town.\nTekkeköy Municipality has been a member of the Union Of Historical Towns since 2015."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 258
+    },
+    "banned_terms": [
+      {
+        "term": "tekkekoy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6864,
+    "attempt": 6816,
+    "place_id": "gn-933959",
+    "input": {
+      "place": {
+        "place_id": "gn-933959",
+        "name": "Triolet",
+        "country": "Mauritius",
+        "subdivision": "Pamplemousses",
+        "lat": -20.0576,
+        "lon": 57.55025
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Triolet, Mauritius",
+          "url": "https://en.wikipedia.org/wiki/Triolet,_Mauritius",
+          "text": "Triolet is a medium-sized village in the north of the Mauritius district of Pamplemousses. It lies exactly 11 kilometres from Port Louis, the capital of the island. The town is nestled amidst green sugarcane fields, near the north-western coast of the island. As per the 2016 population census, Triolet had 24 073 inhabitants and a population density of 2764 inhabitants per km2, over an area of 8.71 km2. The population density is higher than that of the township of Vacoas-Phoenix which is at 1948 inhabitants per km2.\nTo the north of Triolet lie Trou-aux-Biches, Mont Choisy and Grand Baie which are coastal villages, while to its west are Pointe-aux-Piments and Balaclava. On the south lies Arsenal and to the east are Morcellement St André and Plaine des Papayes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 128
+    },
+    "banned_terms": [
+      {
+        "term": "triolet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6865,
+    "attempt": 6817,
+    "place_id": "gn-991664",
+    "input": {
+      "place": {
+        "place_id": "gn-991664",
+        "name": "Kathu",
+        "country": "South Africa",
+        "subdivision": "Northern Cape",
+        "lat": -27.69569,
+        "lon": 23.04929
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kathu",
+          "url": "https://en.wikipedia.org/wiki/Kathu",
+          "text": "Kathu is a growing town in South Africa, and the iron ore capital of the Northern Cape  province.  Its name means \"town under the trees\", after the Camel Thorn forest it is situated in.  The phrase \"the town under the trees\" was coined by an engineer working in the town in the early-1990s as part of a tourist marketing drive, together with the accompanying graphic.  It was intended to be a marketing slogan.  The meaning of the word \"Kathu\" has anecdotically been attributed to a porridge brewed by the local population from the powder found in the pods of the Camel Thorn trees.\nKathu was founded in the late-1960s or early-1970s.\nKathu is situated between Upington and Vryburg with about a 2-hour drive to each. Kimberley is a 3-hour drive away, while Kuruman is only 20 minutes away."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "kathu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6866,
+    "attempt": 6818,
+    "place_id": "gn-9972648",
+    "input": {
+      "place": {
+        "place_id": "gn-9972648",
+        "name": "Concord West",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.84809,
+        "lon": 151.08609
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Concord West",
+          "url": "https://en.wikipedia.org/wiki/Concord_West",
+          "text": "Concord West (also known as West Concord) is a suburb in Sydney's inner-west, in the state of New South Wales, Australia. Concord West is located 16 km west of the Sydney central business district, in the local government area of the City of Canada Bay. Concord is a separate suburb, to the east.\nConcord West is bordered on the west by Rhodes, Liberty Grove and Homebush Bay; to the south by North Strathfield and Homebush; and to the east by Concord, Breakfast Point, Cabarita and Mortlake. It shares the postcode of 2138 with Rhodes.\nThe suburb takes its namesake from the town of Concord, Massachusetts in the United States of America."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 111,
+      "fullExtractWords": 111
+    },
+    "banned_terms": [
+      {
+        "term": "concord west",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "concord",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "west",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6867,
+    "attempt": 6819,
+    "place_id": "gn-12626145",
+    "input": {
+      "place": {
+        "place_id": "gn-12626145",
+        "name": "Pointe-Saint-Charles",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.48072,
+        "lon": -73.55485
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pointe-Saint-Charles",
+          "url": "https://en.wikipedia.org/wiki/Pointe-Saint-Charles",
+          "text": "Pointe-Saint-Charles (French pronunciation: [pwɛ̃t sɛ̃ ʃaʁl]; also known in English as Point Saint Charles, and locally as The Point, or \"PSC\") is a neighbourhood in the borough of Le Sud-Ouest in the city of Montreal, Quebec, Canada. Historically a working-class area, the creation of many new housing units, the recycling of industrial buildings into business incubators, lofts, and condos, the 2002 re-opening of the Lachine  canal as a recreation and tourism area, the improvement of public spaces, and heritage enhancement have all helped transform the neighbourhood and attract new residents. Community groups continue to be pro-active in areas related to the fight against poverty and the improvement of living conditions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "pointe saint charles",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pointe",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "saint",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "charles",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6868,
+    "attempt": 6820,
+    "place_id": "gn-13118148",
+    "input": {
+      "place": {
+        "place_id": "gn-13118148",
+        "name": "Bandar Botanic",
+        "country": "Malaysia",
+        "subdivision": "Selangor",
+        "lat": 2.98794,
+        "lon": 101.43966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bandar Botanic",
+          "url": "https://en.wikipedia.org/wiki/Bandar_Botanic",
+          "text": "Botanic Klang is a major township in the southern part of Klang, Selangor, Malaysia. The RM3 billion township project is led by Gamuda Berhad and developed by Harum Intisari Sdn Bhd. It is adjacent to other new and modern townships such as Glenmarie Cove and Bukit Tinggi, Klang.\nThe township consists of 2 development parcels, Parcel A and Parcel B. Parcel A was developed mainly for double storey link houses, semi-detached houses, commercial shop offices and apartments. Parcel B is mainly focused on bigger sized houses: double storey super link houses, semi-detached houses, and bungalows. Botanic Capital is a massive 67-acre (270,000 m2) freehold central business district in Botanic Klang.\nThe 1,247-acre (5.05 km2) freehold township became one of the most sought developments in the Klang Valley when it was launched in July 2001. Botanic Klang is the first waterfront parkland township with a self-sustaining urban stormwater management system in Malaysia, and the country's first winner of the coveted FIABCI Property Award 2003 for Best Master Plan.\nBotanic Klang falls under the jurisdiction of the Klang Royal City Council (MBDK). It is represented in the Parliament by the Member of Parliament for Klang, Mr. Ganabatirau Veraman. There are many public amenities in and around Bandar Botanic such as banks, post offices, shopping centres (AEON Bukit Tinggi Shopping Centre, Lotus's and Giant Hypermarket)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "bandar botanic",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bandar",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "botanic",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

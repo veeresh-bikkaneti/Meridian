@@ -1,5 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { splitLede } from "./story-lede.ts";
 
 describe("splitLede — miss-card subscript contract", () => {
@@ -119,6 +120,38 @@ const MOCK_REVERSE_GEOCODE = [
   "  if (player.country === truth.country) return 'Right country, wrong town!';",
   "  return 'Your pin: ' + (player.admin1 ?? player.country) + ' \\u00b7 True spot: ' + (truth.admin1 ?? truth.country);",
   "}",
+  // revealPinLine is the production card's entry point. The mock replays the
+  // real module's funnel contract: state edition → classic byte-identical;
+  // country/globe → the scenario's explicit line when set (stands in for an
+  // honest nearestPoolPlace detail), else the classic fallback.
+  "export function revealPinLine(input) {",
+  "  const classic = pinCompareLine(",
+  "    resolvePin(input.playerLat, input.playerLon),",
+  "    resolvePin(input.truth.lat, input.truth.lon));",
+  "  if (!input || input.edition === 'state') return classic;",
+  "  const s = globalThis.__pinMockScenario;",
+  "  if (s && typeof s.revealPinLine === 'string') return s.revealPinLine;",
+  "  return classic;",
+  "}",
+  // revealPinCompare is what the Cartographer's Plate ledger renders. The
+  // mock derives the structured sides from the same scenario string the
+  // string mock above produces — contract-faithful to the real
+  // splitClassic: verdict copy stays a verdict, "near " is detected, never
+  // duplicated.
+  "export function revealPinCompare(input) {",
+  "  const line = revealPinLine(input);",
+  "  if (line === null || line === undefined) return null;",
+  "  const sep = ' · ';",
+  "  const i = line.indexOf(sep);",
+  "  if (i === -1) return { kind: 'verdict', text: line };",
+  "  const pinPart = line.slice('Your pin: '.length, i);",
+  "  const truthPart = line.slice(i + sep.length);",
+  "  const truth = truthPart.indexOf('True spot: ') === 0",
+  "    ? truthPart.slice('True spot: '.length)",
+  "    : truthPart;",
+  "  const near = pinPart.indexOf('near ') === 0;",
+  "  return { kind: 'named', pin: near ? pinPart.slice(5) : pinPart, truth: truth, near: near };",
+  "}",
 ].join("\n");
 const MOCK_REVERSE_GEOCODE_URL =
   "data:text/javascript," + encodeURIComponent(MOCK_REVERSE_GEOCODE);
@@ -180,11 +213,15 @@ const DROP_LON = -96.7;
 const PLACE_LAT = 38.9;
 const PLACE_LON = -77.03;
 
-// Per-test scenario for the mocked resolvePin. `null` pins (or a null
-// scenario) make resolvePin return null — the fail-closed path.
+// Per-test scenario for the mocked resolvePin/revealPinLine. `null` pins (or
+// a null scenario) make resolvePin return null — the fail-closed path. An
+// explicit `revealLine` stands in for an honest nearestPoolPlace detail on
+// country/globe editions; when omitted the mock falls back to the classic
+// line, exactly like the production gate failure.
 function setPinScenario(
   dropPin: ResolvedPin | null,
   placePin: ResolvedPin | null,
+  revealLine?: string,
 ): void {
   (globalThis as Record<string, unknown>).__pinMockScenario =
     dropPin === null && placePin === null
@@ -196,14 +233,18 @@ function setPinScenario(
           placeLon: PLACE_LON,
           dropPin,
           placePin,
+          revealPinLine: revealLine ?? null,
         };
 }
 
 const { ResultCard } = await import("./result-card.tsx");
 
-function makeRun(phase: "story" | "done"): Run {
+function makeRun(
+  phase: "story" | "done",
+  edition: "state" | "country" | "globe" = "state",
+): Run {
   return {
-    edition: "state",
+    edition,
     regionId: "nebraska",
     regionName: "Nebraska",
     difficultyChoice: "medium",
@@ -237,63 +278,87 @@ function makePlace(): Starter {
   };
 }
 
-function renderCard(phase: "story" | "done"): string {
+function renderCard(
+  phase: "story" | "done",
+  edition: "state" | "country" | "globe" = "state",
+  drop: Parameters<typeof ResultCard>[0]["drop"] = {
+    lon: DROP_LON,
+    lat: DROP_LAT,
+    distanceKm: 1234.5,
+    placeId: "worker-b-test-place",
+    breakdown: null,
+    streakBefore: 0,
+  },
+): string {
   return renderToString(
     createElement(ResultCard, {
-      run: makeRun(phase),
+      run: makeRun(phase, edition),
       place: makePlace(),
       placeLabel: "Testville, Nebraska, United States",
-      drop: {
-        lon: DROP_LON,
-        lat: DROP_LAT,
-        distanceKm: 1234.5,
-        placeId: "worker-b-test-place",
-        breakdown: null,
-        streakBefore: 0,
-      },
+      drop,
       story: null,
       empty: false,
       dismissed: false,
       onDismissedChange: () => {},
       onContinue: () => {},
       growthLine: null,
+      // The prop exists so the card can scan the dealing pool; the mock
+      // revealPinLine ignores its contents (scenarios ride on the global).
+      poolPlaces: [],
     }),
   );
 }
 
-describe("result-card — pin-compare line (reveal)", () => {
-  it("miss names both locations: Nebraska vs District of Columbia", () => {
+describe("result-card — pin-compare ledger (reveal)", () => {
+  // The Cartographer's Plate ledger is a real <dl>: stacked YOUR PIN /
+  // TRUE SPOT entries (DT small-caps eyebrow ABOVE DD — never
+  // side-by-side). The E2E seam data-testid="pin-compare-line" survives
+  // on the <dl>, never renamed.
+  function ledgerHtml(html: string): string {
+    const start = html.indexOf('data-testid="pin-compare-line"');
+    assert.ok(start !== -1, "the pin-compare ledger must render");
+    const dlStart = html.lastIndexOf("<dl", start);
+    const dlEnd = html.indexOf("</dl>", start);
+    assert.ok(dlStart !== -1 && dlEnd !== -1, "the ledger must be a real <dl>");
+    return html.slice(dlStart, dlEnd);
+  }
+
+  it("miss renders a real <dl> ledger naming both sides, stacked", () => {
     setPinScenario(
       { admin1: "Nebraska", country: "United States" },
       { admin1: "District of Columbia", country: "United States" },
     );
     const html = renderCard("done");
+    const ledger = ledgerHtml(html);
+    assert.ok(ledger.includes("<dt>Your pin</dt>"), "YOUR PIN eyebrow stacks above its name");
+    assert.ok(ledger.includes("Nebraska"), "the pin side names the location");
+    assert.ok(ledger.includes("True spot"), "TRUE SPOT eyebrow stacks above its name");
     assert.ok(
-      html.includes('data-testid="pin-compare-line"'),
-      "the pin-compare line element must render",
+      ledger.includes("Testville, Nebraska, United States"),
+      "TRUE SPOT carries the full answer name — the name's hero moment",
     );
-    assert.ok(
-      html.includes("Your pin: Nebraska · True spot: District of Columbia"),
-      "the line must name both locations",
-    );
-    // The line sits directly under the distance paragraph.
-    const distanceIdx = html.indexOf("off</p>");
+    // The ledger sits directly under the verdict headline (pinned header).
+    const distanceIdx = html.indexOf("east of your pin</h2>");
     const lineIdx = html.indexOf("pin-compare-line");
     assert.ok(
       distanceIdx !== -1 && lineIdx > distanceIdx,
-      "the line renders after the distance paragraph",
+      "the ledger renders after the distance paragraph",
     );
   });
 
-  it("same-state miss renders 'Right state, wrong town!'", () => {
+  it("same-state miss renders 'Right state, wrong town!' as the pin verdict", () => {
     const nebraska = { admin1: "Nebraska", country: "United States" };
     setPinScenario(nebraska, nebraska);
     const html = renderCard("done");
-    assert.ok(html.includes('data-testid="pin-compare-line"'));
-    assert.ok(html.includes("Right state, wrong town!"));
+    const ledger = ledgerHtml(html);
+    assert.ok(ledger.includes("Right state, wrong town!"));
+    assert.ok(
+      ledger.includes("Testville, Nebraska, United States"),
+      "TRUE SPOT still names the full answer even for verdict copy",
+    );
   });
 
-  it("resolvePin returning null renders no line (card unchanged)", () => {
+  it("resolvePin returning null renders no ledger (card unchanged)", () => {
     setPinScenario(null, null);
     const html = renderCard("done");
     assert.ok(
@@ -302,7 +367,7 @@ describe("result-card — pin-compare line (reveal)", () => {
     );
   });
 
-  it("hit (phase story) renders no line even when pins differ", () => {
+  it("hit (phase story) renders no ledger even when pins differ", () => {
     setPinScenario(
       { admin1: "Nebraska", country: "United States" },
       { admin1: "District of Columbia", country: "United States" },
@@ -310,7 +375,299 @@ describe("result-card — pin-compare line (reveal)", () => {
     const html = renderCard("story");
     assert.ok(
       !html.includes("pin-compare-line"),
-      "the hit card must not show the pin-compare line",
+      "the hit card must not show the pin-compare ledger",
+    );
+  });
+
+  it("country edition renders the detail ledger with the honest 'near' qualifier", () => {
+    setPinScenario(
+      { admin1: null, country: "Italy" },
+      { admin1: null, country: "Italy" },
+      "Your pin: near Cagliari, Sardinia · True spot: Reggio di Calabria, Calabria",
+    );
+    const html = renderCard("done", "country");
+    const ledger = ledgerHtml(html);
+    assert.ok(
+      ledger.includes("Cagliari, Sardinia"),
+      "the pin side names the nearest place",
+    );
+    assert.ok(
+      ledger.includes("near "),
+      "the honest 'near' qualifier survives as sentence-case quiet text (NOT italic)",
+    );
+    assert.ok(
+      !ledger.includes("<i>near"),
+      "the qualifier is never italic (dyslexia-safe)",
+    );
+  });
+
+  it("globe edition renders the symmetric country-level ledger", () => {
+    setPinScenario(
+      { admin1: null, country: "Italy" },
+      { admin1: null, country: "Italy" },
+      "Your pin: Italy · True spot: Italy",
+    );
+    const html = renderCard("done", "globe");
+    const ledger = ledgerHtml(html);
+    assert.ok(
+      ledger.includes("Italy"),
+      "globe ledger names the country on the pin side, never admin-1 or 'near <city>'",
+    );
+    assert.ok(!ledger.includes("near "), "globe never uses the 'near' qualifier");
+  });
+
+  it("country edition with no honest detail falls back to the classic verdict", () => {
+    setPinScenario(
+      { admin1: null, country: "Italy" },
+      { admin1: null, country: "Italy" },
+    );
+    const html = renderCard("done", "country");
+    const ledger = ledgerHtml(html);
+    assert.ok(
+      ledger.includes("Right country, wrong town!"),
+      "gate failure must render the classic verdict — never silently drop",
+    );
+  });
+
+  it("grade chip renders next to the verdict with score bands", () => {
+    setPinScenario(null, null);
+    const html = renderCard("done");
+    // Miss scores 0 → the 💨 miss tier, with the band name in aria.
+    assert.ok(
+      html.includes('aria-label="Grade: miss"'),
+      "the miss verdict carries the grade chip (Grade: miss)",
+    );
+  });
+
+  it("hit verdict carries the score grade chip", () => {
+    setPinScenario(null, null);
+    const html = renderCard("story", "state", {
+      lon: -96.7,
+      lat: 41.1,
+      distanceKm: 12.3,
+      placeId: "worker-b-test-place",
+      breakdown: {
+        base: 97,
+        difficulty: 2,
+        diffMult: 1.25,
+        streak: 1,
+        combo: 1.05,
+        regionBonus: 15,
+        regionBonusLabel: "state",
+        score: 350,
+      },
+      streakBefore: 0,
+    });
+    assert.ok(
+      html.includes('aria-label="Grade: 300+"'),
+      "a 350-point hit carries the 🎯 300+ grade chip",
+    );
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Miss bearing headline (P0-2, gis-review-gaps)
+// ---------------------------------------------------------------------------
+// The fixture miss vector runs from the drop (-96.7, 41.1) to the truth
+// (-77.03, 38.9): initial bearing 91.9° → "east". The drop is in Nebraska
+// (a USA play), so the headline reads miles per the unit rule (Veeresh's
+// ratified decision 4): 1234.5 km ≈ 767 mi — magnitude + direction, the
+// reference shape UX approved.
+describe("result-card — miss bearing headline", () => {
+  it("miss headline names direction: '767 mi east of your pin' (USA play → miles)", () => {
+    setPinScenario(null, null);
+    const html = renderCard("done");
+    assert.ok(html.includes('data-testid="miss-headline"'));
+    assert.ok(
+      html.includes("767 mi east of your pin"),
+      "the miss headline must teach direction as well as distance, in miles for a USA play",
+    );
+    assert.ok(
+      !html.includes("767 mi off"),
+      "the legacy '{distance} off' line is replaced when a bearing exists",
+    );
+  });
+
+  it("hit (phase story) shows no bearing — miss-only", () => {
+    setPinScenario(null, null);
+    const html = renderCard("story");
+    assert.ok(
+      !html.includes("of your pin"),
+      "the hit card must never show a bearing",
+    );
+    assert.ok(!html.includes('data-testid="miss-headline"'));
+  });
+
+  it("miss with no drop renders the bare 'Miss' headline", () => {
+    setPinScenario(null, null);
+    const html = renderCard("done", "state", null);
+    assert.ok(html.includes('data-testid="miss-headline"'));
+    assert.ok(
+      html.includes(">Miss</h2>"),
+      "no drop → no distance, no bearing, just 'Miss' (verdict h2)",
+    );
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Cartographer's Plate PR3 — three-zone scroll architecture (spec §5)
+// ---------------------------------------------------------------------------
+// Pinned header (meta band + verdict h2) / single scrolling body / pinned
+// CTA. The two nested max-h-44 story scrollers are folded into the one
+// body region; the verdict is an h2 reading "Result: …" with a
+// visually-hidden "Result: " prefix. renderToString-based (no DOM infra).
+describe("result-card PR3 — three-zone scroll architecture", () => {
+  it("the card is a three-zone flex column, theme-aware chrome", () => {
+    setPinScenario(null, null);
+    const html = renderCard("done");
+    assert.ok(
+      html.includes("result-card"),
+      "the section must carry the .result-card three-zone shell",
+    );
+    assert.ok(
+      !html.includes("atlas-dark-scope"),
+      "PR3 re-chromes theme-aware: the dark-scope override is deleted",
+    );
+    assert.ok(
+      !html.includes("overflow-y-auto"),
+      "the section itself must not scroll — only the body region scrolls",
+    );
+    assert.ok(html.includes("result-header"), "zone 1: pinned header");
+    assert.ok(html.includes("result-body"), "zone 2: scrolling body");
+    assert.ok(html.includes("result-cta"), "zone 3: pinned CTA");
+  });
+
+  it("the verdict is an h2 with the visually-hidden 'Result: ' prefix", () => {
+    setPinScenario(null, null);
+    const html = renderCard("done");
+    assert.ok(
+      /<h2[^>]*data-testid="miss-headline"[^>]*>/.test(html),
+      "the miss verdict keeps the miss-headline E2E seam on an h2",
+    );
+    assert.ok(
+      html.includes('<span class="sr-only">Result: </span>'),
+      "the verdict h2 reads “Result: …” via the visually-hidden prefix",
+    );
+    assert.ok(
+      html.includes("767 mi east of your pin</h2>"),
+      "the verdict headline keeps the distance + bearing copy",
+    );
+  });
+
+  it("the hit verdict is an h2 too (no miss-headline seam on hits)", () => {
+    setPinScenario(null, null);
+    const html = renderCard("story");
+    assert.ok(
+      !html.includes('data-testid="miss-headline"'),
+      "the hit card must not carry the miss-headline seam",
+    );
+    assert.ok(
+      html.includes('<span class="sr-only">Result: </span>'),
+      "the hit verdict h2 also reads “Result: …”",
+    );
+  });
+
+  it("the body is a single named scroll region; nested scrollers are gone", () => {
+    setPinScenario(null, null);
+    for (const phase of ["story", "done"] as const) {
+      const html = renderCard(phase);
+      assert.ok(
+        html.includes('aria-label="Place details — scroll for more"'),
+        `${phase}: the body region must be named per spec §8.1`,
+      );
+      assert.ok(
+        html.includes('role="region"'),
+        `${phase}: the body region must expose role="region"`,
+      );
+      assert.ok(
+        !html.includes("max-h-44"),
+        `${phase}: the nested max-h-44 story scrollers are folded into the body`,
+      );
+    }
+  });
+
+  it("the pinned CTA carries “Next place →”, full-width, 48px minimum", () => {
+    setPinScenario(null, null);
+    const html = renderCard("done");
+    assert.ok(
+      html.includes("Next place →"),
+      "the CTA reads “Next place →” (spec §5)",
+    );
+    assert.ok(
+      html.includes("min-h-[48px]"),
+      "the CTA keeps the 48px motor minimum (§8.10)",
+    );
+  });
+
+  it("the frozen E2E seams survive the restructure, never renamed", () => {
+    // pin-compare-line needs resolvable pins (fail-closed: null pins →
+    // no ledger), so it renders under the Nebraska scenario.
+    setPinScenario(
+      { admin1: "Nebraska", country: "United States" },
+      { admin1: "District of Columbia", country: "United States" },
+    );
+    const done = renderCard("done");
+    for (const seam of ["difficulty-chip", "pin-compare-line", "miss-headline"]) {
+      assert.ok(
+        done.includes(`data-testid="${seam}"`),
+        `E2E seam "${seam}" must survive, never renamed`,
+      );
+    }
+    setPinScenario(null, null);
+    // score-breakdown renders only when the drop carries a breakdown.
+    const scored = renderCard("story", "state", {
+      lon: -96.7,
+      lat: 41.1,
+      distanceKm: 12.3,
+      placeId: "worker-b-test-place",
+      breakdown: {
+        base: 97,
+        difficulty: 2,
+        diffMult: 1.25,
+        streak: 1,
+        combo: 1.05,
+        regionBonus: 15,
+        regionBonusLabel: "state",
+        score: 350,
+      },
+      streakBefore: 0,
+    });
+    assert.ok(
+      scored.includes('data-testid="score-breakdown"'),
+      'E2E seam "score-breakdown" must survive, never renamed',
+    );
+    // growth-line renders only when the learning-outcomes flag sets a line
+    // (GrowthLine returns null otherwise) — the seam lives in source.
+    const src = readFileSync(
+      new URL("./result-card.tsx", import.meta.url),
+      "utf8",
+    );
+    assert.ok(
+      src.includes('data-testid="growth-line"'),
+      'E2E seam "growth-line" must survive, never renamed',
+    );
+  });
+
+  it("the scroll cue module is wired (fade + ⋯ + more below)", () => {
+    setPinScenario(null, null);
+    const html = renderCard("done");
+    // renderToString never runs effects: the cue starts hidden, but the
+    // hook + component must be wired in source.
+    assert.ok(
+      html.includes("scroll-cue-wrap"),
+      "the body needs the scroll-cue wrapper",
+    );
+    const src = readFileSync(
+      new URL("./result-card.tsx", import.meta.url),
+      "utf8",
+    );
+    assert.ok(
+      src.includes('} from "@/components/scroll-cue"'),
+      "the card must use the shared scroll-cue module",
+    );
+    assert.ok(
+      src.includes("<ScrollCue visible={moreBelow} />"),
+      "the cue renders from the more-below state",
     );
   });
 });

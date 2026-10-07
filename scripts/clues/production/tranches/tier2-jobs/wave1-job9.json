@@ -1,0 +1,912 @@
+[
+  {
+    "rank": 174,
+    "place_id": "gn-3098722",
+    "input": {
+      "place": {
+        "place_id": "gn-3098722",
+        "name": "Gorzów Wielkopolski",
+        "country": "Poland",
+        "subdivision": "Lubusz",
+        "lat": 52.73371,
+        "lon": 15.22505
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gorzów Wielkopolski",
+          "url": "https://en.wikipedia.org/wiki/Gorz%C3%B3w_Wielkopolski",
+          "text": "Gorzów Wielkopolski (Polish pronunciation: [ˈɡɔʐuv vjɛlkɔˈpɔlskʲi] ; formerly German: Landsberg an der Warthe), often simplified to Gorzów, is a city in western Poland, located on the Warta River. Alongside Zielona Góra, it is one of the two principal cities and seats of the Lubusz Voivodeship, with a population of 114,567 as of 30 June 2024.\nThe city has a history dating back to the 13th century and serves as a cultural, economic, and industrial hub in the region. Gorzów Wielkopolski is home to several historical landmarks, green spaces, and educational institutions, and is known for its strong tradition in speedway racing.\nAround Gorzów, there are two large forest areas: Gorzów Woods to the north, where the Barlinek-Gorzów Landscape Park is situated, and Noteć Woods to the southeast. The biggest oil fields in Poland are located near Gorzów."
+        },
+        {
+          "article": "Gorzów Wielkopolski (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Gorz%C3%B3w_Wielkopolski#Climate",
+          "text": "Gorzów Wielkopolski has an oceanic climate (Köppen climate classification: Cfb) using the isotherm or a humid continental climate (Köppen climate classification: Dfb) using the isotherm."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 25,
+      "leadWords": 137,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives river geography, forest areas, and oil fields but states no climate mechanism, extreme, paradox, or weather pattern at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "gorzow wielkopolski",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "gorzow",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "wielkopolski",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 175,
+    "place_id": "gn-7828758",
+    "input": {
+      "place": {
+        "place_id": "gn-7828758",
+        "name": "Saipan",
+        "country": "Northern Mariana Islands",
+        "subdivision": "Saipan",
+        "lat": 15.21233,
+        "lon": 145.7545
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saipan, Northern Mariana Islands",
+          "url": "https://en.wikipedia.org/wiki/Saipan,_Northern_Mariana_Islands",
+          "text": "Saipan () is the largest island and capital of the Northern Mariana Islands, an unincorporated territory of the United States in the western Pacific Ocean. According to 2020 estimates by the United States Census Bureau, the population of Saipan was 43,385. Its people have been United States citizens since the 1980s. Saipan is one of the main homes of the Chamorro and the Carolinians, the indigenous people of the Mariana Islands.\nFrom the 17th century, the island experienced Spanish occupation and rule until the Spanish–American War of 1898, when Saipan was briefly occupied by the United States, before being formally sold to Germany. About 15 years of German rule were followed by 30 years of Japanese rule, which was ended by the Battle of Saipan, as the United States began to take control of the Philippine Sea. Following World War II, Saipan became part of the Trust Territory of the Pacific Islands, and was administered by the United States, along with the rest of the Northern Marianas. In 1978, Saipan formally joined the United States as part of the Commonwealth of the Northern Mariana Islands.\nToday, Saipan is home to about 90% of the population of the Northern Mariana Islands. It hosts many resorts, golf courses, beaches, nature sites, and World War II historical sites. The legislative and executive branches of Commonwealth government are located in the village of Capitol Hill on the island, while the judicial branch is headquartered in the village of Susupe. Since the entire island is organized as a single municipality, most publications designate Saipan as the Commonwealth's capital. As of 2025, Saipan's mayor is Ramon Camacho and the governor of the Northern Mariana Islands is David M. Apatang.\nSaipan was hit by Super Typhoon Yutu in 2018, which caused widespread damage. It was previously hit in 2015 by Super Typhoon Soudelor, causing extensive damage to houses and commercial property."
+        },
+        {
+          "article": "Saipan, Northern Mariana Islands (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Saipan,_Northern_Mariana_Islands#Climate",
+          "text": "Saipan has a borderline tropical rainforest climate (Köppen Af)/tropical monsoon climate (Köppen Am), moderated by seasonal trade winds from the northeast from November–March, and easterly winds from May to October. Average year-round maximum temperature is . There is little seasonal temperature variation, and Saipan has been cited by the Guinness Book of World Records as having the least fluctuating temperatures in the world. However, the temperature is affected by elevation; hence, the island shows considerable variations between coastal and mountainous areas.\nThe drier season runs from December–June and the rainier season from July–November. Typhoon season runs from July–December, and Saipan, along with the rest of the Mariana Islands, is subject to at least one typhoon each year."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 117,
+      "leadWords": 314,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract names only one-off super typhoon hits in 2015 and 2018, which do not qualify as climate, and states no general climate mechanism, extreme pattern, or paradox",
+      "priorMissing": "general place-specific climate mechanism, seasonal rhythm, or paradox beyond single past typhoon events"
+    },
+    "banned_terms": [
+      {
+        "term": "saipan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 176,
+    "place_id": "gn-1175864",
+    "input": {
+      "place": {
+        "place_id": "gn-1175864",
+        "name": "Jhelum",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 32.93448,
+        "lon": 73.73102
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jhelum",
+          "url": "https://en.wikipedia.org/wiki/Jhelum",
+          "text": "Jhelum (also known as Jehlum) (; Punjabi / Urdu: جہلم) is a city on the western bank of the Jhelum River in Punjab, Pakistan. Located in northern Punjab, it is the capital of the Jhelum District. The city is nicknamed the \"City of Soldiers\" or \"Land of Martyrs and Warriors\" since many soldiers from the area served in the British Indian Army and later, the Pakistan Armed Forces, due to characterisation of Punjabi tribes as a 'martial race'.\nJhelum is several miles upstream from the site of the ancient Battle of the Hydaspes between the armies of Alexander III of Macedon and Porus. The location of the modern city of Jhelum could conceivably have been the site of the capital of Paurava. The name of the nearby city Bucephala commemorates the death of Alexander's horse, Bucephalus. Other notable areas nearby include the 16th-century Rohtas Fort and the Tilla Jogian complex of ancient temples. The ancient Grand Trunk Road passes through the city. According to the 2023 Pakistani census, the population of Jhelum was 312,426. Today, there are a number of industries in Jhelum, including a tobacco factory and wood, marble, glass and flour mills."
+        },
+        {
+          "article": "Jhelum (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Jhelum#Climate",
+          "text": "Jhelum has a monsoon-influenced humid subtropical climate (Köppen Cwa) and is extremely hot and humid in summer, and pleasant and generally dry in winter. The maximum recorded temperature in the pre-monsoon season of April to June is , whereas in winter the lowest temperature recorded is . The average annual rainfall is about , which is much below the required level given the extremely high evaporation levels. Nevertheless, in the rainy season, water torrents flow from the north to the Jhelum River very rapidly and cause damage to the crops, bridges, and roads. This is responsible for the soil erosion in the district.\nOver the years, global climate change has affected Jhelum as well as any other place on Earth. Below, comparison charts from Weatherbase and NOAA show the difference in rainfall between 1990 and 2015:"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 136,
+      "leadWords": 194,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives river geography and soldier history but states no climate mechanism, extreme, paradox, or weather pattern at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "jhelum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 177,
+    "place_id": "gn-1267995",
+    "input": {
+      "place": {
+        "place_id": "gn-1267995",
+        "name": "Kanpur",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 26.46523,
+        "lon": 80.34975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kanpur",
+          "url": "https://en.wikipedia.org/wiki/Kanpur",
+          "text": "Kanpur (/kɑːnˈpʊər/ , Hindi pronunciation: [kaːn̪.pʊɾ]), originally named Kanhapur and formerly anglicized as Cawnpore, is a large city in the Indian state of Uttar Pradesh. Founded by Rajput ruler Hindu Singh Chandel, Kanpur became one of the most important commercial and military stations of British Raj. \nThe city is home to historical monuments such as the Jajmau Ghat which dates back to the 17th century AD. Kanpur is also home to several historical sites such as the Kanpur Museum, Bhitargaon Temple, European Cemetery and Nanarao Park.\nIt is the 12th most populous city and the 11th most populous urban agglomeration in India (2011 census). Kanpur was an important British garrison town until 1947, when India gained independence. The urban district of Kanpur Nagar serves as the headquarters of the Kanpur division, Kanpur Range and Kanpur Zone.\nIt was the most populous urban city in the 2011 Indian census and the largest urban agglomeration in Uttar Pradesh, while the population of city and its suburbs were around 5 million, making it the eighth-most populous metropolitan area in India."
+        },
+        {
+          "article": "Kanpur (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Kanpur#Climate",
+          "text": "Like most of lowland northern India, Kanpur has a monsoon-influenced humid subtropical climate (Cwa) bordering on a hot semi-arid climate (BSh) under the Köppen climate classification. Kanpur sees an annual precipitation of . The southwest monsoon enters around 20–23 June, and total precipitation from the monsoon is . Southwest monsoon withdrawal takes place generally between the last week of September and the first week of October. The month of October saw heavy monsoon rains in the years 1971 (133 mm), 1985 (367 mm), 1999 (137 mm), 2013 (143 mm), and 2022 (225 mm), and 2024.\nAnnual precipitation reached at least in 2008, 2010, 2013, 2018–2022 and 2024.\nKanpur has been ranked the fifth best National Clean Air City in India under Category 1 (cities with populations greater than ) by the Central Pollution Control Board."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 135,
+      "leadWords": 177,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives state geography, a founder, and garrison history but states no climate mechanism, extreme, paradox, or weather pattern at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kanpur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 178,
+    "place_id": "gn-1736309",
+    "input": {
+      "place": {
+        "place_id": "gn-1736309",
+        "name": "Alor Setar",
+        "country": "Malaysia",
+        "subdivision": "Kedah",
+        "lat": 6.12104,
+        "lon": 100.36014
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alor Setar",
+          "url": "https://en.wikipedia.org/wiki/Alor_Setar",
+          "text": "Alor Setar (Kedah Malay: Loqstaq), known as Alor Star from 2003 to 2009, is the state capital of Kedah, Malaysia. It is the second-largest city in the state, after Sungai Petani, and one of the most important cities on the west coast of Peninsular Malaysia. It is home to the third-tallest tower in Malaysia, the Alor Setar Tower.\nIts location along the main travel corridor from Malaysia to Thailand has long made it a major transportation hub in the northern Malay Peninsula. Alor Setar sits along the country's longest expressway, located 430 km (270 mi) from Kuala Lumpur and 79 km (49 mi) north of George Town, Penang. From Thailand, the city is easily accessible via the Padang Besar–Sadao Highway, it is 51.8 km (32.2 mi) from Sadao and 106 km (66 mi) from Hat Yai.\nThe city was originally founded as Kota Setar in 1785. Owing to the long status as the capital of Kedah, Alor Setar is regarded as one of the core cultural centres for the Kedahan Malays. It is also among the key pioneer in the Malayan transportation history, the railway station was commissioned in 1915 followed by its airport in 1929.\nAlor Setar is home to the Central State Administration Centre and is the administrative centre of Kota Setar District. At present, the city covers a land area of 666 km2 (257 mi2), which is occupied by more than 400,000 inhabitants (as per the 2020 census). At the local-government level, Alor Setar is administered by the Alor Setar City Council.\nIt is the birthplace of two pivotal prime ministers of Malaysia; namely Tunku Abdul Rahman, the founding father of the nation (in office from 1957 to 1970) and Mahathir Mohamad, the country's longest-serving prime minister of 24 years (in office from 1981 to 2003, from 2018 to 2020)."
+        },
+        {
+          "article": "Alor Setar (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Alor_Setar#Climate",
+          "text": "Alor Setar features a tropical monsoon climate (Am) under the Köppen climate classification. ←\nAlor Setar has a very lengthy wet season. As is common in several regions with this climate, precipitation is seen even during the short dry season. Temperatures are relatively consistent throughout the course of the year, with average high temperatures around 32 degrees Celsius and average low temperatures around 23 degrees Celsius. Alor Setar has an average of annual precipitation."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 74,
+      "leadWords": 303,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives west-coast geography, founding in 1785, and transport history but states no climate mechanism, extreme, paradox, or weather pattern at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "alor setar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alor",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "setar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 179,
+    "place_id": "gn-2229748",
+    "input": {
+      "place": {
+        "place_id": "gn-2229748",
+        "name": "Kumbo",
+        "country": "Cameroon",
+        "subdivision": "North-West",
+        "lat": 6.2,
+        "lon": 10.66667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kumbo",
+          "url": "https://en.wikipedia.org/wiki/Kumbo",
+          "text": "Kumbo, also known as Kimbo, is the second-largest city in the North West Province of Cameroon and the capital of Bui Division. It lies about 2000m above sea level and is situated approximately 110 km away from Bamenda (the provincial capital of the North West Province), on the Bamenda Highlands Ring Road. Kumbo has a population of 80,212 (at the 2005 Census) and is split into three distinctive hilly settlements of Tobin, Mbveh, and Squares. The town is known for horse racing (Tobin Stadium ) and traditional medicine, and also for its palace (Nso Palace), a market and two hospitals (Shisong Hospital  & Banso Baptist Hospital ). Kumbo is the capital city of the Nso Kingdom of the Nso people. The lingua franca is Lamnso but\nPidgin,\nEnglish,\nOku,\nDjottin,\nFulfulde, French and\nHausa are spoken."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 136,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives high hilly geography and kingdom history but states no climate mechanism, extreme, paradox, or weather pattern at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kumbo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 180,
+    "place_id": "gn-2653261",
+    "input": {
+      "place": {
+        "place_id": "gn-2653261",
+        "name": "Cheltenham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.90006,
+        "lon": -2.07972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cheltenham",
+          "url": "https://en.wikipedia.org/wiki/Cheltenham",
+          "text": "Cheltenham ( CHELT-ən-əm) is a historic spa town and borough adjacent to the Cotswolds in Gloucestershire, England. Cheltenham became known as a health and holiday spa town resort following the discovery of mineral springs in 1716, and claims to be the most complete Regency town in Britain. It is directly northeast of Gloucester.\nThe town hosts several cultural festivals, often featuring nationally and internationally famous contributors and attendees: the Cheltenham Literature Festival, the Cheltenham Jazz Festival, the Cheltenham Science Festival, the Cheltenham Music Festival, the Cheltenham International Film Festival, the Cheltenham Cricket Festival and the Cheltenham Food & Drink Festival. In steeplechase horse racing, the Gold Cup is the main event of the Cheltenham Festival held every March. It is also home to a number of leading independent schools, including Cheltenham College and Cheltenham Ladies' College."
+        },
+        {
+          "article": "Cheltenham (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Cheltenham#Climate",
+          "text": "As with the vast majority of the British Isles, Cheltenham experiences a temperate oceanic climate (Cfb in the Köppen climate classification). It has warm summers and cool winters. The town held the British maximum temperature record from 1990 to 2003—temperatures reached . The absolute minimum is , set during December 1981. During a typical year, 139 days will report at least 1 mm of rain, and some 35.5 nights will record air frost."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 73,
+      "leadWords": 136,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract mentions mineral springs found in 1716, which are spring water rather than climate, and states no climate mechanism, extreme, paradox, or weather pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "cheltenham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 181,
+    "place_id": "gn-2984114",
+    "input": {
+      "place": {
+        "place_id": "gn-2984114",
+        "name": "Reims",
+        "country": "France",
+        "subdivision": "Grand Est",
+        "lat": 49.26526,
+        "lon": 4.02853
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Reims",
+          "url": "https://en.wikipedia.org/wiki/Reims",
+          "text": "Reims ( REEMZ; French: [ʁɛ̃s] ; also spelled Rheims in English) is the most populous city in the French department of Marne, and the 12th most populous city in France. The city lies 129 km (80 mi) northeast of Paris on the Vesle river, a tributary of the Aisne.\nFounded by the Gauls, Reims became a major city in the Roman Empire. Reims later played a prominent ceremonial role in French monarchical history as the traditional site of the coronation of the kings of France. The royal anointing was performed at the Cathedral of Reims, which housed the Holy Ampulla of chrism allegedly brought by a white dove at the baptism of Frankish king Clovis I in 496. For this reason, Reims is often referred to in French as la cité des sacres (\"the Coronation City\").\nReims is recognized for the diversity of its heritage, ranging from Romanesque to Art-déco. Reims Cathedral, the adjacent Palace of Tau, and the Abbey of Saint-Remi were listed together as a UNESCO World Heritage Site in 1991 because of their outstanding Romanesque and Gothic architecture and their historical importance to the French monarchy. Reims also lies on the northern edge of the Champagne wine region and is linked to its production and export."
+        },
+        {
+          "article": "Reims (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Reims#Climate",
+          "text": "Reims has an oceanic climate (Köppen Cfb), influenced by its inland position. This renders that although the maritime influence moderates averages, it nevertheless is prone to hot and cold extremes in certain instances. Reims has a relatively gloomy climate due to the said maritime influence and the dominance of low-pressure systems for much of the year. In spite of this, the amount of precipitation is fairly limited."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 67,
+      "leadWords": 209,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives river geography, Gaulish and Roman history, and a wine-region edge but states no climate mechanism, extreme, paradox, or weather pattern at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "reims",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 182,
+    "place_id": "gn-3660689",
+    "input": {
+      "place": {
+        "place_id": "gn-3660689",
+        "name": "Ambato",
+        "country": "Ecuador",
+        "subdivision": "Tungurahua Province",
+        "lat": -1.24908,
+        "lon": -78.61675
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ambato, Ecuador",
+          "url": "https://en.wikipedia.org/wiki/Ambato,_Ecuador",
+          "text": "Ambato (Spanish pronunciation: [amˈbato]; full form, San Juan de Ambato; Quechua: Ampatu Llaqta) is a city located in the central Andean valley of Ecuador. Lying on the banks of the Ambato River, the city also sits beneath several tall mountains. It is the capital city of the Tungurahua Province, situated at an elevation of 2,577 meters above sea level. It is variously nicknamed \"City of Flowers and Fruits\", \"Land of the Three Juans\", and \"Garden of Ecuador.\" Ambato's inhabitants are called Ambateños or Guaytambos (after a type of native peach that the valley is famous for producing). The current mayor of Ambato is Diana Caiza.\nThe city has been fully or partially destroyed by earthquakes several times in its history, most recently on August 5, 1949, when the city and its cathedral were almost completely devastated. The city was rebuilt in the following two years. In honour of the tenacity of their residents, Ambato celebrates \"The Festival of Fruits and Flowers\" during Carnival in February. Today, the Festival of Fruits and Flowers is one of the most important festivities in Ecuador.\nThe city is referred to as \"Land of the Three Juans\" as it was the birthplace of three notable Ecuadorians: Juan Montalvo, a noted essay writer of the 19th century, Juan León Mera, the author of the country's national anthem, and Juan Benigno Vela, a key figure in the Ecuadorian independence movement. The city is well known for its production of fruit, tanneries, food products and textiles.\nIt also serves as a major transportation hub, especially for travelers moving south on the Pan-American Highway."
+        },
+        {
+          "article": "Ambato, Ecuador (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Ambato,_Ecuador#Climate",
+          "text": "Ambato has a subtropical highland climate (Köppen climate classification Cfb) with mild afternoons and cool nights all year long due to its elevation of 2400 m above sea level and location near the equator. Its climate is similar to other Andean cities in Ecuador, such as Quito or Cuenca."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 49,
+      "leadWords": 265,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives Andean valley geography and repeated earthquake destruction, which is not climate, and states no climate mechanism, extreme, paradox, or weather pattern",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "ambato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 183,
+    "place_id": "gn-379252",
+    "input": {
+      "place": {
+        "place_id": "gn-379252",
+        "name": "Khartoum",
+        "country": "Sudan",
+        "subdivision": "Khartoum",
+        "lat": 15.55177,
+        "lon": 32.53241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khartoum",
+          "url": "https://en.wikipedia.org/wiki/Khartoum",
+          "text": "Khartoum, also spelled Khartum, is the capital and most populous city of Sudan as well as Khartoum State. With an estimated population of 7.1 million people, Greater Khartoum is the largest urban area in Sudan.\nKhartoum is located at the confluence of the White Nile – flowing north from Lake Victoria – and the Blue Nile, flowing west from Lake Tana in Ethiopia. Divided by these two parts of the Nile, the Khartoum metropolitan area is a tripartite metropolis consisting of Khartoum proper and linked by bridges to Khartoum North (الخرطوم بحري al-Kharṭūm Baḥrī) and Omdurman (أم درمان Umm Durmān) to the west. The place where the two Niles meet is known as al-Mogran or al-Muqran (المقرن; English: \"The Confluence\").\nKhartoum was founded in 1821 by Muhammad Ali Pasha, north of the ancient city of Soba. In 1882, the British Empire took control of the Egyptian government, leaving the administration of Sudan in the hands of the Egyptians. At the outbreak of the Mahdist War, the British attempted to evacuate Anglo-Egyptian garrisons from Sudan but the Siege of Khartoum in 1884 resulted in the capture of the city by Mahdist forces and a massacre of the defending Anglo-Egyptian garrison. In 1898 it was reoccupied by British forces and was the seat of Anglo-Egyptian Sudan's government until 1956.\nIn 1956, the city was designated as the capital of an independent Sudan. Three hostages were killed during the attack on the Saudi Embassy in Khartoum in 1973.\nIn 2008, the Justice and Equality Movement engaged in combat in the city with the Sudanese Armed Forces as part of the War in Darfur. The Khartoum massacre occurred in 2019 during the Sudanese Revolution. Between 2023 and 2025, the city saw extensive combat during the civil war involving the armed forces and the Rapid Support Forces (RSF), affecting Khartoum International Airport and other critical sites. In 2025, the Sudanese armed forces recaptured Khartoum from the RSF, leaving widespread destruction.\nKhartoum is an economic and trade center in North Africa, with rail lines from Port Sudan and El Obeid. It is served by Khartoum International Airport with the New Khartoum International Airport under construction. Several national and cultural institutions are in Khartoum and its metropolitan area, including the National Museum of Sudan, the Khalifa House Museum, the University of Khartoum, and the Sudan University of Science and Technology."
+        },
+        {
+          "article": "Khartoum (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Khartoum#Climate",
+          "text": "Khartoum features a hot desert climate (Köppen BWh) with a dry season occurring during winter, typical of the Saharo-Sahelian zone, which marks the progressive passage between the Sahara Desert's vast arid areas and the Sahel's vast semi-arid areas. The climate is extremely dry for most of the year, with about eight months when average rainfall is lower than . The very long dry season is itself divided into a warm, very dry season between November and February, as well as a very hot, dry season between March and May. During this part of the year, hot, dry continental trade winds from deserts, such as the harmattan, sweep over the region; the weather is stable and very dry.\nThe very irregular, very brief, rainy season lasts about 1 month as the maximum rainfall is recorded in August, with about . The rainy season is characterized by a seasonal reverse of wind regimes, when the Intertropical Convergence Zone goes northerly. Average annual rainfall is very low, with only of precipitation. Khartoum records on average six days with or more and 19 days with or more of rainfall. The highest temperatures occur during two periods in the year: the first at the late dry season, when average high temperatures consistently exceed from April to June, and the second at the early dry season, when average high temperatures exceed in September and October. Temperatures cool off somewhat during the night, with Khartoum's lowest average low temperature of the year, in January, just above . Khartoum is one of the hottest major cities on Earth, with annual mean temperatures hovering around . The city also has very warm winters. In no month does the average monthly high temperature fall below . This is something not seen in other major cities with hot desert climates, such as Riyadh, Baghdad and Phoenix."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 305,
+      "leadWords": 393,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives the meeting of two great rivers and a founding in 1821 but states no climate mechanism, extreme, paradox, or weather pattern at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "khartoum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 184,
+    "place_id": "gn-3985710",
+    "input": {
+      "place": {
+        "place_id": "gn-3985710",
+        "name": "Cabo San Lucas",
+        "country": "Mexico",
+        "subdivision": "Baja California Sur",
+        "lat": 22.89088,
+        "lon": -109.91238
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cabo San Lucas",
+          "url": "https://en.wikipedia.org/wiki/Cabo_San_Lucas",
+          "text": "Cabo San Lucas (Spanish pronunciation: [ˈkaβo san ˈlukas], 'Saint Luke Cape'), also known simply as Cabo, is a resort city at the southern tip of the Baja California peninsula, in the Mexican state of Baja California Sur. As of the 2020 Census, the population of the city was 202,694. Cabo San Lucas and the neighboring San José del Cabo are collectively known as Los Cabos. Together, they form a metropolitan area of 351,111 inhabitants.\nRated as one of Mexico's top tourist destinations, Cabo San Lucas is known for its beaches, scuba diving locations, Balnearios, the sea arch El Arco de Cabo San Lucas, and marine life. The Los Cabos Corridor has become a heavily trafficked vacation destination for tourists, with numerous resorts and timeshares along the coast between Cabo San Lucas and San José del Cabo.\nThe waters around Cabo are home to a variety of marine wildlife including rays, sharks, mahi-mahi (dorado), and striped marlin."
+        },
+        {
+          "article": "Cabo San Lucas (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Cabo_San_Lucas#Climate",
+          "text": "Like the rest of the extreme south of Baja California, Cabo San Lucas has a hot desert climate (Köppen: BWh).\nDuring summer, Cabo San Lucas is cooler than San José del Cabo by about . Sometimes during the summer, when winds blow from the Pacific Ocean instead of the Gulf of California, the differences in temperatures between San José del Cabo and Cabo San Lucas are higher.\nCabo San Lucas is less rainy than San José del Cabo, although hurricanes can bring heavy rain for long periods. Hurricane Odile made landfall at Cabo San Lucas on 14 September 2014, and caused widespread damage. Due to the position of the city and orography, local summer thunderstorms do not get near enough to bring rain to the town.\nThe sea temperature experiences lows of in winter, and highs of during the summer months."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 141,
+      "leadWords": 156,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives peninsula-tip geography, beaches, and sea life but states no climate mechanism, extreme, paradox, or weather pattern at all",
+      "priorMissing": "place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "cabo san lucas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cabo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lucas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 185,
+    "place_id": "gn-4560349",
+    "input": {
+      "place": {
+        "place_id": "gn-4560349",
+        "name": "Philadelphia",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.95238,
+        "lon": -75.16362
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Philadelphia",
+          "text": "Philadelphia (  FIL-ə-DEL-fee-ə), colloquially referred to as Philly, is the most populous city in the U.S. state of Pennsylvania and the sixth-most populous city in the United States. Its population was 1.60 million at the 2020 census and estimated at 1.57 million in 2025. The Philadelphia metropolitan area, also known as the Delaware Valley, is located in both the Mid-Atlantic and northeastern United States; home to 6.33 million residents, it is the nation's ninth-largest metropolitan area. Philadelphia is known for its culture, cuisine, and history, maintaining contemporary influence in technology and business, sports, and music.\nPhiladelphia was founded in 1682 by William Penn, an English Quaker and advocate of religious freedom, and served as the capital of the colonial era Province of Pennsylvania. It then played a vital role during the American Revolution and Revolutionary War. It served as the central meeting place for the nation's Founding Fathers in hosting the First Continental Congress (1774) and the Second Continental Congress, during which the Founders formed the Continental Army, elected George Washington as its commander, and adopted the Declaration of Independence on July 4, 1776. During the Revolutionary War's Philadelphia campaign, the city fell to the British Army, which occupied Philadelphia for nine months from September 1777 to June 1778. Following the end of the Revolutionary War, the U.S. Constitution was ratified at the Philadelphia Convention. Philadelphia remained the largest U.S. city until 1790, and it served as the nation's first capital from May 10, 1775, until December 12, 1776, and on four subsequent occasions until 1800, when construction of the new national capital in Washington, D.C. was completed.\nWith 17 four-year universities and colleges in the city, Philadelphia is one of the nation's leading centers for higher education and academic research. As of 2023, the Philadelphia metropolitan area had a gross metropolitan product of US$557.6 billion and is home to 13 Fortune 500 corporate headquarters. Metropolitan Philadelphia ranks as one of the nation's Big Five tech venture capital hubs, facilitated by its proximity central to both the financial ecosystems of New York City and the regulatory environment of Washington, D.C. Metropolitan Philadelphia is also a biotechnology hub and has garnered the nickname \"Cellicon Valley\" for its central role in the development of immunotherapies to treat different cancers. The Philadelphia Stock Exchange, owned by Nasdaq since 2008, is the nation's oldest stock exchange and a global leader in options trading. 30th Street Station, an important national railway crossroads, is the third-busiest Amtrak rail hub in the U.S., handling over 5.5 million passengers in 2025. In part aided by its central Mid-Atlantic U.S. geolocation, Philadelphia International Airport has become the largest transatlantic hub for American Airlines. The city's multimodal transportation and logistics infrastructure also includes the expanding PhilaPort seaport, and Interstate 95, the spine of the north–south highway axis linking the cities of the U.S. Eastern Seaboard.\nPhiladelphia has a culturally and philanthropically active LGBTQ+ community. The city has also played an influential historic and ongoing role in the development and evolution of American music, especially R&B, soul, and rock. The city hosts more outdoor sculptures and murals than any other city in the nation. Fairmount Park, when combined with adjacent Wissahickon Valley Park in the same watershed, has an area of 2,052 acres (830 ha), representing one of the nation's largest urban parks and the world's 55th largest. With five professional sports teams and one of the nation's most loyal and passionate fan bases, Philadelphia is often ranked as the nation's best city for professional sports fans.\nPhiladelphia is a city of many firsts, including the nation's first library (1731), hospital (1751), medical school (1765), national capital (1774), university (by some accounts) (1779), central bank (1781), stock exchange (1790), zoo (1874), and business school (1881). Philadelphia hosts 67 National Historic Landmarks, including Independence Hall. From the city's 17th century founding through the present, Philadelphia has been the birthplace of or home to many prominent and influential Americans."
+        },
+        {
+          "article": "Philadelphia (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Philadelphia#Climate",
+          "text": "Within the Köppen climate classification, Philadelphia falls under the northern periphery of the humid subtropical climate zone (Köppen Cfa), while under the Trewartha climate classification, the city is classified as a maritime climate (Do) bordered to the north by the continental (Dc) zone. Summers are typically hot and muggy. Fall and spring are generally mild, and winter is moderately cold. The plant life hardiness zones are 7a and 7b, reflecting an average annual extreme minimum temperature between .\nSnowfall is highly variable. Some winters have only light snow while others include major snowstorms. The normal seasonal snowfall averages , with rare snowfalls in November or April, and rarely any sustained snow cover. Seasonal snowfall accumulation has ranged from trace amounts in 1972–73, to in the winter of 2009–10.\nPrecipitation is generally spread throughout the year, with eight to eleven wet days per month, at an average annual rate of , but historically ranging from in 1922 to in 2011.\nThe January daily average temperature is . The temperature frequently rises to during thaws. July averages . Heat waves accompanied by high humidity and heat indices are frequent, with highs reaching or exceeding on 30 days of the year. The average window for freezing temperatures is November 6 to April 2, The lowest officially recorded temperature was on February 9, 1934. Temperatures at or below are rare, with the last such occurrence being January 19, 1994. The record high dew point is which occurred on July 15, 1995.\nAir quality\nPhiladelphia County received an ozone grade of F and a 24-hour particle pollution rating of D in the American Lung Association's 2017 State of the Air report, which analyzed data from 2013 to 2015. The city was ranked 22nd for ozone, 20th for short-term particle pollution, and 11th for year-round particle pollution. According to the same report, the city experienced a significant reduction in high ozone days since 2001—from nearly 50 days per year to fewer than 10—along with fewer days of high particle pollution since 2000—from about 19 days per year to about 3—and an approximate 30% reduction in annual levels of particle pollution since 2000.\nFive of the ten largest combined statistical areas (CSAs) were ranked higher for ozone: Los Angeles (1st), New York City (9th), Houston (12th), Dallas (13th), and San Jose, California (18th). Many smaller CSAs were also ranked higher for ozone, including Sacramento (8th), Las Vegas (10th), Denver (11th), El Paso (16th), and Salt Lake City (20th). Only two of those same ten CSAs, San Jose and Los Angeles, were ranked higher than Philadelphia for both year-round and short-term particle pollution."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 435,
+      "leadWords": 656,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all — no mechanism, extreme, paradox, or seasonal pattern; it covers founding, congresses, universities, and transport only",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "philadelphia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 186,
+    "place_id": "gn-7279746",
+    "input": {
+      "place": {
+        "place_id": "gn-7279746",
+        "name": "Noida",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 28.58,
+        "lon": 77.33
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Noida",
+          "url": "https://en.wikipedia.org/wiki/Noida",
+          "text": "Noida, short for New Okhla Industrial Development Authority, is a city located in Gautam Buddha Nagar district in the Indian state of Uttar Pradesh. It is a part of the National Capital Region (NCR). Situated in the floodplain region between the Yamuna and the Hindon rivers, the city was established in 1976, and is regarded as one of the most systematically planned cities in India. It was designed under the NCR planning strategy to decentralise growth from Delhi. The Gautam Buddha Nagar District, which includes the cities of Noida, Greater Noida and YEIDA City contributes, over 10% to the Uttar Pradesh GSDP, more than 2.5 times the state capital district of Lucknow, which contributes 4%.\nNoida is frequently ranked as one of India's greenest cities, boasting over 50% green cover, including botanical gardens and biodiversity parks. The city emphasises sustainable development, green corridors, and high-quality landscaping. As per provisional reports of Census of India, the population of Noida in 2011 was 642,381. The city is managed and maintained by the New Okhla Industrial Development Authority (NOIDA). The district's administrative headquarters are in the nearby city of Greater Noida. The city is a part of the Noida (Vidhan Sabha) constituency and Gautam Buddha Nagar (Lok Sabha) constituency. Noida was ranked as the \"Best City in Uttar Pradesh\" in the \"Best City Awards\" conducted by ABP News in 2015. It is also ranked the cleanest city in medium category cities (cities with a population of 300,000 to 1,000,000) and 4th cleanest city among cities with less than 1,000,000 people.\nNoida is a prominent IT hub of India, for several software development companies, such as Microsoft, Arm Holdings, HCL, Samsung and Barclays. The city has evolved into a prominent economic engine, owing to concentrations of information technology firms, electronics assembly, automotive production, logistics facilities and news broadcasting houses. As of August 2025, Noida accommodates approximately 11,000 industrial units. Noida is the leading mobile manufacturing hub in India, home to the Samsung, Xiaomi, Google Pixel, Vivo and OPPO, collectively responsible for over 60% of India's mobile production. A new planned city, Greater Noida extensions further expand capacity with new SEZs and tech parks."
+        },
+        {
+          "article": "Noida (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Noida#Climate",
+          "text": "Noida features a hot semi arid climate (BSh) under the Köppen climate classification.\nIn summer (March to June), the weather remains hot and the temperature ranges from a maximum of 48 °C to a minimum of 30 °C.\nMonsoon season prevails from late-June to mid-September.\nThe cold waves from the Himalayan region make the winters in Noida chilly and harsh. Temperatures can fall to as low as 2 °C at the peak of the winter season. Noida also has fog and smoke problems. In January, a dense fog envelops the city, reducing visibility on the streets.\nNoida has been ranked 6th best “National Clean Air City” under (Category 2 3-10L Population cities) in India."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 114,
+      "leadWords": 359,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate mechanism, extreme, or paradox; green cover, floodplain rivers, planning, and IT industry are not climate information",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "noida",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 187,
+    "place_id": "gn-747158",
+    "input": {
+      "place": {
+        "place_id": "gn-747158",
+        "name": "Fatih",
+        "country": "Türkiye",
+        "subdivision": "Istanbul",
+        "lat": 41.0225,
+        "lon": 28.94083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fatih",
+          "url": "https://en.wikipedia.org/wiki/Fatih",
+          "text": "Fatih (Turkish pronunciation: [ˈfaːtih]) or the Historical peninsula (in Turkish: Tarihi Yarımada),  is a municipality and district of Istanbul Province, Turkey. Its area is 15 km2 (5.8 sq mi), and its population is 368,227 as of 2022. It is home to almost all of the provincial authorities (including the mayor's office, police headquarters, metropolitan municipality and tax office) but not the courthouse. It encompasses the historical peninsula, coinciding with old Constantinople. In 2009, the district of Eminönü, which had been a separate municipality located at the tip of the peninsula, was once again remerged into Fatih because of its small population. Fatih is bordered by the Golden Horn to the north and the Sea of Marmara to the south, while the Western border is demarked by the Theodosian wall and the east by the Bosphorus Strait."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 136,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it gives only peninsula geography, bordering seas and walls, area, and population",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "fatih",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 188,
+    "place_id": "gn-1253986",
+    "input": {
+      "place": {
+        "place_id": "gn-1253986",
+        "name": "Udaipur",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 24.58584,
+        "lon": 73.71346
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Udaipur",
+          "url": "https://en.wikipedia.org/wiki/Udaipur",
+          "text": "Udaipur (Hindi: IPA: [ʊdəjpʊɾ], ) (ISO 15919: Udayapura) is a city in the north-western Indian state of Rajasthan, about 415 km (258 mi) south of the state capital Jaipur. It serves as the administrative headquarters of Udaipur district. It is the historic capital of the kingdom of Mewar in the former Rajputana Agency. It was founded in 1559 by Udai Singh II of the Sisodia clan of Rajputs, when he shifted his capital from the city of Chittorgarh to Udaipur after Chittorgarh was besieged by Akbar. It remained as the capital city till 1818 when Mewar became a British princely state, and thereafter the Mewar province became a part of Rajasthan when India gained independence in 1947. It is also known as the City of Lakes, as it is surrounded by five major artificial lakes.\nThe city is located in the southernmost part of Rajasthan near the Gujarat border. To its west is the Aravalli Range, which separates it from the Thar Desert. It is placed close to the median point between two major Indian metro cities, around 660km from Delhi and 800km from Mumbai. Besides, connectivity with Gujarat ports gives Udaipur a strategic geographical advantage. Udaipur is well connected with nearby cities and states by means of road, rail and air transportation facilities. The city is served by the Maharana Pratap Airport. Common languages spoken include Mewari, Rajasthani, Hindi and English.\nDubbed \"the most romantic spot on the continent of India\" by British administrator James Tod, Udaipur is a tourist destination and is known for its history, culture, scenic locations and the Rajput-era palaces. It has seven lakes surrounding the city. Five of the major lakes, namely Fateh Sagar Lake, Lake Pichola, Swaroop Sagar Lake, Rangsagar, and Doodh Talai Lake, have been included under the restoration project of the National Lake Conservation Plan (NLCP) of the Government of India. Besides lakes, Udaipur is also known for its historic forts and palaces, museums, galleries, natural locations and gardens, architectural temples, as well as traditional fairs, festivals and structures. Due to the several lakes present here, it is one of several cities in Asia that are sometimes called the \"Venice of the East\". Udaipur's economy is primarily driven by tourism, though minerals, marble processing, chemical manufacturing and development, electronic manufacturing and the handicraft industry are also contributors. Udaipur hosts several state and regional public offices, including offices of Director of Mines and Geology, Commissioner of Excise, Commissioner of Tribal Area Development, and Rajasthan State Mines and Mineral Corporation Limited, as well as major private companies like Hindustan Zinc Limited. Udaipur is rising as an educational hub as well, with 5 universities, 14 colleges and more than 160 high schools."
+        },
+        {
+          "article": "Udaipur (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Udaipur#Climate",
+          "text": "Udaipur city has a hot semi-arid climate. The three main seasons, summer, monsoon and winter respectively, dominate the city of Udaipur. Being located in the desert lands of Rajasthan, the climate and weather of Udaipur is usually hot. The summer season runs from mid-March to June and touches temperature ranging from to in the months of March to June. Monsoons arrive in the month of July heralded by dust and thunderstorms. With its greenery and lakes, the city is one of the top monsoon destinations of the country. The winter season prevails from the month of October till the month of March. Humidity, which prevails during monsoons, diminishes at the arrival of winters. The city observes pleasant sunny days and enjoyable cool nights with the temperature ranging from to .\nUdaipur's monsoon and winter climates are the most appealing time to visit. Tourists arrive in large numbers, anytime between mid-September to late March or early April. Even in January, the coldest month, the days are bright, sunny and warm with maximum temperature around . Mornings, evenings and nights are cold."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 180,
+      "leadWords": 448,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract states no climate mechanism, extreme, or paradox; lakes, a range separating the city from a desert, and palace tourism are geography and history, not a traceable climate clue",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "udaipur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 189,
+    "place_id": "gn-1583992",
+    "input": {
+      "place": {
+        "place_id": "gn-1583992",
+        "name": "Da Nang",
+        "country": "Vietnam",
+        "subdivision": "Da Nang City",
+        "lat": 16.06778,
+        "lon": 108.22083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Da Nang",
+          "url": "https://en.wikipedia.org/wiki/Da_Nang",
+          "text": "Da Nang (Vietnamese: Đà Nẵng, pronounced [ɗa˨˩ naŋ˨˩˦ˀ], also written unspaced as Danang), is the fourth largest city in Vietnam by population and the second largest by geographical area and located in the South Central Coast and Central Highlands. As one of the country's nine centrally-governed city, it falls under the administration of the central government. Da Nang's port and its location on National Route 1 and the North–South Railway makes it a transport hub. APEC 2017 was hosted in Da Nang. Da Nang has a Human Development Index of 0.800 (very high), ranking fifth among all municipalities and provinces of Vietnam. \nThe city was known as Cửa Hàn (Hàn River Estuary) during Đại Việt period when it was a small settlement, and as Tourane (or Turon) during French colonial rule between 1884 and 1945. Before 1997, the city was part of Quang Nam–Da Nang province. On 1 January 1997, Da Nang was separated from Quảng Nam province to become one of the centrally controlled municipalities. Da Nang is designated as a first class city. In a proposal announced in April 2025, which came into force starting 1 July that year, the new Da Nang city was formed by reabsorbing Quảng Nam whilst maintaining its political and administrative centres."
+        },
+        {
+          "article": "Da Nang (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Da_Nang#Geography",
+          "text": "Da Nang is surrounded by mountains to the west, and the South China Sea to the east. The central city is bisected by the Han River. Da Nang borders Huế across the Hải Vân Pass to the north. It is south of Hanoi, and north of Ho Chi Minh City. The city has a total land area of . Da Nang's topography is dominated by the Annamite Range to the north and north-west, which features peaks ranging from in height, and coastal plains with some salting to the south and east, with white sand beaches along the coast. On average, Da Nang receives of rainfall. Rainfall is highest between September and November (ranging from ) and lowest between February and April (ranging from ). Da Nang receives an average of 2162 hours of sunlight annually, with highs between 234 and 277 hours per month in May and June and lows between 69 and 165 hours per month in November and December."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 161,
+      "leadWords": 209,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it covers coastal location, port and rail transport, former names, and administrative separation only",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "da nang",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nang",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 190,
+    "place_id": "gn-1692565",
+    "input": {
+      "place": {
+        "place_id": "gn-1692565",
+        "name": "Pulilan",
+        "country": "Philippines",
+        "subdivision": "Central Luzon",
+        "lat": 14.90167,
+        "lon": 120.84917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pulilan",
+          "url": "https://en.wikipedia.org/wiki/Pulilan",
+          "text": "Pulilan, officially the Municipality of Pulilan (Tagalog: Bayan ng Pulilan, Kapampangan: Balen ning Pulilan), is a  municipality in the province of Bulacan, Philippines. According to the 2024 census, it has a population of 111,384 people.\nThe town is famous for its Carabao Festival where carabaos are paraded and kneel as they pass through San Isidro Labrador Parish Church, in honor to the town's patron saint, San Isidro Labrador.\nMany years ago, Pulilan was primarily a little-known rural town in the northern part of Bulacan where its economy heavily dependent on farming and poultry raising. Most of the population committed their entire lives on farming as their livelihood. Today, the town is moving towards commercialization and industrialization as it is becoming one of the major growth-rate area and center of commerce and industry in the province.\nBecause of the major economic growth, due to presence of commercial establishments, real estates, industrial plants and major road projects. Pulilan has experienced increased in the total gross income in the past few years. The town's income in year 2016 was P323.86 million, an increase of P69.27 million from its previous income in 2014. It surpass the income of fifteen municipalities in \nBulacan such as San Miguel, Bocaue, Plaridel, Hagonoy and Calumpit.\nWith the continuous expansion of Metro Manila, Pulilan is part of Manila's built-up area which reaches San Ildefonso, Bulacan at its northernmost part."
+        },
+        {
+          "article": "Pulilan (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Pulilan#Climate",
+          "text": "Based on the Köppen climate classification system, the climate is tropical in Pulilan. During most months of the year, there is significant rainfall in Pulilan. There is only a short dry season. According to Köppen and Geiger, this climate is classified as Am. The temperature here averages 27.2 °C. The average annual rainfall is 792 mm. The driest month is February. There is 4 mm of precipitation in February. Most precipitation occurs in July, with an average of 151 mm. With an average of 29.2 °C, May is the warmest month. In January, the average temperature is 25.5 °C. It\nis the lowest average temperature of the whole year. The precipitation varies 147 mm between the driest month and the wettest month. The average temperatures vary during the year by 3.7 °C."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 132,
+      "leadWords": 230,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it covers a carabao festival, farming and poultry, commercial growth, and town income only",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "pulilan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 191,
+    "place_id": "gn-1714201",
+    "input": {
+      "place": {
+        "place_id": "gn-1714201",
+        "name": "Dumaguete",
+        "country": "Philippines",
+        "subdivision": "Central Visayas",
+        "lat": 9.30646,
+        "lon": 123.30769
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dumaguete",
+          "url": "https://en.wikipedia.org/wiki/Dumaguete",
+          "text": "Dumaguete, officially the City of Dumaguete (Tagalog: [dʊmɐˈgɛtɛ]; Cebuano: Dakbayan sa Dumaguete; Filipino: Lungsod ng Dumaguete), is a component city and capital of the province of Negros Oriental, Philippines. According to the 2024 census, it has a population of 142,171 people. It is the most populous city and the smallest city by land area in Negros Oriental, as well as one of the two regional centers in Negros Island Region (the other one is Bacolod).\nDumaguete is a university city with four large universities and several colleges, attracting students from the province and across the country, mostly from the Visayas and Mindanao. The city is best known for Silliman University, the first Protestant and American university in the country and in Asia. Schools in Dumaguete include 18 public elementary schools and 10 public high schools.\nIn 2025, Dumaguete City has been designated as the country's first UNESCO Creative City of Literature.\nDumaguete is bounded by the towns of Bacong, Sibulan, and Valencia. The power source of the city comes from the geothermal power plant in Valencia."
+        },
+        {
+          "article": "Dumaguete (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Dumaguete#Climate",
+          "text": "Dumaguete has a tropical monsoon climate according to the Köppen Climate classification with two distinct seasons: wet and dry. The wet season covers the period from June to November, and the dry season starts from December to May, the hottest being April and May. The average maximum temperature is 30.9 °C and the average minimum temperature is 24.8 °C for the 1991-2020 normals. The relative humidity of the locality for the past years was 81% with January registering the highest.\nNortheast monsoon winds (amihan) bring cooler temperatures with little sometimes moderate rain to the city during late October until early March. Trade winds from the Pacific help moderate the sultry conditions of the dry season during April and May, and usually record less hot daytime conditions than the rest of the country; yet nearby warm seas also cause warm and humid nights during this time. When no major wind system is in power, trade winds can occur all year round, providing similar conditions. Southwest monsoon winds (habagat) usually bring overcast and rainy conditions from June to early October, but can also bring the hottest temperatures of the year due to the foehn effect; nevertheless, skies are usually clear that nights feel cool, having the widest temperature variation in a day at this time."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 213,
+      "leadWords": 176,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate mechanism, extreme, or paradox; a geothermal plant named only as the city's power source is not climate, and the rest covers universities and a literature designation",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "dumaguete",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 192,
+    "place_id": "gn-1732811",
+    "input": {
+      "place": {
+        "place_id": "gn-1732811",
+        "name": "Kluang",
+        "country": "Malaysia",
+        "subdivision": "Johor",
+        "lat": 2.03046,
+        "lon": 103.31689
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kluang",
+          "url": "https://en.wikipedia.org/wiki/Kluang",
+          "text": "Kluang, formerly spelled Keluang, is a town and the district capital of Kluang District, Johor, Malaysia. Founded in 1915 by the British as the administrative capital for central Johor, Kluang is situated in the central geographical core of the state and lies within a 90-minute drive of major urban hubs across Johor.\nCombined with neighboring Batu Pahat, central Johor encompasses a total market catchment exceeding 700,000 residents. Throughout the 20th century, Kluang's agricultural economy transitioned from natural rubber cultivation to large-scale palm oil production. In recent decades, it has developed a major organic farming sector alongside ecotourism destinations such as Zenxin Organic Park, UK Agro Farm, and Kahang Organic Eco Rice Farm. The district also houses a significant industrial base, particularly in ceramic tile manufacturing, earning it a reputation as the \"tile capital of Malaysia\"."
+        },
+        {
+          "article": "Kluang (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Kluang#Geography",
+          "text": "Kluang is situated in central Johor and is entirely landlocked. The town lies in a terrain of undulating hills; its most prominent geographical landmark is Gunung Lambak, an isolated peak standing at above sea level situated on the eastern outskirts of the town. In the eastern segment of the district lies the Gunung Belumut Recreational Forest.\nThe administrative area governed by the Kluang Municipal Council covers approximately . Three main watercourses flow through the town area: the Mengkibol River bisects the town center, while the Melantai River runs through the eastern sector and the Sembrong River flows across the west.\nUrban expansion from the 1970s through the 2000s saw Kluang grow horizontally along major east-west arterial corridors. Over this period, the commercial core expanded significantly as former rubber and oil palm agricultural land was redeveloped into residential subdivisions and commercial precincts."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 141,
+      "leadWords": 135,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate mechanism, extreme, or paradox; a shift from rubber to palm oil farming and tile making is economic history, not a stated climate clue",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "kluang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 193,
+    "place_id": "gn-2666199",
+    "input": {
+      "place": {
+        "place_id": "gn-2666199",
+        "name": "Uppsala",
+        "country": "Sweden",
+        "subdivision": "Uppsala",
+        "lat": 59.85882,
+        "lon": 17.63889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Uppsala",
+          "url": "https://en.wikipedia.org/wiki/Uppsala",
+          "text": "Uppsala ( up-SAH-lə; Swedish: [ˈɵ̂pːˌsɑːla] ; archaically spelled Upsala) is the capital of Uppsala County and the fourth-largest city in Sweden, after Stockholm, Gothenburg, and Malmö. It had 177,074 inhabitants in 2019.\nLocated 71 km (44 mi) north of the capital Stockholm, it is also the seat of Uppsala Municipality. Since 1164, Uppsala has been the ecclesiastical centre of Sweden, being the seat of the Archbishop of the Church of Sweden. Uppsala is home to Scandinavia's largest cathedral – Uppsala Cathedral, which was the frequent site of the coronation of the Swedish monarch until the late 19th century.\nUppsala Castle, built by King Gustav Vasa, served as one of the royal residences of the Swedish monarchs, and was expanded several times over its history, making Uppsala the secondary capital of Sweden during its greatest extent. Today, it serves as the residence of the Governor of Uppsala County.\nFounded in 1477, Uppsala University is the oldest centre of higher education in Scandinavia. Among the many scholars associated with the city are Anders Celsius, inventor of the centigrade temperature scale that now bears his name, and Carl Linnaeus, the father of taxonomy.\nOther Uppsala residents include filmmaker Ingmar Bergman, diplomat Dag Hammarskjöld, chemists Jöns Jacob Berzelius and Svante Arrhenius, actress Viveca Lindfors, and singer Malena Ernman."
+        },
+        {
+          "article": "Uppsala (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Uppsala#Climate",
+          "text": "Uppsala lies immediately south of the 60th parallel north and has a humid continental climate (Dfb), with cold winters and warm summers. Due to its northerly location, Uppsala experiences over 18 hours of visible sunshine during the summer solstice, and under 6 hours of sunshine during the winter solstice. Despite Uppsala's northerly location, the winter is not as cold as other cities at similar latitudes, mainly due to the Gulf Stream. For example, in January Uppsala has a daily mean of . In Canada, at the same latitude, Fort Smith experiences a daily mean of .\nWith respect to record temperatures, the difference between the highest and lowest is relatively large. Uppsala's highest recorded temperature was , recorded on 9 July 1933. On the same day Ultuna, which lies a few kilometres south of the centre of Uppsala, recorded a temperature of . This is the highest temperature ever recorded in the Scandinavian Peninsula, although the same temperature was recorded in Målilla, Sweden, 14 years later. Uppsala's lowest temperature was recorded on 24 January 1875, when the temperature dropped to . The second-lowest temperature recorded is , which makes the record one of the hardest to beat, due to the fact that temperatures in Uppsala nowadays rarely go below . The difference between the two records is .\nThe warmest month ever recorded is July 2018, with a daily mean of . Since 2002 Uppsala has experienced 7 months where the daily mean was or warmer, the most recent in July 2021 when the daily mean was . The coldest month ever recorded is January 1814, when the daily mean was . Between January 1814 and January 1987, Uppsala experienced 23 months that were colder than . Since February 1987, the coldest month recorded is . The warmest year ever recorded was 2014, with an average temperature of . The second warmest is 2018, with . Since 1991, Uppsala has recorded 15 years with an average temperature of or warmer. The coldest year ever recorded was 1867, with an average temperature of . 1987 was the last year Uppsala recorded a year with an average temperature below .\nThe climate table below presents weather data from 1981 to 2010. According to ongoing measurements, the temperature has increased during 1981–2010 as compared with the 1951–1980 series. This increase is on an annual basis around 0.9 °C. Warming is most pronounced during the winter and spring. January, February, and March have had the most pronouncing increase in temperature, with each month increasing 1.5 °C or more. The only month that did not get warmer is June, which got 0.3 °C colder. During the 20th century, Uppsala has warmed drastically, especially the winter. If compared to the period 1861–1890, the annual increase in temperature is 1.8 °C. March is the month with the biggest increase, where the temperature has increased more than 3 °C since the latter parts of the 19th century.\nWinter normally arrives in late November, and lasts until the middle of March when spring arrives. Summer usually arrives in the middle of May, and lasts until late September when autumn arrives. Precipitation is most common between June and November, in all these months it falls or more on average. August receives most precipitation with . Between January and May precipitation levels fall a bit, with all months receiving less than on average. Annual precipitation is . Rainfall can occur all year round, although it is less common in January and February. Snowfall mainly occurs between November and March. Snowfall in October and April can happen from time to time, but not every year. During the night between 30 April and 1 May 2014, approximately of snow fell in Uppsala, the first recorded snowfall in May since 1981. Uppsala has an annual average snow cover around 100 days."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 637,
+      "leadWords": 214,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract contains no climate information at all; it covers distance from the capital, a cathedral, a castle, a university, and famous scholars only",
+      "priorMissing": "a place-specific climate mechanism, extreme, or paradox stated in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "uppsala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

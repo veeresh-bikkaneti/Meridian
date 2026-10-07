@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 8105,
+    "place_id": "gn-2869488",
+    "input": {
+      "place": {
+        "place_id": "gn-2869488",
+        "name": "Moosbach",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 49.58909,
+        "lon": 12.41036
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moosbach, Bavaria",
+          "url": "https://en.wikipedia.org/wiki/Moosbach,_Bavaria",
+          "text": "Moosbach ( MOHS-bahkh; German: Moosbach [ˈmoːsbax] ; Bavarian: Moosboch [ˈmoːsbɔx]) is a municipality in the district of Neustadt an der Waldnaab in the Free State of Bavaria, Germany. Covering an area of 63.74 square kilometers, it has a population of approximately 1,050 inhabitants as of the 2011 census. Located within the Upper Palatine Forest near the Czech border, Moosbach is known for its natural landscapes and historical significance, including former iron ore mining on Eisenberg mountain and a Cold War-era Bundeswehr radar station. The municipality is part of the larger Upper Palatinate region and is governed by Mayor Armin Bulenda (CSU) for the 2020–2026 term."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "moosbach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8107,
+    "place_id": "gn-3173392",
+    "input": {
+      "place": {
+        "place_id": "gn-3173392",
+        "name": "Minori",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.6503,
+        "lon": 14.62684
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minori, Campania",
+          "url": "https://en.wikipedia.org/wiki/Minori,_Campania",
+          "text": "Minori (Campanian: Minure; originally Rheginna Minor) is a comune on the Amalfi Coast in the Province of Salerno, Campania, southern Italy. Together with the other towns of the coast, it was inscribed as a UNESCO World Heritage Site in 1997.\nA summer retreat of the Roman aristocracy, as attested by the remains of a patrician villa dating from the 1st century, the town today is a popular tourist destination known for its scenery and culinary tradition. For the latter it is sometimes called the \"City of Taste\" (Città del gusto), and for its mild climate the \"Eden of the Amalfi Coast\" (Eden della Costiera amalfitana)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "minori",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8108,
+    "place_id": "gn-324294",
+    "input": {
+      "place": {
+        "place_id": "gn-324294",
+        "name": "Alaçatı",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.28246,
+        "lon": 26.37459
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alaçatı",
+          "url": "https://en.wikipedia.org/wiki/Ala%C3%A7at%C4%B1",
+          "text": "Alaçatı is a neighbourhood in the municipality and district of Çeşme, İzmir Province, Turkey. Its population is 10,386 (2022). Before the 2013 reorganisation, it was a town (belde). It is on the Western coast of Turkey, often noted for its architecture, vineyards, windmills, and sea.\nAlaçatı is one of the most traditional towns in Turkey, it is famed for its former Greek village with stone houses, narrow streets, boutique hotels and restaurants with tables on the streets. The area is also home to the Alaçatı yacht marina and the famous Port Alaçatı development, created by the French architect Francois Spoerry and his son, Yves Spoerry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "alacat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8109,
+    "place_id": "gn-4158296",
+    "input": {
+      "place": {
+        "place_id": "gn-4158296",
+        "name": "Heathrow",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.76333,
+        "lon": -81.37225
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heathrow, Florida",
+          "url": "https://en.wikipedia.org/wiki/Heathrow,_Florida",
+          "text": "Heathrow is a census-designated place and an unincorporated suburban community in Seminole County, Florida, United States. Heathrow is on the I-4 Corridor in Central Florida, 19 miles northeast of Orlando and 38 miles southwest of Daytona Beach. \nHeathrow comprises a master-planned, private, gated residential community of approximately 2,200 homes, which is also called Heathrow, and the Heathrow International Business Center, an office park. Heathrow was founded in 1985 by Jeno Paulucci, a food business entrepreneur. The area had been a source of celery used in making his Chun King Foods American Chinese style food. As of the 2020 census, Heathrow had a population of 6,806."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "heathrow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8113,
+    "place_id": "gn-6544327",
+    "input": {
+      "place": {
+        "place_id": "gn-6544327",
+        "name": "Costa Calma",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.16155,
+        "lon": -14.22691
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Costa Calma",
+          "url": "https://en.wikipedia.org/wiki/Costa_Calma",
+          "text": "Costa Calma is a beach holiday resort town in the Canarian island of Fuerteventura, Spain. It is part of the municipality Pájara, and has 5,670 inhabitants (2013). Costa Calma is located in the beginning of the Jandía peninsula in the southern part of the island.\nCosta Calma, or the calm coast, got its name from the fact that the prevailing western winds normally leave this part of the coast and its waters protected and calm.\nCosta Calma was developed as a tourist community in the 1970s. A site of interest near Costa Calma is Sotavento Beach, which has been the location of several windsurfing championships."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "costa calma",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "costa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "calma",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8114,
+    "place_id": "gn-6694299",
+    "input": {
+      "place": {
+        "place_id": "gn-6694299",
+        "name": "Walkerton",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 44.13023,
+        "lon": -81.15309
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Walkerton, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Walkerton,_Ontario",
+          "text": "Walkerton is a town in the municipality of Brockton, Bruce County, Ontario, Canada. It is the site of Brockton's municipal offices and is the county seat. Walkerton is located on the Saugeen River, at the junction of Highway 9 and the former Provincial Highway 4 and is 75 kilometres (47 mi) southwest of Owen Sound, 44 kilometres east of Kincardine, 10 kilometres west of Hanover, and 10 kilometres north of Mildmay. As of 2021, the town had 4,724 people in the community.\nOn January 1, 1999, Walkerton became part of the Municipality of Brockton. The town is notable for the 2000 Walkerton E. coli outbreak."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "walkerton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8121,
+    "place_id": "gn-3449940",
+    "input": {
+      "place": {
+        "place_id": "gn-3449940",
+        "name": "Santana do Deserto",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -21.95,
+        "lon": -43.16639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santana do Deserto",
+          "url": "https://en.wikipedia.org/wiki/Santana_do_Deserto",
+          "text": "Santana do Deserto is a municipality located in the state of Minas Gerais, Brazil. It is part of the Zona da Mata region, known for its mountainous terrain and rich history. The municipality, with its rural landscape, is also recognized for its agricultural activity, particularly the cultivation of crops suited to the area's temperate climate.\nThe town's name, Santana do Deserto, refers to the patron saint Santana and the term Deserto, which may indicate its historical isolation in the desert-like areas of the region. It offers a glimpse into rural Brazilian life, with an emphasis on small-scale farming and the preservation of local traditions.."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "santana do deserto",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santana",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "deserto",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8125,
+    "place_id": "gn-5301641",
+    "input": {
+      "place": {
+        "place_id": "gn-5301641",
+        "name": "Laveen",
+        "country": "United States",
+        "subdivision": "Arizona",
+        "lat": 33.36282,
+        "lon": -112.16932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laveen, Phoenix",
+          "url": "https://en.wikipedia.org/wiki/Laveen,_Phoenix",
+          "text": "Laveen ( lə-VEEN) is a community in Maricopa County, Arizona, United States, situated eight miles (13 km) southwest of Downtown Phoenix, between South Mountain and the confluence of the Gila and Salt rivers. Parts of Laveen constitute an unincorporated community in Maricopa County, while the remainder falls within the city limits of Phoenix, constituting the city's \"Laveen Village\" an urban village. Laveen Village is split between District 7 and District 8, both notable as minority-majority districts for the city. Although Laveen has been home to \"pastoral alfalfa, cotton, and dairy farms\" since the 1880s, housing and commercial developments have been increasingly urbanizing the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "laveen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8130,
+    "place_id": "gn-1004406",
+    "input": {
+      "place": {
+        "place_id": "gn-1004406",
+        "name": "Fauresmith",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -29.74893,
+        "lon": 25.31505
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fauresmith",
+          "url": "https://en.wikipedia.org/wiki/Fauresmith",
+          "text": "Fauresmith is located 130 km south west of Bloemfontein, South Africa. The town, named after Rev Phillip Faure and Sir Harry Smith, is the second oldest town in the Free State.\nFauresmith is the only town in South Africa, and one of only three in the world, where the railway line runs down the centre of the main road.\nThe town is well known in equestrian circles for the annual National Equestrian Endurance Race, during which the horses and riders must complete a grueling 205 km course during the three days of the event.\nWinters are extremely cold with temperatures often below freezing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "fauresmith",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8131,
+    "place_id": "gn-2616176",
+    "input": {
+      "place": {
+        "place_id": "gn-2616176",
+        "name": "Nordborg",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.05732,
+        "lon": 9.7408
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nordborg",
+          "url": "https://en.wikipedia.org/wiki/Nordborg",
+          "text": "Nordborg (German: Norburg), is a town with a population of 5,661 (1 January 2026), which was the seat of the former Nordborg municipality (Danish, kommune) in Sønderborg Municipality, Region of Southern Denmark on the northwest half of the island of Als off the east coast of the Jutland peninsula in south Denmark.\nWithin the town is Nordborg Castle, a historic castle whose premises are currently used as a boarding school.\nThe town has been greatly influenced by the presence of Danfoss, a global producer of components for refrigeration and airconditioning, heating and motion control applications, headquartered in the town and founded in 1933."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "nordborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8133,
+    "place_id": "gn-2806474",
+    "input": {
+      "place": {
+        "place_id": "gn-2806474",
+        "name": "Wolkenstein",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.65552,
+        "lon": 13.07132
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wolkenstein",
+          "url": "https://en.wikipedia.org/wiki/Wolkenstein",
+          "text": "Wolkenstein (German pronunciation: [ˈvɔlkn̩ˌʃtaɪn] ) is a town in the district Erzgebirgskreis, in Saxony, Germany. It is situated in the Ore Mountains, on the river Zschopau, 22 km southeast of Chemnitz.\nThe town is situated on a rocky spur near the confluence of  the Zschopau and Preßnitz rivers. Its name is derived from the eponymous castle which is situated ca. 70 m above the river, and whose name signifies a rock that rises into the clouds. Aside from the town itself, Wolkenstein consists of the following subdivisions:\n\nWarmbad is a spa town known for its hot spring with a variety of medicinal uses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "wolkenstein",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8136,
+    "place_id": "gn-3179333",
+    "input": {
+      "place": {
+        "place_id": "gn-3179333",
+        "name": "Cavalese",
+        "country": "Italy",
+        "subdivision": "Trentino-Alto Adige",
+        "lat": 46.29048,
+        "lon": 11.45862
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cavalese",
+          "url": "https://en.wikipedia.org/wiki/Cavalese",
+          "text": "Cavalese (Cavalés in local dialect, Gablöss in local german dialect) is a comune of 4,004 inhabitants in Trentino, northern Italy, a ski resort and the main center in the Fiemme Valley. It is part of the Magnifica Comunità di Fiemme (Magnificent Community of Fiemme) and, together with Predazzo, is the administrative, cultural and historical center of the valley.\nThe town is a renowned tourist location, during winter for cross-country and alpine skiing, and during summer for excursions. The cable car from Cavalese to the nearby mountain Cermis has been the site of two major cable-car accidents, one in 1976 and one in 1998."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "cavalese",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8141,
+    "place_id": "gn-5127368",
+    "input": {
+      "place": {
+        "place_id": "gn-5127368",
+        "name": "Montrose",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.25232,
+        "lon": -73.93153
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montrose, New York",
+          "url": "https://en.wikipedia.org/wiki/Montrose,_New_York",
+          "text": "Montrose is a hamlet (and census-designated place) within the town of Cortlandt, in the northwestern corner of Westchester County, New York, United States. The hamlet is named after the Montross family, most of whom worked nearby in Buchanan at the tannery. It is located near Croton-on-Hudson and Buchanan. The once bucolic character of the hamlet has changed, but is still defined by the Hudson River, numerous wooded hills and steep slopes, wetland areas and streams, while increases in population have designated the area part of the New York—Jersey City—Newark NY—NJ urban area. As of the 2020 census, Montrose had a population of 2,862."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "montrose",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8144,
+    "place_id": "gn-6620367",
+    "input": {
+      "place": {
+        "place_id": "gn-6620367",
+        "name": "Virginia Water",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.40343,
+        "lon": -0.56651
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Virginia Water",
+          "url": "https://en.wikipedia.org/wiki/Virginia_Water",
+          "text": "Virginia Water is a commuter village in the Borough of Runnymede in Surrey, England. It is home to the Wentworth Estate and the Wentworth Club. The area has much woodland and occupies a large minority of the Runnymede district. Its name is shared with the lake on its western boundary within Windsor Great Park. Virginia Water has multiple transport links with London–Trumps Green and Thorpe Green touch the M3, Thorpe touches the M25, and Heathrow Airport is 7 miles (11 km) northeast.\nMany of the detached houses are on the Wentworth Estate, the home of the Wentworth Club which has four golf courses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "virginia water",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "virginia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "water",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8152,
+    "place_id": "gn-2801147",
+    "input": {
+      "place": {
+        "place_id": "gn-2801147",
+        "name": "Braives",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.62848,
+        "lon": 5.14798
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Braives",
+          "url": "https://en.wikipedia.org/wiki/Braives",
+          "text": "Braives (French pronunciation: [bʁɛv]; Walloon: Braive) is a municipality of Wallonia located in the province of Liège, Belgium. \nOn January 1, 2006, Braives had a total population of 5,579. The total area is 44.00 km2 which gives a population density of 127 inhabitants per km2.\nThe municipality consists of the following districts: Avennes, Braives, Ciplet, Fallais, Fumal, Latinne, Tourinne, and Ville-en-Hesbaye. \nThere are also three hamlets: Hosdent in Latinne, Pitet in Fallais, and Foncourt in Fumal.\nFallais is famous for its medieval castle and other tourist attractions including a water mill, a former wheelmakershop, the river Méhaigne and the Ravel cycling path."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "braives",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8158,
+    "place_id": "gn-5933070",
+    "input": {
+      "place": {
+        "place_id": "gn-5933070",
+        "name": "Crossfield",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 51.43341,
+        "lon": -114.03528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Crossfield, Alberta",
+          "url": "https://en.wikipedia.org/wiki/Crossfield,_Alberta",
+          "text": "Crossfield is a town in the Calgary Metropolitan Region of Alberta, Canada, that is surrounded by Rocky View County. It is on Highway 2A 43 km (27 mi) north of the City of Calgary.\nCrossfield was founded in 1892 as a station on the Calgary and Edmonton Railway (C&E), and named for an engineer with the C&E survey crew. By 1904, the community had a post office, a general store, a hotel and a school. In 1906, the first grain elevator opened and Crossfield was incorporated as a village the following year in 1907. In 1980, Crossfield was incorporated as a town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "crossfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8160,
+    "place_id": "gn-932371",
+    "input": {
+      "place": {
+        "place_id": "gn-932371",
+        "name": "Morija",
+        "country": "Lesotho",
+        "subdivision": "Maseru District",
+        "lat": -29.62982,
+        "lon": 27.51351
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morija",
+          "url": "https://en.wikipedia.org/wiki/Morija",
+          "text": "Morija is a town in western Lesotho, located 35 kilometres south of the capital, Maseru.  Morija is one of Lesotho's most important historical and cultural sites, known as the Selibeng sa Thuto— the Well-Spring of Learning. It was the site of the first French Protestant mission in Lesotho, founded in 1833 e.g Thomas Arbouset. The town also houses the Morija Museum and Archives, well known for supporting research and preserving valuable records and documents of Lesotho's history. There is also a college of nursing among the schools within the premises. The centre is home for the Lesotho Evangelical Church in Southern Africa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "morija",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8168,
+    "place_id": "gn-4925591",
+    "input": {
+      "place": {
+        "place_id": "gn-4925591",
+        "name": "Roselawn",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 41.1417,
+        "lon": -87.31475
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Roselawn, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Roselawn,_Indiana",
+          "text": "Roselawn is a census-designated place (CDP) in Newton and Jasper counties in the U.S. state of Indiana. As of the 2020 census, Roselawn had a population of 4,132.\nSince the opening of Club Zoro Nature Park in 1933, Roselawn has been known for its nudist resorts. Today it hosts two such resorts: the Ponderosa Sun Club and Sun Aura. Sun Aura resort was previously known as Naked City, but closed in 1986 after its operator, Dick Drost, encountered significant legal troubles. The resort continued to operate under several different owners and was known as Sunspot resort prior to becoming Sun Aura."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "roselawn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 8172,
+    "place_id": "gn-5342353",
+    "input": {
+      "place": {
+        "place_id": "gn-5342353",
+        "name": "Del Mar",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 32.95949,
+        "lon": -117.26531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Del Mar, California",
+          "url": "https://en.wikipedia.org/wiki/Del_Mar,_California",
+          "text": "Del Mar (Spanish pronunciation: [del ˈmaɾ]; Spanish for \"Of the Sea\") is a beach city in San Diego County, California, United States, located on the coast of the Pacific Ocean. It was established in 1885 to build a seaside resort. The annual San Diego County Fair has had a permanent home at the Del Mar Fairgrounds since 1936. Horse racing began at the fairgrounds racetrack the following year and is hosted every summer.  The city incorporated in 1959 aiming to preserve its small town feel. Its population was 3,954 as of the 2020 census, down from 4,161 at the 2010 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "del mar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 8177,
+    "place_id": "gn-2177090",
+    "input": {
+      "place": {
+        "place_id": "gn-2177090",
+        "name": "Ballarat East",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.56667,
+        "lon": 143.86667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ballarat East",
+          "url": "https://en.wikipedia.org/wiki/Ballarat_East",
+          "text": "Ballarat East is a suburb of Ballarat in Victoria, Australia. From 1857 until 1921 the suburb had its own council (see below). The suburb covers a large area east of the city centre. It is the oldest urban area in Ballarat and was the site of many goldmines, as well as of the Eureka Rebellion.\nThe population of Ballarat East at the 2021 census was 5,937, making it the fourth most populated suburb in the Ballarat area. The former town retains much of its shambolic character, particularly its winding and unplanned streets which arose organically among the many gold mines."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "ballarat east",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ballarat",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

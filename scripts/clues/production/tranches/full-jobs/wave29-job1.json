@@ -1,0 +1,802 @@
+[
+  {
+    "rank": 5644,
+    "attempt": 5601,
+    "place_id": "gn-3833112",
+    "input": {
+      "place": {
+        "place_id": "gn-3833112",
+        "name": "Veinticinco de Mayo",
+        "country": "Argentina",
+        "subdivision": "Buenos Aires",
+        "lat": -35.43247,
+        "lon": -60.17156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Veinticinco de Mayo, Buenos Aires",
+          "url": "https://en.wikipedia.org/wiki/Veinticinco_de_Mayo,_Buenos_Aires",
+          "text": "Veinticinco de Mayo (or 25 de Mayo) (in English: 25 May) is a town situated in the centre of Buenos Aires Province in Argentina and has a population of 22,581 (2001).  Founded on 8 November 1836, it is the capital city of the partido of the same name.  The city takes its name from 25 May 1810, the day on which Buenos Aires began the process leading to a formal declaration of independence by forming its own junta (assembly) and inviting the other provinces to join it.  The city is 220 km from Buenos Aires, and 240 km from La Plata, the provincial capital.\nPlaza Mitre in the centre of the city is one of the most attractive and well looked after squares in the region. In recent years, the town has greatly benefited from the boom in agricultural production."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "veinticinco de mayo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "veinticinco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mayo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5645,
+    "attempt": 5602,
+    "place_id": "gn-3937733",
+    "input": {
+      "place": {
+        "place_id": "gn-3937733",
+        "name": "Jauja",
+        "country": "Peru",
+        "subdivision": "Junin",
+        "lat": -11.77584,
+        "lon": -75.49656
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jauja",
+          "url": "https://en.wikipedia.org/wiki/Jauja",
+          "text": "Jauja (Shawsha Wanka Quechua: Sausa, Shawsha or Shausha, formerly in Spanish Xauxa, with pronunciation of \"x\" as \"sh\") is a city and capital of Jauja Province in Peru. It is situated in the fertile Mantaro Valley, 45 kilometres (28 mi) to the northwest of Huancayo (the capital of Junín Region), at an altitude of 3,400 metres (11,200 ft). Its population in 2015 was 15,432.\nJauja, which flourished for a short time, was once the capital of Spanish Peru, prior to the founding of Lima as the new capital. Its name is referenced in the popular Spanish expression país de Jauja, which literally means \"country of Jauja\", but is used figuratively to mean a \"never never land\" or a \"land of milk and honey\". The town, with a laid back ambiance and salubrious climate, has narrow streets with houses painted blue. Laguna de Paca lake is close to the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "jauja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5646,
+    "attempt": 5603,
+    "place_id": "gn-4188233",
+    "input": {
+      "place": {
+        "place_id": "gn-4188233",
+        "name": "Clarkston",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 33.80955,
+        "lon": -84.23964
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clarkston, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Clarkston,_Georgia",
+          "text": "Clarkston is a city in DeKalb County, Georgia, United States. The population was 14,756 as of the 2020 census, up from 7,554 in 2010.\nThe city is noted for its ethnic diversity, and is often referred to as \"the most diverse square mile in America\" and \"the Ellis Island of the South.\" In the 1990s, refugee resettlement programs identified Clarkston as a good fit for displaced persons of many backgrounds. The rental market was open, residents were moving farther out from the Atlanta urban core, and Clarkston was the last stop on a transit line into the city. At present, students attending Clarkston High School come from over 50 countries; the local mosque (Masjid al-Momineen, or Mosque of the Faithful in English) has a diverse and sizable congregation; over half the population is estimated by some to be foreign born."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "clarkston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5647,
+    "attempt": 5604,
+    "place_id": "gn-4364312",
+    "input": {
+      "place": {
+        "place_id": "gn-4364312",
+        "name": "Ocean City",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.3365,
+        "lon": -75.08491
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocean City, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Ocean_City,_Maryland",
+          "text": "Ocean City, officially the Town of Ocean City, is an Atlantic resort city in Worcester County, Maryland, along the East Coast of the United States. The population was 6,844 in the 2020 U.S. census, although during summer weekends the city hosts between 320,000 and 345,000 vacationers, and up to eight million visitors annually. During the summer, Ocean City becomes the second most populated municipality in Maryland, after Baltimore. It is part of the Salisbury metropolitan area as defined by the United States Census Bureau.\nDuring peak vacation season, the city hires seasonal police public safety aides (non sworn), along with additional firefighters and other workers. Numerous events take place within the town during the shoulder-season, including Sunfest, Springfest, Bike Week, Cruisin' Weekend, Winterfest of Lights, and Reach the Beach, which take place on the Boardwalk and the Roland E. Powell Convention Center. Ocean City is also home to the annual Maryland State Firefighters Convention, a week-long event in June that honors the state's firefighters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "ocean city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocean",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5648,
+    "attempt": 5605,
+    "place_id": "gn-4903940",
+    "input": {
+      "place": {
+        "place_id": "gn-4903940",
+        "name": "North Lawndale",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.86003,
+        "lon": -87.71839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Lawndale, Chicago",
+          "url": "https://en.wikipedia.org/wiki/North_Lawndale,_Chicago",
+          "text": "North Lawndale is one of the 77 community areas of Chicago in Illinois, United States, located on the city's West Side. The community area includes the K-Town Historic District, the Homan Square interrogation facility (part of the former Sears, Roebuck and Company Complex), and the city's largest concentration of greystones.\nNorth Lawndale was annexed to Chicago from Cicero Township in 1869. Following the Great Chicago Fire of 1871, industrial workers moved to the area, including employees of a new McCormick Reaper Company plant. By the end of the 19th century, the neighborhood was heavily populated with immigrants from the Austro-Hungarian Empire, particularly Czech residents, who established cultural institutions and churches in the area. During the early 20th century, many Czech residents relocated to suburban areas, and Jews, many formerly from the Maxwell Street area, became the majority by approximately 1918.\nBy the mid-1950s, much of the Jewish population had relocated northward due to white flight as Black residents from Chicago’s South Side and the American South became the largest demographic group in North Lawndale. ln 1966, Martin Luther King Jr. stayed in an apartment in North Lawndale as part of the Chicago Freedom Movement. Starting in the 1960s, the area experienced population loss and economic decline associated with housing discrimination, municipal disinvestment, and institutional racism.\nIn 1968, community residents formed the Contract Buyers League to address discriminatory housing practices. In 1986, the Steans Family Foundation was established and began focusing grantmaking and programs in North Lawndale. By the 1990s, the foundation and other observers noted signs of reinvestment, including new retail development, the arrival of new residents (many of them Hispanic), and a slowing of population decline.\nReinvestment efforts since the 1990s have included proposals for greenway parks and new housing developments. Beginning in 2021, violence prevention initiatives led by READI Chicago, Communities Partnering 4 Peace, and Chicago CRED expanded relationship-based intervention strategies in the community. City funding supported the creation of a Community Safety and Coordination Center to centralize local resources. During the early 2020s, North Lawndale experienced a reduction in reported gun violence."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 345
+    },
+    "banned_terms": [
+      {
+        "term": "north lawndale",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "lawndale",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5649,
+    "attempt": 5606,
+    "place_id": "gn-5101601",
+    "input": {
+      "place": {
+        "place_id": "gn-5101601",
+        "name": "Mountainside",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.67232,
+        "lon": -74.35737
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mountainside, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Mountainside,_New_Jersey",
+          "text": "Mountainside is a borough in Union County, in the U.S. state of New Jersey. The borough is located on a ridge in northern-central New Jersey, within the Raritan Valley and Rahway Valley regions in the New York metropolitan area. As of the 2020 United States census, the borough's population was 7,020, an increase of 335 (+5.0%) from the 2010 census count of 6,685, which in turn reflected an increase of 83 (+1.3%) from the 6,602 counted in the 2000 census.\nMountainside was incorporated as a borough on September 25, 1895, from portions of Westfield Township, based on the results of a referendum held the previous day.\nNew Jersey Monthly magazine ranked Mountainside as its 16th best place to live in its 2008 rankings of the \"Best Places To Live\" in New Jersey, as well as eighth in the 2010 list."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "mountainside",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5650,
+    "attempt": 5607,
+    "place_id": "gn-5111412",
+    "input": {
+      "place": {
+        "place_id": "gn-5111412",
+        "name": "Canarsie",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.64372,
+        "lon": -73.90069
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canarsie, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Canarsie,_Brooklyn",
+          "text": "Canarsie ( kə-NAR-see) is a mostly residential neighborhood in the southeastern portion of Brooklyn, New York City. Canarsie is bordered on the east by Fresh Creek Basin, East 108th Street, and Louisiana Avenue, on the north by Linden Boulevard, on the west by Ralph Avenue, on the southwest by Paerdegat Basin, and on the south by Jamaica Bay. It is adjacent to the neighborhoods of East Flatbush to the west, Flatlands and Bergen Beach to the southwest, Starrett City to the east, East New York to the northeast, and Brownsville to the north.\nThe area near Canarsie was originally settled by the Canarse Native Americans. The community's name is adapted from a Lenape word meaning \"fenced area\". After European settlement, Canarsie was initially a fishing community, but became a popular summer resort in the late 19th and early 20th centuries. By the late 1930s and early 1940, the resorts had been destroyed, and Canarsie was developed as a largely Italian American and Jewish suburb. In the 1970s, racial tensions developed around an argument over the zoning of the area's schools, and in the aftermath, Canarsie became a mainly black neighborhood with a high West Indian population in the late 1990s.\nCanarsie is part of Brooklyn Community District 18 and its primary ZIP Code is 11236. It is patrolled by the 69th Precinct of the New York City Police Department. Fire services are provided by the New York City Fire Department's Engine Co. 257/Ladder Co. 170/Battalion 58. Politically it is represented by the New York City Council's 42nd and 46th Districts."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 260
+    },
+    "banned_terms": [
+      {
+        "term": "canarsie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5651,
+    "attempt": 5608,
+    "place_id": "gn-5267776",
+    "input": {
+      "place": {
+        "place_id": "gn-5267776",
+        "name": "Port Washington",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 43.38722,
+        "lon": -87.87564
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Washington, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Port_Washington,_Wisconsin",
+          "text": "Port Washington is a city in Ozaukee County, Wisconsin, United States, and its county seat. Located on Lake Michigan's western shore east of Interstate 43, the community is a suburb in the Milwaukee metropolitan area 27 miles (43 km) north of Milwaukee. The city's artificial harbor at the mouth of Sauk Creek was dredged in the 1870s and was a commercial port until the early 2000s. The population was 12,353 at the 2020 census.\nWhen French explorers arrived in the area in the 17th century, they found a Native American village at the mouth of Sauk Creek—the present location of historic downtown Port Washington. The United States Federal Government forcibly expelled the Native Americans in the 1830s, and the first settlers arrived in 1835, calling their settlement \"Wisconsin City\" before renaming it \"Port Washington\" in honor of President George Washington. In the late 1840s and early 1850s, the community was a candidate to be the Washington County seat. Disagreements between municipalities and election fraud prevented Washington County from having a permanent seat of government until the Wisconsin State Legislature intervened, creating Ozaukee County out of the eastern third of Washington County and making Port Washington the seat of the new county.\nFor much of its history, Port Washington has been tied to the Great Lakes. Early settlers used boats to transport goods including lumber, fish, and grains, although the community's early years were marred by shipwrecks, which led the U.S. Federal Government to construct Port Washington Harbor in 1871. Commercial fishing prospered in Port Washington until the mid-20th century, and beginning in the 1930s, the Port Washington Generating Station used the harbor to receive large shipments of coal to burn for electricity. The commercial harbor closed in 2004 when the power station switched to natural gas for fuel, but the community maintains an active marina for recreational boaters. In the 21st century, Port Washington celebrates its lacustrine heritage with museums, public fish fries, sport fishing derbies, and sailboat races."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 329
+    },
+    "banned_terms": [
+      {
+        "term": "port washington",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "washington",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5652,
+    "attempt": 5609,
+    "place_id": "gn-6332422",
+    "input": {
+      "place": {
+        "place_id": "gn-6332422",
+        "name": "Morningside Heights",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.81,
+        "lon": -73.9625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morningside Heights",
+          "url": "https://en.wikipedia.org/wiki/Morningside_Heights",
+          "text": "Morningside Heights is a neighborhood on the West Side of Upper Manhattan in New York City. It is bound by Morningside Drive to the east, 125th Street to the north, 110th Street to the south, and Riverside Drive to the west. Morningside Heights borders Central Harlem and Morningside Park to the east, Manhattanville to the north, the Manhattan Valley section of the Upper West Side to the south, and Riverside Park to the west. Broadway is the neighborhood's main thoroughfare, running north–south.\nMorningside Heights, located on a high plateau between Morningside and Riverside Parks, was hard to access until the late 19th century and was sparsely developed except for the Bloomingdale and Leake and Watts asylums. Morningside Heights and the Upper West Side were considered part of the Bloomingdale District until Morningside Park was finished in the late 19th century. Large-scale development started in the 1890s with academic and cultural institutions. By the 1900s, public transportation construction and the neighborhood's first subway line led to Morningside Heights being developed into a residential neighborhood. Morningside Heights was mostly developed by the 1930s. During the mid-20th century, as the institutions within Morningside Heights expanded, cultural tensions grew between residents who were affiliated with institutions and those who were not. After a period of decline, the neighborhood started to gentrify in the 1980s and 1990s.\nA large portion of Morningside Heights is part of the campus of Columbia University, a private Ivy League university. Morningside Heights contains numerous other educational institutions such as Teachers College, Barnard College, the Manhattan School of Music, Bank Street College of Education, Union Theological Seminary, and the Jewish Theological Seminary of America. Additionally, Morningside Heights includes several religious institutions, including the Cathedral of St. John the Divine, Riverside Church, the Church of Notre Dame, Corpus Christi Church, and Interchurch Center. The neighborhood also contains other architectural landmarks, such as St. Luke's Hospital (now Mount Sinai Morningside) and Grant's Tomb.\nMorningside Heights is part of Manhattan Community District 9. It is patrolled by the 26th Precinct of the New York City Police Department with fire services being provided by the New York City Fire Department's Engine Company 47 and Engine Company 37/Ladder Company 40. Politically it is represented by the New York City Council's 7th District."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 377
+    },
+    "banned_terms": [
+      {
+        "term": "morningside heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "morningside",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5653,
+    "attempt": 5610,
+    "place_id": "gn-645765",
+    "input": {
+      "place": {
+        "place_id": "gn-645765",
+        "name": "Muhos",
+        "country": "Finland",
+        "subdivision": "North Ostrobothnia",
+        "lat": 64.80798,
+        "lon": 25.99314
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muhos",
+          "url": "https://en.wikipedia.org/wiki/Muhos",
+          "text": "Muhos is a municipality of northern Finland. It is located in the province of Oulu half an hour's drive (35 km) on route 22 from the city of Oulu, the capital of Northern Finland, and is part of the Northern Ostrobothnia region. The municipality has a population of 8,767 (31 December 2025) and covers an area of 797.26 square kilometres (307.82 sq mi) of which 13.78 km2 (5.32 sq mi) is water. The population density is 11.17 inhabitants per square kilometre (28.9/sq mi).\nThe river Oulujoki flows through the town and its countryside, with the wide open plains of Ostrobothnia on the south side of the river and the forested hills of Kainuu on the northern side.\nLocated in Muhos is the Pyhäkoski hydro-electric power plant which was commissioned in 1949 and has the highest fall in Finland (32.4 m). The power station has been designed by renowned Finnish architect Aarne Ervi. The motif of the municipal coat of arms, designed by Olof Eriksson and adopted in the 1950s, also alludes to electricity generation following the construction of the power plant.\nGoogle is planning a data center to be located in Muhos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "muhos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5654,
+    "attempt": 5611,
+    "place_id": "gn-6545243",
+    "input": {
+      "place": {
+        "place_id": "gn-6545243",
+        "name": "Bayswater",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.51116,
+        "lon": -0.18426
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bayswater",
+          "url": "https://en.wikipedia.org/wiki/Bayswater",
+          "text": "Bayswater is an area in the City of Westminster. It is a built-up district with a population density of 17,500 per square kilometre, and is located between Kensington Gardens to the south, Paddington to the north-east, and Notting Hill to the west.\nMuch of Bayswater was built in the 1800s, and consists of streets and garden squares lined with Victorian stucco terraces; some of which have been subdivided into flats. Other key developments include the Grade II listed 650-flat Hallfield Estate, designed by Berthold Lubetkin and Sir Denys Lasdun, and Queensway and Westbourne Grove, its busiest high streets, with a mix of independent, boutique and chain retailers and restaurants.\nBayswater is also one of London's most cosmopolitan areas: a diverse local population is augmented by a high concentration of hotels. In addition to the English, there are many other nationalities. Notable ethnic groups include  Malaysians, Greeks, French, Italians, Chinese, Brazilians, Americans, Russians and Arabs amongst others."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "bayswater",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5655,
+    "attempt": 5612,
+    "place_id": "gn-8349426",
+    "input": {
+      "place": {
+        "place_id": "gn-8349426",
+        "name": "Southern River",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -32.10658,
+        "lon": 115.95896
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Southern River, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Southern_River,_Western_Australia",
+          "text": "Southern River is a suburb of Perth, Western Australia, located within the City of Gosnells.\nIt was originally a rural area with farms for egg production, horse breeding properties and boarding kennels for cats and dogs. These farms combined gave the area a population of less than 500 people.\nThe current environment is just undergoing major changes; plans for the next five years will see the suburb totally redeveloped into medium-density residential properties with an average block size of 700 square metres (7,500 sq ft). The result will be a population increase to above 15,000; along with this will be the building of all the necessary infrastructure like shops, schools, parks and gardens. \n\nThe region bounded by Ranford Road, Passmore Street, Matison Street and Holmes Road, is likely to retain its special status and unique lifestyle for the foreseeable future. Most residents are involved in either greyhound racing or the breeding showing and trialling of pedigree dogs and/or cats. Several boarding catteries and kennels are found in the area, servicing a large proportion of the Perth metropolitan area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "southern river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "southern",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5656,
+    "attempt": 5613,
+    "place_id": "gn-11184859",
+    "input": {
+      "place": {
+        "place_id": "gn-11184859",
+        "name": "Seri Iskandar",
+        "country": "Malaysia",
+        "subdivision": "Perak",
+        "lat": 4.35993,
+        "lon": 100.98491
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Seri Iskandar",
+          "url": "https://en.wikipedia.org/wiki/Seri_Iskandar",
+          "text": "Seri Iskandar is a major town within the Perak Tengah District in the state of Perak, Malaysia. It is situated about 40 kilometers southwest of the city of Ipoh, the state capital. The town is at an average elevation of 29 meters above the sea level. The town has experienced growth and development in recent years, primarily due to the presence of two university campuses and several higher educational institutions and their associated industries.  The two campuses are the main campus of Universiti Teknologi PETRONAS and a branch campus of Universiti Teknologi MARA. Other educational institutions in Seri Iskandar are Kolej Profesional MARA, Institut Kemahiran Belia Negara, Institut Latihan KEMAS and Kolej Vokasional MARA.\nThere are also 4 primary and 2 secondary schools in the township.\nAs of the year 2020, the town had a total population of 14,827. Seri Iskandar offers a mix of residential areas, educational institutions, commercial establishments, and recreational facilities. It serves as an educational hub and contributes to the economic vibrancy of the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "seri iskandar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "seri",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "iskandar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5657,
+    "attempt": 5614,
+    "place_id": "gn-12070060",
+    "input": {
+      "place": {
+        "place_id": "gn-12070060",
+        "name": "Vicaria",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 40.86151,
+        "lon": 14.27328
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vicaria",
+          "url": "https://en.wikipedia.org/wiki/Vicaria",
+          "text": "Vicaria (Italian: residence of the Viceroy), often known as Il Vasto, is one of the 30 quartieri of Naples, southern Italy, lying immediately to the east of the historical city centre (Centro storico).\nIt borders the districts of Poggioreale, Zona Industriale and San Lorenzo, which together with Vicaria make up the 4th municipality of the city. It also borders the district of San Carlo all'Arena, in the 3rd municipality.\nVicaria comprises a relatively small area, 0.72 km2. It had a population in 2009 of 16,369 inhabitants.\nIt takes its name from the eastern section of the Via dei Tribunali (the \"street of the courthouses\"), in the neighbourhood of San Lorenzo, once known as the \"Via della Vicaria\", since the Vicaria (the still-prominent Palazzo Ricca at the east end of the street) housed the main tribunal under the Spanish viceroys."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "vicaria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5658,
+    "attempt": 5615,
+    "place_id": "gn-1259148",
+    "input": {
+      "place": {
+        "place_id": "gn-1259148",
+        "name": "Pushkar",
+        "country": "India",
+        "subdivision": "Rajasthan",
+        "lat": 26.49022,
+        "lon": 74.55211
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pushkar",
+          "url": "https://en.wikipedia.org/wiki/Pushkar",
+          "text": "Pushkar is an ancient temple town located on the shore of Pushkar Lake near Ajmer City and headquarters of Pushkar tehsil in the Ajmer district in the Indian state of Rajasthan. It is situated about 10 km (6.2 mi) northwest of Ajmer and about 150 km (93 mi) southwest of Jaipur. The town lies at an elevation of about 510 metres (1,670 ft) and is surrounded by hills on three sides, with Nag Pahar (\"Snake Mountain\") forming a natural boundary between Ajmer and Pushkar.\nPushkar is among the oldest existing cities in India. According to Hindu tradition, Lord Brahma, regarded as the creator of the universe, dropped a lotus flower on the ground, which led to the formation of a lake. The place where the lotus fell came to be known as Pushkar, after the Sanskrit word for lotus. The town is home to one of the few temples dedicated to Brahma, and a pilgrimage to Pushkar is considered highly meritorious within Hinduism.\nAccording to Hindu scriptures, Pushkar Lake is regarded as Tirtha Raj, or the \"king of pilgrimage sites.\" It is believed that no pilgrimage is complete without bathing in its sacred waters. The lake is semi-circular in shape, with an estimated depth of 8–10 metres (26–33 ft), and is surrounded by 52 ghats. About 400 blue-colored temples surround the holy lake. It makes the atmosphere more spiritual and divine as one can listen to magical chants from temples along its perimeter.\nThe area is sometimes called the rose garden of Rajasthan because of the cultivation of roses whose essence is exported internationally. The city is noted for its mythological associations, temples, and heritage architecture.\nMost of the temples and ghats in Pushkar are from the 18th century and later, because many temples were destroyed during Muslim conquests in the area. Subsequently, the destroyed temples were rebuilt. The most famous among Pushkar temples is the red spired Brahma Temple. It is considered a sacred city by the Hindus particularly in Shaktism, and meat and eggs consumption are forbidden in the city as are alcohol and drugs. There are many ghats where pilgrims bathe. Pushkar is also significant for its Gurdwaras for Guru Nanak and Guru Gobind Singh. One of the bathing ghats, Gobind ghat, was built by Sikhs in memory of Guru Gobind Singh.\nPushkar is famous for its annual fair (Pushkar Camel Fair) featuring a trading fete of cattle, horses and camels. It is held over seven days in autumn marking Kartika Purnima according to the Hindu calendar (Kartik (month), October or November). It attracts nearly 200,000 people. In 1998, Pushkar hosted about 1 million domestic (95%) and international tourists over the year."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 445
+    },
+    "banned_terms": [
+      {
+        "term": "pushkar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5659,
+    "attempt": 5616,
+    "place_id": "gn-2642483",
+    "input": {
+      "place": {
+        "place_id": "gn-2642483",
+        "name": "Milnrow",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.61115,
+        "lon": -2.11266
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milnrow",
+          "url": "https://en.wikipedia.org/wiki/Milnrow",
+          "text": "Milnrow is a town within the Metropolitan Borough of Rochdale, in Greater Manchester, England. It lies on the River Beal at the foothills of the South Pennines, and forms a continuous urban area with Rochdale. It is 2 miles (3.2 km) east of Rochdale town centre, 10 miles (16.1 km) north-northeast of Manchester, and spans from Windy Hill in the east to the Rochdale Canal in the west. Milnrow is adjacent to junction 21 of the M62 motorway, and includes the village of Newhey, and hamlets at Tunshill and Ogden.\nHistorically in Lancashire, Milnrow during the Middle Ages was one of several hamlets in the township of Butterworth and parish of Rochdale. The settlement was named by the Anglo-Saxons, but the Norman conquest of England resulted in its ownership by minor Norman families, such as the Schofields and Cleggs. In the 15th century, their descendants successfully agitated for a chapel of ease by the banks of the River Beal, triggering its development as the main settlement in Butterworth. Milnrow was primarily used for marginal hill farming during the Middle Ages, and its population did not increase much until the dawn of the woollen trade in the 17th century.\nWith the development of packhorse routes to emerging woollen markets in Yorkshire, the inhabitants of Milnrow adopted the domestic system, supplementing their income by fellmongering and producing flannel in their weavers' cottages. Coal mining and metalworking also flourished in the Early Modern period, and the farmers, colliers and weavers formed a \"close-knit population of independent-minded workers\". The hamlets of Butterworth coalesced around the commercial and ecclesiastical centre in Milnrow as demand for the area's flannel grew.  In the 19th century, the Industrial Revolution supplanted domestic woollen industries and converted the area into a mill town, with cotton spinning as the principal industry. Mass-produced textile goods from Milnrow's cotton mills were exported globally with the arrival of the railway in 1863. The Milnrow Urban District was established in 1894 and was governed by the district council until its abolition in 1974.\nDeindustrialisation and suburbanisation occurred throughout the 20th century resulting in the loss of coal mining and cotton spinning. Milnrow was merged in to the Metropolitan Borough of Rochdale in 1974, and has since become suburban to Rochdale. However, the area has retained \"a distinct and separate character\", and has been described as \"the centre of the south Lancashire dialect\". John Collier (who wrote under the pseudonym of Tim Bobbin) is acclaimed as an 18th-century caricaturist and satirical poet who produced Lancashire-dialect works during his time as Milnrow's schoolmaster. Rochdale-born poet Edwin Waugh was influenced by Collier's work, and wrote an extensive account of Milnrow during the mid-19th century in a tribute to him. Milnrow has continued to grow in the 21st century, spurred by its connectivity to road, rail and motorway networks. Surviving weavers' cottages are among Milnrow's listed buildings, while the Ellenroad Steam Museum operates as an industrial heritage centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 489
+    },
+    "banned_terms": [
+      {
+        "term": "milnrow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5660,
+    "attempt": 5617,
+    "place_id": "gn-2880099",
+    "input": {
+      "place": {
+        "place_id": "gn-2880099",
+        "name": "Lauingen",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 48.56775,
+        "lon": 10.42706
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lauingen",
+          "url": "https://en.wikipedia.org/wiki/Lauingen",
+          "text": "Lauingen (German pronunciation: [ˈlaʊɪŋən] ; Swabian: Lauinga) is a town in the district of Dillingen in Bavaria, Germany. It is located on the left bank of the Danube, 5 km west of Dillingen, and 37 km northeast of Ulm.\nIn June 1800, the armies of the French First Republic, under command of Jean Victor Moreau, fought Habsburg regulars and Württemberg contingents, under the general command of Pál Kray.  Kray had taken refuge in the fortress at Ulm; Moreau diverted his army to approach Ulm from the east. Kray had ordered preparation for the destruction of all the bridges across the Danube, including the one at Lauingen.  A small group of French captured a foothold on the northern bank of the Danube by Grensheim, and Moreau's forces were able to move against the fortress on both sides of the river.  At this battle, the culmination of the Danube Campaign of 1800, Moreau forced Kray to abandon Ulm and withdraw into eastern Bavaria."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "lauingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5661,
+    "attempt": 5618,
+    "place_id": "gn-3089670",
+    "input": {
+      "place": {
+        "place_id": "gn-3089670",
+        "name": "Ostrzeszów",
+        "country": "Poland",
+        "subdivision": "Greater Poland",
+        "lat": 51.4264,
+        "lon": 17.93355
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ostrzeszów",
+          "url": "https://en.wikipedia.org/wiki/Ostrzeszów",
+          "text": "Ostrzeszów (Polish pronunciation: [ɔstˈʂɛʂuf] ) is a town in south-central Poland, in Greater Poland Voivodeship. It is the capital of Ostrzeszów County. The population in 2023 was 14,095 inhabitants. The town is situated around 80 kilometres (50 miles) from Wrocław, 170 km (106 miles) from Katowice and 160 km (99 miles) from Poznań.\nFounded in the Middle Ages, Ostrzeszów is a former Polish royal town located in the historical Wieluń Land that owed its prosperity to crafts and trade. It became more internationally known for being the site of German-operated prisoner-of-war camps for Allied soldiers and officers of various nationalities, chiefly Polish, French, British and Norwegian, during the German occupation of Poland in World War II. One of Ostrzeszów's honorary citizens is Krzysztof Wielicki, who climbed all of the world's mountains of over 8,000 metres (26,247 feet) in height."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "ostrzeszow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5662,
+    "attempt": 5619,
+    "place_id": "gn-3173162",
+    "input": {
+      "place": {
+        "place_id": "gn-3173162",
+        "name": "Mondovì",
+        "country": "Italy",
+        "subdivision": "Piedmont",
+        "lat": 44.39603,
+        "lon": 7.81764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mondovì",
+          "url": "https://en.wikipedia.org/wiki/Mondovì",
+          "text": "Mondovì (Italian: [mondoˈvi]; Piedmontese: Ël Mondvì [əl mʊŋdˈvi]; Latin: Mons Regalis) is a town and comune (municipality) in Piedmont, northern Italy, located about 22 kilometres (14 mi) east of Cuneo, in which province it lies, and 80 kilometres (50 mi) south of the regional capital, Turin. The area around the town is known as the Monregalese.\nMondovì, located on the Monte Regale hill, is divided into several rioni (ancient quarters): Piazza (the most ancient), Breo, Pian della Valle, Carassone, Altipiano, Borgato and Rinchiuso; the latter, situated lower next to the Ellero stream, developed from the 18th century in conjunction with the industrial development of the town, when it started to be reached by railway. The Funicolare di Mondovì, a funicular railway reopened in 2006, links Breo with Piazza.\nMondovì is the seat of the Roman Catholic Diocese of Mondovì."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 139
+    },
+    "banned_terms": [
+      {
+        "term": "mondovi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5663,
+    "attempt": 5620,
+    "place_id": "gn-3495664",
+    "input": {
+      "place": {
+        "place_id": "gn-3495664",
+        "name": "Padre Las Casas",
+        "country": "Dominican Republic",
+        "subdivision": "Azua Province",
+        "lat": 18.73172,
+        "lon": -70.93917
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Padre Las Casas, Dominican Republic",
+          "url": "https://en.wikipedia.org/wiki/Padre_Las_Casas,_Dominican_Republic",
+          "text": "Padre Las Casas is a municipality (municipio) of the Azua province in the Dominican Republic.  It includes the municipal districts (distritos municipal) of La Siembra, Las Lagunas, and Los Fríos.\nPadre Las Casas is located in the foothills of the Cordillera Central. The economy of the town is as a service depot for local farmers and farmers for quite a distance into the mountains to which it is the easiest point of contact. There is also a large service economy and an efficient bus cooperative that connects mainly with Azua and the towns along the way. Full-time employment for males runs about 50% but many males do some kind of work but much of this pays less than a dollar an hour, while entrepreneurs in retail and other small businesses may easily make the owner a 200–500 weekly income. The disparity is great even in the microcosm of this small town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 139,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "padre las casas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "padre",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "casas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

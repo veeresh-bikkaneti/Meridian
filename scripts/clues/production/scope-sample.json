@@ -1,0 +1,2045 @@
+{
+  "purpose": "Tier-2 source-expansion scoping sample (Liz, 2026-10-04): ~200 places drawn from the climate-rejected worker population of records-full.jsonl.",
+  "seed": 20261004,
+  "prng": "mulberry32",
+  "bands": 5,
+  "perBand": 40,
+  "population": {
+    "definition": "records-full.jsonl status=rejected AND rejection.tier_name=climate, excluding the one validator-converted rejection (gn-2652676 Cockermouth)",
+    "count": 7997,
+    "rankRange": [
+      1,
+      8257
+    ]
+  },
+  "bandEdges": [
+    {
+      "band": 1,
+      "fromRank": 1,
+      "size": 1600
+    },
+    {
+      "band": 2,
+      "fromRank": 1671,
+      "size": 1600
+    },
+    {
+      "band": 3,
+      "fromRank": 3326,
+      "size": 1599
+    },
+    {
+      "band": 4,
+      "fromRank": 4977,
+      "size": 1599
+    },
+    {
+      "band": 5,
+      "fromRank": 6614,
+      "size": 1599
+    }
+  ],
+  "sampleSize": 200,
+  "sample": [
+    {
+      "place_id": "gn-789128",
+      "rank": 37,
+      "band": 1,
+      "name": "Kragujevac",
+      "country": "Serbia",
+      "subdivision": "Central Serbia",
+      "article": "Kragujevac",
+      "url": "https://en.wikipedia.org/wiki/Kragujevac"
+    },
+    {
+      "place_id": "gn-1269771",
+      "rank": 93,
+      "band": 1,
+      "name": "Imphal",
+      "country": "India",
+      "subdivision": "Manipur",
+      "article": "Imphal",
+      "url": "https://en.wikipedia.org/wiki/Imphal"
+    },
+    {
+      "place_id": "gn-1259385",
+      "rank": 97,
+      "band": 1,
+      "name": "Port Blair",
+      "country": "India",
+      "subdivision": "Andaman and Nicobar",
+      "article": "Port Blair",
+      "url": "https://en.wikipedia.org/wiki/Port_Blair"
+    },
+    {
+      "place_id": "gn-4951788",
+      "rank": 167,
+      "band": 1,
+      "name": "Springfield",
+      "country": "United States",
+      "subdivision": "Massachusetts",
+      "article": "Springfield, Massachusetts",
+      "url": "https://en.wikipedia.org/wiki/Springfield,_Massachusetts"
+    },
+    {
+      "place_id": "gn-5350734",
+      "rank": 213,
+      "band": 1,
+      "name": "Fremont",
+      "country": "United States",
+      "subdivision": "California",
+      "article": "Fremont, California",
+      "url": "https://en.wikipedia.org/wiki/Fremont,_California"
+    },
+    {
+      "place_id": "gn-5403022",
+      "rank": 285,
+      "band": 1,
+      "name": "Torrance",
+      "country": "United States",
+      "subdivision": "California",
+      "article": "Torrance, California",
+      "url": "https://en.wikipedia.org/wiki/Torrance,_California"
+    },
+    {
+      "place_id": "gn-4049979",
+      "rank": 329,
+      "band": 1,
+      "name": "Birmingham",
+      "country": "United States",
+      "subdivision": "Alabama",
+      "article": "Birmingham, Alabama",
+      "url": "https://en.wikipedia.org/wiki/Birmingham,_Alabama"
+    },
+    {
+      "place_id": "gn-2451478",
+      "rank": 347,
+      "band": 1,
+      "name": "Ségou",
+      "country": "Mali",
+      "subdivision": "Ségou",
+      "article": "Ségou",
+      "url": "https://en.wikipedia.org/wiki/S%C3%A9gou"
+    },
+    {
+      "place_id": "gn-3843123",
+      "rank": 437,
+      "band": 1,
+      "name": "Neuquén",
+      "country": "Argentina",
+      "subdivision": "Neuquen",
+      "article": "Neuquén",
+      "url": "https://en.wikipedia.org/wiki/Neuqu%C3%A9n"
+    },
+    {
+      "place_id": "gn-3435217",
+      "rank": 460,
+      "band": 1,
+      "name": "Corrientes",
+      "country": "Argentina",
+      "subdivision": "Corrientes",
+      "article": "Corrientes",
+      "url": "https://en.wikipedia.org/wiki/Corrientes"
+    },
+    {
+      "place_id": "gn-1183460",
+      "rank": 475,
+      "band": 1,
+      "name": "Bannu",
+      "country": "Pakistan",
+      "subdivision": "Khyber Pakhtunkhwa",
+      "article": "Bannu",
+      "url": "https://en.wikipedia.org/wiki/Bannu"
+    },
+    {
+      "place_id": "gn-5352423",
+      "rank": 505,
+      "band": 1,
+      "name": "Glendale",
+      "country": "United States",
+      "subdivision": "California",
+      "article": "Glendale, California",
+      "url": "https://en.wikipedia.org/wiki/Glendale,_California"
+    },
+    {
+      "place_id": "gn-1255947",
+      "rank": 508,
+      "band": 1,
+      "name": "Sivakasi",
+      "country": "India",
+      "subdivision": "Tamil Nadu",
+      "article": "Sivakasi",
+      "url": "https://en.wikipedia.org/wiki/Sivakasi"
+    },
+    {
+      "place_id": "gn-1273874",
+      "rank": 596,
+      "band": 1,
+      "name": "Kochi",
+      "country": "India",
+      "subdivision": "Kerala",
+      "article": "Kochi",
+      "url": "https://en.wikipedia.org/wiki/Kochi"
+    },
+    {
+      "place_id": "gn-3114472",
+      "rank": 621,
+      "band": 1,
+      "name": "Pamplona",
+      "country": "Spain",
+      "subdivision": "Navarre",
+      "article": "Pamplona",
+      "url": "https://en.wikipedia.org/wiki/Pamplona"
+    },
+    {
+      "place_id": "gn-2082600",
+      "rank": 644,
+      "band": 1,
+      "name": "Jayapura",
+      "country": "Indonesia",
+      "subdivision": "Papua",
+      "article": "Jayapura",
+      "url": "https://en.wikipedia.org/wiki/Jayapura"
+    },
+    {
+      "place_id": "gn-5879400",
+      "rank": 670,
+      "band": 1,
+      "name": "Anchorage",
+      "country": "United States",
+      "subdivision": "Alaska",
+      "article": "Anchorage, Alaska",
+      "url": "https://en.wikipedia.org/wiki/Anchorage,_Alaska"
+    },
+    {
+      "place_id": "gn-3689147",
+      "rank": 705,
+      "band": 1,
+      "name": "Barranquilla",
+      "country": "Colombia",
+      "subdivision": "Atlántico",
+      "article": "Barranquilla",
+      "url": "https://en.wikipedia.org/wiki/Barranquilla"
+    },
+    {
+      "place_id": "gn-1562798",
+      "rank": 716,
+      "band": 1,
+      "name": "Vinh",
+      "country": "Vietnam",
+      "subdivision": "Nghệ An Province",
+      "article": "Vinh",
+      "url": "https://en.wikipedia.org/wiki/Vinh"
+    },
+    {
+      "place_id": "gn-3688928",
+      "rank": 721,
+      "band": 1,
+      "name": "Bello",
+      "country": "Colombia",
+      "subdivision": "Antioquia",
+      "article": "Bello, Antioquia",
+      "url": "https://en.wikipedia.org/wiki/Bello,_Antioquia"
+    },
+    {
+      "place_id": "gn-1647142",
+      "rank": 834,
+      "band": 1,
+      "name": "Cianjur",
+      "country": "Indonesia",
+      "subdivision": "West Java",
+      "article": "Cianjur",
+      "url": "https://en.wikipedia.org/wiki/Cianjur"
+    },
+    {
+      "place_id": "gn-1791249",
+      "rank": 899,
+      "band": 1,
+      "name": "Wuhai",
+      "country": "China",
+      "subdivision": "Inner Mongolia",
+      "article": "Wuhai",
+      "url": "https://en.wikipedia.org/wiki/Wuhai"
+    },
+    {
+      "place_id": "gn-2806654",
+      "rank": 904,
+      "band": 1,
+      "name": "Wolfsburg",
+      "country": "Germany",
+      "subdivision": "Lower Saxony",
+      "article": "Wolfsburg",
+      "url": "https://en.wikipedia.org/wiki/Wolfsburg"
+    },
+    {
+      "place_id": "gn-1259229",
+      "rank": 971,
+      "band": 1,
+      "name": "Pune",
+      "country": "India",
+      "subdivision": "Maharashtra",
+      "article": "Pune",
+      "url": "https://en.wikipedia.org/wiki/Pune"
+    },
+    {
+      "place_id": "gn-5304391",
+      "rank": 990,
+      "band": 1,
+      "name": "Mesa",
+      "country": "United States",
+      "subdivision": "Arizona",
+      "article": "Mesa, Arizona",
+      "url": "https://en.wikipedia.org/wiki/Mesa,_Arizona"
+    },
+    {
+      "place_id": "gn-1806097",
+      "rank": 1001,
+      "band": 1,
+      "name": "Ningde",
+      "country": "China",
+      "subdivision": "Fujian",
+      "article": "Ningde",
+      "url": "https://en.wikipedia.org/wiki/Ningde"
+    },
+    {
+      "place_id": "gn-2174003",
+      "rank": 1003,
+      "band": 1,
+      "name": "Brisbane",
+      "country": "Australia",
+      "subdivision": "Queensland",
+      "article": "Brisbane",
+      "url": "https://en.wikipedia.org/wiki/Brisbane"
+    },
+    {
+      "place_id": "gn-3037656",
+      "rank": 1040,
+      "band": 1,
+      "name": "Angers",
+      "country": "France",
+      "subdivision": "Pays de la Loire",
+      "article": "Angers",
+      "url": "https://en.wikipedia.org/wiki/Angers"
+    },
+    {
+      "place_id": "gn-5387428",
+      "rank": 1066,
+      "band": 1,
+      "name": "Richmond",
+      "country": "United States",
+      "subdivision": "California",
+      "article": "Richmond, California",
+      "url": "https://en.wikipedia.org/wiki/Richmond,_California"
+    },
+    {
+      "place_id": "gn-6075357",
+      "rank": 1176,
+      "band": 1,
+      "name": "Mississauga",
+      "country": "Canada",
+      "subdivision": "Ontario",
+      "article": "Mississauga",
+      "url": "https://en.wikipedia.org/wiki/Mississauga"
+    },
+    {
+      "place_id": "gn-2637627",
+      "rank": 1238,
+      "band": 1,
+      "name": "Slough",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Slough",
+      "url": "https://en.wikipedia.org/wiki/Slough"
+    },
+    {
+      "place_id": "gn-5367929",
+      "rank": 1245,
+      "band": 1,
+      "name": "Long Beach",
+      "country": "United States",
+      "subdivision": "California",
+      "article": "Long Beach, California",
+      "url": "https://en.wikipedia.org/wiki/Long_Beach,_California"
+    },
+    {
+      "place_id": "gn-1805844",
+      "rank": 1277,
+      "band": 1,
+      "name": "Jieshou",
+      "country": "China",
+      "subdivision": "Anhui",
+      "article": "Jieshou",
+      "url": "https://en.wikipedia.org/wiki/Jieshou"
+    },
+    {
+      "place_id": "gn-3408404",
+      "rank": 1348,
+      "band": 1,
+      "name": "Abreu e Lima",
+      "country": "Brazil",
+      "subdivision": "Pernambuco",
+      "article": "Abreu e Lima",
+      "url": "https://en.wikipedia.org/wiki/Abreu_e_Lima"
+    },
+    {
+      "place_id": "gn-1248991",
+      "rank": 1359,
+      "band": 1,
+      "name": "Colombo",
+      "country": "Sri Lanka",
+      "subdivision": "Western Province",
+      "article": "Colombo",
+      "url": "https://en.wikipedia.org/wiki/Colombo"
+    },
+    {
+      "place_id": "gn-2044757",
+      "rank": 1425,
+      "band": 1,
+      "name": "Chongjin",
+      "country": "North Korea",
+      "subdivision": "North Hamgyong",
+      "article": "Chongjin",
+      "url": "https://en.wikipedia.org/wiki/Chongjin"
+    },
+    {
+      "place_id": "gn-1841811",
+      "rank": 1542,
+      "band": 1,
+      "name": "Gwangju",
+      "country": "South Korea",
+      "subdivision": "Gwangju",
+      "article": "Gwangju",
+      "url": "https://en.wikipedia.org/wiki/Gwangju"
+    },
+    {
+      "place_id": "gn-98463",
+      "rank": 1585,
+      "band": 1,
+      "name": "Sulaymaniyah",
+      "country": "Iraq",
+      "subdivision": "Sulaymaniyah",
+      "article": "Sulaymaniyah",
+      "url": "https://en.wikipedia.org/wiki/Sulaymaniyah"
+    },
+    {
+      "place_id": "gn-3980760",
+      "rank": 1607,
+      "band": 1,
+      "name": "Uruapan",
+      "country": "Mexico",
+      "subdivision": "Michoacán",
+      "article": "Uruapan",
+      "url": "https://en.wikipedia.org/wiki/Uruapan"
+    },
+    {
+      "place_id": "gn-2036973",
+      "rank": 1654,
+      "band": 1,
+      "name": "Heihe",
+      "country": "China",
+      "subdivision": "Heilongjiang",
+      "article": "Heihe",
+      "url": "https://en.wikipedia.org/wiki/Heihe"
+    },
+    {
+      "place_id": "gn-480060",
+      "rank": 1698,
+      "band": 2,
+      "name": "Tver",
+      "country": "Russia",
+      "subdivision": "Tver Oblast",
+      "article": "Tver",
+      "url": "https://en.wikipedia.org/wiki/Tver"
+    },
+    {
+      "place_id": "gn-1737486",
+      "rank": 1742,
+      "band": 2,
+      "name": "Bintulu",
+      "country": "Malaysia",
+      "subdivision": "Sarawak",
+      "article": "Bintulu",
+      "url": "https://en.wikipedia.org/wiki/Bintulu"
+    },
+    {
+      "place_id": "gn-1817720",
+      "rank": 1744,
+      "band": 2,
+      "name": "Shangyu",
+      "country": "China",
+      "subdivision": "Zhejiang",
+      "article": "Shangyu, Shaoxing",
+      "url": "https://en.wikipedia.org/wiki/Shangyu,_Shaoxing"
+    },
+    {
+      "place_id": "gn-146384",
+      "rank": 1760,
+      "band": 2,
+      "name": "Limassol",
+      "country": "Cyprus",
+      "subdivision": "Limassol",
+      "article": "Limassol",
+      "url": "https://en.wikipedia.org/wiki/Limassol"
+    },
+    {
+      "place_id": "gn-3522551",
+      "rank": 1772,
+      "band": 2,
+      "name": "Nuevo Laredo",
+      "country": "Mexico",
+      "subdivision": "Tamaulipas",
+      "article": "Nuevo Laredo",
+      "url": "https://en.wikipedia.org/wiki/Nuevo_Laredo"
+    },
+    {
+      "place_id": "gn-3180792",
+      "rank": 2011,
+      "band": 2,
+      "name": "Canosa di Puglia",
+      "country": "Italy",
+      "subdivision": "Apulia",
+      "article": "Canosa di Puglia",
+      "url": "https://en.wikipedia.org/wiki/Canosa_di_Puglia"
+    },
+    {
+      "place_id": "gn-3533389",
+      "rank": 2097,
+      "band": 2,
+      "name": "Actopan",
+      "country": "Mexico",
+      "subdivision": "Hidalgo",
+      "article": "Actopan, Hidalgo",
+      "url": "https://en.wikipedia.org/wiki/Actopan,_Hidalgo"
+    },
+    {
+      "place_id": "gn-706448",
+      "rank": 2102,
+      "band": 2,
+      "name": "Kherson",
+      "country": "Ukraine",
+      "subdivision": "Kherson",
+      "article": "Kherson",
+      "url": "https://en.wikipedia.org/wiki/Kherson"
+    },
+    {
+      "place_id": "gn-5280854",
+      "rank": 2117,
+      "band": 2,
+      "name": "Wheeling",
+      "country": "United States",
+      "subdivision": "West Virginia",
+      "article": "Wheeling, West Virginia",
+      "url": "https://en.wikipedia.org/wiki/Wheeling,_West_Virginia"
+    },
+    {
+      "place_id": "gn-1608900",
+      "rank": 2121,
+      "band": 2,
+      "name": "Maha Sarakham",
+      "country": "Thailand",
+      "subdivision": "Maha Sarakham",
+      "article": "Maha Sarakham",
+      "url": "https://en.wikipedia.org/wiki/Maha_Sarakham"
+    },
+    {
+      "place_id": "gn-759603",
+      "rank": 2149,
+      "band": 2,
+      "name": "Sandomierz",
+      "country": "Poland",
+      "subdivision": "Świętokrzyskie",
+      "article": "Sandomierz",
+      "url": "https://en.wikipedia.org/wiki/Sandomierz"
+    },
+    {
+      "place_id": "gn-3084826",
+      "rank": 2174,
+      "band": 2,
+      "name": "Starogard Gdański",
+      "country": "Poland",
+      "subdivision": "Pomerania",
+      "article": "Starogard Gdański",
+      "url": "https://en.wikipedia.org/wiki/Starogard_Gda%C5%84ski"
+    },
+    {
+      "place_id": "gn-4019869",
+      "rank": 2176,
+      "band": 2,
+      "name": "Abasolo",
+      "country": "Mexico",
+      "subdivision": "Guanajuato",
+      "article": "Abasolo, Guanajuato",
+      "url": "https://en.wikipedia.org/wiki/Abasolo,_Guanajuato"
+    },
+    {
+      "place_id": "gn-5423573",
+      "rank": 2208,
+      "band": 2,
+      "name": "Grand Junction",
+      "country": "United States",
+      "subdivision": "Colorado",
+      "article": "Grand Junction, Colorado",
+      "url": "https://en.wikipedia.org/wiki/Grand_Junction,_Colorado"
+    },
+    {
+      "place_id": "gn-5802570",
+      "rank": 2209,
+      "band": 2,
+      "name": "Marysville",
+      "country": "United States",
+      "subdivision": "Washington",
+      "article": "Marysville, Washington",
+      "url": "https://en.wikipedia.org/wiki/Marysville,_Washington"
+    },
+    {
+      "place_id": "gn-8440759",
+      "rank": 2210,
+      "band": 2,
+      "name": "Bagru",
+      "country": "India",
+      "subdivision": "Rajasthan",
+      "article": "Bagru",
+      "url": "https://en.wikipedia.org/wiki/Bagru"
+    },
+    {
+      "place_id": "gn-2511619",
+      "rank": 2214,
+      "band": 2,
+      "name": "Sagunto",
+      "country": "Spain",
+      "subdivision": "Valencia",
+      "article": "Sagunto",
+      "url": "https://en.wikipedia.org/wiki/Sagunto"
+    },
+    {
+      "place_id": "gn-3430988",
+      "rank": 2228,
+      "band": 2,
+      "name": "Luján",
+      "country": "Argentina",
+      "subdivision": "Buenos Aires",
+      "article": "Luján, Buenos Aires",
+      "url": "https://en.wikipedia.org/wiki/Luj%C3%A1n,_Buenos_Aires"
+    },
+    {
+      "place_id": "gn-3109256",
+      "rank": 2272,
+      "band": 2,
+      "name": "Segovia",
+      "country": "Spain",
+      "subdivision": "Castille and León",
+      "article": "Segovia",
+      "url": "https://en.wikipedia.org/wiki/Segovia"
+    },
+    {
+      "place_id": "gn-4839416",
+      "rank": 2319,
+      "band": 2,
+      "name": "New London",
+      "country": "United States",
+      "subdivision": "Connecticut",
+      "article": "New London, Connecticut",
+      "url": "https://en.wikipedia.org/wiki/New_London,_Connecticut"
+    },
+    {
+      "place_id": "gn-655808",
+      "rank": 2395,
+      "band": 2,
+      "name": "Joensuu",
+      "country": "Finland",
+      "subdivision": "North Karelia",
+      "article": "Joensuu",
+      "url": "https://en.wikipedia.org/wiki/Joensuu"
+    },
+    {
+      "place_id": "gn-2286023",
+      "rank": 2402,
+      "band": 2,
+      "name": "Kaouara",
+      "country": "Côte d’Ivoire",
+      "subdivision": "Savanes District",
+      "article": "Kaouara",
+      "url": "https://en.wikipedia.org/wiki/Kaouara"
+    },
+    {
+      "place_id": "gn-4203696",
+      "rank": 2417,
+      "band": 2,
+      "name": "Kennesaw",
+      "country": "United States",
+      "subdivision": "Georgia",
+      "article": "Kennesaw, Georgia",
+      "url": "https://en.wikipedia.org/wiki/Kennesaw,_Georgia"
+    },
+    {
+      "place_id": "gn-5178195",
+      "rank": 2457,
+      "band": 2,
+      "name": "Altoona",
+      "country": "United States",
+      "subdivision": "Pennsylvania",
+      "article": "Altoona, Pennsylvania",
+      "url": "https://en.wikipedia.org/wiki/Altoona,_Pennsylvania"
+    },
+    {
+      "place_id": "gn-1182787",
+      "rank": 2459,
+      "band": 2,
+      "name": "Bhalwal",
+      "country": "Pakistan",
+      "subdivision": "Punjab",
+      "article": "Bhalwal",
+      "url": "https://en.wikipedia.org/wiki/Bhalwal"
+    },
+    {
+      "place_id": "gn-730565",
+      "rank": 2521,
+      "band": 2,
+      "name": "Karlovo",
+      "country": "Bulgaria",
+      "subdivision": "Plovdiv",
+      "article": "Karlovo",
+      "url": "https://en.wikipedia.org/wiki/Karlovo"
+    },
+    {
+      "place_id": "gn-3471061",
+      "rank": 2532,
+      "band": 2,
+      "name": "Baixo Guandu",
+      "country": "Brazil",
+      "subdivision": "Espírito Santo",
+      "article": "Baixo Guandu",
+      "url": "https://en.wikipedia.org/wiki/Baixo_Guandu"
+    },
+    {
+      "place_id": "gn-2982681",
+      "rank": 2555,
+      "band": 2,
+      "name": "Roubaix",
+      "country": "France",
+      "subdivision": "Hauts-de-France",
+      "article": "Roubaix",
+      "url": "https://en.wikipedia.org/wiki/Roubaix"
+    },
+    {
+      "place_id": "gn-2867996",
+      "rank": 2589,
+      "band": 2,
+      "name": "Mühlhausen",
+      "country": "Germany",
+      "subdivision": "Thuringia",
+      "article": "Mühlhausen",
+      "url": "https://en.wikipedia.org/wiki/Mühlhausen"
+    },
+    {
+      "place_id": "gn-2652696",
+      "rank": 2637,
+      "band": 2,
+      "name": "Coatbridge",
+      "country": "United Kingdom",
+      "subdivision": "Scotland",
+      "article": "Coatbridge",
+      "url": "https://en.wikipedia.org/wiki/Coatbridge"
+    },
+    {
+      "place_id": "gn-3164433",
+      "rank": 2650,
+      "band": 2,
+      "name": "Viareggio",
+      "country": "Italy",
+      "subdivision": "Tuscany",
+      "article": "Viareggio",
+      "url": "https://en.wikipedia.org/wiki/Viareggio"
+    },
+    {
+      "place_id": "gn-2511700",
+      "rank": 2697,
+      "band": 2,
+      "name": "Rota",
+      "country": "Spain",
+      "subdivision": "Andalusia",
+      "article": "Rota, Spain",
+      "url": "https://en.wikipedia.org/wiki/Rota,_Spain"
+    },
+    {
+      "place_id": "gn-3459796",
+      "rank": 2760,
+      "band": 2,
+      "name": "João Monlevade",
+      "country": "Brazil",
+      "subdivision": "Minas Gerais",
+      "article": "João Monlevade",
+      "url": "https://en.wikipedia.org/wiki/João_Monlevade"
+    },
+    {
+      "place_id": "gn-1818266",
+      "rank": 2777,
+      "band": 2,
+      "name": "Yau Tong",
+      "country": "Hong Kong SAR China",
+      "subdivision": "Kwun Tong District",
+      "article": "Yau Tong",
+      "url": "https://en.wikipedia.org/wiki/Yau_Tong"
+    },
+    {
+      "place_id": "gn-3193935",
+      "rank": 2890,
+      "band": 2,
+      "name": "Osijek",
+      "country": "Croatia",
+      "subdivision": "County of Osijek-Baranja",
+      "article": "Osijek",
+      "url": "https://en.wikipedia.org/wiki/Osijek"
+    },
+    {
+      "place_id": "gn-1863293",
+      "rank": 2956,
+      "band": 2,
+      "name": "Hamakita",
+      "country": "Japan",
+      "subdivision": "Shizuoka",
+      "article": "Hamakita, Shizuoka",
+      "url": "https://en.wikipedia.org/wiki/Hamakita,_Shizuoka"
+    },
+    {
+      "place_id": "gn-338554",
+      "rank": 3215,
+      "band": 2,
+      "name": "Dubti",
+      "country": "Ethiopia",
+      "subdivision": "Āfar",
+      "article": "Dubti",
+      "url": "https://en.wikipedia.org/wiki/Dubti"
+    },
+    {
+      "place_id": "gn-2646504",
+      "rank": 3240,
+      "band": 2,
+      "name": "Hove",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Hove",
+      "url": "https://en.wikipedia.org/wiki/Hove"
+    },
+    {
+      "place_id": "gn-3526993",
+      "rank": 3286,
+      "band": 2,
+      "name": "Huatusco",
+      "country": "Mexico",
+      "subdivision": "Veracruz",
+      "article": "Huatusco",
+      "url": "https://en.wikipedia.org/wiki/Huatusco"
+    },
+    {
+      "place_id": "gn-2653148",
+      "rank": 3306,
+      "band": 2,
+      "name": "Chingford",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Chingford",
+      "url": "https://en.wikipedia.org/wiki/Chingford"
+    },
+    {
+      "place_id": "gn-788709",
+      "rank": 3332,
+      "band": 3,
+      "name": "Leskovac",
+      "country": "Serbia",
+      "subdivision": "Central Serbia",
+      "article": "Leskovac",
+      "url": "https://en.wikipedia.org/wiki/Leskovac"
+    },
+    {
+      "place_id": "gn-899825",
+      "rank": 3333,
+      "band": 3,
+      "name": "Petauke",
+      "country": "Zambia",
+      "subdivision": "Eastern Province",
+      "article": "Petauke",
+      "url": "https://en.wikipedia.org/wiki/Petauke"
+    },
+    {
+      "place_id": "gn-602913",
+      "rank": 3379,
+      "band": 3,
+      "name": "Skellefteå",
+      "country": "Sweden",
+      "subdivision": "Västerbotten",
+      "article": "Skellefteå",
+      "url": "https://en.wikipedia.org/wiki/Skellefteå"
+    },
+    {
+      "place_id": "gn-5314328",
+      "rank": 3408,
+      "band": 3,
+      "name": "Sierra Vista",
+      "country": "United States",
+      "subdivision": "Arizona",
+      "article": "Sierra Vista, Arizona",
+      "url": "https://en.wikipedia.org/wiki/Sierra_Vista,_Arizona"
+    },
+    {
+      "place_id": "gn-3583102",
+      "rank": 3434,
+      "band": 3,
+      "name": "Sonsonate",
+      "country": "El Salvador",
+      "subdivision": "Sonsonate Department",
+      "article": "Sonsonate, El Salvador",
+      "url": "https://en.wikipedia.org/wiki/Sonsonate,_El_Salvador"
+    },
+    {
+      "place_id": "gn-4908237",
+      "rank": 3471,
+      "band": 3,
+      "name": "Round Lake Beach",
+      "country": "United States",
+      "subdivision": "Illinois",
+      "article": "Round Lake Beach, Illinois",
+      "url": "https://en.wikipedia.org/wiki/Round_Lake_Beach,_Illinois"
+    },
+    {
+      "place_id": "gn-949683",
+      "rank": 3601,
+      "band": 3,
+      "name": "Thabazimbi",
+      "country": "South Africa",
+      "subdivision": "Limpopo",
+      "article": "Thabazimbi",
+      "url": "https://en.wikipedia.org/wiki/Thabazimbi"
+    },
+    {
+      "place_id": "gn-2738752",
+      "rank": 3607,
+      "band": 3,
+      "name": "Guimarães",
+      "country": "Portugal",
+      "subdivision": "Braga",
+      "article": "Guimarães",
+      "url": "https://en.wikipedia.org/wiki/Guimarães"
+    },
+    {
+      "place_id": "gn-3690465",
+      "rank": 3620,
+      "band": 3,
+      "name": "Aguachica",
+      "country": "Colombia",
+      "subdivision": "Cesar Department",
+      "article": "Aguachica",
+      "url": "https://en.wikipedia.org/wiki/Aguachica"
+    },
+    {
+      "place_id": "gn-877178",
+      "rank": 3636,
+      "band": 3,
+      "name": "Katima Mulilo",
+      "country": "Namibia",
+      "subdivision": "Zambezi Region",
+      "article": "Katima Mulilo",
+      "url": "https://en.wikipedia.org/wiki/Katima_Mulilo"
+    },
+    {
+      "place_id": "gn-1257928",
+      "rank": 3678,
+      "band": 3,
+      "name": "Sabalgarh",
+      "country": "India",
+      "subdivision": "Madhya Pradesh",
+      "article": "Sabalgarh",
+      "url": "https://en.wikipedia.org/wiki/Sabalgarh"
+    },
+    {
+      "place_id": "gn-5335006",
+      "rank": 3711,
+      "band": 3,
+      "name": "Cathedral City",
+      "country": "United States",
+      "subdivision": "California",
+      "article": "Cathedral City, California",
+      "url": "https://en.wikipedia.org/wiki/Cathedral_City,_California"
+    },
+    {
+      "place_id": "gn-2641557",
+      "rank": 3722,
+      "band": 3,
+      "name": "Newton Abbot",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Newton Abbot",
+      "url": "https://en.wikipedia.org/wiki/Newton_Abbot"
+    },
+    {
+      "place_id": "gn-1635984",
+      "rank": 3896,
+      "band": 3,
+      "name": "Masamba",
+      "country": "Indonesia",
+      "subdivision": "South Sulawesi",
+      "article": "Masamba",
+      "url": "https://en.wikipedia.org/wiki/Masamba"
+    },
+    {
+      "place_id": "gn-1177446",
+      "rank": 3948,
+      "band": 3,
+      "name": "Gwadar",
+      "country": "Pakistan",
+      "subdivision": "Balochistan",
+      "article": "Gwadar",
+      "url": "https://en.wikipedia.org/wiki/Gwadar"
+    },
+    {
+      "place_id": "gn-2639409",
+      "rank": 3960,
+      "band": 3,
+      "name": "Rhyl",
+      "country": "United Kingdom",
+      "subdivision": "Wales",
+      "article": "Rhyl",
+      "url": "https://en.wikipedia.org/wiki/Rhyl"
+    },
+    {
+      "place_id": "gn-3029162",
+      "rank": 3973,
+      "band": 3,
+      "name": "Calais",
+      "country": "France",
+      "subdivision": "Hauts-de-France",
+      "article": "Calais",
+      "url": "https://en.wikipedia.org/wiki/Calais"
+    },
+    {
+      "place_id": "gn-3190103",
+      "rank": 3979,
+      "band": 3,
+      "name": "Sremska Mitrovica",
+      "country": "Serbia",
+      "subdivision": "Vojvodina",
+      "article": "Sremska Mitrovica",
+      "url": "https://en.wikipedia.org/wiki/Sremska_Mitrovica"
+    },
+    {
+      "place_id": "gn-1636029",
+      "rank": 4006,
+      "band": 3,
+      "name": "Maros",
+      "country": "Indonesia",
+      "subdivision": "South Sulawesi",
+      "article": "Maros",
+      "url": "https://en.wikipedia.org/wiki/Maros"
+    },
+    {
+      "place_id": "gn-3055685",
+      "rank": 4100,
+      "band": 3,
+      "name": "Baja",
+      "country": "Hungary",
+      "subdivision": "Bács-Kiskun",
+      "article": "Baja, Hungary",
+      "url": "https://en.wikipedia.org/wiki/Baja,_Hungary"
+    },
+    {
+      "place_id": "gn-12750575",
+      "rank": 4176,
+      "band": 3,
+      "name": "Bangsar",
+      "country": "Malaysia",
+      "subdivision": "Kuala Lumpur",
+      "article": "Bangsar",
+      "url": "https://en.wikipedia.org/wiki/Bangsar"
+    },
+    {
+      "place_id": "gn-5101427",
+      "rank": 4237,
+      "band": 3,
+      "name": "Morristown",
+      "country": "United States",
+      "subdivision": "New Jersey",
+      "article": "Morristown, New Jersey",
+      "url": "https://en.wikipedia.org/wiki/Morristown,_New_Jersey"
+    },
+    {
+      "place_id": "gn-6074409",
+      "rank": 4276,
+      "band": 3,
+      "name": "Mimico",
+      "country": "Canada",
+      "subdivision": "Ontario",
+      "article": "Mimico",
+      "url": "https://en.wikipedia.org/wiki/Mimico"
+    },
+    {
+      "place_id": "gn-3861824",
+      "rank": 4287,
+      "band": 3,
+      "name": "Chamical",
+      "country": "Argentina",
+      "subdivision": "La Rioja",
+      "article": "Chamical",
+      "url": "https://en.wikipedia.org/wiki/Chamical"
+    },
+    {
+      "place_id": "gn-5102825",
+      "rank": 4329,
+      "band": 3,
+      "name": "Pompton Lakes",
+      "country": "United States",
+      "subdivision": "New Jersey",
+      "article": "Pompton Lakes, New Jersey",
+      "url": "https://en.wikipedia.org/wiki/Pompton_Lakes,_New_Jersey"
+    },
+    {
+      "place_id": "gn-11669854",
+      "rank": 4371,
+      "band": 3,
+      "name": "Stamford Hill",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Stamford Hill",
+      "url": "https://en.wikipedia.org/wiki/Stamford_Hill"
+    },
+    {
+      "place_id": "gn-5223593",
+      "rank": 4378,
+      "band": 3,
+      "name": "Newport",
+      "country": "United States",
+      "subdivision": "Rhode Island",
+      "article": "Newport, Rhode Island",
+      "url": "https://en.wikipedia.org/wiki/Newport,_Rhode_Island"
+    },
+    {
+      "place_id": "gn-5109790",
+      "rank": 4452,
+      "band": 3,
+      "name": "Borough Park",
+      "country": "United States",
+      "subdivision": "New York",
+      "article": "Borough Park, Brooklyn",
+      "url": "https://en.wikipedia.org/wiki/Borough_Park,_Brooklyn"
+    },
+    {
+      "place_id": "gn-692315",
+      "rank": 4467,
+      "band": 3,
+      "name": "Sudak",
+      "country": "Ukraine",
+      "subdivision": "Crimea",
+      "article": "Sudak",
+      "url": "https://en.wikipedia.org/wiki/Sudak"
+    },
+    {
+      "place_id": "gn-681160",
+      "rank": 4477,
+      "band": 3,
+      "name": "Cogealac",
+      "country": "Romania",
+      "subdivision": "Constanța County",
+      "article": "Cogealac",
+      "url": "https://en.wikipedia.org/wiki/Cogealac"
+    },
+    {
+      "place_id": "gn-3046353",
+      "rank": 4490,
+      "band": 3,
+      "name": "Piliscsaba",
+      "country": "Hungary",
+      "subdivision": "Pest County",
+      "article": "Piliscsaba",
+      "url": "https://en.wikipedia.org/wiki/Piliscsaba"
+    },
+    {
+      "place_id": "gn-5125125",
+      "rank": 4507,
+      "band": 3,
+      "name": "Long Island City",
+      "country": "United States",
+      "subdivision": "New York",
+      "article": "Long Island City",
+      "url": "https://en.wikipedia.org/wiki/Long_Island_City"
+    },
+    {
+      "place_id": "gn-527581",
+      "rank": 4564,
+      "band": 3,
+      "name": "Mendeleyevo",
+      "country": "Russia",
+      "subdivision": "Moscow Oblast",
+      "article": "Mendeleyevo, Moscow Oblast",
+      "url": "https://en.wikipedia.org/wiki/Mendeleyevo,_Moscow_Oblast"
+    },
+    {
+      "place_id": "gn-3719436",
+      "rank": 4662,
+      "band": 3,
+      "name": "Ouanaminthe",
+      "country": "Haiti",
+      "subdivision": "Nord-Est",
+      "article": "Ouanaminthe",
+      "url": "https://en.wikipedia.org/wiki/Ouanaminthe"
+    },
+    {
+      "place_id": "gn-2794724",
+      "rank": 4777,
+      "band": 3,
+      "name": "Kapelle-op-den-Bos",
+      "country": "Belgium",
+      "subdivision": "Flanders",
+      "article": "Kapelle-op-den-Bos",
+      "url": "https://en.wikipedia.org/wiki/Kapelle-op-den-Bos"
+    },
+    {
+      "place_id": "gn-5807212",
+      "rank": 4790,
+      "band": 3,
+      "name": "Port Angeles",
+      "country": "United States",
+      "subdivision": "Washington",
+      "article": "Port Angeles, Washington",
+      "url": "https://en.wikipedia.org/wiki/Port_Angeles,_Washington"
+    },
+    {
+      "place_id": "gn-2170430",
+      "rank": 4888,
+      "band": 3,
+      "name": "Cootamundra",
+      "country": "Australia",
+      "subdivision": "New South Wales",
+      "article": "Cootamundra",
+      "url": "https://en.wikipedia.org/wiki/Cootamundra"
+    },
+    {
+      "place_id": "gn-965581",
+      "rank": 4928,
+      "band": 3,
+      "name": "Petrusburg",
+      "country": "South Africa",
+      "subdivision": "Free State",
+      "article": "Petrusburg",
+      "url": "https://en.wikipedia.org/wiki/Petrusburg"
+    },
+    {
+      "place_id": "gn-5173048",
+      "rank": 4947,
+      "band": 3,
+      "name": "Steubenville",
+      "country": "United States",
+      "subdivision": "Ohio",
+      "article": "Steubenville, Ohio",
+      "url": "https://en.wikipedia.org/wiki/Steubenville,_Ohio"
+    },
+    {
+      "place_id": "gn-5422534",
+      "rank": 4949,
+      "band": 3,
+      "name": "Fruita",
+      "country": "United States",
+      "subdivision": "Colorado",
+      "article": "Fruita, Colorado",
+      "url": "https://en.wikipedia.org/wiki/Fruita,_Colorado"
+    },
+    {
+      "place_id": "gn-6232390",
+      "rank": 4980,
+      "band": 4,
+      "name": "Massey",
+      "country": "New Zealand",
+      "subdivision": "Auckland",
+      "article": "Massey, New Zealand",
+      "url": "https://en.wikipedia.org/wiki/Massey,_New_Zealand"
+    },
+    {
+      "place_id": "gn-3070862",
+      "rank": 5044,
+      "band": 4,
+      "name": "Mělník",
+      "country": "Czechia",
+      "subdivision": "Central Bohemia",
+      "article": "Mělník",
+      "url": "https://en.wikipedia.org/wiki/M%C4%9Bln%C3%ADk"
+    },
+    {
+      "place_id": "gn-4358701",
+      "rank": 5081,
+      "band": 4,
+      "name": "Hunt Valley",
+      "country": "United States",
+      "subdivision": "Maryland",
+      "article": "Hunt Valley, Maryland",
+      "url": "https://en.wikipedia.org/wiki/Hunt_Valley,_Maryland"
+    },
+    {
+      "place_id": "gn-5856050",
+      "rank": 5089,
+      "band": 4,
+      "name": "Hōlualoa",
+      "country": "United States",
+      "subdivision": "Hawaii",
+      "article": "Hōlualoa, Hawaii",
+      "url": "https://en.wikipedia.org/wiki/H%C5%8Dlualoa,_Hawaii"
+    },
+    {
+      "place_id": "gn-745026",
+      "rank": 5120,
+      "band": 4,
+      "name": "İznik",
+      "country": "Türkiye",
+      "subdivision": "Bursa Province",
+      "article": "İznik",
+      "url": "https://en.wikipedia.org/wiki/%C4%B0znik"
+    },
+    {
+      "place_id": "gn-294492",
+      "rank": 5131,
+      "band": 4,
+      "name": "Kfar Yona",
+      "country": "Israel",
+      "subdivision": "Central District",
+      "article": "Kfar Yona",
+      "url": "https://en.wikipedia.org/wiki/Kfar_Yona"
+    },
+    {
+      "place_id": "gn-4953804",
+      "rank": 5138,
+      "band": 4,
+      "name": "Uxbridge",
+      "country": "United States",
+      "subdivision": "Massachusetts",
+      "article": "Uxbridge, Massachusetts",
+      "url": "https://en.wikipedia.org/wiki/Uxbridge,_Massachusetts"
+    },
+    {
+      "place_id": "gn-5527953",
+      "rank": 5142,
+      "band": 4,
+      "name": "Pampa",
+      "country": "United States",
+      "subdivision": "Texas",
+      "article": "Pampa, Texas",
+      "url": "https://en.wikipedia.org/wiki/Pampa,_Texas"
+    },
+    {
+      "place_id": "gn-3354540",
+      "rank": 5157,
+      "band": 4,
+      "name": "Omaruru",
+      "country": "Namibia",
+      "subdivision": "Erongo Region",
+      "article": "Omaruru, Namibia",
+      "url": "https://en.wikipedia.org/wiki/Omaruru,_Namibia"
+    },
+    {
+      "place_id": "gn-5807236",
+      "rank": 5197,
+      "band": 4,
+      "name": "Port Orchard",
+      "country": "United States",
+      "subdivision": "Washington",
+      "article": "Port Orchard, Washington",
+      "url": "https://en.wikipedia.org/wiki/Port_Orchard,_Washington"
+    },
+    {
+      "place_id": "gn-3175960",
+      "rank": 5207,
+      "band": 4,
+      "name": "Grado",
+      "country": "Italy",
+      "subdivision": "Friuli Venezia Giulia",
+      "article": "Grado, Friuli Venezia Giulia",
+      "url": "https://en.wikipedia.org/wiki/Grado,_Friuli_Venezia_Giulia"
+    },
+    {
+      "place_id": "gn-5101848",
+      "rank": 5328,
+      "band": 4,
+      "name": "Newton",
+      "country": "United States",
+      "subdivision": "New Jersey",
+      "article": "Newton, New Jersey",
+      "url": "https://en.wikipedia.org/wiki/Newton,_New_Jersey"
+    },
+    {
+      "place_id": "gn-2619154",
+      "rank": 5464,
+      "band": 4,
+      "name": "Kalundborg",
+      "country": "Denmark",
+      "subdivision": "Zealand",
+      "article": "Kalundborg",
+      "url": "https://en.wikipedia.org/wiki/Kalundborg"
+    },
+    {
+      "place_id": "gn-5097357",
+      "rank": 5537,
+      "band": 4,
+      "name": "Dumont",
+      "country": "United States",
+      "subdivision": "New Jersey",
+      "article": "Dumont, New Jersey",
+      "url": "https://en.wikipedia.org/wiki/Dumont,_New_Jersey"
+    },
+    {
+      "place_id": "gn-2706982",
+      "rank": 5585,
+      "band": 4,
+      "name": "Hedemora",
+      "country": "Sweden",
+      "subdivision": "Dalarna",
+      "article": "Hedemora",
+      "url": "https://en.wikipedia.org/wiki/Hedemora"
+    },
+    {
+      "place_id": "gn-2469341",
+      "rank": 5596,
+      "band": 4,
+      "name": "Maktar",
+      "country": "Tunisia",
+      "subdivision": "Siliana Governorate",
+      "article": "Maktar",
+      "url": "https://en.wikipedia.org/wiki/Maktar"
+    },
+    {
+      "place_id": "gn-2610802",
+      "rank": 5599,
+      "band": 4,
+      "name": "Valby",
+      "country": "Denmark",
+      "subdivision": "Capital Region",
+      "article": "Valby",
+      "url": "https://en.wikipedia.org/wiki/Valby"
+    },
+    {
+      "place_id": "gn-2877550",
+      "rank": 5602,
+      "band": 4,
+      "name": "Lindau",
+      "country": "Germany",
+      "subdivision": "Bavaria",
+      "article": "Lindau",
+      "url": "https://en.wikipedia.org/wiki/Lindau"
+    },
+    {
+      "place_id": "gn-2640173",
+      "rank": 5728,
+      "band": 4,
+      "name": "Polesworth",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Polesworth",
+      "url": "https://en.wikipedia.org/wiki/Polesworth"
+    },
+    {
+      "place_id": "gn-2640460",
+      "rank": 5729,
+      "band": 4,
+      "name": "Penkridge",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Penkridge",
+      "url": "https://en.wikipedia.org/wiki/Penkridge"
+    },
+    {
+      "place_id": "gn-2940381",
+      "rank": 5732,
+      "band": 4,
+      "name": "Bad Camberg",
+      "country": "Germany",
+      "subdivision": "Hesse",
+      "article": "Bad Camberg",
+      "url": "https://en.wikipedia.org/wiki/Bad_Camberg"
+    },
+    {
+      "place_id": "gn-2650004",
+      "rank": 5762,
+      "band": 4,
+      "name": "Emsworth",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Emsworth",
+      "url": "https://en.wikipedia.org/wiki/Emsworth"
+    },
+    {
+      "place_id": "gn-2867445",
+      "rank": 5766,
+      "band": 4,
+      "name": "Murnau am Staffelsee",
+      "country": "Germany",
+      "subdivision": "Bavaria",
+      "article": "Murnau am Staffelsee",
+      "url": "https://en.wikipedia.org/wiki/Murnau_am_Staffelsee"
+    },
+    {
+      "place_id": "gn-1714264",
+      "rank": 5787,
+      "band": 4,
+      "name": "Dulag",
+      "country": "Philippines",
+      "subdivision": "Eastern Visayas",
+      "article": "Dulag, Leyte",
+      "url": "https://en.wikipedia.org/wiki/Dulag,_Leyte"
+    },
+    {
+      "place_id": "gn-2060886",
+      "rank": 5802,
+      "band": 4,
+      "name": "Subiaco",
+      "country": "Australia",
+      "subdivision": "Western Australia",
+      "article": "Subiaco, Western Australia",
+      "url": "https://en.wikipedia.org/wiki/Subiaco,_Western_Australia"
+    },
+    {
+      "place_id": "gn-1731676",
+      "rank": 5826,
+      "band": 4,
+      "name": "Alangalang",
+      "country": "Philippines",
+      "subdivision": "Eastern Visayas",
+      "article": "Alangalang",
+      "url": "https://en.wikipedia.org/wiki/Alangalang"
+    },
+    {
+      "place_id": "gn-2636881",
+      "rank": 5829,
+      "band": 4,
+      "name": "Stocksbridge",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Stocksbridge",
+      "url": "https://en.wikipedia.org/wiki/Stocksbridge"
+    },
+    {
+      "place_id": "gn-6100069",
+      "rank": 5946,
+      "band": 4,
+      "name": "Peace River",
+      "country": "Canada",
+      "subdivision": "Alberta",
+      "article": "Peace River, Alberta",
+      "url": "https://en.wikipedia.org/wiki/Peace_River,_Alberta"
+    },
+    {
+      "place_id": "gn-2272379",
+      "rank": 6020,
+      "band": 4,
+      "name": "A dos Cunhados",
+      "country": "Portugal",
+      "subdivision": "Lisbon",
+      "article": "A dos Cunhados",
+      "url": "https://en.wikipedia.org/wiki/A_dos_Cunhados"
+    },
+    {
+      "place_id": "gn-8740793",
+      "rank": 6100,
+      "band": 4,
+      "name": "Jirapur",
+      "country": "India",
+      "subdivision": "Madhya Pradesh",
+      "article": "Jirapur",
+      "url": "https://en.wikipedia.org/wiki/Jirapur"
+    },
+    {
+      "place_id": "gn-2636032",
+      "rank": 6110,
+      "band": 4,
+      "name": "Thetford",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Thetford",
+      "url": "https://en.wikipedia.org/wiki/Thetford"
+    },
+    {
+      "place_id": "gn-2641546",
+      "rank": 6253,
+      "band": 4,
+      "name": "Newton-le-Willows",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Newton-le-Willows",
+      "url": "https://en.wikipedia.org/wiki/Newton-le-Willows"
+    },
+    {
+      "place_id": "gn-3110881",
+      "rank": 6269,
+      "band": 4,
+      "name": "Sant Andreu de Llavaneres",
+      "country": "Spain",
+      "subdivision": "Catalonia",
+      "article": "Sant Andreu de Llavaneres",
+      "url": "https://en.wikipedia.org/wiki/Sant_Andreu_de_Llavaneres"
+    },
+    {
+      "place_id": "gn-6179602",
+      "rank": 6283,
+      "band": 4,
+      "name": "Wetaskiwin",
+      "country": "Canada",
+      "subdivision": "Alberta",
+      "article": "Wetaskiwin",
+      "url": "https://en.wikipedia.org/wiki/Wetaskiwin"
+    },
+    {
+      "place_id": "gn-5101938",
+      "rank": 6329,
+      "band": 4,
+      "name": "North Plainfield",
+      "country": "United States",
+      "subdivision": "New Jersey",
+      "article": "North Plainfield, New Jersey",
+      "url": "https://en.wikipedia.org/wiki/North_Plainfield,_New_Jersey"
+    },
+    {
+      "place_id": "gn-5375938",
+      "rank": 6334,
+      "band": 4,
+      "name": "Muscoy",
+      "country": "United States",
+      "subdivision": "California",
+      "article": "Muscoy, California",
+      "url": "https://en.wikipedia.org/wiki/Muscoy,_California"
+    },
+    {
+      "place_id": "gn-4533580",
+      "rank": 6382,
+      "band": 4,
+      "name": "Claremore",
+      "country": "United States",
+      "subdivision": "Oklahoma",
+      "article": "Claremore, Oklahoma",
+      "url": "https://en.wikipedia.org/wiki/Claremore,_Oklahoma"
+    },
+    {
+      "place_id": "gn-749456",
+      "rank": 6439,
+      "band": 4,
+      "name": "Çaykara",
+      "country": "Türkiye",
+      "subdivision": "Trabzon",
+      "article": "Çaykara",
+      "url": "https://en.wikipedia.org/wiki/Çaykara"
+    },
+    {
+      "place_id": "gn-2646542",
+      "rank": 6565,
+      "band": 4,
+      "name": "Horwich",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Horwich",
+      "url": "https://en.wikipedia.org/wiki/Horwich"
+    },
+    {
+      "place_id": "gn-6244870",
+      "rank": 6599,
+      "band": 4,
+      "name": "Stokes Valley",
+      "country": "New Zealand",
+      "subdivision": "Wellington Region",
+      "article": "Stokes Valley",
+      "url": "https://en.wikipedia.org/wiki/Stokes_Valley"
+    },
+    {
+      "place_id": "gn-4943097",
+      "rank": 6654,
+      "band": 5,
+      "name": "Marblehead",
+      "country": "United States",
+      "subdivision": "Massachusetts",
+      "article": "Marblehead, Massachusetts",
+      "url": "https://en.wikipedia.org/wiki/Marblehead,_Massachusetts"
+    },
+    {
+      "place_id": "gn-5110918",
+      "rank": 6657,
+      "band": 5,
+      "name": "Bushwick",
+      "country": "United States",
+      "subdivision": "New York",
+      "article": "Bushwick, Brooklyn",
+      "url": "https://en.wikipedia.org/wiki/Bushwick,_Brooklyn"
+    },
+    {
+      "place_id": "gn-3899680",
+      "rank": 6785,
+      "band": 5,
+      "name": "Andacollo",
+      "country": "Chile",
+      "subdivision": "Coquimbo Region",
+      "article": "Andacollo",
+      "url": "https://en.wikipedia.org/wiki/Andacollo"
+    },
+    {
+      "place_id": "gn-2644501",
+      "rank": 6821,
+      "band": 5,
+      "name": "Limavady",
+      "country": "United Kingdom",
+      "subdivision": "Northern Ireland",
+      "article": "Limavady",
+      "url": "https://en.wikipedia.org/wiki/Limavady"
+    },
+    {
+      "place_id": "gn-2613887",
+      "rank": 6880,
+      "band": 5,
+      "name": "Skanderborg",
+      "country": "Denmark",
+      "subdivision": "Central Jutland",
+      "article": "Skanderborg",
+      "url": "https://en.wikipedia.org/wiki/Skanderborg"
+    },
+    {
+      "place_id": "gn-11592272",
+      "rank": 7001,
+      "band": 5,
+      "name": "Vale of Leven",
+      "country": "United Kingdom",
+      "subdivision": "Scotland",
+      "article": "Vale of Leven",
+      "url": "https://en.wikipedia.org/wiki/Vale_of_Leven"
+    },
+    {
+      "place_id": "gn-2525041",
+      "rank": 7014,
+      "band": 5,
+      "name": "Cefalù",
+      "country": "Italy",
+      "subdivision": "Sicily",
+      "article": "Cefalù",
+      "url": "https://en.wikipedia.org/wiki/Cefalù"
+    },
+    {
+      "place_id": "gn-2640351",
+      "rank": 7016,
+      "band": 5,
+      "name": "Peterhead",
+      "country": "United Kingdom",
+      "subdivision": "Scotland",
+      "article": "Peterhead",
+      "url": "https://en.wikipedia.org/wiki/Peterhead"
+    },
+    {
+      "place_id": "gn-2656970",
+      "rank": 7070,
+      "band": 5,
+      "name": "Ashby-de-la-Zouch",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Ashby-de-la-Zouch",
+      "url": "https://en.wikipedia.org/wiki/Ashby-de-la-Zouch"
+    },
+    {
+      "place_id": "gn-2798276",
+      "rank": 7075,
+      "band": 5,
+      "name": "Florennes",
+      "country": "Belgium",
+      "subdivision": "Wallonia",
+      "article": "Florennes",
+      "url": "https://en.wikipedia.org/wiki/Florennes"
+    },
+    {
+      "place_id": "gn-3408577",
+      "rank": 7089,
+      "band": 5,
+      "name": "São João da Baliza",
+      "country": "Brazil",
+      "subdivision": "Roraima",
+      "article": "São João da Baliza",
+      "url": "https://en.wikipedia.org/wiki/São_João_da_Baliza"
+    },
+    {
+      "place_id": "gn-3590449",
+      "rank": 7094,
+      "band": 5,
+      "name": "San Antonio La Paz",
+      "country": "Guatemala",
+      "subdivision": "El Progreso",
+      "article": "San Antonio La Paz",
+      "url": "https://en.wikipedia.org/wiki/San_Antonio_La_Paz"
+    },
+    {
+      "place_id": "gn-5261852",
+      "rank": 7189,
+      "band": 5,
+      "name": "Marinette",
+      "country": "United States",
+      "subdivision": "Wisconsin",
+      "article": "Marinette, Wisconsin",
+      "url": "https://en.wikipedia.org/wiki/Marinette,_Wisconsin"
+    },
+    {
+      "place_id": "gn-2639091",
+      "rank": 7221,
+      "band": 5,
+      "name": "Rotherhithe",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Rotherhithe",
+      "url": "https://en.wikipedia.org/wiki/Rotherhithe"
+    },
+    {
+      "place_id": "gn-3591060",
+      "rank": 7253,
+      "band": 5,
+      "name": "Puerto San José",
+      "country": "Guatemala",
+      "subdivision": "Escuintla",
+      "article": "Puerto San José",
+      "url": "https://en.wikipedia.org/wiki/Puerto_San_José"
+    },
+    {
+      "place_id": "gn-636242",
+      "rank": 7273,
+      "band": 5,
+      "name": "Sörnäinen",
+      "country": "Finland",
+      "subdivision": "Uusimaa",
+      "article": "Sörnäinen",
+      "url": "https://en.wikipedia.org/wiki/Sörnäinen"
+    },
+    {
+      "place_id": "gn-2642910",
+      "rank": 7305,
+      "band": 5,
+      "name": "Matlock",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Matlock, Derbyshire",
+      "url": "https://en.wikipedia.org/wiki/Matlock,_Derbyshire"
+    },
+    {
+      "place_id": "gn-3085826",
+      "rank": 7382,
+      "band": 5,
+      "name": "Skarszewy",
+      "country": "Poland",
+      "subdivision": "Pomerania",
+      "article": "Skarszewy",
+      "url": "https://en.wikipedia.org/wiki/Skarszewy"
+    },
+    {
+      "place_id": "gn-3194199",
+      "rank": 7390,
+      "band": 5,
+      "name": "Odžak",
+      "country": "Bosnia & Herzegovina",
+      "subdivision": "Federation of B&H",
+      "article": "Odžak",
+      "url": "https://en.wikipedia.org/wiki/Odžak"
+    },
+    {
+      "place_id": "gn-5931074",
+      "rank": 7417,
+      "band": 5,
+      "name": "Cowansville",
+      "country": "Canada",
+      "subdivision": "Quebec",
+      "article": "Cowansville",
+      "url": "https://en.wikipedia.org/wiki/Cowansville"
+    },
+    {
+      "place_id": "gn-316746",
+      "rank": 7466,
+      "band": 5,
+      "name": "Dicle",
+      "country": "Türkiye",
+      "subdivision": "Diyarbakır Province",
+      "article": "Dicle",
+      "url": "https://en.wikipedia.org/wiki/Dicle"
+    },
+    {
+      "place_id": "gn-3521344",
+      "rank": 7476,
+      "band": 5,
+      "name": "Platón Sánchez",
+      "country": "Mexico",
+      "subdivision": "Veracruz",
+      "article": "Platón Sánchez, Veracruz",
+      "url": "https://en.wikipedia.org/wiki/Platón_Sánchez,_Veracruz"
+    },
+    {
+      "place_id": "gn-2158151",
+      "rank": 7523,
+      "band": 5,
+      "name": "Melton",
+      "country": "Australia",
+      "subdivision": "Victoria",
+      "article": "Melton, Victoria",
+      "url": "https://en.wikipedia.org/wiki/Melton,_Victoria"
+    },
+    {
+      "place_id": "gn-2649730",
+      "rank": 7534,
+      "band": 5,
+      "name": "Fakenham",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Fakenham",
+      "url": "https://en.wikipedia.org/wiki/Fakenham"
+    },
+    {
+      "place_id": "gn-2638033",
+      "rank": 7616,
+      "band": 5,
+      "name": "Sherborne",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Sherborne",
+      "url": "https://en.wikipedia.org/wiki/Sherborne"
+    },
+    {
+      "place_id": "gn-5117663",
+      "rank": 7661,
+      "band": 5,
+      "name": "Fort Hamilton",
+      "country": "United States",
+      "subdivision": "New York",
+      "article": "Fort Hamilton",
+      "url": "https://en.wikipedia.org/wiki/Fort_Hamilton"
+    },
+    {
+      "place_id": "gn-695740",
+      "rank": 7682,
+      "band": 5,
+      "name": "Rozdolne",
+      "country": "Ukraine",
+      "subdivision": "Crimea",
+      "article": "Rozdolne",
+      "url": "https://en.wikipedia.org/wiki/Rozdolne"
+    },
+    {
+      "place_id": "gn-8348804",
+      "rank": 7696,
+      "band": 5,
+      "name": "Turvey Park",
+      "country": "Australia",
+      "subdivision": "New South Wales",
+      "article": "Turvey Park, New South Wales",
+      "url": "https://en.wikipedia.org/wiki/Turvey_Park,_New_South_Wales"
+    },
+    {
+      "place_id": "gn-614891",
+      "rank": 7738,
+      "band": 5,
+      "name": "Dmanisi",
+      "country": "Georgia",
+      "subdivision": "Kvemo Kartli",
+      "article": "Dmanisi",
+      "url": "https://en.wikipedia.org/wiki/Dmanisi"
+    },
+    {
+      "place_id": "gn-3801621",
+      "rank": 7753,
+      "band": 5,
+      "name": "San Antonino Castillo Velasco",
+      "country": "Mexico",
+      "subdivision": "Oaxaca",
+      "article": "San Antonino Castillo Velasco",
+      "url": "https://en.wikipedia.org/wiki/San_Antonino_Castillo_Velasco"
+    },
+    {
+      "place_id": "gn-2644809",
+      "rank": 7785,
+      "band": 5,
+      "name": "Laurencekirk",
+      "country": "United Kingdom",
+      "subdivision": "Scotland",
+      "article": "Laurencekirk",
+      "url": "https://en.wikipedia.org/wiki/Laurencekirk"
+    },
+    {
+      "place_id": "gn-5947954",
+      "rank": 7795,
+      "band": 5,
+      "name": "Ellison",
+      "country": "Canada",
+      "subdivision": "British Columbia",
+      "article": "Ellison, British Columbia",
+      "url": "https://en.wikipedia.org/wiki/Ellison,_British_Columbia"
+    },
+    {
+      "place_id": "gn-2646499",
+      "rank": 7805,
+      "band": 5,
+      "name": "Howden",
+      "country": "United Kingdom",
+      "subdivision": "England",
+      "article": "Howden",
+      "url": "https://en.wikipedia.org/wiki/Howden"
+    },
+    {
+      "place_id": "gn-5181063",
+      "rank": 7855,
+      "band": 5,
+      "name": "Boalsburg",
+      "country": "United States",
+      "subdivision": "Pennsylvania",
+      "article": "Boalsburg, Pennsylvania",
+      "url": "https://en.wikipedia.org/wiki/Boalsburg,_Pennsylvania"
+    },
+    {
+      "place_id": "gn-3575721",
+      "rank": 7929,
+      "band": 5,
+      "name": "Marigot",
+      "country": "Dominica",
+      "subdivision": "Saint Andrew Parish",
+      "article": "Marigot, Dominica",
+      "url": "https://en.wikipedia.org/wiki/Marigot,_Dominica"
+    },
+    {
+      "place_id": "gn-2141050",
+      "rank": 7935,
+      "band": 5,
+      "name": "Hienghène",
+      "country": "New Caledonia",
+      "subdivision": "North Province",
+      "article": "Hienghène",
+      "url": "https://en.wikipedia.org/wiki/Hiengh%C3%A8ne"
+    },
+    {
+      "place_id": "gn-12035862",
+      "rank": 8116,
+      "band": 5,
+      "name": "Ville Haute",
+      "country": "Luxembourg",
+      "subdivision": "Luxembourg",
+      "article": "Ville Haute",
+      "url": "https://en.wikipedia.org/wiki/Ville_Haute"
+    },
+    {
+      "place_id": "gn-5101585",
+      "rank": 8206,
+      "band": 5,
+      "name": "Mountain Lakes",
+      "country": "United States",
+      "subdivision": "New Jersey",
+      "article": "Mountain Lakes, New Jersey",
+      "url": "https://en.wikipedia.org/wiki/Mountain_Lakes,_New_Jersey"
+    },
+    {
+      "place_id": "gn-5493811",
+      "rank": 8214,
+      "band": 5,
+      "name": "Taos",
+      "country": "United States",
+      "subdivision": "New Mexico",
+      "article": "Taos, New Mexico",
+      "url": "https://en.wikipedia.org/wiki/Taos,_New_Mexico"
+    },
+    {
+      "place_id": "gn-6148374",
+      "rank": 8229,
+      "band": 5,
+      "name": "Sioux Lookout",
+      "country": "Canada",
+      "subdivision": "Ontario",
+      "article": "Sioux Lookout",
+      "url": "https://en.wikipedia.org/wiki/Sioux_Lookout"
+    }
+  ]
+}

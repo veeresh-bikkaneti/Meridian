@@ -7,6 +7,11 @@ import {
 } from "./helpers";
 import type { Page } from "playwright/test";
 
+// PR2 (Cartographer's Plate) inserts zero-width spaces after /, –, - in
+// DISPLAY strings (spec §3) — never in data or ARIA. Strip them before
+// comparing textContent to the data label.
+const stripZwsp = (s: string): string => s.replace(/​/g, "");
+
 /**
  * Question-card fixes (Veeresh's 2026-10-04 bug report):
  *
@@ -139,14 +144,22 @@ test("country: 'West Cambridge/Harvard Square, Massachusetts' renders in full �
   // The full qualified label Veeresh screenshotted as truncated.
   const heading = page.getByRole("heading", { name: TARGET_LABEL });
   await expect(heading).toBeVisible({ timeout: 15_000 });
-  expect(((await heading.textContent()) ?? "").trim()).toBe(TARGET_LABEL);
+  expect(stripZwsp((await heading.textContent()) ?? "").trim()).toBe(TARGET_LABEL);
   expect(await isFullyVisible(page, `h2:text-is("${TARGET_LABEL}")`)).toBe(true);
 
-  // Collapsed view: still no ellipsis.
-  await page.getByRole("button", { name: "Collapse question" }).click();
-  const collapsed = page.locator(`p:text-is("${TARGET_LABEL}")`);
-  await expect(collapsed).toBeVisible({ timeout: 10_000 });
-  expect(await isFullyVisible(page, `p:text-is("${TARGET_LABEL}")`)).toBe(true);
+  // Collapsed view (Cartographer's Plate PR3): the name folds away
+  // entirely — honest, never clamped.
+  await page.getByRole("button", { name: "Hide place name" }).click();
+  const toggle = page.getByRole("button", { name: "Show place name" });
+  await expect(toggle).toBeVisible({ timeout: 10_000 });
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await expect(page.locator(".bubble-scroll-wrap")).toBeHidden();
+  // Re-expand: the full name returns, still no ellipsis.
+  await toggle.click();
+  const headingAgain = page.getByRole("heading", { name: TARGET_LABEL });
+  await expect(headingAgain).toBeVisible({ timeout: 10_000 });
+  expect(stripZwsp((await headingAgain.textContent()) ?? "").trim()).toBe(TARGET_LABEL);
+  expect(await isFullyVisible(page, `h2:text-is("${TARGET_LABEL}")`)).toBe(true);
 
   expect(errors, `console/page errors: ${JSON.stringify(errors)}`).toEqual([]);
 });
@@ -174,7 +187,9 @@ test("header identifies the edition: Globe", async ({ page }) => {
   await page.goto(APP);
   await playGlobe(page);
   // The bubble header, not the menu button: scope to the question bubble.
-  const header = page.locator("p.uppercase", { hasText: "Globe" }).first();
+  // PR2: the eyebrow is now .name-eyebrow (uppercase via CSS, not the
+  // Tailwind `uppercase` class).
+  const header = page.locator("p.name-eyebrow", { hasText: "Globe" }).first();
   await expect(header).toBeVisible({ timeout: 15_000 });
   expect(((await header.textContent()) ?? "").trim()).toBe("Globe");
 });

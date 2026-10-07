@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 7492,
+    "attempt": 7441,
+    "place_id": "gn-5395622",
+    "input": {
+      "place": {
+        "place_id": "gn-5395622",
+        "name": "Sierra Madre",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.16167,
+        "lon": -118.05285
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sierra Madre, California",
+          "url": "https://en.wikipedia.org/wiki/Sierra_Madre,_California",
+          "text": "Sierra Madre (Spanish for \"mother range\") is a city in Los Angeles County, California, with a population of 11,268 at the time of the 2020 U.S. Census. The city is in the foothills of the San Gabriel Valley below the southern edge of the Angeles National Forest. Pasadena and Altadena are to its west, with Arcadia to its south and east. Sierra Madre is known as \"Wisteria City\", and its city seal is decorated with a drawing of the now widely known 500-foot (150 m) vine. It is also called the \"Village of the Foothills\" and was an All-America City in 2007."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "sierra madre",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sierra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "madre",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7493,
+    "attempt": 7442,
+    "place_id": "gn-5955948",
+    "input": {
+      "place": {
+        "place_id": "gn-5955948",
+        "name": "Fort Saskatchewan",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 53.69814,
+        "lon": -113.21382
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Saskatchewan",
+          "url": "https://en.wikipedia.org/wiki/Fort_Saskatchewan",
+          "text": "Fort Saskatchewan is a city along the North Saskatchewan River in Alberta, Canada. It is 25 kilometres (16 mi) northeast of Edmonton, the provincial capital. It is part of the Edmonton census metropolitan area and one of 24 municipalities that constitute the Edmonton Metropolitan Region Board. Its population in the 2021 federal census was 27,464.\nThe city was founded as a North-West Mounted Police fort and later home to a large provincial jail. The original fort was located across the river from the hamlet of Lamoureux, and Fort Saskatchewan opened a replica of the fort next to its original site in 2011. Fort Saskatchewan is bordered by Strathcona County to the south and east, Sturgeon County to the north and west, and the City of Edmonton to the southwest. Sturgeon County is across the North Saskatchewan River.\nThe city is best known for its proximity to chemical plants, including Dow Chemical, Sherritt International, Nutrien (formerly Agrium), Linde (Praxair), and Shell Canada. It is also known for its flock of 50 sheep that roam the Fort Heritage Precinct throughout the summer months eating the grass."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "fort saskatchewan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "saskatchewan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7494,
+    "attempt": 7443,
+    "place_id": "gn-638321",
+    "input": {
+      "place": {
+        "place_id": "gn-638321",
+        "name": "Saarijärvi",
+        "country": "Finland",
+        "subdivision": "Central Finland",
+        "lat": 62.70486,
+        "lon": 25.25396
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saarijärvi",
+          "url": "https://en.wikipedia.org/wiki/Saarijärvi",
+          "text": "Saarijärvi (Finnish pronunciation: [ˈsɑːriˌjærʋi]) is a town and municipality of Finland located in the Central Finland region, located about 65 kilometres (40 mi) north of Jyväskylä. The municipality has a population of 8,763, as of 31 December 2025, and covers an area of 1,422.72 square kilometres (549.32 sq mi) of which 170.8 km2 (65.9 sq mi), or 12%, is water.  The population density is 7 inhabitants per square kilometre (18/sq mi).\nNeighbouring municipalities are Kannonkoski, Karstula, Multia, Soini, Uurainen, Ähtäri and Äänekoski. The municipality is unilingually Finnish. The neighboring municipality of Pylkönmäki was merged with the Saarijärvi municipality on 1 January 2009. There are 241 lakes in Saarijärvi altogether. The biggest lakes are Pyhäjärvi, Summanen and Lake Saarijärvi.\nSaarijärvi is the home of the peasant Bonden Paavo (Finnish: Saarijärven Paavo), who persists through hardship and adversity, in the poem by Johan Ludvig Runeberg. Juho Hyytiäinen, the great grandfather of Pamela Anderson, left the village in 1908, emigrating to the American continent.\nIn the 1980s, the traditional parish dishes of Saarijärvi were suutarinpaisti (\"cobbler's roast\") made by vendace and mashed potatoes called perupuuro, rutabaga-made porridge with lingonberries preserved in water, and charred fish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "saarijarvi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7495,
+    "attempt": 7444,
+    "place_id": "gn-641489",
+    "input": {
+      "place": {
+        "place_id": "gn-641489",
+        "name": "Pirkkala",
+        "country": "Finland",
+        "subdivision": "Pirkanmaa",
+        "lat": 61.46125,
+        "lon": 23.63228
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pirkkala",
+          "url": "https://en.wikipedia.org/wiki/Pirkkala",
+          "text": "Pirkkala (Finnish: [ˈpirkːɑlɑ]; Swedish: Birkala) is a municipality in Finland, located in the Pirkanmaa region. It lies to the southwest of the regional capital, Tampere. The population of Pirkkala is approximately 21,000, while the metropolitan area has a population of approximately 428,000. It is the 48th most populous municipality in Finland.\nPirkkala has an area of 104.04 square kilometres (40.17 sq mi) of which 22.66 km2 (8.75 sq mi) is water. The population density is 262.5 inhabitants per square kilometre (680/sq mi), which makes it the most densely populated municipality in Finland that does not use the title of town or city. Pirkkala is also currently the fastest-growing municipality in the Pirkanmaa region. The municipality is unilingually Finnish.\nTampere-Pirkkala Airport is located in southwest Pirkkala. The most significant main road in Pirkkala is Tampere Ring Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "pirkkala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7496,
+    "attempt": 7445,
+    "place_id": "gn-644499",
+    "input": {
+      "place": {
+        "place_id": "gn-644499",
+        "name": "Nivala",
+        "country": "Finland",
+        "subdivision": "North Ostrobothnia",
+        "lat": 63.91667,
+        "lon": 24.96667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nivala",
+          "url": "https://en.wikipedia.org/wiki/Nivala",
+          "text": "Nivala (formerly known as Pidisjärvi) is a town and municipality of Finland. It is located in the Northern Ostrobothnia region. The town has a population of 10,300\n(31 December 2025) and covers an area of 536.88 square kilometres (207.29 sq mi) of\nwhich 8.92 km2 (3.44 sq mi)\nis water. The population density is\n19.53 inhabitants per square kilometre (50.6/sq mi). The municipality is unilingually Finnish.\nThe subject of Nivala's coat of arms describes the wooden gate model typical of the municipality, and at the same time the shape of the gate resembles the initial letter of the name of the municipality. The coat of arms was designed by Kalervo Kallio, the son of president Kyösti Kallio, and the Nivala municipal council approved it at its meeting on 23 November 1964. The Ministry of the Interior approved the coat of arms for use on 4 February 1965.\nNivala and its surrounding area have often been called the \"Texas of Finland\", as it is one of the country's most significant milk and beef producers and its landscapes with flat fields and open spaces are said to resemble each other. Several Christian summer events have been organized in Nivala, such as the Awakening Festivals and summer services for Conservative Laestadios."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "nivala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7497,
+    "attempt": 7446,
+    "place_id": "gn-656073",
+    "input": {
+      "place": {
+        "place_id": "gn-656073",
+        "name": "Janakkala",
+        "country": "Finland",
+        "subdivision": "Kanta-Häme",
+        "lat": 60.9,
+        "lon": 24.6
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Janakkala",
+          "url": "https://en.wikipedia.org/wiki/Janakkala",
+          "text": "Janakkala (Finnish pronunciation: [ˈjɑnɑkːɑlɑ]) is a municipality of Finland. Its administrative centre is in Turenki. Janakkala is located along Highway 3 (E12) in the province of Southern Finland and is part of the Kanta-Häme region. To the south, Janakkala shares a boundary with Riihimäki, the northern neighbour being Hämeenlinna. It is 16 kilometres (9.9 mi) from Turenki to Hämeenlinna, 94 kilometres (58 mi) to Tampere, and 96 kilometres (60 mi) to Helsinki.\nThe municipality has a population of 15,867 (31 December 2025) and covers an area of 586.07 square kilometres (226.28 sq mi) of which 38.63 km2 (14.92 sq mi) is water. The population density is 28.99 inhabitants per square kilometre (75.1/sq mi). In Janakkala the rate of unemployment is 9.7% and the rate of municipal taxes is %. The municipality is unilingually Finnish."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "janakkala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7498,
+    "attempt": 7447,
+    "place_id": "gn-665002",
+    "input": {
+      "place": {
+        "place_id": "gn-665002",
+        "name": "Târgu Ocna",
+        "country": "Romania",
+        "subdivision": "Bacău County",
+        "lat": 46.27899,
+        "lon": 26.61301
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Târgu Ocna",
+          "url": "https://en.wikipedia.org/wiki/Târgu_Ocna",
+          "text": "Târgu Ocna (Romanian pronunciation: [ˌtɨrɡu ˈokna]; Hungarian: Aknavásár) is a town in Bacău County, Romania. \nIt administers two villages, Poieni and Vâlcele.\nThe town is situated on the left bank of the Trotuș River, an affluent of the Siret, and on a branch railway which crosses the Ghimeș Pass from Moldavia into Transylvania. Târgu Ocna is built among the Carpathian Mountains on bare hills formed of rock salt. In fact, the English translation of Ocna is salt mine.\nThe Târgu Ocna Salt Mine is one of the oldest and the third-largest salt mine in Romania, situated at a depth of 240 metres.  It features the largest underground treatment base in the country, offering halotherapy for respiratory conditions, as well as recreational facilities and the Saint Barbara Orthodox Church, built in 1992 as the first underground Orthodox church in Europe.\nTârgu Ocna's main industry is salt production, as it is the largest provider in Moldavia. Other industries include wood processing, coal mining, steel producing, and petroleum-based industries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "targu ocna",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "targu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ocna",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7499,
+    "attempt": 7448,
+    "place_id": "gn-685811",
+    "input": {
+      "place": {
+        "place_id": "gn-685811",
+        "name": "Băicoi",
+        "country": "Romania",
+        "subdivision": "Prahova",
+        "lat": 45.03333,
+        "lon": 25.85
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Băicoi",
+          "url": "https://en.wikipedia.org/wiki/Băicoi",
+          "text": "Băicoi (Romanian pronunciation: [bəjˈkoj]) is a town in Prahova County, Romania, near the 45th parallel. Five localities are administered by the town: Dâmbu, Liliești, Schela, Tufeni, and Țintea. Over time, these have become neighborhoods of the town. \nBӑicoi is located in the historical region of Muntenia. It is situated in the center of the county, and stretches for 17 km (11 mi) at its widest. The town is crossed on its southwestern side by the national road DN1, which connects it to the county seat, Ploiești, 18.7 km (11.6 mi) to the southeast and Brașov, 95.3 km (59.2 mi) to the north. Bӑicoi lies near Florești, a train stop between Ploiești and Câmpina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "baicoi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7500,
+    "attempt": 7449,
+    "place_id": "gn-692301",
+    "input": {
+      "place": {
+        "place_id": "gn-692301",
+        "name": "Sudova Vyshnia",
+        "country": "Ukraine",
+        "subdivision": "Lviv",
+        "lat": 49.7868,
+        "lon": 23.37403
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sudova Vyshnia",
+          "url": "https://en.wikipedia.org/wiki/Sudova_Vyshnia",
+          "text": "Sudova Vyshnia (Ukrainian: Судова Вишня, IPA: [sʊˈdɔwɐ ˈwɪʃnʲɐ] ; Polish: Sądowa Wisznia) is a small city in the Yavoriv Raion of the Lviv Oblast (region) of Ukraine. It hosts the administration of Sudova Vyshnia urban hromada, one of the hromadas of Ukraine. Its population is 6,470 (2022 estimate).\nThe town has a number of Catholic cathedrals and a secondary school, and is a market centre for the surrounding agricultural area. In the past the town contained a horse farm, providing a horse stud service for the area, some of the horse studs being very expensive. On the outskirts there is a hippodrome."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "sudova vyshnia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sudova",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "vyshnia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7501,
+    "attempt": 7450,
+    "place_id": "gn-694992",
+    "input": {
+      "place": {
+        "place_id": "gn-694992",
+        "name": "Rzhyshchiv",
+        "country": "Ukraine",
+        "subdivision": "Kyiv Oblast",
+        "lat": 49.96934,
+        "lon": 31.0424
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rzhyshchiv",
+          "url": "https://en.wikipedia.org/wiki/Rzhyshchiv",
+          "text": "Rzhyshchiv (Ukrainian: Ржищів, IPA: [ˈrʒɪʃtʃiu̯] ; Russian: Ржищев, romanized: Rzhishchev; Yiddish: אירזיסטשוב, romanized: Irzistshub, also known by several alternative names; Polish: Rzyszczów) is a small city in Obukhiv Raion, Kyiv Oblast (province) of Ukraine. It hosts the administration of Rzhyshchiv urban hromada, one of the hromadas of Ukraine. Population: 7,175 (2022 estimate). It is situated on Leglych river.\nUntil 18 July 2020, Rzhyshchiv was incorporated as a city of oblast significance. In July 2020, as part of the administrative reform of Ukraine, which reduced the number of raions of Kyiv Oblast to seven, the city of Rzhyshchiv was merged into Obukhiv Raion."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "rzhyshchiv",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7502,
+    "attempt": 7451,
+    "place_id": "gn-7303250",
+    "input": {
+      "place": {
+        "place_id": "gn-7303250",
+        "name": "St Kilda East",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.86594,
+        "lon": 145.00018
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "St Kilda East",
+          "url": "https://en.wikipedia.org/wiki/St_Kilda_East",
+          "text": "St Kilda East is a suburb in Melbourne, Victoria, Australia, 6 km south-east of Melbourne's Central Business District, located within the Cities of Glen Eira and Port Phillip local government areas. St Kilda East recorded a population of 12,571 at the 2021 census.\nSt Kilda East is one of the more diverse and densely populated suburbs of Melbourne. It has a prominent Hasidic Jewish community, descended from Polish and Russian immigrants. Quiet and residential, it is quite different from the adjacent suburb of St Kilda. However, the area around Carlisle Street is very diverse with a strong arts, alternative and indie community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "st kilda east",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "st",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "kilda",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7503,
+    "attempt": 7452,
+    "place_id": "gn-747135",
+    "input": {
+      "place": {
+        "place_id": "gn-747135",
+        "name": "Ferizli",
+        "country": "Türkiye",
+        "subdivision": "Sakarya",
+        "lat": 40.94082,
+        "lon": 30.48583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ferizli",
+          "url": "https://en.wikipedia.org/wiki/Ferizli",
+          "text": "Ferizli is a municipality and district of Sakarya Province, Turkey. It takes its name from Feriz or Feyzi Ağa who lived in the region. The name used as Firuzlu during the Ottoman period took its current form over time. It is recorded that it was founded as Feriz or Feyzi Ağa Farm around 1400-1406, with the settlement of Armenians from Sivas who escaped from the tyranny of Timur. The farmland spread to the villages of Damlık in the east and Elmalık in the southwest. The town of Adapazarı (Donigaşen) was also founded by Armenian immigrants under the protection of the same bey.\nIts area is 173 km2, and its population is 30,741 (2022). The mayor is Mehmet Ata (iYi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "ferizli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7504,
+    "attempt": 7453,
+    "place_id": "gn-7602285",
+    "input": {
+      "place": {
+        "place_id": "gn-7602285",
+        "name": "Steveston",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.12714,
+        "lon": -123.18137
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Steveston, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Steveston,_British_Columbia",
+          "text": "Steveston is a historic neighbourhood in Richmond, British Columbia, Canada. The neighbourhood was initially founded as a separate settlement in the 1880s.\nOn the southwest tip of Lulu Island, the village is a historic port and salmon canning centre at the mouth of the South Arm of the Fraser River. Steveston's boundaries are defined by Williams Road to the north, No. 2 Road to the east, the Fraser River to the south, and the Strait of Georgia to the west. The modern village centre is lined with shops and restaurants in historic 1900s buildings that attract both the film and tourism industries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "steveston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7505,
+    "attempt": 7454,
+    "place_id": "gn-763121",
+    "input": {
+      "place": {
+        "place_id": "gn-763121",
+        "name": "Opatów",
+        "country": "Poland",
+        "subdivision": "Świętokrzyskie",
+        "lat": 50.80058,
+        "lon": 21.42538
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Opatów",
+          "url": "https://en.wikipedia.org/wiki/Opatów",
+          "text": "Opatów ([ɔˈpatuf] ; Yiddish: אַפּטאַ, אַפּט, romanized: Apt, Apte) is a town in southeastern Poland, within Opatów County in the Świętokrzyskie Voivodeship. Historically, it was part of a greater region called Lesser Poland. In 2012 the population was 6,658. Opatów is located among the hills of Lesser Polish Upland, with the Opatówka river dividing the town into two parts.\nA town with a history of some 1,000 years, Opatów is one of the province's best-preserved historic towns and once one of the largest cities in its territory, owing its prosperity to crafts and trade. Its landmarks include the Collegiate Church of St. Martin, listed as a Historic Monument of Poland as one of the most precious examples of Romanesque architecture in Poland, the Baroque Bernardine monastery, town hall and underground tourist routes in late medieval cellars under the old town. Opatów is home to local specialties such as pączki, krówki and kiełbasa."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "opatow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7506,
+    "attempt": 7455,
+    "place_id": "gn-769893",
+    "input": {
+      "place": {
+        "place_id": "gn-769893",
+        "name": "Kabaty",
+        "country": "Poland",
+        "subdivision": "Mazovia",
+        "lat": 52.13012,
+        "lon": 21.08148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kabaty",
+          "url": "https://en.wikipedia.org/wiki/Kabaty",
+          "text": "Kabaty (Polish: [kaˈba.tɘ̟]) is a neighbourhood, and a City Information System area, in Warsaw, Poland, within the Ursynów district. It is a predominantly high-rise residential area with housing eststes of apartment buildings, with a smaller presence of single-family housing, including Moczydło in the northwest, and Stare Kabaty in the east. In 2024, it had around 30,000 residents. The neighbourhood includes the Kabaty station of the M1 line of Warsaw Metro rapid transit underground system.\nThe oldest known records of Kabady come from 1386, when it was a small farming community. By 1527, the village of Moczydło was also present to the west. The area was incorporated into Warsaw in 1951. In the 1980s, and continuing to the 2000s, numerous housing estates were developed within the area. In 1995, the Kabaty station opened within the neighbourhood."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "kabaty",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7507,
+    "attempt": 7456,
+    "place_id": "gn-7910855",
+    "input": {
+      "place": {
+        "place_id": "gn-7910855",
+        "name": "Toijala",
+        "country": "Finland",
+        "subdivision": "Pirkanmaa",
+        "lat": 61.1678,
+        "lon": 23.83819
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Toijala",
+          "url": "https://en.wikipedia.org/wiki/Toijala",
+          "text": "Toijala (Finnish pronunciation: [ˈtoi̯jɑlɑ]) is a former town and municipality of Finland, located some 40 kilometres (25 miles) south of Tampere. On 1 January 2007, it was consolidated with Viiala to form the town of Akaa.\nToijala is known as an important railway crossroads. The Helsinki–Tampere and Turku–Tampere tracks meet at Toijala railway station.\nToijala is located in the province of Western Finland and is part of the Pirkanmaa region. The municipality had a population of 8,305 (end of April 2004) and covered an area of 58.60 square kilometres (22.63 square miles) of which 7.72 square kilometres (2.98 square miles) is water. The population density (as of 31 December 2003) was 163.2 inhabitants per square kilometre (423/sq mi). The municipality was unilingually Finnish.\nUntil 2015, Toijala hosted a Nokia office which since 1997 collaborated with Päivölän Kansanopisto by having some of its students work as paid interns for 12 hours/week."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "toijala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7508,
+    "attempt": 7457,
+    "place_id": "gn-8348477",
+    "input": {
+      "place": {
+        "place_id": "gn-8348477",
+        "name": "Casula",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.95222,
+        "lon": 150.89949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Casula",
+          "url": "https://en.wikipedia.org/wiki/Casula",
+          "text": "Casula () is a suburb of Sydney, in the state of New South Wales, Australia. It is 34 kilometres south-west of the Sydney central business district, in the local government area of the City of Liverpool.\nCasula is the first suburb immediately south of Liverpool on the Hume Highway and the Main Southern railway line between Sydney and Melbourne. Casula consists of undulating, gently rolling land, with elevations across the suburb being mostly between 30 and 70 metres above sea level. The Georges River forms the eastern boundary of the suburb, and its western bank is paralleled by a relatively steep escarpment."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "casula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7509,
+    "attempt": 7458,
+    "place_id": "gn-8504415",
+    "input": {
+      "place": {
+        "place_id": "gn-8504415",
+        "name": "Kowloon Bay",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Kwun Tong District",
+        "lat": 22.32662,
+        "lon": 114.20777
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kowloon Bay",
+          "url": "https://en.wikipedia.org/wiki/Kowloon_Bay",
+          "text": "Kowloon Bay (Chinese: 九龍灣) is a bay within Victoria Harbour and a neighbourhood within Kowloon, Hong Kong.\nThe bay is located at the east of the Kowloon Peninsula and north of Hong Kong Island. It is the eastern portion of Victoria Harbour, between Hung Hom and Lei Yue Mun. The bay was divided into half when the 13/31 runway of the former Kai Tak International Airport was constructed in the middle of the bay in the mid-1950s.\nThe reclamation of north-eastern Kowloon Bay near Ngau Tau Kok is also named Kowloon Bay. It was formerly known as Ngau Tau Kok Industrial Area. After the construction of MTR Kowloon Bay station, the area is referred to as Kowloon Bay. The area near the MTR station is residential while the area near the shore is industrial. The area is traditionally an extension of Ngau Tau Kok, and thus facilities such as Ngau Tau Kok Police Station are located there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "kowloon bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kowloon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7510,
+    "attempt": 7459,
+    "place_id": "gn-9884034",
+    "input": {
+      "place": {
+        "place_id": "gn-9884034",
+        "name": "Bishopsworth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.41479,
+        "lon": -2.6208
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bishopsworth",
+          "url": "https://en.wikipedia.org/wiki/Bishopsworth",
+          "text": "Bishopsworth is a suburban neighbourhood and electoral ward of the city of Bristol.  It is located in the south of the city and has a high proportion of council housing. Local facilities include shops and pubs, a public library, community arts centre and an indoor skate park.\nBishopsworth electoral ward contains the Bedminster Down, Headly Park, Highridge and Uplands areas, and had a population of 12,274 at the 2021 census. Historically, as a civil parish separate from Bristol, Bishopsworth contained Hartcliffe and Withywood, and colloquially those are often still considered areas of Bishopsworth, though they are not within the current electoral ward."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "bishopsworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7511,
+    "attempt": 7460,
+    "place_id": "gn-11611937",
+    "input": {
+      "place": {
+        "place_id": "gn-11611937",
+        "name": "Hida",
+        "country": "Japan",
+        "subdivision": "Gifu",
+        "lat": 36.24483,
+        "lon": 137.17323
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hida, Gifu",
+          "url": "https://en.wikipedia.org/wiki/Hida,_Gifu",
+          "text": "Hida (飛騨市, Hida-shi) is a city located in Gifu, Japan. As of 1 December 2017, the city had an estimated population of 24,726, and a population density of 31 persons per km2, in 8,905 households. The total area of the city was 792.53 square kilometres (306.00 sq mi). The official kanji for the city is actually 飛驒, which uses the old rendering of the 騨 character. However, the 驒 character is not included on the official list of usable characters (as decided by the Ministry of Internal Affairs and Communications), so the 騨 character is often used outside of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "hida",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 2742,
+    "attempt": 2721,
+    "place_id": "gn-3587362",
+    "input": {
+      "place": {
+        "place_id": "gn-3587362",
+        "name": "Antiguo Cuscatlán",
+        "country": "El Salvador",
+        "subdivision": "La Libertad Department",
+        "lat": 13.66492,
+        "lon": -89.25319
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Antiguo Cuscatlán",
+          "url": "https://en.wikipedia.org/wiki/Antiguo_Cuscatlán",
+          "text": "Antiguo Cuscatlán (colloquially known as Antiguo) is a municipality in the La Libertad department of El Salvador; its eastern tip lies in the San Salvador Department part of the Metropolitan Area of San Salvador, southwest of San Salvador and southeast of Santa Tecla. The population was 47,956 at the 2020 census. Antiguo Cuscatlán can be translated as Old Jeweled City:  Antiguo means ancient or old in Spanish, and Cuscatlán means jeweled city in Nahuat. The city used to be the capital of the Pipil or Cuzcatecs, before the Spanish conquest of the New World.\nThe historic downtown sits on the foothills of La Cordillera del Bálsamo, and the city extends towards the Cordillera del Bálsamo on the south and on the foothills of the San Salvador Volcano on the north. The estimated per capita income for the city was $22,783 in 2013, which is 5.9 times higher than the national per capita (nominal).\nBecause Antiguo Cuscatlan is part of the San Salvador metro area, it is often confused as part of San Salvador."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "antiguo cuscatlan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "antiguo",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cuscatlan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2743,
+    "attempt": 2722,
+    "place_id": "gn-3818742",
+    "input": {
+      "place": {
+        "place_id": "gn-3818742",
+        "name": "San Andrés Cholula",
+        "country": "Mexico",
+        "subdivision": "Puebla",
+        "lat": 19.05144,
+        "lon": -98.29526
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Andrés Cholula",
+          "url": "https://en.wikipedia.org/wiki/San_Andrés_Cholula",
+          "text": "San Andrés Cholula is the municipal seat of San Andrés Cholula Municipality located in the Metropolitan area of Puebla, in the center west of the state of Puebla in the central highlands of Mexico,  122 km east of Mexico City and eight kilometres west of the city of Puebla.  It is one of the two municipalities, along with San Pedro Cholula, that make up the modern city of Cholula or Cholula de Rivadavia. The city of Cholula has been divided into two parts since the pre Hispanic period, when the Toltecs-Chichimecas revolted, took over and pushed the formerly dominant Olmec-Xicallancas to the eastern side of the city. This side of the city is defined as the Great Pyramid of Cholula and east. The city has remained more or less divided since under different political organizations. However, the two halves share a common religious and social tradition which binds the city as a whole. San Andrés is known for being historically indigenous and still contains a larger indigenous population.  It is also home to a number of colonial era churches decorated in Talavera tile and in a style called Indigenous or Folk Baroque. The best known example of this is the church in the Santa María Tonatzintla community.\nSan Andrés Cholula is a Pueblo Mágico listed with the name \"Cholula (San Pedro y San Andrés)\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "san andres cholula",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "andres",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cholula",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2745,
+    "attempt": 2723,
+    "place_id": "gn-4504621",
+    "input": {
+      "place": {
+        "place_id": "gn-4504621",
+        "name": "Vineland",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.48623,
+        "lon": -75.02573
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vineland, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Vineland,_New_Jersey",
+          "text": "Vineland  is a city and the most populous municipality in Cumberland County, within the U.S. state of New Jersey. Bridgeton and Vineland are the two principal cities of the Vineland-Bridgeton metropolitan statistical area, which encompasses those cities and all of Cumberland County for statistical purposes. The Vineland-Bridgeton metropolitan area and the city of Vineland are also included as part of larger Philadelphia metropolitan area, also known as the Delaware Valley. The MSA had a population of 156,898 as of the 2010 census. As of the 2020 United States census, the city's population was 60,780, its highest decennial count ever and an increase of 56 (+0.1%) from the 60,724 recorded at the 2010 census, which in turn reflected an increase of 4,453 (+7.9%) from the 56,271 counted in the 2000 census. The Census Bureau's Population Estimates Program calculated that the city's population was 60,491 in 2022, ranking the city the 639th-most-populous in the country.\nVineland was incorporated on July 1, 1952, following the merger of Landis Township and Vineland Borough, which was approved by voters in a referendum held on February 5, 1952. Celebrations marking the merger included a parade and speeches by prominent figures, among them U.S. Senator Estes Kefauver. The city’s name reflects the intentions of its founder, who planned to use the land for grape cultivation.\nGeographically, Vineland is located in South Jersey. It has large Italian-American and Hispanic-American populations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 232
+    },
+    "banned_terms": [
+      {
+        "term": "vineland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2746,
+    "attempt": 2724,
+    "place_id": "gn-454572",
+    "input": {
+      "place": {
+        "place_id": "gn-454572",
+        "name": "Valka",
+        "country": "Latvia",
+        "subdivision": "Valka",
+        "lat": 57.7752,
+        "lon": 26.01013
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Valka",
+          "url": "https://en.wikipedia.org/wiki/Valka",
+          "text": "Valka (; German: Walk; Estonian: Valga) is a town and the centre of Valka Municipality in the Vidzeme region of Latvia, on the border with Estonia along both banks of the river Pedele.\nValka and the Estonian town Valga are twins, separated by the Estonian/Latvian border but using the slogan \"One Town, Two Countries\". The border dividing the Livonian town of Walk was marked out in 1920 by an international jury headed by British Colonel Stephen George Tallents.\nWith the expansion of the Schengen Agreement and abolition of the Estonian/Latvian border controls in 2007, it was announced that common public bus transport would be established between Valka and Valga. \nAs of 2025, city bus number 3, operated by the Estonian company ATG Bussiliinid OÜ, connects the twin cities of Valga and Valka three times a day, departing from the Valga train station.\nAlso, all border crossing-points were removed and roads and fences opened. In 2016 it was announced that due to better welfare and higher salaries in Estonia, many Valka inhabitants have registered themselves as inhabitants of Valga."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "valka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2747,
+    "attempt": 2725,
+    "place_id": "gn-4939783",
+    "input": {
+      "place": {
+        "place_id": "gn-4939783",
+        "name": "Holyoke",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.20426,
+        "lon": -72.6162
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Holyoke, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Holyoke,_Massachusetts",
+          "text": "Holyoke () is a city in Hampden County, Massachusetts, United States, that lies between the western bank of the Connecticut River and the Mount Tom Range. As of the 2020 census, the city had a population of 38,248. Located 8 miles (13 km) north of Springfield, Holyoke is part of the Springfield Metropolitan Area, one of the two distinct metropolitan areas in Massachusetts.\nHolyoke is among the early planned industrial cities in the United States. Built in tandem with the Holyoke Dam to utilize the water power of Hadley Falls, it is one of a handful of cities in New England built on the grid plan. During the late 19th century the city produced an estimated 80% of the writing paper used in the United States and was home to the largest paper mill architectural firm in the country, as well as the largest paper, silk, and alpaca wool mills in the world. Although a considerably smaller number of businesses in Holyoke work in the paper industry today, it is still commonly referred to as \"The Paper City.\" Today the city contains a number of specialty manufacturing companies, as well as the Massachusetts Green High Performance Computing Center, an intercollegiate research facility that opened in 2012. Holyoke is also home to the Volleyball Hall of Fame and known as the \"Birthplace of Volleyball\" since the internationally-played Olympic sport was invented and first played at the local YMCA chapter by William G. Morgan in 1895.\nWhile managing the Holyoke Testing Flume in the 1880s, hydraulic engineer Clemens Herschel invented the Venturi meter to determine the water use of individual mills in the Holyoke Canal System. The device, the first accurate means of measuring large-scale flows, is now widely used in a number of engineering applications, including waterworks and carburetors, as well as aviation instrumentation. Powered by the municipally-owned canals, Holyoke has among the lowest electricity costs in the Commonwealth, and as of 2016, between 85% and 90% of the city's energy was carbon neutral, with administrative goals in place to reach 100% in the future."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 344
+    },
+    "banned_terms": [
+      {
+        "term": "holyoke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2748,
+    "attempt": 2726,
+    "place_id": "gn-5103055",
+    "input": {
+      "place": {
+        "place_id": "gn-5103055",
+        "name": "Rahway",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.60816,
+        "lon": -74.27765
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rahway, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Rahway,_New_Jersey",
+          "text": "Rahway () is a city in southern Union County, in the U.S. state of New Jersey. A bedroom community of New York City, it is centrally located in the Rahway Valley region, in the New York metropolitan area. The city is 15 miles (24 km) southwest of Manhattan and 5 miles (8.0 km) west of Staten Island.\nBuilt on the navigable Rahway River, it was an industrial and artisanal craft city for much of its history. The city has increasingly reinvented itself in recent years as a diverse regional hub for the arts and biological sciences, with a new global headquarters for Merck & Co.\nAs of the 2020 United States census, the city's population was 29,556, its highest decennial count ever and an increase of 2,210 (+8.1%) from the 27,346 recorded at the 2010 census, which in turn reflected an increase of 846 (+3.2%) from the 26,500 counted in the 2000 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "rahway",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2749,
+    "attempt": 2727,
+    "place_id": "gn-5861897",
+    "input": {
+      "place": {
+        "place_id": "gn-5861897",
+        "name": "Fairbanks",
+        "country": "United States",
+        "subdivision": "Alaska",
+        "lat": 64.83778,
+        "lon": -147.71639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fairbanks, Alaska",
+          "url": "https://en.wikipedia.org/wiki/Fairbanks,_Alaska",
+          "text": "Fairbanks is a home rule city and the borough seat of the Fairbanks North Star Borough, Alaska, United States. Fairbanks is the largest city in the interior region of Alaska and the second most populous city in the state. The 2020 census put the population of the city proper at 32,515 and the population of the Fairbanks North Star Borough at 95,655, making it the second most populous metropolitan area in Alaska, after Anchorage. The Metropolitan Statistical Area encompasses all of the Fairbanks North Star Borough and is the northernmost metropolitan statistical area in the United States, located 196 miles (315 kilometers) by road (140 mi or 230 km by air) south of the Arctic Circle.\nIn August 1901, E. T. Barnette founded a trading post on the south bank of the Chena River. A gold discovery near the trading post sparked the Fairbanks Gold Rush, and many miners moved to the area. There was a boom in construction, and in November 1903, the area's residents voted to incorporate Fairbanks as a city. Barnette became the first mayor, and the city flourished during the gold rush. By World War I, the population had plunged, but rose again during the Great Depression as the price of gold increased.\nDuring the 1940s and 1950s, the city became a staging area for the entire construction of military depots during World War II and the Cold War. Fort Wainwright, previously named Ladd Field, was built east of the city beginning in 1938 and is operated by the U.S. Army. After the discovery of the Prudhoe Bay Oil Field in 1968, the city became a supply point for the oil field, as well as for the Trans-Alaska Pipeline System. With the establishment of the Fairbanks North Star Borough in 1964, the city became the borough seat. Tourism is also a factor in Fairbanks' economy.\nFairbanks is in the Tanana Valley, straddling the Chena River near its confluence with the Tanana River. The Tanana River marks the city's southern border, and the Tanana Flats, a large area of marsh and bog, is south of the river. Fairbanks is the coldest city in the United States. Monthly  mean temperatures range from −8.3 °F (−22.4 °C) in January to 62.9 °F (17.2 °C) in July. In winter, Fairbanks's location in the Tanana Valley causes cold air to accumulate in the city and warm air to rise up the hills to the north, and the city experiences one of the biggest temperature inversions on Earth.\nFairbanks is home to the University of Alaska Fairbanks, the founding campus of the University of Alaska system, established in 1917. Fairbanks International Airport is located three miles (4.8 km) southwest of the central business district of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 153,
+      "fullExtractWords": 455
+    },
+    "banned_terms": [
+      {
+        "term": "fairbanks",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2750,
+    "attempt": 2728,
+    "place_id": "gn-1647298",
+    "input": {
+      "place": {
+        "place_id": "gn-1647298",
+        "name": "Caringin",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.70611,
+        "lon": 106.82139
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Caringin",
+          "url": "https://en.wikipedia.org/wiki/Caringin",
+          "text": "Caringin is a town and an administrative district  (Indonesian: kecamatan) in the Bogor Regency, West Java, Indonesia - not to be confused with the district of the same name in Sukabumi Regency - and thus part of Jakarta's larger conurbation; the district is often considered as one of Jakarta's outermost suburbs, although the closest city in the region to Caringin is Bogor city, as it lies just a few kilometres south of that city.\nCaringin District covers an area of 45.44 km2, and had a population of 114,229 at the 2010 Census and 131,012 at the 2020 Census; the official estimate as at mid 2024 was 144,219 (comprising 74,570 males and 69,649 females). The administrative centre is at the town of Cimande Hilir (\"Upper Cimande\"), and the district is sub-divided into twelve villages (desa), all sharing the postcode of 16730, as listed below with their areas and populations as at mid 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "caringin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2751,
+    "attempt": 2729,
+    "place_id": "gn-2521847",
+    "input": {
+      "place": {
+        "place_id": "gn-2521847",
+        "name": "Almuñécar",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.73246,
+        "lon": -3.69173
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Almuñécar",
+          "url": "https://en.wikipedia.org/wiki/Almuñécar",
+          "text": "Almuñécar (Spanish pronunciation: [almuˈɲekaɾ]) is a Spanish city and municipality located in the southwestern part of the comarca of the Costa Granadina, in the province of Granada. It is located on the shores of the Mediterranean sea and borders the Granadin municipalities of Otívar, Jete, Ítrabo and Salobreña, and with the Malagueño municipality of Nerja. The Verde river runs through its territory. The municipality of Sexitano includes the population centers of Almuñécar —municipal capital—, La Herradura, Velilla-Taramay, Torrecuevas, Río Seco, El Rescate and El Cerval.\nSince 1975, the town has become one of the most important tourist towns in Granada province and on the Costa Granadina; it has good transport connections and a football (soccer) stadium.\nAlmuñécar's coat of arms, which shows the turbaned heads of three Barbary pirates floating in the sea, was granted to the town by King Carlos I in 1526 for its having destroyed a Berber raiding force."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "almunecar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2752,
+    "attempt": 2730,
+    "place_id": "gn-2525059",
+    "input": {
+      "place": {
+        "place_id": "gn-2525059",
+        "name": "Catanzaro",
+        "country": "Italy",
+        "subdivision": "Calabria",
+        "lat": 38.88247,
+        "lon": 16.60086
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Catanzaro",
+          "url": "https://en.wikipedia.org/wiki/Catanzaro",
+          "text": "Catanzaro (US: ; Italian: [katanˈdzaːro]  or [katanˈtsaːro]; Catanzarese: Catanzaru [katanˈtsaːɾʊ]), also known as the \"City of the two Seas\" (Italian: Città tra i due Mari), is an Italian city of 86,183 inhabitants (2020), the capital of the Calabria region and of its province and the second most populated comune of the region, behind Reggio Calabria.\nThe archbishop's seat was the capital of the province of Calabria Ultra for over 200 years. It houses the Magna Græcia University, the second-largest university in Calabria.\nCatanzaro is an urban centre, with much activity, including some coastal towns, such as Sellia Marina and Soverato, and the municipalities of Silas, with a total of 156,196 inhabitants. Catanzaro is being consolidated to form a greater metropolitan area, by the Region of Calabria, and in connection with the town of Lamezia Terme, comprising 10 municipalities. This will lead to the creation of an integrated area involving over 200,000 inhabitants.\nDuring the summer months, the Ionian coast from Catanzaro to Soverato is an important tourist attraction, especially for the youth, and several important structures are located in the coastal districts of the city and in the towns of Copanello and Soverato.\nCatanzaro is also known as the city of the three V's, referring to the three distinct features of the city, namely Saint Vitalian, the patron saint; velvet, because the city has been an important silk centre since Byzantine times; and wind (vento in Italian), because of the strong breezes from the Ionian Sea and La Sila.\n\"VVV\" was the symbol by which Catanzaro's silk industry was known, identified for both its domestic and foreign markets, and iconic for the finest fabrication of silks, velvets, damasks, and brocades from the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 283
+    },
+    "banned_terms": [
+      {
+        "term": "catanzaro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2753,
+    "attempt": 2731,
+    "place_id": "gn-2642233",
+    "input": {
+      "place": {
+        "place_id": "gn-2642233",
+        "name": "Morden",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.39822,
+        "lon": -0.19837
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morden",
+          "url": "https://en.wikipedia.org/wiki/Morden",
+          "text": "Morden is a district and town in South London, England, now within the London Borough of Merton, in the ceremonial county of Greater London. It adjoins Merton Park and Wimbledon to the north, Mitcham to the east, Sutton to the south and Worcester Park to the west, and is around 8 miles (13 km) south-southwest of Charing Cross. Prior to the creation of Greater London in 1965, for local government purposes, Morden was in the administrative and historic county of Surrey.\nAt the 2011 census, Morden had a population of 48,233, including the wards of Cannon Hill, Lower Morden, Merton Park, Ravensbury and St Helier.\nThe district of Morden includes the town itself, Lower Morden, Morden Park, Cannon Hill, Merton Park and parts of St Helier.\nMorden Hall Park, a National Trust park on the banks of the River Wandle adjacent to the town centre, is a key feature of the area. The Baitul Futuh Mosque, completed in 2003, is the largest mosque in Western Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "morden",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2754,
+    "attempt": 2732,
+    "place_id": "gn-2645298",
+    "input": {
+      "place": {
+        "place_id": "gn-2645298",
+        "name": "Kirkcaldy",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.11683,
+        "lon": -3.15999
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kirkcaldy",
+          "url": "https://en.wikipedia.org/wiki/Kirkcaldy",
+          "text": "Kirkcaldy (  kur-KAW-dee; Scots: Kirkcaldy; Scottish Gaelic: Cair Chaladain) is a town and former royal burgh in Fife, on the east coast of Scotland. It is about 11+1⁄2 miles (19 kilometres) north of Edinburgh and 27+1⁄2 mi (44 km) south-southwest of Dundee. The town had a recorded population of 51,117 in 2022, making it Fife's second-largest settlement and the 11th most populous settlement in Scotland.\nKirkcaldy has long been nicknamed the Lang Toun (; Scots for \"long town\") in reference to the early town's 0.9-mile (1.4 km) main street, as indicated on maps from the 16th and 17th centuries. The street would finally reach a length of nearly four miles (six kilometres), connecting the burgh to the neighbouring settlements of Linktown, Pathhead, Sinclairtown and Gallatown, which became part of the town in 1876. The formerly separate burgh of Dysart was also later absorbed into Kirkcaldy in 1930 under an act of Parliament.\nThe area around Kirkcaldy has been inhabited since the Bronze Age. The first document to refer to the town is from 1075, when Malcolm III granted the settlement to the church of Dunfermline. David I later gave the burgh to Dunfermline Abbey, which had succeeded the church: a status which was officially recognised by Robert I in 1327. The town only gained its independence from Abbey rule when it was created a royal burgh by Charles I in 1644.\nFrom the early 16th century, the establishment of a harbour at the East Burn confirmed the town's early role as an important trading port. The town also began to develop around the salt, coal mining and nail making industries. The production of linen which followed in 1672 was later instrumental in the introduction of floorcloth in 1847 by linen manufacturer, Michael Nairn. In 1877 this in turn contributed to linoleum, which became the town's most successful industry: Kirkcaldy was a world producer until well into the mid-1960s. The town expanded considerably in the 1950s and 1960s, though the decline of the linoleum industry and other manufacturing restricted its growth thereafter.\nToday, the town is a major service centre for the central Fife area. Public facilities include a main leisure centre, theatre, museum and art gallery, three public parks and an ice rink. Kirkcaldy is also known as the birthplace of social philosopher and economist Adam Smith who wrote his magnum opus The Wealth of Nations in the town. In the early 21st century, employment is dominated by the service sector: the biggest employer in the town is PayWizard, formerly known as MGT plc (call centre). Other main employers include NHS Fife, Forbo (linoleum and vinyl floor coverings), Fife College, Whitworths (flour millers) and Smith Anderson (paper making)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 448
+    },
+    "banned_terms": [
+      {
+        "term": "kirkcaldy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2755,
+    "attempt": 2733,
+    "place_id": "gn-2759875",
+    "input": {
+      "place": {
+        "place_id": "gn-2759875",
+        "name": "Alphen aan den Rijn",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 52.12917,
+        "lon": 4.65546
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alphen aan den Rijn",
+          "url": "https://en.wikipedia.org/wiki/Alphen_aan_den_Rijn",
+          "text": "Alphen aan den Rijn (Dutch pronunciation: [ˈɑlfə(n) aːn də(n) ˈrɛin] ; English: \"Alphen upon Rhine\" or \"Alphen on the Rhine\") is a city and municipality in the western Netherlands, in the province of South Holland. The city is situated on the banks of the river Oude Rijn (Old Rhine), where the River Gouwe branches off. The municipality had a population of 112,587 in 2021, and covers an area of 132.50 km2 (51.16 sq mi), of which 6.27 km2 (2.42 sq mi) is water.\nThe municipality of Alphen aan den Rijn also includes the communities of Aarlanderveen, Benthuizen, Boskoop, Hazerswoude-Dorp, Hazerswoude-Rijndijk, Koudekerk aan den Rijn and Zwammerdam. The city is located in what is called the 'Green Heart' of the Netherlands, which is a somewhat less densely populated centre area of the Randstad.\nThe name \"Alphen\" is probably derived from the name of the Roman fort Albaniana, meaning \"settlement at the white water\". Its remains still lie under the city centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "alphen aan den rijn",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "alphen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "aan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rijn",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2756,
+    "attempt": 2734,
+    "place_id": "gn-2815330",
+    "input": {
+      "place": {
+        "place_id": "gn-2815330",
+        "name": "Waiblingen",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.83241,
+        "lon": 9.31641
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waiblingen",
+          "url": "https://en.wikipedia.org/wiki/Waiblingen",
+          "text": "Waiblingen (German pronunciation: [ˈvaɪblɪŋən] ; Swabian: Woiblinge) is a city in southwestern Germany, in the state of Baden-Württemberg. It lies in the eastern part of the Stuttgart metropolitan region on the river Rems, and is the seat and largest city of the Rems-Murr district. As of 31 December 2024, Waiblingen had 57,313 inhabitants in its central town and five outlying districts.\nThe settlement is of Alemannic origin and was a Carolingian royal estate, first documented in 885 during a stay by Emperor Charles the Fat. It later belonged to the Salian and then the Hohenstaufen dynasties; by tradition, the Hohenstaufen battle cry \"Hie Waibling!\" gave rise to the Italian term Ghibelline (Ghibellini), one of the two factions in the conflict between Guelphs and Ghibellines that divided medieval Europe. From the 13th century Waiblingen grew into a town under the Counts of Württemberg, to whose territory it would belong for the following centuries. It was almost entirely destroyed by imperial troops in 1634 during the Thirty Years' War, and its present old town with its colourful timber-framed houses largely dates from the following Baroque reconstruction.\nThe arrival of the railway in the late 19th century turned Waiblingen into an industrial centre, and its population grew steadily through the 20th century. It was raised to a major district town (Große Kreisstadt) in 1962 and became the administrative seat of the newly created Rems-Murr district in 1973. Waiblingen is the seat of Stihl, the world's largest manufacturer of chainsaws and the town's biggest employer."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 251
+    },
+    "banned_terms": [
+      {
+        "term": "waiblingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2757,
+    "attempt": 2735,
+    "place_id": "gn-2853292",
+    "input": {
+      "place": {
+        "place_id": "gn-2853292",
+        "name": "Plauen",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.4973,
+        "lon": 12.13782
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Plauen",
+          "url": "https://en.wikipedia.org/wiki/Plauen",
+          "text": "Plauen (German pronunciation: [ˈplaʊən]  PLOW-en; Upper Sorbian: Pławno; Czech: Plavno) is a town in Saxony, Germany with a population of around 65,000. It is Saxony's 5th most populated city after Leipzig, Dresden, Chemnitz and Zwickau, the second-largest city of the Vogtland after Gera, as well as the largest city in the Saxon Vogtland region (Sächsisches Vogtland).\nThe city lies on the upper reaches of the White Elster River, a tributary of the Saale, in the Central Vogtlandian Hill Country. Plauen is the southwesternmost city of a string of cities sitting in the densely populated foreland of the Elster and Ore Mountains, stretching from Plauen in the southwest via Zwickau, Chemnitz and Freiberg to Dresden in the northeast. It is the county seat of the Vogtland District. Plauen directly borders Greiz in Thuringia to the north, and it is also situated near the Saxon border with Bavaria (Franconia) and the Czech Republic (Bohemia).\nPlauen and the surrounding Saxon Vogtland are known as the historic center of the German embroidery and lace industry, and the products of the region are protected under the label Plauener Spitze (\"Plauen Lace\"). The Elster Viaduct (Elstertalbrücke), spanning the valley of the White Elster between Plauen and Pöhl, is the second-largest bridge built out of bricks in the world, after the Göltzsch Viaduct.\nDespite its location in Saxony the regional Vogtlandian dialect spoken in Plauen is a variety of East Franconian (with Saxon influences) related to the dialects of neighbouring Franconia in Bavaria. The name of the city as well as the names of many of its neighborhoods and boroughs are of Slavic origin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 267
+    },
+    "banned_terms": [
+      {
+        "term": "plauen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2758,
+    "attempt": 2736,
+    "place_id": "gn-2956206",
+    "input": {
+      "place": {
+        "place_id": "gn-2956206",
+        "name": "Andernach",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 50.43109,
+        "lon": 7.40425
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Andernach",
+          "url": "https://en.wikipedia.org/wiki/Andernach",
+          "text": "Andernach (German pronunciation: [ˈandɐˌnax] ) is a town in the district of Mayen-Koblenz, in Rhineland-Palatinate, Germany, of about 30,000 inhabitants. It is situated towards the end of the Neuwied basin on the left bank of the Rhine between the former tiny fishing village of Fornich in the north and the mouth of the small river Nette in the southeast, just 21 kilometres (13 miles) north of Koblenz, with its five external town districts: Kell, Miesenheim, Eich, Namedy, and Bad Tönisstein.\nA few hundred metres downstream of Andernach the Rhine valley narrows from both sides forming the northern part of the romantic Middle Rhine stretch. Already in Roman times the place the narrow passage begins was named \"Porta Antunnacensis\" or Andernachian Gate. It is formed by two hills, the Krahnenberg  (engl. Crane hill)  and the Engwetter (Narrow weather) on the right bank near the wine village Leutesdorf (external town district of Bad Hönningen). The crane hill is named after the old crane beneath his foot (see below); in earlier times (until 1650) the hill was named \"Geiersberg\" (\"Vulture's hill\").\nAfter World War II it was the site of two Rheinwiesenlager temporary prison camps."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "andernach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2759,
+    "attempt": 2737,
+    "place_id": "gn-3392887",
+    "input": {
+      "place": {
+        "place_id": "gn-3392887",
+        "name": "Patos",
+        "country": "Brazil",
+        "subdivision": "Paraíba",
+        "lat": -7.02444,
+        "lon": -37.28
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Patos, Brazil",
+          "url": "https://en.wikipedia.org/wiki/Patos,_Brazil",
+          "text": "Patos is a municipality of the state of Paraíba in the Northeast Region of Brazil. It is classified by the Brazilian Institute of Geography and Statistics as a sub-regional center A.\nIt is located in the Espinharas River valley, surrounded by the Borborema Plateau to east and south, and by the pediplain Sertanejo to the west. It originated from the village of Patos, spun off from the Parish of Nossa Senhora do Bom Sucesso de Pombal on October 6, 1788.\nThe city is 306 km from the city of João Pessoa, the center of its immediate and intermediate geographic regions. It stands out as an educational, commercial, banking, religious and health center, both in the back country of Paraíba, and in areas of Pernambuco and Rio Grande do Norte. It is the third most important municipality in the state considering the economic, political and social aspects (behind João Pessoa and Campina Grande). According to IBGE estimates for 2021, it is the fourth most populous municipality in the state with 108,766 inhabitants.\nEsporte and Nacional are the city's two football (soccer) clubs. They play at the José Cavalcanti Municipal Stadium. There are four multisport arenas: Rivaldão, AABB, SESC and SESI.\nThe city is served by Brig. Firmino Ayres Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 208
+    },
+    "banned_terms": [
+      {
+        "term": "patos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2760,
+    "attempt": 2738,
+    "place_id": "gn-3459796",
+    "input": {
+      "place": {
+        "place_id": "gn-3459796",
+        "name": "João Monlevade",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -19.81,
+        "lon": -43.17361
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "João Monlevade",
+          "url": "https://en.wikipedia.org/wiki/João_Monlevade",
+          "text": "João Monlevade is a Brazilian municipality located in the interior of the state of Minas Gerais, in the Southeast Region of Brazil. It is situated east of the state capital, Belo Horizonte, approximately 110 kilometers away. The municipality covers an area of 99.158 km2 (38.285 sq mi), of which 29.1 km2 (11.2 sq mi) is classified as urban area, with a population of 83,360 inhabitants in 2024.\nJoão Monlevade was emancipated in the 20th century, specifically in 1964, with its development largely driven by the establishment of ArcelorMittal Aços Longos (formerly Companhia Siderúrgica Belgo-Mineira) in 1921. The municipality currently comprises nearly sixty neighborhoods, and it boasts various natural, historical, and cultural attractions, including the São José do Operário Mother Church, constructed in the 1940s, and the Catalan Forge, with its imposing and renowned headquarters (Fazenda Solar), built to house Jean-Antoine Félix Dissandes de Monlevade, the pioneer after whom the municipality is named."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "joao monlevade",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "joao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "monlevade",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2761,
+    "attempt": 2739,
+    "place_id": "gn-4563811",
+    "input": {
+      "place": {
+        "place_id": "gn-4563811",
+        "name": "Coamo",
+        "country": "Puerto Rico",
+        "subdivision": "Coamo",
+        "lat": 18.07996,
+        "lon": -66.35795
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coamo, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Coamo,_Puerto_Rico",
+          "text": "Coamo (Spanish pronunciation: [koˈamo], locally [ˈkwamo]) is a town and municipality founded in 1579 in the south-central region of Puerto Rico, located north of Santa Isabel; south of Orocovis and Barranquitas; east of Villalba and Juana Díaz; and west of Aibonito and Salinas. The municipality of Coamo is spread over 10 barrios and Coamo Pueblo – the town or downtown area and administrative center of the city. The Coamo municipality is also a Micropolitan Statistical Area and as such is part of the Ponce-Yauco-Coamo Combined Statistical Area.\nThe town of Coamo and parts of its barrios are nestled in a valley about 20 miles (32 km) east of the town of Ponce (about 40 minutes by car). It was named San Blas Illescas de Coamo by Spanish settlers in 1579. Saint Blaise (San Blas) was designated by the Catholic Church as the patron saint of the town, and so it remains presently. Illescas is the Spanish town where some of the town founders originated (nowadays in Toledo province, Castile-La Mancha, Spain).\nThere are several theories regarding the origin of the word Coamo. One theory is that it comes from an indigenous word that means \"valley\". Another theory is that Coamo derives its name from Coamex (or Coamey), who was a celebrated local cacique. Archeological digs in the municipality of Coamo have produced extensive evidence of pre-Columbian inhabitants of the area. \nCoamo is famous for its natural hot springs, Los Baños de Coamo, and for its annual San Blas Half Marathon. The Battle of Coamo was a decisive battle of the Spanish–American War (1898)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 263
+    },
+    "banned_terms": [
+      {
+        "term": "coamo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2762,
+    "attempt": 2740,
+    "place_id": "gn-4628929",
+    "input": {
+      "place": {
+        "place_id": "gn-4628929",
+        "name": "Hermitage",
+        "country": "United States",
+        "subdivision": "Tennessee",
+        "lat": 36.19617,
+        "lon": -86.6225
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hermitage, Tennessee",
+          "url": "https://en.wikipedia.org/wiki/Hermitage,_Tennessee",
+          "text": "Hermitage is a neighborhood of Nashville, adjacent to – and named in honor of – The Hermitage, the historic home of Andrew Jackson, seventh President of the United States. Although the area is incorporated as part of the Metropolitan Government of Nashville and Davidson County, it maintains its own identity as a residential and commercial suburban area.\nHermitage is located immediately to the east of Donelson, a Nashville borough named in honor of Andrew Jackson's father-in-law John Donelson, and just to the west of Mt. Juliet in adjacent Wilson County. Once a rural area, Hermitage is now a thriving district with a highly developed network of retail stores and typical suburban tract houses, ranging from the \"starter home\" to the \"executive residence\". The technology headquarters of Deloitte Touche Tohmatsu, one of the Big Four auditors, is located in Hermitage, sprawling across 200,000 square feet (19,000 m2) and employing more than 1,000 people.\nMajor thoroughfares include U.S. Route 70, Interstate 40, and State Route 45. Hermitage has a station on the WeGo Star commuter rail service and is home to the Tennessee Secondary School Athletic Association, the organization that administers junior and senior high school sporting events.\nHermitage is divided from Donelson by the Stones River and its bottom lands, Clover Bottom. It has benefited from the impoundment of the Stones by J. Percy Priest Dam, a nearby United States Army Corps of Engineers project that provides a number of recreation opportunities, particularly in the summer months. The dam has also contributed to the desirability and value of the area's real estate. Hermitage and Donelson are often thought of as something of a unit and even have a joint Chamber of Commerce and Christmas parade.\nHermitage is generally considered to be roughly included in United States Postal Service ZIP code 37076. The 2016 population estimate is 37,814."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 152,
+      "fullExtractWords": 306
+    },
+    "banned_terms": [
+      {
+        "term": "hermitage",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 3771,
+    "attempt": 3741,
+    "place_id": "gn-3466261",
+    "input": {
+      "place": {
+        "place_id": "gn-3466261",
+        "name": "Charqueadas",
+        "country": "Brazil",
+        "subdivision": "Rio Grande do Sul",
+        "lat": -29.95472,
+        "lon": -51.62528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Charqueadas",
+          "url": "https://en.wikipedia.org/wiki/Charqueadas",
+          "text": "Charqueadas is a municipality in the state of Rio Grande do Sul, Brazil. It is located on the southern side of the Jacuí River, in the eastern-central part of the state. The city is 57 km (35 mi) west of the state capital and most populous city, Porto Alegre, and belongs to its metropolitan area. The area of the municipality is 214.80 km2 (82.93 sq mi), and it have a population of 41,258 (2020 estimate, IBGE), making it the largest municipality by population in the region. It borders to the south Arroio dos Ratos, to the north Triunfo, to the east Eldorado do Sul and to the west São Jerônimo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "charqueadas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3772,
+    "attempt": 3742,
+    "place_id": "gn-3531177",
+    "input": {
+      "place": {
+        "place_id": "gn-3531177",
+        "name": "Champotón",
+        "country": "Mexico",
+        "subdivision": "Campeche",
+        "lat": 19.34241,
+        "lon": -90.72272
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Champotón, Campeche",
+          "url": "https://en.wikipedia.org/wiki/Champotón,_Campeche",
+          "text": "Champotón is a small city in Champotón Municipality in the Mexican state of Campeche, located at 19°21′N 90°43′W, about 60 km south of the city of Campeche where the small Champotón river meets the coast of the Gulf of Mexico. At the 2010 census it had a population of 30,881.\nChampotón, historically also called Chakanputun, Chanpaton and Chanputun, was a city of the Maya civilization dating back to at least the 10th century before it was conquered by Spain in the 16th century. There the famous battle \"Mala Pelea\" occurred. In the first Spanish exploration (1517), they were defeated by the Maya. Juan de Grijalva's expedition exacted revenge in 1518."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "champoton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3773,
+    "attempt": 3743,
+    "place_id": "gn-367544",
+    "input": {
+      "place": {
+        "place_id": "gn-367544",
+        "name": "Suakin",
+        "country": "Sudan",
+        "subdivision": "Red Sea",
+        "lat": 19.1059,
+        "lon": 37.3321
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Suakin",
+          "url": "https://en.wikipedia.org/wiki/Suakin",
+          "text": "Suakin or Sawakin (Arabic: سواكن, Sawākin; Beja: Oosook) is a port city in northeastern Sudan, on the west coast of the Red Sea. It was formerly the region's chief port, but is now secondary to Port Sudan, about 50 kilometres (30 mi) north.\nSuakin used to be considered the height of medieval luxury on the Red Sea, but the old city built of coral is now in ruins. In 1983, the adjacent historic mainland town, known as the Geyf, had a population of 18,030. In 2008, Suakin had a population of 82,150 according to the census of the same year. Ferries run daily from Suakin to Jeddah in Saudi Arabia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "suakin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3774,
+    "attempt": 3744,
+    "place_id": "gn-4148411",
+    "input": {
+      "place": {
+        "place_id": "gn-4148411",
+        "name": "Boca Raton",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.35869,
+        "lon": -80.0831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Boca Raton, Florida",
+          "url": "https://en.wikipedia.org/wiki/Boca_Raton,_Florida",
+          "text": "Boca Raton ( BOH-kə rə-TOHN; Spanish: Boca Ratón [ˈboka raˈton]) is a city in Palm Beach County, Florida, United States. The population was 97,422 in the 2020 census, and it ranked as the 23rd-largest city in Florida in 2022. Many people with a Boca Raton postal address live outside of municipal boundaries, such as in West Boca Raton. As a business center, the city also experiences significant daytime population increases. Boca Raton is 45 miles (72 km) north of Miami and is a principal city of the Miami metropolitan area.\nIt was first incorporated on August 2, 1924, as \"Bocaratone\", and then incorporated as \"Boca Raton\" on May 26, 1925. While the area had been inhabited by the Glades culture, as well as Spanish and later British colonial empires prior to its annexation by the United States, the city's present form was developed predominantly by American architect Addison Mizner starting in the 1920s. Mizner contributed to many buildings in the area having Mediterranean Revival or Spanish Colonial Revival architecture. Boca Raton also became a key city in the evolution of the digital computer industry. The city is the birthplace in the 1980s of IBM's first personal computer and various other technologies created by the company.\nStill centered around luxury beach culture, the city today is dotted by many malls and shopping centers, including the Town Center at Boca Raton. The ODP Corporation, which operates Office Depot and OfficeMax, is headquartered here. Boca Raton is also home to Florida Atlantic University, Lynn University, and the Evert Tennis Academy, owned by former professional tennis player Chris Evert. The city has a strict development code for the size and types of commercial buildings, building signs, and advertisements that may be erected within its limits, which has led to major thoroughfares without billboards and large advertisements, as well as increased green spaces on roads."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 310
+    },
+    "banned_terms": [
+      {
+        "term": "boca raton",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "boca",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "raton",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3775,
+    "attempt": 3745,
+    "place_id": "gn-4552215",
+    "input": {
+      "place": {
+        "place_id": "gn-4552215",
+        "name": "Stillwater",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 36.11561,
+        "lon": -97.05837
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stillwater, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/Stillwater,_Oklahoma",
+          "text": "Stillwater is the tenth-largest city in the U.S. state of Oklahoma, and the county seat of Payne County. It is located in north-central Oklahoma at the intersection of U.S. Route 177 and State Highway 51. As of the 2020 census, the city population was 48,394. The Stillwater Micropolitan Statistical Area had a population of 78,399 according to the 2012 census estimate. Stillwater was part of the first Oklahoma Land Run held on April 22, 1889, when the Unassigned Lands were opened for settlement and became the core of the new Oklahoma Territory. The city charter was adopted on August 24, 1889, and the city operates under a council-manager government system.\nStillwater has a diverse economy with a foundation in aerospace, agribusiness, biotechnology, optoelectronics, printing and publishing, and software and standard manufacturing. Stillwater is home to the main campus of Oklahoma State University (the city's largest employer) as well as Northern Oklahoma College – Stillwater, Meridian Technology Center, and the Oklahoma Department of Career and Technology Education. The city is also home to the National Wrestling Hall of Fame and Museum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 180
+    },
+    "banned_terms": [
+      {
+        "term": "stillwater",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3776,
+    "attempt": 3746,
+    "place_id": "gn-4568403",
+    "input": {
+      "place": {
+        "place_id": "gn-4568403",
+        "name": "Toa Alta",
+        "country": "Puerto Rico",
+        "subdivision": "Toa Alta",
+        "lat": 18.38828,
+        "lon": -66.24822
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Toa Alta, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Toa_Alta,_Puerto_Rico",
+          "text": "Toa Alta (Spanish pronunciation: [ˈtoa ˈalta]) is a town and municipality of Puerto Rico located in the northern coast of the island, north of Naranjito; south of Dorado and Toa Baja; east of Vega Alta and Corozal; and west of Bayamón. Toa Alta is spread over eight barrios and Toa Alta Pueblo (the downtown area and the administrative center of the city). It is part of the San Juan-Caguas-Guaynabo metropolitan statistical area. There are nine barrios in Toa Alta and altogether in 2020 had a population of 66,852. Río de la Plata, is a large river that runs through Toa Alta. Toa Alta celebrates its patron saint festival in May."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "toa alta",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "toa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alta",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3777,
+    "attempt": 3747,
+    "place_id": "gn-457065",
+    "input": {
+      "place": {
+        "place_id": "gn-457065",
+        "name": "Ogre",
+        "country": "Latvia",
+        "subdivision": "Ogre",
+        "lat": 56.8162,
+        "lon": 24.61401
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ogre, Latvia",
+          "url": "https://en.wikipedia.org/wiki/Ogre,_Latvia",
+          "text": "Ogre () is the state city in Ogre Municipality in the Vidzeme region of Latvia, 36 kilometres (22 miles) east of the capital Riga, and is situated at the confluence of the Daugava and Ogre rivers. It has been a city since 1928. The population in 2020 was 23,273. It is a state city (although without a separate municipal government), and is the seat of Ogre Municipality. Previously, it also served as the seat of Ogre district.\nOgre is composed of three parts: Jaunogre (meaning \"New Ogre\"), Ogre (the center of the city), and Pārogre (meaning \"Ogre across [the river]\" though not all the named region is across the river).\nThe name of the city comes from the Ogre river. The Ogre village was first mentioned in 1206, called \"Oger\" in German.\nIn 1861, when the Riga–Daugavpils Railway was built, Riga's residents started to build summer cottages here. In 1862 Ogre became a health resort.\nThe city's coat of arms was granted in 1938, and shows the river and pinewoods of Ogre.\nThere is a cultural centre, an art school and a music school in Ogre. It has three Latvian language schools, and one Russian language school — Jaunogre Secondary School.\nThe city also has a cemetery with the remains of German soldiers who died during the First and Second World Wars, or died in captivity between 1944 and 1951.\nOgre is the home city for the 2016–2017 Latvian ice hockey champions HK Kurbads."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "ogre",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3778,
+    "attempt": 3748,
+    "place_id": "gn-4755280",
+    "input": {
+      "place": {
+        "place_id": "gn-4755280",
+        "name": "Danville",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 36.58597,
+        "lon": -79.39502
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Danville, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Danville,_Virginia",
+          "text": "Danville is an independent city in the Commonwealth of Virginia in the United States. The city is located in the Southside Virginia region and on the fall line of the Dan River.\nThe city was a center of tobacco production and was an area of Confederate activity during the American Civil War, due to its strategic location on the Richmond and Danville Railroad. In April 1865, Danville briefly served as the third and final capital of the Confederacy before its surrender later that year.\nDanville has maintained a black majority population since the Reconstruction era. During this time, the city was represented politically by black members of the Readjuster Party. However, this changed following the Danville Massacre of 1883, after which Democrats regained control both locally and statewide. Decades later, during the civil rights era, Danville again became a flashpoint for racial violence and resistance to desegregation efforts.\nDanville is the principal city of the Danville, Virginia Micropolitan Statistical Area. The Bureau of Economic Analysis combines the city of Danville with surrounding Pittsylvania County for statistical purposes. The population was 42,590 at the 2020 census. It is bounded by Pittsylvania County to the north and Caswell County, North Carolina to the south. It hosts the Danville Otterbots baseball club of the Appalachian League."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 213
+    },
+    "banned_terms": [
+      {
+        "term": "danville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3779,
+    "attempt": 3749,
+    "place_id": "gn-5069297",
+    "input": {
+      "place": {
+        "place_id": "gn-5069297",
+        "name": "Grand Island",
+        "country": "United States",
+        "subdivision": "Nebraska",
+        "lat": 40.92501,
+        "lon": -98.34201
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grand Island, Nebraska",
+          "url": "https://en.wikipedia.org/wiki/Grand_Island,_Nebraska",
+          "text": "Grand Island is a city in and the county seat of Hall County, Nebraska, United States. The population was 53,131 at the 2020 census, making it the 4th most populous city in Nebraska. Grand Island is the principal city of the Grand Island metropolitan area, which consists of Hall, Merrick, and Howard counties. The Grand Island metropolitan area has an official population of 83,472 residents.\nGrand Island is home to the Nebraska Law Enforcement Training Center, which is the sole agency responsible for training law enforcement officers throughout the state, as well as the home of the Southern Power District serving southern Nebraska. Ammunition manufacturer Hornady is also located there."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "grand island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grand",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3780,
+    "attempt": 3750,
+    "place_id": "gn-5530932",
+    "input": {
+      "place": {
+        "place_id": "gn-5530932",
+        "name": "Socorro",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 31.65456,
+        "lon": -106.30331
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Socorro, Texas",
+          "url": "https://en.wikipedia.org/wiki/Socorro,_Texas",
+          "text": "Socorro is a city in El Paso County, Texas, United States. It is located on the north bank of the Rio Grande southeast of El Paso, and on the border of Mexico. El Paso adjoins it on the west and the smaller city of San Elizario on the southeast; small unincorporated areas of El Paso County separate it from the nearby municipalities of Horizon City to the north and Clint to the east. \nAs of the 2020 census, the city population was 34,306. By the 2010 census, the number had grown to 32,013. As of July 1, 2019, the population estimate for the city from the U.S. Census was 34,370. It is part of the El Paso Metropolitan Statistical Area. The city is El Paso County's second-largest municipality, after El Paso. It has a council-manager type of government with five city council members."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "socorro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3781,
+    "attempt": 3751,
+    "place_id": "gn-5739936",
+    "input": {
+      "place": {
+        "place_id": "gn-5739936",
+        "name": "McMinnville",
+        "country": "United States",
+        "subdivision": "Oregon",
+        "lat": 45.21012,
+        "lon": -123.19872
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "McMinnville, Oregon",
+          "url": "https://en.wikipedia.org/wiki/McMinnville,_Oregon",
+          "text": "McMinnville is the county seat of and the most populous city in Yamhill County, Oregon, United States, at the base of the Oregon Coast Range. As of the 2020 census, the city had a population of 34,319.\nMcMinnville is located in the Willamette Valley at the confluence of the North and South forks of the Yamhill River. The city's economy has both industry and service businesses as well as the Evergreen Aviation & Space Museum, home of Howard Hughes's famed Spruce Goose flying boat. Linfield University provides higher education.\nMcMinnville is a center of the well-developed Oregon wine industry in the Willamette Valley, which has hundreds of wineries and vineyards."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "mcminnville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3782,
+    "attempt": 3752,
+    "place_id": "gn-5939219",
+    "input": {
+      "place": {
+        "place_id": "gn-5939219",
+        "name": "Dieppe",
+        "country": "Canada",
+        "subdivision": "New Brunswick",
+        "lat": 46.07844,
+        "lon": -64.68735
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dieppe, New Brunswick",
+          "url": "https://en.wikipedia.org/wiki/Dieppe,_New_Brunswick",
+          "text": "Dieppe () is a city in the Canadian maritime province of New Brunswick. Statistics Canada counted the population at 28,114 in 2021, making it the fourth-largest city in the province. On 1 January 2023, Dieppe annexed parts of two neighbouring local service districts; revised census figures have not been released.\nDieppe's history and identity goes back to the eighteenth century. Formerly known as Leger's Corner, it was incorporated as a town in 1952 under the Dieppe name, and designated as a city in 2003. The Dieppe name was adopted by the citizens of the area in 1946 to commemorate the Second World War's Operation Jubilee, the Dieppe Raid of 1942. It is predominantly a francophone city; with 63.8% of the population mother tongue French, 24% English, 3% French and English, 8% other. A majority of the population reports being bilingual, speaking both French and English. Residents generally speak French with a regional accent (colloquially called \"Chiac\") which is unique to southeastern New Brunswick. A large majority of Dieppe's population were in favour of the by-law regulating the use of external commercial signs in both official languages, which is a first for the province of New Brunswick. Dieppe is the largest predominantly francophone city in Canada outside Québec; while there are other municipalities with greater total numbers of francophones, they constitute a minority of the population in those cities. Dieppe was one of the co-hosts of the first Congrès Mondial Acadien (Acadian World Congress) which was held in the Moncton region in 1994, and again in 2019.\nDieppe is part of the census metropolitan area of Moncton, which is New Brunswick's most populous city, with a metropolitan population of 144,810 according to Statistics Canada in 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 285
+    },
+    "banned_terms": [
+      {
+        "term": "dieppe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3783,
+    "attempt": 3753,
+    "place_id": "gn-616877",
+    "input": {
+      "place": {
+        "place_id": "gn-616877",
+        "name": "Ashtarak",
+        "country": "Armenia",
+        "subdivision": "Aragatsotn",
+        "lat": 40.2976,
+        "lon": 44.36152
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ashtarak",
+          "url": "https://en.wikipedia.org/wiki/Ashtarak",
+          "text": "Ashtarak (Armenian: Աշտարակ [ɑʃtɑˈɾɑk]) is a town in the Ashtarak Municipality of the Aragatsotn Province of Armenia, located on the left bank of Kasagh River along the gorge, 20 km northwest of the capital Yerevan. It is the administrative centre of the province and an important crossroad of routes for the Yerevan–Gyumri–Vanadzor triangle.\nThe town plays a great role in the national economy as well as the cultural life of Armenia through several industrial enterprises and cultural institutions. It has developed as a satellite town of Yerevan. The nearby village of Mughni is part of the Ashtarak municipality.\nAs of the 2011 census, the population of the town was 18,834. However, as per the 2016 official estimate, the population of Ashtarak is 18,000. As of the 2022 census, the population of the town was 15,686.\nThe prelacy of the Diocese of Aragatsotn of the Armenian Apostolic Church is headquartered in Ashtarak."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "ashtarak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3784,
+    "attempt": 3754,
+    "place_id": "gn-6177869",
+    "input": {
+      "place": {
+        "place_id": "gn-6177869",
+        "name": "Welland",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 42.98342,
+        "lon": -79.24958
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Welland",
+          "url": "https://en.wikipedia.org/wiki/Welland",
+          "text": "Welland is a city in the Regional Municipality of Niagara in Southern Ontario, Canada. As of 2021, it had a population of 55,750.\nThe city is in the centre of Niagara and located within a half-hour driving distance to Niagara Falls, Niagara-on-the-Lake, St. Catharines, and Port Colborne. It has been traditionally known as the place where rails and water meet, referring to the railways from Buffalo to Toronto and Southwestern Ontario, and the waterways of Welland Canal and Welland River, which played a great role in the city's development. The city has developed on both sides of the Welland River and Welland Canal, which connects Lake Erie and Lake Ontario."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "welland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3785,
+    "attempt": 3755,
+    "place_id": "gn-633591",
+    "input": {
+      "place": {
+        "place_id": "gn-633591",
+        "name": "Tuusula",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.40368,
+        "lon": 25.02638
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tuusula",
+          "url": "https://en.wikipedia.org/wiki/Tuusula",
+          "text": "Tuusula (Finnish: [ˈtuːsulɑ]; Swedish: Tusby [ˈtʉːsby]) is a municipality in Finland, located in the southern interior of the country. Tuusula is situated in the centre of the Uusimaa region. The population of Tuusula is approximately 42,000. It is the 27th most populous municipality in Finland and the second most populous municipality without city status (Finnish: kaupunki) after Nurmijärvi. Tuusula is part of the Helsinki metropolitan area, which has approximately 1.62 million inhabitants. \nA laurel branch in the coat of arms of Tuusula refers to the local artist community and a wheellock was borrowed from the coat of arms of the Stålhane noble family, which has long been influential in Tuusula. The coat of arms was designed by Olof Eriksson in 1953."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "tuusula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3786,
+    "attempt": 3756,
+    "place_id": "gn-644450",
+    "input": {
+      "place": {
+        "place_id": "gn-644450",
+        "name": "Nokia",
+        "country": "Finland",
+        "subdivision": "Pirkanmaa",
+        "lat": 61.46667,
+        "lon": 23.5
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nokia, Finland",
+          "url": "https://en.wikipedia.org/wiki/Nokia,_Finland",
+          "text": "Nokia (Finnish pronunciation: [ˈnokiɑ]) is a town in the Pirkanmaa region of Finland. It lies on the banks of the Nokianvirta, a river of the Kokemäki River watershed, and is situated in the Tampere metropolitan area, about 15 kilometres (9 mi) west of Tampere proper. The population of Nokia is approximately 37,000, while the Tampere metropolitan area has a population of approximately 428,000. It is the 33rd most populous municipality in Finland, and the second largest in the Pirkanmaa region after Tampere.\nNokia's neighbouring municipalities are Hämeenkyrö, Pirkkala, Sastamala, Tampere, Vesilahti and Ylöjärvi. The distance to Tampere Airport from Nokia is 16 kilometres (9.9 mi) by road around Lake Pyhäjärvi."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "nokia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3787,
+    "attempt": 3757,
+    "place_id": "gn-7257540",
+    "input": {
+      "place": {
+        "place_id": "gn-7257540",
+        "name": "Braintree",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.20384,
+        "lon": -71.00215
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Braintree, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Braintree,_Massachusetts",
+          "text": "Braintree (US:  ), officially the Town of Braintree, is a city in Norfolk County, Massachusetts, United States. It is officially known as a town, but Braintree is a city with a mayor–council form of government, and it is considered a city under Massachusetts law. The population was 39,143 at the 2020 census. It is part of the Greater Boston area, with access to the MBTA Red Line, and is a member of the Metropolitan Area Planning Council's South Shore Coalition. The first mayor of Braintree was Joe Sullivan, who served until January 2020. The current mayor of Braintree is Erin Joyce, who was elected in 2023, defeating incumbent Charles Kokoros."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "braintree",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3788,
+    "attempt": 3758,
+    "place_id": "gn-1253888",
+    "input": {
+      "place": {
+        "place_id": "gn-1253888",
+        "name": "Ullal",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 12.80569,
+        "lon": 74.86058
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ullal",
+          "url": "https://en.wikipedia.org/wiki/Ullal",
+          "text": "Ullal or  Uḷḷāla is a City in Dakshina Kannada district of Karnataka state in India. Ullal City Municipal Council along with the Mangaluru City Corporation forms the continuous Mangaluru urban agglomeration area which is currently the fourth biggest in Karnataka after Bengaluru, Mysore and Hubli-Dharwad. There is also a plan to merge Ullal City Municipality & some gram panchayats along with Mangaluru City Corporation to form the Greater Mangalore region. Ullal is one of the oldest towns in India. In the 15th century it came under the rule of the Portuguese. Still the remains of its glorious history can be seen in the beaches and other parts of Ullal. It is very famous for historic locations like Sri Cheerumba Bagavathi Temple, Someshwara Temple, Someshwar Beach, Summer Sands Beach Resort, Queen Abbakka Chowta's Fort at Ranipura, K Pandyarajah Ballal Institutes and college of nursing, St. Sebastian Church Permannur, Fish Meal & Oil Plant, and Queen Abbakka's Jain temple at Melangadi.\nThe town, located on the Arabian Sea, was the setting for wide-scale sea-erosion that occurred in the late 1990s and early this millennium. The local authorities, however, have tried to reduce the damage by placing sand bags near the advancing coastline, the benefits of this step are yet to be noted,\nUllal is the first \"Kerosene Free\" city in the state of Karnataka.\nThis town is an important trading centre for fish and fish manure. Fishing and Beedi rolling are main occupations of the residents of this town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 247
+    },
+    "banned_terms": [
+      {
+        "term": "ullal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3789,
+    "attempt": 3759,
+    "place_id": "gn-12640508",
+    "input": {
+      "place": {
+        "place_id": "gn-12640508",
+        "name": "Taifa",
+        "country": "Ghana",
+        "subdivision": "Greater Accra",
+        "lat": 5.65825,
+        "lon": -0.25223
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taifa, Accra",
+          "url": "https://en.wikipedia.org/wiki/Taifa,_Accra",
+          "text": "Taifa is a town in the Ga East Municipal District, a district in the Greater Accra Region of south-eastern Ghana near the capital Accra. Taifa is the twenty-sixth largest settlement in Ghana, in terms of population, with a population of 68,459 people. Taifa is located in the northwest suburbs area of Accra. It has a breakpoint on a railway line and a small park located on the northern edge of the location of the Taifa Ghana Atomic Energy Commission. At the Ghana 2000 census of 26 March 2000, the population was 26,145 inhabitants living in the city. Projections of 1 January 2007 estimated the population to be 48,927 inhabitants. In the census of 1984 there was only 1,009 inhabitants. The strong population growth of the Town is influenced by, among other things, many illegal immigrants from west African countries who move to towns and villages near the industrial town of Tema to find a job.\nAdditionally, one of the challenges faced by Taifa is the poor condition of its roads, which remain untarred and in a state of disrepair. Unfortunately, despite the evident issue, the government has not taken sufficient action to address this problem, leaving the community to contend with inadequate infrastructure."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 203
+    },
+    "banned_terms": [
+      {
+        "term": "taifa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3790,
+    "attempt": 3760,
+    "place_id": "gn-1272473",
+    "input": {
+      "place": {
+        "place_id": "gn-1272473",
+        "name": "Doddaballapura",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 13.29452,
+        "lon": 77.53777
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Doddaballapura",
+          "url": "https://en.wikipedia.org/wiki/Doddaballapura",
+          "text": "Doddaballapura is a city and the district headquarters of Bengaluru North district in the state of Karnataka, India. Dodda means \"big\" in the native language Kannada. It is an industrial city which houses several national companies, and lies 40 km away from Bengaluru.\nThe place is mentioned as Ballalapura thanda in a record dated 1598 from the local Adinarayana temple. It might have originated from the Hoysala name Ballala, and later become corrupted as Ballapura. It is also believed that the village derived its name from a cow used to drop one 'balla' of milk over a certain anthill and this omen led to the foundation of the town. From 'balla' the name Ballapura was thus derived."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 109,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "doddaballapura",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

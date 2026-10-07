@@ -1,0 +1,952 @@
+[
+  {
+    "rank": 5732,
+    "band": 4,
+    "place_id": "gn-2940381",
+    "input": {
+      "place": {
+        "place_id": "gn-2940381",
+        "name": "Bad Camberg",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.29695,
+        "lon": 8.26896
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Camberg",
+          "url": "https://en.wikipedia.org/wiki/Bad_Camberg",
+          "text": "Bad Camberg (German: [baːt ˈkambɛʁk] ) is, with 14,500 inhabitants, the second largest town in Limburg-Weilburg district in Hesse, Germany, as well as the southernmost town in the Regierungsbezirk of Gießen. It is located in the eastern Taunus in the Goldener Grund (“Golden Ground”) some 30 km north of Wiesbaden, 18 km southeast of Limburg an der Lahn, and 44 km northwest of Frankfurt, as well as on the German Timber-Frame Road. Bad Camberg is the central community of the Goldener Grund with good infrastructure, and a lower centre partly with a middle centre's function.\nThe recognized Kneipp resort is Hesse's oldest and Germany's third oldest. In the outlying centre of Oberselters is found a mineral spring that gives forth the well known Selterswasser, often known in English as “seltzer”. The town's landmark is the Kreuzkapelle."
+        },
+        {
+          "article": "Bad Camberg (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Bad_Camberg#Geography",
+          "text": "Location\nBad Camberg lies north of the Taunus’s main ridge, 18 km southeast of Limburg an der Lahn, making it Middle Hesse’s southernmost town. The nearest cities are (distances given here are by road) Wiesbaden (31 km south), Frankfurt am Main (48 km southeast, 59 km by Autobahn), Wetzlar (49 km), Koblenz (72 km), and Gießen (75 km).\nHeights\nThe town’s elevation is 209 m. The Limburg-Weilburg district’s highest elevation, the Kuhbett (“Cow’s Bed”; 526 m), lies within the limits of the outlying centre of Erbach on the boundary with the community of Weilrod in the Hochtaunuskreis. The greatest elevation in the central community – also called Bad Camberg – is the Kapellenhügel (“Chapel Hill”), which is somewhat more than 300 m high.\nNeighbouring communities\nBad Camberg's neighbours are, clockwise from the north, Selters (Limburg-Weilburg), Weilrod (Hochtaunuskreis), Waldems (Rheingau-Taunus-Kreis), Idstein (Rheingau-Taunus-Kreis), Hünstetten (Rheingau-Taunus-Kreis) and Hünfelden (Limburg-Weilburg). All but the two lying within Limburg-Weilburg lie not in the Regierungsbezirk of Gießen, but rather in the Regierungsbezirk of Darmstadt.\nConstituent communities\nThe town comprises six Stadtteile.\nFile:St Georg Schwickershausen.jpg|St. George's parish church in Schwickershausen\nFile:Dombach rathaus1.jpg|Old town hall in Dombach, eaves side\nFile:Wuerges Ferrutius1.jpg|St. Ferrutius's parish church in Würges, side view\nFile:Oberselters Antonius.jpg|St. Anthony's church in Oberselters"
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 205,
+      "leadWords": 136,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Taunus location and a Kneipp health resort and mineral spring; a spa resort and spring are not a climate mechanism, extreme, seasonal rhythm, or paradox, and no weather is described; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "bad camberg",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "camberg",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5762,
+    "band": 4,
+    "place_id": "gn-2650004",
+    "input": {
+      "place": {
+        "place_id": "gn-2650004",
+        "name": "Emsworth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.84779,
+        "lon": -0.93697
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Emsworth",
+          "url": "https://en.wikipedia.org/wiki/Emsworth",
+          "text": "Emsworth is a town in the Borough of Havant in the county of Hampshire, on the south coast of England near the border with West Sussex. It lies at the north end of an arm of Chichester Harbour, a large and shallow inlet from the English Channel, and is equidistant between Portsmouth and Chichester.\nEmsworth had a population of 10,269 at the 2021 Census. The town has a basin for yachts and fishing boats, which fills at high tide and can be emptied through a sluice at low tide. In geodemographic segmentation the town is the heart of the Emsworth (cross-county) built-up area, the remainder of which is Westbourne, Southbourne and Nutbourne. The area had a combined population of 18,777 in 2011, with a density of 30.5 people per hectare, and shares two railway stations."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 135,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a south coast location at an arm of Chichester Harbour and a yacht and fishing basin that fills at high tide and empties through a sluice at low tide; tides are not climate, and no climate mechanism, extreme, seasonal rhythm, or paradox is stated; non-redundant climate clue not sourceable",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "emsworth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5766,
+    "band": 4,
+    "place_id": "gn-2867445",
+    "input": {
+      "place": {
+        "place_id": "gn-2867445",
+        "name": "Murnau am Staffelsee",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.68085,
+        "lon": 11.20125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murnau am Staffelsee",
+          "url": "https://en.wikipedia.org/wiki/Murnau_am_Staffelsee",
+          "text": "Murnau am Staffelsee (often shortened to Murnau) is a market town in the district of Garmisch-Partenkirchen, in the Oberbayern region of Bavaria, Germany.\nThe market originated in the 12th century around Murnau Castle. Murnau is on the edge of the Bavarian Alps, about 70 kilometres (43 mi) south of Munich. Directly to its west is the Staffelsee lake and to the south are the peaks and ridges of the Ammergau Alps beginning with the Hörnle and extending up to the Ettaler Manndl, southwest of the Wetterstein. This mountain range is formed by the Zugspitze and the Alpspitze in the south as well as the Estergebirge with their striking Kistenkar and the Walchensee mountains including Heimgarten and Herzogstand in the southeast.\nTo the south, the  is the largest continuous wetland of its kind in Central Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 135,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes an Alps-edge location, a lake to the west, peaks to the south, and a large wetland, but a wetland and mountain setting describe no weather pattern, extreme, record, rhythm, or paradox",
+      "priorMissing": "a place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox beyond the landforms in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "murnau am staffelsee",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "murnau",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "am",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "staffelsee",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5787,
+    "band": 4,
+    "place_id": "gn-1714264",
+    "input": {
+      "place": {
+        "place_id": "gn-1714264",
+        "name": "Dulag",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 10.9525,
+        "lon": 125.03167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dulag, Leyte",
+          "url": "https://en.wikipedia.org/wiki/Dulag,_Leyte",
+          "text": "Dulag (IPA: [dʊ'lag]), officially the Municipality of Dulag (Waray: Bungto han Dulag; Tagalog: Bayan ng Dulag), is a municipality in the province of Leyte, Philippines. According to the 2024 census, it has a population of 50,728 people.\nThis coastal town has 11,007 hectares of land and lies 36 kilometres (22 mi) south of the concurrent regional center of Eastern Visayas and the administrative capital of provincial government of Leyte, Tacloban.\nPopularly known as the \"Liberation Town\", Dulag survived and has risen from the ruins of the Second World War and at present time, a thriving coastal town fronting Leyte Gulf.\nIn 1954, the barrios of Mayorga, Andres Bonifacio, Talisay, San Roque, Burgos, Liberty, Union, Ormocay, Wilson, and the southern portion of barrio of Cogon Bingcay was separated to form the town of Mayorga, Leyte."
+        },
+        {
+          "article": "Dulag, Leyte (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Dulag,_Leyte#Climate",
+          "text": "The prevailing climate type is similar in all eastern coastal towns of the province. The climate is type 2 in category wherein there is no definite dry or wet season throughout. Rainfall is more or less evenly distributed throughout the year. Maximum rainfall is from November to January. During weather disturbances (typhoon) some barangays are easily flooded. These barangays are found along Daang Maharlika, along the Daguitan River, and within the poblacion. Among these are Barangays Barbo, Alegre, Fatima, Salvacion; Districts of Combis, Market Site and Cambula, and the elementary school therewith, though there is no definite pattern of occurrence."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 100,
+      "leadWords": 134,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a coastal town on a gulf, its Liberation Town nickname from the Second World War, and a 1954 split of villages, but a coast alone is geography and no climate mechanism, extreme, record, rhythm, or paradox is described",
+      "priorMissing": "a place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox beyond the coastal location in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "dulag",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5802,
+    "band": 4,
+    "place_id": "gn-2060886",
+    "input": {
+      "place": {
+        "place_id": "gn-2060886",
+        "name": "Subiaco",
+        "country": "Australia",
+        "subdivision": "Western Australia",
+        "lat": -31.9485,
+        "lon": 115.8268
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Subiaco, Western Australia",
+          "url": "https://en.wikipedia.org/wiki/Subiaco,_Western_Australia",
+          "text": "Subiaco ( SOO-bee-AK-oh), known colloquially as Subi, is an inner-western suburb of Perth, the capital of Western Australia. It is approximately 3 km (1.9 mi) west of Perth's central business district, in the City of Subiaco local government area. Historically a working-class suburb containing a mixture of industrial and commercial land uses, since the 1990s the area has been one of Australia's most celebrated urban redevelopment projects. It remains a predominantly low-rise, urban village neighbourhood centred around Subiaco train station and Rokeby Road.\nThe suburb has three schools: Subiaco Primary School, Perth Modern School, which is the state's only fully academically selective public school, and Bob Hawke College. Landmarks in Subiaco include Subiaco Oval, which formerly was the largest stadium in Western Australia, King Edward Memorial Hospital for Women, and Subiaco railway station."
+        },
+        {
+          "article": "Subiaco, Western Australia (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Subiaco,_Western_Australia#Geography",
+          "text": "Subiaco is located approximately west of the central business district (CBD) of Perth, the capital and largest city of the state of Western Australia. Subiaco is east of the Indian Ocean, and north of the Swan River. It is bounded to the south-east by Thomas Street, to the south by Nicholson Road, to the west by Railway Road, Hay Street, Tighe Street, Upham Street and Bishop Street, and to the north by Salvado Road and Railway Parade, except for a small part covering St John of God Subiaco Hospital protruding north to Cambridge Street. To the north is Wembley and West Leederville. To the east is West Perth and Kings Park. To the south is Shenton Park. To the west is Daglish and Jolimont, Western Australia."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 126,
+      "leadWords": 133,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes an inner-western suburb of a state capital, its redevelopment since the 1990s, three schools, an oval stadium, and a hospital, but contains no climate or weather information at all",
+      "priorMissing": "any place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "subiaco",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5826,
+    "band": 4,
+    "place_id": "gn-1731676",
+    "input": {
+      "place": {
+        "place_id": "gn-1731676",
+        "name": "Alangalang",
+        "country": "Philippines",
+        "subdivision": "Eastern Visayas",
+        "lat": 11.20611,
+        "lon": 124.84667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alangalang",
+          "url": "https://en.wikipedia.org/wiki/Alangalang",
+          "text": "Alangalang (IPA: [ʔɐlɐŋ'ʔalɐŋ]), officially the Municipality of Alangalang (Waray: Bungto han Alangalang; Cebuano: Lungsod sa Alangalang; Tagalog: Bayan ng Alangalang), is a First Income Class municipality in the province of Leyte, Philippines. According to the 2024 census, it has a population of 59,063 people.\nIt is a landlocked town with an area of 151 km2. It is bounded on the north by Barugo and San Miguel, on the south by Pastrana, on the north-east by Tacloban City, on the east by Santa Fe and on the west by Jaro.\nOn the way to Carigara is a steel bridge spanning the Mainit River. There was a time when only footpaths existed and the river was far too wide for a leap and too deep to wade in, travelers were undecided what to do. Hence the name Alangalang was given to the town, from the vernacular word alang-alang which means \"indecision\".\nThe Poblacion or town center was transferred twice. The first settlement was in a hilly place in Bukid, then down the hill across the Mainit River (now Brgy. Binongto-an). Those two earlier settlements were prone to flooding. A big flood in the year 1883 prompted another move in November that year to the present site. The last relocation in November 1883 is annually commemorated and re-enacted as \"Bakwit\".\nThe strongest tropical Typhoon Haiyan, more commonly known as Typhoon Yolanda impacted the town on November 8, 2013."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 235,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract mentions flood-prone early settlements, one big flood in 1883 and one typhoon impact in 2013; one-off historical weather events are not climate, and no mechanism, seasonal rhythm, climate record or paradox is stated",
+      "priorMissing": "a stated climate mechanism, seasonal rhythm, climate record or paradox rather than single flood and storm events"
+    },
+    "banned_terms": [
+      {
+        "term": "alangalang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5829,
+    "band": 4,
+    "place_id": "gn-2636881",
+    "input": {
+      "place": {
+        "place_id": "gn-2636881",
+        "name": "Stocksbridge",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.48249,
+        "lon": -1.59373
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stocksbridge",
+          "url": "https://en.wikipedia.org/wiki/Stocksbridge",
+          "text": "Stocksbridge is a town and civil parish, it is encircled to the north and east by the southern edge of the Metropolitan Borough of Barnsley, although since 1974 it lies within the borders of the City of Sheffield, in South Yorkshire, England. The town is approximately 9 miles (14 km) from Barnsley and 10 miles (16 km) from Sheffield.\nHistorically part of the West Riding of Yorkshire, it lies just to the east of the Peak District. The town is located in the steep-sided valley of the Little Don River, below the Underbank Reservoir. It blends into the areas of Deepcar, Bolsterstone and the eastern end of Ewden valley around Ewden village, which are also within the civil parish. The population of the civil parish as of the 2011 census was 13,455."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 132,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a town in a steep river valley below a reservoir near the Peak District, with no climate mechanism, extreme, record, seasonal rhythm or paradox at all",
+      "priorMissing": "place-specific climate mechanism, extreme, record, seasonal rhythm or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "stocksbridge",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5946,
+    "band": 4,
+    "place_id": "gn-6100069",
+    "input": {
+      "place": {
+        "place_id": "gn-6100069",
+        "name": "Peace River",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 56.23715,
+        "lon": -117.29176
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peace River, Alberta",
+          "url": "https://en.wikipedia.org/wiki/Peace_River,_Alberta",
+          "text": "Peace River (originally named Peace River Crossing and known as Rivière-la-Paix in French) is a town in northwest Alberta, Canada. It is along the banks of the Peace River at its confluence with the Smoky River, the Heart River and Pat's Creek. It is approximately 486 kilometres (302 mi) northwest of Edmonton and 198 kilometres (123 mi) northeast of Grande Prairie on Highway 2. It was known as the Village of Peace River Crossing between 1914 and 1916.\nThe Peace River townsite is nearly 1,000 feet (300 m) below the relatively flat terrain surrounding it. Pat's Creek used to be an open channel through the town but is now channelled through a culvert under the town streets, re-emerging at the mouth on the Peace River at the Riverfront Park.\nThe population in the Town of Peace River was 6,729 in 2011, a 6.6% increase over its 2006 population. There are significant nodal settlements and subdivisions in the vicinity of the town on acreages along Highway 2 to the west, Highways 684 (Shaftesbury Trail) and 743 as well as the southwest portion of Northern Sunrise County. Regionally, there are various First Nation communities to the northeast,  French-Canadian farming communities to the south and to the east, and Mennonite and Hutterite German-Canadian farming communities to the north and northwest of the town.\nPeace River was the site of the 2004 Alberta Winter Games. In 2010, Peace River, in conjunction with Grimshaw and surrounding municipalities, jointly hosted the 2010 Alberta Summer Games."
+        },
+        {
+          "article": "Peace River, Alberta (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Peace_River,_Alberta#Climate",
+          "text": "The Peace River area is generally characterized by a humid continental climate (Köppen climate classification Dfb) with low year-round precipitation. Its dry climate results in reduced humidity throughout the year.\nMoisture coming with Pacific Ocean air is lost over the mountain ranges as precipitation before moving into the area, while air from the Arctic flows uninterrupted into the region. Due to cold air drainage, the river valley is often completely filled with stratus and fog while outside the valley is clear. The fog usually clears in a few hours. Winds in town are channeled along the Peace River valley (towards the northeast or southwest) while winds outside the valley are quite variable. During both summer and winter, the wind patterns outside the valley are mostly from the southwest or north. The passage of a migratory low to the north of Peace River will cause southwest winds to shift around to the north.\nWinters are often cold enough to see the formation of an ice cover on the Peace River from January to late March or early April. The ice cover is composed of juxtaposed frazil ice pans and break-away border ice pieces that consolidate in the river flow direction. This produces a very jagged surface. The formation of ice cover results in a gradual increase in river water levels in town and is monitored by both Alberta Environment and BC Hydro. BC Hydro operates two hydroelectric dams on the Peace River in British Columbia: the W. A. C. Bennett Dam and Peace Canyon Dam. These dams have significant effect on the Peace River's water levels.\nSummer frequently features thunderstorms that are preceded with persistent winds and occasionally produce small grain-sized hail. Tornadoes and severe winds are a rarity in the Peace River area, although it is suspected that Grimshaw, a town 20 kilometres to the west, was struck by a tornado on 30 June 2003.\nDue to Peace River's northerly latitude, the summer solstice on 21 June brings 17 hours and 41 minutes of daylight. This turns around in when the area sees less than seven hours of daylight during the winter solstice on 21 December. Regardless of the season, when there is daylight out, Peace River will usually have sunny skies. There is on average 2,060 hours of sunshine every year.\nAn exposed field will have a different microclimate than sheltered locations. The temperature in the Peace River valley has been observed to be up to 5 °C warmer than that of the prairie land surrounding it. The unique micro-climate tends to help vegetables thrive in the Peace River valley.\nThe coldest temperature ever recorded was on 12 January 1911. The highest temperature ever recorded in Peace River was on 4 July 1926. The record high daily minimum was recorded July 20, 1956. The record highest dew point was recorded June 30, 2021. The most humid month was July 1958 with an average dew point of . The warmest month was July 1958 with an average mean temperature of , and an average monthly daily minimum of . August 1981 recorded the highest monthly average daily maximum of . July 2012 set a record of no maximum temperature below for the entire month; July 2004 with no temperature below , and July 2020 with no dew point below .\nThe lowest yearly maximum dew point is recorded in 1995. The lowest yearly maximum daily minimum temperature is recorded in 1966. The lowest yearly maximum temperature is recorded in 1976.\nThe average yearly maximum dew point is and the average yearly maximum daily minimum temperature is ."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 597,
+      "leadWords": 249,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract describes a town in northwest Alberta along the banks of a large river at its confluence with other rivers, noting the townsite sits nearly 1000 feet below the flat terrain around it, but describes no climate mechanism, extreme, record, seasonal rhythm, or paradox; a sunken townsite alone is not climate",
+      "priorMissing": "a place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox beyond the below-terrain townsite in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "peace river",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "peace",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "river",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6020,
+    "band": 4,
+    "place_id": "gn-2272379",
+    "input": {
+      "place": {
+        "place_id": "gn-2272379",
+        "name": "A dos Cunhados",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 39.15237,
+        "lon": -9.2972
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "A dos Cunhados",
+          "url": "https://en.wikipedia.org/wiki/A_dos_Cunhados",
+          "text": "A dos Cunhados (European Portuguese pronunciation: [ɐ ðuʃ kuˈɲaðuʃ]) is a civil parish in the municipality of Torres Vedras in the central Oeste subregion of Portugal. Covering an area of approximately 44.33 square kilometres (17.12 mi2), its population in 2016 was 8001 residents.\nThe name A dos Cunhados reflects the first inhabitants: three brothers-in-law (cunhados) who lived on a large estate that was later divided among them and their descendants. However, writings by the bishop of Targa indicate that there were two brothers-in-law rather than three. Depending on the account, the estate was called either Quinta dos Dos Cunhados (Farm of the two brothers-in-law) or Quinta dos Cunhados (Farm of the brothers-in-law). Local people sometimes refer to the original name as casal (hamlet) rather than quinta."
+        },
+        {
+          "article": "A dos Cunhados (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/A_dos_Cunhados#Demographics_and_geography",
+          "text": "A dos Cunhados belongs to the municipality of Torres Vedras, a part of the district of Lisbon and the NUTS-III sub-region of Oeste, part of NUTS-II region of Oeste e Vale do Tejo in Continental Portugal.\nTo the west, A dos Cunhados faces the Atlantic Ocean. It borders the civil parishes of Silveira, Ponte do Rol and the Union of civil parishes of São Pedro, Santa Maria and Matacães (to the south), the civil parish of Ramalhal and the Union of civil parishes of Campelos and Outeiro da Cabeça (to the east), and the municipality of Lourinhã (to the north).\nThis parish occupies an area of approximately\nThe terrain is gently rolling, with only slight slopes, except in certain areas. The soil is mostly alluvial. The river Alcabrichel is the main river in the parish, with all the other bodies of water being its tributaries. The coast of this civil parish is mainly composed of beaches, with some cliffsa and rocks.\nThe local climate is the microclimate of the Oeste, a climatic sub-type of the Portuguese maritime climate, as defined by Suzanne Daveau.\nThe inhabited localities are concentrated near the rivers. The civil parish includes the town of A dos Cunhados (seat of the civil parish), the villages of Boavista, Bombardeira, Casais do Rego, Casais da Serpigeira, Casais Vale da Borra, Casal da Barreirinha, Casal da Carrasquinha, Casal da Popa, Casal de Serpa, Casal da Varzinha, Casal das Paradas, Casal de Além, Casal de Santo António, Casal do Seixo, Casal dos Feros, Casal Figueira Velha, Casal Ventoso, Palhagueiras, Pinheiro Manso, Portela de Nossa Senhora da Luz, Póvoa d'Além, Póvoa de Penafirme, Praia da Vigia, Santa Cruz–Pisão, Sobreiro Curvo, Vale Janelas and Valongo, and some other minor settlements that are not recognized officially."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Demographics and geography",
+      "sectionWords": 292,
+      "leadWords": 126,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract gives only the parish's area and population and the story of the brothers-in-law behind its name, with no climate or weather information at all",
+      "priorMissing": "a place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "a dos cunhados",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "a",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "cunhados",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6100,
+    "band": 4,
+    "place_id": "gn-8740793",
+    "input": {
+      "place": {
+        "place_id": "gn-8740793",
+        "name": "Jirapur",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 24.0214,
+        "lon": 76.3764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Jirapur",
+          "url": "https://en.wikipedia.org/wiki/Jirapur",
+          "text": "Jirapur is a town and a nagar panchayat in Rajgarh district in the Indian state of Madhya Pradesh. In 2022 Janpad Panchayat election held across Madhya Pradesh, Congress won the election and secure position as a Janpad Adhyaksh under the leadership of Khilchipur vidhayak Shri Kunwer Hajarilal Dangi ji Ji (currently MLA of Khilchipur constituency (2023-2028)). He put all the efforts to win this election and doing great work for Khilchipur constituency. He won 2023 assembly election of Madhya Pradesh with huge margin of 14000+ votes by defeating Priyavart Singh of Congress (Inc) candidate.\nJirapur is a Tehsil and belongs to Bhopal Division. It is located 39 km towards west from district headquarters Rajgarh, 158 km from the state capital of Bhopal from the east."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 125,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Rajgarh district location in Madhya Pradesh, tehsil and Bhopal Division status, distances to Rajgarh and Bhopal, and recent election detail, with no climate mechanism, extreme, record, seasonal rhythm, or paradox",
+      "priorMissing": "a verbatim-traceable place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "jirapur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6110,
+    "band": 4,
+    "place_id": "gn-2636032",
+    "input": {
+      "place": {
+        "place_id": "gn-2636032",
+        "name": "Thetford",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.41667,
+        "lon": 0.75
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thetford",
+          "url": "https://en.wikipedia.org/wiki/Thetford",
+          "text": "Thetford is a market town and civil parish in the Breckland District of Norfolk, England. It is on the A11 road between Norwich and London, just east of Thetford Forest. The civil parish, covering an area of 29.55 km2 (11.41 sq mi), in 2011 had a population of 24,340.\nThere has been a settlement at Thetford since the Iron Age, and parts of the town predate the Norman Conquest; Thetford Castle was established shortly thereafter. Roger Bigod founded the Cluniac Priory of St Mary in 1104, which became the largest and most important religious institution in Thetford. The town was badly hit by the Dissolution of the Monasteries, including the castle's destruction, but was rebuilt in 1574 when Elizabeth I established a town charter. After World War II, Thetford became an \"overspill town\", taking people from London, as a result of which its population increased substantially.\nThetford railway station is located on the Breckland line and is one of the best surviving pieces of 19th-century railway architecture in East Anglia."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 170,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives a Norfolk market town on the road between Norwich and London just east of a forest, settlement since the Iron Age, a castle and a priory founded in 1104, a charter in 1574, and post-war overspill growth, with no climate mechanism, extreme, record, seasonal rhythm, or paradox",
+      "priorMissing": "a verbatim-traceable place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "thetford",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6253,
+    "band": 4,
+    "place_id": "gn-2641546",
+    "input": {
+      "place": {
+        "place_id": "gn-2641546",
+        "name": "Newton-le-Willows",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.45,
+        "lon": -2.6
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newton-le-Willows",
+          "url": "https://en.wikipedia.org/wiki/Newton-le-Willows",
+          "text": "Newton-le-Willows, often shortened informally to Newton, is a market town in the Metropolitan Borough of St Helens, Merseyside, England. The population at the 2021 census was 24,642. Newton-le-Willows is on the eastern edge of St Helens, south of Wigan and north of Warrington, equidistant to Liverpool and Manchester.\nWithin the boundaries of the historic county of Lancashire, the Newton township was historically largely pastoral lands, with the mining industry encroaching from the north and the west as time went on. The township (often referred to as Newton in Makerfield at that time) is documented since at least the 12th century. In the early 19th century the township saw significant urban development to support the construction of the Liverpool and Manchester Railway. The presence of the Sankey Canal running through the Sankey Valley necessitated the construction of the Sankey Viaduct by George Stephenson, and the town of Earlestown developed around the industrial works there. Earlestown gradually became the administrative and commercial centre of the township, with the historic market and fairs moving to a purpose built square."
+        },
+        {
+          "article": "Newton-le-Willows (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Newton-le-Willows#Geography",
+          "text": "Newton-le-Willows is located off the A580 East Lancashire Road between Liverpool and Manchester in north-west England. It is in the east of the Metropolitan Borough of St Helens in Merseyside, near to the border with Wigan in Greater Manchester. To the south is the Borough of Warrington in Cheshire. The wider built-up area of Newton-le-Willows includes Earlestown and areas of Wargrave and Vulcan Village.\nThe town is considered as part of the Greater Manchester Built-up Area for statistical purposes despite being situated within Merseyside."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 84,
+      "leadWords": 176,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes a town between Wigan, Warrington, Liverpool and Manchester with pastoral land, mining, canal and railway growth, with no climate mechanism, extreme, record, seasonal rhythm or paradox",
+      "priorMissing": "An extract passage stating a place-specific climate mechanism, extreme, record or seasonal rhythm"
+    },
+    "banned_terms": [
+      {
+        "term": "newton le willows",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "newton",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "willows",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6269,
+    "band": 4,
+    "place_id": "gn-3110881",
+    "input": {
+      "place": {
+        "place_id": "gn-3110881",
+        "name": "Sant Andreu de Llavaneres",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.56667,
+        "lon": 2.48333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sant Andreu de Llavaneres",
+          "url": "https://en.wikipedia.org/wiki/Sant_Andreu_de_Llavaneres",
+          "text": "Sant Andreu de Llavaneres (Catalan pronunciation: [ˌsant ənˈdɾew ðə ʎəβəˈneɾəs]) is a municipality located 36 km north of Barcelona (Catalonia) (Spain), along the Mediterranean coast, between Mataró and Sant Vicenç de Montalt. It belongs to the Maresme comarca and the Barcelona province. The short name is simply Llavaneres.\nLlavaneres faces the sea to the east and a natural park to the west. The village has a mixed agricultural and residential character and has become a popular vacation and summer-residence location for people living in Barcelona over the last forty years.\nGood connections with Barcelona, the Maresme coast and the Mediterranean axis of France and Spain include a train line to Barcelona, as well as the C-32 highway and the N-2 road.\nSant Andreu de Llavaneres is today well known for its upscale sailing in summer."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 135,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes a municipality north of Barcelona on the Mediterranean coast, with the sea to the east, a natural park to the west, summer residences and upscale summer sailing; summer visits are use, not a stated climate mechanism, extreme, record, seasonal rhythm or paradox",
+      "priorMissing": "An extract passage stating a place-specific climate mechanism, extreme, record or seasonal weather rhythm"
+    },
+    "banned_terms": [
+      {
+        "term": "sant andreu de llavaneres",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sant",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "andreu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "llavaneres",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6283,
+    "band": 4,
+    "place_id": "gn-6179602",
+    "input": {
+      "place": {
+        "place_id": "gn-6179602",
+        "name": "Wetaskiwin",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 52.96683,
+        "lon": -113.36869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wetaskiwin",
+          "url": "https://en.wikipedia.org/wiki/Wetaskiwin",
+          "text": "Wetaskiwin ( wə-TAS-k(ə-)win) is a city in the province of Alberta, Canada. The city is 70 kilometres (43 mi) south of the provincial capital of Edmonton. The city name comes from the Cree word wītaskiwinihk, meaning \"the hills where peace was made\".\nWetaskiwin is home to the Reynolds-Alberta Museum, a museum dedicated to celebrating \"the spirit of the machine\" as well as the Wetaskiwin and District Heritage Museum, which documents the pioneer arrival and lifestyle in Wetaskiwin's early years. Southeast of Wetaskiwin, the Alberta Central Railway Museum acknowledges the impact that the railway had on Central Alberta.\nThe city is well known in Western Canada for the slogan and jingle \"Cars cost less in Wetaskiwin\", from the Wetaskiwin Auto Dealers Association. Both have been in print, radio, and television advertisements since the mid-1970s."
+        },
+        {
+          "article": "Wetaskiwin (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Wetaskiwin#Climate",
+          "text": "Wetaskiwin has a humid continental climate (Köppen climate classification Dfb) with warm summers that retain cool nights, and\ncold winters. It falls into zone 3b under Plant hardiness zones."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 29,
+      "leadWords": 133,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes a city south of Edmonton whose Cree name means the hills where peace was made, with machine and heritage museums and a long-running car dealer slogan, with no climate mechanism, extreme, record, seasonal rhythm or paradox",
+      "priorMissing": "An extract passage stating a place-specific climate mechanism, extreme, record or seasonal rhythm"
+    },
+    "banned_terms": [
+      {
+        "term": "wetaskiwin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6329,
+    "band": 4,
+    "place_id": "gn-5101938",
+    "input": {
+      "place": {
+        "place_id": "gn-5101938",
+        "name": "North Plainfield",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.6301,
+        "lon": -74.42737
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "North Plainfield, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/North_Plainfield,_New_Jersey",
+          "text": "North Plainfield is a borough in Somerset County, in the U.S. state of New Jersey. It is located within the Raritan Valley region. As of the 2020 United States census, the borough's population was 22,808, an increase of 872 (+4.0%) from the 2010 census count of 21,936, which in turn reflected an increase of 833 (+3.9%) from the 21,103 counted in the 2000 census.\nNorth Plainfield Township was created from portions of Warren Township by an act of the New Jersey Legislature passed on April 2, 1872. The borough of North Plainfield became an independent municipality on June 9, 1885. The name derives from Plainfield, which in turn derived its name from a local estate and for its scenic location.\nIn 1902, the New Jersey Legislature approved measures that would have allowed the borough to become part of Union County (a measure repealed in 1903) and to allow for a merger of North Plainfield with the City of Plainfield subject to the approval of a referendum by voters in both municipalities.\nNorth Plainfield is home to the Washington Park Historic District, which was listed on the National Register of Historic Places in 1987."
+        },
+        {
+          "article": "North Plainfield, New Jersey (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/North_Plainfield,_New_Jersey#Geography",
+          "text": "According to the United States Census Bureau, North Plainfield borough had a total area of 2.82 square miles (7.31 km 2 ), including 2.81 square miles (7.27 km 2 ) of land and 0.01 square miles (0.03 km 2 ) of water (0.46%).\nNorth Plainfield is in the northern division of the Raritan Valley along with Green Brook Township. The borough lies within the Raritan River watershed and has an elevation of approximately above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 76,
+      "leadWords": 193,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Raritan Valley location, township/borough creation dates and census counts, with no climate mechanism, extreme, record, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "north plainfield",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "north",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "plainfield",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6334,
+    "band": 4,
+    "place_id": "gn-5375938",
+    "input": {
+      "place": {
+        "place_id": "gn-5375938",
+        "name": "Muscoy",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.15418,
+        "lon": -117.34421
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Muscoy, California",
+          "url": "https://en.wikipedia.org/wiki/Muscoy,_California",
+          "text": "Muscoy is a census-designated place (CDP) in the Inland Empire region of San Bernardino County, California, United States. The population was 10,719 at the 2020 census, up from 10,644 at the 2010 census. Muscoy shares ZIP code 92407 with the communities of Verdemont, Devore Heights, Rosena Ranch and Arrowhead Farms in northwestern San Bernardino. Residents enjoy a semi-rural setting with large lots where they can raise horses and other livestock, nursery plants, and fruit trees.  For this reason, much of Muscoy is included in the county Additional Agriculture (AA) overlay, which specifies the types and quantities of animals that may be kept on each parcel. A distinctive feature of Muscoy life today is motor vehicles and equestrians sharing the roadways."
+        },
+        {
+          "article": "Muscoy, California (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Muscoy,_California#Geography",
+          "text": "Muscoy is located at (34.156009, -117.346552). Elevation ranges from 1240' in the south to 1600' in the north.\nAccording to the United States Census Bureau, the CDP has a total area of , all land.\nMuscoy is bordered on the west by Lytle Creek wash, most of the time a dry river bed, other times the scene of raging flash floods."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 61,
+      "leadWords": 120,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract gives Inland Empire location, semi-rural large lots, horses/livestock and agriculture overlay, with no climate mechanism, extreme, record, seasonal rhythm or paradox",
+      "priorMissing": "place-specific climate mechanism or extreme in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "muscoy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6382,
+    "band": 4,
+    "place_id": "gn-4533580",
+    "input": {
+      "place": {
+        "place_id": "gn-4533580",
+        "name": "Claremore",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 36.3126,
+        "lon": -95.61609
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Claremore, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/Claremore,_Oklahoma",
+          "text": "Claremore   is a city in and the county seat of Rogers County in northeastern Oklahoma, United States. Its population was 19,580 at the 2020 census, a 5.4% increase over the 18,581 recorded in 2010.  Located in the foothills of the Ozark Mountains, it is home of Rogers State University, and is part of the Tulsa metropolitan area.\nThis area was part of the territory of the Osage, but they were forced out under a treaty with the United States. During the Indian Removal period and until statehood, this area was a reserve of the Cherokee Nation, which had been removed from its territory in the Southeastern United States. This was within what was known as the Cherokees' Cooweescoowee District."
+        },
+        {
+          "article": "Claremore, Oklahoma (Climate section)",
+          "url": "https://en.wikipedia.org/wiki/Claremore,_Oklahoma#Climate",
+          "text": "Claremore experiences a humid subtropical climate with cold winters and hot summers."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "climate",
+      "sectionHeading": "Climate",
+      "sectionWords": 12,
+      "leadWords": 119,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract places the city in the Ozark foothills and covers Osage and Cherokee history and Rogers State University; it states no climate mechanism, extreme, record, seasonal rhythm or paradox",
+      "priorMissing": "An extract passage stating a place-specific climate mechanism, extreme, record or seasonal rhythm"
+    },
+    "banned_terms": [
+      {
+        "term": "claremore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6439,
+    "band": 4,
+    "place_id": "gn-749456",
+    "input": {
+      "place": {
+        "place_id": "gn-749456",
+        "name": "Çaykara",
+        "country": "Türkiye",
+        "subdivision": "Trabzon",
+        "lat": 40.74267,
+        "lon": 40.23175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Çaykara",
+          "url": "https://en.wikipedia.org/wiki/Çaykara",
+          "text": "Çaykara (Romeika: Κατωχώρι, Kadahor) is a municipality and district of Trabzon Province, Turkey. Its area is 574 km2, and its population is 13,070 (2022). As of 2023, the Mayor of Çaykara is Hanefi Tok (AKP). Çaykara village lies in a V-shaped valley along the Solaklı River in the Pontic Mountains, at an elevation of around 300 metres. Çaykara district lies to the south of Dernekpazarı (Kondu) and forms the upper part of the Of-valley system ('Solaklı Vadisi' in Turkish), with peaks reaching to over 3300 meters. The western half of İkizdere district - which lies just east of Çaykara and is now part of Rize province - was historically also part of the same administrative and cultural region. Large swathes of the district are made up of  old-growth temperate broadleaf and mixed forest, gradually making way for alpine tundra at higher altitudes."
+        },
+        {
+          "article": "Çaykara (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Çaykara#Geography",
+          "text": "Uzungöl and Lake Aygır are some of the lakes in Çaykara district.\nYaylas\nIn the upper parts of Çaykara district there are six distinct yaylas (summer pastures), each with multiple hamlets. The most famous one of these is Sultan Murat Yaylası, which is shared by the hamlets Sıcakoba, Hanırmak, Şahinkaya, Eğrisu, Vartan and Cerah."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 54,
+      "leadWords": 142,
+      "priorRejectionTier": "climate",
+      "priorReason": "Extract describes a Turkish district in a V-shaped valley, with old-growth temperate broadleaf forest giving way to alpine tundra higher up; vegetation zones by height are a label only, with no stated climate mechanism, extreme, record, seasonal rhythm, or paradox.",
+      "priorMissing": "A place-specific climate mechanism, extreme, record, seasonal rhythm, or paradox beyond forest and tundra zones."
+    },
+    "banned_terms": [
+      {
+        "term": "caykara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6565,
+    "band": 4,
+    "place_id": "gn-2646542",
+    "input": {
+      "place": {
+        "place_id": "gn-2646542",
+        "name": "Horwich",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.60126,
+        "lon": -2.54975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Horwich",
+          "url": "https://en.wikipedia.org/wiki/Horwich",
+          "text": "Horwich ( HORR-itch) is a town and civil parish in the Metropolitan Borough of Bolton, Greater Manchester, England, within the historic county boundaries of Lancashire. It is 5.8 miles (9.3 km) northwest of Bolton Town Centre, 5.3 miles (8.5 km) southeast of Chorley and 15 miles (24 km) northwest of Manchester. It lies at the southern edge of the West Pennine Moors with the M61 motorway passing close to the south and west. At the 2011 Census, Horwich had a population of 20,067.\nHorwich emerged in the Middle Ages as a hunting chase. Streams flowing from the moors were harnessed to provide power for bleachworks and other industry at the start of the Industrial Revolution. The textile industry became a major employer and after 1884 the construction of the railway works caused the population of the town to increase dramatically. The old industries have closed and urban regeneration has been led by out of town developments, particularly at Middlebrook, which, since 1997 has been the base of Bolton Wanderers football club, who play at the University of Bolton Stadium, having moved from Burnden Park near Bolton town centre."
+        },
+        {
+          "article": "Horwich (Geography section)",
+          "url": "https://en.wikipedia.org/wiki/Horwich#Geography",
+          "text": "Suburban localities in Horwich include Wallsuches and Middlebrook.\nHorwich extends to and measures from north to south and west to east. The River Douglas flowing in a south westerly direction forms part of its northern boundary. The site is managed by the Wildlife Trust for Lancashire, Manchester and North Merseyside."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "ok",
+      "sectionSource": "geography",
+      "sectionHeading": "Geography",
+      "sectionWords": 50,
+      "leadWords": 188,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract's only water-and-weather-adjacent fact is streams from the moors harnessed to power bleachworks; water mentioned only as a power source is not climate, and no mechanism, extreme, record, seasonal rhythm, or paradox is stated",
+      "priorMissing": "a place-specific climate mechanism, extreme, record, or seasonal weather rhythm in the extract"
+    },
+    "banned_terms": [
+      {
+        "term": "horwich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6599,
+    "band": 4,
+    "place_id": "gn-6244870",
+    "input": {
+      "place": {
+        "place_id": "gn-6244870",
+        "name": "Stokes Valley",
+        "country": "New Zealand",
+        "subdivision": "Wellington Region",
+        "lat": -41.17827,
+        "lon": 174.9802
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stokes Valley",
+          "url": "https://en.wikipedia.org/wiki/Stokes_Valley",
+          "text": "Stokes Valley, a major suburb of the city of Lower Hutt in the North Island of New Zealand, lies at the edge of the city, seven kilometres northeast of the city centre. It occupies the valley of a small tributary of the Hutt River, called Stokes Valley Stream, which flows north to meet the main river close to the Taitā Gorge. Stokes Valley takes its name from Robert Stokes, who formed part of the original survey team of 1840 commissioned to plan the city at Thorndon in Wellington.\nStokes Valley comprises a suburb in its own valley, physically separated from the rest of Lower Hutt. It is surrounded on all sides by densely forested hills."
+        }
+      ]
+    },
+    "evidence": {
+      "sectionStatus": "no-section",
+      "sectionSource": null,
+      "sectionHeading": null,
+      "sectionWords": 0,
+      "leadWords": 115,
+      "priorRejectionTier": "climate",
+      "priorReason": "extract covers a major suburb of Lower Hutt in the North Island, set in the hollow of a small tributary stream and ringed on all sides by densely forested hills, named for a surveyor from the team of 1840, but states no climate mechanism, extreme, weather record, seasonal rhythm, or paradox",
+      "priorMissing": "A place-specific climate mechanism, extreme, weather record, seasonal rhythm, or paradox described in a source extract"
+    },
+    "banned_terms": [
+      {
+        "term": "stokes valley",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "stokes",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "valley",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

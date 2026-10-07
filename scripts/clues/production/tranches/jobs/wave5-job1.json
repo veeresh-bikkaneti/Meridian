@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 4236,
+    "place_id": "gn-5130334",
+    "input": {
+      "place": {
+        "place_id": "gn-5130334",
+        "name": "Ozone Park",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.67677,
+        "lon": -73.84375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ozone Park",
+          "url": "https://en.wikipedia.org/wiki/Ozone_Park",
+          "text": "Ozone Park is a neighborhood in the southwestern section of the New York City borough of Queens, New York, United States. It is next to the Aqueduct Racetrack in South Ozone Park, a popular spot for Thoroughbred racing and home to the Resorts World Casino & Hotel. Home to a large Italian-American population, Ozone Park has also grown in recent decades to have many residents of Caribbean, Hispanic, and Asian backgrounds.\nWhile New York City neighborhoods do not have formal boundaries, Ozone Park is considered to have a northern border at Atlantic Avenue; the southern border is North Conduit Avenue, the western border is the Brooklyn/Queens border line; and the eastern border is up to 108th Street and Aqueduct Racetrack.\nOzone Park is in two community districts, divided by Liberty and 103rd Avenues. The southern half of the neighborhood is in Queens Community District 10, which is covered by New York City Police Department's 106th Precinct, while the northern half is in Queens Community District 9 and covered by the NYPD's 102nd Precinct."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "ozone park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ozone",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4240,
+    "place_id": "gn-4046704",
+    "input": {
+      "place": {
+        "place_id": "gn-4046704",
+        "name": "Fort Hunt",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.73289,
+        "lon": -77.05803
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fort Hunt, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Fort_Hunt,_Virginia",
+          "text": "Fort Hunt is a census-designated place (CDP) in Fairfax County, Virginia, United States. The area is named after Fort Hunt, which was built on the bank of the Potomac River in 1897 to defend Washington, D.C. from naval attack and is now a public park. The area is also notable for its high population of senior citizens and for being one of the first suburbs in wealthy Fairfax County. The population was 17,231 at the 2020 census.\nFort Hunt encompasses the 22308 ZIP code of Alexandria, composed of much of the most affluent section of southeast Fairfax County, close to the George Washington Memorial Parkway and Potomac River, including the neighborhoods of Riverside Gardens, Tauxemont, Herbert Springs, Waynewood, Plymouth Haven, Potomac Valley – River Bend, Collingwood, Stratford Landing, Stratford on the Potomac, Hollin Hall, Wellington, Arcturus and (in ZIP code 22307) Villamay and Marlan Forest. As of the 2010 census, Fort Hunt also includes the neighborhood of Hollindale in ZIP code 22306 and much of Hollin Hills in 22307."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "fort hunt",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "fort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hunt",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4241,
+    "place_id": "gn-3359957",
+    "input": {
+      "place": {
+        "place_id": "gn-3359957",
+        "name": "Villiersdorp",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.99121,
+        "lon": 19.29219
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villiersdorp",
+          "url": "https://en.wikipedia.org/wiki/Villiersdorp",
+          "text": "Villiersdorp is a small town located in the Western Cape province of South Africa in the Overberg region, located near the Theewaterskloof Dam.\nUnlike most of the geographical region which specialises in wheat and canola farming, the Villiersdorp Valley is now agriculturally and in micro-climate more similar to the Elgin Valley and Grabouw since the building of the Theewaterskloof Dam, and thus also specialises in deciduous fruit farming and viticulture. The Theewaterskloof Dam, the largest dam in the Western Cape and seventh largest in South Africa and important water supply to Cape Town fills the majority of the valley floor. The Villiersdorp Co-Op is also the only place in South Africa that processes and dries persimmons. The three big packsheds in Villiersdorp, Betko, Arbeidsvreugd and Ideafruit, as well as the Villiersdorp Co-Op process the fruit grown in the area for export and transport to other parts of South Africa. The town is named after Field Cornet Pieter de Villiers, a local farmer who founded the settlement in 1843."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "villiersdorp",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4242,
+    "place_id": "gn-5182529",
+    "input": {
+      "place": {
+        "place_id": "gn-5182529",
+        "name": "Bustleton",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.08261,
+        "lon": -75.03156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bustleton, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Bustleton,_Philadelphia",
+          "text": "The Bustleton section of Northeast Philadelphia, United States is located in the Far Northeast, north of Rhawnhurst and Fox Chase and south of Somerton; sitting between Roosevelt Boulevard to the east, the city boundary to the west, Red Lion Road to the north, and Pennypack Park to the south, it is centered at the intersection of Grant Avenue and Bustleton Avenue (PA-532) and is completely included in the 19115 postal ZIP code.\nIn the early history of the city,  the neighborhood was centered on the Bustleton Tavern, a local bar established before the American Revolution. Pennypack Park is part of the Fairmount Park system and was the site of much industry, including mills. The area was a trading center and had hotels drawing farmers bringing goods for sale via horse and buggy. Much of the commerce was also conducted via small streams and rivers of the present-day Pennypack Watershed. The old Paul's Run waterway once provided navigation from the Bustleton Tavern all the way to the Delaware River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "bustleton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4248,
+    "place_id": "gn-6073743",
+    "input": {
+      "place": {
+        "place_id": "gn-6073743",
+        "name": "Mill Bay",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 48.65,
+        "lon": -123.55
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mill Bay, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Mill_Bay,_British_Columbia",
+          "text": "Mill Bay is a commuter town of about 7,200 people located on Vancouver Island, British Columbia, Canada, about 30 km (19 mi) north of Victoria, the capital. It is part of the Cowichan Valley Regional District.\nMill Bay was founded in the 1860s with lumber and milling as its primary industries, done at the mill on the bay. It was named for the sawmill built in the area in 1861 by Henry S. Shepherd soon purchased by William Sayward.    It is known for its ferry to Brentwood Bay on the Saanich Peninsula and the historic Malahat Drive, which is also a source of criticism due to frequent closures from either automobile accidents or weather conditions.  Numerous suggestions have been made by various groups regarding a 'bypass' route (possibly a bridge), though as of 2007, the Brentwood-Mill Bay Ferry and the Malahat remain the best routes to Greater Victoria from the rest of Vancouver Island (a third route goes south from Lake Cowichan via Port Renfrew to Victoria)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "mill bay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mill",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4250,
+    "place_id": "gn-4908033",
+    "input": {
+      "place": {
+        "place_id": "gn-4908033",
+        "name": "Rogers Park",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.00864,
+        "lon": -87.66672
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rogers Park, Chicago",
+          "url": "https://en.wikipedia.org/wiki/Rogers_Park,_Chicago",
+          "text": "Rogers Park is one of the 77 community areas of Chicago in Illinois, United States, located on the North Side of Chicago. Located 9 miles (14 km) north of the Loop along the shore of Lake Michigan, it features green spaces, early 20th-century architecture, live theater, bars, restaurants, and beaches. Rogers Park is known for its racial and cultural diversity: according to the Chicago Sun-Times, it is the community that most closely matches the city's ethnic makeup as a whole.\nThe community is bounded by the city of Evanston along Juneway Terrace and Howard Street to the north, Ridge Boulevard to the west, Devon Avenue and the Edgewater neighborhood to the south, and Lake Michigan to the east. West Ridge, just to the west, was part of Rogers Park until the 1890s and is still sometimes referred to as \"West Rogers Park.\" In the early 1900s, what is today the main campus of Loyola University Chicago was established at the neighborhood's southeastern end, along the lake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "rogers park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rogers",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4257,
+    "place_id": "gn-1023365",
+    "input": {
+      "place": {
+        "place_id": "gn-1023365",
+        "name": "Alexandria",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -33.65346,
+        "lon": 26.41268
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Alexandria, Eastern Cape",
+          "url": "https://en.wikipedia.org/wiki/Alexandria,_Eastern_Cape",
+          "text": "Alexandria is a small farming town in the Eastern Cape of South Africa and is situated 100 km north-east of Gqeberha on the R72 road to Bushman's River Mouth, Kenton-on-Sea and Port Alfred. Alexandria is part of the Ndlambe Local Municipality in the Sarah Baartman District Municipality of the Eastern Cape.\nIt might have been established by the Dutch colonial government in the late 18th century, but was named Alexandria in 1856 after Reverend Alexander Smith. It has a warm temperate climate and is unusual in southern Africa in having no distinct dry or wet season, with rain received throughout the year.\nAlexandria is one of the most important chicory producing areas in South Africa and is also known for pineapple production and dairy farming. The Alexandria area also includes the Alexandria State Forest, known as Langebos to the locals, which is a narrow stretch of pristine indigenous forest bordering the Alexandria dune field, one of the largest active dune fields in the world."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "alexandria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4260,
+    "place_id": "gn-4557264",
+    "input": {
+      "place": {
+        "place_id": "gn-4557264",
+        "name": "Cobbs Creek",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.94761,
+        "lon": -75.24018
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cobbs Creek, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Cobbs_Creek,_Philadelphia",
+          "text": "Cobbs Creek is a neighborhood located in the West Philadelphia section of Philadelphia, Pennsylvania, United States, named for the creek which forms part of Philadelphia's western border. Cobbs Creek is generally bounded by Market Street to the north, the Media/Wawa Regional Rail Line to the south, South 50th Street to the east and Cobbs Creek Park to the west\nIn 1998, the Cobbs Creek Automobile Suburb Historic District was created, with Cobbs Creek Parkway, Spruce Street, 52nd Street, and Angora Street its boundaries. The District protects 1049 buildings, with Tudor Revival, Colonial Revival, and Bungalow/Craftsman architectural styles contained within the district.\nFires from the 1985 bombing of the MOVE headquarters at 6221 Osage Avenue spread to 64 other buildings in the neighborhood. The destroyed homes were hastily rebuilt by the city, but were later condemned after years of attempted repairs to the shoddy construction.\nAlso listed on the National Register of Historic Places are the Holmes Junior High School and Walnut Park Plaza Hotel."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "cobbs creek",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cobbs",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "creek",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4261,
+    "place_id": "gn-8436486",
+    "input": {
+      "place": {
+        "place_id": "gn-8436486",
+        "name": "Sunset Park",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.64548,
+        "lon": -74.01241
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunset Park, Brooklyn",
+          "url": "https://en.wikipedia.org/wiki/Sunset_Park,_Brooklyn",
+          "text": "Sunset Park is a neighborhood in the western part of the New York City borough of Brooklyn, bounded by Park Slope and Green-Wood Cemetery to the north, Borough Park to the east, Bay Ridge to the south, and New York Harbor to the west. The neighborhood is named for a public park of the same name that covers 24.5 acres (9.9 ha) between Fifth and Seventh Avenues from 41st to 44th Street. The area north of 36th Street is alternatively known as Greenwood Heights, while the section north of 20th Street is also called South Slope.\nThe area was initially occupied by the Canarsee band of Munsee-speaking Lenape until the first European settlement occurred in 1636. Through the late 19th century, Sunset Park was sparsely developed and was considered part of Bay Ridge or South Brooklyn. The arrival of elevated railways and the subway led to Sunset Park's development, with middle-class row houses and industrial buildings being erected in the 1890s through the 1920s."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "sunset park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sunset",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4265,
+    "place_id": "gn-3029213",
+    "input": {
+      "place": {
+        "place_id": "gn-3029213",
+        "name": "Cahors",
+        "country": "France",
+        "subdivision": "Occitanie",
+        "lat": 44.4491,
+        "lon": 1.43663
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cahors",
+          "url": "https://en.wikipedia.org/wiki/Cahors",
+          "text": "Cahors (French pronunciation: [kaɔʁ] ; Languedocien: Caors [kaˈuɾs, ˈkɔw(s)]) is a commune in the western part of Southern France. It is the smallest prefecture among the 13 departments that constitute the Occitanie Region. The capital and main city of the Lot department and the historical center of the Quercy, Cahors is home to 20,050 cadurciennes and cadurciens (2023).\nNestled in a meander of the Lot and surrounded by steep arid limestone hills, this historic city is home to great monumental diversity, mainly inherited from Roman times and the Middle Ages; the city's monuments include a historic city centre, Saint-Étienne cathedral, Roman walls and the famous Valentré bridge (a UNESCO World Heritage Site as part of the pilgrimage path to Santiago de Compostela). Famed for its wine and gastronomy (truffles and foie gras), this southern French city holds the label of the French Towns of Art and History. The Cadurcian economy is reliant on tertiary services and makes Cahors the Lot's economic centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "cahors",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4279,
+    "place_id": "gn-3515484",
+    "input": {
+      "place": {
+        "place_id": "gn-3515484",
+        "name": "Tlacolula de Matamoros",
+        "country": "Mexico",
+        "subdivision": "Oaxaca",
+        "lat": 16.95525,
+        "lon": -96.47764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tlacolula de Matamoros",
+          "url": "https://en.wikipedia.org/wiki/Tlacolula_de_Matamoros",
+          "text": "Tlacolula de Matamoros is a city and municipality in the Mexican state of Oaxaca, about 30 km from the center of the city of Oaxaca on Federal Highway 190, which leads east to Mitla and the Isthmus of Tehuantepec. \nIt is part of the Tlacolula District in the east of the Valles Centrales Region.\nThe city is the main commercial center for the Tlacolula Valley area, and best known for its weekly open air market held on Sundays. This market is one of the oldest, largest and busiest in Oaxaca, mostly selling food and other necessities for the many rural people which come into town on this day to shop. The city is also home to a 16th-century Dominican church, whose chapel, the Capilla del Señor de Tlacolula, is known for its ornate Baroque decoration and a crucifix to which have been ascribed many miracles.  Outside the city proper, the municipality is home to the Yagul archeological site."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "tlacolula de matamoros",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tlacolula",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "matamoros",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 4285,
+    "place_id": "gn-3174641",
+    "input": {
+      "place": {
+        "place_id": "gn-3174641",
+        "name": "Locorotondo",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 40.75661,
+        "lon": 17.32392
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Locorotondo",
+          "url": "https://en.wikipedia.org/wiki/Locorotondo",
+          "text": "Locorotondo (Barese: U Curdunne) is a town and municipality of the Metropolitan City of Bari, Apulia, southern Italy, with a population of about 14,000. It is situated between Martina Franca and Alberobello in the Valle d'Itria, a green stretch of countryside dotted with the famous whitewashed cone-roofed trulli houses. Locorotondo is one of I Borghi più belli d'Italia (\"The most beautiful villages of Italy\") and it has been awarded the Orange Flag of the Touring Club of Italy due to the harmony of its shapes and the accessibility of the old town, as it can be easily visited on foot. It is an intricate network of little streets lined with old buildings and it is known for its typical houses called \"Le Cummerse\", which have a regular geometric shape and a sloping roof made of two different layers of limestone slabs. These dwellings have nowadays been renovated and offered to visitors in the form of scattered hotels."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "locorotondo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4290,
+    "place_id": "gn-2166370",
+    "input": {
+      "place": {
+        "place_id": "gn-2166370",
+        "name": "Footscray",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.8,
+        "lon": 144.9
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Footscray, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Footscray,_Victoria",
+          "text": "Footscray (  FUUT-skray) is an inner-city suburb in Melbourne, Victoria, Australia, 5 km (3.1 mi) west of Melbourne's Central Business District, located within the City of Maribyrnong local government area and its council seat. Footscray recorded a population of 17,131 at the 2021 census.\nFootscray is characterised by a very diverse, multicultural central shopping area, which reflects the successive waves of immigration experienced by Melbourne, and by Footscray in particular. Once a centre for Greek, Italian and former Yugoslavian migrants, it later became a hub for Vietnamese and East African immigrants in Melbourne. It has recently begun to undergo rapid development and gentrification, and Time Out magazine placed Footscray at 13th in its \"50 Coolest Neighbourhoods in the World\" for 2019, reflecting its evolving reputation, citing in particular its diverse array of international cuisine, bars and nightlife, as well as its arts scene.\nFootscray is named after Foots Cray, on the River Cray in London, England."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "footscray",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4293,
+    "place_id": "gn-4703078",
+    "input": {
+      "place": {
+        "place_id": "gn-4703078",
+        "name": "Kerrville",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 30.04743,
+        "lon": -99.14032
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kerrville, Texas",
+          "url": "https://en.wikipedia.org/wiki/Kerrville,_Texas",
+          "text": "Kerrville is a city in and the county seat of Kerr County, Texas, United States.  The population of Kerrville was 24,278 at the 2020 census. The city is named after James Kerr, a major in the Texas Revolution, and friend of settler-founder Joshua Brown, who settled in the area to start a shingle-making camp.\nBeing nestled in the hills of the Texas Hill Country, Kerrville is best known for its parks that line the Guadalupe River, which runs directly through the city; its other features include nearby youth summer camps, hunting ranches, and RV parks. It is home to the Texas' Official State Arts and Crafts Fair, the Kerrville Folk Festival, the Kerrville Triathlon (since 2011), and the Kerrville Renaissance Festival (since 2017), as well as Mooney Aviation Company, James Avery Jewelry, and Schreiner University. The Museum of Western Art (founded 1983) features the work of living artists specializing in the themes of the American West."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "kerrville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4298,
+    "place_id": "gn-3859965",
+    "input": {
+      "place": {
+        "place_id": "gn-3859965",
+        "name": "Cosquín",
+        "country": "Argentina",
+        "subdivision": "Cordoba",
+        "lat": -31.24525,
+        "lon": -64.46574
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cosquín, Argentina",
+          "url": "https://en.wikipedia.org/wiki/Cosqu%C3%ADn,_Argentina",
+          "text": "Cosquín is a small town in the province of Córdoba, Argentina, located about 52 km (32 mi) west of the city of Córdoba, and 783 km (487 mi) from Buenos Aires. It had about 57,000 inhabitants at the 2010 census [INDEC]. It is the head town of the Punilla Department, and is located on the banks of the Cosquín River, and on the foot of a small mountain (Cerro Pan de Azúcar).\nCosquín is the oldest town in the scenic Punilla Valley; the region was already populated by the 16th century. Cosquín was officially founded with the title of villa (town) on 4 August 1876, and declared a city on 26 August 1939.\nIn the past, the region of Cosquín was appreciated for its benign climate, recommended by physicians for pulmonary ailments, and a whole industry of hospitals and therapeutic establishments appeared in order to provide services to patients from Argentina and even other countries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "cosquin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4300,
+    "place_id": "gn-5959335",
+    "input": {
+      "place": {
+        "place_id": "gn-5959335",
+        "name": "Gander",
+        "country": "Canada",
+        "subdivision": "Newfoundland and Labrador",
+        "lat": 48.95624,
+        "lon": -54.61647
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gander, Newfoundland and Labrador",
+          "url": "https://en.wikipedia.org/wiki/Gander,_Newfoundland_and_Labrador",
+          "text": "Gander is a town located in the northeastern part of the island of Newfoundland in the Canadian province of Newfoundland and Labrador, approximately  40 km (25 mi) south of Gander Bay,  100 km (62 mi) south of Twillingate and  90 km (56 mi) east of Grand Falls-Windsor. Located on the northeastern shore of Gander Lake, it is the site of Gander International Airport, once an important refuelling stop for transatlantic aircraft. The airport is still a preferred emergency landing point for aircraft facing on-board medical or security issues.\nWhen the U.S. closed its airspace after the September 11 attacks, Gander International Airport took in 38 commercial aircraft and four military aircraft, and accommodated nearly 6,700 passengers from airlines such as Olympic Airways, Air France, Lufthansa, British Airways, and Alitalia.\nMost of the streets in Gander are named after famous aviators, including Alcock and Brown, Amelia Earhart, Charles Lindbergh, Eddie Rickenbacker, Marc Garneau, and Chuck Yeager."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "gander",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4302,
+    "place_id": "gn-2052372",
+    "input": {
+      "place": {
+        "place_id": "gn-2052372",
+        "name": "Badaling",
+        "country": "China",
+        "subdivision": "Beijing",
+        "lat": 40.36397,
+        "lon": 115.98511
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Badaling",
+          "url": "https://en.wikipedia.org/wiki/Badaling",
+          "text": "Badaling (Chinese: 八达岭; pinyin: Bādálǐng) is the site of the most visited section of the Great Wall of China, approximately 80 kilometers (50 mi) northwest of Beijing's city center, in Badaling Town, Yanqing District, Beijing municipality. The portion of the wall running through the site was built in 1504 during the Ming Dynasty, along with a military outpost reflecting the location's strategic importance. The highest point of Badaling is Beibalou (北八樓), approximately 1,015 meters (3,330 ft) above sea level.\nBadaling Great Wall was built in the Ming Dynasty (1505) to occupy a commanding and strategic position for protecting the Juyong Pass to its south, further protecting the city of Beijing.\nThe portion of the wall at Badaling has undergone restoration, and in 1957, it was the first section of the wall to open to tourism. Now visited annually by millions, the immediate area has seen significant development, including hotels, restaurants, and a cable car."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "badaling",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4304,
+    "place_id": "gn-276359",
+    "input": {
+      "place": {
+        "place_id": "gn-276359",
+        "name": "Bsharri",
+        "country": "Lebanon",
+        "subdivision": "North Lebanon",
+        "lat": 34.25083,
+        "lon": 36.01056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bsharri",
+          "url": "https://en.wikipedia.org/wiki/Bsharri",
+          "text": "Bsharri (Arabic: بشرّي Bšarrī; also romanized Becharre, Bcharre, Bsharre, Bcharre Al Arz) is a Lebanese town located in the district of the same name, North Governorate, situated at altitudes between 1,100 m (3,600 ft) and 3,088 m (10,131 ft). Bsharri is the location of the Cedars of God, a UNESCO World Heritage Site and the only remaining place where the Cedrus libani (Lebanese cedar) tree grows natively. The region is the birthplace of famed poet, painter and sculptor Khalil Gibran; a museum in town honours his life and work.\nAs Bsharri is mountainous and experiences freezing winters, it is home to Lebanon's oldest ski resort, the Cedars Ski Resort, as well as the country's original ski lift, which was built in 1953. The resort is about 130 km (81 mi) from Beirut, approximately two hours' driving time. Qurnat as Sawdā Mountain is the highest peak in the Levant, at 3,088 meters above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "bsharri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4318,
+    "place_id": "gn-2510426",
+    "input": {
+      "place": {
+        "place_id": "gn-2510426",
+        "name": "Tobarra",
+        "country": "Spain",
+        "subdivision": "Castille-La Mancha",
+        "lat": 38.59213,
+        "lon": -1.69191
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tobarra",
+          "url": "https://en.wikipedia.org/wiki/Tobarra",
+          "text": "Tobarra is a municipality in the province of Albacete in Spain, with a population of c. 8,000 as of 2009.\nThe area is famous for its \"Moniquí\" variety of apricots, its drum processions (tamboradas) and its Holy Week observances, declared by the government to be of National Tourist Interest.  It has a \"Dolorosa\" sculpture by Francisco Salzillo and an articulated statue of Jesus that gives the blessing on Good Friday on a local hilltop designated Mount Calvary, before a congregation normally numbering some 30,000.  After the trumpet sounds, the drums are silenced and the \"Mektub\" theme is sounded, while the Christ statue makes a gesture of blessing towards the four cardinal points.  Other important events of the Tobarran Easter observances are the Descent from Paso Gordo from the Hermitage of the Incarnation on the afternoon of Good Thursday, and the \"Cierre del Tambor\" (closing drum ceremony) at midnight on Easter Sunday."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "tobarra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 4324,
+    "place_id": "gn-3649914",
+    "input": {
+      "place": {
+        "place_id": "gn-3649914",
+        "name": "Zaruma",
+        "country": "Ecuador",
+        "subdivision": "El Oro",
+        "lat": -3.69227,
+        "lon": -79.61254
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zaruma",
+          "url": "https://en.wikipedia.org/wiki/Zaruma",
+          "text": "Zaruma, officially Villa Real de San Antonio del Cerro de Oro de Zaruma is a town in the south of Ecuador, El Oro Province. It is located in the south-east of this province, at an altitude of 1200 metres above sea level, on an inter-Andes route where the Vizcaya mountain range branches off from the Chilla mountain range. It is the seat of Zaruma Canton, one of the oldest cantons in the province.\nZaruma is known for its republic-era architecture, gold mines, culture and traditions, art and coffee and for having been founded by Spanish explorer Alonso de Mercadillo. These attributes have led to its receiving various titles celebrating both its tangible and intangible aspects, and in 1998 the Ecuadorian Institute for Cultural Heritage submitted it as a candidate UNESCO World Heritage Site.\nZaruma was named a Pueblo Mágico (magical town) by the Ecuadorian Ministry of Tourism (MINTUR) in 2019."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "zaruma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

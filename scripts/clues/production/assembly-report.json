@@ -1,0 +1,22 @@
+{
+  "published": 387,
+  "indexOrder": "pool fame rank (index 0 = highest fame)",
+  "manifest": {
+    "v": 1,
+    "size": 387,
+    "generatedAt": "2026-10-04T23:14:20.160Z"
+  },
+  "difficultyDistribution": {
+    "1": 4,
+    "2": 42,
+    "3": 134,
+    "4": 178,
+    "5": 29
+  },
+  "leakScan": {
+    "filesScanned": 387,
+    "clueTextsScanned": 1935,
+    "hits": 0,
+    "method": "folded substring scan of every published clue text against the place's leak terms (name + aliases + curated aliases), plus a whole-file scan with the source href scrubbed"
+  }
+}

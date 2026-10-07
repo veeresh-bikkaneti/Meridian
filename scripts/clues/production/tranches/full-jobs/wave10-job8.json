@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 1956,
+    "attempt": 1941,
+    "place_id": "gn-2515045",
+    "input": {
+      "place": {
+        "place_id": "gn-2515045",
+        "name": "Linares",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 38.09519,
+        "lon": -3.63602
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Linares, Jaén",
+          "url": "https://en.wikipedia.org/wiki/Linares,_Ja%C3%A9n",
+          "text": "Linares (Spanish pronunciation: [liˈnaɾes]) is a municipality of Spain belonging to the province of Jaén, Andalusia. It is the second-largest city in that province, with a population of 55,261 in the most recent census (2024). The altitude is 419 metres (1,375 feet) and the total area of the municipality is 195.15 square kilometres (75.35 sq mi).\nLocated on top an easily defendable terrace of the Guadalimar, the site of Castulo in the vicinity of Linares was an important mining center in the Upper Guadalquivir, both as an Oretani oppidum and as a Roman city. Losing population since the 3rd century CE, as well as local primacy (mint and bishopric) to Viatia (Baeza) in late antiquity, Castulo was largely abandoned and ruined by the 8th century, and only temporarily inhabited afterwards. Located some kilometres north of Castulo, Linares' origins lie on urban development around the Islamic fortress, although chronology is moot. First mentioned in 1152 under Castilian rule as a hamlet, Linares had consolidated as a sizeable rural settlement of  Baeza by the turn of the 15th century. It received the privilege of township in 1565, thereby emancipating from Baeza."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 150,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "linares",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1957,
+    "attempt": 1942,
+    "place_id": "gn-2644531",
+    "input": {
+      "place": {
+        "place_id": "gn-2644531",
+        "name": "Lichfield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.68154,
+        "lon": -1.82549
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lichfield",
+          "url": "https://en.wikipedia.org/wiki/Lichfield",
+          "text": "Lichfield () is a cathedral city and civil parish in Staffordshire, England. Lichfield is situated 18 miles (29 km) south-east of Stafford, 9 miles (14 km) north-east of Walsall, 8 miles (13 km) north-west of Tamworth, 13 miles (21 km) south-west of Burton upon Trent and Derby and 14 miles (22.5 km) north of Birmingham. At the time of the 2021 Census, the population was 34,738 and the population of the wider Lichfield District was 106,400.\nNotable for its three-spired medieval cathedral, Lichfield was the birthplace of Samuel Johnson, the compiler of the first authoritative Dictionary of the English Language. The city's recorded history began when Chad of Mercia arrived to establish his bishopric in 669 AD and the settlement grew as the ecclesiastical centre of Mercia. In 2009, the Staffordshire Hoard, the largest hoard of Anglo-Saxon gold and silver metalwork, was found 4 mi (6.4 km) south-west of Lichfield.\nThe development of the city was consolidated in the 12th century under Roger de Clinton, who fortified the Cathedral Close and also laid out the town with the ladder-shaped street pattern that survives to this day. Lichfield's heyday was in the 18th century, when it developed into a thriving coaching city. This was a period of great intellectual activity; the city was the home of many famous people including Samuel Johnson, David Garrick, Erasmus Darwin, and Anna Seward, prompting Johnson's remark that Lichfield was \"a city of philosophers\".\nToday, the city still retains its old importance as an ecclesiastical centre, and its industrial and commercial development has been limited. The centre of the city has over 230 listed buildings (including many examples of Georgian architecture) and preserves much of its historic character."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 150,
+      "fullExtractWords": 282
+    },
+    "banned_terms": [
+      {
+        "term": "lichfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1958,
+    "attempt": 1943,
+    "place_id": "gn-3833883",
+    "input": {
+      "place": {
+        "place_id": "gn-3833883",
+        "name": "Trelew",
+        "country": "Argentina",
+        "subdivision": "Chubut",
+        "lat": -43.24895,
+        "lon": -65.30505
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trelew",
+          "url": "https://en.wikipedia.org/wiki/Trelew",
+          "text": "Trelew (Spanish pronunciation: [tɾeˈlew], from Welsh: tref \"town\" and the name of the founder, Lewis Jones) is a city in the eastern part of the Chubut Province of Argentina, 21km away from the coast. Located in Patagonia, the city is the largest and most populous in the low valley of the Chubut River, with 97,915 inhabitants as of 2010. The Trelew municipality is part of the Rawson Department, whose capital, Rawson, is also the provincial capital.\nTrelew is an important commercial and industrial centre for the region and is the main hub for wool processing, accounting for 90 percent of activity in Argentina. The produce of this industry is mainly shipped and exported through Puerto Madryn and Puerto Deseado.\nTrelew is home to the Museum of Paleontology Egidio Feruglio, showcasing the paleontological heritage of the Patagonic region, and considered one of the most important of its kind in South America. It also has an Astronomic and Planetary Observatory.\nThe city is served by the Almirante Marcos A. Zar Airport, of both civilian and military use. The airport's runway is shared with the Almirante Zar Naval Base, home of the Lockheed P-3 Orion squadron of the Argentine Naval Aviation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 150,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "trelew",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1959,
+    "attempt": 1944,
+    "place_id": "gn-4435764",
+    "input": {
+      "place": {
+        "place_id": "gn-4435764",
+        "name": "Meridian",
+        "country": "United States",
+        "subdivision": "Mississippi",
+        "lat": 32.36431,
+        "lon": -88.70366
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Meridian, Mississippi",
+          "url": "https://en.wikipedia.org/wiki/Meridian,_Mississippi",
+          "text": "Meridian is the eighth most populous city in the U.S. state of Mississippi, with a population of 35,052 at the 2020 census. It is the county seat of Lauderdale County and the principal city of the Meridian, Mississippi Micropolitan Statistical Area. Along major highways, the city is 93 mi (150 km) east of Jackson; 154 mi (248 km) southwest of Birmingham, Alabama; 202 mi (325 km) northeast of New Orleans, Louisiana; and 231 mi (372 km) southeast of Memphis, Tennessee.\nEstablished in 1860, at the junction of the Mobile and Ohio Railroad and Southern Railway of Mississippi, Meridian built an economy based on the railways and goods transported on them, and it became a strategic trading center. During the Civil War, General William Tecumseh Sherman burned much of the city to the ground in the Battle of Meridian (February 1864). Rebuilt after the war, the city entered a \"Golden Age\". It became the largest city in Mississippi between 1890 and 1930, and a leading center for manufacturing in the South, with 44 trains arriving and departing daily. Union Station, built in 1906, is now a multi-modal center, with access to Amtrak and Greyhound Buses averaging 242,360 passengers per year. Although the economy slowed with the decline of the railroad industry, the city has diversified, with healthcare, military, and manufacturing employing the most people in 2010. The population within the city limits, according to 2008 census estimates, is 38,232, but a population of 232,900 in a 45-mile (72 km) radius and 526,500 in a 65-mile (105 km) radius, of which 104,600 and 234,200 people respectively are in the labor force, feeds the economy of the city.\nThe area is served by two military facilities, Naval Air Station Meridian and Key Field, which employ over 4,000 people. NAS Meridian is home to the Regional Counter-Drug Training Academy (RCTA) and the first local Department of Homeland Security in the state. Students in Training Air Wing ONE (Strike Flight Training) train in the T-45C Goshawk training jet. Key Field is named after brothers Fred and Al Key, who set a world endurance flight record in 1935. The field is now home to the 186th Air Refueling Wing of the Air National Guard and a support facility for the 185th Aviation Brigade of the Mississippi Army National Guard. Ochsner Rush Health is the largest non-military employer in the region, employing 2,610 people. Among the city's many arts organizations and historic buildings are the Riley Center, the Meridian Museum of Art, Meridian Little Theatre, and the Meridian Symphony Orchestra. Meridian was home to two Carnegie libraries, one for whites and one for African Americans. The Carnegie Branch Library, now demolished, was one of a number of Carnegie libraries built for blacks in the Southern United States during the segregation era.\nThe Mississippi Arts and Entertainment Experience (the MAX) is located in downtown Meridian. Jimmie Rodgers, the \"Father of Country Music\", was born in Meridian. Highland Park houses a museum which displays memorabilia of his life and career, as well as railroad equipment from the steam-engine era. The park is also home to the Highland Park Dentzel Carousel, a National Historic Landmark. It is the world's only two-row stationary Dentzel menagerie in existence.\nOther notable natives include Miss America 1986 Susan Akin; James Chaney, an activist who was one of three civil rights workers murdered in 1964; singer Paul Davis; and Hartley Peavey, founder of Peavey Electronics headquartered in Meridian. The federal courthouse was the site of the 1966–1967 trial of suspects in the murder of Chaney and two other activists. For the first time, an all-white jury convicted a white official of a civil rights killing."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 150,
+      "fullExtractWords": 610
+    },
+    "banned_terms": [
+      {
+        "term": "meridian",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1960,
+    "attempt": 1945,
+    "place_id": "gn-1268011",
+    "input": {
+      "place": {
+        "place_id": "gn-1268011",
+        "name": "Kannauj",
+        "country": "India",
+        "subdivision": "Uttar Pradesh",
+        "lat": 27.05524,
+        "lon": 79.9188
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kannauj",
+          "url": "https://en.wikipedia.org/wiki/Kannauj",
+          "text": "Kannauj (Hindustani pronunciation: [kənːɔːd͡ʒ]) is an ancient city in the Indian state of Uttar Pradesh and a municipal board (nagar palika) home to the administrative headquarters of the eponymous district. Known as Kanyakubja during the ancient Vedic period, it was successively the capital city of the Mahajanapada Panchala Kingdom and then of the Ayudha dynasty. Originally known as Mahodaya in ancient Sanskrit literature dating back to the Ramayana era, and later known as Mahodaya under the Gurjara-Pratihara dynasty, in the later medieval era, it formed the core of the Kingdom of Kannauj and was ruled by multiple successive royal families or as part of greater imperial polities.\nFamous as \"India's perfume capital\", Kannauj is known for its centuries old distillation of scents and perfume production. The traditional Kannauj Perfume, is a protected geographical indication and is elaborated with attar, produced with the petals of flowers grown in this area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 149,
+      "fullExtractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "kannauj",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1961,
+    "attempt": 1946,
+    "place_id": "gn-3166548",
+    "input": {
+      "place": {
+        "place_id": "gn-3166548",
+        "name": "Siena",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.31822,
+        "lon": 11.33064
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Siena",
+          "url": "https://en.wikipedia.org/wiki/Siena",
+          "text": "Siena ( see-EN-ə, Italian: [ˈsjɛːna, ˈsjeːna] ; traditionally spelled Sienna in English; Latin: Saena Iulia) is a city in the region of Tuscany in central Italy, and the capital of the province of Siena. With a population of 53,180, it is the 12th-largest city in the region.\nThe city is historically linked to commercial and banking activities, having been a major banking centre until the 13th and 14th centuries. Siena is also home to the oldest bank in the world, the Monte dei Paschi, which has been operating continuously since 1472 (1472). Several significant Mediaeval and Renaissance painters were born and worked in Siena, including Duccio di Buoninsegna, Ambrogio Lorenzetti, Simone Martini and Sassetta, and they influenced the course of Italian and European art. The University of Siena, originally called Studium Senese, was founded in 1240, making it one of the oldest universities in continuous operation in the world.\nSiena was an important city in medieval Europe, and its historic centre is a UNESCO World Heritage Site, which contains several buildings from the 13th and 14th centuries. The city is famous for its cuisine, art, museums, medieval cityscape and the Palio, a horse race held twice a year in Piazza del Campo.\nIn October 2025, Siena won the European Green Leaf Award for 2027."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 149,
+      "fullExtractWords": 214
+    },
+    "banned_terms": [
+      {
+        "term": "siena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1962,
+    "attempt": 1947,
+    "place_id": "gn-344797",
+    "input": {
+      "place": {
+        "place_id": "gn-344797",
+        "name": "Adwa",
+        "country": "Ethiopia",
+        "subdivision": "Tigray",
+        "lat": 14.16347,
+        "lon": 38.89924
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Adwa",
+          "url": "https://en.wikipedia.org/wiki/Adwa",
+          "text": "Adwa (Tigrinya: ዓድዋ; Amharic: ዐድዋ; Arabic: عدوة also spelled Adowa or Aduwa) is a town and separate woreda in Tigray Region, Ethiopia. It is best known as the community closest to the site of the 1896 Battle of Adwa, in  which Ethiopian soldiers defeated Italian troops, thus being one of the few African nations to directly thwart European colonialism. Located in the Central Zone of the Tigray Region, Adwa has a longitude and latitude of 14°10′N 38°54′E, and an elevation of 1907 meters. Adwa is surrounded by Adwa woreda.\nAdwa is home to several notable churches: Adwa Enda-Gebri'el (built by Dejazmach Wolde Gebriel), Adwa Enda-Maryam (built by Ras Anda Haymanot), Adwa  Edna-Medhane`Alem (built by Ras Sabagadis), Adwa Nigiste-Saba /Queen of Sheba secondary school, and Adwa Enda-Selasse. Near Adwa is Abba Garima Monastery, founded in the sixth century by one of the Nine Saints and known for its 10th-century gospels. Also nearby is the village of Fremona, which had been the base of the 16th-century Jesuits sent to convert Ethiopia to Catholicism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 149,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "adwa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1963,
+    "attempt": 1948,
+    "place_id": "gn-3607511",
+    "input": {
+      "place": {
+        "place_id": "gn-3607511",
+        "name": "La Lima",
+        "country": "Honduras",
+        "subdivision": "Cortés Department",
+        "lat": 15.43333,
+        "lon": -87.91667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Lima",
+          "url": "https://en.wikipedia.org/wiki/La_Lima",
+          "text": "La Lima is a city, with a population of 80,740 (2023 calculation), and a municipality in the Honduran department of Cortés.\nIt is home to the corporate headquarters of the Tela Railroad Company, a subsidiary of Chiquita Brand. The city is divided into two cities by river Chamelecon: La Lima Vieja, located on the western side of the River and La Lima Nueva, located on the eastern side of the river. Its people are known as \"limeños.\" For years La Lima was a city and under the municipality of San Pedro Sula.\nWhen La Lima split from the municipality of San Pedro Sula, Fernando Ching Navarro was part of the committee in charge of the creation of the municipality of La Lima. When the municipality was created, he went on to become the first major of La Lima; he took office in 1982 and his term ended in 1986. Mr. Fernando Ching died on 17 January 2009 at the age of 84. His restaurant \"Pollos La Canasta\" which he established since 1969 is still running in Lima Vieja.\nLa Lima has a strong international presence with the FHIA (Fundación Hondureña de Investigación Agricola) plant laboratories, known before as \"La Quimica\" and the American Zone (La Zona Americana) built by the Chiquita banana company in the 1950s to provide housing for its first class employees e.g.: President, Vice-President, Managers, Engineers, Agronomists. The \"American Zone\" nowadays has a large number of foreigners still living there. In \"the American Zone\", is located the EILL, Escuela Internacional La Lima.\nLa Lima is also known as \"Little New York\", because over the years it has been said that if you were a great dancer, you had to be from La Lima. Also a large population of limeños have residency in New York City, especially The Bronx and Brooklyn. Most of these people come from the \"Colonia Sitraterco\". Recently, a large amount of limeños have been arriving to Miami. La Lima is a city where you can walk and see the activities done in the \"centro\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 149,
+      "fullExtractWords": 340
+    },
+    "banned_terms": [
+      {
+        "term": "la lima",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lima",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1965,
+    "attempt": 1949,
+    "place_id": "gn-4844309",
+    "input": {
+      "place": {
+        "place_id": "gn-4844309",
+        "name": "Torrington",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.80065,
+        "lon": -73.12122
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torrington, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Torrington,_Connecticut",
+          "text": "Torrington is the most populated municipality and largest city in Litchfield County, Connecticut, and the Northwest Hills Planning Region. It is also the core city of Greater Torrington, one of the largest micropolitan areas in the United States. The city population was 35,515 according to the 2020 census. The city is located roughly 23 miles (37 km) west of Hartford, 34 miles (55 km) southwest of Springfield, Massachusetts, 67 miles (108 km) southeast of Albany, New York, 84 miles (135 km) northeast of New York City, and 127 miles (204 km) west of Boston, Massachusetts.\nTorrington is a former mill town, as are most other towns along the Naugatuck River Valley. Downtown Torrington is home to the Nutmeg Conservatory for the Arts, which trains ballet dancers and whose Company performs in the Warner Theatre, a 1,700-seat auditorium built in 1931 as a cinema by the Warner Brothers film studio. Downtown Torrington hosts the largest Lodge of Elks in New England. Downtown Torrington also hosts KidsPlay, a children's museum which was founded in 2012 and expanded their location in 2015 after purchasing the adjacent building.\nTorrington has two radio stations, WAPJ 89.9 FM, operated by the non-profit Torrington Community Radio Foundation, and WSNG 610 AM, owned by Red Wolf Broadcasting.\nTorrington has two daily newspapers. The Republican-American, which circulates a Litchfield County edition and has a bureau on Franklin Street, and The Register Citizen, which serves Torrington and Winsted, in addition to most of the Northwest Corner. Charlotte Hungerford Hospital has also developed into an important health care resource for the area. In 2008, Torrington was named by Bizjournals as the number one \"Dreamtown\" (micropolitan statistical area) out of ten in the United States to live in."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 149,
+      "fullExtractWords": 286
+    },
+    "banned_terms": [
+      {
+        "term": "torrington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1966,
+    "attempt": 1950,
+    "place_id": "gn-2411397",
+    "input": {
+      "place": {
+        "place_id": "gn-2411397",
+        "name": "Georgetown",
+        "country": "St. Helena",
+        "subdivision": "Ascension",
+        "lat": -7.92861,
+        "lon": -14.41194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Georgetown, Ascension Island",
+          "url": "https://en.wikipedia.org/wiki/Georgetown,_Ascension_Island",
+          "text": "Georgetown is the capital and chief settlement of Ascension Island, in the British Overseas Territory of Saint Helena, Ascension and Tristan da Cunha, situated on the west coast of the island.\nThe town is centred on St Mary's Church, part of the Anglican Diocese of St Helena and the former Exiles Club, built as a Royal Marines barracks at the time of Napoleon's exile to Saint Helena in the early 19th century.\nIt is named after King George III, who reigned at the time the island was claimed for Britain and garrisoned by the Admiralty in 1815.\nIn addition to the church, there is a pier, an athletics track, a small supermarket, Royal Mail post office, snack bar, hotel, police station, hospital, dental surgery, and a library. There is no school, however, and pupils travel to Two Boats village, 3 miles inland, in the centre of the island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "georgetown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1967,
+    "attempt": 1951,
+    "place_id": "gn-3112866",
+    "input": {
+      "place": {
+        "place_id": "gn-3112866",
+        "name": "Premià de Mar",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.49206,
+        "lon": 2.36524
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Premià de Mar",
+          "url": "https://en.wikipedia.org/wiki/Premi%C3%A0_de_Mar",
+          "text": "Premià de Mar (Catalan pronunciation: [pɾəmiˈa ðə ˈmaɾ]) is a municipality in the comarca of the Maresme in Catalonia. It is situated on the coast between El Masnou and Vilassar de Mar, to the north-east of Barcelona. The town is both a tourist centre and a dormitory town for Barcelona.\nLike almost all municipalities of Maresme, Premià de Mar has been historically very well connected with the rest of the comarca and with Barcelona thanks to old Camí Ral (Royal Way) (actual N-II main road) and railroad (Barcelona-Mataró railroad route (1848) was the first to be constructed in all the Iberian Peninsula). Communications have been enhanced in recent years with the construction (1969) of the C-32's Barcelona-Mataró section, also the first autopista (highway) to be constructed in all the Iberian Peninsula.\nThe town centre has buildings in a wide range of styles: neoclassical, modernista, noucentista \nand simply eclectic. The church of Sant Cristòfol has a baroque doorway with maritime motifs."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "premia de mar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "premia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1968,
+    "attempt": 1952,
+    "place_id": "gn-4488762",
+    "input": {
+      "place": {
+        "place_id": "gn-4488762",
+        "name": "Rocky Mount",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.93821,
+        "lon": -77.79053
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rocky Mount, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Rocky_Mount,_North_Carolina",
+          "text": "Rocky Mount is a city in Nash and Edgecombe counties in the U.S. state of North Carolina. The city's population was 54,341 as of the 2020 census, making it the 20th-most populous city in North Carolina.\nIt is the principal city of the Rocky Mount metropolitan area—often called the \"Twin Counties\"—which had an estimated population of 145,383 in 2023. Rocky Mount is also an anchor city of the Rocky Mount-Wilson-Roanoke Rapids, NC Combined Statistical Area, which had an estimated population of 288,366 in 2023.\nEnglish and Scots traders encountered the indigenous people in this area of the falls of the Tar River beginning in the mid-1700s. Incorporated in 1867, the community continued to develop through the 19th century based on agriculture (cotton and tobacco), manufacturing of textiles (made possible by the water power of the falls), and development of rail transportation to link the town to major markets.\nSince the late 20th century, the economy of Rocky Mount has diversified into biomedical pharmaceuticals, manufacturing, and logistics. Rocky Mount has twice received the All-America City Award from the National Civic League: in 1969 and 1999."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 148,
+      "fullExtractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "rocky mount",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rocky",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1969,
+    "attempt": 1953,
+    "place_id": "gn-2637343",
+    "input": {
+      "place": {
+        "place_id": "gn-2637343",
+        "name": "Southport",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.64581,
+        "lon": -3.01008
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Southport",
+          "url": "https://en.wikipedia.org/wiki/Southport",
+          "text": "Southport is a seaside town in the Metropolitan Borough of Sefton in Merseyside, England. It lies on the West Lancashire coastal plain and the east coast of the Irish Sea, approximately 17 miles (27 km) north of Liverpool and 15 miles (24 km) southwest of Preston. At the 2021 census, Southport had a population of 94,421, making it the eleventh most populous settlement in North West England and the third most populous settlement in the Liverpool City Region.\nThe town was founded in 1792 by William Sutton, an innkeeper from Churchtown, who built a bathing house at what is now the south end of Lord Street. The area was previously known as South Hawes, and was sparsely populated and dominated by dunes. The area became popular with tourists due to the easy access from the nearby Leeds and Liverpool Canal, and by 1848 had a railway connection. The resort increased during the Victorian era and contains examples of Victorian architecture and town planning. Lord Street was developed as a wide, tree-lined shopping street, and attractions such as Southport Pier, which is the second longest seaside pleasure pier in the British Isles, were constructed. A particular feature of the town is the extensive tree planting. This was one of the conditions required by the Hesketh family when they made land available for development in the 19th century. Hesketh Park at the northern end of the town is named after them, having been built on land donated by Rev. Charles Hesketh.\n\nExtensive sand dunes stretch for several miles from Woodvale to Birkdale, the south of the town. The Ainsdale dunes have been designated as a national nature reserve and a Ramsar site. Local fauna include the natterjack toad and the sand lizard. Southport hosts events, including an annual air show on and over the beach, the largest independent flower show in the UK in Victoria Park, and the British Musical Fireworks Championship. The town is at the centre of England's \"Golf Coast\", and has hosted the Open Championship at the Royal Birkdale Golf Club."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 147,
+      "fullExtractWords": 342
+    },
+    "banned_terms": [
+      {
+        "term": "southport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1970,
+    "attempt": 1954,
+    "place_id": "gn-4945283",
+    "input": {
+      "place": {
+        "place_id": "gn-4945283",
+        "name": "Newton",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.33704,
+        "lon": -71.20922
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Newton, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Newton,_Massachusetts",
+          "text": "Newton is a city in Middlesex County, Massachusetts, United States. It is located roughly 8 miles (13 km) west of Downtown Boston, and comprises a patchwork of thirteen villages. The city borders Boston to the northeast and southeast (via the neighborhoods of Brighton and West Roxbury), Brookline to the east, Watertown and Waltham to the north, and Weston, Wellesley, and Needham to the west. According to the U.S. Census Bureau's 2025 estimates, the population of Newton, Massachusetts was 90,741.\nNewton is home to the Charles River, Crystal Lake, and Heartbreak Hill, among other landmarks. It is served by several streets and highways (including Route 9, Hammond Pond Parkway, and the Mass Pike), as well as the Green Line D branch run by the MBTA.\nHistorically, the area that is now Newton was settled in 1639, and was originally first part of Cambridge (then called \"the newe towne\"). It split from Cambridge in 1681, and became known by its present name of Newton in 1766. It then became a city in 1874."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 147,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "newton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1971,
+    "attempt": 1955,
+    "place_id": "gn-4943426",
+    "input": {
+      "place": {
+        "place_id": "gn-4943426",
+        "name": "Mattapan",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.27232,
+        "lon": -71.087
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mattapan",
+          "url": "https://en.wikipedia.org/wiki/Mattapan",
+          "text": "Mattapan () is a neighborhood in Boston, Massachusetts, United States. Mattapan is the original Massachusett name for the Dorchester area, possibly meaning \"a place to sit.\" At the 2010 census, it had a population of 36,480, with the majority of its population being immigrants.\nLike other neighborhoods of the late 19th and early 20th century, Mattapan developed, residentially and commercially, as the railroads and streetcars made downtown Boston increasingly accessible. Predominantly residential, Mattapan is a mix of public housing, small apartment buildings, single-family houses, and two- and three-family houses (known locally as three-deckers or triple-deckers). Blue Hill Avenue and Mattapan Square, where Blue Hill Avenue, River Street, and Cummins Highway meet, are the commercial heart of the neighborhood, home to banks, law offices, restaurants, and retail shops. The new Mattapan Branch of the Boston Public library opened 2009, at a cost of more than $4 million. Mattapan is next to the green space of  Harambee Park in Franklin Field Dorchester. The Boston Nature Center and Wildlife Sanctuary, Clark-Cooper Community Gardens, and historic Forest Hill Cemetery all legally in Forest Hills of West Roxbury are  considered by some green space within the neighborhood of Mattapan. Mattapan's demographics are diverse, with a large population of Haitians, Caribbean immigrants, and African Americans. Mattapan has public services such as a recently renovated community health center, and constable services. Mattapan MBTA Station is the last stop of the Red Line Extension Trolley which is accessible via Ashmont and other points along the route in Dorchester and Milton."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 252
+    },
+    "banned_terms": [
+      {
+        "term": "mattapan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1972,
+    "attempt": 1956,
+    "place_id": "gn-5781770",
+    "input": {
+      "place": {
+        "place_id": "gn-5781770",
+        "name": "South Jordan",
+        "country": "United States",
+        "subdivision": "Utah",
+        "lat": 40.56217,
+        "lon": -111.92966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Jordan, Utah",
+          "url": "https://en.wikipedia.org/wiki/South_Jordan,_Utah",
+          "text": "South Jordan is a city in south central Salt Lake County, Utah, United States, 18 miles (29 km) south of Salt Lake City. Part of the Salt Lake City metropolitan area, the city lies in the Salt Lake Valley along the banks of the Jordan River between the 10,000-foot (3,000 m) Oquirrh Mountains and the 11,000-foot (3,400 m) Wasatch Mountains. The city has 3.5 miles (5.6 km) of the Jordan River Parkway that contains fishing ponds, trails, parks, and natural habitats. The Salt Lake County fair grounds and equestrian park, 67-acre (27 ha) Oquirrh Lake, and 37 public parks are located inside the city. As of 2025, there were 88,910 people in South Jordan.\nFounded in 1859 by settlers of The Church of Jesus Christ of Latter-day Saints and historically an agrarian town, South Jordan has become a rapidly growing bedroom community of Salt Lake City. Kennecott Land, a land development company, has recently begun construction on the master-planned Daybreak Community for the entire western half of South Jordan, potentially doubling South Jordan's population. South Jordan was the first municipality in the world to have two temples of the Church of Jesus Christ of Latter-day Saints (Jordan River Utah Temple and Oquirrh Mountain Utah Temple), it now shares that distinction with Provo, Utah. The city has three TRAX light rail stops, as well as one commuter rail stop on the FrontRunner."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "south jordan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "jordan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1973,
+    "attempt": 1957,
+    "place_id": "gn-723846",
+    "input": {
+      "place": {
+        "place_id": "gn-723846",
+        "name": "Poprad",
+        "country": "Slovakia",
+        "subdivision": "Prešov Region",
+        "lat": 49.06144,
+        "lon": 20.29798
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Poprad",
+          "url": "https://en.wikipedia.org/wiki/Poprad",
+          "text": "Poprad (Slovak: [ˈpɔprat] ; Hungarian: Poprád; German: Deutschendorf) is a city in northern Slovakia at the foot of the High Tatra Mountains, famous for its picturesque historic centre and as a holiday resort. The largest town of the Spiš region and the largest of all towns in the vicinity of the High Tatra Mountains in both Slovakia and Poland, Poprad is the tenth largest city in Slovakia, with a population of approximately 50,000.\nThe Poprad-Tatry Airport is an international airport located just outside the city. Poprad is also the starting point of the Tatra Electric Railway (Slovak: Tatranská elektrická železnica), a set of special narrow-gauge trains (trams) connecting the resorts in the High Tatras with each other and with Poprad. Mainline trains link Poprad to other destinations in Slovakia and beyond; in particular, there are through trains running from Poprad to Prague in the Czech Republic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "poprad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1974,
+    "attempt": 1958,
+    "place_id": "gn-7281840",
+    "input": {
+      "place": {
+        "place_id": "gn-7281840",
+        "name": "Parramatta",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -33.8178,
+        "lon": 151.00348
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parramatta",
+          "url": "https://en.wikipedia.org/wiki/Parramatta",
+          "text": "Parramatta (; Dharuk: Burramatta) is a city and major commercial centre in Greater Western Sydney. It is located approximately 24 kilometres (15 mi) west of the Sydney central business district on the banks of the Parramatta River. It is commonly regarded as the second CBD of metropolitan Sydney.\nParramatta is the municipal seat of the City of Parramatta local government area and is often regarded as one of the primary centres of the Greater Sydney metropolitan region, along with the Sydney CBD, Penrith, Campbelltown, and Liverpool. It has a long history as a second administrative centre in the metropolitan region, being host to a number of government departments, as well as state and federal courts.\nFounded as a British settlement in 1788 (the same year as Sydney), it is the oldest inland European settlement in Australia and serves as the economic centre of Greater Western Sydney. Since 2000, state government agencies such as the New South Wales Police Force and Sydney Water have relocated to Parramatta from Central Sydney. The 151st meridian east runs directly through the suburb."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 146,
+      "fullExtractWords": 178
+    },
+    "banned_terms": [
+      {
+        "term": "parramatta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1975,
+    "attempt": 1959,
+    "place_id": "gn-3199394",
+    "input": {
+      "place": {
+        "place_id": "gn-3199394",
+        "name": "Herceg Novi",
+        "country": "Montenegro",
+        "subdivision": "Herceg Novi",
+        "lat": 42.45306,
+        "lon": 18.5375
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Herceg Novi",
+          "url": "https://en.wikipedia.org/wiki/Herceg_Novi",
+          "text": "Herceg Novi (Cyrillic: Херцег Нови, pronounced [xěrtseɡ nôviː]) is a town in Coastal region of Montenegro located at the Western entrance to the Bay of Kotor and at the foot of Mount Orjen. It is the administrative center of the Herceg Novi Municipality with around 33,000 inhabitants. The town was founded as a fortress in 1382 by the King of Bosnia, Tvrtko I Kotromanić, and named after Saint Stephen but the name did not stick, instead it became known as Novi (transl. New), also Castelnuovo in Italian (transl. New Castle). Between 1482 and 1687 it was part of the Ottoman Empire and then from 1687 to 1797 the Albania Veneta of the Republic of Venice. It was a Catholic bishopric and remains a Latin titular see as Novi. Herceg Novi has had a turbulent past, despite being one of the youngest settlements on the Adriatic. A history of varied occupations has created a blend of diverse and picturesque architectural styles in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 145,
+      "fullExtractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "herceg novi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "herceg",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "novi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1976,
+    "attempt": 1960,
+    "place_id": "gn-1255616",
+    "input": {
+      "place": {
+        "place_id": "gn-1255616",
+        "name": "Srivilliputhur",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 9.51272,
+        "lon": 77.63369
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Srivilliputhur",
+          "url": "https://en.wikipedia.org/wiki/Srivilliputhur",
+          "text": "Srivilliputhur is a Town in Virudhunagar district in the Indian state of Tamil Nadu. The most important landmark of Srivilliputhur is 11-tiered tower structure dedicated to the Vatapatrasayee (Vishnu), the presiding deity of  the Srivilliputhur Divya Desam. The tower of this temple rises 192 feet high and is the official symbol of the Government of Tamil Nadu. It is said to have been built by Periyalvar, in the year 788 CE and believed to be the adopted father of the temple deity, with a purse of gold that he won in debates held in the palace of Pandya King Vallabhadeva. Srivilliputhur is well known for its ancient heritage and devotional contributions.\nIt is on the Virudhunagar - Sengottai line of the Southern Railway, about 74 km south of Madurai and connected by road and rail with Madurai, Rajapalayam, Sankarankovil & Sengottai, Sivakasi and Sattur."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 144,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "srivilliputhur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

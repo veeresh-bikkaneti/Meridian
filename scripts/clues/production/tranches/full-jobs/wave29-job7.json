@@ -1,0 +1,807 @@
+[
+  {
+    "rank": 5764,
+    "attempt": 5721,
+    "place_id": "gn-2746060",
+    "input": {
+      "place": {
+        "place_id": "gn-2746060",
+        "name": "Twello",
+        "country": "Netherlands",
+        "subdivision": "Gelderland",
+        "lat": 52.23667,
+        "lon": 6.10278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Twello",
+          "url": "https://en.wikipedia.org/wiki/Twello",
+          "text": "Twello is a village in the Dutch province of Gelderland. It is located in the municipality of Voorst, about 5 km (3 mi) southwest of Deventer.\nTwello is a village between the cities Deventer and Apeldoorn. It has several primary schools, among them De Hietweide, a public school, which means it has no religion tied to it; Sint Martinus, a Catholic primary school, located in front of the Sint Martinuskerk (see picture); De Wingerd, a Christian primary school located next to the Town Hall and De Kleine Wereld, a Christian primary school. The village also has two high schools for VMBO (voorbereidend middelbaar beroepsonderwijs, pre-vocational secondary education) and the first three grades of HAVO (hoger algemeen voortgezet onderwijs, higher general continued education).\nTwello was a separate municipality until 1818, when it was merged with Voorst."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "twello",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5765,
+    "attempt": 5722,
+    "place_id": "gn-2803798",
+    "input": {
+      "place": {
+        "place_id": "gn-2803798",
+        "name": "Zschopau",
+        "country": "Germany",
+        "subdivision": "Saxony",
+        "lat": 50.74818,
+        "lon": 13.07691
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zschopau",
+          "url": "https://en.wikipedia.org/wiki/Zschopau",
+          "text": "Zschopau (German pronunciation: [ˈtʃoːpaʊ] ), is a town in the Erzgebirgskreis district of Saxony, Germany.\nThe town grew around the castle, which was built in the mid-12th century to protect the Salt Road, which crossed the Zschopau River here. Mining was also practiced from the 14th century onward, and in 1493, Zschopau was granted the privileges of a \"Freie Bergstadt\" However, its importance always lagged behind the major mining towns in the Ore Mountains.\nThe development of crafts and trades was favored by the trade route; in 1451, Zschopau was granted market rights and in 1466, brewing rights. The first guilds of weavers and calico printers were founded as early as 1529. Later, textile factories and spinning mills developed, which favored Zschopau's early transformation into an industrial city at the beginning of the 19th century.\nMotorcycles have been built in Zschopau since 1922. The world's first motorcycle assembly line was located here in 1926, and the Zschopauer Motorenwerke, with its DKW brand, was the world's largest motorcycle factory for the first time, with a production of around 60,000 units in 1928. Even during the GDR era, the motorcycle factory was one of the world's largest motorcycle producers in terms of production volume."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 202
+    },
+    "banned_terms": [
+      {
+        "term": "zschopau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5766,
+    "attempt": 5723,
+    "place_id": "gn-2867445",
+    "input": {
+      "place": {
+        "place_id": "gn-2867445",
+        "name": "Murnau am Staffelsee",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.68085,
+        "lon": 11.20125
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Murnau am Staffelsee",
+          "url": "https://en.wikipedia.org/wiki/Murnau_am_Staffelsee",
+          "text": "Murnau am Staffelsee (often shortened to Murnau) is a market town in the district of Garmisch-Partenkirchen, in the Oberbayern region of Bavaria, Germany.\nThe market originated in the 12th century around Murnau Castle. Murnau is on the edge of the Bavarian Alps, about 70 kilometres (43 mi) south of Munich. Directly to its west is the Staffelsee lake and to the south are the peaks and ridges of the Ammergau Alps beginning with the Hörnle and extending up to the Ettaler Manndl, southwest of the Wetterstein. This mountain range is formed by the Zugspitze and the Alpspitze in the south as well as the Estergebirge with their striking Kistenkar and the Walchensee mountains including Heimgarten and Herzogstand in the southeast.\nTo the south, the  is the largest continuous wetland of its kind in Central Europe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "murnau am staffelsee",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "murnau",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "am",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "staffelsee",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5767,
+    "attempt": 5724,
+    "place_id": "gn-2950622",
+    "input": {
+      "place": {
+        "place_id": "gn-2950622",
+        "name": "Bergen",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 52.80837,
+        "lon": 9.96374
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bergen, Lower Saxony",
+          "url": "https://en.wikipedia.org/wiki/Bergen,_Lower_Saxony",
+          "text": "Bergen (German pronunciation: [ˈbɛʁɡn̩] ; Eastphalian: Bargen) is a town in the north of Celle district on the Lüneburg Heath, in Lower Saxony, Germany. Administratively it acts as a municipal borough divided into 12 subordinate parishes based on the town and its surrounding villages: Becklingen, Belsen, Bergen, Bleckmar, Diesten, Dohnsen, Eversen, Hagen, Hassel, Offen, Sülze and Wardböhmen. Bergen-Belsen concentration camp was located in the area of Belsen.\nThe town had 13,099 inhabitants according to the census conducted in December 2008. Members of the British military and their families, who were not included in the census, brought the actual population to about 17,000. These soldiers occupied a NATO base and exercise on the Bergen-Hohne Training Area just outside the town, but the base closed in summer 2015 as part of the British Army's withdrawal from Germany. The Sieben Steinhäuser, a cluster of dolmens dating from the Stone Age, are located within the training area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "bergen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5768,
+    "attempt": 5725,
+    "place_id": "gn-3122172",
+    "input": {
+      "place": {
+        "place_id": "gn-3122172",
+        "name": "Foz",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 43.5692,
+        "lon": -7.25441
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Foz",
+          "url": "https://en.wikipedia.org/wiki/Foz",
+          "text": "Foz (Galician pronunciation: [fɔθ]) is a town and municipality in the A Mariña Central comarca in the Galician province of Lugo. It has been historically linked to the Ancient Province of Mondoñedo and also linked to the arrival of Briton immigrants during the 5th and 6th centuries, fleeing by sea from the British Isles (see Bishop Maeloc, Britonia and San Martiño de Mondoñedo). It has 9800 inhabitants. It borders the coastal municipalities of Burela and Barreiros, and the inland municipalities of Lourenzá, Mondoñedo, O Valadouro, Alfoz, and Cervo.\nFoz is a coastal town on the shores of the Cantabrian Sea at the mouth of the river Masma, which forms the Foz estuary, with an approximate area of 100 km².\nAlthough Foz was previously a fishing village, most of its economic resources now come from tourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "foz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5769,
+    "attempt": 5726,
+    "place_id": "gn-326333",
+    "input": {
+      "place": {
+        "place_id": "gn-326333",
+        "name": "Wenago",
+        "country": "Ethiopia",
+        "subdivision": "South Ethiopia Regional State",
+        "lat": 6.31667,
+        "lon": 38.26667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wenago",
+          "url": "https://en.wikipedia.org/wiki/Wenago",
+          "text": "Wenago is one of the woredas in the Southern Nations, Nationalities, and Peoples' Region of Ethiopia. Part of the Gedeo Zone, Wenago is bordered on the southwest by Yirgachefe, on the northwest by the Oromia Region, on the northeast by Dila Zuria, and on the southeast by Bule. Towns in Wenago include Wenago. Dila Zuria woreda and Dila town were separated from Wenago.\nAccording to a 2004 report, Wenago had 12 kilometers of asphalt roads, 56 kilometers of all-weather roads and 17 kilometers of dry-weather roads, for an average road density of 333 kilometers per 1000 square kilometers. Local landmarks include the Qallu compound (galma) of the Guji Oromo, which that group claims ought to be annexed to the Guji Zone of the Oromia Region, a claim which has led to violence in the past."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "wenago",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5770,
+    "attempt": 5727,
+    "place_id": "gn-3524527",
+    "input": {
+      "place": {
+        "place_id": "gn-3524527",
+        "name": "La Trinitaria",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 16.11886,
+        "lon": -92.05188
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Trinitaria, Chiapas",
+          "url": "https://en.wikipedia.org/wiki/La_Trinitaria,_Chiapas",
+          "text": "La Trinitaria is a town and municipality in the southern Mexican state of Chiapas.\nAs of 2010, the municipality had a total population of 72,769, up from 59,686 as of 2005. It covers an area of 1840.7 km2.\nAs of 2010, the town of La Trinitaria had a population of 9,042. Other than the town of La Trinitaria, the municipality had 585 localities, the largest of which (with 2010 populations in parentheses) were: Lázaro Cárdenas (3,699), José María Morelos (2,601), La Esperanza (2,549), classified as urban, and El Porvenir Agrarista (2,468), Miguel Hidalgo (2,428), Rodulfo Figueroa (2,321), Las Delicias (2,121), La Gloria (1,874), Álvaro Obregón (1,790), Tziscao (1,562), El Progreso (1,399), Santa Rita (1,389), Nueva Libertad (El Colorado) (1,182), Chihuahua (1,088), and Unión Juárez (1,050), classified as rural.\nThe town stands on Federal Highway 190. The archaeological site of Tenam Puente is located in the municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "la trinitaria",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "trinitaria",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5771,
+    "attempt": 5728,
+    "place_id": "gn-3690549",
+    "input": {
+      "place": {
+        "place_id": "gn-3690549",
+        "name": "Achí",
+        "country": "Colombia",
+        "subdivision": "Bolívar",
+        "lat": 8.5695,
+        "lon": -74.55715
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Achí, Bolívar",
+          "url": "https://en.wikipedia.org/wiki/Achí,_Bolívar",
+          "text": "Achí (Spanish pronunciation: [aˈtʃi]) is one of the 46 municipalities of the Bolívar department in the Caribbean Region of Colombia. It is crossed by the Cauca River and borders the Sucre department in the so-called Momposina Depression.\nThe municipality of Achí is bordered by the municipality of Magangué to the north; the municipalities of Pinillos and Tiquisio to the east; the municipalities of Montecristo and San Jacinto del Cauca to the south; and the Sucre Department to the west with the municipalities of Majagual and Guaranda. Its economy is based on agriculture, livestock, and fishing.\nThe origins of Achí lie in the old town of Ojolargo, located where the present-day village of Mao is, some 6 km from what is now Achí. Ojolargo was founded on September 24, 1770, and in 1779 had 471 inhabitants. However, this village was short-lived as its inhabitants fled from a cholera epidemic that swept through in 1814 and began settling instead in Achí, where they found an abundance of the tropical fruit that bears the name of Achí. In 1815 the mayor of Majagual, Estanislao Huertas Lorenzana, ordered the transfer of the inhabitants of Ojolargo to the new village of Achi. In 1817 the formation of the town was completed, becoming part of the Canton of Majagual. On March 6, 1869, the village is destroyed by an earthquake. In 1934 Achí breaks away from the municipality of Majagual, thus becoming a new municipality, with its first mayor being Pedro Barragén Constantino. The municipalities of Montecristo, Bolívar and San Jacinto del Cauca segregate from Achí in 1994 and 1997, respectively."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 265
+    },
+    "banned_terms": [
+      {
+        "term": "achi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5772,
+    "attempt": 5729,
+    "place_id": "gn-3838902",
+    "input": {
+      "place": {
+        "place_id": "gn-3838902",
+        "name": "Río Ceballos",
+        "country": "Argentina",
+        "subdivision": "Cordoba",
+        "lat": -31.1697,
+        "lon": -64.3175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Río Ceballos",
+          "url": "https://en.wikipedia.org/wiki/Río_Ceballos",
+          "text": "Río Ceballos is a city and tourist destination in the province of Córdoba located in the center of Argentina. Río Ceballos is located at the foot of the Sierras Chicas, about 30 km north of the provincial capital of Córdoba and is part of the Greater Córdoba area. Río Ceballos is accessed from Córdoba by taking Route E-53 north passing the Airport or by Cordoba City through Villa Allende, Mendiolaza and Unquillo, vía Route E-57.\nThe Natural Hydrologic Reserve \"La Quebrada Park\" (\"Parque La Quebrada\") is 7 km beyond Río Ceballos taking the San Martin Avenue till its end.\nRío Ceballos had 16,632 inhabitants according to the 2001 census, representing an increase of 29.9% over the population counted for the 1991 census. It has the fourth largest population of cities in the Greater Córdoba area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "rio ceballos",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ceballos",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5773,
+    "attempt": 5730,
+    "place_id": "gn-3855244",
+    "input": {
+      "place": {
+        "place_id": "gn-3855244",
+        "name": "Gálvez",
+        "country": "Argentina",
+        "subdivision": "Santa Fe",
+        "lat": -32.02957,
+        "lon": -61.22097
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gálvez, Santa Fe",
+          "url": "https://en.wikipedia.org/wiki/Gálvez,_Santa_Fe",
+          "text": "Gálvez is a city in the center of the province of Santa Fe, Argentina, 81 km (50 mi) south of the provincial capital Santa Fe. It has 18,374 inhabitants per the 2001 census [INDEC].\nThe original settlement was an agricultural colony called Colonia Margarita, in lands belonging to José Gálvez, then governor of the province, who rented it for farming, mainly to Italian immigrants from Piamonte and Lombardia. The official foundation date, 15 October 1886, is that of the opening of the train station, as is usual in many other towns founded in this period in Santa Fe. The communal institutions were formally created on 12 January 1887, and the town became a full municipality on 19 March 1939. The name of governor Gálvez replaced the original one by a decree of 6 June 1889.\nThe area of Gálvez has a good precipitation regime and produces diverse crops (wheat, corn, soybean, sorghum, sunflower). Cattle are mostly employed for its milk (the central region of Santa Fe is the most important milk-producing area in Argentina). Local industries include the manufacturing of electric engines and transformers, machine tools, furniture, and dairy products."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "galvez",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5774,
+    "attempt": 5731,
+    "place_id": "gn-4146428",
+    "input": {
+      "place": {
+        "place_id": "gn-4146428",
+        "name": "Ave Maria",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.33667,
+        "lon": -81.43806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ave Maria, Florida",
+          "url": "https://en.wikipedia.org/wiki/Ave_Maria,_Florida",
+          "text": "Ave Maria, Florida, is a planned community and census-designated place (CDP) located in Collier County, Florida, United States, consisting of approximately 5,000 acres (2,023 ha). The population was 6,242 at the 2020 census. It is part of the Naples-Marco Island, Florida Metropolitan Statistical Area.\nThe community was founded in 2005 by Ave Maria Development, a partnership of Barron Collier Companies and the Ave Maria Foundation led by Roman Catholic entrepreneur Tom Monaghan, founder of Domino's Pizza and Ave Maria University, which is located in the heart of town. Along with shops and restaurants, the town square also features the Ave Maria parish church with steel arches and a 30-foot-tall marble carving of the Annunciation. As of 2023 Ave Maria was the fastest growing community in the United States that was founded in the 21st century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "ave maria",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ave",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maria",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5775,
+    "attempt": 5732,
+    "place_id": "gn-4363124",
+    "input": {
+      "place": {
+        "place_id": "gn-4363124",
+        "name": "Mount Rainier",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 38.9415,
+        "lon": -76.96498
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Rainier, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Mount_Rainier,_Maryland",
+          "text": "Mount Rainier () is a city in Prince George's County, Maryland, United States, bordering Washington, D.C. The population was 8,333 at the 2020 census. Mount Rainier is contained between the Northwest Branch Anacostia River, Cedar Lane Alley, and 34th Street to the north, 37th Street and 37th Place to the northeast, Upshur Street and Queens Chapel Road to the west, the CSX Capital Subdivision train tracks to the east, and Eastern Avenue NE to the south. Mount Rainier got its start as a streetcar suburb, when tracks were laid for the 82 Streetcar Line.  According to local tradition, surveyors from the Pacific Northwest named the town, giving the streets names such as Shasta and Cascade. Historic U.S. 1 runs through the center of the town and serves as the main street and central business district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "mount rainier",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rainier",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5776,
+    "attempt": 5733,
+    "place_id": "gn-4782988",
+    "input": {
+      "place": {
+        "place_id": "gn-4782988",
+        "name": "Rosslyn",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 38.89678,
+        "lon": -77.07248
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rosslyn, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Rosslyn,_Virginia",
+          "text": "Rosslyn ( ROZ-lin) is a heavily urbanized neighborhood in northeastern Arlington County, Virginia, United States. It is in Northern Virginia, north of Arlington National Cemetery and directly across the Potomac River from Georgetown and Foggy Bottom in Washington, D.C.\nRosslyn encompasses the Arlington neighborhoods of North Rosslyn and Radnor/Ft. Myer Heights, and is located east of Court House, another urbanized Arlington neighborhood. Characterized as one of several \"urban villages\" by the county, the numerous skyscrapers in the dense business section of Rosslyn make its appearance in some ways more urban than nearby Washington. Rosslyn residents have an average household income of $105,000 and 81% are college graduates.\nEstablishments in the neighborhood include Sinclair Broadcast Group-owned ABC affiliate WJLA located in the Rosslyn Twin Towers, and Marriott International's longest operating hotel, the former Key Bridge Marriott. Notable structures include the United States Marine Corps War Memorial, and the Netherlands Carillon and Freedom Park offer views of the Washington Monument and other Washington landmarks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "rosslyn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5777,
+    "attempt": 5734,
+    "place_id": "gn-4898875",
+    "input": {
+      "place": {
+        "place_id": "gn-4898875",
+        "name": "La Salle",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 41.33337,
+        "lon": -89.09175
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Salle, Illinois",
+          "url": "https://en.wikipedia.org/wiki/La_Salle,_Illinois",
+          "text": "La Salle or LaSalle is a city in LaSalle County, Illinois, United States, located at the intersection of Interstates 39 and 80. It is part of the Ottawa, IL Micropolitan Statistical Area. Originally platted in 1837 over one square mile (2.6 square kilometers), the city's boundaries have grown to 12 sq mi (31 km2). Named in honor of 17th century Illinois valley explorer, the Sieur de La Salle, city boundaries extend from the Illinois River and Illinois and Michigan Canal to a mile north of Interstate 80 and from the city of Peru on the west to the village of North Utica on the east. Starved Rock State Park is located approximately 5 mi (8 km) to the east. The population was 9,582 as of the 2020 census, down from 9,609 at the 2010 census. LaSalle and its twin city, Peru, make up the core of the Illinois Valley. Due to their combined dominance of the zinc processing industry in the early 1900s, they were collectively nicknamed \"Zinc City.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "la salle",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "salle",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5778,
+    "attempt": 5735,
+    "place_id": "gn-5083330",
+    "input": {
+      "place": {
+        "place_id": "gn-5083330",
+        "name": "Berlin",
+        "country": "United States",
+        "subdivision": "New Hampshire",
+        "lat": 44.46867,
+        "lon": -71.18508
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Berlin, New Hampshire",
+          "url": "https://en.wikipedia.org/wiki/Berlin,_New_Hampshire",
+          "text": "Berlin ( BUR-lin) is the only city in Coös County, New Hampshire, United States. Located along the Androscoggin River, it is the northernmost city in New Hampshire. The population was 9,425 at the 2020 census, down from 10,051 at the 2010 census, and was estimated to be 9,502 in 2025.\nIt includes the village of Cascade in the south part of the city. Located in New Hampshire's Great North Woods Region or \"North Country\", Berlin sits at the edge of the White Mountains, and the city's boundaries extend into the White Mountain National Forest. Berlin is home to the Berlin and Coos County Historical Society's Moffett House Museum & Genealogy Center, Service Credit Union Heritage Park, the Berlin Fish Hatchery, and the White Mountains Community College, member of the Community College System of New Hampshire.\nBerlin is the principal city of the Berlin Micropolitan Statistical Area, which includes all of Coös County, New Hampshire, and Essex County, Vermont. Because Quebec is less than 60 miles (100 km) away, Berlin has many people of French Canadian descent in its population. Around 65% of its residents speak a variant of New England French, which is known locally as \"Berlin French\".\nThe pronunciation of Berlin was changed to BUR-lin, instead of Ber-LIN (as in Berlin, Germany), during World War I as a patriotic stand against Germany."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 223
+    },
+    "banned_terms": [
+      {
+        "term": "berlin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5779,
+    "attempt": 5736,
+    "place_id": "gn-5127542",
+    "input": {
+      "place": {
+        "place_id": "gn-5127542",
+        "name": "Morris Park",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.85232,
+        "lon": -73.85347
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morris Park, Bronx",
+          "url": "https://en.wikipedia.org/wiki/Morris_Park,_Bronx",
+          "text": "Morris Park is a neighborhood in the New York City borough of the Bronx. Its approximate boundaries, starting from the north and moving clockwise, are Neill Avenue and Pelham Parkway to the north, Eastchester Road to the east, the Amtrak Northeast Corridor tracks and Sackett Avenue to the east and south, and Bronxdale Avenue and White Plains Road to the west. It borders the neighborhoods of Van Nest to its southwest, Parkchester and Westchester Square to its south, and Pelham Parkway to its northeast. Williamsbridge Road and Morris Park Avenue are the primary thoroughfares.\nThe neighborhood is part of Bronx Community District 11 in the East Bronx, and its ZIP Codes include 10461 and 10462. The area is patrolled by the 49th Precinct of the New York City Police Department, located at 2121 Eastchester Road. The local subway is the IRT Dyre Avenue Line (5 train), which runs under the Esplanade. The neighborhood has a large Albanian American and Italian American population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 162
+    },
+    "banned_terms": [
+      {
+        "term": "morris park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "morris",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5780,
+    "attempt": 5737,
+    "place_id": "gn-5364369",
+    "input": {
+      "place": {
+        "place_id": "gn-5364369",
+        "name": "Laguna Woods",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.6103,
+        "lon": -117.72533
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Laguna Woods, California",
+          "url": "https://en.wikipedia.org/wiki/Laguna_Woods,_California",
+          "text": "Laguna Woods (luh-GOO-nuh; laguna being Spanish for 'lagoon') is a city in Orange County, California, United States. The population was 17,644 at the 2020 census, up from 16,192 at the 2010 census, with a median age of 74.5 (as of 2021).\nLaguna Woods became Orange County's 32nd city on March 24, 1999, after local residents voted to incorporate. About ninety percent of the city consists of Laguna Woods Village, a private gated retirement community, formerly known as Leisure World. The other ten percent consists of businesses, some homes, and the city hall, which are accessible to the public. Incorporation efforts in the late 1990s were largely driven by the need for residents to have a stronger voice against the prospective construction of an international airport at the nearby decommissioned Marine Corps Air Station El Toro. The airport proposal was defeated, and the land in question has been tabbed for development as the Orange County Great Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "laguna woods",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "laguna",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "woods",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5781,
+    "attempt": 5738,
+    "place_id": "gn-565857",
+    "input": {
+      "place": {
+        "place_id": "gn-565857",
+        "name": "Dobrinka",
+        "country": "Russia",
+        "subdivision": "Lipetsk Oblast",
+        "lat": 52.16528,
+        "lon": 40.47306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dobrinka, Lipetsk Oblast",
+          "url": "https://en.wikipedia.org/wiki/Dobrinka,_Lipetsk_Oblast",
+          "text": "Dobrinka (Russian: До́бринка) is a rural locality (a settlement) and the administrative center of Dobrinsky District of Lipetsk Oblast, Russia, located on the Gryazi–Borisoglebsk railway line, in the upper streams of the Plovutka River. Population: 8,965 (2021 census); 9,572 (2010 census); 10,153 (2002 census); 9,673 (1989 Soviet census).\nIt was founded on May 30, 1802 by the settlers from the town of Dobry (now the village of Dobroye) as the village of Dobrinskiye Vyselki (До́бринские Вы́селки).  In 1869, the Gryazi–Borisoglebsk railway was built, and the station of that railway located in the vicinity of the village was also named Dobrinka. By the beginning of the 20th century, the village and the station grew and merged.\nIn 1967, Dobrinka merged with the village of Chuyevka and was granted urban-type settlement status, which it held until 2005."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "dobrinka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5782,
+    "attempt": 5739,
+    "place_id": "gn-6690805",
+    "input": {
+      "place": {
+        "place_id": "gn-6690805",
+        "name": "Elm Park",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.54297,
+        "lon": 0.19454
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Elm Park",
+          "url": "https://en.wikipedia.org/wiki/Elm_Park",
+          "text": "Elm Park is a suburban planned community in East London and part of the London Borough of Havering. Located 14.3 miles (23.0 km) east-northeast of Charing Cross, it is identified as a district centre in the London Plan with several streets of shops and a priority for regeneration. Prior to the construction of the extensive Elm Park Garden City development in the 1930s it was a scattered settlement of farms in the south of the parish of Hornchurch. Elm Park has been connected to central London by the electrified District line service since 1935 and the planned development of the area formed part of the interwar private housing boom that was interrupted by World War II. After the war Elm Park expanded with social housing and it has formed part of Greater London since 1965."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "elm park",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "elm",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "park",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5783,
+    "attempt": 5740,
+    "place_id": "gn-6691252",
+    "input": {
+      "place": {
+        "place_id": "gn-6691252",
+        "name": "Fallowfield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.43981,
+        "lon": -2.21572
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fallowfield",
+          "url": "https://en.wikipedia.org/wiki/Fallowfield",
+          "text": "Fallowfield is an area of Manchester which had a population of 14,869 at the 2021 census. Historically in Lancashire, it lies 3 miles (5 km) south of Manchester city centre and is bisected east–west by Wilbraham Road and north–south by Wilmslow Road. The former Fallowfield Loop railway line, now a shared use path, follows a route nearly parallel with the east–west main road (Moseley Road/Wilbraham Road).\nThe area has a large student population. The University of Manchester's main accommodation complex – the Fallowfield Campus – occupies a large area in the north; this is adjacent to the university's Owens Park halls of residence and the Firs Botanical Grounds. In the northwest of the suburb is Platt Fields Park, which is formed from part of the land that once belonged to the Platts of Platt Hall."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 135,
+      "fullExtractWords": 135
+    },
+    "banned_terms": [
+      {
+        "term": "fallowfield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

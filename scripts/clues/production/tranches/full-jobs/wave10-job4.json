@@ -1,0 +1,767 @@
+[
+  {
+    "rank": 1875,
+    "attempt": 1861,
+    "place_id": "gn-3530870",
+    "input": {
+      "place": {
+        "place_id": "gn-3530870",
+        "name": "Chilpancingo",
+        "country": "Mexico",
+        "subdivision": "Guerrero",
+        "lat": 17.55228,
+        "lon": -99.50124
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chilpancingo",
+          "url": "https://en.wikipedia.org/wiki/Chilpancingo",
+          "text": "Chilpancingo de los Bravo (commonly shortened to Chilpancingo; Spanish pronunciation: [tʃilpanˈsiŋɡo] ; Nahuatl:  Chilpantzinco (pronounced [t͡ʃiɬpanˈt͡siŋko])) is the capital and second-largest city of the Mexican state of Guerrero. In 2010 it had a population of 187,251 people. The municipality has an area of 2,338.4 km2 (902.9 sq mi) in the south-central part of the state, situated in the Sierra Madre del Sur mountains, on the bank of the Huacapa River. The city is on Federal Highway 95, which connects Acapulco to Mexico City. It is served by Chilpancingo National Airport, which is one of the five airports in the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "chilpancingo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1876,
+    "attempt": 1862,
+    "place_id": "gn-3647637",
+    "input": {
+      "place": {
+        "place_id": "gn-3647637",
+        "name": "Cabudare",
+        "country": "Venezuela",
+        "subdivision": "Lara",
+        "lat": 10.02658,
+        "lon": -69.26203
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cabudare",
+          "url": "https://en.wikipedia.org/wiki/Cabudare",
+          "text": "Cabudare (Spanish pronunciation: [kaβuˈðaɾe], original indigenous name Kabudari), is a city in Lara State, in Venezuela, and capital of the Palavecino Municipality. Located at an elevation of 400 m on the Turbio River, it is on the major west-central freeway, the Autopista Centro Occidental. Due to the growth of the economy in Barquisimeto, Cabudare has become a bedroom community, with new housing construction replacing the sugar cane fields. A minority of the population are still engaged in agriculture within the municipality.\nThere are important private hospitals such as Clínica IDB Cabudare and Hospital Internacional.\nThe city had 78,578 inhabitants (c. 2011), which represented 40.5% of the total population of the Palavecino municipality.\nCabudare currently represents one of the biggest urban growth in Venezuela, due to its commercial and housing expansion. It has several urbanisations and neighbourhoods where a large quantity of people lives. However, in terms of beauty of the municipality, there are some improvements to be made since there has not been a lot of maintenance in important areas by the previous mayors, so it is needing a push from its inhabitants to their governance in order to improve the city.\nIt has been considered as the dormitory city of Barquisimeto, which is the capital or the Lara State, due to its housing growth; however, it also has had commercial and industrial growth."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "cabudare",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1878,
+    "attempt": 1863,
+    "place_id": "gn-4013728",
+    "input": {
+      "place": {
+        "place_id": "gn-4013728",
+        "name": "Ciudad Acuña",
+        "country": "Mexico",
+        "subdivision": "Coahuila",
+        "lat": 29.32322,
+        "lon": -100.95217
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad Acuña",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_Acuña",
+          "text": "Ciudad Acuña (Spanish: Acuña City), commonly referred to simply as Acuña, is a city in the Mexican state of Coahuila. It is located along the Rio Grande, which forms part of the United States–Mexico border, across from Del Rio, Texas, United States.\nCiudad Acuña has two international border crossings: the Lake Amistad Dam International Crossing and the Del Río–Ciudad Acuña International Bridge. It serves as the municipal seat of Acuña Municipality. The area is served by Ciudad Acuña International Airport.\nAccording to 2017 census estimates, the city had a population of 201,778, while the municipality had a population of 214,616. Ciudad Acuña is the fifth-largest city in Coahuila."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad acuna",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "acuna",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1879,
+    "attempt": 1864,
+    "place_id": "gn-4563243",
+    "input": {
+      "place": {
+        "place_id": "gn-4563243",
+        "name": "Carolina",
+        "country": "Puerto Rico",
+        "subdivision": "Carolina",
+        "lat": 18.38078,
+        "lon": -65.95739
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carolina, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Carolina,_Puerto_Rico",
+          "text": "Carolina (; Spanish pronunciation: [kaɾoˈlina]) is a city and municipality on the northeastern coastal plain of Puerto Rico, immediately east of San Juan and Trujillo Alto, north of Gurabo and Juncos, and west of Canóvanas and Loíza. Part of the San Juan metropolitan area, Carolina encompasses 12 barrios, in addition to the downtown area and administrative center of Carolina Pueblo. In Carolina’s coastal region lies the resort and residential district of Isla Verde, where the main international airport of Puerto Rico, the Luis Muñoz Marín International Airport, is located. Carolina is the third-most populous municipality in the archipelago and island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "carolina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1880,
+    "attempt": 1865,
+    "place_id": "gn-643492",
+    "input": {
+      "place": {
+        "place_id": "gn-643492",
+        "name": "Oulu",
+        "country": "Finland",
+        "subdivision": "North Ostrobothnia",
+        "lat": 65.01236,
+        "lon": 25.46816
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oulu",
+          "url": "https://en.wikipedia.org/wiki/Oulu",
+          "text": "Oulu ( OH-loo, Finnish: [ˈou̯lu] ; Swedish: Uleåborg [ʉːlɛɔˈbɔrj] ) is a major port city in Finland and the regional capital of North Ostrobothnia. It is located on the north-western coast of the country, at the mouth of the River Oulu. The population of Oulu is approximately 217,000, while the sub-region has a population of approximately 265,000. It is the 5th most populous municipality in Finland, and the fourth most populous urban area in the country. Oulu is also the most populous city in Northern Finland.\nOulu's neighbouring municipalities are: Hailuoto, Ii, Kempele, Liminka, Lumijoki, Muhos, Pudasjärvi, Tyrnävä and Utajärvi. Oulu is the third northernmost city in the world with a population of over 100,000, after Murmansk and Norilsk in Russia.\nDue to its large population and geopolitical, economic and cultural-historical position, Oulu has been called the \"capital of Northern Finland\". Oulu is also considered one of Europe's \"living labs\", where residents experiment with new technologies (such as NFC tags and ubi-screens) on a community-wide scale. Although only in the top 2% of universities, the University of Oulu is regionally renowned in the field of information technology. Oulu has also been very successful in recent city image surveys; in a study published by the Finnish Economic Survey in 2008, Oulu received the best image rating among large cities in the country, including ratings from respondents in all provinces. In the 2023 T-Media survey, Oulu was tied with Kuopio as the second most attractive city in Finland, while Tampere was ranked first. In 2025, Oulu had the cleanest air quality among all European cities according to European Environment Agency (EEA).\nOnce known for wood tar and salmon, Oulu has become a major high-tech centre, particularly in IT and wellness technology. In 2024, Oulu placed third in the European Commission’s Capital of Innovation Awards (iCapital) in the Rising Innovative Cities category. Other important industries include wood processing, chemicals, pharmaceuticals, paper and steel.\nOulu has been selected as the European Capital of Culture for 2026 together with Trenčín, Slovakia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 336
+    },
+    "banned_terms": [
+      {
+        "term": "oulu",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1881,
+    "attempt": 1866,
+    "place_id": "gn-8411054",
+    "input": {
+      "place": {
+        "place_id": "gn-8411054",
+        "name": "Madhyapur Thimi",
+        "country": "Nepal",
+        "subdivision": "Bagmati Province",
+        "lat": 27.68056,
+        "lon": 85.3875
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Madhyapur Thimi",
+          "url": "https://en.wikipedia.org/wiki/Madhyapur_Thimi",
+          "text": "Madhyapur-Thimi, also known as Thimi, (Nepali: मध्यपुर-थिमि) is a municipality in Bhaktapur District in the Bagmati Zone of central Nepal. Thimi lies between Kathmandu, Lalitpur and Bhaktapur in the Kathmandu Valley. It is one of the ancient cultural and historical places along the trade route from Bhaktapur to Kathmandu. The city is situated on elevated land and occupies an area of 11.47 square kilometres (4.43 sq mi), divided into nine administrative wards.\nThe mayor as of 2022 is Surendra Shrestha of the Nepali Congress.\nThe deputy mayor as of 2022 is Bijaya Shrestha of the Communist Party of Nepal (Maoist)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "madhyapur thimi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "madhyapur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "thimi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1882,
+    "attempt": 1867,
+    "place_id": "gn-1275391",
+    "input": {
+      "place": {
+        "place_id": "gn-1275391",
+        "name": "Bodhan",
+        "country": "India",
+        "subdivision": "Telangana",
+        "lat": 18.66208,
+        "lon": 77.88581
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bodhan",
+          "url": "https://en.wikipedia.org/wiki/Bodhan",
+          "text": "Bodhan is a historic town and municipal city in the Nizamabad district of Telangana, India. Located about 27 km west of Nizamabad city, Bodhan Town is known for its rich ancient and medieval history. The town, once called Podana or Podanapura, was an important center during the Satavahana dynasty and later served as a regional capital under the Rashtrakutas. Over the centuries, Bodhan came under the rule of the Chalukyas, Kakatiyas, Bahmani Sultans, Qutb Shahis, at last the Nizams of Hyderabad, leaving behind a blend of cultural and architectural heritage, The 7th Nizam built Asia's largest sugar factory during 1911-1948 has produced sugars in large volume and exported across the world and this is how trade evolved and many people used to be employed and became growing city in 20th Century.Today, Bodhan is a growing and culturally famous for the Sri Ekachakreshwara Temple, Buddhist relics, Sri Indranarayana Temple also known for 100 pillared temple and its role as a commercial hub in north Telangana. The Chakreshwara Shiva Temple, The Renuka Yellamma Temple, Bheemuni Gutta at Rakasipet, as well as other prominent historical places such as the Pandu Teertha (Pandavas dug lake during the exile to quench the thirst of villagers of Ekachakrapuram who helped them to stay and ) and Chakra Teertha was built for The Chakreshwara Swamy seva and served the village with fresh water till the beginning of 20th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 232,
+      "fullExtractWords": 232
+    },
+    "banned_terms": [
+      {
+        "term": "bodhan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1883,
+    "attempt": 1868,
+    "place_id": "gn-3361025",
+    "input": {
+      "place": {
+        "place_id": "gn-3361025",
+        "name": "Stellenbosch",
+        "country": "South Africa",
+        "subdivision": "Western Cape",
+        "lat": -33.93462,
+        "lon": 18.86676
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stellenbosch",
+          "url": "https://en.wikipedia.org/wiki/Stellenbosch",
+          "text": "Stellenbosch (; Afrikaans: [ˈstælənˌbɔs]) is a town in the Western Cape province of South Africa, situated about 50 kilometres (31 miles) east of Cape Town, along the banks of the Eerste River at the foot of the Stellenbosch Mountain. The town became known as the City of Oaks or Eikestad in Afrikaans and Dutch due to the large number of oak trees that were planted by its founder, Simon van der Stel, to grace the streets and homesteads.\nStellenbosch is a popular tourist destination due to its history as the second oldest town in South Africa (dating back to 1679), its many historic buildings that are typical of Cape Dutch architecture, its location in the centre of many famous wine farms, and its variety of cafes, restaurants, boutiques and art galleries. The town is home to Stellenbosch University, one of South Africa's oldest universities, whose campus and buildings occupies large swathes of the town centre. Technopark Stellenbosch, a science park, is situated on the southern side of the town, and serves as a base for many large companies and startups, including Capitec Bank (South Africa's second largest retail bank).\nStellenbosch has its own municipality (incorporating the neighbouring towns of Pniel and Franschhoek), adjoining the metropolitan area of the City of Cape Town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 212,
+      "fullExtractWords": 212
+    },
+    "banned_terms": [
+      {
+        "term": "stellenbosch",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1884,
+    "attempt": 1869,
+    "place_id": "gn-3622247",
+    "input": {
+      "place": {
+        "place_id": "gn-3622247",
+        "name": "Limón",
+        "country": "Costa Rica",
+        "subdivision": "Limón Province",
+        "lat": 9.99074,
+        "lon": -83.03596
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Limón",
+          "url": "https://en.wikipedia.org/wiki/Lim%C3%B3n",
+          "text": "Limón (Spanish pronunciation: [liˈmon]), also known as Puerto Limón, is the capital city of both the province and canton of the same name. One of Costa Rica's seven \"middle cities\" (i.e., main cities outside of San José's Greater Metropolitan Area), Limón has a population of 71,514, which made it, as of 2022, the most-populous city in the country outside of the Greater Metropolitan Area and the second most-populous district in the nation.\nFounded in 1854 by Philipp J. J. Valentini and officially established as a district in 1870 during the Liberal State, Limón is the only planned city in the country built in the 19th century. Located in the Caribbean coast, its purpose was to become the country's main port, a role the city still retains to this day, given its strategic location in the Caribbean Sea, close to the Panama Canal, to connect Costa Rica with North America, South America, the Caribbean, and Europe. The Moín Container Terminal, operated by Dutch-based APM Terminals, and the nearby Port of Moín, operated by the state-institution JAPDEVA, serve as the main economic ports for the country. The Port of Limón, located just South downtown, receives both cargo and cruise ships, though plans to convert it into a passenger terminal are underway.\nThe city is of historical significance for the country, as it was one of Christopher Columbus' moorings during his fourth and last voyage. On 25 September 1502, Colón recalls landing on a town named by the locals as Cariay, with the nearby Quiribrí island just offshore.\nToday, Limón is recognized as one of Costa Rica's most culturally and racially diverse cities. It is one of the main communities of Afro-Costa Ricans in the country, mainly as a result of people of Jamaican descent arriving for the construction of the Atlantic railroad in the country, and a subsequent travel ban from the central government, which limited people of Afro-Caribbean origin to move outside of the Limón Province. Aside from Spanish, the Afro-Costa Rican community also speaks the English-based Limonese Creole.\nLimón faces numerous problems, with the main one being the skyrocketing crime, as drug cartels confluence in the city due to its port being an important part of their drug-trafficking schemes, resulting in an alarming murder rate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 209,
+      "fullExtractWords": 375
+    },
+    "banned_terms": [
+      {
+        "term": "limon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1885,
+    "attempt": 1870,
+    "place_id": "gn-2820860",
+    "input": {
+      "place": {
+        "place_id": "gn-2820860",
+        "name": "Tübingen",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.52266,
+        "lon": 9.05222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tübingen",
+          "url": "https://en.wikipedia.org/wiki/T%C3%BCbingen",
+          "text": "Tübingen (; German: [ˈtyːbɪŋən] ; Swabian: Dibenga) is a traditional university city in central Baden-Württemberg, Germany, 30 km (19 mi) south of the state capital, Stuttgart. With students accounting for almost one in three of Tübingen's 90,000 residents, the city has one of the youngest profiles in Germany, with an average age of just under 40.\nFounded in 1477, Eberhard Karl University is one of the oldest universities north of the Alps. The university associated Tübingen in the 19th century with the German-patriotic student Burschenschaften, whose large fraternity houses are still a notable feature of the town; in the years between the World Wars, with the rise of National Socialism; and in the German Federal Republic with the emergence of the liberal-left Greens, currently the largest tendency in local government.\nExceptionally, Tübingen survived the Second World War with its historic fabric almost wholly intact. It has since experienced two major expansions: in the 1960s, the construction of university institutes and new housing on the high ground to the north, and, following the end of the Cold War and the evacuation of extensive military bases by the French, the new mixed-use Loretto and French Quarter to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 197,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "tubingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1886,
+    "attempt": 1871,
+    "place_id": "gn-3167096",
+    "input": {
+      "place": {
+        "place_id": "gn-3167096",
+        "name": "Sassari",
+        "country": "Italy",
+        "subdivision": "Sardinia",
+        "lat": 40.72586,
+        "lon": 8.55552
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sassari",
+          "url": "https://en.wikipedia.org/wiki/Sassari",
+          "text": "Sassari (US:  SAH-sər-ee, SAH-sar-ee; Italian: [ˈsassari] ; Sassarese: Sàssari [ˈsasːari]; Sardinian: Tàtari [ˈtataɾi]) is the second-largest city in the autonomous island region of Sardinia in Italy, as well as the capital and largest of its metropolitan city with a population of 120,231 as of 2026, and a functional urban area of about 260,000 inhabitants. One of the oldest cities on the island, it contains a considerable collection of art.\nSince its origins at the turn of the 12th century, Sassari has been ruled by the Giudicato of Torres, the Pisans, as an independent republic in alliance with Genoa, by the Aragonese and the Spanish, all of whom have contributed to Sassari's historical and artistic heritage. Sassari is a city rich in art, culture and history, and is well known for its palazzi, the Fountain of the Rosello, and its elegant neoclassical architecture, such as Piazza d'Italia (Italy Square) and the Teatro Civico (Civic Theatre).\nAs Sardinia's second most populated city, it has a considerable amount of cultural, touristic, commercial and political importance in the island. The city's economy mainly relies on tourism and services, however also partially on research, construction, pharmaceuticals and the petroleum industry."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 195,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "sassari",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1887,
+    "attempt": 1872,
+    "place_id": "gn-3176854",
+    "input": {
+      "place": {
+        "place_id": "gn-3176854",
+        "name": "Foligno",
+        "country": "Italy",
+        "subdivision": "Umbria",
+        "lat": 42.95488,
+        "lon": 12.70268
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Foligno",
+          "url": "https://en.wikipedia.org/wiki/Foligno",
+          "text": "Foligno (Italian pronunciation: [foˈliɲɲo]; Southern Umbrian: Fuligno) is an ancient town of Italy in the province of Perugia in east central Umbria, on the Topino river where it leaves the Apennines and enters the wide plain of the Clitunno river system. It is located 40 kilometres (25 miles) south-east of Perugia, 10 km (6 mi) north-north-west of Trevi and 6 km (4 mi) south of Spello.\nWhile Foligno is an active bishopric, one of its civil parishes, San Giovanni Profiamma, is the historical site of the former bishopric of Foro Flaminio, which remains a Latin Catholic titular see.\nFoligno railway station forms part of the main line from Rome to Ancona, and is the junction for Perugia; it is thus an important rail centre, with repair and maintenance yards for the trains of central Italy, and was therefore subjected to severe Allied aerial bombing in World War II, responsible for its relatively modern aspect, although it retains some medieval monuments. \nOf its Roman past no significant trace remains, with the exception of the regular street plan of the centre. Other resources include sugar refineries and metallurgical, textile, building materials and paper and timber industries. \nAfter the war, the city's position in the plain and again its rail connections have led to a considerable suburban spread with the attendant problems of traffic and air pollution, as well as a severe encroachment on the Umbrian wetlands. Foligno is on an important interchange road junction in central Italy and 2 km (1 mi) away from the centre of the city there is the Foligno Airport."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 194,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "foligno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1888,
+    "attempt": 1873,
+    "place_id": "gn-5337696",
+    "input": {
+      "place": {
+        "place_id": "gn-5337696",
+        "name": "Claremont",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.09668,
+        "lon": -117.71978
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Claremont, California",
+          "url": "https://en.wikipedia.org/wiki/Claremont,_California",
+          "text": "Claremont ( KLAIR-mont) is a suburban city in eastern Los Angeles County, California, United States, 30 miles (48 km) east of Los Angeles. It lies in the San Gabriel Valley at the foothills of the San Gabriel Mountains. As of the 2010 census, it had a population of 34,926, and in 2020 the population was 37,266.\nClaremont is home to the seven Claremont Colleges and several other educational institutions and is known for its tree-lined streets with numerous historic buildings. Because of this, it is sometimes referred to as \"The City of Trees and Ph.Ds.\" It was named the best suburb in the West by Sunset Magazine in 2016, which described it as a \"small city that blends worldly sophistication with small-town appeal.\" In 2018, Niche rated Claremont as the 17th-best place to live in the Los Angeles area out of 658 communities it evaluated, based on crime, cost of living, job opportunities, and local amenities.\nThe city is primarily residential, with a significant portion of its commercial activity located in \"The Village,\" a popular collection of street-front small stores, boutiques, art galleries, offices, and restaurants adjacent to and west of the Claremont Colleges. The Village was expanded in 2007 with a multi-use development that included a cinema, a boutique hotel, retail space, offices, and a parking structure on the site of an old citrus packing plant west of Indian Hill Boulevard. Claremont also hosts several large retirement communities.\nClaremont has been a winner of the National Arbor Day Association's Tree City USA award for 22 consecutive years. When the city incorporated in 1907, local citizens started what has become the city's tree-planting tradition. Claremont is one of the few remaining places in North America with American elm trees that have not been exposed to Dutch elm disease. The stately trees line Indian Hill Boulevard in the vicinity of the city's Memorial Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 194,
+      "fullExtractWords": 313
+    },
+    "banned_terms": [
+      {
+        "term": "claremont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1889,
+    "attempt": 1874,
+    "place_id": "gn-3089658",
+    "input": {
+      "place": {
+        "place_id": "gn-3089658",
+        "name": "Oświęcim",
+        "country": "Poland",
+        "subdivision": "Lesser Poland",
+        "lat": 50.03437,
+        "lon": 19.21037
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oświęcim",
+          "url": "https://en.wikipedia.org/wiki/O%C5%9Bwi%C4%99cim",
+          "text": "Oświęcim is a town in the Lesser Poland Voivodeship in southern Poland, situated 33 kilometres (21 mi) southeast of Katowice, near the confluence of the Vistula (Wisła) and Soła rivers.\nOświęcim dates back to the 12th century, when it was an important castellan seat. From 1315 to 1457 it was the seat of a local line of the Piast dynasty, and from 1564 to 1772 it was a royal city of the Kingdom of Poland, with the Ducal and Royal Castle and several medieval Gothic churches among the city's landmarks. Located on the east-west trade route, it was an important hub for trade, especially in salt from Wieliczka. In the interwar period, Oświęcim was a garrison town for the Polish Army, and during the German occupation of Poland in World War II, the former barracks were expanded to host the infamous German Nazi Auschwitz concentration camp (also known as KL or KZ Auschwitz Birkenau), now the Auschwitz-Birkenau State Museum, a UNESCO World Heritage Site.\nOświęcim is a railroad junction, a center of chemical, electrical machinery and building materials industries, and home to Unia Oświęcim, one of the most accomplished Polish ice hockey teams."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 193,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "oswiecim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1890,
+    "attempt": 1875,
+    "place_id": "gn-5102076",
+    "input": {
+      "place": {
+        "place_id": "gn-5102076",
+        "name": "Nutley",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.82232,
+        "lon": -74.15987
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nutley, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Nutley,_New_Jersey",
+          "text": "Nutley is a township in Essex County of the U.S. state of New Jersey. As of the 2020 United States census, the township's population was 30,143, an increase of 1,773 (+6.2%) from the 2010 census count of 28,370, which in turn reflected an increase of 1,008 (+3.7%) from the 27,362 counted in the 2000 census.\nWhat is now Nutley was originally incorporated as Franklin Township by an act of the New Jersey Legislature on February 18, 1874, from portions of Belleville Township. Nutley was incorporated as a town on March 5, 1902, replacing Franklin Township. In 1981, the town was one of seven Essex County municipalities to pass a referendum to become a township, joining four municipalities that had already made the change, of what would ultimately be more than a dozen Essex County municipalities to reclassify themselves as townships in order take advantage of federal revenue sharing policies that allocated townships a greater share of government aid to municipalities on a per capita basis.\nNutley derived its name from the estate of the Satterthwaite family, established in 1844, which stretched along the Passaic River and from an artist's colony in the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 193,
+      "fullExtractWords": 193
+    },
+    "banned_terms": [
+      {
+        "term": "nutley",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1891,
+    "attempt": 1876,
+    "place_id": "gn-3457736",
+    "input": {
+      "place": {
+        "place_id": "gn-3457736",
+        "name": "Mariana",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -20.37778,
+        "lon": -43.41611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mariana, Minas Gerais",
+          "url": "https://en.wikipedia.org/wiki/Mariana,_Minas_Gerais",
+          "text": "Mariana (Portuguese: [maɾiˈɐ̃nə]) is a municipality in the Southeastern state of Minas Gerais, Brazil. As of 2022, the city had a population of 61,387, estimated to be at around 64,058 in 2024, making it the 59th most populous city in its state. Known for its characteristic colonial-style architecture, Mariana is the oldest settlement in Minas Gerais, as well as the first to be officially ordained with the status of \"city\", in the mid-18th century.\nSituated along the lower contours of a river valley and surrounded by many rocky escarpments, Mariana has both historical and contemporary ties to the mining industry, having been founded on the very same spot where gold was first spotted by Portuguese explorers in the late 17th century. Although mining is largely responsible for the historical economic development of the region, the city of Mariana has also been at the centre of an unprecedented disaster brought about by the mining industry, with the 2015 Samarco levee rupture and floods.\nDue to its cultural legacy and the active conservation of its many historical sites, Mariana is a popular tourist destination, making tourism another important component of the local economy. As such, the city is part of the Caminho dos Diamantes (Portuguese for 'Diamonds Path') section of the Estrada Real, the largest tourist route in Brazil, featuring dozens of other historically significant destinations – such as the town of Ouro Preto, only 18 kilometres (11 mi) west of Mariana."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 191,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "mariana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1892,
+    "attempt": 1877,
+    "place_id": "gn-4500546",
+    "input": {
+      "place": {
+        "place_id": "gn-4500546",
+        "name": "Atlantic City",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.36415,
+        "lon": -74.42306
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Atlantic City, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Atlantic_City,_New_Jersey",
+          "text": "Atlantic City, sometimes referred to by its initials A.C., is a seaside resort city in Atlantic County, in the U.S. state of New Jersey.\nAtlantic City comprises the second half of the Atlantic City–Hammonton metropolitan statistical area, which encompasses those cities and all of Atlantic County for statistical purposes. Both Atlantic City and Hammonton, as well as the surrounding Atlantic County, are culturally tied to Philadelphia and constitute part of the larger Philadelphia combined statistical area, along with other smaller South Jersey metros such as Vineland–Bridgeton (Cumberland County) and Ocean City (Cape May County).\nLocated in South Jersey on Absecon Island and known for its casinos, nightlife, boardwalk, and Atlantic Ocean beaches and coastline, the city is prominently known as the \"Las Vegas of the East Coast\" and inspired the U.S. version of the board game Monopoly, which uses various Atlantic City street names and destinations in the game. New Jersey voters legalized casino gambling in Atlantic City in 1976, and the first casino opened two years later. From 1921 to 2004, Atlantic City hosted the Miss America pageant, which later returned to the city from 2013 to 2018.\nAs of the 2020 census, the city had a population of 38,497, a decline of 1,061 (c. 2.7%) from the 2010 census count of 39,558, which in turn reflected a decrease of 959 (c. 2.4%) from the 40,517 counted in the 2000 census.\nThe city was incorporated on May 1, 1854, from portions of Egg Harbor Township and Galloway Township. It is located on Absecon Island and borders Absecon, Brigantine, Egg Harbor Township, Galloway Township, Pleasantville, Ventnor City, and the Atlantic Ocean."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 189,
+      "fullExtractWords": 271
+    },
+    "banned_terms": [
+      {
+        "term": "atlantic city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "atlantic",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1893,
+    "attempt": 1878,
+    "place_id": "gn-1687164",
+    "input": {
+      "place": {
+        "place_id": "gn-1687164",
+        "name": "Sariaya",
+        "country": "Philippines",
+        "subdivision": "Calabarzon",
+        "lat": 13.9624,
+        "lon": 121.5265
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sariaya",
+          "url": "https://en.wikipedia.org/wiki/Sariaya",
+          "text": "Sariaya ([sɐɾˈjajɐ]), officially the Municipality of Sariaya (Tagalog: Bayan ng Sariaya),  is a municipality in the province of Quezon, Philippines. According to the 2024 census, it has a population of 172,018 people, making it the second most populous local government unit (LGU) in Quezon after the capital city of Lucena, and the most populous municipality in the said province.\nAs the only Mount Banahaw town in both Quezon and Laguna Provinces that has a sea coast, the town is famous for its pristine beach resorts and nature-trekking activities that lead adventurous hikers to the peak of mythical Mount Banahaw. With more than a hundred of cultural properties and ancestral houses mostly built in Art Deco architecture within the municipality, Sariaya is considered as the Heritage Town of Quezon and the Art Deco Capital of Southern Luzon. This heritage town has been branded by various cultural experts as a 'cultural gem worthy of a UNESCO designation.' The local government of the municipality with the National Commission for Culture and the Arts of the Philippines were designated to work for the heritage town's inclusion in the UNESCO World Heritage List."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 188,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "sariaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1894,
+    "attempt": 1879,
+    "place_id": "gn-4161422",
+    "input": {
+      "place": {
+        "place_id": "gn-4161422",
+        "name": "Lake Worth Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.61708,
+        "lon": -80.07231
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake Worth Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Lake_Worth_Beach,_Florida",
+          "text": "Lake Worth Beach, previously named Lake Worth, is a city in east-central Palm Beach County, Florida, United States, located approximately 63 miles (101 km) north of Miami. The city's name is derived from the body of water along its eastern border known as the Lake Worth Lagoon, which was named for General William J. Worth, who led United States Army forces during the last part of the Second Seminole War. Lake Worth Beach is situated south of West Palm Beach, southeast of Lake Clarke Shores, east of Palm Springs, and north of Lantana, while a small section of the city also partitions the town of Palm Beach. The 2010 census recorded a population of 34,910, which increased to 42,219 in the 2020 census. Lake Worth Beach is within the Miami metropolitan area, which was home to an estimated 6,138,333 people in 2020.\nWhile archaeological evidence indicates that the Jaega inhabited nearby areas thousands of years ago, Samuel and Fannie James, an African American couple, became the first known settlers in modern-day Lake Worth Beach in 1885, filing a homestead claim on 187 acres (76 ha). Fannie James operated the Jewell Post Office from 1889 to 1903 to serve the few residents who lived between Lantana and West Palm Beach. A land development scheme by Bryant & Greenwood in the 1910s allowed buyers to receive a parcel of land if they purchased a lot in present-day Greenacres. Consequently, the population increased from 38 in July 1912 to 308 only five months later. The town of Lake Worth was incorporated in June 1913. Its first elected mayor was James Love, a carpenter and member of the Socialist Party of America. Thereafter, Lake Worth grew rapidly during the 1920s land boom and in the decades following World War II. Residents voted to change the official name to Lake Worth Beach in 2019.\nToday, Lake Worth Beach is a city featuring several historic neighborhoods, such as the National Register of Historic Places-listed College Park and Old Lucerne, while the downtown area also has dozens of buildings that are part of the Historic Old Town Commercial District. Lake Worth Beach is one of the most ethnically and racially diverse municipalities in Palm Beach County, with a large working class population compared to other coastal cities in Palm Beach County. Several cultural events are hosted annually in the city, including a street painting festival, several ethnic festivals, and Palm Beach Pride, one of the largest LGBTQIA+ pride festivals in Florida."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 185,
+      "fullExtractWords": 414
+    },
+    "banned_terms": [
+      {
+        "term": "lake worth beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "worth",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1895,
+    "attempt": 1880,
+    "place_id": "gn-4154568",
+    "input": {
+      "place": {
+        "place_id": "gn-4154568",
+        "name": "Estero",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.43814,
+        "lon": -81.80675
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Estero, Florida",
+          "url": "https://en.wikipedia.org/wiki/Estero,_Florida",
+          "text": "Estero (Spanish for \"estuary\") is an incorporated village in Lee County, Florida, United States, located directly beside the first aquatic nature preserve established in Florida: The Estero Bay Aquatic Preserve, otherwise referred to as Estero Bay Preserve State Park which is within Estero Bay, Florida. At the time of the 2010 census, Estero was an unincorporated community and census-designated place, but incorporated as a village on the last calendar date of 2014. It is part of the Cape Coral-Fort Myers, Florida Metropolitan Statistical Area. As of the 2020 census, the population was 36,939.\nSandwiched along Florida's Gulf Coast between Naples to the south and Fort Myers to the north, Estero is known as a popular destination for high-end shopping and dining as well as for exploring history and wildlife at its two state parks: Mound Key Archaeological State Park, which is only attainable by boat, canoe, or kayak and the Koreshan State Historic Site. Estero is also known for its many golfing opportunities as there are 11 golf courses within its borders consisting of 5 public and 6 private courses. There are also another 89 golf courses within 20 miles of Estero, including 23 public, 1 municipal, and 65 private courses. Estero encompasses some 35 gated communities and is recognized as one of the safest places in Florida.\nEstero is the home of Hertz Arena, which hosts the home games for the Florida Everblades ECHL ice hockey team. Florida Gulf Coast University borders the Estero village limits and the Southwest Florida International Airport is located less than 5 miles to the north of Estero. The corporate headquarters of Hertz Corporation is located in Estero.\nIn 2019, Estero was ranked #8 by USA Today for cities where the most people own their homes for having a homeownership rate of 85.5%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 180,
+      "fullExtractWords": 299
+    },
+    "banned_terms": [
+      {
+        "term": "estero",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

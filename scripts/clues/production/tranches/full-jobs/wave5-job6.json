@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 910,
+    "attempt": 901,
+    "place_id": "gn-3657509",
+    "input": {
+      "place": {
+        "place_id": "gn-3657509",
+        "name": "Guayaquil",
+        "country": "Ecuador",
+        "subdivision": "Guayas",
+        "lat": -2.19616,
+        "lon": -79.88621
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guayaquil",
+          "url": "https://en.wikipedia.org/wiki/Guayaquil",
+          "text": "Guayaquil (Spanish pronunciation: [ɡwaʝaˈkil] ), officially Santiago de Guayaquil, is the capital of Guayas Province and the seat of Guayaquil Canton. It is the largest city in Ecuador and also the nation's economic capital and main port. The city is located on the west bank of the Guayas River, which flows into the Pacific Ocean at the Gulf of Guayaquil.\nWith a population of more than 3,000,000, it is the most populous city in the country, the fifth largest in the Andean Community. However, its urban fabric extends beyond its official urban parishes, encompassing nearby cities and parishes, making it the most populous urban agglomeration in the nation, and fifth in the Andean Community. As the largest city, it is one of the two main development poles of the country—alongside Quito, the national capital—hosting Ecuador's main business, financial, cultural, and sports institutions.\nAfter several failed founding attempts, it was definitively established in July 25, 1535 under the name \"Santiago de Guayaquil\" as a shipyard and port for trade in service of the Spanish Empire. From that moment, it became a key hub in the economy of the Spanish colony and later of the nation. Guayaquil has been the site of major revolutions and uprisings throughout its history, being the first Ecuadorian city to definitively achieve its independence from Spain in October 9, 1820. It later served as the capital of the Free Province of Guayaquil, which was subsequently annexed to Gran Colombia. Since 1830, it has been part of the Republic of Ecuador, playing a significant economic and political role.\nGuayaquil stands out among Ecuadorian cities for its high use of mass transit, total population density, and diversity. The city's port is one of the most important on the eastern Pacific coast. About 70% of the country's private exports leave through its facilities, and 83% of imports enter through them."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 310
+    },
+    "banned_terms": [
+      {
+        "term": "guayaquil",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 911,
+    "attempt": 902,
+    "place_id": "gn-3860443",
+    "input": {
+      "place": {
+        "place_id": "gn-3860443",
+        "name": "Comodoro Rivadavia",
+        "country": "Argentina",
+        "subdivision": "Chubut",
+        "lat": -45.86256,
+        "lon": -67.494
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Comodoro Rivadavia",
+          "url": "https://en.wikipedia.org/wiki/Comodoro_Rivadavia",
+          "text": "Comodoro Rivadavia (Spanish pronunciation: [komoˈðoɾo ɾiβaˈðaβja]), often shortened to Comodoro ( KOM-ə-DOR-oh), is a city in the Patagonian province of Chubut in southern Argentina, located on the San Jorge Gulf, an inlet of the Atlantic Ocean, at the foot of the Chenque Hill. Comodoro Rivadavia is the most important city of the San Jorge Basin, and is the largest city in Chubut as well as the largest city south of the southern 45th parallel.\nThe city is often referred to simply as Comodoro. It was at one time the capital of the Comodoro Rivadavia Territory, which existed from 1943 to 1955. The territory was a part of Chubut before and after its creation, and the city became the capital of the Escalante Department. It had a population of 137,061 at the 2001 census [INDEC], and grew to 182,631 by the 2010 census. Comodoro Rivadavia is a commercial and transportation center for the surrounding region, the largest city of Chubut, and an important export point for a leading Argentine petroleum district. A 1,770 km pipeline conveys natural gas from Comodoro Rivadavia to Buenos Aires.\nFounded by decree on February 23, 1901, as a port for the inland settlement of Sarmiento, the first settler was Francisco Pietrobelli. Early settlers included Boers escaping British rule in South Africa, as well as Welsh settlers. The town was named in honour of shipping minister Martín Rivadavia, a proponent of the development of Southern Argentina. It has been prosperous since 1907, when a drilling crew searching for water struck oil at a depth of 539 meters.\nThe city is the home of the main faculty of the National University of Patagonia San Juan Bosco. Its cathedral is the seat of the Diocese of Comodoro Rivadavia, of which the Bishop is, since 2005, Virginio Domingo Bressanelli. The Cathedral is dedicated to San Juan Bosco, the only cathedral in the world dedicated to the founder of the Salesian Order. It was inaugurated in 1979, although the crypt itself had been dedicated in 1949.\nRada Tilly is a beach resort and now suburb 12 km south of Comodoro. The National Museum of Petroleum is located in the General Mosconi neighbourhood 3 km north of central Comodoro Rivadavia. It was opened in 1987 by the state-owned oil company YPF.\nComodoro Rivadavia is served by General Enrique Mosconi International Airport (Airport Code CRD/SAVC) with daily flights to Buenos Aires and many other Patagonian cities, as it is the main hub of LADE.  An area control centre is located here, providing enroute air traffic control services over southern Argentina and the Falkland Islands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 431
+    },
+    "banned_terms": [
+      {
+        "term": "comodoro rivadavia",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "comodoro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "rivadavia",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 912,
+    "attempt": 903,
+    "place_id": "gn-500004",
+    "input": {
+      "place": {
+        "place_id": "gn-500004",
+        "name": "Rybinsk",
+        "country": "Russia",
+        "subdivision": "Yaroslavl Oblast",
+        "lat": 58.04562,
+        "lon": 38.83811
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rybinsk",
+          "url": "https://en.wikipedia.org/wiki/Rybinsk",
+          "text": "Rybinsk (Russian: Рыбинск, Russian pronunciation: [ˈrɨbʲɪnsk]) is the second-largest city of Yaroslavl Oblast, Russia. It lies on both banks of the Volga River at its confluence with the Sheksna and Cheremukha, about 82 kilometres (51 mi) northwest of Yaroslavl and 270 kilometres (168 mi) north of Moscow. As of the 2021 Census, its population was 177,295 (200,771 in 2010).\nHistorically a major transshipment and grain trading hub on the upper Volga and the Vyshny Volochyok/Mariinsk–Tikhvin waterway system, Rybinsk expanded rapidly in the 18th–19th centuries and was chartered as a town in 1777. In the Soviet era it developed into an engineering center and inland river port associated with the construction of the Rybinsk Reservoir and Rybinsk Hydroelectric Station. The city is noted for its 19th‑century merchant architecture along the Volga embankment and is sometimes included in extended Golden Ring of Russia itineraries. Rybinsk has borne several names: Ust‑Sheksna (until 1504), Rybnaya Sloboda (until 1777), Shcherbakov (1946–1957), and Andropov (1984–1989). In 2021 Rybinsk was awarded the honorary title “City of Labour Valour”."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 142,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "rybinsk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 913,
+    "attempt": 904,
+    "place_id": "gn-1625822",
+    "input": {
+      "place": {
+        "place_id": "gn-1625822",
+        "name": "Surabaya",
+        "country": "Indonesia",
+        "subdivision": "East Java",
+        "lat": -7.24917,
+        "lon": 112.75083
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Surabaya",
+          "url": "https://en.wikipedia.org/wiki/Surabaya",
+          "text": "Surabaya is the capital and largest city of East Java province and the second-largest city in Indonesia, after Jakarta. Located on the northeastern corner of Java island, on the Madura Strait, it is one of the earliest port cities in Southeast Asia. According to the National Development Planning Agency, Surabaya is one of the four main central cities of Indonesia, alongside Jakarta, Medan, and Makassar. The city covers a land area of 334.50 km2, and had a population of 2,874,314 within its city limits at the 2020 census. With 3,003,860 people living in the city as of mid 2025 (comprising 1,487,077 males and 1,516,783 females) and over 10 million in the extended Surabaya metropolitan area, according to the latest official estimate, Surabaya is the second-largest metropolitan area in Indonesia. Surabaya metropolitan area also has ASEAN's 6th largest economy, ahead of Hanoi. In 2023, the city's GRP PPP was estimated at US$150.294 billion.\nThe city was settled in the 10th century by the Kingdom of Janggala, one of the two Javanese kingdoms that was formed in 1045 when Airlangga abdicated his throne in favor of his two sons (the other was the Kediri kingdom). In the late 15th and 16th centuries, Surabaya grew to be a duchy, a major political and military power as well as a port in eastern Java, probably under the Majapahit empire. At that time, Surabaya was already a major trading port, owing to its location on the River Brantas delta and the trade route between Malacca and the Spice Islands via the Java Sea. During the decline of Majapahit, the lord of Surabaya resisted the rise of the Demak Sultanate and only submitted to its rule in 1530. Surabaya became independent after the death of Sultan Trenggana of Demak in 1546.\nFrom the 18th century until the mid-20th century, Surabaya was the largest city in the Dutch East Indies and the main trading hub for the Indonesian archipelago, competing with Shanghai and Hong Kong.\nSurabaya has been one of the busiest trading city ports in Asia. Principal exports from the port include sugar, tobacco, and coffee. Its rich history as a trading port has led to a strong financial infrastructure with financial institutions such as banks, insurance, and export-import companies. The economy is influenced by the recent growth in international industries and the completion of the Suramadu Bridge. The city is home to a large shipyard and numerous specialized naval schools. The Bank of Indonesia has also made plans for Surabaya to be the Islamic financial center of Indonesia. Surabaya is classified as a Gamma− (Gamma minus) global city according to the World Cities 2024 - GaWC rankings by the Globalization and World Cities Research Network."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 450
+    },
+    "banned_terms": [
+      {
+        "term": "surabaya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 914,
+    "attempt": 905,
+    "place_id": "gn-1795855",
+    "input": {
+      "place": {
+        "place_id": "gn-1795855",
+        "name": "Shaoxing",
+        "country": "China",
+        "subdivision": "Zhejiang",
+        "lat": 30.00237,
+        "lon": 120.57864
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shaoxing",
+          "url": "https://en.wikipedia.org/wiki/Shaoxing",
+          "text": "Shaoxing is a prefecture-level city on the southern shore of Hangzhou Bay in northeastern Zhejiang province, China. Located on the south bank of the Qiantang River estuary, it borders Ningbo to the east, Taizhou to the southeast, Jinhua to the southwest, and Hangzhou to the west. As of the 2020 census, its population was 5,270,977 inhabitants, among which 2,958,643 (Keqiao, Yuecheng and Shangyu urban districts) lived in the built-up (or metro) area of Hangzhou–Shaoxing, with a total of 13,035,326 inhabitants.\nNotable residents of Shaoxing include Wang Xizhi, the parents of Zhou Enlai, Lu Xun, and Cai Yuanpei. It is also noted for Shaoxing wine, meigan cai, and stinky tofu, and was featured on A Bite of China. Its local variety of Chinese opera sung in the local dialect and known as Yue opera is second in popularity only to Peking opera. In 2010, Shaoxing celebrated the 2,500th anniversary of the founding of the city.\nEconomically, the city is driven by manufacturing of textiles, electronics, and energy-efficient lighting. Zhejiang has the fifth highest per capita GDP in the nation among all the provinces and provincial-level municipalities. The city itself ranks at 18th nationally by GDP per capita among all Chinese cities. According to Southern Weekly's Cities Comfort Index, Shaoxing ranked China’s most comfortable city for four consecutive years, due to its rare combination of high incomes, relatively affordable housing, and short commutes."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 231
+    },
+    "banned_terms": [
+      {
+        "term": "shaoxing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 915,
+    "attempt": 906,
+    "place_id": "gn-2035002",
+    "input": {
+      "place": {
+        "place_id": "gn-2035002",
+        "name": "Shangzhi",
+        "country": "China",
+        "subdivision": "Heilongjiang",
+        "lat": 45.20562,
+        "lon": 128.00242
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shangzhi",
+          "url": "https://en.wikipedia.org/wiki/Shangzhi",
+          "text": "Shangzhi (Chinese: 尚志; pinyin: Shàngzhì) is a county-level city under the jurisdiction of Harbin, the capital of Heilongjiang province, People's Republic of China. It is 127 kilometres (79 mi) away from central Harbin and has an area of approximately 9,000 km2 (3,500 sq mi). The city proper has a population of around 120,000, while the total administrative population is approximately 600,000 inhabitants. The most spacious county-level division of Harbin City, it borders Yanshou County to the north, Wuchang to the southwest, Acheng District to the northwest, and Bin County to the northwest, as well as the prefecture-level city of Mudanjiang to the southeast.\nThe city of Shangzhi was once called Zhuhe (珠河; Zhūhé). It was developed during the Guangxu era in the late Qing dynasty, and was renamed to Shangzhi to commemorate the Second Sino-Japanese War hero Zhao Shangzhi in 1946.\nThe most famous place in Shangzhi is the Yabuli (simplified Chinese: 亚布力; traditional Chinese: 亞布力; pinyin: Yàbùlì) Skiing Centre -"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 161
+    },
+    "banned_terms": [
+      {
+        "term": "shangzhi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 916,
+    "attempt": 907,
+    "place_id": "gn-2425791",
+    "input": {
+      "place": {
+        "place_id": "gn-2425791",
+        "name": "Sarh",
+        "country": "Chad",
+        "subdivision": "Moyen-Chari",
+        "lat": 9.14555,
+        "lon": 18.38331
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sarh",
+          "url": "https://en.wikipedia.org/wiki/Sarh",
+          "text": "Sarh (Arabic: ساره), formerly known as Fort Archambault (French pronunciation: [fɔʁ aʁʃɑ̃bo]), is the capital of the Moyen-Chari Region and the capital of the Department of Barh Köh in Chad. It is the third largest city in Chad, after N'Djamena and Moundou and lies on the Chari River, 563 kilometres (350 mi) by road southeast of the capital city N'Djamena.\nThe city was founded as Fort Archambauld by Émile Gentil and the colonial authorities of French Chad, then part of French Equatorial Africa, in 1897, and it was renamed Sarh in 1972. It is a centre for cotton production and fishing, and contains a large central open-market. It is served by Sarh Airport, a Cathedral and seat of the Catholic Diocese of Sarh, the Grande Mosquée de Sarh, and the universities University of Sarh and Saint Charles Lwanga University of Sarh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "sarh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 917,
+    "attempt": 908,
+    "place_id": "gn-2740637",
+    "input": {
+      "place": {
+        "place_id": "gn-2740637",
+        "name": "Coimbra",
+        "country": "Portugal",
+        "subdivision": "Coimbra",
+        "lat": 40.20686,
+        "lon": -8.41996
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coimbra",
+          "url": "https://en.wikipedia.org/wiki/Coimbra",
+          "text": "Coimbra, officially the City of Coimbra, is a city and a municipality in Portugal. The population of the municipality at the 2021 census was 140,796, in an area of around 319.40 square kilometres (123.3 sq mi).\nIt is the fourth-largest metropolitan area in Portugal after Lisbon, Porto, and Braga, and it is the largest city of the district of Coimbra and the Central Region, and about 460,000 people live in its intermunicipal community.\nAmong the many archaeological structures dating back to the Roman era, when Coimbra was the settlement of Aeminium, are its well-preserved aqueduct and cryptoporticus. Similarly, buildings from the period when Coimbra was the capital of Portugal (from 1131 to 1255) still remain. During the late Middle Ages, with its decline as the political centre of the Kingdom of Portugal, Coimbra began to evolve into a major cultural centre. This was in large part helped by the establishment of the first Portuguese university in 1290 in Lisbon and its relocation to Coimbra in 1308, making it the oldest academic institution in the Portuguese-speaking world. Apart from attracting many European and international students, the university is visited by many tourists for its monuments and history. Its historical buildings were classified as a World Heritage site by UNESCO in 2013: \"Coimbra offers an outstanding example of an integrated university city with a specific urban typology as well as its own ceremonial and cultural traditions that have been kept alive through the ages.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "coimbra",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 918,
+    "attempt": 909,
+    "place_id": "gn-2820256",
+    "input": {
+      "place": {
+        "place_id": "gn-2820256",
+        "name": "Ulm",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.39841,
+        "lon": 9.99155
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ulm",
+          "url": "https://en.wikipedia.org/wiki/Ulm",
+          "text": "Ulm (German pronunciation: [ʊlm] ) is the sixth-largest city of the southwestern German state of Baden-Württemberg, and with around 130,000 inhabitants, it is Germany's 60th-largest city.\nUlm is located on the eastern edges of the Swabian Jura mountain range, on the upper course of the River Danube, at the confluence with the small Blau Stream, coming from the Blautopf in the west. The mouth of the Iller also falls within Ulm's city limits. The Danube forms the border with Bavaria, where Ulm's twin city Neu-Ulm lies. The city was part of Ulm until 1810, and Ulm and Neu-Ulm have a combined population of around 190000. Ulm forms an urban district of its own (Stadtkreis Ulm), and is the administrative seat of the Alb-Donau-Kreis, the district that surrounds it on three sides, but which the city itself is not a part of. Ulm is the overall 11th-largest city on the river Danube, and the third-largest German Danubian city after Regensburg and Ingolstadt.\nFounded around 850, Ulm is rich in history and traditions as a former free imperial city. Ulm is an economic centre due to its varied industries, and is the seat of the University of Ulm (Universität Ulm), and of the Ulm University of Applied Sciences (Technische Hochschule Ulm, THU). The city lies on the international railway corridor \"Main Line for Europe\", from Paris to Bratislava and Budapest, via Strasbourg, Karlsruhe, Stuttgart, Ulm, Augsburg, Munich, Salzburg, Linz and Vienna. The Ulm Minster (Ulmer Münster) is the second tallest church in the world (161.53 m or 529.95 ft).\nIn 1927, the then tiny village of Wiblingen was incorporated into Ulm, which led to that Wiblingen Abbey with its monastic library and its True Cross reliquary (Heilig-Kreuz-Reliquie), that allegedly contains wood particles from the True Cross, is now part of Ulm.\nFamous personalities born in Ulm include Johann Georg Niederegger (1777–1859), Karl Heinrich Kässbohrer (1864–1922), Albert Einstein (1879–1955), Otto Kässbohrer (1904–1989), Hildegard Knef (1925–2002) and Ursula Karven (b.1964)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 326
+    },
+    "banned_terms": [
+      {
+        "term": "ulm",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 919,
+    "attempt": 910,
+    "place_id": "gn-311046",
+    "input": {
+      "place": {
+        "place_id": "gn-311046",
+        "name": "İzmir",
+        "country": "Türkiye",
+        "subdivision": "İzmir Province",
+        "lat": 38.41273,
+        "lon": 27.13838
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "İzmir",
+          "url": "https://en.wikipedia.org/wiki/İzmir",
+          "text": "İzmir, known in Greek and historically known as Smyrna, is the third most populous city in Turkey, after Istanbul and Ankara, and the largest metropolitan area on the Aegean Sea. It is on the Aegean coast of Anatolia, and is the capital of İzmir Province. As of 2025 end of year estimate, İzmir Province has a total population of 4,504,184 while İzmir city is home to around 3.5 million inhabitants. It extends along the outlying waters of the Gulf of İzmir and inland to the north across the Gediz River Delta; to the east along an alluvial plain created by several small streams; and to slightly more rugged terrain in the south. İzmir's climate is Mediterranean.\nİzmir has more than 3,000 years of recorded urban history, and up to 8,500 years of history as a human settlement since the Neolithic period. In classical antiquity, the city was known as Smyrna – a name which remained in use in English and various other languages until around 1930, when government efforts led the original Greek name to be phased out internationally in favor of its Turkish counterpart İzmir.\nLying on an advantageous location at the head of a gulf running down in a deep indentation, midway along the western Anatolian coast, İzmir has been one of the principal mercantile cities of the Mediterranean Sea for much of its history. Until the 1922 burning of Smyrna, the \"symbolic end\" of the Greek genocide, and the subsequent 1923 population exchange, İzmir had a very large Greek population. Present-day İzmir is an important port, and is home to multiple universities. It hosts the annual İzmir International Fair."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 272
+    },
+    "banned_terms": [
+      {
+        "term": "izmir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 920,
+    "attempt": 911,
+    "place_id": "gn-3530139",
+    "input": {
+      "place": {
+        "place_id": "gn-3530139",
+        "name": "Coyoacán",
+        "country": "Mexico",
+        "subdivision": "Mexico City",
+        "lat": 19.3467,
+        "lon": -99.16174
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Coyoacán",
+          "url": "https://en.wikipedia.org/wiki/Coyoacán",
+          "text": "Coyoacán (US:  KOY-oh-ə-KAHN; Spanish: [koʝoaˈkan] , Otomí: Ndemiñ'yo) is a borough (demarcación territorial) in Mexico City. The former village became the borough's \"historic center\". The name comes from Nahuatl Coyōhuahcān, composed of coyōhuah ('one who has coyotes') and -cān ('place'), and therefore means 'place of those who own coyotes', which the Aztecs named a pre-Hispanic village on the southern shore of Lake Texcoco dominated by the Tepanec people. Against Aztec domination, these people allied with the Spanish, who used the area as a headquarters during the Spanish conquest of the Aztec Empire and made it the first capital of New Spain between 1521 and 1523.\nThe village and later municipality of Coyoacán remained independent of Mexico City through the colonial period into the 19th century. In 1857, the area was incorporated into the then Federal District when this district was expanded. In 1928, the borough was created when the Federal District was divided into sixteen boroughs. The urban expansion of Mexico City reached the borough in the mid-20th century, turning farms, former lakes, and forests into developed areas, but many of the former villages have kept their original layouts, plazas, and narrow streets and have conserved structures built from the 16th to the early 20th centuries. This has made the borough of Coyoacán, especially its historic center, a popular place to visit on weekends."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 224
+    },
+    "banned_terms": [
+      {
+        "term": "coyoacan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 921,
+    "attempt": 912,
+    "place_id": "gn-3668605",
+    "input": {
+      "place": {
+        "place_id": "gn-3668605",
+        "name": "Santa Marta",
+        "country": "Colombia",
+        "subdivision": "Magdalena Department",
+        "lat": 11.23855,
+        "lon": -74.19427
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santa Marta",
+          "url": "https://en.wikipedia.org/wiki/Santa_Marta",
+          "text": "Santa Marta (Spanish pronunciation: [ˌsanta ˈmaɾta]), officially the Distrito Turístico, Cultural e Histórico de Santa Marta (English: Historic, Cultural & Tourist District of Santa Marta), is a port city on the coast of the Caribbean Sea in northern Colombia. It is renowned in Latin American as the place of death of Simón Bolívar.\nSanta Marta is the capital of Magdalena Department and the fourth-largest urban city of the Caribbean Region of Colombia, after Barranquilla, Cartagena, and Soledad. Founded on July 29, 1525, by the Spanish conqueror Rodrigo de Bastidas, it was one of the first Spanish settlements in Colombia, its oldest surviving city, and second-oldest in South America. This city is situated on a bay by the same name and as such, it is a prime tourist destination in the Caribbean region.\nThe Universidad del Magdalena is located in Santa Marta. Santa Marta's flag consists of two colors: white and blue. White symbolises peace, in that all are united without restriction. Blue symbolises the sky, the sea, the magic found in the horizon, and the snow-capped Sierra Nevada mountains. The Cathedral Basilica of Santa Marta is one of the oldest structures in the city. Built in the eighteenth century, it held the remains of Bastidas and Bolívar after their deaths."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "santa marta",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marta",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 922,
+    "attempt": 913,
+    "place_id": "gn-964137",
+    "input": {
+      "place": {
+        "place_id": "gn-964137",
+        "name": "Pretoria",
+        "country": "South Africa",
+        "subdivision": "Gauteng",
+        "lat": -25.74486,
+        "lon": 28.18783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pretoria",
+          "url": "https://en.wikipedia.org/wiki/Pretoria",
+          "text": "Pretoria ( prih-TOR-ee-ə, pree-; Afrikaans: [prəˈtʉəria] ) is the executive capital of South Africa, serving as the seat of the executive branch of government, and as the host to all foreign embassies to the country.\nPretoria straddles the Apies River and extends westward into the foothills of the Magaliesberg mountains. It has a reputation as an academic city and centre of research, being home to the Tshwane University of Technology (TUT), the University of Pretoria (UP), the University of South Africa (UNISA), the Council for Scientific and Industrial Research (CSIR), and the Human Sciences Research Council. It also hosts the National Research Foundation and the South African Bureau of Standards. Pretoria was one of the host cities of the 2010 FIFA World Cup.\nAs the administrative capital of the country, Pretoria hosts the headquarters of all national government departments and agencies. The city is also a major global diplomatic hub; it is home to 134 foreign embassies and high commissions, representing the second-largest concentration of diplomatic missions in the world, surpassed only by Washington, D.C.\nPretoria is the central part of the City of Tshwane Metropolitan Municipality which was formed by the amalgamation of several former local authorities, including Bronkhorstspruit, Centurion, Cullinan, Hammanskraal and Soshanguve. Some have proposed changing the official name from Pretoria to Tshwane, which has caused some public controversy.\nPretoria is named after the Voortrekker leader Andries Pretorius, and South Africans sometimes call it the \"Jacaranda City\", because of the thousands of jacaranda trees planted along its streets and in its parks and gardens."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 141,
+      "fullExtractWords": 257
+    },
+    "banned_terms": [
+      {
+        "term": "pretoria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 923,
+    "attempt": 914,
+    "place_id": "gn-11205667",
+    "input": {
+      "place": {
+        "place_id": "gn-11205667",
+        "name": "Ntuzuma",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -29.739,
+        "lon": 30.949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ntuzuma",
+          "url": "https://en.wikipedia.org/wiki/Ntuzuma",
+          "text": "Ntuzuma is a town in eThekwini in the KwaZulu-Natal province of South Africa.\nWith a population of 114,231 (Census 2001), Ntuzuma is the youngest of the four \"PINK\" (Phoenix, Inanda, Ntuzuma and KwaMashu) programme townships, and was built by the Durban City in the 1970s.\n\nThe spatial and infrastructural developments of Ntuzuma have emerged incrementally in different sections, and have, to a large extent, influenced the varying service levels, political affiliations and tenure arrangements that prevail in the area.\nLarge tracts of land are informally occupied due to the pressure for housing and its relative accessibility. With the RDP Housing Programme, a number of formal houses have been given to the people, which has contributed positively to the town's development plans.\nNtuzuma exhibits a wide range of housing including some very up-market homes but also includes a large informal settlement. Ntuzuma's population is dominated by the working class.\nNtuzuma Township is 12 km from the Durban CBD; it consists of 99.5% of Black community and 0.5% of other.\nIt is situated near KwaMashu, Inanda, and Phoenix areas.\n33% of the community is youth (18–34), that make 40% young children between 1 and 17, and 27% are adults. Many of the youth attend schools in local areas. Others can afford to get entry in multi racial schools and model C schools. Sending a child to universities is every family's dream. Many do make it to tertiary, graduate and get jobs or start Businesses \nDominating transportation systems are taxis (mini buses) and buses. However, there has been an increase in people using their private cars for transportation. \nThere are 8 senior secondary schools, 12 primary schools, one technical college and a teachers’ center.\nThere is also a police station, petrol station, clinic, two community halls, fire station, library, small claim court and a bus depot.\nThere are many recreational facilities such as a swimming pool, football fields and tennis court."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 318
+    },
+    "banned_terms": [
+      {
+        "term": "ntuzuma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 924,
+    "attempt": 915,
+    "place_id": "gn-1174872",
+    "input": {
+      "place": {
+        "place_id": "gn-1174872",
+        "name": "Karachi",
+        "country": "Pakistan",
+        "subdivision": "Sindh",
+        "lat": 24.8608,
+        "lon": 67.0104
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karachi",
+          "url": "https://en.wikipedia.org/wiki/Karachi",
+          "text": "Karachi is the capital city of the Pakistani province of Sindh. It is the largest city in Pakistan and 11th largest in the world, with a population of over 20 million. Situated at the southern tip of the country along the Arabian Sea coast, Karachi formerly served as the federal capital from 1947 to 1959. Ranked as a beta-global city, it is Pakistan's premier industrial and financial centre, with an estimated GDP of over $200 billion (PPP) as of 2021. Karachi is a major metropolitan area and is considered Pakistan's most cosmopolitan city, and among the country's most linguistically, ethnically, and religiously diverse regions, as well as one of the country's most progressive and socially liberal cities.\nThe region has been inhabited for millennia, but the city was formally founded as the fortified village of Kolachi as recently as 1729. The settlement –  lying between the Kohistan and Larr regions of Sindh –  greatly increased in importance with the arrival of the East India Company in the mid-19th century following Sindh's annexation. British administrators embarked on substantial projects to transform the city into a major seaport, and connect it with the extensive railway network of the Indian subcontinent. At the time of Pakistan's independence in 1947, the city was the largest in Sindh with an estimated population of 400,000 people, and a slim Hindu majority. Following the partition of India, the city experienced a dramatic shift in population and demography with the arrival of hundreds of thousands of Muslim immigrants from India, coupled with an exodus of nearly all of its Hindu residents. The city experienced rapid economic growth following Pakistan's independence, attracting migrants from throughout the country and other regions in South Asia. According to the 2023 Census of Pakistan, Karachi's total population was 20.3 million. Karachi is one of the world's fastest-growing cities, and has significant communities representing almost every ethnic group in Pakistan. Karachi holds more than two million Bengali immigrants, a million Afghan refugees, and up to 400,000 Rohingyas from Myanmar.\nKarachi is now Pakistan's premier industrial and financial centre. The city has a formal economy estimated to be worth $190 billion as of 2021, which is the largest in the country. Karachi collects 35% of Pakistan's tax revenue, and generates approximately 25% of Pakistan's entire GDP. Approximately 30% of Pakistani industrial output is from Karachi, while Karachi's ports handle approximately 95% of Pakistan's foreign trade. Approximately 90% of the multinational corporations and 100% of the banks operating in Pakistan are headquartered in Karachi. It also serves as a transport hub, and contains Pakistan's two largest seaports, the Port of Karachi and Port Qasim, as well as Pakistan's busiest airport, Jinnah International Airport. Karachi is also considered to be Pakistan's fashion capital, and has hosted the annual Karachi Fashion Week since 2009.\nKnown as the \"City of Lights\" in the 1960s and 1970s for its vibrant nightlife, Karachi was beset by sharp ethnic, sectarian, and political conflict in the 1980s with the large-scale arrival of weaponry during the Soviet–Afghan War. The city had become well known for its high rates of violent crime, but recorded crimes sharply decreased following a crackdown operation against criminals, the MQM political party, and Islamist militants, initiated in 2013 by the Pakistan Rangers. As a result of the operation, Karachi dropped from being ranked the world's 6th-most dangerous city for crime in 2014, to 128th by 2022."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 566
+    },
+    "banned_terms": [
+      {
+        "term": "karachi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 925,
+    "attempt": 916,
+    "place_id": "gn-1254348",
+    "input": {
+      "place": {
+        "place_id": "gn-1254348",
+        "name": "Tiruppur",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 11.11541,
+        "lon": 77.35456
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tiruppur",
+          "url": "https://en.wikipedia.org/wiki/Tiruppur",
+          "text": "Tiruppur or Tirupur ([t̪ɪɾɨppuːr] ), is a city and municipal corporation in the Indian state of Tamil Nadu. Located on the banks of the Noyyal River in Western Tamil Nadu, it is the fourth largest city in the state. It is the administrative capital of Tiruppur district and is administered by the Tiruppur Municipal Corporation.\nThe region was ruled by the Cheras during the Sangam period between the 1st and the 4th centuries CE. It was under the rule of early Pandyas medieval Cholas, Later Cholas and the Vijayanagara Empire till the 15th century followed by the Nayaks who introduced the Palayakkarar system. In the later part of the 18th century, the it came under the Kingdom of Mysore and later the British Raj as a part of Madras Presidency. The region played a prominent role in the Poligar Wars.\nAfter Indian independence in 1947, Tiruppur became part of Coimbatore district. It was established as the capital of the newly formed Tiruppur district in 2009. Tiruppur is a part of Tiruppur Lok Sabha constituency that elects its member of parliament. The town was predominantly an agricultural, but with the advent of textile boom in the 20th century and rapid industrialization has seen Tiruppur become a major textile and knitwear hub. As of 2021–22, Tiruppur exported garments worth 480 billion USD, contributing to nearly 54% of the all the textile exports from India."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 232
+    },
+    "banned_terms": [
+      {
+        "term": "tiruppur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 926,
+    "attempt": 917,
+    "place_id": "gn-1264728",
+    "input": {
+      "place": {
+        "place_id": "gn-1264728",
+        "name": "Ludhiana",
+        "country": "India",
+        "subdivision": "Punjab",
+        "lat": 30.91204,
+        "lon": 75.85379
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ludhiana",
+          "url": "https://en.wikipedia.org/wiki/Ludhiana",
+          "text": "Ludhiana (Panjabi: Ludhiāṇā, pronounced [lʊ́d̪͜tɪ̀ɪˈäːɳäː]) is the most populous city in the Indian state of Punjab. The city has an estimated population of 1,618,879 as of the 2011 census and distributed over 310 km2 (120 sq mi), making Ludhiana the most densely populated urban centre in the state. It is a major industrial center of Northern India, referred to as \"India's Manchester\" by the BBC. It is also known as the commercial capital of Punjab.\nIt stands on the old bank of Sutlej River, that is now 13 kilometres (8.1 mi) to the south of its present course. The Union Ministry of Housing and Urban Affairs has placed Ludhiana on the 48th position among the top 100 smart cities, and the city has been ranked as one of the easiest cities in India for business according to the World Bank."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "ludhiana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 927,
+    "attempt": 918,
+    "place_id": "gn-1629001",
+    "input": {
+      "place": {
+        "place_id": "gn-1629001",
+        "name": "Samarinda",
+        "country": "Indonesia",
+        "subdivision": "East Kalimantan",
+        "lat": -0.49167,
+        "lon": 117.14583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Samarinda",
+          "url": "https://en.wikipedia.org/wiki/Samarinda",
+          "text": "Samarinda (Indonesian pronunciation: [samaˈrɪnda]) is the capital city of the Indonesian province of East Kalimantan. It is situated on the riverbanks of lower Mahakam, and both parts are connected by Mahakam Bridge, Mahakam Ulu Bridge, and Achmad Amins Bridge. It holds title of the seventh largest Indonesian city by area, with a total area of around 718 km2 (277 sq mi). Samarinda is also the most populous city on the entire island of Borneo, with population estimates of 727,500 (2010 Census); 827,994 (2020 Census); and 865,306 (mid 2025). As of 2026, it is divided into 10 districts and further into 59 urban villages (kelurahan).\nSamarinda was formally established as a city on 26 June 1959, after being separated from the outgoing Special Region of Kutai, a second-level administrative division similar to a regency that was ruled by the eponymous sultanate. Before becoming the capital city of East Kalimantan, it was the seat of Special Region of Kutai during its early years until it was moved into Tenggarong in 1956. Today, Samarinda is an enclave surrounded by different districts belonging to the Kutai Kartanegara Regency: (in clockwise direction from the north) Tenggarong Seberang, Muara Badak, Anggana, Sanga-Sanga, Muara Jawa, Loa Janan, and Loa Kulu.\nSamarinda was one of Indonesia's top ten Most Liveable Cities in 2022, ranks first on East Kalimantan Human Development Index Samarinda is East Kalimantan's largest exporter and fifth-largest importer. The city has the highest number of bank headquarters in East Kalimantan. In 2021, Samarinda Harbour became the busiest passenger port in East Kalimantan. The container port in Samarinda is also the busiest in East Kalimantan, handled more than 271 thousand twenty-foot equivalent units (TEU) in 2019. Samarinda is known for its traditional food amplang, as well as the cloth sarung samarinda."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 294
+    },
+    "banned_terms": [
+      {
+        "term": "samarinda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 928,
+    "attempt": 919,
+    "place_id": "gn-1637510",
+    "input": {
+      "place": {
+        "place_id": "gn-1637510",
+        "name": "Loa Janan",
+        "country": "Indonesia",
+        "subdivision": "East Kalimantan",
+        "lat": -0.58295,
+        "lon": 117.09503
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Loa Janan",
+          "url": "https://en.wikipedia.org/wiki/Loa_Janan",
+          "text": "Loa Janan (Indonesian pronunciation: [ˈloa ˈdʒanan]) is an administrative district (kecamatan) in Kutai Kartanegara Regency, East Kalimantan Province of Indonesia. It covers a land area of 644.20 km2, and had a population of 56,071 at the 2010 Census and 67,471 at the 2020 Census; the official estimate as at mid 2025 was 79,365. Its district seat is located at the village of Loa Janan Ulu.\nBefore 21 October 1987, the villages of Loa Buah, Loa Bakung, and Loa Janan Ilir were part of Loa Janan, but at that date these villages were transferred to the city of Samarinda. The former village of Loa Janan Ilir then later evolved into its own district within the city. There are claims that Loa Janan was originally part of Loa Kulu, nonetheless, much of the administrative history of East Kalimantan before 1969 remains unclear."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "loa janan",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "loa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "janan",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 929,
+    "attempt": 920,
+    "place_id": "gn-1799823",
+    "input": {
+      "place": {
+        "place_id": "gn-1799823",
+        "name": "Nanqiao",
+        "country": "China",
+        "subdivision": "Shanghai",
+        "lat": 30.91611,
+        "lon": 121.44944
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nanqiao, Shanghai",
+          "url": "https://en.wikipedia.org/wiki/Nanqiao,_Shanghai",
+          "text": "Nanqiao (simplified Chinese: 南桥; traditional Chinese: 南橋; pinyin: Nánqiáo) is a town in Fengxian District, Shanghai. \nIn the courtyard of Cao's family in Nanqiao, there is a plum that was planted in the Tongzhi period. This plum may have been planted by concubine Cao Zongnai. In 1996, the Fengxian South Bridge began to renovate the old town, and this Lamei was included in the scope of relocation. Under the joint appeal of Cao's family, deputies to the National People's Congress, and members of the CPPCC, the government designated a 100-square-meter area around Lamei as a protected area. The Shanghai Municipal Afforestation Administration listed it as the most ancient and famous tree in Shanghai, known as \"the first plum in the south of the Yangtze River\", and set up a \"protection plate of ancient and famous trees\" in the local area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 140,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "nanqiao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

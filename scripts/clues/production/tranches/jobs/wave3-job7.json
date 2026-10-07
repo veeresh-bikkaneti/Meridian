@@ -1,0 +1,722 @@
+[
+  {
+    "rank": 2416,
+    "place_id": "gn-4166673",
+    "input": {
+      "place": {
+        "place_id": "gn-4166673",
+        "name": "Ocala",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 29.1872,
+        "lon": -82.14009
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocala, Florida",
+          "url": "https://en.wikipedia.org/wiki/Ocala,_Florida",
+          "text": "Ocala ( oh-KAL-ə) is a city in and the county seat of Marion County, Florida, United States. Located in North Central Florida. The population was 63,591 as of the 2020 census, and was estimated at 71,753 in 2025, making it the 42nd-most populated city in Florida. It is the principal city of the Ocala metropolitan area, which had a population of 442,660 in 2025.\nHome to over 400 thoroughbred farms and training centers, Ocala has been called the \"Horse Capital of the World\". Notable attractions include the Ocala National Forest, Silver Springs State Park, Rainbow Springs State Park, the College of Central Florida, and the World Equestrian Center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "ocala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2423,
+    "place_id": "gn-1142264",
+    "input": {
+      "place": {
+        "place_id": "gn-1142264",
+        "name": "Farah",
+        "country": "Afghanistan",
+        "subdivision": "Farah",
+        "lat": 32.37451,
+        "lon": 62.11638
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Farah, Afghanistan",
+          "url": "https://en.wikipedia.org/wiki/Farah,_Afghanistan",
+          "text": "Farah (Pashto, Dari: فراه) is a city in western Afghanistan that serves as the capital of Farah Province. It is within the jurisdiction of Farah District and has an estimated population of 141,091 people. Mufti Sardar Mohammad Mirsad is the current mayor of the city.\nFarah has a number of bazaars, business centers, public parks, banks, hotels, restaurants, mosques, hospitals, universities, and places to play sports or just relax. It is home to Farah University, which is located in the southeastern part of the city. The Farah Airport is a short distance north of the university, next to the main road leading to Delaram in the east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "farah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2429,
+    "place_id": "gn-2754064",
+    "input": {
+      "place": {
+        "place_id": "gn-2754064",
+        "name": "Hilversum",
+        "country": "Netherlands",
+        "subdivision": "North Holland",
+        "lat": 52.22333,
+        "lon": 5.17639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hilversum",
+          "url": "https://en.wikipedia.org/wiki/Hilversum",
+          "text": "Hilversum (Dutch pronunciation: [ˈɦɪlvərsʏm] ) is a city and municipality in the province of North Holland, Netherlands. Located in the heart of the Gooi, it is the largest urban centre in that area. It is surrounded by heathland, woods, meadows, lakes and smaller towns. Hilversum is part of the Randstad, one of the largest conurbations in Europe, and the Amsterdam metropolitan area; it is about 22 km southeast of Amsterdam's city centre and about 15 km north of Utrecht.\nThe city is home to several major radio, television, and newspaper companies such as NOS. Hilversum is thus known for being the mediastad (media city) of the Netherlands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "hilversum",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2436,
+    "place_id": "gn-3629696",
+    "input": {
+      "place": {
+        "place_id": "gn-3629696",
+        "name": "Puerto Cumarebo",
+        "country": "Venezuela",
+        "subdivision": "Falcón",
+        "lat": 11.48614,
+        "lon": -69.35319
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Puerto Cumarebo",
+          "url": "https://en.wikipedia.org/wiki/Puerto_Cumarebo",
+          "text": "Puerto Cumarebo capital of Zamora Municipality, Falcón state, Venezuela is located 40 miles east of Coro. Emerges in 1600 as population of black \"Loangos\" people escaped from Curacao. It was named after Cacique Cumarebo, head of the county to the arrival of the Spanish. On May 17, 1845 Canton of Pueblo Cumarebo moved to Puerto Cumarebo and thereafter the port acquires social and political organization of importance to the state. Called The Pearl of Falcón, Cumarebo consists mostly of coasts and plains crossed by rivers and small streams, as well hills gives it a mountain appearance, its climate is 27 °C, with an altitude of 13 meters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "puerto cumarebo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "puerto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "cumarebo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2442,
+    "place_id": "gn-1232783",
+    "input": {
+      "place": {
+        "place_id": "gn-1232783",
+        "name": "Nuwara Eliya",
+        "country": "Sri Lanka",
+        "subdivision": "Central Province",
+        "lat": 6.97078,
+        "lon": 80.78286
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nuwara Eliya",
+          "url": "https://en.wikipedia.org/wiki/Nuwara_Eliya",
+          "text": "Nuwara Eliya (Sinhala: නුවර එළිය [nuwərə ɛlijə]; Tamil: நுவரெலியா [nʉʋəɾɛlɪjɑː]) is a city in the hill country of the Central Province, Sri Lanka. Its name means \"city on the plain (table land)\" or \"city of light\". The city is the administrative capital of Nuwara Eliya District, with a picturesque landscape and temperate climate. It is at an altitude of 1,868 m (6,128 ft) and is considered to be the most important location for tea production in Sri Lanka. The city is overlooked by Pidurutalagala, the tallest mountain in Sri Lanka. Nuwara Eliya is known for its temperate, cool climate – the coolest area in Sri Lanka."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "nuwara eliya",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nuwara",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "eliya",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2444,
+    "place_id": "gn-1269784",
+    "input": {
+      "place": {
+        "place_id": "gn-1269784",
+        "name": "Ilkal",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 15.95923,
+        "lon": 76.11351
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ilkal",
+          "url": "https://en.wikipedia.org/wiki/Ilkal",
+          "text": "Ilkal is a City in Bagalkot district in the Indian state of Karnataka. The town is located in a valley that lies in south-east corner of Bagalkot district and is quite close to the borders of Kushtagi taluk of the Koppal district. Now Ilkal city becomes taluk previous the city falls within the jurisdiction of Hungund taluk and lies at a distance of about 12 km (7.5 mi) south of taluk headquarters. Between these two towns, Ilkal is an important centre of trade, commerce, education, and industry. Ilkal is well connected with state and national highways. It is also famous for its hospitality and education institutions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "ilkal",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2453,
+    "place_id": "gn-3682274",
+    "input": {
+      "place": {
+        "place_id": "gn-3682274",
+        "name": "Fusagasugá",
+        "country": "Colombia",
+        "subdivision": "Cundinamarca",
+        "lat": 4.33646,
+        "lon": -74.36378
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Fusagasugá",
+          "url": "https://en.wikipedia.org/wiki/Fusagasug%C3%A1",
+          "text": "Fusagasugá (Spanish pronunciation: [fusaɣasuˈɣa]; from Cariban  fusagasuga 'woman who becomes invisible') or Fusa is a city and municipality in the department of Cundinamarca, in central Colombia.  It is located in the warm valley between the rivers Cuja and Panches, a central region of the Andes Mountains in South America.  The municipality has a population of 138,498 and the urban centre a population of 114,722 (2018 census). The municipality itself covers an area of 194 km2 (75 sq mi).\nIt was founded in 1592 by Spanish priests. The town located some 56 kilometers from the capital, Bogotá; borders Pasca, Arbeláez, Tibacuy, Silvania and other municipalities of Sumapaz."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "fusagasuga",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2455,
+    "place_id": "gn-4894861",
+    "input": {
+      "place": {
+        "place_id": "gn-4894861",
+        "name": "Gurnee",
+        "country": "United States",
+        "subdivision": "Illinois",
+        "lat": 42.3703,
+        "lon": -87.90202
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gurnee, Illinois",
+          "url": "https://en.wikipedia.org/wiki/Gurnee,_Illinois",
+          "text": "Gurnee ( ghər-NEE) is a village in Lake County, in the U.S. state of Illinois. As of the 2020 census, its population was 30,706. Located in the Chicago metropolitan area, it borders the city of Waukegan. It is roughly 40 miles (64 km) north of Chicago and 50 miles (80 km) south of Milwaukee. The village was founded in 1928 and is named after former Chicago mayor Walter S. Gurnee.\nThe village is a major regional tourist attraction, home to the Six Flags Great America and Hurricane Harbor Chicago amusement park and water park complex, the Gurnee Mills shopping mall, and the Great Wolf Lodge resort."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 106
+    },
+    "banned_terms": [
+      {
+        "term": "gurnee",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2473,
+    "place_id": "gn-6051122",
+    "input": {
+      "place": {
+        "place_id": "gn-6051122",
+        "name": "Leamington",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 42.05009,
+        "lon": -82.59981
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leamington, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Leamington,_Ontario",
+          "text": "Leamington ( LEEM-ing-tən) is a municipality in Essex County, Ontario, Canada.  With a population of 29,680 in the Canada 2021 Census, it forms the second largest urban centre in Windsor-Essex County after Windsor, Ontario.\nKnown since the 20th century as the \"Tomato Capital of Canada\", it is the location of a tomato processing plant owned by Highbury-Canco; founded in 1908, the plant was owned until 2014 by the H. J. Heinz Company. Due to its location in the southernmost part of Canada, Leamington uses the motto \"Sun Parlour of Canada\". The Heinz factory in Leamington closed in 2014 after more than 100 years of operation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "leamington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2478,
+    "place_id": "gn-178202",
+    "input": {
+      "place": {
+        "place_id": "gn-178202",
+        "name": "Webuye",
+        "country": "Kenya",
+        "subdivision": "Bungoma County",
+        "lat": 0.6004,
+        "lon": 34.77119
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Webuye",
+          "url": "https://en.wikipedia.org/wiki/Webuye",
+          "text": "Webuye, previously named Broderick Falls, is an industrial town in western region of Kenya and home to the Bukusu people. It is located within Webuye West sub county in Bungoma County, at the slopes of chetambe hill Kenya.  Located on the main road to Uganda, the town is home to the Pan African Paper Mills, formerly the largest paper factory in the region, as well as East African heavy-chemicals plant.  The area is heavily populated and is used mainly for subsistence agriculture. The town has an urban population of 42,642 (2019 census).\nAreas near Webuye include Lugulu, Milo, Maraka, Furoi, Lukusi, Lutacho  and Misikhu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "webuye",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2479,
+    "place_id": "gn-197226",
+    "input": {
+      "place": {
+        "place_id": "gn-197226",
+        "name": "Githunguri",
+        "country": "Kenya",
+        "subdivision": "Kiambu County",
+        "lat": -1.05754,
+        "lon": 36.77625
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Githunguri",
+          "url": "https://en.wikipedia.org/wiki/Githunguri",
+          "text": "Githunguri is an agricultural town in Kiambu County in central Kenya's former Central Province. It is one of the administrative centres of Kiambu County and home to one of East Africa's largest dairy processing plant Fresha, which is owned by a farmers co-operative, Githunguri Dairy farmers cooperative Society. Most of the financial institutions have a presence in town. They include: TAI Sacco Ltd GDC Sacco, KCB, Family Bank, Equity Bank, Absa Bank, and Cooperative Bank.\nGithunguri Seniors is the main team currently playing in Kenya football league division 2 Zone A.(2023/2024 season).\n\nThe other economic activities include tea, coffee, pig, poultry and horticultural farming."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "githunguri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2488,
+    "place_id": "gn-684802",
+    "input": {
+      "place": {
+        "place_id": "gn-684802",
+        "name": "Bârlad",
+        "country": "Romania",
+        "subdivision": "Vaslui County",
+        "lat": 46.23175,
+        "lon": 27.66907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bârlad",
+          "url": "https://en.wikipedia.org/wiki/B%C3%A2rlad",
+          "text": "Bârlad (Romanian pronunciation: [bɨrˈlad] ) is a city in Vaslui County, Romania. It lies on the banks of the river Bârlad, which waters the high plains of Western Moldavia.\nAt Bârlad the railway from Iași diverges, one branch skirting the river Siret, the other skirting the Prut; both reunite at Galați. Along with a maze of narrow and winding streets, Bârlad features several notable modern buildings, including the hospital administered by the Saint Spiridion Foundation of Iași. In the vicinity of the city are the ruins of a Roman camp.\nThe city is the birthplace of Romanian Domnitor (Ruler) and diplomat Alexandru Ioan Cuza."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "barlad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2495,
+    "place_id": "gn-2521738",
+    "input": {
+      "place": {
+        "place_id": "gn-2521738",
+        "name": "Andújar",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 38.03922,
+        "lon": -4.05077
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Andújar",
+          "url": "https://en.wikipedia.org/wiki/And%C3%BAjar",
+          "text": "Andújar (Spanish pronunciation: [anˈduxaɾ]) is a Spanish municipality of 35,619 people (2024) in the province of Jaén, in Andalusia.  The municipality is divided by the Guadalquivir River.  The northern part of the municipality is where the Natural Park of the Sierra de Andújar is situated.  To the south are agricultural fields and countryside.  The city proper located on the right bank of the Guadalquivir and the Madrid-Córdoba railway. In the past, Andújar was widely known for its porous earthenware jars, called alcarrazas or botijos, which keep water cool in the hottest weather, and were manufactured from a whitish clay found in the neighbourhood."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "andujar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2502,
+    "place_id": "gn-321580",
+    "input": {
+      "place": {
+        "place_id": "gn-321580",
+        "name": "Belek",
+        "country": "Türkiye",
+        "subdivision": "Antalya",
+        "lat": 36.8631,
+        "lon": 31.06541
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Belek",
+          "url": "https://en.wikipedia.org/wiki/Belek",
+          "text": "Belek is a neighbourhood in the Serik district in Turkey's Antalya Province. As of 2022, it had a population of 9,102. Before the 2013 Turkish local government reorganization, it was a town (Belde).\nBelek is one of the centers of Turkey's tourism industry and is home to more than thirty four-star and five-star hotels and many other accommodation services and entertainment facilities.\nThe town and the surrounding area are famous for their spas and mineral waters received from seven springs.\nBelek was awarded the Best Golf Region of the Year in Europe by the International Association of Golf Tour Operators (IAGTO) in 2008."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "belek",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2522,
+    "place_id": "gn-1164069",
+    "input": {
+      "place": {
+        "place_id": "gn-1164069",
+        "name": "Talagang",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 32.92766,
+        "lon": 72.41594
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Talagang",
+          "url": "https://en.wikipedia.org/wiki/Talagang",
+          "text": "Talagang (Punjabi / Urdu: تلہ گنگ) is a city and the administrative headquarters of Talagang District located in Punjab, Pakistan.\nThe city is located on the Potohar Plateau, north of the Salt Range and east of the Kala Chitta Range.\nTalagang is known for its literary tradition and has produced notable writers and poets including Satyapal Anand. The local economy is largely based on arid agriculture. The region is especially known for peanut production, which is among the highest in the Potohar region.\nThe area is also known for hunting grounds and wildlife including black francolin, white-throated francolin, quail, and hare."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "talagang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2527,
+    "place_id": "gn-2295021",
+    "input": {
+      "place": {
+        "place_id": "gn-2295021",
+        "name": "Sunyani",
+        "country": "Ghana",
+        "subdivision": "Bono",
+        "lat": 7.33991,
+        "lon": -2.32676
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sunyani",
+          "url": "https://en.wikipedia.org/wiki/Sunyani",
+          "text": "Sunyani ( ) is a city and the capital of the Sunyani Municipal District and the Bono Region of Ghana. The city is located about 105 miles (169 km) northwest of Kumasi and 300 miles (480 km) from Accra. It is the sixth-largest city in the country as of the 2010 census, with a population of 75,366 people. Ethnic groups such as the Akan, Northerner, Ewe, and Ga-Adangbe resided in the city along with others. As of 2024, the mayor of the municipality was Ansu Kumi.\nSunyani's economy is largely agrarian, with the city  known for its growing cocoa bean production."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "sunyani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2538,
+    "place_id": "gn-5392593",
+    "input": {
+      "place": {
+        "place_id": "gn-5392593",
+        "name": "San Ramon",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.77993,
+        "lon": -121.97802
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Ramon, California",
+          "url": "https://en.wikipedia.org/wiki/San_Ramon,_California",
+          "text": "San Ramon (Spanish: San Ramón, meaning \"Saint Raymond\") is a city in Contra Costa County, California, United States, located within the San Ramon Valley, and 34 miles (55 km) east of San Francisco. San Ramon's population was 84,605 per the 2020 census, making it the fourth largest city in Contra Costa County, behind Concord, Richmond and Antioch.\nSan Ramon is home to the  Cooper Companies, the West Coast headquarters of AT&T, GE Digital, as well as the San Ramon Medical Center. Major annual events include the Art and Wind Festival on Memorial Day weekend and the Run for Education in October."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "san ramon",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ramon",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2561,
+    "place_id": "gn-3684666",
+    "input": {
+      "place": {
+        "place_id": "gn-3684666",
+        "name": "El Carmen de Bolívar",
+        "country": "Colombia",
+        "subdivision": "Bolívar",
+        "lat": 9.7174,
+        "lon": -75.12023
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Carmen de Bolívar",
+          "url": "https://en.wikipedia.org/wiki/El_Carmen_de_Bolívar",
+          "text": "El Carmen de Bolívar is a municipality in the department of Bolívar, Colombia, 114 km southeast of Cartagena de Indias. It is located in the orographic system of the Montes de María, being the largest population, as well as the one that concentrates the economic and commercial movement of the subregion. It is the third most populated municipality in the department and an important agricultural center, considered \"the agricultural and food pantry of the department of Bolívar\" for being a great supplier to the entire department of products, especially avocado, tobacco, cocoa, banana, yam and sesame. This is how it is known as the Sweet City of Colombia since a part of its economy is based on food processing such as Chepacorinas Cookies, Coco Casadilla, Panochas, among others.\nAs for transport infrastructure, its geographically privileged position makes it conducive to the construction of a dry port. Since it connects the Colombian Caribbean with the Santanderes through the Ruta del Sol, it is also a key point of connection of the west of the country to the large ports of Barranquilla and Cartagena by the Troncal de Occidente; and through the Transversal Montes de María communicates this important national road artery with the Gulf of Morrosquillo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "el carmen de bolivar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "carmen",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bolivar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2565,
+    "place_id": "gn-3108126",
+    "input": {
+      "place": {
+        "place_id": "gn-3108126",
+        "name": "Teruel",
+        "country": "Spain",
+        "subdivision": "Aragon",
+        "lat": 40.3456,
+        "lon": -1.10646
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Teruel",
+          "url": "https://en.wikipedia.org/wiki/Teruel",
+          "text": "Teruel (Spanish: [teˈɾwel] ) is a city in Aragon, located in eastern Spain, and is also the capital of Teruel Province. It had a population of 35,900 as of 2022, making it the least populated provincial capital in Spain. It is noted for its harsh climate (with a wide daily variation on temperatures), its renowned jamón serrano (cured ham), its pottery, its surrounding archaeological sites, rock outcrops containing some of the oldest dinosaur remains of the Iberian Peninsula, and its famous events: La Vaquilla del Ángel during the weekend (Friday to Monday) closest to 10 July and \"Bodas de Isabel de Segura\" around the third weekend of February.\nTeruel is regarded as the \"town of Mudéjar\" (Moorish-influenced architecture) due to numerous buildings designed in this style. All of them are comprised in the Mudéjar Architecture of Aragon which is a World Heritage Site by the UNESCO.\nTeruel's remote and mountainous location 915 metres (3,002 feet) above sea level and its low population has led to relative isolation within Spain. A campaign group with the slogan Teruel existe (\"Teruel exists\") was founded in 1999 to press for greater recognition and investment in the town and the province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 196
+    },
+    "banned_terms": [
+      {
+        "term": "teruel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2566,
+    "place_id": "gn-3653403",
+    "input": {
+      "place": {
+        "place_id": "gn-3653403",
+        "name": "Pasaje",
+        "country": "Ecuador",
+        "subdivision": "El Oro",
+        "lat": -3.32561,
+        "lon": -79.80697
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pasaje",
+          "url": "https://en.wikipedia.org/wiki/Pasaje",
+          "text": "Pasaje, also known as Pasaje de las Nieves, is an Ecuadorian city; the head of Pasaje Cantón, and the second biggest and second most populated city of the El Oro Province. It is located in the southern Coastal Region, seated in a vast plain between the Jubones river to the north and el Palenque to the south, at an altitude of 30 m (98 ft) above sea level and with a tropical climate of 25 °C (77 °F) on average.\nAccording to the 2022 census, Pasaje had a population of 60,147 residents, making it the twenty-third most populated city in Ecuador. Its economic, social, and commercial activity is strongly bound to Machala, as it forms part of the metropolitan area of Machala, being a commuter town for thousands of people who travel there via ground transport daily. The area is home to 576,772 inhabitants and occupies the 7th position among the conurbations of Ecuador.\nThe origins of the city date to the 18th century, but it is around the 20th century, due to banana production, that there was an accelerated population growth, making the city into one of the main urban centers of the province."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "pasaje",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

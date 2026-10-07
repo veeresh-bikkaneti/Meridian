@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 3871,
+    "attempt": 3841,
+    "place_id": "gn-2438823",
+    "input": {
+      "place": {
+        "place_id": "gn-2438823",
+        "name": "Tessaoua",
+        "country": "Niger",
+        "subdivision": "Maradi Region",
+        "lat": 13.75737,
+        "lon": 7.9874
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tessaoua",
+          "url": "https://en.wikipedia.org/wiki/Tessaoua",
+          "text": "Tessaoua, formerly known as Tessawa, is a city located in the Maradi Region of Niger. It has a population of 43,409 (2012 census). Tessaoua is historically an important city in its region. It is situated in a central geographical location. Tessaoua is a midpoint on a historical trade route between Agadez, Niger, in the north and Kano, Nigeria, in the south. During the collapse of the sultanates of Bornu and Sokoto during the late 19th century, the local ruler declared his territory the sultanate of Tessaoua; he signed a treaty of protection with the French captain Cazemajou in 1897, prior to the explorer's murder in nearby Zinder.\nMore important to modern Niger, Tessaoua is nearly halfway between the regional capitals of Maradi and Zinder on the one main east-west road in Niger. Zinder used to be the capital of Niger until the French colonialists moved the capital west to Niamey, where it was closer to others of the French West African holdings and thus easier to manage. Tessaoua used to be a regional capital, until political power was shifted to Maradi. Maradi is still the regional capital today.\nTessaoua has one high school (lycée) and several primary schools—some of which instruct in French and others which instruct primarily in the national language, Hausa, or also in Arabic in the Franco-Arabe, or Koranic schools. It does not have a university. There are two hospitals in Tessaoua. Many non-governmental organisation (NGOs) also have regional headquarters in Tessaoua, which allows them access to surrounding rural villages. There is also a football club in the town, Tessaoua FC. They competed in the 1975 Niger Cup final but lost to Olympic FC, 2–1. The club has since never appeared in another final."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 287
+    },
+    "banned_terms": [
+      {
+        "term": "tessaoua",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3872,
+    "attempt": 3842,
+    "place_id": "gn-2636177",
+    "input": {
+      "place": {
+        "place_id": "gn-2636177",
+        "name": "Taunton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.01494,
+        "lon": -3.10293
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taunton",
+          "url": "https://en.wikipedia.org/wiki/Taunton",
+          "text": "Taunton (  TAWN-tən) is the county town of Somerset, England. It is a market town and has a minster church. Its thousand-year history includes a 10th-century monastic foundation, owned by the Bishops of Winchester, which was rebuilt as Taunton Castle by the Normans in the 12th century. Parts of the inner ward house were turned into the Museum of Somerset and Somerset Military Museum. For the Second Cornish uprising of 1497, Perkin Warbeck brought an army of 6,000; most surrendered to Henry VII on 4 October 1497. On 20 June 1685, the Duke of Monmouth crowned himself King of England in Taunton in the failed Monmouth Rebellion. Judge Jeffreys led the Bloody Assizes in the Castle's Great Hall.\nThe Grand Western Canal reached Taunton in 1839 and the Bristol and Exeter Railway in 1842. Today it hosts Musgrove Park Hospital, Somerset County Cricket Club, is the base of 40 Commando, Royal Marines, and is home to the United Kingdom Hydrographic Office on Admiralty Way. The popular Taunton Flower Show has been held in Vivary Park since 1866, and on 13 March 2022, St Mary Magdalene parish church was elevated to the status of Taunton Minster. At the 2021 census the Taunton built-up area as defined by the Office for National Statistics had a population of 61,665."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 216
+    },
+    "banned_terms": [
+      {
+        "term": "taunton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3873,
+    "attempt": 3843,
+    "place_id": "gn-2639268",
+    "input": {
+      "place": {
+        "place_id": "gn-2639268",
+        "name": "Rochester",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.38764,
+        "lon": 0.50546
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rochester, Kent",
+          "url": "https://en.wikipedia.org/wiki/Rochester,_Kent",
+          "text": "Rochester ( ROTCH-iss-tər) is a port town in the unitary authority of Medway, in Kent, England. It is at the lowest bridging point of the River Medway, about 30 miles (50 km) east-southeast of London. The town forms a conurbation with neighbouring towns Chatham, Rainham, Strood and Gillingham. Rochester was a city until losing its status as one in 1998 following the forming of Medway and failing to protect its status as a city, the first city to do so in the history of the United Kingdom. There have been ongoing campaigns to reinstate the city status for Rochester. In 2011 it had a population of 62,982.\nRochester was for many years a favourite of Charles Dickens, who owned nearby Gads Hill Place, Higham, basing many of his novels on the area. The Diocese of Rochester, the second-oldest in England, is centred on Rochester Cathedral and was responsible for founding a school, now The King's School, in 604 AD, which is recognised as the second-oldest continuously running school in the world. Rochester Castle, built by Bishop Gundulf of Rochester, has one of the best-preserved keeps in either England or France. During the First Barons' War (1215–1217) in King John's reign, baronial forces captured the castle from Archbishop Stephen Langton and held it against the king, who then besieged it.\nAs well as the historic centre, the suburbs of Borstal and The Delce are also part of Rochester, forming part of the Medway Towns urban area with a population of about 250,000."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 251
+    },
+    "banned_terms": [
+      {
+        "term": "rochester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3874,
+    "attempt": 3844,
+    "place_id": "gn-2647948",
+    "input": {
+      "place": {
+        "place_id": "gn-2647948",
+        "name": "Greenock",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 55.94838,
+        "lon": -4.76121
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greenock",
+          "url": "https://en.wikipedia.org/wiki/Greenock",
+          "text": "Greenock ( ; Scots: Greenock; Scottish Gaelic: Grianaig, pronounced [ˈkɾʲiənɛkʲ]) is a town in Inverclyde, Scotland, located in the west central Lowlands of Scotland. The town is the administrative centre of Inverclyde Council. It is a former burgh within the historic county of Renfrewshire, and forms part of a contiguous urban area with Gourock to the west and Port Glasgow to the east.\nThe 2022 census showed that Greenock had a population of 42,870, a decrease from the 44,248 recorded in 2011. It lies on the south bank of the Clyde at the \"Tail of the Bank\" where the River Clyde deepens into the Firth of Clyde."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "greenock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3875,
+    "attempt": 3845,
+    "place_id": "gn-2653680",
+    "input": {
+      "place": {
+        "place_id": "gn-2653680",
+        "name": "Carrickfergus",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.7158,
+        "lon": -5.8058
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carrickfergus",
+          "url": "https://en.wikipedia.org/wiki/Carrickfergus",
+          "text": "Carrickfergus (from Irish Carraig Fhearghais [ˌkaɾˠəc ˈaɾˠəgəʃ, ˌkaɾˠəɟ ˈaɾˠiːʃ], meaning \"Fergus' rock\") is a historic coastal town in County Antrim, Northern Ireland. It sits on the north shore of Belfast Lough, 11 miles (18 km) from Belfast. The town had a population of 28,141 at the 2021 census. It is County Antrim's oldest town and one of the oldest towns in Ireland as a whole. \nCarrickfergus Castle, built in the late 12th century at the behest of Anglo-Norman knight John de Courcy, was the capital of the Earldom of Ulster. After the earldom's collapse, it remained the only English outpost in Ulster for the next four centuries. Carrickfergus was the administrative centre for Carrickfergus Borough Council, before this was amalgamated into the Mid and East Antrim Borough Council in 2015, and forms part of the Belfast Metropolitan Area. It is also a townland of 65 acres, a civil parish and a barony."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "carrickfergus",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3876,
+    "attempt": 3846,
+    "place_id": "gn-2661881",
+    "input": {
+      "place": {
+        "place_id": "gn-2661881",
+        "name": "Aarau",
+        "country": "Switzerland",
+        "subdivision": "Aargau",
+        "lat": 47.39254,
+        "lon": 8.04422
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Aarau",
+          "url": "https://en.wikipedia.org/wiki/Aarau",
+          "text": "Aarau (Swiss Standard German: [ˈaːraʊ], Alemannic German pronunciation: [ˈɑːræu̯]) is a town, a municipality, and the capital of the northern Swiss canton of Aargau. The town is also the capital of the district of Aarau. It is German-speaking and predominantly Protestant. Aarau is situated on the Swiss plateau, in the valley of the Aare, on the river's right bank, and at the southern foot of the Jura Mountains, and is west of Zurich, 58 kilometres (36 miles) south of Basel and 65 kilometres (40 miles) northeast of Bern. The municipality borders directly on the canton of Solothurn to the west. It is the largest town in Aargau. At the beginning of 2010 Rohr became a district of Aarau."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 118
+    },
+    "banned_terms": [
+      {
+        "term": "aarau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3877,
+    "attempt": 3847,
+    "place_id": "gn-2937040",
+    "input": {
+      "place": {
+        "place_id": "gn-2937040",
+        "name": "Dietzenbach",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.00976,
+        "lon": 8.77783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dietzenbach",
+          "url": "https://en.wikipedia.org/wiki/Dietzenbach",
+          "text": "Dietzenbach (German pronunciation: [ˈdiːtsn̩ˌbax] ) is the seat of  Offenbach district in the Regierungsbezirk of Darmstadt in Hesse, Germany and lies roughly 12 km southeast of Frankfurt am Main on the waterstream Bieber. Before the Second World War, the current town was a farming village with not quite 4,000 inhabitants. However, after the war, there was a considerable upswing in the population due to refugees settling in the community. From the 1970s onwards, Dietzenbach's population rose rapidly, reaching some 33,000 by 2006. Just under a third of the inhabitants have roots in more than a hundred nations outside Germany. Agricultural buildings are nowadays seldom seen in Dietzenbach.\nIn 2001, Dietzenbach hosted the 41st Hessentag state festival."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "dietzenbach",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3878,
+    "attempt": 3848,
+    "place_id": "gn-3026467",
+    "input": {
+      "place": {
+        "place_id": "gn-3026467",
+        "name": "Chartres",
+        "country": "France",
+        "subdivision": "Centre-Val de Loire",
+        "lat": 48.44685,
+        "lon": 1.48925
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chartres",
+          "url": "https://en.wikipedia.org/wiki/Chartres",
+          "text": "Chartres (French pronunciation: [ʃaʁtʁ] ) is the prefecture of the Eure-et-Loir department in the Centre-Val de Loire region in France. It is located about 90 km (56 mi) southwest of Paris. As of 2023, there were 171,665 inhabitants in the metropolitan area of Chartres (as defined by the INSEE), 38,324 of whom lived in the city (commune) of Chartres proper.\nChartres is famous worldwide for the Chartres Cathedral. Mostly constructed between 1193 and 1250, this Gothic cathedral is in an exceptional state of preservation. The majority of the original stained glass windows are intact, while the architecture has seen only minor changes since the early 13th century. Part of the old town, including most of the library associated with the School of Chartres, was destroyed by Allied bombs in 1944."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "chartres",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3879,
+    "attempt": 3849,
+    "place_id": "gn-3140084",
+    "input": {
+      "place": {
+        "place_id": "gn-3140084",
+        "name": "Sarpsborg",
+        "country": "Norway",
+        "subdivision": "Østfold",
+        "lat": 59.28391,
+        "lon": 11.10962
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sarpsborg",
+          "url": "https://en.wikipedia.org/wiki/Sarpsborg",
+          "text": "Sarpsborg, historically Borg, is a city and municipality in the Østfold county of Eastern Norway. The administrative centre of the municipality is the city of Sarpsborg.\nSarpsborg is part of the fifth largest urban area in Norway when paired with neighbouring Fredrikstad. As of 1 January 2018, according to Statistics Norway these two municipalities have a total population of 136,127 with  55,840 in Sarpsborg and 81,278 in Fredrikstad.\nStatistics for 2021, say that the city has a population where 19% of the children belong to families that have \"low-income in the long-term\"; that is the highest level for a city (in Norway); the national level is 11.3%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "sarpsborg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3880,
+    "attempt": 3850,
+    "place_id": "gn-328716",
+    "input": {
+      "place": {
+        "place_id": "gn-328716",
+        "name": "Shakiso",
+        "country": "Ethiopia",
+        "subdivision": "Oromiya",
+        "lat": 5.76494,
+        "lon": 38.91006
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shakiso",
+          "url": "https://en.wikipedia.org/wiki/Shakiso",
+          "text": "Shakiso is a town in Oromia Region, Ethiopia. Located in the Guji Zone of the Oromia Region, this town has a latitude and longitude of 5°45′N 38°55′E and an elevation of 1758 meters above sea level.\nTwo of the major mines of Ethiopia are located near Shakiso: the Lega Dembi gold and the Kenticha tantalum mines. The Lega Dembi Mine was acquired by MIDROC gold, which between 1998 and 2008 extracted 34 metric tons from the mines, earning 466 million dollars. However, MIDROC has announced in 2009 that the deposits at Lega Dembi are almost exhausted. Shakiso is served by an airport (ICAO code HASK, IATA SKR)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "shakiso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3881,
+    "attempt": 3851,
+    "place_id": "gn-3405738",
+    "input": {
+      "place": {
+        "place_id": "gn-3405738",
+        "name": "Bezerros",
+        "country": "Brazil",
+        "subdivision": "Pernambuco",
+        "lat": -8.23333,
+        "lon": -35.79694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bezerros",
+          "url": "https://en.wikipedia.org/wiki/Bezerros",
+          "text": "Bezerros (Portuguese pronunciation: [biˈzeʁus]) is a municipality in northeastern Brazil, in the State of Pernambuco, near the city of Gravatá. Its population estimate  was 65.007 (2025) and its area is 497,156 km2. Also known as Papangu city, because a festive tradition in which the people dress masks of all types during the Carnival festivities. During the carnival time, it is one of the most visited cities in the interior of the state. Also, it was a center of coffee production, an activity which is no longer important in the region. It is much visited during Carnival; tourists and locals love to see papangus parading in city streets."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "bezerros",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3882,
+    "attempt": 3852,
+    "place_id": "gn-3430709",
+    "input": {
+      "place": {
+        "place_id": "gn-3430709",
+        "name": "Mercedes",
+        "country": "Argentina",
+        "subdivision": "Corrientes",
+        "lat": -29.18416,
+        "lon": -58.07519
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mercedes, Corrientes",
+          "url": "https://en.wikipedia.org/wiki/Mercedes,_Corrientes",
+          "text": "Mercedes (Spanish pronunciation: [meɾˈseðes]) is a city in the center of the province of Corrientes, Argentina. It is a first-class municipality with a population of 40,667 at the 2010 census [INDEC], and the head town of the department of the same name, which also includes the towns of Felipe Yofre and Mariano I. Loza. It is 275 km from the provincial capital, Corrientes, and 739 km from Buenos Aires.\nThe town, founded in 1829, is served by several grade schools, including Escuela Normal Manuel Florencio Mantilla, Colegio San Carlos, Escuela Agrotécnica Eulogio Cruz Cabral, Escuela Comercial Nocturna Ejército Argentino, and Instituto Popular de Mercedes Manuel López Rodríguez."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "mercedes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3883,
+    "attempt": 3853,
+    "place_id": "gn-3488985",
+    "input": {
+      "place": {
+        "place_id": "gn-3488985",
+        "name": "Port Maria",
+        "country": "Jamaica",
+        "subdivision": "Saint Mary Parish",
+        "lat": 18.36849,
+        "lon": -76.88946
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port Maria",
+          "url": "https://en.wikipedia.org/wiki/Port_Maria",
+          "text": "Port Maria (Jamaican Patois: Puot Mariya) is the capital town of the Jamaican parish of Saint Mary.\nOriginally named \"Puerto Santa Maria\", it was the second town established by Spanish settlers in Jamaica. The ruins of Fort Haldane, built 1759, overlook the town.\n\nIt has a population of 8,240 people and 2,870 dwellings according to the 2022 Census. Notable structures include St Mary's Parish Church, built in 1861, and the St Mary courthouse, a Georgian structure built in 1820 which now houses the Port Maria civic centre. Jamaica's first Prime minister Alexander Bustamante was put on trial for manslaughter with Frank Pixley  at the courthouse in 1947. They were acquitted.\nPort Maria is the birthplace of Sports Illustrated model Georgianna Robertson.\nAs of March 2024, the mayor is Fitzroy Wilson of the People's National Party.\n\nThe Jamaica Heritage trail has Fort Haldane, the St. Mary Courthouse and Claude Stuart Park with marked signage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "port maria",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "maria",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3884,
+    "attempt": 3854,
+    "place_id": "gn-3530886",
+    "input": {
+      "place": {
+        "place_id": "gn-3530886",
+        "name": "Chilapa de Álvarez",
+        "country": "Mexico",
+        "subdivision": "Guerrero",
+        "lat": 17.59444,
+        "lon": -99.17719
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chilapa de Álvarez",
+          "url": "https://en.wikipedia.org/wiki/Chilapa_de_Álvarez",
+          "text": "Chilapa de Álvarez, informally known as Chilapa, is a town located in the municipality of Chilapa de Álvarez in the Mexican state of Guerrero. The town is located approximately 54 kilometers east of the state capital Chilpancingo. \nChilapa is noted for its large Saturday tianguis, or Aztec market, and its crafts. Local culinary specialities of Chilapa include pozole, chalupas, pan de chilapa bread, and homemade mezcal. The municipal cathedral has a mechanical figurine of Juan Diego, who appears at a window in the cathedral spire and drops rose petals onto the plaza below.\nEvery August 15, a festival called Tigrada is held on the streets of Chilapa. It is linked to Mesoamerican mythology and is supposed to call on the Aztec god Tepēyōllōtl to bring rainfall and productive land."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "chilapa de alvarez",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "chilapa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "alvarez",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3885,
+    "attempt": 3855,
+    "place_id": "gn-3832647",
+    "input": {
+      "place": {
+        "place_id": "gn-3832647",
+        "name": "Villa Regina",
+        "country": "Argentina",
+        "subdivision": "Rio Negro",
+        "lat": -39.09631,
+        "lon": -67.08374
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa Regina",
+          "url": "https://en.wikipedia.org/wiki/Villa_Regina",
+          "text": "Villa Regina is a city in the General Roca Department of the province of Río Negro, Argentina. The city is connected to the rest of the towns in the Upper Río Negro Valley via National Route 22.\nThe city was built by the Italian-Argentine Colonization Company (Spanish: Compañía Italo-Argentina de Colonización), which purchased 5,000 hectares for urban development from the estate of Manuel Zorrilla. The lands were divided into four zones of 1,300 hectares, 1,200 hectares, 1,300 hectares, and 1,200 hectares. These zones were then subdivided into lots, which were sold to families that immigrated to Argentina from Italy. The settlement was established on November 7, 1924. It was originally named Colonia Regina de Alvear, after the wife of then-president Marcelo T. de Alvear, who had approved the project. The company developed the town with the help of Italian investors. In 1930, the government of Rio Negro created the municipality of Villa Regina, dissolving the Italian-Argentine Colonization Company. By 1939, the development of the four zones was completed. In 1987 the town wrote its first constitution, doing away with the position of municipal president and replacing it with the position of mayor.\nVilla Regina is considered the capital of the Eastern Upper Valley micro-region. The surrounding area produces a large portion of the apple and pear harvests of Patagonia and also has a sizable grape harvest. The economy of the town is complemented by its canning and bottling plants, which compose the local industrial park. The city celebrates the Provincial Grape Harvest Festival annually and also hosts the National Comahue Fair biennially."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 262
+    },
+    "banned_terms": [
+      {
+        "term": "villa regina",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "regina",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3886,
+    "attempt": 3856,
+    "place_id": "gn-3982121",
+    "input": {
+      "place": {
+        "place_id": "gn-3982121",
+        "name": "Tejupilco de Hidalgo",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 18.90475,
+        "lon": -100.15275
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tejupilco de Hidalgo",
+          "url": "https://en.wikipedia.org/wiki/Tejupilco_de_Hidalgo",
+          "text": "Tejupilco de Hidalgo is the seat of Tejupilco Municipality in the State of Mexico, Mexico. It is located approximately 100 kilometres (62 mi) southwest of the state capital Toluca, along Federal Highway 34. The name Tejupilco comes from Náhuatl meaning \"between the toes\". \"De Hidalgo\" was added to honor Father Miguel Hidalgo who initiated the Mexican War of Independence.\nWhile the origins of the original settlers of the area have been forgotten, there are remains of many of their ceremonial centers and tombs atop various hills. The most important of these sites are in Ocotepec, Acatitlán, Acamuchitlán, Bejucos, San Simón, Tejupilco, Nanchititla, Hipericones and San Miguel Ixtapan. However, it is known that the area had been occupied for centuries by the Otomi who named the area \"Talisca\". Most Otomi were driven out by a people called the \"Tecos\" who were under the dominion of the Purépecha. Father Plancarte says in Book I of the Annals of the Museum of Michoacan that the Tecos were a group related to the Mexicas who lived in the Purépecha kingdom. In 1052, the Toltecs arrived as refugees after the destruction of their kingdom, as well as the Matlatzinca who came later from the Toluca Valley. By 1476 the Aztec king Axayácatl conquered the Matlatzincas and took control of their lands including what is now Tejupilco. After the Spanish Conquest, Andrés de Tapia was assigned to subdue the old Matlatzinca lands where he met no resistance in this area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "tejupilco de hidalgo",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "tejupilco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hidalgo",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3887,
+    "attempt": 3857,
+    "place_id": "gn-4002224",
+    "input": {
+      "place": {
+        "place_id": "gn-4002224",
+        "name": "Lagos de Moreno",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 21.35875,
+        "lon": -101.93311
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lagos de Moreno",
+          "url": "https://en.wikipedia.org/wiki/Lagos_de_Moreno",
+          "text": "Lagos de Moreno (Spanish: [ˈlaɣos ðe moˈɾeno] ) is a city and municipality in the State of Jalisco, Mexico. Lagos is located in the region of Los Altos de Jalisco, within the macroregion of the Bajío. Lagos de Moreno is occasionally known as the \"Athens of Jalisco\", owing to the numerous writers and poets who were born there.\nLagos de Moreno was founded as Villa Santa Maria de los Lagos on March 31, 1563, by Don Hernando Martel, an Andalusian conquistador. The town was the economic and cultural center of a region that eventually attracted many ranchers. By 1600 there were over 20,000 cattle in the region. Santa Maria continued growing both physically and culturally, and by the 1800s, the town was elevated to a city and renamed to Lagos de Moreno in honor of Pedro Moreno. Lagos de Moreno was the site of the signing of several important political documents, the two identically named but unrelated Convenios de Lagos. The arts flourished in the city during the latter half of the 19th century, but this literary boom decreased somewhat after the Mexican Revolution, especially during the 1940s. Recently, Lagos de Moreno has become an important cultural and tourist destination thanks to its rich history and architecture, some of which still stands from the 17th century.\nAs of the 2020 census, the city had a population of 111,569, making it the 6th largest city in the state of Jalisco. The municipality had a population of 172,403 in 2020. It includes many other outlying small communities, the largest of which are Paso de Cuarenta (San Miguel de Cuarenta) and Los Azulitos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "lagos de moreno",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lagos",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "moreno",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3888,
+    "attempt": 3858,
+    "place_id": "gn-4101260",
+    "input": {
+      "place": {
+        "place_id": "gn-4101260",
+        "name": "Bentonville",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 36.37285,
+        "lon": -94.20882
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bentonville, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/Bentonville,_Arkansas",
+          "text": "Bentonville is a city in and the county seat of Benton County, Arkansas, United States. The city is centrally located in the county with Rogers adjacent to the east. The city proper had a population of 54,164 at the 2020 census, making it the ninth-most populous city in Arkansas. It is one of the four main cities in the three-county Northwest Arkansas metropolitan area, with 546,725 residents in 2020.\nThe original store of Sam Walton, who later founded Walmart, the world's largest retailer, can be found in Bentonville, along with the retailer's headquarters and 350-acre home office. Bentonville is one of the fastest-growing cities in the state."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "bentonville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3889,
+    "attempt": 3859,
+    "place_id": "gn-5384471",
+    "input": {
+      "place": {
+        "place_id": "gn-5384471",
+        "name": "Porterville",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 36.06523,
+        "lon": -119.01677
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Porterville, California",
+          "url": "https://en.wikipedia.org/wiki/Porterville,_California",
+          "text": "Porterville is a city at the base of Southern Sierra Nevada mountains on the eastern side of San Joaquin Valley, in Tulare County, California, United States. It is part of the Visalia-Porterville metropolitan statistical area. Serving as the economic hub of the Southern Sierra, the Sequoia National Forest is nearby, offering outdoor recreational opportunities such as hiking, camping, and fishing.\nSince its incorporation in 1902, the city's population has grown as it annexed nearby unincorporated areas. The city population (not including East Porterville) was 62,623 at the 2020 census.\nPorterville serves as a gateway to Sequoia National Forest, Giant Sequoia National Monument and Kings Canyon National Park."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "porterville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3890,
+    "attempt": 3860,
+    "place_id": "gn-6184365",
+    "input": {
+      "place": {
+        "place_id": "gn-6184365",
+        "name": "Woodstock",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.13339,
+        "lon": -80.7497
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodstock, Ontario",
+          "url": "https://en.wikipedia.org/wiki/Woodstock,_Ontario",
+          "text": "Woodstock is a city in Southwestern Ontario, Canada. The city has a population of 46,705 according to the 2021 Canadian census. Woodstock is the seat of Oxford County, at the head of the Thames River, approximately 128 km from Toronto, and 43 km from London, Ontario. The city is known as the Dairy Capital of Canada and promotes itself as \"The Friendly City\".\nWoodstock was first settled by European colonists and United Empire Loyalists in 1800, starting with Zacharias Burtch and Levi Luddington, and was incorporated as a town in 1851. Since then, Woodstock has maintained steady growth, and is now a small city in Southwestern Ontario. As a small historic city, Woodstock is one of the few cities in Ontario to still have all of its original administration buildings. The city has developed a strong economic focus towards manufacturing and tourism. It is also a market city for the surrounding agricultural industry.\nWoodstock is home to a campus of Fanshawe College. The city plays host to a number of cultural and artistic exhibits, including the Woodstock Museum, a national historic site. Woodstock's summer festivals contribute to its tourism industry; however, its economic activity is centred on the manufacturing centre, the city being home to several auto-manufacturing factories. The city's west end has exceptionally well-preserved Victorian streetscapes; most notable of these streets is Vansittart Avenue, named after Admiral Henry Vansittart, one of the city's first settlers. Woodstock has a large community centre with a rink capable of accommodating 1,800 spectators for hockey games. The centre also has a large banquet hall and atrium which play host to many social gatherings for the community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 107,
+      "fullExtractWords": 273
+    },
+    "banned_terms": [
+      {
+        "term": "woodstock",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

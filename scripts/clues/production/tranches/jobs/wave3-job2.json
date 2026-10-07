@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 1877,
+    "place_id": "gn-3893656",
+    "input": {
+      "place": {
+        "place_id": "gn-3893656",
+        "name": "Copiapó",
+        "country": "Chile",
+        "subdivision": "Atacama",
+        "lat": -27.36737,
+        "lon": -70.33219
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Copiapó",
+          "url": "https://en.wikipedia.org/wiki/Copiapó",
+          "text": "Copiapó (Spanish pronunciation: [kopjaˈpo]) is a city and commune in northern Chile, located about 65 kilometers east of the coastal town of Caldera. Founded on 8 December 1744, it is the capital of Copiapó Province and Atacama Region.\nCopiapó lies about 800 kilometres (500 mi) north of Santiago by the Copiapó River, in the valley of the same name. In the early 21st century, the river has dried up in response to climate change and more severe droughts. The town is surrounded by the Atacama Desert and receives 12 mm (½ in) of rain per year. It has 168,831 inhabitants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "copiapo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1885,
+    "place_id": "gn-2820860",
+    "input": {
+      "place": {
+        "place_id": "gn-2820860",
+        "name": "Tübingen",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 48.52266,
+        "lon": 9.05222
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tübingen",
+          "url": "https://en.wikipedia.org/wiki/T%C3%BCbingen",
+          "text": "Tübingen (; German: [ˈtyːbɪŋən] ; Swabian: Dibenga) is a traditional university city in central Baden-Württemberg, Germany, 30 km (19 mi) south of the state capital, Stuttgart. With students accounting for almost one in three of Tübingen's 90,000 residents, the city has one of the youngest profiles in Germany, with an average age of just under 40.\nFounded in 1477, Eberhard Karl University is one of the oldest universities north of the Alps. The university associated Tübingen in the 19th century with the German-patriotic student Burschenschaften, whose large fraternity houses are still a notable feature of the town; in the years between the World Wars, with the rise of National Socialism; and in the German Federal Republic with the emergence of the liberal-left Greens, currently the largest tendency in local government.\nExceptionally, Tübingen survived the Second World War with its historic fabric almost wholly intact. It has since experienced two major expansions: in the 1960s, the construction of university institutes and new housing on the high ground to the north, and, following the end of the Cold War and the evacuation of extensive military bases by the French, the new mixed-use Loretto and French Quarter to the south."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "tubingen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1888,
+    "place_id": "gn-5337696",
+    "input": {
+      "place": {
+        "place_id": "gn-5337696",
+        "name": "Claremont",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 34.09668,
+        "lon": -117.71978
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Claremont, California",
+          "url": "https://en.wikipedia.org/wiki/Claremont,_California",
+          "text": "Claremont ( KLAIR-mont) is a suburban city in eastern Los Angeles County, California, United States, 30 miles (48 km) east of Los Angeles. It lies in the San Gabriel Valley at the foothills of the San Gabriel Mountains. As of the 2010 census, it had a population of 34,926, and in 2020 the population was 37,266.\nClaremont is home to the seven Claremont Colleges and several other educational institutions and is known for its tree-lined streets with numerous historic buildings. Because of this, it is sometimes referred to as \"The City of Trees and Ph.Ds.\" It was named the best suburb in the West by Sunset Magazine in 2016, which described it as a \"small city that blends worldly sophistication with small-town appeal.\" In 2018, Niche rated Claremont as the 17th-best place to live in the Los Angeles area out of 658 communities it evaluated, based on crime, cost of living, job opportunities, and local amenities.\nThe city is primarily residential, with a significant portion of its commercial activity located in \"The Village,\" a popular collection of street-front small stores, boutiques, art galleries, offices, and restaurants adjacent to and west of the Claremont Colleges."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "claremont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1894,
+    "place_id": "gn-4161422",
+    "input": {
+      "place": {
+        "place_id": "gn-4161422",
+        "name": "Lake Worth Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.61708,
+        "lon": -80.07231
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lake Worth Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Lake_Worth_Beach,_Florida",
+          "text": "Lake Worth Beach, previously named Lake Worth, is a city in east-central Palm Beach County, Florida, United States, located approximately 63 miles (101 km) north of Miami. The city's name is derived from the body of water along its eastern border known as the Lake Worth Lagoon, which was named for General William J. Worth, who led United States Army forces during the last part of the Second Seminole War. Lake Worth Beach is situated south of West Palm Beach, southeast of Lake Clarke Shores, east of Palm Springs, and north of Lantana, while a small section of the city also partitions the town of Palm Beach. The 2010 census recorded a population of 34,910, which increased to 42,219 in the 2020 census. Lake Worth Beach is within the Miami metropolitan area, which was home to an estimated 6,138,333 people in 2020.\nWhile archaeological evidence indicates that the Jaega inhabited nearby areas thousands of years ago, Samuel and Fannie James, an African American couple, became the first known settlers in modern-day Lake Worth Beach in 1885, filing a homestead claim on 187 acres (76 ha)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 185
+    },
+    "banned_terms": [
+      {
+        "term": "lake worth beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lake",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "worth",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1899,
+    "place_id": "gn-3108877",
+    "input": {
+      "place": {
+        "place_id": "gn-3108877",
+        "name": "Sitges",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.23506,
+        "lon": 1.81193
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sitges",
+          "url": "https://en.wikipedia.org/wiki/Sitges",
+          "text": "Sitges (Catalan: [ˈsidʒəs], Spanish: [ˈsitʃes]; Old Catalan for 'underground [grain] silos') is a town about 35 kilometres southwest of Barcelona, in Catalonia, Spain, renowned worldwide for its film festival, Carnival, and Catalan culture. Located between the Garraf Massif and the Mediterranean Sea, it is known for its beaches, nightspots, LGBTQ+ tourism, and historical sites.\nWhile the roots of Sitges' artistic reputation date back to the late 19th century, when painter Santiago Rusiñol took up residence there during the summer, the town became a centre for the 1960s counterculture in mainland Spain during the Francoist regime, and became known as \"Ibiza in miniature\".\nToday, the economy of Sitges is based on tourism and culture, offering more than 4,500 hotel beds, half of them in four-star hotels.\nAlmost 35% of the approximately 26,000 permanent inhabitants are estimated to be foreigners, a majority from Northern Europe. \nThere are 17 beaches in Sitges, the most popular being Platja de Sant Sebastià, Platja de la Fragata, Platja de la Bassa Rodona, Platja dels Balmins, Platja de la Ribera and Platja d'Aiguadolç."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "sitges",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1914,
+    "place_id": "gn-2653877",
+    "input": {
+      "place": {
+        "place_id": "gn-2653877",
+        "name": "Canterbury",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.27904,
+        "lon": 1.07992
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Canterbury",
+          "url": "https://en.wikipedia.org/wiki/Canterbury",
+          "text": "Canterbury (  KAN-tər-bər-ee or  -⁠berr-ee) is a city and UNESCO World Heritage Site in the Canterbury district, county of Kent, England; it was a county borough until 1974. Lying on the River Stour not far from its mouth on the Strait of Dover, the city has a mild oceanic climate.\nCanterbury is a popular tourist destination, with the city's economy heavily reliant upon tourism, alongside higher education and retail. As of 2021, the city had a population of 55,087 inhabitants, including a substantial number of students and one of the highest student-to-permanent-resident ratios in Britain.\nThe site of the city has been occupied since Paleolithic times and served as the capital of the Celtic Cantiaci and Jute Kingdom of Kent. Many historical structures fill the area, including a city wall founded in Roman times and rebuilt in the 14th century, the Westgate Towers museum, the ruins of St Augustine's Abbey, the Norman Canterbury Castle, and the oldest extant school in the world, the King's School."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "canterbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1915,
+    "place_id": "gn-5100572",
+    "input": {
+      "place": {
+        "place_id": "gn-5100572",
+        "name": "Livingston",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.79593,
+        "lon": -74.31487
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Livingston, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Livingston,_New_Jersey",
+          "text": "Livingston is a township in Essex County, in the U.S. state of New Jersey. As of the 2020 United States census, the township's population was 31,330, its highest decennial count ever and an increase of 1,964 (+6.7%) from 29,366 recorded at the 2010 census, which in turn reflected an increase of 1,975 (+7.2%) from the 27,391 counted in the 2000 census. In 2025, the Population Estimates Program by the United States Census Bureau calculated that the township had a population of 32,223.\nLivingston was incorporated as a township by an act of the New Jersey Legislature on February 5, 1813, from portions of Caldwell Township (now Fairfield Township) and Springfield Township (now in Union County). Portions of the original township were later taken to form Fairmount (March 11, 1862, now part of West Orange) and Roseland (March 10, 1908).\nThe township was named for William Livingston, the first Governor of New Jersey; his family's coat of arms served as the township's seal for many years."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 165
+    },
+    "banned_terms": [
+      {
+        "term": "livingston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1917,
+    "place_id": "gn-2510281",
+    "input": {
+      "place": {
+        "place_id": "gn-2510281",
+        "name": "Torremolinos",
+        "country": "Spain",
+        "subdivision": "Andalusia",
+        "lat": 36.62035,
+        "lon": -4.49976
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torremolinos",
+          "url": "https://en.wikipedia.org/wiki/Torremolinos",
+          "text": "Torremolinos (Spanish pronunciation: [toremoˈlinos]) is a municipality in Andalusia, southern Spain, west of Málaga. A poor fishing village before the growth in tourism began in the late 1950s, Torremolinos was the first of the Costa del Sol resorts to be developed and is still the most popular in the region.\nOn the western shore of the Bay of Málaga and in front of the Sierra de Mijas 13 km (8 miles) from Málaga, it is served by the A-7 motorway, which bypasses the city to the north, the Cercanías commuter train and Avanzabus.\nIn 2013, it had 69,389 inhabitants, making it the sixth largest city in the province. The township has an area of 20 km2 (7.7 sq mi).\nAreas of the town are dotted with older high-rise residential buildings and hotels, but height limitations on new developments and a significant number of original old town properties have kept the town centre much more open than other popular resorts such as Benidorm and Fuengirola."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 164
+    },
+    "banned_terms": [
+      {
+        "term": "torremolinos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1919,
+    "place_id": "gn-727079",
+    "input": {
+      "place": {
+        "place_id": "gn-727079",
+        "name": "Sliven",
+        "country": "Bulgaria",
+        "subdivision": "Sliven",
+        "lat": 42.68607,
+        "lon": 26.32558
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sliven",
+          "url": "https://en.wikipedia.org/wiki/Sliven",
+          "text": "Sliven (Bulgarian: Сливен [ˈslivɛn]) is the eighth-largest city in Bulgaria and the administrative and industrial centre of Sliven Province and municipality in Northern Thrace. It is situated in the Sliven Valley at the foothills of the Balkan Mountains.\nSliven is famous for its heroic haiduti who fought against the Ottoman Turks in the 19th century and is known as the \"City of the 100 Voyvodi\", a voyvoda being a leader of haiduti.\nThe famous rocky massif Sinite Kamani (Сините камъни, \"The Blue Rocks\") and the associated Sinite Kamani Nature Park, the fresh air and the mineral springs at Slivenski Mineralni Bani offer opportunities for leisure and tourism. Investors are exploring the opportunity to use the local wind (Bora) for the production of electricity.\nAnother point of interest and a major symbol of the city as featured on the coat of arms, is the more than 1,000-year-old Stariyat Briast (Старият Бряст, \"The Old Elm\"), a huge Smooth-leaved Elm in the center of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 163
+    },
+    "banned_terms": [
+      {
+        "term": "sliven",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1927,
+    "place_id": "gn-4138102",
+    "input": {
+      "place": {
+        "place_id": "gn-4138102",
+        "name": "Columbia Heights",
+        "country": "United States",
+        "subdivision": "District of Columbia",
+        "lat": 38.92567,
+        "lon": -77.02942
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Columbia Heights (Washington, D.C.)",
+          "url": "https://en.wikipedia.org/wiki/Columbia_Heights_(Washington,_D.C.)",
+          "text": "Columbia Heights is a neighborhood in Washington, D.C., located in the city’s Northwest quadrant. Bounded by 16th Street NW, W Street NW, Florida Avenue NW, Barry Place NW, Sherman Avenue NW, Spring Road NW, and New Hampshire Avenue \nNW, the neighborhood is an important retail hub for the area, as home to DC USA mall and to numerous other restaurants and stores, primarily along the highly commercialized 14th Street. Columbia Heights is home to numerous historical landmarks, including Meridian Hill (Malcolm X) Park, National Baptist Memorial Church, All Souls Church, along with a number of embassy buildings.\nDeveloped as a suburb after the U.S. Civil War, the area's growth accelerated in the early 1900s. The extension of the DC streetcar system in 1914 made the neighborhood a popular place to live among federal workers. In the 1940s, the designation of Cardozo High School as a \"colored\" school resulted in a demographic shift and the neighborhood became predominantly African-American."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "columbia heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "columbia",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1934,
+    "place_id": "gn-2918752",
+    "input": {
+      "place": {
+        "place_id": "gn-2918752",
+        "name": "Gotha",
+        "country": "Germany",
+        "subdivision": "Thuringia",
+        "lat": 50.94823,
+        "lon": 10.70193
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gotha",
+          "url": "https://en.wikipedia.org/wiki/Gotha",
+          "text": "Gotha (German pronunciation: [ˈɡoːtaː] ) is the fifth-largest city in Thuringia, Germany, 20 kilometres (12 miles) west of Erfurt and 25 km (16 miles) east of Eisenach with a population of 46,400 (2024). The city is the capital of the district of Gotha and was also a residence of the Ernestine Wettins from 1640 until the end of monarchy in Germany in 1918. The House of Saxe-Coburg and Gotha originating here spawned many European rulers, including the royal houses of the United Kingdom, Belgium, Portugal (until 1910) and Bulgaria (until 1946).\nIn the Middle Ages, Gotha was a rich trading town on the trade route Via Regia and between 1650 and 1850, Gotha saw a cultural heyday as a centre of sciences and arts, fostered by the dukes of Saxe-Gotha. The first duke, Ernest the Pious, was famous for his wise rule. In the 18th century, the Almanach de Gotha was first published in the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "gotha",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1951,
+    "place_id": "gn-2269594",
+    "input": {
+      "place": {
+        "place_id": "gn-2269594",
+        "name": "Cascais",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.69681,
+        "lon": -9.42147
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cascais",
+          "url": "https://en.wikipedia.org/wiki/Cascais",
+          "text": "Cascais (European Portuguese pronunciation: [kɐʃˈkajʃ] ) is a town and municipality in the Lisbon District of Portugal, located on the Estoril Coast. The municipality has a total of 214,158 inhabitants in an area of 97.40 km2. Cascais is an important tourist destination. Its marina hosts events such as the America's Cup and the town of Estoril, part of the Cascais municipality, hosts conferences such as the Horasis Global Meeting.\nSince the 1870s, Cascais has been a popular seaside resort after King Luís I of Portugal and the Portuguese royal family made the seaside town their residence every September, thus also attracting members of the Portuguese nobility, who established a summer community there. Cascais is known for the many members of royalty who have lived there, including King Edward VIII of the United Kingdom, when he was the Duke of Windsor, King Juan Carlos I of Spain, and King Umberto II of Italy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "cascais",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1953,
+    "place_id": "gn-1267090",
+    "input": {
+      "place": {
+        "place_id": "gn-1267090",
+        "name": "Khambhāt",
+        "country": "India",
+        "subdivision": "Gujarat",
+        "lat": 22.31744,
+        "lon": 72.61916
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khambhāt",
+          "url": "https://en.wikipedia.org/wiki/Khambh%C4%81t",
+          "text": "Khambhāt (; Gujarati: [kʰəmbʱɑt] ), also known as Cambay, is a city and the surrounding urban agglomeration in Anand district in the Indian state of Gujarat. It was once an important trading center, but its harbour gradually silted up, and the maritime trade moved to Surat. Khambhāt lies on an alluvial plain at the north end of the Gulf of Khambhāt, noted for the extreme rise and fall of its tides, which can vary as much as thirty feet in the vicinity of Khambat. Khambat is known for its halvasan sweet, sutarfeni, akik stone and kites (patang), and for sources of oil and gas.\nKhambhāt is perhaps the only place in India where the Harappan craft of agate bead making is found in the living tradition. Surprisingly Khambhāt has no stone deposits; the craft has survived mainly through acquiring stones from the Rajpipla hills, about 200 km away from the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "khambhat",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1954,
+    "place_id": "gn-3496331",
+    "input": {
+      "place": {
+        "place_id": "gn-3496331",
+        "name": "Moca",
+        "country": "Dominican Republic",
+        "subdivision": "Espaillat Province",
+        "lat": 19.39289,
+        "lon": -70.52347
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moca, Dominican Republic",
+          "url": "https://en.wikipedia.org/wiki/Moca,_Dominican_Republic",
+          "text": "Moca is the capital of Espaillat province in the Cibao region of the Dominican Republic, and is the tenth-largest city of the country with a population of 164,022 inhabitants. Moca is located 11 miles/18 kilometers east from the country’s second-largest city, Santiago. It is divided into eight municipal districts: San Víctor, Las Lagunas, José Contreras, Juan López, El Higuerito, La Ortega, Monte de la Jagua and Canca La Reina.\nThe city is known as \"La Villa Heroica\" (Village of Heroes) due to the number of men and women from Moca who have played a major role in the Dominican Republic's history in bringing down two dictators, Ulises Heureaux and Rafael Trujillo, and bringing democracy back to the country.\nMoca is home to the Corazon Sagrado de Jesus (\"Sacred Heart of Jesus\") Cathedral. All its pane glass windows were originally brought from Italy depicting the apostles and Jesus' path to the crucifixion."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 151
+    },
+    "banned_terms": [
+      {
+        "term": "moca",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1964,
+    "place_id": "gn-3607966",
+    "input": {
+      "place": {
+        "place_id": "gn-3607966",
+        "name": "La Esperanza",
+        "country": "Honduras",
+        "subdivision": "Intibucá Department",
+        "lat": 14.30158,
+        "lon": -88.16725
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Esperanza, Honduras",
+          "url": "https://en.wikipedia.org/wiki/La_Esperanza,_Honduras",
+          "text": "La Esperanza (Spanish pronunciation: [la espeˈɾansa]) is the capital city and a municipality of the same name of the department of Intibucá, Honduras. La Esperanza is famous for having the coolest climate in Honduras. It is considered the heart of the Ruta Lenca (Lenca Trail), a region of Lenca ethnic influence that spans Honduras from Santa Rosa de Copan to Choluteca. Sites on the Lenca Trail have been designated by the government and United Nations development in order to encourage more cultural tourism, and help create new markets for the traditional crafts, such as pottery, practiced by the Lenca, in order to preserve their culture.\nThe city of La Esperanza is merged indistinguishably with the city of Intibucá, the head of the neighboring municipality of Intibucá. Intibucá is the older of the twin cities and was originally an indigenous Lenca community, while La Esperanza is the newer ladino community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "la esperanza",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "esperanza",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1965,
+    "place_id": "gn-4844309",
+    "input": {
+      "place": {
+        "place_id": "gn-4844309",
+        "name": "Torrington",
+        "country": "United States",
+        "subdivision": "Connecticut",
+        "lat": 41.80065,
+        "lon": -73.12122
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Torrington, Connecticut",
+          "url": "https://en.wikipedia.org/wiki/Torrington,_Connecticut",
+          "text": "Torrington is the most populated municipality and largest city in Litchfield County, Connecticut, and the Northwest Hills Planning Region. It is also the core city of Greater Torrington, one of the largest micropolitan areas in the United States. The city population was 35,515 according to the 2020 census. The city is located roughly 23 miles (37 km) west of Hartford, 34 miles (55 km) southwest of Springfield, Massachusetts, 67 miles (108 km) southeast of Albany, New York, 84 miles (135 km) northeast of New York City, and 127 miles (204 km) west of Boston, Massachusetts.\nTorrington is a former mill town, as are most other towns along the Naugatuck River Valley. Downtown Torrington is home to the Nutmeg Conservatory for the Arts, which trains ballet dancers and whose Company performs in the Warner Theatre, a 1,700-seat auditorium built in 1931 as a cinema by the Warner Brothers film studio."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 149
+    },
+    "banned_terms": [
+      {
+        "term": "torrington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1966,
+    "place_id": "gn-2411397",
+    "input": {
+      "place": {
+        "place_id": "gn-2411397",
+        "name": "Georgetown",
+        "country": "St. Helena",
+        "subdivision": "Ascension",
+        "lat": -7.92861,
+        "lon": -14.41194
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Georgetown, Ascension Island",
+          "url": "https://en.wikipedia.org/wiki/Georgetown,_Ascension_Island",
+          "text": "Georgetown is the capital and chief settlement of Ascension Island, in the British Overseas Territory of Saint Helena, Ascension and Tristan da Cunha, situated on the west coast of the island.\nThe town is centred on St Mary's Church, part of the Anglican Diocese of St Helena and the former Exiles Club, built as a Royal Marines barracks at the time of Napoleon's exile to Saint Helena in the early 19th century.\nIt is named after King George III, who reigned at the time the island was claimed for Britain and garrisoned by the Admiralty in 1815.\nIn addition to the church, there is a pier, an athletics track, a small supermarket, Royal Mail post office, snack bar, hotel, police station, hospital, dental surgery, and a library. There is no school, however, and pupils travel to Two Boats village, 3 miles inland, in the centre of the island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "georgetown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1968,
+    "place_id": "gn-4488762",
+    "input": {
+      "place": {
+        "place_id": "gn-4488762",
+        "name": "Rocky Mount",
+        "country": "United States",
+        "subdivision": "North Carolina",
+        "lat": 35.93821,
+        "lon": -77.79053
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rocky Mount, North Carolina",
+          "url": "https://en.wikipedia.org/wiki/Rocky_Mount,_North_Carolina",
+          "text": "Rocky Mount is a city in Nash and Edgecombe counties in the U.S. state of North Carolina. The city's population was 54,341 as of the 2020 census, making it the 20th-most populous city in North Carolina.\nIt is the principal city of the Rocky Mount metropolitan area—often called the \"Twin Counties\"—which had an estimated population of 145,383 in 2023. Rocky Mount is also an anchor city of the Rocky Mount-Wilson-Roanoke Rapids, NC Combined Statistical Area, which had an estimated population of 288,366 in 2023.\nEnglish and Scots traders encountered the indigenous people in this area of the falls of the Tar River beginning in the mid-1700s. Incorporated in 1867, the community continued to develop through the 19th century based on agriculture (cotton and tobacco), manufacturing of textiles (made possible by the water power of the falls), and development of rail transportation to link the town to major markets."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "rocky mount",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rocky",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 1980,
+    "place_id": "gn-3052236",
+    "input": {
+      "place": {
+        "place_id": "gn-3052236",
+        "name": "Gödöllő",
+        "country": "Hungary",
+        "subdivision": "Pest County",
+        "lat": 47.59657,
+        "lon": 19.35515
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gödöllő",
+          "url": "https://en.wikipedia.org/wiki/G%C3%B6d%C3%B6ll%C5%91",
+          "text": "Gödöllő, officially the City of Gödöllő, is a city in Pest County, Budapest metropolitan area, Hungary, about 30 km (20 mi) northeast from the outskirts of Budapest. Its population is 34,396 according to the 2010 census and is growing rapidly. It can be easily reached from Budapest with the suburban railway (HÉV), and national railway (MÁV-START).\nGödöllő is home to the Szent István University, the main education institute of agriculture in Hungary. The palace at Gödöllő was originally built for the aristocratic Grassalkovich family; Franz Josef, Emperor of Austria and King of Hungary and his wife Elisabeth (\"Sisi\") later had their summer residence here.\nCommunism saw much of the town's original one-storey housing levelled to make way for the blocks of flats which continue to dominate the town centre, as well as much of the Royal Forest and Elisabeth's Park levelled for industrial use."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "godollo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1984,
+    "place_id": "gn-6154383",
+    "input": {
+      "place": {
+        "place_id": "gn-6154383",
+        "name": "Spruce Grove",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 53.53344,
+        "lon": -113.91874
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spruce Grove",
+          "url": "https://en.wikipedia.org/wiki/Spruce_Grove",
+          "text": "Spruce Grove is a city 11 km (6.8 mi) west of Edmonton, Alberta, in Canada. The city is adjacent to the Town of Stony Plain and is surrounded by Parkland County.\nWith a 2021 population of 37,645, Spruce Grove is the ninth-largest city in Alberta. The mayor of Spruce Grove is Jeff Acker.\nSpruce Grove is home to the Horizon Stage Performing Arts Centre, a local theatre, and the TransAlta Tri Leisure Centre, a recreation facility shared with Stony Plain and Parkland County.\nJennifer Heil, the freestyle skier who won the first gold medal for Canada in the 2006 Winter Olympics in Turin, Italy, and a silver medal at the 2010 Winter Olympics is from Spruce Grove, as is Carla MacLeod, a member of the 2010 Canada women's national ice hockey team, and Hockey Hall of Fame member and Stanley Cup-winning goalie Grant Fuhr."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "spruce grove",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "spruce",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grove",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

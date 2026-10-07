@@ -1,0 +1,722 @@
+[
+  {
+    "rank": 1414,
+    "attempt": 1401,
+    "place_id": "gn-4004886",
+    "input": {
+      "place": {
+        "place_id": "gn-4004886",
+        "name": "Nogales",
+        "country": "Mexico",
+        "subdivision": "Sonora",
+        "lat": 31.30862,
+        "lon": -110.94217
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nogales, Arizona",
+          "url": "https://en.wikipedia.org/wiki/Nogales,_Arizona",
+          "text": "Nogales (Spanish pronunciation: [noˈɣales] ; English:  or ) is a city in and the county seat of Santa Cruz County, Arizona, United States. As of 2026, the population of Nogales is 20,072. Nogales forms part of the larger Tucson–Nogales combined statistical area, with a total population of 1,027,683 as of the 2010 Census.\nNogales forms Arizona's largest transborder agglomeration with its adjacent, much larger twin Nogales, Sonora, across the Mexican border. The southern terminus of Interstate 19 is located in Nogales at the U.S.–Mexico border; the highway continues south into Mexico as Mexico Federal Highway 15. The highways meeting in Nogales are a major road intersection in the CANAMEX Corridor, connecting Canada, the United States, and Mexico. Nogales also is the beginning of the Arizona Sun Corridor, an economically important trade region stretching from Nogales to Prescott, including the Tucson and Phoenix metropolitan areas.\nNogales is home to four international ports of entry, including the Morley Pedestrian Port of Entry, Dennis Deconcini Pedestrian and Passenger Vehicle Port of Entry, Union Pacific rail, Nogales International Airport, and the Mariposa Port of Entry. The Nogales-Mariposa Port of Entry has twelve passenger vehicle inspection lanes and eight commercial inspection lanes.\nDue to its location on the border and its major ports of entry, Nogales funnels an estimated $30 billion worth of international trade into Arizona and the United States, per year, in fresh produce and manufactured goods from Mexico and the world through the deep sea port in Guaymas, Sonora, Mexico. This trade helps to support tens of thousands of jobs and the overall economies in Ambos Nogales and throughout the American state of Arizona and the Mexican state of Sonora.\nThe town is named for the black walnut trees which once grew abundantly in the mountain pass between the cities of Nogales, Arizona, and Nogales, Sonora, and can still be found around the town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 312
+    },
+    "banned_terms": [
+      {
+        "term": "nogales",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1415,
+    "attempt": 1402,
+    "place_id": "gn-4709796",
+    "input": {
+      "place": {
+        "place_id": "gn-4709796",
+        "name": "McAllen",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 26.20341,
+        "lon": -98.23001
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "McAllen, Texas",
+          "url": "https://en.wikipedia.org/wiki/McAllen,_Texas",
+          "text": "McAllen is a city in the U.S. state of Texas. It is located at the southern tip of the state in the Rio Grande Valley, on the Mexican border. The city limits extend south to the Rio Grande, across from the Mexican city of Reynosa. As of the 2025 census estimate, McAllen's population was 150,640, making it the most populous city in Hidalgo County, the second most populous city in the Rio Grande Valley, and the 23rd-most populous city in Texas. The city anchors the McAllen-Edinburg-Mission metropolitan area, the fifth largest metropolitan area in the state of Texas, with 921,549 residents as of 2025. The binational Reynosa–McAllen metropolitan area counts a population of more than 1.5 million.\nFrom its settlement in 1904, the area around McAllen was largely rural and agricultural in character, but the latter half of the 20th century had steady growth, which has continued in the 21st century in the metropolitan area. The introduction of the maquiladora economy and the North American Free Trade Association led to an increase in cross-border trading with Mexico."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "mcallen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1416,
+    "attempt": 1403,
+    "place_id": "gn-586523",
+    "input": {
+      "place": {
+        "place_id": "gn-586523",
+        "name": "Ganja",
+        "country": "Azerbaijan",
+        "subdivision": "Gǝncǝ",
+        "lat": 40.68157,
+        "lon": 46.36134
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ganja, Azerbaijan",
+          "url": "https://en.wikipedia.org/wiki/Ganja,_Azerbaijan",
+          "text": "Ganja (; Azerbaijani: Gəncə [ɟænˈdʒæ] ) is Azerbaijan's third largest city, with a population of around 335,600. The city has been a historic and cultural center throughout most of its existence. It was the capital of the Ganja Khanate until 1804; after Qajar Iran ceded it and most other Iranian territories in the Caucasus to the Russian Empire following the Treaty of Gulistan in 1813, it became part of the administrative divisions of the Georgia Governorate, Georgia-Imeretia Governorate, Tiflis Governorate, and Elizavetpol Governorate. Following the dissolution of the Russian Empire and the Transcaucasian Democratic Federative Republic, it became a part of the Azerbaijan Democratic Republic, followed by the Azerbaijan SSR, and, since 1991, the Republic of Azerbaijan."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "ganja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1417,
+    "attempt": 1404,
+    "place_id": "gn-5967629",
+    "input": {
+      "place": {
+        "place_id": "gn-5967629",
+        "name": "Guelph",
+        "country": "Canada",
+        "subdivision": "Ontario",
+        "lat": 43.54594,
+        "lon": -80.25599
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guelph",
+          "url": "https://en.wikipedia.org/wiki/Guelph",
+          "text": "Guelph (  GWELF; 2021 Canadian Census population 143,740) is a city in Southwestern Ontario, Canada. Known as \"The Royal City\", it is roughly 22 kilometres (14 mi) east of Kitchener and 70 kilometres (43 mi) west of Downtown Toronto, at the intersection of Highway 6, Highway 7, and Wellington County Road 124. It is the seat of Wellington County, but is politically independent of it.\nGuelph was established in the 1820s by Scottish novelist John Galt, first superintendent of the Canada Company, who based his headquarters and home in the community. The area—much of which became Wellington County—was part of the Halton Block, a Crown reserve for the Six Nations Iroquois. Galt is generally considered Guelph's founder.\nFor many years, Guelph ranked at or near the bottom of Canada's crime severity list. However, the 2017 index showed a 15% increase from 2016. It had one of the country's lowest unemployment rates throughout the Great Recession. Much of this was attributed to its numerous manufacturing facilities, including Linamar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 167
+    },
+    "banned_terms": [
+      {
+        "term": "guelph",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1418,
+    "attempt": 1405,
+    "place_id": "gn-650224",
+    "input": {
+      "place": {
+        "place_id": "gn-650224",
+        "name": "Kuopio",
+        "country": "Finland",
+        "subdivision": "North Savo",
+        "lat": 62.89238,
+        "lon": 27.67703
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kuopio",
+          "url": "https://en.wikipedia.org/wiki/Kuopio",
+          "text": "Kuopio ( koo-OH-pee-oh, Finnish: [ˈkuo̯pio] ) is a city in Finland and the regional capital of North Savo. It is located in the Finnish Lakeland. The population of Kuopio is approximately 127,000, while the sub-region has a population of approximately 148,000. It is the 8th most populous municipality in Finland, and the seventh most populous urban area in the country.\nKuopio has a total area of 4,326.35 square kilometres (1,670.41 sq mi), of which 719.85 km2 (277.94 sq mi) is water and half is forest. Although the city's population is spread over 39/km2 (100/sq mi), the city's urban areas are comparatively densely populated (urban area: 1,618 /km²), making Kuopio the second most densely populated city in Finland. At the end of 2018, its urban area had a population of approximately 90,000. Together with Joensuu, Kuopio is one of the major urban, economic and cultural centres of Eastern Finland.\nKuopio is nationally known as one of the most important study cities and centres of attraction and growth. The city's history has been marked by several municipality mergers since 1969, as a result of which Kuopio now encompasses much of the countryside; Kuopio's population surpassed 100,000 when the town of Nilsiä joined the city in early 2013. When Maaninka joined Kuopio at the beginning of 2015, Kuopio became the largest milk-producing municipality in Finland and the second largest beef-producing municipality in Finland. In addition, at the end of the 2010s, Kuopio was characterised by numerous large projects, the largest in the country after the Helsinki metropolitan area. Kuopio has also become a major tourist city with the large tourist centre in Tahkovuori. Kuopio Airport, located in the municipality of Siilinjärvi, is Finland's fifth busiest airport with over 235,000 passengers in 2017.\nAccording to the Kuntarating 2017 survey, Kuopio has the most satisfied residents among the 20 largest cities, and according to the 2018 survey, Kuopio is the best city for property investors. In the Kuntien imago 2018 survey, Kuopio ranks second among Finland's large cities after Seinäjoki in South Ostrobothnia. In T-media's study on the attractiveness and influence of the ten largest cities in 2021, 2022 and 2023, Kuopio is the second most attractive city in Finland, with Tampere in first place.\nKuopio was the European Region of Gastronomy in 2020. It is also known as the home of Kalakukko, a traditional Savonian food, which is why Kuopio is also known as the \"Promised Land of Kalakukko\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 405
+    },
+    "banned_terms": [
+      {
+        "term": "kuopio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1419,
+    "attempt": 1406,
+    "place_id": "gn-700051",
+    "input": {
+      "place": {
+        "place_id": "gn-700051",
+        "name": "Nikopol",
+        "country": "Ukraine",
+        "subdivision": "Dnipropetrovsk",
+        "lat": 47.56826,
+        "lon": 34.39126
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nikopol, Ukraine",
+          "url": "https://en.wikipedia.org/wiki/Nikopol,_Ukraine",
+          "text": "Nikopol (Ukrainian: Нікополь, pronounced [ˈn⁽ʲ⁾ikopolʲ] ) is a city and municipality (hromada) in Nikopol Raion in the south of Ukraine, on the right bank of the Dnieper River, about 63 km south-east of Kryvyi Rih and 48 km south-west of Zaporizhzhia. Population: 105.160 (2022 estimate).\nNikopol is the fourth-most populous city in Dnipropetrovsk Oblast. Located on a cape by the Kakhovka reservoir, it is a powerful industrial city with several pipe-producing factories, such as the Interpipe corporation, and steel rolling mills, such as the factory of ferroalloys, constituting Nikopol metropolitan area.\nFormerly, the settlement served as one of the capital cities of the Zaporizhian Sich and was known as one of the main crossings over the Dnieper."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "nikopol",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1420,
+    "attempt": 1407,
+    "place_id": "gn-783920",
+    "input": {
+      "place": {
+        "place_id": "gn-783920",
+        "name": "Zemun",
+        "country": "Serbia",
+        "subdivision": "Central Serbia",
+        "lat": 44.8458,
+        "lon": 20.40116
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zemun",
+          "url": "https://en.wikipedia.org/wiki/Zemun",
+          "text": "Zemun (Serbian Cyrillic: Земун, pronounced [zěmuːn]; Hungarian: Zimony) is a municipality in the city of Belgrade, Serbia. Zemun was a separate town that was absorbed into Belgrade in 1934. It lies on the right bank of the Danube river, upstream from downtown Belgrade, north of the Sava. The development of New Belgrade in the late 20th century expanded the continuous urban area of Belgrade and merged it with Zemun.\nThe town was conquered by the Kingdom of Hungary in the 12th century and in the 15th century it was given as a personal possession to the Serbian despot Đurađ Branković. After the Serbian Despotate fell to the Ottoman Empire in 1459, Zemun became an important military outpost. Its strategic location near the confluence of the Sava and the Danube placed it in the center of the continued border wars between the Habsburg and the Ottoman empires. The Treaty of Passarowitz of 1718 finally placed the town into Habsburg possession, the Military Frontier was organized in the region in 1746, and the town of Zemun was granted the rights of a military commune in 1749. In 1777, Zemun had 6,800 residents, half of which were ethnic Serbs, while another half of the population was composed of Germans, Hungarians and Jews. With the abolishment of the Military Frontier in 1881, Zemun and the rest of the eastern Srem was included into Syrmia County of Kingdom of Croatia-Slavonia, part of Austria-Hungary. Following Austro-Hungarian defeat in World War I, Zemun returned to Serbian control on November 5, 1918 and became part of the Kingdom of Serbs, Croats and Slovenes (later Kingdom of Yugoslavia).\nAccording to the 2022 census results, the municipality of Zemun has a population of 177,908 inhabitants. Apart from the Zemun proper, the municipality includes suburbs of Batajnica, Ugrinovci, Zemun Polje and Nova Galenika to the northwest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 305
+    },
+    "banned_terms": [
+      {
+        "term": "zemun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1421,
+    "attempt": 1408,
+    "place_id": "gn-965301",
+    "input": {
+      "place": {
+        "place_id": "gn-965301",
+        "name": "Pietermaritzburg",
+        "country": "South Africa",
+        "subdivision": "KwaZulu-Natal",
+        "lat": -29.61679,
+        "lon": 30.39278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pietermaritzburg",
+          "url": "https://en.wikipedia.org/wiki/Pietermaritzburg",
+          "text": "Pietermaritzburg (; Zulu: uMgungundlovu) is the capital and second-largest city in the province of KwaZulu-Natal, South Africa after Durban. It was named in 1838 and is currently governed by the Msunduzi Local Municipality.\nThe city is named uMgungundlovu in Zulu, after King Dingane's royal homestead. Pietermaritzburg is popularly called Maritzburg and is often informally abbreviated to PMB. It is a regionally important industrial hub, producing aluminium, timber and dairy products, and is the main economic hub of uMgungundlovu District Municipality. The public sector is a major employer in the city due to local, district and provincial government offices located here.\nThe city has many schools and tertiary education institutions, including a campus of the University of KwaZulu-Natal."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "pietermaritzburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1422,
+    "attempt": 1409,
+    "place_id": "gn-1526273",
+    "input": {
+      "place": {
+        "place_id": "gn-1526273",
+        "name": "Astana",
+        "country": "Kazakhstan",
+        "subdivision": "Astana",
+        "lat": 51.1801,
+        "lon": 71.44598
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Astana",
+          "url": "https://en.wikipedia.org/wiki/Astana",
+          "text": "Astana is the capital city of Kazakhstan. With a population of 1,7 million within the city limits, it is the second-largest in the country after Almaty,  the national capital until 1997. The city lies on the banks of the Ishim river in the north of Kazakhstan and is located within the Akmola Region but is self-administering. Initially founded as Aqmoly in 1830, the city was later renamed Akmolinsk, Tselinograd, and Aqmola before adopting the name Astana in 1998, or \"capital\" in Kazakh. In 2019, the city adopted the name Nur-Sultan in honor of former president Nursultan Nazarbayev, but it reverted to the name Astana in 2022.\nAstana's history includes growth, rapidly growing after becoming the capital. The decision to turn Astana into a modern and planned city was guided by Kisho Kurokawa. It has become an important center for culture, education, and commerce in Kazakhstan and Central Asia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "astana",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1423,
+    "attempt": 1410,
+    "place_id": "gn-1796669",
+    "input": {
+      "place": {
+        "place_id": "gn-1796669",
+        "name": "Sanmenxia",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 34.78081,
+        "lon": 111.19287
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sanmenxia",
+          "url": "https://en.wikipedia.org/wiki/Sanmenxia",
+          "text": "Sanmenxia (simplified Chinese: 三门峡; traditional Chinese: 三門峽; pinyin: Sānménxiá; postal: Sanmenhsia) is a prefecture-level city in the west of Henan Province, China. The westernmost prefecture-level city in Henan, Sanmenxia borders Luoyang to the east, Nanyang to the southeast, Shaanxi Province to the west and Shanxi Province to the north. The city lies on the south side of the Yellow River at the point where the river cuts through the Loess Plateau on its way to the North China Plain.\nAs of the 2020 census, it was home to 2,034,872 inhabitants of which 820,300 lived in the built-up area made of Hubin, Shanzhou urban districts and Pinglu County in neighboring Shanxi (205,080 inhabitants), now within the agglomeration."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "sanmenxia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1424,
+    "attempt": 1411,
+    "place_id": "gn-1804208",
+    "input": {
+      "place": {
+        "place_id": "gn-1804208",
+        "name": "Leiyang",
+        "country": "China",
+        "subdivision": "Hunan",
+        "lat": 26.40238,
+        "lon": 112.85908
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leiyang",
+          "url": "https://en.wikipedia.org/wiki/Leiyang",
+          "text": "Leiyang (simplified Chinese: 耒阳; traditional Chinese: 耒陽; pinyin: Lěiyáng) is a county-level city and the third most populous county-level division in Hunan Province, China. Leiyang is under the administration of the prefecture-level city of Hengyang. Located on the south of the province, the city is bordered to the north by Hengnan County, to the west by Changning City, to the south by Guiyang and Yongxing counties, and to the east by Anren County. Leiyang City covers 2,656 km2 (1,025 sq mi) with a registered population of 1,413,913 and resident population of 1,150,241 (as of the 2010 census). The city has six subdistricts, 19 towns and five townships under its jurisdiction. The government seat is Caizichi Subdistrict."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "leiyang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1425,
+    "attempt": 1412,
+    "place_id": "gn-2044757",
+    "input": {
+      "place": {
+        "place_id": "gn-2044757",
+        "name": "Chongjin",
+        "country": "North Korea",
+        "subdivision": "North Hamgyong",
+        "lat": 41.79556,
+        "lon": 129.77583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chongjin",
+          "url": "https://en.wikipedia.org/wiki/Chongjin",
+          "text": "Chongjin (Korean pronunciation: [tsʰʌŋ.dʑin]; Korean: 청진시; MR: Ch'ŏngjin-si) is the capital of North Korea's North Hamgyong Province. It is the country's third-largest city by population and an important port city on the northeastern coast. Originally a small fishing village, it industrialized significantly under Japanese rule and later under the North Korean government.\nThe city is a hub of trade and industry, despite having suffered heavily during the famine of the 1990s. Sometimes called the \"City of Iron\", Chongjin is one of North Korea's major industrial centers for steel and fiber. Chongjin also functions as a regional center of transport, culture, and education, and hosts foreign consulates from both China and Russia, a rarity in North Korea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "chongjin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1426,
+    "attempt": 1413,
+    "place_id": "gn-2334327",
+    "input": {
+      "place": {
+        "place_id": "gn-2334327",
+        "name": "Kisi",
+        "country": "Nigeria",
+        "subdivision": "Oyo State",
+        "lat": 9.08297,
+        "lon": 3.85196
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kisi, Oyo State",
+          "url": "https://en.wikipedia.org/wiki/Kisi,_Oyo_State",
+          "text": "Kisi (or Kishi) is a large town  in Oyo State, Nigeria. It is the headquarters of the Irepo Local Government Area. Kishi, is located at the northern part of Oyo State. Kisi is very close to old Katunga which collapsed in the 18th century as a result of Jihad activity by the Hausa/Fulani of Ilorin, Kwara State. Kisi is reputed as a town whose people were never conquered or defeated in battles, hence many people from old Oyo migrated and settled in Kishi during and after the Fulani Jihadist invasion. Kisi is about 240 km from Ibadan, the capital city of Oyo state, and about 200 km and 110 km from Oyo Alaafin and Ilorin respectively.\nThe town has an official post office."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "kisi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1427,
+    "attempt": 1414,
+    "place_id": "gn-2648404",
+    "input": {
+      "place": {
+        "place_id": "gn-2648404",
+        "name": "Gloucester",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.86568,
+        "lon": -2.2431
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gloucester",
+          "url": "https://en.wikipedia.org/wiki/Gloucester",
+          "text": "Gloucester (  GLOSS-tər) is a cathedral city, non-metropolitan district and the county town of Gloucestershire in the South West of England. Gloucester lies on the River Severn, between the Cotswolds to the east and the Forest of Dean to the west. It is situated 7 miles (11 km) from Cheltenham, 19 miles (31 km) from Monmouth, 33 miles (53 km) from Bristol, and 17 miles (27 km) east of the England and Wales border. Gloucester has a population of around 132,000, including suburban areas. It is a port, linked via the Gloucester and Sharpness Canal to the Severn Estuary.\nGloucester was founded as a Roman colony in AD 97, under Emperor Nerva as Colonia Glevum Nervensis.\nIt was granted its first charter in 1155 by Henry II. In 1216, Henry III, aged only nine years, was crowned with a gilded iron ring in the Chapter House of Gloucester Cathedral. Gloucester's significance in the Middle Ages is underlined by the fact that it had a number of monastic establishments, including St Peter's Abbey, founded in 679 (later Gloucester Cathedral); the nearby St Oswald's Priory, founded in the 880s or 890s; and Llanthony Secunda Priory, founded in 1136. The town is also the site of the siege of Gloucester in 1643, during which the city held out against Royalist forces in the First English Civil War.\nA major attraction of the city is Gloucester Cathedral, which is the burial place of King Edward II and Walter de Lacy; it features in scenes from the Harry Potter films. Other features of interest include the museum and school of art and science, the former county gaol (on the site of a Saxon and Norman castle), the Gloucester Shire Hall (now headquarters of the Gloucestershire County Council) and the Whitefield memorial church. A park in the south of the city contains a spa, a chalybeate spring having been discovered in 1814.\nEconomically, the city is dominated by the service industries and has strong financial, research, distribution and light industrial sectors. Historically, it was prominent in the aerospace industry.\nIn 1926, the Gloucestershire Aircraft Company at Brockworth changed its name to the Gloster Aircraft Company because international customers claimed that the name Gloucestershire was too difficult to spell. A sculpture in the city centre celebrates Gloucester's aviation history and its involvement in the jet engine."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 389
+    },
+    "banned_terms": [
+      {
+        "term": "gloucester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1428,
+    "attempt": 1415,
+    "place_id": "gn-2656194",
+    "input": {
+      "place": {
+        "place_id": "gn-2656194",
+        "name": "Basildon",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.56844,
+        "lon": 0.45782
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Basildon",
+          "url": "https://en.wikipedia.org/wiki/Basildon",
+          "text": "Basildon ( BAZ-il-dən) is a town in Essex, England. It lies 27 miles (43 km) east of Central London, 11 miles (18 km) south of Chelmsford, and 10 miles (16 km) west of Southend-on-Sea. It gives its name to the wider Borough of Basildon which also includes the towns of Billericay and Wickford and surrounding rural areas.\nBasildon was a small village until the mid-20th century. In 1949 Basildon was designated a new town to accommodate London overspill, with the designated area for the new town also covering the existing villages of Pitsea, Laindon, and Vange, along with smaller hamlets. The town was then developed with new residential and industrial areas, and a new town centre. At the 2021 census the Basildon built up area had a population of 115,955.\nThe town is served by three railway stations on the London, Tilbury and Southend line, being Laindon, Basildon, and Pitsea. The main part of the town lies between the A127 road to the north and the A13 road to the south, both of which are dual carriageways linking London to Southend."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 181
+    },
+    "banned_terms": [
+      {
+        "term": "basildon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1429,
+    "attempt": 1416,
+    "place_id": "gn-2673730",
+    "input": {
+      "place": {
+        "place_id": "gn-2673730",
+        "name": "Stockholm",
+        "country": "Sweden",
+        "subdivision": "Stockholm",
+        "lat": 59.32938,
+        "lon": 18.06871
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stockholm",
+          "url": "https://en.wikipedia.org/wiki/Stockholm",
+          "text": "Stockholm (; Swedish: [ˈstɔ̂kː(h)ɔlm] ) is the capital and most populous city of Sweden, as well as the largest urban area in the Nordic countries. Approximately 1 million people live in the municipality, with 1.6 million in the urban area, and 2.5 million in the metropolitan area. The city stretches across fourteen islands where Lake Mälaren flows into the Baltic Sea. Outside the city to the east, and along the coast, is the island chain of the Stockholm archipelago. The area has been settled since the Stone Age, in the 6th millennium BC, and was founded as a city in 1252 by Swedish statesman Birger Jarl. The city serves as the county seat of Stockholm County.\nStockholm is the cultural, media, political, and economic centre of Sweden. The Stockholm region alone accounts for over a third of the country's GDP, and is among the top 10 regions in Europe by GDP per capita. \nStockholm is classified by the GaWC as an Alpha− world city and it is the largest in Scandinavia and the main centre for corporate headquarters in the Nordic region. The city is home to some of Europe's top-ranking universities, such as the Karolinska Institute (medicine), KTH Royal Institute of Technology, Stockholm School of Economics  and Stockholm University. It hosts the annual Nobel Prize ceremonies and banquet at the Stockholm Concert Hall and Stockholm City Hall. One of the city's most prized museums, the Vasa Museum, is the most visited museum in Scandinavia. The Stockholm Metro, opened in 1950, is well known for the decor of its stations; it has been called the longest art gallery in the world. The city was the host of the 1912 Summer Olympics, and has played host to several other international sports events since.\nStockholm is Sweden's primary financial centre, one of the largest in Scandinavia, and hosts several of Sweden's largest companies. Furthermore, the headquarters of most of Sweden's largest banks are in Stockholm. Stockholm is one of Europe's major tech centres; the city has sometimes been called Europe's innovation hub. The Stockholm region has a GDP of around $180 billion, and Stockholm County has the highest GDP per capita of all counties in Sweden.\nStockholm is the seat of the Swedish government and most of its agencies, including the highest courts in the judiciary, and the official residences of the Swedish monarch and the prime minister. The government has its seat in the Rosenbad building, the Riksdag (Swedish parliament) is seated in the Parliament House, and the prime minister's residence is adjacent at the Sager House. Stockholm Palace is the official residence and principal workplace of the Swedish monarch, while Drottningholm Palace in neighbouring Ekerö serves as the Royal Family's private residence."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 452
+    },
+    "banned_terms": [
+      {
+        "term": "stockholm",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1430,
+    "attempt": 1417,
+    "place_id": "gn-304922",
+    "input": {
+      "place": {
+        "place_id": "gn-304922",
+        "name": "Malatya",
+        "country": "Türkiye",
+        "subdivision": "Malatya",
+        "lat": 38.35018,
+        "lon": 38.31667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Malatya",
+          "url": "https://en.wikipedia.org/wiki/Malatya",
+          "text": "Malatya is a metropolitan municipality and the capital of Malatya Province in the Eastern Anatolia Region of Turkey. It is a major regional center for industry, healthcare, education, and agriculture, and is the global hub for apricot production and export.\nThe name of the city is thought to derive from the Hittite word melid or milit, meaning \"honey\". Throughout history, the city has been known as Malidiya in Hittite, Meliddu in Akkadian, Meliṭeia in Urartian, and Melitene during the Roman period. The ancient geographer Strabon noted that the inhabitants of Melitene shared the same language and culture as the Cappadocians and Cataonians.\nThe ruins of ancient Melitene are located around Arslantepe in the present-day Battalgazi district. The historical city remained at Battalgazi (formerly known as Old Malatya) until the 19th century, when it gradually relocated to its modern site.\nMalatya is one of the most prominent apricot-growing areas in the world. A significant portion of Turkey's dried apricot production is cultivated in Malatya, earning the city the nickname \"Land of Apricots\" (Kayısı Diyarı)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "malatya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1431,
+    "attempt": 1418,
+    "place_id": "gn-315202",
+    "input": {
+      "place": {
+        "place_id": "gn-315202",
+        "name": "Eskişehir",
+        "country": "Türkiye",
+        "subdivision": "Eskişehir",
+        "lat": 39.77667,
+        "lon": 30.52056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eskişehir",
+          "url": "https://en.wikipedia.org/wiki/Eskişehir",
+          "text": "Eskişehir (US:  ES-kish-ə-HEER, Turkish: [esˈciʃehiɾ]; from eski 'old' and şehir 'city') is a city in northwestern Turkey and the capital of the Eskişehir Province. The urban population of the city is 821,315 (Odunpazarı + Tepebaşı), with a metropolitan population of 921,630.\nThe city is located on the banks of the Porsuk River, 792 m above sea level, where it overlooks the fertile Phrygian Valley. In the nearby hills one can find hot springs. The city is 233 km (145 mi) to the west of Ankara, 330 km (205 mi) to the southeast of Istanbul and 78 km (48 mi) to the northeast of Kütahya. It is located in the vicinity of the ancient city of Dorylaeum.\nKnown as a university town, it houses Eskişehir Technical University, Eskişehir Osmangazi University, and Anadolu University. The province covers an area of 2,678 km2 (1,034 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "eskisehir",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1432,
+    "attempt": 1419,
+    "place_id": "gn-3186886",
+    "input": {
+      "place": {
+        "place_id": "gn-3186886",
+        "name": "Zagreb",
+        "country": "Croatia",
+        "subdivision": "Zagreb",
+        "lat": 45.81444,
+        "lon": 15.97798
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zagreb",
+          "url": "https://en.wikipedia.org/wiki/Zagreb",
+          "text": "Zagreb ( ZAH-greb; Croatian: [zǎːɡreb] ) is the capital and largest city of Croatia. It is in the north of the country, along the Sava River, at the southern slopes of the Medvednica mountain. Zagreb stands near the international border between Croatia and Slovenia at an elevation of approximately 158 m (518 ft) above sea level. At the 2021 census, the city itself had a population of 767,131, while the population of the Zagreb metropolitan area is 1,086,528.\nThe oldest settlement in the vicinity of the city was the Roman Andautonia, in today's Šćitarjevo. The historical record of the name \"Zagreb\" dates from 1134, in reference to the foundation of the settlement at Kaptol in 1094. Zagreb became a free royal city in 1242. In 1851, Janko Kamauf became Zagreb's first mayor. Zagreb has special status as a Croatian administrative division—it comprises a consolidated city-county (but separate from Zagreb County), and is administratively subdivided into 17 city districts. Most of the city districts lie at a low elevation along the valley of the river Sava, whereas northern and northeastern city districts, such as Podsljeme and Sesvete districts are spread out across the foothills of the Medvednica mountain, making the city's geography rather diverse. The city spans about 30 km from east to west, while stretching about 20 km from north to south. Zagreb ranks as a global city, with a 'Beta-' rating from the Globalization and World Cities Research Network.\nThe transport connections, concentration of industry, and scientific and research institutions and industrial tradition underlie Zagreb's leading economic position in Croatia. Zagreb is the seat of the central government, administrative bodies, and almost all government ministries. Almost all of the largest Croatian companies, media, and scientific institutions have their headquarters in the city. Zagreb is the most important transport hub in Croatia: here Central Europe, the Mediterranean and Southeast Europe meet, making the Zagreb area the centre of the road, rail and air networks of Croatia. It is a city known for its diverse economy, high quality of living, museums, sporting, and entertainment events. Major branches of Zagreb's economy include high-tech industries and the service sector."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 356
+    },
+    "banned_terms": [
+      {
+        "term": "zagreb",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 1433,
+    "attempt": 1420,
+    "place_id": "gn-3374036",
+    "input": {
+      "place": {
+        "place_id": "gn-3374036",
+        "name": "Bridgetown",
+        "country": "Barbados",
+        "subdivision": "Saint Michael",
+        "lat": 13.10732,
+        "lon": -59.62021
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bridgetown",
+          "url": "https://en.wikipedia.org/wiki/Bridgetown",
+          "text": "Bridgetown (UN/LOCODE: BB BGI) is the capital and largest city of Barbados. Formerly The Town of Saint Michael, the Greater Bridgetown area is located within the parish of Saint Michael. Bridgetown is sometimes locally referred to as \"The City\", but the most common reference is simply \"Town\". As of 2014, its metropolitan population stands at roughly 110,000.\nThe Bridgetown port, found along Carlisle Bay (at 13.106°N 59.632°W﻿ / 13.106; -59.632﻿ (Bridgetown port)) lies on the southwestern coast of the island. Parts of the Greater Bridgetown area (as roughly defined by the Ring Road Bypass or more commonly known as the ABC Highway), sit close to the borders of the neighbouring parishes of Christ Church and St. James. The Grantley Adams International Airport, the only airport on the island, is located 16 kilometres (10 mi) southeast of Bridgetown city centre. It has daily flights to major cities in the United Kingdom, United States, Canada and the Caribbean. There is no longer a local municipal government, but it is a constituency of the national Parliament. During the short-lived 1950s-1960s Federation of the British West Indian Territories, Bridgetown was one of three capital cities within the region being considered to be the Federal capital of the region.\nThe present-day location of the city was established by English settlers in 1628; a previous settlement under the authority of Sir William Courten was at St. James Town. Bridgetown is a major West Indies tourist destination, and the city acts as an important financial, informatics, convention centre, and cruise ship port of call in the Caribbean region. On 25 June 2011, \"Historic Bridgetown and its Garrison\" was listed as a World Heritage Site by UNESCO."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 279
+    },
+    "banned_terms": [
+      {
+        "term": "bridgetown",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

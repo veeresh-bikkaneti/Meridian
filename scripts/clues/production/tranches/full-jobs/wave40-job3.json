@@ -1,0 +1,812 @@
+[
+  {
+    "rank": 7893,
+    "attempt": 7841,
+    "place_id": "gn-728631",
+    "input": {
+      "place": {
+        "place_id": "gn-728631",
+        "name": "Opaka",
+        "country": "Bulgaria",
+        "subdivision": "Targovishte",
+        "lat": 43.45,
+        "lon": 26.16667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Opaka",
+          "url": "https://en.wikipedia.org/wiki/Opaka",
+          "text": "Opaka (Bulgarian: Опака [opɐˈka]) is a town in Targovishte Province in northeast Bulgaria. As of December 2009, the town had a population of 2,873. It covers an area of 57 square kilometres (22 sq mi).\nIt is 70 kilometres (43 mi) south of the city of Rousse on the border with Romania and 305 kilometres (190 mi) northeast of the Bulgarian capital, Sofia.\nArcheologists have found evidence of Thracian, Roman and Slavonic settlements in the area. Near the village of Krepcha, a stone monastery is the site of the oldest known Old Bulgarian Cyrillic inscription, dated from around 920 CE. A 2nd century Thracian tumulus containing various artifacts, including six leaves of a golden wreath and bronze figurines, was excavated in 2011.\nIt is the seat of Opaka Municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 122,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "opaka",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7894,
+    "attempt": 7842,
+    "place_id": "gn-2309516",
+    "input": {
+      "place": {
+        "place_id": "gn-2309516",
+        "name": "Cogo",
+        "country": "Equatorial Guinea",
+        "subdivision": "Litoral",
+        "lat": 1.08425,
+        "lon": 9.693
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cogo, Equatorial Guinea",
+          "url": "https://en.wikipedia.org/wiki/Cogo,_Equatorial_Guinea",
+          "text": "Kogo (Spanish: [ˈkoɣo] , also known as Cogo or Koszho, formerly Puerto Iradier) is a remote town on the Muni estuary in Río Muni, Equatorial Guinea, lying east of Acalayong.  It is known for its partly ruined Spanish Colonial architecture. It is the southernmost city of the Litoral province of Equatorial Guinea. It is located 121 km from Bata by road or 117 km when traveling through Acalayong. It is surrounded to the east and southeast by the Congüe River and to the west and southwest by the Mitemele River. Both the Congüe and the Mitemele Rivers drain the Muni Estuary, sometimes giving the city of Kogo the shape and appearance of an island when in fact it is a peninsula.\nA few meters from the port that is currently being renovated is the uninhabitable Island of Evele. Most of the population, especially the coastal population heavily rely on subsistence fishing and the Muni estuary was a major source of income as it was the gateway for passengers traveling to neighboring Gabon.\nThere is a large monument to Manuel Iradier who was the first European settler in 1874.\nKogo is the home town of internationally recognized doctor and political activist, Wenceslao Mansogo. \nChromosome 6, a 1997 novel by writer Robin Cook, takes place in Kogo."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 215
+    },
+    "banned_terms": [
+      {
+        "term": "cogo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7895,
+    "attempt": 7843,
+    "place_id": "gn-2635052",
+    "input": {
+      "place": {
+        "place_id": "gn-2635052",
+        "name": "Usk",
+        "country": "United Kingdom",
+        "subdivision": "Wales",
+        "lat": 51.70347,
+        "lon": -2.90332
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Usk",
+          "url": "https://en.wikipedia.org/wiki/Usk",
+          "text": "Usk (Welsh: Brynbuga) is a town and community in Monmouthshire, Wales, 10 miles (16 km) northeast of Newport. It is located on the River Usk, which is spanned by an arched stone bridge at the western entrance to the town. Usk Castle, above the town, overlooks the ancient crossing point. It developed as a small market town, with some industry including the making of Japanware, and with a notable prison built in 1841–42. In recent years, Usk has become known for its history of success in Britain in Bloom competitions, winning the \"Wales in Bloom\" competition 35 times in a row between 1982 and 2016. The resident population of the town in 2011 was 2,834, decreasing to roughly 2,600 in 2021. 6.8% of the population are recorded as being able to speak Welsh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 133
+    },
+    "banned_terms": [
+      {
+        "term": "usk",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7896,
+    "attempt": 7844,
+    "place_id": "gn-2642497",
+    "input": {
+      "place": {
+        "place_id": "gn-2642497",
+        "name": "Milltimber",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 57.10424,
+        "lon": -2.24099
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Milltimber",
+          "url": "https://en.wikipedia.org/wiki/Milltimber",
+          "text": "Milltimber is a suburb of Aberdeen, Scotland, around 6 miles (10 km) west of Aberdeen city centre. From 1854 to 1937 the area was served by Milltimber railway station on the Aberdeen suburban railway.\nAlong with the nearby settlements of Cults and Bieldside, it is home to some of the wealthiest residents of Aberdeen.  \nFacilities in Milltimber are somewhat lacking, with the nearest shop situated in neighbouring Bieldside. However, it is home to a highly rated primary school, a church, and a community building which is used for private functions as well as Boy Scout and Girl Guide troops and similar. Kippie Lodge is a sports and social club, with a 9-hole golf course, swimming pool, sports complex, creche and restaurant. Next to the lodge are the playing fields of the independent Albyn School.\nIn 2009, property website Zoopla listed Milltimber's postcode, AB13, as the most expensive in Scotland with an average house price of £422,760."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "milltimber",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7897,
+    "attempt": 7845,
+    "place_id": "gn-3168320",
+    "input": {
+      "place": {
+        "place_id": "gn-3168320",
+        "name": "San Gimignano",
+        "country": "Italy",
+        "subdivision": "Tuscany",
+        "lat": 43.4738,
+        "lon": 11.02975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Gimignano",
+          "url": "https://en.wikipedia.org/wiki/San_Gimignano",
+          "text": "San Gimignano (Italian pronunciation: [san dʒimiɲˈɲaːno]; named after St. Geminianus) is a small walled medieval hill town in the province of Siena, Tuscany, north-central Italy. Known as the Town of Five Towers, San Gimignano is famous for its medieval architecture, unique in the preservation of about a dozen of its tower houses, which, with its hilltop setting and encircling walls, form \"an unforgettable skyline\". Within the walls, the well-preserved buildings include notable examples of both Romanesque and Gothic architecture, with outstanding examples of secular buildings as well as churches. The Palazzo Comunale, the Collegiata and Church of Sant'Agostino contain frescos, including cycles dating from the 14th and 15th centuries. The \"Historic Centre of San Gimignano\" is a UNESCO World Heritage Site. The town is also known for saffron, its dry-aged and saffron infused Golden Ham, pecorino cheese, and local white wine—Vernaccia di San Gimignano—produced from the ancient variety of Vernaccia grape grown on the sandstone hillsides of the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "san gimignano",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gimignano",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7898,
+    "attempt": 7846,
+    "place_id": "gn-4942975",
+    "input": {
+      "place": {
+        "place_id": "gn-4942975",
+        "name": "Manchester-by-the-Sea",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.57787,
+        "lon": -70.76894
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manchester-by-the-Sea, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Manchester-by-the-Sea,_Massachusetts",
+          "text": "Manchester-by-the-Sea (also known simply as Manchester, its name prior to 1990) is a coastal town on Cape Ann, in Essex County, Massachusetts, United States. The town is known for scenic beaches and vista points. According to the 2020 population census, the population is 5,395.\nThe town lies on the southern side of Cape Ann, at the point where the peninsula meets the mainland.  The North Shore was populated by the Agawam people prior to European settlement, which began in 1629, about a decade after an epidemic killed much of the native people.  Fishing was the major industry in the town almost from its incorporation in 1645, but in the mid-19th century it began to grow as a popular seaside resort community.  The town has appeared, either by name or as a filming location, in a number of films and TV shows, notably the eponymous 2016 film Manchester by the Sea."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "manchester by the sea",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "manchester",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "by",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "sea",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7899,
+    "attempt": 7847,
+    "place_id": "gn-5374283",
+    "input": {
+      "place": {
+        "place_id": "gn-5374283",
+        "name": "Monte Sereno",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.23633,
+        "lon": -121.99246
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Monte Sereno, California",
+          "url": "https://en.wikipedia.org/wiki/Monte_Sereno,_California",
+          "text": "Monte Sereno (Spanish for \"Serene Mountain\") is a city in Santa Clara County, California, United States. The population was 3,479 at the 2020 census. The city is located in the foothills of the Santa Cruz Mountains, about 10 miles (16 km) southwest of San Jose, and is bordered by the town of Los Gatos to the north, east, and south, the Santa Cruz Mountains to the southwest, and the city of Saratoga to the northwest. The city is named for the 2,580-foot (790 m) El Sereno Mountain, upon the slopes of which the southern portion of the city is built. The community is entirely residential with no commercial zoning and 99% single-family housing. It is an upscale Silicon Valley commuter town. Monte Sereno shares the Zip code 95030 with the town of Los Gatos. Many municipal services are provided under contract by Los Gatos."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "monte sereno",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "monte",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sereno",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7900,
+    "attempt": 7848,
+    "place_id": "gn-5890542",
+    "input": {
+      "place": {
+        "place_id": "gn-5890542",
+        "name": "Baie-D'Urfé",
+        "country": "Canada",
+        "subdivision": "Quebec",
+        "lat": 45.41397,
+        "lon": -73.91586
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Baie-D'Urfé",
+          "url": "https://en.wikipedia.org/wiki/Baie-D'Urf%C3%A9",
+          "text": "Baie-D'Urfé (Canadian French: [be d͡zʏʁˈfe] ; previously spelled Baie d'Urfé or Baie d'Urfee) is an on-island suburb of Montreal, Quebec, Canada. It is part of the West Island area of the Island of Montreal.\nAs part of the 2002–2006 municipal reorganization of Montreal, Baie-D'Urfé was merged into the city of Montreal on January 1, 2002, joining with neighbouring Beaconsfield to create the borough of Beaconsfield–Baie-D'Urfé. After a change of provincial government in 2003 and a provincial referendum in 2004, Beaconsfield and Baie-D'Urfé both voted to demerge and were reconstituted as independent municipalities on January 1, 2006. However, they remain part of the urban agglomeration of Montreal.\nBaie-D'Urfé is named after François-Saturnin Lascaris d'Urfé, a French Sulpician priest known as l'Abbé d'Urfé. He was the community's first pastor, who was sent by the Gentlemen of Saint-Sulpice to serve as a missionary for the parish of Saint-Louis-du-Bout-de-l'Île (which was later renamed in his honour), a small community of settlers, soldiers, traders, and Indians.\nThe town's name went through several typographical changes: prior to 2002, the town's name was written as Baie-d'Urfé (no capital \"d\"); prior to 1969, place names in Quebec were not hyphenated; and prior to 1960, its original name was officially spelled Baie d'Urfée."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "baie d urfe",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "baie",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "d",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "urfe",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7901,
+    "attempt": 7849,
+    "place_id": "gn-6181935",
+    "input": {
+      "place": {
+        "place_id": "gn-6181935",
+        "name": "Wildwood",
+        "country": "Canada",
+        "subdivision": "Alberta",
+        "lat": 51.05,
+        "lon": -114.15
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wildwood, Calgary",
+          "url": "https://en.wikipedia.org/wiki/Wildwood,_Calgary",
+          "text": "Wildwood is an established neighbourhood in the Southwest quadrant of Calgary, Alberta. It was first settled in 1883  and developed in the 1950s on a plateau to the south to the Bow River valley, and is primarily composed of single-detached bungalows on wide lots with rear laneways.\nWildwood is bounded on the north by Edworthy Park, a significant natural area park in Calgary, and the Bow River. It borders the neighbourhood of Spruce Cliff on the east side at 38th Avenue SW, and is limited on the south side by Bow Trail, a six-lane expressway.\nIt is represented in the Calgary City Council by the Ward 6 councillor.\nBetween 2006 and 2009, Bow Trail was widened to accommodate more suburban traffic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "wildwood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7902,
+    "attempt": 7850,
+    "place_id": "gn-6695949",
+    "input": {
+      "place": {
+        "place_id": "gn-6695949",
+        "name": "Winscombe",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.3181,
+        "lon": -2.83224
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Winscombe",
+          "url": "https://en.wikipedia.org/wiki/Winscombe",
+          "text": "Winscombe is a large village in the North Somerset unitary district of Somerset, England, close to the settlements of Axbridge and Cheddar, on the western edge of the Mendip Hills, 7 miles (11 km) southeast of Weston-super-Mare and 14 miles (23 km) southwest of Bristol. The Parish of Winscombe and Sandford, centred on the Parish Church of Church of St James the Great, includes the villages/hamlets of Barton, Hale, Oakridge, Nye, Sidcot and Woodborough.\nWinscombe has a few shops and businesses focused in the centre of the village, along Woodborough Road and Sandford Road. There is a doctor's surgery in the village, a vet and two dentists.\nWest of the village is the Max Bog biological Site of Special Scientific Interest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "winscombe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7903,
+    "attempt": 7851,
+    "place_id": "gn-6946668",
+    "input": {
+      "place": {
+        "place_id": "gn-6946668",
+        "name": "Santos-o-Velho",
+        "country": "Portugal",
+        "subdivision": "Lisbon",
+        "lat": 38.7069,
+        "lon": -9.15611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santos-o-Velho, Lisbon",
+          "url": "https://en.wikipedia.org/wiki/Santos-o-Velho,_Lisbon",
+          "text": "Santos-o-Velho (Portuguese pronunciation: [ˈsɐ̃tuz u ˈvɛʎu]) is a former freguesia (civil parish) of Lisbon, Portugal, with an area of 0.51 km2 and 4,013 inhabitants (2001). It has a population density of 7899.6 inhabitants/km2. At the administrative reorganization of Lisbon on 8 December 2012 it became part of the parish Estrela.\nIt is one of the best preserved historical parts of Lisbon, including Madragoa (former village in the outskirts of Central Lisbon), the Museum of Ancient Art, and many former convents and palaces (in which the current French Embassy in included).\nWell-known streets of this parish are Rua das Trinas, Rua do Guarda-Mor, Rua do Quelhas, Rua das Praças, and Avenida 24 de Julho.\nIt is also known for its lively nightlife."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "santos o velho",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santos",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "o",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "velho",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7904,
+    "attempt": 7852,
+    "place_id": "gn-997184",
+    "input": {
+      "place": {
+        "place_id": "gn-997184",
+        "name": "Hectorspruit",
+        "country": "South Africa",
+        "subdivision": "Mpumalanga",
+        "lat": -25.44115,
+        "lon": 31.68382
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hectorspruit",
+          "url": "https://en.wikipedia.org/wiki/Hectorspruit",
+          "text": "Hectorspruit, officially Emjejane, is a small farming town situated between Kaapmuiden and Komatipoort on a southern tributary of the Crocodile River in Mpumalanga, South Africa. The farms in the region produce sugarcane, subtropical fruit and vegetables. The stream is named after a dog belonging to S de Kock, chief surveyor of the Pretoria - Delagoa Bay railway line.\nHamlet some 30 km west of Komatipoort and 80 km north-east of Pigg's Peak. The hamlet is named after a tributary of the Crocodile River, the Hectorspruit, which is said to take its name from a hunting dog that died there after being bitten by a tsetse fly.\nThe hamlet was officially renamed in 2005 to Emjejane (SiSwati) after late Chief Mjejane Ngomane."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 121,
+      "fullExtractWords": 121
+    },
+    "banned_terms": [
+      {
+        "term": "hectorspruit",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7905,
+    "attempt": 7853,
+    "place_id": "gn-10942240",
+    "input": {
+      "place": {
+        "place_id": "gn-10942240",
+        "name": "Racoș",
+        "country": "Romania",
+        "subdivision": "Brașov County",
+        "lat": 46.02524,
+        "lon": 25.41075
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Racoș",
+          "url": "https://en.wikipedia.org/wiki/Raco%C8%99",
+          "text": "Racoș (also Racoșul de Jos; German: Unter-Krebsdorf; Hungarian: Alsórákos) is a commune in Brașov County, Transylvania, Romania. It is composed of two villages, Mateiaș (Mátéfalva) and Racoș.\nThe commune is located at the northern edge of the county, on the border with Covasna County, and near the border with Harghita County. It lies on the banks of the Olt River, 19 km (12 mi) from the town of Rupea and 63 km (39 mi) from the county seat, Brașov. There are train stations in both Racoș and Mateiaș that serve Line 300 of the CFR network, which connects Bucharest with the Hungarian border near Oradea.\nThe Racoș volcano is the oldest volcano in the region, and appears to be inactive. The commune is the site of the Racoșul de Jos nature preserve and of the Racoș basalt columns. The Cotul Turzunului nature preserve is partly situated on the territory of Racoș.\n\nAt the 2021 census, the commune had a population of 3,345; of those, 41.5% were Hungarians, 31.6% Roma, and 21% Romanians. At the 2011 census, there were 3,336 inhabitants; 55% were Hungarians, 23.2% Romanians, and 21.6% Roma. At the 2002 census, 33.4% were Reformed, 23.3% Romanian Orthodox, 21% Pentecostal, 17.7% Unitarian, and 3.6% Roman Catholic.\nThe ruins of a Dacian fortress are located in Racoș. Alongside this the Sükösd-Bethlen Castle is a historic monument, first attested in 1636 which is also located in Racoș inside a now park. Another tourist destination is the Emerald Lake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "racos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7906,
+    "attempt": 7854,
+    "place_id": "gn-2642743",
+    "input": {
+      "place": {
+        "place_id": "gn-2642743",
+        "name": "Menston",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.89041,
+        "lon": -1.74395
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Menston",
+          "url": "https://en.wikipedia.org/wiki/Menston",
+          "text": "Menston is a village and civil parish in the county of West Yorkshire, England. The civil parish is within Wharfedale Ward in the metropolitan borough of Bradford, along with Burley in Wharfedale. A small part of Menston, south of the village, is outside the civil parish in the Guiseley and Rawdon ward of the City of Leeds. At the 2011 census the parish had a population of 4,498 (down from 4,660 in 2001). The village is home to St Mary's Menston Catholic Voluntary Academy, a secondary school with academy status in the part of Menston included in the City of Leeds. Menston is situated near the towns of Guiseley and Otley, with which it shares strong transport and community links. The name Menston derives from the Old English Mensaingtūn meaning 'settlement connected with Mensa'."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 134
+    },
+    "banned_terms": [
+      {
+        "term": "menston",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7907,
+    "attempt": 7855,
+    "place_id": "gn-2646104",
+    "input": {
+      "place": {
+        "place_id": "gn-2646104",
+        "name": "Inverkeithing",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 56.03297,
+        "lon": -3.39555
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Inverkeithing",
+          "url": "https://en.wikipedia.org/wiki/Inverkeithing",
+          "text": "Inverkeithing ( ; Scottish Gaelic: Inbhir Chèitinn) is a coastal town, parish and historic Royal burgh in Fife, Scotland. The town lies on the north shore of the Firth of Forth, 9+1⁄2 mi (15.5 km) northwest of Edinburgh city centre and 3+1⁄2 mi (5.5 km) south of Dunfermline.\nInverkeithing became an important centre of trade during the Middle Ages and was granted Royal burgh status by 1159. It was the meeting place of the Parliament of Scotland in 1354 and the Convention of Royal Burghs from 1487 to 1552. The Battle of Inverkeithing in 1651 was a pivotal engagement in the Wars of the Three Kingdoms. Following the Industrial Revolution, Inverkeithing developed industries including quarrying, ship breaking and paper milling.\nInverkeithing town centre is a conservation area that follows a medieval town plan, with the best-preserved medieval friary in Scotland and one of the finest examples of a mercat cross. The town's annual highland games and Lammas fair are among the oldest in Scotland. Inverkeithing lies on the Fife Coastal Path, one of Scotland's Great Trails, and the Fife Pilgrim Way.\nInverkeithing railway station is a main stop for trains running over the nearby Forth Bridge, and the town is home to the Ferrytoll Park & Ride. A significant share of Inverkeithing's workers commute to Edinburgh city centre or Dunfermline for work. The town has a population of 5,260 (2022) and the civil parish has a population of 8,878 (2022)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 240
+    },
+    "banned_terms": [
+      {
+        "term": "inverkeithing",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7908,
+    "attempt": 7856,
+    "place_id": "gn-2939949",
+    "input": {
+      "place": {
+        "place_id": "gn-2939949",
+        "name": "Cochem",
+        "country": "Germany",
+        "subdivision": "Rheinland-Pfalz",
+        "lat": 50.14511,
+        "lon": 7.16379
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cochem",
+          "url": "https://en.wikipedia.org/wiki/Cochem",
+          "text": "Cochem (German pronunciation: [ˈkɔxm̩] ) is a town in Rhineland-Palatinate, Germany. Situated on the banks of the Moselle River, it is the administrative seat of the Cochem-Zell district and its largest town with around 5,300 inhabitants. The town is known for its riverside setting, historic old town, and the hilltop Reichsburg Cochem, which overlooks the Moselle valley.\nFirst mentioned in the Early Middle Ages, Cochem developed as a regional centre of trade and viticulture within the Electorate of Trier. The town suffered significant destruction during the Nine Years' War in 1689 and was later rebuilt.\nCochem is an important centre for tourism in the Moselle wine region, while wine production continues to play a significant role in the local economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "cochem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7909,
+    "attempt": 7857,
+    "place_id": "gn-3173704",
+    "input": {
+      "place": {
+        "place_id": "gn-3173704",
+        "name": "Mattarello",
+        "country": "Italy",
+        "subdivision": "Trentino-Alto Adige",
+        "lat": 46.00865,
+        "lon": 11.12984
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mattarello",
+          "url": "https://en.wikipedia.org/wiki/Mattarello",
+          "text": "Mattarello is a small town in Trentino, Italy. It has been subsumed into a frazione of the comune of Trento, having previously been an independent comune. It has a population of 6,226.\nMattarello is the site of the interdepartmental research centre CIBIO(Centre for Integrative Biology, part of the University of Trento), which applies cross-disciplinary approaches to the study of basic biological processes and their derangement in disease.\nTrento airport is near the town, and adjacent the airport is the Museo dell'Aeronautica Gianni Caproni (Gianni Caproni Museum of Aeronautics), an aeronautical museum named in honour of engineer, aircraft designer and businessman Gianni Caproni, whose company made the first aircraft constructed in Italy.\nMattarello is also the Italian word for rolling pin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "mattarello",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 7910,
+    "attempt": 7858,
+    "place_id": "gn-3616732",
+    "input": {
+      "place": {
+        "place_id": "gn-3616732",
+        "name": "San Juan de Limay",
+        "country": "Nicaragua",
+        "subdivision": "Estelí Department",
+        "lat": 13.17603,
+        "lon": -86.61234
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Juan de Limay",
+          "url": "https://en.wikipedia.org/wiki/San_Juan_de_Limay",
+          "text": "San Juan de Limay is a municipality in the Estelí department of Nicaragua. It is famous for its artisan production of soapstone (marmolina) sculptures.\nSan Juan de Limay is located 195 km north of Managua in the north of Nicaragua only a short distance from the border of Honduras. While the elevation of the town is 281 m above sea level, the mountains that surround the valley where Limay is located, rise as high as 1400 m. The broad valley is created by the confluence of two rivers, the Queso and the Negro. Both the mountains around the area and the rivers that cross the valley isolate the town and make travel between Limay to the city of Estelí difficult. Maintenance of the roads is difficult since flooding, falling rocks, mudslides and erosion are constantly working to destroy the fragile network that connects Limay to other places.\nFrom Estelí, the capital of the department in which Limay is situated, the route to San Juan de Limay has been reinforced with a hexagonal slab road (aka “adoquines”) as of 2021 . Leaving the town, the old yellow school buses that are the mainstay of Nicaraguan travel, move along the Pan American Highway for 10 km until reaching La Sirena. At this point the bus to Limay veers off toward “Hermanos Cruces” where the route is as scenic as ever sometimes so foggy, it is nearly un drivable. This portion of the journey stretches for 37 km toward the regions of El Pino and San Luis. At this high elevation one can see what is left of the pine groves, fields of grain are visible across the mountainsides and behind in the distance the city of Estelí. The fresh air of the northern mountains lessens the heat of the packed bus. Once the plateau is crossed, the valley of Limay comes into view at the edge of Tepiscayán, the site of where for years carvers from Limay have extracted the marmolina they used for sculpting. The trip from Estelí to Limay can take, in good weather, 45 minutes to 1 hour on the grueling windy roads. The distance from Managua to Limay is 195 km and takes about 4 hours."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 368
+    },
+    "banned_terms": [
+      {
+        "term": "san juan de limay",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "juan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "limay",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7911,
+    "attempt": 7859,
+    "place_id": "gn-5795991",
+    "input": {
+      "place": {
+        "place_id": "gn-5795991",
+        "name": "Granite Falls",
+        "country": "United States",
+        "subdivision": "Washington",
+        "lat": 48.08399,
+        "lon": -121.96874
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Granite Falls, Washington",
+          "url": "https://en.wikipedia.org/wiki/Granite_Falls,_Washington",
+          "text": "Granite Falls is a city in Snohomish County, Washington, United States. It is located between the Pilchuck and Stillaguamish rivers in the western foothills of the Cascade Range, northeast of Lake Stevens and Marysville. The city is named for a waterfall north of downtown on the Stillaguamish River, also accessible via the Mountain Loop Highway. As of the 2020 census, Granite Falls had a population of 4,450.\nThe site of Granite Falls was originally a portage for local Coast Salish tribes prior to the arrival of American settlers. The settlement was founded in 1883 and prospered after the discovery of gold and silver in the Monte Cristo mines located east of Granite Falls on the Everett and Monte Cristo Railway. Granite Falls was platted in 1891 and incorporated as a fourth-class town on November 8, 1903."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "granite falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "granite",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 7912,
+    "attempt": 7860,
+    "place_id": "gn-6072045",
+    "input": {
+      "place": {
+        "place_id": "gn-6072045",
+        "name": "Memramcook",
+        "country": "Canada",
+        "subdivision": "New Brunswick",
+        "lat": 46.00435,
+        "lon": -64.55156
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Memramcook",
+          "url": "https://en.wikipedia.org/wiki/Memramcook",
+          "text": "Memramcook (historically also spelled Memramcouke or Memramkouke; Mi'kmaq: Almamgug or Almamkuk) is a village in Westmorland County, New Brunswick, Canada. Located in south-eastern New Brunswick, the community is predominantly people of Acadian descent who speak the Chiac derivative of the French language. An agricultural village, it has a strong local patrimony, key to the history of the region. It was home to the Mi'kmaq people for many years and was the arrival site of Acadians in 1700. A large part of these Acadians were deported in 1755, but the village itself survived.\nThe Collège Saint-Joseph was the first francophone university in the east of Canada, which opened its doors in 1864 and hosted/organized the first National Acadian Convention in 1881."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 4,
+      "hasHook": true,
+      "extractWords": 120,
+      "fullExtractWords": 120
+    },
+    "banned_terms": [
+      {
+        "term": "memramcook",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

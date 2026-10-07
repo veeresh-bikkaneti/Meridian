@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 61,
+    "place_id": "gn-2756071",
+    "input": {
+      "place": {
+        "place_id": "gn-2756071",
+        "name": "Enschede",
+        "country": "Netherlands",
+        "subdivision": "Overijssel",
+        "lat": 52.21833,
+        "lon": 6.89583
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Enschede",
+          "url": "https://en.wikipedia.org/wiki/Enschede",
+          "text": "Enschede (Dutch: [ˈɛnsxədeː] ; local Twents: Eanske [ˈɛːnskə]) is a city and municipality in the province of Overijssel and the Twente region of the eastern Netherlands. The east of the urban area reaches the border of the German town of Gronau.\nEnschede began as a small settlement in the Middle Ages and was granted city rights in 1325. It grew as a regional centre for trade and agriculture before becoming a major hub of the textile industry in the 18th and 19th centuries. Until 1935, the municipality of Enschede consisted only of the city of Enschede, when the rural municipality of Lonneker, which surrounded the city, was annexed after the rapid industrial expansion of Enschede that began in the 1860s and involved the building of railways and the digging of the Twentekanaal.\nEnschede is home to the football club FC Twente, a one-time Dutch champion; the University of Twente; Saxion University of Applied Sciences and the last Polaroid film factory."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "enschede",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 62,
+    "place_id": "gn-3573890",
+    "input": {
+      "place": {
+        "place_id": "gn-3573890",
+        "name": "Port of Spain",
+        "country": "Trinidad & Tobago",
+        "subdivision": "Port of Spain",
+        "lat": 10.66668,
+        "lon": -61.51889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Port of Spain",
+          "url": "https://en.wikipedia.org/wiki/Port_of_Spain",
+          "text": "Port of Spain (Trinidadian English: Port ah Spain [ˈpʊo̯t a ˈspɪe̯n] ) is the capital and chief port of Trinidad and Tobago. With a municipal population of 49,867 (2017), an urban population of 81,142 and a transient daily population of 250,000, it is Trinidad and Tobago's third largest municipality, after Chaguanas and San Fernando.\nPort of Spain is located on the Gulf of Paria, on the northwest coast of the island of Trinidad and is part of a larger conurbation stretching from Chaguaramas in the west to Arima in the east with an estimated population of 600,000.\nThe city serves primarily as a retail and administrative centre and it has been the capital of the island since 1757. It is also an important financial services centre for the Caribbean and is home to two of the largest banks in the region. The Piarco International Airport is the main airport on the island, connecting the capital to various major global destinations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "port of spain",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "port",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "of",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "spain",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 63,
+    "place_id": "gn-13512674",
+    "input": {
+      "place": {
+        "place_id": "gn-13512674",
+        "name": "Lusail",
+        "country": "Qatar",
+        "subdivision": "Al Daayen",
+        "lat": 25.4175,
+        "lon": 51.5075
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lusail",
+          "url": "https://en.wikipedia.org/wiki/Lusail",
+          "text": "Lusail (Arabic: لوسيل, ALA-LC: Lūsayl, Arabic pronunciation: [luːˈsajl]) is the third-largest city in Qatar after Doha and Al-Rayyan, and serves as an important economic hub. Located on the coast in the southern part of the municipality of Al Daayen, it lies about 23 kilometres (14 mi) north of the Doha city centre, just north of the West Bay Lagoon, covering over 38 square kilometres (15 sq mi). It will eventually have the infrastructure to accommodate 450,000 people, of which it is estimated that 250,000 or fewer will be residents, with around 190,000 office workers and 60,000 retail workers.\nIt is planned to have marinas, residential areas, island resorts, commercial districts, luxury shopping and leisure facilities, a golf course community, man-made islands, and several entertainment districts. Development is being carried out by the state-controlled developer Qatari Diar along with Parsons Corporation and Dorsch-Gruppe.\nLusail Stadium was one of the venues for the 2022 FIFA World Cup, and hosted the final."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "lusail",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 64,
+    "place_id": "gn-1734634",
+    "input": {
+      "place": {
+        "place_id": "gn-1734634",
+        "name": "Ipoh",
+        "country": "Malaysia",
+        "subdivision": "Perak",
+        "lat": 4.5841,
+        "lon": 101.0829
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ipoh",
+          "url": "https://en.wikipedia.org/wiki/Ipoh",
+          "text": "Ipoh (, Malay pronunciation: [ipoh] ) is the capital city of the Malaysian state of Perak. Located on the Kinta River, it is nearly 200 km (120 mi) north of Kuala Lumpur and 150 km (93 mi) southeast of George Town in neighbouring Penang. As of the 2020 census, Ipoh had a population of 759,952, making it the ninth-largest city in Malaysia by population and the fourth most populous state capital, after Johor Bahru, Shah Alam and George Town.\nIn recent years, Ipoh's popularity as an international tourist destination has been significantly boosted by efforts to conserve its British colonial-era architecture. The city is also well known for its cuisine and natural attractions including limestone hills and caves within which Buddhist temples were built.\nIpoh's location between Kuala Lumpur and George Town has made it a major land transportation hub within West Malaysia, with both the Malayan Railway's West Coast Line and the North-South Expressway cutting through the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "ipoh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 65,
+    "place_id": "gn-4543762",
+    "input": {
+      "place": {
+        "place_id": "gn-4543762",
+        "name": "Norman",
+        "country": "United States",
+        "subdivision": "Oklahoma",
+        "lat": 35.22257,
+        "lon": -97.43948
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Norman, Oklahoma",
+          "url": "https://en.wikipedia.org/wiki/Norman,_Oklahoma",
+          "text": "Norman () is the third-most populous city in the U.S. state of Oklahoma, with a population of 128,026 as of the 2020 census. It is the most populous city in and the county seat of Cleveland County and the second-most populous city in the Oklahoma City Metro Area after the state capital, Oklahoma City, 20 miles (32 kilometers) north of Norman.\nThe city was settled during the Land Run of 1889, which opened the former Unassigned Lands of Indian Territory to American pioneer settlement. It was named in honor of Abner Norman, the area's initial land surveyor, and was formally incorporated on May 13, 1891. Norman has prominent higher education and related research industries, as it is home to the University of Oklahoma, the largest university in the state, with nearly 32,000 students. The university is well known for its sporting events by teams under the banner of the nickname \"Sooners\", with over 85,000 people routinely attending football games."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "norman",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 66,
+    "place_id": "gn-1270498",
+    "input": {
+      "place": {
+        "place_id": "gn-1270498",
+        "name": "Haldwani",
+        "country": "India",
+        "subdivision": "Uttarakhand",
+        "lat": 29.22254,
+        "lon": 79.5286
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haldwani",
+          "url": "https://en.wikipedia.org/wiki/Haldwani",
+          "text": "Haldwani (Kumaoni: Haldvānī) is the largest city of Kumaon, and the third most populous city in the Indian state of Uttarakhand. Haldwani is said to be the financial capital of Uttarakhand, having the most commercial, economic and industrial activities of the state. Haldwani is located in the Nainital District, and is one of its thirteen subdivisions. Being situated in the immediate foothills of Kumaon Himalayas, the Kathgodam neighbourhood of Haldwani is known as the Gateway to Kumaon.\nLocated in the Bhabhar region in the Himalayan foothills on the banks of the Gaula River, the town of Haldwani was established in 1834, as a mart for hill people who visited Bhabar during the cold season. The establishment of the Bareilly–Nainital provincial road in 1882 and the Bhojeepura–Kathgodam railway line by Rohilkund and Kumaon Railway in 1884 helped develop the town into a major trading post and then a hub between the hilly regions of Kumaon and the Indo-Gangetic Plains."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "haldwani",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 67,
+    "place_id": "gn-1648637",
+    "input": {
+      "place": {
+        "place_id": "gn-1648637",
+        "name": "Bitung",
+        "country": "Indonesia",
+        "subdivision": "North Sulawesi",
+        "lat": 1.44059,
+        "lon": 125.12824
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bitung",
+          "url": "https://en.wikipedia.org/wiki/Bitung",
+          "text": "Bitung, officially the City of Bitung (Indonesian: Kota Bitung), is a coastal city at the north-eastern edge of the island of Sulawesi in Indonesia.  Bitung is located in the province of North Sulawesi (Sulawesi Utara), and faces Lembeh Island (which forms two districts of the city), and the Lembeh Strait, which is known for its colourful marine life, in particular sea slugs.  Bitung has a population of 187,932 at the 2010 Census, making it the second most populated city in the province after the capital Manado, rising to 225,134 at the 2020 Census; the official estimate as at mid 2025 was 217,504 (comprising 110,606 males and 106,898 females).\nA number of development projects have been completed, or are currently undergoing centring around the city; these include the Bitung Special Economic Zone (SEZ), Manado–Bitung Toll Road, Bitung International Ocean Going Ship Port, and the Makassar-Bitung rail track; which will automatically make the city a gateway to the Pacific region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "bitung",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 68,
+    "place_id": "gn-3033123",
+    "input": {
+      "place": {
+        "place_id": "gn-3033123",
+        "name": "Besançon",
+        "country": "France",
+        "subdivision": "Bourgogne-Franche-Comté",
+        "lat": 47.24878,
+        "lon": 6.01815
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Besançon",
+          "url": "https://en.wikipedia.org/wiki/Besan%C3%A7on",
+          "text": "Besançon (UK: , US: ; French: [bəzɑ̃sɔ̃] , Franco-Provençal: [bəzɑ̃ˈsɔ̃]; archaic German: Bisanz; Latin: Vesontio) is a French city that serves as the capital of the department of Doubs in the region of Bourgogne-Franche-Comté. The city is located in Eastern France, close to the Jura Mountains and the border with Switzerland.\nCapital of the historic and cultural region of Franche-Comté, Besançon is home to the Bourgogne-Franche-Comté regional council headquarters, and is an important administrative centre in the region. It is also the seat of one of the fifteen French ecclesiastical provinces and one of the two divisions of the French Army.\nThe city has a population of about 120,000, and is the centre of a metropolitan area of about 285,000 inhabitants, the second in the region in terms of population (after Dijon).\nEstablished in a meander of the river Doubs, the city was already important during the Gallo-Roman era under the name of Vesontio, capital of the Sequani."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "besancon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 69,
+    "place_id": "gn-3598132",
+    "input": {
+      "place": {
+        "place_id": "gn-3598132",
+        "name": "Guatemala City",
+        "country": "Guatemala",
+        "subdivision": "Guatemala",
+        "lat": 14.64072,
+        "lon": -90.51327
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guatemala City",
+          "url": "https://en.wikipedia.org/wiki/Guatemala_City",
+          "text": "Guatemala City (Spanish: Ciudad de Guatemala), also known colloquially by the nickname Guate, is the national capital and largest city of the Republic of Guatemala. It serves as the municipal capital of the surrounding Guatemala Department. Its metropolitan area is also the largest in Central America. The city is located in a mountain valley called Valle de la Ermita (English: 'Hermitage Valley') in the south-central part of the country.\nGuatemala City is the site of the native Mayan city of Kaminaljuyu in Mesoamerica, which was occupied primarily between 1500 BCE and 1200 CE. The present city was founded by the Spanish after their colonial capital, now called Antigua Guatemala, was destroyed by the devastating 1773 Santa Marta earthquake and its aftershocks. It became the third royal capital of the surrounding Captaincy General of Guatemala; which itself was part of the larger Viceroyalty of New Spain in imperial Spanish America and remained under colonial rule until the nineteenth century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "guatemala city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "guatemala",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 70,
+    "place_id": "gn-498677",
+    "input": {
+      "place": {
+        "place_id": "gn-498677",
+        "name": "Saratov",
+        "country": "Russia",
+        "subdivision": "Saratov Oblast",
+        "lat": 51.54048,
+        "lon": 45.9901
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Saratov",
+          "url": "https://en.wikipedia.org/wiki/Saratov",
+          "text": "Saratov is the largest city and administrative center of Saratov Oblast, Russia, and a major port on the Volga River. As of the 2021 Census, Saratov had a population of 901,361, making it the 17th-largest city in Russia by population. Saratov is 389 kilometres (242 mi) north of Volgograd, 442 kilometres (275 mi) south of Samara, and 858 kilometres (533 mi) southeast of Moscow.\nThe city stands near the site of Uvek, a city of the Golden Horde. Tsar Feodor I of Russia likely developed Saratov as a fortress to secure Russia's southeastern border. Saratov developed as a shipping port along the Volga and was historically important to the Volga Germans, who settled in large numbers in the city before they were expelled before and during World War II.\nSaratov is home to a number of cultural and educational institutions, including the Saratov Drama Theater, Saratov Conservatory, Radishchev Art Museum, Saratov State Technical University, and Saratov State University."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 158
+    },
+    "banned_terms": [
+      {
+        "term": "saratov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 71,
+    "place_id": "gn-1263780",
+    "input": {
+      "place": {
+        "place_id": "gn-1263780",
+        "name": "Mangaluru",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 12.91723,
+        "lon": 74.85603
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mangaluru",
+          "url": "https://en.wikipedia.org/wiki/Mangaluru",
+          "text": "Mangaluru (Kannada: [mɐŋɡɐɭuːru]), formerly called Mangalore ( MANG-gə-lor, -⁠LOR), is a major industrial port city in the Indian state of Karnataka and on the west coast of India. It is located between the Arabian Sea and the Western Ghats about 352 km (219 mi) west of Bengaluru, the state capital, 14 km (8+1⁄2 mi) north of the Karnataka–Kerala border and 297 km (185 mi) south of Goa. Mangaluru is the state's only city to have all four modes of transport—air, road, rail and sea. The population of the urban agglomeration was 619,664 according to the 2011 national census of India. It is known for being one of the locations of the Indian strategic petroleum reserves.\nThe city developed as a port in the Laccadive Sea during ancient times, and after Independence a new port was constructed in 1968 and has since become a major port of India that handles 75 percent of India's coffee and cashew exports."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "mangaluru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 72,
+    "place_id": "gn-3827409",
+    "input": {
+      "place": {
+        "place_id": "gn-3827409",
+        "name": "Cuauhtémoc",
+        "country": "Mexico",
+        "subdivision": "Mexico City",
+        "lat": 19.44506,
+        "lon": -99.14612
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cuauhtémoc, Mexico City",
+          "url": "https://en.wikipedia.org/wiki/Cuauht%C3%A9moc,_Mexico_City",
+          "text": "Cuauhtémoc (Spanish pronunciation: [kwawˈtemok] ) is a borough of Mexico City. Named after the 16th-century Aztec ruler Cuauhtémoc, it contains the oldest parts of the city, extending over what was the entire urban core of Mexico City in the 1920s.\nCuauhtémoc is the historic and cultural center of Mexico City, although it is not the geographical center. While it ranks only sixth in population, it generates about a third of the entire city's GDP, mostly through commerce and services. It is home to the Mexican Stock Exchange, the important tourist attractions of the historic center and Zona Rosa, and various skyscrapers, such as the Torre Mayor and the Mexican headquarters of HSBC. It also contains numerous museums, libraries, government offices, markets, and other commercial centers, which can bring in as many as 5 million people each day to work, shop, or visit cultural sites.\nThis area has had problems with urban decay, especially in the historic center."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "cuauhtemoc",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 73,
+    "place_id": "gn-5399020",
+    "input": {
+      "place": {
+        "place_id": "gn-5399020",
+        "name": "Stockton",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 37.9577,
+        "lon": -121.29078
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stockton, California",
+          "url": "https://en.wikipedia.org/wiki/Stockton,_California",
+          "text": "Stockton is a city in and the county seat of San Joaquin County, California, United States. It is the most populous city in the county, the 11th-most populous city in California and the 60th-most populous city in the U.S., with 320,804 residents at the 2020 census. The city is located on the San Joaquin River in the northern San Joaquin Valley, within California's Central Valley. It lies at the southeastern corner of a large inland river delta that separates it from other nearby cities, such as Sacramento and the San Francisco Bay Area.\nStockton was founded by Charles Maria Weber during the California Gold Rush in 1849, after he acquired Rancho Campo de los Franceses to capitalize on its strategic location on the San Joaquin River. The city is named after famed Mexican–American War commodore Robert F. Stockton, and it was the first community in California to have a name not of Spanish or Native American origin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "stockton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 74,
+    "place_id": "gn-7290718",
+    "input": {
+      "place": {
+        "place_id": "gn-7290718",
+        "name": "Barra da Tijuca",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.99835,
+        "lon": -43.36545
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barra da Tijuca",
+          "url": "https://en.wikipedia.org/wiki/Barra_da_Tijuca",
+          "text": "Barra da Tijuca (Brazilian Portuguese pronunciation: [ˈbaʁɐ dɐ tʃiˈʒukɐ]), usually known as just Barra, is an upper-middle class neighborhood (or bairro) in the Southwest Zone of Rio de Janeiro, Brazil, located in the western portion of the city on the Atlantic Ocean. Barra is well known for its beaches, its many lakes and rivers, and its lifestyle. This neighbourhood represents 4.7% of the city population and 13% of the total area of Rio de Janeiro.\nBarra da Tijuca is classified as one of the most developed places in Brazil, with one of the highest Human Development Indexes (HDI) in the country, as measured in the 2000 Brazil Census. Unlike the South and Central Zones, Barra da Tijuca follows Modernist standards, with large boulevards creating the major transit axis. The area's masterplan was designed by Lúcio Costa, known for his work on Brasília, and creates a region filled with many gardens, shopping malls, apartment buildings, and large mansions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "barra da tijuca",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "barra",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "da",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "tijuca",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 75,
+    "place_id": "gn-1177662",
+    "input": {
+      "place": {
+        "place_id": "gn-1177662",
+        "name": "Gujranwala",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 32.15567,
+        "lon": 74.18705
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gujranwala",
+          "url": "https://en.wikipedia.org/wiki/Gujranwala",
+          "text": "Gujranwala is the fourth-largest city in the province of Punjab, serving as the headquarters of its eponymous district and division. It is nicknamed the \"City of Wrestlers\" and is famous for its cuisine and historical significance. Located in the Rachna Doab, it is a major metropolitan hub of northeastern Punjab, and is the fifth-most populous city in Pakistan.\nFounded in the 18th century, Gujranwala is a relatively modern town compared to the several nearby millennia-old cities of northern Punjab. The birthplace of Ranjit Singh, the city served as the capital of the Sukerchakia Misl between 1763 and 1799, and of the Sikh Empire from 1799 to 1801, before it shifted to Lahore.\nGujranwala is Pakistan's third-largest industrial center after Karachi and Faisalabad, It contributes approximately 5% to 9% to the national GDP. The city is part of a network of large urban centres in northeastern Punjab province that forms one of Pakistan's mostly highly industrialized regions."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "gujranwala",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 76,
+    "place_id": "gn-1787746",
+    "input": {
+      "place": {
+        "place_id": "gn-1787746",
+        "name": "Yancheng",
+        "country": "China",
+        "subdivision": "Jiangsu",
+        "lat": 33.3575,
+        "lon": 120.1573
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yancheng",
+          "url": "https://en.wikipedia.org/wiki/Yancheng",
+          "text": "Yancheng (simplified Chinese: 盐城; traditional Chinese: 鹽城; pinyin: Yánchéng), formerly known as Yandu, is a prefecture-level city in the eastern coastal Jiangsu province, People's Republic of China. As the city with the largest jurisdictional area in Jiangsu, Yancheng borders Lianyungang to the north, Huai'an to the west, Yangzhou and Taizhou to the southwest, Nantong to the south, and the Yellow Sea to the east. Formerly a county, the current Yancheng city was founded on January 18, 1983.\nYancheng, literally \"Salt City\", is named after the salt harvest fields surrounding the city. According to historical records, collection and production of sea salt in the region began as early as 119 BC, during the Western Han dynasty, when the settlement on the current location of Yancheng was named Yandu County (盐渎县). According to the 2020 census, Yancheng had a registered population of 6,709,629, with 1,733,591 inhabitants in its built up area comprising the districts of Tinghu and Yandu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "yancheng",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 77,
+    "place_id": "gn-3118594",
+    "input": {
+      "place": {
+        "place_id": "gn-3118594",
+        "name": "Leganés",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.32718,
+        "lon": -3.7635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leganés",
+          "url": "https://en.wikipedia.org/wiki/Legan%C3%A9s",
+          "text": "Leganés (Spanish pronunciation: [leɣaˈnes]) is a municipality and a city in Spain, located within the Community of Madrid. It forms part of the Madrid metropolitan area and is situated 11 kilometers southwest of the capital. With a population of 194,084 inhabitants, it is the fourth most populous municipality in the Community of Madrid and the thirty-second largest in Spain, according to the list of Spanish municipalities by population.\nSituated on a plain in the Inner Plateau of the Iberian Peninsula, Leganés is traversed by the Butarque stream, a tributary of the Manzanares River. It borders the Madrid districts of Carabanchel and Latina to the north, Alcorcón to the west, Getafe and the Madrid district of Villaverde to the east, and Fuenlabrada to the south.\nFounded in 1280 as \"Legamar\" during the reign of Alfonso X of Castile, it later adopted its current name and was incorporated as a village into the jurisdiction of Madrid in 1345."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "leganes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 78,
+    "place_id": "gn-3634922",
+    "input": {
+      "place": {
+        "place_id": "gn-3634922",
+        "name": "La Victoria",
+        "country": "Venezuela",
+        "subdivision": "Aragua",
+        "lat": 10.22677,
+        "lon": -67.33122
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Victoria, Aragua",
+          "url": "https://en.wikipedia.org/wiki/La_Victoria,_Aragua",
+          "text": "La Victoria (Spanish pronunciation: [la βiɣˈtoɾja]) is a city in the state of Aragua, Venezuela.\nIt is famous for the independence battle of 12 February 1814, the Battle of La Victoria, where José Félix Ribas led a young and inexperienced army that succeeded in halting the royalist troops of José Tomás Boves at La Victoria. Venezuela celebrates \"Youth Day\" every 12 February in La Victoria, with a ceremony usually presided over by the President of the Republic.\n\nIn 1902, the siege of La Victoria took place when the city was attacked by the forces of the Liberating Revolution led by General Manuel Antonio Matos with the aim of overthrow the government of the general Cipriano Castro. This action involved the personal intervention of General Castro, President of the Republic, who defended his regime. At the end, with the help of General Leopoldo Baptista and the vice-president Juan Vicente Gomez, the outcome was decided in his favor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "la victoria",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "la",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "victoria",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 79,
+    "place_id": "gn-1015621",
+    "input": {
+      "place": {
+        "place_id": "gn-1015621",
+        "name": "Brits",
+        "country": "South Africa",
+        "subdivision": "North West",
+        "lat": -25.63473,
+        "lon": 27.78022
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brits, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Brits,_South_Africa",
+          "text": "Brits ()  is a town in the North West Province of South Africa. It is situated in a fertile citrus, vegetable and grain-producing area that is irrigated by the waters of the Hartbeespoort Dam.  It is close to the City of Tshwane Metropolitan Municipality in Gauteng, which includes Pretoria, and it has the same dialling code as Pretoria. In addition to being a centre for agriculture, the city is home to several heavy industries.The city also plays an important role in the South African mining industry: 94% of South Africa's platinum comes from the Rustenburg and Brits districts, which together produce more platinum than any other single area in the world. In addition, there is a large vanadium mine in the district.\nMothotlung, Letlhabile, Maboloka, Bapong, Majakaneng, Tornado, Bethanie and Oukasie are the black townships, with Oukasie founded in 1931 being one of the oldest townships in South Africa.The Indian area in Brits is Primindia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "brits",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 80,
+    "place_id": "gn-1625812",
+    "input": {
+      "place": {
+        "place_id": "gn-1625812",
+        "name": "Surakarta",
+        "country": "Indonesia",
+        "subdivision": "Central Java",
+        "lat": -7.55611,
+        "lon": 110.83167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Surakarta",
+          "url": "https://en.wikipedia.org/wiki/Surakarta",
+          "text": "Surakarta (Javanese: ꦯꦸꦫꦏꦂꦠ, Pegon: سوراكارتا), known colloquially as Solo (Javanese: ꦱꦭ, romanized: Sålå), is a major city in Central Java, Indonesia. The 46.72 km2 (18.04 sq mi) city adjoins Karanganyar Regency and Boyolali Regency to the north, Karanganyar Regency and Sukoharjo Regency to the east and west, and Sukoharjo Regency to the south. On the eastern side of Solo flows Solo River (Bengawan Solo). Its metropolitan area, consisting of Surakarta City and the surrounding six regencies (\"Greater Solo Area\", formerly Special Region of Surakarta), was home to 6,899,402 inhabitants according to the official estimates for mid 2025, 529,079 of whom resided in the city proper (comprising 260,347 males and 268,732 females).\nSurakarta is the birthplace of former President of Indonesia Joko Widodo, as well as his son and current Vice President of Indonesia, Gibran Rakabuming Raka. The former served as Mayor of Surakarta from 2005 to 2012, as did the latter from 2021 to 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "surakarta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

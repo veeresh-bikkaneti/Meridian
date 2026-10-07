@@ -1,0 +1,747 @@
+[
+  {
+    "rank": 447,
+    "attempt": 441,
+    "place_id": "gn-563464",
+    "input": {
+      "place": {
+        "place_id": "gn-563464",
+        "name": "Engels",
+        "country": "Russia",
+        "subdivision": "Saratov Oblast",
+        "lat": 51.48389,
+        "lon": 46.10528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Engels, Saratov Oblast",
+          "url": "https://en.wikipedia.org/wiki/Engels,_Saratov_Oblast",
+          "text": "Engels (Russian: Энгельс, IPA: [ˈɛnɡʲɪlʲs]) is a city in Saratov Oblast, Russia. An important port located on the Volga River across from Saratov, the administrative center of the oblast, it is connected to it with a bridge. It is the second-largest city in Saratov Oblast, with a population of 202,419 (2010 census).\nHistorically a major center for Volga Germans, the city was known jointly as Pokrovsk (Pokrovskaya sloboda (until 1914), Pokrovsk (until 1931)) in Russian and as Kosakenstadt in German, until it was renamed after German Marxist theoretician Friedrich Engels in 1931. Engels served as the capital of the Volga German ASSR from 1918 until its abolition in 1941."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "engels",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 448,
+    "attempt": 442,
+    "place_id": "gn-706524",
+    "input": {
+      "place": {
+        "place_id": "gn-706524",
+        "name": "Kerch",
+        "country": "Ukraine",
+        "subdivision": "Crimea",
+        "lat": 45.35675,
+        "lon": 36.47542
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kerch",
+          "url": "https://en.wikipedia.org/wiki/Kerch",
+          "text": "Kerch, also known as Kerich, is a city on the Kerch Peninsula in the east of Crimea. It has a population of 147,033 (2014 Census).\nFounded 2,600 years ago as the ancient Greek colony Pantikapaion, Kerch is one of the most ancient cities in Crimea. The city experienced rapid growth starting in the 1920s and was the site of a major battle during World War II.\nToday, it is one of the largest cities in Crimea and is among the area's most important industrial, transport and tourist centres. As with the rest of Crimea, it has been occupied by Russian forces since the Russian annexation of Crimea in 2014."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 109
+    },
+    "banned_terms": [
+      {
+        "term": "kerch",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 449,
+    "attempt": 443,
+    "place_id": "gn-9072919",
+    "input": {
+      "place": {
+        "place_id": "gn-9072919",
+        "name": "Rizhao",
+        "country": "China",
+        "subdivision": "Shandong",
+        "lat": 35.41414,
+        "lon": 119.52908
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rizhao",
+          "url": "https://en.wikipedia.org/wiki/Rizhao",
+          "text": "Rizhao (Chinese: 日照; pinyin: Rìzhào), alternatively romanized as Jihchao, is a prefecture-level city in southeastern Shandong province, China. It is situated on the coastline along the Yellow Sea, and features a major seaport, the Port of Rizhao. It borders Qingdao to the northeast, Weifang to the north, Linyi to the west and southwest, and faces Korea and Japan across the Yellow Sea to the east.\nThe name of the city literally means \"sunshine\". The city is known for its sustainability, and it mandates solar-water heaters in all new buildings. Rizhao city was recognized by the United Nations as one of the most habitable cities in the world in 2009.\nThe city population stands at 2,968,365 people as of the 2020 Chinese census, of whom 1,172,205 live in the urban area of Donggang District. As of 2024, the resident population is estimated at 2,929,000. Compared with the 2,801,013 people in 2010 Chinese census, there has been a total increase of 167,352 people in the past decade, an increase of 5.97%, with an average annual growth rate of 0.58%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 177
+    },
+    "banned_terms": [
+      {
+        "term": "rizhao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 450,
+    "attempt": 444,
+    "place_id": "gn-98717",
+    "input": {
+      "place": {
+        "place_id": "gn-98717",
+        "name": "Ramadi",
+        "country": "Iraq",
+        "subdivision": "Anbar",
+        "lat": 33.42056,
+        "lon": 43.30778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ramadi",
+          "url": "https://en.wikipedia.org/wiki/Ramadi",
+          "text": "Ramadi (Arabic: ٱلرَّمَادِي Ar-Ramādī; IPA: [r.ra.maː.diː]; also formerly rendered as Rumadiyah or Rumadiya) is a city in central Iraq, about 110 kilometers (68 mi) west of Baghdad and 50 kilometers (31 mi) west of Fallujah. It is the capital and largest city of Al Anbar Governorate which shares borders with Syria, Jordan, and Saudi Arabia. The city extends along the Euphrates which bisects Al Anbar. Founded in 1879, it was one of the towns established during the later period of Ottoman Iraq. By 2018 it had about 223,500 residents, near all of whom Sunni Arabs from the Dulaim tribal confederation. It lies in the Sunni Triangle of western Iraq. It is the most commonly proposed city to be the capital of a Sunni federal region in West Iraq.\nRamadi occupies a highly strategic site on the Euphrates and the road west into Syria and Jordan. This has made it a hub for trade and traffic, from which the city gained significant prosperity. Its position has meant that it has been fought over several times, during the two World Wars and again during the Iraq War and Iraqi insurgency. It was heavily damaged during the Iraq War, when it was a major focus for the insurgency against occupying United States forces. Following the withdrawal of US forces from Iraq in 2011, the city was contested by the Iraqi government and the extremist group Islamic State of Iraq and the Levant (ISIL) and fell to ISIL in May 2015. On 28 December 2015, the Iraqi government declared, confirming media testimonies, that it had re-taken Ramadi, that government's first major military victory since its loss."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 109,
+      "fullExtractWords": 272
+    },
+    "banned_terms": [
+      {
+        "term": "ramadi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 451,
+    "attempt": 445,
+    "place_id": "gn-1275019",
+    "input": {
+      "place": {
+        "place_id": "gn-1275019",
+        "name": "Buxar",
+        "country": "India",
+        "subdivision": "Bihar",
+        "lat": 25.57548,
+        "lon": 83.98043
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Buxar",
+          "url": "https://en.wikipedia.org/wiki/Buxar",
+          "text": "Buxar  is a nagar parishad city in the state of Bihar, India, sharing border with Balia and Ghazipur district of Uttar Pradesh. It is the headquarters of the eponymous Buxar district, as well as the headquarters of the community development block of Buxar, which also contains the census town of Sarimpur along with 132 rural villages.\nThe historic Battle of Chausa and Battle of Buxar were fought in this vicinity. Buxar Railway Station lies on Patna–Mughalsarai section of Howrah–Delhi main line in the zone of eastern central Indian railway. It is approximately 125 km from the state capital of Patna. Bhojpuri is the widely spoken language in Buxar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "buxar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 452,
+    "attempt": 446,
+    "place_id": "gn-13527308",
+    "input": {
+      "place": {
+        "place_id": "gn-13527308",
+        "name": "Nossa Senhora de Fátima",
+        "country": "China",
+        "subdivision": "Guangdong",
+        "lat": 22.20769,
+        "lon": 113.54831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nossa Senhora de Fátima, Macau",
+          "url": "https://en.wikipedia.org/wiki/Nossa_Senhora_de_F%C3%A1tima,_Macau",
+          "text": "Nossa Senhora de Fátima is the northernmost and largest civil parish in the Macau Peninsula of Macau. It has an area of 3.2 square kilometers (1.2 sq mi) and a population of 126,000, which constitutes about 40.3% of the peninsula's landmass and one-third of the population. It is named after Our Lady of Fátima.\nThis parish was one of five in the former Municipality of Macau, one of Macau's two municipalities that were abolished on 31 December 2001 by Law No. 17/2001, following the 1999 transfer of sovereignty over Macau from Portugal to China. While their administrative functions have since been removed, these parishes are still retained nominally.\nIt is northeast of the parishes of Santo António and São Lázaro. It borders the Chinese city of Zhuhai to the north."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "nossa senhora de fatima",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "nossa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "senhora",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "fatima",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 453,
+    "attempt": 447,
+    "place_id": "gn-1695804",
+    "input": {
+      "place": {
+        "place_id": "gn-1695804",
+        "name": "Panabo",
+        "country": "Philippines",
+        "subdivision": "Davao Region",
+        "lat": 7.30806,
+        "lon": 125.68417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Panabo",
+          "url": "https://en.wikipedia.org/wiki/Panabo",
+          "text": "Panabo, officially the City of Panabo (Cebuano: Dakbayan sa Panabo; Filipino: Lungsod ng Panabo), is a component city in the province of Davao del Norte, Philippines. According to the 2024 census, it has a population of 211,242 people. It is also known for being the “Banana Capital of the Philippines” for its vast banana plantations.\nPanabo is the second most populous city in Davao del Norte (after Tagum) and it is also part of Davao Metropolitan Area as it shares borders with Davao City. It has an area of 25,123 hectares (62,080 acres). The Panabo City Hall is located about 2.23 kilometers from its boundary with Davao City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "panabo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 454,
+    "attempt": 448,
+    "place_id": "gn-1738050",
+    "input": {
+      "place": {
+        "place_id": "gn-1738050",
+        "name": "Miri",
+        "country": "Malaysia",
+        "subdivision": "Sarawak",
+        "lat": 4.39928,
+        "lon": 113.99163
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Miri",
+          "url": "https://en.wikipedia.org/wiki/Miri",
+          "text": "Miri () is a coastal city in north-eastern Sarawak, Malaysia, located near the border of Brunei, on the island of Borneo. The city covers an area of 997.43 square kilometres (385.11 sq mi), located 798 kilometres (496 mi) northeast of Kuching and 329 kilometres (204 mi) southwest of Kota Kinabalu. Miri is the second largest city in Sarawak, with a population of 356,900 as of 2020. The city is also the capital of Miri District, Miri Division.\nBefore Miri was founded, Marudi was the administrative centre of the northern region of Sarawak. Miri was founded in 1910 when the first oil well was drilled by Royal Dutch Shell. The discovery of an oil field in Miri has led to rapid development of Miri town. Miri became the administrative centre of the northern region of Sarawak by 1929. During World War II, the Miri oil fields were destroyed by the Brooke government to sabotage Japanese operations in Southeast Asia but to no avail; Miri town was the first landing point of Japanese troops in Borneo. The subsequent Japanese occupation led Miri to become a target of Allied air raids which caused the destruction of oil refinery facilities in Miri. The petroleum industry continued to be a major player in the city's economy after the war. Oil exploration has moved offshore since the 1950s, but subsequently new inland oil fields were found in 1989 and 2011. In 1974, the formation of Malaysian oil and gas company Petronas led to co-operation between Petronas and Shell on oil exploration in the Miri region. In 2005, Miri became the 10th city in Malaysia to be granted official city status, the first non-state-capital city to be bestowed such status. To commemorate the occasion, the Miri City Fan was created. The 26 acre urban civic park includes a promenade, parkland, Amphitheatre, musical fountain, library and cultural centre. The Miri City Fan was masterplanned by Teo A. Khing Design Consultants (TAK).\nMiri is the main tourist gateway to the world-famous UNESCO World Heritage Site, Gunung Mulu National Park; Loagan Bunut National Park; Lambir Hills National Park; and Niah National Park and Miri-Sibuti Coral Reef National Park. The Gunung Mulu National Park with its Sarawak Chamber, which is the largest known cave chamber in the world by area, remains one of the favourite ecotourism destinations in Miri. Miri is also the birthplace of the Malaysian petroleum industry. Other major industries in the city include timber, oil palm and tourism."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 410
+    },
+    "banned_terms": [
+      {
+        "term": "miri",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 455,
+    "attempt": 449,
+    "place_id": "gn-1786577",
+    "input": {
+      "place": {
+        "place_id": "gn-1786577",
+        "name": "Yingtan",
+        "country": "China",
+        "subdivision": "Jiangxi",
+        "lat": 28.23333,
+        "lon": 117
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yingtan",
+          "url": "https://en.wikipedia.org/wiki/Yingtan",
+          "text": "Yingtan (simplified Chinese: 鹰潭; traditional Chinese: 鷹潭; pinyin: Yīngtán; lit. 'Eagle Pond') is a prefecture-level city in the east of Jiangxi province, People's Republic of China, bordering Fujian to the southeast. Its location near the trisection of Jiangxi, Fujian, and Zhejiang has made it a strategically important city for centuries. Today, it continues to be a major rail transport hub. It is best known as the Capital of Copper, and located here is Jiangxi Copper and its the Guixi Smelter.\nNear the city of Yingtan is the resort area of Mount Longhu, which purports to be the birthplace of Taoism and hence, has great symbolic value to Taoists.  The region has many interesting temples, cave complexes, mountains, and villages."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 119
+    },
+    "banned_terms": [
+      {
+        "term": "yingtan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 456,
+    "attempt": 450,
+    "place_id": "gn-1854383",
+    "input": {
+      "place": {
+        "place_id": "gn-1854383",
+        "name": "Okayama",
+        "country": "Japan",
+        "subdivision": "Okayama",
+        "lat": 34.65,
+        "lon": 133.93333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Okayama",
+          "url": "https://en.wikipedia.org/wiki/Okayama",
+          "text": "Okayama (岡山市, Okayama-shi; Japanese: [okaꜜjama]) is the capital city of Okayama Prefecture in the Chūgoku region of Japan. The Okayama metropolitan area, centered around the city, has the largest urban employment zone in the Chugoku region of western Japan. The city was founded on June 1, 1889. As of February 2023, the city has an estimated population of 700,940 and a population density of 890 people per km2. The total area is 789.95 square kilometres (305.00 square miles).\nThe city is the site of Kōraku-en, known as one of the top three traditional gardens in Japan, and Okayama Castle, which is ranked among the best 100 Japanese castles. The city is famous as the setting of the Japanese fable Momotarō. Okayama joined the UNESCO Global Network of Learning Cities in 2016."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "okayama",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 457,
+    "attempt": 451,
+    "place_id": "gn-2327879",
+    "input": {
+      "place": {
+        "place_id": "gn-2327879",
+        "name": "Offa",
+        "country": "Nigeria",
+        "subdivision": "Kwara State",
+        "lat": 8.14911,
+        "lon": 4.72074
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Offa, Nigeria",
+          "url": "https://en.wikipedia.org/wiki/Offa,_Nigeria",
+          "text": "Offa () is a city and local government area in Kwara State of Nigeria, with a population of about 166,112 inhabitants. The town is noted for its weaving and dyeing trade, using vegetable dyes made from locally grown indigo and other plants.  Offa is also renowned for Aso Oke textile weaving and pottery craft, which provide income for many families. Offa is well known for the cultivation of sweet potatoes and maize which also formed part of the favourite staple foods for the indigenes in the town. Cattle, goats and sheep are also raised there. The main religions practiced in the town are Islam, Christianity and traditional religions.\nThe ancient tradition for which the town is known for is wrestling and locally known as Ìjàkadì. Offatedo in Osun state, Iyana Offa in Oyo State, Offa in Côte d'Ivoire were established by the people of Offa.\nOffa is centrally located. There is a big market in the town centre, known as Owode Market, which serves both the members of the community and its neighboring towns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "offa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 458,
+    "attempt": 452,
+    "place_id": "gn-2548526",
+    "input": {
+      "place": {
+        "place_id": "gn-2548526",
+        "name": "Guelmim",
+        "country": "Morocco",
+        "subdivision": "Guelmim-Oued Noun",
+        "lat": 28.98696,
+        "lon": -10.05738
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guelmim",
+          "url": "https://en.wikipedia.org/wiki/Guelmim",
+          "text": "Guelmim is a city in southern Morocco, often called the Gateway to the Desert. It is the capital of the Guelmim-Oued Noun region which includes southern Morocco (south of the Souss-Massa region) and the northeastern corner of Western Sahara. The population of the city was 187,808 as of the 2014 Moroccan census, making it the largest city in the region. The N1 and N12 highways cross at Guelmim and link it to the nearby region of Souss-Massa.\nGuelmim is located just north of Asrir, which was the site of an important trade-route city and the capital of the Saharan Berber tribes. It is home to a camel market. Most of the inhabitants speak either the Tachelhit Berber language or the Hassaniya dialect of Arabic."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "guelmim",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 459,
+    "attempt": 453,
+    "place_id": "gn-3389353",
+    "input": {
+      "place": {
+        "place_id": "gn-3389353",
+        "name": "Santarém",
+        "country": "Brazil",
+        "subdivision": "Pará",
+        "lat": -2.44306,
+        "lon": -54.70833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santarém, Pará",
+          "url": "https://en.wikipedia.org/wiki/Santar%C3%A9m,_Par%C3%A1",
+          "text": "Santarém (Brazilian Portuguese pronunciation: [sɐ̃taˈɾẽj]) is a municipality in the western part of the state of Pará in Brazil. Located at the confluence of the Tapajós and Amazon Rivers, it has become a popular tourist destination. It is the second-most important city in the state, and the financial and economic center of the western part of the state. It leads the Santarém Metropolitan Area, made up of Santarém, Belterra and Mojuí dos Campos. It was once home to the Tapajós Indians, a tribe of Native Americans after whom the river was named. They were the leaders of a large, agricultural chiefdom that flourished before the arrival of Europeans.\nIt is located some 600-700 km from the two largest cities in the Brazilian Amazon: Manaus, upriver in the state of Amazonas, and the Pará state capital Belém, located downriver at the mouth of the Amazon on the Atlantic Ocean. Santarém has an estimated population of 331,942 people (2020), and is the third most populous city of the state. The city occupies an area of 22,887 km2 (8,837 sq mi), of which 77 km2 are urban areas.\nThe city was founded by Portuguese colonists in 1661 as New, it was discovered by Priest João Filipe Bettendorff Santarém (after the city in Portugal). It is one of the oldest cities in the Brazilian Amazon. This is the seat of the Roman Catholic Diocese of Santarém.\nBecause of the crystalline waters of the Tapajós River, Santarém has more than 100 km (62 mi) of natural beaches, such as those of the village of Alter do Chão, known as the \"Caribbean in Brazil.\" The Guardian ranked this beach as the most beautiful in Brazil. Alter do Chão is also home to Sairé, one of the most important folklore festivals of the region, which is held annually in September.\nSome political activists have lobbied to create a new Brazilian state by dividing the enormous state of Pará into western and eastern regions. The new state to be established in the west would be called the Tapajós, with Santarém serving as the capital."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 346
+    },
+    "banned_terms": [
+      {
+        "term": "santarem",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 460,
+    "attempt": 454,
+    "place_id": "gn-3435217",
+    "input": {
+      "place": {
+        "place_id": "gn-3435217",
+        "name": "Corrientes",
+        "country": "Argentina",
+        "subdivision": "Corrientes",
+        "lat": -27.46784,
+        "lon": -58.8344
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Corrientes",
+          "url": "https://en.wikipedia.org/wiki/Corrientes",
+          "text": "Corrientes (Spanish pronunciation: [koˈrjentes] ; Guarani: Taragui, lit. 'Currents') is the capital city of the province of Corrientes, Argentina, on the eastern shore of the Paraná River, about 1,000 km (621 mi) from Buenos Aires and 300 km (186 mi) from Posadas, on National Route 12. It has a population of 346,334 according to the 2010 Census. It lies opposite its twin city, Resistencia, Chaco.\nCorrientes has a mix of colonial and modern architecture, several churches and a number of lapacho, ceibo, jacaranda and orange trees. It is also home to one of Argentina's biggest carnival and chamamé celebrations.\nThe annual average temperature is 21.3 °C (70.3 °F). The annual rainfall is around 1,500 millimetres (59 in)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "corrientes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 461,
+    "attempt": 455,
+    "place_id": "gn-3460899",
+    "input": {
+      "place": {
+        "place_id": "gn-3460899",
+        "name": "Itaguaí",
+        "country": "Brazil",
+        "subdivision": "Rio de Janeiro",
+        "lat": -22.85222,
+        "lon": -43.77528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itaguaí",
+          "url": "https://en.wikipedia.org/wiki/Itagua%C3%AD",
+          "text": "Itaguaí (Portuguese pronunciation: [itagwaˈi]) is a municipality located in the Brazilian state of Rio de Janeiro and contains several important iron ore loading ports of the world including Ilha Guaiba. Its population was 134,819 in 2020 and its area is 273 km2. The city was founded in 1688 and lies midway between Rio de Janeiro and Angra dos Reis.\nItaguaí is located approximately 75 km west of the city of Rio de Janeiro on the road to Santos (SP). It is located between the shore of Sepetiba Bay and the Atlantic Rainforest.\nItaguai and the region around it contain some of the largest ore exporting ports in Brazil. It also serves also as dormitory town for workers of the industrial western zone (Zona Oeste) of Rio de Janeiro.  It is the seat of the Roman Catholic Diocese of Itaguaí.\nThe former Brazilian footballer Ronaldo was born in Itaguaí"
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "itaguai",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 462,
+    "attempt": 456,
+    "place_id": "gn-3645532",
+    "input": {
+      "place": {
+        "place_id": "gn-3645532",
+        "name": "Ciudad Bolívar",
+        "country": "Venezuela",
+        "subdivision": "Bolívar",
+        "lat": 8.12366,
+        "lon": -63.54694
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ciudad Bolívar",
+          "url": "https://en.wikipedia.org/wiki/Ciudad_Bol%C3%ADvar",
+          "text": "Ciudad Bolívar (Spanish pronunciation: [sjuˈðað βoˈliβaɾ]; Spanish for \"Bolivar City\"), formerly known as Angostura and St. Thomas de Guyana, is the capital of Venezuela's southeastern Bolívar State. It lies at the spot where the Orinoco River narrows to about 1 mile (1.6 km) in width, is the site of the first bridge across the river, and is a major riverport for the eastern regions of Venezuela.\nHistoric Angostura gave its name to the Congress of Angostura, to the Angostura tree, to the House of Angostura, and to Angostura bitters. Modern Ciudad Bolívar has a well-preserved historic center; a cathedral and other original colonial buildings surround the Plaza Bolívar."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 108
+    },
+    "banned_terms": [
+      {
+        "term": "ciudad bolivar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ciudad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bolivar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 463,
+    "attempt": 457,
+    "place_id": "gn-5527554",
+    "input": {
+      "place": {
+        "place_id": "gn-5527554",
+        "name": "Odessa",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 31.84568,
+        "lon": -102.36764
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Odessa, Texas",
+          "url": "https://en.wikipedia.org/wiki/Odessa,_Texas",
+          "text": "Odessa () is a city in the U.S. state of Texas. It is the county seat of Ector County in West Texas, with portions extending into Midland County. The population was 114,428 at the 2020 census, making it the 34th-most populous city in Texas. It is the principal city of the Odessa metropolitan statistical area, which includes all of Ector County. The metropolitan area is also a component of the larger Midland–Odessa combined statistical area, which had 359,001 residents in 2020.\nThe city is famous for being featured in the book Friday Night Lights: A Town, a Team, and a Dream, and the movie adaptation, Friday Night Lights. The University of Texas Permian Basin is located in the city and enrolls over 5,000 students. In 1948, Odessa was also the home of First Lady Barbara Bush, and the one-time home of former U.S. presidents George H. W. Bush and George W. Bush. Former president George H. W. Bush has been quoted as saying, \"At Odessa we became Texans and proud of it.\""
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 108,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "odessa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 464,
+    "attempt": 458,
+    "place_id": "gn-1253573",
+    "input": {
+      "place": {
+        "place_id": "gn-1253573",
+        "name": "Vadodara",
+        "country": "India",
+        "subdivision": "Gujarat",
+        "lat": 22.29941,
+        "lon": 73.20812
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vadodara",
+          "url": "https://en.wikipedia.org/wiki/Vadodara",
+          "text": "Vadodara (Gujarati: [ˌʋəˈɖo.d̪ɾɐ̯] ), also known as Baroda, is a city on the banks of the Vishwamitri River in the Indian state of Gujarat. It serves as the administrative headquarters of the Vadodara district. The city is named for its abundance of banyan (vad) trees. Vadodara is also locally referred to as the Sanskrutik Nagari (transl. 'Cultural City') and Kala Nagari (transl. 'City of Art') of India.\nThe city is prominent for landmarks such as the Laxmi Vilas Palace, which served as the residence of the Maratha royal Gaekwad dynasty that ruled over Baroda State. It is also the home of the Maharaja Sayajirao University of Baroda."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 107
+    },
+    "banned_terms": [
+      {
+        "term": "vadodara",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 465,
+    "attempt": 459,
+    "place_id": "gn-1262771",
+    "input": {
+      "place": {
+        "place_id": "gn-1262771",
+        "name": "Morena",
+        "country": "India",
+        "subdivision": "Madhya Pradesh",
+        "lat": 26.49892,
+        "lon": 77.99534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Morena, Madhya Pradesh",
+          "url": "https://en.wikipedia.org/wiki/Morena,_Madhya_Pradesh",
+          "text": "Morena is a town and a district in the Indian state of northern Madhya Pradesh. The place gets its name from mor (meaning peacock) and raina, which means a place where peacocks are found in abundance; Morena is home to the largest number of peacocks in India.\nMorena is situated on the border of three states: Madhya Pradesh, Rajsthan, and Uttar Pradesh. It is governed by a municipal corporation. It is also the administrative headquarters of the Chambal division. It is located 33 kilometres (21 mi) from Dholpur, 44 kilometres (27 mi) from Gwalior, 90 kilometres (56 mi) from Agra and 100 kilometres (62 mi) from Bhind.\nMorena is famous for National Chambal Sanctuary which is home to Gharials, which extends upto Etawah. Famous sweet \"Gajak\" trails its origin to Morena which is made from jaggary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "morena",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 466,
+    "attempt": 460,
+    "place_id": "gn-1786676",
+    "input": {
+      "place": {
+        "place_id": "gn-1786676",
+        "name": "Yima",
+        "country": "China",
+        "subdivision": "Henan",
+        "lat": 34.73806,
+        "lon": 111.88389
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yima, Henan",
+          "url": "https://en.wikipedia.org/wiki/Yima,_Henan",
+          "text": "Yima (simplified Chinese: 义马; traditional Chinese: 義馬; pinyin: Yìmǎ) is a county-level city under the administration of Sanmenxia in Henan, China. It is located along the old Xiaohan Route, historically serving as a connection between the important eastern and western capitals of Luoyang and Chang'an.\nThe area has been a site of military and commercial importance since antiquity. Yima's history dates back more than two thousand years to the Xin'an county of Qin dynasty. \nYima became Henan's first county-level city in 1981, initially managed by the Luoyang Administrative Office and transferred to Sanmenxia in 1986. Today, it is one of Henan Province's 48 counties with extended autonomy. It is the smallest city in China (112 square kilometers with a population of about 140,000)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 107,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "yima",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

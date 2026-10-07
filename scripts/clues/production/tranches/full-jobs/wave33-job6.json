@@ -1,0 +1,762 @@
+[
+  {
+    "rank": 6548,
+    "attempt": 6501,
+    "place_id": "gn-8347981",
+    "input": {
+      "place": {
+        "place_id": "gn-8347981",
+        "name": "Avondale Heights",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.76155,
+        "lon": 144.86261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Avondale Heights",
+          "url": "https://en.wikipedia.org/wiki/Avondale_Heights",
+          "text": "Avondale Heights is a suburb in Melbourne, Victoria, Australia, 11 km (6.8 mi) north-west of Melbourne's Central Business District, located within the City of Moonee Valley local government area. Avondale Heights recorded a population of 12,388 at the 2021 census.\nAvondale Heights is located on a plateau bounded by a large bend of the Maribyrnong River to the east, south, and west, and to the north by Buckley Street.\nThe suburb derives its name from the Avondale Estate. Originally known as Maribyrnong West, when the Council undertook to change the name, postal authorities drew attention to the existence of Avondale in Queensland. The suburb was therefore called Avondale Heights to distinguish it from the Queensland town.\nWalter Burley Griffin and Marion Mahony Griffin prepared plans for part of the area: Milleara Estate in the north (also known as City View) in the 1920s. One objective of their design was to remake suburbia and society. They did this through creating internal gardens where communities could both physically and socially bind together. They imagined children's playgrounds, social centres, nature reserves and links with an intricate system of pedestrian ways. Interviewed in Melbourne in 1913, Griffin spoke of internal reserves as:\n\n...favourite playgrounds. Here all the children from the different houses can play together, where their mothers can see them, and where they are safe from the motor traffic in the streets.\nThe streets are designed in a curvilinear way typical of Griffin's design, often following the topography of the land.\nThere is only one main road – Military Road which runs from Canning Street and Maribyrnong Road, then becoming Milleara Road at the Avondale Heights Police Station. There are about 40 shops at the Canning Street end (including Raglan Street) and 20 at the other end, near the St Martin De Porres Primary School."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 302
+    },
+    "banned_terms": [
+      {
+        "term": "avondale heights",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "avondale",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "heights",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6549,
+    "attempt": 6502,
+    "place_id": "gn-9847679",
+    "input": {
+      "place": {
+        "place_id": "gn-9847679",
+        "name": "Tremseh",
+        "country": "Syria",
+        "subdivision": "Hama",
+        "lat": 35.27181,
+        "lon": 36.50395
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tremseh",
+          "url": "https://en.wikipedia.org/wiki/Tremseh",
+          "text": "Tremseh (Arabic: التريمسة, al-Turaymisah), or in various dialects Tremseh, Treimsa, Taramsah, Taramseh in the Hama Governorate in northern Syria. It is roughly 22 miles northwest of the central city of Hama. Nearby localities include district center Mahardah and Shaizar to the east, Khunayzir to the southeast, Asilah to the south, Safsafiyah to the southwest, Asharnah and Tell Salhab to the west, al-Jalmah to the north and Kafr Hud to the northeast. According to the Syria Central Bureau of Statistics (CBS), Tremseh had a population of 6,926 in the 2004 census. The town was reported to have a population of between 7,000 and 11,000.\nIn 1838 Tremseh was classified as an abandoned village by scholar Eli Smith.\nTremseh was the site where the Battle of Tremseh occurred in July 2012. The residents Tremseh are mostly Sunni Muslims."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 116,
+      "fullExtractWords": 136
+    },
+    "banned_terms": [
+      {
+        "term": "tremseh",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6550,
+    "attempt": 6503,
+    "place_id": "gn-1012807",
+    "input": {
+      "place": {
+        "place_id": "gn-1012807",
+        "name": "Cookhouse",
+        "country": "South Africa",
+        "subdivision": "Eastern Cape",
+        "lat": -32.74322,
+        "lon": 25.80037
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cookhouse, South Africa",
+          "url": "https://en.wikipedia.org/wiki/Cookhouse,_South_Africa",
+          "text": "Cookhouse (Afrikaans: Kookhuis) is a small village located in Eastern Cape province, South Africa, some 170 kilometres (110 mi) north of Port Elizabeth and 24 kilometres (15 mi) east of KwaNojoli, on the west bank of the Great Fish River.\nCookhouse is part of the Blue Crane Route Municipality, situated in Sarah Baartman District, in the Eastern Cape, South Africa.\nCookhouse was an early colonial settlement. The Scottish abolitionist and poet, Thomas Pringle mentions Cookhouse in his journal. The town was also visited by early explorers and writers such as Dutch military commander Robert Jacob Gordon and French traveller François Levaillant. Gordon's stay in South Africa produced scientific writings, drawings and maps about the region.\nThe town is home to the Cookhouse Wind Farm which comprises 66 turbines. The farm became operational in November 2014 and supplies clean energy to the Eskom grid."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 143
+    },
+    "banned_terms": [
+      {
+        "term": "cookhouse",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6551,
+    "attempt": 6504,
+    "place_id": "gn-11611950",
+    "input": {
+      "place": {
+        "place_id": "gn-11611950",
+        "name": "Etajima",
+        "country": "Japan",
+        "subdivision": "Hiroshima",
+        "lat": 34.23863,
+        "lon": 132.47967
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Etajima, Hiroshima",
+          "url": "https://en.wikipedia.org/wiki/Etajima,_Hiroshima",
+          "text": "Etajima (江田島市, Etajima-shi) is a city (formerly a town) located on the island of Etajima in Hiroshima Bay in southwestern Hiroshima Prefecture, Japan.\nThe modern city of Etajima was established on November 1, 2004, from the merger of the town of Etajima (from Aki District) absorbing three towns from Saeki District: Nōmi, Ōgaki, and Okimi.\nAs of December 31, 2016, the city has an estimated population of 24,596 and a population density of 240 persons per km2. The total area is 100.97 km2.\nA naval museum and the Naval Academy Etajima is located in the portion of the city that was the town.\nEtajima holds two annual marathons, the Orange Marathon and the Oyster Marathon.\nThe Orange Marathon has been held for more than two decades. It is held every year in October, at the beginning of the orange season. Each participant is rewarded for their efforts with a bag of locally grown oranges. The 23rd Annual Orange Marathon in 2008 had over 2000 participants for 1K, 3K, 5K, and 10K runs, and a half-marathon.\nThe Oyster Marathon is relatively a smaller scale marathon. Participants are rewarded with oysters.\nOn March 14, 2013, a man went on a stabbing rampage in Etajima, killing two co-workers and wounding six others."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 209
+    },
+    "banned_terms": [
+      {
+        "term": "etajima",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6552,
+    "attempt": 6505,
+    "place_id": "gn-1170974",
+    "input": {
+      "place": {
+        "place_id": "gn-1170974",
+        "name": "Mankera",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 31.38771,
+        "lon": 71.44047
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mankera",
+          "url": "https://en.wikipedia.org/wiki/Mankera",
+          "text": "Mankera  (Saraiki and Urdu: منكيره) is the principal town of Mankera Tehsil, an administrative subdivision of Bhakkar District, in the Punjab province of Pakistan. It is situated about 320 km (200 mi) west of Lahore, capital city of the Punjab province.\nBhakkar is located in the west of Punjab. The mighty Indus River flows on the western side of the district and the Jhelum and Chenab rivers both flow on the eastern side, all of which can be destructive during the monsoon season. One-third of the land is sandy, of which a small portion is irrigated by Thal canal and tubewells. The rest of the sandy land is cultivated and is entirely dependent upon rains. The local population mainly depends on agriculture, which is highly dependent on rain; as such people are poor. Education and health facilities are not adequately available."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 141
+    },
+    "banned_terms": [
+      {
+        "term": "mankera",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6553,
+    "attempt": 6506,
+    "place_id": "gn-12048032",
+    "input": {
+      "place": {
+        "place_id": "gn-12048032",
+        "name": "Vincent Square",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.49292,
+        "lon": -0.13179
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Vincent Square",
+          "url": "https://en.wikipedia.org/wiki/Vincent_Square",
+          "text": "Vincent Square is a grass-covered square in Westminster, London, England. It is London's largest privately owned square, covering 13 acres, lined with mature trees including London planes. In among a network of backstreets, it chiefly provides playing fields for Westminster School, who own it absolutely; otherwise, it functions as a green lung and a view for the homes, hotel and other organisations adjoining. Nine of its adjoining buildings have been given strict statutory architectural recognition and protection. Westminster Under School, the preparatory school of the senior Westminster School, is based at 27 Vincent Square. The Liberal Democrat Headquarters, housing one of Parliament's three largest political parties, was based at 1 Vincent Square, until September 2025."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "vincent square",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "vincent",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "square",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6554,
+    "attempt": 6507,
+    "place_id": "gn-2172264",
+    "input": {
+      "place": {
+        "place_id": "gn-2172264",
+        "name": "Carnegie",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.89359,
+        "lon": 145.05534
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Carnegie, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Carnegie,_Victoria",
+          "text": "Carnegie is a suburb in Melbourne, Victoria, Australia, 12 km south-east of Melbourne's central business district, on the railway line between Caulfield and Oakleigh, located within the City of Glen Eira local government area. Carnegie recorded a population of 17,909 at the 2021 census.\nThe suburb's main shopping precinct is a well-regarded 'eat street,’ with cafes and restaurants lining Koornang Road from Dandenong Road to Neerim Road. Koornang Park and the neighbouring Carnegie Swim Centre are located between Koornang Road, Munro Avenue and Lyons Street.\nOriginally called Rosstown, after William Murray Ross, a prominent property developer and entrepreneur, a name change came about due to Ross' failed speculative developments.\nIn 1909 it was renamed Carnegie. It has been suggested that this was done in an unsuccessful attempt to secure funds for a library from the philanthropist Andrew Carnegie but there is no contemporary evidence supporting this.\nIts postcode is 3163."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "carnegie",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6555,
+    "attempt": 6508,
+    "place_id": "gn-2206371",
+    "input": {
+      "place": {
+        "place_id": "gn-2206371",
+        "name": "Levin",
+        "country": "New Zealand",
+        "subdivision": "Manawatu-Wanganui",
+        "lat": -40.63333,
+        "lon": 175.275
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Levin, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Levin,_New_Zealand",
+          "text": "Levin (; Māori: Taitoko) is the largest town and seat of the Horowhenua District, in the Manawatū-Whanganui region of New Zealand's North Island. It is located east of Lake Horowhenua, around  95 km (59 mi) north of Wellington and 50 km (31 mi) southwest of Palmerston North.\nThe town has a population of 20,500  (June 2025), making it the 30th largest urban area in New Zealand, and third largest in Manawatū-Whanganui behind Palmerston North and Whanganui.\nLevin is a service centre for the surrounding rural area, and a centre for light manufacturing.\nTo the west of the main town lies Lake Horowhenua, which covers some 3.9 km2 (1.5 sq mi). It is currently undergoing regeneration."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "levin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6556,
+    "attempt": 6509,
+    "place_id": "gn-2271542",
+    "input": {
+      "place": {
+        "place_id": "gn-2271542",
+        "name": "Armação de Pêra",
+        "country": "Portugal",
+        "subdivision": "Faro",
+        "lat": 37.10256,
+        "lon": -8.35695
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Armação de Pêra",
+          "url": "https://en.wikipedia.org/wiki/Armação_de_Pêra",
+          "text": "Armação de Pêra is a town (vila) and Portuguese parish (freguesia) in the municipality of Silves. The population in 2011 was 4,867, in an area of 7.99 km2. The village used to be called Pêra de Baixo  or Lower Pêra to distinguish it from the present Pêra, which was then named Pêra de Cima or Upper Pêra.\nThe town (vila in Portuguese) of Armação de Pêra is a popular tourist center with fine beaches, hotels, cafés and restaurants. It is on a broad bay that stretches from Pont da Galé to Senhora da Rocha. Its beaches extend from Praia dos Pescadores or the Fishermen's Beach, to Salomão beach, including those of Maré Grande and Beijinhos.\nThe town is one of the last places in the region where fishing boats are launched from and recovered to the actual beach. There is no harbour."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "armacao de pera",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "armacao",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pera",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6557,
+    "attempt": 6510,
+    "place_id": "gn-2331158",
+    "input": {
+      "place": {
+        "place_id": "gn-2331158",
+        "name": "Makoko",
+        "country": "Nigeria",
+        "subdivision": "Lagos",
+        "lat": 6.49611,
+        "lon": 3.38778
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Makoko",
+          "url": "https://en.wikipedia.org/wiki/Makoko",
+          "text": "Makoko is an informal settlement across the 3rd Mainland Bridge located on the coast of mainland Lagos, Nigeria. A third of the community is built on stilts along the lagoon and the rest is on the land. The waterfront part of the community is largely harboured by the Egun people who migrated from Badagary and Republic of Benin and whose main occupation is fishing.\nMakoko comprises six individual villages, of which four are floating communities (Adogbo, Migbewhe, Oko Agbon and Yanshiwhe) and two are on land (Apollo and Sogunro). The state government of Lagos refers to the area as Makoko-Iwaya Waterfront.\nMakoko is sometimes referred to as the \"Venice of Africa\" owing to its waterways. Its population is considered to be 85,840; however, the area was not officially counted as part of the 2007 census and the population has been estimated to be much higher – as high as over a million in 2020. In July 2012, the Lagos State government ordered that some of the stilts beyond the power lines be brought down without proper notice. This led to the destruction of several stilts on the Iwaya/Makoko waterfront and many families were rendered homeless."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "makoko",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6558,
+    "attempt": 6511,
+    "place_id": "gn-2464704",
+    "input": {
+      "place": {
+        "place_id": "gn-2464704",
+        "name": "Testour",
+        "country": "Tunisia",
+        "subdivision": "Béja Governorate",
+        "lat": 36.5513,
+        "lon": 9.44307
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Testour",
+          "url": "https://en.wikipedia.org/wiki/Testour",
+          "text": "Testour (Arabic: تستور ) is a town located in the north of Tunisia. The town is perched on the hills of Medjerda Valley, 20 km (12 mi) south-west of Medjez-el-Bab, the crossroads between Tunis, Béja, and the north of Tunisia.  It was known during the Roman period, as Tichilla, which means the green grass as it is situated in the mouth of Siliana valley. It was rebuilt in the 1500s by Muslim and Jewish refugees from Andalusia who gave it a distinctive character in building and layout. Today it is a popular pilgrimage for Jews who visit Rabbi Fraji Chawat's tomb.\nThe city host an international festival of Malouf and traditional Maghrebi music since 1967."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "testour",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6559,
+    "attempt": 6512,
+    "place_id": "gn-2633655",
+    "input": {
+      "place": {
+        "place_id": "gn-2633655",
+        "name": "Woodford Green",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.60938,
+        "lon": 0.02329
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodford Green",
+          "url": "https://en.wikipedia.org/wiki/Woodford_Green",
+          "text": "Woodford Green is an affluent area of Woodford in East London, England, within the London Borough of Redbridge. It adjoins Buckhurst Hill to the north, Woodford Bridge to the east, South Woodford to the south, and Chingford to the west. Epping Forest runs through Woodford Green in the west of the area, 9.4 miles (15.1 km) north-east of Charing Cross.\nIt was a hamlet in the ancient parish of Woodford, in the historic county of Essex, becoming an urban district in 1894. For administrative purposes, this merged with the Wanstead Urban District to form the Wanstead and Woodford Urban District in 1934. In 1965, the urban district became part of the London Borough of Redbridge."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "woodford green",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "woodford",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "green",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6560,
+    "attempt": 6513,
+    "place_id": "gn-2633982",
+    "input": {
+      "place": {
+        "place_id": "gn-2633982",
+        "name": "Wick",
+        "country": "United Kingdom",
+        "subdivision": "Scotland",
+        "lat": 58.43906,
+        "lon": -3.09424
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wick, Caithness",
+          "url": "https://en.wikipedia.org/wiki/Wick,_Caithness",
+          "text": "Wick (Scottish Gaelic: Inbhir Ùige [ˈinivɪɾʲˈuːkʲə]; Scots: Week) is a town and royal burgh in Caithness, in the far north of Scotland. The town straddles the River Wick and extends along both sides of Wick Bay. \"Wick Locality\" had a population of 6,913 at the time of the 2022 census, a decrease from 2011.\nPulteneytown, which was developed on the south side of the river by the British Fisheries Society during the 19th century, was officially merged into the burgh in 1902.\nElzy was described as on the coast a couple of miles east of Wick in 1836.\nThe town is on the main road (the A99–A9 road) linking John o' Groats with southern Britain. The Far North railway line links Wick railway station with southern Scotland and with Thurso, the other burgh of Caithness. Wick Airport is on Wick's northern outskirts and serves as a base for private helicopter flights to offshore wind and oil projects, as well as scheduled commercial flights to Aberdeen.\nThe main offices of The John O'Groat Journal and The Caithness Courier are located in Wick, as are Caithness General Hospital (run by NHS Highland), the Wick Carnegie Library and local offices of the Highland Council. Wick Sheriff Court is one of 16 sheriff courts serving the sheriffdom of Grampian, Highland and Islands."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 218
+    },
+    "banned_terms": [
+      {
+        "term": "wick",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6561,
+    "attempt": 6514,
+    "place_id": "gn-2634103",
+    "input": {
+      "place": {
+        "place_id": "gn-2634103",
+        "name": "Whitefield",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.55,
+        "lon": -2.3
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Whitefield, Greater Manchester",
+          "url": "https://en.wikipedia.org/wiki/Whitefield,_Greater_Manchester",
+          "text": "Whitefield is a town in the Metropolitan Borough of Bury, Greater Manchester, England. It lies on undulating ground above the Irwell Valley, along the south bank of the River Irwell, 3 miles (4.8 km) southeast of Bury, and 5 miles (8.0 km) northwest of Manchester. Prestwich and the M60 motorway lie just to the south. In 2001 it had a population of 23,283.\nHistorically part of Lancashire, Whitefield was on the path of an ancient Roman road leading from Mamucium (Manchester) in the south to Bremetennacum (Ribchester) in the north. Throughout the Middle Ages, Whitefield was a division of the township of Pilkington, itself a part of the parish of Prestwich-cum-Oldham and hundred of Salford. Pilkington and Whitefield have historic associations with the Earls of Derby. Farming was the main industry of this rural area, with locals supplementing their incomes by hand-loom woollen weaving in the domestic system.\nThe urbanisation and development of Whitefield largely coincided with the Industrial Revolution. The name Whitefield is thought to derive from the medieval bleachfields used by Flemish settlers to whiten their woven fabrics, or else from the wheat crop once cultivated in the district. The construction of a major roads routed through the village facilitated Whitefield's expansion into a mill town by the mid-19th century. Whitefield became a local government district in 1866, and was governed by a local board of health until 1894, when the area of the local board became an urban district."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 242
+    },
+    "banned_terms": [
+      {
+        "term": "whitefield",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6562,
+    "attempt": 6515,
+    "place_id": "gn-2637762",
+    "input": {
+      "place": {
+        "place_id": "gn-2637762",
+        "name": "Skegness",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.14362,
+        "lon": 0.3363
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Skegness",
+          "url": "https://en.wikipedia.org/wiki/Skegness",
+          "text": "Skegness ( skeg-NESS) is a seaside town and civil parish in the East Lindsey District of Lincolnshire, England. On the Lincolnshire coast of the North Sea, the town is 47 miles (76 km) east of Lincoln and 25 miles (40 km) north-east of Boston. With a population of 21,128 as of 2021, it is the largest settlement in East Lindsey. It incorporates Winthorpe and Seacroft, and forms a larger built-up area with the resorts of Ingoldmells and Chapel St Leonards to the north. The town is on the A52 and A158 roads, connecting it with Boston and the East Midlands, and Lincoln respectively. Skegness railway station is on the Nottingham to Skegness (via Grantham) line.\nThe original Skegness was situated farther east at the mouth of the Wash. Its Norse name refers to a headland which sat near the settlement. By the 14th century, it was a locally important port for coastal trade. The natural sea defences which protected the harbour eroded in the later Middle Ages, and it was lost to the sea after a storm in the 1520s. Rebuilt along the new shoreline, early modern Skegness was a small fishing and farming village, but from the late 18th century members of the local gentry visited for holidays. The arrival of the railways in 1873 transformed it into a popular seaside resort. This was the intention of The 9th Earl of Scarbrough, who owned most of the land in the vicinity; he built the infrastructure of the town and laid out plots, which he leased to speculative developers. This new Skegness quickly became a popular destination for holiday-makers and day trippers from the East Midlands factory towns. By the interwar years the town was established as one of the most popular seaside resorts in Britain. The layout of the modern seafront dates to this time and holiday camps were built around the town, including the first Butlin's holiday resort which opened in Ingoldmells in 1936.\nThe package holiday abroad became an increasingly popular and affordable option for many British holiday-makers during the 1970s; this trend combined with declining industrial employment in the East Midlands to harm Skegness's visitor economy in the late 20th century. Nevertheless, the resort retains a loyal visitor base. Tourism increased following the recession of 2007–2009 owing to the resort's affordability. In 2011, the town was England's fourth most popular holiday destination for UK residents, and in 2015 it received over 1.4 million visitors. It has a reputation as a traditional English seaside resort owing to its long, sandy beach and seafront attractions which include amusement arcades, eateries, Botton's fairground, the pier, nightclubs and bars. Other visitor attractions include Natureland Seal Sanctuary, a museum, an aquarium, a heritage railway, an annual carnival, a yearly arts festival, and Gibraltar Point nature reserve to the south of the town.\nDespite the arrival of several manufacturing firms since the 1950s and Skegness's prominence as a local commercial centre, the tourism industry remains very important for the economy and employment but the tourism service economy's low wages and seasonal nature, along with the town's aging population, have contributed towards high levels of relative deprivation. Poor transport and communication links are barriers to economic diversification. Residents are served by five state primary schools and a preparatory school, two state secondary schools (one of which is selective), several colleges, a community hospital, several churches and two local newspapers. The town has a police station, a magistrates' court and a lifeboat station."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 579
+    },
+    "banned_terms": [
+      {
+        "term": "skegness",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6563,
+    "attempt": 6516,
+    "place_id": "gn-2638039",
+    "input": {
+      "place": {
+        "place_id": "gn-2638039",
+        "name": "Shepperton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.39546,
+        "lon": -0.44889
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shepperton",
+          "url": "https://en.wikipedia.org/wiki/Shepperton",
+          "text": "Shepperton is a village in the Spelthorne district, in north Surrey, England, around 15 mi (24 km) south west of central London. The settlement is on the north bank of the River Thames, between the towns of Chertsey and Sunbury-on-Thames. The village is mentioned in a document of 959 AD and in Domesday Book.\nIn the 19th century, resident writers and poets included Rider Haggard, Thomas Love Peacock, George Meredith, and Percy Bysshe Shelley, who were attracted by the proximity of the River Thames. The river was painted at Walton Bridge in 1754 by Canaletto and in 1805 by Turner. Shepperton Lock and nearby Sunbury Lock were built in the 1810s, to facilitate river navigation.\nUrbanisation began in the latter part of the 19th century, with the construction in 1864 of the Shepperton Branch Line, which was sponsored by William Schaw Lindsay, the owner of Shepperton Manor. Its population rose from 1,810 residents in the early 20th century to a little short of 10,000 in 2011. Lindsay had hoped to extend the railway via Chertsey to connect to the South Western Main Line, however the village station remains a terminus. The rise in population and passing trade led to small businesses lining most of its high street by the end of the 20th century.\nShepperton Film Studios is in the neighbouring village of Littleton, approximately 1 mi (2 km) to the north. The Swan Sanctuary and two SSSIs, one of which is managed by Surrey Wildlife Trust, are nearby."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 249
+    },
+    "banned_terms": [
+      {
+        "term": "shepperton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6564,
+    "attempt": 6517,
+    "place_id": "gn-2642450",
+    "input": {
+      "place": {
+        "place_id": "gn-2642450",
+        "name": "Minehead",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.20452,
+        "lon": -3.48284
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Minehead",
+          "url": "https://en.wikipedia.org/wiki/Minehead",
+          "text": "Minehead is a coastal town and civil parish in Somerset, England. It lies on the south bank of the Bristol Channel, 21 miles (34 km) north-west of the county town of Taunton, 12 miles (19 km) from the boundary with the county of Devon and close to the Exmoor National Park. The parish includes Alcombe and Woodcombe, suburban villages which have been subsumed into Minehead. At the 2021 census, the parish had a population of 11,752.\nThere was a small port at Minehead by 1380, which grew into a major trading centre during the medieval period. Most trade transferred to larger ports during the 20th century, but pleasure steamers continued to call at the port. Major rebuilding took place in the Lower or Middle town area following a fire in 1791. The fortunes of the town revived with the growth in sea bathing, and by 1851 was becoming a retirement centre. There was a marked increase in building during the early years of the 20th century, which resulted in the wide main shopping avenue and adjacent roads with Edwardian-style architecture. The town is the home of a Butlins Holiday Park, which increases the seasonal tourist population by several thousand.\nThere are a variety of schools and religious, cultural and sporting facilities including sailing, windsurfing and golf. An ancient local tradition involves the Hobby Horse, which takes to the streets for four days on the eve of the first of May each year, with accompanying musicians and rival horses. The town is the starting point of the South West Coast Path National Trail, the nation's longest long-distance countryside walking trail. The Minehead Railway, which opened in 1874 and closed in 1971, has since been reopened as the West Somerset Railway."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 289
+    },
+    "banned_terms": [
+      {
+        "term": "minehead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6565,
+    "attempt": 6518,
+    "place_id": "gn-2646542",
+    "input": {
+      "place": {
+        "place_id": "gn-2646542",
+        "name": "Horwich",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.60126,
+        "lon": -2.54975
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Horwich",
+          "url": "https://en.wikipedia.org/wiki/Horwich",
+          "text": "Horwich ( HORR-itch) is a town and civil parish in the Metropolitan Borough of Bolton, Greater Manchester, England, within the historic county boundaries of Lancashire. It is 5.8 miles (9.3 km) northwest of Bolton Town Centre, 5.3 miles (8.5 km) southeast of Chorley and 15 miles (24 km) northwest of Manchester. It lies at the southern edge of the West Pennine Moors with the M61 motorway passing close to the south and west. At the 2011 Census, Horwich had a population of 20,067.\nHorwich emerged in the Middle Ages as a hunting chase. Streams flowing from the moors were harnessed to provide power for bleachworks and other industry at the start of the Industrial Revolution. The textile industry became a major employer and after 1884 the construction of the railway works caused the population of the town to increase dramatically. The old industries have closed and urban regeneration has been led by out of town developments, particularly at Middlebrook, which, since 1997 has been the base of Bolton Wanderers football club, who play at the University of Bolton Stadium, having moved from Burnden Park near Bolton town centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "horwich",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6566,
+    "attempt": 6519,
+    "place_id": "gn-2654380",
+    "input": {
+      "place": {
+        "place_id": "gn-2654380",
+        "name": "Bude",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.82435,
+        "lon": -4.5413
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bude",
+          "url": "https://en.wikipedia.org/wiki/Bude",
+          "text": "Bude (, locally /buːd/ or /bɛwd/; Cornish Standard Written Form: Porthbud [pɔɹθbyːd] ) is a seaside town in north Cornwall, England, in the civil parish of Bude-Stratton and at the mouth of the River Neet (also known locally as the River Strat). It was sometimes formerly known as Bude Haven. \nIt lies southwest of Stratton, south of Flexbury and Poughill, and north of Widemouth Bay, located along the A3073 road off the A39. Bude is twinned with Ergué-Gabéric in Brittany, France. Bude's coast faces Bude Bay in the Celtic Sea, part of the Atlantic Ocean. At the 2021 census, the built-up area as defined by the Office of National Statistics had a population of 7,350.\nIts earlier importance was as a harbour, and then a source of sea sand useful for improving the inland soil. This was transported on the Bude Canal. The Victorians favoured it as a seaside resort. With new rail links, it became a popular seaside destination in the 20th century. Bradshaw's Guide of 1866, Section 2, described Bude as \"a small port and picturesque village in the north-eastern extremity of Cornwall\". It described the town as having the dignity of a fashionable marine resort with excellent facilities for bathers. The harbour bed consists of fine bright yellow sand consisting of small shells. \"The sea view is of a striking, bold and sublime description – the rocks rising on every side to lofty broken elevations.\" It also describes Bude as a romantic retreat."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 246
+    },
+    "banned_terms": [
+      {
+        "term": "bude",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6567,
+    "attempt": 6520,
+    "place_id": "gn-2654532",
+    "input": {
+      "place": {
+        "place_id": "gn-2654532",
+        "name": "Brough",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.72861,
+        "lon": -0.57215
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Brough, East Riding of Yorkshire",
+          "url": "https://en.wikipedia.org/wiki/Brough,_East_Riding_of_Yorkshire",
+          "text": "Brough ( BRUF, locally ) is a town in the East Riding of Yorkshire, England. It is part of the civil parish of Elloughton-cum-Brough with the neighbouring village of Elloughton. Brough is situated on the edge of the Yorkshire Wolds and the town serves as a gateway to the rolling hills of the Wolds. The Yorkshire Wolds Way National Trail also passes by the eastern end of Brough. At the 2021 census, Brough had a population of 13,331.\nBrough has a long association with BAE Systems. Brough has been recognised as one of the most desirable and affluent places to live in Yorkshire, with a rising affluent population and a growing reputation for prestige, quality of life, and thriving communities such as Elloughton-cum-Brough In Bloom."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 115,
+      "fullExtractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "brough",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

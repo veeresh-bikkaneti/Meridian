@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 507,
+    "attempt": 501,
+    "place_id": "gn-610529",
+    "input": {
+      "place": {
+        "place_id": "gn-610529",
+        "name": "Atyrau",
+        "country": "Kazakhstan",
+        "subdivision": "Atyrau Oblisi",
+        "lat": 47.1048,
+        "lon": 51.88427
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Atyrau",
+          "url": "https://en.wikipedia.org/wiki/Atyrau",
+          "text": "Atyrau (UK: , US: ; Kazakh: Атырау, pronounced [ɑtəˈrɑw] ; Russian: Атырау), known until 1991 as Guryev (Russian: Гурьев), is a city in Kazakhstan and the capital of Atyrau Region. Atyrau is a transcontinental city, at the mouth of the Ural River on the Caspian Sea, between Europe and Asia, 2,700 kilometres (1,700 miles) west of Almaty and 351 kilometres (218 miles) east of the Russian city of Astrakhan.\nAtyrau is famous for its oil and gas industries. It has a population of 355,117 as of 2020. It is predominantly made up of Kazakhs, the minorities being Russians, Koreans, Tatars and Uzbeks."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 102,
+      "fullExtractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "atyrau",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 508,
+    "attempt": 502,
+    "place_id": "gn-1255947",
+    "input": {
+      "place": {
+        "place_id": "gn-1255947",
+        "name": "Sivakasi",
+        "country": "India",
+        "subdivision": "Tamil Nadu",
+        "lat": 9.44999,
+        "lon": 77.79797
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sivakasi",
+          "url": "https://en.wikipedia.org/wiki/Sivakasi",
+          "text": "Sivakasi (also pronounced Shivakaashi) is a city in Virudhunagar District in the Indian state of Tamil Nadu. The city is known for firecrackers and match factories that produce 70% of the country's output. The printing industries in Sivakasi produce 30% of the total diaries produced in India. The industries in Sivakasi employ over 25,000 people and the estimated turnover of the firecracker, match making and printing industries in the city is around ₹20 billion (US$210 million). It is the largest city in Virudhunagar district.\nSivakasi was established in the 15th century during the reign of the Pandya king Harikesari Parakkirama Pandian. The city was a part of Madurai and has been ruled at various times by Later Pandyas, the Vijayanagar Empire, Madurai Nayaks, Chanda Sahib, the Carnatic kingdom and the British. A major riot against the British Raj took place in Sivakasi in 1899.\nSivakasi has a dry climate, making it suitable for dry crops like cotton, chilies and millets. Badhrkali Amman Temple is the most prominent landmark of Sivakasi, and the temple festivals constitute the major festivals of the city. AJ and Hatsun Indoor Stadium has a coaching centre for badminton and is the major sporting venue of the city. Sivakasi is a part of Sivakasi constituency and elects its member of legislative assembly every five years, and a part of the Virudhunagar constituency that elects its member of parliament. Sivakasi is locally administered by a municipal corporation which covers an area of 6.8 km2 (2.6 sq mi). Roadways are the major mode of transport, in addition to a railway which runs through the city. As of 2021, Sivakasi has an estimated population of 160,047."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 276
+    },
+    "banned_terms": [
+      {
+        "term": "sivakasi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 509,
+    "attempt": 503,
+    "place_id": "gn-1261848",
+    "input": {
+      "place": {
+        "place_id": "gn-1261848",
+        "name": "Narasaraopet",
+        "country": "India",
+        "subdivision": "Andhra Pradesh",
+        "lat": 16.23488,
+        "lon": 80.04927
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Narasaraopet",
+          "url": "https://en.wikipedia.org/wiki/Narasaraopet",
+          "text": "Narasaraopeta is a town and district headquarters of Palnadu District of the Indian state of Andhra Pradesh. The town is a municipality and mandal headquarters of Narasaraopet mandal and Headquarters of Narasaraopet revenue division. The town also is the seat of the court of Additional District Judge. Kotappakonda (Nallamala Forest region) in Narasaraopeta is famous for Kotappakonda Tirunalla and is considered a holy place. The town is also referred as the 'Gateway of Palnadu'. The main offices of Nagarjuna Sagar Jawahar Canal (N.S. Right Canal) Operation & Maintenance Lingamguntla Circle known as NSJC O&M Circle, Lingamguntla are located in this town."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "narasaraopet",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 510,
+    "attempt": 504,
+    "place_id": "gn-1266976",
+    "input": {
+      "place": {
+        "place_id": "gn-1266976",
+        "name": "Kharagpur",
+        "country": "India",
+        "subdivision": "West Bengal",
+        "lat": 22.33971,
+        "lon": 87.32501
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kharagpur",
+          "url": "https://en.wikipedia.org/wiki/Kharagpur",
+          "text": "Kharagpur (Bengali: [kʰɔɽɔɡɔpuɾ] ) is a semi-planned urban agglomeration and a major industrial city in the Paschim Medinipur district of West Bengal, India. It is the headquarters of the Kharagpur subdivision and the largest city of the district. It is located 120 km west of Kolkata. Kharagpur is home to IIT Kharagpur, the oldest and largest Indian Institute of Technology. It has the fourth longest railway platform in the world, with a length of 1,072 m (0.666 miles), after Hubbali, Gorakhpur and Kollam junctions. The Kharagpur Junction railway station is the headquarters of the Kharagpur Division of the South Eastern Railways."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "kharagpur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 511,
+    "attempt": 505,
+    "place_id": "gn-1641134",
+    "input": {
+      "place": {
+        "place_id": "gn-1641134",
+        "name": "Karawang",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.30525,
+        "lon": 107.3197
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Karawang",
+          "url": "https://en.wikipedia.org/wiki/Karawang",
+          "text": "Karawang (Kota Karawang or Karawang Kota) is the capital of the Karawang Regency of West Java, Indonesia. It is 32 miles east of Jakarta, and had a population of 307,880 at the 2020 Census, spread over two districts of the regency - West Karawang and East Karawang.  \nKarawang is known as a major rice production source in West Java.\nKarawang is also known for automobile manufacturing facilities, including Honda Prospect Motor and Toyota Motor Manufacturing Indonesia. Mitsubishi Motors Indonesia also operated a plant here from 1988 until 2015. 2025 CATL started the construction of their first Asian plant out of China."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "karawang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 512,
+    "attempt": 506,
+    "place_id": "gn-306571",
+    "input": {
+      "place": {
+        "place_id": "gn-306571",
+        "name": "Konya",
+        "country": "Türkiye",
+        "subdivision": "Konya",
+        "lat": 37.87135,
+        "lon": 32.48464
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Konya",
+          "url": "https://en.wikipedia.org/wiki/Konya",
+          "text": "Konya is a major city in central Turkey, on the southwestern edge of the Central Anatolian Plateau, and is the capital of Konya Province. During ancient history and into Seljuk times it was known as Iconium.  In 19th-century accounts of the city in English its name is usually spelt Konia or Koniah. In the Late Middle Ages, Konya was the capital of the Seljuk Turks' Sultanate of Rum, from where the sultans ruled over Anatolia. Today it is the spiritual centre of the Mevlevi Order, famous for its Whirling Dervishes.\nAs of 2024, the population of the Metropolitan Province was 2,330,024. 1,433,861 live in the three urban districts (Karatay, Selcuklu, Meram), making Konya the sixth most populous city in Turkey, and second most populous of the Central Anatolia Region, after Ankara. The city is served by TCDD high-speed train (YHT) services from Istanbul, Ankara and Karaman. The local airport (Konya Havalimanı, KYA) is served by frequent flights from Istanbul whereas flights to and from İzmir are offered several times a week."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "konya",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 513,
+    "attempt": 507,
+    "place_id": "gn-3612907",
+    "input": {
+      "place": {
+        "place_id": "gn-3612907",
+        "name": "Danlí",
+        "country": "Honduras",
+        "subdivision": "El Paraíso Department",
+        "lat": 14.03333,
+        "lon": -86.58333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Danlí, El Paraíso",
+          "url": "https://en.wikipedia.org/wiki/Danl%C3%AD,_El_Para%C3%ADso",
+          "text": "Danlí is a city and a municipality in Honduras. It is currently the fourth most populated municipality in Honduras, located approximately 92 kilometers southeast of Tegucigalpa, in the Honduran department of El Paraíso known for its production of cigars and corn (maize). The city is situated at an altitude of 814 meters (2,673 feet) above sea level and has a population of 80,200 (2023 calculation) The population of the municipality (2018) is 214,566 people which is composed of 105,929 men and 108,637 women.  With a population in the urban area of 85,075 people and in the rural area of 129,491 people."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "danli",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 514,
+    "attempt": 508,
+    "place_id": "gn-3979770",
+    "input": {
+      "place": {
+        "place_id": "gn-3979770",
+        "name": "Zapopan",
+        "country": "Mexico",
+        "subdivision": "Jalisco",
+        "lat": 20.72111,
+        "lon": -103.38742
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zapopan",
+          "url": "https://en.wikipedia.org/wiki/Zapopan",
+          "text": "Zapopan (Latin American Spanish pronunciation: [saˈpopan]) is a city and municipality located in the Mexican state of Jalisco. It is part of the Guadalajara Metropolitan Area. Zapopan is the most populous municipality in the state of Jalisco.\nZapopan is notable for the Basilica of Our Lady of Zapopan, which houses a 16th-century image of the Virgin Mary. The statue has been recognized by various popes and was visited by Pope John Paul II. The municipality is also home to the Centro Cultural Universitario as well as the Estadio Akron, C.D. Guadalajara's official stadium.\nThe name Zapopan means \"among the sapote trees\". It derives from the Nahuatl word tzapotl \"sapote\" with the addition of the locative suffix -pan. The municipality was historically known as 'ex Villa Maicera' (former corn village) due to its past prominence in corn production. The municipal seal, designed by José Trinidad Laris in 1941, commemorates the 400th anniversary of Zapopan's founding."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "zapopan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 515,
+    "attempt": 509,
+    "place_id": "gn-585915",
+    "input": {
+      "place": {
+        "place_id": "gn-585915",
+        "name": "Khirdalan",
+        "country": "Azerbaijan",
+        "subdivision": "Abşeron",
+        "lat": 40.44808,
+        "lon": 49.75502
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Khirdalan",
+          "url": "https://en.wikipedia.org/wiki/Khirdalan",
+          "text": "Khirdalan (Azerbaijani: Xırdalan) is a city, municipality, and the capital of the Absheron District of Azerbaijan. The city is home to the country's biggest brewery, Baltika-Baku, formerly known as Khyrdalan. Khirdalan gained city status on 29 November 2006 after its approval by the National Assembly of Azerbaijan. A monument to Egyptian president Hosni Mubarak was erected in 2007 in the city. Similarly, a statue of Heydar Aliyev was erected in Cairo in 2008. In the wake of the 2011 Egyptian protests, the Azerbaijani opposition, led by the Musavat Party, demanded the demolition of the statue, calling it a \"worship of idols\". On 8 June 2011, the statue was taken down following Mubarak's resignation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 101,
+      "fullExtractWords": 113
+    },
+    "banned_terms": [
+      {
+        "term": "khirdalan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 516,
+    "attempt": 510,
+    "place_id": "gn-1283582",
+    "input": {
+      "place": {
+        "place_id": "gn-1283582",
+        "name": "Biratnagar",
+        "country": "Nepal",
+        "subdivision": "Koshi",
+        "lat": 26.45505,
+        "lon": 87.27007
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Biratnagar",
+          "url": "https://en.wikipedia.org/wiki/Biratnagar",
+          "text": "Biratnagar (Nepali: विराटनगर) is the capital and largest & fastest growing city of the easternmost Koshi Province, Nepal. The city had a population of 244,750 at the 2021 census. It is also the headquarters of the district of Morang.\nBiratnagar was declared a metropolitan city on 22 May 2017 with the merger of additional wards from different local bodies. Based on the 2021 census, it is the sixth largest city of Nepal in terms of population.\nAs the home to Nepal's first large-scale industry, the Biratnagar Jute Mills, the city is also popularly known as the industrial capital of Nepal. The city has contributed actively to the Nepalese democracy movement by being the birthplace of five democratically elected prime ministers and that of an interim prime minister of Nepal. The latter claim is also evident from the fact that the first labor strike leading to the anti-Rana movement started from Biratnagar.\nModern-day Biratnagar serves as an entry point to eastern Nepal as well as north-eastern India. It is the second Nepalese city, after Janakpur, to have a connection with the Indian Railways and the city operates an integrated check post (ICP) on the Indian border. It is also the starting point of the Koshi highway, which forms one of the three crucial Nepalese north-south corridors that are designed to connect India and China via land."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 225
+    },
+    "banned_terms": [
+      {
+        "term": "biratnagar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 517,
+    "attempt": 511,
+    "place_id": "gn-1735079",
+    "input": {
+      "place": {
+        "place_id": "gn-1735079",
+        "name": "Bukit Mertajam",
+        "country": "Malaysia",
+        "subdivision": "Penang",
+        "lat": 5.36301,
+        "lon": 100.4667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bukit Mertajam",
+          "url": "https://en.wikipedia.org/wiki/Bukit_Mertajam",
+          "text": "Bukit Mertajam is a suburb of Seberang Perai in the Malaysian state of Penang. It also serves as the seat of the Central Seberang Perai District. As of 2020, Bukit Mertajam had a population of 19,433.\nWhilst founded in the 19th century as an agricultural area, Bukit Mertajam also evolved into a transportation hub, following the completion of a railway line towards Perai at the end of the century. To this day, its railway station remains a major Malayan Railway station within Seberang Perai.\nBukit Mertajam is also well known for its Catholic congregation, which is centred at the St. Anne's Church. The church is one of the focal locations within Southeast Asia for the annual Novena celebrations.\nIt is the birthplace of the 10th Prime Minister of Malaysia Anwar Ibrahim."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "bukit mertajam",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bukit",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mertajam",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 518,
+    "attempt": 512,
+    "place_id": "gn-1859884",
+    "input": {
+      "place": {
+        "place_id": "gn-1859884",
+        "name": "Kasukabe",
+        "country": "Japan",
+        "subdivision": "Saitama",
+        "lat": 35.98308,
+        "lon": 139.74966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kasukabe, Saitama",
+          "url": "https://en.wikipedia.org/wiki/Kasukabe,_Saitama",
+          "text": "Kasukabe (春日部市, Kasukabe-shi) is a city located in Saitama Prefecture, Japan. It was one of the special cities of Japan until their abolition in 2015. As of 1 February 2021, the city had an estimated population of 233,278 in 108,328 households and a population density of 3,500 inhabitants per square kilometre (9,100/sq mi). The total area of the city is 66.00 square kilometres (25.48 sq mi).   Kasukabe is famous for the production of kiri-tansu (桐箪笥), traditional tansu dressers made from paulownia wood. The cultural and economic value of the paulownia is reflected in its designation as the official town tree."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "kasukabe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 519,
+    "attempt": 513,
+    "place_id": "gn-1861450",
+    "input": {
+      "place": {
+        "place_id": "gn-1861450",
+        "name": "Ise",
+        "country": "Japan",
+        "subdivision": "Mie",
+        "lat": 34.48333,
+        "lon": 136.7
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ise, Mie",
+          "url": "https://en.wikipedia.org/wiki/Ise,_Mie",
+          "text": "Ise (伊勢市, Ise-shi; Japanese pronunciation: [iꜜ.se, i.seꜜ.ɕi]), formerly called Ujiyamada (宇治山田), is a city in central Mie Prefecture, on the island of Honshū, Japan.  Ise is home to Ise Grand Shrine, the most sacred Shintō shrine in Japan.  The city has a long-standing title – Shinto (神都) – that roughly means \"the Holy City\", and literally means \"the Capital of the Kami\".  As of 31 July 2021, the city had an estimated population of 123,533 in 55,911 households and a population density of 590 people per km2. The total area of the city is 208.53 square kilometres (80.51 sq mi)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "ise",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 520,
+    "attempt": 514,
+    "place_id": "gn-2411989",
+    "input": {
+      "place": {
+        "place_id": "gn-2411989",
+        "name": "Serekunda",
+        "country": "Gambia",
+        "subdivision": "Banjul",
+        "lat": 13.43833,
+        "lon": -16.67806
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Serekunda",
+          "url": "https://en.wikipedia.org/wiki/Serekunda",
+          "text": "Serekunda (or Serrekunda; Wolof pronunciation: [sɛːɾɛkuⁿd̺ɐ]) is a major city and the largest metropolitan area in The Gambia. It is situated close to the Atlantic coast, on the Gambia River, near the capital, Banjul. Serekunda and Banjul form an urban area known as the Kombos, with about half of the population of the Gambia.\nSerekunda was named for Sayerr Jobe, who founded it in the 19th century. It merged with several villages into a larger urban area. Banjul's growth has been restricted due to being a small island, leading to Serekunda growing in population and businesses moving there from Banjul. Serekunda has been the site of political protests, and candidates from several parties have won seats. Since the 1980s, Serekunda has been a regional centre of the Tablighi Jamaat religious movement.\nSerekunda's market is the largest in the country. Along the coast, the Senegambia Strip is a popular place for foreign tourists, including sex tourists. Gambian wrestling is a popular sport, and the city has multiple football stadiums."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 168
+    },
+    "banned_terms": [
+      {
+        "term": "serekunda",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 521,
+    "attempt": 515,
+    "place_id": "gn-2440485",
+    "input": {
+      "place": {
+        "place_id": "gn-2440485",
+        "name": "Niamey",
+        "country": "Niger",
+        "subdivision": "Niamey",
+        "lat": 13.51366,
+        "lon": 2.1098
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Niamey",
+          "url": "https://en.wikipedia.org/wiki/Niamey",
+          "text": "Niamey is the capital and largest city of Niger. It is in the western part of the country, surrounded by the Tillabéri Region. Niamey lies on the Niger River, primarily situated on the river's left bank (east side). The capital of Niger since the colonial era, Niamey is an ethnically diverse city and the country's main economic centre.\nBefore the French developed it as a colonial centre, Niamey was the site of villages inhabited by Fula, Zarma, Maouri, and Songhai people. French expeditions first visited the location in the 1890s before Captain Henri Salaman established a military post in 1901. Niamey replaced Zinder as the territorial capital from 1903 to 1911 and again in 1926, after which large-scale development occurred. The first city plan in 1930 relocated neighbourhoods and enacted segregation of European and indigenous neighbourhoods, which remained separate until the 1950s. Niamey held Niger's first municipal elections in 1956, electing Djibo Bakary as the first mayor. In the decade following independence in 1960, urban planning introduced infrastructure such as the Kennedy Bridge, which connected the city to the right bank. In the 1970s and 1980s, Niamey's growth was fuelled by a boom in the national uranium industry and by droughts that brought rural migrants. Protests in Niamey contributed to the democratisation of Niger in the 1990s. This era saw an Islamic revival.\nNiamey has a dense city centre and includes some villages in the periphery. Due to rapid population growth, the city has many informal settlements, allocated semi-legally from chiefs of traditional governments, which are often excluded from public utilities. The city's economy is dominated by commerce, largely in the informal economy. The city also has extensive urban agriculture. Alongside the Zarma people, Niamey has a large Hausa population, who often seasonally migrate from rural Niger. Both groups' languages are used as lingua francas. Most of the population follows Islam—including the Tariqa movement of Sufism and the newer Izala movement of Salafism—with a Christian minority. Niamey is one of the hottest major cities in the world. It is prone to droughts and floods. The Niger River is the city's only permanent river and the sole source of its municipal water supply.\nNiamey comprises the Niamey Urban Community (French: Communauté Urbaine de Niamey, CUN), a first-level division of Niger, led by the Governor of Niamey. It is divided into five communes: Niamey I, II, III, and IV on the left bank, and V on the right bank. The city also has a municipal government, though it was dissolved in 2024. Transportation links include Diori Hamani International Airport, highways including RN1, and the unused Niamey railway station. Niamey is home to Abdou Moumouni University, Niger's most important university, and Niamey National Hospital, the country's largest referral hospital."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 456
+    },
+    "banned_terms": [
+      {
+        "term": "niamey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 522,
+    "attempt": 516,
+    "place_id": "gn-2633563",
+    "input": {
+      "place": {
+        "place_id": "gn-2633563",
+        "name": "Worcester",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.18935,
+        "lon": -2.22001
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Worcester, England",
+          "url": "https://en.wikipedia.org/wiki/Worcester,_England",
+          "text": "Worcester (  WUUST-ər) is a cathedral city in Worcestershire, England, of which it is the county town. It is 30 mi (48 km) south-west of Birmingham, 27 mi (43 km) north of Gloucester, 23 mi (37 km) north-east of Hereford, and 50.8 mi (81 km) north-west of Oxford. The city is situated on the River Severn, 1.5 mi (2.4 km) north of the confluence with the River Teme. The population was 103,872 in the 2021 census.\nThe city has been a centre of education since the foundation of Worcester Cathedral in 680. It is home to The University of Worcester. It has been home to The King's School, Worcester since 1541, and The Royal Grammar School, Worcester traditionally since 685, reputedly making the school the sixth oldest school in the world.\nWorcester is famous for Worcestershire Sauce, traditionally made by Lea & Perrins, as well as for its former manufacturing of porcelain by Royal Worcester Porcelain, and its significant 19th century trade of glove making. It is home to Berrow's Worcester Journal, established in 1690, and claimed as the world's oldest newspaper in continuous and current publication. \nThe composer Edward Elgar (1857–1934) grew up in the city and spent much of his life in nearby Malvern.  \nWorcester was nicknamed 'The Faithful City' due to its status as a Royalist stronghold in the English Civil War, where it was host to the final battle of the war when Oliver Cromwell's New Model Army defeated the future Charles II's Royalists. It is the beginning of Charles II's escape route, now named the Monarch's Way; a 625 mi (1,006 km) public footpath following the route."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 272
+    },
+    "banned_terms": [
+      {
+        "term": "worcester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 523,
+    "attempt": 517,
+    "place_id": "gn-3395981",
+    "input": {
+      "place": {
+        "place_id": "gn-3395981",
+        "name": "Maceió",
+        "country": "Brazil",
+        "subdivision": "Alagoas",
+        "lat": -9.66583,
+        "lon": -35.73528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Maceió",
+          "url": "https://en.wikipedia.org/wiki/Macei%C3%B3",
+          "text": "Maceió (Portuguese: [masejˈjɔ]), formerly anglicised as Maceio, is the capital and the largest city of the coastal state of Alagoas, Brazil. The name \"Maceió\" is a Tupi Indigenous term for a spring.\nMost maceiós flow to the sea, but some get trapped and form lakes (\"lagoas\", in Portuguese). There are numerous maceiós and lakes in this part of Brazil; because of this, the city was named Maceió, and the state, Alagoas. The new Zumbi dos Palmares International Airport connects Maceió with many Brazilian cities and also operates some international flights. The city is home to the Federal University of Alagoas."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "maceio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 524,
+    "attempt": 518,
+    "place_id": "gn-3458930",
+    "input": {
+      "place": {
+        "place_id": "gn-3458930",
+        "name": "Lages",
+        "country": "Brazil",
+        "subdivision": "Santa Catarina",
+        "lat": -27.81611,
+        "lon": -50.32611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lages",
+          "url": "https://en.wikipedia.org/wiki/Lages",
+          "text": "Lages is a Brazilian municipality located in the central part of the state of Santa Catarina, in the region known in Portuguese as \"Planalto Serrano\".\nIt is located in the mountain region of and is also the largest municipality of Santa Catarina. It is the main city of this region, and borders the towns of Otacílio Costa, São Joaquim, and Correia Pinto. The main course of urban water is Carahá River.\nLages hosts an annual festival called Festa do Pinhão, that is famous throughout the country.\nEconomically, the city is known for its strong cattle breeding and wood processing factories."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "lages",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 525,
+    "attempt": 519,
+    "place_id": "gn-5338122",
+    "input": {
+      "place": {
+        "place_id": "gn-5338122",
+        "name": "Clovis",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 36.82523,
+        "lon": -119.70292
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Clovis, California",
+          "url": "https://en.wikipedia.org/wiki/Clovis,_California",
+          "text": "Clovis is a city in Fresno County, California, United States. It was established in 1890 as a freight stop for the San Joaquin Valley Railroad by a group of Fresno businessmen and Michigan railroad speculator Marcus Pollasky. The railroad bought the land from two farmers and named the station after one of them, Clovis Cole. Pollasky then developed a town on the site, also named Clovis.\nThe completion of the lumber flume in 1894 led to the growth of the area around Clovis Station where a lumberyard and sawmill were built. Clovis was officially incorporated as a city in 1912. Today, Clovis celebrates its heritage as an American frontier town, known for its rodeo, Old Town Clovis historic district, and its motto \"Clovis – A Way of Life.\"\nIn the 2020 census, the population was 120,124. Clovis is located 6.5 miles (10.5 km) northeast of downtown Fresno, at an elevation of 361 feet (110 m)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 155
+    },
+    "banned_terms": [
+      {
+        "term": "clovis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 526,
+    "attempt": 520,
+    "place_id": "gn-706483",
+    "input": {
+      "place": {
+        "place_id": "gn-706483",
+        "name": "Kharkiv",
+        "country": "Ukraine",
+        "subdivision": "Kharkiv",
+        "lat": 49.98177,
+        "lon": 36.25475
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kharkiv",
+          "url": "https://en.wikipedia.org/wiki/Kharkiv",
+          "text": "Kharkiv, also known as Kharkov, is the second-largest city in Ukraine. Located in the northeast of the country, it is the largest city of the historic region of Sloboda Ukraine. Kharkiv is the administrative center of Kharkiv Oblast and Kharkiv Raion. Prior to the Russian invasion of Ukraine in early 2022, it had an estimated population of 1,421,125.\nFounded in 1654 as a Cossack fortress, by the late 19th century Kharkiv had developed within the Russian Empire as a major commercial and industrial center. From December 1919 to January 1934, Kharkiv was the capital of the Ukrainian Soviet Socialist Republic. During this period, migration from the distressed countryside and the relaxation of restrictions on Ukrainian cultural expression changed the city's ethnic complexion: Ukrainian replaced Russian as the largest recorded nationality, however Russian remained the dominant spoken language. The city was the focus of major battles in World War II, and under German occupation witnessed the systematic destruction of its substantial Jewish population. In the last decades of the Soviet Union, it reemerged as a major cultural, scientific, educational, transport, and industrial center. \nAmong the city's principal landmarks are the Annunciation and Dormition cathedrals, the Derzhprom building in Freedom Square, the Kharkiv Railway Station, the National University of Kharkiv, and the Kharkiv Tractor Factory (HTZ). Machinery, electronics and military hardware have been the leading industries.\nIn March and April 2014, the city saw both pro-Russia and pro-Ukrainian demonstrations, and an aborted attempt by Russian-backed separatists to seize control of the city and regional administration. Launching their full-scale invasion of Ukraine in February 2022, the Russians reached the outskirts of Kharkiv but after several weeks of fighting were forced back toward the international border. By February 2026, four years of continued Russian shelling, drone and missile attacks had reportedly destroyed a quarter of the city and driven much of public life underground."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": true,
+      "extractWords": 100,
+      "fullExtractWords": 310
+    },
+    "banned_terms": [
+      {
+        "term": "kharkiv",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

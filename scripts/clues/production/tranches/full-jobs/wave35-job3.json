@@ -1,0 +1,772 @@
+[
+  {
+    "rank": 6889,
+    "attempt": 6841,
+    "place_id": "gn-2785208",
+    "input": {
+      "place": {
+        "place_id": "gn-2785208",
+        "name": "Trooz",
+        "country": "Belgium",
+        "subdivision": "Wallonia",
+        "lat": 50.57026,
+        "lon": 5.69521
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trooz",
+          "url": "https://en.wikipedia.org/wiki/Trooz",
+          "text": "Trooz (French pronunciation: [tʁo]; Walloon: LiTrô) is a municipality of Wallonia located in the province of Liège, Belgium.\nOn 1 July 2012 Trooz had 8,432 registered inhabitants, of whom 4,199 were male and 4,233 female. The total area is 24.00 km2 which gives a population density of 351 inhabitants per km2.\nTrooz is situated on the Vesdre River, and is part of the GREOA (Groupement Régional Économique des vallées de l'Ourthe et de l'Amblève) regional grouping for economic purposes.\nThe municipality consists of the following districts: Forêt, Fraipont, Nessonvaux.\nThe town centre is the former hamlet of Trooz, in the district of Forêt, which gave its name to the municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "trooz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6890,
+    "attempt": 6842,
+    "place_id": "gn-2789519",
+    "input": {
+      "place": {
+        "place_id": "gn-2789519",
+        "name": "Oudenburg",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.18489,
+        "lon": 3.00035
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Oudenburg",
+          "url": "https://en.wikipedia.org/wiki/Oudenburg",
+          "text": "Oudenburg (Dutch pronunciation: [ˈʌudə(m)ˌbʏr(ə)x]; French: Audembourg [odɑ̃buʁ]; West Flemish: Oednburg [ˈʊdn̩bœrh]; Latin: Aldenburgensis) is a municipality and city located in the Belgian province of West Flanders. The municipality comprises the city of Oudenburg itself and the towns of Ettelgem, Roksem and Westkerke. On January 1, 2006 Oudenburg had a total population of 8,929. The total area is 35.38 km2 which gives a population density of 252 inhabitants per km2.\nOudenburg is situated on the location of a Roman castellum built in the 4th century, whose outline is still visible in the city's streetplan. Some of the stones of the former walls were later used in the construction of the abbey. The former abbey of St. Peter at Oudenburg, founded by Arnold of Soissons, was destroyed during the French Revolution."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "oudenburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6891,
+    "attempt": 6843,
+    "place_id": "gn-2795232",
+    "input": {
+      "place": {
+        "place_id": "gn-2795232",
+        "name": "Hove",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 51.15446,
+        "lon": 4.4707
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hove, Belgium",
+          "url": "https://en.wikipedia.org/wiki/Hove,_Belgium",
+          "text": "Hove (Dutch pronunciation: [ˈɦoːvə] ) is a municipality (gemeente) located in the Belgian province of Antwerp. The municipality only comprises the town of Hove proper. In 2021, Hove had a total population of 8,287. The total area is 5.99 km2.\nSituated roughly 9 kilometres (5.6 mi) from Antwerp, the provincial capital, Hove is renowned for its exclusivity, and it is often cited as one of Belgium's most affluent areas. In 2025, Hove ranked fourth on the list of most expensive municipalities in the Flemish Region (after Knokke-Heist, Sint-Martens-Latem, and Kraainem), and fourth on the list of Belgian municipalities ranked based on the average annual income of the population in 2021."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "hove",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6892,
+    "attempt": 6844,
+    "place_id": "gn-2953371",
+    "input": {
+      "place": {
+        "place_id": "gn-2953371",
+        "name": "Bad Reichenhall",
+        "country": "Germany",
+        "subdivision": "Bavaria",
+        "lat": 47.72947,
+        "lon": 12.87819
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bad Reichenhall",
+          "url": "https://en.wikipedia.org/wiki/Bad_Reichenhall",
+          "text": "Bad Reichenhall (German pronunciation: [baːt ʁaɪçn̩ˈhal] ; Central Bavarian: Reichahoi) is a spa town, and administrative center of the Berchtesgadener Land district in Upper Bavaria, Germany. It is located near Salzburg in a basin encircled by the Chiemgau Alps (including Mount Staufen (1,771 m) and Mount Zwiesel (1,781 m)). Together with other alpine towns, Bad Reichenhall engages in the Alpine Town of the Year Association for the implementation of the Alpine Convention to achieve sustainable development in the Alpine Arc. Bad Reichenhall was awarded Alpine Town of the Year in 2001.\nBad Reichenhall is a traditional center of salt production, obtained by evaporating water saturated with salt from brine ponds."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "bad reichenhall",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bad",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "reichenhall",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6893,
+    "attempt": 6845,
+    "place_id": "gn-2964528",
+    "input": {
+      "place": {
+        "place_id": "gn-2964528",
+        "name": "Dungarvan",
+        "country": "Ireland",
+        "subdivision": "Munster",
+        "lat": 52.08806,
+        "lon": -7.62528
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dungarvan",
+          "url": "https://en.wikipedia.org/wiki/Dungarvan",
+          "text": "Dungarvan (Irish: Dún Garbhán, meaning 'Garbhann's fort') is a coastal town and harbour in County Waterford, on the south-east coast of Ireland. Prior to the merger of Waterford County Council with Waterford City Council in 2014, Dungarvan was the county town and administrative centre of County Waterford. Waterford City and County Council retains administrative offices in the town. The town is in a townland and civil parish of the same name.\nDungarvan's Irish name means 'Garbhann's fort', referring to Saint Garbhann who founded a church there in the seventh century. The town had a population of 10,081 at the 2022 census, making it the third most populous in the county."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "dungarvan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6894,
+    "attempt": 6846,
+    "place_id": "gn-3069377",
+    "input": {
+      "place": {
+        "place_id": "gn-3069377",
+        "name": "Nový Bydžov",
+        "country": "Czechia",
+        "subdivision": "Hradec Králové Region",
+        "lat": 50.2415,
+        "lon": 15.49082
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nový Bydžov",
+          "url": "https://en.wikipedia.org/wiki/Nový_Bydžov",
+          "text": "Nový Bydžov (Czech pronunciation: [ˈnoviː ˈbɪdʒof]; German: Neubidschow) is a town in Hradec Králové District in the Hradec Králové Region of the Czech Republic. It has about 7,300 inhabitants. The town is located on the Cidlina River in the East Elbe Table.\nNový Bydžov has been a town since its founding at the beginning of the 14th century. The historic town centre is well preserved and is protected as an urban monument zone and the Vysočany part of Nový Bydžov is protected as a village monument zone. Among the main landmarks of the town are the Church of Saint Lawrence from the early 14th century and the neo-Gothic town hall."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "novy bydzov",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "novy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bydzov",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6895,
+    "attempt": 6847,
+    "place_id": "gn-3166236",
+    "input": {
+      "place": {
+        "place_id": "gn-3166236",
+        "name": "Spoleto",
+        "country": "Italy",
+        "subdivision": "Umbria",
+        "lat": 42.74071,
+        "lon": 12.73899
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Spoleto",
+          "url": "https://en.wikipedia.org/wiki/Spoleto",
+          "text": "Spoleto (, also US: , UK: , Italian: [spoˈleːto]; Latin: Spoletium) is an ancient city in the Italian province of Perugia in east-central Umbria on a foothill of the Apennines. \nIt is 20 km (12 mi) south of Trevi, 29 km (18 mi) north of Terni, 63 km (39 mi) southeast of Perugia; 212 km (132 mi) southeast of Florence; and 126 km (78 mi) north of Rome.\nFounded by the Umbri in the 10th century BC and later taken by the Etruscans, it became a Roman colony in 241 BC. \nUnder Lombard rule, Spoleto became the seat of the Duchy of Spoleto in 576, controlling much of central Italy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "spoleto",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6896,
+    "attempt": 6848,
+    "place_id": "gn-3167979",
+    "input": {
+      "place": {
+        "place_id": "gn-3167979",
+        "name": "San Mauro Pascoli",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.1089,
+        "lon": 12.41953
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Mauro Pascoli",
+          "url": "https://en.wikipedia.org/wiki/San_Mauro_Pascoli",
+          "text": "San Mauro Pascoli (Romagnol: San Mevar) is a comune (municipality) in the Province of Forlì-Cesena in the Italian region Emilia-Romagna, located about 100 kilometres (62 mi) southeast of Bologna and about 35 kilometres (22 mi) southeast of Forlì. It is at some 7.5 kilometres (4.7 mi) from the sea, the frazione of San Mauro Mare facing it.\nThe comune was called San Mauro di Romagna until 1932, when its name was changed in honor of the poet Giovanni Pascoli and his beloved sister Maria, who were born here. Famous Italian shoe designers Giuseppe Zanotti and Sergio Rossi were also born there. The commune contains the hamlet of San Mauro Mare."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "san mauro pascoli",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mauro",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pascoli",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6897,
+    "attempt": 6849,
+    "place_id": "gn-3169452",
+    "input": {
+      "place": {
+        "place_id": "gn-3169452",
+        "name": "Rezzato",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.51182,
+        "lon": 10.31731
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rezzato",
+          "url": "https://en.wikipedia.org/wiki/Rezzato",
+          "text": "Rezzato (Brescian: Rezat) is a comune in the province of Brescia, Lombardy. It is bounded by the comunes of Brescia, Botticino, Castenedolo, Mazzano and Nuvolera. It is located at the foot of the Alps and a few kilometres from Lake Garda. It is the most populous city east of Brescia.\nOfficially founded on 12 March 1299, Rezzato has been an important religious and administrative centre since the Middle Ages. The settlement has played a significant role in Italian history, notably during Second Italian War of Independence when the Austrians led by Field Marshal Karl von Urban defeated the Sardinians commanded by Giuseppe Garibaldi in the famous Battle of Treponti (1859). After absorbing the nearby settlement of Virle Treponti in 1928, during World War II – as many cities in northern Italy – Rezzato suffered extensive damage, leading to post-war rebuilding that significantly shaped its modern appearance.\nThe comune was eventually awarded city status in August 2022.\nThanks to its nearness to the small town of Botticino, Rezzato is commonly considered the town of marble working. The stonecutters from Rezzato have been famous since the 15th century for their creativity and their artistic way of working with Botticino marble. For this reason, Rezzato was chosen by the Commonwealth War Graves Commission as the place to produce some headstones for its military cemeteries.\nIn 1911, Rezzato's marble workers processed the stone used to build the Victor Emmanuel II Monument in Rome."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 239
+    },
+    "banned_terms": [
+      {
+        "term": "rezzato",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6898,
+    "attempt": 6850,
+    "place_id": "gn-322965",
+    "input": {
+      "place": {
+        "place_id": "gn-322965",
+        "name": "Avanos",
+        "country": "Türkiye",
+        "subdivision": "Nevşehir Province",
+        "lat": 38.715,
+        "lon": 34.84667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Avanos",
+          "url": "https://en.wikipedia.org/wiki/Avanos",
+          "text": "Avanos is a town in Nevşehir Province in the Cappadocia region of Central Anatolia, Turkey, located 18 km (11 mi) north of Nevşehir, the capital city of the province. It is the seat of Avanos District. Its population is 14,968 (2022). Historically known as Venessa, modern Avanos stands on the banks of the longest river of Turkey, the Kızılırmak (Red River), the ancient Halys.\nAvanos' most important industry is pottery production, an industry which probably dates back to Hittite times and which makes use of clay from the red silt of the Kızılırmak. The town is also a popular tourist destination because of its attractive old town and riverside location.\nLike the rest of Cappadocia, Avanos has a continental climate with very hot, dry summers, and cold, snowy winters."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "avanos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6899,
+    "attempt": 6851,
+    "place_id": "gn-323559",
+    "input": {
+      "place": {
+        "place_id": "gn-323559",
+        "name": "Arpaçbahşiş",
+        "country": "Türkiye",
+        "subdivision": "Mersin",
+        "lat": 36.64552,
+        "lon": 34.35077
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arpaçbahşiş",
+          "url": "https://en.wikipedia.org/wiki/Arpaçbahşiş",
+          "text": "Arpaçbahşiş is a neighborhood within the municipality and district of Erdemli, Mersin Province, Turkey, with a population of 7,285 as of 2022. Prior to the administrative reorganization of 2013, it was classified as a town (belde). Currently, Arpaçbahşiş serves as a summer resort area, primarily attracting Turkish tourists. Its coastal location offers a shoreline that draws seasonal visitors seeking a local retreat. In the wake of the earthquake in Kahramanmaraş, many individuals affected by the disaster have begun to reside in the area during the winter months, with some transforming their vacation properties into primary residences. Additionally, in recent years, there has been a notable increase in residents from Russia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "arpacbahsis",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6900,
+    "attempt": 6852,
+    "place_id": "gn-3668025",
+    "input": {
+      "place": {
+        "place_id": "gn-3668025",
+        "name": "Silvia",
+        "country": "Colombia",
+        "subdivision": "Cauca Department",
+        "lat": 2.61557,
+        "lon": -76.38261
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silvia, Cauca",
+          "url": "https://en.wikipedia.org/wiki/Silvia,_Cauca",
+          "text": "Silvia is a town and municipality in the Cauca Department, Colombia.  It is often visited as a weekend getaway by residents of Cali, which has a much hotter climate.  The area is populated by many people of Guambiano descent, who maintain their traditional ways of life in the area surrounding Silvia.\nThere are many fine bakeries and inexpensive restaurants in town, most within half a kilometer of the large public square.  In the last decade, the large trees that formerly grew on the square were removed due to damages their roots were causing, and the square was renovated to include more seating, and replanted with a greater variety of vegetation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "silvia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6901,
+    "attempt": 6853,
+    "place_id": "gn-4109785",
+    "input": {
+      "place": {
+        "place_id": "gn-4109785",
+        "name": "El Dorado",
+        "country": "United States",
+        "subdivision": "Arkansas",
+        "lat": 33.20763,
+        "lon": -92.66627
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "El Dorado, Arkansas",
+          "url": "https://en.wikipedia.org/wiki/El_Dorado,_Arkansas",
+          "text": "El Dorado (locally  el durr-AY-doh) is a city in and the county seat of Union County, on the southern border of Arkansas, United States. According to the 2020 census, the population of the city is 17,755. El Dorado's population has an African American majority.\nEl Dorado is headquarters of the Arkansas Oil and Gas Commission as well as Murphy USA, Deltic Timber Corporation and a DelekUS oil refinery. The city has a downtown arts district, the Murphy Arts District (MAD); a community college, South Arkansas College (SouthArk); and a multi-cultural arts center, South Arkansas Arts Center (SAAC). El Dorado is the population, cultural and business center of south central Arkansas.\nThe city was the heart of the 1920s oil boom in the area. During World War II, it became a center of the chemical industry, which still plays a part in the economy, as do oil and timber."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 148
+    },
+    "banned_terms": [
+      {
+        "term": "el dorado",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "dorado",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6902,
+    "attempt": 6854,
+    "place_id": "gn-4191124",
+    "input": {
+      "place": {
+        "place_id": "gn-4191124",
+        "name": "Decatur",
+        "country": "United States",
+        "subdivision": "Georgia",
+        "lat": 33.77483,
+        "lon": -84.29631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Decatur, Georgia",
+          "url": "https://en.wikipedia.org/wiki/Decatur,_Georgia",
+          "text": "Decatur () is a city in and the county seat of DeKalb County, Georgia, United States, part of the Atlanta metropolitan area. With a population of 24,928 in the 2020 census, the municipality is sometimes assumed to be larger since multiple ZIP Codes in unincorporated DeKalb County bear Decatur as the address.\nThe city is served by three MARTA rail stations (Decatur, East Lake, and Avondale). The city is located approximately five miles (eight kilometers) northeast of Downtown Atlanta and shares its western border with both the city of Atlanta (the Kirkwood and Lake Claire neighborhoods) and unincorporated DeKalb County. The Druid Hills neighborhood is to the northwest of Decatur."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "decatur",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6903,
+    "attempt": 6855,
+    "place_id": "gn-4562275",
+    "input": {
+      "place": {
+        "place_id": "gn-4562275",
+        "name": "Willow Street",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.97927,
+        "lon": -76.27635
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Willow Street, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Willow_Street,_Pennsylvania",
+          "text": "Willow Street is an unincorporated community and census-designated place (CDP) in Lancaster County, Pennsylvania, United States. The population was 7,578 at the 2010 census. In the early part of the 20th century, the main thoroughfare in town was lined with willow trees on both sides for the length of the town, hence the community's name. As time passed and the town grew, the road was widened and sidewalks were installed, which required the trees be removed. Only a few of the original trees remain to this day. One tall willow tree was situated behind Kendig Square Plaza, but it was downed during a wind storm during late February/early March 2018.\nIt is the location of the Hans Herr House, the oldest homestead in Lancaster County, and also the Martin Meylin Gunshop, where the long rifle was first made."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "willow street",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "willow",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "street",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6904,
+    "attempt": 6856,
+    "place_id": "gn-4940134",
+    "input": {
+      "place": {
+        "place_id": "gn-4940134",
+        "name": "Hull",
+        "country": "United States",
+        "subdivision": "Massachusetts",
+        "lat": 42.30204,
+        "lon": -70.90782
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hull, Massachusetts",
+          "url": "https://en.wikipedia.org/wiki/Hull,_Massachusetts",
+          "text": "Hull is a town in Plymouth County, Massachusetts, United States, located on a peninsula at the southern edge of Boston Harbor. Its population was 10,072 at the 2020 census.  Hull is the smallest town by land area in Plymouth County and the eleventh smallest in the state.  However, its population density is nearly four times that of Massachusetts as a whole.\nHull is home to the popular resort community of Nantasket Beach and has been the summer home to several luminaries throughout the years, including Calvin Coolidge and former Boston mayor John F. Fitzgerald (also known as \"Honey Fitz\"), the father of Rose Kennedy and grandfather of John F. Kennedy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "hull",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6905,
+    "attempt": 6857,
+    "place_id": "gn-5108707",
+    "input": {
+      "place": {
+        "place_id": "gn-5108707",
+        "name": "Bellmore",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.66871,
+        "lon": -73.52707
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bellmore, New York",
+          "url": "https://en.wikipedia.org/wiki/Bellmore,_New_York",
+          "text": "Bellmore is a hamlet and census-designated place (CDP) in Nassau County, New York, United States. The population according to the 2024 census is 15,937. Bellmore is located on the south shore of Long Island 6 miles (10 km) north of Jones Beach State Park, approximately 27 miles (43 km) east of Manhattan, and 10 miles (16 km) east of the Nassau-Queens (New York City) Line.\nBellmore, along with North Bellmore, are referred to collectively as \"The Bellmores\". The part of the latter area south of Merrick Road (or possibly south of Sunrise Highway) is sometimes called \"South Bellmore\".\nBellmore serves as a suburb of New York City on Long Island. Penn Station in Manhattan is typically a 45-minute direct ride from the station on the Long Island Rail Road's Babylon Branch. John F. Kennedy Int'l Airport is located within 15 miles (24 km) of Bellmore, making it convenient for travelers. Major thoroughfares that wind through the suburb include Sunrise Highway, Southern State Parkway, Merrick Road, Bellmore Avenue, Jerusalem Avenue, and Newbridge Road."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 172
+    },
+    "banned_terms": [
+      {
+        "term": "bellmore",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6906,
+    "attempt": 6858,
+    "place_id": "gn-5124087",
+    "input": {
+      "place": {
+        "place_id": "gn-5124087",
+        "name": "Lawrence",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.61566,
+        "lon": -73.72958
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lawrence, Nassau County, New York",
+          "url": "https://en.wikipedia.org/wiki/Lawrence,_Nassau_County,_New_York",
+          "text": "Lawrence is a village within the Town of Hempstead in Nassau County, on Long Island, in New York, United States. It is located adjacent to the border with the New York City borough of Queens to the west and is near the Reynolds Channel to the south. The population was 6,809 at the time of the 2020 census.\nLawrence is one of the \"Five Towns,\" which consist of the villages of Lawrence and Cedarhurst, the hamlets (unincorporated areas) of Woodmere and Inwood, and \"The Hewletts\", which is made up of the hamlet of Hewlett together with the villages of Hewlett Bay Park, Hewlett Harbor and Hewlett Neck, along with Woodsburgh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 110
+    },
+    "banned_terms": [
+      {
+        "term": "lawrence",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6907,
+    "attempt": 6859,
+    "place_id": "gn-5262649",
+    "input": {
+      "place": {
+        "place_id": "gn-5262649",
+        "name": "Mequon",
+        "country": "United States",
+        "subdivision": "Wisconsin",
+        "lat": 43.21555,
+        "lon": -88.03001
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mequon, Wisconsin",
+          "url": "https://en.wikipedia.org/wiki/Mequon,_Wisconsin",
+          "text": "Mequon () is the most populous city in Ozaukee County, Wisconsin, United States. The population was 25,142 at the 2020 census. Located on Lake Michigan's western shore with significant commercial developments along Interstate 43, the community is a suburb in the Milwaukee metropolitan area. Despite being the third-largest city in Wisconsin by land area, approximately half of Mequon's land is undeveloped, and agriculture plays a significant role in the local economy.\nWhen the first white settlers arrived in the 1830s, the Mequon area was inhabited by the Menominee, Potawatomi, and Sauk people. In the 1840s, German immigrants settled in the community, building farms and hydropowered mills along the Milwaukee River. Much of the community remained rural, while Thiensville developed as a market town along the local railway, providing services to the farmers. Thiensville incorporated as a village in 1910. Mequon remained rural in the early 20th century but experienced significant population growth during the suburbanization that followed World War II. The community incorporated as a city in 1957 to avoid annexation by the City of Milwaukee. The City of Mequon completely surrounds Thiensville, leading some residents to call Thiensville \"Mequon's donut hole.\" The two municipalities have a close relationship, with a shared chamber of commerce, library, and school district.\nLutheranism has played a significant role in Mequon since the community's early years. Some of the first German settlers were Old Lutherans who founded the Freistadt community—now a neighborhood in western Mequon—in 1839 and went on to form the first Lutheran congregation in Wisconsin. In the 21st century, there are more Lutheran churches in Mequon than churches of any other single denomination. Additionally, Mequon is home to two private Lutheran post-secondary institutions: Concordia University Wisconsin and Wisconsin Lutheran Seminary. In addition to having other Christian denominations, Mequon is also the northernmost of Milwaukee's suburbs to have a sizable Jewish community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 309
+    },
+    "banned_terms": [
+      {
+        "term": "mequon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6908,
+    "attempt": 6860,
+    "place_id": "gn-5379698",
+    "input": {
+      "place": {
+        "place_id": "gn-5379698",
+        "name": "Orland",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 39.74738,
+        "lon": -122.19637
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orland, California",
+          "url": "https://en.wikipedia.org/wiki/Orland,_California",
+          "text": "Orland is a city in Glenn County, California, United States. The population was 8,298 at the 2020 census, up from 7,291 at the 2010 census, making Orland the most populous city in Glenn County. Orland is located 16 miles (26 km) north of Willows, at an elevation of 259 feet (79 m). Interstate 5, (north–south) passes west of the downtown area while State Route 32 (east–west) passes through downtown.\nA member of Bee City USA, Orland is the \"Queen Bee Capital of North America\" owing to its robust local and regional queen bee production as part of the county's agricultural products. It is home of the Honeybee Discovery Center museum. Annual events include the Queen Bee Festival in June and OktoBEEfest in October."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 110,
+      "fullExtractWords": 123
+    },
+    "banned_terms": [
+      {
+        "term": "orland",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

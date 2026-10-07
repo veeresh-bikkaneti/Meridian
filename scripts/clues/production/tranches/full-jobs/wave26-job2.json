@@ -1,0 +1,787 @@
+[
+  {
+    "rank": 5060,
+    "attempt": 5021,
+    "place_id": "gn-6082322",
+    "input": {
+      "place": {
+        "place_id": "gn-6082322",
+        "name": "Mount Pleasant",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.26667,
+        "lon": -123.1
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mount Pleasant, Vancouver",
+          "url": "https://en.wikipedia.org/wiki/Mount_Pleasant,_Vancouver",
+          "text": "Mount Pleasant is a neighbourhood in the city of Vancouver, British Columbia, Canada, stretching from Cambie Street to Clark Drive and from Great Northern Way and 2nd, to 16th and Kingsway. The neighbourhood, once characterized as working-class, has undergone a process of gentrification since the early 1990s, including the area around the Main Street and Broadway intersection.\nThe neighbourhood is served by the Canada Line, an extension of SkyTrain from Downtown Vancouver to Vancouver International Airport.\nIt is home to a number of artists and writers, including CBC personalities Ian Hanomansing and Tod Maffin, The Tyee editor David Beers and documentary filmmaker Peter W. Klein."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "mount pleasant",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mount",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "pleasant",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5061,
+    "attempt": 5022,
+    "place_id": "gn-6245055",
+    "input": {
+      "place": {
+        "place_id": "gn-6245055",
+        "name": "Te Puke",
+        "country": "New Zealand",
+        "subdivision": "Bay of Plenty",
+        "lat": -37.77822,
+        "lon": 176.33021
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Te Puke",
+          "url": "https://en.wikipedia.org/wiki/Te_Puke",
+          "text": "Te Puke  ( teh-PUU-keh) is a town located 18 kilometres (11 miles) southeast of Tauranga in the Western Bay of Plenty of New Zealand. It is particularly well known for the cultivation of kiwifruit.\nTe Puke is close to Tauranga and Maketu, which are both coastal towns/cities, as well as the small townships of Waitangi, Manoeka, Pongakawa, and Paengaroa. The Tauranga Eastern Link, completed in 2015, moved State Highway 2 away from Te Puke and removed large volumes of traffic from its streets.\nThe town's name comes from the Māori language, which translates to the hill; it is on a hill near the Papamoa Hills."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 105
+    },
+    "banned_terms": [
+      {
+        "term": "te puke",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "te",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "puke",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5062,
+    "attempt": 5023,
+    "place_id": "gn-679011",
+    "input": {
+      "place": {
+        "place_id": "gn-679011",
+        "name": "Dragalina",
+        "country": "Romania",
+        "subdivision": "Călărași County",
+        "lat": 44.43333,
+        "lon": 27.31667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dragalina, Călărași",
+          "url": "https://en.wikipedia.org/wiki/Dragalina,_C%C4%83l%C4%83ra%C8%99i",
+          "text": "Dragalina is a commune in Călărași County, Muntenia, Romania, named after the Romanian general Ion Dragalina. It is composed of three villages: Constantin Brâncoveanu, Dragalina, and Drajna Nouă.\nThe commune is located in the northern part of the county, about 31 km (19 mi) from the county seat, Călărași, on the border with Ialomița County. The Ciulnița train station serves the CFR Main Line 800, which connects the national capital, Bucharest, with the Black Sea coast. The train station, built in 1886, is named after Ciulnița commune, which was the nearest locality at the time.\n\nAt the 2011 census, the population of Dragalina was 8,537. At the 2021 census, the population had decreased to 7,848."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 105,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "dragalina",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5063,
+    "attempt": 5024,
+    "place_id": "gn-1734409",
+    "input": {
+      "place": {
+        "place_id": "gn-1734409",
+        "name": "Bagan Serai",
+        "country": "Malaysia",
+        "subdivision": "Perak",
+        "lat": 5.0108,
+        "lon": 100.54101
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bagan Serai",
+          "url": "https://en.wikipedia.org/wiki/Bagan_Serai",
+          "text": "Bagan Serai is a mukim in Kerian District, Perak, Malaysia. It is located 52 km (32 mi) southeast of George Town, the capital city of the neighbouring state of Penang. As such, the town is also part of the George Town Conurbation, Malaysia's second largest metropolitan area, with the town's logistical needs being served by Penang's well-developed transportation infrastructure. There is the birthplace of the No.1 badminton player, Lee Chong Wei.\nBagan Serai is an important collecting and processing location for the paddy plantation of the Kerian scheme. Bagan Serai is also the name of the parliamentary constituency in which the town is located.\nThe word “Bagan” in Malay means a jetty or a place of landing for some business activities, and “Serai” means lemon grass, a herb often used in Malay food, which used to be mass-produced here.\nThrough the hearsay from old generations, Bagan Serai used to be a very busy pier for trading activities, because of the rivers that flow through this small town straight to the sea, making it a strategic location for trading activities and a suitable landing spot for goods.\nA slightly different version of how Bagan Serai got its name can be found on the website \"Glimpses\"."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 204
+    },
+    "banned_terms": [
+      {
+        "term": "bagan serai",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bagan",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "serai",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5064,
+    "attempt": 5025,
+    "place_id": "gn-2156927",
+    "input": {
+      "place": {
+        "place_id": "gn-2156927",
+        "name": "Moree",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -29.46278,
+        "lon": 149.84157
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Moree, New South Wales",
+          "url": "https://en.wikipedia.org/wiki/Moree,_New_South_Wales",
+          "text": "Moree ( MOOR-ee) is a town in Moree Plains Shire in northern New South Wales, Australia. It is located on the banks of the Mehi River, in the centre of the rich black-soil plains.  It is situated in the Moree Plains Shire. The Newell and Gwydir highways intersect at the town, which can also be  reached from Sydney by daily train and air services.\nMoree is a major agricultural centre, noted for its role in the Australian cotton-growing industry, which was established there in the early 1960s. It is also well known for artesian hot-spring baths that are renowned for their reputed healing qualities.\nAt the 2021 census, the town of Moree had a population of 7,070."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "moree",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5065,
+    "attempt": 5026,
+    "place_id": "gn-2164206",
+    "input": {
+      "place": {
+        "place_id": "gn-2164206",
+        "name": "Gunnedah",
+        "country": "Australia",
+        "subdivision": "New South Wales",
+        "lat": -30.98065,
+        "lon": 150.25838
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gunnedah",
+          "url": "https://en.wikipedia.org/wiki/Gunnedah",
+          "text": "Gunnedah () is a town in north-central New South Wales, Australia, and is the seat of the Gunnedah Shire local government area. In the 2021 census the town recorded a population of 8,338. Gunnedah is situated within the Liverpool Plains, a fertile agricultural region, with 80% of the surrounding shire area devoted to farming. The Namoi River flows west then north-west through the town providing water beneficial to agricultural operations in the area.\nThe Gunnedah area is a significant producer of cotton, coal, beef, lamb and pork, and cereal and oilseed grains. Gunnedah is also home to AgQuip, Australia's largest annual agricultural field day.\nGunnedah is located on the Oxley and Kamilaroi Highways providing convenient road links to much of the northern sector of the state including to the regional centre Tamworth, 75 kilometres (47 mi) distant. The town has a station on the Mungindi railway line and is served by the daily NSW TrainLink Xplorer passenger service to and from Sydney and Moree.\nIt claims the title of being the \"Koala Capital of World\", although recently there have been concerns over the health of the local koala population and the impacts of climate change on koala habitat."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 198
+    },
+    "banned_terms": [
+      {
+        "term": "gunnedah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5066,
+    "attempt": 5027,
+    "place_id": "gn-2525392",
+    "input": {
+      "place": {
+        "place_id": "gn-2525392",
+        "name": "Capaci",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 38.17107,
+        "lon": 13.2393
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Capaci",
+          "url": "https://en.wikipedia.org/wiki/Capaci",
+          "text": "Capaci (Italian pronunciation: [kaˈpaːtʃi]) is a town and comune in the Metropolitan City of Palermo in Sicily, Italy.\nIn 2011 the comune had a population of 11,045, with a density of 1,804.7 people per square kilometre.\nThe A29 autostrada running from Palermo to Punta Raisi Airport, and to the west and south-west of the island, passes through the commune. On 23 May 1992, this road was the scene of the assassination of anti-Mafia judge Giovanni Falcone and those with him, in an explosion known as the Capaci bombing. The site of the explosion is marked now by a memorial to those who were killed."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "capaci",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5067,
+    "attempt": 5028,
+    "place_id": "gn-2639664",
+    "input": {
+      "place": {
+        "place_id": "gn-2639664",
+        "name": "Ramsey",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.45058,
+        "lon": -0.10932
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ramsey, Cambridgeshire",
+          "url": "https://en.wikipedia.org/wiki/Ramsey,_Cambridgeshire",
+          "text": "Ramsey is a market town and civil parish in the Huntingdonshire district of Cambridgeshire, England. The town is about 9 miles (14 km) north of Huntingdon. Ramsey parish includes the settlements of Ramsey Forty Foot, Ramsey Heights, Ramsey Mereside, Ramsey Hollow and Ramsey St Mary's.\nThe town grew up around Ramsey Abbey, an important Benedictine monastery. In the order of precedence for abbots in Parliament, Ramsey was third after Glastonbury and St Albans.\nThe town manor is built on the site of (and using materials from) the ancient Abbey and is the seat of the Lords de Ramsey, major landowners in Lincolnshire and Cambridgeshire. The remains of the Abbey are now home to part of the town's secondary school. Abbey College, Ramsey resulted from the amalgamation of the previous two secondary schools, Ailwyn School and Ramsey Abbey School."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 138
+    },
+    "banned_terms": [
+      {
+        "term": "ramsey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5068,
+    "attempt": 5029,
+    "place_id": "gn-2652505",
+    "input": {
+      "place": {
+        "place_id": "gn-2652505",
+        "name": "Comber",
+        "country": "United Kingdom",
+        "subdivision": "Northern Ireland",
+        "lat": 54.54937,
+        "lon": -5.74379
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Comber",
+          "url": "https://en.wikipedia.org/wiki/Comber",
+          "text": "Comber (from Irish An Comar, meaning 'the confluence' , CUM-ber, locally cummer) is a historic market town in County Down, Northern Ireland. It lies 5 miles (8 km) south of Newtownards, at the northern end of Strangford Lough. It is situated in the townland of Town Parks, the civil parish of Comber and the historic barony of Castlereagh Lower. Comber is part of the Ards and North Down Borough. It is also known for Comber Whiskey which was last distilled in 1953. A notable native was Thomas Andrews, the designer of the RMS Titanic and was among the many who went down with her. Comber had a population of 9,529 people in the 2021 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "comber",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5069,
+    "attempt": 5030,
+    "place_id": "gn-2744129",
+    "input": {
+      "place": {
+        "place_id": "gn-2744129",
+        "name": "Yerseke",
+        "country": "Netherlands",
+        "subdivision": "Zeeland",
+        "lat": 51.4925,
+        "lon": 4.05
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Yerseke",
+          "url": "https://en.wikipedia.org/wiki/Yerseke",
+          "text": "Yerseke (Dutch: [ˈirsəkə], Zeeuws: [ˈisə]) is a village situated on the southern shore of the Oosterschelde (Eastern Scheldt) estuary in the Dutch province of Zeeland. A separate municipality until 1970, it today forms part of the municipality of Reimerswaal. As of 2010 Yerseke had a recorded population of 6,695 inhabitants, living in 2,680 households.\nThe fishing village is well known for its aquaculture. Tourists visit the oyster pits, harbors and museum of the town and fishing industry, as well as the annual celebration of the mussel harvest (Mosseldag) in August. The village furthermore plays host to the Royal Netherlands Institute for Sea Research (NIOZ)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "yerseke",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5070,
+    "attempt": 5031,
+    "place_id": "gn-2747169",
+    "input": {
+      "place": {
+        "place_id": "gn-2747169",
+        "name": "Sliedrecht",
+        "country": "Netherlands",
+        "subdivision": "South Holland",
+        "lat": 51.82083,
+        "lon": 4.77639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sliedrecht",
+          "url": "https://en.wikipedia.org/wiki/Sliedrecht",
+          "text": "Sliedrecht (Dutch pronunciation: [ˈslidrɛxt] ) is a town and municipality in the western Netherlands, in the province of South Holland. The municipality covers an area of 14.01 km2 (5.41 sq mi) of which 1.17 km2 (0.45 sq mi) is covered by water.\nSliedrecht is known for the many large dredging companies (including Boskalis and IHC Merwede) that come from it. The Dredging Festival takes place in Sliedrecht every two years. The first IKEA store in the Netherlands opened in Sliedrecht in 1978, but it closed in 2006. Sliedrecht is also the site of the Nationaal Baggermuseum (National Dredging Museum) - featuring dredging and salvage."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "sliedrecht",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5071,
+    "attempt": 5032,
+    "place_id": "gn-2876027",
+    "input": {
+      "place": {
+        "place_id": "gn-2876027",
+        "name": "Lollar",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 50.64652,
+        "lon": 8.70495
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lollar",
+          "url": "https://en.wikipedia.org/wiki/Lollar",
+          "text": "Lollar (German pronunciation: [ˈlɔlaʁ] ) is a town in the district of Gießen, in Hesse, in west-central Germany. It is situated on the river Lahn, 7 km north of Gießen. The biggest production site of Bosch Thermotechnology is located in Lollar.\nDuring World War II, in February 1945, the Germans established a Dulag transit camp for British and Commonwealth prisoners of war in the town, which was liberated by American troops on March 28, 1945.\nThe town is known for the  chapel from Lollar, one of the oldest churches in Hessen. It was deconstructed in the 1970s and rebuilt in an open-air museum Hessenpark. A water feature, the Keulerbachbrunnen now stands where the church was."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "lollar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5072,
+    "attempt": 5033,
+    "place_id": "gn-2964892",
+    "input": {
+      "place": {
+        "place_id": "gn-2964892",
+        "name": "Dalkey",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.27833,
+        "lon": -6.10028
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dalkey",
+          "url": "https://en.wikipedia.org/wiki/Dalkey",
+          "text": "Dalkey ( DAW-kee; Irish: Deilginis, meaning 'thorn island') is a suburban town in Dún Laoghaire–Rathdown county southeast of Dublin, Ireland. It was founded as a Viking settlement and became a port in the Middle Ages. According to chronicler John Clyn (c.1286–c.1349), it was one of the ports through which the plague entered Ireland in the mid-14th century. Dalkey lies within a townland and civil parish of the same name, in the barony of Rathdown.\nOne of Dublin's wealthiest districts, it has been home to writers, artists, and celebrities, including George Bernard Shaw, Jane Emily Herbert, Julius Olsson, Maeve Binchy, Robert Fisk, and Hugh Leonard."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "dalkey",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5073,
+    "attempt": 5034,
+    "place_id": "gn-2992581",
+    "input": {
+      "place": {
+        "place_id": "gn-2992581",
+        "name": "Montfort-sur-Meu",
+        "country": "France",
+        "subdivision": "Brittany",
+        "lat": 48.13762,
+        "lon": -1.95585
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Montfort-sur-Meu",
+          "url": "https://en.wikipedia.org/wiki/Montfort-sur-Meu",
+          "text": "Montfort-sur-Meu (French pronunciation: [mɔ̃fɔʁ syʁ mø], literally Montfort on Meu; Breton: Moñforzh, before 1993: Montfort) is a commune in the department of Ille-et-Vilaine in Brittany in the northwest of France.\nIt is noted as the birthplace of the Roman Catholic Saint Louis de Montfort, who is considered to be the pioneer of the field of Mariology. The saint's birthplace is at 15, Rue de la Saulnerie. It is now jointly owned by the three Montfortian congregations he formed: the Community of the Holy Spirit, the Daughters of Wisdom and the Brothers of Saint Gabriel. It is the site of frequent \"Montfortian pilgrimages\" to Montfort-sur-Meu."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "montfort sur meu",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "montfort",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sur",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "meu",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5074,
+    "attempt": 5035,
+    "place_id": "gn-3072656",
+    "input": {
+      "place": {
+        "place_id": "gn-3072656",
+        "name": "Krnov",
+        "country": "Czechia",
+        "subdivision": "Moravian-Silesian Region",
+        "lat": 50.08967,
+        "lon": 17.70385
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Krnov",
+          "url": "https://en.wikipedia.org/wiki/Krnov",
+          "text": "Krnov (Czech pronunciation: [ˈkr̩nof]; German: Jägerndorf, Polish: Karniów or Krnów) is a town in Bruntál District in the Moravian-Silesian Region of the Czech Republic. It has about 22,000 inhabitants. The town is situated on the border with Poland, at the confluence of the Opava and Opavice rivers.\nKrnov became a town in the mid-13th century and from 1377, it was the centre of the Duchy of Krnov. The greatest development of the town occurred during the rule of the Hohenzollern family in the 16th century. In the 19th century, Krnov was industrialised and became known for its textile industry and production of pipe organs. Today the town is known for the production of the cola-based drink Kofola.\nThe most valuable monuments of Krnov, protected as national cultural monuments, are the former cotton mill and the pilgrimage site on the Cvilín hill. Notable landmarks of Krnov also include the Neo-Renaissance town hall, the Church of Saint Martin and the Krnov Synagogue."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 160
+    },
+    "banned_terms": [
+      {
+        "term": "krnov",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5075,
+    "attempt": 5036,
+    "place_id": "gn-313947",
+    "input": {
+      "place": {
+        "place_id": "gn-313947",
+        "name": "Göreme",
+        "country": "Türkiye",
+        "subdivision": "Nevşehir Province",
+        "lat": 38.64284,
+        "lon": 34.82885
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Göreme",
+          "url": "https://en.wikipedia.org/wiki/G%C3%B6reme",
+          "text": "Göreme (Turkish: [ɟœˈɾeme]; Ancient Greek: Κόραμα, romanized: Kòrama) is a town (belde) in the Nevşehir District, Nevşehir Province in Central Anatolia, Turkey. Its population is 2,034 (2022). It is well known for its fairy chimneys (Turkish: peribacalar), eroded rock formations, many of which were hollowed out in the Middle Ages to create Christian churches, houses and underground cities. Göreme was formerly known as Korama, Matiana, Macan and Avcilar.\nGöreme sits at the heart of a network of valleys filled with astonishing rock formations. Being a centre of early Christianity, it also has the most painted churches, as well as hermitages and monasteries, in Cappadocia.\nOnce an agricultural settlement, modern Göreme is best known for its flourishing tourism industry, in particular for its hot air balloon rides, and many boutique hotels created out of old cave homes, in addition to ecclesiastical structures connected to its early Christian heritage. The village sits within the Göreme National Park which was added to the UNESCO World Heritage List in 1985.\nThe nearest airports are Nevşehir Kapadokya Airport and Kayseri Airport. The village is also served by long-distance buses from all over Turkey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 188
+    },
+    "banned_terms": [
+      {
+        "term": "goreme",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5076,
+    "attempt": 5037,
+    "place_id": "gn-3168075",
+    "input": {
+      "place": {
+        "place_id": "gn-3168075",
+        "name": "San Marco in Lamis",
+        "country": "Italy",
+        "subdivision": "Apulia",
+        "lat": 41.7121,
+        "lon": 15.63825
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "San Marco in Lamis",
+          "url": "https://en.wikipedia.org/wiki/San_Marco_in_Lamis",
+          "text": "San Marco in Lamis (Sammarchese: Sandə Marchə [ˈsændə ˈmærkə]) is a town and comune in the province of Foggia in the Apulia region of southeast Italy. It is located in the Gargano massif area within the Parco Nazionale del Gargano and it belongs to the Comunità Montana del Gargano. Part of the Via Sacra Langobardorum runs through the town's territory. As such, the town is home to the Santuario di Santa Maria di Stignano and the Convento di San Matteo apostolo. The Santuario di Santa Maria di Stignano is linked to the Castelpagano Castle, whose ruins dominate a slope in the territory of Apricena."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "san marco in lamis",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "san",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "marco",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "in",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "lamis",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5077,
+    "attempt": 5038,
+    "place_id": "gn-3178416",
+    "input": {
+      "place": {
+        "place_id": "gn-3178416",
+        "name": "Collecchio",
+        "country": "Italy",
+        "subdivision": "Emilia-Romagna",
+        "lat": 44.75197,
+        "lon": 10.2154
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Collecchio",
+          "url": "https://en.wikipedia.org/wiki/Collecchio",
+          "text": "Collecchio (Parmigiano: Colècc') is a town in the province of Parma, Emilia-Romagna, northern Italy. It is located 12.9 kilometres (8.0 mi) by road southwest of the centre of Parma. A major food-producing area, it is home to multinational Italian dairy and food corporation Parmalat and the Parma F.C. training complex, Centro Sportivo di Collecchio, and is connected by railway. Under the Romans the town was called Sustrina, Later, in Christian times it was called, Colliculum, because of its location on a small hill. In 2015, Collecchio became recognized as the first community to mandate that all fireworks set off in the town be silent."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "collecchio",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5078,
+    "attempt": 5039,
+    "place_id": "gn-3617725",
+    "input": {
+      "place": {
+        "place_id": "gn-3617725",
+        "name": "Masatepe",
+        "country": "Nicaragua",
+        "subdivision": "Masaya Department",
+        "lat": 11.91445,
+        "lon": -86.14458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Masatepe",
+          "url": "https://en.wikipedia.org/wiki/Masatepe",
+          "text": "Masatepe (Nawat: Masātepēk), (Spanish pronunciation: [masaˈtepe]) is one of the nine municipalities of the Masaya Department in Nicaragua. It is located on the plateau of the villages 50 kilometers from Managua along the road to Masaya. It belongs to the tourist corridor of \" Los Pueblos Blancos\" on top of the coffee-producing Volcanic Plateau. The origin of the word \"Masatepe\" comes from the Nawat language and is named after the Nahua chiefdom of Masatepek, which was located in the present-day department of Masaya. Masatepek is a combination of the Nawat words Masat (deer), and -tepek (hill). The literal translation of Masatepek is \"deer hill\". The Indigenous inhabitants of Masaya are the Nahuas and the Chorotegas, and the Nahuas who still inhabit the municipality dominate the cocoa production in Masatepe."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "masatepe",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5079,
+    "attempt": 5040,
+    "place_id": "gn-4259271",
+    "input": {
+      "place": {
+        "place_id": "gn-4259271",
+        "name": "Huntingburg",
+        "country": "United States",
+        "subdivision": "Indiana",
+        "lat": 38.29894,
+        "lon": -86.955
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huntingburg, Indiana",
+          "url": "https://en.wikipedia.org/wiki/Huntingburg,_Indiana",
+          "text": "Huntingburg is a city in Patoka Township, Dubois County, in the U.S. state of Indiana. The population was 6,362 at the 2020 census.\nLocated in southwestern Indiana, the city is known for its downtown with numerous antique shops. It is part of the Jasper Micropolitan Statistical Area. The city is also known as the \"Hollywood of the Midwest.\" The movies A League of Their Own (1992), Hard Rain (1998), and the HBO film Soul of the Game (1996) were filmed in Huntingburg. Columbia Pictures renovated the grandstand at League Stadium that was to become part of the set for A League of Their Own."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": true,
+      "extractWords": 104,
+      "fullExtractWords": 104
+    },
+    "banned_terms": [
+      {
+        "term": "huntingburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

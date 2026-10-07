@@ -1,4 +1,5 @@
 import { expect, type BrowserContext, type Page } from "playwright/test";
+import { readFileSync } from "node:fs";
 import { mkdir, readFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -52,6 +53,7 @@ const MIME: Record<string, string> = {
   ".jpeg": "image/jpeg",
   ".webp": "image/webp",
   ".ico": "image/x-icon",
+  ".mp3": "audio/mpeg",
   ".webmanifest": "application/manifest+json",
   ".woff2": "font/woff2",
   ".woff": "font/woff",
@@ -373,12 +375,16 @@ export async function spotViewportPoint(
 }
 
 /** True when a tap at (x, y) would hit the map canvas (not chrome like the
- *  question bubble floating over it). */
+ *  question bubble floating over it). Waits out the transient tile-loading
+ *  pill first — a tap point projected under it flaps otherwise. */
 export async function tapHitsMap(
   page: Page,
   x: number,
   y: number,
 ): Promise<boolean> {
+  await page
+    .getByText("Loading satellite imagery")
+    .waitFor({ state: "hidden", timeout: 30_000 });
   return page.evaluate(
     ({ px, py }) => {
       const el = document.elementFromPoint(px, py);
@@ -455,4 +461,143 @@ export async function commitHit(
     await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
   }
   throw new Error("commitHit: no tappable spot in 10 attempts");
+}
+
+// ---------------------------------------------------------------------------
+// Deal-forcing + admin-1 chunk helpers (moved from
+// reveal-your-pin-country-globe.desktop.spec.ts so the admin1-narrow specs
+// can share them).
+// ---------------------------------------------------------------------------
+
+/** Seen-store key prefix for forcing deals (…:<edition>:<regionId>:<band>). */
+export const SEEN_PREFIX = "meridian:seen:v2:";
+
+/** App URL with the idle watchdog effectively disabled (long E2E runs). */
+export const APP_NO_IDLE = "http://127.0.0.1:4123/Meridian/?idle-ms=3600000";
+
+/** All place ids in the built chunk for a region. */
+export function chunkIds(regionId: string): string[] {
+  const d = JSON.parse(
+    readFileSync(`src/game/data/geonames/chunks/${regionId}.json`, "utf8"),
+  ) as { places: { id: string }[] };
+  return d.places.map((p) => p.id);
+}
+
+/** Curated starter ids for one edition+region (id = `${regionId}-${slug}`). */
+export function curatedIds(edition: string, regionId: string): string[] {
+  const src = readFileSync("src/game/starters.ts", "utf8");
+  const out: string[] = [];
+  const re =
+    /place\(\s*\n\s*"(\w+)",\s*\n\s*"([a-z0-9-]+)",\s*\n\s*"([a-z0-9-]+)",/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(src)) !== null) {
+    if (m[1] === edition && m[2] === regionId) out.push(`${m[2]}-${m[3]}`);
+  }
+  return out;
+}
+
+/** Full dealing-pool ids (curated + chunk) for forcing a deal. */
+export function poolIds(edition: string, regionId: string): string[] {
+  return [...curatedIds(edition, regionId), ...chunkIds(regionId)];
+}
+
+/** Mark every pool place seen except the target, so it is dealt first. */
+export async function seedSeenExcept(
+  page: Page,
+  edition: string,
+  regionId: string,
+  keepId: string,
+  allIds: string[],
+  band: "easy" | "medium" | "hard" = "medium",
+): Promise<void> {
+  const key = `${SEEN_PREFIX}${edition}:${regionId}:${band}`;
+  const seen = allIds.filter((id) => id !== keepId);
+  expect(seen.length, "seeded seen-store must not be empty").toBeGreaterThan(0);
+  expect(allIds, `target ${keepId} must be in the pool`).toContain(keepId);
+  await page.evaluate(
+    ([k, ids]: [string, string[]]) => localStorage.setItem(k, JSON.stringify(ids)),
+    [key, seen] as [string, string[]],
+  );
+}
+
+/** Fresh boot that cannot restore a previous run from sessionStorage. */
+export async function freshBoot(page: Page): Promise<void> {
+  await page.evaluate(() => sessionStorage.clear()).catch(() => {});
+  await page.goto(APP_NO_IDLE);
+}
+
+/** Pick a difficulty band in the picker ("How do you want to grow your map today?"). */
+export async function pickBand(page: Page, band: "Easy" | "Medium" | "Hard"): Promise<void> {
+  await page
+    .getByRole("group", { name: "How do you want to grow your map today?" })
+    .getByRole("button", { name: band })
+    .click();
+}
+
+/** Start a country-edition run and wait for the aim phase. */
+export async function startCountryRun(page: Page, country: string): Promise<void> {
+  await page.getByRole("button", { name: "Choose a country" }).click();
+  await expect(page.getByRole("heading", { name: "Country" })).toBeVisible();
+  await page.getByRole("button", { name: country }).click();
+  await dismissTileOverlayIfPresent(page);
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 60_000 });
+  await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 60_000 });
+  await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
+}
+
+/** Current question from the aim live region ("Find X."). */
+export async function readQuestion(page: Page): Promise<string> {
+  const live = page.locator('p.sr-only[aria-live="polite"]');
+  await expect(live).toContainText(/^Find .+\.$/, { timeout: 15_000 });
+  return ((await live.textContent()) ?? "").trim();
+}
+
+/**
+ * Wait until the truth's screen point stops moving between reads: the
+ * camera (including the globe intro dive) has settled. Returns the settled
+ * point.
+ */
+export async function waitForSpotSettle(page: Page): Promise<{ x: number; y: number }> {
+  let settled: { x: number; y: number } | null = null;
+  await expect
+    .poll(
+      async () => {
+        const a = await spotViewportPoint(page);
+        if (!a) return null;
+        await page.waitForTimeout(800);
+        const b = await spotViewportPoint(page);
+        if (!b) return null;
+        if (a.x === b.x && a.y === b.y) {
+          settled = b;
+          return `${b.x},${b.y}`;
+        }
+        return null;
+      },
+      { timeout: 30_000 },
+    )
+    .not.toBeNull();
+  return settled!;
+}
+
+/**
+ * Wait until the admin-1 chunk for `iso2` has been fetched — i.e. the 10 s
+ * warm tick fired `preloadAdmin1ForCountry`. Condition-based (resource
+ * timing), never a fixed sleep: chunks are emitted as
+ * /Meridian/assets/<iso2>-<hash>.js.
+ */
+export async function waitForAdmin1Chunk(page: Page, iso2: string): Promise<void> {
+  await expect
+    .poll(
+      async () => {
+        return await page.evaluate((code: string) => {
+          const entries = performance.getEntriesByType(
+            "resource",
+          ) as PerformanceResourceTiming[];
+          const re = new RegExp(`/assets/${code}-[A-Za-z0-9_-]+\\.js$`);
+          return entries.some((e) => re.test(e.name));
+        }, iso2);
+      },
+      { timeout: 45_000 },
+    )
+    .toBe(true);
 }

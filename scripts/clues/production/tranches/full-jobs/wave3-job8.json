@@ -1,0 +1,732 @@
+[
+  {
+    "rank": 548,
+    "attempt": 541,
+    "place_id": "gn-1626916",
+    "input": {
+      "place": {
+        "place_id": "gn-1626916",
+        "name": "Singkawang",
+        "country": "Indonesia",
+        "subdivision": "West Kalimantan",
+        "lat": 0.90925,
+        "lon": 108.98463
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Singkawang",
+          "url": "https://en.wikipedia.org/wiki/Singkawang",
+          "text": "Singkawang (Selako Dayak: Sakawokng),  or San-Khew-Jong (Chinese: 山口洋; pinyin: Shānkǒuyáng; Pha̍k-fa-sṳ: Sân-gú-yòng), is a coastal city and port located in the province of West Kalimantan, on the island of Borneo in Indonesia. It is located at about 145 km north of Pontianak, the provincial capital, and is surrounded by the Pasi, Poteng, and Sakkok mountains. The name Singkawang is derived from the Salako language, which refers to  a very wide area of swamps (all swamps). In addition, the ancestors of the Hakka Chinese community in Sakawokng also named this area in Hakka as \"San-Khew-Jong\" (Mount-Mouth-Sea), which means \"A city located at the foot of a mountain near the sea and has a river that flows up to the mouth of the river (estuary).\"\nThe city was created on 21 June 2001 by separation from Bengkayang Regency. It is bordered to the east and south by Bengkayang Regency, to the west by the South China Sea, and to the north by Sambas Regency. It covers an area of 550.19 km2 and had a population of 186,462 at the 2010 Census and 235,064 at the 2020 Census; the official estimate as at mid 2025 was 253,812 (comprising 129,606 males and 124,206 females)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 200,
+      "fullExtractWords": 200
+    },
+    "banned_terms": [
+      {
+        "term": "singkawang",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 549,
+    "attempt": 542,
+    "place_id": "gn-1791388",
+    "input": {
+      "place": {
+        "place_id": "gn-1791388",
+        "name": "Wenzhou",
+        "country": "China",
+        "subdivision": "Zhejiang",
+        "lat": 27.99942,
+        "lon": 120.66682
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wenzhou",
+          "url": "https://en.wikipedia.org/wiki/Wenzhou",
+          "text": "Wenzhou, formerly known as Yongjia, is a prefecture-level city in Zhejiang, China. Situated on the southeastern coast of China, the city sits at the lower reaches and estuary of the Ou River, bordered by the Zhejiang–Fujian Hills to the west and the East China Sea to the east. It governs four districts, three county-level cities and five counties, with the municipal office in Lucheng. Recognised both as one of the 27 core cities of the Yangtze River Delta Economic Zone and one of the five central cities of the Western Taiwan Straits Economic Zone, the city serves as the only junction between the two economic zones.\nArchaeological evidence shows that human activity in the area dates back at least 5,000 years. The Ou people, also known as the Ouyue and part of the wider Yue people, established the polity of Dong'ou by at least the fourth century BC and voluntarily surrendered to the Han dynasty of China in 138 BC. The area was successively organised under different administrative names and ranks, including Yongning County from 138, Yongjia Commandery from 323, and Wenzhou Prefecture from 675, later being promoted to Rui'an Fu in 1265 and renamed Wenzhou Circuit in 1276. In the Ming and Qing periods, it was known as Wenzhou Fu, and in 1914 it was designated Ouhai Circuit. Despite repeated changes in administrative status and territorial extent, the seat of Wenzhou prefecture and Yongjia county has remained within the walled city first established in the 4th century, until 1958 when the county seat of Yongjia moved away.\nA birthplace of China's private economy, the city was among the first in the country to experiment with market-oriented reforms after 1978, prompting extensive debate over what became known as the \"[[[Wenzhou Model]]\" of development. This model is often linked to the city's long-standing commercial culture and its history as a trading hub. Historically a major seaport in southeastern China, Wenzhou was authorised as a foreign trade port during the Song (960–1279) and Yuan (1271–1368) periods, was designated as a treaty port following the 1876 Chefoo Convention, and in 1984 was designated as one of China's first 14 open coastal cities. Wenzhou has been renowned for its developed handicraft industries, and is recognised as one of the places of origin of Chinese celadon. Noted during the Southern Song (1127–1279) for the Yongjia School, the city has long been associated with a pragmatic tradition and a strong pro-business culture.\nThe city is also known for its religious tradition and widespread overseas communities. Since the 1990s, large numbers of Wenzhou people have migrated to other parts of China and overseas, making Wenzhou a major hometown of overseas Chinese. By 2025, more than two million people of Wenzhou origin were living worldwide, including over 800,000 overseas Chinese across more than 100 countries, forming over 200 Wenzhou chambers of commerce and more than 300 overseas associations, together constituting a vast business network. With the highest proportion of religious believers among Chinese cities and Buddhism as the predominant religion, the city has also been referred to as \"China's Jerusalem\", as it has more Christians than any other Chinese city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 199,
+      "fullExtractWords": 522
+    },
+    "banned_terms": [
+      {
+        "term": "wenzhou",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 550,
+    "attempt": 543,
+    "place_id": "gn-2165798",
+    "input": {
+      "place": {
+        "place_id": "gn-2165798",
+        "name": "Geelong",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.14711,
+        "lon": 144.36069
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Geelong",
+          "url": "https://en.wikipedia.org/wiki/Geelong",
+          "text": "Geelong ( jih-LONG; Wathawurrung: Djilang/Djalang) is a port city in Victoria, Australia, located at the western end of Corio Bay (the smaller western portion of Port Phillip Bay) and the left bank of Barwon River, about 75 km (47 mi) southwest of Melbourne. With an estimated population of 282,809 in 2023, Geelong is the second-largest city in the state of Victoria. It is the administrative centre for the City of Greater Geelong municipality, which is Port Phillip's only regional metropolitan area, and covers all the urban, rural, and coastal reserves around the city including the entire Bellarine Peninsula and from the plains of Lara in the north to the rolling hills of Waurn Ponds to the south, with Corio Bay to the east and the Barrabool Hills to the west.\nThe traditional owners of the land on which Geelong sits are the Wadawurrung (also known as Wathaurong) Aboriginal people of the Kulin nation. The modern name of Geelong, first recorded in 1827, was derived from the local Wadawurrung name for the region, Djilang, thought to mean \"land\", \"cliffs\", or \"tongue of land or peninsula\". The area was first surveyed by the European settlers in 1838, three weeks after Melbourne. During the 1850s Victorian gold rush, Geelong experienced a brief boom as the main port to the goldfields of central Victoria. The town then diversified into manufacturing, and during the 1860s became one of the largest manufacturing centres in Australia with its wool mills, ropeworks, and paper mills. During the city's early years, inhabitants of Geelong were often called Geelongites or Pivotonians, derived from the city's nickname of \"The Pivot\", referring to the city's role as a shipping and rail hub for Ballarat and the Western District.\nGeelong was proclaimed a city in 1910, with industrial growth from this time until the 1960s establishing the city as a manufacturing centre for the state, and the population grew to over 100,000 by the mid-1960s. Population increases during the 21st century were largely due to growth in service industries, as the manufacturing sector has declined. Redevelopment of the inner city has occurred since the 1990s, as well as gentrification of inner suburbs, and the city has a population growth rate higher than the national average.\nGeelong is an emerging healthcare, education, and advanced manufacturing centre. The city's economy is shifting quickly, and, despite experiencing the drawbacks of losing much of its heavy manufacturing, it is seeing much growth in other tertiary sectors, positioning itself as one of the leading non-capital Australian cities. It has become Australia's second fastest-growing city. Geelong is regarded as the \"Gateway City\" due to its critical location to surrounding western Victorian regional centres, providing a transport corridor for surrounding regions to the state capital Melbourne. It is also home to the Geelong Football Club, the second-oldest club in the Australian Football League."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 199,
+      "fullExtractWords": 473
+    },
+    "banned_terms": [
+      {
+        "term": "geelong",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 551,
+    "attempt": 544,
+    "place_id": "gn-360995",
+    "input": {
+      "place": {
+        "place_id": "gn-360995",
+        "name": "Giza",
+        "country": "Egypt",
+        "subdivision": "Giza",
+        "lat": 30.00944,
+        "lon": 31.20861
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Giza",
+          "url": "https://en.wikipedia.org/wiki/Giza",
+          "text": "Giza is the third-largest city in Egypt by area and population, and is also the eighteenth-largest city in Africa by population. It is the capital of Giza Governorate with a total population of 4,458,135 as of 2023. It is located on the west bank of the Nile opposite central Cairo, and is a part of the Greater Cairo metropolis. Giza lies less than 30 kilometres (20 miles) north of Memphis (Men-nefer, today the village of Mit Rahina), which was the capital city of the unified Egyptian state during the reign of pharaoh Narmer, roughly 3100 BC.\nGiza is most famous as the location of the Giza Plateau, the site of some of the most impressive ancient monuments in the world, including a complex of ancient Egyptian royal mortuary and sacred structures, among which are the Great Sphinx, the Great Pyramid of Giza, and a number of other large pyramids and temples, and the Grand Egyptian Museum. Giza has always been a focal point in Egypt's history due to its location close to Memphis, the ancient Egyptian capital of the Old Kingdom.\nIn 2025, Giza was visited by 14.7 million tourists, becoming the most popular tourist destination in Egypt. Its historic centre is listed by UNESCO as a World Heritage Site. Giza also hosts the headquarters of several Egyptian multinational companies and banks. Rich in ancient Egyptian heritage, hotels, restaurants, and bazaars, Giza is considered an important economic, scientific, and tourism centre of Egypt and Africa. The Giza Zoo, the first zoo built in Africa, is located in Giza. The city also is the home of the association football club Zamalek SC."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 198,
+      "fullExtractWords": 271
+    },
+    "banned_terms": [
+      {
+        "term": "giza",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 552,
+    "attempt": 545,
+    "place_id": "gn-292968",
+    "input": {
+      "place": {
+        "place_id": "gn-292968",
+        "name": "Abu Dhabi",
+        "country": "United Arab Emirates",
+        "subdivision": "Abu Dhabi",
+        "lat": 24.45118,
+        "lon": 54.39696
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Abu Dhabi",
+          "url": "https://en.wikipedia.org/wiki/Abu_Dhabi",
+          "text": "Abu Dhabi is the capital city of the United Arab Emirates (UAE), and of the Emirate of Abu Dhabi, the seat of the Abu Dhabi Central Capital District and the UAE's second-most populous city, after Dubai. Situated on a T-shaped island, Abu Dhabi extends into the Persian Gulf from the central-western coast of the UAE.\nAbu Dhabi is located on an island in the Persian Gulf, off the Central West Coast. Most of the city and the Emirate reside on the mainland connected to the rest of the country. In 2023, Abu Dhabi's urban area had an estimated population of 2.5 million, out of 3.8 million in the emirate of Abu Dhabi. The Abu Dhabi Investment Authority (ADIA), headquartered in the city, is estimated to manage approximately US$1 trillion in assets, making it the world's third-largest sovereign wealth fund after Norway's Government Pension Fund Global and China's CIC. Abu Dhabi has over a trillion US dollars' worth of assets under management in a combination of sovereign wealth funds headquartered there.\nAbu Dhabi houses local and federal government offices and is the home of the United Arab Emirates Government and the Supreme Council for Financial and Economic Affairs. The city is home to the UAE's president, a member of the Al Nahyan family. Abu Dhabi's rapid development and urbanisation, coupled with the massive oil and gas reserves and production and relatively high average income, have transformed it into a large, developed metropolis. It is the country's centre of politics and industry, and a major culture and commerce centre. Abu Dhabi accounts for about two-thirds of the roughly $503 billion UAE economy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 197,
+      "fullExtractWords": 270
+    },
+    "banned_terms": [
+      {
+        "term": "abu dhabi",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "abu",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "dhabi",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 553,
+    "attempt": 546,
+    "place_id": "gn-3939459",
+    "input": {
+      "place": {
+        "place_id": "gn-3939459",
+        "name": "Huancayo",
+        "country": "Peru",
+        "subdivision": "Junin",
+        "lat": -12.06866,
+        "lon": -75.21027
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Huancayo",
+          "url": "https://en.wikipedia.org/wiki/Huancayo",
+          "text": "Huancayo (Spanish pronunciation: [waŋˈkaʝo]; in Wanka Quechua: Wankayu, '(place) with a (sacred) rock', Quechua pronunciation: [waŋˈkajuː]) is the capital of the Junín Region and Huancayo Province, in the central highlands of Peru, in the Mantaro Valley and is crossed by the Shullcas, Chilca and Mantaro rivers. It was founded as a reduction by the name Santísima Trinidad de Huancayo on 1 June 1572, by Don Jerónimo de Silva, a Spanish conquistador. It is the fifth largest city in Peru, with a population of over 500,000 and is among the highest cities in Peru, with an altitude of 3,256 meters (10,692 feet) above sea level. It is considered the economic and social center of central Peru.\nThe Huanca people largely inhabited the area even before the Inca Empire at around 500 BC. They would later form the so-called Huanca kingdom.They were incorporated into the Inca Empire, becoming a stopping point along the Qhapaq Ñan, the section that runs through the city, which today is called Calle Real. Upon the arrival of the Spanish conquistadors notably Francisco Pizarro, the Huancas became faithful and staunch allies, participating in the capture of Cusco and the battles against the Incas of Vilcabamba."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 197,
+      "fullExtractWords": 197
+    },
+    "banned_terms": [
+      {
+        "term": "huancayo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 554,
+    "attempt": 547,
+    "place_id": "gn-1516905",
+    "input": {
+      "place": {
+        "place_id": "gn-1516905",
+        "name": "Taraz",
+        "country": "Kazakhstan",
+        "subdivision": "Zhambyl",
+        "lat": 42.89799,
+        "lon": 71.37334
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Taraz",
+          "url": "https://en.wikipedia.org/wiki/Taraz",
+          "text": "Taraz (Kazakh: Тараз ; also historically known as Talas) is a city and the administrative center of Jambyl Region in Kazakhstan, located on the Talas (Taraz) River in the south of the country near the border with Kyrgyzstan. It had a population of 330,100 as of the 1999 census, up 9% from 1989, making it one of the fastest-growing cities in the country, after Astana and Turkistan. The current population of Taraz is 428,000 (April 2023).\nOne of the oldest cities in Kazakhstan and in Transoxania, built and populated by the ancient Sogdians, Taraz celebrated its official 2,000th anniversary (recognized by UNESCO) in 2001, dating from a fortress built in the area by a Xiongnu Chanyu named Zhizhi, and was a site of the Battle of Zhizhi in 36 BCE. The city was first recorded under the name \"Talas\" in 568 CE by Menander Protector. The medieval city of Talas was a major trade center along the Silk Road. It was later described by the Buddhist monk and traveler Xuanzang, who passed Talas in 629 and later wrote: \"Traveling westward from the Thousand Springs 140 or 150 li, we come to the city of Daluosi. The city is 8 or 9 li in diameter; and was settled by Hu (\"foreign, barbarian, non-Chinese\") merchants from various nations. The products and the climate are about the same as Suyab.\" The Talas alphabet, a variant of the Turkic \"runiform\" Orkhon script, is named for the town.\nTalas secured a place in history by virtue of the Battle of Talas (751 CE), which was fought between forces of the Chinese Tang dynasty and those of the Arab Abbasid Caliphate. The battle took place somewhere along the Talas River in the Talas valley. One of its indirect outcomes was the introduction of paper to the West, via the Arab capture of Chinese papermakers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 195,
+      "fullExtractWords": 308
+    },
+    "banned_terms": [
+      {
+        "term": "taraz",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 555,
+    "attempt": 548,
+    "place_id": "gn-2139521",
+    "input": {
+      "place": {
+        "place_id": "gn-2139521",
+        "name": "Nouméa",
+        "country": "New Caledonia",
+        "subdivision": "South Province",
+        "lat": -22.27407,
+        "lon": 166.44884
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Nouméa",
+          "url": "https://en.wikipedia.org/wiki/Nouméa",
+          "text": "Nouméa (/nuːˈmeɪ.ə/ noo-MAY-uh, nyoo-, -⁠MEE-; French: [numea] ) is the capital and largest city of the French special collectivity of New Caledonia. It is the largest Francophone city in Oceania. It is situated on a peninsula in the south of New Caledonia's main island, Grande Terre, and is home to the majority of the island's European, Polynesian (Wallisians, Futunians, Tahitians), Indonesian, and Vietnamese populations, as well as many Melanesians, Ni-Vanuatu and indigenous Kanaks who work in one of the South Pacific's most industrialised cities. The city lies on a protected deepwater harbour that serves as the chief port for New Caledonia.\nNouméa was greatly affected by 2024 riots, which destroyed many businesses throughout the city and its suburbs, and pushed thousands of people to leave the Greater Nouméa area and move either to elsewhere in New Caledonia or to Metropolitan France. As a result, the April 2025 census recorded a marked population decline for Nouméa, with only 173,814 inhabitants living in the metropolitan area of Greater Nouméa (French: agglomération du Grand Nouméa), down from 182,341 at the 2019 census, and 85,976 in the city (commune) of Nouméa proper, down from 94,285 at the 2019 census. This is the first time since the start of statistical records that Greater Nouméa, which covers the communes of Nouméa, Le Mont-Dore, Dumbéa and Païta, has experienced a population decline. \nAt the 2025 census, 65.7% of the population of New Caledonia lived in Greater Nouméa, down from 67.2% at the 2019 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 195,
+      "fullExtractWords": 247
+    },
+    "banned_terms": [
+      {
+        "term": "noumea",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 556,
+    "attempt": 549,
+    "place_id": "gn-4671240",
+    "input": {
+      "place": {
+        "place_id": "gn-4671240",
+        "name": "Arlington",
+        "country": "United States",
+        "subdivision": "Texas",
+        "lat": 32.73569,
+        "lon": -97.10807
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Arlington, Texas",
+          "url": "https://en.wikipedia.org/wiki/Arlington,_Texas",
+          "text": "Arlington is a city in Tarrant County, Texas, United States. It is part of the Mid-Cities region of the Dallas–Fort Worth–Arlington metropolitan statistical area, and is a principal city of the metropolis and region. The city had a population of 394,266 in 2020, making it the second-largest city in the county after Fort Worth and the third-largest city in the metropolitan area, after Dallas and Fort Worth. Arlington is the 51st-most populous city in the United States, the seventh-most populous city in the state of Texas, and the largest city in the state that is not a county seat.\nArlington is home to the University of Texas at Arlington, a major urban research university, the Arlington Assembly plant used by General Motors, the Nuclear Regulatory Commission Region IV, Texas Health Resources, Mensa International, and D. R. Horton. Additionally, Arlington hosts the Texas Rangers at Globe Life Field, the Dallas Cowboys at AT&T Stadium, the Dallas Wings at College Park Center, the International Bowling Campus (which houses the United States Bowling Congress and the International Bowling Museum and Hall of Fame), and the theme parks Six Flags Over Texas (the original Six Flags) and Hurricane Harbor."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 195,
+      "fullExtractWords": 195
+    },
+    "banned_terms": [
+      {
+        "term": "arlington",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 557,
+    "attempt": 550,
+    "place_id": "gn-1646511",
+    "input": {
+      "place": {
+        "place_id": "gn-1646511",
+        "name": "Cilegon",
+        "country": "Indonesia",
+        "subdivision": "Banten",
+        "lat": -6.0144,
+        "lon": 106.0542
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cilegon",
+          "url": "https://en.wikipedia.org/wiki/Cilegon",
+          "text": "Cilegon (Indonesian: Kota Cilegon, Indonesian pronunciation: [t͡ʃiˈləgɔn] ) is a major coastal industrial city in Banten province, Indonesia, covering 162.51 km2 (62.75 sq mi). It is located on the island of Java. The city had a population of 374,464 at the 2010 Census and 434,896 at the 2020 Census; the official estimate as of mid-2023 was 470,378.\nAmong the factories located in Cilegon are the Krakatau Steel Company, a vital company in Indonesia, which produces steel for industrial (domestic and foreign) needs, and the Asahimas Chemical Company. The nickname for Cilegon is \"Steel City\" since the city is the largest steel producer in Southeast Asia, about 6 million tons of steel produced each year in the Industrial Area Krakatau Steel, Cilegon. Additionally Cilegon is one of the vital assets of the state, because in this town there is a wide range of important objects such as the Merak Harbour, the Krakatau Steel Industrial Zone (including the PT. Krakatau Steel Tbk, Asahimas, Siemens, KS - POSCO joint venture, Chandra Asri, and Pertamina), PLTU Suralaya, Power plant Krakatau, Krakatau Tirta Industrial Water Treatment Plant, the Sunda Strait Bridge Construction (Lot Plan) & Sunda Strait Industrial Zones."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 194,
+      "fullExtractWords": 194
+    },
+    "banned_terms": [
+      {
+        "term": "cilegon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 558,
+    "attempt": 551,
+    "place_id": "gn-1631761",
+    "input": {
+      "place": {
+        "place_id": "gn-1631761",
+        "name": "Pekanbaru",
+        "country": "Indonesia",
+        "subdivision": "Riau",
+        "lat": 0.51667,
+        "lon": 101.44167
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pekanbaru",
+          "url": "https://en.wikipedia.org/wiki/Pekanbaru",
+          "text": "Pekanbaru ([pəkanˈbaru]) is the capital city of the Indonesian province of Riau, and a major economic centre on the eastern side of Sumatra Island with its name derived from the Malay (Indonesian) word for 'new market' ('pekan' is market and 'baru' is new).\nIt has an area of 639.00 km2 (246.72 sq mi), with a population of 897,767 at the 2010 Census, and 983,356 at the 2020 Census; the official estimate as of mid 2025 was 1,192,990 (comprising 599,452 males and 593,538 females), and was projected to be 1,228,298 as at mid 2026. It is located on the banks of the Siak River, which flows into the Strait of Malacca, Pekanbaru has direct access to the busy strait and has long been known as a trading port.\nA settlement has existed on the site since the 17th century. In the late 19th century, the city was developed to serve the coffee and coal industries, and the Dutch built roads to help ship goods to Singapore and Malacca. This city has an airport called Sultan Syarif Kasim II International Airport, and a port called Sungai Duku that is located by the Siak River."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 192,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "pekanbaru",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 559,
+    "attempt": 552,
+    "place_id": "gn-1164909",
+    "input": {
+      "place": {
+        "place_id": "gn-1164909",
+        "name": "Sialkot",
+        "country": "Pakistan",
+        "subdivision": "Punjab",
+        "lat": 32.49268,
+        "lon": 74.53134
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sialkot",
+          "url": "https://en.wikipedia.org/wiki/Sialkot",
+          "text": "Sialkot (Punjabi, Urdu: سيالكوٹ) is a city located in Punjab, Pakistan. It is the capital of the Sialkot District and the 12th most populous city in Pakistan as well as the 7th largest city in Punjab. The boundaries of Sialkot are joined by Jammu in the north east, the districts of Narowal in the southeast, Gujranwala in the southwest and Gujrat in the northwest.\nSialkot is believed to be the successor city of Sagala, the capital of the Madra kingdom which was destroyed by Alexander the Great in 326 BCE. It was made capital of the Indo-Greek kingdom by Menander I in the 2nd century BCE — a time during which the city greatly prospered as a major center for trade and Buddhist thought. In the 6th century CE, it again become capital of the Taank Kingdom, which ruled Punjab for the next two centuries. Sialkot continued to be a major political center until it was eclipsed by Lahore around the turn of the first millennium CE. Sialkot was the capital of the Punjabi Muslim ruler Jasrat Khokhar who reigned over most of Punjab and Jammu in the early 15th century. Under the Mughal Empire, especially Mughal emperor, Aurangzeb's reign, Sialkot became known as a great centre of Islamic scholarship and thought, and attracted scholars because of the widespread availability of paper in the city.\nSialkot city was the birthplace of the Islamic poet and philosopher Muhammad Iqbal, a leading figure of the Pakistan Movement. The city has been noted for its entrepreneurial spirit and productive business climate which have made Sialkot an example of a small Pakistani city that has emerged as a \"world-class manufacturing hub.\" The relatively small city exported approximately $2.5 billion worth of goods in 2017, or about 10% of Pakistan's total exports. The city has been labeled as the Football manufacturing capital of the World, as it produces over 70% of all footballs manufactured in the world. Sialkot International Airport; Pakistan's first privately owned public airport is located 14km west of Sialkot."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 191,
+      "fullExtractWords": 337
+    },
+    "banned_terms": [
+      {
+        "term": "sialkot",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 560,
+    "attempt": 553,
+    "place_id": "gn-304827",
+    "input": {
+      "place": {
+        "place_id": "gn-304827",
+        "name": "Manisa",
+        "country": "Türkiye",
+        "subdivision": "Manisa",
+        "lat": 38.61202,
+        "lon": 27.42647
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Manisa",
+          "url": "https://en.wikipedia.org/wiki/Manisa",
+          "text": "Manisa (Turkish pronunciation: [maˈnisa]) is a city in Turkey and the administrative seat of Manisa Province, lying approximately 40 km northeast of the major city of İzmir. The city forms the urban part of the districts Şehzadeler and Yunusemre, with a population of 385,452 in 2022.\nModern Manisa is a center of industry and services, advantaged by its closeness to the international port city and the regional metropolitan center of İzmir and by its hinterland rich in quantity and variety of agricultural production. İzmir's proximity also adds dense traffic of daily commuters between the two cities, separated by a half-hour drive served by a six-lane highway across Mount Sipylus's mythic scenery.\nThe historic part of Manisa spreads out from a forested valley in the immediate slopes of Sipylus mountainside, along Çaybaşı Stream which flows next to Niobe's \"Weeping Rock\" (\"Ağlayan Kaya\"), an ancient bridge called the \"Red Bridge\" (\"Kırmızı Köprü\") as well as to several tombs-shrines in the Turkish style dating back to the Saruhan period (14th century). Under Ottoman rule in the centuries that followed, the city had already extended into the undulated terrain at the start of the plain. In the last couple of decades, Manisa's width more than tripled in size across its vast plain formed by the alluvial deposits of the River Gediz, a development in which the construction of new block apartments, industrial zones and of Celal Bayar University campus played a key role.\nThe city of Manisa is also widely visited, especially during March and September festivals, the former festival being the continuation of a five-hundred-year-old \"Mesir Paste Distribution\" tradition, and also for the nearby Mount Spil national park. It is also a departure point for other visitor attractions of international acclaim which are located nearby within Manisa's depending region, such as Sardes and Alaşehir (ancient Philadelphia) inland. The city also had a Jewish community."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 191,
+      "fullExtractWords": 311
+    },
+    "banned_terms": [
+      {
+        "term": "manisa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 561,
+    "attempt": 554,
+    "place_id": "gn-4167147",
+    "input": {
+      "place": {
+        "place_id": "gn-4167147",
+        "name": "Orlando",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 28.53834,
+        "lon": -81.37924
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orlando, Florida",
+          "url": "https://en.wikipedia.org/wiki/Orlando,_Florida",
+          "text": "Orlando (  or-LAN-doh) is a city in and the county seat of Orange County, Florida, United States. Part of Central Florida, it is the fourth-most populous city in the state and its most populous inland city, with a population of 307,573 at the 2020 census. The Orlando metropolitan area has an estimated 2.67 million residents as of 2020, making it the third-largest metropolitan area in Florida and the 22nd-largest in the U.S.\nOrlando attracts tourism and conventions with major events and theme parks. It is the fourth-most visited city in the U.S. after New York City, Miami, and Los Angeles, with over 3.5 million visitors as of 2023. Orlando International Airport is the 7th-busiest airport in the United States and the 18th-busiest in the world. The two largest and most internationally renowned tourist attractions in the Orlando area are the Walt Disney World resort, opened by the Walt Disney Company in 1971 and located about 21 miles (34 km) southwest of Orlando in Bay Lake, and the Universal Orlando resort, opened in 1990 as a major expansion of Universal Studios Florida and the only theme park inside Orlando city limits.\nApart from its theme parks, most major cultural sites such as the Orlando Museum of Art and the Dr. Phillips Center for the Performing Arts, and nightlife, bars, and clubs are located in downtown Orlando. Other attractions like Orlando Eye at ICON Park are located along International Drive. The city is also one of the busiest American cities for conferences and conventions; the Orange County Convention Center is the second-largest convention facility in the United States. Orlando is commonly associated with the nearby University of Central Florida, one of the largest universities in the United States. The city's major league professional sports teams include the Orlando Magic (NBA), Orlando Pride (NWSL) and Orlando City SC (MLS)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 190,
+      "fullExtractWords": 306
+    },
+    "banned_terms": [
+      {
+        "term": "orlando",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 562,
+    "attempt": 555,
+    "place_id": "gn-1646170",
+    "input": {
+      "place": {
+        "place_id": "gn-1646170",
+        "name": "Cirebon",
+        "country": "Indonesia",
+        "subdivision": "West Java",
+        "lat": -6.7063,
+        "lon": 108.557
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cirebon",
+          "url": "https://en.wikipedia.org/wiki/Cirebon",
+          "text": "Cirebon (Indonesian pronunciation: [t͡ʃirə'bɔn] , formerly rendered Cheribon or Chirebon in English) is a port city on the northern coast of the Indonesian island of Java. It is the only coastal city of West Java, located about 40 km west of the provincial border with Central Java, approximately 297 km (185 mi) east of Jakarta, at 6°43′S 108°34′E. It had a population of 296,389 at the 2010 census and 333,303 at the 2020 census; the official estimate as of mid 2025 was 347,537 (comprising 174,364 males and 173,173 females).\nThe built-up area of Cirebon reaches out from the city and into the surrounding regency of the same name; the official metropolitan area encompasses the whole of this regency as well as the city, and covers an area of 1,114.64 km2 (430.36 sq mi), with a 2010 census population of 2,363,585; the 2020 census total was 2,603,924 and the official estimate as at mid 2025 was 2,761,351.\nStraddling the border between West and Central Java, Cirebon's history has been influenced by both Sundanese and Javanese culture as well as Arab and Chinese, and is the seat of a former Sultanate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 189,
+      "fullExtractWords": 189
+    },
+    "banned_terms": [
+      {
+        "term": "cirebon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 563,
+    "attempt": 556,
+    "place_id": "gn-1168197",
+    "input": {
+      "place": {
+        "place_id": "gn-1168197",
+        "name": "Peshawar",
+        "country": "Pakistan",
+        "subdivision": "Khyber Pakhtunkhwa",
+        "lat": 34.008,
+        "lon": 71.57849
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Peshawar",
+          "url": "https://en.wikipedia.org/wiki/Peshawar",
+          "text": "Peshawar is the capital and the largest city in the Pakistani province of Khyber Pakhtunkhwa. It is the eighth-most populous Pakistani city, with a population of over 1.9 million. It is located in the north-west of the country, lying in the Peshawar Valley, a broad area situated east of the Khyber Pass.\nPeshawar's recorded history dates back to at least the sixth century BC, making it one of the oldest continuously inhabited cities in South Asia. One of the principal cities of the ancient Gandhara, Peshawar (then known as Puruṣapura) served as the capital of the Kushan Empire during the rule of Kanishka the Great in the second century CE. A variety of Muslim empires ruled the city following the conquest of Peshawar by the Ghaznavids from the Hindu Shahis in 1001 CE. It was an important trading centre of the Mughal Empire, later serving as the winter capital of the Durrani Empire from 1776 until its capture by the Sikh Empire in 1823. In 1849, the city was annexed by the East India Company along with rest of Punjab and subsequently became part of the British Raj. In 1901, Peshawar was made capital of the North-West Frontier Province after it was created by bifurcating the northwestern districts of Punjab Province. Following the Partition of British India in 1947, it became part of Pakistan.\nPeshawar is a major cultural, political and economic centre of the region. During the colonial period and well into the early years after independence, the lingua franca of Peshawar was Hindko; in the succeeding decades, the rapid urbanization and the high rate of migration from the rural and the former tribal areas of the province, as well as the influx of Afghan refugees following the Soviet–Afghan War, transformed Peshawar from a Hindko to a Pashto-speaking city. Today Peshawar is largely populated by Pashtuns, although the original urban population, known as Peshoris, still have a significant presence in the central areas of the old Walled City."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 188,
+      "fullExtractWords": 329
+    },
+    "banned_terms": [
+      {
+        "term": "peshawar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 564,
+    "attempt": 557,
+    "place_id": "gn-1271662",
+    "input": {
+      "place": {
+        "place_id": "gn-1271662",
+        "name": "Gangavati",
+        "country": "India",
+        "subdivision": "Karnataka",
+        "lat": 15.4313,
+        "lon": 76.52933
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Gangavati, Karnataka",
+          "url": "https://en.wikipedia.org/wiki/Gangavati,_Karnataka",
+          "text": "Gangāvathi is a city, municipality and taluk in the Koppal district of the Indian state of Karnataka. It is one of the main commercial hubs in the Kalyana-Karnataka region. It is also the largest city, in terms of area and population, in the Koppal district. The city’s Aaradhya dhaiva is ‘Shree Channabasava Swamy Thatha’ who is worshipped by one and all across all the communities.\nThe celebrated Anjanadri Hills, believed to be the birth place of Lord Hanuman is situated in the administrative area of the Gangavathi Taluk, the Pampa Sarovara, Anegundi, Chikkabenakal caves, Sangapur lake and many other places which have a historical connection with Ramayana can be found within the administrative area of this taluk as well.\nGangavathi city has close to 1.6 lakh population and the taluk close to 3 lakhs (this after Kanakagiri and Karatagi got separated, otherwise the number stood at 6lakhs), the city also serves as sub district for judiciary and administration\nGiven the potential, a new district ‘Kishkinda’ is being proposed with Gangavathi being designated as its district headquarters which would potentially include the taluks Kanakagiri, Karatagi, Kampli, Tavaragera and Sindhanur. This would help the people from surrounding areas drastically reduce their travel time to their districts currently and also will help the city’s growth in future to potentially host the Kishkinda tourism for better."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 188,
+      "fullExtractWords": 222
+    },
+    "banned_terms": [
+      {
+        "term": "gangavati",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 565,
+    "attempt": 558,
+    "place_id": "gn-2615876",
+    "input": {
+      "place": {
+        "place_id": "gn-2615876",
+        "name": "Odense",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.39594,
+        "lon": 10.38831
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Odense",
+          "url": "https://en.wikipedia.org/wiki/Odense",
+          "text": "Odense ( OH-dən-sə, US also  OH-thən-sə; Danish: [ˈoðˀn̩sə] ) is the third largest city in Denmark (after Copenhagen and Aarhus) and the largest city on the island of Funen. As of 1 January 2026, the city proper had a population of 187,558 while Odense Municipality had a population of 213,168, making it the fourth largest municipality in Denmark (behind Copenhagen, Aarhus and Aalborg municipalities). Eurostat and OECD have used a definition for the Metropolitan area of Odense (referred to as a Functional urban area), which includes all municipalities in the Province (Danish: landsdel) of Funen (Danish: Fyn), with a total population of 504,066 as of 1 July 2022.\nBy road, Odense is located 45 kilometres (28 mi) north of Svendborg, 144 kilometres (89 mi) to the south of Aarhus and 167 kilometres (104 mi) to the southwest of the capital Copenhagen. The city was the seat of Odense County until 1970, and Funen County from 1970 until 1 January 2007, when Funen County became part of the Region of Southern Denmark. Odense has close associations with Hans Christian Andersen who is remembered above all for his fairy tales. He was born in the city in 1805 and spent his childhood years there.\nThere has been human settlement in the Odense area for over 4,000 years, although the name was not mentioned in writing until 988, and by 1070, it had already grown into a thriving city. Canute IV of Denmark, generally considered to be the last Viking king, was murdered by unruly peasants in Odense's St Alban's Priory on 10 July 1086. Although the city was burned in 1249 following a royal rivalry, it quickly recovered and flourished as a centre of commerce in the Middle Ages. After a period of decline, large-scale plans for development were made during the 18th century, which led to the rebuilding of Odense Palace and the building of a canal to the Port of Odense, facilitating trade. In 1865, one of the largest railway terminals in Denmark was built, further increasing the population and commerce, and by 1900, Odense had reached a population of 35,000. Odense's Odinstårnet was one of the tallest towers in Europe when built in 1935 but was destroyed by the Nazis during World War II. The University of Southern Denmark was established in 1966.\nToday, Odense remains the commercial hub of Funen, and is recognized internationally as a leading robotics city due to a cluster of robotics companies. Several other major industries are located in the city including the Albani Brewery and GASA, Denmark's major dealer in vegetables, fruits and flowers. The city is home to Odense Palace, erected by King Frederik IV who died there in 1730, the Odense Theatre, the Odense Symphony Orchestra, and the Hans Christian Andersen Museum. In 2021 the Hans Christian Andersen House designed by Japanese architect Kengo Kuma opened. It incorporates parts of the earlier museum like Andersen's birthplace and a domed memorial hall featuring frescos by Niels Larsen Stevns. In sports, Odense has a number of football clubs including OB, BM, B1909, and B1913, the Odense Bulldogs professional ice hockey team, and the city also hosts the H.C. Andersen Marathon. Odense is served by Hans Christian Andersen Airport and Odense station, which lies on the line between Copenhagen and the Jutland peninsula."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 188,
+      "fullExtractWords": 549
+    },
+    "banned_terms": [
+      {
+        "term": "odense",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 566,
+    "attempt": 559,
+    "place_id": "gn-1630789",
+    "input": {
+      "place": {
+        "place_id": "gn-1630789",
+        "name": "Pontianak",
+        "country": "Indonesia",
+        "subdivision": "West Kalimantan",
+        "lat": -0.03194,
+        "lon": 109.325
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pontianak",
+          "url": "https://en.wikipedia.org/wiki/Pontianak",
+          "text": "Pontianak, also known as Khuntien or 坤甸 in Teochew and Hakka, is the capital of the Indonesian province of West Kalimantan, founded first as a trading port on the island of Borneo, occupying an area of 118.21 km2 in the delta of the Kapuas River, at a point where it is joined by its major tributary, the Landak River. The city is precisely on the equator, hence it is widely known as Kota Khatulistiwa (Equatorial City). The city center is less than 3 kilometres (2 mi) south of the equator. Pontianak is the 23rd most populous city in Indonesia (as of 2023), and the fourth most populous city on the island of Borneo (Kalimantan) after Samarinda, Balikpapan and (Malaysia's) Kuching; it is now slightly ahead of Banjarmasin. It had a population of 658,685 at the 2020 Census within the city limits, with significant suburbs outside those limits, particularly in the regencies of Kubu Raya to the east and south of the city, and Mempawah to its north. The official estimate as of mid-2025 was 686,019 (comprising 342,880 males and 343,139 females - a gender ratio of 1:1.000755).\nThe city was founded as a small Malay fishing village at the mouth of the Kapuas River. It then became the seat of the Pontianak Sultanate for several centuries. Pontianak was then incorporated into the Dutch East Indies after an agreement between the Pontianak Sultanate and the Dutch Government. During the colonial era, Pontianak was the seat of the Residentie Westerafdeeling van Borneo, one of the residencies of the Dutch East Indies.\nWhen the Japanese occupied the Dutch East Indies, Pontianak became the site of the Pontianak massacre, in which many Malay aristocrats and sultans as well as people from other ethnic groups (Particularly high profile Arabs and Chinese) were massacred by the Imperial Japanese Navy, especially in the Massacre of Mandor (Holocaust of Mandor).\nAfter the Japanese surrendered, Pontianak became part of the Republic of Indonesia and was designated as the capital city of the province of West Kalimantan.\nPontianak is a multicultural city, as different ethnic groups such as the Dayak, Malay, Bugis people, and Chinese live in the city, with some immigrants such as Javanese, Madura people, Bataks, Ambon people, Papuans, and Manado people. This has created a culture that cannot be found in other parts of Indonesia. Various languages are spoken in Pontianak, such as Pontianak Malay, Dayak language and different dialects of Chinese and some varieties of Malays, Dayaks, Javanese, Bataks, and Bugis.\nPontianak is connected by air to other cities of Indonesia as well as some cities in Malaysia such as Kuala Lumpur and Kuching. Connected with the Supadio International Airport. Well paved roads of the Trans Kalimantan Road connect Pontianak to all Cities in the Kalimantan, such as Palangkaraya, Banjarmasin, Balikpapan, Samarinda, and Tanjung Selor.  other towns also connected in the Province of West Kalimantan, such as Ketapang, Singkawang, Sintang, etc., as well as other provinces. As Pontianak lies on the Trans Kalimantan Highway, it is possible to travel to East Malaysia and Brunei by land using the Trans Kalimantan Highway. Several bus routes operate from Pontianak to Kuching in Malaysia and Bandar Seri Begawan in Brunei Darussalam."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 187,
+      "fullExtractWords": 532
+    },
+    "banned_terms": [
+      {
+        "term": "pontianak",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 567,
+    "attempt": 560,
+    "place_id": "gn-3108286",
+    "input": {
+      "place": {
+        "place_id": "gn-3108286",
+        "name": "Terrassa",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.56667,
+        "lon": 2.01667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Terrassa",
+          "url": "https://en.wikipedia.org/wiki/Terrassa",
+          "text": "Terrassa (Catalan pronunciation: [təˈrasə], Spanish: Tarrasa) is a city in the autonomous community of Catalonia in Spain, in the province of Barcelona. It is one of the two capitals of Vallès Occidental county, being the larger in both area and population, 70.12 km2 (27.07 sq mi) and 228,294 respectively.\nThe name Terrassa derives from Latin Terracia, either from earlier Terracium castellum (“earthen castle”), or meaning \"terrace\", \"area of flat land\". Historically, the name of the city has been spelled Terraça, Terraza, Terraca and Tarrassa in the native Catalan language whilst it was traditionally spelled Tarrasa in Spanish. The Spanish spelling is now largely out of use given its ties with the Francoist Regime and the sole official spelling has been the Catalan Terrassa since 1978.\nTerrassa is known for its industrial past and present, its lively cultural scene, its industrial modernist architecture, its status as a \"City of Film\" and as the seat of several universities such as UPC, ESCAC, Institut del Teatre and EUIT. It was also awarded in 2024 the Council of Europe's \"The Europe Prize\" for cities with an outstanding commitment to European values.\nIt is the site of Roman Egara, a former Visigothic bishopric, which became a Latin Catholic titular see. Since 2004, it has been the see of a bishopric.\nThe city is located in the Catalan Prelitoral depression (Depressió Prelitoral), at the feet of the Prelitoral mountain range (natural reserve of Sant Llorenç del Munt) and the average altitude of the city is 277 meters above sea level. It is 20 and 18 kilometres from Barcelona and Montserrat respectively. Terrassa's location as the most-inland city in the Barcelona Metropolitan Region means it is sometimes referred to as the \"entrance to Central Catalonia\".\nAs of 2024, Terrassa is the third largest city in Catalonia, after Barcelona and l'Hospitalet de Llobregat. Terrassa is also the largest municipality in what is considered the second most important urban, economic and cultural center of Catalonia, the Vallès region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 1,
+      "hasHook": false,
+      "extractWords": 187,
+      "fullExtractWords": 329
+    },
+    "banned_terms": [
+      {
+        "term": "terrassa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

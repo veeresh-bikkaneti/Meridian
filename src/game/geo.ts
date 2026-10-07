@@ -1,5 +1,16 @@
 import type { LonLat, Place, Shape } from "./types.ts";
 
+/** The 8 compass winds, used by octantOf and the GeoDetective bearing feedback. */
+export type Octant =
+  | "north"
+  | "north-east"
+  | "east"
+  | "south-east"
+  | "south"
+  | "south-west"
+  | "west"
+  | "north-west";
+
 const EARTH_KM = 6371.0088;
 
 export function distanceKm(a: LonLat, b: LonLat): number {
@@ -9,6 +20,32 @@ export function distanceKm(a: LonLat, b: LonLat): number {
   const Δλ = ((b[0] - a[0]) * Math.PI) / 180;
   const sin = Math.sin(Δφ / 2) ** 2 + Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) ** 2;
   return 2 * EARTH_KM * Math.asin(Math.min(1, Math.sqrt(sin)));
+}
+
+/**
+ * The 8 compass winds, hyphenated form, used by the GeoDetective edition's
+ * bearing feedback ("north-east"). See also WindName8 below (unhyphenated,
+ * used by the reveal cards).
+ */
+const OCTANTS: Octant[] = [
+  "north",
+  "north-east",
+  "east",
+  "south-east",
+  "south",
+  "south-west",
+  "west",
+  "north-west",
+];
+
+/**
+ * Snap a bearing in degrees to the nearest of the 8 winds. North covers
+ * [337.5, 360) ∪ [0, 22.5); each following wind covers a 45° sector
+ * centered on its direction (NE = [22.5, 67.5), etc.).
+ */
+export function octantOf(degrees: number): Octant {
+  const norm = ((degrees % 360) + 360) % 360;
+  return OCTANTS[Math.floor(((norm + 22.5) % 360) / 45)];
 }
 
 export function pointInRing(point: LonLat, ring: LonLat[]): boolean {
@@ -75,6 +112,56 @@ export function formatDistance(km: number): string {
   if (km < 1) return `${Math.max(0, Math.round(km * 1000))} m`;
   if (km < 100) return `${km.toFixed(km < 10 ? 1 : 1)} km`;
   return `${Math.round(km).toLocaleString("en-US")} km`;
+}
+
+/**
+ * Initial bearing from `from` to `to`, in degrees clockwise from north
+ * (0 = due north, 90 = due east, 180 = due south, 270 = due west), or null
+ * when the two points coincide. Pure spherical computation — the forward
+ * azimuth along the great circle — unit-testable with no I/O.
+ */
+export function initialBearing(from: LonLat, to: LonLat): number | null {
+  const φ1 = (from[1] * Math.PI) / 180;
+  const φ2 = (to[1] * Math.PI) / 180;
+  const Δλ = ((to[0] - from[0]) * Math.PI) / 180;
+  const y = Math.sin(Δλ) * Math.cos(φ2);
+  const x =
+    Math.cos(φ1) * Math.sin(φ2) -
+    Math.sin(φ1) * Math.cos(φ2) * Math.cos(Δλ);
+  if (x === 0 && y === 0) return null;
+  return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
+}
+
+/** The eight compass winds, as lowercase words a kid can read on a card. */
+export type WindName8 =
+  | "north"
+  | "northeast"
+  | "east"
+  | "southeast"
+  | "south"
+  | "southwest"
+  | "west"
+  | "northwest";
+
+/**
+ * Snap a bearing in degrees to one of the eight winds. Each wind owns a
+ * 45° wedge centered on its cardinal (N spans [337.5, 22.5)); exact
+ * boundary angles round up (22.5° → northeast). Any input is normalized
+ * (negative or ≥360 wraps around).
+ */
+export function windName8(bearingDeg: number): WindName8 {
+  const WINDS: WindName8[] = [
+    "north",
+    "northeast",
+    "east",
+    "southeast",
+    "south",
+    "southwest",
+    "west",
+    "northwest",
+  ];
+  const n = ((bearingDeg % 360) + 360) % 360;
+  return WINDS[Math.round(n / 45) % 8];
 }
 
 export function wordCount(text: string): number {

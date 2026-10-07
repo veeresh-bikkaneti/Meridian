@@ -1,0 +1,752 @@
+[
+  {
+    "rank": 2260,
+    "attempt": 2241,
+    "place_id": "gn-938457",
+    "input": {
+      "place": {
+        "place_id": "gn-938457",
+        "name": "Wolmaransstad",
+        "country": "South Africa",
+        "subdivision": "North West",
+        "lat": -27.1974,
+        "lon": 25.98311
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wolmaransstad",
+          "url": "https://en.wikipedia.org/wiki/Wolmaransstad",
+          "text": "Wolmaransstad (Afrikaans for \"Wolmarans City\") is a maize-farming town situated on the N12 between Johannesburg and Kimberley in North West Province of South Africa. The town lies in an important alluvial diamond-mining area and it is the main town of the Maquassi Hills Local Municipality.\n\nTown 245 km south-west of Johannesburg and 56 km north-east of Bloemhof. It was laid out on the farms Rooderand and Vlakfontein in 1888, and proclaimed a town in 1891. Named after Jacobus M. A. Wolmarans, then member of the Executive Council.\nWolmaransstad originated in 1891 on the banks of the Makwasi River (San word for a type of wild spearmint) and takes its name from J. M. A. Wolmarans, a volksraad councilman.\nWolmaransstad serves a large community and is an important diamond buying center.\nThe Dutch Reformed Church building was designed by Gerard Moerdijk."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 118,
+      "fullExtractWords": 140
+    },
+    "banned_terms": [
+      {
+        "term": "wolmaransstad",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2261,
+    "attempt": 2242,
+    "place_id": "gn-1299237",
+    "input": {
+      "place": {
+        "place_id": "gn-1299237",
+        "name": "Pyapon",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Ayeyarwady",
+        "lat": 16.28543,
+        "lon": 95.67882
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pyapon",
+          "url": "https://en.wikipedia.org/wiki/Pyapon",
+          "text": "Pyapon (Burmese: ဖျာပုံမြို့; Mon: ဖျာပုၚ်, /pʰja: paoŋ/) is a town and seat of Pyapon District as well as Pyapon Township in the Ayeyarwady Region of Myanmar, along the Pyapon River, a distributary of the Ayeyarwady River. It is located about 15 kilometres (9.3 mi) inland from the Andaman Sea, about 75 miles (121 km) south of the previous capital, Yangon. In 2023, it had a population of 47,082. It serves as a center for collecting rice from the surrounding agricultural areas, and is home to a diesel-run power plant, using equipment by the German firm Siemens.\nTourists and visitors to Pyapon cruise in the nearby backwaters where nearby mangroves are home to birds, crocodiles and, occasionally, dolphins."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "pyapon",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2262,
+    "attempt": 2243,
+    "place_id": "gn-1819638",
+    "input": {
+      "place": {
+        "place_id": "gn-1819638",
+        "name": "Kennedy Town",
+        "country": "Hong Kong SAR China",
+        "subdivision": "Central and Western",
+        "lat": 22.28277,
+        "lon": 114.12953
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kennedy Town",
+          "url": "https://en.wikipedia.org/wiki/Kennedy_Town",
+          "text": "Kennedy Town is a town and neighbourhood at the western end of Sai Wan on Hong Kong Island in Hong Kong. It was named after Arthur Edward Kennedy, the 7th governor of Hong Kong from 1872 to 1877. Administratively, it is part of Central and Western District.\nDue to its distance from major commercial cores and longtime inaccessibility by train, urban development in this area was less vigorous than in other parts of urban Hong Kong. But since the MTR was extended to the area in 2014, it began rapidly gentrifying, with many older businesses, such as vehicle repair workshops and cha chaan tengs, making way for new luxury developments, as well as high-end bars and restaurants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "kennedy town",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kennedy",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "town",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2263,
+    "attempt": 2244,
+    "place_id": "gn-2276600",
+    "input": {
+      "place": {
+        "place_id": "gn-2276600",
+        "name": "Greenville",
+        "country": "Liberia",
+        "subdivision": "Sinoe County",
+        "lat": 5.01133,
+        "lon": -9.0388
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Greenville, Liberia",
+          "url": "https://en.wikipedia.org/wiki/Greenville,_Liberia",
+          "text": "Greenville is the capital of Sinoe County in southeastern Liberia and lies on a lagoon near the Sinoe River and the Atlantic Ocean. It is located about 150 miles (240 km) southeast of Monrovia. As of the 2008 national census, the population stood at 16,434.\nA hoard of bronze Kru currency rings discovered in the Sinoe river at Greenville is now in the British Museum.\nThe town was built in about 1838 by colonists of the Mississippi Colonization Society. Part of what was then the Mississippi-in-Africa colony (now Sinoe County), Greenville was named after James Green, a Jefferson County Judge and one of the first Mississippi Delta planters to send a group of former slaves to Liberia.\nThe town was destroyed in the Liberian Civil War but has since been rebuilt around a port for the local logging industry. Before the civil war, the town's main exports were lumber, rubber, and agricultural products.\nThe Sapo National Park lies near the town.  Boats sail from Greenville to Monrovia and Harper.\nGreenville experiences on average 185 rainy days per year. The mean temperature of the town's coolest month is 24 degrees Celsius and 27 degrees Celsius for its warmest month.\nGreenville has the third-largest port in Liberia. The port has two quays (70 m and 180 m long, respectively) on the inner side of the breakwater for berthing facilities, with an existing water depth of 6 m below chart datum."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 238
+    },
+    "banned_terms": [
+      {
+        "term": "greenville",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2264,
+    "attempt": 2245,
+    "place_id": "gn-2337759",
+    "input": {
+      "place": {
+        "place_id": "gn-2337759",
+        "name": "Ilaro",
+        "country": "Nigeria",
+        "subdivision": "Ogun State",
+        "lat": 6.88901,
+        "lon": 3.01416
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ilaro",
+          "url": "https://en.wikipedia.org/wiki/Ilaro",
+          "text": "Ilaro is a town in Ogun State, Nigeria. Ilaro's population in 2008 was estimated at 33,000 people, and in 2015 it was estimated to have grown to about 60,000. Ilaro is the headquarters of the Yewa South Local government, known as Yewaland, which replaced the Egbado division of the former Western State, and later became a part of Ogun State of Nigeria. Ilaro town is about 50 km (31 mi) from Abeokuta, the Ogun State capital, and about 100 km (62 mi) from Ikeja, the capital city of Lagos State. Ilaro's area is about 9–9.5 km2 (3.5–3.7 sq mi).\nIlaro is the site of the Olu of Ilaro, who also doubles as the Paramount Ruler of Yewaland. The incumbent paramount ruler is Oba Kehinde Gbadewole Olugbenle, who ascended the throne on 14 April 2012. Oba Kehinde Gbadewole Olugbenle was selected as the Paramount Ruler of The Yewaland by Ogun State governor Ibikunle Amosun, exactly four years after the demise of Oba Samuel Adekanmbi Tella II, who ascended to the throne of Obaship in 1976 after the death of Oba Adetona Amerika. The Olu Ijana of Ijana town, The Oni Igbeji of Igbeji town, Oloja of Oja Odan, The Oni Idogo of Idogo Ipaja, Oni Iwoye of Iwoye town, Olu of Eredo, Olowode of Owode, Olu of Imasayi, Baale of Iweke and other traditional rulers in Yewa Land are some of the kings in Yewa land which the paramount ruler rules over. Close to this monument is the town hall named after the warrior Orona Hall, whose statue is nearby.\nOsata was an Ancient Ilaro ruler in the 19th century who sacrificed his own son for his people to enjoy an abundance of rainfall at a time when Ilaro was plagued with drought. The dialect spoken in Ilaro is the Yewa Dialect."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 301
+    },
+    "banned_terms": [
+      {
+        "term": "ilaro",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2265,
+    "attempt": 2246,
+    "place_id": "gn-2649715",
+    "input": {
+      "place": {
+        "place_id": "gn-2649715",
+        "name": "Falmouth",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 50.15441,
+        "lon": -5.07113
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Falmouth, Cornwall",
+          "url": "https://en.wikipedia.org/wiki/Falmouth,_Cornwall",
+          "text": "Falmouth ( FAL-məth; Cornish (SWF): Aberfala [abɛrfala] ) is a town, civil parish and port on the River Fal on the south coast of Cornwall, England.\nFalmouth was founded in 1613 by the Killigrew family on a site near the existing Pendennis Castle. It developed as a port on the Carrick Roads harbour, overshadowing the earlier town of Penryn. In the 19th century after the arrival of the railways, tourism became important to its economy. In modern times, both industries maintain a presence in Falmouth and the town is also home to the National Maritime Museum Cornwall, a campus of Falmouth University and Falmouth Art Gallery. At the 2021 census the parish had a population of 24,032."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "falmouth",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2266,
+    "attempt": 2247,
+    "place_id": "gn-2754669",
+    "input": {
+      "place": {
+        "place_id": "gn-2754669",
+        "name": "Heerenveen",
+        "country": "Netherlands",
+        "subdivision": "Friesland",
+        "lat": 52.95929,
+        "lon": 5.91854
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Heerenveen",
+          "url": "https://en.wikipedia.org/wiki/Heerenveen",
+          "text": "Heerenveen (Dutch pronunciation: [ˌɦeːrə(ɱ)ˈveːn] , West Frisian: It Hearrenfean [ət ˌjɛrn̩ˈfɪən] , Stellingwerfs: et Vene) is a town and municipality in the province of Friesland (Fryslân), in the Northern Netherlands. In 2021, the town had a population of 29,790 (1 January) while the municipality had a population of 50,859 (1 July). \nThe town itself is located southeast of Sneek and southwest of Drachten. Heerenveen is the oldest peat canal village in the Netherlands. Heerenveen is the fourth-largest place in Friesland in terms of population, but is not one of the eleven Frisian cities.\nThe municipality was formed on 1 July 1934, from parts of former municipalities Aengwirden and Schoterland, and a portion of the municipality of Haskerland. Boarnsterhim also merged into Heerenveen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 122
+    },
+    "banned_terms": [
+      {
+        "term": "heerenveen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2267,
+    "attempt": 2248,
+    "place_id": "gn-2911665",
+    "input": {
+      "place": {
+        "place_id": "gn-2911665",
+        "name": "Halberstadt",
+        "country": "Germany",
+        "subdivision": "Saxony-Anhalt",
+        "lat": 51.89562,
+        "lon": 11.05622
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Halberstadt",
+          "url": "https://en.wikipedia.org/wiki/Halberstadt",
+          "text": "Halberstadt (German pronunciation: [ˈhalbɐˌʃtat] ; Eastphalian: Halverstidde) is a town in the state of Saxony-Anhalt in central Germany, the capital of Harz district. Located north of the Harz mountain range, it is known for its old town center, which was largely destroyed by Allied bombings in the late stages of World War II after local Nazi leaders refused to surrender. The town was rebuilt in the following decades.\nIn World War I Halberstadt was the site of a German military airbase and aircraft-manufacturing facilities. In World War II Halberstadt was a regional production center for Junkers aircraft, which also housed an SS forced labor camp. Halberstadt now includes the area where the Langenstein-Zwieberge concentration camp was situated.\nToday the city has around 450 timber framed houses in its city centre and timber framed old villages like Langenstein."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 137
+    },
+    "banned_terms": [
+      {
+        "term": "halberstadt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2268,
+    "attempt": 2249,
+    "place_id": "gn-2966022",
+    "input": {
+      "place": {
+        "place_id": "gn-2966022",
+        "name": "Bray",
+        "country": "Ireland",
+        "subdivision": "Leinster",
+        "lat": 53.20278,
+        "lon": -6.09833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bray, County Wicklow",
+          "url": "https://en.wikipedia.org/wiki/Bray,_County_Wicklow",
+          "text": "Bray (Irish: Bré [bʲɾʲeː]) is a coastal town in north County Wicklow, Ireland. It is situated about 20 km (12 mi) south of Dublin city centre on the east coast, and parts of the town's northern outskirts are in County Dublin. It has a population of 33,512 making it the tenth largest urban area within Ireland (as of the 2022 census). Bray is home to Ardmore Studios, and some light industry is located in the town, with some business and retail parks on its southern periphery. Commuter links between Bray and Dublin are provided by rail, Dublin Bus, and the M11 and M50 motorways. The town is in a townland and civil parish of the same name.\nOriginally developed as a planned resort town in the 19th century, Bray's popularity as a seaside resort was serviced by the Dublin and Kingstown Railway, which was extended to Bray in 1854. During the late 20th century, the town's use as a resort declined when foreign travel became an option for holiday-makers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "bray",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2269,
+    "attempt": 2250,
+    "place_id": "gn-304782",
+    "input": {
+      "place": {
+        "place_id": "gn-304782",
+        "name": "Marmaris",
+        "country": "Türkiye",
+        "subdivision": "Muğla",
+        "lat": 36.855,
+        "lon": 28.27417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Marmaris",
+          "url": "https://en.wikipedia.org/wiki/Marmaris",
+          "text": "Marmaris (Turkish pronunciation: [ˈmaɾmaɾis]) is a municipality and district of Muğla Province, Turkey. Its area is 906 km2, and its population is 97,818 (2022). It is a port city and tourist resort on the Mediterranean coast, along the shoreline of the Turkish Riviera.\nAlthough Marmaris is known for its honey, its main source of income is international tourism. It is located between two intersecting sets of mountains by the sea, though following a construction boom in the 1980s, little is left of the sleepy fishing village that Marmaris was until the late 20th century.\nAs an adjunct to the tourism industry, Marmaris is also a centre for sailing and diving, possessing two major and several smaller marinas. It is a popular wintering location for hundreds of cruising boaters.\nDalaman Airport is an hour's drive to the east.\nFerries operate from Marmaris to Rhodes and Symi in Greece."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 147
+    },
+    "banned_terms": [
+      {
+        "term": "marmaris",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2270,
+    "attempt": 2251,
+    "place_id": "gn-3056459",
+    "input": {
+      "place": {
+        "place_id": "gn-3056459",
+        "name": "Zvolen",
+        "country": "Slovakia",
+        "subdivision": "Banská Bystrica Region",
+        "lat": 48.57442,
+        "lon": 19.15324
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zvolen",
+          "url": "https://en.wikipedia.org/wiki/Zvolen",
+          "text": "Zvolen (Slovak pronunciation: [ˈzʋɔlen] ; Latin: Zolium; Hungarian: Zólyom; German: Altsohl) is a city in central Slovakia, situated at the confluence of the Hron and Slatina rivers. It is known for its historical and cultural attractions. It is surrounded by the Poľana mountain to the east, the Kremnické vrchy to the west, and the Javorie and Štiavnické vrchy to the south.\nThe population is approximately 40,500, making it the twelfth-largest city in Slovakia by population and thirteenth by area. It is the centre of the Podpoľanie historical region and the seat of Zvolen District. It is also a major transport hub, being one of the four principal railway junctions in Slovakia (together with Bratislava, Košice, and Žilina)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "zvolen",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2271,
+    "attempt": 2252,
+    "place_id": "gn-3087497",
+    "input": {
+      "place": {
+        "place_id": "gn-3087497",
+        "name": "Radomsko",
+        "country": "Poland",
+        "subdivision": "Łódź Voivodeship",
+        "lat": 51.06713,
+        "lon": 19.44477
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Radomsko",
+          "url": "https://en.wikipedia.org/wiki/Radomsko",
+          "text": "Radomsko (pronounced [raˈdɔmskɔ] ) is a city in south-central Poland with 44,700 inhabitants (2021). It is situated on the Radomka river in the Łódź Voivodeship. It is the county seat of Radomsko County.\nFounded in the 11th century, Radomsko is a former royal city located within the Sieradz Land, which prospered as a trade center due to its location at the intersection of important trade routes. In the 14th century, it was the site of congresses at which Princess Jadwiga of Poland was chosen as King of Poland as the country's first female monarch. Due to particularly strong partisan resistance against German occupiers during World War II, it was dubbed Banditenstadt (\"City of Bandits\") by the Germans.\nIt is located on the main railway line connecting Warsaw and Katowice, the country's two largest metropolitan areas, and on the main highway connecting Gdańsk and Łódź with Katowice, part of the European route E75."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 152
+    },
+    "banned_terms": [
+      {
+        "term": "radomsko",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2272,
+    "attempt": 2253,
+    "place_id": "gn-3109256",
+    "input": {
+      "place": {
+        "place_id": "gn-3109256",
+        "name": "Segovia",
+        "country": "Spain",
+        "subdivision": "Castille and León",
+        "lat": 40.94808,
+        "lon": -4.11839
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Segovia",
+          "url": "https://en.wikipedia.org/wiki/Segovia",
+          "text": "Segovia ( sig-OH-vee-ə, US also  say-GOH-, Spanish: [seˈɣoβja] ) is a city in the autonomous community of Castile and León, Spain. It is the capital and most populated municipality of the Province of Segovia. Segovia is located in the Inner Plateau of the Iberian Peninsula, near the northern slopes of the Sistema Central mountain range. Housing is nestled on a bend of the Eresma river.\nThe city is famous for its historic buildings including three main landmarks: its midtown Roman aqueduct, its cathedral (one of the last ones to be built in Europe following a Gothic style), and the Alcázar of Segovia (a fortress). The city center was declared a World Heritage Site by UNESCO in 1985."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "segovia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2273,
+    "attempt": 2254,
+    "place_id": "gn-3175532",
+    "input": {
+      "place": {
+        "place_id": "gn-3175532",
+        "name": "Imperia",
+        "country": "Italy",
+        "subdivision": "Liguria",
+        "lat": 43.88917,
+        "lon": 8.03933
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Imperia",
+          "url": "https://en.wikipedia.org/wiki/Imperia",
+          "text": "Imperia (pronounced [imˈpɛːrja] ; Ligurian: Inpêia [iŋˈpeːja] or Inpéria) is a coastal city and comune in the region of Liguria, Italy. It is the capital of the Province of Imperia, and historically it was capital of the Intemelia district of Liguria. Benito Mussolini created the city of Imperia on 21 October 1923 by combining Porto Maurizio and Oneglia, as well as the surrounding village communes of Piani, Caramagna Ligure, Castelvecchio di Santa Maria Maggiore, Borgo Sant'Agata, Costa d'Oneglia, Poggi, Torrazza, Moltedo and Montegrazie.\nImperia is well known for the cultivation of flowers and olives, and is a popular summer destination for visitors. The local Piscina Felice Cascione indoor pool has hosted numerous national and international aquatics events."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "imperia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2274,
+    "attempt": 2255,
+    "place_id": "gn-3197896",
+    "input": {
+      "place": {
+        "place_id": "gn-3197896",
+        "name": "Kolašin",
+        "country": "Montenegro",
+        "subdivision": "Opština Kolašin",
+        "lat": 42.82229,
+        "lon": 19.51653
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kolašin",
+          "url": "https://en.wikipedia.org/wiki/Kola%C5%A1in",
+          "text": "Kolašin (Cyrillic: Колашин, pronounced [kɔlǎʃin]) is a town in northern Montenegro. It has a population of 2,418 (2023 census). Kolašin is the centre of Kolašin Municipality (population 9,949) and an unofficial centre of Morača region, named after Morača River. Kolašin is also a centre of winter tourism and pearl of Northern Montenegro. Kolašin is full of hotels and apartments for rent during the skiing season, but last years town is also very crowded during summer because of famous mountains around Bjelasica, Sinjajevina and Komovi, hiking destinations, relaxing ambience, pleasant summer temperatures during the hottest days of the summer and numerous sports events. In 2023, Kolasin hosted the MOSI Games and gathered around 2,000 athletes in the city. Lisnati sir and smočani kačamak is originally from Kolašin. The largest number of tourists come from Israel, France, Italy, Spain, Poland, Germany, Slovakia, UK, USA and the Balkan countries."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 146
+    },
+    "banned_terms": [
+      {
+        "term": "kolasin",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2275,
+    "attempt": 2256,
+    "place_id": "gn-3522444",
+    "input": {
+      "place": {
+        "place_id": "gn-3522444",
+        "name": "Ocozocoautla de Espinosa",
+        "country": "Mexico",
+        "subdivision": "Chiapas",
+        "lat": 16.7612,
+        "lon": -93.37426
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ocozocoautla de Espinosa",
+          "url": "https://en.wikipedia.org/wiki/Ocozocoautla_de_Espinosa",
+          "text": "Ocozocoautla de Espinosa, colloquially Coita, is a town and municipality in the Mexican state of Chiapas. It is located in the western part of the state, 24 km west of Tuxtla Gutierrez covering parts of the Depresión Central (Central Depression) and the Montañas del Norte (Northern Mountains). It is bordered to the north by Tecpatán, to the east by Berriozábal, Tuxtla Gutiérrez and Suchiapa, to the south by Villaflores and to the west by Jiquipilas and Cintalapa. The name comes from the Nahua language and means 'forest of ocozote trees'. 'De Espinosa' was added in 1928 to honor Raymundo Enríquez Espinosa who was the first governor of the state of Chiapas. Ocozocoautla gained city status in 1926. The climate is warm and humid and the vegetation is mostly high and medium rainforest. In 2023, Ocozocoautla was designated a Pueblo Mágico by the Mexican government, recognizing its cultural and historical importance."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 150
+    },
+    "banned_terms": [
+      {
+        "term": "ocozocoautla de espinosa",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "ocozocoautla",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "espinosa",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 2276,
+    "attempt": 2257,
+    "place_id": "gn-3587426",
+    "input": {
+      "place": {
+        "place_id": "gn-3587426",
+        "name": "Ahuachapán",
+        "country": "El Salvador",
+        "subdivision": "Ahuachapan",
+        "lat": 13.92403,
+        "lon": -89.84344
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ahuachapán",
+          "url": "https://en.wikipedia.org/wiki/Ahuachap%C3%A1n",
+          "text": "Ahuachapán (Spanish pronunciation: [awatʃaˈpan]) is a city, district, and the capital of the Ahuachapán Department in western El Salvador. The district, including the city, covers an area of 244.84 km2 and as of 2007 has a population of 110,511 people. Situated near the Guatemalan border, it is the westernmost city in the country and is the center of an agricultural region producing primarily coffee.\nAhuachapán is the site of a geothermal power plant and a hydroelectric station. The local geothermal activity produces many steam vents, visible throughout the surrounding mountains.\nAmong other things, Ahuachapan is also the birthplace of notable Salvadoran poet Alfredo Espino and is about an hour's drive from the national wildlife park El Imposible."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "ahuachapan",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2277,
+    "attempt": 2258,
+    "place_id": "gn-4374054",
+    "input": {
+      "place": {
+        "place_id": "gn-4374054",
+        "name": "Woodlawn",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.32288,
+        "lon": -76.72803
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodlawn, Baltimore County, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Woodlawn,_Baltimore_County,_Maryland",
+          "text": "Woodlawn is an unincorporated community and census-designated place in Baltimore County, Maryland, United States. Per the 2020 census, the population was 39,986. It is home to the headquarters of the Social Security Administration (SSA) and the Centers for Medicare and Medicaid Services (CMS). It is bordered by Catonsville on the south, by the Patapsco River and Howard County on the west, by Randallstown and Lochearn to the north, and by the City of Baltimore to the east. Parts of Woodlawn are sometimes informally referred to as Security, Maryland, due to the importance of the SSA's headquarters as well as nearby Security Boulevard (Maryland Route 122) and Security Square Mall.\nThe Lorraine Park Cemetery Gate Lodge and St. Mary's Episcopal Church were listed on the National Register of Historic Places in 1985."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 131
+    },
+    "banned_terms": [
+      {
+        "term": "woodlawn",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2278,
+    "attempt": 2259,
+    "place_id": "gn-4566396",
+    "input": {
+      "place": {
+        "place_id": "gn-4566396",
+        "name": "Naguabo",
+        "country": "Puerto Rico",
+        "subdivision": "Naguabo",
+        "lat": 18.21162,
+        "lon": -65.73488
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Naguabo, Puerto Rico",
+          "url": "https://en.wikipedia.org/wiki/Naguabo,_Puerto_Rico",
+          "text": "Naguabo (Spanish pronunciation: [naˈɣwaβo], locally [naˈwaβo]) is a town and municipality in Puerto Rico located in the east coast of the island bordered by the Vieques Passage, north of Humacao; south of Río Grande and Ceiba; and east of Las Piedras. Naguabo is spread over eight barrios and Naguabo Pueblo (the downtown area and the administrative center of the city). The municipality is composed of the barrios of Daguao, Río, Mariana, Peña Pobre, Pueblo, Río Blanco, Maizales, Santiago y Lima, and Duque. It is part of the San Juan-Caguas-Guaynabo Metropolitan Statistical Area.\nNaguabo is renowned as the birthplace of the pastelillo de chapín, a popular dish in Puerto Rico. It is trunkfish wrapped inside deep-fried flour dough. Pastelillos de chapín can be found in almost any seaside establishment on the island. It is derived from the Taíno term Daguao, and the nickname \"El Pueblo de los Enchumbaos\" -an expression meaning \"soaked\"- comes from the abundant water sources and frequent rain. The latter is due to Naguabo's proximity to El Yunque, a large rainforest reserve."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "naguabo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 2279,
+    "attempt": 2260,
+    "place_id": "gn-5327319",
+    "input": {
+      "place": {
+        "place_id": "gn-5327319",
+        "name": "Bell Gardens",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.96529,
+        "lon": -118.15146
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bell Gardens, California",
+          "url": "https://en.wikipedia.org/wiki/Bell_Gardens,_California",
+          "text": "Bell Gardens is a city in the U.S. state of California in the Los Angeles metropolitan area. Located in Los Angeles County, the city's population was 39,501 at the 2020 census. Bell Gardens is part of the Gateway Cities Region, a largely urbanized region located in southeastern Los Angeles County.\nBell Gardens is notable for being one of only six Los Angeles County cities (out of 88 total) to permit casino gambling and for being home of the oldest building in Los Angeles County.\nBell Gardens is named after James George Bell, an American businessman. The “Gardens” in its name derives from the many Japanese who, early in Bell Gardens’ existence, established vegetable gardens and rice fields. The adjacent city of Bell is also named after James George Bell."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": true,
+      "extractWords": 117,
+      "fullExtractWords": 129
+    },
+    "banned_terms": [
+      {
+        "term": "bell gardens",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "bell",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "gardens",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

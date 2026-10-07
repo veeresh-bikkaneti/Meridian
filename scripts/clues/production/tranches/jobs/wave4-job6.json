@@ -1,0 +1,712 @@
+[
+  {
+    "rank": 3498,
+    "place_id": "gn-2652885",
+    "input": {
+      "place": {
+        "place_id": "gn-2652885",
+        "name": "Cleethorpes",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.56047,
+        "lon": -0.03225
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cleethorpes",
+          "url": "https://en.wikipedia.org/wiki/Cleethorpes",
+          "text": "Cleethorpes () is a seaside town on the estuary of the Humber in North East Lincolnshire, Lincolnshire, England with a population of 29,670 in 2021. It has been permanently occupied since the 6th century, with fishing as its original industry, and then developing into a resort in the 19th century. Before becoming a unified town, Cleethorpes was made up of the three small villages of Itterby, Oole and Thrunscoe.\nThe town lies on the prime meridian, also known as the Greenwich meridian, and its average annual rainfall is amongst the lowest in the British Isles.\nIn 2021, Trainline named Cleethorpes beach the second best seaside destination in the UK that is reachable by train, just behind Margate."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "cleethorpes",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3500,
+    "place_id": "gn-2796491",
+    "input": {
+      "place": {
+        "place_id": "gn-2796491",
+        "name": "Hasselt",
+        "country": "Belgium",
+        "subdivision": "Flanders",
+        "lat": 50.93106,
+        "lon": 5.33781
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Hasselt",
+          "url": "https://en.wikipedia.org/wiki/Hasselt",
+          "text": "Hasselt (Dutch pronunciation: [ˈɦɑsəlt] , Limburgish pronunciation: [ˈɦɑsəlt], French pronunciation: [ʔasɛlt]) is the capital and largest city of the province of Limburg in the Flemish Region of Belgium.\nAs of 1 January 2025, Hasselt had a total population of 90,249. The old town of Hasselt is surrounded by a number of satellite hamlets including Kiewit, Runkst, Banneuxwijk, Godsheide and Rapertingen. Further away are several sub-municipalities which were once within other municipalities, including Guigoven, Kermt, Kortessem, Kuringen, Sint-Lambrechts-Herk, Spalbeek, Stevoort, Stokrooie, Wimmertingen, Vliermaal, Vliermaalroot, and Wintershoven.\nGeographically, Hasselt is located between the Campine region, north of the Demer river, and the Hesbaye region, to the south.  Both the Demer river and the Albert Canal run through the municipality."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "hasselt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3507,
+    "place_id": "gn-3455161",
+    "input": {
+      "place": {
+        "place_id": "gn-3455161",
+        "name": "Pará de Minas",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -19.86028,
+        "lon": -44.60833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pará de Minas",
+          "url": "https://en.wikipedia.org/wiki/Pará_de_Minas",
+          "text": "Pará de Minas is a Brazilian municipality located in the state of Minas Gerais, in the Southeast Region of Brazil. It is part of the metropolitan belt of Belo Horizonte and is situated west of the state capital, approximately 75 km (47 mi) away in the Central region of Minas Gerais. The municipality covers an area of 551.247 km2 (212.838 sq mi), with 9.9 km2 (3.8 sq mi) within the urban area. Its population was estimated at 102,033 inhabitants in 2024.\nThe municipality's average annual temperature is 21.8 °C (71.2 °F), and its original vegetation is predominantly Atlantic Forest. With 95% of the population residing in the urban area, the city had 50 healthcare facilities in 2009."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "para de minas",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "para",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "minas",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3508,
+    "place_id": "gn-3460834",
+    "input": {
+      "place": {
+        "place_id": "gn-3460834",
+        "name": "Itajubá",
+        "country": "Brazil",
+        "subdivision": "Minas Gerais",
+        "lat": -22.42556,
+        "lon": -45.45278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Itajubá",
+          "url": "https://en.wikipedia.org/wiki/Itajubá",
+          "text": "Itajubá is a municipality in southeastern Minas Gerais state of the Federative Republic of Brazil. It lies in a valley by the Sapucaí river and has terrain elevations ranging from 827 to 1500 metres, occupying an area of 290.45 km2 (112.14 mi2), with a population of 97,334 people (2020 est). Neighboring the city are the mountain slopes of the Serra da Mantiqueira range. The climate sees heavy rain in the summer months with dry weather in the winter.\nThe city is a center with direct influence over 14 other municipalities of a region (called \"Microregião do Sapucaí\") that contains  6% of the population of Minas Gerais state. The local economy is based mainly on industry and agriculture."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "itajuba",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3509,
+    "place_id": "gn-3496831",
+    "input": {
+      "place": {
+        "place_id": "gn-3496831",
+        "name": "Mao",
+        "country": "Dominican Republic",
+        "subdivision": "Valverde Province",
+        "lat": 19.54908,
+        "lon": -71.07808
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mao, Dominican Republic",
+          "url": "https://en.wikipedia.org/wiki/Mao,_Dominican_Republic",
+          "text": "Santa Cruz de Mao, or simply Mao, is the head municipality of the Valverde province, in the Dominican Republic.\nIt is the largest city of the Dominican northwest and the centre of the region. Its name, a Taíno word, comes from the River Mao, near the city. Its nickname is Ciudad de los Bellos Atardeceres (lit. 'City of the Beautiful Sunsets'); this was given by Juan De Jesus Reyes, renowned poet and Dominican literary icon. There are no mountains to the west of the city and it is common to see a \"red\" sky at sunset; it is a very dry region and there is much dust in the air which gives the sky a red color."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "mao",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3512,
+    "place_id": "gn-457954",
+    "input": {
+      "place": {
+        "place_id": "gn-457954",
+        "name": "Liepāja",
+        "country": "Latvia",
+        "subdivision": "Liepaja",
+        "lat": 56.50474,
+        "lon": 21.01085
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Liepāja",
+          "url": "https://en.wikipedia.org/wiki/Liepāja",
+          "text": "Liepāja (pronounced [liepaːja] ) (formerly: Libau) is a state city in western Latvia, located on the Baltic Sea. It is the largest city in the Courland region and the third-largest in the country after Riga and Daugavpils. It is an important ice-free port.\nIn the 19th and early 20th century, it was a favourite place for sea-bathers and travellers, with the town boasting a fine park, many pretty gardens and a theatre. Liepāja is however known throughout Latvia as the \"City where the wind is born\", likely because of the constant sea breeze. A song of the same name (Latvian: \"Pilsētā, kurā piedzimst vējš\") was composed by Imants Kalniņš and has become the anthem of the city."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "liepaja",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3527,
+    "place_id": "gn-7302857",
+    "input": {
+      "place": {
+        "place_id": "gn-7302857",
+        "name": "Silapathar",
+        "country": "India",
+        "subdivision": "Assam",
+        "lat": 27.59441,
+        "lon": 94.72402
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Silapathar",
+          "url": "https://en.wikipedia.org/wiki/Silapathar",
+          "text": "Silapathar is a small city and municipal board in Dhemaji district in the Indian state of Assam. The name itself derived from Assamese word \"Sila\" means Kite and \"Pothar\" means rice fields as the place used be a kiting ground for native Mising people during the winters. The city is on the northern bank of the Brahmaputra River and is 470 kilometres (290 mi) from the city of Guwahati and just six km (3.7 mi) from border of Arunachal Pradesh. The longest rail cum road bridge in India (Bogibeel bridge) connects Silapathar to Dibrugarh. Historical Malinithan Mandir is located around ten km (6.2 mi) from Silapathar.\nSilapathar is the commercial hub of Dhemaji district and Arunachal Pradesh."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 117
+    },
+    "banned_terms": [
+      {
+        "term": "silapathar",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3530,
+    "place_id": "gn-1182998",
+    "input": {
+      "place": {
+        "place_id": "gn-1182998",
+        "name": "Bela",
+        "country": "Pakistan",
+        "subdivision": "Balochistan",
+        "lat": 26.22718,
+        "lon": 66.31178
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bela, Balochistan",
+          "url": "https://en.wikipedia.org/wiki/Bela,_Balochistan",
+          "text": "Bela (Balochi: بݔلہ), (Urdu: بیلہ) is a city in Lasbela District in the Balochistan province of Pakistan. It is an ancient city surrounded by hills above the Arabian Sea, nearly 180 km (110 mi) northwest of Karachi and 500 km (310 mi) south of Quetta. During the autumn of 325 BC, the settlement was part of the Asian campaign of Alexander the Great under the name Rhambacia (Greek: Ῥαμβακία). After Alexander conquered the town, he commended the place and thought that if he built a city there it would become great and prosperous and he left Hephaestion behind to build it.\nIn 711 AD, it was part of Muhammad bin Qasim's campaign under the name Armabil."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "bela",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3536,
+    "place_id": "gn-2127896",
+    "input": {
+      "place": {
+        "place_id": "gn-2127896",
+        "name": "Takikawa",
+        "country": "Japan",
+        "subdivision": "Hokkaido",
+        "lat": 43.55278,
+        "lon": 141.90639
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Takikawa, Hokkaido",
+          "url": "https://en.wikipedia.org/wiki/Takikawa,_Hokkaido",
+          "text": "Takikawa (滝川市, Takikawa-shi) is a city located in the Sorachi Subprefecture, Hokkaido, Japan.\nTakikawa City is located in the central area of Hokkaido, it is conveniently located between the cities of Sapporo (biggest city) and Asahikawa (the second biggest city). Takikawa has an inland climate which causes great temperature difference between summer and winter. The average temperature in Takikawa is about 19 degrees Celsius in summer, and –5.9 degrees Celsius (21.4 Fahrenheit) in winter. Takikawa is one of the snowiest locations in Hokkaido, the average amount of snowfall in the past 10 years is 7.77 meters (25 feet, 6 inches).\nTakikawa is also the biggest city in northern Sorachi, making it a hub for neighboring towns."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "takikawa",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3538,
+    "place_id": "gn-2562622",
+    "input": {
+      "place": {
+        "place_id": "gn-2562622",
+        "name": "Qrendi",
+        "country": "Malta",
+        "subdivision": "Il-Qrendi",
+        "lat": 35.83446,
+        "lon": 14.45783
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Qrendi",
+          "url": "https://en.wikipedia.org/wiki/Qrendi",
+          "text": "Qrendi (Maltese: Il-Qrendi) is a village in the Western Region of Malta It is located close to Mqabba, Żurrieq and Siġġiewi. Within its boundaries are the two Neolithic temples of Mnajdra and Ħaġar Qim. The population of Qrendi was 3,324 in July 2024. This included 1,714 males and 1,610 females; 2,985 Maltese nationals and 339 foreign nationals.\nTwo annual feasts are held in Qrendi: the feast of Our Lady of Lourdes is celebrated either on the last Sunday of June or the first Sunday of July, and the Feast of the Ascension of Our Lady on 15 August.\nAlthough the majority of the village's old core buildings remain today, Qrendi has changed considerably in recent times."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "qrendi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3543,
+    "place_id": "gn-3454818",
+    "input": {
+      "place": {
+        "place_id": "gn-3454818",
+        "name": "Pato Branco",
+        "country": "Brazil",
+        "subdivision": "Paraná",
+        "lat": -26.22861,
+        "lon": -52.67056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pato Branco",
+          "url": "https://en.wikipedia.org/wiki/Pato_Branco",
+          "text": "Pato Branco (\"White Duck\" in English) is a municipality in the state of Paraná in Brazil. The municipality covers 537,8 km2 (206.7 mi2) and has a population of 83,843 (2020 IBGE estimate). Pato Branco started off as a village in 1942 and was given status as a city December 14, 1952. It has two private colleges, Faculdade Mater Dei and Faculdade de Pato Branco, and a campus of the Federal University of Technology - Paraná. The city has experienced a positive economic development throughout the last few years.\nPato Branco is located 760 meters above sea level and has a sub-tropical climate with warm summers and mild winters, morning frost being usual during the winter season."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "pato branco",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "pato",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "branco",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 3546,
+    "place_id": "gn-3906466",
+    "input": {
+      "place": {
+        "place_id": "gn-3906466",
+        "name": "Riberalta",
+        "country": "Bolivia",
+        "subdivision": "Beni Department",
+        "lat": -11.01026,
+        "lon": -66.05257
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Riberalta",
+          "url": "https://en.wikipedia.org/wiki/Riberalta",
+          "text": "Riberalta is a city in the Beni Department in northern Bolivia, situated where the Madre de Dios River joins the Beni River. Riberalta is on the south (southeast) bank of the Beni River.\nAs the capital of the province of Vaca Diez, the city has maintained its charm even after the Brazilian nut trade sparked recent development. Bolivia is the dominant producer of the nuts, in the period 2017/2018, the country accounted for 78% of production. Peru produces 16% while Brazil produces a mere 2%. City life in Riberalta Municipality is punctuated by nature thanks to its location on the banks of the Beni and Madre de Dios rivers and its proximity to the Amazon rainforest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "riberalta",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3552,
+    "place_id": "gn-4373349",
+    "input": {
+      "place": {
+        "place_id": "gn-4373349",
+        "name": "Wheaton",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.03983,
+        "lon": -77.05526
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Wheaton, Maryland",
+          "url": "https://en.wikipedia.org/wiki/Wheaton,_Maryland",
+          "text": "Wheaton is a census-designated place in Montgomery County, Maryland, United States, situated north of Washington, D.C., and northwest of downtown Silver Spring. Wheaton takes its name from Frank Wheaton (1833–1903), a career officer in the United States Army and volunteer from Rhode Island in the Union Army who rose to the rank of major-general while serving before, during, and after the Civil War.\nWheaton had a population of 52,150 at the 2020 census. The United States Postal Service has assigned ZIP code 20902 to Wheaton, but the Wheaton Post Office is a part of the larger Silver Spring area. Downtown Wheaton is located around the triangle formed by Veirs Mill Road, University Boulevard, and Georgia Avenue."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "wheaton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3554,
+    "place_id": "gn-4778626",
+    "input": {
+      "place": {
+        "place_id": "gn-4778626",
+        "name": "Petersburg",
+        "country": "United States",
+        "subdivision": "Virginia",
+        "lat": 37.22793,
+        "lon": -77.40193
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Petersburg, Virginia",
+          "url": "https://en.wikipedia.org/wiki/Petersburg,_Virginia",
+          "text": "Petersburg is an independent city in the U.S. state of Virginia. As of the 2020 census, the population was 33,458. The Bureau of Economic Analysis combines Petersburg (along with the city of Colonial Heights) with Dinwiddie County for statistical purposes. The city is 21 miles (34 km) south of the commonwealth (state) capital city of Richmond. It sits at the fall line of the Appomattox River, a tributary of the longer, larger James River which flows east to meet the southern mouth of the Chesapeake Bay at the Hampton Roads harbor and the Atlantic Ocean. \nIn 1645, the Virginia House of Burgesses ordered the building of Fort Henry, which attracted traders and settlers to the area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 116
+    },
+    "banned_terms": [
+      {
+        "term": "petersburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3576,
+    "place_id": "gn-2653305",
+    "input": {
+      "place": {
+        "place_id": "gn-2653305",
+        "name": "Chatham",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.37891,
+        "lon": 0.52786
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chatham, Kent",
+          "url": "https://en.wikipedia.org/wiki/Chatham,_Kent",
+          "text": "Chatham ( CHAT-əm) is a town within the Medway unitary authority in the ceremonial county of Kent, England. It forms a conurbation with the neighbouring towns of Gillingham, Rochester, Strood and Rainham, and had a population of 80,596 in 2020.\nThe town developed around Chatham Dockyard, established as a Royal Naval Dockyard in 1567, along with barracks for the British Army and the Royal Navy. A chain of defensive fortifications, including Fort Amherst (begun 1756) and expanded during the Napoleonic Wars, was constructed to protect the dockyard from land-based attack. The Corps of Royal Engineers remains based at Brompton Barracks.\nThe dockyard closed on 31 March 1984 after more than four centuries of continuous operation."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "chatham",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3592,
+    "place_id": "gn-3680539",
+    "input": {
+      "place": {
+        "place_id": "gn-3680539",
+        "name": "Ipiales",
+        "country": "Colombia",
+        "subdivision": "Nariño",
+        "lat": 0.82501,
+        "lon": -77.63966
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Ipiales",
+          "url": "https://en.wikipedia.org/wiki/Ipiales",
+          "text": "Ipiales is a city and Catholic bishopric in Nariño Department, southern Colombia, near the border with Ecuador. It is located at around 0°49′49″N 77°38′40″W, with an elevation of about 2950 m. Ipiales is located on the high plateau called \"Tuquerres e Ipiales,\" and lies at a distance of 82 km from Pasto, the department's capital. Ipiales is known as \"la ciudad de las nubes verdes\" (the city of the green clouds) because sometimes, especially in the afternoon, greenish clouds appear over the city. \nOne of the area's favorite foods is the guinea pig or cavy (Cavia porcellus), called kuy or kuwi. \nThe economy of this city is based on border trade between Ecuador and Colombia."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "ipiales",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3601,
+    "place_id": "gn-949683",
+    "input": {
+      "place": {
+        "place_id": "gn-949683",
+        "name": "Thabazimbi",
+        "country": "South Africa",
+        "subdivision": "Limpopo",
+        "lat": -24.59165,
+        "lon": 27.41155
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thabazimbi",
+          "url": "https://en.wikipedia.org/wiki/Thabazimbi",
+          "text": "Thabazimbi was an iron mining town in the Limpopo province of South Africa. The town is at the feet of the Ysterberg and is surrounded by the Witfonteinrand and Boshofberg with the Kransberg in the background. The name Thabazimbi means mountain of iron because of the large iron ore reef that was discovered in 1919 by J. H. Williams. \nUp until the mine closure in 2015, due to a 65 million ton rock fall, two million tonnes of ore was once hauled by train to Mittal's iron and steel works. The railway line from Rustenburg reached the area in the 1930s and full scale iron and steel production began. The town was proclaimed in 1953."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 115
+    },
+    "banned_terms": [
+      {
+        "term": "thabazimbi",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3602,
+    "place_id": "gn-1222396",
+    "input": {
+      "place": {
+        "place_id": "gn-1222396",
+        "name": "Kuah",
+        "country": "Malaysia",
+        "subdivision": "Kedah",
+        "lat": 6.32649,
+        "lon": 99.8432
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kuah",
+          "url": "https://en.wikipedia.org/wiki/Kuah",
+          "text": "Kuah is a resort town, mukim and district capital of Langkawi, Kedah, Malaysia. It is the entry point for those coming by ferry from either the mainland or Penang Island. The town is centered on its jetty, which is a point of arrival for tourists from the mainland. With a population of more than 30,000, Kuah has become a major town due to the growth of visitors after Langkawi developed into a tourist centre since 1986.\nThere are a number of hotels in Kuah but it has no resorts, as the town has no proper beach despite being located by the sea. The nightlife in Kuah consists mostly of eating out in seafood restaurants."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "kuah",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3614,
+    "place_id": "gn-3080866",
+    "input": {
+      "place": {
+        "place_id": "gn-3080866",
+        "name": "Zakopane",
+        "country": "Poland",
+        "subdivision": "Lesser Poland",
+        "lat": 49.29899,
+        "lon": 19.94885
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Zakopane",
+          "url": "https://en.wikipedia.org/wiki/Zakopane",
+          "text": "Zakopane (Podhale Goral: Zokopane) is a town in the south of Poland, in the southern part of the Podhale region at the foot of the Tatra Mountains. From 1975 to 1998, it was part of Nowy Sącz Voivodeship; since 1999, it has been part of Lesser Poland Voivodeship. As of 2017, its population was 27,266. Zakopane is a centre of Goral culture and is often referred to as \"the winter capital of Poland\". It is a popular tourist destination for many types of mountain and winter activities such as skiing, trekking, mountaineering and various forms of climbing.\nZakopane lies near Poland's border with Slovakia, in a valley between the Tatra Mountains and Gubałówka Hill."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "zakopane",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 3617,
+    "place_id": "gn-3109642",
+    "input": {
+      "place": {
+        "place_id": "gn-3109642",
+        "name": "Santiago de Compostela",
+        "country": "Spain",
+        "subdivision": "Galicia",
+        "lat": 42.88052,
+        "lon": -8.54569
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Santiago de Compostela",
+          "url": "https://en.wikipedia.org/wiki/Santiago_de_Compostela",
+          "text": "Santiago de Compostela, alternatively abbreviated to Santiago or Compostela, is the capital of the autonomous community of Galicia, Spain. It is located in the province of A Coruña, in the northwest of the Iberian Peninsula. The city has its origin in the shrine of Saint James the Great, now the Cathedral of Santiago de Compostela, as the destination of the Way of St. James, a leading Catholic pilgrimage route since the 9th century. In 1985, the city's Old Town was designated a UNESCO World Heritage Site.\nSantiago de Compostela has a very mild climate for its latitude with heavy winter rainfall courtesy of its relative proximity to the prevailing winds from Atlantic low-pressure systems."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 2,
+      "hasHook": false,
+      "extractWords": 114
+    },
+    "banned_terms": [
+      {
+        "term": "santiago de compostela",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "santiago",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "compostela",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

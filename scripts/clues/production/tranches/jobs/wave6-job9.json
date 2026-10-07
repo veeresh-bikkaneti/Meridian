@@ -1,0 +1,782 @@
+[
+  {
+    "rank": 6021,
+    "place_id": "gn-2523890",
+    "input": {
+      "place": {
+        "place_id": "gn-2523890",
+        "name": "Pantelleria",
+        "country": "Italy",
+        "subdivision": "Sicily",
+        "lat": 36.82836,
+        "lon": 11.94611
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Pantelleria",
+          "url": "https://en.wikipedia.org/wiki/Pantelleria",
+          "text": "Pantelleria (Italian: [pantelleˈriːa]; Sicilian: Pantiḍḍirìa [pandɪɖɖɪˈɾiːa]), known in ancient times as Cossyra or Cossura, is an island and comune (municipality) in the Strait of Sicily in the Mediterranean Sea, 106 kilometres (55 nautical miles) southwest of Sicily and 68 km (35 nmi) east of the Tunisian coast. Administratively, Pantelleria's comune belongs to the Province of Trapani in the autonomous island region of Sicily in southern Italy. It has 7,150 inhabitants.\nWith an area of 83 km2 (32 sq mi), Pantelleria is the largest volcanic satellite island of Sicily. The last eruption occurred below sea level in 1891, and today phenomena related to volcanic activity are present, such as hot springs and fumaroles. The highest peak, the Montagna Grande, reaches 836 m (2,743 ft) above sea level."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "pantelleria",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6022,
+    "place_id": "gn-257056",
+    "input": {
+      "place": {
+        "place_id": "gn-257056",
+        "name": "Mykonos",
+        "country": "Greece",
+        "subdivision": "South Aegean",
+        "lat": 37.44529,
+        "lon": 25.32872
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mykonos",
+          "url": "https://en.wikipedia.org/wiki/Mykonos",
+          "text": "Mykonos (, UK also ; Greek: Μύκονος [ˈmikonos]) is a Greek island, part of the Cyclades, lying between Tinos, Syros, Paros and Naxos. The island has an area of 85.5 square kilometres (33.0 sq mi) and rises to an elevation of 341 metres (1,119 feet) at its highest point. At the 2021 census, there were 10,704 inhabitants, most of whom lived in the largest town, Mykonos, which is on the west coast. The town is also known as Chora (i.e. 'Town' in Greek, following the common practice in Greece when the name of the island itself is the same as the name of the principal town).\nMykonos's nickname is \"The Island of the Winds\", due to the very strong winds that usually blow on the island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "mykonos",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6025,
+    "place_id": "gn-2636062",
+    "input": {
+      "place": {
+        "place_id": "gn-2636062",
+        "name": "Thames Ditton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.38964,
+        "lon": -0.33928
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Thames Ditton",
+          "url": "https://en.wikipedia.org/wiki/Thames_Ditton",
+          "text": "Thames Ditton is a large suburban village on the River Thames, in the Elmbridge borough of Surrey, England. Apart from a large inhabited island in the river, it lies on the southern bank, centred 12.2 miles (19.6 km) south-west of Charing Cross in central London. Thames Ditton is just outside Greater London but within the Greater London Urban Area, as defined by the Office for National Statistics. Its clustered village centre and shopping area on a winding High Street is surrounded by housing, schools and sports areas. Its riverside faces the Thames Path and Hampton Court Palace Gardens and golf course in the London Borough of Richmond upon Thames. Its most commercial area is spread throughout its conservation area and contains restaurants, cafés, shops and businesses."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "thames ditton",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "thames",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ditton",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6034,
+    "place_id": "gn-2933101",
+    "input": {
+      "place": {
+        "place_id": "gn-2933101",
+        "name": "Eggenstein-Leopoldshafen",
+        "country": "Germany",
+        "subdivision": "Baden-Wurttemberg",
+        "lat": 49.09006,
+        "lon": 8.39879
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Eggenstein-Leopoldshafen",
+          "url": "https://en.wikipedia.org/wiki/Eggenstein-Leopoldshafen",
+          "text": "Eggenstein-Leopoldshafen is a municipality of almost 17,000 inhabitants located in the federal state of Baden-Württemberg in the Federal Republic of Germany. It lies about 12 km north of Karlsruhe and is the site of the northern campus of the research centre Karlsruhe Institute of Technology (with the former Forschungsreaktor 2 (FR2). In the west, Eggenstein-Leopoldshafen borders on the Rhine River and in the east it is connected with the Bundesstraße 36.\nThe two villages that make up the incorporated municipality evolved from medieval villages specializing in freshwater fishing and farming. Today, gravel extraction for construction purposes is important to the local economy, as is the cultivation of white asparagus (Spargel). Because of its location in the Rhine valley, hot humid summers are the norm for Eggenstein-Leopoldshafen."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "eggenstein leopoldshafen",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "eggenstein",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "leopoldshafen",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6041,
+    "place_id": "gn-3121058",
+    "input": {
+      "place": {
+        "place_id": "gn-3121058",
+        "name": "Guadarrama",
+        "country": "Spain",
+        "subdivision": "Madrid",
+        "lat": 40.6727,
+        "lon": -4.08949
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Guadarrama",
+          "url": "https://en.wikipedia.org/wiki/Guadarrama",
+          "text": "Guadarrama is a town and municipality in the Cuenca del Guadarrama comarca, in the Community of Madrid, Spain.\nIts population is 17,063 according to the Continuous Register of 2023; the population swells to approximately 60,000 in summer. In the 2023 Spanish general election, for the Congress of Spain the residents voted 41.29% for the People's Party, 24.54% for the Spanish Socialist Workers' Party, and 19.45% voted for Vox.\nIts name comes from Arabic Wadi-l-ramla river (the sandy river).\nGuadarrama achieved the status of \"villa\" under Fernando V of Castile (II of Aragon) on November 22, 1504. Fernando VI ordered the building of a road to A Coruña through the Guadarrama Pass, through which passed the Grande Armée with Napoleon searching for John Moore's Army in 1808."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "guadarrama",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6042,
+    "place_id": "gn-3123473",
+    "input": {
+      "place": {
+        "place_id": "gn-3123473",
+        "name": "Empuriabrava",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 42.24691,
+        "lon": 3.12059
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Empuriabrava",
+          "url": "https://en.wikipedia.org/wiki/Empuriabrava",
+          "text": "Empuriabrava (Spanish: Ampuriabrava) is a community in the municipality of Castelló d'Empúries, in the Alt Empordà (Costa Brava, province of Girona, Catalonia, Spain). It is located in the Gulf of Roses, surrounded by the Natural Park of the Aiguamolls de l'Empordà, and is the largest residential marina in Europe, with some 24 km of navigable waterways.\nOriginally built on a swamp, Empuriabrava was transformed into a tourist community, initially planned in 1964 and completed in 1975.  The town has more than 40 km of canals and a seasonal, summer population of around 80,000.  The Greco-Roman acropolis of Sant Martí d'Empúries is nearby.\nIts aerodrome (ICAO-code LEAP), immediately to the north of the town, offers a variety of air sports with services for all levels of skydiving."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "empuriabrava",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6048,
+    "place_id": "gn-3832711",
+    "input": {
+      "place": {
+        "place_id": "gn-3832711",
+        "name": "Villa La Angostura",
+        "country": "Argentina",
+        "subdivision": "Neuquen",
+        "lat": -40.76173,
+        "lon": -71.64631
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Villa La Angostura",
+          "url": "https://en.wikipedia.org/wiki/Villa_La_Angostura",
+          "text": "Villa La Angostura (Spanish for Town of the Narrowing) is a town located in the Los Lagos Department in the south of the Argentine province of Neuquén, on the northwest shore of the Nahuel Huapi Lake.\nNestled in the northern part of the Nahuel Huapi National Park, and surrounded by lakes, forests and mountains, it is considered to be one of the most beautiful locations in the mountainous parts of Patagonia; earning it the nickname Garden of Patagonia (Spanish: Jardín de la Patagonia).\nJust located a couple of kilometers away from the border with Chile through the Cardenal Antonio Samoré Pass and with other nearby places such as Bariloche and San Martín de los Andes, it forms a popular tourist corridor during both summer and winter."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "villa la angostura",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "villa",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "angostura",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6051,
+    "place_id": "gn-4167505",
+    "input": {
+      "place": {
+        "place_id": "gn-4167505",
+        "name": "Palm Beach",
+        "country": "United States",
+        "subdivision": "Florida",
+        "lat": 26.70562,
+        "lon": -80.03643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Palm Beach, Florida",
+          "url": "https://en.wikipedia.org/wiki/Palm_Beach,_Florida",
+          "text": "Palm Beach is an incorporated town in Palm Beach County, Florida, United States. Located on a barrier island, the town is separated from West Palm Beach and Lake Worth Beach by the Intracoastal Waterway to its west and a small section of the Intracoastal Waterway and South Palm Beach to its south. It is part of the Miami metropolitan area. As of the 2020 census, Palm Beach had a year-round population of 9,245.\nWhite Americans began to live in the area as early as 1872. Elisha Newton \"Cap\" Dimick, later the town's first mayor, established Palm Beach's first hotel, the Cocoanut Grove House, in 1880, but Standard Oil tycoon Henry Flagler became instrumental in transforming the island's tropical landscape into a winter resort for the wealthy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "palm beach",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "palm",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "beach",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6057,
+    "place_id": "gn-6232146",
+    "input": {
+      "place": {
+        "place_id": "gn-6232146",
+        "name": "Birkenhead",
+        "country": "New Zealand",
+        "subdivision": "Auckland",
+        "lat": -36.8082,
+        "lon": 174.72019
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Birkenhead, New Zealand",
+          "url": "https://en.wikipedia.org/wiki/Birkenhead,_New_Zealand",
+          "text": "Birkenhead is a suburb of Auckland, in northern New Zealand. It is located on the North Shore of the Waitematā Harbour, 4 kilometres (2.5 mi) northwest of the Auckland City Centre. The area has been settled by Tāmaki Māori since at least the 14th century, and was the location of Te Matarae ō Mana, a fortified pā for Te Kawerau ā Maki that overlooked an important seasonal shark fishery. European settlement in Birkenhead began in late the 1840s, and by the late 19th century the area became renowned for strawberry crops. In 1884, the Chelsea Sugar Refinery was constructed in Birkenhead, becoming a major source of income for Birkenhead. The increased population growth led to Birkenhead becoming one of the first boroughs of Auckland in 1888."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "birkenhead",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6066,
+    "place_id": "gn-948099",
+    "input": {
+      "place": {
+        "place_id": "gn-948099",
+        "name": "Trompsburg",
+        "country": "South Africa",
+        "subdivision": "Free State",
+        "lat": -30.03363,
+        "lon": 25.78041
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Trompsburg",
+          "url": "https://en.wikipedia.org/wiki/Trompsburg",
+          "text": "Trompsburg is a small town in the Free State province of South Africa off the N1 highway, the major road connection between Johannesburg and Cape Town.  \nIt serves as the administrative seat of the Kopanong Local Municipality within the Xhariep District. With a population of around 6000 residents in the town and associated townships of Noordmanville and Madikgetla, it remains a quiet rural center focused on farming, particularly sheep, cattle, and grain production.  \nThe outskirts of the town are adjacent to the Van Zyl Spruit. This spruit is a typical seasonal or intermittent watercourse in the semi-arid Karoo-influenced region of the southern Free State. It forms part of the local drainage system that ultimately feeds into larger basins like the Orange River (Gariep) system further south/west."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 126
+    },
+    "banned_terms": [
+      {
+        "term": "trompsburg",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6072,
+    "place_id": "gn-2614611",
+    "input": {
+      "place": {
+        "place_id": "gn-2614611",
+        "name": "Rødekro",
+        "country": "Denmark",
+        "subdivision": "South Denmark",
+        "lat": 55.07076,
+        "lon": 9.33531
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rødekro",
+          "url": "https://en.wikipedia.org/wiki/Rødekro",
+          "text": "Rødekro (German: Rothenkrug) is a railway town, with a population of 6,182 (1 January 2026), in Aabenraa Municipality in Region of Southern Denmark on the Jutland peninsula in south Denmark. It is located 33 km north of the Denmark-Germany border, 37 km northeast of Tønder, 28 km southwest of Haderslev and 8 km northwest of Aabenraa.\nRødekro was the seat of the former Rødekro Municipality (Danish, kommune) until 1 January 2007.\nThe town is served by Rødekro station on the Fredericia–Padborg railway line.\n\nHotel Røde-Kro is a hotel and inn located in the centre of the town just north of the railway station. The hotels history dates back to 1649 and it was this Inn who named the town (Rødekro means Red Inn in Danish)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "r dekro",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "r",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "dekro",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6080,
+    "place_id": "gn-2946230",
+    "input": {
+      "place": {
+        "place_id": "gn-2946230",
+        "name": "Borken",
+        "country": "Germany",
+        "subdivision": "Hesse",
+        "lat": 51.04501,
+        "lon": 9.2844
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Borken, Hesse",
+          "url": "https://en.wikipedia.org/wiki/Borken,_Hesse",
+          "text": "Borken (German pronunciation: [ˈbɔʁkn̩] ) is a small town with about 13,000 inhabitants in the Schwalm-Eder district in northern Hesse, Germany.\nThe town is a former centre for brown coal mining and coal-fired electrical generation in Hesse. The coalmine, unlike those in other regions, also had underground workings. After a major disaster – namely a coal dust explosion – the mine was shut down on 1 June 1988.\nSince that time, the former coal pits have been redeveloped into recreation areas with lakes, nature areas – some actually protected by law – and sporting grounds. Among these areas are der Borkener See (Borken Lake) with its nature reserve, der Singliser See (Singlis Lake) with windsurfing, and die Stockelache (\"Stagnant Puddle\"), used as a bathing lake."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "borken",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6087,
+    "place_id": "gn-3456642",
+    "input": {
+      "place": {
+        "place_id": "gn-3456642",
+        "name": "Mozarlândia",
+        "country": "Brazil",
+        "subdivision": "Goiás",
+        "lat": -14.74472,
+        "lon": -50.57056
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mozarlândia",
+          "url": "https://en.wikipedia.org/wiki/Mozarlândia",
+          "text": "Mozarlândia is a municipality in north-central Goiás state, Brazil.\nIt is located in the Valley of the Araguaia River, 300 kilometers from the state capital, Goiânia, and is served by highways GO-164 and GO-334.\nThe distance to Goiânia is 313 km.  Highway connections are made by GO-070 / Goianira / Inhumas / Itaberaí / BR-070 / Goiás / GO-164 / Araguapaz / GO-347.\nIt forms its northern boundary with the municipality of Nova Crixás; its western boundary with Aruanã; its southern boundary with Araguapaz; and its eastern boundary with Crixás.\nThe main rivers that bathe the municipality are the Rio Tesouras and Rio do Peixe, besides the streams (córregos) of Alagadinho, Alagado, São João, Fogueira, Barreirinho, do Gato, Lagoinha, do Buriti, do Manoel and Muquém."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "mozarlandia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6091,
+    "place_id": "gn-4501306",
+    "input": {
+      "place": {
+        "place_id": "gn-4501306",
+        "name": "Collingswood",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.91817,
+        "lon": -75.07128
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Collingswood, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Collingswood,_New_Jersey",
+          "text": "Collingswood is a borough in Camden County, in the U.S. state of New Jersey, located 5 miles (8.0 km) east of Center City Philadelphia. As of the 2020 United States census, the borough's population was 14,186, an increase of 260 (+1.9%) from the 2010 census count of 13,926, which in turn reflected a decline of 400 (−2.8%) from the 14,326 counted in the 2000 census.\nOwing in part to its Quaker history, Collingswood was founded as a dry town where alcohol cannot be sold, however restaurant patrons are permitted to bring their own wine and beer to consume. In July 2015, the town introduced an ordinance that allows craft breweries to operate in the town but not serve food. The ordinance passed in August 2015."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "collingswood",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 6092,
+    "place_id": "gn-4558327",
+    "input": {
+      "place": {
+        "place_id": "gn-4558327",
+        "name": "Grays Ferry",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 39.93511,
+        "lon": -75.19212
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Grays Ferry, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/Grays_Ferry,_Philadelphia",
+          "text": "Grays Ferry, also known as Gray's Ferry, is a neighborhood in South Philadelphia, Pennsylvania, United States, bounded (roughly) by 25th Street on the east, the Schuylkill River on the west, Vare Avenue on the south, and Grays Ferry Avenue on the north.  The section of this neighborhood west of 34th Street is also known as Forgotten Bottom.\nGrays Ferry shares borders with Southwest Center City to the north, Point Breeze to the east, and Girard Estate to the south. Grays Ferry is across from where Mill Creek debouches at about 43rd street.\nGrays Ferry was historically one of the largest enclaves of Irish Americans in the city, and while there are still many Irish left, it is now home to a majority African American population."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "grays ferry",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "grays",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "ferry",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6095,
+    "place_id": "gn-6139417",
+    "input": {
+      "place": {
+        "place_id": "gn-6139417",
+        "name": "Salmon Arm",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 50.69981,
+        "lon": -119.26907
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Salmon Arm",
+          "url": "https://en.wikipedia.org/wiki/Salmon_Arm",
+          "text": "Salmon Arm is a city in the Columbia Shuswap Regional District of the Southern Interior of the Canadian province of British Columbia that has a population of 19,432 (2021). Salmon Arm was incorporated as a municipal district on May 15, 2005. The city of Salmon Arm separated from the district in 1912, but was downgraded to a village in 1958. The city of Salmon Arm once again reunited with the District Municipality in 1970. Salmon Arm once again became a city in 2005, and is now the location of the head offices of the Columbia-Shuswap Regional District. It is a tourist town in the summer, connected to all 4 arms of Shuswap Lake, with many beaches, numerous golf courses, camping facilities, and house boat rentals."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "salmon arm",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "salmon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "arm",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6098,
+    "place_id": "gn-766307",
+    "input": {
+      "place": {
+        "place_id": "gn-766307",
+        "name": "Lidzbark Warmiński",
+        "country": "Poland",
+        "subdivision": "Warmia-Masuria",
+        "lat": 54.12588,
+        "lon": 20.57954
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lidzbark Warmiński",
+          "url": "https://en.wikipedia.org/wiki/Lidzbark_Warmiński",
+          "text": "Lidzbark Warmiński ([ˈlʲid͡zbarɡ varˈmʲiɲskʲi] ; German: Heilsberg, [ˈhaɪlsbɛʁk] ), often shortened to Lidzbark, is a historical town located within the Warmian-Masurian Voivodeship, in northern Poland. It is the capital of Lidzbark County.\nLidzbark Warmiński was once the capital of Warmia and formerly its largest town. Lidzbark itself was a religious and cultural center, for which it was known as the Pearl of Warmia. For a long period of time it was under the control of the Warmian Bishops and it was also a major economic center, only resigning its importance to the nearby city of Braniewo.\nThe Warmian Bishop's Castle is considered to be a great artistic and historical value in the world and has been recognised as a Historic Monument by the Polish government."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 125
+    },
+    "banned_terms": [
+      {
+        "term": "lidzbark warminski",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "lidzbark",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "warminski",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6103,
+    "place_id": "gn-13561226",
+    "input": {
+      "place": {
+        "place_id": "gn-13561226",
+        "name": "Shwe Kokko",
+        "country": "Myanmar (Burma)",
+        "subdivision": "Kayin State",
+        "lat": 16.82082,
+        "lon": 98.53085
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Shwe Kokko",
+          "url": "https://en.wikipedia.org/wiki/Shwe_Kokko",
+          "text": "Shwe Kokko Myaing (Burmese: ရွှေကုက္ကိုမြိုင်; lit. 'golden raintree forest', Eastern Pwo Karen: ထိက်တုဂ်ဓံင့်), commonly known as Shwe Kokko (Burmese: ရွှေကုက္ကို, Chinese: 水沟谷; pinyin: Shuǐgōugǔ, Jyutping: seoi2 gau1 guk1), is a town in Myawaddy Township, Myawaddy District in the Kayin State of south-east Myanmar. Shwe Kokko lies on the left (western) bank of the Moei River (Thaungyin River), facing Thailand to the east. The town is located 20 kilometres (12 mi) north of Myawaddy. In recent years, Shwe Kokko has evolved into an organized crime and human trafficking hub, due to the Burmese government's limited reach and oversight in this remote area. Chinese-led development projects in Shwe Kokko, including Yatai New City, have been involved in illegal gambling, human trafficking, extortion, and cyber scam operations."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "shwe kokko",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "shwe",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "kokko",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6111,
+    "place_id": "gn-2639970",
+    "input": {
+      "place": {
+        "place_id": "gn-2639970",
+        "name": "Potters Bar",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.69353,
+        "lon": -0.17835
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Potters Bar",
+          "url": "https://en.wikipedia.org/wiki/Potters_Bar",
+          "text": "Potters Bar is a town in Hertfordshire, England, 13 miles (21 km) north of central London. In 2011, it had a population of 21,882. In the 2021 census, the four wards that make up Potters Bar – Bentley Heath & The Royds, Furzefield, Oakmere and Parkfield – had a combined population of 22,536; this includes several smaller outlying hamlets contained in the Bentley Heath & The Royds ward, such as Bentley Heath and Ganwick Corner. In 2022, the population was around 23,325.\nWithin the historic county of Middlesex until 1965, the town dates to the early 13th century but remained a small, mainly agricultural, settlement until the arrival of the Great Northern Railway in 1850. It is now part of the London commuter belt."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "potters bar",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "potters",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "bar",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 6112,
+    "place_id": "gn-2643309",
+    "input": {
+      "place": {
+        "place_id": "gn-2643309",
+        "name": "Lymm",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 53.38105,
+        "lon": -2.47763
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lymm",
+          "url": "https://en.wikipedia.org/wiki/Lymm",
+          "text": "Lymm ( LIM) is a village and civil parish in Cheshire, North West England, now in the Borough of Warrington. It incorporates the hamlets of Booths Hill, Broomedge, Church Green, Deansgreen, Heatley, Heatley Heath, Little Heatley, Oughtrington, Reddish, Rush Green and Statham. At the 2021 United Kingdom census, the parish comprised a population of 12,660, with the built-up area having a population of 11,545.\nSituated just over a mile south of the Manchester Ship Canal and River Mersey, historically the county boundary between Lancashire and Cheshire, Lymm's neighbouring villages are Warburton, Thelwall and High Legh. Warrington is its nearest town 6 miles (9.7 km) to the west, with Altrincham being 7 miles (11 km) due east and Knutsford 9 miles (14 km) south east."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 124
+    },
+    "banned_terms": [
+      {
+        "term": "lymm",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

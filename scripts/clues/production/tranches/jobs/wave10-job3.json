@@ -1,0 +1,727 @@
+[
+  {
+    "rank": 9825,
+    "place_id": "gn-2641447",
+    "input": {
+      "place": {
+        "place_id": "gn-2641447",
+        "name": "Normandy",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.25751,
+        "lon": -0.67472
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Normandy, Surrey",
+          "url": "https://en.wikipedia.org/wiki/Normandy,_Surrey",
+          "text": "Normandy is a village and civil parish of 16.37 square kilometres (4,050 acres) in the borough of Guildford in Surrey, England. Almost surrounded by its hill ranges, Normandy is in the plain west of Guildford, straddles the A323 'Aldershot Road' and is north of the narrowest part the North Downs known as the Hog's Back which carries a dual carriageway. The parish in 2011 had a population of 2,981 living in 1,310 households, has woods, a public common and four government-operated commons to the north that are an SSSI heath.  Normandy has been home to a number of notable residents, including William Cobbett."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "normandy",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9828,
+    "place_id": "gn-5108714",
+    "input": {
+      "place": {
+        "place_id": "gn-5108714",
+        "name": "Bellport",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.75704,
+        "lon": -72.93927
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bellport, New York",
+          "url": "https://en.wikipedia.org/wiki/Bellport,_New_York",
+          "text": "Bellport is a village in the Town of Brookhaven in Suffolk County, on the South Shore of Long Island, in New York, United States. The population was 2,203 at the time of the 2020 census.\nThe Incorporated Village of Bellport is named after the Bell family, early settlers of the area. South Country Road (Main St.) in the village features small businesses such as antique shops, artist galleries, small inns, restaurants, and a service center. These family-run businesses get community support from the Bellport Chamber of Commerce. Bellport is also home to the Gateway Playhouse, a professional summer theater in operation since 1950."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "bellport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9833,
+    "place_id": "gn-8347807",
+    "input": {
+      "place": {
+        "place_id": "gn-8347807",
+        "name": "Anula",
+        "country": "Australia",
+        "subdivision": "Northern Territory",
+        "lat": -12.39125,
+        "lon": 130.89047
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Anula, Northern Territory",
+          "url": "https://en.wikipedia.org/wiki/Anula,_Northern_Territory",
+          "text": "Anula is a Northern suburb of Darwin, Northern Territory, in the Northern Territory of Australia. The suburb lies to the east of Lee Point Road and to the north of McMillans Road and covers an area of 1.318 km2 (0.509 sq mi). It is on the traditional Country and waterways of the Larrakia people.\nThe suburb lies to the north of Darwin International Airport which is also known as RAAF Base Darwin.\nThe streets in Anula are named after early NT Mines and mineral fields. Names such as Spring Hill Street, Caledonian Street, Wolfram Court and Zapopan Court being but a few examples."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 103
+    },
+    "banned_terms": [
+      {
+        "term": "anula",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9835,
+    "place_id": "gn-2703145",
+    "input": {
+      "place": {
+        "place_id": "gn-2703145",
+        "name": "Järvsö",
+        "country": "Sweden",
+        "subdivision": "Gävleborg",
+        "lat": 61.71667,
+        "lon": 16.16667
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Järvsö",
+          "url": "https://en.wikipedia.org/wiki/J%C3%A4rvs%C3%B6",
+          "text": "Järvsö (Swedish pronunciation: [ˈjæ̂rvsøː]), locally known as Jarse (pronounced [ˈjâʂːɛ]), is a locality and a parish situated in Ljusdal Municipality, Gävleborg County, Sweden with 1,407 inhabitants in 2010. From Järvsö, people commute to Ljusdal, Färila, Bollnäs, and Gävle. The Järv part of the town name in Swedish means \"wolverine\" in English.\nJärvsö is a tourist town known for its ski slope, Järvsöbacken, and for its zoo, known as Järvzoo, which has an extensive collection of large Nordic animals. There are also several large hotels, including Hotell Järvsöbaden and Bergshotellet. Järvsö is also famously the hometown of the singer and actress Lill-Babs (1938-2018)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "jarvso",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9843,
+    "place_id": "gn-6049357",
+    "input": {
+      "place": {
+        "place_id": "gn-6049357",
+        "name": "Langdale",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 49.43386,
+        "lon": -123.4798
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Langdale, British Columbia",
+          "url": "https://en.wikipedia.org/wiki/Langdale,_British_Columbia",
+          "text": "Langdale is a small residential community in British Columbia, Canada, located within the territory of the Squamish Nation, and part of West Howe Sound, Electoral Area F within the Sunshine Coast Regional District (SCRD).\nLangdale has no significant industry other than a ferry terminal. It is also the location of School District 46's Langdale Elementary School.\nNorth of Langdale along the Port Mellon Highway is the small community of Williamson's Landing, as well as Port Mellon, home of the Howe Sound Pulp and Paper Mill.\nThe settlement is named after Robinson Henry Langdale (1835–1908) who preempted land on Langdale Creek in 1892."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 102
+    },
+    "banned_terms": [
+      {
+        "term": "langdale",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9845,
+    "place_id": "gn-3023065",
+    "input": {
+      "place": {
+        "place_id": "gn-3023065",
+        "name": "Courchevel",
+        "country": "France",
+        "subdivision": "Auvergne-Rhône-Alpes",
+        "lat": 45.41538,
+        "lon": 6.63643
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Courchevel",
+          "url": "https://en.wikipedia.org/wiki/Courchevel",
+          "text": "Courchevel (French pronunciation: [kuʁʃəvɛl]) is a French Alps ski resort located in the Tarentaise Valley. It is a part of Les Trois Vallées, the largest linked ski areas in the world.\nCourchevel also refers to the towns of Courchevel 1300 (Le Praz), Courchevel 1550, Courchevel 1650 (Moriond), and Courchevel 1850, which are named for their elevations in metres. The resort centre of Courchevel is at 1,747 metres (5,732 ft) above sea level.\nSports events from the 1992 Winter Olympics and the 2023 World Ski Championships took place in Courchevel. The ski resort is considered exclusive, attracting wealthy clientele including royal families."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "courchevel",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9846,
+    "place_id": "gn-4584020",
+    "input": {
+      "place": {
+        "place_id": "gn-4584020",
+        "name": "Kiawah Island",
+        "country": "United States",
+        "subdivision": "South Carolina",
+        "lat": 32.60824,
+        "lon": -80.08482
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kiawah Island, South Carolina",
+          "url": "https://en.wikipedia.org/wiki/Kiawah_Island,_South_Carolina",
+          "text": "Kiawah ( KEY-ə-wə) is a sea island, or barrier island, on the Atlantic coast of the United States. Located 25 miles (40 km) southwest of Charleston in Charleston County, South Carolina, it is a seasonal beach and golf community. It is home to the Kiawah Island Golf Resort, with vacation houses and condos, beaches, golf courses, and other resort-like amenities. As of the 2020 census, Kiawah Island's full-time population was 2,013, up from 1,163 at the 2000 census. During the busy season, the population increases to over 10,000. The island is part of the Charleston-North Charleston, South Carolina Metropolitan Statistical Area."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "kiawah island",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kiawah",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "island",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9847,
+    "place_id": "gn-5197723",
+    "input": {
+      "place": {
+        "place_id": "gn-5197723",
+        "name": "Lemont",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.81062,
+        "lon": -77.81833
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Lemont, Pennsylvania",
+          "url": "https://en.wikipedia.org/wiki/Lemont,_Pennsylvania",
+          "text": "Lemont is a census-designated place in College Township, Pennsylvania, United States, within the State College–DuBois combined statistical area. The population was 2,270 as of the 2010 census. Nicknamed \"The End of the Mountain,\" the village sits at the base of Mount Nittany, along Spring Creek. Lemont is two miles away from State College and the main campus of the Pennsylvania State University. It is part of Happy Valley and the larger Nittany Valley, as well as the State College–DuBois combined statistical area.\nLemont is home to the John I. Thompson Grain Elevator and Coal Sheds, the last remaining granary in Pennsylvania."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 101
+    },
+    "banned_terms": [
+      {
+        "term": "lemont",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9853,
+    "place_id": "gn-2149106",
+    "input": {
+      "place": {
+        "place_id": "gn-2149106",
+        "name": "Sorrento",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -38.33958,
+        "lon": 144.74126
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sorrento, Victoria",
+          "url": "https://en.wikipedia.org/wiki/Sorrento,_Victoria",
+          "text": "Sorrento is a town on the Mornington Peninsula, Victoria, Australia, located within the Shire of Mornington Peninsula local government area. It is 103 km (64 mi) south-west of Melbourne's central business district. Sorrento recorded a population of 2,013 at the 2021 census. Sorrento is known for its appealing weather, limestone buildings, and its world-class day-spas, which take advantage of the local water pressure to provide an unparalleled scrub.\nIt is thought that the name \"Sorrento\" (after the Italian seaside town) was conferred upon what was known as Sullivans Bay when the area was first opened for housing development in 1869."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "sorrento",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9855,
+    "place_id": "gn-2645840",
+    "input": {
+      "place": {
+        "place_id": "gn-2645840",
+        "name": "Kelvedon Hatch",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 51.66739,
+        "lon": 0.26814
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kelvedon Hatch",
+          "url": "https://en.wikipedia.org/wiki/Kelvedon_Hatch",
+          "text": "Kelvedon Hatch is a village and civil parish in the Borough of Brentwood in south Essex, England. It is situated just north of Pilgrims Hatch, approximately 4 miles (6 km) to the north of Brentwood and is surrounded by Metropolitan Green Belt. At the 2021 census the parish had a population of\n2,636 and the built up area had a population of 2,398.\nIt is home to the Kelvedon Hatch Secret Nuclear Bunker, the largest and deepest Cold War bunker open to the public in South East England. The Coppice, Kelvedon Hatch, is a biological Site of Special Scientific Interest."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": true,
+      "extractWords": 100
+    },
+    "banned_terms": [
+      {
+        "term": "kelvedon hatch",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "kelvedon",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "hatch",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9861,
+    "place_id": "gn-4372912",
+    "input": {
+      "place": {
+        "place_id": "gn-4372912",
+        "name": "Waverly",
+        "country": "United States",
+        "subdivision": "Maryland",
+        "lat": 39.32844,
+        "lon": -76.60608
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Waverly, Baltimore",
+          "url": "https://en.wikipedia.org/wiki/Waverly,_Baltimore",
+          "text": "Waverly is a neighborhood in the north central area of Baltimore,\nMaryland, located to the north of the adjacent same neighborhood called Better Waverly and west of Ednor Gardens-Lakeside, north and east of Charles Village (formerly named Peabody Heights when laid out in the 1870s)\nwest of the area of Coldstream-Homestead-Montebello neighborhoods, along with the campus of the former red brick H-shaped building for Eastern High School (1938–1984), facing north towards 33rd Street, now renovated since the 1990s into offices for \nThe Johns Hopkins University, a mile to the west. Adjacent to the east of the Eastern High/Johns Hopkins campus is the landmark tree-shaded campus of The Baltimore City College (high school), at 33rd Street and The Alameda. The College is a massive stone structure with a 150-foot bell tower visible for miles, nicknamed \"The Castle on the Hill\", constructed 1926–1928 of Collegiate Gothic architecture on one of the highest hills in the city, \"Collegian Hill\", with the downtown skyline visible to the south. City College (also known as \"City\") is the third oldest public high school in America, founded 1839 in downtown has been through eight different sites in its \n179 years of history and \nfive major buildings, each were architectural landmarks in their times. From its beginnings, until 1979, it was a single sex secondary school for boys in the Baltimore City Public Schools, when it co-educated admitting young women. \nThese three major institutions and their sports events dominated the east side of Waverly/Better Waverly for nine decades."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 250
+    },
+    "banned_terms": [
+      {
+        "term": "waverly",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9867,
+    "place_id": "gn-2747143",
+    "input": {
+      "place": {
+        "place_id": "gn-2747143",
+        "name": "Slochteren",
+        "country": "Netherlands",
+        "subdivision": "Groningen",
+        "lat": 53.22078,
+        "lon": 6.80547
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Slochteren",
+          "url": "https://en.wikipedia.org/wiki/Slochteren",
+          "text": "Slochteren (Dutch pronunciation: [ˈslɔxtərə(n)] ) is a village and former municipality with a population of 15,546 in the province of Groningen in the northeast of the Netherlands. On 1 January 2018, Slochteren merged with Hoogezand-Sappemeer and Menterwolde, forming the municipality Midden-Groningen.\nThe former municipality can be characterized as a chain of small villages dividing a mostly agricultural polder landscape, and a connected string of mostly artificial wetlands and lakes called the 'Roegwold'. An area reclaimed from farmland not too long ago in an effort to bring back a piece of local landscape mimicking a time prior to human intervention, and in doing so also providing a resting place and breeding ground for bird populations. Having an agricultural background for at least a thousand years, besides farmers and farm workers, the community houses for the most part commuters to nearby towns like Hoogezand, Groningen and Delfzijl. The mansion, or 'borg', the Fraeylemaborg (A stronghold of the local land holding Groninger nobility) is also located in Slochteren, the oldest parts of which date back to the middle ages, and so does it's distinctly long and narrow, once privately owned, forest, 'Slochterbos', housing some of the provinces oldest trees, after most had been cut down by ancient settlers."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 205
+    },
+    "banned_terms": [
+      {
+        "term": "slochteren",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9871,
+    "place_id": "gn-2154208",
+    "input": {
+      "place": {
+        "place_id": "gn-2154208",
+        "name": "Orbost",
+        "country": "Australia",
+        "subdivision": "Victoria",
+        "lat": -37.69644,
+        "lon": 148.457
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Orbost",
+          "url": "https://en.wikipedia.org/wiki/Orbost",
+          "text": "Orbost is a town in the Shire of East Gippsland, Victoria, Australia, 375 kilometres (233 mi) east of Melbourne and 235 kilometres (146 mi) south of Canberra where the Princes Highway crosses the Snowy River. It is about 16 kilometres (10 mi) from the surf and fishing seaside town of Marlo on the coast of Bass Strait and 217 km (135 mi) drive to Hotham Alpine Resort. Orbost is the service centre for the primary industries of beef, dairy cattle and sawmilling. \nMore recently, tourism has become an important and thriving industry, being the major town close to several national parks that are between the east access to either the surf or the snow, including the famous Snowy River National Park, Alpine National Park, Errinundra National Park, Croajingolong National Park and Cape Conran Coastal Park.\nThe establishment of the Sailors Grave Brewery has also brought significant tourism to the area with its multiple festivals throughout the year. Cycling and canoeing have also become major tourist attractions drawing people to the area for its wide range of cycling tours and spectacular rivers throughout the region."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 184
+    },
+    "banned_terms": [
+      {
+        "term": "orbost",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9873,
+    "place_id": "gn-2521309",
+    "input": {
+      "place": {
+        "place_id": "gn-2521309",
+        "name": "Barlovento",
+        "country": "Spain",
+        "subdivision": "Canary Islands",
+        "lat": 28.82708,
+        "lon": -17.80377
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Barlovento, Santa Cruz de Tenerife",
+          "url": "https://en.wikipedia.org/wiki/Barlovento,_Santa_Cruz_de_Tenerife",
+          "text": "Barlovento (Spanish for windward) is a municipality in the northern part of the island of La Palma, one of the Canary Islands, and a part of the province of Santa Cruz de Tenerife. Barlovento is on the main highway which encircles the island. The land rises steeply from a small coastal plain, to the rim of the Caldera de Taburiente at Pico de la Cruz (2,350m)\nThe majority of the municipality is rural, with the only town being Barlovento, where the ayuntamiento (municipal office) is, at 548m above sea level. Being in the cloudier North East of the island, with a short, rocky, coastline, there is less tourism than other municipalities, although there are a number of casas rurales for rent. There is, however, a large recreation zone and campsite at the Laguna de Barlovento, an artificial reservoir, which is the largest area of freshwater on the island. There are also saltwater bathing pools, the Piscina Fajana, with a restaurant and other facilities at Punta del Corcho, near the Faro de Punta Complida lighthouse, at the North Eastern point of the island."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 182
+    },
+    "banned_terms": [
+      {
+        "term": "barlovento",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9879,
+    "place_id": "gn-2674343",
+    "input": {
+      "place": {
+        "place_id": "gn-2674343",
+        "name": "Stavsnäs",
+        "country": "Sweden",
+        "subdivision": "Stockholm",
+        "lat": 59.28333,
+        "lon": 18.68333
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Stavsnäs",
+          "url": "https://en.wikipedia.org/wiki/Stavsnäs",
+          "text": "Stavsnäs is a locality situated on the north east part of the island Fågelbrolandet in Värmdö Municipality, Stockholm County, Sweden with 810 inhabitants in 2010. As there are numerous holiday homes in the area, the population is significantly larger during summer. Stavsnäs is located 44 kilometers from central Stockholm and accessible by road.\n\nStavsnäs consists of three different parts; Stavsnäs By (the original picturesque wood-house village built up around the old harbour, dating back to medieval times), Stavsnäs Gärde (a modern housing area with detached houses and blocks of flats), and Stavsnäs Vinterhamn or Vinterhamn (the all-year ferry harbour connecting the nearby inhabited islands (such as Sandhamn) with the Stockholm bus transportation network).\nIn Stavsnäs By there is the old harbour, Sommarhamn, a museum dedicated to the history of the archipelago and its inhabitants, Skärgårdsmuseet, and a bakery and café which turns into a restaurant and bar in the evenings.\nSouth of Vinterhamn on the island of Hölö (accessible by bridge from Fågelbrolandet), Sjösala, the summer house of Evert Taube and the Taube family, is located."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 176
+    },
+    "banned_terms": [
+      {
+        "term": "stavsnas",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9881,
+    "place_id": "gn-3179033",
+    "input": {
+      "place": {
+        "place_id": "gn-3179033",
+        "name": "Cerreto Sannita",
+        "country": "Italy",
+        "subdivision": "Campania",
+        "lat": 41.28296,
+        "lon": 14.56147
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Cerreto Sannita",
+          "url": "https://en.wikipedia.org/wiki/Cerreto_Sannita",
+          "text": "Cerreto Sannita (IPA: [ʧerˈretosanˈnita], Cerrìte in the Cerretese dialect, IPA: [tʃə'rːitə]) is an Italian comune with a population of 3,539 inhabitants located in the Province of Benevento in the Campania region.\nOriginally a fief of the Sanframondo family from 1151 to 1460, it passed to the Carafa family in 1483. In the 17th century, it became the seat of the bishops of the Telese diocese, which in 1986 evolved into the Diocese of Cerreto Sannita-Telese-Sant'Agata de' Goti. In 1737, the town rebelled against the Carafa counts due to the oppressive police regime imposed on the people of Cerreto and the burdensome taxes that were crippling the local woolen cloth industry. The Carafa family dispatched 120 mercenaries to suppress the uprising, resulting in widespread violence and arbitrary imprisonments. It was only through the intervention of King Charles III of Spain that legality was restored, allowing the people of Cerreto to achieve initial judicial victories, though the once-prosperous wool industry, a source of wealth for centuries, had by then fallen into irreversible decline."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 171
+    },
+    "banned_terms": [
+      {
+        "term": "cerreto sannita",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "cerreto",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "sannita",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 9886,
+    "place_id": "gn-3019436",
+    "input": {
+      "place": {
+        "place_id": "gn-3019436",
+        "name": "Étaules",
+        "country": "France",
+        "subdivision": "New Aquitaine",
+        "lat": 45.73209,
+        "lon": -1.0988
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Étaules, Charente-Maritime",
+          "url": "https://en.wikipedia.org/wiki/Étaules,_Charente-Maritime",
+          "text": "Étaules (French pronunciation: [etol]) is a commune in the Charente-Maritime department and Nouvelle-Aquitaine region in southwestern France.\nLocated in the heart of the Arvert peninsula and the touristic region of Royannais, in the continental fringe of the \"Côte de Beauté\" and near the famous oyster farming zone of Marennes-Oléron, this small town is well situated in the western suburbs of Royan. The city experience constant and sustained growth for over twenty years (its population was 1,413 in 1990 and 2,375 inhabitants in 2012). With its \"sisters cities\" Arvert, Chaillevette and La Tremblade, Étaules forms a small conurbation of 11,630 inhabitants, with many services and shops.\nThe town benefits from its proximity to the seaside resorts on the Atlantic coast (Royan, Vaux-sur-Mer, Saint-Palais-sur-Mer, La Palmyre) and the forest of la Coubre, a natural reserve of biodiversity, and has developed tourism-related activities, accommodation Cap France, a camping and several seasonal dwellings. It is also an important oyster production center, with two ports : Orivol and Les Grandes Roches."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 166
+    },
+    "banned_terms": [
+      {
+        "term": "etaules",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9894,
+    "place_id": "gn-2645510",
+    "input": {
+      "place": {
+        "place_id": "gn-2645510",
+        "name": "Kineton",
+        "country": "United Kingdom",
+        "subdivision": "England",
+        "lat": 52.15645,
+        "lon": -1.51148
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kineton",
+          "url": "https://en.wikipedia.org/wiki/Kineton",
+          "text": "Kineton  is a village and civil parish on the River Dene in south-east Warwickshire, England. The village is part of Stratford-on-Avon district, and in the 2001 census it had a population of 2,278, increasing to 2,337 at the 2011 Census.\nKineton is about ten miles (16 km) from the towns of Banbury to the south-east, Warwick and Leamington Spa to the north, and Stratford-upon-Avon to the west. Nearby is the large village of Wellesbourne with its historic water mill, Compton Verney House art gallery, the British Motor Museum at Gaydon, the Burton Dassett Hills country park and the battlefield of Edgehill. Kineton, in the district historically known as the Vale of the Red Horse, can also be considered to be part of the informal area of Banburyshire.\nKineton district council ward covers Gaydon, Lighthorne, Lighthorne Heath, Compton Verney, Combrook, Little Kineton and Chadshunt, a population of 4,228 according to the 2001 census, rising to 4,320 at the 2011 census."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 159
+    },
+    "banned_terms": [
+      {
+        "term": "kineton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9902,
+    "place_id": "gn-3531196",
+    "input": {
+      "place": {
+        "place_id": "gn-3531196",
+        "name": "Chalma",
+        "country": "Mexico",
+        "subdivision": "México",
+        "lat": 18.93048,
+        "lon": -99.43505
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Chalma, Malinalco",
+          "url": "https://en.wikipedia.org/wiki/Chalma,_Malinalco",
+          "text": "Chalma is a small community, which is part of the municipality of Malinalco, Mexico State. Its small population is almost completely dedicated to the pilgrims who come to visit the Sanctuary of Chalma, the second most-important pilgrimage site in Mexico. The sanctuary is dedicated to an image of what many people describe as a \"black Christ\" on a cross that legend says miraculously appeared in an area cave where the worship of a deity commonly known as Oxtoteotl used to take place. Some contend that as Oxtoteotl is an aspect of Tezcatlipoca, the \"Smoking Mirror,\" then the \"black Christ\" is really Tezcatlipoca, which the Spanish friars superimposed on the existing representation of Tezcatlipoca in order to convert the natives.  Pilgrimages to this Christian sanctuary follow many of the patterns of the prehispanic rituals, including walking the narrow paths to the town itself, bathing in the waters of a special fresh-water spring and dancing at the sanctuary."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "chalma",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 9903,
+    "place_id": "gn-4504003",
+    "input": {
+      "place": {
+        "place_id": "gn-4504003",
+        "name": "Sea Isle City",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.15345,
+        "lon": -74.69294
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Sea Isle City, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Sea_Isle_City,_New_Jersey",
+          "text": "Sea Isle City is a city in Cape May County, in the U.S. state of New Jersey. The city, and all of Cape May County, is part of the South Jersey region of the state, along with the Ocean City metropolitan statistical area and the Philadelphia metropolitan area. As of the 2020 United States census, the city's year-round population was 2,104, a decrease of 10 (−0.5%) from the 2010 census count of 2,114, which in turn reflected a decline of 721 (−25.4%) from the 2,835 counted in the 2000 census. Visitors raise the population to as much as 40,000 during the peak summer season from Memorial Day to Labor Day. Sea Isle City is located on Ludlam Island, which also contains the Strathmere section of Upper Township.\nSea Isle City was originally incorporated as a borough on May 22, 1882, from portions of Dennis Township, based on the results of a referendum held six days earlier."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 5,
+      "hasHook": false,
+      "extractWords": 156
+    },
+    "banned_terms": [
+      {
+        "term": "sea isle city",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "sea",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "isle",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "city",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  }
+]

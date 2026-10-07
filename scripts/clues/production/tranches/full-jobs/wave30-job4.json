@@ -1,0 +1,792 @@
+[
+  {
+    "rank": 5904,
+    "attempt": 5861,
+    "place_id": "gn-2888523",
+    "input": {
+      "place": {
+        "place_id": "gn-2888523",
+        "name": "Kleinmachnow",
+        "country": "Germany",
+        "subdivision": "Brandenburg",
+        "lat": 52.40786,
+        "lon": 13.22514
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Kleinmachnow",
+          "url": "https://en.wikipedia.org/wiki/Kleinmachnow",
+          "text": "Kleinmachnow (German pronunciation: [klaɪnˈmaxno] ) is a municipality in the Potsdam-Mittelmark district, in Brandenburg, Germany. It is situated south-west of the borough of Steglitz-Zehlendorf and east of Potsdam.\nFirst mentioned in the Landbuch of Karl IV in 1375, the Kleinmachnow played an important role at the Bäke beek / creek crossing, secured by multiple medieval castles. The last of these castles (none of which are preserved today) belonged to the Knights of Hake, a family who shaped the local history until the 20th century. The replacement of the Bäke (beek / creek) with the Teltow Canal in 1906 brought the village the now listed historic Kleinmachnow flood-gate.\nIn the first half of the 20th century, Kleinmachnow grew from a rural village to a suburban municipality of the Berlin metropolitan area. The construction of the Berlin Wall cut Kleinmachnow off from West Berlin. The community's location near the border meant it was relatively isolated in the GDR. Since the German reunification, Kleinmachnow has been part of the growth of the countryside areas outside of Berlin."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 174
+    },
+    "banned_terms": [
+      {
+        "term": "kleinmachnow",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5905,
+    "attempt": 5862,
+    "place_id": "gn-2941693",
+    "input": {
+      "place": {
+        "place_id": "gn-2941693",
+        "name": "Bunde",
+        "country": "Germany",
+        "subdivision": "Lower Saxony",
+        "lat": 53.18387,
+        "lon": 7.27334
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Bunde, Germany",
+          "url": "https://en.wikipedia.org/wiki/Bunde,_Germany",
+          "text": "Bunde (German pronunciation: [ˈbʊndə] ) is a municipal district in East Frisia, in Lower Saxony, Germany, about 20 km (12 mi) south of Emden, Germany, and 50 km (30 mi) east of Groningen, Netherlands. It lies on the southern tip of the Dollart, a bay of the North Sea between Germany and the Netherlands, and has a land border with the Netherlands.\nBunde is among the smaller districts of East Frisia, with a population of 7,607 (as of 2015). About half live in the town of Bunde itself. The district's population density is comparatively low at 62/km2 (160/sq mi), compared with 228/km2 (590/sq mi) for Germany as a whole. In the 17th and 18th centuries, sizeable areas of the district were wrested from the sea by the creation of polders.\nBunde's economy centers on agriculture and tourism. The community has been officially recognized as a resort town since 1998. Many of the town's residents commute to jobs elsewhere, notably in Leer, about 13 km (8 mi) to the east. Residents include a number of Dutch nationals, most of whom commute to jobs in the Netherlands.\n\nThe town's cultural artifacts include the Reformed Church (Reformierte Kreuzkirche), the nave of which dates from the 13th century, and the red brick Steinhaus Bunderhee castle, which dates from the 14th century."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 217
+    },
+    "banned_terms": [
+      {
+        "term": "bunde",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5906,
+    "attempt": 5863,
+    "place_id": "gn-3035883",
+    "input": {
+      "place": {
+        "place_id": "gn-3035883",
+        "name": "Autun",
+        "country": "France",
+        "subdivision": "Bourgogne-Franche-Comté",
+        "lat": 46.95104,
+        "lon": 4.29869
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Autun",
+          "url": "https://en.wikipedia.org/wiki/Autun",
+          "text": "Autun (French: [otœ̃] ) is a subprefecture of the Saône-et-Loire department in the Bourgogne-Franche-Comté region of central-eastern France. It was founded during the Principate era of the early Roman Empire by Emperor Augustus as Augustodunum to give a Roman capital to the Gallic people Aedui, who had Bibracte as their political centre. In Roman times the city may have been home to 30,000 to 100,000 people, according to different estimates. Nowadays, the commune has a population of about 13,000.\nA pioneer of the Industrial Revolution in the 19th century with the early exploitation of oil shale and fluorine, in the 20th century, Autun experienced a renewed dynamism which made it a production site for several international companies. It contains one of the six French military high schools (Lycée militaire d'Autun). The city, due to its ancient and medieval past, possesses a rich heritage which makes it one of the most important tourist sites in the heart of Burgundy, just southeast of the Morvan. It is on the Arroux river."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 169
+    },
+    "banned_terms": [
+      {
+        "term": "autun",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5907,
+    "attempt": 5864,
+    "place_id": "gn-3128757",
+    "input": {
+      "place": {
+        "place_id": "gn-3128757",
+        "name": "la Barceloneta",
+        "country": "Spain",
+        "subdivision": "Catalonia",
+        "lat": 41.3799,
+        "lon": 2.18971
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "La Barceloneta, Barcelona",
+          "url": "https://en.wikipedia.org/wiki/La_Barceloneta,_Barcelona",
+          "text": "La Barceloneta (Catalan pronunciation: [lə βəɾsəluˈnɛtə], Spanish pronunciation: [la βaɾθeloˈneta]) is a neighborhood in the Ciutat Vella district of Barcelona, Catalonia, Spain. The neighborhood was built in the 18th century for the residents of the Ribera neighborhood who had been displaced by the construction of the Ciutadella of Barcelona. The neighborhood has a triangular shape, bordered by the Mediterranean Sea, the Moll d’Espanya of Port Vell, and the El Born neighborhood. This neighborhood has its own flag and metro stop on the Barcelona Metro line 4. The neighborhood can also be explored by taking Las Gorondrinas, which depart from the front port of the Columbus monument. This way, one can see the coastal strip, but the real charm of this neighborhood lies in wandering through its narrow streets and alleys. Torre Sant Sebastià is the terminus of the Port Vell Aerial Tramway; opened in 1931, it connects La Barceloneta with Montjuïc across Port Vell.\nLa Barceloneta is known for its sandy beaches (which appeared in Don Quixote, book 2) and its many restaurants and nightclubs along the boardwalk. Over the past several years, the quality of the sand on the beach has been a source of ongoing controversy. In February 2008, the World Health Organization started an inquiry to determine whether the sand meets WHO beach health and safety guidelines.\nWith its modernity, La Barceloneta still retains the scent of salt and marine life. For many, this is considered a luxury. La Barceloneta also attracts many cruise ships to dock.\nAmong the attractions on Barceloneta’s beach are German artist Rebecca Horn's \"Homenatge a la Barceloneta\" monument, and, where the beach meets the Port Olímpic, Frank Gehry's contemporary \"Peix d’Or\" sculpture.\nIn the center of the neighborhood, there is a small museum called \"Casa de la Barceloneta\", housed in a preserved building dating back to 1761. Admission to the museum provides an insight into the evolution of the neighborhood and its history. The house has a stone façade with letters and numbers engraved on it, indicating the plots used in construction."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 340
+    },
+    "banned_terms": [
+      {
+        "term": "la barceloneta",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "barceloneta",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5908,
+    "attempt": 5865,
+    "place_id": "gn-3145614",
+    "input": {
+      "place": {
+        "place_id": "gn-3145614",
+        "name": "Mo i Rana",
+        "country": "Norway",
+        "subdivision": "Nordland",
+        "lat": 66.31278,
+        "lon": 14.14278
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Mo i Rana",
+          "url": "https://en.wikipedia.org/wiki/Mo_i_Rana",
+          "text": "Mo i Rana (Norwegian; pronounced [ˈmuː ɪ ˈrɑ̀ːnɑ]) or Måefie (Southern Sami) (and unofficially Ume Sami: Måhvie, Northern Sami: Muoffie) is a city, and the administrative centre of Rana Municipality in Nordland county, Norway. It is located in the Helgeland region of Nordland, just south of the Arctic Circle. Some of the city's suburbs include Båsmoen and Ytteren in the north, Gruben in the south east, Selfors in the east, and Åga/Hauknes/Dalsgrenda in the south.\nThe name \"Mo i Rana\" (English: Mo in Rana) is used to distinguish it from other places named Mo (including the town of Mosjøen, also located in Helgeland). The city's postal address was \"Mo 8600\" until 1999, when it was changed to \"Mo i Rana 8600\". Today, the postal address is \"8622 Mo i Rana\".\nThe 12.9-square-kilometre (3,200-acre) city has a population (2023) of 18,755 and a population density of 1,454 inhabitants per square kilometre (3,770/sq mi). This makes it the largest urban area in all of Helgeland, and the second largest city (after Bodø) in Nordland county."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 173
+    },
+    "banned_terms": [
+      {
+        "term": "mo i rana",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "mo",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "i",
+        "tokenOnly": true,
+        "source": "name part"
+      },
+      {
+        "term": "rana",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5909,
+    "attempt": 5866,
+    "place_id": "gn-3182111",
+    "input": {
+      "place": {
+        "place_id": "gn-3182111",
+        "name": "Besozzo",
+        "country": "Italy",
+        "subdivision": "Lombardy",
+        "lat": 45.84889,
+        "lon": 8.66517
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Besozzo",
+          "url": "https://en.wikipedia.org/wiki/Besozzo",
+          "text": "Besozzo is a town and municipality located in the province of Varese, in the Lombardy region of northern Italy. Besozzo hosts a small historical centre with churches and noble houses, so-called Palazzi, in its upper part which is in part pedestrian zone, and a vivid modern centre with shops, cafes, banks etc. in its lower part. The village is situated in the region of the lakes, with Lago Maggiore being only 6 kilometres (4 mi) away, and features views of the Alps.\nBesozzo has a train station on the Luino–Milan railway, and a fast road linking it to the Italian highway system. As many surrounding villages, it has grown considerably and it still doing so, in part because of families moving from Milan to region of lakes and becoming commuters.\nBesozzo is close to the Ispra site of the European Union's Joint Research Centre."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 144
+    },
+    "banned_terms": [
+      {
+        "term": "besozzo",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5910,
+    "attempt": 5867,
+    "place_id": "gn-3196410",
+    "input": {
+      "place": {
+        "place_id": "gn-3196410",
+        "name": "Livno",
+        "country": "Bosnia & Herzegovina",
+        "subdivision": "Federation of B&H",
+        "lat": 43.82695,
+        "lon": 17.00746
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Livno",
+          "url": "https://en.wikipedia.org/wiki/Livno",
+          "text": "Livno (pronounced [lǐːʋno]) is a town and the administrative center of the Township of Livno and Canton 10 of the Federation of Bosnia and Herzegovina, an entity of Bosnia and Herzegovina. It is situated on the river Bistrica at the southeastern edge of the Livno Field at the foot of Kruzi plateau which is located beneath the Cincar mountain and rocky hill Crvenice. Livno is the centre of the Canton 10 which mainly covers an area of the historical and geographical region of Tropolje. As of 2013, it has a population of 37,487 inhabitants.\nThe town, with its historic ruins and old city from the 9th century, was first mentioned in 892, developing at the crossroads between the Adriatic coast and inland, i.e., regions of Bosnia, Dalmatia, Herzegovina, and Krajina."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "livno",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5911,
+    "attempt": 5868,
+    "place_id": "gn-3451051",
+    "input": {
+      "place": {
+        "place_id": "gn-3451051",
+        "name": "Rio Verde de Mato Grosso",
+        "country": "Brazil",
+        "subdivision": "Mato Grosso do Sul",
+        "lat": -18.91806,
+        "lon": -54.84417
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Rio Verde de Mato Grosso",
+          "url": "https://en.wikipedia.org/wiki/Rio_Verde_de_Mato_Grosso",
+          "text": "Rio Verde de Mato Grosso is a municipality located in the Brazilian state of Mato Grosso do Sul. Its population was 19,973 (2020) and its area is 8,152 km2 (3,148 sq mi).\nRio Verde (which means \"Green River\" in English), how it's popularly called among the people from northern Mato Grosso do Sul, is a small town in the very edge of Serra da Alegria (which means \"The Happiness Mountains\"), close to the Pantanal of Nhecolândia (which means \"The Blissful Burg\"), one of the largest on earth. The following closest city is Coxim, an alternative center for backpackers and ecotourists from all over the world. Some of Rio Verde's great attractions are the Sete Quedas (Seven Falls), the Fazenda Igrejinha (Little Church Ranch) and the Jardim dos Tamanudás (Anteaters' Garden)."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "rio verde de mato grosso",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "rio",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "verde",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "mato",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "grosso",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5912,
+    "attempt": 5869,
+    "place_id": "gn-4504915",
+    "input": {
+      "place": {
+        "place_id": "gn-4504915",
+        "name": "Woodbury",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 39.83817,
+        "lon": -75.15268
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Woodbury, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Woodbury,_New_Jersey",
+          "text": "Woodbury is a city in and the county seat of Gloucester County in the U.S. state of New Jersey. The city, along with the rest of Gloucester County, is part of South Jersey and of the Philadelphia metropolitan area. As of the 2020 United States census, the city's population was 9,963, a decrease of 211 (−2.1%) from the 2010 census count of 10,174, which in turn reflected a decline of 133 (−1.3%) from the 10,307 in the 2000 census.\nWoodbury was originally formed as a borough on March 27, 1854, within Deptford Township based on the results of a March 22, 1854, referendum. On January 2, 1871, Woodbury was reincorporated as a city based on the results of a referendum held that day.\nInspira Health Network is based in Woodbury. The now-defunct Woodbury Country Club operated in Woodbury from 1897 to 2010, closing due to declining membership and mounting debt that led to its 2013 bankruptcy filing.\nThe city had the 14th-highest property tax rate in New Jersey with an equalized rate of 4.582% as of 2020 compared to 3.212% in the county as a whole and a statewide average of 2.279%."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 192
+    },
+    "banned_terms": [
+      {
+        "term": "woodbury",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5913,
+    "attempt": 5870,
+    "place_id": "gn-5097152",
+    "input": {
+      "place": {
+        "place_id": "gn-5097152",
+        "name": "Dayton",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.37261,
+        "lon": -74.51015
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Dayton, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Dayton,_New_Jersey",
+          "text": "Dayton is an unincorporated community and census-designated place (CDP) in South Brunswick Township, Middlesex County, New Jersey, in the United States. At the 2020 United States census, the CDP's population was 8,138, up from 7,063 in 2010.\nDayton has a post office with its own ZIP Code (08810) that encompasses the entire CDP, as well as some surrounding areas. The community was named for William L. Dayton, a local attorney who later served in the United States Senate, or for Jonathan Dayton, the youngest person to sign the United States Constitution, who later served as a U.S. senator from New Jersey. The area had been known as \"Cross Roads\" and was renamed in 1866 to avoid confusion with mail that was sent to another post office that shared the name."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "dayton",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5914,
+    "attempt": 5871,
+    "place_id": "gn-5100008",
+    "input": {
+      "place": {
+        "place_id": "gn-5100008",
+        "name": "Keyport",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.43316,
+        "lon": -74.19959
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Keyport, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Keyport,_New_Jersey",
+          "text": "Keyport is a borough in northern Monmouth County, in the U.S. state of New Jersey. A waterfront community located on the Raritan Bay in the Raritan Valley region, the borough is a commuter town of New York City in the New York metropolitan area. As of the 2020 United States census, the borough's population was 7,204, a decrease of 36 (−0.5%) from the 2010 census count of 7,240, which in turn reflected a decline of 328 (−4.3%) from the 7,568 counted in the 2000 census. Keyport's nickname is the \"Pearl of the Bayshore\" or the \"Gateway to the Bayshore\".\nKeyport was originally formed as a town on March 17, 1870, from portions of Raritan Township (now Hazlet). On April 2, 1908, the Borough of Keyport was formed, replacing Keyport Town.\nKeyport was part of the Bayshore Regional Strategic Plan, an effort by nine municipalities in northern Monmouth County to reinvigorate the area's economy by emphasizing the traditional downtowns, dense residential neighborhoods, maritime history, and the natural Raritan Bayshore coastline. The plan has since been integrated into the 2016 Monmouth County Master Plan. According to the Monmouth County Master Plan, Keyport is one of eight municipalities that has been designated as an Arts, Cultural, and Entertainment (ACE) Hub, which is defined as municipalities that have a high concentration of arts and cultural activities to serve as a destination for both visitors and locals, usually including an active nightlife scene in proximity to said cultural activities."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 244
+    },
+    "banned_terms": [
+      {
+        "term": "keyport",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5915,
+    "attempt": 5872,
+    "place_id": "gn-5100399",
+    "input": {
+      "place": {
+        "place_id": "gn-5100399",
+        "name": "Leonia",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.86149,
+        "lon": -73.98819
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Leonia, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/Leonia,_New_Jersey",
+          "text": "Leonia is a borough in Bergen County, in the U.S. state of New Jersey. As of the 2020 United States census, the borough's population was 9,304, an increase of 367 (+4.1%) from the 2010 census count of 8,937, which in turn reflected an increase of 23 (+0.3%) from the 8,914 counted in the 2000 census. The borough is a suburb of New York City, near the western approach to the George Washington Bridge.\nLeonia was formed as the result of a referendum passed on December 5, 1894, from portions of Ridgefield Township. The borough formed during the \"boroughitis\" phenomenon then sweeping Bergen County, in which 26 boroughs were formed in the county in 1894 alone. Portions of Leonia were taken on February 19, 1895, to form the Township of Teaneck.\nNew Jersey Monthly magazine ranked Leonia the 31st-best place to live in its 2008 rankings of the \"Best Places To Live\" in New Jersey."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 154
+    },
+    "banned_terms": [
+      {
+        "term": "leonia",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5916,
+    "attempt": 5873,
+    "place_id": "gn-5104836",
+    "input": {
+      "place": {
+        "place_id": "gn-5104836",
+        "name": "South Orange",
+        "country": "United States",
+        "subdivision": "New Jersey",
+        "lat": 40.74899,
+        "lon": -74.26126
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "South Orange, New Jersey",
+          "url": "https://en.wikipedia.org/wiki/South_Orange,_New_Jersey",
+          "text": "South Orange is a historic suburban village located in Essex County, New Jersey. It was formally known as the Township of South Orange Village from October 1978 until April 25, 2024. As of the 2020 United States census, the village population was 18,484, an increase of 2,286 (+14.1%) from the 2010 census count of 16,198, which in turn reflected a decline of 766 (−4.5%) from the 16,964 counted in the 2000 census. Seton Hall University is located in the township.\n\"The time and circumstances under which the name South Orange originated will probably never be known,\" wrote historian William H. Shaw in 1884, \"and we are obliged to fall back on a tradition, that Mr. Nathan Squier first used the name in an advertisement offering wood for sale\" in 1795. Other sources attribute the derivation for all of the Oranges to King William III, Prince of Orange.\nOf the 564 municipalities in New Jersey, South Orange Village is one of only four with a village type of government; the others are Loch Arbour, Ridgefield Park and Ridgewood.\nOn March 11, 2024, the governing body adopted a change to its charter under which \"township\" was dropped from the municipality's name, the name of the governing body and its leader became the council and mayor (rather than board of trustees and president of the board of trustees) and municipal elections were shifted from May to November (thus shifting term-end dates for all current elected officials from May to December 31); these changes took full effect 45 days later, on April 25, 2024."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 260
+    },
+    "banned_terms": [
+      {
+        "term": "south orange",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "south",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "orange",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5917,
+    "attempt": 5874,
+    "place_id": "gn-5120238",
+    "input": {
+      "place": {
+        "place_id": "gn-5120238",
+        "name": "Haverstraw",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 41.19759,
+        "lon": -73.96458
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Haverstraw, New York",
+          "url": "https://en.wikipedia.org/wiki/Haverstraw,_New_York",
+          "text": "The Town of Haverstraw (English pronunciation: /ˈhæːvəɹstɹɔː/ ) is a town in Rockland County, New York, United States, located north of the Town of Clarkstown and the Town of Ramapo; east of Orange County; south of the Town of Stony Point; and west of the Hudson River. The town runs from the west to the east border of the county in its northern section. The population was 39,087 at the 2020 census.\nThe name comes from the Dutch word Haverstroo meaning \"oats straw\", referring to the grasslands along the river. The town contains three villages, one of which is also known as Haverstraw. Haverstraw village is the original seat of government for the town, hosting the area's historic central downtown business district and the densest population in northern Rockland County."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 130
+    },
+    "banned_terms": [
+      {
+        "term": "haverstraw",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5918,
+    "attempt": 5875,
+    "place_id": "gn-5130572",
+    "input": {
+      "place": {
+        "place_id": "gn-5130572",
+        "name": "Parkchester",
+        "country": "United States",
+        "subdivision": "New York",
+        "lat": 40.83899,
+        "lon": -73.86041
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Parkchester, Bronx",
+          "url": "https://en.wikipedia.org/wiki/Parkchester,_Bronx",
+          "text": "Parkchester is a planned community and neighborhood originally developed by the Metropolitan Life Insurance Company and located in the east Bronx, New York City. The immediate surrounding area also takes its name from the complex. Its boundaries, starting from the north and moving clockwise, are East Tremont Avenue to the north, Castle Hill Avenue to the east, Westchester Avenue to the south, East 177th Street/Cross Bronx Expressway to the southwest, and White Plains Road to the west. Metropolitan Avenue, Unionport Road, and White Plains Road are the primary thoroughfares through Parkchester.\nThe neighborhood is part of Bronx Community District 9 and is mostly located within ZIP Code 10462, with small sections in 10460 and 10461. The 6 and <6>​ trains of the New York City Subway operate along Westchester Avenue. The neighborhood is patrolled by the New York City Police Department's 43rd Precinct. The privately owned housing complex is patrolled by the Parkchester Department of Public Safety."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 157
+    },
+    "banned_terms": [
+      {
+        "term": "parkchester",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5919,
+    "attempt": 5876,
+    "place_id": "gn-5187905",
+    "input": {
+      "place": {
+        "place_id": "gn-5187905",
+        "name": "East Falls",
+        "country": "United States",
+        "subdivision": "Pennsylvania",
+        "lat": 40.01456,
+        "lon": -75.19157
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "East Falls, Philadelphia",
+          "url": "https://en.wikipedia.org/wiki/East_Falls,_Philadelphia",
+          "text": "East Falls (also The Falls, formerly the Falls of Schuylkill) is a neighborhood in Lower Northwest, Philadelphia, Pennsylvania, United States. It lies on the east bank of the \"Falls of the Schuylkill,\" cataracts submerged in 1822 by the Schuylkill Canal and Fairmount Water Works projects. East Falls sits next to the Germantown, Roxborough, Allegheny West, and the Nicetown-Tioga neighborhoods. Wissahickon Valley Park separates it from Manayunk, Philadelphia.\nThe neighborhood runs along a few miles of Ridge Avenue, along the banks of the Schuylkill River, then extends northeast to Wissahickon Avenue. It overlooks the multi-use recreational path of Fairmount Park along Kelly Drive, and is desirable for its central location, an easy commute to Center City with easy access to several major roadways and public transportation including the East Falls station.\nThe largest center of commerce in East Falls is the Falls Center, which is home for over 18 businesses and an apartment complex."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 153
+    },
+    "banned_terms": [
+      {
+        "term": "east falls",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "east",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "falls",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5920,
+    "attempt": 5877,
+    "place_id": "gn-5342425",
+    "input": {
+      "place": {
+        "place_id": "gn-5342425",
+        "name": "Del Aire",
+        "country": "United States",
+        "subdivision": "California",
+        "lat": 33.91613,
+        "lon": -118.36952
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Del Aire, California",
+          "url": "https://en.wikipedia.org/wiki/Del_Aire,_California",
+          "text": "Del Aire (; ; Spanish: [del ˈajɾe]; Spanish for \"Of the Air\") is an unincorporated community and census designated place (CDP) in the inland South Bay, Los Angeles County, California, United States, between El Segundo and Hawthorne. The population was 10,338 at the 2020 census, up from 10,001 at the 2010 census.\nDel Aire is a small unincorporated residential neighborhood next to the Interstate 405/Interstate 105 interchange. It consists of two roughly rectangular shaped parts:\n\none to the northwest bounded by I-105 and the City of Los Angeles on the north, El Segundo on the west, Hawthorne on the east, and El Segundo Blvd. on the south, and\none to the southeast bounded by El Segundo Blvd. on the north and surrounded by Hawthorne on the east, south and west.\nThe two parts are connected by a sliver of land across El Segundo Blvd.\nThe Los Angeles Airport Courthouse is in the Del Aire CDP. Aviation/Imperial station on the Metro C Line light rail line is in Los Angeles proper, adjacent to the CDP, and the Los Angeles Air Force Base is in El Segundo, adjacent to Del Aire CDP."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 190
+    },
+    "banned_terms": [
+      {
+        "term": "del aire",
+        "tokenOnly": false,
+        "source": "name"
+      },
+      {
+        "term": "del",
+        "tokenOnly": false,
+        "source": "name part"
+      },
+      {
+        "term": "aire",
+        "tokenOnly": false,
+        "source": "name part"
+      }
+    ]
+  },
+  {
+    "rank": 5921,
+    "attempt": 5878,
+    "place_id": "gn-5949512",
+    "input": {
+      "place": {
+        "place_id": "gn-5949512",
+        "name": "Esquimalt",
+        "country": "Canada",
+        "subdivision": "British Columbia",
+        "lat": 48.43569,
+        "lon": -123.41174
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Esquimalt",
+          "url": "https://en.wikipedia.org/wiki/Esquimalt",
+          "text": "The Township of Esquimalt () is a municipality at the southern tip of Vancouver Island, in British Columbia, Canada.  It is bordered to the east by the provincial capital, Victoria, to the south by the Strait of Juan de Fuca, to the west by Esquimalt Harbour and Royal Roads, to the northwest by the New Songhees 1A Indian reserve and the town of View Royal, and to the north by a narrow inlet of water called the Gorge, across which is the district municipality of Saanich. It is almost tangential to Esquimalt 1 Indian Reserve near Admirals Road. It is one of the 13 municipalities of Greater Victoria and part of the Capital Regional District.\nEsquimalt had a population of 17,533 in 2021. It covers 7.08 km2 (2.73 sq mi). It is home to the Pacific fleet of the Royal Canadian Navy."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 142
+    },
+    "banned_terms": [
+      {
+        "term": "esquimalt",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5922,
+    "attempt": 5879,
+    "place_id": "gn-634907",
+    "input": {
+      "place": {
+        "place_id": "gn-634907",
+        "name": "Tapiola",
+        "country": "Finland",
+        "subdivision": "Uusimaa",
+        "lat": 60.17636,
+        "lon": 24.8085
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tapiola",
+          "url": "https://en.wikipedia.org/wiki/Tapiola",
+          "text": "Tapiola (Finnish: [ˈtɑpiolɑ]; Swedish: ) is a district of the municipality of Espoo on the south coast of Finland, and is one of the major urban centres of Espoo. It is located in the western part of Helsinki capital region. The name Tapiola is derived from Tapio, who is the forest god of Finnish mythology, especially as expressed in the Kalevala.\nTapiola was largely constructed in the 1950s and 1960s by the Finnish housing foundation and was designed as a garden city. It is the location of the Espoo cultural centre, the Espoo Museum of Modern Art (EMMA), the Espoo city museum, and the Espoo City Theatre.\nAccording to the Finnish National Board of Antiquities, Tapiola was the largest and most valuable example of the 1960s construction ideologies in Finland. Its architecture and landscaping that combine urban living with nature have attracted tourists ever since."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 145
+    },
+    "banned_terms": [
+      {
+        "term": "tapiola",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  },
+  {
+    "rank": 5923,
+    "attempt": 5880,
+    "place_id": "gn-665497",
+    "input": {
+      "place": {
+        "place_id": "gn-665497",
+        "name": "Tărlungeni",
+        "country": "Romania",
+        "subdivision": "Brașov County",
+        "lat": 45.63333,
+        "lon": 25.75
+      },
+      "curated_aliases": [],
+      "extracts": [
+        {
+          "article": "Tărlungeni",
+          "url": "https://en.wikipedia.org/wiki/Tărlungeni",
+          "text": "Tărlungeni (German: Tatrangen; Hungarian: Tatrang) is a commune in Brașov County, Transylvania, Romania. It is composed of four villages: Cărpiniș (Kerpenest), Purcăreni (Pürkerec), Tărlungeni, and Zizin (Zajzon).\nThe commune is located in the southeastern part of the county, just east of the county seat, Brașov, and belongs to the Brașov metropolitan area. Tărlungeni lies on the banks of the river Tărlung and its affluent, the Zizin.\nThe first attestation of the locality dates back to November 4, 1484, when the voivode of Transylvania, Stephen V Báthory, came to Brașov to mediate a dispute between the villages of Prejmer and Tărlungeni over the usage of the waters of the river Tărlung.\nAt the 2021 census, Tărlungeni had a population of 12,067, of which 38.53% were Romanians, 28.88% Roma, and 27.42% Hungarians. At the 2011 census, the commune had 8,320 inhabitants; of those, 39.9% were Romanians, 30.7% Roma, and 29.1% Hungarians. At the 2002 census, 61.3% were Romanian Orthodox, 31.2% Evangelical Lutheran, 3.6% Pentecostal and 1.1% Roman Catholic.\nZizin is known for its mineral water springs, originating from the phreatic zone of the Ciucaș Mountains; the first official description of the springs dates from 1773.\nFrom 1983 to 2016 the Liga II football club CS Unirea Tărlungeni was based in the commune."
+        }
+      ]
+    },
+    "evidence": {
+      "datasetDifficulty": 3,
+      "hasHook": false,
+      "extractWords": 130,
+      "fullExtractWords": 210
+    },
+    "banned_terms": [
+      {
+        "term": "tarlungeni",
+        "tokenOnly": false,
+        "source": "name"
+      }
+    ]
+  }
+]

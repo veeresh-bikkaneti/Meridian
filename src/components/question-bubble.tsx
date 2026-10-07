@@ -2,6 +2,9 @@ import { ChevronDown, Target, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { difficultyChip, type Difficulty } from "@/game/scoring";
 import { bubbleHeaderText } from "@/game/question-label";
+import { nameTier } from "@/game/place-name";
+import { PlaceNameText } from "@/components/place-name";
+import { ScrollCue, useMoreBelow } from "@/components/scroll-cue";
 import type { Edition } from "@/game/run";
 
 export type BubbleViewState = "open" | "collapsed" | "dismissed";
@@ -79,10 +82,14 @@ export function QuestionBubble({
   onViewChange: (view: BubbleViewState) => void;
 }) {
   const reduced = usePrefersReducedMotion();
+  // Cartographer's Plate PR3 — the "more below" cue for the name+hint
+  // scroll region. Decorative only (aria-hidden); hidden when the
+  // content fits or the region is scrolled to the bottom.
+  const { ref: scrollRef, moreBelow } = useMoreBelow<HTMLDivElement>();
 
   if (view === "dismissed") {
     return (
-      <div className="pointer-events-none absolute top-[max(4rem,env(safe-area-inset-top))] left-2.5 z-20">
+      <div className="pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] left-2.5 z-20">
         <Enter durationMs={267} reduced={reduced}>
           <button
             type="button"
@@ -98,71 +105,78 @@ export function QuestionBubble({
   }
 
   const expanded = view === "open";
+  // Cartographer's Plate PR3 — the meta band is pinned above the name:
+  // eyebrow + difficulty chip in one baseline row, plus the dismiss
+  // control. The chip is LOCKED in the band (spec §6.4): same size,
+  // label, and position at every tier — never compacts, never leaves,
+  // never shrinks below 11px. `position: sticky; top: 0` per spec §5 —
+  // the shell's flex-column layout keeps it pinned while the name+hint
+  // region scrolls beneath it.
+  const metaBand = (
+    <div className="name-meta bubble-meta">
+      <p className="name-eyebrow">{bubbleHeaderText(edition, regionName)}</p>
+      <div className="bubble-meta-actions">
+        <span data-testid="difficulty-chip" className="difficulty-chip">
+          {difficultyChip(difficulty)}
+        </span>
+        <button
+          type="button"
+          aria-label="Hide question"
+          onClick={() => onViewChange("dismissed")}
+          className="bubble-icon-button"
+        >
+          <X className="size-5" aria-hidden="true" />
+        </button>
+      </div>
+    </div>
+  );
   return (
-    <div className="pointer-events-none absolute top-[max(4rem,env(safe-area-inset-top))] left-2.5 z-20 max-w-[min(320px,calc(100vw-20px))]">
+    <div className="pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] left-2.5 z-20 w-[min(352px,calc(100vw-20px))]">
       <Enter key={view} durationMs={expanded ? 400 : 333} reduced={reduced}>
-        <div className={`pointer-events-auto rounded-[20px] p-3 pl-4 text-white ${CHROME}`}>
-          <div className="flex items-center justify-between gap-2">
-            <div className="min-w-0">
-              {expanded ? (
-                <>
-                  <p className="text-[11px] tracking-wider text-white/60 uppercase">
-                    {bubbleHeaderText(edition, regionName)}
-                  </p>
-                  <h2
-                    className="mt-0.5 max-h-48 overflow-y-auto font-display text-xl leading-tight"
-                    title={placeName}
-                    tabIndex={0}
-                    aria-label={`Question: ${placeName}`}
-                  >
-                    {placeName}
-                  </h2>
-                  <span
-                    data-testid="difficulty-chip"
-                    className="mt-1.5 inline-block rounded-full border border-amber-200/30 bg-amber-200/10 px-2 py-0.5 text-[11px] font-medium tracking-wide text-amber-100"
-                  >
-                    {difficultyChip(difficulty)}
-                  </span>
-                </>
-              ) : (
-                <p
-                  className="max-h-48 overflow-y-auto font-display text-lg leading-tight"
-                  title={placeName}
-                  tabIndex={0}
-                  aria-label={`Question: ${placeName}`}
-                >
-                  {placeName}
-                </p>
-              )}
-            </div>
-            <div className="flex shrink-0 items-center">
-              <button
-                type="button"
-                aria-label={expanded ? "Collapse question" : "Expand question"}
-                aria-expanded={expanded}
-                onClick={() => onViewChange(expanded ? "collapsed" : "open")}
-                className="flex size-11 items-center justify-center rounded-full text-white/80 transition-all duration-150 hover:bg-white/10 hover:text-white active:scale-95"
+        <div
+          className="game-chrome bubble-shell pointer-events-auto rounded-[20px]"
+          data-name-tier={nameTier(placeName)}
+        >
+          {metaBand}
+          {/* The backstop (spec §5): name + hint as ONE scroll region.
+              The scrollbar stays visually hidden (PR #77 — Veeresh's
+              will: no scrollbar arrows over the name); the fade + ⋯ +
+              "more below" cue is the scroll signal. Keyboard users reach
+              the region via tabindex="0" (spec §8.1). */}
+          <div className="scroll-cue-wrap bubble-scroll-wrap" hidden={!expanded}>
+            <div
+              ref={scrollRef}
+              className="bubble-scroll"
+              role="region"
+              aria-label="Place name — scroll for more"
+              tabIndex={0}
+            >
+              <h2
+                className="place-name qname"
+                data-name-tier={nameTier(placeName)}
+                title={placeName}
               >
-                <ChevronDown
-                  className={`size-5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
-                  aria-hidden="true"
-                />
-              </button>
-              <button
-                type="button"
-                aria-label="Hide question"
-                onClick={() => onViewChange("dismissed")}
-                className="flex size-11 items-center justify-center rounded-full text-white/80 transition-all duration-150 hover:bg-white/10 hover:text-white active:scale-95"
-              >
-                <X className="size-5" aria-hidden="true" />
-              </button>
+                <PlaceNameText name={placeName} />
+              </h2>
+              <p className="bubble-hint">{hasPin ? HINT_PIN : HINT_EMPTY}</p>
             </div>
+            <ScrollCue visible={moreBelow} />
           </div>
-          {expanded ? (
-            <p className="mt-1.5 text-sm leading-snug text-white/80">
-              {hasPin ? HINT_PIN : HINT_EMPTY}
-            </p>
-          ) : null}
+          {/* Collapsed: meta band + toggle only. The name folds away
+              entirely (honest; never clamped) — the folded panel uses
+              `hidden`, removed from AT (spec §5/§8.6). */}
+          <button
+            type="button"
+            className="bubble-toggle"
+            aria-expanded={expanded}
+            onClick={() => onViewChange(expanded ? "collapsed" : "open")}
+          >
+            <ChevronDown
+              className={`size-5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
+              aria-hidden="true"
+            />
+            {expanded ? "Hide place name" : "Show place name"}
+          </button>
         </div>
       </Enter>
     </div>

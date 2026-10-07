@@ -6,6 +6,8 @@ import { DropPinButton } from "@/components/drop-pin-button.tsx";
 import { ZoomControls } from "@/components/zoom-controls.tsx";
 import { disk } from "@/game/geo";
 import { isHit } from "@/game/radius";
+import { startGlobeSpin, stopGlobeSpin } from "@/game/audio/sfx";
+import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
 import { IMAGERY_NOTICE, imageryView } from "./imagery.ts";
 import { isTap, type PointerTapEndpoint } from "./pin-tap.ts";
 import { clearRegionHighlight, paintRegionHighlight } from "./region-highlight.ts";
@@ -609,7 +611,9 @@ export function SatelliteMap(props: {
     // Resolve the atlas entry once per map instance. The polygon feeds the
     // highlight; camera math (settle framing, max bounds, big-miss) uses the
     // game's regions.ts box — the established game truth — because the
-    // atlas DTO's naive bounds span the dateline for Alaska.
+    // atlas DTO's naive bounds span the dateline for Alaska, and its naive
+    // center lands in the Atlantic for France (overseas departments). The
+    // center MUST be recomputed from the game box whenever it is provided.
     let dto: RegionGeometryDTO | null = lookupRegion(getRegionIndex(), props.regionName);
     if (!dto && props.bounds) {
       const [west, south, east, north] = props.bounds;
@@ -621,7 +625,14 @@ export function SatelliteMap(props: {
         polygonCoords: { type: "MultiPolygon", coordinates: [] as number[][][][] },
       };
     }
-    if (dto && props.bounds) dto = { ...dto, bounds: props.bounds };
+    if (dto && props.bounds) {
+      const [west, south, east, north] = props.bounds;
+      dto = {
+        ...dto,
+        bounds: props.bounds,
+        center: [(west + east) / 2, (south + north) / 2],
+      };
+    }
     dtoRef.current = dto;
 
     // Design §8: the restore path re-opens mid-SPACE. Projection and
@@ -701,6 +712,26 @@ export function SatelliteMap(props: {
       const liveMap = mapRef.current;
       if (!spot || !liveMap) return null;
       const p = liveMap.project([spot.lon, spot.lat]);
+      const containerRect = liveMap.getCanvasContainer().getBoundingClientRect();
+      const wrapperRect = wrapperEl.getBoundingClientRect();
+      return {
+        x: p.x + (containerRect.left - wrapperRect.left),
+        y: p.y + (containerRect.top - wrapperRect.top),
+      };
+    };
+
+    // E2E seam (mirrors __spotScreen): project an arbitrary lon/lat to
+    // wrapper-relative screen coordinates so specs can tap deterministic
+    // geographic points (e.g. a miss pin on a named place for the
+    // pin-compare-line assertions). Inert in production.
+    (
+      wrapperEl as unknown as {
+        __project?: (lon: number, lat: number) => { x: number; y: number } | null;
+      }
+    ).__project = (lon: number, lat: number) => {
+      const liveMap = mapRef.current;
+      if (!liveMap) return null;
+      const p = liveMap.project([lon, lat]);
       const containerRect = liveMap.getCanvasContainer().getBoundingClientRect();
       const wrapperRect = wrapperEl.getBoundingClientRect();
       return {
@@ -875,6 +906,12 @@ export function SatelliteMap(props: {
           }
           case "paint-highlight": {
             paintHighlight(intent.feature);
+            // Celebration audio (spec §3): the narrow-in landed — the
+            // region's chart has arrived. This intent is emitted only at
+            // narrow completion (zoom-space emits it nowhere else), so the
+            // chime fires on the actual swap, never on a timer and never on
+            // restore paths (which paint directly and bypass the executor).
+            playCelebrationSound("toastChime");
             break;
           }
           case "clear-highlight": {
@@ -919,8 +956,15 @@ export function SatelliteMap(props: {
             break;
           }
           case "spin": {
-            if (intent.active) startSpin(intent.speedDps ?? SPIN_SPEED_DPS);
-            else stopSpin();
+            if (intent.active) {
+              startSpin(intent.speedDps ?? SPIN_SPEED_DPS);
+              // Globe-spin audio DISABLED per Veeresh (2026-10-06): no swish
+              // on spin. startGlobeSpin stays in sfx.ts (API preserved).
+            } else {
+              stopSpin();
+              // stopGlobeSpin is a no-op safeguard (never started now).
+              safePlay(stopGlobeSpin);
+            }
             break;
           }
           case "reveal-done": {
@@ -1061,6 +1105,17 @@ export function SatelliteMap(props: {
       return true;
     };
     skipControlRef.current = { arm: armSkip, disarm: disarmSkip, trySkip };
+
+    // Celebration audio (spec §2.3): the player's first touch on the map
+    // during the intro spin ends the ambient texture — the spin sound
+    // belongs to the unattended intro, not to an interacting player.
+    // stopGlobeSpin is a no-op when no loop is running, so the listener is
+    // unconditional and never throws (safePlay belt-and-braces).
+    const spinContainer = map.getCanvasContainer();
+    const onIntroPointerUp = () => {
+      safePlay(stopGlobeSpin);
+    };
+    spinContainer.addEventListener("pointerup", onIntroPointerUp);
 
     // Must-fix #2: tile load lifecycle (see tile-status.ts wiring contract).
     // Only TILE failures feed it: the "error" event also fires for
@@ -1336,6 +1391,9 @@ export function SatelliteMap(props: {
       window.clearTimeout(watchdog);
       disarmSkip();
       stopSpin();
+      // An unmount mid-intro must not leave the ambient loop playing.
+      safePlay(stopGlobeSpin);
+      spinContainer.removeEventListener("pointerup", onIntroPointerUp);
       destroyStarfield.destroy();
       detachTapHandlers();
       for (const marker of markersRef.current) marker.remove();
