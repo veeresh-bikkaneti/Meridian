@@ -18,20 +18,30 @@ Doctrine: **names are the payload; containers flex, names never do.**
 - E2E seams kept: `difficulty-chip`, `pin-compare-line`, `miss-headline`, `growth-line`, `score-breakdown` — none renamed.
 
 ## Done
-- [x] Worktree + branch `feat/longname-pr3`; BRANCH_STATUS.md created
+- [x] Worktree + branch `feat/longname-pr3`; pushed to origin (`f94d962`)
+- [x] `src/components/scroll-cue.tsx` (new): `useMoreBelow` + `<ScrollCue>`
+- [x] question-bubble.tsx backstop restructure (shell cap, one scroll region, sticky meta, Show/Hide toggle, §6.1 compaction)
+- [x] result-card.tsx three zones + theme-aware re-chrome (`atlas-dark-scope` deleted)
+- [x] LoopScreen.tsx: guess-list region, sheet 48px header, LoopReveal zones + clue-history summary rows
+- [x] styles.css: PR3 CSS (zones, cue/fade, hidden scrollbars, focus rings, zoom caps, reduced-motion)
+- [x] Unit tests: 816/816 green (incl. new scroll-cue tests + PR3 contracts)
+- [x] E2E specs updated (question-wrap, question-card-header, longname-wrap) + new `longname-scroll-a11y.desktop.spec.ts`
+- [x] Gates: tsc clean · npm test 816/816 · lint-cards GATE PASSED · build:pages green · eslint 0 errors (1 pre-existing warning in an untouched spec)
+- [x] Contrast figures recorded (see below)
 
 ## Active
-- [ ] `src/components/scroll-cue.tsx` (new): `useMoreBelow` + `<ScrollCue>`
-- [ ] question-bubble.tsx backstop restructure
-- [ ] result-card.tsx three zones + re-chrome
-- [ ] LoopScreen.tsx: guess-list region, sheet header, LoopReveal zones + clue-history rows
-- [ ] styles.css: PR3 CSS (backstop, zones, cue/fade, focus rings, zoom caps)
-- [ ] Unit tests: question-bubble.test.ts + result-card.test.ts updates, scroll-cue.test.ts
-- [ ] E2E updates: question-wrap, question-card-header, longname-wrap, longname-tiers + new longname-scroll-a11y spec
-- [ ] Gates: tsc · npm test · lint-cards · build:pages · eslint
-- [ ] E2E via flock lock (360/768/1280 × light/dark × reduced-motion) + 200% zoom
-- [ ] Contrast figures recorded
+- [ ] E2E run via flock lock (running): new spec + updated specs + longname-tiers + reveal/loop regression
 - [ ] PR opened (base main) — NOT merged
+
+## Contrast figures (spec §8.9, WCAG relative luminance, measured 2026-10-06)
+- Light `--atlas-brass-text` #8a5f16 on light surface #fffdf8 (bearing arrow + dossier number, >12px): **5.54:1** (≥3:1 large-text ✓, also clears 4.5:1)
+- Focus ring dark: #e8b64c on dark game chrome ≈ **9.38:1** (≥3:1 ✓)
+- Focus ring light: #8a5f16 on light game chrome ≈ **5.15:1** (≥3:1 ✓)
+- Dark `--atlas-brass-text` #e8b64c on dark atlas-bg-1: 8.74:1
+- (Spec's pre-recorded: dark brass 8.74:1, dark ink 13.3:1, light brass-sm 7.08:1, light ink 13.1:1, light rule 3.60:1 — unchanged.)
+
+## Reduced-motion verification (spec §8.8, one-line check)
+- `grep -n "transition" src/styles.css` on PR3 selectors: only the chevron rotations (`.bubble-toggle svg`, `.clue-history-toggle svg`) and button micro-transitions — all zeroed under `prefers-reduced-motion: reduce` in the PR3 block. Tier properties (font-size/weight) carry no transitions anywhere — tier switches are instant. Enter/Rise/Fade choreography already reduced-motion-safe in JS.
 
 ## Spec deviations (deliberate, rationale recorded)
 _(none yet)_
