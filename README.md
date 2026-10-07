@@ -2,7 +2,8 @@
 
 **Explore the world, one pin at a time—where every guess unlocks a new story**
 
-Play it at [veeresh-bikkaneti.github.io/Meridian](https://veeresh-bikkaneti.github.io/Meridian/).
+Play it at [veeresh-bikkaneti.github.io/Meridian](https://veeresh-bikkaneti.github.io/Meridian/)
+— also served via [meridian.knowledgetest.workers.dev](https://meridian.knowledgetest.workers.dev/).
 
 ## A learning journey, not just a quiz
 
