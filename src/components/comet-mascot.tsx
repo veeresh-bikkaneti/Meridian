@@ -75,14 +75,17 @@ type BoopState = "idle" | "booped" | "dizzy";
  */
 export function CometMascot() {
   const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
-  const finePointer = useMediaQuery("(pointer: fine)");
-  // Cursor tracking is a fine-pointer, full-motion treat only.
-  const tracking = finePointer && !reducedMotion;
+  // Veeresh 2026-10-06: tracking works for all pointer types (mouse + touch).
+  // Mouse: head follows pointermove. Touch: head looks at the last tap
+  // (pointerdown). prefers-reduced-motion still disables tracking entirely.
+  const tracking = !reducedMotion;
 
   const [sector, setSector] = useState(-1); // -1 = neutral (dead zone)
   const [eyes, setEyes] = useState<Eyes>("open");
   const [boopState, setBoopState] = useState<BoopState>("idle");
   const [greetingOpen, setGreetingOpen] = useState(false);
+  // Veeresh 2026-10-06: Comet reacts when the player picks an edition.
+  const [reaction, setReaction] = useState<string | null>(null);
 
   const btnRef = useRef<HTMLButtonElement | null>(null);
   const sectorRef = useRef(-1);
@@ -105,42 +108,57 @@ export function CometMascot() {
     setEyes(next);
   }, []);
 
-  // Cursor tracking: rAF-throttled pointermove → 8-sector head turn.
+  // Gaze tracking: rAF-throttled pointermove (mouse) + pointerdown (touch taps)
+  // → 8-sector head turn. Touch has no hover, so each tap sets the gaze target
+  // and the head stays looking there until the next tap.
   useEffect(() => {
     if (!tracking) {
       sectorRef.current = -1;
       setSector(-1);
       return;
     }
+    const updateSector = (x: number, y: number) => {
+      const el = btnRef.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const dx = x - (r.left + r.width / 2);
+      const dy = y - (r.top + r.height / 2);
+      let next = -1;
+      if (Math.hypot(dx, dy) >= DEAD_ZONE_PX) {
+        const angle = Math.atan2(dy, dx);
+        const cur = sectorRef.current;
+        next =
+          cur === -1 || angDist(angle, cur * SECTOR) >= SECTOR / 2 + HYSTERESIS_RAD
+            ? sectorForAngle(angle)
+            : cur;
+      }
+      if (next !== sectorRef.current) {
+        sectorRef.current = next;
+        setSector(next);
+      }
+    };
     const onMove = (e: PointerEvent) => {
       pendingRef.current = { x: e.clientX, y: e.clientY };
       if (rafRef.current) return;
       rafRef.current = requestAnimationFrame(() => {
         rafRef.current = 0;
         const p = pendingRef.current;
-        const el = btnRef.current;
-        if (!p || !el) return;
-        const r = el.getBoundingClientRect();
-        const dx = p.x - (r.left + r.width / 2);
-        const dy = p.y - (r.top + r.height / 2);
-        let next = -1;
-        if (Math.hypot(dx, dy) >= DEAD_ZONE_PX) {
-          const angle = Math.atan2(dy, dx);
-          const cur = sectorRef.current;
-          next =
-            cur === -1 || angDist(angle, cur * SECTOR) >= SECTOR / 2 + HYSTERESIS_RAD
-              ? sectorForAngle(angle)
-              : cur;
-        }
-        if (next !== sectorRef.current) {
-          sectorRef.current = next;
-          setSector(next);
-        }
+        if (!p) return;
+        updateSector(p.x, p.y);
       });
     };
+    // Touch: look at the last tap. Filter to touch pointers so mouse-driven
+    // automation (and mouse pointerdown, already covered by pointermove)
+    // doesn't spuriously retarget the gaze.
+    const onTap = (e: PointerEvent) => {
+      if (e.pointerType !== "touch") return;
+      updateSector(e.clientX, e.clientY);
+    };
     window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("pointerdown", onTap, { passive: true });
     return () => {
       window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerdown", onTap);
       cancelAnimationFrame(rafRef.current);
       rafRef.current = 0;
     };
@@ -227,6 +245,37 @@ export function CometMascot() {
     }
   }, [later, showEyes]);
 
+  // Edition-selection reaction (Veeresh 2026-10-06): when the player taps an
+  // edition card, game-app dispatches `comet:edition-select` with the tap
+  // coordinates and edition name. Comet looks at the card, does the happy
+  // boop, and shows a brief excited bubble. Under prefers-reduced-motion the
+  // bubble shows statically with no bounce (handleBoop already no-ops its
+  // WAAPI animation when reduced motion is on).
+  useEffect(() => {
+    const onEditionSelect = (e: Event) => {
+      const detail = (e as CustomEvent<{ x: number; y: number; edition: string }>).detail;
+      if (!detail) return;
+      // Look at the tapped card via the same sector math as gaze tracking.
+      const el = btnRef.current;
+      if (el) {
+        const r = el.getBoundingClientRect();
+        const dx = detail.x - (r.left + r.width / 2);
+        const dy = detail.y - (r.top + r.height / 2);
+        if (Math.hypot(dx, dy) >= DEAD_ZONE_PX) {
+          const next = sectorForAngle(Math.atan2(dy, dx));
+          sectorRef.current = next;
+          setSector(next);
+        }
+      }
+      // Happy reaction: the boop squash + an excited bubble.
+      handleBoop();
+      setReaction(`To the ${detail.edition}!`);
+      later(() => setReaction(null), 2200);
+    };
+    window.addEventListener("comet:edition-select", onEditionSelect);
+    return () => window.removeEventListener("comet:edition-select", onEditionSelect);
+  }, [handleBoop, later]);
+
   const [hx, hy] = sector === -1 ? [0, 0] : HEAD_OFFSETS[sector];
   const px = hx * PUPIL_SCALE;
   const py = hy * PUPIL_SCALE;
@@ -238,6 +287,15 @@ export function CometMascot() {
       data-testid="comet-wrap"
     >
       <CometGreeting onOpenChange={setGreetingOpen} />
+      {reaction ? (
+        <div
+          className="comet-greeting comet-reaction"
+          data-testid="comet-reaction"
+          role="status"
+        >
+          <p className="comet-greeting-text">{reaction}</p>
+        </div>
+      ) : null}
       <button
         ref={btnRef}
         type="button"
