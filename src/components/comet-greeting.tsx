@@ -2,11 +2,9 @@ import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouse
 import { Volume2 } from "lucide-react";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import {
-  COMET_GREETING_LAST_DATE_KEY,
   COMET_GREETING_LINES,
   greetingAudioUrl,
   greetingIndexFor,
-  localDateKey,
 } from "./comet-greetings";
 
 // Designer decisions (locked):
@@ -136,20 +134,8 @@ export function CometGreeting({ onOpenChange }: { onOpenChange?: (open: boolean)
 
   // Decision 3: hold audio until the first user interaction, anywhere.
   useEffect(() => {
-    let stored: string | null = null;
-    try {
-      stored = localStorage.getItem(COMET_GREETING_LAST_DATE_KEY);
-    } catch {
-      stored = null;
-    }
-    const today = localDateKey();
-    if (stored === today) return; // Decision 5: already greeted today.
-    try {
-      localStorage.setItem(COMET_GREETING_LAST_DATE_KEY, today);
-    } catch {
-      // Storage unavailable (private mode) — greet anyway, just don't persist.
-    }
-
+    // Veeresh 2026-10-06: greet on every home page visit (not once per day).
+    // Muting is via the global sound toggle — isSoundEnabled() gates audio below.
     const index = greetingIndexFor();
     indexRef.current = index;
     wordsRef.current = COMET_GREETING_LINES[index].split(" ");
