@@ -1,43 +1,6 @@
-/* Ko-fi support footer — Veeresh 2026-10-07.
- * Deliberately the quietest thing on the page: plain muted Karla text,
- * no borders, no background fills, no icons, no entrance animation.
- * Theme-aware via the atlas tokens; static under prefers-reduced-motion
- * (there is no motion to reduce — nothing here animates, ever). */
-
-.support-footer {
-  margin-top: 2.5rem;
-  padding-bottom: 1.5rem;
-  text-align: center;
-  font-family: var(--font-atlas-body);
-  color: var(--muted);
-  font-size: 0.75rem;
-  line-height: 1.6;
-}
-
-.support-footer-colophon {
-  margin: 0;
-}
-
-.support-footer a {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  text-decoration-color: var(--subtle);
-}
-
-.support-footer a:hover {
-  color: var(--fg);
-  text-decoration-color: currentColor;
-}
-
-.support-footer-disclaimer {
-  margin: 0.25rem 0 0;
-  color: var(--subtle);
-  font-size: 0.6875rem;
-}
-
 /* "Ask a grown-up" gate — minimal native <dialog>. Small, centered,
  * one-tap-outside or Esc to dismiss. No animation. */
+
 .support-dialog {
   border: none;
   border-radius: 0.5rem;
@@ -57,6 +20,13 @@
   margin: 0;
   font-size: 0.875rem;
   line-height: 1.5;
+}
+
+.support-dialog-disclaimer {
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--subtle);
 }
 
 .support-dialog-actions {
@@ -81,4 +51,9 @@
   background: var(--fg);
   color: var(--bg);
   border-color: transparent;
+}
+
+.support-dialog-btn:focus-visible {
+  outline: 3px solid var(--atlas-brass);
+  outline-offset: 2px;
 }
