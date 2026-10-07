@@ -103,9 +103,9 @@ or game-logic changes. (Prior branch content was PR #96, merged to main.)
 
 ## Pending
 
-- [ ] E2E re-run of `mobile-home-overlap.spec.ts` after the two review
-      fixes (in progress).
-- [ ] Push branch + open PR (Veeresh merges).
+- [x] E2E re-run of `mobile-home-overlap.spec.ts` after the two review
+      fixes: 20/20 green (2026-10-07).
+- [ ] Open PR (Veeresh merges).
 
 ## Notes / open questions
 
