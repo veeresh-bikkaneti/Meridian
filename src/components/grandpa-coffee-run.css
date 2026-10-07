@@ -294,6 +294,9 @@
   opacity: 0;
   visibility: hidden;
   transform-origin: 22.5% 71.8%; /* spout tip in the 80x110 viewBox */
+  pointer-events: none; /* senior review 2026-10-07: the kettle sweeps over
+    the page during its drop — it must never intercept taps (it lives
+    inside the walker's role="button") */
 }
 
 .kettle-svg {
