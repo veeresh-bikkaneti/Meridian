@@ -1,16 +1,38 @@
-# BRANCH_STATUS.md — fix/grandpa-mug-focus
+# BRANCH_STATUS — feat/grandpa-park-workflow
 
-**Branch:** `fix/grandpa-mug-focus` (from origin/main)
-**Task:** Veeresh's final change (2026-10-07) — remove grandpa's head movement, make the coffee mug the attention-grabber.
+Veeresh's park-workflow rework of Grandpa's Coffee Run (2026-10-07).
+UX-expert + UI-frontend-developer lens: the whole donation flow lives in the
+cloud so the UI never gets crowded.
 
 ## Done
-- [x] Removed ALL pointer-tracking from grandpa (TSX): deleted gaze constants/helpers (`DEAD_ZONE_PX`, `SECTOR`, `HEAD_OFFSETS`, etc.), the tracking `useEffect`, sector state/refs, `data-tracking` attribute, and the inline head/pupil transforms. Head is fixed, facing the viewer.
-- [x] New attention-grabber: `.seated-mug-gesture` group (arm + mug) does a gentle invite flourish every ~6s (`mug-invite` keyframes: lift + slight rotate/scale, then settle) plus a synchronized `.mug-puff` steam puff (`mug-puff` keyframes).
-- [x] Kept: slow walk, halfway cheers beat, chair finale, continuous steam, donation bubble ("Help me buy coffee! / Grown-ups — donations keep Meridian free for kids"), tap→"Ask a grown-up" gate→Ko-fi.
-- [x] `prefers-reduced-motion`: `.seated-mug-gesture` + `.mug-puff` in the `animation: none` list; head fixed; bubble shown statically.
-- [x] E2E updated: desktop eye-tracking test → "head stays still + mug invites" (pupils have no inline transform after pointer sweeps; `mug-invite` applied; bounding-box travel ≥2px over one 6s cycle). Reduced spec: no `data-tracking` attr, gesture animation "none".
-- [x] Quality gates: `tsc` clean · unit 837/837 · `lint-cards.mjs` GATE PASSED · `build:pages` green · E2E 9/9 desktop + 2/2 reduced + 3/3 mobile (one mobile flake on first run, green on two reruns — bubble-opacity timing, unrelated).
-- [x] Pushed, PR opened.
+- [x] Beat 1: slow stroll (~9.5s), dotted trail — NO thought cloud during walk
+- [x] Beat 2: kettle drops in a dolly-vertigo move (descends while scaling
+      0.25→2.6x toward the viewer, spout-tip transform-origin), tilts, pours
+      (visible stream), fills the mug (clipped fill rises + steam burst),
+      rises/fades away (~2.8s spectacle)
+- [x] Beat 3: park finale — SVG tree + wooden bench fade in behind grandpa;
+      chair removed from his SVG; he sits ON the bench facing the viewer
+- [x] Head fixed, NO pointer tracking (Comet keeps its own); periodic
+      mug-lift invite + steam puff every ~6s is the attention-grabber
+- [x] Beat 4: cloud workflow — tapping grandpa OR the cloud swaps the cloud
+      content (animated) to the "ask a grown-up" gate INSIDE THE SAME CLOUD:
+      "You're leaving Meridian to visit Ko-fi. Ask a grown-up!" /
+      "Meridian is free forever — every game, every map, every mystery." /
+      [Continue] [Cancel]; Continue → Ko-fi new tab + cloud reverts;
+      Cancel/Esc reverts; Continue focused on open
+- [x] Walker is now div role=button (was <button>) so the cloud can hold real
+      buttons; keyboard: Enter/Space opens, Esc cancels
+- [x] Deleted support-gate-dialog.tsx + .css (grandpa was the only importer)
+- [x] Hard rules: inline SVG only, zero sfx/analytics, env-gated, hidden
+      offline, no gameplay gating, reduced-motion → static park scene
+- [x] tsc clean
+- [x] Unit suite green (837/837)
+- [x] lint-cards.mjs GATE PASSED
+- [x] build:pages green WITH Ko-fi URL; green WITHOUT (fail-closed: 0 ko-fi
+      URL hits in no-env bundle)
+- [x] Playwright E2E 13/13: 8 desktop (walk no cloud, kettle drop+pour+fill,
+      park tree+bench, tap grandpa→gate, tap cloud→gate, Continue→Ko-fi+revert,
+      Cancel/Esc revert, keyboard, offline, CTA coverage) + 3 mobile + 2 reduced
 
 ## Pending
-- [ ] Veeresh merges the PR (CI: GitGuardian + build).
+- [ ] Push branch, open PR (Veeresh merges)

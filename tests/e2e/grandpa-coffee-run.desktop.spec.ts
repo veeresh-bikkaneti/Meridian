@@ -3,21 +3,26 @@ import { serveBuiltArtifact } from "./helpers";
 
 /**
  * Grandpa's Coffee Run E2E — animated donation scene on the Chart Room home
- * (Veeresh 2026-10-07; finale rework: slow stroll, seated cheers, donation
- * bubble, fixed head with a periodic mug-lift invite).
+ * (Veeresh 2026-10-07; park workflow rework).
  *
  * Beats: entrance (dotted trail unrolls) → slow walk ~9.5s (bob, cane tap,
- * mug sip, cloud tracks) → cheers at 45% (travel pauses, front pose,
- * donation text) → arrival → seated finale (chair, mug raised with steam,
- * head fixed, mug-lift invite every ~6s, thought cloud opens into the
- * donation bubble). Tap grandpa → "ask a grown-up" gate → Continue opens
- * Ko-fi in a new tab.
+ * mug sip, NO cloud) → kettle beat at 45% (travel pauses, front pose, mug
+ * raised; a kettle drops in a dolly-vertigo move, pours, fills the mug,
+ * vanishes; the mid-walk ask shows) → arrival → park finale (tree + bench
+ * fade in; grandpa sits on the bench facing the viewer, head fixed, mug
+ * raised with steam + periodic invite flourish; the cloud opens with
+ * "Help me buy coffee!").
  *
- * Covers: slow walk completes, cheers beat triggers with the ask text,
- * seated finale renders (chair pose, steam, bubble text, head stays still on
- * pointer moves, mug-lift invite fires periodically), tap opens the gate (no
- * navigation), Continue opens Ko-fi, Cancel / Esc / backdrop dismiss, offline
- * hides grandpa, never covers CTAs, no console errors.
+ * The key UX change: tapping grandpa OR the cloud swaps the cloud content to
+ * the "ask a grown-up" gate workflow INSIDE THE SAME CLOUD — no separate
+ * dialog. Continue opens Ko-fi in a new tab and the cloud reverts;
+ * Cancel/Esc reverts. Continue is focused on open.
+ *
+ * Covers: slow walk with no cloud, kettle drop + pour + mug fill, park
+ * finale (tree + bench), cloud ask → gate via grandpa tap and via cloud tap,
+ * Continue opens Ko-fi (no navigation) and reverts, Cancel/Esc revert,
+ * keyboard focus + Enter, offline hides grandpa, never covers CTAs, no
+ * console errors.
  *
  * Build requirement: the test artifact must be built with the Ko-fi URL, e.g.
  *   VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy npm run build:pages
@@ -86,49 +91,90 @@ async function expectGrandpaNotCoveringCtas(page: Page) {
   }
 }
 
-test("grandpa strolls in slowly, cheers halfway, then sits with his coffee", async ({
+/** Wait until the scene reaches the seated finale. */
+async function waitForSeated(page: Page) {
+  const scene = page.getByTestId("grandpa-scene");
+  await expect(scene).toHaveAttribute("data-beat", "seated", {
+    timeout: 30_000,
+  });
+}
+
+test("walk has no cloud, kettle fills the mug, then the park finale", async ({
   page,
 }) => {
   const errors = await loadHome(page);
   const scene = page.getByTestId("grandpa-scene");
 
-  // Beat 1+2: the slow stroll — the dotted trail is unrolling beneath him.
+  // Beat 1: the slow stroll — dotted trail unrolling, NO thought cloud.
   await expect(scene).toHaveAttribute("data-beat", "walking", {
     timeout: 5_000,
   });
   await expect(page.getByTestId("grandpa-path")).toBeVisible();
-  // The stroll is leisurely now (~9.5s): after 3s he must still be walking,
-  // not already parked.
+  await expect(page.locator(".thought-cloud")).toHaveCount(0);
+  // The donation cloud stays hidden until the finale.
+  await expect(page.getByTestId("grandpa-donation-bubble")).toHaveCSS(
+    "visibility",
+    "hidden",
+  );
+  // The stroll is leisurely (~9.5s): after 3s he must still be walking.
   await page.waitForTimeout(3000);
   await expect(scene).toHaveAttribute("data-beat", "walking");
 
-  // Beat 3: cheers — travel pauses, he faces the viewer, the ask appears.
-  // (Walk is 9.5s; cheers hits at 45% ≈ 4.3s and holds 2s.)
-  await expect(scene).toHaveAttribute("data-beat", "cheering", {
+  // Beat 2: the kettle — travel pauses, he faces the viewer, the ask shows,
+  // and the kettle drops in a dolly-vertigo move.
+  // (Walk is 9.5s; the kettle hits at 45% ≈ 4.3s and holds 2.8s.)
+  await expect(scene).toHaveAttribute("data-beat", "kettle", {
     timeout: 12_000,
   });
   const cheersText = page.locator(".grandpa-cheers-text");
   await expect(cheersText).toContainText("Support the Expedition");
-  await expect(cheersText).toContainText(
-    "Grown-ups — help keep Meridian funded and free for kids",
-  );
   const cheersOpacity = await cheersText.evaluate(
     (el) => getComputedStyle(el).opacity,
   );
   expect(parseFloat(cheersOpacity)).toBeGreaterThan(0.9);
 
-  // Beat 5: the seated finale — chair pose, steam, donation bubble.
-  await expect(scene).toHaveAttribute("data-beat", "seated", {
-    timeout: 25_000,
-  });
+  // The kettle is looming (scaled up toward the viewer).
+  const kettle = page.getByTestId("grandpa-kettle");
+  await expect
+    .poll(
+      async () =>
+        parseFloat(
+          await kettle.evaluate((el) => getComputedStyle(el).opacity),
+        ),
+      { timeout: 4_000 },
+    )
+    .toBeGreaterThan(0.5);
+
+  // The pour lands: stream visible and the mug filling (fill group rising
+  // from its clipped-hidden start toward translateY(0)).
+  const stream = page.getByTestId("grandpa-kettle-stream");
+  await expect
+    .poll(
+      async () =>
+        parseFloat(
+          await stream.evaluate((el) => getComputedStyle(el).opacity),
+        ),
+      { timeout: 4_000 },
+    )
+    .toBeGreaterThan(0.5);
+  const fillTY = await page
+    .getByTestId("grandpa-mug-fill")
+    .evaluate((el) => {
+      const t = getComputedStyle(el).transform;
+      if (t === "none") return 0;
+      const m = t.match(/matrix\([^,]+,[^,]+,[^,]+,[^,]+,[^,]+,\s*([^)]+)\)/);
+      return m ? parseFloat(m[1]) : 999;
+    });
+  expect(fillTY, `mug fill translateY during pour: ${fillTY}px`).toBeLessThan(10);
+
+  // Beat 4: the park finale — tree + bench fade in, he sits facing us.
+  await waitForSeated(page);
   const walker = page.getByTestId("grandpa-walker");
   const box = await walker.boundingBox();
   expect(box).not.toBeNull();
   const vp = page.viewportSize()!;
-  // Bottom-right quadrant, near the bottom edge.
   expect(box!.x).toBeGreaterThan(vp.width / 2);
   expect(vp.height - (box!.y + box!.height)).toBeLessThanOrEqual(80);
-  // Left of Comet (Comet sits at the far bottom-right corner).
   const comet = await page.getByTestId("comet-mascot").boundingBox();
   expect(comet).not.toBeNull();
   expect(box!.x + box!.width).toBeLessThanOrEqual(comet!.x + 4);
@@ -139,14 +185,25 @@ test("grandpa strolls in slowly, cheers halfway, then sits with his coffee", asy
     .evaluate((el) => getComputedStyle(el).opacity);
   expect(parseFloat(seatedOpacity)).toBeGreaterThan(0.9);
 
-  // Steam is rising from the raised mug.
+  // Park environment: tree + bench rendered and faded in.
+  const park = page.getByTestId("grandpa-park");
+  await expect(park).toHaveCSS("opacity", "1");
+  await expect(page.getByTestId("grandpa-tree")).toBeVisible();
+  await expect(page.getByTestId("grandpa-bench")).toBeVisible();
+
+  // Steam rising from the filled mug; the invite flourish loops.
   const steamAnim = await page
     .locator(".pose-seated .steam-1")
     .evaluate((el) => getComputedStyle(el).animationName);
   expect(steamAnim).toBe("steam-rise");
+  const gestureAnim = await page
+    .getByTestId("grandpa-mug-gesture")
+    .evaluate((el) => getComputedStyle(el).animationName);
+  expect(gestureAnim).toBe("mug-invite");
 
-  // The thought cloud opened into the donation bubble.
+  // The cloud opened with the ask.
   const bubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(bubble).toHaveAttribute("data-cloud", "ask");
   await expect(bubble).toContainText("Help me buy coffee!");
   await expect(bubble).toContainText(
     "Grown-ups — donations keep Meridian free for kids",
@@ -155,77 +212,42 @@ test("grandpa strolls in slowly, cheers halfway, then sits with his coffee", asy
     (el) => getComputedStyle(el).opacity,
   );
   expect(parseFloat(bubbleOpacity)).toBeGreaterThan(0.9);
-  // The mid-walk ask text is gone; the bubble is the persistent ask.
-  await expect(cheersText).toHaveCSS("opacity", "0");
 
   await expectGrandpaNotCoveringCtas(page);
   expectCleanConsole(errors);
 });
 
-test("seated grandpa's head stays still — the mug does the inviting", async ({
+test("tapping grandpa opens the Ko-fi workflow inside the cloud", async ({
   page,
 }) => {
   const errors = await loadHome(page);
-  const scene = page.getByTestId("grandpa-scene");
-  await expect(scene).toHaveAttribute("data-beat", "seated", {
-    timeout: 25_000,
-  });
-  // No pointer tracking on grandpa: the walker carries no tracking flag.
-  await expect(page.getByTestId("grandpa-walker")).not.toHaveAttribute(
-    "data-tracking",
-  );
-
-  // Veeresh 2026-10-07: head must not move — Comet already tracks, two
-  // tracking heads is annoying. Sweep the pointer; pupils stay put.
-  const pupils = page.getByTestId("grandpa-pupils");
-  const pupilTransform = () =>
-    pupils.evaluate((el) => (el as SVGGElement).style.transform);
-  const vp = page.viewportSize()!;
-  await page.mouse.move(60, 200, { steps: 5 });
-  await page.waitForTimeout(500);
-  await page.mouse.move(vp.width - 60, 200, { steps: 5 });
-  await page.waitForTimeout(500);
-  await page.mouse.move(vp.width / 2, 120, { steps: 5 });
-  await page.waitForTimeout(500);
-  expect(await pupilTransform(), "pupils must have no inline transform").toBe(
-    "",
-  );
-
-  // The mug is the attention-grabber: the invite flourish runs on a ~6s loop.
-  const gesture = page.getByTestId("grandpa-mug-gesture");
-  const gestureAnim = await gesture.evaluate(
-    (el) => getComputedStyle(el).animationName,
-  );
-  expect(gestureAnim).toBe("mug-invite");
-
-  // Prove it actually moves: sample the mug's bounding box across a full
-  // 6s cycle and require visible travel (the flourish lifts ~7px).
-  const ys: number[] = [];
-  for (let i = 0; i < 26; i++) {
-    const box = await gesture.boundingBox();
-    if (box) ys.push(box.y);
-    await page.waitForTimeout(250);
-  }
-  const travel = Math.max(...ys) - Math.min(...ys);
-  expect(travel, `mug invite travel over one cycle: ${travel}px`).toBeGreaterThanOrEqual(2);
-  expectCleanConsole(errors);
-});
-
-test("tapping grandpa opens the grown-up gate (no navigation)", async ({
-  page,
-}) => {
-  const errors = await loadHome(page);
+  await waitForSeated(page);
   // The walker is animated; dispatchEvent avoids click-stability flakiness.
   await page.getByTestId("grandpa-walker").dispatchEvent("click");
-  const dialog = page.getByTestId("support-dialog");
-  await expect(dialog).toBeVisible();
-  await expect(dialog).toContainText("Ask a grown-up!");
-  await expect(dialog).toContainText("Meridian is free forever");
+  const bubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(bubble).toHaveAttribute("data-cloud", "gate");
+  const gate = page.getByTestId("grandpa-cloud-gate");
+  await expect(gate).toBeVisible();
+  await expect(gate).toContainText("Ask a grown-up!");
+  await expect(gate).toContainText("Meridian is free forever");
+  // UX: focus lands on Continue the moment the gate opens.
+  await expect(page.getByTestId("grandpa-cloud-continue")).toBeFocused();
   expect(page.url()).toBe(APP);
   expectCleanConsole(errors);
 });
 
-test("Continue opens Ko-fi in a new tab, app tab stays put", async ({
+test("tapping the cloud message opens the workflow too", async ({ page }) => {
+  const errors = await loadHome(page);
+  await waitForSeated(page);
+  await page.getByTestId("grandpa-bubble-ask").click();
+  const bubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(bubble).toHaveAttribute("data-cloud", "gate");
+  await expect(page.getByTestId("grandpa-cloud-gate")).toBeVisible();
+  expect(page.url()).toBe(APP);
+  expectCleanConsole(errors);
+});
+
+test("Continue opens Ko-fi in a new tab and the cloud reverts", async ({
   page,
 }) => {
   // Stub window.open to capture the call without hitting the network.
@@ -241,8 +263,9 @@ test("Continue opens Ko-fi in a new tab, app tab stays put", async ({
     }) as typeof window.open;
   });
   const errors = await loadHome(page);
-  await page.getByTestId("grandpa-walker").dispatchEvent("click");
-  await page.getByTestId("support-dialog-continue").click();
+  await waitForSeated(page);
+  await page.getByTestId("grandpa-bubble-ask").click();
+  await page.getByTestId("grandpa-cloud-continue").click();
   const opened = await page.evaluate(
     () => (window as unknown as { __opened: unknown[] }).__opened,
   );
@@ -251,12 +274,15 @@ test("Continue opens Ko-fi in a new tab, app tab stays put", async ({
   expect(call.url).toBe(KOFI_URL);
   expect(call.target).toBe("_blank");
   expect(call.features).toContain("noopener");
-  await expect(page.getByTestId("support-dialog")).toBeHidden();
+  // The cloud reverts to the ask.
+  const bubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(bubble).toHaveAttribute("data-cloud", "ask");
+  await expect(bubble).toContainText("Help me buy coffee!");
   expect(page.url()).toBe(APP);
   expectCleanConsole(errors);
 });
 
-test("Cancel closes the gate without opening anything", async ({ page }) => {
+test("Cancel reverts the cloud without opening anything", async ({ page }) => {
   await page.addInitScript(() => {
     (window as unknown as { __opened: unknown[] }).__opened = [];
     window.open = (() => {
@@ -265,10 +291,13 @@ test("Cancel closes the gate without opening anything", async ({ page }) => {
     }) as typeof window.open;
   });
   const errors = await loadHome(page);
-  await page.getByTestId("grandpa-walker").dispatchEvent("click");
-  await expect(page.getByTestId("support-dialog")).toBeVisible();
-  await page.getByTestId("support-dialog-cancel").click();
-  await expect(page.getByTestId("support-dialog")).toBeHidden();
+  await waitForSeated(page);
+  await page.getByTestId("grandpa-bubble-ask").click();
+  await expect(page.getByTestId("grandpa-cloud-gate")).toBeVisible();
+  await page.getByTestId("grandpa-cloud-cancel").click();
+  const bubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(bubble).toHaveAttribute("data-cloud", "ask");
+  await expect(bubble).toContainText("Help me buy coffee!");
   const opened = await page.evaluate(
     () => (window as unknown as { __opened: unknown[] }).__opened,
   );
@@ -277,30 +306,22 @@ test("Cancel closes the gate without opening anything", async ({ page }) => {
   expectCleanConsole(errors);
 });
 
-test("Esc dismisses the gate", async ({ page }) => {
+test("Esc reverts the cloud", async ({ page }) => {
   const errors = await loadHome(page);
-  await page.getByTestId("grandpa-walker").dispatchEvent("click");
-  await expect(page.getByTestId("support-dialog")).toBeVisible();
+  await waitForSeated(page);
+  await page.getByTestId("grandpa-bubble-ask").click();
+  await expect(page.getByTestId("grandpa-cloud-gate")).toBeVisible();
   await page.keyboard.press("Escape");
-  await expect(page.getByTestId("support-dialog")).toBeHidden();
+  const bubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(bubble).toHaveAttribute("data-cloud", "ask");
   expectCleanConsole(errors);
 });
 
-test("backdrop tap dismisses the gate", async ({ page }) => {
-  const errors = await loadHome(page);
-  await page.getByTestId("grandpa-walker").dispatchEvent("click");
-  const dialog = page.getByTestId("support-dialog");
-  await expect(dialog).toBeVisible();
-  // Click the backdrop: top-left corner of the viewport is outside the dialog.
-  await page.mouse.click(10, 10);
-  await expect(dialog).toBeHidden();
-  expectCleanConsole(errors);
-});
-
-test("grandpa is keyboard-focusable with a visible focus ring", async ({
+test("grandpa is keyboard-focusable; Enter opens the workflow", async ({
   page,
 }) => {
   const errors = await loadHome(page);
+  await waitForSeated(page);
   const walker = page.getByTestId("grandpa-walker");
   await walker.focus();
   await expect(walker).toBeFocused();
@@ -308,9 +329,11 @@ test("grandpa is keyboard-focusable with a visible focus ring", async ({
     (el) => getComputedStyle(el).outlineWidth,
   );
   expect(outlineWidth).toBe("3px");
-  // Enter activates the gate.
+  // Enter activates the in-cloud workflow.
   await page.keyboard.press("Enter");
-  await expect(page.getByTestId("support-dialog")).toBeVisible();
+  const bubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(bubble).toHaveAttribute("data-cloud", "gate");
+  await expect(page.getByTestId("grandpa-cloud-gate")).toBeVisible();
   expect(page.url()).toBe(APP);
   expectCleanConsole(errors);
 });

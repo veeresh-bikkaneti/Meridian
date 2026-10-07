@@ -4,11 +4,12 @@ import { serveBuiltArtifact } from "./helpers";
 /**
  * Grandpa's Coffee Run E2E — reduced motion (prefers-reduced-motion: reduce).
  *
- * Covers: grandpa appears seated in his chair near Comet, fully static (no
- * walk, no bob, no steam, no sway, no head movement, no mug-lift invite);
- * the donation bubble is shown statically so the CTA stays discoverable; the
- * walker is still tappable and keyboard-focusable; the gate still opens; no
- * console errors.
+ * Covers: grandpa appears seated on the bench in his park near Comet, fully
+ * static (no walk, no kettle, no bob, no steam, no sway, no head movement, no
+ * mug-lift invite); the tree + bench render statically; the donation cloud is
+ * shown statically so the CTA stays discoverable; the walker is still
+ * tappable and keyboard-focusable; tapping opens the in-cloud gate workflow;
+ * no console errors.
  *
  * Build requirement: same as the desktop spec —
  *   VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy npm run build:pages
@@ -67,6 +68,8 @@ test("grandpa is seated and fully static under reduced motion", async ({
   );
   expect(walkerAnimation).toBe("none");
   await expect(walker).not.toHaveAttribute("data-tracking");
+  // No kettle under reduced motion — the spectacle is skipped entirely.
+  await expect(page.getByTestId("grandpa-kettle")).toBeHidden();
   // No mug-lift invite either — fully static.
   const gestureAnim = await page
     .getByTestId("grandpa-mug-gesture")
@@ -79,11 +82,17 @@ test("grandpa is seated and fully static under reduced motion", async ({
   expect(comet).not.toBeNull();
   expect(box!.x + box!.width).toBeLessThanOrEqual(comet!.x + 4);
 
-  // The seated pose is the visible one, statically.
+  // The seated pose is the visible one, statically — on the bench.
   const seatedOpacity = await page
     .locator(".pose-seated")
     .evaluate((el) => getComputedStyle(el).opacity);
   expect(parseFloat(seatedOpacity)).toBeGreaterThan(0.9);
+
+  // The park renders statically: tree + bench, no animation.
+  const park = page.getByTestId("grandpa-park");
+  await expect(park).toHaveCSS("opacity", "1");
+  await expect(page.getByTestId("grandpa-tree")).toBeVisible();
+  await expect(page.getByTestId("grandpa-bench")).toBeVisible();
 
   // The donation bubble is shown statically so the CTA stays discoverable.
   const bubble = page.getByTestId("grandpa-donation-bubble");
@@ -104,12 +113,16 @@ test("grandpa is seated and fully static under reduced motion", async ({
   await page.waitForTimeout(400);
   expect(await pupilTransform()).toBe("");
 
-  // Still tappable: gate opens.
+  // Still tappable: the in-cloud gate workflow opens.
   await walker.dispatchEvent("click");
-  await expect(page.getByTestId("support-dialog")).toBeVisible();
-  await expect(page.getByTestId("support-dialog")).toContainText(
-    "Ask a grown-up!",
-  );
+  const cloudBubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(cloudBubble).toHaveAttribute("data-cloud", "gate");
+  const gate = page.getByTestId("grandpa-cloud-gate");
+  await expect(gate).toBeVisible();
+  await expect(gate).toContainText("Ask a grown-up!");
+  // Cancel reverts.
+  await page.getByTestId("grandpa-cloud-cancel").click();
+  await expect(cloudBubble).toHaveAttribute("data-cloud", "ask");
   expect(page.url()).toBe(APP);
   expectCleanConsole(errors);
 });
@@ -126,6 +139,8 @@ test("walker is keyboard-focusable with a visible focus ring", async ({
   );
   expect(outlineWidth).toBe("3px");
   await page.keyboard.press("Enter");
-  await expect(page.getByTestId("support-dialog")).toBeVisible();
+  const bubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(bubble).toHaveAttribute("data-cloud", "gate");
+  await expect(page.getByTestId("grandpa-cloud-gate")).toBeVisible();
   expectCleanConsole(errors);
 });

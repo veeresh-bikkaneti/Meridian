@@ -53,7 +53,7 @@ test("seated finale + donation bubble render at phone width", async ({
   const errors = await loadHome(page);
   const scene = page.getByTestId("grandpa-scene");
   await expect(scene).toHaveAttribute("data-beat", "seated", {
-    timeout: 25_000,
+    timeout: 30_000,
   });
 
   const bubble = page.getByTestId("grandpa-donation-bubble");
@@ -102,12 +102,24 @@ test("grandpa never covers edition CTAs at phone width", async ({ page }) => {
   expectCleanConsole(errors);
 });
 
-test("touch tap opens the grown-up gate", async ({ page }) => {
+test("touch tap opens the in-cloud grown-up workflow", async ({ page }) => {
   const errors = await loadHome(page);
+  await expect(page.getByTestId("grandpa-scene")).toHaveAttribute(
+    "data-beat",
+    "seated",
+    { timeout: 30_000 },
+  );
   await page.getByTestId("grandpa-walker").dispatchEvent("click");
-  const dialog = page.getByTestId("support-dialog");
-  await expect(dialog).toBeVisible();
-  await expect(dialog).toContainText("Ask a grown-up!");
+  const bubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(bubble).toHaveAttribute("data-cloud", "gate");
+  const gate = page.getByTestId("grandpa-cloud-gate");
+  await expect(gate).toBeVisible();
+  await expect(gate).toContainText("Ask a grown-up!");
+  // The gate stays inside the viewport horizontally at phone width.
+  const bbox = await gate.boundingBox();
+  expect(bbox).not.toBeNull();
+  expect(bbox!.x).toBeGreaterThanOrEqual(-2);
+  expect(bbox!.x + bbox!.width).toBeLessThanOrEqual(392);
   expect(page.url()).toBe(APP);
   expectCleanConsole(errors);
 });
