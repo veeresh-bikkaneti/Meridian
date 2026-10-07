@@ -204,10 +204,17 @@ test("walk has no cloud, kettle fills the mug, then the park finale", async ({
   await expect(bubble).toContainText(
     "Your support keeps Meridian free for kids",
   );
-  const bubbleOpacity = await bubble.evaluate(
-    (el) => getComputedStyle(el).opacity,
-  );
-  expect(parseFloat(bubbleOpacity)).toBeGreaterThan(0.9);
+  // The cloud fades in over 0.3s — poll for full opacity rather than
+  // reading once mid-transition.
+  await expect
+    .poll(
+      async () =>
+        parseFloat(
+          await bubble.evaluate((el) => getComputedStyle(el).opacity),
+        ),
+      { timeout: 5_000 },
+    )
+    .toBeGreaterThan(0.9);
 
   await expectGrandpaNotCoveringCtas(page);
   expectCleanConsole(errors);

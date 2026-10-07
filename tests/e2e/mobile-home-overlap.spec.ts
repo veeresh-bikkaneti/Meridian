@@ -470,8 +470,16 @@ for (const width of WIDTHS) {
         const bubble = page.getByTestId("grandpa-donation-bubble");
         await expect(bubble).toBeVisible();
         await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
-        const opacity = await bubble.evaluate((el) => getComputedStyle(el).opacity);
-        expect(parseFloat(opacity), "cloud fully opaque").toBeGreaterThan(0.9);
+        // The cloud fades in — poll for full opacity.
+        await expect
+          .poll(
+            async () =>
+              parseFloat(
+                await bubble.evaluate((el) => getComputedStyle(el).opacity),
+              ),
+            { timeout: 5_000 },
+          )
+          .toBeGreaterThan(0.9);
 
         // Tap the cloud: the in-cloud gate opens (no new dialog, no nav).
         // Finale evidence for the reviewer: the strip + cloud + Comet,

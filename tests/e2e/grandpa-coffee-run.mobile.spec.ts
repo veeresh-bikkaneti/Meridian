@@ -58,10 +58,17 @@ test("seated finale + donation bubble render at phone width", async ({
 
   const bubble = page.getByTestId("grandpa-donation-bubble");
   await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
-  const bubbleOpacity = await bubble.evaluate(
-    (el) => getComputedStyle(el).opacity,
-  );
-  expect(parseFloat(bubbleOpacity)).toBeGreaterThan(0.9);
+  // Poll for full opacity (the cloud fades in; a single read can catch it
+  // mid-transition).
+  await expect
+    .poll(
+      async () =>
+        parseFloat(
+          await bubble.evaluate((el) => getComputedStyle(el).opacity),
+        ),
+      { timeout: 5_000 },
+    )
+    .toBeGreaterThan(0.9);
   // The bubble stays inside the viewport horizontally.
   const bbox = await bubble.boundingBox();
   expect(bbox).not.toBeNull();
