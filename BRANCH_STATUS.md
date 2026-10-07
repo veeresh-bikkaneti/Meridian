@@ -79,8 +79,32 @@ or game-logic changes. (Prior branch content was PR #96, merged to main.)
       assertion (the 9s transient bubble vs. a CTA center); the product
       behavior is unchanged and pre-existing.
 
+## Reviews (2026-10-07)
+
+- [x] Senior architect + senior developer review (`/tmp/senior-review.md`):
+      **APPROVE-WITH-NITS**. Approach sound (in-flow band, clearance in
+      `min-height`, `overflow-x: clip` correct, no `!important`/specificity
+      issues, 360–430px relative units, comet spec change truly test-only).
+      Must-fix applied: `.kettle-stage { pointer-events: none; }` — the
+      kettle sweeps over the page during its drop inside the walker's
+      `role="button"` and would have opened the donation gate on tap.
+      Nits noted (not blocking): `--comet-clearance` hardcodes Comet's
+      footprint (suggest shared var); two vacuous E2E branches; the
+      "desktop untouched" claim is slightly inaccurate (44px buttons +
+      `--park-right` short-viewport fix also touch desktop — both
+      defensible improvements).
+- [x] Office-hours visual review (`/tmp/office-hours-review.md`):
+      **SHIP-WITH-NITS**. All 6 evidence shots PASS; fresh 390px-dark
+      captures clean. One nit fixed: the always-visible mobile bubble rode
+      the walker in from off-screen left, sliding in clipped at the
+      viewport edge for ~7s — it now fades in at 1.8s once the walker is
+      in-bounds (`bubble-mobile-enter`; added to the reduced-motion
+      `animation: none` list).
+
 ## Pending
 
+- [ ] E2E re-run of `mobile-home-overlap.spec.ts` after the two review
+      fixes (in progress).
 - [ ] Push branch + open PR (Veeresh merges).
 
 ## Notes / open questions
