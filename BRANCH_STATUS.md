@@ -1,9 +1,11 @@
-# BRANCH_STATUS.md — chore/security-hardening
+# BRANCH_STATUS.md — feat/google-analytics
 
 ## Active work
-- [x] Add CODEOWNERS (Veeresh sole approver)
+- [x] Install GA4 tag (G-NYKKMLQSN5) in __root.tsx head
+- [x] COPPA-safe config (IP anon, no ad signals, no Google signals)
+- [x] tsc clean
 - [ ] Open PR
 
 ## Context
-Veeresh 2026-10-06: secure GitHub project — no malware, all merges need his approval alone.
-Branch protection already applied via API. This PR adds the CODEOWNERS file.
+Veeresh 2026-10-06: install Google Analytics tag.
+Measurement ID provided by Veeresh.
