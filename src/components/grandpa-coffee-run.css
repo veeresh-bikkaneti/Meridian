@@ -770,6 +770,19 @@
     opacity: 1;
     visibility: visible;
     transform: translate(-50%, 0) scale(1);
+    /* Office-hours 2026-10-07: the bubble rides the walker in from
+       off-screen left — fade it in once he's in-bounds (~1.8s into the
+       9.5s walk) so it never slides in clipped at the viewport edge. */
+    animation: bubble-mobile-enter 0.45s ease 1.8s backwards;
+  }
+
+  @keyframes bubble-mobile-enter {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   .bubble-ask strong {
@@ -839,7 +852,8 @@
   .kettle-stream,
   .mug-fill,
   .pour-steam,
-  .bubble-pane {
+  .bubble-pane,
+  .grandpa-donation-bubble {
     animation: none !important;
   }
 
