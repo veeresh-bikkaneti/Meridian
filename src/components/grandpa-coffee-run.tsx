@@ -1211,11 +1211,9 @@ export function GrandpaCoffeeRun() {
     setTour((t) => (t ? { ...t, stage: "settled" } : t));
     setMode("seated");
     writeStorage(TOUR_LAST_DATE_KEY, localDateKey(), "local");
-    if (readStorage(TOUR_ASK_SHOWN_KEY, "session")) setAskVisible(false);
-    else {
-      writeStorage(TOUR_ASK_SHOWN_KEY, "1", "session");
-      setAskVisible(true);
-    }
+    // The once-per-session cloud gate lives in the effect below — it runs on
+    // the mode change and owns the session flag, so the cloud shows on the
+    // first visit and stays hidden on later ones.
   }, []);
 
   // A viewport-width change across the mobile breakpoint mid-tour settles
