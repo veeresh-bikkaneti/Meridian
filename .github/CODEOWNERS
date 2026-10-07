@@ -1,2 +1,4 @@
-# Veeresh reviews every change before it lands on the default branch.
+# Veeresh is the sole approver for all code changes.
+# No PR merges without his explicit approval.
+
 * @veeresh-bikkaneti
