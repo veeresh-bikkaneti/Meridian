@@ -6,7 +6,7 @@ import { serveBuiltArtifact } from "./helpers";
  *
  * Covers: renders bottom-right at 120–140px without covering CTAs,
  * boop reaction fires, dizzy easter egg (4 boops), cursor tracking works,
- * greeting shows once per day, autoplay gate (audio held until gesture),
+ * greeting shows on every visit (Veeresh 2026-10-06), autoplay gate,
  * sound-off speaker opt-in, no console errors.
  */
 test.setTimeout(180_000);
@@ -156,7 +156,7 @@ test("cursor tracking turns the head toward the pointer", async ({ page }) => {
   expectCleanConsole(errors);
 });
 
-test("greeting shows once per local day", async ({ page }) => {
+test("greeting shows on every home page visit", async ({ page }) => {
   const errors = await loadHome(page, { lastDate: yesterdayKey() });
   const bubble = page.getByTestId("comet-greeting");
   await expect(bubble).toBeVisible();
@@ -224,9 +224,11 @@ test("tap dismisses the greeting instantly", async ({ page }) => {
   expectCleanConsole(errors);
 });
 
-test("no greeting when already greeted today", async ({ page }) => {
+test("greeting shows on every visit (not once per day)", async ({ page }) => {
+  // Veeresh 2026-10-06: greeting plays each time the user lands on home.
+  // Muting is via the global sound toggle, not a date gate.
   const errors = await loadHome(page, { lastDate: todayKey() });
   await expect(page.getByTestId("comet-mascot")).toBeVisible();
-  await expect(page.getByTestId("comet-greeting")).toHaveCount(0);
+  await expect(page.getByTestId("comet-greeting")).toHaveCount(1);
   expectCleanConsole(errors);
 });
