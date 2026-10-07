@@ -5,9 +5,10 @@ import { serveBuiltArtifact } from "./helpers";
  * Grandpa's Coffee Run E2E — reduced motion (prefers-reduced-motion: reduce).
  *
  * Covers: grandpa appears seated in his chair near Comet, fully static (no
- * walk, no bob, no steam, no sway, no pointer tracking); the donation bubble
- * is shown statically so the CTA stays discoverable; the walker is still
- * tappable and keyboard-focusable; the gate still opens; no console errors.
+ * walk, no bob, no steam, no sway, no head movement, no mug-lift invite);
+ * the donation bubble is shown statically so the CTA stays discoverable; the
+ * walker is still tappable and keyboard-focusable; the gate still opens; no
+ * console errors.
  *
  * Build requirement: same as the desktop spec —
  *   VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy npm run build:pages
@@ -60,12 +61,17 @@ test("grandpa is seated and fully static under reduced motion", async ({
   await expect(scene).toHaveAttribute("data-reduced-motion", "true");
 
   const walker = page.getByTestId("grandpa-walker");
-  // No travel animation, no pointer tracking.
+  // No travel animation, no tracking flag at all.
   const walkerAnimation = await walker.evaluate(
     (el) => getComputedStyle(el).animationName,
   );
   expect(walkerAnimation).toBe("none");
-  await expect(walker).toHaveAttribute("data-tracking", "off");
+  await expect(walker).not.toHaveAttribute("data-tracking");
+  // No mug-lift invite either — fully static.
+  const gestureAnim = await page
+    .getByTestId("grandpa-mug-gesture")
+    .evaluate((el) => getComputedStyle(el).animationName);
+  expect(gestureAnim).toBe("none");
   // Parked left of Comet.
   const box = await walker.boundingBox();
   expect(box).not.toBeNull();
@@ -90,13 +96,13 @@ test("grandpa is seated and fully static under reduced motion", async ({
   );
   expect(parseFloat(bubbleOpacity)).toBeGreaterThan(0.9);
 
-  // No tracking: moving the pointer leaves the pupils alone.
+  // No head movement: moving the pointer leaves the pupils alone.
   const pupils = page.getByTestId("grandpa-pupils");
   const pupilTransform = () =>
     pupils.evaluate((el) => (el as SVGGElement).style.transform);
   await page.mouse.move(60, 200, { steps: 5 });
   await page.waitForTimeout(400);
-  expect(await pupilTransform()).toBe("translate(0px, 0px)");
+  expect(await pupilTransform()).toBe("");
 
   // Still tappable: gate opens.
   await walker.dispatchEvent("click");

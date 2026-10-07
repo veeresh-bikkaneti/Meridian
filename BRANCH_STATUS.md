@@ -1,23 +1,16 @@
-# BRANCH_STATUS.md — feat/grandpa-finale
+# BRANCH_STATUS.md — fix/grandpa-mug-focus
 
-Veeresh's finale rework of Grandpa's Coffee Run (2026-10-07).
+**Branch:** `fix/grandpa-mug-focus` (from origin/main)
+**Task:** Veeresh's final change (2026-10-07) — remove grandpa's head movement, make the coffee mug the attention-grabber.
 
 ## Done
-- [x] Slower walk: 5.2s → 9.5s stroll, slower bob/cane-tap, more sips
-- [x] NEW seated finale: wooden chair, facing viewer, mug raised with continuous steam
-- [x] Pointer-tracking eyes + subtle head turn (mirrors Comet's 8-sector gaze math: 70px dead zone, hysteresis, rAF throttle, touch taps)
-- [x] Thought cloud "opens up" into persistent donation bubble: "Help me buy coffee! ☕ / Grown-ups — donations keep Meridian free for kids"
-- [x] Halfway cheers beat kept ("Support the Expedition / Grown-ups — help keep Meridian funded and free for kids")
-- [x] Tap → "Ask a grown-up" gate → Ko-fi (unchanged, fail-closed)
-- [x] Reduced-motion: seated statically, bubble shown, no tracking/animation
-- [x] Inline SVG only, zero sfx/analytics, env-gated, offline-hidden
-- [x] tsc clean
-- [x] E2E specs updated (desktop 9 tests incl. eye-tracking test, reduced 2 tests)
-- [x] Incorporates the funding-copy wording (folded in from fix/grandpa-funding-copy's uncommitted work — that separate PR is now redundant)
+- [x] Removed ALL pointer-tracking from grandpa (TSX): deleted gaze constants/helpers (`DEAD_ZONE_PX`, `SECTOR`, `HEAD_OFFSETS`, etc.), the tracking `useEffect`, sector state/refs, `data-tracking` attribute, and the inline head/pupil transforms. Head is fixed, facing the viewer.
+- [x] New attention-grabber: `.seated-mug-gesture` group (arm + mug) does a gentle invite flourish every ~6s (`mug-invite` keyframes: lift + slight rotate/scale, then settle) plus a synchronized `.mug-puff` steam puff (`mug-puff` keyframes).
+- [x] Kept: slow walk, halfway cheers beat, chair finale, continuous steam, donation bubble ("Help me buy coffee! / Grown-ups — donations keep Meridian free for kids"), tap→"Ask a grown-up" gate→Ko-fi.
+- [x] `prefers-reduced-motion`: `.seated-mug-gesture` + `.mug-puff` in the `animation: none` list; head fixed; bubble shown statically.
+- [x] E2E updated: desktop eye-tracking test → "head stays still + mug invites" (pupils have no inline transform after pointer sweeps; `mug-invite` applied; bounding-box travel ≥2px over one 6s cycle). Reduced spec: no `data-tracking` attr, gesture animation "none".
+- [x] Quality gates: `tsc` clean · unit 837/837 · `lint-cards.mjs` GATE PASSED · `build:pages` green · E2E 9/9 desktop + 2/2 reduced + 3/3 mobile (one mobile flake on first run, green on two reruns — bubble-opacity timing, unrelated).
+- [x] Pushed, PR opened.
 
 ## Pending
-- [x] Unit suite green (837/837)
-- [x] lint-cards.mjs GATE PASSED
-- [x] build:pages green (with + without VITE_KOFI_URL — fail-closed verified: 0 ko-fi URL hits in no-env build)
-- [x] Playwright E2E: 9/9 desktop + 2/2 reduced + 3/3 mobile (390px CTA coverage) — 14/14 green
-- [ ] Push branch, open PR (Veeresh merges)
+- [ ] Veeresh merges the PR (CI: GitGuardian + build).

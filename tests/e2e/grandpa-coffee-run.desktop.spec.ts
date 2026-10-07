@@ -4,19 +4,20 @@ import { serveBuiltArtifact } from "./helpers";
 /**
  * Grandpa's Coffee Run E2E — animated donation scene on the Chart Room home
  * (Veeresh 2026-10-07; finale rework: slow stroll, seated cheers, donation
- * bubble, pointer-tracking eyes).
+ * bubble, fixed head with a periodic mug-lift invite).
  *
  * Beats: entrance (dotted trail unrolls) → slow walk ~9.5s (bob, cane tap,
  * mug sip, cloud tracks) → cheers at 45% (travel pauses, front pose,
  * donation text) → arrival → seated finale (chair, mug raised with steam,
- * eyes track the pointer, thought cloud opens into the donation bubble).
- * Tap grandpa → "ask a grown-up" gate → Continue opens Ko-fi in a new tab.
+ * head fixed, mug-lift invite every ~6s, thought cloud opens into the
+ * donation bubble). Tap grandpa → "ask a grown-up" gate → Continue opens
+ * Ko-fi in a new tab.
  *
  * Covers: slow walk completes, cheers beat triggers with the ask text,
- * seated finale renders (chair pose, steam, bubble text, pupils track the
- * pointer), tap opens the gate (no navigation), Continue opens Ko-fi,
- * Cancel / Esc / backdrop dismiss, offline hides grandpa, never covers CTAs,
- * no console errors.
+ * seated finale renders (chair pose, steam, bubble text, head stays still on
+ * pointer moves, mug-lift invite fires periodically), tap opens the gate (no
+ * navigation), Continue opens Ko-fi, Cancel / Esc / backdrop dismiss, offline
+ * hides grandpa, never covers CTAs, no console errors.
  *
  * Build requirement: the test artifact must be built with the Ko-fi URL, e.g.
  *   VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy npm run build:pages
@@ -161,7 +162,7 @@ test("grandpa strolls in slowly, cheers halfway, then sits with his coffee", asy
   expectCleanConsole(errors);
 });
 
-test("seated grandpa's eyes track the pointer like Comet's", async ({
+test("seated grandpa's head stays still — the mug does the inviting", async ({
   page,
 }) => {
   const errors = await loadHome(page);
@@ -169,30 +170,44 @@ test("seated grandpa's eyes track the pointer like Comet's", async ({
   await expect(scene).toHaveAttribute("data-beat", "seated", {
     timeout: 25_000,
   });
-  await expect(page.getByTestId("grandpa-walker")).toHaveAttribute(
+  // No pointer tracking on grandpa: the walker carries no tracking flag.
+  await expect(page.getByTestId("grandpa-walker")).not.toHaveAttribute(
     "data-tracking",
-    "on",
   );
 
+  // Veeresh 2026-10-07: head must not move — Comet already tracks, two
+  // tracking heads is annoying. Sweep the pointer; pupils stay put.
   const pupils = page.getByTestId("grandpa-pupils");
   const pupilTransform = () =>
     pupils.evaluate((el) => (el as SVGGElement).style.transform);
   const vp = page.viewportSize()!;
-
-  // Look far left of grandpa.
   await page.mouse.move(60, 200, { steps: 5 });
   await page.waitForTimeout(500);
-  const left = await pupilTransform();
-
-  // Look far right of grandpa.
   await page.mouse.move(vp.width - 60, 200, { steps: 5 });
   await page.waitForTimeout(500);
-  const right = await pupilTransform();
+  await page.mouse.move(vp.width / 2, 120, { steps: 5 });
+  await page.waitForTimeout(500);
+  expect(await pupilTransform(), "pupils must have no inline transform").toBe(
+    "",
+  );
 
-  // The pupils moved (non-empty, distinct transforms).
-  expect(left).toContain("translate");
-  expect(right).toContain("translate");
-  expect(left).not.toBe(right);
+  // The mug is the attention-grabber: the invite flourish runs on a ~6s loop.
+  const gesture = page.getByTestId("grandpa-mug-gesture");
+  const gestureAnim = await gesture.evaluate(
+    (el) => getComputedStyle(el).animationName,
+  );
+  expect(gestureAnim).toBe("mug-invite");
+
+  // Prove it actually moves: sample the mug's bounding box across a full
+  // 6s cycle and require visible travel (the flourish lifts ~7px).
+  const ys: number[] = [];
+  for (let i = 0; i < 26; i++) {
+    const box = await gesture.boundingBox();
+    if (box) ys.push(box.y);
+    await page.waitForTimeout(250);
+  }
+  const travel = Math.max(...ys) - Math.min(...ys);
+  expect(travel, `mug invite travel over one cycle: ${travel}px`).toBeGreaterThanOrEqual(2);
   expectCleanConsole(errors);
 });
 
