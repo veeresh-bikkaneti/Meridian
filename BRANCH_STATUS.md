@@ -1,10 +1,14 @@
-# BRANCH_STATUS.md — fix/comet-audio-format
+# BRANCH_STATUS.md — fix/comet-audio-tap-race
 
 ## Active work
-- [x] Re-encode 12 greeting MP3s from 22.05kHz mono to 44.1kHz stereo
+- [x] Fix tap-to-start vs tap-to-dismiss race (Bug A)
+- [x] Fix stale dismiss timer cutting audio (Bug B)
 - [ ] Open PR
 
-## Context
-Veeresh 2026-10-06: "audio says oop and then dies there is no audio output"
-Root cause: TTS generated 22.05kHz mono MP3s — some browsers can't decode
-past the first frames. Re-encoded to standard 44.1kHz stereo for max compat.
+## Root cause (Veeresh 2026-10-06: "audio says oop then dies")
+User taps bubble → pointerdown starts audio → click dismisses bubble → dismiss() pauses audio.
+The tap that starts the greeting kills it ~100-500ms later. No error fires.
+
+Fix:
+1. Record audio start time; ignore bubble clicks within 600ms of audio start.
+2. Clear stale dismissTimer at top of playGreetingAudio.
