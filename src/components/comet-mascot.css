@@ -92,7 +92,7 @@
   pointer-events: auto;
   position: relative;
   margin: 0 4px 12px 0;
-  max-width: 252px;
+  max-width: min(252px, calc(100vw - 3rem));
   padding: 10px 12px 10px 14px;
   background: var(--atlas-card);
   border: 2px solid var(--atlas-card-line);
@@ -158,13 +158,16 @@
   opacity: 1;
 }
 
-/* Sound-OFF opt-in: hear the greeting without flipping the global toggle. */
+/* Sound-OFF opt-in: hear the greeting without flipping the global toggle.
+ * 44px hit area (the badge was 32px); the icon scales up to stay
+ * proportional. Offsets keep the badge centered on its old anchor so it
+ * still overhangs the bubble corner without clipping. */
 .comet-greeting-speaker {
   position: absolute;
-  top: -13px;
-  right: -13px;
-  width: 32px;
-  height: 32px;
+  top: -19px;
+  right: -19px;
+  width: 44px;
+  height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -175,6 +178,7 @@
   border-radius: 999px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .comet-greeting-speaker:focus-visible {
@@ -183,13 +187,13 @@
 }
 
 .comet-speaker-icon {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 @media (max-width: 480px) {
   .comet-greeting {
-    max-width: 210px;
+    max-width: min(210px, calc(100vw - 3rem));
     font-size: 13px;
   }
 }
