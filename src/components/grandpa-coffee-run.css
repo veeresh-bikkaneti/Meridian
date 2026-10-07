@@ -1,15 +1,22 @@
-/* Grandpa's Coffee Run — animated donation scene on the Chart Room home.
+/* Grandpa's Tasting Tour — animated donation scene on the Chart Room home.
  * Chart Room aesthetic: ink outlines, brass accents, warm explorer palette.
  *
- * Beats: one slow 9.5s stroll (no cloud) → kettle beat at 45% (kettle drops
- * in a dolly-vertigo move, pours, fills the mug, vanishes) → arrival → park
- * finale: tree + bench fade in, grandpa sits on the bench facing the viewer,
- * head fixed, mug raised with steam + periodic invite flourish. The thought
- * cloud appears at the finale with "Help me buy coffee!"; tapping grandpa or
+ * Mobile (≤1023.5px) screenplay — the tasting tour: a brass compass-rose
+ * origin node appears top-left (~1s after load); grandpa walks a dotted
+ * S-trail down the page gutters, stopping at each option (difficulty →
+ * GeoDetective → editions → review when present) to look and sip (~1.2s),
+ * silent and untappable mid-walk, hard-capped at 25s. At the pour waypoint
+ * above the park strip the gooseneck kettle plays its dolly-vertigo top-up;
+ * then he settles on the bench beside Comet, the trail fades to ~18%, and
+ * the donation cloud fades in with Veeresh's exact copy. Tapping grandpa or
  * the cloud swaps the cloud content to the "ask a grown-up" gate workflow —
  * the whole flow lives in the cloud so the UI never gets crowded.
  *
- * Fully static under prefers-reduced-motion. */
+ * Desktop (≥1024px) keeps the previous behavior: one slow 9.5s stroll (no
+ * cloud) → kettle beat at 45% → park finale. The walk is silent everywhere
+ * now — the mid-walk cheers text is gone.
+ *
+ * Fully static under prefers-reduced-motion: no trail, no walker. */
 
 .grandpa-scene {
   position: fixed;
@@ -81,6 +88,8 @@
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   animation: grandpa-travel 9500ms linear forwards;
+  /* Tasting-tour handoff: the strip walker crossfades in at the settle. */
+  transition: opacity 0.4s ease;
 }
 
 @keyframes grandpa-travel {
@@ -485,52 +494,6 @@
   }
 }
 
-/* ============ Cheers text (the mid-walk ask) ============ */
-.grandpa-cheers-text {
-  position: absolute;
-  bottom: calc(100% + 52px);
-  left: 50%;
-  width: max-content;
-  max-width: 230px;
-  padding: 10px 14px 9px;
-  text-align: center;
-  background: rgba(12, 24, 29, 0.92);
-  border: 2px solid var(--atlas-brass);
-  border-radius: 12px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
-  opacity: 0;
-  transform: translate(-50%, 8px) scale(0.96);
-  transition:
-    opacity 0.32s ease,
-    transform 0.32s ease;
-  pointer-events: none;
-}
-
-.grandpa-cheers-text strong {
-  display: block;
-  font-family: var(--font-atlas-display);
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 1.25;
-  color: #f3e6c8;
-  letter-spacing: 0.01em;
-}
-
-.grandpa-cheers-text span {
-  display: block;
-  margin-top: 3px;
-  font-family: var(--font-atlas-body);
-  font-size: 11.5px;
-  line-height: 1.35;
-  color: #f3e6c8;
-  opacity: 0.85;
-}
-
-.grandpa-scene[data-beat="kettle"] .grandpa-cheers-text {
-  opacity: 1;
-  transform: translate(-50%, 0) scale(1);
-}
-
 /* ============ Donation cloud — the finale ask + the gate workflow ============
  * The thought cloud "opened up": a persistent, readable message beside
  * seated grandpa. Tapping grandpa or the cloud swaps the content (animated)
@@ -541,7 +504,9 @@
   bottom: calc(100% + 36px);
   left: 50%;
   width: max-content;
-  max-width: 240px;
+  /* Veeresh's 30-char headline (2026-10-07): may wrap to two lines, never
+     overflow — X-clamped with an 8px margin via the viewport-relative cap. */
+  max-width: min(220px, 62vw);
   padding: 12px 16px 11px;
   text-align: center;
   background: #fffdf8;
@@ -599,7 +564,7 @@
   display: block;
   font-family: var(--font-atlas-display);
   font-weight: 700;
-  font-size: 16px;
+  font-size: clamp(12px, 3.4vw, 13px);
   line-height: 1.25;
   color: #0c181d;
 }
@@ -685,6 +650,184 @@
   }
 }
 
+/* ============ Tasting tour layer (mobile ≤1023.5px, beats 0–2) ============
+ * A fixed, fully non-interactive overlay. Inside it, .tour-doc is sized to
+ * the document and glued to the scrolled page via translateY(-scrollY), so
+ * the dotted trail (document coords) and the JS-driven walker stay pinned
+ * to the cards while the page auto-scrolls beneath them. */
+.tour-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 40; /* same plane as the scene: above content, below dialogs */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.tour-doc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  will-change: transform;
+}
+
+.tour-svg {
+  display: block;
+  overflow: visible;
+}
+
+/* The dotted S-trail: 2px, 6px dash / 6px gap, round caps. Brass at 60%
+ * reads on both themes (--atlas-brass is #e8b64c dark / #a5761f light);
+ * the geometry builder keeps it ≥16px from every interactive rect and off
+ * every card. Fades to ~18% once grandpa settles. */
+.tour-trail {
+  fill: none;
+  stroke: var(--atlas-brass);
+  stroke-width: 2;
+  stroke-dasharray: 6 6;
+  stroke-linecap: round;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.tour-layer[data-tour-stage="walk"] .tour-trail {
+  opacity: 0.6;
+}
+
+.tour-layer[data-tour-stage="settled"] .tour-trail,
+.tour-layer[data-tour-stage="faint"] .tour-trail {
+  opacity: 0.18;
+  transition: opacity 2s ease;
+}
+
+/* Beat 0: the brass compass-rose origin node pops in top-left. */
+.tour-compass-pop {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.tour-layer[data-tour-stage="compass"] .tour-compass-pop,
+.tour-layer[data-tour-stage="walk"] .tour-compass-pop,
+.tour-layer[data-tour-stage="settled"] .tour-compass-pop,
+.tour-layer[data-tour-stage="faint"] .tour-compass-pop {
+  animation: tour-compass-pop 0.35s ease-out forwards;
+}
+
+@keyframes tour-compass-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.tour-compass-ring {
+  fill: none;
+  stroke: var(--atlas-brass);
+  stroke-width: 2;
+  opacity: 0.9;
+}
+
+.tour-compass-star,
+.tour-compass-dot {
+  fill: var(--atlas-brass);
+  opacity: 0.95;
+}
+
+/* The tour walker — JS positions it along the path (transform set from
+ * rAF); data-pose flips side ↔ front for the pour; data-facing mirrors it
+ * toward whichever card it is looking at. NOT tappable mid-walk: the whole
+ * layer is pointer-events none and the walker carries no button role. */
+.tour-walker {
+  --gw: 44px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--gw);
+  will-change: transform;
+  transition: opacity 0.45s ease;
+}
+
+.tour-layer[data-tour-phase="done"] .tour-walker {
+  opacity: 0;
+}
+
+.tour-flip {
+  display: block;
+}
+
+.tour-walker[data-facing="-1"] .tour-flip {
+  transform: scaleX(-1);
+}
+
+.tour-bob {
+  display: block;
+  position: relative;
+  animation: grandpa-bob 0.8s ease-in-out infinite;
+}
+
+.tour-walker[data-pose="pour"] .tour-bob {
+  animation: grandpa-kettle-sway 1.2s ease-in-out infinite;
+}
+
+.tour-walker[data-pose="pour"] .pose-front {
+  opacity: 1;
+}
+
+.tour-walker[data-pose="pour"] .pose-side {
+  opacity: 0;
+}
+
+/* The top-up pour reuses the strip's kettle keyframes verbatim — the same
+ * dolly-vertigo drop, stream, mug fill and steam burst. */
+.tour-layer[data-tour-beat="pour"] .kettle-stage {
+  visibility: visible;
+  animation: kettle-drop 2800ms cubic-bezier(0.5, 0, 0.6, 1) forwards;
+}
+
+.tour-layer[data-tour-beat="pour"] .kettle-stream {
+  animation: kettle-stream-flow 2800ms linear forwards;
+}
+
+.tour-layer[data-tour-beat="pour"] .mug-fill {
+  animation: mug-fill-rise 2800ms linear forwards;
+}
+
+.tour-layer[data-tour-beat="pour"] .pour-steam {
+  animation: pour-steam-burst 2800ms ease-out forwards;
+}
+
+.tour-layer[data-tour-beat="pour"] .cheers-spark {
+  animation: spark-twinkle 0.8s ease-in-out infinite;
+}
+
+/* The strip in tour mode: the band keeps reserving its space, but the
+ * walker and the cloud stay out of the way until the handoff. The walker
+ * crossfades in at the settle (opacity transition on .grandpa-walker). */
+.grandpa-scene[data-tour="active"] .grandpa-walker {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.grandpa-scene[data-tour="active"] .grandpa-donation-bubble {
+  opacity: 0;
+  visibility: hidden;
+  animation: none;
+  transition: none;
+}
+
+/* Desktop backstop: the tasting tour is mobile-only (the component also
+ * never mounts the layer at ≥1024px). */
+@media (min-width: 1024px) {
+  .tour-layer {
+    display: none;
+  }
+}
+
 /* ============ Responsive: match Comet's breakpoints ============ */
 /* ============ Mobile: in-flow park strip (the closing band) ============
  * Below 1024px the scene is no longer a fixed overlay: it becomes an
@@ -757,13 +900,7 @@
     bottom: calc(1rem + var(--comet-clearance));
   }
 
-  /* The mid-walk ask is desktop-only; on mobile the cloud is the one ask. */
-  .grandpa-cheers-text {
-    display: none;
-  }
-
   .grandpa-donation-bubble {
-    max-width: min(200px, calc(100vw - 2.5rem));
     padding: 10px 13px 9px;
     bottom: calc(100% + 28px);
     /* Present on arrival: never animation-gated on mobile. */
@@ -783,10 +920,6 @@
     to {
       opacity: 1;
     }
-  }
-
-  .bubble-ask strong {
-    font-size: 14px;
   }
 
   .bubble-ask span {
@@ -816,18 +949,9 @@
     --gw: 56px;
   }
 
-  .grandpa-cheers-text {
-    display: none; /* too cramped — the tap target remains */
-  }
-
   .grandpa-donation-bubble {
-    max-width: min(170px, calc(100vw - 2.5rem));
     padding: 8px 11px 7px;
     bottom: calc(100% + 22px);
-  }
-
-  .bubble-ask strong {
-    font-size: 12.5px;
   }
 
   .bubble-ask span {
@@ -839,6 +963,13 @@
  * Grandpa seated on the bench, cloud shown statically, no walk, no kettle,
  * no steam, no gesture. The CTA stays discoverable and the gate works. */
 @media (prefers-reduced-motion: reduce) {
+  /* The tasting tour never runs under reduced motion: settled scene only —
+     no trail (a static trail implies motion and is visual noise), no
+     walking figure. The strip below renders the static seated finale. */
+  .tour-layer {
+    display: none !important;
+  }
+
   .grandpa-walker,
   .grandpa-path,
   .grandpa-bob,
@@ -873,11 +1004,6 @@
 
   .pose-seated {
     opacity: 1 !important;
-  }
-
-  .grandpa-cheers-text {
-    opacity: 0 !important;
-    transform: translate(-50%, 8px) scale(0.96) !important;
   }
 
   /* Park + CTA visible statically. */
