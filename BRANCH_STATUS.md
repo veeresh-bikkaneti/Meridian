@@ -42,10 +42,13 @@ current walk/kettle/park behavior.
 - [x] tsc clean; npm test 847 green; lint-cards GATE PASSED; build:pages green
 - [x] E2E fixes: parked-bench measure (data-mode gate), pour geometry,
       straight-trail toggle dodge, getScreenCTM probe, handoff-timeout
-      cancelled-flag bug, seed-arg + dwell-window fixes
-- [ ] E2E full tour spec re-run (running)
-- [ ] Regression: grandpa desktop/mobile/reduced, comet, tutorial,
-      mobile-home-overlap
+      cancelled-flag bug, seed-arg + dwell-window fixes, cloud opacity
+      (removed delayed mobile animation; poll in specs), greeting
+      dismissal on tour start, mug-fill poll
+- [x] E2E full tour spec: 19/19 green
+- [x] Regression: grandpa desktop (8/8), mobile, reduced; comet
+      desktop/mobile; tutorial (4/4); mobile-home-overlap — all green
+- [ ] Open PR (Veeresh merges)
 
 ## Pending
-- [ ] Open PR (Veeresh merges)
+- (none — ready for PR)
