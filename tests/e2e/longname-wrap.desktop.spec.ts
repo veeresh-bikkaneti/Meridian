@@ -306,11 +306,17 @@ for (const vp of VIEWPORTS) {
           await expect(toggle).toHaveAttribute("aria-expanded", "false");
           await expect(page.locator(".bubble-scroll-wrap")).toBeHidden();
 
-          // Re-open, commit a guaranteed miss on a NAMED place, and check the
-          // reveal card: verdict h2 + pin-compare-line both carry full
-          // names. (A mid-ocean pin fail-closes to no pin-compare-line, so
-          // the miss targets Vancouver through the __project seam.)
+          // Re-open to verify the toggle, then dismiss entirely: at 360px the
+          // bubble (even collapsed) can cover the projected miss point,
+          // flapping tapHitsMap.
           await toggle.click();
+          await expect(
+            page.getByRole("button", { name: "Hide place name" }),
+          ).toBeVisible({ timeout: 10_000 });
+          await page.getByRole("button", { name: "Hide question" }).click();
+          await expect(
+            page.getByRole("button", { name: "Show question" }),
+          ).toBeVisible({ timeout: 10_000 });
           const miss = await missPointOnNamedPlace(page);
           const { phase } = await commitPin(page, miss.x, miss.y);
           expect(phase, "the Vancouver tap must be a miss (done phase)").toBe("done");
