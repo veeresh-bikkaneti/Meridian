@@ -62,6 +62,7 @@ import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
 import { CometMascot } from "./comet-mascot";
+import { SupportFooter } from "./support-footer";
 import {
   CelebrationOverlay,
   celebrationSeamSpec,
@@ -1747,6 +1748,8 @@ function Choose({
         </section>
       ) : null}
     </main>
+    {/* Ko-fi tip-jar colophon — quiet page chrome, home only. Veeresh 2026-10-07. */}
+    <SupportFooter />
     {/* Comet hosts the Chart Room home page only — never in-game, never in
         GeoDetective, never in review. The fixed wrapper is pointer-events
         gated so it never blocks page scroll or taps. */}
