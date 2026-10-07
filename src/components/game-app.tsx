@@ -1626,7 +1626,11 @@ function Choose({
           adding up across editions until you choose to end the game, or if you&rsquo;re idle for
           2 minutes.
         </p>
-        <div className="home-rise mt-7" style={rise(3)}>
+        <div
+          className="home-rise mt-7"
+          style={rise(3)}
+          data-testid="tour-stop-difficulty"
+        >
           <p id="difficulty-label" className="atlas-difficulty-label">
             How do you want to grow your map today?
           </p>
@@ -1667,6 +1671,7 @@ function Choose({
         aria-labelledby="geodetective-title"
         className="atlas-dossier home-rise mt-8"
         style={rise(4)}
+        data-testid="tour-stop-geodetective"
       >
         <span className="atlas-stamp" style={rise(4)} aria-hidden="true">
           Open
@@ -1690,7 +1695,11 @@ function Choose({
           {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
         </button>
       </article>
-      <div className="home-rise mt-10" style={rise(5)}>
+      <div
+        className="home-rise mt-10"
+        style={rise(5)}
+        data-testid="tour-stop-editions"
+      >
         <p className="atlas-eyebrow">Choose your expedition</p>
         <div className="mt-4 grid gap-5 sm:grid-cols-3">
           <EditionCard
@@ -1724,6 +1733,7 @@ function Choose({
           aria-label={REVIEW_DECK_COPY.pickerTitle}
           className="atlas-fieldnotes home-rise mt-8"
           style={rise(6)}
+          data-testid="tour-stop-review"
         >
           <h2 className="atlas-fieldnotes-title">{REVIEW_DECK_COPY.pickerTitle}</h2>
           {deck.due > 0 ? (
