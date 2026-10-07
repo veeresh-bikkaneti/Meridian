@@ -1,9 +1,9 @@
 /* Grandpa's Coffee Run — animated donation scene on the Chart Room home.
  * Chart Room aesthetic: ink outlines, brass accents, warm explorer palette.
  * One slow 9.5s stroll with a cheers beat at 45%, then the seated finale:
- * grandpa in his chair, mug raised with steam, eyes tracking the pointer,
- * thought cloud opened into the donation bubble. Charming, never annoying.
- * Fully static under prefers-reduced-motion. */
+ * grandpa in his chair, head fixed, mug raised with steam + a gentle invite
+ * flourish every ~6s, thought cloud opened into the donation bubble.
+ * Charming, never annoying. Fully static under prefers-reduced-motion. */
 
 .grandpa-scene {
   position: fixed;
@@ -274,6 +274,60 @@
   }
 }
 
+/* ============ Mug-lift invite — the attention-grabber (Veeresh 2026-10-07) ============
+ * Grandpa's head stays fixed (no pointer tracking — Comet already does that);
+ * instead, every ~6s he lifts his mug toward the viewer in a warm, beckoning
+ * flourish with a fresh puff of steam, then settles back. "Come share a
+ * coffee with me" energy — inviting, never frantic. */
+.seated-mug-gesture {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+.grandpa-scene[data-beat="seated"] .seated-mug-gesture {
+  animation: mug-invite 6s ease-in-out infinite;
+}
+
+@keyframes mug-invite {
+  0%,
+  72%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  80%,
+  88% {
+    transform: translateY(-7px) rotate(-5deg) scale(1.06);
+  }
+}
+
+/* The fresh puff of steam, fired in sync with the invite flourish. */
+.mug-puff {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+}
+
+.grandpa-scene[data-beat="seated"] .mug-puff {
+  animation: mug-puff 6s ease-out infinite;
+}
+
+@keyframes mug-puff {
+  0%,
+  76%,
+  100% {
+    opacity: 0;
+    transform: translateY(0) scale(0.8);
+  }
+  82% {
+    opacity: 0.85;
+    transform: translateY(-3px) scale(1.05);
+  }
+  92% {
+    opacity: 0;
+    transform: translateY(-9px) scale(1.15);
+  }
+}
+
 /* ============ Thought cloud (coffee refill) ============ */
 .thought-cloud {
   position: absolute;
@@ -488,7 +542,7 @@
   }
 }
 
-/* ============ Reduced motion: seated statically, bubble shown, no tracking ============ */
+/* ============ Reduced motion: seated statically, bubble shown, head fixed ============ */
 @media (prefers-reduced-motion: reduce) {
   .grandpa-walker,
   .grandpa-path,
@@ -499,6 +553,8 @@
   .steam,
   .cheers-spark,
   .seated-spark,
+  .seated-mug-gesture,
+  .mug-puff,
   .grandpa-donation-bubble {
     animation: none !important;
   }
