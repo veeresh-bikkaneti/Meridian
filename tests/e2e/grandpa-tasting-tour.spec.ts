@@ -136,8 +136,12 @@ async function expectTrailClear(page: Page): Promise<void> {
       '[data-testid="grandpa-tour-path"]',
     ) as unknown as SVGPathElement | null;
     if (!path) return ["no tour path rendered"];
+    // SVG user units → viewport px. NOTE: path.getBoundingClientRect() is
+    // the path geometry's bbox, NOT the SVG viewport — getScreenCTM() is
+    // the correct mapping.
+    const ctm = path.getScreenCTM();
+    if (!ctm) return ["no screen CTM for the tour path"];
     const total = path.getTotalLength();
-    const r = path.getBoundingClientRect();
     const rects: Array<{ l: number; t: number; r: number; b: number }> = [];
     document
       .querySelectorAll(
@@ -154,8 +158,8 @@ async function expectTrailClear(page: Page): Promise<void> {
     const N = 100;
     for (let i = 0; i <= N; i++) {
       const pt = path.getPointAtLength((total * i) / N);
-      const x = r.left + pt.x;
-      const y = r.top + pt.y;
+      const x = ctm.a * pt.x + ctm.c * pt.y + ctm.e;
+      const y = ctm.b * pt.x + ctm.d * pt.y + ctm.f;
       for (const rc of rects) {
         if (x >= rc.l && x <= rc.r && y >= rc.t && y <= rc.b) {
           bad.push(`trail point ${i}/${N} at (${x.toFixed(1)}, ${y.toFixed(1)}) inside interactive rect`);

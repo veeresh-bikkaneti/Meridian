@@ -73,8 +73,10 @@ const CLEARANCE_PX = 16;
 const MIN_GAP_PX = 32;
 /** Stop-card inflate for the never-on/behind-cards rule. */
 const CARD_INFLATE_PX = 1;
-/** Pour waypoint sits this far above the park strip's top edge. */
-const POUR_ABOVE_STRIP_PX = 30;
+/** Pour waypoint sits this far above the park strip's top edge — "just
+ *  above the park strip". 16px keeps it clear of the strip while fitting
+ *  the tight gap when the review deck (the last stop) sits right above. */
+const POUR_ABOVE_STRIP_PX = 16;
 /** Corner rounding where the trail turns (vertical ↔ crossing). */
 const CORNER_R = 10;
 
@@ -255,7 +257,9 @@ export function buildTourPath(m: TourMeasurements): TourGeometry | null {
   }
   const last = stops[stops.length - 1];
   const pourY = m.stripTop - POUR_ABOVE_STRIP_PX;
-  if (!(pourY > last.rect.bottom + CLEARANCE_PX)) return null;
+  // The pour waypoint must sit below the last card (never on it) and above
+  // the strip; the sampler re-verifies clearance against interactives.
+  if (!(pourY > last.rect.bottom + 8)) return null;
   if (!(m.bench.y > pourY)) return null;
 
   const b = new TrailBuilder(origin);
@@ -317,16 +321,17 @@ export function buildTourPath(m: TourMeasurements): TourGeometry | null {
 
 /**
  * Level-1 fallback: a simplified straight trail down the right gutter —
- * no stops, no weaving. Same clearance gate; null steps down to the
- * current bottom-strip walk.
+ * no stops, no weaving. It starts below the header (clear of the sound
+ * toggle and any invite buttons) and runs to the pour waypoint. Same
+ * clearance gate; null steps down to the current bottom-strip walk.
  */
 export function buildStraightTrail(m: TourMeasurements): TourGeometry | null {
   const W = m.viewportWidth;
   if (W < 320) return null;
   const gx = W - TOUR_GUTTER_PX;
-  const origin: Pt = { x: gx, y: 84 };
+  const origin: Pt = { x: gx, y: 280 };
   const pourY = m.stripTop - POUR_ABOVE_STRIP_PX;
-  if (!(pourY > 84 + 40)) return null;
+  if (!(pourY > 320)) return null;
   if (!(m.bench.y > pourY)) return null;
 
   const b = new TrailBuilder(origin);

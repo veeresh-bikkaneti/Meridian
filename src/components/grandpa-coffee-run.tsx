@@ -1376,6 +1376,7 @@ export function GrandpaCoffeeRun() {
         data-testid="grandpa-scene"
         data-beat={beat}
         data-reduced-motion={reducedMotion ? "true" : "false"}
+        data-mode={mode}
         data-tour={mode === "tour" ? "active" : undefined}
       >
         <div

@@ -87,9 +87,16 @@
   pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  animation: grandpa-travel 9500ms linear forwards;
   /* Tasting-tour handoff: the strip walker crossfades in at the settle. */
   transition: opacity 0.4s ease;
+}
+
+/* The travel animation runs only in "strip" mode (the desktop stroll and
+ * the mobile level-2 fallback walk). In "tour"/"seated" modes the walker
+ * stays parked — invisibly during the tour (measurable for the trail's
+ * bench destination), seated from the first frame on return visits. */
+.grandpa-scene[data-mode="strip"] .grandpa-walker {
+  animation: grandpa-travel 9500ms linear forwards;
 }
 
 @keyframes grandpa-travel {

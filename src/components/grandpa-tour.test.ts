@@ -48,6 +48,22 @@ test("buildTourPath weaves alternating gutters with a stop per card", () => {
   assert.match(g.d, /^M /);
 });
 
+test("buildTourPath fits the pour when the review hugs the strip", () => {
+  const m = nominalMeasurements();
+  m.stops = [
+    ...m.stops,
+    { key: "review", rect: rect(20, 832, 370, 960) },
+  ];
+  // Only 32px between the review card and the strip — the pour waypoint
+  // (16px above the strip) must still fit below the card.
+  m.stripTop = 1008;
+  m.bench = { x: 186, y: 1180 };
+  const g = buildTourPath(m);
+  assert.ok(g, "expected a geometry");
+  assert.equal(g.stopDistances.length, 4);
+  assert.ok(g.pourDistance > g.stopDistances[3]);
+});
+
 test("buildTourPath includes the review stop when present", () => {
   const m = nominalMeasurements();
   m.stops = [
@@ -105,8 +121,8 @@ test("buildStraightTrail builds a stop-free right-gutter trail", () => {
   assert.deepEqual(g.stopDistances, []);
   assert.ok(g.pourDistance > 0);
   assert.ok(g.totalLength > g.pourDistance);
-  // Starts top-right, ends at the bench.
-  assert.match(g.d, /^M 376 84/);
+  // Starts below the header on the right gutter, ends at the bench.
+  assert.match(g.d, /^M 376 280/);
   assert.ok(g.d.endsWith("186 1170"));
 });
 
