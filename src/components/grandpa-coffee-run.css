@@ -581,6 +581,7 @@
 .bubble-ask {
   display: block;
   width: 100%;
+  min-height: 44px; /* tap-target floor; the cloud artwork is taller anyway */
   padding: 0;
   background: none;
   border: none;
@@ -641,6 +642,11 @@
   font-size: 12.5px;
   font-weight: 600;
   padding: 7px 16px;
+  /* Mobile tap-target floor: the old ~33px height was under bar. */
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 8px;
   border: 1.5px solid #0c181d;
   background: transparent;
@@ -677,30 +683,90 @@
 }
 
 /* ============ Responsive: match Comet's breakpoints ============ */
+/* ============ Mobile: in-flow park strip (the closing band) ============
+ * Below 1024px the scene is no longer a fixed overlay: it becomes an
+ * in-flow band rendered as a sibling right after </main> — the last band
+ * on the page, below the review deck when present. No DOM move needed.
+ *
+ * The walk + kettle beats are kept (Veeresh play-tests on his phone) but
+ * CONTAINED to the strip: the dotted path and the walker's travel are
+ * re-scoped from the viewport to the strip width. The band is full-bleed
+ * so vw units keep working.
+ *
+ * - The walker parks with a Comet offset: the centered 200px cloud
+ *   (231px rendered, content-box) keeps an 8px clear gap from Comet's
+ *   fixed 80px footprint.
+ * - The ask is present on arrival: the cloud is never animation-gated on
+ *   mobile — the stroll plays inside the strip behind it.
+ * - One ask per strip: the aria-hidden mid-walk cheers text stays a
+ *   desktop beat; the cloud is the single ask here.
+ * - The band reserves bottom clearance >= Comet's fixed footprint so the
+ *   strip's interactive content never scrolls under it.
+ * - A brass rule opens the band so it reads as "camp corner", not a
+ *   fifth edition card. */
 @media (max-width: 1023.5px) {
+  .grandpa-scene {
+    /* Bottom clearance so the strip's interactive content never scrolls
+     * under Comet's fixed footprint (Comet height + bottom offset + 1rem
+     * breathing room). NOTE: margin-bottom does NOT extend the scrollable
+     * area under html,body{height:100%}, so the clearance is built into
+     * the band instead — the walker and path sit --comet-clearance above
+     * the band's bottom edge, and min-height covers the whole stack. */
+    --comet-clearance: calc(
+      80px + max(14px, env(safe-area-inset-bottom, 0px)) + 1rem
+    );
+    position: relative;
+    inset: auto;
+    /* walker + gate-state cloud + gaps + Comet clearance, no clipping */
+    min-height: calc(var(--comet-clearance) + 17rem);
+    /* The walker travels in from off the left edge; as an absolutely
+     * positioned (not fixed) element that would add horizontal scrollable
+     * overflow. Clip x only — y stays visible so the kettle's drop from
+     * above the strip still plays. */
+    overflow-x: clip;
+  }
+
+  .grandpa-scene::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(12rem, 50%);
+    height: 2px;
+    border-radius: 2px;
+    background: var(--atlas-brass);
+    opacity: 0.55;
+  }
+
+  .grandpa-path {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(6px + var(--comet-clearance));
+  }
+
   .grandpa-walker {
-    --park-right: calc(max(14px, env(safe-area-inset-right, 0px)) + 80px + 12px);
+    --park-right: calc(max(14px, env(safe-area-inset-right, 0px)) + 172px);
     --gw: 64px;
+    position: absolute;
+    left: calc(100% - var(--park-right) - var(--gw));
+    bottom: calc(1rem + var(--comet-clearance));
   }
 
+  /* The mid-walk ask is desktop-only; on mobile the cloud is the one ask. */
   .grandpa-cheers-text {
-    max-width: 190px;
-    padding: 8px 11px 7px;
-    bottom: calc(100% + 42px);
-  }
-
-  .grandpa-cheers-text strong {
-    font-size: 13px;
-  }
-
-  .grandpa-cheers-text span {
-    font-size: 10.5px;
+    display: none;
   }
 
   .grandpa-donation-bubble {
-    max-width: 200px;
+    max-width: min(200px, calc(100vw - 2.5rem));
     padding: 10px 13px 9px;
     bottom: calc(100% + 28px);
+    /* Present on arrival: never animation-gated on mobile. */
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0) scale(1);
   }
 
   .bubble-ask strong {
@@ -721,8 +787,16 @@
 }
 
 @media (max-height: 599.5px) {
+  .grandpa-scene {
+    /* Short viewports get the 64px Comet — shrink the clearance to match. */
+    --comet-clearance: calc(
+      64px + max(14px, env(safe-area-inset-bottom, 0px)) + 1rem
+    );
+  }
+
   .grandpa-walker {
-    --park-right: calc(max(14px, env(safe-area-inset-right, 0px)) + 64px + 10px);
+    /* Keep the cloud clear of Comet's 64px short-viewport footprint. */
+    --park-right: calc(max(14px, env(safe-area-inset-right, 0px)) + 144px);
     --gw: 56px;
   }
 
@@ -731,7 +805,7 @@
   }
 
   .grandpa-donation-bubble {
-    max-width: 170px;
+    max-width: min(170px, calc(100vw - 2.5rem));
     padding: 8px 11px 7px;
     bottom: calc(100% + 22px);
   }

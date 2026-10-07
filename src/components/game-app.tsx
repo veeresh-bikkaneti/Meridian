@@ -1692,7 +1692,7 @@ function Choose({
       </article>
       <div className="home-rise mt-10" style={rise(5)}>
         <p className="atlas-eyebrow">Choose your expedition</p>
-        <div className="mt-4 grid gap-4 sm:grid-cols-3">
+        <div className="mt-4 grid gap-5 sm:grid-cols-3">
           <EditionCard
             index="01"
             icon={<MapPin className="size-6" aria-hidden="true" />}

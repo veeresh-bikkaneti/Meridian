@@ -61,7 +61,13 @@ test("renders bottom-right at mobile size without covering CTAs", async ({ page 
   expect(vp.height - (box!.y + box!.height)).toBeLessThanOrEqual(40);
 
   // Every CTA stays tappable: scrolled into view, its center must not be
-  // under the mascot.
+  // under the mascot. The daily greeting bubble is a transient overlay
+  // (auto-dismisses ~9s after mount, text-only): wait it out first so the
+  // assertion measures the permanent mascot, not the transient bubble.
+  // (The bubble floats over page content by design while open.)
+  await expect(page.getByTestId("comet-greeting")).toHaveCount(0, {
+    timeout: 20_000,
+  });
   const ctas = [
     page.getByRole("button", { name: /solve a mystery|resume your case/i }),
     page.getByRole("button", { name: "Choose a state" }),

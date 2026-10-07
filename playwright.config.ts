@@ -45,7 +45,9 @@ export default defineConfig({
     },
     {
       name: "mobile",
-      testMatch: /mobile\.spec\.ts/,
+      // Matches *.mobile.spec.ts and mobile-*.spec.ts (e.g.
+      // mobile-home-overlap.spec.ts).
+      testMatch: /mobile[^/]*\.spec\.ts/,
       use: {
         viewport: { width: 390, height: 844 },
         hasTouch: true,

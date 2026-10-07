@@ -26,10 +26,10 @@ export function TutorialInvite(props: {
     <section
       data-testid="tutorial-invite"
       aria-label="First-run tutorial invitation"
-      className={`${cardClass} mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between`}
+      className="rounded-xl border border-line bg-surface p-4 text-fg shadow-lg sm:p-5 mb-4 sm:mb-6 flex flex-col gap-2 sm:gap-3 sm:flex-row sm:items-center sm:justify-between"
     >
       <div>
-        <p className="text-lg font-semibold">
+        <p className="text-base font-semibold sm:text-lg">
           <span role="img" aria-hidden="true">
             🗺️
           </span>{" "}
@@ -44,14 +44,14 @@ export function TutorialInvite(props: {
         <button
           type="button"
           onClick={props.onTakeTour}
-          className="rounded-full bg-fg px-5 py-2 text-sm font-medium text-bg"
+          className="rounded-full bg-fg px-5 py-2 text-sm font-medium text-bg inline-flex min-h-[44px] items-center justify-center"
         >
           Take the tour
         </button>
         <button
           type="button"
           onClick={props.onDismiss}
-          className="rounded-full px-5 py-2 text-sm font-medium text-muted hover:text-fg"
+          className="rounded-full px-5 py-2 text-sm font-medium text-muted hover:text-fg inline-flex min-h-[44px] items-center justify-center"
         >
           Not now
         </button>
