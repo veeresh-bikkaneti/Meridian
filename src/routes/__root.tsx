@@ -124,6 +124,22 @@ export const Route = createRootRoute({
     <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        {/* Google Analytics 4 — COPPA-safe: IP anonymized, no ad personalization, no Google signals */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NYKKMLQSN5" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-NYKKMLQSN5', {
+                'anonymize_ip': true,
+                'allow_google_signals': false,
+                'allow_ad_personalization_signals': false
+              });
+            `,
+          }}
+        />
       </head>
       <body>
         <PreviewHostBridge />
