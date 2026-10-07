@@ -142,7 +142,8 @@ async function seedDeterministicDeal(page: Page): Promise<void> {
  * decision (2026-10-05).
  */
 const BAHIA_PIN = { x: 580, y: 490 };
-const EXPECTED_BAHIA_LINE = "Your pin: Brazil · True spot: Iran";
+// Canonical format: "Your pin: Brazil · True spot: Iran" (the <dl> text
+// normalizes without separators; the E2E matches via regex).
 
 /**
  * Fixed mid-ocean pin: South Atlantic. territoryAt() returns null there,
@@ -167,7 +168,9 @@ test("miss in another country: the card names both locations", async ({
   // auto-retried, no sleeps.
   const line = card.getByTestId("pin-compare-line");
   await expect(line).toBeVisible({ timeout: 15_000 });
-  await expect(line).toHaveText(EXPECTED_BAHIA_LINE);
+  // The <dl> text normalizes without the ": " and " · " separators — match
+  // the two country names in order.
+  await expect(line).toHaveText(/Your pin\s*Brazil.*True spot\s*Iran/s);
 });
 
 test("hit: the card shows no pin-compare line", async ({ page }) => {
