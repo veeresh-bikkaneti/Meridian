@@ -10,6 +10,7 @@ import {
   startersFromChunk,
   clearChunkCacheForTests,
   aggregateChunkIds,
+  applyFactIndex,
   GENERATED_SOURCE_LABEL,
   GENERATED_SOURCE_HREF,
 } from "./generated-places.ts";
@@ -726,7 +727,7 @@ test("toStarter passes through a valid subdivision, drops missing/invalid", () =
     );
   }
 });
-test("merged fact leads the card (rule 1: history first)", () => {
+test("merged fact leads the card (fact-first ladder precedence)", () => {
   const chunk = {
     meta: { regionId: "texas", edition: "state", count: 1 },
     places: [
@@ -924,4 +925,70 @@ test("wikitext fact without a chunk wiki slug attributes via its own article hre
   assert.ok(s.story.startsWith("The town was named after explorer X"));
   assert.equal(s.sourceLabel, "GeoNames · Wikipedia");
   assert.equal(s.sourceHref, "https://en.wikipedia.org/wiki/Some_Town");
+});
+
+// ---------------------------------------------------------------------------
+// Derived fact indexes (applyFactIndex + loadRegionChunk overlay)
+// ---------------------------------------------------------------------------
+
+test("applyFactIndex: attaches facts and clears hookMissing", () => {
+  const chunk = {
+    meta: { regionId: "texas", edition: "state", count: 2 },
+    places: [
+      { id: "gn-1", name: "A", hookMissing: true },
+      { id: "gn-2", name: "B", hookMissing: true },
+    ],
+  };
+  const index = {
+    regionId: "texas",
+    facts: {
+      "gn-1": { text: "Named after someone famous here.", kind: "wikidata", source: "Wikidata", qid: "Q1" },
+    },
+  };
+  const out = applyFactIndex(chunk, index, "texas");
+  assert.deepEqual(out.places[0].fact, index.facts["gn-1"]);
+  assert.equal("hookMissing" in out.places[0], false);
+  // Untouched place keeps its marker.
+  assert.equal(out.places[1].hookMissing, true);
+  assert.equal("fact" in out.places[1], false);
+  // Input chunk not mutated.
+  assert.equal("fact" in chunk.places[0], false);
+});
+
+test("applyFactIndex: null index returns the chunk unchanged", () => {
+  const chunk = { places: [{ id: "gn-1" }] };
+  assert.equal(applyFactIndex(chunk, null, "texas"), chunk);
+  assert.equal(applyFactIndex(chunk, undefined, "texas"), chunk);
+});
+
+test("applyFactIndex: regionId mismatch fails closed", () => {
+  assert.throws(
+    () => applyFactIndex({ places: [] }, { regionId: "nope", facts: {} }, "texas"),
+    /regionId/,
+  );
+});
+
+test("applyFactIndex: malformed facts fails closed", () => {
+  assert.throws(
+    () => applyFactIndex({ places: [] }, { regionId: "texas", facts: [] }, "texas"),
+    /facts is not an object/,
+  );
+});
+
+test("loadRegionChunk overlays the derived arkansas fact index", async () => {
+  clearChunkCacheForTests();
+  const starters = await loadRegionChunk("arkansas");
+  assert.equal(starters.length, 177);
+  const withFact = starters.filter((s) => typeof s.fact === "string" && s.fact.length > 0);
+  assert.equal(withFact.length, 20); // pilot derived index
+  // Spot-check: a wikidata fact links its entity.
+  const wikidata = withFact.find((s) => s.sourceLabel === "Wikidata");
+  assert.ok(wikidata);
+  assert.match(wikidata.sourceHref, /^https:\/\/www\.wikidata\.org\/wiki\/Q\d+$/);
+});
+
+test("loadRegionChunk works with no fact index (alabama)", async () => {
+  clearChunkCacheForTests();
+  const starters = await loadRegionChunk("alabama");
+  assert.ok(starters.length > 0);
 });

@@ -256,6 +256,70 @@ function main() {
     }
   }
 
+  // --- Derived fact indexes (scripts/facts-ladder.mjs): the ladder never
+  // writes chunk files, so facts ship in src/game/data/geonames/facts/.
+  // Validate every index strictly: regionId matches the filename, every
+  // fact is well-shaped per kind, and every place id exists in the
+  // region's chunk (a dangling fact is a build rejection, never silent).
+  const FACTS_DIR = join(REPO, "src", "game", "data", "geonames", "facts");
+  const kinds = new Set(["wikidata", "wikitext", "eb1911", "hook"]);
+  let factFiles = [];
+  try {
+    factFiles = readdirSync(FACTS_DIR).filter((f) => f.endsWith(".json")).sort();
+  } catch {
+    factFiles = []; // no facts shipped yet — not an error
+  }
+  let factCount = 0;
+  const chunkPlaceIds = new Map();
+  for (const file of factFiles) {
+    const regionId = file.slice(0, -".json".length);
+    const tag = `facts/${file}`;
+    let index;
+    try {
+      index = JSON.parse(readFileSync(join(FACTS_DIR, file), "utf8"));
+    } catch (e) {
+      violations.push(`${tag}: unreadable JSON (${e.message})`);
+      continue;
+    }
+    if (!index || typeof index !== "object" || index.regionId !== regionId) {
+      violations.push(`${tag}: regionId ${JSON.stringify(index?.regionId)} !== filename "${regionId}"`);
+      continue;
+    }
+    if (!manifestIds.has(regionId)) {
+      violations.push(`${tag}: region "${regionId}" has no manifest entry`);
+      continue;
+    }
+    if (!index.facts || typeof index.facts !== "object" || Array.isArray(index.facts)) {
+      violations.push(`${tag}: facts is not an object`);
+      continue;
+    }
+    if (!chunkPlaceIds.has(regionId)) {
+      const chunk = JSON.parse(readFileSync(join(CHUNKS_DIR, `${regionId}.json`), "utf8"));
+      chunkPlaceIds.set(regionId, new Set((chunk.places ?? []).map((p) => p.id)));
+    }
+    const placeIds = chunkPlaceIds.get(regionId);
+    for (const [pid, f] of Object.entries(index.facts)) {
+      const ftag = `${tag} ${pid}`;
+      if (!placeIds.has(pid)) {
+        violations.push(`${ftag}: place id not in chunk "${regionId}"`);
+        continue;
+      }
+      const badShape =
+        !f || typeof f !== "object" ||
+        typeof f.text !== "string" || f.text.trim().length < 20 ||
+        !/[.!?]$/.test(f.text.trim()) ||
+        !kinds.has(f.kind) ||
+        typeof f.source !== "string" || f.source.length === 0;
+      const badQid = f?.kind === "wikidata" && !(typeof f.qid === "string" && /^Q\d+$/.test(f.qid));
+      const badHref = f?.kind === "eb1911" && !(typeof f.href === "string" && f.href.startsWith("https://en.wikisource.org/"));
+      if (badShape || badQid || badHref) {
+        violations.push(`${ftag}: invalid fact field`);
+        continue;
+      }
+      factCount++;
+    }
+  }
+
   if (violations.length > 0) {
     console.error(
       `GEONAMES PLACE GATE FAILED: ${violations.length} violation(s) across ${checked} chunk places — build rejected.`,
@@ -266,7 +330,8 @@ function main() {
   }
   console.log(
     `GeoNames place gate OK: ${checked} places in ${chunkFiles.length} chunks validated ` +
-      `(id uniqueness, edition/regionId membership, manifest counts, Hyderabad coordinates), 0 violations.`,
+      `(id uniqueness, edition/regionId membership, manifest counts, Hyderabad coordinates), ` +
+      `${factCount} derived facts in ${factFiles.length} fact indexes validated, 0 violations.`,
   );
 }
 

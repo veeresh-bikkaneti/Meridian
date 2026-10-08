@@ -20,6 +20,11 @@
  *  (f) length + terminal punctuation — 20..240 chars, ends with . / ! / ?;
  *  (+) smuggled scope words — "not"/"only"/"until" etc. added by the rewrite
  *      flip meaning while dodging the length>3 content-word filter.
+ *  (g) kid-safety screen — age-inappropriate content for the 5–13 audience.
+ *      Rungs 1–2 (Wikidata/wiki-text) had no kid-safety gate before the
+ *      pilot; this runs inside validateFact so every future pipeline run
+ *      is screened before a fact can ship. Conservative by design: the
+ *      247 human-approved pilot facts produce zero hits (locked by test).
  *
  * API: validateFact({ factType, person?, year?, sentence }, rewrittenSentence)
  *      => string[]  (violation codes; empty array = valid)
@@ -243,6 +248,39 @@ export function checkDateBinding(source, rewritten, year) {
 }
 
 // ---------------------------------------------------------------------------
+// (g) kid-safety screen — age-inappropriate content for the 5–13 audience.
+//
+// Conservative allowlist-adjacent blocklist: only unambiguous categories
+// (sexual/adult content, graphic atrocity violence). Ordinary historical
+// violence ("was killed in battle", "assassinated") is NOT flagged —
+// that's the curator's and human review's call, not a regex's. Calibrated
+// to zero hits on the 247 human-approved pilot facts (locked by test).
+// ---------------------------------------------------------------------------
+
+const KID_UNSAFE_RES = [
+  /\bbrothel\b/i,
+  /\bprostitut/i,
+  /\bporn/i,
+  /\badult entertainment\b/i,
+  /\bstrip club\b/i,
+  /\bred-?light district\b/i,
+  /\bmassacre\b/i,
+  /\bgenocide\b/i,
+  /\btorture\b/i,
+  /\bmutilat/i,
+  /\bdecapitat/i,
+];
+
+/** Returns ["kid-unsafe: <pattern>"] on the first hit, else []. */
+export function checkKidSafe(sentence) {
+  const text = String(sentence ?? "");
+  for (const re of KID_UNSAFE_RES) {
+    if (re.test(text)) return [`kid-unsafe: ${re.source.slice(0, 40)}`];
+  }
+  return [];
+}
+
+// ---------------------------------------------------------------------------
 // Main entry point.
 // ---------------------------------------------------------------------------
 
@@ -264,6 +302,7 @@ export function validateFact(fact, rewrittenSentence) {
   const violations = [
     ...checkLength(rewrittenSentence),
     ...checkBanned(rewrittenSentence),
+    ...checkKidSafe(rewrittenSentence),
     ...checkContentWords(rewrittenSentence, source),
     ...checkScopeWords(rewrittenSentence, source),
     ...checkHedging(source, rewrittenSentence),

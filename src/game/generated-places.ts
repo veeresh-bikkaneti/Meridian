@@ -74,9 +74,13 @@ interface ChunkPlaceRecord {
    */
   history?: unknown;
   /**
-   * Optional fact-ladder hook (scripts/facts-ladder.mjs): { text, kind,
-   * source, qid?, href? }. Takes precedence over `history` in the card
-   * composition (see toStarter); the AI fallback treats it like history.
+   * Optional fact-ladder hook: { text, kind, source, qid?, href? }.
+   * Shipped in derived per-region indexes
+   * (src/game/data/geonames/facts/<regionId>.json, written by
+   * scripts/facts-ladder.mjs) and overlaid onto chunk places at load time
+   * by applyFactIndex — chunks themselves never carry facts.
+   * Takes precedence over `history` in the card composition (see toStarter);
+   * the AI fallback treats it like history.
    * Per-kind attribution (Wikidata / EB1911 links) via factAttribution().
    */
   fact?: unknown;
@@ -115,7 +119,8 @@ interface ChunkPlaceRecord {
 function factText(fact: unknown): string | null {
   if (typeof fact === "string") {
     const t = fact.trim();
-    return t.length >= 20 ? t : null;  }
+    return t.length >= 20 ? t : null;
+  }
   if (fact && typeof fact === "object" && "text" in fact && typeof (fact as { text: unknown }).text === "string") {
     const t = ((fact as { text: string }).text).trim();
     return t.length >= 20 ? t : null;
@@ -215,7 +220,8 @@ function toStarter(
   // leads; the plain-geography blurb anchors it. Precedence: fact-ladder
   // fact > Wikipedia history hook > bare geographic blurb (same order as
   // composeCardStory() in scripts/card-compose.mjs).
-  const hook = factText(place.fact) ?? (typeof place.history === "string" && place.history.length > 0 ? place.history : null);  const hasHistory = typeof place.history === "string" && place.history.length > 0;
+  const hook = factText(place.fact) ?? (typeof place.history === "string" && place.history.length > 0 ? place.history : null);
+  const hasHistory = typeof place.history === "string" && place.history.length > 0;
   return {
     id: place.id,
     edition,
@@ -264,7 +270,8 @@ function assertValidRecord(
   blurb: string;
   history?: string;
   fact?: unknown;
-  hookMissing?: boolean;  wiki?: string;
+  hookMissing?: boolean;
+  wiki?: string;
   /**
    * Optional build-time difficulty tier (1–5). Validated shape-wise by the
    * prebuild gate (scripts/check-generated-places.mjs); toStarter falls
@@ -431,6 +438,64 @@ export function aggregateChunkIds(edition: Edition, regionId: string): string[] 
 const chunkCache = new Map<string, Promise<Starter[]>>();
 
 /**
+ * Derived fact index, as written by scripts/facts-ladder.mjs
+ * (src/game/data/geonames/facts/<regionId>.json):
+ * { regionId, facts: { placeId: fact } }. The index is optional per region —
+ * most regions have no facts yet.
+ */
+interface FactIndexShape {
+  regionId: unknown;
+  facts: unknown;
+}
+
+/**
+ * Overlay a region's derived fact index onto its chunk places, reproducing
+ * exactly what the old in-chunk merge wrote: the fact is attached and the
+ * hookMissing marker cleared (a place with a fact is never hook-missing).
+ * Returns a new chunk object; the imported module is never mutated.
+ * A present-but-malformed index fails closed (throws) — never a silently
+ * partial overlay. Exported for unit tests.
+ */
+export function applyFactIndex(
+  chunk: { meta?: unknown; places: Array<{ id?: unknown; fact?: unknown; hookMissing?: unknown }> },
+  index: unknown,
+  regionId: string,
+): { meta?: unknown; places: Array<{ id?: unknown; fact?: unknown; hookMissing?: unknown }> } {
+  if (index === null || index === undefined) return chunk;
+  const idx = index as FactIndexShape;
+  if (idx.regionId !== regionId) {
+    throw new Error(`fact index regionId ${JSON.stringify(idx.regionId)} !== "${regionId}"`);
+  }
+  if (!idx.facts || typeof idx.facts !== "object" || Array.isArray(idx.facts)) {
+    throw new Error(`fact index for "${regionId}": facts is not an object`);
+  }
+  const facts = idx.facts as Record<string, unknown>;
+  const places = chunk.places.map((place) => {
+    if (typeof place.id !== "string") return place;
+    const fact = facts[place.id];
+    if (fact === undefined) return place;
+    const out = { ...place, fact };
+    delete out.hookMissing;
+    return out;
+  });
+  return { ...chunk, places };
+}
+
+/**
+ * Load a region's derived fact index, or null when the region has none.
+ * A missing index means "no facts" (not an error); a present-but-malformed
+ * index fails closed inside applyFactIndex.
+ */
+async function loadFactIndex(regionId: string): Promise<unknown> {
+  try {
+    const mod = await import(`./data/geonames/facts/${regionId}.json`, { with: { type: "json" } });
+    return (mod as { default: unknown }).default;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Load the generated starters for one region, fetching its chunk on first
  * use. Rejects fail-closed on unknown region, missing chunk, or malformed
  * data — callers must NOT start a run when this rejects.
@@ -440,8 +505,17 @@ export async function loadRegionChunk(regionId: string): Promise<Starter[]> {
   manifestRegionFor(regionId);
   let pending = chunkCache.get(regionId);
   if (!pending) {
-    pending = import(`./data/geonames/chunks/${regionId}.json`, { with: { type: "json" } })
-      .then((mod) => startersFromChunk(regionId, (mod as { default: unknown }).default))
+    pending = Promise.all([
+      import(`./data/geonames/chunks/${regionId}.json`, { with: { type: "json" } }),
+      loadFactIndex(regionId),
+    ])
+      .then(([chunkMod, factIndex]) => {
+        const chunkJson = (chunkMod as { default: unknown }).default as {
+          meta?: unknown;
+          places: ChunkPlaceRecord[];
+        };
+        return startersFromChunk(regionId, applyFactIndex(chunkJson, factIndex, regionId));
+      })
       .catch((err: unknown) => {
         chunkCache.delete(regionId);
         throw new Error(`failed to load GeoNames chunk "${regionId}": ${(err as Error).message}`, {

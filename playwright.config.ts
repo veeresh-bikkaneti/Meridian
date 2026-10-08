@@ -223,10 +223,6 @@ export default defineConfig({
       testMatch: /offline-content\.spec\.ts/,
     },
     {
-      name: "zz-dbg",
-      testMatch: /zz-dbg\.spec\.ts/,
-    },
-    {
       name: "facts-ladder-pilot",
       testMatch: /facts-ladder-pilot\.spec\.ts/,
       // 390px viewport for the mobile layout check (frontend review P1).

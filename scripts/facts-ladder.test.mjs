@@ -6,6 +6,7 @@
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync, writeFileSync, unlinkSync } from "node:fs";
 
 import {
   parseWikidataYear,
@@ -20,7 +21,14 @@ import {
   factAttribution,
   withFact,
   indexWikidata,
+  indexWikiText,
+  indexEb1911,
   indexQidJoin,
+  loadInputs,
+  buildFactIndex,
+  readFactIndex,
+  reportCoverage,
+  fetchMissing,
 } from "./facts-ladder.mjs";
 
 // ---------------------------------------------------------------------------
@@ -408,8 +416,8 @@ test("idempotency: factForPlace recomputes the identical fact on merged input", 
   assert.equal(second.rung, first.rung);
 });
 
-test("idempotency: merge is sticky — a vanished input does not delete the fact", () => {
-  // Documented behavior: mergeChunk recomputes but never removes facts.
+test("idempotency: index build is sticky — a vanished input does not delete the fact", () => {
+  // Documented behavior: buildFactIndex recomputes but never removes facts.
   // A place merged yesterday keeps its fact even if today's inputs lose it.
   const p = place({ history: "The city was named after King Louis XVI." });
   const inputs = fullInputs();
@@ -424,7 +432,7 @@ test("idempotency: merge is sticky — a vanished input does not delete the fact
   const recomputed = factForPlace(merged, emptyInputs);
   // The ladder recomputes from inputs (hook still wins from history)...
   assert.equal(recomputed.rung, "hook");
-  // ...but mergeChunk only writes when factForPlace returns a fact and
+  // ...but buildFactIndex only writes when factForPlace returns a fact and
   // never deletes an existing one: the stored fact survives.
   assert.deepEqual(merged.fact, first.fact);
 });
@@ -451,7 +459,7 @@ test("loud: validator rejection at wikidata is traced even when wikitext wins", 
   const wdTrace = r.trace.find((t) => t.rung === "wikidata");
   assert.equal(wdTrace.reason, "validator-rejected");
   assert.ok(wdTrace.violations.some((v) => v === "too-short"));
-  // The mergeChunk loud-filter keys on exactly this shape:
+  // The buildFactIndex loud-filter keys on exactly this shape:
   const loud = r.trace.filter(
     (t) => t.reason === "validator-rejected" || (t.notes ?? []).length > 0,
   );
@@ -473,7 +481,7 @@ test("hookMissing: cleared when the ladder writes a fact", () => {
   assert.deepEqual(merged.fact, fact);
 });
 
-test("hookMissing: kept on fact-less records (mergeChunk leaves them untouched)", () => {
+test("hookMissing: kept on fact-less records (buildFactIndex writes no entry)", () => {
   const p = place({ hookMissing: true });
   const inputs = {
     qidByGeonames: new Map(),
@@ -483,8 +491,8 @@ test("hookMissing: kept on fact-less records (mergeChunk leaves them untouched)"
   };
   const { fact } = factForPlace(p, inputs);
   assert.equal(fact, null);
-  // mergeChunk returns the place object unchanged when factForPlace yields
-  // no fact — the marker survives for the linter / a later pipeline pass.
+  // buildFactIndex writes no index entry when factForPlace yields no fact —
+  // the marker survives for the linter / a later pipeline pass.
   const kept = fact ? withFact(p, fact) : p;
   assert.equal(kept.hookMissing, true);
 });
@@ -506,4 +514,124 @@ test("hookMissing: stays cleared on idempotent re-runs", () => {
   const twice = withFact(once, fact);
   assert.equal("hookMissing" in twice, false);
   assert.deepEqual(Object.keys(twice), Object.keys(once));
+});
+
+// ---------------------------------------------------------------------------
+// Derived fact indexes (buildFactIndex / readFactIndex)
+// ---------------------------------------------------------------------------
+
+test("buildFactIndex: dry-run computes counts without writing", () => {
+  const r = buildFactIndex("arkansas", fullInputs(), { dryRun: true });
+  assert.equal(r.chunkId, "arkansas");
+  assert.equal(r.dryRun, true);
+  assert.equal(r.places, 177);
+  assert.deepEqual(Object.keys(r.counts).sort(), ["eb1911", "hook", "none", "wikidata", "wikitext"]);
+  assert.ok(Array.isArray(r.rejections));
+});
+
+test("buildFactIndex: never modifies chunk files (regression: the old merge overwrote them)", () => {
+  const chunkPath = new URL("../src/game/data/geonames/chunks/arkansas.json", import.meta.url);
+  const before = readFileSync(chunkPath, "utf8");
+  buildFactIndex("arkansas", fullInputs(), { dryRun: true });
+  const after = readFileSync(chunkPath, "utf8");
+  assert.equal(after, before);
+});
+
+test("readFactIndex: loads the pilot arkansas index", () => {
+  const idx = readFactIndex("arkansas");
+  assert.equal(idx.regionId, "arkansas");
+  assert.equal(Object.keys(idx.facts).length, 20);
+  for (const f of Object.values(idx.facts)) {
+    assert.ok(typeof f.text === "string" && f.text.length >= 20);
+  }
+});
+
+test("readFactIndex: null for a region with no index", () => {
+  assert.equal(readFactIndex("alabama"), null);
+});
+
+test("readFactIndex: rejects a malformed index instead of silently dropping facts", async () => {
+  const badPath = new URL("../src/game/data/geonames/facts/zz-test-malformed.json", import.meta.url);
+  try {
+    writeFileSync(badPath, JSON.stringify({ regionId: "wrong-id", facts: {} }), "utf8");
+    assert.throws(() => readFactIndex("zz-test-malformed"), /regionId mismatch/);
+    writeFileSync(badPath, JSON.stringify({ regionId: "zz-test-malformed", facts: [] }), "utf8");
+    assert.throws(() => readFactIndex("zz-test-malformed"), /facts is not an object/);
+  } finally {
+    try { unlinkSync(badPath); } catch { /* already gone */ }
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Input indexes
+// ---------------------------------------------------------------------------
+
+test("indexWikiText: groups triples by geonamesId, skips bad rows", () => {
+  const m = indexWikiText([
+    { geonamesId: "gn-1", sentence: "Named after X." },
+    { geonamesId: "gn-1", sentence: "Founded in 1900." },
+    { geonamesId: null, sentence: "bad row" },
+    { geonamesId: "gn-2" },
+  ]);
+  assert.equal(m.get("gn-1").length, 2);
+  assert.equal(m.has("gn-2"), false);
+  assert.equal(m.has(null), false);
+});
+
+test("indexEb1911: excludes needsReview rows", () => {
+  const m = indexEb1911([
+    { geonamesId: "gn-1", sentence: "An old town.", needsReview: false },
+    { geonamesId: "gn-1", sentence: "Dubious claim.", needsReview: true },
+    { geonamesId: "gn-2", sentence: 42 },
+  ]);
+  assert.equal(m.get("gn-1").length, 1);
+  assert.equal(m.get("gn-1")[0].sentence, "An old town.");
+});
+
+test("loadInputs: returns the four indexes", () => {
+  const inputs = loadInputs();
+  assert.ok(inputs.qidByGeonames instanceof Map);
+  assert.ok(inputs.wikidataByQid instanceof Map);
+  assert.ok(inputs.wikiTextByGeonames instanceof Map);
+  assert.ok(inputs.eb1911ByGeonames instanceof Map);
+});
+
+test("reportCoverage: counts already-indexed facts separately", () => {
+  const empty = {
+    qidByGeonames: new Map(),
+    wikidataByQid: new Map(),
+    wikiTextByGeonames: new Map(),
+    eb1911ByGeonames: new Map(),
+  };
+  const rows = reportCoverage(["arkansas"], empty);
+  assert.equal(rows.length, 1);
+  assert.equal(rows[0].chunkId, "arkansas");
+  assert.equal(rows[0].places, 177);
+  assert.equal(rows[0].alreadyFact, 20); // pilot derived index on disk
+});
+
+test("fetchMissing: empty chunk list does no work and no network", async () => {
+  const r = await fetchMissing([], 150);
+  assert.deepEqual(r.join, { slug: 0, search: 0, unmatched: 0 });
+  assert.equal(r.extractedQids, 0);
+});
+
+// ---------------------------------------------------------------------------
+// factAttribution hardening (placeWiki guard)
+// ---------------------------------------------------------------------------
+
+test("factAttribution: never emits /wiki/undefined", () => {
+  assert.deepEqual(factAttribution({ kind: "wikitext" }, undefined), {
+    label: "GeoNames · Wikipedia", href: null,
+  });
+  assert.deepEqual(factAttribution({ kind: "hook" }, undefined), {
+    label: "GeoNames · Wikipedia", href: null,
+  });
+  assert.deepEqual(factAttribution({ kind: "hook" }, ""), {
+    label: "GeoNames · Wikipedia", href: null,
+  });
+  // A present slug still links.
+  assert.deepEqual(factAttribution({ kind: "hook" }, "Edna,_Texas"), {
+    label: "GeoNames · Wikipedia", href: "https://en.wikipedia.org/wiki/Edna,_Texas",
+  });
 });

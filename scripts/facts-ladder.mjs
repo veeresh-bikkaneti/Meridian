@@ -1,8 +1,14 @@
 #!/usr/bin/env node
 /**
  * facts-ladder.mjs — Worker 1 (build-time): merge all Phase 1 fact outputs
- * into chunk places as an optional `fact` field.
+ * into DERIVED per-region fact indexes
+ * (src/game/data/geonames/facts/<regionId>.json).
  *
+ * The indexes are derived data: the script NEVER writes production chunk
+ * files (repo rule — build scripts emit derived indexes only). The runtime
+ * (src/game/generated-places.ts) overlays a region's fact index onto its
+ * chunk places at load time, so player-visible behavior is identical to
+ * the old in-chunk merge: fact-first cards with per-kind attribution.
  * Per-place precedence (first hit wins):
  *   1. Wikidata referenced facts — P138 (named_after) + P571 (inception)
  *      composed into ONE story sentence. Only statements with
@@ -30,7 +36,7 @@
  *     so the validator's real work here is the length / banned-pattern /
  *     inversion / scope-word / date-binding gates.
  *
- * fact field written to chunks:
+ * Fact objects stored in the derived index:
  *   { text, kind: 'wikidata'|'wikitext'|'eb1911'|'hook',
  *     source: 'Wikidata'|'Wikipedia'|'EB1911', qid?, href? }
  * `qid` is carried for wikidata (card attribution link); `href` for eb1911
@@ -40,10 +46,11 @@
  *   node scripts/facts-ladder.mjs run --chunks australia,arkansas [--dry-run] [--fetch-missing] [--join-limit 150]
  *   node scripts/facts-ladder.mjs report [--chunks australia,arkansas]
  *
- * `run` requires --chunks (a full merge is a deliberate --all decision).
+ * `run` writes derived fact indexes (never chunk files). It requires
+ * --chunks (a full index build is a deliberate --all decision).
  * --fetch-missing runs the qid-join building blocks + the Wikidata extractor
  * for places in the target chunks not yet covered (network; polite pacing).
- * --dry-run computes and reports without writing chunk files.
+ * --dry-run computes and reports without writing index files.
  *
  * Node stdlib only. Imports the Phase 1 modules (no network in unit tests).
  */
@@ -70,14 +77,16 @@ import {
   entityData,
   resolveCountryQid,
   verifyCandidate,
-  slugToTitle,
   BATCH_TITLES,
   OUT_PATH as QID_JOIN_PATH,
 } from "./facts-qid-join.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO = dirname(HERE);
+// Read-only: chunk files are production data — this script never writes them.
 const CHUNKS_DIR = join(REPO, "src", "game", "data", "geonames", "chunks");
+// Derived output: per-region fact indexes ({ regionId, facts: { placeId: fact } }).
+const FACTS_OUT_DIR = join(REPO, "src", "game", "data", "geonames", "facts");
 const FACTS_DIR = join(REPO, ".scratch", "facts");
 const WIKITEXT_PATH = join(FACTS_DIR, "wiki-text-facts.jsonl");
 const EB1911_PATH = join(FACTS_DIR, "eb1911-facts.jsonl");
@@ -355,22 +364,35 @@ export function factForPlace(place, inputs) {
 
 /** Card attribution for a merged fact (script-side; the runtime has its own
  * tolerant version in generated-places.ts with {sourceLabel, sourceHref}
- * shape — keep the kind coverage in sync). */
+ * shape — keep the kind coverage in sync).
+ *
+ * Never emits a broken URL: when neither the fact's own href nor a valid
+ * placeWiki slug is available, href is null (the caller falls back to
+ * unlinked attribution) instead of "https://en.wikipedia.org/wiki/undefined". */
 export function factAttribution(fact, placeWiki) {
+  const wikiHref =
+    typeof placeWiki === "string" && placeWiki.length > 0
+      ? `https://en.wikipedia.org/wiki/${placeWiki}`
+      : null;
   switch (fact.kind) {
     case "wikidata":
-      return { label: "Wikidata", href: `https://www.wikidata.org/wiki/${fact.qid}` };
+      return typeof fact.qid === "string" && /^Q\d+$/.test(fact.qid)
+        ? { label: "Wikidata", href: `https://www.wikidata.org/wiki/${fact.qid}` }
+        : { label: "Wikidata", href: null };
     case "eb1911":
-      return { label: "EB1911", href: fact.href };
+      return {
+        label: "EB1911",
+        href: typeof fact.href === "string" && fact.href.length > 0 ? fact.href : null,
+      };
     case "wikitext":
       // Attribution via the chunk wiki slug when present, else the fact's
       // own source-article href (set by the ladder when the slug is absent).
       return fact.href
         ? { label: "GeoNames · Wikipedia", href: fact.href }
-        : { label: "GeoNames · Wikipedia", href: `https://en.wikipedia.org/wiki/${placeWiki}` };
+        : { label: "GeoNames · Wikipedia", href: wikiHref };
     case "hook":
     default:
-      return { label: "GeoNames · Wikipedia", href: `https://en.wikipedia.org/wiki/${placeWiki}` };
+      return { label: "GeoNames · Wikipedia", href: wikiHref };
   }
 }
 
@@ -382,7 +404,31 @@ function chunkPath(chunkId) {
   return join(CHUNKS_DIR, `${chunkId}.json`);
 }
 
-/** Insert `fact` after `history` (or after `blurb`) so the record reads naturally. */
+function factIndexPath(chunkId) {
+  return join(FACTS_OUT_DIR, `${chunkId}.json`);
+}
+
+/**
+ * Read a derived fact index ({ regionId, facts: { placeId: fact } }),
+ * or null when the region has no index yet. Shape-checked: a corrupt
+ * index fails loudly instead of silently dropping facts.
+ */
+export function readFactIndex(chunkId) {
+  const path = factIndexPath(chunkId);
+  if (!existsSync(path)) return null;
+  const index = JSON.parse(readFileSync(path, "utf8"));
+  if (!index || typeof index !== "object" || index.regionId !== chunkId) {
+    throw new Error(`fact index "${path}": regionId mismatch or malformed`);
+  }
+  if (!index.facts || typeof index.facts !== "object" || Array.isArray(index.facts)) {
+    throw new Error(`fact index "${path}": facts is not an object`);
+  }
+  return index;
+}
+
+/** Insert `fact` after `history` (or after `blurb`) so the record reads naturally.
+ * Used by tooling that materializes a merged view (e.g. scripts/lint-cards.mjs
+ * overlays the derived fact index onto chunk places before auditing cards). */
 export function withFact(place, fact) {
   const out = {};
   let inserted = false;
@@ -402,16 +448,17 @@ export function withFact(place, fact) {
 }
 
 /**
- * Merge facts into one chunk file. Returns per-rung counts + rejections.
+ * Build the derived fact index for one chunk: { regionId, facts: { placeId: fact } }.
+ * The chunk file is read but NEVER written (repo rule — build scripts emit
+ * derived indexes only). Returns per-rung counts + rejections.
  * With dryRun, computes everything but writes nothing.
  */
-export function mergeChunk(chunkId, inputs, { dryRun = false } = {}) {
-  const path = chunkPath(chunkId);
-  const chunk = JSON.parse(readFileSync(path, "utf8"));
+export function buildFactIndex(chunkId, inputs, { dryRun = false } = {}) {
+  const chunk = JSON.parse(readFileSync(chunkPath(chunkId), "utf8"));
   const counts = { wikidata: 0, wikitext: 0, eb1911: 0, hook: 0, none: 0 };
   const rejections = [];
-  let wrote = 0;
-  chunk.places = chunk.places.map((place) => {
+  const facts = {};
+  for (const place of chunk.places) {
     const { fact, rung, trace } = factForPlace(place, inputs);
     counts[rung]++;
     // Loud rejections: validator failures and dropped Wikidata parts are
@@ -424,18 +471,17 @@ export function mergeChunk(chunkId, inputs, { dryRun = false } = {}) {
       rejections.push({ id: place.id, name: place.name, won: rung, loud });
     }
     if (fact) {
-      wrote++;
-      return withFact(place, fact);
+      facts[place.id] = fact;
     }
-    return place;
-  });
+  }
   if (!dryRun) {
-    mkdirSync(dirname(path), { recursive: true });
+    mkdirSync(FACTS_OUT_DIR, { recursive: true });
+    const path = factIndexPath(chunkId);
     const tmp = `${path}.ladder-tmp`;
-    writeFileSync(tmp, JSON.stringify(chunk), "utf8");
+    writeFileSync(tmp, JSON.stringify({ regionId: chunkId, facts }), "utf8");
     renameSync(tmp, path);
   }
-  return { chunkId, places: chunk.places.length, counts, rejections, wrote, dryRun };
+  return { chunkId, places: chunk.places.length, facts: Object.keys(facts).length, counts, rejections, dryRun };
 }
 
 // ---------------------------------------------------------------------------
@@ -541,14 +587,16 @@ export async function fetchMissing(chunkIds, joinLimit = 150) {
 // report
 // ---------------------------------------------------------------------------
 
-/** Coverage potential from current inputs, without writing anything. */
+/** Coverage potential from current inputs, without writing anything.
+ * Places already covered by a derived fact index are counted separately. */
 export function reportCoverage(chunkIds, inputs = loadInputs()) {
   const rows = [];
   for (const cid of chunkIds) {
     const chunk = JSON.parse(readFileSync(chunkPath(cid), "utf8"));
+    const indexed = readFactIndex(cid);
     const row = { chunkId: cid, places: chunk.places.length, wikidata: 0, wikitext: 0, eb1911: 0, hook: 0, none: 0, alreadyFact: 0 };
     for (const p of chunk.places) {
-      if (p.fact) { row.alreadyFact++; continue; }
+      if (indexed && indexed.facts[p.id]) { row.alreadyFact++; continue; }
       const { rung } = factForPlace(p, inputs);
       row[rung]++;
     }
@@ -625,11 +673,11 @@ async function main() {
   const inputs = loadInputs();
   let totalRejections = 0;
   for (const cid of chunkIds) {
-    const r = mergeChunk(cid, inputs, { dryRun: args.dryRun });
+    const r = buildFactIndex(cid, inputs, { dryRun: args.dryRun });
     console.log(
       `[ladder] ${r.chunkId}: ${r.places} places -> ` +
       `wikidata=${r.counts.wikidata} wikitext=${r.counts.wikitext} eb1911=${r.counts.eb1911} ` +
-      `hook=${r.counts.hook} none=${r.counts.none}${r.dryRun ? " (dry-run, nothing written)" : ` (wrote ${r.wrote})`}`,
+      `hook=${r.counts.hook} none=${r.counts.none}${r.dryRun ? " (dry-run, nothing written)" : ` (indexed ${r.facts})`}`,
     );
     for (const rej of r.rejections) {
       totalRejections++;

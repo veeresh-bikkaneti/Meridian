@@ -14,6 +14,7 @@ import {
   checkNamedAfterInversion,
   checkHedging,
   checkDateBinding,
+  checkKidSafe,
 } from "./facts-validate.mjs";
 
 const has = (violations, code) =>
@@ -478,5 +479,44 @@ describe("smuggled scope words", () => {
       validateFact({ factType: "note", sentence: src }, "Only the brave crossed it."),
       [],
     );
+  });
+});
+
+describe("kid-safety screen (g)", () => {
+  it("flags adult/atrocity content", () => {
+    assert.ok(has(checkKidSafe("The district is known for its historic brothel."), "kid-unsafe"));
+    assert.ok(has(checkKidSafe("A massacre took place here in 1890."), "kid-unsafe"));
+    assert.ok(has(checkKidSafe("The site of a brutal torture chamber."), "kid-unsafe"));
+  });
+
+  it("lets ordinary history through", () => {
+    assert.deepEqual(checkKidSafe("The town was named after General Smith, who died in battle."), []);
+    assert.deepEqual(checkKidSafe("Founded in 1882 and named after Edna, the railroad official's daughter."), []);
+    assert.deepEqual(checkKidSafe(""), []);
+  });
+
+  it("zero hits on the 247 human-approved pilot facts", async () => {
+    const { readFileSync } = await import("node:fs");
+    const { join, dirname } = await import("node:path");
+    const { fileURLToPath } = await import("node:url");
+    const factsDir = join(dirname(fileURLToPath(import.meta.url)), "..", "src", "game", "data", "geonames", "facts");
+    let n = 0;
+    for (const region of ["arkansas", "australia"]) {
+      const idx = JSON.parse(readFileSync(join(factsDir, `${region}.json`), "utf8"));
+      for (const [pid, f] of Object.entries(idx.facts)) {
+        n++;
+        assert.deepEqual(checkKidSafe(f.text), [], `pilot fact ${pid} flagged`);
+      }
+    }
+    assert.equal(n, 247);
+  });
+
+  it("validateFact rejects a kid-unsafe compose", () => {
+    const fact = {
+      factType: "event",
+      sentence: "The old district had a brothel.",
+    };
+    const v = validateFact(fact, "The old district had a brothel.");
+    assert.ok(has(v, "kid-unsafe"));
   });
 });

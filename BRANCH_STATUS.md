@@ -10,12 +10,47 @@ inherited from main.
 
 # BRANCH_STATUS — feat/facts-ladder
 
-Fact-ladder content pipeline: generator scripts merge Wikidata / wiki-text /
-EB1911 / hook facts into place chunks; 247 pilot facts (arkansas 20,
-australia 227 after content-safety removals) render on story cards as
-fact-first narratives with per-kind source attribution.
+Fact-ladder content pipeline: generator scripts compose Wikidata / wiki-text /
+EB1911 / hook facts into DERIVED per-region indexes
+(src/game/data/geonames/facts/<regionId>.json). The runtime overlays a
+region's index onto its chunk places at load time. 247 pilot facts
+(arkansas 20, australia 227 after content-safety removals) render on story
+cards as fact-first narratives with per-kind source attribution.
+Production chunk files are never written by build scripts (repo rule).
 
 ## Done
+
+- ARCHITECTURE REWORK (2026-10-08, merge-gauntlet BLOCKER fix): the pilot
+  had merged facts into production chunk files in place — reworked to
+  derived indexes:
+  - scripts/facts-ladder.mjs: `mergeChunk()` → `buildFactIndex()` writes
+    { regionId, facts: { placeId: fact } } to src/game/data/geonames/facts/;
+    chunk files are read-only. `readFactIndex()` shape-checks on load.
+  - src/game/generated-places.ts: `loadRegionChunk()` loads the chunk +
+    its fact index in parallel and overlays via `applyFactIndex()` before
+    the existing strict validation — player-visible behavior identical
+    (round-trip verified: 247/247 facts byte-identical, lint withHook
+    count 8802 unchanged).
+  - Chunks arkansas.json/australia.json reverted to pristine ae524e3
+    content; manifest bytes already matched (no manifest change needed).
+  - scripts/lint-cards.mjs overlays derived indexes in the chunk audit
+    (fact-first cards still audited as rendered).
+  - scripts/check-generated-places.mjs (prebuild gate) validates every
+    derived index: regionId/filename match, fact shape per kind,
+    place-id existence in the chunk — fails loudly.
+  - Removed dead `slugToTitle` import; `factAttribution()` now guards
+    undefined placeWiki (href: null, never /wiki/undefined).
+  - Kid-safety gate: `checkKidSafe()` in facts-validate.mjs screens every
+    composed fact (rungs 1–3); calibrated to zero hits on the 247
+    human-approved pilot facts (locked by test).
+  - Removed dead `zz-dbg` Playwright project; fixed contradictory
+    "history first" test title (asserts fact-first); fixed 3 line-collapse
+    spots in generated-places.ts.
+  - Tests added: indexWikiText, indexEb1911, loadInputs, reportCoverage,
+    fetchMissing (no-network path), buildFactIndex/readFactIndex,
+    factAttribution guard, kid-safety screen + pilot zero-hit lock,
+    applyFactIndex (5), loadRegionChunk overlay (arkansas 20 facts;
+    alabama no-index path).
 
 - Rebased onto origin/main (ae524e3). Resolved render conflicts in favor of
   main's tolerant runtime architecture:
@@ -68,10 +103,22 @@ fact-first narratives with per-kind source attribution.
 - Gates (2026-10-08): tsc clean, npm test green (729 + 854 pass,
   0 fail), lint-cards GATE PASSED, build:pages green, Playwright
   facts-ladder-pilot 2/2 green with zero console errors.
+- Gates after architecture rework (2026-10-08): tsc clean, npm test
+  green (751 + 860 pass, 0 fail), lint-cards GATE PASSED (8802 withHook,
+  count unchanged by the rework), check-generated-places prebuild gate
+  green (124690 places + 247 derived facts in 2 indexes, 0 violations),
+  build:pages green, Playwright facts-ladder-pilot 2/2 green at 390x844
+  with the no-horizontal-overflow assertion holding, zero console errors.
 
 ## Pending
 
-(none — all P0/P1 items complete)
+- Re-run merge gauntlet (architect + UI + game designer + developer sign-offs,
+  e2e regression) on the reworked branch, then merge on green.
+- NOTE (found during rework): 13 places (e.g. Attadale, Villawood) had facts
+  removed by content-safety commits, which deleted the fact but did not
+  restore the `hookMissing: true` marker the pilot merge had cleared. They
+  all have `history`, so cards/lint behavior is identical — cosmetic only.
+  Reverting to pristine chunks restored the markers. No action needed.
 
 ## Backlog (P2)
 
