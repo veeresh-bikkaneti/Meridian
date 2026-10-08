@@ -223,8 +223,20 @@ export default defineConfig({
       testMatch: /offline-content\.spec\.ts/,
     },
     {
+      name: "zz-dbg",
+      testMatch: /zz-dbg\.spec\.ts/,
+    },
+    {
       name: "facts-ladder-pilot",
       testMatch: /facts-ladder-pilot\.spec\.ts/,
+      // 390px viewport for the mobile layout check (frontend review P1).
+      // NOTE: isMobile/hasTouch are intentionally NOT set: mobile UA
+      // emulation prevents the satellite map from mounting in headless
+      // Chromium, which would break the play-to-result flow. The 390px
+      // width is what the overflow assertion needs.
+      use: {
+        viewport: { width: 390, height: 844 },
+      },
     },
   ],
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],

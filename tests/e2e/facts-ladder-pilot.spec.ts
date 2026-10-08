@@ -84,11 +84,14 @@ async function playToResult(page: Page): Promise<void> {
     .not.toBeNull();
   await dismissTileOverlayIfPresent(page);
   // Click until the pin registers (the drop button enables on a placed pin).
+  // Click at the viewport center: fixed coordinates (e.g. 500,400) fall
+  // off-screen at mobile widths (frontend review P1: 390px viewport).
   await expect
     .poll(
       async () => {
         if (await dropButton(page).isEnabled()) return true;
-        await page.mouse.click(500, 400);
+        const vp = page.viewportSize() ?? { width: 1280, height: 720 };
+        await page.mouse.click(Math.floor(vp.width / 2), 400);
         await page.waitForTimeout(500);
         return await dropButton(page).isEnabled();
       },
@@ -121,6 +124,14 @@ test("pilot: place WITH a fact renders the fact-first story + attribution", asyn
   const attr = page.getByRole("link", { name: "Wikidata" });
   await expect(attr).toBeVisible();
   await expect(attr).toHaveAttribute("href", LITTLE_ROCK_QID_HREF);
+
+  // No horizontal overflow at 390px: the attribution's negative margins
+  // must not force a scrollbar (frontend review P1).
+  const overflow = await page.evaluate(() => {
+    const body = document.querySelector(".result-body");
+    return body ? body.scrollWidth - body.clientWidth : -1;
+  });
+  expect(overflow).toBeLessThanOrEqual(0);
 
   expect(errors).toEqual([]);
 });
