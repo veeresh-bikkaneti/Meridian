@@ -630,7 +630,12 @@ export function useAiStory(place: StoryPlace | null, extract?: string | null): s
       // don't wake the model on every view of the same place.
       writeCachedStory(pid, result ?? "");
       if (result) setStory(result);
-    })();
+    })().catch(() => {
+      // Defensive: the IIFE already guards its own awaits, but an
+      // unhandled rejection here would surface as console noise (and a
+      // potential crash-report false positive) — enrichment must stay
+      // strictly best-effort.
+    });
 
     return () => {
       cancelled = true;

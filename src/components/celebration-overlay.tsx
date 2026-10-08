@@ -3,6 +3,17 @@ import "./celebration-overlay.css";
 import { Character, type CharacterName } from "./characters";
 import { ConfettiCanvas } from "./confetti";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
+// Static import: play-guards is tiny and already in the main bundle (game-app,
+// LoopMap, satellite-map all import it statically), so a dynamic import here
+// cannot split anything — it only produced an [INEFFECTIVE_DYNAMIC_IMPORT]
+// warning and a useless 0.3 kB chunk.
+import { claimGrand, soundAudible } from "../game/audio/play-guards";
+// Static namespace import: sfx.ts is statically imported by game-app,
+// comet-greeting, LoopScreen, satellite-map and play-guards, so the old
+// dynamic import() here could never split it into another chunk — it only
+// produced an [INEFFECTIVE_DYNAMIC_IMPORT] warning. The string lookup +
+// optional call below preserves the silent no-op on a missing export.
+import * as sfxRecipes from "../game/audio/sfx";
 import {
   CELEBRATION_CHROME,
   CELEBRATION_SFX,
@@ -44,9 +55,11 @@ export type CelebrationOverlayProps = {
  * pass through; only the card is pointer-events-auto. Dismissal is always
  * user-driven (visible Close button / Escape) — there is no auto-timer.
  *
- * Sound: the mount effect plays the variant's mapped SFX, resolved lazily
- * from sfx.ts so this module type-checks before the audio worker's recipes
- * land on this branch (a missing export is a silent no-op, never a crash).
+ * Sound: the mount effect plays the variant's mapped SFX. The anti-annoyance
+ * guards and the sfx recipes are static imports — both modules already ship
+ * in the main bundle, so dynamic import()s here could never split anything
+ * (they only produced [INEFFECTIVE_DYNAMIC_IMPORT] warnings). A missing
+ * recipe export stays a silent no-op via the optional call, never a crash.
  * mystery-solved plays nothing — playWin() already fired for the solve.
  * Sounds are unaffected by reduced motion (spec §4.6).
  */
@@ -82,34 +95,22 @@ export function CelebrationOverlay({
     const name = CELEBRATION_SFX[variant];
     if (name === null) return;
     let cancelled = false;
-    void (async () => {
-      try {
-        const guards = (await import("../game/audio/play-guards")) as unknown as {
-          soundAudible(): boolean;
-          claimGrand(): boolean;
-        };
-        if (cancelled) return;
-        // Rule 6: no sound while the tab is hidden — the visual is unseen,
-        // so sound would become the sole signal.
-        if (!guards.soundAudible()) return;
-        const sfx = (await import("../game/audio/sfx")) as unknown as Record<
-          string,
-          (() => void) | undefined
-        >;
-        if (cancelled) return;
-        // Rule 1: a recent grand-tier celebration cools the fanfare down to
-        // applause instead of stacking grandeur.
-        const recipe =
-          name === "playGrandFanfare" && !guards.claimGrand()
-            ? "playMediumApplause"
-            : name;
-        sfx[recipe]?.();
-        // The pop only ever accompanies visible confetti.
-        if (!reducedMotion) sfx["playConfettiPop"]?.();
-      } catch {
-        // Sound is enhancement-only; never break the overlay.
-      }
-    })();
+    try {
+      if (cancelled) return;
+      // Rule 6: no sound while the tab is hidden — the visual is unseen,
+      // so sound would become the sole signal.
+      if (!soundAudible()) return;
+      const recipes = sfxRecipes as unknown as Record<string, (() => void) | undefined>;
+      if (cancelled) return;
+      // Rule 1: a recent grand-tier celebration cools the fanfare down to
+      // applause instead of stacking grandeur.
+      const recipe = name === "playGrandFanfare" && !claimGrand() ? "playMediumApplause" : name;
+      recipes[recipe]?.();
+      // The pop only ever accompanies visible confetti.
+      if (!reducedMotion) recipes["playConfettiPop"]?.();
+    } catch {
+      // Sound is enhancement-only; never break the overlay.
+    }
     return () => {
       cancelled = true;
     };

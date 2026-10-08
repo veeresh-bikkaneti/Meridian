@@ -218,6 +218,10 @@ export default defineConfig({
       name: "crash-watchdog",
       testMatch: /crash-watchdog\.spec\.ts/,
     },
+    {
+      name: "offline-content",
+      testMatch: /offline-content\.spec\.ts/,
+    },
   ],
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
 });

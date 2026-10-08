@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { useOnlineStatus } from "@/hooks/use-online-status";
 import { formatLength, loopGradeBand, unitForLoopTarget } from "@/game/units";
 import { nameTier } from "@/game/place-name";
 import { PlaceNameText } from "@/components/place-name";
@@ -162,7 +163,10 @@ function seamPuzzleIndex(poolSize: number): number | null {
 type LoadState =
   | { phase: "loading"; message: string }
   | { phase: "ready"; clue: LoopClueFile; index: number }
-  | { phase: "error"; message: string; staleBuild: boolean };
+  // `offline` selects the offline-uncached notice variant (UX-finalized copy)
+  // when the fetch failed while the device had no connectivity. The stale
+  // build path takes precedence in the render — it is unchanged.
+  | { phase: "error"; message: string; staleBuild: boolean; offline: boolean };
 
 /** The case-file number of the mystery currently on the desk. */
 export function caseNumber(store: LoopUnlimitedStore): number {
@@ -196,6 +200,15 @@ export function LoopScreen({
     message: "Loading this mystery…",
   });
   const [reloadKey, setReloadKey] = useState(0);
+  // Offline signal (Designer rec 2a): navigator.onLine + online/offline
+  // listeners. Mirrored in a ref so the catch-time trigger below always
+  // reads the connectivity at the moment the fetch failed, never a stale
+  // render-closure value. (Same ref-mirror pattern as storeRef.)
+  const online = useOnlineStatus();
+  const onlineRef = useRef(online);
+  useEffect(() => {
+    onlineRef.current = online;
+  }, [online]);
   // Friendly, screen-reader-announced feedback for rejected picks
   // (duplicates). Never consumes a guess.
   const [pickNotice, setPickNotice] = useState<string | null>(null);
@@ -219,7 +232,7 @@ export function LoopScreen({
       try {
         manifest = await fetchJson(`${base}loop/manifest.json`, isLoopManifest);
       } catch (err: unknown) {
-        if (!cancelled) setLoad(await toErrorState(err));
+        if (!cancelled) setLoad(await toErrorState(err, !onlineRef.current));
         return;
       }
       let next = storeRef.current
@@ -275,14 +288,14 @@ export function LoopScreen({
           );
           commitStore(rolled);
         }
-        setLoad(await toErrorState(err));
+        setLoad(await toErrorState(err, !onlineRef.current));
       }
     })()
       // Safety net (mirrors onNextMystery): every await inside is guarded,
       // so this is unreachable in practice — but an unexpected throw must
       // never leave the screen stuck on the loading shimmer.
       .catch(async (err: unknown) => {
-        if (!cancelled) setLoad(await toErrorState(err));
+        if (!cancelled) setLoad(await toErrorState(err, !onlineRef.current));
       });
     return () => {
       cancelled = true;
@@ -383,7 +396,7 @@ export function LoopScreen({
       try {
         manifest = await fetchJson(`${base}loop/manifest.json`, isLoopManifest);
       } catch (err: unknown) {
-        setLoad(await toErrorState(err));
+        setLoad(await toErrorState(err, !onlineRef.current));
         return;
       }
       // Prefer the in-memory store when the screen already holds one
@@ -421,7 +434,7 @@ export function LoopScreen({
           manifest.size,
         );
         commitStore(rolled);
-        setLoad(await toErrorState(err));
+        setLoad(await toErrorState(err, !onlineRef.current));
       }
     })()
       .catch(() => {
@@ -431,6 +444,7 @@ export function LoopScreen({
           phase: "error",
           message: "Something went wrong dealing the next mystery.",
           staleBuild: false,
+          offline: !onlineRef.current,
         });
       })
       .finally(() => {
@@ -474,6 +488,21 @@ export function LoopScreen({
               Refresh
             </Button>
           </div>
+        ) : load.offline ? (
+          // Offline-uncached notice (UX-finalized copy — do not reword).
+          // Host: none — the loop screen's voice is the impersonal
+          // case-file narrator. Same copy for mount-deal and
+          // Next-mystery-deal paths.
+          <div role="alert" className="mt-10 rounded-xl border border-line bg-surface p-5">
+            <p className="text-fg">This mystery can't open right now 🔍</p>
+            <p className="mt-2 text-muted">
+              The clues need the internet the first time. Once a mystery opens, you can
+              play it offline too.
+            </p>
+            <Button className="mt-4 min-h-[48px]" onClick={() => setReloadKey((k) => k + 1)}>
+              Try again
+            </Button>
+          </div>
         ) : (
           <div role="alert" className="mt-10 rounded-xl border border-line bg-surface p-5">
             <p className="text-fg">Couldn&rsquo;t load this mystery: {load.message}</p>
@@ -505,8 +534,18 @@ export function LoopScreen({
 
 /** Stale-deploy pattern (mirrors game-app): when the tab predates the
  * current deploy, hashed/rotated assets 404 — offer a one-tap refresh
- * instead of a dead-end error. */
-async function toErrorState(err: unknown): Promise<Extract<LoadState, { phase: "error" }>> {
+ * instead of a dead-end error.
+ *
+ * `offline` is evaluated by the caller at catch time (UX spec): when the
+ * fetch failed with no connectivity, the render shows the offline-uncached
+ * notice variant instead of the generic error copy. No separate
+ * cache-presence probe (Designer rec 2b): the SW cache-first fetch IS the
+ * probe — a cached manifest/clue resolves the fetch and never reaches
+ * here, so the notice only appears when the mystery is truly unplayable. */
+async function toErrorState(
+  err: unknown,
+  offline: boolean,
+): Promise<Extract<LoadState, { phase: "error" }>> {
   let staleBuild = false;
   try {
     staleBuild =
@@ -518,6 +557,7 @@ async function toErrorState(err: unknown): Promise<Extract<LoadState, { phase: "
     phase: "error",
     message: err instanceof Error ? err.message : String(err),
     staleBuild,
+    offline,
   };
 }
 

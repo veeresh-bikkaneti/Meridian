@@ -23,10 +23,18 @@
  *     kill decision must propagate immediately — never serve a stale
  *     flags.json when the network works, even for clients whose SW update
  *     is still waiting (see note below).
- *   - same-origin static assets (JS/CSS/images/data chunks) → cache-first,
+ *   - same-origin static assets (JS/CSS/images/data chunks, home-page comet
+ *     TTS audio, __grok PWA assets, loop edition data) → cache-first,
  *     populating the cache on network hits (stale-while-revalidate would
  *     also work; cache-first keeps chunk URLs — which are content-hashed —
- *     stable and fast)
+ *     stable and fast).
+ *     Loop clue data (/Meridian/loop/, ~13 MB total) is cache-first at
+ *     RUNTIME only — the whole deck is deliberately NOT precached at install
+ *     (too big for a background install, especially on the older devices
+ *     this game targets). Only loop/manifest.json (60 bytes) is precached
+ *     so resume + search always work offline; clues and loop/names.json
+ *     (11.5 MB) populate the cache on first online use and are then fully
+ *     playable offline.
  *   - everything else (map tiles, cross-origin) → pass through untouched
  *   - same-origin non-asset, non-flags requests (build-meta.json, API-ish)
  *     → network only. Note: service workers deployed BEFORE this rule
@@ -47,6 +55,12 @@ const FLAGS_URL = "/Meridian/flags.json";
 
 const SHELL_URLS = [START_URL, OFFLINE_URL, "/Meridian/manifest.webmanifest"];
 
+// Tiny loop bootstrap files precached at install so resume + search work
+// offline even before the loop screen is ever opened. Deliberately NOT the
+// whole /Meridian/loop/ deck: clues (~1.5 MB) and names.json (11.5 MB) are
+// runtime-cached on first online use instead (see the strategy note above).
+const LOOP_PRECACHE_URLS = ["/Meridian/loop/manifest.json"];
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches
@@ -55,6 +69,12 @@ self.addEventListener("install", (event) => {
       .catch(() => {
         // A failed precache must never block installation; runtime caching
         // still covers the shell on first visit.
+      })
+      .then(() => caches.open(ASSET_CACHE))
+      .then((cache) => cache.addAll(LOOP_PRECACHE_URLS))
+      .catch(() => {
+        // Same fail-soft rule: a missing manifest at install time must not
+        // block the worker; the runtime cache-first handler covers it.
       }),
   );
 });
@@ -97,6 +117,18 @@ function isStaticAsset(pathname) {
   return (
     pathname.startsWith("/Meridian/assets/") ||
     pathname.startsWith("/Meridian/icons/") ||
+    // Home-page comet greeting TTS (synthesized SFX needs no caching —
+    // only this TTS audio is a real file).
+    pathname.startsWith("/Meridian/audio/") ||
+    // __grok PWA install-page assets.
+    pathname.startsWith("/Meridian/__grok/") ||
+    // Loop edition data: runtime cache-first only (see install — the deck
+    // itself is never precached; clues/names.json populate on first use).
+    // NOTE: fetchJson uses `cache: "no-store"`; that does NOT bypass the
+    // service worker — the fetch event still fires, caches.match() still
+    // hits, and the network response is still cached. Verified by the
+    // offline Playwright spec (tests/e2e/offline-content.spec.ts).
+    pathname.startsWith("/Meridian/loop/") ||
     pathname === "/Meridian/favicon.svg" ||
     pathname === "/Meridian/manifest.webmanifest" ||
     pathname.startsWith("/Meridian/data/")
