@@ -63,6 +63,14 @@ Standing rules: PRs only, owner merges; named-file staging only; gates before ha
   Esc / scrim declines and stays full (Q1: offer, not force — the modal
   fires on prior-crash ONLY). capability.ts preserves the stored source
   on decisions (Q2 settlement).
+- PBI-7: settings toggle. 44×44 frosted round button (Layers icon,
+  data-testid=map-mode-button) in the Play top-bar left cluster beside
+  SoundToggle; popover (absolute top-full left-0 mt-2 w-64, frosted) with
+  the verbatim label + explainer + role=switch row (On/Off). Writes
+  meridian:map-mode as manual (Q3); takes effect on the NEXT place mount —
+  never remounts mid-round. Esc closes, focus returns to the button;
+  live-region announces "Scout Map on/off — applies from the next place".
+  CelebrationOverlay wired with motionOff in scout (confetti off).
 
 ## Pending (sequenced)
 - [ ] Phase A: Game Designer + UI/UX Expert finalize UX copy + settings placement.

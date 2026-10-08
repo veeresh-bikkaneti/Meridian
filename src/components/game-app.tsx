@@ -858,6 +858,8 @@ export function GameApp() {
       title={celebration.title}
       body={celebration.body}
       onDismiss={dismissCelebration}
+      // PBI-3: Scout Map disables motion — no confetti, same calm card.
+      motionOff={mapMode === "scout"}
     />
   ) : null;
   // Celebration audio (spec §3): the cleared-mode dialog's opening beat.
@@ -3203,6 +3205,10 @@ function PlayLoaded({
               testId="sound-toggle-game"
               className="pointer-events-auto rounded-md border border-line bg-surface px-2.5 py-2 text-fg transition-colors hover:text-white"
             />
+            {/* PBI-7: Scout Map settings toggle. The choice writes
+                meridian:map-mode and takes effect on the NEXT place mount
+                — the map never remounts mid-round. */}
+            <MapModeToggle mapMode={mapMode} onSelect={(mode) => applyMapMode(mode, "manual")} />
           </div>
           {review ? (
             <p
