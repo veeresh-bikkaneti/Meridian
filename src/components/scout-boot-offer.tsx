@@ -19,6 +19,7 @@ export function ScoutBootOffer(props: {
   onDecline: () => void;
 }): JSX.Element {
   const acceptRef = useRef<HTMLButtonElement | null>(null);
+  const dialogRef = useRef<HTMLDivElement | null>(null);
   const onDeclineRef = useRef(props.onDecline);
   onDeclineRef.current = props.onDecline;
 
@@ -36,9 +37,32 @@ export function ScoutBootOffer(props: {
   }, []);
 
   // Escape declines (stays full, stamped shown-this-boot by the owner).
+  // Tab is trapped inside the dialog: focus cycles between the two
+  // buttons and never escapes to the page behind the modal.
   useEffect(() => {
+    const dialog = dialogRef.current;
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onDeclineRef.current();
+      if (event.key === "Escape") {
+        onDeclineRef.current();
+        return;
+      }
+      if (event.key !== "Tab" || !dialog) return;
+      const focusables = Array.from(
+        dialog.querySelectorAll<HTMLElement>(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((el) => !el.hasAttribute("disabled") && el.offsetParent !== null);
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement;
+      if (event.shiftKey && (active === first || !dialog.contains(active))) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (active === last || !dialog.contains(active))) {
+        event.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -51,6 +75,7 @@ export function ScoutBootOffer(props: {
       onClick={() => onDeclineRef.current()}
     >
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="scout-boot-offer-title"

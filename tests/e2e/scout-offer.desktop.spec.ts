@@ -38,7 +38,7 @@ test("offer modal appears exactly once per boot when the crash flag is set", asy
   expect(await modal.count()).toBe(1);
 
   // Decline via the "Not now" easy path.
-  await page.getByRole("button", { name: "Not now" }).click();
+  await modal.getByRole("button", { name: "Not now" }).click();
   await expect(modal).toBeHidden();
 
   // No re-fire within the same boot.
@@ -114,9 +114,13 @@ test("focus is trapped inside the modal while open", async ({ context }) => {
   const modal = offerModal(page);
   await expect(modal).toBeVisible({ timeout: 30_000 });
 
-  // Initial focus lands inside the modal.
-  const initialInModal = await modal.evaluate((m) => m.contains(document.activeElement));
-  expect(initialInModal).toBe(true);
+  // Initial focus lands inside the modal (poll: the focus effect runs
+  // just after first paint, so a single synchronous check can race it).
+  await expect
+    .poll(() => modal.evaluate((m) => m.contains(document.activeElement)), {
+      timeout: 10_000,
+    })
+    .toBe(true);
 
   // Tab through more times than there are focusable elements: focus must
   // never escape the modal.
@@ -144,7 +148,7 @@ test("declining retires the offer: no modal on the next boot", async ({
 
   const modal = offerModal(page);
   await expect(modal).toBeVisible({ timeout: 30_000 });
-  await page.getByRole("button", { name: "Not now" }).click();
+  await modal.getByRole("button", { name: "Not now" }).click();
   await expect(modal).toBeHidden();
 
   // The decline must retire the offer — "Not now" must not nag on every

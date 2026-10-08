@@ -1706,6 +1706,10 @@ export function SatelliteMap(props: {
       tabIndex={0}
       role="application"
       data-zoom={zoom}
+      data-map-mode={props.mapMode === "scout" ? "scout" : "full"}
+      data-max-zoom={
+        props.mapMode === "scout" ? (props.mode === "flat" ? "3" : "2") : "8"
+      }
       data-center-lng={center.lng.toFixed(4)}
       data-center-lat={center.lat.toFixed(4)}
       data-tile-status={tileStatus.kind}

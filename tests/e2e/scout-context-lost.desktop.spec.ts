@@ -22,12 +22,16 @@ import {
   readMapMode,
   mapWrapper,
   readStoredMapMode,
+  spoofCapableDevice,
 } from "./scout-helpers";
 
 test.setTimeout(180_000);
 
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
+  // Start FULL: the VM's SwiftShader Chromium would otherwise qualify
+  // scout at boot and the switch/toggle paths become no-ops.
+  await spoofCapableDevice(context);
 });
 
 async function fireContextLost(page: Page, times = 1): Promise<void> {

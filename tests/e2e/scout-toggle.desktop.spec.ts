@@ -24,12 +24,16 @@ import {
   readMapMode,
   readStoredMapMode,
   seedManualMode,
+  spoofCapableDevice,
 } from "./scout-helpers";
 
 test.setTimeout(120_000);
 
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
+  // Start FULL: the VM's SwiftShader Chromium would otherwise qualify
+  // scout at boot and the switch/toggle paths become no-ops.
+  await spoofCapableDevice(context);
 });
 
 test("toggle lives in the Play top bar, outside the map", async ({ page }) => {

@@ -25,12 +25,16 @@ import {
   readMapMode,
   readStoredMapMode,
   rectsDisjoint,
+  spoofCapableDevice,
 } from "./scout-helpers";
 
 test.setTimeout(120_000);
 
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
+  // Start FULL: the VM's SwiftShader Chromium would otherwise qualify
+  // scout at boot and the switch/toggle paths become no-ops.
+  await spoofCapableDevice(context);
 });
 
 /** Drive the app into a round, then fire a synthetic webglcontextlost on

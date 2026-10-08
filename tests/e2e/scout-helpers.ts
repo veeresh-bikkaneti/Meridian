@@ -34,9 +34,16 @@ export interface StoredMapMode {
  * map_init_start milestone). This is the crash pipeline's input to the
  * `priorMapCrash` signal (capability.ts) — the realistic trigger for the
  * boot offer, not a hand-written mode record.
+ *
+ * One-shot: the real app clears the breadcrumb at boot (exactly-once
+ * rotation in observability.ts), so a reload must NOT re-seed — otherwise
+ * every reload looks like a fresh crash and the offer can never retire.
+ * The marker guard reproduces the real lifecycle.
  */
 export async function seedCrashOffer(context: BrowserContext): Promise<void> {
   await context.addInitScript(() => {
+    if (sessionStorage.getItem("qa-crash-seeded")) return;
+    sessionStorage.setItem("qa-crash-seeded", "1");
     sessionStorage.setItem("meridian.cleanExit", "0");
     sessionStorage.setItem(
       "meridian.breadcrumb",
