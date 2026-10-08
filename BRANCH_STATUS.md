@@ -6,6 +6,20 @@ Comet hosts from the header banner, SoundToggle in eyebrow cluster,
 tutorial/greeting collision fix. None of that is this branch's work — it is
 inherited from main.
 
+## Rebase (2026-10-08, onto f07dad3) — new head 4ab5b79
+- 19 commits replayed. Conflicts (all mechanical):
+  - `playwright.config.ts` (3x): kept BOTH project entries —
+    `facts-ladder-pilot` (this branch) + `offline-content` (main); repaired
+    the branch's own malformed project-list hunks; dead `zz-dbg` stays removed.
+  - `BRANCH_STATUS.md`: kept both sides — rebase-base note + branch status.
+- Pushed with --force-with-lease (819c788 → 4ab5b79).
+- Post-rebase verification:
+  - `npx tsc --noEmit` clean
+  - `node scripts/lint-cards.mjs` GATE PASSED (124,690 records)
+  - `npm run build:pages` green (sw.js stamped buildId=4ab5b79)
+  - `npm test`: 744 scripts + 863 src pass, 0 fail
+  - facts e2e (`--project facts-ladder-pilot`): 2/2 at 390×844, zero console errors
+
 ---
 
 # BRANCH_STATUS — feat/facts-ladder
@@ -124,9 +138,6 @@ Production chunk files are never written by build scripts (repo rule).
 
 - Per-kind attribution labels ("Wikidata", "EB1911") may be unclear to kids —
   consider friendlier labels.
-<<<<<<< HEAD
-- Generator scripts are dev-time only; document regeneration workflow.
-=======
 - Generator scripts are dev-time only; document regeneration workflow.
 - Boring-but-harmless facts (shopping centres, council offices, boundary
   admin trivia — e.g. Goolwa Beach, Strathpine, Innaloo) could be replaced
@@ -136,4 +147,3 @@ Production chunk files are never written by build scripts (repo rule).
 - Alexander's history hook ("Arkansas Juvenile Assessment and Treatment
   Center") is factually fine but may prompt questions from 8-12s;
   consider a warmer hook.
->>>>>>> 24116bd (fix(facts-ladder): narrative P1s + e2e pilot case + layout-shift investigation)
