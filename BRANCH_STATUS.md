@@ -14,6 +14,20 @@ Standing rules: PRs only, owner merges; named-file staging only; gates before ha
   (`mapMode` prop, fail-closed to "full"; scout → DPR cap 1 via
   SCOUT_PIXEL_RATIO_CAP, maxZoom 3 flat / 2 globe; mapModeRef for PBI-5).
   Full-mode path byte-identical. Gates: tsc clean, npm test 852/852 green.
+- PBI-3: scout outline renderer — new `src/map/scout-style.ts` (label-free,
+  tile-free style from shared atlas-data.ts geometry: land fill + coast +
+  borders, NO geometry fork, ZERO labels); satellite-map mounts it in scout
+  mode, skips tile lifecycle (starts "ready"), starfield, motion
+  (ZoomSpaceController forced reduced-motion); CelebrationOverlay gains
+  motionOff (confetti off in scout). Full-mode path byte-identical.
+  Gates: tsc clean, lint-cards GATE PASSED, build:pages green.
+- PBI-4: static fallback — `scripts/gen-scout-fallback.mjs` generates
+  `public/scout-fallback.svg` (18.5 kB ≤ 100 kB, coast mesh, no labels,
+  preserveAspectRatio="none"); new `src/map/scout-fallback.tsx` (exact
+  equirectangular tap→lon/lat mapping, keyboard crosshair, marks/spot);
+  satellite-map drops to it when scout outline construction/render fails;
+  reveal completes immediately so scoring/rounds proceed.
+  Gates: tsc clean, lint-cards GATE PASSED, build:pages green.
 
 ## Pending (sequenced)
 - [ ] Phase A: Game Designer + UI/UX Expert finalize UX copy + settings placement.

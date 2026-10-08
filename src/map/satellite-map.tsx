@@ -18,6 +18,7 @@ import {
   type RegionGeometryDTO,
 } from "./region-index.ts";
 import { mountStarfield } from "./starfield.ts";
+import { buildScoutStyle } from "./scout-style.ts";
 import { isCoarsePointer, mapOptionsForDevice, SCOUT_MAX_ZOOM_FLAT, SCOUT_MAX_ZOOM_GLOBE } from "./map-options.ts";
 import type { MapMode } from "./capability.ts";
 import { emitTileFailed, emitWebglContextLost, recordMilestone } from "@/lib/observability";
@@ -777,9 +778,16 @@ export function SatelliteMap(props: {
     // of the wrapper, own absolute positioning + dark fallback, canvases
     // pointer-events-none). The MapLibre canvas is alpha:true with no
     // background layer, so the stars show through wherever no tile paints.
-    const destroyStarfield = mountStarfield(wrapperRef.current!);
+    // PBI-3: no starfield in scout mode (GPU + compositor cost) — the
+    // outline style's background layer is the backdrop instead.
+    const destroyStarfield = mapMode === "scout" ? null : mountStarfield(wrapperRef.current!);
 
-    const controller = new ZoomSpaceController({ edition, prefersReducedMotion: reducedMotion });
+    // PBI-3: scout disables motion — scripted camera beats become instant
+    // jumps (same treatment as prefers-reduced-motion).
+    const controller = new ZoomSpaceController({
+      edition,
+      prefersReducedMotion: mapMode === "scout" ? true : reducedMotion,
+    });
     controllerRef.current = controller;
 
     let alive = true;
@@ -966,11 +974,14 @@ export function SatelliteMap(props: {
             // must not inherit their verdict. The region's tile set gets its
             // own verdict + full 15 s watchdog budget — same producers as
             // the Retry button (see tile-status.ts).
-            dispatchTile({ type: "retry" });
-            window.clearTimeout(watchdog);
-            watchdog = window.setTimeout(() => {
-              dispatchTile({ type: "load-timeout" });
-            }, TILE_LOAD_TIMEOUT_MS);
+            // PBI-3: scout has no tile phase — never leave the "ready" state.
+            if (mapModeRef.current !== "scout") {
+              dispatchTile({ type: "retry" });
+              window.clearTimeout(watchdog);
+              watchdog = window.setTimeout(() => {
+                dispatchTile({ type: "load-timeout" });
+              }, TILE_LOAD_TIMEOUT_MS);
+            }
             break;
           }
           case "a11y-intro": {
@@ -1159,22 +1170,28 @@ export function SatelliteMap(props: {
     // (NOT success); the first idle after the most recent retry is the
     // verdict on that tile set. The watchdog covers a style that never
     // loads at all (dead DNS / blocked host).
-    map.on("error", (e) => {
-      if ((e as { tile?: unknown }).tile) dispatchTile({ type: "tile-error" });
-    });
-    // `let`: re-armed once the style parses (see the load handler below) so
-    // the tile phase gets its own full budget.
-    let watchdog = window.setTimeout(() => {
-      dispatchTile({ type: "load-timeout" });
-    }, TILE_LOAD_TIMEOUT_MS);
-    map.on("idle", () => {
-      // First idle after the most recent retry is the verdict; later idles
-      // (every camera move) are no-ops in the reducer — it returns the
-      // identical state, so React bails out of re-rendering. Clearing the
-      // watchdog here is hygiene.
-      window.clearTimeout(watchdog);
-      dispatchTile({ type: "map-idle" });
-    });
+    // PBI-3: scout mounts no tile sources — the whole tile lifecycle
+    // (verdict, watchdog, retry re-arm) is skipped. The style's "load"
+    // event below still fires for the milestone + layer setup.
+    let watchdog: number | undefined;
+    if (mapMode !== "scout") {
+      map.on("error", (e) => {
+        if ((e as { tile?: unknown }).tile) dispatchTile({ type: "tile-error" });
+      });
+      // `let`: re-armed once the style parses (see the load handler below) so
+      // the tile phase gets its own full budget.
+      watchdog = window.setTimeout(() => {
+        dispatchTile({ type: "load-timeout" });
+      }, TILE_LOAD_TIMEOUT_MS);
+      map.on("idle", () => {
+        // First idle after the most recent retry is the verdict; later idles
+        // (every camera move) are no-ops in the reducer — it returns the
+        // identical state, so React bails out of re-rendering. Clearing the
+        // watchdog here is hygiene.
+        window.clearTimeout(watchdog);
+        dispatchTile({ type: "map-idle" });
+      });
+    }
 
     // Per map instance: classifies a tap pair as one double-tap COMMIT gesture.
     const tracker = createTapTracker();
@@ -1339,7 +1356,8 @@ export function SatelliteMap(props: {
       // Must-fix #2: style parsed, tiles in flight — not a verdict either
       // way (the reducer treats map-load as a no-op; the first idle
       // decides). Recorded for contract fidelity with tile-status.ts.
-      dispatchTile({ type: "map-load" });
+      // PBI-3: scout has no tile phase — skip both dispatches.
+      if (mapMode !== "scout") dispatchTile({ type: "map-load" });
       // Progressive boundary reveal (F2): paint the initial band for the
       // opening zoom. The style is parsed now, so addSource/addLayer are safe.
       try {
@@ -1353,10 +1371,13 @@ export function SatelliteMap(props: {
       // The style parsed; the tile phase gets its own full watchdog budget
       // from here — a slow connection that trickles tiles must not trip
       // the style watchdog and declare failure over a healthy map.
-      window.clearTimeout(watchdog);
-      watchdog = window.setTimeout(() => {
-        dispatchTile({ type: "load-timeout" });
-      }, TILE_LOAD_TIMEOUT_MS);
+      // PBI-3: no watchdog in scout mode (no tiles to wait for).
+      if (mapMode !== "scout") {
+        window.clearTimeout(watchdog);
+        watchdog = window.setTimeout(() => {
+          dispatchTile({ type: "load-timeout" });
+        }, TILE_LOAD_TIMEOUT_MS);
+      }
       map.addSource(LINE_SOURCE, { type: "geojson", data: EMPTY });
       map.addSource(RING_SOURCE, { type: "geojson", data: EMPTY });
       map.addLayer({
@@ -1427,7 +1448,8 @@ export function SatelliteMap(props: {
       // An unmount mid-intro must not leave the ambient loop playing.
       safePlay(stopGlobeSpin);
       spinContainer.removeEventListener("pointerup", onIntroPointerUp);
-      destroyStarfield.destroy();
+      // PBI-3: null in scout mode (starfield never mounted).
+      destroyStarfield?.destroy();
       detachTapHandlers();
       for (const marker of markersRef.current) marker.remove();
       markersRef.current = [];

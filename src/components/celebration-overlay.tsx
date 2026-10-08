@@ -44,6 +44,11 @@ export type CelebrationOverlayProps = {
   title: string;
   body: string;
   onDismiss: () => void;
+  /**
+   * PBI-3: Scout Map disables motion (confetti, float/pop) — treated like
+   * reduced-motion. Defaults to false; full-mode behavior unchanged.
+   */
+  motionOff?: boolean;
 };
 
 /**
@@ -69,8 +74,11 @@ export function CelebrationOverlay({
   title,
   body,
   onDismiss,
+  motionOff = false,
 }: CelebrationOverlayProps): JSX.Element {
-  const reducedMotion = usePrefersReducedMotion();
+  // PBI-3: motionOff (Scout Map) forces the reduced-motion treatment —
+  // no confetti canvas, no float/pop animation, same calm card.
+  const reducedMotion = usePrefersReducedMotion() || motionOff;
   const headingRef = useRef<HTMLHeadingElement | null>(null);
 
   // Focus the heading on open so screen-reader users land on the news.
