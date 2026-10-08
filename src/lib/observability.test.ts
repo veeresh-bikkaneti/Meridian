@@ -119,6 +119,41 @@ test("unclean exit + existing breadcrumb → exactly one suspected_crash; second
   await Promise.resolve();
 });
 
+test("COPPA: suspected_crash never carries the raw UA — canary in stored device.ua absent from POST body, coarse facts present", () => {
+  const CANARY = "CANARY-UA-9f3k7zq2-do-not-send";
+  const store = makeStorage({
+    [BREADCRUMB_KEY]: prevBreadcrumbJson({
+      device: { ua: CANARY, dpr: 3, screenW: 390, screenH: 844, deviceMemory: 8, hardwareConcurrency: 6 },
+    }),
+  });
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: store, transport, endpoint: "https://example.com/ingest",
+    now: () => 9000, randomId: () => "new-session", device: DEVICE, buildId: "b2", isUnclean: () => true,
+  });
+  obs.init();
+  assert.equal(beacons.length, 1, "one suspected_crash sent");
+  // Assert on the RAW body string: the canary must not appear anywhere,
+  // serialized or otherwise — truncateEventToCap only strips under cap
+  // pressure, so normal payloads would have kept it before the fix.
+  const rawBody = beacons[0].body;
+  assert.ok(!rawBody.includes(CANARY), "raw UA canary must not appear in the POST body");
+  assert.ok(!rawBody.includes('"ua"'), "no ua key may be serialized anywhere in the payload");
+  const payload = JSON.parse(rawBody) as ObservabilityEvent;
+  // Coarse facts still flow (node has no navigator: os/form buckets only).
+  assert.ok(payload.device && typeof payload.device === "object", "coarse device facts present");
+  assert.equal((payload.device as { os?: string }).os, "other");
+  assert.equal((payload.device as { form?: string }).form, "desktop");
+  assert.ok(!("ua" in (payload.device as object)), "device carries no ua key");
+  // Breadcrumb copy stripped of device.
+  assert.ok(!("device" in ((payload.breadcrumb as object) ?? {})), "breadcrumb carries no device");
+  // Core crash context intact.
+  assert.equal(payload.type, "suspected_crash");
+  assert.equal(payload.sessionId, "prev-session");
+  assert.equal(payload.lastMilestone, "data_chunk_load_start");
+  assert.equal((payload.breadcrumb as { sessionId: string }).sessionId, "prev-session");
+});
+
 test("suspected_crash queued when endpoint unset, flushed once on setEndpoint, trail already rotated", () => {
   const store = makeStorage({ [BREADCRUMB_KEY]: prevBreadcrumbJson() });
   const { transport, beacons } = makeTransport(true);

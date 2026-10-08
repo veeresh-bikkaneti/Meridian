@@ -1,0 +1,20 @@
+{
+  // Editor-only config: the root tsconfig.json includes only `src` and
+  // `server`, so root `npx tsc --noEmit` ignores this directory entirely.
+  // This file exists so editors get strict checking on the worker sources.
+  // The `DOM` lib provides the fetch-API globals (Request, Response,
+  // fetch, TextEncoder, …) that the Workers runtime exposes; `skipLibCheck`
+  // avoids needing @cloudflare/workers-types on disk for editing.
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true
+  },
+  "include": ["src"]
+}

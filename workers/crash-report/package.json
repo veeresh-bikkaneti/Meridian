@@ -1,0 +1,11 @@
+{
+  "description": "Cloudflare Worker that receives Meridian crash-observability events and forwards compact, PII-free alerts to Discord and/or email (via Resend).",
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261007.1",
+    "wrangler": "4.148.0"
+  },
+  "license": "UNLICENSED",
+  "name": "meridian-crash-report",
+  "private": true,
+  "version": "1.0.0"
+}

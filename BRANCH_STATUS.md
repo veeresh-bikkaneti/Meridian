@@ -1,66 +1,71 @@
-# BRANCH_STATUS — feat/grandpa-tasting-tour
+# BRANCH_STATUS — feat/crash-autosend
 
-Grandpa's Tasting Tour (Veeresh 2026-10-07): rework of Grandpa's Coffee Run
-into a guided tasting tour on mobile (≤1023.5px). Desktop ≥1024px keeps the
-current walk/kettle/park behavior.
-
-## Screenplay (mobile only)
-- Beat 0: brass compass-rose origin node top-left (~1s after load, after the
-  staggered entrance).
-- Beat 1: grandpa walks a dotted S-trail through the gutters, STOPS at each
-  option (difficulty → GeoDetective → editions → review if present), turns to
-  face it, sips ~1.2s, walks on. Silent, not tappable mid-walk. Hard-capped
-  25s. Trail: 2px, 6/6 dash, round caps, brass@60% / ink-bronze@60%, ≥16px
-  from interactive rects, never on/behind cards.
-- Beat 2: top-up at the pour waypoint above the park strip — the existing
-  gooseneck-kettle dolly-vertigo pour (scale 0.25→2.6x, mug fill + steam).
-- Beat 3: settle — sits on the bench beside Comet; trail fades to ~18% over
-  ~2s; donation cloud fades in with Veeresh's exact copy
-  ("Grown-ups — buy me a coffee? ☕" / "Your support keeps Meridian free
-  for kids"). Tap → in-cloud gate → Continue opens Ko-fi → reverts;
-  Cancel/Esc reverts. Ask once per session (sessionStorage).
-- Return visits (same calendar day): faint trail, already seated, no replay
-  (localStorage `meridian.grandpaTour.lastDate`, local YYYY-MM-DD).
-- Fallback ladder: full weave → straight trail → current strip walk →
-  hidden. Never redraw mid-walk; resize mid-walk settles immediately.
+Zero-friction crash reporting: the watchdog auto-sends the boot_failure
+report when the fallback shows (no tap), and prefetches the
+observability endpoint at init so the report fires instantly.
 
 ## Done
-- [x] Branch created from origin/main
-- [x] Read grandpa-coffee-run.tsx/css, game-app home, E2E conventions
-- [x] game-app.tsx: 4 data-testids (difficulty, geodetective, editions, review)
-- [x] comet-greetings.ts index 3 retext
-- [x] src/components/grandpa-tour.ts (pure geometry) + 10 unit tests green
-- [x] grandpa-coffee-run.tsx: extracted GrandpaFigure/GrandpaKettle, Veeresh's
-      exact cloud copy, cheers-text removed, tour state machine + TourLayer,
-      strip tour modes, once-per-day + once-per-session gating
-- [x] grandpa-coffee-run.css: tour layer/trail/compass/walker, tour kettle
-      triggers, data-tour strip rules, cloud sizing per brief
-- [x] playwright.config.ts: grandpa-tour project; new spec
-      tests/e2e/grandpa-tasting-tour.spec.ts
-- [x] Updated existing specs (desktop/mobile/reduced copy; cheers assertions
-      removed; mobile-home-overlap copy)
-- [x] tsc clean; npm test 847 green; lint-cards GATE PASSED; build:pages green
-- [x] E2E fixes: parked-bench measure (data-mode gate), pour geometry,
-      straight-trail toggle dodge, getScreenCTM probe, handoff-timeout
-      cancelled-flag bug, seed-arg + dwell-window fixes, cloud opacity
-      (removed delayed mobile animation; poll in specs), greeting
-      dismissal on tour start, mug-fill poll
-- [x] E2E full tour spec: 19/19 green
-- [x] Regression: grandpa desktop (8/8), mobile, reduced; comet
-      desktop/mobile; tutorial (4/4); mobile-home-overlap — all green
-- [x] P1 review fixes (architect/game-designer/UX-researcher, 2026-10-07):
-      "Skip tour" button (44px, the one pointer-events:auto element in the
-      tour plane, settles immediately); manual scroll/wheel/touchmove opts
-      out of all further auto-scroll (grandpa keeps walking, camera yields);
-      snap-to-top only when scrollY < 100; micro-caption "Grandpa's rounds
-      ☕" at the compass origin (fades with the tour, decorative)
-- [x] greet-04.mp3 regenerated (parent) for the "Psst… a mystery brews out
-      there." retext — audio/text match restored
-- [x] tsc clean; npm test 848/848 green; lint-cards GATE PASSED;
-      build:pages green
-- [x] E2E: tour spec 23/23 (4 new: skip, scroll opt-out, no-snap,
-      caption fade); mobile project 27/27 — all green
-- [ ] Open PR (Veeresh merges)
+
+- `scripts/crash-watchdog.mjs`
+  - Endpoint resolution extracted to `getEndpoint(cb)` with a one-shot
+    cache; prefetched at watchdog init (one tiny same-origin GET per page
+    load, parallel with the 28 s boot timer).
+  - `show()` auto-calls `send()` — the "Tell us what happened" button is
+    gone; a single "Try again" button remains plus an
+    "Anonymous crash report sent." confirmation appended once the POST
+    completes.
+  - Fail-closed preserved: no/invalid endpoint → no POST, no confirmation
+    line, player never misled. No double-send (show() runs once per page
+    via the existing ASKED guard).
+  - Pre-merge review fixes: confirmation only on HTTP 2xx (a failed POST
+    stays silent); `insertAdjacentHTML` instead of `innerHTML +=` so the
+    "Try again" button keeps focus; prefetch-race test coverage.
+  - 4-expert review P1 fixes (2026-10-07):
+    - [SEC] breadcrumb `device` sub-object (raw UA string from the app
+      bundle) stripped before auto-send — coarse facts ride on the
+      top-level event only.
+    - [ARCH] endpoint cache holds only a resolved 2xx endpoint; a
+      transient flags.json failure no longer suppresses the report —
+      show-time retries a fresh GET.
+    - [UX] confirmation copy no longer claims anonymity: "Crash note
+      sent, no personal info - helps fix this." wrapped in `<p>` so the
+      `#ma p` style applies.
+  - Byte trims to hold the 5120 budget: `String.trim()` instead of the
+    regex, `if (b)` for the content-type header, minifier renames for
+    `getEndpoint`/`epCache`, `if (epCache)` truthiness check.
+- `scripts/crash-watchdog.test.mjs` — 36 tests: prefetch-at-init,
+  auto-send-on-show, confirmation text, fail-closed silence; new: UA-strip
+  fixture test, prefetch-failure retry test; fake XHR now completes POSTs
+  like a real browser.
+- `tests/e2e/crash-watchdog.spec.ts` — scenario (a) updated: single
+  "Try again" button, no tap, asserts the auto-POST + confirmation.
+- `src/lib/observability.ts` — security re-review fix (2026-10-07):
+  app-bundle `init()` no longer emits the raw UA on unclean shutdown.
+  The stored trail's `device` (raw `device.ua`) is stripped from the
+  breadcrumb copy and the event carries fresh `coarseDeviceFacts()`
+  (os/form buckets + numerics, never the UA string), mirroring the
+  watchdog's COPPA posture. New `DeviceInfo.os`/`form` fields.
+- `src/lib/observability.test.ts` — new COPPA canary test: fixture
+  breadcrumb with `device.ua` canary asserts the canary and any `"ua"`
+  key are absent from the raw POST body, coarse facts still present,
+  breadcrumb carries no device. Verified it FAILS on the pre-fix code.
 
 ## Pending
-- (none — ready for PR)
+
+- Owner review + merge (PR from `feat/crash-autosend`).
+- Push needs a PAT handoff (this VM has no GitHub login).
+- Still outstanding from the crash-reporter branch: the 2 CI lines in
+  `.github/workflows/node.js.yml` (`npm run typecheck:worker`,
+  `npm run test:worker`) — PENDING-OWNER (token scope blocks workflow
+  pushes from this VM; Veeresh adds via GitHub UI after merge).
+- Deploy `workers/crash-report/` and set `observabilityEndpoint` in
+  `public/flags.json` (reporting stays fail-closed until then).
+
+## Verification (local, 2026-10-07)
+
+- `npx tsc --noEmit` clean; `node scripts/lint-cards.mjs` GATE PASSED
+- `npm test` green (837/837); watchdog unit tests 36/36 (incl. UA-strip +
+  prefetch-retry); Worker `npm run test:worker` 16/16, `typecheck:worker` clean
+- `npm run build:pages` green; watchdog marker in `dist/client/_shell.html`
+- Rendered inline script 5100/5120 bytes (budget test green)
+- Playwright `tests/e2e/crash-watchdog.spec.ts`: 4/4 passed

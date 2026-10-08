@@ -11,6 +11,8 @@ import { grokPwaPlugin } from "./scripts/grok-pwa-plugin.mjs";
 // @ts-expect-error JS plugin alongside the TS vite config
 import { noswHatchPlugin } from "./scripts/nosw-hatch-plugin.mjs";
 // @ts-expect-error JS plugin alongside the TS vite config
+import { crashWatchdogPlugin } from "./scripts/crash-watchdog-plugin.mjs";
+// @ts-expect-error JS plugin alongside the TS vite config
 import { appEnvPlugin } from "./scripts/app-env-plugin.mjs";
 // @ts-expect-error JS module alongside the TS vite config
 import { resolveBuildId } from "./scripts/build-id.mjs";
@@ -223,6 +225,10 @@ export default defineConfig(({ command, isPreview }) => ({
     // run after TanStack's prerender wrote _shell.html (same post order +
     // post enforce → later registration wins). See scripts/nosw-hatch-plugin.mjs.
     noswHatchPlugin(),
+    // Inline crash watchdog AFTER tanstackStart (same post-order reason as
+    // the nosw hatch): reports boot_failure when the bundle never loads.
+    // See scripts/crash-watchdog-plugin.mjs.
+    crashWatchdogPlugin(),
     ...(githubPages
       ? []
       : command === "build" || isPreview

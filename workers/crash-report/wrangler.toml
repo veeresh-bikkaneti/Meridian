@@ -1,0 +1,8 @@
+# Meridian crash-report worker (Cloudflare Workers).
+#
+# NO secrets in this file — secrets are set via `wrangler secret put`
+# (see README.md). There are no [vars]: everything configurable that is
+# not a secret lives in code defaults.
+name = "meridian-crash-report"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
