@@ -169,7 +169,7 @@ test("renders in the banner at mobile size, clear of CTAs and the tour invite", 
   expectCleanConsole(errors);
 });
 
-test("greeting bubble opens below Comet, clear of banner chrome", async ({
+test("greeting bubble opens below Comet as an overlay (no layout shift)", async ({
   page,
 }) => {
   const errors = await loadHome(page);
@@ -188,16 +188,21 @@ test("greeting bubble opens below Comet, clear of banner chrome", async ({
   // emblem's bottom edge.
   expect(gBox!.y).toBeGreaterThanOrEqual(mBox!.y + mBox!.height - 2);
 
-  // Covers no banner chrome.
+  // Covers no banner chrome (the tagline below is intentionally overlaid —
+  // the bubble is a dropdown, not in-flow).
   noOverlap("greeting", gBox, "sound toggle", await page.getByTestId("sound-toggle").boundingBox());
   noOverlap("greeting", gBox, "h1", await page.locator("h1.atlas-title").boundingBox());
-  noOverlap("greeting", gBox, "tagline", await page.locator(".atlas-tagline").boundingBox());
 
   // Fully inside the viewport — the old fixed bubble's no-clip rule.
   expect(gBox!.x, "bubble left edge").toBeGreaterThanOrEqual(-1);
   expect(gBox!.x + gBox!.width, "bubble right edge").toBeLessThanOrEqual(390 + 1);
 
-  await expect(page.getByTestId("comet-greeting")).toHaveCount(1);
+  // Overlay, not in-flow: dismissing the bubble must not move page content.
+  const taglineYOpen = (await page.locator(".atlas-tagline").boundingBox())!.y;
+  await bubble.click({ position: { x: 20, y: 20 } });
+  await expect(bubble).toBeHidden();
+  const taglineYClosed = (await page.locator(".atlas-tagline").boundingBox())!.y;
+  expect(taglineYClosed).toBe(taglineYOpen);
   expectCleanConsole(errors);
 });
 
