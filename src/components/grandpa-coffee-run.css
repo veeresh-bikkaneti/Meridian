@@ -683,6 +683,54 @@
   overflow: visible;
 }
 
+/* Skip control — the ONE interactive element in the tour plane. Fixed
+ * top-right, above the tour overlay (z 40), below dialogs. Rendered only
+ * while mode === "tour" (mobile, fresh visit); never in reduced-motion. */
+.tour-skip {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 10px);
+  right: 12px;
+  z-index: 45;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--atlas-brass);
+  background: color-mix(in srgb, var(--atlas-card) 90%, transparent);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 999px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.tour-skip:focus-visible {
+  outline: 2px solid var(--atlas-brass);
+  outline-offset: 2px;
+}
+
+/* Micro-caption at the compass-rose origin: "Grandpa's rounds ☕".
+ * Decorative (inside the aria-hidden layer), never a tap target. Visible
+ * during the compass pop + walk, fades out when the tour settles. */
+.tour-caption {
+  position: absolute;
+  font-size: 12px;
+  line-height: 1.25;
+  white-space: nowrap;
+  color: var(--atlas-brass);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.tour-layer[data-tour-stage="compass"] .tour-caption,
+.tour-layer[data-tour-stage="walk"] .tour-caption {
+  opacity: 0.9;
+  transition-delay: 0.35s; /* appear with the compass pop */
+}
+
 /* The dotted S-trail: 2px, 6px dash / 6px gap, round caps. Brass at 60%
  * reads on both themes (--atlas-brass is #e8b64c dark / #a5761f light);
  * the geometry builder keeps it ≥16px from every interactive rect and off
@@ -962,7 +1010,8 @@
   /* The tasting tour never runs under reduced motion: settled scene only —
      no trail (a static trail implies motion and is visual noise), no
      walking figure. The strip below renders the static seated finale. */
-  .tour-layer {
+  .tour-layer,
+  .tour-skip {
     display: none !important;
   }
 

@@ -820,6 +820,13 @@ function TourLayer({
   const [stopIndex, setStopIndex] = useState(-1);
   const [pose, setPose] = useState<"side" | "pour">("side");
   const [facing, setFacing] = useState<1 | -1>(1);
+  // Scroll posture for the journey: "snap" (snapped to top at walk start),
+  // "nosnap" (user had already scrolled — no yank), "optout" (user scrolled
+  // mid-walk — all further auto-scroll suppressed). Exposed as
+  // data-tour-scroll for E2E.
+  const [scrollNote, setScrollNote] = useState<"snap" | "nosnap" | "optout">(
+    "snap",
+  );
   const onHandoffRef = useRef(onHandoff);
   onHandoffRef.current = onHandoff;
 
@@ -863,9 +870,15 @@ function TourLayer({
     );
     const speed = total / (walkBudgetMs / 1000); // px per second
 
-    // The tour starts at the top of the page.
+    // The tour starts at the top of the page — but only if the user hasn't
+    // already scrolled. Yanking a scrolled-in user back to top is pure
+    // disorientation (UX review 2026-10-07).
     try {
-      window.scrollTo({ top: 0, behavior: "auto" });
+      if (window.scrollY < 100) {
+        window.scrollTo({ top: 0, behavior: "auto" });
+      } else {
+        setScrollNote("nosnap");
+      }
     } catch {
       /* noop */
     }
@@ -877,12 +890,40 @@ function TourLayer({
     let resumeAt = 0;
     let last = performance.now();
     const t0 = last;
+    // User-initiated scroll opts out of ALL further auto-scroll: the walk
+    // continues visually, but the camera stays where the player put it.
+    // Only wheel/touchmove/keyboard-scroll count — the tour's own
+    // programmatic scrollTo calls must not trip the opt-out.
+    let autoScroll = true;
+    const optOut = () => {
+      if (!autoScroll) return;
+      autoScroll = false;
+      setScrollNote("optout");
+    };
+    const onWheelIntent = () => optOut();
+    const onTouchIntent = () => optOut();
+    const onKeyIntent = (e: KeyboardEvent) => {
+      if (
+        e.key === " " ||
+        e.key === "ArrowUp" ||
+        e.key === "ArrowDown" ||
+        e.key === "PageUp" ||
+        e.key === "PageDown" ||
+        e.key === "Home" ||
+        e.key === "End"
+      )
+        optOut();
+    };
+    window.addEventListener("wheel", onWheelIntent, { passive: true });
+    window.addEventListener("touchmove", onTouchIntent, { passive: true });
+    window.addEventListener("keydown", onKeyIntent);
 
     setFacing(geometry.simplified ? -1 : facingForStop(0));
 
     const maxScroll = () =>
       Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
     const scrollLeg = (to: number) => {
+      if (!autoScroll) return;
       try {
         const pt = path.getPointAtLength(Math.min(to, total));
         const y = pt.y - window.innerHeight * 0.45;
@@ -980,6 +1021,9 @@ function TourLayer({
       timers.forEach((t) => window.clearTimeout(t));
       window.removeEventListener("resize", onResize);
       window.removeEventListener("orientationchange", onResize);
+      window.removeEventListener("wheel", onWheelIntent);
+      window.removeEventListener("touchmove", onTouchIntent);
+      window.removeEventListener("keydown", onKeyIntent);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stage, geometry]);
@@ -1019,9 +1063,19 @@ function TourLayer({
       data-tour-phase={phase}
       data-stop-index={stopIndex}
       data-tour-beat={phase === "pour" ? "pour" : undefined}
+      data-tour-scroll={scrollNote}
       aria-hidden="true"
     >
       <div ref={docRef} className="tour-doc" style={{ height: H }}>
+        {origin && stage !== "faint" && (
+          <div
+            className="tour-caption"
+            data-testid="tour-caption"
+            style={{ left: origin.x + 20, top: origin.y - 10 }}
+          >
+            Grandpa's rounds ☕
+          </div>
+        )}
         <svg
           className="tour-svg"
           width={W}
@@ -1378,6 +1432,19 @@ export function GrandpaCoffeeRun() {
           tour={tour}
           onHandoff={onTourHandoff}
         />
+      )}
+      {/* Skip control: the ONE interactive element in the tour plane. Rendered
+          outside the aria-hidden tour layer so it stays accessible. Tapping it
+          settles the tour immediately — same end-state as a completed walk. */}
+      {mode === "tour" && (
+        <button
+          type="button"
+          className="tour-skip"
+          data-testid="tour-skip"
+          onClick={onTourHandoff}
+        >
+          Skip tour
+        </button>
       )}
       <div
         className="grandpa-scene"

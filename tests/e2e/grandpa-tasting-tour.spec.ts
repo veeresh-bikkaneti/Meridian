@@ -401,6 +401,81 @@ test("settle: faint trail, Veeresh's cloud copy, gate workflow", async ({
   expectCleanConsole(errors);
 });
 
+test("skip tour: button settles the tour immediately", async ({ page }) => {
+  const errors = await loadHome(page);
+  await waitForWalkStage(page);
+  const skip = page.getByTestId("tour-skip");
+  await expect(skip).toBeVisible();
+  // ≥44px tap target, the one interactive element in the tour plane.
+  const box = await skip.boundingBox();
+  expect(box).not.toBeNull();
+  expect(box!.height).toBeGreaterThanOrEqual(44);
+  expect(box!.width).toBeGreaterThanOrEqual(44);
+  await skip.click();
+  // Same end-state as a completed walk: seated finale, faint trail, the
+  // parent-directed ask per normal session logic.
+  await waitForSeated(page);
+  await expect(page.getByTestId("grandpa-tour")).toHaveAttribute(
+    "data-tour-stage",
+    "settled",
+    { timeout: 10_000 },
+  );
+  await expect(page.getByTestId("grandpa-donation-bubble")).toContainText(
+    "Grown-ups — buy me a coffee? ☕",
+  );
+  expectCleanConsole(errors);
+});
+
+test("manual scroll opts out of auto-scroll; the walk continues", async ({
+  page,
+}) => {
+  const errors = await loadHome(page);
+  await waitForWalkStage(page);
+  const tour = page.getByTestId("grandpa-tour");
+  // Fresh load starts at top → the snap posture.
+  await expect(tour).toHaveAttribute("data-tour-scroll", "snap", {
+    timeout: 10_000,
+  });
+  // A real user scroll gesture opts out of all further auto-scroll.
+  await page.mouse.wheel(0, 600);
+  await expect(tour).toHaveAttribute("data-tour-scroll", "optout", {
+    timeout: 10_000,
+  });
+  // The walk itself continues — only the camera yields to the player.
+  await expect(tour).toHaveAttribute("data-tour-stage", "walk", {
+    timeout: 5_000,
+  });
+  expectCleanConsole(errors);
+});
+
+test("no snap-to-top when the user already scrolled", async ({ page }) => {
+  const errors = await loadHome(page);
+  // Programmatic pre-scroll: does NOT trip the wheel/touchmove opt-out,
+  // isolating the snap decision itself.
+  await page.evaluate(() => window.scrollTo(0, 500));
+  await waitForWalkStage(page);
+  const tour = page.getByTestId("grandpa-tour");
+  await expect(tour).toHaveAttribute("data-tour-scroll", "nosnap", {
+    timeout: 10_000,
+  });
+  expectCleanConsole(errors);
+});
+
+test("origin caption appears, then fades with the tour", async ({ page }) => {
+  const errors = await loadHome(page);
+  await waitForWalkStage(page);
+  const caption = page.getByTestId("tour-caption");
+  await expect(caption).toContainText("Grandpa's rounds");
+  await waitForSeated(page);
+  // Faded out once settled. (Playwright's toBeHidden ignores opacity, so
+  // assert computed style directly — poll because the fade is a 0.5s
+  // transition.)
+  const captionOpacity = () =>
+    caption.evaluate((el) => parseFloat(getComputedStyle(el).opacity));
+  await expect.poll(captionOpacity, { timeout: 10_000 }).toBeLessThan(0.1);
+  expectCleanConsole(errors);
+});
+
 test("once per day: seeded date → seated immediately, no replay", async ({
   page,
 }) => {

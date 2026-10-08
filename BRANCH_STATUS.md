@@ -48,6 +48,18 @@ current walk/kettle/park behavior.
 - [x] E2E full tour spec: 19/19 green
 - [x] Regression: grandpa desktop (8/8), mobile, reduced; comet
       desktop/mobile; tutorial (4/4); mobile-home-overlap — all green
+- [x] P1 review fixes (architect/game-designer/UX-researcher, 2026-10-07):
+      "Skip tour" button (44px, the one pointer-events:auto element in the
+      tour plane, settles immediately); manual scroll/wheel/touchmove opts
+      out of all further auto-scroll (grandpa keeps walking, camera yields);
+      snap-to-top only when scrollY < 100; micro-caption "Grandpa's rounds
+      ☕" at the compass origin (fades with the tour, decorative)
+- [x] greet-04.mp3 regenerated (parent) for the "Psst… a mystery brews out
+      there." retext — audio/text match restored
+- [x] tsc clean; npm test 848/848 green; lint-cards GATE PASSED;
+      build:pages green
+- [x] E2E: tour spec 23/23 (4 new: skip, scroll opt-out, no-snap,
+      caption fade); mobile project 27/27 — all green
 - [ ] Open PR (Veeresh merges)
 
 ## Pending
