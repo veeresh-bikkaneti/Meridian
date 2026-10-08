@@ -23,6 +23,14 @@ function yesterdayKey(): string {
   return `${y}-${m}-${day}`;
 }
 
+function todayKey(): string {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
 async function loadHome(page: Page): Promise<string[]> {
   await page.context().addInitScript((key: string) => {
     try {
@@ -32,6 +40,19 @@ async function loadHome(page: Page): Promise<string[]> {
       /* private mode — ignore */
     }
   }, yesterdayKey());
+  // Grandpa's Tasting Tour dismisses the transient greeting when the walk
+  // starts — seed a return visit so the tour doesn't run and the greeting
+  // stays for its full lifetime in these tests.
+  await page.context().addInitScript(
+    ({ k, v }: { k: string; v: string }) => {
+      try {
+        localStorage.setItem(k, v);
+      } catch {
+        /* private mode — ignore */
+      }
+    },
+    { k: "meridian.grandpaTour.lastDate", v: todayKey() },
+  );
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
   page.on("console", (m) => {

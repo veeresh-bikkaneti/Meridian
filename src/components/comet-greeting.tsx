@@ -187,10 +187,16 @@ export function CometGreeting({ onOpenChange }: { onOpenChange?: (open: boolean)
     }
     const onPageHide = () => dismiss();
     window.addEventListener("pagehide", onPageHide);
+    // Grandpa's Tasting Tour takes focus when the walk starts — dismiss the
+    // transient greeting so the fixed bubble can't cover a CTA once the
+    // walk's auto-scroll moves the page beneath it.
+    const onTourWalkStart = () => dismiss();
+    window.addEventListener("meridian:tour-walk-start", onTourWalkStart);
     return () => {
       window.removeEventListener("pointerdown", onFirstGesture);
       window.removeEventListener("keydown", onFirstGesture);
       window.removeEventListener("pagehide", onPageHide);
+      window.removeEventListener("meridian:tour-walk-start", onTourWalkStart);
       window.clearTimeout(revealTimer.current);
       window.clearTimeout(dismissTimer.current);
       audioRef.current?.pause();

@@ -164,7 +164,11 @@ for (const width of WIDTHS) {
         // card rects flap: wait for them before measuring.
         await expect(dossier).toBeVisible();
         await page.waitForTimeout(1800);
-        const gBox = await greeting.boundingBox();
+        // The greeting may have been dismissed by Grandpa's tour walk
+        // (it dismisses the transient greeting when the walk starts) — only
+        // measure it if it's still in the DOM.
+        const gBox =
+          (await greeting.count()) > 0 ? await greeting.boundingBox() : null;
         if (gBox) {
           // Fully inside the viewport — narrative's no-clip rule.
           expect(gBox.x, "greeting left edge").toBeGreaterThanOrEqual(-1);
@@ -469,9 +473,17 @@ for (const width of WIDTHS) {
         );
         const bubble = page.getByTestId("grandpa-donation-bubble");
         await expect(bubble).toBeVisible();
-        await expect(bubble).toContainText("Help me buy coffee!");
-        const opacity = await bubble.evaluate((el) => getComputedStyle(el).opacity);
-        expect(parseFloat(opacity), "cloud fully opaque").toBeGreaterThan(0.9);
+        await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
+        // The cloud fades in — poll for full opacity.
+        await expect
+          .poll(
+            async () =>
+              parseFloat(
+                await bubble.evaluate((el) => getComputedStyle(el).opacity),
+              ),
+            { timeout: 5_000 },
+          )
+          .toBeGreaterThan(0.9);
 
         // Tap the cloud: the in-cloud gate opens (no new dialog, no nav).
         // Finale evidence for the reviewer: the strip + cloud + Comet,
