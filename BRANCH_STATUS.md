@@ -8,15 +8,15 @@ Stacks on `origin/feat/grandpa-tasting-tour` (unmerged PR #99).
 3. SoundToggle: eyebrow-left cluster (next to FIELD ATLAS)
 
 ## Done
-- [ ] game-app.tsx: CometMascot moved into header banner row (DOM move), SoundToggle to eyebrow-left, tutorialInviteVisible prop plumbed
-- [ ] comet-mascot.tsx: armillary ring SVG, dampened gaze, dead comet:boop listener removed
-- [ ] comet-greeting.tsx: suppressAuto while tutorial invite visible
-- [ ] comet-mascot.css: in-flow wrap, size ladder, bubble flips down/left, dark backplate
-- [ ] grandpa-coffee-run.tsx: static Comet plush on bench
-- [ ] grandpa-coffee-run.css: --comet-clearance removed
-- [ ] E2E: comet specs updated, tasting-tour spec (plush), overlap spec re-run
-- [ ] tsc / unit / build:pages green
-- [ ] Push + PR (stacks on #99)
+- [x] game-app.tsx: CometMascot moved into header banner row (DOM move), SoundToggle to eyebrow-left, tutorialInviteVisible prop plumbed
+- [x] comet-mascot.tsx: armillary ring SVG, dampened gaze (dead zone 90px, offsets ×0.6), dead comet:boop listener removed
+- [x] comet-greeting.tsx: suppressAuto while tutorial invite visible
+- [x] comet-mascot.css: in-flow wrap, size ladder (80px desktop/64px mobile), bubble flips down/left, dark backplate
+- [x] grandpa-coffee-run.tsx: static Comet plush on bench (data-testid="grandpa-comet-plush")
+- [x] grandpa-coffee-run.css: --comet-clearance removed, --park-right dodge reduced
+- [x] E2E: 67/67 green (comet desktop 14, mobile 5, reduced 4, tasting-tour 20, overlap 24)
+- [x] tsc clean, unit 848/848, build:pages green
 
 ## Pending
+- [x] Push + PR (stacks on #99) — PR #100
 - [ ] Veeresh merges (after PR #99)
