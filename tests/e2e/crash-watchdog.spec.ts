@@ -8,15 +8,13 @@ import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
  * _shell.html before </body> by scripts/crash-watchdog-plugin.mjs) arms one
  * 28 s timer at parse time. When it fires, and only when the app never
  * signalled readiness (window.__meridian_ready), it inserts an accessible
- * fallback overlay with "Try again" and an opt-in "Tell us what happened"
- * report path that POSTs a boot_failure event (same ObservabilityEvent
- * shape as src/lib/observability.ts) to the flags.json
- * `observabilityEndpoint`, resolved at tap time via XHR.
+ * fallback overlay with a "Try again" button. The boot_failure report is
+ * auto-sent when the overlay shows (no tap): the endpoint comes from
+ * flags.json `observabilityEndpoint`, prefetched at watchdog init.
  *
- * (a) blocked JS chunks -> the generic fallback UI appears, the primary
- *     "Try again" button precedes "Tell us what happened", and tapping the
- *     report button sends exactly one boot_failure POST with a buildId
- *     string and a device object.
+ * (a) blocked JS chunks -> the generic fallback UI appears with a single
+ *     "Try again" button, and the report auto-sends exactly one
+ *     boot_failure POST with a buildId string and a device object.
  * (b) WebGL-less device (getContext forced to null) -> the tailored
  *     no-WebGL copy appears instead of the generic heading.
  * (c) stale build -> the app's own "A new version of Meridian is available."
@@ -107,17 +105,15 @@ test("blocked JS chunks: fallback UI appears and the report sends exactly one bo
     timeout: 60_000,
   });
 
-  // The primary "Try again" button comes before "Tell us what happened".
+  // A single "Try again" button (the report auto-sends; no second button).
   const buttonLabels = await page.evaluate(() =>
     Array.from(document.querySelectorAll("#ma button")).map((b) => (b.textContent ?? "").trim()),
   );
-  expect(buttonLabels[0]).toBe("Try again");
-  expect(buttonLabels[1]).toContain("Tell us what happened");
+  expect(buttonLabels).toEqual(["Try again"]);
 
-  // Opt-in report: flags.json is resolved at tap time via XHR, then the
-  // boot_failure event POSTs to the endpoint.
-  await page.getByRole("button", { name: "Tell us what happened" }).click();
-  await expect(page.getByText("Thanks — we're on it.")).toBeVisible({
+  // Auto-send: the endpoint was prefetched at watchdog init, so the
+  // boot_failure event POSTs with no tap, then the confirmation appears.
+  await expect(page.getByText("Anonymous crash report sent.")).toBeVisible({
     timeout: 15_000,
   });
 

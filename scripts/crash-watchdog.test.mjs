@@ -42,6 +42,7 @@ function fakeDocument({
       textContent: "",
       onclick: null,
       focused: false,
+      style: {},
       setAttribute(k, v) {
         n.attrs[k] = v;
       },
@@ -141,6 +142,10 @@ function fakeXhr({ flagsStatus = 200, flagsText = "{}" } = {}) {
           if (x.onreadystatechange) x.onreadystatechange();
         } else {
           posts.push({ url: x.url, body, headers: { ...x.headers } });
+          x.readyState = 4;
+          x.status = 200;
+          x.responseText = "";
+          if (x.onreadystatechange) x.onreadystatechange();
         }
       },
     };
@@ -248,8 +253,7 @@ test("rendered script embeds the tested logic (no-drift)", () => {
     "flags.json",
     "A new version of Meridian is available.",
     "Try again",
-    "Tell us what happened",
-    "Thanks —",
+    "Anonymous crash report sent.",
     "device:",
   ]) {
     assert.ok(script.includes(needle), `shipped script must contain ${JSON.stringify(needle)}`);
@@ -408,16 +412,17 @@ test("second timer fire does not duplicate the UI", () => {
 // UI content and wiring
 // ---------------------------------------------------------------------------
 
-test("fallback copy: default heading, Try again first, focus on heading", () => {
+test("fallback copy: default heading, Try again, focus on heading", () => {
   const { host, calls, nodes } = fakeHost();
   crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
   fireTimer(calls);
   const veil = veilOf(host);
   const html = veil.innerHTML;
   assert.ok(html.includes("The game couldn't start on this phone."), "default heading");
-  assert.ok(html.indexOf('id="ag"') < html.indexOf('id="tl"'), "Try again is the first button");
+  assert.ok(html.includes('id="ag"'), "Try again button present");
+  assert.ok(!html.includes('id="tl"'), "no manual report button (auto-send)");
   assert.ok(html.includes(">Try again<"));
-  assert.ok(html.includes("Tell us what happened — it helps fix phones like yours."));
+  assert.ok(!html.includes('id="ms"'), "no status line until the report lands");
   const heading = nodes.find((n) => n.attrs.id === "mt");
   assert.ok(heading.focused, "focus moved to the heading");
 });
@@ -451,13 +456,41 @@ test("extra links: Reload points at the current URL, ?nosw=1 link built", () => 
 });
 
 // ---------------------------------------------------------------------------
-// Report flow
+// Report flow (auto-send: the POST fires when the fallback shows, no tap)
 // ---------------------------------------------------------------------------
 
-function clickTell(host) {
-  const veil = veilOf(host);
-  veil.onclick({ target: { id: "tl" } });
-}
+test("endpoint is prefetched at init, before the timer fires", () => {
+  const { host, calls, xhr } = fakeHost({
+    xhrOpts: {
+      flagsText: JSON.stringify({
+        observabilityEndpoint: "https://obs.test/hook",
+      }),
+    },
+  });
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  // NOTE: timer NOT fired.
+  assert.equal(xhr.gets.length, 1, "flags.json fetched at init");
+  assert.equal(xhr.posts.length, 0, "nothing sent before the fallback shows");
+  assert.equal(calls.timers.length, 1, "timer still armed");
+});
+
+test("report auto-sends when the fallback shows, no tap needed", () => {
+  const { host, calls, xhr } = fakeHost({
+    xhrOpts: {
+      flagsText: JSON.stringify({
+        observabilityEndpoint: "https://obs.test/hook",
+      }),
+    },
+  });
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  fireTimer(calls);
+  assert.equal(xhr.posts.length, 1, "POST fired automatically on show");
+  const ma = host.document.getElementById("ma");
+  assert.ok(
+    ma.innerHTML.includes("Anonymous crash report sent."),
+    "confirmation appended once the report lands",
+  );
+});
 
 test("send flow: flags.json fetched with cache-bust, event POSTed", () => {
   const { host, calls, xhr } = fakeHost({
@@ -469,7 +502,6 @@ test("send flow: flags.json fetched with cache-bust, event POSTed", () => {
   });
   crashWatchdogMain(host, "build-9", isValidWatchdogEndpoint);
   fireTimer(calls);
-  clickTell(host);
   assert.equal(xhr.gets.length, 1);
   assert.ok(xhr.gets[0].includes("flags.json"), "fetches flags.json");
   assert.ok(xhr.gets[0].includes("?t="), "cache-busting query");
@@ -492,9 +524,9 @@ test("send flow: flags.json fetched with cache-bust, event POSTed", () => {
   assert.equal(body.device.dpr, 3);
   assert.equal(body.error.name, "Error");
   assert.ok(Buffer.byteLength(post.body, "utf8") <= 8192, "payload within the 8192-byte cap");
-  // Thanks state replaces the buttons either way.
+  // Confirmation appended under the button once the report lands.
   const ma = host.document.getElementById("ma");
-  assert.ok(ma.innerHTML.includes("Thanks — we're on it."));
+  assert.ok(ma.innerHTML.includes("Anonymous crash report sent."));
 });
 
 test("send flow: no fingerprinting material leaves the device (COPPA)", () => {
@@ -507,7 +539,6 @@ test("send flow: no fingerprinting material leaves the device (COPPA)", () => {
   });
   crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
   fireTimer(calls);
-  clickTell(host);
   const body = JSON.parse(xhr.posts[0].body);
   const raw = xhr.posts[0].body;
   assert.ok(!("gpu" in body.device), "no GPU renderer string");
@@ -523,17 +554,16 @@ test("send flow: fail-closed with no endpoint configured", () => {
   });
   crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
   fireTimer(calls);
-  clickTell(host);
   assert.equal(xhr.gets.length, 1, "flags.json still fetched");
   assert.equal(xhr.posts.length, 0, "nothing POSTed without an endpoint");
-  const ma = host.document.getElementById("ma");
-  assert.ok(
-    ma.innerHTML.includes("Thanks — we're on it. Try loading again?"),
-    "thanks shown fail-closed",
+  assert.equal(
+    host.document.getElementById("ms"),
+    null,
+    "no confirmation shown, player never misled",
   );
 });
 
-test("send flow: invalid endpoint is rejected, thanks still shown", () => {
+test("send flow: invalid endpoint is rejected, stays silent", () => {
   const { host, calls, xhr } = fakeHost({
     xhrOpts: {
       flagsText: JSON.stringify({ observabilityEndpoint: "//evil.test/x" }),
@@ -541,10 +571,8 @@ test("send flow: invalid endpoint is rejected, thanks still shown", () => {
   });
   crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
   fireTimer(calls);
-  clickTell(host);
   assert.equal(xhr.posts.length, 0);
-  const ma = host.document.getElementById("ma");
-  assert.ok(ma.innerHTML.includes("Thanks —"));
+  assert.equal(host.document.getElementById("ms"), null);
 });
 
 test("send flow: flags.json network failure is fail-closed", () => {
@@ -553,10 +581,8 @@ test("send flow: flags.json network failure is fail-closed", () => {
   });
   crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
   fireTimer(calls);
-  clickTell(host);
   assert.equal(xhr.posts.length, 0);
-  const ma = host.document.getElementById("ma");
-  assert.ok(ma.innerHTML.includes("Thanks —"));
+  assert.equal(host.document.getElementById("ms"), null);
 });
 
 // ---------------------------------------------------------------------------
@@ -575,7 +601,6 @@ test("first window error is captured and truncated in the report", () => {
   listeners.error({ error: { name: "TypeError", message: "x".repeat(500) } });
   listeners.error({ error: { name: "Later", message: "ignored" } });
   fireTimer(calls);
-  clickTell(host);
   const body = JSON.parse(xhr.posts[0].body);
   assert.equal(body.error.name, "TypeError");
   assert.equal(body.error.message.length, 300, "message truncated to 300");
@@ -593,7 +618,6 @@ test("unhandledrejection reason is captured", () => {
   crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
   listeners.unhandledrejection({ reason: "promise blew up" });
   fireTimer(calls);
-  clickTell(host);
   const body = JSON.parse(xhr.posts[0].body);
   assert.equal(body.error.message, "promise blew up");
 });
@@ -619,7 +643,6 @@ test("unclean previous boot attaches sessionId, breadcrumb and lastMilestone", (
   });
   crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
   fireTimer(calls);
-  clickTell(host);
   const body = JSON.parse(xhr.posts[0].body);
   assert.equal(body.sessionId, "prev-session-1");
   assert.equal(body.lastMilestone, "map_ready");
@@ -647,7 +670,6 @@ test("clean previous boot: no breadcrumb attached", () => {
   });
   crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
   fireTimer(calls);
-  clickTell(host);
   const body = JSON.parse(xhr.posts[0].body);
   assert.equal(body.sessionId, "prev-session-2");
   assert.equal(body.breadcrumb, undefined);
@@ -664,7 +686,6 @@ test("corrupt breadcrumb is ignored defensively", () => {
   });
   crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
   fireTimer(calls);
-  clickTell(host);
   const body = JSON.parse(xhr.posts[0].body);
   assert.equal(body.sessionId, undefined);
   assert.equal(body.breadcrumb, undefined);

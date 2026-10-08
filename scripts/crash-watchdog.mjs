@@ -158,18 +158,24 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
         x.onreadystatechange = function () {
           if (x.readyState === 4) cb(x.status, x.responseText);
         };
-      if (m === "POST") x.setRequestHeader("Content-Type", "application/json");
+      if (b) x.setRequestHeader("Content-Type", "application/json");
       x.send(b);
     } catch (e) {
       if (cb) cb(0, null);
     }
   }
-  // "Tell us what happened": resolve flags.json at RUNTIME (never baked
-  // in), validate the endpoint like src/lib/flags.ts, POST the
-  // boot_failure event (same ObservabilityEvent shape as
-  // src/lib/observability.ts — same contract, no parallel pipeline),
-  // then thank the user either way (fail-closed).
-  function send() {
+  // "Tell us what happened": the endpoint is resolved at RUNTIME (never
+  // baked in) and cached — prefetched at init so it is usually ready by
+  // fallback time. The report then goes automatically when the fallback
+  // shows (same ObservabilityEvent shape as src/lib/observability.ts —
+  // same contract, no parallel pipeline). Fail-closed: no endpoint, no
+  // send, and the player is never told otherwise.
+  var epCache;
+  function getEndpoint(cb) {
+    if (epCache !== undefined) {
+      cb(epCache);
+      return;
+    }
     var u = "flags.json";
     try {
       u = new URL("flags.json", doc.baseURI) + "";
@@ -183,43 +189,51 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
       try {
         if (st >= 200 && st < 300 && text) {
           var c = JSON.parse(text).observabilityEndpoint;
-          if (isValidEndpointFn(c)) ep = String(c).replace(/^\s+|\s+$/g, "");
+          if (isValidEndpointFn(c)) ep = String(c).trim();
         }
       } catch (e) {
         /* best-effort */
       }
-      if (ep) {
-        try {
-          // Coarse device facts only (COPPA): OS + form-factor buckets
-          // derived from the UA, never the UA string itself, never the
-          // GPU renderer string. No coordinates, no place/guess content,
-          // no PII. undefined fields are dropped by JSON.
-          var n = win.navigator || {},
-            w = win.screen || {},
-            uaS = String(n.userAgent).toLowerCase(),
-            os = /android/.test(uaS)
-              ? "android"
-              : /iphone|ipad|ipod/.test(uaS)
-                ? "ios"
-                : /windows/.test(uaS)
-                  ? "windows"
-                  : /mac/.test(uaS)
-                    ? "mac"
-                    : /linux/.test(uaS)
-                      ? "linux"
-                      : "other";
-          var dv = {
-            os: os,
-            form: os === "android" || os === "ios" ? "mobile" : "desktop",
-            deviceMemory: n.deviceMemory,
-            hardwareConcurrency: n.hardwareConcurrency,
-            dpr: win.devicePixelRatio,
-            screenW: w.width,
-            screenH: w.height,
-            webgl1: g1,
-            webgl2: g2,
-            buildId: buildId,
-          };
+      epCache = ep;
+      cb(ep);
+    });
+  }
+  function send() {
+    // Once per show: show() itself runs once per page (ASKED guard), so no
+    // separate sent-flag is needed.
+    getEndpoint(function (ep) {
+      if (!ep) return;
+      try {
+        // Coarse device facts only (COPPA): OS + form-factor buckets
+        // derived from the UA, never the UA string itself, never the
+        // GPU renderer string. No coordinates, no place/guess content,
+        // no PII. undefined fields are dropped by JSON.
+        var n = win.navigator || {},
+          w = win.screen || {},
+          uaS = String(n.userAgent).toLowerCase(),
+          os = /android/.test(uaS)
+            ? "android"
+            : /iphone|ipad|ipod/.test(uaS)
+              ? "ios"
+              : /windows/.test(uaS)
+                ? "windows"
+                : /mac/.test(uaS)
+                  ? "mac"
+                  : /linux/.test(uaS)
+                    ? "linux"
+                    : "other";
+        var dv = {
+          os: os,
+          form: os === "android" || os === "ios" ? "mobile" : "desktop",
+          deviceMemory: n.deviceMemory,
+          hardwareConcurrency: n.hardwareConcurrency,
+          dpr: win.devicePixelRatio,
+          screenW: w.width,
+          screenH: w.height,
+          webgl1: g1,
+          webgl2: g2,
+          buildId: buildId,
+        };
           var ev = {
             type: "boot_failure",
             ts: Date.now(),
@@ -243,17 +257,18 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
             if (ev.error.message) ev.error.message = ev.error.message.slice(0, 120);
             s = js(ev);
           }
-          xhr("POST", ep, s, null);
+          xhr("POST", ep, s, function () {
+            // Confirmation appears under the button once the report lands.
+            try {
+              var ma = doc.getElementById("ma");
+              if (ma) ma.innerHTML += '<p id="ms">Anonymous crash report sent.</p>';
+            } catch (e) {
+              /* best-effort */
+            }
+          });
         } catch (x) {
           /* best-effort */
         }
-      }
-      try {
-        var b = doc.getElementById("ma");
-        if (b) b.innerHTML = "<p>Thanks — we're on it. Try loading again?</p>";
-      } catch (x) {
-        /* best-effort */
-      }
     });
   }
   var CSS =
@@ -267,7 +282,7 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
     "#ma button{display:block;width:100%;font:inherit;padding:11px;\n" +
     "margin:0 0 8px;border:2px solid #0b5fff;border-radius:8px;cursor:pointer;\n" +
     "transition:background-color .15s;background:#0b5fff;color:#ffffff;font-weight:700}\n" +
-    "#ma #tl{background:#ffffff;color:#0b5fff;font-weight:600}\n" +
+    "#ms{font-size:14px;color:#5b6b7f}\n" +
     "#ma button:focus-visible,#mc a:focus-visible{\n" +
     "outline:3px solid #0b5fff;outline-offset:2px}\n" +
     "#mc a{color:#0b5fff}\n" +
@@ -303,20 +318,18 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
         '<div id="mc"><h2 id="mt" tabindex="-1">' +
         (g1 || g2 ? "The game couldn't start on this phone." : "This phone can't run the 3D map.") +
         "</h2><p>The game didn't finish loading.</p>" +
-        '<div id="ma"><button id="ag">Try again</button>' +
-        '<button id="tl">Tell us what happened — it helps fix phones like yours.</button></div>' +
+        '<div id="ma"><button id="ag">Try again</button></div>' +
         '<a id="mr">Reload</a> · <a id="mn">?nosw=1</a></div>';
       doc.body.appendChild(v);
       v.onclick = function (e) {
-        var t = (e && e.target) || {},
-          i = t.id;
-        if (i === "ag") {
+        var t = (e && e.target) || {};
+        if (t.id === "ag") {
           try {
             win.location.reload();
           } catch (x) {
             /* best-effort */
           }
-        } else if (i === "tl") send();
+        }
       };
       var as = v.getElementsByTagName("a");
       if (as[0]) as[0].href = win.location.href;
@@ -327,6 +340,8 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
       } catch (e) {
         /* best-effort */
       }
+      // Auto-send: no tap needed. Fail-closed and once per session.
+      send();
     } catch (e) {
       /* best-effort */
     }
@@ -362,6 +377,10 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
       /* best-effort */
     }
   }
+  // Prefetch the endpoint at init so it is cached by fallback time.
+  // One tiny same-origin GET per page load; the app fetches flags.json
+  // itself on boot, so this is the same class of cost.
+  getEndpoint(function () {});
   win.setTimeout(function () {
     onTimer();
   }, 28000);
