@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
+import { createPortal } from "react-dom";
 import { Volume2 } from "lucide-react";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import {
@@ -260,7 +261,10 @@ export function CometGreeting({
   if (!visible) return null;
   const words = wordsRef.current;
   const fullText = words.join(" ");
-  return (
+  // Portal to document.body: the bubble is position:fixed, and the banner
+  // row's entrance animation creates a stacking context that would trap it
+  // below page content. Portaling escapes all ancestor contexts.
+  return createPortal(
     <div
       className="comet-greeting"
       data-testid="comet-greeting"
@@ -302,6 +306,7 @@ export function CometGreeting({
           <Volume2 className="comet-speaker-icon" aria-hidden="true" />
         </button>
       ) : null}
-    </div>
+    </div>,
+    document.body,
   );
 }

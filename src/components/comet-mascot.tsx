@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { CometGreeting } from "./comet-greeting";
 import "./comet-mascot.css";
 
@@ -400,18 +401,22 @@ export function CometMascot({
         </svg>
       </button>
       </div>
-      {/* Greeting + reaction bubbles open DOWNWARD from the banner emblem
-          (tail up) — the old upward bubble would cover the tour invite. */}
+      {/* Greeting + reaction bubbles are fixed bottom-right toasts (portaled
+          to body to escape the banner's stacking context) — the banner zone
+          has no room for a dropdown. */}
       <CometGreeting onOpenChange={setGreetingOpen} suppressAuto={tutorialInviteVisible} />
-      {reaction ? (
-        <div
-          className="comet-greeting comet-reaction"
-          data-testid="comet-reaction"
-          role="status"
-        >
-          <p className="comet-greeting-text">{reaction}</p>
-        </div>
-      ) : null}
+      {reaction
+        ? createPortal(
+            <div
+              className="comet-greeting comet-reaction"
+              data-testid="comet-reaction"
+              role="status"
+            >
+              <p className="comet-greeting-text">{reaction}</p>
+            </div>,
+            document.body,
+          )
+        : null}
     </div>
   );
 }

@@ -36,14 +36,6 @@ export function greetingIndexFor(date: Date = new Date()): number {
   return ((dayOfYear % COMET_GREETING_LINES.length) + COMET_GREETING_LINES.length) % COMET_GREETING_LINES.length;
 }
 
-/** Local YYYY-MM-DD for a date (no UTC shifting). */
-export function localDateKey(date: Date = new Date()): string {
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
-  return `${y}-${m}-${d}`;
-}
-
 /** Public asset URL for greeting audio index i (0-11). */
 export function greetingAudioUrl(index: number): string {
   const base = import.meta.env.BASE_URL ?? "/";

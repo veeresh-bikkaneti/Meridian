@@ -148,17 +148,21 @@
 }
 
 /* ---- Daily greeting bubble ----
- * Opens DOWNWARD/LEFT from the banner emblem (tail flipped up) — the old
- * upward bubble would cover the tour invite above the header. */
+ * Fixed bottom-right toast (pre-banner behavior): the banner zone has no
+ * room for a dropdown — the full-width tagline sits 16px below the banner
+ * row, so any downward bubble covers it. Floating keeps the greeting clear
+ * of all banner chrome with zero layout shift. */
 
 .comet-greeting {
   pointer-events: auto;
-  /* Dropdown below the emblem: absolute so the bubble never widens
-     .comet-wrap and crushes the h1, and never shoves page content down. */
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin: 12px 0 0 0;
+  /* Toast, not dropdown: fixed so it never widens .comet-wrap, never
+     shoves page content, and never touches the tagline below the banner. */
+  position: fixed;
+  /* 33px right: the 44px speaker badge overhangs the bubble's top-right
+     corner by 19px — keep it inside the viewport. */
+  right: max(33px, calc(env(safe-area-inset-right, 0px) + 19px));
+  bottom: max(14px, env(safe-area-inset-bottom, 0px));
+  margin: 0;
   max-width: min(252px, calc(100vw - 3rem));
   padding: 10px 12px 10px 14px;
   background: var(--atlas-card);
@@ -170,31 +174,22 @@
   line-height: 1.45;
   text-align: left;
   cursor: pointer;
-  transform-origin: top right;
+  transform-origin: bottom right;
   animation: comet-bubble-in 220ms ease-out;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(6px);
-  z-index: 45; /* above the tagline/difficulty below, below modals (z-50) */
+  z-index: 45; /* above page content, below modals (z-50) */
 }
 
-/* Speech tail pointing UP at Comet. */
+/* No speech tail on the toast — there's no adjacent Comet to point at. */
 .comet-greeting::after {
-  content: "";
-  position: absolute;
-  right: 30px;
-  top: -9px;
-  width: 14px;
-  height: 14px;
-  background: var(--atlas-card);
-  border-left: 2px solid var(--atlas-card-line);
-  border-top: 2px solid var(--atlas-card-line);
-  transform: rotate(45deg);
+  display: none;
 }
 
 @keyframes comet-bubble-in {
   from {
     opacity: 0;
-    transform: translateY(-10px) scale(0.92);
+    transform: translateY(10px) scale(0.92);
   }
   to {
     opacity: 1;
