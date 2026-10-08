@@ -83,6 +83,11 @@ function fakeDocument({
         }
       },
     });
+    // Minimal shim: the watchdog only uses "beforeend".
+    n.insertAdjacentHTML = (position, html) => {
+      if (position !== "beforeend") throw new Error("fake: only beforeend supported");
+      n.innerHTML = n.innerHTML + String(html);
+    };
     nodes.push(n);
     return n;
   }
@@ -117,9 +122,16 @@ function fakeDocument({
   return { doc, nodes, body, head };
 }
 
-function fakeXhr({ flagsStatus = 200, flagsText = "{}" } = {}) {
+function fakeXhr({ flagsStatus = 200, flagsText = "{}", postStatus = 200, deferGet = false } = {}) {
   const posts = [];
   const gets = [];
+  const pendingGets = [];
+  function completeGet(x) {
+    x.readyState = 4;
+    x.status = flagsStatus;
+    x.responseText = flagsText;
+    if (x.onreadystatechange) x.onreadystatechange();
+  }
   function XMLHttpRequest() {
     const x = {
       readyState: 0,
@@ -136,14 +148,12 @@ function fakeXhr({ flagsStatus = 200, flagsText = "{}" } = {}) {
       send(body) {
         if (x.method === "GET") {
           gets.push(x.url);
-          x.readyState = 4;
-          x.status = flagsStatus;
-          x.responseText = flagsText;
-          if (x.onreadystatechange) x.onreadystatechange();
+          if (deferGet) pendingGets.push(x);
+          else completeGet(x);
         } else {
           posts.push({ url: x.url, body, headers: { ...x.headers } });
           x.readyState = 4;
-          x.status = 200;
+          x.status = postStatus;
           x.responseText = "";
           if (x.onreadystatechange) x.onreadystatechange();
         }
@@ -151,7 +161,14 @@ function fakeXhr({ flagsStatus = 200, flagsText = "{}" } = {}) {
     };
     return x;
   }
-  return { XMLHttpRequest, posts, gets };
+  return {
+    XMLHttpRequest,
+    posts,
+    gets,
+    flushGets() {
+      while (pendingGets.length) completeGet(pendingGets.shift());
+    },
+  };
 }
 
 function fakeHost({ docOpts = {}, xhrOpts = {}, store: presetStore = {}, ready = false } = {}) {
@@ -472,6 +489,43 @@ test("endpoint is prefetched at init, before the timer fires", () => {
   assert.equal(xhr.gets.length, 1, "flags.json fetched at init");
   assert.equal(xhr.posts.length, 0, "nothing sent before the fallback shows");
   assert.equal(calls.timers.length, 1, "timer still armed");
+});
+
+test("no confirmation when the POST itself fails (fail-closed)", () => {
+  const { host, calls, xhr } = fakeHost({
+    xhrOpts: {
+      flagsText: JSON.stringify({
+        observabilityEndpoint: "https://obs.test/hook",
+      }),
+      postStatus: 500,
+    },
+  });
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  fireTimer(calls);
+  assert.equal(xhr.posts.length, 1, "the attempt is still made");
+  const ma = host.document.getElementById("ma");
+  assert.ok(
+    !ma.innerHTML.includes("Anonymous crash report sent."),
+    "no false 'sent' claim on HTTP 500",
+  );
+});
+
+test("prefetch race: GET still in flight at show time → exactly one POST", () => {
+  const { host, calls, xhr } = fakeHost({
+    xhrOpts: {
+      flagsText: JSON.stringify({
+        observabilityEndpoint: "https://obs.test/hook",
+      }),
+      deferGet: true,
+    },
+  });
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  assert.equal(xhr.gets.length, 1, "prefetch GET issued at init");
+  fireTimer(calls);
+  assert.equal(xhr.gets.length, 2, "send() issues its own GET while prefetch is in flight");
+  assert.equal(xhr.posts.length, 0, "nothing POSTed before the endpoint resolves");
+  xhr.flushGets();
+  assert.equal(xhr.posts.length, 1, "exactly one POST after both GETs resolve");
 });
 
 test("report auto-sends when the fallback shows, no tap needed", () => {

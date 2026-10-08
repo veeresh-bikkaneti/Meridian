@@ -158,6 +158,8 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
         x.onreadystatechange = function () {
           if (x.readyState === 4) cb(x.status, x.responseText);
         };
+      // POSTs always carry a body; GETs pass null — the header rides on
+      // body presence, not the method string.
       if (b) x.setRequestHeader("Content-Type", "application/json");
       x.send(b);
     } catch (e) {
@@ -257,11 +259,15 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
             if (ev.error.message) ev.error.message = ev.error.message.slice(0, 120);
             s = js(ev);
           }
-          xhr("POST", ep, s, function () {
-            // Confirmation appears under the button once the report lands.
+          xhr("POST", ep, s, function (st) {
+            // Only claim the send on a 2xx: these are flaky-network
+            // devices, and a failed POST must stay silent (fail-closed).
+            // insertAdjacentHTML (not innerHTML +=) leaves the existing
+            // "Try again" button node — and its focus — intact.
+            if (st < 200 || st >= 300) return;
             try {
               var ma = doc.getElementById("ma");
-              if (ma) ma.innerHTML += '<p id="ms">Anonymous crash report sent.</p>';
+              if (ma) ma.insertAdjacentHTML("beforeend", "Anonymous crash report sent.");
             } catch (e) {
               /* best-effort */
             }
@@ -282,7 +288,6 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
     "#ma button{display:block;width:100%;font:inherit;padding:11px;\n" +
     "margin:0 0 8px;border:2px solid #0b5fff;border-radius:8px;cursor:pointer;\n" +
     "transition:background-color .15s;background:#0b5fff;color:#ffffff;font-weight:700}\n" +
-    "#ms{font-size:14px;color:#5b6b7f}\n" +
     "#ma button:focus-visible,#mc a:focus-visible{\n" +
     "outline:3px solid #0b5fff;outline-offset:2px}\n" +
     "#mc a{color:#0b5fff}\n" +
@@ -411,6 +416,7 @@ const RENAME = {
   shown: "sn",
   err0: "e0",
   uaS: "u",
+  ma: "q",
   doc: "d",
   win: "o",
   true: "!0",

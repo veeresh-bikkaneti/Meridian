@@ -17,6 +17,9 @@ observability endpoint at init so the report fires instantly.
   - Fail-closed preserved: no/invalid endpoint → no POST, no confirmation
     line, player never misled. No double-send (show() runs once per page
     via the existing ASKED guard).
+  - Pre-merge review fixes: confirmation only on HTTP 2xx (a failed POST
+    stays silent); `insertAdjacentHTML` instead of `innerHTML +=` so the
+    "Try again" button keeps focus; prefetch-race test coverage.
   - Byte trims to hold the 5120 budget: `String.trim()` instead of the
     regex, `if (b)` for the content-type header.
 - `scripts/crash-watchdog.test.mjs` — 32 tests: prefetch-at-init,
