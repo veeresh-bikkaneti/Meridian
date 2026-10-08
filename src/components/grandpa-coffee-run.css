@@ -236,6 +236,27 @@
   }
 }
 
+/* Sip beat — during the 1.2s stop the walker raises the mug in one
+   deliberate drink (raise, hold at mouth, lower) instead of the subtle
+   periodic walk sip. Runs once per stop; the walk animation resumes when
+   the phase flips back to "walk". */
+.tour-layer[data-tour-phase="sip"] .mug-arm {
+  animation: sip-drink 1.2s ease-in-out 1;
+}
+
+@keyframes sip-drink {
+  0% {
+    transform: rotate(0deg);
+  }
+  30%,
+  65% {
+    transform: rotate(-46deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 /* Coffee steam wisps — rise continuously, including on the seated mug. */
 .steam {
   animation: steam-rise 2.2s ease-in infinite;

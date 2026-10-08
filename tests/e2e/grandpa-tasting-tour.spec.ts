@@ -264,6 +264,15 @@ test("walker stops at each option, looks, sips, walks on", async ({
       Math.abs(box1!.x - box2!.x),
       `walker dwells at stop ${i} (x)`,
     ).toBeLessThan(12);
+    // Sip beat: during the dwell the mug arm plays the deliberate
+    // raise-and-hold drink, not the subtle periodic walk sip.
+    const sipAnim = await page.evaluate(() => {
+      const arm = document.querySelector(
+        '[data-testid="grandpa-tour"] .mug-arm',
+      );
+      return arm ? getComputedStyle(arm).animationName : null;
+    });
+    expect(sipAnim, `mug plays sip-drink at stop ${i}`).toBe("sip-drink");
     expect(
       Math.abs(box1!.y - box2!.y),
       `walker dwells at stop ${i} (y)`,
