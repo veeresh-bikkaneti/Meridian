@@ -53,7 +53,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .storyteller-figure {
     /* Gentle idle float, transform-only. Never under reduced motion. */
-    animation: storyteller-float 3s ease-in-out infinite;
+    animation: storyteller-float 2s ease-in-out infinite;
   }
 }
 
