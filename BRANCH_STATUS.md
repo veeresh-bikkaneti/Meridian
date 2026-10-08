@@ -73,16 +73,15 @@ Standing rules: PRs only, owner merges; named-file staging only; gates before ha
   CelebrationOverlay wired with motionOff in scout (confetti off).
 
 ## Pending (sequenced)
-- [ ] Phase A: Game Designer + UI/UX Expert finalize UX copy + settings placement.
-- [ ] PBI-1 capability.ts (probe + order + decay + unit tests).
-- [ ] PBI-2 thread mode through map-options.ts → satellite-map.tsx (full mode byte-identical).
-- [ ] PBI-3 scout outline renderer, label-free (reuse globe-mesh.ts / atlas-data.ts).
-- [ ] PBI-4 static fallback asset (≤100 kB, pin-drop mapping).
-- [ ] PBI-5 webglcontextlost → state-preserving switch + deferred note.
-- [ ] PBI-6 map-attributed prior-crash boot offer.
-- [ ] PBI-7 settings toggle UI.
-- [ ] PBI-8 observability: mapMode in flags.json + crash reports + tile_failed counts.
-- [ ] PBI-9 E2E regression (SwiftShader/6x throttle + false-demotion golden).
+- [x] PBI-1 capability.ts — DONE (commit 0032325).
+- [x] PBI-2 thread mode through map-options.ts → satellite-map.tsx — DONE (commit b0de59f).
+- [x] PBI-3 scout outline renderer, label-free — DONE (commit 5debfc1).
+- [x] PBI-4 static fallback asset (≤100 kB, pin-drop mapping) — DONE (commit c6659c8).
+- [x] PBI-5 webglcontextlost → state-preserving switch + deferred note — DONE (commit bd68802).
+- [x] PBI-6 map-attributed prior-crash boot offer — DONE (commit be6fa34).
+- [x] PBI-7 settings toggle UI — DONE (commit 7db37ed).
+- [x] PBI-8 observability: mapMode in crash reports + tile_failed counts — DONE (commit d29ad34).
+- [ ] PBI-9 E2E regression (SwiftShader/6x throttle + false-demotion golden) — Software Tester owns.
 - [ ] PBI-10 PR opened, never merged.
 
 ## Notes
