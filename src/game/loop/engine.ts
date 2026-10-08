@@ -70,20 +70,35 @@ export function buildLoopGuess(
 
 /**
  * Append a guess to the day state. Win when the guess's placeId matches
- * the clue file's target placeId; loss when all 5 guesses are used.
- * `cluesRevealed` tracks guesses: min(5, 1 + guesses.length) — one new
- * clue card per guess. Submitting on a finished mystery, past the guess cap,
- * or a place that was already guessed returns the state unchanged (a
- * repeated pick is never a wasted guess). Warmer is re-derived from the
- * previous guess so the engine — not the input — is authoritative.
+ * the clue file's target placeId; loss when all guesses are used.
+ * `cluesRevealed` tracks guesses: min(5, startClues + guesses.length) —
+ * one new clue card per guess on top of the band's starting deal.
+ * Submitting on a finished mystery, past the guess cap, or a place that
+ * was already guessed returns the state unchanged (a repeated pick is
+ * never a wasted guess). Warmer is re-derived from the previous guess so
+ * the engine — not the input — is authoritative.
+ *
+ * The optional config wires the age-profile band's GeoDetective deal
+ * (Phase 1 §3b: 8-10 starts with 3 clues and a cap of 6; 11-13 starts
+ * near-blind with a cap of 5). Defaults preserve the shipped tuning.
  */
+export interface SubmitGuessOptions {
+  /** Clues visible when the mystery is dealt (default 1). */
+  startClues?: number;
+  /** Max guesses before the mystery is lost (default LOOP_MAX_GUESSES). */
+  maxGuesses?: number;
+}
+
 export function submitGuess(
   state: LoopPuzzleProgress,
   guess: LoopGuess,
   targetPlaceId: string,
+  opts: SubmitGuessOptions = {},
 ): LoopPuzzleProgress {
+  const maxGuesses = opts.maxGuesses ?? LOOP_MAX_GUESSES;
+  const startClues = Math.min(LOOP_MAX_GUESSES, Math.max(1, opts.startClues ?? 1));
   if (state.status !== "playing") return state;
-  if (state.guesses.length >= LOOP_MAX_GUESSES) return state;
+  if (state.guesses.length >= maxGuesses) return state;
   if (state.guesses.some((g) => g.placeId === guess.placeId)) return state;
   const prev = state.guesses[state.guesses.length - 1] ?? null;
   const next: LoopGuess = {
@@ -94,7 +109,7 @@ export function submitGuess(
   const won = next.placeId === targetPlaceId;
   return {
     guesses,
-    status: won ? "won" : guesses.length >= LOOP_MAX_GUESSES ? "lost" : "playing",
-    cluesRevealed: Math.min(LOOP_MAX_GUESSES, 1 + guesses.length),
+    status: won ? "won" : guesses.length >= maxGuesses ? "lost" : "playing",
+    cluesRevealed: Math.min(LOOP_MAX_GUESSES, startClues + guesses.length),
   };
 }

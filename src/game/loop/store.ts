@@ -157,14 +157,18 @@ export function freshLoopUnlimitedStore(poolSize: number): LoopUnlimitedStore {
   };
 }
 
-/** A mystery that was just dealt: first clue visible, no guesses. */
-export function freshLoopPuzzleState(index: number, cycle: number): LoopPuzzleState {
+/** A mystery that was just dealt: the band's starting clues visible, no guesses. */
+export function freshLoopPuzzleState(
+  index: number,
+  cycle: number,
+  startClues: number = 1,
+): LoopPuzzleState {
   return {
     index,
     cycle,
     guesses: [],
     status: "playing",
-    cluesRevealed: 1,
+    cluesRevealed: Math.min(5, Math.max(1, startClues)),
     completedAt: null,
     streakEndedAt: null,
     completedCycle: false,

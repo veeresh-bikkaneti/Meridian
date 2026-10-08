@@ -38,6 +38,14 @@ import { STARTERS, type Starter } from "./starters.ts";
 import { buildRegionPool } from "./pool.ts";
 import { asFameTier } from "./tier-filter.ts";
 import { ADMIN1_BY_COUNTRY } from "./regions.ts";
+import {
+  mapStory,
+  resolveBand,
+  RUNG_ORDER,
+  type AgeBandId,
+  type LadderRung,
+  type PlaceFacts,
+} from "./age-profile/index.ts";
 import type { Difficulty } from "./scoring.ts";
 // Import attribute: required by Node's module loader (unit tests run under
 // node --experimental-strip-types); bundlers accept it as well. The manifest
@@ -172,6 +180,33 @@ function factAttribution(
   return null;
 }
 
+/**
+ * Adapt the record's single ladder `fact` ({ text, kind, ... }) into the
+ * one-entry ladder map the rung mapper expects. An unknown/missing kind
+ * yields an empty ladder (the mapper degrades to history/blurb — never
+ * shows too-hard text).
+ */
+function factLadder(fact: unknown): { ladder: PlaceFacts["ladder"]; kind: LadderRung | null } {
+  // Legacy/defensive: a plain-string fact has no kind — treat it as a
+  // "hook" (the lowest rung, visible under every ceiling). This preserves
+  // the pre-mapper behavior where a string fact always led the card.
+  if (typeof fact === "string") {
+    const text = factText(fact);
+    return text === null ? { ladder: {}, kind: null } : { ladder: { hook: { text, source: "" } }, kind: "hook" };
+  }
+  if (!fact || typeof fact !== "object" || !("kind" in fact)) return { ladder: {}, kind: null };
+  const kind = (fact as { kind: unknown }).kind;
+  if (typeof kind !== "string" || !(RUNG_ORDER as string[]).includes(kind))
+    return { ladder: {}, kind: null };
+  const text = factText(fact);
+  if (text === null) return { ladder: {}, kind: null };
+  const source =
+    "source" in fact && typeof (fact as { source: unknown }).source === "string"
+      ? ((fact as { source: string }).source as string)
+      : "";
+  const rung = kind as LadderRung;
+  return { ladder: { [rung]: { text, source } }, kind: rung };}
+
 /** Starter-shaped view of one validated generated place. The blurb is the factual one-liner. */
 function toStarter(
   place: {
@@ -219,9 +254,22 @@ function toStarter(
   // Card rule 1: history first, modern identity second. The hook sentence
   // leads; the plain-geography blurb anchors it. Precedence: fact-ladder
   // fact > Wikipedia history hook > bare geographic blurb (same order as
-  // composeCardStory() in scripts/card-compose.mjs).
-  const hook = factText(place.fact) ?? (typeof place.history === "string" && place.history.length > 0 ? place.history : null);
+  // composeCardStory() in scripts/card-compose.mjs) — but the ladder rung
+  // actually SHOWN is picked by the age-profile rung mapper: it walks DOWN
+  // from the band's ceiling (5-7 → hook only) and degrades to history,
+  // then the blurb. The profile is read at each card boundary, so a
+  // mid-session band change applies to the next card, never the current.
   const hasHistory = typeof place.history === "string" && place.history.length > 0;
+  const ladderFact = factLadder(place.fact);
+  const mapped = mapStory(resolveBand(), {
+    ladder: ladderFact.ladder,
+    history: hasHistory ? place.history : undefined,
+    blurb: place.blurb,
+  });
+  const story = mapped.text;
+  const storyRung = mapped.rung;
+  const audioAutoplay = mapped.autoplayAudio;
+  const factKind = ladderFact.kind;
   return {
     id: place.id,
     edition,
@@ -229,7 +277,15 @@ function toStarter(
     name: place.name,
     lon: place.lon,
     lat: place.lat,
-    story: hook ? `${hook} ${place.blurb}` : place.blurb,
+    story,
+    // Which rung the band's ceiling selected for this card (age-profile).
+    storyRung,
+    // Read-aloud should auto-play this card (true for the 5-7 band).
+    audioAutoplay,
+    // The ladder rung of the record's fact (null when none/unknown) — lets
+    // the story be re-mapped when a staged band change hits a card boundary
+    // after the pool was composed. See storyForBand().
+    ...(factKind !== null ? { factKind } : {}),
     // The history hook travels separately so the AI story fallback can tell
     // enriched cards (skip) from blurb-only cards (fire).
     history: hasHistory ? place.history : undefined,
@@ -249,6 +305,30 @@ function toStarter(
     ...(subdivision !== undefined ? { subdivision } : {}),
     iso2: place.iso2,
   };
+}
+
+/**
+ * Re-map an already-composed Starter's story for a band (age-profile).
+ * Used at card boundaries: the pool was composed at run start under the
+ * old band, but a staged band change applies at the NEXT card — so the
+ * new card's story is re-composed from the rung parts (ladder fact +
+ * history + blurb) instead of reusing the stale text. Pure: no storage.
+ *
+ * The blurb is recovered by stripping the leading hook text; when the
+ * story doesn't start with a known hook, the whole story is treated as
+ * the blurb (truthful fallback — never invents text).
+ */
+export function storyForBand(place: Starter, band: AgeBandId): string {
+  const hookText = place.fact ?? place.history ?? "";
+  const blurb =
+    hookText.length > 0 && place.story.startsWith(hookText)
+      ? place.story.slice(hookText.length).trim()
+      : place.story;
+  const ladder: PlaceFacts["ladder"] = {};
+  if (place.factKind !== undefined && place.fact) {
+    ladder[place.factKind] = { text: place.fact, source: "" };
+  }
+  return mapStory(band, { ladder, history: place.history, blurb }).text;
 }
 
 /**

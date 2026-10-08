@@ -39,6 +39,7 @@ import {
   writeLoopStoreV2,
 } from "./store";
 import { buildLoopGuess, submitGuess, OCTANT_ARROWS } from "./engine";
+import { geodetectiveConfig, resolveBand } from "@/game/age-profile";
 import {
   LOOP_MAX_GUESSES,
   type LoopClueFile,
@@ -71,7 +72,14 @@ const StorytellerNarration = lazy(() => import("@/components/storyteller"));
 
 /** Puzzles whose hook narration already played this session (auto once per puzzle). */
 const hookNarratedPuzzles = new Set<string>();
-
+/**
+ * The age-profile band's GeoDetective deal, read at each round setup
+ * (Phase 1 §3b). Null when the loop is locked for the band (5-7) — the
+ * loop screen is unreachable then, so the fallback keeps shipped tuning.
+ */
+function bandDealConfig() {
+  return geodetectiveConfig(resolveBand()) ?? { startingClues: 1, cluePerWrongGuess: 1 as const, maxClues: 5 as const, guessCap: LOOP_MAX_GUESSES };
+}
 function assetBase(): string {
   const base = import.meta.env.BASE_URL ?? "/";
   return base.endsWith("/") ? base : `${base}/`;
@@ -263,7 +271,7 @@ export function LoopScreen({
         // E2E seam: deal the pinned puzzle directly — the deck is untouched.
         // Only applies when no mystery is open.
         dealIndex = seam;
-        next = { ...next, current: freshLoopPuzzleState(seam, next.deck.cycle) };
+        next = { ...next, current: freshLoopPuzzleState(seam, next.deck.cycle, bandDealConfig().startingClues) };
       } else {
         const dealt = dealPuzzleIndex(next.deck, manifest.size);
         dealIndex = dealt.index;
@@ -271,7 +279,7 @@ export function LoopScreen({
         next = {
           ...next,
           deck: dealt.deck,
-          current: freshLoopPuzzleState(dealIndex, dealt.deck.cycle),
+          current: freshLoopPuzzleState(dealIndex, dealt.deck.cycle, bandDealConfig().startingClues),
         };
       }
       if (cancelled) return;
@@ -354,6 +362,10 @@ export function LoopScreen({
           prev,
         ),
         load.clue.placeId,
+        {
+          startClues: bandDealConfig().startingClues,
+          maxGuesses: bandDealConfig().guessCap,
+        },
       ),
     };
     if (progressed.status === "playing") {
@@ -418,7 +430,7 @@ export function LoopScreen({
       next = {
         ...next,
         deck: dealt.deck,
-        current: freshLoopPuzzleState(dealt.index, dealt.deck.cycle),
+        current: freshLoopPuzzleState(dealt.index, dealt.deck.cycle, bandDealConfig().startingClues),
       };
       commitStore(next);
       try {
@@ -596,7 +608,7 @@ function LoopGame({
   onLeave: () => void;
 }) {
   const finished = puzzle.status !== "playing";
-  const guessesLeft = LOOP_MAX_GUESSES - puzzle.guesses.length;
+  const guessesLeft = bandDealConfig().guessCap - puzzle.guesses.length;
 
   // Storyteller v1 (hook only): voice on the tier-4 "The Hook" clue reveal,
   // auto once per puzzle on the T1 gesture model. No persistent figure —
@@ -684,7 +696,7 @@ function LoopGame({
     <div className="mt-8 flex flex-col gap-6">
       <section aria-label="Detective's map" className="flex flex-col gap-3">
         <p className="text-sm text-muted" role="status">
-          Guess {puzzle.guesses.length + 1} of {LOOP_MAX_GUESSES}
+          Guess {puzzle.guesses.length + 1} of {bandDealConfig().guessCap}
           {guessesLeft <= 2 && !finished ? ` — ${guessesLeft} left` : ""}
         </p>
         <LoopMap
@@ -1123,7 +1135,7 @@ function LoopReveal({
           {won ? (
             <>
               <p className="mt-2 text-sm text-muted">
-                Solved in {puzzle.guesses.length} of {LOOP_MAX_GUESSES} guesses.
+                Solved in {puzzle.guesses.length} of {bandDealConfig().guessCap} guesses.
               </p>
               <p className="mt-1 text-sm font-medium text-fg">🔥 Streak: {streak}</p>
             </>
