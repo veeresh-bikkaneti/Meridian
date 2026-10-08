@@ -1081,3 +1081,19 @@
     transform: translate(-50%, 0) scale(1) !important;
   }
 }
+
+/* Comet plush tap feedback — a toy squish, never a donation trigger.
+   The <g> stopPropagation()s so taps can't reach the walker's Ko-fi gate. */
+.grandpa-comet-plush {
+  cursor: default;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.grandpa-comet-plush:active {
+  transform: scale(1.18);
+}
+@media (prefers-reduced-motion: reduce) {
+  .grandpa-comet-plush:active {
+    transform: none;
+  }
+}

@@ -18,7 +18,8 @@ import {
 //    static bubble.
 // 4. Dismissal: greeting end + 3s (6s for text-only); tap dismisses
 //    instantly; leaving the home page unmounts (and silences) the greeting.
-// 5. Frequency: once per local day via meridian.cometGreeting.lastDate.
+// 5. Frequency: every home-page visit (the once-per-day gate was retired
+//    2026-10-06; meridian.cometGreeting.lastDate is no longer read/written).
 // 6. Reduced motion: full text instantly, ≤150ms opacity fade on the bubble,
 //    no bounce/wiggle; audio timing unchanged.
 const SYNC_WINDOW_MS = 3000;
@@ -154,7 +155,14 @@ export function CometGreeting({
   useEffect(() => {
     // Suppressed while the tutorial invite is on screen — the effect
     // re-runs when suppressAuto flips false and starts the greeting then.
-    if (suppressAuto) return;
+    if (suppressAuto) {
+      // Reset: a dismissal that fired while suppressed (e.g. the tour
+      // auto-start dismissing a greeting that never began) must not poison
+      // the greeting that starts when suppression lifts.
+      dismissedRef.current = false;
+      gestureDoneRef.current = false;
+      return;
+    }
     // Veeresh 2026-10-06: greet on every home page visit (not once per day).
     // Muting is via the global sound toggle — isSoundEnabled() gates audio below.
     const index = greetingIndexFor();

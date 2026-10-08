@@ -521,6 +521,10 @@
   margin: 0;
   flex: 1 1 auto;
   min-width: 0;
+  /* Never stack "MERIDIAN" — at 390px the resting title is within pixels
+     of wrapping once the emblem takes its share. */
+  white-space: nowrap;
+  font-size: clamp(2.75rem, 13vw, 5rem);
 }
 
 .atlas-tagline {

@@ -23,14 +23,6 @@ test.beforeEach(async ({ context }) => {
 
 const APP = "http://127.0.0.1:4123/Meridian/";
 
-function yesterdayKey(): string {
-  const d = new Date(Date.now() - 86_400_000);
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${y}-${m}-${day}`;
-}
-
 function todayKey(): string {
   const d = new Date();
   const y = d.getFullYear();
@@ -40,14 +32,6 @@ function todayKey(): string {
 }
 
 async function loadHome(page: Page): Promise<string[]> {
-  await page.context().addInitScript((key: string) => {
-    try {
-      if (!localStorage.getItem("meridian.cometGreeting.lastDate"))
-        localStorage.setItem("meridian.cometGreeting.lastDate", key);
-    } catch {
-      /* private mode — ignore */
-    }
-  }, yesterdayKey());
   // Grandpa's Tasting Tour dismisses the transient greeting when the walk
   // starts — seed a return visit so the tour doesn't run and the greeting
   // stays for its full lifetime in these tests.

@@ -36,9 +36,6 @@ export function greetingIndexFor(date: Date = new Date()): number {
   return ((dayOfYear % COMET_GREETING_LINES.length) + COMET_GREETING_LINES.length) % COMET_GREETING_LINES.length;
 }
 
-/** localStorage key: last local YYYY-MM-DD the greeting was shown. */
-export const COMET_GREETING_LAST_DATE_KEY = "meridian.cometGreeting.lastDate";
-
 /** Local YYYY-MM-DD for a date (no UTC shifting). */
 export function localDateKey(date: Date = new Date()): string {
   const y = date.getFullYear();

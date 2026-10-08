@@ -26,15 +26,6 @@ test.beforeEach(async ({ context }) => {
 
 const APP = "http://127.0.0.1:4123/Meridian/";
 
-function localKey(d: Date): string {
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${y}-${m}-${day}`;
-}
-const yesterdayKey = () => localKey(new Date(Date.now() - 86_400_000));
-const todayKey = () => localKey(new Date());
-
 function expectedIndex(): number {
   const now = new Date();
   const jan1 = new Date(now.getFullYear(), 0, 1);
@@ -43,15 +34,12 @@ function expectedIndex(): number {
 
 async function loadHome(
   page: Page,
-  opts: { lastDate?: string; sound?: "on" | "off" } = {},
+  opts: { sound?: "on" | "off" } = {},
 ): Promise<string[]> {
   await page.context().addInitScript(
-    ({ lastDate, sound }: { lastDate?: string; sound?: string }) => {
+    ({ sound }: { sound?: string }) => {
       try {
-        // Set-if-absent: a reload must see the values the app itself wrote,
-        // otherwise the once-per-day gate can't be tested across reloads.
-        if (lastDate && !localStorage.getItem("meridian.cometGreeting.lastDate"))
-          localStorage.setItem("meridian.cometGreeting.lastDate", lastDate);
+        // Set-if-absent: a reload must see the values the app itself wrote.
         if (sound && !localStorage.getItem("meridian.sound"))
           localStorage.setItem("meridian.sound", sound);
       } catch {
@@ -141,7 +129,7 @@ function expectCleanConsole(errors: string[]): void {
 test("Comet hosts from the banner: in-flow, right of the h1, desktop size", async ({
   page,
 }) => {
-  const errors = await loadHome(page, { lastDate: yesterdayKey() });
+  const errors = await loadHome(page);
   const mascot = page.getByTestId("comet-mascot");
   const wrap = page.getByTestId("comet-wrap");
   const banner = page.locator(".atlas-banner-row");
@@ -176,7 +164,7 @@ test("Comet hosts from the banner: in-flow, right of the h1, desktop size", asyn
 test("greeting bubble opens below Comet and covers no banner chrome", async ({
   page,
 }) => {
-  const errors = await loadHome(page, { lastDate: yesterdayKey() });
+  const errors = await loadHome(page);
   await dismissInvite(page);
   const bubble = page.getByTestId("comet-greeting");
   await expect(bubble).toBeVisible();
@@ -202,7 +190,7 @@ test("greeting bubble opens below Comet and covers no banner chrome", async ({
 test("dampened gaze still tracks the pointer with smaller travel", async ({
   page,
 }) => {
-  const errors = await loadHome(page, { lastDate: yesterdayKey() });
+  const errors = await loadHome(page);
   const mascot = page.getByTestId("comet-mascot");
   await expect(mascot).toHaveAttribute("data-tracking", "on");
   const head = page.locator(".comet-head");
@@ -246,7 +234,7 @@ test("dampened gaze still tracks the pointer with smaller travel", async ({
 });
 
 test("armillary ring renders as part of the emblem", async ({ page }) => {
-  const errors = await loadHome(page, { lastDate: yesterdayKey() });
+  const errors = await loadHome(page);
   const ring = page.locator(".comet-armillary");
   await expect(ring).toHaveCount(1);
   const box = await ring.boundingBox();
@@ -257,7 +245,7 @@ test("armillary ring renders as part of the emblem", async ({ page }) => {
 });
 
 test("backplate is hidden in light theme", async ({ page }) => {
-  const errors = await loadHome(page, { lastDate: yesterdayKey() });
+  const errors = await loadHome(page);
   const plate = page.locator(".comet-backplate");
   await expect(plate).toHaveCount(1);
   expect(await plate.evaluate((el) => getComputedStyle(el).display)).toBe("none");
@@ -268,7 +256,7 @@ test.describe("dark theme", () => {
   test.use({ colorScheme: "dark" });
 
   test("backplate renders in dark theme for contrast", async ({ page }) => {
-    const errors = await loadHome(page, { lastDate: yesterdayKey() });
+    const errors = await loadHome(page);
     const plate = page.locator(".comet-backplate");
     await expect(plate).toHaveCount(1);
     expect(await plate.evaluate((el) => getComputedStyle(el).display)).not.toBe("none");
@@ -286,7 +274,7 @@ test.describe("dark theme", () => {
 test("auto-greeting stays quiet while the tutorial invite is up", async ({
   page,
 }) => {
-  const errors = await loadHome(page, { lastDate: yesterdayKey() });
+  const errors = await loadHome(page);
   // First run: the invite is visible, and the greeting must NOT auto-show.
   await expect(page.getByTestId("tutorial-invite")).toBeVisible();
   await page.waitForTimeout(1500);
@@ -298,7 +286,7 @@ test("auto-greeting stays quiet while the tutorial invite is up", async ({
 });
 
 test("boop fires the squash reaction and resets", async ({ page }) => {
-  const errors = await loadHome(page, { lastDate: yesterdayKey() });
+  const errors = await loadHome(page);
   const mascot = page.getByTestId("comet-mascot");
   await mascot.click();
   await expect(mascot).toHaveAttribute("data-state", "booped");
@@ -307,7 +295,7 @@ test("boop fires the squash reaction and resets", async ({ page }) => {
 });
 
 test("four quick boops trigger the dizzy easter egg", async ({ page }) => {
-  const errors = await loadHome(page, { lastDate: yesterdayKey() });
+  const errors = await loadHome(page);
   const mascot = page.getByTestId("comet-mascot");
   for (let i = 0; i < 4; i++) {
     await mascot.click({ delay: 60 });
@@ -319,7 +307,7 @@ test("four quick boops trigger the dizzy easter egg", async ({ page }) => {
 });
 
 test("greeting shows on every home page visit", async ({ page }) => {
-  const errors = await loadHome(page, { lastDate: yesterdayKey() });
+  const errors = await loadHome(page);
   await dismissInvite(page);
   const bubble = page.getByTestId("comet-greeting");
   await expect(bubble).toBeVisible();
@@ -337,7 +325,7 @@ test("greeting shows on every home page visit", async ({ page }) => {
 });
 
 test("autoplay gate: audio waits for the first gesture, then plays in sync", async ({ page }) => {
-  const errors = await loadHome(page, { lastDate: yesterdayKey(), sound: "on" });
+  const errors = await loadHome(page, { sound: "on" });
   await dismissInvite(page);
   const bubble = page.getByTestId("comet-greeting");
   await expect(bubble).toBeVisible();
@@ -357,7 +345,7 @@ test("autoplay gate: audio waits for the first gesture, then plays in sync", asy
 test("sound off: text greeting with speaker opt-in that leaves the toggle alone", async ({
   page,
 }) => {
-  const errors = await loadHome(page, { lastDate: yesterdayKey(), sound: "off" });
+  const errors = await loadHome(page, { sound: "off" });
   await dismissInvite(page);
   const bubble = page.getByTestId("comet-greeting");
   await expect(bubble).toBeVisible();
@@ -375,7 +363,7 @@ test("sound off: text greeting with speaker opt-in that leaves the toggle alone"
 });
 
 test("tap dismisses the greeting instantly", async ({ page }) => {
-  const errors = await loadHome(page, { lastDate: yesterdayKey(), sound: "off" });
+  const errors = await loadHome(page, { sound: "off" });
   await dismissInvite(page);
   const bubble = page.getByTestId("comet-greeting");
   await expect(bubble).toBeVisible();
@@ -393,7 +381,7 @@ test("picking an edition makes Comet look at the card and react", async ({ page 
   // button, because a real click navigates away from the home page (Comet
   // unmounts) before the reaction can be observed. The click→event wiring
   // is covered by the withCardTap unit path.
-  const errors = await loadHome(page, { lastDate: yesterdayKey(), sound: "off" });
+  const errors = await loadHome(page, { sound: "off" });
   await dismissInvite(page);
   // Dismiss the greeting so it doesn't overlap the reaction bubble.
   const bubble = page.getByTestId("comet-greeting");

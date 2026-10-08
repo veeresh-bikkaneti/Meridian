@@ -7,8 +7,9 @@ import "./comet-mascot.css";
 const INK = "#0c181d";
 const BRASS = "#e8b64c";
 const PAPER = "#f0e7d2";
-const BODY = "#31456f";
-const BODY_LIGHT = "#4a5f92";
+// Exported for the grandpa bench plush — one palette source of truth.
+export const BODY = "#31456f";
+export const BODY_LIGHT = "#4a5f92";
 
 // 8-sector cursor math (mascot spec §5): 90px dead zone around the mascot,
 // 0.12 rad of hysteresis slack around each sector boundary so the head
@@ -267,9 +268,10 @@ export function CometMascot({
     const onEditionSelect = (e: Event) => {
       const detail = (e as CustomEvent<{ x: number; y: number; edition: string }>).detail;
       if (!detail) return;
-      // Look at the tapped card via the same sector math as gaze tracking.
+      // Look at the tapped card via the same sector math as gaze tracking —
+      // skipped under prefers-reduced-motion (tracking is off there).
       const el = btnRef.current;
-      if (el) {
+      if (tracking && el) {
         const r = el.getBoundingClientRect();
         const dx = detail.x - (r.left + r.width / 2);
         const dy = detail.y - (r.top + r.height / 2);
@@ -286,7 +288,7 @@ export function CometMascot({
     };
     window.addEventListener("comet:edition-select", onEditionSelect);
     return () => window.removeEventListener("comet:edition-select", onEditionSelect);
-  }, [handleBoop, later]);
+  }, [handleBoop, later, tracking]);
 
   const [hx, hy] = sector === -1 ? [0, 0] : HEAD_OFFSETS[sector];
   // Dampened at the banner: smaller travel, calmer host.

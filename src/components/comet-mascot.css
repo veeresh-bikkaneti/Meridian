@@ -83,6 +83,12 @@
     width: 64px;
     height: 64px;
   }
+  /* Tighter ring on small screens: the 10px overhang ate the 12px row gap. */
+  .comet-armillary {
+    inset: -6px;
+    width: calc(100% + 12px);
+    height: calc(100% + 12px);
+  }
 }
 
 @media (max-height: 599.5px) {
@@ -134,7 +140,11 @@
 
 .comet-greeting {
   pointer-events: auto;
-  position: relative;
+  /* Dropdown below the emblem: absolute so the bubble never widens
+     .comet-wrap and crushes the h1, and never shoves page content down. */
+  position: absolute;
+  top: 100%;
+  right: 0;
   margin: 12px 0 0 0;
   max-width: min(252px, calc(100vw - 3rem));
   padding: 10px 12px 10px 14px;
@@ -151,7 +161,6 @@
   animation: comet-bubble-in 220ms ease-out;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(6px);
-  align-self: flex-end;
   z-index: 45; /* above the tagline/difficulty below, below modals (z-50) */
 }
 
@@ -205,12 +214,12 @@
 }
 
 /* Sound-OFF opt-in: hear the greeting without flipping the global toggle.
- * 44px hit area; the icon scales up to stay proportional. Offsets keep the
- * badge centered on its anchor so it overhangs the bubble corner. */
+ * 44px hit area; the icon scales up to stay proportional. Tucked into the
+ * bubble corner so it clears the armillary ring above. */
 .comet-greeting-speaker {
   position: absolute;
-  top: -19px;
-  right: -19px;
+  top: -14px;
+  right: -14px;
   width: 44px;
   height: 44px;
   display: inline-flex;

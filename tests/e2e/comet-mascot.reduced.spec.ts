@@ -22,23 +22,7 @@ test.beforeEach(async ({ context }) => {
 
 const APP = "http://127.0.0.1:4123/Meridian/";
 
-function yesterdayKey(): string {
-  const d = new Date(Date.now() - 86_400_000);
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${y}-${m}-${day}`;
-}
-
 async function loadHome(page: Page): Promise<string[]> {
-  await page.context().addInitScript((key: string) => {
-    try {
-      if (!localStorage.getItem("meridian.cometGreeting.lastDate"))
-        localStorage.setItem("meridian.cometGreeting.lastDate", key);
-    } catch {
-      /* private mode — ignore */
-    }
-  }, yesterdayKey());
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
   page.on("console", (m) => {
