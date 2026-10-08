@@ -46,7 +46,7 @@ import { fileURLToPath } from "node:url";
 import { splitSentences } from "./enrich-wikipedia.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const REPO = "/home/hatch/workspace/meridian-worktrees/gap-view-reveal";
+const REPO = dirname(HERE);
 const CACHE_PATH = join(REPO, ".scratch", "wikipedia-enrichment", "crawl-cache.jsonl");
 const FACTS_DIR = join(REPO, ".scratch", "facts");
 const FACTS_PATH = join(FACTS_DIR, "wiki-text-facts.jsonl");

@@ -353,7 +353,9 @@ export function factForPlace(place, inputs) {
   return { fact: null, rung: "none", trace };
 }
 
-/** Card attribution for a merged fact (mirrored in generated-places.ts). */
+/** Card attribution for a merged fact (script-side; the runtime has its own
+ * tolerant version in generated-places.ts with {sourceLabel, sourceHref}
+ * shape — keep the kind coverage in sync). */
 export function factAttribution(fact, placeWiki) {
   switch (fact.kind) {
     case "wikidata":
