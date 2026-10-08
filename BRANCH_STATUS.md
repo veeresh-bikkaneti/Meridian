@@ -3,6 +3,7 @@
 Sprint entry-gate fixes (Reality Checker audit): SW offline gap, >500 kB
 chunks, dead audio code-split, missing .catch on AI hooks. Infra/hygiene
 only — no game mechanics or content changes. Branch off main@ae524e3.
+PR: https://github.com/veeresh-bikkaneti/Meridian/pull/107 (OPEN, not merged).
 
 ## Done
 
@@ -28,7 +29,7 @@ only — no game mechanics or content changes. Branch off main@ae524e3.
   those files are default `openSession` callbacks awaited inside try/catch
   ("Never throws") — no change needed.
 
-### P1-2 — chunks >500 kB: STOPPED per scope (no code change)
+### P1-2 — chunks >500 kB: resolved by design (no code change)
 - Baseline: initial entry chunk `index` = 435.83 kB (under the limit — no
   initial-load regression exists). All five >500 kB chunks are ALREADY lazy
   at the finest content-preserving granularity: per-region GeoNames place
@@ -41,6 +42,8 @@ only — no game mechanics or content changes. Branch off main@ae524e3.
   (content/mechanics change — out of scope) or raising
   `chunkSizeWarningLimit` (suppression, not a code-split). Per the STOP
   clause: documented, not improvised. The warning persists by design.
+- Sign-off: senior architect confirmed the by-design rationale (merge
+  gauntlet, 2026-10-08).
 
 ### P1-1 — SW offline gap + offline-uncached loop notice (commit 1a28ee6)
 - `public/sw.js`:
@@ -51,21 +54,21 @@ only — no game mechanics or content changes. Branch off main@ae524e3.
     install on older devices). Only `loop/manifest.json` (60 bytes) is
     precached at install; clues + `loop/names.json` populate on first
     online use.
-  - Precache decision (Designer 2c): precache manifest.json YES;
-    names.json NO — it is 11.5 MB, not the "small file" the design assumed.
-    Install-time cost on old devices ruled it out; runtime cache-first
-    covers it after first guess use. Edge documented: a mystery opened
-    online but never guessed at won't have names.json offline (guess input
-    fails closed; the notice only covers mystery *opening*).
-  - Designer 2e verified EMPIRICALLY (Playwright, throwaway spec, 2/2
-    green): `fetchJson`'s `cache: "no-store"` does NOT bypass the SW —
-    the fetch event fires, `caches.match()` hits, the network response is
-    cached. A mystery opened online replays fully offline.
+  - Precache decision: precache manifest.json YES; names.json NO — it is
+    11.5 MB, not the "small file" the design assumed. Install-time cost on
+    old devices ruled it out; runtime cache-first covers it after first
+    guess use. Edge documented: a mystery opened online but never guessed
+    at won't have names.json offline (guess input fails closed; the notice
+    only covers mystery *opening*).
+  - Verified EMPIRICALLY (Playwright, throwaway spec, 2/2 green):
+    `fetchJson`'s `cache: "no-store"` does NOT bypass the SW — the fetch
+    event fires, `caches.match()` hits, the network response is cached. A
+    mystery opened online replays fully offline.
 - `src/hooks/use-online-status.ts` (+ test, wired into `npm test`):
   shared `navigator.onLine` + online/offline listeners, SSR-safe fail-open.
-  Designer 2a satisfied at the point of use (LoopScreen) with a ref mirror
-  so the catch-time trigger reads connectivity at the moment the fetch
-  failed, never a stale render-closure value.
+  Satisfied at the point of use (LoopScreen) with a ref mirror so the
+  catch-time trigger reads connectivity at the moment the fetch failed,
+  never a stale render-closure value.
 - `src/game/loop/LoopScreen.tsx`:
   - `LoadState` error variant gains `offline: boolean`; `toErrorState(err,
     offline)` threads it through mount-deal, Next-mystery-deal, and both
@@ -77,44 +80,57 @@ only — no game mechanics or content changes. Branch off main@ae524e3.
     `This mystery can't open right now 🔍` /
     `The clues need the internet the first time. Once a mystery opens, you
     can play it offline too.` / `Try again` (min-h-[48px]).
-  - Designer 2b: NO separate cache-presence probe — the SW cache-first
-    fetch IS the probe. Cached content resolves and never reaches the error
-    path, so the notice only appears when the mystery is truly unplayable.
-  - Designer 2d: verified — edition datasets (manifest + clue + names.json
-    via runtime cache) are genuinely playable offline before the copy
-    promises it. Designer rec 3 ("play a cached prior case") NOT built —
-    breaks the exactly-once deck.
-- `tests/e2e/offline-content.spec.ts` (sibling-authored; I only aligned the
-  button assertion `Retry` → `Try again` per UX copy authority): needs its
-  project entry in `playwright.config.ts` (sibling flagged to sprint lead).
+  - NO separate cache-presence probe — the SW cache-first fetch IS the
+    probe. Cached content resolves and never reaches the error path, so
+    the notice only appears when the mystery is truly unplayable.
+  - Verified — edition datasets (manifest + clue + names.json via runtime
+    cache) are genuinely playable offline before the copy promises it.
+    "Play a cached prior case" NOT built — breaks the exactly-once deck.
 
-## E2E environment quirk (flagged to sprint lead)
-- Chromium 152 resets `navigator.onLine` to `true` on any offline *document
-  navigation* (verified: setOffline→false on same doc; true after goto/
-  reload; the `offline` event never fires). The notice trigger is correct
-  for real browsers; E2E must exercise it WITHOUT offline document
-  navigation (go offline in the live document, then SPA-transition into
-  the loop screen). The sibling's `offline-content.spec.ts` test 2
-  currently does an offline `goto` — it needs the same adjustment or it
-  can never see the notice in this environment.
+### tests/e2e/offline-content.spec.ts — written in THIS branch (1a28ee6),
+### hardened (a3428ff), registered (063c6d8)
+- Correction: earlier drafts of this file wrongly called the spec
+  "sibling-authored" — it was written, hardened, and wired up entirely in
+  this branch. No sibling or outside team touched it.
+- a3428ff — spec hardening: unroute the disk-fulfill catch-all +
+  `setOffline(true)` so the network is genuinely dead (every offline byte
+  comes from SW caches — the production offline condition); second online
+  visit warms the runtime chunk cache (route interception bypasses the SW);
+  NO document navigation after going offline (Playwright's emulation flips
+  `navigator.onLine` back to true on SW-served navigations — the spec
+  drives the SPA in-page instead); exact UX-finalized headline + subcopy +
+  Try-again assertions; error gate strict except pre-existing flaky React
+  #418 (repo convention) and Chromium/MapLibre's own offline logging.
+- 063c6d8 — registered the `offline-content` project in
+  `playwright.config.ts` (one-project-per-spec pattern, 4-line entry).
+  Verified: 5/5 pass via `--project offline-content`.
+- This supersedes and closes the earlier "offline-navigation fix" and
+  "project entry" pending items, and the Chromium 152 `navigator.onLine`
+  quirk note below is now a resolved environment footnote.
 
-## Verification (2026-10-08, this branch)
+## E2E environment footnote (resolved)
+- Chromium 152 resets `navigator.onLine` to `true` on offline document
+  navigations (verified: setOffline→false on same doc; true after
+  goto/reload; the `offline` event never fires). The notice trigger is
+  correct for real browsers; the spec exercises it without offline
+  document navigation (offline in the live document, then SPA-transition
+  into the loop screen). Resolved in a3428ff.
+
+## Verification (2026-10-08, this branch @ 063c6d8)
 - `npx tsc --noEmit` clean
 - `npm test` green (512 scripts tests: 505 pass / 0 fail; 852 src tests: 852 pass)
 - `node scripts/lint-cards.mjs` GATE PASSED
 - `npm run build:pages` green; `postbuild:pages` fingerprinted sw.js
 - Zero `[INEFFECTIVE_DYNAMIC_IMPORT]` warnings (was 2 in baseline)
 - Initial bundle: index 435.80 kB (baseline 435.83 kB) — no regression
-- Throwaway Playwright verification (deleted after): 2/2 green —
-  cached mystery replays offline; uncached shows exact UX notice; zero
-  app errors (map tiles/worker offline noise filtered as pre-existing)
+- `tests/e2e/offline-content.spec.ts`: 10/10 green (1280px + 390px);
+  5/5 green via `--project offline-content`; exact UX headline asserted
+  byte-identical; offline+cached plays with zero notices; zero
+  branch-introduced console errors
 
 ## Pending
-- Sprint lead: P1-2 STOP decision needs sign-off (warning persists by design).
-- Sibling's `offline-content.spec.ts`: needs the offline-navigation fix
-  above + its `playwright.config.ts` project entry before it can go green.
-- Pre-existing (not mine, not fixed): nothing in src references the copied
-  `maplibre-gl-worker.mjs`, so MapLibre's default worker URL fails even
-  online ("Worker failed to load" console error).
-- Push to origin (blocked on PAT handoff — this VM has no GitHub login).
-- Owner review + PR as usual. Never merge — owner merges.
+- Pre-existing on main, not fixed here (documented, non-blocking): nothing
+  in src references the copied `maplibre-gl-worker.mjs`, so MapLibre's
+  default worker URL fails even online ("Worker failed to load" console
+  error). Confirmed pre-existing by building main in a worktree.
+- Owner review of PR #107. Never merge — owner merges.
