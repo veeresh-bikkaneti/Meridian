@@ -3,6 +3,11 @@ import "./celebration-overlay.css";
 import { Character, type CharacterName } from "./characters";
 import { ConfettiCanvas } from "./confetti";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
+// Static import: play-guards is tiny and already in the main bundle (game-app,
+// LoopMap, satellite-map all import it statically), so a dynamic import here
+// cannot split anything — it only produced an [INEFFECTIVE_DYNAMIC_IMPORT]
+// warning and a useless 0.3 kB chunk.
+import { claimGrand, soundAudible } from "../game/audio/play-guards";
 import {
   CELEBRATION_CHROME,
   CELEBRATION_SFX,
@@ -44,9 +49,10 @@ export type CelebrationOverlayProps = {
  * pass through; only the card is pointer-events-auto. Dismissal is always
  * user-driven (visible Close button / Escape) — there is no auto-timer.
  *
- * Sound: the mount effect plays the variant's mapped SFX, resolved lazily
- * from sfx.ts so this module type-checks before the audio worker's recipes
- * land on this branch (a missing export is a silent no-op, never a crash).
+ * Sound: the mount effect plays the variant's mapped SFX. The anti-annoyance
+ * guards come from a static play-guards import (already in the main bundle);
+ * the sfx recipes stay lazily resolved so a missing export is a silent
+ * no-op, never a crash.
  * mystery-solved plays nothing — playWin() already fired for the solve.
  * Sounds are unaffected by reduced motion (spec §4.6).
  */
@@ -84,14 +90,10 @@ export function CelebrationOverlay({
     let cancelled = false;
     void (async () => {
       try {
-        const guards = (await import("../game/audio/play-guards")) as unknown as {
-          soundAudible(): boolean;
-          claimGrand(): boolean;
-        };
         if (cancelled) return;
         // Rule 6: no sound while the tab is hidden — the visual is unseen,
         // so sound would become the sole signal.
-        if (!guards.soundAudible()) return;
+        if (!soundAudible()) return;
         const sfx = (await import("../game/audio/sfx")) as unknown as Record<
           string,
           (() => void) | undefined
@@ -100,7 +102,7 @@ export function CelebrationOverlay({
         // Rule 1: a recent grand-tier celebration cools the fanfare down to
         // applause instead of stacking grandeur.
         const recipe =
-          name === "playGrandFanfare" && !guards.claimGrand()
+          name === "playGrandFanfare" && !claimGrand()
             ? "playMediumApplause"
             : name;
         sfx[recipe]?.();
