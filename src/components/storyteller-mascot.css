@@ -1,0 +1,233 @@
+/* Storyteller mascot — the old Greek storyteller. Transform/opacity-only
+ * animation. Pointer-events gated exactly like CometMascot: the wrapper
+ * never eats taps, only the real buttons do.
+ *
+ * Interim art: the source JPEG in a circular mask (no chroma-key — it eats
+ * the clay highlights). The component takes the asset URL via prop so the
+ * F1 transparent cutout drops in with zero code change.
+ */
+
+.storyteller {
+  pointer-events: none;
+}
+
+/* ---- Figure -------------------------------------------------------- */
+
+.storyteller-figure {
+  pointer-events: auto;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  border-radius: 50%;
+  overflow: hidden;
+  /* 72–96px @390px: clamp against the viewport so the dock never overflows. */
+  width: clamp(72px, 22vw, 96px);
+  height: clamp(72px, 22vw, 96px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.storyteller-figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.storyteller-figure:focus-visible {
+  outline: 3px solid var(--atlas-brass);
+  outline-offset: 4px;
+}
+
+@media (min-width: 1024px) {
+  .storyteller-figure {
+    /* 96–144px @1280px. */
+    width: clamp(96px, 11vw, 144px);
+    height: clamp(96px, 11vw, 144px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .storyteller-figure {
+    /* Gentle idle float, transform-only. Never under reduced motion. */
+    animation: storyteller-float 3s ease-in-out infinite;
+  }
+}
+
+@keyframes storyteller-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* ---- Dock variants --------------------------------------------------- */
+
+/* Primary host: docked to the ResultCard's top-left, peeking ~40% above the
+ * card edge. Lives in the card's stacking context (inherits the card's z-20). */
+.storyteller-dock {
+  position: absolute;
+  top: 0;
+  left: 12px;
+  z-index: 1;
+  transform: translateY(-40%);
+}
+
+/* Secondary host: inside the run-summary modal, above the title. CTAs stay
+ * clear below. ≤96px @390px · ≤128px @1280px. */
+.storyteller-modal-host {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.storyteller-modal-host .storyteller-figure {
+  width: clamp(72px, 22vw, 96px);
+  height: clamp(72px, 22vw, 96px);
+}
+
+@media (min-width: 1024px) {
+  .storyteller-modal-host .storyteller-figure {
+    width: 128px;
+    height: 128px;
+  }
+}
+
+/* ---- Caption --------------------------------------------------------- */
+
+.storyteller-caption {
+  pointer-events: auto;
+  position: relative;
+  max-width: 260px;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  /* Card tokens — same contrast bar as the rest of the card. */
+  background: var(--atlas-card, rgba(10, 12, 16, 0.92));
+  color: var(--atlas-ink, #f5f1e6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.storyteller-caption-text {
+  margin: 0;
+}
+
+.storyteller-word {
+  opacity: 0.45;
+  transition: opacity 120ms linear;
+}
+
+.storyteller-word.shown {
+  opacity: 1;
+}
+
+.storyteller-fallback {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.8125rem;
+  opacity: 0.75;
+  font-style: italic;
+}
+
+/* 44px control targets — same bar as .comet-greeting-speaker. */
+.storyteller-speaker,
+.storyteller-replay {
+  pointer-events: auto;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(20, 24, 32, 0.95);
+  color: var(--atlas-brass, #e8b64c);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.storyteller-speaker {
+  top: -22px;
+  right: -14px;
+}
+
+.storyteller-replay {
+  top: -22px;
+  right: 38px;
+}
+
+.storyteller-speaker:focus-visible,
+.storyteller-replay:focus-visible {
+  outline: 3px solid var(--atlas-brass);
+  outline-offset: 2px;
+}
+
+.storyteller-speaker svg,
+.storyteller-replay svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Inline variant (GeoDetective hook): caption flows in the clue column, no
+ * absolute figure — keeps the loop screen's one-host-per-screen rule. */
+.storyteller-inline {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.storyteller-inline .storyteller-caption {
+  margin-top: 0;
+  max-width: 100%;
+}
+
+/* ---- Motion ---------------------------------------------------------- */
+
+.storyteller-enter {
+  animation: storyteller-in 220ms ease-out;
+}
+
+.storyteller-leave {
+  animation: storyteller-out 150ms ease-in forwards;
+}
+
+@keyframes storyteller-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes storyteller-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Reduced motion: ≤150ms opacity fade only — no float, no rise, no blink. */
+@media (prefers-reduced-motion: reduce) {
+  .storyteller-enter {
+    animation: storyteller-out 150ms linear reverse;
+  }
+  .storyteller-figure {
+    animation: none;
+  }
+}

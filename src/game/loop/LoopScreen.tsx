@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, Suspense, lazy, useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useOnlineStatus } from "@/hooks/use-online-status";
+import { STORYTELLER_LINES } from "@/components/storyteller-lines";
 import { formatLength, loopGradeBand, unitForLoopTarget } from "@/game/units";
 import { nameTier } from "@/game/place-name";
 import { PlaceNameText } from "@/components/place-name";
@@ -62,6 +63,15 @@ import {
 const STALE_REFRESH_KEY = "meridian.staleRefresh";
 
 const CLUE_TIERS = ["Geography", "Climate", "History", "The Hook", "Giveaway"] as const;
+
+/** Tier-4 "The Hook" index in CLUE_TIERS / the positional clues array. */
+const HOOK_TIER_INDEX = 3;
+
+// The Storyteller mascot stays out of the initial bundle (lazy chunk).
+const StorytellerNarration = lazy(() => import("@/components/storyteller"));
+
+/** Puzzles whose hook narration already played this session (auto once per puzzle). */
+const hookNarratedPuzzles = new Set<string>();
 
 function assetBase(): string {
   const base = import.meta.env.BASE_URL ?? "/";
@@ -589,6 +599,13 @@ function LoopGame({
   const finished = puzzle.status !== "playing";
   const guessesLeft = LOOP_MAX_GUESSES - puzzle.guesses.length;
 
+  // Storyteller v1 (hook only): voice on the tier-4 "The Hook" clue reveal,
+  // auto once per puzzle on the T1 gesture model. No persistent figure —
+  // caption + speaker button, inline with the clue cards.
+  const puzzleKey = `${puzzle.cycle}:${puzzle.index}`;
+  const hookRevealed = finished || puzzle.cluesRevealed > HOOK_TIER_INDEX;
+  const hookVisible = hookRevealed && !hookNarratedPuzzles.has(puzzleKey);
+
   // Length unit for every distance on this screen: a USA mystery reads
   // miles, the rest of the world reads kilometers — derived from the
   // target's territory, never device locale (Veeresh's ratified decision 4).
@@ -722,16 +739,29 @@ function LoopGame({
 
       <section aria-label="Clues" className="flex flex-col gap-3">
         {clue.clues.map((text, i) => (
-          <ClueCard
-            key={i}
-            tier={CLUE_TIERS[i]!}
-            index={i}
-            text={text}
-            // When the mystery is over there is no "next guess" — reveal every
-            // clue so the locked cards never promise one.
-            revealed={finished || i < puzzle.cluesRevealed}
-            reduced={reduced}
-          />
+          <Fragment key={i}>
+            <ClueCard
+              tier={CLUE_TIERS[i]!}
+              index={i}
+              text={text}
+              // When the mystery is over there is no "next guess" — reveal every
+              // clue so the locked cards never promise one.
+              revealed={finished || i < puzzle.cluesRevealed}
+              reduced={reduced}
+            />
+            {i === HOOK_TIER_INDEX && hookVisible ? (
+              <Suspense fallback={null}>
+                <StorytellerNarration
+                  screen="geodetective"
+                  trigger="first_gesture"
+                  line={STORYTELLER_LINES.hook}
+                  showFigure={false}
+                  variant="inline"
+                  onDismiss={() => hookNarratedPuzzles.add(puzzleKey)}
+                />
+              </Suspense>
+            ) : null}
+          </Fragment>
         ))}
       </section>
 

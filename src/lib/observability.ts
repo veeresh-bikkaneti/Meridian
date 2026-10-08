@@ -50,7 +50,8 @@ export type MilestoneName =
   | "data_loaded"
   | "map_init_start"
   | "map_ready"
-  | "game_loaded";
+  | "game_loaded"
+  | "storyteller_ready";
 
 export type ObservabilityEventType =
   | "suspected_crash"
@@ -59,7 +60,13 @@ export type ObservabilityEventType =
   | "unhandled_rejection"
   | "map_error"
   | "tile_failed"
-  | "webgl_context_lost";
+  | "webgl_context_lost"
+  | "storyteller_shown"
+  | "narration_started"
+  | "narration_completed"
+  | "narration_replayed"
+  | "narration_failed"
+  | "narration_dismissed";
 
 export interface DeviceInfo {
   ua?: string;

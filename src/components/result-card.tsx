@@ -14,12 +14,17 @@ import type { Starter } from "@/game/starters";
 import { Button } from "@/components/ui/button";
 import type { Drop } from "./game-app";
 import { X } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useMemo, useRef, useState } from "react";
 import { splitLede } from "./story-lede";
+import { STORYTELLER_LINES, claimFirstRevealNarration } from "./storyteller-lines";
 import { useAiSportsTeams, withSportsLine } from "@/game/sports-ai";
 import { useAiStory, AI_STORY_BADGE } from "@/game/story-ai";
 import { revealPinCompare } from "@/game/reverse-geocode";
 import { ScrollCue, useMoreBelow } from "@/components/scroll-cue";
+
+// The Storyteller mascot (figure + narration) stays out of the initial
+// bundle — a separate lazy chunk, like the satellite map.
+const StorytellerNarration = lazy(() => import("./storyteller"));
 
 // Frosted chrome tokens shared by the floating aim/reveal chrome.
 const CHROME =
@@ -215,6 +220,11 @@ export function ResultCard({
     aiSports && aiSports.length > 0 ? withSportsLine(baseStory, aiSports) : baseStory;
   const [storyLede, storyRest] = splitLede(withSports);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const continueWrapRef = useRef<HTMLDivElement>(null);
+  // Storyteller v1: the session's first story reveal auto-narrates (T1 —
+  // gesture-gated); every later reveal is text + speaker button. Claimed
+  // once per session — a reload is a new session.
+  const storytellerAuto = useMemo(() => claimFirstRevealNarration(), []);
   // Cartographer's Plate PR3 — the "more below" cue for the card body.
   const { ref: bodyRef, moreBelow } = useMoreBelow<HTMLDivElement>();
 
@@ -339,6 +349,20 @@ export function ResultCard({
     <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex justify-center px-2.5 pb-[max(16px,env(safe-area-inset-bottom))]">
       <Rise reduced={reduced}>
         <section aria-label="Result" className="game-chrome result-card pointer-events-auto">
+          {/* Storyteller (primary host): docked top-left, peeking ~40% above
+              the card edge; yields to the tasting tour while it walks. */}
+          {place ? (
+            <Suspense fallback={null}>
+              <StorytellerNarration
+                screen="story"
+                trigger={storytellerAuto ? "first_gesture" : "speaker"}
+                line={STORYTELLER_LINES.reveal}
+                showFigure
+                variant="dock"
+                onDismiss={() => continueWrapRef.current?.querySelector("button")?.focus({ preventScroll: true })}
+              />
+            </Suspense>
+          ) : null}
           {/* ---- Zone 1: pinned header — meta band + verdict, never buried ---- */}
           <div className="result-header">
             <div className="result-topbar">
@@ -565,7 +589,7 @@ export function ResultCard({
           {/* ---- Zone 3: pinned CTA — never buried, never animates in late.
               Solid bg so scrolled text never ghosts behind the button. ---- */}
           {place ? (
-            <div className="result-cta">
+            <div className="result-cta" ref={continueWrapRef}>
               <Button onClick={onContinue} className="min-h-[48px] w-full text-base">
                 Next place →
               </Button>

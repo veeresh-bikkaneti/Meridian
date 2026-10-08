@@ -1,4 +1,9 @@
 import type { JSX } from "react";
+import { Suspense, lazy } from "react";
+import { STORYTELLER_LINES } from "./storyteller-lines";
+
+// The Storyteller mascot stays out of the initial bundle (lazy chunk).
+const StorytellerNarration = lazy(() => import("./storyteller"));
 import { formatDistance } from "@/game/geo";
 import {
   DIFFICULTY_LABELS,
@@ -70,6 +75,17 @@ export function RunSummaryCard(props: {
       aria-label="Game summary"
     >
       <div className="w-full max-w-sm rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.95)] p-6 text-white shadow-2xl">
+        {/* Storyteller (secondary host): docked inside the modal above the
+            title — the closing-chapter beat. One line, text-first + speaker. */}
+        <Suspense fallback={null}>
+          <StorytellerNarration
+            screen="summary"
+            trigger="summary"
+            line={STORYTELLER_LINES.summary}
+            showFigure
+            variant="modal"
+          />
+        </Suspense>
         <p className="text-[11px] tracking-wider text-white/60 uppercase">{regionName}</p>
         <h2 className="mt-1 font-display text-2xl">Game over</h2>
 
