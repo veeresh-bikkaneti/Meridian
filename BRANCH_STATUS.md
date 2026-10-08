@@ -16,9 +16,10 @@ PR: https://github.com/veeresh-bikkaneti/Meridian/pull/103 (OPEN, not merged).
 - comet-greetings.ts: dead exported localDateKey removed
 - grandpa-coffee-run.tsx: static Comet plush on bench
 - grandpa-coffee-run.css: --comet-clearance removed
-- E2E: comet desktop 14/14, mobile 5/5, reduced-motion 4/4, mobile-home-overlap 24/24 (all green, verified 2026-10-08 on this branch)
-- Rebase 2026-10-08: onto origin/main@f07dad3; only BRANCH_STATUS.md conflicted (kept branch entries, noted new base); no code conflicts
-- tsc / unit / build:pages green
+- E2E (verified 2026-10-08 on rebased branch): comet desktop 14/14, mobile 5/5, reduced-motion 4/4, mobile-home-overlap 24/24 (one transient walker-animation flake, green on re-run — pre-existing flake, also seen pre-rebase)
+- Rebase 2026-10-08: onto origin/main@f07dad3; only BRANCH_STATUS.md conflicted (docs-only commits resolved keeping branch entries); no code conflicts
+- Reported desktop 13/14 "emblem overhang" did NOT reproduce: 14/14 across multiple full runs on the correct tip; layout verified sound (greeting + reaction portaled, wrap = 80px emblem only). No CSS change made — no blind fix on green tests.
+- tsc clean / lint-cards GATE PASSED / build:pages green
 
 ## Pending
 - [ ] Owner review + merge of PR #103 (never merge from here — owner merges)
