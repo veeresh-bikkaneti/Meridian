@@ -1,6 +1,5 @@
 import type { JSX } from "react";
 import { Suspense, lazy } from "react";
-import { STORYTELLER_LINES } from "./storyteller-lines";
 
 // The Storyteller mascot stays out of the initial bundle (lazy chunk).
 const StorytellerNarration = lazy(() => import("./storyteller"));
@@ -81,7 +80,7 @@ export function RunSummaryCard(props: {
           <StorytellerNarration
             screen="summary"
             trigger="summary"
-            line={STORYTELLER_LINES.summary}
+            lineKey="summary"
             showFigure
             variant="modal"
           />

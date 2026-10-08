@@ -61,6 +61,44 @@ No home host (deferred to H1, gated on PR #103).
   `node scripts/lint-cards.mjs` GATE PASSED ·
   `npm run build:pages` green (prerender + SW fingerprint ok).
 
+## Fix pass — review gauntlet blockers (2026-10-08)
+
+All three merge blockers fixed, gates re-verified:
+
+1. **False fact in narration (game designer).** The summary line claimed
+   "You found five hidden places today" — runs are endless, so it
+   miscounted. Now count-neutral: "And so our tale comes to an end! What
+   an adventure!" (`storyteller-lines.ts:29`). `summary-01.mp3`
+   regenerated from the exact new text (tts `avocado_v2:TruthTeller`,
+   ffprobe-valid 4.85s/38kB); text pins updated in `storyteller-lines.ts`
+   and `storyteller.test.ts` so caption == audio.
+2. **Initial bundle leak (architect).** `result-card.tsx`, `run-summary.tsx`,
+   `LoopScreen.tsx` statically imported `./storyteller-lines`, pulling
+   ~2.3KB of caption copy into the initial routes chunk. Hosts now pass
+   `lineKey: "reveal" | "hook" | "summary"`; `STORYTELLER_LINES` resolves
+   inside the lazy `storyteller.tsx`. The session-once
+   `claimFirstRevealNarration()` moved to the copy-free
+   `storyteller-claim.ts` (hosts import that, not the lines). Verified:
+   post-fix routes chunk has **0 bytes** of caption copy (pre-fix build
+   had all 3 lines + the stale summary text); the only "storyteller"
+   references left are the lazy chunk's hashed filenames. Also removed
+   unused `DISMISS_AFTER_SPEAKER_MS` and `wasPlaying` (developer nits).
+3. **E2E coverage of interactive paths (developer).** New
+   `tests/e2e/storyteller.spec.ts` + `storyteller` project in
+   `playwright.config.ts` (1440×900). Five tests on the story host
+   (sound-off speaker model): text-first render with the exact caption
+   copy, speaker button starts the mp3 request (toggle untouched), replay
+   re-requests the clip, tap-caption dismisses, aborted mp3 →
+   `narration_failed` → text-only fallback renders. Zero console errors
+   asserted per test. Result: **5/5 pass** (6.1m). Test hardening notes:
+   the SW precaches mp3s cache-first, so audio tests neuter SW
+   registration to keep requests observable; the fallback assertions use
+   one atomic in-page snapshot (the text-only path auto-dismisses at 6s);
+   a 0.2s silent fixture (`tests/e2e/fixtures/storyteller-tiny.mp3`)
+   stands in for the real clips.
+- Gates after fix: `npx tsc --noEmit` clean · `npm test` 856/856 ·
+  `node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green.
+
 ## Pending
 
 - Owner: PR review + merge (NEVER merge from here — open PR only).

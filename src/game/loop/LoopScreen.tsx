@@ -1,7 +1,6 @@
 import { Fragment, Suspense, lazy, useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useOnlineStatus } from "@/hooks/use-online-status";
-import { STORYTELLER_LINES } from "@/components/storyteller-lines";
 import { formatLength, loopGradeBand, unitForLoopTarget } from "@/game/units";
 import { nameTier } from "@/game/place-name";
 import { PlaceNameText } from "@/components/place-name";
@@ -754,7 +753,7 @@ function LoopGame({
                 <StorytellerNarration
                   screen="geodetective"
                   trigger="first_gesture"
-                  line={STORYTELLER_LINES.hook}
+                  lineKey="hook"
                   showFigure={false}
                   variant="inline"
                   onDismiss={() => hookNarratedPuzzles.add(puzzleKey)}

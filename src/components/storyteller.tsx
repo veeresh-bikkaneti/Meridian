@@ -16,10 +16,11 @@ import {
 } from "@/lib/observability";
 import {
   STORYTELLER_AUDIO_FALLBACK_LINE,
+  STORYTELLER_LINES,
   storytellerAudioUrl,
   storytellerFigureUrl,
   wordMsFromDuration,
-  type StorytellerLine,
+  type StorytellerLineKey,
 } from "./storyteller-lines";
 import "./storyteller-mascot.css";
 
@@ -38,7 +39,6 @@ const AUDIO_LEAD_MS = 150;
 const FALLBACK_WORD_MS = 260;
 const DISMISS_AFTER_AUDIO_MS = 3000;
 const DISMISS_TEXT_ONLY_MS = 6000;
-const DISMISS_AFTER_SPEAKER_MS = 2000;
 const DISMISS_ANIM_MS = 150;
 const AUDIO_START_TAP_GUARD_MS = 600; // the tap that starts audio must not dismiss it
 
@@ -53,7 +53,9 @@ export interface StorytellerNarrationProps {
   screen: StorytellerScreen;
   /** "first_gesture" = auto on first gesture (T1); "speaker" = speaker-button only (T2); "summary" = T4. */
   trigger: StorytellerTrigger;
-  line: StorytellerLine;
+  /** Which narration line to speak — resolved to STORYTELLER_LINES inside
+      this lazy chunk so hosts never import the caption copy. */
+  lineKey: StorytellerLineKey;
   showFigure: boolean;
   /** "dock" = ResultCard top-left · "modal" = summary modal · "inline" = GeoDetective hook. */
   variant: "dock" | "modal" | "inline";
@@ -135,12 +137,15 @@ export function useTourActive(): boolean {
 export function StorytellerNarration({
   screen,
   trigger,
-  line,
+  lineKey,
   showFigure,
   variant,
   onDismiss,
 }: StorytellerNarrationProps) {
   const tourActive = useTourActive();
+  // Resolved here — inside the lazy chunk — so the host screens never
+  // statically import the caption copy into the initial bundle.
+  const line = STORYTELLER_LINES[lineKey];
   const [visible, setVisible] = useState(true);
   const [leaving, setLeaving] = useState(false);
   const [wordsShown, setWordsShown] = useState(0);
@@ -174,7 +179,6 @@ export function StorytellerNarration({
       dismissedRef.current = true;
       window.clearTimeout(revealTimer.current);
       window.clearTimeout(dismissTimer.current);
-      const wasPlaying = audioState === "playing" || audioState === "paused";
       audioRef.current?.pause();
       audioRef.current = null;
       emitStoryteller("narration_dismissed", {

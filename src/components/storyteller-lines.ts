@@ -16,7 +16,10 @@ export interface StorytellerLine {
   audioFile: string;
 }
 
-export const STORYTELLER_LINES: Record<"reveal" | "hook" | "summary", StorytellerLine> = {
+/** Which narration line a host wants — resolved inside the lazy chunk. */
+export type StorytellerLineKey = "reveal" | "hook" | "summary";
+
+export const STORYTELLER_LINES: Record<StorytellerLineKey, StorytellerLine> = {
   reveal: {
     text: "Shh… listen closely. Every place has a story, and this one is a very good one.",
     audioFile: "reveal-01.mp3",
@@ -26,7 +29,7 @@ export const STORYTELLER_LINES: Record<"reveal" | "hook" | "summary", Storytelle
     audioFile: "hook-01.mp3",
   },
   summary: {
-    text: "And so our tale comes to an end! You found five hidden places today — what an adventure!",
+    text: "And so our tale comes to an end! What an adventure!",
     audioFile: "summary-01.mp3",
   },
 };
@@ -65,23 +68,4 @@ export function wordMsFromDuration(
   if (wordCount <= 0) return fallbackMs;
   if (!Number.isFinite(durationMs) || durationMs <= 0) return fallbackMs;
   return durationMs / wordCount;
-}
-
-/**
- * First story reveal per session auto-narrates (T1); later reveals are
- * text + speaker button. Module-level flag: the SPA session is the unit,
- * a reload is a new session. `claimFirstRevealNarration` returns true only
- * for the first caller of the session.
- */
-let firstRevealClaimed = false;
-
-export function claimFirstRevealNarration(): boolean {
-  if (firstRevealClaimed) return false;
-  firstRevealClaimed = true;
-  return true;
-}
-
-/** Test-only: drop the session flag. */
-export function resetFirstRevealNarrationForTests(): void {
-  firstRevealClaimed = false;
 }

@@ -3,12 +3,14 @@ import assert from "node:assert/strict";
 import {
   STORYTELLER_AUDIO_FALLBACK_LINE,
   STORYTELLER_LINES,
-  claimFirstRevealNarration,
-  resetFirstRevealNarrationForTests,
   storytellerAudioUrl,
   storytellerFigureUrl,
   wordMsFromDuration,
 } from "./storyteller-lines.ts";
+import {
+  claimFirstRevealNarration,
+  resetFirstRevealNarrationForTests,
+} from "./storyteller-claim.ts";
 
 describe("STORYTELLER_LINES — final copy contract", () => {
   it("ships exactly the three v1 lines with matching mp3 filenames", () => {
@@ -29,7 +31,7 @@ describe("STORYTELLER_LINES — final copy contract", () => {
     );
     assert.equal(
       STORYTELLER_LINES.summary.text,
-      "And so our tale comes to an end! You found five hidden places today — what an adventure!",
+      "And so our tale comes to an end! What an adventure!",
     );
   });
 

@@ -16,7 +16,7 @@ import type { Drop } from "./game-app";
 import { X } from "lucide-react";
 import { Suspense, lazy, useEffect, useMemo, useRef, useState } from "react";
 import { splitLede } from "./story-lede";
-import { STORYTELLER_LINES, claimFirstRevealNarration } from "./storyteller-lines";
+import { claimFirstRevealNarration } from "./storyteller-claim";
 import { useAiSportsTeams, withSportsLine } from "@/game/sports-ai";
 import { useAiStory, AI_STORY_BADGE } from "@/game/story-ai";
 import { revealPinCompare } from "@/game/reverse-geocode";
@@ -356,7 +356,7 @@ export function ResultCard({
               <StorytellerNarration
                 screen="story"
                 trigger={storytellerAuto ? "first_gesture" : "speaker"}
-                line={STORYTELLER_LINES.reveal}
+                lineKey="reveal"
                 showFigure
                 variant="dock"
                 onDismiss={() => continueWrapRef.current?.querySelector("button")?.focus({ preventScroll: true })}
