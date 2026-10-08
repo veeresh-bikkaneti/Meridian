@@ -53,6 +53,22 @@ inherited from main.
   the smoke script fixed), frontend APPROVE-WITH-NITS (1 P1 safe-area
   fallback + 1 P2 effect dep fixed).
 
+## Merge-gauntlet fix (2026-10-08)
+
+Gauntlet developer review BLOCKED: `src/lib/error-component.tsx` route-error
+emit had zero test coverage. Fixed with `src/lib/error-component.test.ts`
+(new, colocated with `observability.test.ts`): renders the real
+`AppErrorComponent` via `react-dom/client` against a minimal DOM shim
+(no jsdom in repo; `.tsx` loaded via the repo's own TypeScript
+`transpileModule` + data-URL import sharing exact module instances).
+4 tests: exactly one `js_error` per mount, no re-emit for the same error
+object, re-emit for a distinct error, zero emissions without render.
+Test added to the `npm test` file list in `package.json`.
+
+Verification after fix: `tsc` clean · `npm test` green (src 854/854,
+incl. 4 new) · `lint-cards` GATE PASSED · `build:pages` green ·
+`crash-watchdog.spec.ts` 4/4. No other files touched.
+
 ## Merged base — sprint entry gates (PR #107, main@f07dad3)
 
 The rebase base now contains the merged entry-gate fixes (were
