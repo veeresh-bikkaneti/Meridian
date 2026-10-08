@@ -1,25 +1,57 @@
-# BRANCH_STATUS — feat/comet-banner-emblem
+# BRANCH_STATUS — facts-ladder-train
 
-Rebased onto origin/main@f07dad3 (PR #107 sprint entry gates merged).
-PR: https://github.com/veeresh-bikkaneti/Meridian/pull/103 (OPEN, not merged).
+Rebased onto origin/main@8cd0fda (2026-10-08). Base now includes PR #107
+(sprint entry gates, merged) and PR #103 (comet banner emblem, merged):
+Comet hosts from the header banner, SoundToggle in eyebrow cluster,
+tutorial/greeting collision fix. None of that is this branch's work — it is
+inherited from main.
 
-## Veeresh's locked decisions (2026-10-07)
-1. Cursor-following: KEEP, dampened (smaller range, slower)
-2. Finale: small STATIC Comet plush on the bench end
-3. SoundToggle: eyebrow-left cluster (next to FIELD ATLAS)
+---
+
+# BRANCH_STATUS — feat/facts-ladder
+
+Fact-ladder content pipeline: generator scripts merge Wikidata / wiki-text /
+EB1911 / hook facts into place chunks; 261 pilot facts (arkansas 19,
+australia 242 after P0 removals) render on story cards as fact-first
+narratives with per-kind source attribution.
 
 ## Done
-- game-app.tsx: CometMascot moved into header banner row (DOM move), SoundToggle to eyebrow-left, tutorialInviteVisible prop plumbed
-- comet-mascot.tsx: armillary ring SVG, dampened gaze, dead comet:boop listener removed; greeting + reaction bubbles portaled to document.body (fixed toast)
-- comet-greeting.tsx: suppressAuto while tutorial invite visible
-- comet-mascot.css: in-flow wrap, size ladder, bubble as fixed bottom-right toast (never covers tagline), dark backplate
-- comet-greetings.ts: dead exported localDateKey removed
-- grandpa-coffee-run.tsx: static Comet plush on bench
-- grandpa-coffee-run.css: --comet-clearance removed
-- E2E (verified 2026-10-08 on rebased branch): comet desktop 14/14, mobile 5/5, reduced-motion 4/4, mobile-home-overlap 24/24 (one transient walker-animation flake, green on re-run — pre-existing flake, also seen pre-rebase)
-- Rebase 2026-10-08: onto origin/main@f07dad3; only BRANCH_STATUS.md conflicted (docs-only commits resolved keeping branch entries); no code conflicts
-- Reported desktop 13/14 "emblem overhang" did NOT reproduce: 14/14 across multiple full runs on the correct tip; layout verified sound (greeting + reaction portaled, wrap = 80px emblem only). No CSS change made — no blind fix on green tests.
-- tsc clean / lint-cards GATE PASSED / build:pages green
+
+- Rebased onto origin/main (ae524e3). Resolved render conflicts in favor of
+  main's tolerant runtime architecture:
+  - Kept `factText()` (never throws), `hookMissing` contract, `Starter.fact`
+    text for the Nano AI fallback — no regressions to card-compose.mjs.
+  - Dropped branch's strict runtime `assertValidFact`/`ChunkFact`; strict
+    validation lives in the build-time gate (scripts/check-generated-places.mjs).
+  - Ported per-kind attribution as additive `factAttribution()`: wikidata →
+    wikidata.org link, eb1911 → Wikisource link, wikitext/hook with own href
+    → article link, else default Wikipedia/GeoNames behavior.
+- Generator scripts (6 files, ~2900 lines + tests): facts-ladder.mjs,
+  facts-wikidata-extract.mjs, facts-wiki-text.mjs, facts-eb1911.mjs,
+  facts-qid-join.mjs, facts-validate.mjs. All green.
+- 261 pilot facts merged into arkansas.json (19) + australia.json (242).
+  hookMissing cleared where facts added (contract).
+- Expert review P0 fixes:
+  - Removed Forrest City, AR fact (Confederate general / KKK Grand Wizard
+    reference — inappropriate for 8-12).
+  - Removed McKail, AU fact (describes 1835 killing — too violent).
+  - Repaired rebase damage: missing brace in factText, orphaned
+    assertValidFact call, truncated facts-ladder.mjs, malformed
+    playwright.config.ts.
+- Expert review P1 fixes:
+  - Attribution links (.result-source) now meet 44px touch target.
+- Gates: tsc clean, lint-cards GATE PASSED, check-generated-places 0 violations.
 
 ## Pending
-- [ ] Owner review + merge of PR #103 (never merge from here — owner merges)
+
+- Full `npm test` suite green (in progress).
+- `npm run build:pages` green (in progress).
+- Playwright e2e: tests/e2e/facts-ladder-pilot.spec.ts (to run).
+- Frontend P1: check second finding from review (layout shift on fact present/absent).
+- Narrative P1s: 5 remaining quality issues from review (need full report).
+
+## Backlog (P2)
+
+- Per-kind attribution labels ("Wikidata", "EB1911") may be unclear to kids —
+  consider friendlier labels.
+- Generator scripts are dev-time only; document regeneration workflow.
