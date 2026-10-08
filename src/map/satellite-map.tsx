@@ -22,7 +22,7 @@ import { buildScoutStyle } from "./scout-style.ts";
 import { ScoutFallbackMap } from "./scout-fallback.tsx";
 import { isCoarsePointer, mapOptionsForDevice, SCOUT_MAX_ZOOM_FLAT, SCOUT_MAX_ZOOM_GLOBE } from "./map-options.ts";
 import type { MapMode } from "./capability.ts";
-import { emitTileFailed, emitWebglContextLost, recordMilestone } from "@/lib/observability";
+import { emitTileFailed, emitWebglContextLost, recordMilestone, recordTileErrors } from "@/lib/observability";
 import { createTapTracker } from "./tap-tracker.ts";
 import { INITIAL_TILE_STATUS, tileStatusReducer, type TileStatus } from "./tile-status.ts";
 import { variationLine, type MapPoint } from "./variation.ts";
@@ -532,6 +532,14 @@ export function SatelliteMap(props: {
   useEffect(() => {
     if (scoutFallback && props.variation) onRevealCompleteRef.current?.();
   }, [scoutFallback, props.variation]);
+
+  // PBI-8: tile_failed counts ride the crash-report breadcrumb (suggestive
+  // only — the settled constraint forbids switching on them).
+  useEffect(() => {
+    recordTileErrors(
+      tileStatus.kind === "loading" || tileStatus.kind === "failed" ? tileStatus.tileErrors : 0,
+    );
+  }, [tileStatus]);
   // Keyboard crosshair (M6): null = hidden. Shown on first arrow press at
   // viewport center; hidden again as soon as pointer/touch is used.
   const [crosshair, setCrosshair] = useState<{ x: number; y: number } | null>(null);

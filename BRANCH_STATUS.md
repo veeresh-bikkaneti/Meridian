@@ -43,6 +43,16 @@ Standing rules: PRs only, owner merges; named-file staging only; gates before ha
   GameApp-level sibling of ResultCard, fixed inset-x-4 top-16 z-50,
   role="status", verbatim copy, keyed to switch event + place id, clears on
   Continue/dismiss — never mid-round.
+- PBI-8: observability — `mapMode` stamped on every observability event via
+  setReportMapMode (GameApp applies it on every assignment); `tileErrors`
+  on the crash breadcrumb (satellite-map syncs the tile-status count;
+  suggestive only, never a switch signal) → suspected_crash carries both.
+  flags.json has NO generator (hand-maintained static file) — a static
+  mapMode value would be misinformation, so mapMode observability lives in
+  the crash reports. Watchdog boot_failure NOT stamped: the inline script
+  has a hard 5120-byte budget with 12 bytes of headroom (pre-PBI-8: 5108),
+  and boot_failure fires when the app never boots — the map never mounted,
+  so the mode isn't attributive for that failure class.
 
 ## Pending (sequenced)
 - [ ] Phase A: Game Designer + UI/UX Expert finalize UX copy + settings placement.
