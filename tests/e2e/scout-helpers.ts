@@ -21,32 +21,31 @@ import type { BrowserContext, Page } from "playwright/test";
 export const APP_URL = "http://127.0.0.1:4123/Meridian/";
 export const MAP_MODE_KEY = "meridian:map-mode";
 
+/** Stored record shape per src/map/capability.ts (dev's API). */
 export interface StoredMapMode {
   mode: "full" | "scout";
-  manual: boolean;
-  offer?: boolean;
-  assignedBy?: "crash-flag" | "probe" | "memory";
-  assignedAt?: number;
+  source: "manual" | "prior-crash" | "probe" | "low-memory" | "default";
+  setAt: number;
 }
 
-/** Seed a map-attributed prior-crash offer record BEFORE the app boots. */
-export async function seedCrashOffer(
-  context: BrowserContext,
-  assignedAt: number = Date.now(),
-): Promise<void> {
-  const rec: StoredMapMode = {
-    mode: "scout",
-    manual: false,
-    offer: true,
-    assignedBy: "crash-flag",
-    assignedAt,
-  };
-  await context.addInitScript((record: StoredMapMode) => {
-    localStorage.setItem("meridian:map-mode", JSON.stringify(record));
-  }, rec);
+/**
+ * Seed a map-attributed prior crash BEFORE the app boots: the previous
+ * session died (cleanExit "0") with the map mounted (breadcrumb at the
+ * map_init_start milestone). This is the crash pipeline's input to the
+ * `priorMapCrash` signal (capability.ts) — the realistic trigger for the
+ * boot offer, not a hand-written mode record.
+ */
+export async function seedCrashOffer(context: BrowserContext): Promise<void> {
+  await context.addInitScript(() => {
+    sessionStorage.setItem("meridian.cleanExit", "0");
+    sessionStorage.setItem(
+      "meridian.breadcrumb",
+      JSON.stringify({ lastMilestone: "map_init_start", sessionId: "qa-crash-offer" }),
+    );
+  });
 }
 
-/** Seed a manual override record BEFORE the app boots. */
+/** Seed a manual override record BEFORE the app boots (dev's record shape). */
 export async function seedManualMode(
   context: BrowserContext,
   mode: "full" | "scout",
@@ -54,7 +53,7 @@ export async function seedManualMode(
   await context.addInitScript((m: "full" | "scout") => {
     localStorage.setItem(
       "meridian:map-mode",
-      JSON.stringify({ mode: m, manual: true }),
+      JSON.stringify({ mode: m, source: "manual", setAt: Date.now() }),
     );
   }, mode);
 }

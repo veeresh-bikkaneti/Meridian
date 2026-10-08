@@ -18,7 +18,6 @@ import {
   seedCrashOffer,
   seedManualMode,
   offerModal,
-  readStoredMapMode,
 } from "./scout-helpers";
 
 test.setTimeout(120_000);
@@ -148,11 +147,10 @@ test("declining retires the offer: no modal on the next boot", async ({
   await page.getByRole("button", { name: "Not now" }).click();
   await expect(modal).toBeHidden();
 
-  // The decline must clear/retire the offer flag — "Not now" must not
-  // nag on every subsequent boot.
-  const stored = await readStoredMapMode(page);
-  expect(stored?.offer ?? false).toBe(false);
-
+  // The decline must retire the offer — "Not now" must not nag on every
+  // subsequent boot. Asserted behaviorally: no modal on the next boot.
+  // (The exact retired storage shape — cleared record vs manual-full — is
+  // the dev's call; the modal staying gone is the contract.)
   await page.reload();
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
     timeout: 30_000,
