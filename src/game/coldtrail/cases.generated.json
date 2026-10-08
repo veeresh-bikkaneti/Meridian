@@ -41,9 +41,9 @@
      "cityName": "Ibadan",
      "cityLon": 3.90591,
      "cityLat": 7.37756,
-     "radiusKm": 3950,
+     "radiusKm": 3975,
      "octant": "north-east",
-     "text": "Last seen asking a gas attendant for directions 3,950 km northeast of Ibadan."
+     "text": "Last seen asking a gas attendant for directions 3,975 km northeast of Ibadan."
     }
    ]
   },
@@ -65,9 +65,9 @@
      "cityName": "Nghi Sơn",
      "cityLon": 105.82145,
      "cityLat": 19.32746,
-     "radiusKm": 2850,
+     "radiusKm": 2875,
      "octant": "west",
-     "text": "Last spotted at a roadside diner 2,850 km west of Nghi Sơn."
+     "text": "Last spotted at a roadside diner 2,875 km west of Nghi Sơn."
     },
     {
      "id": "s2",
@@ -76,9 +76,9 @@
      "cityName": "Jūnāgadh",
      "cityLon": 70.45981,
      "cityLat": 21.51966,
-     "radiusKm": 900,
+     "radiusKm": 925,
      "octant": "east",
-     "text": "Last spotted at a roadside diner 900 km east of Jūnāgadh."
+     "text": "Last spotted at a roadside diner 925 km east of Jūnāgadh."
     },
     {
      "id": "s3",
@@ -122,9 +122,9 @@
      "cityName": "Puebla",
      "cityLon": -98.20723,
      "cityLat": 19.04778,
-     "radiusKm": 2725,
+     "radiusKm": 2750,
      "octant": "north",
-     "text": "Last seen boarding a night bus 2,725 km north of Puebla."
+     "text": "Last seen boarding a night bus 2,750 km north of Puebla."
     },
     {
      "id": "s3",
@@ -214,9 +214,9 @@
      "cityName": "Changchun",
      "cityLon": 125.32278,
      "cityLat": 43.88,
-     "radiusKm": 1350,
+     "radiusKm": 1375,
      "octant": "south-east",
-     "text": "Last seen hitching a ride from a trucker 1,350 km southeast of Changchun."
+     "text": "Last seen hitching a ride from a trucker 1,375 km southeast of Changchun."
     },
     {
      "id": "s3",
@@ -225,9 +225,9 @@
      "cityName": "Busan",
      "cityLon": 129.03004,
      "cityLat": 35.10168,
-     "radiusKm": 825,
+     "radiusKm": 850,
      "octant": "east",
-     "text": "Last seen sleeping in a parked car 825 km east of Busan."
+     "text": "Last seen sleeping in a parked car 850 km east of Busan."
     }
    ]
   },
@@ -260,9 +260,9 @@
      "cityName": "Yanzhou",
      "cityLon": 116.82861,
      "cityLat": 35.55278,
-     "radiusKm": 1275,
+     "radiusKm": 1300,
      "octant": "east",
-     "text": "Last seen hitching a ride from a trucker 1,275 km east of Yanzhou."
+     "text": "Last seen hitching a ride from a trucker 1,300 km east of Yanzhou."
     },
     {
      "id": "s3",
@@ -271,9 +271,9 @@
      "cityName": "Amagasaki",
      "cityLon": 135.41667,
      "cityLat": 34.71667,
-     "radiusKm": 475,
+     "radiusKm": 500,
      "octant": "west",
-     "text": "Last seen sleeping in a parked car 475 km west of Amagasaki."
+     "text": "Last seen sleeping in a parked car 500 km west of Amagasaki."
     }
    ]
   },
@@ -317,9 +317,9 @@
      "cityName": "Calgary",
      "cityLon": -114.08529,
      "cityLat": 51.05011,
-     "radiusKm": 3050,
+     "radiusKm": 3075,
      "octant": "east",
-     "text": "Last seen eating at a drive-through 3,050 km east of Calgary."
+     "text": "Last seen eating at a drive-through 3,075 km east of Calgary."
     }
    ]
   },
@@ -341,9 +341,9 @@
      "cityName": "Erzurum",
      "cityLon": 41.27694,
      "cityLat": 39.90861,
-     "radiusKm": 2675,
+     "radiusKm": 2700,
      "octant": "north-west",
-     "text": "Last seen filling jerrycans 2,675 km northwest of Erzurum."
+     "text": "Last seen filling jerrycans 2,700 km northwest of Erzurum."
     },
     {
      "id": "s2",
@@ -363,9 +363,9 @@
      "cityName": "Perm",
      "cityLon": 56.25017,
      "cityLat": 58.01046,
-     "radiusKm": 2175,
+     "radiusKm": 2200,
      "octant": "west",
-     "text": "Last seen filling jerrycans 2,175 km west of Perm."
+     "text": "Last seen filling jerrycans 2,200 km west of Perm."
     }
    ]
   },
@@ -387,9 +387,9 @@
      "cityName": "Hamamatsu",
      "cityLon": 137.73333,
      "cityLat": 34.7,
-     "radiusKm": 1750,
+     "radiusKm": 1775,
      "octant": "west",
-     "text": "Last seen eating at a drive-through 1,750 km west of Hamamatsu."
+     "text": "Last seen eating at a drive-through 1,775 km west of Hamamatsu."
     },
     {
      "id": "s2",
@@ -398,9 +398,9 @@
      "cityName": "Krasnoyarsk",
      "cityLon": 92.93136,
      "cityLat": 56.03742,
-     "radiusKm": 2975,
+     "radiusKm": 3000,
      "octant": "south-east",
-     "text": "Last seen withdrawing cash from an ATM 2,975 km southeast of Krasnoyarsk."
+     "text": "Last seen withdrawing cash from an ATM 3,000 km southeast of Krasnoyarsk."
     },
     {
      "id": "s3",
@@ -409,9 +409,9 @@
      "cityName": "Maheshtala",
      "cityLon": 88.25322,
      "cityLat": 22.50862,
-     "radiusKm": 3250,
+     "radiusKm": 3275,
      "octant": "north-east",
-     "text": "Last seen hitching a ride from a trucker 3,250 km northeast of Maheshtala."
+     "text": "Last seen hitching a ride from a trucker 3,275 km northeast of Maheshtala."
     }
    ]
   },
@@ -433,9 +433,9 @@
      "cityName": "Nanping",
      "cityLon": 118.17361,
      "cityLat": 26.645,
-     "radiusKm": 600,
+     "radiusKm": 625,
      "octant": "west",
-     "text": "Last seen hitching a ride from a trucker 600 km west of Nanping."
+     "text": "Last seen hitching a ride from a trucker 625 km west of Nanping."
     },
     {
      "id": "s2",
@@ -444,9 +444,9 @@
      "cityName": "Bei’an",
      "cityLon": 126.6,
      "cityLat": 48.26667,
-     "radiusKm": 2625,
+     "radiusKm": 2650,
      "octant": "south-west",
-     "text": "Last seen asking a gas attendant for directions 2,625 km southwest of Bei’an."
+     "text": "Last seen asking a gas attendant for directions 2,650 km southwest of Bei’an."
     },
     {
      "id": "s3",
@@ -501,9 +501,9 @@
      "cityName": "Vientiane",
      "cityLon": 102.6,
      "cityLat": 17.96667,
-     "radiusKm": 2625,
+     "radiusKm": 2650,
      "octant": "north-east",
-     "text": "Last seen filling jerrycans 2,625 km northeast of Vientiane."
+     "text": "Last seen filling jerrycans 2,650 km northeast of Vientiane."
     }
    ]
   },
@@ -582,9 +582,9 @@
      "cityName": "Guang’an",
      "cityLon": 106.63696,
      "cityLat": 30.47413,
-     "radiusKm": 3125,
+     "radiusKm": 3150,
      "octant": "west",
-     "text": "Last spotted at a roadside diner 3,125 km west of Guang’an."
+     "text": "Last spotted at a roadside diner 3,150 km west of Guang’an."
     },
     {
      "id": "s3",
@@ -617,9 +617,9 @@
      "cityName": "Benxi",
      "cityLon": 123.765,
      "cityLat": 41.28861,
-     "radiusKm": 3900,
+     "radiusKm": 3925,
      "octant": "south-west",
-     "text": "Last seen buying a burner phone 3,900 km southwest of Benxi."
+     "text": "Last seen buying a burner phone 3,925 km southwest of Benxi."
     },
     {
      "id": "s2",
@@ -639,9 +639,9 @@
      "cityName": "Changsha",
      "cityLon": 112.97087,
      "cityLat": 28.19874,
-     "radiusKm": 2150,
+     "radiusKm": 2175,
      "octant": "south",
-     "text": "Last seen filling jerrycans 2,150 km south of Changsha."
+     "text": "Last seen filling jerrycans 2,175 km south of Changsha."
     }
    ]
   },
@@ -674,9 +674,9 @@
      "cityName": "Tashkent",
      "cityLon": 69.21627,
      "cityLat": 41.26465,
-     "radiusKm": 2000,
+     "radiusKm": 2025,
      "octant": "south-east",
-     "text": "Last seen sleeping in a parked car 2,000 km southeast of Tashkent."
+     "text": "Last seen sleeping in a parked car 2,025 km southeast of Tashkent."
     },
     {
      "id": "s3",
@@ -731,9 +731,9 @@
      "cityName": "Durgapur",
      "cityLon": 87.30801,
      "cityLat": 23.51583,
-     "radiusKm": 1925,
+     "radiusKm": 1950,
      "octant": "south-east",
-     "text": "Last seen at a bus depot 1,925 km southeast of Durgapur."
+     "text": "Last seen at a bus depot 1,950 km southeast of Durgapur."
     }
    ]
   },
@@ -777,9 +777,9 @@
      "cityName": "Bikaner",
      "cityLon": 73.31495,
      "cityLat": 28.01762,
-     "radiusKm": 2400,
+     "radiusKm": 2425,
      "octant": "east",
-     "text": "Last seen buying supplies at a truck stop 2,400 km east of Bikaner."
+     "text": "Last seen buying supplies at a truck stop 2,425 km east of Bikaner."
     }
    ]
   },
@@ -801,9 +801,9 @@
      "cityName": "Mudanjiang",
      "cityLon": 129.62594,
      "cityLat": 44.54804,
-     "radiusKm": 3450,
+     "radiusKm": 3475,
      "octant": "west",
-     "text": "Last seen refueling a dusty pickup 3,450 km west of Mudanjiang."
+     "text": "Last seen refueling a dusty pickup 3,475 km west of Mudanjiang."
     },
     {
      "id": "s2",
@@ -847,9 +847,9 @@
      "cityName": "Gia Lâm",
      "cityLon": 105.939,
      "cityLat": 21.02,
-     "radiusKm": 2700,
+     "radiusKm": 2725,
      "octant": "west",
-     "text": "Last seen hitching a ride from a trucker 2,700 km west of Gia Lâm."
+     "text": "Last seen hitching a ride from a trucker 2,725 km west of Gia Lâm."
     },
     {
      "id": "s2",
@@ -858,9 +858,9 @@
      "cityName": "Madurai",
      "cityLon": 78.11953,
      "cityLat": 9.919,
-     "radiusKm": 775,
+     "radiusKm": 800,
      "octant": "north",
-     "text": "Last spotted at a roadside diner 775 km north of Madurai."
+     "text": "Last spotted at a roadside diner 800 km north of Madurai."
     },
     {
      "id": "s3",
@@ -893,9 +893,9 @@
      "cityName": "Milan",
      "cityLon": 9.18951,
      "cityLat": 45.46427,
-     "radiusKm": 3650,
+     "radiusKm": 3675,
      "octant": "north-east",
-     "text": "Last seen buying supplies at a truck stop 3,650 km northeast of Milan."
+     "text": "Last seen buying supplies at a truck stop 3,675 km northeast of Milan."
     },
     {
      "id": "s2",
@@ -915,9 +915,9 @@
      "cityName": "Jiuquan",
      "cityLon": 98.51736,
      "cityLat": 39.74318,
-     "radiusKm": 3350,
+     "radiusKm": 3375,
      "octant": "north-west",
-     "text": "Last seen asking a gas attendant for directions 3,350 km northwest of Jiuquan."
+     "text": "Last seen asking a gas attendant for directions 3,375 km northwest of Jiuquan."
     }
    ]
   },
@@ -939,9 +939,9 @@
      "cityName": "Tamale",
      "cityLon": -0.8393,
      "cityLat": 9.40079,
-     "radiusKm": 2150,
+     "radiusKm": 2175,
      "octant": "east",
-     "text": "Last seen buying supplies at a truck stop 2,150 km east of Tamale."
+     "text": "Last seen buying supplies at a truck stop 2,175 km east of Tamale."
     },
     {
      "id": "s2",
@@ -950,9 +950,9 @@
      "cityName": "Muratpaşa",
      "cityLon": 30.76498,
      "cityLat": 36.89157,
-     "radiusKm": 3000,
+     "radiusKm": 3025,
      "octant": "south-west",
-     "text": "Last seen at a bus depot 3,000 km southwest of Muratpaşa."
+     "text": "Last seen at a bus depot 3,025 km southwest of Muratpaşa."
     },
     {
      "id": "s3",
@@ -1007,9 +1007,9 @@
      "cityName": "Oral",
      "cityLon": 51.42558,
      "cityLat": 51.24601,
-     "radiusKm": 2575,
+     "radiusKm": 2600,
      "octant": "south-east",
-     "text": "Last seen hitching a ride from a trucker 2,575 km southeast of Oral."
+     "text": "Last seen hitching a ride from a trucker 2,600 km southeast of Oral."
     }
    ]
   },
@@ -1031,9 +1031,9 @@
      "cityName": "Nanqiao",
      "cityLon": 121.44944,
      "cityLat": 30.91611,
-     "radiusKm": 475,
+     "radiusKm": 500,
      "octant": "north-west",
-     "text": "Last seen boarding a night bus 475 km northwest of Nanqiao."
+     "text": "Last seen boarding a night bus 500 km northwest of Nanqiao."
     },
     {
      "id": "s2",
@@ -1077,9 +1077,9 @@
      "cityName": "Prayagraj",
      "cityLon": 81.84322,
      "cityLat": 25.44478,
-     "radiusKm": 1100,
+     "radiusKm": 1125,
      "octant": "west",
-     "text": "Last spotted at a roadside diner 1,100 km west of Prayagraj."
+     "text": "Last spotted at a roadside diner 1,125 km west of Prayagraj."
     },
     {
      "id": "s2",
@@ -1123,9 +1123,9 @@
      "cityName": "Luancheng",
      "cityLon": 114.64629,
      "cityLat": 37.88452,
-     "radiusKm": 3050,
+     "radiusKm": 3075,
      "octant": "west",
-     "text": "Last seen buying a burner phone 3,050 km west of Luancheng."
+     "text": "Last seen buying a burner phone 3,075 km west of Luancheng."
     },
     {
      "id": "s2",
@@ -1169,9 +1169,9 @@
      "cityName": "Hsinchu",
      "cityLon": 120.96861,
      "cityLat": 24.80361,
-     "radiusKm": 3350,
+     "radiusKm": 3375,
      "octant": "west",
-     "text": "Last spotted at a roadside diner 3,350 km west of Hsinchu."
+     "text": "Last spotted at a roadside diner 3,375 km west of Hsinchu."
     },
     {
      "id": "s2",
@@ -1261,9 +1261,9 @@
      "cityName": "Paranaque City",
      "cityLon": 121.01749,
      "cityLat": 14.48156,
-     "radiusKm": 2350,
+     "radiusKm": 2375,
      "octant": "south-west",
-     "text": "Last seen filling jerrycans 2,350 km southwest of Paranaque City."
+     "text": "Last seen filling jerrycans 2,375 km southwest of Paranaque City."
     },
     {
      "id": "s2",
@@ -1283,9 +1283,9 @@
      "cityName": "Kozhikode",
      "cityLon": 75.7804,
      "cityLat": 11.24802,
-     "radiusKm": 3275,
+     "radiusKm": 3300,
      "octant": "east",
-     "text": "Last seen sleeping in a parked car 3,275 km east of Kozhikode."
+     "text": "Last seen sleeping in a parked car 3,300 km east of Kozhikode."
     }
    ]
   },
@@ -1307,9 +1307,9 @@
      "cityName": "São José dos Campos",
      "cityLon": -45.88694,
      "cityLat": -23.17944,
-     "radiusKm": 2650,
+     "radiusKm": 2675,
      "octant": "south-west",
-     "text": "Last seen filling jerrycans 2,650 km southwest of São José dos Campos."
+     "text": "Last seen filling jerrycans 2,675 km southwest of São José dos Campos."
     },
     {
      "id": "s2",
@@ -1318,9 +1318,9 @@
      "cityName": "Florianópolis",
      "cityLon": -48.54917,
      "cityLat": -27.59667,
-     "radiusKm": 2200,
+     "radiusKm": 2225,
      "octant": "west",
-     "text": "Last seen eating at a drive-through 2,200 km west of Florianópolis."
+     "text": "Last seen eating at a drive-through 2,225 km west of Florianópolis."
     },
     {
      "id": "s3",
@@ -1329,9 +1329,9 @@
      "cityName": "Manaus",
      "cityLon": -60.025,
      "cityLat": -3.10194,
-     "radiusKm": 3475,
+     "radiusKm": 3500,
      "octant": "south",
-     "text": "Last seen filling jerrycans 3,475 km south of Manaus."
+     "text": "Last seen filling jerrycans 3,500 km south of Manaus."
     }
    ]
   },
@@ -1353,9 +1353,9 @@
      "cityName": "Kāmārhāti",
      "cityLon": 88.37472,
      "cityLat": 22.67111,
-     "radiusKm": 3900,
+     "radiusKm": 3925,
      "octant": "east",
-     "text": "Last seen withdrawing cash from an ATM 3,900 km east of Kāmārhāti."
+     "text": "Last seen withdrawing cash from an ATM 3,925 km east of Kāmārhāti."
     },
     {
      "id": "s2",
@@ -1399,9 +1399,9 @@
      "cityName": "Anápolis",
      "cityLon": -48.95278,
      "cityLat": -16.32667,
-     "radiusKm": 2700,
+     "radiusKm": 2725,
      "octant": "south-west",
-     "text": "Last seen refueling a dusty pickup 2,700 km southwest of Anápolis."
+     "text": "Last seen refueling a dusty pickup 2,725 km southwest of Anápolis."
     },
     {
      "id": "s2",
@@ -1410,9 +1410,9 @@
      "cityName": "Quito",
      "cityLon": -78.52495,
      "cityLat": -0.22985,
-     "radiusKm": 3800,
+     "radiusKm": 3825,
      "octant": "south",
-     "text": "Last seen boarding a night bus 3,800 km south of Quito."
+     "text": "Last seen boarding a night bus 3,825 km south of Quito."
     },
     {
      "id": "s3",
@@ -1421,9 +1421,9 @@
      "cityName": "Viña del Mar",
      "cityLon": -71.55183,
      "cityLat": -33.02457,
-     "radiusKm": 275,
+     "radiusKm": 300,
      "octant": "east",
-     "text": "Last seen boarding a night bus 275 km east of Viña del Mar."
+     "text": "Last seen boarding a night bus 300 km east of Viña del Mar."
     }
    ]
   },
@@ -1445,9 +1445,9 @@
      "cityName": "Khamis Mushait",
      "cityLon": 42.73333,
      "cityLat": 18.3,
-     "radiusKm": 3450,
+     "radiusKm": 3475,
      "octant": "south-west",
-     "text": "Last seen sleeping in a parked car 3,450 km southwest of Khamis Mushait."
+     "text": "Last seen sleeping in a parked car 3,475 km southwest of Khamis Mushait."
     },
     {
      "id": "s2",
@@ -1456,9 +1456,9 @@
      "cityName": "Maradi",
      "cityLon": 7.10174,
      "cityLat": 13.5,
-     "radiusKm": 2825,
+     "radiusKm": 2850,
      "octant": "south-east",
-     "text": "Last seen hitching a ride from a trucker 2,825 km southeast of Maradi."
+     "text": "Last seen hitching a ride from a trucker 2,850 km southeast of Maradi."
     },
     {
      "id": "s3",
@@ -1491,9 +1491,9 @@
      "cityName": "Pétionville",
      "cityLon": -72.28528,
      "cityLat": 18.5125,
-     "radiusKm": 3525,
+     "radiusKm": 3550,
      "octant": "north-west",
-     "text": "Last spotted at a roadside diner 3,525 km northwest of Pétionville."
+     "text": "Last spotted at a roadside diner 3,550 km northwest of Pétionville."
     },
     {
      "id": "s2",
@@ -1513,9 +1513,9 @@
      "cityName": "Cuernavaca",
      "cityLon": -99.23075,
      "cityLat": 18.9261,
-     "radiusKm": 2925,
+     "radiusKm": 2950,
      "octant": "north",
-     "text": "Last seen refueling a dusty pickup 2,925 km north of Cuernavaca."
+     "text": "Last seen refueling a dusty pickup 2,950 km north of Cuernavaca."
     }
    ]
   },
@@ -1537,9 +1537,9 @@
      "cityName": "Boa Vista",
      "cityLon": -60.67333,
      "cityLat": 2.81972,
-     "radiusKm": 2950,
+     "radiusKm": 2975,
      "octant": "south-east",
-     "text": "Last seen asking a gas attendant for directions 2,950 km southeast of Boa Vista."
+     "text": "Last seen asking a gas attendant for directions 2,975 km southeast of Boa Vista."
     },
     {
      "id": "s2",
@@ -1548,9 +1548,9 @@
      "cityName": "Mauá",
      "cityLon": -46.46139,
      "cityLat": -23.66778,
-     "radiusKm": 1650,
+     "radiusKm": 1675,
      "octant": "north-east",
-     "text": "Last seen buying supplies at a truck stop 1,650 km northeast of Mauá."
+     "text": "Last seen buying supplies at a truck stop 1,675 km northeast of Mauá."
     },
     {
      "id": "s3",
@@ -1559,9 +1559,9 @@
      "cityName": "Santa Cruz de la Sierra",
      "cityLon": -63.18117,
      "cityLat": -17.78629,
-     "radiusKm": 2800,
+     "radiusKm": 2825,
      "octant": "east",
-     "text": "Last seen refueling a dusty pickup 2,800 km east of Santa Cruz de la Sierra."
+     "text": "Last seen refueling a dusty pickup 2,825 km east of Santa Cruz de la Sierra."
     }
    ]
   },
@@ -1583,9 +1583,9 @@
      "cityName": "Virginia Beach",
      "cityLon": -75.97799,
      "cityLat": 36.85293,
-     "radiusKm": 275,
+     "radiusKm": 300,
      "octant": "north",
-     "text": "Last seen eating at a drive-through 275 km north of Virginia Beach."
+     "text": "Last seen eating at a drive-through 300 km north of Virginia Beach."
     },
     {
      "id": "s2",
@@ -1594,9 +1594,9 @@
      "cityName": "Santiago de Querétaro",
      "cityLon": -100.38806,
      "cityLat": 20.58806,
-     "radiusKm": 3025,
+     "radiusKm": 3050,
      "octant": "north-east",
-     "text": "Last seen at a bus depot 3,025 km northeast of Santiago de Querétaro."
+     "text": "Last seen at a bus depot 3,050 km northeast of Santiago de Querétaro."
     },
     {
      "id": "s3",
@@ -1605,9 +1605,9 @@
      "cityName": "Columbus",
      "cityLon": -82.99879,
      "cityLat": 39.96118,
-     "radiusKm": 500,
+     "radiusKm": 525,
      "octant": "east",
-     "text": "Last seen filling jerrycans 500 km east of Columbus."
+     "text": "Last seen filling jerrycans 525 km east of Columbus."
     }
    ]
   },
@@ -1651,9 +1651,9 @@
      "cityName": "Matsudo",
      "cityLon": 139.90144,
      "cityLat": 35.77995,
-     "radiusKm": 2025,
+     "radiusKm": 2050,
      "octant": "west",
-     "text": "Last seen eating at a drive-through 2,025 km west of Matsudo."
+     "text": "Last seen eating at a drive-through 2,050 km west of Matsudo."
     }
    ]
   },
@@ -1675,9 +1675,9 @@
      "cityName": "Daye",
      "cityLon": 114.95,
      "cityLat": 30.08333,
-     "radiusKm": 700,
+     "radiusKm": 725,
      "octant": "north",
-     "text": "Last seen hitching a ride from a trucker 700 km north of Daye."
+     "text": "Last seen hitching a ride from a trucker 725 km north of Daye."
     },
     {
      "id": "s2",
@@ -1686,9 +1686,9 @@
      "cityName": "Chinju",
      "cityLon": 128.08472,
      "cityLat": 35.19278,
-     "radiusKm": 1250,
+     "radiusKm": 1275,
      "octant": "west",
-     "text": "Last seen refueling a dusty pickup 1,250 km west of Chinju."
+     "text": "Last seen refueling a dusty pickup 1,275 km west of Chinju."
     },
     {
      "id": "s3",
@@ -1721,9 +1721,9 @@
      "cityName": "Annaba",
      "cityLon": 7.76667,
      "cityLat": 36.9,
-     "radiusKm": 700,
+     "radiusKm": 725,
      "octant": "north-west",
-     "text": "Last seen at a bus depot 700 km northwest of Annaba."
+     "text": "Last seen at a bus depot 725 km northwest of Annaba."
     },
     {
      "id": "s2",
@@ -1743,9 +1743,9 @@
      "cityName": "Helsinki",
      "cityLon": 24.93545,
      "cityLat": 60.16952,
-     "radiusKm": 2625,
+     "radiusKm": 2650,
      "octant": "south-west",
-     "text": "Last seen sleeping in a parked car 2,625 km southwest of Helsinki."
+     "text": "Last seen sleeping in a parked car 2,650 km southwest of Helsinki."
     }
    ]
   },
@@ -1778,9 +1778,9 @@
      "cityName": "Teresina",
      "cityLon": -42.80194,
      "cityLat": -5.08917,
-     "radiusKm": 825,
+     "radiusKm": 850,
      "octant": "east",
-     "text": "Last spotted at a roadside diner 825 km east of Teresina."
+     "text": "Last spotted at a roadside diner 850 km east of Teresina."
     },
     {
      "id": "s3",
@@ -1824,9 +1824,9 @@
      "cityName": "Porto Alegre",
      "cityLon": -51.23019,
      "cityLat": -30.03283,
-     "radiusKm": 2550,
+     "radiusKm": 2575,
      "octant": "north-west",
-     "text": "Last seen withdrawing cash from an ATM 2,550 km northwest of Porto Alegre."
+     "text": "Last seen withdrawing cash from an ATM 2,575 km northwest of Porto Alegre."
     },
     {
      "id": "s3",
@@ -1835,9 +1835,9 @@
      "cityName": "Panama City",
      "cityLon": -79.51973,
      "cityLat": 8.9936,
-     "radiusKm": 2950,
+     "radiusKm": 2975,
      "octant": "south",
-     "text": "Last seen sleeping in a parked car 2,950 km south of Panama City."
+     "text": "Last seen sleeping in a parked car 2,975 km south of Panama City."
     }
    ]
   },
@@ -1870,9 +1870,9 @@
      "cityName": "Mombasa",
      "cityLon": 39.66359,
      "cityLat": -4.05466,
-     "radiusKm": 1150,
+     "radiusKm": 1175,
      "octant": "north-east",
-     "text": "Last seen hitching a ride from a trucker 1,150 km northeast of Mombasa."
+     "text": "Last seen hitching a ride from a trucker 1,175 km northeast of Mombasa."
     },
     {
      "id": "s3",
@@ -1916,9 +1916,9 @@
      "cityName": "Fuyang",
      "cityLon": 115.81667,
      "cityLat": 32.9,
-     "radiusKm": 1925,
+     "radiusKm": 1950,
      "octant": "south",
-     "text": "Last seen refueling a dusty pickup 1,925 km south of Fuyang."
+     "text": "Last seen refueling a dusty pickup 1,950 km south of Fuyang."
     },
     {
      "id": "s3",
@@ -1951,9 +1951,9 @@
      "cityName": "Bhilai",
      "cityLon": 81.4285,
      "cityLat": 21.20919,
-     "radiusKm": 2775,
+     "radiusKm": 2800,
      "octant": "east",
-     "text": "Last seen sleeping in a parked car 2,775 km east of Bhilai."
+     "text": "Last seen sleeping in a parked car 2,800 km east of Bhilai."
     },
     {
      "id": "s2",
@@ -1973,9 +1973,9 @@
      "cityName": "Kathmandu",
      "cityLon": 85.3206,
      "cityLat": 27.70169,
-     "radiusKm": 2800,
+     "radiusKm": 2825,
      "octant": "south-east",
-     "text": "Last spotted at a roadside diner 2,800 km southeast of Kathmandu."
+     "text": "Last spotted at a roadside diner 2,825 km southeast of Kathmandu."
     }
    ]
   },
@@ -1997,9 +1997,9 @@
      "cityName": "Tokyo",
      "cityLon": 139.69171,
      "cityLat": 35.6895,
-     "radiusKm": 375,
+     "radiusKm": 400,
      "octant": "west",
-     "text": "Last seen boarding a night bus 375 km west of Tokyo."
+     "text": "Last seen boarding a night bus 400 km west of Tokyo."
     },
     {
      "id": "s2",
@@ -2019,9 +2019,9 @@
      "cityName": "Anshan",
      "cityLon": 122.99,
      "cityLat": 41.12361,
-     "radiusKm": 1325,
+     "radiusKm": 1350,
      "octant": "south-east",
-     "text": "Last seen refueling a dusty pickup 1,325 km southeast of Anshan."
+     "text": "Last seen refueling a dusty pickup 1,350 km southeast of Anshan."
     }
    ]
   },
@@ -2054,9 +2054,9 @@
      "cityName": "Nanchong",
      "cityLon": 106.08473,
      "cityLat": 30.79508,
-     "radiusKm": 3275,
+     "radiusKm": 3300,
      "octant": "south-west",
-     "text": "Last seen asking a gas attendant for directions 3,275 km southwest of Nanchong."
+     "text": "Last seen asking a gas attendant for directions 3,300 km southwest of Nanchong."
     },
     {
      "id": "s3",
@@ -2100,9 +2100,9 @@
      "cityName": "San Juan",
      "cityLon": -66.10572,
      "cityLat": 18.46633,
-     "radiusKm": 2500,
+     "radiusKm": 2525,
      "octant": "north-west",
-     "text": "Last seen at a bus depot 2,500 km northwest of San Juan."
+     "text": "Last seen at a bus depot 2,525 km northwest of San Juan."
     },
     {
      "id": "s3",
@@ -2111,9 +2111,9 @@
      "cityName": "Manhattan",
      "cityLon": -73.96625,
      "cityLat": 40.78343,
-     "radiusKm": 1650,
+     "radiusKm": 1675,
      "octant": "south-west",
-     "text": "Last seen at a bus depot 1,650 km southwest of Manhattan."
+     "text": "Last seen at a bus depot 1,675 km southwest of Manhattan."
     }
    ]
   },
@@ -2135,9 +2135,9 @@
      "cityName": "Miguel Hidalgo",
      "cityLon": -99.20024,
      "cityLat": 19.43411,
-     "radiusKm": 3675,
+     "radiusKm": 3700,
      "octant": "north-east",
-     "text": "Last seen at a bus depot 3,675 km northeast of Miguel Hidalgo."
+     "text": "Last seen at a bus depot 3,700 km northeast of Miguel Hidalgo."
     },
     {
      "id": "s2",
@@ -2146,9 +2146,9 @@
      "cityName": "Santiago de Cuba",
      "cityLon": -75.82171,
      "cityLat": 20.02287,
-     "radiusKm": 2550,
+     "radiusKm": 2575,
      "octant": "north",
-     "text": "Last seen withdrawing cash from an ATM 2,550 km north of Santiago de Cuba."
+     "text": "Last seen withdrawing cash from an ATM 2,575 km north of Santiago de Cuba."
     },
     {
      "id": "s3",
@@ -2157,9 +2157,9 @@
      "cityName": "Surrey",
      "cityLon": -122.82509,
      "cityLat": 49.10635,
-     "radiusKm": 3975,
+     "radiusKm": 4000,
      "octant": "east",
-     "text": "Last seen boarding a night bus 3,975 km east of Surrey."
+     "text": "Last seen boarding a night bus 4,000 km east of Surrey."
     }
    ]
   },
@@ -2181,9 +2181,9 @@
      "cityName": "Montería",
      "cityLon": -75.87823,
      "cityLat": 8.75081,
-     "radiusKm": 1300,
+     "radiusKm": 1325,
      "octant": "west",
-     "text": "Last seen withdrawing cash from an ATM 1,300 km west of Montería."
+     "text": "Last seen withdrawing cash from an ATM 1,325 km west of Montería."
     },
     {
      "id": "s2",
@@ -2192,9 +2192,9 @@
      "cityName": "Coyoacán",
      "cityLon": -99.16174,
      "cityLat": 19.3467,
-     "radiusKm": 1475,
+     "radiusKm": 1500,
      "octant": "south-east",
-     "text": "Last seen hitching a ride from a trucker 1,475 km southeast of Coyoacán."
+     "text": "Last seen hitching a ride from a trucker 1,500 km southeast of Coyoacán."
     },
     {
      "id": "s3",
@@ -2203,9 +2203,9 @@
      "cityName": "Pereira",
      "cityLon": -75.69488,
      "cityLat": 4.81428,
-     "radiusKm": 1525,
+     "radiusKm": 1550,
      "octant": "north-west",
-     "text": "Last seen eating at a drive-through 1,525 km northwest of Pereira."
+     "text": "Last seen eating at a drive-through 1,550 km northwest of Pereira."
     }
    ]
   },
@@ -2238,9 +2238,9 @@
      "cityName": "Pokhara",
      "cityLon": 83.96851,
      "cityLat": 28.26689,
-     "radiusKm": 1750,
+     "radiusKm": 1775,
      "octant": "south-east",
-     "text": "Last seen sleeping in a parked car 1,750 km southeast of Pokhara."
+     "text": "Last seen sleeping in a parked car 1,775 km southeast of Pokhara."
     },
     {
      "id": "s3",
@@ -2249,9 +2249,9 @@
      "cityName": "Jeonju",
      "cityLon": 127.14889,
      "cityLat": 35.82194,
-     "radiusKm": 3700,
+     "radiusKm": 3725,
      "octant": "south-west",
-     "text": "Last seen asking a gas attendant for directions 3,700 km southwest of Jeonju."
+     "text": "Last seen asking a gas attendant for directions 3,725 km southwest of Jeonju."
     }
    ]
   },
@@ -2341,9 +2341,9 @@
      "cityName": "Manchester",
      "cityLon": -2.23743,
      "cityLat": 53.48095,
-     "radiusKm": 325,
+     "radiusKm": 350,
      "octant": "south-east",
-     "text": "Last spotted at a roadside diner 325 km southeast of Manchester."
+     "text": "Last spotted at a roadside diner 350 km southeast of Manchester."
     }
    ]
   },
@@ -2365,9 +2365,9 @@
      "cityName": "Elazığ",
      "cityLon": 39.22321,
      "cityLat": 38.67431,
-     "radiusKm": 3125,
+     "radiusKm": 3150,
      "octant": "west",
-     "text": "Last seen buying a burner phone 3,125 km west of Elazığ."
+     "text": "Last seen buying a burner phone 3,150 km west of Elazığ."
     },
     {
      "id": "s2",
@@ -2387,9 +2387,9 @@
      "cityName": "Cherepovets",
      "cityLon": 37.9,
      "cityLat": 59.13333,
-     "radiusKm": 3125,
+     "radiusKm": 3150,
      "octant": "south-west",
-     "text": "Last seen eating at a drive-through 3,125 km southwest of Cherepovets."
+     "text": "Last seen eating at a drive-through 3,150 km southwest of Cherepovets."
     }
    ]
   },
@@ -2411,9 +2411,9 @@
      "cityName": "Villa Nueva",
      "cityLon": -90.58544,
      "cityLat": 14.52512,
-     "radiusKm": 2200,
+     "radiusKm": 2225,
      "octant": "east",
-     "text": "Last seen filling jerrycans 2,200 km east of Villa Nueva."
+     "text": "Last seen filling jerrycans 2,225 km east of Villa Nueva."
     },
     {
      "id": "s2",
@@ -2422,9 +2422,9 @@
      "cityName": "Piura",
      "cityLon": -80.65715,
      "cityLat": -5.18192,
-     "radiusKm": 2900,
+     "radiusKm": 2925,
      "octant": "north",
-     "text": "Last seen eating at a drive-through 2,900 km north of Piura."
+     "text": "Last seen eating at a drive-through 2,925 km north of Piura."
     },
     {
      "id": "s3",
@@ -2479,9 +2479,9 @@
      "cityName": "Baotou",
      "cityLon": 109.84389,
      "cityLat": 40.6516,
-     "radiusKm": 975,
+     "radiusKm": 1000,
      "octant": "south-east",
-     "text": "Last seen eating at a drive-through 975 km southeast of Baotou."
+     "text": "Last seen eating at a drive-through 1,000 km southeast of Baotou."
     }
    ]
   },
@@ -2606,9 +2606,9 @@
      "cityName": "Yueyang",
      "cityLon": 113.09481,
      "cityLat": 29.37455,
-     "radiusKm": 2100,
+     "radiusKm": 2125,
      "octant": "east",
-     "text": "Last seen boarding a night bus 2,100 km east of Yueyang."
+     "text": "Last seen boarding a night bus 2,125 km east of Yueyang."
     },
     {
      "id": "s3",
@@ -2641,9 +2641,9 @@
      "cityName": "Yichang",
      "cityLon": 111.28472,
      "cityLat": 30.71444,
-     "radiusKm": 3150,
+     "radiusKm": 3175,
      "octant": "west",
-     "text": "Last seen asking a gas attendant for directions 3,150 km west of Yichang."
+     "text": "Last seen asking a gas attendant for directions 3,175 km west of Yichang."
     },
     {
      "id": "s2",
@@ -2663,9 +2663,9 @@
      "cityName": "Pimpri-Chinchwad",
      "cityLon": 73.80375,
      "cityLat": 18.61867,
-     "radiusKm": 950,
+     "radiusKm": 975,
      "octant": "east",
-     "text": "Last seen withdrawing cash from an ATM 950 km east of Pimpri-Chinchwad."
+     "text": "Last seen withdrawing cash from an ATM 975 km east of Pimpri-Chinchwad."
     }
    ]
   },
@@ -2698,9 +2698,9 @@
      "cityName": "Bijie",
      "cityLon": 105.28627,
      "cityLat": 27.30193,
-     "radiusKm": 2375,
+     "radiusKm": 2400,
      "octant": "north-east",
-     "text": "Last seen hitching a ride from a trucker 2,375 km northeast of Bijie."
+     "text": "Last seen hitching a ride from a trucker 2,400 km northeast of Bijie."
     },
     {
      "id": "s3",
@@ -2733,9 +2733,9 @@
      "cityName": "Rajshahi",
      "cityLon": 88.60114,
      "cityLat": 24.374,
-     "radiusKm": 1775,
+     "radiusKm": 1800,
      "octant": "south-east",
-     "text": "Last seen sleeping in a parked car 1,775 km southeast of Rajshahi."
+     "text": "Last seen sleeping in a parked car 1,800 km southeast of Rajshahi."
     },
     {
      "id": "s2",
@@ -2744,9 +2744,9 @@
      "cityName": "Kowloon City",
      "cityLon": 114.19222,
      "cityLat": 22.33047,
-     "radiusKm": 1325,
+     "radiusKm": 1350,
      "octant": "south-west",
-     "text": "Last seen boarding a night bus 1,325 km southwest of Kowloon City."
+     "text": "Last seen boarding a night bus 1,350 km southwest of Kowloon City."
     },
     {
      "id": "s3",
@@ -2755,9 +2755,9 @@
      "cityName": "Mandaluyong City",
      "cityLon": 121.0409,
      "cityLat": 14.5832,
-     "radiusKm": 1900,
+     "radiusKm": 1925,
      "octant": "west",
-     "text": "Last seen sleeping in a parked car 1,900 km west of Mandaluyong City."
+     "text": "Last seen sleeping in a parked car 1,925 km west of Mandaluyong City."
     }
    ]
   }

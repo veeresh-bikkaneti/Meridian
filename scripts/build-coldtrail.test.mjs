@@ -6,11 +6,12 @@ import { strict as assert } from "node:assert";
 import { test } from "node:test";
 import { buildDeck, vagueRadius } from "./build-coldtrail.mjs";
 
-test("vagueRadius rounds by hideout difficulty", () => {
-  assert.equal(vagueRadius(412, 2), 400); // tier 2 -> nearest 25
+test("vagueRadius ceils by hideout difficulty (player-fair)", () => {
+  assert.equal(vagueRadius(412, 2), 425); // tier 2 -> ceil to 25
   assert.equal(vagueRadius(418, 2), 425);
-  assert.equal(vagueRadius(412, 3), 400); // tier 3 -> nearest 50
+  assert.equal(vagueRadius(412, 3), 450); // tier 3 -> ceil to 50
   assert.equal(vagueRadius(438, 3), 450);
+  assert.equal(vagueRadius(400, 2), 400); // exact multiples stay put
   assert.ok(vagueRadius(3, 2) >= 25, "never collapses to zero");
 });
 

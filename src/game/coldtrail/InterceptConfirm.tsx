@@ -1,4 +1,4 @@
-import { useEffect, type JSX } from "react";
+import { useEffect, useRef, type JSX } from "react";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -13,6 +13,12 @@ export function InterceptConfirm({
   onConfirm: () => void;
   onCancel: () => void;
 }): JSX.Element {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    // Move focus into the sheet when it opens so keyboard and
+    // screen-reader users land on the decision, not behind the backdrop.
+    headingRef.current?.focus();
+  }, []);
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onCancel();
@@ -45,7 +51,7 @@ export function InterceptConfirm({
         <div className="flex min-h-0 flex-1 flex-col justify-end">
           <div className="px-6 pt-2">
             <p className="text-[11px] tracking-wider text-muted uppercase">Interception</p>
-            <h2 className="mt-1 text-xl font-semibold text-fg">Send the team here?</h2>
+            <h2 ref={headingRef} tabIndex={-1} className="mt-1 text-xl font-semibold text-fg">Send the team here?</h2>
             <p className="mt-1 text-sm text-muted">
               One shot — the smuggler moves on after this. Score is your distance
               from the true hideout.

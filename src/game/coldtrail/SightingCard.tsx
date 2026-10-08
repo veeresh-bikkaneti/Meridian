@@ -27,7 +27,9 @@ export function SightingCard({
   onInformant: () => void;
 }): JSX.Element {
   const radius = effectiveRadius(sighting, informantOn);
-  const canInform = ringPlaced && !informantOn && !revealed && stars >= INFORMANT_COST;
+  const informantUsed = informantOn || revealed;
+  const informantAffordable = stars >= INFORMANT_COST;
+  const showInformant = ringPlaced && !informantUsed;
   return (
     <article
       aria-label={`Sighting ${index + 1}: ${sighting.cityName}`}
@@ -40,7 +42,7 @@ export function SightingCard({
       <p className="mt-1 text-fg">{sighting.text}</p>
       <p className="mt-2 text-sm text-muted">
         Ring radius:{" "}
-        <span className="text-[#f2c14e]">~{Math.round(radius).toLocaleString("en-US")} km</span>
+        <span className="text-gold-ink">~{Math.round(radius).toLocaleString("en-US")} km</span>
         {informantOn ? " (informant tightened)" : ""}
         {ringPlaced ? "" : " — not on the map yet"}
       </p>
@@ -56,12 +58,23 @@ export function SightingCard({
               📍 Place ring on map
             </Button>
           ) : null}
-          {canInform ? (
+          {showInformant ? (
             <Button
               type="button"
               variant="secondary"
               data-testid="informant-btn"
               onClick={onInformant}
+              disabled={!informantAffordable}
+              title={
+                informantAffordable
+                  ? "Spend 1 star to tighten this ring to half its radius"
+                  : "Needs 1 star — close a case to earn one"
+              }
+              aria-label={
+                informantAffordable
+                  ? `Informant: tighten ring to half radius, costs ${INFORMANT_COST} star`
+                  : `Informant unavailable: needs ${INFORMANT_COST} star, you have ${stars}`
+              }
               className="min-h-[44px]"
             >
               🎙️ Informant: tighten 50% (1⭐)

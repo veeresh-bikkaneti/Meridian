@@ -1,4 +1,4 @@
-import { useState, type JSX } from "react";
+import { useEffect, useRef, useState, type JSX } from "react";
 import { formatDistance } from "@/game/geo";
 import { Button } from "@/components/ui/button";
 import { playConfirmGuess, playLose, playWin } from "@/game/audio/sfx";
@@ -30,11 +30,29 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   const [store, setStore] = useState<ColdTrailStore>(loadColdtrail);
   const [pending, setPending] = useState<{ lon: number; lat: number } | null>(null);
   const [hint, setHint] = useState<string | null>(null);
+  const caseHeadingRef = useRef<HTMLHeadingElement>(null);
+  const resultHeadingRef = useRef<HTMLHeadingElement>(null);
+  const prevRevealedRef = useRef(false);
+  const prevCaseIndexRef = useRef<number | null>(null);
 
   const commit = (next: ColdTrailStore) => {
     saveColdtrail(next);
     setStore(next);
   };
+
+  // Keep keyboard/screen-reader focus on the action: result heading on
+  // reveal, case heading when a new case is dealt. Reads store directly so
+  // the hook stays above the fail-closed early return.
+  const caseIndexNow = store.caseIndex;
+  const revealedNow = store.current?.revealed ?? false;
+  useEffect(() => {
+    if (revealedNow && !prevRevealedRef.current) resultHeadingRef.current?.focus();
+    prevRevealedRef.current = revealedNow;
+    if (prevCaseIndexRef.current !== null && prevCaseIndexRef.current !== caseIndexNow) {
+      caseHeadingRef.current?.focus();
+    }
+    prevCaseIndexRef.current = caseIndexNow;
+  }, [revealedNow, caseIndexNow]);
 
   const deckSize = coldtrailCaseCount();
   const caseData = deckSize > 0 ? getColdtrailCase(store.caseIndex) : null;
@@ -165,7 +183,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
           </p>
         </div>
         <p className="mt-4 text-[11px] tracking-wider text-muted uppercase">❄️ Cold Trail · Case file</p>
-        <h1 className="font-display mt-1 text-3xl text-fg">
+        <h1 ref={caseHeadingRef} tabIndex={-1} className="font-display mt-1 text-3xl text-fg">
           Case #{String(caseData.caseNo).padStart(3, "0")}
         </h1>
         <p className="mt-2 text-muted">
@@ -210,7 +228,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
         />
         {!revealed ? (
           <p className="text-xs text-muted" aria-hidden="true">
-            <span className="text-[#f2c14e]">gold ring</span>&thinsp;=&thinsp;witness sighting radius
+            <span className="text-gold-ink">gold ring</span>&thinsp;=&thinsp;witness sighting radius
             &ensp;·&ensp;tap where the rings cross to intercept
           </p>
         ) : null}
@@ -232,7 +250,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
           className="mt-6 rounded-xl border border-line bg-surface p-5"
         >
           <p className="text-[11px] tracking-wider text-muted uppercase">Case closed</p>
-          <h2 className="mt-1 text-2xl font-semibold text-fg">{verdict.title}</h2>
+          <h2 ref={resultHeadingRef} tabIndex={-1} className="mt-1 text-2xl font-semibold text-fg">{verdict.title}</h2>
           <p className="mt-2 text-fg">
             The hideout was <strong>{caseData.hideout.name}</strong>.
           </p>

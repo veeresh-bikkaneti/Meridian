@@ -76,7 +76,9 @@ function mulberry32(seed) {
 /** Vague-by-difficulty: tier 2 rounds to 25 km, tier 3 to 50 km. */
 export function vagueRadius(trueKm, difficulty) {
   const step = difficulty === 2 ? 25 : 50;
-  return Math.max(step, Math.round(trueKm / step) * step);
+  // Player-fair: ceil so the advertised ring never understates the true
+  // distance (round-to-nearest could undershoot by up to half a step).
+  return Math.max(step, Math.ceil(trueKm / step) * step);
 }
 
 const OCTANT_WORDS = {

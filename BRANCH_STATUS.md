@@ -36,7 +36,22 @@ interception guess → score reveal (km from the true hideout).
   trace-file ENOENT on context close — green on retry, unrelated to this change)
 
 ## Pending / open
-- No merge, no push (per task instructions).
+- No merge, no push (per task instructions — PAT handoff is the parent's call).
+- Pre-merge prep (rebased onto origin/main ae524e3 via --onto; base 7de5cc8 was
+  rewritten upstream):
+  - package.json test-script union (kept grandpa-tour.test.ts from main +
+    coldtrail suites); game-app.tsx kept Cold Trail card + main's
+    data-testid="tour-stop-editions"; BRANCH_STATUS kept branch version.
+  - Fuzzy-radius: Math.round → Math.ceil (player-fair; deck regenerated,
+    60 cases; generator test updated to ceil semantics).
+  - A11y pass: focus into InterceptConfirm on open; focus result heading on
+    reveal + case heading on next case; informant button now renders disabled
+    with reason when unaffordable (was hidden); --gold-ink theme token fixes
+    gold-text contrast in light mode (#8a6410). Reduced-motion already gated
+    (home-rise, map flyTo). Known limit: map tap is pointer-only (shared
+    LoopMap; same as the base loop edition) — keyboard crosshair is follow-up.
+  - Gates re-run on rebased tip: tsc clean, npm test full green, lint-cards
+    GATE PASSED, build:pages green, Playwright coldtrail 2/2.
 - Deferred per pitch: 30s blitz mode, 10min chain mode, streak multipliers.
 - Judgment call: difficulty-3 hideouts skipped — in this dataset tier 3 is
   overwhelmingly city districts/small towns (verified); tier-2 real cities
