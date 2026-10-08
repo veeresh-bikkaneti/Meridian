@@ -22,12 +22,12 @@ import {
  * Pilot places (arkansas chunk):
  *  - gn-4119403 Little Rock — wikidata fact
  *    "Founded in 1821 and named after The Little Rock." (qid Q33405)
- *  - gn-4099194 Alexander — no fact, no history; blurb only.
+ *  - gn-4099296 Alma — no fact, no history; blurb only.
  */
 
 const LITTLE_ROCK_FACT = "Founded in 1821 and named after The Little Rock.";
 const LITTLE_ROCK_QID_HREF = "https://www.wikidata.org/wiki/Q33405";
-const ALEXANDER_BLURB = "Alexander is a town in central Arkansas, the United States.";
+const ALMA_BLURB = "Alma is a town in northwestern Arkansas, the United States.";
 
 function singlePlaceRun(placeId: string) {
   return {
@@ -128,7 +128,7 @@ test("pilot: place WITH a fact renders the fact-first story + attribution", asyn
 test("pilot: place WITHOUT a fact renders the plain blurb", async ({
   page,
 }) => {
-  const errors = await seedRun(page, "gn-4099194");
+  const errors = await seedRun(page, "gn-4099296");
   await playToResult(page);
 
   // No fact prefix: the story is exactly the chunk blurb. Read from
@@ -143,7 +143,7 @@ test("pilot: place WITHOUT a fact renders the plain blurb", async ({
       .replace(/\s+/g, " ")
       .trim();
   });
-  expect(story).toBe(ALEXANDER_BLURB);
+  expect(story).toBe(ALMA_BLURB);
   // And no fact text leaked in from anywhere else on the card.
   await expect(page.getByText("Founded in 1821")).toHaveCount(0);
 
