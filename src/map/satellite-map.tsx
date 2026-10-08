@@ -671,7 +671,10 @@ export function SatelliteMap(props: {
     // instance means a new tile set, so reset even when the previous state
     // was ready/failed (mode switches, tile URL changes, Retry bumps).
     // On first mount this is a no-op (already the initial state).
-    dispatchTile({ type: "retry" });
+    // PBI-3: scout has no tile lifecycle — its initial "ready" stands.
+    // Resetting to "loading" here would wedge data-tile-status at
+    // "loading" forever (no scout dispatch ever leaves it).
+    if (props.mapMode !== "scout") dispatchTile({ type: "retry" });
 
     const edition = props.edition;
     const reducedMotion = prefersReducedMotion();

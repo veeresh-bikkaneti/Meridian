@@ -25,6 +25,8 @@ import {
   readStoredMapMode,
   seedManualMode,
   spoofCapableDevice,
+  flipMapModeToggle,
+  mapModeSwitch,
 } from "./scout-helpers";
 
 test.setTimeout(120_000);
@@ -61,7 +63,7 @@ test("toggle flips stored state and round-trips localStorage", async ({
 
   expect(await readStoredMapMode(page)).toBeNull();
 
-  await btn.click();
+  await flipMapModeToggle(page);
   expect((await readStoredMapMode(page))?.mode).toBe("scout");
 
   // Reload: the toggle reflects the stored state.
@@ -70,7 +72,7 @@ test("toggle flips stored state and round-trips localStorage", async ({
   await expect(mapModeButton(page)).toBeVisible({ timeout: 15_000 });
   expect((await readStoredMapMode(page))?.mode).toBe("scout");
 
-  await mapModeButton(page).click();
+  await flipMapModeToggle(page);
   expect((await readStoredMapMode(page))?.mode).toBe("full");
 });
 
@@ -90,13 +92,20 @@ test("toggle takes effect on the NEXT place mount — never a mid-round remount"
   });
   const modeBefore = await readMapMode(page);
 
-  // Toggle mid-round (aim phase): the map must NOT remount.
+  // Open the popover mid-round (aim phase): the map must NOT remount.
   await btn.click();
   await page.waitForTimeout(2_000);
   expect(await readPhase(page)).toBe("aim");
   expect(await mapWrapper(page).getAttribute("data-qa-mount-probe")).toBe("alive");
   expect(await readMapMode(page)).toBe(modeBefore);
   expect(await mapWrapper(page).count()).toBe(1);
+
+  // Now flip the switch (still mid-round): still no remount.
+  await mapModeSwitch(page).click();
+  await page.waitForTimeout(2_000);
+  expect(await readPhase(page)).toBe("aim");
+  expect(await mapWrapper(page).getAttribute("data-qa-mount-probe")).toBe("alive");
+  expect(await readMapMode(page)).toBe(modeBefore);
 
   // Advance to the next place: the NEW mount picks up the toggled mode.
   const runBefore = await readRun(page);

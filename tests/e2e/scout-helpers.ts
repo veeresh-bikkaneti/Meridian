@@ -132,8 +132,19 @@ export const offerModal = (page: Page) =>
 export const mapModeButton = (page: Page) =>
   page.getByTestId("map-mode-button");
 
+/** The switch row inside the toggle popover (the button only opens it). */
+export const mapModeSwitch = (page: Page) =>
+  page.getByRole("switch", { name: "Scout Map" });
+
+/** Open the popover and flip the switch — the full toggle interaction. */
+export async function flipMapModeToggle(page: Page): Promise<void> {
+  await mapModeButton(page).click();
+  await mapModeSwitch(page).click();
+}
+
 /** The mid-game switch note per the Phase A contract. */
-export const switchNote = (page: Page) => page.getByRole("status");
+export const switchNote = (page: Page) =>
+  page.getByTestId("scout-switch-note");
 
 /** The map wrapper; data-map-mode carries the active mode (proposed). */
 export const mapWrapper = (page: Page) => page.locator(".satellite-map");

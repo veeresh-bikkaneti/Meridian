@@ -81,12 +81,27 @@ Standing rules: PRs only, owner merges; named-file staging only; gates before ha
 - [x] PBI-6 map-attributed prior-crash boot offer — DONE (commit be6fa34).
 - [x] PBI-7 settings toggle UI — DONE (commit 7db37ed).
 - [x] PBI-8 observability: mapMode in crash reports + tile_failed counts — DONE (commit d29ad34).
-- [ ] PBI-9 E2E regression (SwiftShader/6x throttle + false-demotion golden) — Software Tester owns.
+- [~] PBI-9 E2E regression — coordinator landed the QA handoff: added
+  data-map-mode + data-max-zoom to the .satellite-map wrapper (zero behavior
+  change), Tab focus trap in ScoutBootOffer (a11y contract); test harness
+  fixed (one-shot crash seeding matching the app's exactly-once breadcrumb
+  rotation, capable-device spoof where specs must start full, poll-based
+  initial-focus). Final full-suite verification running on the final head.
 - [ ] PBI-10 PR opened, never merged.
 
 ## Notes
 - Review finding vs current main: tile_failed counts do NOT flow into crash reports — folded into PBI-8.
 - Spec correction made (2026-10-08): DPR premise corrected — touch devices already capped at 1.5 in map-options.ts.
+- Coordinator QA-landing fixes (2026-10-08, commit pending): the 15 initial E2E
+  failures were test-harness/contract gaps, not implementation bugs —
+  (1) re-seeding crash state on every reload (unrealistic: the app rotates the
+  breadcrumb exactly-once at boot); (2) specs needing a FULL start on a
+  SwiftShader VM (no capable-device spoof); (3) missing data-map-mode /
+  data-max-zoom attributes (dev's own report flagged them as still needed);
+  (4) no Tab trap in the offer modal (real a11y gap, now fixed).
+- Q1/Q2/Q3 semantics confirmed settled in code (dev report): offer fires on
+  fresh source==="prior-crash" only; stale auto records decay without
+  re-demotion; writeStoredMapMode only on new qualifying events.
 
 ## QA (Software Tester — updated 2026-10-08)
 - Gates (branch @ f07dad3 + QA commits, pre-scout-code): `npx tsc --noEmit` ✅ ·
