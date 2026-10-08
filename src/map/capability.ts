@@ -55,7 +55,12 @@ export interface MapModeDecision {
 }
 
 export interface CapabilitySignals {
-  /** Non-decayed stored assignment (manual wins at read time). */
+  /**
+   * The non-decayed stored assignment (a manual toggle, or an auto
+   * assignment inside its decay window) — a live assignment stands without
+   * re-qualification. The stored source is preserved on the decision so
+   * the app layer can tell a user choice from an auto assignment.
+   */
   manual?: StoredMapMode | null;
   /** A previous session crashed while the map was mounted (map-attributed). */
   priorMapCrash?: boolean;
@@ -78,7 +83,12 @@ export interface CapabilitySignals {
 export function qualifyMapMode(signals: CapabilitySignals = {}): MapModeDecision {
   const manual = signals.manual;
   if (manual && (manual.mode === "full" || manual.mode === "scout")) {
-    return { mode: manual.mode, source: "manual" };
+    // A live stored assignment stands — manual forever, auto inside its
+    // decay window. The stored source is preserved (never rewritten here).
+    return {
+      mode: manual.mode,
+      source: manual.source === "default" ? "manual" : manual.source,
+    };
   }
   if (signals.priorMapCrash === true) {
     return { mode: "scout", source: "prior-crash" };

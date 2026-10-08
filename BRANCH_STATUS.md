@@ -53,6 +53,16 @@ Standing rules: PRs only, owner merges; named-file staging only; gates before ha
   has a hard 5120-byte budget with 12 bytes of headroom (pre-PBI-8: 5108),
   and boot_failure fires when the app never boots — the map never mounted,
   so the mode isn't attributive for that failure class.
+- PBI-6: map-attributed prior-crash boot offer. observability.init()
+  detects unclean shutdown + trail ending at map_init_start/map_ready →
+  wasMapAttributedCrash(); GameApp boot effect qualifies pre-mount —
+  a FRESH source==="prior-crash" decision shows the dedicated modal
+  (fixed inset-0 z-50, role=dialog aria-modal, focus primary on open,
+  focus returns to home heading, data-testid=scout-boot-offer) on the home
+  render, once per boot; "Use Scout Map" writes manual scout, "Not now" /
+  Esc / scrim declines and stays full (Q1: offer, not force — the modal
+  fires on prior-crash ONLY). capability.ts preserves the stored source
+  on decisions (Q2 settlement).
 
 ## Pending (sequenced)
 - [ ] Phase A: Game Designer + UI/UX Expert finalize UX copy + settings placement.

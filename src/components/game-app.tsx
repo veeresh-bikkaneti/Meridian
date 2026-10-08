@@ -985,6 +985,48 @@ export function GameApp() {
     // null = transport disabled), then flush. Never throws.
     initObservability();
     installGlobalErrorHandlers();
+    // Scout Map boot qualification (PBI-1/PBI-6): resolve the mode
+    // pre-mount — before any map instance exists.
+    // Write policy (Q3): a live stored assignment (manual, or auto inside
+    // its decay window) stands WITHOUT a rewrite — rewriting per boot
+    // would refresh setAt and silently defeat decay. A fresh scout
+    // decision (new qualifying event) is the only boot-time write.
+    // Q1 (offer, not force): the boot offer modal fires on a fresh
+    // source === "prior-crash" decision ONLY, and the session stays in
+    // full mode until the player accepts.
+    try {
+      const stored = readStoredMapMode();
+      if (stored) {
+        setReportMapMode(stored.mode);
+        setMapMode(stored.mode);
+      } else {
+        const decision = qualifyMapMode({
+          priorMapCrash: wasMapAttributedCrash(),
+          webglProbeOk: probeWebGL(),
+          deviceMemoryGB: readDeviceMemoryGB(),
+        });
+        if (decision.source === "prior-crash") {
+          setReportMapMode("full");
+          if (!scoutOfferShownRef.current) {
+            scoutOfferShownRef.current = true;
+            setShowScoutOffer(true);
+          }
+        } else if (
+          decision.mode === "scout" &&
+          (decision.source === "probe" || decision.source === "low-memory")
+        ) {
+          // Fresh qualifying event (probe / low-memory) — persist it so
+          // the assignment survives until decay (Q2).
+          writeStoredMapMode("scout", decision.source);
+          setReportMapMode("scout");
+          setMapMode("scout");
+        } else {
+          setReportMapMode("full");
+        }
+      }
+    } catch {
+      // Qualification never blocks boot — full mode is the default.
+    }
     void loadFlags().then(() => {
       setObservabilityEndpoint(getObservabilityEndpoint());
     });
@@ -1752,6 +1794,12 @@ export function GameApp() {
     ) : null}
     {celebrationOverlay}
     {idleToast}
+    {/* PBI-6: the Scout Map boot offer — dedicated modal (never Comet,
+        which auto-dismisses). Fires on the home render only, once per
+        boot, when the map-attributed prior-crash flag is set. */}
+    {showScoutOffer ? (
+      <ScoutBootOffer onAccept={acceptScoutOffer} onDecline={declineScoutOffer} />
+    ) : null}
     </>
   );
 }
@@ -1834,8 +1882,10 @@ function Choose({
             of the h1, baseline-aligned title cartouche. DOM order (not a CSS
             visual move) so keyboard/screen-reader focus stays logical:
             invite → sound toggle → Comet → difficulty → cards (WCAG 2.4.3). */}
+        {/* PBI-6: the h1 is the focus target when the Scout Map boot offer
+            closes (data-testid="home-heading"). */}
         <div className="atlas-banner-row home-rise mt-4" style={rise(1)}>
-          <h1 className="atlas-title">
+          <h1 className="atlas-title" data-testid="home-heading" tabIndex={-1}>
             {BRAND.name}
           </h1>
           <CometMascot tutorialInviteVisible={tutorialInviteVisible} />
