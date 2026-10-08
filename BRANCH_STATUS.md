@@ -34,6 +34,15 @@ Standing rules: PRs only, owner merges; named-file staging only; gates before ha
   stores source+setAt; stale auto records decay to null; re-demotion needs a
   fresh qualifying event), Q3 (writeStoredMapMode only on new qualifying
   event/state change; resolveMapMode never writes).
+- PBI-5: webglcontextlost → state-preserving scout switch + deferred note.
+  satellite-map: `onWebglContextLost(view)` prop (viewport handoff, full-mode
+  mounts only — repeat-storm guard) + `initialView` prop (re-opens mid-SPACE
+  like the tile-Retry restore). GameApp owns mapMode (threaded Play →
+  PlayLoaded → SatelliteMap; remount via nonce-key, never mid-round);
+  switch writes meridian:map-mode=scout/"contextlost" (Q3). Deferred note:
+  GameApp-level sibling of ResultCard, fixed inset-x-4 top-16 z-50,
+  role="status", verbatim copy, keyed to switch event + place id, clears on
+  Continue/dismiss — never mid-round.
 
 ## Pending (sequenced)
 - [ ] Phase A: Game Designer + UI/UX Expert finalize UX copy + settings placement.

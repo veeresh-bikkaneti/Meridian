@@ -105,7 +105,21 @@ import {
   recordMilestone,
   sanitizeError,
   setObservabilityEndpoint,
+  setReportMapMode,
+  wasMapAttributedCrash,
 } from "@/lib/observability";
+import type { MapMode, MapModeSource } from "@/map/capability";
+import {
+  probeWebGL,
+  qualifyMapMode,
+  readDeviceMemoryGB,
+  readStoredMapMode,
+  writeStoredMapMode,
+} from "@/map/capability";
+import type { ScoutRestoreView } from "@/map/satellite-map";
+import { SCOUT_COPY } from "./scout-copy.ts";
+import { ScoutBootOffer } from "./scout-boot-offer.tsx";
+import { MapModeToggle } from "./map-mode-toggle.tsx";
 import {
   TUTORIAL_EDITION,
   TUTORIAL_PLACE_ID,
@@ -746,6 +760,39 @@ export function GameApp() {
   const readySignaledRef = useRef(false);
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
+  /**
+   * Scout Map (PBIs 5–7): the game map mode is owned HERE and threaded
+   * down as a prop — satellite-map unmounts on the webglcontextlost
+   * teardown (PBI-5), so the mode state can never live inside it.
+   * Full mode is the default; every assignment goes through
+   * applyMapMode (write policy Q3: only on a new qualifying event or an
+   * explicit state change — never rewritten per boot).
+   */
+  const [mapMode, setMapMode] = useState<MapMode>("full");
+  /** PBI-6: the boot offer modal (offer, not force) — once per boot. */
+  const [showScoutOffer, setShowScoutOffer] = useState(false);
+  const scoutOfferShownRef = useRef(false);
+
+  /**
+   * Apply a map-mode assignment: persist (Q3) + stamp crash reports +
+   * update state. Sources: "manual" (settings toggle, boot-offer accept),
+   * "contextlost" (the PBI-5 runtime tripwire — the only automatic switch).
+   */
+  const applyMapMode = useCallback((mode: MapMode, source: Extract<MapModeSource, "manual" | "contextlost">) => {
+    writeStoredMapMode(mode, source);
+    setReportMapMode(mode);
+    setMapMode(mode);
+  }, []);
+
+  const acceptScoutOffer = useCallback(() => {
+    applyMapMode("scout", "manual");
+    setShowScoutOffer(false);
+  }, [applyMapMode]);
+
+  const declineScoutOffer = useCallback(() => {
+    // Stay full; stamped shown-this-boot, so it never re-fires this boot.
+    setShowScoutOffer(false);
+  }, []);
   // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v2 and never touches the
   // run/drop keys. The open flag (meridian.loop.open) restores the screen
@@ -1454,6 +1501,8 @@ export function GameApp() {
           }}
           onReviewDeck={handleReviewDeck}
           onCleared={(info) => setCleared(info)}
+          mapMode={mapMode}
+          applyMapMode={applyMapMode}
           celebrationOpen={cleared !== null}
           ageBand={ageBand}
         />
@@ -2159,6 +2208,8 @@ function Play({
   onTutorialAdvance,
   onTutorialEnd,
   ageBand,
+  mapMode,
+  applyMapMode,
 }: {
   run: Run;
   session: Session | null;
@@ -2199,6 +2250,13 @@ function Play({
   onTutorialAdvance: (beat: TutorialBeat) => void;
   /** Skip/finish the tutorial: tear down the practice round. */
   onTutorialEnd: () => void;
+  /** Scout Map (PBIs 5–7): the game map mode, owned by GameApp. */
+  mapMode: MapMode;
+  /**
+   * Apply a mode assignment. The settings toggle passes "manual"; the
+   * PBI-5 webglcontextlost tripwire passes "contextlost".
+   */
+  applyMapMode: (mode: MapMode, source: "manual" | "contextlost") => void;
 }) {
   const [places, setPlaces] = useState<Starter[] | null>(null);
   const [poolError, setPoolError] = useState<string | null>(null);
@@ -2304,6 +2362,8 @@ function Play({
       onTutorialAdvance={onTutorialAdvance}
       onTutorialEnd={onTutorialEnd}
       ageBand={ageBand}
+      mapMode={mapMode}
+      applyMapMode={applyMapMode}
     />
   );
 }
@@ -2326,6 +2386,8 @@ function PlayLoaded({
   onTutorialAdvance,
   onTutorialEnd,
   ageBand,
+  mapMode,
+  applyMapMode,
 }: {
   run: Run;
   places: Starter[];
@@ -2369,6 +2431,13 @@ function PlayLoaded({
   onTutorialAdvance: (beat: TutorialBeat) => void;
   /** Skip/finish the tutorial: tear down the practice round. */
   onTutorialEnd: () => void;
+  /** Scout Map (PBIs 5–7): the game map mode, owned by GameApp. */
+  mapMode: MapMode;
+  /**
+   * Apply a mode assignment. The settings toggle passes "manual"; the
+   * PBI-5 webglcontextlost tripwire passes "contextlost".
+   */
+  applyMapMode: (mode: MapMode, source: "manual" | "contextlost") => void;
 }) {
   // Review-deck session: a synthetic Run reusing this game loop. The deck
   // queue (due order) is the pool; review answers never bank into the
@@ -2480,6 +2549,45 @@ function PlayLoaded({
   // belongs to the previous run.
   const [mapKey, setMapKey] = useState(0);
   const [summary, setSummary] = useState<SessionSummary | null>(null);
+  /**
+   * PBI-5: the webglcontextlost runtime tripwire — the ONLY automatic
+   * mid-game switch. Game state (run/place/aim/drop) lives above the map,
+   * so the remount loses nothing; the doomed viewport re-opens mid-SPACE
+   * via initialView (no page reload). Repeat storms are guarded: an
+   * already-scout mount never re-switches.
+   */
+  const [scoutSwitchView, setScoutSwitchView] = useState<ScoutRestoreView | null>(null);
+  const [mapRemountNonce, setMapRemountNonce] = useState(0);
+  /**
+   * PBI-5: the deferred switch note — keyed to the switch event + place
+   * id, rendered at the next game-natural break (story + revealDone),
+   * cleared on Continue / dismiss. Never mid-round.
+   */
+  const [scoutSwitchNote, setScoutSwitchNote] = useState<{ placeId: string } | null>(null);
+  const mapModeRef = useRef(mapMode);
+  mapModeRef.current = mapMode;
+
+  const handleWebglContextLost = useCallback(
+    (view: ScoutRestoreView) => {
+      if (mapModeRef.current !== "full") return;
+      applyMapMode("scout", "contextlost"); // Q3: new qualifying event
+      setScoutSwitchView(view);
+      setMapRemountNonce((n) => n + 1);
+      if (place) setScoutSwitchNote({ placeId: place.id });
+    },
+    [applyMapMode, place],
+  );
+
+  // The switch viewport is consumed by the remount it triggers; clear it
+  // when the place changes so later mounts never re-open a stale view.
+  const lastPlaceIdRef = useRef<string | null>(null);
+  useEffect(() => {
+    const id = place?.id ?? null;
+    if (lastPlaceIdRef.current !== id) {
+      lastPlaceIdRef.current = id;
+      setScoutSwitchView(null);
+    }
+  }, [place]);
   // Learning outcomes (flag-gated, observational). The store is read once
   // at boot after the shared flags load resolves; the boot-time flag value
   // is authoritative for the session (no mid-game surprises). Flag off =
@@ -3008,8 +3116,11 @@ function PlayLoaded({
         <MapErrorBoundary>
           <Suspense fallback={<MapLoadingFallback />}>
             <SatelliteMap
-              key={mapKeyForCard}
+              key={`${mapKeyForCard}:${mapRemountNonce}`}
               mode={mode}
+              mapMode={mapMode}
+              initialView={scoutSwitchView}
+              onWebglContextLost={handleWebglContextLost}
               edition={mapEdition}
               regionName={mapRegionName}
               bounds={bounds}
@@ -3184,7 +3295,12 @@ function PlayLoaded({
           empty={places.length === 0}
           dismissed={cardDismissed}
           onDismissedChange={setCardDismissed}
-          onContinue={tutorial ? onTutorialCardAdvance : onContinue}
+          onContinue={() => {
+            // PBI-5: the deferred switch note clears on Continue — it
+            // belongs to the round that was playing at switch time.
+            setScoutSwitchNote(null);
+            (tutorial ? onTutorialCardAdvance : onContinue)();
+          }}
           // Full dealing pool (not the banded subset): the nearest-place
           // fallback for the "Your pin" line scans it for the closest
           // same-territory place. Same array reference — no copy.
@@ -3198,6 +3314,32 @@ function PlayLoaded({
               : null
           }
         />
+      ) : null}
+      {/*
+        PBI-5: the deferred Scout Map switch note — GameApp-level, SIBLING
+        of ResultCard (never inside it). Renders only at the game-natural
+        break (story phase + reveal done), keyed to the switch event's
+        place id; a tap anywhere else leaves it for that round only.
+        fixed inset-x-4 top-16 z-50, role="status", one line + 44px dismiss.
+      */}
+      {scoutSwitchNote && place && scoutSwitchNote.placeId === place.id && run.phase === "story" && revealDone ? (
+        <div
+          data-testid="scout-switch-note"
+          role="status"
+          className="pointer-events-none fixed inset-x-4 top-16 z-50"
+        >
+          <div className="pointer-events-auto mx-auto flex max-w-md items-center gap-3 rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.85)] p-4 pl-5 text-white shadow-xl backdrop-blur-[14px]">
+            <p className="m-0 flex-1 text-sm leading-snug">{SCOUT_COPY.switchNote}</p>
+            <button
+              type="button"
+              aria-label="Dismiss"
+              onClick={() => setScoutSwitchNote(null)}
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 text-lg leading-none text-white/70 transition-colors hover:text-white"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+        </div>
       ) : null}
       {/* First-run tutorial beats. Beats 1–2 float over the map without
           intercepting taps (the overlay is pointer-transparent except its

@@ -96,6 +96,12 @@ export interface Breadcrumb {
   regionId?: string;
   chunkId?: string;
   device?: DeviceInfo;
+  /**
+   * PBI-8: tile-failure count for the current map mount (suggestive only —
+   * never a switch signal). Carried into suspected_crash via the stored
+   * trail so the Phase 0 measurement gate sees tile_failed counts.
+   */
+  tileErrors?: number;
 }
 
 export interface ObservabilityEvent {
@@ -312,6 +318,33 @@ export interface Observability {
   emitTileFailed: () => boolean;
   emitWebglContextLost: () => boolean;
   installGlobalHandlers: (target?: Window) => void;
+  /**
+   * PBI-6: true when the previous boot's trail says the page was killed
+   * while the map was mounted (last milestone map_init_start/map_ready).
+   * Set once during init(); drives the Scout Map boot offer (offer, not
+   * force — see capability.ts Q1).
+   */
+  wasMapAttributedCrash: () => boolean;
+  /** PBI-8: record the current map mount's tile-failure count on the trail. */
+  setTileErrorCount: (count: number) => void;
+}
+
+/**
+ * Milestones that mean "the map was mounted" — a crash whose trail ends
+ * here is map-attributed (PBI-6). Anything earlier (boot/data) is not.
+ */
+const MAP_ATTRIBUTED_MILESTONES = new Set(["map_init_start", "map_ready"]);
+
+/**
+ * PBI-8: the game map mode ("full" | "scout") carried on every emitted
+ * observability event, including crash reports. Set by the app shell
+ * (GameApp owns the mode); defaults to "full".
+ */
+let reportMapMode: "full" | "scout" = "full";
+
+/** PBI-8: set the map mode stamped on outbound observability events. */
+export function setReportMapMode(mode: "full" | "scout"): void {
+  reportMapMode = mode === "scout" ? "scout" : "full";
 }
 
 export function createObservability(deps: ObservabilityDeps = {}): Observability {
@@ -325,6 +358,8 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
   let breadcrumb: Breadcrumb | null = null;
   let initialized = false;
   let handlersInstalled = false;
+  /** PBI-6: set once in init() — the previous page died with the map mounted. */
+  let mapAttributedCrash = false;
   const queue: ObservabilityEvent[] = [];
 
   function readStoredBreadcrumb(): Breadcrumb | null {
@@ -388,6 +423,9 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
         // Coarse device bucket on every event (COPPA-safe: os/form only,
         // never raw UA) so alerts can say "ios/mobile" vs "desktop".
         device: event.device ?? coarseDeviceFacts(),
+        // PBI-8: every event (including crash reports) carries the game
+        // map mode — the Scout adoption / crash-delta signal.
+        mapMode: event.mapMode ?? reportMapMode,
       };
       if (!endpoint) {
         queue.push(enriched);
@@ -464,6 +502,11 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       } catch {
         unclean = false;
       }
+      // PBI-6: map-attributed crash detection — the previous page was
+      // killed AND its trail ends at a map-mounted milestone. This is the
+      // signal behind the Scout Map boot offer (offer, not force).
+      mapAttributedCrash =
+        unclean && !!prev && MAP_ATTRIBUTED_MILESTONES.has(prev.lastMilestone);
       if (unclean && prev) {
         // COPPA: the stored trail's device sub-object carries the raw UA
         // string (device.ua) — it must never leave the phone. Mirror the
@@ -520,6 +563,18 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
     return emit({ type: "webgl_context_lost", ts: now(), buildId, lastMilestone: breadcrumb?.lastMilestone, edition: breadcrumb?.edition, regionId: breadcrumb?.regionId });
   }
 
+  function setTileErrorCount(count: number): void {
+    try {
+      if (!breadcrumb) return;
+      const n = Number.isFinite(count) ? Math.max(0, Math.floor(count)) : 0;
+      if (breadcrumb.tileErrors === n) return;
+      breadcrumb.tileErrors = n;
+      persist();
+    } catch {
+      // Trail bookkeeping never breaks gameplay.
+    }
+  }
+
   function installGlobalHandlers(target?: Window): void {
     if (handlersInstalled) return;
     handlersInstalled = true;
@@ -549,6 +604,8 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
     emitTileFailed,
     emitWebglContextLost,
     installGlobalHandlers,
+    wasMapAttributedCrash: () => mapAttributedCrash,
+    setTileErrorCount,
   };
 }
 
@@ -623,5 +680,23 @@ export function emitWebglContextLost(): boolean {
     return getObservability().emitWebglContextLost();
   } catch {
     return false;
+  }
+}
+
+/** PBI-6: did the previous page die with the map mounted? Never throws. */
+export function wasMapAttributedCrash(): boolean {
+  try {
+    return getObservability().wasMapAttributedCrash();
+  } catch {
+    return false;
+  }
+}
+
+/** PBI-8: record the current map mount's tile-failure count. Never throws. */
+export function recordTileErrors(count: number): void {
+  try {
+    getObservability().setTileErrorCount(count);
+  } catch {
+    // ignore
   }
 }

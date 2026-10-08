@@ -54,6 +54,17 @@ export type MapVariation = {
   radiusKm: number;
 };
 
+/**
+ * PBI-5: a captured map viewport for state-preserving remounts (the
+ * webglcontextlost → Scout Map switch). Re-opens mid-SPACE — center, zoom
+ * AND projection — instead of replaying the intro.
+ */
+export interface ScoutRestoreView {
+  center: [number, number];
+  zoom: number;
+  projection: "globe" | "mercator";
+}
+
 const EMPTY = { type: "FeatureCollection" as const, features: [] };
 
 /**
@@ -397,6 +408,20 @@ export function SatelliteMap(props: {
    * mid-choreography.
    */
   onRevealComplete?: () => void;
+  /**
+   * PBI-5: fired when the live map canvas loses its WebGL context, after
+   * the observability emit. The owner (GameApp) switches to Scout Map and
+   * remounts with `initialView` — no page reload, no game-state loss.
+   * Only fires for full-mode mounts (an already-scout mount never
+   * re-switches — the repeat-storm guard).
+   */
+  onWebglContextLost?: (view: ScoutRestoreView) => void;
+  /**
+   * PBI-5: re-open the map on this viewport instead of the intro
+   * (the webglcontextlost switch's state preservation). Same shape and
+   * semantics as the tile-Retry restore.
+   */
+  initialView?: ScoutRestoreView | null;
 }): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -408,6 +433,10 @@ export function SatelliteMap(props: {
   const onClearAimRef = useRef(props.onClearAim);
   const onRevealCompleteRef = useRef(props.onRevealComplete);
   onRevealCompleteRef.current = props.onRevealComplete;
+  // PBI-5: the contextlost callback is owner-wired (GameApp performs the
+  // scout switch); read via ref so the canvas listener never goes stale.
+  const onWebglContextLostPropRef = useRef(props.onWebglContextLost);
+  onWebglContextLostPropRef.current = props.onWebglContextLost;
   const spotRef = useRef<{ lon: number; lat: number } | null>(null);
   spotRef.current = props.spot ?? null;
   const marksRef = useRef(props.marks);
@@ -646,7 +675,11 @@ export function SatelliteMap(props: {
     // and camera are restored, never replayed from the intro.
     const retryView = retryViewRef.current;
     retryViewRef.current = null;
-    const isRestore = retryView != null;
+    // PBI-5: the webglcontextlost switch passes the doomed map's viewport
+    // in as `initialView`; it re-opens mid-SPACE exactly like the
+    // tile-Retry restore (design §8).
+    const restoreView: ScoutRestoreView | null = props.initialView ?? retryView;
+    const isRestore = restoreView != null;
 
     // Resolve the atlas entry once per map instance. The polygon feeds the
     // highlight; camera math (settle framing, max bounds, big-miss) uses the
@@ -681,9 +714,9 @@ export function SatelliteMap(props: {
     // is below. maxBounds re-lands from the game's regions.ts box when the
     // restored projection is flat; the intro path starts unbounded and the
     // narrow beat lands maxBounds at completion.
-    const initialProjection = isRestore ? retryView.projection : "globe";
+    const initialProjection = isRestore ? restoreView.projection : "globe";
     const initialMaxBounds =
-      isRestore && retryView.projection === "mercator" ? (dto?.bounds ?? undefined) : undefined;
+      isRestore && restoreView.projection === "mercator" ? (dto?.bounds ?? undefined) : undefined;
 
     recordMilestone("map_init_start");
     // PBI-2: the game map mode is fail-closed to "full" — a missing or
@@ -730,8 +763,8 @@ export function SatelliteMap(props: {
               },
               layers: [{ id: IMAGERY_SOURCE, type: "raster", source: IMAGERY_SOURCE }],
             },
-      center: isRestore ? retryView.center : [0, 0],
-      zoom: isRestore ? retryView.zoom : 1,
+      center: isRestore ? restoreView.center : [0, 0],
+      zoom: isRestore ? restoreView.zoom : 1,
       // PBI-2: Scout Map bounds zoom-space per projection (3 flat / 2 globe);
       // full mode keeps the existing behavior exactly.
       maxZoom:
@@ -766,8 +799,27 @@ export function SatelliteMap(props: {
 
     // Observability: a lost WebGL context is a field signal for GPU /
     // memory pressure — emit on the shared (endpoint-gated) path.
+    // PBI-5: then hand the current viewport to the owner for the
+    // state-preserving Scout Map switch. Only full-mode mounts switch —
+    // an already-scout mount just reports (repeat-storm guard). The camera
+    // getters are JS-side state, so they survive the dead canvas; guarded
+    // so a failing read can never break the observability emit above.
     const onWebglContextLost = () => {
       emitWebglContextLost();
+      try {
+        if (mapModeRef.current !== "full") return;
+        const owner = onWebglContextLostPropRef.current;
+        if (!owner) return;
+        const liveMap = mapRef.current;
+        if (!liveMap) return;
+        owner({
+          center: liveMap.getCenter().toArray() as [number, number],
+          zoom: liveMap.getZoom(),
+          projection: projectionRef.current,
+        });
+      } catch {
+        // best-effort: the context-lost signal itself was already emitted.
+      }
     };
     try {
       map.getCanvas().addEventListener("webglcontextlost", onWebglContextLost);
