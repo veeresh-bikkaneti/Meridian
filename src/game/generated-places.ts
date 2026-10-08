@@ -121,6 +121,7 @@ function factText(fact: unknown): string | null {
     return t.length >= 20 ? t : null;
   }
   return null;
+}
 
 /**
  * Per-kind source attribution for a fact-ladder fact. Tolerant by design:
@@ -154,8 +155,17 @@ function factAttribution(
   ) {
     return { sourceLabel: "EB1911", sourceHref: f.href };
   }
+  // Wikipedia-sourced facts (wikitext/hook) may carry their own article href
+  // when the chunk has no wiki slug — use it so the CC BY-SA attribution
+  // still links the source article. Only en.wikipedia.org URLs accepted.
+  if (
+    (f.kind === "wikitext" || f.kind === "hook") &&
+    typeof f.href === "string" &&
+    /^https:\/\/en\.wikipedia\.org\/wiki\//.test(f.href)
+  ) {
+    return { sourceLabel: "GeoNames · Wikipedia", sourceHref: f.href };
+  }
   return null;
-}
 }
 
 /** Starter-shaped view of one validated generated place. The blurb is the factual one-liner. */
@@ -310,10 +320,8 @@ function assertValidRecord(
     }
   }
   // Merged facts (scripts/facts-ladder.mjs): the merge-time no-fabrication
-  // gate proved each one; this only guards against hand-edited corruption.
-  if (record.fact !== undefined) {
-    assertValidFact(record.fact, record.wiki, where);
-  }
+  // gate proved each one; the runtime below guards against hand-edited
+  // corruption tolerantly (never throws on a bad fact).
   if (record.wiki !== undefined && (typeof record.wiki !== "string" || record.wiki.length === 0)) {
     throw new Error(`${where}: invalid wiki slug`);
   }

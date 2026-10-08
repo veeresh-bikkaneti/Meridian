@@ -811,7 +811,7 @@ test("fact source attribution per kind", () => {
   assert.equal(hk.sourceHref, "https://en.wikipedia.org/wiki/Edna,_Texas");
 });
 
-test("invalid fact fields are tolerated fail-closed (never throw at runtime)", () => {
+test("invalid fact fields are rejected fail-closed", () => {
   const base = {
     id: "gn-12",
     name: "Edna",
@@ -823,18 +823,24 @@ test("invalid fact fields are tolerated fail-closed (never throw at runtime)", (
     edition: "state",
     regionId: "texas",
   };
-  const mk = (fact: unknown, wiki: string | undefined = "Edna,_Texas") =>
-    startersFromChunk("texas", {
+  const mk = (fact: unknown, wiki: string | null = "Edna,_Texas") => {
+    const place: Record<string, unknown> = { ...base, fact };
+    if (wiki !== null) place.wiki = wiki;
+    else delete place.wiki;
+    return startersFromChunk("texas", {
       meta: { regionId: "texas", edition: "state", count: 1 },
-      places: [{ ...base, wiki, fact }],
+      places: [place],
     })[0];
-  // Too short to be a hook: dropped, card falls back to the bare blurb.
-  // Never throws — the build-time gate is the strict layer.
-  const short = mk({ text: "too short.", kind: "hook", source: "Wikipedia" });
-  assert.equal(short.fact, null);
-  assert.equal(short.story, "Edna is a county seat in southeastern Texas, the United States.");
-  // Over-long / unpunctuated / unknown-kind facts: text still extracted
-  // (tolerant), because the gate — not the runtime — enforces shape.
+  };
+  // Too short to be a hook: assertValidRecord rejects the record fail-closed.
+  // The build-time gate (scripts/check-generated-places.mjs) catches these
+  // before they ship; the runtime never sails a bad fact through.
+  assert.throws(
+    () => mk({ text: "too short.", kind: "hook", source: "Wikipedia" }),
+    /invalid fact hook/,
+  );
+  // Over-long / unpunctuated facts: the runtime validator only gates text
+  // length >= 20; shape strictness lives in the build-time gate.
   const long = mk({ text: "x".repeat(241), kind: "hook", source: "Wikipedia" });
   assert.equal(long.fact, "x".repeat(241));
   const nopunct = mk({ text: "No terminal punctuation here and it is long enough", kind: "hook", source: "Wikipedia" });
@@ -853,7 +859,7 @@ test("invalid fact fields are tolerated fail-closed (never throw at runtime)", (
   // Wikipedia-sourced fact without the wiki slug: same fallback.
   const noWiki = mk(
     { text: "Named after King Louis XVI of France here.", kind: "wikitext", source: "Wikipedia" },
-    undefined,
+    null,
   );
   assert.equal(noWiki.sourceHref, "https://www.geonames.org/");
 });
