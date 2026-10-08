@@ -33,10 +33,17 @@ export const MAP_MODE_DECAY_MS = 7 * 24 * 60 * 60 * 1000;
 /** deviceMemory at or below this (GB) qualifies as a low-memory device. */
 export const LOW_MEMORY_GB = 2;
 
-export type MapModeSource = "manual" | "prior-crash" | "probe" | "low-memory" | "default";
+export type MapModeSource = "manual" | "prior-crash" | "probe" | "low-memory" | "contextlost" | "default";
 
 export interface StoredMapMode {
   mode: MapMode;
+  /**
+   * The qualifying event that produced this assignment (Q2): a stale
+   * record can never re-trigger scout on its own — after decay the record
+   * reads as absent and re-demotion requires a FRESH qualifying event
+   * (fresh probe/memory/crash signal at boot). Manual assignments never
+   * decay (the user's own choice).
+   */
   source: MapModeSource;
   /** Epoch ms when this assignment was written. */
   setAt: number;
@@ -107,7 +114,7 @@ export function readStoredMapMode(
     const source: MapModeSource =
       parsed.source === "manual"
         ? "manual"
-        : parsed.source === "prior-crash" || parsed.source === "probe" || parsed.source === "low-memory"
+        : parsed.source === "prior-crash" || parsed.source === "probe" || parsed.source === "low-memory" || parsed.source === "contextlost"
           ? parsed.source
           : "default";
     if (source !== "manual" && now - parsed.setAt > MAP_MODE_DECAY_MS) return null;
@@ -117,7 +124,13 @@ export function readStoredMapMode(
   }
 }
 
-/** Persist an assignment. Manual writes are the user override; never decayed. */
+/**
+ * Persist an assignment. Write policy (Q3): call ONLY on a new qualifying
+ * event or an explicit state change — manual toggle (PBI-7), boot-offer
+ * acceptance (PBI-6), webglcontextlost switch (PBI-5). NEVER rewrite on
+ * every boot: a boot-time rewrite would refresh setAt and silently defeat
+ * the 7-day decay. resolveMapMode() reads but never writes.
+ */
 export function writeStoredMapMode(
   mode: MapMode,
   source: Exclude<MapModeSource, "default">,
@@ -218,7 +231,12 @@ export interface ResolveMapModeOptions {
  * Pre-mount convenience wrapper: reads the (decay-applied) stored mode,
  * runs the boot probe + memory signal, and qualifies in the settled order.
  * Guarded for SSR / no-window — returns `{ mode: "full", source: "default" }`
- * when no DOM is available. Never throws.
+ * when no DOM is available. Never throws. Reads but never writes (Q3).
+ *
+ * Q1 (offer, not force): when the returned source is "prior-crash", the
+ * caller MUST show the boot offer modal and keep the session in full mode
+ * until the user accepts — a prior-crash scout decision never applies
+ * silently.
  */
 export function resolveMapMode(options: ResolveMapModeOptions = {}): MapModeDecision {
   try {

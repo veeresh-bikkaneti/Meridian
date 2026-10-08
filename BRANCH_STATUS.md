@@ -28,6 +28,12 @@ Standing rules: PRs only, owner merges; named-file staging only; gates before ha
   satellite-map drops to it when scout outline construction/render fails;
   reveal completes immediately so scoring/rounds proceed.
   Gates: tsc clean, lint-cards GATE PASSED, build:pages green.
+- QA handover: `src/map/capability.test.ts` added to the `npm test` script
+  (22/22 pass); capability.ts documents the settled semantics — Q1 (offer on
+  source==="prior-crash" only, enforced by the PBI-6 boot modal), Q2 (record
+  stores source+setAt; stale auto records decay to null; re-demotion needs a
+  fresh qualifying event), Q3 (writeStoredMapMode only on new qualifying
+  event/state change; resolveMapMode never writes).
 
 ## Pending (sequenced)
 - [ ] Phase A: Game Designer + UI/UX Expert finalize UX copy + settings placement.
