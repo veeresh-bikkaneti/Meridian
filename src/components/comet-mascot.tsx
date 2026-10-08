@@ -10,12 +10,15 @@ const PAPER = "#f0e7d2";
 const BODY = "#31456f";
 const BODY_LIGHT = "#4a5f92";
 
-// 8-sector cursor math (mascot spec §5): 70px dead zone around the mascot,
+// 8-sector cursor math (mascot spec §5): 90px dead zone around the mascot,
 // 0.12 rad of hysteresis slack around each sector boundary so the head
 // doesn't jitter when the pointer sits on a boundary.
-const DEAD_ZONE_PX = 70;
+// Veeresh 2026-10-07: at the banner the gaze is DAMPENED — Comet greets like
+// a host looking down at the cards, not a watchdog tracking the cursor.
+const DEAD_ZONE_PX = 90;
 const HYSTERESIS_RAD = 0.12;
 const SECTOR = Math.PI / 4; // 45°
+const GAZE_DAMPEN = 0.6; // head/pupil travel scaled down at the banner
 
 // Head offsets in SVG units per sector, ordered E, SE, S, SW, W, NW, N, NE
 // (atan2 in y-down screen coords: 0 = east, +90° = south). Pupils move at
@@ -72,8 +75,17 @@ type BoopState = "idle" | "booped" | "dizzy";
  * Comet — the star-dragon pup hosting the Chart Room home page.
  * Inline SVG (zero external assets), transform-only animation.
  * Home page only: mounted by the edition picker, never in-game.
+ *
+ * Veeresh 2026-10-07: Comet hosts from the banner — in-flow, right of the
+ * h1, composed with a brass armillary ring (never a literal globe).
  */
-export function CometMascot() {
+export function CometMascot({
+  tutorialInviteVisible = false,
+}: {
+  /** True while the first-run tutorial invite is on screen — the
+      auto-greeting stays quiet until it's dismissed. */
+  tutorialInviteVisible?: boolean;
+}) {
   const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
   // Veeresh 2026-10-06: tracking works for all pointer types (mouse + touch).
   // Mouse: head follows pointermove. Touch: head looks at the last tap
@@ -276,19 +288,12 @@ export function CometMascot() {
     return () => window.removeEventListener("comet:edition-select", onEditionSelect);
   }, [handleBoop, later]);
 
-  // Ko-fi sign tap (Veeresh 2026-10-07): the sign lives outside CometMascot,
-  // so it asks for the happy boop via event — same decoupled pattern as
-  // comet:edition-select. Reduced-motion is handled inside handleBoop
-  // (its WAAPI animation no-ops); the happy eyes still show briefly.
-  useEffect(() => {
-    const onKoFiBoop = () => handleBoop();
-    window.addEventListener("comet:boop", onKoFiBoop);
-    return () => window.removeEventListener("comet:boop", onKoFiBoop);
-  }, [handleBoop]);
-
   const [hx, hy] = sector === -1 ? [0, 0] : HEAD_OFFSETS[sector];
-  const px = hx * PUPIL_SCALE;
-  const py = hy * PUPIL_SCALE;
+  // Dampened at the banner: smaller travel, calmer host.
+  const dhx = hx * GAZE_DAMPEN;
+  const dhy = hy * GAZE_DAMPEN;
+  const px = dhx * PUPIL_SCALE;
+  const py = dhy * PUPIL_SCALE;
 
   return (
     <div
@@ -296,26 +301,33 @@ export function CometMascot() {
       data-greeting={greetingOpen ? "open" : "closed"}
       data-testid="comet-wrap"
     >
-      <CometGreeting onOpenChange={setGreetingOpen} />
-      {reaction ? (
-        <div
-          className="comet-greeting comet-reaction"
-          data-testid="comet-reaction"
-          role="status"
+      {/* Title-cartouche emblem: brass armillary ring behind Comet, one
+          overlapped lockup. Static, decorative — never a literal globe. */}
+      <div className="comet-emblem">
+        <svg
+          className="comet-armillary"
+          viewBox="0 0 100 100"
+          aria-hidden="true"
+          focusable="false"
         >
-          <p className="comet-greeting-text">{reaction}</p>
-        </div>
-      ) : null}
-      <button
-        ref={btnRef}
-        type="button"
-        className="comet-mascot"
-        data-testid="comet-mascot"
-        data-state={boopState}
-        data-tracking={tracking ? "on" : "off"}
-        aria-label="Comet the star-dragon pup. Activate to boop."
-        onClick={handleBoop}
-      >
+          <circle cx="50" cy="50" r="46" fill="none" stroke={BRASS} strokeWidth="2.5" />
+          <ellipse cx="50" cy="50" rx="46" ry="18" fill="none" stroke={BRASS} strokeWidth="1.75" />
+          <ellipse cx="50" cy="50" rx="18" ry="46" fill="none" stroke={BRASS} strokeWidth="1.75" />
+          <circle cx="50" cy="50" r="3" fill={BRASS} />
+        </svg>
+        {/* Dark-theme contrast backplate: Comet's midnight body is 1.72:1 on
+            the dark banner (needs 3:1). Hidden in light theme. */}
+        <span className="comet-backplate" aria-hidden="true" />
+        <button
+          ref={btnRef}
+          type="button"
+          className="comet-mascot"
+          data-testid="comet-mascot"
+          data-state={boopState}
+          data-tracking={tracking ? "on" : "off"}
+          aria-label="Comet the star-dragon pup. Activate to boop."
+          onClick={handleBoop}
+        >
         <svg
           className="comet-svg"
           data-eyes={eyes}
@@ -350,8 +362,8 @@ export function CometMascot() {
           <ellipse cx="60" cy="80" rx="30" ry="28" fill={BODY} />
           <ellipse cx="60" cy="80" rx="30" ry="28" fill="none" stroke={INK} strokeWidth="3" />
           <ellipse cx="60" cy="90" rx="17" ry="14" fill={BODY_LIGHT} opacity="0.9" />
-          {/* head — translates toward the cursor when tracking */}
-          <g className="comet-head" style={{ transform: `translate(${hx}px, ${hy}px)` }}>
+          {/* head — translates toward the cursor when tracking (dampened) */}
+          <g className="comet-head" style={{ transform: `translate(${dhx}px, ${dhy}px)` }}>
             <circle cx="60" cy="46" r="19" fill={BODY} stroke={INK} strokeWidth="3" />
             {/* brass head spikes */}
             <polygon points="46,31 50,22 54,31" fill={BRASS} stroke={INK} strokeWidth="1.5" />
@@ -385,6 +397,19 @@ export function CometMascot() {
           </g>
         </svg>
       </button>
+      </div>
+      {/* Greeting + reaction bubbles open DOWNWARD from the banner emblem
+          (tail up) — the old upward bubble would cover the tour invite. */}
+      <CometGreeting onOpenChange={setGreetingOpen} suppressAuto={tutorialInviteVisible} />
+      {reaction ? (
+        <div
+          className="comet-greeting comet-reaction"
+          data-testid="comet-reaction"
+          role="status"
+        >
+          <p className="comet-greeting-text">{reaction}</p>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -507,6 +507,22 @@
   text-wrap: balance;
 }
 
+/* Veeresh 2026-10-07: title cartouche — the h1 + Comet emblem share the
+   banner row, baseline-aligned. The h1 keeps primacy: it flexes, the emblem
+   is fixed-size and never forces the title to shrink. */
+.atlas-banner-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.atlas-banner-row .atlas-title {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .atlas-tagline {
   max-width: 34rem;
   font-size: 1.075rem;

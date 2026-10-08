@@ -73,7 +73,9 @@
 
 /* ============ Grandpa walker (the tappable region) ============ */
 .grandpa-walker {
-  --park-right: calc(max(14px, env(safe-area-inset-right, 0px)) + 132px + 18px);
+  /* Veeresh 2026-10-07: the fixed bottom-right Comet is retired — no
+     mascot footprint dodge, just safe-area + margin. */
+  --park-right: calc(max(14px, env(safe-area-inset-right, 0px)) + 18px);
   --gw: 84px;
   position: fixed;
   left: calc(100vw - var(--park-right) - var(--gw));
@@ -908,32 +910,29 @@
  * re-scoped from the viewport to the strip width. The band is full-bleed
  * so vw units keep working.
  *
- * - The walker parks with a Comet offset: the centered 200px cloud
- *   (231px rendered, content-box) keeps an 8px clear gap from Comet's
- *   fixed 80px footprint.
+ * - The walker parks with breathing room at the strip's right edge.
  * - The ask is present on arrival: the cloud is never animation-gated on
  *   mobile — the stroll plays inside the strip behind it.
  * - One ask per strip: the aria-hidden mid-walk cheers text stays a
  *   desktop beat; the cloud is the single ask here.
- * - The band reserves bottom clearance >= Comet's fixed footprint so the
- *   strip's interactive content never scrolls under it.
+ * - The band reserves bottom safe-area clearance so the strip's
+ *   interactive content never scrolls under the viewport edge.
  * - A brass rule opens the band so it reads as "camp corner", not a
  *   fifth edition card. */
 @media (max-width: 1023.5px) {
   .grandpa-scene {
-    /* Bottom clearance so the strip's interactive content never scrolls
-     * under Comet's fixed footprint (Comet height + bottom offset + 1rem
-     * breathing room). NOTE: margin-bottom does NOT extend the scrollable
-     * area under html,body{height:100%}, so the clearance is built into
-     * the band instead — the walker and path sit --comet-clearance above
-     * the band's bottom edge, and min-height covers the whole stack. */
-    --comet-clearance: calc(
-      80px + max(14px, env(safe-area-inset-bottom, 0px)) + 1rem
+    /* Bottom clearance: safe-area + breathing room. The fixed bottom-right
+     * Comet is retired (2026-10-07: he hosts from the banner now), so no
+     * mascot footprint dodge is needed. NOTE: margin-bottom does NOT extend
+     * the scrollable area under html,body{height:100%}, so the clearance is
+     * built into the band instead. */
+    --bottom-clearance: calc(
+      max(14px, env(safe-area-inset-bottom, 0px)) + 1rem
     );
     position: relative;
     inset: auto;
-    /* walker + gate-state cloud + gaps + Comet clearance, no clipping */
-    min-height: calc(var(--comet-clearance) + 17rem);
+    /* walker + gate-state cloud + gaps, no clipping */
+    min-height: calc(var(--bottom-clearance) + 17rem);
     /* The walker travels in from off the left edge; as an absolutely
      * positioned (not fixed) element that would add horizontal scrollable
      * overflow. Clip x only — y stays visible so the kettle's drop from
@@ -958,15 +957,15 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: calc(6px + var(--comet-clearance));
+    bottom: calc(6px + var(--bottom-clearance));
   }
 
   .grandpa-walker {
-    --park-right: calc(max(14px, env(safe-area-inset-right, 0px)) + 172px);
+    --park-right: calc(max(14px, env(safe-area-inset-right, 0px)) + 18px);
     --gw: 64px;
     position: absolute;
     left: calc(100% - var(--park-right) - var(--gw));
-    bottom: calc(1rem + var(--comet-clearance));
+    bottom: calc(1rem + var(--bottom-clearance));
   }
 
   .grandpa-donation-bubble {
@@ -1002,15 +1001,14 @@
 
 @media (max-height: 599.5px) {
   .grandpa-scene {
-    /* Short viewports get the 64px Comet — shrink the clearance to match. */
-    --comet-clearance: calc(
-      64px + max(14px, env(safe-area-inset-bottom, 0px)) + 1rem
+    /* Short viewports: safe-area clearance only (no mascot footprint). */
+    --bottom-clearance: calc(
+      max(14px, env(safe-area-inset-bottom, 0px)) + 1rem
     );
   }
 
   .grandpa-walker {
-    /* Keep the cloud clear of Comet's 64px short-viewport footprint. */
-    --park-right: calc(max(14px, env(safe-area-inset-right, 0px)) + 144px);
+    --park-right: calc(max(14px, env(safe-area-inset-right, 0px)) + 18px);
     --gw: 56px;
   }
 
