@@ -75,6 +75,19 @@
   border-radius: 24px;
 }
 
+/* The brass ring overhangs the button (10px desktop, 6px mobile) — extend
+   the tap target to cover it so taps on the ring boop too. */
+.comet-mascot::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+}
+@media (max-width: 1023.5px) {
+  .comet-mascot::before {
+    inset: -6px;
+  }
+}
+
 /* Size ladder: 72–88px desktop · ≤64px mobile · 64px on short viewports.
    The h1 keeps primacy — the emblem never forces the title to shrink. */
 @media (max-width: 1023.5px) {

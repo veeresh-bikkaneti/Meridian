@@ -161,7 +161,7 @@ test("Comet hosts from the banner: in-flow, right of the h1, desktop size", asyn
   expectCleanConsole(errors);
 });
 
-test("greeting bubble opens below Comet and covers no banner chrome", async ({
+test("greeting bubble opens below Comet as an overlay (no layout shift)", async ({
   page,
 }) => {
   const errors = await loadHome(page);
@@ -183,7 +183,13 @@ test("greeting bubble opens below Comet and covers no banner chrome", async ({
   // Covers nothing in the banner zone.
   noOverlap("greeting", gBox, "sound toggle", await page.getByTestId("sound-toggle").boundingBox());
   noOverlap("greeting", gBox, "h1", await page.locator("h1.atlas-title").boundingBox());
-  noOverlap("greeting", gBox, "tagline", await page.locator(".atlas-tagline").boundingBox());
+
+  // Overlay, not in-flow: dismissing the bubble must not move page content.
+  const taglineYOpen = (await page.locator(".atlas-tagline").boundingBox())!.y;
+  await bubble.click({ position: { x: 20, y: 20 } });
+  await expect(bubble).toBeHidden();
+  const taglineYClosed = (await page.locator(".atlas-tagline").boundingBox())!.y;
+  expect(taglineYClosed).toBe(taglineYOpen);
   expectCleanConsole(errors);
 });
 
