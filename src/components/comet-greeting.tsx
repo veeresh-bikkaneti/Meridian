@@ -30,7 +30,18 @@ const DISMISS_AFTER_SPEAKER_MS = 2000;
 
 type AudioState = "idle" | "playing" | "ended" | "failed";
 
-export function CometGreeting({ onOpenChange }: { onOpenChange?: (open: boolean) => void }) {
+export function CometGreeting({
+  onOpenChange,
+  suppressAuto = false,
+}: {
+  onOpenChange?: (open: boolean) => void;
+  /**
+   * Veeresh 2026-10-07: while the first-run tutorial invite is visible, the
+   * auto-greeting stays quiet — the two popups must never compete. When it
+   * flips false, the greeting starts (once).
+   */
+  suppressAuto?: boolean;
+}) {
   const [visible, setVisible] = useState(false);
   const [wordsShown, setWordsShown] = useState(0);
   const [soundOn, setSoundOn] = useState(true);
@@ -141,6 +152,9 @@ export function CometGreeting({ onOpenChange }: { onOpenChange?: (open: boolean)
 
   // Decision 3: hold audio until the first user interaction, anywhere.
   useEffect(() => {
+    // Suppressed while the tutorial invite is on screen — the effect
+    // re-runs when suppressAuto flips false and starts the greeting then.
+    if (suppressAuto) return;
     // Veeresh 2026-10-06: greet on every home page visit (not once per day).
     // Muting is via the global sound toggle — isSoundEnabled() gates audio below.
     const index = greetingIndexFor();
@@ -203,8 +217,9 @@ export function CometGreeting({ onOpenChange }: { onOpenChange?: (open: boolean)
       audioRef.current = null;
     };
     // Mount-once orchestration; all live values flow through refs.
+    // Re-runs once when suppressAuto flips false (tutorial invite dismissed).
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [suppressAuto]);
 
   // Decision 2: sound OFF → a speaker icon that plays the greeting once
   // without touching the global meridian.sound toggle.
