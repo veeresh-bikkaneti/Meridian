@@ -1,0 +1,2765 @@
+{
+ "v": 1,
+ "cases": [
+  {
+   "v": 1,
+   "caseNo": 1,
+   "hideout": {
+    "placeId": "gn-265488",
+    "name": "Acharnés",
+    "lon": 23.73333,
+    "lat": 38.08333,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Fri 14:31",
+     "cityId": "gn-738377",
+     "cityName": "Umraniye",
+     "cityLon": 29.12476,
+     "cityLat": 41.01643,
+     "radiusKm": 575,
+     "octant": "south-west",
+     "text": "Last seen eating at a drive-through 575 km southwest of Umraniye."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 05:21",
+     "cityId": "gn-118743",
+     "cityName": "Rasht",
+     "cityLon": 49.58862,
+     "cityLat": 37.27611,
+     "radiusKm": 2275,
+     "octant": "west",
+     "text": "Last seen filling jerrycans 2,275 km west of Rasht."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 05:09",
+     "cityId": "gn-2339354",
+     "cityName": "Ibadan",
+     "cityLon": 3.90591,
+     "cityLat": 7.37756,
+     "radiusKm": 3950,
+     "octant": "north-east",
+     "text": "Last seen asking a gas attendant for directions 3,950 km northeast of Ibadan."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 2,
+   "hideout": {
+    "placeId": "gn-7302835",
+    "name": "Metpalle",
+    "lon": 78.62563,
+    "lat": 18.84724,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 15:52",
+     "cityId": "gn-1572532",
+     "cityName": "Nghi Sơn",
+     "cityLon": 105.82145,
+     "cityLat": 19.32746,
+     "radiusKm": 2850,
+     "octant": "west",
+     "text": "Last spotted at a roadside diner 2,850 km west of Nghi Sơn."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 20:19",
+     "cityId": "gn-1268773",
+     "cityName": "Jūnāgadh",
+     "cityLon": 70.45981,
+     "cityLat": 21.51966,
+     "radiusKm": 900,
+     "octant": "east",
+     "text": "Last spotted at a roadside diner 900 km east of Jūnāgadh."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 06:22",
+     "cityId": "gn-1269633",
+     "cityName": "Jabalpur",
+     "cityLon": 79.95006,
+     "cityLat": 23.16697,
+     "radiusKm": 500,
+     "octant": "south",
+     "text": "Last seen withdrawing cash from an ATM 500 km south of Jabalpur."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 3,
+   "hideout": {
+    "placeId": "gn-4889772",
+    "name": "Des Plaines",
+    "lon": -87.8834,
+    "lat": 42.03336,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 09:17",
+     "cityId": "gn-4671240",
+     "cityName": "Arlington",
+     "cityLon": -97.10807,
+     "cityLat": 32.73569,
+     "radiusKm": 1325,
+     "octant": "north-east",
+     "text": "Last seen boarding a night bus 1,325 km northeast of Arlington."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 19:07",
+     "cityId": "gn-3521081",
+     "cityName": "Puebla",
+     "cityLon": -98.20723,
+     "cityLat": 19.04778,
+     "radiusKm": 2725,
+     "octant": "north",
+     "text": "Last seen boarding a night bus 2,725 km north of Puebla."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 18:00",
+     "cityId": "gn-5746545",
+     "cityName": "Portland",
+     "cityLon": -122.67621,
+     "cityLat": 45.52345,
+     "radiusKm": 2800,
+     "octant": "east",
+     "text": "Last seen sleeping in a parked car 2,800 km east of Portland."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 4,
+   "hideout": {
+    "placeId": "gn-2403094",
+    "name": "Waterloo",
+    "lon": -13.07091,
+    "lat": 8.3389,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 18:24",
+     "cityId": "gn-2228373",
+     "cityName": "Maroua",
+     "cityLon": 14.31593,
+     "cityLat": 10.59095,
+     "radiusKm": 3025,
+     "octant": "west",
+     "text": "Last seen hitching a ride from a trucker 3,025 km west of Maroua."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 14:35",
+     "cityId": "gn-13608165",
+     "cityName": "Kima Kieza",
+     "cityLon": 13.29517,
+     "cityLat": -8.83411,
+     "radiusKm": 3500,
+     "octant": "north-west",
+     "text": "Last seen at a bus depot 3,500 km northwest of Kima Kieza."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 06:58",
+     "cityId": "gn-2464470",
+     "cityName": "Tunis",
+     "cityLon": 10.16579,
+     "cityLat": 36.81897,
+     "radiusKm": 3950,
+     "octant": "south-west",
+     "text": "Last seen eating at a drive-through 3,950 km southwest of Tunis."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 5,
+   "hideout": {
+    "placeId": "gn-6822112",
+    "name": "Chikuma",
+    "lon": 138.08943,
+    "lat": 36.52715,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Fri 20:00",
+     "cityId": "gn-1797658",
+     "cityName": "Jinjiang",
+     "cityLon": 118.57415,
+     "cityLat": 24.81978,
+     "radiusKm": 2275,
+     "octant": "north-east",
+     "text": "Last seen withdrawing cash from an ATM 2,275 km northeast of Jinjiang."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 07:30",
+     "cityId": "gn-2038180",
+     "cityName": "Changchun",
+     "cityLon": 125.32278,
+     "cityLat": 43.88,
+     "radiusKm": 1350,
+     "octant": "south-east",
+     "text": "Last seen hitching a ride from a trucker 1,350 km southeast of Changchun."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 10:16",
+     "cityId": "gn-1838524",
+     "cityName": "Busan",
+     "cityLon": 129.03004,
+     "cityLat": 35.10168,
+     "radiusKm": 825,
+     "octant": "east",
+     "text": "Last seen sleeping in a parked car 825 km east of Busan."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 6,
+   "hideout": {
+    "placeId": "gn-1849904",
+    "name": "Tosu",
+    "lon": 130.51667,
+    "lat": 33.36667,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 08:49",
+     "cityId": "gn-1502026",
+     "cityName": "Krasnoyarsk",
+     "cityLon": 92.93136,
+     "cityLat": 56.03742,
+     "radiusKm": 3825,
+     "octant": "south-east",
+     "text": "Last seen buying a burner phone 3,825 km southeast of Krasnoyarsk."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 19:59",
+     "cityId": "gn-1787031",
+     "cityName": "Yanzhou",
+     "cityLon": 116.82861,
+     "cityLat": 35.55278,
+     "radiusKm": 1275,
+     "octant": "east",
+     "text": "Last seen hitching a ride from a trucker 1,275 km east of Yanzhou."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 20:06",
+     "cityId": "gn-1865387",
+     "cityName": "Amagasaki",
+     "cityLon": 135.41667,
+     "cityLat": 34.71667,
+     "radiusKm": 475,
+     "octant": "west",
+     "text": "Last seen sleeping in a parked car 475 km west of Amagasaki."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 7,
+   "hideout": {
+    "placeId": "gn-6138374",
+    "name": "Saint-Hyacinthe",
+    "lon": -72.95699,
+    "lat": 45.63076,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 05:38",
+     "cityId": "gn-3489854",
+     "cityName": "Kingston",
+     "cityLon": -76.79358,
+     "cityLat": 17.99702,
+     "radiusKm": 3100,
+     "octant": "north",
+     "text": "Last spotted at a roadside diner 3,100 km north of Kingston."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 09:54",
+     "cityId": "gn-3827409",
+     "cityName": "Cuauhtémoc",
+     "cityLon": -99.14612,
+     "cityLat": 19.44506,
+     "radiusKm": 3775,
+     "octant": "north-east",
+     "text": "Last seen sleeping in a parked car 3,775 km northeast of Cuauhtémoc."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 08:53",
+     "cityId": "gn-5913490",
+     "cityName": "Calgary",
+     "cityLon": -114.08529,
+     "cityLat": 51.05011,
+     "radiusKm": 3050,
+     "octant": "east",
+     "text": "Last seen eating at a drive-through 3,050 km east of Calgary."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 8,
+   "hideout": {
+    "placeId": "gn-2707953",
+    "name": "Haninge",
+    "lon": 18.14478,
+    "lat": 59.16775,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 09:33",
+     "cityId": "gn-315368",
+     "cityName": "Erzurum",
+     "cityLon": 41.27694,
+     "cityLat": 39.90861,
+     "radiusKm": 2675,
+     "octant": "north-west",
+     "text": "Last seen filling jerrycans 2,675 km northwest of Erzurum."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 06:01",
+     "cityId": "gn-2655603",
+     "cityName": "Birmingham",
+     "cityLon": -1.89983,
+     "cityLat": 52.48142,
+     "radiusKm": 1450,
+     "octant": "north-east",
+     "text": "Last seen at a bus depot 1,450 km northeast of Birmingham."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 06:15",
+     "cityId": "gn-511196",
+     "cityName": "Perm",
+     "cityLon": 56.25017,
+     "cityLat": 58.01046,
+     "radiusKm": 2175,
+     "octant": "west",
+     "text": "Last seen filling jerrycans 2,175 km west of Perm."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 9,
+   "hideout": {
+    "placeId": "gn-1805884",
+    "name": "Jiehu",
+    "lon": 118.455,
+    "lat": 35.54278,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 10:25",
+     "cityId": "gn-1863289",
+     "cityName": "Hamamatsu",
+     "cityLon": 137.73333,
+     "cityLat": 34.7,
+     "radiusKm": 1750,
+     "octant": "west",
+     "text": "Last seen eating at a drive-through 1,750 km west of Hamamatsu."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 19:02",
+     "cityId": "gn-1502026",
+     "cityName": "Krasnoyarsk",
+     "cityLon": 92.93136,
+     "cityLat": 56.03742,
+     "radiusKm": 2975,
+     "octant": "south-east",
+     "text": "Last seen withdrawing cash from an ATM 2,975 km southeast of Krasnoyarsk."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 09:02",
+     "cityId": "gn-1348843",
+     "cityName": "Maheshtala",
+     "cityLon": 88.25322,
+     "cityLat": 22.50862,
+     "radiusKm": 3250,
+     "octant": "north-east",
+     "text": "Last seen hitching a ride from a trucker 3,250 km northeast of Maheshtala."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 10,
+   "hideout": {
+    "placeId": "gn-1786357",
+    "name": "Yongfeng",
+    "lon": 112.16943,
+    "lat": 27.45493,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 14:55",
+     "cityId": "gn-1799846",
+     "cityName": "Nanping",
+     "cityLon": 118.17361,
+     "cityLat": 26.645,
+     "radiusKm": 600,
+     "octant": "west",
+     "text": "Last seen hitching a ride from a trucker 600 km west of Nanping."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 07:24",
+     "cityId": "gn-2038365",
+     "cityName": "Bei’an",
+     "cityLon": 126.6,
+     "cityLat": 48.26667,
+     "radiusKm": 2625,
+     "octant": "south-west",
+     "text": "Last seen asking a gas attendant for directions 2,625 km southwest of Bei’an."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 14:57",
+     "cityId": "gn-1566083",
+     "cityName": "Ho Chi Minh City",
+     "cityLon": 106.62965,
+     "cityLat": 10.82302,
+     "radiusKm": 1950,
+     "octant": "north",
+     "text": "Last seen eating at a drive-through 1,950 km north of Ho Chi Minh City."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 11,
+   "hideout": {
+    "placeId": "gn-12324508",
+    "name": "Taitou",
+    "lon": 118.63392,
+    "lat": 37.02733,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 14:26",
+     "cityId": "gn-1806602",
+     "cityName": "Cixi",
+     "cityLon": 121.2457,
+     "cityLat": 30.1764,
+     "radiusKm": 800,
+     "octant": "north",
+     "text": "Last spotted at a roadside diner 800 km north of Cixi."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 16:25",
+     "cityId": "gn-1496747",
+     "cityName": "Novosibirsk",
+     "cityLon": 82.93175,
+     "cityLat": 55.02259,
+     "radiusKm": 3350,
+     "octant": "east",
+     "text": "Last seen buying a burner phone 3,350 km east of Novosibirsk."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 16:35",
+     "cityId": "gn-1651944",
+     "cityName": "Vientiane",
+     "cityLon": 102.6,
+     "cityLat": 17.96667,
+     "radiusKm": 2625,
+     "octant": "north-east",
+     "text": "Last seen filling jerrycans 2,625 km northeast of Vientiane."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 12,
+   "hideout": {
+    "placeId": "gn-1668467",
+    "name": "Daxi",
+    "lon": 121.29043,
+    "lat": 24.88373,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 22:26",
+     "cityId": "gn-7795834",
+     "cityName": "Selayang Baru Utara",
+     "cityLon": 101.6668,
+     "cityLat": 3.2549,
+     "radiusKm": 3200,
+     "octant": "north-east",
+     "text": "Last seen asking a gas attendant for directions 3,200 km northeast of Selayang Baru Utara."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 06:50",
+     "cityId": "gn-1812961",
+     "cityName": "Deyang",
+     "cityLon": 104.38198,
+     "cityLat": 31.13019,
+     "radiusKm": 1800,
+     "octant": "east",
+     "text": "Last seen asking a gas attendant for directions 1,800 km east of Deyang."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 15:30",
+     "cityId": "gn-1787746",
+     "cityName": "Yancheng",
+     "cityLon": 120.1573,
+     "cityLat": 33.3575,
+     "radiusKm": 950,
+     "octant": "south",
+     "text": "Last spotted at a roadside diner 950 km south of Yancheng."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 13,
+   "hideout": {
+    "placeId": "gn-1176800",
+    "name": "Hujra Shah Muqim",
+    "lon": 73.82327,
+    "lat": 30.74168,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 17:55",
+     "cityId": "gn-1496747",
+     "cityName": "Novosibirsk",
+     "cityLon": 82.93175,
+     "cityLat": 55.02259,
+     "radiusKm": 2800,
+     "octant": "south",
+     "text": "Last seen withdrawing cash from an ATM 2,800 km south of Novosibirsk."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 12:16",
+     "cityId": "gn-1799194",
+     "cityName": "Guang’an",
+     "cityLon": 106.63696,
+     "cityLat": 30.47413,
+     "radiusKm": 3125,
+     "octant": "west",
+     "text": "Last spotted at a roadside diner 3,125 km west of Guang’an."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 20:29",
+     "cityId": "gn-298333",
+     "cityName": "Şanlıurfa",
+     "cityLon": 38.79392,
+     "cityLat": 37.16708,
+     "radiusKm": 3300,
+     "octant": "east",
+     "text": "Last seen sleeping in a parked car 3,300 km east of Şanlıurfa."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 14,
+   "hideout": {
+    "placeId": "gn-1586519",
+    "name": "Cái Răng",
+    "lon": 105.75095,
+    "lat": 10.0009,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 18:48",
+     "cityId": "gn-2038300",
+     "cityName": "Benxi",
+     "cityLon": 123.765,
+     "cityLat": 41.28861,
+     "radiusKm": 3900,
+     "octant": "south-west",
+     "text": "Last seen buying a burner phone 3,900 km southwest of Benxi."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 09:29",
+     "cityId": "gn-1633070",
+     "cityName": "Palembang",
+     "cityLon": 104.7458,
+     "cityLat": -2.91673,
+     "radiusKm": 1450,
+     "octant": "north",
+     "text": "Last seen withdrawing cash from an ATM 1,450 km north of Palembang."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 22:14",
+     "cityId": "gn-1815577",
+     "cityName": "Changsha",
+     "cityLon": 112.97087,
+     "cityLat": 28.19874,
+     "radiusKm": 2150,
+     "octant": "south",
+     "text": "Last seen filling jerrycans 2,150 km south of Changsha."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 15,
+   "hideout": {
+    "placeId": "gn-1283621",
+    "name": "Siddharthanagar",
+    "lon": 83.45,
+    "lat": 27.5,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 16:01",
+     "cityId": "gn-1799491",
+     "cityName": "Neijiang",
+     "cityLon": 105.06216,
+     "cityLat": 29.58354,
+     "radiusKm": 2125,
+     "octant": "west",
+     "text": "Last seen boarding a night bus 2,125 km west of Neijiang."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 17:51",
+     "cityId": "gn-1512569",
+     "cityName": "Tashkent",
+     "cityLon": 69.21627,
+     "cityLat": 41.26465,
+     "radiusKm": 2000,
+     "octant": "south-east",
+     "text": "Last seen sleeping in a parked car 2,000 km southeast of Tashkent."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 10:14",
+     "cityId": "gn-1185186",
+     "cityName": "Comilla",
+     "cityLon": 91.18503,
+     "cityLat": 23.46186,
+     "radiusKm": 900,
+     "octant": "north-west",
+     "text": "Last seen withdrawing cash from an ATM 900 km northwest of Comilla."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 16,
+   "hideout": {
+    "placeId": "gn-1609610",
+    "name": "Klaeng",
+    "lon": 101.64912,
+    "lat": 12.78,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 13:42",
+     "cityId": "gn-1276533",
+     "cityName": "Belagavi",
+     "cityLon": 74.50447,
+     "cityLat": 15.85212,
+     "radiusKm": 2950,
+     "octant": "east",
+     "text": "Last seen asking a gas attendant for directions 2,950 km east of Belagavi."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 15:31",
+     "cityId": "gn-1806408",
+     "cityName": "Yangjiang",
+     "cityLon": 111.96272,
+     "cityLat": 21.85563,
+     "radiusKm": 1500,
+     "octant": "south-west",
+     "text": "Last seen eating at a drive-through 1,500 km southwest of Yangjiang."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 21:43",
+     "cityId": "gn-1272175",
+     "cityName": "Durgapur",
+     "cityLon": 87.30801,
+     "cityLat": 23.51583,
+     "radiusKm": 1925,
+     "octant": "south-east",
+     "text": "Last seen at a bus depot 1,925 km southeast of Durgapur."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 17,
+   "hideout": {
+    "placeId": "gn-1316703",
+    "name": "Kyaukse",
+    "lon": 96.13508,
+    "lat": 21.6056,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 19:25",
+     "cityId": "gn-1805753",
+     "cityName": "Jinan",
+     "cityLon": 116.99722,
+     "cityLat": 36.66833,
+     "radiusKm": 2625,
+     "octant": "south-west",
+     "text": "Last seen eating at a drive-through 2,625 km southwest of Jinan."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 05:56",
+     "cityId": "gn-1253286",
+     "cityName": "Vellore",
+     "cityLon": 79.13255,
+     "cityLat": 12.9184,
+     "radiusKm": 2050,
+     "octant": "north-east",
+     "text": "Last seen asking a gas attendant for directions 2,050 km northeast of Vellore."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 15:26",
+     "cityId": "gn-1275665",
+     "cityName": "Bikaner",
+     "cityLon": 73.31495,
+     "cityLat": 28.01762,
+     "radiusKm": 2400,
+     "octant": "east",
+     "text": "Last seen buying supplies at a truck stop 2,400 km east of Bikaner."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 18,
+   "hideout": {
+    "placeId": "gn-1529239",
+    "name": "Sandaohezi",
+    "lon": 85.62009,
+    "lat": 44.32597,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 22:28",
+     "cityId": "gn-2035715",
+     "cityName": "Mudanjiang",
+     "cityLon": 129.62594,
+     "cityLat": 44.54804,
+     "radiusKm": 3450,
+     "octant": "west",
+     "text": "Last seen refueling a dusty pickup 3,450 km west of Mudanjiang."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 10:35",
+     "cityId": "gn-1845759",
+     "cityName": "Cheonan",
+     "cityLon": 127.1522,
+     "cityLat": 36.8065,
+     "radiusKm": 3575,
+     "octant": "north-west",
+     "text": "Last seen eating at a drive-through 3,575 km northwest of Cheonan."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 20:39",
+     "cityId": "gn-1163965",
+     "cityName": "Tando Allahyar",
+     "cityLon": 68.71745,
+     "cityLat": 25.4605,
+     "radiusKm": 2600,
+     "octant": "north-east",
+     "text": "Last spotted at a roadside diner 2,600 km northeast of Tando Allahyar."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 19,
+   "hideout": {
+    "placeId": "gn-1255265",
+    "name": "Tādepalle",
+    "lon": 80.6,
+    "lat": 16.48333,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 22:27",
+     "cityId": "gn-9871722",
+     "cityName": "Gia Lâm",
+     "cityLon": 105.939,
+     "cityLat": 21.02,
+     "radiusKm": 2700,
+     "octant": "west",
+     "text": "Last seen hitching a ride from a trucker 2,700 km west of Gia Lâm."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 12:34",
+     "cityId": "gn-1264521",
+     "cityName": "Madurai",
+     "cityLon": 78.11953,
+     "cityLat": 9.919,
+     "radiusKm": 775,
+     "octant": "north",
+     "text": "Last spotted at a roadside diner 775 km north of Madurai."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 14:46",
+     "cityId": "gn-292672",
+     "cityName": "Sharjah",
+     "cityLon": 55.41221,
+     "cityLat": 25.3342,
+     "radiusKm": 2800,
+     "octant": "east",
+     "text": "Last seen boarding a night bus 2,800 km east of Sharjah."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 20,
+   "hideout": {
+    "placeId": "gn-502011",
+    "name": "Revda",
+    "lon": 59.93774,
+    "lat": 56.80239,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 08:58",
+     "cityId": "gn-3173435",
+     "cityName": "Milan",
+     "cityLon": 9.18951,
+     "cityLat": 45.46427,
+     "radiusKm": 3650,
+     "octant": "north-east",
+     "text": "Last seen buying supplies at a truck stop 3,650 km northeast of Milan."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 20:57",
+     "cityId": "gn-1170395",
+     "cityName": "Mingora",
+     "cityLon": 72.36265,
+     "cityLat": 34.7795,
+     "radiusKm": 2625,
+     "octant": "north",
+     "text": "Last seen refueling a dusty pickup 2,625 km north of Mingora."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 10:42",
+     "cityId": "gn-1279945",
+     "cityName": "Jiuquan",
+     "cityLon": 98.51736,
+     "cityLat": 39.74318,
+     "radiusKm": 3350,
+     "octant": "north-west",
+     "text": "Last seen asking a gas attendant for directions 3,350 km northwest of Jiuquan."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 21,
+   "hideout": {
+    "placeId": "gn-2427637",
+    "name": "Mongo",
+    "lon": 18.6884,
+    "lat": 12.18514,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 11:10",
+     "cityId": "gn-2294877",
+     "cityName": "Tamale",
+     "cityLon": -0.8393,
+     "cityLat": 9.40079,
+     "radiusKm": 2150,
+     "octant": "east",
+     "text": "Last seen buying supplies at a truck stop 2,150 km east of Tamale."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 09:29",
+     "cityId": "gn-8074174",
+     "cityName": "Muratpaşa",
+     "cityLon": 30.76498,
+     "cityLat": 36.89157,
+     "radiusKm": 3000,
+     "octant": "south-west",
+     "text": "Last seen at a bus depot 3,000 km southwest of Muratpaşa."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 12:46",
+     "cityId": "gn-727011",
+     "cityName": "Sofia",
+     "cityLon": 23.32415,
+     "cityLat": 42.69751,
+     "radiusKm": 3425,
+     "octant": "south",
+     "text": "Last seen refueling a dusty pickup 3,425 km south of Sofia."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 22,
+   "hideout": {
+    "placeId": "gn-1177107",
+    "name": "Haripur",
+    "lon": 72.93493,
+    "lat": 33.99783,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 06:58",
+     "cityId": "gn-1253133",
+     "cityName": "Virār",
+     "cityLon": 72.81136,
+     "cityLat": 19.45591,
+     "radiusKm": 1625,
+     "octant": "north",
+     "text": "Last seen eating at a drive-through 1,625 km north of Virār."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 12:38",
+     "cityId": "gn-1260107",
+     "cityName": "Patiāla",
+     "cityLon": 76.3922,
+     "cityLat": 30.33625,
+     "radiusKm": 525,
+     "octant": "north-west",
+     "text": "Last spotted at a roadside diner 525 km northwest of Patiāla."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 05:05",
+     "cityId": "gn-608668",
+     "cityName": "Oral",
+     "cityLon": 51.42558,
+     "cityLat": 51.24601,
+     "radiusKm": 2575,
+     "octant": "south-east",
+     "text": "Last seen hitching a ride from a trucker 2,575 km southeast of Oral."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 23,
+   "hideout": {
+    "placeId": "gn-1793102",
+    "name": "Taoyuan",
+    "lon": 117.77028,
+    "lat": 33.85278,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 06:12",
+     "cityId": "gn-1799823",
+     "cityName": "Nanqiao",
+     "cityLon": 121.44944,
+     "cityLat": 30.91611,
+     "radiusKm": 475,
+     "octant": "north-west",
+     "text": "Last seen boarding a night bus 475 km northwest of Nanqiao."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 09:37",
+     "cityId": "gn-1808956",
+     "cityName": "Changzhi",
+     "cityLon": 113.10528,
+     "cityLat": 36.18389,
+     "radiusKm": 500,
+     "octant": "south-east",
+     "text": "Last seen eating at a drive-through 500 km southeast of Changzhi."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 07:36",
+     "cityId": "gn-1863641",
+     "cityName": "Gifu",
+     "cityLon": 136.76039,
+     "cityLat": 35.42291,
+     "radiusKm": 1750,
+     "octant": "west",
+     "text": "Last seen eating at a drive-through 1,750 km west of Gifu."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 24,
+   "hideout": {
+    "placeId": "gn-1260707",
+    "name": "Pālitāna",
+    "lon": 71.82309,
+    "lat": 21.52519,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 22:54",
+     "cityId": "gn-1278994",
+     "cityName": "Prayagraj",
+     "cityLon": 81.84322,
+     "cityLat": 25.44478,
+     "radiusKm": 1100,
+     "octant": "west",
+     "text": "Last spotted at a roadside diner 1,100 km west of Prayagraj."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 11:09",
+     "cityId": "gn-248946",
+     "cityName": "Irbid",
+     "cityLon": 35.85,
+     "cityLat": 32.55556,
+     "radiusKm": 3750,
+     "octant": "east",
+     "text": "Last seen hitching a ride from a trucker 3,750 km east of Irbid."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 21:07",
+     "cityId": "gn-1272423",
+     "cityName": "Dombivali",
+     "cityLon": 73.08333,
+     "cityLat": 19.21667,
+     "radiusKm": 300,
+     "octant": "north-west",
+     "text": "Last seen filling jerrycans 300 km northwest of Dombivali."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 25,
+   "hideout": {
+    "placeId": "gn-1280541",
+    "name": "Qaraqash",
+    "lon": 79.73438,
+    "lat": 37.27246,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 07:14",
+     "cityId": "gn-1802204",
+     "cityName": "Luancheng",
+     "cityLon": 114.64629,
+     "cityLat": 37.88452,
+     "radiusKm": 3050,
+     "octant": "west",
+     "text": "Last seen buying a burner phone 3,050 km west of Luancheng."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 08:45",
+     "cityId": "gn-1168021",
+     "cityName": "Pindi Bhattian",
+     "cityLon": 73.27339,
+     "cityLat": 31.89844,
+     "radiusKm": 850,
+     "octant": "north-east",
+     "text": "Last spotted at a roadside diner 850 km northeast of Pindi Bhattian."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 13:06",
+     "cityId": "gn-1564064",
+     "cityName": "Long Bien",
+     "cityLon": 105.9,
+     "cityLat": 21.03333,
+     "radiusKm": 3100,
+     "octant": "north-west",
+     "text": "Last seen at a bus depot 3,100 km northwest of Long Bien."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 26,
+   "hideout": {
+    "placeId": "gn-1278446",
+    "name": "Arāria",
+    "lon": 87.51323,
+    "lat": 26.14934,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 21:32",
+     "cityId": "gn-1675151",
+     "cityName": "Hsinchu",
+     "cityLon": 120.96861,
+     "cityLat": 24.80361,
+     "radiusKm": 3350,
+     "octant": "west",
+     "text": "Last spotted at a roadside diner 3,350 km west of Hsinchu."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 22:00",
+     "cityId": "gn-128226",
+     "cityName": "Kermanshah",
+     "cityLon": 47.065,
+     "cityLat": 34.31417,
+     "radiusKm": 3975,
+     "octant": "east",
+     "text": "Last seen filling jerrycans 3,975 km east of Kermanshah."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 08:57",
+     "cityId": "gn-1566166",
+     "cityName": "Thanh Hóa",
+     "cityLon": 105.76667,
+     "cityLat": 19.8,
+     "radiusKm": 2000,
+     "octant": "north-west",
+     "text": "Last seen refueling a dusty pickup 2,000 km northwest of Thanh Hóa."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 27,
+   "hideout": {
+    "placeId": "gn-1167669",
+    "name": "Qabula",
+    "lon": 73.0651,
+    "lat": 30.17784,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 19:21",
+     "cityId": "gn-700569",
+     "cityName": "Mykolayiv",
+     "cityLon": 31.99296,
+     "cityLat": 46.97625,
+     "radiusKm": 3975,
+     "octant": "east",
+     "text": "Last seen buying a burner phone 3,975 km east of Mykolayiv."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 11:25",
+     "cityId": "gn-1256515",
+     "cityName": "Shivamogga",
+     "cityLon": 75.56791,
+     "cityLat": 13.93157,
+     "radiusKm": 1825,
+     "octant": "north",
+     "text": "Last seen boarding a night bus 1,825 km north of Shivamogga."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 10:46",
+     "cityId": "gn-1185186",
+     "cityName": "Comilla",
+     "cityLon": 91.18503,
+     "cityLat": 23.46186,
+     "radiusKm": 1950,
+     "octant": "north-west",
+     "text": "Last seen at a bus depot 1,950 km northwest of Comilla."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 28,
+   "hideout": {
+    "placeId": "gn-1732738",
+    "name": "Kota Tinggi",
+    "lon": 103.8999,
+    "lat": 1.7381,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 11:57",
+     "cityId": "gn-1694781",
+     "cityName": "Paranaque City",
+     "cityLon": 121.01749,
+     "cityLat": 14.48156,
+     "radiusKm": 2350,
+     "octant": "south-west",
+     "text": "Last seen filling jerrycans 2,350 km southwest of Paranaque City."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 05:53",
+     "cityId": "gn-1562798",
+     "cityName": "Vinh",
+     "cityLon": 105.69232,
+     "cityLat": 18.67337,
+     "radiusKm": 1900,
+     "octant": "south",
+     "text": "Last seen boarding a night bus 1,900 km south of Vinh."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 11:56",
+     "cityId": "gn-1265873",
+     "cityName": "Kozhikode",
+     "cityLon": 75.7804,
+     "cityLat": 11.24802,
+     "radiusKm": 3275,
+     "octant": "east",
+     "text": "Last seen sleeping in a parked car 3,275 km east of Kozhikode."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 29,
+   "hideout": {
+    "placeId": "gn-3872255",
+    "name": "San Felipe",
+    "lon": -70.72584,
+    "lat": -32.74976,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Fri 06:53",
+     "cityId": "gn-3448636",
+     "cityName": "São José dos Campos",
+     "cityLon": -45.88694,
+     "cityLat": -23.17944,
+     "radiusKm": 2650,
+     "octant": "south-west",
+     "text": "Last seen filling jerrycans 2,650 km southwest of São José dos Campos."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 16:38",
+     "cityId": "gn-3463237",
+     "cityName": "Florianópolis",
+     "cityLon": -48.54917,
+     "cityLat": -27.59667,
+     "radiusKm": 2200,
+     "octant": "west",
+     "text": "Last seen eating at a drive-through 2,200 km west of Florianópolis."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 19:03",
+     "cityId": "gn-3663517",
+     "cityName": "Manaus",
+     "cityLon": -60.025,
+     "cityLat": -3.10194,
+     "radiusKm": 3475,
+     "octant": "south",
+     "text": "Last seen filling jerrycans 3,475 km south of Manaus."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 30,
+   "hideout": {
+    "placeId": "gn-1724933",
+    "name": "Binonga",
+    "lon": 122.9817,
+    "lat": 10.7719,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 12:06",
+     "cityId": "gn-1268257",
+     "cityName": "Kāmārhāti",
+     "cityLon": 88.37472,
+     "cityLat": 22.67111,
+     "radiusKm": 3900,
+     "octant": "east",
+     "text": "Last seen withdrawing cash from an ATM 3,900 km east of Kāmārhāti."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 18:33",
+     "cityId": "gn-1624917",
+     "cityName": "Bandar Lampung",
+     "cityLon": 105.26111,
+     "cityLat": -5.42917,
+     "radiusKm": 2675,
+     "octant": "north-east",
+     "text": "Last seen refueling a dusty pickup 2,675 km northeast of Bandar Lampung."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 19:20",
+     "cityId": "gn-1803567",
+     "cityName": "Linfen",
+     "cityLon": 111.51889,
+     "cityLat": 36.08889,
+     "radiusKm": 3050,
+     "octant": "south-east",
+     "text": "Last seen at a bus depot 3,050 km southeast of Linfen."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 31,
+   "hideout": {
+    "placeId": "gn-3836992",
+    "name": "San Martín",
+    "lon": -68.47312,
+    "lat": -33.08338,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 13:57",
+     "cityId": "gn-3472287",
+     "cityName": "Anápolis",
+     "cityLon": -48.95278,
+     "cityLat": -16.32667,
+     "radiusKm": 2700,
+     "octant": "south-west",
+     "text": "Last seen refueling a dusty pickup 2,700 km southwest of Anápolis."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 06:56",
+     "cityId": "gn-3652462",
+     "cityName": "Quito",
+     "cityLon": -78.52495,
+     "cityLat": -0.22985,
+     "radiusKm": 3800,
+     "octant": "south",
+     "text": "Last seen boarding a night bus 3,800 km south of Quito."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 13:06",
+     "cityId": "gn-3868121",
+     "cityName": "Viña del Mar",
+     "cityLon": -71.55183,
+     "cityLat": -33.02457,
+     "radiusKm": 275,
+     "octant": "east",
+     "text": "Last seen boarding a night bus 275 km east of Viña del Mar."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 32,
+   "hideout": {
+    "placeId": "gn-209161",
+    "name": "Miabi",
+    "lon": 23.39254,
+    "lat": -6.22149,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 08:00",
+     "cityId": "gn-105072",
+     "cityName": "Khamis Mushait",
+     "cityLon": 42.73333,
+     "cityLat": 18.3,
+     "radiusKm": 3450,
+     "octant": "south-west",
+     "text": "Last seen sleeping in a parked car 3,450 km southwest of Khamis Mushait."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 10:09",
+     "cityId": "gn-2441291",
+     "cityName": "Maradi",
+     "cityLon": 7.10174,
+     "cityLat": 13.5,
+     "radiusKm": 2825,
+     "octant": "south-east",
+     "text": "Last seen hitching a ride from a trucker 2,825 km southeast of Maradi."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 06:07",
+     "cityId": "gn-901344",
+     "cityName": "Ndola",
+     "cityLon": 28.63659,
+     "cityLat": -12.95867,
+     "radiusKm": 950,
+     "octant": "north-west",
+     "text": "Last seen asking a gas attendant for directions 950 km northwest of Ndola."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 33,
+   "hideout": {
+    "placeId": "gn-5025219",
+    "name": "Eden Prairie",
+    "lon": -93.47079,
+    "lat": 44.85469,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 19:46",
+     "cityId": "gn-3719028",
+     "cityName": "Pétionville",
+     "cityLon": -72.28528,
+     "cityLat": 18.5125,
+     "radiusKm": 3525,
+     "octant": "north-west",
+     "text": "Last spotted at a roadside diner 3,525 km northwest of Pétionville."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 15:53",
+     "cityId": "gn-4930956",
+     "cityName": "Boston",
+     "cityLon": -71.05977,
+     "cityLat": 42.35843,
+     "radiusKm": 1825,
+     "octant": "west",
+     "text": "Last spotted at a roadside diner 1,825 km west of Boston."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 22:48",
+     "cityId": "gn-3529947",
+     "cityName": "Cuernavaca",
+     "cityLon": -99.23075,
+     "cityLat": 18.9261,
+     "radiusKm": 2925,
+     "octant": "north",
+     "text": "Last seen refueling a dusty pickup 2,925 km north of Cuernavaca."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 34,
+   "hideout": {
+    "placeId": "gn-3446400",
+    "name": "Tobias Barreto",
+    "lon": -37.99833,
+    "lat": -11.18389,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Fri 06:49",
+     "cityId": "gn-3664980",
+     "cityName": "Boa Vista",
+     "cityLon": -60.67333,
+     "cityLat": 2.81972,
+     "radiusKm": 2950,
+     "octant": "south-east",
+     "text": "Last seen asking a gas attendant for directions 2,950 km southeast of Boa Vista."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 17:37",
+     "cityId": "gn-3457381",
+     "cityName": "Mauá",
+     "cityLon": -46.46139,
+     "cityLat": -23.66778,
+     "radiusKm": 1650,
+     "octant": "north-east",
+     "text": "Last seen buying supplies at a truck stop 1,650 km northeast of Mauá."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 18:21",
+     "cityId": "gn-3904906",
+     "cityName": "Santa Cruz de la Sierra",
+     "cityLon": -63.18117,
+     "cityLat": -17.78629,
+     "radiusKm": 2800,
+     "octant": "east",
+     "text": "Last seen refueling a dusty pickup 2,800 km east of Santa Cruz de la Sierra."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 35,
+   "hideout": {
+    "placeId": "gn-4355843",
+    "name": "Gaithersburg",
+    "lon": -77.20137,
+    "lat": 39.14344,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 12:30",
+     "cityId": "gn-4791259",
+     "cityName": "Virginia Beach",
+     "cityLon": -75.97799,
+     "cityLat": 36.85293,
+     "radiusKm": 275,
+     "octant": "north",
+     "text": "Last seen eating at a drive-through 275 km north of Virginia Beach."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 08:19",
+     "cityId": "gn-3991164",
+     "cityName": "Santiago de Querétaro",
+     "cityLon": -100.38806,
+     "cityLat": 20.58806,
+     "radiusKm": 3025,
+     "octant": "north-east",
+     "text": "Last seen at a bus depot 3,025 km northeast of Santiago de Querétaro."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 15:50",
+     "cityId": "gn-4509177",
+     "cityName": "Columbus",
+     "cityLon": -82.99879,
+     "cityLat": 39.96118,
+     "radiusKm": 500,
+     "octant": "east",
+     "text": "Last seen filling jerrycans 500 km east of Columbus."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 36,
+   "hideout": {
+    "placeId": "gn-1549362",
+    "name": "Lanshan",
+    "lon": 117.725,
+    "lat": 33.93611,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 20:34",
+     "cityId": "gn-1260482",
+     "cityName": "Pānihāti",
+     "cityLon": 88.37404,
+     "cityLat": 22.69089,
+     "radiusKm": 3125,
+     "octant": "north-east",
+     "text": "Last seen buying supplies at a truck stop 3,125 km northeast of Pānihāti."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 14:09",
+     "cityId": "gn-1843564",
+     "cityName": "Incheon",
+     "cityLon": 126.70515,
+     "cityLat": 37.45646,
+     "radiusKm": 900,
+     "octant": "south-west",
+     "text": "Last seen buying supplies at a truck stop 900 km southwest of Incheon."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 18:39",
+     "cityId": "gn-1857553",
+     "cityName": "Matsudo",
+     "cityLon": 139.90144,
+     "cityLat": 35.77995,
+     "radiusKm": 2025,
+     "octant": "west",
+     "text": "Last seen eating at a drive-through 2,025 km west of Matsudo."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 37,
+   "hideout": {
+    "placeId": "gn-1798946",
+    "name": "Pengcheng",
+    "lon": 114.17,
+    "lat": 36.43111,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Fri 09:40",
+     "cityId": "gn-1813206",
+     "cityName": "Daye",
+     "cityLon": 114.95,
+     "cityLat": 30.08333,
+     "radiusKm": 700,
+     "octant": "north",
+     "text": "Last seen hitching a ride from a trucker 700 km north of Daye."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 18:47",
+     "cityId": "gn-1846052",
+     "cityName": "Chinju",
+     "cityLon": 128.08472,
+     "cityLat": 35.19278,
+     "radiusKm": 1250,
+     "octant": "west",
+     "text": "Last seen refueling a dusty pickup 1,250 km west of Chinju."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 18:55",
+     "cityId": "gn-1792260",
+     "cityName": "Wafangdian",
+     "cityLon": 122.00806,
+     "cityLat": 39.61833,
+     "radiusKm": 775,
+     "octant": "south-west",
+     "text": "Last seen buying a burner phone 775 km southwest of Wafangdian."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 38,
+   "hideout": {
+    "placeId": "gn-3105184",
+    "name": "Vilanova i la Geltrú",
+    "lon": 1.72511,
+    "lat": 41.22392,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Fri 13:25",
+     "cityId": "gn-2506999",
+     "cityName": "Annaba",
+     "cityLon": 7.76667,
+     "cityLat": 36.9,
+     "radiusKm": 700,
+     "octant": "north-west",
+     "text": "Last seen at a bus depot 700 km northwest of Annaba."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 14:25",
+     "cityId": "gn-95446",
+     "cityName": "Erbil",
+     "cityLon": 44.00943,
+     "cityLat": 36.19117,
+     "radiusKm": 3675,
+     "octant": "west",
+     "text": "Last spotted at a roadside diner 3,675 km west of Erbil."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 12:24",
+     "cityId": "gn-658225",
+     "cityName": "Helsinki",
+     "cityLon": 24.93545,
+     "cityLat": 60.16952,
+     "radiusKm": 2625,
+     "octant": "south-west",
+     "text": "Last seen sleeping in a parked car 2,625 km southwest of Helsinki."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 39,
+   "hideout": {
+    "placeId": "gn-3387115",
+    "name": "Surubim",
+    "lon": -35.75472,
+    "lat": -7.83306,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 19:15",
+     "cityId": "gn-3463011",
+     "cityName": "Franca",
+     "cityLon": -47.40083,
+     "cityLat": -20.53861,
+     "radiusKm": 1900,
+     "octant": "north-east",
+     "text": "Last seen hitching a ride from a trucker 1,900 km northeast of Franca."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 15:17",
+     "cityId": "gn-3386496",
+     "cityName": "Teresina",
+     "cityLon": -42.80194,
+     "cityLat": -5.08917,
+     "radiusKm": 825,
+     "octant": "east",
+     "text": "Last spotted at a roadside diner 825 km east of Teresina."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 19:26",
+     "cityId": "gn-3407669",
+     "cityName": "Ananindeua",
+     "cityLon": -48.37222,
+     "cityLat": -1.36556,
+     "radiusKm": 1575,
+     "octant": "south-east",
+     "text": "Last seen boarding a night bus 1,575 km southeast of Ananindeua."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 40,
+   "hideout": {
+    "placeId": "gn-12157025",
+    "name": "Ciudad Satelite",
+    "lon": -71.52921,
+    "lat": -16.43085,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 06:03",
+     "cityId": "gn-3663517",
+     "cityName": "Manaus",
+     "cityLon": -60.025,
+     "cityLat": -3.10194,
+     "radiusKm": 1950,
+     "octant": "south-west",
+     "text": "Last spotted at a roadside diner 1,950 km southwest of Manaus."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 09:14",
+     "cityId": "gn-3452925",
+     "cityName": "Porto Alegre",
+     "cityLon": -51.23019,
+     "cityLat": -30.03283,
+     "radiusKm": 2550,
+     "octant": "north-west",
+     "text": "Last seen withdrawing cash from an ATM 2,550 km northwest of Porto Alegre."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 09:36",
+     "cityId": "gn-3703443",
+     "cityName": "Panama City",
+     "cityLon": -79.51973,
+     "cityLat": 8.9936,
+     "radiusKm": 2950,
+     "octant": "south",
+     "text": "Last seen sleeping in a parked car 2,950 km south of Panama City."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 41,
+   "hideout": {
+    "placeId": "gn-64460",
+    "name": "Beledweyne",
+    "lon": 45.20361,
+    "lat": 4.73583,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 10:00",
+     "cityId": "gn-616052",
+     "cityName": "Yerevan",
+     "cityLon": 44.5126,
+     "cityLat": 40.17765,
+     "radiusKm": 3950,
+     "octant": "south",
+     "text": "Last seen buying supplies at a truck stop 3,950 km south of Yerevan."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 21:02",
+     "cityId": "gn-186301",
+     "cityName": "Mombasa",
+     "cityLon": 39.66359,
+     "cityLat": -4.05466,
+     "radiusKm": 1150,
+     "octant": "north-east",
+     "text": "Last seen hitching a ride from a trucker 1,150 km northeast of Mombasa."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 21:30",
+     "cityId": "gn-1172128",
+     "cityName": "Larkana",
+     "cityLon": 68.21204,
+     "cityLat": 27.55898,
+     "radiusKm": 3525,
+     "octant": "south-west",
+     "text": "Last seen asking a gas attendant for directions 3,525 km southwest of Larkana."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 42,
+   "hideout": {
+    "placeId": "gn-1701872",
+    "name": "Mangaldan",
+    "lon": 120.4025,
+    "lat": 16.07,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 10:59",
+     "cityId": "gn-6295587",
+     "cityName": "Batam",
+     "cityLon": 104.02491,
+     "cityLat": 1.14937,
+     "radiusKm": 2450,
+     "octant": "north-east",
+     "text": "Last seen at a bus depot 2,450 km northeast of Batam."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 08:40",
+     "cityId": "gn-1810845",
+     "cityName": "Fuyang",
+     "cityLon": 115.81667,
+     "cityLat": 32.9,
+     "radiusKm": 1925,
+     "octant": "south",
+     "text": "Last seen refueling a dusty pickup 1,925 km south of Fuyang."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 11:50",
+     "cityId": "gn-1785781",
+     "cityName": "Yulin",
+     "cityLon": 110.14686,
+     "cityLat": 22.6305,
+     "radiusKm": 1300,
+     "octant": "south-east",
+     "text": "Last seen refueling a dusty pickup 1,300 km southeast of Yulin."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 43,
+   "hideout": {
+    "placeId": "gn-1585660",
+    "name": "Châu Đốc",
+    "lon": 105.11667,
+    "lat": 10.7,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 15:11",
+     "cityId": "gn-1275971",
+     "cityName": "Bhilai",
+     "cityLon": 81.4285,
+     "cityLat": 21.20919,
+     "radiusKm": 2775,
+     "octant": "east",
+     "text": "Last seen sleeping in a parked car 2,775 km east of Bhilai."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 15:33",
+     "cityId": "gn-1812101",
+     "cityName": "Dongying",
+     "cityLon": 118.49165,
+     "cityLat": 37.46271,
+     "radiusKm": 3275,
+     "octant": "south-west",
+     "text": "Last seen refueling a dusty pickup 3,275 km southwest of Dongying."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 22:11",
+     "cityId": "gn-1283240",
+     "cityName": "Kathmandu",
+     "cityLon": 85.3206,
+     "cityLat": 27.70169,
+     "radiusKm": 2800,
+     "octant": "south-east",
+     "text": "Last spotted at a roadside diner 2,800 km southeast of Kathmandu."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 44,
+   "hideout": {
+    "placeId": "gn-11611477",
+    "name": "Yamatokōriyama",
+    "lon": 135.77033,
+    "lat": 34.60658,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 08:54",
+     "cityId": "gn-1850147",
+     "cityName": "Tokyo",
+     "cityLon": 139.69171,
+     "cityLat": 35.6895,
+     "radiusKm": 375,
+     "octant": "west",
+     "text": "Last seen boarding a night bus 375 km west of Tokyo."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 05:47",
+     "cityId": "gn-1675151",
+     "cityName": "Hsinchu",
+     "cityLon": 120.96861,
+     "cityLat": 24.80361,
+     "radiusKm": 1800,
+     "octant": "north-east",
+     "text": "Last seen withdrawing cash from an ATM 1,800 km northeast of Hsinchu."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 19:24",
+     "cityId": "gn-2038632",
+     "cityName": "Anshan",
+     "cityLon": 122.99,
+     "cityLat": 41.12361,
+     "radiusKm": 1325,
+     "octant": "south-east",
+     "text": "Last seen refueling a dusty pickup 1,325 km southeast of Anshan."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 45,
+   "hideout": {
+    "placeId": "gn-1277949",
+    "name": "Badvel",
+    "lon": 79.06288,
+    "lat": 14.7451,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 16:07",
+     "cityId": "gn-1566083",
+     "cityName": "Ho Chi Minh City",
+     "cityLon": 106.62965,
+     "cityLat": 10.82302,
+     "radiusKm": 3025,
+     "octant": "west",
+     "text": "Last seen refueling a dusty pickup 3,025 km west of Ho Chi Minh City."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 18:28",
+     "cityId": "gn-1800146",
+     "cityName": "Nanchong",
+     "cityLon": 106.08473,
+     "cityLat": 30.79508,
+     "radiusKm": 3275,
+     "octant": "south-west",
+     "text": "Last seen asking a gas attendant for directions 3,275 km southwest of Nanchong."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 19:45",
+     "cityId": "gn-1264773",
+     "cityName": "Loni",
+     "cityLon": 77.29023,
+     "cityLat": 28.75143,
+     "radiusKm": 1575,
+     "octant": "south",
+     "text": "Last seen refueling a dusty pickup 1,575 km south of Loni."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 46,
+   "hideout": {
+    "placeId": "gn-4168228",
+    "name": "Pensacola",
+    "lon": -87.21691,
+    "lat": 30.42131,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 19:39",
+     "cityId": "gn-4006702",
+     "cityName": "Ensenada",
+     "cityLon": -116.60071,
+     "cityLat": 31.87149,
+     "radiusKm": 2800,
+     "octant": "east",
+     "text": "Last seen buying a burner phone 2,800 km east of Ensenada."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 22:48",
+     "cityId": "gn-4568127",
+     "cityName": "San Juan",
+     "cityLon": -66.10572,
+     "cityLat": 18.46633,
+     "radiusKm": 2500,
+     "octant": "north-west",
+     "text": "Last seen at a bus depot 2,500 km northwest of San Juan."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 09:49",
+     "cityId": "gn-5125771",
+     "cityName": "Manhattan",
+     "cityLon": -73.96625,
+     "cityLat": 40.78343,
+     "radiusKm": 1650,
+     "octant": "south-west",
+     "text": "Last seen at a bus depot 1,650 km southwest of Manhattan."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 47,
+   "hideout": {
+    "placeId": "gn-4941720",
+    "name": "Lawrence",
+    "lon": -71.16311,
+    "lat": 42.70704,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 09:52",
+     "cityId": "gn-3827408",
+     "cityName": "Miguel Hidalgo",
+     "cityLon": -99.20024,
+     "cityLat": 19.43411,
+     "radiusKm": 3675,
+     "octant": "north-east",
+     "text": "Last seen at a bus depot 3,675 km northeast of Miguel Hidalgo."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 22:46",
+     "cityId": "gn-3536729",
+     "cityName": "Santiago de Cuba",
+     "cityLon": -75.82171,
+     "cityLat": 20.02287,
+     "radiusKm": 2550,
+     "octant": "north",
+     "text": "Last seen withdrawing cash from an ATM 2,550 km north of Santiago de Cuba."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 12:31",
+     "cityId": "gn-6159905",
+     "cityName": "Surrey",
+     "cityLon": -122.82509,
+     "cityLat": 49.10635,
+     "radiusKm": 3975,
+     "octant": "east",
+     "text": "Last seen boarding a night bus 3,975 km east of Surrey."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 48,
+   "hideout": {
+    "placeId": "gn-3619267",
+    "name": "El Viejo",
+    "lon": -87.16663,
+    "lat": 12.66348,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 22:13",
+     "cityId": "gn-3674453",
+     "cityName": "Montería",
+     "cityLon": -75.87823,
+     "cityLat": 8.75081,
+     "radiusKm": 1300,
+     "octant": "west",
+     "text": "Last seen withdrawing cash from an ATM 1,300 km west of Montería."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 17:22",
+     "cityId": "gn-3530139",
+     "cityName": "Coyoacán",
+     "cityLon": -99.16174,
+     "cityLat": 19.3467,
+     "radiusKm": 1475,
+     "octant": "south-east",
+     "text": "Last seen hitching a ride from a trucker 1,475 km southeast of Coyoacán."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 08:21",
+     "cityId": "gn-3672486",
+     "cityName": "Pereira",
+     "cityLon": -75.69488,
+     "cityLat": 4.81428,
+     "radiusKm": 1525,
+     "octant": "north-west",
+     "text": "Last seen eating at a drive-through 1,525 km northwest of Pereira."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 49,
+   "hideout": {
+    "placeId": "gn-1480266",
+    "name": "San Chaung",
+    "lon": 96.0992,
+    "lat": 17.0953,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 05:01",
+     "cityId": "gn-1633070",
+     "cityName": "Palembang",
+     "cityLon": 104.7458,
+     "cityLat": -2.91673,
+     "radiusKm": 2425,
+     "octant": "north-west",
+     "text": "Last seen buying supplies at a truck stop 2,425 km northwest of Palembang."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 05:02",
+     "cityId": "gn-1282898",
+     "cityName": "Pokhara",
+     "cityLon": 83.96851,
+     "cityLat": 28.26689,
+     "radiusKm": 1750,
+     "octant": "south-east",
+     "text": "Last seen sleeping in a parked car 1,750 km southeast of Pokhara."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 21:28",
+     "cityId": "gn-1845457",
+     "cityName": "Jeonju",
+     "cityLon": 127.14889,
+     "cityLat": 35.82194,
+     "radiusKm": 3700,
+     "octant": "south-west",
+     "text": "Last seen asking a gas attendant for directions 3,700 km southwest of Jeonju."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 50,
+   "hideout": {
+    "placeId": "gn-338404",
+    "name": "Duramē",
+    "lon": 37.88333,
+    "lat": 7.23333,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 12:12",
+     "cityId": "gn-3347762",
+     "cityName": "Lubango",
+     "cityLon": 13.4925,
+     "cityLat": -14.91717,
+     "radiusKm": 3650,
+     "octant": "north-east",
+     "text": "Last seen buying a burner phone 3,650 km northeast of Lubango."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 10:13",
+     "cityId": "gn-336014",
+     "cityName": "Gonder",
+     "cityLon": 37.46667,
+     "cityLat": 12.6,
+     "radiusKm": 600,
+     "octant": "south",
+     "text": "Last seen at a bus depot 600 km south of Gonder."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 05:38",
+     "cityId": "gn-2338313",
+     "cityName": "Ikeja",
+     "cityLon": 3.34205,
+     "cityLat": 6.59651,
+     "radiusKm": 3825,
+     "octant": "east",
+     "text": "Last seen asking a gas attendant for directions 3,825 km east of Ikeja."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 51,
+   "hideout": {
+    "placeId": "gn-2646504",
+    "name": "Hove",
+    "lon": -0.1672,
+    "lat": 50.83088,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 10:57",
+     "cityId": "gn-2867714",
+     "cityName": "Munich",
+     "cityLon": 11.57549,
+     "cityLat": 48.13743,
+     "radiusKm": 900,
+     "octant": "north-west",
+     "text": "Last seen buying a burner phone 900 km northwest of Munich."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 13:17",
+     "cityId": "gn-702658",
+     "cityName": "Luhansk",
+     "cityLon": 39.30553,
+     "cityLat": 48.56814,
+     "radiusKm": 2825,
+     "octant": "west",
+     "text": "Last spotted at a roadside diner 2,825 km west of Luhansk."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 17:25",
+     "cityId": "gn-2643123",
+     "cityName": "Manchester",
+     "cityLon": -2.23743,
+     "cityLat": 53.48095,
+     "radiusKm": 325,
+     "octant": "south-east",
+     "text": "Last spotted at a roadside diner 325 km southeast of Manchester."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 52,
+   "hideout": {
+    "placeId": "gn-3121145",
+    "name": "Granollers",
+    "lon": 2.28773,
+    "lat": 41.60797,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 19:22",
+     "cityId": "gn-315808",
+     "cityName": "Elazığ",
+     "cityLon": 39.22321,
+     "cityLat": 38.67431,
+     "radiusKm": 3125,
+     "octant": "west",
+     "text": "Last seen buying a burner phone 3,125 km west of Elazığ."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 16:03",
+     "cityId": "gn-2542715",
+     "cityName": "Meknes",
+     "cityLon": -5.54727,
+     "cityLat": 33.89352,
+     "radiusKm": 1100,
+     "octant": "north-east",
+     "text": "Last seen hitching a ride from a trucker 1,100 km northeast of Meknes."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 11:51",
+     "cityId": "gn-569223",
+     "cityName": "Cherepovets",
+     "cityLon": 37.9,
+     "cityLat": 59.13333,
+     "radiusKm": 3125,
+     "octant": "south-west",
+     "text": "Last seen eating at a drive-through 3,125 km southwest of Cherepovets."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 53,
+   "hideout": {
+    "placeId": "gn-3511233",
+    "name": "Bonao",
+    "lon": -70.41111,
+    "lat": 18.94154,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 10:47",
+     "cityId": "gn-3587902",
+     "cityName": "Villa Nueva",
+     "cityLon": -90.58544,
+     "cityLat": 14.52512,
+     "radiusKm": 2200,
+     "octant": "east",
+     "text": "Last seen filling jerrycans 2,200 km east of Villa Nueva."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 14:03",
+     "cityId": "gn-3693528",
+     "cityName": "Piura",
+     "cityLon": -80.65715,
+     "cityLat": -5.18192,
+     "radiusKm": 2900,
+     "octant": "north",
+     "text": "Last seen eating at a drive-through 2,900 km north of Piura."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 15:43",
+     "cityId": "gn-3658192",
+     "cityName": "Eloy Alfaro",
+     "cityLon": -79.83987,
+     "cityLat": -2.16919,
+     "radiusKm": 2575,
+     "octant": "north-east",
+     "text": "Last seen eating at a drive-through 2,575 km northeast of Eloy Alfaro."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 54,
+   "hideout": {
+    "placeId": "gn-1806188",
+    "name": "Jiangzhuang",
+    "lon": 119.79417,
+    "lat": 36.49444,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 08:55",
+     "cityId": "gn-1799823",
+     "cityName": "Nanqiao",
+     "cityLon": 121.44944,
+     "cityLat": 30.91611,
+     "radiusKm": 650,
+     "octant": "north",
+     "text": "Last seen sleeping in a parked car 650 km north of Nanqiao."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 05:29",
+     "cityId": "gn-1803834",
+     "cityName": "Liaocheng",
+     "cityLon": 116.00247,
+     "cityLat": 36.45064,
+     "radiusKm": 350,
+     "octant": "east",
+     "text": "Last spotted at a roadside diner 350 km east of Liaocheng."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 15:58",
+     "cityId": "gn-2038432",
+     "cityName": "Baotou",
+     "cityLon": 109.84389,
+     "cityLat": 40.6516,
+     "radiusKm": 975,
+     "octant": "south-east",
+     "text": "Last seen eating at a drive-through 975 km southeast of Baotou."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 55,
+   "hideout": {
+    "placeId": "gn-400666",
+    "name": "Rhodes",
+    "lon": 28.22199,
+    "lat": 36.43556,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 13:51",
+     "cityId": "gn-2544571",
+     "cityName": "Kenitra",
+     "cityLon": -6.5802,
+     "cityLat": 34.26101,
+     "radiusKm": 3150,
+     "octant": "east",
+     "text": "Last seen withdrawing cash from an ATM 3,150 km east of Kenitra."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 06:38",
+     "cityId": "gn-750269",
+     "cityName": "Bursa",
+     "cityLon": 29.06013,
+     "cityLat": 40.19559,
+     "radiusKm": 425,
+     "octant": "south",
+     "text": "Last seen hitching a ride from a trucker 425 km south of Bursa."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 18:52",
+     "cityId": "gn-1174872",
+     "cityName": "Karachi",
+     "cityLon": 67.0104,
+     "cityLat": 24.8608,
+     "radiusKm": 3900,
+     "octant": "north-west",
+     "text": "Last seen eating at a drive-through 3,900 km northwest of Karachi."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 56,
+   "hideout": {
+    "placeId": "gn-4922388",
+    "name": "Kokomo",
+    "lon": -86.1336,
+    "lat": 40.48643,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 17:28",
+     "cityId": "gn-3688928",
+     "cityName": "Bello",
+     "cityLon": -75.55795,
+     "cityLat": 6.33732,
+     "radiusKm": 3950,
+     "octant": "north",
+     "text": "Last seen buying supplies at a truck stop 3,950 km north of Bello."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 14:14",
+     "cityId": "gn-3985606",
+     "cityName": "San Luis Potosí",
+     "cityLon": -100.97135,
+     "cityLat": 22.15234,
+     "radiusKm": 2475,
+     "octant": "north-east",
+     "text": "Last seen boarding a night bus 2,475 km northeast of San Luis Potosí."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 09:42",
+     "cityId": "gn-5412347",
+     "cityName": "Aurora",
+     "cityLon": -104.83192,
+     "cityLat": 39.72943,
+     "radiusKm": 1600,
+     "octant": "east",
+     "text": "Last seen withdrawing cash from an ATM 1,600 km east of Aurora."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 57,
+   "hideout": {
+    "placeId": "gn-11612326",
+    "name": "Tatsuno",
+    "lon": 134.54338,
+    "lat": 34.83184,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 18:07",
+     "cityId": "gn-12446699",
+     "cityName": "Daxing’anling",
+     "cityLon": 124.71242,
+     "cityLat": 52.33385,
+     "radiusKm": 2100,
+     "octant": "south-east",
+     "text": "Last seen asking a gas attendant for directions 2,100 km southeast of Daxing’anling."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 06:30",
+     "cityId": "gn-1927639",
+     "cityName": "Yueyang",
+     "cityLon": 113.09481,
+     "cityLat": 29.37455,
+     "radiusKm": 2100,
+     "octant": "east",
+     "text": "Last seen boarding a night bus 2,100 km east of Yueyang."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 07:21",
+     "cityId": "gn-1809858",
+     "cityName": "Guangzhou",
+     "cityLon": 113.25,
+     "cityLat": 23.11667,
+     "radiusKm": 2450,
+     "octant": "north-east",
+     "text": "Last seen buying supplies at a truck stop 2,450 km northeast of Guangzhou."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 58,
+   "hideout": {
+    "placeId": "gn-8741024",
+    "name": "Sunabeda",
+    "lon": 82.82932,
+    "lat": 18.7284,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 22:21",
+     "cityId": "gn-1786764",
+     "cityName": "Yichang",
+     "cityLon": 111.28472,
+     "cityLat": 30.71444,
+     "radiusKm": 3150,
+     "octant": "west",
+     "text": "Last seen asking a gas attendant for directions 3,150 km west of Yichang."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 15:25",
+     "cityId": "gn-1732722",
+     "cityName": "Pasir Gudang",
+     "cityLon": 103.9053,
+     "cityLat": 1.462,
+     "radiusKm": 3000,
+     "octant": "north-west",
+     "text": "Last seen hitching a ride from a trucker 3,000 km northwest of Pasir Gudang."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 10:02",
+     "cityId": "gn-7626690",
+     "cityName": "Pimpri-Chinchwad",
+     "cityLon": 73.80375,
+     "cityLat": 18.61867,
+     "radiusKm": 950,
+     "octant": "east",
+     "text": "Last seen withdrawing cash from an ATM 950 km east of Pimpri-Chinchwad."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 59,
+   "hideout": {
+    "placeId": "gn-6903078",
+    "name": "Changnyeong",
+    "lon": 128.49506,
+    "lat": 35.54145,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 18:51",
+     "cityId": "gn-1851100",
+     "cityName": "Takamatsu",
+     "cityLon": 134.05,
+     "cityLat": 34.33333,
+     "radiusKm": 525,
+     "octant": "west",
+     "text": "Last seen at a bus depot 525 km west of Takamatsu."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 08:56",
+     "cityId": "gn-1816373",
+     "cityName": "Bijie",
+     "cityLon": 105.28627,
+     "cityLat": 27.30193,
+     "radiusKm": 2375,
+     "octant": "north-east",
+     "text": "Last seen hitching a ride from a trucker 2,375 km northeast of Bijie."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 20:42",
+     "cityId": "gn-13527052",
+     "cityName": "Chéngguān Qū",
+     "cityLon": 91.04441,
+     "cityLat": 29.63842,
+     "radiusKm": 3550,
+     "octant": "east",
+     "text": "Last seen refueling a dusty pickup 3,550 km east of Chéngguān Qū."
+    }
+   ]
+  },
+  {
+   "v": 1,
+   "caseNo": 60,
+   "hideout": {
+    "placeId": "gn-1608900",
+    "name": "Maha Sarakham",
+    "lon": 103.30067,
+    "lat": 16.18483,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 13:15",
+     "cityId": "gn-1185128",
+     "cityName": "Rajshahi",
+     "cityLon": 88.60114,
+     "cityLat": 24.374,
+     "radiusKm": 1775,
+     "octant": "south-east",
+     "text": "Last seen sleeping in a parked car 1,775 km southeast of Rajshahi."
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 17:43",
+     "cityId": "gn-1819607",
+     "cityName": "Kowloon City",
+     "cityLon": 114.19222,
+     "cityLat": 22.33047,
+     "radiusKm": 1325,
+     "octant": "south-west",
+     "text": "Last seen boarding a night bus 1,325 km southwest of Kowloon City."
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 22:57",
+     "cityId": "gn-1701966",
+     "cityName": "Mandaluyong City",
+     "cityLon": 121.0409,
+     "cityLat": 14.5832,
+     "radiusKm": 1900,
+     "octant": "west",
+     "text": "Last seen sleeping in a parked car 1,900 km west of Mandaluyong City."
+    }
+   ]
+  }
+ ]
+}

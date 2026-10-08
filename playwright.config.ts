@@ -185,6 +185,10 @@ export default defineConfig({
       testMatch: /geodetective\.spec\.ts/,
     },
     {
+      name: "coldtrail",
+      testMatch: /coldtrail\.spec\.ts/,
+    },
+    {
       name: "review-deck",
       testMatch: /review-deck\.desktop\.spec\.ts/,
     },

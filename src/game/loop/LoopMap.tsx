@@ -56,6 +56,26 @@ export interface LoopMapHandle {
   flyToEntry(entry: LoopNameEntry): void;
 }
 
+/**
+ * Cold-Trail evidence overlay: a witness sighting's radius ring.
+ * Painted through the same ring source/layers as the loop's deduction
+ * surface (ringPolygon), with a km label at the northmost point.
+ */
+export interface TrailEvidenceRing {
+  lon: number;
+  lat: number;
+  radiusKm: number;
+  label: string;
+}
+
+/** Cold-Trail evidence mark: "witness" = gold dot at the witness city,
+ * "x" = the player's interception guess (reuses the loop's ✕ layer). */
+export interface TrailEvidenceMark {
+  lon: number;
+  lat: number;
+  kind: "witness" | "x";
+}
+
 interface LoopMapProps {
   guesses: LoopGuess[];
   target: { lon: number; lat: number };
@@ -65,6 +85,18 @@ interface LoopMapProps {
   onSelectPlace: (entry: LoopNameEntry) => void;
   /** Empty tap; `indexLoading` when the place index isn't ready yet. */
   onEmptyTap: (indexLoading: boolean) => void;
+  /**
+   * Cold-Trail mode: taps report raw coordinates via onMapTap instead of
+   * resolving to a labeled place, and no guess index is fetched. The
+   * select/empty callbacks are never invoked in this mode.
+   */
+  freeTap?: boolean;
+  onMapTap?: (lon: number, lat: number) => void;
+  /** Cold-Trail evidence overlays (witness rings + marks). */
+  evidenceRings?: TrailEvidenceRing[];
+  evidenceMarks?: TrailEvidenceMark[];
+  /** Override the map's aria-label (default describes the loop's tap model). */
+  mapLabel?: string;
 }
 
 export function LoopMap({
@@ -74,6 +106,11 @@ export function LoopMap({
   handleRef,
   onSelectPlace,
   onEmptyTap,
+  freeTap,
+  onMapTap,
+  evidenceRings,
+  evidenceMarks,
+  mapLabel,
 }: LoopMapProps): JSX.Element {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MLMap | null>(null);
@@ -85,18 +122,20 @@ export function LoopMap({
   // Refs mirror the props the map event handlers need (the handlers are
   // registered once; refs keep them reading current values). Written in an
   // effect, not during render (concurrent-mode safety).
-  const cbRef = useRef({ onSelectPlace, onEmptyTap, finished });
-  const paintRef = useRef({ guesses, target, finished });
+  const cbRef = useRef({ onSelectPlace, onEmptyTap, finished, freeTap, onMapTap });
+  const paintRef = useRef({ guesses, target, finished, evidenceRings, evidenceMarks });
   useEffect(() => {
-    cbRef.current = { onSelectPlace, onEmptyTap, finished };
+    cbRef.current = { onSelectPlace, onEmptyTap, finished, freeTap, onMapTap };
     // Paint inputs ride a ref too: the style-load handler fires at an
     // arbitrary time, long after the mount effect's closure went stale.
-    paintRef.current = { guesses, target, finished };
+    paintRef.current = { guesses, target, finished, evidenceRings, evidenceMarks };
   });
 
   // Preload the guess index on mount so the first tap resolves instantly.
   // fetchLoopIndex caches the promise; the jump search shares it.
+  // Cold-Trail free-tap mode needs no place index — skip the fetch.
   useEffect(() => {
+    if (freeTap) return;
     let cancelled = false;
     fetchLoopIndex()
       .then((entries) => {
@@ -110,7 +149,7 @@ export function LoopMap({
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [freeTap]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -160,7 +199,7 @@ export function LoopMap({
     (container as unknown as { __loopMap?: MLMap }).__loopMap = map;
 
     const onClick = (e: { lngLat: { lng: number; lat: number }; point: { x: number; y: number } }) => {
-      const { onSelectPlace, onEmptyTap, finished } = cbRef.current;
+      const { onSelectPlace, onEmptyTap, finished, freeTap, onMapTap } = cbRef.current;
       if (finished) return;
       // Pin-drop SFX (celebration spec §2.1–§2.2): a tap is accepted when it
       // lands with the camera idle and ≥300 ms since the last tap. A tap
@@ -175,6 +214,16 @@ export function LoopMap({
       lastTapAtRef.current = now;
       if (map.isMoving() || sinceLastTap < 300) {
         playCelebrationSound("pinDropFail");
+        return;
+      }
+      if (freeTap) {
+        // Cold Trail: the tap IS the interception guess — raw coordinates,
+        // no place resolution. The parent gates (rings placed?) and opens
+        // the confirm sheet.
+        if (onMapTap) {
+          playCelebrationSound("pinDropPass");
+          onMapTap(e.lngLat.lng, e.lngLat.lat);
+        }
         return;
       }
       const grid = gridRef.current;
@@ -302,6 +351,21 @@ export function LoopMap({
           },
         });
       }
+      // Cold-Trail witness cities: gold dots anchoring the sighting rings.
+      if (!map.getLayer("loop-witness")) {
+        map.addLayer({
+          id: "loop-witness",
+          type: "circle",
+          source: MARK_SOURCE,
+          filter: ["==", ["get", "kind"], "witness"],
+          paint: {
+            "circle-radius": 7,
+            "circle-color": GOLD,
+            "circle-stroke-width": 2,
+            "circle-stroke-color": "#ffffff",
+          },
+        });
+      }
       if (!map.getLayer("loop-target-star")) {
         map.addLayer({
           id: "loop-target-star",
@@ -336,7 +400,7 @@ export function LoopMap({
   function paintOverlays() {
     const map = mapRef.current;
     if (!map || !map.getSource(RING_SOURCE)) return;
-    const { guesses, target, finished } = paintRef.current;
+    const { guesses, target, finished, evidenceRings, evidenceMarks } = paintRef.current;
     const ringFeatures: GeoJSON.Feature[] = [];
     const arrowFeatures: GeoJSON.Feature[] = [];
     const markFeatures: GeoJSON.Feature[] = [];
@@ -381,6 +445,27 @@ export function LoopMap({
         geometry: { type: "Point", coordinates: [target.lon, target.lat] },
       });
     }
+    // Cold-Trail evidence: witness rings (same ringPolygon geometry as the
+    // loop's deduction surface) with km labels, plus witness/guess marks.
+    for (const r of evidenceRings ?? []) {
+      ringFeatures.push({
+        type: "Feature",
+        properties: {},
+        geometry: ringPolygon(r.lon, r.lat, r.radiusKm),
+      });
+      ringFeatures.push({
+        type: "Feature",
+        properties: { kind: "ring-label", label: r.label },
+        geometry: { type: "Point", coordinates: destination(r.lon, r.lat, 0, r.radiusKm) },
+      });
+    }
+    for (const m of evidenceMarks ?? []) {
+      markFeatures.push({
+        type: "Feature",
+        properties: { kind: m.kind },
+        geometry: { type: "Point", coordinates: [m.lon, m.lat] },
+      });
+    }
     (map.getSource(RING_SOURCE) as GeoJSONSource).setData({
       type: "FeatureCollection",
       features: ringFeatures,
@@ -399,7 +484,7 @@ export function LoopMap({
   useEffect(() => {
     paintOverlays();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [guesses, target, finished]);
+  }, [guesses, target, finished, evidenceRings, evidenceMarks]);
 
   // Camera-jump handle for the search box.
   useEffect(() => {
@@ -426,7 +511,10 @@ export function LoopMap({
       ref={containerRef}
       data-testid="loop-map"
       role="application"
-      aria-label="Detective's map. Pan and zoom to explore labeled places. Double-tap a label area to pick a place."
+      aria-label={
+        mapLabel ??
+        "Detective's map. Pan and zoom to explore labeled places. Double-tap a label area to pick a place."
+      }
       className="h-[52dvh] min-h-[320px] w-full overflow-hidden rounded-2xl border border-line"
     />
   );
