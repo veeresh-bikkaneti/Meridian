@@ -134,7 +134,6 @@ function factText(fact: unknown): string | null {
  */
 function factAttribution(
   fact: unknown,
-  wiki: string | undefined,
 ): { sourceLabel: string; sourceHref: string } | null {
   if (!fact || typeof fact !== "object") return null;
   const f = fact as { kind?: unknown; qid?: unknown; href?: unknown };
@@ -233,7 +232,7 @@ function toStarter(
     fact: factText(place.fact),
     // Per-kind attribution: a well-formed wikidata/eb1911 fact links its
     // actual source; everything else keeps the existing Wikipedia behavior.
-    ...(factAttribution(place.fact, place.wiki) ?? {
+    ...(factAttribution(place.fact) ?? {
       sourceLabel: hasWiki ? "GeoNames · Wikipedia" : GENERATED_SOURCE_LABEL,
       sourceHref: hasWiki
         ? `https://en.wikipedia.org/wiki/${place.wiki}`
@@ -320,8 +319,9 @@ function assertValidRecord(
     }
   }
   // Merged facts (scripts/facts-ladder.mjs): the merge-time no-fabrication
-  // gate proved each one; the runtime below guards against hand-edited
-  // corruption tolerantly (never throws on a bad fact).
+  // gate proved each one; the load-time check below rejects hand-edited
+  // corruption strictly (throws on a bad fact), while rendering stays
+  // tolerant via factText()/factAttribution() (never throws).
   if (record.wiki !== undefined && (typeof record.wiki !== "string" || record.wiki.length === 0)) {
     throw new Error(`${where}: invalid wiki slug`);
   }
