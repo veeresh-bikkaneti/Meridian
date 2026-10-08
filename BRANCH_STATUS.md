@@ -16,6 +16,19 @@ overlaid at runtime onto chunk places; production chunk files are never
 written by build scripts. None of that is this branch's work — it is
 inherited from main.
 
+## Rebase verification (2026-10-08, branch @ 4bf80c2 on f07dad3)
+
+- `npx tsc --noEmit` clean
+- `node scripts/lint-cards.mjs` GATE PASSED (124,690 records)
+- `npm test` green — src suite 857/857 (854 baseline + 3 from #107's
+  `use-online-status` tests), scripts suite green, exit 0
+- `npm run build:pages` green; sw.js stamped buildId=4bf80c2
+- Playwright `tests/e2e/crash-watchdog.spec.ts`: 4/4 passed
+- Conflicts resolved (mechanical, both sides kept): BRANCH_STATUS.md
+  (kept crash-pipeline entries + entry-gates entries), package.json
+  (test list now includes BOTH `use-online-status.test.ts` and
+  `error-component.test.ts`; `smoke:crash` script kept)
+
 ## Done
 
 - `src/lib/observability.ts`
