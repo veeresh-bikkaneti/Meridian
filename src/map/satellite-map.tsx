@@ -19,6 +19,7 @@ import {
 } from "./region-index.ts";
 import { mountStarfield } from "./starfield.ts";
 import { buildScoutStyle } from "./scout-style.ts";
+import { ScoutFallbackMap } from "./scout-fallback.tsx";
 import { isCoarsePointer, mapOptionsForDevice, SCOUT_MAX_ZOOM_FLAT, SCOUT_MAX_ZOOM_GLOBE } from "./map-options.ts";
 import type { MapMode } from "./capability.ts";
 import { emitTileFailed, emitWebglContextLost, recordMilestone } from "@/lib/observability";
@@ -475,13 +476,33 @@ export function SatelliteMap(props: {
   // ready, or failed; MapLibre events in the effect below map onto TileEvents
   // per that module's wiring contract. `mapAttempt` remounts the map for
   // Retry (the effect teardown removes the old instance).
-  const [tileStatus, dispatchTile] = useReducer(tileStatusReducer, INITIAL_TILE_STATUS);
+  // PBI-3: scout mounts no tile sources, so the tile lifecycle is vacuous —
+  // start at "ready" and skip all tile dispatches (flag-guarded below).
+  // Full mode keeps the existing lifecycle exactly.
+  const [tileStatus, dispatchTile] = useReducer(
+    tileStatusReducer,
+    props.mapMode === "scout" ? ({ kind: "ready" } as TileStatus) : INITIAL_TILE_STATUS,
+  );
   const [mapAttempt, setMapAttempt] = useState(0);
   // Telemetry: one tile_failed event per failure episode so map outages
   // are visible in crash reporting (the failure card below is the trigger).
   useEffect(() => {
     if (tileStatus.kind === "failed") emitTileFailed();
   }, [tileStatus.kind]);
+
+  /**
+   * PBI-4: true when the scout outline render failed and the static SVG
+   * fallback owns the map surface. The game (aim / commit / scoring)
+   * proceeds unchanged on the fallback.
+   */
+  const [scoutFallback, setScoutFallback] = useState(false);
+
+  // PBI-4: the static fallback has no map or camera — a committed pin
+  // completes the reveal immediately (same honesty gate as the tileFailed
+  // path), so scoring and rounds proceed unchanged.
+  useEffect(() => {
+    if (scoutFallback && props.variation) onRevealCompleteRef.current?.();
+  }, [scoutFallback, props.variation]);
   // Keyboard crosshair (M6): null = hidden. Shown on first arrow press at
   // viewport center; hidden again as soon as pointer/touch is used.
   const [crosshair, setCrosshair] = useState<{ x: number; y: number } | null>(null);
@@ -678,26 +699,37 @@ export function SatelliteMap(props: {
       devicePixelRatio: typeof window !== "undefined" ? window.devicePixelRatio : undefined,
       mapMode,
     });
-    const map = new Map({
+    // PBI-4: construction can throw on a dead GL context — in scout mode
+    // that drops to the static SVG fallback (the game stays playable);
+    // full mode keeps the existing behavior (the error boundary owns it).
+    let map: Map;
+    try {
+      map = new Map({
       container,
       ...(deviceMapOptions.pixelRatio !== undefined ? { pixelRatio: deviceMapOptions.pixelRatio } : {}),
       maxTileCacheSize: deviceMapOptions.maxTileCacheSize,
-      style: {
-        version: 8,
-        // Design §4: every edition opens from space — globe projection,
-        // zoom 1.0. The flat editions swap to mercator mid-narrow-in.
-        projection: { type: initialProjection },
-        sources: {
-          [IMAGERY_SOURCE]: {
-            type: "raster",
-            tiles: [view.tiles],
-            tileSize: 256,
-            maxzoom: 23,
-            attribution: view.attribution,
-          },
-        },
-        layers: [{ id: IMAGERY_SOURCE, type: "raster", source: IMAGERY_SOURCE }],
-      },
+      style:
+        // PBI-3: Scout Map mounts the label-free, tile-free outline style
+        // (src/map/scout-style.ts) — no satellite raster sources at all.
+        // Full mode keeps the existing imagery style exactly.
+        mapMode === "scout"
+          ? buildScoutStyle(initialProjection)
+          : {
+              version: 8,
+              // Design §4: every edition opens from space — globe projection,
+              // zoom 1.0. The flat editions swap to mercator mid-narrow-in.
+              projection: { type: initialProjection },
+              sources: {
+                [IMAGERY_SOURCE]: {
+                  type: "raster",
+                  tiles: [view.tiles],
+                  tileSize: 256,
+                  maxzoom: 23,
+                  attribution: view.attribution,
+                },
+              },
+              layers: [{ id: IMAGERY_SOURCE, type: "raster", source: IMAGERY_SOURCE }],
+            },
       center: isRestore ? retryView.center : [0, 0],
       zoom: isRestore ? retryView.zoom : 1,
       // PBI-2: Scout Map bounds zoom-space per projection (3 flat / 2 globe);
@@ -715,10 +747,22 @@ export function SatelliteMap(props: {
       // Design §7: no gesture owns the map until the controller arms it.
       interactive: false,
       renderWorldCopies: props.mode === "flat",
-    });
+      });
+    } catch (err) {
+      if (mapMode !== "scout") throw err;
+      setScoutFallback(true);
+      return;
+    }
     projectionRef.current = initialProjection;
     maxBoundsRef.current = initialMaxBounds ?? null;
     mapRef.current = map;
+
+    if (mapMode === "scout") {
+      // PBI-4: the outline style has no external resources — any map error
+      // is a real render failure, so drop to the static SVG fallback and
+      // keep the game playable instead of stranding it on a dead canvas.
+      map.on("error", () => setScoutFallback(true));
+    }
 
     // Observability: a lost WebGL context is a field signal for GPU /
     // memory pressure — emit on the shared (endpoint-gated) path.
@@ -1606,7 +1650,11 @@ export function SatelliteMap(props: {
       data-center-lat={center.lat.toFixed(4)}
       data-tile-status={tileStatus.kind}
       aria-roledescription="map"
-      aria-label="Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin, or skips the reveal while it plays."
+      aria-label={
+        scoutFallback
+          ? "World outline map. Tap to place your pin, then use the Drop pin button. Arrow keys move the aim crosshair; Enter places the pin."
+          : "Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin, or skips the reveal while it plays."
+      }
       // Design §7: the intro beat owns the screen — the wrapper is hidden
       // from assistive tech and uninteractable until narrow completion
       // releases it (the `announce` intent then fires through the live
@@ -1630,11 +1678,24 @@ export function SatelliteMap(props: {
         inline style outranks every stylesheet, layered or not — keep the
         inline style; do not merge it into the className.
       */}
-      <div
-        ref={containerRef}
-        className={`absolute inset-0 transition-opacity duration-500 motion-reduce:transition-none ${ready ? "opacity-100" : "opacity-0"}`}
-        style={{ position: "absolute" }}
-      />
+      {/*
+        PBI-4: when the scout outline render fails, the static SVG fallback
+        owns the map surface — same aim/commit/scoring flow, no camera.
+      */}
+      {scoutFallback ? (
+        <ScoutFallbackMap
+          marks={props.marks}
+          spot={props.spot}
+          revealed={props.variation != null}
+          onAim={(lon, lat) => onAimRef.current?.(lon, lat)}
+        />
+      ) : (
+        <div
+          ref={containerRef}
+          className={`absolute inset-0 transition-opacity duration-500 motion-reduce:transition-none ${ready ? "opacity-100" : "opacity-0"}`}
+          style={{ position: "absolute" }}
+        />
+      )}
       {/* Must-fix #2: tile loading / failure UX. A dead imagery connection
           must never look like a working game. Both overlays sit at z-10:
           above the map canvas, below the Drop overlay (z-20), the crosshair
