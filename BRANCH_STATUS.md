@@ -39,6 +39,16 @@ observability endpoint at init so the report fires instantly.
   like a real browser.
 - `tests/e2e/crash-watchdog.spec.ts` — scenario (a) updated: single
   "Try again" button, no tap, asserts the auto-POST + confirmation.
+- `src/lib/observability.ts` — security re-review fix (2026-10-07):
+  app-bundle `init()` no longer emits the raw UA on unclean shutdown.
+  The stored trail's `device` (raw `device.ua`) is stripped from the
+  breadcrumb copy and the event carries fresh `coarseDeviceFacts()`
+  (os/form buckets + numerics, never the UA string), mirroring the
+  watchdog's COPPA posture. New `DeviceInfo.os`/`form` fields.
+- `src/lib/observability.test.ts` — new COPPA canary test: fixture
+  breadcrumb with `device.ua` canary asserts the canary and any `"ua"`
+  key are absent from the raw POST body, coarse facts still present,
+  breadcrumb carries no device. Verified it FAILS on the pre-fix code.
 
 ## Pending
 

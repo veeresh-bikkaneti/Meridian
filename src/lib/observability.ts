@@ -14,9 +14,9 @@
  * the trail, so the event fires exactly once even if transport fails.
  *
  * Privacy: events carry build id, milestone names, edition/region ids,
- * coarse device facts (UA, DPR, screen size) and truncated error
- * name/message only. NO guess/place content, NO coordinates, NO PII,
- * NO stack traces.
+ * coarse device facts (OS/form buckets, DPR, screen size, memory, cores —
+ * never the raw UA string) and truncated error name/message only.
+ * NO guess/place content, NO coordinates, NO PII, NO stack traces.
  *
  * Transport is a complete no-op until an endpoint is configured (via the
  * `observabilityEndpoint` field in flags.json — see src/lib/flags.ts).
@@ -62,6 +62,10 @@ export type ObservabilityEventType =
 
 export interface DeviceInfo {
   ua?: string;
+  /** Coarse OS bucket (COPPA) derived from the UA — never the raw UA string. */
+  os?: string;
+  /** Coarse form-factor bucket: "mobile" | "desktop". */
+  form?: string;
   dpr?: number;
   screenW?: number;
   screenH?: number;
@@ -178,6 +182,45 @@ function defaultRandomId(): string {
     // fall through
   }
   return `s-${Date.now().toString(36)}-${Math.floor(Math.random() * 1e9).toString(36)}`;
+}
+
+/**
+ * Coarse device facts for outbound crash reports — mirrors the watchdog's
+ * COPPA posture (scripts/crash-watchdog.mjs): OS + form-factor buckets
+ * derived from the UA, never the UA string itself. Numeric facts (DPR,
+ * screen, memory, cores) pass through. Reads only live globals, never
+ * stored state, so a tainted stored UA cannot leak through this path.
+ */
+export function coarseDeviceFacts(): DeviceInfo {
+  let uaS = "";
+  try {
+    if (typeof navigator !== "undefined" && typeof navigator.userAgent === "string") {
+      uaS = navigator.userAgent.toLowerCase();
+    }
+  } catch {
+    uaS = "";
+  }
+  const os = /android/.test(uaS)
+    ? "android"
+    : /iphone|ipad|ipod/.test(uaS)
+      ? "ios"
+      : /windows/.test(uaS)
+        ? "windows"
+        : /mac/.test(uaS)
+          ? "mac"
+          : /linux/.test(uaS)
+            ? "linux"
+            : "other";
+  const d = collectDeviceInfo();
+  return {
+    os,
+    form: os === "android" || os === "ios" ? "mobile" : "desktop",
+    dpr: d.dpr,
+    screenW: d.screenW,
+    screenH: d.screenH,
+    deviceMemory: d.deviceMemory,
+    hardwareConcurrency: d.hardwareConcurrency,
+  };
 }
 
 export function sanitizeError(err: unknown): { name: string; message: string } {
@@ -410,6 +453,14 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
         unclean = false;
       }
       if (unclean && prev) {
+        // COPPA: the stored trail's device sub-object carries the raw UA
+        // string (device.ua) — it must never leave the phone. Mirror the
+        // watchdog (scripts/crash-watchdog.mjs): attach fresh coarse facts
+        // (os/form buckets + numerics, no raw UA) and strip device from
+        // the breadcrumb copy. The tainted stored copy is rotated below
+        // regardless, so it never persists past this boot.
+        const prevCopy: Breadcrumb = { ...prev };
+        delete prevCopy.device;
         const event: ObservabilityEvent = {
           type: "suspected_crash",
           ts: now(),
@@ -419,8 +470,8 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
           regionId: prev.regionId,
           chunkId: prev.chunkId,
           lastMilestone: prev.lastMilestone,
-          device: prev.device,
-          breadcrumb: prev,
+          device: coarseDeviceFacts(),
+          breadcrumb: prevCopy,
         };
         try {
           storage?.removeItem(BREADCRUMB_KEY);
