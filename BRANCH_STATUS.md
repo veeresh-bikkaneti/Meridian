@@ -11,9 +11,9 @@ inherited from main.
 # BRANCH_STATUS — feat/facts-ladder
 
 Fact-ladder content pipeline: generator scripts merge Wikidata / wiki-text /
-EB1911 / hook facts into place chunks; 261 pilot facts (arkansas 19,
-australia 242 after P0 removals) render on story cards as fact-first
-narratives with per-kind source attribution.
+EB1911 / hook facts into place chunks; 249 pilot facts (arkansas 19,
+australia 230 after content-safety removals) render on story cards as
+fact-first narratives with per-kind source attribution.
 
 ## Done
 
@@ -29,12 +29,18 @@ narratives with per-kind source attribution.
 - Generator scripts (6 files, ~2900 lines + tests): facts-ladder.mjs,
   facts-wikidata-extract.mjs, facts-wiki-text.mjs, facts-eb1911.mjs,
   facts-qid-join.mjs, facts-validate.mjs. All green.
-- 261 pilot facts merged into arkansas.json (19) + australia.json (242).
+- 249 pilot facts merged into arkansas.json (19) + australia.json (230).
   hookMissing cleared where facts added (contract).
 - Expert review P0 fixes:
   - Removed Forrest City, AR fact (Confederate general / KKK Grand Wizard
     reference — inappropriate for 8-12).
   - Removed McKail, AU fact (describes 1835 killing — too violent).
+  - Removed Fortitude Valley fact + rewrote history (mentioned "adult
+    entertainment" — inappropriate for 8-12).
+  - Removed 10 broken/politically-loaded facts: Attadale, Dickson,
+    Tighes Hill, Millner, Palmyra, Unanderra, Cairns, Wollongong
+    (truncated/dangling/subject-mismatch), Mullumbimby ("anti-vaxxer
+    capital"), Villawood (immigration detention centre).
   - Repaired rebase damage: missing brace in factText, orphaned
     assertValidFact call, truncated facts-ladder.mjs, malformed
     playwright.config.ts.
