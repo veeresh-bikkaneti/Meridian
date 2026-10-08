@@ -18,7 +18,7 @@ export const COMET_GREETING_LINES: readonly string[] = [
   "Somewhere on this map, a story is hiding. Today, we hunt it down.",
   "Today, the chart hides a place no explorer has ever guessed right.",
   "Legends say every star on my tail marks a secret the world kept.",
-  "Listen close. Somewhere out there, a city is calling your name.",
+  "Psst… a mystery brews out there.",
   "Strap in, explorer. This map is about to blow your mind.",
   "Three guesses. One hidden wonder. A thousand stories. Ready?",
   "I followed a shooting star last night, and it pointed right here.",

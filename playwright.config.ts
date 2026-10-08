@@ -84,6 +84,18 @@ export default defineConfig({
       },
     },
     {
+      name: "grandpa-tour",
+      // Grandpa's Tasting Tour (mobile-only screenplay): the filename is
+      // fixed by the feature brief, so it gets its own project with the
+      // mobile viewport instead of matching the "mobile" project's pattern.
+      testMatch: /grandpa-tasting-tour\.spec\.ts/,
+      use: {
+        viewport: { width: 390, height: 844 },
+        hasTouch: true,
+        isMobile: true,
+      },
+    },
+    {
       name: "endless-game",
       testMatch: /endless-game\.spec\.ts/,
     },
