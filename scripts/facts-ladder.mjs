@@ -526,4 +526,123 @@ export async function fetchMissing(chunkIds, joinLimit = 150) {
 
   // Wikidata extract for joined-but-not-yet-extracted qids.
   const processed = readWikidataQids();
-  const todo = [...new Set(newQ
+  const todo = [...new Set(newQids)].filter((q) => !processed.has(q));
+  console.log(`[ladder] wikidata extract: ${todo.length} new qids`);
+  if (todo.length > 0) {
+    const { records } = await wikidataExtract(todo);
+    console.log(`[ladder] wikidata extract: ${records.length} new statements`);
+  }
+  return { join: stats, extractedQids: todo.length };
+}
+
+// ---------------------------------------------------------------------------
+// report
+// ---------------------------------------------------------------------------
+
+/** Coverage potential from current inputs, without writing anything. */
+export function reportCoverage(chunkIds, inputs = loadInputs()) {
+  const rows = [];
+  for (const cid of chunkIds) {
+    const chunk = JSON.parse(readFileSync(chunkPath(cid), "utf8"));
+    const row = { chunkId: cid, places: chunk.places.length, wikidata: 0, wikitext: 0, eb1911: 0, hook: 0, none: 0, alreadyFact: 0 };
+    for (const p of chunk.places) {
+      if (p.fact) { row.alreadyFact++; continue; }
+      const { rung } = factForPlace(p, inputs);
+      row[rung]++;
+    }
+    rows.push(row);
+  }
+  return rows;
+}
+
+function printReport(rows) {
+  for (const r of rows) {
+    console.log(
+      `${r.chunkId}: places=${r.places} alreadyFact=${r.alreadyFact} ` +
+      `wikidata=${r.wikidata} wikitext=${r.wikitext} eb1911=${r.eb1911} hook=${r.hook} none=${r.none}`,
+    );
+  }
+  const tot = rows.reduce(
+    (a, r) => {
+      for (const k of ["places", "alreadyFact", "wikidata", "wikitext", "eb1911", "hook", "none"]) a[k] += r[k];
+      return a;
+    },
+    { places: 0, alreadyFact: 0, wikidata: 0, wikitext: 0, eb1911: 0, hook: 0, none: 0 },
+  );
+  console.log(`TOTAL: ${JSON.stringify(tot)}`);
+}
+
+// ---------------------------------------------------------------------------
+// CLI
+// ---------------------------------------------------------------------------
+
+function parseArgs(argv) {
+  const args = { command: null, chunks: null, all: false, dryRun: false, fetchMissing: false, joinLimit: 150 };
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === "run" || a === "report") args.command = a;
+    else if (a === "--dry-run") args.dryRun = true;
+    else if (a === "--fetch-missing") args.fetchMissing = true;
+    else if (a === "--all") args.all = true;
+    else if (a.startsWith("--chunks=")) args.chunks = a.slice(9).split(",").map((s) => s.trim()).filter(Boolean);
+    else if (a === "--chunks" && argv[i + 1]) args.chunks = argv[++i].split(",").map((s) => s.trim()).filter(Boolean);
+    else if (a.startsWith("--join-limit=")) args.joinLimit = Number(a.slice(13));
+    else if (a === "--join-limit" && argv[i + 1]) args.joinLimit = Number(argv[++i]);
+  }
+  return args;
+}
+
+function resolveChunkIds(args) {
+  if (args.all) {
+    return readdirSync(CHUNKS_DIR).filter((f) => f.endsWith(".json")).map((f) => f.slice(0, -5)).sort();
+  }
+  if (!args.chunks || args.chunks.length === 0) {
+    throw new Error("refusing to run without --chunks <ids> or --all (pilot-first policy: merge a few chunks, report, then decide)");
+  }
+  for (const c of args.chunks) {
+    if (!existsSync(chunkPath(c))) throw new Error(`unknown chunk "${c}"`);
+  }
+  return args.chunks;
+}
+
+async function main() {
+  const args = parseArgs(process.argv.slice(2));
+  if (!args.command) {
+    console.error("usage: facts-ladder.mjs run --chunks a,b [--dry-run] [--fetch-missing] | facts-ladder.mjs report [--chunks a,b]");
+    process.exit(1);
+  }
+  const chunkIds = resolveChunkIds(args);
+  if (args.command === "report") {
+    printReport(reportCoverage(chunkIds));
+    return;
+  }
+  // run
+  if (args.fetchMissing) {
+    await fetchMissing(chunkIds, args.joinLimit);
+  }
+  const inputs = loadInputs();
+  let totalRejections = 0;
+  for (const cid of chunkIds) {
+    const r = mergeChunk(cid, inputs, { dryRun: args.dryRun });
+    console.log(
+      `[ladder] ${r.chunkId}: ${r.places} places -> ` +
+      `wikidata=${r.counts.wikidata} wikitext=${r.counts.wikitext} eb1911=${r.counts.eb1911} ` +
+      `hook=${r.counts.hook} none=${r.counts.none}${r.dryRun ? " (dry-run, nothing written)" : ` (wrote ${r.wrote})`}`,
+    );
+    for (const rej of r.rejections) {
+      totalRejections++;
+      console.log(`  REJECT ${rej.id} ${rej.name}:`);
+      for (const t of rej.loud) {
+        const extra = t.violations ? ` violations=[${t.violations.join("; ")}]` : "";
+        const notes = (t.notes ?? []).length ? ` notes=[${t.notes.join("; ")}]` : "";
+        const rejDetail = (t.rejected ?? []).map((x) => `${x.factType}: ${x.violations.join("; ")}`).join(" | ");
+        console.log(`    rung=${t.rung} reason=${t.reason}${extra}${notes}${rejDetail ? ` rejected=[${rejDetail}]` : ""}`);
+      }
+    }
+  }
+  console.log(`[ladder] done: ${totalRejections} loud rejection(s) across ${chunkIds.length} chunk(s)`);
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((e) => { console.error("fatal:", e.message); process.exit(1); });
+}
