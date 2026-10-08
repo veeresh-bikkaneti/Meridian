@@ -138,7 +138,11 @@ test("idle-kill return: capable device never demotes", async ({ context }) => {
     page.getByText("Your game ended after 2 minutes of inactivity."),
   ).toBeVisible();
 
-  // Return: new run from home after the idle kill — no offer, no demotion.
+  // Return: the kill already happened in this context (no crash flag was
+  // set — the idle kill is orderly). Navigate fresh WITHOUT the
+  // ?idle-ms= seam (it would kill the return run 4 s in) and start a new
+  // run: no offer, no demotion.
+  await page.goto(APP_NO_IDLE);
   await page.getByRole("button", { name: "Play the globe" }).click();
   await expect.poll(() => readPhase(page), { timeout: 60_000 }).toBe("aim");
   await expectFullMode(page, tileRequests);
