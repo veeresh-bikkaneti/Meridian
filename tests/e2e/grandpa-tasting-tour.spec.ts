@@ -476,6 +476,53 @@ test.describe("reduced motion", () => {
   });
 });
 
+test("Comet plush sits static on the bench; ask copy unchanged", async ({
+  page,
+}) => {
+  // Veeresh 2026-10-07: a static Comet plush on the bench's right end —
+  // set dressing, zero animation.
+  const key = todayKey();
+  await page.addInitScript(
+    ({ k, v }: { k: string; v: string }) => localStorage.setItem(k, v),
+    { k: TOUR_DATE_KEY, v: key },
+  );
+  const errors = await loadHome(page);
+  const scene = page.getByTestId("grandpa-scene");
+  // No 20s walk: seated within seconds.
+  await expect(scene).toHaveAttribute("data-beat", "seated", {
+    timeout: 10_000,
+  });
+  // The park vignette fades in when he sits down — wait it out.
+  await expect
+    .poll(
+      async () =>
+        parseFloat(
+          await page
+            .getByTestId("grandpa-park")
+            .evaluate((el) => getComputedStyle(el).opacity),
+        ),
+      { timeout: 5_000 },
+    )
+    .toBeGreaterThan(0.9);
+  // The plush is present when seated.
+  const plush = page.getByTestId("grandpa-comet-plush");
+  await expect(plush).toHaveCount(1);
+  const box = await plush.boundingBox();
+  expect(box, "plush has a bounding box").not.toBeNull();
+  expect(box!.width).toBeGreaterThan(0);
+  expect(box!.height).toBeGreaterThan(0);
+  // Static: no CSS animation on the plush itself.
+  const animName = await plush.evaluate(
+    (el) => getComputedStyle(el).animationName,
+  );
+  expect(animName, "plush has no CSS animation").toBe("none");
+  // Veeresh's ask copy is unchanged.
+  const bubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
+  await expect(bubble).toContainText("Your support keeps Meridian free for kids");
+  expectCleanConsole(errors);
+});
+
 test("offline hides grandpa entirely", async ({ page, context }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));

@@ -4,10 +4,19 @@ import { serveBuiltArtifact } from "./helpers";
 /**
  * CometMascot E2E — desktop (1440×900, fine pointer, full motion).
  *
- * Covers: renders bottom-right at 120–140px without covering CTAs,
- * boop reaction fires, dizzy easter egg (4 boops), cursor tracking works,
- * greeting shows on every visit (Veeresh 2026-10-06), autoplay gate,
- * sound-off speaker opt-in, no console errors.
+ * Veeresh 2026-10-07: Comet hosts from the banner — in-flow, right of the
+ * "Meridian" h1 in `.atlas-banner-row`, composed with a brass armillary
+ * ring + dark-theme backplate (80px desktop). The fixed bottom-right
+ * wrapper is retired. The greeting bubble opens DOWNWARD (tail up), the
+ * gaze is dampened (90px dead zone, head offsets ×0.6), and the
+ * auto-greeting stays quiet while the first-run tutorial invite is up
+ * (`suppressAuto`).
+ *
+ * Covers: banner position (in-flow, right of h1, 72–88px), greeting
+ * opens below without covering banner chrome, dampened gaze tracking,
+ * armillary ring, dark-theme backplate, invite suppression, boop,
+ * dizzy easter egg, autoplay gate, sound-off speaker opt-in, edition
+ * reaction, no console errors.
  */
 test.setTimeout(180_000);
 
@@ -16,8 +25,6 @@ test.beforeEach(async ({ context }) => {
 });
 
 const APP = "http://127.0.0.1:4123/Meridian/";
-const LAST_DATE_KEY = "meridian.cometGreeting.lastDate";
-const SOUND_KEY = "meridian.sound";
 
 function localKey(d: Date): string {
   const y = d.getFullYear();
@@ -63,6 +70,38 @@ async function loadHome(
   return errors;
 }
 
+/**
+ * Dismiss the first-run tutorial invite when present. While it is up,
+ * `suppressAuto` keeps the auto-greeting quiet; dismissing it lets the
+ * greeting start (once), so greeting-dependent tests call this first.
+ */
+async function dismissInvite(page: Page): Promise<void> {
+  const invite = page.getByTestId("tutorial-invite");
+  if ((await invite.count()) > 0) {
+    await page.getByRole("button", { name: "Not now" }).click();
+    await expect(invite).toHaveCount(0);
+  }
+}
+
+type Box = { x: number; y: number; width: number; height: number };
+
+/** Two boxes overlap only if they share more than ~1px in both axes. */
+function overlaps(a: Box, b: Box): boolean {
+  const eps = 0.5;
+  return (
+    a.x + eps < b.x + b.width - eps &&
+    b.x + eps < a.x + a.width - eps &&
+    a.y + eps < b.y + b.height - eps &&
+    b.y + eps < a.y + a.height - eps
+  );
+}
+
+function noOverlap(nameA: string, a: Box | null, nameB: string, b: Box | null) {
+  expect(a, `${nameA} has a bounding box`).not.toBeNull();
+  expect(b, `${nameB} has a bounding box`).not.toBeNull();
+  expect(overlaps(a!, b!), `${nameA} overlaps ${nameB}`).toBe(false);
+}
+
 /** The mascot must never sit on top of a CTA tap target. */
 async function expectCtasUncovered(page: Page) {
   const ctas = [
@@ -99,18 +138,162 @@ function expectCleanConsole(errors: string[]): void {
   expect(relevant, `console/page errors: ${JSON.stringify(relevant)}`).toEqual([]);
 }
 
-test("renders bottom-right at desktop size without covering CTAs", async ({ page }) => {
+test("Comet hosts from the banner: in-flow, right of the h1, desktop size", async ({
+  page,
+}) => {
   const errors = await loadHome(page, { lastDate: yesterdayKey() });
-  const box = await page.getByTestId("comet-mascot").boundingBox();
-  expect(box).not.toBeNull();
-  // 120–140px desktop.
-  expect(box!.width).toBeGreaterThanOrEqual(120);
-  expect(box!.width).toBeLessThanOrEqual(140);
-  // Bottom-right: within 40px of the viewport corner.
-  const vp = page.viewportSize()!;
-  expect(vp.width - (box!.x + box!.width)).toBeLessThanOrEqual(40);
-  expect(vp.height - (box!.y + box!.height)).toBeLessThanOrEqual(40);
+  const mascot = page.getByTestId("comet-mascot");
+  const wrap = page.getByTestId("comet-wrap");
+  const banner = page.locator(".atlas-banner-row");
+  const h1 = page.locator("h1.atlas-title");
+
+  const mBox = await mascot.boundingBox();
+  const bBox = await banner.boundingBox();
+  const hBox = await h1.boundingBox();
+  expect(mBox, "mascot has a box").not.toBeNull();
+  expect(bBox, "banner row has a box").not.toBeNull();
+  expect(hBox, "h1 has a box").not.toBeNull();
+
+  // 72–88px desktop (80px emblem; bounding-box tolerance for subpixel).
+  expect(mBox!.width).toBeGreaterThanOrEqual(72);
+  expect(mBox!.width).toBeLessThanOrEqual(88);
+  expect(mBox!.height).toBeGreaterThanOrEqual(72);
+  expect(mBox!.height).toBeLessThanOrEqual(88);
+
+  // In-flow, not fixed/absolute: the old bottom-right wrapper is retired.
+  expect(await wrap.evaluate((el) => getComputedStyle(el).position)).toBe("relative");
+
+  // Right of the h1's right edge, inside the banner row.
+  expect(mBox!.x).toBeGreaterThanOrEqual(hBox!.x + hBox!.width);
+  expect(mBox!.y).toBeGreaterThanOrEqual(bBox!.y - 2);
+  expect(mBox!.y + mBox!.height).toBeLessThanOrEqual(bBox!.y + bBox!.height + 2);
+  expect(mBox!.x + mBox!.width).toBeLessThanOrEqual(bBox!.x + bBox!.width + 2);
+
   await expectCtasUncovered(page);
+  expectCleanConsole(errors);
+});
+
+test("greeting bubble opens below Comet and covers no banner chrome", async ({
+  page,
+}) => {
+  const errors = await loadHome(page, { lastDate: yesterdayKey() });
+  await dismissInvite(page);
+  const bubble = page.getByTestId("comet-greeting");
+  await expect(bubble).toBeVisible();
+  // The 220ms scale-in must settle or the box reads mid-animation.
+  await page.waitForTimeout(450);
+
+  const mBox = await page.getByTestId("comet-mascot").boundingBox();
+  const gBox = await bubble.boundingBox();
+  expect(mBox, "mascot has a box").not.toBeNull();
+  expect(gBox, "bubble has a box").not.toBeNull();
+
+  // Opens DOWNWARD (tail up): the bubble's top edge sits at/below the
+  // emblem's bottom edge.
+  expect(gBox!.y).toBeGreaterThanOrEqual(mBox!.y + mBox!.height - 2);
+
+  // Covers nothing in the banner zone.
+  noOverlap("greeting", gBox, "sound toggle", await page.getByTestId("sound-toggle").boundingBox());
+  noOverlap("greeting", gBox, "h1", await page.locator("h1.atlas-title").boundingBox());
+  noOverlap("greeting", gBox, "tagline", await page.locator(".atlas-tagline").boundingBox());
+  expectCleanConsole(errors);
+});
+
+test("dampened gaze still tracks the pointer with smaller travel", async ({
+  page,
+}) => {
+  const errors = await loadHome(page, { lastDate: yesterdayKey() });
+  const mascot = page.getByTestId("comet-mascot");
+  await expect(mascot).toHaveAttribute("data-tracking", "on");
+  const head = page.locator(".comet-head");
+  const pupils = page.getByTestId("comet-pupils");
+
+  const readOffsets = async (): Promise<[number, number] | null> => {
+    const style = await head.getAttribute("style");
+    const m = style?.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+    return m ? [parseFloat(m[1]), parseFloat(m[2])] : null;
+  };
+
+  // Bottom-left corner: far outside the 90px dead zone → head turns SW.
+  await page.mouse.move(60, 800);
+  await expect
+    .poll(async () => head.getAttribute("style"), { timeout: 5000 })
+    .not.toContain("translate(0px, 0px)");
+  const turned = await readOffsets();
+  expect(turned, "head transform parses").not.toBeNull();
+  const [dx, dy] = turned!;
+  expect(dx, "SW = negative x").toBeLessThan(0);
+  expect(dy, "SW = positive y").toBeGreaterThan(0);
+  // Dampened: movement > 0 but below the old undampened max (5 SVG units;
+  // 5 × 0.6 = 3.0 now).
+  expect(Math.max(Math.abs(dx), Math.abs(dy))).toBeGreaterThan(0.5);
+  expect(Math.max(Math.abs(dx), Math.abs(dy))).toBeLessThanOrEqual(3.0 + 0.01);
+  // Pupils ride at half the head offset (dampened pupil max = 1.5).
+  const pStyle = await pupils.getAttribute("style");
+  const pm = pStyle?.match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+  expect(pm, "pupil transform parses").not.toBeNull();
+  expect(Math.max(Math.abs(parseFloat(pm![1])), Math.abs(parseFloat(pm![2])))).toBeLessThanOrEqual(
+    1.5 + 0.01,
+  );
+
+  // Back onto the mascot: inside the 90px dead zone → neutral pose.
+  const box = await mascot.boundingBox();
+  await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
+  await expect
+    .poll(async () => head.getAttribute("style"), { timeout: 5000 })
+    .toContain("translate(0px, 0px)");
+  expectCleanConsole(errors);
+});
+
+test("armillary ring renders as part of the emblem", async ({ page }) => {
+  const errors = await loadHome(page, { lastDate: yesterdayKey() });
+  const ring = page.locator(".comet-armillary");
+  await expect(ring).toHaveCount(1);
+  const box = await ring.boundingBox();
+  expect(box, "armillary ring has a box").not.toBeNull();
+  // The ring overhangs the 80px emblem (inset -10px → ~100px).
+  expect(box!.width).toBeGreaterThan(80);
+  expectCleanConsole(errors);
+});
+
+test("backplate is hidden in light theme", async ({ page }) => {
+  const errors = await loadHome(page, { lastDate: yesterdayKey() });
+  const plate = page.locator(".comet-backplate");
+  await expect(plate).toHaveCount(1);
+  expect(await plate.evaluate((el) => getComputedStyle(el).display)).toBe("none");
+  expectCleanConsole(errors);
+});
+
+test.describe("dark theme", () => {
+  test.use({ colorScheme: "dark" });
+
+  test("backplate renders in dark theme for contrast", async ({ page }) => {
+    const errors = await loadHome(page, { lastDate: yesterdayKey() });
+    const plate = page.locator(".comet-backplate");
+    await expect(plate).toHaveCount(1);
+    expect(await plate.evaluate((el) => getComputedStyle(el).display)).not.toBe("none");
+    expect(
+      parseFloat(await plate.evaluate((el) => getComputedStyle(el).opacity)),
+    ).toBeGreaterThan(0);
+    // The emblem is still the right size in dark theme.
+    const mBox = await page.getByTestId("comet-mascot").boundingBox();
+    expect(mBox!.width).toBeGreaterThanOrEqual(72);
+    expect(mBox!.width).toBeLessThanOrEqual(88);
+    expectCleanConsole(errors);
+  });
+});
+
+test("auto-greeting stays quiet while the tutorial invite is up", async ({
+  page,
+}) => {
+  const errors = await loadHome(page, { lastDate: yesterdayKey() });
+  // First run: the invite is visible, and the greeting must NOT auto-show.
+  await expect(page.getByTestId("tutorial-invite")).toBeVisible();
+  await page.waitForTimeout(1500);
+  await expect(page.getByTestId("comet-greeting")).toHaveCount(0);
+  // Dismiss the invite → the greeting starts once.
+  await page.getByRole("button", { name: "Not now" }).click();
+  await expect(page.getByTestId("comet-greeting")).toBeVisible({ timeout: 10_000 });
   expectCleanConsole(errors);
 });
 
@@ -135,29 +318,9 @@ test("four quick boops trigger the dizzy easter egg", async ({ page }) => {
   expectCleanConsole(errors);
 });
 
-test("cursor tracking turns the head toward the pointer", async ({ page }) => {
-  const errors = await loadHome(page, { lastDate: yesterdayKey() });
-  const mascot = page.getByTestId("comet-mascot");
-  await expect(mascot).toHaveAttribute("data-tracking", "on");
-  const pupils = page.getByTestId("comet-pupils");
-  // Top-left corner: far outside the 70px dead zone → head turns NW.
-  await page.mouse.move(60, 60);
-  await expect
-    .poll(async () => pupils.getAttribute("style"), { timeout: 5000 })
-    .not.toContain("translate(0px, 0px)");
-  const turned = await pupils.getAttribute("style");
-  expect(turned).toContain("-"); // NW = negative x/y offsets
-  // Back onto the mascot: inside the dead zone → neutral pose.
-  const box = await mascot.boundingBox();
-  await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
-  await expect
-    .poll(async () => pupils.getAttribute("style"), { timeout: 5000 })
-    .toContain("translate(0px, 0px)");
-  expectCleanConsole(errors);
-});
-
 test("greeting shows on every home page visit", async ({ page }) => {
   const errors = await loadHome(page, { lastDate: yesterdayKey() });
+  await dismissInvite(page);
   const bubble = page.getByTestId("comet-greeting");
   await expect(bubble).toBeVisible();
   await expect(bubble).toHaveAttribute("data-greeting-index", String(expectedIndex()));
@@ -165,20 +328,17 @@ test("greeting shows on every home page visit", async ({ page }) => {
   expect(text).toBeTruthy();
   expect(text!.length).toBeGreaterThan(20);
 
-  // Reload same day → no greeting.
+  // Same-day reload → greeting again (Veeresh 2026-10-06: every visit,
+  // not once per day; the invite stays dismissed so suppressAuto is off).
   await page.reload();
   await expect(page.getByTestId("comet-mascot")).toBeVisible();
-  await expect(page.getByTestId("comet-greeting")).toHaveCount(0);
-
-  // Next day → greeting returns.
-  await page.evaluate((key) => localStorage.setItem(key, "2000-01-01"), LAST_DATE_KEY);
-  await page.reload();
-  await expect(page.getByTestId("comet-greeting")).toBeVisible();
+  await expect(page.getByTestId("comet-greeting")).toBeVisible({ timeout: 10_000 });
   expectCleanConsole(errors);
 });
 
 test("autoplay gate: audio waits for the first gesture, then plays in sync", async ({ page }) => {
   const errors = await loadHome(page, { lastDate: yesterdayKey(), sound: "on" });
+  await dismissInvite(page);
   const bubble = page.getByTestId("comet-greeting");
   await expect(bubble).toBeVisible();
   await expect(bubble).toHaveAttribute("data-sound", "on");
@@ -198,6 +358,7 @@ test("sound off: text greeting with speaker opt-in that leaves the toggle alone"
   page,
 }) => {
   const errors = await loadHome(page, { lastDate: yesterdayKey(), sound: "off" });
+  await dismissInvite(page);
   const bubble = page.getByTestId("comet-greeting");
   await expect(bubble).toBeVisible();
   await expect(bubble).toHaveAttribute("data-sound", "off");
@@ -215,21 +376,13 @@ test("sound off: text greeting with speaker opt-in that leaves the toggle alone"
 
 test("tap dismisses the greeting instantly", async ({ page }) => {
   const errors = await loadHome(page, { lastDate: yesterdayKey(), sound: "off" });
+  await dismissInvite(page);
   const bubble = page.getByTestId("comet-greeting");
   await expect(bubble).toBeVisible();
   await bubble.click();
   await expect(page.getByTestId("comet-greeting")).toHaveCount(0);
   // Mascot stays put — only the bubble dismisses.
   await expect(page.getByTestId("comet-mascot")).toBeVisible();
-  expectCleanConsole(errors);
-});
-
-test("greeting shows on every visit (not once per day)", async ({ page }) => {
-  // Veeresh 2026-10-06: greeting plays each time the user lands on home.
-  // Muting is via the global sound toggle, not a date gate.
-  const errors = await loadHome(page, { lastDate: todayKey() });
-  await expect(page.getByTestId("comet-mascot")).toBeVisible();
-  await expect(page.getByTestId("comet-greeting")).toHaveCount(1);
   expectCleanConsole(errors);
 });
 
@@ -241,6 +394,7 @@ test("picking an edition makes Comet look at the card and react", async ({ page 
   // unmounts) before the reaction can be observed. The click→event wiring
   // is covered by the withCardTap unit path.
   const errors = await loadHome(page, { lastDate: yesterdayKey(), sound: "off" });
+  await dismissInvite(page);
   // Dismiss the greeting so it doesn't overlap the reaction bubble.
   const bubble = page.getByTestId("comet-greeting");
   if (await bubble.isVisible()) await bubble.click();
