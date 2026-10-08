@@ -33,43 +33,41 @@ Standing rules: PRs only, owner merges; named-file staging only; gates before ha
 - Spec correction made (2026-10-08): DPR premise corrected — touch devices already capped at 1.5 in map-options.ts.
 
 ## QA (Software Tester — updated 2026-10-08)
-- Gates baseline (branch @ f07dad3, before scout code lands): `npx tsc --noEmit` ✅ ·
-  `npm test` ✅ (exit 0) · `node scripts/lint-cards.mjs` ✅ GATE PASSED ·
-  `npm run build:pages` ⏳ running.
-- Test files added (PBI-9 + Phase A contracts):
-  - `tests/e2e/scout-helpers.ts` — shared contracts (testids, storage record,
-    capable-device spoof, tile counter).
-  - `tests/e2e/scout-offer.desktop.spec.ts` — boot offer modal: once-per-boot,
-    Esc/"Not now"/scrim decline, focus trap, decline retires flag, fail-closed
-    clean boot, manual-override suppression (PBI-6).
-  - `tests/e2e/scout-toggle.desktop.spec.ts` — toggle in Play top bar (not in
-    .satellite-map), localStorage round-trip, next-place-mount effect, no
-    mid-round remount, manual beats probe (PBI-7).
-  - `tests/e2e/scout-switch-note.desktop.spec.ts` — role="status" note: hidden
-    in aim / shown at card reveal, ResultCard sibling, fixed inset-x-4 top-16,
-    bubble non-overlap, 360px width, mode persisted (PBI-5).
-  - `tests/e2e/scout-throttled.desktop.spec.ts` — SwiftShader (native on this
-    VM) + 6x CPU throttle → scout qualifies, game completes (PBI-9a).
-  - `tests/e2e/scout-false-demotion.desktop.spec.ts` — P0 GOLDEN: spoofed
-    capable device (NVIDIA renderer, deviceMemory 8, DPR 2) never demotes on
-    cold boot / crash-resume-to-menu / idle-kill return; satellite tiles
-    requested; maxZoom stays 8 (PBI-9b).
-  - `tests/e2e/scout-context-lost.desktop.spec.ts` — webglcontextlost mid-round:
-    state preserved byte-identical, no reload, storm → single mount,
-    meridian:map-mode persisted (PBI-5/9c).
-- `src/map/capability.test.ts` (33 unit tests: order precedence, decay,
-  SSR-safety, no-UA-read, P0 false-demotion goldens) drafted against the QA→dev
-  contract in its header; HELD in /tmp (not committed) until the dev lands
-  `src/map/capability.ts` — committing now would break tsc. Needs registering
-  in package.json `test` script (coordinator/dev).
-- Contracts the dev must implement for the E2E to pass: `data-map-mode` +
-  `data-max-zoom` on `.satellite-map`; `meridian:map-mode` JSON record shape
-  (see scout-helpers.ts); accept-button label for the offer (accept-path test
-  pending). Note-shows-on-card rule: story AND done phases (ResultCard up),
-  hidden in aim.
-- P0 false-demotion status: unit goldens drafted (held); E2E golden written,
-  runs once PBI-1..3 land. No false demotion possible yet (no scout code).
-- E2E run commands (serialized VM-wide, --workers=1):
+- Gates (branch @ f07dad3 + QA commits, pre-scout-code): `npx tsc --noEmit` ✅ ·
+  `npm test` ✅ (exit 0, 0 failures) · `node scripts/lint-cards.mjs` ✅ GATE PASSED ·
+  `npm run build:pages` ✅ (EXIT:0, dist ready).
+- Unit: `src/map/capability.test.ts` — 22/22 ✅, committed + pushed. Written
+  against the dev's landed API (`MAP_MODE_STORAGE_KEY`, `{mode, source, setAt}`,
+  `qualifyMapMode`/`readStoredMapMode`/`probeWebGL`/`resolveMapMode`). Covers:
+  order precedence, decay (stale auto → null, manual never decays), SSR-safety,
+  SwiftShader/llvmpipe probe patterns, fail-closed goldens, no-UA source scan.
+  ⚠️ NOT yet in `npm test`: needs `src/map/capability.test.ts` added to the
+  package.json `test` script (coordinator/dev — QA may not edit package.json).
+- E2E (6 spec files, 24 tests, desktop project; all vs built artifact via
+  serveBuiltArtifact, serialized with `flock ~/workspace/.e2e.lock --workers=1`):
+  - `scout-false-demotion` P0 GOLDEN: 3/3 ✅ on current build (cold boot,
+    crash-resume-to-menu, idle-kill return — capable spoof: NVIDIA renderer,
+    deviceMemory 8, DPR 2; tiles requested; no offer). Fixed 1 QA bug: the
+    ?idle-ms seam killed the return run — now dropped before the return run.
+  - `scout-offer` fail-closed tests: 2/2 ✅ (no modal on clean boot, manual
+    override suppresses).
+  - Remaining 19 tests EXPECTED-RED until the dev lands PBI-5/6/7 (offer modal,
+    toggle, switch note, data-map-mode wiring). They fail only on the missing
+    feature, not on harness issues (verified listing: 24 tests parse).
+- Dev contracts needed for the E2E to pass: `data-map-mode` + `data-max-zoom`
+  on `.satellite-map` (follow the data-zoom pattern); `meridian:map-mode`
+  record shape `{mode, source, setAt}`; offer accept-button label (accept-path
+  test pending the label); note shows whenever the ResultCard is up
+  (story AND done), hidden in aim.
+- Open semantics for the coordinator (in capability.test.ts header):
+  Q1 — prior-crash → scout at the qualify layer; the APP must show the offer
+  modal when source === "prior-crash" (spec: offer, not force).
+  Q2 — fresh auto record re-demotes without a fresh signal (7-day hysteresis)
+  vs spec's "never demoted twice in a row without a fresh qualifying event".
+  Q3 — decay only fires if the app does NOT rewrite the auto record every
+  boot; confirm the write policy.
+- P0 false-demotion status: no false demotion possible yet (scout code still
+  landing); unit + E2E goldens in place and green where runnable.
+- Reproduce:
   `flock ~/workspace/.e2e.lock npx playwright test --workers=1 --project=desktop <spec>`
-  per spec file; all run against the built artifact via serveBuiltArtifact
-  (127.0.0.1:4123/Meridian/).
+  per spec file; unit: `node --experimental-strip-types --test src/map/capability.test.ts`.
