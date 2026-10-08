@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import type { ErrorComponentProps } from "@tanstack/react-router";
 import { TriangleAlert } from "lucide-react";
+import { emitEvent, sanitizeError } from "./observability";
 
 const FALLBACK_MESSAGE = "An unexpected error occurred. Try reloading the page.";
 
@@ -10,6 +12,16 @@ function errorMessage(error: unknown): string {
 }
 
 export function AppErrorComponent({ error }: ErrorComponentProps) {
+  // Telemetry: route-level errors caught by the boundary never reach the
+  // global error listener — emit once per distinct error.
+  useEffect(() => {
+    emitEvent({
+      type: "js_error",
+      ts: Date.now(),
+      buildId: "",
+      error: sanitizeError(error),
+    });
+  }, [error]);
   return (
     <main
       className={

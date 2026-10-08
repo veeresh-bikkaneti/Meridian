@@ -551,8 +551,8 @@ test("report auto-sends when the fallback shows, no tap needed", () => {
     "confirmation appended once the report lands",
   );
   assert.ok(
-    ma.innerHTML.includes("<p>Crash note sent,"),
-    "confirmation wrapped in <p> so the #ma p style applies",
+    ma.innerHTML.includes('<p role="status">Crash note sent,'),
+    "confirmation wrapped in <p role=status> so it is announced + the #ma p style applies",
   );
 });
 

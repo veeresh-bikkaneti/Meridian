@@ -194,6 +194,20 @@ test("unclean exit but NO previous breadcrumb → no suspected_crash", () => {
   assert.equal(beacons.length, 0);
 });
 
+test("emitTileFailed: sends one tile_failed event with the current milestone", () => {
+  const store = makeStorage();
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({ storage: store, transport, endpoint: "https://e.example/x", now: () => 1, randomId: () => "s", device: DEVICE, buildId: "b", isUnclean: () => false });
+  obs.init();
+  obs.recordMilestone("map_ready");
+  assert.equal(obs.emitTileFailed(), true);
+  assert.equal(beacons.length, 1);
+  const body = JSON.parse(beacons[0].body);
+  assert.equal(body.type, "tile_failed");
+  assert.equal(body.lastMilestone, "map_ready");
+  assert.equal(body.buildId, "b");
+});
+
 test("transport no-op when endpoint null (no fetch/beacon calls)", () => {
   const store = makeStorage();
   const { transport, beacons, fetches } = makeTransport(true);

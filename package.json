@@ -25,7 +25,8 @@
     "prebuild:dev": "node --experimental-strip-types scripts/check-generated-places.mjs && node scripts/lint-cards.mjs",
     "postbuild:pages": "node scripts/fingerprint-sw.mjs",
     "test:worker": "node --experimental-strip-types --test workers/crash-report/src/index.test.ts",
-    "typecheck:worker": "npx tsc -p workers/crash-report/tsconfig.json --noEmit"
+    "typecheck:worker": "npx tsc -p workers/crash-report/tsconfig.json --noEmit",
+    "smoke:crash": "node scripts/crash-smoke.mjs"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.4",

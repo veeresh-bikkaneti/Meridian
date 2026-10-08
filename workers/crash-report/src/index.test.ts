@@ -46,6 +46,10 @@ test("validateEvent: accepts a well-formed event", () => {
   assert.deepEqual(validateEvent(validEvent()), []);
 });
 
+test("validateEvent: accepts tile_failed", () => {
+  assert.deepEqual(validateEvent(validEvent({ type: "tile_failed" })), []);
+});
+
 test("validateEvent: rejects missing/unknown type", () => {
   const { type: _dropped, ...noType } = validEvent();
   assert.ok(validateEvent(noType).length > 0);
@@ -89,6 +93,17 @@ test("buildAlert: never forwards identifying material", () => {
   assert.ok(combined.includes("suspected_crash"));
   assert.ok(combined.includes("build-1"));
   assert.ok(combined.includes("globe"));
+});
+
+test("buildAlert: includes the coarse os/form device bucket, never raw UA", () => {
+  const alert = buildAlert({
+    type: "tile_failed",
+    ts: 1_729_000_000_000,
+    buildId: "build-1",
+    device: { os: "ios", form: "mobile", ua: "SECRET-UA" },
+  } as never);
+  assert.ok(alert.discord.includes("device: ios/mobile"), "coarse bucket shown");
+  assert.ok(!alert.discord.includes("SECRET-UA"), "raw UA stripped");
 });
 
 // --- handleRequest: routing, CORS, limits ---------------------------------

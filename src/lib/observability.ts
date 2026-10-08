@@ -58,6 +58,7 @@ export type ObservabilityEventType =
   | "js_error"
   | "unhandled_rejection"
   | "map_error"
+  | "tile_failed"
   | "webgl_context_lost";
 
 export interface DeviceInfo {
@@ -301,6 +302,7 @@ export interface Observability {
   getBreadcrumb: () => Breadcrumb | null;
   getQueueLength: () => number;
   emitMapError: (err: unknown) => boolean;
+  emitTileFailed: () => boolean;
   emitWebglContextLost: () => boolean;
   installGlobalHandlers: (target?: Window) => void;
 }
@@ -376,6 +378,9 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
         ts: typeof event.ts === "number" ? event.ts : now(),
         buildId: event.buildId || buildId,
         sessionId: event.sessionId ?? breadcrumb?.sessionId,
+        // Coarse device bucket on every event (COPPA-safe: os/form only,
+        // never raw UA) so alerts can say "ios/mobile" vs "desktop".
+        device: event.device ?? coarseDeviceFacts(),
       };
       if (!endpoint) {
         queue.push(enriched);
@@ -500,6 +505,10 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
     return emit({ type: "map_error", ts: now(), buildId, error: sanitizeError(err), lastMilestone: breadcrumb?.lastMilestone, edition: breadcrumb?.edition, regionId: breadcrumb?.regionId });
   }
 
+  function emitTileFailed(): boolean {
+    return emit({ type: "tile_failed", ts: now(), buildId, lastMilestone: breadcrumb?.lastMilestone, edition: breadcrumb?.edition, regionId: breadcrumb?.regionId });
+  }
+
   function emitWebglContextLost(): boolean {
     return emit({ type: "webgl_context_lost", ts: now(), buildId, lastMilestone: breadcrumb?.lastMilestone, edition: breadcrumb?.edition, regionId: breadcrumb?.regionId });
   }
@@ -530,6 +539,7 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
     getBreadcrumb: () => breadcrumb,
     getQueueLength: () => queue.length,
     emitMapError,
+    emitTileFailed,
     emitWebglContextLost,
     installGlobalHandlers,
   };
@@ -588,6 +598,14 @@ export function installGlobalErrorHandlers(target?: Window): void {
 export function emitMapError(err: unknown): boolean {
   try {
     return getObservability().emitMapError(err);
+  } catch {
+    return false;
+  }
+}
+
+export function emitTileFailed(): boolean {
+  try {
+    return getObservability().emitTileFailed();
   } catch {
     return false;
   }

@@ -24,9 +24,10 @@
  *   (no-op mode, safe to deploy before secrets exist).
  *
  * Privacy: the forwarded alert carries only type, buildId,
- * edition/region, lastMilestone, and a truncated error name/message —
- * NEVER full payloads, NEVER sessionId, UA, device facts, coordinates,
- * or stack traces. Log lines carry only type/buildId/edition.
+ * edition/region, lastMilestone, the coarse os/form device bucket, and a
+ * truncated error name/message — NEVER full payloads, NEVER sessionId,
+ * raw UA, precise device facts, coordinates, or stack traces. Log lines
+ * carry only type/buildId/edition.
  *
  * CORS: the game is served from https://veeresh-bikkaneti.github.io while
  * this worker lives on workers.dev, so every report POST is cross-origin.
@@ -44,13 +45,14 @@
  * `npx wrangler dev` + curl, see README.md).
  */
 
-/** Event types this worker accepts: the v1 set plus `boot_failure`. */
+/** Event types this worker accepts: the v1 set plus `boot_failure` and `tile_failed`. */
 export const EVENT_TYPES = [
   "suspected_crash",
   "boot_failure",
   "js_error",
   "unhandled_rejection",
   "map_error",
+  "tile_failed",
   "webgl_context_lost",
 ] as const;
 
@@ -210,10 +212,14 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
   const errorLine = event.error
     ? `${truncate(event.error.name, 60)} — ${truncate(event.error.message, 140)}`
     : "—";
+  // Coarse device bucket only (COPPA): os/form, never raw UA or precise facts.
+  const dev = event.device as { os?: string; form?: string } | undefined;
+  const deviceLine = dev ? `${truncate(dev.os ?? "?", 24)}/${truncate(dev.form ?? "?", 24)}` : "—";
 
   const discord =
     `🚨 Meridian crash report\n` +
     `type: ${type} · build: ${buildId}\n` +
+    `device: ${deviceLine}\n` +
     `edition: ${edition} · region: ${region}\n` +
     `last milestone: ${milestone}\n` +
     `error: ${errorLine}`;

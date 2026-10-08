@@ -82,9 +82,11 @@ import {
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
 import {
+  emitEvent,
   initObservability,
   installGlobalErrorHandlers,
   recordMilestone,
+  sanitizeError,
   setObservabilityEndpoint,
 } from "@/lib/observability";
 import {
@@ -1142,6 +1144,14 @@ export function GameApp() {
           staleBuild = false;
         }
         setStartError({ message, staleBuild });
+        // Telemetry: region-chunk load failures never left this catch —
+        // emit so they reach crash reporting like every other error class.
+        emitEvent({
+          type: "js_error",
+          ts: Date.now(),
+          buildId: "",
+          error: sanitizeError(new Error(message)),
+        });
       } finally {
         setStarting(null);
       }

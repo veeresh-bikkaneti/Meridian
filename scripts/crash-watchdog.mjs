@@ -264,15 +264,13 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
               ev.breadcrumb = prev;
             }
           }
-          // Hard cap: serialize small; over the cap drops the breadcrumb,
-          // then truncates the longest free-text fields. Never throws.
+          // Hard cap: serialize small; over the cap drops the breadcrumb.
+          // Never throws. (The breadcrumb is the only unbounded field —
+          // error text is capped at 300 chars at capture — so one drop
+          // step is sufficient.)
           var s = js(ev);
           if (s.length > CAP) {
             delete ev.breadcrumb;
-            s = js(ev);
-          }
-          if (s.length > CAP) {
-            if (ev.error.message) ev.error.message = ev.error.message.slice(0, 120);
             s = js(ev);
           }
           xhr("POST", ep, s, function (st) {
@@ -288,7 +286,7 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
               if (ma)
                 ma.insertAdjacentHTML(
                   "beforeend",
-                  "<p>Crash note sent, no personal info - helps fix this.</p>",
+                  '<p role="status">Crash note sent, no personal info - helps fix this.</p>',
                 );
             } catch (e) {
               /* best-effort */
@@ -300,21 +298,25 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
     });
   }
   var CSS =
-    "#mv{position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;\n" +
-    "display:flex;background:rgba(8,12,20,.72);padding:16px}\n" +
-    "#mc{margin:auto;max-width:22rem;width:100%;background:#ffffff;\n" +
-    "color:#1b2a3d;border-radius:12px;padding:20px;\n" +
-    "font:16px/1.5 system-ui,sans-serif}\n" +
-    "#mc h2{font-size:18px;margin:0 0 8px}\n" +
-    "#mc p{margin:0 0 12px}\n" +
-    "#ma button{display:block;width:100%;font:inherit;padding:11px;\n" +
-    "margin:0 0 8px;border:2px solid #0b5fff;border-radius:8px;cursor:pointer;\n" +
-    "transition:background-color .15s;background:#0b5fff;color:#ffffff;font-weight:700}\n" +
-    "#ma button:focus-visible,#mc a:focus-visible{\n" +
-    "outline:3px solid #0b5fff;outline-offset:2px}\n" +
-    "#mc a{color:#0b5fff}\n" +
-    "#ma p{font-weight:600}\n" +
-    "@media (prefers-reduced-motion:reduce){#ma button{transition:none}}";
+    "#mv{position:fixed;top:0;left:0;right:0;bottom:0;z-index:99999;" +
+    "display:flex;background:rgba(8,12,20,.72);" +
+    // Fallback first: browsers without max()/env() (old Safari) ignore the
+    // enhanced declaration and keep 16px instead of dropping to 0.
+    "padding:16px;" +
+    "padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) " +
+    "max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}" +
+    "#mc{margin:auto;max-width:22rem;width:100%;background:#ffffff;" +
+    "color:#1b2a3d;border-radius:12px;padding:20px;" +
+    "font:16px/1.5 system-ui,sans-serif}" +
+    "#mc h2{font-size:18px;margin:0 0 8px}" +
+    "#mc p{margin:0 0 12px}" +
+    "#ma button{display:block;width:100%;font:inherit;padding:11px;" +
+    "margin:0 0 8px;border:2px solid #0b5fff;border-radius:8px;cursor:pointer;" +
+    "background:#0b5fff;color:#ffffff;font-weight:700}" +
+    "#ma button:focus-visible,#mc a:focus-visible{" +
+    "outline:3px solid #0b5fff;outline-offset:2px}" +
+    "#mc a{color:#0b5fff;display:inline-block;min-height:44px;line-height:44px}" +
+    "#ma p{font-weight:600}";
   function noswUrl() {
     try {
       var u = new URL(String(win.location.href));

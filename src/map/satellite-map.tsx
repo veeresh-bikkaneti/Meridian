@@ -19,7 +19,7 @@ import {
 } from "./region-index.ts";
 import { mountStarfield } from "./starfield.ts";
 import { isCoarsePointer, mapOptionsForDevice } from "./map-options.ts";
-import { emitWebglContextLost, recordMilestone } from "@/lib/observability";
+import { emitTileFailed, emitWebglContextLost, recordMilestone } from "@/lib/observability";
 import { createTapTracker } from "./tap-tracker.ts";
 import { INITIAL_TILE_STATUS, tileStatusReducer, type TileStatus } from "./tile-status.ts";
 import { variationLine, type MapPoint } from "./variation.ts";
@@ -463,6 +463,11 @@ export function SatelliteMap(props: {
   // Retry (the effect teardown removes the old instance).
   const [tileStatus, dispatchTile] = useReducer(tileStatusReducer, INITIAL_TILE_STATUS);
   const [mapAttempt, setMapAttempt] = useState(0);
+  // Telemetry: one tile_failed event per failure episode so map outages
+  // are visible in crash reporting (the failure card below is the trigger).
+  useEffect(() => {
+    if (tileStatus.kind === "failed") emitTileFailed();
+  }, [tileStatus.kind]);
   // Keyboard crosshair (M6): null = hidden. Shown on first arrow press at
   // viewport center; hidden again as soon as pointer/touch is used.
   const [crosshair, setCrosshair] = useState<{ x: number; y: number } | null>(null);
