@@ -18,8 +18,10 @@
  * the page is visible and settled, no build-staleness refresh prompt is
  * showing, and this session hasn't been asked yet, it shows an accessible
  * fallback overlay (never destroying document.body — the app may still
- * boot late) with "Try again" and an opt-in "Tell us what happened"
- * report path. The report reuses the existing observability contract:
+ * boot late) with a "Try again" path. The report then auto-sends: the
+ * endpoint is resolved at runtime (never baked in) and the crash note
+ * goes automatically when the fallback shows, with an honest on-screen
+ * confirmation. The report reuses the existing observability contract:
  * same ObservabilityEvent shape with type "boot_failure", same
  * flags.json `observabilityEndpoint` validation as src/lib/flags.ts, same
  * sessionStorage keys — no parallel pipeline.
@@ -170,11 +172,14 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
   // baked in) and cached — prefetched at init so it is usually ready by
   // fallback time. The report then goes automatically when the fallback
   // shows (same ObservabilityEvent shape as src/lib/observability.ts —
-  // same contract, no parallel pipeline). Fail-closed: no endpoint, no
-  // send, and the player is never told otherwise.
+  // same contract, no parallel pipeline). The cache holds only a resolved
+  // endpoint: a transient flags.json failure leaves it empty so show-time
+  // retries a fresh GET instead of suppressing the report for the
+  // session. Fail-closed: no endpoint, no send, and the player is never
+  // told otherwise.
   var epCache;
   function getEndpoint(cb) {
-    if (epCache !== undefined) {
+    if (epCache) {
       cb(epCache);
       return;
     }
@@ -196,7 +201,9 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
       } catch (e) {
         /* best-effort */
       }
-      epCache = ep;
+      // Cache only a resolved endpoint: a transient flags.json failure
+      // must not permanently suppress the report — show-time retries.
+      if (ep) epCache = ep;
       cb(ep);
     });
   }
@@ -246,7 +253,16 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
           if (prev) {
             ev.sessionId = prev.sessionId;
             if (prev.lastMilestone) ev.lastMilestone = prev.lastMilestone;
-            if (unclean) ev.breadcrumb = prev;
+            if (unclean) {
+              // Strip the breadcrumb's device sub-object: the app bundle
+              // writes the raw UA string there (device.ua) and this
+              // watchdog never sends UA — the coarse facts already ride
+              // on ev.device. Mutating prev is safe: sessionId /
+              // lastMilestone were extracted above, prev is never written
+              // back to storage and never read again below.
+              delete prev.device;
+              ev.breadcrumb = prev;
+            }
           }
           // Hard cap: serialize small; over the cap drops the breadcrumb,
           // then truncates the longest free-text fields. Never throws.
@@ -263,11 +279,17 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
             // Only claim the send on a 2xx: these are flaky-network
             // devices, and a failed POST must stay silent (fail-closed).
             // insertAdjacentHTML (not innerHTML +=) leaves the existing
-            // "Try again" button node — and its focus — intact.
+            // "Try again" button node — and its focus — intact. The copy
+            // asserts what was excluded (never "anonymous": sessionId +
+            // device facts are near-unique) and restores the why.
             if (st < 200 || st >= 300) return;
             try {
               var ma = doc.getElementById("ma");
-              if (ma) ma.insertAdjacentHTML("beforeend", "Anonymous crash report sent.");
+              if (ma)
+                ma.insertAdjacentHTML(
+                  "beforeend",
+                  "<p>Crash note sent, no personal info - helps fix this.</p>",
+                );
             } catch (e) {
               /* best-effort */
             }
@@ -400,6 +422,8 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
 const RENAME = {
   isValidEndpointFn: "ok",
   isValidWatchdogEndpoint: "vv",
+  getEndpoint: "ge",
+  epCache: "ec",
   ASKED: "A",
   CRUMB: "B",
   CLEAN: "C",

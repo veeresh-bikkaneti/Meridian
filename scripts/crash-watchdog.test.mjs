@@ -168,6 +168,12 @@ function fakeXhr({ flagsStatus = 200, flagsText = "{}", postStatus = 200, deferG
     flushGets() {
       while (pendingGets.length) completeGet(pendingGets.shift());
     },
+    // Lets a test change the flags.json response mid-scenario (e.g.
+    // prefetch fails, endpoint recovers before show-time).
+    setFlags(status, text) {
+      flagsStatus = status;
+      flagsText = text;
+    },
   };
 }
 
@@ -270,7 +276,7 @@ test("rendered script embeds the tested logic (no-drift)", () => {
     "flags.json",
     "A new version of Meridian is available.",
     "Try again",
-    "Anonymous crash report sent.",
+    "Crash note sent, no personal info - helps fix this.",
     "device:",
   ]) {
     assert.ok(script.includes(needle), `shipped script must contain ${JSON.stringify(needle)}`);
@@ -505,7 +511,7 @@ test("no confirmation when the POST itself fails (fail-closed)", () => {
   assert.equal(xhr.posts.length, 1, "the attempt is still made");
   const ma = host.document.getElementById("ma");
   assert.ok(
-    !ma.innerHTML.includes("Anonymous crash report sent."),
+    !ma.innerHTML.includes("Crash note sent, no personal info - helps fix this."),
     "no false 'sent' claim on HTTP 500",
   );
 });
@@ -541,8 +547,12 @@ test("report auto-sends when the fallback shows, no tap needed", () => {
   assert.equal(xhr.posts.length, 1, "POST fired automatically on show");
   const ma = host.document.getElementById("ma");
   assert.ok(
-    ma.innerHTML.includes("Anonymous crash report sent."),
+    ma.innerHTML.includes("Crash note sent, no personal info - helps fix this."),
     "confirmation appended once the report lands",
+  );
+  assert.ok(
+    ma.innerHTML.includes("<p>Crash note sent,"),
+    "confirmation wrapped in <p> so the #ma p style applies",
   );
 });
 
@@ -580,7 +590,7 @@ test("send flow: flags.json fetched with cache-bust, event POSTed", () => {
   assert.ok(Buffer.byteLength(post.body, "utf8") <= 8192, "payload within the 8192-byte cap");
   // Confirmation appended under the button once the report lands.
   const ma = host.document.getElementById("ma");
-  assert.ok(ma.innerHTML.includes("Anonymous crash report sent."));
+  assert.ok(ma.innerHTML.includes("Crash note sent, no personal info - helps fix this."));
 });
 
 test("send flow: no fingerprinting material leaves the device (COPPA)", () => {
@@ -608,7 +618,7 @@ test("send flow: fail-closed with no endpoint configured", () => {
   });
   crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
   fireTimer(calls);
-  assert.equal(xhr.gets.length, 1, "flags.json still fetched");
+  assert.equal(xhr.gets.length, 2, "prefetch + one show-time retry (no suppression)");
   assert.equal(xhr.posts.length, 0, "nothing POSTed without an endpoint");
   assert.equal(
     host.document.getElementById("ms"),
@@ -635,8 +645,30 @@ test("send flow: flags.json network failure is fail-closed", () => {
   });
   crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
   fireTimer(calls);
+  assert.equal(xhr.gets.length, 2, "prefetch + one show-time retry, then gives up");
   assert.equal(xhr.posts.length, 0);
   assert.equal(host.document.getElementById("ms"), null);
+});
+
+test("prefetch failure does not suppress the report: show-time retries", () => {
+  const { host, calls, xhr } = fakeHost({
+    xhrOpts: { flagsStatus: 500, flagsText: "oops" },
+  });
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  assert.equal(xhr.gets.length, 1, "prefetch GET issued at init");
+  // The endpoint recovers before the fallback shows.
+  xhr.setFlags(
+    200,
+    JSON.stringify({ observabilityEndpoint: "https://obs.test/hook" }),
+  );
+  fireTimer(calls);
+  assert.equal(xhr.gets.length, 2, "show-time retries a fresh GET after prefetch failure");
+  assert.equal(xhr.posts.length, 1, "report sends once the endpoint resolves");
+  const ma = host.document.getElementById("ma");
+  assert.ok(
+    ma.innerHTML.includes("Crash note sent, no personal info - helps fix this."),
+    "honest confirmation shown",
+  );
 });
 
 // ---------------------------------------------------------------------------
@@ -701,6 +733,45 @@ test("unclean previous boot attaches sessionId, breadcrumb and lastMilestone", (
   assert.equal(body.sessionId, "prev-session-1");
   assert.equal(body.lastMilestone, "map_ready");
   assert.deepEqual(body.breadcrumb.sessionId, "prev-session-1");
+});
+
+test("breadcrumb device sub-object (raw UA) is stripped before auto-send", () => {
+  const crumb = {
+    sessionId: "prev-session-ua",
+    buildId: "b0",
+    startedAt: 1,
+    lastMilestone: "map_ready",
+    history: [],
+    // The app bundle writes the raw UA string here (device.ua) — the
+    // watchdog must never let it leave the phone.
+    device: {
+      ua: "Mozilla/5.0 (Linux; Android 13; SECRET-PHONE-BUILD) AppleWebKit/537.36",
+      os: "android",
+    },
+  };
+  const { host, calls, xhr } = fakeHost({
+    store: {
+      "meridian.breadcrumb": JSON.stringify(crumb),
+      "meridian.cleanExit": "0",
+    },
+    xhrOpts: {
+      flagsText: JSON.stringify({
+        observabilityEndpoint: "https://obs.test/hook",
+      }),
+    },
+  });
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  fireTimer(calls);
+  assert.equal(xhr.posts.length, 1);
+  const raw = xhr.posts[0].body;
+  const body = JSON.parse(raw);
+  assert.ok(body.breadcrumb, "breadcrumb still attached");
+  assert.equal(body.breadcrumb.device, undefined, "breadcrumb device stripped");
+  assert.ok(!raw.includes("SECRET-PHONE-BUILD"), "raw UA never in POST body");
+  assert.ok(!raw.includes("Mozilla/5.0"), "no UA fragment in POST body");
+  // The coarse facts still ride on the top-level event device object.
+  assert.equal(body.device.os, "android");
+  assert.equal(body.device.form, "mobile");
 });
 
 test("clean previous boot: no breadcrumb attached", () => {

@@ -113,7 +113,7 @@ test("blocked JS chunks: fallback UI appears and the report sends exactly one bo
 
   // Auto-send: the endpoint was prefetched at watchdog init, so the
   // boot_failure event POSTs with no tap, then the confirmation appears.
-  await expect(page.getByText("Anonymous crash report sent.")).toBeVisible({
+  await expect(page.getByText("Crash note sent, no personal info - helps fix this.")).toBeVisible({
     timeout: 15_000,
   });
 
