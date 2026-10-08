@@ -367,7 +367,11 @@ export function useAiSportsTeams(
       // we don't wake the model on every view of the same place.
       writeCachedTeams(gid, teams ?? []);
       if (teams && teams.length > 0) setOverride(teams);
-    })();
+    })().catch(() => {
+      // Defensive: enrichment is strictly best-effort — an unhandled
+      // rejection here must never surface as console noise or a crash
+      // false positive.
+    });
 
     return () => {
       cancelled = true;
