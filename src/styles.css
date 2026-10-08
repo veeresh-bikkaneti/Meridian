@@ -1517,6 +1517,12 @@
   font-size: 14px;
   text-decoration: underline;
   text-underline-offset: 2px;
+  /* 44px touch target: inline-block with padding (frontend review P1) */
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+  padding: 0 8px;
+  margin: 0 -8px;
 }
 
 .result-subscript {
