@@ -70,11 +70,11 @@ No home host (deferred to H1, gated on PR #103).
 
 ## Notes
 
-- The working tree concurrently holds another agent's uncommitted work
-  (age-profile studio: `src/game/age-profile/`, `src/components/age-profile/`,
-  plus edits to `game-app.tsx`, `generated-places.ts`, `engine.ts`,
-  `starters.ts`, `playwright.config.ts`). None of it is staged or committed
-  here — this branch stages named storyteller files only.
+- 2026-10-08: team moved to dedicated worktree `~/workspace/meridian-storyteller`
+  after a shared-tree collision with the age-profile studio (resolved, no data
+  loss either side). This branch stages named storyteller files only.
+- 2026-10-08: follow-up `9f5b8c8` — idle float 3s → 2s per design-doc (tester P2).
+  tsc clean, build:pages green. No P0/P1 findings in Phase B validation.
 
 ---
 
@@ -205,49 +205,8 @@ feat/sprint-entry-gates). Entries preserved from main's BRANCH_STATUS.md:
   offline-content`).
 
 ## Pending
-
-- PR handover (no merge per owner): coordinator opens the PR with this
-  report; senior architect + DevOps + frontend have reviewed.
-- Owner-side (Veeresh) deploy steps this branch does NOT do:
-  - Deploy `workers/crash-report/` (v2 forwarding worker) — worker FIRST,
-    then smoke, then flags (deploy-ordering hazard: old worker 400s
-    `tile_failed`, silent telemetry loss).
-  - Set `observabilityEndpoint` in `public/flags.json` (untouched here).
-  - Decide deletion of `worker/observability/` (v1 dir, untouched here).
-  - Run `npm run smoke:crash <workerBase> <gameBase>` after deploy.
-- Backlog (P2, not blocking): per-session `tile_failed` dedupe (death
-  spiral can hit the 10/IP/min worker cap); watchdog byte headroom now
-  11 bytes — next addition needs a cut.
-
-## Verification (local, 2026-10-08)
-
-- `npx tsc --noEmit` clean; `node scripts/lint-cards.mjs` GATE PASSED
-- `npm test`: src suite 850/850 green; scripts suite 483/512 (22 failures
-  pre-existing on clean main — env/fingerprint/preview tooling, 0 in
-  crash-watchdog); observability 17/17 (incl. new emitTileFailed test)
-- Worker: `npm run test:worker` 18/18 (incl. tile_failed accept + device
-  line tests), `npm run typecheck:worker` clean
-- Watchdog unit tests 36/36; rendered inline script 5109/5120 bytes
-- `npm run build:pages` green (final rebuild with all review fixes)
-- Playwright `tests/e2e/crash-watchdog.spec.ts`: 4/4 passed (stale-build
-  test updated: chunk failure now emits one js_error by design)
-- Browser QA (390px mobile, fallback UI): 10/10 PASS — safe-area
-  padding falls back to 16px, env() enhancement present, links 44px,
-  confirmation role=status, exactly one boot_failure POSTed, no console
-  errors
-- `npm run smoke:crash` validated against live prod: correctly FAILs 3/4
-  checks on the current broken deploy (no /health, no /ingest, no
-  endpoint) — proves it detects the outage class
-
-## Rebase onto main@8cd0fda (2026-10-08, PR #103 merged)
-
-- 3 commits replayed cleanly: eb47bec (crash fixes) → 880b577 (route-error
-  test) → 11daaec (rebase docs). Only conflict: BRANCH_STATUS.md
-  (docs-only, kept this branch's doc, updated base note).
-  `src/components/game-app.tsx` auto-merged (no markers) — verified the
-  merged hunk is this branch's own observability additions only.
-- Post-rebase gates on final head: `npx tsc --noEmit` clean;
-  `node scripts/lint-cards.mjs` GATE PASSED (124,690 records);
-  `npm run build:pages` green; `npm test` 857/857 pass, 0 fail;
-  `tests/e2e/crash-watchdog.spec.ts` 4/4 pass.
-- Pushed via --force-with-lease. NOT merged (owner merges).
+- Pre-existing on main, not fixed here (documented, non-blocking): nothing
+  in src references the copied `maplibre-gl-worker.mjs`, so MapLibre's
+  default worker URL fails even online ("Worker failed to load" console
+  error). Confirmed pre-existing by building main in a worktree.
+- Owner review of PR #107. Never merge — owner merges.
