@@ -10,6 +10,10 @@ Standing rules: PRs only, owner merges; named-file staging only; gates before ha
   map-attributed prior-crash flag > WebGL probe > deviceMemory; 7-day decay on
   auto assignments; SSR/test-safe; no UA read). Gates: tsc clean, npm test
   green (fail 0), logic smoke-checked in node.
+- PBI-2: mode threaded through `src/map/map-options.ts` → `satellite-map.tsx`
+  (`mapMode` prop, fail-closed to "full"; scout → DPR cap 1 via
+  SCOUT_PIXEL_RATIO_CAP, maxZoom 3 flat / 2 globe; mapModeRef for PBI-5).
+  Full-mode path byte-identical. Gates: tsc clean, npm test 852/852 green.
 
 ## Pending (sequenced)
 - [ ] Phase A: Game Designer + UI/UX Expert finalize UX copy + settings placement.

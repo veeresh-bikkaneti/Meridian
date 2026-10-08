@@ -18,7 +18,8 @@ import {
   type RegionGeometryDTO,
 } from "./region-index.ts";
 import { mountStarfield } from "./starfield.ts";
-import { isCoarsePointer, mapOptionsForDevice } from "./map-options.ts";
+import { isCoarsePointer, mapOptionsForDevice, SCOUT_MAX_ZOOM_FLAT, SCOUT_MAX_ZOOM_GLOBE } from "./map-options.ts";
+import type { MapMode } from "./capability.ts";
 import { emitTileFailed, emitWebglContextLost, recordMilestone } from "@/lib/observability";
 import { createTapTracker } from "./tap-tracker.ts";
 import { INITIAL_TILE_STATUS, tileStatusReducer, type TileStatus } from "./tile-status.ts";
@@ -358,6 +359,14 @@ function paintVariationLayers(
  */
 export function SatelliteMap(props: {
   mode: "flat" | "globe";
+  /**
+   * Game map mode ("full" | "scout"). Defaults to "full" — the full-mode
+   * construction path is byte-identical in behavior; every scout branch is
+   * flag-guarded (PBI-2+). Owned by GameApp and threaded down as a prop;
+   * the toggle never lives in here because this component unmounts on the
+   * webglcontextlost teardown (PBI-5).
+   */
+  mapMode?: MapMode;
   /** Game edition — drives the controller's thresholds and gesture model. */
   edition: "state" | "country" | "globe";
   /** Region display name, resolved against the vendored atlas index. */
@@ -415,6 +424,10 @@ export function SatelliteMap(props: {
   // save/restore + try/finally); the four map listeners check it directly.
   const dispatchingIntentsRef = useRef(false);
   const maxBoundsRef = useRef<[number, number, number, number] | null>(null);
+  // PBI-2: the game map mode for this mount ("full" | "scout"), set in the
+  // construction effect. Read by PBI-5's webglcontextlost guard so an
+  // already-scout mount never triggers a second switch.
+  const mapModeRef = useRef<MapMode>("full");
   const dtoRef = useRef<RegionGeometryDTO | null>(null);
   const reducedMotionRef = useRef(false);
   const editionRef = useRef<"state" | "country" | "globe">(props.edition);
@@ -651,12 +664,18 @@ export function SatelliteMap(props: {
       isRestore && retryView.projection === "mercator" ? (dto?.bounds ?? undefined) : undefined;
 
     recordMilestone("map_init_start");
+    // PBI-2: the game map mode is fail-closed to "full" — a missing or
+    // unexpected value never changes the full-mode construction path.
+    const mapMode: MapMode = props.mapMode === "scout" ? "scout" : "full";
+    mapModeRef.current = mapMode;
     // Secondary jetsam mitigation: cap the WebGL canvas pixel ratio at
     // 1.5 on coarse-pointer (touch) devices and bound the tile cache —
-    // see src/map/map-options.ts (unit-tested policy).
+    // see src/map/map-options.ts (unit-tested policy). Scout Map caps the
+    // pixel ratio at 1 instead (PBI-2).
     const deviceMapOptions = mapOptionsForDevice({
       coarsePointer: isCoarsePointer(),
       devicePixelRatio: typeof window !== "undefined" ? window.devicePixelRatio : undefined,
+      mapMode,
     });
     const map = new Map({
       container,
@@ -680,7 +699,16 @@ export function SatelliteMap(props: {
       },
       center: isRestore ? retryView.center : [0, 0],
       zoom: isRestore ? retryView.zoom : 1,
-      maxZoom: edition === "globe" ? 5 : undefined,
+      // PBI-2: Scout Map bounds zoom-space per projection (3 flat / 2 globe);
+      // full mode keeps the existing behavior exactly.
+      maxZoom:
+        mapMode === "scout"
+          ? edition === "globe"
+            ? SCOUT_MAX_ZOOM_GLOBE
+            : SCOUT_MAX_ZOOM_FLAT
+          : edition === "globe"
+            ? 5
+            : undefined,
       maxBounds: initialMaxBounds,
       attributionControl: false,
       // Design §7: no gesture owns the map until the controller arms it.
