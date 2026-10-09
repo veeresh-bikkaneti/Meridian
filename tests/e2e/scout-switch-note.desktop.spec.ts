@@ -95,13 +95,22 @@ test("note is a sibling of the ResultCard with the contract positioning", async 
     expect(cls.split(/\s+/), `note class must include "${token}"`).toContain(token);
   }
 
-  // Sibling of the ResultCard: same parent element.
+  // Sibling of the ResultCard in the React tree (never inside it): the
+  // note must survive the card's dismiss/remount lifecycle, so assert
+  // neither contains the other. (DOM-level same-parent is too strict —
+  // the card wraps its section in transition divs.)
   await expect(resultCard(page)).toBeVisible();
-  const siblings = await note.evaluate((el) => {
+  const containment = await note.evaluate((el) => {
     const card = document.querySelector('[aria-label="Result"]');
-    return card !== null && card.parentElement === el.parentElement;
+    return {
+      cardFound: card !== null,
+      noteInsideCard: card !== null && card.contains(el),
+      cardInsideNote: el.querySelector('[aria-label="Result"]') !== null,
+    };
   });
-  expect(siblings).toBe(true);
+  expect(containment.cardFound).toBe(true);
+  expect(containment.noteInsideCard).toBe(false);
+  expect(containment.cardInsideNote).toBe(false);
 });
 
 test("note does not overlap the question bubble", async ({ page }) => {

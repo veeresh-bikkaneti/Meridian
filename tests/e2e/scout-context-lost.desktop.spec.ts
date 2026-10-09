@@ -107,12 +107,11 @@ test("switch writes meridian:map-mode so the next boot stays scout", async ({
   const stored = await readStoredMapMode(page);
   expect(stored?.mode).toBe("scout");
 
-  // Next boot: still scout (the stored assignment re-qualifies via the
-  // fresh probe on this SwiftShader harness).
+  // Next boot: still scout. The reload auto-resumes the run (clean exit),
+  // so there is no home screen — the resumed map must already be scout.
   await page.reload();
-  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
+  await expect(page.locator(".satellite-map")).toBeVisible({
     timeout: 60_000,
   });
-  await startGlobeRun(page);
   expect(await readMapMode(page)).toBe("scout");
 });

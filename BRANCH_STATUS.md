@@ -92,13 +92,20 @@ Standing rules: PRs only, owner merges; named-file staging only; gates before ha
 ## Notes
 - Review finding vs current main: tile_failed counts do NOT flow into crash reports — folded into PBI-8.
 - Spec correction made (2026-10-08): DPR premise corrected — touch devices already capped at 1.5 in map-options.ts.
-- Coordinator QA-landing fixes (2026-10-08, commit pending): the 15 initial E2E
-  failures were test-harness/contract gaps, not implementation bugs —
-  (1) re-seeding crash state on every reload (unrealistic: the app rotates the
-  breadcrumb exactly-once at boot); (2) specs needing a FULL start on a
-  SwiftShader VM (no capable-device spoof); (3) missing data-map-mode /
-  data-max-zoom attributes (dev's own report flagged them as still needed);
-  (4) no Tab trap in the offer modal (real a11y gap, now fixed).
+- Coordinator QA-landing fixes (2026-10-08): the 15 initial E2E failures were
+  test-harness/contract gaps, not implementation bugs — (1) re-seeding crash
+  state on every reload (unrealistic: the app rotates the breadcrumb
+  exactly-once at boot); (2) specs needing a FULL start on a SwiftShader VM
+  (no capable-device spoof); (3) missing data-map-mode / data-max-zoom
+  attributes (dev's own report flagged them as still needed); (4) no Tab trap
+  in the offer modal (real a11y gap, now fixed).
+- Real implementation bugs found by the E2E (fixed): (a) scout tile-status
+  wedged at "loading" — the mount effect's retry dispatch reset scout's
+  initial "ready"; (b) switch note never showed on a miss (phase "done") —
+  now shows at round end on story OR done; (c) manual toggle applied
+  mid-round (current round's confetti would vanish) — now QUEUED, applied at
+  the next place mount via render-phase adjustment; toggle UI shows the
+  queued choice; contextlost stays immediate and clears the queue.
 - Q1/Q2/Q3 semantics confirmed settled in code (dev report): offer fires on
   fresh source==="prior-crash" only; stale auto records decay without
   re-demotion; writeStoredMapMode only on new qualifying events.
