@@ -88,10 +88,14 @@ export function StorytellerMascot({
   label,
   onToggle,
   onLoaded,
+  src,
 }: {
   label: string;
   onToggle?: () => void;
   onLoaded?: () => void;
+  /** Asset URL for the pose — from storyteller-assets.json. Defaults to the
+      placeholder figure so F1/F2 poses swap with zero code change. */
+  src?: string;
 }) {
   return (
     <button
@@ -102,7 +106,7 @@ export function StorytellerMascot({
       onClick={onToggle}
     >
       <img
-        src={storytellerFigureUrl()}
+        src={src ?? storytellerFigureUrl()}
         alt=""
         aria-hidden="true"
         decoding="async"

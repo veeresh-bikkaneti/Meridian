@@ -61,8 +61,12 @@ import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
-import { CometMascot } from "./comet-mascot";
+import { CometEmblem } from "./comet-emblem";
 import { GrandpaCoffeeRun } from "./grandpa-coffee-run";
+// Storyteller home handoff (H1): the Storyteller hosts home's hero strip.
+// React.lazy — the host (and its copy chunk) never lands in the initial
+// bundle. Comet is retired as a host: a silent ~30px emblem stays in the
+// eyebrow row (aria-hidden, decorative, never speaks).
 // Age-profile system: the parent-set band (5-7 / 8-10 / 11-13). Game
 // screens use ONLY this facade — the store is never imported directly.
 // The settings screen is React.lazy: zero initial-bundle cost.
@@ -80,6 +84,7 @@ import {
   type AgeBandId,
 } from "@/game/age-profile";
 const AgeProfileSettings = lazy(() => import("./age-profile/AgeProfileSettings"));
+const StorytellerHomeHost = lazy(() => import("./storyteller-home"));
 import {
   CelebrationOverlay,
   celebrationSeamSpec,
@@ -914,17 +919,10 @@ export function GameApp() {
     setDifficultyChoiceState(choice);
     writeDifficultyChoice(choice);
   }, []);
-  /** Edition card press: the cartographer's tap, then open (SFX audio spec §2.6).
-   *  Veeresh 2026-10-06: also tells Comet which edition was picked so the
-   *  mascot can look at the card and react. */
+  /** Edition card press: the cartographer's tap, then open (SFX audio spec §2.6). */
   const withCardTap = useCallback(
     (edition: string, open: () => void) => (e: ReactMouseEvent) => {
       playCardTap();
-      window.dispatchEvent(
-        new CustomEvent("comet:edition-select", {
-          detail: { x: e.clientX, y: e.clientY, edition },
-        }),
-      );
       open();
     },
     [],
@@ -1800,6 +1798,14 @@ export function GameApp() {
         // Locked for young bands (age-profile): the dossier renders the
         // locked variant instead, so this guard is belt-and-braces.
         if (isLoopLocked(ageBand, "geodetective")) return;
+        // Storyteller home handoff (H1): the loop's locked send-off line
+        // rides along ≤2.5s while the loop loads — navigation never waits
+        // (copy G3). No locked line exists for Cold Trail, so none is sent.
+        window.dispatchEvent(
+          new CustomEvent("meridian:storyteller-sendoff", {
+            detail: { loop: "geodetective" },
+          }),
+        );
         writeLoopOpen(true);
         setLoopOpen(true);
       })}
@@ -1916,34 +1922,40 @@ function Choose({
             <Compass className="size-4" aria-hidden="true" />
             Field atlas · {trailDate()} UTC
           </p>
+          {/* Storyteller home handoff (H1): Comet is retired as a host — a
+              silent ~30px emblem sits in the eyebrow row, aria-hidden and
+              decorative, never speaks. Order: eyebrow → emblem → toggle. */}
+          <CometEmblem />
           {/* Veeresh 2026-10-07: SoundToggle lives in the eyebrow cluster so
-              the banner row below has room for the h1 + Comet emblem. */}
+              the banner row below has room for the h1. */}
           <SoundToggle
             testId="sound-toggle"
             className="atlas-sound-toggle home-rise"
             style={rise(0)}
           />
         </div>
-        {/* Veeresh 2026-10-07: Comet hosts from the banner — in-flow, right
-            of the h1, baseline-aligned title cartouche. DOM order (not a CSS
-            visual move) so keyboard/screen-reader focus stays logical:
-            invite → sound toggle → Comet → difficulty → cards (WCAG 2.4.3). */}
+        {/* Storyteller home handoff (H1): the hero strip — figure left,
+            greeting caption right (fixed min-height so hiding the bubble
+            never jumps layout). React.lazy: never in the initial bundle.
+            One host per screen — hard. */}
+        <Suspense fallback={null}>
+          <StorytellerHomeHost tutorialInviteVisible={tutorialInviteVisible} />
+        </Suspense>
         {/* PBI-6: the h1 is the focus target when the Scout Map boot offer
             closes (data-testid="home-heading"). */}
-        <div className="atlas-banner-row home-rise mt-4" style={rise(1)}>
+        <div className="atlas-banner-row home-rise mt-4" style={rise(2)}>
           <h1 className="atlas-title" data-testid="home-heading" tabIndex={-1}>
             {BRAND.name}
           </h1>
-          <CometMascot tutorialInviteVisible={tutorialInviteVisible} />
         </div>
-        <p className="atlas-tagline home-rise mt-4" style={rise(2)}>
+        <p className="atlas-tagline home-rise mt-4" style={rise(3)}>
           Pick the globe, a country, or a state. A place name, then one pin. Your score keeps
           adding up across editions until you choose to end the game, or if you&rsquo;re idle for
           2 minutes.
         </p>
         <div
           className="home-rise mt-7"
-          style={rise(3)}
+          style={rise(4)}
           data-testid="tour-stop-difficulty"
         >
           <p id="difficulty-label" className="atlas-difficulty-label">
@@ -1979,7 +1991,7 @@ function Choose({
             {DIFFICULTY_HINTS[difficultyChoice]}
           </p>
         </div>
-        <div className="atlas-rule home-rise" style={rise(3)} aria-hidden="true" />
+        <div className="atlas-rule home-rise" style={rise(4)} aria-hidden="true" />
       </header>
       {/* GeoDetective leads: the flagship case file, unlimited mysteries.
           Age-profile: for bands where the loop is locked (5-7), the SAME
@@ -1991,10 +2003,10 @@ function Choose({
       <article
         aria-labelledby="geodetective-title"
         className="atlas-dossier home-rise mt-8"
-        style={rise(4)}
+        style={rise(5)}
         data-testid="tour-stop-geodetective"
       >
-        <span className="atlas-stamp" style={rise(4)} aria-hidden="true">
+        <span className="atlas-stamp" style={rise(5)} aria-hidden="true">
           Open
         </span>
         <p className="atlas-eyebrow">Case file · Unlimited</p>
@@ -2021,9 +2033,9 @@ function Choose({
       <article
         aria-labelledby="coldtrail-title"
         className="atlas-dossier home-rise mt-8"
-        style={rise(4)}
+        style={rise(5)}
       >
-        <span className="atlas-stamp" style={rise(4)} aria-hidden="true">
+        <span className="atlas-stamp" style={rise(5)} aria-hidden="true">
           New
         </span>
         <p className="atlas-eyebrow">Case file · Triangulation</p>
@@ -2044,7 +2056,7 @@ function Choose({
       </article>
       <div
         className="home-rise mt-10"
-        style={rise(5)}
+        style={rise(6)}
         data-testid="tour-stop-editions"
       >
         <p className="atlas-eyebrow">Choose your expedition</p>
@@ -2079,7 +2091,7 @@ function Choose({
         <section
           aria-label={REVIEW_DECK_COPY.pickerTitle}
           className="atlas-fieldnotes home-rise mt-8"
-          style={rise(6)}
+          style={rise(7)}
           data-testid="tour-stop-review"
         >
           <h2 className="atlas-fieldnotes-title">{REVIEW_DECK_COPY.pickerTitle}</h2>

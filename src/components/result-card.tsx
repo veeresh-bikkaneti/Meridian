@@ -17,6 +17,7 @@ import { X } from "lucide-react";
 import { Suspense, lazy, useEffect, useMemo, useRef, useState } from "react";
 import { splitLede } from "./story-lede";
 import { claimFirstRevealNarration } from "./storyteller-claim";
+import { isSessionAutoNarrationConsumed } from "./storyteller-session";
 import { useAiSportsTeams, withSportsLine } from "@/game/sports-ai";
 import { useAiStory, AI_STORY_BADGE } from "@/game/story-ai";
 import { revealPinCompare } from "@/game/reverse-geocode";
@@ -226,7 +227,13 @@ export function ResultCard({
   // Storyteller v1: the session's first story reveal auto-narrates (T1 —
   // gesture-gated); every later reveal is text + speaker button. Claimed
   // once per session — a reload is a new session.
-  const storytellerAuto = useMemo(() => claimFirstRevealNarration(), []);
+  // Storyteller home handoff (H1): the home greeting consumes the session's
+  // one auto-narration (copy §5) — story cards later that session are text
+  // + speaker button only (no double-audio).
+  const storytellerAuto = useMemo(
+    () => !isSessionAutoNarrationConsumed() && claimFirstRevealNarration(),
+    [],
+  );
   // Cartographer's Plate PR3 — the "more below" cue for the card body.
   const { ref: bodyRef, moreBelow } = useMoreBelow<HTMLDivElement>();
 
