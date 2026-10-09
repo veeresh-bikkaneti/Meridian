@@ -257,6 +257,16 @@ export default defineConfig({
         viewport: { width: 390, height: 844 },
       },
     },
+    {
+      name: "hint-button",
+      // #113 follow-up Item A: hint button UI per band policy.
+      testMatch: /hint-button\.spec\.ts/,
+      use: {
+        // 390px viewport for the mobile layout spot-check (same note as
+        // clean-round-badge: no mobile UA emulation).
+        viewport: { width: 390, height: 844 },
+      },
+    },
   ],
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
 });

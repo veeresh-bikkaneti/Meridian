@@ -66,3 +66,15 @@ Review: 10/12 approve, 2 BLOCKs both on B4 Clean Round badge. Fix agent worktree
 - Fix: `pinToleranceKm(run.bandConfig?.band ?? ageBand, …)` at both sites. `Run.bandConfig` is the deal-time snapshot (optional only for pre-snapshot backfill; `?? ageBand` is the legacy fallback).
 - Consumer grep: `pinToleranceKm` has exactly 2 callers, both fixed. Remaining `resolveBand()` reads are deal-time snapshot creation only (`store.ts:214` dealBandConfig, `LoopScreen.tsx:279/286` deal-config capture) — no live reads in any run/deal path.
 - Gates on fix head: tsc clean · npm test 1040/1040.
+
+## 2026-10-09 — Hint button UI (owner decision: hints are a REAL feature)
+- Wired the B1 hint policies to a real surface (was dead code — built, tested, zero UI callers).
+- New `src/components/hint-panel.tsx`: policy-aware button (44px, Lightbulb icon).
+  - 5-7 ("free"): always visible + enabled; mascot offer ("Stuck? Want a hint?" opt-in Yes/No) after 2 run misses; offer dismissal resets per run.
+  - 8-10 ("one-per-round"): visible; disables after one use per place, re-enables on next place.
+  - 11-13 ("none"): no button rendered at all (Clean Round stays earnable).
+- New `src/components/hint-logic.ts`: mechanical directional hint (place lon/lat vs region bounds quadrant — pure geometry, no fabrication, never pinpoints). Globe edition falls back to world bounds.
+- Wired in `PlayLoaded` (game-app.tsx): policy from `run.bandConfig?.hintPolicy` (deal-time snapshot, defaults "none"); `hintsUsed` incremented on the run via `onRun`; per-place usage resets on `place?.id` change; hint NEVER touches points/scoring.
+- Positioned top-right below chrome (mirrors bubble offset) — no overlap with question bubble or chrome.
+- Tests: 7 new unit tests (hint-panel.test.ts, added to npm test list); 4 new E2E (hint-button.spec.ts, new "hint-button" Playwright project @390px): 5-7 free hint, 8-10 disable-after-use, 11-13 hidden, mascot offer after 2 misses.
+- Gates: tsc clean · lint-cards GATE PASSED · build:pages green · npm test 1047/1047 · Playwright hint-button 4/4 · zero console errors · locked copy byte-identical (Ko-fi 3 strings, bands.ts untouched).

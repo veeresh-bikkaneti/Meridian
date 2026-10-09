@@ -58,6 +58,9 @@ import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-
 import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
+import { HintPanel } from "./hint-panel";
+import { directionalHint } from "./hint-logic";
+import { canUseHint } from "@/game/age-profile/run-config.ts";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
@@ -2668,6 +2671,13 @@ function PlayLoaded({
   const [story, setStory] = useState<string | null>(null);
   const [bubble, setBubble] = useState<BubbleViewState>("open");
   const [cardDismissed, setCardDismissed] = useState(false);
+  // Hint UI (follow-up Item A — hints are a REAL feature, owner 2026-10-09).
+  // Hints NEVER touch points. Per-place usage drives the 8-10 one-per-place
+  // policy; the run-level hintsUsed accumulates for the snapshot. The
+  // mascot offer dismissal resets per run (not per place) — no nagging.
+  const [hintsUsedThisPlace, setHintsUsedThisPlace] = useState(0);
+  const [hintMessage, setHintMessage] = useState<string | null>(null);
+  const [offerDismissed, setOfferDismissed] = useState(false);
   // Gap-view reveal: the result card stays hidden until the map's reveal
   // reaches its end state (`reveal-done` → onRevealComplete). Reset per place.
   const [revealDone, setRevealDone] = useState(false);
@@ -2792,7 +2802,15 @@ function PlayLoaded({
     setAim(null);
     setBubble("open");
     setCardDismissed(false);
+    // Hint UI resets per place (8-10: one hint per place).
+    setHintsUsedThisPlace(0);
+    setHintMessage(null);
   }, [place?.id]);
+
+  // Mascot offer dismissal resets per run (a new run is a fresh chance).
+  useEffect(() => {
+    setOfferDismissed(false);
+  }, [run?.seed]);
 
   // Reveal watchdog (deadlock fail-safe): the result card renders only after
   // the map's reveal reaches its end state (`reveal-done` → onRevealComplete).
@@ -3057,6 +3075,23 @@ function PlayLoaded({
     // hook instead.
     setCardDismissed(true);
     onTutorialAdvance(3);
+  }
+
+  // Hint UI (follow-up Item A): a hint reveals a directional nudge —
+  // never points, never the answer. The policy comes from the run's
+  // band snapshot (deal-time); the button state is per-place for 8-10.
+  // Fail closed: no place or no bounds = no hint.
+  function onUseHint() {
+    if (!run || !place) return;
+    const policy = run.bandConfig?.hintPolicy ?? "none";
+    if (!canUseHint(policy, hintsUsedThisPlace)) return;
+    // Globe edition has no region bounds: fall back to the whole world.
+    // The quadrant is still coarse enough to never pinpoint.
+    const b: [number, number, number, number] = bounds ?? [-180, -90, 180, 90];
+    const message = directionalHint(place.lon, place.lat, b);
+    setHintMessage(message);
+    setHintsUsedThisPlace((n) => n + 1);
+    onRun({ ...run, hintsUsed: (run.hintsUsed ?? 0) + 1 });
   }
 
   function onContinue() {
@@ -3397,15 +3432,33 @@ function PlayLoaded({
                   : `${run.regionName} finished.`}
       </p>
       {run.phase === "aim" && place ? (
-        <QuestionBubble
-          edition={mapEdition}
-          regionName={mapRegionName}
-          placeName={questionLabel}
-          difficulty={place.difficulty}
-          hasPin={aim !== null}
-          view={bubble}
-          onViewChange={setBubble}
-        />
+        <>
+          <QuestionBubble
+            edition={mapEdition}
+            regionName={mapRegionName}
+            placeName={questionLabel}
+            difficulty={place.difficulty}
+            hasPin={aim !== null}
+            view={bubble}
+            onViewChange={setBubble}
+          />
+          {/* Hint UI (follow-up Item A): the B1 hint policies get their
+              surface. 5-7 free + mascot offer after 2 misses; 8-10 one
+              per place; 11-13 no button (Clean Round stays earnable).
+              Top-right, below the chrome row — mirrors the question
+              bubble's top offset so the two never overlap. */}
+          <div className="pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] right-2.5 z-20 w-[min(300px,calc(100vw-20px))]">
+            <HintPanel
+              policy={run.bandConfig?.hintPolicy ?? "none"}
+              hintsUsedThisPlace={hintsUsedThisPlace}
+              missCount={run.results.filter((r) => !r.hit).length}
+              hintMessage={hintMessage}
+              offerDismissed={offerDismissed}
+              onUseHint={onUseHint}
+              onDismissOffer={() => setOfferDismissed(true)}
+            />
+          </div>
+        </>
       ) : run.phase === "aim" && pool.length === 0 ? (
         <div
           data-testid="empty-band"
