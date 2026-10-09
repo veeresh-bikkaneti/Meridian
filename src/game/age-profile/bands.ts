@@ -36,6 +36,7 @@ export const AGE_BANDS: Record<AgeBandId, AgeBand> = {
       quizQuestions: 5,
       terrainImages: 4,
       capitalQuestions: null, // locked
+      pinsPerRun: 5, // mirrors quizQuestions; data-only, endless run ignores
       duelSecondsPerTurn: null, // locked — no timers below 11-13
     },
     mapLabels: "major",
@@ -65,6 +66,7 @@ export const AGE_BANDS: Record<AgeBandId, AgeBand> = {
       quizQuestions: 8,
       terrainImages: 6,
       capitalQuestions: 8,
+      pinsPerRun: 8, // mirrors quizQuestions; data-only, endless run ignores
       duelSecondsPerTurn: null, // locked — no timers below 11-13
     },
     mapLabels: "standard",
@@ -95,6 +97,7 @@ export const AGE_BANDS: Record<AgeBandId, AgeBand> = {
       quizQuestions: 12,
       terrainImages: 8,
       capitalQuestions: 12,
+      pinsPerRun: 12, // mirrors quizQuestions; data-only, endless run ignores
       duelSecondsPerTurn: 60,
     },
     mapLabels: "full",

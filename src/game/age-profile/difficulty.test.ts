@@ -92,16 +92,19 @@ test("round lengths per Phase 1 §3c", () => {
   assert.equal(young.quizQuestions, 5);
   assert.equal(young.terrainImages, 4);
   assert.equal(young.capitalQuestions, null);
+  assert.equal(young.pinsPerRun, 5); // data-only: mirrors quizQuestions
   assert.equal(young.duelSecondsPerTurn, null);
   const mid = roundLengths("8-10");
   assert.equal(mid.quizQuestions, 8);
   assert.equal(mid.terrainImages, 6);
   assert.equal(mid.capitalQuestions, 8);
+  assert.equal(mid.pinsPerRun, 8); // data-only: mirrors quizQuestions
   assert.equal(mid.duelSecondsPerTurn, null);
   const old = roundLengths("11-13");
   assert.equal(old.quizQuestions, 12);
   assert.equal(old.terrainImages, 8);
   assert.equal(old.capitalQuestions, 12);
+  assert.equal(old.pinsPerRun, 12); // data-only: mirrors quizQuestions
   assert.equal(old.duelSecondsPerTurn, 60);
 });
 

@@ -6,12 +6,18 @@
  * 60s cooldown (never a hard lockout); "Try another question" regenerates
  * for parents who need a fresh one. Keyboard entry works on desktop.
  *
+ * Cooldown persistence (see cooldown.ts): the cooldown deadline is stored
+ * as one timestamp in localStorage, so a remount during the cooldown
+ * resumes the live countdown instead of resetting it. One timestamp,
+ * zero PII — COPPA-safe.
+ *
  * Telemetry (local-only): emits `grownup_gate.attempt` style payloads via
  * onAttempt(result, attempts) — the parent callback must never log the
  * answer value.
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { clearCooldown, readCooldown, writeCooldown } from "./cooldown.ts";
 
 const MAX_ATTEMPTS = 3;
 const COOLDOWN_SECONDS = 60;
@@ -42,15 +48,24 @@ export function GrownUpGate({ onPass, onCancel, onAttempt }: GrownUpGateProps) {
   const [digits, setDigits] = useState("");
   const [fails, setFails] = useState(0);
   const [error, setError] = useState<string | null>(null);
-  const [cooldownUntil, setCooldownUntil] = useState<number | null>(null);
+  // Resume a cooldown started before a remount (persisted deadline), or
+  // start un-cooled. readCooldown() self-clears expired/malformed keys.
+  const [cooldownUntil, setCooldownUntil] = useState<number | null>(() => readCooldown());
   const [cooldownLeft, setCooldownLeft] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const cancelRef = useRef<HTMLButtonElement>(null);
 
   const answer = useMemo(() => question.a * question.b, [question]);
   const cooling = cooldownUntil !== null;
 
   useEffect(() => {
-    inputRef.current?.focus();
+    // Mount-time focus: when resuming a persisted cooldown the answer input
+    // isn't rendered — focus the cancel button instead so focus never lands
+    // on <body>.
+    if (cooldownUntil !== null) cancelRef.current?.focus();
+    else inputRef.current?.focus();
+    // Mount-only by design.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -64,6 +79,8 @@ export function GrownUpGate({ onPass, onCancel, onAttempt }: GrownUpGateProps) {
         setQuestion(newQuestion());
         setDigits("");
         setError(null);
+        // Expiry leaves no key behind — a pass can't resurrect the cooldown.
+        clearCooldown();
       } else {
         setCooldownLeft(left);
       }
@@ -117,7 +134,11 @@ export function GrownUpGate({ onPass, onCancel, onAttempt }: GrownUpGateProps) {
     setFails(nextFails);
     onAttempt?.("fail", nextFails);
     if (nextFails >= MAX_ATTEMPTS) {
-      setCooldownUntil(Date.now() + COOLDOWN_SECONDS * 1000);
+      // A 4th submit during cooldown is silently ignored: check() already
+      // returns early when `cooling` — keep that guard.
+      const until = Date.now() + COOLDOWN_SECONDS * 1000;
+      writeCooldown(until);
+      setCooldownUntil(until);
       setError(`Take a breath — try again in a minute.`);
     } else {
       setError(`Not quite — try again. (${MAX_ATTEMPTS - nextFails} ${nextFails === MAX_ATTEMPTS - 1 ? "try" : "tries"} left)`);
@@ -143,7 +164,13 @@ export function GrownUpGate({ onPass, onCancel, onAttempt }: GrownUpGateProps) {
       className="agep-screen"
       data-testid="grownup-gate"
     >
-      <button type="button" className="agep-cancel" onClick={onCancel} aria-label="Cancel and go back">
+      <button
+        type="button"
+        ref={cancelRef}
+        className="agep-cancel"
+        onClick={onCancel}
+        aria-label="Cancel and go back"
+      >
         ×
       </button>
       <h1 id="grownup-gate-title" className="agep-h1">
