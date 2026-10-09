@@ -46,3 +46,10 @@ Review: 10/12 approve, 2 BLOCKs both on B4 Clean Round badge. Fix agent worktree
 - Badge stays cosmetic-only (no score APIs), band-invisible copy unchanged, locked band descriptions verified byte-identical vs origin/main.
 - New Playwright project `clean-round-badge` (tests/e2e/clean-round-badge.spec.ts): 11-13 no-hint win earns + shows badge; loss earns nothing; mid-run 8-10→11-13 flip cannot mis-award. 3/3 green.
 - Gates on fix head: tsc clean · lint-cards GATE PASSED · build:pages green · npm test 1024/1024 · Playwright clean-round-badge 3/3 + age-profile-gate 1/1 green.
+
+## Rebase onto main@f4f92ad (2026-10-09, rebase agent)
+- Base moved 64c82d6 → f4f92ad (#111 Ko-fi cloud visible on mobile merged). 3 commits replayed clean; 1 docs-only conflict in BRANCH_STATUS.md (kept this branch's doc).
+- Badge-fix survival verified: award reads `progressed.dealBandConfig?.band` (snapshot, never live `resolveBand()`); `data-testid="clean-round-badge"` win-only surface intact; clean-round-badge.spec.ts present.
+- Locked copy verified byte-identical vs origin/main: Ko-fi 3 strings (2/2/1), `bands.ts` diff-empty, `storyteller-lines.ts` diff-empty.
+- Gates on rebased head: tsc clean · lint-cards GATE PASSED · build:pages green (real, `_shell.html` emitted) · npm test 1024/1024 · Playwright clean-round-badge 3/3 green.
+- Note: an earlier badge-e2e failure in this worktree was a broken local build (copied cross-worktree node_modules → duplicate React in SSR prerender); fixed with a clean `npm ci`. Not a code issue.
