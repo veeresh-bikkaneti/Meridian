@@ -47,6 +47,12 @@ export interface BandDifficulty {
   terrainImages: number;
   /** Capital Quest questions; null when locked. */
   capitalQuestions: number | null;
+  /**
+   * Pins per run for round-structured loops. DATA-ONLY design target (see
+   * difficulty.ts): the shipped main run is endless by design and does
+   * NOT consume this — retuning the table never changes game structure.
+   */
+  pinsPerRun: number;
   /** Duel seconds per turn; null when locked (timers only at 11-13). */
   duelSecondsPerTurn: number | null;
 }

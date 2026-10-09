@@ -94,14 +94,23 @@ export interface RoundLengths {
   quizQuestions: number;
   terrainImages: number;
   capitalQuestions: number | null;
+  /**
+   * Pins per run (DATA-ONLY design target). Mirrors quizQuestions per
+   * Game Designer ruling: the shipped quiz/main run is endless by design
+   * and does NOT cap itself from this value — same "design target, not
+   * consumed by endless run" pattern as quizQuestions above. A future
+   * round-structured loop may consume it; nothing consumes it today.
+   */
+  pinsPerRun: number;
   duelSecondsPerTurn: number | null;
 }
 
 /**
  * Round lengths per band (Phase 1 §3c). Note: the shipped quiz is an
- * endless run with no fixed round length — `quizQuestions` is the design
- * target exposed for future round-structured loops; the endless run does
- * NOT cap questions (see the integration notes, not a refactor).
+ * endless run with no fixed round length — `quizQuestions` and
+ * `pinsPerRun` are the design targets exposed for future round-structured
+ * loops; the endless run does NOT cap questions (see the integration
+ * notes, not a refactor).
  */
 export function roundLengths(band: AgeBandId | null): RoundLengths {
   const effective: AgeBandId = band ?? FULL_ACCESS_BAND;
@@ -110,6 +119,7 @@ export function roundLengths(band: AgeBandId | null): RoundLengths {
     quizQuestions: d.quizQuestions,
     terrainImages: d.terrainImages,
     capitalQuestions: d.capitalQuestions,
+    pinsPerRun: d.pinsPerRun,
     duelSecondsPerTurn: d.duelSecondsPerTurn,
   };
 }

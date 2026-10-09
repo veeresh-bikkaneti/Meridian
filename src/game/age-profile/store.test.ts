@@ -29,6 +29,7 @@ import {
   __resetMemoryFallback,
 } from "./store.ts";
 import { onAgeProfileChanged } from "./events.ts";
+import { roundLengths } from "./difficulty.ts";
 
 function clearStorage() {
   backing.clear();
@@ -160,6 +161,24 @@ test("requestChange mid-run stages pending-change; boundary applies it", () => {
   } finally {
     off();
   }
+});
+
+test("P0-2: mid-run band change snapshots the original round length (start 5-7 → switch to 8-10 mid-run → finish at 5)", () => {
+  clearStorage();
+  setBand("5-7");
+  // The run's contract is set at run start: 5-7 → 5 pins per run.
+  assert.equal(roundLengths(resolveBand()).pinsPerRun, 5);
+  // Mid-run switch stages a pending change — the running round still sees
+  // the ORIGINAL length, so it can never soft-lock or change the finish
+  // count mid-run.
+  const staged = requestChange("8-10", { runInProgress: true });
+  assert.equal(staged.status, "pending-change");
+  assert.equal(resolveBand(), "5-7");
+  assert.equal(roundLengths(resolveBand()).pinsPerRun, 5);
+  // At the boundary the change applies — the NEXT run picks up 8.
+  applyPendingAtBoundary();
+  assert.equal(resolveBand(), "8-10");
+  assert.equal(roundLengths(resolveBand()).pinsPerRun, 8);
 });
 
 test("cancelPending drops the staged change", () => {
