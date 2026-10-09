@@ -60,3 +60,9 @@ Review: 10/12 approve, 2 BLOCKs both on B4 Clean Round badge. Fix agent worktree
 - Badge-fix survival verified: `progressed.dealBandConfig?.band` (snapshot) at LoopScreen.tsx:444, win-only `data-testid="clean-round-badge"`, clean-round-badge.spec.ts present.
 - Locked copy byte-identical vs origin/main: Ko-fi 3 strings (2/2/1 occurrences), bands.ts diff-empty, storyteller files diff-empty.
 - Gates on final head: tsc clean · lint-cards GATE PASSED · build:pages green (dist/client/_shell.html emitted) · npm test 1040/1040 · Playwright clean-round-badge 3/3.
+
+## 2026-10-09 — B1 pin-tolerance snapshot fix (scrum review BLOCK)
+- Root cause: the two `pinToleranceKm()` call sites in `PlayLoaded` (game-app.tsx:2897, :2926) read the LIVE `ageBand` instead of the run's immutable `bandConfig` snapshot — a mid-run band change would re-tune the pin hit radius mid-run (same class as the B4 award bug).
+- Fix: `pinToleranceKm(run.bandConfig?.band ?? ageBand, …)` at both sites. `Run.bandConfig` is the deal-time snapshot (optional only for pre-snapshot backfill; `?? ageBand` is the legacy fallback).
+- Consumer grep: `pinToleranceKm` has exactly 2 callers, both fixed. Remaining `resolveBand()` reads are deal-time snapshot creation only (`store.ts:214` dealBandConfig, `LoopScreen.tsx:279/286` deal-config capture) — no live reads in any run/deal path.
+- Gates on fix head: tsc clean · npm test 1040/1040.

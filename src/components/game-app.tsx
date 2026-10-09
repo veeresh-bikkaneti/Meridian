@@ -2904,7 +2904,7 @@ function PlayLoaded({
       // x1.5 / x1.25 / x1.0, clamps applied after the multiplier.
       radiusKm: review
         ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
-        : pinToleranceKm(ageBand, run.edition, greaterSideKm(boundsFor(run))),
+        : pinToleranceKm(run.bandConfig?.band ?? ageBand, run.edition, greaterSideKm(boundsFor(run))),
     };
   }, [drop, place, review, reviewEntry, run]);
 
@@ -2933,7 +2933,7 @@ function PlayLoaded({
     // Otherwise the age-profile band scales the tolerance (Phase 1 §3a).
     const radius = review
       ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
-      : pinToleranceKm(ageBand, run.edition, greaterSideKm(boundsFor(run)));
+      : pinToleranceKm(run.bandConfig?.band ?? ageBand, run.edition, greaterSideKm(boundsFor(run)));
     const hit = isHit(distance, radius);
     // v3: the place is scored with the streak engine + difficulty multiplier;
     // a miss scores 0 and resets the streak (handled in dropPin). Review is
