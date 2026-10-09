@@ -153,6 +153,26 @@ test("Clean Round: 11-13 no-hint win earns it and shows it in the reveal", async
   expect(raw).not.toMatch(/"points"|"score"/);
 });
 
+test("Clean Round badge never overlaps the win-reveal CTA", async ({ page }) => {
+  await openLoop(page, "218"); // Ankara
+  const entry = await targetEntry(page);
+  await guessTarget(page, entry);
+
+  const badge = page.getByTestId("clean-round-badge");
+  await expect(badge).toBeVisible({ timeout: 15_000 });
+  await page.waitForTimeout(500); // let the reveal transition settle
+  const badgeBox = await badge.boundingBox();
+  // The badge must not cover the reveal's primary action.
+  const cta = page.locator("button").last();
+  await expect(cta).toBeVisible();
+  const ctaBox = await cta.boundingBox();
+  if (!badgeBox || !ctaBox) throw new Error("missing box (clean-round-badge vs CTA)");
+  const ix = Math.max(0, Math.min(badgeBox.x + badgeBox.width, ctaBox.x + ctaBox.width) - Math.max(badgeBox.x, ctaBox.x));
+  const iy = Math.max(0, Math.min(badgeBox.y + badgeBox.height, ctaBox.y + ctaBox.height) - Math.max(badgeBox.y, ctaBox.y));
+  console.log(`clean-round-badge vs CTA: overlap=${(ix * iy).toFixed(1)}px²`);
+  expect(ix * iy).toBe(0);
+});
+
 test("Clean Round: a loss never earns it, even hint-free on 11-13", async ({ page }) => {
   await openLoop(page, "218"); // Ankara
   const entry = await targetEntry(page);
