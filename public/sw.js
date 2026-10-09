@@ -60,6 +60,15 @@ const SHELL_URLS = [START_URL, OFFLINE_URL, "/Meridian/manifest.webmanifest"];
 // whole /Meridian/loop/ deck: clues (~1.5 MB) and names.json (11.5 MB) are
 // runtime-cached on first online use instead (see the strategy note above).
 const LOOP_PRECACHE_URLS = ["/Meridian/loop/manifest.json"];
+// Storyteller mascot narration (v1): install-precache these three mp3s so
+// narration works offline from first install. (Runtime cache-first also
+// covers /Meridian/audio/ via isStaticAsset below; this entry guarantees
+// availability before first online use.)
+const STORYTELLER_AUDIO_URLS = [
+  "/Meridian/audio/storyteller/reveal-01.mp3",
+  "/Meridian/audio/storyteller/hook-01.mp3",
+  "/Meridian/audio/storyteller/summary-01.mp3",
+];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -76,6 +85,14 @@ self.addEventListener("install", (event) => {
         // Same fail-soft rule: a missing manifest at install time must not
         // block the worker; the runtime cache-first handler covers it.
       }),
+  );
+  // Best-effort: the storyteller mp3s land in the versioned asset cache so
+  // narration works offline. A failure here must never block installation.
+  event.waitUntil(
+    caches
+      .open(ASSET_CACHE)
+      .then((cache) => cache.addAll(STORYTELLER_AUDIO_URLS))
+      .catch(() => {}),
   );
 });
 

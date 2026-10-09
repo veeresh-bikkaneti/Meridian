@@ -1,4 +1,8 @@
 import type { JSX } from "react";
+import { Suspense, lazy, useRef } from "react";
+
+// The Storyteller mascot stays out of the initial bundle (lazy chunk).
+const StorytellerNarration = lazy(() => import("./storyteller"));
 import { formatDistance } from "@/game/geo";
 import {
   DIFFICULTY_LABELS,
@@ -43,6 +47,16 @@ export function RunSummaryCard(props: {
   reviewDueCount?: number;
 }): JSX.Element {
   const { summary, regionName, dateKey, growth, onDone, onPlayAgain, onReview, reviewDueCount } = props;
+  // P1-2 (WCAG 2.4.3): when the narration caption auto-dismisses with focus
+  // on its speaker/replay, focus must land somewhere sensible inside this
+  // role="dialog" — the "Play again" button, mirroring result-card's
+  // onDismiss → Next-place CTA pattern.
+  const modalRef = useRef<HTMLDivElement | null>(null);
+  const focusPlayAgain = () => {
+    modalRef.current
+      ?.querySelector<HTMLElement>('[data-testid="play-again"]')
+      ?.focus({ preventScroll: true });
+  };
   // Session totals only — no per-place emoji strip; the session banks
   // totals, never per-place scores (see sessionShareText).
   const text = sessionShareText({ summary, regionName, dateKey });
@@ -64,12 +78,25 @@ export function RunSummaryCard(props: {
     .filter((g) => g.regions.length > 0);
   return (
     <div
+      ref={modalRef}
       className="pointer-events-auto absolute inset-0 z-40 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       aria-label="Game summary"
     >
       <div className="w-full max-w-sm rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.95)] p-6 text-white shadow-2xl">
+        {/* Storyteller (secondary host): docked inside the modal above the
+            title — the closing-chapter beat. One line, text-first + speaker. */}
+        <Suspense fallback={null}>
+          <StorytellerNarration
+            screen="summary"
+            trigger="summary"
+            lineKey="summary"
+            showFigure
+            variant="modal"
+            onDismiss={focusPlayAgain}
+          />
+        </Suspense>
         <p className="text-[11px] tracking-wider text-white/60 uppercase">{regionName}</p>
         <h2 className="mt-1 font-display text-2xl">Game over</h2>
 
@@ -234,7 +261,7 @@ export function RunSummaryCard(props: {
               </pre>
             }
           />
-          <Button className="w-full" onClick={onPlayAgain}>
+          <Button data-testid="play-again" className="w-full" onClick={onPlayAgain}>
             Play again
           </Button>
           <Button variant="secondary" className="w-full" onClick={onDone}>

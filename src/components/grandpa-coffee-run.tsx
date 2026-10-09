@@ -1251,6 +1251,8 @@ export function GrandpaCoffeeRun() {
         // Level 2: the current bottom-strip walk.
         setTour(null);
         setMode("strip");
+        // The walk never started — release any Storyteller yield.
+        window.dispatchEvent(new Event("meridian:tour-walk-end"));
         return;
       }
       setTour({ stage: "walk", geometry: geo, origin: geo.origin });
@@ -1270,6 +1272,8 @@ export function GrandpaCoffeeRun() {
   const onTourHandoff = useCallback(() => {
     setTour((t) => (t ? { ...t, stage: "settled" } : t));
     setMode("seated");
+    // The walk is over — the Storyteller may return.
+    window.dispatchEvent(new Event("meridian:tour-walk-end"));
     // Flip the beat in the same render: the cloud is a new element here, so
     // it appears at full opacity (no CSS transition from a prior hidden
     // state) — matching the strip's original finale behavior.
