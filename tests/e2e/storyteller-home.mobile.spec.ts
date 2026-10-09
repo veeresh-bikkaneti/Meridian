@@ -219,12 +219,14 @@ test("poke: tap the figure → rotating idle lines", async ({ page }) => {
   await page.getByTestId("storyteller-home-dismiss").click();
   await expect(page.getByTestId("storyteller-home-bubble")).toHaveCount(0);
 
-  await figure.click();
+  // Force-click: the idle sway animation never settles, which defeats
+  // Playwright's stability check (real taps don't need it).
+  await figure.click({ force: true });
   await expect.poll(async () => caption.textContent(), { timeout: 5_000 }).toBe(POKE_1);
 
   // Clear the poke debounce, then tap again → next line rotates in.
   await page.waitForTimeout(700);
-  await figure.click();
+  await figure.click({ force: true });
   await expect.poll(async () => caption.textContent(), { timeout: 5_000 }).toBe(POKE_2);
 
   expectCleanConsole(errors);

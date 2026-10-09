@@ -17,7 +17,7 @@
 
 /* Figure: 56px banner size (owner range 48–64px).
  *
- * Homer motion system (Track B, 2026-10-09): all five moments are
+ * Homer motion system (Track B, 2026-10-09): all six moments are
  * phase-driven off the host's data-phase attribute — transform/opacity
  * only, so nothing here can reflow the banner row or the page.
  *
@@ -97,6 +97,95 @@
   .storyteller-banner[data-phase="idle_linger"] .storyteller-figure {
     transition: none;
     animation: homer-sway 4.5s ease-in-out infinite;
+  }
+
+  /* 6 — Idle engagement (owner 2026-10-09): the bard hums to invite play.
+   * Music notes rise ("singing"); a scroll unfurls as if he's writing the
+   * next tale. Transform/opacity only; idle_linger phase only. */
+  .storyteller-banner[data-phase="idle_linger"] .storyteller-idle {
+    display: block;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .storyteller-idle-note {
+    position: absolute;
+    bottom: 10px;
+    font-size: 14px;
+    line-height: 1;
+    color: var(--atlas-brass, #e8b64c);
+    opacity: 0;
+    animation: homer-note-rise 5s ease-in infinite;
+  }
+  .storyteller-idle-note.n1 {
+    left: 4px;
+  }
+  .storyteller-idle-note.n2 {
+    left: 22px;
+    font-size: 11px;
+    animation-delay: 1.6s;
+  }
+  .storyteller-idle-note.n3 {
+    left: 40px;
+    animation-delay: 3.2s;
+  }
+  .storyteller-idle-scroll {
+    position: absolute;
+    right: -2px;
+    bottom: 4px;
+    width: 16px;
+    height: 22px;
+    border-radius: 2px;
+    background: linear-gradient(105deg, #f5edd6 0 70%, #e0d2ab 70% 100%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transform: scaleY(0.2);
+    transform-origin: top center;
+    animation: homer-scroll-unfurl 12s ease-in-out infinite;
+  }
+}
+
+/* Idle engagement layer: hidden unless the idle_linger phase animates it
+ * (inside prefers-reduced-motion: no-preference above). */
+.storyteller-idle {
+  display: none;
+}
+
+@keyframes homer-note-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.8);
+  }
+  25% {
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-24px) scale(1.1);
+  }
+}
+
+@keyframes homer-scroll-unfurl {
+  0%,
+  60% {
+    opacity: 0;
+    transform: scaleY(0.2);
+  }
+  70% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  88% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  96%,
+  100% {
+    opacity: 0;
+    transform: scaleY(0.2);
   }
 }
 

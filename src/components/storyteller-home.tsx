@@ -294,12 +294,8 @@ export default function StorytellerHomeHost({
   }, [greetIndex]);
 
   // ---- Tutorial invite: greeting waits for its dismissal ----------------
-  useEffect(() => {
-    if (!tutorialInviteVisible && !startedRef.current) {
-      startedRef.current = true;
-      setStarted(true);
-    }
-  }, [tutorialInviteVisible]);
+  // (moved below beginGreetingAudio: the dismiss tap counts as the first
+  // gesture, so this effect calls it directly)
 
   // ---- Yield: tour / celebration own the screen -------------------------
   // A tour-walk-end after a yield arms the post-tour return line (copy G2).
@@ -352,10 +348,12 @@ export default function StorytellerHomeHost({
         // Text-only, no mp3 — the locked return line (copy G2).
         showBubble(TOUR_RETURN_LINE, TEXT_BUBBLE_MS);
       }, ENTER_MS);
-      const t2 = window.setTimeout(
-        () => setPhase("idle_linger"),
-        ENTER_MS + TEXT_BUBBLE_MS,
-      );
+      const t2 = window.setTimeout(() => {
+        // Owner 2026-10-09: the greeting happens regardless of the tour —
+        // after the return line, run the normal greeting (mp3 on gesture).
+        setMode("greeting");
+        setPhase("entering");
+      }, ENTER_MS + TEXT_BUBBLE_MS);
       return () => {
         window.clearTimeout(t1);
         window.clearTimeout(t2);
@@ -418,6 +416,21 @@ export default function StorytellerHomeHost({
       })
       .catch(onFail);
   }, [greetingText, showBubble, stopAudio]);
+
+  // ---- Tutorial invite: greeting waits for its dismissal ----------------
+  // The dismiss tap counts as the first gesture (owner 2026-10-09) — begin
+  // narration now instead of waiting for another tap.
+  useEffect(() => {
+    if (!tutorialInviteVisible && !startedRef.current) {
+      startedRef.current = true;
+      setStarted(true);
+      if (isSoundEnabled() && assetsRef.current.greetAudio) {
+        gestureDoneRef.current = true;
+        showBubble(greetingText, null);
+        beginGreetingAudio();
+      }
+    }
+  }, [tutorialInviteVisible, greetingText, showBubble, beginGreetingAudio]);
 
   // Tab hidden cancels the audio window (G1).
   useEffect(() => {
@@ -551,6 +564,15 @@ export default function StorytellerHomeHost({
         src={assets.pose}
         onToggle={handleFigureTap}
       />
+      {/* Idle engagement (owner 2026-10-09): the bard hums to invite play —
+          music notes rise while he "sings"; a scroll unfurls as if he's
+          writing the next tale. CSS-only, idle_linger phase only. */}
+      <span className="storyteller-idle" aria-hidden="true">
+        <span className="storyteller-idle-note n1">♪</span>
+        <span className="storyteller-idle-note n2">♫</span>
+        <span className="storyteller-idle-note n3">♪</span>
+        <span className="storyteller-idle-scroll" />
+      </span>
       {bubble !== null && started ? (
         <div
           className="storyteller-banner-popover"
