@@ -99,3 +99,65 @@ test("settings surface is kid-reachable, not behind the grown-ups gate", async (
   // The grown-ups gate was never opened (no gate dialog present).
   await expect(page.getByTestId("grownup-gate")).toHaveCount(0);
 });
+
+async function overlapArea(
+  page: import("playwright/test").Page,
+  aTestId: string,
+  bTestId: string,
+  w: number,
+  h: number,
+): Promise<number> {
+  const a = page.getByTestId(aTestId).first();
+  const b = page.getByTestId(bTestId).first();
+  await a.waitFor({ state: "visible", timeout: 30_000 });
+  await b.waitFor({ state: "visible", timeout: 30_000 });
+  await page.waitForTimeout(400);
+  const ab = await a.boundingBox();
+  const bb = await b.boundingBox();
+  if (!ab || !bb) throw new Error(`missing box @${w}x${h} (${aTestId} vs ${bTestId})`);
+  const ix = Math.max(0, Math.min(ab.x + ab.width, bb.x + bb.width) - Math.max(ab.x, bb.x));
+  const iy = Math.max(0, Math.min(ab.y + ab.height, bb.y + bb.height) - Math.max(ab.y, bb.y));
+  console.log(
+    `@${w}x${h} ${aTestId} vs ${bTestId}: overlap=${(ix * iy).toFixed(1)}px²`,
+  );
+  return ix * iy;
+}
+
+for (const [w, h] of [[360, 740], [390, 844]] as const) {
+  test(`${w}x${h}: badges row never overlaps the card CTA`, async ({ page }) => {
+    await seedBadges(page.context());
+    await page.setViewportSize({ width: w, height: h });
+    await page.goto(BASE);
+    const card = page.locator('[data-testid="tour-stop-geodetective"]');
+    await expect(card.getByTestId("earned-badges")).toBeVisible({ timeout: 30_000 });
+    // The row must not cover the card's choose button.
+    const cta = card.locator("button").first();
+    const rowBox = await page.getByTestId("earned-badges").first().boundingBox();
+    const ctaBox = await cta.boundingBox();
+    if (rowBox && ctaBox) {
+      const ix = Math.max(0, Math.min(rowBox.x + rowBox.width, ctaBox.x + ctaBox.width) - Math.max(rowBox.x, ctaBox.x));
+      const iy = Math.max(0, Math.min(rowBox.y + rowBox.height, ctaBox.y + ctaBox.height) - Math.max(rowBox.y, ctaBox.y));
+      expect(ix * iy).toBe(0);
+    }
+  });
+
+  test(`${w}x${h}: read-aloud settings never overlaps the grown-ups link`, async ({ page }) => {
+    await seedPref(page.context(), "always");
+    await page.setViewportSize({ width: w, height: h });
+    await page.goto(BASE);
+    const toggle = page.getByTestId("readaloud-settings-toggle");
+    await expect(toggle).toBeVisible({ timeout: 30_000 });
+    expect(await overlapArea(page, "readaloud-settings-toggle", "grownups-link", w, h)).toBe(0);
+    // Expanded options must not overlap either.
+    await toggle.click();
+    const opt = page.getByTestId("readaloud-option-sometimes");
+    await expect(opt).toBeVisible();
+    const optBox = await opt.boundingBox();
+    const linkBox = await page.getByTestId("grownups-link").boundingBox();
+    if (optBox && linkBox) {
+      const ix = Math.max(0, Math.min(optBox.x + optBox.width, linkBox.x + linkBox.width) - Math.max(optBox.x, linkBox.x));
+      const iy = Math.max(0, Math.min(optBox.y + optBox.height, linkBox.y + linkBox.height) - Math.max(optBox.y, linkBox.y));
+      expect(ix * iy).toBe(0);
+    }
+  });
+}
