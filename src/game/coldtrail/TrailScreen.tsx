@@ -14,6 +14,7 @@ import {
 import {
   buildEvidenceOverlays,
   nudgeDirection,
+  wrapLonDelta,
   type PlacementDraft,
 } from "./placement";
 import { freshProgress, loadColdtrail, saveColdtrail, takeLegacyMigrationNotice } from "./store";
@@ -115,7 +116,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   // locked rings + witness dots at PLAYER centers, draft ring as preview.
   const draftForOverlay: PlacementDraft | null =
     placing !== null && draft ? { index: placing, ...draft } : null;
-  const { rings: evidenceRings, marks: evidenceMarks } = buildEvidenceOverlays(
+  const { rings: evidenceRings, marks: evidenceMarks, overlap: evidenceOverlap } = buildEvidenceOverlays(
     caseData,
     progress,
     draftForOverlay,
@@ -174,7 +175,11 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   // Arrow-key nudge from LoopMap (scale-aware step, computed there).
   const onPlacementNudge = (lon: number, lat: number) => {
     if (revealed || placing === null || draft === null) return;
-    setHint(`Ring moved ${nudgeDirection(lon - draft.lon, lat - draft.lat)}.`);
+    // The step is signed BEFORE lon normalization: an east step across the
+    // antimeridian wraps 179 → -179, whose raw delta (-358°) would
+    // mis-announce as "west". wrapLonDelta recovers the true +2°.
+    const dLon = wrapLonDelta(lon - draft.lon);
+    setHint(`Ring moved ${nudgeDirection(dLon, lat - draft.lat)}.`);
     setDraft({ lon, lat });
   };
 
@@ -223,7 +228,15 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     setPlacing(null);
     setDraft(null);
     setHint("Placement canceled — no ring placed.");
-    cardActionRefs.current[i]?.focus();
+    // Focus AFTER React commits the idle tree (WCAG 2.4.3): the card's
+    // "✖ Cancel placement" button unmounts on commit, so focusing it
+    // synchronously here would focus a detached node and drop focus to
+    // <body>. rAF fires post-commit, when the ref points at the card's
+    // "📍 Place ring on map" button again. The Escape path shares this
+    // function, so it gets the same fix.
+    requestAnimationFrame(() => {
+      cardActionRefs.current[i]?.focus();
+    });
   };
 
   // "Move" on a confirmed ring: re-enter adjusting(i) with the draft planted
@@ -235,12 +248,19 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     setPending(null);
     setPlacing(i);
     setDraft({ ...progress.ringCenters[i]! });
-    setHint("Tap the map to move the ring — then tap “Yes, keep it”.");
+    // Entering adjusting via Move discards another card's in-flight draft
+    // (adjudication 3) — say so with the exact set-aside copy.
+    if (placing !== null && placing !== i) {
+      setHint("Your ring draft was set aside — tap 📍 to place it again.");
+    } else {
+      setHint("Tap the map to move the ring — then tap “Yes, keep it”.");
+    }
     focusMap();
   };
 
   // Escape exits placement mode without locking (the touch path is the
   // Cancel button; document-level so it works from any focused control).
+  // Re-registers only when `placing` changes (NIT: was every render).
   useEffect(() => {
     if (placing === null) return;
     const onKey = (e: KeyboardEvent) => {
@@ -251,7 +271,8 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [placing]);
 
   // Defensive: reveal requires 3 confirmed rings, so placing + revealed is
   // unreachable — but abort any draft if revealed ever flips (UXA T12).
@@ -281,16 +302,11 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
 
   // Map tap: the interception guess (only once all 3 rings are locked).
   // While a ring is placing/adjusting, taps are routed to onPlacementTap by
-  // LoopMap and never reach here — the defensive branch below documents the
-  // intended copy for that (unreachable) case.
+  // LoopMap and never reach here — the placing branch was removed per C8
+  // (it was unreachable and a double-handling trap for future edits).
   const onMapTap = (lon: number, lat: number) => {
     if (revealed) return;
     if (!allRingsPlaced) {
-      if (placing !== null) {
-        const n = progress.ringsPlaced.findIndex((placed) => !placed);
-        setHint(`Confirm ring ${n + 1} first — then tap your interception.`);
-        return;
-      }
       setHint("Place all 3 rings first — one per sighting card.");
       return;
     }
@@ -378,7 +394,11 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
       </section>
 
       <section aria-label="Trail map" className="mt-6 flex flex-col gap-3">
-        <p className="text-sm text-muted" role="status">
+        {/* Plain text, not a live region: the hint below (role="status") is
+            the single announcer — two live regions were double-announcing
+            the same sentences (e.g. "All 3 rings are down"). Every state
+            shown here is also announced via the hint or a focus move. */}
+        <p className="text-sm text-muted">
           {revealed
             ? "Case closed — the gold star marks the hideout."
             : allRingsPlaced
@@ -394,6 +414,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             onMapTap={onMapTap}
             evidenceRings={evidenceRings}
             evidenceMarks={evidenceMarks}
+            evidenceOverlap={evidenceOverlap}
             mapLabel={
               placingNow
                 ? `Cold Trail map — placing the ring for sighting ${placing! + 1}. Tap the map where you think the ring goes.`

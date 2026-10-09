@@ -166,6 +166,65 @@ export async function readRun(page: Page): Promise<{
 export const pinCount = (page: Page): Promise<number> =>
   page.locator(".maplibregl-marker").count();
 
+/**
+ * Cold Trail overlay seam: read the live GeoJSON features of a LoopMap
+ * source via the `__loopMap` DOM seam.
+ *
+ * maplibre-gl 6.x made GeoJSONSource.getData() async — this awaits it
+ * (calling it synchronously reads `.features` off the Promise, i.e.
+ * undefined). `minFeatures` waits until the source holds at least that many
+ * features, so assertions on freshly-painted overlays don't race React's
+ * passive-effect paint: the repaint runs in useEffect, after the DOM commit
+ * the test just observed.
+ */
+export async function sourceFeatures(
+  page: Page,
+  sourceId: string,
+  minFeatures = 0,
+): Promise<
+  Array<{ properties: Record<string, unknown>; geometry: { coordinates: unknown } }>
+> {
+  type SeamSource = {
+    getData: () => Promise<{
+      features: Array<{ properties: Record<string, unknown>; geometry: { coordinates: unknown } }>;
+    }>;
+  };
+  type LoopMapEl = {
+    __loopMap?: { getSource: (id: string) => SeamSource | undefined };
+  };
+  const sel = '[data-testid="loop-map"]';
+  await page.waitForFunction(
+    (args: { sel: string; id: string }) => {
+      const el = document.querySelector(args.sel) as unknown as LoopMapEl;
+      return !!el?.__loopMap?.getSource(args.id);
+    },
+    { sel, id: sourceId },
+    { timeout: 30_000 },
+  );
+  if (minFeatures > 0) {
+    await page.waitForFunction(
+      async (args: { sel: string; id: string; min: number }) => {
+        const el = document.querySelector(args.sel) as unknown as LoopMapEl;
+        const src = el?.__loopMap?.getSource(args.id);
+        if (!src) return false;
+        const data = await src.getData();
+        return data.features.length >= args.min;
+      },
+      { sel, id: sourceId, min: minFeatures },
+      { timeout: 30_000 },
+    );
+  }
+  return page.evaluate(
+    async (args: { sel: string; id: string }) => {
+      const el = document.querySelector(args.sel) as unknown as Required<LoopMapEl>;
+      const src = el.__loopMap.getSource(args.id);
+      const data = await src!.getData();
+      return data.features;
+    },
+    { sel, id: sourceId },
+  );
+}
+
 export const dropButton = (page: Page) =>
   page.getByRole("button", { name: "Drop pin and lock in your guess" });
 

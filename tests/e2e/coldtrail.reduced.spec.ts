@@ -1,5 +1,5 @@
 import { test, expect } from "playwright/test";
-import { serveBuiltArtifact } from "./helpers";
+import { serveBuiltArtifact, sourceFeatures } from "./helpers";
 
 /**
  * Cold Trail reduced-motion gate (runs in the "reduced" project).
@@ -47,4 +47,22 @@ test("reduced motion: placement flow completes, armed border is static", async (
   await page.getByTestId("confirm-ring-btn").click();
   await expect(page.getByTestId("map-hint")).toContainText("Ring 1 locked");
   await expect(page.getByTestId("place-ring-btn")).toHaveCount(2);
+
+  // F11 lens under reduced motion: lock all 3 — the STATIC overlap fill
+  // paints (the lens is still the "where they cross" anchor), but the
+  // one-time pulse never fires.
+  for (const tap of [
+    { x: 300, y: 250 },
+    { x: 400, y: 300 },
+  ]) {
+    await page.getByTestId("place-ring-btn").first().click();
+    await page.getByTestId("loop-map").click({ position: tap });
+    await expect(page.getByTestId("confirm-ring-btn")).toBeVisible({ timeout: 10_000 });
+    await page.getByTestId("confirm-ring-btn").click();
+  }
+  await expect(page.getByTestId("map-hint")).toContainText("All 3 rings are down");
+  // The overlap source painted (proves the repaint effect ran — the exact
+  // path that would have created the pulse), yet no pulse element exists.
+  await sourceFeatures(page, "loop-overlap", 1);
+  await expect(page.locator(".ct-overlap-pulse")).toHaveCount(0);
 });

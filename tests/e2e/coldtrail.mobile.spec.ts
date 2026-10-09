@@ -39,7 +39,9 @@ test("mobile: full placement loop with touch taps", async ({ page }) => {
     await page.getByTestId("confirm-ring-btn").click();
   }
   await expect(page.getByTestId("place-ring-btn")).toHaveCount(0);
-  await expect(page.getByText("All 3 rings are down")).toBeVisible();
+  // Scoped to the hint live region: the map section shows the same sentence
+  // as plain text, which getByText would match twice (strict-mode).
+  await expect(page.getByTestId("map-hint")).toContainText("All 3 rings are down");
 
   // Intercept tap → confirm → reveal, all by touch.
   await page.getByTestId("loop-map").click({ position: { x: 180, y: 300 } });
@@ -82,4 +84,10 @@ test("mobile: cancel placement via the banner button", async ({ page }) => {
   await page.getByTestId("cancel-placement-banner-btn").click();
   await expect(page.getByTestId("map-hint")).toContainText("Placement canceled");
   await expect(page.getByTestId("place-ring-btn")).toHaveCount(3);
+  // Same WCAG 2.4.3 contract as the Escape path: focus returns to the
+  // card's Place button, not <body>.
+  await page.waitForFunction(
+    () => document.activeElement?.getAttribute("data-testid") === "place-ring-btn",
+    { timeout: 5_000 },
+  );
 });

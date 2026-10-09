@@ -1,7 +1,7 @@
 import { strict as assert } from "node:assert";
 import { test } from "node:test";
 import { effectiveRadius } from "./engine.ts";
-import { buildEvidenceOverlays, nudgeDirection } from "./placement.ts";
+import { buildEvidenceOverlays, nudgeDirection, tripleOverlap, wrapLonDelta } from "./placement.ts";
 import { freshProgress } from "./store.ts";
 import type { ColdTrailCase, ColdTrailProgress, ColdTrailSighting } from "./types.ts";
 
@@ -56,10 +56,18 @@ function lockedProgress(): ColdTrailProgress {
   return p;
 }
 
-function renderedCoords(out: { rings: Array<{ lon: number; lat: number }>; marks: Array<{ lon: number; lat: number }> }) {
+function renderedCoords(out: {
+  rings: Array<{ lon: number; lat: number }>;
+  marks: Array<{ lon: number; lat: number }>;
+  overlap: { polygon: Array<[number, number]> | null; centroid: { lon: number; lat: number } } | null;
+}) {
   return [
     ...out.rings.map((r) => ({ lon: r.lon, lat: r.lat })),
     ...out.marks.map((m) => ({ lon: m.lon, lat: m.lat })),
+    // The F11 lens is a render path too: its polygon + centroid must never
+    // equal a true anchor (derived from player centers only).
+    ...(out.overlap?.polygon ?? []).map(([lon, lat]) => ({ lon, lat })),
+    ...(out.overlap ? [{ lon: out.overlap.centroid.lon, lat: out.overlap.centroid.lat }] : []),
   ];
 }
 
@@ -169,4 +177,99 @@ test("nudgeDirection names the eight winds", () => {
   assert.equal(nudgeDirection(-1, -1), "southwest");
   assert.equal(nudgeDirection(1, 0), "east");
   assert.equal(nudgeDirection(0, -1), "south");
+});
+
+test("F11 overlap: three overlapping rings yield a closed lens polygon", () => {
+  const region = tripleOverlap([
+    { lon: 0, lat: 0, radiusKm: 500 },
+    { lon: 2, lat: 1, radiusKm: 500 },
+    { lon: -1, lat: 2, radiusKm: 500 },
+  ]);
+  assert.ok(region, "three rings always produce a region");
+  assert.ok(region.polygon, "overlapping rings share a common area");
+  assert.ok(region.polygon.length >= 4, "closed ring has ≥4 points");
+  assert.deepEqual(
+    region.polygon[0],
+    region.polygon[region.polygon.length - 1],
+    "the lens polygon is closed",
+  );
+});
+
+test("F11 overlap: disjoint rings fall back to the centroid marker", () => {
+  const region = tripleOverlap([
+    { lon: -100, lat: 0, radiusKm: 200 },
+    { lon: 0, lat: 0, radiusKm: 200 },
+    { lon: 100, lat: 0, radiusKm: 200 },
+  ]);
+  assert.ok(region);
+  assert.equal(region.polygon, null, "no common area → no polygon");
+  assert.deepEqual(region.centroid, { lon: 0, lat: 0 });
+});
+
+test("F11 overlap: antimeridian-safe for rings at 179 / -179", () => {
+  const region = tripleOverlap([
+    { lon: 179, lat: 10, radiusKm: 800 },
+    { lon: -179, lat: 10, radiusKm: 800 },
+    { lon: 179.5, lat: 12, radiusKm: 800 },
+  ]);
+  assert.ok(region);
+  assert.ok(region.polygon, "the 2°-apart rings overlap across the antimeridian");
+  assert.ok(
+    region.centroid.lon >= -180 && region.centroid.lon <= 180,
+    `centroid lon normalized, got ${region.centroid.lon}`,
+  );
+});
+
+test("F11 overlap: fewer than three rings → null", () => {
+  assert.equal(
+    tripleOverlap([
+      { lon: 0, lat: 0, radiusKm: 500 },
+      { lon: 1, lat: 1, radiusKm: 500 },
+    ]),
+    null,
+  );
+});
+
+test("buildEvidenceOverlays: lens polygon when locked rings overlap", () => {
+  const p = freshProgress();
+  p.ringsPlaced = [true, true, true];
+  p.ringCenters = [
+    { lon: 10, lat: 10 },
+    { lon: 11, lat: 10.5 },
+    { lon: 9.5, lat: 11 },
+  ];
+  const out = buildEvidenceOverlays(caseData, p, null);
+  assert.ok(out.overlap?.polygon, "close-together locked rings share a common area");
+});
+
+test("buildEvidenceOverlays: centroid fallback when locked rings are disjoint", () => {
+  // playerCenters are far apart → no triple intersection.
+  const out = buildEvidenceOverlays(caseData, lockedProgress(), null);
+  assert.ok(out.overlap, "the lens region still exists");
+  assert.equal(out.overlap.polygon, null);
+  // Circular mean of (10°, -20°, 30°) ≈ 6.79° — near the plain mean, but
+  // antimeridian-safe by construction.
+  assert.ok(Math.abs(out.overlap.centroid.lon - 6.79) < 0.05);
+  assert.ok(Math.abs(out.overlap.centroid.lat + 50 / 3) < 1e-9);
+});
+
+test("buildEvidenceOverlays: no lens before all 3 locked, or after reveal", () => {
+  const partial = freshProgress();
+  partial.ringsPlaced = [true, true, false];
+  partial.ringCenters = [{ lon: 10, lat: 10 }, { lon: 11, lat: 10.5 }, null];
+  assert.equal(buildEvidenceOverlays(caseData, partial, null).overlap, null);
+
+  const done = lockedProgress();
+  done.revealed = true;
+  done.guess = { lon: 5, lat: 5 };
+  assert.equal(buildEvidenceOverlays(caseData, done, null).overlap, null);
+});
+
+test("wrapLonDelta recovers the signed step across the antimeridian", () => {
+  assert.equal(wrapLonDelta(2), 2);
+  assert.equal(wrapLonDelta(-2), -2);
+  assert.equal(wrapLonDelta(-358), 2, "179 → -179 is an EAST step");
+  assert.equal(wrapLonDelta(358), -2, "-179 → 179 is a WEST step");
+  assert.equal(wrapLonDelta(0), 0);
+  assert.equal(wrapLonDelta(10), 10);
 });

@@ -120,10 +120,19 @@ export function normalizeLon(lon: number): number {
 }
 
 /**
- * Clamp a latitude into [min, max]. Default ±85 keeps ring/drag math inside
- * the Web-Mercator-safe band; storage load uses ±90 for robustness.
+ * Named latitude bands (review NIT: the two clamp bands must not drift).
+ * Live map math (rings, drag, nudge) stays inside the Web-Mercator-safe
+ * band; storage load uses the wider band for robustness on legacy blobs.
  */
-export function clampLat(lat: number, min = -85, max = 85): number {
+export const MAP_LAT_LIMIT = 85;
+export const STORE_LAT_LIMIT = 90;
+
+/**
+ * Clamp a latitude into [min, max]. Default ±MAP_LAT_LIMIT keeps ring/drag
+ * math inside the Web-Mercator-safe band; storage load passes ±90 for
+ * robustness.
+ */
+export function clampLat(lat: number, min = -MAP_LAT_LIMIT, max = MAP_LAT_LIMIT): number {
   return Math.min(max, Math.max(min, lat));
 }
 

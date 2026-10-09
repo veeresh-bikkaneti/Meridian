@@ -32,6 +32,8 @@ const LABEL_SOURCE = "loop-labels";
 const RING_SOURCE = "loop-rings";
 const ARROW_SOURCE = "loop-arrows";
 const MARK_SOURCE = "loop-marks";
+/** F11 overlap lens source (triple-intersection fill + centroid dot). */
+const OVERLAP_SOURCE = "loop-overlap";
 
 /** Detective gold — matches the answer-mark gold across editions. */
 const GOLD = "#f2c14e";
@@ -91,6 +93,19 @@ export interface TrailEvidenceMark {
   kind: "witness" | "x";
 }
 
+/**
+ * Cold-Trail F11 overlap lens: the region where all locked player rings
+ * overlap — "tap where they cross" needs a visible crossing. `polygon` is
+ * a closed lon/lat ring (null when the rings share no common area, in
+ * which case the centroid marker is the fallback anchor); `centroid`
+ * anchors the one-time pulse. Computed from PLAYER centers only (I1) in
+ * placement.ts — the true anchors never reach this prop.
+ */
+export interface TrailEvidenceOverlap {
+  polygon: Array<[number, number]> | null;
+  centroid: { lon: number; lat: number };
+}
+
 interface LoopMapProps {
   guesses: LoopGuess[];
   target: { lon: number; lat: number };
@@ -110,6 +125,8 @@ interface LoopMapProps {
   /** Cold-Trail evidence overlays (witness rings + marks). */
   evidenceRings?: TrailEvidenceRing[];
   evidenceMarks?: TrailEvidenceMark[];
+  /** Cold-Trail F11 overlap lens (all rings locked, pre-reveal). */
+  evidenceOverlap?: TrailEvidenceOverlap | null;
   /** Override the map's aria-label (default describes the loop's tap model). */
   mapLabel?: string;
   /**
@@ -141,6 +158,7 @@ export function LoopMap({
   onMapTap,
   evidenceRings,
   evidenceMarks,
+  evidenceOverlap,
   mapLabel,
   placementActive,
   onPlacementTap,
@@ -152,6 +170,10 @@ export function LoopMap({
   const mapRef = useRef<MLMap | null>(null);
   const draftMarkerRef = useRef<MLMarker | null>(null);
   const draftMarkerAddedRef = useRef(false);
+  // F11 overlap lens: one-time pulse marker + fired flag (reset when the
+  // overlap clears, i.e. on the next case).
+  const overlapPulseMarkerRef = useRef<MLMarker | null>(null);
+  const overlapPulseDoneRef = useRef(false);
   const gridRef = useRef<PlaceGrid | null>(null);
   const entriesRef = useRef<LoopNameEntry[] | null>(null);
   // Last tap timestamp (performance.now): the ≥300 ms double-tap guard for
@@ -172,7 +194,7 @@ export function LoopMap({
     onPlacementNudge,
     placementDraft,
   });
-  const paintRef = useRef({ guesses, target, finished, evidenceRings, evidenceMarks, placementDraft });
+  const paintRef = useRef({ guesses, target, finished, evidenceRings, evidenceMarks, evidenceOverlap, placementDraft });
   useEffect(() => {
     cbRef.current = {
       onSelectPlace,
@@ -188,7 +210,7 @@ export function LoopMap({
     };
     // Paint inputs ride a ref too: the style-load handler fires at an
     // arbitrary time, long after the mount effect's closure went stale.
-    paintRef.current = { guesses, target, finished, evidenceRings, evidenceMarks, placementDraft };
+    paintRef.current = { guesses, target, finished, evidenceRings, evidenceMarks, evidenceOverlap, placementDraft };
   });
 
   // Preload the guess index on mount so the first tap resolves instantly.
@@ -294,10 +316,11 @@ export function LoopMap({
       if (freeTap) {
         // Cold Trail: the tap IS the interception guess — raw coordinates,
         // no place resolution. The parent gates (rings placed?) and opens
-        // the confirm sheet.
+        // the confirm sheet. Normalized like placement taps so stored and
+        // rendered coords agree (MINOR: was raw, e.g. 190 for -170).
         if (onMapTap) {
           playCelebrationSound("pinDropPass");
-          onMapTap(e.lngLat.lng, e.lngLat.lat);
+          onMapTap(normalizeLon(e.lngLat.lng), clampLat(e.lngLat.lat));
         }
         return;
       }
@@ -356,7 +379,15 @@ export function LoopMap({
     draftEl.setAttribute("aria-hidden", "true");
     const draftMarker = new MLMarker({ element: draftEl, draggable: true });
     draftMarkerRef.current = draftMarker;
+    // F5 fingertip offset: while dragging, the marker rides ~24px above the
+    // draft center so the finger doesn't occlude the point being placed.
+    // getLngLat() is unaffected by the offset — the draft keeps the true
+    // anchor, only the visual lifts.
+    draftMarker.on("dragstart", () => {
+      draftMarker.setOffset([0, -24]);
+    });
     draftMarker.on("dragend", () => {
+      draftMarker.setOffset([0, 0]);
       const cb = cbRef.current;
       if (!cb.placementActive || !cb.onPlacementDrag) return;
       const ll = draftMarker.getLngLat();
@@ -368,9 +399,19 @@ export function LoopMap({
     // explicitly: a tap on the marker re-plants the draft at the tap point.
     // (After a real drag, a trailing click lands ~at the dragend point, so
     // this is a harmless no-op there.)
+    // Routed through the same ≥300 ms double-tap guard as the map click
+    // path (NIT: previously bypassed it, so a double-tap on the 🎯
+    // re-planted the draft twice).
     draftEl.addEventListener("click", (ev) => {
       const cb = cbRef.current;
       if (!cb.placementActive || !cb.onPlacementTap) return;
+      const now = typeof performance !== "undefined" ? performance.now() : Date.now();
+      const sinceLastTap = now - lastTapAtRef.current;
+      lastTapAtRef.current = now;
+      if (map.isMoving() || sinceLastTap < 300) {
+        playCelebrationSound("pinDropFail");
+        return;
+      }
       ev.stopPropagation();
       const rect = container.getBoundingClientRect();
       const mouse = ev as MouseEvent;
@@ -420,6 +461,7 @@ export function LoopMap({
       addSource(RING_SOURCE);
       addSource(ARROW_SOURCE);
       addSource(MARK_SOURCE);
+      addSource(OVERLAP_SOURCE);
       if (!map.getLayer("loop-ring-line")) {
         map.addLayer({
           id: "loop-ring-line",
@@ -550,6 +592,37 @@ export function LoopMap({
           },
         });
       }
+      // F11 overlap lens (Cold Trail, all rings locked, pre-reveal): the
+      // triple-intersection fill shows "where they cross". Static fill —
+      // the pulse is a separate DOM marker, gated on reduced-motion.
+      if (!map.getLayer("loop-overlap-fill")) {
+        map.addLayer({
+          id: "loop-overlap-fill",
+          type: "fill",
+          source: OVERLAP_SOURCE,
+          filter: ["==", ["get", "kind"], "overlap"],
+          paint: {
+            "fill-color": GOLD,
+            "fill-opacity": 0.28,
+          },
+        });
+      }
+      // Fallback when the three rings share no common area: a centroid dot.
+      if (!map.getLayer("loop-overlap-centroid")) {
+        map.addLayer({
+          id: "loop-overlap-centroid",
+          type: "circle",
+          source: OVERLAP_SOURCE,
+          filter: ["==", ["get", "kind"], "overlap-centroid"],
+          paint: {
+            "circle-radius": 10,
+            "circle-color": GOLD,
+            "circle-opacity": 0.85,
+            "circle-stroke-width": 2,
+            "circle-stroke-color": "#ffffff",
+          },
+        });
+      }
       paintOverlays();
     });
 
@@ -569,11 +642,12 @@ export function LoopMap({
    * paint ref so the style-load handler always paints current state. */
   function paintOverlays() {
     const map = mapRef.current;
-    if (!map || !map.getSource(RING_SOURCE)) return;
-    const { guesses, target, finished, evidenceRings, evidenceMarks } = paintRef.current;
+    if (!map || !map.getSource(RING_SOURCE) || !map.getSource(OVERLAP_SOURCE)) return;
+    const { guesses, target, finished, evidenceRings, evidenceMarks, evidenceOverlap } = paintRef.current;
     const ringFeatures: GeoJSON.Feature[] = [];
     const arrowFeatures: GeoJSON.Feature[] = [];
     const markFeatures: GeoJSON.Feature[] = [];
+    const overlapFeatures: GeoJSON.Feature[] = [];
     for (const g of guesses) {
       if (g.lon === undefined || g.lat === undefined) continue;
       // Searched shading + ✕ for every guessed place.
@@ -638,6 +712,26 @@ export function LoopMap({
         geometry: { type: "Point", coordinates: [m.lon, m.lat] },
       });
     }
+    // F11 overlap lens: the triple-intersection fill, or the centroid dot
+    // when the three locked rings share no common area.
+    if (evidenceOverlap) {
+      if (evidenceOverlap.polygon && evidenceOverlap.polygon.length >= 4) {
+        overlapFeatures.push({
+          type: "Feature",
+          properties: { kind: "overlap" },
+          geometry: { type: "Polygon", coordinates: [evidenceOverlap.polygon] },
+        });
+      } else {
+        overlapFeatures.push({
+          type: "Feature",
+          properties: { kind: "overlap-centroid" },
+          geometry: {
+            type: "Point",
+            coordinates: [evidenceOverlap.centroid.lon, evidenceOverlap.centroid.lat],
+          },
+        });
+      }
+    }
     (map.getSource(RING_SOURCE) as GeoJSONSource).setData({
       type: "FeatureCollection",
       features: ringFeatures,
@@ -649,6 +743,10 @@ export function LoopMap({
     (map.getSource(MARK_SOURCE) as GeoJSONSource).setData({
       type: "FeatureCollection",
       features: markFeatures,
+    });
+    (map.getSource(OVERLAP_SOURCE) as GeoJSONSource).setData({
+      type: "FeatureCollection",
+      features: overlapFeatures,
     });
   }
 
@@ -672,12 +770,47 @@ export function LoopMap({
     }
   }
 
+  /**
+   * F11 one-time pulse: when the overlap lens first appears (all 3 rings
+   * locked), a single expanding gold ring pings at the overlap centroid to
+   * draw the eye to "where they cross". Fires once per case — the done flag
+   * resets when the overlap clears (next case). Suppressed under
+   * prefers-reduced-motion: the static fill lens carries the meaning alone.
+   * The pulse is aria-hidden and pointer-events-none: pure visual signal.
+   */
+  function syncOverlapPulse() {
+    const map = mapRef.current;
+    if (!map) return;
+    const overlap = paintRef.current.evidenceOverlap;
+    if (!overlap) {
+      overlapPulseDoneRef.current = false;
+      if (overlapPulseMarkerRef.current) {
+        overlapPulseMarkerRef.current.remove();
+        overlapPulseMarkerRef.current = null;
+      }
+      return;
+    }
+    if (overlapPulseDoneRef.current || prefersReducedMotion()) return;
+    overlapPulseDoneRef.current = true;
+    const el = document.createElement("div");
+    el.className = "ct-overlap-pulse";
+    el.setAttribute("aria-hidden", "true");
+    const marker = new MLMarker({ element: el });
+    marker.setLngLat([overlap.centroid.lon, overlap.centroid.lat]).addTo(map);
+    overlapPulseMarkerRef.current = marker;
+    window.setTimeout(() => {
+      marker.remove();
+      if (overlapPulseMarkerRef.current === marker) overlapPulseMarkerRef.current = null;
+    }, 2000);
+  }
+
   // Repaint whenever the deduction surface changes.
   useEffect(() => {
     paintOverlays();
     syncDraftMarker();
+    syncOverlapPulse();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [guesses, target, finished, evidenceRings, evidenceMarks, placementDraft]);
+  }, [guesses, target, finished, evidenceRings, evidenceMarks, evidenceOverlap, placementDraft]);
 
   // While placement is active, MapLibre's own keyboard pan is disabled so
   // arrow keys nudge the draft (handled above) instead of panning the map.

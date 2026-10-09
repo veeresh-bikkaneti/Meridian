@@ -1,6 +1,6 @@
 # BRANCH_STATUS — feat/place-accessibility-ws1
 
-Owner: Frontend Developer (Wave C) · Branch: `feat/place-accessibility-ws1` · Base: origin/main @ f4f92ad
+Owner: Frontend Developer (Waves C+D fix wave) · Branch: `feat/place-accessibility-ws1` · Base: origin/main @ f4f92ad
 · Created: 2026-10-09. **PUSH OK, DO NOT MERGE** — Scrum Master opens the PR after the gate wave; Chitti is the only merge path.
 
 Standing rules: named-file staging only, never `git add -A`. Locked Ko-fi
@@ -8,6 +8,57 @@ copy must stay byte-identical (verified by grep after every edit):
 `Grown-ups — buy me a coffee? ☕` · `Your support keeps Meridian free for kids` ·
 `Grown-ups — buy me a coffee? Activate to learn how to support Meridian.`
 Hard rules: $0/offline/keyless; COPPA-safe; no paywalls; do not invent place coordinates.
+
+## Done (Wave D fix wave, 2026-10-09) — review-wave fixes, all gates re-run
+
+Fixed every finding from the Wave D code review (2 MAJORs, 5 MINORs, 3 nits)
+and all 4 Playwright failures from the test-automation gate (all test-side).
+
+App fixes (`src/`):
+- MAJOR 1 (WCAG 2.4.3): `onCancelPlacement` (TrailScreen) deferred its focus
+  with `requestAnimationFrame` — the old code focused the "✖ Cancel placement"
+  button synchronously before React committed, dropping focus to `<body>`.
+  Escape path shares the function, so it gets the same fix. E2E now asserts
+  `document.activeElement` is the card's Place button after Escape AND after
+  the banner Cancel.
+- MAJOR 2 (walkthrough F11): built the overlap lens — `tripleOverlap()` in
+  `placement.ts` computes the triple-intersection of the 3 locked player
+  rings (Sutherland–Hodgman on ringPolygon geometry, antimeridian-safe via a
+  common longitude frame + circular-mean centroid); `LoopMap` paints it as a
+  `loop-overlap` fill layer (centroid dot fallback when rings don't overlap)
+  plus a ONE-TIME pulse marker at the centroid, suppressed under
+  `prefers-reduced-motion` (static fill carries the meaning alone). Player
+  centers only — I1 holds; the I1 unit test now also sweeps the lens coords.
+- MINOR 1: `onMoveRing` shows the adjudication-3 set-aside hint
+  ("Your ring draft was set aside — tap 📍 to place it again.") when another
+  card's draft is discarded.
+- MINOR 2: removed the dead `onMapTap` placing branch per C8.
+- MINOR 3: nudge announcement wraps the lon delta into [-180, 180]
+  (`wrapLonDelta`) — an east step across the antimeridian no longer says "west".
+- MINOR 4: intercept taps now `normalizeLon`/`clampLat` like placement taps.
+- MINOR 5: F5 fingertip offset — the 🎯 marker rides 24px above the draft
+  center while dragging (`setOffset`), so the finger never occludes the point.
+- NIT 1: Escape listener effect now deps `[placing]` (was every render).
+- NIT 2: marker click routed through the shared 300ms double-tap guard.
+- NIT 3: named lat bands in `geo.ts` (`MAP_LAT_LIMIT`/`STORE_LAT_LIMIT`); the
+  ±90 store-load call site uses the constant.
+- Duplicate `role="status"`: the map-section status line is now plain text;
+  the hint banner is the single live region (no double announcements).
+
+Test fixes (`tests/e2e/`):
+- `sourceFeatures` moved to `helpers.ts`, awaits maplibre 6.x's async
+  `getData()` and optionally waits for a minimum feature count so overlay
+  assertions can't race React's passive-effect paint.
+- switching-cards: expectation corrected to 2 Place buttons + 1 Cancel
+  (approved state machine: the placing card shows Cancel).
+- "All 3 rings are down" locators scoped to `data-testid="map-hint"`
+  (the map section shows the same sentence as plain text).
+- reduced-motion spec extended: all 3 locked → static lens paints, zero
+  `.ct-overlap-pulse` elements.
+
+New unit tests (`placement.test.ts`, 1004/1004 total): tripleOverlap
+polygon/centroid/disjoint/antimeridian/<3-rings, overlap wiring
+(present only when all 3 locked pre-reveal), wrapLonDelta.
 
 ## Done (Wave C implementation, 2026-10-09)
 
@@ -77,9 +128,9 @@ Playwright E2E runs in the next wave (specs written, not yet executed).
   anchors); reveal shows player rings + player-center dots + hideout star.
 - "Enter confirms" dropped (reality-checker O7 recommendation); native Enter
   on the focused button works.
-- Intercept-blocked-while-adjusting copy ("Confirm ring {n} first…") kept as a
-  defensive branch in onMapTap, but unreachable by construction — placement
-  taps route before onMapTap, so a tap during adjusting re-positions the draft.
+- (Fix wave: the dead onMapTap placing branch noted below was REMOVED per
+  C8 — LoopMap routes placement taps before onMapTap, so it was unreachable
+  and a double-handling trap.)
 - Storage key bumped to `meridian.coldtrail.v2` (with explicit v1 migration)
   rather than keeping the v1 key, to avoid version/key confusion.
 - Informant button hidden while its own card holds the live placement (the

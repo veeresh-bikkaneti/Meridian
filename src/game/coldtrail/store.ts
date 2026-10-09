@@ -1,4 +1,4 @@
-import { clampLat, normalizeLon } from "../geo.ts";
+import { clampLat, normalizeLon, STORE_LAT_LIMIT } from "../geo.ts";
 import { STARTING_STARS } from "./engine.ts";
 import type {
   ColdTrailProgress,
@@ -105,7 +105,7 @@ function sanitizeProgress(p: ColdTrailProgress): ColdTrailProgress {
     ringsPlaced: [...p.ringsPlaced] as ColdTrailProgress["ringsPlaced"],
     informantOn: [...p.informantOn] as ColdTrailProgress["informantOn"],
     ringCenters: p.ringCenters.map((c) =>
-      c === null ? null : { lon: normalizeLon(c.lon), lat: clampLat(c.lat, -90, 90) },
+      c === null ? null : { lon: normalizeLon(c.lon), lat: clampLat(c.lat, -STORE_LAT_LIMIT, STORE_LAT_LIMIT) },
     ) as ColdTrailProgress["ringCenters"],
   };
 }
