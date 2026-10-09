@@ -66,9 +66,11 @@ test("toggle flips stored state and round-trips localStorage", async ({
   await flipMapModeToggle(page);
   expect((await readStoredMapMode(page))?.mode).toBe("scout");
 
-  // Reload: the toggle reflects the stored state.
+  // Reload: the toggle reflects the stored state. The reload auto-resumes
+  // the run (clean exit fires pagehide), so there is no home screen —
+  // wait for the resumed map instead of starting a new run.
   await page.reload();
-  await startGlobeRun(page);
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 30_000 });
   await expect(mapModeButton(page)).toBeVisible({ timeout: 15_000 });
   expect((await readStoredMapMode(page))?.mode).toBe("scout");
 
@@ -113,7 +115,7 @@ test("toggle takes effect on the NEXT place mount — never a mid-round remount"
   await clickNextPlace(page);
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
   const runAfter = await readRun(page);
-  expect(runAfter.placeId).not.toBe(runBefore.placeId);
+  expect(runAfter.index).toBeGreaterThan(runBefore.index);
 
   await expect
     .poll(() => readMapMode(page), { timeout: 20_000 })

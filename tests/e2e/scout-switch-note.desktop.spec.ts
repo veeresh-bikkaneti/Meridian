@@ -96,12 +96,12 @@ test("note is a sibling of the ResultCard with the contract positioning", async 
   }
 
   // Sibling of the ResultCard: same parent element.
+  await expect(resultCard(page)).toBeVisible();
   const siblings = await note.evaluate((el) => {
     const card = document.querySelector('[aria-label="Result"]');
     return card !== null && card.parentElement === el.parentElement;
   });
   expect(siblings).toBe(true);
-  await expect(resultCard(page)).toBeVisible();
 });
 
 test("note does not overlap the question bubble", async ({ page }) => {
@@ -129,6 +129,10 @@ test("note spans the width at 360px (inset-x-4 → 16px margins)", async ({
     viewport: { width: 360, height: 740 },
   });
   await serveBuiltArtifact(context);
+  // Start FULL so the synthetic context loss is the switch trigger (the
+  // VM's SwiftShader would otherwise boot straight into scout and the
+  // webglcontextlost handler becomes a no-op).
+  await spoofCapableDevice(context);
   const page = await context.newPage();
 
   await page.goto(APP_NO_IDLE);

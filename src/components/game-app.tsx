@@ -769,18 +769,47 @@ export function GameApp() {
    * explicit state change — never rewritten per boot).
    */
   const [mapMode, setMapMode] = useState<MapMode>("full");
+  /**
+   * PBI-7: the manual toggle queues — it never applies mid-round. The
+   * queued choice is written to storage immediately (so a reload honors
+   * it) but the live mapMode only changes at the next place mount, so
+   * the current round (map, confetti, scoring) continues unchanged.
+   */
+  const [queuedMapMode, setQueuedMapMode] = useState<MapMode | null>(null);
+  const queuedMapModeRef = useRef<MapMode | null>(null);
+  /**
+   * PBI-7: tracks the run index the queued mode was last applied at, so
+   * the toggle takes effect exactly once per place change (render-phase
+   * adjustment below — no effect ordering hazards with the map mount).
+   */
+  const [queueAppliedAtIndex, setQueueAppliedAtIndex] = useState<number | null>(null);
   /** PBI-6: the boot offer modal (offer, not force) — once per boot. */
   const [showScoutOffer, setShowScoutOffer] = useState(false);
   const scoutOfferShownRef = useRef(false);
 
   /**
    * Apply a map-mode assignment: persist (Q3) + stamp crash reports +
-   * update state. Sources: "manual" (settings toggle, boot-offer accept),
-   * "contextlost" (the PBI-5 runtime tripwire — the only automatic switch).
+   * update state. Sources: "manual" (settings toggle, boot-offer accept)
+   * — QUEUED, never applied mid-round; "contextlost" (the PBI-5 runtime
+   * tripwire — the only automatic switch) — applied immediately.
+   *
+   * PBI-7: the manual toggle queues. The queued choice is written to
+   * storage immediately (so a reload honors it) but the live mapMode
+   * only changes at the next place mount, so the current round (map,
+   * confetti, scoring) continues unchanged.
    */
   const applyMapMode = useCallback((mode: MapMode, source: Extract<MapModeSource, "manual" | "contextlost">) => {
     writeStoredMapMode(mode, source);
     setReportMapMode(mode);
+    if (source === "manual") {
+      queuedMapModeRef.current = mode;
+      setQueuedMapMode(mode);
+      return;
+    }
+    // contextlost: authoritative — clear any queued manual choice so the
+    // next mount can't flip back under the player.
+    queuedMapModeRef.current = null;
+    setQueuedMapMode(null);
     setMapMode(mode);
   }, []);
 
@@ -1513,6 +1542,20 @@ export function GameApp() {
   }
 
   if (run) {
+    // PBI-7: apply a queued manual toggle at the next place mount. Done
+    // during render (React's "adjust state during render" pattern): the
+    // re-render happens before commit, so the next SatelliteMap mounts
+    // with the new mode already as its prop. The finished round committed
+    // with the old mode and is untouched.
+    if (queueAppliedAtIndex !== run.index) {
+      setQueueAppliedAtIndex(run.index);
+      const queued = queuedMapModeRef.current;
+      if (queued !== null) {
+        queuedMapModeRef.current = null;
+        setQueuedMapMode(null);
+        setMapMode(queued);
+      }
+    }
     return (
       <>
         <Play
@@ -1546,6 +1589,7 @@ export function GameApp() {
           onReviewDeck={handleReviewDeck}
           onCleared={(info) => setCleared(info)}
           mapMode={mapMode}
+          toggleMapMode={queuedMapMode ?? mapMode}
           applyMapMode={applyMapMode}
           celebrationOpen={cleared !== null}
           ageBand={ageBand}
@@ -2261,6 +2305,7 @@ function Play({
   onTutorialEnd,
   ageBand,
   mapMode,
+  toggleMapMode,
   applyMapMode,
 }: {
   run: Run;
@@ -2305,8 +2350,15 @@ function Play({
   /** Scout Map (PBIs 5–7): the game map mode, owned by GameApp. */
   mapMode: MapMode;
   /**
-   * Apply a mode assignment. The settings toggle passes "manual"; the
-   * PBI-5 webglcontextlost tripwire passes "contextlost".
+   * What the settings toggle displays: the queued manual choice if one
+   * is pending, otherwise the live mode. The live map is untouched until
+   * the next place mount.
+   */
+  toggleMapMode: MapMode;
+  /**
+   * Apply a mode assignment. The settings toggle passes "manual" (queued
+   * for the next place mount); the PBI-5 webglcontextlost tripwire passes
+   * "contextlost" (applied immediately).
    */
   applyMapMode: (mode: MapMode, source: "manual" | "contextlost") => void;
 }) {
@@ -2415,6 +2467,7 @@ function Play({
       onTutorialEnd={onTutorialEnd}
       ageBand={ageBand}
       mapMode={mapMode}
+      toggleMapMode={toggleMapMode}
       applyMapMode={applyMapMode}
     />
   );
@@ -2439,6 +2492,7 @@ function PlayLoaded({
   onTutorialEnd,
   ageBand,
   mapMode,
+  toggleMapMode,
   applyMapMode,
 }: {
   run: Run;
@@ -2486,8 +2540,15 @@ function PlayLoaded({
   /** Scout Map (PBIs 5–7): the game map mode, owned by GameApp. */
   mapMode: MapMode;
   /**
-   * Apply a mode assignment. The settings toggle passes "manual"; the
-   * PBI-5 webglcontextlost tripwire passes "contextlost".
+   * What the settings toggle displays: the queued manual choice if one
+   * is pending, otherwise the live mode. The live map is untouched until
+   * the next place mount.
+   */
+  toggleMapMode: MapMode;
+  /**
+   * Apply a mode assignment. The settings toggle passes "manual" (queued
+   * for the next place mount); the PBI-5 webglcontextlost tripwire passes
+   * "contextlost" (applied immediately).
    */
   applyMapMode: (mode: MapMode, source: "manual" | "contextlost") => void;
 }) {
@@ -3207,8 +3268,9 @@ function PlayLoaded({
             />
             {/* PBI-7: Scout Map settings toggle. The choice writes
                 meridian:map-mode and takes effect on the NEXT place mount
-                — the map never remounts mid-round. */}
-            <MapModeToggle mapMode={mapMode} onSelect={(mode) => applyMapMode(mode, "manual")} />
+                — the map never remounts mid-round. The toggle reflects the
+                queued choice immediately. */}
+            <MapModeToggle mapMode={toggleMapMode} onSelect={(mode) => applyMapMode(mode, "manual")} />
           </div>
           {review ? (
             <p
@@ -3374,11 +3436,12 @@ function PlayLoaded({
       {/*
         PBI-5: the deferred Scout Map switch note — GameApp-level, SIBLING
         of ResultCard (never inside it). Renders only at the game-natural
-        break (story phase + reveal done), keyed to the switch event's
-        place id; a tap anywhere else leaves it for that round only.
+        break (round end: story OR done phase + reveal done — a miss lands
+        in "done", and the note must show there too), keyed to the switch
+        event's place id; a tap anywhere else leaves it for that round only.
         fixed inset-x-4 top-16 z-50, role="status", one line + 44px dismiss.
       */}
-      {scoutSwitchNote && place && scoutSwitchNote.placeId === place.id && run.phase === "story" && revealDone ? (
+      {(scoutSwitchNote && place && scoutSwitchNote.placeId === place.id && (run.phase === "story" || run.phase === "done") && revealDone) ? (
         <div
           data-testid="scout-switch-note"
           role="status"
