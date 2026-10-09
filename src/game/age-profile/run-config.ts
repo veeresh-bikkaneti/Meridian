@@ -12,7 +12,7 @@
  */
 
 import type { AgeBandId } from "./types.ts";
-import { AGE_BANDS, FULL_ACCESS_BAND } from "./bands.ts";
+import { AGE_BANDS, AGE_BAND_IDS, FULL_ACCESS_BAND } from "./bands.ts";
 
 /**
  * Hint policy per band (follow-up Item A §hintPolicy).
@@ -35,6 +35,13 @@ const HINT_POLICIES: Record<AgeBandId, HintPolicy> = {
  * (regression-gated per loop in run-config.test.ts).
  */
 export interface BandRunConfig {
+  /**
+   * The effective band this snapshot was computed for (null input resolves
+   * to FULL_ACCESS_BAND). This is the DEAL-TIME band: badge award and any
+   * other band-scoped recognition MUST use this field, never the live
+   * `resolveBand()` — a mid-run band change must not mis-award (#113 BLOCK 1).
+   */
+  band: AgeBandId;
   /** Quiz questions per round (design target; the endless run does not cap). */
   quizQs: number;
   /** Terrain Detective images per round. */
@@ -66,6 +73,7 @@ export function getBandConfig(band: AgeBandId | null): BandRunConfig {
   const effective: AgeBandId = band ?? FULL_ACCESS_BAND;
   const d = AGE_BANDS[effective].difficulty;
   return {
+    band: effective,
     quizQs: d.quizQuestions,
     terrainImages: d.terrainImages,
     capitalQs: d.capitalQuestions,
@@ -82,6 +90,8 @@ export function isBandRunConfig(value: unknown): value is BandRunConfig {
   if (typeof value !== "object" || value === null) return false;
   const c = value as Record<string, unknown>;
   return (
+    (typeof c.band === "string" &&
+      (AGE_BAND_IDS as readonly string[]).includes(c.band)) &&
     Number.isInteger(c.quizQs) &&
     Number.isInteger(c.terrainImages) &&
     (c.capitalQs === null || Number.isInteger(c.capitalQs)) &&

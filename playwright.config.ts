@@ -245,6 +245,18 @@ export default defineConfig({
         viewport: { width: 1440, height: 900 },
       },
     },
+    {
+      name: "clean-round-badge",
+      // #113 BLOCK 1 + BLOCK 2: Clean Round badge award rules.
+      testMatch: /clean-round-badge\.spec\.ts/,
+      use: {
+        // 390px viewport for the mobile layout spot-check. NOTE:
+        // isMobile/hasTouch are intentionally NOT set: mobile UA emulation
+        // prevents the satellite map from mounting in headless Chromium
+        // (see facts-ladder-pilot project note).
+        viewport: { width: 390, height: 844 },
+      },
+    },
   ],
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
 });

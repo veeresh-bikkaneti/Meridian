@@ -20,6 +20,7 @@ import { AGE_BANDS } from "./bands.ts";
  * production contract: any intentional change must update the gate.
  */
 const PRODUCTION_CONFIG: BandRunConfig = {
+  band: "11-13",
   quizQs: 12,
   terrainImages: 8,
   capitalQs: 12,
@@ -82,6 +83,7 @@ test("passport-stamps: unset config == full-access production numbers", () => {
 
 test("band values: 5-7 / 8-10 short rounds, free/limited hints", () => {
   assert.deepEqual(getBandConfig("5-7"), {
+    band: "5-7",
     quizQs: 5,
     terrainImages: 4,
     capitalQs: null,
@@ -92,6 +94,7 @@ test("band values: 5-7 / 8-10 short rounds, free/limited hints", () => {
     guessCap: null,
   });
   assert.deepEqual(getBandConfig("8-10"), {
+    band: "8-10",
     quizQs: 8,
     terrainImages: 6,
     capitalQs: 8,
@@ -160,4 +163,12 @@ test("isBandRunConfig validates the snapshot shape", () => {
     false,
   );
   assert.equal(isBandRunConfig({ ...getBandConfig(null), quizQs: "12" }), false);
+  assert.equal(isBandRunConfig({ ...getBandConfig(null), band: "9-99" }), false);
+});
+
+test("snapshot records the deal-time band (#113 BLOCK 1: badge award must use this, never the live band)", () => {
+  assert.equal(getBandConfig("5-7").band, "5-7");
+  assert.equal(getBandConfig("8-10").band, "8-10");
+  assert.equal(getBandConfig("11-13").band, "11-13");
+  assert.equal(getBandConfig(null).band, "11-13"); // unset → full-access band
 });

@@ -7,7 +7,8 @@
  *
  * Owns localStorage key `meridian.passport.badges.v1` (works fully offline).
  * Integration: Item A's hintPolicy wiring records `hintsUsed` in run state;
- * the round-end hook calls awardCleanRoundBadge() for 11-13 no-hint runs.
+ * the round-end hook calls awardCleanRoundBadge() for 11-13 no-hint WINS,
+ * passing the deal-time snapshot band (never the live band).
  */
 
 import type { AgeBandId, LoopId } from "@/game/age-profile/types.ts";
@@ -110,23 +111,35 @@ export function awardPassportBadge(id: string): PassportBadge | null {
 
 /** Summary the round-end hook passes in. Sourced from run state. */
 export interface CleanRoundSummary {
-  /** Effective band for the completed run. */
-  band: AgeBandId;
+  /**
+   * Deal-time band from the immutable run-config snapshot
+   * (`dealBandConfig.band`) — NEVER the live `resolveBand()`. A mid-run
+   * band change must not mis-award (#113 BLOCK 1). Undefined (pre-snapshot
+   * puzzle) fails closed: no award.
+   */
+  band: AgeBandId | undefined;
   /** Hints used during the run (Item A run state). */
   hintsUsed: number;
   /** The loop the round belonged to (for future per-loop badges). */
   loopId: LoopId;
+  /**
+   * Only completed WINS earn the badge — never losses or abandoned rounds
+   * (#113 BLOCK 2: the award copy celebrates figuring it out, which
+   * mismatches a failed round).
+   */
+  won: boolean;
 }
 
 /**
- * Clean Round: for 11-13 no-hint runs only (11-13 has no hint button, so a
- * zero-hint run is recognisable). Cosmetic ONLY — never points, never
+ * Clean Round: for 11-13 no-hint WINS only (11-13 has no hint button, so a
+ * zero-hint win is recognisable). Cosmetic ONLY — never points, never
  * scoring. The badge copy is band-invisible: nothing tells the child which
  * band earned it.
  *
  * Returns the awarded badge, or null when no badge is due.
  */
 export function awardCleanRoundBadge(summary: CleanRoundSummary): PassportBadge | null {
+  if (!summary.won) return null;
   if (summary.band !== "11-13") return null;
   if (summary.hintsUsed > 0) return null;
   return awardPassportBadge(CLEAN_ROUND_BADGE_ID);

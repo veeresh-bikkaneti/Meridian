@@ -38,3 +38,11 @@
 - 2026-10-09: tester verdict PR-READY — tsc/lint-cards/build green, npm test 1020/1020, Playwright age-profile 1/1 + mobile 390×844 2/2 + desktop 1/1 (zero console errors); 2 geodetective tap-precision flakes are pre-existing env issues
 - 2026-10-09: PR #113 opened — https://github.com/veeresh-bikkaneti/Meridian/pull/113 — NEVER merge (owner merges)
 - 2026-10-09 (Dev B): B3 + B4 done, working tree only — ReadAloudButton uniform ghost icon (8-10 ≡ 11-13), read-aloud-pref.ts (key meridian.readAloudPref.v1), ReadAloudPrefPrompt.tsx, src/game/passport/badges.ts (Clean Round, cosmetic-only), age-profile.css hunks; 27 new tests green; tsc clean on own files (2 pre-existing errors in Dev A's in-progress run.ts/game-app.tsx); result-card.tsx comment hunk only
+
+## Fix pass — PR #113 review BLOCKs (2026-10-09)
+Review: 10/12 approve, 2 BLOCKs both on B4 Clean Round badge. Fix agent worktree: ~/workspace/meridian-fix113.
+- **BLOCK 1 (live-band award bug):** award read live `resolveBand()` at round-end. Fixed: `BandRunConfig` now carries `band` (the deal-time effective band, set in `getBandConfig()`); `isBandRunConfig` validates it; the LoopScreen round-end hook passes `progressed.dealBandConfig?.band` (fail-closed on undefined). Added unit test: snapshot records deal-time band.
+- **BLOCK 2 (invisible + fires on losses):** (a) award is now win-only — `CleanRoundSummary.won` added, `awardCleanRoundBadge` returns null unless won; (b) visible surface — the just-earned badge renders as a celebratory chip (`data-testid="clean-round-badge"`, role=status) in the win reveal, threaded LoopScreen → LoopGame → LoopReveal; cleared on next deal.
+- Badge stays cosmetic-only (no score APIs), band-invisible copy unchanged, locked band descriptions verified byte-identical vs origin/main.
+- New Playwright project `clean-round-badge` (tests/e2e/clean-round-badge.spec.ts): 11-13 no-hint win earns + shows badge; loss earns nothing; mid-run 8-10→11-13 flip cannot mis-award. 3/3 green.
+- Gates on fix head: tsc clean · lint-cards GATE PASSED · build:pages green · npm test 1024/1024 · Playwright clean-round-badge 3/3 + age-profile-gate 1/1 green.

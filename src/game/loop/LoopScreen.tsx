@@ -40,7 +40,7 @@ import {
 } from "./store";
 import { buildLoopGuess, submitGuess, OCTANT_ARROWS } from "./engine";
 import { geodetectiveConfig, resolveBand, type GeoDetectiveConfig } from "@/game/age-profile";
-import { awardCleanRoundBadge } from "@/game/passport/badges";
+import { awardCleanRoundBadge, type PassportBadge } from "@/game/passport/badges";
 import {
   type LoopClueFile,
   type LoopGuess,
@@ -260,6 +260,10 @@ export function LoopScreen({
   // Screen-reader announcement when a reveal lands (the Next-mystery
   // button must not be a sighted-only affordance).
   const [revealAnnouncement, setRevealAnnouncement] = useState<string | null>(null);
+  // Just-earned Clean Round badge for the reveal celebration (#113 BLOCK 2:
+  // the badge needs a visible surface). Set only on the winning guess that
+  // earns it; cleared when the next mystery deals.
+  const [cleanRoundBadge, setCleanRoundBadge] = useState<PassportBadge | null>(null);
   // "Next mystery" idempotence: the button deals once and unmounts with
   // the reveal; a second tap during the deal is a no-op.
   const dealingRef = useRef(false);
@@ -428,13 +432,21 @@ export function LoopScreen({
       else playLose();
       const completedStore = completePuzzle(s, progressed, calendarDate("UTC", new Date()));
       commitStore(completedStore);
-      // Clean Round badge (age-profile B4): 11–13 no-hint runs only.
+      // Clean Round badge (age-profile B4): 11–13 no-hint WINS only.
       // Cosmetic Passport badge — never points, never scoring.
-      awardCleanRoundBadge({
-        band: resolveBand(),
+      // #113 BLOCK 1: the band comes from the immutable deal-time snapshot
+      // (dealBandConfig.band), NEVER the live resolveBand() — a mid-mystery
+      // band change cannot mis-award in either direction. Missing snapshot
+      // fails closed (no award).
+      // #113 BLOCK 2: only wins earn it — the award copy celebrates figuring
+      // it out, which mismatches a failed round.
+      const earnedBadge = awardCleanRoundBadge({
+        band: progressed.dealBandConfig?.band,
         hintsUsed: progressed.hintsUsed ?? 0,
         loopId: "geodetective",
+        won: progressed.status === "won",
       });
+      if (earnedBadge) setCleanRoundBadge(earnedBadge);
       // Celebration (spec §3): the last undealt case of the cycle resolves
       // here — win or lose. A completed cycle fires the grand fanfare +
       // Legendary overlay exactly once (the silent reshuffle into the next
@@ -465,6 +477,7 @@ export function LoopScreen({
     dealingRef.current = true;
     setRevealAnnouncement(null);
     setPickNotice(null);
+    setCleanRoundBadge(null);
     setLoad({ phase: "loading", message: "A new mystery is on your desk…" });
     (async () => {
       const base = assetBase();
@@ -604,6 +617,7 @@ export function LoopScreen({
           onNextMystery={onNextMystery}
           onLeave={onLeave}
           dealConfig={activeDealConfig}
+          cleanRoundBadge={cleanRoundBadge}
         />
       ) : null}
     </main>
@@ -652,6 +666,7 @@ function LoopGame({
   onNextMystery,
   onLeave,
   dealConfig,
+  cleanRoundBadge,
 }: {
   clue: LoopClueFile;
   puzzle: LoopPuzzleState;
@@ -666,6 +681,8 @@ function LoopGame({
   onLeave: () => void;
   /** Deal-time config for the open mystery (preserved across band changes). */
   dealConfig: GeoDetectiveConfig;
+  /** Just-earned Clean Round badge, forwarded to the win reveal. */
+  cleanRoundBadge: PassportBadge | null;
 }) {
   const finished = puzzle.status !== "playing";
   const guessesLeft = dealConfig.guessCap - puzzle.guesses.length;
@@ -907,6 +924,7 @@ function LoopGame({
           onNextMystery={onNextMystery}
           onLeave={onLeave}
           dealConfig={dealConfig}
+          cleanRoundBadge={cleanRoundBadge}
         />
       ) : null}
     </div>
@@ -1095,6 +1113,7 @@ function LoopReveal({
   onNextMystery,
   onLeave,
   dealConfig,
+  cleanRoundBadge,
 }: {
   clue: LoopClueFile;
   puzzle: LoopPuzzleState;
@@ -1108,6 +1127,13 @@ function LoopReveal({
   onLeave: () => void;
   /** Deal-time config for the open mystery (preserved across band changes). */
   dealConfig: GeoDetectiveConfig;
+  /**
+   * Just-earned Clean Round badge for the win celebration (#113 BLOCK 2:
+   * the badge needs a visible surface). Null unless this reveal's winning
+   * guess earned it — the award itself is win-only, so this never renders
+   * on a loss.
+   */
+  cleanRoundBadge: PassportBadge | null;
 }) {
   const won = puzzle.status === "won";
   const winningGuess = won
@@ -1229,6 +1255,23 @@ function LoopReveal({
             aria-label="Case file — scroll for more"
             tabIndex={0}
           >
+            {/* #113 BLOCK 2: the just-earned Clean Round badge gets a visible
+                surface here, at the top of the scrollable body — inside the
+                pinned header it could overflow Zone 1 on cycle-complete wins
+                and bury the pinned CTA. */}
+            {won && cleanRoundBadge ? (
+              <div
+                role="status"
+                aria-label={`Badge earned: ${cleanRoundBadge.name}. ${cleanRoundBadge.blurb}`}
+                data-testid="clean-round-badge"
+                className="rounded-xl border border-line bg-bg p-3 text-center"
+              >
+                <p className="text-base font-semibold text-fg">
+                  🏅 {cleanRoundBadge.name}
+                </p>
+                <p className="mt-1 text-sm text-muted">{cleanRoundBadge.blurb}</p>
+              </div>
+            ) : null}
             <section aria-label="Case file">
               <h3 className="text-sm tracking-wide text-muted uppercase">Case file</h3>
               <p className="mt-1 text-sm text-muted">This is what the clues were telling you.</p>
