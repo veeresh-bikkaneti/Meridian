@@ -35,4 +35,6 @@
 ## Log
 - 2026-10-09: branch created off 64c82d6; worktree ~/workspace/meridian-agefollow; Dev A + Dev B dispatched in parallel
 - 2026-10-09: Dev B done (B3 uniform ghost speaker + kid pref + B4 Clean Round badge); Dev A done (B1 getBandConfig + run snapshot + B2 staging deleted); coordinator integrated (footer chip deleted, Clean Round round-end hookup in LoopScreen, ReadAloudPrefPrompt mounted on home); tsc clean
+- 2026-10-09: tester verdict PR-READY — tsc/lint-cards/build green, npm test 1020/1020, Playwright age-profile 1/1 + mobile 390×844 2/2 + desktop 1/1 (zero console errors); 2 geodetective tap-precision flakes are pre-existing env issues
+- 2026-10-09: PR #113 opened — https://github.com/veeresh-bikkaneti/Meridian/pull/113 — NEVER merge (owner merges)
 - 2026-10-09 (Dev B): B3 + B4 done, working tree only — ReadAloudButton uniform ghost icon (8-10 ≡ 11-13), read-aloud-pref.ts (key meridian.readAloudPref.v1), ReadAloudPrefPrompt.tsx, src/game/passport/badges.ts (Clean Round, cosmetic-only), age-profile.css hunks; 27 new tests green; tsc clean on own files (2 pre-existing errors in Dev A's in-progress run.ts/game-app.tsx); result-card.tsx comment hunk only
