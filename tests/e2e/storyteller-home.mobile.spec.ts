@@ -281,6 +281,52 @@ test("tour yield: host hides during the tour; tour-return line plays once after"
   expectCleanConsole(errors);
 });
 
+test("tour-return → greeting: after the return line's hold, the normal greeting runs", async ({
+  page,
+}) => {
+  // Regression for the chained-timer stall (2026-10-09): the first
+  // implementation scheduled the greeting transition in the same effect
+  // as the return line, so the phase change cleaned it up and the machine
+  // stalled — return line, then silence. This test walks the full new
+  // runtime path: tour closes → return line → greeting → narration.
+  await seedQuietHome(page);
+  const errors = await loadHome(page);
+  const caption = page.getByTestId("storyteller-home-caption");
+  await expect(caption).toBeVisible({ timeout: 10_000 });
+
+  // Tour opens then closes → locked return line (text-only, copy G2).
+  await page.evaluate(() => window.dispatchEvent(new Event("meridian:tour-walk-start")));
+  await expect(page.getByTestId("storyteller-home")).toHaveCount(0);
+  await page.evaluate(() => window.dispatchEvent(new Event("meridian:tour-walk-end")));
+  await expect
+    .poll(async () => page.getByTestId("storyteller-home-caption").textContent(), {
+      timeout: 8_000,
+    })
+    .toBe(TOUR_RETURN_LINE);
+
+  // Owner ruling #1: after the return line's hold elapses, the normal
+  // greeting runs — the machine must NOT stall here.
+  await expect
+    .poll(async () => page.getByTestId("storyteller-home-caption").textContent(), {
+      timeout: 15_000,
+    })
+    .toBe(expectedGreeting());
+
+  // A tap now starts narration (greeting_audio or the text fallback).
+  await page.locator("body").click({ position: { x: 200, y: 600 } });
+  await expect
+    .poll(
+      async () =>
+        (await page.getByTestId("storyteller-home").getAttribute("data-phase")) ===
+          "greeting_audio" ||
+        (await page.getByTestId("storyteller-home-fallback").count()) > 0,
+      { timeout: 15_000 },
+    )
+    .toBe(true);
+
+  expectCleanConsole(errors);
+});
+
 test("dismiss × sound toggle: 0px² overlap @390px and @360px", async ({ page }) => {
   for (const w of [390, 360]) {
     await page.setViewportSize({ width: w, height: 844 });
