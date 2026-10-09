@@ -350,7 +350,8 @@ export function ResultCard({
       <Rise reduced={reduced}>
         <section aria-label="Result" className="game-chrome result-card pointer-events-auto">
           {/* Storyteller (primary host): docked top-left, peeking ~40% above
-              the card edge; yields to the tasting tour while it walks. */}
+              the card edge; yields to the tasting tour while it walks and
+              to the celebration overlay while it owns the screen. */}
           {place ? (
             <Suspense fallback={null}>
               <StorytellerNarration

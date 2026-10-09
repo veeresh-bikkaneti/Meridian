@@ -4,9 +4,20 @@
  * FINAL COPY (spoken form — regenerate the mp3s if these change; the
  * pairing is positional, mirroring comet-greetings.ts).
  *
- * Voice: `avocado_v2:TruthTeller` ("Wise Lighthouse" — M, Old).
- * Audio lives at `public/audio/storyteller/*.mp3`, generated at build time
- * with the TTS CLI. No runtime synthesis, ever.
+ * Voice: `am_fenrir` (Kokoro-82M, en-us male) @ speed 1.05 — the game
+ * designer's 2026-10-08 pick (trailer energy; retires the old cloud `tts`
+ * CLI path per the standing no-cloud/no-key/no-spend rules).
+ * Audio lives at `public/audio/storyteller/*.mp3`. No runtime synthesis, ever.
+ *
+ * REGENERATION (exact, reproducible — closes the caption==audio drift risk):
+ *   node scripts/render-storyteller-voice.mjs [--out <dir>]
+ * The script refuses to render unless its lines match the `text` fields
+ * below character-for-character, renders with local Kokoro-82M q8
+ * (offline/$0/keyless via the aidemo-pilot engine checkout, network
+ * disabled), then masters the set: edge silence trimmed to ≤150 ms,
+ * ebur128-measured gain to −16 LUFS integrated, 4x-oversampled true-peak
+ * limiting at −1.5 dBTP, 24 kHz mono MP3.
+ * Env: AIDEMO_ENGINE_DIR (default ~/workspace/aidemo-pilot/engine).
  */
 
 export interface StorytellerLine {
@@ -21,15 +32,15 @@ export type StorytellerLineKey = "reveal" | "hook" | "summary";
 
 export const STORYTELLER_LINES: Record<StorytellerLineKey, StorytellerLine> = {
   reveal: {
-    text: "Shh… listen closely. Every place has a story, and this one is a very good one.",
+    text: "Gather round, explorer! Every place hides a story. And this one? This one is a legend.",
     audioFile: "reveal-01.mp3",
   },
   hook: {
-    text: "Psst… the fourth clue. This is the one that changes everything. Lean in close…",
+    text: "Clue four! The Hook! This is the one that changes everything. Lean in… here it comes!",
     audioFile: "hook-01.mp3",
   },
   summary: {
-    text: "And so our tale comes to an end! What an adventure!",
+    text: "And so the tale ends! What. An. Adventure!",
     audioFile: "summary-01.mp3",
   },
 };

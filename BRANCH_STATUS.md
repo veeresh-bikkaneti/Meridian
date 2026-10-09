@@ -269,3 +269,30 @@ feat/sprint-entry-gates). Entries preserved from main's BRANCH_STATUS.md:
   `npm run build:pages` green; `src/lib/observability.test.ts` 17/17;
   `tests/e2e/storyteller.spec.ts` 5/5, zero console errors.
 - Pushed via --force-with-lease. NOT merged (owner merges).
+
+## Voice regeneration — game-designer verdict CHANGE (2026-10-08)
+
+- Voice `avocado_v2:TruthTeller` (cloud tts CLI) → local Kokoro `am_fenrir`
+  @ speed 1.05 (Kokoro-82M q8 via the aidemo-pilot engine install;
+  offline/$0/keyless — the cloud path is retired). All 3 lines rewritten
+  to the designer's trailer-energy copy (caption == audio, char-for-char).
+- New committed regeneration path: `node scripts/render-storyteller-voice.mjs`
+  (refuses to render unless its lines match `STORYTELLER_LINES` text exactly;
+  network disabled via transformers `allowRemoteModels=false`). Mastering:
+  edge silence ≤150 ms, ebur128-measured gain to −16 LUFS integrated,
+  4x-oversampled lookahead limiter at −1.5 dBTP, 24 kHz mono MP3.
+  (ffmpeg loudnorm is unreliable on 2–5 s micro-clips — ~6 dB measurement
+  error on the staccato summary — so the gain is computed explicitly with an
+  iterative correct-after-limit loop.)
+- Mastered set: reveal-01.mp3 4.58 s / −16.6 LUFS / −1.8 dBTP;
+  hook-01.mp3 4.11 s / −16.5 LUFS / −1.7 dBTP;
+  summary-01.mp3 1.92 s / −16.6 LUFS / −1.8 dBTP; spread 0.10 dB
+  (was: 9.17/5.93/4.85 s at −15.5/−41.6/−25.3 dB mean — hook was ~26 dB
+  quieter than reveal). Filenames + SW precache entries unchanged.
+- Text pins updated in `storyteller-lines.ts`, `storyteller.test.ts`, and
+  `tests/e2e/storyteller.spec.ts` (REVEAL_TEXT).
+- UX-audit P1s applied in the same pass: celebration-overlay yield
+  (`meridian:celebration-open/close` handshake mirroring the tour pattern —
+  narration hides, never starts gesture-gated audio under the overlay, and
+  skips focus-return while it owns the screen) and run-summary onDismiss →
+  focus "Play again" (WCAG 2.4.3).

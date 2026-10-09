@@ -20,7 +20,7 @@ test.beforeEach(async ({ context }) => {
 });
 
 const REVEAL_TEXT =
-  "Shh… listen closely. Every place has a story, and this one is a very good one.";
+  "Gather round, explorer! Every place hides a story. And this one? This one is a legend.";
 const FALLBACK_TEXT = "The words are right here — read along with me.";
 const MP3_PATTERN = "**/audio/storyteller/*.mp3";
 // 0.2 s silent mp3 — deterministic clip end, so replay/dismiss timing is

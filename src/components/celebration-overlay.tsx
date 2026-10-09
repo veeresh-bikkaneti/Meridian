@@ -78,6 +78,19 @@ export function CelebrationOverlay({
     headingRef.current?.focus();
   }, []);
 
+  // P1-1: announce the overlay to any mounted Storyteller narration (the
+  // tour handshake pattern: meridian:tour-walk-start/end). The narration
+  // yields while the overlay owns the screen — it hides and never starts
+  // its gesture-gated audio — so the celebration fanfare and the narration
+  // never double. The data-celebration attribute covers narrations that
+  // mount while the overlay is already open (same-commit first win).
+  useEffect(() => {
+    window.dispatchEvent(new Event("meridian:celebration-open"));
+    return () => {
+      window.dispatchEvent(new Event("meridian:celebration-close"));
+    };
+  }, []);
+
   // Escape dismisses.
   useEffect(() => {
     const onKey = (event: KeyboardEvent): void => {
@@ -121,6 +134,7 @@ export function CelebrationOverlay({
       className="celebration-overlay absolute inset-0 z-50 flex items-center justify-center p-4"
       role="status"
       aria-live="polite"
+      data-celebration="active"
       data-reduced-motion={reducedMotion ? "true" : undefined}
       data-testid="celebration-overlay"
     >

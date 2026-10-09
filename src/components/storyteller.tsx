@@ -134,6 +134,30 @@ export function useTourActive(): boolean {
   return active;
 }
 
+/** True while a celebration overlay owns the screen (the Storyteller yields). */
+export function useCelebrationActive(): boolean {
+  const [active, setActive] = useState(
+    () =>
+      typeof document !== "undefined" &&
+      document.querySelector('[data-celebration="active"]') !== null,
+  );
+  useEffect(() => {
+    const onOpen = () => setActive(true);
+    const onClose = () => setActive(false);
+    window.addEventListener("meridian:celebration-open", onOpen);
+    window.addEventListener("meridian:celebration-close", onClose);
+    // In case the overlay was already open when this mounted (the mount
+    // effect's dispatch races a same-commit narration mount).
+    if (document.querySelector('[data-celebration="active"]') !== null)
+      setActive(true);
+    return () => {
+      window.removeEventListener("meridian:celebration-open", onOpen);
+      window.removeEventListener("meridian:celebration-close", onClose);
+    };
+  }, []);
+  return active;
+}
+
 export function StorytellerNarration({
   screen,
   trigger,
@@ -143,6 +167,11 @@ export function StorytellerNarration({
   onDismiss,
 }: StorytellerNarrationProps) {
   const tourActive = useTourActive();
+  // P1-1: the narration yields while the celebration overlay owns the
+  // screen — same pattern as the tour handshake.
+  const celebrationActive = useCelebrationActive();
+  const celebrationActiveRef = useRef(celebrationActive);
+  celebrationActiveRef.current = celebrationActive;
   // Resolved here — inside the lazy chunk — so the host screens never
   // statically import the caption copy into the initial bundle.
   const line = STORYTELLER_LINES[lineKey];
@@ -188,7 +217,8 @@ export function StorytellerNarration({
       });
       setLeaving(true);
       window.setTimeout(() => setVisible(false), DISMISS_ANIM_MS);
-      if (reason === "tap_caption") onDismissRef.current?.();
+      if (reason === "tap_caption" && !celebrationActiveRef.current)
+        onDismissRef.current?.();
     },
     [audioState, screen, wordsShown],
   );
@@ -301,12 +331,12 @@ export function StorytellerNarration({
   useEffect(() => {
     wordsRef.current = line.text.split(" ");
     setVisible(true);
-    if (!tourActive) {
+    if (!tourActive && !celebrationActive) {
       emitStoryteller("storyteller_shown", {
-      screen,
-      sound_on: soundOn,
-      reduced_motion: reducedMotion,
-    });
+        screen,
+        sound_on: soundOn,
+        reduced_motion: reducedMotion,
+      });
     }
 
     if (reducedMotion) {
@@ -315,6 +345,9 @@ export function StorytellerNarration({
 
     const onFirstGesture = () => {
       if (gestureDoneRef.current || dismissedRef.current) return;
+      // P1-1: a gesture that lands while the celebration overlay owns the
+      // screen belongs to the overlay — don't consume it for narration.
+      if (celebrationActiveRef.current) return;
       gestureDoneRef.current = true;
       window.removeEventListener("pointerdown", onFirstGesture);
       window.removeEventListener("keydown", onFirstGesture);
@@ -322,7 +355,7 @@ export function StorytellerNarration({
       playNarrationAudio(trigger === "summary" ? "summary" : "first_gesture");
     };
 
-    if (autoAttempt) {
+    if (autoAttempt && !celebrationActive) {
       window.addEventListener("pointerdown", onFirstGesture);
       window.addEventListener("keydown", onFirstGesture);
       if (!reducedMotion) beginReveal(FALLBACK_WORD_MS, false);
@@ -392,7 +425,7 @@ export function StorytellerNarration({
     dismiss("tap_caption");
   };
 
-  if (tourActive || !visible) return null;
+  if (celebrationActive || tourActive || !visible) return null;
 
   const words = wordsRef.current;
   const fullText = line.text;

@@ -23,15 +23,15 @@ describe("STORYTELLER_LINES — final copy contract", () => {
   it("line text is the exact design-doc copy (spoken form, do not edit)", () => {
     assert.equal(
       STORYTELLER_LINES.reveal.text,
-      "Shh… listen closely. Every place has a story, and this one is a very good one.",
+      "Gather round, explorer! Every place hides a story. And this one? This one is a legend.",
     );
     assert.equal(
       STORYTELLER_LINES.hook.text,
-      "Psst… the fourth clue. This is the one that changes everything. Lean in close…",
+      "Clue four! The Hook! This is the one that changes everything. Lean in… here it comes!",
     );
     assert.equal(
       STORYTELLER_LINES.summary.text,
-      "And so our tale comes to an end! What an adventure!",
+      "And so the tale ends! What. An. Adventure!",
     );
   });
 
