@@ -503,3 +503,12 @@
   max-width: min(90vw, 480px);
   text-align: center;
 }
+
+/* Reduced motion: kill the one-shot age-profile animations. */
+@media (prefers-reduced-motion: reduce) {
+  .agep-screen,
+  .agep-toast,
+  .agep-locked-pulse .agep-locked-body {
+    animation: none !important;
+  }
+}

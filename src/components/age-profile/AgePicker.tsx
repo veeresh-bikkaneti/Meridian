@@ -27,7 +27,7 @@ export interface AgePickerProps {
 export function AgePicker({ profile, selected, onSelect, onSave, onCancel, onClear }: AgePickerProps) {
   const isFirstSet = profile.status === "unset";
   const saveDisabled = selected === null || (!isFirstSet && selected === profile.band);
-  const saveLabel = isFirstSet ? "Save choice" : "Save change";
+  const saveLabel = "Save change";
 
   return (
     <div role="dialog" aria-modal="true" aria-labelledby="agep-picker-title" className="agep-screen" data-testid="age-picker">

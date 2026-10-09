@@ -1,7 +1,7 @@
 # BRANCH_STATUS — feat/age-profile-followups
 
 **Branch:** `feat/age-profile-followups`
-**Base:** origin/main@64c82d6 (2026-10-09; PR #112 quick-fixes merged)
+**Base:** origin/main@044befc (2026-10-09; rebased, zero conflicts)
 **Spec:** `~/workspace/specs/age-profile-followups.md` (+ office-hours/eng/devex reviews)
 **Goal:** goal_b3eb80f458ba
 **Status:** GAUNTLET COMPLETE — merge-ready pending owner merge call (DO NOT MERGE standing)
