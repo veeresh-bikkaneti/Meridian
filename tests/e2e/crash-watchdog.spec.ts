@@ -158,7 +158,7 @@ test("WebGL-less device: fallback shows the tailored no-WebGL copy", async ({ co
   await page.close();
 });
 
-test("stale build: the app's refresh UI wins, the watchdog stands down, and the chunk error emits nothing", async ({
+test("stale build: the app's refresh UI wins, the watchdog stands down, and the chunk error emits one js_error", async ({
   context,
 }) => {
   await serveBuiltArtifact(context);
@@ -195,15 +195,18 @@ test("stale build: the app's refresh UI wins, the watchdog stands down, and the 
   });
   await expect(page.getByRole("button", { name: "Refresh" })).toBeVisible();
 
-  // The chunk failure emits NOTHING to the observability pipeline:
-  // openRun's catch (src/components/game-app.tsx ~L1130) only calls
-  // setStartError — there is no emitEvent/recordMilestone on that path.
-  // The only observability artifact is the breadcrumb trail in
-  // sessionStorage (lastMilestone "data_chunk_load_start"), which a
-  // *later* kill's next boot would carry inside suspected_crash — this
-  // boot itself must stay silent.
+  // The chunk failure emits exactly one js_error to the observability
+  // pipeline (openRun's catch calls setStartError AND emits — the
+  // previously-silent error class). The watchdog still stands down: no
+  // boot_failure. The breadcrumb trail in sessionStorage (lastMilestone
+  // "data_chunk_load_start") is what a *later* kill's next boot would
+  // carry inside suspected_crash.
   await page.waitForTimeout(8_000);
-  expect(ingested).toHaveLength(0);
+  expect(ingested).toHaveLength(1);
+  expect(ingested[0].type).toBe("js_error");
+  expect((ingested[0].error as { message: string }).message).toContain(
+    "Could not load places for Globe",
+  );
   const crumbMilestone = await page.evaluate(() => {
     const raw = sessionStorage.getItem("meridian.breadcrumb");
     return raw ? ((JSON.parse(raw) as { lastMilestone?: string }).lastMilestone ?? null) : null;
@@ -217,7 +220,10 @@ test("stale build: the app's refresh UI wins, the watchdog stands down, and the 
   await waitOutWatchdogTimer(page);
   await expect(page.locator("#mv")).toHaveCount(0);
   await expect(page.getByText(GENERIC_HEADING, { exact: true })).toHaveCount(0);
-  expect(ingested).toHaveLength(0);
+  // The watchdog stood down: no boot_failure was ever emitted (the single
+  // js_error from the chunk failure above is the only ingestion).
+  expect(ingested.filter((e) => e.type === "boot_failure")).toHaveLength(0);
+  expect(ingested).toHaveLength(1);
 
   await page.close();
 });
