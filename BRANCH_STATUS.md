@@ -108,6 +108,26 @@ in greetings/poke) · narration voice unchanged (TruthTeller mp3s land later).
   passes on base too. Unrelated to this change (story-card logic
   untouched; session flag is a no-op when unset).
 
+## QA re-verification (2026-10-09, final head 38ca3b6) — all green ✅
+- `npx tsc --noEmit` clean · `node scripts/lint-cards.mjs` GATE PASSED ·
+  `npm run build:pages` green · `npm test` 993/993 (0 fail) ·
+  Playwright 12/12: storyteller-home.mobile 8/8 (96px figure, ≤112px strip,
+  picker in first fold @390×844, once/day greeting text-first role=status,
+  same-day silent, poke rotation + scroll-tap, send-off ≤2.5s nav-never-waits,
+  tour yield + return line once text-only, keyboard dismiss focus, Comet ≤32px
+  aria-hidden, zero console errors), desktop 2/2 (144px figure, ≤160px strip,
+  emblem 28–32px in eyebrow row, no comet-mascot host), reduced 2/2
+  (fade-only ≤150ms, instant captions, static leaf sprig).
+- Locked copy re-audited byte-identical vs `~/workspace/specs/storyteller-copy.md`:
+  greet-01, tour-return, 7 send-offs, audio-fail fallback, scroll-tap + leaf
+  captions; Ko-fi + age-band copy zero diff vs origin/main. "five hidden
+  places" absent everywhere; "so many hidden places" reserved, not shipped
+  (same as main).
+- `storyteller.spec.ts` known VM flake: "replay replays the line" failed once
+  on the branch (180s timeout at replay.click), passed on immediate retry on
+  the branch, and passed on origin/main build (41s) — environmental, unrelated,
+  not chased. Story-card logic untouched by this branch.
+
 ## Locked copy — verified byte-identical (script vs specs)
 greet-01…06, post-tour return, 7 send-offs, 5 poke lines, leaf + scroll-tap
 captions, audio-fail fallback (reused export). Ko-fi strings + age-band copy
