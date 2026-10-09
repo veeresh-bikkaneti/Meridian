@@ -58,3 +58,15 @@ interception guess → score reveal (km from the true hideout).
   match the "recognizable but not trivial" intent.
 - `scripts/build-coldtrail.mjs` is NOT wired into prebuild; the generated JSON
   is checked in and re-runnable via `node --experimental-strip-types`.
+
+## Rebase 2026-10-08 (onto origin/main@8e2cc76 — merge train #103/#104/#105 landed)
+
+- 3 commits replayed. 2 conflicts, all mechanical:
+  - package.json: test list union — kept main's list (incl. `error-component.test.ts`
+    from #105), appended the 4 `src/game/coldtrail/*.test.ts` entries.
+  - BRANCH_STATUS.md: docs-only, kept this branch's doc.
+  - playwright.config.ts + src/components/game-app.tsx auto-merged, verified clean
+    (coldtrail project entry + TrailScreen wiring intact), zero markers.
+- Post-rebase gates (all on final head): tsc clean · lint-cards GATE PASSED
+  (124,690 records) · build:pages green · npm test 897 pass, 0 fail ·
+  coldtrail e2e 2/2.
