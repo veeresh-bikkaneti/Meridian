@@ -67,6 +67,10 @@ const POKE_DEBOUNCE_MS = 600;
 const AUDIO_START_TAP_GUARD_MS = 600; // the tap that starts audio must not dismiss it
 const SENDOFF_OVERLAY_MS = 2200;
 const SENDOFF_OVERLAY_REMOVE_MS = 2500;
+/** Track B (Homer motion): poke startle visual length. */
+const POKE_VISUAL_MS = 500;
+/** Track B (Homer motion): graceful-yield recede before the host unmounts. */
+const YIELD_OUT_MS = 220;
 
 export const SENDOFF_EVENT = "meridian:storyteller-sendoff";
 
@@ -187,6 +191,10 @@ export default function StorytellerHomeHost({
   const [phase, setPhase] = useState<BannerPhase>("entering");
   const [bubble, setBubble] = useState<string | null>(null);
   const [audioFailed, setAudioFailed] = useState(false);
+  // Track B (Homer motion): transient visual states — the poke startle and
+  // the graceful yield-out. Neither touches the phase machine.
+  const [poked, setPoked] = useState(false);
+  const [yielding, setYielding] = useState(false);
   const [assets, setAssets] = useState<ResolvedAssets>({
     pose: storytellerFigureUrl(),
     pointing: null,
@@ -202,6 +210,7 @@ export default function StorytellerHomeHost({
   const bubbleTimer = useRef(0);
   const capTimer = useRef(0);
   const soundWatch = useRef(0);
+  const pokeTimer = useRef(0);
   const audioStartTimeRef = useRef(0);
   const gestureDoneRef = useRef(false);
   const wasYieldedRef = useRef(false);
@@ -218,6 +227,24 @@ export default function StorytellerHomeHost({
     window.clearTimeout(bubbleTimer.current);
     window.clearTimeout(capTimer.current);
     window.clearInterval(soundWatch.current);
+    window.clearTimeout(pokeTimer.current);
+  }, []);
+
+  /**
+   * Track B (Homer motion): the poke startle visual. The class is dropped
+   * for a frame before re-adding so the keyframed take restarts even on
+   * rapid taps (the pause/resume path has no debounce).
+   */
+  const pokeVisual = useCallback(() => {
+    window.clearTimeout(pokeTimer.current);
+    setPoked(false);
+    pokeTimer.current = window.setTimeout(() => {
+      setPoked(true);
+      pokeTimer.current = window.setTimeout(
+        () => setPoked(false),
+        POKE_VISUAL_MS,
+      );
+    }, 30);
   }, []);
 
   const stopAudio = useCallback(() => {
@@ -302,6 +329,19 @@ export default function StorytellerHomeHost({
       // owner wants every visit to greet, and this visit did).
     }
   }, [yielded, stopAudio, hideBubble]);
+
+  // ---- Graceful yield (Track B) -------------------------------------------
+  // When tour/celebration take the stage the figure recedes over
+  // YIELD_OUT_MS (CSS: homer-yield) instead of hard-cutting to null.
+  useEffect(() => {
+    if (!yielded) {
+      setYielding(false);
+      return;
+    }
+    setYielding(true);
+    const t = window.setTimeout(() => setYielding(false), YIELD_OUT_MS);
+    return () => window.clearTimeout(t);
+  }, [yielded]);
 
   // ---- Entering ----------------------------------------------------------
   useEffect(() => {
@@ -442,6 +482,7 @@ export default function StorytellerHomeHost({
       if (Date.now() - audioStartTimeRef.current < AUDIO_START_TAP_GUARD_MS) return;
       if (audio.paused) void audio.play().catch(() => {});
       else audio.pause();
+      pokeVisual();
       return;
     }
     const now = Date.now();
@@ -451,7 +492,8 @@ export default function StorytellerHomeHost({
     const line = POKE_LINES[pokeIndexRef.current % POKE_LINES.length]!;
     pokeIndexRef.current += 1;
     showBubble(line, POKE_BUBBLE_MS);
-  }, [phase, showBubble]);
+    pokeVisual();
+  }, [phase, showBubble, pokeVisual]);
 
   // ---- Loop send-off (copy G3) ----------------------------------------------
   useEffect(() => {
@@ -482,8 +524,9 @@ export default function StorytellerHomeHost({
     };
   }, [clearTimers]);
 
-  // Yielded → renders null (stays mounted; the tour / celebration owns the screen).
-  if (yielded) return null;
+  // Yielded → the figure recedes first (is-yielding), then null. The host
+  // stays mounted throughout; the tour / celebration owns the screen.
+  if (yielded && !yielding) return null;
 
   const audioPlaying = phase === "greeting_audio" && audioRef.current !== null;
   const figureLabel = audioPlaying
@@ -492,9 +535,14 @@ export default function StorytellerHomeHost({
       ? "Resume the greeting"
       : "The storyteller";
 
+  const bannerClassName =
+    "storyteller-banner" +
+    (poked ? " is-poked" : "") +
+    (yielded && yielding ? " is-yielding" : "");
+
   return (
     <div
-      className="storyteller-banner"
+      className={bannerClassName}
       data-testid="storyteller-home"
       data-phase={phase}
     >
