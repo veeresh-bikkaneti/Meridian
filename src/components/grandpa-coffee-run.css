@@ -943,6 +943,35 @@
   }
 }
 
+/* Desktop seated cloud: right-anchored so it stays fully in-viewport.
+ * (Same anchoring discipline as the #111 tour-mode fix — the bubble was
+ * centered on the walker and clipped ~54px past the right edge at 1440px.) */
+@media (min-width: 1024px) {
+  .grandpa-scene[data-beat="seated"] .grandpa-donation-bubble {
+    left: auto;
+    right: -8px; /* bubble right edge: walker right edge + 8px */
+    transform: scale(1); /* no translate(-50%) centering */
+  }
+  .grandpa-scene[data-beat="seated"] .grandpa-donation-bubble::after {
+    left: auto;
+    right: 50px; /* tail over walker's center: 84px/2 + 8px */
+    transform: translate(50%, -1px);
+  }
+}
+@media (min-width: 1024px) and (max-height: 599.5px) {
+  /* Walker shrinks to 56px here: re-seat the tail (56/2 + 8). */
+  .grandpa-scene[data-beat="seated"] .grandpa-donation-bubble::after {
+    right: 36px;
+  }
+}
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  /* The base reduced-motion rule's !important translate(-50%) would
+   * otherwise shift the right-anchored bubble off the tail. */
+  .grandpa-scene[data-beat="seated"] .grandpa-donation-bubble {
+    transform: scale(1) !important;
+  }
+}
+
 /* ============ Responsive: match Comet's breakpoints ============ */
 /* ============ Mobile: in-flow park strip (the closing band) ============
  * Below 1024px the scene is no longer a fixed overlay: it becomes an
