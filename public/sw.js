@@ -60,14 +60,16 @@ const SHELL_URLS = [START_URL, OFFLINE_URL, "/Meridian/manifest.webmanifest"];
 // whole /Meridian/loop/ deck: clues (~1.5 MB) and names.json (11.5 MB) are
 // runtime-cached on first online use instead (see the strategy note above).
 const LOOP_PRECACHE_URLS = ["/Meridian/loop/manifest.json"];
-// Storyteller mascot narration (v1): install-precache these three mp3s so
-// narration works offline from first install. (Runtime cache-first also
-// covers /Meridian/audio/ via isStaticAsset below; this entry guarantees
-// availability before first online use.)
-const STORYTELLER_AUDIO_URLS = [
-  "/Meridian/audio/storyteller/reveal-01.mp3",
-  "/Meridian/audio/storyteller/hook-01.mp3",
-  "/Meridian/audio/storyteller/summary-01.mp3",
+// Storyteller home handoff (H1): runtime-cache preferred over install
+// precache for oldest devices. Install-precache ONLY the idle pose +
+// greet-01 mp3; the pointing pose + greet-02…06 mp3s lazy-load via the
+// runtime cache-first static-asset handler below (isStaticAsset covers
+// /Meridian/audio/, /Meridian/images/ and /Meridian/assets/).
+// Each asset is added individually so one missing file (e.g. greet-01.mp3
+// before the TruthTeller voice lands) never blocks the others.
+const STORYTELLER_H1_PRECACHE_URLS = [
+  "/Meridian/images/storyteller/storyteller.jpg",
+  "/Meridian/audio/storyteller/greet-01.mp3",
 ];
 
 self.addEventListener("install", (event) => {
@@ -86,13 +88,17 @@ self.addEventListener("install", (event) => {
         // block the worker; the runtime cache-first handler covers it.
       }),
   );
-  // Best-effort: the storyteller mp3s land in the versioned asset cache so
-  // narration works offline. A failure here must never block installation.
+  // Best-effort: the storyteller H1 assets land in the versioned asset
+  // cache so the home greeting works offline. A failure here must never
+  // block installation — and one missing asset must not block the others.
   event.waitUntil(
-    caches
-      .open(ASSET_CACHE)
-      .then((cache) => cache.addAll(STORYTELLER_AUDIO_URLS))
-      .catch(() => {}),
+    caches.open(ASSET_CACHE).then((cache) =>
+      Promise.allSettled(
+        STORYTELLER_H1_PRECACHE_URLS.map((url) =>
+          cache.add(url).catch(() => {}),
+        ),
+      ),
+    ),
   );
 });
 
@@ -137,6 +143,9 @@ function isStaticAsset(pathname) {
     // Home-page comet greeting TTS (synthesized SFX needs no caching —
     // only this TTS audio is a real file).
     pathname.startsWith("/Meridian/audio/") ||
+    // Storyteller H1 poses + storyteller-assets.json manifest: runtime
+    // cache-first (lazy-load; only the idle pose is install-precached).
+    pathname.startsWith("/Meridian/images/") ||
     // __grok PWA install-page assets.
     pathname.startsWith("/Meridian/__grok/") ||
     // Loop edition data: runtime cache-first only (see install — the deck

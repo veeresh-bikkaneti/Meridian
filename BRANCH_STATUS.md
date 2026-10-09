@@ -1,130 +1,114 @@
-# BRANCH_STATUS — fix/kofi-cloud-mobile
+# BRANCH_STATUS — feat/storyteller-home
 
-Owner: Dinesh · Branch: `fix/kofi-cloud-mobile` · Base: origin/main @ 64c82d6
-· Created: 2026-10-09. **DO NOT PUSH, DO NOT MERGE** — scrum master pushes
-after gates; owner merges (PR #111).
+Storyteller home handoff (H1, frontend dev) on top of origin/main@f4f92ad.
+Spec: `~/workspace/specs/storyteller-home-handoff.md` · copy pack:
+`~/workspace/specs/storyteller-copy.md` (kid copy lift-verbatim, never
+invented). Local branch; commit, do NOT push (tester reviews first). Never
+merge — owner merges.
 
-Standing rules: named-file staging only, never `git add -A`. Locked Ko-fi
-copy must stay byte-identical (verified by grep after every edit):
-`Grown-ups — buy me a coffee? ☕` · `Your support keeps Meridian free for kids` ·
-`Grown-ups — buy me a coffee? Activate to learn how to support Meridian.`
+Owner decisions implemented exactly: figure 96px @390 / 144px @1280 · hero
+strip ≤112px @390 / ≤160px @1280 · auto-narrate on first gesture when sound
+on (consumes the session's one auto-narration) · no idle motion · 2 poses
+(idle + pointing) · Comet emblem ~30px static aria-hidden inline in the
+eyebrow row · NO visible name · catchphrase "Shh… listen." reserved (never
+in greetings/poke) · narration voice unchanged (TruthTeller mp3s land later).
 
 ## Done (prior squad, ce193c8 — "shorten mobile tasting tour so the donation cloud appears sooner")
 
-Option B (Game Designer + UI/UX Expert reconciled spec). Mobile tour only;
-desktop strip untouched.
-- `src/components/grandpa-coffee-run.tsx` ONLY:
-  - `TOUR_JOURNEY_CAP_MS` 25_000 → 10_000; `TOUR_TARGET_MS` 20_000 → 6_000
-  - `TOUR_SIP_MS` 1200 → 800; `TOUR_POUR_MS` unchanged (2800)
-  - `measureTour` stops: difficulty → geodetective → editions (dropped review)
-- E2E spec timing updates to match (sip-dwell sampling gap 450ms → 250ms).
-- Explicitly untouched: showCloud logic, once-per-session gate, handoff end
-  state, gate copy, offline/no-URL fail-closed, skip button, reduced-motion.
+### New files
+- `src/components/storyteller-home.tsx` (default export, React.lazy) —
+  `StorytellerHomeHost` implementing the spec §3 state machine:
+  `absent→entering→greeting_text→(first gesture+sound on)→greeting_audio→
+  (end|dismiss|12s)→idle_linger→(navigate|tour|dismiss|timeout)→exiting→
+  absent`; tour/celebration → `yielded` (fully unmounted, no background
+  audio) → close → re-resolve (copy G2: tour-return line wins exactly once,
+  text-only + bow, then the flag clears).
+- `src/components/storyteller-home-copy.ts` — locked copy byte-identical:
+  greet-01…06, post-tour return, 7 send-offs, 5 poke lines, leaf + scroll-tap
+  captions; `decideHomeMode` (G2), day-of-year mod 6 rotation, day keys.
+- `src/components/storyteller-session.ts` — sessionStorage flags: session
+  auto-narration claim (copy §5), tour-return arm/take (exactly-once),
+  greeting day key. Fail-closed without storage.
+- `src/components/storyteller-home.css` — hero strip, 44px dismiss
+  overhanging the bubble corner, bow, falling leaf, send-off overlay
+  (z-30, ≤2.5s); reduced motion ≤150ms opacity fade only.
+- `src/components/comet-emblem.tsx` — static ~30px Comet SVG, aria-hidden,
+  decorative, never speaks (+ CSS block in `comet-mascot.css`).
+- `public/assets/storyteller/storyteller-assets.json` — F1/F2 manifest
+  (idle → placeholder JPEG, pointing → null, greet-01…06 → null); the host
+  resolves pose/audio URLs from it, zero code change on swap.
+- `src/components/storyteller-home.test.ts` — 16 unit tests (copy contract,
+  rotation, G2, session flags); registered in package.json `test`.
+- `tests/e2e/storyteller-home.{mobile,desktop,reduced}.spec.ts` — picked up
+  by the existing mobile/desktop/reduced projects; replaces the retired
+  comet-mascot specs (deleted).
 
-## Done (fix squad, 2026-10-09 — PR #111: cloud visibility, walker a11y, sip sync)
+### Modified
+- `src/components/game-app.tsx` — eyebrow row: eyebrow → CometEmblem →
+  sound toggle; NEW hero strip (`<Suspense><StorytellerHomeHost/>`) between
+  the eyebrow row and the h1 banner row; `CometMascot` removed from home;
+  dead `comet:edition-select` dispatch removed; GeoDetective pick dispatches
+  `meridian:storyteller-sendoff` (copy G3 — navigation never waits);
+  stagger `rise()` renumbered 2…7 below the strip (visual order kept).
+- `src/components/storyteller.tsx` — `StorytellerMascot` takes an optional
+  `src` prop (asset URL; defaults to the placeholder figure).
+- `src/components/result-card.tsx` — story auto-narration now also gated on
+  the session flag: home greeting consumes it → later story cards are text
+  + speaker button only (no double-audio).
+- `public/sw.js` — H1 precache: idle pose + greet-01 mp3 only (per-asset
+  fail-soft, so a missing mp3 never blocks the pose); `/Meridian/images/`
+  added to runtime cache-first. Per eng: runtime-cache preferred for oldest
+  devices; v1 storyteller mp3s (reveal/hook/summary) now runtime-cached
+  instead of install-precached.
+- `src/components/comet-mascot.css` — static emblem styles.
+- `package.json` — registered `storyteller-home.test.ts`.
 
-Files changed:
-- `src/components/grandpa-coffee-run.css`
-- `src/components/grandpa-coffee-run.tsx`
-- `tests/e2e/grandpa-tasting-tour.spec.ts` (new regression test + stale
-  header-comment fixes)
+### Eng must-fix — all done
+- Session auto-narration flag (sessionStorage): home greeting consumes it
+  only when greeting audio actually starts (`play()` resolves); story cards
+  degrade. Day-1 (no mp3s): text-only greeting, flag untouched, story cards
+  keep their existing first-reveal auto-narration — no behavior regression.
+- G1 12s timer: starts on audio begin; cancels on end/dismiss/navigation/
+  tour open/sound-off/tab-hidden; at expiry audio stops, bubble stays
+  text-visible → `idle_linger`.
+- Hero budget: Playwright visual assertion (difficulty picker bottom ≤844
+  @390×844) in `storyteller-home.mobile.spec.ts`.
+- Micro-delights: all 4 ship — scroll-tap hello (double-tap), pointer-stick
+  send-off (pointing pose when the manifest provides it, else skipped
+  silently), tour-return bow, falling laurel leaf (static sprig + caption
+  under reduced motion).
 
-### Fix 1 — cloud visible + sensibly positioned during the tour
-Empirically verified in Chromium (390×844, touch): at HEAD the cloud was
-ALREADY visible during the tour (opacity 1, translate(-50%,0)) — the
-"invisible whole walk" premise was stale; the mobile media query
-(`max-width: 1023.5px`) has forced it visible since 7de5cc8. BUT the cloud
-was clipped ~46px off the right viewport edge (centered on the parked
-walker at the strip's right edge; screenshot proved the cut-off copy).
-- Added `.grandpa-scene[data-mode="tour"] .grandpa-donation-bubble` reveal
-  rule mirroring the seated reveal's transition (mode-scoped guarantee).
-- Right-anchored the bubble to the walker (`left:auto; right:-8px`) and
-  re-seated the tail over grandpa (`right:40px`) in the tour-mode rule AND
-  the mobile media-query rule; added a mobile seated override neutralizing
-  the desktop `translate(-50%)` so the tour→seated handoff doesn't jump.
-- Stale CSS header comment updated (sip ~0.8s, 10s cap, no review stop,
-  cloud visible from the first beat, walker not a tap target mid-tour).
+### Deliberate deviations / notes
+- No speaker button on the home greeting: the auto path plays on first
+  gesture; the text-only path (muted / day-1 no-mp3) has nothing to play.
+  (Spec §2's "speaker/replay 44px" describes the card pattern; the home
+  bubble carries the 44px dismiss instead.)
+- The greeting bubble has no auto-dismiss on the future mp3 path until the
+  first gesture — any tap is a gesture, so it resolves immediately in
+  practice.
+- `withCardTap` keeps its `(edition, open)` signature (call sites
+  unchanged); the edition arg is now unused.
+- SW: v1 mp3s moved from install-precache to runtime cache-first per the
+  eng note (oldest-device install budget).
 
-### Fix 2 — walker non-interactive during tour (option A)
-- `walkerInteractive = showCloud && mode !== "tour"`: no role/tabIndex/
-  onClick/onKeyDown on the parked strip walker while the tour runs.
-- CSS: `.grandpa-scene[data-mode="tour"] .grandpa-walker { pointer-events:
-  none; cursor: default; }` — taps fall through; the bubble keeps
-  `pointer-events:auto` so its ask button stays the gate entry.
-- Stale tsx comment ("tappable walker is the parked strip figure…")
-  rewritten to describe the new behavior.
-- Accessibility Auditor sign-off 2026-10-09: "Option (a) approved. No focus
-  moves into hidden content (WCAG 2.4.3/3.2.1 intact — openCloudGate's
-  focus-Continue is unreachable mid-walk); tab order is Skip → visible ask
-  button; no keyboard trap; pointer-events can't dead-end taps; cursor no
-  longer promises a tap. Screen-reader order is coherent: tour layer is
-  aria-hidden, the walker figure's SVGs are aria-hidden, the cloud ask
-  button carries its label."
+## Gates
+- `npx tsc --noEmit` — clean
+- `node scripts/lint-cards.mjs` — GATE PASSED
+- `src/components/storyteller-home.test.ts` — 16/16 green
+- `npm test` (full suite) — 993/993 green
+- `npm run build:pages` — green (storyteller-home lazy chunk in dist,
+  locked copy only in that chunk, manifest copied to dist)
+- Playwright `storyteller-home.mobile` — 8/8 green (incl. the 112px hero
+  budget + difficulty-picker-in-first-fold visual assertion)
+- Playwright `storyteller-home.desktop` — 2/2 green
+- Playwright `storyteller-home.reduced` — 2/2 green
+- `storyteller.spec.ts` (story cards) — environmental flake on this VM:
+  the 13.7MB globe chunk takes ~10s cold through the SW cache vs the
+  15s `startGlobeRun` timeout; 2/3 reruns pass on this branch, and it
+  passes on base too. Unrelated to this change (story-card logic
+  untouched; session flag is a no-op when unset).
 
-### Fix 3 — sip animation synced to the 800ms dwell
-- CSS `sip-drink` 1.2s → 0.8s (matches `TOUR_SIP_MS`). Game Designer call
-  2026-10-09: 800ms still reads as a deliberate sip (raise/hold/lower
-  keyframes intact); extending the dwell would push against the 10s tour
-  cap — tour budget wins. Stale "1.2s" comments updated in CSS + spec header.
-
-### Gates
-- `npx tsc --noEmit` clean
-- `npm test` 977/977 pass
-- `node scripts/lint-cards.mjs` GATE PASSED
-- `npm run build:pages` green (rebuilt with `VITE_KOFI_URL` for e2e)
-- Playwright `grandpa-tour` project: 23/25 pass — the 2 failures
-  ("walker stops at each option", "no snap-to-top") also fail on the clean
-  base ce193c8 (verified via stash + rebuild): pre-existing timing flakes
-  under VM load, unrelated to this change. The NEW regression test
-  ("tour: cloud visible from the first beat, walker not a tap target
-  mid-walk") passes.
-- Playwright `mobile` project (grandpa-coffee-run.mobile): 3/3 pass —
-  incl. the gate-viewport assertion (gate ≤392px) the positioning fix
-  addresses.
-- Playwright `desktop` project: 7/8 pass — "walk has no cloud, kettle…"
-  misses the transient kettle beat; also fails on the clean base
-  (verified via stash + rebuild): pre-existing flake, unrelated (this
-  change doesn't touch the beat machine or desktop strip mode).
-- Playwright `reduced` project: 1/2 pass — "seated and fully static"
-  fails the walker-left-of-Comet assertion (1408 > 1072); also fails on
-  the clean base (verified via stash + rebuild): pre-existing, unrelated
-  (reduced project is 1440px wide — the mobile media-query changes can't
-  apply; tour mode never runs under reduced motion).
-- Live Chromium verification (dev server, 390×844 touch): mid-tour the
-  cloud is opacity 1/visible at x=146..366 (fully on-screen); the walker
-  has no role/tabindex, pointer-events none, cursor default; the sip
-  animation runs `sip-drink` at 0.8s × 1.
-
-## Done (BLOCK 4, E2E test engineer, 2026-10-09 — dedicated tour-cloud mobile spec)
-
-New: `tests/e2e/kofi-tour-cloud.mobile.spec.ts` (runs in the "mobile"
-project: 390×844, touch, isMobile). 6 tests, all green first run
-(6/6, 1.3m, `npx tsc --noEmit` clean):
-1. cloud visible mid-walk + fully on-screen — opacity polls to 1,
-   `visibility: visible`, bbox within 390px (regression for the ~46px
-   right-edge clip)
-2. locked ask copy mid-walk — `Grown-ups — buy me a coffee? ☕` +
-   `Your support keeps Meridian free for kids` (read-only assertions)
-3. strip walker not a tap target mid-walk — no `role="button"`, no
-   `tabindex`, pointer-events `none`, forced click leaves
-   `data-cloud="ask"` and opens no gate
-4. touch tap on the cloud's ask button mid-tour opens the grown-up gate —
-   `data-testid="grandpa-cloud-gate"` visible, `role="dialog"`, focus lands
-   on Continue
-5. sip runs the full 800ms dwell — `.mug-arm` `animation-name: sip-drink`,
-   `animation-duration: 0.8s`, tour advances `data-stop-index` 0 → 1 on its
-   own (no mid-drink snap)
-6. tour completes cleanly — `data-beat="seated"`, `data-tour-stage="settled"`,
-   cloud visible, on-screen, ask copy intact
-
-No kid-facing copy invented; the two locked strings are asserted verbatim.
-Flakiness: none observed (6/6 first pass); the mid-tour tap window is wide
-(~9s walk).
-
-### Follow-ups for the mobile QA check (not in scope, noted)
-- Desktop seated cloud has the same centering overflow (~36px clip at the
-  viewport's right edge) — pre-existing, desktop-only, left untouched.
-- Visual check on a real phone: cloud sits right-anchored above the parked
-  walker in the strip band, tail pointing at grandpa, fully on-screen at
-  360/390px; tap the walker mid-walk does nothing; tap the cloud opens the
-  gate; sip reads as one deliberate drink at each stop.
+## Locked copy — verified byte-identical (script vs specs)
+greet-01…06, post-tour return, 7 send-offs, 5 poke lines, leaf + scroll-tap
+captions, audio-fail fallback (reused export). Ko-fi strings + age-band copy
+untouched (files not in this diff; `git status` confirms).

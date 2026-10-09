@@ -276,3 +276,19 @@
     animation: none;
   }
 }
+
+/* ---- Static emblem (storyteller home handoff H1) -------------------------
+ * Comet retired as a host: a silent ~30px decorative emblem in the home
+ * eyebrow row. aria-hidden, never interactive, never speaks. */
+.comet-emblem-static {
+  display: inline-flex;
+  flex: none;
+  width: 30px;
+  height: 30px;
+}
+
+.comet-emblem-static svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
