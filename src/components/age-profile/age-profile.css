@@ -326,14 +326,76 @@
   border: none;
 }
 
-.agep-listen-quiet {
-  background: none;
-  border: none;
-  color: var(--muted);
-  text-decoration: underline;
-  font-size: 0.875rem;
+/* Icon-only ghost speaker (8-10 and 11-13): 44px, no text label —
+   identical chrome across bands so the band stays invisible. */
+.agep-listen-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
   min-height: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* Locked read-along line when the device cannot speak. */
+.agep-listen-note {
+  align-self: center;
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-right: 8px;
+  max-width: 16rem;
+  text-align: right;
+}
+
+/* --- Read-aloud onboarding preference (asked once, never nags) --- */
+
+.agep-pref-prompt {
+  padding: 20px 16px;
+  margin: 12px 16px;
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  background: var(--bg);
+}
+
+.agep-pref-q {
+  margin: 0 0 12px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.agep-pref-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.agep-pref-option {
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: none;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-align: left;
+}
+
+.agep-pref-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.agep-pref-sub {
+  font-size: 0.875rem;
+  color: var(--muted);
 }
 
 /* --- Home footer entry (Phase 2 §1a) --- */

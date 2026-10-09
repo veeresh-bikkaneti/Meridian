@@ -31,8 +31,13 @@ export type LoopId =
 /** Read-aloud behavior for story cards (Phase 1 §3d, Phase 2 §4). */
 export type AudioMode = "auto" | "button" | "off";
 
-/** Profile lifecycle states (Phase 1 §4). */
-export type ProfileStatus = "unset" | "active" | "pending-change";
+/**
+ * Profile lifecycle states (Phase 1 §4; follow-up Item B deleted the
+ * "pending-change" state). Two states only: a save writes the new band
+ * immediately; a mid-run save defers only the change EVENT to the next
+ * card/round boundary via the store's in-memory deferredBand.
+ */
+export type ProfileStatus = "unset" | "active";
 
 export interface BandDifficulty {
   /** Multiplier applied to the pin-hit radius (clamps applied AFTER). */
@@ -92,8 +97,6 @@ export interface AgeProfile {
   updatedAt: string;
   /** Anti-flail counter + parent visibility. */
   changeCount: number;
-  /** Set only while status is "pending-change". */
-  pendingBand: AgeBandId | null;
   schemaVersion: 1;
 }
 
@@ -115,12 +118,16 @@ export interface MappedStory {
 /** Typed payload of the `ageprofile:changed` event. */
 export interface AgeProfileChangedEvent {
   type: "ageprofile:changed";
-  /** What happened: first set / staged change applied / explicit reset. */
+  /** What happened: first set / change / explicit reset. */
   kind: "set" | "change" | "reset";
   /** The effective band AFTER this event; null only on reset. */
   band: AgeBandId | null;
   /** The effective band BEFORE this event; null when previously unset. */
   previousBand: AgeBandId | null;
-  /** True when the change was staged mid-run (pending-change boundary). */
+  /**
+   * True when the change was saved mid-run. The save applies immediately,
+   * but the event fires at the next card/round boundary so subscribers
+   * never re-render a live run.
+   */
   midSession: boolean;
 }

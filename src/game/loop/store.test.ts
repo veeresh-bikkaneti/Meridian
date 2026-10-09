@@ -18,6 +18,8 @@ import {
 import { LOOP_STORAGE_KEY_V2, type LoopGuess, type LoopPuzzleProgress, type LoopPuzzleState, type LoopUnlimitedStore } from "./types.ts";
 import { submitGuess } from "./engine.ts";
 import { geodetectiveConfig } from "../age-profile/difficulty.ts";
+import { getBandConfig } from "../age-profile/run-config.ts";
+import { resolveBand } from "../age-profile/store.ts";
 
 /** Minimal in-memory localStorage stand-in. */
 function installStorage(initial: Record<string, string> = {}) {
@@ -599,4 +601,21 @@ test("P0-2: pre-snapshot stores (no deal fields) still validate and fall back to
   const live = geodetectiveConfig("11-13")!;
   assert.equal(legacy.dealMaxGuesses ?? live.guessCap, 5);
   assert.equal(legacy.dealStartClues ?? live.startingClues, 1);
+});
+
+test("Item A: freshLoopPuzzleState snapshots the band config once; hints start unused", () => {
+  const state = freshLoopPuzzleState(3, 1, 1, 5);
+  assert.deepEqual(state.dealBandConfig, getBandConfig(resolveBand()));
+  assert.equal(state.hintsUsed, 0);
+  // The deal-time clues/cap stay consistent with the snapshot.
+  assert.equal(state.dealBandConfig!.startingClues, state.dealStartClues);
+  assert.equal(state.dealBandConfig!.guessCap, state.dealMaxGuesses);
+});
+
+test("Item A: pre-snapshot stores (no band-config fields) still validate", () => {
+  const legacy = { ...freshLoopPuzzleState(0, 1) };
+  delete (legacy as Partial<LoopPuzzleState>).dealBandConfig;
+  delete (legacy as Partial<LoopPuzzleState>).hintsUsed;
+  assert.ok(isLoopPuzzleState(legacy), "the validator tolerates the absent snapshot");
+  assert.ok(isLoopUnlimitedStore({ ...freshLoopUnlimitedStore(4), current: legacy }));
 });

@@ -2,17 +2,24 @@
  * age-profile/store.ts — the SOLE owner of the age-profile storage.
  *
  * Owns localStorage key `meridian.ageProfile.v1` (schemaVersion 1) and the
- * lifecycle state machine (Phase 1 §4):
+ * lifecycle state machine (Phase 1 §4; follow-up Item B simplified it to
+ * two states):
  *
  *   unset --set(band)--> active                        (first setup)
- *   active --requestChange(b)--> pending-change         (b !== band; parent gate)
- *   pending-change --confirm/boundary--> active         (band=pendingBand, changeCount+1)
- *   pending-change --cancel | --timeout(10 min)--> active (band unchanged)
+ *   active --saveBand(b)--> active                      (save writes the new
+ *                                              band IMMEDIATELY)
  *   active --reset()--> unset                          (band=null; game progress untouched)
  *
- * Invariants: pendingBand===null unless pending-change; requestChange to
- * the same band is a no-op; corrupted JSON → unset (full-access default —
- * never strand a child in a locked-down state).
+ * Follow-up Item B (owner decision 2026-10-09) DELETED the persisted
+ * pending-change state machine entirely: no pendingBand, no timeout, no
+ * staging. A mid-run save writes the new band immediately (status stays
+ * "active"), but the change EVENT is deferred in memory (deferredBand) so
+ * subscribers flip tiles/config at the next card/round boundary — never a
+ * mid-run re-render. The snapshot in run state (see run-config.ts) makes
+ * the deferral structural: a live run keeps its deal-time config either way.
+ *
+ * Invariants: a save to the same band is a no-op; corrupted JSON → unset
+ * (full-access default — never strand a child in a locked-down state).
  *
  * Game screens must NOT import this module directly — use the facade in
  * index.ts (resolveBand / onAgeProfileChanged).
@@ -24,15 +31,12 @@ import { emitAgeProfileChanged } from "./events.ts";
 
 export const PROFILE_STORAGE_KEY = "meridian.ageProfile.v1";
 export const PROFILE_SCHEMA_VERSION = 1;
-/** A staged change the parent never confirms times out back to active. */
-export const PENDING_TIMEOUT_MS = 10 * 60 * 1000;
 
 const unsetProfile = (): AgeProfile => ({
   status: "unset",
   band: null,
   updatedAt: new Date().toISOString(),
   changeCount: 0,
-  pendingBand: null,
   schemaVersion: PROFILE_SCHEMA_VERSION,
 });
 
@@ -44,31 +48,32 @@ function isAgeBandId(value: unknown): value is AgeBandId {
  * Runtime validation of a stored blob. Returns a valid profile, or null
  * when the blob is corrupt/wrong-version/wrong-shape. Corrupt → treated as
  * unset by loadProfile (fail-closed to full access).
+ *
+ * Migration: blobs written by the pre-Item-B store may carry status
+ * "pending-change" (or a stray pendingBand). They normalize to active
+ * with their current band — the staged change simply applies.
  */
 export function validateProfile(blob: unknown): AgeProfile | null {
   if (typeof blob !== "object" || blob === null) return null;
   const b = blob as Record<string, unknown>;
   if (b.schemaVersion !== PROFILE_SCHEMA_VERSION) return null;
-  const status = b.status;
-  if (status !== "unset" && status !== "active" && status !== "pending-change") return null;
+  let status = b.status;
+  // Legacy staging state (Item B): a staged-but-unapplied change applies now.
+  if (status === "pending-change") status = "active";
+  if (status !== "unset" && status !== "active") return null;
   const band = b.band;
   if (!(band === null || isAgeBandId(band))) return null;
-  const pendingBand = b.pendingBand;
-  if (!(pendingBand === null || isAgeBandId(pendingBand))) return null;
   if (typeof b.updatedAt !== "string" || Number.isNaN(Date.parse(b.updatedAt))) return null;
   if (typeof b.changeCount !== "number" || !Number.isInteger(b.changeCount) || b.changeCount < 0)
     return null;
   // Structural invariants (Phase 1 §4).
-  if (status === "unset" && (band !== null || pendingBand !== null)) return null;
-  if (status === "active" && (band === null || pendingBand !== null)) return null;
-  if (status === "pending-change" && (band === null || pendingBand === null)) return null;
-  if (status === "pending-change" && band === pendingBand) return null;
+  if (status === "unset" && band !== null) return null;
+  if (status === "active" && band === null) return null;
   return {
     status: status as ProfileStatus,
     band,
     updatedAt: b.updatedAt as string,
     changeCount: b.changeCount as number,
-    pendingBand,
     schemaVersion: PROFILE_SCHEMA_VERSION,
   };
 }
@@ -101,26 +106,17 @@ function writeStorage(profile: AgeProfile): boolean {
   }
 }
 
-/**
- * Load the profile, runtime-validated. Corrupt/wrong-version storage →
- * the unset default (full-access default; the child is never stranded in
- * a locked-down state). A timed-out pending-change reverts to active.
- */
+/** Load the profile, runtime-validated. Corrupt/wrong-version storage → the unset default. */
 export function loadProfile(): AgeProfile {
-  const stored = readStorage() ?? memoryFallback;
-  if (stored === null) return unsetProfile();
-  if (stored.status === "pending-change") {
-    const age = Date.now() - Date.parse(stored.updatedAt);
-    if (Number.isNaN(age) || age >= PENDING_TIMEOUT_MS) {
-      // Timeout: fail closed to the previous band, no event (nobody
-      // confirmed anything).
-      const reverted: AgeProfile = { ...stored, status: "active", pendingBand: null };
-      writeStorage(reverted);
-      return reverted;
-    }
-  }
-  return stored;
+  return readStorage() ?? memoryFallback ?? unsetProfile();
 }
+
+/**
+ * A band change saved while a run/card is in progress defers only the
+ * change EVENT — in memory, never persisted. The boundary hook
+ * (applyPendingAtBoundary) fires it at the next card/round boundary.
+ */
+let deferred: { band: AgeBandId; previousBand: AgeBandId | null } | null = null;
 
 /** First setup: unset → active. No confirm (nothing to lose; undo is one tap away). */
 export function setBand(band: AgeBandId): AgeProfile {
@@ -129,10 +125,10 @@ export function setBand(band: AgeBandId): AgeProfile {
     band,
     updatedAt: new Date().toISOString(),
     changeCount: 0,
-    pendingBand: null,
     schemaVersion: PROFILE_SCHEMA_VERSION,
   };
   writeStorage(profile);
+  deferred = null;
   emitAgeProfileChanged({
     type: "ageprofile:changed",
     kind: "set",
@@ -144,34 +140,34 @@ export function setBand(band: AgeBandId): AgeProfile {
 }
 
 /**
- * Request a band change (parent gate already passed).
+ * Save a band change (parent gate already passed). The save writes the
+ * new band IMMEDIATELY (status → active) — there is no staging.
+ *
  * - Same band → no-op (returns the current profile, no event).
- * - Pending change + re-pick of the currently-effective band → the staged
- *   change is dropped via cancelPending() (the parent is keeping the
- *   current band; writing band === pendingBand would fail validation and
- *   silently reset the profile to unset/full access).
- * - No run in progress → applies immediately (active).
- * - Run in progress → staged as pending-change; the consumer applies it
- *   at the next card/round boundary via applyPendingAtBoundary().
+ * - No run in progress → the change event fires immediately.
+ * - Run in progress → the change event is deferred in memory and fires at
+ *   the next card/round boundary via applyPendingAtBoundary(), so a live
+ *   run never re-renders. (The run's own config snapshot makes the
+ *   deferral structural — a mid-run save cannot warp the live run.)
  */
-export function requestChange(band: AgeBandId, opts: { runInProgress: boolean }): AgeProfile {
+export function saveBand(band: AgeBandId, opts: { runInProgress: boolean }): AgeProfile {
   const current = loadProfile();
   const previousBand: AgeBandId | null = current.band;
-  if (current.status === "active" && current.band === band) return current;
-  if (current.status === "pending-change" && current.pendingBand === band) return current;
-  if (current.status === "pending-change" && current.band === band) return cancelPending();
-
+  if (previousBand === band) return current;
   const now = new Date().toISOString();
-  if (!opts.runInProgress) {
-    const profile: AgeProfile = {
-      status: "active",
-      band,
-      updatedAt: now,
-      changeCount: current.changeCount + (previousBand === null ? 0 : 1),
-      pendingBand: null,
-      schemaVersion: PROFILE_SCHEMA_VERSION,
-    };
-    writeStorage(profile);
+  const profile: AgeProfile = {
+    status: "active",
+    band,
+    updatedAt: now,
+    changeCount: current.changeCount + (previousBand === null ? 0 : 1),
+    schemaVersion: PROFILE_SCHEMA_VERSION,
+  };
+  writeStorage(profile);
+  if (opts.runInProgress) {
+    // Latest save wins; nothing effective is re-rendered until the boundary.
+    deferred = { band, previousBand };
+  } else {
+    deferred = null;
     emitAgeProfileChanged({
       type: "ageprofile:changed",
       kind: previousBand === null ? "set" : "change",
@@ -179,59 +175,29 @@ export function requestChange(band: AgeBandId, opts: { runInProgress: boolean })
       previousBand,
       midSession: false,
     });
-    return profile;
   }
-
-  // Staged: applies at the next boundary, never re-renders the current card.
-  const profile: AgeProfile = {
-    status: "pending-change",
-    band: previousBand ?? FULL_ACCESS_BAND,
-    updatedAt: now,
-    changeCount: current.changeCount,
-    pendingBand: band,
-    schemaVersion: PROFILE_SCHEMA_VERSION,
-  };
-  writeStorage(profile);
-  // No event yet: nothing effective changed. The event fires when the
-  // boundary applies it (kind "change", midSession true).
   return profile;
 }
 
 /**
- * Apply a staged change at a card/round boundary. Safe to call on every
- * boundary: no-ops unless a live pending-change exists. Fires the change
+ * Apply a deferred mid-run save at a card/round boundary. Safe to call on
+ * every boundary: no-ops unless a save is deferred. Fires the change
  * event with midSession=true so subscribers flip tiles/config exactly
  * once per boundary.
  */
 export function applyPendingAtBoundary(): AgeProfile {
   const current = loadProfile();
-  if (current.status !== "pending-change" || current.pendingBand === null) return current;
-  const profile: AgeProfile = {
-    status: "active",
-    band: current.pendingBand,
-    updatedAt: new Date().toISOString(),
-    changeCount: current.changeCount + 1,
-    pendingBand: null,
-    schemaVersion: PROFILE_SCHEMA_VERSION,
-  };
-  writeStorage(profile);
+  if (deferred === null) return current;
+  const { band, previousBand } = deferred;
+  deferred = null;
   emitAgeProfileChanged({
     type: "ageprofile:changed",
-    kind: "change",
-    band: profile.band,
-    previousBand: current.band,
+    kind: previousBand === null ? "set" : "change",
+    band,
+    previousBand,
     midSession: true,
   });
-  return profile;
-}
-
-/** Parent changed their mind before the boundary: drop the staged change. */
-export function cancelPending(): AgeProfile {
-  const current = loadProfile();
-  if (current.status !== "pending-change") return current;
-  const profile: AgeProfile = { ...current, status: "active", pendingBand: null };
-  writeStorage(profile);
-  return profile;
+  return current;
 }
 
 /**
@@ -252,6 +218,7 @@ export function resetProfile(): AgeProfile {
     writeStorage(profile);
   }
   memoryFallback = null;
+  deferred = null;
   emitAgeProfileChanged({
     type: "ageprofile:changed",
     kind: "reset",
@@ -263,23 +230,29 @@ export function resetProfile(): AgeProfile {
 }
 
 /**
- * The effective band for rendering/config. `pending-change` resolves to
- * the CURRENT band (the staged one applies only at the boundary);
- * `unset` resolves to the full-access default "11-13" (the profile only
- * ever *simplifies* on explicit parent intent).
+ * The effective band for rendering/config. `unset` resolves to the
+ * full-access default "11-13" (the profile only ever *simplifies* on
+ * explicit parent intent).
  */
 export function resolveBand(profile?: AgeProfile): AgeBandId {
   const p = profile ?? loadProfile();
   return p.band ?? FULL_ACCESS_BAND;
 }
 
-/** True while a change is staged but not yet applied at a boundary. */
-export function hasPendingChange(profile?: AgeProfile): boolean {
-  const p = profile ?? loadProfile();
-  return p.status === "pending-change";
+/**
+ * True while a mid-run save is deferred but its boundary event has not
+ * fired yet.
+ *
+ * Compat shim for game-app.tsx's footer chip — the chip itself is slated
+ * for deletion with the rest of the pending UI; until then it stays dark
+ * correctly because deferred state is in-memory only.
+ */
+export function hasPendingChange(_profile?: AgeProfile): boolean {
+  return deferred !== null;
 }
 
-/** Exported for tests: reset the in-memory write-failure fallback. */
+/** Exported for tests: reset the in-memory write-failure fallback + deferred state. */
 export function __resetMemoryFallback(): void {
   memoryFallback = null;
+  deferred = null;
 }

@@ -2,6 +2,12 @@ import { isHit } from "./radius.ts";
 import { SCORING_VERSION, type ScoredPlace } from "./scoring.ts";
 import { isPickerDifficulty, type PickerDifficulty } from "./tier-filter.ts";
 import { mintSeed } from "./trail.ts";
+import {
+  getBandConfig,
+  isBandRunConfig,
+  type BandRunConfig,
+} from "./age-profile/run-config.ts";
+import { resolveBand } from "./age-profile/store.ts";
 
 export type Edition = "state" | "country" | "globe";
 export type RunPhase = "aim" | "story" | "done" | "summary";
@@ -84,6 +90,22 @@ export type Run = {
    * reload makes the identical boundary decision.
    */
   prevLastId: string | null;
+  /**
+   * Immutable age-band config snapshot, captured ONCE at run start via
+   * getBandConfig(resolveBand()) (follow-up Item A). A mid-run band
+   * change structurally cannot warp this run — the run keeps its
+   * start-of-run lengths, hint policy, and tolerance.
+   *
+   * Optional only for backward compatibility: runs saved before the
+   * snapshot (or built as manual literals) backfill via resumeRun. The
+   * constructor always sets it.
+   */
+  bandConfig?: BandRunConfig;
+  /**
+   * Hints tapped this run. Hints NEVER touch points (scoring is identical
+   * across bands); the hint policy enum rides in bandConfig.
+   */
+  hintsUsed?: number;
 };
 
 export function startRun(
@@ -112,6 +134,9 @@ export function startRun(
     seed: mintSeed(),
     poolIds: [...poolIds],
     prevLastId,
+    // Follow-up Item A: snapshot the band config once at run start.
+    bandConfig: getBandConfig(resolveBand()),
+    hintsUsed: 0,
   };
 }
 
@@ -261,6 +286,12 @@ export function resumeRun(
       // band. A mismatched choice can never reach here: isResumable fails
       // first and startRun mints a fresh run instead.
       difficultyChoice: backfillDifficultyChoice(saved.difficultyChoice),
+      // Runs saved before the band-config snapshot (follow-up Item A)
+      // backfill from the live band; hints default to unused.
+      bandConfig: isBandRunConfig(saved.bandConfig)
+        ? saved.bandConfig
+        : getBandConfig(resolveBand()),
+      hintsUsed: typeof saved.hintsUsed === "number" ? saved.hintsUsed : 0,
     };
   }
   return startRun(today, poolIds, prevLastId);

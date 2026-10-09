@@ -10,6 +10,8 @@ import {
   type Octant,
 } from "./types.ts";
 import { maxGuessCap } from "../age-profile/difficulty.ts";
+import { getBandConfig, isBandRunConfig } from "../age-profile/run-config.ts";
+import { resolveBand } from "../age-profile/store.ts";
 
 /**
  * localStorage persistence for the GeoDetective's unlimited mode,
@@ -114,7 +116,11 @@ export function isLoopPuzzleState(value: unknown): value is LoopPuzzleState {
     // Deal-time config snapshot (P0-2): optional, absent on pre-snapshot
     // stores — resume falls back to the live band then.
     (s.dealStartClues === undefined || isPositiveInt(s.dealStartClues)) &&
-    (s.dealMaxGuesses === undefined || isPositiveInt(s.dealMaxGuesses))
+    (s.dealMaxGuesses === undefined || isPositiveInt(s.dealMaxGuesses)) &&
+    // Band-config snapshot + hint usage (follow-up Item A): optional,
+    // absent on pre-snapshot stores.
+    (s.dealBandConfig === undefined || isBandRunConfig(s.dealBandConfig)) &&
+    (s.hintsUsed === undefined || isNonNegativeInt(s.hintsUsed))
   );
 }
 
@@ -181,6 +187,11 @@ export function freshLoopUnlimitedStore(poolSize: number): LoopUnlimitedStore {
  * guesses. `startClues`/`maxGuesses` are the deal-time config — persisted
  * on the puzzle (P0-2) so resume honors the deal band, not the live band.
  * Defaults preserve the shipped tuning.
+ *
+ * Follow-up Item A: the deal ALSO snapshots the full band run config
+ * (getBandConfig(resolveBand()), called ONCE here) plus a zeroed
+ * hintsUsed counter. A mid-mystery band change structurally cannot warp
+ * this mystery.
  */
 export function freshLoopPuzzleState(
   index: number,
@@ -200,6 +211,8 @@ export function freshLoopPuzzleState(
     completedCycle: false,
     dealStartClues: dealtClues,
     dealMaxGuesses: maxGuesses,
+    dealBandConfig: getBandConfig(resolveBand()),
+    hintsUsed: 0,
   };
 }
 

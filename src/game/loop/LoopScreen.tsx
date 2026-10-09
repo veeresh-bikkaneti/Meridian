@@ -40,6 +40,7 @@ import {
 } from "./store";
 import { buildLoopGuess, submitGuess, OCTANT_ARROWS } from "./engine";
 import { geodetectiveConfig, resolveBand, type GeoDetectiveConfig } from "@/game/age-profile";
+import { awardCleanRoundBadge } from "@/game/passport/badges";
 import {
   type LoopClueFile,
   type LoopGuess,
@@ -427,6 +428,13 @@ export function LoopScreen({
       else playLose();
       const completedStore = completePuzzle(s, progressed, calendarDate("UTC", new Date()));
       commitStore(completedStore);
+      // Clean Round badge (age-profile B4): 11–13 no-hint runs only.
+      // Cosmetic Passport badge — never points, never scoring.
+      awardCleanRoundBadge({
+        band: resolveBand(),
+        hintsUsed: progressed.hintsUsed ?? 0,
+        loopId: "geodetective",
+      });
       // Celebration (spec §3): the last undealt case of the cycle resolves
       // here — win or lose. A completed cycle fires the grand fanfare +
       // Legendary overlay exactly once (the silent reshuffle into the next

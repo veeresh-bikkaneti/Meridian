@@ -7,8 +7,9 @@
  * behind the grown-up gate by construction.
  *
  * Flow: GrownUpGate → AgePicker → (confirm-change | confirm-reset) →
- * toast + close. Mid-run changes stage as pending-change and apply at the
- * next card/round boundary (never a rug-pull).
+ * toast + close. Saves write the new band immediately; a mid-run save's
+ * change event fires at the next card/round boundary (never a rug-pull,
+ * never a mid-run re-render).
  */
 
 import { lazy, Suspense, useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
@@ -16,7 +17,7 @@ import type { AgeBandId, AgeProfile } from "@/game/age-profile";
 import { AGE_BANDS, getBand, loadProfile } from "@/game/age-profile";
 import {
   setBand,
-  requestChange,
+  saveBand,
   resetProfile,
 } from "@/game/age-profile/store.ts";
 
@@ -28,7 +29,7 @@ const AgePicker = lazy(() =>
 );
 
 export interface AgeProfileSettingsProps {
-  /** True when a run/card is in progress — changes stage as pending-change. */
+  /** True when a run/card is in progress — the change event defers to the next boundary. */
   runInProgress: boolean;
   /** Return to the origin surface. */
   onClose: () => void;
@@ -48,9 +49,7 @@ export default function AgeProfileSettings({
 }: AgeProfileSettingsProps) {
   const [step, setStep] = useState<Step>("gate");
   const [profile, setProfile] = useState<AgeProfile>(() => loadProfile());
-  const [selected, setSelected] = useState<AgeBandId | null>(() =>
-    profile.status === "pending-change" ? profile.pendingBand : profile.band,
-  );
+  const [selected, setSelected] = useState<AgeBandId | null>(() => profile.band);
   const [confirmTarget, setConfirmTarget] = useState<AgeBandId | null>(null);
 
   const save = () => {
@@ -62,14 +61,14 @@ export default function AgeProfileSettings({
       onClose();
       return;
     }
-    if (selected === profile.band && profile.status !== "pending-change") return;
+    if (selected === profile.band) return;
     setConfirmTarget(selected);
     setStep("confirm-change");
   };
 
   const confirmChange = () => {
     if (confirmTarget === null) return;
-    requestChange(confirmTarget, { runInProgress });
+    saveBand(confirmTarget, { runInProgress });
     setProfile(loadProfile());
     if (runInProgress) {
       onToast("Saved — takes effect on the next card. ✅");

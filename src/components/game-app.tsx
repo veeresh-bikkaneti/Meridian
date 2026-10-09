@@ -80,10 +80,10 @@ import {
 // The settings screen is React.lazy: zero initial-bundle cost.
 import "./age-profile/age-profile.css";
 import { LockedLoop } from "./age-profile/LockedLoop";
+import { ReadAloudPrefPrompt } from "./age-profile/ReadAloudPrefPrompt";
 import {
   applyPendingAtBoundary,
   audioMode,
-  hasPendingChange,
   isLoopLocked,
   loadProfile,
   onAgeProfileChanged,
@@ -851,7 +851,6 @@ export function GameApp() {
   const [ageProfile, setAgeProfile] = useState(() => loadProfile());
   useEffect(() => onAgeProfileChanged(() => setAgeProfile(loadProfile())), []);
   const ageBand: AgeBandId = resolveBand(ageProfile);
-  const agePending = hasPendingChange(ageProfile);
   const [ageSettingsOpen, setAgeSettingsOpen] = useState(false);
   const [ageToast, setAgeToast] = useState<string | null>(null);
   useEffect(() => {
@@ -1828,7 +1827,6 @@ export function GameApp() {
       }
       tutorialInviteVisible={showTutorialInvite}
       ageBand={ageBand}
-      agePending={agePending}
       onGrownUpOpen={openAgeSettings}
       notice={
         <>
@@ -1885,7 +1883,6 @@ function Choose({
   tutorialInvite,
   tutorialInviteVisible,
   ageBand,
-  agePending,
   onGrownUpOpen,
 }: {
   onState: (e: ReactMouseEvent) => void;
@@ -1908,8 +1905,6 @@ function Choose({
   tutorialInviteVisible?: boolean;
   /** Effective age band (parent-set; "11-13" when unset). */
   ageBand: AgeBandId;
-  /** True while a band change is staged for the next boundary. */
-  agePending: boolean;
   /** Open the grown-up gate (footer link + locked-tile link). */
   onGrownUpOpen: () => void;}) {
   // GeoDetective progress for the edition card: the resume variant and the
@@ -2140,13 +2135,11 @@ function Choose({
         >
           🔒 For grown-ups
         </button>
-        {agePending ? (
-          <span className="agep-pending-chip" role="status">
-            Updating… takes effect on the next card
-          </span>
-        ) : null}
       </footer>
     </main>
+    {/* Kid-set read-aloud preference (age-profile B3): asked once, never
+        nags — the component renders nothing after the kid answers. */}
+    <ReadAloudPrefPrompt />
     {/* Grandpa's Coffee Run — animated donation scene, home only.
         Veeresh 2026-10-07: replaces PR #91's static sign. */}
     <GrandpaCoffeeRun />
