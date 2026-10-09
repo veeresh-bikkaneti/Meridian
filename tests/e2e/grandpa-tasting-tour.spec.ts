@@ -246,15 +246,16 @@ test("walker stops at each option, looks, sips, walks on", async ({
   const walker = page.getByTestId("grandpa-tour-walker");
 
   for (let i = 0; i < stopIds.length; i++) {
-    // The walker dwells at stop i (sip phase, 1.2s). Sample the bounding box
+    // The walker dwells at stop i (sip phase, 0.8s). Sample the bounding box
     // twice inside the sip window — the walk bob (±3px) is the only expected
     // motion — and confirm the phase is still "sip" so a late poll can't
-    // mistake the next leg's first steps for the dwell.
+    // mistake the next leg's first steps for the dwell. The 250ms gap keeps
+    // both samples inside the 800ms sip window even under load.
     await expect(tour).toHaveAttribute("data-stop-index", String(i), {
       timeout: 60_000,
     });
     const box1 = await walker.boundingBox();
-    await page.waitForTimeout(450);
+    await page.waitForTimeout(250);
     const box2 = await walker.boundingBox();
     await expect(tour).toHaveAttribute("data-tour-phase", "sip", {
       timeout: 2_000,
