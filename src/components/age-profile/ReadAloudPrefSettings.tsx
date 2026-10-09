@@ -12,7 +12,7 @@
  * Works fully offline (device-local storage only).
  */
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   getReadAloudPref,
   setReadAloudPref,
@@ -33,6 +33,7 @@ function labelFor(pref: ReadAloudPrefOrUnset): string {
 export function ReadAloudPrefSettings() {
   const [pref, setPref] = useState<ReadAloudPrefOrUnset>(() => getReadAloudPref());
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   // Unset → the onboarding prompt owns the first choice; nothing to change yet.
   if (pref === "unset") return null;
@@ -41,11 +42,22 @@ export function ReadAloudPrefSettings() {
     setReadAloudPref(value); // persisted before anything else
     setPref(value);
     setOpen(false);
+    toggleRef.current?.focus(); // focus returns to the toggle
   };
 
   return (
-    <div className="agep-readaloud-settings" data-testid="readaloud-settings">
+    <div
+      className="agep-readaloud-settings"
+      data-testid="readaloud-settings"
+      onKeyDown={(e) => {
+        if (e.key === "Escape" && open) {
+          setOpen(false);
+          toggleRef.current?.focus();
+        }
+      }}
+    >
       <button
+        ref={toggleRef}
         type="button"
         className="agep-readaloud-toggle"
         aria-expanded={open}

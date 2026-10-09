@@ -86,10 +86,6 @@ export function earnedPassportBadges(): EarnedBadge[] {
   return readStorage();
 }
 
-export function hasPassportBadge(id: string): boolean {
-  return readStorage().some((b) => b.id === id);
-}
-
 /**
  * Award a badge (idempotent: re-awarding never duplicates, never scores).
  * Returns the badge definition, or null for an unknown id.

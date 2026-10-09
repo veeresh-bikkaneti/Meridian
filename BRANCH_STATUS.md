@@ -4,7 +4,16 @@
 **Base:** origin/main@64c82d6 (2026-10-09; PR #112 quick-fixes merged)
 **Spec:** `~/workspace/specs/age-profile-followups.md` (+ office-hours/eng/devex reviews)
 **Goal:** goal_b3eb80f458ba
-**Status:** IN PROGRESS — build phase (coordinator + 2 devs)
+**Status:** GAUNTLET COMPLETE — merge-ready pending owner merge call (DO NOT MERGE standing)
+
+## Merge-readiness gates (all green on final head)
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm test` — 1054/1054 pass
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — green
+- [x] Playwright — all specs green (27+ tests, bounding-box assertions at 360×740 AND 390×844)
+- [x] Zero conflicts vs origin/main
+- [x] All 6 squads approve (Design, Eng, Devex, QA, Office-hours, Security)
 
 ## Owner decisions (all confirmed 2026-10-09 — implement exactly)
 - **B1** run-config injection: `getBandConfig(band)` snapshotted once at run start; unset == today's production values (unit-gated per loop)

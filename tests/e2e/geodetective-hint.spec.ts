@@ -88,27 +88,34 @@ test("11-13: no hint button at all", async ({ page, context }) => {
   await expect(page.getByTestId("hint-button")).toHaveCount(0);
 });
 
-test("8-10: hint button does not overlap the map or guess input", async ({
-  page,
-  context,
-}) => {
-  await seedProfile(context, "8-10");
-  await page.setViewportSize({ width: 390, height: 844 });
-  await openLoop(page);
+for (const [w, h] of [[360, 740], [390, 844]] as const) {
+  test(`${w}x${h}: hint button does not overlap the map or guess input`, async ({
+    page,
+    context,
+  }) => {
+    await seedProfile(context, "8-10");
+    await page.setViewportSize({ width: w, height: h });
+    await openLoop(page);
 
-  const button = page.getByTestId("hint-button");
-  await expect(button).toBeVisible({ timeout: 15_000 });
+    const button = page.getByTestId("hint-button");
+    await expect(button).toBeVisible({ timeout: 15_000 });
 
-  // AGENTS.md rule #1: floating controls must not intersect neighbors.
-  const overlap = await page.evaluate(() => {
-    const btn = document.querySelector('[data-testid="hint-button"]');
-    const map = document.querySelector('[data-testid="loop-map"]');
-    if (!btn || !map) return -1;
-    const b = btn.getBoundingClientRect();
-    const m = map.getBoundingClientRect();
-    const x = Math.max(0, Math.min(b.right, m.right) - Math.max(b.left, m.left));
-    const y = Math.max(0, Math.min(b.bottom, m.bottom) - Math.max(b.top, m.top));
-    return x * y;
+    // AGENTS.md rule #1: floating controls must not intersect neighbors.
+    const overlap = await page.evaluate(() => {
+      const btn = document.querySelector('[data-testid="hint-button"]');
+      const map = document.querySelector('[data-testid="loop-map"]');
+      const guess = document.querySelector('[data-testid="loop-guess-input"]');
+      if (!btn || !map) return -1;
+      const b = btn.getBoundingClientRect();
+      const boxes = [map, guess].filter(Boolean).map((el) => (el as Element).getBoundingClientRect());
+      let total = 0;
+      for (const r of boxes) {
+        const x = Math.max(0, Math.min(b.right, r.right) - Math.max(b.left, r.left));
+        const y = Math.max(0, Math.min(b.bottom, r.bottom) - Math.max(b.top, r.top));
+        total += x * y;
+      }
+      return total;
+    });
+    expect(overlap).toBe(0);
   });
-  expect(overlap).toBe(0);
-});
+}

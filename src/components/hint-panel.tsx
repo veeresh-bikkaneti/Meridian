@@ -67,6 +67,9 @@ export function HintPanel({
           role="dialog"
           aria-label="Hint offer"
           data-testid="hint-offer"
+          onKeyDown={(e) => {
+            if (e.key === "Escape") onDismissOffer();
+          }}
         >
           <p className="text-sm text-white">Stuck? Want a hint?</p>
           <div className="mt-2 flex gap-2">

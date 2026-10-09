@@ -21,7 +21,6 @@ import {
   awardPassportBadge,
   earnedPassportBadges,
   getPassportBadge,
-  hasPassportBadge,
   __resetPassportBadgeMemory,
 } from "./badges.ts";
 
@@ -38,21 +37,21 @@ test("Clean Round awarded on an 11-13 no-hint win", () => {
   assert.ok(badge);
   assert.equal(badge.id, CLEAN_ROUND_BADGE_ID);
   assert.equal(badge.name, "Clean Round");
-  assert.equal(hasPassportBadge(CLEAN_ROUND_BADGE_ID), true);
+  assert.equal(earnedPassportBadges().some((b) => b.id === CLEAN_ROUND_BADGE_ID), true);
 });
 
 test("hints used → no badge (recognition is for genuinely hint-free wins)", () => {
   clearStorage();
   const badge = awardCleanRoundBadge({ band: "11-13", hintsUsed: 1, loopId: "quiz", won: true });
   assert.equal(badge, null);
-  assert.equal(hasPassportBadge(CLEAN_ROUND_BADGE_ID), false);
+  assert.equal(earnedPassportBadges().some((b) => b.id === CLEAN_ROUND_BADGE_ID), false);
 });
 
 test("5-7 and 8-10 wins never earn Clean Round (band-scoped recognition)", () => {
   clearStorage();
   assert.equal(awardCleanRoundBadge({ band: "5-7", hintsUsed: 0, loopId: "quiz", won: true }), null);
   assert.equal(awardCleanRoundBadge({ band: "8-10", hintsUsed: 0, loopId: "quiz", won: true }), null);
-  assert.equal(hasPassportBadge(CLEAN_ROUND_BADGE_ID), false);
+  assert.equal(earnedPassportBadges().some((b) => b.id === CLEAN_ROUND_BADGE_ID), false);
 });
 
 test("#113 BLOCK 2: losses never earn Clean Round, even hint-free on 11-13", () => {
@@ -61,7 +60,7 @@ test("#113 BLOCK 2: losses never earn Clean Round, even hint-free on 11-13", () 
     awardCleanRoundBadge({ band: "11-13", hintsUsed: 0, loopId: "quiz", won: false }),
     null,
   );
-  assert.equal(hasPassportBadge(CLEAN_ROUND_BADGE_ID), false);
+  assert.equal(earnedPassportBadges().some((b) => b.id === CLEAN_ROUND_BADGE_ID), false);
 });
 
 test("#113 BLOCK 1: award uses the deal-snapshot band — a mid-run band change cannot mis-award", () => {
@@ -77,7 +76,7 @@ test("#113 BLOCK 1: award uses the deal-snapshot band — a mid-run band change 
   assert.ok(
     awardCleanRoundBadge({ band: "11-13", hintsUsed: 0, loopId: "quiz", won: true }),
   );
-  assert.equal(hasPassportBadge(CLEAN_ROUND_BADGE_ID), true);
+  assert.equal(earnedPassportBadges().some((b) => b.id === CLEAN_ROUND_BADGE_ID), true);
 });
 
 test("#113 BLOCK 1: missing snapshot band fails closed (pre-snapshot puzzle)", () => {
@@ -86,7 +85,7 @@ test("#113 BLOCK 1: missing snapshot band fails closed (pre-snapshot puzzle)", (
     awardCleanRoundBadge({ band: undefined, hintsUsed: 0, loopId: "quiz", won: true }),
     null,
   );
-  assert.equal(hasPassportBadge(CLEAN_ROUND_BADGE_ID), false);
+  assert.equal(earnedPassportBadges().some((b) => b.id === CLEAN_ROUND_BADGE_ID), false);
 });
 
 test("badge copy is band-invisible: no age numbers, no easy/hard", () => {
