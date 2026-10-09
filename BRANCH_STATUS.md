@@ -78,3 +78,24 @@ Review: 10/12 approve, 2 BLOCKs both on B4 Clean Round badge. Fix agent worktree
 - Positioned top-right below chrome (mirrors bubble offset) — no overlap with question bubble or chrome.
 - Tests: 7 new unit tests (hint-panel.test.ts, added to npm test list); 4 new E2E (hint-button.spec.ts, new "hint-button" Playwright project @390px): 5-7 free hint, 8-10 disable-after-use, 11-13 hidden, mascot offer after 2 misses.
 - Gates: tsc clean · lint-cards GATE PASSED · build:pages green · npm test 1047/1047 · Playwright hint-button 4/4 · zero console errors · locked copy byte-identical (Ko-fi 3 strings, bands.ts untouched).
+
+## Rebase onto origin/main@722a51f (2026-10-09, phase-1 rebase agent)
+- Remote moved mid-task: origin/feat/age-profile-followups went 04a9835 → 1d62be6
+  (another agent landed the pin-tolerance fix 566c57c + hint-button UI 1d62be6).
+  Per stand-down rule the rebased head was NOT pushed — this tmp branch holds the
+  rebase of the true remote head 1d62be6 onto main@722a51f for the coordinator.
+- Rebased commits (7): 71be7e9→713a6cd (age-profile feat), f7c1d7c→a669fb5 (docs),
+  089faae→6141453 (badge BLOCK fix), fe3e89b→723738d + 1590757→b2871f9 (rebase records),
+  566c57c→77c3d99 (pin tolerance), 1d62be6→240ed14 (hint button UI). New head: 240ed14.
+- Conflicts: 1 — BRANCH_STATUS.md on 71be7e9 (kept the branch's live document;
+  main's copy was the stale fix/live-site-issues record). package.json test-script
+  union + game-app.tsx auto-merged.
+- Survival checks on 240ed14: B4 badge intact (progressed.dealBandConfig?.band,
+  win-only, data-testid="clean-round-badge", tests/e2e/clean-round-badge.spec.ts) ·
+  pin tolerance BOTH call sites read pinToleranceKm(run.bandConfig?.band ?? ageBand, …) ·
+  hint-panel.tsx + hint-logic.ts present, imported + <HintPanel/> rendered in game-app.tsx ·
+  locked copy byte-identical to main@722a51f (3 Ko-fi strings, bands.ts, 5 storyteller files).
+- Smoke: `npx tsc --noEmit` clean (fresh npm ci in this worktree).
+- To publish (coordinator): re-verify remote SHA via ls-remote, then
+  git push --force-with-lease=refs/heads/feat/age-profile-followups:<verified-sha>
+  origin tmp/rebase-113-remote:feat/age-profile-followups. DO NOT MERGE.
