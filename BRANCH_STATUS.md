@@ -81,12 +81,10 @@ Standing rules: PRs only, owner merges; named-file staging only; gates before ha
 - [x] PBI-6 map-attributed prior-crash boot offer — DONE (commit be6fa34).
 - [x] PBI-7 settings toggle UI — DONE (commit 7db37ed).
 - [x] PBI-8 observability: mapMode in crash reports + tile_failed counts — DONE (commit d29ad34).
-- [~] PBI-9 E2E regression — coordinator landed the QA handoff: added
-  data-map-mode + data-max-zoom to the .satellite-map wrapper (zero behavior
-  change), Tab focus trap in ScoutBootOffer (a11y contract); test harness
-  fixed (one-shot crash seeding matching the app's exactly-once breadcrumb
-  rotation, capable-device spoof where specs must start full, poll-based
-  initial-focus). Final full-suite verification running on the final head.
+- [x] PBI-9 E2E regression — DONE. All 24 scout E2E green (6 spec files:
+  false-demotion golden 3/3, offer 7/7, context-lost 3/3, switch-note 6/6,
+  throttled 1/1, toggle 4/4); 874/874 unit green; tsc clean; lint-cards
+  GATE PASSED; build:pages green.
 - [ ] PBI-10 PR opened, never merged.
 
 ## Notes
