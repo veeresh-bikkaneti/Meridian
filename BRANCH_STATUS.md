@@ -147,3 +147,8 @@ Production chunk files are never written by build scripts (repo rule).
 - Alexander's history hook ("Arkansas Juvenile Assessment and Treatment
   Center") is factually fine but may prompt questions from 8-12s;
   consider a warmer hook.
+
+## Rebase 2026-10-08 (onto origin/main@8cd0fda — PR #103 merged)
+- 19 commits replayed. 2 conflicts, both BRANCH_STATUS.md docs-only, resolved keeping both sides' entries (facts-ladder content + inherited-base notes). Zero code conflicts.
+- Diff vs pre-rebase head (b022dc8): only #103's inherited files (comet/banner/grandpa components + specs) + BRANCH_STATUS.md. No facts-ladder files touched.
+- Post-rebase gates: tsc clean · lint-cards GATE PASSED (124,690 records) · build:pages green · facts e2e 2/2 at 390x844.
