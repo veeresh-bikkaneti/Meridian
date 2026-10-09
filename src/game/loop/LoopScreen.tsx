@@ -39,7 +39,9 @@ import {
   writeLoopStoreV2,
 } from "./store";
 import { buildLoopGuess, submitGuess, OCTANT_ARROWS } from "./engine";
-import { geodetectiveConfig, resolveBand, type GeoDetectiveConfig } from "@/game/age-profile";
+import { geodetectiveConfig, getBandConfig, canUseHint, resolveBand, type AgeBandId, type GeoDetectiveConfig } from "@/game/age-profile";
+import { HintPanel } from "@/components/hint-panel";
+import { directionalHint } from "@/components/hint-logic";
 import { awardCleanRoundBadge, type PassportBadge } from "@/game/passport/badges";
 import {
   type LoopClueFile,
@@ -275,9 +277,16 @@ export function LoopScreen({
   // (P0-2 — the in-memory capture alone did not survive a remount), and the
   // live band is only the last-resort fallback for pre-snapshot stores.
   const [dealConfig, setDealConfig] = useState<GeoDetectiveConfig | null>(null);
+  // Deal-time band snapshot for the hint policy (follow-up Item B).
+  // Captured alongside the deal config so a mid-mystery band change never
+  // swaps the hint surface mid-deal. Note: GeoDetective is locked for 5-7
+  // (bands.ts), so in practice this is 8-10 ("one-per-round", hint shown)
+  // vs 11-13 ("none", no button) — the policy table decides, not the loop.
+  const [dealBand, setDealBand] = useState<AgeBandId | null>(null);
   const captureDealConfig = (): GeoDetectiveConfig => {
     const config = geodetectiveConfig(resolveBand()) ?? SAFE_DEAL_FALLBACK;
     setDealConfig(config);
+    setDealBand(resolveBand());
     return config;
   };
   const activeDealConfig =
@@ -617,6 +626,7 @@ export function LoopScreen({
           onNextMystery={onNextMystery}
           onLeave={onLeave}
           dealConfig={activeDealConfig}
+          dealBand={dealBand}
           cleanRoundBadge={cleanRoundBadge}
         />
       ) : null}
@@ -666,6 +676,7 @@ function LoopGame({
   onNextMystery,
   onLeave,
   dealConfig,
+  dealBand,
   cleanRoundBadge,
 }: {
   clue: LoopClueFile;
@@ -681,11 +692,48 @@ function LoopGame({
   onLeave: () => void;
   /** Deal-time config for the open mystery (preserved across band changes). */
   dealConfig: GeoDetectiveConfig;
+  /**
+   * Deal-time band snapshot for the hint policy (may be null for resumed
+   * pre-snapshot mysteries — falls back to the live band, same as
+   * activeDealConfig's last-resort fallback).
+   */
+  dealBand: AgeBandId | null;
   /** Just-earned Clean Round badge, forwarded to the win reveal. */
   cleanRoundBadge: PassportBadge | null;
 }) {
   const finished = puzzle.status !== "playing";
   const guessesLeft = dealConfig.guessCap - puzzle.guesses.length;
+
+  // Hint UI for GeoDetective (follow-up Item B, owner 2026-10-09).
+  // Policy comes from the DEAL-TIME band snapshot (never live): 8-10 gets
+  // one hint per mystery ("one-per-round"); 11-13 gets none ("none" hides
+  // the button); 5-7 can't reach this loop (locked in bands.ts). Hints
+  // NEVER touch points. The nudge is the same mechanical quadrant hint as
+  // the quiz loops (hint-logic.ts) — coarse, never pinpoints.
+  const hintPolicy = getBandConfig(dealBand ?? resolveBand()).hintPolicy;
+  const [hintMessage, setHintMessage] = useState<string | null>(null);
+  const [hintsUsedThisMystery, setHintsUsedThisMystery] = useState(0);
+  const [hintOfferDismissed, setHintOfferDismissed] = useState(false);
+  // New mystery → fresh hint state (keyed on the dealt puzzle index).
+  const hintResetKey = `${puzzle.cycle}:${puzzle.index}`;
+  useEffect(() => {
+    setHintMessage(null);
+    setHintsUsedThisMystery(0);
+    setHintOfferDismissed(false);
+  }, [hintResetKey]);
+
+  function onUseGeoHint() {
+    if (finished || !clue?.target) return;
+    if (!canUseHint(hintPolicy, hintsUsedThisMystery)) return;
+    // World-bounds fallback (same as the quiz globe): the quadrant stays
+    // coarse enough to never pinpoint the target.
+    const message = directionalHint(clue.target.lon, clue.target.lat, [-180, -90, 180, 90]);
+    setHintMessage(message);
+    setHintsUsedThisMystery((n) => n + 1);
+  }
+  // Wrong guesses drive the 5-7 mascot offer (policy-gated inside HintPanel;
+  // unreachable here since the loop is 5-7-locked, but the policy decides).
+  const geoMissCount = puzzle.guesses.filter((g) => g.distKm !== 0).length;
 
   // Storyteller v1 (hook only): voice on the tier-4 "The Hook" clue reveal,
   // auto once per puzzle on the T1 gesture model. No persistent figure —
@@ -776,6 +824,21 @@ function LoopGame({
           Guess {puzzle.guesses.length + 1} of {dealConfig.guessCap}
           {guessesLeft <= 2 && !finished ? ` — ${guessesLeft} left` : ""}
         </p>
+        {/* Hint UI (follow-up Item B): 8-10 gets one hint per mystery;
+            11-13 renders nothing (policy "none" → HintPanel returns null);
+            hidden once the case is closed. Right-aligned, in-flow — never
+            overlapping the map or the guess input. */}
+        {!finished ? (
+          <HintPanel
+            policy={hintPolicy}
+            hintsUsedThisPlace={hintsUsedThisMystery}
+            missCount={geoMissCount}
+            hintMessage={hintMessage}
+            offerDismissed={hintOfferDismissed}
+            onUseHint={onUseGeoHint}
+            onDismissOffer={() => setHintOfferDismissed(true)}
+          />
+        ) : null}
         <LoopMap
           guesses={puzzle.guesses}
           target={clue.target}

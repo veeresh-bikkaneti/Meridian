@@ -406,6 +406,37 @@ test("setSoundEnabled(false) stops the active spin", () => {
   }
 });
 
+test("setSoundEnabled(false) cancels speechSynthesis narration (owner 2026-10-09: mute is the only off switch for Always)", () => {
+  let cancelCalls = 0;
+  let eventFired = false;
+  const origWindow = (globalThis as Record<string, unknown>).window;
+  (globalThis as Record<string, unknown>).window = {
+    speechSynthesis: {
+      cancel: () => {
+        cancelCalls += 1;
+      },
+    },
+    dispatchEvent: (e: Event) => {
+      if (e.type === "meridian:sound-off") eventFired = true;
+      return true;
+    },
+    addEventListener: () => {},
+    removeEventListener: () => {},
+  };
+  try {
+    setSoundEnabled(false);
+    assert.equal(cancelCalls, 1, "muting cancels in-progress narration");
+    assert.equal(eventFired, true, "muting notifies speech-holding UI");
+  } finally {
+    if (origWindow === undefined) {
+      delete (globalThis as Record<string, unknown>).window;
+    } else {
+      (globalThis as Record<string, unknown>).window = origWindow;
+    }
+    setSoundEnabled(true);
+  }
+});
+
 test("celebration sounds never draw from the global Math.random sequence", () => {
   // Same regression as the shipped-sounds test: all jitter goes through the
   // module-local PRNG (sfxRandom), never the mockable global.

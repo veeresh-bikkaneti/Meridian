@@ -114,14 +114,17 @@ export function ReadAloudButton({ text, mode, autoplay, speakKey, pref }: ReadAl
 
   // Auto-play once per card. Guarded by speakKey so re-renders and
   // mid-session band changes never restart speech. The kid's preference
-  // gates it: "sometimes"/"never" disable auto-read, "always" needs sound
-  // on, unset keeps today's band default.
+  // gates it: "sometimes"/"never" disable auto-read; "always" plays on
+  // EVERY card in EVERY band when sound is on (owner 2026-10-09 — the old
+  // `mode === "auto"` gate silently broke the promise for 8-10/11-13);
+  // unset keeps today's per-card band default (5-7 only).
   useEffect(() => {
     setShowReadAlong(false);
-    if (mode === "auto" && autoplay && spokenKey.current !== speakKey) {
+    const bandWantsAuto = mode === "auto" && autoplay;
+    if (spokenKey.current !== speakKey) {
       spokenKey.current = speakKey;
       const kidPref = pref ?? getReadAloudPref();
-      if (shouldAutoPlayReadAloud(kidPref, true, isSoundEnabled()) && speechAvailable() && text) {
+      if (shouldAutoPlayReadAloud(kidPref, bandWantsAuto, isSoundEnabled()) && speechAvailable() && text) {
         const synth = window.speechSynthesis;
         synth.cancel();
         const utter = new SpeechSynthesisUtterance(text);
@@ -137,6 +140,16 @@ export function ReadAloudButton({ text, mode, autoplay, speakKey, pref }: ReadAl
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [speakKey, mode, autoplay]);
+
+  // Mute toggle (setSoundEnabled(false)) cancels speechSynthesis globally.
+  // Reset the playing state so the button doesn't stick on the pause icon
+  // after an external mute. (Owner 2026-10-09: mute is the only off switch
+  // for "Always" — it must reliably silence in-progress narration.)
+  useEffect(() => {
+    const onSoundOff = () => setPlaying(false);
+    window.addEventListener("meridian:sound-off", onSoundOff);
+    return () => window.removeEventListener("meridian:sound-off", onSoundOff);
+  }, []);
 
   const auto = mode === "auto";
 

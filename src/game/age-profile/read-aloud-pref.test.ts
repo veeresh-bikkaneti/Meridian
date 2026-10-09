@@ -113,10 +113,13 @@ test("never: never auto-read (button stays visible)", () => {
   assert.equal(shouldAutoPlayReadAloud("never", false, true), false);
 });
 
-test("always: auto-read when sound is on, never when sound is off", () => {
+test("always: auto-read on EVERY card in EVERY band when sound is on (owner 2026-10-09)", () => {
   assert.equal(shouldAutoPlayReadAloud("always", true, true), true);
   assert.equal(shouldAutoPlayReadAloud("always", true, false), false);
-  assert.equal(shouldAutoPlayReadAloud("always", false, true), false);
+  // The broken promise this fixes: 8-10/11-13 cards (bandAutoplay=false)
+  // must still auto-read when the kid chose "Always" and sound is on.
+  assert.equal(shouldAutoPlayReadAloud("always", false, true), true);
+  assert.equal(shouldAutoPlayReadAloud("always", false, false), false);
 });
 
 test("unset: today's band default is preserved (5-7 auto, others not)", () => {

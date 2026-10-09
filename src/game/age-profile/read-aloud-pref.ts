@@ -114,8 +114,14 @@ export function setReadAloudPref(value: ReadAloudPref): void {
  * Auto-play decision for a story card.
  *
  * @param pref         the kid's preference ("unset" = band default)
- * @param bandAutoplay what the band's audio mode requests (5-7 only)
+ * @param bandAutoplay whether the band/card requests auto-play by default
+ *                     (today: 5-7 cards only)
  * @param soundOn      isSoundEnabled() — "always" means "when sound is on"
+ *
+ * Owner 2026-10-09: "Always" is a promise — it plays on EVERY card in EVERY
+ * band when sound is on. The mute toggle is the only off switch. The old
+ * `bandAutoplay && soundOn` gating silently broke the promise for 8-10 and
+ * 11-13 (their bandAutoplay is false).
  */
 export function shouldAutoPlayReadAloud(
   pref: ReadAloudPrefOrUnset,
@@ -127,7 +133,7 @@ export function shouldAutoPlayReadAloud(
     case "sometimes":
       return false; // tap-to-play only; button stays visible
     case "always":
-      return bandAutoplay && soundOn;
+      return soundOn; // every card, every band — mute is the only silence
     case "unset":
       return bandAutoplay; // today's production behavior
   }

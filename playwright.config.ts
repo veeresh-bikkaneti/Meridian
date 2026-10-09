@@ -267,6 +267,26 @@ export default defineConfig({
         viewport: { width: 390, height: 844 },
       },
     },
+    {
+      name: "geodetective-hint",
+      // #113 follow-up Item B: GeoDetective hint UI (8-10 one per mystery,
+      // 11-13 none). Same viewport note as hint-button.
+      testMatch: /geodetective-hint\.spec\.ts/,
+      use: {
+        viewport: { width: 390, height: 844 },
+      },
+    },
+    {
+      name: "read-aloud-always",
+      // #113 follow-up: "Always" honored on every card in every band;
+      // the sound toggle is the only off switch. Desktop viewport: the
+      // hit flow (commitHit → phase "story") is only proven at 1440x900;
+      // the autoplay/mute behavior under test is viewport-independent.
+      testMatch: /read-aloud-always\.spec\.ts/,
+      use: {
+        viewport: { width: 1440, height: 900 },
+      },
+    },
   ],
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
 });
