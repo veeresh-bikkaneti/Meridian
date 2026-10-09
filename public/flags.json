@@ -1,1 +1,1 @@
-{"flags":{"learningOutcomes":true,"pwaUpdateToast":true},"version":1}
+{"flags": {"learningOutcomes": true, "pwaUpdateToast": true}, "version": 1, "observabilityEndpoint": "https://meridian-crash-report.knowledgetest.workers.dev/ingest"}
