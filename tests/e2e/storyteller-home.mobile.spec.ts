@@ -36,6 +36,9 @@ const GREETINGS = [
   "Every dot on this map has a tale. Which one shall we wake up first?",
 ];
 const GEODETECTIVE_SENDOFF = "A mystery is afoot… lean in close. 🔍";
+/** Locked copy (copy pack G2) — the post-tour return line, text-only. */
+const TOUR_RETURN_LINE =
+  "Welcome back, explorer! Grandpa showed you around — now, where shall our story go next?";
 const POKE_1 = "Heh! That tickles my beard.";
 const POKE_2 = "Careful, explorer — I'm older than these mountains.";
 
@@ -251,7 +254,7 @@ test("loop pick: the locked send-off rides along ≤2.5s; navigation never waits
   expectCleanConsole(errors);
 });
 
-test("tour yield: host unmounts during the tour; greets again after", async ({
+test("tour yield: host hides during the tour; tour-return line plays once after", async ({
   page,
 }) => {
   await seedQuietHome(page);
@@ -259,18 +262,19 @@ test("tour yield: host unmounts during the tour; greets again after", async ({
   const caption = page.getByTestId("storyteller-home-caption");
   await expect(caption).toBeVisible({ timeout: 10_000 });
 
-  // The tour overlay opens → yielded: fully unmounted, no background audio.
+  // The tour overlay opens → yielded: renders null (stays mounted), no
+  // background audio.
   await page.evaluate(() => window.dispatchEvent(new Event("meridian:tour-walk-start")));
   await expect(page.getByTestId("storyteller-home")).toHaveCount(0);
 
-  // The tour closes → remounts and greets again (every visit greets; no
-  // tour-return line anymore).
+  // The tour closes → the locked tour-return line plays once, text-only
+  // (copy G2) — not the daily greeting.
   await page.evaluate(() => window.dispatchEvent(new Event("meridian:tour-walk-end")));
   await expect
     .poll(async () => page.getByTestId("storyteller-home-caption").textContent(), {
       timeout: 8_000,
     })
-    .toBe(expectedGreeting());
+    .toBe(TOUR_RETURN_LINE);
 
   expectCleanConsole(errors);
 });

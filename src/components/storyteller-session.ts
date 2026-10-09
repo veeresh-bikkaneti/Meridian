@@ -1,9 +1,9 @@
 /**
  * Storyteller home handoff (H1) — session + day storage.
  *
- * 1. Session auto-narration flag (copy §5): the home greeting consumes the
- *    session's one auto-narration (sessionStorage). Story cards later that
- *    session degrade to text + speaker button — no double-audio.
+ * 1. Session auto-narration flag (copy §5): retained for API/test compat
+ *    but NO LONGER consumed by home (owner 2026-10-09) — story cards keep
+ *    their own one-shot via claimFirstRevealNarration (storyteller-claim).
  * 2. Tour-return flag (copy G2): armed when the tour walk ends after the
  *    host yielded; read exactly once on the next home mount, then cleared.
  * 3. Greeting day key (localStorage): the once-per-day greeting gate.
@@ -68,8 +68,8 @@ export function isSessionAutoNarrationConsumed(): boolean {
 
 /**
  * Atomically consume the session's one auto-narration. Returns true only
- * for the first caller of the session — the home greeting calls this when
- * its greeting audio actually starts playing.
+ * for the first caller of the session. No production caller remains (home
+ * stopped consuming it per owner 2026-10-09) — kept for API/test compat.
  */
 export function consumeSessionAutoNarration(): boolean {
   if (isSessionAutoNarrationConsumed()) return false;

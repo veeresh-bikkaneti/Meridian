@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { StorytellerMascot, useCelebrationActive, useTourActive } from "./storyteller";
-import { claimFirstRevealNarration } from "./storyteller-claim";
 import {
   STORYTELLER_AUDIO_FALLBACK_LINE,
   storytellerFigureUrl,
@@ -10,12 +9,15 @@ import {
   GREETINGS,
   POKE_LINES,
   SENDOFFS,
+  TOUR_RETURN_LINE,
   greetingIndexForDate,
+  localDayKey,
   type StorytellerLoopKey,
 } from "./storyteller-home-copy";
 import {
-  consumeSessionAutoNarration,
+  armTourReturnLine,
   resetStorytellerSessionForTests,
+  takeTourReturnLine,
 } from "./storyteller-session";
 import "./storyteller-home.css";
 
@@ -28,8 +30,9 @@ import "./storyteller-home.css";
 //   (tour start|celebration|dismiss|timeout)→ figure only (no unmount — the
 //   figure lives in the banner).
 //
-// - Every home mount greets: text-first, audio on the first gesture.
-//   No daily gate, no tour-return line — simplicity per the owner.
+// - Every home visit greets (owner 2026-10-09): the tour-return line wins
+//   exactly once after Grandpa's tour, otherwise the daily greeting.
+//   Text-first, audio on the first gesture.
 // - Sound muted: figure + full caption render; no autoplay attempt; the
 //   mute toggle is the ONLY silence.
 // - Tap the figure: rotating poke lines (copy §2). Tap mid-greeting pauses
@@ -176,6 +179,10 @@ export default function StorytellerHomeHost({
   const yielded = tourActive || celebrationActive;
 
   // The greeting starts once per mount (after the tutorial invite clears).
+  // Tour return wins exactly once (copy G2); otherwise the greeting.
+  const [mode, setMode] = useState<"greeting" | "tour-return">(() =>
+    takeTourReturnLine(localDayKey()) ? "tour-return" : "greeting",
+  );
   const [started, setStarted] = useState(!tutorialInviteVisible);
   const [phase, setPhase] = useState<BannerPhase>("entering");
   const [bubble, setBubble] = useState<string | null>(null);
@@ -197,6 +204,7 @@ export default function StorytellerHomeHost({
   const soundWatch = useRef(0);
   const audioStartTimeRef = useRef(0);
   const gestureDoneRef = useRef(false);
+  const wasYieldedRef = useRef(false);
   const pokeIndexRef = useRef(0);
   const lastPokeRef = useRef(0);
   const startedRef = useRef(started);
@@ -266,16 +274,60 @@ export default function StorytellerHomeHost({
     }
   }, [tutorialInviteVisible]);
 
+  // ---- Yield: tour / celebration own the screen -------------------------
+  // A tour-walk-end after a yield arms the post-tour return line (copy G2).
+  useEffect(() => {
+    const onTourEnd = () => {
+      if (wasYieldedRef.current) armTourReturnLine(localDayKey());
+    };
+    window.addEventListener("meridian:tour-walk-end", onTourEnd);
+    return () => window.removeEventListener("meridian:tour-walk-end", onTourEnd);
+  }, []);
+
+  useEffect(() => {
+    if (yielded) {
+      wasYieldedRef.current = true;
+      stopAudio();
+      hideBubble();
+      return;
+    }
+    if (wasYieldedRef.current) {
+      wasYieldedRef.current = false;
+      // The overlay closed — re-resolve (G2: the tour-return line wins once).
+      if (takeTourReturnLine(localDayKey())) {
+        setMode("tour-return");
+        setPhase("entering");
+      }
+      // Otherwise the pre-yield greeting stands (it already greeted — the
+      // owner wants every visit to greet, and this visit did).
+    }
+  }, [yielded, stopAudio, hideBubble]);
+
   // ---- Entering ----------------------------------------------------------
   useEffect(() => {
     if (!started || phase !== "entering") return;
+    if (mode === "tour-return") {
+      const t1 = window.setTimeout(() => {
+        setPhase("greeting_text");
+        // Text-only, no mp3 — the locked return line (copy G2).
+        showBubble(TOUR_RETURN_LINE, TEXT_BUBBLE_MS);
+      }, ENTER_MS);
+      const t2 = window.setTimeout(
+        () => setPhase("idle_linger"),
+        ENTER_MS + TEXT_BUBBLE_MS,
+      );
+      return () => {
+        window.clearTimeout(t1);
+        window.clearTimeout(t2);
+      };
+    }
     const t = window.setTimeout(() => {
       setPhase("greeting_text");
       // Text-first, always: audio waits for the first gesture below.
       showBubble(greetingText, assetsRef.current.greetAudio ? null : TEXT_BUBBLE_MS);
     }, ENTER_MS);
     return () => window.clearTimeout(t);
-  }, [started, phase, greetingText, showBubble]);
+  }, [started, phase, mode, greetingText, showBubble]);
 
   // ---- Greeting audio ------------------------------------------------------
   const beginGreetingAudio = useCallback(() => {
@@ -307,10 +359,9 @@ export default function StorytellerHomeHost({
     void audio
       .play()
       .then(() => {
-        // G1: the 12s window starts when audio ACTUALLY begins — and only
-        // then is the session's one auto-narration consumed (copy §5).
-        consumeSessionAutoNarration();
-        claimFirstRevealNarration();
+        // G1: the 12s window starts when audio ACTUALLY begins.
+        // (Home no longer consumes the session auto-narration flag —
+        // story cards keep their own one-shot, untouched.)
         capTimer.current = window.setTimeout(() => {
           // Hard cap: stop immediately, bubble stays text-visible.
           stopAudio();
@@ -347,6 +398,7 @@ export default function StorytellerHomeHost({
   // mute toggle is the ONLY silence.
   useEffect(() => {
     if (!started || phase !== "greeting_text") return;
+    if (mode === "tour-return") return; // text-only return line — no audio
     if (!assets.greetAudio) return; // text-only greeting, nothing to wait for
     const onGesture = () => {
       if (gestureDoneRef.current) return;
@@ -362,7 +414,7 @@ export default function StorytellerHomeHost({
       window.removeEventListener("pointerdown", onGesture);
       window.removeEventListener("keydown", onGesture);
     };
-  }, [started, phase, assets.greetAudio, beginGreetingAudio]);
+  }, [started, phase, mode, assets.greetAudio, beginGreetingAudio]);
 
   // ---- Dismiss -------------------------------------------------------------
   const dismissBubble = useCallback(
@@ -430,7 +482,7 @@ export default function StorytellerHomeHost({
     };
   }, [clearTimers]);
 
-  // Yielded → fully unmounted (the tour / celebration owns the screen).
+  // Yielded → renders null (stays mounted; the tour / celebration owns the screen).
   if (yielded) return null;
 
   const audioPlaying = phase === "greeting_audio" && audioRef.current !== null;
