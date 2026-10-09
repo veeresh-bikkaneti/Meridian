@@ -482,7 +482,7 @@ export default function StorytellerHomeHost({
     };
   }, [clearTimers]);
 
-  // Yielded → fully unmounted (the tour / celebration owns the screen).
+  // Yielded → renders null (stays mounted; the tour / celebration owns the screen).
   if (yielded) return null;
 
   const audioPlaying = phase === "greeting_audio" && audioRef.current !== null;
