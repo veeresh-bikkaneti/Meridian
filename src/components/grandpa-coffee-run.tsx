@@ -20,14 +20,13 @@ import {
  *     Meridian banner.
  *  1. The tasting tour — grandpa walks a dotted S-trail (2px, 6/6 dash,
  *     round caps, brass) down the page gutters. At EACH option he STOPS,
- *     turns to look at it, sips his coffee (~1.2s), then walks on. Stop
- *     order: difficulty picker → GeoDetective card → edition cards →
- *     review deck (when present). The trail weaves AROUND cards — never
+ *     turns to look at it, sips his coffee (~0.8s), then walks on. Stop
+ *     order: difficulty picker → GeoDetective card → edition cards. The trail weaves AROUND cards — never
  *     behind, never on — keeping ≥16px from every interactive rect
  *     (verified by a sampling gate in grandpa-tour.ts; violations step down
  *     the fallback ladder). Silent: no ask, no cloud during the walk, and
  *     the walker is NOT tappable mid-walk (moving tap targets fail a11y).
- *     The whole journey is hard-capped at 25s.
+ *     The whole journey is hard-capped at 10s.
  *  2. Top-up — at the pour waypoint just above the park strip he holds up
  *     his mug and the existing gooseneck-kettle dolly-vertigo pour plays
  *     (scale 0.25→2.6x, spout-tip transform origin, visible fill + steam
@@ -84,11 +83,11 @@ const MOBILE_QUERY = "(max-width: 1023.5px)";
 const TOUR_LAST_DATE_KEY = "meridian.grandpaTour.lastDate";
 const TOUR_ASK_SHOWN_KEY = "meridian.grandpaTour.askShown";
 /** Total journey hard cap, measured from the first step. */
-const TOUR_JOURNEY_CAP_MS = 25_000;
+const TOUR_JOURNEY_CAP_MS = 10_000;
 /** Normal journey target — comfortably under the cap. */
-const TOUR_TARGET_MS = 20_000;
+const TOUR_TARGET_MS = 6_000;
 /** Sip dwell at each tasting stop. */
-const TOUR_SIP_MS = 1200;
+const TOUR_SIP_MS = 800;
 /** Top-up pour — matches the kettle-drop keyframes. */
 const TOUR_POUR_MS = 2800;
 /** Tour figure size (smaller than the strip's 64px walker). */
@@ -749,12 +748,10 @@ function measureTour(): TourMeasurements | null {
   const geodetective = pick("tour-stop-geodetective");
   const editions = pick("tour-stop-editions");
   if (!difficulty || !geodetective || !editions) return null;
-  const review = pick("tour-stop-review");
   const stops: TourStop[] = [
     { key: "difficulty", rect: difficulty },
     { key: "geodetective", rect: geodetective },
     { key: "editions", rect: editions },
-    ...(review ? [{ key: "review" as const, rect: review }] : []),
   ];
   const interactives: DocRect[] = [];
   main
@@ -834,7 +831,7 @@ function TourLayer({
 
   // Walk engine — JS-driven position along the path with sip dwell at each
   // stop and the kettle top-up at the pour waypoint. Time-based (not
-  // frame-based) so the 25s hard cap holds even when frames drop.
+  // frame-based) so the 10s hard cap holds even when frames drop.
   useEffect(() => {
     if (stage !== "walk" || !geometry) return;
     const path = pathRef.current;
@@ -960,7 +957,7 @@ function TourLayer({
       last = now;
       // Glue the document-space layer to the scrolled page.
       doc.style.transform = `translateY(${-window.scrollY}px)`;
-      // Hard cap: the journey never runs past 25s.
+      // Hard cap: the journey never runs past 10s.
       if (now - t0 > TOUR_JOURNEY_CAP_MS) {
         finish();
         return;
