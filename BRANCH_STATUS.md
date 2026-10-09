@@ -53,3 +53,10 @@ Review: 10/12 approve, 2 BLOCKs both on B4 Clean Round badge. Fix agent worktree
 - Locked copy verified byte-identical vs origin/main: Ko-fi 3 strings (2/2/1), `bands.ts` diff-empty, `storyteller-lines.ts` diff-empty.
 - Gates on rebased head: tsc clean · lint-cards GATE PASSED · build:pages green (real, `_shell.html` emitted) · npm test 1024/1024 · Playwright clean-round-badge 3/3 green.
 - Note: an earlier badge-e2e failure in this worktree was a broken local build (copied cross-worktree node_modules → duplicate React in SSR prerender); fixed with a clean `npm ci`. Not a code issue.
+
+## 2026-10-09 — rebase onto main@df3f46c (#116 dismiss-overlap fix merged)
+- Remote verified unchanged at f706bd8 before push (force-with-lease).
+- 1 docs-only conflict in BRANCH_STATUS.md (kept this branch's doc); 4 commits replayed clean.
+- Badge-fix survival verified: `progressed.dealBandConfig?.band` (snapshot) at LoopScreen.tsx:444, win-only `data-testid="clean-round-badge"`, clean-round-badge.spec.ts present.
+- Locked copy byte-identical vs origin/main: Ko-fi 3 strings (2/2/1 occurrences), bands.ts diff-empty, storyteller files diff-empty.
+- Gates on final head: tsc clean · lint-cards GATE PASSED · build:pages green (dist/client/_shell.html emitted) · npm test 1040/1040 · Playwright clean-round-badge 3/3.
