@@ -7,6 +7,14 @@ Discord alerts, fallback-UI a11y, and a post-deploy smoke script.
 
 Rebased onto origin/main@4e09990 (PR #104 facts-ladder merged) — see "Merged base" below.
 
+## Rebase 2026-10-08 (onto origin/main@4e09990 — PR #104 merged)
+- 4 commits replayed. 1 conflict, BRANCH_STATUS.md docs-only (full-file):
+  kept this branch's doc, added "Merged base — facts ladder" section.
+  Zero code conflicts.
+- Post-rebase gates (all on final head): tsc clean · lint-cards GATE PASSED
+  (124,690 records) · npm test 744 scripts + 868 src pass, 0 fail ·
+  build:pages green · crash-watchdog e2e 4/4.
+
 ## Merged base — facts ladder (PR #104, main@4e09990)
 
 The rebase base now contains the merged facts-ladder pipeline (was
