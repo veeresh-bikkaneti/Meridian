@@ -59,15 +59,20 @@
 .storyteller-home-bubble {
   margin: 0;
   max-width: 100%;
+  /* Room for the 44px dismiss anchored inside the bubble's top-right. */
+  padding-right: 56px;
 }
 
-/* 44px dismiss overhanging the bubble corner (same bar as the card's
- * speaker/replay controls). */
+/* 44px dismiss centered on the bubble's right edge, inside the bubble.
+ * (Top-right overhung the eyebrow sound toggle at 360–390px and stole its
+ * taps — QA BLOCKED. Mid-right clears the toggle at every width and every
+ * bubble height; padding-right keeps text clear of the button.) */
 .storyteller-home-dismiss {
   pointer-events: auto;
   position: absolute;
-  top: -22px;
-  right: -14px;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
