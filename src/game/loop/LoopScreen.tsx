@@ -553,6 +553,11 @@ export function LoopScreen({
 
   const current = store?.current ?? null;
   const caseNo = store ? caseNumber(store) : 1;
+  // Deal-time band for the hint policy (never live): in-memory snapshot →
+  // persisted dealBandConfig.band (survives remount/resume) → "11-13"
+  // (fails closed: policy "none" hides the button).
+  const dealBandResolved: AgeBandId =
+    dealBand ?? current?.dealBandConfig?.band ?? "11-13";
 
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
@@ -626,7 +631,7 @@ export function LoopScreen({
           onNextMystery={onNextMystery}
           onLeave={onLeave}
           dealConfig={activeDealConfig}
-          dealBand={dealBand}
+          dealBand={dealBandResolved}
           cleanRoundBadge={cleanRoundBadge}
         />
       ) : null}
@@ -693,11 +698,10 @@ function LoopGame({
   /** Deal-time config for the open mystery (preserved across band changes). */
   dealConfig: GeoDetectiveConfig;
   /**
-   * Deal-time band snapshot for the hint policy (may be null for resumed
-   * pre-snapshot mysteries — falls back to the live band, same as
-   * activeDealConfig's last-resort fallback).
+   * Deal-time band for the hint policy — resolved by the parent (snapshot →
+   * persisted → "11-13" fails-closed). Never the live band.
    */
-  dealBand: AgeBandId | null;
+  dealBand: AgeBandId;
   /** Just-earned Clean Round badge, forwarded to the win reveal. */
   cleanRoundBadge: PassportBadge | null;
 }) {
@@ -710,7 +714,10 @@ function LoopGame({
   // the button); 5-7 can't reach this loop (locked in bands.ts). Hints
   // NEVER touch points. The nudge is the same mechanical quadrant hint as
   // the quiz loops (hint-logic.ts) — coarse, never pinpoints.
-  const hintPolicy = getBandConfig(dealBand ?? resolveBand()).hintPolicy;
+  // Fallback chain: in-memory deal snapshot → persisted dealBandConfig.band
+  // (survives remount/resume) → "11-13" (fails closed: policy "none" hides
+  // the button). NEVER the live band.
+  const hintPolicy = getBandConfig(dealBand).hintPolicy;
   const [hintMessage, setHintMessage] = useState<string | null>(null);
   const [hintsUsedThisMystery, setHintsUsedThisMystery] = useState(0);
   const [hintOfferDismissed, setHintOfferDismissed] = useState(false);
