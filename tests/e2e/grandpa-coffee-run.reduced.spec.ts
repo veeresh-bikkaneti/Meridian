@@ -96,9 +96,9 @@ test("grandpa is seated and fully static under reduced motion", async ({
 
   // The donation bubble is shown statically so the CTA stays discoverable.
   const bubble = page.getByTestId("grandpa-donation-bubble");
-  await expect(bubble).toContainText("Grown-ups, buy me a coffee? ☕");
+  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
   await expect(bubble).toContainText(
-    "Your coffee keeps Meridian free for kids",
+    "Your support keeps Meridian free for kids",
   );
   const bubbleOpacity = await bubble.evaluate(
     (el) => getComputedStyle(el).opacity,

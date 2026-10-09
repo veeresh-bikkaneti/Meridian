@@ -57,7 +57,7 @@ test("seated finale + donation bubble render at phone width", async ({
   });
 
   const bubble = page.getByTestId("grandpa-donation-bubble");
-  await expect(bubble).toContainText("Grown-ups, buy me a coffee? ☕");
+  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
   // Poll for full opacity (the cloud fades in; a single read can catch it
   // mid-transition).
   await expect

@@ -28,8 +28,7 @@ import {
  *     visible in the closing band from the start of the walk, and the
  *     strip walker is tappable (moving tap targets still avoided: the
  *     tappable walker is the parked strip figure, not the moving tour
- *     walker). The whole journey is hard-capped at 10s.
- *  2. Top-up — at the pour waypoint just above the park strip he holds up
+ *     walker). The whole journey is hard-capped at 10s. *  2. Top-up — at the pour waypoint just above the park strip he holds up
  *     his mug and the existing gooseneck-kettle dolly-vertigo pour plays
  *     (scale 0.25→2.6x, spout-tip transform origin, visible fill + steam
  *     burst, ~2.8s). Wordless.
@@ -85,7 +84,7 @@ const MOBILE_QUERY = "(max-width: 1023.5px)";
 const TOUR_LAST_DATE_KEY = "meridian.grandpaTour.lastDate";
 const TOUR_ASK_SHOWN_KEY = "meridian.grandpaTour.askShown";
 /** Total journey hard cap, measured from the first step. */
-const TOUR_JOURNEY_CAP_MS = 10_000;
+const TOUR_JOURNEY_CAP_MS = 12_000;
 /** Normal journey target — comfortably under the cap. */
 const TOUR_TARGET_MS = 6_000;
 /** Sip dwell at each tasting stop. */
@@ -1490,7 +1489,7 @@ export function GrandpaCoffeeRun() {
           onKeyDown={walkerInteractive ? onWalkerKeyDown : undefined}
           aria-label={
             walkerInteractive
-              ? "Grandpa's Tasting Tour. Activate to buy Grandpa a coffee — ask a grown-up first."
+              ? "Grandpa's Tasting Tour. Activate to support Meridian on Ko-fi — asks a grown-up first."
               : undefined
           }
         >
@@ -1603,7 +1602,7 @@ export function GrandpaCoffeeRun() {
                   <div
                     className="bubble-gate"
                     role="dialog"
-                    aria-label="Help Meridian on Ko-fi"
+                    aria-label="Support Meridian on Ko-fi"
                     data-testid="grandpa-cloud-gate"
                     onKeyDown={onGateKeyDown}
                   >
@@ -1611,7 +1610,7 @@ export function GrandpaCoffeeRun() {
                       You're leaving Meridian to visit Ko-fi. Ask a grown-up!
                     </p>
                     <p className="bubble-gate-sub">
-                      Your coffee keeps every game, every map, and every mystery free for kids. Thank you! 💛
+                      Meridian is free forever — every game, every map, every mystery.
                     </p>
                     <div className="bubble-gate-actions">
                       <button

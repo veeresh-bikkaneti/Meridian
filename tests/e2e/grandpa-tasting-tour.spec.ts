@@ -376,8 +376,8 @@ test("settle: faint trail, Game Designer cloud copy, gate workflow", async ({
 
   // Game Designer's kid-friendly copy.
   const bubble = page.getByTestId("grandpa-donation-bubble");
-  await expect(bubble).toContainText("Grown-ups, buy me a coffee? ☕");
-  await expect(bubble).toContainText("Your coffee keeps Meridian free for kids");
+  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
+  await expect(bubble).toContainText("Your support keeps Meridian free for kids");
 
   // Tap the cloud → gate → Continue opens Ko-fi in a new tab, cloud reverts.
   await page.getByTestId("grandpa-bubble-ask").click();
@@ -431,7 +431,7 @@ test("skip tour: button settles the tour immediately", async ({ page }) => {
     { timeout: 10_000 },
   );
   await expect(page.getByTestId("grandpa-donation-bubble")).toContainText(
-    "Grown-ups, buy me a coffee? ☕",
+    "Grown-ups — buy me a coffee? ☕",
   );
   expectCleanConsole(errors);
 });
@@ -515,7 +515,7 @@ test("ask once per session: reload hides the cloud", async ({ page }) => {
   await waitForSeated(page);
   // First settle shows the ask…
   await expect(page.getByTestId("grandpa-donation-bubble")).toContainText(
-    "Grown-ups, buy me a coffee? ☕",
+    "Grown-ups — buy me a coffee? ☕",
   );
   // …a same-session reload (same calendar day) keeps grandpa seated but
   // the ask stays shown only once per session.
@@ -556,7 +556,7 @@ test.describe("reduced motion", () => {
       .evaluate((el) => getComputedStyle(el).opacity);
     expect(parseFloat(seatedOpacity)).toBeGreaterThan(0.9);
     const bubble = page.getByTestId("grandpa-donation-bubble");
-    await expect(bubble).toContainText("Grown-ups, buy me a coffee? ☕");
+    await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
     expectCleanConsole(errors);
   });
 });
@@ -603,8 +603,8 @@ test("Comet plush sits static on the bench; ask copy unchanged", async ({
   expect(animName, "plush has no CSS animation").toBe("none");
   // The Game Designer's ask copy is unchanged.
   const bubble = page.getByTestId("grandpa-donation-bubble");
-  await expect(bubble).toContainText("Grown-ups, buy me a coffee? ☕");
-  await expect(bubble).toContainText("Your coffee keeps Meridian free for kids");
+  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
+  await expect(bubble).toContainText("Your support keeps Meridian free for kids");
   expectCleanConsole(errors);
 });
 
