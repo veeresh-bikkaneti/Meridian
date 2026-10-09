@@ -148,3 +148,16 @@ feat/sprint-entry-gates). Entries preserved from main's BRANCH_STATUS.md:
 - `npm run smoke:crash` validated against live prod: correctly FAILs 3/4
   checks on the current broken deploy (no /health, no /ingest, no
   endpoint) — proves it detects the outage class
+
+## Rebase onto main@8cd0fda (2026-10-08, PR #103 merged)
+
+- 3 commits replayed cleanly: eb47bec (crash fixes) → 880b577 (route-error
+  test) → 11daaec (rebase docs). Only conflict: BRANCH_STATUS.md
+  (docs-only, kept this branch's doc, updated base note).
+  `src/components/game-app.tsx` auto-merged (no markers) — verified the
+  merged hunk is this branch's own observability additions only.
+- Post-rebase gates on final head: `npx tsc --noEmit` clean;
+  `node scripts/lint-cards.mjs` GATE PASSED (124,690 records);
+  `npm run build:pages` green; `npm test` 857/857 pass, 0 fail;
+  `tests/e2e/crash-watchdog.spec.ts` 4/4 pass.
+- Pushed via --force-with-lease. NOT merged (owner merges).
