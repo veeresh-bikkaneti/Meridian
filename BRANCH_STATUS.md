@@ -132,3 +132,8 @@ in greetings/poke) · narration voice unchanged (TruthTeller mp3s land later).
 greet-01…06, post-tour return, 7 send-offs, 5 poke lines, leaf + scroll-tap
 captions, audio-fail fallback (reused export). Ko-fi strings + age-band copy
 untouched (files not in this diff; `git status` confirms).
+
+## Rebase (2026-10-09, rebase agent) — onto origin/main@f4f92ad (#111 merged)
+- Conflicts: 1, docs-only (BRANCH_STATUS.md — main inherited #111's kofi doc; kept the storyteller-home doc, base updated 64c82d6 → f4f92ad). Zero code conflicts; both branch commits replayed clean.
+- Locked copy re-verified vs origin/main: Ko-fi 3 strings byte-identical (2/2/1 counts match); bands.ts + storyteller-lines.ts untouched; "five hidden places" absent from storyteller-home-copy.ts.
+- Gates on final head: tsc clean · lint-cards GATE PASSED · build:pages green · npm test 993/993 · Playwright storyteller-home 12/12 (mobile 8/desktop 2/reduced 2), zero console errors.
