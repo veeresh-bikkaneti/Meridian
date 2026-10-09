@@ -96,9 +96,9 @@ test("grandpa is seated and fully static under reduced motion", async ({
 
   // The donation bubble is shown statically so the CTA stays discoverable.
   const bubble = page.getByTestId("grandpa-donation-bubble");
-  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
+  await expect(bubble).toContainText("Grown-ups, buy me a coffee? ☕");
   await expect(bubble).toContainText(
-    "Your support keeps Meridian free for kids",
+    "Your coffee keeps Meridian free for kids",
   );
   const bubbleOpacity = await bubble.evaluate(
     (el) => getComputedStyle(el).opacity,
@@ -119,7 +119,7 @@ test("grandpa is seated and fully static under reduced motion", async ({
   await expect(cloudBubble).toHaveAttribute("data-cloud", "gate");
   const gate = page.getByTestId("grandpa-cloud-gate");
   await expect(gate).toBeVisible();
-  await expect(gate).toContainText("Ask a grown-up!");
+  await expect(gate).toContainText("You're leaving Meridian to visit Ko-fi. Ask a grown-up!");
   // Cancel reverts.
   await page.getByTestId("grandpa-cloud-cancel").click();
   await expect(cloudBubble).toHaveAttribute("data-cloud", "ask");

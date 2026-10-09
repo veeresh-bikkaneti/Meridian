@@ -9,7 +9,7 @@ import { serveBuiltArtifact } from "./helpers";
  * GeoDetective, editions, review when present — turns to look, sips ~1.2s,
  * walks on; silent, untappable mid-walk, hard-capped at 25s) → the kettle
  * top-up at the pour waypoint above the park strip → settle (seated on the
- * bench, trail fades to ~18%, donation cloud with Veeresh's exact copy).
+ * bench, trail fades to ~18%, donation cloud with the Game Designer's copy).
  *
  * Covers: trail clearance (never inside an interactive rect +2px) across
  * 360/390px × dark/light × tour shown/hidden × deck present/absent; stops
@@ -342,7 +342,7 @@ test("top-up: the kettle pours and the mug fills at the pour waypoint", async ({
   expectCleanConsole(errors);
 });
 
-test("settle: faint trail, Veeresh's cloud copy, gate workflow", async ({
+test("settle: faint trail, Game Designer cloud copy, gate workflow", async ({
   page,
 }) => {
   // Stub window.open to capture the Ko-fi call without hitting the network.
@@ -374,17 +374,17 @@ test("settle: faint trail, Veeresh's cloud copy, gate workflow", async ({
     .toBeLessThan(0.3);
   expect(await trailOpacityNow()).toBeGreaterThan(0.1);
 
-  // Veeresh's exact copy (2026-10-07, parent-directed).
+  // Game Designer's kid-friendly copy.
   const bubble = page.getByTestId("grandpa-donation-bubble");
-  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
-  await expect(bubble).toContainText("Your support keeps Meridian free for kids");
+  await expect(bubble).toContainText("Grown-ups, buy me a coffee? ☕");
+  await expect(bubble).toContainText("Your coffee keeps Meridian free for kids");
 
   // Tap the cloud → gate → Continue opens Ko-fi in a new tab, cloud reverts.
   await page.getByTestId("grandpa-bubble-ask").click();
   await expect(bubble).toHaveAttribute("data-cloud", "gate");
   const gate = page.getByTestId("grandpa-cloud-gate");
   await expect(gate).toBeVisible();
-  await expect(gate).toContainText("Ask a grown-up!");
+  await expect(gate).toContainText("You're leaving Meridian to visit Ko-fi. Ask a grown-up!");
   await page.getByTestId("grandpa-cloud-continue").click();
   const opened = await page.evaluate(
     () => (window as unknown as { __opened: unknown[] }).__opened,
@@ -431,7 +431,7 @@ test("skip tour: button settles the tour immediately", async ({ page }) => {
     { timeout: 10_000 },
   );
   await expect(page.getByTestId("grandpa-donation-bubble")).toContainText(
-    "Grown-ups — buy me a coffee? ☕",
+    "Grown-ups, buy me a coffee? ☕",
   );
   expectCleanConsole(errors);
 });
@@ -515,7 +515,7 @@ test("ask once per session: reload hides the cloud", async ({ page }) => {
   await waitForSeated(page);
   // First settle shows the ask…
   await expect(page.getByTestId("grandpa-donation-bubble")).toContainText(
-    "Grown-ups — buy me a coffee? ☕",
+    "Grown-ups, buy me a coffee? ☕",
   );
   // …a same-session reload (same calendar day) keeps grandpa seated but
   // the ask stays shown only once per session.
@@ -556,7 +556,7 @@ test.describe("reduced motion", () => {
       .evaluate((el) => getComputedStyle(el).opacity);
     expect(parseFloat(seatedOpacity)).toBeGreaterThan(0.9);
     const bubble = page.getByTestId("grandpa-donation-bubble");
-    await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
+    await expect(bubble).toContainText("Grown-ups, buy me a coffee? ☕");
     expectCleanConsole(errors);
   });
 });
@@ -601,10 +601,10 @@ test("Comet plush sits static on the bench; ask copy unchanged", async ({
     (el) => getComputedStyle(el).animationName,
   );
   expect(animName, "plush has no CSS animation").toBe("none");
-  // Veeresh's ask copy is unchanged.
+  // The Game Designer's ask copy is unchanged.
   const bubble = page.getByTestId("grandpa-donation-bubble");
-  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
-  await expect(bubble).toContainText("Your support keeps Meridian free for kids");
+  await expect(bubble).toContainText("Grown-ups, buy me a coffee? ☕");
+  await expect(bubble).toContainText("Your coffee keeps Meridian free for kids");
   expectCleanConsole(errors);
 });
 

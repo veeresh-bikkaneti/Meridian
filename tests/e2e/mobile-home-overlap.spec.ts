@@ -573,7 +573,7 @@ for (const width of WIDTHS) {
         );
         const bubble = page.getByTestId("grandpa-donation-bubble");
         await expect(bubble).toBeVisible();
-        await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
+        await expect(bubble).toContainText("Grown-ups, buy me a coffee? ☕");
         // The cloud fades in — poll for full opacity.
         await expect
           .poll(

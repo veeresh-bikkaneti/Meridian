@@ -24,18 +24,20 @@ import {
  *     order: difficulty picker → GeoDetective card → edition cards. The trail weaves AROUND cards — never
  *     behind, never on — keeping ≥16px from every interactive rect
  *     (verified by a sampling gate in grandpa-tour.ts; violations step down
- *     the fallback ladder). Silent: no ask, no cloud during the walk, and
- *     the walker is NOT tappable mid-walk (moving tap targets fail a11y).
- *     The whole journey is hard-capped at 10s.
+ *     the fallback ladder). The strip's donation cloud (grown-up lock) is
+ *     visible in the closing band from the start of the walk, and the
+ *     strip walker is tappable (moving tap targets still avoided: the
+ *     tappable walker is the parked strip figure, not the moving tour
+ *     walker). The whole journey is hard-capped at 10s.
  *  2. Top-up — at the pour waypoint just above the park strip he holds up
  *     his mug and the existing gooseneck-kettle dolly-vertigo pour plays
  *     (scale 0.25→2.6x, spout-tip transform origin, visible fill + steam
  *     burst, ~2.8s). Wordless.
  *  3. Settle — he sits on the bench facing the viewer, beside a tiny
  *     static Comet plush (Veeresh 2026-10-07). The
- *     trail fades to ~18% over ~2s. The donation cloud fades in with
- *     Veeresh's exact copy ("Grown-ups — buy me a coffee? ☕" /
- *     "Your support keeps Meridian free for kids"). Tapping grandpa OR the
+ *     trail fades to ~18% over ~2s. The donation cloud fades in with the
+ *     Game Designer's kid-friendly copy ("Grown-ups, buy me a coffee? ☕" /
+ *     "Your coffee keeps Meridian free for kids"). Tapping grandpa OR the
  *     cloud opens the "ask a grown-up" gate INSIDE THE SAME CLOUD — Continue
  *     opens Ko-fi in a new tab and the cloud reverts; Cancel/Esc reverts
  *     too. The ask shows once per session (sessionStorage).
@@ -1421,10 +1423,17 @@ export function GrandpaCoffeeRun() {
   // Fail-closed: no Ko-fi URL configured → render nothing.
   if (!KOFI_URL) return null;
 
-  // The cloud shows: in "strip" mode always (previous behavior); once
-  // settled on mobile, once per session.
+  // The cloud shows: in "strip" mode always (previous behavior); on mobile
+  // also during the tasting tour (the grown-up lock is discoverable from the
+  // first beat) and once settled — both once per session via askVisible.
   const showCloud =
-    mode === "strip" ? true : mode === "seated" ? !isMobile || askVisible : false;
+    mode === "strip"
+      ? true
+      : mode === "tour"
+        ? isMobile && askVisible
+        : mode === "seated"
+          ? !isMobile || askVisible
+          : false;
   const walkerInteractive = showCloud;
 
   return (
@@ -1481,7 +1490,7 @@ export function GrandpaCoffeeRun() {
           onKeyDown={walkerInteractive ? onWalkerKeyDown : undefined}
           aria-label={
             walkerInteractive
-              ? "Grandpa's Tasting Tour. Activate to support Meridian on Ko-fi — asks a grown-up first."
+              ? "Grandpa's Tasting Tour. Activate to buy Grandpa a coffee — ask a grown-up first."
               : undefined
           }
         >
@@ -1567,8 +1576,8 @@ export function GrandpaCoffeeRun() {
 
           {/* The cloud — the finale ask, or the in-cloud gate workflow.
               Tapping grandpa OR this cloud swaps it to the gate; the whole
-              flow lives here so the UI never gets crowded. Veeresh's exact
-              copy (2026-10-07, parent-directed). */}
+              flow lives here so the UI never gets crowded. Copy per the Game
+              Designer's kid-friendly brief. */}
           {showCloud && (
             <div
               className="grandpa-donation-bubble"
@@ -1585,24 +1594,24 @@ export function GrandpaCoffeeRun() {
                       e.stopPropagation();
                       openCloudGate();
                     }}
-                    aria-label="Grown-ups — buy me a coffee? Activate to learn how to support Meridian."
+                    aria-label="Grown-ups, buy me a coffee? Activate to learn more."
                   >
-                    <strong>Grown-ups — buy me a coffee? ☕</strong>
-                    <span>Your support keeps Meridian free for kids</span>
+                    <strong>Grown-ups, buy me a coffee? ☕</strong>
+                    <span>Your coffee keeps Meridian free for kids</span>
                   </button>
                 ) : (
                   <div
                     className="bubble-gate"
                     role="dialog"
-                    aria-label="Support Meridian on Ko-fi"
+                    aria-label="Help Meridian on Ko-fi"
                     data-testid="grandpa-cloud-gate"
                     onKeyDown={onGateKeyDown}
                   >
                     <p className="bubble-gate-title">
-                      You&rsquo;re leaving Meridian to visit Ko-fi. Ask a grown-up!
+                      You're leaving Meridian to visit Ko-fi. Ask a grown-up!
                     </p>
                     <p className="bubble-gate-sub">
-                      Meridian is free forever — every game, every map, every mystery.
+                      Your coffee keeps every game, every map, and every mystery free for kids. Thank you! 💛
                     </p>
                     <div className="bubble-gate-actions">
                       <button

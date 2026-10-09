@@ -317,3 +317,72 @@ walk (Option B — Game Designer + UI/UX Expert reconciled spec).
   grown-up gate copy (verbatim), offline/no-URL fail-closed, same-day
   behavior, tour-skip button, reduced-motion path, kid-safety copy.
   No CSS changes.
+
+---
+
+## 2026-10-09 — tour covers the grown-up lock + Game Designer copy refresh
+(Frontend dev pass; PR #111 scope)
+
+### Task 1 — cloud + walker interactive during mobile `tour` mode
+- `src/components/grandpa-coffee-run.tsx` — `showCloud` now:
+  `mode === "strip" ? true : mode === "tour" ? isMobile && askVisible : mode === "seated" ? !isMobile || askVisible : false`
+  (strip always, tour on mobile, seated unchanged; offline/no-KOFI_URL
+  still return null earlier). `walkerInteractive = showCloud` is
+  unchanged, so the parked strip walker is tappable (role=button,
+  tabIndex, click/KeyDown → gate) during the walk. TourLayer untouched:
+  the moving tour walker keeps no button role, the fixed `.tour-skip`
+  (z 45, above the pointer-events:none tour plane) stays tappable, and
+  `onTourHandoff` end state is unchanged.
+- `src/components/grandpa-coffee-run.css` — removed the
+  `.grandpa-scene[data-tour="active"] .grandpa-walker { opacity: 0;
+  pointer-events: none; }` suppression (+ refreshed the two stale
+  comments). No clipping rules touch the bubble: on mobile the bubble is
+  `opacity: 1; visibility: visible` whenever rendered, and the band
+  already reserves `walker + gate-state cloud` height.
+- Behavior trade-off: during the final walk leg the moving tour walker
+  approaches the now-visible parked strip walker at the bench and
+  overlaps it briefly (~450ms fade) before the handoff — reads as the
+  tour figure arriving and "becoming" the seated grandpa, same crossfade
+  as before, just no longer from invisibility.
+
+### Task 2 — Game Designer kid-friendly copy (verbatim, incl. aria-labels)
+- Ask: title `Grown-ups, buy me a coffee? ☕`, sub
+  `Your coffee keeps Meridian free for kids`, aria
+  `Grown-ups, buy me a coffee? Activate to learn more.`
+- Walker aria: `Grandpa's Tasting Tour. Activate to buy Grandpa a coffee — ask a grown-up first.`
+- Gate: aria `Help Meridian on Ko-fi`, title
+  `You're leaving Meridian to visit Ko-fi. Ask a grown-up!` (straight
+  apostrophe in JSX so e2e exact matching works), sub
+  `Your coffee keeps every game, every map, and every mystery free for kids. Thank you! 💛`
+- Continue/Cancel buttons unchanged. Header comment block and inline
+  copy comments updated so docs quote the new strings. All behavior
+  preserved: tap→gate, Continue→Ko-fi new tab (noopener/noreferrer),
+  Cancel/Esc reverts + refocuses walker, once-per-session cloud,
+  offline/no-URL fail-closed, zero console errors in e2e runs.
+
+### Task 3 — e2e copy assertions updated
+- `grandpa-coffee-run.mobile.spec.ts`, `.reduced.spec.ts`,
+  `.desktop.spec.ts`, `mobile-home-overlap.spec.ts`,
+  `grandpa-tasting-tour.spec.ts`: old ask/sub strings → new; gate
+  `toContainText("Ask a grown-up!")` → full new title
+  (was a substring, still true — now exact). Stale attribution comments
+  (Veeresh/parent-directed) → Game Designer. `LockedLoop.tsx` untouched
+  (different copy, unrelated).
+
+### Gates (all on the final head, post-edit)
+- `npx tsc --noEmit` — clean
+- `node scripts/lint-cards.mjs` — GATE PASSED
+- `npm run build:pages` — green (note: e2e verification rebuilt with
+  `VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy` per the spec's
+  own build requirement; committed source has no URL — fail-closed
+  default preserved)
+- `npm test` — 948/948 pass, 0 fail
+- Playwright `grandpa-coffee-run.mobile.spec.ts`: 1/3 pass, 2 fail —
+  BOTH failures are pre-existing on pristine f9eecf2 (verified via
+  `git stash` + rebuild + rerun): the bubble/gate `x + width <= 392`
+  viewport-containment check gets 436/421px (font-rendering environment
+  flake; geometry untouched by this change). New-copy assertions in both
+  failing tests PASS (failures occur on the later geometry lines only).
+
+### Pending (coordinator)
+- Push `fix/kofi-cloud-mobile` + open PR #111 (DO NOT merge — owner merges).

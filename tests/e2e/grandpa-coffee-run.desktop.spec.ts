@@ -11,7 +11,7 @@ import { serveBuiltArtifact } from "./helpers";
  * vanishes; the walk is silent — no mid-walk ask) → arrival → park finale
  * (tree + bench fade in; grandpa sits on the bench facing the viewer, head
  * fixed, mug raised with steam + periodic invite flourish; the cloud opens
- * with Veeresh's copy "Grown-ups — buy me a coffee? ☕").
+ * with the Game Designer's kid-friendly copy "Grown-ups, buy me a coffee? ☕").
  *
  * The key UX change: tapping grandpa OR the cloud swaps the cloud content to
  * the "ask a grown-up" gate workflow INSIDE THE SAME CLOUD — no separate
@@ -215,9 +215,9 @@ test("walk has no cloud, kettle fills the mug, then the park finale", async ({
   // The cloud opened with the ask.
   const bubble = page.getByTestId("grandpa-donation-bubble");
   await expect(bubble).toHaveAttribute("data-cloud", "ask");
-  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
+  await expect(bubble).toContainText("Grown-ups, buy me a coffee? ☕");
   await expect(bubble).toContainText(
-    "Your support keeps Meridian free for kids",
+    "Your coffee keeps Meridian free for kids",
   );
   // The cloud fades in over 0.3s — poll for full opacity rather than
   // reading once mid-transition.
@@ -246,7 +246,7 @@ test("tapping grandpa opens the Ko-fi workflow inside the cloud", async ({
   await expect(bubble).toHaveAttribute("data-cloud", "gate");
   const gate = page.getByTestId("grandpa-cloud-gate");
   await expect(gate).toBeVisible();
-  await expect(gate).toContainText("Ask a grown-up!");
+  await expect(gate).toContainText("You're leaving Meridian to visit Ko-fi. Ask a grown-up!");
   await expect(gate).toContainText("Meridian is free forever");
   // UX: focus lands on Continue the moment the gate opens.
   await expect(page.getByTestId("grandpa-cloud-continue")).toBeFocused();
@@ -295,7 +295,7 @@ test("Continue opens Ko-fi in a new tab and the cloud reverts", async ({
   // The cloud reverts to the ask.
   const bubble = page.getByTestId("grandpa-donation-bubble");
   await expect(bubble).toHaveAttribute("data-cloud", "ask");
-  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
+  await expect(bubble).toContainText("Grown-ups, buy me a coffee? ☕");
   expect(page.url()).toBe(APP);
   expectCleanConsole(errors);
 });
@@ -315,7 +315,7 @@ test("Cancel reverts the cloud without opening anything", async ({ page }) => {
   await page.getByTestId("grandpa-cloud-cancel").click();
   const bubble = page.getByTestId("grandpa-donation-bubble");
   await expect(bubble).toHaveAttribute("data-cloud", "ask");
-  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
+  await expect(bubble).toContainText("Grown-ups, buy me a coffee? ☕");
   const opened = await page.evaluate(
     () => (window as unknown as { __opened: unknown[] }).__opened,
   );

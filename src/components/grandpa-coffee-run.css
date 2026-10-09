@@ -95,8 +95,8 @@
 
 /* The travel animation runs only in "strip" mode (the desktop stroll and
  * the mobile level-2 fallback walk). In "tour"/"seated" modes the walker
- * stays parked — invisibly during the tour (measurable for the trail's
- * bench destination), seated from the first frame on return visits. */
+ * stays parked — visibly during the tour (the cloud + grown-up lock show
+ * from the first beat), seated from the first frame on return visits. */
 .grandpa-scene[data-mode="strip"] .grandpa-walker {
   animation: grandpa-travel 9500ms linear forwards;
 }
@@ -883,13 +883,12 @@
   animation: spark-twinkle 0.8s ease-in-out infinite;
 }
 
-/* The strip in tour mode: the band keeps reserving its space, but the
- * walker and the cloud stay out of the way until the handoff. The walker
- * crossfades in at the settle (opacity transition on .grandpa-walker). */
-.grandpa-scene[data-tour="active"] .grandpa-walker {
-  opacity: 0;
-  pointer-events: none;
-}
+/* The strip in tour mode: the band keeps reserving its space, and the
+ * parked walker + donation cloud stay visible and tappable throughout the
+ * walk (the grown-up lock is discoverable from the first beat). The strip
+ * walker is the parked, tappable figure — the tour layer's moving walker
+ * carries no button role and the skip control stays the one interactive
+ * element in the tour plane, so nothing fights the tour. */
 
 /* Desktop backstop: the tasting tour is mobile-only (the component also
  * never mounts the layer at ≥1024px). */
