@@ -348,16 +348,7 @@ export default function StorytellerHomeHost({
         // Text-only, no mp3 — the locked return line (copy G2).
         showBubble(TOUR_RETURN_LINE, TEXT_BUBBLE_MS);
       }, ENTER_MS);
-      const t2 = window.setTimeout(() => {
-        // Owner 2026-10-09: the greeting happens regardless of the tour —
-        // after the return line, run the normal greeting (mp3 on gesture).
-        setMode("greeting");
-        setPhase("entering");
-      }, ENTER_MS + TEXT_BUBBLE_MS);
-      return () => {
-        window.clearTimeout(t1);
-        window.clearTimeout(t2);
-      };
+      return () => window.clearTimeout(t1);
     }
     const t = window.setTimeout(() => {
       setPhase("greeting_text");
@@ -366,6 +357,21 @@ export default function StorytellerHomeHost({
     }, ENTER_MS);
     return () => window.clearTimeout(t);
   }, [started, phase, mode, greetingText, showBubble]);
+
+  // ---- Tour-return follow-up ------------------------------------------------
+  // Owner 2026-10-09: the greeting happens regardless of the tour. After
+  // the return line's hold elapses, run the normal greeting (mp3 on
+  // gesture). Dedicated effect (not chained timers in the entering effect):
+  // the phase change above would clean up a chained timer and stall the
+  // machine. Dismissing the line or a tour opening cancels the follow-up.
+  useEffect(() => {
+    if (yielded || mode !== "tour-return" || phase !== "greeting_text") return;
+    const t = window.setTimeout(() => {
+      setMode("greeting");
+      setPhase("entering");
+    }, TEXT_BUBBLE_MS);
+    return () => window.clearTimeout(t);
+  }, [yielded, mode, phase]);
 
   // ---- Greeting audio ------------------------------------------------------
   const beginGreetingAudio = useCallback(() => {
