@@ -83,8 +83,6 @@ const SAFE_DEAL_FALLBACK: GeoDetectiveConfig = geodetectiveConfig("8-10") ?? {
   maxClues: 5 as const,
   guessCap: 6,
 };
-<<<<<<< HEAD
-=======
 
 /**
  * Deal-time config persisted on the open mystery (P0-2): survives
@@ -109,7 +107,6 @@ function persistedDealConfig(puzzle: LoopPuzzleState | null): GeoDetectiveConfig
   };
 }
 
->>>>>>> d392bd0 (fix: P0-1 validator bound by max deal cap; P0-2 deal-time config snapshot on resume)
 function assetBase(): string {
   const base = import.meta.env.BASE_URL ?? "/";
   return base.endsWith("/") ? base : `${base}/`;
