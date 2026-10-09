@@ -21,6 +21,8 @@ import { useAiSportsTeams, withSportsLine } from "@/game/sports-ai";
 import { useAiStory, AI_STORY_BADGE } from "@/game/story-ai";
 import { revealPinCompare } from "@/game/reverse-geocode";
 import { ScrollCue, useMoreBelow } from "@/components/scroll-cue";
+import { ReadAloudButton } from "./age-profile/ReadAloudButton";
+import { audioMode, resolveBand } from "@/game/age-profile";
 
 // The Storyteller mascot (figure + narration) stays out of the initial
 // bundle — a separate lazy chunk, like the satellite map.
@@ -436,6 +438,17 @@ export function ResultCard({
                   >
                     <PlaceNameText name={placeLabel} />
                   </h2>
+                  {/* Age-profile read-aloud (Phase 2 \u00a74): auto for 5-7,
+                      button for 8-10, quiet link for 11-13. The mode reads
+                      the effective band; autoplay only on fresh reveals. */}
+                  <div className="agep-listen-row">
+                    <ReadAloudButton
+                      text={baseStory}
+                      mode={audioMode(resolveBand())}
+                      autoplay={place.audioAutoplay ?? false}
+                      speakKey={place.id}
+                    />
+                  </div>
                   {drop?.breakdown ? (
                     <p
                       data-testid="score-breakdown"

@@ -39,8 +39,8 @@ import {
   writeLoopStoreV2,
 } from "./store";
 import { buildLoopGuess, submitGuess, OCTANT_ARROWS } from "./engine";
+import { geodetectiveConfig, resolveBand, type GeoDetectiveConfig } from "@/game/age-profile";
 import {
-  LOOP_MAX_GUESSES,
   type LoopClueFile,
   type LoopGuess,
   type LoopManifest,
@@ -71,6 +71,41 @@ const StorytellerNarration = lazy(() => import("@/components/storyteller"));
 
 /** Puzzles whose hook narration already played this session (auto once per puzzle). */
 const hookNarratedPuzzles = new Set<string>();
+/**
+ * Fail-safe deal when the band has no GeoDetective config (the loop is
+ * locked for the band — reachable via a mid-run band change to 5-7):
+ * the EASIEST unlocked deal (8-10), never the hardest. Dealing the
+ * near-blind 11-13 config to the youngest band was a real bug.
+ */
+const SAFE_DEAL_FALLBACK: GeoDetectiveConfig = geodetectiveConfig("8-10") ?? {
+  startingClues: 3,
+  cluePerWrongGuess: 1 as const,
+  maxClues: 5 as const,
+  guessCap: 6,
+};
+
+/**
+ * Deal-time config persisted on the open mystery (P0-2): survives
+ * remount/resume, so a mid-mystery band change can never soft-lock the
+ * mystery under a smaller cap (an 8-10 mystery at 5 wrong guesses resumed
+ * under 11-13 keeps its cap of 6 — the 6th guess still wins or loses it).
+ * Null for pre-snapshot stores — the caller falls back to the live band.
+ */
+function persistedDealConfig(puzzle: LoopPuzzleState | null): GeoDetectiveConfig | null {
+  if (
+    !puzzle ||
+    puzzle.dealStartClues === undefined ||
+    puzzle.dealMaxGuesses === undefined
+  ) {
+    return null;
+  }
+  return {
+    startingClues: puzzle.dealStartClues,
+    cluePerWrongGuess: 1 as const,
+    maxClues: 5 as const,
+    guessCap: puzzle.dealMaxGuesses,
+  };
+}
 
 function assetBase(): string {
   const base = import.meta.env.BASE_URL ?? "/";
@@ -228,6 +263,24 @@ export function LoopScreen({
   // the reveal; a second tap during the deal is a no-op.
   const dealingRef = useRef(false);
 
+  // The deal-time config for the open mystery. Captured once per deal and
+  // preserved for the whole mystery — a mid-run band change never re-tunes
+  // an in-progress deal (no rug-pull). Null until the first deal this
+  // session: on remount/resume the STORE's persisted snapshot wins instead
+  // (P0-2 — the in-memory capture alone did not survive a remount), and the
+  // live band is only the last-resort fallback for pre-snapshot stores.
+  const [dealConfig, setDealConfig] = useState<GeoDetectiveConfig | null>(null);
+  const captureDealConfig = (): GeoDetectiveConfig => {
+    const config = geodetectiveConfig(resolveBand()) ?? SAFE_DEAL_FALLBACK;
+    setDealConfig(config);
+    return config;
+  };
+  const activeDealConfig =
+    dealConfig ??
+    persistedDealConfig(store?.current ?? null) ??
+    geodetectiveConfig(resolveBand()) ??
+    SAFE_DEAL_FALLBACK;
+
   // Mount / retry: fetch the manifest, resolve the store (resume, seam,
   // finished-but-unacknowledged reveal, or fresh deck deal), then fetch
   // the clue file. A 404 on a freshly dealt index rolls the pop back so
@@ -263,15 +316,17 @@ export function LoopScreen({
         // E2E seam: deal the pinned puzzle directly — the deck is untouched.
         // Only applies when no mystery is open.
         dealIndex = seam;
-        next = { ...next, current: freshLoopPuzzleState(seam, next.deck.cycle) };
+        const seamConfig = captureDealConfig();
+        next = { ...next, current: freshLoopPuzzleState(seam, next.deck.cycle, seamConfig.startingClues, seamConfig.guessCap) };
       } else {
         const dealt = dealPuzzleIndex(next.deck, manifest.size);
         dealIndex = dealt.index;
         popped = true;
+        const dealtConfig = captureDealConfig();
         next = {
           ...next,
           deck: dealt.deck,
-          current: freshLoopPuzzleState(dealIndex, dealt.deck.cycle),
+          current: freshLoopPuzzleState(dealIndex, dealt.deck.cycle, dealtConfig.startingClues, dealtConfig.guessCap),
         };
       }
       if (cancelled) return;
@@ -354,6 +409,10 @@ export function LoopScreen({
           prev,
         ),
         load.clue.placeId,
+        {
+          startClues: activeDealConfig.startingClues,
+          maxGuesses: activeDealConfig.guessCap,
+        },
       ),
     };
     if (progressed.status === "playing") {
@@ -415,10 +474,11 @@ export function LoopScreen({
         ? clampDeckToPoolSize(storeRef.current, manifest.size)
         : loadLoopStore(manifest.size);
       const dealt = dealPuzzleIndex(next.deck, manifest.size);
+      const dealtConfig = captureDealConfig();
       next = {
         ...next,
         deck: dealt.deck,
-        current: freshLoopPuzzleState(dealt.index, dealt.deck.cycle),
+        current: freshLoopPuzzleState(dealt.index, dealt.deck.cycle, dealtConfig.startingClues, dealtConfig.guessCap),
       };
       commitStore(next);
       try {
@@ -535,6 +595,7 @@ export function LoopScreen({
           onPick={onPick}
           onNextMystery={onNextMystery}
           onLeave={onLeave}
+          dealConfig={activeDealConfig}
         />
       ) : null}
     </main>
@@ -582,6 +643,7 @@ function LoopGame({
   onPick,
   onNextMystery,
   onLeave,
+  dealConfig,
 }: {
   clue: LoopClueFile;
   puzzle: LoopPuzzleState;
@@ -594,9 +656,11 @@ function LoopGame({
   onPick: (entry: LoopNameEntry) => void;
   onNextMystery: () => void;
   onLeave: () => void;
+  /** Deal-time config for the open mystery (preserved across band changes). */
+  dealConfig: GeoDetectiveConfig;
 }) {
   const finished = puzzle.status !== "playing";
-  const guessesLeft = LOOP_MAX_GUESSES - puzzle.guesses.length;
+  const guessesLeft = dealConfig.guessCap - puzzle.guesses.length;
 
   // Storyteller v1 (hook only): voice on the tier-4 "The Hook" clue reveal,
   // auto once per puzzle on the T1 gesture model. No persistent figure —
@@ -684,7 +748,7 @@ function LoopGame({
     <div className="mt-8 flex flex-col gap-6">
       <section aria-label="Detective's map" className="flex flex-col gap-3">
         <p className="text-sm text-muted" role="status">
-          Guess {puzzle.guesses.length + 1} of {LOOP_MAX_GUESSES}
+          Guess {puzzle.guesses.length + 1} of {dealConfig.guessCap}
           {guessesLeft <= 2 && !finished ? ` — ${guessesLeft} left` : ""}
         </p>
         <LoopMap
@@ -834,6 +898,7 @@ function LoopGame({
           revealAnnouncement={revealAnnouncement}
           onNextMystery={onNextMystery}
           onLeave={onLeave}
+          dealConfig={dealConfig}
         />
       ) : null}
     </div>
@@ -1021,6 +1086,7 @@ function LoopReveal({
   revealAnnouncement,
   onNextMystery,
   onLeave,
+  dealConfig,
 }: {
   clue: LoopClueFile;
   puzzle: LoopPuzzleState;
@@ -1032,6 +1098,8 @@ function LoopReveal({
   revealAnnouncement: string | null;
   onNextMystery: () => void;
   onLeave: () => void;
+  /** Deal-time config for the open mystery (preserved across band changes). */
+  dealConfig: GeoDetectiveConfig;
 }) {
   const won = puzzle.status === "won";
   const winningGuess = won
@@ -1123,7 +1191,7 @@ function LoopReveal({
           {won ? (
             <>
               <p className="mt-2 text-sm text-muted">
-                Solved in {puzzle.guesses.length} of {LOOP_MAX_GUESSES} guesses.
+                Solved in {puzzle.guesses.length} of {dealConfig.guessCap} guesses.
               </p>
               <p className="mt-1 text-sm font-medium text-fg">🔥 Streak: {streak}</p>
             </>

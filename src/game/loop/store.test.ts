@@ -15,8 +15,9 @@ import {
   shuffleIndexDeck,
   writeLoopStoreV2,
 } from "./store.ts";
-import { LOOP_STORAGE_KEY_V2, type LoopPuzzleState, type LoopUnlimitedStore } from "./types.ts";
+import { LOOP_STORAGE_KEY_V2, type LoopGuess, type LoopPuzzleProgress, type LoopPuzzleState, type LoopUnlimitedStore } from "./types.ts";
 import { submitGuess } from "./engine.ts";
+import { geodetectiveConfig } from "../age-profile/difficulty.ts";
 
 /** Minimal in-memory localStorage stand-in. */
 function installStorage(initial: Record<string, string> = {}) {
@@ -289,11 +290,73 @@ test("isLoopUnlimitedStore: rejects bad puzzle shapes", () => {
   );
 });
 
-test("isLoopPuzzleState: guesses cap at 5, coordinates validated", () => {
+// ---------------------------------------------------------------------------
+// P0 regression: the loop deal-config integration (8-10's 6-guess deal and
+// the deal-time config snapshot). Zero coverage here is where both P0s lived.
+// ---------------------------------------------------------------------------
+
+const LOOP_TARGET = "geonames:target-place";
+
+function validGuess(placeId: string, overrides: Partial<LoopGuess> = {}): LoopGuess {
+  return {
+    name: `Place ${placeId}`,
+    placeId,
+    distKm: 1200,
+    octant: "north",
+    warmer: null,
+    ...overrides,
+  };
+}
+
+interface DealConfig {
+  startClues: number;
+  maxGuesses: number;
+}
+
+/** Deal a fresh puzzle under a band deal and play `count` distinct wrong guesses. */
+function playWrongGuesses(
+  state: LoopPuzzleState,
+  count: number,
+  deal: DealConfig,
+): LoopPuzzleState {
+  let next = state;
+  for (let i = 0; i < count; i++) {
+    next = {
+      ...next,
+      ...submitGuess(next, validGuess(`geonames:wrong${i}`, { distKm: 500 + i }), LOOP_TARGET, {
+        startClues: deal.startClues,
+        maxGuesses: deal.maxGuesses,
+      }),
+    };
+  }
+  return next;
+}
+
+function dealConfig810(): DealConfig {
+  const deal = geodetectiveConfig("8-10")!;
+  assert.equal(deal.guessCap, 6, "8-10 deal is 6 guesses");
+  return { startClues: deal.startingClues, maxGuesses: deal.guessCap };
+}
+
+function dealState810(): LoopPuzzleState {
+  const deal = dealConfig810();
+  return freshLoopPuzzleState(0, 1, deal.startClues, deal.maxGuesses);
+}
+
+test("isLoopPuzzleState: guesses bound by the max deal cap (8-10 plays 6), coordinates validated", () => {
   const base = freshLoopPuzzleState(1, 1);
   assert.ok(isLoopPuzzleState(base));
-  const tooMany = { ...base, guesses: Array.from({ length: 6 }, () => ({ ...base.guesses })) };
-  assert.ok(!isLoopPuzzleState(tooMany));
+  const six = {
+    ...base,
+    guesses: [0, 1, 2, 3, 4, 5].map((i) => validGuess(`geonames:g${i}`)),
+  };
+  assert.ok(isLoopPuzzleState(six), "6 guesses are legal under the 8-10 deal");
+  const seven = {
+    ...base,
+    guesses: [0, 1, 2, 3, 4, 5, 6].map((i) => validGuess(`geonames:g${i}`)),
+  };
+  assert.ok(!isLoopPuzzleState(seven), "7 guesses exceed every band's deal");
+  assert.ok(!isLoopPuzzleState({ ...base, guesses: [{} as LoopGuess] }));
   assert.ok(!isLoopPuzzleState({ ...base, cluesRevealed: 0 }));
   assert.ok(!isLoopPuzzleState({ ...base, completedAt: "2026-13-99" }));
 });
@@ -384,4 +447,156 @@ test("freshLoopPuzzleState: completedCycle starts false; validator tolerates its
   delete (legacy as Partial<LoopPuzzleState>).completedCycle;
   assert.equal(isLoopPuzzleState(legacy), true);
   assert.equal(isLoopUnlimitedStore({ ...freshLoopUnlimitedStore(4), current: legacy }), true);
+});
+
+test("freshLoopPuzzleState: persists the deal-time config snapshot (P0-2)", () => {
+  const dealt = freshLoopPuzzleState(0, 1, 3, 6);
+  assert.equal(dealt.dealStartClues, 3);
+  assert.equal(dealt.dealMaxGuesses, 6);
+  assert.ok(isLoopPuzzleState(dealt));
+  const dflt = freshLoopPuzzleState(0, 1);
+  assert.equal(dflt.dealStartClues, 1);
+  assert.equal(dflt.dealMaxGuesses, 5);
+  assert.ok(isLoopPuzzleState(dflt));
+});
+
+test("P0-1: an 8-10 mystery lost on the 6th guess survives the write/read round-trip", () => {
+  installStorage();
+  const deal = dealConfig810();
+  let state = playWrongGuesses(dealState810(), 6, deal);
+  assert.equal(state.status, "lost");
+  assert.equal(state.guesses.length, 6);
+  const store = completePuzzle(
+    { ...freshLoopUnlimitedStore(10), current: state },
+    state,
+    "2026-10-08",
+  );
+  writeLoopStoreV2(store);
+  const restored = readLoopStoreV2();
+  assert.ok(restored, "the 6-guess loss must not be silently dropped");
+  assert.ok(isLoopUnlimitedStore(restored));
+  assert.equal(restored.current!.status, "lost");
+  assert.equal(restored.current!.guesses.length, 6);
+  assert.equal(restored.totals.lost, 1);
+});
+
+test("P0-1: an 8-10 mystery won on the 6th guess survives the write/read round-trip", () => {
+  installStorage();
+  const deal = dealConfig810();
+  let state = playWrongGuesses(dealState810(), 5, deal);
+  assert.equal(state.status, "playing");
+  state = {
+    ...state,
+    ...submitGuess(state, validGuess(LOOP_TARGET, { distKm: 0 }), LOOP_TARGET, deal),
+  };
+  assert.equal(state.status, "won");
+  assert.equal(state.guesses.length, 6);
+  const store = completePuzzle(
+    { ...freshLoopUnlimitedStore(10), streak: 2, current: state },
+    state,
+    "2026-10-08",
+  );
+  writeLoopStoreV2(store);
+  const restored = readLoopStoreV2();
+  assert.ok(restored, "the 6-guess win must not be silently dropped");
+  assert.equal(restored.current!.status, "won");
+  assert.equal(restored.current!.guesses.length, 6);
+  assert.equal(restored.streak, 3);
+  assert.deepEqual(restored.totals, { solved: 1, lost: 0 });
+});
+
+test("P0-1: 11-13 control — a 5-guess loss persists; 7-guess blobs are still dropped", () => {
+  installStorage();
+  const live = geodetectiveConfig("11-13")!;
+  const deal = { startClues: live.startingClues, maxGuesses: live.guessCap };
+  let state = playWrongGuesses(freshLoopPuzzleState(0, 1, deal.startClues, deal.maxGuesses), 5, deal);
+  assert.equal(state.status, "lost");
+  writeLoopStoreV2(completePuzzle({ ...freshLoopUnlimitedStore(10), current: state }, state, "2026-10-08"));
+  const restored = readLoopStoreV2();
+  assert.ok(restored && isLoopUnlimitedStore(restored));
+  assert.equal(restored.current!.guesses.length, 5);
+  // A 7-guess blob exceeds every band's deal: still rejected, still dropped.
+  const bogus: LoopPuzzleState = {
+    ...freshLoopPuzzleState(0, 1),
+    guesses: [0, 1, 2, 3, 4, 5, 6].map((i) => validGuess(`geonames:bogus${i}`)),
+  };
+  assert.ok(!isLoopPuzzleState(bogus));
+  writeLoopStoreV2({ ...freshLoopUnlimitedStore(10), current: bogus });
+  assert.equal(readLoopStoreV2()!.current!.guesses.length, 5, "the bad write is dropped, the good blob survives");
+});
+
+test("P0-2: resume under a changed band keeps the deal-time cap — the 6th guess resolves, never soft-locks", () => {
+  installStorage();
+  const deal810 = dealConfig810();
+  // Deal under 8-10; the player leaves the loop at 5 wrong guesses.
+  const state = playWrongGuesses(dealState810(), 5, deal810);
+  assert.equal(state.status, "playing");
+  assert.equal(state.guesses.length, 5);
+  // Persist, then reload — this is the resume path.
+  writeLoopStoreV2({ ...freshLoopUnlimitedStore(10), current: state });
+  const resumed = readLoopStoreV2()!;
+  const resumedState = resumed.current!;
+  // The parent changed the band to 11-13 while the loop was closed: the
+  // LIVE deal is now cap 5. Submitting under it no-ops forever — that was
+  // the soft-lock. The deal-time snapshot must win instead.
+  const live1113 = geodetectiveConfig("11-13")!;
+  assert.equal(live1113.guessCap, 5);
+  const stale = submitGuess(resumedState, validGuess("geonames:wrong5"), LOOP_TARGET, {
+    startClues: live1113.startingClues,
+    maxGuesses: live1113.guessCap,
+  });
+  assert.equal(stale, resumedState, "live 11-13 cap no-ops at 5 guesses — the old soft-lock");
+  // dealConfigFor (LoopScreen): the persisted snapshot wins.
+  const deal = {
+    startClues: resumedState.dealStartClues ?? live1113.startingClues,
+    maxGuesses: resumedState.dealMaxGuesses ?? live1113.guessCap,
+  };
+  assert.equal(deal.maxGuesses, 6, "the 8-10 deal-time cap survives the band change");
+  assert.equal(deal.startClues, 3, "clues don't drift to the live band's 1");
+  const sixth = {
+    ...resumedState,
+    ...submitGuess(resumedState, validGuess("geonames:wrong5"), LOOP_TARGET, deal),
+  };
+  assert.notEqual(sixth.status, "playing", "the 6th guess resolves — no soft-lock");
+  assert.equal(sixth.status, "lost");
+  assert.equal(sixth.guesses.length, 6);
+  // And the resolved state persists (P0-1 + P0-2 together).
+  writeLoopStoreV2(completePuzzle({ ...freshLoopUnlimitedStore(10), current: sixth }, sixth, "2026-10-08"));
+  const done = readLoopStoreV2()!;
+  assert.equal(done.current!.status, "lost");
+  assert.equal(done.current!.guesses.length, 6);
+  assert.equal(done.totals.lost, 1);
+});
+
+test("P0-2: resume under a changed band — a correct 6th guess still wins", () => {
+  installStorage();
+  const deal810 = dealConfig810();
+  const state = playWrongGuesses(dealState810(), 5, deal810);
+  writeLoopStoreV2({ ...freshLoopUnlimitedStore(10), current: state });
+  const resumedState = readLoopStoreV2()!.current!;
+  const live1113 = geodetectiveConfig("11-13")!;
+  const deal = {
+    startClues: resumedState.dealStartClues ?? live1113.startingClues,
+    maxGuesses: resumedState.dealMaxGuesses ?? live1113.guessCap,
+  };
+  const sixth = {
+    ...resumedState,
+    ...submitGuess(resumedState, validGuess(LOOP_TARGET, { distKm: 0 }), LOOP_TARGET, deal),
+  };
+  assert.equal(sixth.status, "won");
+  assert.equal(sixth.guesses.length, 6);
+  writeLoopStoreV2(completePuzzle({ ...freshLoopUnlimitedStore(10), current: sixth }, sixth, "2026-10-08"));
+  assert.equal(readLoopStoreV2()!.totals.solved, 1);
+});
+
+test("P0-2: pre-snapshot stores (no deal fields) still validate and fall back to the live band", () => {
+  const legacy = { ...freshLoopPuzzleState(0, 1) };
+  delete (legacy as Partial<LoopPuzzleState>).dealStartClues;
+  delete (legacy as Partial<LoopPuzzleState>).dealMaxGuesses;
+  assert.ok(isLoopPuzzleState(legacy), "the validator tolerates the absent snapshot");
+  assert.ok(isLoopUnlimitedStore({ ...freshLoopUnlimitedStore(4), current: legacy }));
+  // Absent snapshot → the live band's deal is the fallback (previous behavior).
+  const live = geodetectiveConfig("11-13")!;
+  assert.equal(legacy.dealMaxGuesses ?? live.guessCap, 5);
+  assert.equal(legacy.dealStartClues ?? live.startingClues, 1);
 });

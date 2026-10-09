@@ -1,4 +1,5 @@
 import type { Difficulty } from "./scoring.ts";
+import type { LadderRung, StoryRung } from "./age-profile/index.ts";
 
 export type Starter = {
   id: string;
@@ -10,6 +11,24 @@ export type Starter = {
   story: string;
   sourceLabel: string;
   sourceHref: string;
+  /**
+   * Which ladder rung the age-profile ceiling selected for this card
+   * ("hook" | "wikitext" | "eb1911" | "wikidata" | "history" | "blurb-only").
+   * Set by the card pipeline; consumed for band-gated telemetry and QA.
+   */
+  storyRung?: StoryRung;
+  /**
+   * Read-aloud should auto-play when this card is revealed (true for the
+   * 5-7 band). Set by the age-profile rung mapper at card compose time.
+   */
+  audioAutoplay?: boolean;
+  /**
+   * The fact-ladder rung of this place's `fact` ("hook" | "wikitext" |
+   * "eb1911" | "wikidata"), when the record carried one. Set by the card
+   * pipeline; used to re-map the story when a staged band change applies
+   * at a card boundary (see storyForBand in generated-places.ts).
+   */
+  factKind?: LadderRung;
   /** 1 (iconic) to 5 (deep cut); scored with the v3 difficulty multiplier. */
   difficulty: Difficulty;
   /**

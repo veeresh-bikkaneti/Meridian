@@ -1,298 +1,227 @@
-# BRANCH_STATUS — feat/storyteller-mascot
+# BRANCH_STATUS — feat/age-profile-studio
 
-Storyteller mascot v1 (reconciled design-doc scope): lazy `StorytellerMascot`
-figure + `StorytellerNarration` (text-first captions, gesture-gated audio),
-docked in ResultCard + run-summary modal + GeoDetective "The Hook" clue.
-No home host (deferred to H1, gated on PR #103).
+Age-profile system (Phase 3 engine implementation of the Phase 1 design +
+Phase 2 UI/UX handoff): parent-set age band (5-7 / 8-10 / 11-13), local-only,
+driving fact-ladder rung depth, loop availability, and difficulty. COPPA-safe
+(no accounts, no PII, localStorage only), offline-first, static hosting.
+
+NOTE: this working tree is shared with the feat/storyteller-mascot agent —
+its staged files were left untouched in the index; this branch commits
+named age-profile files only. The storyteller staged BRANCH_STATUS.md was
+backed up to ~/workspace/storyteller-branch-status.staged-backup.md before
+this file was rewritten.
 
 ## Done
 
-- `src/components/storyteller-lines.ts` — final copy (reveal-01 / hook-01 /
-  summary-01, exact design-doc text), `storytellerAudioUrl` /
-  `storytellerFigureUrl` (safe import.meta.env seam like pwa.ts),
-  `wordMsFromDuration` caption-sync math, session-once
-  `claimFirstRevealNarration()`.
-- `src/components/storyteller.tsx` — `StorytellerMascot` figure
-  (`aria-hidden` img, `decoding="async"`, circular mask, pointer-events gated
-  like CometMascot; asset via URL so the F1 cutout drops in with zero code
-  change) + `StorytellerNarration` implementing the UX narration contract:
-  text-first `role="status"` caption, one-shot pointerdown/keydown first
-  gesture (Comet pattern, 600ms tap-guard), 44px speaker button that never
-  flips `meridian.sound`, 44px per-line replay (hidden when muted),
-  tap-caption dismiss (focus returns to the card's Continue), figure tap =
-  pause/resume, audio failure → silent text-only + the fallback line
-  ("The words are right here — read along with me."). Reduced motion:
-  ≤150ms opacity fade, full text instantly, no float. Hidden while the
-  tasting-tour overlay walks (`meridian:tour-walk-start/end` + DOM check).
-  Default export for `React.lazy` — separate chunk, verified absent from
-  the initial bundle (`storyteller-CvZpQyr1.js` 6.5kB, 0 hits in index-*).
-- `src/components/storyteller-mascot.css` — dock/modal/inline variants;
-  72–96px @390px, 96–144px @1280px; 220ms fade+rise in, 150ms fade out.
-- Hosts (all `React.lazy` + `Suspense`):
-  - `result-card.tsx` — docked top-left of the card, peeking ~40% above the
-    edge (`.result-card` now `position: relative`); first reveal/session
-    auto-narrates, later reveals text + speaker; dismiss returns focus to
-    the Next-place CTA.
-  - `run-summary.tsx` — docked inside the modal above the title, ≤96px /
-    ≤128px; one line, text-first + speaker (T4).
-  - `src/game/loop/LoopScreen.tsx` — hook-only: caption + speaker button
-    (no figure) under the tier-4 "The Hook" clue card, auto once per puzzle
-    (module-level set keyed by cycle:index).
-- `src/components/grandpa-coffee-run.tsx` — dispatches
-  `meridian:tour-walk-end` at both walk-end points (handoff → seated, and
-  the no-geo fallback → strip) so the Storyteller yield releases.
-- `src/lib/observability.ts` — union extensions only: 6 storyteller event
-  types + `storyteller_ready` milestone. Events are COPPA-clean
-  (screen/trigger/booleans/duration only, `sanitizeError` for error_name).
-- `public/sw.js` — install-precache for the 3 storyteller mp3s
-  (versioned asset cache, best-effort). Runtime cache-first comes from
-  main's `/Meridian/audio/` isStaticAsset prefix (PR #107) — the branch's
-  narrower scoped prefix was dropped as redundant in the rebase.
-- Audio: 3 mp3s generated at build time with the TTS CLI, voice
-  `avocado_v2:TruthTeller` verified character-for-character in
-  `voice_source.json`; ffprobe-valid (reveal 9.2s/73kB, hook 5.9s/47kB,
-  summary 7.0s/56kB). Art: source JPEG resized to 512px at
-  `public/images/storyteller/storyteller.jpg` (circular CSS mask, no
-  chroma-key).
-- `src/components/storyteller.test.ts` — 7 unit tests (copy contract,
-  URL builders, sync math incl. fallbacks, session-once); wired into
-  `npm test`.
+- `src/game/age-profile/` — pure engine module:
+  - `types.ts` — AgeBandId, LadderRung, AgeBand, AgeProfile, ProfileStatus,
+    PlaceFacts, MappedStory, AgeProfileChangedEvent.
+  - `bands.ts` — the 3 bands as DATA (descriptions verbatim from Phase 1 §1).
+  - `rungs.ts` — pure `mapStory(band, facts)`: ceiling walk-down, degrade to
+    history then blurb. NO fetch/storage/clock/Date.
+  - `difficulty.ts` — pure `pinToleranceKm` (×1.5/×1.25/×1.0, clamps AFTER
+    multiplier), `geodetectiveConfig`, `roundLengths`, `audioMode`,
+    `loopsForBand`, `isLoopLocked`, `bandScoreMultiplier` (=1 always).
+  - `store.ts` — SOLE owner of localStorage `meridian.ageProfile.v1`
+    (schemaVersion 1): runtime validation on read, corrupt → unset default,
+    10-min pending-change timeout, in-memory fallback on write failure.
+  - `events.ts` — typed `ageprofile:changed` bus; game screens subscribe,
+    never import the store. `index.ts` facade is the only import surface.
+  - 33 unit tests (rungs/difficulty/store): ceilings, degrade paths,
+    corrupt-blob fail-closed, transition invariants — all green, wired into
+    `npm test`.
+- `src/components/age-profile/` — lazy UI (React.lazy, zero initial bundle):
+  `GrownUpGate.tsx` (arithmetic gate, keypad, 3-fail 60s cooldown),
+  `AgePicker.tsx` (radiogroup, 3 cards), `AgeProfileSettings.tsx` (flow
+  orchestrator — the ONLY store-mutation caller), `ReadAloudButton.tsx`
+  (auto/button/off), `LockedLoop.tsx` (locked tile variant), CSS.
+- Integration (followed existing patterns, no unrelated refactors):
+  - Rung mapper wired into `generated-places.ts` card compose
+    (`factLadder` adaptor; single-fact `kind` → one-entry ladder;
+    plain-string fact → "hook"); `storyRung`/`audioAutoplay`/`factKind`
+    threaded onto Starter; `storyForBand()` re-maps at card boundaries.
+  - Mid-session: `requestChange(runInProgress)` stages pending-change;
+    `applyPendingAtBoundary()` (facade-sanctioned) fires at each story-card
+    reveal — current card untouched, next card uses the new band.
+  - Pin tolerance: `pinToleranceKm(ageBand, …)` at both hit-judgment sites
+    in `PlayLoaded`; review replays keep the original snapshot radius.
+  - GeoDetective: `submitGuess` + `freshLoopPuzzleState` take optional band
+    config (starting clues 3/1, guess cap 6/5); LoopScreen reads
+    `geodetectiveConfig(resolveBand())` at each deal.
+  - Home: "🔒 For grown-ups" footer entry (after review deck, before
+    GrandpaCoffeeRun), locked GeoDetective dossier variant in place
+    (verbatim "Ask a grown-up to open more games"), "updating…" chip while
+    pending, onLoop guard, toast confirmations, read-aloud button on the
+    result card.
 - Gates: `npx tsc --noEmit` clean · `npm test` 889/889 pass ·
-  `node scripts/lint-cards.mjs` GATE PASSED ·
-  `npm run build:pages` green (prerender + SW fingerprint ok).
+  `node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green ·
+  no `console.*` introduced.
 
-## Fix pass — review gauntlet blockers (2026-10-08)
+## P0 fixes — architect review on the age-profile deal integration (2026-10-08)
 
-All three merge blockers fixed, gates re-verified:
+Two P0s, both in the loop deal-config integration (zero coverage there):
 
-1. **False fact in narration (game designer).** The summary line claimed
-   "You found five hidden places today" — runs are endless, so it
-   miscounted. Now count-neutral: "And so our tale comes to an end! What
-   an adventure!" (`storyteller-lines.ts:29`). `summary-01.mp3`
-   regenerated from the exact new text (tts `avocado_v2:TruthTeller`,
-   ffprobe-valid 4.85s/38kB); text pins updated in `storyteller-lines.ts`
-   and `storyteller.test.ts` so caption == audio.
-2. **Initial bundle leak (architect).** `result-card.tsx`, `run-summary.tsx`,
-   `LoopScreen.tsx` statically imported `./storyteller-lines`, pulling
-   ~2.3KB of caption copy into the initial routes chunk. Hosts now pass
-   `lineKey: "reveal" | "hook" | "summary"`; `STORYTELLER_LINES` resolves
-   inside the lazy `storyteller.tsx`. The session-once
-   `claimFirstRevealNarration()` moved to the copy-free
-   `storyteller-claim.ts` (hosts import that, not the lines). Verified:
-   post-fix routes chunk has **0 bytes** of caption copy (pre-fix build
-   had all 3 lines + the stale summary text); the only "storyteller"
-   references left are the lazy chunk's hashed filenames. Also removed
-   unused `DISMISS_AFTER_SPEAKER_MS` and `wasPlaying` (developer nits).
-3. **E2E coverage of interactive paths (developer).** New
-   `tests/e2e/storyteller.spec.ts` + `storyteller` project in
-   `playwright.config.ts` (1440×900). Five tests on the story host
-   (sound-off speaker model): text-first render with the exact caption
-   copy, speaker button starts the mp3 request (toggle untouched), replay
-   re-requests the clip, tap-caption dismisses, aborted mp3 →
-   `narration_failed` → text-only fallback renders. Zero console errors
-   asserted per test. Result: **5/5 pass** (6.1m). Test hardening notes:
-   the SW precaches mp3s cache-first, so audio tests neuter SW
-   registration to keep requests observable; the fallback assertions use
-   one atomic in-page snapshot (the text-only path auto-dismisses at 6s);
-   a 0.2s silent fixture (`tests/e2e/fixtures/storyteller-tiny.mp3`)
-   stands in for the real clips.
-- Gates after fix: `npx tsc --noEmit` clean · `npm test` 856/856 ·
-  `node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green.
+- **P0-1 — 8-10's 6-guess deal vs the store validator.** `isLoopPuzzleState`
+  (loop/store.ts) hard-required `guesses.length <= LOOP_MAX_GUESSES` (5),
+  but the 8-10 deal plays 6 guesses — `writeLoopStoreV2` silently dropped
+  any 8-10 mystery resolved on the 6th guess (win or loss), so reload
+  resurrected it at 5 guesses "playing", replayable forever.
+  Fix: guess caps now live in the band table
+  (`BandDifficulty.guessCap`: 5-7=null, 8-10=6, 11-13=5; bands.ts);
+  `geodetectiveConfig()` reads the table instead of a ternary; new
+  `maxGuessCap()` (difficulty.ts, exported via the facade) derives the max
+  deal cap from the table; the validator bounds `guesses.length` by it
+  (loop/store.ts). Retuning a cap in bands.ts moves the bound automatically.
+- **P0-2 — resume re-read the live band's deal → soft-lock.** The screen's
+  deal config (`activeDealConfig`) fell back to `geodetectiveConfig(resolveBand())`
+  whenever the in-memory capture was null — which is exactly the remount/resume
+  case. An 8-10 mystery at 5 wrong guesses resumed under a band changed to
+  11-13 (cap 5) made `submitGuess` no-op forever — no win/loss/abandon path,
+  deck index lost.
+  Fix: the deal-time config is persisted on the puzzle state at deal time
+  (`LoopPuzzleState.dealStartClues`/`dealMaxGuesses`, optional — pre-snapshot
+  stores fall back to the live band); `freshLoopPuzzleState` takes
+  `(index, cycle, startClues, maxGuesses)` and snapshots both (all three deal
+  sites pass the captured config's `startingClues` + `guessCap`); new
+  `persistedDealConfig()` in LoopScreen resolves the store snapshot, and
+  `activeDealConfig` now prefers it between the in-memory capture and the
+  live band: `dealConfig ?? persistedDealConfig(store.current) ?? live ?? SAFE_DEAL_FALLBACK`.
+- Tests (10 new/updated, all green): engine `maxGuesses:6` resolves on the
+  6th guess (win + loss, 7th no-ops); 6-guess win AND loss survive the
+  `writeLoopStoreV2` round-trip; 11-13 control (5-guess loss persists,
+  7-guess blobs still rejected + dropped); resume-under-changed-band keeps
+  the deal-time cap and never soft-locks (win and loss variants, asserting
+  the live-band path no-ops — the old bug); pre-snapshot fallback;
+  `maxGuessCap()` derivation; validator bound now 6-accepting/7-rejecting.
+- Gates re-verified on the c53a658-based tree: tsc clean · `npm test` 912/912 ·
+  lint-cards GATE PASSED · `npm run build:pages` green.
+
+## Deviations from Phase 1/2 (all documented in the Phase 3 report)
+
+1. Globe 8-10 tolerance is 937.5 km exactly (750×1.25); the Phase 1 table
+   rounds to 940 for display — no rounding invented in the math.
+2. 11-13 read-aloud "off" renders a quiet "🔊 Read aloud" text link instead
+   of the spec'd overflow "⋯" menu (result card has no overflow menu yet).
+3. Quiz round lengths (5/8/12) exposed in `roundLengths()` but NOT enforced:
+   the shipped quiz is an endless run with no round concept; capping it is
+   a gameplay refactor, out of scope. Same for terrain/capital/duel — params
+   exposed, no tiles exist yet.
+4. `mapStory` applies the 20-char minimum to `history` too (Phase 1 §2 as
+   written); previously any non-empty history led the card.
+5. Legacy plain-string `fact` maps to rung "hook" (lowest = visible to all
+   bands), preserving pre-mapper behavior.
 
 ## Pending
 
 - Owner: PR review + merge (NEVER merge from here — open PR only).
-- Veeresh: SW precache deploys with the site automatically (no extra step).
-- Follow-ups (not in v1): H1 home host (gated on #103), F1 transparent
-  cutout, F2 pose variants, F3 line sign-off, F4 name sign-off.
+- Phase 4: security validation (written expecting a hostile audit).
+- Veeresh/owner: none — no secrets, no deploys, no flags touched.
 
-## Notes
+## Rebase record (2026-10-08)
 
-- 2026-10-08: team moved to dedicated worktree `~/workspace/meridian-storyteller`
-  after a shared-tree collision with the age-profile studio (resolved, no data
-  loss either side). This branch stages named storyteller files only.
-- 2026-10-08: follow-up `9f5b8c8` — idle float 3s → 2s per design-doc (tester P2).
-  tsc clean, build:pages green. No P0/P1 findings in Phase B validation.
+Rebased onto `main@8e2cc76` (picks up #103 comet banner, #104 facts-ladder,
+#105 crash-pipeline, #107 sprint entry gates). 4 conflicts, all keep-both:
 
----
+- `package.json` — test script: kept main's
+  `src/hooks/use-online-status.test.ts` entry AND the feature's 3
+  age-profile test files; kept main's `smoke:crash` script.
+- `src/components/game-app.tsx` — `Choose` props: kept main's
+  `tutorialInviteVisible` (Comet auto-greeting coordination) alongside the
+  feature's `ageBand` / `agePending` / `onGrownUpOpen` (caller, destructure,
+  and prop types).
+- `src/game/generated-places.ts` — kept main's `factAttribution()` (per-kind
+  source attribution) AND the feature's `factLadder()` (single-fact rung
+  adaptor); both still compose in `toStarter` as before.
+- `BRANCH_STATUS.md` — kept this (feature) doc; main's version documents the
+  crash-pipeline branch.
 
-## Merged base (main@f07dad3, PR #107)
+Post-rebase fix (new commit on this branch): `requestChange` while a change
+is pending and the requested band equals the effective band no longer
+writes an invalid blob (which `validateProfile` rejects → silent reset to
+`unset`/full access); the request is now treated as `cancelPending()`.
+Regression test added to `store.test.ts`.
 
-# BRANCH_STATUS — feat/sprint-entry-gates
+## Post-rebase verification (2026-10-08)
 
-Close the invisible error classes the expert panel found after Emily's iOS
-crash produced no Discord alert: tile failures, region-chunk start errors,
-and route-boundary errors never emitted anything. Plus: device-blind
-Discord alerts, fallback-UI a11y, and a post-deploy smoke script.
+Rebase completed onto `main@8e2cc76`; feature commit is now `fc0d9d3`.
 
-Rebased onto origin/main@4e09990 (PR #104 facts-ladder merged) — see "Merged base" below.
+Fixes (new commit on this branch, not amended into the feature commit):
+- `requestChange` bug: pending-change + re-pick of the currently-effective
+  band now goes through `cancelPending()` instead of writing an invalid
+  blob (`band === pendingBand` fails `validateProfile` → silent reset to
+  `unset`/full access). Regression test added.
+- Minor: `emitAgeProfileChanged` no longer re-exported from the
+  `age-profile` facade (screens can't forge change events; the store
+  imports it from `./events.ts` directly).
+- Minor: `Starter.storyRung` narrowed from `string` to the exported
+  `StoryRung` union.
 
-## Rebase 2026-10-08 (onto origin/main@4e09990 — PR #104 merged)
-- 4 commits replayed. 1 conflict, BRANCH_STATUS.md docs-only (full-file):
-  kept this branch's doc, added "Merged base — facts ladder" section.
-  Zero code conflicts.
-- Post-rebase gates (all on final head): tsc clean · lint-cards GATE PASSED
-  (124,690 records) · npm test 744 scripts + 868 src pass, 0 fail ·
-  build:pages green · crash-watchdog e2e 4/4.
+Gates (all run post-rebase, post-fix):
+- `npx tsc --noEmit` — clean
+- `npm test` — 902/902 pass (889/889 pre-rebase; +13 from main's new
+  tests plus the new regression test)
+- `node scripts/lint-cards.mjs` — GATE PASSED
+- `npm run build:pages` — green (prerender + SW fingerprint ok)
+- Playwright E2E (targeted, desktop): 2/2 pass —
+  `hit-story.desktop.spec.ts`, `result-card-dismiss.desktop.spec.ts`
+  (full E2E suite not run; no age-profile-specific e2e specs exist)
 
-## Merged base — facts ladder (PR #104, main@4e09990)
+Pending: PR blocked on `gh` auth in this environment (not logged into any
+GitHub hosts) — push the branch and open the PR from an authenticated
+machine. Phase 4 security validation still open.
 
-The rebase base now contains the merged facts-ladder pipeline (was
-facts-ladder-train). 247 kid-safe facts (arkansas 20, australia 227) in
-derived per-region indexes (`src/game/data/geonames/facts/<regionId>.json`),
-overlaid at runtime onto chunk places; production chunk files are never
-written by build scripts. None of that is this branch's work — it is
-inherited from main.
+## Review-findings fix pass (2026-10-08, frontend)
 
-## Rebase verification (2026-10-08, branch @ 4bf80c2 on f07dad3)
+Game Designer + UI/UX Expert review findings at `bf455a7` — all fixed on
+this branch:
 
-- `npx tsc --noEmit` clean
-- `node scripts/lint-cards.mjs` GATE PASSED (124,690 records)
-- `npm test` green — src suite 857/857 (854 baseline + 3 from #107's
-  `use-online-status` tests), scripts suite green, exit 0
-- `npm run build:pages` green; sw.js stamped buildId=4bf80c2
-- Playwright `tests/e2e/crash-watchdog.spec.ts`: 4/4 passed
-- Conflicts resolved (mechanical, both sides kept): BRANCH_STATUS.md
-  (kept crash-pipeline entries + entry-gates entries), package.json
-  (test list now includes BOTH `use-online-status.test.ts` and
-  `error-component.test.ts`; `smoke:crash` script kept)
+P0:
+- `age-profile.css` `.agep-screen` is now a full-viewport overlay
+  (`position: fixed; inset: 0; z-index: 200; overflow-y: auto`) — the
+  gate/picker replaces the screen instead of rendering below the fold.
+  `game-app.tsx` wraps the home page in `<div inert>` while the settings
+  are open, so Comet's banner, edition cards, and the footer link are
+  non-interactive and out of the tab order.
 
-## Done
+P1:
+- `AgeProfileSettings.tsx` — change toast is now the band-invisible
+  `"Saved ✅"` (was naming the band label; child-visible leak).
+- `LoopScreen.tsx` — locked band (5-7) no longer gets the hardest deal:
+  the `??` fallback is now the EASIEST unlocked config (8-10) via
+  `SAFE_DEAL_FALLBACK`, and the deal-time config is captured per mystery
+  (`captureDealConfig`) and threaded to `LoopGame`/`LoopReveal`, so a
+  mid-run band change never re-tunes an in-progress deal. Resume paths
+  re-read the live band, fail-safe.
+- `GrownUpGate.tsx` — Enter on a focused button no longer double-fires
+  `check()` (keydown skips when `e.target` is a button; the button's own
+  click is the single path). No more spurious fails on "Try another
+  question".
+- `game-app.tsx` — focus returns to the invoking control (footer
+  "For grown-ups" link or locked-tile grown-up link) on close
+  (`ageTriggerRef` + rAF after unmount).
+- `AgePicker.tsx` — the selection ring follows the staged selection
+  (`checked = selected === id`); `selected` already holds the pending band.
 
-- `src/lib/observability.ts`
-  - New `tile_failed` event type; `emitTileFailed()` (instance + module
-    wrapper, mirroring `emitMapError`).
-  - `emit()` now attaches the coarse `os`/`form` device bucket
-    (`coarseDeviceFacts()`, COPPA-safe — never raw UA) to every event, so
-    Discord alerts can say "ios/mobile".
-- `src/map/satellite-map.tsx` — `useEffect` emits `tile_failed` when the
-  tile status transitions to "failed" (one emit per failure episode; Retry
-  resets to "loading").
-- `src/components/game-app.tsx` — the region-chunk `startError` catch now
-  also emits a `js_error` with the sanitized message.
-- `src/lib/error-component.tsx` — `AppErrorComponent` (route error
-  boundary) emits the caught error once per distinct error (`[error]` dep).
-- `workers/crash-report/src/index.ts`
-  - Accepts `tile_failed` (else the new app events 400).
-  - Discord alert gains a `device: os/form` line (coarse bucket only);
-    privacy comment updated.
-- `scripts/crash-watchdog.mjs` (rendered 5109/5120 bytes)
-  - a11y: safe-area insets on the veil (with `padding:16px` fallback for
-    old browsers), 44px secondary link targets, `role="status"` on the
-    confirmation.
-  - Byte budget: removed the provably-dead second CAP-truncation block
-    (error text capped at 300 chars at capture) and the dead button
-    hover transition (+ its reduced-motion override).
-- `scripts/crash-smoke.mjs` (new; `npm run smoke:crash`) — post-deploy
-  gate: `GET /health`, invalid `POST /ingest` → 400 naming `tile_failed`
-  (distinguishes the v2 forwarding worker from the v1 logging worker),
-  `flags.json` endpoint validated with the app's exact gate, shell HTML
-  watchdog markers. 15 s fetch timeouts; deploy-order + false-fail notes
-  in the header.
-- Review panel (2026-10-08): senior architect APPROVE-WITH-NITS (no P0;
-  all P2s addressed or backlogged), DevOps APPROVE-WITH-NITS (2 P1s in
-  the smoke script fixed), frontend APPROVE-WITH-NITS (1 P1 safe-area
-  fallback + 1 P2 effect dep fixed).
+P2 (all trivial, all done):
+- Esc dismisses both confirm dialogs (focus moves into the dialog on
+  open — correct modal pattern — so the Esc handler fires).
+- `LockedLoop.tsx` — `useId()` for title/msg ids (no more duplicates
+  with several locked tiles).
+- Picker cards get a non-color selected indicator (`✓` on the title).
+- Change-confirm dialog shows the per-band consequence line
+  (`band.whatChanges`, parent-safe behind the gate).
 
-## Merge-gauntlet fix (2026-10-08)
+Tests: new `difficulty.test.ts` case locks the fail-safe contract
+(fallback is the easiest unlocked deal, never the hardest); new
+`tests/e2e/age-profile-gate.desktop.spec.ts` locks the overlay/inert,
+ring, Esc, band-invisible toast, and focus-return behavior end to end.
 
-Gauntlet developer review BLOCKED: `src/lib/error-component.tsx` route-error
-emit had zero test coverage. Fixed with `src/lib/error-component.test.ts`
-(new, colocated with `observability.test.ts`): renders the real
-`AppErrorComponent` via `react-dom/client` against a minimal DOM shim
-(no jsdom in repo; `.tsx` loaded via the repo's own TypeScript
-`transpileModule` + data-URL import sharing exact module instances).
-4 tests: exactly one `js_error` per mount, no re-emit for the same error
-object, re-emit for a distinct error, zero emissions without render.
-Test added to the `npm test` file list in `package.json`.
+Gates re-verified post-fix: `npx tsc --noEmit` clean · `npm test`
+903/903 pass · `node scripts/lint-cards.mjs` GATE PASSED ·
+`npm run build:pages` green · Playwright `age-profile-gate.desktop`
+1/1 pass.
 
-Verification after fix: `tsc` clean · `npm test` green (src 854/854,
-incl. 4 new) · `lint-cards` GATE PASSED · `build:pages` green ·
-`crash-watchdog.spec.ts` 4/4. No other files touched.
-
-## Merged base — sprint entry gates (PR #107, main@f07dad3)
-
-The rebase base now contains the merged entry-gate fixes (were
-feat/sprint-entry-gates). Entries preserved from main's BRANCH_STATUS.md:
-
-### P1-3 — dead code-split removed
-- `src/components/celebration-overlay.tsx`: removed BOTH ineffective
-  dynamic imports (`play-guards`, `sfx`); static imports instead. Zero
-  `[INEFFECTIVE_DYNAMIC_IMPORT]` warnings; initial index chunk unchanged
-  (435.80 kB vs 435.83 kB baseline).
-
-### P2 — missing .catch
-- `src/game/story-ai.ts` (`useAiStory`), `src/game/sports-ai.ts`
-  (`useAiSportsTeams`): defensive `.catch` on the async IIFEs.
-
-### P1-2 — chunks >500 kB: resolved by design (no code change)
-- Entry chunk 435.83 kB (under the limit — no initial-load regression).
-  The five >500 kB chunks are already lazy at the finest
-  content-preserving granularity. Warning persists by design; senior
-  architect signed off.
-
-### P1-1 — SW offline gap + offline-uncached loop notice
-- `public/sw.js`: `isStaticAsset()` cache-first covers `/Meridian/audio/`,
-  `/Meridian/__grok/`, `/Meridian/loop/` (runtime only; only
-  `loop/manifest.json` precached at install).
-- `src/hooks/use-online-status.ts` (new, tested).
-- `src/game/loop/LoopScreen.tsx`: offline-uncached notice in the
-  error-card slot (`role="alert"`) — `This mystery can't open right now 🔍`
-  / `Try again` (min-h-[48px]).
-- `tests/e2e/offline-content.spec.ts` (new; 5/5 via `--project
-  offline-content`).
-
-## Pending
-- Pre-existing on main, not fixed here (documented, non-blocking): nothing
-  in src references the copied `maplibre-gl-worker.mjs`, so MapLibre's
-  default worker URL fails even online ("Worker failed to load" console
-  error). Confirmed pre-existing by building main in a worktree.
-- Owner review of PR #107. Never merge — owner merges.
-
-## Rebase onto main@8e2cc76 (2026-10-08, merge train #103/#104/#105 landed)
-
-- 4 storyteller commits replayed: e1eec98 (mascot v1) → 659e485 (idle float
-  2s) → c82a01d (BRANCH_STATUS docs) → e3b12f0 (gauntlet blockers). The old
-  stray-brace fix commit fcf9af9 was dropped (patch already upstream).
-- Conflicts (4, all mechanical, resolved by union/keep-branch):
-  - `src/lib/observability.ts`: union of `"tile_failed"` (main, #105) +
-    storyteller narration event types (branch).
-  - `package.json`: kept main's test list, re-inserted
-    `src/components/storyteller.test.ts` after `scroll-cue.test.ts`
-    (kept `src/lib/error-component.test.ts` from #105).
-  - `BRANCH_STATUS.md` (x2): kept this branch's storyteller doc,
-    dropped #105's crash-pipeline sections.
-  - `playwright.config.ts`: kept both `facts-ladder-pilot` (#104) and
-    `storyteller` project entries; removed stray extra `},`.
-- Post-rebase gates on final head: `npx tsc --noEmit` clean;
-  `node scripts/lint-cards.mjs` GATE PASSED (124,690 records);
-  `npm run build:pages` green; `src/lib/observability.test.ts` 17/17;
-  `tests/e2e/storyteller.spec.ts` 5/5, zero console errors.
-- Pushed via --force-with-lease. NOT merged (owner merges).
-
-## Voice regeneration — game-designer verdict CHANGE (2026-10-08)
-
-- Voice `avocado_v2:TruthTeller` (cloud tts CLI) → local Kokoro `am_fenrir`
-  @ speed 1.05 (Kokoro-82M q8 via the aidemo-pilot engine install;
-  offline/$0/keyless — the cloud path is retired). All 3 lines rewritten
-  to the designer's trailer-energy copy (caption == audio, char-for-char).
-- New committed regeneration path: `node scripts/render-storyteller-voice.mjs`
-  (refuses to render unless its lines match `STORYTELLER_LINES` text exactly;
-  network disabled via transformers `allowRemoteModels=false`). Mastering:
-  edge silence ≤150 ms, ebur128-measured gain to −16 LUFS integrated,
-  4x-oversampled lookahead limiter at −1.5 dBTP, 24 kHz mono MP3.
-  (ffmpeg loudnorm is unreliable on 2–5 s micro-clips — ~6 dB measurement
-  error on the staccato summary — so the gain is computed explicitly with an
-  iterative correct-after-limit loop.)
-- Mastered set: reveal-01.mp3 4.58 s / −16.6 LUFS / −1.8 dBTP;
-  hook-01.mp3 4.11 s / −16.5 LUFS / −1.7 dBTP;
-  summary-01.mp3 1.92 s / −16.6 LUFS / −1.8 dBTP; spread 0.10 dB
-  (was: 9.17/5.93/4.85 s at −15.5/−41.6/−25.3 dB mean — hook was ~26 dB
-  quieter than reveal). Filenames + SW precache entries unchanged.
-- Text pins updated in `storyteller-lines.ts`, `storyteller.test.ts`, and
-  `tests/e2e/storyteller.spec.ts` (REVEAL_TEXT).
-- UX-audit P1s applied in the same pass: celebration-overlay yield
-  (`meridian:celebration-open/close` handshake mirroring the tour pattern —
-  narration hides, never starts gesture-gated audio under the overlay, and
-  skips focus-return while it owns the screen) and run-summary onDismiss →
-  focus "Play again" (WCAG 2.4.3).
+Out of scope (not built, per brief): wiring round lengths / hintPolicy /
+distanceDisplay / mapLabelDensity; mid-run grown-ups entry points;
+11-13 read-aloud button; anything on `verify/geodetective-clues`,
+`feat/meridian-loop`, or other branches.

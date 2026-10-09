@@ -79,6 +79,25 @@ test("submitGuess: loss on the fifth wrong guess", () => {
   assert.equal(lost.cluesRevealed, 5);
 });
 
+test("submitGuess: maxGuesses 6 lets the 8-10 deal resolve on the 6th guess", () => {
+  const deal = { startClues: 3, maxGuesses: 6 };
+  let state: LoopPuzzleProgress = freshLoopPuzzleState(0, 1, deal.startClues, deal.maxGuesses);
+  for (let i = 0; i < 5; i++) {
+    state = submitGuess(state, guess({ placeId: `geonames:wrong${i}`, name: `Wrong ${i}` }), TARGET, deal);
+    assert.equal(state.status, "playing", `still playing after ${i + 1} wrong guesses`);
+  }
+  assert.equal(state.guesses.length, 5);
+  const lost = submitGuess(state, guess({ placeId: "geonames:wrong5", name: "Wrong 5" }), TARGET, deal);
+  assert.equal(lost.status, "lost", "6th wrong guess loses under the 8-10 deal");
+  assert.equal(lost.guesses.length, 6);
+  // A 7th guess is a no-op even under the 6-cap deal.
+  assert.equal(submitGuess(lost, guess({ placeId: "geonames:wrong6" }), TARGET, deal), lost);
+  // A correct 6th guess wins.
+  const winAt = submitGuess(state, guess({ placeId: TARGET, distKm: 0 }), TARGET, deal);
+  assert.equal(winAt.status, "won");
+  assert.equal(winAt.guesses.length, 6);
+});
+
 test("submitGuess: no-ops once the day is won or lost", () => {
   const won = submitGuess(freshLoopPuzzleState(0, 1), guess({ placeId: TARGET }), TARGET);
   assert.equal(submitGuess(won, guess(), TARGET), won);

@@ -9,6 +9,7 @@ import {
   type LoopUnlimitedStore,
   type Octant,
 } from "./types.ts";
+import { maxGuessCap } from "../age-profile/difficulty.ts";
 
 /**
  * localStorage persistence for the GeoDetective's unlimited mode,
@@ -52,6 +53,10 @@ function isNonNegativeInt(value: unknown): value is number {
   return Number.isInteger(value) && (value as number) >= 0;
 }
 
+function isPositiveInt(value: unknown): value is number {
+  return Number.isInteger(value) && (value as number) >= 1;
+}
+
 function isLoopGuess(value: unknown): value is LoopGuess {
   if (!value || typeof value !== "object") return false;
   const g = value as Record<string, unknown>;
@@ -93,7 +98,10 @@ export function isLoopPuzzleState(value: unknown): value is LoopPuzzleState {
     Number.isInteger(s.cycle) &&
     (s.cycle as number) >= 1 &&
     Array.isArray(s.guesses) &&
-    s.guesses.length <= LOOP_MAX_GUESSES &&
+    // P0-1: bound by the largest cap any band's deal can legally produce
+    // (the 8-10 deal plays 6 guesses), NOT the shipped LOOP_MAX_GUESSES
+    // default — a 6-guess 8-10 mystery is legal and must persist.
+    s.guesses.length <= MAX_DEAL_GUESS_CAP &&
     (s.guesses as unknown[]).every(isLoopGuess) &&
     isLoopStatus(s.status) &&
     Number.isInteger(s.cluesRevealed) &&
@@ -102,9 +110,20 @@ export function isLoopPuzzleState(value: unknown): value is LoopPuzzleState {
     (s.completedAt === null || isUtcDateKey(s.completedAt)) &&
     (s.streakEndedAt === null || isNonNegativeInt(s.streakEndedAt)) &&
     // completedCycle is new: absent on pre-celebration stores, boolean after.
-    (s.completedCycle === undefined || typeof s.completedCycle === "boolean")
+    (s.completedCycle === undefined || typeof s.completedCycle === "boolean") &&
+    // Deal-time config snapshot (P0-2): optional, absent on pre-snapshot
+    // stores — resume falls back to the live band then.
+    (s.dealStartClues === undefined || isPositiveInt(s.dealStartClues)) &&
+    (s.dealMaxGuesses === undefined || isPositiveInt(s.dealMaxGuesses))
   );
 }
+
+/**
+ * Largest guess count any band's deal can legally produce — the
+ * validator's bound for `guesses.length`, derived from the band table via
+ * maxGuessCap(). The band table is static, so this is computed once.
+ */
+const MAX_DEAL_GUESS_CAP = maxGuessCap();
 
 export function isLoopUnlimitedStore(value: unknown): value is LoopUnlimitedStore {
   if (!value || typeof value !== "object") return false;
@@ -157,17 +176,30 @@ export function freshLoopUnlimitedStore(poolSize: number): LoopUnlimitedStore {
   };
 }
 
-/** A mystery that was just dealt: first clue visible, no guesses. */
-export function freshLoopPuzzleState(index: number, cycle: number): LoopPuzzleState {
+/**
+ * A mystery that was just dealt: the band's starting clues visible, no
+ * guesses. `startClues`/`maxGuesses` are the deal-time config — persisted
+ * on the puzzle (P0-2) so resume honors the deal band, not the live band.
+ * Defaults preserve the shipped tuning.
+ */
+export function freshLoopPuzzleState(
+  index: number,
+  cycle: number,
+  startClues: number = 1,
+  maxGuesses: number = LOOP_MAX_GUESSES,
+): LoopPuzzleState {
+  const dealtClues = Math.min(LOOP_MAX_GUESSES, Math.max(1, startClues));
   return {
     index,
     cycle,
     guesses: [],
     status: "playing",
-    cluesRevealed: 1,
+    cluesRevealed: dealtClues,
     completedAt: null,
     streakEndedAt: null,
     completedCycle: false,
+    dealStartClues: dealtClues,
+    dealMaxGuesses: maxGuesses,
   };
 }
 

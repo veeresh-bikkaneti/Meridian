@@ -1,7 +1,7 @@
 import { BRAND } from "@/game/brand";
 import { distanceKm, formatDistance } from "@/game/geo";
 import { isHit, radiusKm } from "@/game/radius";
-import { placesFor, poolSizeFor } from "@/game/generated-places";
+import { placesFor, poolSizeFor, storyForBand } from "@/game/generated-places";
 import { isNewBuildDeployed } from "@/game/build-staleness";
 import { preloadAdmin1Boundaries, preloadAdmin1ForCountry, admin1ChunkIso2ForRegion } from "@/game/reverse-geocode";
 import {
@@ -63,6 +63,23 @@ import { RunSummaryCard } from "./run-summary";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
 import { CometMascot } from "./comet-mascot";
 import { GrandpaCoffeeRun } from "./grandpa-coffee-run";
+// Age-profile system: the parent-set band (5-7 / 8-10 / 11-13). Game
+// screens use ONLY this facade — the store is never imported directly.
+// The settings screen is React.lazy: zero initial-bundle cost.
+import "./age-profile/age-profile.css";
+import { LockedLoop } from "./age-profile/LockedLoop";
+import {
+  applyPendingAtBoundary,
+  audioMode,
+  hasPendingChange,
+  isLoopLocked,
+  loadProfile,
+  onAgeProfileChanged,
+  pinToleranceKm,
+  resolveBand,
+  type AgeBandId,
+} from "@/game/age-profile";
+const AgeProfileSettings = lazy(() => import("./age-profile/AgeProfileSettings"));
 import {
   CelebrationOverlay,
   celebrationSeamSpec,
@@ -738,8 +755,43 @@ export function GameApp() {
   // persisted under meridian.coldtrail.v1. No open-flag: the slice always
   // starts from the menu; in-progress cases resume from the store.
   const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(false);
-  // Cleared-mode celebration: set when a difficulty band's full cycle is
-  // celebrated (primary onContinue trigger or the run-start backstop). The
+  // Age profile (parent-set band). The profile object lives in state and
+  // refreshes via the `ageprofile:changed` event — game screens never
+  // touch the store directly. The settings screen (lazy) is the only
+  // writer of parent-control mutations.
+  const [ageProfile, setAgeProfile] = useState(() => loadProfile());
+  useEffect(() => onAgeProfileChanged(() => setAgeProfile(loadProfile())), []);
+  const ageBand: AgeBandId = resolveBand(ageProfile);
+  const agePending = hasPendingChange(ageProfile);
+  const [ageSettingsOpen, setAgeSettingsOpen] = useState(false);
+  const [ageToast, setAgeToast] = useState<string | null>(null);
+  useEffect(() => {
+    if (ageToast === null) return;
+    const id = window.setTimeout(() => setAgeToast(null), 3500);
+    return () => window.clearTimeout(id);
+  }, [ageToast]);
+  // Invoking control for the age settings (footer "For grown-ups" link or
+  // locked-tile grown-up link) — focus returns here when the settings close.
+  const ageTriggerRef = useRef<HTMLElement | null>(null);
+  const openAgeSettings = useCallback((e?: ReactMouseEvent<HTMLElement>) => {
+    // Remember the invoking control ("For grown-ups" footer link or the
+    // locked-tile grown-up link) so focus can return to it on close.
+    if (e) ageTriggerRef.current = e.currentTarget;
+    setAgeSettingsOpen(true);
+  }, []);
+  const closeAgeSettings = useCallback(() => {
+    const trigger = ageTriggerRef.current;
+    ageTriggerRef.current = null;
+    setAgeSettingsOpen(false);
+    if (trigger && document.contains(trigger)) {
+      // The settings unmount on the next paint — return focus after that,
+      // without scrolling the home page.
+      requestAnimationFrame(() => {
+        if (document.contains(trigger)) trigger.focus({ preventScroll: true });
+      });
+    }
+  }, []);
+  // Cleared-mode celebration: set when a difficulty band's full cycle is  // celebrated (primary onContinue trigger or the run-start backstop). The
   // dialog renders over the current screen; dismissing returns the player
   // to exactly where they were.
   const [cleared, setCleared] = useState<ClearedInfo | null>(null);
@@ -1403,6 +1455,7 @@ export function GameApp() {
           onReviewDeck={handleReviewDeck}
           onCleared={(info) => setCleared(info)}
           celebrationOpen={cleared !== null}
+          ageBand={ageBand}
         />
         {cleared ? (
           <ClearedCelebrationDialog
@@ -1598,13 +1651,22 @@ export function GameApp() {
   const showTutorialInvite = !inviteDismissed && !hasSeenTutorial();
   return (
     <>
+    {/* While the grown-up gate/picker is open it is a full-viewport overlay:
+        the home page underneath (incl. Comet's banner and the footer link)
+        is inert — non-interactive and removed from the tab order. */}
+    <div inert={ageSettingsOpen || undefined}>
     <Choose
       onState={withCardTap("State", () => setMenu({ kind: "states" }))}
       onCountry={withCardTap("Country", () => setMenu({ kind: "countries" }))}
       onGlobe={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
-      onLoop={withCardTap("mystery", () => { writeLoopOpen(true); setLoopOpen(true); })}
-      onColdTrail={withCardTap("coldtrail", () => setColdTrailOpen(true))}
-      onReview={startReview}
+      onLoop={withCardTap("mystery", () => {
+        // Locked for young bands (age-profile): the dossier renders the
+        // locked variant instead, so this guard is belt-and-braces.
+        if (isLoopLocked(ageBand, "geodetective")) return;
+        writeLoopOpen(true);
+        setLoopOpen(true);
+      })}
+      onColdTrail={withCardTap("coldtrail", () => setColdTrailOpen(true))}      onReview={startReview}
       deck={deckStatus}
       difficultyChoice={difficultyChoice}
       onDifficultyChoice={setDifficultyChoice}
@@ -1614,6 +1676,9 @@ export function GameApp() {
         ) : null
       }
       tutorialInviteVisible={showTutorialInvite}
+      ageBand={ageBand}
+      agePending={agePending}
+      onGrownUpOpen={openAgeSettings}
       notice={
         <>
           {idleNotice}
@@ -1621,6 +1686,21 @@ export function GameApp() {
         </>
       }
     />
+    </div>
+    {ageSettingsOpen ? (
+      <Suspense fallback={null}>
+        <AgeProfileSettings
+          runInProgress={run !== null || loopOpen}
+          onClose={closeAgeSettings}
+          onToast={setAgeToast}
+        />
+      </Suspense>
+    ) : null}
+    {ageToast ? (
+      <div className="agep-toast" role="status" data-testid="agep-toast">
+        {ageToast}
+      </div>
+    ) : null}
     {celebrationOverlay}
     {idleToast}
     </>
@@ -1647,6 +1727,9 @@ function Choose({
   onDifficultyChoice,
   tutorialInvite,
   tutorialInviteVisible,
+  ageBand,
+  agePending,
+  onGrownUpOpen,
 }: {
   onState: (e: ReactMouseEvent) => void;
   onCountry: (e: ReactMouseEvent) => void;
@@ -1666,7 +1749,12 @@ function Choose({
   /** True while the first-run tutorial invite is on screen — Comet's
       auto-greeting stays quiet until it's dismissed (no competing popups). */
   tutorialInviteVisible?: boolean;
-}) {
+  /** Effective age band (parent-set; "11-13" when unset). */
+  ageBand: AgeBandId;
+  /** True while a band change is staged for the next boundary. */
+  agePending: boolean;
+  /** Open the grown-up gate (footer link + locked-tile link). */
+  onGrownUpOpen: () => void;}) {
   // GeoDetective progress for the edition card: the resume variant and the
   // streak line. Read on mount (the menu remounts when the loop screen
   // closes, so this is always fresh on return).
@@ -1748,7 +1836,13 @@ function Choose({
         </div>
         <div className="atlas-rule home-rise" style={rise(3)} aria-hidden="true" />
       </header>
-      {/* GeoDetective leads: the flagship case file, unlimited mysteries. */}
+      {/* GeoDetective leads: the flagship case file, unlimited mysteries.
+          Age-profile: for bands where the loop is locked (5-7), the SAME
+          footprint renders the locked variant in place — no reflow, no
+          reorder (Phase 2 minimal amendment). */}
+      {isLoopLocked(ageBand, "geodetective") ? (
+        <LockedLoop title="GeoDetective" onGrownUpOpen={onGrownUpOpen} />
+      ) : (
       <article
         aria-labelledby="geodetective-title"
         className="atlas-dossier home-rise mt-8"
@@ -1777,6 +1871,7 @@ function Choose({
           {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
         </button>
       </article>
+      )}
       {/* Cold Trail vertical slice: 3 sightings, 3 rings, one interception. */}
       <article
         aria-labelledby="coldtrail-title"
@@ -1864,6 +1959,26 @@ function Choose({
           )}
         </section>
       ) : null}
+      {/* Age-profile footer entry (Phase 2 §1a): the COPPA-standard
+          ParentZone placement — low-emphasis, after the review deck,
+          before GrandpaCoffeeRun. One host per screen: the header hosts
+          brand + sound, so the footer carries this. */}
+      <footer className="agep-footer">
+        <button
+          type="button"
+          className="agep-footer-link"
+          onClick={onGrownUpOpen}
+          aria-label="For grown-ups: game settings"
+          data-testid="grownups-link"
+        >
+          🔒 For grown-ups
+        </button>
+        {agePending ? (
+          <span className="agep-pending-chip" role="status">
+            Updating… takes effect on the next card
+          </span>
+        ) : null}
+      </footer>
     </main>
     {/* Grandpa's Coffee Run — animated donation scene, home only.
         Veeresh 2026-10-07: replaces PR #91's static sign. */}
@@ -2043,9 +2158,12 @@ function Play({
   tutorial,
   onTutorialAdvance,
   onTutorialEnd,
+  ageBand,
 }: {
   run: Run;
   session: Session | null;
+  /** Effective age band for tolerance + round params (parent-set). */
+  ageBand: AgeBandId;
   onRun: (run: Run) => void;
   onBankPlace: (input: {
     edition: Edition;
@@ -2185,6 +2303,7 @@ function Play({
       tutorial={tutorial}
       onTutorialAdvance={onTutorialAdvance}
       onTutorialEnd={onTutorialEnd}
+      ageBand={ageBand}
     />
   );
 }
@@ -2206,9 +2325,12 @@ function PlayLoaded({
   tutorial,
   onTutorialAdvance,
   onTutorialEnd,
+  ageBand,
 }: {
   run: Run;
   places: Starter[];
+  /** Effective age band for tolerance + round params (parent-set). */
+  ageBand: AgeBandId;
   session: Session | null;
   onRun: (run: Run) => void;
   onBankPlace: (input: {
@@ -2504,7 +2626,12 @@ function PlayLoaded({
     }
     let cancel = false;
     const placeId = place.id;
-    const authored = place.story;
+    // Age-profile card boundary (Phase 1 §2 mid-session rule): a staged
+    // band change applies to the NEXT card, never the current one. The pool
+    // was composed at run start under the old band, so the new card's story
+    // is re-mapped for the effective band from the place's rung parts.
+    const boundaryProfile = applyPendingAtBoundary();
+    const authored = storyForBand(place, resolveBand(boundaryProfile));
     setStory(authored);
     // Blurb-only generated places skip the stylistic rewrite: the result
     // card's useAiStory owns Nano enrichment for them (one model wake,
@@ -2537,11 +2664,11 @@ function PlayLoaded({
       spot: { lon: place.lon, lat: place.lat },
       kilometers: drop.distanceKm,
       // Review cards replay the original question's hit radius.
+      // Otherwise the age-profile band scales the tolerance (Phase 1 §3a):
+      // x1.5 / x1.25 / x1.0, clamps applied after the multiplier.
       radiusKm: review
         ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
-        : run.edition === "globe"
-          ? radiusKm("globe", 0)
-          : radiusKm(run.edition, greaterSideKm(boundsFor(run))),
+        : pinToleranceKm(ageBand, run.edition, greaterSideKm(boundsFor(run))),
     };
   }, [drop, place, review, reviewEntry, run]);
 
@@ -2567,11 +2694,10 @@ function PlayLoaded({
     const distance = distanceKm([lon, lat], [place.lon, place.lat]);
     // Review cards are judged against the hit radius of the original
     // question (snapshotted at miss time) — the same bar as the first try.
+    // Otherwise the age-profile band scales the tolerance (Phase 1 §3a).
     const radius = review
       ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
-      : run.edition === "globe"
-        ? radiusKm("globe", 0)
-        : radiusKm(run.edition, greaterSideKm(boundsFor(run)));
+      : pinToleranceKm(ageBand, run.edition, greaterSideKm(boundsFor(run)));
     const hit = isHit(distance, radius);
     // v3: the place is scored with the streak engine + difficulty multiplier;
     // a miss scores 0 and resets the streak (handled in dropPin). Review is
