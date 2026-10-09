@@ -63,10 +63,18 @@ import { RunSummaryCard } from "./run-summary";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
 import { CometEmblem } from "./comet-emblem";
 import { GrandpaCoffeeRun } from "./grandpa-coffee-run";
-// Storyteller home handoff (H1): the Storyteller hosts home's hero strip.
-// React.lazy — the host (and its copy chunk) never lands in the initial
-// bundle. Comet is retired as a host: a silent ~30px emblem stays in the
-// eyebrow row (aria-hidden, decorative, never speaks).
+// Storyteller banner host (owner directive 2026-10-09): the Storyteller
+// sits IN THE BANNER beside the Meridian branding — always visible, mobile
+// and desktop. React.lazy — the host (and its copy chunk) never lands in
+// the initial bundle. The shell (skeleton + error boundary) is a light
+// module bundled with the main chunk; the boundary fails closed to a static
+// figure so the banner never breaks home. Comet is retired as a host: a
+// silent ~30px emblem stays in the eyebrow row (aria-hidden, decorative,
+// never speaks).
+import {
+  StorytellerBannerBoundary,
+  StorytellerBannerSkeleton,
+} from "./storyteller-banner-shell";
 // Age-profile system: the parent-set band (5-7 / 8-10 / 11-13). Game
 // screens use ONLY this facade — the store is never imported directly.
 // The settings screen is React.lazy: zero initial-bundle cost.
@@ -1934,16 +1942,18 @@ function Choose({
             style={rise(0)}
           />
         </div>
-        {/* Storyteller home handoff (H1): the hero strip — figure left,
-            greeting caption right (fixed min-height so hiding the bubble
-            never jumps layout). React.lazy: never in the initial bundle.
-            One host per screen — hard. */}
-        <Suspense fallback={null}>
-          <StorytellerHomeHost tutorialInviteVisible={tutorialInviteVisible} />
-        </Suspense>
-        {/* PBI-6: the h1 is the focus target when the Scout Map boot offer
-            closes (data-testid="home-heading"). */}
+        {/* Storyteller banner host (owner directive 2026-10-09): the figure
+            sits in the banner row beside the branding — always visible,
+            mobile and desktop. The greeting rides in a popover below the row.
+            The Comet emblem stays in the eyebrow row — never moved. */}
         <div className="atlas-banner-row home-rise mt-4" style={rise(2)}>
+          <StorytellerBannerBoundary>
+            <Suspense fallback={<StorytellerBannerSkeleton />}>
+              <StorytellerHomeHost tutorialInviteVisible={tutorialInviteVisible} />
+            </Suspense>
+          </StorytellerBannerBoundary>
+          {/* PBI-6: the h1 is the focus target when the Scout Map boot offer
+              closes (data-testid="home-heading"). */}
           <h1 className="atlas-title" data-testid="home-heading" tabIndex={-1}>
             {BRAND.name}
           </h1>

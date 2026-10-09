@@ -2,16 +2,20 @@ import { test, expect, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
- * Storyteller home handoff (H1) — mobile (390×844, touch).
+ * Storyteller banner host — mobile (390×844, touch).
  *
- * The Storyteller hosts home's hero strip: figure left (96px), greeting
- * caption right. Comet is retired as a host — a silent ~30px emblem stays
- * in the eyebrow row (aria-hidden, decorative, never speaks).
+ * Owner directive 2026-10-09: the Storyteller sits IN THE BANNER beside the
+ * Meridian branding — always visible, mobile and desktop, no hero strip.
+ * Narration plays on EVERY home visit; the ONLY silence is the user's own
+ * mute toggle. Comet is retired as a host — a silent ~30px emblem stays in
+ * the eyebrow row (aria-hidden, decorative, never speaks).
  *
- * Covers: 112px hero budget + difficulty picker in the first fold,
- * once-per-day greeting (text-first), same-day silent return, poke lines,
- * scroll-tap hello, loop send-off (≤2.5s, navigation never waits),
- * tour-return line, keyboard dismiss focus, no console errors.
+ * Covers: 56px figure beside the h1 (no title wrap @360/390), greeting on
+ * every visit (no daily gate — a seeded greetDay key does NOT silence it),
+ * text-first caption, first-gesture audio with 12s cap + text fallback,
+ * mute toggle = only silence, poke lines, loop send-off (≤2.5s, navigation
+ * never waits), dismiss × sound-toggle 0px² overlap, keyboard dismiss
+ * focus, no console errors.
  */
 test.setTimeout(180_000);
 
@@ -31,12 +35,9 @@ const GREETINGS = [
   "The winds brought rumors from faraway cities today. Curious?",
   "Every dot on this map has a tale. Which one shall we wake up first?",
 ];
-const TOUR_RETURN_LINE =
-  "Welcome back, explorer! Grandpa showed you around — now, where shall our story go next?";
 const GEODETECTIVE_SENDOFF = "A mystery is afoot… lean in close. 🔍";
 const POKE_1 = "Heh! That tickles my beard.";
-const SCROLL_TAP = "tap tap… is this thing on? 👀";
-const LEAF_LINE = "A leaf for luck. 🍃";
+const POKE_2 = "Careful, explorer — I'm older than these mountains.";
 
 function todayKey(): string {
   const d = new Date();
@@ -90,38 +91,54 @@ function expectCleanConsole(errors: string[]): void {
   expect(relevant, `console/page errors: ${JSON.stringify(relevant)}`).toEqual([]);
 }
 
-test("hero strip fits the 112px budget; difficulty picker stays in the first fold", async ({
+test("banner: 56px figure beside the Meridian h1, title never wraps @390px", async ({
   page,
 }) => {
   await seedQuietHome(page);
   const errors = await loadHome(page);
 
+  // Let the home-rise entrance (staggered ~110ms steps) settle so the
+  // bounding-box assertions below measure the resting layout.
+  await page.waitForTimeout(800);
+
   const figure = page.getByTestId("storyteller-figure");
   const fBox = await figure.boundingBox();
   expect(fBox, "figure box").not.toBeNull();
-  expect(Math.round(fBox!.width)).toBe(96);
-  expect(Math.round(fBox!.height)).toBe(96);
+  expect(Math.round(fBox!.width)).toBe(56);
+  expect(Math.round(fBox!.height)).toBe(56);
 
-  const strip = page.getByTestId("storyteller-home");
-  const sBox = await strip.boundingBox();
-  expect(sBox, "strip box").not.toBeNull();
-  expect(sBox!.height).toBeLessThanOrEqual(112);
+  // The figure lives in the banner row, left of the branding.
+  const row = page.locator(".atlas-banner-row").first();
+  const rowBox = await row.boundingBox();
+  const heading = page.getByTestId("home-heading");
+  const hBox = await heading.boundingBox();
+  expect(rowBox, "banner row box").not.toBeNull();
+  expect(hBox, "h1 box").not.toBeNull();
+  expect(fBox!.x).toBeLessThan(hBox!.x);
+  // Bottom-aligned in the row (sub-pixel rounding tolerated).
+  expect(fBox!.y + fBox!.height).toBeLessThanOrEqual(rowBox!.y + rowBox!.height + 2);
 
-  // Eng must-fix: hero budget enforced by visual assertion — the difficulty
-  // picker must be visible in the first fold @390×844.
-  const picker = page.getByTestId("tour-stop-difficulty");
-  await expect(picker).toBeVisible();
-  const pBox = await picker.boundingBox();
-  expect(pBox, "picker box").not.toBeNull();
-  expect(pBox!.y + pBox!.height).toBeLessThanOrEqual(844);
+  // "MERIDIAN" never stacks: single-line h1 at 390px.
+  const h1Box = await heading.boundingBox();
+  const lineHeight = await heading.evaluate(
+    (el) => parseFloat(getComputedStyle(el).lineHeight) || 0,
+  );
+  expect(h1Box!.height).toBeLessThan(lineHeight * 1.5);
+
+  // Comet stays a silent emblem in the eyebrow row — never moved to banner.
+  const emblem = page.getByTestId("comet-emblem");
+  await expect(emblem).toHaveAttribute("aria-hidden", "true");
+  await expect(page.getByTestId("comet-mascot")).toHaveCount(0);
 
   expectCleanConsole(errors);
 });
 
-test("first visit of day: greeting fires once, text-first, role=status", async ({
+test("every visit greets: text-first caption, role=status — no daily gate", async ({
   page,
 }) => {
-  await seedQuietHome(page);
+  // Seed the LEGACY daily key: under the banner directive it must NOT
+  // silence the greeting (proves the once-per-day gate is gone).
+  await seedQuietHome(page, { "meridian.storyteller.greetDay.v1": todayKey() });
   const errors = await loadHome(page);
 
   const bubble = page.getByTestId("storyteller-home-bubble");
@@ -134,37 +151,78 @@ test("first visit of day: greeting fires once, text-first, role=status", async (
     })
     .toBe(expectedGreeting());
 
+  // Reload without touching storage → greets again (every visit greets).
+  await page.reload();
+  await expect(page.getByTestId("storyteller-home-bubble")).toBeVisible({
+    timeout: 20_000,
+  });
+  await expect
+    .poll(async () => page.getByTestId("storyteller-home-caption").textContent(), {
+      timeout: 8_000,
+    })
+    .toBe(expectedGreeting());
+
   expectCleanConsole(errors);
 });
 
-test("same-day return: silent figure, no bubble, no voice", async ({ page }) => {
-  await seedQuietHome(page, { "meridian.storyteller.greetDay.v1": todayKey() });
+test("first gesture narrates; mute toggle is the only silence", async ({ page }) => {
+  await seedQuietHome(page);
   const errors = await loadHome(page);
+  const host = page.getByTestId("storyteller-home");
+  const caption = page.getByTestId("storyteller-home-caption");
+  await expect(caption).toBeVisible({ timeout: 10_000 });
 
-  await expect(page.getByTestId("storyteller-figure")).toBeVisible();
-  await expect(page.getByTestId("storyteller-home-bubble")).toHaveCount(0);
+  // A real tap is a user gesture → audio may start (mp3s landed) or the
+  // text fallback shows if audio fails — either is a valid greeting.
+  await page.locator("body").click({ position: { x: 200, y: 600 } });
+  await expect
+    .poll(
+      async () =>
+        (await host.getAttribute("data-phase")) === "greeting_audio" ||
+        (await page.getByTestId("storyteller-home-fallback").count()) > 0,
+      { timeout: 15_000 },
+    )
+    .toBe(true);
+
+  // Mute, then reload: text-only greeting, no audio attempt — the toggle is
+  // the ONLY silence.
+  await page.getByTestId("sound-toggle").click();
+  await page.reload();
+  await expect(page.getByTestId("storyteller-home-caption")).toBeVisible({
+    timeout: 20_000,
+  });
+  await expect
+    .poll(async () => page.getByTestId("storyteller-home").getAttribute("data-phase"), {
+      timeout: 8_000,
+    })
+    .not.toBe("greeting_audio");
+  await expect(page.getByTestId("storyteller-home-caption")).toContainText(
+    expectedGreeting(),
+  );
 
   expectCleanConsole(errors);
 });
 
-test("poke: tap the figure → rotating idle line; rapid double-tap → scroll-tap hello", async ({
-  page,
-}) => {
-  await seedQuietHome(page, { "meridian.storyteller.greetDay.v1": todayKey() });
+test("poke: tap the figure → rotating idle lines", async ({ page }) => {
+  await seedQuietHome(page);
   const errors = await loadHome(page);
 
   const figure = page.getByTestId("storyteller-figure");
   const caption = page.getByTestId("storyteller-home-caption");
+  await expect(caption).toBeVisible({ timeout: 10_000 });
+
+  // Dismiss the greeting first: tapping the figure is itself the
+  // first-gesture that starts narration, so poke needs a quiet figure.
+  await page.getByTestId("storyteller-home-dismiss").click();
+  await expect(page.getByTestId("storyteller-home-bubble")).toHaveCount(0);
 
   await figure.click();
   await expect.poll(async () => caption.textContent(), { timeout: 5_000 }).toBe(POKE_1);
 
-  // Clear the poke debounce + double-tap window before the rapid pair.
+  // Clear the poke debounce, then tap again → next line rotates in.
   await page.waitForTimeout(700);
-  // Two rapid taps (<450ms apart) → the scroll-tap hello, not poke line 2.
   await figure.click();
-  await figure.click();
-  await expect.poll(async () => caption.textContent(), { timeout: 5_000 }).toBe(SCROLL_TAP);
+  await expect.poll(async () => caption.textContent(), { timeout: 5_000 }).toBe(POKE_2);
 
   expectCleanConsole(errors);
 });
@@ -172,10 +230,12 @@ test("poke: tap the figure → rotating idle line; rapid double-tap → scroll-t
 test("loop pick: the locked send-off rides along ≤2.5s; navigation never waits", async ({
   page,
 }) => {
-  await seedQuietHome(page, { "meridian.storyteller.greetDay.v1": todayKey() });
+  await seedQuietHome(page);
   const errors = await loadHome(page);
+  await expect(page.getByTestId("storyteller-home-bubble")).toBeVisible({
+    timeout: 10_000,
+  });
 
-  // Dismiss the greeting-less hero's poke state is idle; open GeoDetective.
   await page
     .getByRole("button", { name: /Solve a mystery|Resume your case/ })
     .click();
@@ -191,7 +251,7 @@ test("loop pick: the locked send-off rides along ≤2.5s; navigation never waits
   expectCleanConsole(errors);
 });
 
-test("tour yield: host unmounts during the tour; return line shows once after", async ({
+test("tour yield: host unmounts during the tour; greets again after", async ({
   page,
 }) => {
   await seedQuietHome(page);
@@ -203,15 +263,44 @@ test("tour yield: host unmounts during the tour; return line shows once after", 
   await page.evaluate(() => window.dispatchEvent(new Event("meridian:tour-walk-start")));
   await expect(page.getByTestId("storyteller-home")).toHaveCount(0);
 
-  // The tour closes → absent → the locked return line, text-only, exactly once.
+  // The tour closes → remounts and greets again (every visit greets; no
+  // tour-return line anymore).
   await page.evaluate(() => window.dispatchEvent(new Event("meridian:tour-walk-end")));
   await expect
     .poll(async () => page.getByTestId("storyteller-home-caption").textContent(), {
       timeout: 8_000,
     })
-    .toBe(TOUR_RETURN_LINE);
+    .toBe(expectedGreeting());
 
   expectCleanConsole(errors);
+});
+
+test("dismiss × sound toggle: 0px² overlap @390px and @360px", async ({ page }) => {
+  for (const w of [390, 360]) {
+    await page.setViewportSize({ width: w, height: 844 });
+    await seedQuietHome(page);
+    const errors = await loadHome(page);
+
+    const dismiss = page.getByTestId("storyteller-home-dismiss");
+    await dismiss.waitFor({ state: "visible", timeout: 15_000 });
+    const d = await dismiss.boundingBox();
+    const toggle = page.getByTestId("sound-toggle");
+    const t = await toggle.boundingBox();
+    expect(d, `dismiss box @${w}px`).not.toBeNull();
+    expect(t, `toggle box @${w}px`).not.toBeNull();
+    const ix = Math.max(0, Math.min(d!.x + d!.width, t!.x + t!.width) - Math.max(d!.x, t!.x));
+    const iy = Math.max(
+      0,
+      Math.min(d!.y + d!.height, t!.y + t!.height) - Math.max(d!.y, t!.y),
+    );
+    console.log(
+      `@${w}px dismiss=(${d!.x.toFixed(1)},${d!.y.toFixed(1)}) ` +
+        `toggle=(${t!.x.toFixed(1)},${t!.y.toFixed(1)}) overlap=${(ix * iy).toFixed(1)}px²`,
+    );
+    expect(ix * iy).toBe(0);
+
+    expectCleanConsole(errors);
+  }
 });
 
 test("keyboard dismiss returns focus to the first edition control", async ({
@@ -229,27 +318,6 @@ test("keyboard dismiss returns focus to the first edition control", async ({
   await expect(
     page.locator('[data-testid="tour-stop-difficulty"] button').first(),
   ).toBeFocused();
-
-  expectCleanConsole(errors);
-});
-
-test("Comet is a silent ≤32px emblem in the eyebrow row — never a host", async ({
-  page,
-}) => {
-  await seedQuietHome(page);
-  const errors = await loadHome(page);
-
-  const emblem = page.getByTestId("comet-emblem");
-  await expect(emblem).toBeVisible();
-  await expect(emblem).toHaveAttribute("aria-hidden", "true");
-  const box = await emblem.boundingBox();
-  expect(box, "emblem box").not.toBeNull();
-  expect(Math.round(box!.width)).toBeLessThanOrEqual(32);
-  expect(Math.round(box!.height)).toBeLessThanOrEqual(32);
-
-  // Comet never hosts on home anymore: no interactive mascot, no greeting.
-  await expect(page.getByTestId("comet-mascot")).toHaveCount(0);
-  await expect(page.getByTestId("comet-greeting")).toHaveCount(0);
 
   expectCleanConsole(errors);
 });

@@ -2,9 +2,12 @@ import { test, expect, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
- * Dismiss-vs-sound-toggle overlap measurement (follow-up to #114).
- * Asserts the 44px dismiss and the eyebrow sound toggle have 0px²
- * bounding-box intersection at 360px and 390px widths.
+ * Dismiss-vs-sound-toggle overlap measurement (follow-up to #114, kept
+ * alive through the 2026-10-09 banner redesign). Asserts the 44px dismiss
+ * and the eyebrow sound toggle have 0px² bounding-box intersection at 360px
+ * and 390px widths. The banner popover hangs below the banner row with the
+ * dismiss anchored mid-right inside it — it must never reach the eyebrow
+ * toggle.
  */
 const APP = "http://127.0.0.1:4123/Meridian/";
 
@@ -34,7 +37,7 @@ async function overlapArea(page: Page, w: number): Promise<number> {
   await seedQuietHome(page);
   await page.setViewportSize({ width: w, height: 844 });
   await page.goto(APP, { waitUntil: "networkidle" });
-  const dismiss = page.locator(".storyteller-home-dismiss");
+  const dismiss = page.locator(".storyteller-banner-dismiss");
   await dismiss.waitFor({ state: "visible", timeout: 30_000 });
   const d = await dismiss.boundingBox();
   const toggle = page.locator(".atlas-sound-toggle");

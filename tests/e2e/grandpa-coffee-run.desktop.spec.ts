@@ -231,6 +231,20 @@ test("walk has no cloud, kettle fills the mug, then the park finale", async ({
     )
     .toBeGreaterThan(0.9);
 
+  // Viewport overflow: the seated cloud must sit fully inside the viewport
+  // (AGENTS.md rule #1 — the desktop cloud previously clipped ~54px past
+  // the right edge at 1440px; now right-anchored per the #111 pattern).
+  {
+    const bbox = await bubble.boundingBox();
+    expect(bbox, "cloud has a bounding box (desktop seated ask)").not.toBeNull();
+    const vp = page.viewportSize()!;
+    expect(bbox!.x, "cloud left edge on-screen (desktop seated ask)").toBeGreaterThanOrEqual(-2);
+    expect(
+      bbox!.x + bbox!.width,
+      "cloud right edge on-screen (desktop seated ask)",
+    ).toBeLessThanOrEqual(vp.width + 2);
+  }
+
   await expectGrandpaNotCoveringCtas(page);
   expectCleanConsole(errors);
 });

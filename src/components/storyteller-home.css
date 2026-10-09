@@ -1,73 +1,87 @@
-/* Storyteller home handoff (H1) — hero strip.
+/* Storyteller banner host (owner directive 2026-10-09).
  *
- * Figure 96px @390 / 144px @1280; strip ≤112px @390 / ≤160px @1280 so the
- * difficulty picker stays in the first fold on 844px screens. Owner: no
- * idle motion. Reduced motion: ≤150ms opacity fade only.
+ * The figure sits IN THE BANNER beside the Meridian branding — 56px on all
+ * viewports, crisp at 360/390px. The greeting rides in a popover below the
+ * banner row (absolute — showing/hiding it never moves page layout). Owner:
+ * no idle motion. Reduced motion: ≤150ms opacity fade only.
+ *
+ * Overlap lesson (#116, AGENTS.md rule 1): the 44px dismiss is anchored
+ * mid-right INSIDE the popover; the popover hangs below the banner row, so
+ * it can never reach the eyebrow sound toggle.
  */
 
-.storyteller-home {
-  /* The strip lives between the eyebrow row and the h1 banner row. */
-}
-
-.storyteller-home-strip {
+.storyteller-banner {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  height: 112px; /* 96px figure + 8px padding top/bottom (border-box) */
-  animation: storyteller-home-in 150ms ease-out;
-}
-
-@media (min-width: 1024px) {
-  .storyteller-home-strip {
-    height: 160px; /* 144px figure + 8px padding top/bottom */
-  }
-}
-
-/* Figure: exact owner sizes, no idle float (calm host). */
-.storyteller-home .storyteller-figure {
   flex: none;
-  width: 96px;
-  height: 96px;
+}
+
+/* Figure: 56px banner size (owner range 48–64px), no idle float. */
+.storyteller-banner .storyteller-figure {
+  width: 56px;
+  height: 56px;
   animation: none;
 }
 
-@media (min-width: 1024px) {
-  .storyteller-home .storyteller-figure {
-    width: 144px;
-    height: 144px;
-  }
+/* Chunk-load skeleton + error-boundary static figure: same 56px footprint. */
+.storyteller-banner-skeleton,
+.storyteller-banner-static {
+  display: block;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
-/* Caption column: fixed min-height so showing/hiding the bubble never
- * moves the difficulty picker (no layout jump). */
-.storyteller-home-captioncol {
-  position: relative;
-  flex: 1;
-  min-width: 0;
-  min-height: 96px;
-  display: flex;
-  align-items: center;
+.storyteller-banner-skeleton {
+  background: rgba(255, 255, 255, 0.08);
+  animation: storyteller-banner-in 150ms ease-out;
 }
 
-@media (min-width: 1024px) {
-  .storyteller-home-captioncol {
-    min-height: 144px;
-  }
+.storyteller-banner-static img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.storyteller-home-bubble {
+/* Greeting popover: below the banner row, above the tagline. Transient —
+ * absolute positioning means it never reflows the page. */
+.storyteller-banner-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 30;
+  width: max-content;
+  max-width: min(320px, 78vw);
   margin: 0;
-  max-width: 100%;
-  /* Room for the 44px dismiss anchored inside the bubble's top-right. */
-  padding-right: 56px;
+  /* Room for the 44px dismiss anchored inside the popover's mid-right. */
+  padding: 10px 58px 10px 14px;
+  border-radius: 14px;
+  background: var(--atlas-card, rgba(10, 12, 16, 0.95));
+  color: var(--atlas-ink, #f5f1e6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  animation: storyteller-banner-in 150ms ease-out;
 }
 
-/* 44px dismiss centered on the bubble's right edge, inside the bubble.
- * (Top-right overhung the eyebrow sound toggle at 360–390px and stole its
- * taps — QA BLOCKED. Mid-right clears the toggle at every width and every
- * bubble height; padding-right keeps text clear of the button.) */
-.storyteller-home-dismiss {
+.storyteller-banner-popover .storyteller-caption-text {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.storyteller-fallback {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.8125rem;
+  opacity: 0.85;
+}
+
+/* 44px dismiss centered on the popover's mid-right edge, inside the
+ * popover. Mid-right keeps it clear of the eyebrow sound toggle at every
+ * width and every popover height; padding-right keeps text clear. */
+.storyteller-banner-dismiss {
   pointer-events: auto;
   position: absolute;
   top: 50%;
@@ -89,71 +103,18 @@
   touch-action: manipulation;
 }
 
-.storyteller-home-dismiss:focus-visible {
+.storyteller-banner-dismiss:focus-visible {
   outline: 3px solid var(--atlas-brass);
   outline-offset: 2px;
 }
 
-/* Tour-return bow: one small dip, visual only. Never under reduced motion. */
-.storyteller-home-bow .storyteller-figure {
-  animation: storyteller-home-bow 600ms ease-in-out;
-}
-
-@keyframes storyteller-home-bow {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  40% {
-    transform: translateY(10px) rotate(4deg);
-  }
-}
-
-/* Falling laurel leaf: one drift past the figure per greeting. */
-.storyteller-home-leaf {
-  position: absolute;
-  top: -6px;
-  left: 36px;
-  font-size: 22px;
-  line-height: 1;
-  pointer-events: none;
-  animation: storyteller-home-leaf-fall 3s ease-in forwards;
-}
-
-@keyframes storyteller-home-leaf-fall {
-  0% {
-    transform: translateY(-10px) rotate(0deg);
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(112px) translateX(26px) rotate(160deg);
-    opacity: 0;
-  }
-}
-
-/* Entering / exiting: opacity only. */
-.storyteller-home-leave {
-  animation: storyteller-home-out 150ms ease-in forwards;
-}
-
-@keyframes storyteller-home-in {
+/* Entering: opacity only. */
+@keyframes storyteller-banner-in {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes storyteller-home-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
   }
 }
 
@@ -206,21 +167,11 @@
   line-height: 1.45;
 }
 
-/* Reduced motion: ≤150ms opacity fade only — no bow, no leaf drift, no float. */
+/* Reduced motion: ≤150ms opacity fade only. */
 @media (prefers-reduced-motion: reduce) {
-  .storyteller-home-strip {
-    animation: storyteller-home-in 150ms linear;
-  }
-  .storyteller-home-leave {
-    animation: storyteller-home-out 150ms linear forwards;
-  }
-  .storyteller-home-bow .storyteller-figure {
-    animation: none;
-  }
-  .storyteller-home-leaf {
-    animation: none;
-    top: 4px;
-    opacity: 1;
+  .storyteller-banner-popover,
+  .storyteller-banner-skeleton {
+    animation: storyteller-banner-in 150ms linear;
   }
   .storyteller-sendoff {
     transition: opacity 150ms linear;

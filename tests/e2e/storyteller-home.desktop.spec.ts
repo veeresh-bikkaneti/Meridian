@@ -2,10 +2,15 @@ import { test, expect, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
- * Storyteller home handoff (H1) — desktop (1440×900, fine pointer).
+ * Storyteller banner host — desktop (1440×900, fine pointer).
  *
- * Covers: 144px figure / ≤160px strip @≥1024px, the silent Comet emblem in
- * the eyebrow row, greeting bubble, no console errors.
+ * Owner directive 2026-10-09: the Storyteller sits IN THE BANNER beside the
+ * Meridian branding — 56px on all viewports, always visible. The greeting
+ * rides in a popover below the banner row.
+ *
+ * Covers: 56px figure beside the h1 in the banner row, greeting popover on
+ * every visit, the silent Comet emblem in the eyebrow row, no console
+ * errors.
  */
 test.setTimeout(180_000);
 
@@ -49,17 +54,21 @@ function expectCleanConsole(errors: string[]): void {
   expect(relevant, `console/page errors: ${JSON.stringify(relevant)}`).toEqual([]);
 }
 
-test("hero strip: 144px figure, ≤160px strip, greeting bubble", async ({ page }) => {
+test("banner: 56px figure beside the h1, greeting popover on every visit", async ({
+  page,
+}) => {
   const errors = await loadHome(page);
 
   const fBox = await page.getByTestId("storyteller-figure").boundingBox();
   expect(fBox, "figure box").not.toBeNull();
-  expect(Math.round(fBox!.width)).toBe(144);
-  expect(Math.round(fBox!.height)).toBe(144);
+  expect(Math.round(fBox!.width)).toBe(56);
+  expect(Math.round(fBox!.height)).toBe(56);
 
-  const sBox = await page.getByTestId("storyteller-home").boundingBox();
-  expect(sBox, "strip box").not.toBeNull();
-  expect(sBox!.height).toBeLessThanOrEqual(160);
+  const heading = page.getByTestId("home-heading");
+  const hBox = await heading.boundingBox();
+  expect(hBox, "h1 box").not.toBeNull();
+  // Figure sits left of the branding inside the banner row.
+  expect(fBox!.x).toBeLessThan(hBox!.x);
 
   const bubble = page.getByTestId("storyteller-home-bubble");
   await expect(bubble).toBeVisible({ timeout: 10_000 });

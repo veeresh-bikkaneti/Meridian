@@ -2,11 +2,11 @@ import { test, expect, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
- * Storyteller home handoff (H1) — reduced motion.
+ * Storyteller banner host — reduced motion.
  *
- * Covers: ≤150ms opacity fade only (no figure float, no bow, no leaf
- * drift — the leaf renders as a static sprig), full caption text instantly,
- * audio timing unchanged, no console errors.
+ * Covers: ≤150ms opacity fade only (no figure float, no infinite
+ * animations), full caption text instantly in the banner popover, audio
+ * timing unchanged, no console errors.
  */
 test.setTimeout(180_000);
 
@@ -15,7 +15,6 @@ test.beforeEach(async ({ context }) => {
 });
 
 const APP = "http://127.0.0.1:4123/Meridian/";
-const LEAF_LINE = "A leaf for luck. 🍃";
 
 function todayKey(): string {
   const d = new Date();
@@ -83,25 +82,30 @@ test("reduced motion: full caption instantly, fade-only figure", async ({ page }
   expectCleanConsole(errors);
 });
 
-test("reduced motion: leaf delight is a static sprig with its caption", async ({
-  page,
-}) => {
+test("reduced motion: popover enter is opacity-only, ≤150ms", async ({ page }) => {
   const errors = await loadHome(page);
 
-  // Day-1: text-only greeting holds ~6s, then the leaf delight fires.
-  const leaf = page.getByTestId("storyteller-home-leaf");
-  await expect(leaf).toBeVisible({ timeout: 30_000 });
-  const leafAnimation = await leaf.evaluate((el) => {
-    const animations = (el as HTMLElement).getAnimations();
-    return animations.filter((a) => a.playState === "running").length;
-  });
-  expect(leafAnimation, "leaf drift animation").toBe(0);
+  const popover = page.getByTestId("storyteller-home-bubble");
+  await expect(popover).toBeVisible({ timeout: 10_000 });
 
-  await expect
-    .poll(async () => page.getByTestId("storyteller-home-caption").textContent(), {
-      timeout: 8_000,
-    })
-    .toBe(LEAF_LINE);
+  const animations = await popover.evaluate((el) => {
+    return el.getAnimations().map((a) => {
+      const effect = a.effect as KeyframeEffect | null;
+      const timing = effect?.getComputedTiming();
+      return {
+        duration: timing?.duration,
+        iterations: timing?.iterations,
+        // Opacity-only: no transform keyframes may run under reduced motion.
+        hasTransform: ((effect?.getKeyframes() ?? []) as Keyframe[])
+          .some((k) => "transform" in (k as object)),
+      };
+    });
+  });
+  for (const a of animations) {
+    expect(a.hasTransform, "no transform keyframes").toBe(false);
+    expect(Number(a.duration), "≤150ms enter").toBeLessThanOrEqual(150);
+    expect(a.iterations === Infinity, "no infinite animations").toBe(false);
+  }
 
   expectCleanConsole(errors);
 });
