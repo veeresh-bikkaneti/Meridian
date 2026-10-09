@@ -111,6 +111,7 @@ import {
 } from "@/game/learning";
 import { LoopScreen } from "@/game/loop/LoopScreen";
 import { readLoopOpen, writeLoopOpen, peekLoopProgress } from "@/game/loop/store";
+import { TrailScreen } from "@/game/coldtrail/TrailScreen";
 import {
   REVIEW_DECK_COPY,
   REVIEW_DECK_REGION_ID,
@@ -733,6 +734,10 @@ export function GameApp() {
   // run/drop keys. The open flag (meridian.loop.open) restores the screen
   // after a reload so a mid-game refresh resumes the mystery, not the menu.
   const [loopOpen, setLoopOpen] = useState<boolean>(() => readLoopOpen());
+  // Cold Trail (vertical slice): its own screen outside the run machine,
+  // persisted under meridian.coldtrail.v1. No open-flag: the slice always
+  // starts from the menu; in-progress cases resume from the store.
+  const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(false);
   // Cleared-mode celebration: set when a difficulty band's full cycle is
   // celebrated (primary onContinue trigger or the run-start backstop). The
   // dialog renders over the current screen; dismissing returns the player
@@ -1450,6 +1455,18 @@ export function GameApp() {
     );
   }
 
+  // Cold Trail lives next to the loop edition: its own screen, its own
+  // storage namespace. A mid-case reload resumes from meridian.coldtrail.v1.
+  if (coldTrailOpen) {
+    return (
+      <>
+        <TrailScreen onLeave={() => setColdTrailOpen(false)} />
+        {celebrationOverlay}
+        {idleToast}
+      </>
+    );
+  }
+
   // Chunk loading state: the region's places are being fetched. The menu is
   // replaced (no double-taps) until the load resolves or fails closed.
   if (starting) {
@@ -1586,6 +1603,7 @@ export function GameApp() {
       onCountry={withCardTap("Country", () => setMenu({ kind: "countries" }))}
       onGlobe={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
       onLoop={withCardTap("mystery", () => { writeLoopOpen(true); setLoopOpen(true); })}
+      onColdTrail={withCardTap("coldtrail", () => setColdTrailOpen(true))}
       onReview={startReview}
       deck={deckStatus}
       difficultyChoice={difficultyChoice}
@@ -1621,6 +1639,7 @@ function Choose({
   onCountry,
   onGlobe,
   onLoop,
+  onColdTrail,
   onReview,
   deck,
   notice,
@@ -1634,6 +1653,8 @@ function Choose({
   onGlobe: (e: ReactMouseEvent) => void;
   /** Open the GeoDetective edition (unlimited mysteries). */
   onLoop: (e: ReactMouseEvent) => void;
+  /** Open the Cold Trail vertical slice (smuggler triangulation). */
+  onColdTrail: (e: ReactMouseEvent) => void;
   /** Start a review session over the due deck cards. */
   onReview: () => void;
   /** Deck entry status (flag-gated; see useDeckStatus). */
@@ -1754,6 +1775,31 @@ function Choose({
           onClick={onLoop}
         >
           {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
+        </button>
+      </article>
+      {/* Cold Trail vertical slice: 3 sightings, 3 rings, one interception. */}
+      <article
+        aria-labelledby="coldtrail-title"
+        className="atlas-dossier home-rise mt-8"
+        style={rise(4)}
+      >
+        <span className="atlas-stamp" style={rise(4)} aria-hidden="true">
+          New
+        </span>
+        <p className="atlas-eyebrow">Case file · Triangulation</p>
+        <h2 id="coldtrail-title" className="atlas-dossier-title">
+          Cold Trail
+        </h2>
+        <p className="atlas-dossier-detail">
+          A smuggler moves between cities. Three sightings, three rings — tap where
+          they cross to make the interception.
+        </p>
+        <button
+          type="button"
+          className="atlas-btn atlas-btn-brass mt-5"
+          onClick={onColdTrail}
+        >
+          ❄️ Start the trail
         </button>
       </article>
       <div

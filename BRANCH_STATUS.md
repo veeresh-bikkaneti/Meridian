@@ -1,171 +1,72 @@
-# BRANCH_STATUS — feat/crash-pipeline-gaps
+# BRANCH_STATUS — feat/geodetective-loop
 
-Close the invisible error classes the expert panel found after Emily's iOS
-crash produced no Discord alert: tile failures, region-chunk start errors,
-and route-boundary errors never emitted anything. Plus: device-blind
-Discord alerts, fallback-UI a11y, and a post-deploy smoke script.
+Cold Trail vertical slice: the GeoDetective-style smuggler-triangulation loop.
+One case = 3 timestamped sightings → place 3 radius rings → tap the
+interception guess → score reveal (km from the true hideout).
 
-Rebased onto origin/main@4e09990 (PR #104 facts-ladder merged) — see "Merged base" below.
+## Done (frontend developer)
+- Case deck generator `scripts/build-coldtrail.mjs` → `src/game/coldtrail/cases.generated.json`
+  (60 cases, deterministic seed; hideout = difficulty-2 real city 50k–2M pop;
+  3 witness anchors ≥300k pop, 250–4000 km, spread octants; radius vague by
+  difficulty — 25 km steps tier 2, 50 km tier 3).
+- Runtime: `src/game/coldtrail/` — types, cases (fail-closed validation),
+  engine (score/verdict/informant math, pure), store (`meridian.coldtrail.v1`,
+  fail-open), `TrailScreen`, `SightingCard`, `InterceptConfirm`.
+- `LoopMap` extended with optional Cold-Trail props only: `freeTap` +
+  `onMapTap` (raw-coordinate taps, no place-index fetch), `evidenceRings` /
+  `evidenceMarks` (witness rings via existing ringPolygon + gold dots),
+  `mapLabel`. Default loop behavior untouched.
+- Menu: "❄️ Cold Trail" dossier card → `TrailScreen` (own screen branch in
+  game-app.tsx, like the loop edition).
+- Paid informant included (trivial): 1⭐ tightens one ring 50%; wallet starts
+  at 2⭐, +1⭐ per closed case.
+- Tests: engine/cases unit (7), build-script test (2),
+  e2e `tests/e2e/coldtrail.spec.ts` (2, project `coldtrail` in playwright.config).
 
-## Rebase 2026-10-08 (onto origin/main@4e09990 — PR #104 merged)
-- 4 commits replayed. 1 conflict, BRANCH_STATUS.md docs-only (full-file):
-  kept this branch's doc, added "Merged base — facts ladder" section.
-  Zero code conflicts.
+## Done (QA tester, commit 4b628df)
+- `store.test.ts` + `edge.test.ts` (22 tests), package.json test-script wiring.
+  Cold Trail suite: 29/29 green.
+
+## Gates (all on the combined tree)
+- `tsc --noEmit`: clean
+- `npm test`: scripts 478 (471 pass, 0 fail) · src 866/866 pass
+- `node scripts/lint-cards.mjs`: GATE PASSED
+- `npm run build:pages`: green
+- Playwright: coldtrail 2/2 pass; geodetective 15/15 pass (2 infra flakes —
+  trace-file ENOENT on context close — green on retry, unrelated to this change)
+
+## Pending / open
+- No merge, no push (per task instructions — PAT handoff is the parent's call).
+- Pre-merge prep (rebased onto origin/main ae524e3 via --onto; base 7de5cc8 was
+  rewritten upstream):
+  - package.json test-script union (kept grandpa-tour.test.ts from main +
+    coldtrail suites); game-app.tsx kept Cold Trail card + main's
+    data-testid="tour-stop-editions"; BRANCH_STATUS kept branch version.
+  - Fuzzy-radius: Math.round → Math.ceil (player-fair; deck regenerated,
+    60 cases; generator test updated to ceil semantics).
+  - A11y pass: focus into InterceptConfirm on open; focus result heading on
+    reveal + case heading on next case; informant button now renders disabled
+    with reason when unaffordable (was hidden); --gold-ink theme token fixes
+    gold-text contrast in light mode (#8a6410). Reduced-motion already gated
+    (home-rise, map flyTo). Known limit: map tap is pointer-only (shared
+    LoopMap; same as the base loop edition) — keyboard crosshair is follow-up.
+  - Gates re-run on rebased tip: tsc clean, npm test full green, lint-cards
+    GATE PASSED, build:pages green, Playwright coldtrail 2/2.
+- Deferred per pitch: 30s blitz mode, 10min chain mode, streak multipliers.
+- Judgment call: difficulty-3 hideouts skipped — in this dataset tier 3 is
+  overwhelmingly city districts/small towns (verified); tier-2 real cities
+  match the "recognizable but not trivial" intent.
+- `scripts/build-coldtrail.mjs` is NOT wired into prebuild; the generated JSON
+  is checked in and re-runnable via `node --experimental-strip-types`.
+
+## Rebase 2026-10-08 (onto origin/main@8e2cc76 — merge train #103/#104/#105 landed)
+
+- 3 commits replayed. 2 conflicts, all mechanical:
+  - package.json: test list union — kept main's list (incl. `error-component.test.ts`
+    from #105), appended the 4 `src/game/coldtrail/*.test.ts` entries.
+  - BRANCH_STATUS.md: docs-only, kept this branch's doc.
+  - playwright.config.ts + src/components/game-app.tsx auto-merged, verified clean
+    (coldtrail project entry + TrailScreen wiring intact), zero markers.
 - Post-rebase gates (all on final head): tsc clean · lint-cards GATE PASSED
-  (124,690 records) · npm test 744 scripts + 868 src pass, 0 fail ·
-  build:pages green · crash-watchdog e2e 4/4.
-
-## Merged base — facts ladder (PR #104, main@4e09990)
-
-The rebase base now contains the merged facts-ladder pipeline (was
-facts-ladder-train). 247 kid-safe facts (arkansas 20, australia 227) in
-derived per-region indexes (`src/game/data/geonames/facts/<regionId>.json`),
-overlaid at runtime onto chunk places; production chunk files are never
-written by build scripts. None of that is this branch's work — it is
-inherited from main.
-
-## Rebase verification (2026-10-08, branch @ 4bf80c2 on f07dad3)
-
-- `npx tsc --noEmit` clean
-- `node scripts/lint-cards.mjs` GATE PASSED (124,690 records)
-- `npm test` green — src suite 857/857 (854 baseline + 3 from #107's
-  `use-online-status` tests), scripts suite green, exit 0
-- `npm run build:pages` green; sw.js stamped buildId=4bf80c2
-- Playwright `tests/e2e/crash-watchdog.spec.ts`: 4/4 passed
-- Conflicts resolved (mechanical, both sides kept): BRANCH_STATUS.md
-  (kept crash-pipeline entries + entry-gates entries), package.json
-  (test list now includes BOTH `use-online-status.test.ts` and
-  `error-component.test.ts`; `smoke:crash` script kept)
-
-## Done
-
-- `src/lib/observability.ts`
-  - New `tile_failed` event type; `emitTileFailed()` (instance + module
-    wrapper, mirroring `emitMapError`).
-  - `emit()` now attaches the coarse `os`/`form` device bucket
-    (`coarseDeviceFacts()`, COPPA-safe — never raw UA) to every event, so
-    Discord alerts can say "ios/mobile".
-- `src/map/satellite-map.tsx` — `useEffect` emits `tile_failed` when the
-  tile status transitions to "failed" (one emit per failure episode; Retry
-  resets to "loading").
-- `src/components/game-app.tsx` — the region-chunk `startError` catch now
-  also emits a `js_error` with the sanitized message.
-- `src/lib/error-component.tsx` — `AppErrorComponent` (route error
-  boundary) emits the caught error once per distinct error (`[error]` dep).
-- `workers/crash-report/src/index.ts`
-  - Accepts `tile_failed` (else the new app events 400).
-  - Discord alert gains a `device: os/form` line (coarse bucket only);
-    privacy comment updated.
-- `scripts/crash-watchdog.mjs` (rendered 5109/5120 bytes)
-  - a11y: safe-area insets on the veil (with `padding:16px` fallback for
-    old browsers), 44px secondary link targets, `role="status"` on the
-    confirmation.
-  - Byte budget: removed the provably-dead second CAP-truncation block
-    (error text capped at 300 chars at capture) and the dead button
-    hover transition (+ its reduced-motion override).
-- `scripts/crash-smoke.mjs` (new; `npm run smoke:crash`) — post-deploy
-  gate: `GET /health`, invalid `POST /ingest` → 400 naming `tile_failed`
-  (distinguishes the v2 forwarding worker from the v1 logging worker),
-  `flags.json` endpoint validated with the app's exact gate, shell HTML
-  watchdog markers. 15 s fetch timeouts; deploy-order + false-fail notes
-  in the header.
-- Review panel (2026-10-08): senior architect APPROVE-WITH-NITS (no P0;
-  all P2s addressed or backlogged), DevOps APPROVE-WITH-NITS (2 P1s in
-  the smoke script fixed), frontend APPROVE-WITH-NITS (1 P1 safe-area
-  fallback + 1 P2 effect dep fixed).
-
-## Merge-gauntlet fix (2026-10-08)
-
-Gauntlet developer review BLOCKED: `src/lib/error-component.tsx` route-error
-emit had zero test coverage. Fixed with `src/lib/error-component.test.ts`
-(new, colocated with `observability.test.ts`): renders the real
-`AppErrorComponent` via `react-dom/client` against a minimal DOM shim
-(no jsdom in repo; `.tsx` loaded via the repo's own TypeScript
-`transpileModule` + data-URL import sharing exact module instances).
-4 tests: exactly one `js_error` per mount, no re-emit for the same error
-object, re-emit for a distinct error, zero emissions without render.
-Test added to the `npm test` file list in `package.json`.
-
-Verification after fix: `tsc` clean · `npm test` green (src 854/854,
-incl. 4 new) · `lint-cards` GATE PASSED · `build:pages` green ·
-`crash-watchdog.spec.ts` 4/4. No other files touched.
-
-## Merged base — sprint entry gates (PR #107, main@f07dad3)
-
-The rebase base now contains the merged entry-gate fixes (were
-feat/sprint-entry-gates). Entries preserved from main's BRANCH_STATUS.md:
-
-### P1-3 — dead code-split removed
-- `src/components/celebration-overlay.tsx`: removed BOTH ineffective
-  dynamic imports (`play-guards`, `sfx`); static imports instead. Zero
-  `[INEFFECTIVE_DYNAMIC_IMPORT]` warnings; initial index chunk unchanged
-  (435.80 kB vs 435.83 kB baseline).
-
-### P2 — missing .catch
-- `src/game/story-ai.ts` (`useAiStory`), `src/game/sports-ai.ts`
-  (`useAiSportsTeams`): defensive `.catch` on the async IIFEs.
-
-### P1-2 — chunks >500 kB: resolved by design (no code change)
-- Entry chunk 435.83 kB (under the limit — no initial-load regression).
-  The five >500 kB chunks are already lazy at the finest
-  content-preserving granularity. Warning persists by design; senior
-  architect signed off.
-
-### P1-1 — SW offline gap + offline-uncached loop notice
-- `public/sw.js`: `isStaticAsset()` cache-first covers `/Meridian/audio/`,
-  `/Meridian/__grok/`, `/Meridian/loop/` (runtime only; only
-  `loop/manifest.json` precached at install).
-- `src/hooks/use-online-status.ts` (new, tested).
-- `src/game/loop/LoopScreen.tsx`: offline-uncached notice in the
-  error-card slot (`role="alert"`) — `This mystery can't open right now 🔍`
-  / `Try again` (min-h-[48px]).
-- `tests/e2e/offline-content.spec.ts` (new; 5/5 via `--project
-  offline-content`).
-
-## Pending
-
-- PR handover (no merge per owner): coordinator opens the PR with this
-  report; senior architect + DevOps + frontend have reviewed.
-- Owner-side (Veeresh) deploy steps this branch does NOT do:
-  - Deploy `workers/crash-report/` (v2 forwarding worker) — worker FIRST,
-    then smoke, then flags (deploy-ordering hazard: old worker 400s
-    `tile_failed`, silent telemetry loss).
-  - Set `observabilityEndpoint` in `public/flags.json` (untouched here).
-  - Decide deletion of `worker/observability/` (v1 dir, untouched here).
-  - Run `npm run smoke:crash <workerBase> <gameBase>` after deploy.
-- Backlog (P2, not blocking): per-session `tile_failed` dedupe (death
-  spiral can hit the 10/IP/min worker cap); watchdog byte headroom now
-  11 bytes — next addition needs a cut.
-
-## Verification (local, 2026-10-08)
-
-- `npx tsc --noEmit` clean; `node scripts/lint-cards.mjs` GATE PASSED
-- `npm test`: src suite 850/850 green; scripts suite 483/512 (22 failures
-  pre-existing on clean main — env/fingerprint/preview tooling, 0 in
-  crash-watchdog); observability 17/17 (incl. new emitTileFailed test)
-- Worker: `npm run test:worker` 18/18 (incl. tile_failed accept + device
-  line tests), `npm run typecheck:worker` clean
-- Watchdog unit tests 36/36; rendered inline script 5109/5120 bytes
-- `npm run build:pages` green (final rebuild with all review fixes)
-- Playwright `tests/e2e/crash-watchdog.spec.ts`: 4/4 passed (stale-build
-  test updated: chunk failure now emits one js_error by design)
-- Browser QA (390px mobile, fallback UI): 10/10 PASS — safe-area
-  padding falls back to 16px, env() enhancement present, links 44px,
-  confirmation role=status, exactly one boot_failure POSTed, no console
-  errors
-- `npm run smoke:crash` validated against live prod: correctly FAILs 3/4
-  checks on the current broken deploy (no /health, no /ingest, no
-  endpoint) — proves it detects the outage class
-
-## Rebase onto main@8cd0fda (2026-10-08, PR #103 merged)
-
-- 3 commits replayed cleanly: eb47bec (crash fixes) → 880b577 (route-error
-  test) → 11daaec (rebase docs). Only conflict: BRANCH_STATUS.md
-  (docs-only, kept this branch's doc, updated base note).
-  `src/components/game-app.tsx` auto-merged (no markers) — verified the
-  merged hunk is this branch's own observability additions only.
-- Post-rebase gates on final head: `npx tsc --noEmit` clean;
-  `node scripts/lint-cards.mjs` GATE PASSED (124,690 records);
-  `npm run build:pages` green; `npm test` 857/857 pass, 0 fail;
-  `tests/e2e/crash-watchdog.spec.ts` 4/4 pass.
-- Pushed via --force-with-lease. NOT merged (owner merges).
+  (124,690 records) · build:pages green · npm test 897 pass, 0 fail ·
+  coldtrail e2e 2/2.

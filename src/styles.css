@@ -120,6 +120,7 @@
     --line: color-mix(in oklab, var(--fg) 14%, transparent);
     --accent: #1c2420;
     --accent-fg: #f4f1ea;
+    --gold-ink: #8a6410; /* gold text on light surfaces */
     /* ---- Atlas home: expedition journal (light) ---- */
     --atlas-bg-1: #f8f2df;
     --atlas-bg-2: #eadfc3;
@@ -172,6 +173,7 @@
   --line: color-mix(in oklab, var(--fg) 14%, transparent);
   --accent: #1c2420;
   --accent-fg: #f4f1ea;
+  --gold-ink: #8a6410; /* gold text on light surfaces */
   /* ---- Atlas home: expedition journal (paper) ---- */
   --atlas-bg-1: #f8f2df;
   --atlas-bg-2: #eadfc3;
@@ -238,6 +240,7 @@
   --map-answer: #f2c14e; /* matches region-highlight gold */
   --map-arc: #f4f1ea;
   --map-cross: #d7ddd9;
+  --gold-ink: #f2c14e; /* gold text on dark surfaces */
   color-scheme: dark;
 }
 
@@ -251,6 +254,7 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-fg: var(--accent-fg);
+  --color-gold-ink: var(--gold-ink);
   --font-sans: var(--font-body);
   --font-display: var(--font-display-family);
   --radius-sm: 8px;
