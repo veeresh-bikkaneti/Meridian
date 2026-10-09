@@ -148,3 +148,40 @@ Standing rules: PRs only, owner merges; named-file staging only; gates before ha
 - Reproduce:
   `flock ~/workspace/.e2e.lock npx playwright test --workers=1 --project=desktop <spec>`
   per spec file; unit: `node --experimental-strip-types --test src/map/capability.test.ts`.
+
+## Rebase 2026-10-09 (onto origin/main@1bee70e — #103/#104/#105/#106 all landed)
+
+- 21 commits replayed. 7 conflicts, all mechanical unions:
+  - BRANCH_STATUS.md: docs-only, kept this branch's doc (PBI-1 commit).
+  - src/map/satellite-map.tsx imports: kept main's `emitTileFailed` (#105) +
+    scout's `SCOUT_MAX_ZOOM_FLAT/GLOBE` + `MapMode` (PBI-2); PBI-8's
+    `recordTileErrors` joined the same import (PBI-8 commit).
+  - satellite-map.tsx hook block: main's #105 `emitTileFailed` telemetry effect
+    kept alongside PBI-4's `scoutFallback` state + effect (adjacent, both needed).
+  - src/lib/observability.ts emit(): kept main's `device: coarseDeviceFacts()`
+    (#105 COPPA-safe bucket) + scout's `mapMode: reportMapMode` (PBI-5/8).
+  - package.json test list: main's union (incl. `error-component.test.ts`,
+    coldtrail suites) + `src/map/capability.test.ts` inserted after
+    `src/map/map-options.test.ts`.
+  - src/components/game-app.tsx banner: kept #103's CometMascot banner row;
+    h1 gained PBI-6's `data-testid="home-heading" tabIndex={-1}` (boot-offer
+    focus return target) — verified scout-boot-offer.tsx focuses that selector.
+- Pre-push gates pending on final head (tsc, npm test, lint-cards, build:pages,
+  scout desktop e2e).
+- Do NOT merge — PR #109 open, owner merges.
+
+## Rebase 2026-10-09 (2nd, onto origin/main@4c3e83e — #108 storyteller voice + #110 age-band profiles landed mid-task)
+
+- 22 commits replayed (incl. prior rebase resolutions). 3 conflicts, all mechanical unions:
+  - BRANCH_STATUS.md: docs-only, kept this branch's doc (PBI-1 commit).
+  - package.json test list: new main's list + `src/map/capability.test.ts`
+    re-inserted after `src/map/map-options.test.ts` (JSON validated after write —
+    first rebase caught a truncation bug in the merge helper; fixed via fixup).
+  - src/components/game-app.tsx prop threading (PBI-5): #110's `ageBand` kept
+    alongside `mapMode`/`applyMapMode` in 2 destructuring spots + 1 JSX pass-through.
+- Previously resolved unions replayed clean (satellite-map imports, tile_failed
+  telemetry + scoutFallback effects, observability device+mapMode, package.json
+  capability entry, banner h1 home-heading + CometMascot).
+- Pre-push gates pending on final head (tsc, npm test, lint-cards, build:pages,
+  scout desktop e2e).
+- Do NOT merge — PR #109 open, owner merges.
