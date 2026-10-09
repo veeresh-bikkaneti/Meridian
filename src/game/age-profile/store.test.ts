@@ -22,7 +22,6 @@ import {
   applyPendingAtBoundary,
   resetProfile,
   resolveBand,
-  hasPendingChange,
   validateProfile,
   __resetMemoryFallback,
 } from "./store.ts";
@@ -89,7 +88,15 @@ test("empty storage → unset; resolveBand → full-access default", () => {
   assert.equal(p.status, "unset");
   assert.equal(p.band, null);
   assert.equal(resolveBand(), "11-13");
-  assert.equal(hasPendingChange(), false);
+  // Nothing deferred on a fresh store: the boundary hook fires no event.
+  const events: unknown[] = [];
+  const off = onAgeProfileChanged((e) => events.push(e));
+  try {
+    applyPendingAtBoundary();
+    assert.equal(events.length, 0);
+  } finally {
+    off();
+  }
 });
 
 test("corrupt JSON in storage → unset (never strands a child locked-down)", () => {
@@ -132,7 +139,8 @@ test("saveBand with no run in progress: writes immediately + fires immediately",
     assert.equal(p.band, "5-7");
     assert.equal(p.changeCount, 1);
     assert.equal(resolveBand(), "5-7");
-    assert.equal(hasPendingChange(), false);
+    // Nothing deferred: the change event fired immediately above, and the
+    // boundary hook below stays silent.
     assert.equal(events.length, 1);
     assert.deepEqual(events[0], {
       kind: "change",
@@ -160,7 +168,9 @@ test("saveBand to the same band is a no-op (no event)", () => {
     assert.equal(p.band, "8-10");
     assert.equal(p.changeCount, 0);
     assert.equal(events.length, 0);
-    assert.equal(hasPendingChange(), false);
+    // Nothing deferred by the no-op save: the boundary hook stays silent.
+    applyPendingAtBoundary();
+    assert.equal(events.length, 0);
   } finally {
     off();
   }
@@ -181,13 +191,12 @@ test("saveBand mid-run: writes immediately, event defers to the boundary", () =>
     assert.equal(saved.band, "5-7");
     assert.equal(saved.changeCount, 1);
     assert.equal(loadProfile().band, "5-7");
-    assert.equal(hasPendingChange(), true);
-    // ...but no subscriber re-renders until the boundary event fires.
+    // Deferred, not dropped: the save is held back — no subscriber
+    // re-renders until the boundary event fires.
     assert.equal(events.length, 0);
 
     const boundaryProfile = applyPendingAtBoundary();
     assert.equal(boundaryProfile.band, "5-7");
-    assert.equal(hasPendingChange(), false);
     assert.equal(events.length, 1);
     assert.deepEqual(events[0], {
       kind: "change",
@@ -225,7 +234,8 @@ test("resetProfile → unset, clears deferred state, emits reset", () => {
   clearStorage();
   setBand("5-7");
   saveBand("8-10", { runInProgress: true });
-  assert.equal(hasPendingChange(), true);
+  // …its change event is deferred to the boundary (observed below: the
+  // reset clears the deferred event, so the boundary hook stays silent).
   const events: { kind: string; band: unknown; previousBand: unknown }[] = [];
   const off = onAgeProfileChanged((e) => events.push({ kind: e.kind, band: e.band, previousBand: e.previousBand }));
   try {
@@ -233,7 +243,6 @@ test("resetProfile → unset, clears deferred state, emits reset", () => {
     assert.equal(p.status, "unset");
     assert.equal(p.band, null);
     assert.equal(resolveBand(), "11-13");
-    assert.equal(hasPendingChange(), false);
     assert.equal(events.length, 1);
     assert.deepEqual(events[0], { kind: "reset", band: null, previousBand: "8-10" });
     // Nothing deferred survives the reset.
@@ -247,8 +256,15 @@ test("resetProfile → unset, clears deferred state, emits reset", () => {
 test("applyPendingAtBoundary is a no-op without a deferred save", () => {
   clearStorage();
   setBand("8-10");
-  const p = applyPendingAtBoundary();
-  assert.equal(p.band, "8-10");
-  assert.equal(p.changeCount, 0);
-  assert.equal(hasPendingChange(), false);
+  const events: unknown[] = [];
+  const off = onAgeProfileChanged((e) => events.push(e));
+  try {
+    const p = applyPendingAtBoundary();
+    assert.equal(p.band, "8-10");
+    assert.equal(p.changeCount, 0);
+    // No deferred save → no boundary event fires.
+    assert.equal(events.length, 0);
+  } finally {
+    off();
+  }
 });

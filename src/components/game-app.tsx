@@ -3445,9 +3445,12 @@ function PlayLoaded({
           {/* Hint UI (follow-up Item A): the B1 hint policies get their
               surface. 5-7 free + mascot offer after 2 misses; 8-10 one
               per place; 11-13 no button (Clean Round stays earnable).
-              Top-right, below the chrome row — mirrors the question
-              bubble's top offset so the two never overlap. */}
-          <div className="pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] right-2.5 z-20 w-[min(300px,calc(100vw-20px))]">
+              Right edge, BELOW the question bubble's lane: the bubble's
+              shell caps at min(38dvh, 20rem) from a 6rem top, so a 28rem
+              top keeps the cluster 0px² clear of the open bubble at both
+              360px and 390px widths (#113 overlap BLOCK — the old shared
+              top offset swallowed the bubble's "Hide question" taps). */}
+          <div className="pointer-events-none absolute top-[max(28rem,env(safe-area-inset-top))] right-2.5 z-20 w-[min(300px,calc(100vw-20px))]">
             <HintPanel
               policy={run.bandConfig?.hintPolicy ?? "none"}
               hintsUsedThisPlace={hintsUsedThisPlace}

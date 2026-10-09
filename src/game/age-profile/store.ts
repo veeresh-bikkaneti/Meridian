@@ -239,18 +239,6 @@ export function resolveBand(profile?: AgeProfile): AgeBandId {
   return p.band ?? FULL_ACCESS_BAND;
 }
 
-/**
- * True while a mid-run save is deferred but its boundary event has not
- * fired yet.
- *
- * Compat shim for game-app.tsx's footer chip — the chip itself is slated
- * for deletion with the rest of the pending UI; until then it stays dark
- * correctly because deferred state is in-memory only.
- */
-export function hasPendingChange(_profile?: AgeProfile): boolean {
-  return deferred !== null;
-}
-
 /** Exported for tests: reset the in-memory write-failure fallback + deferred state. */
 export function __resetMemoryFallback(): void {
   memoryFallback = null;

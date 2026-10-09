@@ -96,6 +96,12 @@ Review: 10/12 approve, 2 BLOCKs both on B4 Clean Round badge. Fix agent worktree
   hint-panel.tsx + hint-logic.ts present, imported + <HintPanel/> rendered in game-app.tsx ·
   locked copy byte-identical to main@722a51f (3 Ko-fi strings, bands.ts, 5 storyteller files).
 - Smoke: `npx tsc --noEmit` clean (fresh npm ci in this worktree).
-- To publish (coordinator): re-verify remote SHA via ls-remote, then
-  git push --force-with-lease=refs/heads/feat/age-profile-followups:<verified-sha>
-  origin tmp/rebase-113-remote:feat/age-profile-followups. DO NOT MERGE.
+## 2026-10-09 — Hint-cluster overlap BLOCK fix + mechanical deletions (overlap-fix agent)
+- **BLOCK:** the hint cluster (game-app.tsx hint wrapper) sat at the same 6rem top offset as the open question bubble — at 360px/390px the full-width `pointer-events-auto` HintPanel root swallowed the bubble's "Hide question" taps (#114 dismiss-overlap class).
+- Fix (src/components/hint-panel.tsx): root → `pointer-events-none` + `items-end` (children hug the right edge); `pointer-events-auto` ONLY on the hint button and the two offer dialog buttons — taps pass through everywhere else.
+- Fix (src/components/game-app.tsx): cluster moved to `top-[max(28rem,env(safe-area-inset-top))]` — below the bubble shell's max extent (6rem top + min(38dvh,20rem) cap = 416px max bottom @844h); stale "mirrors the bubble offset" comment corrected.
+- New Playwright gate (tests/e2e/hint-button.spec.ts): 4 overlap tests asserting 0px² bounding-box intersection (`.bubble-shell` vs button / message / offer) at 360×740 AND 390×844, dismiss-overlap pattern. Measured: 0.0px² in all 6 state×width combos.
+- Test-note: the 2-miss click point is now viewport-parameterized — (50,700) lands on the bottom-left attribution pill at 740px height; 360px tests click (50,600).
+- Mechanical deletions (AGENTS.md rules 6/7, no behavior change): dead `hasPendingChange` (store.ts) + index.ts facade re-export — store.test.ts assertions reworked to observe the deferred boundary event instead; `cleanRoundEligible` (run-config.ts, zero callers — awardCleanRoundBadge encodes eligibility inline) + index.ts re-export + 4 test lines; orphaned `.agep-pending-chip` CSS block.
+- Gates on fix head: tsc clean · npm test 1046/1046 (was 1047 — one test block deleted with cleanRoundEligible) · lint-cards GATE PASSED · build:pages green · Playwright hint-button 8/8 · clean-round-badge 3/3 · locked copy byte-identical (3 Ko-fi strings vs origin/main).
+- Worktree: ~/workspace/worktrees/overlap-fix-113 (isolated; shared ~/workspace/meridian tree untouched).

@@ -140,13 +140,3 @@ export function canUseHint(policy: HintPolicy, hintsUsed: number): boolean {
 export function mascotOffersHint(policy: HintPolicy, missCount: number): boolean {
   return policy === "free" && missCount >= 2;
 }
-
-/**
- * 11-13 no-hint recognition: a cosmetic "Clean Round" Passport badge,
- * NEVER points (protects identical scoring; kills the perverse incentive
- * where struggling kids avoid hints they need). Eligible when a round
- * finished with zero hints used under the no-hint policy.
- */
-export function cleanRoundEligible(policy: HintPolicy, hintsUsed: number): boolean {
-  return policy === "none" && hintsUsed === 0;
-}

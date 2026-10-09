@@ -6,7 +6,6 @@ import {
   hintButtonState,
   canUseHint,
   mascotOffersHint,
-  cleanRoundEligible,
   type BandRunConfig,
   type HintPolicy,
 } from "./run-config.ts";
@@ -143,13 +142,6 @@ test("mascot auto-offer: 5-7 only, after 2 misses, opt-in tap", () => {
   assert.equal(mascotOffersHint("free", 5), true);
   assert.equal(mascotOffersHint("one-per-round", 2), false);
   assert.equal(mascotOffersHint("none", 2), false);
-});
-
-test("Clean Round badge: 11-13 no-hint only, cosmetic (never points)", () => {
-  assert.equal(cleanRoundEligible("none", 0), true);
-  assert.equal(cleanRoundEligible("none", 1), false); // used a hint: no badge
-  assert.equal(cleanRoundEligible("free", 0), false);
-  assert.equal(cleanRoundEligible("one-per-round", 0), false);
 });
 
 // --- snapshot guard ---

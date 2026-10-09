@@ -37,6 +37,67 @@ async function seedProfile(
   }, band);
 }
 
+/** Seed a 5-7 profile, size the viewport, and start a globe run. */
+async function startSizedRun(
+  page: import("playwright/test").Page,
+  context: import("playwright/test").BrowserContext,
+  w: number,
+  h: number,
+) {
+  await seedProfile(context, "5-7");
+  await page.setViewportSize({ width: w, height: h });
+  await startGlobeRun(page);
+}
+
+/**
+ * Bounding-box intersection area (px²) between the open question bubble
+ * and one hint-cluster element. Follows the dismiss-overlap.mobile.spec.ts
+ * pattern: 0px² at both mobile widths is the gate.
+ */
+async function hintOverlapArea(
+  page: import("playwright/test").Page,
+  hintTestId: "hint-button" | "hint-message" | "hint-offer",
+  w: number,
+  h: number,
+): Promise<number> {
+  const bubble = page.locator(".bubble-shell");
+  await bubble.waitFor({ state: "visible", timeout: 30_000 });
+  // Let the bubble's enter transition settle so the box is final.
+  await page.waitForTimeout(600);
+  const hint = page.getByTestId(hintTestId);
+  const b = await bubble.boundingBox();
+  const t = await hint.boundingBox();
+  if (!b || !t) throw new Error(`missing box @${w}x${h} (${hintTestId})`);
+  const ix = Math.max(0, Math.min(b.x + b.width, t.x + t.width) - Math.max(b.x, t.x));
+  const iy = Math.max(0, Math.min(b.y + b.height, t.y + t.height) - Math.max(b.y, t.y));
+  console.log(
+    `@${w}x${h} ${hintTestId}: bubble=(${b.x.toFixed(1)},${b.y.toFixed(1)},${b.width.toFixed(1)}x${b.height.toFixed(1)}) ` +
+      `hint=(${t.x.toFixed(1)},${t.y.toFixed(1)},${t.width.toFixed(1)}x${t.height.toFixed(1)}) ` +
+      `overlap=${(ix * iy).toFixed(1)}px²`,
+  );
+  return ix * iy;
+}
+
+/**
+ * Miss twice: drop a pin far from the target, twice, continuing each time.
+ * The click point must land on open map: clear of the bottom-left
+ * attribution pill (bottom-2 left-2, 44px tall) and of the hint cluster.
+ */
+async function doTwoMisses(
+  page: import("playwright/test").Page,
+  click: { x: number; y: number } = { x: 50, y: 700 },
+) {
+  for (let i = 0; i < 2; i++) {
+    // Click a corner of the map — far from any likely target.
+    await page.mouse.click(click.x, click.y);
+    const drop = page.getByRole("button", { name: /drop pin/i });
+    await expect(drop).toBeEnabled({ timeout: 10_000 });
+    await drop.click();
+    // Wait for the miss to resolve (phase "done"), then continue.
+    await page.getByRole("button", { name: "Next place" }).click({ timeout: 20_000 });
+  }
+}
+
 test("5-7: hint button visible, tap shows a directional hint", async ({
   page,
   context,
@@ -86,15 +147,7 @@ test("5-7: mascot offer appears after 2 misses", async ({ page, context }) => {
 
   // Miss twice: drop a pin far from the target, twice. The miss flow
   // ends the place ("done" phase); continue to the next place each time.
-  for (let i = 0; i < 2; i++) {
-    // Click a corner of the map — far from any likely target.
-    await page.mouse.click(50, 700);
-    const drop = page.getByRole("button", { name: /drop pin/i });
-    await expect(drop).toBeEnabled({ timeout: 10_000 });
-    await drop.click();
-    // Wait for the miss to resolve (phase "done"), then continue.
-    await page.getByRole("button", { name: "Next place" }).click({ timeout: 20_000 });
-  }
+  await doTwoMisses(page);
 
   // After 2 misses, the mascot offer should appear (opt-in).
   const offer = page.getByTestId("hint-offer");
@@ -104,4 +157,65 @@ test("5-7: mascot offer appears after 2 misses", async ({ page, context }) => {
   // Accepting the offer shows the hint.
   await offer.getByRole("button", { name: /yes please/i }).click();
   await expect(page.getByTestId("hint-message")).toBeVisible();
+});
+
+/**
+ * Overlap gate (#113 BLOCK): the hint cluster must never intersect the
+ * open question bubble — 0px² at 360×740 and 390×844, in the button,
+ * revealed-message, and mascot-offer states.
+ */
+test("360x740: hint button and message never overlap the open bubble", async ({
+  page,
+  context,
+}) => {
+  await startSizedRun(page, context, 360, 740);
+
+  const button = page.getByTestId("hint-button");
+  await expect(button).toBeVisible();
+  expect(await hintOverlapArea(page, "hint-button", 360, 740)).toBe(0);
+
+  await button.click();
+  await expect(page.getByTestId("hint-message")).toBeVisible();
+  expect(await hintOverlapArea(page, "hint-message", 360, 740)).toBe(0);
+});
+
+test("390x844: hint button and message never overlap the open bubble", async ({
+  page,
+  context,
+}) => {
+  await startSizedRun(page, context, 390, 844);
+
+  const button = page.getByTestId("hint-button");
+  await expect(button).toBeVisible();
+  expect(await hintOverlapArea(page, "hint-button", 390, 844)).toBe(0);
+
+  await button.click();
+  await expect(page.getByTestId("hint-message")).toBeVisible();
+  expect(await hintOverlapArea(page, "hint-message", 390, 844)).toBe(0);
+});
+
+test("360x740: mascot offer never overlaps the open bubble", async ({
+  page,
+  context,
+}) => {
+  await startSizedRun(page, context, 360, 740);
+  // (50, 700) would land on the bottom-left attribution pill at this
+  // height — click higher, still a map corner far from any target.
+  await doTwoMisses(page, { x: 50, y: 600 });
+
+  const offer = page.getByTestId("hint-offer");
+  await expect(offer).toBeVisible({ timeout: 15_000 });
+  expect(await hintOverlapArea(page, "hint-offer", 360, 740)).toBe(0);
+});
+
+test("390x844: mascot offer never overlaps the open bubble", async ({
+  page,
+  context,
+}) => {
+  await startSizedRun(page, context, 390, 844);
+  await doTwoMisses(page);
+
+  const offer = page.getByTestId("hint-offer");
+  await expect(offer).toBeVisible({ timeout: 15_000 });
+  expect(await hintOverlapArea(page, "hint-offer", 390, 844)).toBe(0);
 });

@@ -54,7 +54,12 @@ export function HintPanel({
     mascotOffersHint(policy, missCount) && !offerDismissed && hintMessage === null;
 
   return (
-    <div className="pointer-events-auto mt-2 flex flex-col gap-2" data-testid="hint-panel">
+    // pointer-events-none: taps pass through everywhere except the
+    // interactive children (hint button + offer buttons). A full-width
+    // auto container here would swallow taps on the question bubble's
+    // "Hide question" control behind it (#113 overlap BLOCK).
+    // items-end: children hug the right edge, away from the bubble's lane.
+    <div className="pointer-events-none mt-2 flex flex-col items-end gap-2" data-testid="hint-panel">
       {/* Mascot offer (5-7 only): opt-in, never auto-interrupt. */}
       {showOffer ? (
         <div
@@ -68,14 +73,14 @@ export function HintPanel({
             <button
               type="button"
               onClick={onUseHint}
-              className="flex min-h-11 items-center rounded-full bg-amber-400 px-4 text-sm font-semibold text-black"
+              className="pointer-events-auto flex min-h-11 items-center rounded-full bg-amber-400 px-4 text-sm font-semibold text-black"
             >
               Yes please
             </button>
             <button
               type="button"
               onClick={onDismissOffer}
-              className="flex min-h-11 items-center rounded-full border border-white/20 px-4 text-sm text-white/80"
+              className="pointer-events-auto flex min-h-11 items-center rounded-full border border-white/20 px-4 text-sm text-white/80"
             >
               No thanks
             </button>
@@ -89,7 +94,7 @@ export function HintPanel({
         disabled={state === "disabled-used"}
         aria-label={state === "disabled-used" ? "Hint used" : "Get a hint"}
         data-testid="hint-button"
-        className={`flex size-11 items-center justify-center rounded-full border shadow-lg backdrop-blur-[14px] ${
+        className={`pointer-events-auto flex size-11 items-center justify-center rounded-full border shadow-lg backdrop-blur-[14px] ${
           state === "disabled-used"
             ? "cursor-not-allowed border-white/10 bg-[rgba(10,12,16,0.4)] text-white/30"
             : "border-amber-300/30 bg-[rgba(10,12,16,0.72)] text-amber-200 hover:text-amber-100"

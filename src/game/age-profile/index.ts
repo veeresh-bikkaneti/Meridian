@@ -50,7 +50,6 @@ export {
   hintButtonState,
   canUseHint,
   mascotOffersHint,
-  cleanRoundEligible,
   type BandRunConfig,
   type HintPolicy,
   type HintButtonState,
@@ -70,7 +69,6 @@ export {
   PROFILE_SCHEMA_VERSION,
   loadProfile,
   resolveBand,
-  hasPendingChange,
   validateProfile,
 } from "./store.ts";
 // Boundary-only event path. Game screens call this at card/round

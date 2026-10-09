@@ -445,14 +445,3 @@
   max-width: min(90vw, 480px);
   text-align: center;
 }
-
-.agep-pending-chip {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 6px 12px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  font-size: 0.875rem;
-  color: var(--muted);
-  background: var(--surface-2);
-}
