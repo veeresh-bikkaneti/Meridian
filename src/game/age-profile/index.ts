@@ -46,7 +46,6 @@ export {
 export {
   AGE_PROFILE_CHANGED,
   onAgeProfileChanged,
-  emitAgeProfileChanged,
   type AgeProfileEventListener,
 } from "./events.ts";
 

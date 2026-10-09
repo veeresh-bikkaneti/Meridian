@@ -146,6 +146,10 @@ export function setBand(band: AgeBandId): AgeProfile {
 /**
  * Request a band change (parent gate already passed).
  * - Same band → no-op (returns the current profile, no event).
+ * - Pending change + re-pick of the currently-effective band → the staged
+ *   change is dropped via cancelPending() (the parent is keeping the
+ *   current band; writing band === pendingBand would fail validation and
+ *   silently reset the profile to unset/full access).
  * - No run in progress → applies immediately (active).
  * - Run in progress → staged as pending-change; the consumer applies it
  *   at the next card/round boundary via applyPendingAtBoundary().
@@ -155,6 +159,7 @@ export function requestChange(band: AgeBandId, opts: { runInProgress: boolean })
   const previousBand: AgeBandId | null = current.band;
   if (current.status === "active" && current.band === band) return current;
   if (current.status === "pending-change" && current.pendingBand === band) return current;
+  if (current.status === "pending-change" && current.band === band) return cancelPending();
 
   const now = new Date().toISOString();
   if (!opts.runInProgress) {

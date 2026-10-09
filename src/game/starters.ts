@@ -1,5 +1,5 @@
 import type { Difficulty } from "./scoring.ts";
-import type { LadderRung } from "./age-profile/index.ts";
+import type { LadderRung, StoryRung } from "./age-profile/index.ts";
 
 export type Starter = {
   id: string;
@@ -16,7 +16,7 @@ export type Starter = {
    * ("hook" | "wikitext" | "eb1911" | "wikidata" | "history" | "blurb-only").
    * Set by the card pipeline; consumed for band-gated telemetry and QA.
    */
-  storyRung?: string;
+  storyRung?: StoryRung;
   /**
    * Read-aloud should auto-play when this card is revealed (true for the
    * 5-7 band). Set by the age-profile rung mapper at card compose time.

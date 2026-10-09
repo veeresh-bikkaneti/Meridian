@@ -101,3 +101,32 @@ is pending and the requested band equals the effective band no longer
 writes an invalid blob (which `validateProfile` rejects → silent reset to
 `unset`/full access); the request is now treated as `cancelPending()`.
 Regression test added to `store.test.ts`.
+
+## Post-rebase verification (2026-10-08)
+
+Rebase completed onto `main@8e2cc76`; feature commit is now `fc0d9d3`.
+
+Fixes (new commit on this branch, not amended into the feature commit):
+- `requestChange` bug: pending-change + re-pick of the currently-effective
+  band now goes through `cancelPending()` instead of writing an invalid
+  blob (`band === pendingBand` fails `validateProfile` → silent reset to
+  `unset`/full access). Regression test added.
+- Minor: `emitAgeProfileChanged` no longer re-exported from the
+  `age-profile` facade (screens can't forge change events; the store
+  imports it from `./events.ts` directly).
+- Minor: `Starter.storyRung` narrowed from `string` to the exported
+  `StoryRung` union.
+
+Gates (all run post-rebase, post-fix):
+- `npx tsc --noEmit` — clean
+- `npm test` — 902/902 pass (889/889 pre-rebase; +13 from main's new
+  tests plus the new regression test)
+- `node scripts/lint-cards.mjs` — GATE PASSED
+- `npm run build:pages` — green (prerender + SW fingerprint ok)
+- Playwright E2E (targeted, desktop): 2/2 pass —
+  `hit-story.desktop.spec.ts`, `result-card-dismiss.desktop.spec.ts`
+  (full E2E suite not run; no age-profile-specific e2e specs exist)
+
+Pending: PR blocked on `gh` auth in this environment (not logged into any
+GitHub hosts) — push the branch and open the PR from an authenticated
+machine. Phase 4 security validation still open.

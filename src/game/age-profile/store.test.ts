@@ -226,3 +226,31 @@ test("latest staged selection wins (pending → pending)", () => {
   const applied = applyPendingAtBoundary();
   assert.equal(applied.band, "8-10");
 });
+
+test("requestChange re-picking the effective band while pending cancels the staged change (never writes an invalid blob)", () => {
+  clearStorage();
+  setBand("8-10");
+  requestChange("5-7", { runInProgress: true });
+  assert.equal(hasPendingChange(), true);
+  const events: unknown[] = [];
+  const off = onAgeProfileChanged((e) => events.push(e));
+  try {
+    // Re-pick the currently-effective band mid-run: the parent is keeping
+    // it, so the staged change is dropped — not written as
+    // pending-change with band === pendingBand (which validateProfile
+    // rejects, silently resetting the profile to unset/full access).
+    const p = requestChange("8-10", { runInProgress: true });
+    assert.equal(p.status, "active");
+    assert.equal(p.band, "8-10");
+    assert.equal(p.pendingBand, null);
+    assert.equal(hasPendingChange(), false);
+    assert.equal(events.length, 0); // dropping a staged change emits nothing
+    // The stored blob validates: the profile survives a reload intact.
+    const reloaded = loadProfile();
+    assert.equal(reloaded.status, "active");
+    assert.equal(reloaded.band, "8-10");
+    assert.equal(resolveBand(), "8-10");
+  } finally {
+    off();
+  }
+});
