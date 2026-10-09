@@ -35,9 +35,9 @@ import {
  *     burst, ~2.8s). Wordless.
  *  3. Settle — he sits on the bench facing the viewer, beside a tiny
  *     static Comet plush (Veeresh 2026-10-07). The
- *     trail fades to ~18% over ~2s. The donation cloud fades in with the
- *     Game Designer's kid-friendly copy ("Grown-ups, buy me a coffee? ☕" /
- *     "Your coffee keeps Meridian free for kids"). Tapping grandpa OR the
+ *     trail fades to ~18% over ~2s. The donation cloud fades in with
+ *     Veeresh's locked copy ("Grown-ups — buy me a coffee? ☕" /
+ *     "Your support keeps Meridian free for kids"). Tapping grandpa OR the
  *     cloud opens the "ask a grown-up" gate INSIDE THE SAME CLOUD — Continue
  *     opens Ko-fi in a new tab and the cloud reverts; Cancel/Esc reverts
  *     too. The ask shows once per session (sessionStorage).
@@ -1594,10 +1594,10 @@ export function GrandpaCoffeeRun() {
                       e.stopPropagation();
                       openCloudGate();
                     }}
-                    aria-label="Grown-ups, buy me a coffee? Activate to learn more."
+                    aria-label="Grown-ups — buy me a coffee? Activate to learn how to support Meridian."
                   >
-                    <strong>Grown-ups, buy me a coffee? ☕</strong>
-                    <span>Your coffee keeps Meridian free for kids</span>
+                    <strong>Grown-ups — buy me a coffee? ☕</strong>
+                    <span>Your support keeps Meridian free for kids</span>
                   </button>
                 ) : (
                   <div

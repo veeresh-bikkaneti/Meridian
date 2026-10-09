@@ -393,3 +393,16 @@ walk (Option B — Game Designer + UI/UX Expert reconciled spec).
 - Gate sub now answers "what does my coffee buy": "Your coffee keeps every game, every map, and every mystery free for kids. Thank you! 💛"
 - Tester: 26/26 manual mobile checks pass, zero console errors; one stale desktop spec assertion fixed (line 250).
 - Remaining e2e failures all proven pre-existing on pristine base (font-metric/viewport flakes + walker/comet position).
+
+## 2026-10-09 — architect BLOCKED copy revert (fix agent)
+- Reverted the three ask-copy strings to Veeresh's LOCKED wording
+  (2026-10-07, parent-directed), byte-identical to origin/main:
+  "Grown-ups — buy me a coffee? ☕" (em dash) /
+  "Your support keeps Meridian free for kids" /
+  aria-label "Grown-ups — buy me a coffee? Activate to learn how to
+  support Meridian." Doc comment updated to match.
+- Kept: timing changes (10s cap / 6s target / 800ms sip), tour-covers-lock
+  (showCloud tour clause + walker visible during tour), gate-sub message,
+  spec fix. No other copy touched.
+- Gates on this head: tsc clean · lint-cards GATE PASSED · build:pages
+  green · npm test 746 scripts + 948 src pass, 0 fail.
