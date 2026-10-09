@@ -25,10 +25,13 @@ import {
  *     behind, never on — keeping ≥16px from every interactive rect
  *     (verified by a sampling gate in grandpa-tour.ts; violations step down
  *     the fallback ladder). The strip's donation cloud (grown-up lock) is
- *     visible in the closing band from the start of the walk, and the
- *     strip walker is tappable (moving tap targets still avoided: the
- *     tappable walker is the parked strip figure, not the moving tour
- *     walker). The whole journey is hard-capped at 10s. *  2. Top-up — at the pour waypoint just above the park strip he holds up
+ *     visible in the closing band from the start of the walk. The parked
+ *     strip figure is NOT tappable during the tour (moving tap targets
+ *     still avoided, and a tap must never open a hidden dialog: the
+ *     cloud's own ask button is the gate entry while the tour runs, and
+ *     the Skip control is the tour plane's interactive element). Outside
+ *     the tour the parked walker is tappable as before. The whole journey
+ *     is hard-capped at 10s. *  2. Top-up — at the pour waypoint just above the park strip he holds up
  *     his mug and the existing gooseneck-kettle dolly-vertigo pour plays
  *     (scale 0.25→2.6x, spout-tip transform origin, visible fill + steam
  *     burst, ~2.8s). Wordless.
@@ -1433,7 +1436,16 @@ export function GrandpaCoffeeRun() {
         : mode === "seated"
           ? !isMobile || askVisible
           : false;
-  const walkerInteractive = showCloud;
+  // Fix 2, option (a) — Accessibility Auditor sign-off 2026-10-09: the
+  // parked strip walker is NOT interactive during the tour. A tap on it
+  // used to call openCloudGate() and move focus into the cloud's Continue
+  // button while the cloud was not yet visible — a focus steal with zero
+  // visual feedback. During the tour the Skip control owns the tour plane
+  // and the (now visible) cloud's own ask button is the gate entry, so the
+  // walker sheds role/tabIndex/onClick entirely: no focus target, no
+  // keyboard trap, sane tab order (Skip → ask button), and the tour-mode
+  // CSS drops pointer-events so taps can't dead-end on the figure.
+  const walkerInteractive = showCloud && mode !== "tour";
 
   return (
     <>

@@ -4,13 +4,15 @@
  * Mobile (≤1023.5px) screenplay — the tasting tour: a brass compass-rose
  * origin node appears top-left (~1s after load); grandpa walks a dotted
  * S-trail down the page gutters, stopping at each option (difficulty →
- * GeoDetective → editions → review when present) to look and sip (~1.2s),
- * silent and untappable mid-walk, hard-capped at 25s. At the pour waypoint
- * above the park strip the gooseneck kettle plays its dolly-vertigo top-up;
- * then he settles on the bench beside Comet, the trail fades to ~18%, and
- * the donation cloud fades in with Veeresh's exact copy. Tapping grandpa or
- * the cloud swaps the cloud content to the "ask a grown-up" gate workflow —
- * the whole flow lives in the cloud so the UI never gets crowded.
+ * GeoDetective → editions) to look and sip (~0.8s), silent and untappable
+ * mid-walk, hard-capped at 10s. At the pour waypoint above the park strip
+ * the gooseneck kettle plays its dolly-vertigo top-up; then he settles on
+ * the bench beside Comet, the trail fades to ~18%, and the donation cloud
+ * — already visible from the first beat of the walk — stays put. Tapping
+ * the cloud swaps its content to the "ask a grown-up" gate workflow — the
+ * whole flow lives in the cloud so the UI never gets crowded. Grandpa
+ * himself is not a tap target during the tour: the cloud's own ask button
+ * is the gate entry and Skip is the tour plane's control.
  *
  * Desktop (≥1024px) keeps the previous behavior: one slow 9.5s stroll (no
  * cloud) → kettle beat at 45% → park finale. The walk is silent everywhere
@@ -99,6 +101,18 @@
  * from the first beat), seated from the first frame on return visits. */
 .grandpa-scene[data-mode="strip"] .grandpa-walker {
   animation: grandpa-travel 9500ms linear forwards;
+}
+
+/* Tasting-tour mode: the parked strip walker is NOT a tap target (Fix 2,
+ * option (a) — Accessibility Auditor sign-off 2026-10-09). The tour's Skip
+ * control owns the tour plane and the cloud's own ask button is the gate
+ * entry, so a tap on the walker must never open a hidden dialog.
+ * pointer-events:none lets taps fall through to the strip behind; the
+ * bubble keeps pointer-events:auto so its button stays tappable.
+ * cursor:default so the figure doesn't promise a tap it won't deliver. */
+.grandpa-scene[data-mode="tour"] .grandpa-walker {
+  pointer-events: none;
+  cursor: default;
 }
 
 @keyframes grandpa-travel {
@@ -238,12 +252,15 @@
   }
 }
 
-/* Sip beat — during the 1.2s stop the walker raises the mug in one
+/* Sip beat — during the 800ms stop the walker raises the mug in one
    deliberate drink (raise, hold at mouth, lower) instead of the subtle
-   periodic walk sip. Runs once per stop; the walk animation resumes when
-   the phase flips back to "walk". */
+   periodic walk sip. The keyframes are synced to TOUR_SIP_MS (800ms) so the
+   animation never snaps mid-drink when the dwell ends; the walk animation
+   resumes when the phase flips back to "walk". Game Designer 2026-10-09:
+   800ms still reads as a deliberate sip, and lengthening the dwell would
+   push against the 10s tour budget — the tour stays short. */
 .tour-layer[data-tour-phase="sip"] .mug-arm {
-  animation: sip-drink 1.2s ease-in-out 1;
+  animation: sip-drink 0.8s ease-in-out 1;
 }
 
 @keyframes sip-drink {
@@ -573,6 +590,33 @@
     opacity 0.3s ease,
     transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
     visibility 0s;
+}
+
+/* Tasting-tour mode (mobile only): the cloud is visible from the FIRST beat
+ * of the walk — the beat machine never reaches "seated" during the tour, so
+ * without this the ask would sit hidden the whole walk. Transition mirrors
+ * the seated reveal so the pop-in feels identical.
+ *
+ * Positioning: the parked walker sits at the strip's right edge, so a
+ * bubble centered on him would hang off-viewport (measured ~46px clipped at
+ * 390px wide). The bubble is right-anchored to the walker instead and the
+ * tail is re-seated over grandpa (40px from the bubble's right edge =
+ * walker's center on mobile), keeping the whole cloud on-screen. */
+.grandpa-scene[data-mode="tour"] .grandpa-donation-bubble {
+  left: auto;
+  right: -8px;
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition:
+    opacity 0.3s ease,
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    visibility 0s;
+}
+.grandpa-scene[data-mode="tour"] .grandpa-donation-bubble::after {
+  left: auto;
+  right: 40px;
+  transform: translate(50%, -1px);
 }
 
 /* Ask state — the whole cloud is one big friendly button. */
@@ -970,10 +1014,28 @@
   .grandpa-donation-bubble {
     padding: 10px 13px 9px;
     bottom: calc(100% + 28px);
-    /* Present on arrival: never animation-gated on mobile. */
+    /* Present on arrival: never animation-gated on mobile. Right-anchored
+       to the parked walker — a bubble centered on him would hang
+       off-viewport (measured ~46px clipped at 390px wide). */
+    left: auto;
+    right: -8px;
     opacity: 1;
     visibility: visible;
-    transform: translate(-50%, 0) scale(1);
+    transform: scale(1);
+  }
+
+  .grandpa-donation-bubble::after {
+    /* Tail re-seated over grandpa: 40px from the bubble's right edge is the
+       walker's center on mobile, so the tail keeps pointing at him. */
+    left: auto;
+    right: 40px;
+    transform: translate(50%, -1px);
+  }
+
+  /* Seated on mobile keeps the right-anchored position — the desktop seated
+     rule's translate(-50%) would shove the bubble left, off grandpa. */
+  .grandpa-scene[data-beat="seated"] .grandpa-donation-bubble {
+    transform: scale(1);
   }
 
   @keyframes bubble-mobile-enter {
