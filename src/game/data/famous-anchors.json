@@ -1,0 +1,1802 @@
+[
+  {
+    "id": "gn-2988507",
+    "name": "Paris",
+    "country": "France",
+    "continent": "Europe",
+    "lat": 48.85341,
+    "lon": 2.3488,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-2643743",
+    "name": "London",
+    "country": "United Kingdom",
+    "continent": "Europe",
+    "lat": 51.50853,
+    "lon": -0.12574,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-3169070",
+    "name": "Rome",
+    "country": "Italy",
+    "continent": "Europe",
+    "lat": 41.89193,
+    "lon": 12.51133,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-3128760",
+    "name": "Barcelona",
+    "country": "Spain",
+    "continent": "Europe",
+    "lat": 41.38879,
+    "lon": 2.15899,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-3117735",
+    "name": "Madrid",
+    "country": "Spain",
+    "continent": "Europe",
+    "lat": 40.4165,
+    "lon": -3.70256,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-2950159",
+    "name": "Berlin",
+    "country": "Germany",
+    "continent": "Europe",
+    "lat": 52.52437,
+    "lon": 13.41053,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-2759794",
+    "name": "Amsterdam",
+    "country": "Netherlands",
+    "continent": "Europe",
+    "lat": 52.37403,
+    "lon": 4.88969,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-264371",
+    "name": "Athens",
+    "country": "Greece",
+    "continent": "Europe",
+    "lat": 37.98376,
+    "lon": 23.72784,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-3164603",
+    "name": "Venice",
+    "country": "Italy",
+    "continent": "Europe",
+    "lat": 45.43713,
+    "lon": 12.33265,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-524901",
+    "name": "Moscow",
+    "country": "Russia",
+    "continent": "Europe",
+    "lat": 55.75204,
+    "lon": 37.61781,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-745044",
+    "name": "Istanbul",
+    "country": "Turkey",
+    "continent": "Europe",
+    "lat": 41.01384,
+    "lon": 28.94966,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-2673730",
+    "name": "Stockholm",
+    "country": "Sweden",
+    "continent": "Europe",
+    "lat": 59.32938,
+    "lon": 18.06871,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-2761369",
+    "name": "Vienna",
+    "country": "Austria",
+    "continent": "Europe",
+    "lat": 48.20849,
+    "lon": 16.37208,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-3067696",
+    "name": "Prague",
+    "country": "Czechia",
+    "continent": "Europe",
+    "lat": 50.08804,
+    "lon": 14.42076,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-2267057",
+    "name": "Lisbon",
+    "country": "Portugal",
+    "continent": "Europe",
+    "lat": 38.72509,
+    "lon": -9.1498,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-1850147",
+    "name": "Tokyo",
+    "country": "Japan",
+    "continent": "Asia",
+    "lat": 35.6895,
+    "lon": 139.69171,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-1816670",
+    "name": "Beijing",
+    "country": "China",
+    "continent": "Asia",
+    "lat": 39.9075,
+    "lon": 116.39723,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-1609350",
+    "name": "Bangkok",
+    "country": "Thailand",
+    "continent": "Asia",
+    "lat": 13.75398,
+    "lon": 100.50144,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-1275339",
+    "name": "Mumbai",
+    "country": "India",
+    "continent": "Asia",
+    "lat": 19.07283,
+    "lon": 72.88261,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-1273294",
+    "name": "Delhi",
+    "country": "India",
+    "continent": "Asia",
+    "lat": 28.65195,
+    "lon": 77.23149,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-292223",
+    "name": "Dubai",
+    "country": "United Arab Emirates",
+    "continent": "Asia",
+    "lat": 25.07725,
+    "lon": 55.30927,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-1880252",
+    "name": "Singapore",
+    "country": "Singapore",
+    "continent": "Asia",
+    "lat": 1.28967,
+    "lon": 103.85007,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-1819729",
+    "name": "Hong Kong",
+    "country": "China",
+    "continent": "Asia",
+    "lat": 22.27832,
+    "lon": 114.17469,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-1796236",
+    "name": "Shanghai",
+    "country": "China",
+    "continent": "Asia",
+    "lat": 31.22222,
+    "lon": 121.45806,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-1735161",
+    "name": "Kuala Lumpur",
+    "country": "Malaysia",
+    "continent": "Asia",
+    "lat": 3.1412,
+    "lon": 101.68653,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-1835848",
+    "name": "Seoul",
+    "country": "South Korea",
+    "continent": "Asia",
+    "lat": 37.566,
+    "lon": 126.9784,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-1642911",
+    "name": "Jakarta",
+    "country": "Indonesia",
+    "continent": "Asia",
+    "lat": -6.21462,
+    "lon": 106.84513,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-360630",
+    "name": "Cairo",
+    "country": "Egypt",
+    "continent": "Africa",
+    "lat": 30.06263,
+    "lon": 31.24967,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-360995",
+    "name": "Giza",
+    "country": "Egypt",
+    "continent": "Africa",
+    "lat": 30.00944,
+    "lon": 31.20861,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-3369157",
+    "name": "Cape Town",
+    "country": "South Africa",
+    "continent": "Africa",
+    "lat": -33.92584,
+    "lon": 18.42322,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-2542997",
+    "name": "Marrakesh",
+    "country": "Morocco",
+    "continent": "Africa",
+    "lat": 31.63416,
+    "lon": -7.99994,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-184745",
+    "name": "Nairobi",
+    "country": "Kenya",
+    "continent": "Africa",
+    "lat": -1.28333,
+    "lon": 36.81667,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-5128581",
+    "name": "New York City",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 40.71427,
+    "lon": -74.00597,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-5368361",
+    "name": "Los Angeles",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 34.05223,
+    "lon": -118.24368,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-5391959",
+    "name": "San Francisco",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 37.77493,
+    "lon": -122.41942,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-4140963",
+    "name": "Washington",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 38.89511,
+    "lon": -77.03637,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-4887398",
+    "name": "Chicago",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 41.85003,
+    "lon": -87.65005,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-6167865",
+    "name": "Toronto",
+    "country": "Canada",
+    "continent": "North America",
+    "lat": 43.70643,
+    "lon": -79.39864,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-3530597",
+    "name": "Mexico City",
+    "country": "Mexico",
+    "continent": "North America",
+    "lat": 19.42847,
+    "lon": -99.12766,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-5506956",
+    "name": "Las Vegas",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 36.17497,
+    "lon": -115.13722,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-4167147",
+    "name": "Orlando",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 28.53834,
+    "lon": -81.37924,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-5856195",
+    "name": "Honolulu",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 21.30694,
+    "lon": -157.85833,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-6173331",
+    "name": "Vancouver",
+    "country": "Canada",
+    "continent": "North America",
+    "lat": 49.24966,
+    "lon": -123.11934,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-4164138",
+    "name": "Miami",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 25.77427,
+    "lon": -80.19366,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-3451190",
+    "name": "Rio de Janeiro",
+    "country": "Brazil",
+    "continent": "South America",
+    "lat": -22.90642,
+    "lon": -43.18223,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-3435910",
+    "name": "Buenos Aires",
+    "country": "Argentina",
+    "continent": "South America",
+    "lat": -34.61315,
+    "lon": -58.37723,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-3448439",
+    "name": "São Paulo",
+    "country": "Brazil",
+    "continent": "South America",
+    "lat": -23.5475,
+    "lon": -46.63611,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-2147714",
+    "name": "Sydney",
+    "country": "Australia",
+    "continent": "Oceania",
+    "lat": -33.86785,
+    "lon": 151.20732,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-2158177",
+    "name": "Melbourne",
+    "country": "Australia",
+    "continent": "Oceania",
+    "lat": -37.814,
+    "lon": 144.96332,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-2193733",
+    "name": "Auckland",
+    "country": "New Zealand",
+    "continent": "Oceania",
+    "lat": -36.84853,
+    "lon": 174.76349,
+    "fame_tier": 1
+  },
+  {
+    "id": "gn-2964574",
+    "name": "Dublin",
+    "country": "Ireland",
+    "continent": "Europe",
+    "lat": 53.33306,
+    "lon": -6.24889,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2650225",
+    "name": "Edinburgh",
+    "country": "United Kingdom",
+    "continent": "Europe",
+    "lat": 55.95206,
+    "lon": -3.19648,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2643123",
+    "name": "Manchester",
+    "country": "United Kingdom",
+    "continent": "Europe",
+    "lat": 53.48095,
+    "lon": -2.23743,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2867714",
+    "name": "Munich",
+    "country": "Germany",
+    "continent": "Europe",
+    "lat": 48.13743,
+    "lon": 11.57549,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2911298",
+    "name": "Hamburg",
+    "country": "Germany",
+    "continent": "Europe",
+    "lat": 53.55073,
+    "lon": 9.99302,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3173435",
+    "name": "Milan",
+    "country": "Italy",
+    "continent": "Europe",
+    "lat": 45.46427,
+    "lon": 9.18951,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3172394",
+    "name": "Naples",
+    "country": "Italy",
+    "continent": "Europe",
+    "lat": 40.85216,
+    "lon": 14.26811,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3176959",
+    "name": "Florence",
+    "country": "Italy",
+    "continent": "Europe",
+    "lat": 43.77925,
+    "lon": 11.24626,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2995469",
+    "name": "Marseille",
+    "country": "France",
+    "continent": "Europe",
+    "lat": 43.29695,
+    "lon": 5.38107,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2996944",
+    "name": "Lyon",
+    "country": "France",
+    "continent": "Europe",
+    "lat": 45.74906,
+    "lon": 4.84789,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2660646",
+    "name": "Geneva",
+    "country": "Switzerland",
+    "continent": "Europe",
+    "lat": 46.20222,
+    "lon": 6.14569,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2657896",
+    "name": "Zürich",
+    "country": "Switzerland",
+    "continent": "Europe",
+    "lat": 47.36667,
+    "lon": 8.55,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2800866",
+    "name": "Brussels",
+    "country": "Belgium",
+    "continent": "Europe",
+    "lat": 50.85045,
+    "lon": 4.34878,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2618425",
+    "name": "Copenhagen",
+    "country": "Denmark",
+    "continent": "Europe",
+    "lat": 55.67594,
+    "lon": 12.56553,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3143244",
+    "name": "Oslo",
+    "country": "Norway",
+    "continent": "Europe",
+    "lat": 59.91273,
+    "lon": 10.74609,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-658225",
+    "name": "Helsinki",
+    "country": "Finland",
+    "continent": "Europe",
+    "lat": 60.16952,
+    "lon": 24.93545,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-756135",
+    "name": "Warsaw",
+    "country": "Poland",
+    "continent": "Europe",
+    "lat": 52.22977,
+    "lon": 21.01178,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3094802",
+    "name": "Kraków",
+    "country": "Poland",
+    "continent": "Europe",
+    "lat": 50.06143,
+    "lon": 19.93658,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1853909",
+    "name": "Osaka",
+    "country": "Japan",
+    "continent": "Asia",
+    "lat": 34.69379,
+    "lon": 135.50107,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1857910",
+    "name": "Kyoto",
+    "country": "Japan",
+    "continent": "Asia",
+    "lat": 35.02107,
+    "lon": 135.75385,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1668341",
+    "name": "Taipei",
+    "country": "Taiwan",
+    "continent": "Asia",
+    "lat": 25.05306,
+    "lon": 121.52639,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1701668",
+    "name": "Manila",
+    "country": "Philippines",
+    "continent": "Asia",
+    "lat": 14.6042,
+    "lon": 120.9822,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1566083",
+    "name": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "continent": "Asia",
+    "lat": 10.82302,
+    "lon": 106.62965,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1581130",
+    "name": "Hanoi",
+    "country": "Vietnam",
+    "continent": "Asia",
+    "lat": 21.0245,
+    "lon": 105.84117,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1645528",
+    "name": "Denpasar",
+    "country": "Indonesia",
+    "continent": "Asia",
+    "lat": -8.65,
+    "lon": 115.21667,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1795565",
+    "name": "Shenzhen",
+    "country": "China",
+    "continent": "Asia",
+    "lat": 22.54554,
+    "lon": 114.0683,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1809858",
+    "name": "Guangzhou",
+    "country": "China",
+    "continent": "Asia",
+    "lat": 23.11667,
+    "lon": 113.25,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1269843",
+    "name": "Hyderabad",
+    "country": "India",
+    "continent": "Asia",
+    "lat": 17.38405,
+    "lon": 78.45636,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1277333",
+    "name": "Bengaluru",
+    "country": "India",
+    "continent": "Asia",
+    "lat": 12.97194,
+    "lon": 77.59369,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1275004",
+    "name": "Kolkata",
+    "country": "India",
+    "continent": "Asia",
+    "lat": 22.56263,
+    "lon": 88.36304,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1264527",
+    "name": "Chennai",
+    "country": "India",
+    "continent": "Asia",
+    "lat": 13.08784,
+    "lon": 80.27847,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1248991",
+    "name": "Colombo",
+    "country": "Sri Lanka",
+    "continent": "Asia",
+    "lat": 6.93548,
+    "lon": 79.84868,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1283240",
+    "name": "Kathmandu",
+    "country": "Nepal",
+    "continent": "Asia",
+    "lat": 27.70169,
+    "lon": 85.3206,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-1172451",
+    "name": "Lahore",
+    "country": "Pakistan",
+    "continent": "Asia",
+    "lat": 31.558,
+    "lon": 74.35071,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-112931",
+    "name": "Tehran",
+    "country": "Iran",
+    "continent": "Asia",
+    "lat": 35.69439,
+    "lon": 51.42151,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-98182",
+    "name": "Baghdad",
+    "country": "Iraq",
+    "continent": "Asia",
+    "lat": 33.34058,
+    "lon": 44.40088,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-290030",
+    "name": "Doha",
+    "country": "Qatar",
+    "continent": "Asia",
+    "lat": 25.28545,
+    "lon": 51.53096,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-108410",
+    "name": "Riyadh",
+    "country": "Saudi Arabia",
+    "continent": "Asia",
+    "lat": 24.68773,
+    "lon": 46.72185,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-293397",
+    "name": "Tel Aviv",
+    "country": "Israel",
+    "continent": "Asia",
+    "lat": 32.08088,
+    "lon": 34.78057,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-281184",
+    "name": "Jerusalem",
+    "country": "Israel",
+    "continent": "Asia",
+    "lat": 31.76904,
+    "lon": 35.21633,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2332459",
+    "name": "Lagos",
+    "country": "Nigeria",
+    "continent": "Africa",
+    "lat": 6.45407,
+    "lon": 3.39467,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-993800",
+    "name": "Johannesburg",
+    "country": "South Africa",
+    "continent": "Africa",
+    "lat": -26.20227,
+    "lon": 28.04363,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2306104",
+    "name": "Accra",
+    "country": "Ghana",
+    "continent": "Africa",
+    "lat": 5.55602,
+    "lon": -0.1969,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2253354",
+    "name": "Dakar",
+    "country": "Senegal",
+    "continent": "Africa",
+    "lat": 14.6937,
+    "lon": -17.44406,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-344979",
+    "name": "Addis Ababa",
+    "country": "Ethiopia",
+    "continent": "Africa",
+    "lat": 9.02497,
+    "lon": 38.74689,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2553604",
+    "name": "Casablanca",
+    "country": "Morocco",
+    "continent": "Africa",
+    "lat": 33.58831,
+    "lon": -7.61138,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2464470",
+    "name": "Tunis",
+    "country": "Tunisia",
+    "continent": "Africa",
+    "lat": 36.81897,
+    "lon": 10.16579,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2507480",
+    "name": "Algiers",
+    "country": "Algeria",
+    "continent": "Africa",
+    "lat": 36.73225,
+    "lon": 3.08746,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-890299",
+    "name": "Harare",
+    "country": "Zimbabwe",
+    "continent": "Africa",
+    "lat": -17.82772,
+    "lon": 31.05337,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-202061",
+    "name": "Kigali",
+    "country": "Rwanda",
+    "continent": "Africa",
+    "lat": -1.94995,
+    "lon": 30.05885,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-4005539",
+    "name": "Guadalajara",
+    "country": "Mexico",
+    "continent": "North America",
+    "lat": 20.67738,
+    "lon": -103.34749,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3995465",
+    "name": "Monterrey",
+    "country": "Mexico",
+    "continent": "North America",
+    "lat": 25.68435,
+    "lon": -100.31721,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3553478",
+    "name": "Havana",
+    "country": "Cuba",
+    "continent": "North America",
+    "lat": 23.13302,
+    "lon": -82.38304,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3489854",
+    "name": "Kingston",
+    "country": "Jamaica",
+    "continent": "North America",
+    "lat": 17.99702,
+    "lon": -76.79358,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3703443",
+    "name": "Panama City",
+    "country": "Panama",
+    "continent": "North America",
+    "lat": 8.9936,
+    "lon": -79.51973,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-4930956",
+    "name": "Boston",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 42.35843,
+    "lon": -71.05977,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-5809844",
+    "name": "Seattle",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 47.60621,
+    "lon": -122.33207,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-5419384",
+    "name": "Denver",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 39.73915,
+    "lon": -104.9847,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-4180439",
+    "name": "Atlanta",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 33.749,
+    "lon": -84.38798,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-4684888",
+    "name": "Dallas",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 32.78306,
+    "lon": -96.80667,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-4335045",
+    "name": "New Orleans",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 29.95465,
+    "lon": -90.07507,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-4560349",
+    "name": "Philadelphia",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 39.95238,
+    "lon": -75.16362,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-4699066",
+    "name": "Houston",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 29.76328,
+    "lon": -95.36327,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-5391811",
+    "name": "San Diego",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 32.71571,
+    "lon": -117.16472,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3621849",
+    "name": "San José",
+    "country": "Costa Rica",
+    "continent": "North America",
+    "lat": 9.93388,
+    "lon": -84.08489,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3936456",
+    "name": "Lima",
+    "country": "Peru",
+    "continent": "South America",
+    "lat": -12.04318,
+    "lon": -77.02824,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3688689",
+    "name": "Bogotá",
+    "country": "Colombia",
+    "continent": "South America",
+    "lat": 4.60971,
+    "lon": -74.08175,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3871336",
+    "name": "Santiago",
+    "country": "Chile",
+    "continent": "South America",
+    "lat": -33.45694,
+    "lon": -70.64827,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3652462",
+    "name": "Quito",
+    "country": "Ecuador",
+    "continent": "South America",
+    "lat": -0.22985,
+    "lon": -78.52495,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3441575",
+    "name": "Montevideo",
+    "country": "Uruguay",
+    "continent": "South America",
+    "lat": -34.90328,
+    "lon": -56.18816,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3439389",
+    "name": "Asunción",
+    "country": "Paraguay",
+    "continent": "South America",
+    "lat": -25.28646,
+    "lon": -57.647,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-3911925",
+    "name": "La Paz",
+    "country": "Bolivia",
+    "continent": "South America",
+    "lat": -16.5,
+    "lon": -68.15,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2174003",
+    "name": "Brisbane",
+    "country": "Australia",
+    "continent": "Oceania",
+    "lat": -27.46794,
+    "lon": 153.02809,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2063523",
+    "name": "Perth",
+    "country": "Australia",
+    "continent": "Oceania",
+    "lat": -31.95224,
+    "lon": 115.8614,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2179537",
+    "name": "Wellington",
+    "country": "New Zealand",
+    "continent": "Oceania",
+    "lat": -41.28664,
+    "lon": 174.77557,
+    "fame_tier": 2
+  },
+  {
+    "id": "gn-2735943",
+    "name": "Porto",
+    "country": "Portugal",
+    "continent": "Europe",
+    "lat": 41.1485,
+    "lon": -8.61097,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2510911",
+    "name": "Sevilla",
+    "country": "Spain",
+    "continent": "Europe",
+    "lat": 37.38283,
+    "lon": -5.97317,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2509954",
+    "name": "Valencia",
+    "country": "Spain",
+    "continent": "Europe",
+    "lat": 39.47391,
+    "lon": -0.37966,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2990440",
+    "name": "Nice",
+    "country": "France",
+    "continent": "Europe",
+    "lat": 43.70313,
+    "lon": 7.26608,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3031582",
+    "name": "Bordeaux",
+    "country": "France",
+    "continent": "Europe",
+    "lat": 44.84124,
+    "lon": -0.58046,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2644210",
+    "name": "Liverpool",
+    "country": "United Kingdom",
+    "continent": "Europe",
+    "lat": 53.41058,
+    "lon": -2.97794,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2648579",
+    "name": "Glasgow",
+    "country": "United Kingdom",
+    "continent": "Europe",
+    "lat": 55.86515,
+    "lon": -4.25763,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2655603",
+    "name": "Birmingham",
+    "country": "United Kingdom",
+    "continent": "Europe",
+    "lat": 52.48142,
+    "lon": -1.89983,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2747891",
+    "name": "Rotterdam",
+    "country": "Netherlands",
+    "continent": "Europe",
+    "lat": 51.9225,
+    "lon": 4.47917,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2803138",
+    "name": "Antwerp",
+    "country": "Belgium",
+    "continent": "Europe",
+    "lat": 51.22047,
+    "lon": 4.40026,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2766824",
+    "name": "Salzburg",
+    "country": "Austria",
+    "continent": "Europe",
+    "lat": 47.79941,
+    "lon": 13.04399,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3161732",
+    "name": "Bergen",
+    "country": "Norway",
+    "continent": "Europe",
+    "lat": 60.39299,
+    "lon": 5.32415,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3413829",
+    "name": "Reykjavík",
+    "country": "Iceland",
+    "continent": "Europe",
+    "lat": 64.13548,
+    "lon": -21.89541,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2562305",
+    "name": "Valletta",
+    "country": "Malta",
+    "continent": "Europe",
+    "lat": 35.89968,
+    "lon": 14.5148,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3201047",
+    "name": "Dubrovnik",
+    "country": "Croatia",
+    "continent": "Europe",
+    "lat": 42.64125,
+    "lon": 18.10909,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-1279259",
+    "name": "Agra",
+    "country": "India",
+    "continent": "Asia",
+    "lat": 27.18333,
+    "lon": 78.01667,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-1269515",
+    "name": "Jaipur",
+    "country": "India",
+    "continent": "Asia",
+    "lat": 26.91962,
+    "lon": 75.78781,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-1253405",
+    "name": "Varanasi",
+    "country": "India",
+    "continent": "Asia",
+    "lat": 25.31668,
+    "lon": 83.01041,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2028462",
+    "name": "Ulan Bator",
+    "country": "Mongolia",
+    "continent": "Asia",
+    "lat": 47.90771,
+    "lon": 106.88324,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-1528675",
+    "name": "Bishkek",
+    "country": "Kyrgyzstan",
+    "continent": "Asia",
+    "lat": 42.87,
+    "lon": 74.59,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-1512569",
+    "name": "Tashkent",
+    "country": "Uzbekistan",
+    "continent": "Asia",
+    "lat": 41.26465,
+    "lon": 69.21627,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-1526384",
+    "name": "Almaty",
+    "country": "Kazakhstan",
+    "continent": "Asia",
+    "lat": 43.25249,
+    "lon": 76.9115,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-611717",
+    "name": "Tbilisi",
+    "country": "Georgia",
+    "continent": "Asia",
+    "lat": 41.69143,
+    "lon": 44.83412,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-616052",
+    "name": "Yerevan",
+    "country": "Armenia",
+    "continent": "Asia",
+    "lat": 40.17765,
+    "lon": 44.5126,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-587084",
+    "name": "Baku",
+    "country": "Azerbaijan",
+    "continent": "Asia",
+    "lat": 40.37767,
+    "lon": 49.89201,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-287286",
+    "name": "Muscat",
+    "country": "Oman",
+    "continent": "Asia",
+    "lat": 23.58413,
+    "lon": 58.40778,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-285787",
+    "name": "Kuwait City",
+    "country": "Kuwait",
+    "continent": "Asia",
+    "lat": 29.367,
+    "lon": 47.97429,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-276781",
+    "name": "Beirut",
+    "country": "Lebanon",
+    "continent": "Asia",
+    "lat": 33.89332,
+    "lon": 35.50157,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-170654",
+    "name": "Damascus",
+    "country": "Syria",
+    "continent": "Asia",
+    "lat": 33.5102,
+    "lon": 36.29128,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-1298824",
+    "name": "Yangon",
+    "country": "Myanmar",
+    "continent": "Asia",
+    "lat": 16.80528,
+    "lon": 96.15611,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-1821306",
+    "name": "Phnom Penh",
+    "country": "Cambodia",
+    "continent": "Asia",
+    "lat": 11.56245,
+    "lon": 104.91601,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-1651944",
+    "name": "Vientiane",
+    "country": "Laos",
+    "continent": "Asia",
+    "lat": 17.96667,
+    "lon": 102.6,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-1221874",
+    "name": "Dushanbe",
+    "country": "Tajikistan",
+    "continent": "Asia",
+    "lat": 38.53575,
+    "lon": 68.77905,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2449067",
+    "name": "Timbuktu",
+    "country": "Mali",
+    "continent": "Africa",
+    "lat": 16.77348,
+    "lon": -3.00742,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2460596",
+    "name": "Bamako",
+    "country": "Mali",
+    "continent": "Africa",
+    "lat": 12.60915,
+    "lon": -7.97522,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-160263",
+    "name": "Dar es Salaam",
+    "country": "Tanzania",
+    "continent": "Africa",
+    "lat": -6.82349,
+    "lon": 39.26951,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-186301",
+    "name": "Mombasa",
+    "country": "Kenya",
+    "continent": "Africa",
+    "lat": -4.05466,
+    "lon": 39.66359,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2240449",
+    "name": "Luanda",
+    "country": "Angola",
+    "continent": "Africa",
+    "lat": -8.83682,
+    "lon": 13.23432,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-1040652",
+    "name": "Maputo",
+    "country": "Mozambique",
+    "continent": "Africa",
+    "lat": -25.96553,
+    "lon": 32.58322,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3352136",
+    "name": "Windhoek",
+    "country": "Namibia",
+    "continent": "Africa",
+    "lat": -22.55941,
+    "lon": 17.08323,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-933773",
+    "name": "Gaborone",
+    "country": "Botswana",
+    "continent": "Africa",
+    "lat": -24.65451,
+    "lon": 25.90859,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-1070940",
+    "name": "Antananarivo",
+    "country": "Madagascar",
+    "continent": "Africa",
+    "lat": -18.91368,
+    "lon": 47.53613,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-934154",
+    "name": "Port Louis",
+    "country": "Mauritius",
+    "continent": "Africa",
+    "lat": -20.16194,
+    "lon": 57.49889,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-241131",
+    "name": "Victoria",
+    "country": "Seychelles",
+    "continent": "Africa",
+    "lat": -4.62001,
+    "lon": 55.45501,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-5879400",
+    "name": "Anchorage",
+    "country": "United States",
+    "continent": "North America",
+    "lat": 61.21806,
+    "lon": -149.90028,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-6180550",
+    "name": "Whitehorse",
+    "country": "Canada",
+    "continent": "North America",
+    "lat": 60.71611,
+    "lon": -135.05375,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-6185377",
+    "name": "Yellowknife",
+    "country": "Canada",
+    "continent": "North America",
+    "lat": 62.45411,
+    "lon": -114.37248,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-6094817",
+    "name": "Ottawa",
+    "country": "Canada",
+    "continent": "North America",
+    "lat": 45.41117,
+    "lon": -75.69812,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-6077243",
+    "name": "Montréal",
+    "country": "Canada",
+    "continent": "North America",
+    "lat": 45.50884,
+    "lon": -73.58781,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-6324733",
+    "name": "St. John's",
+    "country": "Canada",
+    "continent": "North America",
+    "lat": 47.56494,
+    "lon": -52.70931,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3533462",
+    "name": "Acapulco de Juárez",
+    "country": "Mexico",
+    "continent": "North America",
+    "lat": 16.84942,
+    "lon": -99.90891,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3523349",
+    "name": "Mérida",
+    "country": "Mexico",
+    "continent": "North America",
+    "lat": 20.967,
+    "lon": -89.62318,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3600949",
+    "name": "Tegucigalpa",
+    "country": "Honduras",
+    "continent": "North America",
+    "lat": 14.0818,
+    "lon": -87.20681,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3617763",
+    "name": "Managua",
+    "country": "Nicaragua",
+    "continent": "North America",
+    "lat": 12.13282,
+    "lon": -86.2504,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3583361",
+    "name": "San Salvador",
+    "country": "El Salvador",
+    "continent": "North America",
+    "lat": 13.68935,
+    "lon": -89.18718,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3941584",
+    "name": "Cusco",
+    "country": "Peru",
+    "continent": "South America",
+    "lat": -13.53188,
+    "lon": -71.96701,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3674962",
+    "name": "Medellín",
+    "country": "Colombia",
+    "continent": "South America",
+    "lat": 6.245,
+    "lon": -75.57151,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3687238",
+    "name": "Cartagena",
+    "country": "Colombia",
+    "continent": "South America",
+    "lat": 10.39817,
+    "lon": -75.49328,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3868626",
+    "name": "Valparaíso",
+    "country": "Chile",
+    "continent": "South America",
+    "lat": -33.036,
+    "lon": -71.62963,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3844421",
+    "name": "Mendoza",
+    "country": "Argentina",
+    "continent": "South America",
+    "lat": -32.88946,
+    "lon": -68.84582,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3860259",
+    "name": "Córdoba",
+    "country": "Argentina",
+    "continent": "South America",
+    "lat": -31.40648,
+    "lon": -64.18853,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3450554",
+    "name": "Salvador",
+    "country": "Brazil",
+    "continent": "South America",
+    "lat": -12.97563,
+    "lon": -38.49096,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3390760",
+    "name": "Recife",
+    "country": "Brazil",
+    "continent": "South America",
+    "lat": -8.05389,
+    "lon": -34.88111,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3405870",
+    "name": "Belém",
+    "country": "Brazil",
+    "continent": "South America",
+    "lat": -1.45583,
+    "lon": -48.50444,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-3378644",
+    "name": "Georgetown",
+    "country": "Guyana",
+    "continent": "South America",
+    "lat": 6.80448,
+    "lon": -58.15527,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2198148",
+    "name": "Suva",
+    "country": "Fiji",
+    "continent": "Oceania",
+    "lat": -18.13683,
+    "lon": 178.42531,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2088122",
+    "name": "Port Moresby",
+    "country": "Papua New Guinea",
+    "continent": "Oceania",
+    "lat": -9.47723,
+    "lon": 147.15089,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2139521",
+    "name": "Nouméa",
+    "country": "France",
+    "continent": "Oceania",
+    "lat": -22.27407,
+    "lon": 166.44884,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-4033936",
+    "name": "Papeete",
+    "country": "France",
+    "continent": "Oceania",
+    "lat": -17.5347,
+    "lon": -149.56843,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-4035413",
+    "name": "Apia",
+    "country": "Samoa",
+    "continent": "Oceania",
+    "lat": -13.83333,
+    "lon": -171.76666,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-4032402",
+    "name": "Nuku‘alofa",
+    "country": "Tonga",
+    "continent": "Oceania",
+    "lat": -21.13683,
+    "lon": -175.20114,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2108502",
+    "name": "Honiara",
+    "country": "Solomon Islands",
+    "continent": "Oceania",
+    "lat": -9.43333,
+    "lon": 159.95,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-2135171",
+    "name": "Port-Vila",
+    "country": "Vanuatu",
+    "continent": "Oceania",
+    "lat": -17.73648,
+    "lon": 168.31366,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-1252416",
+    "name": "Thimphu",
+    "country": "Bhutan",
+    "continent": "Asia",
+    "lat": 27.46609,
+    "lon": 89.64191,
+    "fame_tier": 3
+  },
+  {
+    "id": "gn-1282027",
+    "name": "Male",
+    "country": "Maldives",
+    "continent": "Asia",
+    "lat": 4.17521,
+    "lon": 73.50916,
+    "fame_tier": 3
+  }
+]
