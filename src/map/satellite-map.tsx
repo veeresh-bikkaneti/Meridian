@@ -18,8 +18,11 @@ import {
   type RegionGeometryDTO,
 } from "./region-index.ts";
 import { mountStarfield } from "./starfield.ts";
-import { isCoarsePointer, mapOptionsForDevice } from "./map-options.ts";
-import { emitTileFailed, emitWebglContextLost, recordMilestone } from "@/lib/observability";
+import { buildScoutStyle } from "./scout-style.ts";
+import { ScoutFallbackMap } from "./scout-fallback.tsx";
+import { isCoarsePointer, mapOptionsForDevice, SCOUT_MAX_ZOOM_FLAT, SCOUT_MAX_ZOOM_GLOBE } from "./map-options.ts";
+import type { MapMode } from "./capability.ts";
+import { emitTileFailed, emitWebglContextLost, recordMilestone, recordTileErrors } from "@/lib/observability";
 import { createTapTracker } from "./tap-tracker.ts";
 import { INITIAL_TILE_STATUS, tileStatusReducer, type TileStatus } from "./tile-status.ts";
 import { variationLine, type MapPoint } from "./variation.ts";
@@ -50,6 +53,17 @@ export type MapVariation = {
   kilometers: number;
   radiusKm: number;
 };
+
+/**
+ * PBI-5: a captured map viewport for state-preserving remounts (the
+ * webglcontextlost → Scout Map switch). Re-opens mid-SPACE — center, zoom
+ * AND projection — instead of replaying the intro.
+ */
+export interface ScoutRestoreView {
+  center: [number, number];
+  zoom: number;
+  projection: "globe" | "mercator";
+}
 
 const EMPTY = { type: "FeatureCollection" as const, features: [] };
 
@@ -358,6 +372,14 @@ function paintVariationLayers(
  */
 export function SatelliteMap(props: {
   mode: "flat" | "globe";
+  /**
+   * Game map mode ("full" | "scout"). Defaults to "full" — the full-mode
+   * construction path is byte-identical in behavior; every scout branch is
+   * flag-guarded (PBI-2+). Owned by GameApp and threaded down as a prop;
+   * the toggle never lives in here because this component unmounts on the
+   * webglcontextlost teardown (PBI-5).
+   */
+  mapMode?: MapMode;
   /** Game edition — drives the controller's thresholds and gesture model. */
   edition: "state" | "country" | "globe";
   /** Region display name, resolved against the vendored atlas index. */
@@ -386,6 +408,20 @@ export function SatelliteMap(props: {
    * mid-choreography.
    */
   onRevealComplete?: () => void;
+  /**
+   * PBI-5: fired when the live map canvas loses its WebGL context, after
+   * the observability emit. The owner (GameApp) switches to Scout Map and
+   * remounts with `initialView` — no page reload, no game-state loss.
+   * Only fires for full-mode mounts (an already-scout mount never
+   * re-switches — the repeat-storm guard).
+   */
+  onWebglContextLost?: (view: ScoutRestoreView) => void;
+  /**
+   * PBI-5: re-open the map on this viewport instead of the intro
+   * (the webglcontextlost switch's state preservation). Same shape and
+   * semantics as the tile-Retry restore.
+   */
+  initialView?: ScoutRestoreView | null;
 }): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -397,6 +433,10 @@ export function SatelliteMap(props: {
   const onClearAimRef = useRef(props.onClearAim);
   const onRevealCompleteRef = useRef(props.onRevealComplete);
   onRevealCompleteRef.current = props.onRevealComplete;
+  // PBI-5: the contextlost callback is owner-wired (GameApp performs the
+  // scout switch); read via ref so the canvas listener never goes stale.
+  const onWebglContextLostPropRef = useRef(props.onWebglContextLost);
+  onWebglContextLostPropRef.current = props.onWebglContextLost;
   const spotRef = useRef<{ lon: number; lat: number } | null>(null);
   spotRef.current = props.spot ?? null;
   const marksRef = useRef(props.marks);
@@ -415,6 +455,10 @@ export function SatelliteMap(props: {
   // save/restore + try/finally); the four map listeners check it directly.
   const dispatchingIntentsRef = useRef(false);
   const maxBoundsRef = useRef<[number, number, number, number] | null>(null);
+  // PBI-2: the game map mode for this mount ("full" | "scout"), set in the
+  // construction effect. Read by PBI-5's webglcontextlost guard so an
+  // already-scout mount never triggers a second switch.
+  const mapModeRef = useRef<MapMode>("full");
   const dtoRef = useRef<RegionGeometryDTO | null>(null);
   const reducedMotionRef = useRef(false);
   const editionRef = useRef<"state" | "country" | "globe">(props.edition);
@@ -461,13 +505,41 @@ export function SatelliteMap(props: {
   // ready, or failed; MapLibre events in the effect below map onto TileEvents
   // per that module's wiring contract. `mapAttempt` remounts the map for
   // Retry (the effect teardown removes the old instance).
-  const [tileStatus, dispatchTile] = useReducer(tileStatusReducer, INITIAL_TILE_STATUS);
+  // PBI-3: scout mounts no tile sources, so the tile lifecycle is vacuous —
+  // start at "ready" and skip all tile dispatches (flag-guarded below).
+  // Full mode keeps the existing lifecycle exactly.
+  const [tileStatus, dispatchTile] = useReducer(
+    tileStatusReducer,
+    props.mapMode === "scout" ? ({ kind: "ready" } as TileStatus) : INITIAL_TILE_STATUS,
+  );
   const [mapAttempt, setMapAttempt] = useState(0);
   // Telemetry: one tile_failed event per failure episode so map outages
   // are visible in crash reporting (the failure card below is the trigger).
   useEffect(() => {
     if (tileStatus.kind === "failed") emitTileFailed();
   }, [tileStatus.kind]);
+
+  /**
+   * PBI-4: true when the scout outline render failed and the static SVG
+   * fallback owns the map surface. The game (aim / commit / scoring)
+   * proceeds unchanged on the fallback.
+   */
+  const [scoutFallback, setScoutFallback] = useState(false);
+
+  // PBI-4: the static fallback has no map or camera — a committed pin
+  // completes the reveal immediately (same honesty gate as the tileFailed
+  // path), so scoring and rounds proceed unchanged.
+  useEffect(() => {
+    if (scoutFallback && props.variation) onRevealCompleteRef.current?.();
+  }, [scoutFallback, props.variation]);
+
+  // PBI-8: tile_failed counts ride the crash-report breadcrumb (suggestive
+  // only — the settled constraint forbids switching on them).
+  useEffect(() => {
+    recordTileErrors(
+      tileStatus.kind === "loading" || tileStatus.kind === "failed" ? tileStatus.tileErrors : 0,
+    );
+  }, [tileStatus]);
   // Keyboard crosshair (M6): null = hidden. Shown on first arrow press at
   // viewport center; hidden again as soon as pointer/touch is used.
   const [crosshair, setCrosshair] = useState<{ x: number; y: number } | null>(null);
@@ -599,7 +671,10 @@ export function SatelliteMap(props: {
     // instance means a new tile set, so reset even when the previous state
     // was ready/failed (mode switches, tile URL changes, Retry bumps).
     // On first mount this is a no-op (already the initial state).
-    dispatchTile({ type: "retry" });
+    // PBI-3: scout has no tile lifecycle — its initial "ready" stands.
+    // Resetting to "loading" here would wedge data-tile-status at
+    // "loading" forever (no scout dispatch ever leaves it).
+    if (props.mapMode !== "scout") dispatchTile({ type: "retry" });
 
     const edition = props.edition;
     const reducedMotion = prefersReducedMotion();
@@ -611,7 +686,11 @@ export function SatelliteMap(props: {
     // and camera are restored, never replayed from the intro.
     const retryView = retryViewRef.current;
     retryViewRef.current = null;
-    const isRestore = retryView != null;
+    // PBI-5: the webglcontextlost switch passes the doomed map's viewport
+    // in as `initialView`; it re-opens mid-SPACE exactly like the
+    // tile-Retry restore (design §8).
+    const restoreView: ScoutRestoreView | null = props.initialView ?? retryView;
+    const isRestore = restoreView != null;
 
     // Resolve the atlas entry once per map instance. The polygon feeds the
     // highlight; camera math (settle framing, max bounds, big-miss) uses the
@@ -646,55 +725,112 @@ export function SatelliteMap(props: {
     // is below. maxBounds re-lands from the game's regions.ts box when the
     // restored projection is flat; the intro path starts unbounded and the
     // narrow beat lands maxBounds at completion.
-    const initialProjection = isRestore ? retryView.projection : "globe";
+    const initialProjection = isRestore ? restoreView.projection : "globe";
     const initialMaxBounds =
-      isRestore && retryView.projection === "mercator" ? (dto?.bounds ?? undefined) : undefined;
+      isRestore && restoreView.projection === "mercator" ? (dto?.bounds ?? undefined) : undefined;
 
     recordMilestone("map_init_start");
+    // PBI-2: the game map mode is fail-closed to "full" — a missing or
+    // unexpected value never changes the full-mode construction path.
+    const mapMode: MapMode = props.mapMode === "scout" ? "scout" : "full";
+    mapModeRef.current = mapMode;
     // Secondary jetsam mitigation: cap the WebGL canvas pixel ratio at
     // 1.5 on coarse-pointer (touch) devices and bound the tile cache —
-    // see src/map/map-options.ts (unit-tested policy).
+    // see src/map/map-options.ts (unit-tested policy). Scout Map caps the
+    // pixel ratio at 1 instead (PBI-2).
     const deviceMapOptions = mapOptionsForDevice({
       coarsePointer: isCoarsePointer(),
       devicePixelRatio: typeof window !== "undefined" ? window.devicePixelRatio : undefined,
+      mapMode,
     });
-    const map = new Map({
+    // PBI-4: construction can throw on a dead GL context — in scout mode
+    // that drops to the static SVG fallback (the game stays playable);
+    // full mode keeps the existing behavior (the error boundary owns it).
+    let map: Map;
+    try {
+      map = new Map({
       container,
       ...(deviceMapOptions.pixelRatio !== undefined ? { pixelRatio: deviceMapOptions.pixelRatio } : {}),
       maxTileCacheSize: deviceMapOptions.maxTileCacheSize,
-      style: {
-        version: 8,
-        // Design §4: every edition opens from space — globe projection,
-        // zoom 1.0. The flat editions swap to mercator mid-narrow-in.
-        projection: { type: initialProjection },
-        sources: {
-          [IMAGERY_SOURCE]: {
-            type: "raster",
-            tiles: [view.tiles],
-            tileSize: 256,
-            maxzoom: 23,
-            attribution: view.attribution,
-          },
-        },
-        layers: [{ id: IMAGERY_SOURCE, type: "raster", source: IMAGERY_SOURCE }],
-      },
-      center: isRestore ? retryView.center : [0, 0],
-      zoom: isRestore ? retryView.zoom : 1,
-      maxZoom: edition === "globe" ? 5 : undefined,
+      style:
+        // PBI-3: Scout Map mounts the label-free, tile-free outline style
+        // (src/map/scout-style.ts) — no satellite raster sources at all.
+        // Full mode keeps the existing imagery style exactly.
+        mapMode === "scout"
+          ? buildScoutStyle(initialProjection)
+          : {
+              version: 8,
+              // Design §4: every edition opens from space — globe projection,
+              // zoom 1.0. The flat editions swap to mercator mid-narrow-in.
+              projection: { type: initialProjection },
+              sources: {
+                [IMAGERY_SOURCE]: {
+                  type: "raster",
+                  tiles: [view.tiles],
+                  tileSize: 256,
+                  maxzoom: 23,
+                  attribution: view.attribution,
+                },
+              },
+              layers: [{ id: IMAGERY_SOURCE, type: "raster", source: IMAGERY_SOURCE }],
+            },
+      center: isRestore ? restoreView.center : [0, 0],
+      zoom: isRestore ? restoreView.zoom : 1,
+      // PBI-2: Scout Map bounds zoom-space per projection (3 flat / 2 globe);
+      // full mode keeps the existing behavior exactly.
+      maxZoom:
+        mapMode === "scout"
+          ? edition === "globe"
+            ? SCOUT_MAX_ZOOM_GLOBE
+            : SCOUT_MAX_ZOOM_FLAT
+          : edition === "globe"
+            ? 5
+            : undefined,
       maxBounds: initialMaxBounds,
       attributionControl: false,
       // Design §7: no gesture owns the map until the controller arms it.
       interactive: false,
       renderWorldCopies: props.mode === "flat",
-    });
+      });
+    } catch (err) {
+      if (mapMode !== "scout") throw err;
+      setScoutFallback(true);
+      return;
+    }
     projectionRef.current = initialProjection;
     maxBoundsRef.current = initialMaxBounds ?? null;
     mapRef.current = map;
 
+    if (mapMode === "scout") {
+      // PBI-4: the outline style has no external resources — any map error
+      // is a real render failure, so drop to the static SVG fallback and
+      // keep the game playable instead of stranding it on a dead canvas.
+      map.on("error", () => setScoutFallback(true));
+    }
+
     // Observability: a lost WebGL context is a field signal for GPU /
     // memory pressure — emit on the shared (endpoint-gated) path.
+    // PBI-5: then hand the current viewport to the owner for the
+    // state-preserving Scout Map switch. Only full-mode mounts switch —
+    // an already-scout mount just reports (repeat-storm guard). The camera
+    // getters are JS-side state, so they survive the dead canvas; guarded
+    // so a failing read can never break the observability emit above.
     const onWebglContextLost = () => {
       emitWebglContextLost();
+      try {
+        if (mapModeRef.current !== "full") return;
+        const owner = onWebglContextLostPropRef.current;
+        if (!owner) return;
+        const liveMap = mapRef.current;
+        if (!liveMap) return;
+        owner({
+          center: liveMap.getCenter().toArray() as [number, number],
+          zoom: liveMap.getZoom(),
+          projection: projectionRef.current,
+        });
+      } catch {
+        // best-effort: the context-lost signal itself was already emitted.
+      }
     };
     try {
       map.getCanvas().addEventListener("webglcontextlost", onWebglContextLost);
@@ -749,9 +885,16 @@ export function SatelliteMap(props: {
     // of the wrapper, own absolute positioning + dark fallback, canvases
     // pointer-events-none). The MapLibre canvas is alpha:true with no
     // background layer, so the stars show through wherever no tile paints.
-    const destroyStarfield = mountStarfield(wrapperRef.current!);
+    // PBI-3: no starfield in scout mode (GPU + compositor cost) — the
+    // outline style's background layer is the backdrop instead.
+    const destroyStarfield = mapMode === "scout" ? null : mountStarfield(wrapperRef.current!);
 
-    const controller = new ZoomSpaceController({ edition, prefersReducedMotion: reducedMotion });
+    // PBI-3: scout disables motion — scripted camera beats become instant
+    // jumps (same treatment as prefers-reduced-motion).
+    const controller = new ZoomSpaceController({
+      edition,
+      prefersReducedMotion: mapMode === "scout" ? true : reducedMotion,
+    });
     controllerRef.current = controller;
 
     let alive = true;
@@ -938,11 +1081,14 @@ export function SatelliteMap(props: {
             // must not inherit their verdict. The region's tile set gets its
             // own verdict + full 15 s watchdog budget — same producers as
             // the Retry button (see tile-status.ts).
-            dispatchTile({ type: "retry" });
-            window.clearTimeout(watchdog);
-            watchdog = window.setTimeout(() => {
-              dispatchTile({ type: "load-timeout" });
-            }, TILE_LOAD_TIMEOUT_MS);
+            // PBI-3: scout has no tile phase — never leave the "ready" state.
+            if (mapModeRef.current !== "scout") {
+              dispatchTile({ type: "retry" });
+              window.clearTimeout(watchdog);
+              watchdog = window.setTimeout(() => {
+                dispatchTile({ type: "load-timeout" });
+              }, TILE_LOAD_TIMEOUT_MS);
+            }
             break;
           }
           case "a11y-intro": {
@@ -1131,22 +1277,28 @@ export function SatelliteMap(props: {
     // (NOT success); the first idle after the most recent retry is the
     // verdict on that tile set. The watchdog covers a style that never
     // loads at all (dead DNS / blocked host).
-    map.on("error", (e) => {
-      if ((e as { tile?: unknown }).tile) dispatchTile({ type: "tile-error" });
-    });
-    // `let`: re-armed once the style parses (see the load handler below) so
-    // the tile phase gets its own full budget.
-    let watchdog = window.setTimeout(() => {
-      dispatchTile({ type: "load-timeout" });
-    }, TILE_LOAD_TIMEOUT_MS);
-    map.on("idle", () => {
-      // First idle after the most recent retry is the verdict; later idles
-      // (every camera move) are no-ops in the reducer — it returns the
-      // identical state, so React bails out of re-rendering. Clearing the
-      // watchdog here is hygiene.
-      window.clearTimeout(watchdog);
-      dispatchTile({ type: "map-idle" });
-    });
+    // PBI-3: scout mounts no tile sources — the whole tile lifecycle
+    // (verdict, watchdog, retry re-arm) is skipped. The style's "load"
+    // event below still fires for the milestone + layer setup.
+    let watchdog: number | undefined;
+    if (mapMode !== "scout") {
+      map.on("error", (e) => {
+        if ((e as { tile?: unknown }).tile) dispatchTile({ type: "tile-error" });
+      });
+      // `let`: re-armed once the style parses (see the load handler below) so
+      // the tile phase gets its own full budget.
+      watchdog = window.setTimeout(() => {
+        dispatchTile({ type: "load-timeout" });
+      }, TILE_LOAD_TIMEOUT_MS);
+      map.on("idle", () => {
+        // First idle after the most recent retry is the verdict; later idles
+        // (every camera move) are no-ops in the reducer — it returns the
+        // identical state, so React bails out of re-rendering. Clearing the
+        // watchdog here is hygiene.
+        window.clearTimeout(watchdog);
+        dispatchTile({ type: "map-idle" });
+      });
+    }
 
     // Per map instance: classifies a tap pair as one double-tap COMMIT gesture.
     const tracker = createTapTracker();
@@ -1311,7 +1463,8 @@ export function SatelliteMap(props: {
       // Must-fix #2: style parsed, tiles in flight — not a verdict either
       // way (the reducer treats map-load as a no-op; the first idle
       // decides). Recorded for contract fidelity with tile-status.ts.
-      dispatchTile({ type: "map-load" });
+      // PBI-3: scout has no tile phase — skip both dispatches.
+      if (mapMode !== "scout") dispatchTile({ type: "map-load" });
       // Progressive boundary reveal (F2): paint the initial band for the
       // opening zoom. The style is parsed now, so addSource/addLayer are safe.
       try {
@@ -1325,10 +1478,13 @@ export function SatelliteMap(props: {
       // The style parsed; the tile phase gets its own full watchdog budget
       // from here — a slow connection that trickles tiles must not trip
       // the style watchdog and declare failure over a healthy map.
-      window.clearTimeout(watchdog);
-      watchdog = window.setTimeout(() => {
-        dispatchTile({ type: "load-timeout" });
-      }, TILE_LOAD_TIMEOUT_MS);
+      // PBI-3: no watchdog in scout mode (no tiles to wait for).
+      if (mapMode !== "scout") {
+        window.clearTimeout(watchdog);
+        watchdog = window.setTimeout(() => {
+          dispatchTile({ type: "load-timeout" });
+        }, TILE_LOAD_TIMEOUT_MS);
+      }
       map.addSource(LINE_SOURCE, { type: "geojson", data: EMPTY });
       map.addSource(RING_SOURCE, { type: "geojson", data: EMPTY });
       map.addLayer({
@@ -1399,7 +1555,8 @@ export function SatelliteMap(props: {
       // An unmount mid-intro must not leave the ambient loop playing.
       safePlay(stopGlobeSpin);
       spinContainer.removeEventListener("pointerup", onIntroPointerUp);
-      destroyStarfield.destroy();
+      // PBI-3: null in scout mode (starfield never mounted).
+      destroyStarfield?.destroy();
       detachTapHandlers();
       for (const marker of markersRef.current) marker.remove();
       markersRef.current = [];
@@ -1552,11 +1709,19 @@ export function SatelliteMap(props: {
       tabIndex={0}
       role="application"
       data-zoom={zoom}
+      data-map-mode={props.mapMode === "scout" ? "scout" : "full"}
+      data-max-zoom={
+        props.mapMode === "scout" ? (props.mode === "flat" ? "3" : "2") : "8"
+      }
       data-center-lng={center.lng.toFixed(4)}
       data-center-lat={center.lat.toFixed(4)}
       data-tile-status={tileStatus.kind}
       aria-roledescription="map"
-      aria-label="Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin, or skips the reveal while it plays."
+      aria-label={
+        scoutFallback
+          ? "World outline map. Tap to place your pin, then use the Drop pin button. Arrow keys move the aim crosshair; Enter places the pin."
+          : "Satellite map. Arrow keys move the aim crosshair. Enter or Space places the pin. Escape clears the pin, or skips the reveal while it plays."
+      }
       // Design §7: the intro beat owns the screen — the wrapper is hidden
       // from assistive tech and uninteractable until narrow completion
       // releases it (the `announce` intent then fires through the live
@@ -1580,11 +1745,24 @@ export function SatelliteMap(props: {
         inline style outranks every stylesheet, layered or not — keep the
         inline style; do not merge it into the className.
       */}
-      <div
-        ref={containerRef}
-        className={`absolute inset-0 transition-opacity duration-500 motion-reduce:transition-none ${ready ? "opacity-100" : "opacity-0"}`}
-        style={{ position: "absolute" }}
-      />
+      {/*
+        PBI-4: when the scout outline render fails, the static SVG fallback
+        owns the map surface — same aim/commit/scoring flow, no camera.
+      */}
+      {scoutFallback ? (
+        <ScoutFallbackMap
+          marks={props.marks}
+          spot={props.spot}
+          revealed={props.variation != null}
+          onAim={(lon, lat) => onAimRef.current?.(lon, lat)}
+        />
+      ) : (
+        <div
+          ref={containerRef}
+          className={`absolute inset-0 transition-opacity duration-500 motion-reduce:transition-none ${ready ? "opacity-100" : "opacity-0"}`}
+          style={{ position: "absolute" }}
+        />
+      )}
       {/* Must-fix #2: tile loading / failure UX. A dead imagery connection
           must never look like a working game. Both overlays sit at z-10:
           above the map canvas, below the Drop overlay (z-20), the crosshair
