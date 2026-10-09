@@ -95,6 +95,32 @@ walker at the strip's right edge; screenshot proved the cut-off copy).
   has no role/tabindex, pointer-events none, cursor default; the sip
   animation runs `sip-drink` at 0.8s × 1.
 
+## Done (BLOCK 4, E2E test engineer, 2026-10-09 — dedicated tour-cloud mobile spec)
+
+New: `tests/e2e/kofi-tour-cloud.mobile.spec.ts` (runs in the "mobile"
+project: 390×844, touch, isMobile). 6 tests, all green first run
+(6/6, 1.3m, `npx tsc --noEmit` clean):
+1. cloud visible mid-walk + fully on-screen — opacity polls to 1,
+   `visibility: visible`, bbox within 390px (regression for the ~46px
+   right-edge clip)
+2. locked ask copy mid-walk — `Grown-ups — buy me a coffee? ☕` +
+   `Your support keeps Meridian free for kids` (read-only assertions)
+3. strip walker not a tap target mid-walk — no `role="button"`, no
+   `tabindex`, pointer-events `none`, forced click leaves
+   `data-cloud="ask"` and opens no gate
+4. touch tap on the cloud's ask button mid-tour opens the grown-up gate —
+   `data-testid="grandpa-cloud-gate"` visible, `role="dialog"`, focus lands
+   on Continue
+5. sip runs the full 800ms dwell — `.mug-arm` `animation-name: sip-drink`,
+   `animation-duration: 0.8s`, tour advances `data-stop-index` 0 → 1 on its
+   own (no mid-drink snap)
+6. tour completes cleanly — `data-beat="seated"`, `data-tour-stage="settled"`,
+   cloud visible, on-screen, ask copy intact
+
+No kid-facing copy invented; the two locked strings are asserted verbatim.
+Flakiness: none observed (6/6 first pass); the mid-tour tap window is wide
+(~9s walk).
+
 ### Follow-ups for the mobile QA check (not in scope, noted)
 - Desktop seated cloud has the same centering overflow (~36px clip at the
   viewport's right edge) — pre-existing, desktop-only, left untouched.
