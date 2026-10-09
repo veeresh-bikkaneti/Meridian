@@ -1,7 +1,8 @@
 # BRANCH_STATUS — fix/live-site-issues
 
-Live-site issues sprint branch (off origin/main). NEVER merge — owner merges.
-Coordinator assembles the final PR; agents commit named files only, never push.
+**Branch:** `fix/live-site-issues` · **Base:** origin/main@df3f46c · **Head:** ffecf25
+**Status:** all 3 fixes landed, all gates green, ready for PR. NEVER merge — owner merges.
+Live-site issues sprint branch (off origin/main).
 
 ## Landed (2441e4e)
 - Issue 1: desktop seated Ko-fi cloud right-anchored in-viewport
