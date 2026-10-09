@@ -119,7 +119,7 @@ test("grandpa is seated and fully static under reduced motion", async ({
   await expect(cloudBubble).toHaveAttribute("data-cloud", "gate");
   const gate = page.getByTestId("grandpa-cloud-gate");
   await expect(gate).toBeVisible();
-  await expect(gate).toContainText("Ask a grown-up!");
+  await expect(gate).toContainText("You're leaving Meridian to visit Ko-fi. Ask a grown-up!");
   // Cancel reverts.
   await page.getByTestId("grandpa-cloud-cancel").click();
   await expect(cloudBubble).toHaveAttribute("data-cloud", "ask");

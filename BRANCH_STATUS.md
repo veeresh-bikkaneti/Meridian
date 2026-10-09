@@ -1,85 +1,130 @@
-# BRANCH_STATUS — feat/quick-fixes-2026-10-09
+# BRANCH_STATUS — fix/kofi-cloud-mobile
 
-Quick-fix sprint (Frontend/Webapp Developer) on top of origin/main@4c3e83e
-(#110 age-profile merged). Two code fixes only: FIX B (round lengths) and
-FIX C (grown-ups entry). Local branch; push + PR handled by the
-coordinator after the Tester runs the Phase 2 gates. Merge stays the
-user's call.
+Owner: Dinesh · Branch: `fix/kofi-cloud-mobile` · Base: origin/main @ 64c82d6
+· Created: 2026-10-09. **DO NOT PUSH, DO NOT MERGE** — scrum master pushes
+after gates; owner merges (PR #111).
 
-NOTE: the file previously described feat/age-profile-studio (its content
-was carried onto this branch via main@4c3e83e). It now tracks THIS branch.
+Standing rules: named-file staging only, never `git add -A`. Locked Ko-fi
+copy must stay byte-identical (verified by grep after every edit):
+`Grown-ups — buy me a coffee? ☕` · `Your support keeps Meridian free for kids` ·
+`Grown-ups — buy me a coffee? Activate to learn how to support Meridian.`
 
-## Done
+## Done (prior squad, ce193c8 — "shorten mobile tasting tour so the donation cloud appears sooner")
 
-### FIX B — Round lengths: `pinsPerRun` in the difficulty data
-- `src/game/age-profile/types.ts`: added `pinsPerRun: number` to
-  `BandDifficulty`.
-- `src/game/age-profile/bands.ts`: added `pinsPerRun` per band — 5-7 → 5,
-  8-10 → 8, 11-13 → 12 (mirrors the `quizQuestions` column exactly).
-  Existing table verified unchanged (quizQuestions 5/8/12, terrainImages
-  4/6/8, capitalQuestions locked/8/12); parent-facing `description` strings
-  untouched (design-agreed copy, ≤140 chars).
-- `src/game/age-profile/difficulty.ts`: `pinsPerRun` added to
-  `RoundLengths` and returned by `roundLengths()`.
-- **ASPIRATIONAL / DATA-ONLY (Game Designer ruling):** the shipped
-  quiz/main run is endless by design — it does NOT consume `pinsPerRun`
-  (or `quizQuestions`). Capping the run is out of scope (a game-loop
-  redesign). The value is exposed as a design target for future
-  round-structured loops; nothing consumes it today (`roundLengths` has no
-  consumers outside the age-profile index). Deliberately NOT wired into any
-  run loop — no new game modes invented.
-- `src/game/scoring.ts` left untouched: scoring is band-identical by design
-  (`bandScoreMultiplier` returns 1) and the scoring display path is
-  separate surface from this change. Designer note recorded for later: any
-  future player-facing score from these loops must be %-only (4/5 = 6/8 =
-  75%), never raw points (cross-band comparison trap).
-- Regression test (P0-2) in `src/game/age-profile/store.test.ts`: start
-  5-7 (pinsPerRun 5) → requestChange to 8-10 mid-run → staged; the running
-  round still resolves 5; after `applyPendingAtBoundary()` the next run
-  resolves 8. No soft-lock, finish count never changes mid-run.
-- `src/game/age-profile/difficulty.test.ts`: pinsPerRun assertions per band.
+Option B (Game Designer + UI/UX Expert reconciled spec). Mobile tour only;
+desktop strip untouched.
+- `src/components/grandpa-coffee-run.tsx` ONLY:
+  - `TOUR_JOURNEY_CAP_MS` 25_000 → 10_000; `TOUR_TARGET_MS` 20_000 → 6_000
+  - `TOUR_SIP_MS` 1200 → 800; `TOUR_POUR_MS` unchanged (2800)
+  - `measureTour` stops: difficulty → geodetective → editions (dropped review)
+- E2E spec timing updates to match (sip-dwell sampling gap 450ms → 250ms).
+- Explicitly untouched: showCloud logic, once-per-session gate, handoff end
+  state, gate copy, offline/no-URL fail-closed, skip button, reduced-motion.
 
-### FIX C — Grown-ups entry
-- **Cooldown persistence:** `src/components/age-profile/cooldown.ts` (new) —
-  one timestamp under `meridian.grownupCooldown.v1` (namespaced like
-  `meridian.ageProfile.v1`), zero PII (COPPA-safe). `writeCooldown` on
-  cooldown start; `readCooldown` resumes a live deadline on remount and
-  DELETES expired/absent/malformed values (never resurrects);
-  `clearCooldown` when the cooldown ends (expiry leaves no key behind).
-  Unit tests: `src/components/age-profile/cooldown.test.ts` (round-trip,
-  still-cooling-after-remount, expired/malformed → null + key deleted,
-  expiry cleanup). Registered in package.json's test script.
-- `src/components/age-profile/GrownUpGate.tsx`: hydrates `cooldownUntil`
-  from storage at mount (tick effect computes the live countdown from it,
-  so the restored path is identical — stale timestamps self-resolve on the
-  first tick); cooldown UI text unchanged ("Take a breath — try again in N
-  seconds." + the no-permanent-lockout reassurance, no punishment tone).
-  Mount-time focus now targets the cancel button when resuming a cooldown
-  (the input isn't rendered during cooldown, so focus never lands on body).
-- **Preserved exactly as written:** `newQuestion()` two-digit operands
-  r(11,19)/r(12,29); `check()` early-returns when cooling (a 4th submit
-  during cooldown is silently ignored); the digits/Backspace/Enter keyboard
-  path and the Enter-on-`HTMLButtonElement` double-count guard; all aria
-  roles (`dialog`/`aria-modal`/`aria-labelledby`, cooldown `role="status"`,
-  error `role="alert"`, question `aria-live="polite"`).
-- **Symmetric gating — verified by construction (no runtime test seam in
-  the node:test harness; no DOM renderer configured):** `AgeProfileSettings`
-  is the ONLY caller of the store mutations (`setBand`, `requestChange`,
-  `resetProfile`), and its flow unconditionally starts at the `gate` step
-  (GrownUpGate) before any picker/confirm — so EVERY effective band change,
-  upgrade OR downgrade, passes the math gate. Both entry surfaces (home
-  footer "For grown-ups" link and LockedLoop's `onGrownUpOpen`) open the
-  same `openAgeSettings` flow; `applyPendingAtBoundary()` in game-app.tsx
-  only applies changes that already passed the gate at staging time.
+## Done (fix squad, 2026-10-09 — PR #111: cloud visibility, walker a11y, sip sync)
 
-## Deferred (do not implement on this branch)
-- Consuming `pinsPerRun` in any run loop; per-band progress indicators;
-  second gated surface / third grown-ups entry point; duel 60s countdown;
-  %-normalized per-run results display (scoring surface is separate);
-  COPPA band-id event-payload check.
+Files changed:
+- `src/components/grandpa-coffee-run.css`
+- `src/components/grandpa-coffee-run.tsx`
+- `tests/e2e/grandpa-tasting-tour.spec.ts` (new regression test + stale
+  header-comment fixes)
 
-## Gates (local, run on this branch)
-- `npx tsc --noEmit` — clean
-- Related unit tests (age-profile rungs/difficulty/store + cooldown) — green
-- `node scripts/lint-cards.mjs` — GATE PASSED
-- `npm run build:pages` — green
+### Fix 1 — cloud visible + sensibly positioned during the tour
+Empirically verified in Chromium (390×844, touch): at HEAD the cloud was
+ALREADY visible during the tour (opacity 1, translate(-50%,0)) — the
+"invisible whole walk" premise was stale; the mobile media query
+(`max-width: 1023.5px`) has forced it visible since 7de5cc8. BUT the cloud
+was clipped ~46px off the right viewport edge (centered on the parked
+walker at the strip's right edge; screenshot proved the cut-off copy).
+- Added `.grandpa-scene[data-mode="tour"] .grandpa-donation-bubble` reveal
+  rule mirroring the seated reveal's transition (mode-scoped guarantee).
+- Right-anchored the bubble to the walker (`left:auto; right:-8px`) and
+  re-seated the tail over grandpa (`right:40px`) in the tour-mode rule AND
+  the mobile media-query rule; added a mobile seated override neutralizing
+  the desktop `translate(-50%)` so the tour→seated handoff doesn't jump.
+- Stale CSS header comment updated (sip ~0.8s, 10s cap, no review stop,
+  cloud visible from the first beat, walker not a tap target mid-tour).
+
+### Fix 2 — walker non-interactive during tour (option A)
+- `walkerInteractive = showCloud && mode !== "tour"`: no role/tabIndex/
+  onClick/onKeyDown on the parked strip walker while the tour runs.
+- CSS: `.grandpa-scene[data-mode="tour"] .grandpa-walker { pointer-events:
+  none; cursor: default; }` — taps fall through; the bubble keeps
+  `pointer-events:auto` so its ask button stays the gate entry.
+- Stale tsx comment ("tappable walker is the parked strip figure…")
+  rewritten to describe the new behavior.
+- Accessibility Auditor sign-off 2026-10-09: "Option (a) approved. No focus
+  moves into hidden content (WCAG 2.4.3/3.2.1 intact — openCloudGate's
+  focus-Continue is unreachable mid-walk); tab order is Skip → visible ask
+  button; no keyboard trap; pointer-events can't dead-end taps; cursor no
+  longer promises a tap. Screen-reader order is coherent: tour layer is
+  aria-hidden, the walker figure's SVGs are aria-hidden, the cloud ask
+  button carries its label."
+
+### Fix 3 — sip animation synced to the 800ms dwell
+- CSS `sip-drink` 1.2s → 0.8s (matches `TOUR_SIP_MS`). Game Designer call
+  2026-10-09: 800ms still reads as a deliberate sip (raise/hold/lower
+  keyframes intact); extending the dwell would push against the 10s tour
+  cap — tour budget wins. Stale "1.2s" comments updated in CSS + spec header.
+
+### Gates
+- `npx tsc --noEmit` clean
+- `npm test` 977/977 pass
+- `node scripts/lint-cards.mjs` GATE PASSED
+- `npm run build:pages` green (rebuilt with `VITE_KOFI_URL` for e2e)
+- Playwright `grandpa-tour` project: 23/25 pass — the 2 failures
+  ("walker stops at each option", "no snap-to-top") also fail on the clean
+  base ce193c8 (verified via stash + rebuild): pre-existing timing flakes
+  under VM load, unrelated to this change. The NEW regression test
+  ("tour: cloud visible from the first beat, walker not a tap target
+  mid-walk") passes.
+- Playwright `mobile` project (grandpa-coffee-run.mobile): 3/3 pass —
+  incl. the gate-viewport assertion (gate ≤392px) the positioning fix
+  addresses.
+- Playwright `desktop` project: 7/8 pass — "walk has no cloud, kettle…"
+  misses the transient kettle beat; also fails on the clean base
+  (verified via stash + rebuild): pre-existing flake, unrelated (this
+  change doesn't touch the beat machine or desktop strip mode).
+- Playwright `reduced` project: 1/2 pass — "seated and fully static"
+  fails the walker-left-of-Comet assertion (1408 > 1072); also fails on
+  the clean base (verified via stash + rebuild): pre-existing, unrelated
+  (reduced project is 1440px wide — the mobile media-query changes can't
+  apply; tour mode never runs under reduced motion).
+- Live Chromium verification (dev server, 390×844 touch): mid-tour the
+  cloud is opacity 1/visible at x=146..366 (fully on-screen); the walker
+  has no role/tabindex, pointer-events none, cursor default; the sip
+  animation runs `sip-drink` at 0.8s × 1.
+
+## Done (BLOCK 4, E2E test engineer, 2026-10-09 — dedicated tour-cloud mobile spec)
+
+New: `tests/e2e/kofi-tour-cloud.mobile.spec.ts` (runs in the "mobile"
+project: 390×844, touch, isMobile). 6 tests, all green first run
+(6/6, 1.3m, `npx tsc --noEmit` clean):
+1. cloud visible mid-walk + fully on-screen — opacity polls to 1,
+   `visibility: visible`, bbox within 390px (regression for the ~46px
+   right-edge clip)
+2. locked ask copy mid-walk — `Grown-ups — buy me a coffee? ☕` +
+   `Your support keeps Meridian free for kids` (read-only assertions)
+3. strip walker not a tap target mid-walk — no `role="button"`, no
+   `tabindex`, pointer-events `none`, forced click leaves
+   `data-cloud="ask"` and opens no gate
+4. touch tap on the cloud's ask button mid-tour opens the grown-up gate —
+   `data-testid="grandpa-cloud-gate"` visible, `role="dialog"`, focus lands
+   on Continue
+5. sip runs the full 800ms dwell — `.mug-arm` `animation-name: sip-drink`,
+   `animation-duration: 0.8s`, tour advances `data-stop-index` 0 → 1 on its
+   own (no mid-drink snap)
+6. tour completes cleanly — `data-beat="seated"`, `data-tour-stage="settled"`,
+   cloud visible, on-screen, ask copy intact
+
+No kid-facing copy invented; the two locked strings are asserted verbatim.
+Flakiness: none observed (6/6 first pass); the mid-tour tap window is wide
+(~9s walk).
+
+### Follow-ups for the mobile QA check (not in scope, noted)
+- Desktop seated cloud has the same centering overflow (~36px clip at the
+  viewport's right edge) — pre-existing, desktop-only, left untouched.
+- Visual check on a real phone: cloud sits right-anchored above the parked
+  walker in the strip band, tail pointing at grandpa, fully on-screen at
+  360/390px; tap the walker mid-walk does nothing; tap the cloud opens the
+  gate; sip reads as one deliberate drink at each stop.

@@ -6,10 +6,11 @@ import { serveBuiltArtifact } from "./helpers";
  *
  * Beats: compass-rose origin (~1s) → the tasting tour (grandpa walks a
  * dotted S-trail down the gutters, STOPS at each option — difficulty,
- * GeoDetective, editions, review when present — turns to look, sips ~1.2s,
- * walks on; silent, untappable mid-walk, hard-capped at 25s) → the kettle
+ * GeoDetective, editions — turns to look, sips ~0.8s,
+ * walks on; silent, untappable mid-walk, hard-capped at 10s) → the kettle
  * top-up at the pour waypoint above the park strip → settle (seated on the
- * bench, trail fades to ~18%, donation cloud with Veeresh's exact copy).
+ * bench, trail fades to ~18%, donation cloud with the Game Designer's copy,
+ * visible from the first beat of the walk).
  *
  * Covers: trail clearance (never inside an interactive rect +2px) across
  * 360/390px × dark/light × tour shown/hidden × deck present/absent; stops
@@ -246,15 +247,16 @@ test("walker stops at each option, looks, sips, walks on", async ({
   const walker = page.getByTestId("grandpa-tour-walker");
 
   for (let i = 0; i < stopIds.length; i++) {
-    // The walker dwells at stop i (sip phase, 1.2s). Sample the bounding box
+    // The walker dwells at stop i (sip phase, 0.8s). Sample the bounding box
     // twice inside the sip window — the walk bob (±3px) is the only expected
     // motion — and confirm the phase is still "sip" so a late poll can't
-    // mistake the next leg's first steps for the dwell.
+    // mistake the next leg's first steps for the dwell. The 250ms gap keeps
+    // both samples inside the 800ms sip window even under load.
     await expect(tour).toHaveAttribute("data-stop-index", String(i), {
       timeout: 60_000,
     });
     const box1 = await walker.boundingBox();
-    await page.waitForTimeout(450);
+    await page.waitForTimeout(250);
     const box2 = await walker.boundingBox();
     await expect(tour).toHaveAttribute("data-tour-phase", "sip", {
       timeout: 2_000,
@@ -341,7 +343,7 @@ test("top-up: the kettle pours and the mug fills at the pour waypoint", async ({
   expectCleanConsole(errors);
 });
 
-test("settle: faint trail, Veeresh's cloud copy, gate workflow", async ({
+test("settle: faint trail, Game Designer cloud copy, gate workflow", async ({
   page,
 }) => {
   // Stub window.open to capture the Ko-fi call without hitting the network.
@@ -373,7 +375,7 @@ test("settle: faint trail, Veeresh's cloud copy, gate workflow", async ({
     .toBeLessThan(0.3);
   expect(await trailOpacityNow()).toBeGreaterThan(0.1);
 
-  // Veeresh's exact copy (2026-10-07, parent-directed).
+  // Game Designer's kid-friendly copy.
   const bubble = page.getByTestId("grandpa-donation-bubble");
   await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
   await expect(bubble).toContainText("Your support keeps Meridian free for kids");
@@ -383,7 +385,7 @@ test("settle: faint trail, Veeresh's cloud copy, gate workflow", async ({
   await expect(bubble).toHaveAttribute("data-cloud", "gate");
   const gate = page.getByTestId("grandpa-cloud-gate");
   await expect(gate).toBeVisible();
-  await expect(gate).toContainText("Ask a grown-up!");
+  await expect(gate).toContainText("You're leaving Meridian to visit Ko-fi. Ask a grown-up!");
   await page.getByTestId("grandpa-cloud-continue").click();
   const opened = await page.evaluate(
     () => (window as unknown as { __opened: unknown[] }).__opened,
@@ -407,6 +409,52 @@ test("settle: faint trail, Veeresh's cloud copy, gate workflow", async ({
   await page.keyboard.press("Escape");
   await expect(bubble).toHaveAttribute("data-cloud", "ask");
   expect(page.url()).toBe(APP);
+  expectCleanConsole(errors);
+});
+
+test("tour: cloud visible from the first beat, walker not a tap target mid-walk", async ({
+  page,
+}) => {
+  const errors = await loadHome(page);
+  const scene = page.getByTestId("grandpa-scene");
+  await expect(scene).toHaveAttribute("data-mode", "tour", { timeout: 30_000 });
+  // Fix 1: the ask is visible DURING the walk, not only once seated.
+  const bubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
+  const vis = await bubble.evaluate((el) => {
+    const s = getComputedStyle(el);
+    return { opacity: parseFloat(s.opacity), visibility: s.visibility };
+  });
+  expect(vis.opacity, "cloud fully opaque mid-walk").toBeGreaterThan(0.9);
+  expect(vis.visibility, "cloud not visibility-hidden mid-walk").toBe("visible");
+  // Fix 1: the cloud sits fully on-screen next to the parked walker —
+  // a centered bubble hung ~46px off the viewport at 390px wide.
+  const bbox = await bubble.boundingBox();
+  expect(bbox, "cloud has a bounding box").not.toBeNull();
+  const vp = page.viewportSize()!;
+  expect(bbox!.x, "cloud left edge on-screen").toBeGreaterThanOrEqual(-2);
+  expect(
+    bbox!.x + bbox!.width,
+    "cloud right edge on-screen",
+  ).toBeLessThanOrEqual(vp.width + 2);
+  // Fix 2: the parked strip walker is not interactive mid-walk — no role,
+  // no tabindex, no pointer-events, so a tap can never open a hidden
+  // dialog or steal focus. The cloud's own ask button stays the gate entry.
+  const walker = page.getByTestId("grandpa-walker");
+  await expect(walker).not.toHaveAttribute("role", "button");
+  await expect(walker).not.toHaveAttribute("tabindex", "0");
+  const pe = await walker.evaluate((el) => getComputedStyle(el).pointerEvents);
+  expect(pe, "walker lets taps pass through mid-walk").toBe("none");
+  await expect(page.getByTestId("grandpa-bubble-ask")).toBeVisible();
+  // Fix 3: the sip keyframes are synced to the 800ms dwell — no mid-drink snap.
+  const tour = page.getByTestId("grandpa-tour");
+  await expect(tour).toHaveAttribute("data-tour-phase", "sip", {
+    timeout: 30_000,
+  });
+  const sipDur = await page
+    .locator(".tour-layer .mug-arm")
+    .evaluate((el) => getComputedStyle(el).animationDuration);
+  expect(sipDur, "sip-drink matches TOUR_SIP_MS").toBe("0.8s");
   expectCleanConsole(errors);
 });
 
@@ -600,7 +648,7 @@ test("Comet plush sits static on the bench; ask copy unchanged", async ({
     (el) => getComputedStyle(el).animationName,
   );
   expect(animName, "plush has no CSS animation").toBe("none");
-  // Veeresh's ask copy is unchanged.
+  // The Game Designer's ask copy is unchanged.
   const bubble = page.getByTestId("grandpa-donation-bubble");
   await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
   await expect(bubble).toContainText("Your support keeps Meridian free for kids");

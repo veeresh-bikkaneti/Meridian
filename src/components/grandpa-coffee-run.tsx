@@ -20,22 +20,25 @@ import {
  *     Meridian banner.
  *  1. The tasting tour — grandpa walks a dotted S-trail (2px, 6/6 dash,
  *     round caps, brass) down the page gutters. At EACH option he STOPS,
- *     turns to look at it, sips his coffee (~1.2s), then walks on. Stop
- *     order: difficulty picker → GeoDetective card → edition cards →
- *     review deck (when present). The trail weaves AROUND cards — never
+ *     turns to look at it, sips his coffee (~0.8s), then walks on. Stop
+ *     order: difficulty picker → GeoDetective card → edition cards. The trail weaves AROUND cards — never
  *     behind, never on — keeping ≥16px from every interactive rect
  *     (verified by a sampling gate in grandpa-tour.ts; violations step down
- *     the fallback ladder). Silent: no ask, no cloud during the walk, and
- *     the walker is NOT tappable mid-walk (moving tap targets fail a11y).
- *     The whole journey is hard-capped at 25s.
- *  2. Top-up — at the pour waypoint just above the park strip he holds up
+ *     the fallback ladder). The strip's donation cloud (grown-up lock) is
+ *     visible in the closing band from the start of the walk. The parked
+ *     strip figure is NOT tappable during the tour (moving tap targets
+ *     still avoided, and a tap must never open a hidden dialog: the
+ *     cloud's own ask button is the gate entry while the tour runs, and
+ *     the Skip control is the tour plane's interactive element). Outside
+ *     the tour the parked walker is tappable as before. The whole journey
+ *     is hard-capped at 10s. *  2. Top-up — at the pour waypoint just above the park strip he holds up
  *     his mug and the existing gooseneck-kettle dolly-vertigo pour plays
  *     (scale 0.25→2.6x, spout-tip transform origin, visible fill + steam
  *     burst, ~2.8s). Wordless.
  *  3. Settle — he sits on the bench facing the viewer, beside a tiny
  *     static Comet plush (Veeresh 2026-10-07). The
  *     trail fades to ~18% over ~2s. The donation cloud fades in with
- *     Veeresh's exact copy ("Grown-ups — buy me a coffee? ☕" /
+ *     Veeresh's locked copy ("Grown-ups — buy me a coffee? ☕" /
  *     "Your support keeps Meridian free for kids"). Tapping grandpa OR the
  *     cloud opens the "ask a grown-up" gate INSIDE THE SAME CLOUD — Continue
  *     opens Ko-fi in a new tab and the cloud reverts; Cancel/Esc reverts
@@ -84,11 +87,11 @@ const MOBILE_QUERY = "(max-width: 1023.5px)";
 const TOUR_LAST_DATE_KEY = "meridian.grandpaTour.lastDate";
 const TOUR_ASK_SHOWN_KEY = "meridian.grandpaTour.askShown";
 /** Total journey hard cap, measured from the first step. */
-const TOUR_JOURNEY_CAP_MS = 25_000;
+const TOUR_JOURNEY_CAP_MS = 12_000;
 /** Normal journey target — comfortably under the cap. */
-const TOUR_TARGET_MS = 20_000;
+const TOUR_TARGET_MS = 6_000;
 /** Sip dwell at each tasting stop. */
-const TOUR_SIP_MS = 1200;
+const TOUR_SIP_MS = 800;
 /** Top-up pour — matches the kettle-drop keyframes. */
 const TOUR_POUR_MS = 2800;
 /** Tour figure size (smaller than the strip's 64px walker). */
@@ -749,12 +752,10 @@ function measureTour(): TourMeasurements | null {
   const geodetective = pick("tour-stop-geodetective");
   const editions = pick("tour-stop-editions");
   if (!difficulty || !geodetective || !editions) return null;
-  const review = pick("tour-stop-review");
   const stops: TourStop[] = [
     { key: "difficulty", rect: difficulty },
     { key: "geodetective", rect: geodetective },
     { key: "editions", rect: editions },
-    ...(review ? [{ key: "review" as const, rect: review }] : []),
   ];
   const interactives: DocRect[] = [];
   main
@@ -834,7 +835,7 @@ function TourLayer({
 
   // Walk engine — JS-driven position along the path with sip dwell at each
   // stop and the kettle top-up at the pour waypoint. Time-based (not
-  // frame-based) so the 25s hard cap holds even when frames drop.
+  // frame-based) so the 10s hard cap holds even when frames drop.
   useEffect(() => {
     if (stage !== "walk" || !geometry) return;
     const path = pathRef.current;
@@ -960,7 +961,7 @@ function TourLayer({
       last = now;
       // Glue the document-space layer to the scrolled page.
       doc.style.transform = `translateY(${-window.scrollY}px)`;
-      // Hard cap: the journey never runs past 25s.
+      // Hard cap: the journey never runs past 10s.
       if (now - t0 > TOUR_JOURNEY_CAP_MS) {
         finish();
         return;
@@ -1424,11 +1425,27 @@ export function GrandpaCoffeeRun() {
   // Fail-closed: no Ko-fi URL configured → render nothing.
   if (!KOFI_URL) return null;
 
-  // The cloud shows: in "strip" mode always (previous behavior); once
-  // settled on mobile, once per session.
+  // The cloud shows: in "strip" mode always (previous behavior); on mobile
+  // also during the tasting tour (the grown-up lock is discoverable from the
+  // first beat) and once settled — both once per session via askVisible.
   const showCloud =
-    mode === "strip" ? true : mode === "seated" ? !isMobile || askVisible : false;
-  const walkerInteractive = showCloud;
+    mode === "strip"
+      ? true
+      : mode === "tour"
+        ? isMobile && askVisible
+        : mode === "seated"
+          ? !isMobile || askVisible
+          : false;
+  // Fix 2, option (a) — Accessibility Auditor sign-off 2026-10-09: the
+  // parked strip walker is NOT interactive during the tour. A tap on it
+  // used to call openCloudGate() and move focus into the cloud's Continue
+  // button while the cloud was not yet visible — a focus steal with zero
+  // visual feedback. During the tour the Skip control owns the tour plane
+  // and the (now visible) cloud's own ask button is the gate entry, so the
+  // walker sheds role/tabIndex/onClick entirely: no focus target, no
+  // keyboard trap, sane tab order (Skip → ask button), and the tour-mode
+  // CSS drops pointer-events so taps can't dead-end on the figure.
+  const walkerInteractive = showCloud && mode !== "tour";
 
   return (
     <>
@@ -1570,8 +1587,8 @@ export function GrandpaCoffeeRun() {
 
           {/* The cloud — the finale ask, or the in-cloud gate workflow.
               Tapping grandpa OR this cloud swaps it to the gate; the whole
-              flow lives here so the UI never gets crowded. Veeresh's exact
-              copy (2026-10-07, parent-directed). */}
+              flow lives here so the UI never gets crowded. Copy per the Game
+              Designer's kid-friendly brief. */}
           {showCloud && (
             <div
               className="grandpa-donation-bubble"
@@ -1602,7 +1619,7 @@ export function GrandpaCoffeeRun() {
                     onKeyDown={onGateKeyDown}
                   >
                     <p className="bubble-gate-title">
-                      You&rsquo;re leaving Meridian to visit Ko-fi. Ask a grown-up!
+                      You're leaving Meridian to visit Ko-fi. Ask a grown-up!
                     </p>
                     <p className="bubble-gate-sub">
                       Meridian is free forever — every game, every map, every mystery.

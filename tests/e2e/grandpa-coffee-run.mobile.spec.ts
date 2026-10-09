@@ -121,7 +121,7 @@ test("touch tap opens the in-cloud grown-up workflow", async ({ page }) => {
   await expect(bubble).toHaveAttribute("data-cloud", "gate");
   const gate = page.getByTestId("grandpa-cloud-gate");
   await expect(gate).toBeVisible();
-  await expect(gate).toContainText("Ask a grown-up!");
+  await expect(gate).toContainText("You're leaving Meridian to visit Ko-fi. Ask a grown-up!");
   // The gate stays inside the viewport horizontally at phone width.
   const bbox = await gate.boundingBox();
   expect(bbox).not.toBeNull();
