@@ -430,13 +430,18 @@ export default function StorytellerHomeHost({
     if (!tutorialInviteVisible && !startedRef.current) {
       startedRef.current = true;
       setStarted(true);
+      // If a tour owns the stage, don't narrate under it — the post-tour
+      // flow (return line → greeting) handles the greeting when the tour
+      // ends. Otherwise the greeting audio would play over the tour and
+      // mismatch the return-line caption.
+      if (yielded) return;
       if (isSoundEnabled() && assetsRef.current.greetAudio) {
         gestureDoneRef.current = true;
         showBubble(greetingText, null);
         beginGreetingAudio();
       }
     }
-  }, [tutorialInviteVisible, greetingText, showBubble, beginGreetingAudio]);
+  }, [tutorialInviteVisible, greetingText, showBubble, beginGreetingAudio, yielded]);
 
   // Tab hidden cancels the audio window (G1).
   useEffect(() => {

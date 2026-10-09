@@ -327,6 +327,47 @@ test("tour-return → greeting: after the return line's hold, the normal greetin
   expectCleanConsole(errors);
 });
 
+test("invite dismissed mid-tour: no narration under the tour", async ({ page }) => {
+  // Regression (Game Designer review 2026-10-09): dismissing the tutorial
+  // invite while a tour ran started greeting narration UNDER the tour —
+  // then the return-line caption mismatched the narrating audio.
+  // Invite shows (no tutorialSeen seed); Grandpa's auto-tour is suppressed
+  // and the tour is driven manually via events.
+  await seed(page, { "meridian.grandpaTour.lastDate": todayKey() });
+  const errors = await loadHome(page);
+  await expect(page.getByTestId("tutorial-invite")).toBeVisible({ timeout: 10_000 });
+
+  // Spy on Audio construction to detect narration attempts.
+  await page.evaluate(() => {
+    (window as any).__greetAudioAttempts = 0;
+    const OrigAudio = window.Audio;
+    (window as any).Audio = function (url?: string) {
+      (window as any).__greetAudioAttempts++;
+      return new OrigAudio(url);
+    } as any;
+    (window as any).Audio.prototype = OrigAudio.prototype;
+  });
+
+  // Tour takes the stage, then the kid dismisses the invite mid-tour.
+  await page.evaluate(() => window.dispatchEvent(new Event("meridian:tour-walk-start")));
+  await page.getByRole("button", { name: "Not now" }).click();
+
+  // No narration may start while the tour owns the stage.
+  await page.waitForTimeout(2_000);
+  const attempts = await page.evaluate(() => (window as any).__greetAudioAttempts);
+  expect(attempts, "greeting audio must not start while the tour owns the stage").toBe(0);
+
+  // Tour ends → the return line plays, then the normal greeting follows.
+  await page.evaluate(() => window.dispatchEvent(new Event("meridian:tour-walk-end")));
+  await expect
+    .poll(async () => page.getByTestId("storyteller-home-caption").textContent(), {
+      timeout: 8_000,
+    })
+    .toBe(TOUR_RETURN_LINE);
+
+  expectCleanConsole(errors);
+});
+
 test("dismiss × sound toggle: 0px² overlap @390px and @360px", async ({ page }) => {
   for (const w of [390, 360]) {
     await page.setViewportSize({ width: w, height: 844 });
