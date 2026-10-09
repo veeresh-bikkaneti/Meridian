@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import "./grandpa-coffee-run.css";
+import { BODY as COMET_BODY, BODY_LIGHT as COMET_BODY_LIGHT } from "./comet-mascot";
 import {
   buildStraightTrail,
   buildTourPath,
@@ -31,7 +32,8 @@ import {
  *     his mug and the existing gooseneck-kettle dolly-vertigo pour plays
  *     (scale 0.25→2.6x, spout-tip transform origin, visible fill + steam
  *     burst, ~2.8s). Wordless.
- *  3. Settle — he sits on the bench facing the viewer (beside Comet). The
+ *  3. Settle — he sits on the bench facing the viewer, beside a tiny
+ *     static Comet plush (Veeresh 2026-10-07). The
  *     trail fades to ~18% over ~2s. The donation cloud fades in with
  *     Veeresh's exact copy ("Grown-ups — buy me a coffee? ☕" /
  *     "Your support keeps Meridian free for kids"). Tapping grandpa OR the
@@ -1531,6 +1533,25 @@ export function GrandpaCoffeeRun() {
                 <rect x="-24" y="112" width="76" height="8" rx="3.5" fill={WOOD} stroke={INK} strokeWidth="2.5" />
                 <rect x="-18" y="120" width="7" height="18" fill={WOOD} stroke={INK} strokeWidth="2" />
                 <rect x="39" y="120" width="7" height="18" fill={WOOD} stroke={INK} strokeWidth="2" />
+              </g>
+              {/* Comet plush — a tiny STATIC toy at the bench's right end.
+                  Veeresh 2026-10-07: set dressing, zero animation; keeps the
+                  two-character warmth without motion competing with the mug.
+                  Kid-safety: the plush sits inside the walker's donation tap
+                  target, but a toy must never trigger the Ko-fi gate — taps
+                  here stop propagation and just squish (CSS :active). */}
+              <g
+                data-testid="grandpa-comet-plush"
+                className="grandpa-comet-plush"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <ellipse cx="42" cy="104" rx="7" ry="8" fill={COMET_BODY} stroke={INK} strokeWidth="1.5" />
+                <circle cx="42" cy="94" r="6.5" fill={COMET_BODY} stroke={INK} strokeWidth="1.5" />
+                <polygon points="37,89.5 38.5,84.5 40,89.5" fill={BRASS} stroke={INK} strokeWidth="1" />
+                <polygon points="44,89.5 45.5,84.5 47,89.5" fill={BRASS} stroke={INK} strokeWidth="1" />
+                <circle cx="39.8" cy="93.5" r="1.1" fill={INK} />
+                <circle cx="44.2" cy="93.5" r="1.1" fill={INK} />
+                <ellipse cx="42" cy="97" rx="3.4" ry="2.6" fill={COMET_BODY_LIGHT} />
               </g>
             </svg>
           </span>

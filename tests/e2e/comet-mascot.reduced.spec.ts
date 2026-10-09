@@ -4,9 +4,15 @@ import { serveBuiltArtifact } from "./helpers";
 /**
  * CometMascot E2E — reduced motion (1440×900, prefers-reduced-motion: reduce).
  *
- * Covers: cursor tracking is disabled (static pose), the greeting text
- * appears instantly (no word-by-word), the mascot stays tappable,
- * no console errors. Audio timing is unchanged by reduced motion.
+ * Veeresh 2026-10-07: Comet hosts from the banner — in-flow, right of the
+ * "Meridian" h1 in `.atlas-banner-row` (80px desktop). The greeting bubble
+ * opens DOWNWARD (tail up), and the auto-greeting stays quiet while the
+ * first-run tutorial invite is up (`suppressAuto`).
+ *
+ * Covers: banner position + bubble direction, cursor tracking disabled
+ * (static pose), the greeting text appears instantly (no word-by-word),
+ * the mascot stays tappable, no console errors. Audio timing is unchanged
+ * by reduced motion.
  */
 test.setTimeout(180_000);
 
@@ -16,23 +22,7 @@ test.beforeEach(async ({ context }) => {
 
 const APP = "http://127.0.0.1:4123/Meridian/";
 
-function yesterdayKey(): string {
-  const d = new Date(Date.now() - 86_400_000);
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${y}-${m}-${day}`;
-}
-
 async function loadHome(page: Page): Promise<string[]> {
-  await page.context().addInitScript((key: string) => {
-    try {
-      if (!localStorage.getItem("meridian.cometGreeting.lastDate"))
-        localStorage.setItem("meridian.cometGreeting.lastDate", key);
-    } catch {
-      /* private mode — ignore */
-    }
-  }, yesterdayKey());
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
   page.on("console", (m) => {
@@ -43,12 +33,64 @@ async function loadHome(page: Page): Promise<string[]> {
   return errors;
 }
 
+/**
+ * Dismiss the first-run tutorial invite when present. While it is up,
+ * `suppressAuto` keeps the auto-greeting quiet; dismissing it lets the
+ * greeting start (once), so greeting-dependent tests call this first.
+ */
+async function dismissInvite(page: Page): Promise<void> {
+  const invite = page.getByTestId("tutorial-invite");
+  if ((await invite.count()) > 0) {
+    await page.getByRole("button", { name: "Not now" }).click();
+    await expect(invite).toHaveCount(0);
+  }
+}
+
 function expectCleanConsole(errors: string[]): void {
   // React #418 is a pre-existing flaky hydration warning, unrelated to this
   // feature (same filter as the cleared-mode and difficulty-picker specs).
   const relevant = errors.filter((e) => !e.includes("Minified React error #418"));
   expect(relevant, `console/page errors: ${JSON.stringify(relevant)}`).toEqual([]);
 }
+
+test("banner position is in-flow with the bubble opening below", async ({
+  page,
+}) => {
+  const errors = await loadHome(page);
+  const mascot = page.getByTestId("comet-mascot");
+  const wrap = page.getByTestId("comet-wrap");
+  const banner = page.locator(".atlas-banner-row");
+  const h1 = page.locator("h1.atlas-title");
+
+  const mBox = await mascot.boundingBox();
+  const bBox = await banner.boundingBox();
+  const hBox = await h1.boundingBox();
+  expect(mBox, "mascot has a box").not.toBeNull();
+  expect(bBox, "banner row has a box").not.toBeNull();
+  expect(hBox, "h1 has a box").not.toBeNull();
+
+  // 72–88px desktop.
+  expect(mBox!.width).toBeGreaterThanOrEqual(72);
+  expect(mBox!.width).toBeLessThanOrEqual(88);
+  // In-flow, not fixed: the old bottom-right wrapper is retired.
+  expect(await wrap.evaluate((el) => getComputedStyle(el).position)).toBe("relative");
+  // Right of the h1's right edge, inside the banner row.
+  expect(mBox!.x).toBeGreaterThanOrEqual(hBox!.x + hBox!.width);
+  expect(mBox!.y).toBeGreaterThanOrEqual(bBox!.y - 2);
+  expect(mBox!.y + mBox!.height).toBeLessThanOrEqual(bBox!.y + bBox!.height + 2);
+
+  // Bubble direction: dismiss the invite so the greeting can start, then
+  // the bubble must open BELOW the emblem (tail up), not upward.
+  // Re-measure the mascot after the dismiss — the invite is in-flow, so
+  // the banner shifts up when it unmounts and the earlier box is stale.
+  await dismissInvite(page);
+  const mBox2 = await mascot.boundingBox();
+  const bubble = page.getByTestId("comet-greeting");
+  await expect(bubble).toBeVisible({ timeout: 10_000 });
+  const gBox = await bubble.boundingBox();
+  expect(gBox!.y).toBeGreaterThanOrEqual(mBox2!.y + mBox2!.height - 2);
+  expectCleanConsole(errors);
+});
 
 test("reduced motion disables cursor tracking", async ({ page }) => {
   const errors = await loadHome(page);
@@ -67,8 +109,9 @@ test("reduced motion disables cursor tracking", async ({ page }) => {
 
 test("reduced motion shows the full greeting text instantly", async ({ page }) => {
   const errors = await loadHome(page);
+  await dismissInvite(page);
   const bubble = page.getByTestId("comet-greeting");
-  await expect(bubble).toBeVisible();
+  await expect(bubble).toBeVisible({ timeout: 10_000 });
   // No word-by-word: every word is shown on the first paint.
   const hidden = await page.locator(".comet-greeting-word:not(.shown)").count();
   expect(hidden).toBe(0);

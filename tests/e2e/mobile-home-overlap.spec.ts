@@ -12,10 +12,14 @@ import { serveBuiltArtifact, evidencePath, APP_NO_IDLE } from "./helpers";
  *
  * This spec locks the reconciled fix at 360px and 390px, dark and light:
  *  (a) zero overlapping bounding boxes between the scene/walker, the
- *      donation cloud, Comet, the greeting (when open), the tour invite
- *      (when present), the edition cards, the GeoDetective case-file card,
- *      and the review-deck section — plus the walk staying inside the
- *      strip and the strip landing in-flow as the last band;
+ *      donation cloud, the banner-zone Comet emblem, the greeting (when
+ *      open), the tour invite (when present), the edition cards, the
+ *      GeoDetective case-file card, and the review-deck section — plus the
+ *      walk staying inside the strip and the strip landing in-flow as the
+ *      last band;
+ *  (a2) the banner zone itself: the in-flow Comet emblem (64px) and its
+ *      downward-opening greeting never overlap the tour invite, the sound
+ *      toggle, the h1, or the tagline;
  *  (b) every tap target in those elements measures >=44x44 and is
  *      unobstructed (elementFromPoint at its center);
  *  (c) the donation cloud becomes visible and tappable (waits for
@@ -154,14 +158,18 @@ for (const width of WIDTHS) {
           );
 
         // ---- Phase 1: the greeting, captured while open. ----
-        // The greeting is a fixed, transient bubble (auto-dismisses after
-        // ~6s text-only): it inherently floats over page content, so strict
-        // box-overlap against in-flow cards is not the invariant here. The
-        // invariants are: never clipped by the viewport (the reported bug
-        // was the bubble painted UNDER / cut off by the card), paints ABOVE
-        // card content, and never covers a CTA.
+        // The greeting is an in-flow bubble below the banner emblem (opens
+        // downward, tail up; auto-dismisses after ~6s text-only). Being
+        // in-flow, strict box-overlap against in-flow cards is not the
+        // invariant here. The invariants are: never clipped by the
+        // viewport (the reported bug was the old fixed bubble painted
+        // UNDER / cut off by the card), paints ABOVE card content, and
+        // never covers a CTA.
         // The entrance animations (home-rise, ~1.5s) must have settled or
         // card rects flap: wait for them before measuring.
+        // NOTE: on a fresh profile the tutorial invite suppresses the
+        // auto-greeting (suppressAuto), and the tour walk dismisses it —
+        // so the bubble is usually absent here; measure it only if present.
         await expect(dossier).toBeVisible();
         await page.waitForTimeout(1800);
         // The greeting may have been dismissed by Grandpa's tour walk
@@ -256,18 +264,21 @@ for (const width of WIDTHS) {
           Math.abs(sceneBox!.y - (mainBox!.y + mainBox!.height)),
           "strip starts where <main> ends",
         ).toBeLessThan(2);
-        // Nothing in-flow follows the strip (only the fixed Comet wrapper).
-        const followersFixed = await page.evaluate(() => {
+        // Nothing in-flow follows the strip: Comet's old fixed wrapper is
+        // retired (it hosts from the header now), so the strip is simply
+        // the last element on the page.
+        const followers = await page.evaluate(() => {
           const s = document.querySelector(".grandpa-scene");
-          if (!s) return false;
+          if (!s) return ["no scene"];
+          const out: string[] = [];
           let el = s.nextElementSibling;
           while (el) {
-            if (getComputedStyle(el).position !== "fixed") return false;
+            out.push(`${el.tagName.toLowerCase()}.${String(el.className)}`);
             el = el.nextElementSibling;
           }
-          return true;
+          return out;
         });
-        expect(followersFixed, "strip is the last in-flow band").toBe(true);
+        expect(followers, "strip is the last in-flow band").toEqual([]);
 
         const bubbleBox = await bubble.boundingBox();
         const dossierBox = await dossier.boundingBox();
@@ -316,41 +327,33 @@ for (const width of WIDTHS) {
           expect(vGap(lastCard, sceneBox!), "editions → park strip gap").toBeGreaterThanOrEqual(31);
         }
 
-        // ---- Phase 4: scrolled to the bottom — the strip's interactive
-        // content never scrolls under Comet's fixed footprint (the
-        // page-bottom clearance invariant). The scene's border box
-        // intentionally extends into Comet's zone (it *is* the clearance —
-        // empty by design, pointer-events: none), so the strict checks
-        // target the walker and the cloud.
-        await page.evaluate(() =>
-          window.scrollTo(0, document.documentElement.scrollHeight),
+        // ---- Phase 4: the banner zone is the new overlap territory.
+        // Comet retired its fixed bottom-right footprint — it hosts from
+        // the header now (in-flow, right of the h1), so the old page-bottom
+        // clearance checks are gone. The invariants: the emblem and the
+        // (in-flow, downward-opening) greeting never touch the sound
+        // toggle, the h1, the tagline, or the tour invite.
+        await cometWrap.evaluate((el) =>
+          el.scrollIntoView({ block: "start", inline: "center", behavior: "instant" as ScrollBehavior }),
         );
         await page.waitForTimeout(300);
-        const cometBox = await cometWrap.boundingBox();
-        const wBox2 = await walker.boundingBox();
-        const bBox2 = await bubble.boundingBox();
-        noOverlap("grandpa walker", wBox2, "Comet wrap", cometBox);
-        noOverlap("donation cloud", bBox2, "Comet wrap", cometBox);
-        // The strip's interactive content keeps a clear gap from Comet.
-        const gapToComet = cometBox!.x - (bBox2!.x + bBox2!.width);
-        expect(gapToComet, "cloud → Comet clear gap").toBeGreaterThanOrEqual(7);
-        // The walker's bottom edge stays above Comet's top edge: the
-        // clearance is real, not just non-overlapping.
-        expect(
-          wBox2!.y + wBox2!.height,
-          "walker bottom above Comet top",
-        ).toBeLessThanOrEqual(cometBox!.y - 1);
-        // No other in-flow element may sit under the fixed corner either.
-        const inflowBoxes: Array<[string, Box | null]> = [
-          ["GeoDetective dossier", await dossier.boundingBox()],
-          ["tour invite", (await invite.count()) > 0 ? await invite.boundingBox() : null],
-          ["review deck", (await deck.count()) > 0 ? await deck.boundingBox() : null],
-        ];
-        for (let i = 0; i < cardCount; i++) {
-          inflowBoxes.push([`edition card ${i}`, await cards.nth(i).boundingBox()]);
-        }
-        for (const [name, box] of inflowBoxes) {
-          if (box) noOverlap(name, box, "Comet wrap", cometBox);
+        const cWrapBox = await page.locator(".comet-emblem").boundingBox();
+        const soundBox = await page.getByTestId("sound-toggle").boundingBox();
+        const h1Box = await page.locator("h1.atlas-title").boundingBox();
+        const taglineBox = await page.locator(".atlas-tagline").boundingBox();
+        noOverlap("Comet emblem", cWrapBox, "sound toggle", soundBox);
+        noOverlap("Comet emblem", cWrapBox, "h1", h1Box);
+        noOverlap("Comet emblem", cWrapBox, "tagline", taglineBox);
+        const inviteBox2 = (await invite.count()) > 0 ? await invite.boundingBox() : null;
+        if (inviteBox2) noOverlap("Comet emblem", cWrapBox, "tour invite", inviteBox2);
+        // The greeting only opens once the invite is dismissed (suppressAuto)
+        // and the tour walk dismisses it — measure it only when present.
+        const gBox2 = (await greeting.count()) > 0 ? await greeting.boundingBox() : null;
+        if (gBox2) {
+          noOverlap("greeting", gBox2, "sound toggle", soundBox);
+          noOverlap("greeting", gBox2, "h1", h1Box);
+          noOverlap("greeting", gBox2, "tagline", taglineBox);
+          if (inviteBox2) noOverlap("greeting", gBox2, "tour invite", inviteBox2);
         }
 
         // No horizontal overflow with the strip, cloud, and greeting present.
@@ -358,6 +361,66 @@ for (const width of WIDTHS) {
           () => document.documentElement.scrollWidth - window.innerWidth,
         );
         expect(overflowX, "no horizontal overflow").toBeLessThanOrEqual(1);
+
+        expectCleanConsole(errors);
+      });
+
+      test("(a2) banner zone: Comet emblem + bubble never overlap banner chrome", async ({
+        page,
+      }) => {
+        // Veeresh 2026-10-07: Comet hosts from the banner — in-flow, right
+        // of the h1. The banner zone is the new overlap territory: the
+        // emblem (64px) and the downward-opening greeting must not touch
+        // the tour invite, the sound toggle, the h1, or the tagline.
+        const errors = await loadHome(page);
+        const wrap = page.getByTestId("comet-wrap");
+        // The layout box is the emblem lockup: the mascot SVG overflows it
+        // by design (overflow: visible tail/sparkle), and the wrap contains
+        // the bubble — neither is the right "emblem" box.
+        const emblem = page.locator(".comet-emblem");
+        const sound = page.getByTestId("sound-toggle");
+        const h1 = page.locator("h1.atlas-title");
+        const tagline = page.locator(".atlas-tagline");
+        const invite = page.getByTestId("tutorial-invite");
+        const greeting = page.getByTestId("comet-greeting");
+        await expect(wrap).toBeVisible();
+        // The entrance animations (home-rise, ~1.5s) must have settled.
+        await page.waitForTimeout(1800);
+
+        // Emblem vs invite first — the invite suppresses the greeting
+        // (suppressAuto), so it is up on a fresh profile.
+        const eBox = await emblem.boundingBox();
+        const soundBox = await sound.boundingBox();
+        const h1Box = await h1.boundingBox();
+        const taglineBox = await tagline.boundingBox();
+        if ((await invite.count()) > 0) {
+          noOverlap("Comet emblem", eBox, "tour invite", await invite.boundingBox());
+        }
+        noOverlap("Comet emblem", eBox, "sound toggle", soundBox);
+        noOverlap("Comet emblem", eBox, "h1", h1Box);
+        noOverlap("Comet emblem", eBox, "tagline", taglineBox);
+
+        // Dismiss the invite → the greeting starts once, opening below the
+        // emblem. It must stay clear of the banner chrome too.
+        const notNow = page.getByRole("button", { name: "Not now" });
+        if ((await notNow.count()) > 0) {
+          await notNow.click();
+        }
+        await expect(greeting).toBeVisible({ timeout: 10_000 });
+        await page.waitForTimeout(450);
+        // Re-measure: the invite is in-flow, so the banner shifts up when
+        // it unmounts.
+        const eBox2 = await emblem.boundingBox();
+        const gBox = await greeting.boundingBox();
+        expect(gBox!.y, "bubble opens below the emblem").toBeGreaterThanOrEqual(
+          eBox2!.y + eBox2!.height - 2,
+        );
+        const soundBox2 = await sound.boundingBox();
+        const h1Box2 = await h1.boundingBox();
+        const taglineBox2 = await tagline.boundingBox();
+        noOverlap("greeting", gBox, "sound toggle", soundBox2);
+        noOverlap("greeting", gBox, "h1", h1Box2);
+        noOverlap("greeting", gBox, "tagline", taglineBox2);
 
         expectCleanConsole(errors);
       });
@@ -441,21 +504,58 @@ for (const width of WIDTHS) {
       test("(b2) greeting speaker is a 44px unobstructed target (sound off)", async ({
         page,
       }) => {
+        // No tour walk: it auto-scrolls (skewing elementFromPoint probes)
+        // and dismisses the transient greeting when the walk starts.
+        await page.addInitScript(() => {
+          try {
+            const d = new Date();
+            const k = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(
+              d.getDate(),
+            ).padStart(2, "0")}`;
+            localStorage.setItem("meridian.grandpaTour.lastDate", k);
+          } catch {
+            /* private mode — ignore */
+          }
+        });
         const errors = await loadHome(page, { soundOff: true });
+        // The tutorial invite suppresses the auto-greeting (suppressAuto):
+        // dismiss it so the greeting can start.
+        const notNow = page.getByRole("button", { name: "Not now" });
+        if ((await notNow.count()) > 0) {
+          await notNow.click();
+        }
+        await expect(page.getByTestId("tutorial-invite")).toHaveCount(0);
         const speaker = page.getByTestId("comet-greeting-speaker");
         await expect(speaker).toBeVisible({ timeout: 20_000 });
         // The bubble scales in over 220ms; measuring mid-animation reads a
         // shrunken box. Wait it out (the text-only greeting lives ~6s).
         await page.waitForTimeout(450);
-        const box = await speaker.boundingBox();
-        expect(box, "speaker has a box").not.toBeNull();
-        expect(box!.width, "speaker width >= 44px").toBeGreaterThanOrEqual(43.5);
-        expect(box!.height, "speaker height >= 44px").toBeGreaterThanOrEqual(43.5);
+        await speaker.evaluate((el) =>
+          el.scrollIntoView({ block: "center", inline: "center", behavior: "instant" as ScrollBehavior }),
+        );
+        // Atomic probe: box + elementFromPoint in one evaluate, so no
+        // scroll can interleave between the two reads.
+        const probe = await speaker.evaluate((node) => {
+          const r = (node as HTMLElement).getBoundingClientRect();
+          const cx = r.left + r.width / 2;
+          const cy = r.top + r.height / 2;
+          const top = document.elementFromPoint(cx, cy);
+          return {
+            ok: !!top && (node === top || node.contains(top)),
+            top: top ? top.outerHTML.slice(0, 120) : "none",
+            x: r.x,
+            y: r.y,
+            w: r.width,
+            h: r.height,
+          };
+        });
+        expect(probe.w, "speaker width >= 44px").toBeGreaterThanOrEqual(43.5);
+        expect(probe.h, "speaker height >= 44px").toBeGreaterThanOrEqual(43.5);
         // Not clipped by the viewport (it overhangs the bubble corner).
-        expect(box!.x, "speaker left edge").toBeGreaterThanOrEqual(-1);
-        expect(box!.y, "speaker top edge").toBeGreaterThanOrEqual(-1);
-        expect(box!.x + box!.width, "speaker right edge").toBeLessThanOrEqual(width + 1);
-        await expectTappable(page, speaker, "greeting speaker");
+        expect(probe.x, "speaker left edge").toBeGreaterThanOrEqual(-1);
+        expect(probe.y, "speaker top edge").toBeGreaterThanOrEqual(-1);
+        expect(probe.x + probe.w, "speaker right edge").toBeLessThanOrEqual(width + 1);
+        expect(probe.ok, `greeting speaker is obstructed (top: ${probe.top})`).toBe(true);
         expectCleanConsole(errors);
       });
 

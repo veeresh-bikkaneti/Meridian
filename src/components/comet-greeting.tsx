@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from "react";
+import { createPortal } from "react-dom";
 import { Volume2 } from "lucide-react";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import {
@@ -18,7 +19,8 @@ import {
 //    static bubble.
 // 4. Dismissal: greeting end + 3s (6s for text-only); tap dismisses
 //    instantly; leaving the home page unmounts (and silences) the greeting.
-// 5. Frequency: once per local day via meridian.cometGreeting.lastDate.
+// 5. Frequency: every home-page visit (the once-per-day gate was retired
+//    2026-10-06; meridian.cometGreeting.lastDate is no longer read/written).
 // 6. Reduced motion: full text instantly, ≤150ms opacity fade on the bubble,
 //    no bounce/wiggle; audio timing unchanged.
 const SYNC_WINDOW_MS = 3000;
@@ -30,7 +32,18 @@ const DISMISS_AFTER_SPEAKER_MS = 2000;
 
 type AudioState = "idle" | "playing" | "ended" | "failed";
 
-export function CometGreeting({ onOpenChange }: { onOpenChange?: (open: boolean) => void }) {
+export function CometGreeting({
+  onOpenChange,
+  suppressAuto = false,
+}: {
+  onOpenChange?: (open: boolean) => void;
+  /**
+   * Veeresh 2026-10-07: while the first-run tutorial invite is visible, the
+   * auto-greeting stays quiet — the two popups must never compete. When it
+   * flips false, the greeting starts (once).
+   */
+  suppressAuto?: boolean;
+}) {
   const [visible, setVisible] = useState(false);
   const [wordsShown, setWordsShown] = useState(0);
   const [soundOn, setSoundOn] = useState(true);
@@ -141,6 +154,16 @@ export function CometGreeting({ onOpenChange }: { onOpenChange?: (open: boolean)
 
   // Decision 3: hold audio until the first user interaction, anywhere.
   useEffect(() => {
+    // Suppressed while the tutorial invite is on screen — the effect
+    // re-runs when suppressAuto flips false and starts the greeting then.
+    if (suppressAuto) {
+      // Reset: a dismissal that fired while suppressed (e.g. the tour
+      // auto-start dismissing a greeting that never began) must not poison
+      // the greeting that starts when suppression lifts.
+      dismissedRef.current = false;
+      gestureDoneRef.current = false;
+      return;
+    }
     // Veeresh 2026-10-06: greet on every home page visit (not once per day).
     // Muting is via the global sound toggle — isSoundEnabled() gates audio below.
     const index = greetingIndexFor();
@@ -203,8 +226,9 @@ export function CometGreeting({ onOpenChange }: { onOpenChange?: (open: boolean)
       audioRef.current = null;
     };
     // Mount-once orchestration; all live values flow through refs.
+    // Re-runs once when suppressAuto flips false (tutorial invite dismissed).
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [suppressAuto]);
 
   // Decision 2: sound OFF → a speaker icon that plays the greeting once
   // without touching the global meridian.sound toggle.
@@ -237,7 +261,10 @@ export function CometGreeting({ onOpenChange }: { onOpenChange?: (open: boolean)
   if (!visible) return null;
   const words = wordsRef.current;
   const fullText = words.join(" ");
-  return (
+  // Portal to document.body: the bubble is position:fixed, and the banner
+  // row's entrance animation creates a stacking context that would trap it
+  // below page content. Portaling escapes all ancestor contexts.
+  return createPortal(
     <div
       className="comet-greeting"
       data-testid="comet-greeting"
@@ -279,6 +306,7 @@ export function CometGreeting({ onOpenChange }: { onOpenChange?: (open: boolean)
           <Volume2 className="comet-speaker-icon" aria-hidden="true" />
         </button>
       ) : null}
-    </div>
+    </div>,
+    document.body,
   );
 }

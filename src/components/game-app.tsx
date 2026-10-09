@@ -1585,6 +1585,7 @@ export function GameApp() {
           <TutorialInvite onTakeTour={onTakeTour} onDismiss={onDismissInvite} />
         ) : null
       }
+      tutorialInviteVisible={showTutorialInvite}
       notice={
         <>
           {idleNotice}
@@ -1616,6 +1617,7 @@ function Choose({
   difficultyChoice,
   onDifficultyChoice,
   tutorialInvite,
+  tutorialInviteVisible,
 }: {
   onState: (e: ReactMouseEvent) => void;
   onCountry: (e: ReactMouseEvent) => void;
@@ -1630,6 +1632,9 @@ function Choose({
   difficultyChoice: PickerDifficulty;
   onDifficultyChoice: (choice: PickerDifficulty) => void;
   tutorialInvite?: ReactNode;
+  /** True while the first-run tutorial invite is on screen — Comet's
+      auto-greeting stays quiet until it's dismissed (no competing popups). */
+  tutorialInviteVisible?: boolean;
 }) {
   // GeoDetective progress for the edition card: the resume variant and the
   // streak line. Read on mount (the menu remounts when the loop screen
@@ -1644,20 +1649,29 @@ function Choose({
       {notice}
       {tutorialInvite}
       <header>
-        <div className="flex items-start justify-between gap-3">
+        <div className="flex items-center gap-3">
           <p className="atlas-eyebrow home-rise" style={rise(0)}>
             <Compass className="size-4" aria-hidden="true" />
             Field atlas · {trailDate()} UTC
           </p>
+          {/* Veeresh 2026-10-07: SoundToggle lives in the eyebrow cluster so
+              the banner row below has room for the h1 + Comet emblem. */}
           <SoundToggle
             testId="sound-toggle"
             className="atlas-sound-toggle home-rise"
             style={rise(0)}
           />
         </div>
-        <h1 className="atlas-title home-rise mt-4" style={rise(1)}>
-          {BRAND.name}
-        </h1>
+        {/* Veeresh 2026-10-07: Comet hosts from the banner — in-flow, right
+            of the h1, baseline-aligned title cartouche. DOM order (not a CSS
+            visual move) so keyboard/screen-reader focus stays logical:
+            invite → sound toggle → Comet → difficulty → cards (WCAG 2.4.3). */}
+        <div className="atlas-banner-row home-rise mt-4" style={rise(1)}>
+          <h1 className="atlas-title">
+            {BRAND.name}
+          </h1>
+          <CometMascot tutorialInviteVisible={tutorialInviteVisible} />
+        </div>
         <p className="atlas-tagline home-rise mt-4" style={rise(2)}>
           Pick the globe, a country, or a state. A place name, then one pin. Your score keeps
           adding up across editions until you choose to end the game, or if you&rsquo;re idle for
@@ -1798,10 +1812,8 @@ function Choose({
     {/* Grandpa's Coffee Run — animated donation scene, home only.
         Veeresh 2026-10-07: replaces PR #91's static sign. */}
     <GrandpaCoffeeRun />
-    {/* Comet hosts the Chart Room home page only — never in-game, never in
-        GeoDetective, never in review. The fixed wrapper is pointer-events
-        gated so it never blocks page scroll or taps. */}
-    <CometMascot />
+    {/* Comet now hosts from the banner (in the header above) — the fixed
+        bottom-right wrapper is retired. */}
     </>
   );
 }
