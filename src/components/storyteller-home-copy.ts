@@ -91,25 +91,14 @@ export function greetingIndexForDate(date: Date = new Date()): number {
   return dayOfYear(date) % GREETINGS.length;
 }
 
-/** Local "YYYY-MM-DD" day key for the once-per-day greeting gate. */
+/**
+ * Local "YYYY-MM-DD" day key. Owner 2026-10-09: the greeting fires on EVERY
+ * visit now (no once-per-day gate) — the day key survives only for the
+ * tour-return arming (copy G2), which is day-scoped.
+ */
 export function localDayKey(date: Date = new Date()): string {
   const y = date.getFullYear();
   const m = String(date.getMonth() + 1).padStart(2, "0");
   const d = String(date.getDate()).padStart(2, "0");
   return `${y}-${m}-${d}`;
-}
-
-export type HomeGreetingMode = "tour-return" | "greeting" | "silent";
-
-/**
- * G2 — check order on every home mount. Tour return wins, exactly once;
- * then first-visit-today greets; otherwise the figure sits silent (no nagging).
- */
-export function decideHomeMode(args: {
-  tourReturnDue: boolean;
-  greetedToday: boolean;
-}): HomeGreetingMode {
-  if (args.tourReturnDue) return "tour-return";
-  if (!args.greetedToday) return "greeting";
-  return "silent";
 }

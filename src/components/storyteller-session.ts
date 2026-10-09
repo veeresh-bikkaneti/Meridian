@@ -1,12 +1,13 @@
 /**
  * Storyteller home handoff (H1) — session + day storage.
  *
- * 1. Session auto-narration flag (copy §5): the home greeting consumes the
- *    session's one auto-narration (sessionStorage). Story cards later that
+ * 1. Session auto-narration flag (copy §5): story cards consume the
+ *    session's one auto-narration (sessionStorage); later cards that
  *    session degrade to text + speaker button — no double-audio.
+ *    (Owner 2026-10-09: home no longer consumes this flag — every home
+ *    visit narrates independently.)
  * 2. Tour-return flag (copy G2): armed when the tour walk ends after the
  *    host yielded; read exactly once on the next home mount, then cleared.
- * 3. Greeting day key (localStorage): the once-per-day greeting gate.
  *
  * All storage access is fail-closed (private mode / SSR / node --test):
  * when storage is unavailable the flags degrade to module memory.
@@ -14,19 +15,10 @@
 
 const AUTO_NARRATION_KEY = "meridian.storyteller.sessionAutoNarration.v1";
 const TOUR_RETURN_KEY = "meridian.storyteller.tourReturn.v1";
-const GREET_DAY_KEY = "meridian.storyteller.greetDay.v1";
 
 function sessionStore(): Storage | null {
   try {
     return typeof sessionStorage === "undefined" ? null : sessionStorage;
-  } catch {
-    return null;
-  }
-}
-
-function localStore(): Storage | null {
-  try {
-    return typeof localStorage === "undefined" ? null : localStorage;
   } catch {
     return null;
   }
@@ -59,7 +51,6 @@ function remove(store: Storage | null, key: string): void {
 // Memory fallbacks for environments without storage (private mode, node).
 let memoryAutoNarration = false;
 let memoryTourReturn: string | null = null;
-let memoryGreetDay: string | null = null;
 
 /** True once the session's one auto-narration has been consumed. */
 export function isSessionAutoNarrationConsumed(): boolean {
@@ -97,25 +88,11 @@ export function takeTourReturnLine(dayKey: string): boolean {
   return due;
 }
 
-/** The local day key of the last shown greeting ("YYYY-MM-DD" or null). */
-export function readHomeGreetDay(): string | null {
-  return read(localStore(), GREET_DAY_KEY) ?? memoryGreetDay;
-}
-
-/** Record that today's greeting was shown. */
-export function writeHomeGreetDay(dayKey: string): void {
-  write(localStore(), GREET_DAY_KEY, dayKey);
-  memoryGreetDay = dayKey;
-}
-
 /** Test-only: drop every flag. */
 export function resetStorytellerSessionForTests(): void {
   const s = sessionStore();
-  const l = localStore();
   remove(s, AUTO_NARRATION_KEY);
   remove(s, TOUR_RETURN_KEY);
-  remove(l, GREET_DAY_KEY);
   memoryAutoNarration = false;
   memoryTourReturn = null;
-  memoryGreetDay = null;
 }

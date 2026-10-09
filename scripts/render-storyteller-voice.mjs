@@ -20,13 +20,16 @@
  *     staccato summary — so the gain is computed explicitly.)
  *
  * Caption == audio contract: the script extracts the `text` fields from
- * src/components/storyteller-lines.ts and REFUSES to render unless they
- * match the lines below character-for-character. Edit the copy in
- * storyteller-lines.ts first, then run this.
+ * src/components/storyteller-lines.ts (card lines) or the GREETINGS array
+ * from src/components/storyteller-home-copy.ts (--greetings) and REFUSES
+ * to render unless they match the lines below character-for-character.
+ * Edit the copy in the TS source first, then run this.
  *
  * Usage:
  *   node scripts/render-storyteller-voice.mjs [--out <dir>]
  *     (default out: <repo>/public/audio/storyteller)
+ *   node scripts/render-storyteller-voice.mjs --greetings [--out <dir>]
+ *     (renders the 6 home greeting mp3s: greet-01.mp3 … greet-06.mp3)
  */
 
 import { execFile } from "node:child_process";
@@ -59,6 +62,45 @@ const LINES = {
   },
 };
 
+/**
+ * The six home greeting lines — MUST equal GREETINGS in
+ * src/components/storyteller-home-copy.ts, char for char (owner: the
+ * greeting narrates on EVERY home visit, so all six need mp3s; the
+ * manifest's audio map points at these files).
+ */
+const LINES_GREET = {
+  "greet-01": {
+    file: "greet-01.mp3",
+    text: "Ah, my young explorer! The map is whispering secrets today. Shall we hear its story together?",
+    words: 16,
+  },
+  "greet-02": {
+    file: "greet-02.mp3",
+    text: "New day, new tales hiding in the hills. Shall we go find one?",
+    words: 13,
+  },
+  "greet-03": {
+    file: "greet-03.mp3",
+    text: "Psst… the rivers told me a secret this morning. Want to hear it?",
+    words: 13,
+  },
+  "greet-04": {
+    file: "greet-04.mp3",
+    text: "Somewhere out there, a mountain is keeping a story warm. Let's go find it.",
+    words: 14,
+  },
+  "greet-05": {
+    file: "greet-05.mp3",
+    text: "The winds brought rumors from faraway cities today. Curious?",
+    words: 9,
+  },
+  "greet-06": {
+    file: "greet-06.mp3",
+    text: "Every dot on this map has a tale. Which one shall we wake up first?",
+    words: 15,
+  },
+};
+
 const VOICE = "am_fenrir";
 const SPEED = 1.05;
 const MODEL_ID = "onnx-community/Kokoro-82M-v1.0-ONNX";
@@ -70,23 +112,53 @@ function fail(msg) {
 }
 
 /** Extract STORYTELLER_LINES text fields from the TS source (caption==audio gate). */
-async function readCaptionText() {
+async function readCaptionText(lines, source) {
   const src = await fs.readFile(
     join(repoRoot, "src/components/storyteller-lines.ts"),
     "utf8",
   );
   const out = {};
-  for (const key of Object.keys(LINES)) {
+  for (const key of Object.keys(lines)) {
     const m = src.match(
       new RegExp(`${key}:\\s*{[^}]*text:\\s*"((?:[^"\\\\]|\\\\.)*)"`, "s"),
     );
-    if (!m) fail(`could not extract ${key} text from storyteller-lines.ts`);
+    if (!m) fail(`could not extract ${key} text from ${source}`);
     out[key] = m[1].replace(/\\(.)/g, "$1");
   }
   return out;
 }
 
+/** Extract the 6 GREETINGS lines from storyteller-home-copy.ts (caption==audio gate). */
+async function readGreetingCaptions() {
+  const src = await fs.readFile(
+    join(repoRoot, "src/components/storyteller-home-copy.ts"),
+    "utf8",
+  );
+  const g1 = src.match(/export const GREET_01 =\s*\n?\s*"((?:[^"\\]|\\.)*)"/s);
+  if (!g1) fail("could not extract GREET_01 from storyteller-home-copy.ts");
+  const arr = src.match(
+    /export const GREETINGS: readonly string\[\] = \[([\s\S]*?)\];/,
+  );
+  if (!arr) fail("could not extract GREETINGS from storyteller-home-copy.ts");
+  const rest = [...arr[1].matchAll(/"((?:[^"\\]|\\.)*)"/g)].map((m) =>
+    m[1].replace(/\\(.)/g, "$1"),
+  );
+  if (rest.length !== 5)
+    fail(`expected 5 quoted lines in GREETINGS, found ${rest.length}`);
+  const out = { "greet-01": g1[1].replace(/\\(.)/g, "$1") };
+  rest.forEach((text, i) => {
+    out[`greet-0${i + 2}`] = text;
+  });
+  return out;
+}
+
 async function main() {
+  const greetingsMode = process.argv.includes("--greetings");
+  const LINES_ACTIVE = greetingsMode ? LINES_GREET : LINES;
+  const sourceFile = greetingsMode
+    ? "storyteller-home-copy.ts"
+    : "storyteller-lines.ts";
+
   const outDir = (() => {
     const i = process.argv.indexOf("--out");
     return i === -1
@@ -95,11 +167,14 @@ async function main() {
   })();
 
   // 1. Caption == audio contract.
-  const captions = await readCaptionText();
-  for (const [key, line] of Object.entries(LINES)) {
+  const captions = greetingsMode
+    ? await readGreetingCaptions()
+    : await readCaptionText(LINES_ACTIVE, sourceFile);
+  const total = Object.keys(LINES_ACTIVE).length;
+  for (const [key, line] of Object.entries(LINES_ACTIVE)) {
     if (captions[key] !== line.text) {
       fail(
-        `${key}: script text != storyteller-lines.ts text.\n` +
+        `${key}: script text != ${sourceFile} text.\n` +
           `  script:  ${JSON.stringify(line.text)}\n` +
           `  caption: ${JSON.stringify(captions[key])}`,
       );
@@ -107,7 +182,9 @@ async function main() {
     const wc = line.text.split(/\s+/).filter(Boolean).length;
     if (wc !== line.words) fail(`${key}: word count ${wc} != expected ${line.words}`);
   }
-  console.log("caption == audio contract: OK (3/3 lines match character-for-character)");
+  console.log(
+    `caption == audio contract: OK (${total}/${total} lines match character-for-character)`,
+  );
 
   // 2. Resolve kokoro-js from the aidemo-pilot engine checkout (never npm-install here).
   const engineDir =
@@ -154,7 +231,7 @@ async function main() {
   const scratch = await fs.mkdtemp(join(tmpdir(), "storyteller-voice-"));
   console.log(`scratch: ${scratch}`);
   const rawWavs = {};
-  for (const [key, line] of Object.entries(LINES)) {
+  for (const [key, line] of Object.entries(LINES_ACTIVE)) {
     const audio = await tts.generate(line.text, { voice: VOICE, speed: SPEED });
     const wavPath = join(scratch, `${key}-raw.wav`);
     await fs.writeFile(wavPath, Buffer.from(await audio.toWav()));
@@ -197,7 +274,7 @@ async function main() {
 
   await fs.mkdir(outDir, { recursive: true });
   const report = [];
-  for (const [key, line] of Object.entries(LINES)) {
+  for (const [key, line] of Object.entries(LINES_ACTIVE)) {
     const trimmed = join(scratch, `${key}-trimmed.wav`);
     await execFileAsync("ffmpeg", [
       "-hide_banner",
@@ -308,7 +385,9 @@ async function main() {
   const spread = Math.max(...lufs) - Math.min(...lufs);
   console.log(`set loudness spread: ${spread.toFixed(2)} dB (must be <= ~1 dB)`);
   if (spread > 1.0) fail("inter-clip loudness spread exceeds 1 dB");
-  console.log(`\nwrote 3 mp3s -> ${outDir}\nraw wavs kept at ${scratch} for inspection`);
+  console.log(
+    `\nwrote ${total} mp3s -> ${outDir}\nraw wavs kept at ${scratch} for inspection`,
+  );
 }
 
 main().catch((e) => fail(e?.stack ?? String(e)));

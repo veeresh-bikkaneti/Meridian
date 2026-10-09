@@ -1,5 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
+import * as copyModule from "./storyteller-home-copy.ts";
 import {
   GREETINGS,
   GREET_01,
@@ -9,18 +10,16 @@ import {
   SENDOFFS,
   TOUR_RETURN_LINE,
   dayOfYear,
-  decideHomeMode,
   greetingIndexForDate,
   localDayKey,
 } from "./storyteller-home-copy.ts";
+import * as sessionModule from "./storyteller-session.ts";
 import {
   armTourReturnLine,
   consumeSessionAutoNarration,
   isSessionAutoNarrationConsumed,
-  readHomeGreetDay,
   resetStorytellerSessionForTests,
   takeTourReturnLine,
-  writeHomeGreetDay,
 } from "./storyteller-session.ts";
 
 describe("storyteller home copy — locked lines are byte-identical (copy pack §0)", () => {
@@ -93,7 +92,7 @@ describe("storyteller home copy — locked lines are byte-identical (copy pack �
   });
 });
 
-describe("greeting rotation — day-of-year mod 6", () => {
+describe("greeting rotation — day-of-year mod 6 (every visit greets)", () => {
   it("indexes 0…5 across consecutive days", () => {
     // 2026-01-01 is day 1 → index 1; 2026-01-06 is day 6 → index 0.
     assert.equal(dayOfYear(new Date(2026, 0, 1)), 1);
@@ -107,31 +106,35 @@ describe("greeting rotation — day-of-year mod 6", () => {
   });
 });
 
-describe("decideHomeMode — G2 check order", () => {
-  it("tour return wins, exactly once", () => {
-    assert.equal(
-      decideHomeMode({ tourReturnDue: true, greetedToday: true }),
-      "tour-return",
+describe("owner correction 2026-10-09 — once-per-day logic is gone", () => {
+  it("decideHomeMode and the silent mode no longer exist", () => {
+    assert.ok(
+      !("decideHomeMode" in copyModule),
+      "decideHomeMode must be deleted (no same-day-silent path)",
     );
-    assert.equal(
-      decideHomeMode({ tourReturnDue: true, greetedToday: false }),
-      "tour-return",
+    assert.ok(
+      !("HomeGreetingMode" in copyModule),
+      "HomeGreetingMode must be deleted",
     );
   });
 
-  it("first visit of day greets; same-day return is silent", () => {
-    assert.equal(
-      decideHomeMode({ tourReturnDue: false, greetedToday: false }),
-      "greeting",
+  it("greet-day storage no longer exists", () => {
+    assert.ok(
+      !("readHomeGreetDay" in sessionModule),
+      "readHomeGreetDay must be deleted",
     );
-    assert.equal(
-      decideHomeMode({ tourReturnDue: false, greetedToday: true }),
-      "silent",
+    assert.ok(
+      !("writeHomeGreetDay" in sessionModule),
+      "writeHomeGreetDay must be deleted",
+    );
+    assert.ok(
+      !("GREET_DAY_KEY" in sessionModule),
+      "GREET_DAY_KEY must be deleted",
     );
   });
 });
 
-describe("storyteller-session — storage flags", () => {
+describe("storyteller-session — storage flags (story cards keep theirs)", () => {
   it("session auto-narration: first consume wins, then consumed", () => {
     resetStorytellerSessionForTests();
     assert.equal(isSessionAutoNarrationConsumed(), false);
@@ -151,12 +154,5 @@ describe("storyteller-session — storage flags", () => {
     resetStorytellerSessionForTests();
     armTourReturnLine("2026-10-08");
     assert.equal(takeTourReturnLine("2026-10-09"), false);
-  });
-
-  it("greet-day key round-trips", () => {
-    resetStorytellerSessionForTests();
-    assert.equal(readHomeGreetDay(), null);
-    writeHomeGreetDay("2026-10-09");
-    assert.equal(readHomeGreetDay(), "2026-10-09");
   });
 });

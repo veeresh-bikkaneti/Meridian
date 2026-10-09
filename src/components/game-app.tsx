@@ -85,6 +85,7 @@ import {
 } from "@/game/age-profile";
 const AgeProfileSettings = lazy(() => import("./age-profile/AgeProfileSettings"));
 const StorytellerHomeHost = lazy(() => import("./storyteller-home"));
+import { StorytellerBannerFigure } from "./storyteller-banner-figure";
 import {
   CelebrationOverlay,
   celebrationSeamSpec,
@@ -1934,19 +1935,24 @@ function Choose({
             style={rise(0)}
           />
         </div>
-        {/* Storyteller home handoff (H1): the hero strip — figure left,
-            greeting caption right (fixed min-height so hiding the bubble
-            never jumps layout). React.lazy: never in the initial bundle.
-            One host per screen — hard. */}
-        <Suspense fallback={null}>
-          <StorytellerHomeHost tutorialInviteVisible={tutorialInviteVisible} />
-        </Suspense>
+        {/* Storyteller banner rework (owner 2026-10-09, overrides #114):
+            the figure sits IN THE BANNER beside the branding — always
+            visible, mobile and desktop, decorative (aria-hidden, no tap
+            target). The greeting host (bubble + narration) anchors under
+            the banner row as a transient popover. One host per screen —
+            hard; Comet emblem stays decorative in the eyebrow row. */}
         {/* PBI-6: the h1 is the focus target when the Scout Map boot offer
             closes (data-testid="home-heading"). */}
-        <div className="atlas-banner-row home-rise mt-4" style={rise(2)}>
-          <h1 className="atlas-title" data-testid="home-heading" tabIndex={-1}>
-            {BRAND.name}
-          </h1>
+        <div className="atlas-banner-wrap home-rise mt-4" style={rise(2)}>
+          <div className="atlas-banner-row">
+            <h1 className="atlas-title" data-testid="home-heading" tabIndex={-1}>
+              {BRAND.name}
+            </h1>
+            <StorytellerBannerFigure />
+          </div>
+          <Suspense fallback={null}>
+            <StorytellerHomeHost tutorialInviteVisible={tutorialInviteVisible} />
+          </Suspense>
         </div>
         <p className="atlas-tagline home-rise mt-4" style={rise(3)}>
           Pick the globe, a country, or a state. A place name, then one pin. Your score keeps

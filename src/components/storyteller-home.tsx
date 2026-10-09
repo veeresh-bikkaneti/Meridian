@@ -1,81 +1,76 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { StorytellerMascot, useCelebrationActive, useTourActive } from "./storyteller";
-import { claimFirstRevealNarration } from "./storyteller-claim";
-import {
-  STORYTELLER_AUDIO_FALLBACK_LINE,
-  storytellerFigureUrl,
-} from "./storyteller-lines";
+import { useCelebrationActive, useTourActive } from "./storyteller";
+import { STORYTELLER_AUDIO_FALLBACK_LINE } from "./storyteller-lines";
 import { isSoundEnabled } from "@/game/audio/sfx";
+import {
+  loadAssetManifest,
+  resetBannerFigureForTests,
+} from "./storyteller-banner-figure";
 import {
   GREETINGS,
   LEAF_LINE,
-  POKE_LINES,
-  SCROLL_TAP_LINE,
   SENDOFFS,
   TOUR_RETURN_LINE,
-  decideHomeMode,
   greetingIndexForDate,
   localDayKey,
-  type HomeGreetingMode,
   type StorytellerLoopKey,
 } from "./storyteller-home-copy";
 import {
   armTourReturnLine,
-  consumeSessionAutoNarration,
-  readHomeGreetDay,
   resetStorytellerSessionForTests,
   takeTourReturnLine,
-  writeHomeGreetDay,
 } from "./storyteller-session";
 import "./storyteller-home.css";
 
-// Storyteller home handoff (H1) — the Storyteller becomes home's host.
+// Storyteller banner host — owner correction 2026-10-09 (overrides #114).
 //
-// State machine (spec §3):
-//   absent → entering → greeting_text →(first gesture + sound on)→
-//   greeting_audio →(end|dismiss|12s)→ idle_linger →
-//   (navigate|tour start|dismiss|timeout)→ exiting → absent.
-// Any state →(tour overlay opens)→ yielded (fully unmounted, no background
-// audio)→(tour closes)→ absent →(return line due)→ entering.
+// The figure lives IN THE BANNER (StorytellerBannerFigure, always visible,
+// decorative). This host owns the greeting bubble + narration and anchors
+// under the banner row as a transient popover — no hero strip, no hidden
+// states, no visit counting.
 //
-// - First visit ever / first visit of day: greeting line, text-first, audio
-//   on first gesture (one-shot pointerdown/keydown). Consumes the session's
-//   one auto-narration — story cards later that session are text + speaker
-//   button only (copy §5).
-// - Same-day return: figure sits in hero, no bubble, no voice. No nagging.
-// - Post-tour return: the locked tour line, text-only, no mp3 (copy G2 —
-//   tour return wins, exactly once).
+// Narration policy (owner: EVERY home visit greets; the ONLY silence is the
+// user's mute toggle):
+//   - On mount, if sound is on and the greet mp3 resolved, attempt
+//     audio.play() immediately. Autoplay policy will usually reject it —
+//     on rejection a one-shot pointerdown/keydown listener retries on the
+//     first gesture (re-checking isSoundEnabled() then).
+//   - Muted at mount → no attempt, no gesture listener. Muted at gesture
+//     time → the one-shot fires and gives up silently. Unmuting later in
+//     the same visit does NOT retro-play (sane, matches old behavior).
+//   - Home no longer consumes the session auto-narration flag — story cards
+//     keep their own one-shot behavior (result-card.tsx), untouched.
+//
+// State machine:
+//   entering → greeting_text →(play ok)→ greeting_audio →(end|dismiss|12s)→
+//   idle_linger. Any state →(tour/celebration opens)→ yielded (bubble + audio
+//   gone; the FIGURE stays — it's banner chrome)→(tour closes)→ re-resolve
+//   (the tour-return line wins exactly once, copy G2).
+// - Tour return: locked line, text-only, no mp3 (copy G2).
 // - Loop pick: the loop's locked send-off rides along ≤2.5s while the loop
 //   loads; navigation never waits (copy G3). He never travels into loops.
-// - Sound muted: figure + full caption render; no autoplay attempt; toggling
-//   sound on later does not retro-narrate.
 // - Reduced motion: ≤150ms opacity fade only; full caption instantly; audio
 //   timing unchanged.
 //
 // Loaded via React.lazy by the home screen — never in the initial bundle.
-// Reuses StorytellerMascot (decoding=async) for the figure; the figure takes
-// its asset URL from storyteller-assets.json so F1/F2 poses swap with zero
-// code change. No visible name ("historian feel" per owner).
+// No visible name ("historian feel" per owner).
 
 type HomePhase =
-  | "absent"
   | "entering"
   | "greeting_text"
   | "greeting_audio"
   | "idle_linger"
   | "exiting";
 
+type BannerHomeMode = "tour-return" | "greeting";
+
 const ENTER_MS = 150;
 const EXIT_MS = 150;
 const TEXT_BUBBLE_MS = 6000;
-const POKE_BUBBLE_MS = 4000;
-const SCROLL_TAP_BUBBLE_MS = 3000;
 const LEAF_BUBBLE_MS = 3000;
 const POST_AUDIO_HOLD_MS = 1500;
 /** G1: hard cap on the greeting audio window — never a visible countdown. */
 const GREETING_AUDIO_CAP_MS = 12_000;
-const POKE_DEBOUNCE_MS = 600;
-const DOUBLE_TAP_MS = 450;
 const AUDIO_START_TAP_GUARD_MS = 600; // the tap that starts audio must not dismiss it
 const SENDOFF_OVERLAY_MS = 2200;
 const SENDOFF_OVERLAY_REMOVE_MS = 2500;
@@ -89,44 +84,10 @@ function assetBase(): string {
   return base.endsWith("/") ? base : `${base}/`;
 }
 
-interface AssetManifest {
-  version: number;
-  poses: { idle: string | null; pointing: string | null };
-  audio: Record<string, string | null>;
-}
-
-let manifestPromise: Promise<AssetManifest | null> | null = null;
-
-/** storyteller-assets.json — cached; null when unreachable (fail-closed). */
-function loadAssetManifest(): Promise<AssetManifest | null> {
-  if (!manifestPromise) {
-    manifestPromise = (async () => {
-      try {
-        const res = await fetch(
-          `${assetBase()}assets/storyteller/storyteller-assets.json`,
-        );
-        if (!res.ok) return null;
-        return (await res.json()) as AssetManifest;
-      } catch {
-        return null;
-      }
-    })();
-  }
-  return manifestPromise;
-}
-
-/** Test-only: drop the cached manifest (and the session flags). */
-export function resetStorytellerHomeForTests(): void {
-  manifestPromise = null;
-  resetStorytellerSessionForTests();
-}
-
 interface ResolvedAssets {
-  /** Idle pose URL (placeholder until the F1 cutout lands). */
-  pose: string;
   /** Pointing pose URL, or null when unavailable (send-off skips it silently). */
   pointing: string | null;
-  /** Day-1: null until the TruthTeller mp3s land (text-only greeting). */
+  /** greet-0N mp3 URL, or null until the Kokoro renders land (text-only greeting). */
   greetAudio: string | null;
 }
 
@@ -166,7 +127,7 @@ function showSendoffOverlay(line: string, pointingUrl: string | null): void {
 }
 
 function firstEditionControl(): HTMLElement | null {
-  // The difficulty picker is the first control below the hero strip.
+  // The difficulty picker is the first control below the banner.
   // (A single querySelector with a selector list would return the h1, which
   // precedes the picker in DOM order — so the picker is tried first.)
   return (
@@ -175,60 +136,46 @@ function firstEditionControl(): HTMLElement | null {
   );
 }
 
-export interface StorytellerHomeHostProps {
+export interface StorytellerBannerHostProps {
   /** True while the first-run tutorial invite is on screen — the greeting
-      stays quiet until it's dismissed (no competing popups). */
+      bubble stays quiet until it's dismissed (no competing popups). The
+      banner figure itself is unaffected (banner chrome). */
   tutorialInviteVisible?: boolean;
 }
 
 /**
- * The home hero host. Default export for React.lazy.
+ * The home banner host. Default export for React.lazy.
  */
-export default function StorytellerHomeHost({
+export default function StorytellerBannerHost({
   tutorialInviteVisible = false,
-}: StorytellerHomeHostProps) {
+}: StorytellerBannerHostProps) {
   const tourActive = useTourActive();
   const celebrationActive = useCelebrationActive();
   const yielded = tourActive || celebrationActive;
 
-  // G2 — resolved once per mount: tour return wins exactly once, then the
-  // daily greeting, else the silent figure.
-  const [mode, setMode] = useState<HomeGreetingMode>(() => {
+  // Every home visit greets (owner 2026-10-09): tour return wins exactly
+  // once, otherwise the daily-rotating greeting. No day key, no silent mode.
+  const [mode, setMode] = useState<BannerHomeMode>(() => {
     const today = localDayKey();
-    const tourDue = takeTourReturnLine(today);
-    const greeted = readHomeGreetDay() === today;
-    const resolved = decideHomeMode({ tourReturnDue: tourDue, greetedToday: greeted });
-    if (resolved === "greeting") writeHomeGreetDay(today);
-    return resolved;
+    return takeTourReturnLine(today) ? "tour-return" : "greeting";
   });
-  const [phase, setPhase] = useState<HomePhase>(
-    mode === "silent" ? "idle_linger" : "entering",
-  );
+  const [phase, setPhase] = useState<HomePhase>("entering");
   const [bubble, setBubble] = useState<string | null>(null);
   const [audioFailed, setAudioFailed] = useState(false);
   const [leafFalling, setLeafFalling] = useState(false);
-  const [bowing, setBowing] = useState(false);
   const [assets, setAssets] = useState<ResolvedAssets>({
-    pose: storytellerFigureUrl(),
     pointing: null,
     greetAudio: null,
   });
-
-  const reducedMotion = useRef(
-    typeof matchMedia !== "undefined" &&
-      matchMedia("(prefers-reduced-motion: reduce)").matches,
-  ).current;
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const bubbleTimer = useRef(0);
   const capTimer = useRef(0);
   const soundWatch = useRef(0);
   const audioStartTimeRef = useRef(0);
-  const gestureDoneRef = useRef(false);
+  const attemptedRef = useRef(false);
+  const gestureCleanupRef = useRef<(() => void) | null>(null);
   const leafShownRef = useRef(false);
-  const pokeIndexRef = useRef(0);
-  const lastTapRef = useRef(0);
-  const lastPokeRef = useRef(0);
   const wasYieldedRef = useRef(false);
   const assetsRef = useRef(assets);
   assetsRef.current = assets;
@@ -272,6 +219,8 @@ export default function StorytellerHomeHost({
   );
 
   // ---- Asset manifest (F1/F2 pipeline) ---------------------------------
+  // Shared module-cached promise with the banner figure: the host needs the
+  // greet-audio URL and the pointing pose; the figure needs the idle pose.
   useEffect(() => {
     let cancelled = false;
     void loadAssetManifest().then((manifest) => {
@@ -280,7 +229,6 @@ export default function StorytellerHomeHost({
       const audioKey = `greet-0${greetIndex + 1}`;
       const audioPath = manifest.audio[audioKey];
       setAssets({
-        pose: manifest.poses.idle ? base + manifest.poses.idle : storytellerFigureUrl(),
         pointing: manifest.poses.pointing ? base + manifest.poses.pointing : null,
         greetAudio: audioPath ? base + audioPath : null,
       });
@@ -291,6 +239,7 @@ export default function StorytellerHomeHost({
   }, [greetIndex]);
 
   // ---- Yield: tour / celebration own the screen ------------------------
+  // The figure stays (banner chrome); the bubble + audio yield. A
   // tour-walk-end after a yield arms the post-tour return line (copy G2).
   useEffect(() => {
     const onTourEnd = () => {
@@ -305,6 +254,8 @@ export default function StorytellerHomeHost({
       wasYieldedRef.current = true;
       stopAudio();
       hideBubble();
+      gestureCleanupRef.current?.();
+      gestureCleanupRef.current = null;
       return;
     }
     if (wasYieldedRef.current) {
@@ -315,8 +266,8 @@ export default function StorytellerHomeHost({
         setMode("tour-return");
         setPhase("entering");
       }
-      // Otherwise the pre-yield mode stands: a shown greeting is not reshown
-      // (the day key was written), a silent figure stays silent.
+      // Otherwise the pre-yield greeting stands (it already greeted — the
+      // owner wants every visit to greet, and this visit did).
     }
   }, [yielded, stopAudio, hideBubble]);
 
@@ -324,9 +275,7 @@ export default function StorytellerHomeHost({
   useEffect(() => {
     if (phase !== "entering") return;
     if (mode === "tour-return") {
-      if (!reducedMotion) setBowing(true);
       const t1 = window.setTimeout(() => {
-        setBowing(false);
         setPhase("greeting_text");
         // Text-only, no mp3 — the locked return line (copy G2).
         showBubble(TOUR_RETURN_LINE, TEXT_BUBBLE_MS);
@@ -337,18 +286,19 @@ export default function StorytellerHomeHost({
         window.clearTimeout(t2);
       };
     }
-    if (mode === "greeting") {
-      const t = window.setTimeout(() => {
-        setPhase("greeting_text");
-        // Text-first, always: audio waits for the first gesture below.
-        // Day-1 (no mp3 yet) this is the whole greeting — no autoplay
-        // attempt, and the session flag is NOT consumed.
-        showBubble(greetingText, assetsRef.current.greetAudio ? null : TEXT_BUBBLE_MS);
-      }, ENTER_MS);
-      return () => window.clearTimeout(t);
-    }
-    return undefined;
-  }, [phase, mode, greetingText, reducedMotion, showBubble]);
+    // mode === "greeting": text-first, always. Audio is attempted below
+    // once the mp3 URL resolves (or stays text-only when it never does).
+    // A null (indefinite) hold only makes sense when an audio attempt is
+    // actually pending — muted-at-mount gets the text hold instead, or the
+    // bubble would sit forever with no narration coming.
+    const t = window.setTimeout(() => {
+      setPhase("greeting_text");
+      const audioPending =
+        assetsRef.current.greetAudio !== null && isSoundEnabled();
+      showBubble(greetingText, audioPending ? null : TEXT_BUBBLE_MS);
+    }, ENTER_MS);
+    return () => window.clearTimeout(t);
+  }, [phase, mode, greetingText, showBubble]);
 
   // ---- Falling laurel leaf (micro-delight 4) -----------------------------
   // After the greeting bubble's natural hold, one leaf drifts past and its
@@ -368,13 +318,12 @@ export default function StorytellerHomeHost({
   useEffect(() => {
     if (!bubbleGoneAfterGreeting) return;
     if (modeRef.current !== "greeting" || leafShownRef.current) return;
-    if (gestureDoneRef.current && audioRef.current) return; // audio path handles it
     maybeLeaf();
     const t = window.setTimeout(() => setPhase("idle_linger"), LEAF_BUBBLE_MS);
     return () => window.clearTimeout(t);
   }, [bubbleGoneAfterGreeting, maybeLeaf]);
 
-  // ---- Greeting audio ----------------------------------------------------
+  // ---- Greeting audio: every-visit narration ----------------------------
   const beginGreetingAudio = useCallback(() => {
     const url = assetsRef.current.greetAudio;
     if (!url || !isSoundEnabled()) return;
@@ -387,6 +336,10 @@ export default function StorytellerHomeHost({
     window.clearTimeout(bubbleTimer.current);
 
     const finish = () => {
+      // Stale-element guard: a dismiss/yield between play() and the event
+      // must not resurrect the bubble (e.g. gesture → replay → 404 after
+      // the kid already dismissed).
+      if (audioRef.current !== audio) return;
       stopAudio();
       // Brief hold on the greeting text, then the leaf delight.
       showBubble(greetingText, POST_AUDIO_HOLD_MS);
@@ -395,23 +348,43 @@ export default function StorytellerHomeHost({
         window.setTimeout(() => setPhase("idle_linger"), LEAF_BUBBLE_MS);
       }, POST_AUDIO_HOLD_MS);
     };
-    const onEnded = () => finish();
     const onFail = () => {
-      // Audio unavailable — degrade to silent text-only, never device-shame.
+      // Same stale guard as finish.
+      if (audioRef.current !== audio) return;
+      // Audio unavailable (404/decode) — degrade to silent text-only,
+      // never device-shame.
       // (showBubble clears the failure flag, so set it after.)
       showBubble(greetingText, TEXT_BUBBLE_MS);
       setAudioFailed(true);
       setPhase("idle_linger");
     };
-    audio.addEventListener("ended", onEnded, { once: true });
+    const onAutoplayBlocked = () => {
+      // No prior gesture in this document: park the greeting as text and
+      // wait for the first gesture, then try exactly once more.
+      stopAudio();
+      setPhase("greeting_text");
+      const onGesture = () => {
+        window.removeEventListener("pointerdown", onGesture);
+        window.removeEventListener("keydown", onGesture);
+        gestureCleanupRef.current = null;
+        if (!isSoundEnabled()) return; // muted at gesture time → never play
+        beginGreetingAudio();
+      };
+      gestureCleanupRef.current = () => {
+        window.removeEventListener("pointerdown", onGesture);
+        window.removeEventListener("keydown", onGesture);
+      };
+      window.addEventListener("pointerdown", onGesture);
+      window.addEventListener("keydown", onGesture);
+    };
+    audio.addEventListener("ended", finish, { once: true });
     audio.addEventListener("error", onFail, { once: true });
     void audio
       .play()
       .then(() => {
-        // G1: the 12s window starts when audio ACTUALLY begins — and only
-        // then is the session's one auto-narration consumed (copy §5).
-        consumeSessionAutoNarration();
-        claimFirstRevealNarration();
+        // G1: the 12s window starts when audio ACTUALLY begins.
+        // (Home no longer consumes the session auto-narration flag —
+        // story cards keep their own one-shot, untouched.)
         capTimer.current = window.setTimeout(() => {
           // Hard cap: stop immediately, bubble stays text-visible.
           stopAudio();
@@ -426,8 +399,23 @@ export default function StorytellerHomeHost({
           }
         }, 500);
       })
-      .catch(onFail);
+      .catch(onAutoplayBlocked);
   }, [greetingText, maybeLeaf, showBubble, stopAudio]);
+
+  // Mount attempt: every visit, sound on, mp3 resolved → try to play.
+  // Muted at mount → no attempt at all (and no gesture listener — there is
+  // nothing to wait for). Autoplay rejection is handled inside
+  // beginGreetingAudio via the one-shot gesture fallback.
+  useEffect(() => {
+    if (mode !== "greeting" || phase !== "greeting_text") return;
+    if (!assets.greetAudio || attemptedRef.current) return;
+    if (!isSoundEnabled()) return;
+    // The text greeting already ran its course (slow manifest) — don't
+    // barge in over the leaf delight.
+    if (leafShownRef.current) return;
+    attemptedRef.current = true;
+    beginGreetingAudio();
+  }, [mode, phase, assets.greetAudio, beginGreetingAudio]);
 
   // Tab hidden cancels the audio window (G1).
   useEffect(() => {
@@ -442,33 +430,13 @@ export default function StorytellerHomeHost({
     return () => document.removeEventListener("visibilitychange", onHidden);
   }, [phase, stopAudio]);
 
-  // First-gesture audio (one-shot): the auto-narration policy the owner
-  // picked. Sound off → no attempt, and toggling sound on later does not
-  // retro-narrate — the opportunity is consumed by the first gesture.
-  useEffect(() => {
-    if (mode !== "greeting" || phase !== "greeting_text") return;
-    if (!assets.greetAudio) return; // day-1: text-only, nothing to wait for
-    const onGesture = () => {
-      if (gestureDoneRef.current) return;
-      gestureDoneRef.current = true;
-      window.removeEventListener("pointerdown", onGesture);
-      window.removeEventListener("keydown", onGesture);
-      if (!isSoundEnabled()) return; // toggled off between mount and gesture
-      beginGreetingAudio();
-    };
-    window.addEventListener("pointerdown", onGesture);
-    window.addEventListener("keydown", onGesture);
-    return () => {
-      window.removeEventListener("pointerdown", onGesture);
-      window.removeEventListener("keydown", onGesture);
-    };
-  }, [mode, phase, assets.greetAudio, beginGreetingAudio]);
-
   // ---- Dismiss -----------------------------------------------------------
   const dismissBubble = useCallback(
     (viaKeyboard: boolean) => {
       stopAudio();
       hideBubble();
+      gestureCleanupRef.current?.();
+      gestureCleanupRef.current = null;
       if (modeRef.current === "greeting" || modeRef.current === "tour-return") {
         setPhase("idle_linger");
       }
@@ -483,33 +451,6 @@ export default function StorytellerHomeHost({
     dismissBubble(false);
   }, [dismissBubble]);
 
-  // ---- Poke (micro-delight: tap the figure) ------------------------------
-  const handleFigureTap = useCallback(() => {
-    const audio = audioRef.current;
-    if (audio && phase === "greeting_audio") {
-      // Tapping the figure mid-greeting pauses/resumes (card contract) —
-      // but the tap that STARTED the audio must not instantly pause it.
-      if (Date.now() - audioStartTimeRef.current < AUDIO_START_TAP_GUARD_MS) return;
-      if (audio.paused) void audio.play().catch(() => {});
-      else audio.pause();
-      return;
-    }
-    const now = Date.now();
-    const sinceTap = now - lastTapRef.current;
-    lastTapRef.current = now;
-    if (sinceTap > 0 && sinceTap < DOUBLE_TAP_MS) {
-      // Micro-delight 1: scroll-tap hello — two quick taps.
-      showBubble(SCROLL_TAP_LINE, SCROLL_TAP_BUBBLE_MS);
-      return;
-    }
-    // Poke lines rotate (5 max, then repeat); taps <600ms apart are ignored.
-    if (now - lastPokeRef.current < POKE_DEBOUNCE_MS) return;
-    lastPokeRef.current = now;
-    const line = POKE_LINES[pokeIndexRef.current % POKE_LINES.length]!;
-    pokeIndexRef.current += 1;
-    showBubble(line, POKE_BUBBLE_MS);
-  }, [phase, showBubble]);
-
   // ---- Loop send-off (copy G3) --------------------------------------------
   useEffect(() => {
     const onSendoff = (event: Event) => {
@@ -520,7 +461,7 @@ export default function StorytellerHomeHost({
           ? SENDOFFS[loop as StorytellerLoopKey]
           : null;
       if (!line) return;
-      // Figure exits (150ms); navigation begins immediately — never blocked.
+      // Bubble exits (150ms); navigation begins immediately — never blocked.
       setPhase("exiting");
       window.setTimeout(() => {
         showSendoffOverlay(line, assetsRef.current.pointing);
@@ -530,24 +471,21 @@ export default function StorytellerHomeHost({
     return () => window.removeEventListener(SENDOFF_EVENT, onSendoff);
   }, []);
 
-  // ---- Unmount: never leave audio or timers behind -------------------------
+  // ---- Unmount: never leave audio, timers, or gesture listeners behind ----
   useEffect(() => {
     return () => {
       clearTimers();
+      gestureCleanupRef.current?.();
+      gestureCleanupRef.current = null;
       audioRef.current?.pause();
       audioRef.current = null;
     };
   }, [clearTimers]);
 
-  // Yielded / suppressed / exited → fully unmounted (no background audio).
-  if (tutorialInviteVisible || yielded || phase === "absent") return null;
-
-  const audioPlaying = phase === "greeting_audio" && audioRef.current !== null;
-  const figureLabel = audioPlaying
-    ? "Pause the greeting"
-    : audioRef.current && phase === "greeting_audio"
-      ? "Resume the greeting"
-      : "The storyteller";
+  // Yielded / tutorial invite → the host shows nothing (the banner figure
+  // stays — it's chrome, not the host). Bubble-less idle → nothing either.
+  if (tutorialInviteVisible || yielded) return null;
+  if (bubble === null && !leafFalling) return null;
 
   return (
     <div
@@ -556,61 +494,56 @@ export default function StorytellerHomeHost({
       data-phase={phase}
       data-mode={mode}
     >
-      <div
-        className={`storyteller-home-strip${phase === "exiting" ? " storyteller-home-leave" : ""}${bowing ? " storyteller-home-bow" : ""}`}
-      >
-        <StorytellerMascot
-          label={figureLabel}
-          src={assets.pose}
-          onToggle={handleFigureTap}
-        />
-        <div className="storyteller-home-captioncol">
-          {bubble !== null ? (
-            <div
-              className="storyteller-caption storyteller-home-bubble"
-              data-testid="storyteller-home-bubble"
-              role="status"
-              onClick={handleCaptionTap}
-            >
-              <p
-                className="storyteller-caption-text"
-                data-testid="storyteller-home-caption"
-              >
-                {bubble}
-              </p>
-              {audioFailed ? (
-                <span
-                  className="storyteller-fallback"
-                  data-testid="storyteller-home-fallback"
-                >
-                  {STORYTELLER_AUDIO_FALLBACK_LINE}
-                </span>
-              ) : null}
-              <button
-                type="button"
-                className="storyteller-home-dismiss"
-                data-testid="storyteller-home-dismiss"
-                aria-label="Dismiss the storyteller's greeting"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  dismissBubble(true);
-                }}
-              >
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-          ) : null}
-          {leafFalling ? (
+      {bubble !== null ? (
+        <div
+          className="storyteller-caption storyteller-home-bubble"
+          data-testid="storyteller-home-bubble"
+          role="status"
+          onClick={handleCaptionTap}
+        >
+          <p
+            className="storyteller-caption-text"
+            data-testid="storyteller-home-caption"
+          >
+            {bubble}
+          </p>
+          {audioFailed ? (
             <span
-              className="storyteller-home-leaf"
-              data-testid="storyteller-home-leaf"
-              aria-hidden="true"
+              className="storyteller-fallback"
+              data-testid="storyteller-home-fallback"
             >
-              🍃
+              {STORYTELLER_AUDIO_FALLBACK_LINE}
             </span>
           ) : null}
+          <button
+            type="button"
+            className="storyteller-home-dismiss"
+            data-testid="storyteller-home-dismiss"
+            aria-label="Dismiss the storyteller's greeting"
+            onClick={(e) => {
+              e.stopPropagation();
+              dismissBubble(true);
+            }}
+          >
+            <span aria-hidden="true">×</span>
+          </button>
         </div>
-      </div>
+      ) : null}
+      {leafFalling ? (
+        <span
+          className="storyteller-home-leaf"
+          data-testid="storyteller-home-leaf"
+          aria-hidden="true"
+        >
+          🍃
+        </span>
+      ) : null}
     </div>
   );
+}
+
+/** Test-only: drop the cached manifest (and the session flags). */
+export function resetStorytellerHomeForTests(): void {
+  resetBannerFigureForTests();
+  resetStorytellerSessionForTests();
 }
