@@ -38,12 +38,25 @@ export interface ColdTrailCase {
   sightings: [ColdTrailSighting, ColdTrailSighting, ColdTrailSighting];
 }
 
+/** A player-chosen ring center (lon/lat in WGS84, never pixels). */
+export interface ColdTrailRingCenter {
+  lon: number;
+  lat: number;
+}
+
 /** Per-case progress, persisted so a reload resumes mid-case. */
 export interface ColdTrailProgress {
   /** Per sighting index: has its ring been placed on the map? */
   ringsPlaced: [boolean, boolean, boolean];
   /** Per sighting index: did the informant tighten this ring (radius / 2)? */
   informantOn: [boolean, boolean, boolean];
+  /**
+   * Per sighting index: the PLAYER-chosen ring center; null until locked.
+   * Committed atomically with ringsPlaced[i] (see TrailScreen.onLockRing).
+   * The true anchor (sighting.cityLon/cityLat) is never stored here and
+   * never rendered pre-reveal — see buildEvidenceOverlays.
+   */
+  ringCenters: [ColdTrailRingCenter | null, ColdTrailRingCenter | null, ColdTrailRingCenter | null];
   /** The interception tap; null until the player taps the map. */
   guess: { lon: number; lat: number } | null;
   revealed: boolean;
@@ -53,7 +66,8 @@ export interface ColdTrailProgress {
 
 /** Whole Cold Trail blob, persisted as one JSON value. */
 export interface ColdTrailStore {
-  v: 1;
+  /** v2: ringCenters added (v1 saves are migrated once, then deleted). */
+  v: 2;
   /** Index into the generated deck of the current case. */
   caseIndex: number;
   /** Informant currency: 1 star tightens one ring 50%. */

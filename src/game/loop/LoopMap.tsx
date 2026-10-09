@@ -1,7 +1,7 @@
 import { useEffect, useRef, type JSX } from "react";
-import { Map as MLMap, type GeoJSONSource } from "maplibre-gl";
+import { Map as MLMap, Marker as MLMarker, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { formatDistance, initialBearing } from "@/game/geo";
+import { clampLat, formatDistance, initialBearing, normalizeLon } from "@/game/geo";
 import { playCelebrationSound } from "@/game/audio/play-guards";
 import { IMAGERY_TILES } from "@/map/imagery";
 import { LOOP_LABELS_ATTRIBUTION, LOOP_LABELS_TILES } from "./map-labels";
@@ -43,6 +43,14 @@ const MAX_TAP_KM = 150;
 
 const EMPTY_FC: GeoJSON.FeatureCollection = { type: "FeatureCollection", features: [] };
 
+/** Arrow-key nudge vectors: [dLon sign, dLat sign]. */
+const KEY_NUDGE: Record<string, [number, number]> = {
+  ArrowLeft: [-1, 0],
+  ArrowRight: [1, 0],
+  ArrowUp: [0, 1],
+  ArrowDown: [0, -1],
+};
+
 function prefersReducedMotion(): boolean {
   return (
     typeof window !== "undefined" &&
@@ -66,6 +74,13 @@ export interface TrailEvidenceRing {
   lat: number;
   radiusKm: number;
   label: string;
+  /**
+   * Draft (unconfirmed) ring: drawn dashed + lower opacity through the
+   * `loop-ring-line-preview` layer, excluded from the solid `loop-ring-line`
+   * layer by its filter. Dashed = "not locked yet" (shape-based, not
+   * color-only — safe for colorblind players).
+   */
+  preview?: boolean;
 }
 
 /** Cold-Trail evidence mark: "witness" = gold dot at the witness city,
@@ -97,6 +112,22 @@ interface LoopMapProps {
   evidenceMarks?: TrailEvidenceMark[];
   /** Override the map's aria-label (default describes the loop's tap model). */
   mapLabel?: string;
+  /**
+   * Cold-Trail placement mode (optional; the loop edition never sets these).
+   * While placementActive, map taps route to onPlacementTap (tap-to-move is
+   * the primary adjust verb), the cursor becomes a crosshair, arrow keys
+   * nudge the draft by a scale-aware step, and a draggable 🎯 marker renders
+   * at placementDraft as progressive enhancement.
+   */
+  placementActive?: boolean;
+  /** Tap while placementActive: position (or re-position) the draft ring. */
+  onPlacementTap?: (lon: number, lat: number) => void;
+  /** Draft ring center (player-tapped, unconfirmed); null hides the marker. */
+  placementDraft?: { lon: number; lat: number } | null;
+  /** Drag of the draft marker ended: adopt the marker's position as draft. */
+  onPlacementDrag?: (lon: number, lat: number) => void;
+  /** Arrow-key nudge while placementActive: absolute new draft center. */
+  onPlacementNudge?: (lon: number, lat: number) => void;
 }
 
 export function LoopMap({
@@ -111,9 +142,16 @@ export function LoopMap({
   evidenceRings,
   evidenceMarks,
   mapLabel,
+  placementActive,
+  onPlacementTap,
+  placementDraft,
+  onPlacementDrag,
+  onPlacementNudge,
 }: LoopMapProps): JSX.Element {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MLMap | null>(null);
+  const draftMarkerRef = useRef<MLMarker | null>(null);
+  const draftMarkerAddedRef = useRef(false);
   const gridRef = useRef<PlaceGrid | null>(null);
   const entriesRef = useRef<LoopNameEntry[] | null>(null);
   // Last tap timestamp (performance.now): the ≥300 ms double-tap guard for
@@ -122,13 +160,35 @@ export function LoopMap({
   // Refs mirror the props the map event handlers need (the handlers are
   // registered once; refs keep them reading current values). Written in an
   // effect, not during render (concurrent-mode safety).
-  const cbRef = useRef({ onSelectPlace, onEmptyTap, finished, freeTap, onMapTap });
-  const paintRef = useRef({ guesses, target, finished, evidenceRings, evidenceMarks });
+  const cbRef = useRef({
+    onSelectPlace,
+    onEmptyTap,
+    finished,
+    freeTap,
+    onMapTap,
+    placementActive,
+    onPlacementTap,
+    onPlacementDrag,
+    onPlacementNudge,
+    placementDraft,
+  });
+  const paintRef = useRef({ guesses, target, finished, evidenceRings, evidenceMarks, placementDraft });
   useEffect(() => {
-    cbRef.current = { onSelectPlace, onEmptyTap, finished, freeTap, onMapTap };
+    cbRef.current = {
+      onSelectPlace,
+      onEmptyTap,
+      finished,
+      freeTap,
+      onMapTap,
+      placementActive,
+      onPlacementTap,
+      onPlacementDrag,
+      onPlacementNudge,
+      placementDraft,
+    };
     // Paint inputs ride a ref too: the style-load handler fires at an
     // arbitrary time, long after the mount effect's closure went stale.
-    paintRef.current = { guesses, target, finished, evidenceRings, evidenceMarks };
+    paintRef.current = { guesses, target, finished, evidenceRings, evidenceMarks, placementDraft };
   });
 
   // Preload the guess index on mount so the first tap resolves instantly.
@@ -199,7 +259,8 @@ export function LoopMap({
     (container as unknown as { __loopMap?: MLMap }).__loopMap = map;
 
     const onClick = (e: { lngLat: { lng: number; lat: number }; point: { x: number; y: number } }) => {
-      const { onSelectPlace, onEmptyTap, finished, freeTap, onMapTap } = cbRef.current;
+      const { onSelectPlace, onEmptyTap, finished, freeTap, onMapTap, placementActive, onPlacementTap } =
+        cbRef.current;
       if (finished) return;
       // Pin-drop SFX (celebration spec §2.1–§2.2): a tap is accepted when it
       // lands with the camera idle and ≥300 ms since the last tap. A tap
@@ -214,6 +275,20 @@ export function LoopMap({
       lastTapAtRef.current = now;
       if (map.isMoving() || sinceLastTap < 300) {
         playCelebrationSound("pinDropFail");
+        return;
+      }
+      if (placementActive) {
+        // Cold-Trail placement mode: the tap IS the ring position — it
+        // plants the draft (placing) or re-positions it (adjusting;
+        // tap-to-move is the primary adjust verb). Routed AFTER the
+        // camera-idle / ≥300 ms double-tap guard above, so accidental
+        // double-taps are swallowed before they can jitter the draft.
+        // Placement and the intercept guess are mutually exclusive in
+        // TrailScreen, so this returns before the freeTap branch.
+        if (onPlacementTap) {
+          playCelebrationSound("pinDropPass");
+          onPlacementTap(normalizeLon(e.lngLat.lng), clampLat(e.lngLat.lat));
+        }
         return;
       }
       if (freeTap) {
@@ -264,6 +339,75 @@ export function LoopMap({
     };
     map.on("click", onClick);
 
+    // Cold-Trail draft marker (placement mode only): a draggable 🎯 pin at
+    // the unconfirmed draft center. Tap-to-move (map click) is the primary
+    // adjust verb; this marker is progressive enhancement for drag.
+    const draftEl = document.createElement("div");
+    draftEl.style.width = "44px";
+    draftEl.style.height = "44px";
+    draftEl.style.display = "flex";
+    draftEl.style.alignItems = "center";
+    draftEl.style.justifyContent = "center";
+    draftEl.style.fontSize = "26px";
+    draftEl.style.cursor = "grab";
+    // The drag must never pan the map underneath (walkthrough F5).
+    draftEl.style.touchAction = "none";
+    draftEl.textContent = "🎯";
+    draftEl.setAttribute("aria-hidden", "true");
+    const draftMarker = new MLMarker({ element: draftEl, draggable: true });
+    draftMarkerRef.current = draftMarker;
+    draftMarker.on("dragend", () => {
+      const cb = cbRef.current;
+      if (!cb.placementActive || !cb.onPlacementDrag) return;
+      const ll = draftMarker.getLngLat();
+      cb.onPlacementDrag(normalizeLon(ll.lng), clampLat(ll.lat));
+    });
+    // Click-through fix: the marker is a DOM element above the canvas, so
+    // taps landing on it never fire the map's click handler — which would
+    // silently break tap-to-move at exactly the marker's spot. Route them
+    // explicitly: a tap on the marker re-plants the draft at the tap point.
+    // (After a real drag, a trailing click lands ~at the dragend point, so
+    // this is a harmless no-op there.)
+    draftEl.addEventListener("click", (ev) => {
+      const cb = cbRef.current;
+      if (!cb.placementActive || !cb.onPlacementTap) return;
+      ev.stopPropagation();
+      const rect = container.getBoundingClientRect();
+      const mouse = ev as MouseEvent;
+      const ll = map.unproject([mouse.clientX - rect.left, mouse.clientY - rect.top]);
+      playCelebrationSound("pinDropPass");
+      cb.onPlacementTap(normalizeLon(ll.lng), clampLat(ll.lat));
+    });
+
+    // Arrow-key nudge for the draft (keyboard / low-motor path — required,
+    // not nice-to-have). Reads cbRef so the once-registered listener always
+    // sees the current draft. MapLibre's own keyboard pan is disabled while
+    // placement is active (see the effect below) so arrows never do both.
+    const onKeyDown = (e: KeyboardEvent) => {
+      const cb = cbRef.current;
+      if (!cb.placementActive || !cb.placementDraft || !cb.onPlacementNudge) return;
+      const step = KEY_NUDGE[e.key];
+      if (!step) return;
+      e.preventDefault();
+      e.stopPropagation();
+      // Scale-aware step: 2% of the visible map width in km, min 5 km. A
+      // fixed km step is sub-pixel on a world view (25 km ≈ 0.8 px at
+      // zoom 1.6). Converted to degrees at the draft latitude, clamped so
+      // the draft can't leave the map.
+      const lat = cb.placementDraft.lat;
+      const bounds = map.getBounds();
+      const widthKm =
+        Math.max(1, bounds.getEast() - bounds.getWest()) *
+        111.32 *
+        Math.cos((lat * Math.PI) / 180);
+      const stepKm = Math.max(5, 0.02 * widthKm);
+      const cosLat = Math.max(0.2, Math.cos((lat * Math.PI) / 180));
+      const lon = normalizeLon(cb.placementDraft.lon + (step[0] * stepKm) / (111.32 * cosLat));
+      const newLat = clampLat(cb.placementDraft.lat + (step[1] * stepKm) / 111.32);
+      cb.onPlacementNudge(lon, newLat);
+    };
+    container.addEventListener("keydown", onKeyDown);
+
     // Overlay sources + layers, added once the style loads. If the style
     // never loads (offline), the map stays interactive and taps still
     // resolve — the deduction surface just has nothing to draw on yet.
@@ -281,7 +425,27 @@ export function LoopMap({
           id: "loop-ring-line",
           type: "line",
           source: RING_SOURCE,
+          // Draft (preview) rings are excluded here — they render through
+          // loop-ring-line-preview below. Loop-edition rings carry no
+          // `preview` property, so this filter is a no-op for them.
+          filter: ["!=", ["get", "preview"], true],
           paint: { "line-color": GOLD, "line-width": 2.5, "line-opacity": 0.95 },
+        });
+      }
+      // Cold-Trail draft ring: dashed gold, slightly transparent — dashed =
+      // "not locked yet" (shape-based, colorblind-safe).
+      if (!map.getLayer("loop-ring-line-preview")) {
+        map.addLayer({
+          id: "loop-ring-line-preview",
+          type: "line",
+          source: RING_SOURCE,
+          filter: ["==", ["get", "preview"], true],
+          paint: {
+            "line-color": GOLD,
+            "line-width": 2,
+            "line-opacity": 0.75,
+            "line-dasharray": [6, 4],
+          },
         });
       }
       // Exact-km label at each ring's northmost point: the map is a
@@ -351,7 +515,9 @@ export function LoopMap({
           },
         });
       }
-      // Cold-Trail witness cities: gold dots anchoring the sighting rings.
+      // Cold-Trail witness marks: gold dots at the PLAYER's locked ring
+      // centers (never the true anchor pre-reveal — see TrailScreen's
+      // buildEvidenceOverlays). They help kids track their three rings.
       if (!map.getLayer("loop-witness")) {
         map.addLayer({
           id: "loop-witness",
@@ -388,7 +554,11 @@ export function LoopMap({
     });
 
     return () => {
+      container.removeEventListener("keydown", onKeyDown);
       map.off("click", onClick);
+      draftMarker.remove();
+      draftMarkerRef.current = null;
+      draftMarkerAddedRef.current = false;
       map.remove();
       mapRef.current = null;
     };
@@ -447,10 +617,12 @@ export function LoopMap({
     }
     // Cold-Trail evidence: witness rings (same ringPolygon geometry as the
     // loop's deduction surface) with km labels, plus witness/guess marks.
+    // Draft rings carry `preview: true` so they render through the dashed
+    // preview layer instead of the solid ring layer.
     for (const r of evidenceRings ?? []) {
       ringFeatures.push({
         type: "Feature",
-        properties: {},
+        properties: r.preview ? { preview: true } : {},
         geometry: ringPolygon(r.lon, r.lat, r.radiusKm),
       });
       ringFeatures.push({
@@ -480,11 +652,41 @@ export function LoopMap({
     });
   }
 
+  /** Sync the draggable draft marker with placementDraft. DOM markers don't
+   * need the style to be loaded, so placement works even when tiles are
+   * unreachable (offline) — unlike paintOverlays, which early-returns. */
+  function syncDraftMarker() {
+    const map = mapRef.current;
+    const marker = draftMarkerRef.current;
+    if (!map || !marker) return;
+    const draft = paintRef.current.placementDraft;
+    if (draft) {
+      marker.setLngLat([draft.lon, draft.lat]);
+      if (!draftMarkerAddedRef.current) {
+        marker.addTo(map);
+        draftMarkerAddedRef.current = true;
+      }
+    } else if (draftMarkerAddedRef.current) {
+      marker.remove();
+      draftMarkerAddedRef.current = false;
+    }
+  }
+
   // Repaint whenever the deduction surface changes.
   useEffect(() => {
     paintOverlays();
+    syncDraftMarker();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [guesses, target, finished, evidenceRings, evidenceMarks]);
+  }, [guesses, target, finished, evidenceRings, evidenceMarks, placementDraft]);
+
+  // While placement is active, MapLibre's own keyboard pan is disabled so
+  // arrow keys nudge the draft (handled above) instead of panning the map.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map) return;
+    if (placementActive) map.keyboard.disable();
+    else map.keyboard.enable();
+  }, [placementActive]);
 
   // Camera-jump handle for the search box.
   useEffect(() => {
@@ -511,11 +713,17 @@ export function LoopMap({
       ref={containerRef}
       data-testid="loop-map"
       role="application"
+      // Focusable while placement is active: entering placement moves focus
+      // here so arrow keys nudge the draft (keyboard path, WCAG 2.4.3).
+      tabIndex={placementActive ? -1 : undefined}
       aria-label={
         mapLabel ??
         "Detective's map. Pan and zoom to explore labeled places. Double-tap a label area to pick a place."
       }
-      className="h-[52dvh] min-h-[320px] w-full overflow-hidden rounded-2xl border border-line"
+      className={
+        "h-[52dvh] min-h-[320px] w-full overflow-hidden rounded-2xl border border-line" +
+        (placementActive ? " cursor-crosshair" : "")
+      }
     />
   );
 }

@@ -1,39 +1,66 @@
 import { useEffect, useRef, useState, type JSX } from "react";
-import { formatDistance } from "@/game/geo";
+import { clampLat, normalizeLon } from "@/game/geo";
 import { Button } from "@/components/ui/button";
 import { playConfirmGuess, playLose, playWin } from "@/game/audio/sfx";
-import { LoopMap, type TrailEvidenceMark, type TrailEvidenceRing } from "../loop/LoopMap";
+import { playCelebrationSound } from "@/game/audio/play-guards";
+import { LoopMap } from "../loop/LoopMap";
 import { coldtrailCaseCount, getColdtrailCase } from "./cases";
 import {
-  effectiveRadius,
   INFORMANT_COST,
   scoreIntercept,
   SOLVE_REWARD,
   verdictFor,
 } from "./engine";
-import { freshProgress, loadColdtrail, saveColdtrail } from "./store";
+import {
+  buildEvidenceOverlays,
+  nudgeDirection,
+  type PlacementDraft,
+} from "./placement";
+import { freshProgress, loadColdtrail, saveColdtrail, takeLegacyMigrationNotice } from "./store";
 import { InterceptConfirm } from "./InterceptConfirm";
 import { SightingCard } from "./SightingCard";
 import type { ColdTrailStore } from "./types";
 
 /**
- * Cold Trail vertical slice: one case = 3 timestamped sightings → place 3
- * radius rings → tap the interception guess → score reveal (km from the
- * true hideout).
+ * Cold Trail vertical slice: one case = 3 timestamped sightings → the player
+ * places 3 radius rings → taps the interception guess → score reveal (km
+ * from the true hideout).
+ *
+ * Placement mode (WS1 "Every Place Findable"): "📍 Place ring on map" arms
+ * the map for a sighting (crosshair, no ring yet); the player's tap plants
+ * an ephemeral draft ring; tap-to-move re-positions it (primary verb), a
+ * draggable 🎯 marker and arrow-key nudge are progressive enhancement; "Yes,
+ * keep it" commits the player's chosen center atomically with ringsPlaced.
+ * Pre-reveal, the map renders ONLY player-chosen coordinates — the true
+ * anchor (sighting.cityLon/cityLat) never reaches the render path.
  *
  * The map is the shared Detective's Atlas (LoopMap) in free-tap mode: taps
- * report raw coordinates instead of resolving to labeled places, and the
- * sighting rings are painted as evidence overlays. No place index is
- * fetched in this mode.
+ * report raw coordinates instead of resolving to labeled places. No place
+ * index is fetched in this mode.
  */
 export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   const [store, setStore] = useState<ColdTrailStore>(loadColdtrail);
   const [pending, setPending] = useState<{ lon: number; lat: number } | null>(null);
   const [hint, setHint] = useState<string | null>(null);
+  // Placement-mode state: ephemeral, NEVER persisted (a reload mid-placement
+  // returns to idle — a clean, non-dead state). `placing !== null && draft
+  // === null` ⟺ placing(i); `draft !== null` ⟺ adjusting(i).
+  const [placing, setPlacing] = useState<number | null>(null);
+  const [draft, setDraft] = useState<{ lon: number; lat: number } | null>(null);
   const caseHeadingRef = useRef<HTMLHeadingElement>(null);
   const resultHeadingRef = useRef<HTMLHeadingElement>(null);
   const prevRevealedRef = useRef(false);
   const prevCaseIndexRef = useRef<number | null>(null);
+  // Focus targets: each card's primary action button (place/cancel/confirm).
+  const cardActionRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  // Coarse pointer (touch): placement mode gets a static reticle overlay —
+  // there is no crosshair cursor on touch devices.
+  const [isCoarsePointer] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(pointer: coarse)").matches,
+  );
 
   const commit = (next: ColdTrailStore) => {
     saveColdtrail(next);
@@ -53,6 +80,13 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     }
     prevCaseIndexRef.current = caseIndexNow;
   }, [revealedNow, caseIndexNow]);
+
+  // One-time notice after a v1 save migrates (auto-placed rings are gone).
+  useEffect(() => {
+    if (takeLegacyMigrationNotice()) {
+      setHint("Rings work differently now — place yours!");
+    }
+  }, []);
 
   const deckSize = coldtrailCaseCount();
   const caseData = deckSize > 0 ? getColdtrailCase(store.caseIndex) : null;
@@ -77,42 +111,156 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   const allRingsPlaced = ringsPlacedCount === 3;
   const revealed = progress.revealed;
 
-  const evidenceRings: TrailEvidenceRing[] = caseData.sightings.flatMap((s, i) => {
-    if (!progress.ringsPlaced[i]) return [];
-    const radius = effectiveRadius(s, progress.informantOn[i]!);
-    return [
-      {
-        lon: s.cityLon,
-        lat: s.cityLat,
-        radiusKm: radius,
-        label: formatDistance(radius),
-      },
-    ];
-  });
-  const evidenceMarks: TrailEvidenceMark[] = [
-    ...caseData.sightings
-      .filter((_, i) => progress.ringsPlaced[i])
-      .map((s) => ({ lon: s.cityLon, lat: s.cityLat, kind: "witness" as const })),
-    ...(progress.guess ? [{ lon: progress.guess.lon, lat: progress.guess.lat, kind: "x" as const }] : []),
-  ];
+  // Render inputs derived by the pure, unit-tested buildEvidenceOverlays:
+  // locked rings + witness dots at PLAYER centers, draft ring as preview.
+  const draftForOverlay: PlacementDraft | null =
+    placing !== null && draft ? { index: placing, ...draft } : null;
+  const { rings: evidenceRings, marks: evidenceMarks } = buildEvidenceOverlays(
+    caseData,
+    progress,
+    draftForOverlay,
+  );
 
   const withProgress = (mutate: (p: typeof progress) => void): void => {
     const next = {
       ...progress,
       ringsPlaced: [...progress.ringsPlaced] as typeof progress.ringsPlaced,
       informantOn: [...progress.informantOn] as typeof progress.informantOn,
+      // Clone ringCenters too: the commit below must not mutate the previous
+      // progress object's array (React state immutability / I5 atomicity).
+      ringCenters: [...progress.ringCenters] as typeof progress.ringCenters,
     };
     mutate(next);
     commit({ ...store, current: next });
   };
 
+  const focusMap = () => {
+    document.querySelector<HTMLElement>('[data-testid="loop-map"]')?.focus();
+  };
+
+  // Enter placement mode for sighting i. Tapping another card's button
+  // mid-placement switches implicitly (UXA T5/T11): the in-flight draft is
+  // discarded — drafts are free, one tap to recreate.
   const onPlaceRing = (i: number) => {
-    if (revealed || progress.ringsPlaced[i]) return;
+    if (revealed) return;
+    if (placing === i) return;
+    if (placing !== null) {
+      setHint("Your ring draft was set aside — tap 📍 to place it again.");
+    } else {
+      setHint("Tap where you think the ring goes");
+    }
+    setPlacing(i);
+    setDraft(null);
+    focusMap();
+  };
+
+  // Placement tap from LoopMap (placing → adjusting, or tap-to-move while
+  // adjusting — the primary adjust verb). Coordinates are normalized here.
+  const onPlacementTap = (lon: number, lat: number) => {
+    if (revealed || placing === null) return;
+    const firstTap = draft === null;
+    setDraft({ lon: normalizeLon(lon), lat: clampLat(lat) });
+    if (firstTap) {
+      setHint("Tap the map to move the ring — then tap “Yes, keep it”.");
+    }
+  };
+
+  // Drag of the draft marker ended (progressive enhancement over tap-to-move).
+  const onPlacementDrag = (lon: number, lat: number) => {
+    if (revealed || placing === null) return;
+    setDraft({ lon: normalizeLon(lon), lat: clampLat(lat) });
+  };
+
+  // Arrow-key nudge from LoopMap (scale-aware step, computed there).
+  const onPlacementNudge = (lon: number, lat: number) => {
+    if (revealed || placing === null || draft === null) return;
+    setHint(`Ring moved ${nudgeDirection(lon - draft.lon, lat - draft.lat)}.`);
+    setDraft({ lon, lat });
+  };
+
+  // Commit the draft: atomic — ringCenters[i] and ringsPlaced[i] in one
+  // withProgress transaction (I5). Re-lock after Move works the same way.
+  const onLockRing = () => {
+    if (revealed || placing === null || draft === null) return;
+    const i = placing;
+    const center = draft;
+    const wasPlaced = progress.ringsPlaced[i]!;
     withProgress((p) => {
+      p.ringCenters[i] = { ...center };
       p.ringsPlaced[i] = true;
     });
-    setHint(null);
+    // The lock moment gets a chime (walkthrough F7) — the reward schedule
+    // of the place→adjust→lock loop is thin without it.
+    playCelebrationSound("toastChime");
+    setPlacing(null);
+    setDraft(null);
+    const locked = ringsPlacedCount + (wasPlaced ? 0 : 1);
+    if (locked === 3) {
+      setHint("All 3 rings are down — tap where they cross to set your interception.");
+    } else {
+      setHint(`Ring ${i + 1} locked. ${3 - locked} to go — tap 📍 Place ring on the next sighting.`);
+    }
+    // Focus the next unplaced card's action; when all 3 are down, the map
+    // (the next thing to tap) takes focus.
+    const nextRings = [...progress.ringsPlaced];
+    nextRings[i] = true;
+    const nextIdx = nextRings.findIndex((placed) => !placed);
+    if (nextIdx >= 0) cardActionRefs.current[nextIdx]?.focus();
+    else focusMap();
   };
+
+  // "Try again": discard the draft, re-arm the crosshair (back to placing(i)).
+  const onTryAgain = () => {
+    if (revealed || placing === null) return;
+    setDraft(null);
+    setHint("Tap where you think the ring goes");
+    focusMap();
+  };
+
+  const onCancelPlacement = () => {
+    if (placing === null) return;
+    const i = placing;
+    setPlacing(null);
+    setDraft(null);
+    setHint("Placement canceled — no ring placed.");
+    cardActionRefs.current[i]?.focus();
+  };
+
+  // "Move" on a confirmed ring: re-enter adjusting(i) with the draft planted
+  // at the current locked center; re-confirm re-locks (no cost, no penalty).
+  // Entering adjusting via Move clears a pending interception (O13): a
+  // pending guess predicated on 3 locked rings is void once one unlocks.
+  const onMoveRing = (i: number) => {
+    if (revealed || !progress.ringCenters[i]) return;
+    setPending(null);
+    setPlacing(i);
+    setDraft({ ...progress.ringCenters[i]! });
+    setHint("Tap the map to move the ring — then tap “Yes, keep it”.");
+    focusMap();
+  };
+
+  // Escape exits placement mode without locking (the touch path is the
+  // Cancel button; document-level so it works from any focused control).
+  useEffect(() => {
+    if (placing === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        onCancelPlacement();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  });
+
+  // Defensive: reveal requires 3 confirmed rings, so placing + revealed is
+  // unreachable — but abort any draft if revealed ever flips (UXA T12).
+  useEffect(() => {
+    if (revealed && placing !== null) {
+      setPlacing(null);
+      setDraft(null);
+    }
+  }, [revealed, placing]);
 
   const onInformant = (i: number) => {
     if (revealed || !progress.ringsPlaced[i] || progress.informantOn[i]) return;
@@ -124,16 +272,25 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
       ...progress,
       ringsPlaced: [...progress.ringsPlaced] as typeof progress.ringsPlaced,
       informantOn: [...progress.informantOn] as typeof progress.informantOn,
+      ringCenters: [...progress.ringCenters] as typeof progress.ringCenters,
     };
     next.informantOn[i] = true;
     commit({ ...store, stars: store.stars - INFORMANT_COST, current: next });
     setHint("🎙️ The informant tightened that ring to half its radius.");
   };
 
-  // Map tap: the interception guess (only once all 3 rings are placed).
+  // Map tap: the interception guess (only once all 3 rings are locked).
+  // While a ring is placing/adjusting, taps are routed to onPlacementTap by
+  // LoopMap and never reach here — the defensive branch below documents the
+  // intended copy for that (unreachable) case.
   const onMapTap = (lon: number, lat: number) => {
     if (revealed) return;
     if (!allRingsPlaced) {
+      if (placing !== null) {
+        const n = progress.ringsPlaced.findIndex((placed) => !placed);
+        setHint(`Confirm ring ${n + 1} first — then tap your interception.`);
+        return;
+      }
       setHint("Place all 3 rings first — one per sighting card.");
       return;
     }
@@ -166,10 +323,13 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   const onNextCase = () => {
     setPending(null);
     setHint(null);
+    setPlacing(null);
+    setDraft(null);
     commit({ ...store, caseIndex: store.caseIndex + 1, current: freshProgress() });
   };
 
   const verdict = progress.scoreKm !== null ? verdictFor(progress.scoreKm) : null;
+  const placingNow = placing !== null;
 
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8" data-testid="coldtrail-screen">
@@ -204,6 +364,15 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             revealed={revealed}
             onPlaceRing={() => onPlaceRing(i)}
             onInformant={() => onInformant(i)}
+            placingActive={placing === i}
+            draftSet={placing === i && draft !== null}
+            onLockRing={onLockRing}
+            onTryAgain={onTryAgain}
+            onCancelPlacement={onCancelPlacement}
+            onMoveRing={() => onMoveRing(i)}
+            actionRef={(el) => {
+              cardActionRefs.current[i] = el;
+            }}
           />
         ))}
       </section>
@@ -212,30 +381,82 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
         <p className="text-sm text-muted" role="status">
           {revealed
             ? "Case closed — the gold star marks the hideout."
-            : `Rings placed: ${ringsPlacedCount} of 3`}
+            : allRingsPlaced
+              ? "All 3 rings are down — tap where they cross to set your interception."
+              : `Rings placed: ${ringsPlacedCount} of 3`}
         </p>
-        <LoopMap
-          guesses={[]}
-          target={{ lon: caseData.hideout.lon, lat: caseData.hideout.lat }}
-          finished={revealed}
-          freeTap
-          onMapTap={onMapTap}
-          evidenceRings={evidenceRings}
-          evidenceMarks={evidenceMarks}
-          mapLabel="Cold Trail map. Place all three sighting rings, then tap where they cross to set your interception."
-          onSelectPlace={() => {}}
-          onEmptyTap={() => {}}
-        />
+        <div className="relative">
+          <LoopMap
+            guesses={[]}
+            target={{ lon: caseData.hideout.lon, lat: caseData.hideout.lat }}
+            finished={revealed}
+            freeTap
+            onMapTap={onMapTap}
+            evidenceRings={evidenceRings}
+            evidenceMarks={evidenceMarks}
+            mapLabel={
+              placingNow
+                ? `Cold Trail map — placing the ring for sighting ${placing! + 1}. Tap the map where you think the ring goes.`
+                : "Cold Trail map. Place each sighting ring where you think the witness saw the smuggler, then tap where the rings cross to set your interception."
+            }
+            placementActive={placingNow}
+            onPlacementTap={onPlacementTap}
+            placementDraft={draft}
+            onPlacementDrag={onPlacementDrag}
+            onPlacementNudge={onPlacementNudge}
+            onSelectPlace={() => {}}
+            onEmptyTap={() => {}}
+          />
+          {placingNow && draft === null ? (
+            <>
+              {/* Armed-map signal: dashed gold border while waiting for the
+                  first tap. Static (no pulse) — reduced-motion safe. The hint
+                  banner carries the meaning; this is aria-hidden. */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-2 rounded-xl border-2 border-dashed border-[#C9A227]"
+              />
+              {/* Touch devices have no crosshair cursor: a decorative reticle
+                  at map center orients the eye. Taps land where the finger
+                  lands, not at the reticle. */}
+              {isCoarsePointer ? (
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl text-[#C9A227]"
+                >
+                  ⊕
+                </div>
+              ) : null}
+            </>
+          ) : null}
+        </div>
         {!revealed ? (
           <p className="text-xs text-muted" aria-hidden="true">
             <span className="text-gold-ink">gold ring</span>&thinsp;=&thinsp;witness sighting radius
+            {placingNow ? (
+              <>
+                &ensp;·&ensp;<span className="text-gold-ink">dashed ring</span>&thinsp;=&thinsp;your draft — not locked yet
+              </>
+            ) : null}
             &ensp;·&ensp;tap where the rings cross to intercept
           </p>
         ) : null}
         {hint ? (
-          <p role="status" data-testid="map-hint" className="text-sm text-fg">
-            {hint}
-          </p>
+          <div className="flex items-center justify-between gap-3">
+            <p role="status" data-testid="map-hint" className="text-sm text-fg">
+              {hint}
+            </p>
+            {placingNow ? (
+              <button
+                type="button"
+                data-testid="cancel-placement-banner-btn"
+                onClick={onCancelPlacement}
+                className="min-h-[44px] shrink-0 px-3 text-sm text-muted underline"
+              >
+                Cancel
+              </button>
+            ) : null}
+          </div>
         ) : null}
       </section>
 

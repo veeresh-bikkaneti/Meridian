@@ -107,6 +107,26 @@ export function disk(lon: number, lat: number, radiusKm: number, steps = 28): Lo
   return ring;
 }
 
+/**
+ * Wrap a longitude into [-180, 180]. MapLibre's unproject can return wrapped
+ * values (e.g. 190 for -170); persisted/player coordinates are always stored
+ * normalized so reloads and comparisons behave.
+ */
+export function normalizeLon(lon: number): number {
+  let v = lon % 360;
+  if (v > 180) v -= 360;
+  if (v < -180) v += 360;
+  return v === 0 ? 0 : v; // avoid -0
+}
+
+/**
+ * Clamp a latitude into [min, max]. Default ±85 keeps ring/drag math inside
+ * the Web-Mercator-safe band; storage load uses ±90 for robustness.
+ */
+export function clampLat(lat: number, min = -85, max = 85): number {
+  return Math.min(max, Math.max(min, lat));
+}
+
 export function formatDistance(km: number): string {
   if (!Number.isFinite(km)) return "—";
   if (km < 1) return `${Math.max(0, Math.round(km * 1000))} m`;
