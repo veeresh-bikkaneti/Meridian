@@ -69,6 +69,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { composeCardStory, factText, lintCard } from "./card-compose.mjs";
+import { readFactIndex, withFact } from "./facts-ladder.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO = dirname(HERE);
@@ -313,7 +314,14 @@ function auditChunks(chunksDir) {
 
   for (const file of files) {
     const chunk = JSON.parse(readFileSync(join(chunksDir, file), "utf8"));
-    for (const p of chunk.places ?? []) {
+    // Facts live in derived per-region indexes now (scripts/facts-ladder.mjs);
+    // overlay them so fact-first cards are audited exactly as the runtime renders them.
+    const regionId = file.slice(0, -".json".length);
+    const factIndex = readFactIndex(regionId);
+    const places = (chunk.places ?? []).map((p) =>
+      factIndex && p.id && factIndex.facts[p.id] ? withFact(p, factIndex.facts[p.id]) : p,
+    );
+    for (const p of places) {
       stats.total++;
       // Curated-note checks run FIRST and regardless of grandfathering: an
       // embedded curated note is a pipeline-era record, not legacy backlog.

@@ -1517,6 +1517,15 @@
   font-size: 14px;
   text-decoration: underline;
   text-underline-offset: 2px;
+  /* 44px touch target: inline-block with padding (frontend review P1) */
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+  padding: 0 8px;
+  margin: 0 -8px;
+  /* shrink-wrap inside the stretched flex column: the negative margin
+     must not force horizontal overflow at 390px (frontend review P1) */
+  align-self: flex-start;
 }
 
 .result-subscript {

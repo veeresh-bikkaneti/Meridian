@@ -74,9 +74,14 @@ interface ChunkPlaceRecord {
    */
   history?: unknown;
   /**
-   * Optional fact-ladder hook (scripts/facts-ladder.mjs): { text, kind,
-   * source, qid?, href? }. Takes precedence over `history` in the card
-   * composition (see toStarter); the AI fallback treats it like history.
+   * Optional fact-ladder hook: { text, kind, source, qid?, href? }.
+   * Shipped in derived per-region indexes
+   * (src/game/data/geonames/facts/<regionId>.json, written by
+   * scripts/facts-ladder.mjs) and overlaid onto chunk places at load time
+   * by applyFactIndex — chunks themselves never carry facts.
+   * Takes precedence over `history` in the card composition (see toStarter);
+   * the AI fallback treats it like history.
+   * Per-kind attribution (Wikidata / EB1911 links) via factAttribution().
    */
   fact?: unknown;
   /**
@@ -123,6 +128,50 @@ function factText(fact: unknown): string | null {
   return null;
 }
 
+/**
+ * Per-kind source attribution for a fact-ladder fact. Tolerant by design:
+ * returns null unless the fact is a well-formed wikidata/eb1911 object, in
+ * which case the caller links the actual source (Wikidata entity /
+ * Wikisource page). wikitext/hook kinds and anything unrecognized fall
+ * through to the caller's default Wikipedia attribution. Never throws —
+ * the build-time gate (scripts/check-generated-places.mjs) is the strict
+ * layer; the runtime stays fail-closed.
+ */
+function factAttribution(
+  fact: unknown,
+): { sourceLabel: string; sourceHref: string } | null {
+  if (!fact || typeof fact !== "object") return null;
+  const f = fact as { kind?: unknown; qid?: unknown; href?: unknown };
+  if (
+    f.kind === "wikidata" &&
+    typeof f.qid === "string" &&
+    /^Q\d+$/.test(f.qid)
+  ) {
+    return {
+      sourceLabel: "Wikidata",
+      sourceHref: `https://www.wikidata.org/wiki/${f.qid}`,
+    };
+  }
+  if (
+    f.kind === "eb1911" &&
+    typeof f.href === "string" &&
+    f.href.startsWith("https://en.wikisource.org/")
+  ) {
+    return { sourceLabel: "EB1911", sourceHref: f.href };
+  }
+  // Wikipedia-sourced facts (wikitext/hook) may carry their own article href
+  // when the chunk has no wiki slug — use it so the CC BY-SA attribution
+  // still links the source article. Only en.wikipedia.org URLs accepted.
+  if (
+    (f.kind === "wikitext" || f.kind === "hook") &&
+    typeof f.href === "string" &&
+    /^https:\/\/en\.wikipedia\.org\/wiki\//.test(f.href)
+  ) {
+    return { sourceLabel: "GeoNames · Wikipedia", sourceHref: f.href };
+  }
+  return null;
+}
+
 /** Starter-shaped view of one validated generated place. The blurb is the factual one-liner. */
 function toStarter(
   place: {
@@ -148,8 +197,7 @@ function toStarter(
      * non-empty string — the label builder fails closed otherwise.
      */
     subdivision?: unknown;
-  },
-  edition: Edition,
+  },  edition: Edition,
   regionId: string,
 ): Starter {
   // Difficulty: prefer the pipeline-stamped tier when it is a valid integer
@@ -188,9 +236,14 @@ function toStarter(
     // The fact text travels too — the AI fallback treats a non-empty fact
     // the same as history (skip). Null when absent, never the raw object.
     fact: factText(place.fact),
-    sourceLabel: hasWiki ? "GeoNames · Wikipedia" : GENERATED_SOURCE_LABEL,
-    sourceHref: hasWiki ? `https://en.wikipedia.org/wiki/${place.wiki}` : GENERATED_SOURCE_HREF,
-    difficulty,
+    // Per-kind attribution: a well-formed wikidata/eb1911 fact links its
+    // actual source; everything else keeps the existing Wikipedia behavior.
+    ...(factAttribution(place.fact) ?? {
+      sourceLabel: hasWiki ? "GeoNames · Wikipedia" : GENERATED_SOURCE_LABEL,
+      sourceHref: hasWiki
+        ? `https://en.wikipedia.org/wiki/${place.wiki}`
+        : GENERATED_SOURCE_HREF,
+    }),    difficulty,
     // The subdivision display name travels only when the pipeline stamped a
     // real one — absent means unknown, and the label builder fails closed.
     ...(subdivision !== undefined ? { subdivision } : {}),
@@ -272,6 +325,10 @@ function assertValidRecord(
       throw new Error(`${where}: invalid history hook sentence`);
     }
   }
+  // Merged facts (scripts/facts-ladder.mjs): the merge-time no-fabrication
+  // gate proved each one; the load-time check below rejects hand-edited
+  // corruption strictly (throws on a bad fact), while rendering stays
+  // tolerant via factText()/factAttribution() (never throws).
   if (record.wiki !== undefined && (typeof record.wiki !== "string" || record.wiki.length === 0)) {
     throw new Error(`${where}: invalid wiki slug`);
   }
@@ -381,6 +438,64 @@ export function aggregateChunkIds(edition: Edition, regionId: string): string[] 
 const chunkCache = new Map<string, Promise<Starter[]>>();
 
 /**
+ * Derived fact index, as written by scripts/facts-ladder.mjs
+ * (src/game/data/geonames/facts/<regionId>.json):
+ * { regionId, facts: { placeId: fact } }. The index is optional per region —
+ * most regions have no facts yet.
+ */
+interface FactIndexShape {
+  regionId: unknown;
+  facts: unknown;
+}
+
+/**
+ * Overlay a region's derived fact index onto its chunk places, reproducing
+ * exactly what the old in-chunk merge wrote: the fact is attached and the
+ * hookMissing marker cleared (a place with a fact is never hook-missing).
+ * Returns a new chunk object; the imported module is never mutated.
+ * A present-but-malformed index fails closed (throws) — never a silently
+ * partial overlay. Exported for unit tests.
+ */
+export function applyFactIndex(
+  chunk: { meta?: unknown; places: Array<{ id?: unknown; fact?: unknown; hookMissing?: unknown }> },
+  index: unknown,
+  regionId: string,
+): { meta?: unknown; places: Array<{ id?: unknown; fact?: unknown; hookMissing?: unknown }> } {
+  if (index === null || index === undefined) return chunk;
+  const idx = index as FactIndexShape;
+  if (idx.regionId !== regionId) {
+    throw new Error(`fact index regionId ${JSON.stringify(idx.regionId)} !== "${regionId}"`);
+  }
+  if (!idx.facts || typeof idx.facts !== "object" || Array.isArray(idx.facts)) {
+    throw new Error(`fact index for "${regionId}": facts is not an object`);
+  }
+  const facts = idx.facts as Record<string, unknown>;
+  const places = chunk.places.map((place) => {
+    if (typeof place.id !== "string") return place;
+    const fact = facts[place.id];
+    if (fact === undefined) return place;
+    const out = { ...place, fact };
+    delete out.hookMissing;
+    return out;
+  });
+  return { ...chunk, places };
+}
+
+/**
+ * Load a region's derived fact index, or null when the region has none.
+ * A missing index means "no facts" (not an error); a present-but-malformed
+ * index fails closed inside applyFactIndex.
+ */
+async function loadFactIndex(regionId: string): Promise<unknown> {
+  try {
+    const mod = await import(`./data/geonames/facts/${regionId}.json`, { with: { type: "json" } });
+    return (mod as { default: unknown }).default;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Load the generated starters for one region, fetching its chunk on first
  * use. Rejects fail-closed on unknown region, missing chunk, or malformed
  * data — callers must NOT start a run when this rejects.
@@ -390,8 +505,17 @@ export async function loadRegionChunk(regionId: string): Promise<Starter[]> {
   manifestRegionFor(regionId);
   let pending = chunkCache.get(regionId);
   if (!pending) {
-    pending = import(`./data/geonames/chunks/${regionId}.json`, { with: { type: "json" } })
-      .then((mod) => startersFromChunk(regionId, (mod as { default: unknown }).default))
+    pending = Promise.all([
+      import(`./data/geonames/chunks/${regionId}.json`, { with: { type: "json" } }),
+      loadFactIndex(regionId),
+    ])
+      .then(([chunkMod, factIndex]) => {
+        const chunkJson = (chunkMod as { default: unknown }).default as {
+          meta?: unknown;
+          places: ChunkPlaceRecord[];
+        };
+        return startersFromChunk(regionId, applyFactIndex(chunkJson, factIndex, regionId));
+      })
       .catch((err: unknown) => {
         chunkCache.delete(regionId);
         throw new Error(`failed to load GeoNames chunk "${regionId}": ${(err as Error).message}`, {
