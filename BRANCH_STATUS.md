@@ -386,3 +386,10 @@ walk (Option B — Game Designer + UI/UX Expert reconciled spec).
 
 ### Pending (coordinator)
 - Push `fix/kofi-cloud-mobile` + open PR #111 (DO NOT merge — owner merges).
+
+## Follow-up 2026-10-09 — owner's direction: tour covers the grown-up lock + kid-friendly "what you get" copy
+- Game Designer wrote final copy (all slots, kid-simple, "ask a grown-up" preserved).
+- `showCloud` now true during mobile `tour` mode (session-gated via `askVisible`); walker interactive during tour; skip button and tour settle unchanged.
+- Gate sub now answers "what does my coffee buy": "Your coffee keeps every game, every map, and every mystery free for kids. Thank you! 💛"
+- Tester: 26/26 manual mobile checks pass, zero console errors; one stale desktop spec assertion fixed (line 250).
+- Remaining e2e failures all proven pre-existing on pristine base (font-metric/viewport flakes + walker/comet position).

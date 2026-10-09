@@ -247,7 +247,7 @@ test("tapping grandpa opens the Ko-fi workflow inside the cloud", async ({
   const gate = page.getByTestId("grandpa-cloud-gate");
   await expect(gate).toBeVisible();
   await expect(gate).toContainText("You're leaving Meridian to visit Ko-fi. Ask a grown-up!");
-  await expect(gate).toContainText("Meridian is free forever");
+  await expect(gate).toContainText("Your coffee keeps every game, every map, and every mystery free for kids");
   // UX: focus lands on Continue the moment the gate opens.
   await expect(page.getByTestId("grandpa-cloud-continue")).toBeFocused();
   expect(page.url()).toBe(APP);
