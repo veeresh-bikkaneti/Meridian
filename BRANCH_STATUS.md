@@ -11,6 +11,16 @@ Standing rules: PRs only, owner merges; named-file staging only; gates before ha
 - Pre-push gates pending on final head (tsc, npm test, lint-cards, build:pages).
 - Do NOT merge — PR #111 open, owner merges.
 
+- Post-rebase gates (final head, 2026-10-09):
+  - `npx tsc --noEmit` — clean.
+  - `node scripts/lint-cards.mjs` — GATE PASSED (124,690 records).
+  - `npm run build:pages` — green.
+  - `npm test` — 970/970 pass, 0 fail.
+- Locked-copy check: the 3 architect-flagged strings byte-identical to
+  origin/main (em-dash title, "Your support..." sub, full aria-label).
+  Note: gate dialog aria-label is `Help Meridian on Ko-fi` on this branch
+  vs `Support Meridian on Ko-fi` on main — NOT architect-flagged; left as is.
+
 ## Done
 - Branch created off origin/main @ f07dad3.
 - PBI-1: `src/map/capability.ts` — qualification module (order: manual toggle >
