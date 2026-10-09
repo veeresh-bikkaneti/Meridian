@@ -593,9 +593,10 @@
 }
 
 /* Tasting-tour mode (mobile only): the cloud is visible from the FIRST beat
- * of the walk — the beat machine never reaches "seated" during the tour, so
- * without this the ask would sit hidden the whole walk. Transition mirrors
- * the seated reveal so the pop-in feels identical.
+ * of the walk. The beat machine never reaches "seated" during the tour, so
+ * this rule makes the reveal explicit rather than relying on the mobile
+ * media query alone. Transition mirrors the seated reveal so the pop-in
+ * feels identical.
  *
  * Positioning: the parked walker sits at the strip's right edge, so a
  * bubble centered on him would hang off-viewport (measured ~46px clipped at

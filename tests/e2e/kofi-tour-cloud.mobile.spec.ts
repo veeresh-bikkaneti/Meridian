@@ -12,7 +12,7 @@ import { serveBuiltArtifact } from "./helpers";
  * the sip animation runs its full 800ms dwell, and the tour completes with
  * the cloud still visible once seated.
  *
- * Runs in the "mobile" project (testMatch: /mobile\.spec\.ts/ → viewport
+ * Runs in the "mobile" project (testMatch: /mobile[^/]*\.spec\.ts/ → viewport
  * 390x844, hasTouch, isMobile).
  *
  * Build requirement: the test artifact must be built with the Ko-fi URL, e.g.
