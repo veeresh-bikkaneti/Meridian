@@ -226,10 +226,9 @@ export function ResultCard({
   const continueWrapRef = useRef<HTMLDivElement>(null);
   // Storyteller v1: the session's first story reveal auto-narrates (T1 —
   // gesture-gated); every later reveal is text + speaker button. Claimed
-  // once per session — a reload is a new session.
-  // Storyteller home handoff (H1): the home greeting consumes the session's
-  // one auto-narration (copy §5) — story cards later that session are text
-  // + speaker button only (no double-audio).
+  // once per session — a reload is a new session. Home no longer consumes
+  // the session flag (owner 2026-10-09), so the check below is a no-op
+  // retained for safety.
   const storytellerAuto = useMemo(
     () => !isSessionAutoNarrationConsumed() && claimFirstRevealNarration(),
     [],
