@@ -105,6 +105,20 @@ test("grandpa is seated and fully static under reduced motion", async ({
   );
   expect(parseFloat(bubbleOpacity)).toBeGreaterThan(0.9);
 
+  // Viewport overflow under reduced motion (AGENTS.md rule #1): the
+  // reduced-motion !important translate(-50%) previously re-clipped the
+  // right-anchored bubble — assert it stays fully on-screen.
+  {
+    const bbox = await bubble.boundingBox();
+    expect(bbox, "cloud has a bounding box (reduced motion seated)").not.toBeNull();
+    const vp = page.viewportSize()!;
+    expect(bbox!.x, "cloud left edge on-screen (reduced motion seated)").toBeGreaterThanOrEqual(-2);
+    expect(
+      bbox!.x + bbox!.width,
+      "cloud right edge on-screen (reduced motion seated)",
+    ).toBeLessThanOrEqual(vp.width + 2);
+  }
+
   // No head movement: moving the pointer leaves the pupils alone.
   const pupils = page.getByTestId("grandpa-pupils");
   const pupilTransform = () =>
