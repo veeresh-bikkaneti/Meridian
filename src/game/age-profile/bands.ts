@@ -32,6 +32,7 @@ export const AGE_BANDS: Record<AgeBandId, AgeBand> = {
     difficulty: {
       toleranceMultiplier: 1.5,
       startingClues: null, // GeoDetective is locked for this band
+      guessCap: null, // GeoDetective is locked for this band
       quizQuestions: 5,
       terrainImages: 4,
       capitalQuestions: null, // locked
@@ -60,6 +61,7 @@ export const AGE_BANDS: Record<AgeBandId, AgeBand> = {
     difficulty: {
       toleranceMultiplier: 1.25,
       startingClues: 3,
+      guessCap: 6,
       quizQuestions: 8,
       terrainImages: 6,
       capitalQuestions: 8,
@@ -89,6 +91,7 @@ export const AGE_BANDS: Record<AgeBandId, AgeBand> = {
     difficulty: {
       toleranceMultiplier: 1.0,
       startingClues: 1,
+      guessCap: 5,
       quizQuestions: 12,
       terrainImages: 8,
       capitalQuestions: 12,

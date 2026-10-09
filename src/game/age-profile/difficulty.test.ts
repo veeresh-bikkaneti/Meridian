@@ -4,6 +4,7 @@ import {
   toleranceMultiplier,
   pinToleranceKm,
   geodetectiveConfig,
+  maxGuessCap,
   roundLengths,
   audioMode,
   mapLabelDensity,
@@ -12,6 +13,7 @@ import {
   isLoopLocked,
   bandScoreMultiplier,
 } from "./difficulty.ts";
+import { AGE_BAND_IDS } from "./bands.ts";
 
 test("tolerance multipliers: x1.5 / x1.25 / x1.0", () => {
   assert.equal(toleranceMultiplier("5-7"), 1.5);
@@ -75,6 +77,14 @@ test("locked-band fail-safe: fallback is the easiest unlocked deal, never the ha
     fallback.guessCap >= hardest.guessCap,
     "fallback allows at least as many guesses as the hardest deal",
   );
+});
+
+test("maxGuessCap: derived from the band table — the 8-10 deal sets the validator bound", () => {
+  assert.equal(maxGuessCap(), 6);
+  for (const id of AGE_BAND_IDS) {
+    const cfg = geodetectiveConfig(id);
+    if (cfg) assert.ok(cfg.guessCap <= maxGuessCap(), `${id}: no deal may exceed maxGuessCap`);
+  }
 });
 
 test("round lengths per Phase 1 §3c", () => {

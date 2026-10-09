@@ -57,6 +57,45 @@ this file was rewritten.
   `node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green ·
   no `console.*` introduced.
 
+## P0 fixes — architect review on the age-profile deal integration (2026-10-08)
+
+Two P0s, both in the loop deal-config integration (zero coverage there):
+
+- **P0-1 — 8-10's 6-guess deal vs the store validator.** `isLoopPuzzleState`
+  (loop/store.ts) hard-required `guesses.length <= LOOP_MAX_GUESSES` (5),
+  but the 8-10 deal plays 6 guesses — `writeLoopStoreV2` silently dropped
+  any 8-10 mystery resolved on the 6th guess (win or loss), so reload
+  resurrected it at 5 guesses "playing", replayable forever.
+  Fix: guess caps now live in the band table
+  (`BandDifficulty.guessCap`: 5-7=null, 8-10=6, 11-13=5; bands.ts);
+  `geodetectiveConfig()` reads the table instead of a ternary; new
+  `maxGuessCap()` (difficulty.ts, exported via the facade) derives the max
+  deal cap from the table; the validator bounds `guesses.length` by it
+  (loop/store.ts). Retuning a cap in bands.ts moves the bound automatically.
+- **P0-2 — resume re-read the live band's deal → soft-lock.** The screen's
+  deal config (`activeDealConfig`) fell back to `geodetectiveConfig(resolveBand())`
+  whenever the in-memory capture was null — which is exactly the remount/resume
+  case. An 8-10 mystery at 5 wrong guesses resumed under a band changed to
+  11-13 (cap 5) made `submitGuess` no-op forever — no win/loss/abandon path,
+  deck index lost.
+  Fix: the deal-time config is persisted on the puzzle state at deal time
+  (`LoopPuzzleState.dealStartClues`/`dealMaxGuesses`, optional — pre-snapshot
+  stores fall back to the live band); `freshLoopPuzzleState` takes
+  `(index, cycle, startClues, maxGuesses)` and snapshots both (all three deal
+  sites pass the captured config's `startingClues` + `guessCap`); new
+  `persistedDealConfig()` in LoopScreen resolves the store snapshot, and
+  `activeDealConfig` now prefers it between the in-memory capture and the
+  live band: `dealConfig ?? persistedDealConfig(store.current) ?? live ?? SAFE_DEAL_FALLBACK`.
+- Tests (10 new/updated, all green): engine `maxGuesses:6` resolves on the
+  6th guess (win + loss, 7th no-ops); 6-guess win AND loss survive the
+  `writeLoopStoreV2` round-trip; 11-13 control (5-guess loss persists,
+  7-guess blobs still rejected + dropped); resume-under-changed-band keeps
+  the deal-time cap and never soft-locks (win and loss variants, asserting
+  the live-band path no-ops — the old bug); pre-snapshot fallback;
+  `maxGuessCap()` derivation; validator bound now 6-accepting/7-rejecting.
+- Gates re-verified on the c53a658-based tree: tsc clean · `npm test` 912/912 ·
+  lint-cards GATE PASSED · `npm run build:pages` green.
+
 ## Deviations from Phase 1/2 (all documented in the Phase 3 report)
 
 1. Globe 8-10 tolerance is 937.5 km exactly (750×1.25); the Phase 1 table

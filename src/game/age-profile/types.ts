@@ -39,6 +39,8 @@ export interface BandDifficulty {
   toleranceMultiplier: number;
   /** GeoDetective starting clues; null when the loop is locked for the band. */
   startingClues: number | null;
+  /** GeoDetective guess cap; null when the loop is locked for the band. */
+  guessCap: number | null;
   /** Quiz round questions; the endless run ignores this (see difficulty.ts). */
   quizQuestions: number;
   /** Terrain Detective images per round. */

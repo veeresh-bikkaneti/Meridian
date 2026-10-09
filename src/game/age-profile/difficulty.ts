@@ -11,7 +11,7 @@
  */
 
 import type { AgeBandId, AudioMode, LoopId } from "./types.ts";
-import { AGE_BANDS, FULL_ACCESS_BAND, bandHasLoop } from "./bands.ts";
+import { AGE_BAND_IDS, AGE_BANDS, FULL_ACCESS_BAND, bandHasLoop } from "./bands.ts";
 
 export type PinEdition = "state" | "country" | "globe";
 
@@ -60,18 +60,34 @@ export interface GeoDetectiveConfig {
 /**
  * GeoDetective clue deal for a band (Phase 1 §3b), or null when the loop
  * is locked for the band (5-7). 8-10 starts with 3/5 clues and a cap of 6;
- * 11-13 starts near-blind (1) with a tighter cap of 5.
+ * 11-13 starts near-blind (1) with a tighter cap of 5. Caps live in the
+ * band table (bands.ts) — retune there, never here.
  */
 export function geodetectiveConfig(band: AgeBandId | null): GeoDetectiveConfig | null {
   const effective: AgeBandId = band ?? FULL_ACCESS_BAND;
-  const startingClues = AGE_BANDS[effective].difficulty.startingClues;
-  if (startingClues === null) return null;
+  const d = AGE_BANDS[effective].difficulty;
+  if (d.startingClues === null || d.guessCap === null) return null;
   return {
-    startingClues,
+    startingClues: d.startingClues,
     cluePerWrongGuess: 1,
     maxClues: 5,
-    guessCap: effective === "8-10" ? 6 : 5,
+    guessCap: d.guessCap,
   };
+}
+
+/**
+ * The largest guess cap any band's deal can legally produce (currently 6,
+ * from the 8-10 deal). The loop store validator bounds `guesses.length` by
+ * this — NOT by the shipped LOOP_MAX_GUESSES default — so a mystery
+ * resolved on the 8-10 deal's 6th guess always persists instead of being
+ * silently dropped. Derived from the band table: retuning a cap in
+ * bands.ts automatically moves the validation bound.
+ */
+export function maxGuessCap(): number {
+  return AGE_BAND_IDS.reduce((max, id) => {
+    const cap = AGE_BANDS[id].difficulty.guessCap;
+    return cap === null ? max : Math.max(max, cap);
+  }, 0);
 }
 
 export interface RoundLengths {

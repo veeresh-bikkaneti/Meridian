@@ -83,6 +83,33 @@ const SAFE_DEAL_FALLBACK: GeoDetectiveConfig = geodetectiveConfig("8-10") ?? {
   maxClues: 5 as const,
   guessCap: 6,
 };
+<<<<<<< HEAD
+=======
+
+/**
+ * Deal-time config persisted on the open mystery (P0-2): survives
+ * remount/resume, so a mid-mystery band change can never soft-lock the
+ * mystery under a smaller cap (an 8-10 mystery at 5 wrong guesses resumed
+ * under 11-13 keeps its cap of 6 — the 6th guess still wins or loses it).
+ * Null for pre-snapshot stores — the caller falls back to the live band.
+ */
+function persistedDealConfig(puzzle: LoopPuzzleState | null): GeoDetectiveConfig | null {
+  if (
+    !puzzle ||
+    puzzle.dealStartClues === undefined ||
+    puzzle.dealMaxGuesses === undefined
+  ) {
+    return null;
+  }
+  return {
+    startingClues: puzzle.dealStartClues,
+    cluePerWrongGuess: 1 as const,
+    maxClues: 5 as const,
+    guessCap: puzzle.dealMaxGuesses,
+  };
+}
+
+>>>>>>> d392bd0 (fix: P0-1 validator bound by max deal cap; P0-2 deal-time config snapshot on resume)
 function assetBase(): string {
   const base = import.meta.env.BASE_URL ?? "/";
   return base.endsWith("/") ? base : `${base}/`;
@@ -242,7 +269,9 @@ export function LoopScreen({
   // The deal-time config for the open mystery. Captured once per deal and
   // preserved for the whole mystery — a mid-run band change never re-tunes
   // an in-progress deal (no rug-pull). Null until the first deal this
-  // session: resume paths re-read the live band, fail-safe.
+  // session: on remount/resume the STORE's persisted snapshot wins instead
+  // (P0-2 — the in-memory capture alone did not survive a remount), and the
+  // live band is only the last-resort fallback for pre-snapshot stores.
   const [dealConfig, setDealConfig] = useState<GeoDetectiveConfig | null>(null);
   const captureDealConfig = (): GeoDetectiveConfig => {
     const config = geodetectiveConfig(resolveBand()) ?? SAFE_DEAL_FALLBACK;
@@ -250,7 +279,10 @@ export function LoopScreen({
     return config;
   };
   const activeDealConfig =
-    dealConfig ?? geodetectiveConfig(resolveBand()) ?? SAFE_DEAL_FALLBACK;
+    dealConfig ??
+    persistedDealConfig(store?.current ?? null) ??
+    geodetectiveConfig(resolveBand()) ??
+    SAFE_DEAL_FALLBACK;
 
   // Mount / retry: fetch the manifest, resolve the store (resume, seam,
   // finished-but-unacknowledged reveal, or fresh deck deal), then fetch
@@ -288,7 +320,7 @@ export function LoopScreen({
         // Only applies when no mystery is open.
         dealIndex = seam;
         const seamConfig = captureDealConfig();
-        next = { ...next, current: freshLoopPuzzleState(seam, next.deck.cycle, seamConfig.startingClues) };
+        next = { ...next, current: freshLoopPuzzleState(seam, next.deck.cycle, seamConfig.startingClues, seamConfig.guessCap) };
       } else {
         const dealt = dealPuzzleIndex(next.deck, manifest.size);
         dealIndex = dealt.index;
@@ -297,7 +329,7 @@ export function LoopScreen({
         next = {
           ...next,
           deck: dealt.deck,
-          current: freshLoopPuzzleState(dealIndex, dealt.deck.cycle, dealtConfig.startingClues),
+          current: freshLoopPuzzleState(dealIndex, dealt.deck.cycle, dealtConfig.startingClues, dealtConfig.guessCap),
         };
       }
       if (cancelled) return;
@@ -449,7 +481,7 @@ export function LoopScreen({
       next = {
         ...next,
         deck: dealt.deck,
-        current: freshLoopPuzzleState(dealt.index, dealt.deck.cycle, dealtConfig.startingClues),
+        current: freshLoopPuzzleState(dealt.index, dealt.deck.cycle, dealtConfig.startingClues, dealtConfig.guessCap),
       };
       commitStore(next);
       try {

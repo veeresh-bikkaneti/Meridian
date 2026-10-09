@@ -8,9 +8,10 @@ import {
 } from "./types.ts";
 
 /**
- * The GeoDetective's 5-guess state machine. Pure functions: given a puzzle
+ * The GeoDetective's guess state machine. Pure functions: given a puzzle
  * state and a guess, produce the next puzzle state. The screen persists the
- * result via the loop store.
+ * result via the loop store. The guess cap comes from the band's deal
+ * (default LOOP_MAX_GUESSES preserves the shipped tuning).
  */
 
 /** Direction arrow per octant, for the guess-history feedback line. */

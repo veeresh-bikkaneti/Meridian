@@ -31,6 +31,7 @@ export {
   toleranceMultiplier,
   pinToleranceKm,
   geodetectiveConfig,
+  maxGuessCap,
   roundLengths,
   audioMode,
   mapLabelDensity,
