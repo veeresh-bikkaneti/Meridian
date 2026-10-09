@@ -85,7 +85,8 @@ Standing rules: PRs only, owner merges; named-file staging only; gates before ha
   false-demotion golden 3/3, offer 7/7, context-lost 3/3, switch-note 6/6,
   throttled 1/1, toggle 4/4); 874/874 unit green; tsc clean; lint-cards
   GATE PASSED; build:pages green.
-- [ ] PBI-10 PR opened, never merged.
+- [x] PBI-10 PR opened, never merged — PR #109
+  https://github.com/veeresh-bikkaneti/Meridian/pull/109 (verified loads).
 
 ## Notes
 - Review finding vs current main: tile_failed counts do NOT flow into crash reports — folded into PBI-8.
