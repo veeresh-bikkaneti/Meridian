@@ -248,3 +248,24 @@ feat/sprint-entry-gates). Entries preserved from main's BRANCH_STATUS.md:
   default worker URL fails even online ("Worker failed to load" console
   error). Confirmed pre-existing by building main in a worktree.
 - Owner review of PR #107. Never merge — owner merges.
+
+## Rebase onto main@8e2cc76 (2026-10-08, merge train #103/#104/#105 landed)
+
+- 4 storyteller commits replayed: e1eec98 (mascot v1) → 659e485 (idle float
+  2s) → c82a01d (BRANCH_STATUS docs) → e3b12f0 (gauntlet blockers). The old
+  stray-brace fix commit fcf9af9 was dropped (patch already upstream).
+- Conflicts (4, all mechanical, resolved by union/keep-branch):
+  - `src/lib/observability.ts`: union of `"tile_failed"` (main, #105) +
+    storyteller narration event types (branch).
+  - `package.json`: kept main's test list, re-inserted
+    `src/components/storyteller.test.ts` after `scroll-cue.test.ts`
+    (kept `src/lib/error-component.test.ts` from #105).
+  - `BRANCH_STATUS.md` (x2): kept this branch's storyteller doc,
+    dropped #105's crash-pipeline sections.
+  - `playwright.config.ts`: kept both `facts-ladder-pilot` (#104) and
+    `storyteller` project entries; removed stray extra `},`.
+- Post-rebase gates on final head: `npx tsc --noEmit` clean;
+  `node scripts/lint-cards.mjs` GATE PASSED (124,690 records);
+  `npm run build:pages` green; `src/lib/observability.test.ts` 17/17;
+  `tests/e2e/storyteller.spec.ts` 5/5, zero console errors.
+- Pushed via --force-with-lease. NOT merged (owner merges).
