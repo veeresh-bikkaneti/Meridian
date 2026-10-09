@@ -48,3 +48,23 @@
 - [ ] tsc clean · npm test green · lint-cards PASSED · build:pages green
 - [ ] Playwright storyteller specs green
 - [ ] Locked copy byte-identical · no paywalls · $0/offline/keyless
+
+## Owner's 4 rulings (2026-10-09) — implementation + review scrum
+- [x] Ruling #1: greeting plays regardless of tour — after the text-only
+      tour-return line, the normal greeting runs (mp3 on gesture).
+      NOTE: first attempt (chained t1/t2 timers in one effect) STALLED at
+      runtime — t1's setPhase ran effect cleanup, killing t2. Chitti caught
+      it. Fixed via dedicated follow-up effect guarded on
+      (yielded, mode, phase) — commit 503740f.
+- [x] Ruling #2: tutorial-invite dismiss counts as the first gesture —
+      beginGreetingAudio on dismiss (transient activation).
+- [x] Ruling #3: idle engagement — music notes + unfurling scroll,
+      CSS-only, idle_linger only, reduced-motion safe. OPEN OWNER QUESTION:
+      idle sway ships against standing "no idle motion" directive —
+      confirm or kill.
+- [ ] Ruling #4: merge only when everything is ready — review scrum running.
+- [x] Regression test added (mobile spec): tour closes → return line →
+      greeting → tap starts narration. Verified FAILS pre-fix, PASSES post-fix.
+- [ ] Open owner questions from Chitti: (a) idle sway confirm/kill;
+      (b) theatrical motion for 5–7 band vs calm toggle;
+      (c) spot-listen greet-01 + greet-03 before merge.
