@@ -11,7 +11,7 @@
  * next card/round boundary (never a rug-pull).
  */
 
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import type { AgeBandId, AgeProfile } from "@/game/age-profile";
 import { AGE_BANDS, getBand, loadProfile } from "@/game/age-profile";
 import {
@@ -74,7 +74,8 @@ export default function AgeProfileSettings({
     if (runInProgress) {
       onToast("Saved — takes effect on the next card. ✅");
     } else {
-      onToast(`Saved — ${getBand(confirmTarget).label} is on. ✅`);
+      // Child-visible: never names the band (band-invisible design pillar).
+      onToast("Saved ✅");
     }
     onClose();
   };
@@ -85,6 +86,20 @@ export default function AgeProfileSettings({
     onToast("Cleared — the full game is open again. 🗺️");
     onClose();
   };
+
+  /** Esc backs out of either confirm dialog to the picker (no change). */
+  const dismissToPicker = (e: ReactKeyboardEvent) => {
+    if (e.key === "Escape") setStep("picker");
+  };
+
+  // Focus moves into the confirm dialog when it opens (correct modal
+  // pattern) — this is also what lets the dialog's Esc handler fire.
+  const confirmRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (step === "confirm-change" || step === "confirm-reset") {
+      confirmRef.current?.focus({ preventScroll: true });
+    }
+  }, [step]);
 
   if (step === "gate") {
     return (
@@ -102,7 +117,7 @@ export default function AgeProfileSettings({
     const from = profile.band !== null ? getBand(profile.band).label : "the full game";
     const to = getBand(confirmTarget).label;
     return (
-      <div role="alertdialog" aria-modal="true" aria-labelledby="agep-confirm-title" className="agep-screen" data-testid="agep-confirm-change">
+      <div role="alertdialog" aria-modal="true" aria-labelledby="agep-confirm-title" className="agep-screen" data-testid="agep-confirm-change" ref={confirmRef} tabIndex={-1} onKeyDown={dismissToPicker}>
         <h1 id="agep-confirm-title" className="agep-h1">
           Switch from {from} to {to}?
         </h1>
@@ -111,6 +126,8 @@ export default function AgeProfileSettings({
             ? "Takes effect on the next card — nothing in progress changes."
             : "The change applies right away."}
         </p>
+        {/* Per-band consequence line (behind the gate, so parent-safe). */}
+        <p className="agep-note">{getBand(confirmTarget).whatChanges}</p>
         <div className="agep-actions">
           <button type="button" className="agep-primary" onClick={confirmChange} data-testid="agep-confirm-switch">
             Switch
@@ -125,7 +142,7 @@ export default function AgeProfileSettings({
 
   if (step === "confirm-reset") {
     return (
-      <div role="alertdialog" aria-modal="true" aria-labelledby="agep-reset-title" className="agep-screen" data-testid="agep-confirm-reset">
+      <div role="alertdialog" aria-modal="true" aria-labelledby="agep-reset-title" className="agep-screen" data-testid="agep-confirm-reset" ref={confirmRef} tabIndex={-1} onKeyDown={dismissToPicker}>
         <h1 id="agep-reset-title" className="agep-h1">
           Clear the choice?
         </h1>

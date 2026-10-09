@@ -49,7 +49,10 @@ export function AgePicker({ profile, selected, onSelect, onSave, onCancel, onCle
       <div role="radiogroup" aria-label="Age band" className="agep-cards">
         {AGE_BAND_IDS.map((id, i) => {
           const band = AGE_BANDS[id];
-          const checked = pending ? profile.pendingBand === id : selected === id;
+          // The ring follows the staged selection: `selected` starts as the
+          // pending band when a change is staged, and onSelect() updates it
+          // on every tap — so the ring always marks what Save would apply.
+          const checked = selected === id;
           return (
             <label key={id} className={`agep-card${checked ? " agep-card-checked" : ""}`}>
               <input

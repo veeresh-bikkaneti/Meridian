@@ -93,7 +93,13 @@ export function GrownUpGate({ onPass, onCancel, onAttempt }: GrownUpGateProps) {
     const onKey = (e: KeyboardEvent) => {
       if (e.key >= "0" && e.key <= "9") pressKey(e.key);
       else if (e.key === "Backspace") pressKey("back");
-      else if (e.key === "Enter") checkRef.current();
+      else if (e.key === "Enter") {
+        // A focused button fires its own click on Enter — running check()
+        // here as well would double-count (e.g. Enter on "Try another
+        // question" would log a spurious fail before regenerating).
+        if (e.target instanceof HTMLButtonElement) return;
+        checkRef.current();
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);

@@ -60,6 +60,23 @@ test("geodetective clues per Phase 1 §3b", () => {
   assert.notEqual(geodetectiveConfig(null), null); // unset → full access
 });
 
+test("locked-band fail-safe: fallback is the easiest unlocked deal, never the hardest", () => {
+  // LoopScreen's SAFE_DEAL_FALLBACK derives from geodetectiveConfig("8-10"):
+  // a locked band (5-7, reachable via mid-run change) must never be dealt
+  // the near-blind 11-13 config.
+  const fallback = geodetectiveConfig("8-10");
+  const hardest = geodetectiveConfig("11-13");
+  assert.ok(fallback !== null && hardest !== null);
+  assert.ok(
+    fallback.startingClues > hardest.startingClues,
+    "fallback starts with more clues than the hardest deal",
+  );
+  assert.ok(
+    fallback.guessCap >= hardest.guessCap,
+    "fallback allows at least as many guesses as the hardest deal",
+  );
+});
+
 test("round lengths per Phase 1 §3c", () => {
   const young = roundLengths("5-7");
   assert.equal(young.quizQuestions, 5);

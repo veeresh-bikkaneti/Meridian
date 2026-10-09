@@ -130,3 +130,59 @@ Gates (all run post-rebase, post-fix):
 Pending: PR blocked on `gh` auth in this environment (not logged into any
 GitHub hosts) — push the branch and open the PR from an authenticated
 machine. Phase 4 security validation still open.
+
+## Review-findings fix pass (2026-10-08, frontend)
+
+Game Designer + UI/UX Expert review findings at `bf455a7` — all fixed on
+this branch:
+
+P0:
+- `age-profile.css` `.agep-screen` is now a full-viewport overlay
+  (`position: fixed; inset: 0; z-index: 200; overflow-y: auto`) — the
+  gate/picker replaces the screen instead of rendering below the fold.
+  `game-app.tsx` wraps the home page in `<div inert>` while the settings
+  are open, so Comet's banner, edition cards, and the footer link are
+  non-interactive and out of the tab order.
+
+P1:
+- `AgeProfileSettings.tsx` — change toast is now the band-invisible
+  `"Saved ✅"` (was naming the band label; child-visible leak).
+- `LoopScreen.tsx` — locked band (5-7) no longer gets the hardest deal:
+  the `??` fallback is now the EASIEST unlocked config (8-10) via
+  `SAFE_DEAL_FALLBACK`, and the deal-time config is captured per mystery
+  (`captureDealConfig`) and threaded to `LoopGame`/`LoopReveal`, so a
+  mid-run band change never re-tunes an in-progress deal. Resume paths
+  re-read the live band, fail-safe.
+- `GrownUpGate.tsx` — Enter on a focused button no longer double-fires
+  `check()` (keydown skips when `e.target` is a button; the button's own
+  click is the single path). No more spurious fails on "Try another
+  question".
+- `game-app.tsx` — focus returns to the invoking control (footer
+  "For grown-ups" link or locked-tile grown-up link) on close
+  (`ageTriggerRef` + rAF after unmount).
+- `AgePicker.tsx` — the selection ring follows the staged selection
+  (`checked = selected === id`); `selected` already holds the pending band.
+
+P2 (all trivial, all done):
+- Esc dismisses both confirm dialogs (focus moves into the dialog on
+  open — correct modal pattern — so the Esc handler fires).
+- `LockedLoop.tsx` — `useId()` for title/msg ids (no more duplicates
+  with several locked tiles).
+- Picker cards get a non-color selected indicator (`✓` on the title).
+- Change-confirm dialog shows the per-band consequence line
+  (`band.whatChanges`, parent-safe behind the gate).
+
+Tests: new `difficulty.test.ts` case locks the fail-safe contract
+(fallback is the easiest unlocked deal, never the hardest); new
+`tests/e2e/age-profile-gate.desktop.spec.ts` locks the overlay/inert,
+ring, Esc, band-invisible toast, and focus-return behavior end to end.
+
+Gates re-verified post-fix: `npx tsc --noEmit` clean · `npm test`
+903/903 pass · `node scripts/lint-cards.mjs` GATE PASSED ·
+`npm run build:pages` green · Playwright `age-profile-gate.desktop`
+1/1 pass.
+
+Out of scope (not built, per brief): wiring round lengths / hintPolicy /
+distanceDisplay / mapLabelDensity; mid-run grown-ups entry points;
+11-13 read-aloud button; anything on `verify/geodetective-clues`,
+`feat/meridian-loop`, or other branches.

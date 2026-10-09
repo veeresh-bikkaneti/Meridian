@@ -9,6 +9,15 @@
  */
 
 .agep-screen {
+  /* Full-viewport overlay: the gate/picker REPLACES the screen (it is
+     rendered after the home page, so in-flow it would sit below the
+     fold). Covers the page (incl. Comet's banner) and sits above the
+     toast (z 90) and modals. */
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   min-height: 100dvh;
   padding: max(16px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
   display: flex;
@@ -157,6 +166,13 @@
 .agep-card-checked {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent);
+}
+
+/* Non-color selected indicator (a11y): a checkmark on the title, so the
+   selection never depends on color alone. */
+.agep-card-checked .agep-card-title::after {
+  content: " ✓";
+  font-weight: 700;
 }
 
 .agep-eyebrow {

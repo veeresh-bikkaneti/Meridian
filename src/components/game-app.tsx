@@ -770,8 +770,28 @@ export function GameApp() {
     const id = window.setTimeout(() => setAgeToast(null), 3500);
     return () => window.clearTimeout(id);
   }, [ageToast]);
-  const openAgeSettings = useCallback(() => setAgeSettingsOpen(true), []);  // Cleared-mode celebration: set when a difficulty band's full cycle is
-  // celebrated (primary onContinue trigger or the run-start backstop). The
+  // Invoking control for the age settings (footer "For grown-ups" link or
+  // locked-tile grown-up link) — focus returns here when the settings close.
+  const ageTriggerRef = useRef<HTMLElement | null>(null);
+  const openAgeSettings = useCallback((e?: ReactMouseEvent<HTMLElement>) => {
+    // Remember the invoking control ("For grown-ups" footer link or the
+    // locked-tile grown-up link) so focus can return to it on close.
+    if (e) ageTriggerRef.current = e.currentTarget;
+    setAgeSettingsOpen(true);
+  }, []);
+  const closeAgeSettings = useCallback(() => {
+    const trigger = ageTriggerRef.current;
+    ageTriggerRef.current = null;
+    setAgeSettingsOpen(false);
+    if (trigger && document.contains(trigger)) {
+      // The settings unmount on the next paint — return focus after that,
+      // without scrolling the home page.
+      requestAnimationFrame(() => {
+        if (document.contains(trigger)) trigger.focus({ preventScroll: true });
+      });
+    }
+  }, []);
+  // Cleared-mode celebration: set when a difficulty band's full cycle is  // celebrated (primary onContinue trigger or the run-start backstop). The
   // dialog renders over the current screen; dismissing returns the player
   // to exactly where they were.
   const [cleared, setCleared] = useState<ClearedInfo | null>(null);
@@ -1631,6 +1651,10 @@ export function GameApp() {
   const showTutorialInvite = !inviteDismissed && !hasSeenTutorial();
   return (
     <>
+    {/* While the grown-up gate/picker is open it is a full-viewport overlay:
+        the home page underneath (incl. Comet's banner and the footer link)
+        is inert — non-interactive and removed from the tab order. */}
+    <div inert={ageSettingsOpen || undefined}>
     <Choose
       onState={withCardTap("State", () => setMenu({ kind: "states" }))}
       onCountry={withCardTap("Country", () => setMenu({ kind: "countries" }))}
@@ -1662,11 +1686,12 @@ export function GameApp() {
         </>
       }
     />
+    </div>
     {ageSettingsOpen ? (
       <Suspense fallback={null}>
         <AgeProfileSettings
           runInProgress={run !== null || loopOpen}
-          onClose={() => setAgeSettingsOpen(false)}
+          onClose={closeAgeSettings}
           onToast={setAgeToast}
         />
       </Suspense>

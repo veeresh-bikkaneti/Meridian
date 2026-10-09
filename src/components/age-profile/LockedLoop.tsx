@@ -10,7 +10,7 @@
  * outlines-only path.
  */
 
-import { useState } from "react";
+import { useId, useState } from "react";
 
 export interface LockedLoopProps {
   /** Loop title, e.g. "GeoDetective" — kept, never hidden. */
@@ -23,6 +23,9 @@ export interface LockedLoopProps {
 
 export function LockedLoop({ title, eyebrow = "More games", onGrownUpOpen }: LockedLoopProps) {
   const [pulsing, setPulsing] = useState(false);
+  // Unique per tile instance — several locked tiles can share a screen.
+  const titleId = useId();
+  const msgId = useId();
 
   const pulse = () => {
     setPulsing(true);
@@ -31,12 +34,12 @@ export function LockedLoop({ title, eyebrow = "More games", onGrownUpOpen }: Loc
 
   return (
     <article
-      aria-labelledby="locked-loop-title"
+      aria-labelledby={titleId}
       className={`atlas-dossier agep-locked${pulsing ? " agep-locked-pulse" : ""}`}
       data-testid="locked-loop-tile"
     >
       <p className="atlas-eyebrow">{eyebrow}</p>
-      <h2 id="locked-loop-title" className="atlas-dossier-title">
+      <h2 id={titleId} className="atlas-dossier-title">
         {title}
       </h2>
       <button
@@ -44,9 +47,9 @@ export function LockedLoop({ title, eyebrow = "More games", onGrownUpOpen }: Loc
         className="agep-locked-body"
         onClick={pulse}
         aria-disabled="true"
-        aria-describedby="locked-loop-msg"
+        aria-describedby={msgId}
       >
-        <span id="locked-loop-msg">Ask a grown-up to open more games</span>
+        <span id={msgId}>Ask a grown-up to open more games</span>
       </button>
       <button
         type="button"
