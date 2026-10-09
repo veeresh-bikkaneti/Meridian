@@ -84,6 +84,8 @@ import {
 import "./age-profile/age-profile.css";
 import { LockedLoop } from "./age-profile/LockedLoop";
 import { ReadAloudPrefPrompt } from "./age-profile/ReadAloudPrefPrompt";
+import { ReadAloudPrefSettings } from "./age-profile/ReadAloudPrefSettings";
+import { EarnedBadgeRow } from "./passport/EarnedBadgeRow";
 import {
   applyPendingAtBoundary,
   audioMode,
@@ -2028,6 +2030,9 @@ function Choose({
         {loopProgress.streak > 0 ? (
           <p className="atlas-streak">🔥 Streak: {loopProgress.streak}</p>
         ) : null}
+        {/* Owner 2026-10-09: earned badges show on the home page card —
+            no separate Passport page. Clean Round is earned in this loop. */}
+        <EarnedBadgeRow />
         <button
           type="button"
           className="atlas-btn atlas-btn-brass mt-5"
@@ -2129,6 +2134,11 @@ function Choose({
           before GrandpaCoffeeRun. One host per screen: the header hosts
           brand + sound, so the footer carries this. */}
       <footer className="agep-footer">
+        {/* Kid-reachable read-aloud setting (owner 2026-10-09): the kid's
+            Always / Sometimes / Never choice is changeable after the first
+            tap. This sits NEXT TO the grown-ups gate — read-aloud is the
+            kid's tool, never parent-gated. */}
+        <ReadAloudPrefSettings />
         <button
           type="button"
           className="agep-footer-link"

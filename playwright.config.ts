@@ -287,6 +287,16 @@ export default defineConfig({
         viewport: { width: 1440, height: 900 },
       },
     },
+    {
+      name: "home-badges-readaloud",
+      // #113 follow-ups: earned badges on the home page card (no Passport
+      // page) + kid-reachable read-aloud preference settings surface.
+      // 390px viewport, no mobile UA emulation (same note as hint-button).
+      testMatch: /home-badges-readaloud\.spec\.ts/,
+      use: {
+        viewport: { width: 390, height: 844 },
+      },
+    },
   ],
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
 });

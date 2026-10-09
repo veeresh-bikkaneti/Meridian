@@ -403,7 +403,65 @@
 .agep-footer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 20px;
   padding: 24px 16px max(32px, env(safe-area-inset-bottom));
+}
+
+/* --- Read-aloud preference settings (owner 2026-10-09: changeable later) --- */
+
+.agep-readaloud-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.agep-readaloud-toggle {
+  min-height: 44px;
+  padding: 0 16px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.agep-readaloud-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(320px, 84vw);
+  margin-top: 8px;
+  padding: 12px;
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  background: var(--bg);
+}
+
+/* --- Earned badges on the home page card (owner 2026-10-09: no Passport page) --- */
+
+.atlas-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.atlas-badge-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  background: var(--bg);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--fg);
 }
 
 .agep-footer-link {

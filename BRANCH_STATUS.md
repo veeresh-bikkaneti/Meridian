@@ -117,3 +117,14 @@ Review: 10/12 approve, 2 BLOCKs both on B4 Clean Round badge. Fix agent worktree
   - State resets per mystery (`${cycle}:${index}`); hints never touch points; no band-revealing copy. Needs owner confirmation that 8-10-serving (not 5-7) matches intent.
 - Gates on follow-up head: tsc clean · lint-cards GATE PASSED · build:pages green · npm test 1047/1047 · Playwright geodetective-hint 3/3 + read-aloud-always 4/4 · 390×844 bounding-box overlap 0px² (hint button vs map) · zero console errors · locked copy byte-identical (3 Ko-fi strings, bands.ts untouched).
 - Worktree: ~/workspace/meridian-f113ab (isolated; shared ~/workspace/meridian tree untouched).
+## 2026-10-09 — #113 follow-ups: badges on home card + read-aloud settings (build agent)
+- **Item 1 — Earned badges on the home page card (owner: no Passport page).**
+  - New `src/components/passport/EarnedBadgeRow.tsx`: reads device-local `meridian.passport.badges.v1`, renders earned badges as chips (🏅 name, blurb as title) on the GeoDetective dossier card (where Clean Round is earned). Renders nothing when empty. Band-invisible: no ages, no easy/hard. Home remounts after loops → always fresh.
+  - CSS: `.atlas-badges` / `.atlas-badge-chip` in age-profile.css.
+- **Item 2 — Read-aloud preference settings surface (owner: changeable after first tap).**
+  - New `src/components/age-profile/ReadAloudPrefSettings.tsx`: kid-reachable toggle in the home footer ("🔊 Stories: Always") opening the Always / Sometimes / Never options; writes via setReadAloudPref immediately. Sits NEXT TO the grown-ups gate — never parent-gated (standing UX rule). Hidden while pref unset (onboarding prompt owns first choice).
+  - CSS: `.agep-readaloud-settings` / `.agep-readaloud-toggle` / `.agep-readaloud-options` in age-profile.css (reuses `.agep-pref-option`).
+- Wiring (src/components/game-app.tsx): imports + `<EarnedBadgeRow />` on the GeoDetective card after the streak line; `<ReadAloudPrefSettings />` in the footer before the grown-ups button.
+- Tests: 7 new unit (EarnedBadgeRow.test.ts 3, read-aloud-settings.test.ts 4); new tests/e2e/home-badges-readaloud.spec.ts + `home-badges-readaloud` Playwright project (4 tests: badge on card, empty→nothing, change via footer, kid-reachable not gated). Test-note: addInitScript re-seeds on reload — persistence asserted via direct localStorage read.
+- Gates on follow-up head: tsc clean · npm test 1054/1054 · lint-cards GATE PASSED · build:pages green · Playwright home-badges-readaloud 4/4 · locked copy byte-identical (Ko-fi 3 strings 2/2/1 vs origin/main; bands.ts untouched).
+- Worktree: ~/workspace/meridian-f113ab (isolated; shared ~/workspace/meridian tree untouched).
