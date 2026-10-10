@@ -300,7 +300,10 @@
 .storyteller-banner-popover {
   position: absolute;
   top: calc(100% + 8px);
-  left: 0;
+  /* Owner 2026-10-09: the figure sits right of the branding, so the
+     popover anchors to the banner's right edge — left: 0 would push a
+     304px popover off the viewport's right side. */
+  right: 0;
   z-index: 30;
   width: max-content;
   max-width: min(320px, 78vw);
