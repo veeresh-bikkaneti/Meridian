@@ -74,8 +74,9 @@ test("banner: 56px figure beside the h1, greeting popover on every visit", async
   const heading = page.getByTestId("home-heading");
   const hBox = await heading.boundingBox();
   expect(hBox, "h1 box").not.toBeNull();
-  // Figure sits left of the branding inside the banner row.
-  expect(fBox!.x).toBeLessThan(hBox!.x);
+  // Figure sits right of the branding inside the banner row
+  // (owner 2026-10-09).
+  expect(fBox!.x).toBeGreaterThan(hBox!.x);
 
   const bubble = page.getByTestId("storyteller-home-bubble");
   await expect(bubble).toBeVisible({ timeout: 10_000 });

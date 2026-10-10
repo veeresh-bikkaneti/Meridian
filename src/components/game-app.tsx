@@ -1947,16 +1947,17 @@ function Choose({
             mobile and desktop. The greeting rides in a popover below the row.
             The Comet emblem stays in the eyebrow row — never moved. */}
         <div className="atlas-banner-row home-rise mt-4" style={rise(2)}>
+          {/* PBI-6: the h1 is the focus target when the Scout Map boot offer
+              closes (data-testid="home-heading"). Owner 2026-10-09: the
+              storyteller figure sits RIGHT of the branding. */}
+          <h1 className="atlas-title" data-testid="home-heading" tabIndex={-1}>
+            {BRAND.name}
+          </h1>
           <StorytellerBannerBoundary>
             <Suspense fallback={<StorytellerBannerSkeleton />}>
               <StorytellerHomeHost tutorialInviteVisible={tutorialInviteVisible} />
             </Suspense>
           </StorytellerBannerBoundary>
-          {/* PBI-6: the h1 is the focus target when the Scout Map boot offer
-              closes (data-testid="home-heading"). */}
-          <h1 className="atlas-title" data-testid="home-heading" tabIndex={-1}>
-            {BRAND.name}
-          </h1>
         </div>
         <p className="atlas-tagline home-rise mt-4" style={rise(3)}>
           Pick the globe, a country, or a state. A place name, then one pin. Your score keeps

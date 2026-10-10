@@ -110,14 +110,15 @@ test("banner: 56px figure beside the Meridian h1, title never wraps @390px", asy
   expect(Math.round(fBox!.width)).toBe(56);
   expect(Math.round(fBox!.height)).toBe(56);
 
-  // The figure lives in the banner row, left of the branding.
+  // The figure lives in the banner row, right of the branding
+  // (owner 2026-10-09).
   const row = page.locator(".atlas-banner-row").first();
   const rowBox = await row.boundingBox();
   const heading = page.getByTestId("home-heading");
   const hBox = await heading.boundingBox();
   expect(rowBox, "banner row box").not.toBeNull();
   expect(hBox, "h1 box").not.toBeNull();
-  expect(fBox!.x).toBeLessThan(hBox!.x);
+  expect(fBox!.x).toBeGreaterThan(hBox!.x);
   // Bottom-aligned in the row (sub-pixel rounding tolerated).
   expect(fBox!.y + fBox!.height).toBeLessThanOrEqual(rowBox!.y + rowBox!.height + 2);
 
