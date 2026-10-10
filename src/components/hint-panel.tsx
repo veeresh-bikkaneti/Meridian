@@ -15,6 +15,7 @@
  * hint-logic.ts (mechanical directional nudge — no fabrication).
  */
 import { Lightbulb } from "lucide-react";
+import { CometEmblem } from "@/components/comet-emblem";
 import {
   hintButtonState,
   mascotOffersHint,
@@ -71,7 +72,13 @@ export function HintPanel({
             if (e.key === "Escape") onDismissOffer();
           }}
         >
-          <p className="text-sm text-white">Stuck? Want a hint?</p>
+          {/* #113 BLOCK: the mascot offer needs an actual mascot visual, not
+              just text. CometEmblem is the lightweight static render (no
+              tracking, aria-hidden) — the offer copy stays kid-friendly. */}
+          <div className="flex items-center gap-2">
+            <CometEmblem />
+            <p className="text-sm text-white">Stuck? Want a hint?</p>
+          </div>
           <div className="mt-2 flex gap-2">
             <button
               type="button"

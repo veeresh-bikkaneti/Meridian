@@ -99,6 +99,15 @@ test("badge copy is band-invisible: no age numbers, no easy/hard", () => {
 
 // --- Cosmetic ONLY: never points, never scoring ---
 
+test("#113 BLOCK: reveal panel fires once at earn — re-award returns null", () => {
+  clearStorage();
+  const first = awardCleanRoundBadge({ band: "11-13", hintsUsed: 0, loopId: "quiz", won: true });
+  assert.ok(first, "first qualifying win earns the badge");
+  const second = awardCleanRoundBadge({ band: "11-13", hintsUsed: 0, loopId: "quiz", won: true });
+  assert.equal(second, null, "second qualifying win must not re-fire the panel");
+  assert.equal(earnedPassportBadges().length, 1, "storage stays idempotent");
+});
+
 test("earned badge records carry no points, no score, no band, no hint state", () => {
   clearStorage();
   awardCleanRoundBadge({ band: "11-13", hintsUsed: 0, loopId: "quiz", won: true });

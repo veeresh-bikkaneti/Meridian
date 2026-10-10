@@ -19,6 +19,9 @@ import {
 export function EarnedBadgeRow() {
   // Read once on mount: home remounts after every loop, so this is fresh.
   const [earned] = useState(() => earnedPassportBadges());
+  // #113 BLOCK: the blurb lived in a hover-only `title` tooltip — unreachable
+  // on touch. Tapping a chip toggles its blurb as visible text instead.
+  const [openId, setOpenId] = useState<string | null>(null);
   if (earned.length === 0) return null;
 
   return (
@@ -31,14 +34,24 @@ export function EarnedBadgeRow() {
       {earned.map((b) => {
         const def = getPassportBadge(b.id);
         if (!def) return null;
+        const open = openId === b.id;
         return (
-          <span
-            key={b.id}
-            className="atlas-badge-chip"
-            role="listitem"
-            title={def.blurb}
-          >
-            <span aria-hidden="true">🏅</span> {def.name}
+          <span key={b.id} role="listitem">
+            <button
+              type="button"
+              className="atlas-badge-chip"
+              aria-expanded={open}
+              aria-label={`${def.name}. ${open ? "Hide" : "Show"} badge details.`}
+              data-testid={`badge-chip-${b.id}`}
+              onClick={() => setOpenId(open ? null : b.id)}
+            >
+              <span aria-hidden="true">🏅</span> {def.name}
+            </button>
+            {open ? (
+              <span className="atlas-badge-blurb" data-testid={`badge-blurb-${b.id}`}>
+                {def.blurb}
+              </span>
+            ) : null}
           </span>
         );
       })}

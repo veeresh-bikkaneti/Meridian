@@ -138,6 +138,13 @@ export function awardCleanRoundBadge(summary: CleanRoundSummary): PassportBadge 
   if (!summary.won) return null;
   if (summary.band !== "11-13") return null;
   if (summary.hintsUsed > 0) return null;
+  // #113 BLOCK: the reveal panel must fire ONCE at earn, not on every
+  // subsequent qualifying win. awardPassportBadge is storage-idempotent but
+  // still returns the badge — so gate the panel here on newness.
+  const alreadyEarned = earnedPassportBadges().some(
+    (b) => b.id === CLEAN_ROUND_BADGE_ID,
+  );
+  if (alreadyEarned) return null;
   return awardPassportBadge(CLEAN_ROUND_BADGE_ID);
 }
 

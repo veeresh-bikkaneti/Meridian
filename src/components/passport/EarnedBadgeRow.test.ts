@@ -76,15 +76,20 @@ test("renders nothing when no badges earned", () => {
   assert.equal(render(), "", "empty row, not an empty container");
 });
 
-test("renders the earned badge chip with name", () => {
+test("renders the earned badge chip with name (blurb behind a tap, not a hover tooltip)", () => {
   clearStorage();
   awardPassportBadge(CLEAN_ROUND_BADGE_ID);
   const html = render();
   assert.ok(html.includes('data-testid="earned-badges"'), "badge row present");
   assert.ok(html.includes("Clean Round"), "badge name shown");
   assert.ok(
-    html.includes("A whole round without a single hint"),
-    "blurb present as title",
+    html.includes(`data-testid="badge-chip-${CLEAN_ROUND_BADGE_ID}"`),
+    "chip is a tappable button",
+  );
+  assert.ok(!html.includes("title="), "no hover-only tooltip");
+  assert.ok(
+    !html.includes("A whole round without a single hint"),
+    "blurb hidden until tapped (touch-reachable)",
   );
 });
 

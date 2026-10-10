@@ -633,6 +633,12 @@ export function LoopScreen({
           dealConfig={activeDealConfig}
           dealBand={dealBandResolved}
           cleanRoundBadge={cleanRoundBadge}
+          onHintUsed={(count) => {
+            const s = storeRef.current;
+            if (s?.current) {
+              commitStore({ ...s, current: { ...s.current, hintsUsed: count } });
+            }
+          }}
         />
       ) : null}
     </main>
@@ -683,6 +689,7 @@ function LoopGame({
   dealConfig,
   dealBand,
   cleanRoundBadge,
+  onHintUsed,
 }: {
   clue: LoopClueFile;
   puzzle: LoopPuzzleState;
@@ -704,6 +711,11 @@ function LoopGame({
   dealBand: AgeBandId;
   /** Just-earned Clean Round badge, forwarded to the win reveal. */
   cleanRoundBadge: PassportBadge | null;
+  /**
+   * #113 BLOCK: hint usage must be committed to the loop store (the Clean
+   * Round badge reads progressed.hintsUsed). The parent commits it.
+   */
+  onHintUsed: (count: number) => void;
 }) {
   const finished = puzzle.status !== "playing";
   const guessesLeft = dealConfig.guessCap - puzzle.guesses.length;
@@ -736,7 +748,12 @@ function LoopGame({
     // coarse enough to never pinpoint the target.
     const message = directionalHint(clue.target.lon, clue.target.lat, [-180, -90, 180, 90]);
     setHintMessage(message);
-    setHintsUsedThisMystery((n) => n + 1);
+    const nextCount = hintsUsedThisMystery + 1;
+    setHintsUsedThisMystery(nextCount);
+    // #113 BLOCK: hintsUsed was local-only — the Clean Round badge reads
+    // progressed.hintsUsed from the store, so a used hint must be committed
+    // there or the badge logic reads stale (always-zero) data.
+    onHintUsed(nextCount);
   }
   // Wrong guesses drive the 5-7 mascot offer (policy-gated inside HintPanel;
   // unreachable here since the loop is 5-7-locked, but the policy decides).

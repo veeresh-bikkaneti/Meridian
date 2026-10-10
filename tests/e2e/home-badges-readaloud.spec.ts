@@ -130,8 +130,9 @@ for (const [w, h] of [[360, 740], [390, 844]] as const) {
     await page.goto(BASE);
     const card = page.locator('[data-testid="tour-stop-geodetective"]');
     await expect(card.getByTestId("earned-badges")).toBeVisible({ timeout: 30_000 });
-    // The row must not cover the card's choose button.
-    const cta = card.locator("button").first();
+    // The row must not cover the card's choose button (not the badge chip
+    // button — the chip is inside the row by design).
+    const cta = card.locator("button.atlas-btn-brass");
     const rowBox = await page.getByTestId("earned-badges").first().boundingBox();
     const ctaBox = await cta.boundingBox();
     if (rowBox && ctaBox) {

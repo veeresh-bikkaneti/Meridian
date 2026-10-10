@@ -99,15 +99,19 @@ for (const [w, h] of [[360, 740], [390, 844]] as const) {
 
     const button = page.getByTestId("hint-button");
     await expect(button).toBeVisible({ timeout: 15_000 });
+    // #113 BLOCK: the guess-input assertion was vacuous (no such testid
+    // existed). Both neighbors must be present and non-overlapping.
+    await expect(page.getByTestId("loop-map")).toBeVisible();
+    await expect(page.getByTestId("loop-guess-input")).toBeVisible();
 
     // AGENTS.md rule #1: floating controls must not intersect neighbors.
     const overlap = await page.evaluate(() => {
       const btn = document.querySelector('[data-testid="hint-button"]');
       const map = document.querySelector('[data-testid="loop-map"]');
       const guess = document.querySelector('[data-testid="loop-guess-input"]');
-      if (!btn || !map) return -1;
+      if (!btn || !map || !guess) return -1;
       const b = btn.getBoundingClientRect();
-      const boxes = [map, guess].filter(Boolean).map((el) => (el as Element).getBoundingClientRect());
+      const boxes = [map, guess].map((el) => (el as Element).getBoundingClientRect());
       let total = 0;
       for (const r of boxes) {
         const x = Math.max(0, Math.min(b.right, r.right) - Math.max(b.left, r.left));

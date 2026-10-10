@@ -126,7 +126,7 @@ export function GuessInput({
   }
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full" data-testid="loop-guess-input">
       <label htmlFor={inputId} className="mb-1 block text-sm font-medium text-muted">
         Search the map
       </label>
