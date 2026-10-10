@@ -35,6 +35,33 @@ motion — 2D "Homer" Greek storyteller, layered for animation.
 Design package for owner: `~/workspace/your_files/meridian-storyteller-v2/`
 (DESIGN.md, homer-v2-draft.svg, old-vs-new.png, previews, brief, spec).
 
+## Phase 1b — FACE REDRAW (done 2026-10-10, awaiting OWNER APPROVAL)
+
+Owner rejected the draft-1 face as "creepy" (2026-10-10 ~05:26 CDT):
+the wide-open dark oval mouth read as a scream; the large white-sclera
+staring eyes with tiny centered pupils were uncanny. The claymation
+original has a gentle closed smile and warm eyes — the redraw recaptures
+that.
+
+Redraw (face only; beard, wreath, everything below the neck unchanged):
+- Mouth: closed warm smile — single ink stroke
+  `M90 110 Q100 118.5 110 110`, no dark fill, no teeth; subtle smile
+  creases at the corners. homer-jaw group kept (the closed smile bobs
+  for the talking animation).
+- Eyes: smaller almond sclera (was rx 6.5/ry 7.5, now ~5.5/5), warm
+  brown irises (#7a5a3a, was pure black) at r 3.2 with a gentle
+  inward-down gaze, white catchlights, subtle laugh lines at the outer
+  corners.
+- All 8 named animation groups intact; well-formed XML verified;
+  60 elements. Render-checked in headless Chromium at 56/110/220px on
+  dark AND light — the face reads warm and friendly at banner size,
+  not startled.
+
+Revised package: `~/workspace/your_files/meridian-storyteller-v2/`
+(homer-v2-draft2.svg, preview-face-draft2-dark.png,
+preview-face-draft2-light.png, preview-110px-dark-draft2.png,
+preview-110px-light-draft2.png).
+
 ## Pending (blocked on owner design approval)
 
 - Phase 2 — Technical Artist: finalize layered SVG (tighten viewBox to ~96%
