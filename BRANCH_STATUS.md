@@ -68,3 +68,25 @@
 - [ ] Open owner questions from Chitti: (a) idle sway confirm/kill;
       (b) theatrical motion for 5–7 band vs calm toggle;
       (c) spot-listen greet-01 + greet-03 before merge.
+
+## Review scrum (2026-10-09) — 8-persona team, read-only + fixes
+- Verdicts: PASS — Technical Artist, Game Audio Engineer. CONCERN (non-blocking)
+  — Narrative Designer (copy hygiene), Accessibility Auditor (motion safety =
+  open owner Q), Game Designer (4 interaction defects), Test Automation
+  Engineer (rulings #2/#3 lacked runtime tests — now added).
+- BLOCKs found and fixed on the branch:
+  1. Code Reviewer: celebration during greeting_audio killed the 12s cap
+     timer, phase stuck at greeting_audio forever → yield effect now parks
+     in idle_linger when interrupting narration.
+  2. Code Reviewer: first-gesture listener stayed live during yield (tap
+     mid-tour started audio over the tour) → effect now bails when yielded.
+  3. Game Designer: invite dismissed mid-tour narrated under the tour →
+     invite effect returns early when yielded; post-tour flow greets.
+  4. Reality Checker: dead export resetStorytellerHomeForTests → removed.
+- Regression tests added (each verified FAIL pre-fix / PASS post-fix):
+  tour-return→greeting, invite-dismissed-mid-tour, invite-dismiss-starts-
+  narration, idle-engagement-gating, celebration-no-stall.
+- Remaining CONCERNs (owner calls, not blockers): return-line dismiss voids
+  the follow-up greeting; text-only fallback never reaches idle_linger;
+  figure-first-tap poke/gesture race; POKE_3 Troy tease; idle sway vs the
+  standing "no idle motion" directive (owner to confirm or kill).
