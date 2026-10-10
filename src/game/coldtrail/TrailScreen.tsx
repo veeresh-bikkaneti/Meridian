@@ -156,13 +156,15 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   };
 
   // Placement tap from LoopMap (placing → adjusting, or tap-to-move while
-  // adjusting — the primary adjust verb). Coordinates are normalized here.
+  // adjusting — the primary adjust verb). Keyboard planting (Enter/Space at
+  // the map center) flows through here too. Coordinates are normalized here.
   const onPlacementTap = (lon: number, lat: number) => {
     if (revealed || placing === null) return;
     const firstTap = draft === null;
     setDraft({ lon: normalizeLon(lon), lat: clampLat(lat) });
     if (firstTap) {
-      setHint("Tap the map to move the ring — then tap “Yes, keep it”.");
+      // Input-agnostic: works for tap planters and keyboard planters alike.
+      setHint("Ring planted — move it with arrow keys or by tapping, then tap “Yes, keep it”.");
     }
   };
 
@@ -272,6 +274,16 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [placing]);
+
+  // Focus the map when placement starts (WCAG 2.4.3): the map container
+  // only becomes focusable AFTER the placing render commits (tabIndex is
+  // conditional on placementActive), so focus in an effect — the synchronous
+  // focusMap() calls in onPlaceRing/onMoveRing fire pre-commit and are no-ops.
+  useEffect(() => {
+    if (placing !== null) {
+      document.querySelector<HTMLElement>('[data-testid="loop-map"]')?.focus();
+    }
   }, [placing]);
 
   // Defensive: reveal requires 3 confirmed rings, so placing + revealed is
@@ -417,7 +429,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             evidenceOverlap={evidenceOverlap}
             mapLabel={
               placingNow
-                ? `Cold Trail map — placing the ring for sighting ${placing! + 1}. Tap the map where you think the ring goes.`
+                ? `Cold Trail map — placing the ring for sighting ${placing! + 1}. Tap the map where you think the ring goes, or press Enter to plant it at the map center, then use arrow keys to move it.`
                 : "Cold Trail map. Place each sighting ring where you think the witness saw the smuggler, then tap where the rings cross to set your interception."
             }
             placementActive={placingNow}

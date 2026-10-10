@@ -120,6 +120,42 @@ test("Escape cancels placement mode without locking", async ({ page }) => {
   );
 });
 
+test("keyboard-only: Enter plants the first draft ring, arrows nudge it", async ({ page }) => {
+  await openColdTrail(page);
+
+  // Arm placement via keyboard: focus the Place button, press Enter.
+  await page.getByTestId("place-ring-btn").first().focus();
+  await page.keyboard.press("Enter");
+  await expect(page.getByTestId("map-hint")).toContainText("Tap where you think the ring goes");
+  // Focus moves to the map (WCAG 2.4.3).
+  await page.waitForFunction(
+    () => document.activeElement?.getAttribute("data-testid") === "loop-map",
+    { timeout: 5_000 },
+  );
+
+  // No draft yet: Enter plants it at the map center (P0 fix — keyboard
+  // users could never plant the first ring before this).
+  await page.keyboard.press("Enter");
+  await expect(page.getByTestId("confirm-ring-btn")).toBeVisible({ timeout: 10_000 });
+  await expect(page.getByTestId("map-hint")).toContainText("Ring planted");
+
+  // Arrows nudge the planted draft: the hint announces the move.
+  await page.keyboard.press("ArrowUp");
+  await expect(page.getByTestId("map-hint")).toContainText("Ring moved north", { timeout: 10_000 });
+  await page.keyboard.press("ArrowRight");
+  await expect(page.getByTestId("map-hint")).toContainText("Ring moved", { timeout: 10_000 });
+
+  // The draft renders as a preview ring (dashed = not locked yet).
+  const ringFeatures = await sourceFeatures(page, "loop-rings", 2);
+  const previews = ringFeatures.filter((f) => f.properties.preview === true);
+  expect(previews.length).toBeGreaterThan(0);
+
+  // Lock it via keyboard: tab to "Yes, keep it" and press Enter.
+  await page.getByTestId("confirm-ring-btn").focus();
+  await page.keyboard.press("Enter");
+  await expect(page.getByTestId("map-hint")).toContainText("Ring 1 locked");
+});
+
 test("switching cards mid-placement discards the draft", async ({ page }) => {
   await openColdTrail(page);
 

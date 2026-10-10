@@ -426,7 +426,20 @@ export function LoopMap({
     // placement is active (see the effect below) so arrows never do both.
     const onKeyDown = (e: KeyboardEvent) => {
       const cb = cbRef.current;
-      if (!cb.placementActive || !cb.placementDraft || !cb.onPlacementNudge) return;
+      if (!cb.placementActive) return;
+      // Keyboard-only planting (P0 fix): with placement armed but no draft
+      // yet, Enter/Space plants the draft at the map's current center.
+      // Keyboard users could never plant the first ring — the arrow-key
+      // nudge below requires an existing draft.
+      if (!cb.placementDraft && cb.onPlacementTap && (e.key === "Enter" || e.key === " ")) {
+        e.preventDefault();
+        e.stopPropagation();
+        const center = map.getCenter();
+        playCelebrationSound("pinDropPass");
+        cb.onPlacementTap(normalizeLon(center.lng), clampLat(center.lat));
+        return;
+      }
+      if (!cb.placementDraft || !cb.onPlacementNudge) return;
       const step = KEY_NUDGE[e.key];
       if (!step) return;
       e.preventDefault();
@@ -847,15 +860,19 @@ export function LoopMap({
       data-testid="loop-map"
       role="application"
       // Focusable while placement is active: entering placement moves focus
-      // here so arrow keys nudge the draft (keyboard path, WCAG 2.4.3).
-      tabIndex={placementActive ? -1 : undefined}
+      // here so Enter/Space plants the draft and arrow keys nudge it
+      // (keyboard path, WCAG 2.4.3). tabIndex 0 (not -1) so keyboard users
+      // who tab away mid-placement can tab back to the map.
+      tabIndex={placementActive ? 0 : undefined}
       aria-label={
         mapLabel ??
         "Detective's map. Pan and zoom to explore labeled places. Double-tap a label area to pick a place."
       }
       className={
         "h-[52dvh] min-h-[320px] w-full overflow-hidden rounded-2xl border border-line" +
-        (placementActive ? " cursor-crosshair" : "")
+        (placementActive
+          ? " cursor-crosshair focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+          : "")
       }
     />
   );

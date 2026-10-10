@@ -143,3 +143,10 @@ Playwright E2E runs in the next wave (specs written, not yet executed).
   coldtrrail.reduced projects + a loop-edition sanity run (geodetective
   project) to prove the shared LoopMap changes didn't regress the loop.
 - Chitti review + merge (only merge path).
+
+## 2026-10-09 — Design BLOCK fix: keyboard-only ring planting (P0)
+- **Problem:** keyboard-only players could never plant the first draft ring — arrow-key nudge requires an existing draft, and there was no keyboard path to create one.
+- **Fix (LoopMap.tsx):** Enter/Space with placement armed but no draft plants the draft at the map's current center. Map container tabIndex -1→0 (keyboard users can tab back mid-placement) + visible focus ring when placement is active.
+- **Fix (TrailScreen.tsx):** map aria-label mentions "press Enter to plant at the map center, then arrow keys"; plant hint is input-agnostic ("Ring planted — move it with arrow keys or by tapping"); useEffect focuses the map post-commit when placement starts (the synchronous focusMap() fired pre-render and was a no-op).
+- **Test:** new "keyboard-only: Enter plants the first draft ring, arrows nudge it" E2E (coldtrail.spec.ts) — full keyboard flow: Enter on Place → Enter plants → arrows nudge → Enter locks.
+- **Gates:** tsc clean · lint-cards GATE PASSED · build:pages green · npm test 1082/1082 · coldtrail 7/7 + mobile 3/3 + reduced 1/1 Playwright green · locked copy intact.
