@@ -7,6 +7,7 @@ import { LoopMap } from "../loop/LoopMap";
 import { coldtrailCaseCount, getColdtrailCase } from "./cases";
 import {
   INFORMANT_COST,
+  effectiveRadius,
   scoreIntercept,
   SOLVE_REWARD,
   verdictFor,
@@ -14,7 +15,9 @@ import {
 import {
   buildEvidenceOverlays,
   nudgeDirection,
+  tripleOverlap,
   wrapLonDelta,
+  type LockedRing,
   type PlacementDraft,
 } from "./placement";
 import { freshProgress, loadColdtrail, saveColdtrail, takeLegacyMigrationNotice } from "./store";
@@ -203,7 +206,26 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     setDraft(null);
     const locked = ringsPlacedCount + (wasPlaced ? 0 : 1);
     if (locked === 3) {
-      setHint("All 3 rings are down — tap where they cross to set your interception.");
+      // Fresh overlap check: the render's evidenceOverlap is stale here
+      // (only 2 rings were locked before this commit). When the rings are
+      // disjoint there is no crossing — say so instead of "tap where they
+      // cross", and never imply a center.
+      const freshLocked: LockedRing[] = [];
+      caseData.sightings.forEach((s, j) => {
+        const c = j === i ? center : progress.ringCenters[j];
+        if (!c) return;
+        freshLocked.push({
+          lon: c.lon,
+          lat: c.lat,
+          radiusKm: effectiveRadius(s, progress.informantOn[j]!),
+        });
+      });
+      const freshOverlap = tripleOverlap(freshLocked);
+      setHint(
+        freshOverlap?.polygon
+          ? "All 3 rings are down — tap where they cross to set your interception."
+          : "All 3 rings are down, but they don't cross — use ↩ Move on a ring to shift it closer.",
+      );
     } else {
       setHint(`Ring ${i + 1} locked. ${3 - locked} to go — tap 📍 Place ring on the next sighting.`);
     }
@@ -414,7 +436,9 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
           {revealed
             ? "Case closed — the gold star marks the hideout."
             : allRingsPlaced
-              ? "All 3 rings are down — tap where they cross to set your interception."
+              ? evidenceOverlap?.polygon
+                ? "All 3 rings are down — tap where they cross to set your interception."
+                : "All 3 rings are down, but they don't cross — use ↩ Move on a ring to shift it closer."
               : `Rings placed: ${ringsPlacedCount} of 3`}
         </p>
         <div className="relative">
@@ -471,7 +495,11 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
                 &ensp;·&ensp;<span className="text-gold-ink">dashed ring</span>&thinsp;=&thinsp;your draft — not locked yet
               </>
             ) : null}
-            &ensp;·&ensp;tap where the rings cross to intercept
+            &ensp;·&ensp;{allRingsPlaced && !evidenceOverlap?.polygon ? (
+              <>use ↩ Move on a sighting card to shift a ring closer</>
+            ) : (
+              <>tap where the rings cross to intercept</>
+            )}
           </p>
         ) : null}
         {hint ? (

@@ -54,8 +54,10 @@ test("full slice: place 3 rings → tap → confirm → score reveal", async ({ 
   await expect(page.getByTestId("map-hint")).toContainText("Place all 3 rings first");
 
   // Ring 1: place → tap → the draft renders as a preview (dashed) ring.
+  // Taps are clustered so the three rings genuinely triple-overlap
+  // (disjoint rings are covered by the dedicated disjoint test below).
   await page.getByTestId("place-ring-btn").first().click();
-  await page.getByTestId("loop-map").click({ position: { x: 200, y: 200 } });
+  await page.getByTestId("loop-map").click({ position: { x: 300, y: 250 } });
   await expect(page.getByTestId("confirm-ring-btn")).toBeVisible({ timeout: 10_000 });
   // minFeatures=2 (preview ring + its km label): waits out the passive-
   // effect repaint so the assertion can't race the paint.
@@ -67,9 +69,9 @@ test("full slice: place 3 rings → tap → confirm → score reveal", async ({ 
   await expect(page.getByTestId("map-hint")).toContainText("Ring 1 locked");
   await expect(page.getByTestId("place-ring-btn")).toHaveCount(2);
 
-  // Rings 2 and 3.
-  await placeAndLockRing(page, { x: 300, y: 250 });
-  await placeAndLockRing(page, { x: 400, y: 300 });
+  // Rings 2 and 3 (clustered with ring 1 for genuine triple-overlap).
+  await placeAndLockRing(page, { x: 315, y: 240 });
+  await placeAndLockRing(page, { x: 285, y: 265 });
   await expect(page.getByTestId("place-ring-btn")).toHaveCount(0);
 
   // All three locked: the status line invites the interception tap.
@@ -224,4 +226,55 @@ test("paid informant tightens one ring for a star", async ({ page }) => {
   await page.getByTestId("informant-btn").first().click();
   await expect(stars).toContainText("⭐ 1");
   await expect(page.getByTestId("map-hint")).toContainText("informant tightened");
+});
+
+test("placement mode: map canvas shows crosshair cursor", async ({ page }) => {
+  await openColdTrail(page);
+
+  await page.getByTestId("place-ring-btn").first().click();
+  await expect(page.getByTestId("map-hint")).toContainText("Tap where you think the ring goes");
+
+  // The crosshair must be on MapLibre's canvas element itself:
+  // a container-level cursor class is defeated by .maplibregl-canvas's
+  // own cursor rule (grab).
+  const cursor = await page
+    .getByTestId("loop-map")
+    .locator("canvas")
+    .evaluate((el) => getComputedStyle(el).cursor);
+  expect(cursor).toBe("crosshair");
+
+  // Leaving placement restores the default cursor.
+  await page.keyboard.press("Escape");
+  await expect(page.getByTestId("map-hint")).not.toContainText("Tap where you think the ring goes");
+  const cursorAfter = await page
+    .getByTestId("loop-map")
+    .locator("canvas")
+    .evaluate((el) => getComputedStyle(el).cursor);
+  expect(cursorAfter).not.toBe("crosshair");
+});
+
+test("disjoint rings: no centroid dot, hint says they don't cross", async ({ page }) => {
+  await openColdTrail(page);
+
+  // Plant 3 rings far apart so they share no common area. Positions stay
+  // well inside the map viewport.
+  await placeAndLockRing(page, { x: 80, y: 120 });
+  await placeAndLockRing(page, { x: 300, y: 120 });
+  await placeAndLockRing(page, { x: 190, y: 280 });
+
+  // Honest copy: no "tap where they cross" when there is no crossing.
+  await expect(page.getByTestId("map-hint")).toContainText("don't cross");
+
+  // Wait for the paint (3 witness dots are painted in the same pass).
+  const markFeatures = await sourceFeatures(page, "loop-marks", 3);
+  expect(markFeatures.filter((f) => f.properties.kind === "witness")).toHaveLength(3);
+
+  // No centroid dot and no polygon for disjoint rings — a marker at the
+  // centroid would read as a fake "answer" point.
+  const overlapFeatures = await sourceFeatures(page, "loop-overlap", 0);
+  expect(overlapFeatures.filter((f) => f.properties.kind === "overlap-centroid")).toHaveLength(0);
+  expect(overlapFeatures.filter((f) => f.properties.kind === "overlap")).toHaveLength(0);
+
+  // No pulse fires at a fake center either.
+  await expect(page.locator(".ct-overlap-pulse")).toHaveCount(0);
 });
