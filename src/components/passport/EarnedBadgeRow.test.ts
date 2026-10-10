@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { readFileSync } from "node:fs";
 
 // Minimal localStorage shim (node has none), mirroring badges.test.ts.
 const backing = new Map<string, string>();
@@ -99,4 +100,23 @@ test("chip is band-invisible: no ages, no easy/hard language", () => {
   const html = render();
   assert.ok(!/11-13|8-10|5-7/.test(html), "no age numbers");
   assert.ok(!/easy|hard/i.test(html), "no easy/hard language");
+});
+
+test("auto-animate cleanup destroys observers on unmount (no leak)", () => {
+  // renderToString never runs useEffect, so pin the cleanup contract at the
+  // source level: destroy() disconnects the MutationObserver/interval and
+  // drops the element from the library's parents set; disable() leaves them
+  // live, leaking one observer set per home remount.
+  const src = readFileSync(
+    resolvePath(REPO_ROOT, "src/components/passport/EarnedBadgeRow.tsx"),
+    "utf8",
+  );
+  assert.ok(
+    src.includes("controls.destroy?.()"),
+    "cleanup must call destroy() to release observers",
+  );
+  assert.ok(
+    !src.includes("controls.disable()"),
+    "disable() leaks observers — must not be the cleanup",
+  );
 });

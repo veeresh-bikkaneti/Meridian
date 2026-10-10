@@ -10,11 +10,13 @@
  * age numbers, no easy/hard language — the band stays invisible.
  */
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import autoAnimate from "@formkit/auto-animate";
 import {
   earnedPassportBadges,
   getPassportBadge,
 } from "@/game/passport/badges";
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 
 export function EarnedBadgeRow() {
   // Read once on mount: home remounts after every loop, so this is fresh.
@@ -22,10 +24,28 @@ export function EarnedBadgeRow() {
   // #113 BLOCK: the blurb lived in a hover-only `title` tooltip — unreachable
   // on touch. Tapping a chip toggles its blurb as visible text instead.
   const [openId, setOpenId] = useState<string | null>(null);
+  const reducedMotion = usePrefersReducedMotion();
+  const rowRef = useRef<HTMLDivElement | null>(null);
+
+  // auto-animate: badge chips and blurb expand/collapse animate automatically.
+  // Skipped under prefers-reduced-motion.
+  useEffect(() => {
+    if (reducedMotion) return;
+    const el = rowRef.current;
+    if (!el) return;
+    const controls = autoAnimate(el);
+    // destroy() (not disable()): disconnects the MutationObserver,
+    // ResizeObserver and the 2s poll interval, and drops the element from
+    // the library's module-level parents set. disable() leaves all of
+    // those live, leaking one observer set per home remount.
+    return () => controls.destroy?.();
+  }, [reducedMotion]);
+
   if (earned.length === 0) return null;
 
   return (
     <div
+      ref={rowRef}
       className="atlas-badges"
       data-testid="earned-badges"
       role="list"
