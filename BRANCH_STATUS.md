@@ -90,3 +90,37 @@
   the follow-up greeting; text-only fallback never reaches idle_linger;
   figure-first-tap poke/gesture race; POKE_3 Troy tease; idle sway vs the
   standing "no idle motion" directive (owner to confirm or kill).
+
+## Panel round 2 (2026-10-10) — 5 BLOCKs fixed, each with regression test
+Owner's independent panel verified the 3 earlier fixes as sound, found 5 new
+BLOCKs. All fixed on the branch; each regression test verified FAIL pre-fix /
+PASS post-fix via stash dance (source stashed, tests kept, rebuilt, re-ran).
+- [x] BLOCK 1: invite-dismiss played the greeting mp3 under the text-only
+      return line — tutorial-invite effect now returns early when
+      mode === "tour-return". Test: "invite dismiss after tour: no greeting
+      mp3 under the text-only return line" (FAIL pre / PASS post).
+- [x] BLOCK 2: CSS specificity tie (0,3,0) let the later idle-sway rule beat
+      poke startle + yield recede — both selectors raised to 0,4,0 via
+      doubled figure class, with explanatory comments. Test: "poke startle
+      + yield recede win over idle sway" (computed animation-name; FAIL
+      pre / PASS post).
+- [x] BLOCK 3: dismissing the return line was a dead end (silence forever) —
+      returnLineDismissedRef flag; follow-up effect now also fires on
+      idle_linger + flag (900ms), greeting still follows a dismiss. Test:
+      "dismissing the return line still leads to the greeting" (FAIL pre /
+      PASS post).
+- [x] BLOCK 4: yielded guards had zero regression coverage — new test
+      "gesture under tour: no audio starts, greeting resumes after"
+      (guard-lock: passes unless the guard is removed).
+- [x] BLOCK 5: muted first tap silently killed narration — now shows a
+      one-line hint in the bard voice, then restores the greeting caption;
+      routed through bubbleTimer so a dismiss cancels the restore. NEW copy
+      ("Psst — your sound is off, young explorer. Tap the speaker above to
+      hear my tale.") — OWNER/PANEL COPY APPROVAL REQUIRED before merge.
+      Test: "muted first tap shows the sound-off hint" (FAIL pre / PASS post).
+- Gates on this head: tsc clean · 993/993 unit · lint-cards GATE PASSED ·
+  build:pages green · Playwright storyteller 22/22 (desktop 2, mobile 18,
+  reduced 2). Rebase onto origin/main@044befc: no-op, zero conflicts.
+- NOT merged — verdict belongs to the independent panel. 3 open owner
+  questions unchanged: (a) idle sway confirm/kill; (b) theatrical for
+  5–7s vs calm toggle; (c) spot-listen greet-01 + greet-03.

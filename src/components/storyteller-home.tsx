@@ -28,12 +28,17 @@ import "./storyteller-home.css";
 //   greeting_audio →(end|dismiss|12s)→ idle_linger
 //   (tour start|celebration|dismiss|timeout)→ figure only (no unmount — the
 //   figure lives in the banner).
+//   tour-return (copy G2): entering → greeting_text (text-only return line)
+//     →(hold elapses|dismiss)→ the greeting above runs (owner ruling #1,
+//     2026-10-09 — dismissing the return line is not a dead end; panel
+//     BLOCK 3).
 //
 // - Every home visit greets (owner 2026-10-09): the tour-return line wins
 //   exactly once after Grandpa's tour, otherwise the daily greeting.
 //   Text-first, audio on the first gesture.
-// - Sound muted: figure + full caption render; no autoplay attempt; the
-//   mute toggle is the ONLY silence.
+// - Sound muted: figure + full caption render; no autoplay attempt; a muted
+//   first gesture surfaces a one-line sound-off hint (then the greeting
+//   caption returns); the mute toggle is the ONLY silence.
 // - Tap the figure: rotating poke lines (copy §2). Tap mid-greeting pauses
 //   or resumes the audio (card contract).
 // - Loop pick: the loop's locked send-off rides along ≤2.5s while the loop
@@ -58,6 +63,14 @@ type BannerPhase =
 const ENTER_MS = 150;
 const EXIT_MS = 150;
 const TEXT_BUBBLE_MS = 6000;
+/** Panel 2026-10-09 (BLOCK 3): dismissed-return-line follow-up delay — the
+    kid already waited through the line, so fire sooner than TEXT_BUBBLE_MS. */
+const FOLLOWUP_AFTER_DISMISS_MS = 900;
+/** Panel 2026-10-09 (BLOCK 5): sound-off hint hold. The hint copy below is
+    NEW — owner/panel approval required before merge. */
+const SOUND_OFF_HINT_MS = 4000;
+const SOUND_OFF_HINT =
+  "Psst — your sound is off, young explorer. Tap the speaker above to hear my tale.";
 const POKE_BUBBLE_MS = 4000;
 const POST_AUDIO_HOLD_MS = 1500;
 /** G1: hard cap on the greeting audio window — never a visible countdown. */
@@ -210,6 +223,10 @@ export default function StorytellerHomeHost({
   const pokeIndexRef = useRef(0);
   const lastPokeRef = useRef(0);
   const startedRef = useRef(started);
+  // Panel 2026-10-09 (BLOCK 3): dismissing the text-only return line must
+  // not be a dead end — dismissBubble sets this; the follow-up effect
+  // consumes it when the follow-up greeting runs.
+  const returnLineDismissedRef = useRef(false);
   const assetsRef = useRef(assets);
   assetsRef.current = assets;
 
@@ -358,18 +375,32 @@ export default function StorytellerHomeHost({
   }, [started, phase, mode, greetingText, showBubble]);
 
   // ---- Tour-return follow-up ------------------------------------------------
-  // Owner 2026-10-09: the greeting happens regardless of the tour. After
-  // the return line's hold elapses, run the normal greeting (mp3 on
-  // gesture). Dedicated effect (not chained timers in the entering effect):
-  // the phase change above would clean up a chained timer and stall the
-  // machine. Dismissing the line or a tour opening cancels the follow-up.
+  // Owner 2026-10-09 (ruling #1): the greeting happens regardless of the
+  // tour. After the return line's hold elapses, run the normal greeting
+  // (mp3 on gesture). Dedicated effect (not chained timers in the entering
+  // effect): the phase change above would clean up a chained timer and
+  // stall the machine. A tour opening cancels the follow-up — dismissing
+  // the line does NOT (panel 2026-10-09, BLOCK 3): the dismissed path
+  // below still runs the greeting, sooner, since the kid already waited
+  // through the line.
   useEffect(() => {
-    if (yielded || mode !== "tour-return" || phase !== "greeting_text") return;
-    const t = window.setTimeout(() => {
-      setMode("greeting");
-      setPhase("entering");
-    }, TEXT_BUBBLE_MS);
-    return () => window.clearTimeout(t);
+    if (yielded || mode !== "tour-return") return;
+    if (phase === "greeting_text") {
+      const t = window.setTimeout(() => {
+        returnLineDismissedRef.current = false;
+        setMode("greeting");
+        setPhase("entering");
+      }, TEXT_BUBBLE_MS);
+      return () => window.clearTimeout(t);
+    }
+    if (phase === "idle_linger" && returnLineDismissedRef.current) {
+      const t = window.setTimeout(() => {
+        returnLineDismissedRef.current = false;
+        setMode("greeting");
+        setPhase("entering");
+      }, FOLLOWUP_AFTER_DISMISS_MS);
+      return () => window.clearTimeout(t);
+    }
   }, [yielded, mode, phase]);
 
   // ---- Greeting audio ------------------------------------------------------
@@ -434,13 +465,18 @@ export default function StorytellerHomeHost({
       // ends. Otherwise the greeting audio would play over the tour and
       // mismatch the return-line caption.
       if (yielded) return;
+      // Panel 2026-10-09 (BLOCK 1): the return line is text-only by design —
+      // the dismiss tap must not start the greeting mp3 under it. The
+      // follow-up greeting flips mode to "greeting" and arms its own
+      // gesture listener afterward.
+      if (mode === "tour-return") return;
       if (isSoundEnabled() && assetsRef.current.greetAudio) {
         gestureDoneRef.current = true;
         showBubble(greetingText, null);
         beginGreetingAudio();
       }
     }
-  }, [tutorialInviteVisible, greetingText, showBubble, beginGreetingAudio, yielded]);
+  }, [tutorialInviteVisible, greetingText, showBubble, beginGreetingAudio, yielded, mode]);
 
   // Tab hidden cancels the audio window (G1).
   useEffect(() => {
@@ -469,7 +505,20 @@ export default function StorytellerHomeHost({
       gestureDoneRef.current = true;
       window.removeEventListener("pointerdown", onGesture);
       window.removeEventListener("keydown", onGesture);
-      if (!isSoundEnabled()) return; // muted — text stays, audio never starts
+      if (!isSoundEnabled()) {
+        // Panel 2026-10-09 (BLOCK 5): a muted first tap must not silently
+        // kill narration. Surface a one-line hint in his bard voice, then
+        // restore the greeting caption (the popover's role="status"
+        // announces it). Routed through bubbleTimer so an explicit dismiss
+        // (hideBubble) cancels the restore. The hint copy is NEW —
+        // owner/panel approval required before merge.
+        window.clearTimeout(bubbleTimer.current);
+        setBubble(SOUND_OFF_HINT);
+        bubbleTimer.current = window.setTimeout(() => {
+          showBubble(greetingText, null);
+        }, SOUND_OFF_HINT_MS);
+        return;
+      }
       beginGreetingAudio();
     };
     window.addEventListener("pointerdown", onGesture);
@@ -478,17 +527,21 @@ export default function StorytellerHomeHost({
       window.removeEventListener("pointerdown", onGesture);
       window.removeEventListener("keydown", onGesture);
     };
-  }, [started, phase, mode, yielded, assets.greetAudio, beginGreetingAudio]);
+  }, [started, phase, mode, yielded, assets.greetAudio, beginGreetingAudio, greetingText, showBubble]);
 
   // ---- Dismiss -------------------------------------------------------------
   const dismissBubble = useCallback(
     (viaKeyboard: boolean) => {
       stopAudio();
       hideBubble();
+      // Panel 2026-10-09 (BLOCK 3): dismissing the text-only return line is
+      // not a dead end (owner ruling #1, 2026-10-09) — flag it so the
+      // tour-return follow-up effect still runs the greeting afterward.
+      if (mode === "tour-return") returnLineDismissedRef.current = true;
       setPhase("idle_linger");
       if (viaKeyboard) firstEditionControl()?.focus({ preventScroll: true });
     },
-    [stopAudio, hideBubble],
+    [stopAudio, hideBubble, mode],
   );
 
   const handleCaptionTap = useCallback(() => {
