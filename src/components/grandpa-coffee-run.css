@@ -96,9 +96,10 @@
 }
 
 /* The travel animation runs only in "strip" mode (the desktop stroll and
- * the mobile level-2 fallback walk). In "tour"/"seated" modes the walker
- * stays parked — visibly during the tour (the cloud + grown-up lock show
- * from the first beat), seated from the first frame on return visits. */
+ * the mobile level-2 fallback walk). In "tour" mode the strip figure hides
+ * (the tour walker is the only grandpa on screen — two read as a bug);
+ * the cloud stays visible from the first beat. In "seated" mode the walker
+ * shows seated from the first frame on return visits. */
 .grandpa-scene[data-mode="strip"] .grandpa-walker {
   animation: grandpa-travel 9500ms linear forwards;
 }
@@ -113,6 +114,16 @@
 .grandpa-scene[data-mode="tour"] .grandpa-walker {
   pointer-events: none;
   cursor: default;
+}
+
+/* Tasting-tour mode: the tour walker is the ONLY grandpa on screen while
+ * the walk runs. The parked strip figure and its park vignette stay hidden
+ * until the handoff — two identical grandpas read as a bug (owner
+ * 2026-10-10). The donation cloud is a sibling of the figure spans, so it
+ * stays visible as the Ko-fi entry from the first beat. */
+.grandpa-scene[data-mode="tour"] .grandpa-bob,
+.grandpa-scene[data-mode="tour"] .park-vignette {
+  display: none;
 }
 
 @keyframes grandpa-travel {

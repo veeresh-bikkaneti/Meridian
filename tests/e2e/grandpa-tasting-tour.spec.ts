@@ -458,6 +458,26 @@ test("tour: cloud visible from the first beat, walker not a tap target mid-walk"
   expectCleanConsole(errors);
 });
 
+test("tour walk: only one grandpa on screen — the parked strip figure hides", async ({
+  page,
+}) => {
+  const errors = await loadHome(page);
+  await waitForWalkStage(page);
+  // The tour walker is the visible grandpa...
+  await expect(page.getByTestId("grandpa-tour-walker")).toBeVisible();
+  // ...the parked strip figure (and its bench vignette) hide until the
+  // handoff — two identical grandpas read as a bug (owner 2026-10-10).
+  await expect(
+    page.locator('[data-testid="grandpa-walker"] .grandpa-bob'),
+  ).toBeHidden();
+  await expect(
+    page.locator('[data-testid="grandpa-walker"] .park-vignette'),
+  ).toBeHidden();
+  // ...but the donation cloud stays visible as the Ko-fi entry.
+  await expect(page.getByTestId("grandpa-bubble-ask")).toBeVisible();
+  expectCleanConsole(errors);
+});
+
 test("skip tour: button settles the tour immediately", async ({ page }) => {
   const errors = await loadHome(page);
   await waitForWalkStage(page);
