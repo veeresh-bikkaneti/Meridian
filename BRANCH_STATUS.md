@@ -1,147 +1,142 @@
-# BRANCH_STATUS — feat/age-profile-followups
+# BRANCH_STATUS — feat/homer-storyteller
 
-**Branch:** `feat/age-profile-followups`
-**Base:** origin/main@044befc (2026-10-09; rebased, zero conflicts)
-**Spec:** `~/workspace/specs/age-profile-followups.md` (+ office-hours/eng/devex reviews)
-**Goal:** goal_b3eb80f458ba
-**Status:** GAUNTLET COMPLETE — merge-ready pending owner merge call (DO NOT MERGE standing)
+**Branch:** `feat/homer-storyteller` · **Base:** origin/main@044befc (#120)
+**Status:** implementation sprint running (3 workers). NEVER merge — owner merges.
 
-## Merge-readiness gates (all green on final head)
-- [x] `npx tsc --noEmit` — clean
-- [x] `npm test` — 1054/1054 pass
-- [x] `node scripts/lint-cards.mjs` — GATE PASSED
-- [x] `npm run build:pages` — green
-- [x] Playwright — all specs green (27+ tests, bounding-box assertions at 360×740 AND 390×844)
-- [x] Zero conflicts vs origin/main
-- [x] All 6 squads approve (Design, Eng, Devex, QA, Office-hours, Security)
+"Homer-style storyteller — dramatic voice + dramatic motion."
 
-## Owner decisions (all confirmed 2026-10-09 — implement exactly)
-- **B1** run-config injection: `getBandConfig(band)` snapshotted once at run start; unset == today's production values (unit-gated per loop)
-- **B2** DELETE mid-run grown-ups staging entirely: remove `pending-change` (3 statuses → 2), delete timeout + footer "updating…" chip + picker pending note; save writes immediately; in-memory deferredBand applies at next boundary
-- **B3** uniform ghost speaker icon (same slot as 8–10, 44px, no label) + kid-set onboarding preference (Always/Sometimes/Never, asked once, never nags)
-- **B4** "Clean Round" badge for no-hint runs — cosmetic ONLY, never points
+## Track A — narration voice fix (Game Audio Engineer)
+- [x] Mismatch CONFIRMED: old greets were TruthTeller cloud renders
+      (−33.1 LUFS unmastered; commit 722a51f says "add TruthTeller greet mp3s")
+- [x] Re-rendered greet-01…06 from EXACT GREETINGS captions via new
+      scripts/render-storyteller-greets.mjs: local Kokoro am_fenrir @ 1.05,
+      −16 LUFS, true peak ≤ −1.5 dBTP, 24kHz mono, caption==audio char-for-char
+      (all ≤38KB, staged in ~/workspace/meridian-homer-audio, not yet merged
+      into this branch)
+- [ ] Merge audio worktree changes into this branch + gates
 
-## Invariants (non-negotiable)
-- Scoring identical across bands · band changes at next boundary, never mid-run · band invisible to child · no age numbers / easy-hard copy on child surfaces · locked copy verbatim (≤140-char band descriptions in bands.ts)
+## Track B — Homer-style dramatic motion (Technical Artist + UI Designer) DONE
+- [x] Theatrical entrance (homer-arrive 650ms), speaking presence
+      (homer-breath + shimmer ring on greeting_audio), poke startle,
+      graceful 220ms yield recede, idle sway (4.5s, ±2px — barely-there)
+- [x] CSS keyframes only, transform/opacity, scoped .storyteller-banner;
+      reduced-motion default ≤150ms fade, full motion in no-preference only
+- [x] tsc clean in worktree; storyteller unit tests 7/7 + 16/16
+- Trade-offs for owner: (1) supersedes earlier "no idle motion" note in
+  css — confirm he wants the sway; (2) yield delays null-unmount 220ms;
+  (3) rare pop if audio starts <650ms into arrival; (4) sendoff exiting
+  now bows out 260ms (strippable).
 
-## Work split
-- **Dev A:** B1 (getBandConfig + run snapshot) + B2 (store simplification) — `src/game/age-profile/*`, loop run constructors, AgePicker/AgeProfileSettings staging hunks
-- **Dev B:** B3 (read-aloud + onboarding pref) + B4 (Clean Round badge) — ReadAloudButton, story cards, passport badges
-- **Tester** (after devs): full gates (tsc, lint-cards, build:pages, npm test) + relevant Playwright + mobile 390×844 QA + zero console errors
+## Diagnosis — owner hears no narration on device (QA, read-only) DONE
+- VERDICT: real bugs, not just device state.
+- Bug 1: Grandpa's tour auto-runs on mobile → host yields → greeting mp3
+  unreachable; after tour, text-only tour-return line (no mp3 by design).
+  Zero e2e coverage (seedQuietHome suppresses the tour in every test).
+- Bug 2: tutorial-invite dismiss tap is swallowed — first tap eats it,
+  narration needs a SECOND tap. Fresh devices affected.
+- Device-state suspect: persisted meridian.sound="off" (toggle is a tiny
+  20px icon, no muted indication in bubble); muted first tap permanently
+  consumes the one-shot.
+- Minor: dismiss × has no tap-guard; manifest failure cached for session;
+  play() never settling leaves phase stuck.
+- Fixes need OWNER decisions: (a) intended post-tour behavior (copy G2
+  mandates text-only return line); (b) invite-dismiss tap = first gesture;
+  (c) don't consume one-shot when muted + muted indicator; (d) × tap-guard;
+  (e) manifest retry. NOT fixed in this sprint — reported for his call.
 
-## Gates (on final head, before PR)
-- [ ] `npx tsc --noEmit` clean
-- [ ] `node scripts/lint-cards.mjs` GATE PASSED
-- [ ] `npm run build:pages` green
-- [ ] full `npm test` green
-- [ ] relevant Playwright green
-- [ ] mobile 390×844 QA + zero console errors
+## Gates (before PR)
+- [ ] tsc clean · npm test green · lint-cards PASSED · build:pages green
+- [ ] Playwright storyteller specs green
+- [ ] Locked copy byte-identical · no paywalls · $0/offline/keyless
 
-## Rules
-- Named files only staged, never `git add -A`
-- Open PR, NEVER merge (owner merges)
+## Owner's 4 rulings (2026-10-09) — implementation + review scrum
+- [x] Ruling #1: greeting plays regardless of tour — after the text-only
+      tour-return line, the normal greeting runs (mp3 on gesture).
+      NOTE: first attempt (chained t1/t2 timers in one effect) STALLED at
+      runtime — t1's setPhase ran effect cleanup, killing t2. Chitti caught
+      it. Fixed via dedicated follow-up effect guarded on
+      (yielded, mode, phase) — commit 503740f.
+- [x] Ruling #2: tutorial-invite dismiss counts as the first gesture —
+      beginGreetingAudio on dismiss (transient activation).
+- [x] Ruling #3: idle engagement — music notes + unfurling scroll,
+      CSS-only, idle_linger only, reduced-motion safe. OPEN OWNER QUESTION:
+      idle sway ships against standing "no idle motion" directive —
+      confirm or kill.
+- [ ] Ruling #4: merge only when everything is ready — review scrum running.
+- [x] Regression test added (mobile spec): tour closes → return line →
+      greeting → tap starts narration. Verified FAILS pre-fix, PASSES post-fix.
+- [ ] Open owner questions from Chitti: (a) idle sway confirm/kill;
+      (b) theatrical motion for 5–7 band vs calm toggle;
+      (c) spot-listen greet-01 + greet-03 before merge.
 
-## Log
-- 2026-10-09: branch created off 64c82d6; worktree ~/workspace/meridian-agefollow; Dev A + Dev B dispatched in parallel
-- 2026-10-09: Dev B done (B3 uniform ghost speaker + kid pref + B4 Clean Round badge); Dev A done (B1 getBandConfig + run snapshot + B2 staging deleted); coordinator integrated (footer chip deleted, Clean Round round-end hookup in LoopScreen, ReadAloudPrefPrompt mounted on home); tsc clean
-- 2026-10-09: tester verdict PR-READY — tsc/lint-cards/build green, npm test 1020/1020, Playwright age-profile 1/1 + mobile 390×844 2/2 + desktop 1/1 (zero console errors); 2 geodetective tap-precision flakes are pre-existing env issues
-- 2026-10-09: PR #113 opened — https://github.com/veeresh-bikkaneti/Meridian/pull/113 — NEVER merge (owner merges)
-- 2026-10-09 (Dev B): B3 + B4 done, working tree only — ReadAloudButton uniform ghost icon (8-10 ≡ 11-13), read-aloud-pref.ts (key meridian.readAloudPref.v1), ReadAloudPrefPrompt.tsx, src/game/passport/badges.ts (Clean Round, cosmetic-only), age-profile.css hunks; 27 new tests green; tsc clean on own files (2 pre-existing errors in Dev A's in-progress run.ts/game-app.tsx); result-card.tsx comment hunk only
+## Review scrum (2026-10-09) — 8-persona team, read-only + fixes
+- Verdicts: PASS — Technical Artist, Game Audio Engineer. CONCERN (non-blocking)
+  — Narrative Designer (copy hygiene), Accessibility Auditor (motion safety =
+  open owner Q), Game Designer (4 interaction defects), Test Automation
+  Engineer (rulings #2/#3 lacked runtime tests — now added).
+- BLOCKs found and fixed on the branch:
+  1. Code Reviewer: celebration during greeting_audio killed the 12s cap
+     timer, phase stuck at greeting_audio forever → yield effect now parks
+     in idle_linger when interrupting narration.
+  2. Code Reviewer: first-gesture listener stayed live during yield (tap
+     mid-tour started audio over the tour) → effect now bails when yielded.
+  3. Game Designer: invite dismissed mid-tour narrated under the tour →
+     invite effect returns early when yielded; post-tour flow greets.
+  4. Reality Checker: dead export resetStorytellerHomeForTests → removed.
+- Regression tests added (each verified FAIL pre-fix / PASS post-fix):
+  tour-return→greeting, invite-dismissed-mid-tour, invite-dismiss-starts-
+  narration, idle-engagement-gating, celebration-no-stall.
+- Remaining CONCERNs (owner calls, not blockers): return-line dismiss voids
+  the follow-up greeting; text-only fallback never reaches idle_linger;
+  figure-first-tap poke/gesture race; POKE_3 Troy tease; idle sway vs the
+  standing "no idle motion" directive (owner to confirm or kill).
 
-## Fix pass — PR #113 review BLOCKs (2026-10-09)
-Review: 10/12 approve, 2 BLOCKs both on B4 Clean Round badge. Fix agent worktree: ~/workspace/meridian-fix113.
-- **BLOCK 1 (live-band award bug):** award read live `resolveBand()` at round-end. Fixed: `BandRunConfig` now carries `band` (the deal-time effective band, set in `getBandConfig()`); `isBandRunConfig` validates it; the LoopScreen round-end hook passes `progressed.dealBandConfig?.band` (fail-closed on undefined). Added unit test: snapshot records deal-time band.
-- **BLOCK 2 (invisible + fires on losses):** (a) award is now win-only — `CleanRoundSummary.won` added, `awardCleanRoundBadge` returns null unless won; (b) visible surface — the just-earned badge renders as a celebratory chip (`data-testid="clean-round-badge"`, role=status) in the win reveal, threaded LoopScreen → LoopGame → LoopReveal; cleared on next deal.
-- Badge stays cosmetic-only (no score APIs), band-invisible copy unchanged, locked band descriptions verified byte-identical vs origin/main.
-- New Playwright project `clean-round-badge` (tests/e2e/clean-round-badge.spec.ts): 11-13 no-hint win earns + shows badge; loss earns nothing; mid-run 8-10→11-13 flip cannot mis-award. 3/3 green.
-- Gates on fix head: tsc clean · lint-cards GATE PASSED · build:pages green · npm test 1024/1024 · Playwright clean-round-badge 3/3 + age-profile-gate 1/1 green.
+## Panel round 2 (2026-10-10) — 5 BLOCKs fixed, each with regression test
+Owner's independent panel verified the 3 earlier fixes as sound, found 5 new
+BLOCKs. All fixed on the branch; each regression test verified FAIL pre-fix /
+PASS post-fix via stash dance (source stashed, tests kept, rebuilt, re-ran).
+- [x] BLOCK 1: invite-dismiss played the greeting mp3 under the text-only
+      return line — tutorial-invite effect now returns early when
+      mode === "tour-return". Test: "invite dismiss after tour: no greeting
+      mp3 under the text-only return line" (FAIL pre / PASS post).
+- [x] BLOCK 2: CSS specificity tie (0,3,0) let the later idle-sway rule beat
+      poke startle + yield recede — both selectors raised to 0,4,0 via
+      doubled figure class, with explanatory comments. Test: "poke startle
+      + yield recede win over idle sway" (computed animation-name; FAIL
+      pre / PASS post).
+- [x] BLOCK 3: dismissing the return line was a dead end (silence forever) —
+      returnLineDismissedRef flag; follow-up effect now also fires on
+      idle_linger + flag (900ms), greeting still follows a dismiss. Test:
+      "dismissing the return line still leads to the greeting" (FAIL pre /
+      PASS post).
+- [x] BLOCK 4: yielded guards had zero regression coverage — new test
+      "gesture under tour: no audio starts, greeting resumes after"
+      (guard-lock: passes unless the guard is removed).
+- [x] BLOCK 5: muted first tap silently killed narration — now shows a
+      one-line hint in the bard voice, then restores the greeting caption;
+      routed through bubbleTimer so a dismiss cancels the restore. NEW copy
+      ("Psst — your sound is off, young explorer. Tap the speaker above to
+      hear my tale.") — OWNER/PANEL COPY APPROVAL REQUIRED before merge.
+      Test: "muted first tap shows the sound-off hint" (FAIL pre / PASS post).
+- Gates on this head: tsc clean · 993/993 unit · lint-cards GATE PASSED ·
+  build:pages green · Playwright storyteller 22/22 (desktop 2, mobile 18,
+  reduced 2). Rebase onto origin/main@044befc: no-op, zero conflicts.
+- NOT merged — verdict belongs to the independent panel. 3 open owner
+  questions unchanged: (a) idle sway confirm/kill; (b) theatrical for
+  5–7s vs calm toggle; (c) spot-listen greet-01 + greet-03.
 
-## Rebase onto main@f4f92ad (2026-10-09, rebase agent)
-- Base moved 64c82d6 → f4f92ad (#111 Ko-fi cloud visible on mobile merged). 3 commits replayed clean; 1 docs-only conflict in BRANCH_STATUS.md (kept this branch's doc).
-- Badge-fix survival verified: award reads `progressed.dealBandConfig?.band` (snapshot, never live `resolveBand()`); `data-testid="clean-round-badge"` win-only surface intact; clean-round-badge.spec.ts present.
-- Locked copy verified byte-identical vs origin/main: Ko-fi 3 strings (2/2/1), `bands.ts` diff-empty, `storyteller-lines.ts` diff-empty.
-- Gates on rebased head: tsc clean · lint-cards GATE PASSED · build:pages green (real, `_shell.html` emitted) · npm test 1024/1024 · Playwright clean-round-badge 3/3 green.
-- Note: an earlier badge-e2e failure in this worktree was a broken local build (copied cross-worktree node_modules → duplicate React in SSR prerender); fixed with a clean `npm ci`. Not a code issue.
-
-## 2026-10-09 — rebase onto main@df3f46c (#116 dismiss-overlap fix merged)
-- Remote verified unchanged at f706bd8 before push (force-with-lease).
-- 1 docs-only conflict in BRANCH_STATUS.md (kept this branch's doc); 4 commits replayed clean.
-- Badge-fix survival verified: `progressed.dealBandConfig?.band` (snapshot) at LoopScreen.tsx:444, win-only `data-testid="clean-round-badge"`, clean-round-badge.spec.ts present.
-- Locked copy byte-identical vs origin/main: Ko-fi 3 strings (2/2/1 occurrences), bands.ts diff-empty, storyteller files diff-empty.
-- Gates on final head: tsc clean · lint-cards GATE PASSED · build:pages green (dist/client/_shell.html emitted) · npm test 1040/1040 · Playwright clean-round-badge 3/3.
-
-## 2026-10-09 — B1 pin-tolerance snapshot fix (scrum review BLOCK)
-- Root cause: the two `pinToleranceKm()` call sites in `PlayLoaded` (game-app.tsx:2897, :2926) read the LIVE `ageBand` instead of the run's immutable `bandConfig` snapshot — a mid-run band change would re-tune the pin hit radius mid-run (same class as the B4 award bug).
-- Fix: `pinToleranceKm(run.bandConfig?.band ?? ageBand, …)` at both sites. `Run.bandConfig` is the deal-time snapshot (optional only for pre-snapshot backfill; `?? ageBand` is the legacy fallback).
-- Consumer grep: `pinToleranceKm` has exactly 2 callers, both fixed. Remaining `resolveBand()` reads are deal-time snapshot creation only (`store.ts:214` dealBandConfig, `LoopScreen.tsx:279/286` deal-config capture) — no live reads in any run/deal path.
-- Gates on fix head: tsc clean · npm test 1040/1040.
-
-## 2026-10-09 — Hint button UI (owner decision: hints are a REAL feature)
-- Wired the B1 hint policies to a real surface (was dead code — built, tested, zero UI callers).
-- New `src/components/hint-panel.tsx`: policy-aware button (44px, Lightbulb icon).
-  - 5-7 ("free"): always visible + enabled; mascot offer ("Stuck? Want a hint?" opt-in Yes/No) after 2 run misses; offer dismissal resets per run.
-  - 8-10 ("one-per-round"): visible; disables after one use per place, re-enables on next place.
-  - 11-13 ("none"): no button rendered at all (Clean Round stays earnable).
-- New `src/components/hint-logic.ts`: mechanical directional hint (place lon/lat vs region bounds quadrant — pure geometry, no fabrication, never pinpoints). Globe edition falls back to world bounds.
-- Wired in `PlayLoaded` (game-app.tsx): policy from `run.bandConfig?.hintPolicy` (deal-time snapshot, defaults "none"); `hintsUsed` incremented on the run via `onRun`; per-place usage resets on `place?.id` change; hint NEVER touches points/scoring.
-- Positioned top-right below chrome (mirrors bubble offset) — no overlap with question bubble or chrome.
-- Tests: 7 new unit tests (hint-panel.test.ts, added to npm test list); 4 new E2E (hint-button.spec.ts, new "hint-button" Playwright project @390px): 5-7 free hint, 8-10 disable-after-use, 11-13 hidden, mascot offer after 2 misses.
-- Gates: tsc clean · lint-cards GATE PASSED · build:pages green · npm test 1047/1047 · Playwright hint-button 4/4 · zero console errors · locked copy byte-identical (Ko-fi 3 strings, bands.ts untouched).
-
-## Rebase onto origin/main@722a51f (2026-10-09, phase-1 rebase agent)
-- Remote moved mid-task: origin/feat/age-profile-followups went 04a9835 → 1d62be6
-  (another agent landed the pin-tolerance fix 566c57c + hint-button UI 1d62be6).
-  Per stand-down rule the rebased head was NOT pushed — this tmp branch holds the
-  rebase of the true remote head 1d62be6 onto main@722a51f for the coordinator.
-- Rebased commits (7): 71be7e9→713a6cd (age-profile feat), f7c1d7c→a669fb5 (docs),
-  089faae→6141453 (badge BLOCK fix), fe3e89b→723738d + 1590757→b2871f9 (rebase records),
-  566c57c→77c3d99 (pin tolerance), 1d62be6→240ed14 (hint button UI). New head: 240ed14.
-- Conflicts: 1 — BRANCH_STATUS.md on 71be7e9 (kept the branch's live document;
-  main's copy was the stale fix/live-site-issues record). package.json test-script
-  union + game-app.tsx auto-merged.
-- Survival checks on 240ed14: B4 badge intact (progressed.dealBandConfig?.band,
-  win-only, data-testid="clean-round-badge", tests/e2e/clean-round-badge.spec.ts) ·
-  pin tolerance BOTH call sites read pinToleranceKm(run.bandConfig?.band ?? ageBand, …) ·
-  hint-panel.tsx + hint-logic.ts present, imported + <HintPanel/> rendered in game-app.tsx ·
-  locked copy byte-identical to main@722a51f (3 Ko-fi strings, bands.ts, 5 storyteller files).
-- Smoke: `npx tsc --noEmit` clean (fresh npm ci in this worktree).
-## 2026-10-09 — Hint-cluster overlap BLOCK fix + mechanical deletions (overlap-fix agent)
-- **BLOCK:** the hint cluster (game-app.tsx hint wrapper) sat at the same 6rem top offset as the open question bubble — at 360px/390px the full-width `pointer-events-auto` HintPanel root swallowed the bubble's "Hide question" taps (#114 dismiss-overlap class).
-- Fix (src/components/hint-panel.tsx): root → `pointer-events-none` + `items-end` (children hug the right edge); `pointer-events-auto` ONLY on the hint button and the two offer dialog buttons — taps pass through everywhere else.
-- Fix (src/components/game-app.tsx): cluster moved to `top-[max(28rem,env(safe-area-inset-top))]` — below the bubble shell's max extent (6rem top + min(38dvh,20rem) cap = 416px max bottom @844h); stale "mirrors the bubble offset" comment corrected.
-- New Playwright gate (tests/e2e/hint-button.spec.ts): 4 overlap tests asserting 0px² bounding-box intersection (`.bubble-shell` vs button / message / offer) at 360×740 AND 390×844, dismiss-overlap pattern. Measured: 0.0px² in all 6 state×width combos.
-- Test-note: the 2-miss click point is now viewport-parameterized — (50,700) lands on the bottom-left attribution pill at 740px height; 360px tests click (50,600).
-- Mechanical deletions (AGENTS.md rules 6/7, no behavior change): dead `hasPendingChange` (store.ts) + index.ts facade re-export — store.test.ts assertions reworked to observe the deferred boundary event instead; `cleanRoundEligible` (run-config.ts, zero callers — awardCleanRoundBadge encodes eligibility inline) + index.ts re-export + 4 test lines; orphaned `.agep-pending-chip` CSS block.
-- Gates on fix head: tsc clean · npm test 1046/1046 (was 1047 — one test block deleted with cleanRoundEligible) · lint-cards GATE PASSED · build:pages green · Playwright hint-button 8/8 · clean-round-badge 3/3 · locked copy byte-identical (3 Ko-fi strings vs origin/main).
-- Worktree: ~/workspace/worktrees/overlap-fix-113 (isolated; shared ~/workspace/meridian tree untouched).
-## 2026-10-09 — #113 follow-ups: "Always" read-aloud + GeoDetective hint UI (build agent)
-- **Item A — Honor "Always" across ALL bands + reliable mute.**
-  - `src/game/age-profile/read-aloud-pref.ts`: `shouldAutoPlayReadAloud("always", …)` → `return soundOn` (was `bandAutoplay && soundOn`, which silently broke the promise for 8-10/11-13). Unset keeps today's band default.
-  - `src/components/age-profile/ReadAloudButton.tsx`: auto-play effect no longer gated on `mode === "auto"` (5-7 only); the kid's preference decides via `shouldAutoPlayReadAloud(pref, mode==="auto"&&autoplay, soundOn)`. Added `meridian:sound-off` listener to reset the playing state on external mute.
-  - `src/game/audio/sfx.ts`: `setSoundEnabled(false)` now also `speechSynthesis.cancel()`s (narration isn't in the loop registry) + dispatches `meridian:sound-off`.
-  - Tests: read-aloud-pref.test.ts "always" cases reworked (8-10/11-13 → true); new sfx.test.ts mute-cancels-speech test; new tests/e2e/read-aloud-always.spec.ts (4 tests: Always on 11-13, Always on 8-10, mute cancels, Sometimes stays silent) — speechSynthesis stubbed, hit flow via commitHit (phase "story") at desktop viewport.
-- **Item B — GeoDetective hint UI (policy-driven).**
-  - Finding: GeoDetective is LOCKED for 5-7 (bands.ts `startingClues: null`) — a literal "5-7 only" UI would be unreachable dead code. Implemented via the deal-time band snapshot instead: `LoopScreen` captures `dealBand` alongside `captureDealConfig()`, passes it to `LoopGame`; hint policy = `getBandConfig(dealBand ?? resolveBand()).hintPolicy`.
-  - 8-10 ("one-per-round"): hint button in the "Detective's map" section (after the Guess N of M status, before the map), one hint per mystery, world-bounds `directionalHint` quadrant nudge; 11-13 ("none"): HintPanel renders nothing; 5-7 path exists via policy but is unreachable by design.
-  - State resets per mystery (`${cycle}:${index}`); hints never touch points; no band-revealing copy. Needs owner confirmation that 8-10-serving (not 5-7) matches intent.
-- Gates on follow-up head: tsc clean · lint-cards GATE PASSED · build:pages green · npm test 1047/1047 · Playwright geodetective-hint 3/3 + read-aloud-always 4/4 · 390×844 bounding-box overlap 0px² (hint button vs map) · zero console errors · locked copy byte-identical (3 Ko-fi strings, bands.ts untouched).
-- Worktree: ~/workspace/meridian-f113ab (isolated; shared ~/workspace/meridian tree untouched).
-## 2026-10-09 — #113 follow-ups: badges on home card + read-aloud settings (build agent)
-- **Item 1 — Earned badges on the home page card (owner: no Passport page).**
-  - New `src/components/passport/EarnedBadgeRow.tsx`: reads device-local `meridian.passport.badges.v1`, renders earned badges as chips (🏅 name, blurb as title) on the GeoDetective dossier card (where Clean Round is earned). Renders nothing when empty. Band-invisible: no ages, no easy/hard. Home remounts after loops → always fresh.
-  - CSS: `.atlas-badges` / `.atlas-badge-chip` in age-profile.css.
-- **Item 2 — Read-aloud preference settings surface (owner: changeable after first tap).**
-  - New `src/components/age-profile/ReadAloudPrefSettings.tsx`: kid-reachable toggle in the home footer ("🔊 Stories: Always") opening the Always / Sometimes / Never options; writes via setReadAloudPref immediately. Sits NEXT TO the grown-ups gate — never parent-gated (standing UX rule). Hidden while pref unset (onboarding prompt owns first choice).
-  - CSS: `.agep-readaloud-settings` / `.agep-readaloud-toggle` / `.agep-readaloud-options` in age-profile.css (reuses `.agep-pref-option`).
-- Wiring (src/components/game-app.tsx): imports + `<EarnedBadgeRow />` on the GeoDetective card after the streak line; `<ReadAloudPrefSettings />` in the footer before the grown-ups button.
-- Tests: 7 new unit (EarnedBadgeRow.test.ts 3, read-aloud-settings.test.ts 4); new tests/e2e/home-badges-readaloud.spec.ts + `home-badges-readaloud` Playwright project (4 tests: badge on card, empty→nothing, change via footer, kid-reachable not gated). Test-note: addInitScript re-seeds on reload — persistence asserted via direct localStorage read.
-- Gates on follow-up head: tsc clean · npm test 1054/1054 · lint-cards GATE PASSED · build:pages green · Playwright home-badges-readaloud 4/4 · locked copy byte-identical (Ko-fi 3 strings 2/2/1 vs origin/main; bands.ts untouched).
-- Worktree: ~/workspace/meridian-f113ab (isolated; shared ~/workspace/meridian tree untouched).
-## 2026-10-09 — #113 owner-review BLOCKs (4): fix agent
-- **BLOCK 1 — Clean Round panel re-fired on every 11-13 win.** Root cause: `awardCleanRoundBadge` returned the badge definition even when already earned (`awardPassportBadge` is storage-idempotent but still returns the badge) → LoopScreen set state → panel showed on every qualifying win. Fix (`src/game/passport/badges.ts`): return null when already earned; panel fires once at earn. New unit test: re-award returns null, storage stays idempotent.
-- **BLOCK 2a — Mascot offer had no visual.** Fix (`src/components/hint-panel.tsx`): added `CometEmblem` (lightweight static SVG, aria-hidden, no tracking) beside the offer copy.
-- **BLOCK 2b — Badge blurb in hover-only tooltip (touch-unreachable).** Fix (`src/components/passport/EarnedBadgeRow.tsx`): chip is now a tappable button toggling the blurb as visible text; `title` attribute removed. Updated unit test; fixed home-badges-readaloud E2E selector (CTA is `button.atlas-btn-brass`, not `button.first()`).
-- **BLOCK 3 — Vacuous guess-input test.** Root cause: `[data-testid="loop-guess-input"]` didn't exist — filtered out silently. Fix: added the testid to `GuessInput` root (`src/game/loop/guess-input.tsx`); test now asserts both map AND guess input present + non-overlapping at 360×740 and 390×844.
-- **BLOCK 4 — hintsUsed never committed to the store.** Root cause: `onUseGeoHint` incremented local state only; badge reads `progressed.hintsUsed` from the store (always 0). Fix: new `onHintUsed(count)` prop on `LoopGame`; parent `LoopScreen` commits via `commitStore`.
-- Gates on fix head: tsc clean · npm test 1055/1055 · lint-cards GATE PASSED · build:pages green · Playwright geodetective-hint + home-badges-readaloud + clean-round-badge + hint-button + read-aloud-always green (28 passed) · locked copy byte-identical (Ko-fi 2/2/1 vs origin/main).
-- Worktree: ~/workspace/meridian-f113fix (isolated; shared ~/workspace/meridian tree untouched).
+## Panel round 2 follow-up (2026-10-10) — BLOCK 5 half-done, fixed
+- Panel: the muted-tap hint lied — "tap the speaker above to hear my tale"
+  but the one-shot was consumed while muted, so unmuting + tapping played
+  nothing.
+- Fix: (1) the gesture handler checks sound BEFORE consuming the one-shot —
+  a muted tap shows the hint and stays armed; (2) `setSoundEnabled` in
+  `src/game/audio/sfx.ts` now dispatches `meridian:sound-change`; the
+  storyteller listens and auto-starts the pending tale on unmute (only
+  while the greeting is actively pending: greeting_text + greeting mode +
+  not yielded + one-shot unspent). The speaker tap is a real user gesture,
+  so playback is allowed — the hint copy is now literally true.
+- Copy approval: "Psst — your sound is off, young explorer. Tap the
+  speaker above to hear my tale." — submitted for owner/panel approval.
+- Test: "muted tap keeps the one-shot: unmuting starts the tale" (would
+  FAIL pre-fix: no listener existed, unmute could never start audio).

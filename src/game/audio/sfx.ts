@@ -101,6 +101,16 @@ export function setSoundEnabled(on: boolean): void {
       // Silent — sound is enhancement only.
     }
   }
+  // Notify listeners (e.g. the storyteller home greeting, which auto-starts
+  // its pending narration when the kid unmutes from its hint). Same-tab
+  // storage events don't fire, so this explicit event is the channel.
+  try {
+    window.dispatchEvent(
+      new CustomEvent<boolean>("meridian:sound-change", { detail: on }),
+    );
+  } catch {
+    // Non-browser context — no listeners to notify.
+  }
 }
 
 // ---------------------------------------------------------------------------

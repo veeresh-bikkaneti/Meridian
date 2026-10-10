@@ -15,11 +15,262 @@
   flex: none;
 }
 
-/* Figure: 56px banner size (owner range 48–64px), no idle float. */
+/* Figure: 56px banner size (owner range 48–64px).
+ *
+ * Homer motion system (Track B, 2026-10-09): all six moments are
+ * phase-driven off the host's data-phase attribute — transform/opacity
+ * only, so nothing here can reflow the banner row or the page.
+ *
+ * Default (this also covers prefers-reduced-motion): ≤150ms opacity fade
+ * only. Full motion lives under prefers-reduced-motion: no-preference.
+ * NOTE: this supersedes the earlier "no idle motion" owner directive —
+ * moment 5 (idle float) is intentionally barely-there; owner to confirm. */
 .storyteller-banner .storyteller-figure {
+  position: relative; /* the speaking-shimmer ring positions against the figure */
   width: 56px;
   height: 56px;
-  animation: none;
+  animation: storyteller-banner-in 150ms linear;
+}
+
+/* Reduced-motion-safe yield/exit: opacity fade via transition (transitions
+ * re-trigger reliably on class/attribute change; a restarted animation
+ * would not). */
+.storyteller-banner.is-yielding .storyteller-figure,
+.storyteller-banner[data-phase="exiting"] .storyteller-figure {
+  opacity: 0;
+  transition: opacity 150ms linear;
+}
+
+/* Reduced-motion-safe poke: a 150ms fade dip. */
+.storyteller-banner.is-poked .storyteller-figure {
+  opacity: 0.55;
+  transition: opacity 150ms linear;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* 1 — Theatrical entrance: he RISES into the banner (anticipation dip,
+   * overshoot crest, settle). Keyed to entering+greeting_text under ONE
+   * rule so the 150ms phase flip can't restart the 650ms take. */
+  .storyteller-banner[data-phase="entering"] .storyteller-figure,
+  .storyteller-banner[data-phase="greeting_text"] .storyteller-figure {
+    transition: none;
+    animation: homer-arrive 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* 2 — Speaking presence: a bard's breath + a shimmer ring at the
+   * figure's edge, synced to the greeting_audio phase. */
+  .storyteller-banner[data-phase="greeting_audio"] .storyteller-figure {
+    transition: none;
+    animation: homer-breath 1.8s ease-in-out infinite;
+  }
+  .storyteller-banner[data-phase="greeting_audio"] .storyteller-figure::after {
+    content: "";
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    border: 2px solid var(--atlas-brass, #e8b64c);
+    opacity: 0;
+    pointer-events: none;
+    animation: homer-shimmer 1.8s ease-in-out infinite;
+  }
+
+  /* 3 — Poke reaction: anticipation crouch, startle lean, settle.
+   * The doubled .storyteller-figure raises specificity to 0,4,0 so this
+   * beats the idle-sway rule below (0,3,0): on a tie the later sway rule
+   * would win and the startle would never visibly run. */
+  .storyteller-banner.is-poked .storyteller-figure.storyteller-figure {
+    opacity: 1;
+    transition: none;
+    animation: homer-startle 480ms cubic-bezier(0.34, 1.3, 0.64, 1);
+  }
+
+  /* 4 — Graceful yield: he recedes (rise-settle in reverse) instead of
+   * hard-cutting to null when tour/celebration take the stage. The
+   * sendoff exit bows out the same way.
+   * The doubled .storyteller-figure raises specificity to 0,4,0 so this
+   * beats the idle-sway rule below (0,3,0): on a tie the later sway rule
+   * would win and the yield recede would never visibly run. */
+  .storyteller-banner.is-yielding .storyteller-figure.storyteller-figure,
+  .storyteller-banner[data-phase="exiting"] .storyteller-figure.storyteller-figure {
+    transition: none;
+    animation: homer-yield 220ms ease-in forwards;
+  }
+  .storyteller-banner[data-phase="exiting"] .storyteller-figure {
+    animation-duration: 260ms;
+  }
+
+  /* 5 — Idle float: a barely-there bard's sway while lingering. */
+  .storyteller-banner[data-phase="idle_linger"] .storyteller-figure {
+    transition: none;
+    animation: homer-sway 4.5s ease-in-out infinite;
+  }
+
+  /* 6 — Idle engagement (owner 2026-10-09): the bard hums to invite play.
+   * Music notes rise ("singing"); a scroll unfurls as if he's writing the
+   * next tale. Transform/opacity only; idle_linger phase only. */
+  .storyteller-banner[data-phase="idle_linger"] .storyteller-idle {
+    display: block;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .storyteller-idle-note {
+    position: absolute;
+    bottom: 10px;
+    font-size: 14px;
+    line-height: 1;
+    color: var(--atlas-brass, #e8b64c);
+    opacity: 0;
+    animation: homer-note-rise 5s ease-in infinite;
+  }
+  .storyteller-idle-note.n1 {
+    left: 4px;
+  }
+  .storyteller-idle-note.n2 {
+    left: 22px;
+    font-size: 11px;
+    animation-delay: 1.6s;
+  }
+  .storyteller-idle-note.n3 {
+    left: 40px;
+    animation-delay: 3.2s;
+  }
+  .storyteller-idle-scroll {
+    position: absolute;
+    right: -2px;
+    bottom: 4px;
+    width: 16px;
+    height: 22px;
+    border-radius: 2px;
+    background: linear-gradient(105deg, #f5edd6 0 70%, #e0d2ab 70% 100%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transform: scaleY(0.2);
+    transform-origin: top center;
+    animation: homer-scroll-unfurl 12s ease-in-out infinite;
+  }
+}
+
+/* Idle engagement layer: hidden unless the idle_linger phase animates it
+ * (inside prefers-reduced-motion: no-preference above). */
+.storyteller-idle {
+  display: none;
+}
+
+@keyframes homer-note-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.8);
+  }
+  25% {
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-24px) scale(1.1);
+  }
+}
+
+@keyframes homer-scroll-unfurl {
+  0%,
+  60% {
+    opacity: 0;
+    transform: scaleY(0.2);
+  }
+  70% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  88% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  96%,
+  100% {
+    opacity: 0;
+    transform: scaleY(0.2);
+  }
+}
+
+@keyframes homer-arrive {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.88);
+  }
+  35% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.03);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(1px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes homer-breath {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.03) translateY(-1px);
+  }
+}
+
+@keyframes homer-shimmer {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@keyframes homer-startle {
+  0% {
+    transform: scale(1) rotate(0deg) translateX(0);
+  }
+  18% {
+    transform: scale(0.96) rotate(2deg) translateX(1px);
+  }
+  45% {
+    transform: scale(1.05) rotate(-6deg) translateX(-3px);
+  }
+  70% {
+    transform: scale(1.01) rotate(2deg) translateX(1px);
+  }
+  100% {
+    transform: scale(1) rotate(0deg) translateX(0);
+  }
+}
+
+@keyframes homer-yield {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(8px) scale(0.93);
+  }
+}
+
+@keyframes homer-sway {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(0.6deg);
+  }
 }
 
 /* Chunk-load skeleton + error-boundary static figure: same 56px footprint. */

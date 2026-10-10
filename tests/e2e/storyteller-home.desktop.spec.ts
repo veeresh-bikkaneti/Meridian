@@ -59,10 +59,17 @@ test("banner: 56px figure beside the h1, greeting popover on every visit", async
 }) => {
   const errors = await loadHome(page);
 
-  const fBox = await page.getByTestId("storyteller-figure").boundingBox();
+  const figure = page.getByTestId("storyteller-figure");
+  const fBox = await figure.boundingBox();
   expect(fBox, "figure box").not.toBeNull();
-  expect(Math.round(fBox!.width)).toBe(56);
-  expect(Math.round(fBox!.height)).toBe(56);
+  // The 650ms entrance animation scales the figure — poll until both
+  // dimensions settle at 56 simultaneously.
+  await expect
+    .poll(async () => {
+      const b = await figure.boundingBox();
+      return b ? `${Math.round(b.width)}x${Math.round(b.height)}` : "none";
+    }, { timeout: 5_000 })
+    .toBe("56x56");
 
   const heading = page.getByTestId("home-heading");
   const hBox = await heading.boundingBox();
