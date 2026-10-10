@@ -54,8 +54,10 @@ test("full slice: place 3 rings → tap → confirm → score reveal", async ({ 
   await expect(page.getByTestId("map-hint")).toContainText("Place all 3 rings first");
 
   // Ring 1: place → tap → the draft renders as a preview (dashed) ring.
+  // Taps are clustered so the three rings genuinely triple-overlap
+  // (disjoint rings are covered by the dedicated disjoint test below).
   await page.getByTestId("place-ring-btn").first().click();
-  await page.getByTestId("loop-map").click({ position: { x: 200, y: 200 } });
+  await page.getByTestId("loop-map").click({ position: { x: 300, y: 250 } });
   await expect(page.getByTestId("confirm-ring-btn")).toBeVisible({ timeout: 10_000 });
   // minFeatures=2 (preview ring + its km label): waits out the passive-
   // effect repaint so the assertion can't race the paint.
@@ -67,9 +69,9 @@ test("full slice: place 3 rings → tap → confirm → score reveal", async ({ 
   await expect(page.getByTestId("map-hint")).toContainText("Ring 1 locked");
   await expect(page.getByTestId("place-ring-btn")).toHaveCount(2);
 
-  // Rings 2 and 3.
-  await placeAndLockRing(page, { x: 300, y: 250 });
-  await placeAndLockRing(page, { x: 400, y: 300 });
+  // Rings 2 and 3 (clustered with ring 1 for genuine triple-overlap).
+  await placeAndLockRing(page, { x: 315, y: 240 });
+  await placeAndLockRing(page, { x: 285, y: 265 });
   await expect(page.getByTestId("place-ring-btn")).toHaveCount(0);
 
   // All three locked: the status line invites the interception tap.

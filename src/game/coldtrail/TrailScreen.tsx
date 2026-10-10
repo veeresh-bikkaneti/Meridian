@@ -495,7 +495,11 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
                 &ensp;·&ensp;<span className="text-gold-ink">dashed ring</span>&thinsp;=&thinsp;your draft — not locked yet
               </>
             ) : null}
-            &ensp;·&ensp;tap where the rings cross to intercept
+            &ensp;·&ensp;{allRingsPlaced && !evidenceOverlap?.polygon ? (
+              <>use ↩ Move on a sighting card to shift a ring closer</>
+            ) : (
+              <>tap where the rings cross to intercept</>
+            )}
           </p>
         ) : null}
         {hint ? (
