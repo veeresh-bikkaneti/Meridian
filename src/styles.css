@@ -1710,3 +1710,37 @@
     transition: none;
   }
 }
+
+/* ---- Cold Trail F11 overlap pulse (WS1) ----
+ * One-time expanding gold ring at the triple-overlap centroid when all 3
+ * rings lock. Pure visual signal (aria-hidden, pointer-events none).
+ * Suppressed under prefers-reduced-motion — the static fill lens carries
+ * the meaning alone. */
+@keyframes ct-overlap-ping {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+.ct-overlap-pulse {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  border: 3px solid #f2c14e;
+  pointer-events: none;
+  animation: ct-overlap-ping 1.6s ease-out 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ct-overlap-pulse {
+    animation: none;
+    display: none;
+  }
+}

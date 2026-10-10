@@ -1,142 +1,157 @@
-# BRANCH_STATUS — feat/homer-storyteller
+# BRANCH_STATUS — feat/place-accessibility-ws1
 
-**Branch:** `feat/homer-storyteller` · **Base:** origin/main@044befc (#120)
-**Status:** implementation sprint running (3 workers). NEVER merge — owner merges.
+Owner: Frontend Developer (Waves C+D fix wave) · Branch: `feat/place-accessibility-ws1` · Base: origin/main @ f4f92ad
+· Created: 2026-10-09. **PUSH OK, DO NOT MERGE** — Scrum Master opens the PR after the gate wave; Chitti is the only merge path.
 
-"Homer-style storyteller — dramatic voice + dramatic motion."
+Standing rules: named-file staging only, never `git add -A`. Locked Ko-fi
+copy must stay byte-identical (verified by grep after every edit):
+`Grown-ups — buy me a coffee? ☕` · `Your support keeps Meridian free for kids` ·
+`Grown-ups — buy me a coffee? Activate to learn how to support Meridian.`
+Hard rules: $0/offline/keyless; COPPA-safe; no paywalls; do not invent place coordinates.
 
-## Track A — narration voice fix (Game Audio Engineer)
-- [x] Mismatch CONFIRMED: old greets were TruthTeller cloud renders
-      (−33.1 LUFS unmastered; commit 722a51f says "add TruthTeller greet mp3s")
-- [x] Re-rendered greet-01…06 from EXACT GREETINGS captions via new
-      scripts/render-storyteller-greets.mjs: local Kokoro am_fenrir @ 1.05,
-      −16 LUFS, true peak ≤ −1.5 dBTP, 24kHz mono, caption==audio char-for-char
-      (all ≤38KB, staged in ~/workspace/meridian-homer-audio, not yet merged
-      into this branch)
-- [ ] Merge audio worktree changes into this branch + gates
+## Done (Wave D fix wave, 2026-10-09) — review-wave fixes, all gates re-run
 
-## Track B — Homer-style dramatic motion (Technical Artist + UI Designer) DONE
-- [x] Theatrical entrance (homer-arrive 650ms), speaking presence
-      (homer-breath + shimmer ring on greeting_audio), poke startle,
-      graceful 220ms yield recede, idle sway (4.5s, ±2px — barely-there)
-- [x] CSS keyframes only, transform/opacity, scoped .storyteller-banner;
-      reduced-motion default ≤150ms fade, full motion in no-preference only
-- [x] tsc clean in worktree; storyteller unit tests 7/7 + 16/16
-- Trade-offs for owner: (1) supersedes earlier "no idle motion" note in
-  css — confirm he wants the sway; (2) yield delays null-unmount 220ms;
-  (3) rare pop if audio starts <650ms into arrival; (4) sendoff exiting
-  now bows out 260ms (strippable).
+Fixed every finding from the Wave D code review (2 MAJORs, 5 MINORs, 3 nits)
+and all 4 Playwright failures from the test-automation gate (all test-side).
 
-## Diagnosis — owner hears no narration on device (QA, read-only) DONE
-- VERDICT: real bugs, not just device state.
-- Bug 1: Grandpa's tour auto-runs on mobile → host yields → greeting mp3
-  unreachable; after tour, text-only tour-return line (no mp3 by design).
-  Zero e2e coverage (seedQuietHome suppresses the tour in every test).
-- Bug 2: tutorial-invite dismiss tap is swallowed — first tap eats it,
-  narration needs a SECOND tap. Fresh devices affected.
-- Device-state suspect: persisted meridian.sound="off" (toggle is a tiny
-  20px icon, no muted indication in bubble); muted first tap permanently
-  consumes the one-shot.
-- Minor: dismiss × has no tap-guard; manifest failure cached for session;
-  play() never settling leaves phase stuck.
-- Fixes need OWNER decisions: (a) intended post-tour behavior (copy G2
-  mandates text-only return line); (b) invite-dismiss tap = first gesture;
-  (c) don't consume one-shot when muted + muted indicator; (d) × tap-guard;
-  (e) manifest retry. NOT fixed in this sprint — reported for his call.
+App fixes (`src/`):
+- MAJOR 1 (WCAG 2.4.3): `onCancelPlacement` (TrailScreen) deferred its focus
+  with `requestAnimationFrame` — the old code focused the "✖ Cancel placement"
+  button synchronously before React committed, dropping focus to `<body>`.
+  Escape path shares the function, so it gets the same fix. E2E now asserts
+  `document.activeElement` is the card's Place button after Escape AND after
+  the banner Cancel.
+- MAJOR 2 (walkthrough F11): built the overlap lens — `tripleOverlap()` in
+  `placement.ts` computes the triple-intersection of the 3 locked player
+  rings (Sutherland–Hodgman on ringPolygon geometry, antimeridian-safe via a
+  common longitude frame + circular-mean centroid); `LoopMap` paints it as a
+  `loop-overlap` fill layer (centroid dot fallback when rings don't overlap)
+  plus a ONE-TIME pulse marker at the centroid, suppressed under
+  `prefers-reduced-motion` (static fill carries the meaning alone). Player
+  centers only — I1 holds; the I1 unit test now also sweeps the lens coords.
+- MINOR 1: `onMoveRing` shows the adjudication-3 set-aside hint
+  ("Your ring draft was set aside — tap 📍 to place it again.") when another
+  card's draft is discarded.
+- MINOR 2: removed the dead `onMapTap` placing branch per C8.
+- MINOR 3: nudge announcement wraps the lon delta into [-180, 180]
+  (`wrapLonDelta`) — an east step across the antimeridian no longer says "west".
+- MINOR 4: intercept taps now `normalizeLon`/`clampLat` like placement taps.
+- MINOR 5: F5 fingertip offset — the 🎯 marker rides 24px above the draft
+  center while dragging (`setOffset`), so the finger never occludes the point.
+- NIT 1: Escape listener effect now deps `[placing]` (was every render).
+- NIT 2: marker click routed through the shared 300ms double-tap guard.
+- NIT 3: named lat bands in `geo.ts` (`MAP_LAT_LIMIT`/`STORE_LAT_LIMIT`); the
+  ±90 store-load call site uses the constant.
+- Duplicate `role="status"`: the map-section status line is now plain text;
+  the hint banner is the single live region (no double announcements).
 
-## Gates (before PR)
-- [ ] tsc clean · npm test green · lint-cards PASSED · build:pages green
-- [ ] Playwright storyteller specs green
-- [ ] Locked copy byte-identical · no paywalls · $0/offline/keyless
+Test fixes (`tests/e2e/`):
+- `sourceFeatures` moved to `helpers.ts`, awaits maplibre 6.x's async
+  `getData()` and optionally waits for a minimum feature count so overlay
+  assertions can't race React's passive-effect paint.
+- switching-cards: expectation corrected to 2 Place buttons + 1 Cancel
+  (approved state machine: the placing card shows Cancel).
+- "All 3 rings are down" locators scoped to `data-testid="map-hint"`
+  (the map section shows the same sentence as plain text).
+- reduced-motion spec extended: all 3 locked → static lens paints, zero
+  `.ct-overlap-pulse` elements.
 
-## Owner's 4 rulings (2026-10-09) — implementation + review scrum
-- [x] Ruling #1: greeting plays regardless of tour — after the text-only
-      tour-return line, the normal greeting runs (mp3 on gesture).
-      NOTE: first attempt (chained t1/t2 timers in one effect) STALLED at
-      runtime — t1's setPhase ran effect cleanup, killing t2. Chitti caught
-      it. Fixed via dedicated follow-up effect guarded on
-      (yielded, mode, phase) — commit 503740f.
-- [x] Ruling #2: tutorial-invite dismiss counts as the first gesture —
-      beginGreetingAudio on dismiss (transient activation).
-- [x] Ruling #3: idle engagement — music notes + unfurling scroll,
-      CSS-only, idle_linger only, reduced-motion safe. OPEN OWNER QUESTION:
-      idle sway ships against standing "no idle motion" directive —
-      confirm or kill.
-- [ ] Ruling #4: merge only when everything is ready — review scrum running.
-- [x] Regression test added (mobile spec): tour closes → return line →
-      greeting → tap starts narration. Verified FAILS pre-fix, PASSES post-fix.
-- [ ] Open owner questions from Chitti: (a) idle sway confirm/kill;
-      (b) theatrical motion for 5–7 band vs calm toggle;
-      (c) spot-listen greet-01 + greet-03 before merge.
+New unit tests (`placement.test.ts`, 1004/1004 total): tripleOverlap
+polygon/centroid/disjoint/antimeridian/<3-rings, overlap wiring
+(present only when all 3 locked pre-reveal), wrapLonDelta.
 
-## Review scrum (2026-10-09) — 8-persona team, read-only + fixes
-- Verdicts: PASS — Technical Artist, Game Audio Engineer. CONCERN (non-blocking)
-  — Narrative Designer (copy hygiene), Accessibility Auditor (motion safety =
-  open owner Q), Game Designer (4 interaction defects), Test Automation
-  Engineer (rulings #2/#3 lacked runtime tests — now added).
-- BLOCKs found and fixed on the branch:
-  1. Code Reviewer: celebration during greeting_audio killed the 12s cap
-     timer, phase stuck at greeting_audio forever → yield effect now parks
-     in idle_linger when interrupting narration.
-  2. Code Reviewer: first-gesture listener stayed live during yield (tap
-     mid-tour started audio over the tour) → effect now bails when yielded.
-  3. Game Designer: invite dismissed mid-tour narrated under the tour →
-     invite effect returns early when yielded; post-tour flow greets.
-  4. Reality Checker: dead export resetStorytellerHomeForTests → removed.
-- Regression tests added (each verified FAIL pre-fix / PASS post-fix):
-  tour-return→greeting, invite-dismissed-mid-tour, invite-dismiss-starts-
-  narration, idle-engagement-gating, celebration-no-stall.
-- Remaining CONCERNs (owner calls, not blockers): return-line dismiss voids
-  the follow-up greeting; text-only fallback never reaches idle_linger;
-  figure-first-tap poke/gesture race; POKE_3 Troy tease; idle sway vs the
-  standing "no idle motion" directive (owner to confirm or kill).
+## Done (Wave C implementation, 2026-10-09)
 
-## Panel round 2 (2026-10-10) — 5 BLOCKs fixed, each with regression test
-Owner's independent panel verified the 3 earlier fixes as sound, found 5 new
-BLOCKs. All fixed on the branch; each regression test verified FAIL pre-fix /
-PASS post-fix via stash dance (source stashed, tests kept, rebuilt, re-ran).
-- [x] BLOCK 1: invite-dismiss played the greeting mp3 under the text-only
-      return line — tutorial-invite effect now returns early when
-      mode === "tour-return". Test: "invite dismiss after tour: no greeting
-      mp3 under the text-only return line" (FAIL pre / PASS post).
-- [x] BLOCK 2: CSS specificity tie (0,3,0) let the later idle-sway rule beat
-      poke startle + yield recede — both selectors raised to 0,4,0 via
-      doubled figure class, with explanatory comments. Test: "poke startle
-      + yield recede win over idle sway" (computed animation-name; FAIL
-      pre / PASS post).
-- [x] BLOCK 3: dismissing the return line was a dead end (silence forever) —
-      returnLineDismissedRef flag; follow-up effect now also fires on
-      idle_linger + flag (900ms), greeting still follows a dismiss. Test:
-      "dismissing the return line still leads to the greeting" (FAIL pre /
-      PASS post).
-- [x] BLOCK 4: yielded guards had zero regression coverage — new test
-      "gesture under tour: no audio starts, greeting resumes after"
-      (guard-lock: passes unless the guard is removed).
-- [x] BLOCK 5: muted first tap silently killed narration — now shows a
-      one-line hint in the bard voice, then restores the greeting caption;
-      routed through bubbleTimer so a dismiss cancels the restore. NEW copy
-      ("Psst — your sound is off, young explorer. Tap the speaker above to
-      hear my tale.") — OWNER/PANEL COPY APPROVAL REQUIRED before merge.
-      Test: "muted first tap shows the sound-off hint" (FAIL pre / PASS post).
-- Gates on this head: tsc clean · 993/993 unit · lint-cards GATE PASSED ·
-  build:pages green · Playwright storyteller 22/22 (desktop 2, mobile 18,
-  reduced 2). Rebase onto origin/main@044befc: no-op, zero conflicts.
-- NOT merged — verdict belongs to the independent panel. 3 open owner
-  questions unchanged: (a) idle sway confirm/kill; (b) theatrical for
-  5–7s vs calm toggle; (c) spot-listen greet-01 + greet-03.
+WS1 "Every Place Findable" — Cold Trail placement mode. The player now places
+each sighting ring: Place → tap map (draft) → adjust (tap-to-move primary,
+draggable 🎯 marker + arrow-key nudge as enhancement) → "Yes, keep it" locks
+the PLAYER-chosen center. Pre-reveal, the map renders only player coordinates
+(witness dots at locked player centers, never at true anchors).
 
-## Panel round 2 follow-up (2026-10-10) — BLOCK 5 half-done, fixed
-- Panel: the muted-tap hint lied — "tap the speaker above to hear my tale"
-  but the one-shot was consumed while muted, so unmuting + tapping played
-  nothing.
-- Fix: (1) the gesture handler checks sound BEFORE consuming the one-shot —
-  a muted tap shows the hint and stays armed; (2) `setSoundEnabled` in
-  `src/game/audio/sfx.ts` now dispatches `meridian:sound-change`; the
-  storyteller listens and auto-starts the pending tale on unmute (only
-  while the greeting is actively pending: greeting_text + greeting mode +
-  not yielded + one-shot unspent). The speaker tap is a real user gesture,
-  so playback is allowed — the hint copy is now literally true.
-- Copy approval: "Psst — your sound is off, young explorer. Tap the
-  speaker above to hear my tale." — submitted for owner/panel approval.
-- Test: "muted tap keeps the one-shot: unmuting starts the tale" (would
-  FAIL pre-fix: no listener existed, unmute could never start audio).
+Files changed:
+- `src/game/geo.ts` — added `normalizeLon` / `clampLat` helpers.
+- `src/game/coldtrail/types.ts` — `ColdTrailProgress.ringCenters` (player
+  centers, null until locked); `ColdTrailStore.v: 2`.
+- `src/game/coldtrail/store.ts` — v2: `meridian.coldtrail.v2` key,
+  `ringCenters` validator (triple, finite, locked→center invariant),
+  one-time v1→v2 migration (wallet kept, case reset to unplaced, legacy key
+  deleted, `takeLegacyMigrationNotice()` one-shot flag).
+- `src/game/coldtrail/placement.ts` (new) — pure `buildEvidenceOverlays`
+  (I1 anti-leak derivation) + `nudgeDirection`.
+- `src/game/coldtrail/TrailScreen.tsx` — ephemeral placing/draft state,
+  onPlaceRing/onPlacementTap/onPlacementDrag/onPlacementNudge/onLockRing/
+  onTryAgain/onCancelPlacement/onMoveRing, Escape handling, focus management,
+  migration hint, armed-border + touch reticle overlays, hint banner with
+  Cancel, updated status line / legend / mapLabel.
+- `src/game/coldtrail/SightingCard.tsx` — per-state button rows
+  (place / cancel / "Yes, keep it"+"Try again" / "✓ Ring placed"+"↩ Move"+
+  informant); informant hidden during placement.
+- `src/game/loop/LoopMap.tsx` — optional placement props (loop edition
+  unaffected): tap routing after the 300ms guard, crosshair cursor,
+  focusable container, arrow-key nudge (scale-aware, min 5 km), draggable
+  draft marker + click-through fix, dashed `loop-ring-line-preview` layer,
+  witness-layer comment.
+- `src/components/ui/button.tsx` — additive optional `ref` prop (React 19
+  ref-as-prop; needed for card focus management).
+- `src/game/coldtrail/store.test.ts` — v2 validator + backward-compat tests.
+- `src/game/coldtrail/placement.test.ts` (new) — I1 anti-leak test,
+  draft/informant/Move behavior.
+- `tests/e2e/coldtrail.spec.ts` — rewritten for the new flow.
+- `tests/e2e/coldtrail.mobile.spec.ts` (new) — 390px touch pass.
+- `tests/e2e/coldtrail.reduced.spec.ts` (new) — reduced-motion pass.
+- `package.json` — registered placement.test.ts in `npm test`.
+
+Gates: `npx tsc --noEmit` clean · `npm test` 996/996 green ·
+`node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green.
+Playwright E2E runs in the next wave (specs written, not yet executed).
+
+## Adjudications applied (override docs where they conflict)
+
+1. Move-after-lock ALLOWED (re-enters adjusting; re-confirm re-locks; clears pending).
+2. Tap-to-move in adjusting is PRIMARY; 300ms tap guard documented (not ignored taps).
+3. Card-switching mid-placement: implicit switch, draft discarded, hint "Your ring draft was set aside — tap 📍 to place it again."
+4. Pre-reveal witness dots render at PLAYER centers (not hidden until reveal, not at true anchors).
+5. Drag on the ring handle is progressive enhancement; marker click-through fixed regardless.
+6. Keyboard nudge: scale-aware step (2% viewport width, min 5 km).
+7. Store bumped to v2; legacy auto-placed rings reset to UNPLACED with one-time hint "Rings work differently now — place yours!".
+8. Plan bugs fixed: ringCenters cloned in withProgress (+onInformant); onPlacementDrag in cbRef; T3/T8 reworked (onEmptyTap never fires in freeTap; off-map taps never reach LoopMap); dead onMapTap placement clause removed (routing lives in LoopMap.onClick); placementDraft wired into paintRef + repaint deps.
+9. Copy lock (exact): hint "Tap where you think the ring goes"; confirm "Yes, keep it"; adjust "Try again".
+
+## Deviations from the docs (deliberate, documented)
+
+- T1 focus target: map container (tabIndex=-1), not the hint banner wrapper —
+  puts keyboard users where arrow-key nudge works; the banner is role=status
+  so SR users hear the instruction anyway (reality-checker O11 allowed this).
+- No pre-tap ghost ring (UI designer explicitly rejected it); F2's mode-entry
+  signal = static dashed border + hint + touch reticle.
+- Post-reveal: NO true-anchor witness dots (adjudication 4: never at true
+  anchors); reveal shows player rings + player-center dots + hideout star.
+- "Enter confirms" dropped (reality-checker O7 recommendation); native Enter
+  on the focused button works.
+- (Fix wave: the dead onMapTap placing branch noted below was REMOVED per
+  C8 — LoopMap routes placement taps before onMapTap, so it was unreachable
+  and a double-handling trap.)
+- Storage key bumped to `meridian.coldtrail.v2` (with explicit v1 migration)
+  rather than keeping the v1 key, to avoid version/key confusion.
+- Informant button hidden while its own card holds the live placement (the
+  ring isn't confirmed yet); buying for OTHER confirmed rings mid-placement
+  is allowed (no interaction with placement).
+
+## Pending
+
+- Playwright E2E execution (next wave): coldtrrail / coldtrrail.mobile /
+  coldtrrail.reduced projects + a loop-edition sanity run (geodetective
+  project) to prove the shared LoopMap changes didn't regress the loop.
+- Chitti review + merge (only merge path).
+
+## 2026-10-09 — Design BLOCK fix: keyboard-only ring planting (P0)
+- **Problem:** keyboard-only players could never plant the first draft ring — arrow-key nudge requires an existing draft, and there was no keyboard path to create one.
+- **Fix (LoopMap.tsx):** Enter/Space with placement armed but no draft plants the draft at the map's current center. Map container tabIndex -1→0 (keyboard users can tab back mid-placement) + visible focus ring when placement is active.
+- **Fix (TrailScreen.tsx):** map aria-label mentions "press Enter to plant at the map center, then arrow keys"; plant hint is input-agnostic ("Ring planted — move it with arrow keys or by tapping"); useEffect focuses the map post-commit when placement starts (the synchronous focusMap() fired pre-render and was a no-op).
+- **Test:** new "keyboard-only: Enter plants the first draft ring, arrows nudge it" E2E (coldtrail.spec.ts) — full keyboard flow: Enter on Place → Enter plants → arrows nudge → Enter locks.
+- **Gates:** tsc clean · lint-cards GATE PASSED · build:pages green · npm test 1082/1082 · coldtrail 7/7 + mobile 3/3 + reduced 1/1 Playwright green · locked copy intact.
+
+## Rebase onto main@6b74966 (2026-10-10, rebase agent)
+- Rebased 3 commits (05ee1d4, 235f446, 524cc32) onto origin/main@6b74966 → new head 524cc32.
+- Conflict: BRANCH_STATUS.md only (main had Homer storyteller doc) — kept WS1 document, resolved mechanically.
+- Gates on rebased head: tsc clean · lint-cards GATE PASSED · build:pages green · npm test 1082/1082 · Playwright coldtrail 7/7 + mobile/reduced 4/4 · locked copy byte-identical · zero console errors.
