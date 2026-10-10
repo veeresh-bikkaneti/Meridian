@@ -839,3 +839,32 @@ test("hint popover: inside the viewport, dismiss never overlaps the caption", as
 
   expectCleanConsole(errors);
 });
+
+test("mobile: no cursor tracking — directions layer stays centered", async ({
+  page,
+}) => {
+  await seedQuietHome(page);
+  const errors = await loadHome(page);
+
+  // Let the home-rise entrance settle so the bounding box is the resting
+  // 56px figure.
+  await page.waitForTimeout(800);
+  const figure = page.getByTestId("storyteller-figure");
+  const layer = page.getByTestId("storyteller-figure-directions");
+  const box = await figure.boundingBox();
+  expect(box, "figure box").not.toBeNull();
+
+  // Touch/mobile: the tracking gate is
+  // matchMedia('(hover: hover) and (pointer: fine)') — no listeners are
+  // attached, so the sheet must stay on the center cell ("50% 50%") no
+  // matter where the pointer moves.
+  await page.mouse.move(box!.x - 150, box!.y + box!.height / 2);
+  await page.waitForTimeout(400);
+  await expect(layer).toHaveCSS("background-position", "50% 50%");
+
+  await page.mouse.move(box!.x + box!.width + 150, box!.y + box!.height / 2);
+  await page.waitForTimeout(400);
+  await expect(layer).toHaveCSS("background-position", "50% 50%");
+
+  expectCleanConsole(errors);
+});

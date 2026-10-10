@@ -1,5 +1,5 @@
 import { Component, type ReactElement, type ReactNode } from "react";
-import { storytellerFigureUrl } from "./storyteller-lines";
+import { grandpaStaticUrl } from "./storyteller-lines";
 import "./storyteller-home.css";
 
 // Storyteller banner shell — the lazy chunk's loading skeleton and error
@@ -42,7 +42,7 @@ export class StorytellerBannerBoundary extends Component<
     if (this.state.failed) {
       return (
         <span className="storyteller-banner-static" aria-hidden="true">
-          <img src={storytellerFigureUrl()} alt="" decoding="async" />
+          <img src={grandpaStaticUrl()} alt="" decoding="async" />
         </span>
       );
     }

@@ -3,8 +3,10 @@ import assert from "node:assert/strict";
 import {
   STORYTELLER_AUDIO_FALLBACK_LINE,
   STORYTELLER_LINES,
+  grandpaDirectionsUrl,
+  grandpaReactionsUrl,
+  grandpaStaticUrl,
   storytellerAudioUrl,
-  storytellerFigureUrl,
   wordMsFromDuration,
 } from "./storyteller-lines.ts";
 import {
@@ -44,11 +46,19 @@ describe("STORYTELLER_LINES — final copy contract", () => {
   });
 });
 
-describe("storytellerAudioUrl / storytellerFigureUrl", () => {
+describe("storytellerAudioUrl / grandpa asset URLs", () => {
   it("builds same-origin public URLs under node (import.meta.env absent)", () => {
     // Under node --test import.meta.env is undefined → base falls back to "/".
     assert.equal(storytellerAudioUrl("reveal-01.mp3"), "/audio/storyteller/reveal-01.mp3");
-    assert.equal(storytellerFigureUrl(), "/images/storyteller/storyteller.jpg");
+    assert.equal(
+      grandpaDirectionsUrl(),
+      "/images/storyteller/grandpa-directions.webp",
+    );
+    assert.equal(
+      grandpaReactionsUrl(),
+      "/images/storyteller/grandpa-reactions.webp",
+    );
+    assert.equal(grandpaStaticUrl(), "/images/storyteller/grandpa-static.webp");
   });
 });
 

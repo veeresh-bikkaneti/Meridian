@@ -279,20 +279,21 @@
   display: block;
   width: 56px;
   height: 56px;
-  border-radius: 50%;
-  overflow: hidden;
 }
 
 .storyteller-banner-skeleton {
   background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  overflow: hidden;
   animation: storyteller-banner-in 150ms ease-out;
 }
 
+/* The static fallback is the transparent Grandpa webp — no circular mask. */
 .storyteller-banner-static img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /* Greeting popover: below the banner row, above the tagline. Transient —

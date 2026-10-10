@@ -1,10 +1,12 @@
-/* Storyteller mascot — the old Greek storyteller. Transform/opacity-only
+/* Storyteller mascot — Grandpa (page-mascot, MIT). Transform/opacity-only
  * animation. Pointer-events gated exactly like CometMascot: the wrapper
  * never eats taps, only the real buttons do.
  *
- * Interim art: the source JPEG in a circular mask (no chroma-key — it eats
- * the clay highlights). The component takes the asset URL via prop so the
- * F1 transparent cutout drops in with zero code change.
+ * Art: transparent webp sprite sheets (no circular mask — the shadow is a
+ * drop-shadow filter on the inner squash layer so it follows the alpha).
+ * The component renders two absolutely-positioned background layers inside
+ * a relative button; cursor tracking swaps the directions-layer cell on
+ * desktop, touch stays on the static center cell.
  */
 
 .storyteller {
@@ -14,6 +16,7 @@
 /* ---- Figure -------------------------------------------------------- */
 
 .storyteller-figure {
+  position: relative; /* the mascot layers position against the button */
   pointer-events: auto;
   display: block;
   padding: 0;
@@ -22,19 +25,25 @@
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  border-radius: 50%;
-  overflow: hidden;
   /* 72–96px @390px: clamp against the viewport so the dock never overflows. */
   width: clamp(72px, 22vw, 96px);
   height: clamp(72px, 22vw, 96px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
-.storyteller-figure img {
+/* Squash-bounce wrapper (WAAPI). The drop-shadow lives here so it follows
+ * the mascot's alpha instead of drawing a square box shadow. */
+.storyteller-figure .mascot-squash {
+  position: relative;
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  transform-origin: 50% 78%;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.35));
+}
+
+.storyteller-figure .mascot-layer {
+  position: absolute;
+  inset: 0;
 }
 
 .storyteller-figure:focus-visible {

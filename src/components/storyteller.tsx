@@ -18,10 +18,10 @@ import {
   STORYTELLER_AUDIO_FALLBACK_LINE,
   STORYTELLER_LINES,
   storytellerAudioUrl,
-  storytellerFigureUrl,
   wordMsFromDuration,
   type StorytellerLineKey,
 } from "./storyteller-lines";
+import { GrandpaMascot } from "./grandpa-mascot";
 import "./storyteller-mascot.css";
 
 // Storyteller narration — the old Greek storyteller's voice.
@@ -80,39 +80,36 @@ function emitStoryteller(
 }
 
 /**
- * Decorative figure. The button is the accessible pause/resume control
- * (aria-label "Pause the story"); the img itself is aria-hidden with
- * decoding="async", mirroring CometMascot's pointer-event gating.
+ * Decorative figure — the Grandpa mascot (page-mascot, MIT; transparent
+ * webp sheets with cursor tracking on desktop, static center cell on
+ * touch). The button is the accessible pause/resume control; the two
+ * sprite layers are aria-hidden behind the button's aria-label.
+ *
+ * Owner ruling 2026-10-10: figure-tap = pause/resume narration. The tap's
+ * visual ack is a subordinate ~180ms blink flash + squash bounce (no
+ * dizzy cycle, no payoff cycle).
  */
 export function StorytellerMascot({
   label,
   onToggle,
   onLoaded,
-  src,
 }: {
   label: string;
   onToggle?: () => void;
   onLoaded?: () => void;
-  /** Asset URL for the pose — from storyteller-assets.json. Defaults to the
-      placeholder figure so F1/F2 poses swap with zero code change. */
-  src?: string;
 }) {
   return (
-    <button
-      type="button"
-      className="storyteller-figure"
-      data-testid="storyteller-figure"
-      aria-label={label}
-      onClick={onToggle}
-    >
-      <img
-        src={src ?? storytellerFigureUrl()}
-        alt=""
-        aria-hidden="true"
-        decoding="async"
-        onLoad={onLoaded}
-      />
-    </button>
+    <GrandpaMascot label={label} onToggle={onToggle} onLoaded={onLoaded} />
+  );
+}
+
+/** A play() aborted by our own pause()/dismiss() rejects with AbortError —
+    that is the pause working, not an audio failure. */
+function isPlayAbort(err: unknown): boolean {
+  return (
+    typeof err === "object" &&
+    err !== null &&
+    (err as { name?: unknown }).name === "AbortError"
   );
 }
 
@@ -325,7 +322,14 @@ export function StorytellerNarration({
             beginReveal(perWord, false);
           }, AUDIO_LEAD_MS);
         })
-        .catch(onFail);
+        .catch((err: unknown) => {
+          // Pausing (or dismissing) while play() is still pending aborts it —
+          // that is the pause working, not an audio failure. Swallow it so
+          // a tap during buffering doesn't falsely flip the narration to
+          // the failed state.
+          if (isPlayAbort(err)) return;
+          onFail(err);
+        });
     },
     [beginReveal, reducedMotion, scheduleDismiss, screen],
   );
@@ -416,7 +420,8 @@ export function StorytellerNarration({
       audio.pause();
       setAudioState("paused");
     } else if (audioState === "paused") {
-      void audio.play().catch(() => {
+      void audio.play().catch((err: unknown) => {
+        if (isPlayAbort(err)) return;
         setAudioState("failed");
       });
       setAudioState("playing");
