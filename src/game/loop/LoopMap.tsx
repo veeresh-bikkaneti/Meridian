@@ -620,22 +620,8 @@ export function LoopMap({
           },
         });
       }
-      // Fallback when the three rings share no common area: a centroid dot.
-      if (!map.getLayer("loop-overlap-centroid")) {
-        map.addLayer({
-          id: "loop-overlap-centroid",
-          type: "circle",
-          source: OVERLAP_SOURCE,
-          filter: ["==", ["get", "kind"], "overlap-centroid"],
-          paint: {
-            "circle-radius": 10,
-            "circle-color": GOLD,
-            "circle-opacity": 0.85,
-            "circle-stroke-width": 2,
-            "circle-stroke-color": "#ffffff",
-          },
-        });
-      }
+      // (The disjoint-rings centroid dot was removed: no marker is drawn
+      // when the rings share no common area.)
       paintOverlays();
     });
 
@@ -725,25 +711,17 @@ export function LoopMap({
         geometry: { type: "Point", coordinates: [m.lon, m.lat] },
       });
     }
-    // F11 overlap lens: the triple-intersection fill, or the centroid dot
-    // when the three locked rings share no common area.
-    if (evidenceOverlap) {
-      if (evidenceOverlap.polygon && evidenceOverlap.polygon.length >= 4) {
-        overlapFeatures.push({
-          type: "Feature",
-          properties: { kind: "overlap" },
-          geometry: { type: "Polygon", coordinates: [evidenceOverlap.polygon] },
-        });
-      } else {
-        overlapFeatures.push({
-          type: "Feature",
-          properties: { kind: "overlap-centroid" },
-          geometry: {
-            type: "Point",
-            coordinates: [evidenceOverlap.centroid.lon, evidenceOverlap.centroid.lat],
-          },
-        });
-      }
+    // F11 overlap lens: the triple-intersection fill when the three locked
+    // rings share a common area. When they are disjoint there is NO
+    // meaningful center — the centroid dot is suppressed (a marker there
+    // would read as a fake "answer" point). The rings stay visible so the
+    // player can see their placements and adjust.
+    if (evidenceOverlap?.polygon && evidenceOverlap.polygon.length >= 4) {
+      overlapFeatures.push({
+        type: "Feature",
+        properties: { kind: "overlap" },
+        geometry: { type: "Polygon", coordinates: [evidenceOverlap.polygon] },
+      });
     }
     (map.getSource(RING_SOURCE) as GeoJSONSource).setData({
       type: "FeatureCollection",
@@ -795,7 +773,9 @@ export function LoopMap({
     const map = mapRef.current;
     if (!map) return;
     const overlap = paintRef.current.evidenceOverlap;
-    if (!overlap) {
+    // No pulse when the rings are disjoint: there is no crossing to
+    // highlight, and pulsing the centroid would imply a fake answer point.
+    if (!overlap?.polygon || overlap.polygon.length < 4) {
       overlapPulseDoneRef.current = false;
       if (overlapPulseMarkerRef.current) {
         overlapPulseMarkerRef.current.remove();
@@ -827,11 +807,19 @@ export function LoopMap({
 
   // While placement is active, MapLibre's own keyboard pan is disabled so
   // arrow keys nudge the draft (handled above) instead of panning the map.
+  // The crosshair cursor is set on MapLibre's canvas element itself:
+  // MapLibre's stylesheet gives .maplibregl-canvas its own cursor (grab),
+  // which defeats any cursor class on our container div.
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
-    if (placementActive) map.keyboard.disable();
-    else map.keyboard.enable();
+    if (placementActive) {
+      map.keyboard.disable();
+      map.getCanvas().style.cursor = "crosshair";
+    } else {
+      map.keyboard.enable();
+      map.getCanvas().style.cursor = "";
+    }
   }, [placementActive]);
 
   // Camera-jump handle for the search box.
@@ -871,7 +859,7 @@ export function LoopMap({
       className={
         "h-[52dvh] min-h-[320px] w-full overflow-hidden rounded-2xl border border-line" +
         (placementActive
-          ? " cursor-crosshair focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+          ? " focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
           : "")
       }
     />
