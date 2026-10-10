@@ -502,16 +502,12 @@ export default function StorytellerHomeHost({
     if (!assets.greetAudio) return; // text-only greeting, nothing to wait for
     const onGesture = () => {
       if (gestureDoneRef.current) return;
-      gestureDoneRef.current = true;
-      window.removeEventListener("pointerdown", onGesture);
-      window.removeEventListener("keydown", onGesture);
       if (!isSoundEnabled()) {
-        // Panel 2026-10-09 (BLOCK 5): a muted first tap must not silently
-        // kill narration. Surface a one-line hint in his bard voice, then
-        // restore the greeting caption (the popover's role="status"
-        // announces it). Routed through bubbleTimer so an explicit dismiss
-        // (hideBubble) cancels the restore. The hint copy is NEW —
-        // owner/panel approval required before merge.
+        // Panel 2026-10-09 (BLOCK 5, round 2): a muted tap must NOT consume
+        // the one-shot — otherwise the hint below promises narration ("tap
+        // the speaker to hear my tale") that can never play. The one-shot
+        // stays armed; unmuting (see the meridian:sound-change listener)
+        // starts the tale, so the hint never lies.
         window.clearTimeout(bubbleTimer.current);
         setBubble(SOUND_OFF_HINT);
         bubbleTimer.current = window.setTimeout(() => {
@@ -519,6 +515,9 @@ export default function StorytellerHomeHost({
         }, SOUND_OFF_HINT_MS);
         return;
       }
+      gestureDoneRef.current = true;
+      window.removeEventListener("pointerdown", onGesture);
+      window.removeEventListener("keydown", onGesture);
       beginGreetingAudio();
     };
     window.addEventListener("pointerdown", onGesture);
@@ -528,6 +527,25 @@ export default function StorytellerHomeHost({
       window.removeEventListener("keydown", onGesture);
     };
   }, [started, phase, mode, yielded, assets.greetAudio, beginGreetingAudio, greetingText, showBubble]);
+
+  // Unmute starts the pending tale (panel 2026-10-09, BLOCK 5 round 2).
+  // The muted-tap hint promises "tap the speaker above to hear my tale" —
+  // the speaker tap is a genuine user gesture, so playback is allowed, and
+  // this makes the promise true. Fires only while the greeting is actively
+  // pending; unmuting later (or for game SFX) does nothing here.
+  useEffect(() => {
+    const onSoundChange = (e: Event) => {
+      if (!(e as CustomEvent<boolean>).detail) return; // muted — nothing to do
+      if (gestureDoneRef.current) return;
+      if (phase !== "greeting_text" || mode !== "greeting" || yielded) return;
+      if (!assetsRef.current.greetAudio) return;
+      gestureDoneRef.current = true;
+      beginGreetingAudio();
+    };
+    window.addEventListener("meridian:sound-change", onSoundChange);
+    return () =>
+      window.removeEventListener("meridian:sound-change", onSoundChange);
+  }, [phase, mode, yielded, beginGreetingAudio]);
 
   // ---- Dismiss -------------------------------------------------------------
   const dismissBubble = useCallback(

@@ -741,3 +741,53 @@ test("muted first tap shows the sound-off hint", async ({ page }) => {
 
   expectCleanConsole(errors);
 });
+
+test("muted tap keeps the one-shot: unmuting starts the tale", async ({ page }) => {
+  // Regression (owner panel BLOCK 5 round 2, 2026-10-09): the muted-tap
+  // hint promised "tap the speaker above to hear my tale", but the
+  // one-shot was consumed while muted — unmuting + tapping played
+  // nothing. Now the one-shot survives a muted tap, and unmuting starts
+  // the pending tale, so the hint never lies.
+  await seed(page, {
+    "meridian.grandpaTour.lastDate": todayKey(),
+    "meridian.tutorialSeen": "1",
+    "meridian.sound": "off",
+  });
+  const errors = await loadHome(page);
+  const host = page.getByTestId("storyteller-home");
+  const caption = page.getByTestId("storyteller-home-caption");
+  await expect(caption).toBeVisible({ timeout: 10_000 });
+
+  await page.evaluate(() => {
+    (window as any).__greetAudioAttempts = 0;
+    const OrigAudio = window.Audio;
+    (window as any).Audio = function (url?: string) {
+      (window as any).__greetAudioAttempts++;
+      return new OrigAudio(url);
+    } as any;
+    (window as any).Audio.prototype = OrigAudio.prototype;
+  });
+
+  // Muted first tap → hint, no audio, one-shot NOT consumed.
+  await page.evaluate(
+    () => window.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true })),
+  );
+  await expect
+    .poll(async () => page.getByTestId("storyteller-home-caption").textContent(), {
+      timeout: 8_000,
+    })
+    .toMatch(/sound is off/i);
+
+  // Unmute via the real speaker toggle → the pending tale starts.
+  await page.getByTestId("sound-toggle").click();
+  await expect
+    .poll(
+      async () =>
+        (await host.getAttribute("data-phase")) === "greeting_audio" ||
+        (await page.evaluate(() => (window as any).__greetAudioAttempts)) > 0,
+      { timeout: 15_000 },
+    )
+    .toBe(true);
+
+  expectCleanConsole(errors);
+});

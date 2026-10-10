@@ -124,3 +124,19 @@ PASS post-fix via stash dance (source stashed, tests kept, rebuilt, re-ran).
 - NOT merged — verdict belongs to the independent panel. 3 open owner
   questions unchanged: (a) idle sway confirm/kill; (b) theatrical for
   5–7s vs calm toggle; (c) spot-listen greet-01 + greet-03.
+
+## Panel round 2 follow-up (2026-10-10) — BLOCK 5 half-done, fixed
+- Panel: the muted-tap hint lied — "tap the speaker above to hear my tale"
+  but the one-shot was consumed while muted, so unmuting + tapping played
+  nothing.
+- Fix: (1) the gesture handler checks sound BEFORE consuming the one-shot —
+  a muted tap shows the hint and stays armed; (2) `setSoundEnabled` in
+  `src/game/audio/sfx.ts` now dispatches `meridian:sound-change`; the
+  storyteller listens and auto-starts the pending tale on unmute (only
+  while the greeting is actively pending: greeting_text + greeting mode +
+  not yielded + one-shot unspent). The speaker tap is a real user gesture,
+  so playback is allowed — the hint copy is now literally true.
+- Copy approval: "Psst — your sound is off, young explorer. Tap the
+  speaker above to hear my tale." — submitted for owner/panel approval.
+- Test: "muted tap keeps the one-shot: unmuting starts the tale" (would
+  FAIL pre-fix: no listener existed, unmute could never start audio).
