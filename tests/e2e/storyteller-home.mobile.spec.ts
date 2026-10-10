@@ -368,6 +368,97 @@ test("invite dismissed mid-tour: no narration under the tour", async ({ page }) 
   expectCleanConsole(errors);
 });
 
+test("invite dismiss starts narration (first gesture)", async ({ page }) => {
+  // Ruling #2: dismissing the tutorial invite counts as the first gesture —
+  // narration begins on the dismiss tap, no second tap needed.
+  // Invite shows (no tutorialSeen seed); Grandpa's auto-tour suppressed.
+  await seed(page, { "meridian.grandpaTour.lastDate": todayKey() });
+  const errors = await loadHome(page);
+  await expect(page.getByTestId("tutorial-invite")).toBeVisible({ timeout: 10_000 });
+
+  await page.getByRole("button", { name: "Not now" }).click();
+  await expect
+    .poll(
+      async () =>
+        (await page.getByTestId("storyteller-home").getAttribute("data-phase")) ===
+          "greeting_audio" ||
+        (await page.getByTestId("storyteller-home-fallback").count()) > 0,
+      { timeout: 15_000 },
+    )
+    .toBe(true);
+  await expect
+    .poll(async () => page.getByTestId("storyteller-home-caption").textContent(), {
+      timeout: 8_000,
+    })
+    .toBe(expectedGreeting());
+
+  expectCleanConsole(errors);
+});
+
+test("idle engagement: notes + scroll only in idle_linger", async ({ page }) => {
+  // Ruling #3: the bard hums to invite play — rising notes + unfurling
+  // scroll, CSS-only, gated strictly on idle_linger.
+  await seedQuietHome(page);
+  const errors = await loadHome(page);
+  const caption = page.getByTestId("storyteller-home-caption");
+  await expect(caption).toBeVisible({ timeout: 10_000 });
+
+  const idleDisplay = () =>
+    page.evaluate(
+      () => getComputedStyle(document.querySelector(".storyteller-idle")!).display,
+    );
+  // Greeting phase: the engagement layer stays hidden.
+  await expect.poll(idleDisplay, { timeout: 5_000 }).toBe("none");
+
+  // Dismiss → idle_linger: the layer appears with running animations.
+  await page.getByTestId("storyteller-home-dismiss").click();
+  await expect
+    .poll(async () => page.getByTestId("storyteller-home").getAttribute("data-phase"), {
+      timeout: 5_000,
+    })
+    .toBe("idle_linger");
+  await expect.poll(idleDisplay, { timeout: 5_000 }).toBe("block");
+  const noteAnimation = await page.evaluate(
+    () => getComputedStyle(document.querySelector(".storyteller-idle-note")!).animationName,
+  );
+  expect(noteAnimation, "idle note runs its rise animation").not.toBe("none");
+
+  expectCleanConsole(errors);
+});
+test("celebration during narration: no stall, host parks in idle_linger", async ({
+  page,
+}) => {
+  // Regression (Code Reviewer 2026-10-09): a celebration opening during
+  // greeting_audio killed the 12s cap timer via stopAudio() but left phase
+  // stuck at greeting_audio forever — the machine stalled, idle engagement
+  // never appeared. Now it parks in idle_linger.
+  await seedQuietHome(page);
+  const errors = await loadHome(page);
+  const caption = page.getByTestId("storyteller-home-caption");
+  await expect(caption).toBeVisible({ timeout: 10_000 });
+
+  // Start narration with a tap.
+  await page.locator("body").click({ position: { x: 200, y: 600 } });
+  await expect
+    .poll(async () => page.getByTestId("storyteller-home").getAttribute("data-phase"), {
+      timeout: 15_000,
+    })
+    .toBe("greeting_audio");
+
+  // Celebration takes the stage mid-narration, then closes.
+  await page.evaluate(() => window.dispatchEvent(new Event("meridian:celebration-open")));
+  await expect(page.getByTestId("storyteller-home")).toHaveCount(0);
+  await page.evaluate(() => window.dispatchEvent(new Event("meridian:celebration-close")));
+
+  // The machine must not stall in greeting_audio — it parks in idle_linger.
+  await expect
+    .poll(async () => page.getByTestId("storyteller-home").getAttribute("data-phase"), {
+      timeout: 8_000,
+    })
+    .toBe("idle_linger");
+
+  expectCleanConsole(errors);
+});
 test("dismiss × sound toggle: 0px² overlap @390px and @360px", async ({ page }) => {
   for (const w of [390, 360]) {
     await page.setViewportSize({ width: w, height: 844 });

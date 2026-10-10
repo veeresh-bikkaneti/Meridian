@@ -16,7 +16,6 @@ import {
 } from "./storyteller-home-copy";
 import {
   armTourReturnLine,
-  resetStorytellerSessionForTests,
   takeTourReturnLine,
 } from "./storyteller-session";
 import "./storyteller-home.css";
@@ -105,12 +104,6 @@ function loadAssetManifest(): Promise<AssetManifest | null> {
     })();
   }
   return manifestPromise;
-}
-
-/** Test-only: drop the cached manifest (and the session flags). */
-export function resetStorytellerHomeForTests(): void {
-  manifestPromise = null;
-  resetStorytellerSessionForTests();
 }
 
 interface ResolvedAssets {
@@ -310,8 +303,14 @@ export default function StorytellerHomeHost({
   useEffect(() => {
     if (yielded) {
       wasYieldedRef.current = true;
+      const wasNarrating = phase === "greeting_audio";
       stopAudio();
       hideBubble();
+      // If the tour/celebration interrupted narration, the 12s cap timer
+      // died with it — park in idle_linger so the machine doesn't stall in
+      // a dead greeting_audio phase. (Tour close re-arms via
+      // takeTourReturnLine, which resets phase explicitly.)
+      if (wasNarrating) setPhase("idle_linger");
       return;
     }
     if (wasYieldedRef.current) {
@@ -324,7 +323,7 @@ export default function StorytellerHomeHost({
       // Otherwise the pre-yield greeting stands (it already greeted — the
       // owner wants every visit to greet, and this visit did).
     }
-  }, [yielded, stopAudio, hideBubble]);
+  }, [yielded, phase, stopAudio, hideBubble]);
 
   // ---- Graceful yield (Track B) -------------------------------------------
   // When tour/celebration take the stage the figure recedes over
@@ -463,6 +462,7 @@ export default function StorytellerHomeHost({
   useEffect(() => {
     if (!started || phase !== "greeting_text") return;
     if (mode === "tour-return") return; // text-only return line — no audio
+    if (yielded) return; // tour/celebration owns the stage — no gesture audio under it
     if (!assets.greetAudio) return; // text-only greeting, nothing to wait for
     const onGesture = () => {
       if (gestureDoneRef.current) return;
@@ -478,7 +478,7 @@ export default function StorytellerHomeHost({
       window.removeEventListener("pointerdown", onGesture);
       window.removeEventListener("keydown", onGesture);
     };
-  }, [started, phase, mode, assets.greetAudio, beginGreetingAudio]);
+  }, [started, phase, mode, yielded, assets.greetAudio, beginGreetingAudio]);
 
   // ---- Dismiss -------------------------------------------------------------
   const dismissBubble = useCallback(
