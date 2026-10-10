@@ -1,6 +1,6 @@
 # BRANCH_STATUS — fix/coldtrail-placement-followups
 
-Branch: `fix/coldtrail-placement-followups` · Base: origin/main @ 9b0a8a1 · Created: 2026-10-10.
+Branch: `fix/coldtrail-placement-followups` · Base: origin/main @ c416187 · Created: 2026-10-10.
 **PUSH OK, DO NOT MERGE** — owner merges.
 
 Standing rules: named-file staging only, never `git add -A`. Locked Ko-fi
@@ -49,3 +49,7 @@ updated (centroid no longer a "fallback marker").
 `coldtrail.spec.ts` » "full slice" fails on unmodified origin/main@9b0a8a1
 (verified via `git stash`): the overlap source has 0 features after 3 locks.
 Pre-dates this branch; unrelated to the crosshair/centroid changes.
+
+## Rebase 2026-10-10 (d045128)
+- Rebasing onto origin/main@ce88939 (#122 merged) — clean, zero conflicts (1 commit replayed).
+- Gates on d045128: tsc clean · lint-cards GATE PASSED · build:pages green · npm test 1082/1082 · Playwright coldtrail 8/9 (1 pre-existing "full slice" failure, fails on unmodified main too) · locked copy byte-identical.
