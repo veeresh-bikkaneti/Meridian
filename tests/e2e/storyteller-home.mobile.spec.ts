@@ -110,14 +110,15 @@ test("banner: 56px figure beside the Meridian h1, title never wraps @390px", asy
   expect(Math.round(fBox!.width)).toBe(56);
   expect(Math.round(fBox!.height)).toBe(56);
 
-  // The figure lives in the banner row, left of the branding.
+  // The figure lives in the banner row, right of the branding
+  // (owner 2026-10-09).
   const row = page.locator(".atlas-banner-row").first();
   const rowBox = await row.boundingBox();
   const heading = page.getByTestId("home-heading");
   const hBox = await heading.boundingBox();
   expect(rowBox, "banner row box").not.toBeNull();
   expect(hBox, "h1 box").not.toBeNull();
-  expect(fBox!.x).toBeLessThan(hBox!.x);
+  expect(fBox!.x).toBeGreaterThan(hBox!.x);
   // Bottom-aligned in the row (sub-pixel rounding tolerated).
   expect(fBox!.y + fBox!.height).toBeLessThanOrEqual(rowBox!.y + rowBox!.height + 2);
 
@@ -788,6 +789,53 @@ test("muted tap keeps the one-shot: unmuting starts the tale", async ({ page }) 
       { timeout: 15_000 },
     )
     .toBe(true);
+
+  expectCleanConsole(errors);
+});
+
+test("hint popover: inside the viewport, dismiss never overlaps the caption", async ({
+  page,
+}) => {
+  // Regression (owner 2026-10-09): after the figure moved right of the
+  // branding, the popover's left: 0 anchoring pushed it off the viewport's
+  // right edge — the dismiss × overlapped the hint text. The popover now
+  // anchors right: 0 to the banner.
+  await seed(page, {
+    "meridian.grandpaTour.lastDate": todayKey(),
+    "meridian.tutorialSeen": "1",
+    "meridian.sound": "off",
+  });
+  const errors = await loadHome(page);
+  const caption = page.getByTestId("storyteller-home-caption");
+  await expect(caption).toBeVisible({ timeout: 10_000 });
+  await page.evaluate(
+    () => window.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true })),
+  );
+  await expect
+    .poll(async () => caption.textContent(), { timeout: 8_000 })
+    .toMatch(/sound is off/i);
+  await page.waitForTimeout(300);
+
+  const vw = page.viewportSize()?.width ?? 390;
+  const pop = await page.getByTestId("storyteller-home-bubble").boundingBox();
+  const dis = await page.getByTestId("storyteller-home-dismiss").boundingBox();
+  const cap = await caption.boundingBox();
+  expect(pop, "popover box").not.toBeNull();
+  expect(dis, "dismiss box").not.toBeNull();
+  expect(cap, "caption box").not.toBeNull();
+  // Fully inside the viewport horizontally.
+  expect(pop!.x).toBeGreaterThanOrEqual(0);
+  expect(pop!.x + pop!.width).toBeLessThanOrEqual(vw + 1);
+  // Dismiss × and caption text: 0px² intersection.
+  const ix = Math.max(
+    0,
+    Math.min(dis!.x + dis!.width, cap!.x + cap!.width) - Math.max(dis!.x, cap!.x),
+  );
+  const iy = Math.max(
+    0,
+    Math.min(dis!.y + dis!.height, cap!.y + cap!.height) - Math.max(dis!.y, cap!.y),
+  );
+  expect(ix * iy, "dismiss × caption overlap").toBe(0);
 
   expectCleanConsole(errors);
 });
