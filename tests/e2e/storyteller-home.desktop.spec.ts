@@ -113,3 +113,38 @@ test("Comet emblem: ~30px, static, aria-hidden, in the eyebrow row", async ({
 
   expectCleanConsole(errors);
 });
+
+test("desktop: cursor tracking moves the eyes; dead zone returns to center", async ({
+  page,
+}) => {
+  const errors = await loadHome(page);
+
+  const figure = page.getByTestId("storyteller-figure");
+  const layer = page.getByTestId("storyteller-figure-directions");
+  // The 650ms entrance animation scales the figure — poll until both
+  // dimensions settle at 56 simultaneously.
+  await expect
+    .poll(async () => {
+      const b = await figure.boundingBox();
+      return b ? `${Math.round(b.width)}x${Math.round(b.height)}` : "none";
+    }, { timeout: 5_000 })
+    .toBe("56x56");
+  const box = (await figure.boundingBox())!;
+  const cx = box.x + box.width / 2;
+  const cy = box.y + box.height / 2;
+  const pos = () =>
+    layer.evaluate((el) => getComputedStyle(el).backgroundPosition);
+
+  // Center cell by default (background-size 300% → "50% 50%").
+  await expect(layer).toHaveCSS("background-position", "50% 50%");
+
+  // Well left of the figure — the eyes track left (cell leaves center).
+  await page.mouse.move(box.x - 200, cy);
+  await expect.poll(pos, { timeout: 5_000 }).not.toBe("50% 50%");
+
+  // Back into the dead zone (figure center) — eyes return to center.
+  await page.mouse.move(cx, cy);
+  await expect(layer).toHaveCSS("background-position", "50% 50%");
+
+  expectCleanConsole(errors);
+});

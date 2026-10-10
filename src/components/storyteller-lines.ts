@@ -61,9 +61,21 @@ export function storytellerAudioUrl(audioFile: string): string {
   return `${assetBase()}audio/storyteller/${audioFile}`;
 }
 
-/** Public asset URL for the storyteller figure (interim: circular-masked JPEG). */
-export function storytellerFigureUrl(): string {
-  return `${assetBase()}images/storyteller/storyteller.jpg`;
+/** Public asset URL for the Grandpa mascot's 3x3 cursor-tracking sheet (transparent webp). */
+export function grandpaDirectionsUrl(): string {
+  return `${assetBase()}images/storyteller/grandpa-directions.webp`;
+}
+
+/** Public asset URL for the Grandpa mascot's 3x3 reaction sheet (transparent webp). */
+export function grandpaReactionsUrl(): string {
+  return `${assetBase()}images/storyteller/grandpa-reactions.webp`;
+}
+
+/** Public asset URL for the Grandpa mascot's static center cell — used by
+    the light banner shell (skeleton / error fallback), which must not pull
+    in the interactive component. */
+export function grandpaStaticUrl(): string {
+  return `${assetBase()}images/storyteller/grandpa-static.webp`;
 }
 
 /**

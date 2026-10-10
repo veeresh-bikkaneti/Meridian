@@ -1,9 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { StorytellerMascot, useCelebrationActive, useTourActive } from "./storyteller";
-import {
-  STORYTELLER_AUDIO_FALLBACK_LINE,
-  storytellerFigureUrl,
-} from "./storyteller-lines";
+import { STORYTELLER_AUDIO_FALLBACK_LINE } from "./storyteller-lines";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import {
   GREETINGS,
@@ -49,9 +46,9 @@ import "./storyteller-home.css";
 //   timing unchanged.
 //
 // Loaded via React.lazy by the banner row — never in the initial bundle.
-// Reuses StorytellerMascot (decoding=async) for the figure; the figure takes
-// its asset URL from storyteller-assets.json so F1/F2 poses swap with zero
-// code change. No visible name ("historian feel" per owner).
+// Reuses StorytellerMascot (the Grandpa mascot: transparent webp sprite
+// sheets bundled in the repo, cursor-tracked on desktop, static on touch).
+// No visible name ("historian feel" per owner).
 
 type BannerPhase =
   | "entering"
@@ -120,8 +117,6 @@ function loadAssetManifest(): Promise<AssetManifest | null> {
 }
 
 interface ResolvedAssets {
-  /** Idle pose URL (placeholder until the F1 cutout lands). */
-  pose: string;
   /** Pointing pose URL, or null when unavailable (send-off skips it silently). */
   pointing: string | null;
   /** greet-0N mp3 for today's greeting rotation; null → text-only greeting. */
@@ -202,7 +197,6 @@ export default function StorytellerHomeHost({
   const [poked, setPoked] = useState(false);
   const [yielding, setYielding] = useState(false);
   const [assets, setAssets] = useState<ResolvedAssets>({
-    pose: storytellerFigureUrl(),
     pointing: null,
     greetAudio: null,
   });
@@ -293,7 +287,6 @@ export default function StorytellerHomeHost({
       const audioKey = `greet-0${greetIndex + 1}`;
       const audioPath = manifest.audio[audioKey];
       setAssets({
-        pose: manifest.poses.idle ? base + manifest.poses.idle : storytellerFigureUrl(),
         pointing: manifest.poses.pointing ? base + manifest.poses.pointing : null,
         greetAudio: audioPath ? base + audioPath : null,
       });
@@ -643,7 +636,6 @@ export default function StorytellerHomeHost({
     >
       <StorytellerMascot
         label={figureLabel}
-        src={assets.pose}
         onToggle={handleFigureTap}
       />
       {/* Idle engagement (owner 2026-10-09): the bard hums to invite play —

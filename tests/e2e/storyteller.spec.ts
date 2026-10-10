@@ -70,8 +70,16 @@ async function reachStoryScreen(
 function expectCleanConsole(errors: string[], ignore: string[] = []): void {
   // React #418 is a pre-existing flaky hydration warning, unrelated to this
   // feature (same filter as the comet-mascot and cleared-mode specs).
+  // The crash-report beacon (observability transport's fetch fallback) posts
+  // to an external worker that this VM's egress cannot reach right now —
+  // a forced environmental failure, not an app bug (same precedent as the
+  // net::ERR_FAILED ignore in the fallback test below). The console message
+  // carries only the error code, not the URL, so the filter keys on the code.
   const relevant = errors.filter(
-    (e) => !e.includes("Minified React error #418") && !ignore.some((s) => e.includes(s)),
+    (e) =>
+      !e.includes("Minified React error #418") &&
+      !e.includes("ERR_TUNNEL_CONNECTION_FAILED") &&
+      !ignore.some((s) => e.includes(s)),
   );
   expect(relevant, `console/page errors: ${JSON.stringify(relevant)}`).toEqual([]);
 }
@@ -201,4 +209,34 @@ test("blocked audio degrades to the text-only fallback", async ({ page }) => {
   // The aborted request logs net::ERR_FAILED — that IS the forced failure,
   // not an app bug.
   expectCleanConsole(errors, ["net::ERR_FAILED"]);
+});
+
+test("figure tap pauses and resumes the narration", async ({ page }) => {
+  // SW disabled: it precaches the mp3s and serves them cache-first, which
+  // would hide the audio request from the route below.
+  const errors = await reachStoryScreen(page, { disableServiceWorker: true });
+  // Stall the mp3 request: the audio element stays in "playing" so the
+  // pause/resume window is deterministic — no race with a clip ending.
+  await page.route(MP3_PATTERN, () => {
+    /* never fulfill */
+  });
+  await page.getByTestId("storyteller-speaker").click();
+  const figure = page.getByTestId("storyteller-figure");
+  // audioState "playing" → the figure's label is the pause control.
+  await expect(figure).toHaveAttribute("aria-label", "Pause the story", {
+    timeout: 10_000,
+  });
+  // Tap the figure: pause/resume is the tap's job (owner ruling 2026-10-10).
+  // force: the figure's idle-float animation runs infinitely, so the
+  // actionability stability check would never settle — the tap itself is
+  // a real user gesture on an enabled, visible button.
+  await figure.click({ force: true });
+  await expect(figure).toHaveAttribute("aria-label", "Resume the story", {
+    timeout: 10_000,
+  });
+  await figure.click({ force: true });
+  await expect(figure).toHaveAttribute("aria-label", "Pause the story", {
+    timeout: 10_000,
+  });
+  expectCleanConsole(errors);
 });
