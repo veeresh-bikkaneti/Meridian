@@ -34,7 +34,11 @@ export function EarnedBadgeRow() {
     const el = rowRef.current;
     if (!el) return;
     const controls = autoAnimate(el);
-    return () => controls.disable();
+    // destroy() (not disable()): disconnects the MutationObserver,
+    // ResizeObserver and the 2s poll interval, and drops the element from
+    // the library's module-level parents set. disable() leaves all of
+    // those live, leaking one observer set per home remount.
+    return () => controls.destroy?.();
   }, [reducedMotion]);
 
   if (earned.length === 0) return null;
