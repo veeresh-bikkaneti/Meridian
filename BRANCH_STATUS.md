@@ -155,3 +155,14 @@ Playwright E2E runs in the next wave (specs written, not yet executed).
 - Rebased 3 commits (05ee1d4, 235f446, 524cc32) onto origin/main@6b74966 → new head 524cc32.
 - Conflict: BRANCH_STATUS.md only (main had Homer storyteller doc) — kept WS1 document, resolved mechanically.
 - Gates on rebased head: tsc clean · lint-cards GATE PASSED · build:pages green · npm test 1082/1082 · Playwright coldtrail 7/7 + mobile/reduced 4/4 · locked copy byte-identical · zero console errors.
+
+## 2026-10-10 — chore/add-auto-animate: add @formkit/auto-animate dependency
+- Added @formkit/auto-animate ^0.10.0 (package.json + package-lock.json).
+- Security: NVIDIA SkillSpector static scan — 41 findings, all adjudicated benign false positives (dev docs, vendored assets, pattern mismatches). Library source clean.
+- Gates: tsc clean · npm test 1082/1082 · lint-cards GATE PASSED · build:pages green.
+- PR #124 opened. Owner merges.
+
+## 2026-10-10 — chore/add-auto-animate: wire auto-animate into EarnedBadgeRow
+- src/components/passport/EarnedBadgeRow.tsx: autoAnimate on the badges container via ref + useEffect. Skipped under prefers-reduced-motion (shared usePrefersReducedMotion hook). Cleanup disables on unmount/setting flip.
+- Minimal: no behavior changes, badge chips + blurb expand/collapse animate automatically.
+- Gates: tsc clean · npm test 1082/1082 · lint-cards GATE PASSED · build:pages green · locked copy (Ko-fi strings) untouched.
