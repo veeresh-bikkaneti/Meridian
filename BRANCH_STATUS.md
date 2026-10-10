@@ -150,3 +150,8 @@ Playwright E2E runs in the next wave (specs written, not yet executed).
 - **Fix (TrailScreen.tsx):** map aria-label mentions "press Enter to plant at the map center, then arrow keys"; plant hint is input-agnostic ("Ring planted — move it with arrow keys or by tapping"); useEffect focuses the map post-commit when placement starts (the synchronous focusMap() fired pre-render and was a no-op).
 - **Test:** new "keyboard-only: Enter plants the first draft ring, arrows nudge it" E2E (coldtrail.spec.ts) — full keyboard flow: Enter on Place → Enter plants → arrows nudge → Enter locks.
 - **Gates:** tsc clean · lint-cards GATE PASSED · build:pages green · npm test 1082/1082 · coldtrail 7/7 + mobile 3/3 + reduced 1/1 Playwright green · locked copy intact.
+
+## Rebase onto main@6b74966 (2026-10-10, rebase agent)
+- Rebased 3 commits (05ee1d4, 235f446, 524cc32) onto origin/main@6b74966 → new head 524cc32.
+- Conflict: BRANCH_STATUS.md only (main had Homer storyteller doc) — kept WS1 document, resolved mechanically.
+- Gates on rebased head: tsc clean · lint-cards GATE PASSED · build:pages green · npm test 1082/1082 · Playwright coldtrail 7/7 + mobile/reduced 4/4 · locked copy byte-identical · zero console errors.
