@@ -81,6 +81,25 @@ export function setSoundEnabled(on: boolean): void {
         // Silent — sound is enhancement only.
       }
     }
+    // Read-aloud narration runs on speechSynthesis, not the loop registry —
+    // the mute toggle must silence it too. Owner 2026-10-09: for a kid who
+    // chose "Always", the sound toggle is the ONLY off switch, so muting
+    // must reliably stop in-progress narration, not just flip the flag.
+    try {
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+    } catch {
+      // Silent — sound is enhancement only.
+    }
+    // Let UI holding speech state (ReadAloudButton) reset itself.
+    try {
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new CustomEvent("meridian:sound-off"));
+      }
+    } catch {
+      // Silent — sound is enhancement only.
+    }
   }
 }
 

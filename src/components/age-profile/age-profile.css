@@ -326,14 +326,76 @@
   border: none;
 }
 
-.agep-listen-quiet {
-  background: none;
-  border: none;
-  color: var(--muted);
-  text-decoration: underline;
-  font-size: 0.875rem;
+/* Icon-only ghost speaker (8-10 and 11-13): 44px, no text label —
+   identical chrome across bands so the band stays invisible. */
+.agep-listen-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
   min-height: 44px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* Locked read-along line when the device cannot speak. */
+.agep-listen-note {
+  align-self: center;
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-right: 8px;
+  max-width: 16rem;
+  text-align: right;
+}
+
+/* --- Read-aloud onboarding preference (asked once, never nags) --- */
+
+.agep-pref-prompt {
+  padding: 20px 16px;
+  margin: 12px 16px;
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  background: var(--bg);
+}
+
+.agep-pref-q {
+  margin: 0 0 12px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.agep-pref-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.agep-pref-option {
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: none;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-align: left;
+}
+
+.agep-pref-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.agep-pref-sub {
+  font-size: 0.875rem;
+  color: var(--muted);
 }
 
 /* --- Home footer entry (Phase 2 §1a) --- */
@@ -341,7 +403,65 @@
 .agep-footer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 20px;
   padding: 24px 16px max(32px, env(safe-area-inset-bottom));
+}
+
+/* --- Read-aloud preference settings (owner 2026-10-09: changeable later) --- */
+
+.agep-readaloud-settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.agep-readaloud-toggle {
+  min-height: 44px;
+  padding: 0 16px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.agep-readaloud-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: min(320px, 84vw);
+  margin-top: 8px;
+  padding: 12px;
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  background: var(--bg);
+}
+
+/* --- Earned badges on the home page card (owner 2026-10-09: no Passport page) --- */
+
+.atlas-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.atlas-badge-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  background: var(--bg);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--fg);
 }
 
 .agep-footer-link {
@@ -384,13 +504,11 @@
   text-align: center;
 }
 
-.agep-pending-chip {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 6px 12px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  font-size: 0.875rem;
-  color: var(--muted);
-  background: var(--surface-2);
+/* Reduced motion: kill the one-shot age-profile animations. */
+@media (prefers-reduced-motion: reduce) {
+  .agep-screen,
+  .agep-toast,
+  .agep-locked-pulse .agep-locked-body {
+    animation: none !important;
+  }
 }

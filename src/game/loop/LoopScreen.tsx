@@ -39,7 +39,10 @@ import {
   writeLoopStoreV2,
 } from "./store";
 import { buildLoopGuess, submitGuess, OCTANT_ARROWS } from "./engine";
-import { geodetectiveConfig, resolveBand, type GeoDetectiveConfig } from "@/game/age-profile";
+import { geodetectiveConfig, getBandConfig, canUseHint, resolveBand, type AgeBandId, type GeoDetectiveConfig } from "@/game/age-profile";
+import { HintPanel } from "@/components/hint-panel";
+import { directionalHint } from "@/components/hint-logic";
+import { awardCleanRoundBadge, type PassportBadge } from "@/game/passport/badges";
 import {
   type LoopClueFile,
   type LoopGuess,
@@ -259,6 +262,10 @@ export function LoopScreen({
   // Screen-reader announcement when a reveal lands (the Next-mystery
   // button must not be a sighted-only affordance).
   const [revealAnnouncement, setRevealAnnouncement] = useState<string | null>(null);
+  // Just-earned Clean Round badge for the reveal celebration (#113 BLOCK 2:
+  // the badge needs a visible surface). Set only on the winning guess that
+  // earns it; cleared when the next mystery deals.
+  const [cleanRoundBadge, setCleanRoundBadge] = useState<PassportBadge | null>(null);
   // "Next mystery" idempotence: the button deals once and unmounts with
   // the reveal; a second tap during the deal is a no-op.
   const dealingRef = useRef(false);
@@ -270,9 +277,16 @@ export function LoopScreen({
   // (P0-2 — the in-memory capture alone did not survive a remount), and the
   // live band is only the last-resort fallback for pre-snapshot stores.
   const [dealConfig, setDealConfig] = useState<GeoDetectiveConfig | null>(null);
+  // Deal-time band snapshot for the hint policy (follow-up Item B).
+  // Captured alongside the deal config so a mid-mystery band change never
+  // swaps the hint surface mid-deal. Note: GeoDetective is locked for 5-7
+  // (bands.ts), so in practice this is 8-10 ("one-per-round", hint shown)
+  // vs 11-13 ("none", no button) — the policy table decides, not the loop.
+  const [dealBand, setDealBand] = useState<AgeBandId | null>(null);
   const captureDealConfig = (): GeoDetectiveConfig => {
     const config = geodetectiveConfig(resolveBand()) ?? SAFE_DEAL_FALLBACK;
     setDealConfig(config);
+    setDealBand(resolveBand());
     return config;
   };
   const activeDealConfig =
@@ -427,6 +441,21 @@ export function LoopScreen({
       else playLose();
       const completedStore = completePuzzle(s, progressed, calendarDate("UTC", new Date()));
       commitStore(completedStore);
+      // Clean Round badge (age-profile B4): 11–13 no-hint WINS only.
+      // Cosmetic Passport badge — never points, never scoring.
+      // #113 BLOCK 1: the band comes from the immutable deal-time snapshot
+      // (dealBandConfig.band), NEVER the live resolveBand() — a mid-mystery
+      // band change cannot mis-award in either direction. Missing snapshot
+      // fails closed (no award).
+      // #113 BLOCK 2: only wins earn it — the award copy celebrates figuring
+      // it out, which mismatches a failed round.
+      const earnedBadge = awardCleanRoundBadge({
+        band: progressed.dealBandConfig?.band,
+        hintsUsed: progressed.hintsUsed ?? 0,
+        loopId: "geodetective",
+        won: progressed.status === "won",
+      });
+      if (earnedBadge) setCleanRoundBadge(earnedBadge);
       // Celebration (spec §3): the last undealt case of the cycle resolves
       // here — win or lose. A completed cycle fires the grand fanfare +
       // Legendary overlay exactly once (the silent reshuffle into the next
@@ -457,6 +486,7 @@ export function LoopScreen({
     dealingRef.current = true;
     setRevealAnnouncement(null);
     setPickNotice(null);
+    setCleanRoundBadge(null);
     setLoad({ phase: "loading", message: "A new mystery is on your desk…" });
     (async () => {
       const base = assetBase();
@@ -523,6 +553,11 @@ export function LoopScreen({
 
   const current = store?.current ?? null;
   const caseNo = store ? caseNumber(store) : 1;
+  // Deal-time band for the hint policy (never live): in-memory snapshot →
+  // persisted dealBandConfig.band (survives remount/resume) → "11-13"
+  // (fails closed: policy "none" hides the button).
+  const dealBandResolved: AgeBandId =
+    dealBand ?? current?.dealBandConfig?.band ?? "11-13";
 
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
@@ -596,6 +631,14 @@ export function LoopScreen({
           onNextMystery={onNextMystery}
           onLeave={onLeave}
           dealConfig={activeDealConfig}
+          dealBand={dealBandResolved}
+          cleanRoundBadge={cleanRoundBadge}
+          onHintUsed={(count) => {
+            const s = storeRef.current;
+            if (s?.current) {
+              commitStore({ ...s, current: { ...s.current, hintsUsed: count } });
+            }
+          }}
         />
       ) : null}
     </main>
@@ -644,6 +687,9 @@ function LoopGame({
   onNextMystery,
   onLeave,
   dealConfig,
+  dealBand,
+  cleanRoundBadge,
+  onHintUsed,
 }: {
   clue: LoopClueFile;
   puzzle: LoopPuzzleState;
@@ -658,9 +704,60 @@ function LoopGame({
   onLeave: () => void;
   /** Deal-time config for the open mystery (preserved across band changes). */
   dealConfig: GeoDetectiveConfig;
+  /**
+   * Deal-time band for the hint policy — resolved by the parent (snapshot →
+   * persisted → "11-13" fails-closed). Never the live band.
+   */
+  dealBand: AgeBandId;
+  /** Just-earned Clean Round badge, forwarded to the win reveal. */
+  cleanRoundBadge: PassportBadge | null;
+  /**
+   * #113 BLOCK: hint usage must be committed to the loop store (the Clean
+   * Round badge reads progressed.hintsUsed). The parent commits it.
+   */
+  onHintUsed: (count: number) => void;
 }) {
   const finished = puzzle.status !== "playing";
   const guessesLeft = dealConfig.guessCap - puzzle.guesses.length;
+
+  // Hint UI for GeoDetective (follow-up Item B, owner 2026-10-09).
+  // Policy comes from the DEAL-TIME band snapshot (never live): 8-10 gets
+  // one hint per mystery ("one-per-round"); 11-13 gets none ("none" hides
+  // the button); 5-7 can't reach this loop (locked in bands.ts). Hints
+  // NEVER touch points. The nudge is the same mechanical quadrant hint as
+  // the quiz loops (hint-logic.ts) — coarse, never pinpoints.
+  // Fallback chain: in-memory deal snapshot → persisted dealBandConfig.band
+  // (survives remount/resume) → "11-13" (fails closed: policy "none" hides
+  // the button). NEVER the live band.
+  const hintPolicy = getBandConfig(dealBand).hintPolicy;
+  const [hintMessage, setHintMessage] = useState<string | null>(null);
+  const [hintsUsedThisMystery, setHintsUsedThisMystery] = useState(0);
+  const [hintOfferDismissed, setHintOfferDismissed] = useState(false);
+  // New mystery → fresh hint state (keyed on the dealt puzzle index).
+  const hintResetKey = `${puzzle.cycle}:${puzzle.index}`;
+  useEffect(() => {
+    setHintMessage(null);
+    setHintsUsedThisMystery(0);
+    setHintOfferDismissed(false);
+  }, [hintResetKey]);
+
+  function onUseGeoHint() {
+    if (finished || !clue?.target) return;
+    if (!canUseHint(hintPolicy, hintsUsedThisMystery)) return;
+    // World-bounds fallback (same as the quiz globe): the quadrant stays
+    // coarse enough to never pinpoint the target.
+    const message = directionalHint(clue.target.lon, clue.target.lat, [-180, -90, 180, 90]);
+    setHintMessage(message);
+    const nextCount = hintsUsedThisMystery + 1;
+    setHintsUsedThisMystery(nextCount);
+    // #113 BLOCK: hintsUsed was local-only — the Clean Round badge reads
+    // progressed.hintsUsed from the store, so a used hint must be committed
+    // there or the badge logic reads stale (always-zero) data.
+    onHintUsed(nextCount);
+  }
+  // Wrong guesses drive the 5-7 mascot offer (policy-gated inside HintPanel;
+  // unreachable here since the loop is 5-7-locked, but the policy decides).
+  const geoMissCount = puzzle.guesses.filter((g) => g.distKm !== 0).length;
 
   // Storyteller v1 (hook only): voice on the tier-4 "The Hook" clue reveal,
   // auto once per puzzle on the T1 gesture model. No persistent figure —
@@ -751,6 +848,21 @@ function LoopGame({
           Guess {puzzle.guesses.length + 1} of {dealConfig.guessCap}
           {guessesLeft <= 2 && !finished ? ` — ${guessesLeft} left` : ""}
         </p>
+        {/* Hint UI (follow-up Item B): 8-10 gets one hint per mystery;
+            11-13 renders nothing (policy "none" → HintPanel returns null);
+            hidden once the case is closed. Right-aligned, in-flow — never
+            overlapping the map or the guess input. */}
+        {!finished ? (
+          <HintPanel
+            policy={hintPolicy}
+            hintsUsedThisPlace={hintsUsedThisMystery}
+            missCount={geoMissCount}
+            hintMessage={hintMessage}
+            offerDismissed={hintOfferDismissed}
+            onUseHint={onUseGeoHint}
+            onDismissOffer={() => setHintOfferDismissed(true)}
+          />
+        ) : null}
         <LoopMap
           guesses={puzzle.guesses}
           target={clue.target}
@@ -899,6 +1011,7 @@ function LoopGame({
           onNextMystery={onNextMystery}
           onLeave={onLeave}
           dealConfig={dealConfig}
+          cleanRoundBadge={cleanRoundBadge}
         />
       ) : null}
     </div>
@@ -1087,6 +1200,7 @@ function LoopReveal({
   onNextMystery,
   onLeave,
   dealConfig,
+  cleanRoundBadge,
 }: {
   clue: LoopClueFile;
   puzzle: LoopPuzzleState;
@@ -1100,6 +1214,13 @@ function LoopReveal({
   onLeave: () => void;
   /** Deal-time config for the open mystery (preserved across band changes). */
   dealConfig: GeoDetectiveConfig;
+  /**
+   * Just-earned Clean Round badge for the win celebration (#113 BLOCK 2:
+   * the badge needs a visible surface). Null unless this reveal's winning
+   * guess earned it — the award itself is win-only, so this never renders
+   * on a loss.
+   */
+  cleanRoundBadge: PassportBadge | null;
 }) {
   const won = puzzle.status === "won";
   const winningGuess = won
@@ -1221,6 +1342,23 @@ function LoopReveal({
             aria-label="Case file — scroll for more"
             tabIndex={0}
           >
+            {/* #113 BLOCK 2: the just-earned Clean Round badge gets a visible
+                surface here, at the top of the scrollable body — inside the
+                pinned header it could overflow Zone 1 on cycle-complete wins
+                and bury the pinned CTA. */}
+            {won && cleanRoundBadge ? (
+              <div
+                role="status"
+                aria-label={`Badge earned: ${cleanRoundBadge.name}. ${cleanRoundBadge.blurb}`}
+                data-testid="clean-round-badge"
+                className="rounded-xl border border-line bg-bg p-3 text-center"
+              >
+                <p className="text-base font-semibold text-fg">
+                  🏅 {cleanRoundBadge.name}
+                </p>
+                <p className="mt-1 text-sm text-muted">{cleanRoundBadge.blurb}</p>
+              </div>
+            ) : null}
             <section aria-label="Case file">
               <h3 className="text-sm tracking-wide text-muted uppercase">Case file</h3>
               <p className="mt-1 text-sm text-muted">This is what the clues were telling you.</p>

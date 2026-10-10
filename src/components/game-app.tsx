@@ -58,6 +58,9 @@ import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-
 import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
+import { HintPanel } from "./hint-panel";
+import { directionalHint } from "./hint-logic";
+import { canUseHint } from "@/game/age-profile/run-config.ts";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
@@ -80,10 +83,12 @@ import {
 // The settings screen is React.lazy: zero initial-bundle cost.
 import "./age-profile/age-profile.css";
 import { LockedLoop } from "./age-profile/LockedLoop";
+import { ReadAloudPrefPrompt } from "./age-profile/ReadAloudPrefPrompt";
+import { ReadAloudPrefSettings } from "./age-profile/ReadAloudPrefSettings";
+import { EarnedBadgeRow } from "./passport/EarnedBadgeRow";
 import {
   applyPendingAtBoundary,
   audioMode,
-  hasPendingChange,
   isLoopLocked,
   loadProfile,
   onAgeProfileChanged,
@@ -851,7 +856,6 @@ export function GameApp() {
   const [ageProfile, setAgeProfile] = useState(() => loadProfile());
   useEffect(() => onAgeProfileChanged(() => setAgeProfile(loadProfile())), []);
   const ageBand: AgeBandId = resolveBand(ageProfile);
-  const agePending = hasPendingChange(ageProfile);
   const [ageSettingsOpen, setAgeSettingsOpen] = useState(false);
   const [ageToast, setAgeToast] = useState<string | null>(null);
   useEffect(() => {
@@ -1828,7 +1832,6 @@ export function GameApp() {
       }
       tutorialInviteVisible={showTutorialInvite}
       ageBand={ageBand}
-      agePending={agePending}
       onGrownUpOpen={openAgeSettings}
       notice={
         <>
@@ -1885,7 +1888,6 @@ function Choose({
   tutorialInvite,
   tutorialInviteVisible,
   ageBand,
-  agePending,
   onGrownUpOpen,
 }: {
   onState: (e: ReactMouseEvent) => void;
@@ -1908,8 +1910,6 @@ function Choose({
   tutorialInviteVisible?: boolean;
   /** Effective age band (parent-set; "11-13" when unset). */
   ageBand: AgeBandId;
-  /** True while a band change is staged for the next boundary. */
-  agePending: boolean;
   /** Open the grown-up gate (footer link + locked-tile link). */
   onGrownUpOpen: () => void;}) {
   // GeoDetective progress for the edition card: the resume variant and the
@@ -2030,6 +2030,9 @@ function Choose({
         {loopProgress.streak > 0 ? (
           <p className="atlas-streak">🔥 Streak: {loopProgress.streak}</p>
         ) : null}
+        {/* Owner 2026-10-09: earned badges show on the home page card —
+            no separate Passport page. Clean Round is earned in this loop. */}
+        <EarnedBadgeRow />
         <button
           type="button"
           className="atlas-btn atlas-btn-brass mt-5"
@@ -2131,6 +2134,11 @@ function Choose({
           before GrandpaCoffeeRun. One host per screen: the header hosts
           brand + sound, so the footer carries this. */}
       <footer className="agep-footer">
+        {/* Kid-reachable read-aloud setting (owner 2026-10-09): the kid's
+            Always / Sometimes / Never choice is changeable after the first
+            tap. This sits NEXT TO the grown-ups gate — read-aloud is the
+            kid's tool, never parent-gated. */}
+        <ReadAloudPrefSettings />
         <button
           type="button"
           className="agep-footer-link"
@@ -2140,13 +2148,11 @@ function Choose({
         >
           🔒 For grown-ups
         </button>
-        {agePending ? (
-          <span className="agep-pending-chip" role="status">
-            Updating… takes effect on the next card
-          </span>
-        ) : null}
       </footer>
     </main>
+    {/* Kid-set read-aloud preference (age-profile B3): asked once, never
+        nags — the component renders nothing after the kid answers. */}
+    <ReadAloudPrefPrompt />
     {/* Grandpa's Coffee Run — animated donation scene, home only.
         Veeresh 2026-10-07: replaces PR #91's static sign. */}
     <GrandpaCoffeeRun />
@@ -2675,6 +2681,13 @@ function PlayLoaded({
   const [story, setStory] = useState<string | null>(null);
   const [bubble, setBubble] = useState<BubbleViewState>("open");
   const [cardDismissed, setCardDismissed] = useState(false);
+  // Hint UI (follow-up Item A — hints are a REAL feature, owner 2026-10-09).
+  // Hints NEVER touch points. Per-place usage drives the 8-10 one-per-place
+  // policy; the run-level hintsUsed accumulates for the snapshot. The
+  // mascot offer dismissal resets per run (not per place) — no nagging.
+  const [hintsUsedThisPlace, setHintsUsedThisPlace] = useState(0);
+  const [hintMessage, setHintMessage] = useState<string | null>(null);
+  const [offerDismissed, setOfferDismissed] = useState(false);
   // Gap-view reveal: the result card stays hidden until the map's reveal
   // reaches its end state (`reveal-done` → onRevealComplete). Reset per place.
   const [revealDone, setRevealDone] = useState(false);
@@ -2799,7 +2812,15 @@ function PlayLoaded({
     setAim(null);
     setBubble("open");
     setCardDismissed(false);
+    // Hint UI resets per place (8-10: one hint per place).
+    setHintsUsedThisPlace(0);
+    setHintMessage(null);
   }, [place?.id]);
+
+  // Mascot offer dismissal resets per run (a new run is a fresh chance).
+  useEffect(() => {
+    setOfferDismissed(false);
+  }, [run?.seed]);
 
   // Reveal watchdog (deadlock fail-safe): the result card renders only after
   // the map's reveal reaches its end state (`reveal-done` → onRevealComplete).
@@ -2911,7 +2932,7 @@ function PlayLoaded({
       // x1.5 / x1.25 / x1.0, clamps applied after the multiplier.
       radiusKm: review
         ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
-        : pinToleranceKm(ageBand, run.edition, greaterSideKm(boundsFor(run))),
+        : pinToleranceKm(run.bandConfig?.band ?? ageBand, run.edition, greaterSideKm(boundsFor(run))),
     };
   }, [drop, place, review, reviewEntry, run]);
 
@@ -2940,7 +2961,7 @@ function PlayLoaded({
     // Otherwise the age-profile band scales the tolerance (Phase 1 §3a).
     const radius = review
       ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
-      : pinToleranceKm(ageBand, run.edition, greaterSideKm(boundsFor(run)));
+      : pinToleranceKm(run.bandConfig?.band ?? ageBand, run.edition, greaterSideKm(boundsFor(run)));
     const hit = isHit(distance, radius);
     // v3: the place is scored with the streak engine + difficulty multiplier;
     // a miss scores 0 and resets the streak (handled in dropPin). Review is
@@ -3064,6 +3085,23 @@ function PlayLoaded({
     // hook instead.
     setCardDismissed(true);
     onTutorialAdvance(3);
+  }
+
+  // Hint UI (follow-up Item A): a hint reveals a directional nudge —
+  // never points, never the answer. The policy comes from the run's
+  // band snapshot (deal-time); the button state is per-place for 8-10.
+  // Fail closed: no place or no bounds = no hint.
+  function onUseHint() {
+    if (!run || !place) return;
+    const policy = run.bandConfig?.hintPolicy ?? "none";
+    if (!canUseHint(policy, hintsUsedThisPlace)) return;
+    // Globe edition has no region bounds: fall back to the whole world.
+    // The quadrant is still coarse enough to never pinpoint.
+    const b: [number, number, number, number] = bounds ?? [-180, -90, 180, 90];
+    const message = directionalHint(place.lon, place.lat, b);
+    setHintMessage(message);
+    setHintsUsedThisPlace((n) => n + 1);
+    onRun({ ...run, hintsUsed: (run.hintsUsed ?? 0) + 1 });
   }
 
   function onContinue() {
@@ -3404,15 +3442,36 @@ function PlayLoaded({
                   : `${run.regionName} finished.`}
       </p>
       {run.phase === "aim" && place ? (
-        <QuestionBubble
-          edition={mapEdition}
-          regionName={mapRegionName}
-          placeName={questionLabel}
-          difficulty={place.difficulty}
-          hasPin={aim !== null}
-          view={bubble}
-          onViewChange={setBubble}
-        />
+        <>
+          <QuestionBubble
+            edition={mapEdition}
+            regionName={mapRegionName}
+            placeName={questionLabel}
+            difficulty={place.difficulty}
+            hasPin={aim !== null}
+            view={bubble}
+            onViewChange={setBubble}
+          />
+          {/* Hint UI (follow-up Item A): the B1 hint policies get their
+              surface. 5-7 free + mascot offer after 2 misses; 8-10 one
+              per place; 11-13 no button (Clean Round stays earnable).
+              Right edge, BELOW the question bubble's lane: the bubble's
+              shell caps at min(38dvh, 20rem) from a 6rem top, so a 28rem
+              top keeps the cluster 0px² clear of the open bubble at both
+              360px and 390px widths (#113 overlap BLOCK — the old shared
+              top offset swallowed the bubble's "Hide question" taps). */}
+          <div className="pointer-events-none absolute top-[max(28rem,env(safe-area-inset-top))] right-2.5 z-20 w-[min(300px,calc(100vw-20px))]">
+            <HintPanel
+              policy={run.bandConfig?.hintPolicy ?? "none"}
+              hintsUsedThisPlace={hintsUsedThisPlace}
+              missCount={run.results.filter((r) => !r.hit).length}
+              hintMessage={hintMessage}
+              offerDismissed={offerDismissed}
+              onUseHint={onUseHint}
+              onDismissOffer={() => setOfferDismissed(true)}
+            />
+          </div>
+        </>
       ) : run.phase === "aim" && pool.length === 0 ? (
         <div
           data-testid="empty-band"

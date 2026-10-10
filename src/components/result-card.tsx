@@ -444,9 +444,12 @@ export function ResultCard({
                   >
                     <PlaceNameText name={placeLabel} />
                   </h2>
-                  {/* Age-profile read-aloud (Phase 2 \u00a74): auto for 5-7,
-                      button for 8-10, quiet link for 11-13. The mode reads
-                      the effective band; autoplay only on fresh reveals. */}
+                  {/* Age-profile read-aloud (Phase 2 §4, Item C/B3): 5-7 filled +
+                      auto; 8-10 and 11-13 render the identical ghost speaker
+                      icon (44px, no text label) so the band stays invisible.
+                      The mode reads the effective band; the kid's onboarding
+                      preference gates auto-read; autoplay only on fresh
+                      reveals. */}
                   <div className="agep-listen-row">
                     <ReadAloudButton
                       text={baseStory}

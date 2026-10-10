@@ -5,6 +5,7 @@
 // (`meridian.loop.v1`) is never read, written, or deleted; it sits inert.
 import type { Octant } from "../geo.ts";
 export type { Octant };
+import type { BandRunConfig } from "../age-profile/run-config.ts";
 
 export interface LoopGuess {
   /** Display name as picked, e.g. "Springfield, Illinois, US". */
@@ -71,6 +72,20 @@ export interface LoopPuzzleState extends LoopPuzzleProgress {
   dealStartClues?: number;
   /** Deal-time guess-cap snapshot — see dealStartClues. */
   dealMaxGuesses?: number;
+  /**
+   * Immutable age-band config snapshot, captured ONCE at deal via
+   * getBandConfig(resolveBand()) (follow-up Item A). A mid-mystery band
+   * change structurally cannot warp this mystery — the deal-time lengths,
+   * hint policy, and tolerance hold. Optional for backward compatibility:
+   * mysteries dealt before the snapshot fall back to the live band
+   * (previous behavior).
+   */
+  dealBandConfig?: BandRunConfig;
+  /**
+   * Hints tapped this mystery. Hints NEVER touch points (scoring is
+   * identical across bands); the hint policy enum rides in dealBandConfig.
+   */
+  hintsUsed?: number;
 }
 
 /** The shuffled deck: indexes in deal order, head = next to deal. */

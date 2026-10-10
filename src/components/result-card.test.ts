@@ -91,6 +91,7 @@ import { renderToString } from "react-dom/server";
 import { dirname, resolve as resolvePath } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Run } from "../game/run.ts";
+import { getBandConfig } from "../game/age-profile/run-config.ts";
 import type { Starter } from "../game/starters.ts";
 
 const REPO_ROOT = resolvePath(dirname(fileURLToPath(import.meta.url)), "..", "..");
@@ -258,6 +259,8 @@ function makeRun(
     seed: 7,
     poolIds: [],
     prevLastId: null,
+    bandConfig: getBandConfig(null),
+    hintsUsed: 0,
   };
 }
 
