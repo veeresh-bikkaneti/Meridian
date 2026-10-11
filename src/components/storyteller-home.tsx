@@ -314,13 +314,27 @@ export default function StorytellerHomeHost({
     if (yielded) {
       wasYieldedRef.current = true;
       const wasNarrating = phase === "greeting_audio";
+      // Capture BEFORE stopAudio() nulls the ref: phase lingers as
+      // "greeting_audio" for POST_AUDIO_HOLD_MS after natural end, so
+      // phase alone can't tell "killed mid-flight" from "already heard".
+      const audioAlive = audioRef.current !== null;
       stopAudio();
       hideBubble();
       // If the tour/celebration interrupted narration, the 12s cap timer
       // died with it — park in idle_linger so the machine doesn't stall in
       // a dead greeting_audio phase. (Tour close re-arms via
       // takeTourReturnLine, which resets phase explicitly.)
-      if (wasNarrating) setPhase("idle_linger");
+      if (wasNarrating) {
+        // The tour killed audio mid-flight, but the one-shot gesture flag
+        // is still consumed — the post-tour follow-up greeting would then
+        // be un-startable on tap. Re-arm so the next gesture can narrate.
+        // (Only when audio actually died mid-flight: if the greeting had
+        // already completed during the hold window, the flag stays
+        // consumed and the greeting must not replay. Tour-return mode is
+        // text-only and onGesture returns early there anyway.)
+        if (audioAlive) gestureDoneRef.current = false;
+        setPhase("idle_linger");
+      }
       return;
     }
     if (wasYieldedRef.current) {

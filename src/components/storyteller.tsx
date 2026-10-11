@@ -5,7 +5,7 @@ import {
   useState,
   type MouseEvent as ReactMouseEvent,
 } from "react";
-import { RotateCcw, Volume2 } from "lucide-react";
+import { RotateCcw, Volume2, VolumeX } from "lucide-react";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import { CURRENT_BUILD_ID } from "@/game/build-staleness";
 import {
@@ -179,9 +179,22 @@ export function StorytellerNarration({
   const [visible, setVisible] = useState(true);
   const [leaving, setLeaving] = useState(false);
   const [wordsShown, setWordsShown] = useState(0);
-  const [soundOn] = useState(() => isSoundEnabled());
+  const [soundOn, setSoundOn] = useState(() => isSoundEnabled());
   const [audioState, setAudioState] = useState<AudioState>("idle");
   const [speakerUsed, setSpeakerUsed] = useState(false);
+
+  // The speaker icon must reflect the LIVE mute state — the global
+  // speaker toggle (game-app) flips meridian.sound elsewhere, and
+  // same-tab storage events don't fire, so the snapshot above goes
+  // stale without this explicit channel. (Owner 2026-10-10: "how do
+  // I know if the mute works" — the icon is the answer.)
+  useEffect(() => {
+    const onSoundChange = (e: Event) =>
+      setSoundOn((e as CustomEvent<boolean>).detail);
+    window.addEventListener("meridian:sound-change", onSoundChange);
+    return () =>
+      window.removeEventListener("meridian:sound-change", onSoundChange);
+  }, []);
 
   const reducedMotion = useRef(
     typeof matchMedia !== "undefined" &&
@@ -412,8 +425,26 @@ export function StorytellerNarration({
     playNarrationAudio("replay");
   };
 
-  // Tap the figure: pause/resume the narration.
+  // Tap the figure: pause/resume the narration — and start it when
+  // nothing is in flight. (Owner 2026-10-10: an idle/failed/ended tap
+  // must not be a no-op; the figure tap is the manual recovery path
+  // when auto-start lost the race on his phone.)
   const handleFigureToggle = useCallback(() => {
+    if (
+      audioState === "idle" ||
+      audioState === "failed" ||
+      audioState === "ended"
+    ) {
+      // No audio in flight — start the line via the replay path
+      // ("replay" keeps the telemetry vocabulary unchanged). A figure
+      // tap is a genuine user gesture, so playback is allowed.
+      // Persistent mute ("sound off until I say so", owner ruling):
+      // a muted figure tap must NOT play audio — the VolumeX icon
+      // is the indicator, not a silent bypass.
+      if (!isSoundEnabled()) return;
+      playNarrationAudio("replay");
+      return;
+    }
     const audio = audioRef.current;
     if (!audio) return;
     if (audioState === "playing") {
@@ -426,7 +457,7 @@ export function StorytellerNarration({
       });
       setAudioState("playing");
     }
-  }, [audioState]);
+  }, [audioState, playNarrationAudio]);
 
   const handleCaptionClick = () => {
     // The tap that starts audio must not instantly dismiss it.
@@ -447,7 +478,7 @@ export function StorytellerNarration({
       ? "Pause the story"
       : audioState === "paused"
         ? "Resume the story"
-        : "The storyteller";
+        : "Play the story";
 
   const caption = (
     <div
@@ -485,7 +516,11 @@ export function StorytellerNarration({
           aria-label="Hear the storyteller's story"
           onClick={handleSpeaker}
         >
-          <Volume2 aria-hidden="true" />
+          {soundOn ? (
+            <Volume2 aria-hidden="true" />
+          ) : (
+            <VolumeX aria-hidden="true" />
+          )}
         </button>
       ) : null}
       {showReplay && !failed ? (
