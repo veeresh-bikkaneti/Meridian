@@ -16,7 +16,8 @@ import { serveBuiltArtifact } from "./helpers";
  * 360/390px × dark/light × tour shown/hidden × deck present/absent; stops
  * at each option; the top-up pour (kettle + mug fill); settle + cloud copy
  * + gate workflow (Ko-fi new tab, Cancel/Esc revert); once-per-day replay;
- * once-per-session ask; reduced-motion static scene; offline hidden.
+ * persistent cloud fixture (owner 2026-10-10 — replaced the
+ * once-per-session ask); reduced-motion static scene; offline hidden.
  *
  * Runs in the dedicated "grandpa-tour" project (mobile viewport 390x844,
  * touch) — see playwright.config.ts.
@@ -557,25 +558,31 @@ test("once per day: seeded date → seated immediately, no replay", async ({
   expectCleanConsole(errors);
 });
 
-test("ask once per session: reload hides the cloud", async ({ page }) => {
+test("persistent fixture: reload KEEPS the cloud (owner 2026-10-10)", async ({
+  page,
+}) => {
+  // Owner ruling 2026-10-10: the cloud is a persistent fixture, no longer
+  // once-per-session. A same-session reload (same calendar day, seeded as a
+  // return visit) keeps grandpa seated AND the ask still renders — the
+  // inverse of the old session-gate behavior.
+  await page.addInitScript(
+    ({ sessionKey, dateKey, dateVal }: { sessionKey: string; dateKey: string; dateVal: string }) => {
+      // Legacy flag a previous visit would have written under the old
+      // session gate — the new code must ignore it.
+      sessionStorage.setItem(sessionKey, "1");
+      localStorage.setItem(dateKey, dateVal);
+    },
+    { sessionKey: "meridian.grandpaTour.askShown", dateKey: TOUR_DATE_KEY, dateVal: todayKey() },
+  );
   const errors = await loadHome(page);
-  await waitForSeated(page);
-  // First settle shows the ask…
-  await expect(page.getByTestId("grandpa-donation-bubble")).toContainText(
-    "Grown-ups — buy me a coffee? ☕",
-  );
-  // …a same-session reload (same calendar day) keeps grandpa seated but
-  // the ask stays shown only once per session.
-  await page.reload();
-  await expect(page.getByTestId("grandpa-scene")).toBeVisible({
-    timeout: 20_000,
+  const scene = page.getByTestId("grandpa-scene");
+  await expect(scene).toHaveAttribute("data-beat", "seated", {
+    timeout: 10_000,
   });
-  await expect(page.getByTestId("grandpa-scene")).toHaveAttribute(
-    "data-beat",
-    "seated",
-    { timeout: 10_000 },
-  );
-  await expect(page.getByTestId("grandpa-donation-bubble")).toHaveCount(0);
+  // Return visit: the cloud is still there, ask copy intact.
+  const bubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(bubble).toHaveCount(1);
+  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
   expectCleanConsole(errors);
 });
 

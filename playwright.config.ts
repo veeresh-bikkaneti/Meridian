@@ -297,6 +297,17 @@ export default defineConfig({
         viewport: { width: 390, height: 844 },
       },
     },
+    {
+      name: "badge-journey",
+      // PR #126 regression cell: black-box badge journeys at both target
+      // viewports. 390px viewport, no mobile UA emulation (isMobile/hasTouch
+      // breaks loop-map mounting in headless Chromium — same note as
+      // hint-button); each test sets its own viewport (390px or 1280px).
+      testMatch: /badge-journey\.spec\.ts/,
+      use: {
+        viewport: { width: 390, height: 844 },
+      },
+    },
   ],
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
 });

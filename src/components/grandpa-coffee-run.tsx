@@ -85,7 +85,6 @@ const KETTLE_HOLD_MS = 2800;
 // --- Tasting-tour tuning (mobile) ---
 const MOBILE_QUERY = "(max-width: 1023.5px)";
 const TOUR_LAST_DATE_KEY = "meridian.grandpaTour.lastDate";
-const TOUR_ASK_SHOWN_KEY = "meridian.grandpaTour.askShown";
 /** Total journey hard cap, measured from the first step. */
 const TOUR_JOURNEY_CAP_MS = 12_000;
 /** Normal journey target — comfortably under the cap. */
@@ -1140,7 +1139,6 @@ export function GrandpaCoffeeRun() {
   );
   const [beat, setBeat] = useState<Beat>("walking");
   const [cloud, setCloud] = useState<Cloud>("ask");
-  const [askVisible, setAskVisible] = useState(true);
   const walkerRef = useRef<HTMLDivElement | null>(null);
   const continueRef = useRef<HTMLButtonElement | null>(null);
   const reducedMotion = useRef(
@@ -1334,17 +1332,6 @@ export function GrandpaCoffeeRun() {
     };
   }, [mode, isMobile, reducedMotion]);
 
-  // Session-gate the ask on mobile settle (return visits + reduced motion).
-  // Desktop keeps the previous behavior: the cloud shows every load.
-  useEffect(() => {
-    if (mode !== "seated" || !isMobile || reducedMotion) return;
-    if (readStorage(TOUR_ASK_SHOWN_KEY, "session")) setAskVisible(false);
-    else {
-      writeStorage(TOUR_ASK_SHOWN_KEY, "1", "session");
-      setAskVisible(true);
-    }
-  }, [mode, isMobile, reducedMotion]);
-
   // Re-measure the settled/faint trail on resize/orientation change — never
   // mid-walk (a mid-walk width change settles the tour instead).
   useEffect(() => {
@@ -1425,17 +1412,12 @@ export function GrandpaCoffeeRun() {
   // Fail-closed: no Ko-fi URL configured → render nothing.
   if (!KOFI_URL) return null;
 
-  // The cloud shows: in "strip" mode always (previous behavior); on mobile
-  // also during the tasting tour (the grown-up lock is discoverable from the
-  // first beat) and once settled — both once per session via askVisible.
-  const showCloud =
-    mode === "strip"
-      ? true
-      : mode === "tour"
-        ? isMobile && askVisible
-        : mode === "seated"
-          ? !isMobile || askVisible
-          : false;
+  // The cloud is a persistent fixture (owner 2026-10-10): it renders on
+  // every visit in every mode — strip, tour, and seated — and is always
+  // tappable to open the gate. The once-per-session suppression is
+  // removed; visibility is never gated by session state. (The fail-closed
+  // guards above — offline / no VITE_KOFI_URL — still apply.)
+  const showCloud = mode === "strip" || mode === "tour" || mode === "seated";
   // Fix 2, option (a) — Accessibility Auditor sign-off 2026-10-09: the
   // parked strip walker is NOT interactive during the tour. A tap on it
   // used to call openCloudGate() and move focus into the cloud's Continue

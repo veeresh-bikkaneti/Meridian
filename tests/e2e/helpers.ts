@@ -28,7 +28,10 @@ import path from "node:path";
 // NOTE (F2 worktree): the parent clone hardcodes its own dist path here; this
 // worktree resolves relative to the repo root it runs from so E2E tests the
 // worktree's own build, never a sibling's stale artifact.
-const DIST = path.resolve("dist/client");
+// Overridable for the fail-closed no-URL build: run a spec with
+// KOFI_E2E_DIST=/tmp/dist-nokofi to serve a build produced WITHOUT
+// VITE_KOFI_URL (the cloud must render nothing there).
+const DIST = path.resolve(process.env.KOFI_E2E_DIST ?? "dist/client");
 const BASE = "/Meridian/";
 export const EVIDENCE = "/home/hatch/workspace/meridian-review/evidence";
 export const RUN_KEY = "meridian.run";
