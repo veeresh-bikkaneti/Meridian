@@ -984,7 +984,10 @@
   font-family: var(--font-atlas-display);
   font-weight: 600;
   font-size: clamp(22px, 5.6vw, 28px);
-  line-height: 1.12;
+  /* 1.15, not 1.1/1.12: Fraunces 600 descenders collide below 1.15
+   * (measured 2px scrollHeight overflow at 1.12) — same descender-safe
+   * floor as the headline variant and the truespot short tier. */
+  line-height: 1.15;
 }
 
 .rname[data-name-tier="medium"] {
