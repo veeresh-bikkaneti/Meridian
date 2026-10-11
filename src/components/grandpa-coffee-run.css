@@ -1068,38 +1068,6 @@
     transform: scale(1);
   }
 
-  /* ============ Floating thought (seated only, strip off-screen) ============
-   * Owner 2026-10-10: the user can always see and tap the cloud — no
-   * 3-screens-below-the-fold placement on mobile. When grandpa's strip is
-   * off-screen (data-cloud-pin="floating", driven by the walker's
-   * IntersectionObserver in the component), the cloud pins to the viewport
-   * bottom-right with safe-area clearance: always visible, always tappable,
-   * in every seated state (return visit, post-tour, post-skip).
-   *
-   * The tail is deliberately unchanged (points down): floating, it points
-   * down the page toward grandpa's camp; docked, at grandpa himself. The
-   * cloud IS his thought in both states — no silent weirdness.
-   *
-   * Tour/strip modes ignore the pin and stay in-flow at the strip: the
-   * mobile-home-overlap spec's phase-2 invariant forbids a viewport-pinned
-   * cloud while the tour auto-scrolls across the cards. Desktop is
-   * untouched — this rule lives under the mobile query only.
-   *
-   * Position check: at 390px the cloud is 220px wide → x 158–378, clear of
-   * the top-right tour Skip and the banner/storyteller figure (top zone).
-   * Like any floating HUD it can sit over scrolled card padding — it never
-   * covers a CTA (card buttons are left-aligned; verified in the overlap
-   * spec's tap-target pass). */
-  .grandpa-scene[data-mode="seated"][data-cloud-pin="floating"]
-    .grandpa-donation-bubble {
-    position: fixed;
-    top: auto;
-    bottom: calc(max(12px, env(safe-area-inset-bottom, 0px)) + 10px);
-    left: auto;
-    right: 12px;
-    transform: scale(1);
-  }
-
   @keyframes bubble-mobile-enter {
     from {
       opacity: 0;
@@ -1119,16 +1087,6 @@
 
   .bubble-gate-sub {
     font-size: 10.5px;
-  }
-}
-
-@media (max-width: 1023.5px) and (prefers-reduced-motion: reduce) {
-  /* The base reduced-motion rule's !important translate(-50%) would
-   * otherwise shove the right-anchored floating bubble left, off its tail
-   * (same hazard as the desktop seated rule above). */
-  .grandpa-scene[data-mode="seated"][data-cloud-pin="floating"]
-    .grandpa-donation-bubble {
-    transform: scale(1) !important;
   }
 }
 

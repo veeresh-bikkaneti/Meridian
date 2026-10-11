@@ -2,7 +2,9 @@ import { test, expect, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
- * Ko-fi persistent-cloud E2E — the owner's 2026-10-10 product call.
+ * Ko-fi persistent-cloud E2E — the owner's 2026-10-10 product call, updated
+ * with the 2026-10-11 ruling: the cloud is grandpa's THOUGHT BUBBLE and must
+ * stick close to him — it is NEVER pinned/fixed to the viewport.
  *
  * The donation cloud is a PERSISTENT fixture: the once-per-session gate
  * (`meridian.grandpaTour.askShown` + the `askVisible` state) was removed
@@ -12,10 +14,12 @@ import { serveBuiltArtifact } from "./helpers";
  *
  *  - return visit (seeded as if a previous visit happened: today's
  *    tour-date in localStorage + the legacy session flag) → the cloud
- *    STILL renders with the locked ask copy, and its bounding box
- *    intersects the 390px viewport (the owner's phone showed the cloud
- *    ~3 screens below the fold — a DOM-presence assertion would have
- *    passed while the user saw nothing).
+ *    STILL renders with the locked ask copy.
+ *  - at the top of the page (grandpa's strip off-screen) → NO cloud in the
+ *    viewport and its computed position is never `fixed` (the 2026-10-11
+ *    ruling: it must not float over the page).
+ *  - scroll grandpa into view → his thought bubble sits right next to him
+ *    (above the walker, tail at him), never `fixed`.
  *  - tap the cloud's ask button → the grown-up gate opens inside the cloud.
  *  - gate Continue → Ko-fi opens in a new tab (window.open stubbed and
  *    asserted) and the cloud reverts to the ask.
@@ -110,7 +114,41 @@ async function expectCloudInViewport(page: Page, label: string) {
   ).toBeGreaterThan(0);
 }
 
-test("cloud is visible on a return visit, inside the viewport", async ({
+/** The inverse: the cloud's bounding box must NOT intersect the 390px
+ *  viewport — the owner's 2026-10-11 ruling is that the cloud lives next
+ *  to grandpa, so at the top of the page (his strip off-screen) the user
+ *  sees no cloud at all. */
+async function expectCloudNotInViewport(page: Page, label: string) {
+  const bubble = page.getByTestId("grandpa-donation-bubble");
+  const bbox = await bubble.boundingBox();
+  expect(bbox, `cloud has a bounding box (${label})`).not.toBeNull();
+  const vp = page.viewportSize()!;
+  const intersects =
+    bbox!.x < vp.width &&
+    bbox!.x + bbox!.width > 0 &&
+    bbox!.y < vp.height &&
+    bbox!.y + bbox!.height > 0;
+  expect(
+    intersects,
+    `cloud does not intersect the viewport (${label})`,
+  ).toBe(false);
+}
+
+/** The cloud must never be viewport-pinned: the owner's 2026-10-11 ruling
+ *  is that it is grandpa's thought bubble, stuck close to him. */
+async function expectCloudNotFixed(page: Page, label: string) {
+  await expect
+    .poll(
+      async () =>
+        page
+          .getByTestId("grandpa-donation-bubble")
+          .evaluate((el) => getComputedStyle(el).position),
+      { timeout: 10_000 },
+    )
+    .not.toBe(`fixed`);
+}
+
+test("cloud sits next to grandpa on a return visit (never floats)", async ({
   page,
 }) => {
   test.skip(
@@ -131,13 +169,28 @@ test("cloud is visible on a return visit, inside the viewport", async ({
   await expect(bubble).toContainText(
     "Your support keeps Meridian free for kids",
   );
-  // The owner's phone had the cloud ~3 screens below the fold — a
-  // DOM-presence assertion would have passed while he saw nothing.
-  await expectCloudInViewport(page, "return visit seated");
+  // The cloud only exists next to grandpa now: scroll his strip into view
+  // first, then assert the bubble is there — above him, never pinned.
+  await page.getByTestId("grandpa-walker").scrollIntoViewIfNeeded();
+  await expectCloudInViewport(page, "return visit at the strip");
+  await expectCloudNotFixed(page, "return visit at the strip");
+  const boxes = await page.evaluate(() => {
+    const b = document
+      .querySelector('[data-testid="grandpa-donation-bubble"]')!
+      .getBoundingClientRect();
+    const w = document
+      .querySelector('[data-testid="grandpa-walker"]')!
+      .getBoundingClientRect();
+    return { bubbleBottom: b.bottom, walkerTop: w.top };
+  });
+  expect(
+    boxes.bubbleBottom,
+    "thought bubble sits above the walker, never over him",
+  ).toBeLessThan(boxes.walkerTop);
   expectCleanConsole(errors);
 });
 
-test("cloud floats when the strip is off-screen, docks above grandpa at the strip", async ({
+test("no floating cloud at page top; thought bubble next to grandpa at the strip", async ({
   page,
 }) => {
   test.skip(
@@ -151,32 +204,19 @@ test("cloud floats when the strip is off-screen, docks above grandpa at the stri
     timeout: 10_000,
   });
   const bubble = page.getByTestId("grandpa-donation-bubble");
+  await expect(bubble).toHaveAttribute("data-cloud", "ask");
+  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
 
-  // Strip off-screen (top of the page): the cloud floats pinned to the
-  // viewport bottom — the owner's "always see and tap" placement.
-  await expect(scene).toHaveAttribute("data-cloud-pin", "floating", {
-    timeout: 10_000,
-  });
-  await expect
-    .poll(
-      async () => bubble.evaluate((el) => getComputedStyle(el).position),
-      { timeout: 10_000 },
-    )
-    .toBe("fixed");
-  await expectCloudInViewport(page, "floating at scroll top");
+  // Page top (grandpa's strip off-screen): no cloud in the viewport, and it
+  // is never pinned — the owner's 2026-10-11 ruling killed the floating pin.
+  await expectCloudNotInViewport(page, "page top, strip off-screen");
+  await expectCloudNotFixed(page, "page top, strip off-screen");
 
-  // Scroll grandpa's strip into view: the cloud docks back above the
-  // walker instead of floating over him.
+  // Scroll grandpa's strip into view: his thought bubble sits right next
+  // to him, above the walker, still never pinned.
   await page.getByTestId("grandpa-walker").scrollIntoViewIfNeeded();
-  await expect(scene).toHaveAttribute("data-cloud-pin", "docked", {
-    timeout: 10_000,
-  });
-  await expect
-    .poll(
-      async () => bubble.evaluate((el) => getComputedStyle(el).position),
-      { timeout: 10_000 },
-    )
-    .not.toBe("fixed");
+  await expectCloudInViewport(page, "at the strip");
+  await expectCloudNotFixed(page, "at the strip");
   const boxes = await page.evaluate(() => {
     const b = document
       .querySelector('[data-testid="grandpa-donation-bubble"]')!
@@ -188,21 +228,43 @@ test("cloud floats when the strip is off-screen, docks above grandpa at the stri
   });
   expect(
     boxes.bubbleBottom,
-    "docked cloud sits above the walker, never over him",
+    "thought bubble sits above the walker, never over him",
   ).toBeLessThan(boxes.walkerTop);
 
-  // Scroll back up: the cloud floats again.
-  await page.evaluate(() => window.scrollTo(0, 0));
-  await expect(scene).toHaveAttribute("data-cloud-pin", "floating", {
-    timeout: 10_000,
+  // The tap flow still works from the in-flow bubble: ask → gate →
+  // Continue (window.open stubbed) → Ko-fi opens → the cloud reverts.
+  const KOFI_URL = kofiUrl();
+  await page.evaluate(() => {
+    (window as unknown as { __opened: unknown[] }).__opened = [];
+    window.open = ((url?: string | URL, target?: string, features?: string) => {
+      (window as unknown as { __opened: unknown[] }).__opened.push({
+        url: String(url),
+        target,
+        features,
+      });
+      return null;
+    }) as typeof window.open;
   });
-  await expect
-    .poll(
-      async () => bubble.evaluate((el) => getComputedStyle(el).position),
-      { timeout: 10_000 },
-    )
-    .toBe("fixed");
-  await expectCloudInViewport(page, "floating again after scrolling up");
+  await page.getByTestId("grandpa-bubble-ask").tap();
+  await expect(page.getByTestId("grandpa-cloud-gate")).toBeVisible();
+  await page.getByTestId("grandpa-cloud-continue").click();
+  const opened = await page.evaluate(
+    () => (window as unknown as { __opened: unknown[] }).__opened,
+  );
+  expect(opened).toHaveLength(1);
+  const call = opened[0] as { url: string; target: string; features: string };
+  expect(call.url).toBe(KOFI_URL);
+  expect(call.target).toBe("_blank");
+  expect(call.features).toContain("noopener");
+  // The cloud reverts to the ask — still the persistent fixture.
+  await expect(bubble).toHaveAttribute("data-cloud", "ask");
+  await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
+
+  // Scroll back to the top: no cloud in the viewport again, still never
+  // pinned.
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expectCloudNotInViewport(page, "back at page top");
+  await expectCloudNotFixed(page, "back at page top");
   expectCleanConsole(errors);
 });
 
