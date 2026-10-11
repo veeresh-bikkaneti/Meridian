@@ -247,6 +247,9 @@ test("figure tap pauses and resumes the narration", async ({ page }) => {
   await expect(figure).toHaveAttribute("aria-label", "Pause the greeting", {
     timeout: 15_000,
   });
+  // Clear the 600ms starter-tap guard: the body click that started audio
+  // sets audioStartTimeRef, and a fast figure tap would be swallowed.
+  await page.waitForTimeout(700);
   // Tap the figure: pause/resume is the tap's job (owner ruling 2026-10-10).
   // force: the figure's idle-float animation runs infinitely, so the
   // actionability stability check would never settle — the tap itself is
