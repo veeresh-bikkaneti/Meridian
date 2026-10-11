@@ -1733,6 +1733,10 @@
   text-transform: uppercase;
   line-height: 1.4;
   color: var(--atlas-muted);
+  /* Kept: this <p> is NOT a BoundedText (GeoDetective dossier is out of
+   * the wrapping-spec adoption), so it keeps its own containment now
+   * that .verdict-headline no longer declares it. */
+  overflow-wrap: break-word;
 }
 
 .loop-reveal-bodywrap {
