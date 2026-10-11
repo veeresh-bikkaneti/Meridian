@@ -1531,18 +1531,21 @@
   overflow: hidden;
 }
 
-/* The verdict headline: Fraunces 600 34px tabular-nums in ink (spec §5).
- * flex-shrink: 0 — the headline never shrinks; the row wraps to two
- * lines on narrow widths instead. */
+/* The verdict headline: Fraunces 600 tabular-nums in ink (spec §5).
+ * The headline wraps to two lines on narrow widths instead of clipping:
+ * flex-shrink is allowed (1 1 auto, min-width 0) and long tokens break,
+ * and the size clamps down on phones so "9,704 km northeast of your pin"
+ * never spills past the card edge at 390px. */
 .verdict-headline {
   font-family: var(--font-atlas-display);
   font-weight: 600;
-  font-size: 34px;
+  font-size: clamp(26px, 8.2vw, 34px);
   line-height: 1.1;
   font-variant-numeric: tabular-nums;
   color: var(--atlas-ink);
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .verdict-row {
@@ -1565,7 +1568,10 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 2px 2px 34px;
+  /* 64px bottom: the "more below" scroll cue overlays the region's bottom
+   * edge (~56px tall) — the last content line must scroll fully clear of
+   * it instead of hiding underneath the fade. */
+  padding: 2px 2px 64px;
 }
 
 /* Zone 3: pinned CTA — flex-shrink: 0, solid bg so scrolled text never
@@ -1642,6 +1648,9 @@
   border: 1px solid var(--game-chrome-line);
   background: color-mix(in srgb, var(--atlas-ink) 5%, transparent);
   color: var(--atlas-ink);
+  /* Long unbroken tokens (share URLs) wrap instead of forcing the block
+   * wider than the card on 390px phones. */
+  overflow-wrap: anywhere;
 }
 
 /* ---- GeoDetective guess list (LoopScreen.tsx, spec §5) ----

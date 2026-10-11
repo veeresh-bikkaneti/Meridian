@@ -86,7 +86,14 @@
   position: absolute;
   top: 0;
   left: 12px;
+  right: 12px; /* bound the bubble inside the card — it must never spill past the card edge */
   z-index: 1;
+}
+
+/* The docked bubble keeps its 260px reading measure on wide cards but
+ * shrinks with the card on phones instead of overflowing it. */
+.storyteller-dock .storyteller-caption {
+  max-width: min(260px, 100%);
 }
 
 /* Secondary host: inside the run-summary modal, above the title. CTAs stay

@@ -502,7 +502,7 @@ export function StorytellerNarration({
             className={i < wordsShown ? "storyteller-word shown" : "storyteller-word"}
           >
             {w}
-            {i < words.length - 1 ? " " : ""}
+            {i < words.length - 1 ? " " : ""}
           </span>
         ))}
       </p>
