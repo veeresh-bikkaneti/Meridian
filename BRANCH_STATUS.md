@@ -64,15 +64,14 @@ fold test, overlap + closed-world assertions).
       with temp mutations: raw <p> and unapproved nowrap both fail)
 - [x] npm run build:pages — green (bounded-text.css in bundle)
 - [x] Fixture suite — 18/18 green
-- [x] Page matrix (16 variants + fold) — 12/17 first pass; triaged 5:
+- [x] Page matrix (16 variants + fold) — GREEN. Triaged 5 failures:
       .rname short-tier lh 1.12 clipped 2px → fixed to 1.15 (styles.css);
       hit burn-path used helpers' off-screen commitMiss → width-aware
-      commitHitAt; caption battery now measures caption-text (floating
-      speaker button pollutes container scrollWidth by design);
-      geodetective + hit scoped to ≥320px CSS (loop/map flows broken at
-      160/195px on main too — pre-existing). Re-running full matrix.
-- [x] npm test (full suite) — 1860/1860 green (fixed 3: question-bubble
-      source-structure tests + scroll-cue hook resolve step)
+      commitHitAt with spot-settle; caption battery measures
+      caption-text (floating speaker button pollutes container
+      scrollWidth by design); geodetective + hit scoped to ≥320px CSS
+      (loop/map flows broken at 160/195px on main too — pre-existing).
+- [x] npm test (full suite) — 1860/1860 green
 - [ ] Dev-build tripwire test (BOUNDED_TRIPWIRE=1)
 - [ ] Visual diffs 390px + 1280px vs main
 - [ ] Red-team pass (beyond font-failure)
