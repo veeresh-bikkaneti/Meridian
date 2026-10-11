@@ -369,3 +369,111 @@ Visual ✓ (QA) · Workflow ✓ (QA) · Regression ✓ (QA) · Unit+functional �
 (QA/Eng) · Security ✓ (Security) · Squad cross-check ✓ (coordinator:
 Design's morph-aesthetic concern checked against Eng's MapLibre-source
 verification and QA's screenshots). Nothing skipped.
+
+---
+
+# BRANCH_STATUS — fix/narration-silent-prod
+
+Branch: `fix/narration-silent-prod` · Base: origin/main @ 51ed7f5 · Created: 2026-10-11.
+**PUSH OK, DO NOT MERGE** — owner merges.
+
+## Owner symptom
+Narration SILENT on his real phone: subtitles/captions advance, zero audio.
+
+## Root cause (three diagnosis cells)
+1. Captions advance on an independent `setTimeout` from mount; audio only
+   starts on a later gesture. Three silent states had no self-recovery:
+   (a) card `onFirstGesture` consumed the one-shot THEN returned on
+   `!isSoundEnabled()` — captions advance forever, audioState stuck "idle";
+   (b) `play()` promise hangs (iOS stall) — audioState stuck "playing", no
+   watchdog; (c) `AbortError` swallowed, stranding "playing" on a dead
+   element (card has no figure tap to recover it since #127).
+2. PR #127 removed the figure from cards — the documented manual recovery
+   path for this symptom.
+3. Banner poke-line trap: taps with no audio in flight rotated text-only
+   poke lines; a failed/missed greeting could never be replayed.
+
+## Fix (all in src/components/storyteller.tsx + storyteller-home.tsx)
+- **Fix A — card one-shot re-armable:** `onFirstGesture` no longer consumes
+  the one-shot when sound is off (decision via `decideFirstGesture`); the
+  listeners stay armed so the next gesture — or unmute — retries. P1-1
+  (celebration-owned gestures) preserved.
+- **Fix B — card play() watchdogs:** 4s hang watchdog (play() never
+  settles → onFail) + 3s stall check (playing event fired but currentTime
+  frozen → onFail). Ref-held timers, cleared on ended/error/dismiss/unmount;
+  no chained timers across renders. The stall check is anchored to the
+  `playing` EVENT (not play()-resolve) — arming on resolve false-positived
+  the 0.2s fixture clip under load during verification (caught by the
+  pre-existing "replay replays the line" e2e, 2/5 flake; fixed, then 8/8
+  consecutive passes).
+- **Fix C — AbortError:** when play() aborts on our own paused element and
+  it's still the current attempt, audioState goes to "paused" (recoverable
+  via replay/speaker/figure tap) instead of "playing".
+- **Fix D — banner greeting replay:** figure tap replays an
+  attempted-but-never-heard greeting instead of a poke line
+  (`shouldReplayGreeting`: greeting mode, started, attempted, not heard,
+  not kid-dismissed, one-shot consumed, audio available, sound on). Heard
+  greetings keep poke behavior; kid-dismissed greetings stay quiet. Also:
+  `greetingHeardRef` (ended OR timeupdate > 0.5s), and the window gesture
+  one-shot now checks a synchronous `tourActiveRef` so a tap during the
+  tour can't burn the greeting. Found during verification: banner `onFail`
+  never nulled `audioRef` — the stale ref blocked the replay guard; fixed
+  (`stopAudio()` in `onFail`).
+- **Fix E — retry hint:** `STORYTELLER_RETRY_HINT` ("Tap the speaker to try
+  again.") appended to the fallback caption ONLY on play() rejections
+  without a resource error (a load "error" event sets `loadErrorRef`, which
+  suppresses the hint — retrying a 404 is futile). Never device-shames.
+- New pure module `src/components/storyteller-audio-guards.ts`
+  (`decideFirstGesture`, `resolvePlayAbort`, `shouldReplayGreeting`,
+  `fallbackLine`) — same extract-for-testability pattern as
+  `decideHomeMode`; used by both components.
+
+## Tests (each fix has FAIL-pre/PASS-post in this commit)
+- Unit: `src/components/storyteller-audio-guards.test.ts` — 20 tests
+  (registered in package.json `npm test` script).
+- E2E `tests/e2e/storyteller-silence-hang.desktop.spec.ts` — hanging mp3 →
+  play() never settles → 4s watchdog → fallback WITH retry hint.
+  FAIL-pre verified on pre-fix build (fallback never appears).
+- E2E `tests/e2e/storyteller-silence-replay.mobile.spec.ts` — aborted mp3 →
+  plain fallback (no hint on network error) → figure tap → new mp3 request
+  (replay) instead of a poke line. FAIL-pre verified on pre-fix build
+  (no second request).
+
+## Gates (final head)
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm test` — 1110/1110 pass (node --test)
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — green
+- [x] New e2e: hang 1/1, replay 1/1 (built artifact)
+- [x] `storyteller.spec.ts` 6/6 (incl. "replay replays the line" 8/8
+  consecutive after the stall-anchoring fix)
+- [x] Reduced-motion safe (watchdogs are timers, motion-independent);
+  COPPA-safe (no new network calls, no new storage keys)
+
+## Known pre-existing failures (NOT caused by this branch)
+- `storyteller-tapstart.desktop.spec.ts` — 5 failures (T1, R1, 3 matrix
+  tests): they assert the figure on the RESULT CARD, but PR #127 made the
+  figure banner-only (`showFigure={false}`) — the testid doesn't exist on
+  cards. Identical 5 failures on an independent checkout without this
+  branch's changes (other agent's /tmp/verify-kofi run). Orphaned tests
+  from #127, need migration to the banner.
+- Intermittent infra: Chromium SIGTRAP on launch (2x, transient), e2e lock
+  contention with other agents' suites (expected — flock serializes).
+
+## Behavior changes the scrum should scrutinize
+1. Card one-shot no longer consumed while muted: EVERY tap while muted
+   re-checks sound state (cheap) — and unmuting later lets the STILL-ARMED
+   listener fire narration on the next gesture. The banner already behaved
+   this way (panel BLOCK 5); the card now matches.
+2. The stall watchdog can pause a genuinely-playing element if the media
+   clock freezes >3s post-`playing` — under extreme renderer starvation
+   this could false-positive, but the user hears nothing in that case, so
+   text-only is the honest state. Watch the 3s/4s constants in the wild.
+3. `handleFigureToggle`'s paused→`play()` resume path (card) is NOT covered
+   by the watchdog — a hung resume could still strand "playing". Residual
+   edge, flagged for the test cell.
+4. New user-facing copy `STORYTELLER_RETRY_HINT` needs owner/panel copy
+   approval (same standing rule as SOUND_OFF_HINT).
+5. Banner `onFail` now calls `stopAudio()` (was missing) — also clears the
+   12s cap timer on failure; no behavior change beyond releasing the dead
+   element.

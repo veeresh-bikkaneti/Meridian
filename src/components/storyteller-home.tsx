@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { StorytellerMascot, isPlayAbort, useCelebrationActive, useTourActive } from "./storyteller";
-import { STORYTELLER_AUDIO_FALLBACK_LINE } from "./storyteller-lines";
+import { fallbackLine, shouldReplayGreeting } from "./storyteller-audio-guards";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import {
   GREETINGS,
@@ -227,6 +227,22 @@ export default function StorytellerHomeHost({
   const returnLineDismissedRef = useRef(false);
   const assetsRef = useRef(assets);
   assetsRef.current = assets;
+  // Fix D — greeting replay bookkeeping. The poke path used to trap a
+  // failed/missed/silent greeting behind text-only lines; a figure tap now
+  // replays the greeting when it was attempted but never heard.
+  const greetingHeardRef = useRef(false);
+  const greetAttemptedRef = useRef(false);
+  const greetDismissedByUserRef = useRef(false);
+  // Fix D — tour gate for the window gesture one-shot. Updated
+  // synchronously on the tour's window events, so a tap that lands between
+  // the tour's dispatch and React's re-render can't burn the greeting.
+  const tourActiveRef = useRef(false);
+  // Fix E: set when the banner greeting failed on a play() rejection
+  // (not a network error) so the fallback can offer the retry affordance.
+  const greetPlayRejectedRef = useRef(false);
+  // A resource "error" event means the clip itself failed to load — the
+  // play() promise rejects then too, but retrying is futile, so no hint.
+  const greetLoadErrorRef = useRef(false);
 
   const greetIndex = useRef(greetingIndexForDate()).current;
   const greetingText = GREETINGS[greetIndex] ?? GREETINGS[0]!;
@@ -304,6 +320,25 @@ export default function StorytellerHomeHost({
   // ---- Tutorial invite: greeting waits for its dismissal ----------------
   // (moved below beginGreetingAudio: the dismiss tap counts as the first
   // gesture, so this effect calls it directly)
+
+  // ---- Tour-active ref (Fix D) ------------------------------------------------
+  // Synchronous mirror of the tour walk state for the gesture handler —
+  // React state can lag the tour's dispatch by a render, and a tap in that
+  // gap must not consume the greeting one-shot.
+  useEffect(() => {
+    const onStart = () => {
+      tourActiveRef.current = true;
+    };
+    const onEnd = () => {
+      tourActiveRef.current = false;
+    };
+    window.addEventListener("meridian:tour-walk-start", onStart);
+    window.addEventListener("meridian:tour-walk-end", onEnd);
+    return () => {
+      window.removeEventListener("meridian:tour-walk-start", onStart);
+      window.removeEventListener("meridian:tour-walk-end", onEnd);
+    };
+  }, []);
 
   // ---- Yield: tour / celebration own the screen -------------------------
   // A tour-walk-end after a yield arms the post-tour return line (copy G2).
@@ -420,6 +455,12 @@ export default function StorytellerHomeHost({
     const url = assetsRef.current.greetAudio;
     if (!url || !isSoundEnabled()) return;
     stopAudio();
+    // Fix D: a new attempt resets the replay bookkeeping.
+    greetAttemptedRef.current = true;
+    greetingHeardRef.current = false;
+    greetDismissedByUserRef.current = false;
+    greetPlayRejectedRef.current = false;
+    greetLoadErrorRef.current = false;
     const audio = new Audio(url);
     audioRef.current = audio;
     audioStartTimeRef.current = Date.now();
@@ -432,16 +473,37 @@ export default function StorytellerHomeHost({
       showBubble(greetingText, POST_AUDIO_HOLD_MS);
       window.setTimeout(() => setPhase("idle_linger"), POST_AUDIO_HOLD_MS);
     };
-    const onEnded = () => finish();
+    const onEnded = () => {
+      greetingHeardRef.current = true;
+      finish();
+    };
+    // Fix D: the greeting counts as heard once its clock audibly advances —
+    // "ended" alone misses the case where audio started then died silently.
+    const onTimeUpdate = () => {
+      if (audio.currentTime > 0.5) greetingHeardRef.current = true;
+    };
     const onFail = () => {
       // Audio unavailable — degrade to silent text-only, never device-shame.
       // (showBubble clears the failure flag, so set it after.)
+      // Release the dead element: a stale audioRef would make later figure
+      // taps think audio is still in flight (Fix D replay guard).
+      stopAudio();
       showBubble(greetingText, TEXT_BUBBLE_MS);
       setAudioFailed(true);
       setPhase("idle_linger");
     };
     audio.addEventListener("ended", onEnded, { once: true });
-    audio.addEventListener("error", onFail, { once: true });
+    audio.addEventListener(
+      "error",
+      () => {
+        // The clip failed to load — the play() promise rejects too, but
+        // this is a network failure, not a playback stall (Fix E).
+        greetLoadErrorRef.current = true;
+        onFail();
+      },
+      { once: true },
+    );
+    audio.addEventListener("timeupdate", onTimeUpdate);
     // Track pause state so the figure label can show "Resume the greeting".
     const onPause = () => setGreetingPaused(true);
     const onPlay = () => setGreetingPaused(false);
@@ -471,6 +533,9 @@ export default function StorytellerHomeHost({
         // A play() aborted by our own pause() is the pause working, not a
         // failure — don't kill the greeting window.
         if (isPlayAbort(err)) return;
+        // No resource error: the clip is fine but playback never started
+        // (autoplay policy / stall) — retrying may help (Fix E).
+        if (!greetLoadErrorRef.current) greetPlayRejectedRef.current = true;
         onFail();
       });
   }, [greetingText, showBubble, stopAudio]);
@@ -524,6 +589,11 @@ export default function StorytellerHomeHost({
     if (!assets.greetAudio) return; // text-only greeting, nothing to wait for
     const onGesture = () => {
       if (gestureDoneRef.current) return;
+      // Fix D: a tap that lands while the tour owns the screen must not
+      // burn the greeting one-shot. Checked on the ref — the `yielded`
+      // closure below can be stale between the tour's dispatch and React's
+      // re-render.
+      if (tourActiveRef.current) return;
       if (!isSoundEnabled()) {
         // Panel 2026-10-09 (BLOCK 5, round 2): a muted tap must NOT consume
         // the one-shot — otherwise the hint below promises narration ("tap
@@ -574,6 +644,9 @@ export default function StorytellerHomeHost({
     (viaKeyboard: boolean) => {
       stopAudio();
       hideBubble();
+      // Fix D: a greeting the kid explicitly dismissed stays dismissed — a
+      // later figure tap pokes, it must not resurrect killed audio.
+      if (phase === "greeting_audio") greetDismissedByUserRef.current = true;
       // Panel 2026-10-09 (BLOCK 3): dismissing the text-only return line is
       // not a dead end (owner ruling #1, 2026-10-09) — flag it so the
       // tour-return follow-up effect still runs the greeting afterward.
@@ -602,6 +675,30 @@ export default function StorytellerHomeHost({
       pokeVisual();
       return;
     }
+    // The window one-shot may have started the greeting on this tap's way
+    // down (pointerdown precedes click, and phase hasn't re-rendered yet) —
+    // don't poke over it, and don't double-start it.
+    if (audio) return;
+    // Fix D — narration-silence recovery: a greeting that was attempted
+    // but never heard must be replayable. The figure tap replays it
+    // instead of rotating a text-only poke line that would trap the
+    // silence. A greeting the kid explicitly dismissed is excluded —
+    // quiet means quiet.
+    if (
+      shouldReplayGreeting({
+        mode,
+        started: startedRef.current,
+        attempted: greetAttemptedRef.current,
+        heard: greetingHeardRef.current,
+        dismissedByUser: greetDismissedByUserRef.current,
+        oneShotConsumed: gestureDoneRef.current,
+        greetAudioAvailable: assetsRef.current.greetAudio !== null,
+        soundOn: isSoundEnabled(),
+      })
+    ) {
+      beginGreetingAudio();
+      return;
+    }
     const now = Date.now();
     // Poke lines rotate (5 max, then repeat); taps <600ms apart are ignored.
     if (now - lastPokeRef.current < POKE_DEBOUNCE_MS) return;
@@ -610,7 +707,7 @@ export default function StorytellerHomeHost({
     pokeIndexRef.current += 1;
     showBubble(line, POKE_BUBBLE_MS);
     pokeVisual();
-  }, [phase, showBubble, pokeVisual]);
+  }, [mode, phase, showBubble, pokeVisual, beginGreetingAudio]);
 
   // ---- Loop send-off (copy G3) ----------------------------------------------
   useEffect(() => {
@@ -657,6 +754,14 @@ export default function StorytellerHomeHost({
     (poked ? " is-poked" : "") +
     (yielded && yielding ? " is-yielding" : "");
 
+  // Fix E: a play() rejection (clip exists, playback never started — the
+  // silent symptom) appends the one-time retry affordance; network errors
+  // keep the plain fallback. Never device-shames.
+  const homeFailedLine = fallbackLine({
+    failed: audioFailed,
+    playRejected: greetPlayRejectedRef.current,
+  });
+
   return (
     <div
       className={bannerClassName}
@@ -696,12 +801,12 @@ export default function StorytellerHomeHost({
           >
             {bubble}
           </p>
-          {audioFailed ? (
+          {homeFailedLine ? (
             <span
               className="storyteller-fallback"
               data-testid="storyteller-home-fallback"
             >
-              {STORYTELLER_AUDIO_FALLBACK_LINE}
+              {homeFailedLine}
             </span>
           ) : null}
           <button

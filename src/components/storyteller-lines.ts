@@ -49,6 +49,14 @@ export const STORYTELLER_LINES: Record<StorytellerLineKey, StorytellerLine> = {
 export const STORYTELLER_AUDIO_FALLBACK_LINE =
   "The words are right here — read along with me.";
 
+/**
+ * One-time retry affordance appended to the fallback line when the failure
+ * was a play() rejection (i.e. the clip exists but playback never started
+ * — the silent-narration symptom) rather than a network error. Never
+ * device-shames; the speaker/replay buttons are the retry path.
+ */
+export const STORYTELLER_RETRY_HINT = "Tap the speaker to try again.";
+
 /** Safe import.meta.env read (undefined under node --test — same seam as pwa.ts's viteEnv). */
 function assetBase(): string {
   const env = (import.meta as unknown as { env?: { BASE_URL?: string } }).env;
