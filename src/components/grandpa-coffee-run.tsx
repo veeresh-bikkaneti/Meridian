@@ -1146,26 +1146,6 @@ export function GrandpaCoffeeRun() {
       matchMedia("(prefers-reduced-motion: reduce)").matches,
   ).current;
   const [isMobile] = useState(isMobileViewport);
-  // Mobile seated: dock/float the Ko-fi cloud. When grandpa's strip is
-  // off-screen the cloud floats pinned to the viewport bottom (owner
-  // 2026-10-10: the user can always see and tap the cloud — no
-  // 3-screens-below-the-fold placement). When the strip scrolls into view
-  // the cloud docks back above the walker so it never covers him. Tour and
-  // strip modes ignore the pin and stay in-flow at the strip: the
-  // mobile-home-overlap spec's phase-2 invariant forbids a viewport-pinned
-  // cloud while the tour auto-scrolls across the cards.
-  const [cloudPin, setCloudPin] = useState<"floating" | "docked">("floating");
-  useEffect(() => {
-    if (!isMobile) return;
-    const walker = walkerRef.current;
-    if (!walker || typeof IntersectionObserver === "undefined") return;
-    const io = new IntersectionObserver(
-      ([entry]) => setCloudPin(entry.isIntersecting ? "docked" : "floating"),
-      { threshold: 0 },
-    );
-    io.observe(walker);
-    return () => io.disconnect();
-  }, [isMobile]);
   const [mode, setMode] = useState<StripMode>(() => {
     if (
       typeof matchMedia !== "undefined" &&
@@ -1276,8 +1256,7 @@ export function GrandpaCoffeeRun() {
       }
       setTour({ stage: "walk", geometry: geo, origin: geo.origin });
       // The tour takes focus: dismiss Comet's transient greeting so the
-      // fixed bubble can't end up covering a CTA once the walk's
-      // auto-scroll moves the page beneath it.
+      // tour's auto-scroll starts from a clean state.
       window.dispatchEvent(new Event("meridian:tour-walk-start"));
     })();
     return () => {
@@ -1287,7 +1266,7 @@ export function GrandpaCoffeeRun() {
   }, [mode]);
 
   // The handoff: tour walker arrives at the bench → the strip takes over the
-  // finale (seated grandpa, fading trail, session-gated cloud).
+  // finale (seated grandpa, fading trail, persistent cloud).
   const onTourHandoff = useCallback(() => {
     setTour((t) => (t ? { ...t, stage: "settled" } : t));
     setMode("seated");
@@ -1477,7 +1456,6 @@ export function GrandpaCoffeeRun() {
         data-beat={beat}
         data-reduced-motion={reducedMotion ? "true" : "false"}
         data-mode={mode}
-        data-cloud-pin={cloudPin}
         data-tour={mode === "tour" ? "active" : undefined}
       >
         {/* Dotted treasure-map trail unrolling beneath his feet. */}

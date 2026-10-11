@@ -240,3 +240,61 @@ Visual ✓ (QA) · Workflow ✓ (QA) · Regression ✓ (QA) · Unit+functional �
 (QA/Eng) · Security ✓ (Security) · Squad cross-check ✓ (coordinator:
 Design's morph-aesthetic concern checked against Eng's MapLibre-source
 verification and QA's screenshots). Nothing skipped.
+
+---
+
+# BRANCH_STATUS — fix/kofi-cloud-thought-bubble
+
+Branch: `fix/kofi-cloud-thought-bubble` · Base: origin/main @ 51ed7f5 · Created: 2026-10-11.
+**PUSH OK, DO NOT MERGE** — owner merges.
+
+## Owner ruling (2026-10-11 ~07:00 CDT, with phone screenshot)
+PR #126's IntersectionObserver pinned the Ko-fi cloud `position:fixed`
+bottom-right whenever grandpa's strip was off-screen — the owner saw it
+floating over the GeoDetective card at the top of the page. Ruling: the
+cloud is grandpa's thought bubble; it must stick close to grandpa (right
+at his coffee-mug cheers pose), never float around the page.
+
+## Fix
+- `src/components/grandpa-coffee-run.tsx` — deleted the `cloudPin` state,
+  the IntersectionObserver `useEffect`, the dock/float comment block, and
+  the `data-cloud-pin` attribute on `.grandpa-scene`. Kept everything
+  else: `showCloud` persistent fixture, the in-flow bubble, tap → grown-up
+  gate → Ko-fi flow, `walkerInteractive`, ≥44px tap target, keyboard
+  handlers, reduced-motion handling.
+- `src/components/grandpa-coffee-run.css` — deleted the "Floating thought"
+  block (the `position: fixed` rule gated on `data-cloud-pin="floating"`)
+  and the reduced-motion rule referencing `data-cloud-pin="floating"`
+  (its empty media query removed too). The cloud is NEVER `position:fixed`
+  now. The in-flow bubble is unchanged: mobile anchors above grandpa
+  (`bottom: calc(100% + 28px); right: -8px`) with the tail pointing down
+  at his center (`::after { right: 40px; }`); desktop base rule
+  (`bottom: calc(100% + 36px); left: 50%`) untouched.
+- `tests/e2e/kofi-persistent-cloud.mobile.spec.ts` — rewrote to the new
+  contract: deleted the float/dock test; new test "no floating cloud at
+  page top; thought bubble next to grandpa at the strip" asserts (1) at
+  page top the bubble does NOT intersect the 390×844 viewport and is never
+  `fixed`, (2) after scrolling grandpa into view the bubble is in the
+  viewport, above the walker, still not `fixed`, (3) tap → gate → Continue
+  (window.open stubbed) opens the Ko-fi URL and the cloud reverts to the
+  ask, (4) scroll back to top → no cloud in viewport, still not `fixed`.
+  The return-visit test now scrolls the walker into view before asserting
+  the cloud is visible. All `data-cloud-pin` assertions removed; gate tap,
+  Cancel/Esc, and fail-closed tests otherwise untouched. Grep confirms zero
+  `cloud-pin`/`cloudPin` references remain anywhere in the repo.
+- `SPEC_CHECKLIST.md` — plain-language checklist for this fix.
+
+## Gates (final head)
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm test` — 1090/1090 pass (node --test, no vitest)
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- Playwright E2E + build:pages left to the verifier cell (per task).
+
+## Verification (2026-10-11, verifier cell, clean worktree @ b722b3a)
+- Build: branch dist with VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy; no-URL dist for fail-closed; origin/main dist for baselines.
+- Black-box 20/20: page top → no cloud, position=absolute; strip → bubble above walker; tap → gate → Continue → Ko-fi _blank/noopener → revert; Cancel/Esc revert; return visit (legacy flag ignored). Negative control: same checks FAIL on main (cloud pinned fixed) — proving the tests discriminate.
+- Playwright: kofi-persistent-cloud 7/7, kofi-tour-cloud 6/6, storyteller-home.mobile 25/25, grandpa-coffee-run.mobile 3/3, desktop cloud 7/7. Remaining failures reproduced on origin/main dist — pre-existing (comet testids, atlas-dossier spec drift, offline slack, tour timing flake). Zero regressions.
+- Visual diffs vs main: mobile-top 3.048% = floating cloud gone (visually confirmed); mobile-strip 0.004%, mobile-gate 0.013%, desktop 0.001–0.084% (AA noise).
+- Red-team 17/17: tap-storm, scroll-storm, tour mode, reduced-motion, 390×500 viewport, offline round-trip, keyboard-only.
+- Screen recordings (new hard rule): ~/workspace/your_files/meridian-kofi-thought-bubble-mobile.webm (390×844, 15.1s) + meridian-kofi-thought-bubble-desktop.webm (1280×900, 20.6s) — real browser sessions.
+- Follow-up commit dd003f3: removed two stale comments ("fixed bubble", "session-gated cloud"); tsc clean, lint-cards GATE PASSED re-run.
