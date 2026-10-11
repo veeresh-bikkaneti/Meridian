@@ -286,11 +286,28 @@ async function commitHitAt(
   width: number,
 ): Promise<void> {
   const tapX = Math.round(width * 0.72);
-  for (let attempt = 0; attempt < 10; attempt++) {
-    const spot = await spotViewportPoint(page);
-    const inView =
-      spot && spot.x >= 0 && spot.x <= width && spot.y >= 0 && spot.y <= 900;
-    if (inView && (await tapHitsMap(page, spot.x, spot.y))) {
+  for (let attempt = 0; attempt < 15; attempt++) {
+    // Let the globe settle: a mid-dive spot projection is stale and the
+    // tap lands on chrome. Two reads 600ms apart must agree within 3px.
+    let spot: { x: number; y: number } | null = null;
+    for (let s = 0; s < 6; s++) {
+      const a = await spotViewportPoint(page);
+      await page.waitForTimeout(600);
+      const b = await spotViewportPoint(page);
+      if (
+        a &&
+        b &&
+        Math.hypot(a.x - b.x, a.y - b.y) < 3 &&
+        a.x >= 0 &&
+        a.x <= width &&
+        a.y >= 0 &&
+        a.y <= 900
+      ) {
+        spot = { x: Math.round(a.x), y: Math.round(a.y) };
+        break;
+      }
+    }
+    if (spot && (await tapHitsMap(page, spot.x, spot.y))) {
       const { phase } = await commitPin(page, spot.x, spot.y);
       if (phase === "story") return;
       // Tapped the projected spot but missed: far side of the globe.
@@ -301,7 +318,7 @@ async function commitHitAt(
     await clickNextPlace(page);
     await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
   }
-  throw new Error("commitHitAt: no hittable spot in 10 places");
+  throw new Error("commitHitAt: no hittable spot in 15 places");
 }
 
 async function setupVariant(
