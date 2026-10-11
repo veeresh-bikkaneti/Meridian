@@ -30,25 +30,39 @@ Owner order 2026-10-11 ~07:00 CDT: wire @formkit/auto-animate into the game
   button), edition cards (static + tour-stop territory), LoopMap canvas,
   clue reveals (already animated via Rise). Open motion rulings (idle
   sway, theatrical 5–7s) untouched.
-- Tests: 13 new, all runtime-path (react-test-renderer + injected fake
+- Tests: 14 new, all runtime-path (react-test-renderer + injected fake
   animator + recording module stub; createNodeMock keyed by testid):
-  `src/hooks/use-auto-animate.test.ts` (8), `src/game/loop/guess-input-animate.test.ts`
+  `src/hooks/use-auto-animate.test.ts` (9, incl. RC2 options-stability),
+  `src/game/loop/guess-input-animate.test.ts`
   (2: real focus→type→debounce→dropdown path), `src/game/loop/loop-screen-animate.test.ts`
   (3: real deal→tap→sheet→confirm→guess-row path; reduced-motion content
   still usable with zero animation calls). Registered in `npm test`.
 - Dev deps added: `react-test-renderer`, `@types/react-test-renderer`.
 - SPEC_CHECKLIST.md — plain-language owner checklist.
+- Scrum review DONE 2026-10-11: APPROVE WITH REQUIRED CHANGES; both RCs
+  landed (fb04a2d feature+pin, ac91359 options-stability).
 
 ## Gates (final head)
 
 - [x] `npx tsc --noEmit` — clean
-- [x] `npm test` — 1103 pass, 0 fail (13 new)
+- [x] `npm test` — 1104 pass, 0 fail (14 new)
 - [x] `npx eslint` on changed files — 0 errors (3 pre-existing warnings)
 - [x] `node scripts/lint-cards.mjs` — GATE PASSED
 - [x] `npm run build:pages` — green
 
+## Verification (verification cell, 2026-10-11)
+
+- [x] Black-box journeys (WAAPI assertions): typing glides rows in,
+      guess submit animates row in, case close animates reveal in.
+- [x] Reduced-motion journey: zero animations, fully usable.
+- [x] Visual regression 390px+1280px vs main: no unintended diffs.
+- [x] Red-team 6/6: typing storm, submit storm, mid-animation reload,
+      reduced-motion flip, tall viewport, offline.
+- [x] Screen recordings (motion-on + reduced) captured.
+- [x] Existing GeoDetective E2E: 21/22 (1 contention-only flake, not a bug).
+- [x] React #418 hydration + tunnel failures confirmed pre-existing on main.
+
 ## Pending (not mine)
 
-- Scrum panel review + independent reviewer verdict (per constitution).
-- Owner merge decision — PR not opened by this cell.
-- Playwright visual/E2E + 390px device check of the new transitions (scrum stage).
+- Independent reviewer verdict (Chitti/owner's panel) — per constitution.
+- Owner merge decision — PR opened by verification cell, never merged by it.

@@ -71,7 +71,8 @@ animated, what was deliberately left alone, and the guarantees.
 ## Verification
 
 - [x] `npx tsc --noEmit` — clean.
-- [x] `npm test` — full suite green (1103+ tests, incl. 13 new).
+- [x] `npm test` — full suite green (1104 tests, 79 suites, incl. 14 new
+      runtime-path tests for the hook + GeoDetective wiring).
 - [x] `npx eslint` on changed files — 0 errors (3 pre-existing warnings,
       unchanged from main).
 - [x] `node scripts/lint-cards.mjs` — GATE PASSED.
@@ -84,3 +85,27 @@ animated, what was deliberately left alone, and the guarantees.
       type → debounce → dropdown) and assert the animator engaged the exact
       container — and that under reduced motion everything still renders
       and works with zero animation calls.
+- [x] **Black-box journeys on the built app** (real Chromium, WAAPI
+      assertions, not DOM): typing glides suggestion rows in; submitting a
+      guess animates the new row in; closing a case animates the reveal
+      card in. All assert `document.getAnimations()` actually played.
+- [x] **Reduced-motion journey**: with `prefers-reduced-motion: reduce`
+      emulated, ZERO animations run and everything is fully usable (type,
+      pick, submit, read clues).
+- [x] **Visual regression** (390px + 1280px vs main baselines): 5/5 mobile
+      screenshots byte-identical; desktop differs only in live map-canvas
+      pixels (masked chrome diff = 0). No layout shifts, no overlaps.
+- [x] **Red-team pass** (6 scenarios, all green): rapid typing storm,
+      3-guess submit storm, mid-animation reload (state intact, guess
+      persisted), reduced-motion flip mid-animation, 390×1400 tall
+      viewport (no overlaps), offline (content works, zero network).
+- [x] **Screen recordings** (owner's law): motion-on journey and
+      reduced-motion journey captured as video — see PR.
+- [x] Existing GeoDetective E2E on the rebuilt dist: 21/22 pass. The one
+      failure (win-path dialog linger) reproduced only under concurrent
+      `vite build` CPU contention and is a test-harness timing artifact,
+      not a product bug (exit zombie is invisible/non-interactive, clears
+      in <1s uncontended; 20+ clean runs).
+- [x] Pre-existing issues confirmed on main (not caused by this branch):
+      React #418 hydration on the `?loop-puzzle` seam, and
+      ERR_TUNNEL_CONNECTION_FAILED from the VM egress proxy.
