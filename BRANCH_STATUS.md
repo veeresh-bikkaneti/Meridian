@@ -362,3 +362,10 @@ US-country+state → mi; NaN/Infinity → "—".
 - `~/workspace/your_files/meridian-distance-units/journey-b-france-km.webm`
 Recording script: `scripts/record-distance-units.mjs` (Playwright video,
 390×844, tap-point flash so the pin drop is visible).
+
+### PR
+- [x] PR #138 opened (NEVER merged — owner's decision): https://github.com/veeresh-bikkaneti/Meridian/pull/138
+- Body carries the plain-language summary, verification evidence, recording
+  paths, and closes with "Ready to merge? NO" + "What is pending:" (owner
+  watches recordings → green light → Chitti/owner's panel independent review
+  → owner's merge decision).
