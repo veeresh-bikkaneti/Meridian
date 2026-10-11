@@ -13,7 +13,7 @@ import { useEffect, useRef, useState } from "react";
  * `role="region"` + an accessible name so keyboard users can reach and
  * scroll it (spec §8.1); the cue is only the visual hint.
  */
-import { BoundedText } from "@/components/bounded-text";
+import { BoundedText } from "./bounded-text";
 
 export function useMoreBelow<T extends HTMLElement>(): {
   ref: React.RefObject<T | null>;

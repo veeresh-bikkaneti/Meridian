@@ -2,7 +2,7 @@ import { initialBearing, windName8 } from "@/game/geo";
 import { formatLength, scoreGradeBand, unitForEdition } from "@/game/units";
 import { nameTier } from "@/game/place-name";
 import { PlaceNameText } from "@/components/place-name";
-import { BoundedText } from "@/components/bounded-text";
+import { BoundedText } from "./bounded-text";
 import { GradeChip } from "@/components/grade-chip";
 import { difficultyChip } from "@/game/scoring";
 import { bubbleHeaderText } from "@/game/question-label";

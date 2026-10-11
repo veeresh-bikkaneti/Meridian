@@ -22,7 +22,7 @@ import {
   type StorytellerLineKey,
 } from "./storyteller-lines";
 import { GrandpaMascot } from "./grandpa-mascot";
-import { BoundedText } from "@/components/bounded-text";
+import { BoundedText } from "./bounded-text";
 import "./storyteller-mascot.css";
 
 // Storyteller narration — the old Greek storyteller's voice.
