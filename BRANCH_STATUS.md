@@ -53,6 +53,45 @@ overwrite.
 - `node scripts/lint-cards.mjs` — GATE PASSED
 - `VITE_KOFI_URL="https://ko-fi.com/thesaltandpepperguy" npm run build:pages` — green
 
+## Blocker fix — Ko-fi cloud viewport on mobile (2026-10-10 ~22:30 CDT)
+
+The PR verdict was NOT READY on one blocker: the persistent Ko-fi cloud
+sat at y≈2778 in a ~3000px document on 390px mobile (~3 screens below the
+fold). The red test
+`tests/e2e/kofi-persistent-cloud.mobile.spec.ts` → "cloud is visible on a
+return visit, inside the viewport" is now green.
+
+Approach ("floating thought" — design cell decision): on mobile in seated
+mode only, an IntersectionObserver on the walker toggles
+`data-cloud-pin` on the scene. Strip off-screen → `floating`: the cloud is
+`position: fixed`, bottom-right with safe-area clearance — always visible
+and tappable (owner's hard constraint). Strip scrolled into view →
+`docked`: the cloud renders in-flow above the walker, so it never covers
+grandpa and the classic composition holds. Tour/strip modes ignore the pin
+and stay in-flow at the strip: `mobile-home-overlap`'s phase-2 invariant
+(zero viewport-relative overlap between the cloud and edition cards while
+the tour auto-scrolls) forbids a pinned cloud during the tour. Desktop is
+pixel-identical (all new CSS under `@media (max-width: 1023.5px)`; verified
+by pixel-diff). The tail is unchanged (points down): floating it points
+down the page toward grandpa's camp, docked at grandpa himself.
+
+Files: `src/components/grandpa-coffee-run.tsx` (observer + `data-cloud-pin`),
+`src/components/grandpa-coffee-run.css` (floating rule + reduced-motion
+override), `tests/e2e/kofi-persistent-cloud.mobile.spec.ts` (new dock/float
+runtime-path test).
+
+Verification: RED spec 4 consecutive green runs (6/6 each, 1 skip by
+design) + the no-URL fail-closed test green; kofi-tour-cloud 6/6;
+storyteller mobile 22/22, desktop 13/13, storyteller project 6/6;
+unit 1089/1089; tsc clean; lint-cards GATE PASSED; build:pages green.
+`mobile-home-overlap` has 20 pre-existing failures on this branch (Comet
+banner-host staleness, Cold Trail `.atlas-dossier` strict-mode, 324px
+below-main slack) — verified identical on the pre-fix build, zero caused
+by this change. Known residual: at scroll-top the floating cloud sits over
+the GeoDetective card's empty bottom-right padding and the Cold Trail
+card's top header — no CTA, figure, banner, or Skip is covered; inherent
+to any always-visible HUD on a full-bleed viewport.
+
 ## Pending
 
 - Independent review (Chitti/owner panel) — scrum verdict is the entry

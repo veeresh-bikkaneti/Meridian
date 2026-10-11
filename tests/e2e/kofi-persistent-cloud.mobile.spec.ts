@@ -137,6 +137,75 @@ test("cloud is visible on a return visit, inside the viewport", async ({
   expectCleanConsole(errors);
 });
 
+test("cloud floats when the strip is off-screen, docks above grandpa at the strip", async ({
+  page,
+}) => {
+  test.skip(
+    NO_KOFI_DIST,
+    "needs the URL-bearing build",
+  );
+  await seedReturnVisit(page);
+  const errors = await loadHome(page);
+  const scene = page.getByTestId("grandpa-scene");
+  await expect(scene).toHaveAttribute("data-beat", "seated", {
+    timeout: 10_000,
+  });
+  const bubble = page.getByTestId("grandpa-donation-bubble");
+
+  // Strip off-screen (top of the page): the cloud floats pinned to the
+  // viewport bottom — the owner's "always see and tap" placement.
+  await expect(scene).toHaveAttribute("data-cloud-pin", "floating", {
+    timeout: 10_000,
+  });
+  await expect
+    .poll(
+      async () => bubble.evaluate((el) => getComputedStyle(el).position),
+      { timeout: 10_000 },
+    )
+    .toBe("fixed");
+  await expectCloudInViewport(page, "floating at scroll top");
+
+  // Scroll grandpa's strip into view: the cloud docks back above the
+  // walker instead of floating over him.
+  await page.getByTestId("grandpa-walker").scrollIntoViewIfNeeded();
+  await expect(scene).toHaveAttribute("data-cloud-pin", "docked", {
+    timeout: 10_000,
+  });
+  await expect
+    .poll(
+      async () => bubble.evaluate((el) => getComputedStyle(el).position),
+      { timeout: 10_000 },
+    )
+    .not.toBe("fixed");
+  const boxes = await page.evaluate(() => {
+    const b = document
+      .querySelector('[data-testid="grandpa-donation-bubble"]')!
+      .getBoundingClientRect();
+    const w = document
+      .querySelector('[data-testid="grandpa-walker"]')!
+      .getBoundingClientRect();
+    return { bubbleBottom: b.bottom, walkerTop: w.top };
+  });
+  expect(
+    boxes.bubbleBottom,
+    "docked cloud sits above the walker, never over him",
+  ).toBeLessThan(boxes.walkerTop);
+
+  // Scroll back up: the cloud floats again.
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect(scene).toHaveAttribute("data-cloud-pin", "floating", {
+    timeout: 10_000,
+  });
+  await expect
+    .poll(
+      async () => bubble.evaluate((el) => getComputedStyle(el).position),
+      { timeout: 10_000 },
+    )
+    .toBe("fixed");
+  await expectCloudInViewport(page, "floating again after scrolling up");
+  expectCleanConsole(errors);
+});
+
 test("return-visit tap on the cloud opens the gate in-cloud", async ({
   page,
 }) => {
