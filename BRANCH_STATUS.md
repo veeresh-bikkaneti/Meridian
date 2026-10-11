@@ -289,3 +289,12 @@ at his coffee-mug cheers pose), never float around the page.
 - [x] `npm test` — 1090/1090 pass (node --test, no vitest)
 - [x] `node scripts/lint-cards.mjs` — GATE PASSED
 - Playwright E2E + build:pages left to the verifier cell (per task).
+
+## Verification (2026-10-11, verifier cell, clean worktree @ b722b3a)
+- Build: branch dist with VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy; no-URL dist for fail-closed; origin/main dist for baselines.
+- Black-box 20/20: page top → no cloud, position=absolute; strip → bubble above walker; tap → gate → Continue → Ko-fi _blank/noopener → revert; Cancel/Esc revert; return visit (legacy flag ignored). Negative control: same checks FAIL on main (cloud pinned fixed) — proving the tests discriminate.
+- Playwright: kofi-persistent-cloud 7/7, kofi-tour-cloud 6/6, storyteller-home.mobile 25/25, grandpa-coffee-run.mobile 3/3, desktop cloud 7/7. Remaining failures reproduced on origin/main dist — pre-existing (comet testids, atlas-dossier spec drift, offline slack, tour timing flake). Zero regressions.
+- Visual diffs vs main: mobile-top 3.048% = floating cloud gone (visually confirmed); mobile-strip 0.004%, mobile-gate 0.013%, desktop 0.001–0.084% (AA noise).
+- Red-team 17/17: tap-storm, scroll-storm, tour mode, reduced-motion, 390×500 viewport, offline round-trip, keyboard-only.
+- Screen recordings (new hard rule): ~/workspace/your_files/meridian-kofi-thought-bubble-mobile.webm (390×844, 15.1s) + meridian-kofi-thought-bubble-desktop.webm (1280×900, 20.6s) — real browser sessions.
+- Follow-up commit dd003f3: removed two stale comments ("fixed bubble", "session-gated cloud"); tsc clean, lint-cards GATE PASSED re-run.
