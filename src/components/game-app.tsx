@@ -1,5 +1,6 @@
 import { BRAND } from "@/game/brand";
-import { distanceKm, formatDistance } from "@/game/geo";
+import { distanceKm } from "@/game/geo";
+import { formatLength, unitForEdition } from "@/game/units";
 import { isHit, radiusKm } from "@/game/radius";
 import { placesFor, poolSizeFor, storyForBand } from "@/game/generated-places";
 import { isNewBuildDeployed } from "@/game/build-staleness";
@@ -2948,6 +2949,8 @@ function PlayLoaded({
       radiusKm: review
         ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
         : pinToleranceKm(run.bandConfig?.band ?? ageBand, run.edition, greaterSideKm(boundsFor(run))),
+      // Same unit as the result headline — USA plays read miles (owner ruling 2026-10-11).
+      unit: unitForEdition(run.edition, run.regionId),
     };
   }, [drop, place, review, reviewEntry, run]);
 
@@ -3445,7 +3448,7 @@ function PlayLoaded({
         {run.phase === "aim"
           ? (aimAnnouncement ?? (place ? `Find ${questionLabel}.` : null))
           : run.phase === "story" && place && revealDone
-            ? `Pin dropped. ${drop ? formatDistance(drop.distanceKm) : "Hit"}. ${questionLabel}.${drop?.breakdown ? ` +${drop.breakdown.score} points.` : ""}`
+            ? `Pin dropped. ${drop ? formatLength(drop.distanceKm, unitForEdition(run.edition, run.regionId)) : "Hit"}. ${questionLabel}.${drop?.breakdown ? ` +${drop.breakdown.score} points.` : ""}`
             : run.phase === "story" && place
               ? "Showing the answer."
               : run.phase === "summary" && summary
@@ -3453,7 +3456,7 @@ function PlayLoaded({
                     .map((b) => `${EDITION_LABELS[b.edition]} ${b.score.toLocaleString("en-US")}`)
                     .join(", ")}. Average ${summary.averagePerPlace} per place, best streak ${summary.bestStreak}.`
                 : place
-                  ? `Pin dropped.${drop ? ` ${formatDistance(drop.distanceKm)}.` : ""} ${questionLabel} missed.`
+                  ? `Pin dropped.${drop ? ` ${formatLength(drop.distanceKm, unitForEdition(run.edition, run.regionId))}.` : ""} ${questionLabel} missed.`
                   : `${run.regionName} finished.`}
       </p>
       {run.phase === "aim" && place ? (
@@ -3565,6 +3568,7 @@ function PlayLoaded({
         <TutorialOverlay
           beat={tutorial}
           distanceKm={drop?.distanceKm ?? null}
+          unit="km"
           hit={
             run.results.length > 0
               ? run.results[run.results.length - 1]!.hit

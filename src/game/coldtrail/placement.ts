@@ -1,5 +1,6 @@
-import { formatDistance, normalizeLon } from "../geo.ts";
-import type { TrailEvidenceMark, TrailEvidenceRing } from "../loop/LoopMap.tsx";
+import { normalizeLon } from "../geo.ts";
+import type { TrailEvidenceRing, TrailEvidenceMark } from "../loop/LoopMap.tsx";
+import { formatLength, unitForLoopTarget } from "../units.ts";
 import { ringPolygon } from "../loop/rings.ts";
 import { effectiveRadius } from "./engine.ts";
 import type { ColdTrailCase, ColdTrailProgress } from "./types.ts";
@@ -20,6 +21,13 @@ import type { ColdTrailCase, ColdTrailProgress } from "./types.ts";
  * The true anchor (sighting.cityLon/cityLat) is read NOWHERE in this
  * module. The case JSON bundle still ships anchor coords client-side
  * (accepted, documented: the mystery is UI-level, not cryptographic).
+ *
+ * The ONE sanctioned hideout read is the length-unit derivation
+ * (unitForLoopTarget): the hideout's coordinates collapse to a single
+ * mi/km choice for the ring labels — no coordinate is rendered, and the
+ * anti-leak tests still assert no returned coordinate equals the hideout.
+ * (Owner ruling 2026-10-11: a USA hideout's rings read miles, matching the
+ * ring-label unit rule for the GeoDetective mystery target.)
  *
  * Radius is public clue data (printed on the sighting card), so
  * effectiveRadius() reading sighting.radiusKm is not a leak. The informant
@@ -174,6 +182,9 @@ export function buildEvidenceOverlays(
   const rings: TrailEvidenceRing[] = [];
   const marks: TrailEvidenceMark[] = [];
   const locked: LockedRing[] = [];
+  // Ring-label unit from the hideout's territory: a USA case reads miles.
+  // (Sanctioned hideout read — see module doc; no coordinate is rendered.)
+  const unit = unitForLoopTarget([caseData.hideout.lon, caseData.hideout.lat]);
   caseData.sightings.forEach((s, i) => {
     const center = progress.ringCenters[i];
     if (!center) return;
@@ -183,7 +194,7 @@ export function buildEvidenceOverlays(
       lon: center.lon,
       lat: center.lat,
       radiusKm: radius,
-      label: formatDistance(radius),
+      label: formatLength(radius, unit),
     });
     // Witness dot at the PLAYER's locked center — never the anchor city.
     marks.push({ lon: center.lon, lat: center.lat, kind: "witness" });
@@ -198,7 +209,7 @@ export function buildEvidenceOverlays(
         lon: draft.lon,
         lat: draft.lat,
         radiusKm: radius,
-        label: `${formatDistance(radius)} · draft`,
+        label: `${formatLength(radius, unit)} · draft`,
         preview: true,
       });
     }

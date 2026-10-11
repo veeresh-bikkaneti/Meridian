@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type JSX } from "react";
 import { clampLat, normalizeLon } from "@/game/geo";
+import { formatLength, unitForLoopTarget } from "@/game/units";
 import { Button } from "@/components/ui/button";
 import { playConfirmGuess, playLose, playWin } from "@/game/audio/sfx";
 import { playCelebrationSound } from "@/game/audio/play-guards";
@@ -27,8 +28,8 @@ import type { ColdTrailStore } from "./types";
 
 /**
  * Cold Trail vertical slice: one case = 3 timestamped sightings → the player
- * places 3 radius rings → taps the interception guess → score reveal (km
- * from the true hideout).
+ * places 3 radius rings → taps the interception guess → score reveal (miss
+ * distance in the case's unit: miles for a USA hideout, km elsewhere).
  *
  * Placement mode (WS1 "Every Place Findable"): "📍 Place ring on map" arms
  * the map for a sighting (crosshair, no ring yet); the player's tap plants
@@ -114,6 +115,10 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   const ringsPlacedCount = progress.ringsPlaced.filter(Boolean).length;
   const allRingsPlaced = ringsPlacedCount === 3;
   const revealed = progress.revealed;
+  // Length unit for this case's ring labels, radius lines, and score:
+  // a USA hideout reads miles, the rest of the world reads kilometers
+  // (owner ruling 2026-10-11) — never device locale.
+  const hideoutUnit = unitForLoopTarget([caseData.hideout.lon, caseData.hideout.lat]);
 
   // Render inputs derived by the pure, unit-tested buildEvidenceOverlays:
   // locked rings + witness dots at PLAYER centers, draft ring as preview.
@@ -408,6 +413,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             key={s.id}
             sighting={s}
             index={i}
+            unit={hideoutUnit}
             ringPlaced={progress.ringsPlaced[i]!}
             informantOn={progress.informantOn[i]!}
             stars={store.stars}
@@ -446,6 +452,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             guesses={[]}
             target={{ lon: caseData.hideout.lon, lat: caseData.hideout.lat }}
             finished={revealed}
+            unit={hideoutUnit}
             freeTap
             onMapTap={onMapTap}
             evidenceRings={evidenceRings}
@@ -539,7 +546,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
           <p className="mt-1 text-muted">
             Your intercept missed by{" "}
             <strong className="text-fg">
-              {progress.scoreKm.toLocaleString("en-US")} km
+              {formatLength(progress.scoreKm, hideoutUnit)}
             </strong>
             . {verdict.line}
           </p>

@@ -41,6 +41,20 @@ export function unitForEdition(edition: Edition, regionId: string): LengthUnit {
 }
 
 /**
+ * Unit for an end-of-session summary card. The card mixes regions from
+ * every edition played, so it reads miles only when EVERY region maps to
+ * miles via unitForEdition — mixed or empty sessions fail closed to km.
+ */
+export function unitForSessionSummary(
+  regions: ReadonlyArray<{ edition: Edition; regionId: string }>,
+): LengthUnit {
+  if (regions.length === 0) return "km";
+  return regions.every((r) => unitForEdition(r.edition, r.regionId) === "mi")
+    ? "mi"
+    : "km";
+}
+
+/**
  * Unit for a GeoDetective mystery, from the target's territory. Fail
  * closed: an unresolvable territory (ocean-adjacent targets) reads km —
  * the edition default.

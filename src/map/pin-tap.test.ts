@@ -46,13 +46,20 @@ test("a far or slow tap is a plain tap", () => {
 });
 
 test("the variation is the line from the player's pin to the spot", () => {
-  const line = variationLine({ lon: 77.2, lat: 8.4 }, { lon: 76.1, lat: 10.8 }, 240.4);
+  const line = variationLine({ lon: 77.2, lat: 8.4 }, { lon: 76.1, lat: 10.8 }, 240.4, "km");
   assert.deepEqual(line.coordinates, [
     [77.2, 8.4],
     [76.1, 10.8],
   ]);
   assert.deepEqual(line.midpoint, [76.65, 9.6]);
   assert.equal(line.label, "240 km");
+});
+
+test("the variation label uses the screen unit (miles for a USA run)", () => {
+  // The reported bug: headline "256 mi east of your pin" with the pill
+  // reading "411 km". Same km, USA unit → both read miles.
+  const line = variationLine({ lon: 77.2, lat: 8.4 }, { lon: 76.1, lat: 10.8 }, 411, "mi");
+  assert.equal(line.label, "255 mi");
 });
 
 // --- isTap: pointerdown/pointerup tap classification (P0-02 Option B) ---

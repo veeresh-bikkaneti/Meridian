@@ -850,7 +850,7 @@ function LoopGame({
       const latest = puzzle.guesses[n - 1];
       if (latest) {
         playRingReveal(latest.distKm);
-        if (latest.distKm > 0) setRingNote(ringAnnouncement(latest));
+        if (latest.distKm > 0) setRingNote(ringAnnouncement(latest, loopUnit));
       }
     }
     announcedCount.current = n;
@@ -887,6 +887,7 @@ function LoopGame({
           guesses={puzzle.guesses}
           target={clue.target}
           finished={finished}
+          unit={loopUnit}
           handleRef={mapHandleRef}
           onSelectPlace={onMapSelect}
           onEmptyTap={onMapEmptyTap}

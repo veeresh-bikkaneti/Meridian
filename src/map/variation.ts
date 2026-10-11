@@ -1,4 +1,4 @@
-import { formatDistance } from "../game/geo.ts";
+import { formatLength, type LengthUnit } from "../game/units.ts";
 
 export type MapPoint = { lon: number; lat: number };
 
@@ -13,13 +13,18 @@ function halfway(start: number, end: number): number {
 }
 
 /** The miss MapTap draws: a straight line from the pin to the real spot. */
-export function variationLine(pin: MapPoint, spot: MapPoint, kilometers: number): VariationLine {
+export function variationLine(
+  pin: MapPoint,
+  spot: MapPoint,
+  kilometers: number,
+  unit: LengthUnit,
+): VariationLine {
   return {
     coordinates: [
       [pin.lon, pin.lat],
       [spot.lon, spot.lat],
     ],
     midpoint: [halfway(pin.lon, spot.lon), halfway(pin.lat, spot.lat)],
-    label: formatDistance(kilometers),
+    label: formatLength(kilometers, unit),
   };
 }
