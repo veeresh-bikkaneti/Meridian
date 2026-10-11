@@ -139,6 +139,12 @@ export function isLoopUnlimitedStore(value: unknown): value is LoopUnlimitedStor
     isLoopDeckState(s.deck) &&
     (s.current === null || isLoopPuzzleState(s.current)) &&
     isNonNegativeInt(s.streak) &&
+    // bestStreak is strict here: old blobs missing the field are backfilled
+    // to 0 on the load path (readLoopStoreV2) BEFORE this validator runs, so
+    // a valid pre-field blob keeps its streak/totals instead of
+    // fail-closing to a fresh store (which would wipe the user's streak).
+    // Anything else malformed (negative, non-int) still fails closed.
+    isNonNegativeInt(s.bestStreak) &&
     !!totals &&
     isNonNegativeInt(totals.solved) &&
     isNonNegativeInt(totals.lost)
@@ -178,6 +184,7 @@ export function freshLoopUnlimitedStore(poolSize: number): LoopUnlimitedStore {
     deck: { deck: shuffleIndexDeck(poolSize), cycle: 1, cycleCompleted: 0 },
     current: null,
     streak: 0,
+    bestStreak: 0,
     totals: { solved: 0, lost: 0 },
   };
 }
@@ -285,6 +292,10 @@ export function completePuzzle(
   return {
     ...store,
     streak: won ? store.streak + 1 : 0,
+    // bestStreak sees the NEW streak on a win (store.streak + 1) and the
+    // ended streak on a loss (store.streak) — a record streak that ends in
+    // a loss is still a record. Monotone: it only ever ratchets up.
+    bestStreak: Math.max(store.bestStreak, won ? store.streak + 1 : store.streak),
     totals: {
       solved: store.totals.solved + (won ? 1 : 0),
       lost: store.totals.lost + (won ? 0 : 1),
@@ -319,6 +330,15 @@ export function readLoopStoreV2(): LoopUnlimitedStore | null {
     const raw = store.getItem(LOOP_STORAGE_KEY_V2);
     if (!raw) return null;
     const parsed: unknown = JSON.parse(raw);
+    // Load-path backfill: v2 blobs persisted before bestStreak existed lack
+    // the field. Default it to 0 BEFORE the validator runs, so a valid old
+    // blob keeps its streak/totals — fail-closing it to a fresh store would
+    // wipe the user's streak (a REGRESSION). No storage version bump: the
+    // fail-closed validator plus this backfill keeps v2 blobs valid.
+    if (parsed !== null && typeof parsed === "object" && !Array.isArray(parsed)) {
+      const obj = parsed as Record<string, unknown>;
+      if (obj.bestStreak === undefined) obj.bestStreak = 0;
+    }
     return isLoopUnlimitedStore(parsed) ? parsed : null;
   } catch {
     return null;
@@ -357,11 +377,20 @@ export function writeLoopStoreV2(store: LoopUnlimitedStore): void {
  * mystery is mid-play (resume variant). Never builds a deck, never
  * writes — safe to call on the menu without a manifest.
  */
-export function peekLoopProgress(): { streak: number; inProgress: boolean } {
+export function peekLoopProgress(): {
+  streak: number;
+  bestStreak: number;
+  inProgress: boolean;
+} {
   const stored = readLoopStoreV2();
-  if (!stored) return { streak: 0, inProgress: false };
+  if (!stored) return { streak: 0, bestStreak: 0, inProgress: false };
   return {
     streak: stored.streak,
+    // The load path backfills old blobs to 0, so bestStreak is always
+    // present here — but the ?? keeps this robust if the contract ever
+    // loosens (bestStreak drives no UI yet; the share display convention is
+    // the owner's open decision).
+    bestStreak: stored.bestStreak ?? 0,
     inProgress: stored.current !== null && stored.current.status === "playing",
   };
 }
