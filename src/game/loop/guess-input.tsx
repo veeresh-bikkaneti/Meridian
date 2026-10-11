@@ -1,4 +1,4 @@
-import { useId, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import type { JSX, KeyboardEvent } from "react";
 import type { LoopNameEntry } from "./types.ts";
 import {
@@ -15,6 +15,22 @@ import {
 export { normalizeLoopName } from "./evaluate.ts";
 
 type LoadState = "idle" | "loading" | "ready" | "error";
+
+/**
+ * Debounce a value: the expensive 119k-entry ranking scan runs on typing
+ * pauses, not on every keystroke (un-debounced scans blocked the main thread
+ * 80–207 ms per keystroke — the whole GeoDetective screen, map included,
+ * froze while typing). The input itself stays immediately responsive; only
+ * the ranking lags by `delayMs`.
+ */
+function useDebouncedValue<T>(value: T, delayMs: number): T {
+  const [debounced, setDebounced] = useState(value);
+  useEffect(() => {
+    const timer = window.setTimeout(() => setDebounced(value), delayMs);
+    return () => window.clearTimeout(timer);
+  }, [value, delayMs]);
+  return debounced;
+}
 
 /**
  * Camera-jump search for the GeoDetective "Detective's Atlas" map
@@ -51,12 +67,16 @@ export function GuessInput({
   const listboxId = `${baseId}-listbox`;
   const statusId = `${baseId}-status`;
 
+  // Ranking rides the debounced query (see useDebouncedValue): rapid
+  // keystrokes never trigger a scan.
+  const rankQuery = useDebouncedValue(query, 150);
+
   const { suggestions, total } = useMemo(
     () =>
       index
-        ? rankLoopSuggestions(index, query)
+        ? rankLoopSuggestions(index, rankQuery)
         : { suggestions: [] as LoopNameEntry[], total: 0 },
-    [index, query],
+    [index, rankQuery],
   );
 
   const queryIsBlank = query.trim().length === 0;
@@ -118,7 +138,14 @@ export function GuessInput({
       }
       if (!showListbox) return;
       e.preventDefault();
-      const pick = activeIndex >= 0 ? suggestions[activeIndex] : suggestions[0];
+      // Debounce flush: if Enter lands inside the debounce window, the
+      // rendered suggestions are stale — run one synchronous scan so the
+      // commit always acts on the exact current text (pre-debounce semantics
+      // for the commit action; the per-keystroke scans stay debounced).
+      const fresh =
+        index && rankQuery !== query ? rankLoopSuggestions(index, query) : null;
+      const list = fresh ? fresh.suggestions : suggestions;
+      const pick = !fresh && activeIndex >= 0 ? suggestions[activeIndex] : list[0];
       // No suggestions: the inline no-match message is already visible;
       // never propose free text.
       if (pick) propose(pick);
