@@ -104,18 +104,42 @@ reference them directly (document-global `:root`).
 ## Verification
 
 - `npx tsc --noEmit` — clean.
-- `npm test` — full suite green, incl. new `src/motionmaxxing.test.ts`
+- `npm test` — full suite green (1119/1119), incl. new `src/motionmaxxing.test.ts`
   (29 tests: token values + reduce collapse; M1–M7 curve/duration/stagger/
   no-delay assertions). No jsdom in the repo harness, so the "computed
   transition-duration ≈ 0.01ms under forced reduced-motion" assertion runs
   live in the Playwright reduced-motion E2E pass instead.
 - `node scripts/lint-cards.mjs` — GATE PASSED.
 - `npm run build:pages` — green; E2E runs against rebuilt dist.
-- Playwright: motionmaxxing E2E (see `tests/e2e/motionmaxxing.*.spec.ts`) —
-  transitions complete, reduced-motion mid-session toggle, tap storms,
-  390px perf; visual diffs @390px + @1280px (curve/press/stagger only, no
-  layout drift, tour stops pixel-stable); red-team pass (reduced-motion flip
-  mid-celebration, tap storms, 390px perf).
+- Playwright `motionmaxxing` + `motionmaxxing-reduced` (9/9) —
+  `tests/e2e/motionmaxxing.spec.ts` + `tests/e2e/motionmaxxing.reduced.spec.ts`:
+  transitions complete, computed curve/duration/delay assertions, press
+  feedback + immediate navigation, reduced-motion collapse (≈0.01ms) + full
+  kill, mid-celebration reduced-motion flip, tap storms, console gate
+  (React #418 filtered — pre-existing flaky hydration warning per the
+  established celebration/cleared-mode/difficulty-picker specs).
+- Visual baseline diffs @390px + @1280px (pre-change 51ed7f5 vs this
+  branch, rest-state after settle, PIL pixel-diff): home top + editions
+  tour stop pixel-identical at both widths (0.000% >8/255 delta);
+  loop-clues identical; celebration card content identical (0.714% delta
+  confined to confetti positions + float-bob phase — continuous ambient,
+  not layout). No layout drift; tour stops pixel-stable.
+- Regression: existing celebration, geodetective, grandpa-coffee-run
+  (mobile/desktop/reduced), storyteller-home + storyteller-tapstart
+  (mobile) specs re-run green on the final build.
+- **Screen recordings** (constitutional rule 2026-10-11 — build → test →
+  RECORD → owner watches → Chitti): `docs/motion-verify/` in this branch,
+  real-time, one journey per clip:
+  - `home-entrance-1280px.mp4` — atlas cascade with uneven stagger
+  - `edition-press-1280px.mp4` — 80ms glide press + pop-over release, then
+    immediate navigation
+  - `clue-stagger-390px.mp4` — two wrong guesses, clues cascade at
+    400ms + uneven index delays
+  - `celebration-pop-390px.mp4` — the one overshoot + child cascade
+  - `grandpa-tour-beats-390px.mp4` — tasting-tour beats on mobile
+  - `reduced-motion-390px.mp4` — zero animation, fully usable
+  Recorded with `scripts/record-motion-verify.mjs` (`--only <name>` to
+  re-record one).
 
 ## Merge / rebase notes
 

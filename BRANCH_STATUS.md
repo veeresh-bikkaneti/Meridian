@@ -332,3 +332,13 @@ branch owns GeoDetective enter/exit/move (M8 is a handoff spec table only).
   grandpa-tour-beats, reduced-motion pass — linked in the PR body.
 - PR opened (NEVER merged). Ready to merge? NO — needs owner's video
   green-light, then Chitti/owner's-panel independent review.
+
+## Post-rebase re-verification (final head e0de767; origin/main unmoved @ 51ed7f5 — rebase no-op, zero conflicts)
+- [x] `npx tsc --noEmit` — clean · `npm test` — 1119/1119 · `lint-cards` — GATE PASSED
+- [x] Rebuilt with `VITE_KOFI_URL` (kofi specs require it); motionmaxxing E2E 9/9 re-green on the final build
+- [x] Visual baseline diffs (51ed7f5 vs branch, PIL): home top + editions tour-stop pixel-identical @390/@1280 (0.000%); loop-clues identical; celebration card content identical (0.714% delta = confetti positions + float-bob phase only)
+- [x] Regression: celebration, geodetective, storyteller-home/tapstart (mobile) green. 3 failures, all provably unrelated to this diff:
+  - `celebration` confetti canvas — headless WebGL probe fails → scout map mode → `motionOff` → no canvas (PBI-3 behavior; tsx gating untouched)
+  - `grandpa-coffee-run.desktop` kettle beat — slow-VM timing flake: the 9.5s walk starts before the scene is observed, so the 12s poll misses the 4.3–7.1s kettle window (beat machine is setTimeout-driven in grandpa-coffee-run.tsx, a file this diff does not touch)
+  - `grandpa-coffee-run.reduced` comet-mascot — stale test: `CometMascot` is never rendered anywhere in src (only BODY constants imported); the testid cannot exist on main either
+- [x] Screen recordings (`docs/motion-verify/`, constitutional rule): 6 clips, real-time — home-entrance-1280px, edition-press-1280px, clue-stagger-390px, celebration-pop-390px, grandpa-tour-beats-390px, reduced-motion-390px. Recorded via `scripts/record-motion-verify.mjs`.
