@@ -18,7 +18,8 @@ The place name IS the question: one `h2.place-name`, visible in every card state
 
 ### 3. End game × X overlap — DONE
 **Root cause:** End game sat at the bottom of the top-right score stack; its y depended on the conditional streak flame → at 390px it overlapped the card's X.
-**Fix:** docks bottom-right above the drop-pin lane (`bottom: max(6.5rem, safe-area + 5.5rem)`), min-height 44px (was ~30px), renders during the aim phase only (never floats over the result sheet). E2E asserts 0px² bounding-box overlap with the X.
+**Fix:** during the AIM phase it docks bottom-right above the drop-pin lane (`bottom: max(6.5rem, safe-area + 5.5rem)`), min-height 44px (was ~30px), provably clear of the card/X (E2E asserts 0px² bounding-box overlap). During STORY/DONE the question card's X is gone, so the top-right score-stack slot never overlapped — the pill is restored there in its pre-redesign slot. Never floats over the result sheet (no summary-phase render). The action (onEndGame) is untouched.
+**Fix cell 2026-10-11:** the redesign had narrowed End game from `phase !== "summary"` to aim-only, removing a working control during story/done without owner direction — restored per the scrum panel, with new E2E coverage (see below).
 
 ### 4. Motion — DONE (revised: no remount on toggle)
 Vendored `--pcard-ease-reveal` (= `--ease-snap-settle`) and `--pcard-ease-exit` (= `--ease-accel-exit`) as `.pcard`-scoped custom properties in `styles.css` — no dependency on `motion-tokens.css` (PR #133 open). The toggle transition is the hint paragraph's own snap-settle reveal (250ms) + the chevron (snap-settle open / accel-exit shut), transform/opacity only.
@@ -28,8 +29,8 @@ Vendored `--pcard-ease-reveal` (= `--ease-snap-settle`) and `--pcard-ease-exit` 
 `BubbleViewState` ("open"|"collapsed"|"dismissed") unchanged. Drop-pin flow, map taps, Escape toggle, `aria-expanded`, named scroll region + `tabindex="0"`, focus ring — all intact. `BubbleViewState` import in game-app unchanged.
 
 ## Tests
-- `src/components/question-bubble.test.ts` — rewritten for the redesign: 45/45 green (compact cap, name-always-visible, instructions fold, toggle runtime wiring, vendored curves, reduced motion, `defaultBubbleView`, End-game dock).
-- `tests/e2e/place-card-redesign.mobile.spec.ts` — NEW, 5 black-box tests @390×844: compact footprint (<40% viewport height), expand shows instructions, collapse frees the map (elementFromPoint hits canvas), X × End game 0px² + ≥44px targets, drop-pin flow still commits.
+- `src/components/question-bubble.test.ts` — rewritten for the redesign: 46/46 green (compact cap, name-always-visible, instructions fold, toggle runtime wiring, vendored curves, reduced motion, `defaultBubbleView`, End-game dock).
+- `tests/e2e/place-card-redesign.mobile.spec.ts` — NEW, 6 black-box tests @390×844: compact footprint (<40% viewport height), expand shows instructions, collapse frees the map (elementFromPoint hits canvas), X × End game 0px² + ≥44px targets, End game visible in story/done in the top-right score-stack slot (aim-phase dock gone), drop-pin flow still commits.
 - Updated for the toggle rename: `longname-wrap.desktop`, `longname-scroll-a11y.desktop`, `question-card-header`, `question-wrap` (+ stale "in the header" comment in `endless-game`).
 
 ## Gates
@@ -37,8 +38,8 @@ Vendored `--pcard-ease-reveal` (= `--ease-snap-settle`) and `--pcard-ease-exit` 
 - [x] `npm test` — green (1105/1105)
 - [x] `node scripts/lint-cards.mjs` — GATE PASSED
 - [x] `npm run build:pages` — green
-- [x] Playwright: `place-card-redesign.mobile.spec.ts` 5/5 green @390×844 (+ screen recordings, see below); `question-card-header` + `question-wrap` 6/6 green; `endless-game` 2/2 green (End-game dock flow); a11y `bubble backstop` matrix test now green at 360px after the no-remount fix
-- [x] Screen recordings (constitution 2026-10-11): 5 webm sessions in `/home/hatch/workspace/meridian-review/evidence/place-card-redesign-*.webm`
+- [x] Playwright: `place-card-redesign.mobile.spec.ts` 6/6 green @390×844 (+ screen recordings, see below); `question-card-header` + `question-wrap` 6/6 green; `endless-game` 2/2 green (End-game dock flow); a11y `bubble backstop` matrix test now green at 360px after the no-remount fix
+- [x] Screen recordings (constitution 2026-10-11): 6 webm sessions in `/home/hatch/workspace/meridian-review/evidence/place-card-redesign-*.webm`
 
 ## Pre-existing failures (verified on base 51ed7f5 via stash+rebuild — NOT from this change)
 - `longname-wrap` + a11y `reveal` @360px: the deterministic Vancouver miss tap drifts just offshore at the 360px viewport, and ocean pins fail-close the pin-compare ledger by design (commit 4294f1a). Same failure on the unmodified base build.

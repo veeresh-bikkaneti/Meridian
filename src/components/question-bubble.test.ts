@@ -454,33 +454,62 @@ describe("redesign 2026-10-11 — compact default + End-game dock (game-app.tsx)
     );
   });
 
-  it("End game docks bottom-right: clear of the card, 44px target", () => {
+  it("End game docks bottom-right during aim: clear of the card, 44px target", () => {
     const btn = /<button\b[^>]*onClick=\{onEndGame\}[^>]*>/.exec(gameAppSource)?.[0];
-    assert.ok(btn, "the End game button must exist");
-    assert.ok(
-      btn.includes("absolute right-3"),
-      "End game must dock bottom-right, out of the card's lane",
+    assert.ok(btn, "an End game button must exist");
+    const tags =
+      gameAppSource.match(/<button\b[^>]*onClick=\{onEndGame\}[^>]*>/g) ?? [];
+    assert.strictEqual(
+      tags.length,
+      2,
+      `exactly two End game buttons: the aim dock + the story/done score-stack pill (found ${tags.length})`,
     );
+    const dock = tags.find((t) => t.includes("absolute right-3"));
+    assert.ok(dock, "one End game button must be the bottom-right dock");
     assert.ok(
-      btn.includes("bottom-[max(6.5rem,calc(env(safe-area-inset-bottom)+5.5rem))]"),
+      dock.includes("bottom-[max(6.5rem,calc(env(safe-area-inset-bottom)+5.5rem))]"),
       "the dock must clear the drop-pin lane + safe area",
     );
     assert.ok(
-      btn.includes("min-h-[44px]"),
-      "End game must be a 44px tap target",
+      dock.includes("min-h-[44px]"),
+      "the docked End game must be a 44px tap target",
     );
+    const pill = tags.find((t) => !t.includes("absolute right-3"));
+    assert.ok(pill, "one End game button must be the score-stack pill");
     assert.ok(
-      (gameAppSource.match(/onClick=\{onEndGame\}/g) ?? []).length === 1,
-      "exactly one End game button — the score-stack copy is gone",
+      pill.includes("rounded-md") && pill.includes("px-3 py-1.5 text-xs"),
+      "the score-stack pill keeps its pre-redesign slot classes",
     );
-  });
-
-  it("End game is aim-phase only, so it never floats over the result sheet", () => {
     assert.ok(
       /\{run\.phase === "aim" \? \(\s*<button\b[^>]*onClick=\{onEndGame\}/.test(
         gameAppSource,
       ),
       "the docked End game must render only during the aim phase",
+    );
+  });
+
+  it("End game never floats over the result sheet: score-stack pill is story/done only, never summary", () => {
+    const conditions = [
+      ...gameAppSource.matchAll(
+        /\{([^}]*run\.phase[^}]*?) \? \(\s*<button\b[^>]*onClick=\{onEndGame\}[^>]*>/g,
+      ),
+    ].map((m) => m[1]);
+    assert.strictEqual(
+      conditions.length,
+      2,
+      `both End game buttons must be phase-gated (found ${conditions.length})`,
+    );
+    assert.ok(
+      conditions.includes('run.phase === "aim"'),
+      "the dock is aim-phase only",
+    );
+    assert.ok(
+      conditions.includes('run.phase === "story" || run.phase === "done"'),
+      "the score-stack pill is story/done only",
+    );
+    assert.ok(
+      conditions.every((c) => !c.includes("summary")),
+      "no End game button may render in the summary phase",
     );
   });
 });

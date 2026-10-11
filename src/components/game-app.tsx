@@ -764,8 +764,10 @@ function useDeckStatus(run: Run | null): { enabled: boolean; due: number; total:
  * COMPACT on narrow viewports (mobile-first 390px) so it never fills the
  * screen; desktop keeps the full open card with instructions. One helper
  * feeds the state initializer, the per-place reset, and replay — a single
- * source of truth for the default. The 40rem breakpoint matches the
- * mobile-first compact CSS.
+ * source of truth for the default. The 40rem matchMedia check sets only
+ * the INITIAL view state in JS; there is no compact CSS media query —
+ * compactness comes from the `pcard-compact` class on .bubble-scroll,
+ * which QuestionBubble applies when `!expanded`.
  */
 function defaultBubbleView(): BubbleViewState {
   if (
@@ -3450,18 +3452,33 @@ function PlayLoaded({
                   no longer drops the counter back to 0. */}
               {session?.hits ?? run.hits} placed
             </p>
+            {/* Place-card redesign 2026-10-11: the aim-phase End-game pill
+                lives in the bottom-right dock (it overlapped the question
+                card's X dismiss at 390px when it sat here). During
+                story/done the question card's X is gone, so this slot never
+                overlapped — the pill is restored here for those phases, in
+                its pre-redesign slot. Never shown in summary; the action
+                (onEndGame) is untouched. */}
+            {run.phase === "story" || run.phase === "done" ? (
+              <button
+                type="button"
+                onClick={onEndGame}
+                className="pointer-events-auto rounded-md border border-white/10 bg-[rgba(10,12,16,0.72)] px-3 py-1.5 text-xs text-white/70 backdrop-blur-[14px] transition-colors hover:text-white"
+              >
+                End game
+              </button>
+            ) : null}
           </div>
           )}
         </div>
       </div>
-      {/* Place-card redesign 2026-10-11: the End-game pill used to sit at
-          the bottom of the top-right score stack, where its y depended on
-          the conditional streak flame — at 390px it overlapped the question
-          card's X dismiss. It now docks bottom-right, above the drop-pin
-          lane: provably clear of the card, the score cluster, and the
-          centered drop-pin pill (E2E asserts 0px² overlap). Gated to the
-          aim phase so it never floats over the result sheet; the action
-          (onEndGame) is untouched. */}
+      {/* Place-card redesign 2026-10-11: during the AIM phase the End-game
+          pill docks bottom-right, above the drop-pin lane: provably clear
+          of the card, the score cluster, and the centered drop-pin pill
+          (E2E asserts 0px² overlap). Gated to the aim phase so it never
+          floats over the result sheet; during story/done the pill stays in
+          the top-right score-stack slot above. The action (onEndGame) is
+          untouched. */}
       {run.phase === "aim" ? (
         <button
           type="button"

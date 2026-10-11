@@ -15,8 +15,10 @@ import {
  * with "Hide place name" hiding only the text (the footprint stayed) and
  * the "End game" pill overlapping the card's X. The redesign: the card is
  * COMPACT by default (name + meta band + toggle), the name never folds
- * away, only the instructions expand/collapse, and End game docks
- * bottom-right — clear of everything.
+ * away, only the instructions expand/collapse, End game docks bottom-right
+ * during the aim phase — clear of everything — and the pre-redesign
+ * top-right score-stack slot is kept for the story/done phases (the
+ * question card's X is gone there, so it never overlapped).
  *
  *  - card compact on load: the shell's footprint stays under 40% of the
  *    viewport height; the name is visible; the instructions are folded.
@@ -26,6 +28,8 @@ import {
  *    card covered now hits the map canvas (elementFromPoint).
  *  - X clear of End game: getBoundingClientRect geometry — 0px² overlap,
  *    both targets ≥44px.
+ *  - End game in story/done: exactly one pill, top-right score stack, the
+ *    aim-phase dock gone.
  *  - drop pin still works: tap the freed map point → Drop pin enables →
  *    commit → the round leaves the aim phase.
  *
@@ -193,6 +197,60 @@ test("dismiss X is fully tappable and clear of the End game pill", async ({
   expect(xb.height, "X tap target height").toBeGreaterThanOrEqual(44);
   expect(eb.height, "End game tap target height").toBeGreaterThanOrEqual(44);
   expect(overlapArea(xb, eb), "X × End game must not overlap").toBe(0);
+});
+
+test("End game stays visible in story/done: restored to the top-right score stack", async ({
+  page,
+}) => {
+  await seedQuiet(page);
+  await startGlobeRun(page);
+  await dismissTileOverlayIfPresent(page);
+  const vp = page.viewportSize() ?? { width: 390, height: 844 };
+
+  // Aim phase: the pill docks bottom-right.
+  const docked = endGame(page);
+  await expect(docked).toBeVisible({ timeout: 15_000 });
+  const dockBox = await docked.boundingBox();
+  if (!dockBox) throw new Error("aim-phase End game has no bounding box");
+  expect(
+    dockBox.y,
+    "aim-phase End game must dock in the bottom half (above the drop-pin lane)",
+  ).toBeGreaterThan(vp.height * 0.5);
+
+  // Drop a pin: the round leaves the aim phase (story or done).
+  await showInstructions(page).click();
+  await expect(hideInstructions(page)).toBeVisible({ timeout: 10_000 });
+  const openBox = await shellBox(page);
+  await hideInstructions(page).click();
+  await expect(showInstructions(page)).toBeVisible({ timeout: 10_000 });
+  const shutBox = await shellBox(page);
+  const px = 195;
+  const py = Math.round(shutBox.y + shutBox.height + 40);
+  expect(py).toBeLessThan(openBox.y + openBox.height);
+  expect(await tapHitsMap(page, px, py)).toBe(true);
+  const { phase } = await commitPin(page, px, py);
+  expect(phase, "committing the pin must leave the aim phase").toMatch(
+    /^(story|done)$/,
+  );
+
+  // Story/done phase: exactly one End game pill, back in the top-right
+  // score-stack slot — the aim-phase bottom-right dock must be gone.
+  const end = endGame(page);
+  await expect(end).toHaveCount(1);
+  await expect(end).toBeVisible({ timeout: 15_000 });
+  const box = await end.boundingBox();
+  if (!box) throw new Error("story/done End game has no bounding box");
+  console.log(
+    `story/done EndGame=(${box.x.toFixed(1)},${box.y.toFixed(1)},${box.width.toFixed(1)}x${box.height.toFixed(1)}) phase=${phase}`,
+  );
+  expect(
+    box.y,
+    "score-stack End game must sit in the top half of the viewport",
+  ).toBeLessThan(vp.height * 0.5);
+  expect(
+    box.x + box.width,
+    "score-stack End game must hug the right edge",
+  ).toBeGreaterThan(vp.width * 0.7);
 });
 
 test("drop pin still works after the redesign", async ({ page }) => {
