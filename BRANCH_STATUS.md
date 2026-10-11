@@ -57,10 +57,14 @@ GeoDetective screen, map included, freezes.
 
 - [x] Branch created from origin/main
 - [x] BRANCH_STATUS.md written
-- [ ] Fix implemented
-- [ ] Unit tests added + full suite green
-- [ ] tsc + lint clean
-- [ ] E2E geodetective specs green
+- [x] Fix implemented
+- [x] Unit tests added + full suite green (1090/1090)
+- [x] tsc clean
+- [ ] E2E geodetective specs green — **PENDING**: VM-wide E2E lock held by the
+  parallel bestStreak crew; VM near-OOM. Specs reviewed for debounce
+  compatibility (all suggestion waits are `expect()` with 15–30 s timeouts;
+  option clicks wait for visibility of the debounced list). Must go green
+  before Veeresh's merge word.
 - [ ] Pushed, PR opened (NO merge — Veeresh's word only)
 
 ## Still needed from Veeresh
