@@ -146,7 +146,7 @@ test("geodetective share appends the best streak segment when bestStreak >= 2", 
   });
   assert.equal(
     text,
-    "meridian geodetective October 6\nhttps://veeresh-bikkaneti.github.io/Meridian/\n🟥🟩⬜⬜⬜ solved in 2 · 🔥 5 best streak\n🔥 3",
+    "meridian geodetective October 6\nhttps://meridian.knowledgetest.workers.dev/\n🟥🟩⬜⬜⬜ solved in 2 · 🔥 5 best streak\n🔥 3",
   );
 });
 
@@ -168,7 +168,7 @@ test("geodetective share hides the best streak segment when bestStreak < 2 or un
     assert.equal(text.includes("best streak"), false);
     assert.equal(
       text,
-      "meridian geodetective October 6\nhttps://veeresh-bikkaneti.github.io/Meridian/\n🟥🟩⬜⬜⬜ solved in 2\n🔥 3",
+      "meridian geodetective October 6\nhttps://meridian.knowledgetest.workers.dev/\n🟥🟩⬜⬜⬜ solved in 2\n🔥 3",
     );
   }
 });
