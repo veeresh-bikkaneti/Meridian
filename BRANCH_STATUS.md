@@ -25,6 +25,10 @@ home banner. It was appearing on the result card (overlapping the
 - `src/game/loop/LoopScreen.tsx` — already `showFigure={false}`.
 
 ## Pending
-- Full Scrum panel per mandatory test coverage (visual, workflow, regression incl.
-  narration, unit, functional, security).
+- ~~Full Scrum panel~~ — COMPLETE 2026-10-10. All 5 squads green on final head 91178dd:
+  Design APPROVE-WITH-NITS · Eng APPROVE · Devex APPROVE · QA APPROVE · Security APPROVE.
+  BLOCKs fixed: dock CSS peek/gap cleanup, e2e test moved to banner, banner
+  pause/resume labels fixed (greetingPaused state + AbortError filter).
+  Gates: tsc clean · 1089/1089 tests · lint GATE PASSED · build green ·
+  visual 360/390px 8/8 · workflow + narration regression green.
 - PR open → owner merges.
