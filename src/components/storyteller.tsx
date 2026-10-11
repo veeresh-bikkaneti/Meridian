@@ -108,7 +108,7 @@ export function StorytellerMascot({
 
 /** A play() aborted by our own pause()/dismiss() rejects with AbortError —
     that is the pause working, not an audio failure. */
-function isPlayAbort(err: unknown): boolean {
+export function isPlayAbort(err: unknown): boolean {
   return (
     typeof err === "object" &&
     err !== null &&

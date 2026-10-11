@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { StorytellerMascot, useCelebrationActive, useTourActive } from "./storyteller";
+import { StorytellerMascot, isPlayAbort, useCelebrationActive, useTourActive } from "./storyteller";
 import { STORYTELLER_AUDIO_FALLBACK_LINE } from "./storyteller-lines";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import {
@@ -193,6 +193,9 @@ export default function StorytellerHomeHost({
   const [phase, setPhase] = useState<BannerPhase>("entering");
   const [bubble, setBubble] = useState<string | null>(null);
   const [audioFailed, setAudioFailed] = useState(false);
+  // Pause state for the greeting audio — tracked via pause/play events so
+  // the figure label can show "Resume the greeting" mid-greeting.
+  const [greetingPaused, setGreetingPaused] = useState(false);
   // Track B (Homer motion): transient visual states — the poke startle and
   // the graceful yield-out. Neither touches the phase machine.
   const [poked, setPoked] = useState(false);
@@ -257,6 +260,7 @@ export default function StorytellerHomeHost({
     window.clearInterval(soundWatch.current);
     audioRef.current?.pause();
     audioRef.current = null;
+    setGreetingPaused(false);
   }, []);
 
   const hideBubble = useCallback(() => {
@@ -438,6 +442,11 @@ export default function StorytellerHomeHost({
     };
     audio.addEventListener("ended", onEnded, { once: true });
     audio.addEventListener("error", onFail, { once: true });
+    // Track pause state so the figure label can show "Resume the greeting".
+    const onPause = () => setGreetingPaused(true);
+    const onPlay = () => setGreetingPaused(false);
+    audio.addEventListener("pause", onPause);
+    audio.addEventListener("play", onPlay);
     void audio
       .play()
       .then(() => {
@@ -458,7 +467,12 @@ export default function StorytellerHomeHost({
           }
         }, 500);
       })
-      .catch(onFail);
+      .catch((err) => {
+        // A play() aborted by our own pause() is the pause working, not a
+        // failure — don't kill the greeting window.
+        if (isPlayAbort(err)) return;
+        onFail();
+      });
   }, [greetingText, showBubble, stopAudio]);
 
   // ---- Tutorial invite: greeting waits for its dismissal ----------------
@@ -631,11 +645,11 @@ export default function StorytellerHomeHost({
   // stays mounted throughout; the tour / celebration owns the screen.
   if (yielded && !yielding) return null;
 
-  const audioPlaying = phase === "greeting_audio" && audioRef.current !== null;
-  const figureLabel = audioPlaying
-    ? "Pause the greeting"
-    : audioRef.current && phase === "greeting_audio"
-      ? "Resume the greeting"
+  const figureLabel =
+    phase === "greeting_audio" && audioRef.current !== null
+      ? greetingPaused
+        ? "Resume the greeting"
+        : "Pause the greeting"
       : "The storyteller";
 
   const bannerClassName =
