@@ -56,6 +56,9 @@ export interface StorytellerNarrationProps {
   /** Which narration line to speak — resolved to STORYTELLER_LINES inside
       this lazy chunk so hosts never import the caption copy. */
   lineKey: StorytellerLineKey;
+  /** Figure visibility switch. All call sites pass false since 2026-10-10
+      (owner ruling: figure is banner-only, which renders StorytellerMascot
+      directly). Kept as a deliberate reversible switch — do not remove. */
   showFigure: boolean;
   /** "dock" = ResultCard top-left · "modal" = summary modal · "inline" = GeoDetective hook. */
   variant: "dock" | "modal" | "inline";
@@ -105,7 +108,7 @@ export function StorytellerMascot({
 
 /** A play() aborted by our own pause()/dismiss() rejects with AbortError —
     that is the pause working, not an audio failure. */
-function isPlayAbort(err: unknown): boolean {
+export function isPlayAbort(err: unknown): boolean {
   return (
     typeof err === "object" &&
     err !== null &&

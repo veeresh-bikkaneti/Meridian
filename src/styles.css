@@ -1416,7 +1416,7 @@
 .result-card {
   display: flex;
   flex-direction: column;
-  position: relative; /* anchors the docked Storyteller mascot (top-left, peeking above the edge) */
+  position: relative; /* anchors the docked Storyteller narration caption (top-left, inside the card edge) */
   width: 100%;
   max-width: 440px;
   margin-inline: auto;

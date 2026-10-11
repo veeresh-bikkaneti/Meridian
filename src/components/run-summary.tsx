@@ -85,14 +85,15 @@ export function RunSummaryCard(props: {
       aria-label="Game summary"
     >
       <div className="w-full max-w-sm rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.95)] p-6 text-white shadow-2xl">
-        {/* Storyteller (secondary host): docked inside the modal above the
-            title — the closing-chapter beat. One line, text-first + speaker. */}
+        {/* Storyteller narration (caption only — figure is banner-only per
+            owner ruling 2026-10-10): the closing-chapter beat. One line,
+            text-first + speaker. */}
         <Suspense fallback={null}>
           <StorytellerNarration
             screen="summary"
             trigger="summary"
             lineKey="summary"
-            showFigure
+            showFigure={false}
             variant="modal"
             onDismiss={focusPlayAgain}
           />

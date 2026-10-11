@@ -23,6 +23,9 @@ const REVEAL_TEXT =
   "Gather round, explorer! Every place hides a story. And this one? This one is a legend.";
 const FALLBACK_TEXT = "The words are right here — read along with me.";
 const MP3_PATTERN = "**/audio/storyteller/*.mp3";
+// App base URL for banner (home) tests — the figure lives in the banner
+// per owner ruling 2026-10-10.
+const APP = "http://127.0.0.1:4123/Meridian/";
 // 0.2 s silent mp3 — deterministic clip end, so replay/dismiss timing is
 // not tied to the real narration length. Lives in-repo (not /tmp — the
 // VM's tmpfs is small and gets cleaned).
@@ -212,30 +215,51 @@ test("blocked audio degrades to the text-only fallback", async ({ page }) => {
 });
 
 test("figure tap pauses and resumes the narration", async ({ page }) => {
+  // Figure is banner-only per owner ruling 2026-10-10 — this test moved
+  // from the story screen to the home banner where the figure lives.
   // SW disabled: it precaches the mp3s and serves them cache-first, which
   // would hide the audio request from the route below.
-  const errors = await reachStoryScreen(page, { disableServiceWorker: true });
-  // Stall the mp3 request: the audio element stays in "playing" so the
+  await page.context().addInitScript(() => {
+    try {
+      localStorage.setItem("meridian.grandpaTour.lastDate", new Date().toISOString().slice(0, 10));
+      localStorage.setItem("meridian.tutorialSeen", "1");
+    } catch {
+      /* private mode — ignore */
+    }
+  });
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
+  page.on("console", (m) => {
+    if (m.type() === "error") errors.push(`console.error: ${m.text()}`);
+  });
+  await serveBuiltArtifact(page.context());
+  await page.goto(APP);
+  await expect(page.getByTestId("storyteller-home")).toBeVisible({ timeout: 20_000 });
+  // Stall the greeting mp3: the audio element stays in "playing" so the
   // pause/resume window is deterministic — no race with a clip ending.
-  await page.route(MP3_PATTERN, () => {
+  await page.route("**/audio/storyteller/*.mp3", () => {
     /* never fulfill */
   });
-  await page.getByTestId("storyteller-speaker").click();
+  // First gesture starts the greeting narration.
+  await page.locator("body").click({ position: { x: 200, y: 600 } });
   const figure = page.getByTestId("storyteller-figure");
   // audioState "playing" → the figure's label is the pause control.
-  await expect(figure).toHaveAttribute("aria-label", "Pause the story", {
-    timeout: 10_000,
+  await expect(figure).toHaveAttribute("aria-label", "Pause the greeting", {
+    timeout: 15_000,
   });
+  // Clear the 600ms starter-tap guard: the body click that started audio
+  // sets audioStartTimeRef, and a fast figure tap would be swallowed.
+  await page.waitForTimeout(700);
   // Tap the figure: pause/resume is the tap's job (owner ruling 2026-10-10).
   // force: the figure's idle-float animation runs infinitely, so the
   // actionability stability check would never settle — the tap itself is
   // a real user gesture on an enabled, visible button.
   await figure.click({ force: true });
-  await expect(figure).toHaveAttribute("aria-label", "Resume the story", {
+  await expect(figure).toHaveAttribute("aria-label", "Resume the greeting", {
     timeout: 10_000,
   });
   await figure.click({ force: true });
-  await expect(figure).toHaveAttribute("aria-label", "Pause the story", {
+  await expect(figure).toHaveAttribute("aria-label", "Pause the greeting", {
     timeout: 10_000,
   });
   expectCleanConsole(errors);
