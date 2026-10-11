@@ -15,20 +15,14 @@ import type { Starter } from "@/game/starters";
 import { Button } from "@/components/ui/button";
 import type { Drop } from "./game-app";
 import { X } from "lucide-react";
-import { Suspense, lazy, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { splitLede } from "./story-lede";
-import { claimFirstRevealNarration } from "./storyteller-claim";
-import { isSessionAutoNarrationConsumed } from "./storyteller-session";
 import { useAiSportsTeams, withSportsLine } from "@/game/sports-ai";
 import { useAiStory, AI_STORY_BADGE } from "@/game/story-ai";
 import { revealPinCompare } from "@/game/reverse-geocode";
 import { ScrollCue, useMoreBelow } from "@/components/scroll-cue";
 import { ReadAloudButton } from "./age-profile/ReadAloudButton";
 import { audioMode, resolveBand } from "@/game/age-profile";
-
-// The Storyteller mascot (figure + narration) stays out of the initial
-// bundle — a separate lazy chunk, like the satellite map.
-const StorytellerNarration = lazy(() => import("./storyteller"));
 
 // Frosted chrome tokens shared by the floating aim/reveal chrome.
 const CHROME =
@@ -232,15 +226,12 @@ export function ResultCard({
   const [storyLede, storyRest] = splitLede(withSports);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const continueWrapRef = useRef<HTMLDivElement>(null);
-  // Storyteller v1: the session's first story reveal auto-narrates (T1 —
-  // gesture-gated); every later reveal is text + speaker button. Claimed
-  // once per session — a reload is a new session. Home no longer consumes
-  // the session flag (owner 2026-10-09), so the check below is a no-op
-  // retained for safety.
-  const storytellerAuto = useMemo(
-    () => !isSessionAutoNarrationConsumed() && claimFirstRevealNarration(),
-    [],
-  );
+  // Owner ruling 2026-10-11: the storyteller greeting banner ("Gather round,
+  // explorer!") lives ONLY on the home page with the storyteller figure — it
+  // never renders on the result card. The dock narration host that used to
+  // sit here was removed; the session auto-narration claim went with it.
+  // Home keeps its own greeting system (storyteller-home.tsx); the summary
+  // modal and the GeoDetective hook keep theirs.
   // Cartographer's Plate PR3 — the "more below" cue for the card body.
   const { ref: bodyRef, moreBelow } = useMoreBelow<HTMLDivElement>();
 
@@ -365,21 +356,6 @@ export function ResultCard({
     <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex justify-center px-2.5 pb-[max(16px,env(safe-area-inset-bottom))]">
       <Rise reduced={reduced}>
         <section aria-label="Result" className="game-chrome result-card pointer-events-auto">
-          {/* Storyteller narration (caption only — figure is banner-only per
-              owner ruling 2026-10-10): yields to the tasting tour while it
-              walks and to the celebration overlay while it owns the screen. */}
-          {place ? (
-            <Suspense fallback={null}>
-              <StorytellerNarration
-                screen="story"
-                trigger={storytellerAuto ? "first_gesture" : "speaker"}
-                lineKey="reveal"
-                showFigure={false}
-                variant="dock"
-                onDismiss={() => continueWrapRef.current?.querySelector("button")?.focus({ preventScroll: true })}
-              />
-            </Suspense>
-          ) : null}
           {/* ---- Zone 1: pinned header — meta band + verdict, never buried ---- */}
           <div className="result-header">
             <div className="result-topbar">

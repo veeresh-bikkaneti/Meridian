@@ -674,3 +674,49 @@ describe("result-card PR3 — three-zone scroll architecture", () => {
     );
   });
 });
+
+describe("storyteller greeting scoping — owner ruling 2026-10-11", () => {
+  const src = readFileSync(new URL("./result-card.tsx", import.meta.url), "utf8");
+
+  it("the result card never renders the storyteller greeting banner", () => {
+    // The greeting ("Gather round, explorer!") lives ONLY on the home page
+    // with the storyteller figure. The dock narration host
+    // (screen="story", lineKey="reveal", variant="dock") was removed.
+    assert.ok(
+      !src.includes("<StorytellerNarration"),
+      "result card must not render StorytellerNarration",
+    );
+    assert.ok(
+      !src.includes('variant="dock"'),
+      "result card must not use the dock greeting variant",
+    );
+    assert.ok(
+      !src.includes('lineKey="reveal"'),
+      "result card must not request the greeting (reveal) line",
+    );
+  });
+
+  it("the session auto-narration claim went with the removed narration", () => {
+    // No dead claim machinery left behind.
+    assert.ok(
+      !src.includes("claimFirstRevealNarration"),
+      "the one-shot claim must not linger without its narration",
+    );
+    assert.ok(
+      !src.includes("storytellerAuto"),
+      "the auto-trigger memo must not linger without its narration",
+    );
+  });
+
+  it("the summary modal and geodetective hook keep their own narration", () => {
+    // Other hosts are untouched — only the result card lost the greeting.
+    const summary = readFileSync(
+      new URL("./run-summary.tsx", import.meta.url),
+      "utf8",
+    );
+    assert.ok(
+      summary.includes('lineKey="summary"'),
+      "summary modal keeps its closing-chapter narration",
+    );
+  });
+});
