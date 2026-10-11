@@ -204,3 +204,24 @@ test("rankLoopSuggestions: a non-matching alias never swallows the canonical nam
     ["new york city", "east new york"],
   );
 });
+
+test("rankLoopSuggestions: haystack cache is transparent across repeated scans", () => {
+  // Regression guard for the per-entry haystack cache (the typeahead-freeze
+  // fix): repeated scans over the same entries must return identical
+  // results, and a fresh-identity array with equal content must agree —
+  // proving the cache never serves stale strings for live entries.
+  const queries = ["spring", "sao", "paris texas", "zzz-no-such-place", "   "];
+  const first = queries.map((q) => rankLoopSuggestions(FAKE_INDEX, q));
+  const second = queries.map((q) => rankLoopSuggestions(FAKE_INDEX, q));
+  assert.deepEqual(second, first);
+  const freshIdentity: LoopNameEntry[] = FAKE_INDEX.map((e) => ({ ...e }));
+  const third = queries.map((q) => rankLoopSuggestions(freshIdentity, q));
+  assert.deepEqual(
+    third.map((r) => r.suggestions.map((e) => e.id)),
+    first.map((r) => r.suggestions.map((e) => e.id)),
+  );
+  assert.deepEqual(
+    third.map((r) => r.total),
+    first.map((r) => r.total),
+  );
+});

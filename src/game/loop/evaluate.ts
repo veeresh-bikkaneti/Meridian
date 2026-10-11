@@ -60,6 +60,27 @@ export interface RankedLoopSuggestions {
 }
 
 /**
+ * Per-entry "name + normalized region" haystack, cached weakly.
+ *
+ * The typeahead scans all ~119k entries per query; without this cache every
+ * scan re-ran the region normalizer (lowercase + transliteration regex + NFD
+ * strip + punctuation/whitespace regexes) on every entry — the dominant cost
+ * of the scan (measured 80–207 ms/keystroke against the real index, enough
+ * to freeze the GeoDetective screen on a phone). Entries are treated as
+ * immutable once loaded, so the cached string can never go stale.
+ */
+const haystackCache = new WeakMap<LoopNameEntry, string>();
+
+function haystackFor(entry: LoopNameEntry): string {
+  let haystack = haystackCache.get(entry);
+  if (haystack === undefined) {
+    haystack = `${entry.n} ${normalizeLoopName(entry.r)}`;
+    haystackCache.set(entry, haystack);
+  }
+  return haystack;
+}
+
+/**
  * Rank index entries against a raw query. Every query word must appear
  * somewhere in the combined "name + region" text, so "paris texas" and
  * "springfield nebraska" resolve; exact-name and word-boundary name matches
@@ -81,7 +102,7 @@ export function rankLoopSuggestions(
   // name when the canonical name matches better.
   const best = new Map<string, { entry: LoopNameEntry; tier: number }>();
   for (const entry of entries) {
-    const haystack = `${entry.n} ${normalizeLoopName(entry.r)}`;
+    const haystack = haystackFor(entry);
     if (!words.every((w) => haystack.includes(w))) continue;
     const tier = nameMatchTier(entry.n, q, words);
     const prev = best.get(entry.id);

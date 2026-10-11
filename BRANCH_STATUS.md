@@ -1,159 +1,71 @@
-# BRANCH_STATUS — fix/storyteller-tap-start-and-mute
+# BRANCH_STATUS — fix/loop-typeahead-freeze
 
-Branch: `fix/storyteller-tap-start-and-mute` · Base: origin/main @ c416187
-· Created: 2026-10-10. **PUSH OK, DO NOT MERGE** — merge is the owner's
-call, per standing policy. Coordinator handles gates, red-team, and PR.
+Branch: `fix/loop-typeahead-freeze` · Base: origin/main @ ec456a9 · Created: 2026-10-10.
+**PUSH OK, DO NOT MERGE** — owner merges.
 
-Owner "Go" 2026-10-10: regression repair — narration is dead on his
-phone. Three fixes, separate branch (never #121), PR open, owner merges.
+Standing rules: named-file staging only, never `git add -A`. COPPA-safe (no new
+data collection; this change only reduces main-thread work).
 
-Standing rules: named-file staging only, never `git add -A`. Do NOT
-touch: Ko-fi cloud logic, PR #125 assets, auto-animate. Baselines in
-`tests/e2e/visual-baselines/main-c416187/` are READ-ONLY — never
-overwrite.
+## Why this branch exists
 
-## Done (implementation, 2026-10-10)
+Veeresh reported the GeoDetective map **freezing** during his own play-test on the
+live site (~22:13 CDT, 2026-10-10). Investigation identified the prime suspect:
+the "Search the map" typeahead (`GuessInput`) runs a synchronous full scan of the
+119k-entry place index on **every keystroke**, with no debounce — measured
+80–207 ms of main-thread block per keystroke on server hardware (×2–4 on a phone).
+While the main thread is blocked, the map cannot process touch input: the whole
+GeoDetective screen, map included, freezes.
 
-### Fix 1 — figure tap starts narration from idle (`src/components/storyteller.tsx`)
-- `handleFigureToggle`: added the missing branch — idle/failed/ended now
-  calls `playNarrationAudio("replay")` (same path the replay button uses;
-  "replay" keeps the telemetry trigger vocabulary unchanged, no new type).
-  playing→pause, paused→resume unchanged. The early-return no longer
-  blocks the start path (audioRef is null on ended/failed/idle).
-- `figureLabel`: idle/failed/ended → "Play the story" ("Pause/Resume the
-  story" kept). Label feeds GrandpaMascot's aria-label.
-- GrandpaMascot unchanged: its tap already calls onToggle; blink-ack
-  stays subordinate per the owner's tap choreography ruling.
+## Findings (evidence)
 
-### Fix 2 — visible mute state (`src/components/storyteller.tsx`)
-- Imported `VolumeX` from lucide-react.
-- Speaker button renders `<VolumeX>` when `!soundOn`, `<Volume2>` when
-  soundOn — purely the indicator; toggle/play logic untouched.
-- Root cause of the stale icon: `soundOn` was `useState(() =>
-  isSoundEnabled())` snapshot-on-mount only. Added a
-  `meridian:sound-change` listener (same channel `setSoundEnabled` in
-  `sfx.ts` dispatches, same pattern as storyteller-home.tsx) so the icon
-  reflects the live mute state when the global toggle (game-app) flips.
+- **Ruled out — today's deploys:** #124 touched only `EarnedBadgeRow` (home dossier
+  card); #125 touched only storyteller/home components; #123's `LoopMap.tsx`
+  changes are Cold-Trail-only and inert when `placementActive` is unset (loop
+  mode). None touches the GeoDetective map's active path.
+- **Ruled out — deploy health:** live site serves `buildId ec456a976ea3` (= HEAD);
+  Esri tile CDN responds 200; crash worker `/health` OK. Tiles are slowish
+  (~1.5 s/tile from the VM) but MapLibre degrades gracefully — not a freeze.
+- **Ruled out — map tap/paint/bottom-sheet/clue paths:** `nearestPlace` is a
+  bounded grid search; `paintOverlays` builds small GeoJSON; the confirm sheet
+  and clue cards are static; no loops found.
+- **Confirmed — typeahead jank (benchmarked against real 11 MB names.json,
+  119,038 entries):** 80–207 ms/keystroke, dominated by per-entry
+  `normalizeLoopName(entry.r)` (regex ×4 + NFD, 119k× per keystroke) plus a full
+  sort of all matches (71k for a 1-char query).
+- **Crash pipeline:** worker has no query endpoint for recent reports; a
+  main-thread stall would not produce a crash report anyway. No signal either way.
 
-### Fix 3 — reset stale gesture flag after tour-kill (`src/components/storyteller-home.tsx`)
-- In the yield effect: when `yielded` goes true and `wasNarrating`
-  (`phase === "greeting_audio"`), after `stopAudio()` the effect now sets
-  `gestureDoneRef.current = false` so the post-tour follow-up greeting
-  can re-arm on the next tap. Reset ONLY on a mid-flight kill — a
-  completed greeting keeps the flag consumed (no duplicate greeting).
-  Tour-return mode is text-only and `onGesture` returns early there, so
-  no interplay risk (verified: the follow-up effect flips mode to
-  "greeting" + phase "entering", which re-arms via the greeting_text
-  gesture listener).
+## Fix (this branch)
 
-## Gates (builder pass, 2026-10-10)
+1. `src/game/loop/evaluate.ts` — cache the per-entry `"name + normalized region"`
+   haystack in a `WeakMap` (transparent: identical strings, identical matches).
+   Cuts the scan from 80–207 ms → 14–60 ms on the benchmark box.
+2. `src/game/loop/guess-input.tsx` — debounce the query used for ranking (150 ms);
+   the input stays immediately responsive, scans run on typing pauses. Enter
+   flushes: if the debounced query is stale, the commit action runs one synchronous
+   fresh scan so Enter always acts on the exact current text (old semantics kept).
 
-- `npx tsc --noEmit` — clean
-- `npm test` — 1089/1089 green (node --test, zero fails)
-- `node scripts/lint-cards.mjs` — GATE PASSED
-- `VITE_KOFI_URL="https://ko-fi.com/thesaltandpepperguy" npm run build:pages` — green
+## Tests
 
-## Blocker fix — Ko-fi cloud viewport on mobile (2026-10-10 ~22:30 CDT)
+- `src/game/loop/evaluate.test.ts` — new test: repeated scans return identical
+  results (cache transparency); fresh-identity arrays agree.
+- Existing `guess-input.test.ts` / `evaluate.test.ts` suites must stay green
+  (logic surface unchanged).
+- E2E: `tests/e2e/geodetective.spec.ts` (typeahead flow) must stay green.
 
-The PR verdict was NOT READY on one blocker: the persistent Ko-fi cloud
-sat at y≈2778 in a ~3000px document on 390px mobile (~3 screens below the
-fold). The red test
-`tests/e2e/kofi-persistent-cloud.mobile.spec.ts` → "cloud is visible on a
-return visit, inside the viewport" is now green.
+## Status
 
-Approach ("floating thought" — design cell decision): on mobile in seated
-mode only, an IntersectionObserver on the walker toggles
-`data-cloud-pin` on the scene. Strip off-screen → `floating`: the cloud is
-`position: fixed`, bottom-right with safe-area clearance — always visible
-and tappable (owner's hard constraint). Strip scrolled into view →
-`docked`: the cloud renders in-flow above the walker, so it never covers
-grandpa and the classic composition holds. Tour/strip modes ignore the pin
-and stay in-flow at the strip: `mobile-home-overlap`'s phase-2 invariant
-(zero viewport-relative overlap between the cloud and edition cards while
-the tour auto-scrolls) forbids a pinned cloud during the tour. Desktop is
-pixel-identical (all new CSS under `@media (max-width: 1023.5px)`; verified
-by pixel-diff). The tail is unchanged (points down): floating it points
-down the page toward grandpa's camp, docked at grandpa himself.
+- [x] Branch created from origin/main
+- [x] BRANCH_STATUS.md written
+- [ ] Fix implemented
+- [ ] Unit tests added + full suite green
+- [ ] tsc + lint clean
+- [ ] E2E geodetective specs green
+- [ ] Pushed, PR opened (NO merge — Veeresh's word only)
 
-Files: `src/components/grandpa-coffee-run.tsx` (observer + `data-cloud-pin`),
-`src/components/grandpa-coffee-run.css` (floating rule + reduced-motion
-override), `tests/e2e/kofi-persistent-cloud.mobile.spec.ts` (new dock/float
-runtime-path test).
+## Still needed from Veeresh
 
-Verification: RED spec 4 consecutive green runs (6/6 each, 1 skip by
-design) + the no-URL fail-closed test green; kofi-tour-cloud 6/6;
-storyteller mobile 22/22, desktop 13/13, storyteller project 6/6;
-unit 1089/1089; tsc clean; lint-cards GATE PASSED; build:pages green.
-`mobile-home-overlap` has 20 pre-existing failures on this branch (Comet
-banner-host staleness, Cold Trail `.atlas-dossier` strict-mode, 324px
-below-main slack) — verified identical on the pre-fix build, zero caused
-by this change. Known residual: at scroll-top the floating cloud sits over
-the GeoDetective card's empty bottom-right padding and the Cold Trail
-card's top header — no CTA, figure, banner, or Skip is covered; inherent
-to any always-visible HUD on a full-bleed viewport.
-
-## Pending
-
-- Independent review (Chitti/owner panel) — scrum verdict is the entry
-  ticket, not the gate. PR open, never merge (owner's call).
-
-## Verification (coordinator, 2026-10-10 ~20:00 CDT)
-
-### Red-team pass — 2 BLOCKERS found and fixed
-- **BREAK 1**: Muted figure tap played audible narration (new idle branch
-  had no `isSoundEnabled()` check) — violated the owner's "sound off until
-  I say so" ruling. Fixed: added the mute guard in `handleFigureToggle`
-  (storyteller.tsx). New test R1: muted tap stays silent (zero requests,
-  zero audio elements, icon shows VolumeX).
-- **BREAK 2**: Gesture-flag reset fired even after natural end (phase
-  lingers "greeting_audio" for POST_AUDIO_HOLD_MS after the clip ends) —
-  greeting would replay. Fixed: capture `audioRef.current !== null`
-  BEFORE `stopAudio()` nulls it; only reset the flag on a mid-flight kill
-  (storyteller-home.tsx). New test R2: post-end tour-kill does NOT replay
-  the greeting.
-
-### Black-box journeys — 11/11 green (built dist)
-- T1: idle figure tap starts REAL audio (element `paused===false`,
-  `readyState≥2`, `currentTime` advancing — not just React state).
-- R1: muted tap stays silent (red-team BREAK 1 regression).
-- T2: speaker toggle flips Volume2↔VolumeX visibly.
-- T3: tour-kill → post-tour tap starts audio (gesture flag re-armed).
-- R2: post-end tour-kill does NOT replay greeting (red-team BREAK 2).
-- J2/J3: full user journeys (fresh visit → tap → pause → resume).
-- J1 (mobile 390px): fresh visit → tap → narration → pause → resume.
-
-### Interaction-matrix re-walk — 4/4 green
-- idle → tap starts; playing → tap pauses → tap resumes (element-level);
-  failed → tap restarts; ended → tap replays.
-
-### Visual regression — no out-of-scope changes
-- 9 key screens at 390px + 1280px vs main-c416187 baselines.
-- 2/9 pixel-identical. 5/9 differ by <0.01% (48-49px, anti-aliasing).
-- 2/9 larger diffs (game-aim 12%, home-top 55%) are capture-state
-  differences (tutorial overlay timing, satellite map tiles) — NOT from
-  this PR's changes (aria-label, muted icon, flag reset are invisible in
-  these captures).
-
-### Gates (final)
-- `npx tsc --noEmit` — clean
-- `npm test` — 1089/1089 green (node --test)
-- `node scripts/lint-cards.mjs` — GATE PASSED
-- `npm run build:pages` — green
-- Playwright: 11/11 tapstart specs green on rebuilt dist
-
-### Test-environment note
-- T1 initially flaked (`currentTime` stuck at 0): `paused===false` can be
-  true while the decoder is starved on a loaded VM. Fixed by gating on
-  `readyState ≥ 2` before asserting clock advancement. VM was at 1GB
-  available RAM during the flakes.
-
-## Judgment calls
-
-- Reused telemetry trigger "replay" for the figure-tap start (task
-  directed; no new trigger type). `narration_replayed` event still fires
-  only from the replay button — the tap start emits `narration_started`
-  with trigger "replay".
-- Did NOT change the speaker button's aria-label ("Hear the storyteller's
-  story") — it still plays narration when tapped even while muted
-  (manual recovery path, same contract as the home greeting's
-  muted-tap hint); the icon change is purely the indicator per scope.
+- Exact repro steps for the freeze (was he typing in "Search the map", tapping the
+  map, or opening clues?). If the freeze happens WITHOUT typing, this fix is a
+  real perf win but not the root cause — say so and the investigation reopens
+  (next suspects: tile CDN behavior on his network, device-specific).
