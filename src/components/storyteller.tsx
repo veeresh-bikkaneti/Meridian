@@ -56,6 +56,9 @@ export interface StorytellerNarrationProps {
   /** Which narration line to speak — resolved to STORYTELLER_LINES inside
       this lazy chunk so hosts never import the caption copy. */
   lineKey: StorytellerLineKey;
+  /** Figure visibility switch. All call sites pass false since 2026-10-10
+      (owner ruling: figure is banner-only, which renders StorytellerMascot
+      directly). Kept as a deliberate reversible switch — do not remove. */
   showFigure: boolean;
   /** "dock" = ResultCard top-left · "modal" = summary modal · "inline" = GeoDetective hook. */
   variant: "dock" | "modal" | "inline";

@@ -15,6 +15,7 @@ import {
   armTourReturnLine,
   takeTourReturnLine,
 } from "./storyteller-session";
+import { recordMilestone } from "@/lib/observability";
 import "./storyteller-home.css";
 
 // Storyteller banner host — the Storyteller sits IN THE BANNER beside the
@@ -651,6 +652,13 @@ export default function StorytellerHomeHost({
       <StorytellerMascot
         label={figureLabel}
         onToggle={handleFigureTap}
+        onLoaded={() => {
+          try {
+            recordMilestone("storyteller_ready");
+          } catch {
+            // Never break the home screen.
+          }
+        }}
       />
       {/* Idle engagement (owner 2026-10-09): the bard hums to invite play —
           music notes rise while he "sings"; a scroll unfurls as if he's
