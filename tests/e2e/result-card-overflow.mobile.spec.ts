@@ -3,135 +3,449 @@ import {
   serveBuiltArtifact,
   startGlobeRun,
   readPhase,
-  dropButton,
   dismissTileOverlayIfPresent,
+  commitPin,
+  commitMiss,
+  commitHit,
+  clickNextPlace,
+  readQuestion,
 } from "./helpers";
+import { BOUNDED_TEXT_REGISTRY } from "../../scripts/bounded-text-registry.mjs";
 
 /**
- * Regression: result-card text overflow at 390px (owner report 2026-10-11).
- * Three failures on the same card, all layout-only:
- *  1. .verdict-headline clipped at the card's right edge (flex 1 0 auto —
- *     the no-shrink headline overflowed instead of wrapping).
- *  2. .storyteller-dock caption cut off mid-word (absolute, left-only, and
- *     the karaoke nbsp joiner made the line unbreakable).
- *  3. .share-pre last lines hidden under the "more below" scroll cue
- *     (result-body bottom padding smaller than the cue).
+ * Result-card text containment, parametrized (WRAPPING_SPEC §6b):
+ * viewport {320, 390} × zoom {100%, 200%-equiv} × card variant
+ * {globe miss, globe hit, GeoDetective reveal, long-name place}.
  *
- * Black-box: plays the globe, drops a pin, then asserts what the user SEES —
- * no clipped/overlapping text — via geometry, not DOM internals.
+ * 200%-equiv zooms are expressed as CSS widths (200% halves CSS px):
+ * 390→195, 320→160.
+ *
+ * For every §6b text selector that is present: scrollWidth AND scrollHeight
+ * ≤ client+1, horizontal rect inside the card, computed white-space ≠
+ * nowrap (except the designed chip exceptions). Scroll top/mid/bottom
+ * re-asserts; an overlap assertion (no text rect covers another
+ * text/CTA rect — overlays by design are excluded); the closed-world
+ * check (every text node has a registered ancestor); the dev-tripwire
+ * marker must be absent. Screen recording kept per constitutional law.
+ *
+ * The GeoDetective reveal (.loop-reveal) is a separate component outside
+ * the BoundedText adoption (§4): it gets the generic geometric battery
+ * (no page-level horizontal overflow, no element-level spill), not the
+ * §6b selector list.
  */
-test.setTimeout(240_000);
-test.use({
-  viewport: { width: 390, height: 844 },
-  video: { mode: "on", size: { width: 390, height: 844 } },
-});
+test.setTimeout(300_000);
+test.use({ video: { mode: "on", size: { width: 390, height: 844 } } });
 
-test.beforeEach(async ({ context }) => {
-  await serveBuiltArtifact(context);
-});
+const TEXT_SELECTORS = [
+  ".name-eyebrow",
+  ".difficulty-chip",
+  ".verdict-headline",
+  ".rname",
+  ".storyteller-dock .storyteller-caption",
+  ".agep-listen-row",
+  '[data-testid="score-breakdown"]',
+  ".result-note",
+  ".result-story",
+  ".result-source",
+  '[data-testid="pin-compare-line"]',
+  ".yourpin-name",
+  ".truespot-name",
+  '[data-testid="miss-subscript"]',
+  '[data-testid="growth-line"]',
+  ".ai-story-badge",
+  ".share-pre",
+  ".result-cta button",
+  ".scroll-cue-text",
+];
 
-test("result card: no clipped or overlapping text at 390px", async ({ page }) => {
+// Designed single-line exceptions (spec §4 DO NOT ADOPT).
+const NOWRAP_OK = new Set([".difficulty-chip", ".ai-story-badge"]);
+// Overlays by design — they cover scrolled content on purpose.
+const OVERLAP_SKIP = new Set([
+  ".scroll-cue-text",
+  ".storyteller-dock .storyteller-caption",
+]);
+
+interface TextEl {
+  sel: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  scrollW: number;
+  clientW: number;
+  scrollH: number;
+  clientH: number;
+  whiteSpace: string;
+}
+
+async function collectTextEls(
+  page: import("playwright/test").Page,
+): Promise<{ els: TextEl[]; card: { x: number; y: number; w: number; h: number } }> {
+  return page.evaluate((sels) => {
+    const els: TextEl[] = [];
+    for (const sel of sels) {
+      for (const el of Array.from(document.querySelectorAll<HTMLElement>(sel))) {
+        if (!el.isConnected) continue;
+        const r = el.getBoundingClientRect();
+        if (r.width === 0 && r.height === 0) continue;
+        els.push({
+          sel,
+          x: r.x,
+          y: r.y,
+          w: r.width,
+          h: r.height,
+          scrollW: el.scrollWidth,
+          clientW: el.clientWidth,
+          scrollH: el.scrollHeight,
+          clientH: el.clientHeight,
+          whiteSpace: getComputedStyle(el).whiteSpace,
+        });
+      }
+    }
+    const cardEl = document.querySelector(".result-card")!;
+    const c = cardEl.getBoundingClientRect();
+    return { els, card: { x: c.x, y: c.y, w: c.width, h: c.height } };
+  }, TEXT_SELECTORS);
+}
+
+function assertContainment(
+  els: TextEl[],
+  card: { x: number; y: number; w: number; h: number },
+) {
+  expect(els.length, "expected text elements on the card").toBeGreaterThan(0);
+  for (const el of els) {
+    expect(
+      el.scrollW,
+      `${el.sel}: horizontal spill (scrollWidth ${el.scrollW} > clientWidth ${el.clientW})`,
+    ).toBeLessThanOrEqual(el.clientW + 1);
+    expect(
+      el.scrollH,
+      `${el.sel}: vertical clip (scrollHeight ${el.scrollH} > clientHeight ${el.clientH})`,
+    ).toBeLessThanOrEqual(el.clientH + 1);
+    // Horizontal containment vs the card. (Vertical is scroll-relative
+    // for body content — the scroll-position battery covers reachability.)
+    expect(el.x, `${el.sel}: spills past card left`).toBeGreaterThanOrEqual(card.x - 1);
+    expect(
+      el.x + el.w,
+      `${el.sel}: spills past card right`,
+    ).toBeLessThanOrEqual(card.x + card.w + 1);
+    if (!NOWRAP_OK.has(el.sel)) {
+      expect(el.whiteSpace, `${el.sel}: computed white-space is nowrap`).not.toBe("nowrap");
+    }
+  }
+}
+
+/** No text rect may cover another text/CTA rect (ancestor pairs and
+ *  by-design overlays excluded). */
+async function assertNoOverlap(page: import("playwright/test").Page) {
+  const pairs = await page.evaluate((sels) => {
+    const skip = new Set([
+      ".scroll-cue-text",
+      ".storyteller-dock .storyteller-caption",
+    ]);
+    const els = Array.from(document.querySelectorAll<HTMLElement>(sels.join(","))).filter(
+      (el) => {
+        const r = el.getBoundingClientRect();
+        return r.width > 0 && r.height > 0;
+      },
+    );
+    const bad: string[] = [];
+    const rect = (el: HTMLElement) => el.getBoundingClientRect();
+    for (let i = 0; i < els.length; i++) {
+      for (let j = i + 1; j < els.length; j++) {
+        const a = els[i];
+        const b = els[j];
+        if (a.contains(b) || b.contains(a)) continue;
+        const sa = sels.find((s) => a.matches(s)) ?? "?";
+        const sb = sels.find((s) => b.matches(s)) ?? "?";
+        if (skip.has(sa) || skip.has(sb)) continue;
+        const ra = rect(a);
+        const rb = rect(b);
+        const overlap =
+          ra.x < rb.x + rb.width - 1 &&
+          rb.x < ra.x + ra.width - 1 &&
+          ra.y < rb.y + rb.height - 1 &&
+          rb.y < ra.y + ra.height - 1;
+        if (overlap) bad.push(`${sa} overlaps ${sb}`);
+      }
+    }
+    return bad;
+  }, TEXT_SELECTORS);
+  expect(pairs, `overlapping text rects: ${pairs.join("; ")}`).toEqual([]);
+}
+
+/** Closed-world (§6c.2): every text node inside .result-card must have an
+ *  ancestor-or-self in the registry. */
+async function assertClosedWorld(page: import("playwright/test").Page) {
+  const bad = await page.evaluate((sels) => {
+    const card = document.querySelector(".result-card")!;
+    const sel = sels.join(",");
+    const walker = document.createTreeWalker(card, NodeFilter.SHOW_TEXT);
+    const bad: string[] = [];
+    let n: Node | null;
+    while ((n = walker.nextNode())) {
+      const text = (n.textContent ?? "").trim();
+      if (!text) continue;
+      const el = n.parentElement!;
+      if (!el.closest(sel)) {
+        bad.push(`"${text.slice(0, 60)}" @ <${el.tagName.toLowerCase()} class="${el.className}">`);
+      }
+    }
+    return bad;
+  }, BOUNDED_TEXT_REGISTRY.map((e) => e.selector));
+  expect(bad, `unregistered text nodes: ${bad.join("; ")}`).toEqual([]);
+}
+
+async function assertTripwireQuiet(page: import("playwright/test").Page) {
+  // Dev-only marker; absent in prod builds (vacuous there) and must be
+  // absent on a clean card in dev builds.
+  expect(
+    await page.locator('[data-overflow="true"]').count(),
+    "tripwire overflow markers on a clean card",
+  ).toBe(0);
+}
+
+/** Scroll the body top/mid/bottom, re-asserting containment each time. */
+async function scrollBattery(page: import("playwright/test").Page) {
+  const body = page.locator(".result-body");
+  for (const frac of [0, 0.5, 1]) {
+    await body.evaluate(
+      (el, f) => el.scrollTo(0, el.scrollHeight * f),
+      frac,
+    );
+    await page.waitForTimeout(350);
+    const { els, card } = await collectTextEls(page);
+    assertContainment(els, card);
+  }
+  // Evidence screenshots (kept from the original spec).
+  await body.evaluate((el) => el.scrollTo(0, 0));
+  await page.waitForTimeout(300);
+  await page.screenshot({ path: "/tmp/overflow-verify-top.png" });
+  await body.evaluate((el) => el.scrollTo(0, el.scrollHeight / 2));
+  await page.waitForTimeout(300);
+  await page.screenshot({ path: "/tmp/overflow-verify-mid.png" });
+  await body.evaluate((el) => el.scrollTo(0, el.scrollHeight));
+  await page.waitForTimeout(300);
+  await page.screenshot({ path: "/tmp/overflow-verify-bottom.png" });
+}
+
+const WIDTHS = [
+  { width: 390, label: "390@100%" },
+  { width: 320, label: "320@100%" },
+  { width: 195, label: "390@200%" },
+  { width: 160, label: "320@200%" },
+];
+
+type Variant = "globe-miss" | "globe-hit" | "geodetective-reveal" | "long-name-place";
+
+/** Width-aware guaranteed miss (helpers' commitMiss hardcodes x=500,
+ *  which is off-screen at 160px). */
+async function commitMissAt(
+  page: import("playwright/test").Page,
+  x: number,
+): Promise<void> {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const { phase } = await commitPin(page, x, 420);
+    if (phase === "done") return;
+    await clickNextPlace(page);
+    await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+  }
+  throw new Error("commitMissAt: hit three places in a row");
+}
+
+async function setupVariant(
+  page: import("playwright/test").Page,
+  variant: Variant,
+  width: number,
+): Promise<void> {
+  if (variant === "geodetective-reveal") {
+    await page.goto("http://127.0.0.1:4123/Meridian/?loop-puzzle=218");
+    await page.getByRole("button", { name: "🔎 Solve a mystery" }).click();
+    await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
+      timeout: 30_000,
+    });
+    // Guess the pinned target through the search box (same seam as
+    // geodetective.spec.ts).
+    const entry = await page.evaluate(async () => {
+      const store = JSON.parse(localStorage.getItem("meridian.loop.v2")!);
+      const clue = await fetch(`loop/clues/${store.current.index}.json`).then((r) => r.json());
+      const names: { id: string; n: string }[] = await fetch("loop/names.json").then((r) =>
+        r.json(),
+      );
+      return names.find((e) => e.id === clue.placeId)!;
+    });
+    const box = page.getByRole("combobox", { name: "Search the map" });
+    await box.click();
+    await box.fill(entry.n);
+    const option = page.locator(`li[role="option"][data-entry-id="${entry.id}"]`);
+    await expect(option).toBeVisible({ timeout: 30_000 });
+    await option.click();
+    await expect(page.getByRole("dialog")).toBeVisible({ timeout: 15_000 });
+    await page.getByRole("button", { name: "Guess this place" }).click();
+    await expect(page.locator(".loop-reveal")).toBeVisible({ timeout: 30_000 });
+    return;
+  }
+
   await startGlobeRun(page);
   await dismissTileOverlayIfPresent(page);
+  // Tap x scales with the viewport: the old (500, 400) is off-screen at
+  // 160px. The map fills the viewport, so 72% width always lands on it.
+  const tapX = Math.round(width * 0.72);
 
-  // Drop a pin far from anywhere likely (miss card shows the longest headline).
-  // The map tap is retried: on slow software rendering the first tap can
-  // land before the canvas click handler is ready.
-  await expect
-    .poll(
-      async () => {
-        await page.mouse.click(195, 420);
-        await page.waitForTimeout(800);
-        return await dropButton(page).isEnabled();
-      },
-      { timeout: 30_000 },
-    )
-    .toBe(true);
-  await dropButton(page).click();
-  await expect
-    .poll(() => readPhase(page), { timeout: 20_000 })
-    .toMatch(/^(story|done)$/);
+  if (variant === "globe-miss") {
+    const { phase } = await commitPin(page, tapX, 420);
+    if (phase === "story") {
+      // Rare accidental hit: burn it and force the miss path.
+      await clickNextPlace(page);
+      await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+      await commitMissAt(page, tapX);
+    }
+    return;
+  }
 
-  const card = page.locator(".result-card");
-  await expect(card).toBeVisible();
+  if (variant === "globe-hit") {
+    await commitHit(page);
+    await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("story");
+    return;
+  }
 
-  // No page-level horizontal overflow anywhere.
+  // long-name-place: burn places until the question names a long place
+  // (≥24 chars), then miss it — the ledger + place-name get the workout.
+  for (let i = 0; i < 8; i++) {
+    const q = await readQuestion(page);
+    const name = q.replace(/^Find\s+/, "").replace(/\.\s*$/, "");
+    if (name.length >= 24) break;
+    await commitMissAt(page, tapX);
+    await clickNextPlace(page);
+    await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+    if (i === 7) throw new Error("long-name-place: no ≥24-char place in 8 deals");
+  }
+  const q = await readQuestion(page);
+  expect(q.replace(/^Find\s+/, "").replace(/\.\s*$/, "").length).toBeGreaterThanOrEqual(24);
+  await commitPin(page, tapX, 420);
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toMatch(/^(story|done)$/);
+}
+
+async function assertLoopReveal(page: import("playwright/test").Page) {
+  // Generic geometric battery for the out-of-scope dossier surface.
   const pageOverflow = await page.evaluate(
     () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
   );
-  expect(pageOverflow).toBeLessThanOrEqual(1);
-
-  // 1. Verdict headline: the text must fit its own box (no clipping).
-  const headline = page.locator(".verdict-headline");
-  if ((await headline.count()) > 0) {
-    const { scrollWidth, clientWidth } = await headline.evaluate((el) => ({
-      scrollWidth: el.scrollWidth,
-      clientWidth: el.clientWidth,
-    }));
-    expect(
-      scrollWidth,
-      "verdict headline is clipped (scrollWidth > clientWidth)",
-    ).toBeLessThanOrEqual(clientWidth + 1);
-  }
-
-  // 2. Docked storyteller banner: the bubble must sit fully inside the card.
-  const dockCaption = page.locator(".storyteller-dock .storyteller-caption");
-  if ((await dockCaption.count()) > 0) {
-    const [capBox, cardBox] = await Promise.all([
-      dockCaption.boundingBox(),
-      card.boundingBox(),
-    ]);
-    expect(capBox, "dock caption has no box").not.toBeNull();
-    expect(cardBox, "card has no box").not.toBeNull();
-    if (capBox && cardBox) {
-      expect(capBox.x, "dock caption spills past card left").toBeGreaterThanOrEqual(
-        cardBox.x - 1,
-      );
-      expect(
-        capBox.x + capBox.width,
-        "dock caption spills past card right",
-      ).toBeLessThanOrEqual(cardBox.x + cardBox.width + 1);
+  expect(pageOverflow, "page-level horizontal overflow").toBeLessThanOrEqual(1);
+  const bad = await page.evaluate(() => {
+    const bad: string[] = [];
+    for (const el of Array.from(
+      document.querySelectorAll<HTMLElement>(".loop-reveal p, .loop-reveal h2, .loop-reveal a"),
+    )) {
+      if (el.scrollWidth > el.clientWidth + 1) {
+        bad.push(`${el.tagName}.${el.className}: scrollWidth ${el.scrollWidth} > ${el.clientWidth}`);
+      }
     }
-  }
+    return bad;
+  });
+  expect(bad, `loop-reveal spills: ${bad.join("; ")}`).toEqual([]);
+}
 
-  // 3. Share block: scroll the body to the bottom. The cue hides itself
-  // there (moreBelow=false), so the real assertion is that the share
-  // block's last line is fully inside the visible scrollport — reachable
-  // and readable, never tucked under the cue's fade zone.
-  const sharePre = page.locator(".share-pre");
-  if ((await sharePre.count()) > 0) {
+for (const { width, label } of WIDTHS) {
+  for (const variant of ["globe-miss", "globe-hit", "geodetective-reveal", "long-name-place"] as Variant[]) {
+    test.describe(`result-card containment @ ${label} / ${variant}`, () => {
+      test.use({ viewport: { width, height: 844 } });
+
+      test.beforeEach(async ({ context }) => {
+        await serveBuiltArtifact(context);
+      });
+
+      test("no clipped, spilled, or overlapping text", async ({ page }) => {
+        await setupVariant(page, variant, width);
+
+        if (variant === "geodetective-reveal") {
+          await assertLoopReveal(page);
+          return;
+        }
+
+        const card = page.locator(".result-card");
+        await expect(card).toBeVisible();
+
+        // Let the dock caption's mount animation + karaoke settle and
+        // fonts load before measuring: a mid-animation read is not the
+        // shipped state.
+        await page.evaluate(() => document.fonts.ready.then(() => {}));
+        await page.waitForTimeout(600);
+
+        // No page-level horizontal overflow anywhere.
+        const pageOverflow = await page.evaluate(
+          () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        );
+        expect(pageOverflow, "page-level horizontal overflow").toBeLessThanOrEqual(1);
+
+        // The animated dock caption gets a poll-based recheck (it can be
+        // mid-transition on the first read).
+        const dockCaption = page.locator(".storyteller-dock .storyteller-caption");
+        if ((await dockCaption.count()) > 0) {
+          await expect
+            .poll(
+              () =>
+                dockCaption.evaluate(
+                  (el) => el.scrollHeight - el.clientHeight,
+                ),
+              { timeout: 8_000 },
+            )
+            .toBeLessThanOrEqual(1);
+        }
+
+        const { els, card: cardBox } = await collectTextEls(page);
+        assertContainment(els, cardBox);
+        await assertNoOverlap(page);
+        await assertClosedWorld(page);
+        await assertTripwireQuiet(page);
+
+        await scrollBattery(page);
+
+        // Re-assert the overlap + closed-world after scrolling.
+        await assertNoOverlap(page);
+        await assertClosedWorld(page);
+      });
+    });
+  }
+}
+
+test.describe("fold behavior @ 390px", () => {
+  test.use({ viewport: { width: 390, height: 844 } });
+
+  test.beforeEach(async ({ context }) => {
+    await serveBuiltArtifact(context);
+  });
+
+  test("worst-case card: primary action reachable within the scroll budget", async ({
+    page,
+  }) => {
+    await startGlobeRun(page);
+    await dismissTileOverlayIfPresent(page);
+    await commitMiss(page);
+    await expect(page.locator(".result-card")).toBeVisible();
+
+    // The primary action is pinned (never buried): visible with no scroll.
+    await expect(page.locator(".result-cta")).toBeInViewport();
+
+    // The buried end of the card (share block) is reachable by scrolling
+    // the body region — the last line lands fully inside the scrollport.
     const body = page.locator(".result-body");
     await body.evaluate((el) => el.scrollTo(0, el.scrollHeight));
     await page.waitForTimeout(400);
-    const [shareBox, bodyBox] = await Promise.all([
-      sharePre.boundingBox(),
-      body.boundingBox(),
-    ]);
-    expect(shareBox, "share block has no box").not.toBeNull();
-    expect(bodyBox, "result body has no box").not.toBeNull();
-    if (shareBox && bodyBox) {
-      expect(
-        shareBox.y + shareBox.height,
-        "share text's last line is cut off below the visible area",
-      ).toBeLessThanOrEqual(bodyBox.y + bodyBox.height + 2);
-      expect(
-        shareBox.y,
-        "share text's first line is cut off above the visible area",
-      ).toBeGreaterThanOrEqual(bodyBox.y - 2);
+    const sharePre = page.locator(".share-pre");
+    if ((await sharePre.count()) > 0) {
+      const [shareBox, bodyBox] = await Promise.all([
+        sharePre.boundingBox(),
+        body.boundingBox(),
+      ]);
+      expect(shareBox && bodyBox, "share + body boxes").toBeTruthy();
+      if (shareBox && bodyBox) {
+        expect(
+          shareBox.y + shareBox.height,
+          "share last line reachable inside the scrollport",
+        ).toBeLessThanOrEqual(bodyBox.y + bodyBox.height + 2);
+      }
     }
-  }
-
-  // Human-eyed evidence: the fixed card at top, mid-scroll (cue visible),
-  // and bottom.
-  await page.locator(".result-body").evaluate((el) => el.scrollTo(0, 0));
-  await page.waitForTimeout(300);
-  await page.screenshot({ path: "/tmp/overflow-verify-top.png" });
-  await page
-    .locator(".result-body")
-    .evaluate((el) => el.scrollTo(0, el.scrollHeight / 2));
-  await page.waitForTimeout(300);
-  await page.screenshot({ path: "/tmp/overflow-verify-mid.png" });
-  await page.locator(".result-body").evaluate((el) => el.scrollTo(0, el.scrollHeight));
-  await page.waitForTimeout(300);
-  await page.screenshot({ path: "/tmp/overflow-verify-bottom.png" });
+  });
 });
