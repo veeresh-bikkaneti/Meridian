@@ -36,11 +36,12 @@ for long URLs.
 
 ## Pending
 
-- Black-box e2e (running): `tests/e2e/result-card-overflow.mobile.spec.ts`
-- Visual diffs 390px + 1280px vs main
-- Red-team pass (long place names, long distances)
-- Screen recording of the test session
-- Rebase to zero conflicts, open PR (never merge)
+- [x] Black-box e2e: `tests/e2e/result-card-overflow.mobile.spec.ts` — GREEN
+- [x] Visual verification 390px + 1280px — fixed card confirmed by eye; main-vs-branch before/after captured (main reproduces all three bugs)
+- [x] Red-team: dock is result-card-only; `.verdict-headline` loop usage keeps 11px via later `.loop-verdict-headline` rule; nbsp→space makes visual/aria text match; RTL-safe (physical left+right bounds)
+- [x] Screen recording: `tests/e2e/evidence/result-card-overflow-390px.webm`
+- [x] Rebase: zero conflicts (main @ 51ed7f5, unmoved)
+- [x] Pushed, PR opened (never merged)
 
 ---
 
