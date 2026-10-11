@@ -195,7 +195,7 @@ test("F11 overlap: three overlapping rings yield a closed lens polygon", () => {
   );
 });
 
-test("F11 overlap: disjoint rings fall back to the centroid marker", () => {
+test("F11 overlap: disjoint rings → no polygon (centroid computed but not rendered)", () => {
   const region = tripleOverlap([
     { lon: -100, lat: 0, radiusKm: 200 },
     { lon: 0, lat: 0, radiusKm: 200 },
@@ -242,7 +242,7 @@ test("buildEvidenceOverlays: lens polygon when locked rings overlap", () => {
   assert.ok(out.overlap?.polygon, "close-together locked rings share a common area");
 });
 
-test("buildEvidenceOverlays: centroid fallback when locked rings are disjoint", () => {
+test("buildEvidenceOverlays: no polygon when locked rings are disjoint", () => {
   // playerCenters are far apart → no triple intersection.
   const out = buildEvidenceOverlays(caseData, lockedProgress(), null);
   assert.ok(out.overlap, "the lens region still exists");

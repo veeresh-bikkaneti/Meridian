@@ -52,8 +52,8 @@ export interface LockedRing {
 export interface OverlapRegion {
   /**
    * Closed lon/lat ring of the triple intersection (the F11 lens), or null
-   * when the three locked rings share no common area — the centroid marker
-   * is the fallback anchor then.
+   * when the three locked rings share no common area — no marker is shown
+   * then; the UI says the rings don't cross instead.
    */
   polygon: Array<[number, number]> | null;
   /** Mean of the three locked centers (pulse anchor, fallback marker). */
@@ -159,7 +159,8 @@ export function tripleOverlap(rings: LockedRing[]): OverlapRegion | null {
   let inter = clipConvex(polys[1], polys[0]);
   inter = clipConvex(inter, polys[2]);
   // A closed ring with ≥3 distinct vertices is a real area; anything
-  // smaller (touching/empty) falls back to the centroid marker.
+  // smaller (touching/empty) yields no polygon — disjoint rings show
+  // no marker at all.
   const distinct = inter.length >= 4 ? inter.slice(0, -1) : inter;
   const polygon = distinct.length >= 3 ? inter : null;
   return { polygon, centroid };
