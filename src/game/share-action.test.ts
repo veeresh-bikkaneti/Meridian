@@ -53,15 +53,15 @@ describe("shareScore — Web Share path", () => {
     });
     const outcome = await shareScore({
       title: "Meridian score",
-      text: "meridian October 3\nhttps://veeresh-bikkaneti.github.io/Meridian/\n1,000 over 5 places · 200 avg/place · Globe",
+      text: "meridian October 3\nhttps://meridian.knowledgetest.workers.dev/\n1,000 over 5 places · 200 avg/place · Globe",
       url: SHARE_URL,
     });
     assert.equal(outcome, "shared");
     assert.deepEqual(calls, [
       {
         title: "Meridian score",
-        text: "meridian October 3\nhttps://veeresh-bikkaneti.github.io/Meridian/\n1,000 over 5 places · 200 avg/place · Globe",
-        url: "https://veeresh-bikkaneti.github.io/Meridian/",
+        text: "meridian October 3\nhttps://meridian.knowledgetest.workers.dev/\n1,000 over 5 places · 200 avg/place · Globe",
+        url: "https://meridian.knowledgetest.workers.dev/",
       },
     ]);
   });
@@ -170,7 +170,7 @@ describe("sessionShareText — session payload contract", () => {
     const text = sessionShareText({ summary, regionName: "Nebraska", dateKey: "2026-10-03", now });
     assert.equal(
       text,
-      "meridian October 3\nhttps://veeresh-bikkaneti.github.io/Meridian/\n12,480 over 60 places · 208 avg/place · 🔥 14 best streak · Nebraska",
+      "meridian October 3\nhttps://meridian.knowledgetest.workers.dev/\n12,480 over 60 places · 208 avg/place · 🔥 14 best streak · Nebraska",
     );
   });
 
@@ -218,7 +218,7 @@ describe("sessionShareText — cumulative breakdown", () => {
     assert.equal(
       text,
       "meridian October 3\n" +
-        "https://veeresh-bikkaneti.github.io/Meridian/\n" +
+        "https://meridian.knowledgetest.workers.dev/\n" +
         "473 over 12 places · 39 avg/place · 🔥 3 best streak · Nebraska\n" +
         "Easy 8/10 (80%) · 240 pts\n" +
         "Medium 2/2 (100%) · 233 pts\n" +
@@ -293,7 +293,7 @@ describe("sessionShareText — cumulative breakdown", () => {
     // The approved 3-line contract stays byte-identical for identical inputs.
     assert.equal(
       lines.slice(0, 3).join("\n"),
-      `meridian October 3\nhttps://veeresh-bikkaneti.github.io/Meridian/\n` +
+      `meridian October 3\nhttps://meridian.knowledgetest.workers.dev/\n` +
         `${summary.totalScore.toLocaleString("en-US")} over ${summary.placesPlayed} places · ` +
         `${summary.averagePerPlace} avg/place · 🔥 ${summary.bestStreak} best streak · Nebraska`,
     );
