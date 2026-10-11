@@ -72,10 +72,20 @@ fold test, overlap + closed-world assertions).
       scrollWidth by design); geodetective + hit scoped to ≥320px CSS
       (loop/map flows broken at 160/195px on main too — pre-existing).
 - [x] npm test (full suite) — 1860/1860 green
-- [ ] Dev-build tripwire test (BOUNDED_TRIPWIRE=1)
-- [ ] Visual diffs 390px + 1280px vs main
-- [ ] Red-team pass (beyond font-failure)
-- [ ] Screen recording of worst-case fixture cards
+- [x] Dev-build tripwire test (BOUNDED_TRIPWIRE=1) — PASS: clean card
+      trips zero markers; forced 10px overflow trips data-overflow +
+      [BoundedText] console.error. (Fixed: NODE_ENV=development needed
+      for import.meta.env.DEV; flex:none to defeat flex-grow in the
+      forced-overflow step; in-viewport tap in setup.)
+- [x] Visual diffs 390px + 1280px vs main — fixture vdiff: 14.9%/14.2%
+      diff, all intended (smaller headline, wrapping eyebrows, no more
+      token/URL spill; main shows the reported bugs: clipped headline,
+      spilling URL). Temp harness deleted; main worktree removed.
+- [x] Red-team pass — odd viewports 280px / 844×390 landscape /
+      390×1200 tall: fixture battery green. Font-failure (fallback
+      serif) green in fixture suite.
+- [x] Screen recording — worst-case fixture cards @390px:
+      ~/workspace/your_files/meridian-boundedtext-verification/boundedtext-fixture-390px.webm
 - [ ] Rebase to zero conflicts; PR #135 body update
 
 # BRANCH_STATUS — fix/result-card-overflow
