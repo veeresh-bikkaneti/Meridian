@@ -46,7 +46,10 @@
  *     zoom > 3.2 → starts the `relock` beat.
  *
  * --- Closed intent vocabulary (the only things this module may emit) ---
- *   set-projection {projection: "globe" | "mercator"} — adapter gates on map.isStyleLoaded()
+ *   (Projection is NOT an intent: the adapter declares the zoom-interpolated
+ *   morph once at map init, so there are no projection swaps to emit. The
+ *   controller keeps a discrete logical projection — globe at/below 2.2,
+ *   mercator at/above 3.2 — updated by the threshold logic below.)
  *   set-max-bounds {bounds: [w,s,e,n] | null}
  *   gestures {enabled: boolean} — adapter maps to individual map.<handler>.enable()/disable()
  *   tap-handlers {enabled: boolean} — adapter attaches/detaches the DOM pointer listeners
@@ -89,19 +92,21 @@
  *   return beat (beginReturn → ease back to the region framing;
  *   completeReturn re-arms taps) so the next question never starts at the
  *   gap-view framing.
- * - Narrow beat style load: set-projection throws before style load, so the
- *   adapter gates every projection swap on `map.isStyleLoaded()`, deferring
- *   to the style `load` event. Camera intents are transform-only and must NOT
- *   be gated on style load: gating jump-to caused a never-fires race in the
- *   reduced-motion intro (the intent is emitted synchronously after
- *   `new Map()`; the deferred `once("load")` handler never ran and the map
- *   stayed at zoom 1 while the live region announced the region view).
- *   fly-to/ease-to keep their historical gate — they fire ~1200 ms into the
- *   intro when the style is loaded in practice, and that path is verified.
- * - Gate every set-projection on `map.isStyleLoaded()` (it throws otherwise);
- *   treat set-projection as idempotent (a redundant swap is a no-op).
- * - The controller updates its tracked projection optimistically when it emits
- *   a swap; adapter-reported snapshots are the truth and reconverge tracking.
+ * - Projection morph: the adapter declares the zoom-interpolated projection
+ *   ONCE at map init (['interpolate',['linear'],['zoom'],2.2,
+ *   'vertical-perspective',3.2,'mercator']) — MapLibre's supported globe-morph
+ *   path (permanent GlobeProjection + GlobeTransform), so there are NO
+ *   discrete projection swaps and no tile-manager reload bursts. The
+ *   controller's tracked projection stays a discrete logical state (globe
+ *   ≤ 2.2, mercator ≥ 3.2) owned by the threshold logic; snapshots carry it
+ *   and reconverge tracking.
+ * - Camera intents are transform-only and must NOT be gated on style load:
+ *   gating jump-to caused a never-fires race in the reduced-motion intro
+ *   (the intent is emitted synchronously after `new Map()`; the deferred
+ *   `once("load")` handler never ran and the map stayed at zoom 1 while the
+ *   live region announced the region view). fly-to/ease-to keep their
+ *   historical gate — they fire ~1200 ms into the intro when the style is
+ *   loaded in practice, and that path is verified.
  * - Relock beat: T_IN fires at the gesture's zoomend, BEFORE the gesture's
  *   trailing moveend. The controller consumes that trailing moveend via the
  *   still-latched gestureStartZoom (returns []), so the beat completes only on
@@ -176,7 +181,6 @@ export interface ZoomSnapshot {
 }
 
 export type ZoomSpaceIntent =
-  | { type: "set-projection"; projection: ProjectionType }
   | { type: "set-max-bounds"; bounds: RegionBounds | null }
   | { type: "gestures"; enabled: boolean }
   | { type: "tap-handlers"; enabled: boolean }
@@ -236,6 +240,13 @@ export interface RevealRequest {
 export interface ZoomSpaceOptions {
   edition: ZoomSpaceEdition;
   prefersReducedMotion: boolean;
+  /**
+   * Logical projection at construction. The restore path (tile-Retry /
+   * webglcontextlost) re-opens mid-run, so it seeds the captured viewport's
+   * logical projection — the morph itself is zoom-driven, declared once by
+   * the adapter. Defaults to "globe" (fresh intro starts in space).
+   */
+  initialProjection?: ProjectionType;
 }
 
 function pointInBounds(point: LngLat, bounds: RegionBounds): boolean {
@@ -253,8 +264,10 @@ export class ZoomSpaceController {
   private readonly edition: ZoomSpaceEdition;
   private readonly reducedMotion: boolean;
 
-  // Tracked camera truth: adapter snapshots win; optimistic updates apply when
-  // the controller itself emits a set-projection (adapter gates on style load).
+  // Tracked camera truth: the discrete LOGICAL projection (globe at/below 2.2,
+  // mercator at/above 3.2). The map's projection morphs continuously with
+  // zoom (declared once at init — no swaps), so the controller owns this
+  // state and the adapter's snapshots reconverge it.
   private trackedProjection: ProjectionType = "globe";
   private trackedZoom = 1.0;
   private trackedCenter: LngLat = [0, 0];
@@ -286,6 +299,7 @@ export class ZoomSpaceController {
   constructor(options: ZoomSpaceOptions) {
     this.edition = options.edition;
     this.reducedMotion = options.prefersReducedMotion;
+    this.trackedProjection = options.initialProjection ?? "globe";
   }
 
   get state(): ZoomSpaceState {
@@ -353,7 +367,9 @@ export class ZoomSpaceController {
       intents.push({ type: "rearm-tiles" });
       // Respectful, never a frozen mid-spin frame: no spin, no animation.
       if (this.flat && region !== null) {
-        intents.push({ type: "set-projection", projection: "mercator" });
+        // No discrete swap: the map's zoom-interpolated projection morphs
+        // continuously — the controller just records the logical state
+        // (the jump lands in the morph's mercator arm).
         this.trackedProjection = "mercator";
         intents.push({
           type: "jump-to",
@@ -462,8 +478,8 @@ export class ZoomSpaceController {
     if (bigMiss && this.flat && this.trackedProjection === "mercator") {
       // REGION→SPACE release at reveal start: the camera was going to
       // leave the bounds anyway; the release is the honest version of a
-      // maxZoom cap. Belt-and-braces order: projection first, then null bounds.
-      intents.push({ type: "set-projection", projection: "globe" });
+      // maxZoom cap. No swap intent — the projection morphs continuously
+      // with zoom; only the logical state flips to globe here.
       intents.push({ type: "set-max-bounds", bounds: null });
       this.trackedProjection = "globe";
     }
@@ -585,15 +601,10 @@ export class ZoomSpaceController {
     // Tile-honesty re-arm opens the narrow phase (full 15 s watchdog budget
     // from narrow start, not from the intro spin).
     intents.push({ type: "rearm-tiles" });
-    // Synchronous swap for all cases: the previous mid-flight crossing swap
-    // (fired from onMove at zoom >= Z_FLAT_IN) was racy — if onMove didn't
-    // fire at exactly the crossing zoom, the projection stayed "globe",
-    // breaking T_OUT and the zoom buttons (maxBounds constraint). The swap
-    // at beat start is masked by the flight's initial motion.
-    // (Internal note: the in-flight flyTo frame closure keeps
-    // interpolating while applyUpdatedTransform value-copies onto the
-    // post-swap transform — re-verify on any maplibre-gl upgrade.)
-    intents.push({ type: "set-projection", projection: "mercator" });
+    // The narrow beat lands in the mercator arm of the zoom-interpolated
+    // projection morph (settle zooms sit above the morph's flat arm), so no
+    // swap is needed — the logical projection flips synchronously at beat
+    // start and the visual morph is masked by the flight's initial motion.
     this.trackedProjection = "mercator";
     intents.push({
       type: "fly-to",
@@ -609,9 +620,8 @@ export class ZoomSpaceController {
   /**
    * Single move-listener input: latches gestureStartZoom on the
    * settled→moving transition (never during a beat — gestures are physically
-   * disarmed, so a mid-beat move is the beat's own). The narrow-beat
-   * projection swap is synchronous at beat start (see onSpinTimer), so no
-   * mid-flight crossing detection lives here.
+   * disarmed, so a mid-beat move is the beat's own). The projection morphs
+   * continuously with zoom, so no mid-flight crossing detection lives here.
    */
   onMove(snapshot: ZoomSnapshot): ZoomSpaceIntent[] {
     this.track(snapshot);
@@ -717,10 +727,10 @@ export class ZoomSpaceController {
         zoom < this.gestureStartZoom &&
         zoom < Z_GLOBE_OUT
       ) {
-        // Escape: projection first, then the explicit null-bounds release.
+        // Escape: the explicit null-bounds release. No swap intent — the
+        // projection morphs continuously with zoom; the logical state flips.
         this.trackedProjection = "globe";
         return [
-          { type: "set-projection", projection: "globe" },
           { type: "set-max-bounds", bounds: null },
           { type: "announce", message: "Space view" },
         ];
@@ -754,8 +764,8 @@ export class ZoomSpaceController {
       // re-fire: the gesture zoomed in.)
       // Note: do NOT set maxBounds — it blocks map.zoomOut(), preventing
       // the user from zooming back out to space. The thresholds handle
-      // region/space transitions.
-      intents.push({ type: "set-projection", projection: "mercator" });
+      // region/space transitions. No swap intent: the morph already renders
+      // mercator at this zoom — only the logical state flips.
       this.trackedProjection = "mercator";
       intents.push({ type: "gestures", enabled: true });
       intents.push({ type: "tap-handlers", enabled: true });
@@ -793,11 +803,11 @@ export class ZoomSpaceController {
   private narrowCompletionIntents(): ZoomSpaceIntent[] {
     const intents: ZoomSpaceIntent[] = [];
     const region = this.region;
-    // Belt-and-braces: flat edition + still globe → the beat-start swap was
-    // lost; swap + lock immediately. maxBounds lands at completion, never
+    // Belt-and-braces: flat edition + still globe → the beat-start logical
+    // flip was lost; fix the tracking immediately. (No swap intent exists —
+    // the morph is zoom-driven.) maxBounds lands at completion, never
     // mid-beat (mid-beat setMaxBounds snaps via constrainInternal()).
     if (this.flat && this.trackedProjection === "globe") {
-      intents.push({ type: "set-projection", projection: "mercator" });
       this.trackedProjection = "mercator";
     }
     if (this.flat && region !== null) {
@@ -939,8 +949,8 @@ export class ZoomSpaceController {
       // Retain/return: the center was eased in-bounds first.
       // Note: do NOT set maxBounds — it blocks map.zoomOut(), preventing
       // the user from zooming back out to space. The thresholds handle
-      // region/space transitions.
-      intents.push({ type: "set-projection", projection: "mercator" });
+      // region/space transitions. No swap intent: the morph is zoom-driven —
+      // only the logical state flips.
       this.trackedProjection = "mercator";
     }
     intents.push({ type: "gestures", enabled: true });
@@ -951,8 +961,8 @@ export class ZoomSpaceController {
     });
     intents.push(...this.evaluateThresholds(zoom));
     // The realistic mid-beat commit lands here: Drop pin inside the 600 ms
-    // relock beat queues the reveal, and it flushes now — lock + swap +
-    // re-enable first, then the reveal's own disarm + paint + settle beat.
+    // relock beat queues the reveal, and it flushes now — lock + re-enable
+    // first, then the reveal's own disarm + paint + settle beat.
     intents.push(...this.flushQueuedReveal());
     return intents;
   }

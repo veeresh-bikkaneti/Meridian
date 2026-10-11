@@ -15,7 +15,7 @@
  * Pure and DOM-free: safe to import in node tests.
  */
 
-import type { StyleSpecification } from "maplibre-gl";
+import type { ProjectionSpecification, StyleSpecification } from "maplibre-gl";
 import type { FeatureCollection, MultiLineString } from "geojson";
 import { countries, coast, countryBorders } from "./atlas-data.ts";
 
@@ -31,11 +31,13 @@ export const SCOUT_COAST = "#8fb0e0";
 export const SCOUT_BORDER = "#54698f";
 
 /**
- * Build the scout outline style for the given projection. The land source
- * reuses the shared countries collection; coast/borders reuse the shared
- * prebuilt meshes — no duplicated geometry anywhere.
+ * Build the scout outline style for the given projection declaration — the
+ * zoom-interpolated morph for flat editions, plain "globe" for the globe
+ * edition. The land source reuses the shared countries collection;
+ * coast/borders reuse the shared prebuilt meshes — no duplicated geometry
+ * anywhere.
  */
-export function buildScoutStyle(projection: "globe" | "mercator"): StyleSpecification {
+export function buildScoutStyle(projection: ProjectionSpecification["type"]): StyleSpecification {
   return {
     version: 8,
     projection: { type: projection },
