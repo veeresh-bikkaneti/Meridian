@@ -759,6 +759,25 @@ function useDeckStatus(run: Run | null): { enabled: boolean; due: number; total:
   return status;
 }
 
+/**
+ * Place-card collapse redesign (2026-10-11): the question card opens
+ * COMPACT on narrow viewports (mobile-first 390px) so it never fills the
+ * screen; desktop keeps the full open card with instructions. One helper
+ * feeds the state initializer, the per-place reset, and replay — a single
+ * source of truth for the default. The 40rem breakpoint matches the
+ * mobile-first compact CSS.
+ */
+function defaultBubbleView(): BubbleViewState {
+  if (
+    typeof window !== "undefined" &&
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(max-width: 40rem)").matches
+  ) {
+    return "collapsed";
+  }
+  return "open";
+}
+
 export function GameApp() {
   // SFX autoplay gate (audio spec §7): the AudioContext is created on the
   // first user gesture ONLY. `{ once: true }` listeners — load-bearing, not
@@ -2695,7 +2714,7 @@ function PlayLoaded({
   // controller, which may hold an older render's callback.)
   const dropHitRef = useRef<boolean | null>(null);
   const [story, setStory] = useState<string | null>(null);
-  const [bubble, setBubble] = useState<BubbleViewState>("open");
+  const [bubble, setBubble] = useState<BubbleViewState>(defaultBubbleView);
   const [cardDismissed, setCardDismissed] = useState(false);
   // Hint UI (follow-up Item A — hints are a REAL feature, owner 2026-10-09).
   // Hints NEVER touch points. Per-place usage drives the 8-10 one-per-place
@@ -2826,7 +2845,7 @@ function PlayLoaded({
 
   useEffect(() => {
     setAim(null);
-    setBubble("open");
+    setBubble(defaultBubbleView());
     setCardDismissed(false);
     // Hint UI resets per place (8-10: one hint per place).
     setHintsUsedThisPlace(0);
@@ -3204,7 +3223,7 @@ function PlayLoaded({
     setAimAnnouncement(null);
     setDrop(null);
     clearDrop();
-    setBubble("open");
+    setBubble(defaultBubbleView());
     setCardDismissed(false);
     setRevealDone(false);
     // Fresh map instance for the replayed run (see mapKey above).
@@ -3431,19 +3450,27 @@ function PlayLoaded({
                   no longer drops the counter back to 0. */}
               {session?.hits ?? run.hits} placed
             </p>
-            {run.phase !== "summary" ? (
-              <button
-                type="button"
-                onClick={onEndGame}
-                className="pointer-events-auto rounded-md border border-white/10 bg-[rgba(10,12,16,0.72)] px-3 py-1.5 text-xs text-white/70 backdrop-blur-[14px] transition-colors hover:text-white"
-              >
-                End game
-              </button>
-            ) : null}
           </div>
           )}
         </div>
       </div>
+      {/* Place-card redesign 2026-10-11: the End-game pill used to sit at
+          the bottom of the top-right score stack, where its y depended on
+          the conditional streak flame — at 390px it overlapped the question
+          card's X dismiss. It now docks bottom-right, above the drop-pin
+          lane: provably clear of the card, the score cluster, and the
+          centered drop-pin pill (E2E asserts 0px² overlap). Gated to the
+          aim phase so it never floats over the result sheet; the action
+          (onEndGame) is untouched. */}
+      {run.phase === "aim" ? (
+        <button
+          type="button"
+          onClick={onEndGame}
+          className="pointer-events-auto absolute right-3 bottom-[max(6.5rem,calc(env(safe-area-inset-bottom)+5.5rem))] z-30 flex min-h-[44px] items-center rounded-full border border-white/10 bg-[rgba(10,12,16,0.72)] px-4 text-sm font-semibold text-white/70 backdrop-blur-[14px] transition-colors hover:text-white"
+        >
+          End game
+        </button>
+      ) : null}
       <p className="sr-only" aria-live="polite">
         {run.phase === "aim"
           ? (aimAnnouncement ?? (place ? `Find ${questionLabel}.` : null))

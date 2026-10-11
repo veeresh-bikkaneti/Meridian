@@ -224,6 +224,17 @@ for (const vp of VIEWPORTS) {
         }) => {
           await startCanadaRun(page);
 
+          // Redesign 2026-10-11: at ≤640px the card starts collapsed —
+          // expand it so the open-state backstop assertions below are
+          // meaningful at every viewport.
+          const showBtn = page.getByRole("button", { name: "Show instructions" });
+          if (await showBtn.isVisible()) {
+            await showBtn.click();
+            await expect(
+              page.getByRole("button", { name: "Hide instructions" }),
+            ).toBeVisible({ timeout: 10_000 });
+          }
+
           // The long-tier name renders in full.
           const h2 = page.locator("h2.place-name").first();
           await expect(h2).toBeVisible({ timeout: 15_000 });
@@ -269,18 +280,28 @@ for (const vp of VIEWPORTS) {
           await expect(page.getByTestId("difficulty-chip")).toBeVisible();
 
           // Cue consistency (§8.1): visible exactly when content overflows.
-          const overflow = await region.evaluate((el) => ({
-            sh: el.scrollHeight,
-            ch: el.clientHeight,
-          }));
-          const cueCount = await page.locator(".bubble-scroll-wrap .scroll-cue").count();
-          expect(
-            cueCount === 1,
-            `cue visible iff overflowing (scrollH=${overflow.sh}, clientH=${overflow.ch})`,
-          ).toBe(overflow.sh > overflow.ch + 1);
+          // Polled: the ResizeObserver-driven cue settles asynchronously
+          // after resizes (e.g. the expand step above), so a one-shot read
+          // can race it.
+          await expect
+            .poll(
+              async () => {
+                const over = await region.evaluate(
+                  (el) => el.scrollHeight - el.clientHeight,
+                );
+                const cueCount = await page
+                  .locator(".bubble-scroll-wrap .scroll-cue")
+                  .count();
+                return { consistent: (cueCount === 1) === (over > 1), over, cueCount };
+              },
+              { timeout: 10_000 },
+            )
+            .toMatchObject({ consistent: true });
 
           // The cue is decorative: aria-hidden, never a tab stop.
-          if (cueCount === 1) {
+          if (
+            (await page.locator(".bubble-scroll-wrap .scroll-cue").count()) === 1
+          ) {
             const cue = page.locator(".bubble-scroll-wrap .scroll-cue").first();
             await expect(cue).toHaveAttribute("aria-hidden", "true");
             expect(
@@ -289,15 +310,19 @@ for (const vp of VIEWPORTS) {
             ).toBe("none");
           }
 
-          // Collapse toggle: names its consequence, folds the name away.
-          const toggle = page.getByRole("button", { name: "Hide place name" });
+          // Collapse toggle: names its consequence — the name stays, the
+          // instructions fold (redesign 2026-10-11).
+          const toggle = page.getByRole("button", { name: "Hide instructions" });
           await expect(toggle).toBeVisible();
           await expect(toggle).toHaveAttribute("aria-expanded", "true");
           await toggle.click();
           await expect(
-            page.getByRole("button", { name: "Show place name" }),
+            page.getByRole("button", { name: "Show instructions" }),
           ).toBeVisible({ timeout: 10_000 });
-          await expect(page.locator(".bubble-scroll-wrap")).toBeHidden();
+          // The name stays visible; the hint folds away.
+          await expect(page.locator(".bubble-scroll-wrap")).toBeVisible();
+          await expect(page.locator(".bubble-hint")).toBeHidden();
+          await expect(page.locator(".bubble-scroll h2.place-name")).toBeVisible();
 
           // Reduced-motion: the toggle chevron goes instant.
           if (motion === "reduce") {
@@ -515,6 +540,15 @@ test.describe("scroll architecture — dedicated probes", () => {
     page,
   }) => {
     await startCanadaRun(page);
+    // Redesign 2026-10-11: at 360px the card starts collapsed — expand it
+    // so the backstop ENGAGES (the collapsed card holds only the name).
+    const showBtn = page.getByRole("button", { name: "Show instructions" });
+    if (await showBtn.isVisible()) {
+      await showBtn.click();
+      await expect(
+        page.getByRole("button", { name: "Hide instructions" }),
+      ).toBeVisible({ timeout: 10_000 });
+    }
     const region = page.locator(".bubble-scroll").first();
     await expect(region).toBeVisible({ timeout: 15_000 });
 
