@@ -24,7 +24,7 @@ test("share text is the v3 endless summary line", () => {
       averagePerPlace: 208,
       bestStreak: 14,
     }),
-    "meridian September 28\nhttps://veeresh-bikkaneti.github.io/Meridian/\n12,480 over 60 places · 208 avg/place · 🔥 14 best streak · Nebraska",
+    "meridian September 28\nhttps://meridian.knowledgetest.workers.dev/\n12,480 over 60 places · 208 avg/place · 🔥 14 best streak · Nebraska",
   );
   assert.equal(
     endless({
@@ -34,7 +34,7 @@ test("share text is the v3 endless summary line", () => {
       averagePerPlace: 158,
       bestStreak: 5,
     }),
-    "meridian September 28\nhttps://veeresh-bikkaneti.github.io/Meridian/\n3,150 over 20 places · 158 avg/place · 🔥 5 best streak · Globe",
+    "meridian September 28\nhttps://meridian.knowledgetest.workers.dev/\n3,150 over 20 places · 158 avg/place · 🔥 5 best streak · Globe",
   );
 });
 
@@ -47,7 +47,7 @@ test("a short streak is not worth bragging about", () => {
       averagePerPlace: 95,
       bestStreak: 1,
     }),
-    "meridian September 28\nhttps://veeresh-bikkaneti.github.io/Meridian/\n190 over 2 places · 95 avg/place · Nebraska",
+    "meridian September 28\nhttps://meridian.knowledgetest.workers.dev/\n190 over 2 places · 95 avg/place · Nebraska",
   );
 });
 
@@ -77,7 +77,7 @@ test("per-place scores render a Wordle-style emoji strip", () => {
   });
   assert.equal(
     text,
-    "meridian September 28\nhttps://veeresh-bikkaneti.github.io/Meridian/\n🎯🏆🌟👏🙂💨\n940 over 6 places · 157 avg/place · 🔥 2 best streak · Nebraska",
+    "meridian September 28\nhttps://meridian.knowledgetest.workers.dev/\n🎯🏆🌟👏🙂💨\n940 over 6 places · 157 avg/place · 🔥 2 best streak · Nebraska",
   );
 });
 
@@ -106,7 +106,7 @@ test("geodetective share appends the streak line when streak > 0", () => {
   });
   assert.equal(
     text,
-    "meridian geodetective October 6\nhttps://veeresh-bikkaneti.github.io/Meridian/\n🟥🟩⬜⬜⬜ solved in 2\n🔥 7",
+    "meridian geodetective October 6\nhttps://meridian.knowledgetest.workers.dev/\n🟥🟩⬜⬜⬜ solved in 2\n🔥 7",
   );
 });
 
@@ -126,7 +126,7 @@ test("geodetective share hides the streak line when streak is 0 or unset", () =>
     assert.equal(text.includes("🔥"), false);
     assert.equal(
       text,
-      "meridian geodetective October 6\nhttps://veeresh-bikkaneti.github.io/Meridian/\n🟥⬜⬜⬜⬜ not solved",
+      "meridian geodetective October 6\nhttps://meridian.knowledgetest.workers.dev/\n🟥⬜⬜⬜⬜ not solved",
     );
   }
 });
