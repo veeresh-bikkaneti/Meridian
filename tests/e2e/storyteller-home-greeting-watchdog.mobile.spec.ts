@@ -24,6 +24,8 @@ import {
  * (via the audio probe), not on React state or captions.
  */
 test.setTimeout(180_000);
+// Screen-recording law: retain video of the follow-up narration session.
+test.use({ video: { mode: "on", size: { width: 390, height: 844 } } });
 
 test.beforeEach(async ({ context }) => {
   await installAudioProbe(context);
