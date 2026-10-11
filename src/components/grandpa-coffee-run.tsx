@@ -1256,8 +1256,7 @@ export function GrandpaCoffeeRun() {
       }
       setTour({ stage: "walk", geometry: geo, origin: geo.origin });
       // The tour takes focus: dismiss Comet's transient greeting so the
-      // fixed bubble can't end up covering a CTA once the walk's
-      // auto-scroll moves the page beneath it.
+      // tour's auto-scroll starts from a clean state.
       window.dispatchEvent(new Event("meridian:tour-walk-start"));
     })();
     return () => {
@@ -1267,7 +1266,7 @@ export function GrandpaCoffeeRun() {
   }, [mode]);
 
   // The handoff: tour walker arrives at the bench → the strip takes over the
-  // finale (seated grandpa, fading trail, session-gated cloud).
+  // finale (seated grandpa, fading trail, persistent cloud).
   const onTourHandoff = useCallback(() => {
     setTour((t) => (t ? { ...t, stage: "settled" } : t));
     setMode("seated");
