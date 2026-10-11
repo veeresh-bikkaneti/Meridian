@@ -643,6 +643,7 @@ export function LoopScreen({
           clue={load.clue}
           puzzle={current}
           streak={store.streak}
+          bestStreak={store.bestStreak}
           caseNo={caseNo}
           cycleCompleted={store.deck.cycleCompleted}
           reduced={reduced}
@@ -699,6 +700,7 @@ function LoopGame({
   clue,
   puzzle,
   streak,
+  bestStreak,
   caseNo,
   cycleCompleted,
   reduced,
@@ -715,6 +717,7 @@ function LoopGame({
   clue: LoopClueFile;
   puzzle: LoopPuzzleState;
   streak: number;
+  bestStreak: number;
   caseNo: number;
   cycleCompleted: number;
   reduced: boolean;
@@ -1050,6 +1053,7 @@ function LoopGame({
           clue={clue}
           puzzle={puzzle}
           streak={streak}
+          bestStreak={bestStreak}
           caseNo={caseNo}
           cycleCompleted={cycleCompleted}
           reduced={reduced}
@@ -1239,6 +1243,7 @@ function LoopReveal({
   clue,
   puzzle,
   streak,
+  bestStreak,
   caseNo,
   cycleCompleted,
   reduced,
@@ -1251,6 +1256,7 @@ function LoopReveal({
   clue: LoopClueFile;
   puzzle: LoopPuzzleState;
   streak: number;
+  bestStreak: number;
   caseNo: number;
   /** Mysteries finished in the current cycle — names the celebration count. */
   cycleCompleted: number;
@@ -1438,7 +1444,7 @@ function LoopReveal({
               </div>
             </section>
             <div>
-              <ShareLoop puzzle={puzzle} streak={streak} />
+              <ShareLoop puzzle={puzzle} streak={streak} bestStreak={bestStreak} />
             </div>
             <p className="text-xs text-muted">
               Clues:{" "}
@@ -1522,7 +1528,15 @@ function useAnswerName(
   return answer;
 }
 
-function ShareLoop({ puzzle, streak }: { puzzle: LoopPuzzleState; streak: number }) {
+function ShareLoop({
+  puzzle,
+  streak,
+  bestStreak,
+}: {
+  puzzle: LoopPuzzleState;
+  streak: number;
+  bestStreak: number;
+}) {
   // The share date is the UTC completion date stamped when the mystery
   // ended — not the deal date, not the clock at share time.
   const dateKey = puzzle.completedAt ?? calendarDate("UTC", new Date());
@@ -1531,6 +1545,7 @@ function ShareLoop({ puzzle, streak }: { puzzle: LoopPuzzleState; streak: number
     status: puzzle.status,
     guesses: puzzle.guesses,
     streak,
+    bestStreak,
   });
 
   return (
