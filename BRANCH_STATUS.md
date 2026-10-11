@@ -1,7 +1,7 @@
 # BRANCH_STATUS — fix/storyteller-greeting-home-only
 
 Branch: `fix/storyteller-greeting-home-only` · Base: origin/main @ 51ed7f5 · Created: 2026-10-11.
-**PUSH OK, DO NOT MERGE** — owner merges.
+**PUSH OK, DO NOT MERGE** — owner merges; Chitti/owner's panel is the merge-ready gate.
 
 Owner ruling 2026-10-11: the storyteller greeting banner ("Gather round,
 explorer!") is the storyteller's home-page narration — it must ONLY display
@@ -13,26 +13,58 @@ overlapped the card header) or anywhere else.
 - [x] Removed the `StorytellerNarration` dock host from `result-card.tsx`
       (screen="story", lineKey="reveal", variant="dock") + its session
       auto-narration claim, lazy import, and now-unused imports.
-- [x] tsc clean.
+- [x] tsc clean (final tree).
 - [x] Unit 1093/1093 (3 new source-guard tests).
+- [x] lint-cards GATE PASSED.
+- [x] build:pages green (buildId 98921d4).
 - [x] Retargeted `tests/e2e/storyteller.spec.ts` component-contract tests
       from the result card dock to the summary modal host (same testids,
-      summary line + mp3).
+      summary line + mp3) — 6/6 on the storyteller project.
 - [x] New black-box spec `tests/e2e/storyteller-greeting-home-only.mobile.spec.ts`:
-      home banner present / result card greeting absent / result card works.
+      home banner present / result card greeting absent / result card works —
+      3/3 on the mobile project, re-run green on the final dist.
+- [x] Result-card desktop specs green: result-card-dismiss, hit-story,
+      state-story (2/2 after fixing a pre-existing stale locator — see below).
 - [x] SPEC_CHECKLIST.md plain-language section appended.
+- [x] Scrum panel review: APPROVE (Code Reviewer, Frontend Developer, Test
+      Automation Engineer, Accessibility Auditor, UX Researcher, Reality
+      Checker). Non-blocking nits: `storyteller-claim.ts` now
+      production-orphaned (kept — its own unit tests cover it),
+      `.storyteller-dock` CSS now unused, one stale docstring in
+      `storyteller-session.ts`.
+- [x] Visual diffs vs origin/main baselines (seeded RNG + reduced-motion):
+      home 390px + 1280px pixel-identical (0 changed pixels); result card
+      diff confined to the removed banner region (390px: 5.97%, 1280px:
+      2.00%); header clean, no layout damage.
+- [x] Red-team pass: absolute-positioned dock was the overlap mechanism;
+      removal cannot collapse header layout; rapid pin drops, tour-during-
+      result, reduced motion, screen-reader paths reviewed — no interaction
+      with the removed host. Summary modal + GeoDetective hook narration
+      untouched and covered.
+- [x] Screen recording (constitutional law):
+      `~/workspace/your_files/meridian-greeting-home-only/greeting-home-only-journey.webm`
+      — home greeting banner visible → play globe → drop pin → result card
+      with no greeting banner, clean header.
+- [x] Rebased onto latest origin/main — already up to date, zero conflicts.
+- [x] Gates re-run after rebase: tsc clean, unit 1093/1093, lint-cards
+      GATE PASSED, build:pages green.
+
+## Verification repairs (test-only, commit 98921d4)
+
+- The new mobile spec used `helpers.commitMiss`, which taps (500, 400) —
+  off-viewport on a 390px phone, so the pin never dropped. Added spec-local
+  `commitMissMobile` tapping the visible globe at (195, 523) (verified);
+  shared helper untouched.
+- `state-story.desktop.spec.ts` hit test still looked for
+  `region[name="Place story"]`, renamed to "Place details — scroll for more"
+  by Cartographer's Plate PR3 (#86, 2026-10-07). Pre-existing stale locator,
+  unrelated to this change; fixed the name.
 
 ## Pending
 
-- [ ] lint-cards gate.
-- [ ] build:pages.
-- [ ] Scrum panel review.
-- [ ] Visual diffs 390px + 1280px vs main.
-- [ ] Playwright storyteller + result specs on rebuilt dist.
-- [ ] Red-team pass.
-- [ ] Screen recording (constitutional law).
-- [ ] Rebase to zero conflicts.
-- [ ] Open PR (never merge) with Ready-to-merge verdict.
+- [ ] Owner watches the screen recording and green-lights.
+- [ ] Chitti / owner's panel independent review (merge-ready gate).
+- [ ] Merge — owner's decision only.
 
 ---
 
