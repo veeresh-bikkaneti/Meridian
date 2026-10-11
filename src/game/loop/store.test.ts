@@ -103,6 +103,7 @@ test("freshLoopUnlimitedStore: full shuffled deck, zeroed stats", () => {
   assert.equal(store.deck.cycleCompleted, 0);
   assert.equal(store.current, null);
   assert.equal(store.streak, 0);
+  assert.equal(store.bestStreak, 0);
   assert.deepEqual(store.totals, { solved: 0, lost: 0 });
 });
 
@@ -248,20 +249,21 @@ test("blocked storage: everything degrades to in-memory, nothing throws", () => 
 
 test("peekLoopProgress: streak + resume flag for the edition card", () => {
   installStorage();
-  assert.deepEqual(peekLoopProgress(), { streak: 0, inProgress: false });
+  assert.deepEqual(peekLoopProgress(), { streak: 0, bestStreak: 0, inProgress: false });
   const store: LoopUnlimitedStore = {
     ...freshLoopUnlimitedStore(10),
     streak: 3,
+    bestStreak: 5,
     current: freshLoopPuzzleState(2, 1),
   };
   writeLoopStoreV2(store);
-  assert.deepEqual(peekLoopProgress(), { streak: 3, inProgress: true });
+  assert.deepEqual(peekLoopProgress(), { streak: 3, bestStreak: 5, inProgress: true });
   const done: LoopUnlimitedStore = {
     ...store,
     current: { ...store.current!, status: "won", completedAt: "2026-10-06", streakEndedAt: null },
   };
   writeLoopStoreV2(done);
-  assert.deepEqual(peekLoopProgress(), { streak: 3, inProgress: false });
+  assert.deepEqual(peekLoopProgress(), { streak: 3, bestStreak: 5, inProgress: false });
 });
 
 test("v1 archive is never read, written, or deleted", () => {
@@ -618,4 +620,97 @@ test("Item A: pre-snapshot stores (no band-config fields) still validate", () =>
   delete (legacy as Partial<LoopPuzzleState>).hintsUsed;
   assert.ok(isLoopPuzzleState(legacy), "the validator tolerates the absent snapshot");
   assert.ok(isLoopUnlimitedStore({ ...freshLoopUnlimitedStore(4), current: legacy }));
+});
+
+// ---------------------------------------------------------------------------
+// GeoDetective bestStreak persistence (2026-10-10): the loop store never had
+// a bestStreak field (a 2026-10-06 crew report falsely claimed it shipped).
+// ---------------------------------------------------------------------------
+
+test("completePuzzle: win raises bestStreak when the new streak is a record", () => {
+  installStorage();
+  // Back-to-back wins ratchet best up with the streak.
+  let store = freshLoopUnlimitedStore(10);
+  assert.equal(store.bestStreak, 0, "fresh store starts at 0");
+  for (let i = 0; i < 3; i++) {
+    store = completePuzzle(store, wonPuzzle(0, 1), "2026-10-06");
+    assert.equal(store.streak, i + 1);
+    assert.equal(store.bestStreak, i + 1, "best ratchets with the streak");
+    writeLoopStoreV2(store);
+    const restored = readLoopStoreV2()!;
+    assert.equal(restored.bestStreak, i + 1, "bestStreak survives the write/read round-trip");
+  }
+  // A win below the record leaves best untouched.
+  store = completePuzzle(store, lostPuzzle(0, 1), "2026-10-06");
+  assert.equal(store.bestStreak, 3);
+  store = completePuzzle(store, wonPuzzle(0, 1), "2026-10-06");
+  assert.equal(store.streak, 1);
+  assert.equal(store.bestStreak, 3, "a sub-record win does not move best");
+});
+
+test("completePuzzle: loss resets the streak but preserves bestStreak", () => {
+  const store: LoopUnlimitedStore = {
+    ...freshLoopUnlimitedStore(10),
+    streak: 4,
+    bestStreak: 6,
+    current: freshLoopPuzzleState(4, 1),
+  };
+  const next = completePuzzle(store, lostPuzzle(4, 1), "2026-10-06");
+  assert.equal(next.streak, 0, "loss resets the streak");
+  assert.equal(next.bestStreak, 6, "best survives the loss");
+  // …and the survivor persists through the round-trip.
+  installStorage();
+  writeLoopStoreV2(next);
+  const restored = readLoopStoreV2()!;
+  assert.equal(restored.streak, 0);
+  assert.equal(restored.bestStreak, 6);
+});
+
+test("loadLoopStore: an old blob without bestStreak backfills 0 and keeps streak/totals", () => {
+  // Hand-built old blob: exactly what a pre-field client wrote — no
+  // bestStreak key at all, but a live streak and lifetime totals.
+  const oldBlob = {
+    deck: { deck: [1, 2, 3], cycle: 1, cycleCompleted: 2 },
+    current: null,
+    streak: 5,
+    totals: { solved: 7, lost: 2 },
+  };
+  assert.ok(!("bestStreak" in oldBlob), "test fixture must lack the field");
+  const data = installStorage({ [LOOP_STORAGE_KEY_V2]: JSON.stringify(oldBlob) });
+  const loaded = loadLoopStore(4);
+  assert.equal(loaded.bestStreak, 0, "backfilled, not fail-closed to fresh");
+  assert.equal(loaded.streak, 5, "the user's streak is preserved");
+  assert.deepEqual(loaded.totals, { solved: 7, lost: 2 }, "totals are preserved");
+  assert.deepEqual(loaded.deck.deck, [1, 2, 3], "the deck survives the load");
+  // A win off that backfilled store records the real record: the streak
+  // predates bestStreak tracking, so streak+1 becomes the best.
+  const afterWin = completePuzzle(loaded, wonPuzzle(0, 1), "2026-10-06");
+  assert.equal(afterWin.streak, 6);
+  assert.equal(afterWin.bestStreak, 6);
+  // …and a loss on it records the ended record streak as the best.
+  const afterLoss = completePuzzle(loaded, lostPuzzle(0, 1), "2026-10-06");
+  assert.equal(afterLoss.streak, 0);
+  assert.equal(afterLoss.bestStreak, 5, "the ended record streak is kept as best");
+  // The validator still fails closed on genuinely bad bestStreak values —
+  // backfill only forgives ABSENCE, never corruption.
+  data.set(LOOP_STORAGE_KEY_V2, JSON.stringify({ ...oldBlob, bestStreak: -1 }));
+  assert.equal(readLoopStoreV2(), null, "negative bestStreak is rejected");
+  data.set(LOOP_STORAGE_KEY_V2, JSON.stringify({ ...oldBlob, bestStreak: "five" }));
+  assert.equal(readLoopStoreV2(), null, "non-integer bestStreak is rejected");
+  assert.ok(isLoopUnlimitedStore({ ...freshLoopUnlimitedStore(10), bestStreak: 2.5 }) === false);
+});
+
+test("blocked storage: read/write paths never throw with bestStreak in play", () => {
+  installBlockedStorage();
+  assert.equal(readLoopStoreV2(), null);
+  assert.deepEqual(peekLoopProgress(), { streak: 0, bestStreak: 0, inProgress: false });
+  // A full win/loss session in memory: nothing throws, best tracks.
+  assert.doesNotThrow(() => writeLoopStoreV2(freshLoopUnlimitedStore(10)));
+  let store = loadLoopStore(5);
+  store = completePuzzle(store, wonPuzzle(0, 1), "2026-10-06");
+  assert.doesNotThrow(() => writeLoopStoreV2(store));
+  assert.equal(store.bestStreak, 1);
+  store = completePuzzle(store, lostPuzzle(0, 1), "2026-10-06");
+  assert.doesNotThrow(() => writeLoopStoreV2(store));
+  assert.equal(store.bestStreak, 1, "best preserved in the in-memory session");
 });
