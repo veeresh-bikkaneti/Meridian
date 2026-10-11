@@ -357,16 +357,16 @@ export function ResultCard({
     <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex justify-center px-2.5 pb-[max(16px,env(safe-area-inset-bottom))]">
       <Rise reduced={reduced}>
         <section aria-label="Result" className="game-chrome result-card pointer-events-auto">
-          {/* Storyteller (primary host): docked top-left, peeking ~40% above
-              the card edge; yields to the tasting tour while it walks and
-              to the celebration overlay while it owns the screen. */}
+          {/* Storyteller narration (caption only — figure is banner-only per
+              owner ruling 2026-10-10): yields to the tasting tour while it
+              walks and to the celebration overlay while it owns the screen. */}
           {place ? (
             <Suspense fallback={null}>
               <StorytellerNarration
                 screen="story"
                 trigger={storytellerAuto ? "first_gesture" : "speaker"}
                 lineKey="reveal"
-                showFigure
+                showFigure={false}
                 variant="dock"
                 onDismiss={() => continueWrapRef.current?.querySelector("button")?.focus({ preventScroll: true })}
               />
