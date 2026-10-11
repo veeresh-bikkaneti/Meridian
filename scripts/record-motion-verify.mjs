@@ -118,10 +118,9 @@ results.push(
     const box = await btn.boundingBox();
     await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
     await page.mouse.down();
-    await page.waitForTimeout(900); // hold the press: watch it land
-    await page.mouse.up();
-    await page.waitForTimeout(700); // watch the pop-over release
-    await btn.click(); // navigation fires immediately
+    await page.waitForTimeout(600); // hold the press: watch it land
+    await page.mouse.up(); // mouse-up completes the click → navigation fires
+    await page.waitForTimeout(500); // watch the pop-over release
     await page
       .getByRole("heading", { name: "State", exact: true })
       .waitFor({ timeout: 10000 });
