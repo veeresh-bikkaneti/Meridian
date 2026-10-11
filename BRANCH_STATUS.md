@@ -281,6 +281,10 @@ at branch time).
   - geodetective-hint.spec.ts + geodetective.reduced.spec.ts: 5/5 passed.
   - New E2E spec (commit `33330c3`): "bestStreak persists across a reload —
     win raises the best, the best survives reload" — PASSED.
+- [x] Share-text decision resolved (Veeresh, option 1, 2026-10-11): classic
+      ` · 🔥 N best streak` segment on the result line when bestStreak >= 2;
+      threaded store → LoopGame → LoopReveal → ShareLoop → shareLoopText;
+      2 new unit tests — commit `a4feae7`; `tsc` clean, `npm test` 1095/1095
 
 ## Pending
 - [ ] Technical-architect review — zero BLOCKs
@@ -298,8 +302,10 @@ at branch time).
 4. Tests: win raises best; loss preserves best; old blob backfills 0;
    blocked storage no-throw.
 5. No storage version bump (fail-closed validator + backfill keeps v2 blobs valid).
-6. **Share text UNCHANGED** — the `🔥 N best streak` share-display convention
-   is Veeresh's open decision; do not implement it here.
+6. ~~**Share text UNCHANGED** — the `🔥 N best streak` share-display convention
+   is Veeresh's open decision; do not implement it here.~~ **RESOLVED
+   2026-10-11:** Veeresh chose option 1 — adopt the classic ` · 🔥 N best
+   streak` segment when bestStreak >= 2 (commit `a4feae7`).
 
 ## Standing rules
 - Stage named files only, never `git add -A`; inspect the index before every commit.
