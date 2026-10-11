@@ -80,13 +80,19 @@ export function shouldReplayGreeting(opts: {
 
 /** Fix E — fallback caption assembly. The retry hint appears only when the
     failure was a play() rejection (clip exists, playback never started —
-    the silent symptom), never on network errors, and never device-shames. */
+    the silent symptom), never on network errors, and never device-shames.
+    The hint names the surface's real retry path: the card names the replay
+    button (the only control rendered in the failed state); the banner
+    passes its own hint naming the figure tap (Fix D), since the banner
+    has no speaker button at all. */
 export function fallbackLine(opts: {
   failed: boolean;
   playRejected: boolean;
+  /** Override the retry hint for surfaces with a different retry path. */
+  retryHint?: string;
 }): string | null {
   if (!opts.failed) return null;
   return opts.playRejected
-    ? `${STORYTELLER_AUDIO_FALLBACK_LINE} ${STORYTELLER_RETRY_HINT}`
+    ? `${STORYTELLER_AUDIO_FALLBACK_LINE} ${opts.retryHint ?? STORYTELLER_RETRY_HINT}`
     : STORYTELLER_AUDIO_FALLBACK_LINE;
 }

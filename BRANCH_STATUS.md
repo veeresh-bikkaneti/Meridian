@@ -487,3 +487,95 @@ watchdogs) → fallback never renders → zero console errors. Verified
 runnable with `video: 'on'` (one-off config, removed afterwards;
 `video.webm` produced). 1/1 pass. Also the regression guard for the
 stall-check anchoring fix.
+
+## Addendum 2026-10-11 — FIX cell: scrum BLOCKs 1–3 + non-blocking #1 (head: TBD)
+Scrum panel BLOCKED commits 1f71d7b/a958a2b/e56153e. Fixed:
+
+**BLOCK 1 — retry hint named a nonexistent control.**
+- Card (`storyteller.tsx`): the replay button now renders when
+  `failed && playRejectedRef.current` (the ref is set before every
+  `setAudioState("failed")`; `handleReplay` bails only on
+  playing/dismissed, so it is a genuine retry). Hint copy changed to
+  "Tap the replay button to try again." — the speaker button stays
+  hidden in the failed state, so it is no longer named.
+- Banner (`storyteller-home.tsx`): new `STORYTELLER_HOME_RETRY_HINT`
+  ("Tap me to try again.") names the figure-tap greeting replay (Fix D)
+  — the banner has no speaker button. `fallbackLine` takes an optional
+  `retryHint` override (card keeps the default).
+- Copy is the panel's pick; FINAL wording needs owner sign-off before
+  merge (standing rule, same as SOUND_OFF_HINT).
+
+**BLOCK 2 — missing runtime-path E2E tests.** Four new specs (all
+FAIL-pre by construction, PASS-post verified):
+- `storyteller-silence-unmute.desktop.spec.ts` (Fix A): sound seeded
+  off → gesture → no audio element AND one-shot not consumed → unmute
+  via the real in-game toggle → real tap → `paused===false`.
+- `storyteller-silence-stall.desktop.spec.ts` (Fix B stall trip): MSE
+  rig appends 600 bytes then hangs forever (headers + first bytes, then
+  stall — a raw socket server is unreachable from Chromium in this VM,
+  the egress proxy blackholes loopback) → 4 s hang watchdog → fallback
+  WITH retry hint.
+- `storyteller-silence-pause-resume.desktop.spec.ts` (Fix C): hanging
+  clip → pause mid-buffer (via the probed element; the card figure is
+  banner-only) → recoverable "paused" (element paused, no fallback,
+  replay visible) → replay click → real playback resumes.
+- `storyteller-silence-banner-hint.mobile.spec.ts` (Fix E banner):
+  one-shot `HTMLMediaElement.prototype.play` patch forces a NotAllowedError
+  on the greeting (this Chromium doesn't enforce autoplay policy, so the
+  rejection is staged; it walks the real catch path) → hint names the
+  figure tap → real figure tap replays (new mp3 request, `paused===false`).
+- Also strengthened `storyteller-silence-hang.desktop.spec.ts`: asserts
+  the replay button is actually visible in the failed state.
+
+**BLOCK 3 — banner replay tap debounce.** The Fix D replay branch in
+`handleFigureTap` now applies the same 600 ms `POKE_DEBOUNCE_MS` guard
+as the poke path (shared `lastPokeRef`) — a tap storm fires one mp3
+request per 600 ms window, not one per tap.
+
+**Non-blocking concern #1 — resume watchdog.** `handleFigureToggle`'s
+paused→`play()` resume is now guarded by the 4 s hang watchdog (armed on
+the same element; the attempt's "playing" listener stands it down via
+`onSettled`; refs only, no chained timers). A hung resume fails loud via
+the attempt's `onFail` (mirrored in `onFailRef`) with the retry hint +
+replay button; a rejected resume sets `playRejectedRef` so the hint
+shows (same retryable shape as Fix E).
+
+**Checklist accuracy.** SPEC_CHECKLIST.md item 3 now carries the
+qualifier (one-shot retry is true when sound was on at mount; sound-off
+at mount means manual mode — speaker then replay, not the one-shot);
+item 1 quotes the new hint copy; items 7–8 cover the resume watchdog
+and replay debounce.
+
+## Gates (FIX cell, final head)
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm test` — 1113/1113 pass (guards file 23/23, +3 new)
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — green
+- [x] Playwright on the built artifact (flock-serialized, --workers=1):
+  - 4 new specs 4/4: unmute (Fix A), pause-resume (Fix C), stall trip
+    (Fix B), banner hint (Fix E) — all PASS-post
+  - FAIL-pre evidence: stashed the src fixes (scrum-reviewed code with
+    Fix A–E intact) → rebuilt → stall + banner-hint specs fail ONLY on
+    the new BLOCK 1 copy assertions (fallback itself renders — proving
+    the specs are sensitive to the copy change, not vacuous); pause-resume
+    + unmute pass there as designed (their FAIL-pre is vs. code without
+    Fix A/C at all — credibly FAIL-pre by construction: pre-fix the muted
+    gesture unconditionally consumed the one-shot; pre-fix AbortError went
+    to onFail/"failed"; pre-watchdog a pending play() strands "playing"
+    forever, verified empirically via the MSE probe)
+  - Updated: hang 1/1 (now also asserts the replay button renders in the
+    failed state), replay 1/1
+  - Regression: audible 1/1, storyteller.spec.ts 6/6 (incl. "figure tap
+    pauses and resumes", which walks the newly watchdog-guarded resume
+    path — no false-positive)
+  - Zero console/page errors in all passing runs
+- [x] Ko-fi cloud untouched (0 diff lines in grandpa-coffee-run.tsx)
+
+## Pending (NOT for this cell — owner/panel)
+- Final retry-hint copy sign-off ("Tap the replay button to try again." /
+  "Tap me to try again.") — owner's call before merge.
+- Screen recording of the new e2e session for the PR (owner's hard rule).
+- Independent reviewer (Chitti/owner panel) verdict — merge-ready is
+  theirs, not self-declared.
+- Pre-existing orphaned `storyteller-tapstart.desktop.spec.ts` failures
+  (5, from PR #127's banner-only figure) — untouched, still failing.

@@ -25,7 +25,9 @@ test.beforeEach(async ({ context }) => {
 const MP3_PATTERN = "**/audio/storyteller/*.mp3";
 const APP = "http://127.0.0.1:4123/Meridian/";
 const FALLBACK_TEXT = "The words are right here — read along with me.";
-const RETRY_HINT = "Tap the speaker to try again.";
+// BLOCK 1 (scrum 2026-10-11): the banner hint names the figure tap — the
+// banner has no speaker button. A network failure earns no hint at all.
+const RETRY_HINT = "Tap me to try again.";
 
 function todayKey(): string {
   const d = new Date();

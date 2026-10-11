@@ -235,6 +235,12 @@ export function StorytellerNarration({
   // A resource "error" event means the clip itself failed to load — the
   // play() promise rejects then too, but retrying is futile, so no hint.
   const loadErrorRef = useRef(false);
+  // Non-blocking concern #1 (scrum 2026-10-11): the figure-tap paused→play()
+  // resume path needs the same failure semantics as the guarded attempt
+  // path, but onFail is scoped inside playNarrationAudio. The latest
+  // attempt's onFail is mirrored here so the resume watchdog can fail
+  // loud instead of stranding "playing" with no recovery.
+  const onFailRef = useRef<((err?: unknown) => void) | null>(null);
   const audioUrl = useRef(storytellerAudioUrl(line.audioFile));
   const onDismissRef = useRef(onDismiss);
   onDismissRef.current = onDismiss;
@@ -348,6 +354,10 @@ export function StorytellerNarration({
           scheduleDismiss(DISMISS_TEXT_ONLY_MS);
         }
       };
+      // Mirror for the figure-tap resume path (non-blocking concern #1) —
+      // the resume play() is a continuation of THIS attempt on the same
+      // element, so the same failure semantics apply.
+      onFailRef.current = onFail;
       const onSettled = () => {
         // play() resolved or a "playing" event fired — the hang watchdog's
         // job is done. (The stall check arms on the playing event, below.)
@@ -576,9 +586,32 @@ export function StorytellerNarration({
       audio.pause();
       setAudioState("paused");
     } else if (audioState === "paused") {
+      // Non-blocking concern #1 (scrum 2026-10-11): guard the resume
+      // play() with the hang watchdog — a hung resume must not strand
+      // "playing" with no recovery (speaker/replay/figure all bail while
+      // "playing"). The "playing" listener armed on this element at
+      // attempt creation stands the watchdog down via onSettled; refs
+      // only, no timers chained across renders.
+      window.clearTimeout(playHangTimer.current);
+      playHangTimer.current = window.setTimeout(() => {
+        if (dismissedRef.current) return;
+        if (audioRef.current !== audio) return; // superseded by a newer attempt
+        playRejectedRef.current = true;
+        try {
+          audio.pause();
+        } catch {
+          // Never break gameplay.
+        }
+        onFailRef.current?.(new Error("play_resume_hang_watchdog"));
+      }, PLAY_HANG_WATCHDOG_MS);
       void audio.play().catch((err: unknown) => {
+        window.clearTimeout(playHangTimer.current);
         if (isPlayAbort(err)) return;
-        setAudioState("failed");
+        // The clip is loaded on this element — a rejected resume is the
+        // same retryable shape as Fix E, so the hint renders alongside
+        // the replay button (BLOCK 1a).
+        playRejectedRef.current = true;
+        onFailRef.current?.(new Error("play_resume_rejected"));
       });
       setAudioState("playing");
     }
@@ -595,9 +628,15 @@ export function StorytellerNarration({
   const words = wordsRef.current;
   const fullText = line.text;
   const failed = audioState === "failed";
-  // Fix E: a play() rejection (clip exists, playback never started — the
-  // silent symptom) appends the one-time retry affordance; network errors
-  // keep the plain fallback. Never device-shames.
+  // Fix E + BLOCK 1 (scrum 2026-10-11): a play() rejection (clip exists,
+  // playback never started — the silent symptom) appends the one-time
+  // retry affordance; network errors keep the plain fallback. Never
+  // device-shames. The hint names the replay button — the only control
+  // rendered in the failed state (speaker/replay hide on failure), so the
+  // replay button renders when failed && playRejectedRef.current. The ref
+  // is set before every setAudioState("failed"), so this render reads it
+  // correctly; handleReplay bails only on playing/dismissed, so it is a
+  // genuine retry. Copy is owner-sign-off pending before merge.
   const failedLine = fallbackLine({
     failed,
     playRejected: playRejectedRef.current,
@@ -657,7 +696,7 @@ export function StorytellerNarration({
           )}
         </button>
       ) : null}
-      {showReplay && !failed ? (
+      {(showReplay && !failed) || (failed && playRejectedRef.current) ? (
         <button
           type="button"
           className="storyteller-replay"

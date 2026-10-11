@@ -8,6 +8,7 @@ import {
 } from "./storyteller-audio-guards.ts";
 import {
   STORYTELLER_AUDIO_FALLBACK_LINE,
+  STORYTELLER_HOME_RETRY_HINT,
   STORYTELLER_RETRY_HINT,
 } from "./storyteller-lines.ts";
 
@@ -211,7 +212,43 @@ describe("fallbackLine — Fix E: retry hint only on play() rejection", () => {
       ),
     );
     assert.ok(
+      !/device|phone|browser|upgrade|old|silent switch/i.test(
+        STORYTELLER_HOME_RETRY_HINT,
+      ),
+    );
+    assert.ok(
       !/device|phone|browser|upgrade|old/i.test(STORYTELLER_AUDIO_FALLBACK_LINE),
+    );
+  });
+
+  it("BLOCK 1: the card hint names the replay button, not the speaker", () => {
+    // The speaker button is hidden in the failed state — the old copy
+    // named a control the user could not see or tap.
+    assert.ok(!/speaker/i.test(STORYTELLER_RETRY_HINT));
+    assert.ok(/replay/i.test(STORYTELLER_RETRY_HINT));
+  });
+
+  it("BLOCK 1: the banner can name its own retry path (figure tap)", () => {
+    assert.equal(
+      fallbackLine({
+        failed: true,
+        playRejected: true,
+        retryHint: STORYTELLER_HOME_RETRY_HINT,
+      }),
+      `${STORYTELLER_AUDIO_FALLBACK_LINE} ${STORYTELLER_HOME_RETRY_HINT}`,
+    );
+    // The banner has no speaker button — its hint must not name one.
+    assert.ok(!/speaker/i.test(STORYTELLER_HOME_RETRY_HINT));
+  });
+
+  it("banner network error keeps the plain fallback (no hint at all)", () => {
+    assert.equal(
+      fallbackLine({
+        failed: true,
+        playRejected: false,
+        retryHint: STORYTELLER_HOME_RETRY_HINT,
+      }),
+      STORYTELLER_AUDIO_FALLBACK_LINE,
     );
   });
 });

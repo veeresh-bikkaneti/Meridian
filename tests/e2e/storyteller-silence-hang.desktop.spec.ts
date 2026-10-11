@@ -24,7 +24,9 @@ test.beforeEach(async ({ context }) => {
 
 const MP3_PATTERN = "**/audio/storyteller/*.mp3";
 const FALLBACK_TEXT = "The words are right here — read along with me.";
-const RETRY_HINT = "Tap the speaker to try again.";
+// BLOCK 1 (scrum 2026-10-11): the hint names the replay button — the only
+// control rendered in the failed state (the speaker button is hidden).
+const RETRY_HINT = "Tap the replay button to try again.";
 
 function expectCleanConsole(errors: string[]): void {
   const relevant = errors.filter(
@@ -80,6 +82,12 @@ test("hang watchdog: a play() that never settles fails loud with the retry hint"
   await expect(fallback).toBeVisible({ timeout: 15_000 });
   await expect(fallback).toContainText(FALLBACK_TEXT);
   await expect(fallback).toContainText(RETRY_HINT);
+
+  // BLOCK 1a: the hint names the replay button, and the replay button is
+  // actually rendered in the failed state — the named control exists.
+  await expect(page.getByTestId("storyteller-replay")).toBeVisible({
+    timeout: 10_000,
+  });
 
   expectCleanConsole(errors);
 });

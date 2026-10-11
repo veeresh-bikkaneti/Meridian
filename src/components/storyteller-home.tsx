@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { StorytellerMascot, isPlayAbort, useCelebrationActive, useTourActive } from "./storyteller";
 import { fallbackLine, shouldReplayGreeting } from "./storyteller-audio-guards";
+import { STORYTELLER_HOME_RETRY_HINT } from "./storyteller-lines";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import {
   GREETINGS,
@@ -696,6 +697,13 @@ export default function StorytellerHomeHost({
         soundOn: isSoundEnabled(),
       })
     ) {
+      // BLOCK 3 (scrum 2026-10-11): the Fix D replay branch gets the same
+      // 600 ms tap debounce as the poke path — a tap storm must not fire
+      // one mp3 request per tap. lastPokeRef is the shared figure-tap
+      // timestamp (replay and poke are both figure taps).
+      const replayNow = Date.now();
+      if (replayNow - lastPokeRef.current < POKE_DEBOUNCE_MS) return;
+      lastPokeRef.current = replayNow;
       beginGreetingAudio();
       return;
     }
@@ -754,12 +762,15 @@ export default function StorytellerHomeHost({
     (poked ? " is-poked" : "") +
     (yielded && yielding ? " is-yielding" : "");
 
-  // Fix E: a play() rejection (clip exists, playback never started — the
-  // silent symptom) appends the one-time retry affordance; network errors
-  // keep the plain fallback. Never device-shames.
+  // Fix E + BLOCK 1 (scrum 2026-10-11): a play() rejection appends the
+  // one-time retry affordance; network errors keep the plain fallback.
+  // Never device-shames. The banner has no speaker button at all, so the
+  // hint names the real retry path — the figure-tap greeting replay
+  // (Fix D). Copy is owner-sign-off pending before merge.
   const homeFailedLine = fallbackLine({
     failed: audioFailed,
     playRejected: greetPlayRejectedRef.current,
+    retryHint: STORYTELLER_HOME_RETRY_HINT,
   });
 
   return (

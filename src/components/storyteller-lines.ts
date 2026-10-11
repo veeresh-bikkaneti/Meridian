@@ -53,9 +53,15 @@ export const STORYTELLER_AUDIO_FALLBACK_LINE =
  * One-time retry affordance appended to the fallback line when the failure
  * was a play() rejection (i.e. the clip exists but playback never started
  * — the silent-narration symptom) rather than a network error. Never
- * device-shames; the speaker/replay buttons are the retry path.
+ * device-shames. Card: the replay button (rendered in the failed state)
+ * is the retry path. Banner: the figure tap is the retry path (Fix D).
+ * Copy is owner-sign-off pending before merge (scrum 2026-10-11).
  */
-export const STORYTELLER_RETRY_HINT = "Tap the speaker to try again.";
+export const STORYTELLER_RETRY_HINT = "Tap the replay button to try again.";
+
+/** Banner retry hint — the banner has no speaker button; tapping the
+ * storyteller figure replays the greeting (Fix D). Same sign-off note. */
+export const STORYTELLER_HOME_RETRY_HINT = "Tap me to try again.";
 
 /** Safe import.meta.env read (undefined under node --test — same seam as pwa.ts's viteEnv). */
 function assetBase(): string {
