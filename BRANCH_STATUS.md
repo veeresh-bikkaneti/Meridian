@@ -170,3 +170,73 @@ beat). No behavior changes except the smooth morph replacing the snap.
   safety net correctly switched to Scout Map (maxZoom 3 by design), which
   makes T_IN unreachable. Verified via `data-map-mode`; the passing run
   used device spoofing + full-mode guards.
+
+---
+
+# BRANCH_STATUS — fix/country-zoom-smooth (SCRUM PANEL REVIEW)
+
+Reviewed: 2026-10-11 · Head: 23fa8df · Base: origin/main @ ec456a9.
+Coordinator ran all five squads directly (max agent depth — no subagents
+available; same rigor, per-squad verdicts below). **No BLOCKs. MERGE-READY.**
+
+## Root cause (recap)
+`map.setProjection({type:"globe"})` at T_OUT ran MapLibre 6.11.2
+`Style#_setProjectionInternal`, which unconditionally reloads every tile
+manager → all satellite raster tiles re-fetch/re-decode/re-upload, plus an
+instantaneous flat↔globe visual snap. Same burst on T_IN.
+
+## Fix (recap)
+Projection declared ONCE at map init as the zoom-interpolated expression
+`['interpolate',['linear'],['zoom'],2.2,'vertical-perspective',3.2,'mercator']`
+(flat editions; globe edition keeps plain `"globe"`). Verified in the
+vendored MapLibre source: the Array.isArray branch of
+`createProjectionFromName` → permanent GlobeProjection + GlobeTransform
+(the same mechanism as MapLibre's own 11→12 globe morph). No
+`setProjection` calls remain at runtime → no reload bursts, no snap.
+T_OUT/T_IN keep maxBounds/announcement/relock roles; the controller owns the
+discrete logical projection (globe ≤2.2, mercator ≥3.2).
+
+## Per-squad verdicts
+- **Design — APPROVE.** Continuous morph acceptable vs the old snap (the
+  snap carried no information; "Space view"/"<Region> view" announcements
+  do). Matches the platform-native globe aesthetic. Screenshots at
+  360×740 and 390×844: no tearing, highlight tracks the morph, chrome
+  stable, no layout shifts.
+- **Eng — APPROVE.** Morph setup uses the supported array-projection path
+  (verified in vendored 6.11.2). `set-projection` removed from the intent
+  type + all 7 emit sites + the executor case; `projectionRef` replaced by
+  controller-owned `logicalProjection()`; `initialProjection` seeds the
+  restore path. Camera semantics preserved: GlobeTransform delegates to
+  the mercator helper at the flat arm (cameraForBounds/flyTo/easeTo/
+  maxBounds behave as before). Unit tests updated to the morph model.
+- **Devex — APPROVE.** Zero new dependencies, zero config changes,
+  `build:pages` green. Change is removal-dominated; no bundle growth.
+- **QA — APPROVE.** All mandatory types performed (temp Playwright spec,
+  removed after the run):
+  - Visual black-box (360×740 + 390×844): country zoom OUT through z2.2
+    and back in; morph-A/B/C/D screenshots reviewed — smooth, no glitches.
+  - Workflow: full country round — out to space, back in, pin committed
+    (score 173), next place advanced, phase back to aim.
+  - Regression: state-edition zoom gestures unaffected; globe-edition zoom
+    gestures unaffected; home banner intact; narration plays on first
+    gesture (greeting_audio phase).
+  - Unit: 1089/1089 pass · `tsc --noEmit` clean · `lint-cards` GATE PASSED
+    · `build:pages` green · locked Ko-fi copy byte-identical.
+  - Functional: "Space view" announced at T_OUT, "France view" at T_IN;
+    zoom buttons work in all editions; zero console/page errors
+    (React #418 filtered — pre-existing flaky hydration warning per
+    established specs).
+- **Security — APPROVE.** No new surfaces: static projection expression,
+  no user-input interpolation, no new network/storage/message calls.
+
+## Environment notes (harness only, not app issues)
+- SwiftShader drops the WebGL context mid-run; the PBI-5 safety net
+  correctly switches to Scout Map. Review spec used the established
+  `spoofCapableDevice` + full-mode guards and retried on fallback.
+- Tile stub for server.arcgisonline.com (documented in helpers.ts).
+
+## Cross-check (AGENTS.md mandatory coverage)
+Visual ✓ (QA) · Workflow ✓ (QA) · Regression ✓ (QA) · Unit+functional ✓
+(QA/Eng) · Security ✓ (Security) · Squad cross-check ✓ (coordinator:
+Design's morph-aesthetic concern checked against Eng's MapLibre-source
+verification and QA's screenshots). Nothing skipped.
