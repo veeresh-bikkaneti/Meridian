@@ -33,7 +33,7 @@ import {
  * session/run storage the app itself writes, mirroring shareText().
  */
 
-const SITE_URL = "https://veeresh-bikkaneti.github.io/Meridian/";
+const SITE_URL = "https://meridian.knowledgetest.workers.dev/";
 
 function collectErrors(page: Page): string[] {
   const errors: string[] = [];

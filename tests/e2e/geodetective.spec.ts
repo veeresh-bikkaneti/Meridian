@@ -281,7 +281,7 @@ test("win path: seam deal, clues unlock in order, share formats, streak, Next my
   // Share text: heading with the UTC completion date, site URL, graded grid.
   const share = await sharedText(page);
   expect(share).toContain(expectedShareHeading());
-  expect(share).toContain("https://veeresh-bikkaneti.github.io/Meridian/");
+  expect(share).toContain("https://meridian.knowledgetest.workers.dev/");
   expect(share).toContain("🟥🟩⬜⬜⬜ solved in 2");
 
   // The hook: "🔎 Next mystery" deals a DIFFERENT puzzle from the real deck.

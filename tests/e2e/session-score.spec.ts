@@ -364,7 +364,7 @@ test("end-game summary shows per-difficulty and per-region breakdown", async ({
  * per-region totals) are part of the copied text.
  */
 
-const SHARE_SITE_URL = "https://veeresh-bikkaneti.github.io/Meridian/";
+const SHARE_SITE_URL = "https://meridian.knowledgetest.workers.dev/";
 
 function collectShareErrors(page: import("playwright/test").Page): string[] {
   const errors: string[] = [];
