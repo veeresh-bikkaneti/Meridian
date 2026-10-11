@@ -3,7 +3,7 @@ import {
   serveBuiltArtifact,
   startGlobeRun,
   dismissTileOverlayIfPresent,
-  commitMiss,
+  commitPin,
 } from "./helpers";
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
@@ -332,7 +332,9 @@ test.describe("tripwire (dev build only)", () => {
     await serveBuiltArtifact(context);
     await startGlobeRun(page);
     await dismissTileOverlayIfPresent(page);
-    await commitMiss(page);
+    // In-viewport miss tap: helpers' commitMiss taps x=500 (off-screen
+    // at 390px), so place the pin directly instead.
+    await commitPin(page, 280, 420);
     await expect(page.locator(".result-card")).toBeVisible();
 
     // Clean card: the guarantee holds, the wire stays quiet.
@@ -341,11 +343,15 @@ test.describe("tripwire (dev build only)", () => {
       "clean card must trip zero overflow markers",
     ).toBe(0);
 
-    // Forced overflow: shrink the headline box to 10px. The
-    // ResizeObserver must mark it and log the [BoundedText] error.
-    await page
-      .locator(".verdict-headline")
-      .evaluate((el) => ((el as HTMLElement).style.width = "10px"));
+    // Forced overflow: pin the headline box to 10px wide (flex:none —
+    // flex-grow:1 would otherwise stretch it back). The ResizeObserver
+    // must mark it and log the [BoundedText] error.
+    await page.locator(".verdict-headline").evaluate((el) => {
+      const h = el as HTMLElement;
+      h.style.flex = "none";
+      h.style.width = "10px";
+      h.style.maxWidth = "10px";
+    });
     await expect(
       page.locator('.verdict-headline[data-overflow="true"]'),
     ).toBeAttached({ timeout: 10_000 });
