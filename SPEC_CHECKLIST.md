@@ -43,3 +43,42 @@ What was NOT touched: the storyteller narration, the share button and flow, "Nex
 - Black-box test `tests/e2e/result-card-overflow.mobile.spec.ts`: plays the globe, drops a pin, and measures the real card — headline not clipped, banner inside the card, share text above the scroll hint. Screenshots taken.
 - Screen recording of the test session (attached to the PR).
 - Full gates: tsc, unit tests, lint-cards, production build, Playwright.
+
+---
+
+# Meridian Spec Checklist — BoundedText Wrapping Contract (branch `fix/result-card-overflow`)
+
+Owner's words: "I would just wrap the text allowing the spill over to go in second line and make it readable rather letting go out of the boundaries." · "Data should be kept within the container." · "Component."
+
+What changed: a new `BoundedText` component now renders every text element on the result card (headline, place names, story, score, share block, source link, "more below" hint, storyteller caption). The component guarantees text wraps to a second line instead of spilling out — no future text element can reintroduce the bug, because the build fails if card text isn't rendered through it.
+
+## What you can check on a phone or computer
+
+- [x] **Long headlines wrap to two clean lines.** Drop a pin far from the target — "9,704 km northeast of your pin" wraps to two balanced lines, nothing cut off at the card's right edge.
+  - *How to check:* 1. Play the globe. 2. Drop a pin far from anywhere (e.g. middle of the ocean). 3. Look at the distance headline. → Two lines, fully readable, no spill.
+- [x] **Long place names never truncate.** The answer name and the "Your pin / True spot" lines always show the full name, wrapping as needed.
+  - *How to check:* 1. Play a country round (e.g. France). 2. Reveal a place with a long name. 3. → The full name shows on as many lines as it needs — never "…".
+- [x] **The edition line in the header wraps instead of clipping.** The small "GLOBE · MEDIUM" line under the card header can now use two lines on narrow phones instead of cutting off with "…".
+- [x] **The storyteller's caption still fits.** The greeting bubble stays inside the card and wraps normally.
+- [x] **Nothing else changed.** The grade chip, difficulty chip, "Next place" button, share button, and speaker icon look and behave exactly as before — they were intentionally left out (single-line by design).
+
+## What was measured (not just eyeballed)
+
+- **Worst-case strings, real fonts, 5 widths** (320/360/390px + 200%-zoom equivalents): every card text element was measured in Chromium — nothing spills horizontally or clips vertically, headlines stay within their line budgets (≤2 lines at 390/360/320px).
+- **The 10px-slack acceptance test passed** at 390px: the worst-case headline's first line keeps ≥10px of breathing room, so a different fallback font can't push it over.
+- **Keep-together decision:** wrapping with balanced lines alone keeps "9,704 km" and "of your pin" together — no special markup needed. (Measured: adding no-wrap spans gave identical results at normal widths and *caused* overflow at extreme zoom, so they were rejected.)
+- **Chip row:** when the headline wraps, it takes the full row width; the grade chip keeps its one line beside it.
+- **Text-spacing stress (WCAG 1.4.12):** with extra-wide letter/line spacing forced on, nothing clips — the old header-clip hazard is gone.
+- **Font failure:** with fonts blocked (fallback serif), nothing spills.
+- **Full card matrix:** globe miss, globe hit, GeoDetective reveal, and long-name place cards × 320/390px × 100%/200% zoom — no clipped, spilled, or overlapping text; every text node is registered in the closed-world list. (Two honest scope notes: the page-level no-overflow check runs at ≥320px CSS — at 200%-zoom tiny widths the app's map chrome overflows on main too, a pre-existing limitation outside the card text; and the GeoDetective guess flow / map hit-tap can't be driven through the real UI below 320px CSS on main either, so those two variants are asserted at ≥320px.)
+- **Fold test:** the "Next place" button is pinned and always visible; the share block at the bottom of a long card scrolls fully into view.
+- **Real bug the battery caught and fixed:** the answer heading's short-name style used line-height 1.12, which clipped Fraunces descenders by 2px on the hit card. It now uses 1.15 (matching the ledger's short-name style) — same look, no clip.
+
+## Proof
+
+- Component contract tests: `src/components/bounded-text.test.ts` (14 tests, node --test).
+- Chromium fixture suite: `tests/e2e/bounded-text.mobile.spec.ts` (18 tests) + fixture `tests/fixtures/bounded-text.html`.
+- Page-level matrix: `tests/e2e/result-card-overflow.mobile.spec.ts` (16 card variants + fold test).
+- Build gate: `node scripts/lint-cards.mjs` → GATE PASSED (new Tier 3: BoundedText-only text, no escape hatches, CSS guardrails, flex shrink allowance).
+- Screen recording of the worst-case fixture cards (attached to the PR).
+- Full gates: tsc, unit tests, lint-cards, production build, Playwright.

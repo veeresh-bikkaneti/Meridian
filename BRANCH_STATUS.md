@@ -1,3 +1,84 @@
+
+# BRANCH_STATUS — fix/result-card-overflow · BoundedText build (2026-10-11)
+
+**PUSH OK, DO NOT MERGE** — owner merges. PR #135 OPEN, evolved on this branch.
+
+## What was built
+
+**`src/components/bounded-text.tsx` + `bounded-text.css`** — the wrapping
+contract as a component (spec §2): `as` (p|h1|h2|h3|span|div|dd|dt|pre|a),
+`variant` (headline|place|body|url|banner, default body), `wrap`
+(word|anywhere), typography-only `className`, rest-spread, React 19
+ref-as-prop. NO nowrap/truncate/ellipsis/whiteSpace escape hatches. CSS:
+min-width:0, max-width:100%, white-space:normal,
+overflow-wrap:break-word; per-variant text-wrap/line-height guardrails;
+no hyphens:auto, no overflow:hidden, no JS auto-tune. Dev-only
+ResizeObserver tripwire (console.error + data-overflow="true").
+
+**Adoption (§4):** verdict headline (h2/headline), name-eyebrow,
+both .place-name h2s, pin-ledger dds, subscript/story/note/breakdown/
+growth-line (body), share-pre (pre/url), source links (a/url),
+scroll-cue "more below" (span/body), storyteller dock caption (p/banner).
+Excluded per spec: GradeChip, difficulty-chip, Next-place label,
+AiStoryBadge, icons, restore pill, ReadAloudButton.
+
+**styles.css:** containment moved out of .verdict-headline into
+.bounded-text; headline clamp(1.5rem,7vw,2.125rem), lh 1.15 via variant,
+margin-bottom 8px; .name-meta clip hazard fixed (flex discipline,
+min-height 44px kept); .name-eyebrow nowrap/ellipsis stripped;
+.result-card defense-in-depth backstop; .result-source keeps 44px target
+via inline-flex centering; flex-container shrink allowance;
+approved-exception comments on the two nowrap chips;
+.loop-verdict-headline keeps its own overflow-wrap (not a BoundedText).
+
+**Enforcement:** lint-cards.mjs Tier 3 (BoundedText-only static gate,
+call-site escape-hatch check, §6c.3 CSS guardrail, flex shrink
+allowance, registry drift) + scripts/bounded-text-registry.mjs shared
+with E2E. Unit tests src/components/bounded-text.test.ts (14, node
+--test). Fixture suite tests/e2e/bounded-text.mobile.spec.ts (18,
+Chromium, §9 worst cases, 5 widths, 1.4.12 stress, font-failure
+red-team, §10 measurements, dev-build tripwire). Page matrix
+tests/e2e/result-card-overflow.mobile.spec.ts (4 widths × 4 variants +
+fold test, overlap + closed-world assertions).
+
+## §10 decisions (measured, not guessed)
+
+1. **10px-slack acceptance @390px: PASS** — worst-case first line keeps
+   ≥10px slack with real fonts. Size stays clamp(1.5rem,7vw,2.125rem).
+2. **Keep-together: balance-only WINS, spans REJECTED.** Measured
+   balance-only vs nowrap spans at 5 widths: identical at ≥320px; at
+   160px the nowrap spans SPILL (scrollWidth 125 > clientWidth 110) —
+   the spans cause the exact overflow the contract prevents. No nbsp
+   baked into any user-visible string.
+3. **Chip row: PASS** — wrapped headline takes ≥85% row width; chip
+   keeps one line at every width.
+4. **Story "keep reading" expander: DEFERRED.** Stories wrap fully and
+   the card grows; the fold test proves the primary action stays
+   reachable. No threshold needed until stories run long in practice.
+
+## Gates (in progress)
+
+- [x] npx tsc --noEmit — clean
+- [x] src/components/bounded-text.test.ts — 14/14 (in npm test list)
+- [x] node scripts/lint-cards.mjs — GATE PASSED (Tier 3 bites verified
+      with temp mutations: raw <p> and unapproved nowrap both fail)
+- [x] npm run build:pages — green (bounded-text.css in bundle)
+- [x] Fixture suite — 18/18 green
+- [x] Page matrix (16 variants + fold) — 12/17 first pass; triaged 5:
+      .rname short-tier lh 1.12 clipped 2px → fixed to 1.15 (styles.css);
+      hit burn-path used helpers' off-screen commitMiss → width-aware
+      commitHitAt; caption battery now measures caption-text (floating
+      speaker button pollutes container scrollWidth by design);
+      geodetective + hit scoped to ≥320px CSS (loop/map flows broken at
+      160/195px on main too — pre-existing). Re-running full matrix.
+- [x] npm test (full suite) — 1860/1860 green (fixed 3: question-bubble
+      source-structure tests + scroll-cue hook resolve step)
+- [ ] Dev-build tripwire test (BOUNDED_TRIPWIRE=1)
+- [ ] Visual diffs 390px + 1280px vs main
+- [ ] Red-team pass (beyond font-failure)
+- [ ] Screen recording of worst-case fixture cards
+- [ ] Rebase to zero conflicts; PR #135 body update
+
 # BRANCH_STATUS — fix/result-card-overflow
 
 Branch: `fix/result-card-overflow` · Base: origin/main @ 51ed7f5 · Created: 2026-10-11.
