@@ -243,58 +243,92 @@ verification and QA's screenshots). Nothing skipped.
 
 ---
 
-# BRANCH_STATUS — fix/kofi-cloud-thought-bubble
+# BRANCH_STATUS — feat/motionmaxxing-meridian
 
-Branch: `fix/kofi-cloud-thought-bubble` · Base: origin/main @ 51ed7f5 · Created: 2026-10-11.
-**PUSH OK, DO NOT MERGE** — owner merges.
+Branch: `feat/motionmaxxing-meridian` · Base: origin/main @ 51ed7f5 · Created: 2026-10-11.
+**PUSH OK, DO NOT MERGE** — owner merges; Chitti/owner's-panel is the merge-ready gate for this consequential PR.
 
-## Owner ruling (2026-10-11 ~07:00 CDT, with phone screenshot)
-PR #126's IntersectionObserver pinned the Ko-fi cloud `position:fixed`
-bottom-right whenever grandpa's strip was off-screen — the owner saw it
-floating over the GeoDetective card at the top of the page. Ruling: the
-cloud is grandpa's thought bubble; it must stick close to grandpa (right
-at his coffee-mug cheers pose), never float around the page.
+Owner order 2026-10-11: implement the Phase-1 scrum plan (M0–M8) exactly.
+Hard constraints honored: prefers-reduced-motion global collapse; no
+pre-empting the pending motion rulings (idle sway, theatrical 5–7s,
+spot-listen); chained-timer law (one effect per transition, stagger via CSS
+delays only); $0/offline/keyless, no new dependencies (GSAP-based
+runtime/motion.js NOT ported — curves as CSS cubic-bezier only);
+mobile transform/opacity/filter-brightness only; sibling `feat/auto-animate`
+branch owns GeoDetective enter/exit/move (M8 is a handoff spec table only).
 
-## Fix
-- `src/components/grandpa-coffee-run.tsx` — deleted the `cloudPin` state,
-  the IntersectionObserver `useEffect`, the dock/float comment block, and
-  the `data-cloud-pin` attribute on `.grandpa-scene`. Kept everything
-  else: `showCloud` persistent fixture, the in-flow bubble, tap → grown-up
-  gate → Ko-fi flow, `walkerInteractive`, ≥44px tap target, keyboard
-  handlers, reduced-motion handling.
-- `src/components/grandpa-coffee-run.css` — deleted the "Floating thought"
-  block (the `position: fixed` rule gated on `data-cloud-pin="floating"`)
-  and the reduced-motion rule referencing `data-cloud-pin="floating"`
-  (its empty media query removed too). The cloud is NEVER `position:fixed`
-  now. The in-flow bubble is unchanged: mobile anchors above grandpa
-  (`bottom: calc(100% + 28px); right: -8px`) with the tail pointing down
-  at his center (`::after { right: 40px; }`); desktop base rule
-  (`bottom: calc(100% + 36px); left: 50%`) untouched.
-- `tests/e2e/kofi-persistent-cloud.mobile.spec.ts` — rewrote to the new
-  contract: deleted the float/dock test; new test "no floating cloud at
-  page top; thought bubble next to grandpa at the strip" asserts (1) at
-  page top the bubble does NOT intersect the 390×844 viewport and is never
-  `fixed`, (2) after scrolling grandpa into view the bubble is in the
-  viewport, above the walker, still not `fixed`, (3) tap → gate → Continue
-  (window.open stubbed) opens the Ko-fi URL and the cloud reverts to the
-  ask, (4) scroll back to top → no cloud in viewport, still not `fixed`.
-  The return-visit test now scrolls the walker into view before asserting
-  the cloud is visible. All `data-cloud-pin` assertions removed; gate tap,
-  Cancel/Esc, and fail-closed tests otherwise untouched. Grep confirms zero
-  `cloud-pin`/`cloudPin` references remain anywhere in the repo.
-- `SPEC_CHECKLIST.md` — plain-language checklist for this fix.
+## Done — M0–M7 implemented, M8 handed off (not implemented)
 
-## Gates (final head)
+- **M0** `src/styles/motion-tokens.css` (new, `@import`ed in styles.css): 9
+  measured curves as tokens + global reduced-motion collapse
+  (transitions → 0.01ms, animations → none).
+- **M1** storyteller-mascot.css: enter 220ms→soft-land, exit 150ms→accel-exit
+  (durations frozen; reduce path untouched).
+- **M2** LoopScreen.tsx + result-card.tsx Rise: 500ms→400ms, curve named via
+  `--ease-snap-settle`; clue stagger from index prop, uneven 50–70ms gaps
+  (`CLUE_RISE_DELAY_MS = [0, 60, 125, 185, 255]`); delay forced 0 under
+  reduced motion. The two Rise copies NOT unified (plan-optional; differing
+  reduce handling).
+- **M3** grandpa-coffee-run.css curves only (durations frozen): kettle-drop→
+  soft-land, pour-steam-burst→glide, cane-tap down→glide / release→pop-over
+  (per-keyframe timing), bubble-pane-in→soft-land. Ambient loops untouched
+  (bob, steam-rise, mug-invite). Cloud POSITION untouched.
+- **M4** grandpa-mascot.tsx SQUASH: WAAPI mechanism kept; press→glide,
+  releases→pop-over (WAAPI easing sits on the segment-start keyframe);
+  offsets + 420ms frozen.
+- **M5** celebration-overlay.css/tsx: pop 0.55s→`--ease-pop-over` (frozen);
+  children cascade label@55ms/headline@120ms/copy@195ms (uneven ~65ms gaps);
+  confetti untouched; reduced-motion full kill untouched. App's one full pop
+  moment; pop-over otherwise budgeted only to release segments.
+- **M6** styles.css: `.atlas-card .atlas-btn` press = scale(0.97) +
+  brightness(1.12) over 80ms glide; release 200ms pop-over; CSS-only,
+  `withCardTap` still calls `open()` synchronously; no press under
+  reduced-motion.
+- **M7** styles.css + game-app.tsx: atlas-rise 0.8s/softLand frozen;
+  stagger retuned uniform 110ms → uneven 60–100ms
+  (`RISE_DELAY = {0:0, 2:60, 3:135, 4:205, 5:290, 6:375, 7:450}`); `--d`
+  retired for `--rise-delay`; stamp keeps frozen +380ms offset.
+- **M8** handoff spec table in SPEC_CHECKLIST.md for the auto-animate
+  sibling (container enter/exit curves, guess-row stagger, suggestions
+  translate-dominant, <400ms cap). NOT implemented here.
+
+## Gates (pre-rebase head)
 - [x] `npx tsc --noEmit` — clean
-- [x] `npm test` — 1090/1090 pass (node --test, no vitest)
+- [x] `npm test` — 1119/1119 pass (incl. new `src/motionmaxxing.test.ts`, 29 tests)
 - [x] `node scripts/lint-cards.mjs` — GATE PASSED
-- Playwright E2E + build:pages left to the verifier cell (per task).
+- [x] `npm run build:pages` — green
+- [x] Playwright motionmaxxing (9/9): transitions complete, computed curve/
+      duration/delay assertions, press feedback + immediate navigation,
+      reduced-motion collapse (≈0.01ms) + full kill, mid-celebration
+      reduced-motion flip, tap storms, console gate (React #418 filtered —
+      pre-existing flaky hydration warning per established specs)
+- [x] Scrum panel review — no BLOCKs (see below)
 
-## Verification (2026-10-11, verifier cell, clean worktree @ b722b3a)
-- Build: branch dist with VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy; no-URL dist for fail-closed; origin/main dist for baselines.
-- Black-box 20/20: page top → no cloud, position=absolute; strip → bubble above walker; tap → gate → Continue → Ko-fi _blank/noopener → revert; Cancel/Esc revert; return visit (legacy flag ignored). Negative control: same checks FAIL on main (cloud pinned fixed) — proving the tests discriminate.
-- Playwright: kofi-persistent-cloud 7/7, kofi-tour-cloud 6/6, storyteller-home.mobile 25/25, grandpa-coffee-run.mobile 3/3, desktop cloud 7/7. Remaining failures reproduced on origin/main dist — pre-existing (comet testids, atlas-dossier spec drift, offline slack, tour timing flake). Zero regressions.
-- Visual diffs vs main: mobile-top 3.048% = floating cloud gone (visually confirmed); mobile-strip 0.004%, mobile-gate 0.013%, desktop 0.001–0.084% (AA noise).
-- Red-team 17/17: tap-storm, scroll-storm, tour mode, reduced-motion, 390×500 viewport, offline round-trip, keyboard-only.
-- Screen recordings (new hard rule): ~/workspace/your_files/meridian-kofi-thought-bubble-mobile.webm (390×844, 15.1s) + meridian-kofi-thought-bubble-desktop.webm (1280×900, 20.6s) — real browser sessions.
-- Follow-up commit dd003f3: removed two stale comments ("fixed bubble", "session-gated cloud"); tsc clean, lint-cards GATE PASSED re-run.
+## Scrum panel review (2026-10-11, coordinator-run — max agent depth, no subagents)
+- **Taste — APPROVE.** No motion fights another (M5 card+children is a
+  cascade, not a fight); pop-over budget respected per the M-specs
+  (celebration entrance + release segments only); no duration changed except
+  the plan-authorized M2 500→400ms. One self-found inconsistency fixed:
+  the token comment claimed pop-over was celebration-only while M3/M4/M6
+  assign it to releases — comment corrected to the actual budget.
+- **Accessibility — APPROVE.** M0 global collapse + every per-item reduce
+  path preserved; content fully usable with zero animation (E2E-proven).
+- **Performance — APPROVE.** Transform/opacity/filter only; no blur; 390px
+  safe. `*` collapse rule is media-gated (zero cost when not matching).
+- **Engineering — APPROVE.** Chained-timer law kept (CSS delays only);
+  WAAPI M4 semantics correct (easing on segment-start keyframe); no new
+  dependencies; sibling branches untouched (auto-animate containers,
+  cloud positioning).
+- **QA — APPROVE.** Unit (29 new) + E2E (9 new) + gates green. Visual
+  baseline diffs + screen recordings run post-rebase on the final build.
+
+## Pending (post-rebase)
+- Rebase onto latest origin/main → zero conflicts.
+- Post-rebase: rebuild, full unit + E2E re-verification, visual baseline
+  diffs @390px/@1280px, affected existing specs
+  (celebration, geodetective, grandpa-coffee-run, storyteller).
+- Screen recordings (`docs/motion-verify/`, NEW constitutional rule):
+  home-entrance, edition-press, clue-stagger, celebration-pop,
+  grandpa-tour-beats, reduced-motion pass — linked in the PR body.
+- PR opened (NEVER merged). Ready to merge? NO — needs owner's video
+  green-light, then Chitti/owner's-panel independent review.

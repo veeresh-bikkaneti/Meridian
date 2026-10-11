@@ -1917,7 +1917,21 @@ function Choose({
   // closes, so this is always fresh on return).
   const [loopProgress] = useState(() => peekLoopProgress());
   // Stagger order for the orchestrated entrance (110ms steps in CSS).
-  const rise = (d: number) => ({ "--d": d }) as CSSProperties;
+  // motionmaxxing M7: the atlas entrance cascade's stagger gaps, retuned
+  // uneven (60–100ms) so the cards don't land on a metronome. Keyframes,
+  // 0.8s duration, and softLand curve frozen in styles.css; the +380ms
+  // stamp offset is frozen there too. --d is retired — this emits the
+  // named --rise-delay custom property the CSS reads.
+  const RISE_DELAY: Record<number, string> = {
+    0: "0ms",
+    2: "60ms",
+    3: "135ms",
+    4: "205ms",
+    5: "290ms",
+    6: "375ms",
+    7: "450ms",
+  };
+  const rise = (d: number) => ({ "--rise-delay": RISE_DELAY[d] ?? "0ms" }) as CSSProperties;
   return (
     <>
     <main className="atlas-home mx-auto flex min-h-dvh w-full max-w-4xl flex-col px-5 py-8">

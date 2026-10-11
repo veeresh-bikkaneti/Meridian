@@ -166,7 +166,7 @@ export function CelebrationOverlay({
           }`}
         >
           <div className="flex items-start justify-between gap-3">
-            <p className="text-[11px] tracking-wider text-[#9db3ad] uppercase">
+            <p className="text-[11px] tracking-wider text-[#9db3ad] uppercase celebration-child celebration-child-1">
               {CELEBRATION_VARIANT_LABEL[variant]}
             </p>
             <button
@@ -182,11 +182,11 @@ export function CelebrationOverlay({
             id={CELEBRATION_CHROME.headingId}
             ref={headingRef}
             tabIndex={-1}
-            className="mt-1 font-display text-2xl outline-none"
+            className="mt-1 font-display text-2xl outline-none celebration-child celebration-child-2"
           >
             {title}
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-[#f0e7d2]/80">{body}</p>
+          <p className="mt-2 text-sm leading-relaxed text-[#f0e7d2]/80 celebration-child celebration-child-3">{body}</p>
         </div>
       </div>
     </div>

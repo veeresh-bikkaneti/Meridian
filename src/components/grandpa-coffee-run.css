@@ -216,11 +216,13 @@
   animation: none;
 }
 
-/* Cane tap — plants with each step. */
+/* Cane tap — plants with each step. Down = glide (plants with the step),
+ * release = pop-over (springy return). Per-keyframe timing: the function on
+ * a keyframe drives the segment STARTING there. */
 .cane {
   transform-box: fill-box;
   transform-origin: 50% 0%;
-  animation: cane-tap 0.8s ease-in-out infinite;
+  animation: cane-tap 0.8s var(--ease-glide) infinite;
 }
 
 @keyframes cane-tap {
@@ -230,6 +232,7 @@
   }
   50% {
     transform: rotate(5deg);
+    animation-timing-function: var(--ease-pop-over);
   }
 }
 
@@ -365,7 +368,7 @@
 
 .grandpa-scene[data-beat="kettle"] .kettle-stage {
   visibility: visible;
-  animation: kettle-drop 2800ms cubic-bezier(0.5, 0, 0.6, 1) forwards;
+  animation: kettle-drop 2800ms var(--ease-soft-land) forwards;
 }
 
 @keyframes kettle-drop {
@@ -448,7 +451,7 @@
 }
 
 .grandpa-scene[data-beat="kettle"] .pour-steam {
-  animation: pour-steam-burst 2800ms ease-out forwards;
+  animation: pour-steam-burst 2800ms var(--ease-glide) forwards;
 }
 
 @keyframes pour-steam-burst {
@@ -711,7 +714,7 @@
 
 /* Content swap animation when the cloud flips ask ↔ gate. */
 .bubble-pane {
-  animation: bubble-pane-in 0.22s ease;
+  animation: bubble-pane-in 0.22s var(--ease-soft-land);
 }
 
 @keyframes bubble-pane-in {
@@ -909,7 +912,7 @@
  * dolly-vertigo drop, stream, mug fill and steam burst. */
 .tour-layer[data-tour-beat="pour"] .kettle-stage {
   visibility: visible;
-  animation: kettle-drop 2800ms cubic-bezier(0.5, 0, 0.6, 1) forwards;
+  animation: kettle-drop 2800ms var(--ease-soft-land) forwards;
 }
 
 .tour-layer[data-tour-beat="pour"] .kettle-stream {
@@ -921,7 +924,7 @@
 }
 
 .tour-layer[data-tour-beat="pour"] .pour-steam {
-  animation: pour-steam-burst 2800ms ease-out forwards;
+  animation: pour-steam-burst 2800ms var(--ease-glide) forwards;
 }
 
 .tour-layer[data-tour-beat="pour"] .cheers-spark {

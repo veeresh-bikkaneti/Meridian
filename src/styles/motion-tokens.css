@@ -1,0 +1,49 @@
+/* Meridian motionmaxxing (2026-10-11) — measured curves as named CSS tokens.
+ *
+ * The motion-language contract: durations are per-component (many are
+ * narration/tour timing contracts and stay frozen); the CURVES are the
+ * shared vocabulary. Import once in styles.css; every component CSS file
+ * consumes via var() — :root tokens are document-global in the bundle.
+ *
+ * HARD CONSTRAINTS carried by this file:
+ * - prefers-reduced-motion: the global collapse at the bottom zeroes all
+ *   transitions/animations, so no motion item can escape the reduce path.
+ * - No overshoot except --ease-pop-over. Its budget: the celebration
+ *   entrance (the app's one full pop moment) plus springy RELEASE segments
+ *   where the M-spec assigns it (cane-tap release, mascot squash release,
+ *   card-press release). Never for narration enter/exit, ambient loops, or
+ *   any new moment — those stay overshoot-free per the owner's rulings. */
+
+:root {
+  /* Soft landing: entrances that settle into place (storyteller figure,
+   * kettle drop, bubble pane, home atlas rise). */
+  --ease-soft-land: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Glide: the long, low-friction travel curve (steam burst, press). */
+  --ease-glide: cubic-bezier(0.61, 1, 0.88, 1);
+  /* Snap-settle: the fast, decisive reveal (clue rise, 400ms). */
+  --ease-snap-settle: cubic-bezier(0.16, 1, 0.3, 1);
+  /* Accelerating exit: things leaving the screen. */
+  --ease-accel-exit: cubic-bezier(0.55, 0, 0.85, 0.36);
+  /* Gentle-in: slow ease-up entrances. */
+  --ease-gentle-in: cubic-bezier(0.42, 0, 1, 1);
+  /* Pop-over: the ONE overshoot. Celebration moment only. */
+  --ease-pop-over: cubic-bezier(0.34, 1.3, 0.64, 1);
+  /* Whip: fast in, hard settle — no overshoot. */
+  --ease-whip: cubic-bezier(0.2, 1, 0.3, 1);
+  /* Symmetric in-out for ambient/subtle pairs. */
+  --ease-soft-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+  /* Cruise: constant-rate travel (paths, fills, streams). */
+  --ease-cruise: linear;
+}
+
+/* Reduced motion: global collapse — every transition lands in 0.01ms and
+ * no animation survives. Content is fully usable; per-component reduce
+ * paths (opacity-only fades) stay as the intended final states. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+}

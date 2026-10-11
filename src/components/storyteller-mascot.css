@@ -203,12 +203,13 @@
 
 /* ---- Motion ---------------------------------------------------------- */
 
+/* Durations are narration-dismiss contracts — frozen. Curves tokenized (M1). */
 .storyteller-enter {
-  animation: storyteller-in 220ms ease-out;
+  animation: storyteller-in 220ms var(--ease-soft-land);
 }
 
 .storyteller-leave {
-  animation: storyteller-out 150ms ease-in forwards;
+  animation: storyteller-out 150ms var(--ease-accel-exit) forwards;
 }
 
 @keyframes storyteller-in {
