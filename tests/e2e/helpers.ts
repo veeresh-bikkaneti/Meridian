@@ -660,3 +660,85 @@ export async function waitForAdmin1Chunk(page: Page, iso2: string): Promise<void
     )
     .toBe(true);
 }
+
+/**
+ * Audio probe for the storyteller tap-to-start verification (fix PR
+ * "Storyteller tap-to-start + visible mute state + gesture-flag reset",
+ * 2026-10-10).
+ *
+ * The storyteller hosts construct `new Audio(url)` internally and keep the
+ * element in a ref — there is no DOM <audio> to query. This installs (before
+ * any page script) a window.Audio wrapper that records every constructed
+ * element in `window.__audioProbe`, and disables service-worker
+ * registration so mp3 requests stay visible to route interception (the SW
+ * precaches mp3s and serves them cache-first, hiding the request).
+ *
+ * `readAudioProbe(page)` returns the most recently constructed element's
+ * live media state — `paused === false` plus an advancing `currentTime` is
+ * the black-box proof that narration is REALLY playing, not just React
+ * state claiming it is.
+ */
+export interface AudioProbeState {
+  /** Number of Audio elements constructed so far. */
+  count: number;
+  /** `src` passed to the most recent constructor. */
+  src: string;
+  /** Live `paused` of the most recent element (false = playing). */
+  paused: boolean;
+  /** Live `currentTime` of the most recent element. */
+  currentTime: number;
+  /** Live `readyState` of the most recent element (≥2 = has data). */
+  readyState: number;
+}
+
+export async function installAudioProbe(context: BrowserContext): Promise<void> {
+  await context.addInitScript(() => {
+    try {
+      if ("serviceWorker" in navigator) {
+        const container = navigator.serviceWorker as unknown as Record<
+          string,
+          unknown
+        >;
+        container.register = () =>
+          Promise.reject(new Error("service worker disabled for test"));
+      }
+    } catch {
+      /* private mode — ignore */
+    }
+    const w = window as unknown as {
+      __audioProbe: HTMLAudioElement[];
+      Audio: typeof Audio;
+    };
+    const seen: HTMLAudioElement[] = [];
+    w.__audioProbe = seen;
+    const NativeAudio = window.Audio;
+    // `new Audio(src)`: returning an object from the constructor makes `new`
+    // yield that object, so the app keeps working with a real element.
+    function ProbedAudio(this: unknown, src?: string): HTMLAudioElement {
+      const el = new NativeAudio(src);
+      (el as unknown as { __probeSrc: string }).__probeSrc = src ?? "";
+      seen.push(el);
+      return el;
+    }
+    ProbedAudio.prototype = NativeAudio.prototype;
+    w.Audio = ProbedAudio as unknown as typeof Audio;
+  });
+}
+
+export async function readAudioProbe(page: Page): Promise<AudioProbeState | null> {
+  return page.evaluate(() => {
+    const w = window as unknown as {
+      __audioProbe?: Array<HTMLAudioElement & { __probeSrc?: string }>;
+    };
+    const seen = w.__audioProbe;
+    if (!seen || seen.length === 0) return null;
+    const el = seen[seen.length - 1]!;
+    return {
+      count: seen.length,
+      src: el.__probeSrc ?? "",
+      paused: el.paused,
+      currentTime: el.currentTime,
+      readyState: el.readyState,
+    };
+  });
+}
