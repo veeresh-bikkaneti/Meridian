@@ -26,6 +26,7 @@ import { emitTileFailed, emitWebglContextLost, recordMilestone, recordTileErrors
 import { createTapTracker } from "./tap-tracker.ts";
 import { INITIAL_TILE_STATUS, tileStatusReducer, type TileStatus } from "./tile-status.ts";
 import { variationLine, type MapPoint } from "./variation.ts";
+import type { LengthUnit } from "@/game/units";
 import {
   GLOBE_HOME,
   SPIN_DURATION_MS,
@@ -75,6 +76,8 @@ export type MapVariation = {
   spot: MapPoint;
   kilometers: number;
   radiusKm: number;
+  /** Unit for the miss-line map pill, from unitForEdition — same as the result headline. */
+  unit: LengthUnit;
 };
 
 /**
@@ -360,7 +363,7 @@ function paintVariationLayers(
     setFeature(map, RING_SOURCE, null);
     return;
   }
-  const line = variationLine(variation.pin, variation.spot, variation.kilometers);
+  const line = variationLine(variation.pin, variation.spot, variation.kilometers, variation.unit);
   setFeature(map, LINE_SOURCE, line.coordinates);
   setFeature(map, RING_SOURCE, disk(variation.spot.lon, variation.spot.lat, variation.radiusKm));
   const label = document.createElement("div");

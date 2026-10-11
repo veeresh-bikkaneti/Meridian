@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 import { useEffect } from "react";
-import { formatDistance } from "@/game/geo";
+import { formatLength, type LengthUnit } from "@/game/units";
 import type { TutorialBeat } from "@/game/tutorial";
 
 /**
@@ -104,6 +104,12 @@ export function TutorialOverlay(props: {
   distanceKm: number | null;
   /** Beat 2: whether the practice pin was a hit. */
   hit: boolean;
+  /**
+   * Beat 2: length unit for the distance line. The fixed tutorial script
+   * is the Eiffel Tower (Paris), so the call site passes "km" — the prop
+   * keeps the component unit-aware rather than hardcoded.
+   */
+  unit?: LengthUnit;
   onSkip: () => void;
   /** Beat 2 → beat 3. */
   onGotIt: () => void;
@@ -172,7 +178,7 @@ export function TutorialOverlay(props: {
         </>
       ) : (
         <>
-          You&rsquo;re <strong>{formatDistance(props.distanceKm)}</strong> from
+          You&rsquo;re <strong>{formatLength(props.distanceKm, props.unit ?? "km")}</strong> from
           the Eiffel Tower.
         </>
       );

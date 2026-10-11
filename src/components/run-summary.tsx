@@ -3,7 +3,7 @@ import { Suspense, lazy, useRef } from "react";
 
 // The Storyteller mascot stays out of the initial bundle (lazy chunk).
 const StorytellerNarration = lazy(() => import("./storyteller"));
-import { formatDistance } from "@/game/geo";
+import { formatLength, unitForSessionSummary } from "@/game/units";
 import {
   DIFFICULTY_LABELS,
   EDITION_LABELS,
@@ -47,6 +47,10 @@ export function RunSummaryCard(props: {
   reviewDueCount?: number;
 }): JSX.Element {
   const { summary, regionName, dateKey, growth, onDone, onPlayAgain, onReview, reviewDueCount } = props;
+  // One unit for the whole card: miles only when EVERY played region is a
+  // USA context (state edition, or the United States country run);
+  // mixed or empty sessions fail closed to kilometers (owner ruling 2026-10-11).
+  const summaryUnit = unitForSessionSummary(summary.regions);
   // P1-2 (WCAG 2.4.3): when the narration caption auto-dismisses with focus
   // on its speaker/replay, focus must land somewhere sensible inside this
   // role="dialog" — the "Play again" button, mirroring result-card's
@@ -195,13 +199,13 @@ export function RunSummaryCard(props: {
           </div>
           <div className="flex justify-between">
             <dt className="text-white/60">Average distance</dt>
-            <dd className="tabular-nums">{formatDistance(summary.averageDistanceKm)}</dd>
+            <dd className="tabular-nums">{formatLength(summary.averageDistanceKm, summaryUnit)}</dd>
           </div>
           <div className="flex justify-between">
             <dt className="text-white/60">Best pin</dt>
             <dd className="tabular-nums">
               {summary.bestDistanceKm !== null
-                ? formatDistance(summary.bestDistanceKm)
+                ? formatLength(summary.bestDistanceKm, summaryUnit)
                 : "—"}
             </dd>
           </div>

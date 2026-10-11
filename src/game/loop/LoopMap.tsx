@@ -1,7 +1,8 @@
 import { useEffect, useRef, type JSX } from "react";
 import { Map as MLMap, Marker as MLMarker, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { clampLat, formatDistance, initialBearing, normalizeLon } from "@/game/geo";
+import { clampLat, initialBearing, normalizeLon } from "@/game/geo";
+import { formatLength, type LengthUnit } from "@/game/units";
 import { playCelebrationSound } from "@/game/audio/play-guards";
 import { IMAGERY_TILES } from "@/map/imagery";
 import { LOOP_LABELS_ATTRIBUTION, LOOP_LABELS_TILES } from "./map-labels";
@@ -110,6 +111,13 @@ interface LoopMapProps {
   guesses: LoopGuess[];
   target: { lon: number; lat: number };
   finished: boolean;
+  /**
+   * Length unit for the guess-ring labels and the ring announcements —
+   * from unitForLoopTarget (GeoDetective) or the Cold-Trail hideout unit.
+   * USA reads miles, the rest of the world reads kilometers (owner ruling
+   * 2026-10-11) — never device locale.
+   */
+  unit: LengthUnit;
   /** Ref for the camera-jump search. */
   handleRef?: React.RefObject<LoopMapHandle | null>;
   onSelectPlace: (entry: LoopNameEntry) => void;
@@ -151,6 +159,7 @@ export function LoopMap({
   guesses,
   target,
   finished,
+  unit,
   handleRef,
   onSelectPlace,
   onEmptyTap,
@@ -194,7 +203,7 @@ export function LoopMap({
     onPlacementNudge,
     placementDraft,
   });
-  const paintRef = useRef({ guesses, target, finished, evidenceRings, evidenceMarks, evidenceOverlap, placementDraft });
+  const paintRef = useRef({ guesses, target, finished, unit, evidenceRings, evidenceMarks, evidenceOverlap, placementDraft });
   useEffect(() => {
     cbRef.current = {
       onSelectPlace,
@@ -210,7 +219,7 @@ export function LoopMap({
     };
     // Paint inputs ride a ref too: the style-load handler fires at an
     // arbitrary time, long after the mount effect's closure went stale.
-    paintRef.current = { guesses, target, finished, evidenceRings, evidenceMarks, evidenceOverlap, placementDraft };
+    paintRef.current = { guesses, target, finished, unit, evidenceRings, evidenceMarks, evidenceOverlap, placementDraft };
   });
 
   // Preload the guess index on mount so the first tap resolves instantly.
@@ -642,7 +651,7 @@ export function LoopMap({
   function paintOverlays() {
     const map = mapRef.current;
     if (!map || !map.getSource(RING_SOURCE) || !map.getSource(OVERLAP_SOURCE)) return;
-    const { guesses, target, finished, evidenceRings, evidenceMarks, evidenceOverlap } = paintRef.current;
+    const { guesses, target, finished, unit, evidenceRings, evidenceMarks, evidenceOverlap } = paintRef.current;
     const ringFeatures: GeoJSON.Feature[] = [];
     const arrowFeatures: GeoJSON.Feature[] = [];
     const markFeatures: GeoJSON.Feature[] = [];
@@ -666,10 +675,11 @@ export function LoopMap({
         properties: { placeId: g.placeId },
         geometry: ringPolygon(g.lon, g.lat, g.distKm),
       });
-      // Km label at the ring's northmost point (bearing 0 from the guess).
+      // Ring label at the ring's northmost point (bearing 0 from the guess),
+      // in the screen's unit (mi for a USA mystery, km elsewhere).
       ringFeatures.push({
         type: "Feature",
-        properties: { kind: "ring-label", label: formatDistance(g.distKm) },
+        properties: { kind: "ring-label", label: formatLength(g.distKm, unit) },
         geometry: { type: "Point", coordinates: destination(g.lon, g.lat, 0, g.distKm) },
       });
       const bearing = initialBearing([g.lon, g.lat], [target.lon, target.lat]);
@@ -803,7 +813,7 @@ export function LoopMap({
     syncDraftMarker();
     syncOverlapPulse();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [guesses, target, finished, evidenceRings, evidenceMarks, evidenceOverlap, placementDraft]);
+  }, [guesses, target, finished, unit, evidenceRings, evidenceMarks, evidenceOverlap, placementDraft]);
 
   // While placement is active, MapLibre's own keyboard pan is disabled so
   // arrow keys nudge the draft (handled above) instead of panning the map.
@@ -868,8 +878,9 @@ export function LoopMap({
 
 /** Screen-reader announcement for a freshly drawn ring.
  * The octant is the TARGET's direction from the guess (same convention as
- * the guess list's aria-labels) — phrase it that way, not inverted. */
-export function ringAnnouncement(guess: LoopGuess): string {
+ * the guess list's aria-labels) — phrase it that way, not inverted.
+ * The distance speaks the screen's unit (mi for a USA mystery). */
+export function ringAnnouncement(guess: LoopGuess, unit: LengthUnit): string {
   const arrow = guess.octant.replace("-", " ");
-  return `${guess.name}: the target is ${Math.round(guess.distKm).toLocaleString("en-US")} km ${arrow} of your guess.`;
+  return `${guess.name}: the target is ${formatLength(guess.distKm, unit)} ${arrow} of your guess.`;
 }

@@ -243,102 +243,71 @@ verification and QA's screenshots). Nothing skipped.
 
 ---
 
-# BRANCH_STATUS — feat/motionmaxxing-meridian
+# BRANCH_STATUS — fix/distance-units-locale
 
-Branch: `feat/motionmaxxing-meridian` · Base: origin/main @ 51ed7f5 · Created: 2026-10-11.
-**PUSH OK, DO NOT MERGE** — owner merges; Chitti/owner's-panel is the merge-ready gate for this consequential PR.
+Branch: `fix/distance-units-locale` · Base: origin/main @ 51ed7f5 · Created: 2026-10-11.
+**PUSH OK, DO NOT MERGE** — owner merges.
 
-Owner order 2026-10-11: implement the Phase-1 scrum plan (M0–M8) exactly.
-Hard constraints honored: prefers-reduced-motion global collapse; no
-pre-empting the pending motion rulings (idle sway, theatrical 5–7s,
-spot-listen); chained-timer law (one effect per transition, stagger via CSS
-delays only); $0/offline/keyless, no new dependencies (GSAP-based
-runtime/motion.js NOT ported — curves as CSS cubic-bezier only);
-mobile transform/opacity/filter-brightness only; sibling `feat/auto-animate`
-branch owns GeoDetective enter/exit/move (M8 is a handoff spec table only).
+## Work: owner ruling 2026-10-11 — one unit per result (USA → miles everywhere)
 
-## Done — M0–M7 implemented, M8 handed off (not implemented)
+Bug: result headline read "256 mi east of your pin" while the map pill for the
+SAME distance read "411 km". Root cause: `src/game/units.ts` already carried the
+rule (`unitForEdition`, `unitForLoopTarget`, `formatLength`), and the result-card
+headline used it — but six display sites still formatted with km-only
+`formatDistance()`.
 
-- **M0** `src/styles/motion-tokens.css` (new, `@import`ed in styles.css): 9
-  measured curves as tokens + global reduced-motion collapse
-  (transitions → 0.01ms, animations → none).
-- **M1** storyteller-mascot.css: enter 220ms→soft-land, exit 150ms→accel-exit
-  (durations frozen; reduce path untouched).
-- **M2** LoopScreen.tsx + result-card.tsx Rise: 500ms→400ms, curve named via
-  `--ease-snap-settle`; clue stagger from index prop, uneven 50–70ms gaps
-  (`CLUE_RISE_DELAY_MS = [0, 60, 125, 185, 255]`); delay forced 0 under
-  reduced motion. The two Rise copies NOT unified (plan-optional; differing
-  reduce handling).
-- **M3** grandpa-coffee-run.css curves only (durations frozen): kettle-drop→
-  soft-land, pour-steam-burst→glide, cane-tap down→glide / release→pop-over
-  (per-keyframe timing), bubble-pane-in→soft-land. Ambient loops untouched
-  (bob, steam-rise, mug-invite). Cloud POSITION untouched.
-- **M4** grandpa-mascot.tsx SQUASH: WAAPI mechanism kept; press→glide,
-  releases→pop-over (WAAPI easing sits on the segment-start keyframe);
-  offsets + 420ms frozen.
-- **M5** celebration-overlay.css/tsx: pop 0.55s→`--ease-pop-over` (frozen);
-  children cascade label@55ms/headline@120ms/copy@195ms (uneven ~65ms gaps);
-  confetti untouched; reduced-motion full kill untouched. App's one full pop
-  moment; pop-over otherwise budgeted only to release segments.
-- **M6** styles.css: `.atlas-card .atlas-btn` press = scale(0.97) +
-  brightness(1.12) over 80ms glide; release 200ms pop-over; CSS-only,
-  `withCardTap` still calls `open()` synchronously; no press under
-  reduced-motion.
-- **M7** styles.css + game-app.tsx: atlas-rise 0.8s/softLand frozen;
-  stagger retuned uniform 110ms → uneven 60–100ms
-  (`RISE_DELAY = {0:0, 2:60, 3:135, 4:205, 5:290, 6:375, 7:450}`); `--d`
-  retired for `--rise-delay`; stamp keeps frozen +380ms offset.
-- **M8** handoff spec table in SPEC_CHECKLIST.md for the auto-animate
-  sibling (container enter/exit curves, guess-row stagger, suggestions
-  translate-dominant, <400ms cap). NOT implemented here.
+### Done (2026-10-11)
 
-## Gates (pre-rebase head)
-- [x] `npx tsc --noEmit` — clean
-- [x] `npm test` — 1119/1119 pass (incl. new `src/motionmaxxing.test.ts`, 29 tests)
+**Changed files (11):**
+- `src/game/units.ts` — new `unitForSessionSummary(regions)`: miles only when
+  EVERY played region maps to miles via `unitForEdition`; mixed/empty → km
+  (fail closed).
+- `src/map/variation.ts` — `variationLine()` takes `unit: LengthUnit`, labels
+  with `formatLength(kilometers, unit)`.
+- `src/map/satellite-map.tsx` — `MapVariation` gains `unit: LengthUnit`;
+  `paintVariationLayers` passes it through.
+- `src/components/game-app.tsx` — passes `unitForEdition(run.edition, run.regionId)`
+  into the variation memo (site 1); the two sr-only aria-live "Pin dropped. …"
+  announcements (site 6) and the tutorial overlay call site (site 5, `unit="km"`
+  for the fixed Eiffel Tower script) use the same derivation.
+- `src/game/loop/LoopMap.tsx` — new required `unit: LengthUnit` prop; guess-ring
+  labels use `formatLength(g.distKm, unit)`; `ringAnnouncement(guess, unit)`
+  speaks the unit too (an extra unlisted site the plan missed: it hardcoded "km").
+- `src/game/loop/LoopScreen.tsx` — passes `unit={loopUnit}` (already computed via
+  `unitForLoopTarget`); ring announcements pass `loopUnit`.
+- `src/game/coldtrail/placement.ts` — ring labels (locked + draft) use
+  `unitForLoopTarget([hideout.lon, hideout.lat])`; module doc notes the one
+  sanctioned hideout read (unit derivation only — no coordinate rendered; the
+  I1 anti-leak tests still pass unmodified). Build-time sighting clue text
+  (cases.generated.json) untouched.
+- `src/game/coldtrail/TrailScreen.tsx` — `hideoutUnit` const; passes `unit` to
+  `LoopMap` and `SightingCard`; the "Your intercept missed by …" score line uses
+  `formatLength(progress.scoreKm, hideoutUnit)` (extra unlisted site, same ruling).
+- `src/game/coldtrail/SightingCard.tsx` — new `unit` prop; "Ring radius" line uses
+  `formatLength` (extra unlisted site, same ruling).
+- `src/components/run-summary.tsx` — average/best distance use
+  `unitForSessionSummary(summary.regions)` (site 4).
+- `src/components/tutorial-overlay.tsx` — beat 2 takes optional `unit` prop
+  (defaults fail-closed to "km") instead of hardcoding `formatDistance` (site 5).
+
+**Tests:**
+- `src/game/units.test.ts` — new: KM_PER_MI exact; 411 km → "255 mi"; USA→mi
+  (state edition, US country run, US GeoDetective target, US Cold Trail hideout);
+  rest-of-world→km; session-summary rule (all-USA→mi, mixed→km, empty→km).
+- `src/map/pin-tap.test.ts` — new: miss-line label renders "255 mi" for 411 km in
+  USA mode (the reported bug's exact distance); existing km test updated for the
+  new signature.
+
+**No distance VALUE changed anywhere** — only unit labels; same km feed every
+display. No new dependencies, no timers, no animation changes.
+
+### Gates (final head)
+- [x] `tsc --noEmit` — clean
+- [x] `npm test` — 1098/1098 pass (9 new tests)
 - [x] `node scripts/lint-cards.mjs` — GATE PASSED
 - [x] `npm run build:pages` — green
-- [x] Playwright motionmaxxing (9/9): transitions complete, computed curve/
-      duration/delay assertions, press feedback + immediate navigation,
-      reduced-motion collapse (≈0.01ms) + full kill, mid-celebration
-      reduced-motion flip, tap storms, console gate (React #418 filtered —
-      pre-existing flaky hydration warning per established specs)
-- [x] Scrum panel review — no BLOCKs (see below)
+- [ ] Playwright E2E — intentionally NOT run (coordinator handles verification)
 
-## Scrum panel review (2026-10-11, coordinator-run — max agent depth, no subagents)
-- **Taste — APPROVE.** No motion fights another (M5 card+children is a
-  cascade, not a fight); pop-over budget respected per the M-specs
-  (celebration entrance + release segments only); no duration changed except
-  the plan-authorized M2 500→400ms. One self-found inconsistency fixed:
-  the token comment claimed pop-over was celebration-only while M3/M4/M6
-  assign it to releases — comment corrected to the actual budget.
-- **Accessibility — APPROVE.** M0 global collapse + every per-item reduce
-  path preserved; content fully usable with zero animation (E2E-proven).
-- **Performance — APPROVE.** Transform/opacity/filter only; no blur; 390px
-  safe. `*` collapse rule is media-gated (zero cost when not matching).
-- **Engineering — APPROVE.** Chained-timer law kept (CSS delays only);
-  WAAPI M4 semantics correct (easing on segment-start keyframe); no new
-  dependencies; sibling branches untouched (auto-animate containers,
-  cloud positioning).
-- **QA — APPROVE.** Unit (29 new) + E2E (9 new) + gates green. Visual
-  baseline diffs + screen recordings run post-rebase on the final build.
-
-## Pending (post-rebase)
-- Rebase onto latest origin/main → zero conflicts.
-- Post-rebase: rebuild, full unit + E2E re-verification, visual baseline
-  diffs @390px/@1280px, affected existing specs
-  (celebration, geodetective, grandpa-coffee-run, storyteller).
-- Screen recordings (`docs/motion-verify/`, NEW constitutional rule):
-  home-entrance, edition-press, clue-stagger, celebration-pop,
-  grandpa-tour-beats, reduced-motion pass — linked in the PR body.
-- PR opened (NEVER merged). Ready to merge? NO — needs owner's video
-  green-light, then Chitti/owner's-panel independent review.
-
-## Post-rebase re-verification (final head e0de767; origin/main unmoved @ 51ed7f5 — rebase no-op, zero conflicts)
-- [x] `npx tsc --noEmit` — clean · `npm test` — 1119/1119 · `lint-cards` — GATE PASSED
-- [x] Rebuilt with `VITE_KOFI_URL` (kofi specs require it); motionmaxxing E2E 9/9 re-green on the final build
-- [x] Visual baseline diffs (51ed7f5 vs branch, PIL): home top + editions tour-stop pixel-identical @390/@1280 (0.000%); loop-clues identical; celebration card content identical (0.714% delta = confetti positions + float-bob phase only)
-- [x] Regression: celebration, geodetective, storyteller-home/tapstart (mobile) green. 3 failures, all provably unrelated to this diff:
-  - `celebration` confetti canvas — headless WebGL probe fails → scout map mode → `motionOff` → no canvas (PBI-3 behavior; tsx gating untouched)
-  - `grandpa-coffee-run.desktop` kettle beat — slow-VM timing flake: the 9.5s walk starts before the scene is observed, so the 12s poll misses the 4.3–7.1s kettle window (beat machine is setTimeout-driven in grandpa-coffee-run.tsx, a file this diff does not touch)
-  - `grandpa-coffee-run.reduced` comet-mascot — stale test: `CometMascot` is never rendered anywhere in src (only BODY constants imported); the testid cannot exist on main either
-- [x] Screen recordings (`docs/motion-verify/`, constitutional rule): 6 clips, real-time — home-entrance-1280px, edition-press-1280px, clue-stagger-390px, celebration-pop-390px, grandpa-tour-beats-390px, reduced-motion-390px. Recorded via `scripts/record-motion-verify.mjs`.
+### Deliverables
+- [x] `SPEC_CHECKLIST.md` — appended the distance-units section (plain language)
+- [x] Branch pushed (no PR, no merge — per standing policy)

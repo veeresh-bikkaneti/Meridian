@@ -7,6 +7,7 @@ import {
   scoreGradeBand,
   unitForEdition,
   unitForLoopTarget,
+  unitForSessionSummary,
   USA_TERRITORY_KEY,
 } from "./units.ts";
 
@@ -111,5 +112,69 @@ describe("units — scoreGradeBand (existing share tiers, reused language)", () 
     assert.deepEqual(scoreGradeBand(60).name, "60+");
     assert.deepEqual(scoreGradeBand(1).name, "1+");
     assert.deepEqual(scoreGradeBand(0), { emoji: "💨", name: "miss" });
+  });
+});
+
+describe("units — owner ruling 2026-10-11 (one unit per result)", () => {
+  it("1 mi = 1.609344 km exactly", () => {
+    assert.equal(KM_PER_MI, 1.609344);
+  });
+
+  it("the reported bug's distance: 411 km renders as 255 mi", () => {
+    // 411 / 1.609344 = 255.387… → integer miles above 100.
+    assert.equal(formatLength(411, "mi"), "255 mi");
+  });
+
+  it("USA → miles: state edition, US country run, US GeoDetective target, US Cold Trail hideout", () => {
+    assert.equal(unitForEdition("state", "nebraska"), "mi");
+    assert.equal(unitForEdition("country", "united-states"), "mi");
+    // Detroit, MI GeoDetective target.
+    assert.equal(unitForLoopTarget([-83.05, 42.33]), "mi");
+    // A USA Cold-Trail hideout (Chicago, IL) — placement.ts uses the same
+    // unitForLoopTarget derivation for its ring labels.
+    assert.equal(unitForLoopTarget([-87.63, 41.88]), "mi");
+  });
+
+  it("rest of the world → kilometers everywhere", () => {
+    assert.equal(unitForEdition("globe", "globe"), "km");
+    assert.equal(unitForEdition("country", "france"), "km");
+    // Geneva, Switzerland GeoDetective target.
+    assert.equal(unitForLoopTarget([6.14, 46.2]), "km");
+    // Non-USA Cold-Trail hideout (Paris).
+    assert.equal(unitForLoopTarget([2.35, 48.85]), "km");
+  });
+});
+
+describe("units — unitForSessionSummary (end-of-game card)", () => {
+  it("an all-USA session reads miles", () => {
+    assert.equal(
+      unitForSessionSummary([
+        { edition: "state", regionId: "nebraska" },
+        { edition: "state", regionId: "texas" },
+        { edition: "country", regionId: "united-states" },
+      ]),
+      "mi",
+    );
+  });
+
+  it("a mixed session fails closed to kilometers", () => {
+    assert.equal(
+      unitForSessionSummary([
+        { edition: "state", regionId: "nebraska" },
+        { edition: "country", regionId: "france" },
+      ]),
+      "km",
+    );
+    assert.equal(
+      unitForSessionSummary([
+        { edition: "globe", regionId: "globe" },
+        { edition: "country", regionId: "united-states" },
+      ]),
+      "km",
+    );
+  });
+
+  it("an empty session fails closed to kilometers", () => {
+    assert.equal(unitForSessionSummary([]), "km");
   });
 });

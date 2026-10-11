@@ -1,5 +1,6 @@
 import type { JSX, Ref } from "react";
 import { Button } from "@/components/ui/button";
+import { formatLength, type LengthUnit } from "@/game/units";
 import { effectiveRadius, INFORMANT_COST } from "./engine.ts";
 import type { ColdTrailSighting } from "./types.ts";
 
@@ -17,6 +18,7 @@ import type { ColdTrailSighting } from "./types.ts";
 export function SightingCard({
   sighting,
   index,
+  unit,
   ringPlaced,
   informantOn,
   stars,
@@ -33,6 +35,8 @@ export function SightingCard({
 }: {
   sighting: ColdTrailSighting;
   index: number;
+  /** Length unit for the "Ring radius" line: miles for a USA hideout. */
+  unit: LengthUnit;
   ringPlaced: boolean;
   informantOn: boolean;
   stars: number;
@@ -70,7 +74,7 @@ export function SightingCard({
       <p className="mt-1 text-fg">{sighting.text}</p>
       <p className="mt-2 text-sm text-muted">
         Ring radius:{" "}
-        <span className="text-gold-ink">~{Math.round(radius).toLocaleString("en-US")} km</span>
+        <span className="text-gold-ink">~{formatLength(radius, unit)}</span>
         {informantOn ? " (informant tightened)" : ""}
         {ringPlaced
           ? ""
