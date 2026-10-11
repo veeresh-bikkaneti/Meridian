@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* Motionmaxxing M0: measured curve tokens (document-global :root). */
+@import "./styles/motion-tokens.css";
 
 /* Self-hosted Atlas type system (latin subsets, vendored from Google Fonts;
  * no runtime CDN dependency, so the app — and its "clean console" E2E gate —
@@ -555,8 +557,11 @@
 }
 
 .home-rise {
-  animation: atlas-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
-  animation-delay: calc(var(--d, 0) * 110ms);
+  /* motionmaxxing M7: 0.8s duration, softLand curve, keyframe positions
+   * frozen — the literal curve is now the token (value-identical). The
+   * stagger gaps are retuned uneven via --rise-delay (set by rise()). */
+  animation: atlas-rise 0.8s var(--ease-soft-land) backwards;
+  animation-delay: var(--rise-delay, 0ms);
 }
 
 /* ---- Difficulty briefing ---- */
@@ -676,7 +681,8 @@
   opacity: 0.92;
   transform: rotate(-8deg);
   animation: atlas-stamp-in 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) backwards;
-  animation-delay: calc(var(--d, 0) * 110ms + 380ms);
+  /* motionmaxxing M7: follows the same uneven cascade, +380ms frozen offset. */
+  animation-delay: calc(var(--rise-delay, 0ms) + 380ms);
   pointer-events: none;
 }
 
@@ -779,6 +785,37 @@
 
 .atlas-btn:active {
   translate: 0 1px;
+}
+
+/* ---- Edition-card press feedback (motionmaxxing M6) ----
+ * Fire-and-forget CSS ONLY. Navigation fires on the click event
+ * immediately — nothing in JS delays it, and this rule adds no
+ * transition-delay. Press: scale 0.97 + slight brighten over 80ms glide.
+ * Release: back to 1.0 over 200ms pop-over. No ripple. transform/opacity
+ * only — 390px safe. */
+.atlas-card .atlas-btn {
+  transform: scale(1);
+  transition:
+    transform 200ms var(--ease-pop-over),
+    filter 200ms var(--ease-pop-over),
+    translate 0.25s var(--ease-soft-land),
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.atlas-card .atlas-btn:active {
+  transform: scale(0.97);
+  filter: brightness(1.12);
+  transition:
+    transform 80ms var(--ease-glide),
+    filter 80ms var(--ease-glide),
+    translate 80ms var(--ease-glide),
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .atlas-btn-brass {
@@ -1236,6 +1273,12 @@
   .atlas-card:hover .atlas-card-icon {
     translate: none;
     transform: none;
+  }
+
+  /* M6: no press feedback under reduced motion. */
+  .atlas-card .atlas-btn:active {
+    transform: none;
+    filter: none;
   }
 }
 

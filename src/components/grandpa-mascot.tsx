@@ -38,11 +38,29 @@ const HYSTERESIS = 0.12;
 const BLINK_MS = 180;
 const SQUASH_MS = 420;
 
+/* Tap-ack squash (motionmaxxing M4): mechanism unchanged — WAAPI
+ * fire-and-forget, 420ms total, keyframe offsets frozen. Curves retuned:
+ * press segment → glide, release segments → pop-over (named in comments
+ * against the token names; WAAPI takes literal cubic-bezier strings).
+ * NOTE: in WAAPI the `easing` on keyframe K drives the segment K→K+1 —
+ * opposite of CSS keyframes. So the press curve sits on keyframe 0. */
 const SQUASH: Keyframe[] = [
-  { transform: "scale(1, 1)", easing: "ease-in" },
-  { transform: "scale(1.10, 0.86)", offset: 0.18, easing: "ease-out" },
-  { transform: "scale(0.95, 1.08)", offset: 0.45, easing: "ease-in-out" },
-  { transform: "scale(1.03, 0.97)", offset: 0.72, easing: "ease-in-out" },
+  { transform: "scale(1, 1)", easing: "cubic-bezier(0.61,1,0.88,1)" }, // glide (press)
+  {
+    transform: "scale(1.10, 0.86)",
+    offset: 0.18,
+    easing: "cubic-bezier(0.34,1.3,0.64,1)", // pop-over (release)
+  },
+  {
+    transform: "scale(0.95, 1.08)",
+    offset: 0.45,
+    easing: "cubic-bezier(0.34,1.3,0.64,1)", // pop-over (release)
+  },
+  {
+    transform: "scale(1.03, 0.97)",
+    offset: 0.72,
+    easing: "cubic-bezier(0.34,1.3,0.64,1)", // pop-over (release)
+  },
   { transform: "scale(1, 1)" },
 ];
 

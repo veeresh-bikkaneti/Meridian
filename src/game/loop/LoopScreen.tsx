@@ -131,8 +131,22 @@ function usePrefersReducedMotion(): boolean {
   return reduced;
 }
 
+/** Clue-reveal stagger (motionmaxxing M2): uneven 50–70ms gaps keep the
+ * cascade organic. Only applied when a clue index is supplied and motion
+ * is allowed — under reduced motion every Rise lands as an instant fade. */
+const CLUE_RISE_DELAY_MS = [0, 60, 125, 185, 255];
+
 /** Single rise on mount; opacity-only fade under reduced motion. */
-function Rise({ children, reduced }: { children: React.ReactNode; reduced: boolean }) {
+function Rise({
+  children,
+  reduced,
+  index,
+}: {
+  children: React.ReactNode;
+  reduced: boolean;
+  /** Clue position (0-based) — drives the M2 stagger; omitted = no delay. */
+  index?: number;
+}) {
   const [entered, setEntered] = useState(false);
   useEffect(() => {
     const frame = requestAnimationFrame(() => setEntered(true));
@@ -145,10 +159,16 @@ function Rise({ children, reduced }: { children: React.ReactNode; reduced: boole
     : reduced
       ? "opacity-0"
       : "translate-y-4 opacity-0";
+  const delay =
+    index === undefined || reduced ? 0 : (CLUE_RISE_DELAY_MS[index] ?? 0);
   return (
     <div
-      className={`transition-all ease-[cubic-bezier(0.16,1,0.3,1)] ${stateClass}`}
-      style={{ transitionDuration: reduced ? "150ms" : "500ms" }}
+      className={`transition-all ${stateClass}`}
+      style={{
+        transitionDuration: reduced ? "150ms" : "400ms",
+        transitionTimingFunction: "var(--ease-snap-settle)",
+        transitionDelay: `${delay}ms`,
+      }}
     >
       {children}
     </div>
@@ -1161,7 +1181,7 @@ function ClueCard({
   reduced: boolean;
 }) {
   const body = revealed ? (
-    <Rise key={`revealed-${index}`} reduced={reduced}>
+    <Rise key={`revealed-${index}`} reduced={reduced} index={index}>
       <p className="mt-1 text-fg">{text}</p>
     </Rise>
   ) : (

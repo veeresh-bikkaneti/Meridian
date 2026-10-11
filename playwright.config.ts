@@ -308,6 +308,27 @@ export default defineConfig({
         viewport: { width: 390, height: 844 },
       },
     },
+    {
+      name: "motionmaxxing",
+      // Motion-language integration (owner order 2026-10-11, M0–M7).
+      // Default viewport 390×844 (no mobile UA emulation — same note as
+      // badge-journey: isMobile/hasTouch breaks loop-map mounting in
+      // headless Chromium); tests that need 1280px set it via test.use.
+      testMatch: /motionmaxxing\.spec\.ts/,
+      use: {
+        viewport: { width: 390, height: 844 },
+      },
+    },
+    {
+      name: "motionmaxxing-reduced",
+      // Motionmaxxing reduced-motion gate (project reducedMotion fixture —
+      // matches the repo's `reduced` project convention).
+      testMatch: /motionmaxxing\.reduced\.spec\.ts/,
+      use: {
+        viewport: { width: 390, height: 844 },
+        reducedMotion: "reduce",
+      },
+    },
   ],
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
 });

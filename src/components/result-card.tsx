@@ -48,7 +48,7 @@ function usePrefersReducedMotion(): boolean {
   return reduced;
 }
 
-/** Single 500ms rise on mount; opacity-only fade under reduced motion. */
+/** Single 400ms rise on mount (motionmaxxing M2 — was 500ms); opacity-only fade under reduced motion. */
 function Rise({
   children,
   reduced,
@@ -63,10 +63,13 @@ function Rise({
   }, []);
   return (
     <div
-      className={`transition-all ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      className={`transition-all ${
         entered ? "translate-y-0 opacity-100" : reduced ? "opacity-0" : "translate-y-4 opacity-0"
       }`}
-      style={{ transitionDuration: reduced ? "150ms" : "500ms" }}
+      style={{
+        transitionDuration: reduced ? "150ms" : "400ms",
+        transitionTimingFunction: "var(--ease-snap-settle)",
+      }}
     >
       {children}
     </div>

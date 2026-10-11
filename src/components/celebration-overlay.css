@@ -40,9 +40,28 @@
   }
 }
 
-/* Bounce-in overshoot for the card. */
+/* Bounce-in overshoot for the card. The celebration entrance is the app's
+ * ONE full pop moment — --ease-pop-over is otherwise budgeted only to
+ * springy release segments (see motion-tokens.css). Duration frozen at 0.55s. */
 .celebration-pop {
-  animation: celebrate-pop 0.55s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  animation: celebrate-pop 0.55s var(--ease-pop-over) both;
+}
+
+/* Child cascade: the card pops first, then label → headline → copy arrive
+ * at uneven ~65ms gaps (55 / 65 / 75). Same pop curve, same 0.55s — the
+ * celebration moment owns the overshoot budget, nested elements included.
+ * fill-mode both holds the `from` pose through each delay. */
+.celebration-child {
+  animation: celebrate-pop 0.55s var(--ease-pop-over) both;
+}
+.celebration-child-1 {
+  animation-delay: 55ms;
+}
+.celebration-child-2 {
+  animation-delay: 120ms;
+}
+.celebration-child-3 {
+  animation-delay: 195ms;
 }
 
 /* Gentle bob for the floating character. */
