@@ -2,6 +2,7 @@ import { initialBearing, windName8 } from "@/game/geo";
 import { formatLength, scoreGradeBand, unitForEdition } from "@/game/units";
 import { nameTier } from "@/game/place-name";
 import { PlaceNameText } from "@/components/place-name";
+import { BoundedText } from "@/components/bounded-text";
 import { GradeChip } from "@/components/grade-chip";
 import { difficultyChip } from "@/game/scoring";
 import { bubbleHeaderText } from "@/game/question-label";
@@ -128,12 +129,12 @@ function AiStoryBadge() {
 function GrowthLine({ line }: { line: string | null | undefined }) {
   if (!line) return null;
   return (
-    <p data-testid="growth-line" className="growth-line text-sm leading-relaxed">
+    <BoundedText variant="body" data-testid="growth-line" className="growth-line text-sm">
       <span role="img" aria-label="growing plant">
         🌱
       </span>{" "}
       {line}
-    </p>
+    </BoundedText>
   );
 }
 
@@ -149,9 +150,13 @@ function ShareResult({ run, copyVariant = "primary" }: { run: Run; copyVariant?:
   });
   return (
     <div className="flex flex-col gap-3">
-      <pre className="share-pre whitespace-pre-wrap rounded-lg px-4 py-3 font-sans text-sm leading-relaxed">
+      <BoundedText
+        as="pre"
+        variant="url"
+        className="share-pre rounded-lg px-4 py-3 font-sans text-sm"
+      >
         {line}
-      </pre>
+      </BoundedText>
       <ShareButton
         title="Meridian score"
         text={line}
@@ -380,17 +385,17 @@ export function ResultCard({
             <div className="result-topbar">
               {place ? (
                 <div className="name-meta">
-                  <p className="name-eyebrow">
+                  <BoundedText variant="body" className="name-eyebrow">
                     {bubbleHeaderText(run.edition, run.regionName)}
-                  </p>
+                  </BoundedText>
                   <span data-testid="difficulty-chip" className="difficulty-chip">
                     {difficultyChip(place.difficulty)}
                   </span>
                 </div>
               ) : (
-                <p className="name-eyebrow">
+                <BoundedText variant="body" className="name-eyebrow">
                   {bubbleHeaderText(run.edition, run.regionName)}
-                </p>
+                </BoundedText>
               )}
               <button
                 type="button"
@@ -403,7 +408,9 @@ export function ResultCard({
             </div>
             {verdict ? (
               <div className="verdict-row">
-                <h2
+                <BoundedText
+                  as="h2"
+                  variant="headline"
                   ref={headingRef}
                   tabIndex={-1}
                   {...(verdict.testId ? { "data-testid": verdict.testId } : {})}
@@ -411,18 +418,20 @@ export function ResultCard({
                 >
                   <span className="sr-only">Result: </span>
                   {verdict.text}
-                </h2>
+                </BoundedText>
                 {verdict.chip}
               </div>
             ) : (
-              <h2
+              <BoundedText
+                as="h2"
+                variant="place"
                 ref={headingRef}
                 tabIndex={-1}
                 className="place-name rname outline-none"
                 data-name-tier={nameTier(bubbleHeaderText(run.edition, run.regionName))}
               >
                 {bubbleHeaderText(run.edition, run.regionName)}
-              </h2>
+              </BoundedText>
             )}
           </div>
 
@@ -440,13 +449,15 @@ export function ResultCard({
             >
               {run.phase === "story" && place ? (
                 <>
-                  <h2
+                  <BoundedText
+                    as="h2"
+                    variant="place"
                     title={placeLabel}
                     data-name-tier={nameTier(placeLabel)}
                     className="place-name rname"
                   >
                     <PlaceNameText name={placeLabel} />
-                  </h2>
+                  </BoundedText>
                   {/* Age-profile read-aloud (Phase 2 §4, Item C/B3): 5-7 filled +
                       auto; 8-10 and 11-13 render the identical ghost speaker
                       icon (44px, no text label) so the band stays invisible.
@@ -462,7 +473,8 @@ export function ResultCard({
                     />
                   </div>
                   {drop?.breakdown ? (
-                    <p
+                    <BoundedText
+                      variant="body"
                       data-testid="score-breakdown"
                       data-base={drop.breakdown.base}
                       data-mult={drop.breakdown.diffMult}
@@ -472,12 +484,12 @@ export function ResultCard({
                       className="score-breakdown"
                     >
                       {formatBreakdown(drop.breakdown)}
-                    </p>
+                    </BoundedText>
                   ) : null}
-                  <p className="result-note">
+                  <BoundedText variant="body" className="result-note">
                     The line is your pin to the spot. The circle is close enough.
-                  </p>
-                  <p className="result-story">
+                  </BoundedText>
+                  <BoundedText variant="body" className="result-story">
                     {withSports}
                     {/* Dedicated live element: only the new AI sentence is
                         announced, never a full-paragraph re-read. */}
@@ -489,17 +501,19 @@ export function ResultCard({
                         </>
                       ) : null}
                     </span>
-                  </p>
+                  </BoundedText>
                   {/* Growth line sits below the blurb, never replacing it. */}
                   <GrowthLine line={growthLine} />
-                  <a
+                  <BoundedText
+                    as="a"
+                    variant="url"
                     className="result-source"
                     href={place.sourceHref}
                     target="_blank"
                     rel="noreferrer"
                   >
                     {place.sourceLabel}
-                  </a>
+                  </BoundedText>
                 </>
               ) : null}
 
@@ -509,7 +523,9 @@ export function ResultCard({
                     <dl data-testid="pin-compare-line" className="pin-ledger">
                       <div className="pin-ledger-entry">
                         <dt>Your pin</dt>
-                        <dd
+                        <BoundedText
+                          as="dd"
+                          variant="place"
                           className="place-name yourpin-name"
                           title={
                             pinCompare.kind === "verdict"
@@ -527,14 +543,16 @@ export function ResultCard({
                               <PlaceNameText name={pinCompare.pin} />
                             </>
                           )}
-                        </dd>
+                        </BoundedText>
                       </div>
                       <div className="pin-ledger-entry">
                         <dt>
                           <span className="truespot-mark" aria-hidden="true" />
                           True spot
                         </dt>
-                        <dd
+                        <BoundedText
+                          as="dd"
+                          variant="place"
                           className="place-name truespot-name"
                           data-name-tier={nameTier(
                             run.edition === "globe" && pinCompare?.kind === "named"
@@ -554,11 +572,12 @@ export function ResultCard({
                                 : placeLabel
                             }
                           />
-                        </dd>
+                        </BoundedText>
                       </div>
                     </dl>
                   ) : null}
-                  <p
+                  <BoundedText
+                    variant="body"
                     data-testid="miss-subscript"
                     className="result-subscript"
                     title={`Your pin is your guess · the gold mark is the true spot. ${storyLede}`}
@@ -568,43 +587,51 @@ export function ResultCard({
                     </span>
                     <br />
                     <span className="mt-1 block text-sm leading-relaxed">{storyLede}</span>
-                  </p>
+                  </BoundedText>
                   {drop && drop.streakBefore >= 2 ? (
-                    <p className="result-note">
+                    <BoundedText variant="body" className="result-note">
                       🔥 {drop.streakBefore}-place streak reset — combo back to{" "}
                       {formatFactor(comboForStreak(1))}x.
-                    </p>
+                    </BoundedText>
                   ) : null}
-                  {storyRest ? <p className="result-story">{storyRest}</p> : null}
+                  {storyRest ? (
+                    <BoundedText variant="body" className="result-story">
+                      {storyRest}
+                    </BoundedText>
+                  ) : null}
                   {/* AI sentence as its own announced paragraph: the miss-card
                       lede keeps the blurb's first sentence; the hook — often
                       the only memorable fact on a blurb-only card — arrives
                       here and is announced once via the polite live region. */}
                   <div aria-live="polite">
                     {aiStory ? (
-                      <p className="result-story">
+                      <BoundedText variant="body" className="result-story">
                         {aiStory}
                         <AiStoryBadge />
-                      </p>
+                      </BoundedText>
                     ) : null}
                   </div>
                   {/* Growth line sits below the story, never replacing it. */}
                   <GrowthLine line={growthLine} />
-                  <a
+                  <BoundedText
+                    as="a"
+                    variant="url"
                     className="result-source"
                     href={place.sourceHref}
                     target="_blank"
                     rel="noreferrer"
                   >
                     {place.sourceLabel}
-                  </a>
+                  </BoundedText>
                   <ShareResult run={run} copyVariant="secondary" />
                 </>
               ) : null}
 
               {run.phase === "done" && empty ? (
                 <>
-                  <p className="result-note">This trail has no places yet.</p>
+                  <BoundedText variant="body" className="result-note">
+                    This trail has no places yet.
+                  </BoundedText>
                   <ShareResult run={run} />
                 </>
               ) : null}

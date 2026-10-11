@@ -22,6 +22,7 @@ import {
   type StorytellerLineKey,
 } from "./storyteller-lines";
 import { GrandpaMascot } from "./grandpa-mascot";
+import { BoundedText } from "@/components/bounded-text";
 import "./storyteller-mascot.css";
 
 // Storyteller narration — the old Greek storyteller's voice.
@@ -490,7 +491,9 @@ export function StorytellerNarration({
       role="status"
       onClick={handleCaptionClick}
     >
-      <p
+      <BoundedText
+        as="p"
+        variant="banner"
         className="storyteller-caption-text"
         data-testid="storyteller-caption-text"
         aria-label={fullText}
@@ -505,7 +508,7 @@ export function StorytellerNarration({
             {i < words.length - 1 ? " " : ""}
           </span>
         ))}
-      </p>
+      </BoundedText>
       {failed ? (
         <span className="storyteller-fallback" data-testid="storyteller-fallback">
           {STORYTELLER_AUDIO_FALLBACK_LINE}

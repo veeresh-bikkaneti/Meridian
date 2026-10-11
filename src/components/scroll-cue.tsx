@@ -13,6 +13,8 @@ import { useEffect, useRef, useState } from "react";
  * `role="region"` + an accessible name so keyboard users can reach and
  * scroll it (spec §8.1); the cue is only the visual hint.
  */
+import { BoundedText } from "@/components/bounded-text";
+
 export function useMoreBelow<T extends HTMLElement>(): {
   ref: React.RefObject<T | null>;
   moreBelow: boolean;
@@ -53,7 +55,9 @@ export function ScrollCue({ visible }: { visible: boolean }): React.JSX.Element 
   return (
     <div className="scroll-cue" aria-hidden="true">
       <span className="scroll-cue-dots">⋯</span>
-      <span className="scroll-cue-text">more below</span>
+      <BoundedText as="span" variant="body" className="scroll-cue-text">
+        more below
+      </BoundedText>
     </div>
   );
 }
