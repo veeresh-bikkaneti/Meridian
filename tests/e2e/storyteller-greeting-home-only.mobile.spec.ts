@@ -1,5 +1,11 @@
-import { test, expect } from "playwright/test";
-import { serveBuiltArtifact, startGlobeRun, commitMiss } from "./helpers";
+import { test, expect, type Page } from "playwright/test";
+import {
+  serveBuiltArtifact,
+  startGlobeRun,
+  commitPin,
+  clickNextPlace,
+  readPhase,
+} from "./helpers";
 
 /**
  * TEST cell — fix PR "storyteller greeting home-only"
@@ -26,6 +32,24 @@ test.beforeEach(async ({ context }) => {
 
 const GREETING_SNIPPET = "Gather round, explorer!";
 
+/**
+ * Verification 2026-10-11: helpers.commitMiss taps (500, 400), which is
+ * off-viewport on a 390px phone — the pin never drops and the Drop button
+ * stays disabled. Same contract (a near-certain miss, advance on a rare
+ * hit), but tapping the visible globe at (195, 523), verified to place a
+ * pin on 390×844.
+ */
+async function commitMissMobile(page: Page): Promise<void> {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const { phase } = await commitPin(page, 195, 523);
+    if (phase === "done") return;
+    // Rare hit: move on and try the next place.
+    await clickNextPlace(page);
+    await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+  }
+  throw new Error("commitMissMobile: hit three places in a row");
+}
+
 test("home page shows the storyteller home banner", async ({ page }) => {
   await page.goto("http://127.0.0.1:4123/Meridian/");
   // The home banner host (figure + greeting) renders on the home page.
@@ -36,7 +60,7 @@ test("home page shows the storyteller home banner", async ({ page }) => {
 
 test("result card never renders the greeting banner", async ({ page }) => {
   await startGlobeRun(page);
-  await commitMiss(page);
+  await commitMissMobile(page);
   // The result card mounts.
   const card = page.locator('section[aria-label="Result"]');
   await expect(card).toBeVisible({ timeout: 20_000 });
@@ -70,7 +94,7 @@ test("result card still works without the greeting banner", async ({
   page,
 }) => {
   await startGlobeRun(page);
-  await commitMiss(page);
+  await commitMissMobile(page);
   const card = page.locator('section[aria-label="Result"]');
   await expect(card).toBeVisible({ timeout: 20_000 });
   // Verdict headline renders (the card's own content is intact).

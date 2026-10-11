@@ -69,7 +69,12 @@ test("hit: state-edition result card renders the Place story region", async ({
   const card = resultCard(page);
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 10_000 });
 
-  const scroller = card.getByRole("region", { name: "Place story" });
+  // Cartographer's Plate PR3 (2026-10-07) folded the story scrollers into
+  // one region renamed "Place details — scroll for more"; the spec still
+  // used the old "Place story" name. Fixed 2026-10-11 during verification.
+  const scroller = card.getByRole("region", {
+    name: "Place details — scroll for more",
+  });
   await expect(scroller).toBeVisible({ timeout: 5_000 });
   const text = (await scroller.textContent()) ?? "";
   expect(
