@@ -77,7 +77,8 @@ const SMALL_REGION: RegionGeometryDTO = {
   polygonCoords: { type: "Polygon", coordinates: [] },
 };
 
-/** Drive requestNarrow → spin → narrow to REGION, via the crossing swap. */
+/** Drive requestNarrow → spin → narrow to REGION (no discrete swaps — the
+ * zoom-interpolated morph is zoom-driven; the logical projection flips). */
 function narrowToRegion(
   c: ZoomSpaceController,
   settleZoom = 4.5,
@@ -86,14 +87,18 @@ function narrowToRegion(
   const start = c.requestNarrow(region, settleZoom);
   if (c.state === "REGION") return; // reduced motion: synchronous narrow-in.
   assert.equal(start[1]?.type, "spin");
-  // The narrow beat swaps to mercator synchronously at beat start (no
-  // mid-flight crossing): the swap intent is part of onSpinTimer's output.
+  // The narrow beat flips the logical projection to mercator synchronously
+  // at beat start (no mid-flight crossing): the fly-to intent is part of
+  // onSpinTimer's output.
   const chained = c.onSpinTimer();
   assert.ok(
-    chained.some(
-      (i) => i.type === "set-projection" && i.projection === "mercator",
-    ),
-    "narrow beat should swap to mercator at beat start",
+    chained.some((i) => i.type === "fly-to"),
+    "narrow beat should fly to the region at beat start",
+  );
+  assert.equal(
+    c.projection,
+    "mercator",
+    "logical projection flips at narrow beat start",
   );
   const done = c.onMoveEnd(snap(settleZoom, "mercator", region.center));
   assert.ok(
@@ -142,7 +147,7 @@ test("requestNarrow is single-shot; second call is a no-op", () => {
   assert.deepEqual(c.requestNarrow(NEBRASKA, 4.5), []);
 });
 
-test("spin timer chains into the narrow beat (synchronous swap at beat start)", () => {
+test("spin timer chains into the narrow beat (logical flip at beat start)", () => {
   const c = flatController();
   c.requestNarrow(NEBRASKA, 4.5);
   assert.deepEqual(c.onSpinTimer(), [
@@ -150,9 +155,9 @@ test("spin timer chains into the narrow beat (synchronous swap at beat start)", 
     // Tile-honesty re-arm opens the narrow phase (full watchdog budget from
     // narrow start, not from the intro spin).
     { type: "rearm-tiles" },
-    // Synchronous swap for all cases: the mid-flight crossing was racy, so
-    // the beat swaps at start, masked by the flight's initial motion.
-    { type: "set-projection", projection: "mercator" },
+    // No discrete swap: the zoom-interpolated morph is zoom-driven — the
+    // logical projection flips at beat start, masked by the flight's
+    // initial motion.
     {
       type: "fly-to",
       center: NEBRASKA.center,
@@ -166,12 +171,12 @@ test("spin timer chains into the narrow beat (synchronous swap at beat start)", 
   assert.equal(c.projection, "mercator");
 });
 
-test("narrow beat: no mid-flight crossing swap — onMove never swaps", () => {
+test("narrow beat: onMove is pure tracking — no projection intents", () => {
   const c = flatController();
   c.requestNarrow(NEBRASKA, 4.5);
   c.onSpinTimer();
-  // Mid-flight moves at any zoom are plain tracking; the swap already
-  // happened at beat start.
+  // Mid-flight moves at any zoom are plain tracking; the logical projection
+  // already flipped at beat start.
   assert.deepEqual(c.onMove(snap(2.5, "globe")), []);
   assert.deepEqual(c.onMove(snap(3.4, "globe")), []);
   assert.deepEqual(c.onMove(snap(4.0, "mercator")), []);
@@ -194,24 +199,26 @@ test("narrow completion locks, highlights, enables, announces", () => {
   assert.equal(c.beatActive, false);
 });
 
-test("narrow completion belt-and-braces: swap when crossing never fired", () => {
+test("narrow completion belt-and-braces: logical flip when tracking drifted", () => {
   const c = flatController();
   c.requestNarrow(NEBRASKA, 4.5);
   c.onSpinTimer();
-  // No onMove ≥ 3.2 was ever forwarded: projection is still globe.
+  // A stale "globe" snapshot resyncs tracking mid-beat; narrow completion
+  // repairs the logical projection with NO swap intent (the morph is
+  // zoom-driven) and the completion otherwise proceeds.
   const done = c.onMoveEnd(snap(4.5, "globe", NEBRASKA.center));
-  assert.deepEqual(done[0], { type: "set-projection", projection: "mercator" });
+  assert.deepEqual(done[0], { type: "paint-highlight", feature: NEBRASKA });
   // Note: set-max-bounds is intentionally NOT emitted — it blocks zoomOut().
+  assert.equal(c.projection, "mercator");
   assert.equal(c.state, "REGION");
 });
 
-test("sub-2.2 settle: synchronous swap at narrow beat start, no duplicate at completion", () => {
+test("sub-2.2 settle: logical flip at narrow beat start, no swap at completion", () => {
   const c = flatController();
   c.requestNarrow(NEBRASKA, 1.9);
   assert.deepEqual(c.onSpinTimer(), [
     { type: "spin", active: false },
     { type: "rearm-tiles" },
-    { type: "set-projection", projection: "mercator" },
     {
       type: "fly-to",
       center: NEBRASKA.center,
@@ -221,8 +228,8 @@ test("sub-2.2 settle: synchronous swap at narrow beat start, no duplicate at com
       easing: "easeInOutCubic",
     },
   ]);
-  const done = c.onMoveEnd(snap(1.9, "mercator", NEBRASKA.center));
-  assert.ok(done.every((i) => i.type !== "set-projection"));
+  c.onMoveEnd(snap(1.9, "mercator", NEBRASKA.center));
+  assert.equal(c.projection, "mercator");
   assert.equal(c.state, "REGION");
 });
 
@@ -241,7 +248,6 @@ test("T_OUT fires on a genuine zoom-OUT below 2.2", () => {
   narrowToRegion(c, 1.9);
   c.onMove(snap(2.0));
   assert.deepEqual(c.onZoomEnd(snap(1.5)), [
-    { type: "set-projection", projection: "globe" },
     { type: "set-max-bounds", bounds: null },
     { type: "announce", message: "Space view" },
   ]);
@@ -294,9 +300,8 @@ test("T_IN starts the relock beat; trailing moveend does not complete it", () =>
   // The gesture's trailing moveend: consumed, beat stays active.
   assert.deepEqual(c.onMoveEnd(snap(3.6, "globe", PARIS)), []);
   assert.equal(c.beatActive, true);
-  // The ease's own moveend: completion — lock, swap, re-enable, announce.
+  // The ease's own moveend: completion — lock, re-enable, announce.
   assert.deepEqual(c.onMoveEnd(snap(3.6, "globe", NEBRASKA.center)), [
-    { type: "set-projection", projection: "mercator" },
     { type: "gestures", enabled: true },
     { type: "tap-handlers", enabled: true },
     { type: "announce", message: "Nebraska view" },
@@ -331,7 +336,6 @@ test("T_IN eases up to the region framing when below it (snap-safe relock)", () 
   assert.equal(c.beatActive, true);
   // The ease's own moveend: completion — lock lands snap-free at the framing.
   assert.deepEqual(c.onMoveEnd(snap(4.5, "globe", NEBRASKA.center)), [
-    { type: "set-projection", projection: "mercator" },
     { type: "gestures", enabled: true },
     { type: "tap-handlers", enabled: true },
     { type: "announce", message: "Nebraska view" },
@@ -350,7 +354,6 @@ test("T_IN is zero-length when the camera is already at/above the framing", () =
   assert.deepEqual(c.onZoomEnd(snap(5, "globe", NEBRASKA.center)), [
     { type: "gestures", enabled: false },
     { type: "tap-handlers", enabled: false },
-    { type: "set-projection", projection: "mercator" },
     { type: "gestures", enabled: true },
     { type: "tap-handlers", enabled: true },
     { type: "announce", message: "Nebraska view" },
@@ -374,7 +377,6 @@ test("onZoomStart releases the region maxBounds so T_OUT is reachable", () => {
   // own null-bounds emit is idempotent after the zoomstart release.
   c.onMove(snap(7, "mercator", NEBRASKA.center));
   assert.deepEqual(c.onZoomEnd(snap(1.5, "mercator", NEBRASKA.center)), [
-    { type: "set-projection", projection: "globe" },
     { type: "set-max-bounds", bounds: null },
     { type: "announce", message: "Space view" },
   ]);
@@ -428,8 +430,8 @@ test("requestReveal during the intro beats is queued, not dropped", () => {
   assert.deepEqual(c.requestReveal(REVEAL_REQUEST), []);
   // The narrow beat completes; the queued reveal flushes as the gap-view
   // reveal beat (paint-variation + ease-to present, beat armed).
-  // Note: the projection swap is now synchronous at narrow start (not via
-  // the racy mid-flight crossing), so onMove does not emit set-projection.
+  // Note: the logical projection flips at narrow start (no swap intents —
+  // the morph is zoom-driven), so onMove emits nothing.
   c.onSpinTimer();
   const done = c.onMoveEnd(snap(4.5, "mercator", NEBRASKA.center));
   assert.ok(
@@ -459,9 +461,8 @@ test("requestReveal during relock beat is queued, not dropped", () => {
   const midBeat = { ...REVEAL_REQUEST, projection: "globe" as ProjectionType };
   assert.deepEqual(c.requestReveal(midBeat), []);
   // The ease's own moveend completes the relock, then the queued reveal
-  // flushes: lock + swap + re-enable, then the gap-view reveal beat.
+  // flushes: lock + re-enable, then the gap-view reveal beat.
   assert.deepEqual(c.onMoveEnd(snap(3.6, "globe", NEBRASKA.center)), [
-    { type: "set-projection", projection: "mercator" },
     { type: "gestures", enabled: true },
     { type: "tap-handlers", enabled: true },
     { type: "announce", message: "Nebraska view" },
@@ -559,7 +560,6 @@ test("resetForNextPlace: T_OUT/T_IN evaluate again for the next place", () => {
   // T_OUT fires again on a genuine zoom-out below 2.2.
   c.onMove(snap(6, "mercator", NEBRASKA.center));
   assert.deepEqual(c.onZoomEnd(snap(1.5, "mercator")), [
-    { type: "set-projection", projection: "globe" },
     { type: "set-max-bounds", bounds: null },
     { type: "announce", message: "Space view" },
   ]);
@@ -586,7 +586,6 @@ test("resetForNextPlace: T_OUT/T_IN evaluate again for the next place", () => {
   assert.equal(c.beatActive, true);
   // The ease's own moveend: completion — lock lands snap-free at the framing.
   assert.deepEqual(c.onMoveEnd(snap(4.5, "globe", NEBRASKA.center)), [
-    { type: "set-projection", projection: "mercator" },
     { type: "gestures", enabled: true },
     { type: "tap-handlers", enabled: true },
     { type: "announce", message: "Nebraska view" },
@@ -659,14 +658,14 @@ test("big-miss reveal: release to globe, then the single gap-view ease", () => {
   const c = flatController();
   narrowToRegion(c, 4.5);
   // BIG_MISS_REQUEST pin→spot ≈ 7500 km: the core classifies the big miss
-  // itself (no kind argument from the caller). A big miss releases to the
-  // globe projection so both points fit honestly, then runs the same single
-  // gap-view ease as a standard miss.
+  // itself (no kind argument from the caller). A big miss releases maxBounds
+  // (the morph slides to the globe arm as the camera pulls out) so both
+  // points fit honestly, then runs the same single gap-view ease as a
+  // standard miss.
   assert.deepEqual(c.requestReveal(BIG_MISS_REQUEST), [
     { type: "gestures", enabled: false },
     { type: "tap-handlers", enabled: false },
     { type: "paint-variation", variation: BIG_MISS_REQUEST.variation },
-    { type: "set-projection", projection: "globe" },
     { type: "set-max-bounds", bounds: null },
     { type: "announce", message: "Showing your pin and the true spot." },
     {
@@ -705,11 +704,10 @@ test("big-miss ratio branch: 221 km miss on a 111 km region still releases", () 
   const intents = c.requestReveal(request);
   assert.equal(c.beatKind, "reveal");
   assert.ok(
-    intents.some(
-      (i) => i.type === "set-projection" && i.projection === "globe",
-    ),
-    "ratio-branch big miss releases to the globe",
+    intents.some((i) => i.type === "set-max-bounds" && i.bounds === null),
+    "ratio-branch big miss releases maxBounds",
   );
+  assert.equal(c.projection, "globe", "logical projection flips to globe");
 });
 
 test("globe edition: no region → never a big miss", () => {
@@ -726,8 +724,8 @@ test("globe edition: no region → never a big miss", () => {
   const intents = c.requestReveal(BIG_MISS_REQUEST);
   assert.equal(c.beatKind, "reveal");
   assert.ok(
-    intents.every((i) => i.type !== "set-projection"),
-    "no release swap in globe edition",
+    intents.every((i) => i.type !== "set-max-bounds"),
+    "no release in globe edition",
   );
 });
 
@@ -753,7 +751,6 @@ test("reduced motion: no spin, synchronous jump + immediate completion", () => {
   assert.deepEqual(intents, [
     { type: "gestures", enabled: false },
     { type: "rearm-tiles" },
-    { type: "set-projection", projection: "mercator" },
     { type: "jump-to", center: NEBRASKA.center, zoom: 4.5 },
     { type: "paint-highlight", feature: NEBRASKA },
     { type: "gestures", enabled: true },
@@ -776,7 +773,6 @@ test("reduced motion: miss jumps straight to the gap framing, synchronously comp
     { type: "gestures", enabled: false },
     { type: "tap-handlers", enabled: false },
     { type: "paint-variation", variation: BIG_MISS_REQUEST.variation },
-    { type: "set-projection", projection: "globe" },
     { type: "set-max-bounds", bounds: null },
     { type: "announce", message: "Showing your pin and the true spot." },
     {

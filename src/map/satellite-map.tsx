@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useRef, useState, type JSX, type KeyboardEvent } from "react";
 import { Info } from "lucide-react";
-import { Map, Marker, type GeoJSONSource, type LngLat } from "maplibre-gl";
+import { Map, Marker, type GeoJSONSource, type LngLat, type ProjectionSpecification } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { DropPinButton } from "@/components/drop-pin-button.tsx";
 import { ZoomControls } from "@/components/zoom-controls.tsx";
@@ -30,6 +30,8 @@ import {
   GLOBE_HOME,
   SPIN_DURATION_MS,
   SPIN_SPEED_DPS,
+  Z_FLAT_IN,
+  Z_GLOBE_OUT,
   ZoomSpaceController,
   type RevealRequest,
   type ZoomSnapshot,
@@ -39,6 +41,27 @@ import {
 const IMAGERY_SOURCE = "imagery";
 const LINE_SOURCE = "variation-line";
 const RING_SOURCE = "variation-ring";
+
+/**
+ * fix/country-zoom-smooth: the zoom-interpolated projection morph, declared
+ * ONCE at map init (flat editions only). MapLibre 6.11.2's projection_factory
+ * Array.isArray branch → permanent GlobeProjection + GlobeTransform, and
+ * GlobeProjection interpolates vertical-perspective → mercator across the
+ * zoom hysteresis band [Z_GLOBE_OUT, Z_FLAT_IN] (the same stops the
+ * zoom-space thresholds use). No discrete setProjection swaps → no
+ * Style#_setProjectionInternal tile-manager reload bursts, no flat↔globe
+ * snap. Globe edition keeps the plain "globe" projection (its thresholds
+ * are inert and the camera never leaves the globe arm).
+ */
+const PROJECTION_MORPH: ProjectionSpecification["type"] = [
+  "interpolate",
+  ["linear"],
+  ["zoom"],
+  Z_GLOBE_OUT,
+  "vertical-perspective",
+  Z_FLAT_IN,
+  "mercator",
+];
 
 // Frosted chrome token shared by the floating aim/reveal chrome (mirrors
 // question-bubble.tsx / result-card.tsx).
@@ -446,7 +469,13 @@ export function SatelliteMap(props: {
   // to the current one across the continue-reset, which resets this same
   // instance via `resetForNextPlace()` for the next aim phase.
   const controllerRef = useRef<ZoomSpaceController | null>(null);
-  const projectionRef = useRef<"globe" | "mercator">("globe");
+  // fix/country-zoom-smooth: the controller owns the discrete LOGICAL
+  // projection (the map's projection morphs continuously with zoom, declared
+  // once at init). The adapter reads it for snapshots, marker occlusion,
+  // and viewport capture. Falls back to "globe" before the controller
+  // exists (fresh intro opens in space).
+  const logicalProjection = (): "globe" | "mercator" =>
+    controllerRef.current?.projection ?? "globe";
   // Re-entrancy guard: while an intent batch is executing, MapLibre may
   // synchronously emit nested map events (projection migration perturbs the
   // camera transform). Those carry a half-applied camera state and must not
@@ -677,6 +706,10 @@ export function SatelliteMap(props: {
     if (props.mapMode !== "scout") dispatchTile({ type: "retry" });
 
     const edition = props.edition;
+    // Flat editions (state/country) run the zoom-space thresholds against
+    // the zoom-interpolated projection morph; the globe edition keeps the
+    // plain "globe" projection (thresholds inert there).
+    const flat = edition !== "globe";
     const reducedMotion = prefersReducedMotion();
     reducedMotionRef.current = reducedMotion;
     editionRef.current = edition;
@@ -719,13 +752,17 @@ export function SatelliteMap(props: {
     }
     dtoRef.current = dto;
 
-    // Design §8: the restore path re-opens mid-SPACE. Projection and
-    // maxBounds are constructor inputs (the style declares the projection —
-    // setProjection throws before load, so it cannot run here) — the camera
-    // is below. maxBounds re-lands from the game's regions.ts box when the
-    // restored projection is flat; the intro path starts unbounded and the
-    // narrow beat lands maxBounds at completion.
-    const initialProjection = isRestore ? restoreView.projection : "globe";
+    // Design §8: the restore path re-opens mid-SPACE. The projection morph
+    // and maxBounds are constructor inputs (the style declares the
+    // projection — setProjection throws before load, so it cannot run here)
+    // — the camera is below. The morph is zoom-driven, so the restored
+    // LOGICAL projection (globe/mercator) seeds the controller's tracking;
+    // maxBounds re-lands from the game's regions.ts box when the restored
+    // logical projection is mercator. The intro path starts unbounded and
+    // the narrow beat lands maxBounds at completion.
+    // fix/country-zoom-smooth: initialProjection no longer touches the style
+    // (the morph is declared once, below) — it only seeds the controller.
+    const initialProjection: "globe" | "mercator" = isRestore ? restoreView.projection : "globe";
     const initialMaxBounds =
       isRestore && restoreView.projection === "mercator" ? (dto?.bounds ?? undefined) : undefined;
 
@@ -757,12 +794,17 @@ export function SatelliteMap(props: {
         // (src/map/scout-style.ts) — no satellite raster sources at all.
         // Full mode keeps the existing imagery style exactly.
         mapMode === "scout"
-          ? buildScoutStyle(initialProjection)
+          ? buildScoutStyle(flat ? PROJECTION_MORPH : "globe")
           : {
               version: 8,
-              // Design §4: every edition opens from space — globe projection,
-              // zoom 1.0. The flat editions swap to mercator mid-narrow-in.
-              projection: { type: initialProjection },
+              // Design §4: every edition opens from space — zoom 1.0 in the
+              // globe arm of the zoom-interpolated projection morph.
+              // fix/country-zoom-smooth: the projection is declared ONCE
+              // here — no discrete setProjection swaps, so no
+              // Style#_setProjectionInternal tile-manager reload bursts and
+              // no flat↔globe snap. Globe edition keeps the plain "globe"
+              // projection (its thresholds are inert).
+              projection: { type: flat ? PROJECTION_MORPH : "globe" },
               sources: {
                 [IMAGERY_SOURCE]: {
                   type: "raster",
@@ -797,7 +839,6 @@ export function SatelliteMap(props: {
       setScoutFallback(true);
       return;
     }
-    projectionRef.current = initialProjection;
     maxBoundsRef.current = initialMaxBounds ?? null;
     mapRef.current = map;
 
@@ -826,7 +867,7 @@ export function SatelliteMap(props: {
         owner({
           center: liveMap.getCenter().toArray() as [number, number],
           zoom: liveMap.getZoom(),
-          projection: projectionRef.current,
+          projection: logicalProjection(),
         });
       } catch {
         // best-effort: the context-lost signal itself was already emitted.
@@ -894,6 +935,9 @@ export function SatelliteMap(props: {
     const controller = new ZoomSpaceController({
       edition,
       prefersReducedMotion: mapMode === "scout" ? true : reducedMotion,
+      // Restore path seeds the logical projection (mid-REGION vs mid-SPACE);
+      // the morph itself is zoom-driven, declared once in the style above.
+      initialProjection,
     });
     controllerRef.current = controller;
 
@@ -934,45 +978,6 @@ export function SatelliteMap(props: {
       };
       for (const intent of intents) {
         switch (intent.type) {
-          case "set-projection": {
-            // REQUIRED COMMENT (design §7): setProjection throws before
-            // the style is PARSED (Style#_checkLoaded checks _loaded only),
-            // not before tiles finish. isStyleLoaded() is tile-dependent:
-            // when tile requests hang (dead DNS / captive portal), the
-            // map's load event never fires and a deferred once("load")
-            // handler never runs, wedging the intro mid-beat. Try the swap
-            // immediately; defer only if the style truly isn't parsed yet
-            // (expected for our inline style on the first tick — MapLibre
-            // 6.11.2 defers _load() through browser.frameAsync — but safe
-            // for any future remote style too).
-            // The mid-beat swap below relies on MapLibre 6.11.2's
-            // undocumented flyTo-transform closure behaviour — the in-flight
-            // animation's transform closure reads the new projection, so the
-            // camera continues to the same destination instead of snapping.
-            // MUST be re-verified on every upgrade.
-            const apply = () => {
-              if (!alive) return;
-              // Preserve the user's gesture position across the swap:
-              // capture the pre-swap zoom and reassert it if migration
-              // perturbed it. (Verified bit-identical on the clean path,
-              // so this is a no-op there.) Guarded, so any nested map
-              // events from the swap or the restore never reach the
-              // controller — this also covers the deferred once("load")
-              // path, which runs outside executeIntents' own guard.
-              const preSwapZoom = map.getZoom();
-              withoutControllerEvents(() => {
-                map.setProjection({ type: intent.projection });
-                if (map.getZoom() !== preSwapZoom) map.setZoom(preSwapZoom);
-              });
-              projectionRef.current = intent.projection;
-            };
-            try {
-              apply();
-            } catch {
-              map.once("load", apply);
-            }
-            break;
-          }
           case "set-max-bounds": {
             // Lands only at beat completion, never mid-beat: a mid-beat
             // setMaxBounds snaps via constrainInternal() (design §4).
@@ -1042,8 +1047,9 @@ export function SatelliteMap(props: {
             // reduced-motion intro emits jump-to synchronously after
             // `new Map()`, the deferred `once("load")` handler never ran, and
             // the map stayed at zoom 1 while the live region announced the
-            // region view. Only set-projection / addSource / addLayer need
-            // the gate (they throw pre-load).
+            // region view. Only addSource / addLayer need the gate (they
+            // throw pre-load). There are no projection-swap intents anymore
+            // (the morph is declared once at init).
             if (!alive) return;
             map.jumpTo({ center: intent.center, zoom: intent.zoom });
             // Sync the zoom state directly: jumpTo doesn't reliably fire
@@ -1190,8 +1196,8 @@ export function SatelliteMap(props: {
       spinTimer = window.setTimeout(() => {
         if (!alive) return;
         // Sibling contract: the 1200 ms timer always calls onSpinTimer();
-        // the camera intents it returns (fly-to / set-projection) self-gate
-        // on style load in the executor, and the rAF loop is already stopped
+        // the camera intents it returns self-gate on style load in the
+        // executor, and the rAF loop is already stopped
         // (the spin {active:false} intent executes immediately).
         executeIntents(controller.onSpinTimer());
       }, SPIN_DURATION_MS);
@@ -1404,7 +1410,7 @@ export function SatelliteMap(props: {
     // survives them.
     const snapshot = (): ZoomSnapshot => ({
       zoom: map.getZoom(),
-      projection: projectionRef.current,
+      projection: logicalProjection(),
       // The sibling's LngLat is a plain tuple; the map's is a class.
       center: map.getCenter().toArray(),
     });
@@ -1422,7 +1428,7 @@ export function SatelliteMap(props: {
         const c = controllerRef.current;
         if (c) executeIntents(c.onMove(snapshot()));
       }
-      updateMarkerOcclusion(map, markersRef.current, projectionRef.current);
+      updateMarkerOcclusion(map, markersRef.current, logicalProjection());
     });
     map.on("zoomend", () => {
       // Track zoom for the +/- controls' aria-live announcements (M10).
@@ -1439,7 +1445,7 @@ export function SatelliteMap(props: {
         }
       }
       // Re-entrancy guard: a nested zoomend fired while an intent batch is
-      // executing (e.g. from the projection-swap zoom restore) must not
+      // executing (e.g. from a camera intent's zoom restore) must not
       // re-enter the controller with a transitional camera state.
       if (dispatchingIntentsRef.current) return;
       const c = controllerRef.current;
@@ -1604,7 +1610,7 @@ export function SatelliteMap(props: {
       retryViewRef.current = {
         center: map.getCenter().toArray(),
         zoom: map.getZoom(),
-        projection: projectionRef.current,
+        projection: logicalProjection(),
       };
     }
     dispatchTile({ type: "retry" });
@@ -1619,7 +1625,7 @@ export function SatelliteMap(props: {
     const map = mapRef.current;
     if (!map) return;
     markersRef.current = replaceMarks(map, marksRef.current, markersRef.current);
-    updateMarkerOcclusion(map, markersRef.current, projectionRef.current);
+    updateMarkerOcclusion(map, markersRef.current, logicalProjection());
   }, [markKey]);
 
   // Reveal routing (design §6): variation arrival goes through the
@@ -1671,7 +1677,7 @@ export function SatelliteMap(props: {
         props.variation,
         props.mode,
         tileStatusRef.current,
-        projectionRef.current,
+        logicalProjection(),
       );
       executeIntentsRef.current(controller.requestReveal(request));
       if (request.tileFailed) {
