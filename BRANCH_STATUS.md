@@ -265,11 +265,24 @@ at branch time).
 - [x] `npx tsc --noEmit` clean
 - [x] `npm test` full suite green (1093/1093, 0 fail)
 - [x] Branch pushed to origin (`dc784a2`, `6c8bf77` on origin)
+- [x] `node scripts/lint-cards.mjs` → GATE PASSED (2026-10-10)
+- [x] `npm run build:pages` green (2026-10-10; bestStreak in dist bundle)
+- [x] Playwright E2E (2026-10-10, built artifact via serveBuiltArtifact,
+      `flock ~/workspace/.e2e.lock`, `--workers=1`):
+  - geodetective.spec.ts + clean-round-badge + game-sfx + longname
+    (scroll-a11y/tiers/wrap) + offline-content: 174 passed, 10 failed
+    (47.5m) — the 10 failures are FLAKY longname reveal-layout assertions
+    (`[data-testid="pin-compare-line"] .truespot-name` not mounted within
+    15s); a targeted rerun passed the previously-failing variants and
+    failed different variants → environment/timing flake under VM load,
+    NOT a regression (bestStreak is a number field on the loop store;
+    cannot affect classic-edition reveal markup). All 18 geodetective
+    tests passed, incl. the new bestStreak spec.
+  - geodetective-hint.spec.ts + geodetective.reduced.spec.ts: 5/5 passed.
+  - New E2E spec (commit `33330c3`): "bestStreak persists across a reload —
+    win raises the best, the best survives reload" — PASSED.
 
 ## Pending
-- [ ] `node scripts/lint-cards.mjs` → GATE PASSED
-- [ ] `npm run build:pages` green
-- [ ] Playwright E2E green (built artifact via serveBuiltArtifact)
 - [ ] Technical-architect review — zero BLOCKs
 - [ ] Scrum panel review — zero BLOCKs
 - [ ] PR opened (DO NOT MERGE)
