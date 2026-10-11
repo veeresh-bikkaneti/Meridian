@@ -311,3 +311,54 @@ display. No new dependencies, no timers, no animation changes.
 ### Deliverables
 - [x] `SPEC_CHECKLIST.md` — appended the distance-units section (plain language)
 - [x] Branch pushed (no PR, no merge — per standing policy)
+
+---
+
+## Verification (coordinator pass, 2026-10-11 ~18:55 UTC)
+
+### Scrum review — APPROVE (zero BLOCKs)
+Panel lenses (Code Reviewer, Test Automation Engineer, Frontend Developer,
+Accessibility Auditor, UX Researcher) walked the full diff:
+- Unit selection correct at all 9 sites; every site derives from the same
+  helper as its sibling display (headline ↔ pill share
+  `unitForEdition(run.edition, run.regionId)`; GeoDetective ↔ Cold Trail
+  share `unitForLoopTarget` on the target/hideout).
+- No distance VALUE changed anywhere — `formatLength(km, unit)` only
+  re-labels the same km feed.
+- `unitForSessionSummary`: miles iff every region maps to miles; mixed and
+  empty sessions fail closed to km.
+- Cold Trail hideout read is unit-derivation only (`unitForLoopTarget`
+  collapses coords to mi/km); anti-leak tests pass unmodified; generated
+  sighting clue text untouched.
+- Non-blocking observations for the owner (not BLOCKs): (1) sighting clue
+  TEXT (e.g. "400 km east of Denver") stays km while the ring-radius line
+  for a USA hideout now reads miles — same value, mixed units on one card;
+  per scope (generated data untouched). (2) US territories (Puerto Rico key
+  630, Guam 316) read km under the territory-key-840 rule for GeoDetective /
+  Cold Trail targets — pre-existing territory semantics, unchanged here.
+
+### Rebase — onto origin/main @ 51ed7f5: already on top, zero conflicts.
+tsc clean; `npm test` 1098/1098 → 1105/1105 after adding the red-team file.
+
+### Black-box (Playwright, real browser, 390×844, built dist)
+New spec `tests/e2e/mobile-distance-units.spec.ts` — 4/4 PASS:
+- Journey A (Nebraska miss): headline "Result: 1,923 mi southeast of your
+  pin" + gold pill "1,923 mi" — same value, both miles; no km on the card;
+  aria-live speaks "…mi…".
+- Journey B (France miss): headline "Result: 2,986 km north of your pin" +
+  pill "2,986 km" — same value, both km; no mi on the card; aria-live
+  speaks "…km…".
+- Red-team mixed session (Nebraska + France → End game): summary "Average
+  distance" and "Best pin" read km.
+- Red-team all-USA session (Nebraska → End game): summary reads mi.
+
+### Red-team unit edges (`src/game/units-redteam.test.ts`) — 7/7 PASS
+Puerto Rico (630) → km; 1.0/2.0 mi formatting; 10,000 mi / 20,000 km
+thousands separators; sub-unit 1640 ft / 500 m / 0 ft; mixed → km;
+US-country+state → mi; NaN/Infinity → "—".
+
+### Screen recordings (constitutional law)
+- `~/workspace/your_files/meridian-distance-units/journey-a-usa-miles.webm`
+- `~/workspace/your_files/meridian-distance-units/journey-b-france-km.webm`
+Recording script: `scripts/record-distance-units.mjs` (Playwright video,
+390×844, tap-point flash so the pin drop is visible).
