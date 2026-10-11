@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import autoAnimate from "@formkit/auto-animate";
 import type { AutoAnimateOptions } from "@formkit/auto-animate";
 import { usePrefersReducedMotion } from "./use-prefers-reduced-motion.ts";
@@ -47,17 +47,26 @@ export function useAutoAnimate<T extends HTMLElement>(
   // below always sees the live element (or null after unmount).
   const [el, setEl] = useState<T | null>(null);
 
+  // Referential stability: hosts may pass inline option literals. Without
+  // this, each re-render would destroy + re-enable the animator (cancelling
+  // in-flight animations). AutoAnimateOptions are plain serializable values.
+  const opts = useMemo(
+    () => ({ ...AUTO_ANIMATE_DEFAULTS, ...options }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [JSON.stringify(options)],
+  );
+
   // Dedicated effect — one effect per transition (chained-timer law).
   useEffect(() => {
     // Reduced motion: do not enable anything. Content renders instantly.
     if (reducedMotion || el === null) return;
-    const controls = animate(el, options);
+    const controls = animate(el, opts);
     return () => {
       // destroy() (not disable()): disconnects observers + the poll
       // interval and drops the element from the module-level parents set.
       controls.destroy?.();
     };
-  }, [reducedMotion, el, options, animate]);
+  }, [reducedMotion, el, opts, animate]);
 
   return setEl;
 }

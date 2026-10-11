@@ -136,11 +136,11 @@ describe("useAutoAnimate", () => {
     assert.ok(renderer.root.findByProps({ "data-testid": "probe" }));
   });
 
-  it("passes custom options through to the animator", () => {
+  it("passes custom options through to the animator (merged over defaults)", () => {
     const { calls, animate } = makeAnimate();
     renderProbe({ animate, options: { duration: 150 } });
     assert.equal(calls.length, 1);
-    assert.deepEqual(calls[0]!.options, { duration: 150 });
+    assert.deepEqual(calls[0]!.options, { duration: 150, easing: "ease-out" });
   });
 
   it("never calls animate under prefers-reduced-motion — content renders instantly and stays usable", () => {
@@ -217,6 +217,41 @@ describe("useAutoAnimate", () => {
     assert.ok(
       seen.every((r) => r === seen[0]),
       "ref identity stable — no effect churn",
+    );
+  });
+
+  it("does not re-enable the animator across re-renders with an inline options literal", () => {
+    const { calls, destroyed, animate } = makeAnimate();
+    function InlineOpts({ animateFn }: { animateFn: AutoAnimateFn }) {
+      // Fresh object literal every render — the exact pattern that used to
+      // destroy + re-enable the animator on every render (destroy cancels
+      // in-flight WAAPI animations, a stutter-class bug in a hot loop).
+      const ref = useAutoAnimate<HTMLDivElement>({ duration: 150 }, animateFn);
+      return createElement("div", { ref });
+    }
+    let renderer: TestRenderer.ReactTestRenderer | undefined;
+    act(() => {
+      renderer = TestRenderer.create(
+        createElement(InlineOpts, { animateFn: animate }),
+        { createNodeMock: () => ({}) },
+      );
+    });
+    assert.equal(calls.length, 1);
+    act(() => {
+      renderer!.update(createElement(InlineOpts, { animateFn: animate }));
+    });
+    act(() => {
+      renderer!.update(createElement(InlineOpts, { animateFn: animate }));
+    });
+    assert.equal(
+      calls.length,
+      1,
+      "inline options literal must not re-enable the animator across re-renders",
+    );
+    assert.equal(
+      destroyed.length,
+      0,
+      "no destroy churn from inline options",
     );
   });
 });
