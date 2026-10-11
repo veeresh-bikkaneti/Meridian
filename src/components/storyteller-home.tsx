@@ -75,6 +75,13 @@ const POST_AUDIO_HOLD_MS = 1500;
 /** G1: hard cap on the greeting audio window — never a visible countdown. */
 const GREETING_AUDIO_CAP_MS = 12_000;
 const POKE_DEBOUNCE_MS = 600;
+/**
+ * Fix F (2026-10-11): hang watchdog for the home greeting play(). A play()
+ * promise that never settles (the #136 root cause on the card path — iOS
+ * hangs) must not strand the subtitle bubble with zero audio. Fail loud
+ * into text + the figure-tap retry, same contract as the card storyteller.
+ */
+const GREET_PLAY_HANG_MS = 4000;
 const AUDIO_START_TAP_GUARD_MS = 600; // the tap that starts audio must not dismiss it
 const SENDOFF_OVERLAY_MS = 2200;
 const SENDOFF_OVERLAY_REMOVE_MS = 2500;
@@ -216,6 +223,7 @@ export default function StorytellerHomeHost({
   const capTimer = useRef(0);
   const soundWatch = useRef(0);
   const pokeTimer = useRef(0);
+  const playHangTimer = useRef(0); // Fix F: greeting play() hang watchdog
   const audioStartTimeRef = useRef(0);
   const gestureDoneRef = useRef(false);
   const wasYieldedRef = useRef(false);
@@ -253,6 +261,7 @@ export default function StorytellerHomeHost({
     window.clearTimeout(capTimer.current);
     window.clearInterval(soundWatch.current);
     window.clearTimeout(pokeTimer.current);
+    window.clearTimeout(playHangTimer.current);
   }, []);
 
   /**
@@ -275,6 +284,7 @@ export default function StorytellerHomeHost({
   const stopAudio = useCallback(() => {
     window.clearTimeout(capTimer.current);
     window.clearInterval(soundWatch.current);
+    window.clearTimeout(playHangTimer.current);
     audioRef.current?.pause();
     audioRef.current = null;
     setGreetingPaused(false);
@@ -452,6 +462,22 @@ export default function StorytellerHomeHost({
   }, [yielded, mode, phase]);
 
   // ---- Greeting audio ------------------------------------------------------
+  /**
+   * Fix F (2026-10-11): shared fail-loud for the home greeting. Audio
+   * unavailable — degrade to silent text-only, never device-shame.
+   * Releases the dead element: a stale audioRef would make later figure
+   * taps think audio is still in flight. The retry path is the figure-tap
+   * greeting replay (Fix D); the hint names it (copy owner-sign-off
+   * pending). NOTE: showBubble clears the failure flag, so setAudioFailed
+   * runs after it.
+   */
+  const failGreetingAudio = useCallback(() => {
+    stopAudio();
+    showBubble(greetingText, TEXT_BUBBLE_MS);
+    setAudioFailed(true);
+    setPhase("idle_linger");
+  }, [greetingText, showBubble, stopAudio]);
+
   const beginGreetingAudio = useCallback(() => {
     const url = assetsRef.current.greetAudio;
     if (!url || !isSoundEnabled()) return;
@@ -484,14 +510,7 @@ export default function StorytellerHomeHost({
       if (audio.currentTime > 0.5) greetingHeardRef.current = true;
     };
     const onFail = () => {
-      // Audio unavailable — degrade to silent text-only, never device-shame.
-      // (showBubble clears the failure flag, so set it after.)
-      // Release the dead element: a stale audioRef would make later figure
-      // taps think audio is still in flight (Fix D replay guard).
-      stopAudio();
-      showBubble(greetingText, TEXT_BUBBLE_MS);
-      setAudioFailed(true);
-      setPhase("idle_linger");
+      failGreetingAudio();
     };
     audio.addEventListener("ended", onEnded, { once: true });
     audio.addEventListener(
@@ -510,9 +529,20 @@ export default function StorytellerHomeHost({
     const onPlay = () => setGreetingPaused(false);
     audio.addEventListener("pause", onPause);
     audio.addEventListener("play", onPlay);
+    // Fix F: hang watchdog — a play() promise that never settles strands
+    // the subtitle bubble with zero audio (the #136 root cause, now on the
+    // home path). Armed per attempt, never chained across renders; stood
+    // down the moment play() settles either way.
+    window.clearTimeout(playHangTimer.current);
+    playHangTimer.current = window.setTimeout(() => {
+      if (audioRef.current !== audio) return; // superseded by a newer attempt
+      greetPlayRejectedRef.current = true;
+      failGreetingAudio();
+    }, GREET_PLAY_HANG_MS);
     void audio
       .play()
       .then(() => {
+        window.clearTimeout(playHangTimer.current);
         // G1: the 12s window starts when audio ACTUALLY begins.
         // (Home no longer consumes the session auto-narration flag —
         // story cards keep their own one-shot, untouched.)
@@ -531,6 +561,7 @@ export default function StorytellerHomeHost({
         }, 500);
       })
       .catch((err) => {
+        window.clearTimeout(playHangTimer.current);
         // A play() aborted by our own pause() is the pause working, not a
         // failure — don't kill the greeting window.
         if (isPlayAbort(err)) return;
@@ -539,7 +570,7 @@ export default function StorytellerHomeHost({
         if (!greetLoadErrorRef.current) greetPlayRejectedRef.current = true;
         onFail();
       });
-  }, [greetingText, showBubble, stopAudio]);
+  }, [greetingText, showBubble, stopAudio, failGreetingAudio]);
 
   // ---- Tutorial invite: greeting waits for its dismissal ----------------
   // The dismiss tap counts as the first gesture (owner 2026-10-09) — begin
@@ -671,8 +702,34 @@ export default function StorytellerHomeHost({
       // Tapping the figure mid-greeting pauses/resumes (card contract) —
       // but the tap that STARTED the audio must not instantly pause it.
       if (Date.now() - audioStartTimeRef.current < AUDIO_START_TAP_GUARD_MS) return;
-      if (audio.paused) void audio.play().catch(() => {});
-      else audio.pause();
+      // Fix F: guard the resume play() with the hang watchdog — a hung or
+      // rejected resume must fail loud into text + the figure-tap retry,
+      // never strand "playing" with zero audio (and never swallow the
+      // error silently, as the old `.catch(() => {})` did).
+      if (audio.paused) {
+        window.clearTimeout(playHangTimer.current);
+        playHangTimer.current = window.setTimeout(() => {
+          if (audioRef.current !== audio) return; // superseded
+          try {
+            audio.pause();
+          } catch {
+            // Never break the home screen.
+          }
+          greetPlayRejectedRef.current = true;
+          failGreetingAudio();
+        }, GREET_PLAY_HANG_MS);
+        void audio
+          .play()
+          .then(() => {
+            window.clearTimeout(playHangTimer.current);
+          })
+          .catch((err: unknown) => {
+            window.clearTimeout(playHangTimer.current);
+            if (isPlayAbort(err)) return;
+            greetPlayRejectedRef.current = true;
+            failGreetingAudio();
+          });
+      } else audio.pause();
       pokeVisual();
       return;
     }
@@ -715,7 +772,7 @@ export default function StorytellerHomeHost({
     pokeIndexRef.current += 1;
     showBubble(line, POKE_BUBBLE_MS);
     pokeVisual();
-  }, [mode, phase, showBubble, pokeVisual, beginGreetingAudio]);
+  }, [mode, phase, showBubble, pokeVisual, beginGreetingAudio, failGreetingAudio]);
 
   // ---- Loop send-off (copy G3) ----------------------------------------------
   useEffect(() => {

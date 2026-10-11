@@ -579,3 +579,37 @@ and replay debounce.
   theirs, not self-declared.
 - Pre-existing orphaned `storyteller-tapstart.desktop.spec.ts` failures
   (5, from PR #127's banner-only figure) — untouched, still failing.
+
+---
+
+# BRANCH_STATUS — fix/narration-silent-prod (follow-up: Fix F, 2026-10-11)
+
+Branch: `fix/narration-silent-prod` · PR #136 (OPEN, not merged).
+
+## Fix F — home greeting follow-up path was NOT covered by #136 (owner report 2026-10-11 ~13:17 CDT)
+
+**Root cause:** PR #136 hardened the CARD storyteller (`storyteller.tsx`), but the
+HOME storyteller (`storyteller-home.tsx`) had its own `beginGreetingAudio`
+path with no play() hang watchdog. The subtitle bubble shows FIRST
+(`showBubble(greetingText, null)` — no hold timer), so a hung play() stranded
+the bubble with zero audio: "followup narrations showing in subtitle but no
+audio." The pause/resume tap also swallowed errors (`.catch(() => {})`).
+
+**Fix (same patterns as #136):**
+- 4s `GREET_PLAY_HANG_MS` watchdog on `beginGreetingAudio`'s play() — armed per
+  attempt, stood down on settle; fires → fail loud (text + figure-tap retry).
+- Shared `failGreetingAudio` callback (replaces inline onFail).
+- Resume tap in `handleFigureTap`: watchdog-guarded, fail-loud on hang/reject
+  (no more silent swallow). AbortError stays silent (pause working as intended).
+- Watchdog cleared in `stopAudio`, `clearTimers`, and on unmount (existing paths).
+
+**Tests:** `tests/e2e/storyteller-home-greeting-watchdog.mobile.spec.ts` — 3
+runtime-path specs (figure-tap replay with REAL audio via probe, hung play()
+fails loud, pause/resume recovers). All pass.
+
+**Gates:** tsc clean (1 pre-existing error in question-bubble.tsx from another
+workstream's uncommitted redesign — not this branch), npm test 1113/1113,
+lint-cards GATE PASSED, build:pages green. 2 pre-existing poke-test failures
+in storyteller-home.mobile.spec.ts reproduce on the base commit (unrelated).
+
+**Status:** committed, pushed. PR #136 updated. Screen recording pending.
