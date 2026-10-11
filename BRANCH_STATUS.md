@@ -477,3 +477,13 @@ Narration SILENT on his real phone: subtitles/captions advance, zero audio.
 5. Banner `onFail` now calls `stopAudio()` (was missing) — also clears the
    12s cap timer on failure; no behavior change beyond releasing the dead
    element.
+
+## Addendum 2026-10-11 ~11:00 CDT — recording-rule audible journey
+New HARD rule: E2E runs must produce a screen recording. Added
+`tests/e2e/storyteller-audible.desktop.spec.ts` — single continuous
+session, card happy path: first gesture → audio probe asserts
+`paused===false` + `currentTime` advancing past 3.5s (outlasts both
+watchdogs) → fallback never renders → zero console errors. Verified
+runnable with `video: 'on'` (one-off config, removed afterwards;
+`video.webm` produced). 1/1 pass. Also the regression guard for the
+stall-check anchoring fix.
