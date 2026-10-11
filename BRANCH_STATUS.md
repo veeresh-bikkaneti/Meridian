@@ -286,6 +286,8 @@ at branch time).
 - [ ] Technical-architect review — zero BLOCKs
 - [ ] Scrum panel review — zero BLOCKs
 - [ ] PR opened (DO NOT MERGE)
+- [x] PR opened: #130 https://github.com/veeresh-bikkaneti/Meridian/pull/130
+      (DO NOT MERGE — Veeresh merges on his explicit word only)
 
 ## Spec (locked)
 1. Add `bestStreak: number` to `LoopUnlimitedStore` (types.ts) with
