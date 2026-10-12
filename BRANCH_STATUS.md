@@ -60,11 +60,16 @@ no network at build or runtime.
       `~/workspace/your_files/meridian-cold-trail-region/coldtrail-region-journey-390x844.webm`
       (14.5s, 390×844: sightings w/ Region lines → 3 rings placed →
       intercept tap → score reveal)
-- [ ] Rebase onto latest origin/main → zero conflicts → gates re-run
+- [x] Rebased onto latest origin/main (f834aa6) → zero conflicts
+      (SPEC_CHECKLIST.md + package.json test-line, both mechanical) →
+      gates re-run post-rebase: tsc clean, npm test green
+      (763 scripts / 1138 src, 0 fail), lint-cards GATE PASSED,
+      build:pages green, Playwright Cold Trail 14/14 on rebuilt dist
 - [ ] PR opened (NEVER merged) with "Ready to merge? YES/NO" + pending list
 
 ## Pending
-- Rebase + post-rebase gates + PR
+- PR → independent review (Chitti / owner's panel) + owner's green-light
+  on the screen recording → then merge is the owner's call
 
 ---
 

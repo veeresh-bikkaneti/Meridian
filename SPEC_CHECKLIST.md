@@ -205,8 +205,9 @@ L2/L3. L5 parked, L6 rejected.
       Playwright Cold Trail specs 14/14 on the rebuilt app.
 - [x] Screen recording of a real play session (sightings → rings →
       triangulation → score) delivered as a file.
-- [ ] Rebased onto latest origin/main with zero conflicts; gates re-run
-      after the rebase.
+- [x] Rebased onto latest origin/main (f834aa6) with zero conflicts;
+      gates re-run after the rebase (tsc, npm test, lint-cards,
+      build:pages, Playwright 14/14 — all green).
 - [ ] PR opened, never merged, closing with "Ready to merge? YES/NO" and
       "What is pending:".
 
