@@ -28,6 +28,8 @@
  * view-effect leaf — not pure core.
  */
 
+import { observeResize } from "../lib/observe-resize.ts";
+
 export interface Star {
   /** Unit-space position [0, 1) — resolution-independent, rescales on resize. */
   x: number;
@@ -223,9 +225,10 @@ export function mountStarfield(container: HTMLElement): StarfieldHandle {
 
   let stopObserving: (() => void) | null = null;
   if (typeof ResizeObserver !== "undefined") {
-    const observer = new ResizeObserver(() => repaint());
-    observer.observe(container);
-    stopObserving = () => observer.disconnect();
+    // rAF-coalesced: repaint() reads and writes layout, which would
+    // re-trigger a raw observer synchronously and trip the benign
+    // "ResizeObserver loop" browser complaint. See src/lib/observe-resize.ts.
+    stopObserving = observeResize(container, repaint);
   } else if (
     typeof window !== "undefined" &&
     typeof window.addEventListener === "function"
