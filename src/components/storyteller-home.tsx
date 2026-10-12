@@ -310,6 +310,18 @@ export default function StorytellerHomeHost({
     [],
   );
 
+  // Stable identity: GrandpaMascot re-preloads (and re-fires onLoaded)
+  // whenever this callback's identity changes. An inline arrow would
+  // re-record storyteller_ready on EVERY render, spamming the breadcrumb
+  // trail and overwriting later milestones (e.g. "backgrounded").
+  const handleFigureLoaded = useCallback(() => {
+    try {
+      recordMilestone("storyteller_ready");
+    } catch {
+      // Never break the home screen.
+    }
+  }, []);
+
   // ---- Asset manifest (F1/F2 pipeline) ---------------------------------
   useEffect(() => {
     let cancelled = false;
@@ -839,13 +851,7 @@ export default function StorytellerHomeHost({
       <StorytellerMascot
         label={figureLabel}
         onToggle={handleFigureTap}
-        onLoaded={() => {
-          try {
-            recordMilestone("storyteller_ready");
-          } catch {
-            // Never break the home screen.
-          }
-        }}
+        onLoaded={handleFigureLoaded}
       />
       {/* Idle engagement (owner 2026-10-09): the bard hums to invite play —
           music notes rise while he "sings"; a scroll unfurls as if he's
