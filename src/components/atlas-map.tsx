@@ -9,6 +9,7 @@ import { GestureController, nearPin, TOUCH_LIFT, type GestureEffect, type Pointe
 import { locateCounty, locateHighlight } from "../map/highlight.ts";
 import { smoothstep, spring01 } from "../map/motion.ts";
 import { paintBasemap, paintOverlay } from "../map/paint-scene.ts";
+import { observeResize } from "../lib/observe-resize.ts";
 import { createPresenter } from "../map/present/create-presenter.ts";
 import type { MapPresenter } from "../map/present/types.ts";
 import { affineTransform, cloneView, fitView, invertView, panView, projectView, type View } from "../map/view.ts";
@@ -228,8 +229,10 @@ export function AtlasMap({
     };
 
     drawRef.current = draw;
-    const observer = new ResizeObserver(() => draw());
-    observer.observe(stage);
+    // rAF-coalesced: draw() reads and writes layout, which would re-trigger
+    // a raw observer synchronously and trip the benign "ResizeObserver loop"
+    // browser complaint. See src/lib/observe-resize.ts.
+    const stopObserving = observeResize(stage, draw);
     createPresenter(canvas).then((next) => {
       if (dead) {
         next.destroy();
@@ -242,7 +245,7 @@ export function AtlasMap({
     });
     return () => {
       dead = true;
-      observer.disconnect();
+      stopObserving();
       cancelAnimationFrame(rafRef.current);
       presenter?.destroy();
     };

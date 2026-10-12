@@ -248,6 +248,26 @@ export function sanitizeError(err: unknown): { name: string; message: string } {
   }
 }
 
+/**
+ * Known-benign browser noise. A ResizeObserver callback that triggers layout
+ * synchronously re-fires the observer within the same frame; the browser
+ * completes the loop and logs this complaint. Nothing is broken — but left
+ * unclassified it would ship to the crash pipeline as a js_error and read
+ * like a real crash in the telemetry.
+ */
+const BENIGN_BROWSER_NOISE: RegExp[] = [
+  /ResizeObserver loop completed with undelivered notifications/i,
+];
+
+/** True when an error message is known-benign browser noise, never a crash. */
+export function isBenignBrowserNoise(message: string): boolean {
+  try {
+    return BENIGN_BROWSER_NOISE.some((re) => re.test(String(message)));
+  } catch {
+    return false;
+  }
+}
+
 function byteLength(s: string): number {
   try {
     return new TextEncoder().encode(s).length;
@@ -582,7 +602,14 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       const w = target ?? (typeof window !== "undefined" ? window : undefined);
       if (!w || typeof w.addEventListener !== "function") return;
       w.addEventListener("error", (e: ErrorEvent) => {
-        emit({ type: "js_error", ts: now(), buildId, error: sanitizeError(e?.error ?? e?.message ?? "unknown error"), lastMilestone: breadcrumb?.lastMilestone });
+        const sanitized = sanitizeError(e?.error ?? e?.message ?? "unknown error");
+        if (isBenignBrowserNoise(sanitized.message)) {
+          // Known-benign browser housekeeping: keep it out of the crash
+          // pipeline entirely. Deliberately no breadcrumb touch —
+          // lastMilestone must keep describing game progress, not noise.
+          return;
+        }
+        emit({ type: "js_error", ts: now(), buildId, error: sanitized, lastMilestone: breadcrumb?.lastMilestone });
       });
       w.addEventListener("unhandledrejection", (e: PromiseRejectionEvent) => {
         emit({ type: "unhandled_rejection", ts: now(), buildId, error: sanitizeError(e?.reason ?? "unhandled rejection"), lastMilestone: breadcrumb?.lastMilestone });

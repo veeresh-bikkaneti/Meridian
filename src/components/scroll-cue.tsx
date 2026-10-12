@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { observeResize } from "../lib/observe-resize.ts";
 
 /**
  * Cartographer's Plate PR3 — "more below" scroll cue (spec §5/§8.1).
@@ -32,12 +33,13 @@ export function useMoreBelow<T extends HTMLElement>(): {
     update();
     el.addEventListener("scroll", update, { passive: true });
     // Content can change height without scrolling (fonts, tier shifts,
-    // clue expansion) — re-evaluate on resize of the region.
-    const ro = new ResizeObserver(update);
-    ro.observe(el);
+    // clue expansion) — re-evaluate on resize of the region. rAF-coalesced
+    // so the synchronous read/write loop can't trip the benign
+    // "ResizeObserver loop" browser complaint. See src/lib/observe-resize.ts.
+    const stopObserving = observeResize(el, update);
     return () => {
       el.removeEventListener("scroll", update);
-      ro.disconnect();
+      stopObserving();
     };
   }, []);
 

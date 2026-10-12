@@ -463,3 +463,50 @@ test("D3 queue cap: a queue of only non-crash errors still caps at 20 (oldest ev
   assert.equal(flushed[0].error?.message, "e-5", "oldest five errors were evicted FIFO");
   assert.equal(flushed[19].error?.message, "e-24");
 });
+
+test("isBenignBrowserNoise: ResizeObserver loop message is benign (exact + case-insensitive)", async () => {
+  const { isBenignBrowserNoise } = await import("./observability.ts");
+  assert.equal(isBenignBrowserNoise("ResizeObserver loop completed with undelivered notifications."), true);
+  assert.equal(isBenignBrowserNoise("resizeobserver loop completed with undelivered notifications"), true);
+  assert.equal(isBenignBrowserNoise("TypeError: Cannot read properties of null"), false);
+  assert.equal(isBenignBrowserNoise(""), false);
+});
+
+test("window error listener: ResizeObserver loop noise emits NOTHING (no js_error, no queue)", () => {
+  const { transport, beacons, fetches } = makeTransport(true);
+  const obs = createObservability({
+    storage: makeStorage(), transport, endpoint: "https://example.com/ingest",
+    now: () => 1, randomId: () => "ro-noise", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.init();
+  const handlers: Record<string, (e: unknown) => void> = {};
+  obs.installGlobalHandlers({
+    addEventListener: (t: string, fn: (e: unknown) => void) => {
+      handlers[t] = fn;
+    },
+  } as unknown as Window);
+  handlers["error"]({ error: new Error("ResizeObserver loop completed with undelivered notifications.") });
+  assert.equal(beacons.length + fetches.length, 0, "no transport call for benign RO noise");
+  assert.equal(obs.getQueueLength(), 0, "nothing queued for benign RO noise");
+});
+
+test("window error listener (control): a real error still emits js_error", () => {
+  const { transport, beacons, fetches } = makeTransport(true);
+  const obs = createObservability({
+    storage: makeStorage(), transport, endpoint: "https://example.com/ingest",
+    now: () => 1, randomId: () => "ro-control", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.init();
+  const handlers: Record<string, (e: unknown) => void> = {};
+  obs.installGlobalHandlers({
+    addEventListener: (t: string, fn: (e: unknown) => void) => {
+      handlers[t] = fn;
+    },
+  } as unknown as Window);
+  handlers["error"]({ error: new Error("Something actually broke") });
+  const sent = [...beacons, ...fetches];
+  assert.equal(sent.length, 1, "real errors still reported");
+  const body = JSON.parse(sent[0].body) as ObservabilityEvent;
+  assert.equal(body.type, "js_error");
+  assert.match(body.error?.message ?? "", /Something actually broke/);
+});

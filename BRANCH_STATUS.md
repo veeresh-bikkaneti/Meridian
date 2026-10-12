@@ -690,3 +690,18 @@ lint-cards GATE PASSED, build:pages green. 2 pre-existing poke-test failures
 in storyteller-home.mobile.spec.ts reproduce on the base commit (unrelated).
 
 **Status:** committed, pushed. PR #136 updated. Screen recording pending.
+
+---
+
+# BRANCH_STATUS — fix/resizeobserver-telemetry-noise (2026-10-11)
+
+**PUSH OK, DO NOT MERGE** — owner merges. PR to be opened.
+
+- [x] rAF-coalesced observeResize helper
+- [x] Adopted at the three prod RO sites (atlas-map, scroll-cue, starfield)
+- [x] RO loop message classified as benign noise in crash pipeline
+- [x] Unit tests (observe-resize 3/3, observability noise 3/3)
+- [x] Gates: tsc clean, npm test 1189/1189, lint-cards GATE PASSED, build:pages green
+- [x] Playwright boot runtime test 1/1 + screen recording
+- [x] Rebased onto origin/main (a0f153e), zero conflicts
+- [ ] PR opened, never merged — owner's green-light → Chitti review → owner's merge decision
