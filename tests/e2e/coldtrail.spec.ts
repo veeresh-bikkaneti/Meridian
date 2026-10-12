@@ -45,6 +45,37 @@ async function placeAndLockRing(
   await page.getByTestId("confirm-ring-btn").click();
 }
 
+test("region context: every sighting names its continent + country", async ({ page }) => {
+  await openColdTrail(page);
+  // All three witness reports render a Region line: continent · country,
+  // with subdivision only for large countries (granularity rule).
+  const regions = page.getByTestId("sighting-region");
+  await expect(regions).toHaveCount(3);
+  for (const line of await regions.allTextContents()) {
+    expect(line).toMatch(/^🌍 Region: [^·]+ · [^·]+/);
+  }
+  // Case #1 is deterministic: Umraniye resolves to Asia · Türkiye (no
+  // subdivision — Türkiye is not in the large-country set).
+  await expect(regions.first()).toContainText("🌍 Region: Asia · Türkiye");
+
+  // Anti-leak, black-box: finish the case, read the revealed hideout name,
+  // and confirm no region line ever named it (region is witness-side only).
+  await placeAndLockRing(page, { x: 300, y: 250 });
+  await placeAndLockRing(page, { x: 315, y: 240 });
+  await placeAndLockRing(page, { x: 285, y: 265 });
+  await page.getByTestId("loop-map").click({ position: { x: 350, y: 280 } });
+  await page.getByTestId("intercept-confirm-btn").click();
+  const reveal = page.getByTestId("coldtrail-reveal");
+  await expect(reveal).toContainText("The hideout was", { timeout: 10_000 });
+  const hideoutName = (await reveal.textContent())
+    ?.match(/The hideout was ([^.]+)/)?.[1]
+    ?.trim();
+  expect(hideoutName).toBeTruthy();
+  for (const line of await regions.allTextContents()) {
+    expect(line.toLowerCase()).not.toContain(hideoutName!.toLowerCase());
+  }
+});
+
 test("full slice: place 3 rings → tap → confirm → score reveal", async ({ page }) => {
   await openColdTrail(page);
 

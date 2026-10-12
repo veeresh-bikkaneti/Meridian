@@ -6,6 +6,18 @@
 // (scripts/build-coldtrail.mjs) and bundled — no runtime fetches.
 
 /** One witness report, as emitted by the build script. */
+export interface ColdTrailSightingRegion {
+  /** Kid-friendly continent per UN M49, e.g. "Asia". */
+  continent: string;
+  /** CLDR country name, e.g. "Türkiye". */
+  country: string;
+  /**
+   * State/province, e.g. "Texas" — only for the large-country set
+   * (US, CA, BR, IN, CN, RU, AU); null everywhere else.
+   */
+  subdivision: string | null;
+}
+
 export interface ColdTrailSighting {
   id: string;
   /** "Tue 08:14" — game-fiction timestamp, not a real date. */
@@ -20,6 +32,8 @@ export interface ColdTrailSighting {
   octant: string;
   /** Full clue sentence, e.g. "Last seen refueling 400 km east of Denver." */
   text: string;
+  /** Continent/country context for the witness city (never the hideout). */
+  region: ColdTrailSightingRegion;
 }
 
 export interface ColdTrailHideout {

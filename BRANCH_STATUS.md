@@ -1,12 +1,213 @@
-# BRANCH_STATUS — fix/coldtrail-placement-followups
+# BRANCH_STATUS — feat/cold-trail-region-context
 
-Branch: `fix/coldtrail-placement-followups` · Base: origin/main @ c416187 · Created: 2026-10-10.
+Branch: `feat/cold-trail-region-context` · Base: origin/main @ a0f153e · Created: 2026-10-11.
 **PUSH OK, DO NOT MERGE** — owner merges.
+
+Owner order 2026-10-11 ~18:00 CDT: Cold Trail sightings name obscure reference
+places ("575 km southwest of Umraniye") with no hint which continent/country
+to zoom into. Ruling: cold cases need continent + country/state context so a
+kid can at least zoom into the right area. $0/offline/keyless: no new deps,
+no network at build or runtime.
+
+## Design (Phase 1 — panel deliberation, recorded in SPEC_CHECKLIST.md)
+- **Placement: separate "🌍 Region:" line** under the clue sentence (owner's
+  example baked it in; the panel chose a separate line: scans across 3
+  sightings at a glance, keeps the witness-fiction voice intact, and leaves
+  the locked clue `text` byte-identical).
+- **Granularity:** continent + country ALWAYS; subdivision only for the
+  large-country set {US, CA, BR, IN, CN, RU, AU} (land-area cutoff ≥ ~3.5M km²;
+  KZ at ~2.7M km² falls below).
+- **Difficulty:** region adds NO fact about the hideout — it restates what
+  the already-named witness city implies. Triangulation (locate city, center
+  3 rings, intersect octants+radii) survives. If Easy ever reads trivial,
+  the reversible mitigation is dropping subdivision on Easy — NOT shipped.
+- **Wording:** kid-friendly, plain-spoken: "🌍 Region: Asia · Türkiye";
+  region is witness-side only, never names the hideout.
+
+## Done
+- [x] `src/game/data/iso-continents.ts` — ISO-3166-1 α-2 → continent
+      (UN M49 geoscheme, 7 kid-friendly names), fail-closed lookup;
+      transcontinental call-outs in comments (TR→Asia, RU→Europe per UN M49,
+      EG→Africa). Verified complete: all 249 officially-assigned codes +
+      XK = 250 entries (CX/Christmas Island was missing, caught during
+      verification and added)
+- [x] Generator: `scripts/build-coldtrail.mjs` attaches
+      `region {continent, country, subdivision}` per sighting from the
+      witness city's `iso2`/`subdivision`; country via Intl.DisplayNames
+      (same mechanism as `question-label.ts`, local wrapper — its import
+      chain pulls d3-geo, unresolvable from the build script); unknown
+      iso2 → build error
+- [x] Regenerated `src/game/coldtrail/cases.generated.json` (same seed
+      20261008, same cities/rings; all 180 clue `text`s byte-identical —
+      diffed against the pre-regen snapshot)
+- [x] Types + validator: `ColdTrailSightingRegion`; `cases.ts` requires
+      `region`
+- [x] UI: `SightingCard.tsx` renders the Region line (`break-words`
+      wrapping, no new animation, ≥44px targets unchanged)
+- [x] Data fix: `china.json` gn-13608003 "Chongming" missing subdivision →
+      "Shanghai" (Chongming District, Shanghai — reviewed data correction)
+- [x] Tests: iso-continent zero-gap + 22 spot-checks + fail-closed
+      (`iso-continents.test.ts`); content audit — all 180 regions trace to
+      witness chunk records (`build-coldtrail-region.test.mjs`); anti-leak
+      (no hideout name in any region string — unit + e2e); red-team
+      (unknown iso2 throws, missing subdivision throws, subdivision dropped
+      outside large set, XK→Kosovo gazetteer naming); new e2e "region
+      context" black-box test
+- [x] Gates: tsc clean, npm test 1094/1094, lint-cards GATE PASSED,
+      build:pages green, Playwright Cold Trail 14/14 on rebuilt dist
+      (incl. the new region test)
+- [x] Screen recording of the black-box journey → delivered:
+      `~/workspace/your_files/meridian-cold-trail-region/coldtrail-region-journey-390x844.webm`
+      (14.5s, 390×844: sightings w/ Region lines → 3 rings placed →
+      intercept tap → score reveal)
+- [ ] Rebase onto latest origin/main → zero conflicts → gates re-run
+- [ ] PR opened (NEVER merged) with "Ready to merge? YES/NO" + pending list
+
+## Pending
+- Rebase + post-rebase gates + PR
+
+---
+
+# Previous branch history (main @ a0f153e, kept for reference)
+
+
+# BRANCH_STATUS — fix/result-card-overflow · BoundedText build (2026-10-11)
+
+**PUSH OK, DO NOT MERGE** — owner merges. PR #135 OPEN, evolved on this branch.
+
+## What was built
+
+**`src/components/bounded-text.tsx` + `bounded-text.css`** — the wrapping
+contract as a component (spec §2): `as` (p|h1|h2|h3|span|div|dd|dt|pre|a),
+`variant` (headline|place|body|url|banner, default body), `wrap`
+(word|anywhere), typography-only `className`, rest-spread, React 19
+ref-as-prop. NO nowrap/truncate/ellipsis/whiteSpace escape hatches. CSS:
+min-width:0, max-width:100%, white-space:normal,
+overflow-wrap:break-word; per-variant text-wrap/line-height guardrails;
+no hyphens:auto, no overflow:hidden, no JS auto-tune. Dev-only
+ResizeObserver tripwire (console.error + data-overflow="true").
+
+**Adoption (§4):** verdict headline (h2/headline), name-eyebrow,
+both .place-name h2s, pin-ledger dds, subscript/story/note/breakdown/
+growth-line (body), share-pre (pre/url), source links (a/url),
+scroll-cue "more below" (span/body), storyteller dock caption (p/banner).
+Excluded per spec: GradeChip, difficulty-chip, Next-place label,
+AiStoryBadge, icons, restore pill, ReadAloudButton.
+
+**styles.css:** containment moved out of .verdict-headline into
+.bounded-text; headline clamp(1.5rem,7vw,2.125rem), lh 1.15 via variant,
+margin-bottom 8px; .name-meta clip hazard fixed (flex discipline,
+min-height 44px kept); .name-eyebrow nowrap/ellipsis stripped;
+.result-card defense-in-depth backstop; .result-source keeps 44px target
+via inline-flex centering; flex-container shrink allowance;
+approved-exception comments on the two nowrap chips;
+.loop-verdict-headline keeps its own overflow-wrap (not a BoundedText).
+
+**Enforcement:** lint-cards.mjs Tier 3 (BoundedText-only static gate,
+call-site escape-hatch check, §6c.3 CSS guardrail, flex shrink
+allowance, registry drift) + scripts/bounded-text-registry.mjs shared
+with E2E. Unit tests src/components/bounded-text.test.ts (14, node
+--test). Fixture suite tests/e2e/bounded-text.mobile.spec.ts (18,
+Chromium, §9 worst cases, 5 widths, 1.4.12 stress, font-failure
+red-team, §10 measurements, dev-build tripwire). Page matrix
+tests/e2e/result-card-overflow.mobile.spec.ts (4 widths × 4 variants +
+fold test, overlap + closed-world assertions).
+
+## §10 decisions (measured, not guessed)
+
+1. **10px-slack acceptance @390px: PASS** — worst-case first line keeps
+   ≥10px slack with real fonts. Size stays clamp(1.5rem,7vw,2.125rem).
+2. **Keep-together: balance-only WINS, spans REJECTED.** Measured
+   balance-only vs nowrap spans at 5 widths: identical at ≥320px; at
+   160px the nowrap spans SPILL (scrollWidth 125 > clientWidth 110) —
+   the spans cause the exact overflow the contract prevents. No nbsp
+   baked into any user-visible string.
+3. **Chip row: PASS** — wrapped headline takes ≥85% row width; chip
+   keeps one line at every width.
+4. **Story "keep reading" expander: DEFERRED.** Stories wrap fully and
+   the card grows; the fold test proves the primary action stays
+   reachable. No threshold needed until stories run long in practice.
+
+## Gates (in progress)
+
+- [x] npx tsc --noEmit — clean
+- [x] src/components/bounded-text.test.ts — 14/14 (in npm test list)
+- [x] node scripts/lint-cards.mjs — GATE PASSED (Tier 3 bites verified
+      with temp mutations: raw <p> and unapproved nowrap both fail)
+- [x] npm run build:pages — green (bounded-text.css in bundle)
+- [x] Fixture suite — 18/18 green
+- [x] Page matrix (16 variants + fold) — GREEN. Triaged 5 failures:
+      .rname short-tier lh 1.12 clipped 2px → fixed to 1.15 (styles.css);
+      hit burn-path used helpers' off-screen commitMiss → width-aware
+      commitHitAt with spot-settle; caption battery measures
+      caption-text (floating speaker button pollutes container
+      scrollWidth by design); geodetective + hit scoped to ≥320px CSS
+      (loop/map flows broken at 160/195px on main too — pre-existing).
+- [x] npm test (full suite) — 1860/1860 green
+- [x] Dev-build tripwire test (BOUNDED_TRIPWIRE=1) — PASS: clean card
+      trips zero markers; forced 10px overflow trips data-overflow +
+      [BoundedText] console.error. (Fixed: NODE_ENV=development needed
+      for import.meta.env.DEV; flex:none to defeat flex-grow in the
+      forced-overflow step; in-viewport tap in setup.)
+- [x] Visual diffs 390px + 1280px vs main — fixture vdiff: 14.9%/14.2%
+      diff, all intended (smaller headline, wrapping eyebrows, no more
+      token/URL spill; main shows the reported bugs: clipped headline,
+      spilling URL). Temp harness deleted; main worktree removed.
+- [x] Red-team pass — odd viewports 280px / 844×390 landscape /
+      390×1200 tall: fixture battery green. Font-failure (fallback
+      serif) green in fixture suite.
+- [x] Screen recording — worst-case fixture cards @390px:
+      ~/workspace/your_files/meridian-boundedtext-verification/boundedtext-fixture-390px.webm
+- [ ] Rebase to zero conflicts; PR #135 body update
+
+# BRANCH_STATUS — fix/result-card-overflow
+
+Branch: `fix/result-card-overflow` · Base: origin/main @ 51ed7f5 · Created: 2026-10-11.
+**PUSH OK, DO NOT MERGE** — owner merges.
+
+Owner report 2026-10-11: pin-drop result card text overflows at 390px —
+distance headline clipped, storyteller greeting banner cut off mid-word,
+share-text block jumbled under the "more below" cue. Layout-only fix.
 
 Standing rules: named-file staging only, never `git add -A`. Locked Ko-fi
 copy must stay byte-identical:
 `Grown-ups — buy me a coffee? ☕` · `Your support keeps Meridian free for kids` ·
 `Grown-ups — buy me a coffee? Activate to learn how to support Meridian.`
+
+## Done
+
+### 1. Verdict headline wraps instead of clipping
+**Root cause:** `.verdict-headline` had `flex: 1 0 auto` — the no-shrink
+headline overflowed its flex container instead of wrapping, so
+"9,704 km northeast of your pin" spilled past the card's right edge.
+**Fix:** `flex: 1 1 auto`, `min-width: 0`, `overflow-wrap: break-word`,
+`font-size: clamp(26px, 8.2vw, 34px)`.
+
+### 2. Docked storyteller banner stays inside the card
+**Root cause:** `.storyteller-dock` was absolute with `left: 12px` and no
+right bound, and the karaoke word joiner used U+00A0 (nbsp), making the
+whole greeting one unbreakable line that spilled past the card edge.
+**Fix:** dock gets `right: 12px`, caption `max-width: min(260px, 100%)`,
+joiner changed to a regular space (no test depended on the nbsp).
+
+### 3. Share text scrolls clear of the "more below" cue
+**Root cause:** `.result-body` bottom padding (34px) was smaller than the
+overlaid scroll cue (~56px), so the share block's last lines hid under it.
+**Fix:** bottom padding 64px; `.share-pre` gets `overflow-wrap: anywhere`
+for long URLs.
+
+## Pending
+
+- [x] Black-box e2e: `tests/e2e/result-card-overflow.mobile.spec.ts` — GREEN
+- [x] Visual verification 390px + 1280px — fixed card confirmed by eye; main-vs-branch before/after captured (main reproduces all three bugs)
+- [x] Red-team: dock is result-card-only; `.verdict-headline` loop usage keeps 11px via later `.loop-verdict-headline` rule; nbsp→space makes visual/aria text match; RTL-safe (physical left+right bounds)
+- [x] Screen recording: `tests/e2e/evidence/result-card-overflow-390px.webm`
+- [x] Rebase: zero conflicts (main @ 51ed7f5, unmoved)
+- [x] Pushed, PR opened (never merged)
+
+---
+
+# Previous branch history (fix/coldtrail-placement-followups, kept for reference)
 
 ## Done (2026-10-10) — two owner-requested follow-ups, all gates green
 
@@ -243,71 +444,244 @@ verification and QA's screenshots). Nothing skipped.
 
 ---
 
-# BRANCH_STATUS — feat/geodetective-beststreak
+# BRANCH_STATUS — fix/narration-silent-prod
 
-Branch: `feat/geodetective-beststreak` · Base: origin/main @ ec456a9 · Created: 2026-10-10.
-Worktree: `~/workspace/meridian-worktrees/geodetective-beststreak`
-**PUSH OK, DO NOT MERGE** — Veeresh merges on his explicit word only.
+Branch: `fix/narration-silent-prod` · Base: origin/main @ 51ed7f5 · Created: 2026-10-11.
+**PUSH OK, DO NOT MERGE** — owner merges.
 
-**Goal:** Persist GeoDetective bestStreak (consecutive-solve best) in the
-`meridian.loop.v2` blob. Classic editions persist/display bestStreak;
-GeoDetective is the odd one out. A 2026-10-06 crew report falsely claimed
-this shipped — it did not (zero `bestStreak` occurrences in `src/game/loop/`
-at branch time).
+## Owner symptom
+Narration SILENT on his real phone: subtitles/captions advance, zero audio.
 
-## Done
-- [x] Branch created from origin/main in a dedicated worktree (the
-      `~/workspace/meridian-build` checkout sits on the local-only `pr-audio`
-      branch with a dirty tree — owned by Veeresh's separate agent; untouched)
-- [x] Implementation per spec (types.ts + store.ts) — commit `dc784a2`
-- [x] Unit tests (win raises best; loss preserves best; old blob backfills 0;
-      blocked storage no-throw) — commit `6c8bf77`
-- [x] `npx tsc --noEmit` clean
-- [x] `npm test` full suite green (1093/1093, 0 fail)
-- [x] Branch pushed to origin (`dc784a2`, `6c8bf77` on origin)
-- [x] `node scripts/lint-cards.mjs` → GATE PASSED (2026-10-10)
-- [x] `npm run build:pages` green (2026-10-10; bestStreak in dist bundle)
-- [x] Playwright E2E (2026-10-10, built artifact via serveBuiltArtifact,
-      `flock ~/workspace/.e2e.lock`, `--workers=1`):
-  - geodetective.spec.ts + clean-round-badge + game-sfx + longname
-    (scroll-a11y/tiers/wrap) + offline-content: 174 passed, 10 failed
-    (47.5m) — the 10 failures are FLAKY longname reveal-layout assertions
-    (`[data-testid="pin-compare-line"] .truespot-name` not mounted within
-    15s); a targeted rerun passed the previously-failing variants and
-    failed different variants → environment/timing flake under VM load,
-    NOT a regression (bestStreak is a number field on the loop store;
-    cannot affect classic-edition reveal markup). All 18 geodetective
-    tests passed, incl. the new bestStreak spec.
-  - geodetective-hint.spec.ts + geodetective.reduced.spec.ts: 5/5 passed.
-  - New E2E spec (commit `33330c3`): "bestStreak persists across a reload —
-    win raises the best, the best survives reload" — PASSED.
-- [x] Share-text decision resolved (Veeresh, option 1, 2026-10-11): classic
-      ` · 🔥 N best streak` segment on the result line when bestStreak >= 2;
-      threaded store → LoopGame → LoopReveal → ShareLoop → shareLoopText;
-      2 new unit tests — commit `a4feae7`; `tsc` clean, `npm test` 1095/1095
+## Root cause (three diagnosis cells)
+1. Captions advance on an independent `setTimeout` from mount; audio only
+   starts on a later gesture. Three silent states had no self-recovery:
+   (a) card `onFirstGesture` consumed the one-shot THEN returned on
+   `!isSoundEnabled()` — captions advance forever, audioState stuck "idle";
+   (b) `play()` promise hangs (iOS stall) — audioState stuck "playing", no
+   watchdog; (c) `AbortError` swallowed, stranding "playing" on a dead
+   element (card has no figure tap to recover it since #127).
+2. PR #127 removed the figure from cards — the documented manual recovery
+   path for this symptom.
+3. Banner poke-line trap: taps with no audio in flight rotated text-only
+   poke lines; a failed/missed greeting could never be replayed.
 
-## Pending
-- [ ] Technical-architect review — zero BLOCKs
-- [ ] Scrum panel review — zero BLOCKs
-- [ ] PR opened (DO NOT MERGE)
-- [x] PR opened: #130 https://github.com/veeresh-bikkaneti/Meridian/pull/130
-      (DO NOT MERGE — Veeresh merges on his explicit word only)
+## Fix (all in src/components/storyteller.tsx + storyteller-home.tsx)
+- **Fix A — card one-shot re-armable:** `onFirstGesture` no longer consumes
+  the one-shot when sound is off (decision via `decideFirstGesture`); the
+  listeners stay armed so the next gesture — or unmute — retries. P1-1
+  (celebration-owned gestures) preserved.
+- **Fix B — card play() watchdogs:** 4s hang watchdog (play() never
+  settles → onFail) + 3s stall check (playing event fired but currentTime
+  frozen → onFail). Ref-held timers, cleared on ended/error/dismiss/unmount;
+  no chained timers across renders. The stall check is anchored to the
+  `playing` EVENT (not play()-resolve) — arming on resolve false-positived
+  the 0.2s fixture clip under load during verification (caught by the
+  pre-existing "replay replays the line" e2e, 2/5 flake; fixed, then 8/8
+  consecutive passes).
+- **Fix C — AbortError:** when play() aborts on our own paused element and
+  it's still the current attempt, audioState goes to "paused" (recoverable
+  via replay/speaker/figure tap) instead of "playing".
+- **Fix D — banner greeting replay:** figure tap replays an
+  attempted-but-never-heard greeting instead of a poke line
+  (`shouldReplayGreeting`: greeting mode, started, attempted, not heard,
+  not kid-dismissed, one-shot consumed, audio available, sound on). Heard
+  greetings keep poke behavior; kid-dismissed greetings stay quiet. Also:
+  `greetingHeardRef` (ended OR timeupdate > 0.5s), and the window gesture
+  one-shot now checks a synchronous `tourActiveRef` so a tap during the
+  tour can't burn the greeting. Found during verification: banner `onFail`
+  never nulled `audioRef` — the stale ref blocked the replay guard; fixed
+  (`stopAudio()` in `onFail`).
+- **Fix E — retry hint:** `STORYTELLER_RETRY_HINT` ("Tap the speaker to try
+  again.") appended to the fallback caption ONLY on play() rejections
+  without a resource error (a load "error" event sets `loadErrorRef`, which
+  suppresses the hint — retrying a 404 is futile). Never device-shames.
+- New pure module `src/components/storyteller-audio-guards.ts`
+  (`decideFirstGesture`, `resolvePlayAbort`, `shouldReplayGreeting`,
+  `fallbackLine`) — same extract-for-testability pattern as
+  `decideHomeMode`; used by both components.
 
-## Spec (locked)
-1. Add `bestStreak: number` to `LoopUnlimitedStore` (types.ts) with
-   `isNonNegativeInt` validator in `isLoopUnlimitedStore` (store.ts),
-   default 0; load-path backfill for old blobs missing the field.
-2. `completePuzzle`: `bestStreak: Math.max(store.bestStreak, won ? store.streak + 1 : store.streak)`.
-3. `peekLoopProgress` returns `bestStreak` too.
-4. Tests: win raises best; loss preserves best; old blob backfills 0;
-   blocked storage no-throw.
-5. No storage version bump (fail-closed validator + backfill keeps v2 blobs valid).
-6. ~~**Share text UNCHANGED** — the `🔥 N best streak` share-display convention
-   is Veeresh's open decision; do not implement it here.~~ **RESOLVED
-   2026-10-11:** Veeresh chose option 1 — adopt the classic ` · 🔥 N best
-   streak` segment when bestStreak >= 2 (commit `a4feae7`).
+## Tests (each fix has FAIL-pre/PASS-post in this commit)
+- Unit: `src/components/storyteller-audio-guards.test.ts` — 20 tests
+  (registered in package.json `npm test` script).
+- E2E `tests/e2e/storyteller-silence-hang.desktop.spec.ts` — hanging mp3 →
+  play() never settles → 4s watchdog → fallback WITH retry hint.
+  FAIL-pre verified on pre-fix build (fallback never appears).
+- E2E `tests/e2e/storyteller-silence-replay.mobile.spec.ts` — aborted mp3 →
+  plain fallback (no hint on network error) → figure tap → new mp3 request
+  (replay) instead of a poke line. FAIL-pre verified on pre-fix build
+  (no second request).
 
-## Standing rules
-- Stage named files only, never `git add -A`; inspect the index before every commit.
-- Push early and often; atomic commits.
-- COPPA-safe; no hardcoded secrets/IDs; no UI copy changes in this PR.
+## Gates (final head)
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm test` — 1110/1110 pass (node --test)
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — green
+- [x] New e2e: hang 1/1, replay 1/1 (built artifact)
+- [x] `storyteller.spec.ts` 6/6 (incl. "replay replays the line" 8/8
+  consecutive after the stall-anchoring fix)
+- [x] Reduced-motion safe (watchdogs are timers, motion-independent);
+  COPPA-safe (no new network calls, no new storage keys)
+
+## Known pre-existing failures (NOT caused by this branch)
+- `storyteller-tapstart.desktop.spec.ts` — 5 failures (T1, R1, 3 matrix
+  tests): they assert the figure on the RESULT CARD, but PR #127 made the
+  figure banner-only (`showFigure={false}`) — the testid doesn't exist on
+  cards. Identical 5 failures on an independent checkout without this
+  branch's changes (other agent's /tmp/verify-kofi run). Orphaned tests
+  from #127, need migration to the banner.
+- Intermittent infra: Chromium SIGTRAP on launch (2x, transient), e2e lock
+  contention with other agents' suites (expected — flock serializes).
+
+## Behavior changes the scrum should scrutinize
+1. Card one-shot no longer consumed while muted: EVERY tap while muted
+   re-checks sound state (cheap) — and unmuting later lets the STILL-ARMED
+   listener fire narration on the next gesture. The banner already behaved
+   this way (panel BLOCK 5); the card now matches.
+2. The stall watchdog can pause a genuinely-playing element if the media
+   clock freezes >3s post-`playing` — under extreme renderer starvation
+   this could false-positive, but the user hears nothing in that case, so
+   text-only is the honest state. Watch the 3s/4s constants in the wild.
+3. `handleFigureToggle`'s paused→`play()` resume path (card) is NOT covered
+   by the watchdog — a hung resume could still strand "playing". Residual
+   edge, flagged for the test cell.
+4. New user-facing copy `STORYTELLER_RETRY_HINT` needs owner/panel copy
+   approval (same standing rule as SOUND_OFF_HINT).
+5. Banner `onFail` now calls `stopAudio()` (was missing) — also clears the
+   12s cap timer on failure; no behavior change beyond releasing the dead
+   element.
+
+## Addendum 2026-10-11 ~11:00 CDT — recording-rule audible journey
+New HARD rule: E2E runs must produce a screen recording. Added
+`tests/e2e/storyteller-audible.desktop.spec.ts` — single continuous
+session, card happy path: first gesture → audio probe asserts
+`paused===false` + `currentTime` advancing past 3.5s (outlasts both
+watchdogs) → fallback never renders → zero console errors. Verified
+runnable with `video: 'on'` (one-off config, removed afterwards;
+`video.webm` produced). 1/1 pass. Also the regression guard for the
+stall-check anchoring fix.
+
+## Addendum 2026-10-11 — FIX cell: scrum BLOCKs 1–3 + non-blocking #1 (head: TBD)
+Scrum panel BLOCKED commits 1f71d7b/a958a2b/e56153e. Fixed:
+
+**BLOCK 1 — retry hint named a nonexistent control.**
+- Card (`storyteller.tsx`): the replay button now renders when
+  `failed && playRejectedRef.current` (the ref is set before every
+  `setAudioState("failed")`; `handleReplay` bails only on
+  playing/dismissed, so it is a genuine retry). Hint copy changed to
+  "Tap the replay button to try again." — the speaker button stays
+  hidden in the failed state, so it is no longer named.
+- Banner (`storyteller-home.tsx`): new `STORYTELLER_HOME_RETRY_HINT`
+  ("Tap me to try again.") names the figure-tap greeting replay (Fix D)
+  — the banner has no speaker button. `fallbackLine` takes an optional
+  `retryHint` override (card keeps the default).
+- Copy is the panel's pick; FINAL wording needs owner sign-off before
+  merge (standing rule, same as SOUND_OFF_HINT).
+
+**BLOCK 2 — missing runtime-path E2E tests.** Four new specs (all
+FAIL-pre by construction, PASS-post verified):
+- `storyteller-silence-unmute.desktop.spec.ts` (Fix A): sound seeded
+  off → gesture → no audio element AND one-shot not consumed → unmute
+  via the real in-game toggle → real tap → `paused===false`.
+- `storyteller-silence-stall.desktop.spec.ts` (Fix B stall trip): MSE
+  rig appends 600 bytes then hangs forever (headers + first bytes, then
+  stall — a raw socket server is unreachable from Chromium in this VM,
+  the egress proxy blackholes loopback) → 4 s hang watchdog → fallback
+  WITH retry hint.
+- `storyteller-silence-pause-resume.desktop.spec.ts` (Fix C): hanging
+  clip → pause mid-buffer (via the probed element; the card figure is
+  banner-only) → recoverable "paused" (element paused, no fallback,
+  replay visible) → replay click → real playback resumes.
+- `storyteller-silence-banner-hint.mobile.spec.ts` (Fix E banner):
+  one-shot `HTMLMediaElement.prototype.play` patch forces a NotAllowedError
+  on the greeting (this Chromium doesn't enforce autoplay policy, so the
+  rejection is staged; it walks the real catch path) → hint names the
+  figure tap → real figure tap replays (new mp3 request, `paused===false`).
+- Also strengthened `storyteller-silence-hang.desktop.spec.ts`: asserts
+  the replay button is actually visible in the failed state.
+
+**BLOCK 3 — banner replay tap debounce.** The Fix D replay branch in
+`handleFigureTap` now applies the same 600 ms `POKE_DEBOUNCE_MS` guard
+as the poke path (shared `lastPokeRef`) — a tap storm fires one mp3
+request per 600 ms window, not one per tap.
+
+**Non-blocking concern #1 — resume watchdog.** `handleFigureToggle`'s
+paused→`play()` resume is now guarded by the 4 s hang watchdog (armed on
+the same element; the attempt's "playing" listener stands it down via
+`onSettled`; refs only, no chained timers). A hung resume fails loud via
+the attempt's `onFail` (mirrored in `onFailRef`) with the retry hint +
+replay button; a rejected resume sets `playRejectedRef` so the hint
+shows (same retryable shape as Fix E).
+
+**Checklist accuracy.** SPEC_CHECKLIST.md item 3 now carries the
+qualifier (one-shot retry is true when sound was on at mount; sound-off
+at mount means manual mode — speaker then replay, not the one-shot);
+item 1 quotes the new hint copy; items 7–8 cover the resume watchdog
+and replay debounce.
+
+## Gates (FIX cell, final head)
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm test` — 1113/1113 pass (guards file 23/23, +3 new)
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — green
+- [x] Playwright on the built artifact (flock-serialized, --workers=1):
+  - 4 new specs 4/4: unmute (Fix A), pause-resume (Fix C), stall trip
+    (Fix B), banner hint (Fix E) — all PASS-post
+  - FAIL-pre evidence: stashed the src fixes (scrum-reviewed code with
+    Fix A–E intact) → rebuilt → stall + banner-hint specs fail ONLY on
+    the new BLOCK 1 copy assertions (fallback itself renders — proving
+    the specs are sensitive to the copy change, not vacuous); pause-resume
+    + unmute pass there as designed (their FAIL-pre is vs. code without
+    Fix A/C at all — credibly FAIL-pre by construction: pre-fix the muted
+    gesture unconditionally consumed the one-shot; pre-fix AbortError went
+    to onFail/"failed"; pre-watchdog a pending play() strands "playing"
+    forever, verified empirically via the MSE probe)
+  - Updated: hang 1/1 (now also asserts the replay button renders in the
+    failed state), replay 1/1
+  - Regression: audible 1/1, storyteller.spec.ts 6/6 (incl. "figure tap
+    pauses and resumes", which walks the newly watchdog-guarded resume
+    path — no false-positive)
+  - Zero console/page errors in all passing runs
+- [x] Ko-fi cloud untouched (0 diff lines in grandpa-coffee-run.tsx)
+
+## Pending (NOT for this cell — owner/panel)
+- Final retry-hint copy sign-off ("Tap the replay button to try again." /
+  "Tap me to try again.") — owner's call before merge.
+- Screen recording of the new e2e session for the PR (owner's hard rule).
+- Independent reviewer (Chitti/owner panel) verdict — merge-ready is
+  theirs, not self-declared.
+- Pre-existing orphaned `storyteller-tapstart.desktop.spec.ts` failures
+  (5, from PR #127's banner-only figure) — untouched, still failing.
+
+---
+
+# BRANCH_STATUS — fix/narration-silent-prod (follow-up: Fix F, 2026-10-11)
+
+Branch: `fix/narration-silent-prod` · PR #136 (OPEN, not merged).
+
+## Fix F — home greeting follow-up path was NOT covered by #136 (owner report 2026-10-11 ~13:17 CDT)
+
+**Root cause:** PR #136 hardened the CARD storyteller (`storyteller.tsx`), but the
+HOME storyteller (`storyteller-home.tsx`) had its own `beginGreetingAudio`
+path with no play() hang watchdog. The subtitle bubble shows FIRST
+(`showBubble(greetingText, null)` — no hold timer), so a hung play() stranded
+the bubble with zero audio: "followup narrations showing in subtitle but no
+audio." The pause/resume tap also swallowed errors (`.catch(() => {})`).
+
+**Fix (same patterns as #136):**
+- 4s `GREET_PLAY_HANG_MS` watchdog on `beginGreetingAudio`'s play() — armed per
+  attempt, stood down on settle; fires → fail loud (text + figure-tap retry).
+- Shared `failGreetingAudio` callback (replaces inline onFail).
+- Resume tap in `handleFigureTap`: watchdog-guarded, fail-loud on hang/reject
+  (no more silent swallow). AbortError stays silent (pause working as intended).
+- Watchdog cleared in `stopAudio`, `clearTimers`, and on unmount (existing paths).
+
+**Tests:** `tests/e2e/storyteller-home-greeting-watchdog.mobile.spec.ts` — 3
+runtime-path specs (figure-tap replay with REAL audio via probe, hung play()
+fails loud, pause/resume recovers). All pass.
+
+**Gates:** tsc clean (1 pre-existing error in question-bubble.tsx from another
+workstream's uncommitted redesign — not this branch), npm test 1113/1113,
+lint-cards GATE PASSED, build:pages green. 2 pre-existing poke-test failures
+in storyteller-home.mobile.spec.ts reproduce on the base commit (unrelated).
+
+**Status:** committed, pushed. PR #136 updated. Screen recording pending.

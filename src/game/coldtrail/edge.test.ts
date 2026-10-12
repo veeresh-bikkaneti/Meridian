@@ -15,6 +15,7 @@ const mkSighting = (over: Partial<ColdTrailSighting>): ColdTrailSighting => ({
   radiusKm: 400,
   octant: "east",
   text: "Last seen refueling 400 km east of Denver.",
+  region: { continent: "North America", country: "United States", subdivision: "Colorado" },
   ...over,
 });
 
