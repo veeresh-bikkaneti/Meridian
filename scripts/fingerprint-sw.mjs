@@ -40,28 +40,51 @@ const outVercel = join(root, ".vercel", "output", "static", "sw.js");
 
 // Only stamp when run as a script (postbuild), not when imported by tests.
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  let buildId;
-  let stampedPath = out;
-  try {
-    buildId = fingerprintSw(out);
-  } catch (err) {
-    if (err.code === "ENOENT") {
-      // Try the Vercel/Nitro output path (regular `npm run build`).
-      try {
-        buildId = fingerprintSw(outVercel);
-        stampedPath = outVercel;
-      } catch (err2) {
-        if (err2.code === "ENOENT") {
-          console.error(`fingerprint-sw: no sw.js found — skipping`);
-          process.exit(0);
-        }
-        console.error(err2.message);
-        process.exit(1);
+  const candidates = [out, outVercel];
+  let stamped = false;
+  let lastError = null;
+  let foundStamped = false;
+
+  for (const swPath of candidates) {
+    let source;
+    try {
+      source = readFileSync(swPath, "utf8");
+    } catch (err) {
+      if (err.code === "ENOENT") continue; // try next path
+      lastError = err;
+      break;
+    }
+    // Already stamped by a previous build in this worktree? Skip it —
+    // the fresh build output is what needs the stamp, not a stale copy.
+    if (!source.includes(PLACEHOLDER)) {
+      if (/meridian-[0-9a-f]{7,40}/.test(source)) {
+        foundStamped = true;
+        continue; // already stamped, try next
       }
-    } else {
-      console.error(err.message);
-      process.exit(1);
+      lastError = new Error(`fingerprint-sw: placeholder ${PLACEHOLDER} not found in ${swPath}`);
+      break;
+    }
+    try {
+      const buildId = fingerprintSw(swPath);
+      console.log(`fingerprint-sw: stamped buildId=${buildId} into ${swPath}`);
+      stamped = true;
+      break;
+    } catch (err) {
+      lastError = err;
+      break;
     }
   }
-  console.log(`fingerprint-sw: stamped buildId=${buildId} into ${stampedPath}`);
+
+  if (!stamped) {
+    if (lastError) {
+      console.error(lastError.message);
+      process.exit(1);
+    }
+    if (foundStamped) {
+      console.error(`fingerprint-sw: all found copies already stamped — skipping`);
+    } else {
+      console.error(`fingerprint-sw: no sw.js found — skipping`);
+    }
+    process.exit(0);
+  }
 }
