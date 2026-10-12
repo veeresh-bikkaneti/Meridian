@@ -36,19 +36,32 @@ export function fingerprintSw(swPath, buildId = resolveBuildId()) {
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const out = join(root, "dist", "client", "sw.js");
+const outVercel = join(root, ".vercel", "output", "static", "sw.js");
 
-// Only stamp when run as a script (postbuild:pages), not when imported by tests.
+// Only stamp when run as a script (postbuild), not when imported by tests.
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   let buildId;
+  let stampedPath = out;
   try {
     buildId = fingerprintSw(out);
   } catch (err) {
     if (err.code === "ENOENT") {
-      console.error(`fingerprint-sw: ${out} not found — skipping (non-Pages build?)`);
-      process.exit(0);
+      // Try the Vercel/Nitro output path (regular `npm run build`).
+      try {
+        buildId = fingerprintSw(outVercel);
+        stampedPath = outVercel;
+      } catch (err2) {
+        if (err2.code === "ENOENT") {
+          console.error(`fingerprint-sw: no sw.js found — skipping`);
+          process.exit(0);
+        }
+        console.error(err2.message);
+        process.exit(1);
+      }
+    } else {
+      console.error(err.message);
+      process.exit(1);
     }
-    console.error(err.message);
-    process.exit(1);
   }
-  console.log(`fingerprint-sw: stamped buildId=${buildId} into dist/client/sw.js`);
+  console.log(`fingerprint-sw: stamped buildId=${buildId} into ${stampedPath}`);
 }
