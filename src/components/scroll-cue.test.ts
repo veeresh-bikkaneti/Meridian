@@ -30,6 +30,12 @@ const HOOKS_SOURCE = [
   "  }",
   "  return nextLoad(url, context);",
   "}",
+  "export async function resolve(specifier, context, nextResolve) {",
+  "  if (specifier === './bounded-text' && context.parentURL.endsWith('scroll-cue.tsx')) {",
+  "    return { url: new URL('./bounded-text.tsx', context.parentURL).href, shortCircuit: true };",
+  "  }",
+  "  return nextResolve(specifier, context);",
+  "}",
 ].join("\n");
 
 register("data:text/javascript," + encodeURIComponent(HOOKS_SOURCE));

@@ -70,6 +70,11 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { composeCardStory, factText, lintCard } from "./card-compose.mjs";
 import { readFactIndex, withFact } from "./facts-ladder.mjs";
+import ts from "typescript";
+import {
+  BOUNDED_TEXT_REGISTRY,
+  CSS_SCOPE_CLASSES,
+} from "./bounded-text-registry.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO = dirname(HERE);
@@ -303,6 +308,276 @@ function checkFixtures() {
 }
 
 // ---------------------------------------------------------------------------
+// Tier 3: BoundedText wrapping-contract gate (WRAPPING_SPEC §6c)
+//
+// <BoundedText> is the only sanctioned way to render text inside
+// `.result-card`. Four sub-checks, all HARD FAIL:
+//   3a. No raw block-text JSX in result-card.tsx: every intrinsic
+//       <p>/<h1>/<h2>/<h3>/<dd>/<dt>/<pre>/<a> must be a <BoundedText>
+//       or match a "raw" registry entry (tag + file). span/div are
+//       structural and covered by the runtime closed-world check.
+//   3b. No escape hatches at <BoundedText> call sites (result-card.tsx,
+//       scroll-cue.tsx, storyteller.tsx): `whitespace-nowrap` / `truncate`
+//       classes or `whiteSpace` / `textOverflow` styles fail the build.
+//       Registry drift: every "bounded" entry must be used; every call
+//       site must carry a registered class.
+//   3c. CSS guardrail (§6c.3): within `.result-card` scope, `white-space:
+//       nowrap`, `text-overflow: ellipsis`, and `overflow: hidden` on text
+//       selectors are forbidden unless the rule carries an
+//       `approved-exception` comment linking its evidence test.
+//   3d. Flex/grid containers in the card subtree must have shrink
+//       allowance (`min-width: 0` / `minmax(0,…)`) — the no-shrink ancestor
+//       is text-overflow mode #1. inline-flex shrink-wrappers are exempt.
+// ---------------------------------------------------------------------------
+
+/** Intrinsic block-text tags that must go through <BoundedText>. */
+const BLOCK_TEXT_TAGS = new Set(["p", "h1", "h2", "h3", "dd", "dt", "pre", "a"]);
+
+const TIER3_FILES = [
+  "src/components/result-card.tsx",
+  "src/components/scroll-cue.tsx",
+  "src/components/storyteller.tsx",
+];
+
+function shortPath(abs) {
+  return abs.startsWith(REPO + "/") ? abs.slice(REPO.length + 1) : abs;
+}
+
+/** Static className of a JSX opening element ("" when dynamic). */
+function staticClassName(opening) {
+  const attr = opening.attributes.properties.find(
+    (p) => p.kind === ts.SyntaxKind.JsxAttribute && p.name.getText() === "className",
+  );
+  if (!attr || !attr.initializer) return "";
+  const init = attr.initializer;
+  if (ts.isStringLiteral(init)) return init.text;
+  if (ts.isJsxExpression(init) && init.expression) {
+    const e = init.expression;
+    if (ts.isStringLiteral(e)) return e.text;
+    if (ts.isNoSubstitutionTemplateLiteral(e)) return e.text;
+    if (ts.isTemplateExpression(e)) return e.head.text;
+  }
+  return "";
+}
+
+function tagNameOf(opening) {
+  const n = opening.tagName;
+  return ts.isIdentifier(n) ? n.text : n.getText();
+}
+
+function checkTier3a() {
+  const failures = [];
+  const src = readFileSync(join(REPO, "src/components/result-card.tsx"), "utf8");
+  const sf = ts.createSourceFile("result-card.tsx", src, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+  const visit = (node) => {
+    if (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) {
+      const tag = tagNameOf(node);
+      if (BLOCK_TEXT_TAGS.has(tag)) {
+        const cls = staticClassName(node);
+        const allowed = BOUNDED_TEXT_REGISTRY.some(
+          (e) =>
+            e.kind === "raw" &&
+            e.file === "src/components/result-card.tsx" &&
+            e.tag === tag &&
+            (e.cls === "" || cls.split(/\s+/).includes(e.cls)),
+        );
+        if (!allowed) {
+          const { line } = sf.getLineAndCharacterOfPosition(node.getStart());
+          failures.push(
+            `Tier 3a: raw <${tag}> text element not via <BoundedText> and not allowlisted ` +
+              `(result-card.tsx:${line + 1}, class="${cls}") — render through <BoundedText> or register a raw entry with a reason`,
+          );
+        }
+      }
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(sf);
+  return failures;
+}
+
+function checkTier3b() {
+  const failures = [];
+  const usedBounded = new Set();
+  for (const f of TIER3_FILES) {
+    const abs = join(REPO, f);
+    const src = readFileSync(abs, "utf8");
+    const sf = ts.createSourceFile(f, src, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+    const visit = (node) => {
+      const isOpen = ts.isJsxOpeningElement(node);
+      const isSelf = ts.isJsxSelfClosingElement(node);
+      if ((isOpen || isSelf) && tagNameOf(node) === "BoundedText") {
+        // Both JsxOpeningElement and JsxSelfClosingElement ARE the tag node.
+        const openingEl = node;
+        const tagSrc = src.slice(openingEl.getStart(), openingEl.getEnd());
+        const { line } = sf.getLineAndCharacterOfPosition(openingEl.getStart());
+        const where = `${f}:${line + 1}`;
+        if (/whitespace-nowrap/.test(tagSrc)) {
+          failures.push(`Tier 3b: ${where} — whitespace-nowrap at a <BoundedText> call site (containment escape hatch refused)`);
+        }
+        if (/\btruncate\b/.test(tagSrc)) {
+          failures.push(`Tier 3b: ${where} — truncate at a <BoundedText> call site (containment escape hatch refused)`);
+        }
+        if (/whiteSpace\s*:/.test(tagSrc)) {
+          failures.push(`Tier 3b: ${where} — whiteSpace style at a <BoundedText> call site (containment escape hatch refused)`);
+        }
+        if (/textOverflow\s*:/.test(tagSrc)) {
+          failures.push(`Tier 3b: ${where} — textOverflow style at a <BoundedText> call site (containment escape hatch refused)`);
+        }
+        const cls = staticClassName(openingEl).split(/\s+/).filter(Boolean);
+        const hits = cls.filter((c) =>
+          BOUNDED_TEXT_REGISTRY.some((e) => e.kind === "bounded" && e.cls === c),
+        );
+        if (hits.length === 0) {
+          failures.push(
+            `Tier 3b: ${where} — <BoundedText> call site carries no registered class (class="${cls.join(" ") || "(none)"}); register it or it fails the closed-world check`,
+          );
+        } else {
+          for (const h of hits) usedBounded.add(h);
+        }
+      }
+      ts.forEachChild(node, visit);
+    };
+    visit(sf);
+  }
+  for (const e of BOUNDED_TEXT_REGISTRY) {
+    if (e.kind === "bounded" && !usedBounded.has(e.cls)) {
+      failures.push(
+        `Tier 3b: registry drift — bounded entry "${e.cls}" (${e.file}) has no <BoundedText> call site; remove the entry or restore the adoption`,
+      );
+    }
+  }
+  return failures;
+}
+
+/**
+ * Minimal CSS parser: returns [{ selector, decls, comment }] with the
+ * comment block immediately preceding each rule. @media/@supports nest
+ * via recursion (inner rules keep their own preceding comments).
+ */
+function parseCssRules(css) {
+  const rules = [];
+  let i = 0;
+  const n = css.length;
+  let pendingComment = "";
+  const skipWs = () => {
+    while (i < n && /\s/.test(css[i])) i++;
+  };
+  while (i < n) {
+    skipWs();
+    if (i >= n) break;
+    if (css.startsWith("/*", i)) {
+      const end = css.indexOf("*/", i + 2);
+      pendingComment = end < 0 ? css.slice(i) : css.slice(i, end + 2);
+      i = end < 0 ? n : end + 2;
+      continue;
+    }
+    // Selector (or at-rule) up to the next "{".
+    let selStart = i;
+    while (i < n && css[i] !== "{") i++;
+    if (i >= n) break;
+    const selector = css.slice(selStart, i).trim();
+    i++; // past "{"
+    // Balanced block.
+    let depth = 1;
+    const bodyStart = i;
+    while (i < n && depth > 0) {
+      if (css.startsWith("/*", i)) {
+        const end = css.indexOf("*/", i + 2);
+        i = end < 0 ? n : end + 2;
+        continue;
+      }
+      if (css[i] === "{") depth++;
+      else if (css[i] === "}") depth--;
+      i++;
+    }
+    const body = css.slice(bodyStart, i - 1);
+    if (/^@/.test(selector)) {
+      // Nested at-rule: recurse; inner rules are independent.
+      for (const r of parseCssRules(body)) rules.push(r);
+    } else if (selector) {
+      rules.push({ selector, decls: body, comment: pendingComment });
+    }
+    pendingComment = "";
+  }
+  return rules;
+}
+
+const normSel = (s) => s.replace(/\s*>\s*/g, ">").replace(/\s+/g, " ").trim();
+
+function inCardScope(selector) {
+  return selector.split(",").some((part) => {
+    const p = part.trim();
+    if (p.includes(".result-card")) return true;
+    return CSS_SCOPE_CLASSES.some((c) => new RegExp(`\\.${c}(?![\\w-])`).test(p));
+  });
+}
+
+function checkTier3c() {
+  const failures = [];
+  const css = readFileSync(join(REPO, "src/styles.css"), "utf8");
+  for (const { selector, decls, comment } of parseCssRules(css)) {
+    if (!inCardScope(selector)) continue;
+    const declList = decls.split(";").map((d) => d.trim()).filter(Boolean);
+    for (const d of declList) {
+      const m = d.match(/^([\w-]+)\s*:\s*(.+)$/);
+      if (!m) continue;
+      const [, prop, value] = m;
+      const forbidden =
+        (prop === "white-space" && /\bnowrap\b/.test(value)) ||
+        (prop === "text-overflow" && /\bellipsis\b/.test(value)) ||
+        ((prop === "overflow" || prop === "overflow-x" || prop === "overflow-y") &&
+          /\bhidden\b/.test(value));
+      if (forbidden && !/approved-exception/.test(comment)) {
+        failures.push(
+          `Tier 3c: "${selector}" declares ${prop}: ${value} in .result-card scope without an approved-exception comment — wrap, don't clip (WRAPPING_SPEC §6c.3)`,
+        );
+      }
+    }
+  }
+  return failures;
+}
+
+function checkTier3d() {
+  const failures = [];
+  const css = readFileSync(join(REPO, "src/styles.css"), "utf8");
+  const rules = parseCssRules(css).filter((r) => inCardScope(r.selector));
+  const hasShrink = (decls) =>
+    /min-width\s*:\s*0\b/.test(decls) || /minmax\(\s*0/.test(decls);
+  const containers = [];
+  for (const { selector, decls } of rules) {
+    for (const part of selector.split(",")) {
+      const p = normSel(part);
+      const displays = [...decls.matchAll(/display\s*:\s*([^;]+)/g)].map((m) => m[1].trim());
+      if (displays.some((d) => /^(flex|grid)$/.test(d))) containers.push(p);
+    }
+  }
+  for (const c of [...new Set(containers)]) {
+    const covered = rules.some(({ selector, decls }) =>
+      selector.split(",").some((part) => {
+        const p = normSel(part);
+        return (p === c || p.startsWith(c + " ") || p.startsWith(c + ">")) && hasShrink(decls);
+      }),
+    );
+    if (!covered) {
+      failures.push(
+        `Tier 3d: flex/grid container "${c}" in .result-card scope has no shrink allowance (min-width: 0 / minmax(0,…)) — the no-shrink ancestor is overflow mode #1`,
+      );
+    }
+  }
+  return failures;
+}
+
+function checkTier3() {
+  return [
+    ...checkTier3a(),
+    ...checkTier3b(),
+    ...checkTier3c(),
+    ...checkTier3d(),
+  ];
+}
+
+// ---------------------------------------------------------------------------
 // Tier 2: chunk audit (grandfathered)
 // ---------------------------------------------------------------------------
 
@@ -391,6 +666,16 @@ function main() {
     console.error("lint-cards: CHUNK AUDIT FAILED — post-pipeline records violating the card rules:");
     for (const f of hardFailures.slice(0, 20)) console.error(`  - ${f}`);
     if (hardFailures.length > 20) console.error(`  … and ${hardFailures.length - 20} more`);
+  }
+
+  // Tier 3: BoundedText wrapping-contract gate.
+  const tier3Failures = checkTier3();
+  if (tier3Failures.length > 0) {
+    failed = true;
+    console.error("lint-cards: TIER 3 (BoundedText contract) FAILED");
+    for (const f of tier3Failures) console.error(`  - ${f}`);
+  } else {
+    log("lint-cards: tier 3 passed (BoundedText-only text, no escape hatches, CSS guardrails, flex shrink allowance)");
   }
 
   if (failed) {

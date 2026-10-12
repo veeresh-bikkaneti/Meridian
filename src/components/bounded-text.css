@@ -1,0 +1,66 @@
+/* =====================================================================
+ * BoundedText — the wrapping contract (WRAPPING_SPEC §2).
+ *
+ * One class; the component owns *text never leaves its box*, the parent
+ * owns *where the box sits*. Imported at the top of src/styles.css (not
+ * from the .tsx) so the component module stays importable from the
+ * node --test unit suite.
+ *
+ * Deliberate exclusions (spec §2):
+ * - NO hyphens: auto anywhere (needs correct lang per string;
+ *   unpredictable on French/Italian place names; inserted hyphens cause
+ *   screen-reader pronunciation quirks).
+ * - NO overflow: hidden in the base contract — the owner wants wrap, not
+ *   clip; the scrollable result-body region absorbs vertical growth.
+ * - NO JS auto-tune of size by line count — pure CSS wrap only.
+ * ===================================================================== */
+
+.bounded-text {
+  min-width: 0; /* defeats flex/grid automatic minimum size — the #1 overflow cause */
+  max-width: 100%; /* never wider than its box, even as a flex/grid child */
+  white-space: normal; /* explicitly resets any inherited nowrap — belt for the 5 flags */
+  overflow-wrap: break-word; /* long tokens break instead of spilling */
+}
+
+/* "anywhere" for URLs / unspaced tokens: may break mid-word anywhere. */
+.bounded-text[data-wrap="anywhere"] {
+  overflow-wrap: anywhere;
+}
+
+/* <pre> keeps its newlines while still wrapping long lines. */
+.bounded-text[data-as="pre"] {
+  white-space: pre-wrap;
+}
+
+/* ---- Per-variant guardrails (spec §2 table) ---- */
+
+/* headline: balanced lines, no hyphens, tight but descender-safe leading. */
+.bounded-text[data-variant="headline"] {
+  text-wrap: balance;
+  hyphens: none;
+  line-height: 1.15;
+}
+
+/* place: pretty wrapping, never truncated — the name IS the lesson. */
+.bounded-text[data-variant="place"] {
+  text-wrap: pretty;
+  line-height: 1.3;
+}
+
+/* body: full wrap at a reading leading; the card grows vertically. */
+.bounded-text[data-variant="body"] {
+  text-wrap: pretty;
+  line-height: 1.5;
+}
+
+/* url: unbreakable tokens (share links, source URLs) break anywhere. */
+.bounded-text[data-variant="url"] {
+  overflow-wrap: anywhere;
+  line-height: 1.4;
+}
+
+/* banner: balanced greeting/narration subtitle lines. */
+.bounded-text[data-variant="banner"] {
+  text-wrap: balance;
+  line-height: 1.3;
+}

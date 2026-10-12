@@ -596,9 +596,12 @@ describe("cartographer's plate PR1 — .place-name utility contract", () => {
 
 describe("cartographer's plate PR1 — reveal headings (result-card.tsx)", () => {
   it("answer heading renders the full name, never an ellipsis", () => {
+    // Wrapping-spec adoption: the answer heading is a <BoundedText
+    // as="h2" variant="place"> — the emitted <h2> carries the
+    // place-name wrap utility (asserted on the call site).
     const className = classOfTag(
       resultCardSource,
-      /<h2\b[^>]*>\s*<PlaceNameText name=\{placeLabel\} \/>/,
+      /<BoundedText\s+as="h2"\s+variant="place"[^>]*>\s*<PlaceNameText name=\{placeLabel\} \/>/,
       "result-card answer h2",
     );
     assertNameContract("result-card answer h2", className);
@@ -617,9 +620,12 @@ describe("cartographer's plate PR1 — reveal headings (result-card.tsx)", () =>
       resultCardSource.includes("True spot"),
       "TRUE SPOT eyebrow stacks above its name",
     );
+    // Wrapping-spec adoption: the ledger names are <BoundedText as="dd"
+    // variant="place"> — the emitted <dd> carries the place-name wrap
+    // utility (asserted on the call site).
     const truespotClass = classOfTag(
       resultCardSource,
-      /<dd\b[^>]*>\s*<PlaceNameText\s+name=\{\s*run\.edition === "globe" && pinCompare\?\.kind === "named"\s*\?\s*pinCompare\.truth\s*:\s*placeLabel\s*\}\s*\/>/,
+      /<BoundedText\s+as="dd"\s+variant="place"[^>]*className="place-name truespot-name"[^>]*>/,
       "ledger TRUE SPOT dd",
     );
     assertNameContract("ledger TRUE SPOT dd", truespotClass);

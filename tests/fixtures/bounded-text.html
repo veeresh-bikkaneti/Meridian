@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BoundedText worst-case fixture (WRAPPING_SPEC §6a / §9)</title>
+<!--
+  Component-level fixture: every BoundedText variant rendered with the
+  spec §9 worst-case strings, inside a .result-card-width container.
+  The <link> href is rewritten by the spec to the built app CSS, so the
+  fixture measures the REAL shipped styles + REAL self-hosted fonts
+  (Fraunces/Karla woff2, served from the same dist).
+
+  The DOM below is exactly what <BoundedText> emits (proven by
+  renderToString in src/components/bounded-text.test.ts): the component
+  is createElement with data-as / data-variant / data-wrap + the
+  "bounded-text" class merge — no other output.
+-->
+<link rel="stylesheet" href="__APP_CSS__">
+<style>
+  body { margin: 0; background: #14161a; padding: 24px 8px; }
+  .fx-card {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto 32px;
+    padding: 16px 16px 0;
+    box-sizing: border-box;
+    background: rgba(10,12,16,0.72);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    color: #f2ede2;
+    /* mirrors .result-card defense-in-depth */
+    overflow-wrap: break-word;
+    min-width: 0;
+  }
+  .fx-label {
+    font: 11px/1.4 monospace; color: #8a8f98;
+    margin: 0 0 6px; text-transform: uppercase; letter-spacing: .08em;
+  }
+  .fx-block { margin-bottom: 18px; }
+  .fx-verdict-row {
+    display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  }
+  .fx-verdict-row > * { min-width: 0; }
+  .fx-chip {
+    font-family: var(--font-atlas-mono); font-size: 11px;
+    padding: 3px 8px; border: 1px solid #6b5f45; border-radius: 999px;
+    white-space: nowrap; flex-shrink: 0; color: #cbb87f;
+  }
+</style>
+</head>
+<body>
+
+<div class="fx-card" id="fx-card">
+
+  <p class="fx-label">headline · worst cases (§9)</p>
+  <div class="fx-block">
+    <h2 class="bounded-text verdict-headline" data-as="h2" data-variant="headline" data-wrap="word" data-testid="fx-headline-1">9,704 km northeast of your pin</h2>
+    <h2 class="bounded-text verdict-headline" data-as="h2" data-variant="headline" data-wrap="word" data-testid="fx-headline-2">2,986 km north of your pin</h2>
+    <h2 class="bounded-text verdict-headline" data-as="h2" data-variant="headline" data-wrap="word" data-testid="fx-headline-3">280 mi west of your pin</h2>
+    <h2 class="bounded-text verdict-headline" data-as="h2" data-variant="headline" data-wrap="word" data-testid="fx-headline-4">20,015 km southwest of your pin</h2>
+  </div>
+
+  <p class="fx-label">headline · keep-together experiment (§10.2): balance-only vs spans</p>
+  <div class="fx-block">
+    <h2 class="bounded-text verdict-headline" data-as="h2" data-variant="headline" data-wrap="word" data-testid="fx-keep-balance">9,704 km northeast of your pin</h2>
+    <h2 class="bounded-text verdict-headline" data-as="h2" data-variant="headline" data-wrap="word" data-testid="fx-keep-spans"><span style="white-space: nowrap">9,704 km</span> northeast <span style="white-space: nowrap">of your pin</span></h2>
+  </div>
+
+  <p class="fx-label">verdict row · chip + wrapped headline (§10.3)</p>
+  <div class="fx-block fx-verdict-row" data-testid="fx-verdict-row">
+    <h2 class="bounded-text verdict-headline" data-as="h2" data-variant="headline" data-wrap="word" data-testid="fx-row-headline">9,704 km northeast of your pin</h2>
+    <span class="fx-chip" data-testid="fx-row-chip">close</span>
+  </div>
+
+  <p class="fx-label">place names · never truncated (§9)</p>
+  <div class="fx-block">
+    <h2 class="bounded-text place-name" data-as="h2" data-variant="place" data-wrap="word" data-testid="fx-place-1">Mehdia daira de meghila, Tiaret, Algeria</h2>
+    <h2 class="bounded-text place-name" data-as="h2" data-variant="place" data-wrap="word" data-testid="fx-place-2">Moissy-Cramayel, Île-de-France</h2>
+    <h2 class="bounded-text place-name" data-as="h2" data-variant="place" data-wrap="word" data-testid="fx-place-3">Staronizhestebliyevskaya</h2>
+  </div>
+
+  <p class="fx-label">unbreakable tokens · body</p>
+  <div class="fx-block">
+    <p class="bounded-text" data-as="p" data-variant="body" data-wrap="word" data-testid="fx-token-48">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuv</p>
+    <p class="bounded-text" data-as="p" data-variant="body" data-wrap="word" data-testid="fx-token-30digit">123456789012345678901234567890</p>
+  </div>
+
+  <p class="fx-label">eyebrow variants · body</p>
+  <div class="fx-block">
+    <p class="bounded-text name-eyebrow" data-as="p" data-variant="body" data-wrap="word" data-testid="fx-eyebrow-1">Globe · Medium</p>
+    <p class="bounded-text name-eyebrow" data-as="p" data-variant="body" data-wrap="word" data-testid="fx-eyebrow-2">Country · United States of America · Hard</p>
+  </div>
+
+  <p class="fx-label">score breakdown · body</p>
+  <div class="fx-block">
+    <p class="bounded-text score-breakdown" data-as="p" data-variant="body" data-wrap="word" data-testid="fx-breakdown">Base 850 × 1.25 difficulty × 2.50 combo + 100 region bonus = 2,763</p>
+  </div>
+
+  <p class="fx-label">story body · body (long)</p>
+  <div class="fx-block">
+    <p class="bounded-text result-story" data-as="p" data-variant="body" data-wrap="word" data-testid="fx-story">In 1908 a race riot here shocked the nation and spurred the founding of the NAACP. Decades later the city became a quiet crossroads of rail lines and river trade, and its old downtown still keeps the brick facades the marchers walked past.</p>
+  </div>
+
+  <p class="fx-label">share block · pre/url</p>
+  <div class="fx-block">
+    <pre class="bounded-text share-pre" data-as="pre" data-variant="url" data-wrap="word" data-testid="fx-share">🗺️ Meridian 2026-10-11 — Globe · Medium
+2,763 pts · 3/5 places · best streak 4
+https://veeresh-bikkaneti.github.io/Meridian/?share=eyJzY29yZXMiOlsyNzYzLDAsMTUwMF0sImRhdGUiOiIyMDI2LTEwLTExIn0</pre>
+  </div>
+
+  <p class="fx-label">source link · a/url</p>
+  <div class="fx-block">
+    <a class="bounded-text result-source" data-as="a" data-variant="url" data-wrap="word" data-testid="fx-source" href="https://en.wikipedia.org/wiki/Springfield,_Illinois">Wikipedia — Springfield, Illinois</a>
+  </div>
+
+  <p class="fx-label">storyteller banner · p/banner</p>
+  <div class="fx-block">
+    <p class="bounded-text storyteller-caption-text" data-as="p" data-variant="banner" data-wrap="word" data-testid="fx-banner">Gather round, explorer! The storyteller is about to spin a tale of this faraway place.</p>
+  </div>
+
+  <p class="fx-label">scroll cue · span/body</p>
+  <div class="fx-block">
+    <span class="bounded-text scroll-cue-text" data-as="span" data-variant="body" data-wrap="word" data-testid="fx-cue">more below</span>
+  </div>
+
+  <p class="fx-label">growth line + note · body</p>
+  <div class="fx-block">
+    <p class="bounded-text growth-line" data-as="p" data-variant="body" data-wrap="word" data-testid="fx-growth">🌱 You're building a real map in your head — every miss teaches a direction.</p>
+    <p class="bounded-text result-note" data-as="p" data-variant="body" data-wrap="word" data-testid="fx-note">The line is your pin to the spot. The circle is close enough.</p>
+  </div>
+
+</div>
+
+</body>
+</html>

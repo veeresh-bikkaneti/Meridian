@@ -1,6 +1,7 @@
 @import "tailwindcss";
 /* Motionmaxxing M0: measured curve tokens (document-global :root). */
 @import "./styles/motion-tokens.css";
+@import "./components/bounded-text.css";
 
 /* Self-hosted Atlas type system (latin subsets, vendored from Google Fonts;
  * no runtime CDN dependency, so the app — and its "clean console" E2E gate —
@@ -913,9 +914,10 @@
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--atlas-brass-text-sm);
-  white-space: nowrap; /* never wraps past 1 line, never moves, never disappears */
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* Wrapping spec §4: the eyebrow is a BoundedText (variant=body) — it
+   * wraps to a second line instead of clipping. The old nowrap + ellipsis
+   * is deleted, not moved: the edition/region line is content, and the
+   * owner ruled content is never truncated on this card. */
   min-width: 0;
 }
 
@@ -926,6 +928,10 @@
   border: 1px solid var(--atlas-brass-rule);
   border-radius: 999px;
   color: var(--atlas-brass-text-sm);
+  /* approved-exception: white-space:nowrap (wrapping spec §4 DO NOT ADOPT —
+   * the chip is a signal, not prose; wrapping "medium" across two lines
+   * would be a bug). Evidence: tests/e2e/bounded-text.mobile.spec.ts
+   * asserts the chip keeps one line at 320px + 200%-zoom. */
   white-space: nowrap;
   flex-shrink: 0; /* never compacts, never leaves the band */
 }
@@ -978,7 +984,10 @@
   font-family: var(--font-atlas-display);
   font-weight: 600;
   font-size: clamp(22px, 5.6vw, 28px);
-  line-height: 1.12;
+  /* 1.15, not 1.1/1.12: Fraunces 600 descenders collide below 1.15
+   * (measured 2px scrollHeight overflow at 1.12) — same descender-safe
+   * floor as the headline variant and the truespot short tier. */
+  line-height: 1.15;
 }
 
 .rname[data-name-tier="medium"] {
@@ -1141,6 +1150,10 @@
   padding: 3px 8px;
   border: 1px solid var(--atlas-brass-rule);
   border-radius: 999px;
+  /* approved-exception: white-space:nowrap (wrapping spec §4 DO NOT ADOPT —
+   * the grade chip lives BESIDE BoundedText in the wrapping verdict row;
+   * it never compacts by design). Evidence:
+   * tests/e2e/bounded-text.mobile.spec.ts chip-row test. */
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -1502,12 +1515,35 @@
   padding: 16px 16px 0;
   max-height: min(80dvh, 560px);
   color: var(--atlas-ink);
+  /* Defense in depth (wrapping spec §2): even a missed raw text node can
+   * never spill horizontally past the card. This is NOT a substitute for
+   * the BoundedText contract — every card text element still renders
+   * through BoundedText and the lint-cards Tier 3 gate enforces it. */
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 @media (max-width: 479px) {
   .result-card {
     width: calc(100% - 32px); /* 16px gutters hold below 480px */
   }
+}
+
+/* ---- Result card: flex-container shrink allowance (lint-cards Tier 3) ----
+ * Every flex container in the card subtree must let its items shrink —
+ * the no-shrink ancestor is text-overflow mode #1. BoundedText items
+ * carry min-width: 0 via the contract; these rules cover the containers
+ * themselves as flex items plus the non-text items (chips, buttons)
+ * the contract doesn't reach. inline-flex shrink-wrappers (e.g.
+ * .result-source) are exempt: they size to content, never to the row. */
+.result-card > *,
+.result-topbar > *,
+.name-meta > *,
+.verdict-row > *,
+.scroll-cue-wrap > *,
+.scroll-cue > *,
+.result-body > * {
+  min-width: 0;
 }
 
 /* Zone 1: pinned header — meta band + verdict, flex-shrink: 0, never buried. */
@@ -1525,24 +1561,29 @@
 .result-topbar .name-meta {
   flex: 1 1 auto;
   min-width: 0;
-  /* Spec §8.7: the pinned meta band never eats the card. */
-  max-height: 30%;
+  /* Wrapping spec §7.5: the old `max-height: 30%; overflow: hidden` CLIPPED
+   * the eyebrow — a WCAG 1.4.12 hazard (text-spacing overrides grow the
+   * eyebrow past the clip). Replaced with flex discipline: the band may
+   * grow vertically (the eyebrow is a wrapping BoundedText now) and the
+   * pinned header never eats the card. min-height: 44px kept. */
   min-height: 44px;
-  overflow: hidden;
 }
 
-/* The verdict headline: Fraunces 600 34px tabular-nums in ink (spec §5).
- * flex-shrink: 0 — the headline never shrinks; the row wraps to two
- * lines on narrow widths instead. */
+/* The verdict headline: Fraunces 600 tabular-nums in ink (spec §5).
+ * Wrapping spec §7.1: containment moved OUT of this class into
+ * .bounded-text (the component owns "text never leaves its box"); this
+ * class keeps typography + row layout only. The headline wraps to two
+ * lines on narrow widths instead of clipping; the size clamps in rem so
+ * desktop root-font-size preferences are honored (spec §3).
+ * line-height comes from the headline variant guardrail (1.15). */
 .verdict-headline {
   font-family: var(--font-atlas-display);
   font-weight: 600;
-  font-size: 34px;
-  line-height: 1.1;
+  font-size: clamp(1.5rem, 7vw, 2.125rem);
   font-variant-numeric: tabular-nums;
   color: var(--atlas-ink);
-  flex: 1 0 auto;
-  min-width: 0;
+  flex: 1 1 auto;
+  margin-bottom: 8px; /* guaranteed gap below the last line, 1/2/3 lines alike */
 }
 
 .verdict-row {
@@ -1565,7 +1606,10 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 2px 2px 34px;
+  /* 64px bottom: the "more below" scroll cue overlays the region's bottom
+   * edge (~56px tall) — the last content line must scroll fully clear of
+   * it instead of hiding underneath the fade. */
+  padding: 2px 2px 64px;
 }
 
 /* Zone 3: pinned CTA — flex-shrink: 0, solid bg so scrolled text never
@@ -1600,10 +1644,15 @@
   font-size: 14px;
   text-decoration: underline;
   text-underline-offset: 2px;
-  /* 44px touch target: inline-block with padding (frontend review P1) */
-  display: inline-block;
+  /* 44px touch target (frontend review P1). inline-flex + align-items:
+   * center keeps the label vertically centered now that the url variant
+   * guardrail sets line-height: 1.4 (the old line-height: 44px centering
+   * trick would fight the variant). min-height: 44px is the target
+   * guarantee; the negative margin still shrink-wraps inside the
+   * stretched flex column without forcing horizontal overflow at 390px. */
+  display: inline-flex;
+  align-items: center;
   min-height: 44px;
-  line-height: 44px;
   padding: 0 8px;
   margin: 0 -8px;
   /* shrink-wrap inside the stretched flex column: the negative margin
@@ -1642,6 +1691,9 @@
   border: 1px solid var(--game-chrome-line);
   background: color-mix(in srgb, var(--atlas-ink) 5%, transparent);
   color: var(--atlas-ink);
+  /* Long unbroken tokens (share URLs) wrap instead of forcing the block
+   * wider than the card on 390px phones. */
+  overflow-wrap: anywhere;
 }
 
 /* ---- GeoDetective guess list (LoopScreen.tsx, spec §5) ----
@@ -1684,6 +1736,10 @@
   text-transform: uppercase;
   line-height: 1.4;
   color: var(--atlas-muted);
+  /* Kept: this <p> is NOT a BoundedText (GeoDetective dossier is out of
+   * the wrapping-spec adoption), so it keeps its own containment now
+   * that .verdict-headline no longer declares it. */
+  overflow-wrap: break-word;
 }
 
 .loop-reveal-bodywrap {
