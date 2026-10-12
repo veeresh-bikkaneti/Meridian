@@ -443,6 +443,28 @@ test("reload on a finished reveal re-renders the reveal, not a fresh deal", asyn
   expect(store.current.status).toBe("won");
 });
 
+test("bestStreak persists across a reload: win raises the best, the best survives reload", async ({
+  page,
+}) => {
+  await openLoop(page, "218"); // Ankara
+  const entry = await targetEntry(page);
+  await guessTarget(page, entry);
+  await expect(page.getByText("🎯 You found it!")).toBeVisible();
+
+  // The win wrote bestStreak: Math.max(best, streak) == 1.
+  const won = await loopStore(page);
+  expect(won.streak).toBe(1);
+  expect(won.bestStreak).toBe(1);
+
+  await page.reload();
+  // The reveal re-renders from the persisted blob — the best is untouched.
+  await expect(page.getByText("🎯 You found it!")).toBeVisible({ timeout: 30_000 });
+  const afterReload = await loopStore(page);
+  expect(afterReload.bestStreak).toBe(1);
+  expect(afterReload.streak).toBe(1);
+  expect(afterReload.current.index).toBe(218);
+});
+
 test("leave and return: menu shows the resume variant; reload doesn't hijack", async ({
   page,
 }) => {

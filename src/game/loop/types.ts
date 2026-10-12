@@ -109,6 +109,14 @@ export interface LoopUnlimitedStore {
   current: LoopPuzzleState | null;
   /** Consecutive solves. +1 on win, reset to 0 on loss, nothing else. */
   streak: number;
+  /**
+   * Best consecutive-solve streak ever recorded under this key. Updated by
+   * completePuzzle only (`Math.max(bestStreak, newStreak)`); reset only by a
+   * fresh store. Backfilled to 0 on load for v2 blobs written before the
+   * field existed (see readLoopStoreV2) — never shown in share text (that
+   * display convention is the owner's open decision).
+   */
+  bestStreak: number;
   /** Lifetime totals for the edition card / case counter. */
   totals: { solved: number; lost: number };
 }

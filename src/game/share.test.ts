@@ -130,3 +130,45 @@ test("geodetective share hides the streak line when streak is 0 or unset", () =>
     );
   }
 });
+
+test("geodetective share appends the best streak segment when bestStreak >= 2", () => {
+  const guesses: LoopGuess[] = [
+    { name: "Kota, India", placeId: "geonames:1266049", distKm: 2073, octant: "south", warmer: null },
+    { name: "Colombo, Sri Lanka", placeId: "geonames:1248991", distKm: 0, octant: "north", warmer: true },
+  ];
+  const text = shareLoopText({
+    guesses,
+    status: "won",
+    dateKey: "2026-10-06",
+    now,
+    streak: 3,
+    bestStreak: 5,
+  });
+  assert.equal(
+    text,
+    "meridian geodetective October 6\nhttps://meridian.knowledgetest.workers.dev/\n🟥🟩⬜⬜⬜ solved in 2 · 🔥 5 best streak\n🔥 3",
+  );
+});
+
+test("geodetective share hides the best streak segment when bestStreak < 2 or unset", () => {
+  const guesses: LoopGuess[] = [
+    { name: "Kota, India", placeId: "geonames:1266049", distKm: 2073, octant: "south", warmer: null },
+    { name: "Colombo, Sri Lanka", placeId: "geonames:1248991", distKm: 0, octant: "north", warmer: true },
+  ];
+  const base = {
+    guesses,
+    status: "won" as const,
+    dateKey: "2026-10-06",
+    now,
+    streak: 3,
+  };
+  const one = shareLoopText({ ...base, bestStreak: 1 });
+  const unset = shareLoopText(base);
+  for (const text of [one, unset]) {
+    assert.equal(text.includes("best streak"), false);
+    assert.equal(
+      text,
+      "meridian geodetective October 6\nhttps://meridian.knowledgetest.workers.dev/\n🟥🟩⬜⬜⬜ solved in 2\n🔥 3",
+    );
+  }
+});
