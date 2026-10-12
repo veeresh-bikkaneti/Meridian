@@ -62,7 +62,9 @@ fires once, when the figure actually loads.
 
 ## Pending
 
-- [ ] Scrum panel review
-- [ ] Rebase to zero conflicts + full suite re-run
-- [ ] Screen recording of verification
-- [ ] Open PR (never merge)
+- [x] Scrum panel review — APPROVE, no BLOCKs
+- [x] Rebase to zero conflicts + full suite re-run — done (1219/1219, E2E 1/1 + 6/6)
+- [x] Screen recording of verification — `~/workspace/your_files/meridian-crash-classification/crash-classification-verification.webm`
+- [x] Open PR (never merge) — PR #144 OPEN
+
+**Ready to merge? NO** — pending owner's video green-light → Chitti/panel review → owner's merge decision.
