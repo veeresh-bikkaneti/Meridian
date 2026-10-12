@@ -20,6 +20,7 @@ const sighting = (radiusKm: number): ColdTrailSighting => ({
   radiusKm,
   octant: "east",
   text: "Last seen refueling 400 km east of Denver.",
+  region: { continent: "North America", country: "United States", subdivision: "Colorado" },
 });
 
 test("effectiveRadius halves the ring while the informant is on it", () => {

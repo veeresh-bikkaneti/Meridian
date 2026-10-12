@@ -21,7 +21,12 @@
      "cityLat": 41.01643,
      "radiusKm": 575,
      "octant": "south-west",
-     "text": "Last seen eating at a drive-through 575 km southwest of Umraniye."
+     "text": "Last seen eating at a drive-through 575 km southwest of Umraniye.",
+     "region": {
+      "continent": "Asia",
+      "country": "Türkiye",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -32,7 +37,12 @@
      "cityLat": 37.27611,
      "radiusKm": 2275,
      "octant": "west",
-     "text": "Last seen filling jerrycans 2,275 km west of Rasht."
+     "text": "Last seen filling jerrycans 2,275 km west of Rasht.",
+     "region": {
+      "continent": "Asia",
+      "country": "Iran",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -43,7 +53,12 @@
      "cityLat": 7.37756,
      "radiusKm": 3975,
      "octant": "north-east",
-     "text": "Last seen asking a gas attendant for directions 3,975 km northeast of Ibadan."
+     "text": "Last seen asking a gas attendant for directions 3,975 km northeast of Ibadan.",
+     "region": {
+      "continent": "Africa",
+      "country": "Nigeria",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -67,7 +82,12 @@
      "cityLat": 19.32746,
      "radiusKm": 2875,
      "octant": "west",
-     "text": "Last spotted at a roadside diner 2,875 km west of Nghi Sơn."
+     "text": "Last spotted at a roadside diner 2,875 km west of Nghi Sơn.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -78,7 +98,12 @@
      "cityLat": 21.51966,
      "radiusKm": 925,
      "octant": "east",
-     "text": "Last spotted at a roadside diner 925 km east of Jūnāgadh."
+     "text": "Last spotted at a roadside diner 925 km east of Jūnāgadh.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Gujarat"
+     }
     },
     {
      "id": "s3",
@@ -89,7 +114,12 @@
      "cityLat": 23.16697,
      "radiusKm": 500,
      "octant": "south",
-     "text": "Last seen withdrawing cash from an ATM 500 km south of Jabalpur."
+     "text": "Last seen withdrawing cash from an ATM 500 km south of Jabalpur.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Madhya Pradesh"
+     }
     }
    ]
   },
@@ -113,7 +143,12 @@
      "cityLat": 32.73569,
      "radiusKm": 1325,
      "octant": "north-east",
-     "text": "Last seen boarding a night bus 1,325 km northeast of Arlington."
+     "text": "Last seen boarding a night bus 1,325 km northeast of Arlington.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Texas"
+     }
     },
     {
      "id": "s2",
@@ -124,7 +159,12 @@
      "cityLat": 19.04778,
      "radiusKm": 2750,
      "octant": "north",
-     "text": "Last seen boarding a night bus 2,750 km north of Puebla."
+     "text": "Last seen boarding a night bus 2,750 km north of Puebla.",
+     "region": {
+      "continent": "North America",
+      "country": "Mexico",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -135,7 +175,12 @@
      "cityLat": 45.52345,
      "radiusKm": 2800,
      "octant": "east",
-     "text": "Last seen sleeping in a parked car 2,800 km east of Portland."
+     "text": "Last seen sleeping in a parked car 2,800 km east of Portland.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Oregon"
+     }
     }
    ]
   },
@@ -159,7 +204,12 @@
      "cityLat": 10.59095,
      "radiusKm": 3025,
      "octant": "west",
-     "text": "Last seen hitching a ride from a trucker 3,025 km west of Maroua."
+     "text": "Last seen hitching a ride from a trucker 3,025 km west of Maroua.",
+     "region": {
+      "continent": "Africa",
+      "country": "Cameroon",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -170,7 +220,12 @@
      "cityLat": -8.83411,
      "radiusKm": 3500,
      "octant": "north-west",
-     "text": "Last seen at a bus depot 3,500 km northwest of Kima Kieza."
+     "text": "Last seen at a bus depot 3,500 km northwest of Kima Kieza.",
+     "region": {
+      "continent": "Africa",
+      "country": "Angola",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -181,7 +236,12 @@
      "cityLat": 36.81897,
      "radiusKm": 3950,
      "octant": "south-west",
-     "text": "Last seen eating at a drive-through 3,950 km southwest of Tunis."
+     "text": "Last seen eating at a drive-through 3,950 km southwest of Tunis.",
+     "region": {
+      "continent": "Africa",
+      "country": "Tunisia",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -205,7 +265,12 @@
      "cityLat": 24.81978,
      "radiusKm": 2275,
      "octant": "north-east",
-     "text": "Last seen withdrawing cash from an ATM 2,275 km northeast of Jinjiang."
+     "text": "Last seen withdrawing cash from an ATM 2,275 km northeast of Jinjiang.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Fujian"
+     }
     },
     {
      "id": "s2",
@@ -216,7 +281,12 @@
      "cityLat": 43.88,
      "radiusKm": 1375,
      "octant": "south-east",
-     "text": "Last seen hitching a ride from a trucker 1,375 km southeast of Changchun."
+     "text": "Last seen hitching a ride from a trucker 1,375 km southeast of Changchun.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Jilin"
+     }
     },
     {
      "id": "s3",
@@ -227,7 +297,12 @@
      "cityLat": 35.10168,
      "radiusKm": 850,
      "octant": "east",
-     "text": "Last seen sleeping in a parked car 850 km east of Busan."
+     "text": "Last seen sleeping in a parked car 850 km east of Busan.",
+     "region": {
+      "continent": "Asia",
+      "country": "South Korea",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -251,7 +326,12 @@
      "cityLat": 56.03742,
      "radiusKm": 3825,
      "octant": "south-east",
-     "text": "Last seen buying a burner phone 3,825 km southeast of Krasnoyarsk."
+     "text": "Last seen buying a burner phone 3,825 km southeast of Krasnoyarsk.",
+     "region": {
+      "continent": "Europe",
+      "country": "Russia",
+      "subdivision": "Krasnoyarsk Krai"
+     }
     },
     {
      "id": "s2",
@@ -262,7 +342,12 @@
      "cityLat": 35.55278,
      "radiusKm": 1300,
      "octant": "east",
-     "text": "Last seen hitching a ride from a trucker 1,300 km east of Yanzhou."
+     "text": "Last seen hitching a ride from a trucker 1,300 km east of Yanzhou.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Shandong"
+     }
     },
     {
      "id": "s3",
@@ -273,7 +358,12 @@
      "cityLat": 34.71667,
      "radiusKm": 500,
      "octant": "west",
-     "text": "Last seen sleeping in a parked car 500 km west of Amagasaki."
+     "text": "Last seen sleeping in a parked car 500 km west of Amagasaki.",
+     "region": {
+      "continent": "Asia",
+      "country": "Japan",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -297,7 +387,12 @@
      "cityLat": 17.99702,
      "radiusKm": 3100,
      "octant": "north",
-     "text": "Last spotted at a roadside diner 3,100 km north of Kingston."
+     "text": "Last spotted at a roadside diner 3,100 km north of Kingston.",
+     "region": {
+      "continent": "North America",
+      "country": "Jamaica",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -308,7 +403,12 @@
      "cityLat": 19.44506,
      "radiusKm": 3775,
      "octant": "north-east",
-     "text": "Last seen sleeping in a parked car 3,775 km northeast of Cuauhtémoc."
+     "text": "Last seen sleeping in a parked car 3,775 km northeast of Cuauhtémoc.",
+     "region": {
+      "continent": "North America",
+      "country": "Mexico",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -319,7 +419,12 @@
      "cityLat": 51.05011,
      "radiusKm": 3075,
      "octant": "east",
-     "text": "Last seen eating at a drive-through 3,075 km east of Calgary."
+     "text": "Last seen eating at a drive-through 3,075 km east of Calgary.",
+     "region": {
+      "continent": "North America",
+      "country": "Canada",
+      "subdivision": "Alberta"
+     }
     }
    ]
   },
@@ -343,7 +448,12 @@
      "cityLat": 39.90861,
      "radiusKm": 2700,
      "octant": "north-west",
-     "text": "Last seen filling jerrycans 2,700 km northwest of Erzurum."
+     "text": "Last seen filling jerrycans 2,700 km northwest of Erzurum.",
+     "region": {
+      "continent": "Asia",
+      "country": "Türkiye",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -354,7 +464,12 @@
      "cityLat": 52.48142,
      "radiusKm": 1450,
      "octant": "north-east",
-     "text": "Last seen at a bus depot 1,450 km northeast of Birmingham."
+     "text": "Last seen at a bus depot 1,450 km northeast of Birmingham.",
+     "region": {
+      "continent": "Europe",
+      "country": "United Kingdom",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -365,7 +480,12 @@
      "cityLat": 58.01046,
      "radiusKm": 2200,
      "octant": "west",
-     "text": "Last seen filling jerrycans 2,200 km west of Perm."
+     "text": "Last seen filling jerrycans 2,200 km west of Perm.",
+     "region": {
+      "continent": "Europe",
+      "country": "Russia",
+      "subdivision": "Perm Krai"
+     }
     }
    ]
   },
@@ -389,7 +509,12 @@
      "cityLat": 34.7,
      "radiusKm": 1775,
      "octant": "west",
-     "text": "Last seen eating at a drive-through 1,775 km west of Hamamatsu."
+     "text": "Last seen eating at a drive-through 1,775 km west of Hamamatsu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Japan",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -400,7 +525,12 @@
      "cityLat": 56.03742,
      "radiusKm": 3000,
      "octant": "south-east",
-     "text": "Last seen withdrawing cash from an ATM 3,000 km southeast of Krasnoyarsk."
+     "text": "Last seen withdrawing cash from an ATM 3,000 km southeast of Krasnoyarsk.",
+     "region": {
+      "continent": "Europe",
+      "country": "Russia",
+      "subdivision": "Krasnoyarsk Krai"
+     }
     },
     {
      "id": "s3",
@@ -411,7 +541,12 @@
      "cityLat": 22.50862,
      "radiusKm": 3275,
      "octant": "north-east",
-     "text": "Last seen hitching a ride from a trucker 3,275 km northeast of Maheshtala."
+     "text": "Last seen hitching a ride from a trucker 3,275 km northeast of Maheshtala.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "West Bengal"
+     }
     }
    ]
   },
@@ -435,7 +570,12 @@
      "cityLat": 26.645,
      "radiusKm": 625,
      "octant": "west",
-     "text": "Last seen hitching a ride from a trucker 625 km west of Nanping."
+     "text": "Last seen hitching a ride from a trucker 625 km west of Nanping.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Fujian"
+     }
     },
     {
      "id": "s2",
@@ -446,7 +586,12 @@
      "cityLat": 48.26667,
      "radiusKm": 2650,
      "octant": "south-west",
-     "text": "Last seen asking a gas attendant for directions 2,650 km southwest of Bei’an."
+     "text": "Last seen asking a gas attendant for directions 2,650 km southwest of Bei’an.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Heilongjiang"
+     }
     },
     {
      "id": "s3",
@@ -457,7 +602,12 @@
      "cityLat": 10.82302,
      "radiusKm": 1950,
      "octant": "north",
-     "text": "Last seen eating at a drive-through 1,950 km north of Ho Chi Minh City."
+     "text": "Last seen eating at a drive-through 1,950 km north of Ho Chi Minh City.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -481,7 +631,12 @@
      "cityLat": 30.1764,
      "radiusKm": 800,
      "octant": "north",
-     "text": "Last spotted at a roadside diner 800 km north of Cixi."
+     "text": "Last spotted at a roadside diner 800 km north of Cixi.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Zhejiang"
+     }
     },
     {
      "id": "s2",
@@ -492,7 +647,12 @@
      "cityLat": 55.02259,
      "radiusKm": 3350,
      "octant": "east",
-     "text": "Last seen buying a burner phone 3,350 km east of Novosibirsk."
+     "text": "Last seen buying a burner phone 3,350 km east of Novosibirsk.",
+     "region": {
+      "continent": "Europe",
+      "country": "Russia",
+      "subdivision": "Novosibirsk Oblast"
+     }
     },
     {
      "id": "s3",
@@ -503,7 +663,12 @@
      "cityLat": 17.96667,
      "radiusKm": 2650,
      "octant": "north-east",
-     "text": "Last seen filling jerrycans 2,650 km northeast of Vientiane."
+     "text": "Last seen filling jerrycans 2,650 km northeast of Vientiane.",
+     "region": {
+      "continent": "Asia",
+      "country": "Laos",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -527,7 +692,12 @@
      "cityLat": 3.2549,
      "radiusKm": 3200,
      "octant": "north-east",
-     "text": "Last seen asking a gas attendant for directions 3,200 km northeast of Selayang Baru Utara."
+     "text": "Last seen asking a gas attendant for directions 3,200 km northeast of Selayang Baru Utara.",
+     "region": {
+      "continent": "Asia",
+      "country": "Malaysia",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -538,7 +708,12 @@
      "cityLat": 31.13019,
      "radiusKm": 1800,
      "octant": "east",
-     "text": "Last seen asking a gas attendant for directions 1,800 km east of Deyang."
+     "text": "Last seen asking a gas attendant for directions 1,800 km east of Deyang.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Sichuan"
+     }
     },
     {
      "id": "s3",
@@ -549,7 +724,12 @@
      "cityLat": 33.3575,
      "radiusKm": 950,
      "octant": "south",
-     "text": "Last spotted at a roadside diner 950 km south of Yancheng."
+     "text": "Last spotted at a roadside diner 950 km south of Yancheng.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Jiangsu"
+     }
     }
    ]
   },
@@ -573,7 +753,12 @@
      "cityLat": 55.02259,
      "radiusKm": 2800,
      "octant": "south",
-     "text": "Last seen withdrawing cash from an ATM 2,800 km south of Novosibirsk."
+     "text": "Last seen withdrawing cash from an ATM 2,800 km south of Novosibirsk.",
+     "region": {
+      "continent": "Europe",
+      "country": "Russia",
+      "subdivision": "Novosibirsk Oblast"
+     }
     },
     {
      "id": "s2",
@@ -584,7 +769,12 @@
      "cityLat": 30.47413,
      "radiusKm": 3150,
      "octant": "west",
-     "text": "Last spotted at a roadside diner 3,150 km west of Guang’an."
+     "text": "Last spotted at a roadside diner 3,150 km west of Guang’an.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Sichuan"
+     }
     },
     {
      "id": "s3",
@@ -595,7 +785,12 @@
      "cityLat": 37.16708,
      "radiusKm": 3300,
      "octant": "east",
-     "text": "Last seen sleeping in a parked car 3,300 km east of Şanlıurfa."
+     "text": "Last seen sleeping in a parked car 3,300 km east of Şanlıurfa.",
+     "region": {
+      "continent": "Asia",
+      "country": "Türkiye",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -619,7 +814,12 @@
      "cityLat": 41.28861,
      "radiusKm": 3925,
      "octant": "south-west",
-     "text": "Last seen buying a burner phone 3,925 km southwest of Benxi."
+     "text": "Last seen buying a burner phone 3,925 km southwest of Benxi.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Liaoning"
+     }
     },
     {
      "id": "s2",
@@ -630,7 +830,12 @@
      "cityLat": -2.91673,
      "radiusKm": 1450,
      "octant": "north",
-     "text": "Last seen withdrawing cash from an ATM 1,450 km north of Palembang."
+     "text": "Last seen withdrawing cash from an ATM 1,450 km north of Palembang.",
+     "region": {
+      "continent": "Asia",
+      "country": "Indonesia",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -641,7 +846,12 @@
      "cityLat": 28.19874,
      "radiusKm": 2175,
      "octant": "south",
-     "text": "Last seen filling jerrycans 2,175 km south of Changsha."
+     "text": "Last seen filling jerrycans 2,175 km south of Changsha.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Hunan"
+     }
     }
    ]
   },
@@ -665,7 +875,12 @@
      "cityLat": 29.58354,
      "radiusKm": 2125,
      "octant": "west",
-     "text": "Last seen boarding a night bus 2,125 km west of Neijiang."
+     "text": "Last seen boarding a night bus 2,125 km west of Neijiang.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Sichuan"
+     }
     },
     {
      "id": "s2",
@@ -676,7 +891,12 @@
      "cityLat": 41.26465,
      "radiusKm": 2025,
      "octant": "south-east",
-     "text": "Last seen sleeping in a parked car 2,025 km southeast of Tashkent."
+     "text": "Last seen sleeping in a parked car 2,025 km southeast of Tashkent.",
+     "region": {
+      "continent": "Asia",
+      "country": "Uzbekistan",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -687,7 +907,12 @@
      "cityLat": 23.46186,
      "radiusKm": 900,
      "octant": "north-west",
-     "text": "Last seen withdrawing cash from an ATM 900 km northwest of Comilla."
+     "text": "Last seen withdrawing cash from an ATM 900 km northwest of Comilla.",
+     "region": {
+      "continent": "Asia",
+      "country": "Bangladesh",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -711,7 +936,12 @@
      "cityLat": 15.85212,
      "radiusKm": 2950,
      "octant": "east",
-     "text": "Last seen asking a gas attendant for directions 2,950 km east of Belagavi."
+     "text": "Last seen asking a gas attendant for directions 2,950 km east of Belagavi.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Karnataka"
+     }
     },
     {
      "id": "s2",
@@ -722,7 +952,12 @@
      "cityLat": 21.85563,
      "radiusKm": 1500,
      "octant": "south-west",
-     "text": "Last seen eating at a drive-through 1,500 km southwest of Yangjiang."
+     "text": "Last seen eating at a drive-through 1,500 km southwest of Yangjiang.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Guangdong"
+     }
     },
     {
      "id": "s3",
@@ -733,7 +968,12 @@
      "cityLat": 23.51583,
      "radiusKm": 1950,
      "octant": "south-east",
-     "text": "Last seen at a bus depot 1,950 km southeast of Durgapur."
+     "text": "Last seen at a bus depot 1,950 km southeast of Durgapur.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "West Bengal"
+     }
     }
    ]
   },
@@ -757,7 +997,12 @@
      "cityLat": 36.66833,
      "radiusKm": 2625,
      "octant": "south-west",
-     "text": "Last seen eating at a drive-through 2,625 km southwest of Jinan."
+     "text": "Last seen eating at a drive-through 2,625 km southwest of Jinan.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Shandong"
+     }
     },
     {
      "id": "s2",
@@ -768,7 +1013,12 @@
      "cityLat": 12.9184,
      "radiusKm": 2050,
      "octant": "north-east",
-     "text": "Last seen asking a gas attendant for directions 2,050 km northeast of Vellore."
+     "text": "Last seen asking a gas attendant for directions 2,050 km northeast of Vellore.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Tamil Nadu"
+     }
     },
     {
      "id": "s3",
@@ -779,7 +1029,12 @@
      "cityLat": 28.01762,
      "radiusKm": 2425,
      "octant": "east",
-     "text": "Last seen buying supplies at a truck stop 2,425 km east of Bikaner."
+     "text": "Last seen buying supplies at a truck stop 2,425 km east of Bikaner.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Rajasthan"
+     }
     }
    ]
   },
@@ -803,7 +1058,12 @@
      "cityLat": 44.54804,
      "radiusKm": 3475,
      "octant": "west",
-     "text": "Last seen refueling a dusty pickup 3,475 km west of Mudanjiang."
+     "text": "Last seen refueling a dusty pickup 3,475 km west of Mudanjiang.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Heilongjiang"
+     }
     },
     {
      "id": "s2",
@@ -814,7 +1074,12 @@
      "cityLat": 36.8065,
      "radiusKm": 3575,
      "octant": "north-west",
-     "text": "Last seen eating at a drive-through 3,575 km northwest of Cheonan."
+     "text": "Last seen eating at a drive-through 3,575 km northwest of Cheonan.",
+     "region": {
+      "continent": "Asia",
+      "country": "South Korea",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -825,7 +1090,12 @@
      "cityLat": 25.4605,
      "radiusKm": 2600,
      "octant": "north-east",
-     "text": "Last spotted at a roadside diner 2,600 km northeast of Tando Allahyar."
+     "text": "Last spotted at a roadside diner 2,600 km northeast of Tando Allahyar.",
+     "region": {
+      "continent": "Asia",
+      "country": "Pakistan",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -849,7 +1119,12 @@
      "cityLat": 21.02,
      "radiusKm": 2725,
      "octant": "west",
-     "text": "Last seen hitching a ride from a trucker 2,725 km west of Gia Lâm."
+     "text": "Last seen hitching a ride from a trucker 2,725 km west of Gia Lâm.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -860,7 +1135,12 @@
      "cityLat": 9.919,
      "radiusKm": 800,
      "octant": "north",
-     "text": "Last spotted at a roadside diner 800 km north of Madurai."
+     "text": "Last spotted at a roadside diner 800 km north of Madurai.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Tamil Nadu"
+     }
     },
     {
      "id": "s3",
@@ -871,7 +1151,12 @@
      "cityLat": 25.3342,
      "radiusKm": 2800,
      "octant": "east",
-     "text": "Last seen boarding a night bus 2,800 km east of Sharjah."
+     "text": "Last seen boarding a night bus 2,800 km east of Sharjah.",
+     "region": {
+      "continent": "Asia",
+      "country": "United Arab Emirates",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -895,7 +1180,12 @@
      "cityLat": 45.46427,
      "radiusKm": 3675,
      "octant": "north-east",
-     "text": "Last seen buying supplies at a truck stop 3,675 km northeast of Milan."
+     "text": "Last seen buying supplies at a truck stop 3,675 km northeast of Milan.",
+     "region": {
+      "continent": "Europe",
+      "country": "Italy",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -906,7 +1196,12 @@
      "cityLat": 34.7795,
      "radiusKm": 2625,
      "octant": "north",
-     "text": "Last seen refueling a dusty pickup 2,625 km north of Mingora."
+     "text": "Last seen refueling a dusty pickup 2,625 km north of Mingora.",
+     "region": {
+      "continent": "Asia",
+      "country": "Pakistan",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -917,7 +1212,12 @@
      "cityLat": 39.74318,
      "radiusKm": 3375,
      "octant": "north-west",
-     "text": "Last seen asking a gas attendant for directions 3,375 km northwest of Jiuquan."
+     "text": "Last seen asking a gas attendant for directions 3,375 km northwest of Jiuquan.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Gansu"
+     }
     }
    ]
   },
@@ -941,7 +1241,12 @@
      "cityLat": 9.40079,
      "radiusKm": 2175,
      "octant": "east",
-     "text": "Last seen buying supplies at a truck stop 2,175 km east of Tamale."
+     "text": "Last seen buying supplies at a truck stop 2,175 km east of Tamale.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ghana",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -952,7 +1257,12 @@
      "cityLat": 36.89157,
      "radiusKm": 3025,
      "octant": "south-west",
-     "text": "Last seen at a bus depot 3,025 km southwest of Muratpaşa."
+     "text": "Last seen at a bus depot 3,025 km southwest of Muratpaşa.",
+     "region": {
+      "continent": "Asia",
+      "country": "Türkiye",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -963,7 +1273,12 @@
      "cityLat": 42.69751,
      "radiusKm": 3425,
      "octant": "south",
-     "text": "Last seen refueling a dusty pickup 3,425 km south of Sofia."
+     "text": "Last seen refueling a dusty pickup 3,425 km south of Sofia.",
+     "region": {
+      "continent": "Europe",
+      "country": "Bulgaria",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -987,7 +1302,12 @@
      "cityLat": 19.45591,
      "radiusKm": 1625,
      "octant": "north",
-     "text": "Last seen eating at a drive-through 1,625 km north of Virār."
+     "text": "Last seen eating at a drive-through 1,625 km north of Virār.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Maharashtra"
+     }
     },
     {
      "id": "s2",
@@ -998,7 +1318,12 @@
      "cityLat": 30.33625,
      "radiusKm": 525,
      "octant": "north-west",
-     "text": "Last spotted at a roadside diner 525 km northwest of Patiāla."
+     "text": "Last spotted at a roadside diner 525 km northwest of Patiāla.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Punjab"
+     }
     },
     {
      "id": "s3",
@@ -1009,7 +1334,12 @@
      "cityLat": 51.24601,
      "radiusKm": 2600,
      "octant": "south-east",
-     "text": "Last seen hitching a ride from a trucker 2,600 km southeast of Oral."
+     "text": "Last seen hitching a ride from a trucker 2,600 km southeast of Oral.",
+     "region": {
+      "continent": "Asia",
+      "country": "Kazakhstan",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -1033,7 +1363,12 @@
      "cityLat": 30.91611,
      "radiusKm": 500,
      "octant": "north-west",
-     "text": "Last seen boarding a night bus 500 km northwest of Nanqiao."
+     "text": "Last seen boarding a night bus 500 km northwest of Nanqiao.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Shanghai"
+     }
     },
     {
      "id": "s2",
@@ -1044,7 +1379,12 @@
      "cityLat": 36.18389,
      "radiusKm": 500,
      "octant": "south-east",
-     "text": "Last seen eating at a drive-through 500 km southeast of Changzhi."
+     "text": "Last seen eating at a drive-through 500 km southeast of Changzhi.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Shanxi"
+     }
     },
     {
      "id": "s3",
@@ -1055,7 +1395,12 @@
      "cityLat": 35.42291,
      "radiusKm": 1750,
      "octant": "west",
-     "text": "Last seen eating at a drive-through 1,750 km west of Gifu."
+     "text": "Last seen eating at a drive-through 1,750 km west of Gifu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Japan",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -1079,7 +1424,12 @@
      "cityLat": 25.44478,
      "radiusKm": 1125,
      "octant": "west",
-     "text": "Last spotted at a roadside diner 1,125 km west of Prayagraj."
+     "text": "Last spotted at a roadside diner 1,125 km west of Prayagraj.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Uttar Pradesh"
+     }
     },
     {
      "id": "s2",
@@ -1090,7 +1440,12 @@
      "cityLat": 32.55556,
      "radiusKm": 3750,
      "octant": "east",
-     "text": "Last seen hitching a ride from a trucker 3,750 km east of Irbid."
+     "text": "Last seen hitching a ride from a trucker 3,750 km east of Irbid.",
+     "region": {
+      "continent": "Asia",
+      "country": "Jordan",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -1101,7 +1456,12 @@
      "cityLat": 19.21667,
      "radiusKm": 300,
      "octant": "north-west",
-     "text": "Last seen filling jerrycans 300 km northwest of Dombivali."
+     "text": "Last seen filling jerrycans 300 km northwest of Dombivali.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Maharashtra"
+     }
     }
    ]
   },
@@ -1125,7 +1485,12 @@
      "cityLat": 37.88452,
      "radiusKm": 3075,
      "octant": "west",
-     "text": "Last seen buying a burner phone 3,075 km west of Luancheng."
+     "text": "Last seen buying a burner phone 3,075 km west of Luancheng.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Hebei"
+     }
     },
     {
      "id": "s2",
@@ -1136,7 +1501,12 @@
      "cityLat": 31.89844,
      "radiusKm": 850,
      "octant": "north-east",
-     "text": "Last spotted at a roadside diner 850 km northeast of Pindi Bhattian."
+     "text": "Last spotted at a roadside diner 850 km northeast of Pindi Bhattian.",
+     "region": {
+      "continent": "Asia",
+      "country": "Pakistan",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -1147,7 +1517,12 @@
      "cityLat": 21.03333,
      "radiusKm": 3100,
      "octant": "north-west",
-     "text": "Last seen at a bus depot 3,100 km northwest of Long Bien."
+     "text": "Last seen at a bus depot 3,100 km northwest of Long Bien.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -1171,7 +1546,12 @@
      "cityLat": 24.80361,
      "radiusKm": 3375,
      "octant": "west",
-     "text": "Last spotted at a roadside diner 3,375 km west of Hsinchu."
+     "text": "Last spotted at a roadside diner 3,375 km west of Hsinchu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Taiwan",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -1182,7 +1562,12 @@
      "cityLat": 34.31417,
      "radiusKm": 3975,
      "octant": "east",
-     "text": "Last seen filling jerrycans 3,975 km east of Kermanshah."
+     "text": "Last seen filling jerrycans 3,975 km east of Kermanshah.",
+     "region": {
+      "continent": "Asia",
+      "country": "Iran",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -1193,7 +1578,12 @@
      "cityLat": 19.8,
      "radiusKm": 2000,
      "octant": "north-west",
-     "text": "Last seen refueling a dusty pickup 2,000 km northwest of Thanh Hóa."
+     "text": "Last seen refueling a dusty pickup 2,000 km northwest of Thanh Hóa.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -1217,7 +1607,12 @@
      "cityLat": 46.97625,
      "radiusKm": 3975,
      "octant": "east",
-     "text": "Last seen buying a burner phone 3,975 km east of Mykolayiv."
+     "text": "Last seen buying a burner phone 3,975 km east of Mykolayiv.",
+     "region": {
+      "continent": "Europe",
+      "country": "Ukraine",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -1228,7 +1623,12 @@
      "cityLat": 13.93157,
      "radiusKm": 1825,
      "octant": "north",
-     "text": "Last seen boarding a night bus 1,825 km north of Shivamogga."
+     "text": "Last seen boarding a night bus 1,825 km north of Shivamogga.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Karnataka"
+     }
     },
     {
      "id": "s3",
@@ -1239,7 +1639,12 @@
      "cityLat": 23.46186,
      "radiusKm": 1950,
      "octant": "north-west",
-     "text": "Last seen at a bus depot 1,950 km northwest of Comilla."
+     "text": "Last seen at a bus depot 1,950 km northwest of Comilla.",
+     "region": {
+      "continent": "Asia",
+      "country": "Bangladesh",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -1263,7 +1668,12 @@
      "cityLat": 14.48156,
      "radiusKm": 2375,
      "octant": "south-west",
-     "text": "Last seen filling jerrycans 2,375 km southwest of Paranaque City."
+     "text": "Last seen filling jerrycans 2,375 km southwest of Paranaque City.",
+     "region": {
+      "continent": "Asia",
+      "country": "Philippines",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -1274,7 +1684,12 @@
      "cityLat": 18.67337,
      "radiusKm": 1900,
      "octant": "south",
-     "text": "Last seen boarding a night bus 1,900 km south of Vinh."
+     "text": "Last seen boarding a night bus 1,900 km south of Vinh.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -1285,7 +1700,12 @@
      "cityLat": 11.24802,
      "radiusKm": 3300,
      "octant": "east",
-     "text": "Last seen sleeping in a parked car 3,300 km east of Kozhikode."
+     "text": "Last seen sleeping in a parked car 3,300 km east of Kozhikode.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Kerala"
+     }
     }
    ]
   },
@@ -1309,7 +1729,12 @@
      "cityLat": -23.17944,
      "radiusKm": 2675,
      "octant": "south-west",
-     "text": "Last seen filling jerrycans 2,675 km southwest of São José dos Campos."
+     "text": "Last seen filling jerrycans 2,675 km southwest of São José dos Campos.",
+     "region": {
+      "continent": "South America",
+      "country": "Brazil",
+      "subdivision": "São Paulo"
+     }
     },
     {
      "id": "s2",
@@ -1320,7 +1745,12 @@
      "cityLat": -27.59667,
      "radiusKm": 2225,
      "octant": "west",
-     "text": "Last seen eating at a drive-through 2,225 km west of Florianópolis."
+     "text": "Last seen eating at a drive-through 2,225 km west of Florianópolis.",
+     "region": {
+      "continent": "South America",
+      "country": "Brazil",
+      "subdivision": "Santa Catarina"
+     }
     },
     {
      "id": "s3",
@@ -1331,7 +1761,12 @@
      "cityLat": -3.10194,
      "radiusKm": 3500,
      "octant": "south",
-     "text": "Last seen filling jerrycans 3,500 km south of Manaus."
+     "text": "Last seen filling jerrycans 3,500 km south of Manaus.",
+     "region": {
+      "continent": "South America",
+      "country": "Brazil",
+      "subdivision": "Amazonas"
+     }
     }
    ]
   },
@@ -1355,7 +1790,12 @@
      "cityLat": 22.67111,
      "radiusKm": 3925,
      "octant": "east",
-     "text": "Last seen withdrawing cash from an ATM 3,925 km east of Kāmārhāti."
+     "text": "Last seen withdrawing cash from an ATM 3,925 km east of Kāmārhāti.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "West Bengal"
+     }
     },
     {
      "id": "s2",
@@ -1366,7 +1806,12 @@
      "cityLat": -5.42917,
      "radiusKm": 2675,
      "octant": "north-east",
-     "text": "Last seen refueling a dusty pickup 2,675 km northeast of Bandar Lampung."
+     "text": "Last seen refueling a dusty pickup 2,675 km northeast of Bandar Lampung.",
+     "region": {
+      "continent": "Asia",
+      "country": "Indonesia",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -1377,7 +1822,12 @@
      "cityLat": 36.08889,
      "radiusKm": 3050,
      "octant": "south-east",
-     "text": "Last seen at a bus depot 3,050 km southeast of Linfen."
+     "text": "Last seen at a bus depot 3,050 km southeast of Linfen.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Shanxi"
+     }
     }
    ]
   },
@@ -1401,7 +1851,12 @@
      "cityLat": -16.32667,
      "radiusKm": 2725,
      "octant": "south-west",
-     "text": "Last seen refueling a dusty pickup 2,725 km southwest of Anápolis."
+     "text": "Last seen refueling a dusty pickup 2,725 km southwest of Anápolis.",
+     "region": {
+      "continent": "South America",
+      "country": "Brazil",
+      "subdivision": "Goiás"
+     }
     },
     {
      "id": "s2",
@@ -1412,7 +1867,12 @@
      "cityLat": -0.22985,
      "radiusKm": 3825,
      "octant": "south",
-     "text": "Last seen boarding a night bus 3,825 km south of Quito."
+     "text": "Last seen boarding a night bus 3,825 km south of Quito.",
+     "region": {
+      "continent": "South America",
+      "country": "Ecuador",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -1423,7 +1883,12 @@
      "cityLat": -33.02457,
      "radiusKm": 300,
      "octant": "east",
-     "text": "Last seen boarding a night bus 300 km east of Viña del Mar."
+     "text": "Last seen boarding a night bus 300 km east of Viña del Mar.",
+     "region": {
+      "continent": "South America",
+      "country": "Chile",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -1447,7 +1912,12 @@
      "cityLat": 18.3,
      "radiusKm": 3475,
      "octant": "south-west",
-     "text": "Last seen sleeping in a parked car 3,475 km southwest of Khamis Mushait."
+     "text": "Last seen sleeping in a parked car 3,475 km southwest of Khamis Mushait.",
+     "region": {
+      "continent": "Asia",
+      "country": "Saudi Arabia",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -1458,7 +1928,12 @@
      "cityLat": 13.5,
      "radiusKm": 2850,
      "octant": "south-east",
-     "text": "Last seen hitching a ride from a trucker 2,850 km southeast of Maradi."
+     "text": "Last seen hitching a ride from a trucker 2,850 km southeast of Maradi.",
+     "region": {
+      "continent": "Africa",
+      "country": "Niger",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -1469,7 +1944,12 @@
      "cityLat": -12.95867,
      "radiusKm": 950,
      "octant": "north-west",
-     "text": "Last seen asking a gas attendant for directions 950 km northwest of Ndola."
+     "text": "Last seen asking a gas attendant for directions 950 km northwest of Ndola.",
+     "region": {
+      "continent": "Africa",
+      "country": "Zambia",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -1493,7 +1973,12 @@
      "cityLat": 18.5125,
      "radiusKm": 3550,
      "octant": "north-west",
-     "text": "Last spotted at a roadside diner 3,550 km northwest of Pétionville."
+     "text": "Last spotted at a roadside diner 3,550 km northwest of Pétionville.",
+     "region": {
+      "continent": "North America",
+      "country": "Haiti",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -1504,7 +1989,12 @@
      "cityLat": 42.35843,
      "radiusKm": 1825,
      "octant": "west",
-     "text": "Last spotted at a roadside diner 1,825 km west of Boston."
+     "text": "Last spotted at a roadside diner 1,825 km west of Boston.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Massachusetts"
+     }
     },
     {
      "id": "s3",
@@ -1515,7 +2005,12 @@
      "cityLat": 18.9261,
      "radiusKm": 2950,
      "octant": "north",
-     "text": "Last seen refueling a dusty pickup 2,950 km north of Cuernavaca."
+     "text": "Last seen refueling a dusty pickup 2,950 km north of Cuernavaca.",
+     "region": {
+      "continent": "North America",
+      "country": "Mexico",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -1539,7 +2034,12 @@
      "cityLat": 2.81972,
      "radiusKm": 2975,
      "octant": "south-east",
-     "text": "Last seen asking a gas attendant for directions 2,975 km southeast of Boa Vista."
+     "text": "Last seen asking a gas attendant for directions 2,975 km southeast of Boa Vista.",
+     "region": {
+      "continent": "South America",
+      "country": "Brazil",
+      "subdivision": "Roraima"
+     }
     },
     {
      "id": "s2",
@@ -1550,7 +2050,12 @@
      "cityLat": -23.66778,
      "radiusKm": 1675,
      "octant": "north-east",
-     "text": "Last seen buying supplies at a truck stop 1,675 km northeast of Mauá."
+     "text": "Last seen buying supplies at a truck stop 1,675 km northeast of Mauá.",
+     "region": {
+      "continent": "South America",
+      "country": "Brazil",
+      "subdivision": "São Paulo"
+     }
     },
     {
      "id": "s3",
@@ -1561,7 +2066,12 @@
      "cityLat": -17.78629,
      "radiusKm": 2825,
      "octant": "east",
-     "text": "Last seen refueling a dusty pickup 2,825 km east of Santa Cruz de la Sierra."
+     "text": "Last seen refueling a dusty pickup 2,825 km east of Santa Cruz de la Sierra.",
+     "region": {
+      "continent": "South America",
+      "country": "Bolivia",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -1585,7 +2095,12 @@
      "cityLat": 36.85293,
      "radiusKm": 300,
      "octant": "north",
-     "text": "Last seen eating at a drive-through 300 km north of Virginia Beach."
+     "text": "Last seen eating at a drive-through 300 km north of Virginia Beach.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Virginia"
+     }
     },
     {
      "id": "s2",
@@ -1596,7 +2111,12 @@
      "cityLat": 20.58806,
      "radiusKm": 3050,
      "octant": "north-east",
-     "text": "Last seen at a bus depot 3,050 km northeast of Santiago de Querétaro."
+     "text": "Last seen at a bus depot 3,050 km northeast of Santiago de Querétaro.",
+     "region": {
+      "continent": "North America",
+      "country": "Mexico",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -1607,7 +2127,12 @@
      "cityLat": 39.96118,
      "radiusKm": 525,
      "octant": "east",
-     "text": "Last seen filling jerrycans 525 km east of Columbus."
+     "text": "Last seen filling jerrycans 525 km east of Columbus.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Ohio"
+     }
     }
    ]
   },
@@ -1631,7 +2156,12 @@
      "cityLat": 22.69089,
      "radiusKm": 3125,
      "octant": "north-east",
-     "text": "Last seen buying supplies at a truck stop 3,125 km northeast of Pānihāti."
+     "text": "Last seen buying supplies at a truck stop 3,125 km northeast of Pānihāti.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "West Bengal"
+     }
     },
     {
      "id": "s2",
@@ -1642,7 +2172,12 @@
      "cityLat": 37.45646,
      "radiusKm": 900,
      "octant": "south-west",
-     "text": "Last seen buying supplies at a truck stop 900 km southwest of Incheon."
+     "text": "Last seen buying supplies at a truck stop 900 km southwest of Incheon.",
+     "region": {
+      "continent": "Asia",
+      "country": "South Korea",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -1653,7 +2188,12 @@
      "cityLat": 35.77995,
      "radiusKm": 2050,
      "octant": "west",
-     "text": "Last seen eating at a drive-through 2,050 km west of Matsudo."
+     "text": "Last seen eating at a drive-through 2,050 km west of Matsudo.",
+     "region": {
+      "continent": "Asia",
+      "country": "Japan",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -1677,7 +2217,12 @@
      "cityLat": 30.08333,
      "radiusKm": 725,
      "octant": "north",
-     "text": "Last seen hitching a ride from a trucker 725 km north of Daye."
+     "text": "Last seen hitching a ride from a trucker 725 km north of Daye.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Hubei"
+     }
     },
     {
      "id": "s2",
@@ -1688,7 +2233,12 @@
      "cityLat": 35.19278,
      "radiusKm": 1275,
      "octant": "west",
-     "text": "Last seen refueling a dusty pickup 1,275 km west of Chinju."
+     "text": "Last seen refueling a dusty pickup 1,275 km west of Chinju.",
+     "region": {
+      "continent": "Asia",
+      "country": "South Korea",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -1699,7 +2249,12 @@
      "cityLat": 39.61833,
      "radiusKm": 775,
      "octant": "south-west",
-     "text": "Last seen buying a burner phone 775 km southwest of Wafangdian."
+     "text": "Last seen buying a burner phone 775 km southwest of Wafangdian.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Liaoning"
+     }
     }
    ]
   },
@@ -1723,7 +2278,12 @@
      "cityLat": 36.9,
      "radiusKm": 725,
      "octant": "north-west",
-     "text": "Last seen at a bus depot 725 km northwest of Annaba."
+     "text": "Last seen at a bus depot 725 km northwest of Annaba.",
+     "region": {
+      "continent": "Africa",
+      "country": "Algeria",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -1734,7 +2294,12 @@
      "cityLat": 36.19117,
      "radiusKm": 3675,
      "octant": "west",
-     "text": "Last spotted at a roadside diner 3,675 km west of Erbil."
+     "text": "Last spotted at a roadside diner 3,675 km west of Erbil.",
+     "region": {
+      "continent": "Asia",
+      "country": "Iraq",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -1745,7 +2310,12 @@
      "cityLat": 60.16952,
      "radiusKm": 2650,
      "octant": "south-west",
-     "text": "Last seen sleeping in a parked car 2,650 km southwest of Helsinki."
+     "text": "Last seen sleeping in a parked car 2,650 km southwest of Helsinki.",
+     "region": {
+      "continent": "Europe",
+      "country": "Finland",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -1769,7 +2339,12 @@
      "cityLat": -20.53861,
      "radiusKm": 1900,
      "octant": "north-east",
-     "text": "Last seen hitching a ride from a trucker 1,900 km northeast of Franca."
+     "text": "Last seen hitching a ride from a trucker 1,900 km northeast of Franca.",
+     "region": {
+      "continent": "South America",
+      "country": "Brazil",
+      "subdivision": "São Paulo"
+     }
     },
     {
      "id": "s2",
@@ -1780,7 +2355,12 @@
      "cityLat": -5.08917,
      "radiusKm": 850,
      "octant": "east",
-     "text": "Last spotted at a roadside diner 850 km east of Teresina."
+     "text": "Last spotted at a roadside diner 850 km east of Teresina.",
+     "region": {
+      "continent": "South America",
+      "country": "Brazil",
+      "subdivision": "Piauí"
+     }
     },
     {
      "id": "s3",
@@ -1791,7 +2371,12 @@
      "cityLat": -1.36556,
      "radiusKm": 1575,
      "octant": "south-east",
-     "text": "Last seen boarding a night bus 1,575 km southeast of Ananindeua."
+     "text": "Last seen boarding a night bus 1,575 km southeast of Ananindeua.",
+     "region": {
+      "continent": "South America",
+      "country": "Brazil",
+      "subdivision": "Pará"
+     }
     }
    ]
   },
@@ -1815,7 +2400,12 @@
      "cityLat": -3.10194,
      "radiusKm": 1950,
      "octant": "south-west",
-     "text": "Last spotted at a roadside diner 1,950 km southwest of Manaus."
+     "text": "Last spotted at a roadside diner 1,950 km southwest of Manaus.",
+     "region": {
+      "continent": "South America",
+      "country": "Brazil",
+      "subdivision": "Amazonas"
+     }
     },
     {
      "id": "s2",
@@ -1826,7 +2416,12 @@
      "cityLat": -30.03283,
      "radiusKm": 2575,
      "octant": "north-west",
-     "text": "Last seen withdrawing cash from an ATM 2,575 km northwest of Porto Alegre."
+     "text": "Last seen withdrawing cash from an ATM 2,575 km northwest of Porto Alegre.",
+     "region": {
+      "continent": "South America",
+      "country": "Brazil",
+      "subdivision": "Rio Grande do Sul"
+     }
     },
     {
      "id": "s3",
@@ -1837,7 +2432,12 @@
      "cityLat": 8.9936,
      "radiusKm": 2975,
      "octant": "south",
-     "text": "Last seen sleeping in a parked car 2,975 km south of Panama City."
+     "text": "Last seen sleeping in a parked car 2,975 km south of Panama City.",
+     "region": {
+      "continent": "North America",
+      "country": "Panama",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -1861,7 +2461,12 @@
      "cityLat": 40.17765,
      "radiusKm": 3950,
      "octant": "south",
-     "text": "Last seen buying supplies at a truck stop 3,950 km south of Yerevan."
+     "text": "Last seen buying supplies at a truck stop 3,950 km south of Yerevan.",
+     "region": {
+      "continent": "Asia",
+      "country": "Armenia",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -1872,7 +2477,12 @@
      "cityLat": -4.05466,
      "radiusKm": 1175,
      "octant": "north-east",
-     "text": "Last seen hitching a ride from a trucker 1,175 km northeast of Mombasa."
+     "text": "Last seen hitching a ride from a trucker 1,175 km northeast of Mombasa.",
+     "region": {
+      "continent": "Africa",
+      "country": "Kenya",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -1883,7 +2493,12 @@
      "cityLat": 27.55898,
      "radiusKm": 3525,
      "octant": "south-west",
-     "text": "Last seen asking a gas attendant for directions 3,525 km southwest of Larkana."
+     "text": "Last seen asking a gas attendant for directions 3,525 km southwest of Larkana.",
+     "region": {
+      "continent": "Asia",
+      "country": "Pakistan",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -1907,7 +2522,12 @@
      "cityLat": 1.14937,
      "radiusKm": 2450,
      "octant": "north-east",
-     "text": "Last seen at a bus depot 2,450 km northeast of Batam."
+     "text": "Last seen at a bus depot 2,450 km northeast of Batam.",
+     "region": {
+      "continent": "Asia",
+      "country": "Indonesia",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -1918,7 +2538,12 @@
      "cityLat": 32.9,
      "radiusKm": 1950,
      "octant": "south",
-     "text": "Last seen refueling a dusty pickup 1,950 km south of Fuyang."
+     "text": "Last seen refueling a dusty pickup 1,950 km south of Fuyang.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Anhui"
+     }
     },
     {
      "id": "s3",
@@ -1929,7 +2554,12 @@
      "cityLat": 22.6305,
      "radiusKm": 1300,
      "octant": "south-east",
-     "text": "Last seen refueling a dusty pickup 1,300 km southeast of Yulin."
+     "text": "Last seen refueling a dusty pickup 1,300 km southeast of Yulin.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Guangxi"
+     }
     }
    ]
   },
@@ -1953,7 +2583,12 @@
      "cityLat": 21.20919,
      "radiusKm": 2800,
      "octant": "east",
-     "text": "Last seen sleeping in a parked car 2,800 km east of Bhilai."
+     "text": "Last seen sleeping in a parked car 2,800 km east of Bhilai.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Chhattisgarh"
+     }
     },
     {
      "id": "s2",
@@ -1964,7 +2599,12 @@
      "cityLat": 37.46271,
      "radiusKm": 3275,
      "octant": "south-west",
-     "text": "Last seen refueling a dusty pickup 3,275 km southwest of Dongying."
+     "text": "Last seen refueling a dusty pickup 3,275 km southwest of Dongying.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Shandong"
+     }
     },
     {
      "id": "s3",
@@ -1975,7 +2615,12 @@
      "cityLat": 27.70169,
      "radiusKm": 2825,
      "octant": "south-east",
-     "text": "Last spotted at a roadside diner 2,825 km southeast of Kathmandu."
+     "text": "Last spotted at a roadside diner 2,825 km southeast of Kathmandu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Nepal",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -1999,7 +2644,12 @@
      "cityLat": 35.6895,
      "radiusKm": 400,
      "octant": "west",
-     "text": "Last seen boarding a night bus 400 km west of Tokyo."
+     "text": "Last seen boarding a night bus 400 km west of Tokyo.",
+     "region": {
+      "continent": "Asia",
+      "country": "Japan",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -2010,7 +2660,12 @@
      "cityLat": 24.80361,
      "radiusKm": 1800,
      "octant": "north-east",
-     "text": "Last seen withdrawing cash from an ATM 1,800 km northeast of Hsinchu."
+     "text": "Last seen withdrawing cash from an ATM 1,800 km northeast of Hsinchu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Taiwan",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -2021,7 +2676,12 @@
      "cityLat": 41.12361,
      "radiusKm": 1350,
      "octant": "south-east",
-     "text": "Last seen refueling a dusty pickup 1,350 km southeast of Anshan."
+     "text": "Last seen refueling a dusty pickup 1,350 km southeast of Anshan.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Liaoning"
+     }
     }
    ]
   },
@@ -2045,7 +2705,12 @@
      "cityLat": 10.82302,
      "radiusKm": 3025,
      "octant": "west",
-     "text": "Last seen refueling a dusty pickup 3,025 km west of Ho Chi Minh City."
+     "text": "Last seen refueling a dusty pickup 3,025 km west of Ho Chi Minh City.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -2056,7 +2721,12 @@
      "cityLat": 30.79508,
      "radiusKm": 3300,
      "octant": "south-west",
-     "text": "Last seen asking a gas attendant for directions 3,300 km southwest of Nanchong."
+     "text": "Last seen asking a gas attendant for directions 3,300 km southwest of Nanchong.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Sichuan"
+     }
     },
     {
      "id": "s3",
@@ -2067,7 +2737,12 @@
      "cityLat": 28.75143,
      "radiusKm": 1575,
      "octant": "south",
-     "text": "Last seen refueling a dusty pickup 1,575 km south of Loni."
+     "text": "Last seen refueling a dusty pickup 1,575 km south of Loni.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Uttar Pradesh"
+     }
     }
    ]
   },
@@ -2091,7 +2766,12 @@
      "cityLat": 31.87149,
      "radiusKm": 2800,
      "octant": "east",
-     "text": "Last seen buying a burner phone 2,800 km east of Ensenada."
+     "text": "Last seen buying a burner phone 2,800 km east of Ensenada.",
+     "region": {
+      "continent": "North America",
+      "country": "Mexico",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -2102,7 +2782,12 @@
      "cityLat": 18.46633,
      "radiusKm": 2525,
      "octant": "north-west",
-     "text": "Last seen at a bus depot 2,525 km northwest of San Juan."
+     "text": "Last seen at a bus depot 2,525 km northwest of San Juan.",
+     "region": {
+      "continent": "North America",
+      "country": "Puerto Rico",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -2113,7 +2798,12 @@
      "cityLat": 40.78343,
      "radiusKm": 1675,
      "octant": "south-west",
-     "text": "Last seen at a bus depot 1,675 km southwest of Manhattan."
+     "text": "Last seen at a bus depot 1,675 km southwest of Manhattan.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "New York"
+     }
     }
    ]
   },
@@ -2137,7 +2827,12 @@
      "cityLat": 19.43411,
      "radiusKm": 3700,
      "octant": "north-east",
-     "text": "Last seen at a bus depot 3,700 km northeast of Miguel Hidalgo."
+     "text": "Last seen at a bus depot 3,700 km northeast of Miguel Hidalgo.",
+     "region": {
+      "continent": "North America",
+      "country": "Mexico",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -2148,7 +2843,12 @@
      "cityLat": 20.02287,
      "radiusKm": 2575,
      "octant": "north",
-     "text": "Last seen withdrawing cash from an ATM 2,575 km north of Santiago de Cuba."
+     "text": "Last seen withdrawing cash from an ATM 2,575 km north of Santiago de Cuba.",
+     "region": {
+      "continent": "North America",
+      "country": "Cuba",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -2159,7 +2859,12 @@
      "cityLat": 49.10635,
      "radiusKm": 4000,
      "octant": "east",
-     "text": "Last seen boarding a night bus 4,000 km east of Surrey."
+     "text": "Last seen boarding a night bus 4,000 km east of Surrey.",
+     "region": {
+      "continent": "North America",
+      "country": "Canada",
+      "subdivision": "British Columbia"
+     }
     }
    ]
   },
@@ -2183,7 +2888,12 @@
      "cityLat": 8.75081,
      "radiusKm": 1325,
      "octant": "west",
-     "text": "Last seen withdrawing cash from an ATM 1,325 km west of Montería."
+     "text": "Last seen withdrawing cash from an ATM 1,325 km west of Montería.",
+     "region": {
+      "continent": "South America",
+      "country": "Colombia",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -2194,7 +2904,12 @@
      "cityLat": 19.3467,
      "radiusKm": 1500,
      "octant": "south-east",
-     "text": "Last seen hitching a ride from a trucker 1,500 km southeast of Coyoacán."
+     "text": "Last seen hitching a ride from a trucker 1,500 km southeast of Coyoacán.",
+     "region": {
+      "continent": "North America",
+      "country": "Mexico",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -2205,7 +2920,12 @@
      "cityLat": 4.81428,
      "radiusKm": 1550,
      "octant": "north-west",
-     "text": "Last seen eating at a drive-through 1,550 km northwest of Pereira."
+     "text": "Last seen eating at a drive-through 1,550 km northwest of Pereira.",
+     "region": {
+      "continent": "South America",
+      "country": "Colombia",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -2229,7 +2949,12 @@
      "cityLat": -2.91673,
      "radiusKm": 2425,
      "octant": "north-west",
-     "text": "Last seen buying supplies at a truck stop 2,425 km northwest of Palembang."
+     "text": "Last seen buying supplies at a truck stop 2,425 km northwest of Palembang.",
+     "region": {
+      "continent": "Asia",
+      "country": "Indonesia",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -2240,7 +2965,12 @@
      "cityLat": 28.26689,
      "radiusKm": 1775,
      "octant": "south-east",
-     "text": "Last seen sleeping in a parked car 1,775 km southeast of Pokhara."
+     "text": "Last seen sleeping in a parked car 1,775 km southeast of Pokhara.",
+     "region": {
+      "continent": "Asia",
+      "country": "Nepal",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -2251,7 +2981,12 @@
      "cityLat": 35.82194,
      "radiusKm": 3725,
      "octant": "south-west",
-     "text": "Last seen asking a gas attendant for directions 3,725 km southwest of Jeonju."
+     "text": "Last seen asking a gas attendant for directions 3,725 km southwest of Jeonju.",
+     "region": {
+      "continent": "Asia",
+      "country": "South Korea",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -2275,7 +3010,12 @@
      "cityLat": -14.91717,
      "radiusKm": 3650,
      "octant": "north-east",
-     "text": "Last seen buying a burner phone 3,650 km northeast of Lubango."
+     "text": "Last seen buying a burner phone 3,650 km northeast of Lubango.",
+     "region": {
+      "continent": "Africa",
+      "country": "Angola",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -2286,7 +3026,12 @@
      "cityLat": 12.6,
      "radiusKm": 600,
      "octant": "south",
-     "text": "Last seen at a bus depot 600 km south of Gonder."
+     "text": "Last seen at a bus depot 600 km south of Gonder.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ethiopia",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -2297,7 +3042,12 @@
      "cityLat": 6.59651,
      "radiusKm": 3825,
      "octant": "east",
-     "text": "Last seen asking a gas attendant for directions 3,825 km east of Ikeja."
+     "text": "Last seen asking a gas attendant for directions 3,825 km east of Ikeja.",
+     "region": {
+      "continent": "Africa",
+      "country": "Nigeria",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -2321,7 +3071,12 @@
      "cityLat": 48.13743,
      "radiusKm": 900,
      "octant": "north-west",
-     "text": "Last seen buying a burner phone 900 km northwest of Munich."
+     "text": "Last seen buying a burner phone 900 km northwest of Munich.",
+     "region": {
+      "continent": "Europe",
+      "country": "Germany",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -2332,7 +3087,12 @@
      "cityLat": 48.56814,
      "radiusKm": 2825,
      "octant": "west",
-     "text": "Last spotted at a roadside diner 2,825 km west of Luhansk."
+     "text": "Last spotted at a roadside diner 2,825 km west of Luhansk.",
+     "region": {
+      "continent": "Europe",
+      "country": "Ukraine",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -2343,7 +3103,12 @@
      "cityLat": 53.48095,
      "radiusKm": 350,
      "octant": "south-east",
-     "text": "Last spotted at a roadside diner 350 km southeast of Manchester."
+     "text": "Last spotted at a roadside diner 350 km southeast of Manchester.",
+     "region": {
+      "continent": "Europe",
+      "country": "United Kingdom",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -2367,7 +3132,12 @@
      "cityLat": 38.67431,
      "radiusKm": 3150,
      "octant": "west",
-     "text": "Last seen buying a burner phone 3,150 km west of Elazığ."
+     "text": "Last seen buying a burner phone 3,150 km west of Elazığ.",
+     "region": {
+      "continent": "Asia",
+      "country": "Türkiye",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -2378,7 +3148,12 @@
      "cityLat": 33.89352,
      "radiusKm": 1100,
      "octant": "north-east",
-     "text": "Last seen hitching a ride from a trucker 1,100 km northeast of Meknes."
+     "text": "Last seen hitching a ride from a trucker 1,100 km northeast of Meknes.",
+     "region": {
+      "continent": "Africa",
+      "country": "Morocco",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -2389,7 +3164,12 @@
      "cityLat": 59.13333,
      "radiusKm": 3150,
      "octant": "south-west",
-     "text": "Last seen eating at a drive-through 3,150 km southwest of Cherepovets."
+     "text": "Last seen eating at a drive-through 3,150 km southwest of Cherepovets.",
+     "region": {
+      "continent": "Europe",
+      "country": "Russia",
+      "subdivision": "Vologda Oblast"
+     }
     }
    ]
   },
@@ -2413,7 +3193,12 @@
      "cityLat": 14.52512,
      "radiusKm": 2225,
      "octant": "east",
-     "text": "Last seen filling jerrycans 2,225 km east of Villa Nueva."
+     "text": "Last seen filling jerrycans 2,225 km east of Villa Nueva.",
+     "region": {
+      "continent": "North America",
+      "country": "Guatemala",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -2424,7 +3209,12 @@
      "cityLat": -5.18192,
      "radiusKm": 2925,
      "octant": "north",
-     "text": "Last seen eating at a drive-through 2,925 km north of Piura."
+     "text": "Last seen eating at a drive-through 2,925 km north of Piura.",
+     "region": {
+      "continent": "South America",
+      "country": "Peru",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -2435,7 +3225,12 @@
      "cityLat": -2.16919,
      "radiusKm": 2575,
      "octant": "north-east",
-     "text": "Last seen eating at a drive-through 2,575 km northeast of Eloy Alfaro."
+     "text": "Last seen eating at a drive-through 2,575 km northeast of Eloy Alfaro.",
+     "region": {
+      "continent": "South America",
+      "country": "Ecuador",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -2459,7 +3254,12 @@
      "cityLat": 30.91611,
      "radiusKm": 650,
      "octant": "north",
-     "text": "Last seen sleeping in a parked car 650 km north of Nanqiao."
+     "text": "Last seen sleeping in a parked car 650 km north of Nanqiao.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Shanghai"
+     }
     },
     {
      "id": "s2",
@@ -2470,7 +3270,12 @@
      "cityLat": 36.45064,
      "radiusKm": 350,
      "octant": "east",
-     "text": "Last spotted at a roadside diner 350 km east of Liaocheng."
+     "text": "Last spotted at a roadside diner 350 km east of Liaocheng.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Shandong"
+     }
     },
     {
      "id": "s3",
@@ -2481,7 +3286,12 @@
      "cityLat": 40.6516,
      "radiusKm": 1000,
      "octant": "south-east",
-     "text": "Last seen eating at a drive-through 1,000 km southeast of Baotou."
+     "text": "Last seen eating at a drive-through 1,000 km southeast of Baotou.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Inner Mongolia"
+     }
     }
    ]
   },
@@ -2505,7 +3315,12 @@
      "cityLat": 34.26101,
      "radiusKm": 3150,
      "octant": "east",
-     "text": "Last seen withdrawing cash from an ATM 3,150 km east of Kenitra."
+     "text": "Last seen withdrawing cash from an ATM 3,150 km east of Kenitra.",
+     "region": {
+      "continent": "Africa",
+      "country": "Morocco",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -2516,7 +3331,12 @@
      "cityLat": 40.19559,
      "radiusKm": 425,
      "octant": "south",
-     "text": "Last seen hitching a ride from a trucker 425 km south of Bursa."
+     "text": "Last seen hitching a ride from a trucker 425 km south of Bursa.",
+     "region": {
+      "continent": "Asia",
+      "country": "Türkiye",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -2527,7 +3347,12 @@
      "cityLat": 24.8608,
      "radiusKm": 3900,
      "octant": "north-west",
-     "text": "Last seen eating at a drive-through 3,900 km northwest of Karachi."
+     "text": "Last seen eating at a drive-through 3,900 km northwest of Karachi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Pakistan",
+      "subdivision": null
+     }
     }
    ]
   },
@@ -2551,7 +3376,12 @@
      "cityLat": 6.33732,
      "radiusKm": 3950,
      "octant": "north",
-     "text": "Last seen buying supplies at a truck stop 3,950 km north of Bello."
+     "text": "Last seen buying supplies at a truck stop 3,950 km north of Bello.",
+     "region": {
+      "continent": "South America",
+      "country": "Colombia",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -2562,7 +3392,12 @@
      "cityLat": 22.15234,
      "radiusKm": 2475,
      "octant": "north-east",
-     "text": "Last seen boarding a night bus 2,475 km northeast of San Luis Potosí."
+     "text": "Last seen boarding a night bus 2,475 km northeast of San Luis Potosí.",
+     "region": {
+      "continent": "North America",
+      "country": "Mexico",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -2573,7 +3408,12 @@
      "cityLat": 39.72943,
      "radiusKm": 1600,
      "octant": "east",
-     "text": "Last seen withdrawing cash from an ATM 1,600 km east of Aurora."
+     "text": "Last seen withdrawing cash from an ATM 1,600 km east of Aurora.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Colorado"
+     }
     }
    ]
   },
@@ -2597,7 +3437,12 @@
      "cityLat": 52.33385,
      "radiusKm": 2100,
      "octant": "south-east",
-     "text": "Last seen asking a gas attendant for directions 2,100 km southeast of Daxing’anling."
+     "text": "Last seen asking a gas attendant for directions 2,100 km southeast of Daxing’anling.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Heilongjiang"
+     }
     },
     {
      "id": "s2",
@@ -2608,7 +3453,12 @@
      "cityLat": 29.37455,
      "radiusKm": 2125,
      "octant": "east",
-     "text": "Last seen boarding a night bus 2,125 km east of Yueyang."
+     "text": "Last seen boarding a night bus 2,125 km east of Yueyang.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Hunan"
+     }
     },
     {
      "id": "s3",
@@ -2619,7 +3469,12 @@
      "cityLat": 23.11667,
      "radiusKm": 2450,
      "octant": "north-east",
-     "text": "Last seen buying supplies at a truck stop 2,450 km northeast of Guangzhou."
+     "text": "Last seen buying supplies at a truck stop 2,450 km northeast of Guangzhou.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Guangdong"
+     }
     }
    ]
   },
@@ -2643,7 +3498,12 @@
      "cityLat": 30.71444,
      "radiusKm": 3175,
      "octant": "west",
-     "text": "Last seen asking a gas attendant for directions 3,175 km west of Yichang."
+     "text": "Last seen asking a gas attendant for directions 3,175 km west of Yichang.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Hubei"
+     }
     },
     {
      "id": "s2",
@@ -2654,7 +3514,12 @@
      "cityLat": 1.462,
      "radiusKm": 3000,
      "octant": "north-west",
-     "text": "Last seen hitching a ride from a trucker 3,000 km northwest of Pasir Gudang."
+     "text": "Last seen hitching a ride from a trucker 3,000 km northwest of Pasir Gudang.",
+     "region": {
+      "continent": "Asia",
+      "country": "Malaysia",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -2665,7 +3530,12 @@
      "cityLat": 18.61867,
      "radiusKm": 975,
      "octant": "east",
-     "text": "Last seen withdrawing cash from an ATM 975 km east of Pimpri-Chinchwad."
+     "text": "Last seen withdrawing cash from an ATM 975 km east of Pimpri-Chinchwad.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Maharashtra"
+     }
     }
    ]
   },
@@ -2689,7 +3559,12 @@
      "cityLat": 34.33333,
      "radiusKm": 525,
      "octant": "west",
-     "text": "Last seen at a bus depot 525 km west of Takamatsu."
+     "text": "Last seen at a bus depot 525 km west of Takamatsu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Japan",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -2700,7 +3575,12 @@
      "cityLat": 27.30193,
      "radiusKm": 2400,
      "octant": "north-east",
-     "text": "Last seen hitching a ride from a trucker 2,400 km northeast of Bijie."
+     "text": "Last seen hitching a ride from a trucker 2,400 km northeast of Bijie.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Guizhou"
+     }
     },
     {
      "id": "s3",
@@ -2711,7 +3591,12 @@
      "cityLat": 29.63842,
      "radiusKm": 3550,
      "octant": "east",
-     "text": "Last seen refueling a dusty pickup 3,550 km east of Chéngguān Qū."
+     "text": "Last seen refueling a dusty pickup 3,550 km east of Chéngguān Qū.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Tibet"
+     }
     }
    ]
   },
@@ -2735,7 +3620,12 @@
      "cityLat": 24.374,
      "radiusKm": 1800,
      "octant": "south-east",
-     "text": "Last seen sleeping in a parked car 1,800 km southeast of Rajshahi."
+     "text": "Last seen sleeping in a parked car 1,800 km southeast of Rajshahi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Bangladesh",
+      "subdivision": null
+     }
     },
     {
      "id": "s2",
@@ -2746,7 +3636,12 @@
      "cityLat": 22.33047,
      "radiusKm": 1350,
      "octant": "south-west",
-     "text": "Last seen boarding a night bus 1,350 km southwest of Kowloon City."
+     "text": "Last seen boarding a night bus 1,350 km southwest of Kowloon City.",
+     "region": {
+      "continent": "Asia",
+      "country": "Hong Kong SAR China",
+      "subdivision": null
+     }
     },
     {
      "id": "s3",
@@ -2757,7 +3652,12 @@
      "cityLat": 14.5832,
      "radiusKm": 1925,
      "octant": "west",
-     "text": "Last seen sleeping in a parked car 1,925 km west of Mandaluyong City."
+     "text": "Last seen sleeping in a parked car 1,925 km west of Mandaluyong City.",
+     "region": {
+      "continent": "Asia",
+      "country": "Philippines",
+      "subdivision": null
+     }
     }
    ]
   }

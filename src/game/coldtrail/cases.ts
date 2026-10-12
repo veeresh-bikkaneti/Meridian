@@ -13,6 +13,7 @@ import type { ColdTrailCase, ColdTrailSighting } from "./types.ts";
 function isSighting(value: unknown): value is ColdTrailSighting {
   if (!value || typeof value !== "object") return false;
   const s = value as Record<string, unknown>;
+  const region = s.region as Record<string, unknown> | undefined;
   return (
     typeof s.id === "string" &&
     typeof s.timestamp === "string" &&
@@ -23,7 +24,13 @@ function isSighting(value: unknown): value is ColdTrailSighting {
     typeof s.radiusKm === "number" &&
     s.radiusKm > 0 &&
     typeof s.octant === "string" &&
-    typeof s.text === "string"
+    typeof s.text === "string" &&
+    !!region &&
+    typeof region.continent === "string" &&
+    region.continent.length > 0 &&
+    typeof region.country === "string" &&
+    region.country.length > 0 &&
+    (region.subdivision === null || typeof region.subdivision === "string")
   );
 }
 

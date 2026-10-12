@@ -9,9 +9,12 @@
  *
  * One case = a difficulty-2/3 hideout city plus 3 sightings. Each sighting
  * names a DIFFERENT witness city, the true distance from that city to the
- * hideout (rounded/vague by hideout difficulty), and a timestamped witness
- * report like "Last seen refueling 400 km east of Denver." The runtime draws
- * one radius ring per sighting; the player triangulates and taps the
+ * hideout (rounded/vague by hideout difficulty), a timestamped witness
+ * report like "Last seen refueling 400 km east of Denver.", and a region
+ * context {continent, country, subdivision} derived from the witness city's
+ * gazetteer record (continent + country always; subdivision only for the
+ * large-country set US/CA/BR/IN/CN/RU/AU). The runtime draws one radius
+ * ring per sighting; the player triangulates and taps the
  * interception point. Score = km from the true hideout.
  *
  * Deterministic: mulberry32(SEED) — regenerating yields byte-identical
@@ -29,6 +32,7 @@ import {
   initialBearing,
   octantOf,
 } from "../src/game/geo.ts";
+import { continentForIso2 } from "../src/game/data/iso-continents.ts";
 
 const SCRIPTS_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = dirname(SCRIPTS_DIR);
@@ -47,6 +51,78 @@ const NOT_A_CITY = /neighborhood|district|borough|arrondissement|suburb/i;
 
 export const COLDTRAIL_SEED = 20261008;
 export const COLDTRAIL_CASE_COUNT = 60;
+
+/**
+ * Country display names use the same mechanism as
+ * src/game/question-label.ts (Intl.DisplayNames, CLDR region names,
+ * fail-closed): the module is NOT imported here because its import chain
+ * (run.ts → territory.ts → d3-geo) is not resolvable from this build
+ * script. Same data source, same fail-closed semantics, zero coupling.
+ */
+const regionDisplayNames = new Intl.DisplayNames(["en"], {
+  type: "region",
+  fallback: "none",
+});
+
+function countryNameForIso2(iso2) {
+  if (typeof iso2 !== "string") return null;
+  const code = iso2.trim().toUpperCase();
+  if (!/^[A-Z]{2}$/.test(code)) return null;
+  let name;
+  try {
+    name = regionDisplayNames.of(code);
+  } catch {
+    return null;
+  }
+  if (!name || name === code || /^unknown\b/i.test(name)) return null;
+  return name;
+}
+
+/**
+ * Subdivision (state/province) is shown only for these large countries:
+ * each spans ≥ ~3.5M km² of land, so naming the country alone still leaves
+ * a continent-sized search space. The next largest country (Kazakhstan,
+ * ~2.7M km²) falls below the line — country + continent suffices there.
+ */
+export const LARGE_SUBDIVISION_ISO2 = new Set([
+  "US",
+  "CA",
+  "BR",
+  "IN",
+  "CN",
+  "RU",
+  "AU",
+]);
+
+/**
+ * Region context for one witness city. Fail closed: an unresolvable iso2,
+ * or a missing subdivision for a large-country city, throws and aborts the
+ * build — a half region must never ship silently.
+ */
+export function regionForCity(city) {
+  const iso2 =
+    typeof city.iso2 === "string" ? city.iso2.trim().toUpperCase() : "";
+  const continent = continentForIso2(iso2);
+  const country = countryNameForIso2(iso2);
+  if (!continent || !country) {
+    throw new Error(
+      `build-coldtrail: witness city "${city.name}" (${city.id}) has unresolvable iso2 "${city.iso2}" — refusing to emit a regionless sighting`,
+    );
+  }
+  let subdivision = null;
+  if (LARGE_SUBDIVISION_ISO2.has(iso2)) {
+    subdivision =
+      typeof city.subdivision === "string" && city.subdivision.trim()
+        ? city.subdivision
+        : null;
+    if (!subdivision) {
+      throw new Error(
+        `build-coldtrail: witness city "${city.name}" (${city.id}, ${iso2}) is missing subdivision — refusing to emit a half region`,
+      );
+    }
+  }
+  return { continent, country, subdivision };
+}
 
 /**
  * Hideout fame tier: difficulty 2 = recognizable mid-size cities. (Difficulty 3
@@ -200,6 +276,7 @@ export function buildCase(caseNo, hideout, candidates, random) {
       radiusKm,
       octant: s.octant,
       text: `${lead} ${verb} ${fmtKm(radiusKm)} ${OCTANT_WORDS[s.octant]} of ${s.city.name}.`,
+      region: regionForCity(s.city),
     };
   });
 

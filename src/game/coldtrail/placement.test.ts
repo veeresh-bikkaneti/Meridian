@@ -22,6 +22,7 @@ function sighting(id: string, cityLon: number, cityLat: number, radiusKm: number
     radiusKm,
     octant: "east",
     text: `Last seen near City ${id}.`,
+    region: { continent: "North America", country: "United States", subdivision: null },
   };
 }
 
