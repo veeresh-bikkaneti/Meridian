@@ -208,8 +208,9 @@ L2/L3. L5 parked, L6 rejected.
 - [x] Rebased onto latest origin/main (f834aa6) with zero conflicts;
       gates re-run after the rebase (tsc, npm test, lint-cards,
       build:pages, Playwright 14/14 — all green).
-- [ ] PR opened, never merged, closing with "Ready to merge? YES/NO" and
-      "What is pending:".
+- [x] PR opened, never merged, closing with "Ready to merge? YES/NO" and
+      "What is pending:". → https://github.com/veeresh-bikkaneti/Meridian/pull/141
+      (verdict NO — pending independent review + owner's recording green-light).
 
 ---
 
