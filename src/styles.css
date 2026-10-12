@@ -1433,7 +1433,8 @@
 }
 
 /* Collapse toggle: full-width, min-height 44px, names its consequence
- * ("Show/Hide place name") with aria-expanded (spec §5/§8.6). */
+ * ("Show/Hide instructions" — the name stays put, the instructions fold)
+ * with aria-expanded (spec §5/§8.6). */
 .bubble-toggle {
   display: flex;
   align-items: center;
@@ -1453,6 +1454,40 @@
 
 .bubble-toggle:hover {
   color: var(--atlas-ink);
+}
+
+/* ---- Place-card collapse redesign (2026-10-11) ----
+ * motionmaxxing curves vendored LOCALLY: motion-tokens.css is not on main
+ * yet (PR #133 open), so the two curves the card uses live here as
+ * .pcard-scoped custom properties — never :root, so the future global
+ * import can't collide.
+ *   --pcard-ease-reveal = --ease-snap-settle (fast, decisive reveals)
+ *   --pcard-ease-exit   = --ease-accel-exit (collapses / things leaving) */
+.pcard {
+  --pcard-ease-reveal: cubic-bezier(0.16, 1, 0.3, 1);
+  --pcard-ease-exit: cubic-bezier(0.55, 0, 0.85, 0.36);
+}
+
+/* Compact card (collapsed): the name region is content-sized but CAPPED at
+ * min(24dvh, 12rem) — the card can never fill the screen. The full name
+ * stays reachable through the scroll region (zero-ellipsis contract);
+ * the scrollbar stays hidden (PR #77 — Veeresh's will). min-height: 0
+ * overrides the open region's max(120px, 20%) floor. */
+.bubble-scroll.pcard-compact {
+  flex: 0 1 auto;
+  min-height: 0;
+  max-height: min(24dvh, 12rem);
+  padding-bottom: 10px;
+}
+
+/* Expand/collapse chevron rides the vendored curves (transform-only):
+ * snap-settle on the way open, accelerating exit on the way shut. The
+ * prefers-reduced-motion guard further below zeroes the transition. */
+.bubble-toggle svg {
+  transition-timing-function: var(--pcard-ease-reveal);
+}
+.bubble-toggle[aria-expanded="false"] svg {
+  transition-timing-function: var(--pcard-ease-exit);
 }
 
 /* ---- Reveal card three zones (result-card.tsx, spec §5) ---- */

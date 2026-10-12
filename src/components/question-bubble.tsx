@@ -33,7 +33,12 @@ function usePrefersReducedMotion(): boolean {
   return reduced;
 }
 
-/** Fade/rise entrance. Remounts (via key) replay it for collapse/expand. */
+/** Fade/rise entrance. Plays on mount (initial card mount, the dismissed
+ * target button, and the hint paragraph's own reveal on expand) — one
+ * requestAnimationFrame effect per transition, never chained timers.
+ * The reveal rides the locally-vendored motionmaxxing curve
+ * var(--pcard-ease-reveal) (= --ease-snap-settle); the .pcard scope on the
+ * card wrapper provides it. */
 function Enter({
   children,
   durationMs,
@@ -50,7 +55,7 @@ function Enter({
   }, []);
   return (
     <div
-      className={`transition-all ease-[cubic-bezier(0.16,1,0.3,1)] ${
+      className={`transition-all ease-[var(--pcard-ease-reveal)] ${
         entered
           ? "translate-y-0 scale-100 opacity-100"
           : reduced
@@ -89,7 +94,7 @@ export function QuestionBubble({
 
   if (view === "dismissed") {
     return (
-      <div className="pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] left-2.5 z-20">
+      <div className="pcard pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] left-2.5 z-20">
         <Enter durationMs={267} reduced={reduced}>
           <button
             type="button"
@@ -131,22 +136,31 @@ export function QuestionBubble({
     </div>
   );
   return (
-    <div className="pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] left-2.5 z-20 w-[min(352px,calc(100vw-20px))]">
-      <Enter key={view} durationMs={expanded ? 400 : 333} reduced={reduced}>
+    <div className="pcard pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] left-2.5 z-20 w-[min(352px,calc(100vw-20px))]">
+      {/* No remount key on this Enter: the card shell stays MOUNTED across
+          expand/collapse. Remounting on the view state would detach the
+          scroll region div while useMoreBelow's effect keeps observing the
+          dead element — the "more below" cue would freeze (spec §8.1).
+          The toggle transition is the hint's own reveal + the chevron. */}
+      <Enter durationMs={400} reduced={reduced}>
         <div
           className="game-chrome bubble-shell pointer-events-auto rounded-[20px]"
           data-name-tier={nameTier(placeName)}
         >
           {metaBand}
-          {/* The backstop (spec §5): name + hint as ONE scroll region.
-              The scrollbar stays visually hidden (PR #77 — Veeresh's
-              will: no scrollbar arrows over the name); the fade + ⋯ +
-              "more below" cue is the scroll signal. Keyboard users reach
-              the region via tabindex="0" (spec §8.1). */}
-          <div className="scroll-cue-wrap bubble-scroll-wrap" hidden={!expanded}>
+          {/* Place-card redesign 2026-10-11: the card is COMPACT by
+              default on mobile (collapsed). The place name IS the question
+              — it stays visible in every card state; only the instructions
+              fold. One scroll region, kept mounted so useMoreBelow's ref
+              stays valid across expand/collapse: collapsed caps it at
+              min(24dvh, 12rem) (the card can never fill the screen), open
+              keeps the min(38dvh, 20rem) backstop. The hint paragraph
+              mounts only when open — folded means removed from AT — with
+              its own snap-settle reveal (transform/opacity only). */}
+          <div className="scroll-cue-wrap bubble-scroll-wrap">
             <div
               ref={scrollRef}
-              className="bubble-scroll"
+              className={expanded ? "bubble-scroll" : "bubble-scroll pcard-compact"}
               role="region"
               aria-label="Place name — scroll for more"
               tabIndex={0}
@@ -158,13 +172,17 @@ export function QuestionBubble({
               >
                 <PlaceNameText name={placeName} />
               </h2>
-              <p className="bubble-hint">{hasPin ? HINT_PIN : HINT_EMPTY}</p>
+              {expanded ? (
+                <Enter durationMs={250} reduced={reduced}>
+                  <p className="bubble-hint">{hasPin ? HINT_PIN : HINT_EMPTY}</p>
+                </Enter>
+              ) : null}
             </div>
             <ScrollCue visible={moreBelow} />
           </div>
-          {/* Collapsed: meta band + toggle only. The name folds away
-              entirely (honest; never clamped) — the folded panel uses
-              `hidden`, removed from AT (spec §5/§8.6). */}
+          {/* The toggle names its consequence: the NAME stays put, the
+              INSTRUCTIONS fold (spec §5/§8.6). aria-expanded tracks the
+              panel; the chevron rides the vendored curves. */}
           <button
             type="button"
             className="bubble-toggle"
@@ -175,7 +193,7 @@ export function QuestionBubble({
               className={`size-5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
               aria-hidden="true"
             />
-            {expanded ? "Hide place name" : "Show place name"}
+            {expanded ? "Hide instructions" : "Show instructions"}
           </button>
         </div>
       </Enter>

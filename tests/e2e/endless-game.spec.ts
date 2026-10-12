@@ -55,7 +55,7 @@ test("endless: plays multiple places without auto-ending, ends via End game with
   expect(run.index).toBe(3);
   expect(run.phase).toBe("aim");
 
-  // End game control is keyboard-reachable and in the header (not a map mis-tap).
+  // End game control is keyboard-reachable and docked bottom-right (not a map mis-tap).
   const endGame = page.getByRole("button", { name: "End game" });
   await expect(endGame).toBeVisible();
   await endGame.click();

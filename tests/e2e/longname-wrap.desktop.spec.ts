@@ -292,26 +292,45 @@ for (const vp of VIEWPORTS) {
           await page.getByRole("button", { name: "Canada" }).click();
           await expectAim(page);
 
-          // Expanded view: the full 106-char qualified label wraps.
+          // The full 106-char qualified label wraps — visible in both the
+          // compact and the expanded card (redesign 2026-10-11: the name
+          // never folds away).
           await expectFullName(page, "h2.place-name", TARGET_LABEL);
 
           // Frozen seam: the difficulty chip is untouched by this PR.
           await expect(page.getByTestId("difficulty-chip")).toBeVisible();
 
-          // Collapsed view (Cartographer's Plate PR3): the name folds away
-          // entirely — honest, never clamped.
-          await page.getByRole("button", { name: "Hide place name" }).click();
-          const toggle = page.getByRole("button", { name: "Show place name" });
+          // Collapsed view (redesign 2026-10-11): the NAME stays visible —
+          // it is the question; only the instructions fold. At ≤640px the
+          // card starts collapsed; wider viewports start open.
+          const hideInstructions = page.getByRole("button", {
+            name: "Hide instructions",
+          });
+          if (await hideInstructions.isVisible()) {
+            await hideInstructions.click();
+          }
+          const toggle = page.getByRole("button", { name: "Show instructions" });
           await expect(toggle).toBeVisible({ timeout: 10_000 });
           await expect(toggle).toHaveAttribute("aria-expanded", "false");
-          await expect(page.locator(".bubble-scroll-wrap")).toBeHidden();
+          // The name stays put: the full 106-char label still renders,
+          // never ellipsized, even in the compact card.
+          await expectFullName(page, "h2.place-name", TARGET_LABEL);
+          // The instructions fold: the hint leaves the DOM/AT.
+          await expect(page.locator(".bubble-hint")).toBeHidden();
+          // The compact card keeps a small footprint — never the screen.
+          const cardBox = await page.locator(".bubble-shell").first().boundingBox();
+          expect(cardBox, "compact card has a bounding box").not.toBeNull();
+          expect(
+            cardBox!.height,
+            "compact card never takes the whole screen",
+          ).toBeLessThan(vp.height * 0.5);
 
           // Re-open to verify the toggle, then dismiss entirely: at 360px the
           // bubble (even collapsed) can cover the projected miss point,
           // flapping tapHitsMap.
           await toggle.click();
           await expect(
-            page.getByRole("button", { name: "Hide place name" }),
+            page.getByRole("button", { name: "Hide instructions" }),
           ).toBeVisible({ timeout: 10_000 });
           await page.getByRole("button", { name: "Hide question" }).click();
           await expect(

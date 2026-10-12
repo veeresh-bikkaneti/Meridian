@@ -122,17 +122,17 @@ test("country: 'Fairchild Air Force Base, Washington' wraps, never truncates", a
     .first()
     .screenshot({ path: "evidence/question-wrap-bubble.png" });
 
-  // Collapsed view (Cartographer's Plate PR3): the name folds away
-  // entirely — honest, never clamped. The toggle names its consequence.
-  await page.getByRole("button", { name: "Hide place name" }).click();
-  const toggle = page.getByRole("button", { name: "Show place name" });
+  // Collapsed view (redesign 2026-10-11): the name stays — it is the
+  // question; only the instructions fold. The toggle names its consequence.
+  await page.getByRole("button", { name: "Hide instructions" }).click();
+  const toggle = page.getByRole("button", { name: "Show instructions" });
   await expect(toggle).toBeVisible({ timeout: 10_000 });
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
   const folded = page.locator(".bubble-scroll-wrap");
-  await expect(folded).toBeHidden();
-  // The full name is gone from the accessibility tree while folded…
-  await expect(page.getByRole("heading", { name: TARGET_LABEL })).toBeHidden();
-  // …and comes back intact on expand.
+  await expect(folded).toBeVisible();
+  // The full name stays in the accessibility tree while folded…
+  await expect(page.getByRole("heading", { name: TARGET_LABEL })).toBeVisible();
+  // …and the instructions come back intact on expand.
   await toggle.click();
   const headingAgain = page.getByRole("heading", { name: TARGET_LABEL });
   await expect(headingAgain).toBeVisible({ timeout: 10_000 });

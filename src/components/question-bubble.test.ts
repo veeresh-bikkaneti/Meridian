@@ -4,27 +4,42 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
+// Place-card collapse redesign (2026-10-11, owner order): the question card
+// is COMPACT by default on mobile — it must never take the whole screen.
+// The place name IS the question, so it stays visible in every card state;
+// only the instructions fold behind the show/hide toggle. (The old design
+// hid the name text but kept the card's footprint — the owner's exact
+// complaint.)
+//
 // Regression guard for the "West Cambridge/Harvard Square,..." bug:
 // the question bubble must render the FULL question label — never an
 // ellipsis. line-clamp-3 (commit 59f0de0) still ellipsized long qualified
 // labels, so clamping is structurally wrong now that labels carry
-// subdivision/country qualifiers. The bubble grows vertically to fit;
-// names wrap naturally with no scroll container (scrollbars render
-// native arrow chrome that overlaps the name — see 2026-10-06).
+// subdivision/country qualifiers. Names wrap naturally with no scroll
+// container (scrollbars render native arrow chrome that overlaps the
+// name — see 2026-10-06).
 // There is no DOM test infra in this repo, so this test asserts on the
 // rendered class contract in the component source; the Playwright E2E
-// (tests/e2e/question-wrap.spec.ts + question-card-header.spec.ts)
-// proves it visually.
+// (tests/e2e/question-wrap.spec.ts + question-card-header.spec.ts +
+// tests/e2e/place-card-redesign.mobile.spec.ts) proves it visually.
 const source = readFileSync(
   join(dirname(fileURLToPath(import.meta.url)), "question-bubble.tsx"),
   "utf8",
 );
+const stylesSource = readFileSync(
+  join(dirname(fileURLToPath(import.meta.url)), "../styles.css"),
+  "utf8",
+);
+const gameAppSource = readFileSync(
+  join(dirname(fileURLToPath(import.meta.url)), "game-app.tsx"),
+  "utf8",
+);
 
 // The element that renders the place name as its text content.
-// Cartographer's Plate PR3: a SINGLE h2 (the collapsed view folds the
-// name away entirely — honest, never clamped). Names render through
-// <PlaceNameText> (ZWSP display refinement + strict-rule anchor tail)
-// with data-name-tier set from the raw label length.
+// Redesign 2026-10-11: a SINGLE h2, visible in every card state (compact
+// and open) — the name is the question and never folds away. Names render
+// through <PlaceNameText> (ZWSP display refinement + strict-rule anchor
+// tail) with data-name-tier set from the raw label length.
 const nameElements = [
   ...source.matchAll(
     /<(h2|p)\b([^>]*?)className="([^"]*)"([^>]*?)>\s*<PlaceNameText name=\{placeName\} \/>/g,
@@ -32,9 +47,9 @@ const nameElements = [
 ].map((m) => ({ tag: m[1], className: m[3], attrs: `${m[2]}${m[4]}` }));
 
 describe("question-bubble — full question label, never an ellipsis", () => {
-  it("renders exactly one place-name element: the expanded h2", () => {
-    // PR3: collapsed folds the name away entirely (hidden panel) — there
-    // is no collapsed <p> anymore.
+  it("renders exactly one place-name element: the always-visible h2", () => {
+    // Redesign: the name stays visible in every card state — there is
+    // exactly one name element, never a folded/cloned copy.
     assert.equal(nameElements.length, 1, "one name element only");
     assert.equal(nameElements[0]!.tag, "h2");
   });
@@ -82,7 +97,7 @@ describe("question-bubble — full question label, never an ellipsis", () => {
 
   it("keeps the full-name tooltip", () => {
     const tooltips = source.match(/title=\{placeName\}/g) ?? [];
-    assert.equal(tooltips.length, 1, "the expanded h2 keeps title={placeName}");
+    assert.equal(tooltips.length, 1, "the h2 keeps title={placeName}");
   });
 
   it("sets data-name-tier from the raw label length (spec §2)", () => {
@@ -148,13 +163,73 @@ describe("question-bubble — full question label, never an ellipsis", () => {
   });
 });
 
-describe("question-bubble PR3 — backstop scroll architecture (spec §5)", () => {
-  it("name + hint form ONE scroll region: role, name, tabindex (spec §8.1)", () => {
+describe("redesign 2026-10-11 — compact card: name stays, instructions fold", () => {
+  it("collapsed keeps the name visible: the h2 is outside any hidden gate", () => {
+    // The owner's complaint: "Hide place name" hid the text but kept the
+    // footprint. The redesign inverts it — the name (the question) never
+    // folds; only the instructions do.
+    // (aria-hidden on decorative icons doesn't count — only a real
+    // `hidden` attribute removes content from AT.)
     assert.ok(
-      /<div\b[^>]*className="bubble-scroll"[^>]*>/.test(source),
-      "the backstop needs the .bubble-scroll region",
+      !/<[^>]*[\s{]hidden[=\s][^>]*>[\s\S]*?<h2\b[^>]*className="place-name qname"/.test(
+        source,
+      ),
+      "no hidden gate may wrap the name h2",
     );
-    const region = /<div\b[^>]*className="bubble-scroll"[^>]*>/.exec(source)![0];
+    assert.ok(
+      /<h2\b[^>]*className="place-name qname"[^>]*>\s*<PlaceNameText name=\{placeName\} \/>\s*<\/h2>/.test(
+        source,
+      ),
+      "the name h2 renders unconditionally in the card",
+    );
+  });
+
+  it("the instructions fold: hint paragraph renders only when open", () => {
+    // Folded = removed from AT (honest, never clamped). The hint <p>
+    // mounts only in the open state, inside its own Enter reveal.
+    assert.ok(
+      /\{expanded \? \(\s*<Enter[\s\S]*?<p className="bubble-hint">/.test(source),
+      "the hint paragraph must mount only when `expanded`",
+    );
+    assert.ok(
+      !source.includes('"Show place name"') &&
+        !source.includes('"Hide place name"'),
+      "the old Show/Hide place name labels are gone — the name never hides",
+    );
+  });
+
+  it("the compact region is capped: the card can never fill the screen", () => {
+    // Collapsed swaps the region class to pcard-compact; the CSS caps it.
+    assert.ok(
+      source.includes('"bubble-scroll pcard-compact"'),
+      "the collapsed region must take the pcard-compact class",
+    );
+    const block = /\.bubble-scroll\.pcard-compact\s*\{([\s\S]*?)\}/.exec(
+      stylesSource,
+    )?.[1];
+    assert.ok(block, ".bubble-scroll.pcard-compact CSS must exist");
+    assert.ok(
+      block.includes("max-height: min(24dvh, 12rem)"),
+      "the compact region caps at min(24dvh, 12rem)",
+    );
+    assert.ok(
+      block.includes("min-height: 0"),
+      "the compact region drops the open region's max(120px, 20%) floor",
+    );
+  });
+
+  it("the open region keeps the min(38dvh, 20rem) backstop", () => {
+    assert.ok(
+      stylesSource.includes("max-height: min(38dvh, 20rem)"),
+      "styles.css must cap the shell at min(38dvh, 20rem) (spec §5)",
+    );
+  });
+
+  it("one scroll region, kept mounted: role, name, tabindex (spec §8.1)", () => {
+    // The region stays mounted across expand/collapse so useMoreBelow's
+    // ref never goes stale; only its class + content change.
+    const region = /<div\b[^>]*ref=\{scrollRef\}[^>]*>/.exec(source)?.[0];
+    assert.ok(region, "the scroll region must carry the measurement ref");
     assert.ok(
       region.includes('role="region"'),
       "the scroll region needs role=\"region\"",
@@ -184,23 +259,6 @@ describe("question-bubble PR3 — backstop scroll architecture (spec §5)", () =
       source.includes("<ScrollCue visible={moreBelow} />"),
       "the fade + ⋯ + \"more below\" cue renders from the more-below state",
     );
-    // The region carries the ref the hook measures.
-    const region = /<div\b[^>]*className="bubble-scroll"[^>]*>/.exec(source)![0];
-    assert.ok(
-      region.includes("ref={scrollRef}"),
-      "the scroll region must carry the measurement ref",
-    );
-  });
-
-  it("the shell caps the backstop at min(38dvh, 20rem)", () => {
-    assert.ok(
-      source.includes("bubble-shell"),
-      "the bubble needs the .bubble-shell backstop container",
-    );
-    assert.ok(
-      stylesSource.includes("max-height: min(38dvh, 20rem)"),
-      "styles.css must cap the shell at min(38dvh, 20rem) (spec §5)",
-    );
   });
 
   it("the scroll region visually hides its scrollbar (PR #77 — Veeresh's will)", () => {
@@ -216,16 +274,11 @@ describe("question-bubble PR3 — backstop scroll architecture (spec §5)", () =
   });
 });
 
-describe("question-bubble PR3 — collapse toggle (spec §5/§8.6)", () => {
-  it("the toggle names its consequence: Show/Hide place name", () => {
+describe("redesign 2026-10-11 — instructions toggle (spec §5/§8.6)", () => {
+  it("the toggle names its consequence: Show/Hide instructions", () => {
     assert.ok(
-      source.includes('"Show place name"') || source.includes(">Show place name<") ||
-        /\{expanded \? "Hide place name" : "Show place name"\}/.test(source),
-      "the toggle must read “Show place name” / “Hide place name”",
-    );
-    assert.ok(
-      !source.includes("Collapse question") && !source.includes("Expand question"),
-      "the old Collapse/Expand question labels are gone",
+      /\{expanded \? "Hide instructions" : "Show instructions"\}/.test(source),
+      "the toggle must read “Show instructions” / “Hide instructions”",
     );
   });
 
@@ -239,26 +292,224 @@ describe("question-bubble PR3 — collapse toggle (spec §5/§8.6)", () => {
       toggle.includes("aria-expanded={expanded}"),
       "the toggle must expose aria-expanded",
     );
-    assert.ok(
-      stylesSource.includes(".bubble-toggle"),
-      "styles.css must style the toggle",
-    );
     const block = /\.bubble-toggle\s*\{([\s\S]*?)\}/.exec(stylesSource)?.[1];
-    assert.ok(block && block.includes("min-height: 44px"), "toggle min-height 44px");
+    assert.ok(block, "styles.css must style the toggle");
+    assert.ok(block.includes("min-height: 44px"), "toggle min-height 44px");
   });
 
-  it("collapsed folds the name away entirely: the panel uses hidden", () => {
-    // Honest, never clamped: the folded panel uses `hidden` (removed
-    // from AT) — there is no collapsed name element anymore.
+  it("the toggle wires the runtime path: open ↔ collapsed via onViewChange", () => {
+    // The show/hide runtime path: one call, no timers, no chains.
     assert.ok(
-      /<div className="scroll-cue-wrap bubble-scroll-wrap" hidden=\{!expanded\}>/.test(
+      /onClick=\{\(\) => onViewChange\(expanded \? "collapsed" : "open"\)\}/.test(
         source,
       ),
-      "the name+hint panel must fold away with hidden when collapsed",
+      "the toggle must call onViewChange(expanded ? 'collapsed' : 'open')",
+    );
+  });
+
+  it("the dismiss X stays 44px (tap target contract)", () => {
+    const block = /\.bubble-icon-button\s*\{([\s\S]*?)\}/.exec(stylesSource)?.[1];
+    assert.ok(block, ".bubble-icon-button CSS must exist");
+    assert.ok(block.includes("width: 44px"), "dismiss X width 44px");
+    assert.ok(block.includes("height: 44px"), "dismiss X height 44px");
+  });
+});
+
+describe("redesign 2026-10-11 — motion: vendored motionmaxxing curves", () => {
+  it("vendors the two curves as .pcard-scoped custom properties (not :root)", () => {
+    // motion-tokens.css is not on main (PR #133 open) — the card vendors
+    // what it uses locally so the future global import can't collide.
+    const block = /\.pcard\s*\{([\s\S]*?)\}/.exec(stylesSource)?.[1];
+    assert.ok(block, ".pcard scope must exist in styles.css");
+    assert.ok(
+      block.includes("--pcard-ease-reveal: cubic-bezier(0.16, 1, 0.3, 1)"),
+      "--pcard-ease-reveal must equal motionmaxxing --ease-snap-settle",
     );
     assert.ok(
-      stylesSource.includes(".scroll-cue-wrap[hidden]"),
-      "styles.css must keep [hidden] authoritative over the wrapper display",
+      block.includes("--pcard-ease-exit: cubic-bezier(0.55, 0, 0.85, 0.36)"),
+      "--pcard-ease-exit must equal motionmaxxing --ease-accel-exit",
+    );
+  });
+
+  it("the card wrapper provides the .pcard scope (both card states)", () => {
+    const wrappers = source.match(/className="pcard pointer-events-none absolute/g) ?? [];
+    assert.equal(
+      wrappers.length,
+      2,
+      "both the card and the dismissed target-button wrappers need the .pcard scope",
+    );
+  });
+
+  it("the card shell never remounts on toggle: the scroll cue stays live", () => {
+    // useMoreBelow's effect observes the region div it mounted with. A
+    // key={view} remount would detach that div and freeze the "more below"
+    // cue (spec §8.1) — the toggle must swap classes/content in place.
+    assert.ok(
+      !/key=\{view\}/.test(source),
+      "no key={view} remount: the shell (and its scroll region) stay mounted across expand/collapse",
+    );
+  });
+
+  it("the hint gets its own snap-settle reveal on expand (transform/opacity only)", () => {
+    assert.ok(
+      /\{expanded \? \(\s*<Enter durationMs=\{250\} reduced=\{reduced\}>/.test(
+        source,
+      ),
+      "the expanding hint must mount inside its own Enter reveal",
+    );
+    assert.ok(
+      /ease-\[var\(--pcard-ease-reveal\)\]/.test(source),
+      "Enter must use ease-[var(--pcard-ease-reveal)]",
+    );
+    // One effect per transition (chained-timer law): the Enter reveal is
+    // a single requestAnimationFrame effect — no setTimeout chains.
+    assert.ok(
+      !/setTimeout/.test(source),
+      "question-bubble must not chain timers — one rAF effect per transition",
+    );
+  });
+
+  it("the chevron rides both curves: snap-settle open, accel-exit shut", () => {
+    const openBlock = /\.bubble-toggle svg\s*\{([\s\S]*?)\}/.exec(stylesSource)?.[1];
+    assert.ok(
+      openBlock?.includes("transition-timing-function: var(--pcard-ease-reveal)"),
+      "chevron opens on the reveal curve",
+    );
+    const shutBlock = /\.bubble-toggle\[aria-expanded="false"\] svg\s*\{([\s\S]*?)\}/.exec(
+      stylesSource,
+    )?.[1];
+    assert.ok(
+      shutBlock?.includes("transition-timing-function: var(--pcard-ease-exit)"),
+      "chevron shuts on the exit curve",
+    );
+  });
+
+  it("prefers-reduced-motion zeroes the toggle motion (instant, zero animation)", () => {
+    // Several reduced-motion blocks exist; at least one must zero the
+    // chevron transition.
+    const blocks = [
+      ...stylesSource.matchAll(
+        /@media \(prefers-reduced-motion: reduce\) \{([\s\S]*?)\n\}/g,
+      ),
+    ].map((m) => m[1]);
+    assert.ok(blocks.length > 0, "reduced-motion guards must exist");
+    assert.ok(
+      blocks.some(
+        (b) => b.includes(".bubble-toggle svg") && b.includes("transition: none"),
+      ),
+      "the chevron transition must be zeroed under reduced motion",
+    );
+    // The component's reduced path: opacity-only fade, no transform.
+    assert.ok(
+      source.includes("usePrefersReducedMotion"),
+      "the component must keep its reduced-motion hook",
+    );
+  });
+});
+
+describe("redesign 2026-10-11 — compact default + End-game dock (game-app.tsx)", () => {
+  it("defaultBubbleView: collapsed on narrow viewports, open on desktop", () => {
+    assert.ok(
+      /function defaultBubbleView\(\): BubbleViewState/.test(gameAppSource),
+      "game-app must define the defaultBubbleView helper",
+    );
+    const fn = /function defaultBubbleView\(\): BubbleViewState \{([\s\S]*?)\n\}/.exec(
+      gameAppSource,
+    )?.[1];
+    assert.ok(fn, "the helper body must be readable");
+    assert.ok(
+      fn.includes("max-width: 40rem"),
+      "the helper keys off the 40rem mobile breakpoint",
+    );
+    assert.ok(
+      /return "collapsed"/.test(fn) && /return "open"/.test(fn),
+      "narrow → collapsed, wide → open",
+    );
+  });
+
+  it("the default feeds the initializer, the per-place reset, and replay", () => {
+    assert.ok(
+      gameAppSource.includes("useState<BubbleViewState>(defaultBubbleView)"),
+      "the bubble state must initialize from defaultBubbleView",
+    );
+    const resets = gameAppSource.match(/setBubble\(defaultBubbleView\(\)\)/g) ?? [];
+    assert.ok(
+      resets.length >= 2,
+      `per-place reset + replay must use defaultBubbleView (found ${resets.length})`,
+    );
+    assert.ok(
+      !gameAppSource.includes('setBubble("open")'),
+      'no hard-coded setBubble("open") may remain',
+    );
+  });
+
+  it("the BubbleViewState contract is unchanged (open|collapsed|dismissed)", () => {
+    assert.ok(
+      source.includes('export type BubbleViewState = "open" | "collapsed" | "dismissed"'),
+      "the contract type must be untouched",
+    );
+    assert.ok(
+      /import \{ QuestionBubble, type BubbleViewState \}/.test(gameAppSource),
+      "game-app must keep importing the contract",
+    );
+  });
+
+  it("End game docks bottom-right during aim: clear of the card, 44px target", () => {
+    const btn = /<button\b[^>]*onClick=\{onEndGame\}[^>]*>/.exec(gameAppSource)?.[0];
+    assert.ok(btn, "an End game button must exist");
+    const tags =
+      gameAppSource.match(/<button\b[^>]*onClick=\{onEndGame\}[^>]*>/g) ?? [];
+    assert.strictEqual(
+      tags.length,
+      2,
+      `exactly two End game buttons: the aim dock + the story/done score-stack pill (found ${tags.length})`,
+    );
+    const dock = tags.find((t) => t.includes("absolute right-3"));
+    assert.ok(dock, "one End game button must be the bottom-right dock");
+    assert.ok(
+      dock.includes("bottom-[max(6.5rem,calc(env(safe-area-inset-bottom)+5.5rem))]"),
+      "the dock must clear the drop-pin lane + safe area",
+    );
+    assert.ok(
+      dock.includes("min-h-[44px]"),
+      "the docked End game must be a 44px tap target",
+    );
+    const pill = tags.find((t) => !t.includes("absolute right-3"));
+    assert.ok(pill, "one End game button must be the score-stack pill");
+    assert.ok(
+      pill.includes("rounded-md") && pill.includes("px-3 py-1.5 text-xs"),
+      "the score-stack pill keeps its pre-redesign slot classes",
+    );
+    assert.ok(
+      /\{run\.phase === "aim" \? \(\s*<button\b[^>]*onClick=\{onEndGame\}/.test(
+        gameAppSource,
+      ),
+      "the docked End game must render only during the aim phase",
+    );
+  });
+
+  it("End game never floats over the result sheet: score-stack pill is story/done only, never summary", () => {
+    const conditions = [
+      ...gameAppSource.matchAll(
+        /\{([^}]*run\.phase[^}]*?) \? \(\s*<button\b[^>]*onClick=\{onEndGame\}[^>]*>/g,
+      ),
+    ].map((m) => m[1]);
+    assert.strictEqual(
+      conditions.length,
+      2,
+      `both End game buttons must be phase-gated (found ${conditions.length})`,
+    );
+    assert.ok(
+      conditions.includes('run.phase === "aim"'),
+      "the dock is aim-phase only",
+    );
+    assert.ok(
+      conditions.includes('run.phase === "story" || run.phase === "done"'),
+      "the score-stack pill is story/done only",
+    );
+    assert.ok(
+      conditions.every((c) => !c.includes("summary")),
+      "no End game button may render in the summary phase",
     );
   });
 });
@@ -270,10 +521,6 @@ describe("question-bubble PR3 — collapse toggle (spec §5/§8.6)", () => {
 // E2E (tests/e2e/longname-wrap.spec.ts) proves it visually against the real
 // longest-name fixtures from the spec §11.
 
-const stylesSource = readFileSync(
-  join(dirname(fileURLToPath(import.meta.url)), "../styles.css"),
-  "utf8",
-);
 const resultCardSource = readFileSync(
   join(dirname(fileURLToPath(import.meta.url)), "result-card.tsx"),
   "utf8",
