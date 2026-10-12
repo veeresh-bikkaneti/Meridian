@@ -1,70 +1,66 @@
-# BRANCH_STATUS — fix/crash-report-background-classification (2026-10-12)
+# BRANCH_STATUS — fix/geodetective-unlabeled-tap-guess (2026-10-12)
 
 **PUSH OK, DO NOT MERGE** — owner merges.
 
 ## What this fixes (plain language)
 
-Two Android crash reports arrived with the identical signature: `suspected_crash`,
-no error, last milestone `storyteller_ready`. Investigation showed the crash
-reporter **cannot tell the difference** between two very different events:
+The owner tapped map locations in a GeoDetective challenge and nothing
+happened — no guess registered. His directive: "User selection can be wrong
+but it doesn't mean that you restrict from them selecting a location."
 
-1. Android killing the tab while the game is on screen (a real problem), and
-2. Android killing a *backgrounded* tab for memory (routine phone behavior —
-   the user switches apps or locks the phone, the OS reclaims the tab).
+Root cause: `LoopMap.tsx` resolved every tap through the labeled-place
+index. A tap landing on no labeled place (ocean, remote wilderness) was
+REJECTED with "That spot isn't a labeled place" — the guess was never
+registered. The gate was original Detective's Atlas design (2026-10-06),
+not a Place Accessibility overhaul regression.
 
-Both look exactly the same in the report. Chasing a memory bug from this
-evidence would be guessing.
+## The fix
 
-**The fix makes every future report self-classifying:**
-- The app now records a `backgrounded` milestone when the tab is hidden and a
-  `foregrounded` milestone when it returns.
-- A future `suspected_crash` ending at `backgrounded` = the OS killed a
-  backgrounded tab (expected, not a bug). Anything else = a real foreground
-  kill worth investigating.
+Every map tap now selects — a tap on no labeled place opens the SAME confirm
+bottom sheet with a region-named synthetic guess ("Open Water", "Canada",
+"Yukon, Canada" — the same language the reveal pins already use). Confirming
+burns the guess with distance+direction from the tap coordinates. The
+confirm step is kept, so a mis-tap still never costs one of the five.
 
-**Companion fix found during verification:** the `storyteller_ready` milestone
-was being re-recorded on *every React render* (the `onLoaded` callback was an
-inline arrow, so the mascot's preload effect re-ran each render). That spammed
-the breadcrumb trail and would have overwritten the new `backgrounded`
-milestone. Both call sites now use a stable `useCallback` — the milestone
-fires once, when the figure actually loads.
+- `src/game/loop/evaluate.ts`: new `unlabeledSpotEntry(lon, lat)`.
+- `src/game/loop/LoopMap.tsx`: no-hit branch → `onSelectPlace(synthetic)`.
+- `src/game/loop/LoopScreen.tsx`: dead rejection hint removed.
+- `tests/e2e/geodetective-unlabeled-tap.spec.ts` + project entry (new).
+- `src/game/loop/evaluate.test.ts`: 4 new unit tests.
 
-## What changed (files)
+## Done
 
-- `src/lib/observability.ts` — `backgrounded`/`foregrounded` milestones;
-  `visibilitychange` listener installed once in `init()` (injectable document
-  for tests; silent no-op without a DOM).
-- `src/lib/observability.test.ts` — 4 new unit tests.
-- `src/components/storyteller.tsx` — stable `handleFigureLoaded` callback.
-- `src/components/storyteller-home.tsx` — stable `handleFigureLoaded` callback.
-- `tests/e2e/crash-classification.mobile.spec.ts` — new black-box E2E spec.
+- [x] Implement
+- [x] Unit tests: 1223/1223 green (incl. 4 new)
+- [x] tsc clean, lint-cards GATE PASSED
+- [x] New E2E: 2/2 green
+- [ ] Existing geodetective E2E suite (running — regression check)
+- [ ] Scrum panel review
+- [ ] Screen recording
+- [ ] Rebase to zero conflicts + full suite re-run
+- [ ] PR opened (never merged)
 
-## What was verified
+## Plain-language spec checklist
 
-- [x] `npx tsc --noEmit` clean
-- [x] `npm test` — 1190/1190 (incl. 4 new visibility tests)
-- [x] `node scripts/lint-cards.mjs` — GATE PASSED
-- [x] `npm run build:pages` green
-- [x] New E2E spec passes on rebuilt dist (mobile 390×844)
-- [x] Existing storyteller E2E suite: 6/6 (narration watchdogs untouched)
-- [x] Full next-boot classification path covered by unit test
-      (backgrounded trail → `suspected_crash` carries `lastMilestone: "backgrounded"`)
+1. Tap unlabeled ocean → confirm sheet opens ("Guess Open Water?"). ✓ E2E
+2. Confirm → guess burns: "Guess 2 of 5", guess list +1, direction arrow
+   drawn, next clue unlocks. ✓ E2E
+3. Same unlabeled spot twice → "You already guessed…" warning, no second
+   guess burned. ✓ E2E
+4. Labeled-place taps behave exactly as before. ⏳ existing suite running
+5. "That spot isn't a labeled place" rejection is gone. ✓ E2E (asserted absent)
+6. An unlabeled tap can never accidentally win (synthetic id ≠ GeoNames id). ✓ unit
+7. Map aria-label describes the any-tap model. ✓ code
 
-## Deliberately NOT changed
+## Non-blocking observation
 
-- The #136 narration watchdogs and audio paths are untouched (verified by the
-  6/6 storyteller suite).
-- The crash-report worker needs no change — `lastMilestone` is already
-  forwarded; "backgrounded" reads clearly in the Discord alert.
-- No memory "optimization" was shipped on a guess. The sprite sheets
-  (12.6 MB decoded) and the map are the real memory holders, but shrinking
-  them without proof of the kill mechanism would be theater.
+For extreme misses (~15,000 km) the gold ring polygon wraps the globe and
+renders degenerate — pre-existing for ANY far guess, not introduced here.
+Direction arrow draws correctly. Follow-up candidate, not this PR.
 
-## Pending
+## Ready to merge? NO
 
-- [x] Scrum panel review — APPROVE, no BLOCKs
-- [x] Rebase to zero conflicts + full suite re-run — done (1219/1219, E2E 1/1 + 6/6)
-- [x] Screen recording of verification — `~/workspace/your_files/meridian-crash-classification/crash-classification-verification.webm`
-- [x] Open PR (never merge) — PR #144 OPEN
+## What is pending?
 
-**Ready to merge? NO** — pending owner's video green-light → Chitti/panel review → owner's merge decision.
+Scrum review → screen recording → owner's video green-light →
+Chitti/panel independent review → owner's merge decision.

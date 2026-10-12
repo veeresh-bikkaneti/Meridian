@@ -154,7 +154,7 @@ export interface LoopManifest {
 export interface LoopNameEntry {
   /** Normalized name: lowercase, NFD diacritics stripped, punctuation removed. */
   n: string;
-  /** GeoNames id. */
+  /** GeoNames id — or `tap:<lon>,<lat>` for a synthetic unlabeled-tap entry. */
   id: string;
   lon: number;
   lat: number;

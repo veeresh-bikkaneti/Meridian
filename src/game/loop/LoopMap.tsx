@@ -8,16 +8,17 @@ import { IMAGERY_TILES } from "@/map/imagery";
 import { LOOP_LABELS_ATTRIBUTION, LOOP_LABELS_TILES } from "./map-labels";
 import { buildPlaceGrid, nearestPlace, type PlaceGrid } from "./place-resolve";
 import { destination, guessArrow, ringPolygon } from "./rings";
-import { displayLoopName, fetchLoopIndex } from "./evaluate";
+import { displayLoopName, fetchLoopIndex, unlabeledSpotEntry } from "./evaluate";
 import type { LoopGuess, LoopNameEntry } from "./types";
 
 /**
  * The Detective's Atlas: full-screen satellite + Esri reference labels,
  * the primary guess surface of the GeoDetective edition (Option A).
  *
- * - Tap a labeled place → the parent opens the confirm bottom sheet.
- *   Taps resolve against the guess index (place-resolve.ts); ocean/empty
- *   taps select nothing and raise the gentle hint instead.
+ * - Tap anywhere → the parent opens the confirm bottom sheet. Taps resolve
+ *   against the guess index (place-resolve.ts); a tap on no labeled place
+ *   still selects — as a region-named guess at the tap coordinates —
+ *   because a wrong tap is a legitimate guess (owner directive 2026-10-12).
  * - After each miss the map draws the deduction surface: an exact-km
  *   distance ring around the guessed place, a direction arrow toward the
  *   target, an ✕ marker, and a "searched" shading.
@@ -295,11 +296,12 @@ export function LoopMap({
       if (finished) return;
       // Pin-drop SFX (celebration spec §2.1–§2.2): a tap is accepted when it
       // lands with the camera idle and ≥300 ms since the last tap. A tap
-      // while the camera animates, a double-tap misfire (<300 ms), or a tap
-      // on a spot with no labeled place is rejected — the soft page-turn
-      // tick (500 ms suppress in the guard), never a buzzer — and selects
-      // nothing. The Drop-pin commit stays silent by design (spec §3): the
-      // ring answers next.
+      // while the camera animates or a double-tap misfire (<300 ms) plays
+      // the soft page-turn tick (500 ms suppress in the guard), never a
+      // buzzer — and selects nothing. A tap on a spot with no labeled
+      // place is NOT rejected: it selects a region-named guess at the tap
+      // coordinates (owner directive 2026-10-12). The Drop-pin commit
+      // stays silent by design (spec §3): the ring answers next.
       const now =
         typeof performance !== "undefined" ? performance.now() : Date.now();
       const sinceLastTap = now - lastTapAtRef.current;
@@ -364,9 +366,15 @@ export function LoopMap({
         playCelebrationSound("pinDropPass");
         onSelectPlace(hit);
       } else {
-        // Rejected: ocean/empty tap — the map shrugs with the gentle hint.
-        playCelebrationSound("pinDropFail");
-        onEmptyTap(false);
+        // No labeled place within tolerance: the tap is STILL a guess
+        // (owner directive 2026-10-12 — a wrong or unlabeled spot is a
+        // legitimate guess, never rejected). A synthetic entry at the tap
+        // coordinates opens the same confirm sheet, so a mis-tap still
+        // never burns one of the five.
+        playCelebrationSound("pinDropPass");
+        onSelectPlace(
+          unlabeledSpotEntry(normalizeLon(e.lngLat.lng), clampLat(e.lngLat.lat)),
+        );
       }
     };
     map.on("click", onClick);
@@ -864,7 +872,7 @@ export function LoopMap({
       tabIndex={placementActive ? 0 : undefined}
       aria-label={
         mapLabel ??
-        "Detective's map. Pan and zoom to explore labeled places. Double-tap a label area to pick a place."
+        "Detective's map. Pan and zoom to explore. Tap anywhere to pick a guess — even an unlabeled spot counts."
       }
       className={
         "h-[52dvh] min-h-[320px] w-full overflow-hidden rounded-2xl border border-line" +

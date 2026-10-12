@@ -811,24 +811,31 @@ function LoopGame({
   const mapHandleRef = useRef<LoopMapHandle | null>(null);
   // Place tapped on the map, awaiting confirm in the bottom sheet.
   const [selected, setSelected] = useState<LoopNameEntry | null>(null);
-  // Gentle hint for ocean/empty taps (fail closed: never a wasted guess).
+  // Gentle hint while the place index loads (fail open for taps: an
+  // unlabeled tap still selects a region-named guess — the index only
+  // decides whether the tap ALSO resolves to a labeled place).
   // "loading" while the place index isn't ready yet — the tapped spot may
   // simply not have loaded, so don't claim it's not a place.
-  const [emptyTapHint, setEmptyTapHint] = useState<"empty" | "loading" | null>(null);
+  const [emptyTapHint, setEmptyTapHint] = useState<"loading" | null>(null);
   // Screen-reader announcement for each freshly drawn ring.
   const [ringNote, setRingNote] = useState<string | null>(null);
   const announcedCount = useRef(puzzle.guesses.length);
   const announcedKey = useRef(`${puzzle.cycle}:${puzzle.index}`);
 
-  // Tap on the map: open the confirm sheet for the resolved place.
+  // Tap on the map: open the confirm sheet for the tapped spot — a labeled
+  // place when the index resolves one, otherwise a region-named guess at
+  // the tap coordinates (owner directive 2026-10-12: every tap selects).
   const onMapSelect = (entry: LoopNameEntry) => {
     if (finished) return;
     setEmptyTapHint(null);
     setSelected(entry);
   };
   const onMapEmptyTap = (indexLoading: boolean) => {
+    // The only empty tap left is "index not ready yet". Unlabeled taps now
+    // select a region-named guess (owner directive 2026-10-12), so the
+    // "isn't a labeled place" rejection is gone.
     setSelected(null);
-    setEmptyTapHint(indexLoading ? "loading" : "empty");
+    setEmptyTapHint(indexLoading ? "loading" : null);
   };
   // Camera-jump search: fly there AND select the place (the sheet still
   // confirms — a jump never burns a guess by itself).
@@ -922,12 +929,6 @@ function LoopGame({
             <p className="text-xs text-muted" aria-hidden="true">
               ✕&thinsp;=&thinsp;searched&ensp;·&ensp;<span className="text-[#f2c14e]">gold ring</span>&thinsp;=&thinsp;exact distance from that guess
             </p>
-            {emptyTapHint === "empty" ? (
-              <p role="status" className="text-sm text-muted">
-                That spot isn&rsquo;t a labeled place — tap a name on the map, or search
-                above to fly there.
-              </p>
-            ) : null}
             {emptyTapHint === "loading" ? (
               <p role="status" className="text-sm text-muted">
                 Still loading place names — one moment…

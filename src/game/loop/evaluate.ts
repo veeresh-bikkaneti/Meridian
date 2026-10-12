@@ -1,4 +1,5 @@
 import { distanceKm, initialBearing, octantOf } from "../geo.ts";
+import { resolvePin } from "../reverse-geocode.ts";
 import type { LoopGuess, LoopNameEntry } from "./types.ts";
 import { normalizeLoopName } from "./normalize.ts";
 
@@ -23,6 +24,32 @@ export { normalizeLoopName };
 export function displayLoopName(entry: LoopNameEntry): string {
   const name = entry.n.replace(/\b\p{L}/gu, (c) => c.toUpperCase());
   return entry.r ? `${name}, ${entry.r}` : name;
+}
+
+/**
+ * Synthetic guess entry for a map tap that lands on no labeled place.
+ *
+ * Owner directive 2026-10-12: a tap is a tap — a wrong or unlabeled spot is
+ * a legitimate guess, never rejected. The entry carries the tap's exact
+ * coordinates; the name is the containing region in the same language the
+ * reveal pins already use ("Your pin: Nebraska"), resolved synchronously
+ * via resolvePin (never throws, country-only when admin-1 chunks aren't
+ * loaded, "Open Water" for ocean). The id is unique per ~11 m cell so a
+ * repeat tap on the same wilderness is caught by the duplicate-guess check
+ * instead of burning a second guess.
+ */
+export function unlabeledSpotEntry(lon: number, lat: number): LoopNameEntry {
+  const pin = resolvePin(lat, lon);
+  const name = pin?.admin1 ?? pin?.country ?? "open water";
+  const region = pin?.admin1 && pin?.country ? pin.country : "";
+  return {
+    n: normalizeLoopName(name),
+    id: `tap:${lon.toFixed(4)},${lat.toFixed(4)}`,
+    lon,
+    lat,
+    r: region,
+    p: 0,
+  };
 }
 
 // ---------------------------------------------------------------------------
