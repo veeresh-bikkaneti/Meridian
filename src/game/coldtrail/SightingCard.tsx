@@ -1,5 +1,6 @@
 import type { JSX, Ref } from "react";
 import { Button } from "@/components/ui/button";
+import { BoundedText } from "@/components/bounded-text";
 import { formatLength, type LengthUnit } from "@/game/units";
 import { effectiveRadius, INFORMANT_COST } from "./engine.ts";
 import type { ColdTrailSighting } from "./types.ts";
@@ -72,13 +73,15 @@ export function SightingCard({
         🕵️ Sighting {index + 1} · {sighting.timestamp}
       </p>
       <p className="mt-1 text-fg">{sighting.text}</p>
-      <p
+      <BoundedText
+        as="p"
+        variant="body"
         data-testid="sighting-region"
-        className="mt-1 text-sm break-words text-muted"
+        className="mt-1 text-sm text-muted"
       >
         🌍 Region: {sighting.region.continent} · {sighting.region.country}
         {sighting.region.subdivision ? ` · ${sighting.region.subdivision}` : ""}
-      </p>
+      </BoundedText>
       <p className="mt-2 text-sm text-muted">
         Ring radius:{" "}
         <span className="text-gold-ink">~{formatLength(radius, unit)}</span>
