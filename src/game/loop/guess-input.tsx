@@ -1,5 +1,6 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import type { JSX, KeyboardEvent } from "react";
+import { useAutoAnimate } from "@/hooks/use-auto-animate";
 import type { LoopNameEntry } from "./types.ts";
 import {
   displayLoopName,
@@ -59,6 +60,10 @@ export function GuessInput({
   const [loadState, setLoadState] = useState<LoadState>("idle");
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+  // Suggestion rows appear/disappear as the query changes — enter/exit/move
+  // only (dedicated effect inside the hook; zero animation under
+  // prefers-reduced-motion).
+  const suggestionsAnimateRef = useAutoAnimate<HTMLUListElement>();
   // Transient status-region note (e.g. Enter while the index is loading).
   const [statusNote, setStatusNote] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -191,8 +196,10 @@ export function GuessInput({
       />
       {showSuggestions && (
         <ul
+          ref={suggestionsAnimateRef}
           role="listbox"
           id={listboxId}
+          data-testid="loop-suggestions"
           aria-label="Matching places"
           className="absolute z-20 mt-1 max-h-64 w-full overflow-auto rounded-xl border border-line bg-surface py-1"
         >

@@ -1,6 +1,7 @@
 import { Fragment, Suspense, lazy, useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useOnlineStatus } from "@/hooks/use-online-status";
+import { useAutoAnimate } from "@/hooks/use-auto-animate";
 import { formatLength, loopGradeBand, unitForLoopTarget } from "@/game/units";
 import { nameTier } from "@/game/place-name";
 import { PlaceNameText } from "@/components/place-name";
@@ -740,6 +741,18 @@ function LoopGame({
   const finished = puzzle.status !== "playing";
   const guessesLeft = dealConfig.guessCap - puzzle.guesses.length;
 
+  // Enter/exit/move transitions (auto-animate). Each is its own dedicated
+  // effect inside the hook — never chained with game state transitions.
+  // Root: PlaceSheet enter/exit, LoopReveal case transition, the "Your
+  // guesses" section's first appear. Map section: hint/notice paragraphs
+  // appearing under the status line. Guesses <ol>: new guess rows prepend
+  // with a FLIP shift of the existing rows. All disabled (zero animation)
+  // under prefers-reduced-motion. The map canvas itself is untouched:
+  // auto-animate only observes direct-child add/remove/reorder.
+  const screenAnimateRef = useAutoAnimate<HTMLDivElement>();
+  const mapSectionAnimateRef = useAutoAnimate<HTMLElement>();
+  const guessesAnimateRef = useAutoAnimate<HTMLOListElement>();
+
   // Hint UI for GeoDetective (follow-up Item B, owner 2026-10-09).
   // Policy comes from the DEAL-TIME band snapshot (never live): 8-10 gets
   // one hint per mystery ("one-per-round"); 11-13 gets none ("none" hides
@@ -862,8 +875,16 @@ function LoopGame({
   }, [finished]);
 
   return (
-    <div className="mt-8 flex flex-col gap-6">
-      <section aria-label="Detective's map" className="flex flex-col gap-3">
+    <div
+      ref={screenAnimateRef}
+      data-testid="loop-screen"
+      className="mt-8 flex flex-col gap-6"
+    >
+      <section
+        ref={mapSectionAnimateRef}
+        aria-label="Detective's map"
+        className="flex flex-col gap-3"
+      >
         <p className="text-sm text-muted" role="status">
           Guess {puzzle.guesses.length + 1} of {dealConfig.guessCap}
           {guessesLeft <= 2 && !finished ? ` — ${guessesLeft} left` : ""}
@@ -968,7 +989,11 @@ function LoopGame({
               (max-h 40dvh) — rows never do. Named region + tabindex="0"
               so keyboard users can reach it (spec §8.1). */}
           <GuessListScroll>
-          <ol className="flex flex-col gap-2">
+          <ol
+            ref={guessesAnimateRef}
+            data-testid="loop-guesses"
+            className="flex flex-col gap-2"
+          >
             {[...puzzle.guesses].reverse().map((g, ri) => {
               // Rows render newest-first; the dossier number is the guess's
               // actual 1-based position in play order.
