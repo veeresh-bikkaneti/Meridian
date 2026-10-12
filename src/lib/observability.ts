@@ -51,7 +51,18 @@ export type MilestoneName =
   | "map_init_start"
   | "map_ready"
   | "game_loaded"
-  | "storyteller_ready";
+  | "storyteller_ready"
+  /**
+   * Crash-classification milestones (2026-10-12): Android routinely kills
+   * backgrounded tabs for memory, which the next-boot asymmetry detector
+   * cannot distinguish from a genuine foreground crash — both surface as
+   * `suspected_crash` with no error. Recording the visibility transitions
+   * makes every future report self-classifying: a trail ending at
+   * "backgrounded" is an OS background kill (expected mobile lifecycle),
+   * anything else is a real foreground kill worth investigating.
+   */
+  | "backgrounded"
+  | "foregrounded";
 
 export type ObservabilityEventType =
   | "suspected_crash"
@@ -139,6 +150,15 @@ export interface ObservabilityDeps {
   device?: DeviceInfo;
   buildId?: string;
   isUnclean?: () => boolean;
+  /**
+   * Minimal document surface for visibility tracking (injected for tests;
+   * defaults to the global document). Kept narrow so node --test needs no
+   * DOM — pass a fake.
+   */
+  document?: {
+    visibilityState?: string;
+    addEventListener?: (type: string, listener: () => void) => void;
+  } | null;
 }
 
 function defaultStorage(): ObsStorage | null {
@@ -378,6 +398,8 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
   let breadcrumb: Breadcrumb | null = null;
   let initialized = false;
   let handlersInstalled = false;
+  /** Crash-classification: visibility listener installed once in init(). */
+  let visibilityTracked = false;
   /** PBI-6: set once in init() — the previous page died with the map mounted. */
   let mapAttributedCrash = false;
   const queue: ObservabilityEvent[] = [];
@@ -569,6 +591,36 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       device: deps.device ?? collectDeviceInfo(),
     };
     persist();
+    installVisibilityTracking();
+  }
+
+  /**
+   * Crash-classification (2026-10-12): record visibility transitions on the
+   * breadcrumb trail. A tab Android kills while backgrounded leaves
+   * lastMilestone "backgrounded" — distinguishable from a genuine
+   * foreground kill. Installed once; total (never throws into boot).
+   */
+  function installVisibilityTracking(): void {
+    if (visibilityTracked) return;
+    visibilityTracked = true;
+    try {
+      const doc =
+        deps.document !== undefined
+          ? deps.document
+          : typeof document !== "undefined"
+            ? document
+            : null;
+      if (!doc || typeof doc.addEventListener !== "function") return;
+      doc.addEventListener("visibilitychange", () => {
+        try {
+          recordMilestone(doc.visibilityState === "hidden" ? "backgrounded" : "foregrounded");
+        } catch {
+          // Trail bookkeeping never breaks gameplay.
+        }
+      });
+    } catch {
+      // Visibility tracking is best-effort.
+    }
   }
 
   function emitMapError(err: unknown): boolean {

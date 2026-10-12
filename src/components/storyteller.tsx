@@ -249,6 +249,15 @@ export function StorytellerNarration({
   // speaker trigger (T2) and the sound-off path are manual only.
   const autoAttempt = (trigger === "first_gesture" || trigger === "summary") && soundOn;
 
+  // Stable identity for GrandpaMascot's onLoaded (see the figure below).
+  const handleFigureLoaded = useCallback(() => {
+    try {
+      recordMilestone("storyteller_ready");
+    } catch {
+      // Never break gameplay.
+    }
+  }, []);
+
   const dismiss = useCallback(
     (reason: "tap_caption" | "screen_exit") => {
       if (dismissedRef.current) return;
@@ -714,13 +723,11 @@ export function StorytellerNarration({
     <StorytellerMascot
       label={figureLabel}
       onToggle={handleFigureToggle}
-      onLoaded={() => {
-        try {
-          recordMilestone("storyteller_ready");
-        } catch {
-          // Never break gameplay.
-        }
-      }}
+      // Stable identity: GrandpaMascot re-preloads (and re-fires onLoaded)
+      // whenever this callback's identity changes. An inline arrow would
+      // re-record storyteller_ready on EVERY render, spamming the breadcrumb
+      // trail and overwriting later milestones (e.g. "backgrounded").
+      onLoaded={handleFigureLoaded}
     />
   ) : null;
 

@@ -510,3 +510,103 @@ test("window error listener (control): a real error still emits js_error", () =>
   assert.equal(body.type, "js_error");
   assert.match(body.error?.message ?? "", /Something actually broke/);
 });
+
+// ---------------------------------------------------------------------------
+// Crash-classification (2026-10-12): visibility milestones distinguish an
+// Android background-tab kill from a genuine foreground crash.
+// ---------------------------------------------------------------------------
+
+function makeDocument() {
+  const listeners = new Map<string, Array<() => void>>();
+  const doc = {
+    visibilityState: "visible" as string,
+    addEventListener: (type: string, fn: () => void) => {
+      const arr = listeners.get(type) ?? [];
+      arr.push(fn);
+      listeners.set(type, arr);
+    },
+    fire: (type: string) => {
+      for (const fn of listeners.get(type) ?? []) fn();
+    },
+    listenerCount: (type: string) => (listeners.get(type) ?? []).length,
+  };
+  return doc;
+}
+
+test("visibility: hidden records 'backgrounded', visible records 'foregrounded'", () => {
+  const store = makeStorage();
+  const { transport } = makeTransport();
+  const doc = makeDocument();
+  const obs = createObservability({
+    storage: store, transport, document: doc,
+    now: () => 1000, randomId: () => "vis-1", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.init();
+  assert.equal(obs.getBreadcrumb()?.lastMilestone, "boot_start");
+
+  doc.visibilityState = "hidden";
+  doc.fire("visibilitychange");
+  assert.equal(obs.getBreadcrumb()?.lastMilestone, "backgrounded");
+  const stored = JSON.parse(store.getItem(BREADCRUMB_KEY) as string);
+  assert.equal(stored.lastMilestone, "backgrounded", "milestone persisted to sessionStorage");
+
+  doc.visibilityState = "visible";
+  doc.fire("visibilitychange");
+  assert.equal(obs.getBreadcrumb()?.lastMilestone, "foregrounded");
+});
+
+test("visibility: listener installed once across double init", () => {
+  const { transport } = makeTransport();
+  const doc = makeDocument();
+  const obs = createObservability({
+    storage: makeStorage(), transport, document: doc,
+    now: () => 1000, randomId: () => "vis-2", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.init();
+  obs.init();
+  assert.equal(doc.listenerCount("visibilitychange"), 1, "exactly one visibility listener");
+  doc.visibilityState = "hidden";
+  doc.fire("visibilitychange");
+  assert.equal(obs.getBreadcrumb()?.lastMilestone, "backgrounded");
+});
+
+test("visibility: absent document degrades silently (node --test has no DOM)", () => {
+  const { transport } = makeTransport();
+  const obs = createObservability({
+    storage: makeStorage(), transport, document: null,
+    now: () => 1000, randomId: () => "vis-3", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.init(); // must not throw
+  assert.equal(obs.getBreadcrumb()?.lastMilestone, "boot_start");
+});
+
+test("visibility: a backgrounded trail classifies the next-boot suspected_crash", () => {
+  // Full runtime path: game session -> backgrounded -> killed (no pagehide)
+  // -> next boot emits suspected_crash with lastMilestone "backgrounded".
+  const { transport, beacons } = makeTransport(true);
+  const doc = makeDocument();
+  const prevStore = makeStorage();
+  const prev = createObservability({
+    storage: prevStore, transport, document: doc, endpoint: "https://example.com/ingest",
+    now: () => 2000, randomId: () => "vis-4", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  prev.init();
+  prev.recordMilestone("run_start", { edition: "globe", regionId: "globe" });
+  prev.recordMilestone("storyteller_ready");
+  doc.visibilityState = "hidden";
+  doc.fire("visibilitychange");
+  // Simulate the kill: no pagehide, so the clean-exit flag stays dirty.
+  prevStore.setItem(CLEAN_EXIT_KEY, "0");
+
+  const nextStore = makeStorage(Object.fromEntries(prevStore.raw));
+  const next = createObservability({
+    storage: nextStore, transport, endpoint: "https://example.com/ingest",
+    now: () => 3000, randomId: () => "vis-5", device: DEVICE, buildId: "b", isUnclean: () => true,
+  });
+  next.init();
+  assert.equal(beacons.length, 1);
+  const event = JSON.parse(beacons[0].body) as ObservabilityEvent;
+  assert.equal(event.type, "suspected_crash");
+  assert.equal(event.lastMilestone, "backgrounded", "background kill is classified, not mistaken for a foreground crash");
+  assert.equal(event.edition, "globe");
+});
