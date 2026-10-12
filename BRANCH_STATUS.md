@@ -33,11 +33,13 @@ confirm step is kept, so a mis-tap still never costs one of the five.
 - [x] Implement
 - [x] Unit tests: 1223/1223 green (incl. 4 new)
 - [x] tsc clean, lint-cards GATE PASSED
-- [x] New E2E: 2/2 green
-- [ ] Existing geodetective E2E suite (running — regression check)
-- [ ] Scrum panel review
-- [ ] Screen recording
-- [ ] Rebase to zero conflicts + full suite re-run
+- [x] New E2E: 2/2 green (+ reduced-motion pass 1/1)
+- [x] Existing geodetective E2E: 18/18 green (1 stale test updated to the
+      new directive behavior)
+- [x] Scrum panel review: APPROVE-WITH-NITS, 0 BLOCKs (6 nits; 1-3 fixed,
+      4 out of scope, 5 noted, 6 covered by reduced-motion recording)
+- [x] Screen recordings (3)
+- [x] Rebase: 0 commits behind main, full suite re-run green post-commit
 - [ ] PR opened (never merged)
 
 ## Plain-language spec checklist
