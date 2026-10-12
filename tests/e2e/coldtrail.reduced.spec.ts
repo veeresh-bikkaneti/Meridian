@@ -7,6 +7,17 @@ import { serveBuiltArtifact, sourceFeatures } from "./helpers";
  * Placement mode must be fully usable with no animation: the draft ring
  * appears instantly, the armed-map border is static (no pulse), and the
  * place→adjust→lock loop completes.
+ *
+ * Video is recorded per the screen-recording law.
+ */
+test.use({ video: "on" });
+
+/**
+ * Cold Trail reduced-motion gate (runs in the "reduced" project).
+ *
+ * Placement mode must be fully usable with no animation: the draft ring
+ * appears instantly, the armed-map border is static (no pulse), and the
+ * place→adjust→lock loop completes.
  */
 
 const BASE = "http://127.0.0.1:4123/Meridian/";
