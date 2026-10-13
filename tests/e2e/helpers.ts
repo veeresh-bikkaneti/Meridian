@@ -63,7 +63,26 @@ const MIME: Record<string, string> = {
   ".ttf": "font/ttf",
 };
 
-export async function serveBuiltArtifact(context: BrowserContext): Promise<void> {
+/**
+ * Serves the built Pages artifact for E2E (see header comment).
+ *
+ * Scout Map boot-dialog seam: the harness boots on a SwiftShader VM that
+ * the capability probe reads as a weak device, so without suppression
+ * every fresh boot would show the choice dialog and block unrelated
+ * specs. By default (suppressScoutOffer !== false) an init script sets
+ * window.__meridianSuppressScoutOffer, which game-app honors alongside
+ * the ?scout-offer=suppress query param. Specs that exercise the dialog
+ * itself pass { suppressScoutOffer: false }.
+ */
+export async function serveBuiltArtifact(
+  context: BrowserContext,
+  opts: { suppressScoutOffer?: boolean } = {},
+): Promise<void> {
+  if (opts.suppressScoutOffer !== false) {
+    await context.addInitScript(() => {
+      (window as unknown as Record<string, unknown>).__meridianSuppressScoutOffer = true;
+    });
+  }
   await context.route("**/*", async (route) => {
     const url = new URL(route.request().url());
     if (url.hostname === "server.arcgisonline.com") {

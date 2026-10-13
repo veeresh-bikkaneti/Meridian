@@ -237,15 +237,53 @@ export interface ResolveMapModeOptions {
   priorMapCrash?: boolean;
 }
 
+/** Which choice dialog the boot plan shows, if any. */
+export type ScoutOfferVariant = "prior-crash" | "probe" | "low-memory";
+
+export interface BootMapModePlan {
+  /**
+   * The choice dialog to show, or null for none. A live stored assignment
+   * (manual, or auto inside its decay window) suppresses every offer path —
+   * the user's settled choice is never re-asked.
+   */
+  offer: ScoutOfferVariant | null;
+}
+
+/**
+ * Pure boot plan for a fresh qualification (no live stored assignment):
+ * which choice dialog to show, if any.
+ *
+ * Owner directive: a capability-detected weak device gets a CHOICE, never
+ * a silent routing. The session always starts in full mode when an offer
+ * is pending — scout applies only on accept (auto, source preserved, so
+ * it still decays), and decline records the user's explicit "full" choice
+ * as manual (never decays, never re-prompts).
+ */
+export function planBootMapMode(
+  stored: StoredMapMode | null,
+  decision: MapModeDecision,
+): BootMapModePlan {
+  if (stored) return { offer: null };
+  if (
+    decision.source === "prior-crash" ||
+    decision.source === "probe" ||
+    decision.source === "low-memory"
+  ) {
+    return { offer: decision.source };
+  }
+  return { offer: null };
+}
+
 /**
  * Pre-mount convenience wrapper: reads the (decay-applied) stored mode,
  * runs the boot probe + memory signal, and qualifies in the settled order.
  * Guarded for SSR / no-window — returns `{ mode: "full", source: "default" }`
  * when no DOM is available. Never throws. Reads but never writes (Q3).
  *
- * Q1 (offer, not force): when the returned source is "prior-crash", the
- * caller MUST show the boot offer modal and keep the session in full mode
- * until the user accepts — a prior-crash scout decision never applies
+ * Q1 (offer, not force): when the returned source is "prior-crash",
+ * "probe", or "low-memory" and no stored assignment stands, the caller
+ * MUST show the choice dialog (planBootMapMode) and keep the session in
+ * full mode until the user accepts — a scout decision never applies
  * silently.
  */
 export function resolveMapMode(options: ResolveMapModeOptions = {}): MapModeDecision {

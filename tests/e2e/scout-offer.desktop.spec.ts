@@ -15,15 +15,18 @@ import {
   APP_NO_IDLE,
 } from "./helpers";
 import {
+  offerModal,
+  readStoredMapMode,
   seedCrashOffer,
   seedManualMode,
-  offerModal,
+  spoofCapableDevice,
 } from "./scout-helpers";
 
 test.setTimeout(120_000);
 
 test.beforeEach(async ({ context }) => {
-  await serveBuiltArtifact(context);
+  // This spec exercises the boot dialog itself — do NOT suppress it.
+  await serveBuiltArtifact(context, { suppressScoutOffer: false });
 });
 
 test("offer modal appears exactly once per boot when the crash flag is set", async ({
@@ -65,6 +68,12 @@ test("Esc declines the offer", async ({ context }) => {
   await expect(modal).toBeVisible({ timeout: 30_000 });
   await page.keyboard.press("Escape");
   await expect(modal).toBeHidden();
+
+  // Esc is a decline: the user's explicit choice of full mode is persisted.
+  expect(await readStoredMapMode(page)).toMatchObject({
+    mode: "full",
+    source: "manual",
+  });
   await page.close();
 });
 
@@ -103,6 +112,12 @@ test("scrim click declines the offer", async ({ context }) => {
   });
   expect(clicked).toBe(true);
   await expect(modal).toBeHidden({ timeout: 10_000 });
+
+  // Scrim click is a decline: the choice persists as manual full.
+  expect(await readStoredMapMode(page)).toMatchObject({
+    mode: "full",
+    source: "manual",
+  });
   await page.close();
 });
 
@@ -152,9 +167,15 @@ test("declining retires the offer: no modal on the next boot", async ({
   await expect(modal).toBeHidden();
 
   // The decline must retire the offer — "Not now" must not nag on every
-  // subsequent boot. Asserted behaviorally: no modal on the next boot.
-  // (The exact retired storage shape — cleared record vs manual-full — is
-  // the dev's call; the modal staying gone is the contract.)
+  // subsequent boot. The decline is stored as the user's explicit manual
+  // "full" choice (dev's call per the contract): on a weak device the next
+  // boot's fresh probe would otherwise re-fire the dialog.
+  expect(await readStoredMapMode(page)).toMatchObject({
+    mode: "full",
+    source: "manual",
+  });
+
+  // Asserted behaviorally: no modal on the next boot.
   await page.reload();
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
     timeout: 30_000,
@@ -165,8 +186,12 @@ test("declining retires the offer: no modal on the next boot", async ({
 });
 
 test("fail-closed: NO offer on a clean boot without the crash flag", async ({
-  page,
+  context,
 }) => {
+  // The harness VM reads as a weak device (SwiftShader) — spoof a capable
+  // device so "clean boot" genuinely means capable.
+  await spoofCapableDevice(context);
+  const page = await context.newPage();
   await page.goto(APP_NO_IDLE);
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
     timeout: 30_000,
@@ -179,6 +204,7 @@ test("fail-closed: NO offer on a clean boot without the crash flag", async ({
   await startGlobeRun(page);
   await expect(offerModal(page)).toBeHidden();
   expect(await readPhase(page)).toBe("aim");
+  await page.close();
 });
 
 test("manual override suppresses the offer path", async ({ context }) => {

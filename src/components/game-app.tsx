@@ -129,6 +129,7 @@ import {
 } from "@/lib/observability";
 import type { MapMode, MapModeSource } from "@/map/capability";
 import {
+  planBootMapMode,
   probeWebGL,
   qualifyMapMode,
   readDeviceMemoryGB,
@@ -138,6 +139,7 @@ import {
 import type { ScoutRestoreView } from "@/map/satellite-map";
 import { SCOUT_COPY } from "./scout-copy.ts";
 import { ScoutBootOffer } from "./scout-boot-offer.tsx";
+import type { ScoutOfferVariant } from "./scout-boot-offer.tsx";
 import { MapModeToggle } from "./map-mode-toggle.tsx";
 import {
   TUTORIAL_EDITION,
@@ -823,8 +825,8 @@ export function GameApp() {
    * adjustment below — no effect ordering hazards with the map mount).
    */
   const [queueAppliedAtIndex, setQueueAppliedAtIndex] = useState<number | null>(null);
-  /** PBI-6: the boot offer modal (offer, not force) — once per boot. */
-  const [showScoutOffer, setShowScoutOffer] = useState(false);
+  /** The boot choice dialog (offer, not force) — variant, or null when hidden. Once per boot. */
+  const [scoutOffer, setScoutOffer] = useState<ScoutOfferVariant | null>(null);
   const scoutOfferShownRef = useRef(false);
 
   /**
@@ -853,14 +855,36 @@ export function GameApp() {
     setMapMode(mode);
   }, []);
 
+  // PBI-6 (prior-crash): accept is the user's explicit choice — manual
+  // scout, queued (never applied mid-round), never decays.
   const acceptScoutOffer = useCallback(() => {
     applyMapMode("scout", "manual");
-    setShowScoutOffer(false);
+    setScoutOffer(null);
   }, [applyMapMode]);
 
+  // Capability offer accept (probe / low-memory): scout with the
+  // qualifying source preserved, so the assignment still decays after
+  // 7 days. Applied immediately — the offer fires pre-mount, so there is
+  // no mid-round hazard.
+  const acceptCapabilityOffer = useCallback(() => {
+    const source = scoutOffer;
+    if (source === "probe" || source === "low-memory") {
+      writeStoredMapMode("scout", source);
+      setReportMapMode("scout");
+      setMapMode("scout");
+    }
+    setScoutOffer(null);
+  }, [scoutOffer]);
+
+  // Decline (any variant): the user's explicit choice of full mode —
+  // stored as manual, so it never decays and never re-prompts. (For
+  // prior-crash this also satisfies the no-nag contract: the consumed
+  // crash flag alone would let the next boot's fresh probe re-fire the
+  // dialog on a weak device.)
   const declineScoutOffer = useCallback(() => {
-    // Stay full; stamped shown-this-boot, so it never re-fires this boot.
-    setShowScoutOffer(false);
+    writeStoredMapMode("full", "manual");
+    setReportMapMode("full");
+    setScoutOffer(null);
   }, []);
   // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v2 and never touches the
@@ -1052,39 +1076,40 @@ export function GameApp() {
     // pre-mount — before any map instance exists.
     // Write policy (Q3): a live stored assignment (manual, or auto inside
     // its decay window) stands WITHOUT a rewrite — rewriting per boot
-    // would refresh setAt and silently defeat decay. A fresh scout
-    // decision (new qualifying event) is the only boot-time write.
-    // Q1 (offer, not force): the boot offer modal fires on a fresh
-    // source === "prior-crash" decision ONLY, and the session stays in
-    // full mode until the player accepts.
+    // would refresh setAt and silently defeat decay. Nothing is written
+    // at boot for a fresh scout decision either: accept writes the auto
+    // scout (source preserved, decays), decline writes manual full.
+    // Q1 (offer, not force): a fresh "prior-crash", "probe", or
+    // "low-memory" decision shows the choice dialog — the session stays
+    // in full mode until the player accepts. Scout never applies silently.
+    // E2E seam: ?scout-offer=suppress or the harness init script
+    // (window.__meridianSuppressScoutOffer, set by serveBuiltArtifact)
+    // skips the dialog — the Playwright VM's SwiftShader renderer reads
+    // as a weak device, so unsuppressed every fresh boot would show the
+    // dialog and block unrelated specs.
     try {
       const stored = readStoredMapMode();
       if (stored) {
         setReportMapMode(stored.mode);
         setMapMode(stored.mode);
       } else {
-        const decision = qualifyMapMode({
-          priorMapCrash: wasMapAttributedCrash(),
-          webglProbeOk: probeWebGL(),
-          deviceMemoryGB: readDeviceMemoryGB(),
-        });
-        if (decision.source === "prior-crash") {
-          setReportMapMode("full");
-          if (!scoutOfferShownRef.current) {
-            scoutOfferShownRef.current = true;
-            setShowScoutOffer(true);
-          }
-        } else if (
-          decision.mode === "scout" &&
-          (decision.source === "probe" || decision.source === "low-memory")
-        ) {
-          // Fresh qualifying event (probe / low-memory) — persist it so
-          // the assignment survives until decay (Q2).
-          writeStoredMapMode("scout", decision.source);
-          setReportMapMode("scout");
-          setMapMode("scout");
-        } else {
-          setReportMapMode("full");
+        const suppressOffer =
+          (typeof window !== "undefined" &&
+            new URLSearchParams(window.location.search).get("scout-offer") === "suppress") ||
+          (typeof window !== "undefined" &&
+            (window as unknown as Record<string, unknown>).__meridianSuppressScoutOffer === true);
+        const plan = planBootMapMode(
+          null,
+          qualifyMapMode({
+            priorMapCrash: wasMapAttributedCrash(),
+            webglProbeOk: probeWebGL(),
+            deviceMemoryGB: readDeviceMemoryGB(),
+          }),
+        );
+        setReportMapMode("full");
+        if (plan.offer !== null && !suppressOffer && !scoutOfferShownRef.current) {
+          scoutOfferShownRef.current = true;
+          setScoutOffer(plan.offer);
         }
       }
     } catch {
@@ -1879,11 +1904,17 @@ export function GameApp() {
     ) : null}
     {celebrationOverlay}
     {idleToast}
-    {/* PBI-6: the Scout Map boot offer — dedicated modal (never Comet,
+    {/* The Scout Map boot choice dialog — dedicated modal (never Comet,
         which auto-dismisses). Fires on the home render only, once per
-        boot, when the map-attributed prior-crash flag is set. */}
-    {showScoutOffer ? (
-      <ScoutBootOffer onAccept={acceptScoutOffer} onDecline={declineScoutOffer} />
+        boot, when a fresh scout decision has no live stored assignment:
+        prior-crash, or a capability-detected weak device (probe /
+        low-memory). Offer, not force. */}
+    {scoutOffer !== null ? (
+      <ScoutBootOffer
+        variant={scoutOffer}
+        onAccept={scoutOffer === "prior-crash" ? acceptScoutOffer : acceptCapabilityOffer}
+        onDecline={declineScoutOffer}
+      />
     ) : null}
     </>
   );

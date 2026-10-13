@@ -1,20 +1,29 @@
 /**
- * Scout Map boot offer (PBI-6) — dedicated modal at the GameApp level.
+ * Scout Map boot offer — dedicated modal at the GameApp level.
  *
- * Fires only on the home render when the map-attributed prior-crash flag
- * is set, once per boot. Offer, not force (settled constraint, Q1): the
- * session stays in full mode unless the player taps "Use Scout Map".
+ * Fires once per boot, on the home render, in two situations:
+ * - variant "prior-crash" (PBI-6): the map-attributed prior-crash flag is
+ *   set. Offer, not force: the session stays in full mode unless the
+ *   player taps "Use Scout Map".
+ * - variant "probe" | "low-memory": the boot capability probe or the
+ *   low-memory signal qualified the device for Scout Map. The user chooses:
+ *   accept the lighter trail, or explicitly keep the full map (stored as a
+ *   manual "full" choice — never decays, never re-prompts).
  *
- * - fixed inset-0 z-50; scrim tap / Escape / "Not now" = decline
+ * - fixed inset-0 z-50; scrim tap / Escape / decline button = decline
  * - role="dialog" aria-modal; focus on the primary action on open;
  *   focus returns to the home heading on close
- * - data-testid="scout-boot-offer" (E2E contract)
+ * - data-testid="scout-boot-offer" (E2E contract),
+ *   data-offer-source="<variant>" (which signal triggered it)
  */
 
 import { useEffect, useRef, type JSX } from "react";
 import { SCOUT_COPY } from "./scout-copy.ts";
 
+export type ScoutOfferVariant = "prior-crash" | "probe" | "low-memory";
+
 export function ScoutBootOffer(props: {
+  variant: ScoutOfferVariant;
   onAccept: () => void;
   onDecline: () => void;
 }): JSX.Element {
@@ -22,6 +31,18 @@ export function ScoutBootOffer(props: {
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const onDeclineRef = useRef(props.onDecline);
   onDeclineRef.current = props.onDecline;
+
+  const variant = props.variant;
+  const body =
+    variant === "prior-crash"
+      ? SCOUT_COPY.bootOffer.body
+      : variant === "probe"
+        ? SCOUT_COPY.capabilityOffer.probeBody
+        : SCOUT_COPY.capabilityOffer.lowMemoryBody;
+  const acceptLabel =
+    variant === "prior-crash" ? SCOUT_COPY.bootOffer.accept : SCOUT_COPY.capabilityOffer.accept;
+  const declineLabel =
+    variant === "prior-crash" ? SCOUT_COPY.bootOffer.decline : SCOUT_COPY.capabilityOffer.decline;
 
   // Focus the primary action on open; return focus to the home heading
   // on close so keyboard/screen-reader users land back where they were.
@@ -36,9 +57,10 @@ export function ScoutBootOffer(props: {
     };
   }, []);
 
-  // Escape declines (stays full, stamped shown-this-boot by the owner).
-  // Tab is trapped inside the dialog: focus cycles between the two
-  // buttons and never escapes to the page behind the modal.
+  // Escape declines (the owner's decline path: the user's explicit choice
+  // of full mode, stored as manual). Tab is trapped inside the dialog:
+  // focus cycles between the two buttons and never escapes to the page
+  // behind the modal.
   useEffect(() => {
     const dialog = dialogRef.current;
     const onKey = (event: KeyboardEvent) => {
@@ -71,6 +93,7 @@ export function ScoutBootOffer(props: {
   return (
     <div
       data-testid="scout-boot-offer"
+      data-offer-source={variant}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
       onClick={() => onDeclineRef.current()}
     >
@@ -85,7 +108,7 @@ export function ScoutBootOffer(props: {
         <h2 id="scout-boot-offer-title" className="text-lg font-semibold">
           Try Scout Map?
         </h2>
-        <p className="mt-2 text-sm leading-relaxed text-white/80">{SCOUT_COPY.bootOffer.body}</p>
+        <p className="mt-2 text-sm leading-relaxed text-white/80">{body}</p>
         <div className="mt-5 flex flex-col gap-2">
           <button
             ref={acceptRef}
@@ -93,14 +116,14 @@ export function ScoutBootOffer(props: {
             onClick={props.onAccept}
             className="w-full rounded-xl bg-[#f2c14e] px-4 py-3 text-sm font-semibold text-black transition-colors hover:bg-[#ffd97a]"
           >
-            {SCOUT_COPY.bootOffer.accept}
+            {acceptLabel}
           </button>
           <button
             type="button"
             onClick={() => onDeclineRef.current()}
             className="w-full rounded-xl border border-white/15 px-4 py-3 text-sm font-medium text-white/80 transition-colors hover:text-white"
           >
-            {SCOUT_COPY.bootOffer.decline}
+            {declineLabel}
           </button>
         </div>
       </div>
