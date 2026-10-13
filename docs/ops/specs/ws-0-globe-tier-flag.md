@@ -3,7 +3,7 @@
 Spec author: ARCHITECT. Executor: WORKER (haiku) then QA (haiku). Line numbers
 are as of branch `claude/hopeful-darwin-dp7ket` @ `25f6ccc`; match by
 identifier if they drifted. The orchestrator does all git. Nothing here needs
-ESCALATE-ON-START: every changed block (including the in-run start notice and the reload-based retry, steps 14-18) is given below as exact code.
+ESCALATE-ON-START: every changed block (including the in-run start notice and its reload-based retry, steps 15-18) is given below as exact code.
 
 ## 0. Binding constraints (restated)
 
@@ -62,8 +62,9 @@ on), in its own revertable commit.
 6. In-run start failure (UX-REVIEWER BLOCK): with the flag on and a Medium tier
    file unreachable, "Try Medium" from the Easy celebration shows a
    `role="alert"` box (copy in step 15) with "Try again" and "Keep playing"; "Try
-   again" (after the network is back) lands on a Medium question; "Keep playing"
-   keeps the cleared Easy state. Proven by E2E 4.10 (2 tests).
+   again" (after the network is back) reloads to the picker with Medium chosen and
+   "Play the globe" then lands on a Medium question; "Keep playing" keeps the
+   cleared Easy state and the result card. Proven by E2E 4.10 (2 tests).
 
 ## 2. Files
 
@@ -73,14 +74,12 @@ on), in its own revertable commit.
 | `src/lib/flags.ts` | Add `"globeTierSplit"` to `FlagName`; add `globeTierSplit: false` to `FLAG_DEFAULTS` with comment. Nothing else. |
 | `src/game/generated-places.ts` | `placesFor` gets a 4th parameter `tierSplit: boolean = false`; Globe tier-limited loading happens only when it is `true`. Update the two doc comments that describe the split (module header lines ~22-28 and the `choice` param doc ~766-773). |
 | `src/lib/globe-tier-split.ts` | **NEW.** Tiny per-page-load resolver (section 3, step 3). |
-| `src/game/pending-open.ts` | **NEW.** One-shot `sessionStorage` helper `writePendingOpen` / `takePendingOpen` (step 14). Node-testable. |
-| `src/components/run-start-notice.tsx` | **NEW.** Presentational in-run notice (step 15). |
+| `src/components/run-start-notice.tsx` | **NEW.** Presentational in-run notice: always-mounted status region + failure box (step 15). |
 | `src/game/places-load-key.ts` | **NEW.** Two tiny pure helpers (`placesLoadKey`, `placesForKey`) so `Play` can never hand `PlayLoaded` a catalog loaded for a different band (step 7). Node-testable. |
-| `src/components/game-app.tsx` | Imports; one top-level helper `globeTierSplitFor`; the two `placesFor` call sites (`openRun`, `Play` effect); **`Play` keyed load state** (steps 7-8) replacing `useState` `places`/`poolError`; fix the now-wrong comment above the effect's dependency array; **in-run start notice** (steps 16-17: `starting`/`startError` carry `choice`, `lastOpenRef`, retry/dismiss callbacks, a one-shot pending-open effect, `BAND_LABELS`, `runStartNotice` rendered next to `idleToast` in the `if (run)` branch, `setStartError(null)` in three handlers). |
+| `src/components/game-app.tsx` | Imports; one top-level helper `globeTierSplitFor`; the two `placesFor` call sites (`openRun`, `Play` effect); **`Play` keyed load state** (steps 7-8) replacing `useState` `places`/`poolError`; fix the now-wrong comment above the effect's dependency array; **in-run start notice** (steps 16-17: `starting`/`startError` carry the requested `edition`, `regionId`, `regionName`, `choice`; `retryLastOpen`/`dismissStartError` callbacks; `BAND_LABELS` and `startNoticeTarget`; `runStartNotice` rendered next to `idleToast` in the `if (run)` branch; `setStartError(null)` in three handlers). |
 | `src/lib/flags.test.ts` | New `describe("globeTierSplit flag")`. |
 | `src/lib/globe-tier-split.test.ts` | **NEW** unit tests for the resolver. |
 | `src/game/places-load-key.test.ts` | **NEW** unit tests (4.8): the stale-catalog regression at the pure level. |
-| `src/game/pending-open.test.ts` | **NEW** unit tests (4.11). |
 | `src/game/generated-places.test.ts` | Adapt on-path tests, add off-path tests (section 4). |
 | `src/game/pool.test.ts` | Adapt on-path tests, add off-path tests (section 4). |
 | `tests/e2e/globe-tier-split.desktop.spec.ts` | **NEW** (QA). The `desktop` suffix routes it to the `desktop` Playwright project (1440x900). Network-log tests (4.6). |
@@ -106,8 +105,8 @@ on), in its own revertable commit.
 
 ### Execution order (who does what, in what order)
 
-1. **WORKER, pass 1:** steps 1-7, **8a**, **14**, the unit tests 4.1-4.5, 4.8
-   and 4.11, steps 9-13. Run gates 1-4b (section 5). **STOP and report.**
+1. **WORKER, pass 1:** steps 1-7, **8a**, the unit tests 4.1-4.5 and 4.8,
+   steps 9-13. Run gates 1-4b (section 5). **STOP and report.**
    Do NOT do 8b-8d or 15-18 yet.
 2. **QA:** write the E2E tests 4.6, 4.7 and 4.10, then run "Red first"
    (section 5): test 4.7 with `globeTierSplit=true` MUST FAIL at this point (the
@@ -122,8 +121,8 @@ Why this split: unit test 4.8 exercises only the pure helper
 test imports it), and 4.8 passes before and after 8b-8d. It cannot catch a
 mistake in the `Play` wiring (8b-8d). Only the E2E in 4.7 can: it is the proof
 that 8b-8d actually removed the stale-catalog commit. Likewise the E2E in 4.10
-is the only proof that steps 15-18 are wired. Step 14 (pure helper
-`src/game/pending-open.ts`) is in pass 1 because its unit test 4.11 imports it.
+is the only proof that steps 15-18 are wired. (Step number 14 is intentionally
+unused.)
 
 ### Design in seven sentences
 1. `placesFor(edition, regionId, choice?, tierSplit = false)`: the tier-limited
@@ -149,13 +148,15 @@ is the only proof that steps 15-18 are wired. Step 14 (pure helper
    catalog can therefore never be rendered against a new run, whatever the flag
    value.
 7. A run start that happens while a run is on screen (the celebration's "Try
-   Medium"/"Try Hard") gets its own small in-run feedback: a `role="status"`
-   line "Getting Medium ready…" while loading, and on failure a `role="alert"`
-   box with "Try again" and "Keep playing". "Try again" RELOADS the page and
-   restarts the requested band from a one-shot `sessionStorage` entry, because
-   Chromium remembers a failed dynamic `import()` for the lifetime of the
-   document (verified: the second `import()` of the same URL makes no network
-   request), so calling `openRun` again in the same document can never recover.
+   Medium"/"Try Hard", or Hard-clear "Try <neighbor>"/"Try <country>"/"Play the
+   Globe") gets its own small in-run feedback: an always-mounted `role="status"`
+   region whose text becomes "Getting Medium ready…" while loading, and on
+   failure a `role="alert"` box with "Try again" and "Keep playing". "Try
+   again" is exactly `window.location.reload()` (it opens the picker with the
+   chosen band still selected): Chromium remembers a failed dynamic `import()`
+   for the lifetime of the document (verified on Chromium 141.0.7390.37, this
+   VM: the second `import()` of the same URL makes no network request), so
+   calling `openRun` again in the same document can never recover.
 
 ### Steps
 
@@ -563,149 +564,93 @@ prebuild gate (`scripts/check-generated-places.mjs` -> `checkGlobeTiers`) and
 `scripts/globe-tiers.test.mjs` already fail loudly when tier files differ from
 `chunks/globe.json`; this change just removes the manual regeneration step.
 
-**Step 14 — NEW `src/game/pending-open.ts` (pass 1; exact content).** A run start
-that must survive one page reload (used only by the in-run "Try again", step 16):
-```ts
-import type { Edition } from "./run.ts";
-import { isPickerDifficulty, type PickerDifficulty } from "./tier-filter.ts";
-
-/** sessionStorage key: a run start to perform once after the next page load. */
-export const PENDING_OPEN_KEY = "meridian.pendingOpen";
-
-export interface PendingOpen {
-  edition: Edition;
-  regionId: string;
-  regionName: string;
-  choice: PickerDifficulty;
-}
-
-const EDITIONS: readonly string[] = ["state", "country", "globe"];
-
-function nonEmptyText(value: unknown, max: number): value is string {
-  return typeof value === "string" && value.length > 0 && value.length <= max;
-}
-
-/** Best effort: a storage failure just means the reload restores the saved run. */
-export function writePendingOpen(
-  storage: Pick<Storage, "setItem">,
-  pending: PendingOpen,
-): void {
-  try {
-    storage.setItem(PENDING_OPEN_KEY, JSON.stringify(pending));
-  } catch {
-    // Storage unavailable or full - nothing to do.
-  }
-}
-
-/**
- * Read AND clear the entry (one-shot, so a failing start can never loop on
- * reload). Fail closed: anything missing or malformed returns null.
- */
-export function takePendingOpen(
-  storage: Pick<Storage, "getItem" | "removeItem">,
-): PendingOpen | null {
-  let raw: string | null;
-  try {
-    raw = storage.getItem(PENDING_OPEN_KEY);
-    if (raw !== null) storage.removeItem(PENDING_OPEN_KEY);
-  } catch {
-    return null;
-  }
-  if (raw === null) return null;
-  try {
-    const value = JSON.parse(raw) as Record<string, unknown> | null;
-    if (value === null || typeof value !== "object") return null;
-    if (typeof value.edition !== "string" || !EDITIONS.includes(value.edition)) return null;
-    if (!nonEmptyText(value.regionId, 64) || !nonEmptyText(value.regionName, 120)) return null;
-    if (!isPickerDifficulty(value.choice)) return null;
-    return {
-      edition: value.edition as Edition,
-      regionId: value.regionId,
-      regionName: value.regionName,
-      choice: value.choice,
-    };
-  } catch {
-    return null;
-  }
-}
-```
+**Step 14** is intentionally unused (step numbers 15-18 are referenced elsewhere).
 
 **Step 15 — NEW `src/components/run-start-notice.tsx` (pass 2; exact content).**
 Focus pattern copied from `src/components/map-error-boundary.tsx` (ref +
 `tabIndex={-1}` + `focus({ preventScroll: true })` on appearance, `focus:outline-none`
 on the container only). Buttons use the shared `Button` (`min-h-11` = 44 px; the
 global `:focus-visible` rule in `src/styles.css:289` gives the focus ring).
-Copy has no jargon and never says "lite".
+The `role="status"` element is ALWAYS mounted and empty until used (a status
+region that mounts together with its text is often not announced); the box is
+placed at `top-44` so it never overlaps `idleToast` (`top-16`). Copy has no
+jargon and never says "lite".
 ```tsx
 import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 
-export type RunStartNoticeProps =
-  | { kind: "loading"; bandLabel: string }
-  | {
-      kind: "error";
-      bandLabel: string;
-      /** The tab predates the current deploy: offer the existing refresh instead. */
-      staleBuild: boolean;
-      onTryAgain: () => void;
-      onKeepPlaying: () => void;
-      onRefresh: () => void;
-    };
+export interface RunStartNoticeProps {
+  /** What is loading ("Medium", "Nebraska"); null when nothing is loading. */
+  loadingLabel: string | null;
+  /** Set when the requested start failed. */
+  error: null | {
+    /** "Medium" for a band change in the same place, else the place name. */
+    label: string;
+    scope: "band" | "region";
+    /** The tab predates the current deploy: offer the existing refresh instead. */
+    staleBuild: boolean;
+    onTryAgain: () => void;
+    onKeepPlaying: () => void;
+    onRefresh: () => void;
+  };
+}
 
 const BOX =
-  "fixed inset-x-4 top-28 z-50 mx-auto max-w-md rounded-xl border border-line bg-surface p-4 text-center text-sm text-fg shadow-xl";
+  "fixed inset-x-4 top-44 z-50 mx-auto max-w-md rounded-xl border border-line bg-surface p-4 text-center text-sm text-fg shadow-xl";
 
 /**
- * In-run feedback for a run start (the celebration's "Try Medium"/"Try Hard").
- * GameApp renders the Play screen whenever a run exists, so the menu-only
- * loading screen and loadNotice never show here; this does.
+ * In-run feedback for a run start (the celebration's "Try Medium"/"Try Hard",
+ * neighbor/country/Globe promotions). GameApp renders the Play screen whenever
+ * a run exists, so the menu-only loading screen and loadNotice never show
+ * here; this does. Rendered only while a run is on screen.
  */
-export function RunStartNotice(props: RunStartNoticeProps) {
+export function RunStartNotice({ loadingLabel, error }: RunStartNoticeProps) {
   const alertRef = useRef<HTMLDivElement | null>(null);
-  const isError = props.kind === "error";
+  const hasError = error !== null;
   useEffect(() => {
-    if (isError) alertRef.current?.focus({ preventScroll: true });
-  }, [isError]);
+    if (hasError) alertRef.current?.focus({ preventScroll: true });
+  }, [hasError]);
 
-  if (props.kind === "loading") {
-    return (
-      <p role="status" className={BOX}>
-        {`Getting ${props.bandLabel} ready…`}
-      </p>
-    );
-  }
   return (
-    <div ref={alertRef} role="alert" tabIndex={-1} className={`${BOX} focus:outline-none`}>
-      <p>
-        {props.staleBuild
-          ? "A new version of Meridian is available."
-          : `${props.bandLabel} needs the internet to bring its new places. Get online, then try again!`}
+    <>
+      <p role="status" className={loadingLabel !== null ? BOX : "sr-only"}>
+        {loadingLabel !== null ? `Getting ${loadingLabel} ready…` : ""}
       </p>
-      <div className="mt-3 flex flex-wrap justify-center gap-2">
-        {props.staleBuild ? (
-          <Button type="button" onClick={props.onRefresh}>
-            Refresh
-          </Button>
-        ) : (
-          <Button type="button" onClick={props.onTryAgain}>
-            Try again
-          </Button>
-        )}
-        <Button type="button" variant="secondary" onClick={props.onKeepPlaying}>
-          Keep playing
-        </Button>
-      </div>
-    </div>
+      {error ? (
+        <div ref={alertRef} role="alert" tabIndex={-1} className={`${BOX} focus:outline-none`}>
+          <p>
+            {error.staleBuild
+              ? "A new version of Meridian is available."
+              : error.scope === "band"
+                ? `${error.label} needs the internet to bring its new places. Get online, then try again!`
+                : `${error.label} needs the internet to bring its places. Get online, then try again!`}
+          </p>
+          <div className="mt-3 flex flex-wrap justify-center gap-2">
+            {error.staleBuild ? (
+              <Button type="button" onClick={error.onRefresh}>
+                Refresh
+              </Button>
+            ) : (
+              <Button type="button" onClick={error.onTryAgain}>
+                Try again
+              </Button>
+            )}
+            <Button type="button" variant="secondary" onClick={error.onKeepPlaying}>
+              Keep playing
+            </Button>
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 }
 ```
 
 **Step 16 — `src/components/game-app.tsx` wiring (pass 2).** Apply in this order
 (line numbers as of `da0ed60`; match by identifier):
-- (a) Imports, next to the other `@/components/*` and `@/game/*` imports:
+- (a) Import, next to the other `@/components/*` imports:
   ```ts
   import { RunStartNotice } from "@/components/run-start-notice";
-  import { takePendingOpen, writePendingOpen } from "@/game/pending-open";
   ```
 - (b) State (lines ~971-972). Replace
   ```ts
@@ -714,96 +659,113 @@ export function RunStartNotice(props: RunStartNoticeProps) {
   ```
   with
   ```ts
-  const [starting, setStarting] = useState<{ regionName: string; choice: PickerDifficulty } | null>(null);
+  // `edition`/`regionId`/`regionName`/`choice` describe what the player asked
+  // for, so the in-run notice (runStartNotice below) can name it.
+  const [starting, setStarting] = useState<{
+    edition: Edition;
+    regionId: string;
+    regionName: string;
+    choice: PickerDifficulty;
+  } | null>(null);
   const [startError, setStartError] = useState<{
     message: string;
     staleBuild: boolean;
-    choice: PickerDifficulty;
-  } | null>(null);
-  // What the last openRun was asked to start; "Try again" on the in-run
-  // failure box restarts exactly this (always as a FRESH run).
-  const lastOpenRef = useRef<{
     edition: Edition;
     regionId: string;
     regionName: string;
     choice: PickerDifficulty;
   } | null>(null);
   ```
-  (`useRef`, `Edition`, `PickerDifficulty` are already imported. Existing readers
-  of `starting` (`starting.regionName`) and `startError` (`.message`, `.staleBuild`)
+  (`Edition` and `PickerDifficulty` are already imported. Existing readers of
+  `starting` (`starting.regionName`) and `startError` (`.message`, `.staleBuild`)
   keep working.)
-- (c) `openRun` (lines ~1237-1238 and ~1357). Replace
-  `setStarting({ regionName });` with `setStarting({ regionName, choice });`. Directly
-  after `setStartError(null);` add `lastOpenRef.current = { edition, regionId, regionName, choice };`.
-  In the `catch`, replace `setStartError({ message, staleBuild });` with
-  `setStartError({ message, staleBuild, choice });`.
+- (c) `openRun` (lines ~1237 and ~1357). Replace `setStarting({ regionName });` with
+  `setStarting({ edition, regionId, regionName, choice });` and, in the `catch`,
+  replace `setStartError({ message, staleBuild });` with
+  `setStartError({ message, staleBuild, edition, regionId, regionName, choice });`.
+  Note on `label`: the label ("Medium" vs the place name) is derived at RENDER time
+  in (f), not stored, because `openRun` is a `useCallback` with deps
+  `[commit, ensureSession]` and has no access to the current `run` (reading
+  `readRun()` is unreliable, see the pre-existing boot-effect note in section 9).
 - (d) Directly after the closing `[commit, ensureSession],\n  );` of the `openRun`
   `useCallback` (line ~1371) add:
   ```ts
   // "Try again" on the in-run start-failure box. A failed dynamic import() is
   // remembered by the browser for the lifetime of the document (Chromium does
   // not even request the URL again), so calling openRun again in THIS document
-  // cannot recover once a tier file failed to load. Remember what the player
-  // asked for, reload (the saved run is restored on boot) and start it from the
-  // one-shot effect below.
-  const retryLastOpen = useCallback(() => {
-    const last = lastOpenRef.current;
-    if (last) {
-      try {
-        writePendingOpen(sessionStorage, last);
-      } catch {
-        // Storage blocked: the reload just restores the saved run.
-      }
-    }
-    window.location.reload();
+  // cannot recover once a tier file failed to load: reload instead. The picker
+  // opens with the chosen band still selected (onPlayBand persisted it). Do NOT
+  // reuse refreshForNewBuild: it sets STALE_REFRESH_KEY, which would disable
+  // later stale-build detection.
+  const retryLastOpen = useCallback(() => window.location.reload(), []);
+  // "Keep playing": close the box and hand focus back to the game (the box had
+  // it and is about to unmount). The result card's button is "Next place" in
+  // the pinned bar and "Next place →" in the full card; neither has a ref or
+  // test id, so find it by its label, as other code in this file does with
+  // document.querySelector (scout-boot-offer). requestAnimationFrame lets the
+  // unmount finish first.
+  const dismissStartError = useCallback(() => {
+    setStartError(null);
+    window.requestAnimationFrame(() => {
+      const next = Array.from(document.querySelectorAll<HTMLButtonElement>("button")).find(
+        (b) => (b.textContent ?? "").trim().startsWith("Next place"),
+      );
+      next?.focus({ preventScroll: true });
+    });
   }, []);
-  const dismissStartError = useCallback(() => setStartError(null), []);
-  // One-shot after a reload requested by retryLastOpen: start the band the
-  // player asked for. takePendingOpen clears the entry first, so a start that
-  // fails again can never loop; it then shows the same in-run failure box.
-  useEffect(() => {
-    if (!ready) return;
-    let pending = null;
-    try {
-      pending = takePendingOpen(sessionStorage);
-    } catch {
-      pending = null;
-    }
-    if (pending) {
-      void openRun(pending.edition, pending.regionId, pending.regionName, pending.choice, {
-        fresh: true,
-      });
-    }
-  }, [ready, openRun]);
   ```
-- (e) Band labels. The picker's labels are inline literals (~line 2016), so add,
-  immediately above `const DIFFICULTY_HINTS` (~line 1895):
+- (e) Labels and target helper, immediately above `const DIFFICULTY_HINTS` (~line 1895)
+  (the picker's labels are inline literals at ~2016, so add):
   ```ts
   const BAND_LABELS: Record<PickerDifficulty, string> = {
     easy: "Easy",
     medium: "Medium",
     hard: "Hard",
   };
+
+  /**
+   * What the in-run start notice calls the thing being loaded: the band name
+   * when the player stays in the same place and only changes the learning path
+   * (celebration "Try Medium"), otherwise the place name (Hard-clear "Try
+   * <neighbor>", "Try <country>", "Play the Globe").
+   */
+  function startNoticeTarget(
+    run: Run,
+    target: { edition: Edition; regionId: string; regionName: string; choice: PickerDifficulty },
+  ): { label: string; scope: "band" | "region" } {
+    return target.edition === run.edition && target.regionId === run.regionId
+      ? { label: BAND_LABELS[target.choice], scope: "band" }
+      : { label: target.regionName, scope: "region" };
+  }
   ```
 - (f) The notice element, directly after the `idleToast` definition (ends ~line 1566 with `) : null;`):
   ```tsx
   // In-run run-start feedback. Only while a run is on screen: from the menu the
   // existing "Loading places" screen and loadNotice already cover it, and the
-  // very first run (no run yet) never shows this.
-  const runStartNotice =
-    run && starting ? (
-      <RunStartNotice kind="loading" bandLabel={BAND_LABELS[starting.choice]} />
-    ) : run && startError ? (
-      <RunStartNotice
-        kind="error"
-        bandLabel={BAND_LABELS[startError.choice]}
-        staleBuild={startError.staleBuild}
-        onTryAgain={retryLastOpen}
-        onKeepPlaying={dismissStartError}
-        onRefresh={refreshForNewBuild}
-      />
-    ) : null;
+  // very first run (no run yet) never shows this. The status region inside is
+  // always mounted while a run exists so announcements are reliable.
+  const startTarget = starting ?? startError;
+  const noticeTarget = run && startTarget ? startNoticeTarget(run, startTarget) : null;
+  const runStartNotice = run ? (
+    <RunStartNotice
+      loadingLabel={starting && noticeTarget ? noticeTarget.label : null}
+      error={
+        !starting && startError && noticeTarget
+          ? {
+              label: noticeTarget.label,
+              scope: noticeTarget.scope,
+              staleBuild: startError.staleBuild,
+              onTryAgain: retryLastOpen,
+              onKeepPlaying: dismissStartError,
+              onRefresh: refreshForNewBuild,
+            }
+          : null
+      }
+    />
+  ) : null;
   ```
+  (`refreshForNewBuild` stays only on the stale-build variant, where setting
+  `STALE_REFRESH_KEY` is its intended behaviour.)
 - (g) Render it in the `if (run)` branch: after `{celebrationOverlay}` and before
   `{idleToast}` at the end of that branch (the fragment that contains `<Play ...>`
   and the `ClearedCelebrationDialog`, ~line 1660) add `{runStartNotice}`. Do not add
@@ -830,12 +792,12 @@ picker the run does not start and the normal "Could not load places for Globe"
 message appears. From the celebration's "Try Medium"/"Try Hard" a small box
 appears on the last card, "Getting Medium ready…" while it loads and then
 "Medium needs the internet to bring its new places. Get online, then try
-again!" with "Try again" and "Keep playing". "Try again" reloads Meridian (the
-game in progress is kept) and starts that band; "Keep playing" closes the box
-and leaves the cleared Easy state as it was. Nothing partial is ever dealt. A
-browser remembers a failed file load until the page is reloaded, which is why
-"Try again" reloads. With the flag off, one load covers every learning path
-(the previous behaviour). No cache-warming is done on purpose.
+again!" with "Try again" and "Keep playing". "Try again" reloads Meridian and
+opens the picker with Medium chosen; tap Play to start. "Keep playing" closes
+the box and leaves the cleared Easy state as it was. Nothing partial is ever
+dealt. A browser remembers a failed file load until the page is reloaded, which
+is why "Try again" reloads. With the flag off, one load covers every learning
+path (the previous behaviour). No cache-warming is done on purpose.
 ```
 
 ### How agreement of the two `placesFor` calls is guaranteed
@@ -1100,7 +1062,11 @@ way forward. Only with the flag true: route `flags.json` (after
 `beforeEach`, local helpers and seeding as 4.7 (copy `curatedDifficulties`,
 `tierPlaces`, `tierOf`, `easyBandIds`, `keep`, `EASY_KEY`, `MEDIUM_KEY`,
 `pickDifficulty`, `readRunFull`, `readDropPlaceId`, `expectAim`,
-`celebration`, `collectErrors`, `expectCleanConsole`). Add
+`celebration`, `collectErrors`, `expectCleanConsole`; plus `resultCard` and
+`nextPlaceButton` from `./helpers`). Do NOT read `meridian.run` (`readPhase`,
+`readRunFull`) while the failure box is on screen: a pre-existing boot-effect
+quirk (section 9) deletes it from `sessionStorage` right after "Try Medium";
+`readRunFull`/`readDropPlaceId` are only used after a NEW run was started. Add
 `const CLEARED_EASY_KEY = "meridian:cleared:v1:globe:globe:easy";`. Every selector
 is a role or visible text.
 
@@ -1122,22 +1088,13 @@ has count 0 (the notice never shows on a normal load).
 
 | # | Action | Expected |
 |---|---|---|
-| P1 | `reachEasyCelebration`; click "Try Medium" in the celebration; then `await expect(failBox).toBeVisible({ timeout: 30_000 })`; `await expect(failBox).toBeFocused()`; heights of buttons "Try again" and "Keep playing" (`boundingBox().height`) are both `>= 44`; the result card (`getByRole("region", { name: "Result" })`) is still visible; `readPhase` is `"done"`; `localStorage.getItem(MEDIUM_KEY)` is `null`; `readRunFull(page).difficultyChoice` is `"easy"`. Then `await page.unroute("**/assets/globe-t3-*.js")` and the same for t4; `await Promise.all([page.waitForEvent("load"), page.getByRole("button", { name: "Try again" }).click()])` (the page reloads); `expectAim(page)`; `failBox` hidden; `run = readRunFull(page)` has `regionId === "globe"`, `difficultyChoice === "medium"`, `index === 0`; `commitMiss(page)`; `d1 = readDropPlaceId(page)`; `tierOf(d1)` is in `[2,3,4]`; `JSON.parse(localStorage.getItem(MEDIUM_KEY) ?? "[]")` equals `[d1]` (no Easy-only place was recorded). `expectCleanConsole`. | All as listed. |
-| P2 | `reachEasyCelebration`; click "Try Medium"; `failBox` visible; click "Keep playing". | `failBox` hidden; the result card is still visible; `readPhase` is `"done"`; `readRunFull(page).difficultyChoice` is `"easy"`; `localStorage.getItem(CLEARED_EASY_KEY)` is not `null` (cleared state remains); `localStorage.getItem(MEDIUM_KEY)` is `null`; the status line `getByText("Getting Medium ready…")` is not visible. |
+| P1 | `reachEasyCelebration`; click "Try Medium" in the celebration; then `await expect(failBox).toBeVisible({ timeout: 30_000 })`; `await expect(failBox).toBeFocused()`; heights of buttons "Try again" and "Keep playing" (`boundingBox().height`) are both `>= 44`; `await expect(resultCard(page)).toBeVisible(); await expect(nextPlaceButton(page)).toBeVisible();`; `localStorage.getItem(MEDIUM_KEY)` is `null`. Then `await page.unroute("**/assets/globe-t3-*.js")` and the same for t4; `await Promise.all([page.waitForEvent("load"), page.getByRole("button", { name: "Try again" }).click()])` (the page reloads and opens the picker); `await expect(difficultyGroup(page).getByRole("button", { name: "Medium" })).toHaveAttribute("aria-pressed", "true")` (copy `difficultyGroup` from cleared-mode.spec.ts); click "Play the globe" (Medium is already pressed in the picker); `expectAim(page)`; `failBox` hidden; `run = readRunFull(page)` (now a NEW run) has `regionId === "globe"`, `difficultyChoice === "medium"`, `index === 0`; `commitMiss(page)`; `d1 = readDropPlaceId(page)`; `tierOf(d1)` is in `[2,3,4]`; `JSON.parse(localStorage.getItem(MEDIUM_KEY) ?? "[]")` equals `[d1]` (no Easy-only place was recorded). Finish with `expectCleanConsole(errors.filter((e) => !e.includes("net::ERR_FAILED")))` (the aborted tier files log `Failed to load resource: net::ERR_FAILED`). | All as listed. |
+| P2 | `reachEasyCelebration`; click "Try Medium"; `failBox` visible; click "Keep playing". | `failBox` hidden; `await expect(resultCard(page)).toBeVisible(); await expect(nextPlaceButton(page)).toBeVisible();` (the player is still on the last card); `nextPlaceButton(page)` is focused (`toBeFocused`); `localStorage.getItem(CLEARED_EASY_KEY)` is not `null` (cleared state remains); `localStorage.getItem(MEDIUM_KEY)` is `null`; the status line `getByText("Getting Medium ready…")` is not visible. |
 
 Rerun 3 times if flaky and report the pass count. If, after `unroute` and
 "Try again", the box shows again or no Medium question appears, STOP and report
 (do not replace the reload with a second `openRun` call: Chromium caches the
 failed import for the document's lifetime, see Design point 7).
-
-### 4.11 Unit — `src/game/pending-open.test.ts` (NEW, WORKER, pass 1)
-`node:test`, fake storage `Map`-backed `{getItem,setItem,removeItem}`. Cases:
-1. round trip: `writePendingOpen(store, {edition:"globe",regionId:"globe",regionName:"Globe",choice:"medium"})` then `takePendingOpen(store)` deepEquals the same object.
-2. one-shot: a second `takePendingOpen` returns `null` and `store.getItem(PENDING_OPEN_KEY)` is `null`.
-3. empty store -> `null`.
-4. malformed JSON, `"null"`, `"42"` -> `null` (and the key is cleared).
-5. bad `edition` ("planet"), bad `choice` ("legendary"), missing `regionId`, empty `regionName`, `regionName` of 121 chars, `regionId` of 65 chars -> each `null`.
-6. a storage whose `getItem` throws -> `null` (does not throw); one whose `setItem` throws -> `writePendingOpen` does not throw.
 
 ## 5. Acceptance commands (run in order; save output to the log path the orchestrator gives)
 
@@ -1145,7 +1102,6 @@ Commit 1 state (flag default `false`, `flags.json` unchanged):
 1. `npx tsc --noEmit` -> no output, exit 0.
 2. `npm test` -> exit 0; both runners report `fail 0`. New/changed files appear
    in the TAP output: `globe-tier-split.test.ts` (new), `places-load-key.test.ts` (new),
-   `pending-open.test.ts` (new),
    `flags.test.ts`, `generated-places.test.ts`, `pool.test.ts`.
 3. `node scripts/lint-cards.mjs` -> prints `GATE PASSED`.
 3b. `node scripts/build-globe-tiers.mjs --check` -> prints `globe tiers in sync with chunks/globe.json`.
@@ -1195,7 +1151,6 @@ The orchestrator makes exactly two commits (stage named files only, never
   `src/lib/flags.test.ts`, `src/game/generated-places.ts`,
   `src/game/generated-places.test.ts`, `src/game/pool.test.ts`,
   `src/game/places-load-key.ts`, `src/game/places-load-key.test.ts`,
-  `src/game/pending-open.ts`, `src/game/pending-open.test.ts`,
   `src/components/run-start-notice.tsx`,
   `src/components/game-app.tsx`, `tests/e2e/globe-tier-split.desktop.spec.ts`
   (T1-T4), `tests/e2e/globe-band-switch.desktop.spec.ts`,
@@ -1204,7 +1159,7 @@ The orchestrator makes exactly two commits (stage named files only, never
   `BRANCH_STATUS.md`. (The Play stale-catalog fix and the flag work are one
   code commit: the fix is required for the split path to be correct, and
   commit 2 must never be able to enable the split without it. Likewise the
-  in-run start notice (steps 14-17) is in commit 1: the UX-REVIEWER verdict is
+  in-run start notice (steps 15-17) is in commit 1: the UX-REVIEWER verdict is
   that the split must not ship ON until the silent in-run failure is fixed, so
   the orchestrator must NOT make commit 2 unless E2E 4.10 passes.)
 - **Commit 2 "perf: enable globeTierSplit in flags.json"**, made AFTER commit 1,
@@ -1230,7 +1185,7 @@ The orchestrator makes exactly two commits (stage named files only, never
 - **Globe band change with flag OFF shows "Loading places" and remounts `PlayLoaded`** -> accepted, documented difference from `main@d7a0fc8` (cache hit, identical full pool; already true of `62895ea`). It no longer applies to country/state/review runs (their key has no band part, step 8a). If an existing E2E (`cleared-mode`, `celebration`) newly fails ONLY with the flag off, STOP and report.
 - **Stale catalog regression (BLOCK on `62895ea`)** -> step 8 is mandatory and must be in commit 1. If `tsc` complains about `loadedForKey(poolFailure, loadKey)` types, `poolFailure` is `LoadedFor<string>` so the result is `string | null`: do not cast. If any code outside `Play` used `setPlaces`/`setPoolError`, STOP and report.
 - **Offline switch to a band whose tier files were never fetched (NIT 4 + UX BLOCK)** -> with the flag ON, `public/sw.js` caches `/assets/` files on first use, so a player who has only played Easy and is offline fails to start Medium/Hard on the Globe (previously one Globe file covered every band). Fail-closed: from the picker the normal "Could not load places for Globe" start error appears; from the celebration the in-run box (steps 15-17) appears with "Try again"/"Keep playing". Documented in `docs/feature-flags.md` (step 18). Do NOT add cache-warming code. The kill switch (flag off) removes the limitation.
-- **"Try again" must reload (verified, not assumed).** Experiment (Chromium 152, this VM): after one failed `import("/mod.js")`, a second `import()` of the same URL fails again WITHOUT any network request (document-lifetime module-map entry). So an in-document `openRun` retry can never recover; step 16(d) reloads and restarts from `sessionStorage` (`meridian.pendingOpen`, one-shot). Side effects to accept: the page reloads (the saved Easy run is restored on boot; `isUncleanShutdown` stays false because `pagehide` stamps the clean-exit marker), the picker already shows the new band (`onPlayBand` persists it with `setDifficultyChoice` before `openRun`), and "Keep playing" leaves the picker showing Medium while the run is Easy.
+- **"Try again" must reload (verified, not assumed).** Experiment (Chromium 141.0.7390.37, this VM): after one failed `import("/mod.js")`, a second `import()` of the same URL fails again WITHOUT any network request (document-lifetime module-map entry). So an in-document `openRun` retry can never recover; `retryLastOpen` is exactly `window.location.reload()` (step 16(d)). Side effects to accept: after the reload the player lands on the picker with the new band already selected (`onPlayBand` persists it with `setDifficultyChoice` before `openRun`) and taps Play; "Keep playing" leaves the picker showing Medium while the run is Easy.
 - **Replay at the same band also flashes "Getting Easy ready…"** (celebration "Replay Easy" runs `openRun` with a run on screen) -> accepted; cache hit, one frame.
 - **Neighbor/country promotions** use the same box ("Hard needs the internet to bring its new places...") because the copy is keyed on the band, as specified; accepted.
 - **`migrate-notable-to-history.mjs` change** -> never run the script (it mutates place data). The prebuild gate already fails loudly on stale tier files; step 13 only removes the manual regeneration step.
@@ -1256,16 +1211,29 @@ pipeline or card change; visual baselines; WS-1 .. WS-6.
   does not run E2E on the `/` base.
 - No cache-warming of the other bands' Globe tier files (NIT 4); see risks.
 - **Owner decision, UX-REVIEWER finding 2 (NOT done, orchestrator scope
-  decision):** rewrite the picker's start-error copy ("Could not load places for
-  Globe: ... Please try again.") into kid-friendly wording. Not done because
-  `tests/e2e/crash-watchdog.spec.ts:208` asserts the existing "Could not load
-  places for Globe" text. The reviewer's proposed replacement copy was not
-  included in the brief given to the ARCHITECT: the orchestrator should paste it
-  here verbatim.
-- **Owner decision, UX-REVIEWER finding 4 (NOT done, orchestrator scope
-  decision):** the finding text and the reviewer's proposed copy were not
-  included in the brief given to the ARCHITECT: the orchestrator should paste
-  them here verbatim.
+  decision):** keep the technical string for `emitEvent` only and show kid copy
+  in `startError.message`: "We couldn't open {regionName} right now. Check that
+  you're online, then tap it again." and drop the appended " Please try again."
+  (game-app.tsx ~1348 where the message is built, ~1725 where `loadNotice`
+  appends it). Not done because `tests/e2e/crash-watchdog.spec.ts:208` asserts
+  the existing "Could not load places for Globe" text.
+- **Owner decision, UX-REVIEWER finding 4 (nit, NOT done):** the
+  edition-entrance fanfare (game-app.tsx ~1236, `playEditionEntrance`) plays
+  before the load succeeds; ideally play it after `data_loaded` (~1264).
+- **Pre-existing (separate ticket, not fixed here):** the boot effect in
+  `game-app.tsx` (~1136-1207) depends on `difficultyChoice`, so every in-run band
+  change (`onPlayBand` -> `setDifficultyChoice`) re-runs the crash-loop breaker;
+  because `writeRun`/`openRun` already set the clean-exit marker to "0",
+  `isUncleanShutdown()` is true and `clearRunAfterUncleanShutdown` deletes
+  `meridian.run` and marks the exit clean while a run is still on screen
+  (observed: about 8 s after a failed "Try Medium", `meridian.run` is null and a
+  reload lands on the picker). This is why E2E 4.10 does not read the saved run
+  while the failure box is shown and why "Try again" lands on the picker.
+- **Pre-existing, regardless of the flag:** the same silent in-run failure
+  already exists today for Hard-clear "Try <neighbor>", "Try <country>" and
+  "Play the Globe" when offline (a failed `openRun` with a run on screen showed
+  nothing). The new in-run notice is keyed on `run` + `starting`/`startError`, so
+  it covers them too (region wording, step 15).
 - **Pre-existing, found while verifying "Try again":** the picker's own "Please
   try again" after a failed region load has the same document-lifetime problem
   (a failed `import()` is remembered until reload), for every region, before and
