@@ -1,70 +1,34 @@
-# BRANCH_STATUS — fix/crash-report-background-classification (2026-10-12)
+# BRANCH_STATUS — fix/storyteller-entering-tap (2026-10-13)
 
 **PUSH OK, DO NOT MERGE** — owner merges.
 
 ## What this fixes (plain language)
 
-Two Android crash reports arrived with the identical signature: `suspected_crash`,
-no error, last milestone `storyteller_ready`. Investigation showed the crash
-reporter **cannot tell the difference** between two very different events:
-
-1. Android killing the tab while the game is on screen (a real problem), and
-2. Android killing a *backgrounded* tab for memory (routine phone behavior —
-   the user switches apps or locks the phone, the OS reclaims the tab).
-
-Both look exactly the same in the report. Chasing a memory bug from this
-evidence would be guessing.
-
-**The fix makes every future report self-classifying:**
-- The app now records a `backgrounded` milestone when the tab is hidden and a
-  `foregrounded` milestone when it returns.
-- A future `suspected_crash` ending at `backgrounded` = the OS killed a
-  backgrounded tab (expected, not a bug). Anything else = a real foreground
-  kill worth investigating.
-
-**Companion fix found during verification:** the `storyteller_ready` milestone
-was being re-recorded on *every React render* (the `onLoaded` callback was an
-inline arrow, so the mascot's preload effect re-ran each render). That spammed
-the breadcrumb trail and would have overwritten the new `backgrounded`
-milestone. Both call sites now use a stable `useCallback` — the milestone
-fires once, when the figure actually loads.
+On the home page the storyteller sat in `data-phase="entering"` for as long as the "New to Meridian?" invite was up. `started` stayed false, so the 150ms beat that leaves `entering` never ran. Tapping the mascot fell through to a poke line, and that line only renders after start — the click did nothing and narration never armed.
 
 ## What changed (files)
 
-- `src/lib/observability.ts` — `backgrounded`/`foregrounded` milestones;
-  `visibilitychange` listener installed once in `init()` (injectable document
-  for tests; silent no-op without a DOM).
-- `src/lib/observability.test.ts` — 4 new unit tests.
-- `src/components/storyteller.tsx` — stable `handleFigureLoaded` callback.
-- `src/components/storyteller-home.tsx` — stable `handleFigureLoaded` callback.
-- `tests/e2e/crash-classification.mobile.spec.ts` — new black-box E2E spec.
+- `src/components/storyteller-audio-guards.ts` — `decideEnteringFigureTap`. A figure tap during `entering`, or before start, starts the greeting. In-flight audio and the send-off are left alone.
+- `src/components/storyteller-home.tsx` — that tap releases the invite lock and plays the greeting on the gesture (text-only when sound is off or the clip is not ready). The entering timer ignores itself if a tap already settled the beat. A 2s watchdog leaves `entering` if the 150ms timer never fires. Re-entering `entering` (tour-return follow-up) can settle again.
+- `src/components/storyteller-audio-guards.test.ts` — four cases for the new decision.
 
 ## What was verified
 
-- [x] `npx tsc --noEmit` clean
-- [x] `npm test` — 1190/1190 (incl. 4 new visibility tests)
-- [x] `node scripts/lint-cards.mjs` — GATE PASSED
-- [x] `npm run build:pages` green
-- [x] New E2E spec passes on rebuilt dist (mobile 390×844)
-- [x] Existing storyteller E2E suite: 6/6 (narration watchdogs untouched)
-- [x] Full next-boot classification path covered by unit test
-      (backgrounded trail → `suspected_crash` carries `lastMilestone: "backgrounded"`)
+- [x] `node --experimental-strip-types --test src/components/storyteller-audio-guards.test.ts` — 27/27
+- [ ] `npx tsc --noEmit` — not run here (no `node_modules` in this checkout)
+- [ ] `npm test` — not run here
+- [ ] `npm run build:pages` — not run here
+- [ ] Playwright storyteller specs — not run here
 
 ## Deliberately NOT changed
 
-- The #136 narration watchdogs and audio paths are untouched (verified by the
-  6/6 storyteller suite).
-- The crash-report worker needs no change — `lastMilestone` is already
-  forwarded; "backgrounded" reads clearly in the Discord alert.
-- No memory "optimization" was shipped on a guess. The sprite sheets
-  (12.6 MB decoded) and the map are the real memory holders, but shrinking
-  them without proof of the kill mechanism would be theater.
+- Greeting still waits for the invite to clear before it auto-starts. Only a mascot tap (a real gesture) starts it early.
+- Tour-return stays text-only. Mute still does not auto-play.
+- No CSS change. The stuck phase was JavaScript, not a transitionend hang.
 
 ## Pending
 
-- [x] Scrum panel review — APPROVE, no BLOCKs
-- [x] Rebase to zero conflicts + full suite re-run — done (1219/1219, E2E 1/1 + 6/6)
-- [x] Screen recording of verification — `~/workspace/your_files/meridian-crash-classification/crash-classification-verification.webm`
-- [x] Open PR (never merge) — PR #144 OPEN
+- [ ] Full unit suite, typecheck, pages build, storyteller E2E
+- [ ] Owner merge
 
-**Ready to merge? NO** — pending owner's video green-light → Chitti/panel review → owner's merge decision.
+**Ready to merge? NO** — gates above are still open.
