@@ -1258,7 +1258,9 @@ export function GameApp() {
       try {
         // The region's chunk(s) load here — never eagerly, never partial.
         recordMilestone("data_chunk_load_start", { edition, regionId, chunkId: regionId });
-        const places = await placesFor(edition, regionId);
+        // The learning path rides along so the Globe fetches only the fame
+        // tiers it deals from; filterByTier below still decides the pool.
+        const places = await placesFor(edition, regionId, choice);
         recordMilestone("data_loaded", { edition, regionId, chunkId: regionId });
         const dateKey = trailDate();
         // The picker's difficulty band narrows the catalog BEFORE the dealer
@@ -2470,7 +2472,7 @@ function Play({
         cancelled = true;
       };
     }
-    placesFor(run.edition, run.regionId).then(
+    placesFor(run.edition, run.regionId, run.difficultyChoice).then(
       (loaded) => {
         if (!cancelled) setPlaces(loaded);
       },
@@ -2483,7 +2485,11 @@ function Play({
     return () => {
       cancelled = true;
     };
-  }, [run.edition, run.regionId]);
+    // difficultyChoice is a dependency: the Globe loads only the tiers of the
+    // run's learning path, so a band change (celebration promotion, replay at
+    // another path) must reload `places` — never reuse a pool that lacks the
+    // new band's tiers. The null reset above keeps it fail-closed.
+  }, [run.edition, run.regionId, run.difficultyChoice]);
 
   if (poolError) {
     return (

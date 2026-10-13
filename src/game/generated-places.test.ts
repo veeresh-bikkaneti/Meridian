@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { STARTERS } from "./starters.ts";
 import {
   generatedStartersFor,
@@ -13,7 +14,14 @@ import {
   applyFactIndex,
   GENERATED_SOURCE_LABEL,
   GENERATED_SOURCE_HREF,
+  GLOBE_TIERS,
+  loadGlobeTiers,
+  loadedGlobeTiersForTests,
+  mergeByGeonameId,
 } from "./generated-places.ts";
+import { asFameTier, filterByTier, tiersFor, TIER_BANDS, type PickerDifficulty } from "./tier-filter.ts";
+import { resolveRunPool } from "./pool.ts";
+import { createDealer, memorySeenStore, poolForNewRun } from "./trail.ts";
 import { ADMIN1_BY_COUNTRY } from "./regions.ts";
 import manifestJson from "./data/geonames/manifest.json" with { type: "json" };
 import notableNotesJson from "./data/notable-notes.json" with { type: "json" };
@@ -991,4 +999,163 @@ test("loadRegionChunk works with no fact index (alabama)", async () => {
   clearChunkCacheForTests();
   const starters = await loadRegionChunk("alabama");
   assert.ok(starters.length > 0);
+});
+
+// ---------------------------------------------------------------------------
+// Globe tier split (perf Task 2): the Easy path must not download or parse
+// tiers 3–5, and splitting must change nothing about WHAT is dealt or the
+// ORDER it is dealt in.
+// ---------------------------------------------------------------------------
+
+const GEONAMES_DIR = new URL("./data/geonames/", import.meta.url);
+const readJson = (rel: string) => JSON.parse(readFileSync(new URL(rel, GEONAMES_DIR), "utf8"));
+const CHOICES: PickerDifficulty[] = ["easy", "medium", "hard"];
+
+interface RawPlace {
+  id: string;
+  difficulty?: unknown;
+}
+
+/** The pre-split behavior, computed straight from the canonical file: the band filter over file order. */
+function legacyBandIds(choice: PickerDifficulty): string[] {
+  const band = TIER_BANDS[choice];
+  const places = (readJson("chunks/globe.json") as { places: RawPlace[] }).places;
+  return places
+    .filter((p) => {
+      const tier = asFameTier(p.difficulty);
+      return band.some(([lo, hi]) => tier >= lo && tier <= hi);
+    })
+    .map((p) => p.id);
+}
+
+test("globe tiers: the tier files are exactly the canonical set — same ids, count, order, records", () => {
+  const canonical = (readJson("chunks/globe.json") as { places: RawPlace[] }).places;
+  assert.equal(canonical.length, 59423);
+  const tierChunks = GLOBE_TIERS.map(
+    (t) => readJson(`tiers/globe-t${t}.json`) as { meta: { tier: number; count: number }; places: RawPlace[] },
+  );
+  let total = 0;
+  for (const [i, chunk] of tierChunks.entries()) {
+    assert.equal(chunk.meta.tier, GLOBE_TIERS[i]);
+    assert.equal(chunk.meta.count, chunk.places.length);
+    for (const p of chunk.places) assert.equal(asFameTier(p.difficulty), GLOBE_TIERS[i], `${p.id} filed in wrong tier`);
+    total += chunk.places.length;
+  }
+  assert.equal(total, 59423);
+  assert.equal(total, manifest.regions.globe.count);
+  // Merge by numeric id and compare record-for-record with the canonical file.
+  const merged = tierChunks
+    .flatMap((c) => c.places)
+    .sort((a, b) => Number(a.id.slice(3)) - Number(b.id.slice(3)));
+  assert.deepEqual(merged, canonical);
+  assert.equal(new Set(merged.map((p) => p.id)).size, 59423);
+});
+
+test("globe tiers: loading all tiers equals the canonical chunk (loadRegionChunk('globe'))", async () => {
+  clearChunkCacheForTests();
+  const all = await loadRegionChunk("globe");
+  const canonicalIds = (readJson("chunks/globe.json") as { places: RawPlace[] }).places.map((p) => p.id);
+  assert.deepEqual(all.map((s) => s.id), canonicalIds);
+  assert.equal(all.length, manifest.regions.globe.count);
+  assert.deepEqual((await loadGlobeTiers(GLOBE_TIERS)).map((s) => s.id), canonicalIds);
+});
+
+test("globe tiers: each learning path's pool equals the previous filter result, in the same order", async () => {
+  for (const choice of CHOICES) {
+    clearChunkCacheForTests();
+    const tiers = tiersFor(choice);
+    const loaded = await loadGlobeTiers(tiers);
+    const legacy = legacyBandIds(choice);
+    assert.deepEqual(loaded.map((s) => s.id), legacy, `${choice}: loaded tiers differ from legacy filter`);
+    // ...and the app's own filter over what was loaded keeps all of it.
+    assert.deepEqual(filterByTier(loaded, choice).map((s) => s.id), legacy);
+    // ...and over the FULL globe gives the same set (what the old code did).
+    const full = await loadRegionChunk("globe");
+    assert.deepEqual(filterByTier(full, choice).map((s) => s.id), legacy);
+  }
+  assert.deepEqual(tiersFor("easy"), [1, 2]);
+  assert.deepEqual(tiersFor("medium"), [2, 3, 4]);
+  assert.deepEqual(tiersFor("hard"), [4, 5]);
+});
+
+test("globe tiers: placesFor(globe, choice) keeps curated starters and the same banded pool as the full load", async () => {
+  for (const choice of CHOICES) {
+    clearChunkCacheForTests();
+    const lean = await placesFor("globe", "globe", choice);
+    const fullPool = await placesFor("globe", "globe");
+    assert.deepEqual(
+      filterByTier(lean, choice).map((s) => s.id),
+      filterByTier(fullPool, choice).map((s) => s.id),
+      `${choice}: banded pool differs`,
+    );
+    // Curated globe starters are always in the pool (the band filters them later).
+    const curated = STARTERS.filter((s) => s.edition === "globe" && s.regionId === "globe").map((s) => s.id);
+    for (const id of curated) assert.ok(lean.some((s) => s.id === id), `${choice}: curated ${id} missing`);
+    assert.ok(lean.length <= fullPool.length);
+  }
+});
+
+test("globe tiers: Easy fetches only t1+t2; Medium/Hard add only the extra tiers", async () => {
+  clearChunkCacheForTests();
+  assert.deepEqual(loadedGlobeTiersForTests(), []);
+  await placesFor("globe", "globe", "easy");
+  assert.deepEqual(loadedGlobeTiersForTests(), [1, 2]);
+  await placesFor("globe", "globe", "medium"); // extra: t3, t4 (t2 is cached)
+  assert.deepEqual(loadedGlobeTiersForTests(), [1, 2, 3, 4]);
+  await placesFor("globe", "globe", "hard"); // extra: t5
+  assert.deepEqual(loadedGlobeTiersForTests(), [1, 2, 3, 4, 5]);
+
+  clearChunkCacheForTests();
+  await placesFor("globe", "globe", "hard");
+  assert.deepEqual(loadedGlobeTiersForTests(), [4, 5]);
+  clearChunkCacheForTests();
+  await placesFor("globe", "globe"); // no path (tests/tooling): everything
+  assert.deepEqual(loadedGlobeTiersForTests(), [1, 2, 3, 4, 5]);
+});
+
+test("globe tiers: seeded dealing order is unchanged by the split", async () => {
+  const SEED = 20261013;
+  for (const choice of CHOICES) {
+    clearChunkCacheForTests();
+    const fullPlaces = await placesFor("globe", "globe");
+    const leanPlaces = await placesFor("globe", "globe", choice);
+    const dealFrom = (places: typeof fullPlaces) => {
+      const start = poolForNewRun(filterByTier(places, choice), memorySeenStore());
+      const pool = resolveRunPool(places, start.poolIds);
+      const dealer = createDealer(pool, SEED, memorySeenStore());
+      return Array.from({ length: 300 }, (_, i) => dealer.at(i)?.id);
+    };
+    const before = dealFrom(fullPlaces);
+    const after = dealFrom(leanPlaces);
+    assert.deepEqual(after, before, `${choice}: seeded deal order changed`);
+    assert.equal(new Set(before).size, 300, `${choice}: repeated a place before pool exhaustion`);
+  }
+});
+
+test("globe tiers: whole-country runs (aggregated subdivision chunks) ignore the learning path", async () => {
+  clearChunkCacheForTests();
+  const plain = await placesFor("country", "united-states");
+  assert.deepEqual(loadedGlobeTiersForTests(), [], "a country run must not touch globe tiers");
+  clearChunkCacheForTests();
+  for (const choice of CHOICES) {
+    const withChoice = await placesFor("country", "united-states", choice);
+    assert.deepEqual(withChoice.map((s) => s.id), plain.map((s) => s.id));
+    assert.deepEqual(withChoice.map((s) => s.regionId), plain.map((s) => s.regionId));
+  }
+  assert.deepEqual(loadedGlobeTiersForTests(), []);
+  // Wiring unchanged: the country chunk plus its 50 state chunks.
+  assert.deepEqual(aggregateChunkIds("country", "united-states"), [
+    "united-states",
+    ...ADMIN1_BY_COUNTRY["united-states"].map((s) => s.id),
+  ]);
+});
+
+test("globe tiers: fail closed — bad tier numbers, unsorted lists, misfiled records", async () => {
+  await assert.rejects(() => loadGlobeTiers([6]), /invalid globe tier/);
+  await assert.rejects(() => loadGlobeTiers([0]), /invalid globe tier/);
+  const a = { id: "gn-5" } as never;
+  const b = { id: "gn-9" } as never;
+  assert.deepEqual(mergeByGeonameId([[b], [a]]).map((s) => s.id), ["gn-5", "gn-9"]);
+  assert.throws(() => mergeByGeonameId([[b, a]]), /ascending id order/);
+  assert.throws(() => mergeByGeonameId([[{ id: "x-1" } as never]]), /not "gn-<digits>"/);
 });
