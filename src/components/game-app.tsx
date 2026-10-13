@@ -42,6 +42,7 @@ import { scoreRingForEdition } from "@/game/score";
 import { scorePlace, type ScoredPlace } from "@/game/scoring";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrated, markClearedCelebrated, clearClearedMark, memorySeenStore, isBandCleared } from "@/game/trail";
 import { resolveRunPool } from "@/game/pool";
+import { loadedForKey, placesLoadKey, type LoadedFor } from "@/game/places-load-key";
 import type { MapMark, MapVariation } from "@/map/satellite-map";
 import { MapErrorBoundary } from "./map-error-boundary";
 import { Compass, Flag, Globe2, MapPin, Volume2, VolumeX } from "lucide-react";
@@ -58,6 +59,7 @@ import {
 import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
 import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import { RunStartNotice } from "@/components/run-start-notice";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { HintPanel } from "./hint-panel";
 import { directionalHint } from "./hint-logic";
@@ -982,8 +984,22 @@ export function GameApp() {
   // chunk cannot be loaded, and the player stays on the menu. When the tab
   // is stale (a deploy replaced its hashed chunks), the notice becomes a
   // one-tap refresh prompt instead of a dead end.
-  const [starting, setStarting] = useState<{ regionName: string } | null>(null);
-  const [startError, setStartError] = useState<{ message: string; staleBuild: boolean } | null>(null);
+  // `edition`/`regionId`/`regionName`/`choice` describe what the player asked
+  // for, so the in-run notice (runStartNotice below) can name it.
+  const [starting, setStarting] = useState<{
+    edition: Edition;
+    regionId: string;
+    regionName: string;
+    choice: PickerDifficulty;
+  } | null>(null);
+  const [startError, setStartError] = useState<{
+    message: string;
+    staleBuild: boolean;
+    edition: Edition;
+    regionId: string;
+    regionName: string;
+    choice: PickerDifficulty;
+  } | null>(null);
   // Session score: survives edition switches until End game or the idle
   // timeout. The HUD and the summary read from here, never from the run.
   const { session, update: updateSession, replace: replaceSession, get: getSession } = useSessionState();
@@ -1248,7 +1264,7 @@ export function GameApp() {
       // into an edition (gladiator-into-the-arena energy). Not for the
       // tutorial (quiet practice round).
       if (!opts?.tutorial && soundAudible()) safePlay(playEditionEntrance);
-      setStarting({ regionName });
+      setStarting({ edition, regionId, regionName, choice });
       setStartError(null);
       recordMilestone("run_start", { edition, regionId, chunkId: regionId });
       // D1: arm the clean-exit dirty marker NOW, before the data-chunk
@@ -1370,7 +1386,7 @@ export function GameApp() {
         } catch {
           staleBuild = false;
         }
-        setStartError({ message, staleBuild });
+        setStartError({ message, staleBuild, edition, regionId, regionName, choice });
         // Telemetry: region-chunk load failures never left this catch —
         // emit so they reach crash reporting like every other error class.
         emitEvent({
@@ -1385,6 +1401,30 @@ export function GameApp() {
     },
     [commit, ensureSession],
   );
+
+  // "Try again" on the in-run start-failure box. A failed dynamic import() is
+  // remembered by the browser for the lifetime of the document (Chromium does
+  // not even request the URL again), so calling openRun again in THIS document
+  // cannot recover once a tier file failed to load: reload instead. The picker
+  // opens with the chosen band still selected (onPlayBand persisted it). Do NOT
+  // reuse refreshForNewBuild: it sets STALE_REFRESH_KEY, which would disable
+  // later stale-build detection.
+  const retryLastOpen = useCallback(() => window.location.reload(), []);
+  // "Keep playing": close the box and hand focus back to the game (the box had
+  // it and is about to unmount). The result card's button is "Next place" in
+  // the pinned bar and "Next place →" in the full card; neither has a ref or
+  // test id, so find it by its label, as other code in this file does with
+  // document.querySelector (scout-boot-offer). requestAnimationFrame lets the
+  // unmount finish first.
+  const dismissStartError = useCallback(() => {
+    setStartError(null);
+    window.requestAnimationFrame(() => {
+      const next = Array.from(document.querySelectorAll<HTMLButtonElement>("button")).find(
+        (b) => (b.textContent ?? "").trim().startsWith("Next place"),
+      );
+      next?.focus({ preventScroll: true });
+    });
+  }, []);
 
   // Review-deck status for the picker entry (flag-gated; re-read whenever
   // the app returns to the picker — see useDeckStatus).
@@ -1581,6 +1621,29 @@ export function GameApp() {
       Still there? Your game ends after 2 minutes of no activity — do anything to keep playing.
     </div>
   ) : null;
+  // In-run run-start feedback. Only while a run is on screen: from the menu the
+  // existing "Loading places" screen and loadNotice already cover it, and the
+  // very first run (no run yet) never shows this. The status region inside is
+  // always mounted while a run exists so announcements are reliable.
+  const startTarget = starting ?? startError;
+  const noticeTarget = run && startTarget ? startNoticeTarget(run, startTarget) : null;
+  const runStartNotice = run ? (
+    <RunStartNotice
+      loadingLabel={starting && noticeTarget ? noticeTarget.label : null}
+      error={
+        !starting && startError && noticeTarget
+          ? {
+              label: noticeTarget.label,
+              scope: noticeTarget.scope,
+              staleBuild: startError.staleBuild,
+              onTryAgain: retryLastOpen,
+              onKeepPlaying: dismissStartError,
+              onRefresh: refreshForNewBuild,
+            }
+          : null
+      }
+    />
+  ) : null;
 
   if (!ready) {
     return (
@@ -1620,12 +1683,14 @@ export function GameApp() {
           onEditions={() => {
             // Back to the picker WITHOUT ending the game: the session (and
             // its score) stays alive across the edition switch.
+            setStartError(null);
             clearDrop();
             setRun(null);
             setMenu(null);
           }}
           onSummaryDone={() => {
             // End game already ended the session; drop it and go home.
+            setStartError(null);
             clearDrop();
             setRun(null);
             setMenu(null);
@@ -1666,6 +1731,7 @@ export function GameApp() {
               // Back to the edition picker WITHOUT ending the game: the
               // session (and its score) stays alive, like the Editions
               // button mid-run.
+              setStartError(null);
               setCleared(null);
               clearDrop();
               setRun(null);
@@ -1674,6 +1740,7 @@ export function GameApp() {
           />
         ) : null}
         {celebrationOverlay}
+        {runStartNotice}
         {idleToast}
       </>
     );
@@ -1908,6 +1975,27 @@ export function GameApp() {
 }
 
 /** Kid-friendly hints for each learning path, shown under the picker. */
+const BAND_LABELS: Record<PickerDifficulty, string> = {
+  easy: "Easy",
+  medium: "Medium",
+  hard: "Hard",
+};
+
+/**
+ * What the in-run start notice calls the thing being loaded: the band name
+ * when the player stays in the same place and only changes the learning path
+ * (celebration "Try Medium"), otherwise the place name (Hard-clear "Try
+ * <neighbor>", "Try <country>", "Play the Globe").
+ */
+function startNoticeTarget(
+  run: Run,
+  target: { edition: Edition; regionId: string; regionName: string; choice: PickerDifficulty },
+): { label: string; scope: "band" | "region" } {
+  return target.edition === run.edition && target.regionId === run.regionId
+    ? { label: BAND_LABELS[target.choice], scope: "band" }
+    : { label: target.regionName, scope: "region" };
+}
+
 const DIFFICULTY_HINTS: Record<PickerDifficulty, string> = {
   easy: "Famous places — the spots every explorer starts with.",
   medium: "A little of everything — grow your map one discovery at a time.",
@@ -2445,8 +2533,18 @@ function Play({
    */
   applyMapMode: (mode: MapMode, source: "manual" | "contextlost") => void;
 }) {
-  const [places, setPlaces] = useState<Starter[] | null>(null);
-  const [poolError, setPoolError] = useState<string | null>(null);
+  // The catalog is stored WITH the key it was loaded for and only used while
+  // that key is the current run's key. Play stays mounted across run changes
+  // (GameApp renders it whenever `run` is set), so a plain `places` state would
+  // hand PlayLoaded the previous band's catalog for one commit: wrong pool, a
+  // dealer on the new band's seen store, and a stale place written into the
+  // new band's no-repeat history. Deriving `places` makes that commit
+  // impossible: a key mismatch renders "Loading places" instead.
+  const loadKey = placesLoadKey(run.edition, run.regionId, run.difficultyChoice);
+  const [loadedPlaces, setLoadedPlaces] = useState<LoadedFor<Starter[]> | null>(null);
+  const [poolFailure, setPoolFailure] = useState<LoadedFor<string> | null>(null);
+  const places = loadedForKey(loadedPlaces, loadKey);
+  const poolError = loadedForKey(poolFailure, loadKey);
   // Review sessions: the due deck entries in session order (the poolIds
   // order). Null for normal runs.
   const [reviewEntries, setReviewEntries] = useState<DeckEntry[] | null>(null);
@@ -2462,8 +2560,7 @@ function Play({
 
   useEffect(() => {
     let cancelled = false;
-    setPlaces(null);
-    setPoolError(null);
+    setPoolFailure(null);
     setReviewEntries(null);
     if (review) {
       // Review deck: no chunk fetch — due cards carry their own snapshots.
@@ -2479,10 +2576,12 @@ function Play({
         const entries = ordered.length > 0 ? ordered : due;
         if (!cancelled) {
           setReviewEntries(entries);
-          setPlaces(entries.map(deckStarter));
+          setLoadedPlaces({ key: loadKey, value: entries.map(deckStarter) });
         }
       } catch {
-        if (!cancelled) setPoolError("Could not load your review deck.");
+        if (!cancelled) {
+          setPoolFailure({ key: loadKey, value: "Could not load your review deck." });
+        }
       }
       return () => {
         cancelled = true;
@@ -2493,23 +2592,33 @@ function Play({
         placesFor(run.edition, run.regionId, run.difficultyChoice, tierSplit),
       )
       .then(
-      (loaded) => {
-        if (!cancelled) setPlaces(loaded);
-      },
-      (err: unknown) => {
-        if (!cancelled) {
-          setPoolError(err instanceof Error ? err.message : String(err));
-        }
-      },
-    );
+        (list) => {
+          if (!cancelled) setLoadedPlaces({ key: loadKey, value: list });
+        },
+        (err: unknown) => {
+          if (!cancelled) {
+            setPoolFailure({
+              key: loadKey,
+              value: err instanceof Error ? err.message : String(err),
+            });
+          }
+        },
+      );
     return () => {
       cancelled = true;
     };
-    // difficultyChoice is a dependency: the Globe loads only the tiers of the
-    // run's learning path, so a band change (celebration promotion, replay at
-    // another path) must reload `places` — never reuse a pool that lacks the
-    // new band's tiers. The null reset above keeps it fail-closed.
-  }, [run.edition, run.regionId, run.difficultyChoice]);
+    // Keyed on the load key, not on the individual run fields. For the Globe
+    // the key contains the learning path, so a band change (celebration
+    // promotion, replay at another path) loads the new band's catalog and, until
+    // it arrives, renders "Loading places" - never the old band's catalog.
+    // For every other region the key has no band part, so a band change does
+    // not reload or remount. Flag on: the Globe loads only the tiers of the
+    // new path. Flag off: the reload is unnecessary (the pool is the full
+    // Globe pool for every band) but harmless: globeTierSplitFor returns its
+    // cached value and placesFor hits the chunk cache, so the same full pool
+    // comes back after one "Loading places" frame.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loadKey]);
 
   if (poolError) {
     return (
