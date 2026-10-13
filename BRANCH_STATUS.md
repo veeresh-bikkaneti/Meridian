@@ -1,3 +1,6 @@
+SAFE TO MERGE: NO - consolidation in progress
+LOCK: orchestrator 2026-10-13T19:51:22Z
+
 # BRANCH_STATUS — claude/hopeful-darwin-dp7ket (perf Task 1: measurement harness)
 
 **PUSH OK, DO NOT MERGE** — owner merges.
