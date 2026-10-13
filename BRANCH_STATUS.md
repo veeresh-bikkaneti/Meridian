@@ -70,6 +70,8 @@ struggle with the full site or go to lite mode."
   changeable in Map settings — panel noted the label is honest as-is;
   left for the owner's eye rather than adding UI copy unasked.
 
+## PR: https://github.com/veeresh-bikkaneti/Meridian/pull/147 (OPEN, never merged)
+
 ## Ready to merge? NO
 ## What is pending?
 Owner's video green-light → Chitti/panel independent review → owner's merge decision.
