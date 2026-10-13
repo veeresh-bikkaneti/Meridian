@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { STARTERS, type Starter } from "./starters.ts";
 import { buildRegionPool, resolveRunPool } from "./pool.ts";
-import { createDealer, memorySeenStore, mintSeed } from "./trail.ts";
+import { createDealer, memorySeenStore, mintSeed, poolForNewRun } from "./trail.ts";
+import { placesFor } from "./generated-places.ts";
+import { filterByTier, type PickerDifficulty } from "./tier-filter.ts";
 
 test("state pool holds only that state's places", () => {
   const pool = buildRegionPool(STARTERS, "state", "nebraska");
@@ -95,4 +97,40 @@ test("resolveRunPool: empty poolIds (deliberately empty band) stays empty — ne
 test("resolveRunPool: non-empty poolIds matching nothing (legacy/tampered) fall back to the full catalog", () => {
   const places = [{ id: "a" }, { id: "b" }, { id: "c" }];
   assert.deepEqual(resolveRunPool(places, ["ghost-1", "ghost-2"]), places);
+});
+
+// Globe tier split: the Globe now loads only the fame tiers of the run's
+// learning path. The run pool (poolIds → places) and the fail-closed region
+// pool must be exactly what the full catalog produced.
+for (const choice of ["easy", "medium", "hard"] as PickerDifficulty[]) {
+  test(`globe ${choice}: tier-limited catalog resolves the same run pool as the full catalog`, async () => {
+    const full = await placesFor("globe", "globe");
+    const lean = await placesFor("globe", "globe", choice);
+    const start = poolForNewRun(filterByTier(full, choice), memorySeenStore());
+    assert.ok(start.poolIds.length > 0, "band must not be empty");
+    const fromFull = resolveRunPool(full, start.poolIds);
+    const fromLean = resolveRunPool(lean, start.poolIds);
+    assert.deepEqual(
+      fromLean.map((p) => p.id),
+      fromFull.map((p) => p.id),
+    );
+    // Every pool id is present in the lean catalog: the tier-limited load
+    // never falls into resolveRunPool's "legacy/tampered → full catalog" branch.
+    assert.equal(fromLean.length, start.poolIds.length);
+    // Fail-closed region build still accepts it and only holds globe places.
+    for (const place of buildRegionPool(lean, "globe", "globe")) {
+      assert.equal(place.edition, "globe");
+      assert.equal(place.regionId, "globe");
+    }
+  });
+}
+
+test("globe: a tier-limited catalog cannot satisfy a wider band's poolIds (reload required)", async () => {
+  // Documents WHY game-app reloads `places` when difficultyChoice changes:
+  // an Easy-only catalog resolves only part of a Medium pool.
+  const full = await placesFor("globe", "globe");
+  const easyOnly = await placesFor("globe", "globe", "easy");
+  const mediumIds = poolForNewRun(filterByTier(full, "medium"), memorySeenStore()).poolIds;
+  const resolved = resolveRunPool(easyOnly, mediumIds);
+  assert.ok(resolved.length > 0 && resolved.length < mediumIds.length);
 });

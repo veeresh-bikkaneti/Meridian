@@ -104,6 +104,32 @@ are the closure), and the browser run corroborates it: exactly
 | main route chunk ~2.2 MB / 633 kB gz | 2,248,252 B raw / 650,001 B gzip level 9 (= 634.8 KiB; the brief's 633 kB is not reproduced exactly) |
 | `maplibre-gl-shared.mjs` 516 kB | 515,924 B raw / 147,737 B gzip; **not requested at all** during the Easy-Globe flow in this run |
 
+## After Task 2 — Globe data split by fame tier
+
+Command (same build, same machine, idle): `npm run build:pages && node scripts/perf-globe-easy.mjs --runs 5`
+
+| metric (median of 5) | before (main) | after | change |
+| --- | ---: | ---: | ---: |
+| Home ready | 5,103 ms | 5,080 ms | ~0 |
+| Tap Play → interactive question | 17,755 ms | 8,755 ms | −9,000 ms |
+| Question text on screen | 21,251 ms | 12,553 ms | −8,698 ms |
+| **First interactive question** | **23,134 ms** | **14,075 ms** | **−9,059 ms (−39%)** |
+| JS bytes transferred | 2,730,330 | 1,334,440 | −1,395,890 (−51%) |
+| All bytes transferred | 3,733,320 | 2,337,432 | −1,395,888 (−37%) |
+| Peak JS heap (sampled) | 70.99 MiB | 60.34 MiB | −10.65 MiB (−15%) |
+
+Globe data on the wire for Easy: 1,852,304 B (`globe-*.js`) → 455,940 B
+(`globe-t1` 141,154 + `globe-t2` 314,786), −75%. What did **not** shrink: the
+655 kB `routes-*.js` + 138 kB `index-*.js` entry bundles, still ~59% of the
+remaining JS bytes, and the 5.1 s to a usable home screen. The remaining
+Easy-path load is now mostly the app itself, not the data.
+
+Build output (`node scripts/bundle-report.mjs`): total JS/CSS/JSON 46,360,034 →
+46,363,030 raw bytes (the tier files replace `globe-*.js` 1:1; gzip total
+8,722,552 → 8,827,854 because five smaller files compress slightly worse).
+Medium and Hard still download t2–t4 / t4–t5 (44,213 / 30,629 places); only
+Easy is dramatically smaller (11,388 of 59,423 places, 19%).
+
 ## Not measured (yet)
 
 - Real devices; this is a CPU multiplier on a desktop-class VM.

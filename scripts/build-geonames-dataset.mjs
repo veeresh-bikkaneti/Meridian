@@ -46,6 +46,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { homedir } from "node:os";
 import { composeCardStory } from "./card-compose.mjs";
+import { writeGlobeTiers } from "./build-globe-tiers.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO = dirname(HERE);
@@ -926,6 +927,10 @@ async function main() {
     regions: manifestRegions,
   };
   writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
+
+  // The runtime loads Globe from per-tier files derived from chunks/globe.json
+  // (the Easy path must not download tiers 3–5). Regenerate them with it.
+  if (perRegion.has("globe")) writeGlobeTiers();
 
   // --- report
   const mins = ((Date.now() - t0) / 60000).toFixed(1);

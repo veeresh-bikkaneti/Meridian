@@ -37,6 +37,7 @@
 import { createWriteStream, existsSync, mkdirSync, readFileSync, writeFileSync, statSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { writeGlobeTiers } from "./build-globe-tiers.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO = dirname(HERE);
@@ -970,6 +971,7 @@ async function cmdMerge() {
   let removed = 0; // enrichment hooks removed: every candidate now rejected
   let enrichmentTotal = 0; // enrichment-sourced histories present after this run
   let totalBytes = 0;
+  let globeChanged = false;
   for (const regionId of Object.keys(manifest.regions).sort()) {
     const path = join(CHUNKS_DIR, `${regionId}.json`);
     const chunk = JSON.parse(readFileSync(path, "utf8"));
@@ -1029,12 +1031,16 @@ async function cmdMerge() {
       // Field order is stable (history/wiki appended after blurb-era fields
       // by assignment order); counts and ids are untouched.
       writeFileSync(path, JSON.stringify(chunk) + "\n");
+      if (regionId === "globe") globeChanged = true;
     }
     const bytes = statSync(path).size;
     totalBytes += bytes;
     manifest.regions[regionId].bytes = bytes;
   }
   manifest.meta.chunkBytes = totalBytes;
+  // The runtime loads Globe from the derived per-tier files, not from
+  // chunks/globe.json — keep them in step (the prebuild gate fails if not).
+  if (globeChanged) writeGlobeTiers();
   // historySentences is SET to the counted total of enrichment-sourced
   // histories, never accumulated: an earlier version added each run's new
   // enrichments onto the stored count, which double-counts repaired
