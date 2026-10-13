@@ -7,7 +7,8 @@ import { serveBuiltArtifact } from "./helpers";
  *
  * The tutorial invite holds `started` false, so the 150ms beat never runs
  * and a figure tap used to render nothing. This tap is the gesture that
- * must release the lock and show the greeting.
+ * must release the lock, dismiss the invite (same as "Not now" — no second
+ * popup over the lead line), and show the greeting.
  *
  * Project: mobile (390×844, touch). Screenshots land in
  * /workspace/screenshots for the review packet.
@@ -78,8 +79,20 @@ test("figure tap during the tutorial invite leaves entering and shows the greeti
     fullPage: false,
   });
 
+  await page.evaluate(() => {
+    (window as unknown as { __greetAudioAttempts: number }).__greetAudioAttempts = 0;
+    const OrigAudio = window.Audio;
+    function CountingAudio(this: HTMLAudioElement, url?: string) {
+      (window as unknown as { __greetAudioAttempts: number }).__greetAudioAttempts += 1;
+      return new OrigAudio(url);
+    }
+    CountingAudio.prototype = OrigAudio.prototype;
+    window.Audio = CountingAudio as unknown as typeof Audio;
+  });
+
   await page.getByTestId("storyteller-figure").click();
 
+  await expect(page.getByTestId("tutorial-invite")).toHaveCount(0);
   await expect
     .poll(async () => host.getAttribute("data-phase"), { timeout: 8_000 })
     .not.toBe("entering");
@@ -87,6 +100,30 @@ test("figure tap during the tutorial invite leaves entering and shows the greeti
   const caption = page.getByTestId("storyteller-home-caption");
   await expect(caption).toBeVisible({ timeout: 8_000 });
   await expect(caption).toContainText(expectedGreeting());
+  // The fade is 150ms. Settled, the plate is opaque and sits above the tagline.
+  await expect
+    .poll(async () =>
+      caption.evaluate((el) => getComputedStyle(el.parentElement!).opacity),
+    )
+    .toBe("1");
+  const plate = await caption.evaluate((el) => {
+    const bubble = el.parentElement as HTMLElement;
+    const cs = getComputedStyle(bubble);
+    const b = bubble.getBoundingClientRect();
+    const hit = document.elementFromPoint(b.left + b.width / 2, b.top + 16);
+    return {
+      bg: cs.backgroundColor,
+      hit: hit?.getAttribute("data-testid") ?? hit?.tagName ?? null,
+    };
+  });
+  expect(plate.bg, "greeting plate must be opaque").not.toMatch(/\/\s*0?\.[0-9]/);
+  expect(plate.hit, "caption must paint above the tagline").toBe(
+    "storyteller-home-caption",
+  );
+  const attempts = await page.evaluate(
+    () => (window as unknown as { __greetAudioAttempts: number }).__greetAudioAttempts,
+  );
+  expect(attempts, "one greeting clip — invite dismiss must not start a second").toBe(1);
 
   const phase = await host.getAttribute("data-phase");
   await page.screenshot({

@@ -17,6 +17,7 @@ import {
   takeTourReturnLine,
 } from "./storyteller-session";
 import { recordMilestone } from "@/lib/observability";
+import { TUTORIAL_INVITE_DISMISS_EVENT } from "@/game/tutorial";
 import "./storyteller-home.css";
 
 // Storyteller banner host — the Storyteller sits IN THE BANNER beside the
@@ -44,6 +45,8 @@ import "./storyteller-home.css";
 //   loads; navigation never waits (copy G3). He never travels into loops.
 // - Tutorial invite visible: the figure stays in the banner, but the
 //   greeting waits until the invite is dismissed (no competing popups).
+//   A figure tap dismisses the invite the same way "Not now" does, then
+//   starts the greeting on that gesture.
 // - Reduced motion: ≤150ms opacity fade only; full caption instantly; audio
 //   timing unchanged.
 //
@@ -182,7 +185,7 @@ function firstEditionControl(): HTMLElement | null {
 export interface StorytellerHomeHostProps {
   /** True while the first-run tutorial invite is on screen — the figure
       stays in the banner, but the greeting stays quiet until the invite is
-      dismissed (no competing popups). */
+      dismissed (no competing popups). A figure tap dismisses it. */
   tutorialInviteVisible?: boolean;
 }
 
@@ -800,13 +803,19 @@ export default function StorytellerHomeHost({
       return;
     }
     // Stuck in `entering`, or the invite has not released `started`: this
-    // tap starts the greeting. A poke here renders nothing.
+    // tap starts the greeting. While the invite is up, dismiss it first
+    // (same as "Not now") so the bubble does not stack on that card.
+    // startedRef flips true here, so the invite-cleared effect does not
+    // start a second clip.
     if (
       decideEnteringFigureTap({
         phase,
         started: startedRef.current,
       }) === "greet"
     ) {
+      if (tutorialInviteVisible) {
+        window.dispatchEvent(new Event(TUTORIAL_INVITE_DISMISS_EVENT));
+      }
       greetFromFigureTap();
       return;
     }
@@ -849,7 +858,7 @@ export default function StorytellerHomeHost({
     pokeIndexRef.current += 1;
     showBubble(line, POKE_BUBBLE_MS);
     pokeVisual();
-  }, [mode, phase, showBubble, pokeVisual, beginGreetingAudio, failGreetingAudio, greetFromFigureTap]);
+  }, [mode, phase, showBubble, pokeVisual, beginGreetingAudio, failGreetingAudio, greetFromFigureTap, tutorialInviteVisible]);
 
   // ---- Loop send-off (copy G3) ----------------------------------------------
   useEffect(() => {

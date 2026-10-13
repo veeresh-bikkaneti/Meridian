@@ -4,35 +4,35 @@
 
 ## What this fixes (plain language)
 
-On the home page the storyteller sat in `data-phase="entering"` for as long as the "New to Meridian?" invite was up. `started` stayed false, so the 150ms beat that leaves `entering` never ran. Tapping the mascot fell through to a poke line, and that line only renders after start — the click did nothing and narration never armed.
+On the home page the storyteller sat in `data-phase="entering"` for as long as the "New to Meridian?" invite was up. Tapping the mascot did nothing. The first cut of this branch started the greeting on top of the invite, so the line sat on the lead paragraph and was hard to read.
+
+A mascot tap now dismisses the invite the same way "Not now" does, then starts the greeting inside that click. The bubble stays in its existing spot under the banner, on a solid plate so the tagline does not show through.
 
 ## What changed (files)
 
-- `src/components/storyteller-audio-guards.ts` — `decideEnteringFigureTap`. A figure tap during `entering`, or before start, starts the greeting. In-flight audio and the send-off are left alone.
-- `src/components/storyteller-home.tsx` — that tap releases the invite lock and plays the greeting on the gesture (text-only when sound is off or the clip is not ready). The entering timer ignores itself if a tap already settled the beat. A 2s watchdog leaves `entering` if the 150ms timer never fires. Re-entering `entering` (tour-return follow-up) can settle again.
-- `src/components/storyteller-audio-guards.test.ts` — four cases for the new decision.
-- `tests/e2e/storyteller-entering-tap.mobile.spec.ts` — mobile proof: invite up, phase is `entering`, figure tap leaves `entering` and shows today's greeting.
-
-## What was verified
-
-- [x] Storyteller unit tests — 43/43 (`storyteller-audio-guards.test.ts` + `storyteller-home.test.ts`)
-- [x] `npx tsc --noEmit` — clean
-- [x] `npm run build:pages` — green
-- [x] New mobile E2E — 1/1. Before tap: phase `entering`, invite visible. After figure tap: phase left `entering`, caption is today's greeting.
-- [x] Existing invite specs (`storyteller-home.mobile.spec.ts -g invite`) — 3/3. Dismiss-as-gesture, no audio under a tour, no mp3 under the text-only return line.
-- [ ] `npm test` full suite — not run
-- [ ] Rest of the storyteller Playwright folder — not run
+- `src/game/tutorial.ts` — `TUTORIAL_INVITE_DISMISS_EVENT`. GameApp already owns "Not now".
+- `src/components/game-app.tsx` — listens for that event and runs `onDismissInvite`. Does not start audio.
+- `src/components/storyteller-audio-guards.ts` — `decideEnteringFigureTap`. Unchanged decision: a tap during `entering`, or before start, starts the greeting.
+- `src/components/storyteller-home.tsx` — that tap dismisses the invite, then plays on the gesture. The invite-cleared effect does not start a second clip.
+- `src/components/storyteller-home.css` — popover background is opaque `--atlas-bg-1`. Position, size, and dismiss anchor unchanged.
+- `tests/e2e/storyteller-entering-tap.mobile.spec.ts` — after the tap the invite is gone and today's greeting is visible.
 
 ## Deliberately NOT changed
 
-- Greeting still does not auto-start while the invite is up. Only a mascot tap or "Not now" starts it. The 2s watchdog does not run until `started` is true, so an untouched invite still sits in `entering`.
-- Tour-return stays text-only. Mute still does not auto-play.
-- No CSS change.
+- "Not now", "Take the tour", tour-return, mute, and poke/replay are the same paths as main.
+- Greeting still does not auto-start while the invite is up. The 2s watchdog does not run until `started` is true.
+- Popover still hangs below the banner (no reflow, still clear of the sound toggle).
 
 ## Pending
 
-- [ ] Full unit suite and the rest of the storyteller E2E folder
-- [ ] Owner sign-off: a mascot tap while the invite is up shows the greeting on the same screen as the invite
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm test` — scripts 756 pass / 7 skip, src 1223/1223
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — green
+- [x] Entering-tap mobile E2E — invite gone, one greeting clip, opaque plate, caption above the tagline
+- [x] Invite specs (3) and dismiss × sound-toggle overlap @390 and @360 — green
 - [ ] Owner merge
 
-**Ready to merge? NO** — full suite still open. The new path is proven on one mobile E2E plus the three invite regressions.
+Poke-after-dismiss still fails on `main` (`d7a0fc8`) in this browser. That path was not changed.
+
+**Ready to merge? Owner's call.** This cut does not touch poke, tour-return, mute, or the story-card host.
