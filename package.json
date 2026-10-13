@@ -26,7 +26,9 @@
     "postbuild": "node scripts/fingerprint-sw.mjs",
     "test:worker": "node --experimental-strip-types --test workers/crash-report/src/index.test.ts",
     "typecheck:worker": "npx tsc -p workers/crash-report/tsconfig.json --noEmit",
-    "smoke:crash": "node scripts/crash-smoke.mjs"
+    "smoke:crash": "node scripts/crash-smoke.mjs",
+    "perf:bundle": "node scripts/bundle-report.mjs",
+    "perf:globe-easy": "node scripts/perf-globe-easy.mjs"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.4",
