@@ -53,6 +53,12 @@ on), in its own revertable commit.
    all five.
 4. Reverting only the second commit (section 6) yields a green tree whose
    shipped behaviour is the full pool.
+5. Stale-catalog regression (ARCH-REVIEWER BLOCK on `62895ea`, folded into this
+   workstream): after a Globe learning-path change (Easy -> "Try Medium"), the
+   no-repeat store `meridian:seen:v2:globe:globe:medium` holds exactly the ids
+   the player was actually dealt, never a place dealt from the previous band's
+   stale catalog. Proven by unit test (4.8) and E2E (4.7), which fails
+   before step 8 and passes after it.
 
 ## 2. Files
 
@@ -62,13 +68,17 @@ on), in its own revertable commit.
 | `src/lib/flags.ts` | Add `"globeTierSplit"` to `FlagName`; add `globeTierSplit: false` to `FLAG_DEFAULTS` with comment. Nothing else. |
 | `src/game/generated-places.ts` | `placesFor` gets a 4th parameter `tierSplit: boolean = false`; Globe tier-limited loading happens only when it is `true`. Update the two doc comments that describe the split (module header lines ~22-28 and the `choice` param doc ~766-773). |
 | `src/lib/globe-tier-split.ts` | **NEW.** Tiny per-page-load resolver (section 3, step 3). |
-| `src/components/game-app.tsx` | One import; one top-level helper `globeTierSplitFor`; the two `placesFor` call sites (`openRun`, `Play` effect); update the comment above the effect's dependency array. |
+| `src/game/places-load-key.ts` | **NEW.** Two tiny pure helpers (`placesLoadKey`, `placesForKey`) so `Play` can never hand `PlayLoaded` a catalog loaded for a different band (step 7). Node-testable. |
+| `src/components/game-app.tsx` | Imports; one top-level helper `globeTierSplitFor`; the two `placesFor` call sites (`openRun`, `Play` effect); **`Play` keyed load state** (steps 7-8) replacing `useState` `places`/`poolError`; fix the now-wrong comment above the effect's dependency array. |
 | `src/lib/flags.test.ts` | New `describe("globeTierSplit flag")`. |
 | `src/lib/globe-tier-split.test.ts` | **NEW** unit tests for the resolver. |
+| `src/game/places-load-key.test.ts` | **NEW** unit tests (4.8): the stale-catalog regression at the pure level. |
 | `src/game/generated-places.test.ts` | Adapt on-path tests, add off-path tests (section 4). |
 | `src/game/pool.test.ts` | Adapt on-path tests, add off-path tests (section 4). |
-| `tests/e2e/globe-tier-split.desktop.spec.ts` | **NEW** (QA). The `desktop` suffix routes it to the `desktop` Playwright project (1440x900). |
-| `docs/feature-flags.md` | One new row in "Current catalog". |
+| `tests/e2e/globe-tier-split.desktop.spec.ts` | **NEW** (QA). The `desktop` suffix routes it to the `desktop` Playwright project (1440x900). Network-log tests (4.6). |
+| `tests/e2e/globe-band-switch.desktop.spec.ts` | **NEW** (QA). Regression E2E for the stale-catalog bug (4.7). |
+| `scripts/migrate-notable-to-history.mjs` | Minimal fix (step 13): regenerate the Globe tier files when this migration rewrote `chunks/globe.json`. |
+| `docs/feature-flags.md` | One new row in "Current catalog" plus a short "Globe tier split" note (offline caveat, step 9). |
 | `BRANCH_STATUS.md` | Move the "Kill switch flag `globeTierSplit`" Pending bullet to Done (wording in step 12). Do NOT touch the first two lines (`SAFE TO MERGE`, `LOCK`). |
 | `public/flags.json` | **Commit 2 only**: add `"globeTierSplit": true`. |
 | `scripts/flags-content.test.mjs` | **Commit 2 only**: add the `=== true` assertion. |
@@ -79,12 +89,13 @@ on), in its own revertable commit.
 `chunks/globe.json`, it merges the five tier files, which is proven equal to it),
 `src/game/tier-filter.ts`, `src/game/pool.ts`, `src/game/trail.ts`,
 `src/game/run.ts`, `src/game/starters.ts`, everything under
-`src/game/data/`, `scripts/*` except the one test above, `package.json`,
+`src/game/data/`, `scripts/*` except `scripts/migrate-notable-to-history.mjs`
+(step 13) and the one test above, `package.json`,
 `tests/e2e/helpers.ts` (reuse, do not edit), every other E2E spec, `.scratch/`.
 
 ## 3. Design (ONE design) and ordered steps
 
-### Design in five sentences
+### Design in six sentences
 1. `placesFor(edition, regionId, choice?, tierSplit = false)`: the tier-limited
    Globe load happens only when `choice !== undefined && tierSplit === true`.
    Anything else (flag off, no choice, parameter omitted) loads the full Globe.
@@ -101,6 +112,12 @@ on), in its own revertable commit.
 5. Only Globe runs (edition `"globe"`, region `"globe"`) consult the resolver;
    every other run passes `false` immediately and is byte-for-byte unaffected
    (no extra await beyond one resolved promise).
+6. `Play` stores the loaded catalog together with the key it was loaded for
+   (`{ key, places }`) and passes `places` to `PlayLoaded` only when that key
+   equals the key of the CURRENT run (`edition:regionId:band`, band only for the
+   Globe); otherwise it shows the existing "Loading places" screen. A stale
+   catalog can therefore never be rendered against a new run, whatever the flag
+   value.
 
 ### Steps
 
@@ -249,7 +266,7 @@ all five (flag off); filterByTier below still decides the pool." The
 `useCallback` dependency list `[commit, ensureSession]` does not change (the
 helper is module-level).
 
-**Step 7 — `Play` effect (lines ~2475-2484).** Replace
+**Step 7 — `Play` effect call site (lines ~2475-2484).** Replace
 ```ts
     placesFor(run.edition, run.regionId, run.difficultyChoice).then(
       (loaded) => {
@@ -264,30 +281,172 @@ with
       (loaded) => {
 ```
 and leave the two handlers and the cleanup exactly as they are (re-indent only
-if tsc/prettier complains; `cancelled` guards stay on both handlers).
+if tsc/prettier complains). This intermediate state is deliberately STILL the
+buggy `62895ea` state-handling (see step 8); it exists so QA can show the
+regression E2E failing before step 8 (section 5, "Red first").
 
-**Step 8 — dependency array.** KEEP `[run.edition, run.regionId, run.difficultyChoice]`
-in BOTH modes. Replace the 4-line comment above it with:
+**Step 8 — `Play`: never render a catalog loaded for another band (ARCH-REVIEWER
+BLOCK on `62895ea`).**
+
+The bug (verified by the orchestrator): `GameApp` renders `<Play>` whenever
+`run` is set (`if (run)` branch, ~line 1578) BEFORE the `if (starting)` loading
+branch (~line 1696). During `openRun(..., { fresh: true })` for a Globe
+learning-path change (celebration "Try Medium", replay at another path),
+`Play` stays mounted; `commit(next)` re-renders it with the NEW run while its
+`places` state still holds the OLD band's tiers. `PlayLoaded` (no `key`) then
+runs `resolveRunPool(oldPlaces, newPoolIds)` (partial pool, or the whole stale
+catalog when the overlap is empty, `pool.ts:21`), builds a dealer with the new
+seed and the NEW band's seen store, and its effect
+`dealer.markDealtThrough(run.index)` (~line 2705) writes a place the player
+never saw into the new band's no-repeat history BEFORE `Play`'s effect calls
+`setPlaces(null)`. It also mounts and destroys a `SatelliteMap`. The comment
+"The null reset above keeps it fail-closed" was wrong for that commit.
+
+The fix (derive, do not reset): `places` is only ever the catalog loaded for
+the CURRENT key, computed during render.
+
+8a. NEW `src/game/places-load-key.ts` (exact content; node strip-types safe):
 ```ts
-    // difficultyChoice stays a dependency in both modes. Flag on: the Globe
-    // loads only the tiers of the run's learning path, so a band change
-    // (celebration promotion, replay at another path) must reload `places`.
-    // Flag off: the reload is unnecessary (the pool is the full Globe pool
-    // for every band) but harmless: the resolver returns its cached value and
-    // placesFor hits the chunk cache, so the same full pool comes back. The
-    // flag is async-resolved, so the dependency list cannot depend on it
-    // without extra state; one code path for both modes is worth the extra
-    // cache-hit load. The null reset above keeps it fail-closed.
+import type { Edition } from "./run.ts";
+import type { PickerDifficulty } from "./tier-filter.ts";
+
+/**
+ * Identity of a Play catalog load: `edition:regionId:band`. The band is part
+ * of the key ONLY for the Globe (the only region whose catalog depends on the
+ * learning path - placesFor ignores `choice` everywhere else), so country and
+ * state runs never reset or remount on a band change.
+ */
+export function placesLoadKey(
+  edition: Edition,
+  regionId: string,
+  choice: PickerDifficulty,
+): string {
+  return `${edition}:${regionId}:${regionId === "globe" ? choice : ""}`;
+}
+
+export interface LoadedFor<T> {
+  key: string;
+  value: T;
+}
+
+/** The loaded value only if it was loaded for `key`; otherwise null (stale). */
+export function loadedForKey<T>(loaded: LoadedFor<T> | null, key: string): T | null {
+  return loaded !== null && loaded.key === key ? loaded.value : null;
+}
 ```
-Known, accepted difference from `main@d7a0fc8` (which had no
-`difficultyChoice` dependency): with the flag off a band change briefly shows
-"Loading places" and remounts `PlayLoaded`. This was already true of this
-branch before the flag (commit `62895ea`). Pool contents are identical.
+
+8b. `src/components/game-app.tsx`: add
+`import { loadedForKey, placesLoadKey, type LoadedFor } from "@/game/places-load-key";`
+next to the other `@/game/*` imports. `Starter` is already imported in this
+file (verify with grep; do not add a second import).
+
+8c. In `Play`, replace the two state lines (~2432-2433)
+```ts
+  const [places, setPlaces] = useState<Starter[] | null>(null);
+  const [poolError, setPoolError] = useState<string | null>(null);
+```
+with
+```ts
+  // The catalog is stored WITH the key it was loaded for and only used while
+  // that key is the current run's key. Play stays mounted across run changes
+  // (GameApp renders it whenever `run` is set), so a plain `places` state would
+  // hand PlayLoaded the previous band's catalog for one commit: wrong pool, a
+  // dealer on the new band's seen store, and a stale place written into the
+  // new band's no-repeat history. Deriving `places` makes that commit
+  // impossible: a key mismatch renders "Loading places" instead.
+  const loadKey = placesLoadKey(run.edition, run.regionId, run.difficultyChoice);
+  const [loadedPlaces, setLoadedPlaces] = useState<LoadedFor<Starter[]> | null>(null);
+  const [poolFailure, setPoolFailure] = useState<LoadedFor<string> | null>(null);
+  const places = loadedForKey(loadedPlaces, loadKey);
+  const poolError = loadedForKey(poolFailure, loadKey);
+```
+(`places` and `poolError` keep their names and types, `Starter[] | null` and
+`string | null`, so the code below them, including the `game_loaded` milestone
+effect, the error screen and the loading screen, is unchanged. The existing
+`reviewEntries` state stays as is.)
+
+8d. Replace the body of the load effect (from `let cancelled = false;` to the
+cleanup and dependency array) so that it never resets `places`/`poolError`
+to null (derivation does that) and writes keyed values. Final effect:
+```ts
+  useEffect(() => {
+    let cancelled = false;
+    setPoolFailure(null);
+    setReviewEntries(null);
+    if (review) {
+      // Review deck: no chunk fetch - due cards carry their own snapshots.
+      // (keep the existing comment and try/catch body, with only these two
+      // setter changes:)
+      //   setPlaces(entries.map(deckStarter))
+      //     -> setLoadedPlaces({ key: loadKey, value: entries.map(deckStarter) })
+      //   setPoolError("Could not load your review deck.")
+      //     -> setPoolFailure({ key: loadKey, value: "Could not load your review deck." })
+      // (keep `setReviewEntries(entries)` and both `if (!cancelled)` guards)
+      return () => {
+        cancelled = true;
+      };
+    }
+    globeTierSplitFor(run.edition, run.regionId)
+      .then((tierSplit) =>
+        placesFor(run.edition, run.regionId, run.difficultyChoice, tierSplit),
+      )
+      .then(
+        (list) => {
+          if (!cancelled) setLoadedPlaces({ key: loadKey, value: list });
+        },
+        (err: unknown) => {
+          if (!cancelled) {
+            setPoolFailure({
+              key: loadKey,
+              value: err instanceof Error ? err.message : String(err),
+            });
+          }
+        },
+      );
+    return () => {
+      cancelled = true;
+    };
+    // Keyed on the load key, not on the individual run fields. For the Globe
+    // the key contains the learning path, so a band change (celebration
+    // promotion, replay at another path) loads the new band's catalog and, until
+    // it arrives, renders "Loading places" - never the old band's catalog.
+    // For every other region the key has no band part, so a band change does
+    // not reload or remount. Flag on: the Globe loads only the tiers of the
+    // new path. Flag off: the reload is unnecessary (the pool is the full
+    // Globe pool for every band) but harmless: globeTierSplitFor returns its
+    // cached value and placesFor hits the chunk cache, so the same full pool
+    // comes back after one "Loading places" frame.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loadKey]);
+```
+`loadKey` encodes `edition`, `regionId` and (Globe only) `difficultyChoice`,
+which are the only run fields the effect reads, so the single dependency is
+complete; the `eslint-disable` mirrors the existing one on the `dealer` memo.
+Grep inside `Play` afterwards: no remaining `setPlaces(` or `setPoolError(`
+(`grep -n "setPlaces(\|setPoolError(" src/components/game-app.tsx` must print
+nothing).
+
+Accepted, documented difference from `main@d7a0fc8` (which had no
+`difficultyChoice` dependency): for the GLOBE with the flag OFF, a band change
+now briefly shows "Loading places" and remounts `PlayLoaded` (cache hit, pool
+contents identical). It was already the behaviour of this branch (`62895ea`).
+It no longer applies to any non-Globe region.
 
 **Step 9 — docs.** In `docs/feature-flags.md` "Current catalog" add the row
 (keep column alignment loose, it is Markdown):
 ```
 | `globeTierSplit`   | `false` | Globe loads all five fame-tier files and deals the full canonical pool (today's production); on = Easy t1+t2, Medium t2-t4, Hard t4+t5 only |
+```
+and, directly under the table, this paragraph (exact text):
+```
+**`globeTierSplit` and offline play.** With the flag on, the Globe fetches only
+the fame-tier files of the learning path being played, and the service worker
+caches `/assets/` files on first use. A player who has only played Easy and is
+then offline can therefore not start Medium or Hard on the Globe: the run does
+not start and the normal "Could not load places for Globe" message appears
+(fail-closed; nothing partial is dealt). Going online and choosing again
+works. With the flag off, one load covers every learning path (the previous
+behaviour). No cache-warming is done on purpose.
 ```
 
 **Step 10 — tests** per section 4 (WORKER writes the unit tests; QA writes the E2E).
@@ -296,7 +455,8 @@ branch before the flag (commit `62895ea`). Pool contents are identical.
 `grep -n "placesFor(" src` must show exactly two non-test call sites
 (`game-app.tsx` openRun and Play effect). If there is a third, STOP and report.
 `grep -n "from \"\./.*\.ts\"" src/lib/flags.test.ts` confirms the `.ts`
-relative-import style.
+relative-import style. `grep -n "setPlaces(\|setPoolError(" src/components/game-app.tsx`
+must show only the lines inside `Play` that step 8 replaces (~2432-2492).
 
 **Step 12 — BRANCH_STATUS.md.** In "## Pending" delete the bullet "Kill switch flag
 `globeTierSplit` for the tier split (orchestrator step 0)." Under "## Done" add:
@@ -304,6 +464,38 @@ relative-import style.
 commit). `public/flags.json` enabling it is a separate commit; revert that
 commit alone to turn the faster path off." (Orchestrator may reword after the
 second commit.)
+
+**Step 13 — `scripts/migrate-notable-to-history.mjs` (NIT 5).** This one-off
+migration rewrites every dirty chunk, including `chunks/globe.json`, without
+regenerating the derived tier files, which would leave the runtime (which loads
+only the tier files) stale. Minimal change, same pattern as
+`scripts/enrich-wikipedia.mjs` (~line 1042):
+- Add after the existing imports (line ~26):
+  `import { writeGlobeTiers } from "./build-globe-tiers.mjs";`
+- Replace the persist loop (lines ~107-112) with
+```js
+// Persist only chunks that actually changed (byte-identical otherwise).
+let wrote = 0;
+let globeChanged = false;
+for (const { file, chunk, dirty } of chunks) {
+  if (!dirty) continue;
+  writeFileSync(join(CHUNKS_DIR, file), JSON.stringify(chunk) + "\n");
+  wrote++;
+  if (file === "globe.json") globeChanged = true;
+}
+// The runtime loads Globe from the derived per-tier files, not from
+// chunks/globe.json - keep them in step (the prebuild gate fails if not).
+if (globeChanged) writeGlobeTiers();
+```
+Leave everything else in the script untouched. DO NOT RUN this script (it
+mutates place data; never edit place content). No unit test (the script runs
+its migration on import). Verification is read-only:
+`node scripts/build-globe-tiers.mjs --check` prints
+`globe tiers in sync with chunks/globe.json`, and `node -e "import('./scripts/build-globe-tiers.mjs')"`
+confirms the named export exists. Note: staleness was never silent: the
+prebuild gate (`scripts/check-generated-places.mjs` -> `checkGlobeTiers`) and
+`scripts/globe-tiers.test.mjs` already fail loudly when tier files differ from
+`chunks/globe.json`; this change just removes the manual regeneration step.
 
 ### How agreement of the two `placesFor` calls is guaranteed
 
@@ -314,6 +506,14 @@ second commit.)
   between (the picker's `useDeckStatus` effect calls `loadFlags()` again each
   time the player returns to the picker). A flag flip takes effect on the
   **next page load**, never mid-session (matches `docs/feature-flags.md`).
+- Same-page band change (the BLOCK on `62895ea`): agreement of the flag value
+  is not enough; the CATALOG must also match the run. `Play` therefore derives
+  `places` from `{ key, value }` state and renders `PlayLoaded` only when the
+  stored key equals `placesLoadKey(run.edition, run.regionId, run.difficultyChoice)`
+  (step 8). For the Globe the key contains the band, so Easy -> Medium shows
+  "Loading places" until the Medium catalog is loaded; the stale Easy catalog
+  is never combined with the new run's `poolIds`, seed or seen store. Non-Globe
+  keys have no band part, so country/state band changes do not reload or remount.
 - Concurrent first callers: both await `deps.load()`, then re-check `decided`
   after the await; the first to resume writes it, the other returns the same
   value.
@@ -473,30 +673,104 @@ orchestrator says commit 2 is being prepared. Also run the existing
 `tests/e2e/feature-flags.spec.ts`, `difficulty-picker.spec.ts`,
 `cleared-mode.spec.ts` unchanged as regression for flags and band promotion.
 
-### 4.7 Visual
-None. No UI or copy changes; no baselines.
+### 4.7 Black-box E2E — `tests/e2e/globe-band-switch.desktop.spec.ts` (QA, regression for the BLOCK)
+
+Proves the player-visible consequence of the stale-catalog bug: after a Globe
+learning-path promotion, the new band's no-repeat history contains exactly the
+places the player was dealt. Drive it like `tests/e2e/cleared-mode.spec.ts`
+(`driveBandClear` at :180, promotion at :233 "Easy celebration promotes to a
+fresh Medium run" and :261 "Medium celebration promotes to a fresh Hard run"),
+but on the Globe. Copy the small local helpers you need from that file
+(`curatedDifficulties`, `pickDifficulty`, `readRunFull`, `readDropPlaceId`,
+`expectAim`, `collectErrors`, `expectCleanConsole`, `celebration`) into the new
+spec; do NOT edit `tests/e2e/helpers.ts` or `cleared-mode.spec.ts`. Use
+`serveBuiltArtifact`, `commitMiss`, `clickNextPlace`, `readPhase`,
+`dismissTileOverlayIfPresent` from `./helpers`. Same `beforeEach` as 4.6
+(serve artifact + SW-registration block). `test.setTimeout(240_000)`.
+
+Shared data (read from the shipped sources, as the other specs do):
+- `tierPlaces(t)`: `JSON.parse(readFileSync("src/game/data/geonames/tiers/globe-t"+t+".json","utf8")).places` -> `{id, lon, lat, difficulty}`.
+- `curated = curatedDifficulties("globe","globe")` (id + difficulty).
+- `tierOf(id)`: map over `curated` + all five tier files; unknown difficulty reads as 3 (same guard as the app).
+- `easyBandIds` = ids with tier 1-2 from `curated` + `tierPlaces(1)` + `tierPlaces(2)`.
+- `keep` = the first (by id, ascending numeric) place of `tierPlaces(1)` ++ `tierPlaces(2)` with `100 <= lon <= 170` and `-40 <= lat <= 60` (far from the Atlantic tap that `commitMiss` uses at (500,400), so the answer is a guaranteed miss). Assert it is found.
+- Keys: `EASY_KEY = "meridian:seen:v2:globe:globe:easy"`, `MEDIUM_KEY = "meridian:seen:v2:globe:globe:medium"`.
+
+Run the same test body twice, `for (const split of [true, false])`, with
+`flags.json` routed (after `serveBuiltArtifact`) to
+`{"version":1,"flags":{"globeTierSplit":<split>}}`. Test titles:
+`globe band switch (globeTierSplit=${split}): Medium seen store holds exactly what was dealt`.
+
+Body:
+1. `page.goto(APP_NO_IDLE)`; `localStorage.setItem(EASY_KEY, JSON.stringify(easyBandIds.filter(id => id !== keep)))`; assert `localStorage.getItem(MEDIUM_KEY) === null`.
+2. `pickDifficulty(page, "Easy")`; click "Play the globe"; `expectAim(page)`.
+3. `expect((await readRunFull(page)).poolIds).toEqual([keep])` (proves the seeded band computation matches the app).
+4. `commitMiss(page)`; `expect(await readDropPlaceId(page)).toBe(keep)`; `clickNextPlace(page)`; `await expect(celebration(page)).toBeVisible({ timeout: 15_000 })`.
+5. Before promoting, `localStorage.getItem(MEDIUM_KEY)` is still `null`.
+6. Click "Try Medium" in the dialog; `expectAim(page)`; `run = readRunFull`: `difficultyChoice === "medium"`, `index === 0`, `regionId === "globe"`.
+7. `commitMiss(page)`; `d1 = await readDropPlaceId(page)`; assert `tierOf(d1)` in `[2,3,4]`.
+8. Read `seen1 = JSON.parse(localStorage.getItem(MEDIUM_KEY) ?? "[]")`. **Assert `seen1` equals `[d1]` exactly** (the player saw exactly one Medium place; no stale-catalog place was recorded). Also assert every id in `seen1` is in `run.poolIds` of the Medium run (`readRunFull(page).poolIds`).
+9. `clickNextPlace`, `expectAim`, `commitMiss`, `d2 = readDropPlaceId`; assert `seen2` equals `[d1, d2]` exactly and `d2 !== d1`.
+10. `expectCleanConsole(errors)`.
+If `commitMiss` ever has to retry (rare hit on a place), additional legitimately
+dealt ids appear; to stay exact, record every answered id by reading
+`readDropPlaceId` after each `commitMiss` call you make, and compare `seen` to
+that ordered list. Rerun 3 times if flaky and report the pass count.
+
+Expected: both variants pass AFTER step 8. **Red first (QA role: show the
+regression failing before the fix):** see section 5 "Red first".
+
+### 4.8 Unit — `src/game/places-load-key.test.ts` (NEW, WORKER)
+`node:test` + `node:assert/strict`; import `./places-load-key.ts`,
+`./generated-places.ts` (`placesFor`), `./tier-filter.ts` (`filterByTier`),
+`./trail.ts` (`poolForNewRun`, `memorySeenStore`), `./pool.ts` (`resolveRunPool`).
+1. `placesLoadKey("globe","globe","easy") === "globe:globe:easy"`; the three Globe bands give three different keys.
+2. Non-Globe keys ignore the band: `placesLoadKey("state","vermont","easy") === placesLoadKey("state","vermont","hard") === "state:vermont:"`; same for `("country","france", ...)` and `("globe","review-deck", ...)` (-> `"globe:review-deck:"`, so a review run never reloads on a band change).
+3. Different edition or regionId give different keys.
+4. `loadedForKey(null, k) === null`; `loadedForKey({key:k,value:v}, k) === v` (same reference); `loadedForKey({key:k1,value:v}, k2) === null`.
+5. **Regression (stale catalog never reaches a new run):** `easy = await placesFor("globe","globe","easy",true)`; `stale = { key: placesLoadKey("globe","globe","easy"), value: easy }`; `mediumKey = placesLoadKey("globe","globe","medium")`; `full = await placesFor("globe","globe")`; `mediumIds = poolForNewRun(filterByTier(full,"medium"), memorySeenStore()).poolIds`.
+   - Document the hazard: `resolveRunPool(easy, mediumIds).length` is `> 0` and `< mediumIds.length` (a partial pool).
+   - Assert the guard: `loadedForKey(stale, mediumKey) === null`, so `Play` shows "Loading places" and that partial pool is never built. And `loadedForKey(stale, placesLoadKey("globe","globe","easy")) === easy`.
+
+### 4.9 Visual
+None. No UI or copy changes (the existing "Loading places" screen is reused); no baselines.
 
 ## 5. Acceptance commands (run in order; save output to the log path the orchestrator gives)
 
 Commit 1 state (flag default `false`, `flags.json` unchanged):
 1. `npx tsc --noEmit` -> no output, exit 0.
 2. `npm test` -> exit 0; both runners report `fail 0`. New/changed files appear
-   in the TAP output: `globe-tier-split.test.ts` (new), `flags.test.ts`,
-   `generated-places.test.ts`, `pool.test.ts`.
+   in the TAP output: `globe-tier-split.test.ts` (new), `places-load-key.test.ts` (new),
+   `flags.test.ts`, `generated-places.test.ts`, `pool.test.ts`.
 3. `node scripts/lint-cards.mjs` -> prints `GATE PASSED`.
+3b. `node scripts/build-globe-tiers.mjs --check` -> prints `globe tiers in sync with chunks/globe.json`.
 4. `npm run build:pages` -> exit 0 (prebuild runs `check-generated-places` and
    `lint-cards`; postbuild fingerprints the SW).
-5. `npx playwright test tests/e2e/globe-tier-split.desktop.spec.ts --project=desktop --workers=1` (run in background, poll the log) -> `4 passed` (T1-T4).
+4b. **E2E build.** Then run
+   `VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy npm run build:pages`
+   -> exit 0. This LAST build is the `dist/client` that `serveBuiltArtifact`
+   serves; the new E2E specs (step 5) MUST run against it (not against the
+   plain build from step 4). Do not rebuild between 4b and 5/6.
+5. `npx playwright test tests/e2e/globe-tier-split.desktop.spec.ts tests/e2e/globe-band-switch.desktop.spec.ts --project=desktop --workers=1` (background, poll the log) -> `6 passed` (4 network-log tests T1-T4 + 2 band-switch variants).
 6. Full `npx playwright test --workers=1` (background) -> same failures as
    `main` only; label any failure that also fails on `main` PRE-EXISTING.
 
+**Red first (QA, once).** Before applying step 8 (i.e. after steps 1-7, 9-13 and the
+tests exist), run 4b then `npx playwright test tests/e2e/globe-band-switch.desktop.spec.ts --project=desktop --workers=1`.
+Expected: the `globeTierSplit=true` variant FAILS at step 8 of the test body
+(`seen1` has two ids, a stale-catalog place plus the real one, instead of
+`[d1]`) and the `globeTierSplit=false` variant passes (identical catalogs, so
+no divergence). Quote the failure output in the report. If the `true` variant
+passes without step 8, STOP and report (the test does not reproduce the bug).
+Then apply step 8, rebuild (4b) and rerun: both variants pass.
+
 Commit 2 state (adds `globeTierSplit: true` to `public/flags.json`, the
-`flags-content` assertion and T5): repeat steps 1-4 (rebuild is required: the
+`flags-content` assertion and T5): repeat steps 1-4b (rebuild is required: the
 E2E serves `dist/client`, which copies `public/flags.json`), then step 5 ->
-`5 passed`, then step 6.
+`7 passed` (adds T5), then step 6.
 
 Revert check (orchestrator, optional but recommended): `git revert --no-edit <commit-2>`
-in a scratch worktree, rerun 2-5; expect `4 passed`, with no test left asserting
+in a scratch worktree, rerun 2-5; expect `6 passed`, with no test left asserting
 the shipped `true`.
 
 ## 6. Flag and commit plan
@@ -512,8 +786,13 @@ The orchestrator makes exactly two commits (stage named files only, never
   `src/lib/flags.ts`, `src/lib/globe-tier-split.ts`, `src/lib/globe-tier-split.test.ts`,
   `src/lib/flags.test.ts`, `src/game/generated-places.ts`,
   `src/game/generated-places.test.ts`, `src/game/pool.test.ts`,
+  `src/game/places-load-key.ts`, `src/game/places-load-key.test.ts`,
   `src/components/game-app.tsx`, `tests/e2e/globe-tier-split.desktop.spec.ts`
-  (T1-T4), `docs/feature-flags.md`, `BRANCH_STATUS.md`.
+  (T1-T4), `tests/e2e/globe-band-switch.desktop.spec.ts`,
+  `scripts/migrate-notable-to-history.mjs`, `docs/feature-flags.md`,
+  `BRANCH_STATUS.md`. (The Play stale-catalog fix and the flag work are one
+  code commit: the fix is required for the split path to be correct, and
+  commit 2 must never be able to enable the split without it.)
 - **Commit 2 "perf: enable globeTierSplit in flags.json"**, made AFTER commit 1,
   containing **only**: `public/flags.json`, `scripts/flags-content.test.mjs`
   (the 4.5 assertion), and the T5 block added to the E2E spec (plus the
@@ -534,7 +813,10 @@ The orchestrator makes exactly two commits (stage named files only, never
 - **A run appears to hang at "Loading places"** -> the resolver awaits `loadFlags()` (<= 1.5 s). If longer, STOP and report; do not remove the await (kill switch must await).
 - **Extra `flags.json` GET at first Globe run** -> expected (see section 3). T4 proves it does not break the run.
 - **`resolveRunPool` partial pool with flag on after reload of a legacy run** -> pre-existing, flag-on only; out of scope; report if seen in E2E.
-- **Band change with flag off remounts `PlayLoaded`** -> accepted (step 8). If an existing E2E (`cleared-mode`, `celebration`) newly fails ONLY with the flag off, STOP and report; the fix would need a design decision.
+- **Globe band change with flag OFF shows "Loading places" and remounts `PlayLoaded`** -> accepted, documented difference from `main@d7a0fc8` (cache hit, identical full pool; already true of `62895ea`). It no longer applies to country/state/review runs (their key has no band part, step 8a). If an existing E2E (`cleared-mode`, `celebration`) newly fails ONLY with the flag off, STOP and report.
+- **Stale catalog regression (BLOCK on `62895ea`)** -> step 8 is mandatory and must be in commit 1. If `tsc` complains about `loadedForKey(poolFailure, loadKey)` types, `poolFailure` is `LoadedFor<string>` so the result is `string | null`: do not cast. If any code outside `Play` used `setPlaces`/`setPoolError`, STOP and report.
+- **Offline switch to a band whose tier files were never fetched (NIT 4, document only)** -> with the flag ON, `public/sw.js` caches `/assets/` files on first use, so a player who has only played Easy and is offline fails to start Medium/Hard on the Globe; the run fails closed with the normal "Could not load places for Globe" start error (previously one Globe file covered every band). Accepted; documented in `docs/feature-flags.md` (step 9). Do NOT add cache-warming code. The kill switch (flag off) removes the limitation.
+- **`migrate-notable-to-history.mjs` change** -> never run the script (it mutates place data). The prebuild gate already fails loudly on stale tier files; step 13 only removes the manual regeneration step.
 - **E2E T1/T3 see fewer than five tiers** -> the page may be SW-controlled (init-script missing) or `flags.json` route registered before `serveBuiltArtifact`. Check both before touching production code.
 - **E2E asset-name regex matches nothing** -> run `ls dist/client/assets | grep globe-t` (names are `globe-t<N>-<hash>.js`) and fix the regex only.
 - **`npm run build:pages` fails** -> it is a gate; report with the first error. Do not edit `vite.config.ts`.
@@ -548,3 +830,13 @@ measurement or `docs/perf-baseline.md` update; changing tier bands or
 reactivity (no subscription, by design); flagging other regions;
 `src/routes/__root.tsx` or SW changes; new telemetry; any place content,
 pipeline or card change; visual baselines; WS-1 .. WS-6.
+
+## 9. Not done (noted, to be handled separately)
+
+- The `/` (root-base) build prints `_shell.html not found post-build` for the
+  `nosw-hatch` / `crash-watchdog` specs' build path. Believed pre-existing; to be
+  checked against `main` separately. This workstream does not touch it and
+  does not run E2E on the `/` base.
+- No cache-warming of the other bands' Globe tier files (NIT 4); see risks.
+- No warm-up of the `PlayLoaded` remount for Globe band changes with the flag
+  off (accepted difference above).
