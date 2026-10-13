@@ -58,7 +58,7 @@ on), in its own revertable commit.
    no-repeat store `meridian:seen:v2:globe:globe:medium` holds exactly the ids
    the player was actually dealt, never a place dealt from the previous band's
    stale catalog. Proven by unit test (4.8) and E2E (4.7), which fails
-   before step 8 and passes after it.
+   before steps 8b-8d and passes after them.
 
 ## 2. Files
 
@@ -94,6 +94,23 @@ on), in its own revertable commit.
 `tests/e2e/helpers.ts` (reuse, do not edit), every other E2E spec, `.scratch/`.
 
 ## 3. Design (ONE design) and ordered steps
+
+### Execution order (who does what, in what order)
+
+1. **WORKER:** steps 1-7, **8a**, unit test 4.8 and the other unit tests
+   (4.1-4.5), steps 9-13. Run gates 1-4b (section 5). **STOP and report.**
+   Do NOT do 8b-8d yet.
+2. **QA:** write the E2E tests 4.6 and 4.7, then run "Red first" (section 5):
+   test 4.7 with `globeTierSplit=true` MUST FAIL at this point (the `Play`
+   state handling is still the buggy `62895ea` one). Report the failure output.
+3. **WORKER:** steps 8b-8d, then rerun ALL gates (section 5, including 4b and
+   the full E2E).
+
+Why this split: unit test 4.8 exercises only the pure helper
+`src/game/places-load-key.ts` created in 8a, so 8a must not be deferred (the
+test imports it), and 4.8 passes before and after 8b-8d. It cannot catch a
+mistake in the `Play` wiring (8b-8d). Only the E2E in 4.7 can: it is the proof
+that 8b-8d actually removed the stale-catalog commit.
 
 ### Design in six sentences
 1. `placesFor(edition, regionId, choice?, tierSplit = false)`: the tier-limited
@@ -136,12 +153,20 @@ and add to `FLAG_DEFAULTS` after `learningOutcomes: false,`:
 Do not touch `applyPayload` (it already iterates `Object.keys(FLAG_DEFAULTS)`).
 
 **Step 2 — `src/game/generated-places.ts`, `placesFor` (line ~763).** New signature
-and the one changed expression:
+and the one changed expression (the JSDoc block above `choice` at lines
+~766-772 is REPLACED by the one shown, and the JSDoc above `tierSplit` is new):
 ```ts
 export async function placesFor(
   edition: Edition,
   regionId: string,
-  /** (keep the existing doc, then add:) Ignored unless `tierSplit` is true. */
+  /**
+   * The run's learning path. Only the Globe uses it, and only when
+   * `tierSplit` is true: it then loads just the fame tiers that path deals
+   * from (the caller still applies filterByTier, so the dealt set is
+   * unchanged — this only skips downloading and parsing the rest). Ignored
+   * for every other region, including whole-country runs that aggregate
+   * subdivision chunks.
+   */
   choice?: PickerDifficulty,
   /**
    * globeTierSplit flag value, resolved by the caller. true = the Globe loads
@@ -160,11 +185,19 @@ Replace the condition inside `chunkIds.map` with
         : loadRegionChunk(id),
 ```
 (`loadRegionChunk("globe")` already calls `loadGlobeTiers(GLOBE_TIERS)` and
-merges by id; do not change it.) Update the header comment (lines 22-28): the
-sentence "`placesFor` takes the run's learning path for that; without one ..."
-becomes "`placesFor` takes the run's learning path AND the `globeTierSplit`
-flag value for that; without both (flag off, tests, tooling) all five tiers
-load and merge back into the canonical order." No other edits in this file.
+merges by id; do not change it.) Replace the header comment paragraph at lines
+22-28 ("Globe exception: ...") with exactly:
+```
+ * Globe exception: the Globe chunk (59k places, ~13.7 MB bundled) is stored
+ * as five derived per-fame-tier files (`tiers/globe-t<N>.json`, see
+ * scripts/globe-tiers.mjs). With the `globeTierSplit` flag on, a learning
+ * path fetches only the tiers it deals from — Easy t1+t2, Medium t2–t4,
+ * Hard t4+t5. `placesFor` takes the run's learning path AND the flag value
+ * for that; without both (flag off, tests, tooling) all five tiers load and
+ * merge back into the canonical order. Every other region is still one
+ * chunk file.
+```
+No other edits in this file.
 
 **Step 3 — NEW `src/lib/globe-tier-split.ts`** (exact content):
 ```ts
@@ -283,7 +316,7 @@ with
 and leave the two handlers and the cleanup exactly as they are (re-indent only
 if tsc/prettier complains). This intermediate state is deliberately STILL the
 buggy `62895ea` state-handling (see step 8); it exists so QA can show the
-regression E2E failing before step 8 (section 5, "Red first").
+regression E2E failing before steps 8b-8d (section 5, "Red first").
 
 **Step 8 — `Play`: never render a catalog loaded for another band (ARCH-REVIEWER
 BLOCK on `62895ea`).**
@@ -367,21 +400,39 @@ effect, the error screen and the loading screen, is unchanged. The existing
 
 8d. Replace the body of the load effect (from `let cancelled = false;` to the
 cleanup and dependency array) so that it never resets `places`/`poolError`
-to null (derivation does that) and writes keyed values. Final effect:
+to null (derivation does that) and writes keyed values. The identifiers
+`readReviewDeck`, `emptyReviewDeck`, `dueEntries`, `deckStarter`, `DeckEntry`
+are the ones already used by the current effect (do not re-import);
+`setLoadedPlaces` / `setPoolFailure` are the setters declared in 8c. The block
+below is the complete, literal effect: replace the whole existing effect with it
+(including the review branch, whose body is the current code with only the two
+setter calls changed):
 ```ts
   useEffect(() => {
     let cancelled = false;
     setPoolFailure(null);
     setReviewEntries(null);
     if (review) {
-      // Review deck: no chunk fetch - due cards carry their own snapshots.
-      // (keep the existing comment and try/catch body, with only these two
-      // setter changes:)
-      //   setPlaces(entries.map(deckStarter))
-      //     -> setLoadedPlaces({ key: loadKey, value: entries.map(deckStarter) })
-      //   setPoolError("Could not load your review deck.")
-      //     -> setPoolFailure({ key: loadKey, value: "Could not load your review deck." })
-      // (keep `setReviewEntries(entries)` and both `if (!cancelled)` guards)
+      // Review deck: no chunk fetch — due cards carry their own snapshots.
+      // Aligned to the run's poolIds (the session queue); a deck that
+      // changed since session start fails closed to the currently-due list.
+      try {
+        const deck = readReviewDeck() ?? emptyReviewDeck();
+        const due = dueEntries(deck, Date.now());
+        const byId = new Map(due.map((entry) => [entry.place.id, entry]));
+        const ordered = run.poolIds
+          .map((id) => byId.get(id))
+          .filter((entry): entry is DeckEntry => entry !== undefined);
+        const entries = ordered.length > 0 ? ordered : due;
+        if (!cancelled) {
+          setReviewEntries(entries);
+          setLoadedPlaces({ key: loadKey, value: entries.map(deckStarter) });
+        }
+      } catch {
+        if (!cancelled) {
+          setPoolFailure({ key: loadKey, value: "Could not load your review deck." });
+        }
+      }
       return () => {
         cancelled = true;
       };
@@ -442,18 +493,24 @@ and, directly under the table, this paragraph (exact text):
 **`globeTierSplit` and offline play.** With the flag on, the Globe fetches only
 the fame-tier files of the learning path being played, and the service worker
 caches `/assets/` files on first use. A player who has only played Easy and is
-then offline can therefore not start Medium or Hard on the Globe: the run does
-not start and the normal "Could not load places for Globe" message appears
-(fail-closed; nothing partial is dealt). Going online and choosing again
-works. With the flag off, one load covers every learning path (the previous
-behaviour). No cache-warming is done on purpose.
+then offline can therefore not start Medium or Hard on the Globe. From the
+picker the run does not start and the normal "Could not load places for Globe"
+message appears; from the celebration's "Try Medium"/"Try Hard" the dialog
+closes and the player stays on the last card with no message (fail-closed;
+nothing partial is dealt). Going online and choosing again works. With the
+flag off, one load covers every learning path (the previous behaviour). No
+cache-warming is done on purpose.
 ```
 
 **Step 10 — tests** per section 4 (WORKER writes the unit tests; QA writes the E2E).
 
 **Step 11 — pre-flight greps (WORKER, before editing).**
-`grep -n "placesFor(" src` must show exactly two non-test call sites
-(`game-app.tsx` openRun and Play effect). If there is a third, STOP and report.
+`grep -rn "placesFor(" src --include=*.ts --include=*.tsx | grep -v "\.test\.ts"`
+must print exactly 3 lines: the definition `src/game/generated-places.ts:763`
+(`export async function placesFor(`) and the two calls in
+`src/components/game-app.tsx` (`:1263` in `openRun`, `:2475` in the `Play`
+effect; line numbers as of `25f6ccc`/`da0ed60`, confirmed with grep). If there
+is a fourth line, STOP and report.
 `grep -n "from \"\./.*\.ts\"" src/lib/flags.test.ts` confirms the `.ts`
 relative-import style. `grep -n "setPlaces(\|setPoolError(" src/components/game-app.tsx`
 must show only the lines inside `Play` that step 8 replaces (~2432-2492).
@@ -491,8 +548,8 @@ Leave everything else in the script untouched. DO NOT RUN this script (it
 mutates place data; never edit place content). No unit test (the script runs
 its migration on import). Verification is read-only:
 `node scripts/build-globe-tiers.mjs --check` prints
-`globe tiers in sync with chunks/globe.json`, and `node -e "import('./scripts/build-globe-tiers.mjs')"`
-confirms the named export exists. Note: staleness was never silent: the
+`globe tiers in sync with chunks/globe.json`, and `node -e "import('./scripts/build-globe-tiers.mjs').then(m => console.log(typeof m.writeGlobeTiers))"`
+prints `function`. Note: staleness was never silent: the
 prebuild gate (`scripts/check-generated-places.mjs` -> `checkGlobeTiers`) and
 `scripts/globe-tiers.test.mjs` already fail loudly when tier files differ from
 `chunks/globe.json`; this change just removes the manual regeneration step.
@@ -577,6 +634,8 @@ Add:
    `baseline` (seeded dealing order identical in both modes), and
    `new Set(baseline).size === 300`.
 4. `globe tiers: tierSplit never affects non-globe regions`:
+   start with `clearChunkCacheForTests();` (earlier tests fill `globeTierCache`,
+   which would break the `[]` assertion), then
    `placesFor("state","texas","easy",true)` ids deepEqual `placesFor("state","texas")` ids;
    `loadedGlobeTiersForTests()` is `[]`.
 
@@ -601,10 +660,11 @@ Use `node:test` + `node:assert/strict`, import `./globe-tier-split.ts`,
 `./flags.ts` (`loadFlags`, `isEnabled`, `resetFlags`). Cases:
 1. fake deps `{load: async()=>{}, read: ()=>false}` -> `false`.
 2. `read` returns true -> `true`.
-3. cache: `load` call counter; three sequential + three concurrent
-   (`Promise.all`) resolves -> counter is 1 for the sequential batch after the
-   first, all six values equal. (Concurrent first callers: each may call
-   `load`; assert only that all results are equal.)
+3. cache. Fresh resolver A (fake `load` with a call counter): three sequential
+   `await A()` give a load count of 1. Then `Promise.all` of three more `A()`
+   calls leaves the count at 1, and all six results are equal. Fresh resolver B:
+   `Promise.all` of three `B()` calls gives three equal results and a load
+   count between 1 and 3 (concurrent first callers may each call `load`).
 4. **flag flips after first resolution**: `read` returns true on call 1, then
    false -> resolver keeps returning `true` (the two-call-site guarantee); and
    the mirror (false then true -> stays `false`).
@@ -613,12 +673,14 @@ Use `node:test` + `node:assert/strict`, import `./globe-tier-split.ts`,
 6. `read` throws -> `false`.
 7. Integration with the real flags module via the test seam: `resetFlags()`;
    resolver `createGlobeTierSplitResolver({ load: () => loadFlags({ BASE_URL: "/Meridian/", fetch: fake }), read: isEnabled })`
-   where fake returns `{ ok: true, json: async()=>({flags:{globeTierSplit:true}}) }`
-   -> `true`; with `{flags:{}}` -> `false`; with `{flags:{globeTierSplit:"yes"}}` -> `false`;
+   where `fake` is written as
+   `async () => ({ ok: true, json: async () => payload }) as unknown as Response`
+   (same pattern as `okResponse` in `src/lib/flags.test.ts`; `tsc` checks test
+   files) and `payload` is `{flags:{globeTierSplit:true}}` -> `true`; with `{flags:{}}` -> `false`; with `{flags:{globeTierSplit:"yes"}}` -> `false`;
    with a rejecting fetch -> `false`. Use a fresh resolver and `resetFlags()` per case.
-8. The production singleton under node (no `window`, so `loadFlags()` resolves
-   immediately) resolves `false`. Keep this the last test in the file (it
-   caches).
+8. Call `resetFlags()` first. The production singleton under node (no
+   `window`, so `loadFlags()` resolves immediately) resolves `false`. Keep this
+   the last test in the file (it caches).
 
 ### 4.4 Unit — `src/lib/flags.test.ts` (WORKER)
 Append `describe("globeTierSplit flag", ...)` modelled on the `learningOutcomes`
@@ -693,7 +755,18 @@ Shared data (read from the shipped sources, as the other specs do):
 - `curated = curatedDifficulties("globe","globe")` (id + difficulty).
 - `tierOf(id)`: map over `curated` + all five tier files; unknown difficulty reads as 3 (same guard as the app).
 - `easyBandIds` = ids with tier 1-2 from `curated` + `tierPlaces(1)` + `tierPlaces(2)`.
-- `keep` = the first (by id, ascending numeric) place of `tierPlaces(1)` ++ `tierPlaces(2)` with `100 <= lon <= 170` and `-40 <= lat <= 60` (far from the Atlantic tap that `commitMiss` uses at (500,400), so the answer is a guaranteed miss). Assert it is found.
+- `keep` = the first (by id, ascending numeric) place of `tierPlaces(1)` ++ `tierPlaces(2)` with `100 <= lon <= 170` and `-40 <= lat <= 60`. Assert it is found.
+  Why this is a guaranteed miss for the tap at (500,400) (hand estimate, not
+  measured in the app): at the Globe opening camera (center [0,0], zoom 1.5,
+  512-px world) the globe radius is about 512*2^1.5/(2*pi) = 231 px around the
+  viewport center (720,450) at 1440x900. The tap is 220 px left and 50 px up:
+  x/R = -0.95, y/R = +0.22, so lat = asin(0.22) = about 12 N and
+  lon = asin(-0.95/cos 12) = about -77, i.e. near Panama/Colombia on the left
+  edge of the globe. The same formula puts Oia (25.4E, 36.5N) at (+79,-137) px
+  vs the measured `OIA_DESKTOP` offset (+76,-131) in `helpers.ts` (within ~5%).
+  A place at lon 100..170 is at least ~175 degrees of longitude from the tap, so
+  far outside the 750 km hit radius. The guard in step 4 below catches a
+  wrong estimate.
 - Keys: `EASY_KEY = "meridian:seen:v2:globe:globe:easy"`, `MEDIUM_KEY = "meridian:seen:v2:globe:globe:medium"`.
 
 Run the same test body twice, `for (const split of [true, false])`, with
@@ -705,7 +778,7 @@ Body:
 1. `page.goto(APP_NO_IDLE)`; `localStorage.setItem(EASY_KEY, JSON.stringify(easyBandIds.filter(id => id !== keep)))`; assert `localStorage.getItem(MEDIUM_KEY) === null`.
 2. `pickDifficulty(page, "Easy")`; click "Play the globe"; `expectAim(page)`.
 3. `expect((await readRunFull(page)).poolIds).toEqual([keep])` (proves the seeded band computation matches the app).
-4. `commitMiss(page)`; `expect(await readDropPlaceId(page)).toBe(keep)`; `clickNextPlace(page)`; `await expect(celebration(page)).toBeVisible({ timeout: 15_000 })`.
+4. Do NOT use `commitMiss` here (it retries and advances on a hit, which would hide a hit as a celebration). Call `const { phase } = await commitPin(page, 500, 400)` (from `./helpers`). **Guard:** `if (phase !== "done") throw new Error("keep was hit; choose a farther keep")` (`"story"` means the place was hit). Then `expect(await readDropPlaceId(page)).toBe(keep)`; `clickNextPlace(page)`; `await expect(celebration(page)).toBeVisible({ timeout: 15_000 })`.
 5. Before promoting, `localStorage.getItem(MEDIUM_KEY)` is still `null`.
 6. Click "Try Medium" in the dialog; `expectAim(page)`; `run = readRunFull`: `difficultyChoice === "medium"`, `index === 0`, `regionId === "globe"`.
 7. `commitMiss(page)`; `d1 = await readDropPlaceId(page)`; assert `tierOf(d1)` in `[2,3,4]`.
@@ -717,7 +790,7 @@ dealt ids appear; to stay exact, record every answered id by reading
 `readDropPlaceId` after each `commitMiss` call you make, and compare `seen` to
 that ordered list. Rerun 3 times if flaky and report the pass count.
 
-Expected: both variants pass AFTER step 8. **Red first (QA role: show the
+Expected: both variants pass AFTER steps 8b-8d. **Red first (QA role: show the
 regression failing before the fix):** see section 5 "Red first".
 
 ### 4.8 Unit — `src/game/places-load-key.test.ts` (NEW, WORKER)
@@ -755,14 +828,14 @@ Commit 1 state (flag default `false`, `flags.json` unchanged):
 6. Full `npx playwright test --workers=1` (background) -> same failures as
    `main` only; label any failure that also fails on `main` PRE-EXISTING.
 
-**Red first (QA, once).** Before applying step 8 (i.e. after steps 1-7, 9-13 and the
-tests exist), run 4b then `npx playwright test tests/e2e/globe-band-switch.desktop.spec.ts --project=desktop --workers=1`.
+**Red first (QA, once).** Before steps 8b-8d are applied (i.e. after steps 1-7, 8a,
+9-13 and the tests exist; see "Execution order"), run 4b then `npx playwright test tests/e2e/globe-band-switch.desktop.spec.ts --project=desktop --workers=1`.
 Expected: the `globeTierSplit=true` variant FAILS at step 8 of the test body
 (`seen1` has two ids, a stale-catalog place plus the real one, instead of
 `[d1]`) and the `globeTierSplit=false` variant passes (identical catalogs, so
 no divergence). Quote the failure output in the report. If the `true` variant
-passes without step 8, STOP and report (the test does not reproduce the bug).
-Then apply step 8, rebuild (4b) and rerun: both variants pass.
+passes without 8b-8d, STOP and report (the test does not reproduce the bug).
+Then the WORKER applies 8b-8d, rebuild (4b) and rerun: both variants pass.
 
 Commit 2 state (adds `globeTierSplit: true` to `public/flags.json`, the
 `flags-content` assertion and T5): repeat steps 1-4b (rebuild is required: the
@@ -795,8 +868,8 @@ The orchestrator makes exactly two commits (stage named files only, never
   commit 2 must never be able to enable the split without it.)
 - **Commit 2 "perf: enable globeTierSplit in flags.json"**, made AFTER commit 1,
   containing **only**: `public/flags.json`, `scripts/flags-content.test.mjs`
-  (the 4.5 assertion), and the T5 block added to the E2E spec (plus the
-  BRANCH_STATUS wording tweak if the orchestrator wants it). The shipped
+  (the 4.5 assertion), and the T5 block added to the E2E spec. Nothing else.
+  The shipped
   `flags.json` change is exactly this one-line edit (key order alphabetical):
   ```
   {"flags": {"globeTierSplit": true, "learningOutcomes": true, "pwaUpdateToast": true}, "version": 1, "observabilityEndpoint": "https://meridian-crash-report.knowledgetest.workers.dev/ingest"}
@@ -815,7 +888,7 @@ The orchestrator makes exactly two commits (stage named files only, never
 - **`resolveRunPool` partial pool with flag on after reload of a legacy run** -> pre-existing, flag-on only; out of scope; report if seen in E2E.
 - **Globe band change with flag OFF shows "Loading places" and remounts `PlayLoaded`** -> accepted, documented difference from `main@d7a0fc8` (cache hit, identical full pool; already true of `62895ea`). It no longer applies to country/state/review runs (their key has no band part, step 8a). If an existing E2E (`cleared-mode`, `celebration`) newly fails ONLY with the flag off, STOP and report.
 - **Stale catalog regression (BLOCK on `62895ea`)** -> step 8 is mandatory and must be in commit 1. If `tsc` complains about `loadedForKey(poolFailure, loadKey)` types, `poolFailure` is `LoadedFor<string>` so the result is `string | null`: do not cast. If any code outside `Play` used `setPlaces`/`setPoolError`, STOP and report.
-- **Offline switch to a band whose tier files were never fetched (NIT 4, document only)** -> with the flag ON, `public/sw.js` caches `/assets/` files on first use, so a player who has only played Easy and is offline fails to start Medium/Hard on the Globe; the run fails closed with the normal "Could not load places for Globe" start error (previously one Globe file covered every band). Accepted; documented in `docs/feature-flags.md` (step 9). Do NOT add cache-warming code. The kill switch (flag off) removes the limitation.
+- **Offline switch to a band whose tier files were never fetched (NIT 4, document only)** -> with the flag ON, `public/sw.js` caches `/assets/` files on first use, so a player who has only played Easy and is offline fails to start Medium/Hard on the Globe; fail-closed: from the picker the normal "Could not load places for Globe" start error appears; from the celebration's "Try Medium"/"Try Hard" the dialog closes and the player stays on the last card with no message (`loadNotice` renders only on menu screens, and the `if (run)` branch comes first) (previously one Globe file covered every band). Accepted; documented in `docs/feature-flags.md` (step 9). Do NOT add cache-warming code. The kill switch (flag off) removes the limitation.
 - **`migrate-notable-to-history.mjs` change** -> never run the script (it mutates place data). The prebuild gate already fails loudly on stale tier files; step 13 only removes the manual regeneration step.
 - **E2E T1/T3 see fewer than five tiers** -> the page may be SW-controlled (init-script missing) or `flags.json` route registered before `serveBuiltArtifact`. Check both before touching production code.
 - **E2E asset-name regex matches nothing** -> run `ls dist/client/assets | grep globe-t` (names are `globe-t<N>-<hash>.js`) and fix the regex only.
@@ -838,5 +911,10 @@ pipeline or card change; visual baselines; WS-1 .. WS-6.
   checked against `main` separately. This workstream does not touch it and
   does not run E2E on the `/` base.
 - No cache-warming of the other bands' Globe tier files (NIT 4); see risks.
+- **Owner decision, UX:** with the flag ON, an offline celebration promotion
+  ("Try Medium"/"Try Hard" to a band whose tier files were never fetched) is a
+  silent dead end: the dialog closes, the player stays on the last card, and no
+  message is shown (`loadNotice` renders only on menu screens). A UX-REVIEWER is
+  looking at it separately; this spec deliberately designs no fix.
 - No warm-up of the `PlayLoaded` remount for Globe band changes with the flag
   off (accepted difference above).

@@ -9,3 +9,4 @@
 | 2026-10-13T20:05Z | step 0: ARCH-REVIEWER diff review of 62895ea + 192b2d8 | BLOCK (stale-places commit on Globe band change); saved docs/ops/reviews/step0-diff-review-tier-split-and-deps.md |
 | 2026-10-13T20:06Z | step 0: ARCHITECT spec ws-0-globe-tier-flag.md written; sent back for revision to fold in review findings | pending |
 | 2026-10-13T20:20Z | step 0: spec revised (load-key fix for the BLOCK, nits 3/4/5 folded in); PLAN REVIEW (opus) started | pending |
+| 2026-10-13T20:35Z | step 0: PLAN REVIEW (opus) APPROVE-WITH-NITS (10 nits); UX-REVIEWER BLOCK on silent in-run failure of an offline "Try Medium" with the split ON; architect folding both into the spec | snapshot of in-progress spec committed |
