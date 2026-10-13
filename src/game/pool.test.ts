@@ -103,9 +103,9 @@ test("resolveRunPool: non-empty poolIds matching nothing (legacy/tampered) fall 
 // learning path. The run pool (poolIds → places) and the fail-closed region
 // pool must be exactly what the full catalog produced.
 for (const choice of ["easy", "medium", "hard"] as PickerDifficulty[]) {
-  test(`globe ${choice}: tier-limited catalog resolves the same run pool as the full catalog`, async () => {
+  test(`globe ${choice}: tier-limited catalog resolves the same run pool as the full catalog (tierSplit on)`, async () => {
     const full = await placesFor("globe", "globe");
-    const lean = await placesFor("globe", "globe", choice);
+    const lean = await placesFor("globe", "globe", choice, true);
     const start = poolForNewRun(filterByTier(full, choice), memorySeenStore());
     assert.ok(start.poolIds.length > 0, "band must not be empty");
     const fromFull = resolveRunPool(full, start.poolIds);
@@ -125,12 +125,31 @@ for (const choice of ["easy", "medium", "hard"] as PickerDifficulty[]) {
   });
 }
 
-test("globe: a tier-limited catalog cannot satisfy a wider band's poolIds (reload required)", async () => {
+for (const choice of ["easy", "medium", "hard"] as PickerDifficulty[]) {
+  test(`globe ${choice} (tierSplit off): catalog is the full catalog and resolves the same run pool`, async () => {
+    const full = await placesFor("globe", "globe");
+    const off = await placesFor("globe", "globe", choice, false);
+    assert.deepEqual(off.map((p) => p.id), full.map((p) => p.id));
+    const start = poolForNewRun(filterByTier(full, choice), memorySeenStore());
+    assert.equal(resolveRunPool(off, start.poolIds).length, start.poolIds.length);
+  });
+}
+
+test("globe: a tier-limited catalog cannot satisfy a wider band's poolIds (reload required, tierSplit on)", async () => {
   // Documents WHY game-app reloads `places` when difficultyChoice changes:
   // an Easy-only catalog resolves only part of a Medium pool.
   const full = await placesFor("globe", "globe");
-  const easyOnly = await placesFor("globe", "globe", "easy");
+  const easyOnly = await placesFor("globe", "globe", "easy", true);
   const mediumIds = poolForNewRun(filterByTier(full, "medium"), memorySeenStore()).poolIds;
   const resolved = resolveRunPool(easyOnly, mediumIds);
   assert.ok(resolved.length > 0 && resolved.length < mediumIds.length);
+});
+
+test("globe: with tierSplit off even an Easy-started catalog satisfies a Medium pool", async () => {
+  // Pins the invariant that makes a call-site disagreement harmless in the
+  // safe direction: the flag-off catalog is always the full one.
+  const full = await placesFor("globe", "globe");
+  const offEasy = await placesFor("globe", "globe", "easy", false);
+  const mediumIds = poolForNewRun(filterByTier(full, "medium"), memorySeenStore()).poolIds;
+  assert.equal(resolveRunPool(offEasy, mediumIds).length, mediumIds.length);
 });

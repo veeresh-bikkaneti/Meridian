@@ -1078,10 +1078,10 @@ test("globe tiers: each learning path's pool equals the previous filter result, 
   assert.deepEqual(tiersFor("hard"), [4, 5]);
 });
 
-test("globe tiers: placesFor(globe, choice) keeps curated starters and the same banded pool as the full load", async () => {
+test("globe tiers: placesFor(globe, choice) keeps curated starters and the same banded pool as the full load (tierSplit on)", async () => {
   for (const choice of CHOICES) {
     clearChunkCacheForTests();
-    const lean = await placesFor("globe", "globe", choice);
+    const lean = await placesFor("globe", "globe", choice, true);
     const fullPool = await placesFor("globe", "globe");
     assert.deepEqual(
       filterByTier(lean, choice).map((s) => s.id),
@@ -1095,18 +1095,18 @@ test("globe tiers: placesFor(globe, choice) keeps curated starters and the same 
   }
 });
 
-test("globe tiers: Easy fetches only t1+t2; Medium/Hard add only the extra tiers", async () => {
+test("globe tiers: Easy fetches only t1+t2; Medium/Hard add only the extra tiers (tierSplit on)", async () => {
   clearChunkCacheForTests();
   assert.deepEqual(loadedGlobeTiersForTests(), []);
-  await placesFor("globe", "globe", "easy");
+  await placesFor("globe", "globe", "easy", true);
   assert.deepEqual(loadedGlobeTiersForTests(), [1, 2]);
-  await placesFor("globe", "globe", "medium"); // extra: t3, t4 (t2 is cached)
+  await placesFor("globe", "globe", "medium", true); // extra: t3, t4 (t2 is cached)
   assert.deepEqual(loadedGlobeTiersForTests(), [1, 2, 3, 4]);
-  await placesFor("globe", "globe", "hard"); // extra: t5
+  await placesFor("globe", "globe", "hard", true); // extra: t5
   assert.deepEqual(loadedGlobeTiersForTests(), [1, 2, 3, 4, 5]);
 
   clearChunkCacheForTests();
-  await placesFor("globe", "globe", "hard");
+  await placesFor("globe", "globe", "hard", true);
   assert.deepEqual(loadedGlobeTiersForTests(), [4, 5]);
   clearChunkCacheForTests();
   await placesFor("globe", "globe"); // no path (tests/tooling): everything
@@ -1118,29 +1118,33 @@ test("globe tiers: seeded dealing order is unchanged by the split", async () => 
   for (const choice of CHOICES) {
     clearChunkCacheForTests();
     const fullPlaces = await placesFor("globe", "globe");
-    const leanPlaces = await placesFor("globe", "globe", choice);
     const dealFrom = (places: typeof fullPlaces) => {
       const start = poolForNewRun(filterByTier(places, choice), memorySeenStore());
       const pool = resolveRunPool(places, start.poolIds);
       const dealer = createDealer(pool, SEED, memorySeenStore());
       return Array.from({ length: 300 }, (_, i) => dealer.at(i)?.id);
     };
-    const before = dealFrom(fullPlaces);
-    const after = dealFrom(leanPlaces);
-    assert.deepEqual(after, before, `${choice}: seeded deal order changed`);
-    assert.equal(new Set(before).size, 300, `${choice}: repeated a place before pool exhaustion`);
+    const baseline = dealFrom(fullPlaces);
+    assert.equal(new Set(baseline).size, 300, `${choice}: repeated a place before pool exhaustion`);
+    for (const tierSplit of [false, true]) {
+      // Clear first so the tierSplit=true load really fetches only its tiers.
+      clearChunkCacheForTests();
+      const leanPlaces = await placesFor("globe", "globe", choice, tierSplit);
+      assert.deepEqual(dealFrom(leanPlaces), baseline, `${choice} (tierSplit ${tierSplit}): seeded deal order changed`);
+    }
   }
 });
 
-test("globe tiers: whole-country runs (aggregated subdivision chunks) ignore the learning path", async () => {
+test("globe tiers: whole-country runs (aggregated subdivision chunks) ignore the learning path (tierSplit on)", async () => {
   clearChunkCacheForTests();
   const plain = await placesFor("country", "united-states");
   assert.deepEqual(loadedGlobeTiersForTests(), [], "a country run must not touch globe tiers");
   clearChunkCacheForTests();
   for (const choice of CHOICES) {
-    const withChoice = await placesFor("country", "united-states", choice);
+    const withChoice = await placesFor("country", "united-states", choice, true);
     assert.deepEqual(withChoice.map((s) => s.id), plain.map((s) => s.id));
     assert.deepEqual(withChoice.map((s) => s.regionId), plain.map((s) => s.regionId));
+    assert.deepEqual(loadedGlobeTiersForTests(), [], `${choice}: a country run must not load globe tiers`);
   }
   assert.deepEqual(loadedGlobeTiersForTests(), []);
   // Wiring unchanged: the country chunk plus its 50 state chunks.
@@ -1158,4 +1162,41 @@ test("globe tiers: fail closed — bad tier numbers, unsorted lists, misfiled re
   assert.deepEqual(mergeByGeonameId([[b], [a]]).map((s) => s.id), ["gn-5", "gn-9"]);
   assert.throws(() => mergeByGeonameId([[b, a]]), /ascending id order/);
   assert.throws(() => mergeByGeonameId([[{ id: "x-1" } as never]]), /not "gn-<digits>"/);
+});
+
+test("globe tiers: flag off - every learning path gets the full canonical pool", async () => {
+  const canonicalIds = (readJson("chunks/globe.json") as { places: RawPlace[] }).places.map((p) => p.id);
+  for (const choice of CHOICES) {
+    clearChunkCacheForTests();
+    const off = await placesFor("globe", "globe", choice, false);
+    const full = await placesFor("globe", "globe");
+    assert.deepEqual(off.map((s) => s.id), full.map((s) => s.id), `${choice}: flag-off pool differs from the full pool`);
+    assert.deepEqual(loadedGlobeTiersForTests(), [1, 2, 3, 4, 5], `${choice}: flag off must load all five tiers`);
+    assert.deepEqual(
+      off.filter((s) => s.id.startsWith("gn-")).map((s) => s.id),
+      canonicalIds,
+      `${choice}: gn- order differs from chunks/globe.json`,
+    );
+    assert.deepEqual(
+      filterByTier(off, choice)
+        .map((s) => s.id)
+        .filter((id) => id.startsWith("gn-")),
+      legacyBandIds(choice),
+      `${choice}: banded order differs from the legacy filter`,
+    );
+  }
+});
+
+test("globe tiers: omitted tierSplit argument behaves as off", async () => {
+  clearChunkCacheForTests();
+  await placesFor("globe", "globe", "easy");
+  assert.deepEqual(loadedGlobeTiersForTests(), [1, 2, 3, 4, 5]);
+});
+
+test("globe tiers: tierSplit never affects non-globe regions", async () => {
+  clearChunkCacheForTests();
+  const onTexas = await placesFor("state", "texas", "easy", true);
+  const plainTexas = await placesFor("state", "texas");
+  assert.deepEqual(onTexas.map((s) => s.id), plainTexas.map((s) => s.id));
+  assert.deepEqual(loadedGlobeTiersForTests(), []);
 });

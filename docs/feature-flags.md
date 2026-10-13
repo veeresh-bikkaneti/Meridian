@@ -117,3 +117,4 @@ killed feature by a stale flags.json.
 | ------------------ | ------- | -------------------------------------------------------- |
 | `pwaUpdateToast`   | `true`  | Unregisters any live SW; no registration, no update toast |
 | `learningOutcomes` | `false` | No learning records, no growth UI — today's app exactly |
+| `globeTierSplit`   | `false` | Globe loads all five fame-tier files and deals the full canonical pool (today's production); on = Easy t1+t2, Medium t2-t4, Hard t4+t5 only |
