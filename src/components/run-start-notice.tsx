@@ -62,15 +62,15 @@ export function RunStartNotice({ loadingLabel, error }: RunStartNoticeProps) {
           </p>
           <div className="mt-3 flex flex-wrap justify-center gap-2">
             {error.staleBuild ? (
-              <Button type="button" className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg" onClick={error.onRefresh}>
+              <Button type="button" className="focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-fg" onClick={error.onRefresh}>
                 Refresh
               </Button>
             ) : (
-              <Button type="button" className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg" onClick={error.onTryAgain}>
+              <Button type="button" className="focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-fg" onClick={error.onTryAgain}>
                 Try again
               </Button>
             )}
-            <Button type="button" variant="secondary" className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg" onClick={error.onKeepPlaying}>
+            <Button type="button" variant="secondary" className="focus-visible:outline-2 focus-visible:outline-solid focus-visible:outline-offset-2 focus-visible:outline-fg" onClick={error.onKeepPlaying}>
               Keep playing
             </Button>
           </div>

@@ -32,16 +32,18 @@ test.beforeEach(async ({ context, page }) => {
   });
 });
 
-/** Route flags.json (registered after serveBuiltArtifact, so it wins). */
+/**
+ * Route flags.json (registered after serveBuiltArtifact, so it wins). When a
+ * `gate` is given, the response is held until the gate opens, so the flags
+ * request is still in flight when the player presses "Play the globe".
+ */
 async function routeFlagsJson(
   context: BrowserContext,
   body: string,
-  opts: { delayMs?: number } = {},
+  gate?: Promise<void>,
 ): Promise<void> {
   await context.route("**/flags.json", async (route) => {
-    if (opts.delayMs) {
-      await new Promise((resolve) => setTimeout(resolve, opts.delayMs));
-    }
+    if (gate) await gate;
     await route.fulfill({
       status: 200,
       contentType: "application/json; charset=utf-8",
@@ -63,11 +65,25 @@ function trackGlobeAssets(page: Page): { tiers: Set<string>; omitted: string[] }
   return { tiers, omitted };
 }
 
-/** Same steps a player takes: Easy, "Play the globe", wait for the aim phase. */
-async function startEasyGlobeRun(page: Page): Promise<void> {
+/** A promise that stays pending until `open()` is called. */
+function gateOpener(): { gate: Promise<void>; open: () => void } {
+  let open!: () => void;
+  const gate = new Promise<void>((resolve) => {
+    open = resolve;
+  });
+  return { gate, open };
+}
+
+/**
+ * Same steps a player takes: Easy, "Play the globe", wait for the aim phase.
+ * `openFlags` (when given) runs right after the click, so a held flags.json
+ * response is released only once the player has pressed the button.
+ */
+async function startEasyGlobeRun(page: Page, openFlags?: () => void): Promise<void> {
   await page.goto(APP_NO_IDLE);
   await pickBand(page, "Easy");
   await page.getByRole("button", { name: "Play the globe" }).click();
+  openFlags?.();
   await expect(page.locator(".satellite-map")).toBeVisible();
   await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
   await dismissTileOverlayIfPresent(page);
@@ -91,10 +107,17 @@ test("globeTierSplit on (flags.json true): an Easy run requests only tiers 1 and
   page,
   context,
 }) => {
-  await routeFlagsJson(context, JSON.stringify({ version: 1, flags: { globeTierSplit: true } }));
+  const flags = gateOpener();
+  await routeFlagsJson(
+    context,
+    JSON.stringify({ version: 1, flags: { globeTierSplit: true } }),
+    flags.gate,
+  );
   const { tiers, omitted } = trackGlobeAssets(page);
 
-  await startEasyGlobeRun(page);
+  // flags.json is released only after "Play the globe": a run that did not
+  // wait for it would request all five tiers.
+  await startEasyGlobeRun(page, flags.open);
 
   expect([...tiers].sort()).toEqual(["1", "2"]);
   expect(omitted).toEqual([]);
@@ -115,18 +138,21 @@ test("unreachable flags.json fails safe to the full pool (all five tier files)",
   expect(await readQuestion(page)).toMatch(/^Find .+\.$/);
 });
 
-test("a slow flags.json (800 ms) is waited for: an Easy run still requests only tiers 1 and 2", async ({
+test("a flags.json still in flight at 'Play the globe' is waited for: an Easy run still requests only tiers 1 and 2", async ({
   page,
   context,
 }) => {
+  const flags = gateOpener();
   await routeFlagsJson(
     context,
     JSON.stringify({ version: 1, flags: { globeTierSplit: true } }),
-    { delayMs: 800 },
+    flags.gate,
   );
   const { tiers, omitted } = trackGlobeAssets(page);
 
-  await startEasyGlobeRun(page);
+  // Held until after the click: a run that never awaited loadFlags() would
+  // request tiers 3-5 at the click and fail this test.
+  await startEasyGlobeRun(page, flags.open);
 
   expect([...tiers].sort()).toEqual(["1", "2"]);
   expect(omitted).toEqual([]);

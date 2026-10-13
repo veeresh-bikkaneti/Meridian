@@ -1,4 +1,4 @@
-import { test, expect, type Page } from "playwright/test";
+import { test, expect, type Locator, type Page } from "playwright/test";
 import { readFileSync } from "node:fs";
 import {
   serveBuiltArtifact,
@@ -21,7 +21,9 @@ import { answerMissRecorded, readDropPlaceId } from "./globe-band-helpers";
  * Medium tier files (3 and 4) are then aborted for this page. P1: "Try again"
  * after the network is back reloads to the picker with Medium chosen and a
  * Medium run starts. P2: "Keep playing" keeps the cleared Easy state and the
- * result card. Every selector is a role or visible text.
+ * result card. Escape closes the box with focus on "Next place"; "Next place"
+ * clears it; "Try again" shows a visible focus ring when reached by keyboard.
+ * Every selector is a role or visible text.
  */
 
 test.setTimeout(240_000);
@@ -121,8 +123,12 @@ function findKeep(): TierPlace {
 }
 const keep = findKeep();
 
+/** Exact in-run notice copy for a Medium band start that failed offline. */
 const FAIL_TEXT =
-  "Medium needs the internet to bring its new places. Get online, then try again!";
+  "Medium needs the internet to bring its new places. Ask a grown-up to help you get online, then tap Try again!";
+
+/** Requests for the Medium-only tier files (3 and 4), by URL. */
+const TIER_3_4_PATH = /\/assets\/globe-t[34]-[^/]*\.js$/;
 
 function difficultyGroup(page: Page) {
   return page.getByRole("group", { name: "How do you want to grow your map today?" });
@@ -210,6 +216,19 @@ async function reachEasyCelebration(page: Page): Promise<void> {
   await page.route("**/assets/globe-t4-*.js", (route) => route.abort("failed"));
 }
 
+/**
+ * From the Easy celebration, "Try Medium" while offline: the failure box is up
+ * and focused. Returns the box locator.
+ */
+async function reachOfflineMediumBox(page: Page): Promise<Locator> {
+  const failBox = page.getByRole("alert").filter({ hasText: FAIL_TEXT });
+  await reachEasyCelebration(page);
+  await celebration(page).getByRole("button", { name: "Try Medium" }).click();
+  await expect(failBox).toBeVisible({ timeout: 30_000 });
+  await expect(failBox).toBeFocused();
+  return failBox;
+}
+
 test.describe("globe Medium promotion while offline (globeTierSplit on)", () => {
   test.beforeEach(async ({ context }) => {
     await context.route("**/flags.json", (route) =>
@@ -225,14 +244,19 @@ test.describe("globe Medium promotion while offline (globeTierSplit on)", () => 
     page,
   }) => {
     const errors = collectErrors(page);
-    const failBox = page
-      .getByRole("alert")
-      .filter({ hasText: FAIL_TEXT });
-
-    // Precondition: the notice never shows on a normal load.
-    await expect(page.getByRole("alert").filter({ hasText: "needs the internet" })).toHaveCount(0);
+    const failBox = page.getByRole("alert").filter({ hasText: FAIL_TEXT });
+    const tier34Requests: string[] = [];
+    page.on("request", (req) => {
+      if (TIER_3_4_PATH.test(new URL(req.url()).pathname)) tier34Requests.push(req.url());
+    });
 
     await reachEasyCelebration(page);
+
+    // Precondition, after the Easy run: only tiers 1-2 were requested, and no
+    // notice is up before Medium is tried.
+    expect(tier34Requests, "Easy run requested tier 3/4 files").toEqual([]);
+    await expect(page.getByRole("alert").filter({ hasText: "needs the internet" })).toHaveCount(0);
+
     await celebration(page).getByRole("button", { name: "Try Medium" }).click();
 
     // Feedback: the failure box, focused, with two touch-sized buttons.
@@ -297,5 +321,37 @@ test.describe("globe Medium promotion while offline (globeTierSplit on)", () => 
       "cleared Easy mark remains",
     ).not.toBeNull();
     await expect(page.getByText("Getting Medium ready…")).toBeHidden();
+  });
+
+  test("Escape closes the offline box and puts focus on Next place", async ({ page }) => {
+    const failBox = await reachOfflineMediumBox(page);
+
+    await page.keyboard.press("Escape");
+
+    await expect(failBox).toBeHidden();
+    await expect(nextPlaceButton(page)).toBeFocused();
+  });
+
+  test("Next place clears the offline box while it is up", async ({ page }) => {
+    const failBox = await reachOfflineMediumBox(page);
+
+    await clickNextPlace(page);
+
+    await expect(failBox).toBeHidden();
+  });
+
+  test("Try again shows a visible focus ring when reached by keyboard", async ({ page }) => {
+    await reachOfflineMediumBox(page);
+
+    await page.keyboard.press("Tab");
+
+    const tryAgain = page.getByRole("button", { name: "Try again" });
+    await expect(tryAgain).toBeFocused();
+    const ring = await tryAgain.evaluate((el) => {
+      const style = getComputedStyle(el);
+      return { outlineStyle: style.outlineStyle, outlineWidth: parseFloat(style.outlineWidth) };
+    });
+    expect(ring.outlineStyle, "Try again outline-style").not.toBe("none");
+    expect(ring.outlineWidth, "Try again outline-width (px)").toBeGreaterThan(0);
   });
 });

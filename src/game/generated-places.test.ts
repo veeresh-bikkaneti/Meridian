@@ -1169,9 +1169,9 @@ test("globe tiers: flag off - every learning path gets the full canonical pool",
   for (const choice of CHOICES) {
     clearChunkCacheForTests();
     const off = await placesFor("globe", "globe", choice, false);
+    assert.deepEqual(loadedGlobeTiersForTests(), [1, 2, 3, 4, 5], `${choice}: flag off must load all five tiers`);
     const full = await placesFor("globe", "globe");
     assert.deepEqual(off.map((s) => s.id), full.map((s) => s.id), `${choice}: flag-off pool differs from the full pool`);
-    assert.deepEqual(loadedGlobeTiersForTests(), [1, 2, 3, 4, 5], `${choice}: flag off must load all five tiers`);
     assert.deepEqual(
       off.filter((s) => s.id.startsWith("gn-")).map((s) => s.id),
       canonicalIds,
