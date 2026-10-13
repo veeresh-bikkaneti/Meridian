@@ -21,11 +21,12 @@
  *
  * Globe exception: the Globe chunk (59k places, ~13.7 MB bundled) is stored
  * as five derived per-fame-tier files (`tiers/globe-t<N>.json`, see
- * scripts/globe-tiers.mjs) so a learning path fetches only the tiers it
- * deals from — Easy t1+t2, Medium t2–t4, Hard t4+t5. `placesFor` takes the
- * run's learning path for that; without one (tests, tooling) all five tiers
- * load and merge back into the canonical order. Every other region is still
- * one chunk file.
+ * scripts/globe-tiers.mjs). With the `globeTierSplit` flag on, a learning
+ * path fetches only the tiers it deals from — Easy t1+t2, Medium t2–t4,
+ * Hard t4+t5. `placesFor` takes the run's learning path AND the flag value
+ * for that; without both (flag off, tests, tooling) all five tiers load and
+ * merge back into the canonical order. Every other region is still one
+ * chunk file.
  *
  * Dealing contract (approach C, curated-first hybrid): the hand-curated
  * starters are the foundation of every pool — they are never displaced by
@@ -764,20 +765,29 @@ export async function placesFor(
   edition: Edition,
   regionId: string,
   /**
-   * The run's learning path. Only the Globe uses it: it then loads just the
-   * fame tiers that path deals from (the caller still applies filterByTier,
-   * so the dealt set is unchanged — this only skips downloading and parsing
-   * the rest). Ignored for every other region, including whole-country runs
-   * that aggregate subdivision chunks.
+   * The run's learning path. Only the Globe uses it, and only when
+   * `tierSplit` is true: it then loads just the fame tiers that path deals
+   * from (the caller still applies filterByTier, so the dealt set is
+   * unchanged — this only skips downloading and parsing the rest). Ignored
+   * for every other region, including whole-country runs that aggregate
+   * subdivision chunks.
    */
   choice?: PickerDifficulty,
+  /**
+   * globeTierSplit flag value, resolved by the caller. true = the Globe loads
+   * only `tiersFor(choice)`; false (default, today's production behavior) =
+   * the Globe loads all five tiers merged into canonical order. Ignored for
+   * every non-Globe region. Passed in (not read here) so this module stays
+   * flag-free and unit-testable under node.
+   */
+  tierSplit: boolean = false,
 ): Promise<Starter[]> {
   const chunkIds = aggregateChunkIds(edition, regionId);
   // All chunks load in parallel; one missing/malformed chunk rejects the
   // whole pool — never a partial country.
   const chunks = await Promise.all(
     chunkIds.map((id) =>
-      id === GLOBE_REGION_ID && choice !== undefined
+      id === GLOBE_REGION_ID && choice !== undefined && tierSplit
         ? loadGlobeTiers(tiersFor(choice))
         : loadRegionChunk(id),
     ),

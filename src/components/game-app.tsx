@@ -117,6 +117,7 @@ import {
   shouldArmRevealWatchdog,
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
+import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
   emitEvent,
   initObservability,
@@ -728,6 +729,19 @@ function useSessionState() {
 }
 
 /**
+ * The globeTierSplit decision for a run's pool load. Only the Globe consults
+ * the flag (and thereby waits for flags.json, at most ~1.5s, only on the first
+ * Globe run of a page load); every other region gets false at once. Both
+ * placesFor call sites use this one helper, and the resolver caches the first
+ * answer, so a run's two loads can never disagree.
+ */
+function globeTierSplitFor(edition: Edition, regionId: string): Promise<boolean> {
+  return edition === "globe" && regionId === "globe"
+    ? resolveGlobeTierSplit()
+    : Promise.resolve(false);
+}
+
+/**
  * Review-deck entry status for the edition picker. Gated on the
  * `learningOutcomes` flag like the other growth surfaces: flag off = no
  * deck entry at all (the deck only populates while the flag is on). Re-read
@@ -1258,9 +1272,11 @@ export function GameApp() {
       try {
         // The region's chunk(s) load here — never eagerly, never partial.
         recordMilestone("data_chunk_load_start", { edition, regionId, chunkId: regionId });
-        // The learning path rides along so the Globe fetches only the fame
-        // tiers it deals from; filterByTier below still decides the pool.
-        const places = await placesFor(edition, regionId, choice);
+        // The learning path and the globeTierSplit flag ride along so the Globe
+        // fetches only the fame tiers it deals from (flag on) or all five (flag
+        // off); filterByTier below still decides the pool.
+        const tierSplit = await globeTierSplitFor(edition, regionId);
+        const places = await placesFor(edition, regionId, choice, tierSplit);
         recordMilestone("data_loaded", { edition, regionId, chunkId: regionId });
         const dateKey = trailDate();
         // The picker's difficulty band narrows the catalog BEFORE the dealer
@@ -2472,7 +2488,11 @@ function Play({
         cancelled = true;
       };
     }
-    placesFor(run.edition, run.regionId, run.difficultyChoice).then(
+    globeTierSplitFor(run.edition, run.regionId)
+      .then((tierSplit) =>
+        placesFor(run.edition, run.regionId, run.difficultyChoice, tierSplit),
+      )
+      .then(
       (loaded) => {
         if (!cancelled) setPlaces(loaded);
       },
