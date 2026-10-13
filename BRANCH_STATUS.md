@@ -1,4 +1,24 @@
-# BRANCH_STATUS — feat/scout-capability-choice-dialog (2026-10-12)
+# BRANCH_STATUS — feat/scout-offer-accept-sticky (perf Task 3, owner decision: Option A)
+
+**PUSH OK, DO NOT MERGE** — owner merges. Based on `feat/scout-capability-choice-dialog` (PR #147);
+retarget to `main` after #147 merges.
+
+## This branch (delta on #147)
+- **Fix**: an accept from the capability choice dialog is now stored with `accepted: true`
+  and never decays, so it is never re-offered after 7 days (non-nag rule 1). `source` is kept
+  for telemetry. Unanswered auto records (e.g. `contextlost`) still decay. `qualifyMapMode()` order untouched.
+- Unify duplicate `ScoutOfferVariant` (single definition in `src/map/capability.ts`).
+- Remove the `?scout-offer=suppress` URL parameter from the production bundle; the e2e seam is only
+  `window.__meridianSuppressScoutOffer`.
+- Docs: `docs/scout-offer-policy.md` (charter text not in repo).
+- Tests: unit "accept → scout, never decays / never re-offered", flag strictness, manual overwrite;
+  e2e accept assertions + "accepted scout, 400 days old → never re-offered".
+
+## Pending
+- Charter section 4 wording: file not in repo — mirror `docs/scout-offer-policy.md` there.
+
+---
+(PR #147's own status follows.)
 
 **PUSH OK, DO NOT MERGE** — owner merges.
 

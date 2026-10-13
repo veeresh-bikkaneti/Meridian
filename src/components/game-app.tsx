@@ -130,6 +130,7 @@ import {
 import type { MapMode, MapModeSource } from "@/map/capability";
 import {
   planBootMapMode,
+  type ScoutOfferVariant,
   probeWebGL,
   qualifyMapMode,
   readDeviceMemoryGB,
@@ -139,7 +140,6 @@ import {
 import type { ScoutRestoreView } from "@/map/satellite-map";
 import { SCOUT_COPY } from "./scout-copy.ts";
 import { ScoutBootOffer } from "./scout-boot-offer.tsx";
-import type { ScoutOfferVariant } from "./scout-boot-offer.tsx";
 import { MapModeToggle } from "./map-mode-toggle.tsx";
 import {
   TUTORIAL_EDITION,
@@ -869,13 +869,14 @@ export function GameApp() {
   }, [applyMapMode]);
 
   // Capability offer accept (probe / low-memory): scout with the
-  // qualifying source preserved, so the assignment still decays after
-  // 7 days. Applied immediately — the offer fires pre-mount, so there is
-  // no mid-round hazard.
+  // qualifying source preserved for telemetry and `accepted: true`, so —
+  // like a decline or a manual toggle — it is the user's own answer: it
+  // never decays and the dialog is never re-offered. Applied immediately —
+  // the offer fires pre-mount, so there is no mid-round hazard.
   const acceptCapabilityOffer = useCallback(() => {
     const source = scoutOffer;
     if (source === "probe" || source === "low-memory") {
-      writeStoredMapMode("scout", source);
+      writeStoredMapMode("scout", source, undefined, Date.now(), true);
       setReportMapMode("scout");
       setMapMode("scout");
     }
@@ -1095,7 +1096,7 @@ export function GameApp() {
     // Q1 (offer, not force): a fresh "prior-crash", "probe", or
     // "low-memory" decision shows the choice dialog — the session stays
     // in full mode until the player accepts. Scout never applies silently.
-    // E2E seam: ?scout-offer=suppress or the harness init script
+    // E2E seam: the harness init script
     // (window.__meridianSuppressScoutOffer, set by serveBuiltArtifact)
     // skips the dialog — the Playwright VM's SwiftShader renderer reads
     // as a weak device, so unsuppressed every fresh boot would show the
@@ -1107,10 +1108,8 @@ export function GameApp() {
         setMapMode(stored.mode);
       } else {
         const suppressOffer =
-          (typeof window !== "undefined" &&
-            new URLSearchParams(window.location.search).get("scout-offer") === "suppress") ||
-          (typeof window !== "undefined" &&
-            (window as unknown as Record<string, unknown>).__meridianSuppressScoutOffer === true);
+          typeof window !== "undefined" &&
+          (window as unknown as Record<string, unknown>).__meridianSuppressScoutOffer === true;
         const plan = planBootMapMode(
           null,
           qualifyMapMode({

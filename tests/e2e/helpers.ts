@@ -70,8 +70,8 @@ const MIME: Record<string, string> = {
  * the capability probe reads as a weak device, so without suppression
  * every fresh boot would show the choice dialog and block unrelated
  * specs. By default (suppressScoutOffer !== false) an init script sets
- * window.__meridianSuppressScoutOffer, which game-app honors alongside
- * the ?scout-offer=suppress query param. Specs that exercise the dialog
+ * window.__meridianSuppressScoutOffer, which game-app honors (there is no
+ * URL parameter for this — a URL cannot hide the offer). Specs that exercise the dialog
  * itself pass { suppressScoutOffer: false }.
  */
 export async function serveBuiltArtifact(

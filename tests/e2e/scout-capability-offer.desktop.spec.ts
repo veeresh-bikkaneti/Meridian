@@ -5,11 +5,13 @@
  *
  * Paths walked:
  * - probe-weak (this VM's SwiftShader) → dialog with probe copy →
- *   accept lands scout (auto, source preserved for decay).
+ *   accept lands scout (accepted: true, source preserved; never decays).
  * - decline → manual "full" stored (never decays) → no re-prompt on the
  *   next boot.
  * - low-memory (spoofed: capable GPU + 1 GB) → dialog with memory copy.
- * - decayed auto record → the dialog re-appears (fresh re-qualification).
+ * - accepted choice, even 400 days old → the dialog never re-appears.
+ * - decayed auto record nobody answered → the dialog re-appears (fresh
+ *   re-qualification).
  */
 import { test, expect } from "playwright/test";
 import {
@@ -48,11 +50,12 @@ test("probe-weak → capability dialog → accept lands scout", async ({
   await modal.getByRole("button", { name: "Use Scout Map" }).click();
   await expect(modal).toBeHidden();
 
-  // Accept stores the auto scout assignment with the source preserved
-  // (so it still decays after 7 days).
+  // Accept stores the scout assignment with the source preserved and
+  // accepted: true — a person's answer, so it never decays.
   expect(await readStoredMapMode(page)).toMatchObject({
     mode: "scout",
     source: "probe",
+    accepted: true,
   });
 
   // The lighter trail actually mounts when a run starts.
@@ -98,17 +101,47 @@ test("low-memory → dialog with memory copy", async ({ context }) => {
   await expect(modal).toHaveAttribute("data-offer-source", "low-memory");
   await expect(modal).toContainText("doesn't have much memory");
 
-  // Accepting a low-memory offer stores source "low-memory" (decays).
+  // Accepting a low-memory offer stores source "low-memory", accepted.
   await modal.getByRole("button", { name: "Use Scout Map" }).click();
   await expect(modal).toBeHidden();
   expect(await readStoredMapMode(page)).toMatchObject({
     mode: "scout",
     source: "low-memory",
+    accepted: true,
   });
   await page.close();
 });
 
-test("decayed auto record → dialog re-appears on fresh probe", async ({
+test("accepted scout, 400 days old → never re-offered", async ({ context }) => {
+  // The old behavior re-asked after 7 days. An accepted choice must stand
+  // on a still-weak device (this VM's SwiftShader) however old it is.
+  await context.addInitScript(() => {
+    localStorage.setItem(
+      "meridian:map-mode",
+      JSON.stringify({
+        mode: "scout",
+        source: "probe",
+        setAt: Date.now() - 400 * 24 * 60 * 60 * 1000,
+        accepted: true,
+      }),
+    );
+  });
+  const page = await context.newPage();
+  await page.goto(APP_NO_IDLE);
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
+    timeout: 30_000,
+  });
+  await page.waitForTimeout(3_000);
+  await expect(offerModal(page)).toBeHidden();
+  // The stored choice stands untouched (boot never rewrites it).
+  expect(await readStoredMapMode(page)).toMatchObject({ mode: "scout", source: "probe", accepted: true });
+  // ...and it is what actually mounts.
+  await startGlobeRun(page);
+  await expect.poll(() => readMapMode(page), { timeout: 60_000 }).toBe("scout");
+  await page.close();
+});
+
+test("decayed auto record nobody answered → dialog re-appears on fresh probe", async ({
   context,
 }) => {
   // Seed an 8-day-old probe scout record: decay treats it as absent, so

@@ -6,7 +6,7 @@
  *   MAP_MODE_DECAY_MS = 7 days · LOW_MEMORY_GB = 2
  *   qualifyMapMode({ manual?, priorMapCrash?, webglProbeOk?, deviceMemoryGB? })
  *     → { mode: "full"|"scout", source: "manual"|"prior-crash"|"probe"|"low-memory"|"default" }
- *   readStoredMapMode(storage?, now?) — decay applied here; manual never decays
+ *   readStoredMapMode(storage?, now?) — decay applied here; manual and accepted offers never decay
  *   writeStoredMapMode / clearStoredMapMode
  *   probeWebGL() — real document; weak-renderer patterns incl. SwiftShader
  *   readDeviceMemoryGB() · resolveMapMode({ priorMapCrash? }) — SSR-safe
@@ -410,35 +410,80 @@ test("planBootMapMode: clean boot → no offer", () => {
   );
 });
 
-test("storage contract: accept capability offer → scout stored with source (decays in 7 days)", () => {
+test("storage contract: accept capability offer → scout stored with source, never decays, never re-offered", () => {
   // Boot 1: weak probe, no stored assignment → probe offer.
   const s = fakeStorage();
   assert.deepEqual(
     planBootMapMode(readStoredMapMode(s, NOW), qualifyMapMode({ webglProbeOk: false })),
     { offer: "probe" },
   );
-  // The user accepts: app writes scout with the qualifying source preserved.
-  writeStoredMapMode("scout", "probe", s, NOW);
+  // The user accepts: app writes scout with the qualifying source preserved
+  // and accepted: true — the person's own answer.
+  writeStoredMapMode("scout", "probe", s, NOW, true);
   assert.deepEqual(readStoredMapMode(s, NOW), {
     mode: "scout",
     source: "probe",
     setAt: NOW,
+    accepted: true,
   });
-  // Boot 2 (next day): the auto assignment stands — no re-prompt.
-  const nextDay = NOW + 24 * 60 * 60 * 1000;
-  const stored = readStoredMapMode(s, nextDay);
-  assert.ok(stored);
-  assert.deepEqual(planBootMapMode(stored, qualifyMapMode({ manual: stored })), {
-    offer: null,
+  // Next day, 8 days later (past the old decay), and a year later on a still
+  // weak device: the accepted choice stands and the dialog never re-fires.
+  for (const days of [1, 8, 30, 365]) {
+    const later = NOW + days * 24 * 60 * 60 * 1000;
+    const stored = readStoredMapMode(s, later);
+    assert.ok(stored, `accepted record must survive ${days} days`);
+    assert.equal(stored.mode, "scout");
+    assert.deepEqual(
+      planBootMapMode(
+        stored,
+        qualifyMapMode({ manual: stored, webglProbeOk: false, deviceMemoryGB: 1 }),
+      ),
+      { offer: null },
+      `re-offered after ${days} days`,
+    );
+  }
+});
+
+test("accepted flag: strict true only; writes without it are unchanged (backward compatible)", () => {
+  const s = fakeStorage();
+  writeStoredMapMode("scout", "probe", s, NOW);
+  assert.deepEqual(JSON.parse(s.getItem(MAP_MODE_STORAGE_KEY)!), {
+    mode: "scout",
+    source: "probe",
+    setAt: NOW,
   });
-  // Boot 3 (8 days later): decayed → treated as absent → fresh probe
-  // re-qualifies → the choice dialog appears again.
-  const eightDays = NOW + 8 * 24 * 60 * 60 * 1000;
-  assert.equal(readStoredMapMode(s, eightDays), null);
-  assert.deepEqual(
-    planBootMapMode(null, qualifyMapMode({ webglProbeOk: false })),
-    { offer: "probe" },
-  );
+  assert.deepEqual(readStoredMapMode(s, NOW), { mode: "scout", source: "probe", setAt: NOW });
+  // An auto record nobody answered still decays.
+  assert.equal(readStoredMapMode(s, NOW + MAP_MODE_DECAY_MS + 1), null);
+  // A hand-edited / corrupt flag does not exempt a record from decay.
+  for (const bad of ["true", 1, "yes", false, null]) {
+    const stale = {
+      mode: "scout",
+      source: "probe",
+      setAt: NOW - 8 * 24 * 60 * 60 * 1000,
+      accepted: bad,
+    };
+    assert.equal(
+      readStoredMapMode(fakeStorage({ [MAP_MODE_STORAGE_KEY]: JSON.stringify(stale) }), NOW),
+      null,
+      `accepted=${JSON.stringify(bad)} must not stop decay`,
+    );
+  }
+  // The qualifying source is preserved, so telemetry can still tell
+  // an accepted probe offer from an accepted low-memory offer.
+  writeStoredMapMode("scout", "low-memory", s, NOW, true);
+  assert.equal(readStoredMapMode(s, NOW + 400 * 24 * 60 * 60 * 1000)?.source, "low-memory");
+});
+
+test("an accepted choice is replaced by a later manual toggle (still the user's to change)", () => {
+  const s = fakeStorage();
+  writeStoredMapMode("scout", "probe", s, NOW, true);
+  writeStoredMapMode("full", "manual", s, NOW + 1000);
+  assert.deepEqual(readStoredMapMode(s, NOW + 1000), {
+    mode: "full",
+    source: "manual",
+    setAt: NOW + 1000,
+  });
 });
 
 test("storage contract: decline capability offer → manual full, never re-prompts", () => {

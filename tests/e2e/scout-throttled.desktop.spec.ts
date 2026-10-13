@@ -61,10 +61,11 @@ test("SwiftShader + 6x CPU throttle: scout qualifies and the game completes", as
   await modal.getByRole("button", { name: "Use Scout Map" }).click();
   await expect(modal).toBeHidden();
 
-  // Accepting stores the auto scout assignment (source preserved for decay).
+  // Accepting stores the scout assignment (source preserved, accepted: true).
   expect(await readStoredMapMode(page)).toMatchObject({
     mode: "scout",
     source: "probe",
+    accepted: true,
   });
 
   await page.getByRole("button", { name: "Play the globe" }).click();

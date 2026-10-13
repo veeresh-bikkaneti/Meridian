@@ -7,8 +7,9 @@
  *   player taps "Use Scout Map".
  * - variant "probe" | "low-memory": the boot capability probe or the
  *   low-memory signal qualified the device for Scout Map. The user chooses:
- *   accept the lighter trail, or explicitly keep the full map (stored as a
- *   manual "full" choice — never decays, never re-prompts).
+ *   accept the lighter trail (stored `accepted: true` — never decays, never
+ *   re-offered), or explicitly keep the full map (stored as a manual "full"
+ *   choice — never decays, never re-prompts).
  *
  * Dismissal semantics (UX review 2026-10-12): only the explicit decline
  * button records a choice. Scrim tap and Escape merely dismiss the dialog
@@ -24,9 +25,8 @@
  */
 
 import { useEffect, useRef, type JSX } from "react";
+import type { ScoutOfferVariant } from "../map/capability.ts";
 import { SCOUT_COPY } from "./scout-copy.ts";
-
-export type ScoutOfferVariant = "prior-crash" | "probe" | "low-memory";
 
 export function ScoutBootOffer(props: {
   variant: ScoutOfferVariant;

@@ -47,6 +47,15 @@ export interface StoredMapMode {
   source: MapModeSource;
   /** Epoch ms when this assignment was written. */
   setAt: number;
+  /**
+   * True when a person accepted this Scout assignment from the boot choice
+   * dialog. An accepted choice is the user's own answer, so — like a manual
+   * toggle — it never decays and is never re-offered ("an explicit answer is
+   * never re-asked"). `source` still records the qualifying signal (probe /
+   * low-memory) for telemetry. Absent on every auto assignment nobody
+   * answered, which still decay after MAP_MODE_DECAY_MS.
+   */
+  accepted?: true;
 }
 
 export interface MapModeDecision {
@@ -106,7 +115,8 @@ export function qualifyMapMode(signals: CapabilitySignals = {}): MapModeDecision
 /**
  * Read the stored assignment, applying decay: an auto (non-manual)
  * assignment older than MAP_MODE_DECAY_MS is treated as absent — the device
- * is re-qualified on fresh signals. Manual toggles never decay.
+ * is re-qualified on fresh signals. Manual toggles and accepted offers (a
+ * person's own answer) never decay.
  * Returns null when nothing valid is stored. Never throws.
  */
 export function readStoredMapMode(
@@ -127,8 +137,11 @@ export function readStoredMapMode(
         : parsed.source === "prior-crash" || parsed.source === "probe" || parsed.source === "low-memory" || parsed.source === "contextlost"
           ? parsed.source
           : "default";
-    if (source !== "manual" && now - parsed.setAt > MAP_MODE_DECAY_MS) return null;
-    return { mode: parsed.mode, source, setAt: parsed.setAt };
+    const accepted = parsed.accepted === true;
+    if (source !== "manual" && !accepted && now - parsed.setAt > MAP_MODE_DECAY_MS) return null;
+    return accepted
+      ? { mode: parsed.mode, source, setAt: parsed.setAt, accepted: true }
+      : { mode: parsed.mode, source, setAt: parsed.setAt };
   } catch {
     return null;
   }
@@ -146,13 +159,17 @@ export function writeStoredMapMode(
   source: Exclude<MapModeSource, "default">,
   storage?: Pick<Storage, "setItem"> | null,
   now: number = Date.now(),
+  /** Pass true only from the boot dialog's Accept: a person's answer, never decays. */
+  accepted: boolean = false,
 ): void {
   try {
     const store = storage ?? defaultLocalStorage();
     if (!store) return;
     store.setItem(
       MAP_MODE_STORAGE_KEY,
-      JSON.stringify({ mode, source, setAt: now } satisfies StoredMapMode),
+      JSON.stringify(
+        (accepted ? { mode, source, setAt: now, accepted: true } : { mode, source, setAt: now }) satisfies StoredMapMode,
+      ),
     );
   } catch {
     // Storage blocked/full — the session still qualifies correctly in memory.
@@ -255,9 +272,10 @@ export interface BootMapModePlan {
  *
  * Owner directive: a capability-detected weak device gets a CHOICE, never
  * a silent routing. The session always starts in full mode when an offer
- * is pending — scout applies only on accept (auto, source preserved, so
- * it still decays), and decline records the user's explicit "full" choice
- * as manual (never decays, never re-prompts).
+ * is pending — scout applies only on accept (stored with `accepted: true`,
+ * source preserved for telemetry; like decline it is a person's answer, so
+ * it never decays and never re-prompts), and decline records the user's
+ * explicit "full" choice as manual (never decays, never re-prompts).
  */
 export function planBootMapMode(
   stored: StoredMapMode | null,
