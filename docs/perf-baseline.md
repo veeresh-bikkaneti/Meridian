@@ -138,3 +138,28 @@ Easy is dramatically smaller (11,388 of 59,423 places, 19%).
   compression levels (the script uses gzip level 6; the report uses level 9).
 - Parse/compile time of the Globe chunk in isolation, and heap transients
   shorter than the 50 ms sample period.
+
+## Final summary (2026-10-13, branch claude/hopeful-darwin-dp7ket @ 70fa14c)
+
+**Measured** (commands in this file; Chromium 141.0.7390.37, 4 vCPU VM, 4x CPU, Slow 4G, 390x844, median of 5):
+
+| metric | main d7a0fc8 | this branch (tier split ON, final code) |
+| --- | ---: | ---: |
+| home ready | 5,103 ms | 5,045 ms |
+| first interactive question (text + map canvas) | 23,134 ms | 14,359 ms (-38%) |
+| tap Play -> interactive question | 17,755 ms | 9,052 ms |
+| JS bytes on the wire | 2,730,330 | 1,335,353 (-51%) |
+| all bytes on the wire | 3,733,320 | 2,338,848 (-37%) |
+| peak JS heap (50 ms samples) | 70.99 MiB | 60.42 MiB |
+
+Command: `npm run build:pages && node scripts/perf-globe-easy.mjs --runs 5` (plain build, no `VITE_KOFI_URL`). Bundle report of the final build: 46,366,610 raw / 8,828,828 gzip bytes in total; entry JS 2,699,322 raw / 790,557 gzip, entry CSS 184,057 raw / 30,444 gzip.
+
+**Not measured:** real phones; imagery tile traffic (stubbed, host unreachable from the VM); warm/return visits and the service worker; what GitHub Pages and the Cloudflare Worker actually serve for `names.json` (the sandbox proxy blocks both hosts: see `docs/ops/specs/ws-6-names-json.md`); iOS (no device); the flag-off path's first-Globe-run wait for `flags.json` (at most 1.5 s by design, not timed); Medium and Hard paths (only Easy is dramatically smaller: 11,388 of 59,423 places).
+
+**What did not improve:** home ready (about 5.0 s) is unchanged. The `index` + `routes` entry bundles (790,557 B gzip) are now about 59% of the JS an Easy Globe game downloads. The `safari-launch` boot-JS ceiling spec (1.8 MB) already fails on main (2,741,890 B received): that guard has been red since before this work.
+
+**Recommended next, in order of expected gain:**
+1. Home weight (WS-5 in the orchestrator brief): find the largest modules in `routes-*.js` (2.25 MB raw) and lazy-load secondary screens; resize `grandpa-directions.webp` (377 kB). Target: home ready below 5.0 s and the `safari-launch` ceiling.
+2. `names.json` columnar encoding (-31% gzip, parse 154 ms -> 34 ms measured locally): needs the build-loop tests to change, so it needs your approval.
+3. Medium/Hard: if Medium matters on phones, split tier 3/4 by country; the field-dedupe experiment (drop `edition`/`regionId`/`hookMissing`/`difficulty`) saves only 3% gzip on t1+t2 (462,111 -> 446,351 B), so do not bother.
+4. Fix the boot effect that deletes `meridian.run` when `difficultyChoice` changes (see `docs/ops/specs/ws-0-globe-tier-flag.md` section 9), then revisit "Try again".
