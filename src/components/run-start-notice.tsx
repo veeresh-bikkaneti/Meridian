@@ -57,8 +57,8 @@ export function RunStartNotice({ loadingLabel, error }: RunStartNoticeProps) {
             {error.staleBuild
               ? "A new version of Meridian is available."
               : error.scope === "band"
-                ? `${error.label} needs the internet to bring its new places. Ask a grown-up to help you get online, then tap Try again!`
-                : `${sentenceCase(error.label)} needs the internet to bring its places. Ask a grown-up to help you get online, then tap Try again!`}
+                ? `${error.label} needs the internet to bring its new places. Ask a grown-up to help you get online, then tap\u00A0Try again!`
+                : `${sentenceCase(error.label)} needs the internet to bring its places. Ask a grown-up to help you get online, then tap\u00A0Try again!`}
           </p>
           <div className="mt-3 flex flex-wrap justify-center gap-2">
             {error.staleBuild ? (

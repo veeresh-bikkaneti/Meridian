@@ -125,7 +125,7 @@ const keep = findKeep();
 
 /** Exact in-run notice copy for a Medium band start that failed offline. */
 const FAIL_TEXT =
-  "Medium needs the internet to bring its new places. Ask a grown-up to help you get online, then tap Try again!";
+  "Medium needs the internet to bring its new places. Ask a grown-up to help you get online, then tap\u00A0Try again!";
 
 /** Requests for the Medium-only tier files (3 and 4), by URL. */
 const TIER_3_4_PATH = /\/assets\/globe-t[34]-[^/]*\.js$/;

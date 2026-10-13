@@ -1388,7 +1388,7 @@ export function GameApp() {
           staleBuild = false;
         }
         setStartError({
-          message: staleBuild ? message : `We couldn't open ${regionName} right now. Check that you're online, then tap it again.`,
+          message: staleBuild ? message : `We couldn't open ${regionId === "globe" ? "the Globe" : regionName} right now. Check that you're online, then tap Play again.`,
           staleBuild,
           edition,
           regionId,
@@ -1818,7 +1818,7 @@ export function GameApp() {
         </Button>
       </div>
     ) : (
-      <p role="alert" className="mb-4 rounded-xl border border-line bg-surface p-4 text-sm text-fg">
+      <p role="alert" className="mb-4 rounded-xl border border-fg/30 bg-surface p-4 text-base text-fg">
         {startError.message}
       </p>
     )
