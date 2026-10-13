@@ -180,6 +180,11 @@ export interface StorytellerHomeHostProps {
       stays in the banner, but the greeting stays quiet until the invite is
       dismissed (no competing popups). */
   tutorialInviteVisible?: boolean;
+  /** True while a blocking boot dialog (e.g. the Scout Map choice offer)
+      is open or the boot qualification hasn't settled — the greeting waits
+      until the offer resolves so narration never plays under a modal
+      (UX review 2026-10-12, BLOCK 2). */
+  suppressGreeting?: boolean;
 }
 
 /**
@@ -187,6 +192,7 @@ export interface StorytellerHomeHostProps {
  */
 export default function StorytellerHomeHost({
   tutorialInviteVisible = false,
+  suppressGreeting = false,
 }: StorytellerHomeHostProps) {
   const tourActive = useTourActive();
   const celebrationActive = useCelebrationActive();
@@ -588,7 +594,7 @@ export default function StorytellerHomeHost({
   // The dismiss tap counts as the first gesture (owner 2026-10-09) — begin
   // narration now instead of waiting for another tap.
   useEffect(() => {
-    if (!tutorialInviteVisible && !startedRef.current) {
+    if (!tutorialInviteVisible && !suppressGreeting && !startedRef.current) {
       startedRef.current = true;
       setStarted(true);
       // If a tour owns the stage, don't narrate under it — the post-tour
@@ -607,7 +613,7 @@ export default function StorytellerHomeHost({
         beginGreetingAudio();
       }
     }
-  }, [tutorialInviteVisible, greetingText, showBubble, beginGreetingAudio, yielded, mode]);
+  }, [tutorialInviteVisible, suppressGreeting, greetingText, showBubble, beginGreetingAudio, yielded, mode]);
 
   // Tab hidden cancels the audio window (G1).
   useEffect(() => {

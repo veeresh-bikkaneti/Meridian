@@ -96,7 +96,7 @@ test("low-memory → dialog with memory copy", async ({ context }) => {
   const modal = offerModal(page);
   await expect(modal).toBeVisible({ timeout: 30_000 });
   await expect(modal).toHaveAttribute("data-offer-source", "low-memory");
-  await expect(modal).toContainText("low on memory");
+  await expect(modal).toContainText("doesn't have much memory");
 
   // Accepting a low-memory offer stores source "low-memory" (decays).
   await modal.getByRole("button", { name: "Use Scout Map" }).click();
@@ -132,16 +132,72 @@ test("decayed auto record → dialog re-appears on fresh probe", async ({
   await page.close();
 });
 
-test("manual full suppresses the capability dialog entirely", async ({
+test("greeting waits while the choice dialog is open (UX BLOCK 2)", async ({
   context,
 }) => {
-  await seedManualMode(context, "full");
+  // No spoof: this VM's Chromium IS the weak device (SwiftShader probe),
+  // so the capability dialog opens on boot.
   const page = await context.newPage();
   await page.goto(APP_NO_IDLE);
-  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
-    timeout: 30_000,
+
+  const modal = offerModal(page);
+  await expect(modal).toBeVisible({ timeout: 30_000 });
+
+  // While the dialog is open, the storyteller greeting must stay quiet:
+  // no bubble behind the modal.
+  const bubble = page.getByTestId("storyteller-home-bubble");
+  await page.waitForTimeout(3_000);
+  await expect(bubble).toBeHidden();
+
+  // Resolve the dialog (decline = explicit full choice); the greeting may
+  // then start on the now-quiet home screen. The first-run tutorial invite
+  // also gates the greeting — dismiss it if present.
+  await modal.getByRole("button", { name: "Keep full map" }).click();
+  await expect(modal).toBeHidden();
+  const inviteDismiss = page.getByRole("button", { name: "Not now" });
+  if (await inviteDismiss.isVisible().catch(() => false)) {
+    await inviteDismiss.click();
+  }
+  await expect(bubble).toBeVisible({ timeout: 30_000 });
+  await page.close();
+});
+
+test("scrim dismiss writes nothing: dialog re-fires next boot (UX BLOCK 1)", async ({
+  context,
+}) => {
+  // No spoof: this VM's Chromium IS the weak device (SwiftShader probe).
+  const page = await context.newPage();
+  await page.goto(APP_NO_IDLE);
+
+  const modal = offerModal(page);
+  await expect(modal).toBeVisible({ timeout: 30_000 });
+
+  // Dismiss via the scrim (click the overlay outside the dialog box).
+  const clicked = await modal.evaluate((overlay) => {
+    const dialog = overlay.querySelector('[role="dialog"]') ?? overlay;
+    const o = overlay.getBoundingClientRect();
+    const d = dialog.getBoundingClientRect();
+    const y = d.top > o.top + 8 ? (o.top + d.top) / 2 : o.top + 4;
+    const x = (o.left + o.right) / 2;
+    const el = document.elementFromPoint(x, y);
+    if (el && (el === overlay || (overlay.contains(el) && !dialog.contains(el)))) {
+      (el as HTMLElement).click();
+      return true;
+    }
+    overlay.dispatchEvent(
+      new MouseEvent("click", { bubbles: true, clientX: x, clientY: y }),
+    );
+    return true;
   });
-  await page.waitForTimeout(5_000);
-  await expect(offerModal(page)).toBeHidden();
+  expect(clicked).toBe(true);
+  await expect(modal).toBeHidden({ timeout: 10_000 });
+
+  // A stray tap is not a choice: nothing persisted.
+  expect(await readStoredMapMode(page)).toBeNull();
+
+  // Next boot on the still-weak device: the dialog re-fires.
+  await page.reload();
+  await expect(modal).toBeVisible({ timeout: 30_000 });
+  await expect(modal).toHaveAttribute("data-offer-source", "probe");
   await page.close();
 });

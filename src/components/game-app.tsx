@@ -828,6 +828,12 @@ export function GameApp() {
   /** The boot choice dialog (offer, not force) — variant, or null when hidden. Once per boot. */
   const [scoutOffer, setScoutOffer] = useState<ScoutOfferVariant | null>(null);
   const scoutOfferShownRef = useRef(false);
+  /**
+   * True once the boot map-mode qualification has run. The storyteller
+   * greeting waits for this (plus offer resolution) so narration never
+   * starts under the choice dialog on a qualifying device.
+   */
+  const [bootQualified, setBootQualified] = useState(false);
 
   /**
    * Apply a map-mode assignment: persist (Q3) + stamp crash reports +
@@ -884,6 +890,13 @@ export function GameApp() {
   const declineScoutOffer = useCallback(() => {
     writeStoredMapMode("full", "manual");
     setReportMapMode("full");
+    setScoutOffer(null);
+  }, []);
+  // Dismiss (scrim tap / Escape): NOT a choice — closes the dialog without
+  // persisting anything, so a stray tap can never become a permanent
+  // "full" assignment. The dialog may re-fire on the next boot if the
+  // device still qualifies (UX review 2026-10-12, BLOCK 1).
+  const dismissScoutOffer = useCallback(() => {
     setScoutOffer(null);
   }, []);
   // GeoDetective mounts its own screen outside the endless-run state
@@ -1115,6 +1128,9 @@ export function GameApp() {
     } catch {
       // Qualification never blocks boot — full mode is the default.
     }
+    // Boot qualification has settled (offer shown or not) — the storyteller
+    // greeting may now start once any open offer resolves.
+    setBootQualified(true);
     void loadFlags().then(() => {
       setObservabilityEndpoint(getObservabilityEndpoint());
     });
@@ -1878,6 +1894,7 @@ export function GameApp() {
         ) : null
       }
       tutorialInviteVisible={showTutorialInvite}
+      suppressGreeting={scoutOffer !== null || !bootQualified}
       ageBand={ageBand}
       onGrownUpOpen={openAgeSettings}
       notice={
@@ -1914,6 +1931,7 @@ export function GameApp() {
         variant={scoutOffer}
         onAccept={scoutOffer === "prior-crash" ? acceptScoutOffer : acceptCapabilityOffer}
         onDecline={declineScoutOffer}
+        onDismiss={dismissScoutOffer}
       />
     ) : null}
     </>
@@ -1940,6 +1958,7 @@ function Choose({
   onDifficultyChoice,
   tutorialInvite,
   tutorialInviteVisible,
+  suppressGreeting,
   ageBand,
   onGrownUpOpen,
 }: {
@@ -1961,6 +1980,9 @@ function Choose({
   /** True while the first-run tutorial invite is on screen — Comet's
       auto-greeting stays quiet until it's dismissed (no competing popups). */
   tutorialInviteVisible?: boolean;
+  /** True while a blocking boot dialog is open or boot qualification hasn't
+      settled — the storyteller greeting waits (UX review 2026-10-12). */
+  suppressGreeting?: boolean;
   /** Effective age band (parent-set; "11-13" when unset). */
   ageBand: AgeBandId;
   /** Open the grown-up gate (footer link + locked-tile link). */
@@ -2022,7 +2044,10 @@ function Choose({
           </h1>
           <StorytellerBannerBoundary>
             <Suspense fallback={<StorytellerBannerSkeleton />}>
-              <StorytellerHomeHost tutorialInviteVisible={tutorialInviteVisible} />
+              <StorytellerHomeHost
+                tutorialInviteVisible={tutorialInviteVisible}
+                suppressGreeting={suppressGreeting}
+              />
             </Suspense>
           </StorytellerBannerBoundary>
         </div>

@@ -2,8 +2,11 @@
  * Scout Map boot-offer E2E (PBI-6 + Phase A UX contract).
  *
  * Contract: data-testid="scout-boot-offer" fires ONLY when the
- * map-attributed prior-crash flag is set, once per boot. Esc / "Not now" /
- * scrim click = decline. Focus is trapped while open.
+ * map-attributed prior-crash flag is set, once per boot. The explicit
+ * decline button ("Keep full map") records a permanent manual full choice.
+ * Esc / scrim click merely DISMISS the dialog without persisting anything
+ * (a stray tap is not a choice) — the dialog may re-fire next boot.
+ * Focus is trapped while open.
  *
  * PBI-6 dependency: fails until the dev implements the offer modal.
  */
@@ -40,8 +43,8 @@ test("offer modal appears exactly once per boot when the crash flag is set", asy
   await expect(modal).toBeVisible({ timeout: 30_000 });
   expect(await modal.count()).toBe(1);
 
-  // Decline via the "Not now" easy path.
-  await modal.getByRole("button", { name: "Not now" }).click();
+  // Decline via the "Keep full map" explicit choice.
+  await modal.getByRole("button", { name: "Keep full map" }).click();
   await expect(modal).toBeHidden();
 
   // No re-fire within the same boot.
@@ -59,7 +62,7 @@ test("offer modal appears exactly once per boot when the crash flag is set", asy
   await page.close();
 });
 
-test("Esc declines the offer", async ({ context }) => {
+test("Esc dismisses WITHOUT persisting (not a choice)", async ({ context }) => {
   await seedCrashOffer(context);
   const page = await context.newPage();
   await page.goto(APP_NO_IDLE);
@@ -69,15 +72,17 @@ test("Esc declines the offer", async ({ context }) => {
   await page.keyboard.press("Escape");
   await expect(modal).toBeHidden();
 
-  // Esc is a decline: the user's explicit choice of full mode is persisted.
-  expect(await readStoredMapMode(page)).toMatchObject({
-    mode: "full",
-    source: "manual",
-  });
+  // Esc is a dismissal, not a choice: nothing is persisted.
+  expect(await readStoredMapMode(page)).toBeNull();
+
+  // The dialog may re-fire on the next boot (fresh crash flag).
+  await seedCrashOffer(context);
+  await page.reload();
+  await expect(modal).toBeVisible({ timeout: 30_000 });
   await page.close();
 });
 
-test("scrim click declines the offer", async ({ context }) => {
+test("scrim click dismisses WITHOUT persisting (not a choice)", async ({ context }) => {
   await seedCrashOffer(context);
   const page = await context.newPage();
   await page.goto(APP_NO_IDLE);
@@ -113,11 +118,13 @@ test("scrim click declines the offer", async ({ context }) => {
   expect(clicked).toBe(true);
   await expect(modal).toBeHidden({ timeout: 10_000 });
 
-  // Scrim click is a decline: the choice persists as manual full.
-  expect(await readStoredMapMode(page)).toMatchObject({
-    mode: "full",
-    source: "manual",
-  });
+  // Scrim click is a dismissal, not a choice: nothing is persisted.
+  expect(await readStoredMapMode(page)).toBeNull();
+
+  // The dialog may re-fire on the next boot (fresh crash flag).
+  await seedCrashOffer(context);
+  await page.reload();
+  await expect(modal).toBeVisible({ timeout: 30_000 });
   await page.close();
 });
 
@@ -163,13 +170,13 @@ test("declining retires the offer: no modal on the next boot", async ({
 
   const modal = offerModal(page);
   await expect(modal).toBeVisible({ timeout: 30_000 });
-  await modal.getByRole("button", { name: "Not now" }).click();
+  await modal.getByRole("button", { name: "Keep full map" }).click();
   await expect(modal).toBeHidden();
 
-  // The decline must retire the offer — "Not now" must not nag on every
-  // subsequent boot. The decline is stored as the user's explicit manual
-  // "full" choice (dev's call per the contract): on a weak device the next
-  // boot's fresh probe would otherwise re-fire the dialog.
+  // The decline must retire the offer — "Keep full map" must not nag on
+  // every subsequent boot. The decline is stored as the user's explicit
+  // manual "full" choice (dev's call per the contract): on a weak device
+  // the next boot's fresh probe would otherwise re-fire the dialog.
   expect(await readStoredMapMode(page)).toMatchObject({
     mode: "full",
     source: "manual",

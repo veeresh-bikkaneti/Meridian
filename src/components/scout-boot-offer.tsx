@@ -10,7 +10,13 @@
  *   accept the lighter trail, or explicitly keep the full map (stored as a
  *   manual "full" choice — never decays, never re-prompts).
  *
- * - fixed inset-0 z-50; scrim tap / Escape / decline button = decline
+ * Dismissal semantics (UX review 2026-10-12): only the explicit decline
+ * button records a choice. Scrim tap and Escape merely dismiss the dialog
+ * WITHOUT persisting anything — a stray tap is not an explicit choice, so
+ * the dialog may re-fire on the next boot if the device still qualifies.
+ *
+ * - fixed inset-0 z-50; scrim tap / Escape = dismiss (no persist);
+ *   decline button = decline (manual full, permanent)
  * - role="dialog" aria-modal; focus on the primary action on open;
  *   focus returns to the home heading on close
  * - data-testid="scout-boot-offer" (E2E contract),
@@ -26,11 +32,15 @@ export function ScoutBootOffer(props: {
   variant: ScoutOfferVariant;
   onAccept: () => void;
   onDecline: () => void;
+  /** Non-choice dismissal (scrim tap, Escape): closes without persisting. */
+  onDismiss: () => void;
 }): JSX.Element {
   const acceptRef = useRef<HTMLButtonElement | null>(null);
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const onDeclineRef = useRef(props.onDecline);
   onDeclineRef.current = props.onDecline;
+  const onDismissRef = useRef(props.onDismiss);
+  onDismissRef.current = props.onDismiss;
 
   const variant = props.variant;
   const body =
@@ -57,15 +67,15 @@ export function ScoutBootOffer(props: {
     };
   }, []);
 
-  // Escape declines (the owner's decline path: the user's explicit choice
-  // of full mode, stored as manual). Tab is trapped inside the dialog:
-  // focus cycles between the two buttons and never escapes to the page
-  // behind the modal.
+  // Escape dismisses WITHOUT persisting (a keypress is not an explicit
+  // choice — only the decline button records manual full). Tab is trapped
+  // inside the dialog: focus cycles between the two buttons and never
+  // escapes to the page behind the modal.
   useEffect(() => {
     const dialog = dialogRef.current;
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        onDeclineRef.current();
+        onDismissRef.current();
         return;
       }
       if (event.key !== "Tab" || !dialog) return;
@@ -95,7 +105,7 @@ export function ScoutBootOffer(props: {
       data-testid="scout-boot-offer"
       data-offer-source={variant}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
-      onClick={() => onDeclineRef.current()}
+      onClick={() => onDismissRef.current()}
     >
       <div
         ref={dialogRef}

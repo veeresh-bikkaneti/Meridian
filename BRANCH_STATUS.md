@@ -70,6 +70,48 @@ struggle with the full site or go to lite mode."
   changeable in Map settings — panel noted the label is honest as-is;
   left for the owner's eye rather than adding UI copy unasked.
 
+## Master Orchestrator review (2026-10-12): 2 UX BLOCKs found and fixed
+
+Independent panel (Game Designer: YES / Frontend: YES / UI-UX: NO→fixed /
+Tester role absorbed by orchestrator after worker error):
+
+**BLOCK 1 (HIGH, fixed): scrim tap recorded a permanent decline.** A stray
+tap outside the dialog wrote manual `full` (never re-prompt) — an accidental
+dismissal recorded as an explicit permanent choice. Fix: scrim tap and Escape
+now merely DISMISS without persisting (`dismissScoutOffer`); only the
+explicit decline button writes manual full. The dialog may re-fire next boot
+if the device still qualifies. Regression E2E: "scrim dismiss writes
+nothing: dialog re-fires next boot" + updated Esc/scrim specs in
+scout-offer.desktop.spec.ts.
+
+**BLOCK 2 (MEDIUM, fixed): storyteller greeting fired behind the modal.**
+On a qualifying boot the greeting narration/bubble started under the open
+dialog. Fix: `StorytellerHomeHost` takes `suppressGreeting`; game-app passes
+`scoutOffer !== null || !bootQualified` (boot qualification settles in the
+boot effect; greeting starts once the offer resolves). Regression E2E:
+"greeting waits while the choice dialog is open".
+
+**Copy fixes (Game Designer, non-blocking):** prior-crash decline "Not now"
+→ "Keep full map" (the choice is permanent; label must not imply "later");
+low-memory body "may stutter" → "might freeze or lag" (kid comprehension).
+
+**Pre-existing failures (NOT this PR, NOT the fixes):** 2 mobile poke
+animation tests fail identically on the pristine branch (verified via stash
++ rebuild + re-run): "poke: tap the figure → rotating idle lines" and
+"poke startle + yield recede win over idle sway" ("homer-startle" class
+never applies). Unrelated to the scout dialog; recommend a follow-up.
+
+## Gates (post-fix re-run)
+- [x] `npx tsc --noEmit` clean
+- [x] `node --test` 2027 pass / 0 fail (7 skipped)
+- [x] `node scripts/lint-cards.mjs` GATE PASSED
+- [x] `npm run build:pages` green
+- [x] Playwright: scout-capability-offer 6/6 (2 new BLOCK regressions),
+      scout-offer 7/7, scout-throttled 1/1, scout-toggle 7/7,
+      scout-false-demotion 3/3, scout-context-lost + switch-note 9/9
+- [x] storyteller-home desktop + reduced: all pass; mobile 24/26
+      (2 pre-existing poke-animation failures, proven unrelated via stash)
+
 ## PR: https://github.com/veeresh-bikkaneti/Meridian/pull/147 (OPEN, never merged)
 
 ## Ready to merge? NO
