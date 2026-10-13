@@ -18,7 +18,9 @@ export interface RunStartNoticeProps {
 }
 
 const BOX =
-  "fixed inset-x-4 top-44 z-50 mx-auto max-w-md rounded-xl border border-line bg-surface p-4 text-center text-sm text-fg shadow-xl";
+  "fixed inset-x-4 top-44 z-50 mx-auto max-w-md rounded-xl border border-fg/30 bg-surface p-4 text-center text-base text-fg shadow-xl";
+
+const sentenceCase = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 /**
  * In-run feedback for a run start (the celebration's "Try Medium"/"Try Hard",
@@ -39,25 +41,36 @@ export function RunStartNotice({ loadingLabel, error }: RunStartNoticeProps) {
         {loadingLabel !== null ? `Getting ${loadingLabel} ready…` : ""}
       </p>
       {error ? (
-        <div ref={alertRef} role="alert" tabIndex={-1} className={`${BOX} focus:outline-none`}>
+        <div
+          ref={alertRef}
+          role="alert"
+          tabIndex={-1}
+          className={`${BOX} focus:outline-none`}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") {
+              e.stopPropagation();
+              error.onKeepPlaying();
+            }
+          }}
+        >
           <p>
             {error.staleBuild
               ? "A new version of Meridian is available."
               : error.scope === "band"
-                ? `${error.label} needs the internet to bring its new places. Get online, then try again!`
-                : `${error.label} needs the internet to bring its places. Get online, then try again!`}
+                ? `${error.label} needs the internet to bring its new places. Ask a grown-up to help you get online, then tap Try again!`
+                : `${sentenceCase(error.label)} needs the internet to bring its places. Ask a grown-up to help you get online, then tap Try again!`}
           </p>
           <div className="mt-3 flex flex-wrap justify-center gap-2">
             {error.staleBuild ? (
-              <Button type="button" onClick={error.onRefresh}>
+              <Button type="button" className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg" onClick={error.onRefresh}>
                 Refresh
               </Button>
             ) : (
-              <Button type="button" onClick={error.onTryAgain}>
+              <Button type="button" className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg" onClick={error.onTryAgain}>
                 Try again
               </Button>
             )}
-            <Button type="button" variant="secondary" onClick={error.onKeepPlaying}>
+            <Button type="button" variant="secondary" className="focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg" onClick={error.onKeepPlaying}>
               Keep playing
             </Button>
           </div>

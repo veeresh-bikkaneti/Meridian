@@ -1053,6 +1053,7 @@ export function GameApp() {
 
   /** Idle kill: end the session and return the player to the home screen. */
   const killIdleSession = useCallback(() => {
+    setStartError(null);
     clearDrop();
     try {
       sessionStorage.removeItem(RUN_KEY);
@@ -1386,7 +1387,14 @@ export function GameApp() {
         } catch {
           staleBuild = false;
         }
-        setStartError({ message, staleBuild, edition, regionId, regionName, choice });
+        setStartError({
+          message: staleBuild ? message : `We couldn't open ${regionName} right now. Check that you're online, then tap it again.`,
+          staleBuild,
+          edition,
+          regionId,
+          regionName,
+          choice,
+        });
         // Telemetry: region-chunk load failures never left this catch —
         // emit so they reach crash reporting like every other error class.
         emitEvent({
@@ -1425,6 +1433,11 @@ export function GameApp() {
       next?.focus({ preventScroll: true });
     });
   }, []);
+  // The in-run start notice clears when the player moves on: the next place
+  // is dealt (run.index) or the run changes phase.
+  useEffect(() => {
+    setStartError(null);
+  }, [run?.index, run?.phase]);
 
   // Review-deck status for the picker entry (flag-gated; re-read whenever
   // the app returns to the picker — see useDeckStatus).
@@ -1490,6 +1503,7 @@ export function GameApp() {
     setInviteDismissed(true);
   }, []);
   const endTutorial = useCallback(() => {
+    setStartError(null);
     clearDrop();
     try {
       sessionStorage.removeItem(RUN_KEY);
@@ -1805,7 +1819,7 @@ export function GameApp() {
       </div>
     ) : (
       <p role="alert" className="mb-4 rounded-xl border border-line bg-surface p-4 text-sm text-fg">
-        {startError.message} Please try again.
+        {startError.message}
       </p>
     )
   ) : null;
@@ -1974,7 +1988,7 @@ export function GameApp() {
   );
 }
 
-/** Kid-friendly hints for each learning path, shown under the picker. */
+/** Display names of the learning paths, used by the in-run start notice. */
 const BAND_LABELS: Record<PickerDifficulty, string> = {
   easy: "Easy",
   medium: "Medium",
@@ -1993,9 +2007,10 @@ function startNoticeTarget(
 ): { label: string; scope: "band" | "region" } {
   return target.edition === run.edition && target.regionId === run.regionId
     ? { label: BAND_LABELS[target.choice], scope: "band" }
-    : { label: target.regionName, scope: "region" };
+    : { label: target.regionId === "globe" ? "the Globe" : target.regionName, scope: "region" };
 }
 
+/** Kid-friendly hints for each learning path, shown under the picker. */
 const DIFFICULTY_HINTS: Record<PickerDifficulty, string> = {
   easy: "Famous places — the spots every explorer starts with.",
   medium: "A little of everything — grow your map one discovery at a time.",
