@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { test, expect, type BrowserContext, type Page } from "playwright/test";
 import {
   serveBuiltArtifact,
@@ -153,6 +154,20 @@ test("a flags.json still in flight at 'Play the globe' is waited for: an Easy ru
   // Held until after the click: a run that never awaited loadFlags() would
   // request tiers 3-5 at the click and fail this test.
   await startEasyGlobeRun(page, flags.open);
+
+  expect([...tiers].sort()).toEqual(["1", "2"]);
+  expect(omitted).toEqual([]);
+  expect(await readQuestion(page)).toMatch(/^Find .+\.$/);
+});
+
+test("as shipped: with no flags.json route, the shipped dist/client/flags.json gives an Easy Globe run tiers 1 and 2", async ({
+  page,
+}) => {
+  // Precondition: the file the build actually serves ships the flag on.
+  expect(JSON.parse(readFileSync("dist/client/flags.json", "utf8")).flags.globeTierSplit).toBe(true);
+  const { tiers, omitted } = trackGlobeAssets(page);
+
+  await startEasyGlobeRun(page);
 
   expect([...tiers].sort()).toEqual(["1", "2"]);
   expect(omitted).toEqual([]);
