@@ -137,6 +137,8 @@ interface ResolvedAssets {
   pointing: string | null;
   /** greet-0N mp3 for today's greeting rotation; null → text-only greeting. */
   greetAudio: string | null;
+  /** poke-01…05, index-aligned with POKE_LINES. null slot → text only. */
+  pokeAudio: readonly (string | null)[];
 }
 
 /**
@@ -221,6 +223,7 @@ export default function StorytellerHomeHost({
   const [assets, setAssets] = useState<ResolvedAssets>({
     pointing: null,
     greetAudio: null,
+    pokeAudio: [null, null, null, null, null],
   });
 
   const reducedMotion = useRef(
@@ -229,6 +232,7 @@ export default function StorytellerHomeHost({
   ).current;
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const pokeAudioRef = useRef<HTMLAudioElement | null>(null);
   const bubbleTimer = useRef(0);
   const capTimer = useRef(0);
   const soundWatch = useRef(0);
@@ -303,6 +307,8 @@ export default function StorytellerHomeHost({
     window.clearTimeout(playHangTimer.current);
     audioRef.current?.pause();
     audioRef.current = null;
+    pokeAudioRef.current?.pause();
+    pokeAudioRef.current = null;
     setGreetingPaused(false);
   }, []);
 
@@ -349,6 +355,10 @@ export default function StorytellerHomeHost({
       setAssets({
         pointing: manifest.poses.pointing ? base + manifest.poses.pointing : null,
         greetAudio: audioPath ? base + audioPath : null,
+        pokeAudio: [1, 2, 3, 4, 5].map((n) => {
+          const path = manifest.audio[`poke-0${n}`];
+          return path ? base + path : null;
+        }),
       });
     });
     return () => {
@@ -880,9 +890,20 @@ export default function StorytellerHomeHost({
     // Poke lines rotate (5 max, then repeat); taps <600ms apart are ignored.
     if (now - lastPokeRef.current < POKE_DEBOUNCE_MS) return;
     lastPokeRef.current = now;
-    const line = POKE_LINES[pokeIndexRef.current % POKE_LINES.length]!;
+    const index = pokeIndexRef.current % POKE_LINES.length;
+    const line = POKE_LINES[index]!;
     pokeIndexRef.current += 1;
     showBubble(line, POKE_BUBBLE_MS);
+    const pokeUrl = assetsRef.current.pokeAudio[index];
+    pokeAudioRef.current?.pause();
+    pokeAudioRef.current = null;
+    if (pokeUrl && isSoundEnabled()) {
+      const pokeAudio = new Audio(pokeUrl);
+      pokeAudioRef.current = pokeAudio;
+      void pokeAudio.play().catch(() => {
+        if (pokeAudioRef.current === pokeAudio) pokeAudioRef.current = null;
+      });
+    }
     pokeVisual();
   }, [mode, phase, showBubble, pokeVisual, beginGreetingAudio, failGreetingAudio, greetFromFigureTap, tutorialInviteVisible]);
 
@@ -912,6 +933,8 @@ export default function StorytellerHomeHost({
       clearTimers();
       audioRef.current?.pause();
       audioRef.current = null;
+      pokeAudioRef.current?.pause();
+      pokeAudioRef.current = null;
     };
   }, [clearTimers]);
 

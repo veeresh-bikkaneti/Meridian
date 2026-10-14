@@ -26,7 +26,8 @@ A dismissed greeting stays off the figure tap. "Hear again" under the figure rep
 
 - [x] `npx tsc --noEmit` — clean
 - [x] `npm run build:pages` — green
-- [x] Playwright — poke lines, poke startle, and Hear again
+- [x] Playwright — full `storyteller-home.mobile.spec.ts` 23/23, including both pokes and Hear again
+- [x] Follow-up taps play `poke-01` then `poke-02` (am_fenrir, same voice as the greeting)
 - [ ] Owner merge
 
 **Ready to merge? Owner's call.** Sits on #152. #148's nbsp notice is not here.
