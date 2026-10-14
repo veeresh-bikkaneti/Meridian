@@ -1,70 +1,38 @@
-# BRANCH_STATUS — fix/crash-report-background-classification (2026-10-12)
+# BRANCH_STATUS — fix/storyteller-entering-tap (2026-10-13)
 
 **PUSH OK, DO NOT MERGE** — owner merges.
 
 ## What this fixes (plain language)
 
-Two Android crash reports arrived with the identical signature: `suspected_crash`,
-no error, last milestone `storyteller_ready`. Investigation showed the crash
-reporter **cannot tell the difference** between two very different events:
+On the home page the storyteller sat in `data-phase="entering"` for as long as the "New to Meridian?" invite was up. Tapping the mascot did nothing. The first cut of this branch started the greeting on top of the invite, so the line sat on the lead paragraph and was hard to read.
 
-1. Android killing the tab while the game is on screen (a real problem), and
-2. Android killing a *backgrounded* tab for memory (routine phone behavior —
-   the user switches apps or locks the phone, the OS reclaims the tab).
-
-Both look exactly the same in the report. Chasing a memory bug from this
-evidence would be guessing.
-
-**The fix makes every future report self-classifying:**
-- The app now records a `backgrounded` milestone when the tab is hidden and a
-  `foregrounded` milestone when it returns.
-- A future `suspected_crash` ending at `backgrounded` = the OS killed a
-  backgrounded tab (expected, not a bug). Anything else = a real foreground
-  kill worth investigating.
-
-**Companion fix found during verification:** the `storyteller_ready` milestone
-was being re-recorded on *every React render* (the `onLoaded` callback was an
-inline arrow, so the mascot's preload effect re-ran each render). That spammed
-the breadcrumb trail and would have overwritten the new `backgrounded`
-milestone. Both call sites now use a stable `useCallback` — the milestone
-fires once, when the figure actually loads.
+A mascot tap now dismisses the invite the same way "Not now" does (the tour stays seen — owner 2026-10-13), then starts the greeting inside that click. A second tap inside 600ms does not start another clip. The bubble stays in its existing spot under the banner, on a solid plate so the tagline does not show through.
 
 ## What changed (files)
 
-- `src/lib/observability.ts` — `backgrounded`/`foregrounded` milestones;
-  `visibilitychange` listener installed once in `init()` (injectable document
-  for tests; silent no-op without a DOM).
-- `src/lib/observability.test.ts` — 4 new unit tests.
-- `src/components/storyteller.tsx` — stable `handleFigureLoaded` callback.
-- `src/components/storyteller-home.tsx` — stable `handleFigureLoaded` callback.
-- `tests/e2e/crash-classification.mobile.spec.ts` — new black-box E2E spec.
-
-## What was verified
-
-- [x] `npx tsc --noEmit` clean
-- [x] `npm test` — 1190/1190 (incl. 4 new visibility tests)
-- [x] `node scripts/lint-cards.mjs` — GATE PASSED
-- [x] `npm run build:pages` green
-- [x] New E2E spec passes on rebuilt dist (mobile 390×844)
-- [x] Existing storyteller E2E suite: 6/6 (narration watchdogs untouched)
-- [x] Full next-boot classification path covered by unit test
-      (backgrounded trail → `suspected_crash` carries `lastMilestone: "backgrounded"`)
+- `src/game/tutorial.ts` — `TUTORIAL_INVITE_DISMISS_EVENT`. GameApp already owns "Not now".
+- `src/components/game-app.tsx` — listens for that event and runs `onDismissInvite`. Does not start audio.
+- `src/components/storyteller-audio-guards.ts` — `decideEnteringFigureTap` plus `isRapidFigureTap` (600ms, same window as a poke).
+- `src/components/storyteller-home.tsx` — that tap dismisses the invite, then plays on the gesture. A second tap inside 600ms is ignored. The invite-cleared effect does not start a second clip.
+- `src/components/storyteller-home.css` — popover background is opaque `--atlas-bg-1`. Position, size, and dismiss anchor unchanged.
+- `tests/e2e/storyteller-entering-tap.mobile.spec.ts` — after the tap the invite is gone and today's greeting is visible.
 
 ## Deliberately NOT changed
 
-- The #136 narration watchdogs and audio paths are untouched (verified by the
-  6/6 storyteller suite).
-- The crash-report worker needs no change — `lastMilestone` is already
-  forwarded; "backgrounded" reads clearly in the Discord alert.
-- No memory "optimization" was shipped on a guess. The sprite sheets
-  (12.6 MB decoded) and the map are the real memory holders, but shrinking
-  them without proof of the kill mechanism would be theater.
+- "Not now", "Take the tour", tour-return, mute, and poke/replay are the same paths as main.
+- Greeting still does not auto-start while the invite is up. The 2s watchdog does not run until `started` is true.
+- Popover still hangs below the banner (no reflow, still clear of the sound toggle).
 
 ## Pending
 
-- [x] Scrum panel review — APPROVE, no BLOCKs
-- [x] Rebase to zero conflicts + full suite re-run — done (1219/1219, E2E 1/1 + 6/6)
-- [x] Screen recording of verification — `~/workspace/your_files/meridian-crash-classification/crash-classification-verification.webm`
-- [x] Open PR (never merge) — PR #144 OPEN
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm test` — scripts 756 pass / 7 skip, src 1226/1226 (1989 tests, 0 failures)
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — green
+- [x] Entering-tap mobile E2E — invite gone, one greeting clip after a second tap inside 600ms, opaque plate, caption above the tagline
+- [x] Invite specs (3) and dismiss × sound-toggle overlap @390 and @360 — green
+- [ ] Owner merge
 
-**Ready to merge? NO** — pending owner's video green-light → Chitti/panel review → owner's merge decision.
+Poke-after-dismiss still fails on `main` (`d7a0fc8`) in this browser. That path was not changed.
+
+**Ready to merge? Owner's call.** This cut does not touch poke, tour-return, mute, or the story-card host.
