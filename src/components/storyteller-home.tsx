@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { StorytellerMascot, isPlayAbort, useCelebrationActive, useTourActive } from "./storyteller";
-import { fallbackLine, shouldReplayGreeting, decideEnteringFigureTap, isRapidFigureTap } from "./storyteller-audio-guards";
+import { fallbackLine, shouldReplayGreeting, decideEnteringFigureTap, isRapidFigureTap, shouldMarkGreetingDismissed } from "./storyteller-audio-guards";
 import { STORYTELLER_HOME_RETRY_HINT } from "./storyteller-lines";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import {
@@ -535,6 +535,7 @@ export default function StorytellerHomeHost({
     const audio = new Audio(url);
     audioRef.current = audio;
     audioStartTimeRef.current = Date.now();
+    phaseRef.current = "greeting_audio";
     setPhase("greeting_audio");
     // The greeting bubble stays up while audio plays (no hold timer).
     window.clearTimeout(bubbleTimer.current);
@@ -743,11 +744,24 @@ export default function StorytellerHomeHost({
   // ---- Dismiss -------------------------------------------------------------
   const dismissBubble = useCallback(
     (viaKeyboard: boolean) => {
+      // Snapshot before stopAudio nulls the element. The dismiss click's
+      // pointerdown already started the clip, while `phase` can still be
+      // greeting_text until the next render.
+      const audioLive = audioRef.current !== null;
+      const phaseNow = phaseRef.current;
       stopAudio();
       hideBubble();
       // Fix D: a greeting the kid explicitly dismissed stays dismissed — a
       // later figure tap pokes, it must not resurrect killed audio.
-      if (phase === "greeting_audio") greetDismissedByUserRef.current = true;
+      if (
+        shouldMarkGreetingDismissed({
+          mode,
+          phase: phaseNow,
+          audioLive,
+        })
+      ) {
+        greetDismissedByUserRef.current = true;
+      }
       // Panel 2026-10-09 (BLOCK 3): dismissing the text-only return line is
       // not a dead end (owner ruling #1, 2026-10-09) — flag it so the
       // tour-return follow-up effect still runs the greeting afterward.
