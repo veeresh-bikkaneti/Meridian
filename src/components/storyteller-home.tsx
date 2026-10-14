@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { StorytellerMascot, isPlayAbort, useCelebrationActive, useTourActive } from "./storyteller";
-import { fallbackLine, shouldReplayGreeting, decideEnteringFigureTap } from "./storyteller-audio-guards";
+import { fallbackLine, shouldReplayGreeting, decideEnteringFigureTap, isRapidFigureTap } from "./storyteller-audio-guards";
 import { STORYTELLER_HOME_RETRY_HINT } from "./storyteller-lines";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import {
@@ -806,13 +806,17 @@ export default function StorytellerHomeHost({
     // tap starts the greeting. While the invite is up, dismiss it first
     // (same as "Not now") so the bubble does not stack on that card.
     // startedRef flips true here, so the invite-cleared effect does not
-    // start a second clip.
+    // start a second clip. A second tap before React leaves `entering`
+    // would otherwise build another clip — same 600ms window as a poke.
     if (
       decideEnteringFigureTap({
         phase,
         started: startedRef.current,
       }) === "greet"
     ) {
+      const now = Date.now();
+      if (isRapidFigureTap(now, lastPokeRef.current, POKE_DEBOUNCE_MS)) return;
+      lastPokeRef.current = now;
       if (tutorialInviteVisible) {
         window.dispatchEvent(new Event(TUTORIAL_INVITE_DISMISS_EVENT));
       }

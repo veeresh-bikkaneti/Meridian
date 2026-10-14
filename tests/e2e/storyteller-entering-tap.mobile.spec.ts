@@ -90,7 +90,11 @@ test("figure tap during the tutorial invite leaves entering and shows the greeti
     window.Audio = CountingAudio as unknown as typeof Audio;
   });
 
-  await page.getByTestId("storyteller-figure").click();
+  const figure = page.getByTestId("storyteller-figure");
+  await figure.click();
+  // Greeting breath animation never goes stable, so the second tap is forced.
+  // It still has to land inside the 600ms window and must not start a second clip.
+  await figure.click({ force: true });
 
   await expect(page.getByTestId("tutorial-invite")).toHaveCount(0);
   await expect

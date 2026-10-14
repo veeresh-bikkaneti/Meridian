@@ -4,6 +4,7 @@ import {
   decideEnteringFigureTap,
   decideFirstGesture,
   fallbackLine,
+  isRapidFigureTap,
   resolvePlayAbort,
   shouldReplayGreeting,
 } from "./storyteller-audio-guards.ts";
@@ -68,6 +69,20 @@ describe("decideEnteringFigureTap — Fix G: dead mascot while entering", () => 
       decideEnteringFigureTap({ phase: "exiting", started: true }),
       "pass",
     );
+  });
+});
+
+describe("isRapidFigureTap — double-tap must not restart the greeting", () => {
+  it("the first tap is not rapid", () => {
+    assert.equal(isRapidFigureTap(1_000, 0, 600), false);
+  });
+
+  it("a second tap inside 600ms is ignored", () => {
+    assert.equal(isRapidFigureTap(1_400, 1_000, 600), true);
+  });
+
+  it("a tap at exactly 600ms is accepted (same < check as poke)", () => {
+    assert.equal(isRapidFigureTap(1_600, 1_000, 600), false);
   });
 });
 

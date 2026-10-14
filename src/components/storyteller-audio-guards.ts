@@ -106,6 +106,15 @@ export function decideEnteringFigureTap(opts: {
   return "pass";
 }
 
+/**
+ * A second figure tap inside the poke debounce must not start another clip.
+ * React may not have left `entering` yet, so the phase check alone restarts
+ * the greeting. Same window as a poke (`POKE_DEBOUNCE_MS`).
+ */
+export function isRapidFigureTap(now: number, lastTap: number, debounceMs: number): boolean {
+  return now - lastTap < debounceMs;
+}
+
 /** Fix E — fallback caption assembly. The retry hint appears only when the
     failure was a play() rejection (clip exists, playback never started —
     the silent symptom), never on network errors, and never device-shames.
