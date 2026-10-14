@@ -20,12 +20,13 @@ After the home greeting, the next mascot tap should show a poke line (text only)
 - An unheard greeting that the kid did not dismiss still replays.
 - #148's `tap\u00A0Try again` notice is not this branch.
 
+A dismissed greeting stays off the figure tap. "Hear again" under the figure replays that clip and puts the greeting line back.
+
 ## Pending
 
-- [x] `npx tsc --noEmit` — clean on the rebase
-- [x] Guards + home copy unit tests — 49/49
-- [x] `npm run build:pages` — green (`8b22816`)
-- [x] Playwright — 8/8: poke 2, entering-tap, invite, silence-replay
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm run build:pages` — green
+- [x] Playwright — poke lines, poke startle, and Hear again
 - [ ] Owner merge
 
 **Ready to merge? Owner's call.** Sits on #152. #148's nbsp notice is not here.

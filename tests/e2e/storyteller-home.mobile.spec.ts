@@ -233,6 +233,24 @@ test("poke: tap the figure → rotating idle lines", async ({ page }) => {
   expectCleanConsole(errors);
 });
 
+test("panic dismiss can hear the greeting again", async ({ page }) => {
+  await seedQuietHome(page);
+  const errors = await loadHome(page);
+  const caption = page.getByTestId("storyteller-home-caption");
+  await expect(caption).toBeVisible({ timeout: 10_000 });
+
+  await page.getByTestId("storyteller-home-dismiss").click();
+  const replay = page.getByTestId("storyteller-home-replay");
+  await expect(replay).toBeVisible();
+  await expect(replay).toHaveText("Hear again");
+
+  await replay.click();
+  await expect.poll(async () => caption.textContent(), { timeout: 5_000 }).toBe(expectedGreeting());
+  await expect(replay).toHaveCount(0);
+
+  expectCleanConsole(errors);
+});
+
 test("loop pick: the locked send-off rides along ≤2.5s; navigation never waits", async ({
   page,
 }) => {

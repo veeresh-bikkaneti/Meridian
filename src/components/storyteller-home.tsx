@@ -215,6 +215,9 @@ export default function StorytellerHomeHost({
   // the graceful yield-out. Neither touches the phase machine.
   const [poked, setPoked] = useState(false);
   const [yielding, setYielding] = useState(false);
+  // A panic dismiss keeps the next figure tap a poke. This is the only
+  // way back to the greeting clip.
+  const [canRehear, setCanRehear] = useState(false);
   const [assets, setAssets] = useState<ResolvedAssets>({
     pointing: null,
     greetAudio: null,
@@ -530,6 +533,7 @@ export default function StorytellerHomeHost({
     greetAttemptedRef.current = true;
     greetingHeardRef.current = false;
     greetDismissedByUserRef.current = false;
+    setCanRehear(false);
     greetPlayRejectedRef.current = false;
     greetLoadErrorRef.current = false;
     const audio = new Audio(url);
@@ -537,6 +541,9 @@ export default function StorytellerHomeHost({
     audioStartTimeRef.current = Date.now();
     phaseRef.current = "greeting_audio";
     setPhase("greeting_audio");
+    // Dismiss hides the bubble. Replay has to put the line back; the
+    // first-gesture path already has it up, so this is a no-op there.
+    showBubble(greetingText, null);
     // The greeting bubble stays up while audio plays (no hold timer).
     window.clearTimeout(bubbleTimer.current);
 
@@ -761,6 +768,7 @@ export default function StorytellerHomeHost({
         })
       ) {
         greetDismissedByUserRef.current = true;
+        setCanRehear(true);
       }
       // Panel 2026-10-09 (BLOCK 3): dismissing the text-only return line is
       // not a dead end (owner ruling #1, 2026-10-09) — flag it so the
@@ -988,6 +996,17 @@ export default function StorytellerHomeHost({
             <span aria-hidden="true">×</span>
           </button>
         </div>
+      ) : null}
+      {canRehear && bubble === null && !yielded && phase !== "exiting" ? (
+        <button
+          type="button"
+          className="storyteller-banner-replay"
+          data-testid="storyteller-home-replay"
+          aria-label="Replay the greeting"
+          onClick={() => beginGreetingAudio()}
+        >
+          Hear again
+        </button>
       ) : null}
     </div>
   );
