@@ -140,6 +140,7 @@ import {
 } from "@/map/capability";
 import type { ScoutRestoreView } from "@/map/satellite-map";
 import { SCOUT_COPY } from "./scout-copy.ts";
+import { TILE_FALLBACK_COPY } from "@/map/tile-fallback-copy.ts";
 import { ScoutBootOffer } from "./scout-boot-offer.tsx";
 import { MapModeToggle } from "./map-mode-toggle.tsx";
 import {
@@ -1729,6 +1730,7 @@ export function GameApp() {
           mapMode={mapMode}
           toggleMapMode={queuedMapMode ?? mapMode}
           applyMapMode={applyMapMode}
+          setSessionMapMode={setMapMode}
           celebrationOpen={cleared !== null}
           ageBand={ageBand}
         />
@@ -2502,6 +2504,7 @@ function Play({
   mapMode,
   toggleMapMode,
   applyMapMode,
+  setSessionMapMode,
 }: {
   run: Run;
   session: Session | null;
@@ -2556,6 +2559,7 @@ function Play({
    * "contextlost" (applied immediately).
    */
   applyMapMode: (mode: MapMode, source: "manual" | "contextlost") => void;
+  setSessionMapMode: (mode: MapMode) => void;
 }) {
   // The catalog is stored WITH the key it was loaded for and only used while
   // that key is the current run's key. Play stays mounted across run changes
@@ -2693,6 +2697,7 @@ function Play({
       mapMode={mapMode}
       toggleMapMode={toggleMapMode}
       applyMapMode={applyMapMode}
+      setSessionMapMode={setSessionMapMode}
     />
   );
 }
@@ -2718,6 +2723,7 @@ function PlayLoaded({
   mapMode,
   toggleMapMode,
   applyMapMode,
+  setSessionMapMode,
 }: {
   run: Run;
   places: Starter[];
@@ -2775,6 +2781,7 @@ function PlayLoaded({
    * "contextlost" (applied immediately).
    */
   applyMapMode: (mode: MapMode, source: "manual" | "contextlost") => void;
+  setSessionMapMode: (mode: MapMode) => void;
 }) {
   // Review-deck session: a synthetic Run reusing this game loop. The deck
   // queue (due order) is the pool; review answers never bank into the
@@ -2920,6 +2927,33 @@ function PlayLoaded({
       if (place) setScoutSwitchNote({ placeId: place.id });
     },
     [applyMapMode, place],
+  );
+
+  /**
+   * WS-4 Phase 1: "Try again" taps this visit (the satellite map reports each
+   * one). In memory only: it is never stored, so a reload starts at zero.
+   */
+  const [tileRetriesUsed, setTileRetriesUsed] = useState(0);
+  const handleTileRetry = useCallback(() => setTileRetriesUsed((n) => n + 1), []);
+  /** WS-4 Phase 1: the deferred "switched to Scout Map" note (tile path). */
+  const [tileSwitchNote, setTileSwitchNote] = useState<{ placeId: string } | null>(null);
+
+  /**
+   * WS-4 Phase 1: satellite pictures failed after the one retry. Switch to
+   * Scout Map for this visit only. Unlike the context-loss switch, this calls
+   * no writeStoredMapMode: nothing is saved, and a reload returns to full.
+   * It does not clear a queued manual choice, so the toggle still wins.
+   */
+  const handleTileFallback = useCallback(
+    (view: ScoutRestoreView) => {
+      if (mapModeRef.current !== "full") return;
+      setReportMapMode("scout");
+      setSessionMapMode("scout");
+      setScoutSwitchView(view);
+      setMapRemountNonce((n) => n + 1);
+      if (place) setTileSwitchNote({ placeId: place.id });
+    },
+    [place],
   );
 
   // The switch viewport is consumed by the remount it triggers; clear it
@@ -3488,6 +3522,9 @@ function PlayLoaded({
           <Suspense fallback={<MapLoadingFallback />}>
             <SatelliteMap
               key={`${mapKeyForCard}:${mapRemountNonce}`}
+              tileRetriesUsed={tileRetriesUsed}
+              onTileRetry={handleTileRetry}
+              onTileFallback={handleTileFallback}
               mode={mode}
               mapMode={mapMode}
               initialView={scoutSwitchView}
@@ -3734,6 +3771,27 @@ function PlayLoaded({
               : null
           }
         />
+      ) : null}
+      {/* WS-4 Phase 1: the same deferred break as the note below, for the
+          satellite-failure switch. Its own copy and its own dismiss. */}
+      {(tileSwitchNote && place && tileSwitchNote.placeId === place.id && (run.phase === "story" || run.phase === "done") && revealDone) ? (
+        <div
+          data-testid="tile-switch-note"
+          role="status"
+          className="pointer-events-none fixed inset-x-4 top-16 z-50"
+        >
+          <div className="pointer-events-auto mx-auto flex max-w-md items-center gap-3 rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.85)] p-4 pl-5 text-white shadow-xl backdrop-blur-[14px]">
+            <p className="m-0 flex-1 text-sm leading-snug">{TILE_FALLBACK_COPY.switchNote}</p>
+            <button
+              type="button"
+              aria-label="Dismiss"
+              onClick={() => setTileSwitchNote(null)}
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 text-lg leading-none text-white/70 transition-colors hover:text-white"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+        </div>
       ) : null}
       {/*
         PBI-5: the deferred Scout Map switch note — GameApp-level, SIBLING

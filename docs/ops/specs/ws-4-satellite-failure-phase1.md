@@ -1,6 +1,6 @@
 # WS-4 Phase 1: satellite failure path (one retry, then session-only fallback)
 
-Status: spec only. No code written. Branch: `claude/hopeful-darwin-dp7ket` (single working branch, PR #148).
+Status: implemented (Phase 1). Owner answers to section 11 are applied (see the table below); section 11 is kept as the record. Branch: `claude/hopeful-darwin-dp7ket` (single working branch, PR #148).
 Charter change: recorded in `docs/scout-offer-policy.md` (commit `56c642c`).
 
 ## 1. Decisions (owner, 2026-10-14)
@@ -126,3 +126,30 @@ Visual: screenshots of the failure card and the outline-map switch at 390 px and
 1. Switch-note wording for Phase 1: "We switched to the outline map so you can keep playing." (default here) or wait until Phase 2 and use "explorer globe"?
 2. Should the failure card keep "Check your internet" wording for a child who has no internet? (Default: yes, as written in section 4.)
 3. GeoDetective map-hidden state: is a small text line such as "Map pictures are off for now" wanted, or silence? (Default: silence, per D-d.)
+
+## 12. Final decisions and implementation (2026-10-14)
+
+| Question | Final |
+| --- | --- |
+| Switch note | "We switched to Scout Map so you can keep playing." (product name, per owner) |
+| Failure card | "The map pictures won't load right now. Check your internet, then tap Try again." |
+| GeoDetective map off | "Map pictures are off for now. Your clues and guesses still work!" in a role="status" line where the map was |
+
+UX review (read-only, Opus): all four strings approved. One optional note: "Check your internet" may be beyond a young child; "Ask a grown-up to check the internet" is an option if the owner wants it.
+
+Implemented:
+- `src/map/tile-fallback.ts`: pure decision (`nextTileFallbackAction`, `TILE_RETRY_LIMIT = 1`).
+- `src/map/tile-fallback-copy.ts`: the four strings; copy test rejects provider names and "lite".
+- `src/map/satellite-map.tsx`: the card copy; one "Try again" tap; a fallback callback once per failure episode.
+- `src/components/game-app.tsx`: the visit-only retry counter; `handleTileFallback` sets Scout Map in memory and calls no `writeStoredMapMode`; the switch note; the setter is threaded to `PlayLoaded` the same way `applyMapMode` is.
+- `src/game/loop/LoopMap.tsx`: reports tile failure on an idle frame after a tile error, or after the 15 s budget the satellite watchdog uses (MapLibre did not idle on blocked tiles).
+- `src/game/loop/LoopScreen.tsx` and `src/game/loop/loop-map-boundary.tsx`: the map is replaced by the line when tiles fail or the map cannot start.
+
+Tests (failing first, then green):
+- Unit: `tile-fallback.test.ts`, `tile-fallback-copy.test.ts`. Red on missing modules; green with 9 passing.
+- E2E: `ws4-tile-fallback.desktop.spec.ts` (4) and `ws4-geodetective-map-hidden.desktop.spec.ts` (3). Red: 5 of 6 failed before the change. The offline place-list test passed before the change, as a regression guard. Green after: all 7 pass across both files (6 failing-first + 1 guard; the guard was counted in the red run).
+- Copy updates in existing specs (`tests/e2e/helpers.ts`, `tests/e2e/tap-verify.spec.ts`) to the new card text and button.
+
+Regression check: unit suite 1,295 pass. Related E2E: 32 of 34 pass. `scout-switch-note` passed on an isolated re-run twice; it failed only inside the batch, which points to VM load. `tap-verify` was already failing on the main-equivalent build (`e2e-main-rerun.txt`).
+
+Known limit: the tile-stub flake on this VM can now hand a child to Scout Map in the middle of a test. That is the intended behaviour, not a bug, but full-mode touch tests should not depend on the stub.
