@@ -22,5 +22,10 @@ After the home greeting, the next mascot tap should show a poke line (text only)
 
 ## Pending
 
-- [ ] tsc, unit, build, poke E2E on the rebased tree
+- [x] `npx tsc --noEmit` — clean on the rebase
+- [x] Guards + home copy unit tests — 49/49
+- [x] `npm run build:pages` — green (`8b22816`)
+- [x] Playwright — 8/8: poke 2, entering-tap, invite, silence-replay
 - [ ] Owner merge
+
+**Ready to merge? Owner's call.** Sits on #152. #148's nbsp notice is not here.
