@@ -150,6 +150,7 @@ import {
   hasSeenTutorial,
   isTutorialRunPool,
   markTutorialSeen,
+  TUTORIAL_INVITE_DISMISS_EVENT,
   type TutorialBeat,
 } from "@/game/tutorial";
 import { TutorialInvite, TutorialOverlay } from "./tutorial-overlay";
@@ -1502,6 +1503,14 @@ export function GameApp() {
     markTutorialSeen();
     setInviteDismissed(true);
   }, []);
+  // Mascot tap while the invite is up uses the same dismiss. The host
+  // starts the greeting inside that click, so this must not start audio.
+  useEffect(() => {
+    const onFigureDismiss = () => onDismissInvite();
+    window.addEventListener(TUTORIAL_INVITE_DISMISS_EVENT, onFigureDismiss);
+    return () =>
+      window.removeEventListener(TUTORIAL_INVITE_DISMISS_EVENT, onFigureDismiss);
+  }, [onDismissInvite]);
   const endTutorial = useCallback(() => {
     setStartError(null);
     clearDrop();

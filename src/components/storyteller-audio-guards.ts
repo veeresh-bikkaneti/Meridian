@@ -78,6 +78,43 @@ export function shouldReplayGreeting(opts: {
   );
 }
 
+/** Banner phase the home host can sit in. Kept as a string union so the
+ * helper stays DOM-free and the component doesn't have to export its type. */
+export type BannerPhaseName =
+  | "entering"
+  | "greeting_text"
+  | "greeting_audio"
+  | "idle_linger"
+  | "exiting";
+
+/**
+ * Fix G — a figure tap while the banner is still `entering`, or before the
+ * host has started (tutorial invite holds `started` false), must start the
+ * greeting. The poke path renders its bubble only after start, so those taps
+ * used to look dead and narration never armed.
+ * Any other phase passes through to pause/replay/poke.
+ */
+export function decideEnteringFigureTap(opts: {
+  phase: BannerPhaseName;
+  started: boolean;
+}): "greet" | "pass" {
+  // Pause/resume and the send-off own these. Don't start a second greeting.
+  if (opts.phase === "greeting_audio" || opts.phase === "exiting") return "pass";
+  // `entering` never has the gesture listener. `!started` is the tutorial
+  // invite lock: the poke bubble is gated on `started`, so the tap is dead.
+  if (opts.phase === "entering" || !opts.started) return "greet";
+  return "pass";
+}
+
+/**
+ * A second figure tap inside the poke debounce must not start another clip.
+ * React may not have left `entering` yet, so the phase check alone restarts
+ * the greeting. Same window as a poke (`POKE_DEBOUNCE_MS`).
+ */
+export function isRapidFigureTap(now: number, lastTap: number, debounceMs: number): boolean {
+  return now - lastTap < debounceMs;
+}
+
 /** Fix E — fallback caption assembly. The retry hint appears only when the
     failure was a play() rejection (clip exists, playback never started —
     the silent symptom), never on network errors, and never device-shames.

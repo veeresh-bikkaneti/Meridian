@@ -1,8 +1,10 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import {
+  decideEnteringFigureTap,
   decideFirstGesture,
   fallbackLine,
+  isRapidFigureTap,
   resolvePlayAbort,
   shouldReplayGreeting,
 } from "./storyteller-audio-guards.ts";
@@ -19,6 +21,70 @@ import {
  * (consumed the one-shot while muted, stranded "playing" on AbortError,
  * trapped the silent greeting behind poke lines, showed no retry hint).
  */
+
+describe("decideEnteringFigureTap — Fix G: dead mascot while entering", () => {
+  it("a tap during entering starts the greeting (invite lock or the 150ms beat)", () => {
+    assert.equal(
+      decideEnteringFigureTap({ phase: "entering", started: false }),
+      "greet",
+    );
+    assert.equal(
+      decideEnteringFigureTap({ phase: "entering", started: true }),
+      "greet",
+    );
+  });
+
+  it("a tap before start starts the greeting even if phase already moved", () => {
+    assert.equal(
+      decideEnteringFigureTap({ phase: "greeting_text", started: false }),
+      "greet",
+    );
+    assert.equal(
+      decideEnteringFigureTap({ phase: "idle_linger", started: false }),
+      "greet",
+    );
+  });
+
+  it("greeting_text and idle pass through to replay/poke once started", () => {
+    assert.equal(
+      decideEnteringFigureTap({ phase: "greeting_text", started: true }),
+      "pass",
+    );
+    assert.equal(
+      decideEnteringFigureTap({ phase: "idle_linger", started: true }),
+      "pass",
+    );
+  });
+
+  it("in-flight audio and the send-off are not restarted", () => {
+    assert.equal(
+      decideEnteringFigureTap({ phase: "greeting_audio", started: true }),
+      "pass",
+    );
+    assert.equal(
+      decideEnteringFigureTap({ phase: "greeting_audio", started: false }),
+      "pass",
+    );
+    assert.equal(
+      decideEnteringFigureTap({ phase: "exiting", started: true }),
+      "pass",
+    );
+  });
+});
+
+describe("isRapidFigureTap — double-tap must not restart the greeting", () => {
+  it("the first tap is not rapid", () => {
+    assert.equal(isRapidFigureTap(1_000, 0, 600), false);
+  });
+
+  it("a second tap inside 600ms is ignored", () => {
+    assert.equal(isRapidFigureTap(1_400, 1_000, 600), true);
+  });
+
+  it("a tap at exactly 600ms is accepted (same < check as poke)", () => {
+    assert.equal(isRapidFigureTap(1_600, 1_000, 600), false);
+  });
+});
 
 describe("decideFirstGesture — Fix A: re-armable one-shot", () => {
   it("sound off keeps the one-shot armed (does NOT consume)", () => {

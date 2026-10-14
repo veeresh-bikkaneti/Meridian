@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { StorytellerMascot, isPlayAbort, useCelebrationActive, useTourActive } from "./storyteller";
-import { fallbackLine, shouldReplayGreeting } from "./storyteller-audio-guards";
+import { fallbackLine, shouldReplayGreeting, decideEnteringFigureTap, isRapidFigureTap } from "./storyteller-audio-guards";
 import { STORYTELLER_HOME_RETRY_HINT } from "./storyteller-lines";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import {
@@ -17,6 +17,7 @@ import {
   takeTourReturnLine,
 } from "./storyteller-session";
 import { recordMilestone } from "@/lib/observability";
+import { TUTORIAL_INVITE_DISMISS_EVENT } from "@/game/tutorial";
 import "./storyteller-home.css";
 
 // Storyteller banner host — the Storyteller sits IN THE BANNER beside the
@@ -44,6 +45,8 @@ import "./storyteller-home.css";
 //   loads; navigation never waits (copy G3). He never travels into loops.
 // - Tutorial invite visible: the figure stays in the banner, but the
 //   greeting waits until the invite is dismissed (no competing popups).
+//   A figure tap dismisses the invite the same way "Not now" does, then
+//   starts the greeting on that gesture.
 // - Reduced motion: ≤150ms opacity fade only; full caption instantly; audio
 //   timing unchanged.
 //
@@ -60,6 +63,10 @@ type BannerPhase =
   | "exiting";
 
 const ENTER_MS = 150;
+/** If `entering` never flips (timeout cleared, or the beat is interrupted),
+ * force the text greeting. Does not fire while the tutorial invite is
+ * holding `started` false — that wait is released by a figure tap. */
+const ENTER_HANG_MS = 2000;
 const EXIT_MS = 150;
 const TEXT_BUBBLE_MS = 6000;
 /** Panel 2026-10-09 (BLOCK 3): dismissed-return-line follow-up delay — the
@@ -178,7 +185,7 @@ function firstEditionControl(): HTMLElement | null {
 export interface StorytellerHomeHostProps {
   /** True while the first-run tutorial invite is on screen — the figure
       stays in the banner, but the greeting stays quiet until the invite is
-      dismissed (no competing popups). */
+      dismissed (no competing popups). A figure tap dismisses it. */
   tutorialInviteVisible?: boolean;
 }
 
@@ -230,6 +237,12 @@ export default function StorytellerHomeHost({
   const pokeIndexRef = useRef(0);
   const lastPokeRef = useRef(0);
   const startedRef = useRef(started);
+  const phaseRef = useRef(phase);
+  phaseRef.current = phase;
+  // Set when the entering beat has already moved on (timer, hang watchdog,
+  // or a figure tap). Re-entering `entering` (tour-return follow-up) clears
+  // it at the start of that effect.
+  const enteringSettledRef = useRef(false);
   // Panel 2026-10-09 (BLOCK 3): dismissing the text-only return line must
   // not be a dead end — dismissBubble sets this; the follow-up effect
   // consumes it when the follow-up greeting runs.
@@ -428,19 +441,38 @@ export default function StorytellerHomeHost({
   // ---- Entering ----------------------------------------------------------
   useEffect(() => {
     if (!started || phase !== "entering") return;
-    if (mode === "tour-return") {
-      const t1 = window.setTimeout(() => {
-        setPhase("greeting_text");
-        // Text-only, no mp3 — the locked return line (copy G2).
-        showBubble(TOUR_RETURN_LINE, TEXT_BUBBLE_MS);
-      }, ENTER_MS);
-      return () => window.clearTimeout(t1);
-    }
+    // A fresh entering beat (including tour-return re-entry) may settle again.
+    enteringSettledRef.current = false;
     const t = window.setTimeout(() => {
+      if (enteringSettledRef.current || phaseRef.current !== "entering") return;
+      enteringSettledRef.current = true;
       setPhase("greeting_text");
       // Text-first, always: audio waits for the first gesture below.
-      showBubble(greetingText, assetsRef.current.greetAudio ? null : TEXT_BUBBLE_MS);
+      // Tour-return is text-only (copy G2).
+      showBubble(
+        mode === "tour-return" ? TOUR_RETURN_LINE : greetingText,
+        mode === "tour-return" || !assetsRef.current.greetAudio
+          ? TEXT_BUBBLE_MS
+          : null,
+      );
     }, ENTER_MS);
+    return () => window.clearTimeout(t);
+  }, [started, phase, mode, greetingText, showBubble]);
+
+  // Hang watchdog: the 150ms beat must not be the only way out of `entering`.
+  useEffect(() => {
+    if (!started || phase !== "entering") return;
+    const t = window.setTimeout(() => {
+      if (enteringSettledRef.current || phaseRef.current !== "entering") return;
+      enteringSettledRef.current = true;
+      setPhase("greeting_text");
+      showBubble(
+        mode === "tour-return" ? TOUR_RETURN_LINE : greetingText,
+        mode === "tour-return" || !assetsRef.current.greetAudio
+          ? TEXT_BUBBLE_MS
+          : null,
+      );
+    }, ENTER_HANG_MS);
     return () => window.clearTimeout(t);
   }, [started, phase, mode, greetingText, showBubble]);
 
@@ -583,6 +615,31 @@ export default function StorytellerHomeHost({
         onFail();
       });
   }, [greetingText, showBubble, stopAudio, failGreetingAudio]);
+
+  // Figure tap while `entering` (or before start — the tutorial invite holds
+  // `started` false, so the greeting listener never attaches and a poke
+  // bubble cannot render). The tap is the user gesture, so audio may play.
+  const greetFromFigureTap = useCallback(() => {
+    enteringSettledRef.current = true;
+    startedRef.current = true;
+    setStarted(true);
+    if (mode === "tour-return") {
+      setPhase("greeting_text");
+      showBubble(TOUR_RETURN_LINE, TEXT_BUBBLE_MS);
+      return;
+    }
+    if (isSoundEnabled() && assetsRef.current.greetAudio) {
+      gestureDoneRef.current = true;
+      showBubble(greetingText, null);
+      beginGreetingAudio();
+      return;
+    }
+    setPhase("greeting_text");
+    showBubble(
+      greetingText,
+      assetsRef.current.greetAudio ? null : TEXT_BUBBLE_MS,
+    );
+  }, [mode, greetingText, showBubble, beginGreetingAudio]);
 
   // ---- Tutorial invite: greeting waits for its dismissal ----------------
   // The dismiss tap counts as the first gesture (owner 2026-10-09) — begin
@@ -745,6 +802,27 @@ export default function StorytellerHomeHost({
       pokeVisual();
       return;
     }
+    // Stuck in `entering`, or the invite has not released `started`: this
+    // tap starts the greeting. While the invite is up, dismiss it first
+    // (same as "Not now") so the bubble does not stack on that card.
+    // startedRef flips true here, so the invite-cleared effect does not
+    // start a second clip. A second tap before React leaves `entering`
+    // would otherwise build another clip — same 600ms window as a poke.
+    if (
+      decideEnteringFigureTap({
+        phase,
+        started: startedRef.current,
+      }) === "greet"
+    ) {
+      const now = Date.now();
+      if (isRapidFigureTap(now, lastPokeRef.current, POKE_DEBOUNCE_MS)) return;
+      lastPokeRef.current = now;
+      if (tutorialInviteVisible) {
+        window.dispatchEvent(new Event(TUTORIAL_INVITE_DISMISS_EVENT));
+      }
+      greetFromFigureTap();
+      return;
+    }
     // The window one-shot may have started the greeting on this tap's way
     // down (pointerdown precedes click, and phase hasn't re-rendered yet) —
     // don't poke over it, and don't double-start it.
@@ -784,7 +862,7 @@ export default function StorytellerHomeHost({
     pokeIndexRef.current += 1;
     showBubble(line, POKE_BUBBLE_MS);
     pokeVisual();
-  }, [mode, phase, showBubble, pokeVisual, beginGreetingAudio, failGreetingAudio]);
+  }, [mode, phase, showBubble, pokeVisual, beginGreetingAudio, failGreetingAudio, greetFromFigureTap, tutorialInviteVisible]);
 
   // ---- Loop send-off (copy G3) ----------------------------------------------
   useEffect(() => {
