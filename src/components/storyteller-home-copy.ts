@@ -58,8 +58,8 @@ export const SENDOFFS: Record<StorytellerLoopKey, string> = {
 
 /**
  * §2 — poke idle lines (verbatim). Tap the figure → rotating lines, 5 max
- * then repeat. No audio on poke. Taps closer than 600ms are ignored (kid
- * mashing ≠ 5 lines at once).
+ * then repeat. Each line has poke-0N.mp3 (same voice as the greeting).
+ * Taps closer than 600ms are ignored (kid mashing ≠ 5 lines at once).
  */
 export const POKE_LINES: readonly string[] = [
   "Heh! That tickles my beard.",

@@ -115,6 +115,21 @@ export function isRapidFigureTap(now: number, lastTap: number, debounceMs: numbe
   return now - lastTap < debounceMs;
 }
 
+/**
+ * Fix D follow-up — the dismiss click must count even when React still
+ * says `greeting_text`. The dismiss button's pointerdown starts the clip
+ * before the click, so the element is already live. Tour-return is
+ * text-only and must not set the flag.
+ */
+export function shouldMarkGreetingDismissed(opts: {
+  mode: "greeting" | "tour-return";
+  phase: BannerPhaseName;
+  audioLive: boolean;
+}): boolean {
+  if (opts.mode !== "greeting") return false;
+  return opts.phase === "greeting_audio" || opts.audioLive;
+}
+
 /** Fix E — fallback caption assembly. The retry hint appears only when the
     failure was a play() rejection (clip exists, playback never started —
     the silent symptom), never on network errors, and never device-shames.
