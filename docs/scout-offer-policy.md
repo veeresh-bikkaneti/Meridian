@@ -45,4 +45,4 @@ Rules for this change:
 - The manual toggle still wins: a child who sets Scout or Full in settings gets that choice.
 - The `webglcontextlost` rule (unanswered, decays after 7 days) is unchanged.
 
-Spec: WS-4 Phase 1 (spec file pending, to be added to `docs/ops/specs/`).
+Spec: `docs/ops/specs/ws-4-satellite-failure-phase1.md`.
