@@ -1,4 +1,36 @@
-# BRANCH_STATUS — feat/scout-offer-accept-sticky (perf Task 3, owner decision: Option A)
+# BRANCH_STATUS — feat/scout-capability-choice-dialog (PR #147; #151 folded in; main merged)
+
+**Status: ready for owner review. Owner merges.** Not merged by Claude.
+
+## Done on this branch (2026-10-15)
+- Fast-forwarded to include the #151 fix (`60abd46`: an accepted capability offer is stored `accepted: true` and never decays). #151 was merged into this branch by the owner at 16:55 UTC.
+- Merged `origin/main` (f94444b, #148 squash incl. WS-4 Phase 1). Conflicts: `docs/scout-offer-policy.md` (took main, which has this branch's table plus the WS-4 charter note); `BRANCH_STATUS.md` (kept this file). `game-app.tsx` auto-merged; checked by typecheck, unit tests, and E2E.
+- Commit `2a3c788` (merge) pushed. No force push.
+
+## Gates on the merged tree
+- `npm ci`, `npm run build`, `npm test` (1,308 pass, 0 fail), `npm run test:worker` (18 pass), `npm run typecheck:worker` clean. `npx tsc --noEmit` clean.
+- Scout E2E, `--workers=1`, against `npm run build:pages` (dist/client): scout-capability-offer, scout-offer, scout-toggle, scout-context-lost, scout-throttled: **22 passed, 0 failed**.
+- Pitfall found: E2E reads `dist/client`, which only `npm run build:pages` writes. A first E2E run used a stale `dist/client` (old silent-switch boot code) and failed 12 of 22. Rebuilding with `build:pages` fixed it. Always rebuild with `build:pages` before the E2E run.
+
+## Review
+- Opus ARCH-REVIEWER, full diff vs main (verdict APPROVE-WITH-NITS, no BLOCKs). Nits, for the owner to decide:
+  1. `src/components/game-app.tsx` ~1127-1128: comment says accept writes an auto scout that decays. Stale since #151 (accept writes `accepted: true`, never decays).
+  2. `src/components/game-app.tsx` ~1146 with `src/map/capability.ts` ~284: production always passes `stored = null` to `planBootMapMode`, so its `if (stored)` branch never runs. The 'live stored assignment suppresses every offer' rule is enforced by game-app's own check instead. Unit tests cover the planner branch, not the production path.
+  3. `window.__meridianSuppressScoutOffer` (game-app ~1145) is a test seam that ships in the production bundle. It is not reachable from a URL, but it is still a production hatch. Owner to decide if allowed.
+  4. `src/components/scout-boot-offer.tsx` ~114-121: no `aria-describedby`, so screen-reader users hear only the title, not the reason in the body.
+  5. `tests/e2e/motionmaxxing.spec.ts` ~180-181: comment says the VM 'boots in scout map mode'. No longer true; tests pin full mode, so nothing breaks.
+  6. Coverage gap: no test of a declined capability offer followed by a WS-4 tile failure (spec spoofs a capable device, so no dialog). Code reviewed as fine; unverified at runtime.
+  7. Coverage gap: no unit test that accept passes `accepted=true` from game-app; only E2E covers it.
+- Playwright tests added by #151 are included in the 22 above.
+
+## Screen recordings
+- #147's PR body lists 2 recordings (capability-dialog-accept.webm, capability-dialog-decline.webm), not 4. The user-visible dialog did not change in this merge (the 22 E2E assertions are the same), so no re-recording was done. Confirm before merge if you want fresh ones.
+
+## Not verified
+- Real devices. The VM's WebGL is SwiftShader, so the probe-weak path is exercised by the VM only.
+- Branch protection: the required check name on `main` is still `build`, which no longer matches the job `build (22.x)`. Claude cannot edit rulesets from this session. Until the owner fixes it, merges to `main` need the check temporarily lifted.
+
+## Earlier notes (kept)
 
 **PUSH OK, DO NOT MERGE** — owner merges. Based on `feat/scout-capability-choice-dialog` (PR #147);
 retarget to `main` after #147 merges.
