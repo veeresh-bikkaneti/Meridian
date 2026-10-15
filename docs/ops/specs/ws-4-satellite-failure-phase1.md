@@ -1,9 +1,9 @@
 # WS-4 Phase 1: satellite failure path (one retry, then session-only fallback)
 
-Status: implemented (Phase 1). Owner answers to section 11 are applied (see the table below); section 11 is kept as the record. Branch: `claude/hopeful-darwin-dp7ket` (single working branch, PR #148).
+Status: implemented (Phase 1). The section 11 defaults are applied (see the table below); section 11 is kept as the record. Branch: `claude/hopeful-darwin-dp7ket` (single working branch, PR #148).
 Charter change: recorded in `docs/scout-offer-policy.md` (commit `56c642c`).
 
-## 1. Decisions (owner, 2026-10-14)
+## 1. Decisions (crew recommendation, implemented 2026-10-14; adopted by the owner 2026-10-15)
 
 | # | Decision |
 | --- | --- |
@@ -127,7 +127,7 @@ Visual: screenshots of the failure card and the outline-map switch at 390 px and
 2. Should the failure card keep "Check your internet" wording for a child who has no internet? (Default: yes, as written in section 4.)
 3. GeoDetective map-hidden state: is a small text line such as "Map pictures are off for now" wanted, or silence? (Default: silence, per D-d.)
 
-## 12. Final decisions and implementation (2026-10-14)
+## 12. Final decisions and implementation (implemented 2026-10-14; owner adopted the default 2026-10-15)
 
 | Question | Final |
 | --- | --- |

@@ -1,6 +1,7 @@
 /**
  * Child-facing copy for the satellite failure path (WS-4 Phase 1).
- * Wording is the owner's, approved 2026-10-14. Pure data module so the
+ * Wording approved by UX review; the fallback default was adopted by the
+ * owner on 2026-10-15. Pure data module so the
  * node test harness can check it. Never name the imagery provider, and
  * never use the banned word "lite".
  */

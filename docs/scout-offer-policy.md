@@ -25,10 +25,11 @@ A person can always change an accepted choice with the manual toggle, which over
 Test seam: the offer is suppressed only by `window.__meridianSuppressScoutOffer === true`
 (set by the e2e harness init script). There is deliberately no URL parameter for it.
 
-## Charter change: tile-failure fallback (recorded 2026-10-14)
+## Charter change: tile-failure fallback (recorded 2026-10-14; owner adoption 2026-10-15)
 
-This is a deliberate change to the rules above, agreed by the owner. It does not
-touch the rules in the table.
+This is a deliberate change to the rules above. It was recommended by the
+game-studio crew, implemented 2026-10-14, and adopted by the owner on
+2026-10-15. It does not touch the rules in the table.
 
 **Tile-failure fallback (satellite map).** When the satellite imagery fails to
 load, the child gets one "Try again". If that retry also fails, the map switches

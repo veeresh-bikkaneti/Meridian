@@ -1,7 +1,7 @@
 /**
  * WS-4 Phase 1: GeoDetective with the map hidden (desktop).
  *
- * Owner decision (2026-10-14): when the map pictures fail, the map is hidden
+ * Owner decision (2026-10-15, adopting the crew recommendation): when the map pictures fail, the map is hidden
  * and the clue -> guess -> feedback loop keeps working. One short line takes
  * the map's place. If the map cannot start at all, the same line shows.
  *

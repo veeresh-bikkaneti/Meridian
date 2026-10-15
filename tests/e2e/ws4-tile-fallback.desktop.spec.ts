@@ -1,7 +1,7 @@
 /**
  * WS-4 Phase 1: satellite failure path (desktop).
  *
- * Owner decision (2026-10-14): when the satellite pictures fail, the child
+ * Owner decision (2026-10-15, adopting the crew recommendation): when the satellite pictures fail, the child
  * gets one "Try again". If that retry also fails, the map switches to
  * Scout Map for this visit only. Nothing is written to meridian:map-mode,
  * so a reload starts over on the full map with one "Try again" again.
