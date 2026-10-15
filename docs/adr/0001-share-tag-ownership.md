@@ -2,7 +2,7 @@
 
 **Status:** Accepted
 **Date:** 2026-10-15
-**Deciders:** Veeresh (owner)
+**Deciders:** Veeresh (owner) — owner decision, 2026-10-15 ~14:35 CT, given in the Claude Code session as decisions 1-3 (see BRANCH_STATUS.md, Findings §1)
 
 ## Context
 Share previews (og:*, twitter:*) were missing on GitHub Pages and partial on Workers.
