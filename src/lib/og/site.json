@@ -2,5 +2,6 @@
   "title": "Meridian",
   "type": "x:game",
   "card": "custom",
-  "color": "101211"
+  "color": "101211",
+  "description": "Free geography game for kids, no account needed. Pin a named place on an unlabeled satellite map. Every answer shows a story card. Plays in a browser."
 }

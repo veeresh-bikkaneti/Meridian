@@ -4,6 +4,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { registerServiceWorker, unregisterServiceWorker, type PwaUpdateHandle } from "@/lib/pwa";
 import { isEnabled, loadFlags } from "@/lib/flags";
+import { SHARE_DESCRIPTION, SHARE_TITLE, shareMetaTags, shareOrigin } from "@/lib/og/share-meta";
 import { useEffect, useState } from "react";
 import appCss from "../styles.css?url";
 
@@ -154,11 +155,13 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: APP_NAME },
-      {
-        name: "description",
-        content: "Pin the place. The run lasts until the pin misses.",
-      },
+      { name: "description", content: SHARE_DESCRIPTION },
       { name: "theme-color", content: "#101211" },
+      ...shareMetaTags({
+        title: SHARE_TITLE,
+        description: SHARE_DESCRIPTION,
+        origin: shareOrigin(import.meta.env.BASE_URL),
+      }),
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: `${import.meta.env.BASE_URL}favicon.svg` },
