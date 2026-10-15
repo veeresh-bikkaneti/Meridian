@@ -2,7 +2,7 @@
 
 **Status:** Accepted
 **Date:** 2026-10-15
-**Deciders:** Veeresh (owner)
+**Deciders:** Veeresh (owner) — confirmed by Veeresh, 2026-10-15
 
 ## Context
 Share previews (og:*, twitter:*) were missing on GitHub Pages and partial on Workers.
