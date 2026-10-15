@@ -9,6 +9,8 @@
 - Copy: `docs/ops/specs/share-card-copy.md` (3 options, claims traced to README/source, Opus review APPROVE-WITH-NITS, final pick = edited option C). Title 46 chars, description 150.
 - Tests: `src/lib/og/share-meta.test.ts` (7: both origins, tag set and attributes, length limits, wording, og.jpg is 1200x630). `scripts/share-card-built.test.mjs` (opt-in: `SHARE_CARD_BUILT=pages|workers|both`, run right after the matching build; skipped in plain `npm test`).
 
+- Decision record: `docs/adr/0001-share-tag-ownership.md` (page owns share tags; injector fills gaps). Docs only.
+
 ## Gates (final code)
 tsc clean; `npm test` 1,315 src pass and the scripts suite green (778 tests, 0 fail, 9 skipped); `node scripts/lint-cards.mjs` GATE PASSED; `npm run build:pages` ok and `SHARE_CARD_BUILT=pages` passes; `npm run build` ok and `SHARE_CARD_BUILT=workers` passes (both hosts: all 12 tags exactly once, own origin); `npm run test:worker` 18/18; `npm run typecheck:worker` clean. No E2E spec touches the head tags, so none were run.
 
