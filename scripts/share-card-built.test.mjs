@@ -6,9 +6,9 @@
 //   SHARE_CARD_BUILT=workers -> checks the Nitro server output (workers build)
 //   SHARE_CARD_BUILT=both    -> runs both
 //
-// The server middleware (server/middleware/grok-pwa.ts) strips and re-injects
-// share tags on this host, so we assert what it emits; the full head() set is
-// asserted on the Pages shell.
+// Both hosts must serve the same 12 share tags, each with its own origin. The
+// Workers middleware (server/middleware/grok-pwa.ts) keeps the tags head()
+// already emitted and only fills in keys the document leaves out.
 
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -76,28 +76,33 @@ function assertExactlyOne(tags, key, expected) {
   }
 }
 
-test("pages: shell carries all 12 share tags exactly once with Pages-origin values", { skip: runPages ? false : SKIP_REASON }, () => {
-  const html = readFileSync(new URL("../dist/client/_shell.html", import.meta.url)).toString("utf8");
-  const tags = parseMetaTags(html);
-
-  assert.ok(!html.includes(OLD_DESCRIPTION), "old description text must be absent");
-
+/** The 12 share tags, each exactly once, for one origin. */
+function assertShareSet(tags, origin) {
   assertExactlyOne(tags, "og:title", SHARE_TITLE);
   assertExactlyOne(tags, "og:description", SITE_DESCRIPTION);
   assertExactlyOne(tags, "og:type", "website");
-  assertExactlyOne(tags, "og:url", PAGES_ORIGIN);
-  assertExactlyOne(tags, "og:image", `${PAGES_ORIGIN}og.jpg`);
+  assertExactlyOne(tags, "og:url", origin);
+  assertExactlyOne(tags, "og:image", `${origin}og.jpg`);
   assertExactlyOne(tags, "og:image:width", "1200");
   assertExactlyOne(tags, "og:image:height", "630");
   assertExactlyOne(tags, "og:image:alt", SHARE_IMAGE_ALT);
   assertExactlyOne(tags, "twitter:card", "summary_large_image");
   assertExactlyOne(tags, "twitter:title", SHARE_TITLE);
   assertExactlyOne(tags, "twitter:description", SITE_DESCRIPTION);
-  assertExactlyOne(tags, "twitter:image", `${PAGES_ORIGIN}og.jpg`);
+  assertExactlyOne(tags, "twitter:image", `${origin}og.jpg`);
 
   const descriptionTags = tags.filter((t) => t.name === "description");
   assert.equal(descriptionTags.length, 1, '<meta name="description"> should appear exactly once');
   assert.equal(descriptionTags[0].content, SITE_DESCRIPTION);
+}
+
+test("pages: shell carries all 12 share tags exactly once with Pages-origin values", { skip: runPages ? false : SKIP_REASON }, () => {
+  const html = readFileSync(new URL("../dist/client/_shell.html", import.meta.url)).toString("utf8");
+  const tags = parseMetaTags(html);
+
+  assert.ok(!html.includes(OLD_DESCRIPTION), "old description text must be absent");
+
+  assertShareSet(tags, PAGES_ORIGIN);
 
   for (const tag of tags) {
     assert.ok(
@@ -107,7 +112,7 @@ test("pages: shell carries all 12 share tags exactly once with Pages-origin valu
   }
 });
 
-test("workers: server output carries share tags for the workers.dev host only", { skip: runWorkers ? false : SKIP_REASON }, async () => {
+test("workers: server output carries all 12 share tags exactly once with the workers.dev origin", { skip: runWorkers ? false : SKIP_REASON }, async () => {
   const modUrl = new URL("../.vercel/output/functions/__server.func/index.mjs", import.meta.url);
   const mod = await import(modUrl.href);
   const response = await mod.default.fetch(
@@ -118,16 +123,7 @@ test("workers: server output carries share tags for the workers.dev host only", 
   const html = await response.text();
   const tags = parseMetaTags(html);
 
-  assert.ok(tagsFor(tags, "og:title").length >= 1, "og:title must be present");
-  assertExactlyOne(tags, "og:description", SITE_DESCRIPTION);
-  assertExactlyOne(tags, "og:image", `${WORKERS_ORIGIN}og.jpg`);
-  assert.ok(tagsFor(tags, "og:image:width").length >= 1, "og:image:width must be present");
-  assert.ok(tagsFor(tags, "og:image:height").length >= 1, "og:image:height must be present");
-  assert.ok(tagsFor(tags, "twitter:card").length >= 1, "twitter:card must be present");
-
-  const descriptionTags = tags.filter((t) => t.name === "description");
-  assert.equal(descriptionTags.length, 1, '<meta name="description"> should appear exactly once');
-  assert.equal(descriptionTags[0].content, SITE_DESCRIPTION);
+  assertShareSet(tags, WORKERS_ORIGIN);
 
   assert.ok(!html.includes(OLD_DESCRIPTION), "old description text must be absent");
 

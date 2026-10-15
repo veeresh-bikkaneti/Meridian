@@ -102,10 +102,8 @@ test("does not duplicate x:creator tags", () => {
   assert.equal(twice.split('property="x:creator:id"').length - 1, 1);
 });
 
-test("platform chrome overwrites share-card metas and always sets og:title", () => {
-  const html =
-    '<html><head><title>Hello World</title><meta property="og:title" content="Old"><meta name="twitter:card" content="summary"></head></html>';
-  const out = injectGrokPwaHead(html, {
+test("platform chrome fills missing share-card metas and always sets og:title", () => {
+  const out = injectGrokPwaHead("<html><head><title>Hello World</title></head></html>", {
     appName: "Wild Race",
     // Hermetic: keep the repo's src/lib/og/site.json + public/og.jpg from
     // leaking in so this tests pristine-template platform-chrome behavior.
@@ -113,11 +111,78 @@ test("platform chrome overwrites share-card metas and always sets og:title", () 
   });
   assert.match(out, /name="twitter:card" content="summary_large_image"/);
   assert.match(out, /property="og:title" content="Hello World"/);
-  assert.doesNotMatch(out, /content="Old"/);
-  assert.doesNotMatch(out, /content="summary"/);
   assert.equal(out.split('name="twitter:card"').length - 1, 1);
   assert.equal(out.split('property="og:title"').length - 1, 1);
   assert.doesNotMatch(out, /property="og:image"/);
+});
+
+test("share-card metas the document already sets are kept, not replaced", () => {
+  const html =
+    '<html><head><title>Hello World</title><meta property="og:title" content="Mine"><meta name="twitter:card" content="summary"><meta property="og:type" content="website"></head></html>';
+  const out = injectGrokPwaHead(html, {
+    appName: "Wild Race",
+    cwd: mkdtempSync(join(tmpdir(), "grok-pwa-")),
+    site: { type: "x:game", description: "Platform text", card: "custom" },
+    host: "wild-race.grok.me",
+  });
+  assert.match(out, /property="og:title" content="Mine"/);
+  assert.match(out, /name="twitter:card" content="summary"/);
+  assert.match(out, /property="og:type" content="website"/);
+  assert.doesNotMatch(out, /summary_large_image/);
+  assert.doesNotMatch(out, /content="x:game"/);
+  for (const key of ["og:title", "og:type"]) {
+    assert.equal(out.split(`property="${key}"`).length - 1, 1, key);
+  }
+  assert.equal(out.split('name="twitter:card"').length - 1, 1);
+  // Keys the document leaves out are still filled in by the platform.
+  assert.match(out, /property="og:description" content="Platform text"/);
+  assert.match(out, /property="og:image" content="https:\/\/wild-race\.grok\.me\//);
+});
+
+test("a document with the full share set gets no platform share tags added", () => {
+  const keys = [
+    ["property", "og:title"],
+    ["property", "og:description"],
+    ["property", "og:type"],
+    ["property", "og:url"],
+    ["property", "og:image"],
+    ["property", "og:image:width"],
+    ["property", "og:image:height"],
+    ["name", "twitter:card"],
+    ["name", "twitter:title"],
+    ["name", "twitter:description"],
+    ["name", "twitter:image"],
+  ];
+  const metas = keys.map(([attr, key]) => `<meta ${attr}="${key}" content="app-${key}">`).join("");
+  const html = `<html><head><title>T</title>${metas}</head></html>`;
+  const out = injectGrokPwaHead(html, {
+    cwd: mkdtempSync(join(tmpdir(), "grok-pwa-")),
+    site: { title: "Platform", description: "Platform text", type: "x:game", card: "custom", image: "/og.jpg" },
+    host: "wild-race.grok.me",
+  });
+  for (const [attr, key] of keys) {
+    assert.equal(out.split(`${attr}="${key}"`).length - 1, 1, key);
+    assert.match(out, new RegExp(`${attr}="${key}" content="app-${key}"`));
+  }
+  assert.doesNotMatch(out, /Platform text/);
+  assert.doesNotMatch(out, /x:game/);
+  assert.doesNotMatch(out, /og\.jpg/);
+  assert.equal(injectGrokPwaHead(out, { cwd: mkdtempSync(join(tmpdir(), "grok-pwa-")), host: "wild-race.grok.me" }), out);
+});
+
+test("streaming injector keeps share metas from the document head", () => {
+  const injector = createHeadInjector({
+    host: "wild-race.grok.me",
+    cwd: mkdtempSync(join(tmpdir(), "grok-pwa-")),
+    site: { title: "Platform", card: "custom" },
+  });
+  const html =
+    '<html><head><meta property="og:title" content="Mine"></head><body>x</body></html>';
+  const out = Buffer.concat([...injector.push(html), ...injector.flush()]).toString("utf8");
+  assert.match(out, /property="og:title" content="Mine"/);
+  assert.equal(out.split('property="og:title"').length - 1, 1);
+  assert.doesNotMatch(out, /property="og:title" content="Platform"/);
+  assert.match(out, /property="og:image" content="https:\/\/wild-race\.grok\.me\/og\.jpg"/);
 });
 
 test("does not duplicate twitter:card or og:title", () => {
@@ -213,8 +278,7 @@ test("snapshotOgIdentity stamps banner from public/x-banner.jpg", () => {
 });
 
 test("emits x:game:image for a public host when site.banner is set", () => {
-  const html = "<html><head><meta property=\"x:game:image\" content=\"old\"></head></html>";
-  const out = injectGrokPwaHead(html, {
+  const out = injectGrokPwaHead("<html><head></head></html>", {
     host: "wild-race.grok.me",
     site: { title: "Wild Race", type: "x:game", card: "custom", banner: "/x-banner.jpg" },
   });
@@ -224,7 +288,16 @@ test("emits x:game:image for a public host when site.banner is set", () => {
   );
   assert.match(out, /property="x:game:image:width" content="1200"/);
   assert.match(out, /property="x:game:image:height" content="264"/);
-  assert.doesNotMatch(out, /content="old"/);
+  assert.equal(out.split('property="x:game:image"').length - 1, 1);
+});
+
+test("an x:game:image the document already sets is kept", () => {
+  const html = '<html><head><meta property="x:game:image" content="old"></head></html>';
+  const out = injectGrokPwaHead(html, {
+    host: "wild-race.grok.me",
+    site: { title: "Wild Race", type: "x:game", card: "custom", banner: "/x-banner.jpg" },
+  });
+  assert.match(out, /property="x:game:image" content="old"/);
   assert.equal(out.split('property="x:game:image"').length - 1, 1);
 });
 
