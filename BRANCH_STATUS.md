@@ -2,6 +2,8 @@ SAFE TO MERGE: YES - with the caveats below (squash-merge; the E2E suite has 93 
 
 # BRANCH_STATUS — claude/hopeful-darwin-dp7ket (PR #148, single working branch)
 
+Merged from main: #152 (storyteller greeting) and #153 (dismissed greeting must not steal the poke).
+
 Owner merges. Folded in: #149 (deps), #150 (tier split). Close those two as "folded into #148".
 
 ## Done

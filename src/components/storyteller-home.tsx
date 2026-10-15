@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { StorytellerMascot, isPlayAbort, useCelebrationActive, useTourActive } from "./storyteller";
-import { fallbackLine, shouldReplayGreeting, decideEnteringFigureTap, isRapidFigureTap } from "./storyteller-audio-guards";
+import { fallbackLine, shouldReplayGreeting, decideEnteringFigureTap, isRapidFigureTap, shouldMarkGreetingDismissed } from "./storyteller-audio-guards";
 import { STORYTELLER_HOME_RETRY_HINT } from "./storyteller-lines";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import {
@@ -137,6 +137,8 @@ interface ResolvedAssets {
   pointing: string | null;
   /** greet-0N mp3 for today's greeting rotation; null → text-only greeting. */
   greetAudio: string | null;
+  /** poke-01…05, index-aligned with POKE_LINES. null slot → text only. */
+  pokeAudio: readonly (string | null)[];
 }
 
 /**
@@ -215,9 +217,13 @@ export default function StorytellerHomeHost({
   // the graceful yield-out. Neither touches the phase machine.
   const [poked, setPoked] = useState(false);
   const [yielding, setYielding] = useState(false);
+  // A panic dismiss keeps the next figure tap a poke. This is the only
+  // way back to the greeting clip.
+  const [canRehear, setCanRehear] = useState(false);
   const [assets, setAssets] = useState<ResolvedAssets>({
     pointing: null,
     greetAudio: null,
+    pokeAudio: [null, null, null, null, null],
   });
 
   const reducedMotion = useRef(
@@ -226,6 +232,7 @@ export default function StorytellerHomeHost({
   ).current;
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const pokeAudioRef = useRef<HTMLAudioElement | null>(null);
   const bubbleTimer = useRef(0);
   const capTimer = useRef(0);
   const soundWatch = useRef(0);
@@ -300,6 +307,8 @@ export default function StorytellerHomeHost({
     window.clearTimeout(playHangTimer.current);
     audioRef.current?.pause();
     audioRef.current = null;
+    pokeAudioRef.current?.pause();
+    pokeAudioRef.current = null;
     setGreetingPaused(false);
   }, []);
 
@@ -346,6 +355,10 @@ export default function StorytellerHomeHost({
       setAssets({
         pointing: manifest.poses.pointing ? base + manifest.poses.pointing : null,
         greetAudio: audioPath ? base + audioPath : null,
+        pokeAudio: [1, 2, 3, 4, 5].map((n) => {
+          const path = manifest.audio[`poke-0${n}`];
+          return path ? base + path : null;
+        }),
       });
     });
     return () => {
@@ -530,12 +543,17 @@ export default function StorytellerHomeHost({
     greetAttemptedRef.current = true;
     greetingHeardRef.current = false;
     greetDismissedByUserRef.current = false;
+    setCanRehear(false);
     greetPlayRejectedRef.current = false;
     greetLoadErrorRef.current = false;
     const audio = new Audio(url);
     audioRef.current = audio;
     audioStartTimeRef.current = Date.now();
+    phaseRef.current = "greeting_audio";
     setPhase("greeting_audio");
+    // Dismiss hides the bubble. Replay has to put the line back; the
+    // first-gesture path already has it up, so this is a no-op there.
+    showBubble(greetingText, null);
     // The greeting bubble stays up while audio plays (no hold timer).
     window.clearTimeout(bubbleTimer.current);
 
@@ -743,11 +761,25 @@ export default function StorytellerHomeHost({
   // ---- Dismiss -------------------------------------------------------------
   const dismissBubble = useCallback(
     (viaKeyboard: boolean) => {
+      // Snapshot before stopAudio nulls the element. The dismiss click's
+      // pointerdown already started the clip, while `phase` can still be
+      // greeting_text until the next render.
+      const audioLive = audioRef.current !== null;
+      const phaseNow = phaseRef.current;
       stopAudio();
       hideBubble();
       // Fix D: a greeting the kid explicitly dismissed stays dismissed — a
       // later figure tap pokes, it must not resurrect killed audio.
-      if (phase === "greeting_audio") greetDismissedByUserRef.current = true;
+      if (
+        shouldMarkGreetingDismissed({
+          mode,
+          phase: phaseNow,
+          audioLive,
+        })
+      ) {
+        greetDismissedByUserRef.current = true;
+        setCanRehear(true);
+      }
       // Panel 2026-10-09 (BLOCK 3): dismissing the text-only return line is
       // not a dead end (owner ruling #1, 2026-10-09) — flag it so the
       // tour-return follow-up effect still runs the greeting afterward.
@@ -858,9 +890,20 @@ export default function StorytellerHomeHost({
     // Poke lines rotate (5 max, then repeat); taps <600ms apart are ignored.
     if (now - lastPokeRef.current < POKE_DEBOUNCE_MS) return;
     lastPokeRef.current = now;
-    const line = POKE_LINES[pokeIndexRef.current % POKE_LINES.length]!;
+    const index = pokeIndexRef.current % POKE_LINES.length;
+    const line = POKE_LINES[index]!;
     pokeIndexRef.current += 1;
     showBubble(line, POKE_BUBBLE_MS);
+    const pokeUrl = assetsRef.current.pokeAudio[index];
+    pokeAudioRef.current?.pause();
+    pokeAudioRef.current = null;
+    if (pokeUrl && isSoundEnabled()) {
+      const pokeAudio = new Audio(pokeUrl);
+      pokeAudioRef.current = pokeAudio;
+      void pokeAudio.play().catch(() => {
+        if (pokeAudioRef.current === pokeAudio) pokeAudioRef.current = null;
+      });
+    }
     pokeVisual();
   }, [mode, phase, showBubble, pokeVisual, beginGreetingAudio, failGreetingAudio, greetFromFigureTap, tutorialInviteVisible]);
 
@@ -890,6 +933,8 @@ export default function StorytellerHomeHost({
       clearTimers();
       audioRef.current?.pause();
       audioRef.current = null;
+      pokeAudioRef.current?.pause();
+      pokeAudioRef.current = null;
     };
   }, [clearTimers]);
 
@@ -974,6 +1019,17 @@ export default function StorytellerHomeHost({
             <span aria-hidden="true">×</span>
           </button>
         </div>
+      ) : null}
+      {canRehear && bubble === null && !yielded && phase !== "exiting" ? (
+        <button
+          type="button"
+          className="storyteller-banner-replay"
+          data-testid="storyteller-home-replay"
+          aria-label="Replay the greeting"
+          onClick={() => beginGreetingAudio()}
+        >
+          Hear again
+        </button>
       ) : null}
     </div>
   );

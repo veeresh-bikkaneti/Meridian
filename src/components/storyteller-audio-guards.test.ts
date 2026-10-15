@@ -7,6 +7,7 @@ import {
   isRapidFigureTap,
   resolvePlayAbort,
   shouldReplayGreeting,
+  shouldMarkGreetingDismissed,
 } from "./storyteller-audio-guards.ts";
 import {
   STORYTELLER_AUDIO_FALLBACK_LINE,
@@ -246,6 +247,49 @@ describe("shouldReplayGreeting — Fix D: figure tap replays a silent greeting",
 
   it("banner not started (tutorial invite up) → poke lines", () => {
     assert.equal(shouldReplayGreeting({ ...base, started: false }), false);
+  });
+});
+
+describe("shouldMarkGreetingDismissed — dismiss during the pointerdown race", () => {
+  it("a live clip counts even while React still says greeting_text", () => {
+    assert.equal(
+      shouldMarkGreetingDismissed({
+        mode: "greeting",
+        phase: "greeting_text",
+        audioLive: true,
+      }),
+      true,
+    );
+  });
+
+  it("greeting_audio counts after the re-render", () => {
+    assert.equal(
+      shouldMarkGreetingDismissed({
+        mode: "greeting",
+        phase: "greeting_audio",
+        audioLive: false,
+      }),
+      true,
+    );
+  });
+
+  it("text-only dismiss and tour-return do not burn the greeting", () => {
+    assert.equal(
+      shouldMarkGreetingDismissed({
+        mode: "greeting",
+        phase: "greeting_text",
+        audioLive: false,
+      }),
+      false,
+    );
+    assert.equal(
+      shouldMarkGreetingDismissed({
+        mode: "tour-return",
+        phase: "greeting_audio",
+        audioLive: true,
+      }),
+      false,
+    );
   });
 });
 

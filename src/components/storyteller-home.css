@@ -365,6 +365,32 @@
   outline-offset: 2px;
 }
 
+/* Panic-dismiss re-hear. Hangs in the popover slot, so it stays clear of
+ * the eyebrow sound toggle. Hidden while a poke bubble is up. */
+.storyteller-banner-replay {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 30;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: var(--atlas-bg-1, rgba(16, 34, 42, 0.98));
+  color: var(--atlas-brass, #e8b64c);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  animation: storyteller-banner-in 150ms ease-out;
+}
+
+.storyteller-banner-replay:focus-visible {
+  outline: 3px solid var(--atlas-brass);
+  outline-offset: 2px;
+}
+
 /* Entering: opacity only. */
 @keyframes storyteller-banner-in {
   from {
