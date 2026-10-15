@@ -26,6 +26,7 @@
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { writeGlobeTiers } from "./build-globe-tiers.mjs";
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), "..");
 const NOTES_PATH = join(REPO, "src", "game", "data", "notable-notes.json");
@@ -106,11 +107,16 @@ for (const id of ids) {
 
 // Persist only chunks that actually changed (byte-identical otherwise).
 let wrote = 0;
+let globeChanged = false;
 for (const { file, chunk, dirty } of chunks) {
   if (!dirty) continue;
   writeFileSync(join(CHUNKS_DIR, file), JSON.stringify(chunk) + "\n");
   wrote++;
+  if (file === "globe.json") globeChanged = true;
 }
+// The runtime loads Globe from the derived per-tier files, not from
+// chunks/globe.json - keep them in step (the prebuild gate fails if not).
+if (globeChanged) writeGlobeTiers();
 
 console.log(`notable notes processed: ${ids.length}`);
 console.log(`records migrated (note stripped from blurb): ${stats.migrated}`);

@@ -124,6 +124,11 @@ interface LoopMapProps {
   /** Empty tap; `indexLoading` when the place index isn't ready yet. */
   onEmptyTap: (indexLoading: boolean) => void;
   /**
+   * WS-4 Phase 1: the map pictures failed to load. The owner hides the map
+   * and keeps the clue -> guess -> feedback loop going. Fires once per mount.
+   */
+  onTilesFailed?: () => void;
+  /**
    * Cold-Trail mode: taps report raw coordinates via onMapTap instead of
    * resolving to a labeled place, and no guess index is fetched. The
    * select/empty callbacks are never invoked in this mode.
@@ -163,6 +168,7 @@ export function LoopMap({
   handleRef,
   onSelectPlace,
   onEmptyTap,
+  onTilesFailed,
   freeTap,
   onMapTap,
   evidenceRings,
@@ -204,6 +210,11 @@ export function LoopMap({
     placementDraft,
   });
   const paintRef = useRef({ guesses, target, finished, unit, evidenceRings, evidenceMarks, evidenceOverlap, placementDraft });
+  // WS-4 Phase 1: read by the map's idle handler; written in an effect.
+  const onTilesFailedRef = useRef(onTilesFailed);
+  useEffect(() => {
+    onTilesFailedRef.current = onTilesFailed;
+  }, [onTilesFailed]);
   useEffect(() => {
     cbRef.current = {
       onSelectPlace,
@@ -370,6 +381,30 @@ export function LoopMap({
       }
     };
     map.on("click", onClick);
+
+    // WS-4 Phase 1: the pictures are off when tile errors arrive and no clean
+    // frame follows. An idle frame after a tile error reports at once; if
+    // MapLibre never idles (tiles stuck pending), the same 15 s budget as the
+    // satellite map's watchdog reports instead. Report once; the owner hides
+    // the map and the loop keeps going. Non-tile errors (style, glyphs) are
+    // ignored. A stale timer after unmount is ignored (mapRef check).
+    let tileErrors = 0;
+    let tilesReported = false;
+    let tileVerdictTimer = 0;
+    const reportTilesOff = () => {
+      if (tilesReported || mapRef.current !== map) return;
+      tilesReported = true;
+      window.clearTimeout(tileVerdictTimer);
+      onTilesFailedRef.current?.();
+    };
+    map.on("error", (e) => {
+      if (!(e as { tile?: unknown }).tile) return;
+      tileErrors += 1;
+      if (!tileVerdictTimer) tileVerdictTimer = window.setTimeout(reportTilesOff, 15_000);
+    });
+    map.on("idle", () => {
+      if (tileErrors > 0) reportTilesOff();
+    });
 
     // Cold-Trail draft marker (placement mode only): a draggable 🎯 pin at
     // the unconfirmed draft center. Tap-to-move (map click) is the primary

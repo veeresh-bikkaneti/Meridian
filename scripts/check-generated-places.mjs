@@ -37,6 +37,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { validateGeneratedPlace } from "../src/game/validate-places.ts";
 import { COUNTRIES, STATES } from "../src/game/regions.ts";
+import { checkGlobeTiers } from "./build-globe-tiers.mjs";
 
 const REPO = dirname(dirname(fileURLToPath(import.meta.url)));
 const CHUNKS_DIR = join(REPO, "src", "game", "data", "geonames", "chunks");
@@ -320,6 +321,12 @@ function main() {
     }
   }
 
+  // The runtime loads Globe from per-tier files DERIVED from chunks/globe.json
+  // (scripts/build-globe-tiers.mjs). Every place above was validated in the
+  // canonical file; byte-equality of the derived files with a fresh split of
+  // it carries that validation over (same ids, same records, same order).
+  for (const problem of checkGlobeTiers()) violations.push(`globe tiers: ${problem}`);
+
   if (violations.length > 0) {
     console.error(
       `GEONAMES PLACE GATE FAILED: ${violations.length} violation(s) across ${checked} chunk places — build rejected.`,
@@ -331,7 +338,8 @@ function main() {
   console.log(
     `GeoNames place gate OK: ${checked} places in ${chunkFiles.length} chunks validated ` +
       `(id uniqueness, edition/regionId membership, manifest counts, Hyderabad coordinates), ` +
-      `${factCount} derived facts in ${factFiles.length} fact indexes validated, 0 violations.`,
+      `${factCount} derived facts in ${factFiles.length} fact indexes validated, ` +
+      `globe tier files in sync with chunks/globe.json, 0 violations.`,
   );
 }
 

@@ -53,6 +53,16 @@ function inBand(tier: number, band: [number, number][]): boolean {
 }
 
 /**
+ * The fame tiers (1–5) a picker choice deals from, ascending. Same band
+ * logic and same unknown-choice fallback as filterByTier, so a loader that
+ * fetches only these tiers cannot disagree with the filter.
+ */
+export function tiersFor(choice: PickerDifficulty): Difficulty[] {
+  const band = TIER_BANDS[choice] ?? TIER_BANDS.medium;
+  return ([1, 2, 3, 4, 5] as const).filter((tier) => inBand(tier, band));
+}
+
+/**
  * Keep only the places whose difficulty tier falls in the picker's band.
  * Fail-closed: an empty input — or a band that matches nothing — returns an
  * empty pool. The pool is never silently widened back to the full catalog.
