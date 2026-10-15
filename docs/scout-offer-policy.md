@@ -24,3 +24,26 @@ A person can always change an accepted choice with the manual toggle, which over
 
 Test seam: the offer is suppressed only by `window.__meridianSuppressScoutOffer === true`
 (set by the e2e harness init script). There is deliberately no URL parameter for it.
+
+## Charter change: tile-failure fallback (recorded 2026-10-14; owner adoption 2026-10-15)
+
+This is a deliberate change to the rules above. It was recommended by the
+game-studio crew, implemented 2026-10-14, and adopted by the owner on
+2026-10-15. It does not touch the rules in the table.
+
+**Tile-failure fallback (satellite map).** When the satellite imagery fails to
+load, the child gets one "Try again". If that retry also fails, the map switches
+automatically to Scout Map for this visit only.
+
+| Event | Stored as | Decays? | Re-offered? |
+| --- | --- | --- | --- |
+| Tile-failure switch (after one failed retry) | nothing: in memory only | n/a (never stored) | the next visit tries the full map again; the fallback can trigger again if tiles still fail |
+
+Rules for this change:
+- It is never written to `meridian:map-mode`, so the saved-mode rules above are unchanged.
+- A reload starts the next visit on the full map again, and the one-retry rule applies again.
+- It is not an answer to the boot offer, and it does not suppress the boot offer.
+- The manual toggle still wins: a child who sets Scout or Full in settings gets that choice.
+- The `webglcontextlost` rule (unanswered, decays after 7 days) is unchanged.
+
+Spec: `docs/ops/specs/ws-4-satellite-failure-phase1.md`.

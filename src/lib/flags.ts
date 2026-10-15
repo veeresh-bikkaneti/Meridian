@@ -31,7 +31,7 @@
  */
 
 /** The flag catalog. Grow it by extending this union and `FLAG_DEFAULTS`. */
-export type FlagName = "pwaUpdateToast" | "learningOutcomes";
+export type FlagName = "pwaUpdateToast" | "learningOutcomes" | "globeTierSplit";
 
 /**
  * Baked-in defaults — MUST equal current production behavior for every
@@ -45,6 +45,11 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // Learning-outcomes prototype (per-place learning records + growth UI).
   // false = today's behavior: no records, no growth surfaces, no storage.
   learningOutcomes: false,
+  // Globe fame-tier split (perf). false = today's production behavior: the
+  // Globe loads ALL five tier files and deals from the full pool in canonical
+  // order (the caller's filterByTier bands it). true = load only the tiers of
+  // the run's learning path (Easy t1+t2, Medium t2-t4, Hard t4+t5).
+  globeTierSplit: false,
 };
 
 export const FLAGS_FETCH_TIMEOUT_MS = 1500;

@@ -226,9 +226,63 @@ test("poke: tap the figure → rotating idle lines", async ({ page }) => {
   await expect.poll(async () => caption.textContent(), { timeout: 5_000 }).toBe(POKE_1);
 
   // Clear the poke debounce, then tap again → next line rotates in.
-  await page.waitForTimeout(700);
+  await page.waitForTimeout(1000);
   await figure.click({ force: true });
   await expect.poll(async () => caption.textContent(), { timeout: 5_000 }).toBe(POKE_2);
+
+  expectCleanConsole(errors);
+});
+
+test("follow-up poke plays poke-01, then poke-02", async ({ page }) => {
+  await seedQuietHome(page);
+  const errors = await loadHome(page);
+  await expect(page.getByTestId("storyteller-home-caption")).toBeVisible({ timeout: 10_000 });
+  await page.evaluate(() => {
+    const w = window as unknown as { __pokeSrcs: string[] };
+    w.__pokeSrcs = [];
+    const Orig = window.Audio;
+    function Spy(this: HTMLAudioElement, url?: string) {
+      if (typeof url === "string" && url.includes("poke-")) w.__pokeSrcs.push(url);
+      return new Orig(url);
+    }
+    Spy.prototype = Orig.prototype;
+    window.Audio = Spy as unknown as typeof Audio;
+  });
+
+  await page.getByTestId("storyteller-home-dismiss").click();
+  const figure = page.getByTestId("storyteller-figure");
+  await figure.click({ force: true });
+  await expect
+    .poll(async () => page.getByTestId("storyteller-home-caption").textContent(), { timeout: 5_000 })
+    .toBe(POKE_1);
+  await page.waitForTimeout(1000);
+  await figure.click({ force: true });
+  await expect
+    .poll(async () => page.getByTestId("storyteller-home-caption").textContent(), { timeout: 5_000 })
+    .toBe(POKE_2);
+
+  const srcs = await page.evaluate(
+    () => (window as unknown as { __pokeSrcs: string[] }).__pokeSrcs,
+  );
+  expect(srcs.some((s) => s.includes("poke-01.mp3"))).toBe(true);
+  expect(srcs.some((s) => s.includes("poke-02.mp3"))).toBe(true);
+  expectCleanConsole(errors);
+});
+
+test("panic dismiss can hear the greeting again", async ({ page }) => {
+  await seedQuietHome(page);
+  const errors = await loadHome(page);
+  const caption = page.getByTestId("storyteller-home-caption");
+  await expect(caption).toBeVisible({ timeout: 10_000 });
+
+  await page.getByTestId("storyteller-home-dismiss").click();
+  const replay = page.getByTestId("storyteller-home-replay");
+  await expect(replay).toBeVisible();
+  await expect(replay).toHaveText("Hear again");
+
+  await replay.click();
+  await expect.poll(async () => caption.textContent(), { timeout: 5_000 }).toBe(expectedGreeting());
+  await expect(replay).toHaveCount(0);
 
   expectCleanConsole(errors);
 });

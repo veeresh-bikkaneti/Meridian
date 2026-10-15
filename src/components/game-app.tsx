@@ -42,6 +42,7 @@ import { scoreRingForEdition } from "@/game/score";
 import { scorePlace, type ScoredPlace } from "@/game/scoring";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrated, markClearedCelebrated, clearClearedMark, memorySeenStore, isBandCleared } from "@/game/trail";
 import { resolveRunPool } from "@/game/pool";
+import { loadedForKey, placesLoadKey, type LoadedFor } from "@/game/places-load-key";
 import type { MapMark, MapVariation } from "@/map/satellite-map";
 import { MapErrorBoundary } from "./map-error-boundary";
 import { Compass, Flag, Globe2, MapPin, Volume2, VolumeX } from "lucide-react";
@@ -58,6 +59,7 @@ import {
 import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
 import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import { RunStartNotice } from "@/components/run-start-notice";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { HintPanel } from "./hint-panel";
 import { directionalHint } from "./hint-logic";
@@ -117,6 +119,7 @@ import {
   shouldArmRevealWatchdog,
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
+import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
   emitEvent,
   initObservability,
@@ -139,6 +142,7 @@ import {
 } from "@/map/capability";
 import type { ScoutRestoreView } from "@/map/satellite-map";
 import { SCOUT_COPY } from "./scout-copy.ts";
+import { TILE_FALLBACK_COPY } from "@/map/tile-fallback-copy.ts";
 import { ScoutBootOffer } from "./scout-boot-offer.tsx";
 import { MapModeToggle } from "./map-mode-toggle.tsx";
 import {
@@ -149,6 +153,7 @@ import {
   hasSeenTutorial,
   isTutorialRunPool,
   markTutorialSeen,
+  TUTORIAL_INVITE_DISMISS_EVENT,
   type TutorialBeat,
 } from "@/game/tutorial";
 import { TutorialInvite, TutorialOverlay } from "./tutorial-overlay";
@@ -730,6 +735,19 @@ function useSessionState() {
 }
 
 /**
+ * The globeTierSplit decision for a run's pool load. Only the Globe consults
+ * the flag (and thereby waits for flags.json, at most ~1.5s, only on the first
+ * Globe run of a page load); every other region gets false at once. Both
+ * placesFor call sites use this one helper, and the resolver caches the first
+ * answer, so a run's two loads can never disagree.
+ */
+function globeTierSplitFor(edition: Edition, regionId: string): Promise<boolean> {
+  return edition === "globe" && regionId === "globe"
+    ? resolveGlobeTierSplit()
+    : Promise.resolve(false);
+}
+
+/**
  * Review-deck entry status for the edition picker. Gated on the
  * `learningOutcomes` flag like the other growth surfaces: flag off = no
  * deck entry at all (the deck only populates while the flag is on). Re-read
@@ -1006,8 +1024,22 @@ export function GameApp() {
   // chunk cannot be loaded, and the player stays on the menu. When the tab
   // is stale (a deploy replaced its hashed chunks), the notice becomes a
   // one-tap refresh prompt instead of a dead end.
-  const [starting, setStarting] = useState<{ regionName: string } | null>(null);
-  const [startError, setStartError] = useState<{ message: string; staleBuild: boolean } | null>(null);
+  // `edition`/`regionId`/`regionName`/`choice` describe what the player asked
+  // for, so the in-run notice (runStartNotice below) can name it.
+  const [starting, setStarting] = useState<{
+    edition: Edition;
+    regionId: string;
+    regionName: string;
+    choice: PickerDifficulty;
+  } | null>(null);
+  const [startError, setStartError] = useState<{
+    message: string;
+    staleBuild: boolean;
+    edition: Edition;
+    regionId: string;
+    regionName: string;
+    choice: PickerDifficulty;
+  } | null>(null);
   // Session score: survives edition switches until End game or the idle
   // timeout. The HUD and the summary read from here, never from the run.
   const { session, update: updateSession, replace: replaceSession, get: getSession } = useSessionState();
@@ -1061,6 +1093,7 @@ export function GameApp() {
 
   /** Idle kill: end the session and return the player to the home screen. */
   const killIdleSession = useCallback(() => {
+    setStartError(null);
     clearDrop();
     try {
       sessionStorage.removeItem(RUN_KEY);
@@ -1274,7 +1307,7 @@ export function GameApp() {
       // into an edition (gladiator-into-the-arena energy). Not for the
       // tutorial (quiet practice round).
       if (!opts?.tutorial && soundAudible()) safePlay(playEditionEntrance);
-      setStarting({ regionName });
+      setStarting({ edition, regionId, regionName, choice });
       setStartError(null);
       recordMilestone("run_start", { edition, regionId, chunkId: regionId });
       // D1: arm the clean-exit dirty marker NOW, before the data-chunk
@@ -1298,7 +1331,11 @@ export function GameApp() {
       try {
         // The region's chunk(s) load here — never eagerly, never partial.
         recordMilestone("data_chunk_load_start", { edition, regionId, chunkId: regionId });
-        const places = await placesFor(edition, regionId);
+        // The learning path and the globeTierSplit flag ride along so the Globe
+        // fetches only the fame tiers it deals from (flag on) or all five (flag
+        // off); filterByTier below still decides the pool.
+        const tierSplit = await globeTierSplitFor(edition, regionId);
+        const places = await placesFor(edition, regionId, choice, tierSplit);
         recordMilestone("data_loaded", { edition, regionId, chunkId: regionId });
         const dateKey = trailDate();
         // The picker's difficulty band narrows the catalog BEFORE the dealer
@@ -1392,7 +1429,14 @@ export function GameApp() {
         } catch {
           staleBuild = false;
         }
-        setStartError({ message, staleBuild });
+        setStartError({
+          message: staleBuild ? message : `We couldn't open ${regionId === "globe" ? "the Globe" : regionName} right now. Check that you're online, then tap Play again.`,
+          staleBuild,
+          edition,
+          regionId,
+          regionName,
+          choice,
+        });
         // Telemetry: region-chunk load failures never left this catch —
         // emit so they reach crash reporting like every other error class.
         emitEvent({
@@ -1407,6 +1451,35 @@ export function GameApp() {
     },
     [commit, ensureSession],
   );
+
+  // "Try again" on the in-run start-failure box. A failed dynamic import() is
+  // remembered by the browser for the lifetime of the document (Chromium does
+  // not even request the URL again), so calling openRun again in THIS document
+  // cannot recover once a tier file failed to load: reload instead. The picker
+  // opens with the chosen band still selected (onPlayBand persisted it). Do NOT
+  // reuse refreshForNewBuild: it sets STALE_REFRESH_KEY, which would disable
+  // later stale-build detection.
+  const retryLastOpen = useCallback(() => window.location.reload(), []);
+  // "Keep playing": close the box and hand focus back to the game (the box had
+  // it and is about to unmount). The result card's button is "Next place" in
+  // the pinned bar and "Next place →" in the full card; neither has a ref or
+  // test id, so find it by its label, as other code in this file does with
+  // document.querySelector (scout-boot-offer). requestAnimationFrame lets the
+  // unmount finish first.
+  const dismissStartError = useCallback(() => {
+    setStartError(null);
+    window.requestAnimationFrame(() => {
+      const next = Array.from(document.querySelectorAll<HTMLButtonElement>("button")).find(
+        (b) => (b.textContent ?? "").trim().startsWith("Next place"),
+      );
+      next?.focus({ preventScroll: true });
+    });
+  }, []);
+  // The in-run start notice clears when the player moves on: the next place
+  // is dealt (run.index) or the run changes phase.
+  useEffect(() => {
+    setStartError(null);
+  }, [run?.index, run?.phase]);
 
   // Review-deck status for the picker entry (flag-gated; re-read whenever
   // the app returns to the picker — see useDeckStatus).
@@ -1471,7 +1544,16 @@ export function GameApp() {
     markTutorialSeen();
     setInviteDismissed(true);
   }, []);
+  // Mascot tap while the invite is up uses the same dismiss. The host
+  // starts the greeting inside that click, so this must not start audio.
+  useEffect(() => {
+    const onFigureDismiss = () => onDismissInvite();
+    window.addEventListener(TUTORIAL_INVITE_DISMISS_EVENT, onFigureDismiss);
+    return () =>
+      window.removeEventListener(TUTORIAL_INVITE_DISMISS_EVENT, onFigureDismiss);
+  }, [onDismissInvite]);
   const endTutorial = useCallback(() => {
+    setStartError(null);
     clearDrop();
     try {
       sessionStorage.removeItem(RUN_KEY);
@@ -1603,6 +1685,29 @@ export function GameApp() {
       Still there? Your game ends after 2 minutes of no activity — do anything to keep playing.
     </div>
   ) : null;
+  // In-run run-start feedback. Only while a run is on screen: from the menu the
+  // existing "Loading places" screen and loadNotice already cover it, and the
+  // very first run (no run yet) never shows this. The status region inside is
+  // always mounted while a run exists so announcements are reliable.
+  const startTarget = starting ?? startError;
+  const noticeTarget = run && startTarget ? startNoticeTarget(run, startTarget) : null;
+  const runStartNotice = run ? (
+    <RunStartNotice
+      loadingLabel={starting && noticeTarget ? noticeTarget.label : null}
+      error={
+        !starting && startError && noticeTarget
+          ? {
+              label: noticeTarget.label,
+              scope: noticeTarget.scope,
+              staleBuild: startError.staleBuild,
+              onTryAgain: retryLastOpen,
+              onKeepPlaying: dismissStartError,
+              onRefresh: refreshForNewBuild,
+            }
+          : null
+      }
+    />
+  ) : null;
 
   if (!ready) {
     return (
@@ -1642,12 +1747,14 @@ export function GameApp() {
           onEditions={() => {
             // Back to the picker WITHOUT ending the game: the session (and
             // its score) stays alive across the edition switch.
+            setStartError(null);
             clearDrop();
             setRun(null);
             setMenu(null);
           }}
           onSummaryDone={() => {
             // End game already ended the session; drop it and go home.
+            setStartError(null);
             clearDrop();
             setRun(null);
             setMenu(null);
@@ -1663,6 +1770,7 @@ export function GameApp() {
           mapMode={mapMode}
           toggleMapMode={queuedMapMode ?? mapMode}
           applyMapMode={applyMapMode}
+          setSessionMapMode={setMapMode}
           celebrationOpen={cleared !== null}
           ageBand={ageBand}
         />
@@ -1688,6 +1796,7 @@ export function GameApp() {
               // Back to the edition picker WITHOUT ending the game: the
               // session (and its score) stays alive, like the Editions
               // button mid-run.
+              setStartError(null);
               setCleared(null);
               clearDrop();
               setRun(null);
@@ -1696,6 +1805,7 @@ export function GameApp() {
           />
         ) : null}
         {celebrationOverlay}
+        {runStartNotice}
         {idleToast}
       </>
     );
@@ -1759,8 +1869,8 @@ export function GameApp() {
         </Button>
       </div>
     ) : (
-      <p role="alert" className="mb-4 rounded-xl border border-line bg-surface p-4 text-sm text-fg">
-        {startError.message} Please try again.
+      <p role="alert" className="mb-4 rounded-xl border border-fg/30 bg-surface p-4 text-base text-fg">
+        {startError.message}
       </p>
     )
   ) : null;
@@ -1935,6 +2045,28 @@ export function GameApp() {
     ) : null}
     </>
   );
+}
+
+/** Display names of the learning paths, used by the in-run start notice. */
+const BAND_LABELS: Record<PickerDifficulty, string> = {
+  easy: "Easy",
+  medium: "Medium",
+  hard: "Hard",
+};
+
+/**
+ * What the in-run start notice calls the thing being loaded: the band name
+ * when the player stays in the same place and only changes the learning path
+ * (celebration "Try Medium"), otherwise the place name (Hard-clear "Try
+ * <neighbor>", "Try <country>", "Play the Globe").
+ */
+function startNoticeTarget(
+  run: Run,
+  target: { edition: Edition; regionId: string; regionName: string; choice: PickerDifficulty },
+): { label: string; scope: "band" | "region" } {
+  return target.edition === run.edition && target.regionId === run.regionId
+    ? { label: BAND_LABELS[target.choice], scope: "band" }
+    : { label: target.regionId === "globe" ? "the Globe" : target.regionName, scope: "region" };
 }
 
 /** Kid-friendly hints for each learning path, shown under the picker. */
@@ -2427,6 +2559,7 @@ function Play({
   mapMode,
   toggleMapMode,
   applyMapMode,
+  setSessionMapMode,
 }: {
   run: Run;
   session: Session | null;
@@ -2481,9 +2614,20 @@ function Play({
    * "contextlost" (applied immediately).
    */
   applyMapMode: (mode: MapMode, source: "manual" | "contextlost") => void;
+  setSessionMapMode: (mode: MapMode) => void;
 }) {
-  const [places, setPlaces] = useState<Starter[] | null>(null);
-  const [poolError, setPoolError] = useState<string | null>(null);
+  // The catalog is stored WITH the key it was loaded for and only used while
+  // that key is the current run's key. Play stays mounted across run changes
+  // (GameApp renders it whenever `run` is set), so a plain `places` state would
+  // hand PlayLoaded the previous band's catalog for one commit: wrong pool, a
+  // dealer on the new band's seen store, and a stale place written into the
+  // new band's no-repeat history. Deriving `places` makes that commit
+  // impossible: a key mismatch renders "Loading places" instead.
+  const loadKey = placesLoadKey(run.edition, run.regionId, run.difficultyChoice);
+  const [loadedPlaces, setLoadedPlaces] = useState<LoadedFor<Starter[]> | null>(null);
+  const [poolFailure, setPoolFailure] = useState<LoadedFor<string> | null>(null);
+  const places = loadedForKey(loadedPlaces, loadKey);
+  const poolError = loadedForKey(poolFailure, loadKey);
   // Review sessions: the due deck entries in session order (the poolIds
   // order). Null for normal runs.
   const [reviewEntries, setReviewEntries] = useState<DeckEntry[] | null>(null);
@@ -2499,8 +2643,7 @@ function Play({
 
   useEffect(() => {
     let cancelled = false;
-    setPlaces(null);
-    setPoolError(null);
+    setPoolFailure(null);
     setReviewEntries(null);
     if (review) {
       // Review deck: no chunk fetch — due cards carry their own snapshots.
@@ -2516,29 +2659,49 @@ function Play({
         const entries = ordered.length > 0 ? ordered : due;
         if (!cancelled) {
           setReviewEntries(entries);
-          setPlaces(entries.map(deckStarter));
+          setLoadedPlaces({ key: loadKey, value: entries.map(deckStarter) });
         }
       } catch {
-        if (!cancelled) setPoolError("Could not load your review deck.");
+        if (!cancelled) {
+          setPoolFailure({ key: loadKey, value: "Could not load your review deck." });
+        }
       }
       return () => {
         cancelled = true;
       };
     }
-    placesFor(run.edition, run.regionId).then(
-      (loaded) => {
-        if (!cancelled) setPlaces(loaded);
-      },
-      (err: unknown) => {
-        if (!cancelled) {
-          setPoolError(err instanceof Error ? err.message : String(err));
-        }
-      },
-    );
+    globeTierSplitFor(run.edition, run.regionId)
+      .then((tierSplit) =>
+        placesFor(run.edition, run.regionId, run.difficultyChoice, tierSplit),
+      )
+      .then(
+        (list) => {
+          if (!cancelled) setLoadedPlaces({ key: loadKey, value: list });
+        },
+        (err: unknown) => {
+          if (!cancelled) {
+            setPoolFailure({
+              key: loadKey,
+              value: err instanceof Error ? err.message : String(err),
+            });
+          }
+        },
+      );
     return () => {
       cancelled = true;
     };
-  }, [run.edition, run.regionId]);
+    // Keyed on the load key, not on the individual run fields. For the Globe
+    // the key contains the learning path, so a band change (celebration
+    // promotion, replay at another path) loads the new band's catalog and, until
+    // it arrives, renders "Loading places" - never the old band's catalog.
+    // For every other region the key has no band part, so a band change does
+    // not reload or remount. Flag on: the Globe loads only the tiers of the
+    // new path. Flag off: the reload is unnecessary (the pool is the full
+    // Globe pool for every band) but harmless: globeTierSplitFor returns its
+    // cached value and placesFor hits the chunk cache, so the same full pool
+    // comes back after one "Loading places" frame.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loadKey]);
 
   if (poolError) {
     return (
@@ -2589,6 +2752,7 @@ function Play({
       mapMode={mapMode}
       toggleMapMode={toggleMapMode}
       applyMapMode={applyMapMode}
+      setSessionMapMode={setSessionMapMode}
     />
   );
 }
@@ -2614,6 +2778,7 @@ function PlayLoaded({
   mapMode,
   toggleMapMode,
   applyMapMode,
+  setSessionMapMode,
 }: {
   run: Run;
   places: Starter[];
@@ -2671,6 +2836,7 @@ function PlayLoaded({
    * "contextlost" (applied immediately).
    */
   applyMapMode: (mode: MapMode, source: "manual" | "contextlost") => void;
+  setSessionMapMode: (mode: MapMode) => void;
 }) {
   // Review-deck session: a synthetic Run reusing this game loop. The deck
   // queue (due order) is the pool; review answers never bank into the
@@ -2816,6 +2982,33 @@ function PlayLoaded({
       if (place) setScoutSwitchNote({ placeId: place.id });
     },
     [applyMapMode, place],
+  );
+
+  /**
+   * WS-4 Phase 1: "Try again" taps this visit (the satellite map reports each
+   * one). In memory only: it is never stored, so a reload starts at zero.
+   */
+  const [tileRetriesUsed, setTileRetriesUsed] = useState(0);
+  const handleTileRetry = useCallback(() => setTileRetriesUsed((n) => n + 1), []);
+  /** WS-4 Phase 1: the deferred "switched to Scout Map" note (tile path). */
+  const [tileSwitchNote, setTileSwitchNote] = useState<{ placeId: string } | null>(null);
+
+  /**
+   * WS-4 Phase 1: satellite pictures failed after the one retry. Switch to
+   * Scout Map for this visit only. Unlike the context-loss switch, this calls
+   * no writeStoredMapMode: nothing is saved, and a reload returns to full.
+   * It does not clear a queued manual choice, so the toggle still wins.
+   */
+  const handleTileFallback = useCallback(
+    (view: ScoutRestoreView) => {
+      if (mapModeRef.current !== "full") return;
+      setReportMapMode("scout");
+      setSessionMapMode("scout");
+      setScoutSwitchView(view);
+      setMapRemountNonce((n) => n + 1);
+      if (place) setTileSwitchNote({ placeId: place.id });
+    },
+    [place],
   );
 
   // The switch viewport is consumed by the remount it triggers; clear it
@@ -3384,6 +3577,9 @@ function PlayLoaded({
           <Suspense fallback={<MapLoadingFallback />}>
             <SatelliteMap
               key={`${mapKeyForCard}:${mapRemountNonce}`}
+              tileRetriesUsed={tileRetriesUsed}
+              onTileRetry={handleTileRetry}
+              onTileFallback={handleTileFallback}
               mode={mode}
               mapMode={mapMode}
               initialView={scoutSwitchView}
@@ -3630,6 +3826,27 @@ function PlayLoaded({
               : null
           }
         />
+      ) : null}
+      {/* WS-4 Phase 1: the same deferred break as the note below, for the
+          satellite-failure switch. Its own copy and its own dismiss. */}
+      {(tileSwitchNote && place && tileSwitchNote.placeId === place.id && (run.phase === "story" || run.phase === "done") && revealDone) ? (
+        <div
+          data-testid="tile-switch-note"
+          role="status"
+          className="pointer-events-none fixed inset-x-4 top-16 z-50"
+        >
+          <div className="pointer-events-auto mx-auto flex max-w-md items-center gap-3 rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.85)] p-4 pl-5 text-white shadow-xl backdrop-blur-[14px]">
+            <p className="m-0 flex-1 text-sm leading-snug">{TILE_FALLBACK_COPY.switchNote}</p>
+            <button
+              type="button"
+              aria-label="Dismiss"
+              onClick={() => setTileSwitchNote(null)}
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 text-lg leading-none text-white/70 transition-colors hover:text-white"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+        </div>
       ) : null}
       {/*
         PBI-5: the deferred Scout Map switch note — GameApp-level, SIBLING

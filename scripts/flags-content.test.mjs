@@ -45,3 +45,8 @@ test("observability endpoint points at the crash-report ingest route", () => {
     "endpoint must be the crash-report worker /ingest route",
   );
 });
+
+test("public/flags.json ships globeTierSplit on (the faster Globe path)", () => {
+  const payload = JSON.parse(readFileSync(FLAGS_PATH, "utf8"));
+  assert.equal(payload.flags.globeTierSplit, true);
+});

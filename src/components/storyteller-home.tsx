@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { StorytellerMascot, isPlayAbort, useCelebrationActive, useTourActive } from "./storyteller";
-import { fallbackLine, shouldReplayGreeting } from "./storyteller-audio-guards";
+import { fallbackLine, shouldReplayGreeting, decideEnteringFigureTap, isRapidFigureTap, shouldMarkGreetingDismissed } from "./storyteller-audio-guards";
 import { STORYTELLER_HOME_RETRY_HINT } from "./storyteller-lines";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import {
@@ -17,6 +17,7 @@ import {
   takeTourReturnLine,
 } from "./storyteller-session";
 import { recordMilestone } from "@/lib/observability";
+import { TUTORIAL_INVITE_DISMISS_EVENT } from "@/game/tutorial";
 import "./storyteller-home.css";
 
 // Storyteller banner host — the Storyteller sits IN THE BANNER beside the
@@ -44,6 +45,8 @@ import "./storyteller-home.css";
 //   loads; navigation never waits (copy G3). He never travels into loops.
 // - Tutorial invite visible: the figure stays in the banner, but the
 //   greeting waits until the invite is dismissed (no competing popups).
+//   A figure tap dismisses the invite the same way "Not now" does, then
+//   starts the greeting on that gesture.
 // - Reduced motion: ≤150ms opacity fade only; full caption instantly; audio
 //   timing unchanged.
 //
@@ -60,6 +63,10 @@ type BannerPhase =
   | "exiting";
 
 const ENTER_MS = 150;
+/** If `entering` never flips (timeout cleared, or the beat is interrupted),
+ * force the text greeting. Does not fire while the tutorial invite is
+ * holding `started` false — that wait is released by a figure tap. */
+const ENTER_HANG_MS = 2000;
 const EXIT_MS = 150;
 const TEXT_BUBBLE_MS = 6000;
 /** Panel 2026-10-09 (BLOCK 3): dismissed-return-line follow-up delay — the
@@ -130,6 +137,8 @@ interface ResolvedAssets {
   pointing: string | null;
   /** greet-0N mp3 for today's greeting rotation; null → text-only greeting. */
   greetAudio: string | null;
+  /** poke-01…05, index-aligned with POKE_LINES. null slot → text only. */
+  pokeAudio: readonly (string | null)[];
 }
 
 /**
@@ -178,7 +187,7 @@ function firstEditionControl(): HTMLElement | null {
 export interface StorytellerHomeHostProps {
   /** True while the first-run tutorial invite is on screen — the figure
       stays in the banner, but the greeting stays quiet until the invite is
-      dismissed (no competing popups). */
+      dismissed (no competing popups). A figure tap dismisses it. */
   tutorialInviteVisible?: boolean;
   /** True while a blocking boot dialog (e.g. the Scout Map choice offer)
       is open or the boot qualification hasn't settled — the greeting waits
@@ -214,9 +223,13 @@ export default function StorytellerHomeHost({
   // the graceful yield-out. Neither touches the phase machine.
   const [poked, setPoked] = useState(false);
   const [yielding, setYielding] = useState(false);
+  // A panic dismiss keeps the next figure tap a poke. This is the only
+  // way back to the greeting clip.
+  const [canRehear, setCanRehear] = useState(false);
   const [assets, setAssets] = useState<ResolvedAssets>({
     pointing: null,
     greetAudio: null,
+    pokeAudio: [null, null, null, null, null],
   });
 
   const reducedMotion = useRef(
@@ -225,6 +238,7 @@ export default function StorytellerHomeHost({
   ).current;
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const pokeAudioRef = useRef<HTMLAudioElement | null>(null);
   const bubbleTimer = useRef(0);
   const capTimer = useRef(0);
   const soundWatch = useRef(0);
@@ -236,6 +250,12 @@ export default function StorytellerHomeHost({
   const pokeIndexRef = useRef(0);
   const lastPokeRef = useRef(0);
   const startedRef = useRef(started);
+  const phaseRef = useRef(phase);
+  phaseRef.current = phase;
+  // Set when the entering beat has already moved on (timer, hang watchdog,
+  // or a figure tap). Re-entering `entering` (tour-return follow-up) clears
+  // it at the start of that effect.
+  const enteringSettledRef = useRef(false);
   // Panel 2026-10-09 (BLOCK 3): dismissing the text-only return line must
   // not be a dead end — dismissBubble sets this; the follow-up effect
   // consumes it when the follow-up greeting runs.
@@ -293,6 +313,8 @@ export default function StorytellerHomeHost({
     window.clearTimeout(playHangTimer.current);
     audioRef.current?.pause();
     audioRef.current = null;
+    pokeAudioRef.current?.pause();
+    pokeAudioRef.current = null;
     setGreetingPaused(false);
   }, []);
 
@@ -339,6 +361,10 @@ export default function StorytellerHomeHost({
       setAssets({
         pointing: manifest.poses.pointing ? base + manifest.poses.pointing : null,
         greetAudio: audioPath ? base + audioPath : null,
+        pokeAudio: [1, 2, 3, 4, 5].map((n) => {
+          const path = manifest.audio[`poke-0${n}`];
+          return path ? base + path : null;
+        }),
       });
     });
     return () => {
@@ -434,19 +460,38 @@ export default function StorytellerHomeHost({
   // ---- Entering ----------------------------------------------------------
   useEffect(() => {
     if (!started || phase !== "entering") return;
-    if (mode === "tour-return") {
-      const t1 = window.setTimeout(() => {
-        setPhase("greeting_text");
-        // Text-only, no mp3 — the locked return line (copy G2).
-        showBubble(TOUR_RETURN_LINE, TEXT_BUBBLE_MS);
-      }, ENTER_MS);
-      return () => window.clearTimeout(t1);
-    }
+    // A fresh entering beat (including tour-return re-entry) may settle again.
+    enteringSettledRef.current = false;
     const t = window.setTimeout(() => {
+      if (enteringSettledRef.current || phaseRef.current !== "entering") return;
+      enteringSettledRef.current = true;
       setPhase("greeting_text");
       // Text-first, always: audio waits for the first gesture below.
-      showBubble(greetingText, assetsRef.current.greetAudio ? null : TEXT_BUBBLE_MS);
+      // Tour-return is text-only (copy G2).
+      showBubble(
+        mode === "tour-return" ? TOUR_RETURN_LINE : greetingText,
+        mode === "tour-return" || !assetsRef.current.greetAudio
+          ? TEXT_BUBBLE_MS
+          : null,
+      );
     }, ENTER_MS);
+    return () => window.clearTimeout(t);
+  }, [started, phase, mode, greetingText, showBubble]);
+
+  // Hang watchdog: the 150ms beat must not be the only way out of `entering`.
+  useEffect(() => {
+    if (!started || phase !== "entering") return;
+    const t = window.setTimeout(() => {
+      if (enteringSettledRef.current || phaseRef.current !== "entering") return;
+      enteringSettledRef.current = true;
+      setPhase("greeting_text");
+      showBubble(
+        mode === "tour-return" ? TOUR_RETURN_LINE : greetingText,
+        mode === "tour-return" || !assetsRef.current.greetAudio
+          ? TEXT_BUBBLE_MS
+          : null,
+      );
+    }, ENTER_HANG_MS);
     return () => window.clearTimeout(t);
   }, [started, phase, mode, greetingText, showBubble]);
 
@@ -504,12 +549,17 @@ export default function StorytellerHomeHost({
     greetAttemptedRef.current = true;
     greetingHeardRef.current = false;
     greetDismissedByUserRef.current = false;
+    setCanRehear(false);
     greetPlayRejectedRef.current = false;
     greetLoadErrorRef.current = false;
     const audio = new Audio(url);
     audioRef.current = audio;
     audioStartTimeRef.current = Date.now();
+    phaseRef.current = "greeting_audio";
     setPhase("greeting_audio");
+    // Dismiss hides the bubble. Replay has to put the line back; the
+    // first-gesture path already has it up, so this is a no-op there.
+    showBubble(greetingText, null);
     // The greeting bubble stays up while audio plays (no hold timer).
     window.clearTimeout(bubbleTimer.current);
 
@@ -589,6 +639,31 @@ export default function StorytellerHomeHost({
         onFail();
       });
   }, [greetingText, showBubble, stopAudio, failGreetingAudio]);
+
+  // Figure tap while `entering` (or before start — the tutorial invite holds
+  // `started` false, so the greeting listener never attaches and a poke
+  // bubble cannot render). The tap is the user gesture, so audio may play.
+  const greetFromFigureTap = useCallback(() => {
+    enteringSettledRef.current = true;
+    startedRef.current = true;
+    setStarted(true);
+    if (mode === "tour-return") {
+      setPhase("greeting_text");
+      showBubble(TOUR_RETURN_LINE, TEXT_BUBBLE_MS);
+      return;
+    }
+    if (isSoundEnabled() && assetsRef.current.greetAudio) {
+      gestureDoneRef.current = true;
+      showBubble(greetingText, null);
+      beginGreetingAudio();
+      return;
+    }
+    setPhase("greeting_text");
+    showBubble(
+      greetingText,
+      assetsRef.current.greetAudio ? null : TEXT_BUBBLE_MS,
+    );
+  }, [mode, greetingText, showBubble, beginGreetingAudio]);
 
   // ---- Tutorial invite: greeting waits for its dismissal ----------------
   // The dismiss tap counts as the first gesture (owner 2026-10-09) — begin
@@ -692,11 +767,25 @@ export default function StorytellerHomeHost({
   // ---- Dismiss -------------------------------------------------------------
   const dismissBubble = useCallback(
     (viaKeyboard: boolean) => {
+      // Snapshot before stopAudio nulls the element. The dismiss click's
+      // pointerdown already started the clip, while `phase` can still be
+      // greeting_text until the next render.
+      const audioLive = audioRef.current !== null;
+      const phaseNow = phaseRef.current;
       stopAudio();
       hideBubble();
       // Fix D: a greeting the kid explicitly dismissed stays dismissed — a
       // later figure tap pokes, it must not resurrect killed audio.
-      if (phase === "greeting_audio") greetDismissedByUserRef.current = true;
+      if (
+        shouldMarkGreetingDismissed({
+          mode,
+          phase: phaseNow,
+          audioLive,
+        })
+      ) {
+        greetDismissedByUserRef.current = true;
+        setCanRehear(true);
+      }
       // Panel 2026-10-09 (BLOCK 3): dismissing the text-only return line is
       // not a dead end (owner ruling #1, 2026-10-09) — flag it so the
       // tour-return follow-up effect still runs the greeting afterward.
@@ -751,6 +840,27 @@ export default function StorytellerHomeHost({
       pokeVisual();
       return;
     }
+    // Stuck in `entering`, or the invite has not released `started`: this
+    // tap starts the greeting. While the invite is up, dismiss it first
+    // (same as "Not now") so the bubble does not stack on that card.
+    // startedRef flips true here, so the invite-cleared effect does not
+    // start a second clip. A second tap before React leaves `entering`
+    // would otherwise build another clip — same 600ms window as a poke.
+    if (
+      decideEnteringFigureTap({
+        phase,
+        started: startedRef.current,
+      }) === "greet"
+    ) {
+      const now = Date.now();
+      if (isRapidFigureTap(now, lastPokeRef.current, POKE_DEBOUNCE_MS)) return;
+      lastPokeRef.current = now;
+      if (tutorialInviteVisible) {
+        window.dispatchEvent(new Event(TUTORIAL_INVITE_DISMISS_EVENT));
+      }
+      greetFromFigureTap();
+      return;
+    }
     // The window one-shot may have started the greeting on this tap's way
     // down (pointerdown precedes click, and phase hasn't re-rendered yet) —
     // don't poke over it, and don't double-start it.
@@ -786,11 +896,22 @@ export default function StorytellerHomeHost({
     // Poke lines rotate (5 max, then repeat); taps <600ms apart are ignored.
     if (now - lastPokeRef.current < POKE_DEBOUNCE_MS) return;
     lastPokeRef.current = now;
-    const line = POKE_LINES[pokeIndexRef.current % POKE_LINES.length]!;
+    const index = pokeIndexRef.current % POKE_LINES.length;
+    const line = POKE_LINES[index]!;
     pokeIndexRef.current += 1;
     showBubble(line, POKE_BUBBLE_MS);
+    const pokeUrl = assetsRef.current.pokeAudio[index];
+    pokeAudioRef.current?.pause();
+    pokeAudioRef.current = null;
+    if (pokeUrl && isSoundEnabled()) {
+      const pokeAudio = new Audio(pokeUrl);
+      pokeAudioRef.current = pokeAudio;
+      void pokeAudio.play().catch(() => {
+        if (pokeAudioRef.current === pokeAudio) pokeAudioRef.current = null;
+      });
+    }
     pokeVisual();
-  }, [mode, phase, showBubble, pokeVisual, beginGreetingAudio, failGreetingAudio]);
+  }, [mode, phase, showBubble, pokeVisual, beginGreetingAudio, failGreetingAudio, greetFromFigureTap, tutorialInviteVisible]);
 
   // ---- Loop send-off (copy G3) ----------------------------------------------
   useEffect(() => {
@@ -818,6 +939,8 @@ export default function StorytellerHomeHost({
       clearTimers();
       audioRef.current?.pause();
       audioRef.current = null;
+      pokeAudioRef.current?.pause();
+      pokeAudioRef.current = null;
     };
   }, [clearTimers]);
 
@@ -902,6 +1025,17 @@ export default function StorytellerHomeHost({
             <span aria-hidden="true">×</span>
           </button>
         </div>
+      ) : null}
+      {canRehear && bubble === null && !yielded && phase !== "exiting" ? (
+        <button
+          type="button"
+          className="storyteller-banner-replay"
+          data-testid="storyteller-home-replay"
+          aria-label="Replay the greeting"
+          onClick={() => beginGreetingAudio()}
+        >
+          Hear again
+        </button>
       ) : null}
     </div>
   );

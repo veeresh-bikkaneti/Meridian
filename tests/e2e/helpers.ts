@@ -164,9 +164,11 @@ export async function startGlobeRun(page: Page, idleMs: number = NO_IDLE): Promi
  * user on a flaky connection would do. No-op when the overlay is absent.
  */
 export async function dismissTileOverlayIfPresent(page: Page): Promise<void> {
-  const overlay = page.getByText("Couldn't load satellite imagery");
+  // WS-4 Phase 1 copy: the failure card offers one "Try again"; after that
+  // retry the map switches to Scout Map and the card is gone for good.
+  const overlay = page.getByText("The map pictures won't load right now");
   if (await overlay.isVisible()) {
-    await page.getByRole("button", { name: "Retry" }).click();
+    await page.getByRole("button", { name: "Try again" }).click();
     await expect(overlay).toBeHidden({ timeout: 10_000 });
   }
 }

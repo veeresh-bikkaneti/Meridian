@@ -87,10 +87,10 @@ async function readResultsLength(page: Page): Promise<number> {
  * change the overlay itself.
  */
 async function clearTileErrorOverlay(page: Page): Promise<void> {
-  const alert = page.getByRole("alert").filter({ hasText: "Couldn't load satellite imagery" });
+  const alert = page.getByRole("alert").filter({ hasText: "The map pictures won't load right now" });
   for (let i = 0; i < 3; i++) {
     if (!(await alert.isVisible())) return;
-    await page.getByRole("button", { name: "Retry" }).click();
+    await page.getByRole("button", { name: "Try again" }).click();
     await alert.waitFor({ state: "hidden", timeout: 15_000 });
   }
 }

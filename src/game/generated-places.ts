@@ -19,6 +19,15 @@
  * before region selection. Picker counts come from the small
  * statically-imported manifest — chunks are never loaded just to count.
  *
+ * Globe exception: the Globe chunk (59k places, ~13.7 MB bundled) is stored
+ * as five derived per-fame-tier files (`tiers/globe-t<N>.json`, see
+ * scripts/globe-tiers.mjs). With the `globeTierSplit` flag on, a learning
+ * path fetches only the tiers it deals from — Easy t1+t2, Medium t2–t4,
+ * Hard t4+t5. `placesFor` takes the run's learning path AND the flag value
+ * for that; without both (flag off, tests, tooling) all five tiers load and
+ * merge back into the canonical order. Every other region is still one
+ * chunk file.
+ *
  * Dealing contract (approach C, curated-first hybrid): the hand-curated
  * starters are the foundation of every pool — they are never displaced by
  * generated content. Generated places fill depth behind them. The F4 dealer
@@ -36,7 +45,7 @@
 import type { Edition } from "./run.ts";
 import { STARTERS, type Starter } from "./starters.ts";
 import { buildRegionPool } from "./pool.ts";
-import { asFameTier } from "./tier-filter.ts";
+import { asFameTier, tiersFor, type PickerDifficulty } from "./tier-filter.ts";
 import { ADMIN1_BY_COUNTRY } from "./regions.ts";
 import {
   mapStory,
@@ -510,6 +519,109 @@ export function aggregateChunkIds(edition: Edition, regionId: string): string[] 
   return [regionId, ...subdivisions.map((s) => s.id)];
 }
 
+/** The one region stored as per-tier files. */
+const GLOBE_REGION_ID = "globe";
+/** Fame tiers a Globe tier file exists for (scripts/globe-tiers.mjs GLOBE_TIERS). */
+export const GLOBE_TIERS: readonly number[] = [1, 2, 3, 4, 5];
+
+/** Per-tier cache: a tier is fetched and parsed at most once per session. */
+const globeTierCache = new Map<number, Promise<Starter[]>>();
+
+/** Numeric GeoNames id of `gn-<digits>`; throws otherwise (fail closed). */
+function geonameNumber(id: string): number {
+  const m = /^gn-(\d+)$/.exec(id);
+  if (!m) throw new Error(`globe place id ${JSON.stringify(id)} is not "gn-<digits>"`);
+  return Number(m[1]);
+}
+
+/**
+ * Merge starter lists that are each in strictly ascending numeric-id order
+ * into ONE list in that order. The canonical Globe chunk is ordered that way
+ * and each tier file keeps the relative order, so this reproduces the order
+ * `filterByTier(fullGlobe)` used to yield — the dealer shuffles the pool with
+ * a seed, so pool ORDER is part of the dealing contract. A list that is not
+ * strictly ascending throws (fail closed). Exported for unit tests.
+ */
+export function mergeByGeonameId(lists: Starter[][]): Starter[] {
+  const keys = lists.map((list) => {
+    let prev = -Infinity;
+    return list.map((s) => {
+      const n = geonameNumber(s.id);
+      if (!(n > prev)) throw new Error(`globe tier is not in ascending id order at ${s.id}`);
+      prev = n;
+      return n;
+    });
+  });
+  if (lists.length === 1) return lists[0].slice();
+  const out: Starter[] = [];
+  const at = lists.map(() => 0);
+  for (;;) {
+    let best = -1;
+    let bestKey = Infinity;
+    for (let i = 0; i < lists.length; i++) {
+      if (at[i] < lists[i].length && keys[i][at[i]] < bestKey) {
+        bestKey = keys[i][at[i]];
+        best = i;
+      }
+    }
+    if (best < 0) return out;
+    out.push(lists[best][at[best]++]);
+  }
+}
+
+function loadGlobeTier(tier: number): Promise<Starter[]> {
+  if (!GLOBE_TIERS.includes(tier)) {
+    return Promise.reject(new Error(`invalid globe tier ${JSON.stringify(tier)} — refusing to load`));
+  }
+  let pending = globeTierCache.get(tier);
+  if (!pending) {
+    pending = Promise.all([
+      import(`./data/geonames/tiers/globe-t${tier}.json`, { with: { type: "json" } }),
+      loadFactIndex(GLOBE_REGION_ID),
+    ])
+      .then(([tierMod, factIndex]) => {
+        const chunkJson = (tierMod as { default: unknown }).default as {
+          meta?: { tier?: unknown };
+          places: ChunkPlaceRecord[];
+        };
+        if (chunkJson?.meta?.tier !== tier) {
+          throw new Error(`globe tier ${tier}: meta.tier ${JSON.stringify(chunkJson?.meta?.tier)} mismatch`);
+        }
+        const starters = startersFromChunk(
+          GLOBE_REGION_ID,
+          applyFactIndex(chunkJson, factIndex, GLOBE_REGION_ID),
+        );
+        // A record filed under the wrong tier would silently join (or leave)
+        // a learning path's pool — reject the whole tier instead.
+        for (const s of starters) {
+          if (s.difficulty !== tier) {
+            throw new Error(`globe tier ${tier}: place ${s.id} has fame tier ${s.difficulty}`);
+          }
+        }
+        return starters;
+      })
+      .catch((err: unknown) => {
+        globeTierCache.delete(tier);
+        throw new Error(`failed to load GeoNames globe tier ${tier}: ${(err as Error).message}`, {
+          cause: err,
+        });
+      });
+    globeTierCache.set(tier, pending);
+  }
+  return pending;
+}
+
+/**
+ * Load the given Globe fame tiers (cached per tier) and merge them into the
+ * canonical order. Fail-closed like every chunk load: one bad tier rejects
+ * the whole call — never a partial pool.
+ */
+export async function loadGlobeTiers(tiers: readonly number[]): Promise<Starter[]> {
+  const wanted = [...new Set(tiers)].sort((a, b) => a - b);
+  const lists = await Promise.all(wanted.map(loadGlobeTier));
+  return mergeByGeonameId(lists);
+}
+
 /**
  * Per-region chunk cache: regionId → in-flight or resolved load.
  * A failed load is evicted so a later retry re-attempts the fetch instead
@@ -585,23 +697,25 @@ export async function loadRegionChunk(regionId: string): Promise<Starter[]> {
   manifestRegionFor(regionId);
   let pending = chunkCache.get(regionId);
   if (!pending) {
-    pending = Promise.all([
-      import(`./data/geonames/chunks/${regionId}.json`, { with: { type: "json" } }),
-      loadFactIndex(regionId),
-    ])
-      .then(([chunkMod, factIndex]) => {
-        const chunkJson = (chunkMod as { default: unknown }).default as {
-          meta?: unknown;
-          places: ChunkPlaceRecord[];
-        };
-        return startersFromChunk(regionId, applyFactIndex(chunkJson, factIndex, regionId));
-      })
-      .catch((err: unknown) => {
-        chunkCache.delete(regionId);
-        throw new Error(`failed to load GeoNames chunk "${regionId}": ${(err as Error).message}`, {
-          cause: err,
-        });
+    const load: Promise<Starter[]> =
+      regionId === GLOBE_REGION_ID
+        ? loadGlobeTiers(GLOBE_TIERS)
+        : Promise.all([
+            import(`./data/geonames/chunks/${regionId}.json`, { with: { type: "json" } }),
+            loadFactIndex(regionId),
+          ]).then(([chunkMod, factIndex]) => {
+            const chunkJson = (chunkMod as { default: unknown }).default as {
+              meta?: unknown;
+              places: ChunkPlaceRecord[];
+            };
+            return startersFromChunk(regionId, applyFactIndex(chunkJson, factIndex, regionId));
+          });
+    pending = load.catch((err: unknown) => {
+      chunkCache.delete(regionId);
+      throw new Error(`failed to load GeoNames chunk "${regionId}": ${(err as Error).message}`, {
+        cause: err,
       });
+    });
     chunkCache.set(regionId, pending);
   }
   return pending;
@@ -610,6 +724,12 @@ export async function loadRegionChunk(regionId: string): Promise<Starter[]> {
 /** Test hook: drop cached chunks so tests can observe fresh loads. */
 export function clearChunkCacheForTests(): void {
   chunkCache.clear();
+  globeTierCache.clear();
+}
+
+/** Test hook: the Globe fame tiers fetched so far this session, ascending. */
+export function loadedGlobeTiersForTests(): number[] {
+  return [...globeTierCache.keys()].sort((a, b) => a - b);
 }
 
 /**
@@ -641,11 +761,37 @@ export async function generatedStartersFor(edition: Edition, regionId: string): 
  * question. The Hyderabad rule holds: coordinates still match the claimed
  * location because re-tagging only widens the region to the true parent.
  */
-export async function placesFor(edition: Edition, regionId: string): Promise<Starter[]> {
+export async function placesFor(
+  edition: Edition,
+  regionId: string,
+  /**
+   * The run's learning path. Only the Globe uses it, and only when
+   * `tierSplit` is true: it then loads just the fame tiers that path deals
+   * from (the caller still applies filterByTier, so the dealt set is
+   * unchanged — this only skips downloading and parsing the rest). Ignored
+   * for every other region, including whole-country runs that aggregate
+   * subdivision chunks.
+   */
+  choice?: PickerDifficulty,
+  /**
+   * globeTierSplit flag value, resolved by the caller. true = the Globe loads
+   * only `tiersFor(choice)`; false (default, today's production behavior) =
+   * the Globe loads all five tiers merged into canonical order. Ignored for
+   * every non-Globe region. Passed in (not read here) so this module stays
+   * flag-free and unit-testable under node.
+   */
+  tierSplit: boolean = false,
+): Promise<Starter[]> {
   const chunkIds = aggregateChunkIds(edition, regionId);
   // All chunks load in parallel; one missing/malformed chunk rejects the
   // whole pool — never a partial country.
-  const chunks = await Promise.all(chunkIds.map((id) => loadRegionChunk(id)));
+  const chunks = await Promise.all(
+    chunkIds.map((id) =>
+      id === GLOBE_REGION_ID && choice !== undefined && tierSplit
+        ? loadGlobeTiers(tiersFor(choice))
+        : loadRegionChunk(id),
+    ),
+  );
   const generated: Starter[] = [];
   for (let i = 0; i < chunkIds.length; i++) {
     const chunkId = chunkIds[i];

@@ -13,6 +13,13 @@
 export const TUTORIAL_SEEN_KEY = "meridian.tutorialSeen";
 
 /**
+ * The banner host dispatches this when the kid taps the mascot while the
+ * invite is up. GameApp handles it with the same path as "Not now"
+ * (mark seen, hide the card) so the greeting never stacks on the invite.
+ */
+export const TUTORIAL_INVITE_DISMISS_EVENT = "meridian:tutorial-invite-dismiss";
+
+/**
  * The tutorial's single practice place: the curated Eiffel Tower starter
  * (tier 1, famous, authored hook — "meant to be temporary and stayed").
  * Starter ids are `${regionId}-${slug}` (see src/game/starters.ts
