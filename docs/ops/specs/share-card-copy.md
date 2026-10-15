@@ -29,3 +29,16 @@ Written by a read-only Sonnet subagent on 2026-10-15. Lengths below were recount
 
 ## Subagent pick
 B: answers cost, signup and ads, and says a child can stop any time. (Review and final choice recorded below.)
+
+## Review (Opus, read-only): APPROVE-WITH-NITS
+Edited option C. Reasons: A puts "free" in the title and "free" is inferred from code only. B says "no ads", checked in the repo only (live site not fetched). C's "Play on any browser" overreaches (MapLibre needs WebGL), so it became "Plays in a browser".
+
+## Final copy (used by the share card)
+- Title (46): Meridian: guess the place, then read its story
+- Description (150): Free geography game for kids, no account needed. Pin a named place on an unlabeled satellite map. Every answer shows a story card. Plays in a browser.
+
+Claims verified by the reviewer: free (repo-only, no price/paywall code; Ko-fi tip jar is optional), no account (README.md:17,36), plays in a browser (README.md:17,148), kids (README.md:10), story card on every reveal (README.md:15,34,117), unlabeled satellite map (`src/map/imagery.ts:2`, no label layer), End game exists. Not used: no ads, no tracking, private, safe, ages, outcomes.
+
+Nits: the word "satellite" contains the letters "lite" (a whole-word check passes; a substring lint would flag it, and "satellite" is used throughout the app already). GeoDetective uses typed guesses, not pins; the copy describes the main endless game.
+
+Known issue found while building: `public/og.jpg` still reads "MERIDIAN / FIVE PLACES". The game is now endless, so the image tagline is out of date. Replacing the image is outside this change.
