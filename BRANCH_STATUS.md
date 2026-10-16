@@ -1,76 +1,39 @@
-# BRANCH_STATUS — fix/geodetective-unlabeled-tap-guess (2026-10-12)
+# BRANCH_STATUS — fix/home-walk-audio (PR #165)
 
-**PUSH OK, DO NOT MERGE** — owner merges.
+**In review — fixed after a BLOCK verdict; awaiting fresh panel + owner merge word.**
+Owner merges. Never merge without Veeresh's explicit per-PR word.
 
-**2026-10-16 (post-merge re-gate):** merged `origin/main` (WS-4 phase 1 #148, #155, #158, #163, #164 and others) with one conflict, in this file; kept this branch's version. `LoopMap.tsx` and `LoopScreen.tsx` auto-merged with main's map-hidden changes. Re-gated on the merged head: `npm ci` OK; tsc clean; `npm test` scripts 778 (769 pass, 9 skipped, 0 fail) and src 1,319 pass; lint-cards GATE PASSED; `build:pages`, `build`, `test:worker` 18/18 and `typecheck:worker` clean; E2E `--workers=1` on a fresh Pages build: `geodetective` 18/18, `geodetective-unlabeled-tap` 2/2, `ws4-geodetective-map-hidden` 3/3. Still pending (unchanged): owner's video green-light, independent panel review, owner's merge decision. The full Playwright suite was not run.
+## What this branch delivers
 
-## What this fixes (plain language)
+- Grandpa walks the home strip once, stops mid-walk for the kettle pour, then settles on the bench; the pour lands and the mug stays filled into the finale.
+- Bento cards restored/evened: hero and expeditions cards share a bottom edge; cards sit in the new rail layout (editions card now lives in the rail block, above GeoDetective on mobile).
+- Home journal: 106 curated notes, rotating every 2 hours, https sources.
+- Storyteller and grandpa audio on the home page; globe draggable in its rail.
 
-The owner tapped map locations in a GeoDetective challenge and nothing
-happened — no guess registered. His directive: "User selection can be wrong
-but it doesn't mean that you restrict from them selecting a location."
+## Review history
 
-Root cause: `LoopMap.tsx` resolved every tap through the labeled-place
-index. A tap landing on no labeled place (ocean, remote wilderness) was
-REJECTED with "That spot isn't a labeled place" — the guess was never
-registered. The gate was original Detective's Atlas design (2026-10-06),
-not a Place Accessibility overhaul regression.
+- 2026-10-16: full Scrum-team review **BLOCKED** this PR (4 of 5 squads). Fix list posted on the PR (issuecomment-6220695977): storyteller clips silently re-rendered against the pinned #137 voice ruling; coffee stop not delivered; mobile-overlap broadly red; figure-tap pause removed while its accessible label still promised it; focusable globe canvas inside `aria-hidden`; documented globe settle replaced with perpetual rotation.
+- Veeresh's direction (2026-10-16): the Scrum team fixes the branch rather than waiting on the builder. Branch rebased onto main `6cd3bc3` (post-#162) as a single commit, then fixed by squad:
 
-## The fix
+## Fixes landed (by squad, one commit each)
 
-Every map tap now selects — a tap on no labeled place opens the SAME confirm
-bottom sheet with a region-named synthetic guess ("Open Water", "Canada",
-"Yukon, Canada" — the same language the reveal pins already use). Confirming
-burns the guess with distance+direction from the tap coordinates. The
-confirm step is kept, so a mis-tap still never costs one of the five.
+- **Squad A (voice + contract):** all 11 storyteller clips restored byte-for-byte from main (pinned am_fenrir @ 1.05 render per #137); provenance comment restored in `storyteller-lines.ts`; figure-tap pause/resume restored in `storyteller-home.tsx` so handler and accessible label agree; `grandpa-ask.ts` gains an honest provenance header and a shared lazy AudioContext.
+- **Squad B (globe + a11y):** `aria-hidden` removed from the interactive globe mount; WCAG 2.2.2 settle restored (~6s, drag never restarts auto-rotation); `touch-action: pan-y` replaces the scroll trap.
+- **Squad C (coffee + tour):** kettle hold lengthened and the pour made persistent (`data-filled`); quip updater purity and hover-audio throttle fixes; offline band collapses (168px → 0). **Tour repair:** #165's card move broke the tasting tour — the tour contract now follows page order (difficulty → editions → GeoDetective), `measureTour` emits stops in document order, and where the weave cannot cross (real editions→GeoDetective gap is 22px, below the 32px weave minimum — guard working as designed) the straight-trail fallback carries sip stops, so grandpa sips at every card on any layout.
 
-- `src/game/loop/evaluate.ts`: new `unlabeledSpotEntry(lon, lat)`.
-- `src/game/loop/LoopMap.tsx`: no-hit branch → `onSelectPlace(synthetic)`.
-- `src/game/loop/LoopScreen.tsx`: dead rejection hint removed.
-- `tests/e2e/geodetective-unlabeled-tap.spec.ts` + project entry (new).
-- `src/game/loop/evaluate.test.ts`: 4 new unit tests.
+## Design consequence the owner should see
 
-## Done
+The tasting tour's visit order now follows the page. Sides are positional, so the weave runs difficulty-right, editions-left, GeoDetective-right. If the old card order is ever restored, the tour order arrays flip back symmetrically.
 
-- [x] Implement
-- [x] Unit tests: 1223/1223 green (incl. 4 new)
-- [x] tsc clean, lint-cards GATE PASSED
-- [x] New E2E: 2/2 green (+ reduced-motion pass 1/1)
-- [x] Existing geodetective E2E: 18/18 green (1 stale test updated to the
-      new directive behavior)
-- [x] Scrum panel review: APPROVE-WITH-NITS, 0 BLOCKs (6 nits; 1-3 fixed,
-      4 out of scope, 5 noted, 6 covered by reduced-motion recording)
-- [x] Screen recordings (3)
-- [x] Rebase: 0 commits behind main, full suite re-run green post-commit
-- [ ] PR opened (never merged)
+## Verification (orchestrator-run, on the fixed tree)
 
-## Plain-language spec checklist
+- `npx tsc --noEmit` clean; unit suite 2095 tests, 0 failures; `build:pages` green; card lint gate passed.
+- Tasting tour E2E: **25/25 passed**. Grandpa mobile: 3/3. Storyteller tapstart J1 (the tap-pause contract): passed.
+- Coffee-stop behavior verified by direct DOM probes: walking → kettle at ~4.3s with travel paused → pour (kettle opacity 1, mug fill rises and persists) → seated. The desktop coffee spec still times out on this VM because its own pacing outruns the kettle window on a slow boot; the same spec fails on unmodified main at a different assertion. A faster runner is expected to pass it — flagged honestly rather than hidden.
+- Pre-existing red on unmodified main (baselined 2026-10-16, NOT this branch's regressions): `mobile-home-overlap` (a)/(b)/(b2)/(d), `grandpa-coffee-run.reduced` (boundingBox stall). They fail identically on main and belong on their own fix branch.
 
-1. Tap unlabeled ocean → confirm sheet opens ("Guess Open Water?"). ✓ E2E
-2. Confirm → guess burns: "Guess 2 of 5", guess list +1, direction arrow
-   drawn, next clue unlocks. ✓ E2E
-3. Same unlabeled spot twice → "You already guessed…" warning, no second
-   guess burned. ✓ E2E
-4. Labeled-place taps behave exactly as before. ⏳ existing suite running
-5. "That spot isn't a labeled place" rejection is gone. ✓ E2E (asserted absent)
-6. An unlabeled tap can never accidentally win (synthetic id ≠ GeoNames id). ✓ unit
-7. Map aria-label describes the any-tap model. ✓ code
+## Merge notes
 
-## Non-blocking observation
-
-For extreme misses (~15,000 km) the gold ring polygon wraps the globe and
-renders degenerate — pre-existing for ANY far guess, not introduced here.
-Direction arrow draws correctly. Follow-up candidate, not this PR.
-
-## Review nits (2026-10-16 independent review: APPROVE-WITH-NITS, no blockers)
-- Nit 2 (name varies with admin-1 preload) — FIXED: new unit test; the name gets finer after `preloadAdmin1Boundaries()`, the id never changes.
-- Nit 4 (far-guess distance ring renders degenerate) — FILED as issue #166, not part of this PR.
-- Nit 3 (a tap on the target where no label shows burns a guess it can never win) — accepted: it follows the owner directive of 2026-10-12, and the confirm sheet shows the region name first.
-- Nit 1 (dedupe only catches taps within ~11 m, so two nearby taps with the same region name cost two guesses) — OPEN, owner decision: warning or blocking nearby same-name taps changes gameplay and needs copy.
-
-## Ready to merge? NO
-
-## What is pending?
-
-Scrum review → screen recording → owner's video green-light →
-Chitti/panel independent review → owner's merge decision.
+- History was rewritten (rebase + fix commits): push is `--force-with-lease`.
+- Branch protection and the "protect main" ruleset must not be lifted or altered without Veeresh's explicit approval for this merge.
+- Donation copy untouched (locked strings verified present).
