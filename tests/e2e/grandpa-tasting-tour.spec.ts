@@ -238,7 +238,6 @@ test("walker stops at each option, looks, sips, walks on", async ({
   page,
 }) => {
   const errors = await loadHome(page);
-  const tour = page.getByTestId("grandpa-tour");
   await waitForWalkStage(page);
   const stopIds = [
     "tour-stop-difficulty",
@@ -246,84 +245,145 @@ test("walker stops at each option, looks, sips, walks on", async ({
     "tour-stop-editions",
   ];
 
-  for (let i = 0; i < stopIds.length; i++) {
-    // The walker dwells at stop i (sip phase, 0.8s). Sample the bounding box
-    // twice inside the sip window — the walk bob (±3px) is the only expected
-    // motion — and confirm the phase is still "sip" so a late poll can't
-    // mistake the next leg's first steps for the dwell. The 250ms gap keeps
-    // both samples inside the 800ms sip window even under load.
-    //
-    // Measurement note (fix phase, 2026-10-16): the sampling itself now runs
-    // IN-PAGE in one evaluate. The previous version sampled across three CDP
-    // round-trips (boundingBox, 250ms wait, boundingBox, attribute poll);
-    // on a loaded runner those round-trips can consume the whole 800ms
-    // window, so the second sample lands after the walker resumes (x-drift
-    // 23–44px at the v5 path's ~815px/s) or the phase check lands in the
-    // next beat ("pour" — seen on pristine main too, 2026-10-16 paired
-    // runs). An in-page probe of the same build measured the product
-    // directly: dwells of 780–810ms, 0px in-page drift, sip-drink active
-    // at every stop. Every assertion below is unchanged — same 12px
-    // tolerances, same sip-drink expectation, same phase confirmation —
-    // only the sampling moved to where 800ms is observable.
-    await expect(tour).toHaveAttribute("data-stop-index", String(i), {
-      timeout: 60_000,
-    });
-    const dwell = await page.evaluate(async ({ stopIdx, stopId }) => {
-      // Re-query per tick: a node reference captured once can go stale
-      // when React re-renders the tour layer (see the Fix 3 note below).
-      const tourEl = () => document.querySelector('[data-testid="grandpa-tour"]');
-      const walkerEl = () =>
-        document.querySelector('[data-testid="grandpa-tour-walker"]');
-      if (!tourEl() || !walkerEl()) return { found: false } as const;
-      const t0 = performance.now();
-      while (performance.now() - t0 < 20_000) {
-        if (
-          tourEl()?.getAttribute("data-stop-index") === String(stopIdx) &&
-          tourEl()?.getAttribute("data-tour-phase") === "sip"
-        )
-          break;
-        await new Promise((r) => setTimeout(r, 10));
-      }
-      const tourNow = tourEl();
-      const walkerNow = walkerEl();
-      if (!tourNow || !walkerNow || tourNow.getAttribute("data-tour-phase") !== "sip")
-        return { found: false } as const;
-      const first = walkerNow.getBoundingClientRect();
-      const arm = tourNow.querySelector(".mug-arm");
-      const armName = arm ? getComputedStyle(arm).animationName : null;
-      await new Promise((r) => setTimeout(r, 250));
-      const walkerLater = walkerEl();
-      if (!walkerLater) return { found: false } as const;
-      const second = walkerLater.getBoundingClientRect();
-      // Same task, same scroll frame: the stop card's rect too. Reading it
-      // afterwards over CDP raced the tour's auto-scroll to the next stop
-      // (fix-run 1: card read ~600px out of frame, proximity assert failed
-      // on scroll geometry, not walker position).
-      const cardEl = document.querySelector(`[data-testid="${stopId}"]`);
-      const cardRect = cardEl?.getBoundingClientRect();
-      return {
-        found: true,
-        x1: first.x,
-        y1: first.y,
-        x2: second.x,
-        y2: second.y,
-        w: second.width,
-        h: second.height,
-        armName,
-        phaseAfter: tourEl()?.getAttribute("data-tour-phase") ?? null,
-        stopAfter: tourEl()?.getAttribute("data-stop-index") ?? null,
-        card: cardRect
-          ? {
-              x: cardRect.x,
-              y: cardRect.y,
-              width: cardRect.width,
-              height: cardRect.height,
+  // Measurement note (fix phase, 2026-10-16): the dwell samples are
+  // captured by an in-page recorder armed before the stops, at the
+  // moment each sip segment starts. Chasing the segment from the test
+  // process cannot work on a loaded runner — earlier shapes of this test
+  // sampled across CDP round-trips (the 800ms window closes mid-chase:
+  // x-drift 23–44px at the v5 path's ~815px/s, phase reads landing in
+  // the next beat, a card rect read after the tour auto-scrolled on).
+  // Pristine main fails the same test the same way (2026-10-16 paired
+  // runs). The recorder shares the page's own clock — the one the tour
+  // runs on — so both samples sit inside the segment with the full
+  // window as slack; an in-page probe of this build measured the
+  // product directly: dwells of 780–810ms, 0px in-page drift,
+  // sip-drink at every stop. Every assertion below is unchanged — same
+  // 12px tolerances, same sip-drink expectation, same phase
+  // confirmation, same proximity bounds.
+  await page.evaluate((ids) => {
+    type Rec = {
+      x1?: number;
+      y1?: number;
+      x2?: number;
+      y2?: number;
+      w?: number;
+      h?: number;
+      armName?: string | null;
+      phaseAfter?: string | null;
+      stopAfter?: string | null;
+      card?: { x: number; y: number; width: number; height: number } | null;
+      done?: boolean;
+    };
+    const recs: Record<string, Rec> = {};
+    (window as unknown as { __dwellRec: typeof recs }).__dwellRec = recs;
+    let capturing: string | null = null;
+    const tick = () => {
+      const tourEl = document.querySelector('[data-testid="grandpa-tour"]');
+      const walkerEl = document.querySelector(
+        '[data-testid="grandpa-tour-walker"]',
+      );
+      if (
+        tourEl &&
+        walkerEl &&
+        tourEl.getAttribute("data-tour-phase") === "sip"
+      ) {
+        const stop = tourEl.getAttribute("data-stop-index");
+        if (stop !== null && capturing !== stop && !recs[stop]) {
+          capturing = stop;
+          const first = walkerEl.getBoundingClientRect();
+          const arm = tourEl.querySelector(".mug-arm");
+          const rec: Rec = {
+            x1: first.x,
+            y1: first.y,
+            armName: arm ? getComputedStyle(arm).animationName : null,
+          };
+          recs[stop] = rec;
+          const segStart = performance.now();
+          const iv = setInterval(() => {
+            if (performance.now() - segStart < 250) return;
+            clearInterval(iv);
+            const w2 = document.querySelector(
+              '[data-testid="grandpa-tour-walker"]',
+            );
+            const t2 = document.querySelector('[data-testid="grandpa-tour"]');
+            if (w2) {
+              const r = w2.getBoundingClientRect();
+              rec.x2 = r.x;
+              rec.y2 = r.y;
+              rec.w = r.width;
+              rec.h = r.height;
             }
-          : null,
-      } as const;
-    }, { stopIdx: i, stopId: stopIds[i] });
-    expect(dwell.found, "walker has a bounding box while sipping").toBeTruthy();
-    if (!dwell.found) throw new Error("unreachable");
+            rec.phaseAfter = t2?.getAttribute("data-tour-phase") ?? null;
+            rec.stopAfter = t2?.getAttribute("data-stop-index") ?? null;
+            // Same task, same scroll frame as sample 2: the stop card.
+            const cardEl = document.querySelector(
+              `[data-testid="${ids[Number(stop)] ?? ""}"]`,
+            );
+            const cr = cardEl?.getBoundingClientRect();
+            rec.card = cr
+              ? { x: cr.x, y: cr.y, width: cr.width, height: cr.height }
+              : null;
+            rec.done = true;
+            capturing = null;
+          }, 10);
+        }
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, stopIds);
+
+  for (let i = 0; i < stopIds.length; i++) {
+    // The walker dwells at stop i (sip phase, 0.8s). The recorder samples
+    // the bounding box twice inside the sip window — the walk bob (±3px)
+    // is the only expected motion — and confirms the phase is still
+    // "sip", so a late sample can't mistake the next leg's first steps
+    // for the dwell. The 250ms gap keeps both samples inside the 800ms
+    // sip window even under load.
+    await expect
+      .poll(
+        async () =>
+          page.evaluate(
+            (idx) =>
+              (
+                window as unknown as {
+                  __dwellRec?: Record<string, { done?: boolean }>;
+                }
+              ).__dwellRec?.[String(idx)]?.done === true,
+            i,
+          ),
+        { timeout: 60_000 },
+      )
+      .toBe(true);
+    const dwell = (await page.evaluate(
+      (idx) =>
+        (
+          window as unknown as {
+            __dwellRec?: Record<
+              string,
+              {
+                x1: number;
+                y1: number;
+                x2: number;
+                y2: number;
+                w: number;
+                h: number;
+                armName: string | null;
+                phaseAfter: string | null;
+                stopAfter: string | null;
+                card: {
+                  x: number;
+                  y: number;
+                  width: number;
+                  height: number;
+                } | null;
+              }
+            >;
+          }
+        ).__dwellRec?.[String(idx)],
+      i,
+    ))!;
+    expect(dwell, "walker has a bounding box while sipping").toBeTruthy();
     expect(dwell.phaseAfter, `phase still "sip" at stop ${i}`).toBe("sip");
     expect(dwell.stopAfter, `still at stop ${i} after the dwell sample`).toBe(
       String(i),
