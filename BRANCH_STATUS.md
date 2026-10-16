@@ -2,7 +2,7 @@
 
 **PUSH OK, DO NOT MERGE** — owner merges.
 
-**2026-10-16:** merged `origin/main` (WS-4 phase 1, #148; #155; #158; #163; #164 and others). Kept this branch's BRANCH_STATUS. `LoopMap.tsx` and `LoopScreen.tsx` auto-merged with main's map-hidden and tile-failure changes; re-gated after the merge (see the commit log).
+**2026-10-16 (post-merge re-gate):** merged `origin/main` (WS-4 phase 1 #148, #155, #158, #163, #164 and others) with one conflict, in this file; kept this branch's version. `LoopMap.tsx` and `LoopScreen.tsx` auto-merged with main's map-hidden changes. Re-gated on the merged head: `npm ci` OK; tsc clean; `npm test` scripts 778 (769 pass, 9 skipped, 0 fail) and src 1,319 pass; lint-cards GATE PASSED; `build:pages`, `build`, `test:worker` 18/18 and `typecheck:worker` clean; E2E `--workers=1` on a fresh Pages build: `geodetective` 18/18, `geodetective-unlabeled-tap` 2/2, `ws4-geodetective-map-hidden` 3/3. Still pending (unchanged): owner's video green-light, independent panel review, owner's merge decision. The full Playwright suite was not run.
 
 ## What this fixes (plain language)
 
