@@ -70,7 +70,7 @@ export function JournalView({ entry, onClose }: JournalViewProps) {
           onClick={onClose}
           data-testid="journal-close"
         >
-          ✕ Close
+          <span aria-hidden="true">✕</span> Close
         </button>
         <p className="journal-eyebrow">Journal</p>
         <h2 id="journal-title" className="journal-title">

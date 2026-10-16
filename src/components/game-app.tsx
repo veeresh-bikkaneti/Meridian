@@ -1060,9 +1060,11 @@ export function GameApp() {
     const onFocusIn = () => {
       // A deferred set lands once focus has left the card (and the view
       // is closed) — never while the reader is still in either place.
-      if (journalOpenRef.current || focusInsideJournalCard()) return;
-      const pending = pendingJournalIndexRef.current;
-      if (pending !== null) applyJournalIndex(pending);
+      // Recompute from the clock rather than applying a stored pending
+      // index, so there is no stale-pending path: the pure deferral
+      // check inside recomputeJournal decides whether the current
+      // window's set may land for this focus position.
+      recomputeJournal();
     };
     document.addEventListener("focusin", onFocusIn);
     return () => {
@@ -1071,7 +1073,7 @@ export function GameApp() {
       document.removeEventListener("visibilitychange", onVisibility);
       document.removeEventListener("focusin", onFocusIn);
     };
-  }, [applyJournalIndex, focusInsideJournalCard, recomputeJournal]);
+  }, [recomputeJournal]);
   const openJournal = useCallback(
     (e?: ReactMouseEvent<HTMLElement>) => {
       if (e) journalTriggerRef.current = e.currentTarget;
@@ -2107,9 +2109,10 @@ export function GameApp() {
   const showTutorialInvite = !inviteDismissed && !hasSeenTutorial();
   return (
     <>
-    {/* While the grown-up gate/picker is open it is a full-viewport overlay:
-        the home page underneath (incl. Comet's banner and the footer link)
-        is inert — non-interactive and removed from the tab order. */}
+    {/* While the grown-up gate/picker or the journal view is open it is a
+        full-viewport overlay: the home page underneath (incl. Comet's
+        banner and the footer link) is inert — non-interactive and removed
+        from the tab order. */}
     <div inert={ageSettingsOpen || journalOpen || undefined}>
     <Choose
       onState={withCardTap("State", () => setMenu({ kind: "states" }))}
@@ -2647,7 +2650,9 @@ function Choose({
             {journalEntry ? (
               <>
                 <p className="hv5-journal-now" data-testid="journal-now-showing">
-                  Now showing: {journalEntry.geography} · {journalEntry.notes.length} field notes
+                  {journalEntry.mixed
+                    ? "Now showing: Field Notes"
+                    : `Now showing: ${journalEntry.geography} · ${journalEntry.notes.length} field notes`}
                 </p>
                 <button type="button" className="hv5-go" data-testid="journal-open" onClick={onJournalOpen}>
                   READ THE ENTRY

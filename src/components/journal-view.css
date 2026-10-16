@@ -130,6 +130,10 @@
 .journal-note-source a {
   color: #77591f;
   font-weight: 700;
+  /* The link must be identifiable by more than color alone (its brown is
+     only 1.12:1 against the surrounding source-line text, and Tailwind
+     preflight strips the default underline) — underline it explicitly. */
+  text-decoration: underline;
   text-underline-offset: 3px;
 }
 .journal-confidence {
