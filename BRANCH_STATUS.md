@@ -64,6 +64,45 @@ provide citation and confidence vote on facts describing." Spec:
   scripts 769 pass / 9 skipped / 0 fail, src 1335/1335 pass;
   `node scripts/lint-cards.mjs` — GATE PASSED;
   `npm run build:pages` — green.
+- Scrum-review fix loop (2026-10-16, all 7 specialists; logs prefixed
+  `fix-` in the same journal-logs folder):
+  - Catalog source corrections (review URL sweep: 78 of 81 unique
+    citation hrefs live, 3 dead 404s — fixed at the source, the journal
+    inherits verbatim): `haymarket` → the Haymarket District Wikipedia
+    article (old Haymarket article URL 404s; curl 200); `hyde` → the
+    observatory's own site hydeobservatory.info (old Holmes Lake link
+    404s; curl 200). **`chimney-rock` NOT changed:** the proposed
+    history.nebraska.gov/chimney-rock target returns 200 only by
+    redirecting to the Chimney Rock *gift shop* page — not the landmark
+    page, and it does not support the story — so per the fix brief's
+    own stop rule nothing was substituted; the entry keeps its retired
+    NPS /chro/ source pending a replacement decision.
+  - Generator hardening (`scripts/build-journal-dataset.mjs`): the
+    parser now segments entries into blocks, so a genuinely MISSING
+    story/source field excludes the place and prints the reason in the
+    report (spec §1) instead of throwing — proven on a synthetic
+    catalog (missing story, missing source, and empty citation label
+    each excluded with reason, exit 0); structural mismatch still
+    throws; every included href must be http:/https: or generation
+    refuses (proven on a synthetic `javascript:` href). Regenerated
+    dataset diff vs the previous file is exactly the 2 applied href
+    fixes; tiers unchanged (49/57); byte-stable on re-run.
+  - UI fixes: mixed (Field Notes) sets now render exactly
+    `Now showing: Field Notes` on the home card (spec §5); the focusin
+    handler calls `recomputeJournal()` (no hand-rolled stale-pending
+    apply); the inert-wrapper comment names the journal view too;
+    journal citation links are underlined (identifiable by more than
+    color alone); the close button's ✕ glyph is aria-hidden.
+  - Tests: unit pins for negative-time index wrap, set-by-index wrap,
+    and both `confidenceText` lines verbatim; E2E gains the two
+    deferral NEGATIVE tests (window rolls while the view is open /
+    while focus is inside the card — content unchanged until close /
+    focus-leave) and stronger assertions (first-note citation href
+    equals the dataset's catalog href for the window, every note has a
+    non-empty story + link + full confidence line, eyebrow count ==
+    note count). Handbook §7's unmapped-surfaces line corrected
+    (JOURNAL + READ THE ENTRY are live; ABOUT + search remain
+    unmapped).
 
 ## Pending
 

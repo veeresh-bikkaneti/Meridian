@@ -110,7 +110,7 @@ There is a dedicated spec: `~/workspace/specs/meridian-place-accessibility-overh
 
 - **Focus-visible standard:** the blanket `:focus-visible` rule is 2px solid with 3px offset — and on every dark surface the ring must clear the **3:1 WCAG non-text contrast bar**. The v5 Expeditions card initially failed (1.37:1, #77591f on #33503f); the shipped cure is a scoped `#efe3bc` ring (**6.94:1** on the card's lightest gradient stop).
 - **Reduced motion** gets a static globe disc (zero canvases) — verified in E2E.
-- **Unmapped surfaces never fake affordance:** nav ABOUT / JOURNAL and the Journal card's READ THE ENTRY are `aria-disabled="true"` — focusable, inert, with an sr-only "Not yet available" description — never a fake `disabled` button that screen readers can't explain.
+- **Unmapped surfaces never fake affordance:** nav ABOUT and the search button are `aria-disabled="true"` — focusable, inert, with an sr-only "Not yet available" description — never a fake `disabled` button that screen readers can't explain. Nav JOURNAL and the Journal card's READ THE ENTRY were unmapped in this sense until the rotating journal shipped; they are live buttons as of the journal increment (see `docs/journal-spec.md`).
 - **Keyboard flow:** full tab order == the reading order (verified 29-stop traversal on the v5 home), nav jumps move real focus, the Grandpa tour exposes a skip control.
 - **The Orca session (2026-10-16)** is the strongest evidence: Scout dialog announced + focus-trapped with labeled buttons, toggles announced with pressed states, game question announced. **Still OPEN:** a literal NVDA/VoiceOver pass on a real device and a real-browser 400%-zoom pass.
 
