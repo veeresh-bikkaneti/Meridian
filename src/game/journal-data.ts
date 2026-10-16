@@ -75,7 +75,7 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "story": "West of downtown, the old warehouse district took its name from the public market that once filled these blocks. Brick buildings now hold shops, the Railyard, and the arena's front door.",
     "citation": {
       "label": "Lincoln Haymarket",
-      "href": "https://en.wikipedia.org/wiki/Haymarket_(Lincoln,_Nebraska)"
+      "href": "https://en.wikipedia.org/wiki/Haymarket_District_(Lincoln,_Nebraska)"
     },
     "confidence": {
       "tier": "cited",
@@ -390,7 +390,7 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "story": "A public observatory stands on the south shore of Holmes Lake. Local astronomers open the dome for night programs, a quiet landmark beside the water.",
     "citation": {
       "label": "Hyde Observatory",
-      "href": "https://en.wikipedia.org/wiki/Holmes_Lake_(Nebraska)"
+      "href": "https://www.hydeobservatory.info/"
     },
     "confidence": {
       "tier": "cited",

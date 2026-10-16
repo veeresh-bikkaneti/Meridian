@@ -61,35 +61,47 @@ function decodeString(raw) {
 /**
  * Parse PLACES out of catalog.ts. Every entry is a literal object with
  * `id` / `name` / `ring` string fields, a `story:` string, and
- * `source: src("label", "href")` — see the catalog header. The regex is
- * anchored per-entry (non-greedy up to that entry's own story/source), and
- * the counts are cross-checked against the raw field tallies so a catalog
- * shape change fails loudly here instead of silently dropping a place.
+ * `source: src("label", "href")` — see the catalog header.
+ *
+ * The text is segmented into one block per entry (an entry starts at its
+ * `id:` field). Structural integrity fails LOUD: the block count must
+ * equal the raw `id:` tally, and every block must carry id/name/ring.
+ * Content gaps are NOT structural (spec §1): a block whose `story:` or
+ * `source:` field is genuinely MISSING parses with that field null, and
+ * the caller excludes the place and prints it in the report — a missing
+ * field must never become a parse throw or a silent drop.
  */
 export function parseCatalog(sourceText) {
-  const entryRe =
-    /id:\s*"((?:[^"\\]|\\.)*)",\s*\n\s*name:\s*"((?:[^"\\]|\\.)*)",\s*\n\s*ring:\s*"((?:[^"\\]|\\.)*)",[\s\S]*?story:\s*\n?\s*"((?:[^"\\]|\\.)*)",\s*\n\s*source:\s*src\("((?:[^"\\]|\\.)*)",\s*"((?:[^"\\]|\\.)*)"\)/g;
-  const places = [];
-  for (const m of sourceText.matchAll(entryRe)) {
-    places.push({
-      id: decodeString(m[1]),
-      name: decodeString(m[2]),
-      ring: decodeString(m[3]),
-      story: decodeString(m[4]),
-      source: { label: decodeString(m[5]), href: decodeString(m[6]) },
-    });
-  }
-  const tallies = {
-    ids: (sourceText.match(/\n\s*id: "/g) ?? []).length,
-    stories: (sourceText.match(/\n\s*story:/g) ?? []).length,
-    sources: (sourceText.match(/\n\s*source: src\(/g) ?? []).length,
-  };
-  if (places.length !== tallies.ids || places.length !== tallies.stories || places.length !== tallies.sources) {
+  const idTally = (sourceText.match(/\n\s*id: "/g) ?? []).length;
+  const starts = [...sourceText.matchAll(/\n\s*\{\s*\n\s*id: "/g)].map((m) => m.index);
+  if (starts.length !== idTally) {
     throw new Error(
-      `catalog parse mismatch: parsed ${places.length} entries but tallies are ` +
-        `ids=${tallies.ids} stories=${tallies.stories} sources=${tallies.sources}. ` +
-        `The catalog shape changed — update the parser, do not ship a partial dataset.`,
+      `catalog parse mismatch: segmented ${starts.length} entry blocks but the ` +
+        `id tally is ${idTally}. The catalog shape changed — update the parser, ` +
+        `do not ship a partial dataset.`,
     );
+  }
+  const places = [];
+  for (let i = 0; i < starts.length; i++) {
+    const block = sourceText.slice(starts[i], i + 1 < starts.length ? starts[i + 1] : undefined);
+    const id = block.match(/id:\s*"((?:[^"\\]|\\.)*)"/);
+    const name = block.match(/name:\s*"((?:[^"\\]|\\.)*)"/);
+    const ring = block.match(/ring:\s*"((?:[^"\\]|\\.)*)"/);
+    if (!id || !name || !ring) {
+      throw new Error(
+        `catalog entry block #${i + 1} is missing id/name/ring — structural ` +
+          `damage, not a §1 exclusion. Fix the catalog or the parser.`,
+      );
+    }
+    const story = block.match(/story:\s*\n?\s*"((?:[^"\\]|\\.)*)"/);
+    const source = block.match(/source:\s*src\("((?:[^"\\]|\\.)*)",\s*"((?:[^"\\]|\\.)*)"\)/);
+    places.push({
+      id: decodeString(id[1]),
+      name: decodeString(name[1]),
+      ring: decodeString(ring[1]),
+      story: story ? decodeString(story[1]) : null,
+      source: source ? { label: decodeString(source[1]), href: decodeString(source[2]) } : null,
+    });
   }
   return places;
 }
@@ -121,9 +133,38 @@ function main() {
   const notes = [];
   const excluded = [];
   for (const place of places) {
-    if (!place.story || place.story.trim() === "" || !place.source || !place.source.href) {
-      excluded.push(place.id);
+    // §1 exclusion rule: no usable story or no recorded citation → the
+    // place is NOT published in the journal, and the report below names
+    // it with its reason. A genuinely missing field (null from the
+    // parser) lands here exactly like an empty one.
+    const reason =
+      place.story === null
+        ? "missing story field"
+        : place.story.trim() === ""
+          ? "empty story"
+          : place.source === null
+            ? "missing source field"
+            : place.source.label.trim() === ""
+              ? "empty citation label"
+              : place.source.href.trim() === ""
+                ? "empty citation href"
+                : null;
+    if (reason !== null) {
+      excluded.push(`${place.id} (${reason})`);
       continue;
+    }
+    // Security guard: a citation becomes a rendered link in the journal
+    // view — only web protocols may ever reach it.
+    let protocol = "";
+    try {
+      protocol = new URL(place.source.href).protocol;
+    } catch {
+      throw new Error(`place ${place.id} has an unparseable citation href: ${place.source.href}`);
+    }
+    if (protocol !== "http:" && protocol !== "https:") {
+      throw new Error(
+        `place ${place.id} citation href protocol "${protocol}" is not http:/https: — refusing to generate.`,
+      );
     }
     if (!RING_ORDER.includes(place.ring)) {
       throw new Error(`place ${place.id} has unknown ring "${place.ring}" — no geography label exists for it.`);
