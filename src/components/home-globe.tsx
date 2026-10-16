@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import globeTextureUrl from "@/assets/home-v5/globe-texture.webp";
+import globeFallbackUrl from "@/assets/home-v5/globe-fallback.webp";
 
 /**
  * Premium Three.js globe for the v5 home hero (design plan: the one bold
@@ -71,7 +72,7 @@ export function HomeGlobe() {
     return (
       <img
         className="hv5-globe-fallback"
-        src={globeTextureUrl}
+        src={globeFallbackUrl}
         alt=""
         aria-hidden="true"
         style={{ objectPosition: "72% 50%" }}
@@ -200,8 +201,13 @@ function initGlobe(THREE: ThreeModule, mount: HTMLDivElement, onFail: () => void
   let visible = true;
   const visIo = new IntersectionObserver((es) => {
     visible = es[0]?.isIntersecting ?? false;
+    if (visible) kick();
   });
   visIo.observe(mount);
+  const onVisibility = () => {
+    if (!document.hidden) kick();
+  };
+  document.addEventListener("visibilitychange", onVisibility);
 
   const onResize = () => {
     const w = mount.clientWidth;
@@ -215,9 +221,18 @@ function initGlobe(THREE: ThreeModule, mount: HTMLDivElement, onFail: () => void
 
   const clock = new THREE.Clock();
   let raf = 0;
+  // The loop fully stops off-screen / hidden (no idle rAF churn) and is
+  // re-kicked by the IntersectionObserver / visibilitychange handlers.
+  // Rotation is clock-derived, so a restart resumes at the current phase.
+  function kick() {
+    if (raf === 0) loop();
+  }
   const loop = () => {
+    if (!visible || document.hidden) {
+      raf = 0;
+      return;
+    }
     raf = requestAnimationFrame(loop);
-    if (!visible || document.hidden) return;
     const t = clock.getElapsedTime();
     cx += (tx - cx) * 0.045;
     cy += (ty - cy) * 0.045;
@@ -239,12 +254,23 @@ function initGlobe(THREE: ThreeModule, mount: HTMLDivElement, onFail: () => void
   return () => {
     cancelAnimationFrame(raf);
     visIo.disconnect();
+    document.removeEventListener("visibilitychange", onVisibility);
     window.removeEventListener("pointermove", onPointer);
     window.removeEventListener("scroll", onScroll);
     window.removeEventListener("resize", onResize);
-    renderer.dispose();
+    // Full GPU teardown: geometries + materials (textures included), then
+    // the renderer and its context — repeated home mounts must not leak.
+    scene.traverse((obj) => {
+      const mesh = obj as THREE.Mesh;
+      if (mesh.geometry) mesh.geometry.dispose();
+      const mat = mesh.material as THREE.Material | THREE.Material[] | undefined;
+      if (Array.isArray(mat)) mat.forEach((mm) => mm.dispose());
+      else if (mat) mat.dispose();
+    });
     tex.dispose();
     pinTex.dispose();
+    renderer.dispose();
+    renderer.forceContextLoss();
     if (renderer.domElement.parentElement === mount) mount.removeChild(renderer.domElement);
   };
 }

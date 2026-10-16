@@ -2349,7 +2349,7 @@ function Choose({
               {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
             </button>
           </div>
-          <img className="hv5-pic" src={desertRuinsUrl} alt="Ancient desert ruins, the GeoDetective featured case" />
+          <img className="hv5-pic" loading="lazy" decoding="async" src={desertRuinsUrl} alt="Ancient desert ruins, the GeoDetective featured case" />
         </article>
         )}
         {/* Cold Trail vertical slice: 3 sightings, 3 rings, one interception. */}
@@ -2376,7 +2376,7 @@ function Choose({
               ❄️ Start the trail
             </button>
           </div>
-          <img className="hv5-pic" src={patagoniaUrl} alt="Explorers beside a mountain lake in Patagonia" />
+          <img className="hv5-pic" loading="lazy" decoding="async" src={patagoniaUrl} alt="Explorers beside a mountain lake in Patagonia" />
         </article>
         {/* Choose Your Expedition — the design's dark anchor card hosts the
             three real edition actions (State / Country / Globe). */}
@@ -2469,7 +2469,7 @@ function Choose({
                 <p>{REVIEW_DECK_COPY.pickerEmpty}</p>
               )}
             </div>
-            <img className="hv5-art" src={archiveToolsUrl} alt="" aria-hidden="true" />
+            <img className="hv5-art" loading="lazy" decoding="async" src={archiveToolsUrl} alt="" aria-hidden="true" />
           </section>
         ) : (
           <div aria-hidden="true" />
@@ -2491,7 +2491,7 @@ function Choose({
               READ THE ENTRY
             </button>
           </div>
-          <img className="hv5-art" src={journalTreeUrl} alt="A lone tree on a rocky outcrop above layered hills" />
+          <img className="hv5-art" loading="lazy" decoding="async" src={journalTreeUrl} alt="A lone tree on a rocky outcrop above layered hills" />
         </article>
         <article className="hv5-card hv5-spot hv5-involved home-rise" style={rise(7)}>
           <div className="hv5-txt">
@@ -2508,7 +2508,7 @@ function Choose({
               <svg width="14" height="10" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
             </button>
           </div>
-          <img className="hv5-art" src={binocularsHatUrl} alt="" aria-hidden="true" />
+          <img className="hv5-art" loading="lazy" decoding="async" src={binocularsHatUrl} alt="" aria-hidden="true" />
         </article>
       </div>
 
