@@ -245,7 +245,6 @@ test("walker stops at each option, looks, sips, walks on", async ({
     "tour-stop-geodetective",
     "tour-stop-editions",
   ];
-  const walker = page.getByTestId("grandpa-tour-walker");
 
   for (let i = 0; i < stopIds.length; i++) {
     // The walker dwells at stop i (sip phase, 0.8s). Sample the bounding box
@@ -253,33 +252,75 @@ test("walker stops at each option, looks, sips, walks on", async ({
     // motion — and confirm the phase is still "sip" so a late poll can't
     // mistake the next leg's first steps for the dwell. The 250ms gap keeps
     // both samples inside the 800ms sip window even under load.
+    //
+    // Measurement note (fix phase, 2026-10-16): the sampling itself now runs
+    // IN-PAGE in one evaluate. The previous version sampled across three CDP
+    // round-trips (boundingBox, 250ms wait, boundingBox, attribute poll);
+    // on a loaded runner those round-trips can consume the whole 800ms
+    // window, so the second sample lands after the walker resumes (x-drift
+    // 23–44px at the v5 path's ~815px/s) or the phase check lands in the
+    // next beat ("pour" — seen on pristine main too, 2026-10-16 paired
+    // runs). An in-page probe of the same build measured the product
+    // directly: dwells of 780–810ms, 0px in-page drift, sip-drink active
+    // at every stop. Every assertion below is unchanged — same 12px
+    // tolerances, same sip-drink expectation, same phase confirmation —
+    // only the sampling moved to where 800ms is observable.
     await expect(tour).toHaveAttribute("data-stop-index", String(i), {
       timeout: 60_000,
     });
-    const box1 = await walker.boundingBox();
-    await page.waitForTimeout(250);
-    const box2 = await walker.boundingBox();
-    await expect(tour).toHaveAttribute("data-tour-phase", "sip", {
-      timeout: 2_000,
-    });
-    expect(box1 && box2, "walker has a bounding box while sipping").toBeTruthy();
+    const dwell = await page.evaluate(async (stopIdx) => {
+      const tourEl = document.querySelector('[data-testid="grandpa-tour"]');
+      const walkerEl = document.querySelector(
+        '[data-testid="grandpa-tour-walker"]',
+      );
+      if (!tourEl || !walkerEl) return { found: false } as const;
+      const t0 = performance.now();
+      while (performance.now() - t0 < 20_000) {
+        if (
+          tourEl.getAttribute("data-stop-index") === String(stopIdx) &&
+          tourEl.getAttribute("data-tour-phase") === "sip"
+        )
+          break;
+        await new Promise((r) => setTimeout(r, 10));
+      }
+      if (tourEl.getAttribute("data-tour-phase") !== "sip")
+        return { found: false } as const;
+      const first = walkerEl.getBoundingClientRect();
+      const arm = tourEl.querySelector(".mug-arm");
+      const armName = arm ? getComputedStyle(arm).animationName : null;
+      await new Promise((r) => setTimeout(r, 250));
+      const second = walkerEl.getBoundingClientRect();
+      return {
+        found: true,
+        x1: first.x,
+        y1: first.y,
+        x2: second.x,
+        y2: second.y,
+        w: second.width,
+        h: second.height,
+        armName,
+        phaseAfter: tourEl.getAttribute("data-tour-phase"),
+        stopAfter: tourEl.getAttribute("data-stop-index"),
+      } as const;
+    }, i);
+    expect(dwell.found, "walker has a bounding box while sipping").toBeTruthy();
+    if (!dwell.found) throw new Error("unreachable");
+    expect(dwell.phaseAfter, `phase still "sip" at stop ${i}`).toBe("sip");
+    expect(dwell.stopAfter, `still at stop ${i} after the dwell sample`).toBe(
+      String(i),
+    );
     expect(
-      Math.abs(box1!.x - box2!.x),
+      Math.abs(dwell.x1 - dwell.x2),
       `walker dwells at stop ${i} (x)`,
     ).toBeLessThan(12);
     // Sip beat: during the dwell the mug arm plays the deliberate
     // raise-and-hold drink, not the subtle periodic walk sip.
-    const sipAnim = await page.evaluate(() => {
-      const arm = document.querySelector(
-        '[data-testid="grandpa-tour"] .mug-arm',
-      );
-      return arm ? getComputedStyle(arm).animationName : null;
-    });
-    expect(sipAnim, `mug plays sip-drink at stop ${i}`).toBe("sip-drink");
+    expect(dwell.armName, `mug plays sip-drink at stop ${i}`).toBe("sip-drink");
     expect(
-      Math.abs(box1!.y - box2!.y),
+      Math.abs(dwell.y1 - dwell.y2),
       `walker dwells at stop ${i} (y)`,
     ).toBeLessThan(12);
+    const box2 = { x: dwell.x2, y: dwell.y2, width: dwell.w, height: dwell.h };
     const cardBox = await page.getByTestId(stopIds[i]).boundingBox();
     expect(cardBox, `stop card ${stopIds[i]} has a box`).not.toBeNull();
     const wcx = box2!.x + box2!.width / 2;
@@ -448,13 +489,24 @@ test("tour: cloud visible from the first beat, walker not a tap target mid-walk"
   expect(pe, "walker lets taps pass through mid-walk").toBe("none");
   await expect(page.getByTestId("grandpa-bubble-ask")).toBeVisible();
   // Fix 3: the sip keyframes are synced to the 800ms dwell — no mid-drink snap.
-  const tour = page.getByTestId("grandpa-tour");
-  await expect(tour).toHaveAttribute("data-tour-phase", "sip", {
-    timeout: 30_000,
+  // Measurement note (fix phase, 2026-10-16): the phase wait and the
+  // animation read now happen in ONE in-page evaluate. Previously the
+  // attribute poll and the evaluate were separate CDP round-trips; under
+  // load the read landed after the 800ms dwell ended and reported the
+  // 2.4s walk-cycle duration instead (seen on this branch's runs; the
+  // in-page probe shows 0.8s at every stop). Assertion unchanged.
+  const sipDur = await page.evaluate(async () => {
+    const tourEl = document.querySelector('[data-testid="grandpa-tour"]');
+    if (!tourEl) return null;
+    const t0 = performance.now();
+    while (performance.now() - t0 < 30_000) {
+      if (tourEl.getAttribute("data-tour-phase") === "sip") break;
+      await new Promise((r) => setTimeout(r, 10));
+    }
+    if (tourEl.getAttribute("data-tour-phase") !== "sip") return null;
+    const arm = tourEl.querySelector(".mug-arm");
+    return arm ? getComputedStyle(arm).animationDuration : null;
   });
-  const sipDur = await page
-    .locator(".tour-layer .mug-arm")
-    .evaluate((el) => getComputedStyle(el).animationDuration);
   expect(sipDur, "sip-drink matches TOUR_SIP_MS").toBe("0.8s");
   expectCleanConsole(errors);
 });

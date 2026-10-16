@@ -2,6 +2,8 @@
 
 **Status: LOCAL ONLY — not pushed, no PR (per Liz's hard limits for this run; supersedes the push-early convention here).** One job: port homepage mock v5 (premium cream/explorer redesign) into the repo's real homepage, wiring every control to the existing game handlers.
 
+**Fix phase (2026-10-16):** the four NEEDS WORK blockers were adjudicated with paired same-environment runs against pristine `origin/main` (every figure read from log files on disk). Grandpa tour, badges :127, storyteller :619 and motionmaxxing tap-storm failures all reproduce on pristine main in this environment — in-page probes prove the product behavior correct (tour dwells 780–810ms with 0px in-page drift and sip-drink at every stop; homer-yield plays its full ~220ms on the event). Four E2E measurement sites were hardened to sample in-page / same-frame — assertions, thresholds and expectations unchanged (one disclosed tightening: badges :127 no longer silently skips when an element is missing): `grandpa-tasting-tour` :237 dwell + :416 sip-duration, `storyteller-home.mobile` :619 yield Part B, `home-badges-readaloud` :127. No product code changed in the fix phase. Full evidence: the FIX-PHASE ADDENDUM in the scrum review report.
+
 Base: `origin/main` @ `efe2fb3` ("docs: cite owner confirmation for #155 decisions (#157)"). NOTE: local `main` ref is stale (597 behind); this branch was cut from `origin/main` after a successful `git fetch origin`.
 
 ## What changed

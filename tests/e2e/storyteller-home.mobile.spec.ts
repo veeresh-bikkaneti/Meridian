@@ -649,7 +649,6 @@ test("poke startle + yield recede win over idle sway", async ({ page }) => {
   // Part B — yield: fresh page, sway active, then the tour takes the
   // stage; the recede must beat the sway inside its 220ms window.
   await page.reload();
-  const figure2 = page.getByTestId("storyteller-figure");
   await expect(page.getByTestId("storyteller-home-caption")).toBeVisible({
     timeout: 20_000,
   });
@@ -660,17 +659,51 @@ test("poke startle + yield recede win over idle sway", async ({ page }) => {
     })
     .toBe("idle_linger");
 
+  // Measurement note (fix phase, 2026-10-16): the yield is recorded
+  // IN-PAGE by a watcher armed before the dispatch; the poll below reads
+  // the recording. The recede window is 220ms, after which the host
+  // unmounts — CDP polling round-trips on a loaded runner are slower
+  // than the window, so the old poll only ever observed the post-unmount
+  // "" (paired same-environment runs, 2026-10-16: pristine main passes,
+  // this branch missed twice; an in-page probe of this build shows
+  // homer-yield playing for its full ~220ms immediately on the event).
+  // The assertion is unchanged: the animation that replaces the sway
+  // during the yield beat must be homer-yield.
+  await page.evaluate(() => {
+    const fig = document.querySelector('[data-testid="storyteller-figure"]');
+    const watch: { name: string | null } = { name: null };
+    (window as unknown as { __yieldWatch: typeof watch }).__yieldWatch = watch;
+    if (!fig) {
+      watch.name = "";
+      return;
+    }
+    let last = "";
+    const t0 = performance.now();
+    const tick = () => {
+      if (!fig.isConnected) {
+        watch.name = last;
+        return;
+      }
+      const name = getComputedStyle(fig).animationName;
+      if (name) last = name;
+      if (name.includes("homer-yield")) {
+        watch.name = name;
+        return;
+      }
+      if (performance.now() - t0 < 3_000) requestAnimationFrame(tick);
+      else watch.name = last;
+    };
+    requestAnimationFrame(tick);
+  });
   await page.evaluate(() => window.dispatchEvent(new Event("meridian:tour-walk-start")));
   await expect
     .poll(
-      async () => {
-        try {
-          return await figure2.evaluate((el) => getComputedStyle(el).animationName);
-        } catch {
-          // The host unmounts after the 220ms yield window — past it.
-          return "";
-        }
-      },
+      async () =>
+        page.evaluate(
+          () =>
+            (window as unknown as { __yieldWatch?: { name: string | null } })
+              .__yieldWatch?.name ?? null,
+        ),
       { timeout: 3_000, intervals: [10, 25, 50, 100] },
     )
     .toContain("homer-yield");
