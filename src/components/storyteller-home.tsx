@@ -805,39 +805,8 @@ export default function StorytellerHomeHost({
   // ---- Poke (tap the figure → rotating lines, copy §2) ---------------------
   const handleFigureTap = useCallback(() => {
     const audio = audioRef.current;
-    if (audio && phase === "greeting_audio") {
-      // Tapping the figure mid-greeting pauses/resumes (card contract) —
-      // but the tap that STARTED the audio must not instantly pause it.
-      if (Date.now() - audioStartTimeRef.current < AUDIO_START_TAP_GUARD_MS) return;
-      // Fix F: guard the resume play() with the hang watchdog — a hung or
-      // rejected resume must fail loud into text + the figure-tap retry,
-      // never strand "playing" with zero audio (and never swallow the
-      // error silently, as the old `.catch(() => {})` did).
-      if (audio.paused) {
-        window.clearTimeout(playHangTimer.current);
-        playHangTimer.current = window.setTimeout(() => {
-          if (audioRef.current !== audio) return; // superseded
-          try {
-            audio.pause();
-          } catch {
-            // Never break the home screen.
-          }
-          greetPlayRejectedRef.current = true;
-          failGreetingAudio();
-        }, GREET_PLAY_HANG_MS);
-        void audio
-          .play()
-          .then(() => {
-            window.clearTimeout(playHangTimer.current);
-          })
-          .catch((err: unknown) => {
-            window.clearTimeout(playHangTimer.current);
-            if (isPlayAbort(err)) return;
-            greetPlayRejectedRef.current = true;
-            failGreetingAudio();
-          });
-      } else audio.pause();
-      pokeVisual();
+    if (audio && (phase === "greeting_audio" || !audio.paused)) {
+      // The speaker button is the only mute. A tap never pauses the line.
       return;
     }
     // Stuck in `entering`, or the invite has not released `started`: this
@@ -864,12 +833,7 @@ export default function StorytellerHomeHost({
     // The window one-shot may have started the greeting on this tap's way
     // down (pointerdown precedes click, and phase hasn't re-rendered yet) —
     // don't poke over it, and don't double-start it.
-    if (audio) return;
-    // Fix D — narration-silence recovery: a greeting that was attempted
-    // but never heard must be replayable. The figure tap replays it
-    // instead of rotating a text-only poke line that would trap the
-    // silence. A greeting the kid explicitly dismissed is excluded —
-    // quiet means quiet.
+    if (audioRef.current) return;
     if (
       shouldReplayGreeting({
         mode,
@@ -911,7 +875,7 @@ export default function StorytellerHomeHost({
       });
     }
     pokeVisual();
-  }, [mode, phase, showBubble, pokeVisual, beginGreetingAudio, failGreetingAudio, greetFromFigureTap, tutorialInviteVisible]);
+  }, [mode, phase, showBubble, pokeVisual, beginGreetingAudio, greetFromFigureTap, tutorialInviteVisible]);
 
   // ---- Loop send-off (copy G3) ----------------------------------------------
   useEffect(() => {

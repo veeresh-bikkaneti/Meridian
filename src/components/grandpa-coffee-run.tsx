@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import "./grandpa-coffee-run.css";
+import { TRAIL_QUIPS, playAsk, playTrail } from "./grandpa-ask";
 import { BODY as COMET_BODY, BODY_LIGHT as COMET_BODY_LIGHT } from "./comet-mascot";
 import {
   buildStraightTrail,
@@ -1138,6 +1139,7 @@ export function GrandpaCoffeeRun() {
     typeof navigator === "undefined" ? true : navigator.onLine,
   );
   const [beat, setBeat] = useState<Beat>("walking");
+  const [quip, setQuip] = useState(0);
   const [cloud, setCloud] = useState<Cloud>("ask");
   const walkerRef = useRef<HTMLDivElement | null>(null);
   const continueRef = useRef<HTMLButtonElement | null>(null);
@@ -1206,6 +1208,20 @@ export function GrandpaCoffeeRun() {
       walker.removeEventListener("animationend", onArrive);
     };
   }, [mode, reducedMotion]);
+
+  // While he walks: a trail line, and a cough that is a sound, not a word.
+  useEffect(() => {
+    if (reducedMotion || beat !== "walking" || mode === "seated") return;
+    playTrail(0);
+    const id = window.setInterval(() => {
+      setQuip((n) => {
+        const next = (n + 1) % TRAIL_QUIPS.length;
+        playTrail(next);
+        return next;
+      });
+    }, 7000);
+    return () => window.clearInterval(id);
+  }, [beat, mode, reducedMotion]);
 
   // Tasting-tour orchestration (mobile, fresh visit): Beat 0 compass at ~1s,
   // then measure after the staggered entrance + fonts.ready and start the
@@ -1369,7 +1385,11 @@ export function GrandpaCoffeeRun() {
   }, [tour?.stage]);
 
   const openCloudGate = useCallback(() => {
-    setCloud((c) => (c === "ask" ? "gate" : c));
+    setCloud((c) => {
+      if (c !== "ask") return c;
+      playAsk();
+      return "gate";
+    });
   }, []);
 
   const closeCloudGate = useCallback((refocusWalker = true) => {
@@ -1479,6 +1499,11 @@ export function GrandpaCoffeeRun() {
           className="grandpa-walker"
           data-testid="grandpa-walker"
           onClick={walkerInteractive ? openCloudGate : undefined}
+          onMouseEnter={
+            walkerInteractive
+              ? () => (beat === "walking" ? playTrail(quip) : playAsk())
+              : undefined
+          }
           onKeyDown={walkerInteractive ? onWalkerKeyDown : undefined}
           aria-label={
             walkerInteractive
@@ -1565,6 +1590,12 @@ export function GrandpaCoffeeRun() {
                 tilts over the raised mug, pours, then rises/fades away. */}
             <GrandpaKettle testIdPrefix="grandpa" />
           </span>
+
+          {beat === "walking" ? (
+            <p className="grandpa-quip" role="status">
+              {TRAIL_QUIPS[quip]}
+            </p>
+          ) : null}
 
           {/* The cloud — the finale ask, or the in-cloud gate workflow.
               Tapping grandpa OR this cloud swaps it to the gate; the whole

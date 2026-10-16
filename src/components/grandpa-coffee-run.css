@@ -20,16 +20,26 @@
  *
  * Fully static under prefers-reduced-motion: no trail, no walker. */
 
+#home-involved {
+  position: relative;
+  height: 168px;
+}
 .grandpa-scene {
-  position: fixed;
-  inset: 0;
-  z-index: 40; /* same plane as Comet: above content, below dialogs */
+  /* The camp strip he walks. In flow, so it does not leave a dead band. */
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  min-height: 0;
+  z-index: 4;
   pointer-events: none;
+  overflow-x: clip;
 }
 
 /* ============ Dotted treasure-map trail ============ */
 .grandpa-path {
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   bottom: max(6px, env(safe-area-inset-bottom, 0px));
@@ -67,7 +77,16 @@
   }
 }
 
-/* Pause the journey during the kettle beat (JS flips data-beat). */
+/* Pause sits BELOW the travel shorthand. The shorthand resets
+   play-state, so a pause rule above it never holds him for the pour. */
+.grandpa-scene[data-mode="strip"] .grandpa-walker {
+  animation-name: grandpa-travel;
+  animation-duration: 9500ms;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
 .grandpa-scene[data-beat="kettle"] .grandpa-walker,
 .grandpa-scene[data-beat="kettle"] .grandpa-path {
   animation-play-state: paused;
@@ -79,8 +98,8 @@
      mascot footprint dodge, just safe-area + margin. */
   --park-right: calc(max(14px, env(safe-area-inset-right, 0px)) + 18px);
   --gw: 84px;
-  position: fixed;
-  left: calc(100vw - var(--park-right) - var(--gw));
+  position: absolute;
+  left: calc(100% - var(--park-right) - var(--gw));
   bottom: max(14px, env(safe-area-inset-bottom, 0px));
   width: var(--gw);
   display: block;
@@ -93,14 +112,6 @@
   touch-action: manipulation;
   /* Tasting-tour handoff: the strip walker crossfades in at the settle. */
   transition: opacity 0.4s ease;
-}
-
-/* The travel animation runs only in "strip" mode (the desktop stroll and
- * the mobile level-2 fallback walk). In "tour"/"seated" modes the walker
- * stays parked — visibly during the tour (the cloud + grown-up lock show
- * from the first beat), seated from the first frame on return visits. */
-.grandpa-scene[data-mode="strip"] .grandpa-walker {
-  animation: grandpa-travel 9500ms linear forwards;
 }
 
 /* Tasting-tour mode: the parked strip walker is NOT a tap target (Fix 2,
@@ -122,6 +133,24 @@
   to {
     transform: translateX(0);
   }
+}
+
+.grandpa-quip {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 10px);
+  width: max-content;
+  max-width: 220px;
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 14px;
+  background: #fffdf8;
+  border: 2px solid #0c181d;
+  color: #0c181d;
+  font-size: 13px;
+  line-height: 1.35;
+  text-align: left;
+  pointer-events: none;
 }
 
 .grandpa-walker:focus-visible {
@@ -1005,10 +1034,13 @@
     --bottom-clearance: calc(
       max(14px, env(safe-area-inset-bottom, 0px)) + 1rem
     );
-    position: relative;
+    position: absolute;
     inset: auto;
-    /* walker + gate-state cloud + gaps, no clipping */
-    min-height: calc(var(--bottom-clearance) + 17rem);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 128px;
+    min-height: 0;
     /* The walker travels in from off the left edge; as an absolutely
      * positioned (not fixed) element that would add horizontal scrollable
      * overflow. Clip x only — y stays visible so the kettle's drop from

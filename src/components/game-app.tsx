@@ -77,6 +77,7 @@ import { RunSummaryCard } from "./run-summary";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
 import { CometEmblem } from "./comet-emblem";
 import { GrandpaCoffeeRun } from "./grandpa-coffee-run";
+import { notesForWindow } from "./home-journal";
 // Storyteller banner host (owner directive 2026-10-09): the Storyteller
 // sits IN THE BANNER beside the Meridian branding — always visible, mobile
 // and desktop. React.lazy — the host (and its copy chunk) never lands in
@@ -2153,6 +2154,13 @@ function Choose({
   // streak line. Read on mount (the menu remounts when the loop screen
   // closes, so this is always fresh on return).
   const [loopProgress] = useState(() => peekLoopProgress());
+  const [journalNow, setJournalNow] = useState(() => Date.now());
+  useEffect(() => {
+    const wait = notesForWindow(journalNow).nextAt - Date.now();
+    const id = window.setTimeout(() => setJournalNow(Date.now()), Math.max(wait, 1000));
+    return () => window.clearTimeout(id);
+  }, [journalNow]);
+  const journalNotes = notesForWindow(journalNow).notes;
   // Stagger order for the orchestrated entrance (110ms steps in CSS).
   // motionmaxxing M7: the atlas entrance cascade's stagger gaps, retuned
   // uneven (60–100ms) so the cards don't land on a metronome. Keyframes,
@@ -2180,6 +2188,8 @@ function Choose({
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
     el.focus({ preventScroll: true });
+    const next = `#${id}`;
+    if (window.location.hash !== next) history.replaceState(null, "", next);
   };
   const scrollTop = () => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -2200,10 +2210,8 @@ function Choose({
       </svg>
       {notice}
       {tutorialInvite}
-      {/* v5 top nav: brand + section jumps wired to the real home sections.
-          ABOUT and JOURNAL have no counterpart surface in the app yet —
-          rendered disabled (UNMAPPED in the integration report), as is the
-          search button (no search surface exists). */}
+      {/* v5 top nav. ABOUT and JOURNAL jump to the sections at the bottom
+          of the home page. Search has no surface yet. */}
       <header className="hv5-nav home-rise" style={rise(0)}>
         <span id="hv5-unmapped-note" className="sr-only">
           Not yet available
@@ -2226,8 +2234,8 @@ function Choose({
             CASES
             <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
           </button>
-          <button type="button" aria-disabled="true" aria-describedby="hv5-unmapped-note">ABOUT</button>
-          <button type="button" aria-disabled="true" aria-describedby="hv5-unmapped-note">JOURNAL</button>
+          <button type="button" onClick={() => scrollTo("home-about")}>ABOUT</button>
+          <button type="button" onClick={() => scrollTo("home-journal")}>JOURNAL</button>
           <button type="button" onClick={() => scrollTo("home-involved")}>GET INVOLVED</button>
         </nav>
         <div className="hv5-actions">
@@ -2246,7 +2254,6 @@ function Choose({
       </header>
 
       <div className="hv5-bento">
-      <div className="hv5-hero-zone">
         <section className="hv5-hero home-rise" style={rise(2)} aria-label="Welcome to Meridian">
           {/* Eyebrow cluster preserved from the atlas home: eyebrow →
               Comet emblem → sound toggle (owner order — Liz's eyebrow
@@ -2339,12 +2346,70 @@ function Choose({
           </div>
           <img className="hv5-mountain" src={heroMountainUrl} alt="" aria-hidden="true" />
         </section>
-        <div className="hv5-globe-zone" aria-hidden="true">
+        <div className="hv5-rail">
+        <div className="hv5-globe-zone">
           <Suspense fallback={null}>
             <HomeGlobe />
           </Suspense>
         </div>
-      </div>
+        {/* Choose Your Expedition — the design's dark anchor card hosts the
+            three real edition actions (State / Country / Globe). */}
+        <div
+          className="hv5-card hv5-mapcard home-rise"
+          style={rise(6)}
+          data-testid="tour-stop-editions"
+          id="home-editions"
+          tabIndex={-1}
+        >
+          <div className="hv5-head">
+            <span className="hv5-badge">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><path d="M15.5 8.5 L13.2 13.2 L8.5 15.5 L10.8 10.8 Z" fill="currentColor" stroke="none" /></svg>
+            </span>
+            <span className="hv5-label">Choose your expedition</span>
+          </div>
+          <h2>Expeditions Map</h2>
+          <p>Choose your expedition — a single US state, a whole country, or the entire globe.</p>
+          <svg className="hv5-worldmap" viewBox="0 0 300 138" aria-hidden="true">
+            <defs>
+              <pattern id="hv5-dots" width="7" height="7" patternUnits="userSpaceOnUse">
+                <circle cx="1.6" cy="1.6" r="1.6" fill="#C9D4BE" fillOpacity=".75" />
+              </pattern>
+            </defs>
+            <g fill="url(#hv5-dots)">
+              <path d="M18 38 L52 22 L84 26 L92 40 L74 52 L66 72 L48 64 L30 58 L16 50 Z" />
+              <path d="M66 78 L84 74 L90 92 L80 122 L68 104 L62 88 Z" />
+              <path d="M138 30 L168 22 L182 34 L172 48 L148 50 L134 42 Z" />
+              <path d="M146 56 L172 52 L184 72 L172 104 L156 108 L144 80 Z" />
+              <path d="M186 26 L238 16 L272 30 L268 52 L232 62 L206 54 L188 44 Z" />
+              <path d="M216 66 L244 62 L256 76 L238 88 L220 80 Z" />
+              <path d="M240 100 L272 96 L282 108 L262 120 L242 114 Z" />
+            </g>
+            <path d="M74 50 C130 84 190 84 248 104" fill="none" stroke="#EFEAD6" strokeWidth="1.3" strokeDasharray="1 5" strokeLinecap="round" />
+            <circle cx="248" cy="104" r="7" fill="none" stroke="#EFEAD6" strokeWidth="1.2" />
+            <path d="M248 97 C244 97 242 100 242 102.4 C242 106 248 110.6 248 110.6 C248 110.6 254 106 254 102.4 C254 100 252 97 248 97 Z" fill="#EFEAD6" />
+          </svg>
+          <div className="hv5-editions">
+            <button type="button" className="hv5-edition" onClick={onState}>
+              <span className="hv5-idx">N° 01</span>
+              <MapPin className="size-5" aria-hidden="true" />
+              <span className="hv5-etitle">State</span>
+              <span className="hv5-eaction">Choose a state</span>
+            </button>
+            <button type="button" className="hv5-edition" onClick={onCountry}>
+              <span className="hv5-idx">N° 02</span>
+              <Flag className="size-5" aria-hidden="true" />
+              <span className="hv5-etitle">Country</span>
+              <span className="hv5-eaction">Choose a country</span>
+            </button>
+            <button type="button" className="hv5-edition" onClick={onGlobe}>
+              <span className="hv5-idx">N° 03</span>
+              <Globe2 className="size-5" aria-hidden="true" />
+              <span className="hv5-etitle">Globe</span>
+              <span className="hv5-eaction">Play the globe</span>
+            </button>
+          </div>
+        </div>
+        </div>
 
       <div className="hv5-grid2" id="home-cases" tabIndex={-1}>
         {/* GeoDetective leads: the flagship case file, unlimited mysteries.
@@ -2412,63 +2477,6 @@ function Choose({
           </div>
           <img className="hv5-pic" loading="lazy" decoding="async" src={patagoniaUrl} alt="" aria-hidden="true" />
         </article>
-        {/* Choose Your Expedition — the design's dark anchor card hosts the
-            three real edition actions (State / Country / Globe). */}
-        <div
-          className="hv5-card hv5-mapcard home-rise"
-          style={rise(6)}
-          data-testid="tour-stop-editions"
-          id="home-editions"
-          tabIndex={-1}
-        >
-          <div className="hv5-head">
-            <span className="hv5-badge">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><path d="M15.5 8.5 L13.2 13.2 L8.5 15.5 L10.8 10.8 Z" fill="currentColor" stroke="none" /></svg>
-            </span>
-            <span className="hv5-label">Choose your expedition</span>
-          </div>
-          <h2>Expeditions Map</h2>
-          <p>Choose your expedition — a single US state, a whole country, or the entire globe.</p>
-          <svg className="hv5-worldmap" viewBox="0 0 300 138" aria-hidden="true">
-            <defs>
-              <pattern id="hv5-dots" width="7" height="7" patternUnits="userSpaceOnUse">
-                <circle cx="1.6" cy="1.6" r="1.6" fill="#C9D4BE" fillOpacity=".75" />
-              </pattern>
-            </defs>
-            <g fill="url(#hv5-dots)">
-              <path d="M18 38 L52 22 L84 26 L92 40 L74 52 L66 72 L48 64 L30 58 L16 50 Z" />
-              <path d="M66 78 L84 74 L90 92 L80 122 L68 104 L62 88 Z" />
-              <path d="M138 30 L168 22 L182 34 L172 48 L148 50 L134 42 Z" />
-              <path d="M146 56 L172 52 L184 72 L172 104 L156 108 L144 80 Z" />
-              <path d="M186 26 L238 16 L272 30 L268 52 L232 62 L206 54 L188 44 Z" />
-              <path d="M216 66 L244 62 L256 76 L238 88 L220 80 Z" />
-              <path d="M240 100 L272 96 L282 108 L262 120 L242 114 Z" />
-            </g>
-            <path d="M74 50 C130 84 190 84 248 104" fill="none" stroke="#EFEAD6" strokeWidth="1.3" strokeDasharray="1 5" strokeLinecap="round" />
-            <circle cx="248" cy="104" r="7" fill="none" stroke="#EFEAD6" strokeWidth="1.2" />
-            <path d="M248 97 C244 97 242 100 242 102.4 C242 106 248 110.6 248 110.6 C248 110.6 254 106 254 102.4 C254 100 252 97 248 97 Z" fill="#EFEAD6" />
-          </svg>
-          <div className="hv5-editions">
-            <button type="button" className="hv5-edition" onClick={onState}>
-              <span className="hv5-idx">N° 01</span>
-              <MapPin className="size-5" aria-hidden="true" />
-              <span className="hv5-etitle">State</span>
-              <span className="hv5-eaction">Choose a state</span>
-            </button>
-            <button type="button" className="hv5-edition" onClick={onCountry}>
-              <span className="hv5-idx">N° 02</span>
-              <Flag className="size-5" aria-hidden="true" />
-              <span className="hv5-etitle">Country</span>
-              <span className="hv5-eaction">Choose a country</span>
-            </button>
-            <button type="button" className="hv5-edition" onClick={onGlobe}>
-              <span className="hv5-idx">N° 03</span>
-              <Globe2 className="size-5" aria-hidden="true" />
-              <span className="hv5-etitle">Globe</span>
-              <span className="hv5-eaction">Play the globe</span>
-            </button>
-          </div>
-        </div>
       </div>
       </div>
 
@@ -2510,9 +2518,7 @@ function Choose({
         ) : (
           <div aria-hidden="true" />
         )}
-        {/* Journal — design element with NO real counterpart surface yet
-            (UNMAPPED): kept for the design, CTA disabled, no invented
-            behavior. */}
+        {/* Journal — the card jumps to the field notes below. */}
         <article className="hv5-card hv5-spot hv5-journal home-rise" style={rise(7)}>
           <div className="hv5-txt">
             <div className="hv5-head">
@@ -2523,7 +2529,7 @@ function Choose({
             </div>
             <h2>What the land remembers</h2>
             <p>Short field stories from the places on the map — the tales only landscapes keep.</p>
-            <button type="button" className="hv5-go" aria-disabled="true" aria-describedby="hv5-unmapped-note">
+            <button type="button" className="hv5-go" onClick={() => scrollTo("home-journal")}>
               READ THE ENTRY
             </button>
           </div>
@@ -2546,6 +2552,39 @@ function Choose({
           </div>
           <img className="hv5-art" loading="lazy" decoding="async" src={binocularsHatUrl} alt="" aria-hidden="true" />
         </article>
+      </div>
+
+      <div className="hv5-pages">
+        <section id="home-about" tabIndex={-1} className="hv5-card hv5-page" aria-labelledby="about-title">
+          <span className="hv5-label">About</span>
+          <h2 id="about-title">How a round works</h2>
+          <p>
+            A place name, then one pin on an unlabeled map. Right or wrong, the round opens a short
+            story about that place. Pick the globe, a country, or a state. Your score keeps adding
+            up until you end the game, or after 2 minutes with nothing tapped.
+          </p>
+          <p>
+            No account. The run stays in this browser. A coffee for Grandpa is optional and never
+            locks a game.
+          </p>
+        </section>
+        <section id="home-journal" tabIndex={-1} className="hv5-card hv5-page" aria-labelledby="journal-title">
+          <span className="hv5-label">Journal</span>
+          <h2 id="journal-title">What the land remembers</h2>
+          <p className="hv5-label" style={{ marginTop: 8 }}>New notes every 2 hours</p>
+          {journalNotes.map((note) => (
+            <article key={note.id} className="hv5-entry">
+              <h3>{note.place}</h3>
+              <p className="hv5-label" style={{ marginTop: 4 }}>{note.where}</p>
+              <p style={{ marginTop: 8 }}>{note.story}</p>
+              <p style={{ marginTop: 8 }}>
+                <a href={note.sourceHref} target="_blank" rel="noopener noreferrer">
+                  {note.sourceLabel}
+                </a>
+              </p>
+            </article>
+          ))}
+        </section>
       </div>
 
       {/* Age-profile footer entry (Phase 2 §1a): the COPPA-standard
