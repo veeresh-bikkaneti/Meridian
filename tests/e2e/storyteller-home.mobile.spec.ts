@@ -670,17 +670,18 @@ test("poke startle + yield recede win over idle sway", async ({ page }) => {
   // The assertion is unchanged: the animation that replaces the sway
   // during the yield beat must be homer-yield.
   await page.evaluate(() => {
-    const fig = document.querySelector('[data-testid="storyteller-figure"]');
     const watch: { name: string | null } = { name: null };
     (window as unknown as { __yieldWatch: typeof watch }).__yieldWatch = watch;
-    if (!fig) {
-      watch.name = "";
-      return;
-    }
     let last = "";
     const t0 = performance.now();
     const tick = () => {
-      if (!fig.isConnected) {
+      // Re-query every frame: the node captured at arm time can be
+      // replaced by a re-render before the event lands (round 1 of this
+      // fix watched a detached node and recorded only the sway — the
+      // in-page probe, re-querying per frame, sees homer-yield at the
+      // first frame after the dispatch and the host gone at ~240ms).
+      const fig = document.querySelector('[data-testid="storyteller-figure"]');
+      if (!fig) {
         watch.name = last;
         return;
       }
