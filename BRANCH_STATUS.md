@@ -1,11 +1,21 @@
-# BRANCH_STATUS — docs/meridian-handbook
+# BRANCH_STATUS — chore/tanstack-react-start-1.169.2
 
-**Status: IN REVIEW — opened 2026-10-16 on Veeresh's direction.** Adds the Meridian Product & Decision Handbook under `docs/handbook/` (README + 9 chapters, 5 Mermaid diagrams): every product decision on record — vision, game design, Storyteller & Grandpa, audio/TTS, content system, design/UX, engineering/ops, how-we-work, onboarding — written for a newbie human or AI agent.
+**Ready for review. Owner merges.** One job: bump `@tanstack/react-start` to `^1.169.2`, with a lockfile that passes `npm ci`. Supersedes dependabot #159 and #160.
 
-**2026-10-16 peer-review fixes:** merged `main` (#161 landed; kept this branch's BRANCH_STATUS). Reworded the ruleset-lifting text in ch07 §6 and ch08 step 9 so no recipe remains and owner approval is required each time.
+## Why not merge #159 / #160
+Both branches have an identical tree, and their `build (22.x)` check fails in about 9 seconds at `npm ci`: `Missing: lru-cache@11.5.3 from lock file`. Their lockfile lacks the `node_modules/nitro/node_modules/lru-cache` entry. Nothing in the code is at fault; the lock is out of sync with `package.json`.
 
-Process: five-writer technical-writing panel drafted it (2026-10-16); a clean-context multi-division review panel (Engineering / Product / PM / Specialized / Game Development + orchestration) reviews it before the PR is raised. Merge on Veeresh's word only.
+## Done
+- `package.json`: `@tanstack/react-start` `^1.168.0` -> `^1.169.2`.
+- `package-lock.json`: regenerated from `main` with `npm install @tanstack/react-start@^1.169.2 --package-lock-only` (a plain `npm install` crashed in npm 10.9.4's rollback path). Resolved: react-start 1.169.2, start-server-core 1.169.43 (was 1.168.58 / 1.169.37). The only difference from the dependabot lock is the missing `nitro/node_modules/lru-cache 11.5.3` entry.
 
-Note: PR #161 (BRANCH_STATUS status-line fix for #158) has landed (merged 2026-10-16, main 058a15a); main was merged into this branch (c843f16) and this file carries this branch's status per convention.
+## Gates (this branch, local)
+`npm ci` from a clean `node_modules` OK; `npx tsc --noEmit` clean; `npm test` scripts 778 (769 pass, 9 skipped, 0 fail) and src 1,315 pass; `node scripts/lint-cards.mjs` GATE PASSED; `npm run build` OK with `SHARE_CARD_BUILT=workers` passing (all 12 share tags, workers.dev origin); `npm run build:pages` OK with `SHARE_CARD_BUILT=pages` passing; `npm run test:worker` 18/18; `npm run typecheck:worker` clean. E2E smoke (ws4-tile-fallback and ws4-geodetective-map-hidden, `--workers=1`, fresh Pages build): 6/6. The full Playwright suite was not run.
 
-**Review record (2026-10-16):** clean-context panel, 6 clusters covering Veeresh's full roster (Agents Orchestrator, Multi-Agent Systems Architect, SRE, Software Architect, Frontend, Office Hours, PM, UX Researcher, Brand Guardian, Visual Storyteller, Inclusive Visuals, UI Finish-Gate, Persona Walkthrough, UI Designer, UX Architect, Game/Narrative/Economy/Audio Designers). **Unanimous APPROVE-WITH-NITS, 0 BLOCKs.** ~55 findings/fixes applied pre-PR, including: shipped difficulty tier names (Famous/Well-known/Everyday/Lesser-known/Hidden — the chapter had proposal-era names), hook count 8,420 → 8,797 (recounted by the game's own definition), learningOutcomes production state corrected to ON (PR #45), poke-voice corrections (TruthTeller, Storyteller's), ch04's false SHA-256/pip-audit claim removed, v5 commission attribution fixed to Liz, dead copy-pack path annotated, H1s standardized, diagram text summaries added. Two items left OPEN for Veeresh, recorded in the chapters: (1) the crash-receiver deploy record conflict (repo docs say `wrangler deploy` from `worker/observability/`; a 2026-10 record says manual `version_upload`); (2) the eyebrow-comment attribution (2026-10-07/08 vs 2026-10-09). Also noted: the storyteller copy pack file the code cites (`~/workspace/specs/storyteller-copy.md`) is not present in this workspace — its Sections 0–3 live lifted-verbatim in `storyteller-home-copy.ts`.
+## Not verified
+- Full E2E suite (617 tests) and real-device behaviour on the new framework version.
+- The live Workers deploy (SSR on workers.dev with start-server-core 1.169.43). Local server output was exercised by the built-output check only.
+- `Workers Builds: meridian` fails on PR branches by owner decision (ignored); main's deploy is the real check.
+
+## After merge
+Dependabot should close #159 and #160 on its own once `main` carries the version; if it does not, close them as superseded.
