@@ -6,7 +6,7 @@ import { serveBuiltArtifact } from "./helpers";
  *
  * Beats: compass-rose origin (~1s) → the tasting tour (grandpa walks a
  * dotted S-trail down the gutters, STOPS at each option — difficulty,
- * GeoDetective, editions — turns to look, sips ~0.8s,
+ * editions, GeoDetective (top-down page order) — turns to look, sips ~0.8s,
  * walks on; silent, untappable mid-walk, hard-capped at 10s) → the kettle
  * top-up at the pour waypoint above the park strip → settle (seated on the
  * bench, trail fades to ~18%, donation cloud with the Game Designer's copy,
@@ -239,10 +239,12 @@ test("walker stops at each option, looks, sips, walks on", async ({
 }) => {
   const errors = await loadHome(page);
   await waitForWalkStage(page);
+  // Visit order follows the page's top-down document order (#165 layout:
+  // the editions card sits above the GeoDetective card).
   const stopIds = [
     "tour-stop-difficulty",
-    "tour-stop-geodetective",
     "tour-stop-editions",
+    "tour-stop-geodetective",
   ];
 
   // Measurement note (fix phase, 2026-10-16): the dwell samples are

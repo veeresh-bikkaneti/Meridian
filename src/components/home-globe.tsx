@@ -14,7 +14,10 @@ import globeFallbackUrl from "@/assets/home-v5/globe-fallback.webp";
  *   all land on the static texture disc — the design is the default,
  *   the live globe is only an enhancement.
  * - Rendering pauses while the hero is off-screen or the tab is hidden.
- * Decorative only: the mount is aria-hidden and carries no information.
+ * Interactive (not decorative): the canvas is labelled and keyboard-focusable
+   (role="img", tabIndex, arrow keys spin it), so the mount must NOT be
+   aria-hidden. The static fallback image stays aria-hidden since it is
+   purely decorative (alt="").
  */
 export function HomeGlobe() {
   const mountRef = useRef<HTMLDivElement | null>(null);
@@ -40,6 +43,11 @@ export function HomeGlobe() {
 
   useEffect(() => {
     if (fallback) return;
+    const mem = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
+    if (typeof mem === "number" && mem > 0 && mem <= 2) {
+      setFallback(true);
+      return;
+    }
     const mount = mountRef.current;
     if (!mount) return;
     let disposed = false;
@@ -90,7 +98,7 @@ export function HomeGlobe() {
       />
     );
   }
-  return <div ref={mountRef} className="hv5-globe-mount" aria-hidden="true" />;
+  return <div ref={mountRef} className="hv5-globe-mount" />;
 }
 
 type ThreeModule = typeof import("three");
@@ -106,8 +114,13 @@ function initGlobe(THREE: ThreeModule, mount: HTMLDivElement, onFail: () => void
   renderer.setPixelRatio(DPR);
   const W = mount.clientWidth || 600;
   const H = mount.clientHeight || 600;
+  const small = W < 280;
   renderer.setSize(W, H);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.domElement.addEventListener("webglcontextlost", (event) => {
+    event.preventDefault();
+    onFail();
+  });
   mount.appendChild(renderer.domElement);
 
   const scene = new THREE.Scene();
@@ -135,7 +148,7 @@ function initGlobe(THREE: ThreeModule, mount: HTMLDivElement, onFail: () => void
     () => onFail(),
   );
   const globe = new THREE.Mesh(
-    new THREE.SphereGeometry(R, 64, 48),
+    new THREE.SphereGeometry(R, small ? 32 : 64, small ? 24 : 48),
     new THREE.MeshStandardMaterial({ map: tex, roughness: 0.92, metalness: 0 }),
   );
   globe.rotation.z = 0.18;
@@ -195,24 +208,54 @@ function initGlobe(THREE: ThreeModule, mount: HTMLDivElement, onFail: () => void
     group.add(s);
     return s;
   });
-  group.rotation.y = -1.85; /* Atlantic view, like the reference */
+  group.rotation.x = 0.12;
 
-  /* Lerped pointer + scroll */
-  let tx = 0,
-    ty = 0,
-    cx = 0,
-    cy = 0,
-    scrollT = 0,
-    scrollC = 0;
-  const onPointer = (e: PointerEvent) => {
-    tx = e.clientX / window.innerWidth - 0.5;
-    ty = e.clientY / window.innerHeight - 0.5;
+  let yaw = 0.6;
+  let pitch = 0.12;
+  let dragging = false;
+  let lastX = 0;
+  let lastY = 0;
+  const canvas = renderer.domElement;
+  canvas.tabIndex = 0;
+  canvas.setAttribute("role", "img");
+  canvas.setAttribute("aria-label", "Globe. Drag or use arrow keys to spin.");
+  const onDown = (e: PointerEvent) => {
+    dragging = true;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    canvas.setPointerCapture(e.pointerId);
+    canvas.style.cursor = "grabbing";
   };
-  const onScroll = () => {
-    scrollT = Math.min(window.scrollY / 900, 1);
+  const onMove = (e: PointerEvent) => {
+    if (!dragging) return;
+    yaw += (e.clientX - lastX) * 0.008;
+    pitch = Math.max(-0.55, Math.min(0.7, pitch + (e.clientY - lastY) * 0.005));
+    lastX = e.clientX;
+    lastY = e.clientY;
   };
-  window.addEventListener("pointermove", onPointer, { passive: true });
-  window.addEventListener("scroll", onScroll, { passive: true });
+  const endDrag = (e: PointerEvent) => {
+    if (!dragging) return;
+    dragging = false;
+    canvas.style.cursor = "grab";
+    try {
+      canvas.releasePointerCapture(e.pointerId);
+    } catch {
+      /* capture already released */
+    }
+  };
+  const onKey = (e: KeyboardEvent) => {
+    if (e.key === "ArrowLeft") yaw -= 0.2;
+    else if (e.key === "ArrowRight") yaw += 0.2;
+    else if (e.key === "ArrowUp") pitch = Math.max(-0.55, pitch - 0.08);
+    else if (e.key === "ArrowDown") pitch = Math.min(0.7, pitch + 0.08);
+    else return;
+    e.preventDefault();
+  };
+  canvas.addEventListener("pointerdown", onDown);
+  canvas.addEventListener("pointermove", onMove);
+  canvas.addEventListener("pointerup", endDrag);
+  canvas.addEventListener("pointercancel", endDrag);
+  canvas.addEventListener("keydown", onKey);
 
   let visible = true;
   const visIo = new IntersectionObserver((es) => {
@@ -249,23 +292,21 @@ function initGlobe(THREE: ThreeModule, mount: HTMLDivElement, onFail: () => void
       return;
     }
     raf = requestAnimationFrame(loop);
-    const t = clock.getElapsedTime();
-    cx += (tx - cx) * 0.045;
-    cy += (ty - cy) * 0.045;
-    scrollC += (scrollT - scrollC) * 0.06;
-    // Autonomous motion settles after the ~6s entrance (WCAG 2.2.2: no
-    // indefinitely self-moving content); pointer/scroll parallax — which
-    // is user-driven — keeps responding after the settle.
-    const settle = Math.min(t / 6, 1);
-    const eased = 1 - Math.pow(1 - settle, 3);
-    const autoT = eased * 6;
-    group.rotation.y = -1.85 + autoT * 0.045 + cx * 0.55;
-    group.rotation.x = cy * 0.28 + scrollC * 0.12;
-    group.position.y = -scrollC * 0.22 + Math.sin(autoT * 0.7) * 0.02;
-    const a = autoT * 0.55;
+    const dt = Math.min(clock.getDelta(), 0.05);
+    // WCAG 2.2.2: no indefinitely self-moving content. Autonomous motion
+    // (rotation, bob, satellite orbit, pin pulse) runs only during the ~6s
+    // entrance window — render time, matching the old settle budget — and
+    // then freezes permanently. Drag and arrow keys stay live at any time;
+    // user-driven motion is not subject to the settle and never restarts it.
+    const animT = Math.min(clock.elapsedTime, 6);
+    if (!dragging && clock.elapsedTime < 6) yaw += dt * 0.22;
+    group.rotation.y = yaw;
+    group.rotation.x = pitch;
+    group.position.y = Math.sin(animT * 0.7) * 0.02;
+    const a = animT * 0.55;
     sat.position.set(Math.cos(a) * R * 1.22, Math.sin(a) * R * 0.42 + 0.28, Math.sin(a) * R * 1.05);
     pins.forEach((s) => {
-      const ph = (autoT * 1.1 - (s.userData.i as number) * 0.9) % 2.2;
+      const ph = (animT * 1.1 - (s.userData.i as number) * 0.9) % 2.2;
       const sc = 0.34 + Math.max(0, Math.sin((Math.min(ph, 1.4) / 1.4) * Math.PI)) * 0.13;
       s.scale.set(sc, sc, 1);
     });
@@ -277,9 +318,12 @@ function initGlobe(THREE: ThreeModule, mount: HTMLDivElement, onFail: () => void
     cancelAnimationFrame(raf);
     visIo.disconnect();
     document.removeEventListener("visibilitychange", onVisibility);
-    window.removeEventListener("pointermove", onPointer);
-    window.removeEventListener("scroll", onScroll);
     window.removeEventListener("resize", onResize);
+    canvas.removeEventListener("pointerdown", onDown);
+    canvas.removeEventListener("pointermove", onMove);
+    canvas.removeEventListener("pointerup", endDrag);
+    canvas.removeEventListener("pointercancel", endDrag);
+    canvas.removeEventListener("keydown", onKey);
     // Full GPU teardown: geometries + materials (textures included), then
     // the renderer and its context — repeated home mounts must not leak.
     scene.traverse((obj) => {
