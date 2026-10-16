@@ -1,4 +1,4 @@
-# Meridian Handbook — 05 · Content System
+# Meridian Product & Decision Handbook — 05 · Content system
 
 *How Meridian's learning content is made and kept honest. Read this before you touch a card, a clue, a place name, or anything a kid reads.*
 
@@ -25,9 +25,9 @@ And the fifth card rule, which stands apart because it is absolute: **No fabrica
 
 ---
 
-## 3. The hooks: 8,420 of them, and the four places that must stay hookless
+## 3. The hooks: 8,797 of them, and the four places that must stay hookless
 
-Meridian ships **8,420 enrichment hooks** — the one-liner place histories attached to catalog places (history-first per principle 1). They came from a Wikipedia merge (PRs #52/#53, live on main) with an automated crawl plus a validator (38/38 tests on the content pipeline).
+Meridian ships **8,797 enrichment hooks** (counted 2026-10-16 by the game's own definition — fact text ≥20 chars, else the history sentence ≥20 chars; the older 8,420 figure from 2026-10-02 is stale, recompute against the tree, don't trust it) — the one-liner place histories attached to catalog places (history-first per principle 1). They came from a Wikipedia merge (PRs #52/#53, live on main) with an automated crawl plus a validator.
 
 Critical newcomer knowledge: **not every place has a hook, and four places must never get one.** These are intentional, not missing data:
 
@@ -72,7 +72,7 @@ Content does not land on vibes. In order:
 
 1. **`node scripts/lint-cards.mjs` must print `GATE PASSED`.** This is the prebuild card gate — content fails here, the build stops.
 2. **`npx tsc --noEmit`** and **`npm test`** — the same gates as code; content files participate.
-3. **The clue validator** (composer + hardened validator, 38/38 tests on `feat/geodetective-clues`): name-leak ban, per-clue source fields, reading level, difficulty + aliases — every set, automated.
+3. **The clue validator** (composer + hardened validator, 41 tests in `scripts/clues/validate-clues.test.mjs`): name-leak ban, per-clue source fields, reading level, difficulty + aliases — every set, automated.
 4. **Veeresh's sampling review** — for human judgment calls the validator can't make (tone, the retell test, locked copy).
 
 Working conventions for content branches: feature branch → PR → merge (main is protected); **stage named files only, never `git add -A`**; every branch carries `BRANCH_STATUS.md`; push early and often.
@@ -89,7 +89,7 @@ Working conventions for content branches: feature branch → PR → merge (main 
 
 ```mermaid
 flowchart LR
-    A["Source data<br/>GeoNames allCountries.zip<br/>124,690 places · tiers 1–5"] --> B["Enrichment<br/>Wikipedia merge →<br/>8,420 history hooks"]
+    A["Source data<br/>GeoNames allCountries.zip<br/>124,690 places · tiers 1–5"] --> B["Enrichment<br/>Wikipedia merge →<br/>8,797 history hooks"]
     B --> C["Authoring<br/>cards per 4 principles<br/>(PR #28 = standard)<br/>clues per prompt v1 FINAL"]
     C --> D["Validation<br/>lint-cards GATE PASSED<br/>leak scans · build gates"]
     D --> E["Shipped assets<br/>place catalog · clue JSONs<br/>baked audio + manifests"]
@@ -98,6 +98,8 @@ flowchart LR
     style D fill:#fdf6e3,stroke:#77591f
     style F fill:#eef3e6,stroke:#33503f
 ```
+
+*Diagram in words: GeoNames source data → Wikipedia enrichment → validation gates (the Hyderabad rule, the clue validators) → the shipped catalog; anything that fails validation loops back or is rejected — it never ships.*
 
 Notice what the pipeline does **not** contain: no LLM drafting place facts. The "no fabrication" rule (§2) is architectural, not aspirational.
 

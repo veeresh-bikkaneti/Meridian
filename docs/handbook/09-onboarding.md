@@ -1,4 +1,4 @@
-# Onboarding: Your First Week on Meridian
+# Meridian Product & Decision Handbook — 09 · Onboarding: your first week
 
 Welcome. This chapter is a gentle guide to your first week — whether you're a human joining the crew or an AI agent spinning up to help. It assumes you know how to build software but know nothing about Meridian. By the end you'll know where everything lives, how work flows, how to avoid the classic mistakes, and who to ask for what.
 
@@ -69,7 +69,7 @@ After merging, the Comprehensive System Overview runs on main (conflict-marker g
 
 Memorize these. Each one has happened, and each one is still an open invitation to repeat the mistake.
 
-1. **Altering the locked donation copy.** "Grown-ups — buy me a coffee? ☕" and "Your support keeps Meridian free for kids" are byte-locked. Any alteration — even a "fix" — is an instant BLOCK. The same goes for the locked storyteller hint wordings in §8's glossary.
+1. **Altering the locked donation copy.** "Grown-ups — buy me a coffee? ☕" and "Your support keeps Meridian free for kids" are byte-locked. Any alteration — even a "fix" — is an instant BLOCK. The same goes for the locked storyteller hint wordings in §6's glossary.
 2. **Trusting builder claims instead of verifying.** "The branch says it's green" is a hypothesis. Re-inspect the code, re-run the tests, re-check the consumers. The #121 crew's "all green" missed 5 real BLOCKs.
 3. **Writing "owner approved" without a citation.** Branch docs are claims, not facts. If you write that Veeresh decided something, cite his actual words with a date (message handle + date). An uncited owner-decision claim is itself a BLOCK.
 4. **Breaking an existing feature.** New features must not break old ones — full stop. Regressions block the feature no matter how small it is. Run the full gates and the E2E for adjacent surfaces; use baseline-main runs to tell pre-existing failures from regressions.
@@ -85,7 +85,7 @@ Memorize these. Each one has happened, and each one is still an open invitation 
 
 **Scout Map.** The session-only lightweight map fallback shown when the satellite tiles fail (one retry, then the dialog offers it). Veeresh's D3 decision ("Keep it", 2026-10-15) — it was the gamestudio-subagents crew's recommendation first. The choice dialog is PR #147 (OPEN).
 
-**Tier split.** The globe's two-tier rendering (`globeTierSplit` in `flags.json`): full 3D globe on capable GPUs, lighter path otherwise. Shipped and live on main since #148 (2026-10-15).
+**Tier split.** The tier split (`globeTierSplit` in `flags.json`): the Globe loads only the fame-tier files for the selected difficulty (Easy t1+t2, Medium t2–t4, Hard t4+t5) instead of all five. Shipped live by PR #148 (2026-10-15). (Low-GPU devices get the separate Scout Map offer — see ch06.)
 
 **WS-\*.** The workstream program. The ones you'll see referenced: WS-0 test harness (recommended first), WS-2 social previews (shipped via #155 — the `og:`/`twitter:` share tags), WS-3 Scout toggle regression test, WS-4 satellite-failure phase 1 (shipped via #148), WS-5 home weight (the 377 kB `grandpa-directions.webp`).
 
@@ -97,9 +97,9 @@ Memorize these. Each one has happened, and each one is still an open invitation 
 
 **Frozen press law.** The app's canonical button-press feel (inherited from the old `.atlas-card`): 200ms pop-over release at rest, 80ms glide into the press. Don't invent new press timings without a reason.
 
-**TTS voices (the audio chapter in brief).** Narration runs on **Kokoro TTS** (Hugging Face): build-time narration with karaoke highlighting, Web Speech as fallback. Two voices, and the split is deliberate: **TruthTeller** speaks the storyteller's six greetings; **am_fenrir** speaks the story/hook/reveal/summary lines (Veeresh's #137 decision, 2026-10-11 — chosen to require zero new voice work). The grandpa poke clips (01–05, #153) are am_fenrir at 1.05 speed, and mute stays text-only.
+**TTS voices (the audio chapter in brief).** Narration runs on **Kokoro TTS** (Hugging Face): build-time narration with karaoke highlighting, Web Speech as fallback. Two voices, and the split is deliberate: **TruthTeller** speaks the storyteller's six greetings; **am_fenrir** speaks the story/hook/reveal/summary lines (Veeresh's #137 decision, 2026-10-11 — chosen to require zero new voice work). The storyteller poke clips (poke-01…05) ship in the greeting voice (TruthTeller, per #137), and mute stays text-only.
 
-**Storyteller.** The page's read-aloud companion and mascot. His personality is written into the kid-friendly blurb principles: (1) history first, modern identity second; (2) plain-spoken geography a kid can picture — never elevation or coordinates; (3) one memorable hook — if a kid can't retell it, the card failed; (4) short and story-like, stats only if they teach (records, firsts, biggests). His fixed lines: the home banner "Tap me to try again." and the story card "The words are right here — read along with me. Tap the replay button to try again." Taps stay seen (the invite doesn't reset), double-taps debounce at 600ms. Note: the rejected SVG mascot samples are history — Veeresh picks the page-mascot replacement, nobody else.
+**Storyteller.** The page's read-aloud companion and mascot. His personality is written into the kid-friendly blurb principles: (1) history first, modern identity second; (2) plain-spoken geography a kid can picture — never elevation or coordinates; (3) one memorable hook — if a kid can't retell it, the card failed; (4) short and story-like, stats only if they teach (records, firsts, biggests). His fixed lines: the home banner "Tap me to try again." and the story card "The words are right here — read along with me. Tap the replay button to try again." Per the 2026-10-14 #152 record, taps stay seen (the invite doesn't reset) — but note chapter 3's open conflict: current code also dismisses the tutorial invite card on figure tap. Unresolved; needs Veeresh's word. Double-taps debounce at 600ms. Note: the rejected SVG mascot samples are history — Veeresh picks the page-mascot replacement, nobody else.
 
 **Grandpa.** The grandpa mascot (real sprite sheets, not the rejected chibi) and his Coffee Run — the animated donation scene with the thought bubble carrying the locked donation copy. He also runs the grandpa tasting tour (sip-drink stops along the home page's trail) and reacts to pokes. Everything about him is warm and unhurried: he exists to make asking for support feel like family, not marketing.
 

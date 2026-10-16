@@ -1,4 +1,4 @@
-# Meridian Product & Decision Handbook — 06. Design & UX decisions
+# Meridian Product & Decision Handbook — 06 · Design & UX decisions
 
 > New here? Start with this page to learn *why Meridian looks the way it does*. Every decision below has an owner, a date, and a reason. Nothing here is "because someone said so" — the record says who, when, and what changed.
 
@@ -14,7 +14,7 @@ Three consequences that shape every design call:
 
 1. **The card is the product; the game is the delivery vehicle.** Every reveal shows a kid-friendly blurb — right or wrong — that a kid can retell. The house rule (Veeresh, 2026-10-01): history first, modern identity second; plain-spoken geography kids can picture (never elevation numbers or coordinates); one memorable hook (person/quote/event/movie/record) — *if a kid can't retell it, the card failed*.
 2. **Difficulty tiers are learning scaffolding, not gamer difficulty** (famous-first → obscure), like reading levels.
-3. **Accessibility is a product value, not a checklist** — see §8. When the review team and the shipping schedule collide, Veeresh has repeatedly chosen the player over the deadline.
+3. **Accessibility is a product value, not a checklist** — see §7. When the review team and the shipping schedule collide, Veeresh has repeatedly chosen the player over the deadline.
 
 Also permanent, from Veeresh 2026-10-01: **no paywalls, ever.** Donation copy is locked — "Grown-ups — buy me a coffee? ☕" / "Your support keeps Meridian free for kids" — and altering either line is a merge-blocker in every review.
 
@@ -38,20 +38,20 @@ Supporting rules, all still standing:
 
 ## 3. Home design history — atlas → premium v5
 
-### The atlas home (before 2026-10-15)
+### The atlas home (until 2026-10-16)
 
-The original home: a chart-room styled homepage with edition cards (State / Country / Globe), the storyteller banner, the grandpa tour mascot, and the GeoDetective entry. Compact eyebrow cluster (Field Atlas eyebrow → Comet emblem → sound toggle), v5-era review in `docs/homepage-v5-scrum-review.md`.
+The original home: a chart-room styled homepage with edition cards (State / Country / Globe), the storyteller banner, the grandpa tour mascot, and the GeoDetective entry. Compact eyebrow cluster (Field Atlas eyebrow → Comet emblem → sound toggle); the v5 review lives in `docs/homepage-v5-scrum-review.md`.
 
 ### The premium v5 redesign — PR #158 (merged 2026-10-16)
 
-Veeresh commissioned a premium redesign from a mock (`~/workspace/your_files/meridian-homepage-mock-v5/`); the record attributes the commission to **Liz** (2026-10-15), with Veeresh's acceptance of v5 established by his merge decision on 2026-10-16. Liz's crew ported the mock into the real homepage (branch `feat/homepage-premium-v5`, ~25 files, +1861/−340).
+Liz commissioned the premium v5 build (2026-10-15), built by her crew from the mock Veeresh supplied; Veeresh accepted the design by merging PR #158 (squash e9bf739) on 2026-10-16. Liz's crew ported the mock into the real homepage (branch `feat/homepage-premium-v5`, ~25 files, +1861/−340).
 
 What shipped (squash-merged **e9bf739**, 2026-10-16, live on `meridian.knowledgetest.workers.dev`):
 
 - **Editorial hero card** — headline, subcopy, BEGIN EXPLORING, difficulty pills, mountain illustration.
-- **Lazy Three.js globe** (`src/components/home-globe.tsx`) — `three@0.160.0`, dynamically imported only when the hero approaches (IntersectionObserver), DPR ≤ 1.5, `MeshStandardMaterial`, no post-processing; reduced-motion / Save-Data / WebGL-or-import failure → static texture disc; full disposal on unmount.
+- **Lazy Three.js globe** (`src/components/home-globe.tsx`) — `three@0.160.0`, dynamically imported only when the hero approaches (IntersectionObserver — the browser's 'nearly on screen?' signal), DPR ≤ 1.5 (pixel sharpness capped so phones don't overwork), `MeshStandardMaterial` (Three.js's standard lit material), no post-processing; reduced-motion / Save-Data / WebGL-or-import failure → static texture disc; full disposal on unmount.
 - **GeoDetective / Cold Trail case cards** with icon badges, streak line, earned-badges row.
-- **Dark Expeditions Map card** — the design's dark anchor hosting the three real edition actions (State / Country / Globe) at 6.94:1 focus contrast (see §8).
+- **Dark Expeditions Map card** — the design's dark anchor hosting the three real edition actions (State / Country / Globe) at 6.94:1 focus contrast (see §7).
 - **Bottom row** — Review-my-misses, journal, grown-ups cards; grandpa tour + coffee-run scene below.
 
 Deliberate deviation from the mock (documented in the review): type uses the repo's self-hosted **Fraunces + Karla** instead of the mock's Google Fonts — preserving the offline/PWA brand system. Tap targets raised to the repo's ≥44px standard.
@@ -62,8 +62,8 @@ The mock's author (Liz's crew) ran their own Scrum review first: the independent
 
 Chitti's independent re-review then found **two BLOCKs** on the review head:
 
-1. **Invisible keyboard focus ring** on the dark Expeditions card — the global `:focus-visible` outline `#77591f` measured **1.37:1** against the card's forest green `#33503f`, under the 3:1 WCAG non-text bar. Cured by a scoped pale-cream ring (`#efe3bc`, **6.94:1** on the lightest gradient stop) — see §8.
-2. **Documentation integrity** — the cited report didn't exist in the repo, `BRANCH_STATUS.md` was stale, and an "(owner order)" comment lacked a citation. All cured before merge.
+1. **Invisible keyboard focus ring** on the dark Expeditions card — the global `:focus-visible` outline `#77591f` measured **1.37:1** against the card's forest green `#33503f`, under the 3:1 WCAG non-text bar. Cured by a scoped pale-cream ring (`#efe3bc`, **6.94:1** on the lightest gradient stop) — see §7.
+2. **Documentation integrity** — the cited report didn't exist in the repo, `BRANCH_STATUS.md` was stale, and an "(owner order)" comment lacked a citation. Cured before merge — with one attribution still open: the cure's comment names "Liz's eyebrow call, 2026-10-07/08" while the repo record says "Owner directive 2026-10-09"; which is right awaits Veeresh's one-word confirm.
 
 The live assistive-technology exception was then closed with a **literal Orca screen-reader session on the VM (2026-10-16)**: Orca 46.1 + speech-dispatcher + espeak-ng, real browser, keyboard-only. Orca announced the Scout dialog and its focus trap, read the difficulty toggles with pressed states, announced every home control with its role, and — Enter on Globe — announced the game question itself ("Find Hillsborough, Auckland, New Zealand."). One nit: "Fetching this region's places…" was announced twice. A literal NVDA/VoiceOver pass on a real device has still never run — OPEN, not claimed.
 
@@ -81,7 +81,7 @@ Two related decisions, often confused. They are separate:
 
 **The Scout Map offer (standing policy, `docs/scout-offer-policy.md`):** on capable-device detection (probe / low memory) or after a `webglcontextlost` crash, the app offers a lighter **Scout Map**. The non-nag rule is strict: an explicit answer is **never re-asked**; dismissal persists nothing; the crash auto-switch decays after 7 days; the manual settings toggle always wins.
 
-**The D3 tile-failure fallback (decided 2026-10-15):** when satellite imagery fails to load, the player gets **one retry**. If that retry also fails, the map switches automatically to Scout Map **for this visit only** — nothing is persisted, and the next visit tries the full map again. Provenance: the fallback was **recommended by the gamestudio-subagents crew** (a crew recommendation, never Veeresh's initial ruling); Veeresh adopted it with a plain **"Keep it"** on 2026-10-15. It does not touch the saved-mode rules above and does not suppress the boot offer. (WS-4 phase 1 spec: `docs/ops/specs/ws-4-satellite-failure-phase1.md`.)
+**The D3 tile-failure fallback (D3 = item 3 on the decision log; decided 2026-10-15):** when satellite imagery fails to load, the player gets **one retry**. If that retry also fails, the map switches automatically to Scout Map **for this visit only** — nothing is persisted, and the next visit tries the full map again. Provenance: the fallback was **recommended by the gamestudio-subagents crew** (a crew recommendation, never Veeresh's initial ruling); Veeresh adopted it with a plain **"Keep it"** on 2026-10-15. It does not touch the saved-mode rules above and does not suppress the boot offer. (WS-4 phase 1 spec: `docs/ops/specs/ws-4-satellite-failure-phase1.md`.)
 
 ---
 

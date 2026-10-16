@@ -1,4 +1,4 @@
-# Meridian Product & Decision Handbook — 07. Engineering & ops
+# Meridian Product & Decision Handbook — 07 · Engineering & ops
 
 > The technical spine of the product: what it's built with, how code ships safely, what breaks and how we know, and the operational traps that have bitten before. New engineers and agents: read 06 first for the *why*, then this page for the *how*.
 
@@ -24,7 +24,7 @@ The mechanism is deliberately zero-cost: a versioned `public/flags.json`, a tiny
 | Flag | Repo default | Off behavior | Production state |
 |---|---|---|---|
 | `pwaUpdateToast` | `true` | Unregisters any live SW; plain web app, no update toast | on |
-| `learningOutcomes` | `false` | No learning records, no growth UI — today's app exactly | off (dark) |
+| `learningOutcomes` | `false` (code default in `flags.ts`) | No learning records, no growth UI | **on** — flipped by owner decision 2026-10-04 (PR #45, config-only); the shipped `public/flags.json` carries `true` |
 | `globeTierSplit` | `false` | Globe loads all five fame-tier files, deals the full canonical pool | **on** (shipped live by PR #148) |
 
 Rules every engineer must internalize (`docs/feature-flags.md`):
@@ -60,9 +60,9 @@ Standing rules around those gates:
 
 **Veeresh, 2026-10-10: the pipeline must be receivable any time a user hits a problem.** Game → Worker → Discord is verified live.
 
-- **Worker:** `meridian-crash-report` at `https://meridian-crash-report.knowledgetest.workers.dev` (`/health`, `/ingest`). `npm run smoke:crash` exercises it (4/4). The game worker is deployed by direct API `version_upload` — there is **no** Pages project, no GitHub workflow, no in-repo wrangler config; Veeresh deploys it manually.
+- **Worker:** `meridian-crash-report` at `https://meridian-crash-report.knowledgetest.workers.dev` (`/health`, `/ingest`). `npm run smoke:crash` exercises it (4/4). The receiver (`meridian-crash-report`) is a Cloudflare Worker deployed as a separate, explicit step — repo docs prescribe `wrangler deploy` from `worker/observability/`. The game worker (`meridian`) deploys through Workers Builds on main. A separate record (2026-10) describes manual `version_upload` deployments of the crash receiver — that conflict needs Veeresh's one-line confirmation.
 - **Event model** (`docs/observability.md`): field crashes on phones are usually *process kills* (jetsam) — no JS error fires. So the app keeps a **breadcrumb trail** in `sessionStorage` (last 12 milestones: boot → map ready → game loaded) and detects the crash by **asymmetry at next boot** (dirty clean-exit flag + a previous breadcrumb → one `suspected_crash` event carrying the previous trail).
-- Event types: `suspected_crash`, `js_error`, `unhandled_rejection`, `map_error`, `webgl_context_lost`.
+- Event types: `suspected_crash`, `js_error`, `unhandled_rejection`, `map_error`, `webgl_context_lost`, `tile_failed`.
 - **Privacy:** no PII, no coordinates, no guess content, no stack traces — error name + message only, truncated; per-tab random session id; client hard-caps events at 4096 bytes. Delivery is at-most-once; with no endpoint configured the emitter is a complete no-op.
 - The endpoint is configured via a top-level `observabilityEndpoint` field in `flags.json` (not the flags map), so it flips on a static deploy with no client release.
 - **OPEN:** Resend API key + report email still not set. **CORS `*` accepted** (no cookies/auth involved).
@@ -140,6 +140,8 @@ flowchart LR
     Browser -->|sendBeacon/fetch<br/>at-most-once, no PII| CrashW --> Discord
 ```
 
+*Diagram in words: the player's browser runs the prerendered app, reads flags.json network-first through the service worker, and sends crash breadcrumbs at-most-once to the separate crash-report worker, which forwards events to Discord; GitHub is the source, Cloudflare serves it.*
+
 Live check: fetch `https://meridian.knowledgetest.workers.dev/sw.js` and read the `meridian-<sha>` stamp — that is ground truth for which build is actually serving.
 
 ---
@@ -150,5 +152,5 @@ Live check: fetch `https://meridian.knowledgetest.workers.dev/sw.js` and read th
 - `docs/feature-flags.md` — one-purpose rule (Veeresh 2026-10-03), adopter pattern, catalog, boot-time semantics.
 - `docs/observability.md` — breadcrumb/next-boot crash detection, event types, privacy, endpoint config.
 - `docs/scout-offer-policy.md` — Scout offer rules.
-- `docs/learning-outcomes.md` — learning-outcome instrumentation design (LIVE flag `learningOutcomes`, default off).
+- `docs/learning-outcomes.md` — learning-outcome instrumentation design (LIVE flag `learningOutcomes` — code default off, shipped on since PR #45).
 - Memory record: dual hosting, Workers deploy method, crash pipeline verification, COPPA-safe analytics, branch-protection state + merge traps (#148/#155/#157), PR #34 rule, pre-existing issues (#418 2026-10-16, tapstart ×7, stale node_modules), secrets follow-ups, review lessons (byte-level escapes, branch docs are claims).

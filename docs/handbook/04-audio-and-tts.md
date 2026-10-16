@@ -1,4 +1,4 @@
-# Meridian Handbook — 04 · Audio & TTS
+# Meridian Product & Decision Handbook — 04 · Audio & TTS
 
 *The sound story: the voices that read to kids, the instruments that answer "how close am I?", and the environment quirk that will ambush you if nobody warns you.*
 
@@ -27,10 +27,11 @@ The decision wasn't made on paper. On **2026-09-29**, Veeresh *listened* to a Ko
 
 | Voice | Used for | Personality |
 |---|---|---|
-| **TruthTeller** | Greetings — the page-mascot welcome lines (Comet the star-dragon pup), a *different* greeting line every day | Warm, welcoming, documentary-narrator ease. Short, friendly, never salesy. |
+| **TruthTeller** | The Storyteller's home greetings (greet-01…06.mp3) — a *different* greeting line every day; the poke lines (poke-01…05.mp3) use this voice too | Warm, welcoming, documentary-narrator ease. Short, friendly, never salesy. |
 | **am_fenrir** | Story lines — story-card narration, clue hooks, reveal lines, summary lines | The same warm human narrator, now in *storytelling* register: unhurried, clear, kid-addressed. |
+| **avocado_v2:casper** (Comet — a separate casting, not part of #137) | Comet's daily home greetings (greet-01…12.mp3) | The excitable co-pilot: a 'confident storyteller' — suspense + excitement, movie-trailer energy (2026-10-06). An original voice; never present it as a celebrity impression. |
 
-Decision #137 also said "zero new work" — these two voices cover everything; don't invent a third.
+Decision #137 also said "zero new work" — the Storyteller's two voices cover everything he says; don't invent another. (Comet's row is a separate casting from the mascot program.)
 
 The delivery rule: **audio greeting plays when sound is on; animated-text greeting plays when audio is off** (the both-vs-text nuance was delegated to the Game Designer agent). Veeresh's bar is concrete: on **2026-09-29** he heard the proof and said the tone was right but he *could not see the rendering* — which became a standing requirement, covered in §4.
 
@@ -38,7 +39,7 @@ The delivery rule: **audio greeting plays when sound is on; animated-text greeti
 
 ```mermaid
 flowchart LR
-    A["Script text<br/>(story cards, greeting lines)"] --> B["Kokoro synth<br/>Hugging Face weights<br/>SHA-256 verified, pinned CPU toolchain"]
+    A["Script text<br/>(story cards, greeting lines)"] --> B["Kokoro synth<br/>Hugging Face weights<br/>local cache, downloads disabled"]
     B --> C["Baked assets<br/>audio files +<br/>word-timestamp manifests"]
     C --> D["Narration player<br/>karaoke read-along<br/>highlighting"]
     D --> E["Rendered controls<br/>visible on screen<br/>Veeresh inspects here"]
@@ -47,12 +48,14 @@ flowchart LR
     style E fill:#eef3e6,stroke:#33503f
 ```
 
+*Diagram in words: script text → local Kokoro synthesis → mastered mp3s shipped in the app → the narration controls (read-aloud preference, sound toggle, replay); Web Speech is a fallback-only path with no baked audio.*
+
 Practical notes a newcomer needs:
 
 - Weights come from **Hugging Face** (official Kokoro source) — any proposed non-official source requires an explicit explanation before approval is even asked for (Veeresh's standing rule).
-- The model-weight **SHA-256 is verified** against the recorded value before synthesis runs; the toolchain is CPU-only and pinned (`pip-audit` results recorded at synthesis time).
+- Weights come from the local Hugging Face cache; the render scripts run with remote models disabled (`allowRemoteModels=false`), so a run **fails loudly rather than downloading anything**. (There is no weight-hash check or pip-audit in the in-repo Node toolchain — an earlier draft of this chapter claimed both; the scripts are the truth.)
 - Synthesis scratch files are gitignored; only the finished audio + manifests are committed.
-- Voice coverage decision (from the same program): US + UK only — after being told Kokoro has no credible free offline Australian voice, Veeresh said "US and UK should be fine."
+- Voice coverage decision (from the system-design course listen-mode program that first proved Kokoro — **not** a Meridian game-voice decision): US + UK only — after being told Kokoro has no credible free offline Australian voice, Veeresh said "US and UK should be fine."
 
 ---
 
@@ -120,7 +123,7 @@ The second audio system. The design document is the source of truth: **`docs/sfx
 - **Lazy AudioContext** — created on the first user gesture only (autoplay policy); `webkitAudioContext` fallback; idempotent init (React StrictMode double-effects).
 - **Never crashes, never blocks** — every play function guards and no-ops silently in SSR/jsdom; sounds are fire-and-forget, never awaited, never gating gameplay.
 - **Enhancement only** — every sound has a visual equivalent on screen. Sound is never the sole signal (this is a hard product rule).
-- **Persisted toggle** — `localStorage` key `meridian.sound`, speaker icon in the home header. **Default: ON** (Veeresh's standing open call — flipping to OFF first-run is a one-line change if he wants it).
+- **Persisted toggle** — `localStorage` key `meridian.sound`, speaker icon in the home header. **Default: ON** — whether it stays ON for first-run is an **open owner call** (not traced to a recorded ruling; flipping to OFF first-run is a one-line change).
 - **Reduced motion does NOT mute sound** — motion and sound are orthogonal; the sound toggle is the "reduced sound" control. That was the audio designer's documented call.
 - **Mix ceiling:** master gain 0.8 into a compressor, no clipping ever; ≤ 8 concurrent voices with priority stealing (ring/win/lose never stolen by UI blips); no sound longer than 1.2 s; everything phone-speaker-friendly (fundamentals 98–1600 Hz).
 
@@ -138,7 +141,7 @@ The second audio system. The design document is the source of truth: **`docs/sfx
 
 - **LIVE:** all Web Audio SFX above (editions + GeoDetective + celebrations); the sound toggle; the storyteller voice personas (TruthTeller greetings, am_fenrir story lines).
 - **OPEN (tracked):** GeoDetective Web Audio SFX — the mode's own sound design still has an open issue against it.
-- **Veeresh's open call:** sound default ON vs OFF for first-run quiet (one line to change; currently ON).
+- **Open owner call (undecided, no recorded ruling):** sound default ON vs OFF for first-run quiet (one line to change; currently ON).
 - **Ongoing:** the "real game audio" goal — richer, more musical feedback layered over the SFX foundation — is still in progress, not a shipped feature. Don't present SFX as finished artistry.
 
 ---
@@ -149,5 +152,5 @@ The second audio system. The design document is the source of truth: **`docs/sfx
 - Repo `docs/sfx-spec.md` — current spec incl. celebration extension §§2.7–2.15 and loop-voice rules (read this one first).
 - Memory 2026-09-29 — Kokoro proof narration ("This is what I wanted"), read-along visibility requirement, hybrid TTS plan, US+UK voice coverage.
 - Memory 2026-10-06 — SFX PRs #75/#78/#81, page-mascot voice decisions (pre-made audio = the one assets exception), sound-toggle behavior.
-- Memory 2026-10-11 — decisions #136 (hint wording), #137 (TruthTeller / am_fenrir), sound default-ON open call.
+- Memory 2026-10-11 — decisions #136 (hint wording), #137 (TruthTeller / am_fenrir), the sound default-ON question (open, unruled).
 - `~/TOOLS.md` — the huggingface_hub / no_proxy / httpx quirk and its workarounds.

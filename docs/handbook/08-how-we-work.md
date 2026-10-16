@@ -1,4 +1,4 @@
-# How We Work
+# Meridian Product & Decision Handbook — 08 · How we work
 
 The collaboration system behind Meridian. Read this before you review a pull request, touch a branch, or ask Veeresh anything. It explains the people, the pipeline, the rules, and the mistakes we refuse to repeat.
 
@@ -32,7 +32,7 @@ Chitti commits as `Chitti <57240576+veeresh-bikkaneti@users.noreply.github.com>`
 Liz runs delegated Meridian content work on her own VM with an AI-agent crew, relayed through chat. (Whether Liz is human or AI is not established.) Her delegation boundary is **content pipelines, not mode code**:
 
 - GeoDetective clue production (387 validated five-tier sets, landed 2026-10-05, PR #59).
-- Wikipedia enrichment (8,420 hooks, PRs #52/#53).
+- Wikipedia enrichment (8,797 hooks, PRs #52/#53).
 - Per Veeresh's standing rules (2026-10-04): relay her instructions **verbatim** — paraphrases get misread; ship incrementally; blocked-means-wait; brief/build-plan/prompt updates keep locked rules untouched.
 
 Her reach has extended into product design: the repo record credits her with commissioning the v5 homepage redesign (2026-10-15), which Veeresh accepted with his explicit "Merge #158" on 2026-10-16. Some provenance claims in branch docs need Veeresh's citation (see §7 — branch docs are claims, not facts).
@@ -100,6 +100,8 @@ flowchart TD
     K -->|Healthy| M[Live verify<br/>workers.dev stamp = merge SHA<br/>no console errors]
 ```
 
+*Diagram in words: branch → repo gates → the 12-role panel plus live E2E → any BLOCK loops back to fixes; even with no BLOCKs, the merge waits for Veeresh's exact word → squash merge → protection restored → live verification.*
+
 ---
 
 ## 3. The merge law
@@ -142,7 +144,7 @@ These are the rules written in past mistakes. New reviewers: internalize them be
 6. **Branch docs are claims, not facts** (skill rule 11). Every "owner approved / owner decided / agreed by the owner" line must cite Veeresh's actual words (message + date). A `BRANCH_STATUS.md` "SAFE TO MERGE" line must list every unresolved panel BLOCK. An uncited owner-decision claim is itself a BLOCK. (Lesson 2026-10-15: WS-4 docs turned a crew recommendation into "Owner decision (2026-10-14)"; D3 stayed unruled until Veeresh said "Keep it" the next day. On #158, the cited scrum report didn't exist in the repo at all.)
 7. **Scope to the true commit range** (`git log origin/main..branch`) — branches carry stale replays. **Silent merge hazard:** identical declarations on both branches auto-merge without conflict markers — the duplicate declaration is caught only by tsc (#153 lesson).
 8. **E2E harness workarounds can mask production bugs — treat them as bug reports.** If the harness force-repairs something the product should do itself, fix production and remove the workaround (2026-09-29: `repairMapContainer()` hid a real 0px-collapse bug).
-9. **Check required-context drift before every merge** (dance step 0): the stored check name `build` no longer matches the actual job `build (22.x)`. Report drift, get Veeresh's word to correct the stored name; temp-lifting around it is a last resort.
+9. **Check required-context drift before every merge** (dance step 0): required-check names have drifted before (Oct 2026: the stored `build` vs the actual job `build (22.x)`); re-check the stored name against the workflow's job name before every merge. Report drift, get Veeresh's word to correct it; temp-lifting is a last resort.
 
 ---
 

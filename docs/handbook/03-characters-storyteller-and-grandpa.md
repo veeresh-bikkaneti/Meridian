@@ -1,4 +1,4 @@
-# Chapter 3 — The Characters: Storyteller & Grandpa
+# Meridian Product & Decision Handbook — 03 · The characters: Storyteller & Grandpa
 
 *Meridian Product & Decision Handbook*
 
@@ -156,7 +156,7 @@ Two pieces of behavior a new agent must not break:
 | Character | Voice | Where used | Status |
 |---|---|---|---|
 | Storyteller | **TruthTeller** | Home greetings (greet-01…06.mp3) | Kept — Veeresh's decision 2026-10-11 (PR #137), zero new work |
-| Storyteller | **am_fenrir** (Kokoro-82M, en-us male) @ speed 1.05 | Story lines: reveal / hook / summary + poke lines | Live; the game designer's 2026-10-08 pick ("trailer energy") |
+| Storyteller | **am_fenrir** (Kokoro-82M, en-us male) @ speed 1.05 | Story lines: reveal / hook / summary | Live; the game designer's 2026-10-08 pick ("trailer energy"). The poke lines ship in the greeting voice (TruthTeller) — see the poke section |
 | Comet | **avocado_v2:casper** ("confident storyteller") | Comet's daily greetings (greet-01…12.mp3) | Live; original voice, never a celebrity impression |
 | Grandpa | *(no spoken lines — see §2)* | — | — |
 
@@ -360,7 +360,7 @@ Follow them in order:
    scoring system sucks" → difficulty tiers as learning scaffolding, not
    gamer difficulty) flows from the same root.
 4. **Devs never invent kid copy.** Kid-facing lines come from the copy pack
-   (`~/workspace/specs/storyteller-copy.md`) or the narrative designer.
+   (the copy pack the code cites as `~/workspace/specs/storyteller-copy.md` — that file is not present in this workspace; the pack's Sections 0–3 live lifted-verbatim in `src/components/storyteller-home-copy.ts`) or the narrative designer.
    Locked lines are byte-identical — do not edit, do not "improve."
 5. **No name-dropping the machinery.** Never reference TTS engines, model
    names, or voice providers in code comments or UI. (Comet's voice is an
@@ -375,7 +375,7 @@ Follow them in order:
 | Character | Voice | Where used | Status |
 |---|---|---|---|
 | Storyteller | **TruthTeller** | Home greetings (greet-01…06.mp3) | Kept — Veeresh 2026-10-11 (PR #137) |
-| Storyteller | **am_fenrir** (Kokoro-82M, en-us male @ 1.05) | Story lines (reveal/hook/summary) + poke lines | Live; local/offline Hugging Face pipeline |
+| Storyteller | **am_fenrir** (Kokoro-82M, en-us male @ 1.05) | Story lines (reveal/hook/summary) | Live; local/offline Hugging Face pipeline. Poke lines use the greeting voice (TruthTeller) |
 | Comet | **avocado_v2:casper** ("confident storyteller") | Daily home greetings (greet-01…12.mp3) | Live; original voice |
 | Grandpa | *(no spoken lines)* | Animation + timing only | By design — his "voice" is the walk |
 
@@ -413,7 +413,7 @@ standards, regeneration contract): **Chapter 4 — Audio & TTS**.
   celebration copy
 - `~/workspace/specs/meridian-place-accessibility-overhaul.md` §3 — locked
   copy immutability, no paywalls, COPPA-safe (Design Principles)
-- `~/workspace/specs/storyteller-copy.md` — the copy pack (Sections 0–3
+- The copy pack cited by the code as `~/workspace/specs/storyteller-copy.md` — not present in this workspace; its Sections 0–3
   lifted verbatim into `storyteller-home-copy.ts`)
 - Decisions: PR #136 (2026-10-11 — hint wordings approved), PR #137
   (2026-10-11 — TruthTeller greetings + am_fenrir story lines),

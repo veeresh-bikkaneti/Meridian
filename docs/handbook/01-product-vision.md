@@ -1,4 +1,4 @@
-# Meridian Product Vision
+# Meridian Product & Decision Handbook — 01 · Product vision
 
 *The "why" behind everything. Read this first — the rest of the handbook is a list of decisions; this page explains the reasons they keep pointing back to.*
 

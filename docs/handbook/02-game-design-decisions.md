@@ -1,4 +1,4 @@
-# Meridian Game-Design Decisions
+# Meridian Product & Decision Handbook — 02 · Game-design decisions
 
 *The "what and how." Every section is one decision (or one bundle of related decisions): the rule, the exact numbers or copy, the date Veeresh decided it, and — most important for a new agent — the **why**.*
 
@@ -38,7 +38,7 @@ The engineering design doc (`docs/geodetective.md`) describes a **one-mystery-pe
 
 **Veeresh overruled this on 2026-10-06: GeoDetective is FULLY UNLIMITED.** His reasoning, in his words: *"1 mystery per day will kill the game."* The deck deals via a **shuffled-deck (Fisher–Yates, crypto RNG)** across all **387 validated clue files** (content gate cleared 2026-10-05, PR #59) — no daily gating, play as many cases as you want.
 
-Engineering notes that survive the change: the `meridian.loop.v1` namespace stays, the typeahead guess index (`names.json`, 119,039 entries) stays, and repeated places never consume a guess.
+Engineering notes that survive the change: the `meridian.loop.v1` namespace stays, the typeahead guess index (`names.json`, 119,038 entries) stays, and repeated places never consume a guess.
 
 ### Streaks and sharing (2026-10-06 / PR #130, 2026-10-11)
 
@@ -93,7 +93,7 @@ place    = min(400, round(base × diffMult × combo)) + region
 - **Session score accumulates across editions until "End game"** (the old "rounds" concept is dead — `ROUND_WEIGHTS` and friends were deleted).
 - The reveal shows a **per-difficulty breakdown**; the summary adds **average per place** (bounded 0–415, the comparable skill signal) and **best streak**.
 - **Grade tiers on the 0–415 range:** 🎯 300+ · 🏆 200+ · 🌟 120+ · 👏 60+ · 🙂 1+ · 💨 miss.
-- The difficulty chip sits on the question card (*"Hard · 2x"*) and the streak flame appears at **🔥 ≥ 2**.
+- The difficulty chip sits on the question card (*"Lesser-known · 2x"*) and the streak flame appears at **🔥 ≥ 2**.
 
 ## 5. Difficulty tiers & the picker
 
@@ -101,11 +101,13 @@ Five tiers, one per place (global, never per-edition — a place's tier is calib
 
 | Tier | Name | Mult | Meaning |
 |---|---|---|---|
-| 1 | Easy | 1x | Known to most people in the country (world: globally) |
-| 2 | Moderate | 1.25x | Known to most who follow the topic/region |
-| 3 | Challenging | 1.5x | Known within the state / nationally aware |
-| 4 | Hard | 2x | Obscure even within the state |
-| 5 | Extreme | 2.5x | Deep cut — locals or specialists only |
+| 1 | Famous | 1x | Known to most people in the country (world: globally) |
+| 2 | Well-known | 1.25x | Known to most who follow the topic/region |
+| 3 | Everyday | 1.5x | Known within the state / nationally aware |
+| 4 | Lesser-known | 2x | Obscure even within the state |
+| 5 | Hidden | 2.5x | Deep cut — locals or specialists only |
+
+*(Names as shipped in `src/game/scoring.ts`. The contract doc's older names — Easy / Moderate / Challenging / Hard / Extreme — are proposal-era; the code's names are what the player sees on the chip.)*
 
 Generated-place heuristic (GeoNames fields): population brackets (≥1M → 1 … <10k → 5), capital status bumps toward easier (national capital always tier 1), prominence overrides (UNESCO → 1–2, national parks → 2), **default 3** — "the middle of the pool is the safest place for an uncertain place." Hand-reviewed overrides in `data/difficulty-overrides.json` always win; the **327 curated starters keep their hand-set tiers** and are the reference for what each tier feels like.
 
@@ -149,7 +151,7 @@ meridian <date>
 ```
 
 - A **per-place emoji strip in play order** (no place names, no distances — no spoilers).
-- Streak shown spaced: `🔥 2 best streak` (hidden at 0).
+- Streak shown spaced: `🔥 2 best streak` (hidden below 2).
 - Grade tiers on the 0–415 range: 🎯 300+ · 🏆 200+ · 🌟 120+ · 👏 60+ · 🙂 1+ · 💨 miss.
 - **Session share omits the emoji strip** — sessions bank totals only (deliberate).
 
@@ -178,6 +180,8 @@ flowchart TD
     D -.-> I
     D -.-> J
 ```
+
+*Diagram in words: the picker (Globe → Country → State) feeds fail-closed dealing from the selected region's pool; each question runs guess → scoring → reveal with its story card, then the session share; GeoDetective and Cold Trail branch off the main deal as their own loops.*
 
 ## Sources
 
