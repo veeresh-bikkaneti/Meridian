@@ -13,6 +13,7 @@ import {
   unlabeledSpotEntry,
 } from "./evaluate.ts";
 import type { FetchLike } from "./evaluate.ts";
+import { preloadAdmin1Boundaries } from "../reverse-geocode.ts";
 import { submitGuess } from "./engine.ts";
 import { freshLoopPuzzleState } from "./store.ts";
 import type { LoopGuess, LoopNameEntry } from "./types.ts";
@@ -280,4 +281,25 @@ test("unlabeledSpotEntry: feeds the normal guess pipeline", () => {
   const played = submitGuess(freshLoopPuzzleState(0, 1), g, "geonames:123456");
   assert.equal(played.status, "playing");
   assert.equal(played.guesses.length, 1);
+});
+
+test("unlabeledSpotEntry: the name gets finer once admin-1 loads, the id never changes", async () => {
+  // Same tap, two sessions: before the admin-1 boundaries load the spot is
+  // named by its country; after they load it is named by its state. Only the
+  // label differs. The id keys the duplicate check, so it must not move.
+  // Keep this test LAST in the file: the preload is module-global state, and
+  // the country-only tests above assume it has not happened yet.
+  const before = unlabeledSpotEntry(-96.7, 40.8);
+  assert.equal(before.n, "united states of america");
+  assert.equal(before.r, "");
+
+  await preloadAdmin1Boundaries();
+  const after = unlabeledSpotEntry(-96.7, 40.8);
+  assert.equal(after.n, "nebraska");
+  assert.equal(after.r, "United States of America");
+  assert.equal(displayLoopName(after), "Nebraska, United States of America");
+
+  assert.equal(after.id, before.id);
+  assert.equal(after.lon, before.lon);
+  assert.equal(after.lat, before.lat);
 });

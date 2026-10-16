@@ -62,6 +62,12 @@ For extreme misses (~15,000 km) the gold ring polygon wraps the globe and
 renders degenerate — pre-existing for ANY far guess, not introduced here.
 Direction arrow draws correctly. Follow-up candidate, not this PR.
 
+## Review nits (2026-10-16 independent review: APPROVE-WITH-NITS, no blockers)
+- Nit 2 (name varies with admin-1 preload) — FIXED: new unit test; the name gets finer after `preloadAdmin1Boundaries()`, the id never changes.
+- Nit 4 (far-guess distance ring renders degenerate) — FILED as issue #166, not part of this PR.
+- Nit 3 (a tap on the target where no label shows burns a guess it can never win) — accepted: it follows the owner directive of 2026-10-12, and the confirm sheet shows the region name first.
+- Nit 1 (dedupe only catches taps within ~11 m, so two nearby taps with the same region name cost two guesses) — OPEN, owner decision: warning or blocking nearby same-name taps changes gameplay and needs copy.
+
 ## Ready to merge? NO
 
 ## What is pending?
