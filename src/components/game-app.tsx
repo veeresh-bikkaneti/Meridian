@@ -45,6 +45,13 @@ import { resolveRunPool } from "@/game/pool";
 import { loadedForKey, placesLoadKey, type LoadedFor } from "@/game/places-load-key";
 import type { MapMark, MapVariation } from "@/map/satellite-map";
 import { MapErrorBoundary } from "./map-error-boundary";
+import "./home-v5.css";
+import heroMountainUrl from "@/assets/home-v5/hero-mountain.webp";
+import desertRuinsUrl from "@/assets/home-v5/desert-ruins.webp";
+import patagoniaUrl from "@/assets/home-v5/patagonia.webp";
+import archiveToolsUrl from "@/assets/home-v5/archive-tools.webp";
+import journalTreeUrl from "@/assets/home-v5/journal-tree.webp";
+import binocularsHatUrl from "@/assets/home-v5/binoculars-hat.webp";
 import { Compass, Flag, Globe2, MapPin, Volume2, VolumeX } from "lucide-react";
 import {
   initAudio,
@@ -101,6 +108,10 @@ import {
 } from "@/game/age-profile";
 const AgeProfileSettings = lazy(() => import("./age-profile/AgeProfileSettings"));
 const StorytellerHomeHost = lazy(() => import("./storyteller-home"));
+// v5 hero globe: React.lazy like the storyteller host — the Three.js chunk
+// never lands in the initial bundle; HomeGlobe itself dynamically imports
+// three only when the hero nears the viewport.
+const HomeGlobe = lazy(() => import("./home-globe").then((m) => ({ default: m.HomeGlobe })));
 import {
   CelebrationOverlay,
   celebrationSeamSpec,
@@ -2138,221 +2149,369 @@ function Choose({
     7: "450ms",
   };
   const rise = (d: number) => ({ "--rise-delay": RISE_DELAY[d] ?? "0ms" }) as CSSProperties;
+  // v5 nav jumps: smooth-scroll to a home section (instant under
+  // reduced-motion). Missing targets are a no-op by construction.
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  };
   return (
     <>
-    <main className="atlas-home mx-auto flex min-h-dvh w-full max-w-4xl flex-col px-5 py-8">
+    <main className="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-5 py-8 md:px-9">
       <AtlasBackdrop />
+      <svg className="hv5-sprig" viewBox="0 0 120 150" fill="none" stroke="#8FA382" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+        <path d="M14 148 C20 100 34 60 62 22" strokeOpacity=".7" />
+        <g fill="#A9BCA0" stroke="none" opacity=".8">
+          <ellipse cx="30" cy="118" rx="13" ry="6" transform="rotate(-48 30 118)" /><ellipse cx="42" cy="92" rx="13" ry="6" transform="rotate(-52 42 92)" />
+          <ellipse cx="54" cy="66" rx="12" ry="5.5" transform="rotate(-55 54 66)" /><ellipse cx="66" cy="44" rx="11" ry="5" transform="rotate(-58 66 44)" />
+          <ellipse cx="24" cy="104" rx="11" ry="5" transform="rotate(-16 24 104)" /><ellipse cx="36" cy="78" rx="11" ry="5" transform="rotate(-20 36 78)" />
+          <ellipse cx="48" cy="54" rx="10" ry="4.6" transform="rotate(-24 48 54)" />
+        </g>
+      </svg>
       {notice}
       {tutorialInvite}
-      <header>
-        <div className="flex items-center gap-3">
-          <p className="atlas-eyebrow home-rise" style={rise(0)}>
-            <Compass className="size-4" aria-hidden="true" />
-            Field atlas · {trailDate()} UTC
-          </p>
-          {/* Storyteller home handoff (H1): Comet is retired as a host — a
-              silent ~30px emblem sits in the eyebrow row, aria-hidden and
-              decorative, never speaks. Order: eyebrow → emblem → toggle. */}
-          <CometEmblem />
-          {/* Veeresh 2026-10-07: SoundToggle lives in the eyebrow cluster so
-              the banner row below has room for the h1. */}
-          <SoundToggle
-            testId="sound-toggle"
-            className="atlas-sound-toggle home-rise"
-            style={rise(0)}
-          />
-        </div>
-        {/* Storyteller banner host (owner directive 2026-10-09): the figure
-            sits in the banner row beside the branding — always visible,
-            mobile and desktop. The greeting rides in a popover below the row.
-            The Comet emblem stays in the eyebrow row — never moved. */}
-        <div className="atlas-banner-row home-rise mt-4" style={rise(2)}>
-          {/* PBI-6: the h1 is the focus target when the Scout Map boot offer
-              closes (data-testid="home-heading"). Owner 2026-10-09: the
-              storyteller figure sits RIGHT of the branding. */}
-          <h1 className="atlas-title" data-testid="home-heading" tabIndex={-1}>
-            {BRAND.name}
-          </h1>
-          <StorytellerBannerBoundary>
-            <Suspense fallback={<StorytellerBannerSkeleton />}>
-              <StorytellerHomeHost
-                tutorialInviteVisible={tutorialInviteVisible}
-                suppressGreeting={suppressGreeting}
-              />
-            </Suspense>
-          </StorytellerBannerBoundary>
-        </div>
-        <p className="atlas-tagline home-rise mt-4" style={rise(3)}>
-          Pick the globe, a country, or a state. A place name, then one pin. Your score keeps
-          adding up across editions until you choose to end the game, or if you&rsquo;re idle for
-          2 minutes.
-        </p>
-        <div
-          className="home-rise mt-7"
-          style={rise(4)}
-          data-testid="tour-stop-difficulty"
-        >
-          <p id="difficulty-label" className="atlas-difficulty-label">
-            How do you want to grow your map today?
-          </p>
-          <div role="group" aria-labelledby="difficulty-label" className="atlas-seg mt-3">
-            {(
-              [
-                { value: "easy", label: "Easy" },
-                { value: "medium", label: "Medium" },
-                { value: "hard", label: "Hard" },
-              ] as const
-            ).map((option) => {
-              const selected = difficultyChoice === option.value;
-              return (
-                <button
-                  key={option.value}
-                  type="button"
-                  aria-pressed={selected}
-                  onClick={() => {
-                    // SFX audio spec §2.6: the select chirps only on an
-                    // actual change — re-tapping the active band stays silent.
-                    if (option.value !== difficultyChoice) playDifficultySelect();
-                    onDifficultyChoice(option.value);
-                  }}
-                >
-                  {option.label}
-                </button>
-              );
-            })}
-          </div>
-          <p className="atlas-hint" aria-live="polite">
-            {DIFFICULTY_HINTS[difficultyChoice]}
-          </p>
-        </div>
-        <div className="atlas-rule home-rise" style={rise(4)} aria-hidden="true" />
-      </header>
-      {/* GeoDetective leads: the flagship case file, unlimited mysteries.
-          Age-profile: for bands where the loop is locked (5-7), the SAME
-          footprint renders the locked variant in place — no reflow, no
-          reorder (Phase 2 minimal amendment). */}
-      {isLoopLocked(ageBand, "geodetective") ? (
-        <LockedLoop title="GeoDetective" onGrownUpOpen={onGrownUpOpen} />
-      ) : (
-      <article
-        aria-labelledby="geodetective-title"
-        className="atlas-dossier home-rise mt-8"
-        style={rise(5)}
-        data-testid="tour-stop-geodetective"
-      >
-        <span className="atlas-stamp" style={rise(5)} aria-hidden="true">
-          Open
-        </span>
-        <p className="atlas-eyebrow">Case file · Unlimited</p>
-        <h2 id="geodetective-title" className="atlas-dossier-title">
-          GeoDetective
-        </h2>
-        <p className="atlas-dossier-detail">
-          Five guesses, one mystery place. Each guess unlocks a clue — solve as many cases as
-          you can.
-        </p>
-        {loopProgress.streak > 0 ? (
-          <p className="atlas-streak">🔥 Streak: {loopProgress.streak}</p>
-        ) : null}
-        {/* Owner 2026-10-09: earned badges show on the home page card —
-            no separate Passport page. Clean Round is earned in this loop. */}
-        <EarnedBadgeRow />
+      {/* v5 top nav: brand + section jumps wired to the real home sections.
+          ABOUT and JOURNAL have no counterpart surface in the app yet —
+          rendered disabled (UNMAPPED in the integration report), as is the
+          search button (no search surface exists). */}
+      <div className="hv5-nav home-rise" style={rise(0)}>
         <button
           type="button"
-          className="atlas-btn atlas-btn-brass mt-5"
-          onClick={onLoop}
+          className="hv5-brand"
+          aria-label="Meridian home"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
+          <svg className="hv5-mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21.5" fill="none" stroke="#8A6D2F" strokeWidth="1.6" /><circle cx="24" cy="24" r="16.5" fill="none" stroke="#B8932F" strokeWidth=".8" strokeOpacity=".6" /><path d="M24 6 L27.2 20.8 L42 24 L27.2 27.2 L24 42 L20.8 27.2 L6 24 L20.8 20.8 Z" fill="#8A6D2F" /><circle cx="24" cy="24" r="3.4" fill="#F6F1E3" stroke="#8A6D2F" strokeWidth="1.2" /></svg>
+          <span className="hv5-word">MERIDIAN</span>
         </button>
-      </article>
-      )}
-      {/* Cold Trail vertical slice: 3 sightings, 3 rings, one interception. */}
-      <article
-        aria-labelledby="coldtrail-title"
-        className="atlas-dossier home-rise mt-8"
-        style={rise(5)}
-      >
-        <span className="atlas-stamp" style={rise(5)} aria-hidden="true">
-          New
-        </span>
-        <p className="atlas-eyebrow">Case file · Triangulation</p>
-        <h2 id="coldtrail-title" className="atlas-dossier-title">
-          Cold Trail
-        </h2>
-        <p className="atlas-dossier-detail">
-          A smuggler moves between cities. Three sightings, three rings — tap where
-          they cross to make the interception.
-        </p>
-        <button
-          type="button"
-          className="atlas-btn atlas-btn-brass mt-5"
-          onClick={onColdTrail}
-        >
-          ❄️ Start the trail
-        </button>
-      </article>
-      <div
-        className="home-rise mt-10"
-        style={rise(6)}
-        data-testid="tour-stop-editions"
-      >
-        <p className="atlas-eyebrow">Choose your expedition</p>
-        <div className="mt-4 grid gap-5 sm:grid-cols-3">
-          <EditionCard
-            index="01"
-            icon={<MapPin className="size-6" aria-hidden="true" />}
-            title="State"
-            detail="Pick a country, then one of its states. Each state is its own run."
-            action="Choose a state"
-            onClick={onState}
-          />
-          <EditionCard
-            index="02"
-            icon={<Flag className="size-6" aria-hidden="true" />}
-            title="Country"
-            detail="Play a country whole, or drill into its states where available."
-            action="Choose a country"
-            onClick={onCountry}
-          />
-          <EditionCard
-            index="03"
-            icon={<Globe2 className="size-6" aria-hidden="true" />}
-            title="Globe"
-            detail="The whole earth. Continent outlines at a distance, countries as you close in."
-            action="Play the globe"
-            onClick={onGlobe}
-          />
+        <nav aria-label="Primary">
+          <button type="button" onClick={() => scrollTo("home-editions")}>
+            EXPEDITIONS
+            <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
+          </button>
+          <button type="button" onClick={() => scrollTo("home-cases")}>
+            CASES
+            <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
+          </button>
+          <button type="button" disabled title="Not yet available">ABOUT</button>
+          <button type="button" disabled title="Not yet available">JOURNAL</button>
+          <button type="button" onClick={() => scrollTo("home-involved")}>GET INVOLVED</button>
+        </nav>
+        <div className="hv5-actions">
+          <button
+            type="button"
+            className="hv5-btn hv5-btn-brown"
+            onClick={() => scrollTo("home-cases")}
+          >
+            JOIN THE JOURNEY
+            <svg width="15" height="11" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
+          </button>
+          <button type="button" className="hv5-icon-btn" aria-label="Search" disabled title="Not yet available">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#33302A" strokeWidth="2" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="M15.5 15.5L21 21" strokeLinecap="round" /></svg>
+          </button>
         </div>
       </div>
-      {deck.enabled ? (
-        <section
-          aria-label={REVIEW_DECK_COPY.pickerTitle}
-          className="atlas-fieldnotes home-rise mt-8"
-          style={rise(7)}
-          data-testid="tour-stop-review"
-        >
-          <h2 className="atlas-fieldnotes-title">{REVIEW_DECK_COPY.pickerTitle}</h2>
-          {deck.due > 0 ? (
-            <>
-              <p className="mt-2 text-sm">{REVIEW_DECK_COPY.pickerDueLine}</p>
-              <p className="mt-1 text-sm font-medium" data-testid="deck-due-count">
-                {deck.due} {deck.due === 1 ? "card" : "cards"} due
-              </p>
-              <button
-                type="button"
-                className="atlas-btn atlas-btn-line mt-4"
-                onClick={onReview}
-              >
-                {REVIEW_DECK_COPY.startReview}
-              </button>
-            </>
-          ) : deck.total > 0 ? (
-            <p className="mt-2 text-sm">{REVIEW_DECK_COPY.pickerCaughtUp}</p>
-          ) : (
-            <p className="mt-2 text-sm">{REVIEW_DECK_COPY.pickerEmpty}</p>
-          )}
+
+      <div className="hv5-hero-zone">
+        <section className="hv5-hero home-rise" style={rise(2)} aria-label="Welcome to Meridian">
+          {/* Eyebrow cluster preserved from the atlas home: eyebrow →
+              Comet emblem → sound toggle (owner order), with the v5
+              welcome pill leading the row. */}
+          <div className="hv5-hero-top">
+            <span className="hv5-pill">
+              <span className="hv5-dot">
+                <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="#8A6D2F" /></svg>
+              </span>
+              WELCOME TO MERIDIAN
+            </span>
+            <p className="hv5-label" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+              <Compass className="size-4" aria-hidden="true" />
+              Field atlas · {trailDate()} UTC
+            </p>
+            <CometEmblem />
+            <SoundToggle testId="sound-toggle" className="atlas-sound-toggle" />
+            {/* Storyteller banner host (owner directive 2026-10-09): the
+                figure sits in the hero beside the branding — always visible,
+                mobile and desktop. The greeting rides in a popover below. */}
+            <span className="hv5-storyteller">
+              <StorytellerBannerBoundary>
+                <Suspense fallback={<StorytellerBannerSkeleton />}>
+                  <StorytellerHomeHost
+                    tutorialInviteVisible={tutorialInviteVisible}
+                    suppressGreeting={suppressGreeting}
+                  />
+                </Suspense>
+              </StorytellerBannerBoundary>
+            </span>
+          </div>
+          {/* PBI-6: the h1 stays the focus target when the Scout Map boot
+              offer closes (data-testid="home-heading"). */}
+          <h1 className="hv5-h1" data-testid="home-heading" tabIndex={-1}>
+            Explore. Understand.
+            <br />
+            Make sense of what matters.
+          </h1>
+          <p className="hv5-sub">
+            Pick the globe, a country, or a state. A place name, then one pin. Your score keeps
+            adding up across editions until you choose to end the game, or if you&rsquo;re idle for
+            2 minutes.
+          </p>
+          <div className="home-rise" style={rise(4)} data-testid="tour-stop-difficulty">
+            <p id="difficulty-label" className="hv5-diff-cap">
+              How do you want to grow your map today?
+            </p>
+            <div role="group" aria-labelledby="difficulty-label" className="hv5-diff">
+              {(
+                [
+                  { value: "easy", label: "Easy" },
+                  { value: "medium", label: "Medium" },
+                  { value: "hard", label: "Hard" },
+                ] as const
+              ).map((option) => {
+                const selected = difficultyChoice === option.value;
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    aria-pressed={selected}
+                    onClick={() => {
+                      // SFX audio spec §2.6: the select chirps only on an
+                      // actual change — re-tapping the active band stays silent.
+                      if (option.value !== difficultyChoice) playDifficultySelect();
+                      onDifficultyChoice(option.value);
+                    }}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+            <p className="hv5-hint" aria-live="polite">
+              {DIFFICULTY_HINTS[difficultyChoice]}
+            </p>
+          </div>
+          <div className="hv5-cta-row">
+            <button
+              type="button"
+              className="hv5-btn hv5-btn-brown"
+              style={{ padding: "16px 28px" }}
+              onClick={() => scrollTo("home-cases")}
+            >
+              BEGIN EXPLORING
+              <svg width="15" height="11" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
+            </button>
+          </div>
+          <img className="hv5-mountain" src={heroMountainUrl} alt="" aria-hidden="true" />
         </section>
-      ) : null}
+        <div className="hv5-globe-zone" aria-hidden="true">
+          <Suspense fallback={null}>
+            <HomeGlobe />
+          </Suspense>
+        </div>
+      </div>
+
+      <div className="hv5-grid2" id="home-cases">
+        {/* GeoDetective leads: the flagship case file, unlimited mysteries.
+            Age-profile: for bands where the loop is locked (5-7), the SAME
+            footprint renders the locked variant in place. */}
+        {isLoopLocked(ageBand, "geodetective") ? (
+          <LockedLoop title="GeoDetective" onGrownUpOpen={onGrownUpOpen} />
+        ) : (
+        <article
+          aria-labelledby="geodetective-title"
+          className="hv5-card hv5-split hv5-case home-rise"
+          style={rise(5)}
+          data-testid="tour-stop-geodetective"
+        >
+          <div className="hv5-txt">
+            <div className="hv5-head">
+              <span className="hv5-badge">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" aria-hidden="true"><path d="M3 19 L9.5 7.5 L13 13 L15.5 9.5 L21 19 Z" /><circle cx="17.5" cy="5" r="1.6" fill="currentColor" stroke="none" /></svg>
+              </span>
+              <span className="hv5-label">Case file · Unlimited</span>
+            </div>
+            <h2 id="geodetective-title">
+              GeoDetective<span className="hv5-chip">Open</span>
+            </h2>
+            <p>
+              Five guesses, one mystery place. Each guess unlocks a clue — solve as many cases as
+              you can.
+            </p>
+            {loopProgress.streak > 0 ? (
+              <p className="hv5-streak">🔥 Streak: {loopProgress.streak}</p>
+            ) : null}
+            {/* Owner 2026-10-09: earned badges show on the home page card —
+                no separate Passport page. Clean Round is earned in this loop. */}
+            <EarnedBadgeRow />
+            <button type="button" className="hv5-go" onClick={onLoop}>
+              {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
+            </button>
+          </div>
+          <img className="hv5-pic" src={desertRuinsUrl} alt="Ancient desert ruins, the GeoDetective featured case" />
+        </article>
+        )}
+        {/* Cold Trail vertical slice: 3 sightings, 3 rings, one interception. */}
+        <article
+          aria-labelledby="coldtrail-title"
+          className="hv5-card hv5-split hv5-dispatch home-rise"
+          style={rise(5)}
+        >
+          <div className="hv5-txt">
+            <div className="hv5-head">
+              <span className="hv5-badge">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><path d="M15.5 8.5 L13.2 13.2 L8.5 15.5 L10.8 10.8 Z" fill="currentColor" stroke="none" /></svg>
+              </span>
+              <span className="hv5-label">Case file · Triangulation</span>
+            </div>
+            <h2 id="coldtrail-title">
+              Cold Trail<span className="hv5-chip">New</span>
+            </h2>
+            <p>
+              A smuggler moves between cities. Three sightings, three rings — tap where
+              they cross to make the interception.
+            </p>
+            <button type="button" className="hv5-go" onClick={onColdTrail}>
+              ❄️ Start the trail
+            </button>
+          </div>
+          <img className="hv5-pic" src={patagoniaUrl} alt="Explorers beside a mountain lake in Patagonia" />
+        </article>
+        {/* Choose Your Expedition — the design's dark anchor card hosts the
+            three real edition actions (State / Country / Globe). */}
+        <div
+          className="hv5-card hv5-mapcard home-rise"
+          style={rise(6)}
+          data-testid="tour-stop-editions"
+          id="home-editions"
+        >
+          <div className="hv5-head">
+            <span className="hv5-badge">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><path d="M15.5 8.5 L13.2 13.2 L8.5 15.5 L10.8 10.8 Z" fill="currentColor" stroke="none" /></svg>
+            </span>
+            <span className="hv5-label">Choose your expedition</span>
+          </div>
+          <h2>Expeditions Map</h2>
+          <p>Choose your expedition — a single US state, a whole country, or the entire globe.</p>
+          <svg className="hv5-worldmap" viewBox="0 0 300 138" aria-hidden="true">
+            <defs>
+              <pattern id="hv5-dots" width="7" height="7" patternUnits="userSpaceOnUse">
+                <circle cx="1.6" cy="1.6" r="1.6" fill="#C9D4BE" fillOpacity=".75" />
+              </pattern>
+            </defs>
+            <g fill="url(#hv5-dots)">
+              <path d="M18 38 L52 22 L84 26 L92 40 L74 52 L66 72 L48 64 L30 58 L16 50 Z" />
+              <path d="M66 78 L84 74 L90 92 L80 122 L68 104 L62 88 Z" />
+              <path d="M138 30 L168 22 L182 34 L172 48 L148 50 L134 42 Z" />
+              <path d="M146 56 L172 52 L184 72 L172 104 L156 108 L144 80 Z" />
+              <path d="M186 26 L238 16 L272 30 L268 52 L232 62 L206 54 L188 44 Z" />
+              <path d="M216 66 L244 62 L256 76 L238 88 L220 80 Z" />
+              <path d="M240 100 L272 96 L282 108 L262 120 L242 114 Z" />
+            </g>
+            <path d="M74 50 C130 84 190 84 248 104" fill="none" stroke="#EFEAD6" strokeWidth="1.3" strokeDasharray="1 5" strokeLinecap="round" />
+            <circle cx="248" cy="104" r="7" fill="none" stroke="#EFEAD6" strokeWidth="1.2" />
+            <path d="M248 97 C244 97 242 100 242 102.4 C242 106 248 110.6 248 110.6 C248 110.6 254 106 254 102.4 C254 100 252 97 248 97 Z" fill="#EFEAD6" />
+          </svg>
+          <div className="hv5-editions">
+            <button type="button" className="hv5-edition" onClick={onState}>
+              <span className="hv5-idx">N° 01</span>
+              <MapPin className="size-5" aria-hidden="true" />
+              <span className="hv5-etitle">State</span>
+              <span className="hv5-eaction">Choose a state</span>
+            </button>
+            <button type="button" className="hv5-edition" onClick={onCountry}>
+              <span className="hv5-idx">N° 02</span>
+              <Flag className="size-5" aria-hidden="true" />
+              <span className="hv5-etitle">Country</span>
+              <span className="hv5-eaction">Choose a country</span>
+            </button>
+            <button type="button" className="hv5-edition" onClick={onGlobe}>
+              <span className="hv5-idx">N° 03</span>
+              <Globe2 className="size-5" aria-hidden="true" />
+              <span className="hv5-etitle">Globe</span>
+              <span className="hv5-eaction">Play the globe</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="hv5-grid3">
+        {deck.enabled ? (
+          <section
+            aria-label={REVIEW_DECK_COPY.pickerTitle}
+            className="hv5-card hv5-spot home-rise"
+            style={rise(7)}
+            data-testid="tour-stop-review"
+            id="home-review"
+          >
+            <div className="hv5-txt">
+              <div className="hv5-head">
+                <span className="hv5-badge">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" aria-hidden="true"><path d="M4 5.5 C7 4 10 4 12 6 C14 4 17 4 20 5.5 V19 C17 17.6 14 17.6 12 19.4 C10 17.6 7 17.6 4 19 Z" /><path d="M12 6 V19.4" /></svg>
+                </span>
+                <span className="hv5-label">Cases</span>
+              </div>
+              <h2>{REVIEW_DECK_COPY.pickerTitle}</h2>
+              {deck.due > 0 ? (
+                <>
+                  <p>{REVIEW_DECK_COPY.pickerDueLine}</p>
+                  <p style={{ fontWeight: 700, color: "var(--hv5-ink)" }} data-testid="deck-due-count">
+                    {deck.due} {deck.due === 1 ? "card" : "cards"} due
+                  </p>
+                  <button type="button" className="hv5-go" onClick={onReview}>
+                    {REVIEW_DECK_COPY.startReview}
+                  </button>
+                </>
+              ) : deck.total > 0 ? (
+                <p>{REVIEW_DECK_COPY.pickerCaughtUp}</p>
+              ) : (
+                <p>{REVIEW_DECK_COPY.pickerEmpty}</p>
+              )}
+            </div>
+            <img className="hv5-art" src={archiveToolsUrl} alt="" aria-hidden="true" />
+          </section>
+        ) : (
+          <div aria-hidden="true" />
+        )}
+        {/* Journal — design element with NO real counterpart surface yet
+            (UNMAPPED): kept for the design, CTA disabled, no invented
+            behavior. */}
+        <article className="hv5-card hv5-spot hv5-journal home-rise" style={rise(7)}>
+          <div className="hv5-txt">
+            <div className="hv5-head">
+              <span className="hv5-badge">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><path d="M5 19 C5 10 11 4.5 20 4.5 C20 14 14.5 19.5 6.5 19.5" /><path d="M5 19 C8 14 11.5 10.5 16 8" /></svg>
+              </span>
+              <span className="hv5-label">Latest Journal Entry</span>
+            </div>
+            <h2>What the land remembers</h2>
+            <p>Short field stories from the places on the map — the tales only landscapes keep.</p>
+            <button type="button" className="hv5-go" disabled title="Not yet available">
+              READ THE ENTRY
+            </button>
+          </div>
+          <img className="hv5-art" src={journalTreeUrl} alt="A lone tree on a rocky outcrop above layered hills" />
+        </article>
+        <article className="hv5-card hv5-spot hv5-involved home-rise" style={rise(7)}>
+          <div className="hv5-txt">
+            <div className="hv5-head">
+              <span className="hv5-badge">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><circle cx="8.5" cy="8" r="3.2" /><circle cx="16.5" cy="9.5" r="2.6" /><path d="M3.5 19.5 C3.5 15.8 5.7 14 8.5 14 C11.3 14 13.5 15.8 13.5 19.5 M14.8 14.6 C17.3 14.9 19 16.4 19 19.5" /></svg>
+              </span>
+              <span className="hv5-label">Get Involved</span>
+            </div>
+            <h2>For grown-ups</h2>
+            <p>How Meridian works, safety notes, and the read-aloud companion for younger explorers.</p>
+            <button type="button" className="hv5-btn hv5-btn-brown" onClick={onGrownUpOpen}>
+              JOIN US
+              <svg width="14" height="10" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
+            </button>
+          </div>
+          <img className="hv5-art" src={binocularsHatUrl} alt="" aria-hidden="true" />
+        </article>
+      </div>
+
       {/* Age-profile footer entry (Phase 2 §1a): the COPPA-standard
           ParentZone placement — low-emphasis, after the review deck,
           before GrandpaCoffeeRun. One host per screen: the header hosts
@@ -2378,8 +2537,11 @@ function Choose({
         nags — the component renders nothing after the kid answers. */}
     <ReadAloudPrefPrompt />
     {/* Grandpa's Coffee Run — animated donation scene, home only.
-        Veeresh 2026-10-07: replaces PR #91's static sign. */}
-    <GrandpaCoffeeRun />
+        Veeresh 2026-10-07: replaces PR #91's static sign. The v5 nav's
+        GET INVOLVED jumps here (the app's get-involved surface). */}
+    <div id="home-involved">
+      <GrandpaCoffeeRun />
+    </div>
     {/* Comet now hosts from the banner (in the header above) — the fixed
         bottom-right wrapper is retired. */}
     </>

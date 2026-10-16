@@ -417,7 +417,7 @@ test("fail-closed: a build without VITE_KOFI_URL renders nothing", async ({
   });
   await page.goto(APP);
   // The Chart Room itself still loads — only the Ko-fi scene is gone.
-  await expect(page.locator("main.atlas-home")).toBeVisible({
+  await expect(page.locator("main.home-v5")).toBeVisible({
     timeout: 20_000,
   });
   await page.waitForTimeout(3000);

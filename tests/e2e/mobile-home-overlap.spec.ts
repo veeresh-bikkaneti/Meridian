@@ -142,10 +142,10 @@ for (const width of WIDTHS) {
         const cometWrap = page.getByTestId("comet-wrap");
         const greeting = page.getByTestId("comet-greeting");
         const invite = page.getByTestId("tutorial-invite");
-        const dossier = page.locator(".atlas-dossier");
-        const cards = page.locator(".atlas-card");
-        const deck = page.locator(".atlas-fieldnotes");
-        const main = page.locator("main.atlas-home");
+        const dossier = page.getByTestId("tour-stop-geodetective");
+        const cards = page.locator(".hv5-edition");
+        const deck = page.getByTestId("tour-stop-review");
+        const main = page.locator("main.home-v5");
 
         /** True when the top element at (x, y) is `node` or its descendant. */
         const hitsNode = (node: Locator, x: number, y: number) =>
@@ -635,7 +635,7 @@ for (const width of WIDTHS) {
 
         // Zero reserved space: nothing may hold the strip's place. The page
         // bottom is <main>'s own padding (py-8) plus the body margin.
-        const mainBox = await page.locator("main.atlas-home").boundingBox();
+        const mainBox = await page.locator("main.home-v5").boundingBox();
         const slack = await page.evaluate(
           () => document.documentElement.scrollHeight,
         );

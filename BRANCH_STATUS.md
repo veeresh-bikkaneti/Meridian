@@ -1,25 +1,28 @@
-# BRANCH_STATUS — feat/share-card
+# BRANCH_STATUS — feat/homepage-premium-v5
 
-**MERGED 2026-10-15 — PR #155 (squash `4a16387`). Owner merged.** One job: when the game link is shared, chat apps show a preview card (title, description, image).
+**Status: LOCAL ONLY — not pushed, no PR (per Liz's hard limits for this run; supersedes the push-early convention here).** One job: port homepage mock v5 (premium cream/explorer redesign) into the repo's real homepage, wiring every control to the existing game handlers.
 
-## Done
-- `src/lib/og/share-meta.ts` (new): `shareOrigin(baseUrl)` and `shareMetaTags(...)`. Base `/Meridian/` (GitHub Pages) -> `https://veeresh-bikkaneti.github.io/Meridian/`; any other base -> `https://meridian.knowledgetest.workers.dev/` (`BRAND.siteUrl`).
-- `src/routes/__root.tsx` `head()`: emits og:title, og:description, og:type=website, og:url, og:image (absolute), og:image:width=1200, og:image:height=630, og:image:alt, twitter:card=summary_large_image, twitter:title, twitter:description, twitter:image. The old, out-of-date `<meta name="description">` ("The run lasts until the pin misses") is replaced.
-- `src/lib/og/site.json`: added `description`.
-- Copy: `docs/ops/specs/share-card-copy.md` (3 options, claims traced to README/source, Opus review APPROVE-WITH-NITS, final pick = edited option C). Title 46 chars, description 150.
-- Tests: `src/lib/og/share-meta.test.ts` (7: both origins, tag set and attributes, length limits, wording, og.jpg is 1200x630). `scripts/share-card-built.test.mjs` (opt-in: `SHARE_CARD_BUILT=pages|workers|both`, run right after the matching build; skipped in plain `npm test`).
+Base: `origin/main` @ `efe2fb3` ("docs: cite owner confirmation for #155 decisions (#157)"). NOTE: local `main` ref is stale (597 behind); this branch was cut from `origin/main` after a successful `git fetch origin`.
 
-- Decision record: `docs/adr/0001-share-tag-ownership.md` (page owns share tags; injector fills gaps). Docs only.
+## What changed
 
-## Gates (final code)
-tsc clean; `npm test` 1,315 src pass and the scripts suite green (778 tests, 0 fail, 9 skipped); `node scripts/lint-cards.mjs` GATE PASSED; `npm run build:pages` ok and `SHARE_CARD_BUILT=pages` passes; `npm run build` ok and `SHARE_CARD_BUILT=workers` passes (both hosts: all 12 tags exactly once, own origin); `npm run test:worker` 18/18; `npm run typecheck:worker` clean. No E2E spec touches the head tags, so none were run.
+- `src/components/game-app.tsx` — the `Choose` home screen re-skinned to mock v5: top nav (brand, EXPEDITIONS / CASES / ABOUT / JOURNAL / GET INVOLVED + JOIN THE JOURNEY), hero editorial card (real tagline copy + design headline), Three.js globe breaking the page edge, difficulty as v5 pills (real handler, hint, chirp, aria-pressed), GeoDetective + Cold Trail cards (real handlers, chips, streak, badges, locked state), dark Expeditions Map card hosting the three real edition actions, Review deck card (all deck states), Journal + For grown-ups cards, Grandpa Coffee Run + footer preserved. All `data-testid` hooks preserved.
+- `src/components/home-globe.tsx` (new) — lazy Three.js globe: dynamic import on hero approach, DPR ≤ 1.5, no post-processing; reduced-motion / Save-Data / no-WebGL → static texture disc; pauses off-screen; full disposal on unmount.
+- `src/components/home-v5.css` (new) — mock v5 styles scoped under `.home-v5`; display/body type roles use the repo's self-hosted Fraunces + Karla (not the mock's Google Fonts) to preserve the offline/PWA brand system.
+- `src/assets/home-v5/` (new) — 7 WebP assets copied from the mock (globe texture, hero mountain, 2 card photos, 3 spot illustrations; ~3.9 MB total, unoptimized — flagged for a future optimization pass).
+- `package.json` / `package-lock.json` — `three@0.160.0` + `@types/three@0.160.0`.
+- `src/components/grandpa-coffee-run.tsx` — tour measurement selectors updated to the v5 structure (`main.atlas-home`→`main.home-v5` ×2, `.atlas-eyebrow`→`.hv5-pill`, `.atlas-title`→`[data-testid="home-heading"]`); without this the Coffee Run tour's `measureTour()` would have returned null on the new home.
+- E2E spec hook updates (class-rename tracking only, no assertion changes): `tests/e2e/mobile-home-overlap.spec.ts` (`.atlas-dossier`→`tour-stop-geodetective` testid, `.atlas-card`→`.hv5-edition`, `.atlas-fieldnotes`→`tour-stop-review` testid, `main.atlas-home`→`main.home-v5` ×2), `tests/e2e/grandpa-tasting-tour.spec.ts` (`main.atlas-home`→`main.home-v5` ×6), `tests/e2e/kofi-persistent-cloud.mobile.spec.ts` (×1), `tests/e2e/storyteller-home.desktop.spec.ts` (`.atlas-eyebrow`→`.hv5-pill` ×1).
 
-## Findings (read before merging)
-1. **Workers host: `head()` now wins (owner decision — Veeresh, 2026-10-15 ~14:35 CT, given in the Claude Code session as decisions 1-3: 1. head() wins on Workers; 2. og.jpg split to its own issue #156; 3. ignore Workers Builds failures on PR branches because main deploys are green. The squash merge collapsed the two commits into one).** `server/middleware/grok-pwa.ts` used to strip every og:/twitter: tag and re-inject its own, so workers.dev showed a short title ("Meridian"), og:type `x:game`, and no og:url or twitter:title/description/image. `injectGrokPwaHead` in `scripts/grok-pwa-shared.mjs` now keeps any share tag the document already carries and adds only the keys it is missing. Pages and Workers both serve the same 12 tags, each with its own origin. Other apps whose pages carry no share tags get the platform tags exactly as before. `scripts/grok-pwa-plugin.test.mjs`: the "overwrites" test and the x:game:image test now describe keep-existing behaviour; four tests added (keep existing, full set untouched and idempotent, streaming injector keeps head tags, existing x:game:image kept).
-2. **`public/og.jpg` is out of date.** It reads "MERIDIAN / FIVE PLACES". The game is endless. Not changed in this PR; tracked in a separate issue.
-3. "No ads" is true in the repo (no ad network or library) but was not checked on the live site, so it is not in the copy. "No tracking" is not claimed: optional GA4 and Clarity tags exist.
-4. The word "satellite" contains "lite"; a whole-word check passes (and the app already says "satellite" everywhere).
+## UNMAPPED (design elements with no backend — rendered disabled, no invented behavior)
 
-## Not verified
-- How WhatsApp/Slack/iMessage/X render the card on real links, and the live pages. Chat apps cache previews; after deploy, refresh with each app's debugger or a changed query string.
-- `Workers Builds: meridian` (Cloudflare) fails on PR branches; owner says main's deploy is green. Ignored by owner decision (Veeresh, 2026-10-15 ~14:35 CT, Claude Code session, decision 3 of 3 — see Findings §1 for the full citation). Real CI is `build (22.x)`.
+- Nav ABOUT and JOURNAL links; nav search button; Journal card "READ THE ENTRY" button.
+
+## Gates
+
+- `npx tsc --noEmit` — clean.
+- `node scripts/lint-cards.mjs` — GATE PASSED.
+- `npm run build:pages` — green; Three.js isolated in a lazy chunk (658,603 B raw) loaded only when the hero approaches; the home-globe chunk itself is 4,055 B.
+- `npm test` — 778 scripts tests (769 pass / 0 fail) + 1315 src tests (1315 pass / 0 fail); identical counts on pristine base (zero unit regressions).
+- Playwright (this VM): home batch (6 files) branch 110 pass / 17 fail vs the same specs failing on pristine main too — `mobile-home-overlap` fails 20/24 standalone on unmodified main in this environment, and a targeted baseline (storyteller/badges/motionmaxxing) went 22 pass / 1 fail (full attribution in the Scrum review report). Post-fix targeted run — storyteller-home.desktop + grandpa-tasting-tour + kofi-persistent-cloud.mobile: **36 pass / 0 fail**.
+- Blackbox (custom script, report folder): 18/18 — v5 hero, live globe canvas, nav wiring + UNMAPPED disabled states, difficulty persistence, GeoDetective / Cold Trail / Country entries, grown-ups gate, WebGL-off + reduced-motion fallbacks, 390px no-overflow. Screenshots at 1440px + 390px visually inspected; three render defects found and fixed (case-card title/eyebrow clipping, journal + grown-ups illustration/text overlap).

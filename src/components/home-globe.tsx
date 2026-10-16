@@ -1,0 +1,250 @@
+import { useEffect, useRef, useState } from "react";
+import globeTextureUrl from "@/assets/home-v5/globe-texture.webp";
+
+/**
+ * Premium Three.js globe for the v5 home hero (design plan: the one bold
+ * element). Ported from mock v5 with the same perf contract:
+ * - three is dynamically imported ONLY when the hero nears the viewport
+ *   (IntersectionObserver), so it never lands in the initial bundle path
+ *   beyond this lazy component, and never blocks first paint.
+ * - DPR capped at 1.5; modest geometry; MeshStandardMaterial; NO
+ *   post-processing, no bloom.
+ * - prefers-reduced-motion, Save-Data, WebGL failure, or import failure
+ *   all land on the static texture disc — the design is the default,
+ *   the live globe is only an enhancement.
+ * - Rendering pauses while the hero is off-screen or the tab is hidden.
+ * Decorative only: the mount is aria-hidden and carries no information.
+ */
+export function HomeGlobe() {
+  const mountRef = useRef<HTMLDivElement | null>(null);
+  const [fallback, setFallback] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const saveData = Boolean(
+      (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData,
+    );
+    return reduced || saveData;
+  });
+
+  useEffect(() => {
+    if (fallback) return;
+    const mount = mountRef.current;
+    if (!mount) return;
+    let disposed = false;
+    let cleanup: (() => void) | null = null;
+
+    const start = () => {
+      import("three")
+        .then((THREE) => {
+          if (disposed) return;
+          try {
+            cleanup = initGlobe(THREE, mount, () => {
+              if (!disposed) setFallback(true);
+            });
+          } catch {
+            if (!disposed) setFallback(true);
+          }
+        })
+        .catch(() => {
+          if (!disposed) setFallback(true);
+        });
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          io.disconnect();
+          start();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    io.observe(mount);
+    return () => {
+      disposed = true;
+      io.disconnect();
+      cleanup?.();
+    };
+  }, [fallback]);
+
+  if (fallback) {
+    return (
+      <img
+        className="hv5-globe-fallback"
+        src={globeTextureUrl}
+        alt=""
+        aria-hidden="true"
+        style={{ objectPosition: "72% 50%" }}
+      />
+    );
+  }
+  return <div ref={mountRef} className="hv5-globe-mount" aria-hidden="true" />;
+}
+
+type ThreeModule = typeof import("three");
+
+function initGlobe(THREE: ThreeModule, mount: HTMLDivElement, onFail: () => void): () => void {
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  if (!renderer.getContext()) {
+    renderer.dispose();
+    onFail();
+    return () => {};
+  }
+  const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+  renderer.setPixelRatio(DPR);
+  const W = mount.clientWidth || 600;
+  const H = mount.clientHeight || 600;
+  renderer.setSize(W, H);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  mount.appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(34, W / H, 0.1, 100);
+  camera.position.set(0, 0, 4.6);
+
+  scene.add(new THREE.AmbientLight(0xfff1da, 1.15));
+  const sun = new THREE.DirectionalLight(0xffe9c4, 1.6);
+  sun.position.set(-2.4, 1.6, 2.6);
+  scene.add(sun);
+  const rim = new THREE.DirectionalLight(0xdfe8d2, 0.45);
+  rim.position.set(2.6, -0.8, -1.4);
+  scene.add(rim);
+
+  const group = new THREE.Group();
+  scene.add(group);
+  const R = 1.62;
+  const tex = new THREE.TextureLoader().load(globeTextureUrl, (t) => {
+    t.colorSpace = THREE.SRGBColorSpace;
+    t.anisotropy = 4;
+  });
+  const globe = new THREE.Mesh(
+    new THREE.SphereGeometry(R, 64, 48),
+    new THREE.MeshStandardMaterial({ map: tex, roughness: 0.92, metalness: 0 }),
+  );
+  globe.rotation.z = 0.18;
+  group.add(globe);
+
+  /* Orbit ring + satellite */
+  const ring = new THREE.Mesh(
+    new THREE.TorusGeometry(R * 1.22, 0.006, 8, 128),
+    new THREE.MeshBasicMaterial({ color: 0xb8932f, transparent: true, opacity: 0.5 }),
+  );
+  ring.rotation.x = Math.PI / 2.25;
+  ring.rotation.y = 0.35;
+  group.add(ring);
+  const sat = new THREE.Mesh(
+    new THREE.SphereGeometry(0.035, 12, 12),
+    new THREE.MeshBasicMaterial({ color: 0x8a6d2f }),
+  );
+  group.add(sat);
+
+  /* Sequential pins */
+  const pinCanvas = document.createElement("canvas");
+  pinCanvas.width = pinCanvas.height = 128;
+  const g = pinCanvas.getContext("2d");
+  if (g) {
+    g.beginPath();
+    g.arc(64, 64, 15, 0, 7);
+    g.fillStyle = "rgba(184,147,47,.28)";
+    g.fill();
+    g.beginPath();
+    g.arc(64, 64, 8.5, 0, 7);
+    g.fillStyle = "#8A6D2F";
+    g.fill();
+    g.beginPath();
+    g.arc(64, 64, 3.6, 0, 7);
+    g.fillStyle = "#FBF7EA";
+    g.fill();
+  }
+  const pinTex = new THREE.CanvasTexture(pinCanvas);
+  pinTex.colorSpace = THREE.SRGBColorSpace;
+  const pins = [
+    [0.62, 0.5],
+    [-0.25, 0.95],
+    [0.15, -0.75],
+  ].map((ll, i) => {
+    const s = new THREE.Sprite(
+      new THREE.SpriteMaterial({ map: pinTex, transparent: true, depthWrite: false }),
+    );
+    const phi = ((90 - ll[0] * 57.3) * Math.PI) / 180;
+    const theta = (ll[1] * 57.3 * Math.PI) / 180;
+    const r = R * 1.015;
+    s.position.set(
+      -r * Math.sin(phi) * Math.cos(theta),
+      r * Math.cos(phi) * 0.9 + 0.18,
+      r * Math.sin(phi) * Math.sin(theta),
+    );
+    s.userData.i = i;
+    group.add(s);
+    return s;
+  });
+  group.rotation.y = -1.85; /* Atlantic view, like the reference */
+
+  /* Lerped pointer + scroll */
+  let tx = 0,
+    ty = 0,
+    cx = 0,
+    cy = 0,
+    scrollT = 0,
+    scrollC = 0;
+  const onPointer = (e: PointerEvent) => {
+    tx = e.clientX / window.innerWidth - 0.5;
+    ty = e.clientY / window.innerHeight - 0.5;
+  };
+  const onScroll = () => {
+    scrollT = Math.min(window.scrollY / 900, 1);
+  };
+  window.addEventListener("pointermove", onPointer, { passive: true });
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  let visible = true;
+  const visIo = new IntersectionObserver((es) => {
+    visible = es[0]?.isIntersecting ?? false;
+  });
+  visIo.observe(mount);
+
+  const onResize = () => {
+    const w = mount.clientWidth;
+    const h = mount.clientHeight;
+    if (!w || !h) return;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  };
+  window.addEventListener("resize", onResize);
+
+  const clock = new THREE.Clock();
+  let raf = 0;
+  const loop = () => {
+    raf = requestAnimationFrame(loop);
+    if (!visible || document.hidden) return;
+    const t = clock.getElapsedTime();
+    cx += (tx - cx) * 0.045;
+    cy += (ty - cy) * 0.045;
+    scrollC += (scrollT - scrollC) * 0.06;
+    group.rotation.y = -1.85 + t * 0.045 + cx * 0.55;
+    group.rotation.x = cy * 0.28 + scrollC * 0.12;
+    group.position.y = -scrollC * 0.22 + Math.sin(t * 0.7) * 0.02;
+    const a = t * 0.55;
+    sat.position.set(Math.cos(a) * R * 1.22, Math.sin(a) * R * 0.42 + 0.28, Math.sin(a) * R * 1.05);
+    pins.forEach((s) => {
+      const ph = (t * 1.1 - (s.userData.i as number) * 0.9) % 2.2;
+      const sc = 0.34 + Math.max(0, Math.sin((Math.min(ph, 1.4) / 1.4) * Math.PI)) * 0.13;
+      s.scale.set(sc, sc, 1);
+    });
+    renderer.render(scene, camera);
+  };
+  loop();
+
+  return () => {
+    cancelAnimationFrame(raf);
+    visIo.disconnect();
+    window.removeEventListener("pointermove", onPointer);
+    window.removeEventListener("scroll", onScroll);
+    window.removeEventListener("resize", onResize);
+    renderer.dispose();
+    tex.dispose();
+    pinTex.dispose();
+    if (renderer.domElement.parentElement === mount) mount.removeChild(renderer.domElement);
+  };
+}

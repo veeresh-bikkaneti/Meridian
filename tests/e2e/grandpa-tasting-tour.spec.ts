@@ -147,7 +147,7 @@ async function expectTrailClear(page: Page): Promise<void> {
     const rects: Array<{ l: number; t: number; r: number; b: number }> = [];
     document
       .querySelectorAll(
-        'main.atlas-home button, main.atlas-home a[href], main.atlas-home input, main.atlas-home select, main.atlas-home textarea, main.atlas-home [role="button"]',
+        'main.home-v5 button, main.home-v5 a[href], main.home-v5 input, main.home-v5 select, main.home-v5 textarea, main.home-v5 [role="button"]',
       )
       .forEach((el) => {
         const b = (el as HTMLElement).getBoundingClientRect();
