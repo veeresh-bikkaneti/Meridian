@@ -497,6 +497,13 @@ body:has(.home-v5) {
   font-weight: 700;
   color: var(--hv5-ink) !important;
 }
+/* The earned-badges row sits directly above the card CTA in the flex
+   column; without a box-level gap the two border boxes abut and
+   fractional layout overlaps them by <1px (home-badges-readaloud:127
+   measured 172.6px² = full width × ~0.66px). Give the row real clearance. */
+.home-v5 .hv5-txt .atlas-badges {
+  margin-bottom: 8px;
+}
 
 /* Dark expeditions map card — hosts the three real edition actions. */
 .home-v5 .hv5-mapcard {
