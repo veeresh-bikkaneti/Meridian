@@ -1,0 +1,156 @@
+/* Journal overlay ("What the land remembers") — follows the grown-ups
+   overlay pattern (age-profile.css .agep-screen): full-viewport fixed
+   layer above the home page. Palette and type mirror the home-v5 tokens
+   (cream card surface, Fraunces display serif, Karla body, hairline
+   separators) but are declared here because the overlay renders outside
+   the .home-v5 scope. No transitions are defined: set changes are
+   instant, which also satisfies prefers-reduced-motion (spec §6). */
+
+.journal-view {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  min-height: 100dvh;
+  padding: max(20px, env(safe-area-inset-top)) 16px max(32px, env(safe-area-inset-bottom));
+  background: #f6f1e3;
+  color: #33302a;
+  font-family: "Karla", system-ui, sans-serif;
+}
+
+.journal-view :focus-visible {
+  outline: 2px solid #77591f;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.journal-sheet {
+  position: relative;
+  max-width: 760px;
+  margin: 24px auto;
+  background: #fdfbf3;
+  border: 1px solid #e3d9c3;
+  border-radius: 20px;
+  box-shadow:
+    0 1px 2px rgba(94, 76, 32, 0.05),
+    0 24px 44px -18px rgba(94, 76, 32, 0.34);
+  padding: 44px 48px 36px;
+}
+
+.journal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  min-height: 44px;
+  padding: 8px 14px;
+  font-family: "Karla", system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #5c564a;
+  background: none;
+  border: 1px solid #e3d9c3;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.journal-close:hover {
+  color: #77591f;
+  border-color: #d8cbae;
+}
+
+.journal-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8a6d2f;
+  margin: 0 0 10px;
+}
+
+.journal-title {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(30px, 5vw, 42px);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.journal-geography {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-size: 18px;
+  color: #5c564a;
+  margin: 10px 0 0;
+}
+
+.journal-notes {
+  margin-top: 12px;
+}
+
+.journal-note {
+  padding: 26px 0 4px;
+}
+.journal-note + .journal-note {
+  border-top: 1px solid #e3d9c3;
+  margin-top: 22px;
+}
+
+.journal-note-title {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.journal-note-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #5c564a;
+  margin: 8px 0 0;
+}
+
+.journal-note-story {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: #33302a;
+  margin: 10px 0 0;
+}
+
+.journal-note-source {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #5c564a;
+  margin: 12px 0 0;
+}
+.journal-note-source a {
+  color: #77591f;
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+.journal-confidence {
+  display: block;
+  margin-top: 2px;
+}
+
+.journal-footer {
+  border-top: 1px solid #e3d9c3;
+  margin: 30px 0 0;
+  padding-top: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #5c564a;
+}
+
+@media (max-width: 640px) {
+  .journal-sheet {
+    margin: 8px auto;
+    padding: 36px 22px 28px;
+  }
+}

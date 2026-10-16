@@ -320,6 +320,15 @@ export default defineConfig({
       },
     },
     {
+      name: "journal",
+      // Journal ("What the land remembers", docs/journal-spec.md §8):
+      // opens from card + nav, mocked-clock rotation. Desktop viewport.
+      testMatch: /journal\.spec\.ts/,
+      use: {
+        viewport: { width: 1440, height: 900 },
+      },
+    },
+    {
       name: "motionmaxxing-reduced",
       // Motionmaxxing reduced-motion gate (project reducedMotion fixture —
       // matches the repo's `reduced` project convention).

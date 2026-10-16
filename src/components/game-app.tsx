@@ -107,6 +107,15 @@ import {
   resolveBand,
   type AgeBandId,
 } from "@/game/age-profile";
+import {
+  journalSetAt,
+  journalSetByIndex,
+  journalSetIndexAt,
+  nextWindowStart,
+  shouldApplySetChange,
+  type JournalSet,
+} from "@/game/journal";
+import { JournalView } from "./journal-view";
 const AgeProfileSettings = lazy(() => import("./age-profile/AgeProfileSettings"));
 const StorytellerHomeHost = lazy(() => import("./storyteller-home"));
 // v5 hero globe: React.lazy like the storyteller host — the Three.js chunk
@@ -993,6 +1002,103 @@ export function GameApp() {
       });
     }
   }, []);
+  // Journal ("What the land remembers", docs/journal-spec.md §3/§5/§6):
+  // same invoker-focus-return discipline as the age settings above.
+  // Rotation: the displayed set index is state; a boundary timer (+ 30s
+  // safety interval + visibilitychange) recomputes it, but a new index
+  // is DEFERRED while the journal view is open or focus is inside the
+  // home Journal card — content is never swapped under a reader (§6).
+  const [journalOpen, setJournalOpen] = useState(false);
+  const journalTriggerRef = useRef<HTMLElement | null>(null);
+  const [journalIndex, setJournalIndex] = useState(() => journalSetIndexAt(Date.now()));
+  const journalIndexRef = useRef(journalIndex);
+  const journalOpenRef = useRef(false);
+  const pendingJournalIndexRef = useRef<number | null>(null);
+  const focusInsideJournalCard = useCallback(() => {
+    const active = document.activeElement;
+    const card = document.querySelector('[data-testid="journal-card"]');
+    return !!active && !!card && card.contains(active);
+  }, []);
+  const applyJournalIndex = useCallback((idx: number) => {
+    journalIndexRef.current = idx;
+    pendingJournalIndexRef.current = null;
+    setJournalIndex(idx);
+  }, []);
+  const recomputeJournal = useCallback(() => {
+    const idx = journalSetIndexAt(Date.now());
+    if (idx === journalIndexRef.current) {
+      pendingJournalIndexRef.current = null;
+      return;
+    }
+    if (
+      shouldApplySetChange({
+        overlayOpen: journalOpenRef.current,
+        focusInsideCard: focusInsideJournalCard(),
+      })
+    ) {
+      applyJournalIndex(idx);
+    } else {
+      // Deferred: applied when the view closes / focus leaves the card.
+      pendingJournalIndexRef.current = idx;
+    }
+  }, [applyJournalIndex, focusInsideJournalCard]);
+  useEffect(() => {
+    let timeout: number | undefined;
+    const schedule = () => {
+      const delay = Math.max(0, nextWindowStart(Date.now()) - Date.now()) + 50;
+      timeout = window.setTimeout(() => {
+        recomputeJournal();
+        schedule();
+      }, delay);
+    };
+    schedule();
+    const interval = window.setInterval(recomputeJournal, 30_000);
+    const onVisibility = () => {
+      if (document.visibilityState === "visible") recomputeJournal();
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    const onFocusIn = () => {
+      // A deferred set lands once focus has left the card (and the view
+      // is closed) — never while the reader is still in either place.
+      if (journalOpenRef.current || focusInsideJournalCard()) return;
+      const pending = pendingJournalIndexRef.current;
+      if (pending !== null) applyJournalIndex(pending);
+    };
+    document.addEventListener("focusin", onFocusIn);
+    return () => {
+      if (timeout !== undefined) window.clearTimeout(timeout);
+      window.clearInterval(interval);
+      document.removeEventListener("visibilitychange", onVisibility);
+      document.removeEventListener("focusin", onFocusIn);
+    };
+  }, [applyJournalIndex, focusInsideJournalCard, recomputeJournal]);
+  const openJournal = useCallback(
+    (e?: ReactMouseEvent<HTMLElement>) => {
+      if (e) journalTriggerRef.current = e.currentTarget;
+      // Opening is a fresh read: always show the current window's set,
+      // including any index whose swap was deferred.
+      applyJournalIndex(journalSetIndexAt(Date.now()));
+      journalOpenRef.current = true;
+      setJournalOpen(true);
+    },
+    [applyJournalIndex],
+  );
+  const closeJournal = useCallback(() => {
+    journalOpenRef.current = false;
+    setJournalOpen(false);
+    // The view has closed — a deferred set may land now (§6).
+    const pending = pendingJournalIndexRef.current;
+    if (pending !== null) applyJournalIndex(pending);
+    const trigger = journalTriggerRef.current;
+    journalTriggerRef.current = null;
+    if (trigger && document.contains(trigger)) {
+      requestAnimationFrame(() => {
+        if (document.contains(trigger)) trigger.focus({ preventScroll: true });
+      });
+    }
+  }, [applyJournalIndex]);
+  const journalEntry: JournalSet | null =
+    journalSetByIndex(journalIndex) ?? journalSetAt(Date.now());
   // Cleared-mode celebration: set when a difficulty band's full cycle is  // celebrated (primary onContinue trigger or the run-start backstop). The
   // dialog renders over the current screen; dismissing returns the player
   // to exactly where they were.
@@ -2004,7 +2110,7 @@ export function GameApp() {
     {/* While the grown-up gate/picker is open it is a full-viewport overlay:
         the home page underneath (incl. Comet's banner and the footer link)
         is inert — non-interactive and removed from the tab order. */}
-    <div inert={ageSettingsOpen || undefined}>
+    <div inert={ageSettingsOpen || journalOpen || undefined}>
     <Choose
       onState={withCardTap("State", () => setMenu({ kind: "states" }))}
       onCountry={withCardTap("Country", () => setMenu({ kind: "countries" }))}
@@ -2037,6 +2143,8 @@ export function GameApp() {
       suppressGreeting={scoutOffer !== null || !bootQualified}
       ageBand={ageBand}
       onGrownUpOpen={openAgeSettings}
+      journalEntry={journalEntry}
+      onJournalOpen={openJournal}
       notice={
         <>
           {idleNotice}
@@ -2053,6 +2161,9 @@ export function GameApp() {
           onToast={setAgeToast}
         />
       </Suspense>
+    ) : null}
+    {journalOpen && journalEntry ? (
+      <JournalView entry={journalEntry} onClose={closeJournal} />
     ) : null}
     {ageToast ? (
       <div className="agep-toast" role="status" data-testid="agep-toast">
@@ -2123,6 +2234,8 @@ function Choose({
   suppressGreeting,
   ageBand,
   onGrownUpOpen,
+  journalEntry,
+  onJournalOpen,
 }: {
   onState: (e: ReactMouseEvent) => void;
   onCountry: (e: ReactMouseEvent) => void;
@@ -2148,7 +2261,12 @@ function Choose({
   /** Effective age band (parent-set; "11-13" when unset). */
   ageBand: AgeBandId;
   /** Open the grown-up gate (footer link + locked-tile link). */
-  onGrownUpOpen: () => void;}) {
+  onGrownUpOpen: () => void;
+  /** The journal set currently showing (null only if the dataset were
+   *  empty — spec §7: the card then keeps its inert presentation). */
+  journalEntry: JournalSet | null;
+  /** Open the journal view (card READ THE ENTRY + nav JOURNAL). */
+  onJournalOpen: (e: ReactMouseEvent<HTMLElement>) => void;}) {
   // GeoDetective progress for the edition card: the resume variant and the
   // streak line. Read on mount (the menu remounts when the loop screen
   // closes, so this is always fresh on return).
@@ -2201,9 +2319,10 @@ function Choose({
       {notice}
       {tutorialInvite}
       {/* v5 top nav: brand + section jumps wired to the real home sections.
-          ABOUT and JOURNAL have no counterpart surface in the app yet —
-          rendered disabled (UNMAPPED in the integration report), as is the
-          search button (no search surface exists). */}
+          JOURNAL opens the journal view (docs/journal-spec.md). ABOUT has
+          no counterpart surface in the app yet — rendered disabled
+          (UNMAPPED in the integration report), as is the search button
+          (no search surface exists). */}
       <header className="hv5-nav home-rise" style={rise(0)}>
         <span id="hv5-unmapped-note" className="sr-only">
           Not yet available
@@ -2227,7 +2346,7 @@ function Choose({
             <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
           </button>
           <button type="button" aria-disabled="true" aria-describedby="hv5-unmapped-note">ABOUT</button>
-          <button type="button" aria-disabled="true" aria-describedby="hv5-unmapped-note">JOURNAL</button>
+          <button type="button" data-testid="journal-open-nav" onClick={onJournalOpen}>JOURNAL</button>
           <button type="button" onClick={() => scrollTo("home-involved")}>GET INVOLVED</button>
         </nav>
         <div className="hv5-actions">
@@ -2510,10 +2629,12 @@ function Choose({
         ) : (
           <div aria-hidden="true" />
         )}
-        {/* Journal — design element with NO real counterpart surface yet
-            (UNMAPPED): kept for the design, CTA disabled, no invented
-            behavior. */}
-        <article className="hv5-card hv5-spot hv5-journal home-rise" style={rise(7)}>
+        {/* Journal — real surface (docs/journal-spec.md): the card names
+            the currently-rotating set and READ THE ENTRY opens the
+            journal view; the set rotates every 2 hours, deferred while
+            focus is inside this card (spec §6). If the dataset were ever
+            empty the card falls back to the inert presentation (§7). */}
+        <article className="hv5-card hv5-spot hv5-journal home-rise" style={rise(7)} data-testid="journal-card">
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -2523,9 +2644,20 @@ function Choose({
             </div>
             <h2>What the land remembers</h2>
             <p>Short field stories from the places on the map — the tales only landscapes keep.</p>
-            <button type="button" className="hv5-go" aria-disabled="true" aria-describedby="hv5-unmapped-note">
-              READ THE ENTRY
-            </button>
+            {journalEntry ? (
+              <>
+                <p className="hv5-journal-now" data-testid="journal-now-showing">
+                  Now showing: {journalEntry.geography} · {journalEntry.notes.length} field notes
+                </p>
+                <button type="button" className="hv5-go" data-testid="journal-open" onClick={onJournalOpen}>
+                  READ THE ENTRY
+                </button>
+              </>
+            ) : (
+              <button type="button" className="hv5-go" aria-disabled="true" aria-describedby="hv5-unmapped-note">
+                READ THE ENTRY
+              </button>
+            )}
           </div>
           <img className="hv5-art" loading="lazy" decoding="async" src={journalTreeUrl} alt="" aria-hidden="true" />
         </article>
