@@ -16,6 +16,7 @@ import { ShareButton } from "@/components/share-button";
 import { GuessInput } from "./guess-input";
 import { displayLoopName, fetchLoopIndex, isDuplicateGuess } from "./evaluate";
 import { LoopMap, ringAnnouncement, type LoopMapHandle } from "./LoopMap";
+import { LoopMapBoundary, LoopMapOffLine } from "./loop-map-boundary";
 import { loopPuzzleFromSearch } from "./day";
 import {
   playConfirmGuess,
@@ -809,6 +810,9 @@ function LoopGame({
 
   // Detective's Atlas (Option A): the map is the primary guess surface.
   const mapHandleRef = useRef<LoopMapHandle | null>(null);
+  // WS-4 Phase 1: the map pictures failed. The map is hidden for the rest of
+  // this visit and the guess loop carries on. Never stored.
+  const [mapOff, setMapOff] = useState(false);
   // Place tapped on the map, awaiting confirm in the bottom sheet.
   const [selected, setSelected] = useState<LoopNameEntry | null>(null);
   // Gentle hint while the place index loads (fail open for taps: an
@@ -914,15 +918,22 @@ function LoopGame({
             onDismissOffer={() => setHintOfferDismissed(true)}
           />
         ) : null}
-        <LoopMap
-          guesses={puzzle.guesses}
-          target={clue.target}
-          finished={finished}
-          unit={loopUnit}
-          handleRef={mapHandleRef}
-          onSelectPlace={onMapSelect}
-          onEmptyTap={onMapEmptyTap}
-        />
+        {mapOff ? (
+          <LoopMapOffLine />
+        ) : (
+          <LoopMapBoundary>
+            <LoopMap
+              guesses={puzzle.guesses}
+              target={clue.target}
+              finished={finished}
+              unit={loopUnit}
+              handleRef={mapHandleRef}
+              onSelectPlace={onMapSelect}
+              onEmptyTap={onMapEmptyTap}
+              onTilesFailed={() => setMapOff(true)}
+            />
+          </LoopMapBoundary>
+        )}
         {!finished ? (
           <>
             <GuessInput onJump={onJump} />

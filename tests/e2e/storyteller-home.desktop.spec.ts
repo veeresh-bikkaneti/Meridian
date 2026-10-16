@@ -101,7 +101,7 @@ test("Comet emblem: ~30px, static, aria-hidden, in the eyebrow row", async ({
   expect(Math.round(box!.height)).toBeLessThanOrEqual(32);
 
   // Eyebrow → emblem → sound toggle order (spec §2).
-  const eyebrow = page.locator(".atlas-eyebrow").first();
+  const eyebrow = page.locator(".hv5-pill").first();
   const toggle = page.getByTestId("sound-toggle");
   const eBox = await eyebrow.boundingBox();
   const tBox = await toggle.boundingBox();

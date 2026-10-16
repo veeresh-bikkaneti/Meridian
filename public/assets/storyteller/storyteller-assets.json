@@ -6,7 +6,12 @@
   "greet-03": "audio/storyteller/greet-03.mp3",
   "greet-04": "audio/storyteller/greet-04.mp3",
   "greet-05": "audio/storyteller/greet-05.mp3",
-  "greet-06": "audio/storyteller/greet-06.mp3"
+  "greet-06": "audio/storyteller/greet-06.mp3",
+  "poke-01": "audio/storyteller/poke-01.mp3",
+  "poke-02": "audio/storyteller/poke-02.mp3",
+  "poke-03": "audio/storyteller/poke-03.mp3",
+  "poke-04": "audio/storyteller/poke-04.mp3",
+  "poke-05": "audio/storyteller/poke-05.mp3"
  },
  "poses": {
   "idle": "images/storyteller/storyteller.jpg",

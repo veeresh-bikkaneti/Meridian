@@ -13,7 +13,23 @@ export const SCOUT_COPY = {
   bootOffer: {
     body: "The full map crashed on your last visit — want to try Scout Map, the lighter trail?",
     accept: "Use Scout Map",
-    decline: "Not now",
+    // "Keep full map", not "Not now": declining records a permanent manual
+    // full choice (never re-prompts), so the label must not imply "later".
+    decline: "Keep full map",
+  },
+  /**
+   * Capability offer: shown when the boot probe or the low-memory signal
+   * qualifies the device for Scout Map. The user chooses — struggle with
+   * the full map, or take the lighter trail. Declining records an explicit
+   * manual "full" choice (never decays, never re-prompts).
+   */
+  capabilityOffer: {
+    probeBody:
+      "This device may struggle with the full map's graphics. Want to try Scout Map, the lighter trail? Same game, same rounds.",
+    lowMemoryBody:
+      "This device doesn't have much memory, so the full map might freeze or lag. Want to try Scout Map, the lighter trail? Same game, same rounds.",
+    accept: "Use Scout Map",
+    decline: "Keep full map",
   },
   /** Mid-game switch note (PBI-5): deferred to the next game-natural break. */
   switchNote:

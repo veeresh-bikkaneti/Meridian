@@ -312,7 +312,9 @@
   /* Room for the 44px dismiss anchored inside the popover's mid-right. */
   padding: 10px 58px 10px 14px;
   border-radius: 14px;
-  background: var(--atlas-card, rgba(10, 12, 16, 0.95));
+  /* Opaque plate. A translucent card let the tagline show through the
+     greeting. Same anchor and size — no reflow, still clear of the toggle. */
+  background: var(--atlas-bg-1);
   color: var(--atlas-ink, #f5f1e6);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
@@ -359,6 +361,32 @@
 }
 
 .storyteller-banner-dismiss:focus-visible {
+  outline: 3px solid var(--atlas-brass);
+  outline-offset: 2px;
+}
+
+/* Panic-dismiss re-hear. Hangs in the popover slot, so it stays clear of
+ * the eyebrow sound toggle. Hidden while a poke bubble is up. */
+.storyteller-banner-replay {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 30;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: var(--atlas-bg-1, rgba(16, 34, 42, 0.98));
+  color: var(--atlas-brass, #e8b64c);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  animation: storyteller-banner-in 150ms ease-out;
+}
+
+.storyteller-banner-replay:focus-visible {
   outline: 3px solid var(--atlas-brass);
   outline-offset: 2px;
 }

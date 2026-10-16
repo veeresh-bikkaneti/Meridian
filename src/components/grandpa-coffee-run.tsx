@@ -728,9 +728,9 @@ function docRectOf(el: Element): DocRect {
 /** Beat 0 position: midpoint between the eyebrow row and the title. */
 function measureOrigin(): { x: number; y: number } {
   const fallback = { x: 26, y: 84 + window.scrollY };
-  const main = document.querySelector("main.atlas-home");
-  const eyebrow = main?.querySelector(".atlas-eyebrow");
-  const title = main?.querySelector(".atlas-title");
+  const main = document.querySelector("main.home-v5");
+  const eyebrow = main?.querySelector(".hv5-pill");
+  const title = main?.querySelector('[data-testid="home-heading"]');
   if (!eyebrow || !title) return fallback;
   const er = eyebrow.getBoundingClientRect();
   const tr = title.getBoundingClientRect();
@@ -739,7 +739,7 @@ function measureOrigin(): { x: number; y: number } {
 }
 
 function measureTour(): TourMeasurements | null {
-  const main = document.querySelector("main.atlas-home");
+  const main = document.querySelector("main.home-v5");
   const scene = document.querySelector('[data-testid="grandpa-scene"]');
   const walker = document.querySelector('[data-testid="grandpa-walker"]');
   if (!main || !scene || !walker) return null;

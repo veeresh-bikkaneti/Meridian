@@ -17,7 +17,7 @@ import {
   readPhase,
   APP_NO_IDLE,
 } from "./helpers";
-import { readMapMode } from "./scout-helpers";
+import { offerModal, readMapMode, readStoredMapMode } from "./scout-helpers";
 
 test.setTimeout(300_000);
 // Reduced motion makes the map's intro dive an instant jump-to, which is
@@ -26,7 +26,8 @@ test.setTimeout(300_000);
 test.use({ reducedMotion: "reduce" });
 
 test.beforeEach(async ({ context }) => {
-  await serveBuiltArtifact(context);
+  // This spec exercises the capability dialog itself — do NOT suppress it.
+  await serveBuiltArtifact(context, { suppressScoutOffer: false });
 });
 
 test("SwiftShader + 6x CPU throttle: scout qualifies and the game completes", async ({
@@ -51,6 +52,22 @@ test("SwiftShader + 6x CPU throttle: scout qualifies and the game completes", as
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
     timeout: 90_000,
   });
+
+  // The weak renderer now gets a CHOICE, not a silent routing: the
+  // capability dialog appears with the probe copy.
+  const modal = offerModal(page);
+  await expect(modal).toBeVisible({ timeout: 30_000 });
+  await expect(modal).toContainText("may struggle with the full map");
+  await modal.getByRole("button", { name: "Use Scout Map" }).click();
+  await expect(modal).toBeHidden();
+
+  // Accepting stores the scout assignment (source preserved, accepted: true).
+  expect(await readStoredMapMode(page)).toMatchObject({
+    mode: "scout",
+    source: "probe",
+    accepted: true,
+  });
+
   await page.getByRole("button", { name: "Play the globe" }).click();
 
   // The boot probe qualifies scout on the weak renderer.

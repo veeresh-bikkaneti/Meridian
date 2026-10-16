@@ -42,8 +42,17 @@ import { scoreRingForEdition } from "@/game/score";
 import { scorePlace, type ScoredPlace } from "@/game/scoring";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrated, markClearedCelebrated, clearClearedMark, memorySeenStore, isBandCleared } from "@/game/trail";
 import { resolveRunPool } from "@/game/pool";
+import { loadedForKey, placesLoadKey, type LoadedFor } from "@/game/places-load-key";
 import type { MapMark, MapVariation } from "@/map/satellite-map";
 import { MapErrorBoundary } from "./map-error-boundary";
+import "./home-v5.css";
+import heroMountainUrl from "@/assets/home-v5/hero-mountain.webp";
+import globeFallbackUrl from "@/assets/home-v5/globe-fallback.webp";
+import desertRuinsUrl from "@/assets/home-v5/desert-ruins.webp";
+import patagoniaUrl from "@/assets/home-v5/patagonia.webp";
+import archiveToolsUrl from "@/assets/home-v5/archive-tools.webp";
+import journalTreeUrl from "@/assets/home-v5/journal-tree.webp";
+import binocularsHatUrl from "@/assets/home-v5/binoculars-hat.webp";
 import { Compass, Flag, Globe2, MapPin, Volume2, VolumeX } from "lucide-react";
 import {
   initAudio,
@@ -58,6 +67,7 @@ import {
 import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
 import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import { RunStartNotice } from "@/components/run-start-notice";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { HintPanel } from "./hint-panel";
 import { directionalHint } from "./hint-logic";
@@ -99,6 +109,29 @@ import {
 } from "@/game/age-profile";
 const AgeProfileSettings = lazy(() => import("./age-profile/AgeProfileSettings"));
 const StorytellerHomeHost = lazy(() => import("./storyteller-home"));
+// v5 hero globe: React.lazy like the storyteller host — the Three.js chunk
+// never lands in the initial bundle; HomeGlobe itself dynamically imports
+// three only when the hero nears the viewport.
+// A failed globe-chunk fetch must never take the home page down with it:
+// the lazy factory catches to a static-disc component (the same fallback
+// HomeGlobe renders for reduced-motion / no-WebGL).
+function GlobeChunkFallback() {
+  return (
+    <img
+      className="hv5-globe-fallback"
+      src={globeFallbackUrl}
+      alt=""
+      aria-hidden="true"
+      width={800}
+      height={800}
+    />
+  );
+}
+const HomeGlobe = lazy(() =>
+  import("./home-globe")
+    .then((m) => ({ default: m.HomeGlobe }))
+    .catch(() => ({ default: GlobeChunkFallback })),
+);
 import {
   CelebrationOverlay,
   celebrationSeamSpec,
@@ -117,6 +150,7 @@ import {
   shouldArmRevealWatchdog,
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
+import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
   emitEvent,
   initObservability,
@@ -129,6 +163,8 @@ import {
 } from "@/lib/observability";
 import type { MapMode, MapModeSource } from "@/map/capability";
 import {
+  planBootMapMode,
+  type ScoutOfferVariant,
   probeWebGL,
   qualifyMapMode,
   readDeviceMemoryGB,
@@ -137,6 +173,7 @@ import {
 } from "@/map/capability";
 import type { ScoutRestoreView } from "@/map/satellite-map";
 import { SCOUT_COPY } from "./scout-copy.ts";
+import { TILE_FALLBACK_COPY } from "@/map/tile-fallback-copy.ts";
 import { ScoutBootOffer } from "./scout-boot-offer.tsx";
 import { MapModeToggle } from "./map-mode-toggle.tsx";
 import {
@@ -147,6 +184,7 @@ import {
   hasSeenTutorial,
   isTutorialRunPool,
   markTutorialSeen,
+  TUTORIAL_INVITE_DISMISS_EVENT,
   type TutorialBeat,
 } from "@/game/tutorial";
 import { TutorialInvite, TutorialOverlay } from "./tutorial-overlay";
@@ -728,6 +766,19 @@ function useSessionState() {
 }
 
 /**
+ * The globeTierSplit decision for a run's pool load. Only the Globe consults
+ * the flag (and thereby waits for flags.json, at most ~1.5s, only on the first
+ * Globe run of a page load); every other region gets false at once. Both
+ * placesFor call sites use this one helper, and the resolver caches the first
+ * answer, so a run's two loads can never disagree.
+ */
+function globeTierSplitFor(edition: Edition, regionId: string): Promise<boolean> {
+  return edition === "globe" && regionId === "globe"
+    ? resolveGlobeTierSplit()
+    : Promise.resolve(false);
+}
+
+/**
  * Review-deck entry status for the edition picker. Gated on the
  * `learningOutcomes` flag like the other growth surfaces: flag off = no
  * deck entry at all (the deck only populates while the flag is on). Re-read
@@ -823,9 +874,15 @@ export function GameApp() {
    * adjustment below — no effect ordering hazards with the map mount).
    */
   const [queueAppliedAtIndex, setQueueAppliedAtIndex] = useState<number | null>(null);
-  /** PBI-6: the boot offer modal (offer, not force) — once per boot. */
-  const [showScoutOffer, setShowScoutOffer] = useState(false);
+  /** The boot choice dialog (offer, not force) — variant, or null when hidden. Once per boot. */
+  const [scoutOffer, setScoutOffer] = useState<ScoutOfferVariant | null>(null);
   const scoutOfferShownRef = useRef(false);
+  /**
+   * True once the boot map-mode qualification has run. The storyteller
+   * greeting waits for this (plus offer resolution) so narration never
+   * starts under the choice dialog on a qualifying device.
+   */
+  const [bootQualified, setBootQualified] = useState(false);
 
   /**
    * Apply a map-mode assignment: persist (Q3) + stamp crash reports +
@@ -853,14 +910,44 @@ export function GameApp() {
     setMapMode(mode);
   }, []);
 
+  // PBI-6 (prior-crash): accept is the user's explicit choice — manual
+  // scout, queued (never applied mid-round), never decays.
   const acceptScoutOffer = useCallback(() => {
     applyMapMode("scout", "manual");
-    setShowScoutOffer(false);
+    setScoutOffer(null);
   }, [applyMapMode]);
 
+  // Capability offer accept (probe / low-memory): scout with the
+  // qualifying source preserved for telemetry and `accepted: true`, so —
+  // like a decline or a manual toggle — it is the user's own answer: it
+  // never decays and the dialog is never re-offered. Applied immediately —
+  // the offer fires pre-mount, so there is no mid-round hazard.
+  const acceptCapabilityOffer = useCallback(() => {
+    const source = scoutOffer;
+    if (source === "probe" || source === "low-memory") {
+      writeStoredMapMode("scout", source, undefined, Date.now(), true);
+      setReportMapMode("scout");
+      setMapMode("scout");
+    }
+    setScoutOffer(null);
+  }, [scoutOffer]);
+
+  // Decline (any variant): the user's explicit choice of full mode —
+  // stored as manual, so it never decays and never re-prompts. (For
+  // prior-crash this also satisfies the no-nag contract: the consumed
+  // crash flag alone would let the next boot's fresh probe re-fire the
+  // dialog on a weak device.)
   const declineScoutOffer = useCallback(() => {
-    // Stay full; stamped shown-this-boot, so it never re-fires this boot.
-    setShowScoutOffer(false);
+    writeStoredMapMode("full", "manual");
+    setReportMapMode("full");
+    setScoutOffer(null);
+  }, []);
+  // Dismiss (scrim tap / Escape): NOT a choice — closes the dialog without
+  // persisting anything, so a stray tap can never become a permanent
+  // "full" assignment. The dialog may re-fire on the next boot if the
+  // device still qualifies (UX review 2026-10-12, BLOCK 1).
+  const dismissScoutOffer = useCallback(() => {
+    setScoutOffer(null);
   }, []);
   // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v2 and never touches the
@@ -968,8 +1055,22 @@ export function GameApp() {
   // chunk cannot be loaded, and the player stays on the menu. When the tab
   // is stale (a deploy replaced its hashed chunks), the notice becomes a
   // one-tap refresh prompt instead of a dead end.
-  const [starting, setStarting] = useState<{ regionName: string } | null>(null);
-  const [startError, setStartError] = useState<{ message: string; staleBuild: boolean } | null>(null);
+  // `edition`/`regionId`/`regionName`/`choice` describe what the player asked
+  // for, so the in-run notice (runStartNotice below) can name it.
+  const [starting, setStarting] = useState<{
+    edition: Edition;
+    regionId: string;
+    regionName: string;
+    choice: PickerDifficulty;
+  } | null>(null);
+  const [startError, setStartError] = useState<{
+    message: string;
+    staleBuild: boolean;
+    edition: Edition;
+    regionId: string;
+    regionName: string;
+    choice: PickerDifficulty;
+  } | null>(null);
   // Session score: survives edition switches until End game or the idle
   // timeout. The HUD and the summary read from here, never from the run.
   const { session, update: updateSession, replace: replaceSession, get: getSession } = useSessionState();
@@ -1023,6 +1124,7 @@ export function GameApp() {
 
   /** Idle kill: end the session and return the player to the home screen. */
   const killIdleSession = useCallback(() => {
+    setStartError(null);
     clearDrop();
     try {
       sessionStorage.removeItem(RUN_KEY);
@@ -1052,44 +1154,46 @@ export function GameApp() {
     // pre-mount — before any map instance exists.
     // Write policy (Q3): a live stored assignment (manual, or auto inside
     // its decay window) stands WITHOUT a rewrite — rewriting per boot
-    // would refresh setAt and silently defeat decay. A fresh scout
-    // decision (new qualifying event) is the only boot-time write.
-    // Q1 (offer, not force): the boot offer modal fires on a fresh
-    // source === "prior-crash" decision ONLY, and the session stays in
-    // full mode until the player accepts.
+    // would refresh setAt and silently defeat decay. Nothing is written
+    // at boot for a fresh scout decision either: accept writes the auto
+    // scout (source preserved, decays), decline writes manual full.
+    // Q1 (offer, not force): a fresh "prior-crash", "probe", or
+    // "low-memory" decision shows the choice dialog — the session stays
+    // in full mode until the player accepts. Scout never applies silently.
+    // E2E seam: the harness init script
+    // (window.__meridianSuppressScoutOffer, set by serveBuiltArtifact)
+    // skips the dialog — the Playwright VM's SwiftShader renderer reads
+    // as a weak device, so unsuppressed every fresh boot would show the
+    // dialog and block unrelated specs.
     try {
       const stored = readStoredMapMode();
       if (stored) {
         setReportMapMode(stored.mode);
         setMapMode(stored.mode);
       } else {
-        const decision = qualifyMapMode({
-          priorMapCrash: wasMapAttributedCrash(),
-          webglProbeOk: probeWebGL(),
-          deviceMemoryGB: readDeviceMemoryGB(),
-        });
-        if (decision.source === "prior-crash") {
-          setReportMapMode("full");
-          if (!scoutOfferShownRef.current) {
-            scoutOfferShownRef.current = true;
-            setShowScoutOffer(true);
-          }
-        } else if (
-          decision.mode === "scout" &&
-          (decision.source === "probe" || decision.source === "low-memory")
-        ) {
-          // Fresh qualifying event (probe / low-memory) — persist it so
-          // the assignment survives until decay (Q2).
-          writeStoredMapMode("scout", decision.source);
-          setReportMapMode("scout");
-          setMapMode("scout");
-        } else {
-          setReportMapMode("full");
+        const suppressOffer =
+          typeof window !== "undefined" &&
+          (window as unknown as Record<string, unknown>).__meridianSuppressScoutOffer === true;
+        const plan = planBootMapMode(
+          null,
+          qualifyMapMode({
+            priorMapCrash: wasMapAttributedCrash(),
+            webglProbeOk: probeWebGL(),
+            deviceMemoryGB: readDeviceMemoryGB(),
+          }),
+        );
+        setReportMapMode("full");
+        if (plan.offer !== null && !suppressOffer && !scoutOfferShownRef.current) {
+          scoutOfferShownRef.current = true;
+          setScoutOffer(plan.offer);
         }
       }
     } catch {
       // Qualification never blocks boot — full mode is the default.
     }
+    // Boot qualification has settled (offer shown or not) — the storyteller
+    // greeting may now start once any open offer resolves.
+    setBootQualified(true);
     void loadFlags().then(() => {
       setObservabilityEndpoint(getObservabilityEndpoint());
     });
@@ -1234,7 +1338,7 @@ export function GameApp() {
       // into an edition (gladiator-into-the-arena energy). Not for the
       // tutorial (quiet practice round).
       if (!opts?.tutorial && soundAudible()) safePlay(playEditionEntrance);
-      setStarting({ regionName });
+      setStarting({ edition, regionId, regionName, choice });
       setStartError(null);
       recordMilestone("run_start", { edition, regionId, chunkId: regionId });
       // D1: arm the clean-exit dirty marker NOW, before the data-chunk
@@ -1258,7 +1362,11 @@ export function GameApp() {
       try {
         // The region's chunk(s) load here — never eagerly, never partial.
         recordMilestone("data_chunk_load_start", { edition, regionId, chunkId: regionId });
-        const places = await placesFor(edition, regionId);
+        // The learning path and the globeTierSplit flag ride along so the Globe
+        // fetches only the fame tiers it deals from (flag on) or all five (flag
+        // off); filterByTier below still decides the pool.
+        const tierSplit = await globeTierSplitFor(edition, regionId);
+        const places = await placesFor(edition, regionId, choice, tierSplit);
         recordMilestone("data_loaded", { edition, regionId, chunkId: regionId });
         const dateKey = trailDate();
         // The picker's difficulty band narrows the catalog BEFORE the dealer
@@ -1352,7 +1460,14 @@ export function GameApp() {
         } catch {
           staleBuild = false;
         }
-        setStartError({ message, staleBuild });
+        setStartError({
+          message: staleBuild ? message : `We couldn't open ${regionId === "globe" ? "the Globe" : regionName} right now. Check that you're online, then tap Play again.`,
+          staleBuild,
+          edition,
+          regionId,
+          regionName,
+          choice,
+        });
         // Telemetry: region-chunk load failures never left this catch —
         // emit so they reach crash reporting like every other error class.
         emitEvent({
@@ -1367,6 +1482,35 @@ export function GameApp() {
     },
     [commit, ensureSession],
   );
+
+  // "Try again" on the in-run start-failure box. A failed dynamic import() is
+  // remembered by the browser for the lifetime of the document (Chromium does
+  // not even request the URL again), so calling openRun again in THIS document
+  // cannot recover once a tier file failed to load: reload instead. The picker
+  // opens with the chosen band still selected (onPlayBand persisted it). Do NOT
+  // reuse refreshForNewBuild: it sets STALE_REFRESH_KEY, which would disable
+  // later stale-build detection.
+  const retryLastOpen = useCallback(() => window.location.reload(), []);
+  // "Keep playing": close the box and hand focus back to the game (the box had
+  // it and is about to unmount). The result card's button is "Next place" in
+  // the pinned bar and "Next place →" in the full card; neither has a ref or
+  // test id, so find it by its label, as other code in this file does with
+  // document.querySelector (scout-boot-offer). requestAnimationFrame lets the
+  // unmount finish first.
+  const dismissStartError = useCallback(() => {
+    setStartError(null);
+    window.requestAnimationFrame(() => {
+      const next = Array.from(document.querySelectorAll<HTMLButtonElement>("button")).find(
+        (b) => (b.textContent ?? "").trim().startsWith("Next place"),
+      );
+      next?.focus({ preventScroll: true });
+    });
+  }, []);
+  // The in-run start notice clears when the player moves on: the next place
+  // is dealt (run.index) or the run changes phase.
+  useEffect(() => {
+    setStartError(null);
+  }, [run?.index, run?.phase]);
 
   // Review-deck status for the picker entry (flag-gated; re-read whenever
   // the app returns to the picker — see useDeckStatus).
@@ -1431,7 +1575,16 @@ export function GameApp() {
     markTutorialSeen();
     setInviteDismissed(true);
   }, []);
+  // Mascot tap while the invite is up uses the same dismiss. The host
+  // starts the greeting inside that click, so this must not start audio.
+  useEffect(() => {
+    const onFigureDismiss = () => onDismissInvite();
+    window.addEventListener(TUTORIAL_INVITE_DISMISS_EVENT, onFigureDismiss);
+    return () =>
+      window.removeEventListener(TUTORIAL_INVITE_DISMISS_EVENT, onFigureDismiss);
+  }, [onDismissInvite]);
   const endTutorial = useCallback(() => {
+    setStartError(null);
     clearDrop();
     try {
       sessionStorage.removeItem(RUN_KEY);
@@ -1563,6 +1716,29 @@ export function GameApp() {
       Still there? Your game ends after 2 minutes of no activity — do anything to keep playing.
     </div>
   ) : null;
+  // In-run run-start feedback. Only while a run is on screen: from the menu the
+  // existing "Loading places" screen and loadNotice already cover it, and the
+  // very first run (no run yet) never shows this. The status region inside is
+  // always mounted while a run exists so announcements are reliable.
+  const startTarget = starting ?? startError;
+  const noticeTarget = run && startTarget ? startNoticeTarget(run, startTarget) : null;
+  const runStartNotice = run ? (
+    <RunStartNotice
+      loadingLabel={starting && noticeTarget ? noticeTarget.label : null}
+      error={
+        !starting && startError && noticeTarget
+          ? {
+              label: noticeTarget.label,
+              scope: noticeTarget.scope,
+              staleBuild: startError.staleBuild,
+              onTryAgain: retryLastOpen,
+              onKeepPlaying: dismissStartError,
+              onRefresh: refreshForNewBuild,
+            }
+          : null
+      }
+    />
+  ) : null;
 
   if (!ready) {
     return (
@@ -1602,12 +1778,14 @@ export function GameApp() {
           onEditions={() => {
             // Back to the picker WITHOUT ending the game: the session (and
             // its score) stays alive across the edition switch.
+            setStartError(null);
             clearDrop();
             setRun(null);
             setMenu(null);
           }}
           onSummaryDone={() => {
             // End game already ended the session; drop it and go home.
+            setStartError(null);
             clearDrop();
             setRun(null);
             setMenu(null);
@@ -1623,6 +1801,7 @@ export function GameApp() {
           mapMode={mapMode}
           toggleMapMode={queuedMapMode ?? mapMode}
           applyMapMode={applyMapMode}
+          setSessionMapMode={setMapMode}
           celebrationOpen={cleared !== null}
           ageBand={ageBand}
         />
@@ -1648,6 +1827,7 @@ export function GameApp() {
               // Back to the edition picker WITHOUT ending the game: the
               // session (and its score) stays alive, like the Editions
               // button mid-run.
+              setStartError(null);
               setCleared(null);
               clearDrop();
               setRun(null);
@@ -1656,6 +1836,7 @@ export function GameApp() {
           />
         ) : null}
         {celebrationOverlay}
+        {runStartNotice}
         {idleToast}
       </>
     );
@@ -1719,8 +1900,8 @@ export function GameApp() {
         </Button>
       </div>
     ) : (
-      <p role="alert" className="mb-4 rounded-xl border border-line bg-surface p-4 text-sm text-fg">
-        {startError.message} Please try again.
+      <p role="alert" className="mb-4 rounded-xl border border-fg/30 bg-surface p-4 text-base text-fg">
+        {startError.message}
       </p>
     )
   ) : null;
@@ -1853,6 +2034,7 @@ export function GameApp() {
         ) : null
       }
       tutorialInviteVisible={showTutorialInvite}
+      suppressGreeting={scoutOffer !== null || !bootQualified}
       ageBand={ageBand}
       onGrownUpOpen={openAgeSettings}
       notice={
@@ -1879,14 +2061,43 @@ export function GameApp() {
     ) : null}
     {celebrationOverlay}
     {idleToast}
-    {/* PBI-6: the Scout Map boot offer — dedicated modal (never Comet,
+    {/* The Scout Map boot choice dialog — dedicated modal (never Comet,
         which auto-dismisses). Fires on the home render only, once per
-        boot, when the map-attributed prior-crash flag is set. */}
-    {showScoutOffer ? (
-      <ScoutBootOffer onAccept={acceptScoutOffer} onDecline={declineScoutOffer} />
+        boot, when a fresh scout decision has no live stored assignment:
+        prior-crash, or a capability-detected weak device (probe /
+        low-memory). Offer, not force. */}
+    {scoutOffer !== null ? (
+      <ScoutBootOffer
+        variant={scoutOffer}
+        onAccept={scoutOffer === "prior-crash" ? acceptScoutOffer : acceptCapabilityOffer}
+        onDecline={declineScoutOffer}
+        onDismiss={dismissScoutOffer}
+      />
     ) : null}
     </>
   );
+}
+
+/** Display names of the learning paths, used by the in-run start notice. */
+const BAND_LABELS: Record<PickerDifficulty, string> = {
+  easy: "Easy",
+  medium: "Medium",
+  hard: "Hard",
+};
+
+/**
+ * What the in-run start notice calls the thing being loaded: the band name
+ * when the player stays in the same place and only changes the learning path
+ * (celebration "Try Medium"), otherwise the place name (Hard-clear "Try
+ * <neighbor>", "Try <country>", "Play the Globe").
+ */
+function startNoticeTarget(
+  run: Run,
+  target: { edition: Edition; regionId: string; regionName: string; choice: PickerDifficulty },
+): { label: string; scope: "band" | "region" } {
+  return target.edition === run.edition && target.regionId === run.regionId
+    ? { label: BAND_LABELS[target.choice], scope: "band" }
+    : { label: target.regionId === "globe" ? "the Globe" : target.regionName, scope: "region" };
 }
 
 /** Kid-friendly hints for each learning path, shown under the picker. */
@@ -1909,6 +2120,7 @@ function Choose({
   onDifficultyChoice,
   tutorialInvite,
   tutorialInviteVisible,
+  suppressGreeting,
   ageBand,
   onGrownUpOpen,
 }: {
@@ -1930,6 +2142,9 @@ function Choose({
   /** True while the first-run tutorial invite is on screen — Comet's
       auto-greeting stays quiet until it's dismissed (no competing popups). */
   tutorialInviteVisible?: boolean;
+  /** True while a blocking boot dialog is open or boot qualification hasn't
+      settled — the storyteller greeting waits (UX review 2026-10-12). */
+  suppressGreeting?: boolean;
   /** Effective age band (parent-set; "11-13" when unset). */
   ageBand: AgeBandId;
   /** Open the grown-up gate (footer link + locked-tile link). */
@@ -1954,218 +2169,385 @@ function Choose({
     7: "450ms",
   };
   const rise = (d: number) => ({ "--rise-delay": RISE_DELAY[d] ?? "0ms" }) as CSSProperties;
+  // v5 nav jumps: smooth-scroll to a home section (instant under
+  // reduced-motion) AND move focus to it — a scroll-only jump strands
+  // keyboard / screen-reader users at the top of the page (WCAG 2.4.3).
+  // Targets carry tabIndex={-1}; preventScroll keeps our scroll as the
+  // only movement. Missing targets are a no-op by construction.
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    el.focus({ preventScroll: true });
+  };
+  const scrollTop = () => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  };
   return (
     <>
-    <main className="atlas-home mx-auto flex min-h-dvh w-full max-w-4xl flex-col px-5 py-8">
+    <main className="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-5 py-8 md:px-9">
       <AtlasBackdrop />
+      <svg className="hv5-sprig" viewBox="0 0 120 150" fill="none" stroke="#8FA382" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+        <path d="M14 148 C20 100 34 60 62 22" strokeOpacity=".7" />
+        <g fill="#A9BCA0" stroke="none" opacity=".8">
+          <ellipse cx="30" cy="118" rx="13" ry="6" transform="rotate(-48 30 118)" /><ellipse cx="42" cy="92" rx="13" ry="6" transform="rotate(-52 42 92)" />
+          <ellipse cx="54" cy="66" rx="12" ry="5.5" transform="rotate(-55 54 66)" /><ellipse cx="66" cy="44" rx="11" ry="5" transform="rotate(-58 66 44)" />
+          <ellipse cx="24" cy="104" rx="11" ry="5" transform="rotate(-16 24 104)" /><ellipse cx="36" cy="78" rx="11" ry="5" transform="rotate(-20 36 78)" />
+          <ellipse cx="48" cy="54" rx="10" ry="4.6" transform="rotate(-24 48 54)" />
+        </g>
+      </svg>
       {notice}
       {tutorialInvite}
-      <header>
-        <div className="flex items-center gap-3">
-          <p className="atlas-eyebrow home-rise" style={rise(0)}>
-            <Compass className="size-4" aria-hidden="true" />
-            Field atlas · {trailDate()} UTC
-          </p>
-          {/* Storyteller home handoff (H1): Comet is retired as a host — a
-              silent ~30px emblem sits in the eyebrow row, aria-hidden and
-              decorative, never speaks. Order: eyebrow → emblem → toggle. */}
-          <CometEmblem />
-          {/* Veeresh 2026-10-07: SoundToggle lives in the eyebrow cluster so
-              the banner row below has room for the h1. */}
-          <SoundToggle
-            testId="sound-toggle"
-            className="atlas-sound-toggle home-rise"
-            style={rise(0)}
-          />
-        </div>
-        {/* Storyteller banner host (owner directive 2026-10-09): the figure
-            sits in the banner row beside the branding — always visible,
-            mobile and desktop. The greeting rides in a popover below the row.
-            The Comet emblem stays in the eyebrow row — never moved. */}
-        <div className="atlas-banner-row home-rise mt-4" style={rise(2)}>
-          {/* PBI-6: the h1 is the focus target when the Scout Map boot offer
-              closes (data-testid="home-heading"). Owner 2026-10-09: the
-              storyteller figure sits RIGHT of the branding. */}
-          <h1 className="atlas-title" data-testid="home-heading" tabIndex={-1}>
-            {BRAND.name}
-          </h1>
-          <StorytellerBannerBoundary>
-            <Suspense fallback={<StorytellerBannerSkeleton />}>
-              <StorytellerHomeHost tutorialInviteVisible={tutorialInviteVisible} />
-            </Suspense>
-          </StorytellerBannerBoundary>
-        </div>
-        <p className="atlas-tagline home-rise mt-4" style={rise(3)}>
-          Pick the globe, a country, or a state. A place name, then one pin. Your score keeps
-          adding up across editions until you choose to end the game, or if you&rsquo;re idle for
-          2 minutes.
-        </p>
-        <div
-          className="home-rise mt-7"
-          style={rise(4)}
-          data-testid="tour-stop-difficulty"
+      {/* v5 top nav: brand + section jumps wired to the real home sections.
+          ABOUT and JOURNAL have no counterpart surface in the app yet —
+          rendered disabled (UNMAPPED in the integration report), as is the
+          search button (no search surface exists). */}
+      <header className="hv5-nav home-rise" style={rise(0)}>
+        <span id="hv5-unmapped-note" className="sr-only">
+          Not yet available
+        </span>
+        <button
+          type="button"
+          className="hv5-brand"
+          aria-label="Meridian home"
+          onClick={scrollTop}
         >
-          <p id="difficulty-label" className="atlas-difficulty-label">
-            How do you want to grow your map today?
-          </p>
-          <div role="group" aria-labelledby="difficulty-label" className="atlas-seg mt-3">
-            {(
-              [
-                { value: "easy", label: "Easy" },
-                { value: "medium", label: "Medium" },
-                { value: "hard", label: "Hard" },
-              ] as const
-            ).map((option) => {
-              const selected = difficultyChoice === option.value;
-              return (
-                <button
-                  key={option.value}
-                  type="button"
-                  aria-pressed={selected}
-                  onClick={() => {
-                    // SFX audio spec §2.6: the select chirps only on an
-                    // actual change — re-tapping the active band stays silent.
-                    if (option.value !== difficultyChoice) playDifficultySelect();
-                    onDifficultyChoice(option.value);
-                  }}
-                >
-                  {option.label}
-                </button>
-              );
-            })}
-          </div>
-          <p className="atlas-hint" aria-live="polite">
-            {DIFFICULTY_HINTS[difficultyChoice]}
-          </p>
+          <svg className="hv5-mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21.5" fill="none" stroke="#8A6D2F" strokeWidth="1.6" /><circle cx="24" cy="24" r="16.5" fill="none" stroke="#B8932F" strokeWidth=".8" strokeOpacity=".6" /><path d="M24 6 L27.2 20.8 L42 24 L27.2 27.2 L24 42 L20.8 27.2 L6 24 L20.8 20.8 Z" fill="#8A6D2F" /><circle cx="24" cy="24" r="3.4" fill="#F6F1E3" stroke="#8A6D2F" strokeWidth="1.2" /></svg>
+          <span className="hv5-word">MERIDIAN</span>
+        </button>
+        <nav aria-label="Primary">
+          <button type="button" onClick={() => scrollTo("home-editions")}>
+            EXPEDITIONS
+            <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
+          </button>
+          <button type="button" onClick={() => scrollTo("home-cases")}>
+            CASES
+            <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
+          </button>
+          <button type="button" aria-disabled="true" aria-describedby="hv5-unmapped-note">ABOUT</button>
+          <button type="button" aria-disabled="true" aria-describedby="hv5-unmapped-note">JOURNAL</button>
+          <button type="button" onClick={() => scrollTo("home-involved")}>GET INVOLVED</button>
+        </nav>
+        <div className="hv5-actions">
+          <button
+            type="button"
+            className="hv5-btn hv5-btn-brown"
+            onClick={() => scrollTo("home-cases")}
+          >
+            JOIN THE JOURNEY
+            <svg width="15" height="11" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
+          </button>
+          <button type="button" className="hv5-icon-btn" aria-label="Search" aria-disabled="true" aria-describedby="hv5-unmapped-note">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#33302A" strokeWidth="2" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="M15.5 15.5L21 21" strokeLinecap="round" /></svg>
+          </button>
         </div>
-        <div className="atlas-rule home-rise" style={rise(4)} aria-hidden="true" />
       </header>
-      {/* GeoDetective leads: the flagship case file, unlimited mysteries.
-          Age-profile: for bands where the loop is locked (5-7), the SAME
-          footprint renders the locked variant in place — no reflow, no
-          reorder (Phase 2 minimal amendment). */}
-      {isLoopLocked(ageBand, "geodetective") ? (
-        <LockedLoop title="GeoDetective" onGrownUpOpen={onGrownUpOpen} />
-      ) : (
-      <article
-        aria-labelledby="geodetective-title"
-        className="atlas-dossier home-rise mt-8"
-        style={rise(5)}
-        data-testid="tour-stop-geodetective"
-      >
-        <span className="atlas-stamp" style={rise(5)} aria-hidden="true">
-          Open
-        </span>
-        <p className="atlas-eyebrow">Case file · Unlimited</p>
-        <h2 id="geodetective-title" className="atlas-dossier-title">
-          GeoDetective
-        </h2>
-        <p className="atlas-dossier-detail">
-          Five guesses, one mystery place. Each guess unlocks a clue — solve as many cases as
-          you can.
-        </p>
-        {loopProgress.streak > 0 ? (
-          <p className="atlas-streak">🔥 Streak: {loopProgress.streak}</p>
-        ) : null}
-        {/* Owner 2026-10-09: earned badges show on the home page card —
-            no separate Passport page. Clean Round is earned in this loop. */}
-        <EarnedBadgeRow />
-        <button
-          type="button"
-          className="atlas-btn atlas-btn-brass mt-5"
-          onClick={onLoop}
-        >
-          {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
-        </button>
-      </article>
-      )}
-      {/* Cold Trail vertical slice: 3 sightings, 3 rings, one interception. */}
-      <article
-        aria-labelledby="coldtrail-title"
-        className="atlas-dossier home-rise mt-8"
-        style={rise(5)}
-      >
-        <span className="atlas-stamp" style={rise(5)} aria-hidden="true">
-          New
-        </span>
-        <p className="atlas-eyebrow">Case file · Triangulation</p>
-        <h2 id="coldtrail-title" className="atlas-dossier-title">
-          Cold Trail
-        </h2>
-        <p className="atlas-dossier-detail">
-          A smuggler moves between cities. Three sightings, three rings — tap where
-          they cross to make the interception.
-        </p>
-        <button
-          type="button"
-          className="atlas-btn atlas-btn-brass mt-5"
-          onClick={onColdTrail}
-        >
-          ❄️ Start the trail
-        </button>
-      </article>
-      <div
-        className="home-rise mt-10"
-        style={rise(6)}
-        data-testid="tour-stop-editions"
-      >
-        <p className="atlas-eyebrow">Choose your expedition</p>
-        <div className="mt-4 grid gap-5 sm:grid-cols-3">
-          <EditionCard
-            index="01"
-            icon={<MapPin className="size-6" aria-hidden="true" />}
-            title="State"
-            detail="Pick a country, then one of its states. Each state is its own run."
-            action="Choose a state"
-            onClick={onState}
-          />
-          <EditionCard
-            index="02"
-            icon={<Flag className="size-6" aria-hidden="true" />}
-            title="Country"
-            detail="Play a country whole, or drill into its states where available."
-            action="Choose a country"
-            onClick={onCountry}
-          />
-          <EditionCard
-            index="03"
-            icon={<Globe2 className="size-6" aria-hidden="true" />}
-            title="Globe"
-            detail="The whole earth. Continent outlines at a distance, countries as you close in."
-            action="Play the globe"
-            onClick={onGlobe}
-          />
+
+      <div className="hv5-bento">
+      <div className="hv5-hero-zone">
+        <section className="hv5-hero home-rise" style={rise(2)} aria-label="Welcome to Meridian">
+          {/* Eyebrow cluster preserved from the atlas home: eyebrow →
+              Comet emblem → sound toggle (owner order — Liz's eyebrow
+              call, 2026-10-07/08), with the v5 welcome pill leading
+              the row. */}
+          <div className="hv5-hero-top">
+            <span className="hv5-pill">
+              <span className="hv5-dot">
+                <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="#8A6D2F" /></svg>
+              </span>
+              WELCOME TO MERIDIAN
+            </span>
+            <p className="hv5-label" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+              <Compass className="size-4" aria-hidden="true" />
+              Field atlas · {trailDate()} UTC
+            </p>
+            <CometEmblem />
+            <SoundToggle testId="sound-toggle" className="atlas-sound-toggle" />
+            {/* Storyteller banner host (owner directive 2026-10-09): the
+                figure sits in the hero beside the branding — always visible,
+                mobile and desktop. The greeting rides in a popover below. */}
+            <span className="hv5-storyteller">
+              <StorytellerBannerBoundary>
+                <Suspense fallback={<StorytellerBannerSkeleton />}>
+                  <StorytellerHomeHost
+                    tutorialInviteVisible={tutorialInviteVisible}
+                    suppressGreeting={suppressGreeting}
+                  />
+                </Suspense>
+              </StorytellerBannerBoundary>
+            </span>
+          </div>
+          {/* PBI-6: the h1 stays the focus target when the Scout Map boot
+              offer closes (data-testid="home-heading"). */}
+          <h1 className="hv5-h1" data-testid="home-heading" tabIndex={-1}>
+            <span className="sr-only">Meridian — </span>
+            Explore. Understand.
+            <br />
+            Make sense of what matters.
+          </h1>
+          <p className="hv5-sub">
+            Pick the globe, a country, or a state. A place name, then one pin. Your score keeps
+            adding up across editions until you choose to end the game, or if you&rsquo;re idle for
+            2 minutes.
+          </p>
+          <div className="home-rise" style={rise(4)} data-testid="tour-stop-difficulty">
+            <p id="difficulty-label" className="hv5-diff-cap">
+              How do you want to grow your map today?
+            </p>
+            <div role="group" aria-labelledby="difficulty-label" className="hv5-diff">
+              {(
+                [
+                  { value: "easy", label: "Easy" },
+                  { value: "medium", label: "Medium" },
+                  { value: "hard", label: "Hard" },
+                ] as const
+              ).map((option) => {
+                const selected = difficultyChoice === option.value;
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    aria-pressed={selected}
+                    onClick={() => {
+                      // SFX audio spec §2.6: the select chirps only on an
+                      // actual change — re-tapping the active band stays silent.
+                      if (option.value !== difficultyChoice) playDifficultySelect();
+                      onDifficultyChoice(option.value);
+                    }}
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+            <p className="hv5-hint" aria-live="polite">
+              {DIFFICULTY_HINTS[difficultyChoice]}
+            </p>
+          </div>
+          <div className="hv5-cta-row">
+            <button
+              type="button"
+              className="hv5-btn hv5-btn-brown"
+              style={{ padding: "16px 28px" }}
+              onClick={() => scrollTo("home-cases")}
+            >
+              BEGIN EXPLORING
+              <svg width="15" height="11" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
+            </button>
+          </div>
+          <img className="hv5-mountain" src={heroMountainUrl} alt="" aria-hidden="true" />
+        </section>
+        <div className="hv5-globe-zone" aria-hidden="true">
+          <Suspense fallback={null}>
+            <HomeGlobe />
+          </Suspense>
         </div>
       </div>
-      {deck.enabled ? (
-        <section
-          aria-label={REVIEW_DECK_COPY.pickerTitle}
-          className="atlas-fieldnotes home-rise mt-8"
-          style={rise(7)}
-          data-testid="tour-stop-review"
+
+      <div className="hv5-grid2" id="home-cases" tabIndex={-1}>
+        {/* GeoDetective leads: the flagship case file, unlimited mysteries.
+            Age-profile: for bands where the loop is locked (5-7), the SAME
+            footprint renders the locked variant in place. */}
+        {isLoopLocked(ageBand, "geodetective") ? (
+          <LockedLoop title="GeoDetective" onGrownUpOpen={onGrownUpOpen} />
+        ) : (
+        <article
+          aria-labelledby="geodetective-title"
+          className="hv5-card hv5-split hv5-case home-rise"
+          style={rise(5)}
+          data-testid="tour-stop-geodetective"
         >
-          <h2 className="atlas-fieldnotes-title">{REVIEW_DECK_COPY.pickerTitle}</h2>
-          {deck.due > 0 ? (
-            <>
-              <p className="mt-2 text-sm">{REVIEW_DECK_COPY.pickerDueLine}</p>
-              <p className="mt-1 text-sm font-medium" data-testid="deck-due-count">
-                {deck.due} {deck.due === 1 ? "card" : "cards"} due
-              </p>
-              <button
-                type="button"
-                className="atlas-btn atlas-btn-line mt-4"
-                onClick={onReview}
-              >
-                {REVIEW_DECK_COPY.startReview}
-              </button>
-            </>
-          ) : deck.total > 0 ? (
-            <p className="mt-2 text-sm">{REVIEW_DECK_COPY.pickerCaughtUp}</p>
-          ) : (
-            <p className="mt-2 text-sm">{REVIEW_DECK_COPY.pickerEmpty}</p>
-          )}
-        </section>
-      ) : null}
+          <div className="hv5-txt">
+            <div className="hv5-head">
+              <span className="hv5-badge">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" aria-hidden="true"><path d="M3 19 L9.5 7.5 L13 13 L15.5 9.5 L21 19 Z" /><circle cx="17.5" cy="5" r="1.6" fill="currentColor" stroke="none" /></svg>
+              </span>
+              <span className="hv5-label">Case file · Unlimited</span>
+            </div>
+            <h2 id="geodetective-title">
+              GeoDetective<span className="hv5-chip">Open</span>
+            </h2>
+            <p>
+              Five guesses, one mystery place. Each guess unlocks a clue — solve as many cases as
+              you can.
+            </p>
+            {loopProgress.streak > 0 ? (
+              <p className="hv5-streak">🔥 Streak: {loopProgress.streak}</p>
+            ) : null}
+            {/* Owner 2026-10-09: earned badges show on the home page card —
+                no separate Passport page. Clean Round is earned in this loop. */}
+            <EarnedBadgeRow />
+            <button type="button" className="hv5-go" onClick={onLoop}>
+              {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
+            </button>
+          </div>
+          <img className="hv5-pic" loading="lazy" decoding="async" src={desertRuinsUrl} alt="" aria-hidden="true" />
+        </article>
+        )}
+        {/* Cold Trail vertical slice: 3 sightings, 3 rings, one interception. */}
+        <article
+          aria-labelledby="coldtrail-title"
+          className="hv5-card hv5-split hv5-dispatch home-rise"
+          style={rise(5)}
+        >
+          <div className="hv5-txt">
+            <div className="hv5-head">
+              <span className="hv5-badge">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><path d="M15.5 8.5 L13.2 13.2 L8.5 15.5 L10.8 10.8 Z" fill="currentColor" stroke="none" /></svg>
+              </span>
+              <span className="hv5-label">Case file · Triangulation</span>
+            </div>
+            <h2 id="coldtrail-title">
+              Cold Trail<span className="hv5-chip">New</span>
+            </h2>
+            <p>
+              A smuggler moves between cities. Three sightings, three rings — tap where
+              they cross to make the interception.
+            </p>
+            <button type="button" className="hv5-go" onClick={onColdTrail}>
+              ❄️ Start the trail
+            </button>
+          </div>
+          <img className="hv5-pic" loading="lazy" decoding="async" src={patagoniaUrl} alt="" aria-hidden="true" />
+        </article>
+        {/* Choose Your Expedition — the design's dark anchor card hosts the
+            three real edition actions (State / Country / Globe). */}
+        <div
+          className="hv5-card hv5-mapcard home-rise"
+          style={rise(6)}
+          data-testid="tour-stop-editions"
+          id="home-editions"
+          tabIndex={-1}
+        >
+          <div className="hv5-head">
+            <span className="hv5-badge">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><path d="M15.5 8.5 L13.2 13.2 L8.5 15.5 L10.8 10.8 Z" fill="currentColor" stroke="none" /></svg>
+            </span>
+            <span className="hv5-label">Choose your expedition</span>
+          </div>
+          <h2>Expeditions Map</h2>
+          <p>Choose your expedition — a single US state, a whole country, or the entire globe.</p>
+          <svg className="hv5-worldmap" viewBox="0 0 300 138" aria-hidden="true">
+            <defs>
+              <pattern id="hv5-dots" width="7" height="7" patternUnits="userSpaceOnUse">
+                <circle cx="1.6" cy="1.6" r="1.6" fill="#C9D4BE" fillOpacity=".75" />
+              </pattern>
+            </defs>
+            <g fill="url(#hv5-dots)">
+              <path d="M18 38 L52 22 L84 26 L92 40 L74 52 L66 72 L48 64 L30 58 L16 50 Z" />
+              <path d="M66 78 L84 74 L90 92 L80 122 L68 104 L62 88 Z" />
+              <path d="M138 30 L168 22 L182 34 L172 48 L148 50 L134 42 Z" />
+              <path d="M146 56 L172 52 L184 72 L172 104 L156 108 L144 80 Z" />
+              <path d="M186 26 L238 16 L272 30 L268 52 L232 62 L206 54 L188 44 Z" />
+              <path d="M216 66 L244 62 L256 76 L238 88 L220 80 Z" />
+              <path d="M240 100 L272 96 L282 108 L262 120 L242 114 Z" />
+            </g>
+            <path d="M74 50 C130 84 190 84 248 104" fill="none" stroke="#EFEAD6" strokeWidth="1.3" strokeDasharray="1 5" strokeLinecap="round" />
+            <circle cx="248" cy="104" r="7" fill="none" stroke="#EFEAD6" strokeWidth="1.2" />
+            <path d="M248 97 C244 97 242 100 242 102.4 C242 106 248 110.6 248 110.6 C248 110.6 254 106 254 102.4 C254 100 252 97 248 97 Z" fill="#EFEAD6" />
+          </svg>
+          <div className="hv5-editions">
+            <button type="button" className="hv5-edition" onClick={onState}>
+              <span className="hv5-idx">N° 01</span>
+              <MapPin className="size-5" aria-hidden="true" />
+              <span className="hv5-etitle">State</span>
+              <span className="hv5-eaction">Choose a state</span>
+            </button>
+            <button type="button" className="hv5-edition" onClick={onCountry}>
+              <span className="hv5-idx">N° 02</span>
+              <Flag className="size-5" aria-hidden="true" />
+              <span className="hv5-etitle">Country</span>
+              <span className="hv5-eaction">Choose a country</span>
+            </button>
+            <button type="button" className="hv5-edition" onClick={onGlobe}>
+              <span className="hv5-idx">N° 03</span>
+              <Globe2 className="size-5" aria-hidden="true" />
+              <span className="hv5-etitle">Globe</span>
+              <span className="hv5-eaction">Play the globe</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div className="hv5-grid3">
+        {deck.enabled ? (
+          <section
+            aria-label={REVIEW_DECK_COPY.pickerTitle}
+            className="hv5-card hv5-spot home-rise"
+            style={rise(7)}
+            data-testid="tour-stop-review"
+            id="home-review"
+          >
+            <div className="hv5-txt">
+              <div className="hv5-head">
+                <span className="hv5-badge">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" aria-hidden="true"><path d="M4 5.5 C7 4 10 4 12 6 C14 4 17 4 20 5.5 V19 C17 17.6 14 17.6 12 19.4 C10 17.6 7 17.6 4 19 Z" /><path d="M12 6 V19.4" /></svg>
+                </span>
+                <span className="hv5-label">Cases</span>
+              </div>
+              <h2>{REVIEW_DECK_COPY.pickerTitle}</h2>
+              {deck.due > 0 ? (
+                <>
+                  <p>{REVIEW_DECK_COPY.pickerDueLine}</p>
+                  <p style={{ fontWeight: 700, color: "var(--hv5-ink)" }} data-testid="deck-due-count">
+                    {deck.due} {deck.due === 1 ? "card" : "cards"} due
+                  </p>
+                  <button type="button" className="hv5-go" onClick={onReview}>
+                    {REVIEW_DECK_COPY.startReview}
+                  </button>
+                </>
+              ) : deck.total > 0 ? (
+                <p>{REVIEW_DECK_COPY.pickerCaughtUp}</p>
+              ) : (
+                <p>{REVIEW_DECK_COPY.pickerEmpty}</p>
+              )}
+            </div>
+            <img className="hv5-art" loading="lazy" decoding="async" src={archiveToolsUrl} alt="" aria-hidden="true" />
+          </section>
+        ) : (
+          <div aria-hidden="true" />
+        )}
+        {/* Journal — design element with NO real counterpart surface yet
+            (UNMAPPED): kept for the design, CTA disabled, no invented
+            behavior. */}
+        <article className="hv5-card hv5-spot hv5-journal home-rise" style={rise(7)}>
+          <div className="hv5-txt">
+            <div className="hv5-head">
+              <span className="hv5-badge">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><path d="M5 19 C5 10 11 4.5 20 4.5 C20 14 14.5 19.5 6.5 19.5" /><path d="M5 19 C8 14 11.5 10.5 16 8" /></svg>
+              </span>
+              <span className="hv5-label">Latest Journal Entry</span>
+            </div>
+            <h2>What the land remembers</h2>
+            <p>Short field stories from the places on the map — the tales only landscapes keep.</p>
+            <button type="button" className="hv5-go" aria-disabled="true" aria-describedby="hv5-unmapped-note">
+              READ THE ENTRY
+            </button>
+          </div>
+          <img className="hv5-art" loading="lazy" decoding="async" src={journalTreeUrl} alt="" aria-hidden="true" />
+        </article>
+        <article className="hv5-card hv5-spot hv5-involved home-rise" style={rise(7)}>
+          <div className="hv5-txt">
+            <div className="hv5-head">
+              <span className="hv5-badge">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><circle cx="8.5" cy="8" r="3.2" /><circle cx="16.5" cy="9.5" r="2.6" /><path d="M3.5 19.5 C3.5 15.8 5.7 14 8.5 14 C11.3 14 13.5 15.8 13.5 19.5 M14.8 14.6 C17.3 14.9 19 16.4 19 19.5" /></svg>
+              </span>
+              <span className="hv5-label">Get Involved</span>
+            </div>
+            <h2>For grown-ups</h2>
+            <p>How Meridian works, safety notes, and the read-aloud companion for younger explorers.</p>
+            <button type="button" className="hv5-btn hv5-btn-brown" onClick={onGrownUpOpen}>
+              JOIN US
+              <svg width="14" height="10" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
+            </button>
+          </div>
+          <img className="hv5-art" loading="lazy" decoding="async" src={binocularsHatUrl} alt="" aria-hidden="true" />
+        </article>
+      </div>
+
       {/* Age-profile footer entry (Phase 2 §1a): the COPPA-standard
           ParentZone placement — low-emphasis, after the review deck,
           before GrandpaCoffeeRun. One host per screen: the header hosts
@@ -2191,8 +2573,11 @@ function Choose({
         nags — the component renders nothing after the kid answers. */}
     <ReadAloudPrefPrompt />
     {/* Grandpa's Coffee Run — animated donation scene, home only.
-        Veeresh 2026-10-07: replaces PR #91's static sign. */}
-    <GrandpaCoffeeRun />
+        Veeresh 2026-10-07: replaces PR #91's static sign. The v5 nav's
+        GET INVOLVED jumps here (the app's get-involved surface). */}
+    <div id="home-involved" tabIndex={-1}>
+      <GrandpaCoffeeRun />
+    </div>
     {/* Comet now hosts from the banner (in the header above) — the fixed
         bottom-right wrapper is retired. */}
     </>
@@ -2225,38 +2610,6 @@ function AtlasBackdrop() {
         </g>
       </svg>
     </div>
-  );
-}
-
-function EditionCard({
-  index,
-  icon,
-  title,
-  detail,
-  action,
-  onClick,
-}: {
-  /** Mono expedition number, e.g. "01". */
-  index: string;
-  /** Brass line icon. */
-  icon: ReactNode;
-  title: string;
-  detail: string;
-  action: string;
-  onClick: (e: ReactMouseEvent) => void;
-}) {
-  return (
-    <article className="atlas-card">
-      <p className="atlas-card-index">N° {index}</p>
-      <div className="atlas-card-icon" aria-hidden="true">
-        {icon}
-      </div>
-      <h2 className="atlas-card-title">{title}</h2>
-      <p className="atlas-card-detail">{detail}</p>
-      <button type="button" className="atlas-btn atlas-btn-line mt-4 w-full" onClick={onClick}>
-        {action}
-      </button>
-    </article>
   );
 }
 
@@ -2372,6 +2725,7 @@ function Play({
   mapMode,
   toggleMapMode,
   applyMapMode,
+  setSessionMapMode,
 }: {
   run: Run;
   session: Session | null;
@@ -2426,9 +2780,20 @@ function Play({
    * "contextlost" (applied immediately).
    */
   applyMapMode: (mode: MapMode, source: "manual" | "contextlost") => void;
+  setSessionMapMode: (mode: MapMode) => void;
 }) {
-  const [places, setPlaces] = useState<Starter[] | null>(null);
-  const [poolError, setPoolError] = useState<string | null>(null);
+  // The catalog is stored WITH the key it was loaded for and only used while
+  // that key is the current run's key. Play stays mounted across run changes
+  // (GameApp renders it whenever `run` is set), so a plain `places` state would
+  // hand PlayLoaded the previous band's catalog for one commit: wrong pool, a
+  // dealer on the new band's seen store, and a stale place written into the
+  // new band's no-repeat history. Deriving `places` makes that commit
+  // impossible: a key mismatch renders "Loading places" instead.
+  const loadKey = placesLoadKey(run.edition, run.regionId, run.difficultyChoice);
+  const [loadedPlaces, setLoadedPlaces] = useState<LoadedFor<Starter[]> | null>(null);
+  const [poolFailure, setPoolFailure] = useState<LoadedFor<string> | null>(null);
+  const places = loadedForKey(loadedPlaces, loadKey);
+  const poolError = loadedForKey(poolFailure, loadKey);
   // Review sessions: the due deck entries in session order (the poolIds
   // order). Null for normal runs.
   const [reviewEntries, setReviewEntries] = useState<DeckEntry[] | null>(null);
@@ -2444,8 +2809,7 @@ function Play({
 
   useEffect(() => {
     let cancelled = false;
-    setPlaces(null);
-    setPoolError(null);
+    setPoolFailure(null);
     setReviewEntries(null);
     if (review) {
       // Review deck: no chunk fetch — due cards carry their own snapshots.
@@ -2461,29 +2825,49 @@ function Play({
         const entries = ordered.length > 0 ? ordered : due;
         if (!cancelled) {
           setReviewEntries(entries);
-          setPlaces(entries.map(deckStarter));
+          setLoadedPlaces({ key: loadKey, value: entries.map(deckStarter) });
         }
       } catch {
-        if (!cancelled) setPoolError("Could not load your review deck.");
+        if (!cancelled) {
+          setPoolFailure({ key: loadKey, value: "Could not load your review deck." });
+        }
       }
       return () => {
         cancelled = true;
       };
     }
-    placesFor(run.edition, run.regionId).then(
-      (loaded) => {
-        if (!cancelled) setPlaces(loaded);
-      },
-      (err: unknown) => {
-        if (!cancelled) {
-          setPoolError(err instanceof Error ? err.message : String(err));
-        }
-      },
-    );
+    globeTierSplitFor(run.edition, run.regionId)
+      .then((tierSplit) =>
+        placesFor(run.edition, run.regionId, run.difficultyChoice, tierSplit),
+      )
+      .then(
+        (list) => {
+          if (!cancelled) setLoadedPlaces({ key: loadKey, value: list });
+        },
+        (err: unknown) => {
+          if (!cancelled) {
+            setPoolFailure({
+              key: loadKey,
+              value: err instanceof Error ? err.message : String(err),
+            });
+          }
+        },
+      );
     return () => {
       cancelled = true;
     };
-  }, [run.edition, run.regionId]);
+    // Keyed on the load key, not on the individual run fields. For the Globe
+    // the key contains the learning path, so a band change (celebration
+    // promotion, replay at another path) loads the new band's catalog and, until
+    // it arrives, renders "Loading places" - never the old band's catalog.
+    // For every other region the key has no band part, so a band change does
+    // not reload or remount. Flag on: the Globe loads only the tiers of the
+    // new path. Flag off: the reload is unnecessary (the pool is the full
+    // Globe pool for every band) but harmless: globeTierSplitFor returns its
+    // cached value and placesFor hits the chunk cache, so the same full pool
+    // comes back after one "Loading places" frame.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loadKey]);
 
   if (poolError) {
     return (
@@ -2534,6 +2918,7 @@ function Play({
       mapMode={mapMode}
       toggleMapMode={toggleMapMode}
       applyMapMode={applyMapMode}
+      setSessionMapMode={setSessionMapMode}
     />
   );
 }
@@ -2559,6 +2944,7 @@ function PlayLoaded({
   mapMode,
   toggleMapMode,
   applyMapMode,
+  setSessionMapMode,
 }: {
   run: Run;
   places: Starter[];
@@ -2616,6 +3002,7 @@ function PlayLoaded({
    * "contextlost" (applied immediately).
    */
   applyMapMode: (mode: MapMode, source: "manual" | "contextlost") => void;
+  setSessionMapMode: (mode: MapMode) => void;
 }) {
   // Review-deck session: a synthetic Run reusing this game loop. The deck
   // queue (due order) is the pool; review answers never bank into the
@@ -2761,6 +3148,33 @@ function PlayLoaded({
       if (place) setScoutSwitchNote({ placeId: place.id });
     },
     [applyMapMode, place],
+  );
+
+  /**
+   * WS-4 Phase 1: "Try again" taps this visit (the satellite map reports each
+   * one). In memory only: it is never stored, so a reload starts at zero.
+   */
+  const [tileRetriesUsed, setTileRetriesUsed] = useState(0);
+  const handleTileRetry = useCallback(() => setTileRetriesUsed((n) => n + 1), []);
+  /** WS-4 Phase 1: the deferred "switched to Scout Map" note (tile path). */
+  const [tileSwitchNote, setTileSwitchNote] = useState<{ placeId: string } | null>(null);
+
+  /**
+   * WS-4 Phase 1: satellite pictures failed after the one retry. Switch to
+   * Scout Map for this visit only. Unlike the context-loss switch, this calls
+   * no writeStoredMapMode: nothing is saved, and a reload returns to full.
+   * It does not clear a queued manual choice, so the toggle still wins.
+   */
+  const handleTileFallback = useCallback(
+    (view: ScoutRestoreView) => {
+      if (mapModeRef.current !== "full") return;
+      setReportMapMode("scout");
+      setSessionMapMode("scout");
+      setScoutSwitchView(view);
+      setMapRemountNonce((n) => n + 1);
+      if (place) setTileSwitchNote({ placeId: place.id });
+    },
+    [place],
   );
 
   // The switch viewport is consumed by the remount it triggers; clear it
@@ -3329,6 +3743,9 @@ function PlayLoaded({
           <Suspense fallback={<MapLoadingFallback />}>
             <SatelliteMap
               key={`${mapKeyForCard}:${mapRemountNonce}`}
+              tileRetriesUsed={tileRetriesUsed}
+              onTileRetry={handleTileRetry}
+              onTileFallback={handleTileFallback}
               mode={mode}
               mapMode={mapMode}
               initialView={scoutSwitchView}
@@ -3575,6 +3992,27 @@ function PlayLoaded({
               : null
           }
         />
+      ) : null}
+      {/* WS-4 Phase 1: the same deferred break as the note below, for the
+          satellite-failure switch. Its own copy and its own dismiss. */}
+      {(tileSwitchNote && place && tileSwitchNote.placeId === place.id && (run.phase === "story" || run.phase === "done") && revealDone) ? (
+        <div
+          data-testid="tile-switch-note"
+          role="status"
+          className="pointer-events-none fixed inset-x-4 top-16 z-50"
+        >
+          <div className="pointer-events-auto mx-auto flex max-w-md items-center gap-3 rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.85)] p-4 pl-5 text-white shadow-xl backdrop-blur-[14px]">
+            <p className="m-0 flex-1 text-sm leading-snug">{TILE_FALLBACK_COPY.switchNote}</p>
+            <button
+              type="button"
+              aria-label="Dismiss"
+              onClick={() => setTileSwitchNote(null)}
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 text-lg leading-none text-white/70 transition-colors hover:text-white"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+        </div>
       ) : null}
       {/*
         PBI-5: the deferred Scout Map switch note — GameApp-level, SIBLING

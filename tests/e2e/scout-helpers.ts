@@ -82,7 +82,21 @@ export async function readStoredMapMode(page: Page): Promise<StoredMapMode | nul
  * Must be installed via context.addInitScript BEFORE navigation.
  */
 export async function spoofCapableDevice(context: BrowserContext): Promise<void> {
-  await context.addInitScript(() => {
+  await spoofDevice(context, 8);
+}
+
+/**
+ * Spoof a LOW-MEMORY device in isolation: capable GPU (the probe passes)
+ * but 1 GB deviceMemory, so the qualification source is "low-memory" and
+ * not "probe". Must be installed via context.addInitScript BEFORE
+ * navigation.
+ */
+export async function spoofLowMemoryDevice(context: BrowserContext): Promise<void> {
+  await spoofDevice(context, 1);
+}
+
+async function spoofDevice(context: BrowserContext, deviceMemoryGB: number): Promise<void> {
+  await context.addInitScript((gb: number) => {
     const NVIDIA =
       "ANGLE (NVIDIA, NVIDIA GeForce RTX 4090 (0x00002684) Direct3D11 vs_5_0 ps_5_0, D3D11)";
     const R = 0x9246;
@@ -118,10 +132,10 @@ export async function spoofCapableDevice(context: BrowserContext): Promise<void>
       return ctx;
     };
     Object.defineProperty(Navigator.prototype, "deviceMemory", {
-      get: () => 8,
+      get: () => gb,
       configurable: true,
     });
-  });
+  }, deviceMemoryGB);
 }
 
 /** The offer modal locator per the Phase A contract. */

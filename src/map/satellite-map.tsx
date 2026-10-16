@@ -25,6 +25,8 @@ import type { MapMode } from "./capability.ts";
 import { emitTileFailed, emitWebglContextLost, recordMilestone, recordTileErrors } from "@/lib/observability";
 import { createTapTracker } from "./tap-tracker.ts";
 import { INITIAL_TILE_STATUS, tileStatusReducer, type TileStatus } from "./tile-status.ts";
+import { nextTileFallbackAction } from "./tile-fallback.ts";
+import { TILE_FALLBACK_COPY } from "./tile-fallback-copy.ts";
 import { variationLine, type MapPoint } from "./variation.ts";
 import type { LengthUnit } from "@/game/units";
 import {
@@ -448,6 +450,20 @@ export function SatelliteMap(props: {
    * semantics as the tile-Retry restore.
    */
   initialView?: ScoutRestoreView | null;
+  /**
+   * WS-4 Phase 1: how many "Try again" taps this visit has used. The owner
+   * (GameApp) keeps the count, so it survives place changes. Zero until the
+   * child first taps "Try again".
+   */
+  tileRetriesUsed?: number;
+  /** WS-4 Phase 1: fired when "Try again" is tapped (the owner counts it). */
+  onTileRetry?: () => void;
+  /**
+   * WS-4 Phase 1: fired once when the satellite pictures fail after the one
+   * allowed retry. The owner switches to Scout Map for this visit only and
+   * stores nothing. Carries the viewport so the outline map reopens in place.
+   */
+  onTileFallback?: (view: ScoutRestoreView) => void;
 }): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -550,6 +566,30 @@ export function SatelliteMap(props: {
   useEffect(() => {
     if (tileStatus.kind === "failed") emitTileFailed();
   }, [tileStatus.kind]);
+
+  // WS-4 Phase 1: after the one allowed "Try again", a failed satellite load
+  // hands the map over to Scout Map for this visit. Fires once per episode;
+  // the owner decides what to do (it stores nothing).
+  const tileFallbackFiredRef = useRef(false);
+  useEffect(() => {
+    if (tileStatus.kind !== "failed") {
+      tileFallbackFiredRef.current = false;
+      return;
+    }
+    if (props.mapMode === "scout" || !props.onTileFallback) return;
+    const action = nextTileFallbackAction({
+      verdict: "failed",
+      retriesUsed: props.tileRetriesUsed ?? 0,
+    });
+    if (action !== "switch-to-scout" || tileFallbackFiredRef.current) return;
+    tileFallbackFiredRef.current = true;
+    const map = mapRef.current;
+    props.onTileFallback({
+      center: map ? map.getCenter().toArray() : [0, 0],
+      zoom: map ? map.getZoom() : 1.5,
+      projection: logicalProjection(),
+    });
+  }, [tileStatus.kind, props.mapMode, props.tileRetriesUsed, props.onTileFallback]);
 
   /**
    * PBI-4: true when the scout outline render failed and the static SVG
@@ -1617,6 +1657,7 @@ export function SatelliteMap(props: {
       };
     }
     dispatchTile({ type: "retry" });
+    props.onTileRetry?.();
     setMapAttempt((n) => n + 1);
     // The error card unmounts under the focused Retry button; move focus to
     // the map wrapper so keyboard/screen-reader users stay oriented while
@@ -1801,15 +1842,19 @@ export function SatelliteMap(props: {
             role="alert"
             className={`pointer-events-auto w-full max-w-sm rounded-2xl p-5 text-center text-white ${CHROME}`}
           >
-            <p className="m-0 text-sm font-semibold">Couldn't load satellite imagery.</p>
-            <p className="m-0 mt-1 text-sm text-white/80">Check your connection and try again.</p>
-            <button
-              type="button"
-              onClick={handleRetryTiles}
-              className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-[#0a1c26] transition-transform active:scale-95"
-            >
-              Retry
-            </button>
+            <p className="m-0 text-sm font-semibold">{TILE_FALLBACK_COPY.failureBody}</p>
+            {nextTileFallbackAction({
+              verdict: "failed",
+              retriesUsed: props.tileRetriesUsed ?? 0,
+            }) === "show-try-again" ? (
+              <button
+                type="button"
+                onClick={handleRetryTiles}
+                className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-[#0a1c26] transition-transform active:scale-95"
+              >
+                {TILE_FALLBACK_COPY.tryAgain}
+              </button>
+            ) : null}
           </div>
         </div>
       )}

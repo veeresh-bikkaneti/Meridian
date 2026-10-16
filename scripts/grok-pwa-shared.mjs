@@ -375,14 +375,28 @@ export function grokOgHeadTags({
   return tags;
 }
 
+/** The SHARE_META_KEYS key a <meta> tag sets, or "" if it sets none. */
+function shareMetaKey(tag) {
+  const attrs = [...tag.matchAll(/\b(?:property|name)\s*=\s*["']([^"']+)["']/gi)];
+  for (const match of attrs) {
+    const key = String(match[1]).toLowerCase();
+    if (SHARE_META_KEYS.has(key)) return key;
+  }
+  return "";
+}
+
 export function stripShareMetaTags(html) {
-  return String(html).replace(/<meta\b[^>]*>/gi, (tag) => {
-    const attrs = [...tag.matchAll(/\b(?:property|name)\s*=\s*["']([^"']+)["']/gi)];
-    for (const match of attrs) {
-      if (SHARE_META_KEYS.has(String(match[1]).toLowerCase())) return "";
-    }
-    return tag;
-  });
+  return String(html).replace(/<meta\b[^>]*>/gi, (tag) => (shareMetaKey(tag) ? "" : tag));
+}
+
+/** Share-card keys the document already sets (e.g. from the app's own head()). */
+function presentShareMetaKeys(html) {
+  const keys = new Set();
+  for (const tag of String(html).matchAll(/<meta\b[^>]*>/gi)) {
+    const key = shareMetaKey(tag[0]);
+    if (key) keys.add(key);
+  }
+  return keys;
 }
 
 function insertAfterHeadOpen(html, snippet) {
@@ -432,7 +446,10 @@ export function injectGrokPwaHead(html, ctx = {}) {
     host,
     documentTitle,
   );
-  let next = stripShareMetaTags(html);
+  // The app's own share tags win. The platform only fills the keys the
+  // document leaves out, so it never overwrites or duplicates a head() tag.
+  let next = html;
+  const present = presentShareMetaKeys(next);
 
   const missing = grokPwaHeadTags(appName)
     .filter(([key]) => {
@@ -442,10 +459,10 @@ export function injectGrokPwaHead(html, ctx = {}) {
     })
     .map(([, tag]) => tag);
 
-  next = insertAfterHeadOpen(
-    next,
-    grokOgHeadTags({ host, appName, site, documentTitle, cwd }).join(""),
+  const ogTags = grokOgHeadTags({ host, appName, site, documentTitle, cwd }).filter(
+    (tag) => !present.has(shareMetaKey(tag)),
   );
+  if (ogTags.length > 0) next = insertAfterHeadOpen(next, ogTags.join(""));
 
   if (!next.includes("/grok-app-builder/extensions.js")) {
     missing.push(...grokExtensionsHeadTags(projectId));
@@ -479,8 +496,10 @@ function findHeadClose(buf) {
 
 /**
  * Streaming head injector: buffers only until `</head>` (ASCII marker; never
- * appears inside a UTF-8 continuation byte), overwrites share-card metas,
+ * appears inside a UTF-8 continuation byte), fills in missing share-card metas,
  * then passes later chunks through so streaming SSR keeps streaming.
+ * Share-card metas the document already carries are kept; only missing ones
+ * are added.
  */
 export function createHeadInjector(ctx = {}) {
   const normalized = normalizeHeadContext(ctx);

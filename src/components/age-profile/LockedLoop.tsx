@@ -35,7 +35,7 @@ export function LockedLoop({ title, eyebrow = "More games", onGrownUpOpen }: Loc
   return (
     <article
       aria-labelledby={titleId}
-      className={`atlas-dossier agep-locked${pulsing ? " agep-locked-pulse" : ""}`}
+      className={`atlas-dossier agep-locked hv5-case${pulsing ? " agep-locked-pulse" : ""}`}
       data-testid="locked-loop-tile"
     >
       <p className="atlas-eyebrow">{eyebrow}</p>

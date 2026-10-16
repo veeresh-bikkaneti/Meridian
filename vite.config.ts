@@ -13,6 +13,8 @@ import { noswHatchPlugin } from "./scripts/nosw-hatch-plugin.mjs";
 // @ts-expect-error JS plugin alongside the TS vite config
 import { crashWatchdogPlugin } from "./scripts/crash-watchdog-plugin.mjs";
 // @ts-expect-error JS plugin alongside the TS vite config
+import { fingerprintSwPlugin } from "./scripts/fingerprint-sw-plugin.mjs";
+// @ts-expect-error JS plugin alongside the TS vite config
 import { appEnvPlugin } from "./scripts/app-env-plugin.mjs";
 // @ts-expect-error JS module alongside the TS vite config
 import { resolveBuildId } from "./scripts/build-id.mjs";
@@ -71,6 +73,38 @@ function maplibreWorkerPlugin(): Plugin {
           source: readFileSync(join(dir, name)),
         });
       }
+    },
+  };
+}
+
+/**
+ * Keep the canonical `chunks/globe.json` out of the bundles.
+ *
+ * The Globe runtime loads the derived per-tier files in
+ * `data/geonames/tiers/` (scripts/globe-tiers.mjs). The generic region
+ * loader's `import(\`./data/geonames/chunks/${regionId}.json\`)` makes Vite
+ * glob-bundle every file in `chunks/`, which would also ship the 13.7 MB
+ * canonical Globe chunk as a lazy asset nothing ever fetches. Stubbing it
+ * here keeps dist (and the deploy) free of that dead weight. Nothing imports
+ * it at runtime — if that ever regressed, the empty stub fails the loader's
+ * meta check (fail closed) rather than dealing a partial pool.
+ */
+function omitCanonicalGlobeChunkPlugin(): Plugin {
+  const STUB_ID = "\0meridian:omitted-globe-chunk";
+  return {
+    name: "meridian:omit-canonical-globe-chunk",
+    apply: "build",
+    enforce: "pre",
+    async resolveId(source, importer, options) {
+      if (!source.endsWith("globe.json")) return null;
+      const resolved = await this.resolve(source, importer, { ...options, skipSelf: true });
+      if (resolved && resolved.id.replace(/\\/g, "/").endsWith("/data/geonames/chunks/globe.json")) {
+        return STUB_ID;
+      }
+      return null;
+    },
+    load(id) {
+      return id === STUB_ID ? "export default {};" : null;
     },
   };
 }
@@ -229,6 +263,11 @@ export default defineConfig(({ command, isPreview }) => ({
     // the nosw hatch): reports boot_failure when the bundle never loads.
     // See scripts/crash-watchdog-plugin.mjs.
     crashWatchdogPlugin(),
+    // Fingerprint the service worker with the build ID. Runs inside the
+    // build so it works even when vite is invoked directly (bypassing npm
+    // lifecycle hooks). Idempotent — safe alongside postbuild hooks.
+    // See scripts/fingerprint-sw-plugin.mjs.
+    fingerprintSwPlugin(),
     ...(githubPages
       ? []
       : command === "build" || isPreview
@@ -244,5 +283,6 @@ export default defineConfig(({ command, isPreview }) => ({
         : []),
     viteReact(),
     maplibreWorkerPlugin(),
+    omitCanonicalGlobeChunkPlugin(),
   ],
 }));

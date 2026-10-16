@@ -379,6 +379,49 @@ describe("learningOutcomes flag", () => {
   });
 });
 
+describe("globeTierSplit flag", () => {
+  beforeEach(() => resetFlags());
+
+  it("defaults to false before any load (full Globe pool = today's production)", () => {
+    assert.equal(FLAG_DEFAULTS.globeTierSplit, false);
+    assert.equal(isEnabled("globeTierSplit"), false);
+  });
+
+  it("a remote payload flips it on", async () => {
+    const { fn } = fakeFetch(okResponse({ flags: { globeTierSplit: true } }));
+    await loadFlags({ ...BASE, fetch: fn });
+    assert.equal(isEnabled("globeTierSplit"), true);
+  });
+
+  it("non-boolean values (\"true\", 1, null) are ignored and the default false wins", async () => {
+    for (const bad of ["true", 1, null]) {
+      resetFlags();
+      const { fn } = fakeFetch(okResponse({ flags: { globeTierSplit: bad } }));
+      await loadFlags({ ...BASE, fetch: fn });
+      assert.equal(isEnabled("globeTierSplit"), false, `value ${JSON.stringify(bad)} must be ignored`);
+    }
+  });
+
+  it("a later payload that omits it returns it to false (wholesale replace)", async () => {
+    const on = fakeFetch(okResponse({ flags: { globeTierSplit: true } }));
+    await loadFlags({ ...BASE, fetch: on.fn });
+    assert.equal(isEnabled("globeTierSplit"), true);
+    const omitted = fakeFetch(okResponse({ flags: { learningOutcomes: true } }));
+    await loadFlags({ ...BASE, fetch: omitted.fn });
+    assert.equal(isEnabled("globeTierSplit"), false);
+  });
+
+  it("fail-closed: a non-OK flags.json keeps the full-pool default", async () => {
+    const { fn } = fakeFetch(failedResponse());
+    await loadFlags({ ...BASE, fetch: fn });
+    assert.equal(isEnabled("globeTierSplit"), false);
+  });
+
+  it("is a registered flag: Object.keys(FLAG_DEFAULTS) includes it", () => {
+    assert.ok(Object.keys(FLAG_DEFAULTS).includes("globeTierSplit"));
+  });
+});
+
 describe("observabilityEndpoint", () => {
   beforeEach(() => resetFlags());
   it("defaults to null (transport disabled — shipped behavior)", async () => {

@@ -221,6 +221,50 @@ function pathIsClear(
   return true;
 }
 
+/**
+ * Choose the Y for a horizontal crossing between two stops. The historic
+ * rule was the gap midpoint, but a gap can contain a whole non-stop card
+ * (the v5 home puts the Cold Trail card between the GeoDetective and
+ * editions stops): the midpoint can land on that card's CTA even though a
+ * clear band exists elsewhere in the gap. Scan the gap and take the Y
+ * whose horizontal run keeps the most clearance from every interactive
+ * (ties: closest to the midpoint). pathIsClear still has the final say —
+ * if no Y in the gap achieves CLEARANCE_PX the geometry is rejected by
+ * the gate exactly as before.
+ */
+function pickCrossingY(m: TourMeasurements, prevBottom: number, nextTop: number): number {
+  const mid = (prevBottom + nextTop) / 2;
+  const gxL = TOUR_GUTTER_PX;
+  const gxR = m.viewportWidth - TOUR_GUTTER_PX;
+  const clearAt = (y: number): number => {
+    let clear = Infinity;
+    for (let x = gxL; x <= gxR; x += 6) {
+      for (const r of m.interactives) {
+        const d = pointRectDistance({ x, y }, r);
+        if (d < clear) clear = d;
+      }
+    }
+    return clear;
+  };
+  // Keep the historic midpoint whenever it already clears with margin for
+  // the corner arcs — geometry (and therefore tour timing) only changes
+  // when the midpoint is genuinely blocked.
+  if (clearAt(mid) >= CLEARANCE_PX + CORNER_R) return mid;
+  let bestY = mid;
+  let bestClear = -1;
+  for (let y = prevBottom + 2; y <= nextTop - 2; y += 2) {
+    const clear = clearAt(y);
+    if (
+      clear > bestClear + 0.5 ||
+      (Math.abs(clear - bestClear) <= 0.5 && Math.abs(y - mid) < Math.abs(bestY - mid))
+    ) {
+      bestClear = clear;
+      bestY = y;
+    }
+  }
+  return bestY;
+}
+
 const REQUIRED_STOPS: TourStopKey[] = ["difficulty", "geodetective", "editions"];
 
 function checkRequiredStops(stops: TourStop[]): boolean {
@@ -283,7 +327,7 @@ export function buildTourPath(m: TourMeasurements): TourGeometry | null {
     stopSides.push(sideOf(i));
     if (i + 1 < stops.length) {
       const nextGx = gxOf(i + 1);
-      const gapY = (stops[i].rect.bottom + stops[i + 1].rect.top) / 2;
+      const gapY = pickCrossingY(m, stops[i].rect.bottom, stops[i + 1].rect.top);
       const dir = nextGx > gx ? 1 : -1;
       b.lineTo({ x: gx, y: gapY - CORNER_R });
       b.quadTo({ x: gx, y: gapY }, { x: gx + CORNER_R * dir, y: gapY });
@@ -329,9 +373,20 @@ export function buildStraightTrail(m: TourMeasurements): TourGeometry | null {
   const W = m.viewportWidth;
   if (W < 320) return null;
   const gx = W - TOUR_GUTTER_PX;
-  const origin: Pt = { x: gx, y: 280 };
   const pourY = m.stripTop - POUR_ABOVE_STRIP_PX;
   if (!(pourY > 320)) return null;
+  // Start below the header chrome — but headers vary (the v5 home adds a
+  // wrapped nav whose search button reaches past y=280 at the right
+  // gutter). Advance the start until the gutter point itself clears every
+  // interactive by CLEARANCE_PX; pathIsClear still gates the full run.
+  let startY = 280;
+  while (
+    startY < pourY - 40 &&
+    m.interactives.some((r) => pointRectDistance({ x: gx, y: startY }, r) < CLEARANCE_PX)
+  ) {
+    startY += 6;
+  }
+  const origin: Pt = { x: gx, y: startY };
   if (!(m.bench.y > pourY)) return null;
 
   const b = new TrailBuilder(origin);

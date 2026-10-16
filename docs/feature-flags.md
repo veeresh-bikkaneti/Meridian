@@ -117,3 +117,24 @@ killed feature by a stale flags.json.
 | ------------------ | ------- | -------------------------------------------------------- |
 | `pwaUpdateToast`   | `true`  | Unregisters any live SW; no registration, no update toast |
 | `learningOutcomes` | `false` | No learning records, no growth UI — today's app exactly |
+| `globeTierSplit`   | `false` | Globe loads all five fame-tier files and deals the full canonical pool (today's production); on = Easy t1+t2, Medium t2-t4, Hard t4+t5 only |
+
+**`globeTierSplit` and offline play.** With the flag on, the Globe fetches only
+the fame-tier files of the learning path being played, and the service worker
+caches `/assets/` files on first use. A player who has only played Easy and is
+then offline can therefore not start Medium or Hard on the Globe. From the
+picker, "Play the globe" does not start the run and the message "We couldn't
+open Globe right now. Check that you're online, then tap it again." appears.
+From the celebration's "Try Medium"/"Try Hard" a small box appears near the top
+of the screen, above the card, "Getting Medium ready…" while it loads and then
+"Medium needs the internet to bring its new places. Ask a grown-up to help you
+get online, then tap Try again!" with "Try again" and "Keep playing". The box
+stays until "Keep playing", Escape, or the next place is dealt. "Try again"
+reloads Meridian and opens the picker with Medium chosen; tap Play to start.
+"Keep playing" closes the box and leaves the cleared Easy state as it was.
+Nothing partial is ever dealt. A browser remembers a failed file load until the
+page is reloaded, which is why "Try again" reloads. With the flag off, one load
+covers every learning path (the previous behaviour), and the first Globe run of
+a page load still waits for `flags.json` (at most 1.5 s on a slow connection,
+then it falls back to the full pool); the pool is unaffected. No cache-warming
+is done on purpose.

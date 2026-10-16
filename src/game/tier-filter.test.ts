@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { TIER_BANDS, filterByTier, isPickerDifficulty, type PickerDifficulty } from "./tier-filter.ts";
+import { TIER_BANDS, filterByTier, isPickerDifficulty, tiersFor, type PickerDifficulty } from "./tier-filter.ts";
 
 type Place = { id: string; difficulty?: unknown };
 
@@ -83,4 +83,19 @@ test("isPickerDifficulty accepts only the three picker choices", () => {
   assert.equal(isPickerDifficulty(3), false);
   assert.equal(isPickerDifficulty(null), false);
   assert.equal(isPickerDifficulty(undefined), false);
+});
+
+test("tiersFor lists exactly the tiers filterByTier keeps, per picker choice", () => {
+  assert.deepEqual(tiersFor("easy"), [1, 2]);
+  assert.deepEqual(tiersFor("medium"), [2, 3, 4]);
+  assert.deepEqual(tiersFor("hard"), [4, 5]);
+  const probe = [1, 2, 3, 4, 5].map((difficulty) => ({ difficulty }));
+  for (const choice of ["easy", "medium", "hard"] as const) {
+    assert.deepEqual(
+      filterByTier(probe, choice).map((p) => p.difficulty),
+      tiersFor(choice),
+    );
+  }
+  // Unknown choice falls back to medium, same as filterByTier.
+  assert.deepEqual(tiersFor("bogus" as never), tiersFor("medium"));
 });

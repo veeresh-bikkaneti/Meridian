@@ -2,6 +2,8 @@
 
 **PUSH OK, DO NOT MERGE** — owner merges.
 
+**2026-10-16:** merged `origin/main` (WS-4 phase 1, #148; #155; #158; #163; #164 and others). Kept this branch's BRANCH_STATUS. `LoopMap.tsx` and `LoopScreen.tsx` auto-merged with main's map-hidden and tile-failure changes; re-gated after the merge (see the commit log).
+
 ## What this fixes (plain language)
 
 The owner tapped map locations in a GeoDetective challenge and nothing
