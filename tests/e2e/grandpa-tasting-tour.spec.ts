@@ -268,28 +268,39 @@ test("walker stops at each option, looks, sips, walks on", async ({
     await expect(tour).toHaveAttribute("data-stop-index", String(i), {
       timeout: 60_000,
     });
-    const dwell = await page.evaluate(async (stopIdx) => {
-      const tourEl = document.querySelector('[data-testid="grandpa-tour"]');
-      const walkerEl = document.querySelector(
-        '[data-testid="grandpa-tour-walker"]',
-      );
-      if (!tourEl || !walkerEl) return { found: false } as const;
+    const dwell = await page.evaluate(async ({ stopIdx, stopId }) => {
+      // Re-query per tick: a node reference captured once can go stale
+      // when React re-renders the tour layer (see the Fix 3 note below).
+      const tourEl = () => document.querySelector('[data-testid="grandpa-tour"]');
+      const walkerEl = () =>
+        document.querySelector('[data-testid="grandpa-tour-walker"]');
+      if (!tourEl() || !walkerEl()) return { found: false } as const;
       const t0 = performance.now();
       while (performance.now() - t0 < 20_000) {
         if (
-          tourEl.getAttribute("data-stop-index") === String(stopIdx) &&
-          tourEl.getAttribute("data-tour-phase") === "sip"
+          tourEl()?.getAttribute("data-stop-index") === String(stopIdx) &&
+          tourEl()?.getAttribute("data-tour-phase") === "sip"
         )
           break;
         await new Promise((r) => setTimeout(r, 10));
       }
-      if (tourEl.getAttribute("data-tour-phase") !== "sip")
+      const tourNow = tourEl();
+      const walkerNow = walkerEl();
+      if (!tourNow || !walkerNow || tourNow.getAttribute("data-tour-phase") !== "sip")
         return { found: false } as const;
-      const first = walkerEl.getBoundingClientRect();
-      const arm = tourEl.querySelector(".mug-arm");
+      const first = walkerNow.getBoundingClientRect();
+      const arm = tourNow.querySelector(".mug-arm");
       const armName = arm ? getComputedStyle(arm).animationName : null;
       await new Promise((r) => setTimeout(r, 250));
-      const second = walkerEl.getBoundingClientRect();
+      const walkerLater = walkerEl();
+      if (!walkerLater) return { found: false } as const;
+      const second = walkerLater.getBoundingClientRect();
+      // Same task, same scroll frame: the stop card's rect too. Reading it
+      // afterwards over CDP raced the tour's auto-scroll to the next stop
+      // (fix-run 1: card read ~600px out of frame, proximity assert failed
+      // on scroll geometry, not walker position).
+      const cardEl = document.querySelector(`[data-testid="${stopId}"]`);
+      const cardRect = cardEl?.getBoundingClientRect();
       return {
         found: true,
         x1: first.x,
@@ -299,10 +310,18 @@ test("walker stops at each option, looks, sips, walks on", async ({
         w: second.width,
         h: second.height,
         armName,
-        phaseAfter: tourEl.getAttribute("data-tour-phase"),
-        stopAfter: tourEl.getAttribute("data-stop-index"),
+        phaseAfter: tourEl()?.getAttribute("data-tour-phase") ?? null,
+        stopAfter: tourEl()?.getAttribute("data-stop-index") ?? null,
+        card: cardRect
+          ? {
+              x: cardRect.x,
+              y: cardRect.y,
+              width: cardRect.width,
+              height: cardRect.height,
+            }
+          : null,
       } as const;
-    }, i);
+    }, { stopIdx: i, stopId: stopIds[i] });
     expect(dwell.found, "walker has a bounding box while sipping").toBeTruthy();
     if (!dwell.found) throw new Error("unreachable");
     expect(dwell.phaseAfter, `phase still "sip" at stop ${i}`).toBe("sip");
@@ -321,7 +340,7 @@ test("walker stops at each option, looks, sips, walks on", async ({
       `walker dwells at stop ${i} (y)`,
     ).toBeLessThan(12);
     const box2 = { x: dwell.x2, y: dwell.y2, width: dwell.w, height: dwell.h };
-    const cardBox = await page.getByTestId(stopIds[i]).boundingBox();
+    const cardBox = dwell.card;
     expect(cardBox, `stop card ${stopIds[i]} has a box`).not.toBeNull();
     const wcx = box2!.x + box2!.width / 2;
     const wcy = box2!.y + box2!.height / 2;
@@ -458,6 +477,26 @@ test("tour: cloud visible from the first beat, walker not a tap target mid-walk"
   page,
 }) => {
   const errors = await loadHome(page);
+  // Fix 3's sip watcher arms NOW, before the Fix 1/2 checks consume the
+  // early tour: it records the mug arm's animation duration the first
+  // time the tour dwells (see the Fix 3 note below).
+  const sipDurPromise = page.evaluate(
+    () =>
+      new Promise<string | null>((resolve) => {
+        const t0 = performance.now();
+        const tick = () => {
+          const tourEl = document.querySelector('[data-testid="grandpa-tour"]');
+          if (tourEl?.getAttribute("data-tour-phase") === "sip") {
+            const arm = tourEl.querySelector(".mug-arm");
+            resolve(arm ? getComputedStyle(arm).animationDuration : null);
+            return;
+          }
+          if (performance.now() - t0 > 45_000) return resolve(null);
+          setTimeout(tick, 10);
+        };
+        tick();
+      }),
+  );
   const scene = page.getByTestId("grandpa-scene");
   await expect(scene).toHaveAttribute("data-mode", "tour", { timeout: 30_000 });
   // Fix 1: the ask is visible DURING the walk, not only once seated.
@@ -489,24 +528,16 @@ test("tour: cloud visible from the first beat, walker not a tap target mid-walk"
   expect(pe, "walker lets taps pass through mid-walk").toBe("none");
   await expect(page.getByTestId("grandpa-bubble-ask")).toBeVisible();
   // Fix 3: the sip keyframes are synced to the 800ms dwell — no mid-drink snap.
-  // Measurement note (fix phase, 2026-10-16): the phase wait and the
-  // animation read now happen in ONE in-page evaluate. Previously the
-  // attribute poll and the evaluate were separate CDP round-trips; under
-  // load the read landed after the 800ms dwell ended and reported the
-  // 2.4s walk-cycle duration instead (seen on this branch's runs; the
-  // in-page probe shows 0.8s at every stop). Assertion unchanged.
-  const sipDur = await page.evaluate(async () => {
-    const tourEl = document.querySelector('[data-testid="grandpa-tour"]');
-    if (!tourEl) return null;
-    const t0 = performance.now();
-    while (performance.now() - t0 < 30_000) {
-      if (tourEl.getAttribute("data-tour-phase") === "sip") break;
-      await new Promise((r) => setTimeout(r, 10));
-    }
-    if (tourEl.getAttribute("data-tour-phase") !== "sip") return null;
-    const arm = tourEl.querySelector(".mug-arm");
-    return arm ? getComputedStyle(arm).animationDuration : null;
-  });
+  // Measurement note (fix phase, 2026-10-16): the duration is read by the
+  // in-page watcher armed at the top of this test. Previously an
+  // attribute poll and a separate evaluate were two CDP round-trips;
+  // under load the read landed after the 800ms dwell ended and reported
+  // the 2.4s walk-cycle duration instead (seen on this branch's runs;
+  // the in-page probe shows 0.8s at every stop). The watcher re-queries
+  // the tour element every tick (a captured node reference goes stale
+  // when React re-renders the layer — fix-run 1 read null that way).
+  // Assertion unchanged.
+  const sipDur = await sipDurPromise;
   expect(sipDur, "sip-drink matches TOUR_SIP_MS").toBe("0.8s");
   expectCleanConsole(errors);
 });
