@@ -2245,6 +2245,7 @@ function Choose({
         </div>
       </header>
 
+      <div className="hv5-bento">
       <div className="hv5-hero-zone">
         <section className="hv5-hero home-rise" style={rise(2)} aria-label="Welcome to Meridian">
           {/* Eyebrow cluster preserved from the atlas home: eyebrow →
@@ -2468,6 +2469,7 @@ function Choose({
             </button>
           </div>
         </div>
+      </div>
       </div>
 
       <div className="hv5-grid3">
