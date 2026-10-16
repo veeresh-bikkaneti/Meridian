@@ -110,9 +110,9 @@ test("banner: 56px figure beside the Meridian h1, title never wraps @390px", asy
   expect(Math.round(fBox!.width)).toBe(56);
   expect(Math.round(fBox!.height)).toBe(56);
 
-  // The figure lives in the banner row, right of the branding
-  // (owner 2026-10-09).
-  const row = page.locator(".atlas-banner-row").first();
+  // The figure lives in the hero-top row, right of the branding cluster
+  // (v5: the atlas banner row became the hero card's top row).
+  const row = page.locator(".hv5-hero-top").first();
   const rowBox = await row.boundingBox();
   const heading = page.getByTestId("home-heading");
   const hBox = await heading.boundingBox();
@@ -122,12 +122,21 @@ test("banner: 56px figure beside the Meridian h1, title never wraps @390px", asy
   // Bottom-aligned in the row (sub-pixel rounding tolerated).
   expect(fBox!.y + fBox!.height).toBeLessThanOrEqual(rowBox!.y + rowBox!.height + 2);
 
-  // "MERIDIAN" never stacks: single-line h1 at 390px.
-  const h1Box = await heading.boundingBox();
-  const lineHeight = await heading.evaluate(
+  // The MERIDIAN wordmark never stacks (it lives in the nav brand now),
+  // and the v5 headline stacks BY DESIGN (the approved reference's
+  // multi-line editorial headline replaced the single-line brand h1).
+  const wordmark = page.locator(".hv5-word");
+  const wBox = await wordmark.boundingBox();
+  const wLineHeight = await wordmark.evaluate(
     (el) => parseFloat(getComputedStyle(el).lineHeight) || 0,
   );
-  expect(h1Box!.height).toBeLessThan(lineHeight * 1.5);
+  expect(wBox, "wordmark box").not.toBeNull();
+  expect(wBox!.height).toBeLessThan(wLineHeight * 1.5);
+  const h1Box2 = await heading.boundingBox();
+  const h1LineHeight = await heading.evaluate(
+    (el) => parseFloat(getComputedStyle(el).lineHeight) || 0,
+  );
+  expect(h1Box2!.height).toBeGreaterThan(h1LineHeight * 1.5);
 
   // Comet stays a silent emblem in the eyebrow row — never moved to banner.
   const emblem = page.getByTestId("comet-emblem");

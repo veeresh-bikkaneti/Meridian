@@ -47,6 +47,7 @@ import type { MapMark, MapVariation } from "@/map/satellite-map";
 import { MapErrorBoundary } from "./map-error-boundary";
 import "./home-v5.css";
 import heroMountainUrl from "@/assets/home-v5/hero-mountain.webp";
+import globeFallbackUrl from "@/assets/home-v5/globe-fallback.webp";
 import desertRuinsUrl from "@/assets/home-v5/desert-ruins.webp";
 import patagoniaUrl from "@/assets/home-v5/patagonia.webp";
 import archiveToolsUrl from "@/assets/home-v5/archive-tools.webp";
@@ -111,7 +112,26 @@ const StorytellerHomeHost = lazy(() => import("./storyteller-home"));
 // v5 hero globe: React.lazy like the storyteller host — the Three.js chunk
 // never lands in the initial bundle; HomeGlobe itself dynamically imports
 // three only when the hero nears the viewport.
-const HomeGlobe = lazy(() => import("./home-globe").then((m) => ({ default: m.HomeGlobe })));
+// A failed globe-chunk fetch must never take the home page down with it:
+// the lazy factory catches to a static-disc component (the same fallback
+// HomeGlobe renders for reduced-motion / no-WebGL).
+function GlobeChunkFallback() {
+  return (
+    <img
+      className="hv5-globe-fallback"
+      src={globeFallbackUrl}
+      alt=""
+      aria-hidden="true"
+      width={800}
+      height={800}
+    />
+  );
+}
+const HomeGlobe = lazy(() =>
+  import("./home-globe")
+    .then((m) => ({ default: m.HomeGlobe }))
+    .catch(() => ({ default: GlobeChunkFallback })),
+);
 import {
   CelebrationOverlay,
   celebrationSeamSpec,
@@ -2150,12 +2170,20 @@ function Choose({
   };
   const rise = (d: number) => ({ "--rise-delay": RISE_DELAY[d] ?? "0ms" }) as CSSProperties;
   // v5 nav jumps: smooth-scroll to a home section (instant under
-  // reduced-motion). Missing targets are a no-op by construction.
+  // reduced-motion) AND move focus to it — a scroll-only jump strands
+  // keyboard / screen-reader users at the top of the page (WCAG 2.4.3).
+  // Targets carry tabIndex={-1}; preventScroll keeps our scroll as the
+  // only movement. Missing targets are a no-op by construction.
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    el.focus({ preventScroll: true });
+  };
+  const scrollTop = () => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   };
   return (
     <>
@@ -2176,12 +2204,15 @@ function Choose({
           ABOUT and JOURNAL have no counterpart surface in the app yet —
           rendered disabled (UNMAPPED in the integration report), as is the
           search button (no search surface exists). */}
-      <div className="hv5-nav home-rise" style={rise(0)}>
+      <header className="hv5-nav home-rise" style={rise(0)}>
+        <span id="hv5-unmapped-note" className="sr-only">
+          Not yet available
+        </span>
         <button
           type="button"
           className="hv5-brand"
           aria-label="Meridian home"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={scrollTop}
         >
           <svg className="hv5-mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21.5" fill="none" stroke="#8A6D2F" strokeWidth="1.6" /><circle cx="24" cy="24" r="16.5" fill="none" stroke="#B8932F" strokeWidth=".8" strokeOpacity=".6" /><path d="M24 6 L27.2 20.8 L42 24 L27.2 27.2 L24 42 L20.8 27.2 L6 24 L20.8 20.8 Z" fill="#8A6D2F" /><circle cx="24" cy="24" r="3.4" fill="#F6F1E3" stroke="#8A6D2F" strokeWidth="1.2" /></svg>
           <span className="hv5-word">MERIDIAN</span>
@@ -2195,8 +2226,8 @@ function Choose({
             CASES
             <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
           </button>
-          <button type="button" disabled title="Not yet available">ABOUT</button>
-          <button type="button" disabled title="Not yet available">JOURNAL</button>
+          <button type="button" aria-disabled="true" aria-describedby="hv5-unmapped-note">ABOUT</button>
+          <button type="button" aria-disabled="true" aria-describedby="hv5-unmapped-note">JOURNAL</button>
           <button type="button" onClick={() => scrollTo("home-involved")}>GET INVOLVED</button>
         </nav>
         <div className="hv5-actions">
@@ -2208,11 +2239,11 @@ function Choose({
             JOIN THE JOURNEY
             <svg width="15" height="11" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
           </button>
-          <button type="button" className="hv5-icon-btn" aria-label="Search" disabled title="Not yet available">
+          <button type="button" className="hv5-icon-btn" aria-label="Search" aria-disabled="true" aria-describedby="hv5-unmapped-note">
             <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#33302A" strokeWidth="2" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="M15.5 15.5L21 21" strokeLinecap="round" /></svg>
           </button>
         </div>
-      </div>
+      </header>
 
       <div className="hv5-hero-zone">
         <section className="hv5-hero home-rise" style={rise(2)} aria-label="Welcome to Meridian">
@@ -2249,6 +2280,7 @@ function Choose({
           {/* PBI-6: the h1 stays the focus target when the Scout Map boot
               offer closes (data-testid="home-heading"). */}
           <h1 className="hv5-h1" data-testid="home-heading" tabIndex={-1}>
+            <span className="sr-only">Meridian — </span>
             Explore. Understand.
             <br />
             Make sense of what matters.
@@ -2312,7 +2344,7 @@ function Choose({
         </div>
       </div>
 
-      <div className="hv5-grid2" id="home-cases">
+      <div className="hv5-grid2" id="home-cases" tabIndex={-1}>
         {/* GeoDetective leads: the flagship case file, unlimited mysteries.
             Age-profile: for bands where the loop is locked (5-7), the SAME
             footprint renders the locked variant in place. */}
@@ -2349,7 +2381,7 @@ function Choose({
               {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
             </button>
           </div>
-          <img className="hv5-pic" loading="lazy" decoding="async" src={desertRuinsUrl} alt="Ancient desert ruins, the GeoDetective featured case" />
+          <img className="hv5-pic" loading="lazy" decoding="async" src={desertRuinsUrl} alt="" aria-hidden="true" />
         </article>
         )}
         {/* Cold Trail vertical slice: 3 sightings, 3 rings, one interception. */}
@@ -2376,7 +2408,7 @@ function Choose({
               ❄️ Start the trail
             </button>
           </div>
-          <img className="hv5-pic" loading="lazy" decoding="async" src={patagoniaUrl} alt="Explorers beside a mountain lake in Patagonia" />
+          <img className="hv5-pic" loading="lazy" decoding="async" src={patagoniaUrl} alt="" aria-hidden="true" />
         </article>
         {/* Choose Your Expedition — the design's dark anchor card hosts the
             three real edition actions (State / Country / Globe). */}
@@ -2385,6 +2417,7 @@ function Choose({
           style={rise(6)}
           data-testid="tour-stop-editions"
           id="home-editions"
+          tabIndex={-1}
         >
           <div className="hv5-head">
             <span className="hv5-badge">
@@ -2487,11 +2520,11 @@ function Choose({
             </div>
             <h2>What the land remembers</h2>
             <p>Short field stories from the places on the map — the tales only landscapes keep.</p>
-            <button type="button" className="hv5-go" disabled title="Not yet available">
+            <button type="button" className="hv5-go" aria-disabled="true" aria-describedby="hv5-unmapped-note">
               READ THE ENTRY
             </button>
           </div>
-          <img className="hv5-art" loading="lazy" decoding="async" src={journalTreeUrl} alt="A lone tree on a rocky outcrop above layered hills" />
+          <img className="hv5-art" loading="lazy" decoding="async" src={journalTreeUrl} alt="" aria-hidden="true" />
         </article>
         <article className="hv5-card hv5-spot hv5-involved home-rise" style={rise(7)}>
           <div className="hv5-txt">
@@ -2539,7 +2572,7 @@ function Choose({
     {/* Grandpa's Coffee Run — animated donation scene, home only.
         Veeresh 2026-10-07: replaces PR #91's static sign. The v5 nav's
         GET INVOLVED jumps here (the app's get-involved surface). */}
-    <div id="home-involved">
+    <div id="home-involved" tabIndex={-1}>
       <GrandpaCoffeeRun />
     </div>
     {/* Comet now hosts from the banner (in the header above) — the fixed
@@ -2574,38 +2607,6 @@ function AtlasBackdrop() {
         </g>
       </svg>
     </div>
-  );
-}
-
-function EditionCard({
-  index,
-  icon,
-  title,
-  detail,
-  action,
-  onClick,
-}: {
-  /** Mono expedition number, e.g. "01". */
-  index: string;
-  /** Brass line icon. */
-  icon: ReactNode;
-  title: string;
-  detail: string;
-  action: string;
-  onClick: (e: ReactMouseEvent) => void;
-}) {
-  return (
-    <article className="atlas-card">
-      <p className="atlas-card-index">N° {index}</p>
-      <div className="atlas-card-icon" aria-hidden="true">
-        {icon}
-      </div>
-      <h2 className="atlas-card-title">{title}</h2>
-      <p className="atlas-card-detail">{detail}</p>
-      <button type="button" className="atlas-btn atlas-btn-line mt-4 w-full" onClick={onClick}>
-        {action}
-      </button>
-    </article>
   );
 }
 

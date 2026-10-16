@@ -27,6 +27,17 @@ export function HomeGlobe() {
     return reduced || saveData;
   });
 
+  // If the OS reduced-motion setting flips on after load, swap to the
+  // static disc — the mount-time check alone would miss it.
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const onChange = () => {
+      if (mq.matches) setFallback(true);
+    };
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   useEffect(() => {
     if (fallback) return;
     const mount = mountRef.current;
@@ -114,10 +125,15 @@ function initGlobe(THREE: ThreeModule, mount: HTMLDivElement, onFail: () => void
   const group = new THREE.Group();
   scene.add(group);
   const R = 1.62;
-  const tex = new THREE.TextureLoader().load(globeTextureUrl, (t) => {
-    t.colorSpace = THREE.SRGBColorSpace;
-    t.anisotropy = 4;
-  });
+  const tex = new THREE.TextureLoader().load(
+    globeTextureUrl,
+    (t) => {
+      t.colorSpace = THREE.SRGBColorSpace;
+      t.anisotropy = 4;
+    },
+    undefined,
+    () => onFail(),
+  );
   const globe = new THREE.Mesh(
     new THREE.SphereGeometry(R, 64, 48),
     new THREE.MeshStandardMaterial({ map: tex, roughness: 0.92, metalness: 0 }),
@@ -237,13 +253,19 @@ function initGlobe(THREE: ThreeModule, mount: HTMLDivElement, onFail: () => void
     cx += (tx - cx) * 0.045;
     cy += (ty - cy) * 0.045;
     scrollC += (scrollT - scrollC) * 0.06;
-    group.rotation.y = -1.85 + t * 0.045 + cx * 0.55;
+    // Autonomous motion settles after the ~6s entrance (WCAG 2.2.2: no
+    // indefinitely self-moving content); pointer/scroll parallax — which
+    // is user-driven — keeps responding after the settle.
+    const settle = Math.min(t / 6, 1);
+    const eased = 1 - Math.pow(1 - settle, 3);
+    const autoT = eased * 6;
+    group.rotation.y = -1.85 + autoT * 0.045 + cx * 0.55;
     group.rotation.x = cy * 0.28 + scrollC * 0.12;
-    group.position.y = -scrollC * 0.22 + Math.sin(t * 0.7) * 0.02;
-    const a = t * 0.55;
+    group.position.y = -scrollC * 0.22 + Math.sin(autoT * 0.7) * 0.02;
+    const a = autoT * 0.55;
     sat.position.set(Math.cos(a) * R * 1.22, Math.sin(a) * R * 0.42 + 0.28, Math.sin(a) * R * 1.05);
     pins.forEach((s) => {
-      const ph = (t * 1.1 - (s.userData.i as number) * 0.9) % 2.2;
+      const ph = (autoT * 1.1 - (s.userData.i as number) * 0.9) % 2.2;
       const sc = 0.34 + Math.max(0, Math.sin((Math.min(ph, 1.4) / 1.4) * Math.PI)) * 0.13;
       s.scale.set(sc, sc, 1);
     });

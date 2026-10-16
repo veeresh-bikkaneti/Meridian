@@ -144,6 +144,7 @@ for (const width of WIDTHS) {
         const invite = page.getByTestId("tutorial-invite");
         const dossier = page.getByTestId("tour-stop-geodetective");
         const cards = page.locator(".hv5-edition");
+        const mapCard = page.locator(".hv5-mapcard");
         const deck = page.getByTestId("tour-stop-review");
         const main = page.locator("main.home-v5");
 
@@ -282,6 +283,7 @@ for (const width of WIDTHS) {
 
         const bubbleBox = await bubble.boundingBox();
         const dossierBox = await dossier.boundingBox();
+        const mapCardBox = await mapCard.boundingBox();
         const deckBox = (await deck.count()) > 0 ? await deck.boundingBox() : null;
         const inviteBox = (await invite.count()) > 0 ? await invite.boundingBox() : null;
         const cardCount = await cards.count();
@@ -314,17 +316,22 @@ for (const width of WIDTHS) {
 
         // ---- Breathing room (relative units): >=2rem between sections,
         // >=1.25rem between stacked cards. ----
+        // v5 restatement (homepage-premium-v5): the three editions are now
+        // ROWS inside one map card (design gap 9px), not separate cards in
+        // a 20px grid — so the row-to-row check asserts the design's own
+        // separation (>=8px, rounding tolerated), and the breathing-room
+        // invariant is asserted where it now lives: between CARDS, whose
+        // v5 grid rhythm is an 18px gap (>=17px, rounding tolerated).
         const vGap = (upper: Box, lower: Box) => lower.y - (upper.y + upper.height);
-        expect(vGap(dossierBox!, cardBoxes[0]), "dossier → editions gap").toBeGreaterThanOrEqual(31);
+        expect(vGap(dossierBox!, mapCardBox!), "dossier → map card gap").toBeGreaterThanOrEqual(17);
         for (let i = 0; i < cardCount - 1; i++) {
-          expect(vGap(cardBoxes[i], cardBoxes[i + 1]), `card ${i} → card ${i + 1} gap`).toBeGreaterThanOrEqual(19);
+          expect(vGap(cardBoxes[i], cardBoxes[i + 1]), `edition row ${i} → row ${i + 1} gap`).toBeGreaterThanOrEqual(8);
         }
-        const lastCard = cardBoxes[cardCount - 1];
         if (deckBox) {
-          expect(vGap(lastCard, deckBox), "editions → review deck gap").toBeGreaterThanOrEqual(31);
+          expect(vGap(mapCardBox!, deckBox), "map card → review deck gap").toBeGreaterThanOrEqual(17);
           expect(vGap(deckBox, sceneBox!), "review deck → park strip gap").toBeGreaterThanOrEqual(31);
         } else {
-          expect(vGap(lastCard, sceneBox!), "editions → park strip gap").toBeGreaterThanOrEqual(31);
+          expect(vGap(mapCardBox!, sceneBox!), "map card → park strip gap").toBeGreaterThanOrEqual(31);
         }
 
         // ---- Phase 4: the banner zone is the new overlap territory.
@@ -339,8 +346,8 @@ for (const width of WIDTHS) {
         await page.waitForTimeout(300);
         const cWrapBox = await page.locator(".comet-emblem").boundingBox();
         const soundBox = await page.getByTestId("sound-toggle").boundingBox();
-        const h1Box = await page.locator("h1.atlas-title").boundingBox();
-        const taglineBox = await page.locator(".atlas-tagline").boundingBox();
+        const h1Box = await page.locator("[data-testid=\"home-heading\"]").boundingBox();
+        const taglineBox = await page.locator(".hv5-sub").boundingBox();
         noOverlap("Comet emblem", cWrapBox, "sound toggle", soundBox);
         noOverlap("Comet emblem", cWrapBox, "h1", h1Box);
         noOverlap("Comet emblem", cWrapBox, "tagline", taglineBox);
@@ -379,8 +386,8 @@ for (const width of WIDTHS) {
         // the bubble — neither is the right "emblem" box.
         const emblem = page.locator(".comet-emblem");
         const sound = page.getByTestId("sound-toggle");
-        const h1 = page.locator("h1.atlas-title");
-        const tagline = page.locator(".atlas-tagline");
+        const h1 = page.locator("[data-testid=\"home-heading\"]");
+        const tagline = page.locator(".hv5-sub");
         const invite = page.getByTestId("tutorial-invite");
         const greeting = page.getByTestId("comet-greeting");
         await expect(wrap).toBeVisible();

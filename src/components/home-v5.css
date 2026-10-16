@@ -30,7 +30,7 @@ body:has(.home-v5) {
   overflow-x: clip;
 }
 .home-v5 :focus-visible {
-  outline: 2px solid var(--hv5-brass);
+  outline: 2px solid var(--hv5-brown-deep);
   outline-offset: 3px;
   border-radius: 6px;
 }
@@ -70,6 +70,7 @@ body:has(.home-v5) {
   border: none;
   padding: 0;
   color: inherit;
+  min-height: 44px;
 }
 .home-v5 .hv5-brand .hv5-mark {
   width: 40px;
@@ -96,14 +97,15 @@ body:has(.home-v5) {
   align-items: center;
   gap: 6px;
   padding: 6px 2px;
+  min-height: 44px;
   color: var(--hv5-ink);
   background: none;
   border: none;
 }
-.home-v5 .hv5-nav nav button:hover:not(:disabled) {
+.home-v5 .hv5-nav nav button:hover:not([aria-disabled="true"]) {
   color: var(--hv5-brown);
 }
-.home-v5 .hv5-nav nav button:disabled {
+.home-v5 .hv5-nav nav button[aria-disabled="true"] {
   opacity: 0.45;
   cursor: default;
 }
@@ -132,23 +134,14 @@ body:has(.home-v5) {
   transform: scale(0.965);
 }
 .home-v5 .hv5-btn-brown {
-  background: var(--hv5-brown);
+  background: var(--hv5-brown-deep);
   color: #fbf7ea;
   font-size: 12.5px;
   padding: 14px 24px;
   box-shadow: 0 10px 22px -10px rgba(119, 89, 31, 0.55);
 }
 .home-v5 .hv5-btn-brown:hover {
-  background: var(--hv5-brown-deep);
-}
-.home-v5 .hv5-btn-cream {
-  background: #f3edd8;
-  color: var(--hv5-ink);
-  font-size: 12px;
-  padding: 13px 22px;
-}
-.home-v5 .hv5-btn-cream:hover {
-  background: #ede4c8;
+  background: #5f4418;
 }
 .home-v5 .hv5-icon-btn {
   width: 46px;
@@ -162,7 +155,7 @@ body:has(.home-v5) {
     background 0.3s,
     transform 0.45s var(--hv5-ease);
 }
-.home-v5 .hv5-icon-btn:disabled {
+.home-v5 .hv5-icon-btn[aria-disabled="true"] {
   opacity: 0.55;
   cursor: default;
 }
@@ -208,12 +201,6 @@ body:has(.home-v5) {
   border: 1px solid var(--hv5-line-warm);
   display: grid;
   place-items: center;
-}
-.home-v5 .hv5-hero-tools {
-  margin-left: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
 }
 .home-v5 .hv5-h1 {
   font-family: var(--hv5-display);
@@ -263,7 +250,7 @@ body:has(.home-v5) {
 .home-v5 .hv5-storyteller {
   position: relative;
   flex: none;
-  margin-left: auto;
+  margin-left: 10px;
 }
 /* Difficulty — the repo's real labeled group + live hint, v5 pill skin. */
 .home-v5 .hv5-diff-cap {
@@ -301,9 +288,11 @@ body:has(.home-v5) {
   transition: all 0.3s var(--hv5-ease);
 }
 .home-v5 .hv5-diff button[aria-pressed="true"] {
-  background: var(--hv5-brass);
+  background: var(--hv5-brown-deep);
   color: #fffdf4;
-  box-shadow: 0 4px 10px -4px rgba(184, 147, 47, 0.7);
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 253, 244, 0.85),
+    0 4px 10px -4px rgba(119, 89, 31, 0.7);
 }
 .home-v5 .hv5-hint {
   margin-top: 10px;
@@ -434,10 +423,10 @@ body:has(.home-v5) {
   cursor: pointer;
   text-align: left;
 }
-.home-v5 .hv5-go:hover:not(:disabled) {
+.home-v5 .hv5-go:hover:not([aria-disabled="true"]) {
   color: var(--hv5-brown);
 }
-.home-v5 .hv5-go:disabled {
+.home-v5 .hv5-go[aria-disabled="true"] {
   opacity: 0.5;
   cursor: default;
 }
@@ -465,11 +454,6 @@ body:has(.home-v5) {
    still grazing the photo at 24px/148px — final: 22px/120px). */
 .home-v5 .hv5-case h2 {
   font-size: 22px;
-}
-.home-v5 .hv5-case .hv5-label {
-  white-space: nowrap;
-  font-size: 9px;
-  letter-spacing: 0.1em;
 }
 .home-v5 .hv5-dispatch .hv5-pic {
   width: 238px;
@@ -541,6 +525,7 @@ body:has(.home-v5) {
   align-items: center;
   gap: 12px;
   width: 100%;
+  min-height: 48px;
   text-align: left;
   background: rgba(253, 251, 243, 0.08);
   border: 1px solid rgba(242, 239, 226, 0.35);
@@ -549,15 +534,23 @@ body:has(.home-v5) {
   color: #f2efe2;
   font-family: var(--hv5-body);
   cursor: pointer;
+  /* The repo's frozen press law (ex-.atlas-card .atlas-btn): 200ms
+     pop-over release at rest, 80ms glide into the press. */
   transition:
     background 0.3s,
-    transform 0.45s var(--hv5-ease);
+    transform 200ms var(--ease-pop-over),
+    filter 200ms var(--ease-pop-over);
 }
 .home-v5 .hv5-edition:hover {
   background: rgba(253, 251, 243, 0.16);
 }
 .home-v5 .hv5-edition:active {
-  transform: scale(0.985);
+  transform: scale(0.97);
+  filter: brightness(1.12);
+  transition:
+    transform 80ms var(--ease-glide),
+    filter 80ms var(--ease-glide),
+    background 0.3s;
 }
 .home-v5 .hv5-edition .hv5-idx {
   font-size: 10.5px;
@@ -662,6 +655,13 @@ body:has(.home-v5) {
   .home-v5 .hv5-nav {
     flex-wrap: wrap;
   }
+  /* On phones the storyteller host returns to the row's right end: its
+     greeting popover opens leftward from the host and would leave the
+     viewport if the host sat in the left cluster. The globe is in-flow
+     below the hero here, so the right end is free. */
+  .home-v5 .hv5-storyteller {
+    margin-left: auto;
+  }
   .home-v5 .hv5-nav nav {
     display: flex;
     order: 3;
@@ -669,6 +669,10 @@ body:has(.home-v5) {
     gap: 16px;
     overflow-x: auto;
     margin: 2px 0 0;
+    /* Right-edge fade: the visible scroll affordance for the clipped
+       final item (GET INVOLVED) in this scrollable row. */
+    -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
   }
   .home-v5 .hv5-nav nav button {
     font-size: 11px;
@@ -729,5 +733,9 @@ body:has(.home-v5) {
   .home-v5 .hv5-btn,
   .home-v5 .hv5-edition {
     transition: none;
+  }
+  .home-v5 .hv5-edition:active {
+    transform: none;
+    filter: none;
   }
 }
