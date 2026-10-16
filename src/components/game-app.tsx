@@ -2248,8 +2248,9 @@ function Choose({
       <div className="hv5-hero-zone">
         <section className="hv5-hero home-rise" style={rise(2)} aria-label="Welcome to Meridian">
           {/* Eyebrow cluster preserved from the atlas home: eyebrow →
-              Comet emblem → sound toggle (owner order), with the v5
-              welcome pill leading the row. */}
+              Comet emblem → sound toggle (owner order — Liz's eyebrow
+              call, 2026-10-07/08), with the v5 welcome pill leading
+              the row. */}
           <div className="hv5-hero-top">
             <span className="hv5-pill">
               <span className="hv5-dot">
