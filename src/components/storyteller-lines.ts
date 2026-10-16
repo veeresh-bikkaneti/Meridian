@@ -4,9 +4,10 @@
  * FINAL COPY (spoken form — regenerate the mp3s if these change; the
  * pairing is positional, mirroring comet-greetings.ts).
  *
- * Voice: one recorded voice for every storyteller clip (welcome, poke,
- * reveal, hook, summary). Home greet-0N and poke-0N are the same voice
- * so a follow-up tap does not change speakers. No runtime synthesis.
+ * Voice: `am_fenrir` (Kokoro-82M, en-us male) @ speed 1.05 — the game
+ * designer's 2026-10-08 pick (trailer energy; retires the old cloud `tts`
+ * CLI path per the standing no-cloud/no-key/no-spend rules).
+ * Audio lives at `public/audio/storyteller/*.mp3`. No runtime synthesis, ever.
  *
  * REGENERATION (exact, reproducible — closes the caption==audio drift risk):
  *   node scripts/render-storyteller-voice.mjs [--out <dir>]

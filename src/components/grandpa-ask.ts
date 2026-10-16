@@ -1,4 +1,14 @@
 /**
+ * Provenance (honest, 2026-10-16): the 5 grandpa clips (`ask-01.mp3`,
+ * `trail-01.mp3`..`trail-04.mp3` under `public/audio/grandpa/`) were
+ * recorded and committed as-is in PR #165. No render script pins their
+ * voice or settings — a reproducible render pipeline (like the
+ * storyteller's `scripts/render-storyteller-voice.mjs`) is still owed.
+ * Do not invent a voice name or settings here; when a real pipeline
+ * exists, name it in this block.
+ */
+
+/**
  * Grandpa's narration. A different voice from the storyteller, and a
  * recorded file, never the device's speechSynthesis.
  *
@@ -41,14 +51,29 @@ function stopNarration(): void {
   current = null;
 }
 
+/** One lazily-created AudioContext shared by all coughs. Kept alive
+ * across coughs (never closed per-cough) so a fresh context is not
+ * constructed every few seconds while grandpa walks. */
+let sharedCtx: AudioContext | null = null;
+
+/** Returns the shared AudioContext, creating it on first use. */
+function getSharedCtx(): AudioContext | null {
+  if (typeof window === "undefined") return null;
+  if (!sharedCtx) {
+    const Ctx =
+      window.AudioContext ??
+      (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+    if (!Ctx) return null;
+    sharedCtx = new Ctx();
+  }
+  return sharedCtx;
+}
+
 /** Two short rough bursts. Never a spoken word. */
 export function playCough(): void {
   if (!soundOn() || typeof window === "undefined") return;
-  const Ctx =
-    window.AudioContext ??
-    (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-  if (!Ctx) return;
-  const ctx = new Ctx();
+  const ctx = getSharedCtx();
+  if (!ctx) return;
   const length = Math.floor(ctx.sampleRate * 0.45);
   const buffer = ctx.createBuffer(1, length, ctx.sampleRate);
   const data = buffer.getChannelData(0);
@@ -66,7 +91,9 @@ export function playCough(): void {
   const gain = ctx.createGain();
   gain.gain.value = 0.45;
   src.connect(filter).connect(gain).connect(ctx.destination);
-  src.onended = () => void ctx.close();
+  // The shared context stays open; a suspended one resumes here (no-op
+  // if already running).
+  void ctx.resume();
   src.start();
 }
 
