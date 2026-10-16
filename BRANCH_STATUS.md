@@ -1,21 +1,42 @@
-# BRANCH_STATUS — chore/tanstack-react-start-1.169.2
+# BRANCH_STATUS — feat/homepage-premium-v5 (Journal increment)
 
-**Ready for review. Owner merges.** One job: bump `@tanstack/react-start` to `^1.169.2`, with a lockfile that passes `npm ci`. Supersedes dependabot #159 and #160.
+**Status: LOCAL ONLY — not pushed (the parent agent pushes; a
+force-with-lease is expected, see base note). Not merged.**
 
-## Why not merge #159 / #160
-Both branches have an identical tree, and their `build (22.x)` check fails in about 9 seconds at `npm ci`: `Missing: lru-cache@11.5.3 from lock file`. Their lockfile lacks the `node_modules/nitro/node_modules/lru-cache` entry. Nothing in the code is at fault; the lock is out of sync with `package.json`.
+**Base note (2026-10-16):** PR #158 (the v5 homepage) was MERGED into
+`main` upstream (squash `e9bf739`, marked merged by #161; the two review
+cure commits verified present on main: `#efe3bc` focus outline,
+owner-order citation, `docs/homepage-v5-scrum-review.md`). This branch
+was therefore **reset from its old tip `31331a4` to current
+`origin/main` @ `6cd3bc3`** — nothing the old branch carried is missing
+from main (verified file-by-file); the branch now carries only the
+Journal increment below. Main has also since gained #162 (globe inside
+the bento grid), #163 (handbook), #164 (TanStack bump).
+
+**Mandate:** Liz, 2026-10-16 — the Journal becomes real: "Journal
+rotates through 106 real catalog notes, three at a time, every 2 hours.
+The page switches to the next set on its own." Plus: "These specs should
+provide citation and confidence vote on facts describing." Spec:
+`docs/journal-spec.md`.
 
 ## Done
-- `package.json`: `@tanstack/react-start` `^1.168.0` -> `^1.169.2`.
-- `package-lock.json`: regenerated from `main` with `npm install @tanstack/react-start@^1.169.2 --package-lock-only` (a plain `npm install` crashed in npm 10.9.4's rollback path). Resolved: react-start 1.169.2, start-server-core 1.169.43 (was 1.168.58 / 1.169.37). The only difference from the dependabot lock is the missing `nitro/node_modules/lru-cache 11.5.3` entry.
 
-## Gates (this branch, local)
-`npm ci` from a clean `node_modules` OK; `npx tsc --noEmit` clean; `npm test` scripts 778 (769 pass, 9 skipped, 0 fail) and src 1,315 pass; `node scripts/lint-cards.mjs` GATE PASSED; `npm run build` OK with `SHARE_CARD_BUILT=workers` passing (all 12 share tags, workers.dev origin); `npm run build:pages` OK with `SHARE_CARD_BUILT=pages` passing; `npm run test:worker` 18/18; `npm run typecheck:worker` clean. E2E smoke (ws4-tile-fallback and ws4-geodetective-map-hidden, `--workers=1`, fresh Pages build): 6/6. The full Playwright suite was not run.
+- Spec written: `docs/journal-spec.md` — dataset verified first-hand:
+  `PLACES` in `src/game/catalog.ts` = **exactly 106 places, all 106 with
+  curated `story` + recorded `source`** (Liz's 106 confirmed). Set rule:
+  ring-grouped triples (33 pure sets) + remainder sets (3, 3, 1) = 36
+  sets, 72-hour cycle, epoch-derived window index; confidence vote
+  computed mechanically from the citation host (.gov/.edu → Verified,
+  49; other recorded source → Cited, 57; none → excluded, 0 today).
 
-## Not verified
-- Full E2E suite (617 tests) and real-device behaviour on the new framework version.
-- The live Workers deploy (SSR on workers.dev with start-server-core 1.169.43). Local server output was exercised by the built-output check only.
-- `Workers Builds: meridian` fails on PR branches by owner decision (ignored); main's deploy is the real check.
+## Pending
 
-## After merge
-Dependabot should close #159 and #160 on its own once `main` carries the version; if it does not, close them as superseded.
+- Dataset generator (`scripts/build-journal-dataset.mjs`) +
+  `src/game/journal-data.ts`; rotation engine; journal overlay view;
+  home card + nav JOURNAL go live (UNMAPPED record updated when they
+  do); unit + E2E tests.
+- Full Scrum review of the branch (build → test → rebase-check →
+  retest → spec verification) with an independent Reality Checker;
+  verdict + evidence appended to the scrum review report.
+- Remaining from before (unchanged): live NVDA/VoiceOver pass on a real
+  device stays Liz's/Veeresh's — disclosed, not claimed.
