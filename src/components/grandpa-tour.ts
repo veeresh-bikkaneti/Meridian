@@ -3,7 +3,7 @@
  *
  * Builds the dotted S-trail grandpa walks on mobile (≤1023.5px): from a
  * brass compass-rose origin top-left, down the page gutters, pausing at each
- * tasting stop (difficulty → GeoDetective → editions → review when present),
+ * tasting stop (difficulty → editions → GeoDetective → review when present),
  * to a pour waypoint just above the park strip and finally the bench.
  *
  * Design rules enforced by the builder (fail-closed: any violation returns
@@ -34,7 +34,8 @@ export type TourStop = { key: TourStopKey; rect: DocRect };
 export type TourMeasurements = {
   viewportWidth: number;
   docHeight: number;
-  /** In visit order: difficulty, geodetective, editions, review? */
+  /** In visit order (top-down document order): difficulty, editions,
+      geodetective, review? */
   stops: TourStop[];
   /** Visible interactive rects inside the home <main>, doc coords. */
   interactives: DocRect[];
@@ -59,7 +60,10 @@ export type TourGeometry = {
   /** Path distance of the pour waypoint (just above the park strip). */
   pourDistance: number;
   totalLength: number;
-  /** True for the level-1 fallback: straight trail, no stops. */
+  /** True for the level-1 fallback: the straight trail. It ships with no
+      stops, but the caller may hang sip stops on it (withStraightTrailStops)
+      when the weave refuses a layout — the walker still stops, looks and
+      drinks at every card instead of walking past. */
   simplified: boolean;
 };
 
@@ -270,15 +274,17 @@ const REQUIRED_STOPS: TourStopKey[] = ["difficulty", "geodetective", "editions"]
 function checkRequiredStops(stops: TourStop[]): boolean {
   const keys = new Set(stops.map((s) => s.key));
   if (!REQUIRED_STOPS.every((k) => keys.has(k))) return false;
-  // Visit order must be difficulty → geodetective → editions → review?.
-  const order = ["difficulty", "geodetective", "editions", "review"];
+  // Visit order must be difficulty → editions → geodetective → review?.
+  // (#165 moved the editions card above the GeoDetective card; the tour
+  // visits in top-down document order.)
+  const order = ["difficulty", "editions", "geodetective", "review"];
   const idx = stops.map((s) => order.indexOf(s.key));
   return idx.every((v, i) => i === 0 || v > idx[i - 1]);
 }
 
 /**
- * Full weave: alternating gutters (difficulty right, geodetective left,
- * editions right, review left), crossings in the inter-card gaps, pour
+ * Full weave: alternating gutters (difficulty right, editions left,
+ * geodetective right, review left), crossings in the inter-card gaps, pour
  * waypoint above the strip, trail ending at the bench. Returns null when any
  * design rule can't be met — the caller falls back to the straight trail.
  */

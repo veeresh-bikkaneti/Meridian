@@ -24,6 +24,12 @@
   position: relative;
   height: 168px;
 }
+/* Fail-closed: when the scene renders nothing (offline, or no Ko-fi URL
+   configured), the band must not reserve space — the overlap spec asserts
+   the strip collapses to zero height (scrollHeight slack < 48px). */
+#home-involved:empty {
+  height: 0;
+}
 .grandpa-scene {
   /* The camp strip he walks. In flow, so it does not leave a dead band. */
   position: absolute;
@@ -463,6 +469,14 @@
   animation: mug-fill-rise 2800ms linear forwards;
 }
 
+/* The pour lands permanently: once the kettle beat ends, the mug stays
+   filled through the walk-resume and the seated finale. (The rise
+   animation above only applies during the beat; without this rule the
+   fill would snap back to empty the instant the beat flips.) */
+.grandpa-scene[data-filled="true"] .mug-fill {
+  transform: translateY(0);
+}
+
 @keyframes mug-fill-rise {
   0%,
   36% {
@@ -630,26 +644,30 @@
  * media query alone. Transition mirrors the seated reveal so the pop-in
  * feels identical.
  *
- * Positioning: the parked walker sits at the strip's right edge, so a
- * bubble centered on him would hang off-viewport (measured ~46px clipped at
- * 390px wide). The bubble is right-anchored to the walker instead and the
- * tail is re-seated over grandpa (40px from the bubble's right edge =
- * walker's center on mobile), keeping the whole cloud on-screen. */
+ * Positioning: left of the parked walker, inside the band — the walker's
+ * bounding box unions the bubble, and the overlap spec requires the walker
+ * to stay inside the strip, so the bubble may not escape above the band.
+ * The tail points right, at grandpa. */
 .grandpa-scene[data-mode="tour"] .grandpa-donation-bubble {
   left: auto;
-  right: -8px;
+  right: calc(100% + 12px);
+  top: auto;
+  bottom: -37px;
   opacity: 1;
   visibility: visible;
-  transform: scale(1);
+  transform: none;
   transition:
     opacity 0.3s ease,
     transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
     visibility 0s;
 }
 .grandpa-scene[data-mode="tour"] .grandpa-donation-bubble::after {
-  left: auto;
-  right: 40px;
-  transform: translate(50%, -1px);
+  top: 50%;
+  left: 100%;
+  right: auto;
+  transform: translate(1px, -50%);
+  border-top-color: transparent;
+  border-left-color: #0c181d;
 }
 
 /* Ask state — the whole cloud is one big friendly button. */
@@ -1034,12 +1052,12 @@
     --bottom-clearance: calc(
       max(14px, env(safe-area-inset-bottom, 0px)) + 1rem
     );
-    position: absolute;
-    inset: auto;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 128px;
+    /* In-flow compact band (the overlap spec requires position: relative,
+     * the strip to start where </main> ends, and the walker + quip +
+     * donation bubble to stay inside the band — absolute positioning
+     * broke all three). Fills the #home-involved wrapper exactly. */
+    position: relative;
+    height: 100%;
     min-height: 0;
     /* The walker travels in from off the left edge; as an absolutely
      * positioned (not fixed) element that would add horizontal scrollable
@@ -1078,27 +1096,40 @@
 
   .grandpa-donation-bubble {
     padding: 10px 13px 9px;
-    bottom: calc(100% + 28px);
-    /* Present on arrival: never animation-gated on mobile. Right-anchored
-       to the parked walker — a bubble centered on him would hang
-       off-viewport (measured ~46px clipped at 390px wide). */
+    /* Left of the walker, bottom-anchored inside the band: the bubble's
+       box is unioned into the walker's bounding box, and the overlap spec
+       requires the walker to stay inside the strip and clear of the cards —
+       so nothing here may escape above the band. Present on arrival: never
+       animation-gated on mobile. */
+    top: auto;
+    bottom: -37px;
     left: auto;
-    right: -8px;
+    right: calc(100% + 12px);
+    transform: none;
     opacity: 1;
     visibility: visible;
-    transform: scale(1);
   }
 
   .grandpa-donation-bubble::after {
-    /* Tail re-seated over grandpa: 40px from the bubble's right edge is the
-       walker's center on mobile, so the tail keeps pointing at him. */
-    left: auto;
-    right: 40px;
-    transform: translate(50%, -1px);
+    /* Tail re-seated to point right, at grandpa. */
+    top: 50%;
+    left: 100%;
+    right: auto;
+    transform: translate(1px, -50%);
+    border-top-color: transparent;
+    border-left-color: #0c181d;
   }
 
-  /* Seated on mobile keeps the right-anchored position — the desktop seated
-     rule's translate(-50%) would shove the bubble left, off grandpa. */
+  /* Trail quip: parked LEFT of the walker (not above it), clear of the
+     donation bubble below — same bounding-box discipline as the bubble. */
+  .grandpa-quip {
+    top: -12px;
+    bottom: auto;
+    right: calc(100% + 10px);
+  }
+
+  /* Seated on mobile keeps the left-of-walker position — the desktop seated
+     rule's translate(-50%) would re-center the bubble on grandpa. */
   .grandpa-scene[data-beat="seated"] .grandpa-donation-bubble {
     transform: scale(1);
   }
@@ -1145,6 +1176,15 @@
 
   .bubble-ask span {
     font-size: 10px;
+  }
+}
+
+/* Landscape phones (short + narrow): the rule above assumes the desktop
+ * above-walker placement — keep the bubble beside the walker, inside the
+ * band, so the walker's bounding box still clears the strip. */
+@media (max-height: 599.5px) and (max-width: 1023.5px) {
+  .grandpa-donation-bubble {
+    bottom: -37px;
   }
 }
 

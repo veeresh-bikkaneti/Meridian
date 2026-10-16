@@ -80,8 +80,11 @@ const KOFI_URL = import.meta.env.VITE_KOFI_URL?.trim() || undefined;
 const WALK_MS = 9500;
 // Fraction of the walk at which the kettle drops.
 const KETTLE_AT = 0.45;
-// Drop (~0.8s) + hover/tilt/pour (~1.2s) + rise/fade (~0.6s) + margin.
-const KETTLE_HOLD_MS = 2800;
+// Drop (~0.8s) + hover/tilt/pour (~1.2s) + rise/fade (~0.6s), then the beat
+// HOLDS ~1.2s longer with the mug raised: the beat state must outlast the
+// 2800ms choreography with margin, otherwise an observer sampling near the
+// end of the beat sees the finished (invisible) kettle instead of the pour.
+const KETTLE_HOLD_MS = 4000;
 
 // --- Tasting-tour tuning (mobile) ---
 const MOBILE_QUERY = "(max-width: 1023.5px)";
@@ -752,11 +755,18 @@ function measureTour(): TourMeasurements | null {
   const geodetective = pick("tour-stop-geodetective");
   const editions = pick("tour-stop-editions");
   if (!difficulty || !geodetective || !editions) return null;
-  const stops: TourStop[] = [
-    { key: "difficulty", rect: difficulty },
-    { key: "geodetective", rect: geodetective },
-    { key: "editions", rect: editions },
-  ];
+  const stops: TourStop[] = (
+    [
+      { key: "difficulty", rect: difficulty },
+      { key: "geodetective", rect: geodetective },
+      { key: "editions", rect: editions },
+      // Emit in top-down document order: the builders require visit order to
+      // match physical order, and #165 reordered the cards (editions now sits
+      // above geodetective). Sorting here keeps the tour robust to any future
+      // card rearrangement; checkRequiredStops (grandpa-tour.ts) enforces the
+      // same top-down visit order.
+    ] as TourStop[]
+  ).sort((a, b) => a.rect.top - b.rect.top);
   const interactives: DocRect[] = [];
   main
     .querySelectorAll('button, a[href], input, select, textarea, [role="button"]')
@@ -783,6 +793,39 @@ function measureTour(): TourMeasurements | null {
       y: wr.top + window.scrollY + wr.height / 2,
     },
   };
+}
+
+/**
+ * Sip stops on the simplified straight trail (round 4, fresh tour only).
+ * The straight fallback ships with empty stopDistances/stopSides, so the
+ * walker would sip nowhere — that's why the weave's refusal (e.g. the
+ * editions→geodetective gap is 22px, below MIN_GAP_PX's 32px) silently
+ * killed every sip. Hang one sip stop per measured card — at each card's
+ * vertical center, in document order — onto the straight vertical run.
+ * The run is a vertical line at the right gutter, so each stop's path
+ * distance from the origin is exactly (cardCenterY − origin.y): legs stay
+ * strictly increasing and all well before the pour distance, so the walk
+ * engine's sip/pour/end sequencing is unchanged. All stops read "right"
+ * (walker stands on the right gutter), matching the engine's
+ * simplified-mode facing (−1). Cards whose center lies at/above the run's
+ * start are skipped. The faint trail never calls this — the ghost doesn't
+ * sip.
+ */
+function withStraightTrailStops(
+  geo: TourGeometry,
+  m: TourMeasurements,
+): TourGeometry {
+  if (!geo.simplified) return geo;
+  const distances: number[] = [];
+  const sides: Array<"left" | "right"> = [];
+  for (const stop of m.stops) {
+    const cy = (stop.rect.top + stop.rect.bottom) / 2;
+    const d = cy - geo.origin.y;
+    if (!(d > 0) || d >= geo.pourDistance) continue;
+    distances.push(d);
+    sides.push("right");
+  }
+  return { ...geo, stopDistances: distances, stopSides: sides };
 }
 
 function fontsReady(timeoutMs: number): Promise<boolean> {
@@ -1140,6 +1183,10 @@ export function GrandpaCoffeeRun() {
   );
   const [beat, setBeat] = useState<Beat>("walking");
   const [quip, setQuip] = useState(0);
+  // The pour lands permanently: once the kettle beat ends, the mug stays
+  // filled through the walk-resume and the seated finale (drives the
+  // data-filled rule in the CSS).
+  const [filled, setFilled] = useState(false);
   const [cloud, setCloud] = useState<Cloud>("ask");
   const walkerRef = useRef<HTMLDivElement | null>(null);
   const continueRef = useRef<HTMLButtonElement | null>(null);
@@ -1194,6 +1241,9 @@ export function GrandpaCoffeeRun() {
     const kettleTimer = window.setTimeout(() => {
       setBeat("kettle");
       resumeTimer = window.setTimeout(() => {
+        // The mug stays filled from here on (batched with the beat flip so
+        // the fill never visibly snaps back to empty between beats).
+        setFilled(true);
         // Resume travel; the travel animation's `animationend` flips to seated.
         setBeat("walking");
       }, KETTLE_HOLD_MS);
@@ -1210,15 +1260,19 @@ export function GrandpaCoffeeRun() {
   }, [mode, reducedMotion]);
 
   // While he walks: a trail line, and a cough that is a sound, not a word.
+  // The next quip is tracked in a ref and mirrored to state: calling
+  // playTrail inside the setQuip updater would be a side effect inside a
+  // state updater (double-fires under StrictMode dev).
+  const quipRef = useRef(0);
   useEffect(() => {
     if (reducedMotion || beat !== "walking" || mode === "seated") return;
+    quipRef.current = 0;
+    setQuip(0);
     playTrail(0);
     const id = window.setInterval(() => {
-      setQuip((n) => {
-        const next = (n + 1) % TRAIL_QUIPS.length;
-        playTrail(next);
-        return next;
-      });
+      quipRef.current = (quipRef.current + 1) % TRAIL_QUIPS.length;
+      setQuip(quipRef.current);
+      playTrail(quipRef.current);
     }, 7000);
     return () => window.clearInterval(id);
   }, [beat, mode, reducedMotion]);
@@ -1255,7 +1309,12 @@ export function GrandpaCoffeeRun() {
         }
         if (!geo) {
           try {
+            // Level 1: the simplified straight trail. The weave's refusal
+            // (a tight inter-card gap, an interactive in a gutter) must not
+            // cost the sips — hang sip stops on the straight run in document
+            // order so the walker still stops, looks and drinks at every card.
             geo = buildStraightTrail(m);
+            if (geo) geo = withStraightTrailStops(geo, m);
           } catch {
             geo = null;
           }
@@ -1322,7 +1381,7 @@ export function GrandpaCoffeeRun() {
         timers.push(window.setTimeout(res, ms));
       });
     (async () => {
-      const [fontsOk] = await Promise.all([fontsReady(2500), wait(1600)]);
+      await Promise.all([fontsReady(2500), wait(1600)]);
       if (cancelled) return;
       let m: TourMeasurements | null = null;
       try {
@@ -1333,7 +1392,10 @@ export function GrandpaCoffeeRun() {
       let geo: TourGeometry | null = null;
       if (m) {
         try {
-          geo = fontsOk ? buildTourPath(m) : buildStraightTrail(m);
+          // The weave refuses card orders it can't cross; fall back to the
+          // straight trail so the faint ghost still renders (same ladder
+          // as the remeasure effect below).
+          geo = buildTourPath(m) ?? buildStraightTrail(m);
         } catch {
           geo = null;
         }
@@ -1391,6 +1453,17 @@ export function GrandpaCoffeeRun() {
       return "gate";
     });
   }, []);
+
+  // Hover replays the trail line / ask, throttled: a jittery pointer
+  // re-entering the walker must not restart the clip on every pass.
+  const lastHoverPlayRef = useRef(0);
+  const onWalkerMouseEnter = useCallback(() => {
+    const now = Date.now();
+    if (now - lastHoverPlayRef.current < 1500) return;
+    lastHoverPlayRef.current = now;
+    if (beat === "walking") playTrail(quip);
+    else playAsk();
+  }, [beat, quip]);
 
   const closeCloudGate = useCallback((refocusWalker = true) => {
     setCloud("ask");
@@ -1474,6 +1547,7 @@ export function GrandpaCoffeeRun() {
         className="grandpa-scene"
         data-testid="grandpa-scene"
         data-beat={beat}
+        data-filled={filled ? "true" : undefined}
         data-reduced-motion={reducedMotion ? "true" : "false"}
         data-mode={mode}
         data-tour={mode === "tour" ? "active" : undefined}
@@ -1499,11 +1573,7 @@ export function GrandpaCoffeeRun() {
           className="grandpa-walker"
           data-testid="grandpa-walker"
           onClick={walkerInteractive ? openCloudGate : undefined}
-          onMouseEnter={
-            walkerInteractive
-              ? () => (beat === "walking" ? playTrail(quip) : playAsk())
-              : undefined
-          }
+          onMouseEnter={walkerInteractive ? onWalkerMouseEnter : undefined}
           onKeyDown={walkerInteractive ? onWalkerKeyDown : undefined}
           aria-label={
             walkerInteractive

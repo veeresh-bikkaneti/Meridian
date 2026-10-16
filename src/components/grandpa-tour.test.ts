@@ -12,20 +12,22 @@ function rect(left: number, top: number, right: number, bottom: number): DocRect
   return { left, top, right, bottom, width: right - left, height: bottom - top };
 }
 
-/** Nominal 390px home layout: 3 stops, buttons inset ≥20px in the cards. */
+/** Nominal 390px home layout: 3 stops, buttons inset ≥20px in the cards.
+ *  Card order is the top-down document order on the #165 layout: the
+ *  editions card sits above the GeoDetective card. */
 function nominalMeasurements(): TourMeasurements {
   return {
     viewportWidth: 390,
     docHeight: 1400,
     stops: [
       { key: "difficulty", rect: rect(20, 200, 370, 300) },
-      { key: "geodetective", rect: rect(20, 332, 370, 520) },
-      { key: "editions", rect: rect(20, 560, 370, 800) },
+      { key: "editions", rect: rect(20, 332, 370, 520) },
+      { key: "geodetective", rect: rect(20, 560, 370, 800) },
     ],
     interactives: [
       rect(24, 222, 300, 266), // difficulty seg buttons
-      rect(40, 440, 220, 484), // geodetective CTA
-      rect(40, 700, 330, 744), // edition CTA (right edge W-60)
+      rect(40, 460, 330, 504), // edition CTA (right edge W-60)
+      rect(40, 680, 220, 724), // geodetective CTA
     ],
     originY: 60,
     stripTop: 1000,
@@ -92,14 +94,14 @@ test("buildTourPath rejects out-of-order stops", () => {
 
 test("buildTourPath rejects a gap too small for a crossing", () => {
   const m = nominalMeasurements();
-  // 20px gap between geodetective and editions (< 32px minimum).
-  m.stops[2] = { key: "editions", rect: rect(20, 540, 370, 800) };
+  // 20px gap between editions and geodetective (< 32px minimum).
+  m.stops[2] = { key: "geodetective", rect: rect(20, 540, 370, 800) };
   assert.equal(buildTourPath(m), null);
 });
 
 test("buildTourPath rejects when an interactive crowds the gutter", () => {
   const m = nominalMeasurements();
-  // A button hugging the left edge beside the geodetective stop: the left
+  // A button hugging the left edge beside the editions stop: the left
   // gutter run would pass within 16px of it.
   m.interactives = [
     ...m.interactives,
