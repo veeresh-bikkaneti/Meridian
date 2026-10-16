@@ -361,7 +361,8 @@ body:has(.home-v5) {
   height: 100%;
   display: block;
   cursor: grab;
-  touch-action: none;
+  /* Keep vertical page scroll on touch; horizontal drag still spins. */
+  touch-action: pan-y;
 }
 .home-v5 .hv5-globe-fallback {
   position: relative;

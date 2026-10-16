@@ -14,7 +14,10 @@ import globeFallbackUrl from "@/assets/home-v5/globe-fallback.webp";
  *   all land on the static texture disc — the design is the default,
  *   the live globe is only an enhancement.
  * - Rendering pauses while the hero is off-screen or the tab is hidden.
- * Decorative only: the mount is aria-hidden and carries no information.
+ * Interactive (not decorative): the canvas is labelled and keyboard-focusable
+   (role="img", tabIndex, arrow keys spin it), so the mount must NOT be
+   aria-hidden. The static fallback image stays aria-hidden since it is
+   purely decorative (alt="").
  */
 export function HomeGlobe() {
   const mountRef = useRef<HTMLDivElement | null>(null);
@@ -95,7 +98,7 @@ export function HomeGlobe() {
       />
     );
   }
-  return <div ref={mountRef} className="hv5-globe-mount" aria-hidden="true" />;
+  return <div ref={mountRef} className="hv5-globe-mount" />;
 }
 
 type ThreeModule = typeof import("three");
@@ -290,14 +293,20 @@ function initGlobe(THREE: ThreeModule, mount: HTMLDivElement, onFail: () => void
     }
     raf = requestAnimationFrame(loop);
     const dt = Math.min(clock.getDelta(), 0.05);
-    if (!dragging) yaw += dt * 0.22;
+    // WCAG 2.2.2: no indefinitely self-moving content. Autonomous motion
+    // (rotation, bob, satellite orbit, pin pulse) runs only during the ~6s
+    // entrance window — render time, matching the old settle budget — and
+    // then freezes permanently. Drag and arrow keys stay live at any time;
+    // user-driven motion is not subject to the settle and never restarts it.
+    const animT = Math.min(clock.elapsedTime, 6);
+    if (!dragging && clock.elapsedTime < 6) yaw += dt * 0.22;
     group.rotation.y = yaw;
     group.rotation.x = pitch;
-    group.position.y = Math.sin(clock.elapsedTime * 0.7) * 0.02;
-    const a = clock.elapsedTime * 0.55;
+    group.position.y = Math.sin(animT * 0.7) * 0.02;
+    const a = animT * 0.55;
     sat.position.set(Math.cos(a) * R * 1.22, Math.sin(a) * R * 0.42 + 0.28, Math.sin(a) * R * 1.05);
     pins.forEach((s) => {
-      const ph = (clock.elapsedTime * 1.1 - (s.userData.i as number) * 0.9) % 2.2;
+      const ph = (animT * 1.1 - (s.userData.i as number) * 0.9) % 2.2;
       const sc = 0.34 + Math.max(0, Math.sin((Math.min(ph, 1.4) / 1.4) * Math.PI)) * 0.13;
       s.scale.set(sc, sc, 1);
     });
