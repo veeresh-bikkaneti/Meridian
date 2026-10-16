@@ -498,6 +498,11 @@ body:has(.home-v5) {
 .home-v5 .hv5-mapcard .hv5-label {
   color: #c9d4be;
 }
+/* On the dark card the deep-brown focus ring measures 1.37:1 — under the
+   3:1 WCAG non-text bar. Pale cream ring instead: 6.94:1 on the forest. */
+.home-v5 .hv5-mapcard :focus-visible {
+  outline-color: #efe3bc;
+}
 .home-v5 .hv5-mapcard .hv5-badge {
   background: radial-gradient(circle at 32% 28%, #48654f, #3a5843);
   border-color: #55755c;
