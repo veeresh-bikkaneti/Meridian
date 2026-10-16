@@ -5,7 +5,9 @@ import { GEOGRAPHY_BY_RING, JOURNAL_SETS, RING_ORDER } from "./journal-data.ts";
 import {
   WINDOW_MS,
   confidenceForHref,
+  confidenceText,
   journalSetAt,
+  journalSetByIndex,
   journalSetCount,
   journalSetIndexAt,
   journalSets,
@@ -39,6 +41,26 @@ test("journalSetIndexAt: same instant → same index (any client)", () => {
   assert.equal(journalSetIndexAt(t), journalSetIndexAt(t));
   assert.equal(journalSetAt(t)?.index, journalSetIndexAt(t));
   assert.equal(journalSetAt(t + WINDOW_MS)?.index, (journalSetIndexAt(t) + 1) % 36);
+});
+
+test("journalSetIndexAt: negative times wrap to the cycle's tail", () => {
+  // floor(-1ms / WINDOW) is window -1 → the last set; a whole negative
+  // window lands on the same tail set, two back lands on the one before.
+  assert.equal(journalSetIndexAt(-1), 35);
+  assert.equal(journalSetIndexAt(-WINDOW_MS), 35);
+  assert.equal(journalSetIndexAt(-WINDOW_MS - 1), 34);
+});
+
+test("journalSetByIndex: wraps in both directions", () => {
+  assert.equal(journalSetByIndex(0)?.index, 0);
+  assert.equal(journalSetByIndex(35)?.index, 35);
+  assert.equal(journalSetByIndex(36)?.index, 0);
+  assert.equal(journalSetByIndex(37)?.index, 1);
+  assert.equal(journalSetByIndex(-1)?.index, 35);
+  assert.deepEqual(
+    journalSetByIndex(36)?.notes.map((n) => n.placeId),
+    journalSetByIndex(0)?.notes.map((n) => n.placeId),
+  );
 });
 
 test("nextWindowStart: start of the following window", () => {
@@ -152,6 +174,15 @@ test("confidenceForHref: any other recorded source is cited", () => {
 test("confidenceForHref: basis text matches the spec", () => {
   assert.equal(confidenceForHref("https://x.gov/").basis, "Government or university source");
   assert.equal(confidenceForHref("https://x.com/").basis, "Named source recorded in the catalog");
+});
+
+test("confidenceText: the displayed lines, verbatim for both tiers (spec §5)", () => {
+  const notes = journalSets().flatMap((s) => s.notes);
+  const verified = notes.find((n) => n.placeId === "capitol");
+  const cited = notes.find((n) => n.placeId === "memorial-stadium");
+  assert.ok(verified && cited);
+  assert.equal(confidenceText(verified), "Confidence: Verified — government or university source.");
+  assert.equal(confidenceText(cited), "Confidence: Cited — named source recorded in the catalog.");
 });
 
 // ---------------------------------------------------------------------------
