@@ -1,6 +1,6 @@
 # BRANCH_STATUS — feat/homepage-premium-v5
 
-**Status: PUSHED — PR #158 open (https://github.com/veeresh-bikkaneti/Meridian/pull/158), NOT merged.** The branch was local-only during the review + fix phases per Liz's sequencing ("crew fixes the blockers first, then PR"); she approved the push + PR on the independent Reality Checker's READY verdict (2026-10-16). Merge waits on her review.
+**Status: MERGED — PR #158 squash-merged 2026-10-16 (merge commit e9bf739) on Veeresh's decision**, after Chitti's panel re-review (APPROVE-WITH-NITS, 0 BLOCKs), the VM phone pass, and a live Orca screen-reader session. Branch `feat/homepage-premium-v5` deleted. The branch was local-only during the review + fix phases per Liz's sequencing ("crew fixes the blockers first, then PR"); she approved the push + PR on the independent Reality Checker's READY verdict (2026-10-16).
 
 **Mandate:** the mock v5 redesign was commissioned by Liz (2026-10-15): she supplied the premium reference image, directed "build v5 matching my reference closely (incl. nav)" after mocks v1–v4, and directed the Scrum review of this branch against the spec.
 
