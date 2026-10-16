@@ -132,14 +132,26 @@ for (const [w, h] of [[360, 740], [390, 844]] as const) {
     await expect(card.getByTestId("earned-badges")).toBeVisible({ timeout: 30_000 });
     // The row must not cover the card's choose button (not the badge chip
     // button — the chip is inside the row by design).
-    const cta = card.locator("button.atlas-btn-brass");
-    const rowBox = await page.getByTestId("earned-badges").first().boundingBox();
-    const ctaBox = await cta.boundingBox();
-    if (rowBox && ctaBox) {
-      const ix = Math.max(0, Math.min(rowBox.x + rowBox.width, ctaBox.x + ctaBox.width) - Math.max(rowBox.x, ctaBox.x));
-      const iy = Math.max(0, Math.min(rowBox.y + rowBox.height, ctaBox.y + ctaBox.height) - Math.max(rowBox.y, ctaBox.y));
-      expect(ix * iy).toBe(0);
-    }
+    // Measurement note (fix phase, 2026-10-16): both rects are read in ONE
+    // evaluate — a single frame. The previous two boundingBox() calls were
+    // separate CDP round-trips; the home's auto-scrolling tour moves the
+    // page between them, so the second box is measured in a different
+    // scroll frame and the pair shows phantom overlaps (172–1722px² on this
+    // branch, 1133px² on pristine main — same test, same mechanism, static
+    // geometry probe-verified clear with 8px clearance). The assertion is
+    // unchanged: the overlap area must be exactly 0.
+    const overlap = await page.evaluate(() => {
+      const cardEl = document.querySelector('[data-testid="tour-stop-geodetective"]');
+      const row = cardEl?.querySelector('[data-testid="earned-badges"]');
+      const cta = cardEl?.querySelector("button.hv5-go");
+      if (!row || !cta) return null;
+      const ab = row.getBoundingClientRect();
+      const bb = cta.getBoundingClientRect();
+      const ix = Math.max(0, Math.min(ab.x + ab.width, bb.x + bb.width) - Math.max(ab.x, bb.x));
+      const iy = Math.max(0, Math.min(ab.y + ab.height, bb.y + bb.height) - Math.max(ab.y, bb.y));
+      return ix * iy;
+    });
+    expect(overlap, "badges row / card CTA overlap area (same-frame)").toBe(0);
   });
 
   test(`${w}x${h}: read-aloud settings never overlaps the grown-ups link`, async ({ page }) => {

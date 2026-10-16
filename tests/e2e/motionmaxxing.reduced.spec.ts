@@ -65,7 +65,7 @@ test("M0 collapse: computed transition-duration ≈ 0.01ms, animations none", as
   expect(seconds).toBeLessThan(0.001);
 
   // The home cascade is animation-free under the collapse.
-  const riseAnim = await page.locator(".atlas-banner-row.home-rise").evaluate((el) => {
+  const riseAnim = await page.locator(".hv5-hero.home-rise").evaluate((el) => {
     const cs = getComputedStyle(el);
     return cs.animationName;
   });

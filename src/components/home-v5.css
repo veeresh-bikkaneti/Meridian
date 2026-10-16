@@ -1,0 +1,746 @@
+/* Meridian home v5 — premium redesign layer (mock v5 port).
+   Scoped under .home-v5 so it can never leak into game screens.
+   Type roles from the design plan map onto the repo's self-hosted
+   brand fonts: Fraunces = editorial display serif (plan: Playfair),
+   Karla = UI/body (plan: Inter). No webfont downloads — offline-safe. */
+.home-v5 {
+  --hv5-parchment: #f6f1e3;
+  --hv5-card: #fdfbf3;
+  --hv5-ink: #33302a;
+  --hv5-ink-soft: #5c564a;
+  --hv5-brass: #b8932f;
+  --hv5-brown: #8a6d2f;
+  --hv5-brown-deep: #77591f;
+  --hv5-forest: #33503f;
+  --hv5-forest-deep: #2a4434;
+  --hv5-sage: #8fa382;
+  --hv5-line: #e3d9c3;
+  --hv5-line-warm: #d8cbae;
+  --hv5-ease: cubic-bezier(0.16, 0.8, 0.26, 1);
+  --hv5-shadow-card: 0 1px 2px rgba(94, 76, 32, 0.05), 0 14px 34px -18px rgba(94, 76, 32, 0.28);
+  --hv5-shadow-lift: 0 2px 3px rgba(94, 76, 32, 0.06), 0 24px 44px -18px rgba(94, 76, 32, 0.34);
+  --hv5-display: "Fraunces", Georgia, serif;
+  --hv5-body: "Karla", system-ui, sans-serif;
+  font-family: var(--hv5-body);
+  color: var(--hv5-ink);
+}
+/* The globe deliberately breaks the page's right edge; keep that from
+   ever producing a horizontal scrollbar while the v5 home is mounted. */
+body:has(.home-v5) {
+  overflow-x: clip;
+}
+.home-v5 :focus-visible {
+  outline: 2px solid var(--hv5-brown-deep);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.home-v5 .hv5-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--hv5-ink-soft);
+}
+
+/* ---------- corner sprig ---------- */
+.home-v5 .hv5-sprig {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---------- nav ---------- */
+.home-v5 .hv5-nav {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  padding: 22px 0 18px;
+}
+.home-v5 .hv5-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  min-height: 44px;
+}
+.home-v5 .hv5-brand .hv5-mark {
+  width: 40px;
+  height: 40px;
+  flex: none;
+}
+.home-v5 .hv5-brand .hv5-word {
+  font-family: var(--hv5-display);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+}
+.home-v5 .hv5-nav nav {
+  display: flex;
+  gap: 30px;
+  margin: 0 auto;
+}
+.home-v5 .hv5-nav nav button {
+  font-family: var(--hv5-body);
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 2px;
+  min-height: 44px;
+  color: var(--hv5-ink);
+  background: none;
+  border: none;
+}
+.home-v5 .hv5-nav nav button:hover:not([aria-disabled="true"]) {
+  color: var(--hv5-brown);
+}
+.home-v5 .hv5-nav nav button[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: default;
+}
+.home-v5 .hv5-nav .hv5-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: auto;
+}
+.home-v5 .hv5-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--hv5-body);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition:
+    transform 0.45s var(--hv5-ease),
+    background 0.3s,
+    box-shadow 0.3s;
+}
+.home-v5 .hv5-btn:active {
+  transform: scale(0.965);
+}
+.home-v5 .hv5-btn-brown {
+  background: var(--hv5-brown-deep);
+  color: #fbf7ea;
+  font-size: 12.5px;
+  padding: 14px 24px;
+  box-shadow: 0 10px 22px -10px rgba(119, 89, 31, 0.55);
+}
+.home-v5 .hv5-btn-brown:hover {
+  background: #5f4418;
+}
+.home-v5 .hv5-icon-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--hv5-line-warm);
+  background: rgba(253, 251, 243, 0.7);
+  display: grid;
+  place-items: center;
+  transition:
+    background 0.3s,
+    transform 0.45s var(--hv5-ease);
+}
+.home-v5 .hv5-icon-btn[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* ---------- hero ---------- */
+.home-v5 .hv5-hero-zone {
+  position: relative;
+  margin-top: 6px;
+}
+.home-v5 .hv5-hero {
+  position: relative;
+  background: linear-gradient(160deg, #fdfbf3 55%, #f7efda);
+  border: 1px solid var(--hv5-line);
+  border-radius: 30px;
+  box-shadow: var(--hv5-shadow-card);
+  padding: 44px 56px 52px;
+  overflow: hidden;
+  min-height: 430px;
+}
+.home-v5 .hv5-hero-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.home-v5 .hv5-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: #f1ead3;
+  border: 1px solid var(--hv5-line);
+  border-radius: 999px;
+  padding: 8px 16px 8px 9px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+.home-v5 .hv5-pill .hv5-dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--hv5-card);
+  border: 1px solid var(--hv5-line-warm);
+  display: grid;
+  place-items: center;
+}
+.home-v5 .hv5-h1 {
+  font-family: var(--hv5-display);
+  font-weight: 600;
+  font-size: clamp(40px, 4.4vw, 60px);
+  line-height: 1.13;
+  letter-spacing: 0.005em;
+  margin: 24px 0 18px;
+  max-width: 620px;
+}
+.home-v5 .hv5-sub {
+  font-size: 16.5px;
+  line-height: 1.65;
+  color: var(--hv5-ink-soft);
+  max-width: 500px;
+}
+.home-v5 .hv5-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+.home-v5 .hv5-mountain {
+  position: absolute;
+  right: 21%;
+  bottom: 0;
+  width: 400px;
+  max-width: 38%;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 22%),
+    linear-gradient(to top, #000 78%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 22%),
+    linear-gradient(to top, #000 78%, transparent);
+  mask-composite: intersect;
+  animation: hv5-kenburns 26s ease-in-out infinite alternate;
+}
+@keyframes hv5-kenburns {
+  from {
+    transform: scale(1) translateY(0);
+  }
+  to {
+    transform: scale(1.055) translateY(-5px);
+  }
+}
+.home-v5 .hv5-storyteller {
+  position: relative;
+  flex: none;
+  margin-left: 10px;
+}
+/* Difficulty — the repo's real labeled group + live hint, v5 pill skin. */
+.home-v5 .hv5-diff-cap {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  color: var(--hv5-ink);
+}
+.home-v5 .hv5-diff {
+  display: inline-flex;
+  background: rgba(253, 251, 243, 0.85);
+  border: 1px solid var(--hv5-line-warm);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 2px;
+  margin-top: 10px;
+}
+.home-v5 .hv5-diff button {
+  border: none;
+  background: transparent;
+  font-family: var(--hv5-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  /* Repo tap-target standard (mobile-home-overlap.spec): >=44px. */
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 15px;
+  border-radius: 999px;
+  color: var(--hv5-ink-soft);
+  cursor: pointer;
+  transition: all 0.3s var(--hv5-ease);
+}
+.home-v5 .hv5-diff button[aria-pressed="true"] {
+  background: var(--hv5-brown-deep);
+  color: #fffdf4;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 253, 244, 0.85),
+    0 4px 10px -4px rgba(119, 89, 31, 0.7);
+}
+.home-v5 .hv5-hint {
+  margin-top: 10px;
+  font-size: 13.5px;
+  color: var(--hv5-ink-soft);
+  max-width: 480px;
+}
+
+/* Globe breaks the hero's right edge AND the page edge; shadow on the page. */
+.home-v5 .hv5-globe-zone {
+  position: absolute;
+  top: 50%;
+  right: -150px;
+  transform: translateY(-54%);
+  width: 600px;
+  height: 600px;
+  z-index: 4;
+  pointer-events: none;
+}
+.home-v5 .hv5-globe-zone::before {
+  content: "";
+  position: absolute;
+  inset: 12% 6% 2% 10%;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(88, 70, 28, 0.3),
+    rgba(88, 70, 28, 0.12) 55%,
+    transparent 72%
+  );
+  filter: blur(18px);
+}
+.home-v5 .hv5-globe-mount {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.home-v5 .hv5-globe-mount canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.home-v5 .hv5-globe-fallback {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------- cards ---------- */
+.home-v5 .hv5-grid2 {
+  display: grid;
+  grid-template-columns: 1.02fr 1.32fr 1fr;
+  gap: 22px;
+  margin-top: 22px;
+}
+.home-v5 .hv5-grid3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 22px;
+  margin-top: 22px;
+}
+.home-v5 .hv5-card {
+  background: var(--hv5-card);
+  border: 1px solid var(--hv5-line);
+  border-radius: 24px;
+  box-shadow: var(--hv5-shadow-card);
+  padding: 26px 28px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.6s var(--hv5-ease),
+    box-shadow 0.6s var(--hv5-ease);
+}
+.home-v5 .hv5-card:hover {
+  box-shadow: var(--hv5-shadow-lift);
+}
+.home-v5 .hv5-card .hv5-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 14px;
+}
+.home-v5 .hv5-badge {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, #fffdf6, #f1e9d2);
+  border: 1px solid var(--hv5-line-warm);
+  display: grid;
+  place-items: center;
+  color: var(--hv5-brown);
+  box-shadow: 0 3px 8px -3px rgba(94, 76, 32, 0.35);
+}
+.home-v5 .hv5-card h2,
+.home-v5 .hv5-card h3 {
+  font-family: var(--hv5-display);
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 1.22;
+}
+.home-v5 .hv5-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--hv5-ink-soft);
+  margin-top: 9px;
+}
+.home-v5 .hv5-go {
+  margin-top: auto;
+  padding-top: 18px;
+  font-family: var(--hv5-body);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  /* Repo tap-target standard: >=44px tall hit area. */
+  min-height: 44px;
+  color: var(--hv5-ink);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+.home-v5 .hv5-go:hover:not([aria-disabled="true"]) {
+  color: var(--hv5-brown);
+}
+.home-v5 .hv5-go[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: default;
+}
+.home-v5 .hv5-split {
+  flex-direction: row;
+  gap: 20px;
+}
+.home-v5 .hv5-split .hv5-txt {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+.home-v5 .hv5-split .hv5-pic {
+  flex: none;
+  border-radius: 16px;
+  object-fit: cover;
+}
+.home-v5 .hv5-case .hv5-pic {
+  width: 120px;
+  align-self: stretch;
+}
+/* Case-card text column is narrow beside the photo: keep the title and the
+   eyebrow on one line each (render check: "GeoDetective" clipped at 27px,
+   still grazing the photo at 24px/148px — final: 22px/120px). */
+.home-v5 .hv5-case h2 {
+  font-size: 22px;
+}
+.home-v5 .hv5-dispatch .hv5-pic {
+  width: 238px;
+  align-self: stretch;
+  margin: -26px -28px -26px 0;
+  border-radius: 0;
+}
+.home-v5 .hv5-chip {
+  display: inline-block;
+  font-family: var(--hv5-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--hv5-brown-deep);
+  background: #efe3bc;
+  border: 1px solid #e2d096;
+  border-radius: 6px;
+  padding: 3px 8px;
+  vertical-align: middle;
+  margin-left: 9px;
+  transform: rotate(-2deg);
+}
+.home-v5 .hv5-streak {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--hv5-ink) !important;
+}
+/* The earned-badges row sits directly above the card CTA in the flex
+   column; without a box-level gap the two border boxes abut and
+   fractional layout overlaps them by <1px (home-badges-readaloud:127
+   measured 172.6px² = full width × ~0.66px). Give the row real clearance. */
+.home-v5 .hv5-txt .atlas-badges {
+  margin-bottom: 8px;
+}
+
+/* Dark expeditions map card — hosts the three real edition actions. */
+.home-v5 .hv5-mapcard {
+  background: linear-gradient(165deg, var(--hv5-forest) 60%, var(--hv5-forest-deep));
+  border-color: #274434;
+  color: #f2efe2;
+}
+.home-v5 .hv5-mapcard .hv5-label {
+  color: #c9d4be;
+}
+/* On the dark card the deep-brown focus ring measures 1.37:1 — under the
+   3:1 WCAG non-text bar. Pale cream ring instead: 6.94:1 on the forest. */
+.home-v5 .hv5-mapcard :focus-visible {
+  outline-color: #efe3bc;
+}
+.home-v5 .hv5-mapcard .hv5-badge {
+  background: radial-gradient(circle at 32% 28%, #48654f, #3a5843);
+  border-color: #55755c;
+  color: #e9e4cb;
+  box-shadow: none;
+}
+.home-v5 .hv5-mapcard h2 {
+  font-size: 30px;
+}
+.home-v5 .hv5-mapcard p {
+  color: #d8dcc8;
+}
+.home-v5 .hv5-worldmap {
+  margin: 14px 0 6px;
+  width: 100%;
+}
+.home-v5 .hv5-editions {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 12px;
+}
+.home-v5 .hv5-edition {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 48px;
+  text-align: left;
+  background: rgba(253, 251, 243, 0.08);
+  border: 1px solid rgba(242, 239, 226, 0.35);
+  border-radius: 14px;
+  padding: 10px 14px;
+  color: #f2efe2;
+  font-family: var(--hv5-body);
+  cursor: pointer;
+  /* The repo's frozen press law (ex-.atlas-card .atlas-btn): 200ms
+     pop-over release at rest, 80ms glide into the press. */
+  transition:
+    background 0.3s,
+    transform 200ms var(--ease-pop-over),
+    filter 200ms var(--ease-pop-over);
+}
+.home-v5 .hv5-edition:hover {
+  background: rgba(253, 251, 243, 0.16);
+}
+.home-v5 .hv5-edition:active {
+  transform: scale(0.97);
+  filter: brightness(1.12);
+  transition:
+    transform 80ms var(--ease-glide),
+    filter 80ms var(--ease-glide),
+    background 0.3s;
+}
+.home-v5 .hv5-edition .hv5-idx {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #c9d4be;
+  white-space: nowrap;
+}
+.home-v5 .hv5-edition .hv5-etitle {
+  font-family: var(--hv5-display);
+  font-size: 18px;
+  font-weight: 600;
+}
+.home-v5 .hv5-edition .hv5-eaction {
+  margin-left: auto;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  color: #efe3bc;
+  white-space: nowrap;
+}
+
+/* Bottom-row spot illustrations */
+.home-v5 .hv5-spot .hv5-art {
+  position: absolute;
+  right: 6px;
+  bottom: 2px;
+  width: 172px;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(closest-side, #000 62%, transparent 98%);
+  mask-image: radial-gradient(closest-side, #000 62%, transparent 98%);
+}
+.home-v5 .hv5-spot .hv5-txt {
+  position: relative;
+  z-index: 1;
+  max-width: 62%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.home-v5 .hv5-journal .hv5-art {
+  /* Bottom-right, clear of the title/copy column (render check: the
+     vertically-centred 196px circle overlapped both). */
+  width: 148px;
+  right: 16px;
+  bottom: 16px;
+  border-radius: 50%;
+  -webkit-mask-image: radial-gradient(closest-side, #000 68%, transparent 99%);
+  mask-image: radial-gradient(closest-side, #000 68%, transparent 99%);
+}
+.home-v5 .hv5-journal .hv5-txt {
+  max-width: 56%;
+}
+.home-v5 .hv5-involved .hv5-art {
+  width: 178px;
+  right: 2px;
+}
+.home-v5 .hv5-involved .hv5-txt {
+  max-width: 57%;
+}
+.home-v5 .hv5-involved .hv5-btn {
+  align-self: flex-start;
+  margin-top: 16px;
+}
+
+@media (max-width: 1080px) {
+  .home-v5 .hv5-nav {
+    gap: 20px;
+  }
+  .home-v5 .hv5-nav nav {
+    gap: 17px;
+  }
+  .home-v5 .hv5-nav nav button {
+    font-size: 11px;
+    letter-spacing: 0.09em;
+  }
+  .home-v5 .hv5-brand .hv5-word {
+    font-size: 19px;
+    letter-spacing: 0.18em;
+  }
+  .home-v5 .hv5-actions .hv5-btn-brown {
+    padding: 11px 17px;
+    font-size: 11px;
+  }
+  .home-v5 .hv5-grid2,
+  .home-v5 .hv5-grid3 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .home-v5 .hv5-mapcard {
+    grid-column: span 2;
+  }
+  .home-v5 .hv5-globe-zone {
+    width: 440px;
+    height: 440px;
+    right: -120px;
+  }
+  .home-v5 .hv5-mountain {
+    display: none;
+  }
+}
+@media (max-width: 680px) {
+  .home-v5 .hv5-nav {
+    flex-wrap: wrap;
+  }
+  /* On phones the storyteller host returns to the row's right end: its
+     greeting popover opens leftward from the host and would leave the
+     viewport if the host sat in the left cluster. The globe is in-flow
+     below the hero here, so the right end is free. */
+  .home-v5 .hv5-storyteller {
+    margin-left: auto;
+  }
+  .home-v5 .hv5-nav nav {
+    display: flex;
+    order: 3;
+    flex-basis: 100%;
+    gap: 16px;
+    overflow-x: auto;
+    margin: 2px 0 0;
+    /* Right-edge fade: the visible scroll affordance for the clipped
+       final item (GET INVOLVED) in this scrollable row. */
+    -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
+    mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
+  }
+  .home-v5 .hv5-nav nav button {
+    font-size: 11px;
+    letter-spacing: 0.09em;
+    white-space: nowrap;
+  }
+  .home-v5 .hv5-grid2,
+  .home-v5 .hv5-grid3 {
+    grid-template-columns: 1fr;
+  }
+  .home-v5 .hv5-mapcard {
+    grid-column: auto;
+  }
+  .home-v5 .hv5-hero {
+    padding: 34px 24px 40px;
+    min-height: 0;
+  }
+  .home-v5 .hv5-globe-zone {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 300px;
+    height: 300px;
+    margin: 26px auto -8px;
+  }
+  .home-v5 .hv5-hero-zone {
+    display: flex;
+    flex-direction: column;
+  }
+  .home-v5 .hv5-split {
+    flex-direction: column;
+  }
+  .home-v5 .hv5-case .hv5-pic,
+  .home-v5 .hv5-dispatch .hv5-pic {
+    width: 100%;
+    height: 180px;
+    margin: 0;
+    border-radius: 14px;
+  }
+  .home-v5 .hv5-spot .hv5-txt {
+    max-width: 100%;
+  }
+  .home-v5 .hv5-spot .hv5-art {
+    position: relative;
+    margin: 14px auto 0;
+    transform: none;
+  }
+  .home-v5 .hv5-brand .hv5-word {
+    font-size: 19px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-v5 .hv5-mountain {
+    animation: none;
+  }
+  .home-v5 .hv5-card,
+  .home-v5 .hv5-btn,
+  .home-v5 .hv5-edition {
+    transition: none;
+  }
+  .home-v5 .hv5-edition:active {
+    transform: none;
+    filter: none;
+  }
+}

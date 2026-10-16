@@ -275,7 +275,9 @@ describe("M6 — edition-card press feedback", () => {
     assert.ok(tap, "withCardTap missing");
     assert.match(tap![0], /playCardTap\(\);\s*open\(\);/s, "tap sound then immediate open()");
     assert.ok(!/setTimeout|requestAnimationFrame/.test(tap![0]), "no timer in the click path");
-    assert.ok(src.includes('onClick={onClick}'), "EditionCard wires onClick directly");
+    assert.ok(src.includes('onClick={onState}'), "v5 edition rows wire onClick directly (State)");
+    assert.ok(src.includes('onClick={onCountry}'), "v5 edition rows wire onClick directly (Country)");
+    assert.ok(src.includes('onClick={onGlobe}'), "v5 edition rows wire onClick directly (Globe)");
   });
 });
 

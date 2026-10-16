@@ -110,9 +110,9 @@ test("banner: 56px figure beside the Meridian h1, title never wraps @390px", asy
   expect(Math.round(fBox!.width)).toBe(56);
   expect(Math.round(fBox!.height)).toBe(56);
 
-  // The figure lives in the banner row, right of the branding
-  // (owner 2026-10-09).
-  const row = page.locator(".atlas-banner-row").first();
+  // The figure lives in the hero-top row, right of the branding cluster
+  // (v5: the atlas banner row became the hero card's top row).
+  const row = page.locator(".hv5-hero-top").first();
   const rowBox = await row.boundingBox();
   const heading = page.getByTestId("home-heading");
   const hBox = await heading.boundingBox();
@@ -122,12 +122,21 @@ test("banner: 56px figure beside the Meridian h1, title never wraps @390px", asy
   // Bottom-aligned in the row (sub-pixel rounding tolerated).
   expect(fBox!.y + fBox!.height).toBeLessThanOrEqual(rowBox!.y + rowBox!.height + 2);
 
-  // "MERIDIAN" never stacks: single-line h1 at 390px.
-  const h1Box = await heading.boundingBox();
-  const lineHeight = await heading.evaluate(
+  // The MERIDIAN wordmark never stacks (it lives in the nav brand now),
+  // and the v5 headline stacks BY DESIGN (the approved reference's
+  // multi-line editorial headline replaced the single-line brand h1).
+  const wordmark = page.locator(".hv5-word");
+  const wBox = await wordmark.boundingBox();
+  const wLineHeight = await wordmark.evaluate(
     (el) => parseFloat(getComputedStyle(el).lineHeight) || 0,
   );
-  expect(h1Box!.height).toBeLessThan(lineHeight * 1.5);
+  expect(wBox, "wordmark box").not.toBeNull();
+  expect(wBox!.height).toBeLessThan(wLineHeight * 1.5);
+  const h1Box2 = await heading.boundingBox();
+  const h1LineHeight = await heading.evaluate(
+    (el) => parseFloat(getComputedStyle(el).lineHeight) || 0,
+  );
+  expect(h1Box2!.height).toBeGreaterThan(h1LineHeight * 1.5);
 
   // Comet stays a silent emblem in the eyebrow row — never moved to banner.
   const emblem = page.getByTestId("comet-emblem");
@@ -640,7 +649,6 @@ test("poke startle + yield recede win over idle sway", async ({ page }) => {
   // Part B — yield: fresh page, sway active, then the tour takes the
   // stage; the recede must beat the sway inside its 220ms window.
   await page.reload();
-  const figure2 = page.getByTestId("storyteller-figure");
   await expect(page.getByTestId("storyteller-home-caption")).toBeVisible({
     timeout: 20_000,
   });
@@ -651,17 +659,52 @@ test("poke startle + yield recede win over idle sway", async ({ page }) => {
     })
     .toBe("idle_linger");
 
+  // Measurement note (fix phase, 2026-10-16): the yield is recorded
+  // IN-PAGE by a watcher armed before the dispatch; the poll below reads
+  // the recording. The recede window is 220ms, after which the host
+  // unmounts — CDP polling round-trips on a loaded runner are slower
+  // than the window, so the old poll only ever observed the post-unmount
+  // "" (paired same-environment runs, 2026-10-16: pristine main passes,
+  // this branch missed twice; an in-page probe of this build shows
+  // homer-yield playing for its full ~220ms immediately on the event).
+  // The assertion is unchanged: the animation that replaces the sway
+  // during the yield beat must be homer-yield.
+  await page.evaluate(() => {
+    const watch: { name: string | null } = { name: null };
+    (window as unknown as { __yieldWatch: typeof watch }).__yieldWatch = watch;
+    let last = "";
+    const t0 = performance.now();
+    const tick = () => {
+      // Re-query every frame: the node captured at arm time can be
+      // replaced by a re-render before the event lands (round 1 of this
+      // fix watched a detached node and recorded only the sway — the
+      // in-page probe, re-querying per frame, sees homer-yield at the
+      // first frame after the dispatch and the host gone at ~240ms).
+      const fig = document.querySelector('[data-testid="storyteller-figure"]');
+      if (!fig) {
+        watch.name = last;
+        return;
+      }
+      const name = getComputedStyle(fig).animationName;
+      if (name) last = name;
+      if (name.includes("homer-yield")) {
+        watch.name = name;
+        return;
+      }
+      if (performance.now() - t0 < 3_000) requestAnimationFrame(tick);
+      else watch.name = last;
+    };
+    requestAnimationFrame(tick);
+  });
   await page.evaluate(() => window.dispatchEvent(new Event("meridian:tour-walk-start")));
   await expect
     .poll(
-      async () => {
-        try {
-          return await figure2.evaluate((el) => getComputedStyle(el).animationName);
-        } catch {
-          // The host unmounts after the 220ms yield window — past it.
-          return "";
-        }
-      },
+      async () =>
+        page.evaluate(
+          () =>
+            (window as unknown as { __yieldWatch?: { name: string | null } })
+              .__yieldWatch?.name ?? null,
+        ),
       { timeout: 3_000, intervals: [10, 25, 50, 100] },
     )
     .toContain("homer-yield");

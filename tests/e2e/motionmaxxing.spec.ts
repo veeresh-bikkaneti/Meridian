@@ -69,7 +69,7 @@ test.describe("home cascade + press (1280×800)", () => {
 
     // M7: the cascade completes and the stagger is the uneven retune, not
     // the old uniform 110ms formula. rise(2) → 60ms, rise(6) → 375ms.
-    const bannerRow = page.locator(".atlas-banner-row.home-rise");
+    const bannerRow = page.locator(".hv5-hero.home-rise");
     await expect(bannerRow).toBeVisible();
     await page.waitForTimeout(1500); // let the 0.8s entrances settle
     const delays = await page.evaluate(() => {
@@ -78,14 +78,14 @@ test.describe("home cascade + press (1280×800)", () => {
         return el ? getComputedStyle(el).animationDelay : null;
       };
       return {
-        banner: pick(".atlas-banner-row.home-rise"), // rise(2)
+        banner: pick(".hv5-hero.home-rise"), // rise(2)
         editions: pick('[data-testid="tour-stop-editions"]'), // rise(6)
       };
     });
     expect(delays.banner).toBe("0.06s");
     expect(delays.editions).toBe("0.375s");
     // And every home-rise element ran the frozen 0.8s softLand rise.
-    const rise = await page.locator(".atlas-banner-row.home-rise").evaluate((el) => {
+    const rise = await page.locator(".hv5-hero.home-rise").evaluate((el) => {
       const cs = getComputedStyle(el);
       return {
         name: cs.animationName,
