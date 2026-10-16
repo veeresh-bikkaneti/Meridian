@@ -10,8 +10,12 @@ import {
   loopNamesUrl,
   normalizeLoopName,
   rankLoopSuggestions,
+  unlabeledSpotEntry,
 } from "./evaluate.ts";
 import type { FetchLike } from "./evaluate.ts";
+import { preloadAdmin1Boundaries } from "../reverse-geocode.ts";
+import { submitGuess } from "./engine.ts";
+import { freshLoopPuzzleState } from "./store.ts";
 import type { LoopGuess, LoopNameEntry } from "./types.ts";
 
 function entry(over: Partial<LoopNameEntry> = {}): LoopNameEntry {
@@ -224,4 +228,78 @@ test("rankLoopSuggestions: haystack cache is transparent across repeated scans",
     third.map((r) => r.total),
     first.map((r) => r.total),
   );
+});
+
+test("unlabeledSpotEntry: ocean tap becomes an honest Open Water guess", () => {
+  // Owner directive 2026-10-12: every map tap registers a guess — a tap
+  // on no labeled place is never rejected.
+  const e = unlabeledSpotEntry(-150, 0);
+  assert.equal(e.n, "open water");
+  assert.equal(e.r, "");
+  assert.equal(e.lon, -150);
+  assert.equal(e.lat, 0);
+  assert.equal(e.p, 0);
+  assert.match(e.id, /^tap:-150\.0000,0\.0000$/);
+  assert.equal(displayLoopName(e), "Open Water");
+});
+
+test("unlabeledSpotEntry: remote land tap is named by its country", () => {
+  // Northern Saskatchewan wilderness — no labeled place within tolerance.
+  const e = unlabeledSpotEntry(-106, 56);
+  assert.equal(e.n, "canada");
+  assert.equal(e.lon, -106);
+  assert.equal(e.lat, 56);
+  assert.equal(displayLoopName(e), "Canada");
+});
+
+test("unlabeledSpotEntry: id is stable per spot so repeat taps dedupe", () => {
+  // The duplicate-guess check keys on entry.id: tapping the same
+  // wilderness twice must warn, not burn a second guess.
+  const a = unlabeledSpotEntry(-106.00001, 56.00001);
+  const b = unlabeledSpotEntry(-106.00002, 56.00002);
+  assert.equal(a.id, b.id);
+  const c = unlabeledSpotEntry(-107, 56);
+  assert.notEqual(a.id, c.id);
+});
+
+test("unlabeledSpotEntry: feeds the normal guess pipeline", () => {
+  // The synthetic entry must satisfy the store's guess validation and the
+  // engine's win check (a tap id never equals a GeoNames target id, so an
+  // unlabeled tap can never accidentally win — proven by submitGuess below).
+  const e = unlabeledSpotEntry(135.5, -24.5);
+  assert.ok(typeof e.id === "string");
+  assert.ok(e.id.length > 0);
+  assert.ok(e.id.startsWith("tap:"));
+  const g = guess({ name: displayLoopName(e), placeId: e.id, lon: e.lon, lat: e.lat });
+  assert.equal(g.placeId, e.id);
+  // Same spot twice → duplicate (warns, never burns a second guess).
+  assert.ok(isDuplicateGuess(e.id, [g]));
+  // A different spot → not a duplicate.
+  assert.ok(!isDuplicateGuess("tap:0.0000,0.0000", [g]));
+  // Win-safety: the tap id can never match the GeoNames target id, so even
+  // a tap exactly on the target stays "playing" — never an accidental win.
+  const played = submitGuess(freshLoopPuzzleState(0, 1), g, "geonames:123456");
+  assert.equal(played.status, "playing");
+  assert.equal(played.guesses.length, 1);
+});
+
+test("unlabeledSpotEntry: the name gets finer once admin-1 loads, the id never changes", async () => {
+  // Same tap, two sessions: before the admin-1 boundaries load the spot is
+  // named by its country; after they load it is named by its state. Only the
+  // label differs. The id keys the duplicate check, so it must not move.
+  // Keep this test LAST in the file: the preload is module-global state, and
+  // the country-only tests above assume it has not happened yet.
+  const before = unlabeledSpotEntry(-96.7, 40.8);
+  assert.equal(before.n, "united states of america");
+  assert.equal(before.r, "");
+
+  await preloadAdmin1Boundaries();
+  const after = unlabeledSpotEntry(-96.7, 40.8);
+  assert.equal(after.n, "nebraska");
+  assert.equal(after.r, "United States of America");
+  assert.equal(displayLoopName(after), "Nebraska, United States of America");
+
+  assert.equal(after.id, before.id);
+  assert.equal(after.lon, before.lon);
+  assert.equal(after.lat, before.lat);
 });

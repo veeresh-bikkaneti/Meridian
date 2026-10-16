@@ -385,15 +385,21 @@ test("map tap selects the nearest labeled place; sheet confirm burns the guess",
   expect(await guessCount(page)).toBe(1);
 });
 
-test("ocean tap selects nothing and hints", async ({ page }) => {
+test("ocean tap selects an Open Water guess (owner directive 2026-10-12)", async ({ page }) => {
   await openLoop(page, "218");
 
-  // Mid-Atlantic at low zoom: no labeled place within tap range.
+  // Mid-Atlantic at low zoom: no labeled place within tap range — the tap
+  // still selects, as a region-named guess at the tap coordinates. A wrong
+  // tap is a legitimate guess, never rejected.
   await jumpCamera(page, -30, 30, 3);
   await tapMapCenter(page);
 
-  await expect(page.getByRole("dialog")).toHaveCount(0);
-  await expect(page.getByText(/isn’t a labeled place/)).toBeVisible();
+  await expect(page.getByRole("dialog", { name: "Guess Open Water?" })).toBeVisible({
+    timeout: 15_000,
+  });
+  await expect(page.getByText(/isn’t a labeled place/)).toHaveCount(0);
+  // Dismissing the sheet burns nothing — the confirm is what commits.
+  await page.getByRole("button", { name: "Not this one" }).click();
   expect(await guessCount(page)).toBe(0);
 });
 

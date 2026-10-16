@@ -1,21 +1,76 @@
-# BRANCH_STATUS — chore/tanstack-react-start-1.169.2
+# BRANCH_STATUS — fix/geodetective-unlabeled-tap-guess (2026-10-12)
 
-**Ready for review. Owner merges.** One job: bump `@tanstack/react-start` to `^1.169.2`, with a lockfile that passes `npm ci`. Supersedes dependabot #159 and #160.
+**PUSH OK, DO NOT MERGE** — owner merges.
 
-## Why not merge #159 / #160
-Both branches have an identical tree, and their `build (22.x)` check fails in about 9 seconds at `npm ci`: `Missing: lru-cache@11.5.3 from lock file`. Their lockfile lacks the `node_modules/nitro/node_modules/lru-cache` entry. Nothing in the code is at fault; the lock is out of sync with `package.json`.
+**2026-10-16 (post-merge re-gate):** merged `origin/main` (WS-4 phase 1 #148, #155, #158, #163, #164 and others) with one conflict, in this file; kept this branch's version. `LoopMap.tsx` and `LoopScreen.tsx` auto-merged with main's map-hidden changes. Re-gated on the merged head: `npm ci` OK; tsc clean; `npm test` scripts 778 (769 pass, 9 skipped, 0 fail) and src 1,319 pass; lint-cards GATE PASSED; `build:pages`, `build`, `test:worker` 18/18 and `typecheck:worker` clean; E2E `--workers=1` on a fresh Pages build: `geodetective` 18/18, `geodetective-unlabeled-tap` 2/2, `ws4-geodetective-map-hidden` 3/3. Still pending (unchanged): owner's video green-light, independent panel review, owner's merge decision. The full Playwright suite was not run.
+
+## What this fixes (plain language)
+
+The owner tapped map locations in a GeoDetective challenge and nothing
+happened — no guess registered. His directive: "User selection can be wrong
+but it doesn't mean that you restrict from them selecting a location."
+
+Root cause: `LoopMap.tsx` resolved every tap through the labeled-place
+index. A tap landing on no labeled place (ocean, remote wilderness) was
+REJECTED with "That spot isn't a labeled place" — the guess was never
+registered. The gate was original Detective's Atlas design (2026-10-06),
+not a Place Accessibility overhaul regression.
+
+## The fix
+
+Every map tap now selects — a tap on no labeled place opens the SAME confirm
+bottom sheet with a region-named synthetic guess ("Open Water", "Canada",
+"Yukon, Canada" — the same language the reveal pins already use). Confirming
+burns the guess with distance+direction from the tap coordinates. The
+confirm step is kept, so a mis-tap still never costs one of the five.
+
+- `src/game/loop/evaluate.ts`: new `unlabeledSpotEntry(lon, lat)`.
+- `src/game/loop/LoopMap.tsx`: no-hit branch → `onSelectPlace(synthetic)`.
+- `src/game/loop/LoopScreen.tsx`: dead rejection hint removed.
+- `tests/e2e/geodetective-unlabeled-tap.spec.ts` + project entry (new).
+- `src/game/loop/evaluate.test.ts`: 4 new unit tests.
 
 ## Done
-- `package.json`: `@tanstack/react-start` `^1.168.0` -> `^1.169.2`.
-- `package-lock.json`: regenerated from `main` with `npm install @tanstack/react-start@^1.169.2 --package-lock-only` (a plain `npm install` crashed in npm 10.9.4's rollback path). Resolved: react-start 1.169.2, start-server-core 1.169.43 (was 1.168.58 / 1.169.37). The only difference from the dependabot lock is the missing `nitro/node_modules/lru-cache 11.5.3` entry.
 
-## Gates (this branch, local)
-`npm ci` from a clean `node_modules` OK; `npx tsc --noEmit` clean; `npm test` scripts 778 (769 pass, 9 skipped, 0 fail) and src 1,315 pass; `node scripts/lint-cards.mjs` GATE PASSED; `npm run build` OK with `SHARE_CARD_BUILT=workers` passing (all 12 share tags, workers.dev origin); `npm run build:pages` OK with `SHARE_CARD_BUILT=pages` passing; `npm run test:worker` 18/18; `npm run typecheck:worker` clean. E2E smoke (ws4-tile-fallback and ws4-geodetective-map-hidden, `--workers=1`, fresh Pages build): 6/6. The full Playwright suite was not run.
+- [x] Implement
+- [x] Unit tests: 1223/1223 green (incl. 4 new)
+- [x] tsc clean, lint-cards GATE PASSED
+- [x] New E2E: 2/2 green (+ reduced-motion pass 1/1)
+- [x] Existing geodetective E2E: 18/18 green (1 stale test updated to the
+      new directive behavior)
+- [x] Scrum panel review: APPROVE-WITH-NITS, 0 BLOCKs (6 nits; 1-3 fixed,
+      4 out of scope, 5 noted, 6 covered by reduced-motion recording)
+- [x] Screen recordings (3)
+- [x] Rebase: 0 commits behind main, full suite re-run green post-commit
+- [ ] PR opened (never merged)
 
-## Not verified
-- Full E2E suite (617 tests) and real-device behaviour on the new framework version.
-- The live Workers deploy (SSR on workers.dev with start-server-core 1.169.43). Local server output was exercised by the built-output check only.
-- `Workers Builds: meridian` fails on PR branches by owner decision (ignored); main's deploy is the real check.
+## Plain-language spec checklist
 
-## After merge
-Dependabot should close #159 and #160 on its own once `main` carries the version; if it does not, close them as superseded.
+1. Tap unlabeled ocean → confirm sheet opens ("Guess Open Water?"). ✓ E2E
+2. Confirm → guess burns: "Guess 2 of 5", guess list +1, direction arrow
+   drawn, next clue unlocks. ✓ E2E
+3. Same unlabeled spot twice → "You already guessed…" warning, no second
+   guess burned. ✓ E2E
+4. Labeled-place taps behave exactly as before. ⏳ existing suite running
+5. "That spot isn't a labeled place" rejection is gone. ✓ E2E (asserted absent)
+6. An unlabeled tap can never accidentally win (synthetic id ≠ GeoNames id). ✓ unit
+7. Map aria-label describes the any-tap model. ✓ code
+
+## Non-blocking observation
+
+For extreme misses (~15,000 km) the gold ring polygon wraps the globe and
+renders degenerate — pre-existing for ANY far guess, not introduced here.
+Direction arrow draws correctly. Follow-up candidate, not this PR.
+
+## Review nits (2026-10-16 independent review: APPROVE-WITH-NITS, no blockers)
+- Nit 2 (name varies with admin-1 preload) — FIXED: new unit test; the name gets finer after `preloadAdmin1Boundaries()`, the id never changes.
+- Nit 4 (far-guess distance ring renders degenerate) — FILED as issue #166, not part of this PR.
+- Nit 3 (a tap on the target where no label shows burns a guess it can never win) — accepted: it follows the owner directive of 2026-10-12, and the confirm sheet shows the region name first.
+- Nit 1 (dedupe only catches taps within ~11 m, so two nearby taps with the same region name cost two guesses) — OPEN, owner decision: warning or blocking nearby same-name taps changes gameplay and needs copy.
+
+## Ready to merge? NO
+
+## What is pending?
+
+Scrum review → screen recording → owner's video green-light →
+Chitti/panel independent review → owner's merge decision.

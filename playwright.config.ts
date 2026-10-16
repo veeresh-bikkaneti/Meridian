@@ -185,6 +185,12 @@ export default defineConfig({
       testMatch: /geodetective\.spec\.ts/,
     },
     {
+      // Owner directive 2026-10-12: every map tap registers a guess —
+      // unlabeled taps open the confirm sheet instead of being rejected.
+      name: "geodetective-unlabeled-tap",
+      testMatch: /geodetective-unlabeled-tap\.spec\.ts/,
+    },
+    {
       name: "coldtrail",
       testMatch: /coldtrail\.spec\.ts/,
     },
