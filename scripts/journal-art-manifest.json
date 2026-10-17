@@ -214,5 +214,73 @@
   "carhenge": {
     "image": "images/journal/carhenge.webp",
     "imageAlt": "Storybook drawing of Carhenge, a ring of gray-painted vintage cars standing in a field like an ancient monument."
+  },
+  "kingsley": {
+    "image": "images/journal/kingsley.webp",
+    "imageAlt": "Storybook drawing of Kingsley Dam, the great earthen dam with a road along its crest holding back Lake McConaughy."
+  },
+  "smith-falls": {
+    "image": "images/journal/smith-falls.webp",
+    "imageAlt": "Storybook drawing of Smith Falls, the tall waterfall pouring over a green bluff with a footbridge to its base."
+  },
+  "fort-robinson": {
+    "image": "images/journal/fort-robinson.webp",
+    "imageAlt": "Storybook drawing of Fort Robinson, historic barracks and stables around the parade ground at the foot of the bluffs."
+  },
+  "valentine": {
+    "image": "images/journal/valentine.webp",
+    "imageAlt": "Storybook drawing of Valentine, outfitter cabins with canoes on the river at the edge of the Sandhills."
+  },
+  "joslyn": {
+    "image": "images/journal/joslyn.webp",
+    "imageAlt": "Storybook drawing of the Joslyn Art Museum, the marble Art Deco building with fountains and sculpture gardens."
+  },
+  "golden-spike": {
+    "image": "images/journal/golden-spike.webp",
+    "imageAlt": "Storybook drawing of the Golden Spike Tower, the observation tower looking over the vast Bailey Yard rail tracks."
+  },
+  "indian-cave": {
+    "image": "images/journal/indian-cave.webp",
+    "imageAlt": "Storybook drawing of Indian Cave State Park, petroglyph carvings in the sandstone cave above the Missouri River bluffs."
+  },
+  "ashfall": {
+    "image": "images/journal/ashfall.webp",
+    "imageAlt": "Storybook drawing of Ashfall Fossil Beds, rhino and horse skeletons uncovered under the barn-like shelter."
+  },
+  "toadstool": {
+    "image": "images/journal/toadstool.webp",
+    "imageAlt": "Storybook drawing of Toadstool Geologic Park, mushroom-shaped clay formations along the badlands trail."
+  },
+  "chadron": {
+    "image": "images/journal/chadron.webp",
+    "imageAlt": "Storybook drawing of Chadron, the college town at the edge of pine ridges with tipis and wagons at the fur-trade museum."
+  },
+  "niobrara": {
+    "image": "images/journal/niobrara.webp",
+    "imageAlt": "Storybook drawing of the Niobrara River, the braided scenic river between sandstone bluffs with canoes drifting."
+  },
+  "white-house": {
+    "image": "images/journal/white-house.webp",
+    "imageAlt": "Storybook drawing of the White House, the white limestone mansion with columns, fountain and gardens."
+  },
+  "golden-gate": {
+    "image": "images/journal/golden-gate.webp",
+    "imageAlt": "Storybook drawing of the Golden Gate Bridge, the orange suspension bridge through fog with sailboats below."
+  },
+  "grand-canyon": {
+    "image": "images/journal/grand-canyon.webp",
+    "imageAlt": "Storybook drawing of the Grand Canyon, the vast gorge from the South Rim with rustic lodges and the winding river."
+  },
+  "old-faithful": {
+    "image": "images/journal/old-faithful.webp",
+    "imageAlt": "Storybook drawing of Old Faithful, the geyser erupting before crowds on the boardwalk among steaming pools."
+  },
+  "rushmore": {
+    "image": "images/journal/rushmore.webp",
+    "imageAlt": "Storybook drawing of Mount Rushmore, the four carved faces above the viewing terrace in the Black Hills."
+  },
+  "gateway-arch": {
+    "image": "images/journal/gateway-arch.webp",
+    "imageAlt": "Storybook drawing of the Gateway Arch, the stainless arch over the St. Louis riverfront with lawns and visitors."
   }
 }

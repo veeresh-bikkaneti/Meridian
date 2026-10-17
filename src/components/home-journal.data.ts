@@ -818,7 +818,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/kingsley.webp",
+    "imageAlt": "Storybook drawing of Kingsley Dam, the great earthen dam with a road along its crest holding back Lake McConaughy."
   },
   {
     "id": "smith-falls",
@@ -831,7 +833,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/smith-falls.webp",
+    "imageAlt": "Storybook drawing of Smith Falls, the tall waterfall pouring over a green bluff with a footbridge to its base."
   },
   {
     "id": "fort-robinson",
@@ -844,7 +848,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/fort-robinson.webp",
+    "imageAlt": "Storybook drawing of Fort Robinson, historic barracks and stables around the parade ground at the foot of the bluffs."
   },
   {
     "id": "valentine",
@@ -857,7 +863,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/valentine.webp",
+    "imageAlt": "Storybook drawing of Valentine, outfitter cabins with canoes on the river at the edge of the Sandhills."
   },
   {
     "id": "joslyn",
@@ -870,7 +878,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/joslyn.webp",
+    "imageAlt": "Storybook drawing of the Joslyn Art Museum, the marble Art Deco building with fountains and sculpture gardens."
   },
   {
     "id": "golden-spike",
@@ -883,7 +893,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/golden-spike.webp",
+    "imageAlt": "Storybook drawing of the Golden Spike Tower, the observation tower looking over the vast Bailey Yard rail tracks."
   },
   {
     "id": "indian-cave",
@@ -896,7 +908,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/indian-cave.webp",
+    "imageAlt": "Storybook drawing of Indian Cave State Park, petroglyph carvings in the sandstone cave above the Missouri River bluffs."
   },
   {
     "id": "ashfall",
@@ -909,7 +923,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/ashfall.webp",
+    "imageAlt": "Storybook drawing of Ashfall Fossil Beds, rhino and horse skeletons uncovered under the barn-like shelter."
   },
   {
     "id": "toadstool",
@@ -922,7 +938,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/toadstool.webp",
+    "imageAlt": "Storybook drawing of Toadstool Geologic Park, mushroom-shaped clay formations along the badlands trail."
   },
   {
     "id": "chadron",
@@ -935,7 +953,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/chadron.webp",
+    "imageAlt": "Storybook drawing of Chadron, the college town at the edge of pine ridges with tipis and wagons at the fur-trade museum."
   },
   {
     "id": "niobrara",
@@ -948,7 +968,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/niobrara.webp",
+    "imageAlt": "Storybook drawing of the Niobrara River, the braided scenic river between sandstone bluffs with canoes drifting."
   },
   {
     "id": "white-house",
@@ -961,7 +983,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/white-house.webp",
+    "imageAlt": "Storybook drawing of the White House, the white limestone mansion with columns, fountain and gardens."
   },
   {
     "id": "golden-gate",
@@ -974,7 +998,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/golden-gate.webp",
+    "imageAlt": "Storybook drawing of the Golden Gate Bridge, the orange suspension bridge through fog with sailboats below."
   },
   {
     "id": "grand-canyon",
@@ -987,7 +1013,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/grand-canyon.webp",
+    "imageAlt": "Storybook drawing of the Grand Canyon, the vast gorge from the South Rim with rustic lodges and the winding river."
   },
   {
     "id": "old-faithful",
@@ -1000,7 +1028,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/old-faithful.webp",
+    "imageAlt": "Storybook drawing of Old Faithful, the geyser erupting before crowds on the boardwalk among steaming pools."
   },
   {
     "id": "rushmore",
@@ -1013,7 +1043,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/rushmore.webp",
+    "imageAlt": "Storybook drawing of Mount Rushmore, the four carved faces above the viewing terrace in the Black Hills."
   },
   {
     "id": "gateway-arch",
@@ -1026,7 +1058,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/gateway-arch.webp",
+    "imageAlt": "Storybook drawing of the Gateway Arch, the stainless arch over the St. Louis riverfront with lawns and visitors."
   },
   {
     "id": "french-quarter",

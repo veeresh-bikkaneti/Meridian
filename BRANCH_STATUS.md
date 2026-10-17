@@ -1,3 +1,22 @@
+## Wave-2 art — WAVE 4 complete (2026-10-17)
+
+17/17 wave-4 ids illustrated (backlog ids 52-68), QA-passed (all first try), post-processed (max width 1200, WebP q80, all < 200 KB), merged via scripts/journal-art-manifest.json + generator (byte-stable apart from new art fields; 71 art notes merged).
+
+| id | KB | id | KB |
+|---|---|---|---|
+| kingsley | 156 | smith-falls | 162 |
+| fort-robinson | 172 | valentine | 192 |
+| joslyn | 172 | golden-spike | 170 |
+| indian-cave | 193 | ashfall | 180 |
+| toadstool | 155 | chadron | 166 |
+| niobrara | 181 | white-house | 139 |
+| golden-gate | 75 | grand-canyon | 179 |
+| old-faithful | 155 | rushmore | 178 |
+| gateway-arch | 146 |  |  |
+
+Wave 4 ids (dataset order): kingsley, smith-falls, fort-robinson, valentine, joslyn, golden-spike, indian-cave, ashfall, toadstool, chadron, niobrara, white-house, golden-gate, grand-canyon, old-faithful, rushmore, gateway-arch.
+No notes skipped; no image failed QA twice.
+
 ## Wave-2 art — WAVE 3 complete (2026-10-17)
 
 17/17 wave-3 ids illustrated (backlog ids 35-51), QA-passed (all first try), post-processed (max width 1200, WebP q80, all < 200 KB), merged via scripts/journal-art-manifest.json + generator (byte-stable apart from new art fields; 54 art notes merged). chimney-rock drawn like any other; its citation untouched.
@@ -57,7 +76,7 @@ haymarket (wave 1): pretty and text-free, but reads as a generic European market
 | union-plaza | 187 | |
 
 Wave 1 ids (dataset order): capitol, memorial-stadium, haymarket, pinnacle, 27th-and-o, centennial-mall, sunken-gardens, childrens-zoo, 48th-and-o, holmes-lake, pioneers-park, wilderness-park, antelope-park, oak-lake, wyuka, lincoln-airport, union-plaza.
-No notes skipped; no image failed QA twice. Waves 4-6 NOT started.
+No notes skipped; no image failed QA twice. Waves 5-6 NOT started.
 
 # BRANCH_STATUS — feat/journal-consolidation
 
