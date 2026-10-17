@@ -53,7 +53,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/capitol.webp",
+    "imageAlt": "Storybook drawing of the Nebraska State Capitol, its tall limestone tower and the Sower statue at the top, glowing in golden light above green lawns."
   },
   {
     "id": "memorial-stadium",
@@ -66,7 +68,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/memorial-stadium.webp",
+    "imageAlt": "Storybook drawing of Memorial Stadium, the red-clad football bowl on a tree-lined autumn campus."
   },
   {
     "id": "haymarket",
@@ -79,7 +83,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/haymarket.webp",
+    "imageAlt": "Storybook drawing of the Haymarket district, red-brick warehouses turned shops with a clock tower over a lamplit cobblestone street."
   },
   {
     "id": "pinnacle",
@@ -92,7 +98,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/pinnacle.webp",
+    "imageAlt": "Storybook drawing of Pinnacle Bank Arena, its curved silvery roof beside old brick warehouses at dusk."
   },
   {
     "id": "27th-and-o",
@@ -105,7 +113,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/27th-and-o.webp",
+    "imageAlt": "Storybook drawing of Lincoln's street grid from above, straight numbered avenues crossing lettered streets in neat leafy blocks."
   },
   {
     "id": "centennial-mall",
@@ -118,7 +128,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/centennial-mall.webp",
+    "imageAlt": "Storybook drawing of Centennial Mall, fountains and gardens along the walk leading to the Capitol tower."
   },
   {
     "id": "sunken-gardens",
@@ -131,7 +143,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/sunken-gardens.webp",
+    "imageAlt": "Storybook drawing of the Sunken Gardens, terraced flower beds and a small waterfall below street level, with butterflies."
   },
   {
     "id": "childrens-zoo",
@@ -144,7 +158,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/childrens-zoo.webp",
+    "imageAlt": "Storybook drawing of the Lincoln Children's Zoo, children watching a giraffe and monkeys beside Antelope Creek."
   },
   {
     "id": "48th-and-o",
@@ -157,7 +173,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/48th-and-o.webp",
+    "imageAlt": "Storybook drawing of a leafy suburban street crossing with a corner fountain park, children riding bicycles."
   },
   {
     "id": "holmes-lake",
@@ -170,7 +188,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/holmes-lake.webp",
+    "imageAlt": "Storybook drawing of Holmes Lake, sailboats on the water, a walking trail, golfers on the hills, and the little observatory dome on the shore."
   },
   {
     "id": "pioneers-park",
@@ -183,7 +203,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/pioneers-park.webp",
+    "imageAlt": "Storybook drawing of Pioneers Park, bison and elk grazing in the fenced prairie range by the nature center lodge."
   },
   {
     "id": "wilderness-park",
@@ -196,7 +218,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/wilderness-park.webp",
+    "imageAlt": "Storybook drawing of Wilderness Park, a creek trail through tall cottonwoods with a wooden footbridge and a deer drinking."
   },
   {
     "id": "antelope-park",
@@ -209,7 +233,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/antelope-park.webp",
+    "imageAlt": "Storybook drawing of Antelope Park, the winding creek with willows, footbridges, and children feeding ducks."
   },
   {
     "id": "oak-lake",
@@ -222,7 +248,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/oak-lake.webp",
+    "imageAlt": "Storybook drawing of Oak Lake Park, a grandfather and child fishing from the wooden dock, with rail tracks and a plane overhead."
   },
   {
     "id": "wyuka",
@@ -235,7 +263,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/wyuka.webp",
+    "imageAlt": "Storybook drawing of Wyuka Cemetery, curving drives through mature oaks and roses among old stone monuments."
   },
   {
     "id": "lincoln-airport",
@@ -248,7 +278,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/lincoln-airport.webp",
+    "imageAlt": "Storybook drawing of Lincoln Airport on the prairie, a plane taking off over golden fields by the control tower and Oak Creek."
   },
   {
     "id": "union-plaza",
@@ -261,7 +293,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/union-plaza.webp",
+    "imageAlt": "Storybook drawing of Union Plaza, children playing in the splash pad fountains where the old rail yards ran."
   },
   {
     "id": "gateway",
@@ -274,7 +308,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/gateway.webp",
+    "imageAlt": "Storybook drawing of Gateway Mall, storefronts with striped awnings and a full parking lot under a wide prairie sky."
   },
   {
     "id": "southpointe",
@@ -287,7 +323,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/southpointe.webp",
+    "imageAlt": "Storybook drawing of SouthPointe Pavilions, open-air shop pavilions with plantings where the city meets farmland."
   },
   {
     "id": "havelock",
@@ -300,7 +338,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/havelock.webp",
+    "imageAlt": "Storybook drawing of Havelock, historic brick shopfronts with awnings along railroad tracks and a vintage water tower."
   },
   {
     "id": "college-view",
@@ -313,7 +353,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/college-view.webp",
+    "imageAlt": "Storybook drawing of College View, red-brick college halls with white trim around a green quad and old shade trees."
   },
   {
     "id": "university-place",
@@ -326,7 +368,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/university-place.webp",
+    "imageAlt": "Storybook drawing of University Place, a heritage streetcar passing a college campus and vintage commercial corner."
   },
   {
     "id": "near-south",
@@ -339,7 +383,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/near-south.webp",
+    "imageAlt": "Storybook drawing of Near South, older porch houses along a tree-lined street with a winding creek and park."
   },
   {
     "id": "hyde",
@@ -352,7 +398,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/hyde.webp",
+    "imageAlt": "Storybook drawing of Hyde Observatory, its dome open to a starry sky on the grassy shore of Holmes Lake at dusk."
   },
   {
     "id": "robbers-cave",
@@ -365,7 +413,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/robbers-cave.webp",
+    "imageAlt": "Storybook drawing of Robber’s Cave, dark cave openings hollowed into sandstone bluffs under twisted trees."
   },
   {
     "id": "star-city-shores",
@@ -378,7 +428,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/star-city-shores.webp",
+    "imageAlt": "Storybook drawing of Star City Shores water park, winding slides and sparkling pools full of swimmers on a sunny day."
   },
   {
     "id": "quilt-museum",
@@ -391,7 +443,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/quilt-museum.webp",
+    "imageAlt": "Storybook drawing of the International Quilt Museum, its curved glass galleries hung with colorful patchwork quilts."
   },
   {
     "id": "woods-park",
@@ -404,7 +458,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/woods-park.webp",
+    "imageAlt": "Storybook drawing of Woods Park, tennis players on the courts beneath big shade trees with children playing on the lawn."
   },
   {
     "id": "conestoga",
@@ -417,7 +473,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/conestoga.webp",
+    "imageAlt": "Storybook drawing of Conestoga Lake, fishermen and picnickers along the shore with a rowboat at the boat ramp."
   },
   {
     "id": "branched-oak",
@@ -430,7 +488,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/branched-oak.webp",
+    "imageAlt": "Storybook drawing of Branched Oak Lake, sailboats gliding past a sandy swimming beach with families."
   },
   {
     "id": "mahoney",
@@ -443,7 +503,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/mahoney.webp",
+    "imageAlt": "Storybook drawing of Eugene T. Mahoney State Park, a timber lodge with a pool, trails, and tents above the river valley."
   },
   {
     "id": "sac-museum",
@@ -456,7 +518,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/sac-museum.webp",
+    "imageAlt": "Storybook drawing of the Strategic Air Command & Aerospace Museum, vintage bombers on the grass before the big hangar with a rocket on the hill."
   },
   {
     "id": "seward",
@@ -469,7 +533,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/seward.webp",
+    "imageAlt": "Storybook drawing of Seward, the courthouse square decked in Fourth of July bunting with families picnicking on the lawn."
   },
   {
     "id": "homestead",
@@ -482,7 +548,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/homestead.webp",
+    "imageAlt": "Storybook drawing of Homestead National Historical Park, a log cabin in tallgrass prairie with wildflowers and garden beds."
   },
   {
     "id": "pawnee-lake",
@@ -495,7 +563,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/pawnee-lake.webp",
+    "imageAlt": "Storybook drawing of Pawnee Lake, anglers and campers along the wooded arms of the reservoir on a summer day."
   },
   {
     "id": "platte-river-sp",
@@ -508,7 +578,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/platte-river-sp.webp",
+    "imageAlt": "Storybook drawing of Platte River State Park, cabins and trails on wooded bluffs above the wide river valley."
   },
   {
     "id": "ashland",
@@ -521,7 +593,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/ashland.webp",
+    "imageAlt": "Storybook drawing of Ashland, a small prairie city with church steeples and water towers near the Platte."
   },
   {
     "id": "wahoo",
@@ -534,7 +608,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/wahoo.webp",
+    "imageAlt": "Storybook drawing of Wahoo, the courthouse with its clock tower anchoring a long main street of brick storefronts."
   },
   {
     "id": "wagon-train",
@@ -547,7 +623,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/wagon-train.webp",
+    "imageAlt": "Storybook drawing of Wagon Train Lake, boats on calm water with picnic tables and a trail along the shore."
   },
   {
     "id": "spring-creek",
@@ -560,7 +638,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/spring-creek.webp",
+    "imageAlt": "Storybook drawing of Spring Creek Prairie, hikers on a trail through native grasses, wildflowers, butterflies and birds."
   },
   {
     "id": "arbor-lodge",
@@ -573,7 +653,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/arbor-lodge.webp",
+    "imageAlt": "Storybook drawing of Arbor Lodge, the grand mansion with its porches amid an arboretum of many trees above the river bluffs."
   },
   {
     "id": "beatrice",
@@ -586,7 +668,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/beatrice.webp",
+    "imageAlt": "Storybook drawing of Beatrice, the courthouse square and downtown storefronts beside the Big Blue River."
   },
   {
     "id": "stagecoach",
@@ -599,7 +683,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/stagecoach.webp",
+    "imageAlt": "Storybook drawing of Stagecoach Lake, a lone fisherman on a dock at evening on the quiet shore."
   },
   {
     "id": "grand-island",
@@ -612,7 +698,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/grand-island.webp",
+    "imageAlt": "Storybook drawing of Grand Island, downtown storefronts and the domed county courthouse in the Platte valley."
   },
   {
     "id": "henry-doorly",
@@ -625,7 +713,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/henry-doorly.webp",
+    "imageAlt": "Storybook drawing of the Henry Doorly Zoo, the giant desert dome above gardens with elephants, giraffes and families."
   },
   {
     "id": "old-market",
@@ -638,7 +728,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/old-market.webp",
+    "imageAlt": "Storybook drawing of Omaha’s Old Market, brick warehouses with awnings and string lights over cobblestone cafe streets."
   },
   {
     "id": "chimney-rock",
@@ -651,7 +743,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/chimney-rock.webp",
+    "imageAlt": "Storybook drawing of Chimney Rock, the tall spire above the valley with a covered wagon on the trail toward it."
   },
   {
     "id": "scotts-bluff",
@@ -664,7 +758,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/scotts-bluff.webp",
+    "imageAlt": "Storybook drawing of Scotts Bluff, covered wagons at the foot of the massive bluff with a road climbing to the summit."
   },
   {
     "id": "archway",
@@ -677,7 +773,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/archway.webp",
+    "imageAlt": "Storybook drawing of The Archway, the covered-bridge museum spanning the highway with wagon and trail exhibits inside."
   },
   {
     "id": "durham",
@@ -690,7 +788,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/durham.webp",
+    "imageAlt": "Storybook drawing of the Durham Museum, the Art Deco great hall with chandeliers, exhibit cases and vintage trains beyond the tall windows."
   },
   {
     "id": "carhenge",
@@ -703,7 +803,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/carhenge.webp",
+    "imageAlt": "Storybook drawing of Carhenge, a ring of gray-painted vintage cars standing in a field like an ancient monument."
   },
   {
     "id": "kingsley",
@@ -716,7 +818,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/kingsley.webp",
+    "imageAlt": "Storybook drawing of Kingsley Dam, the great earthen dam with a road along its crest holding back Lake McConaughy."
   },
   {
     "id": "smith-falls",
@@ -729,7 +833,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/smith-falls.webp",
+    "imageAlt": "Storybook drawing of Smith Falls, the tall waterfall pouring over a green bluff with a footbridge to its base."
   },
   {
     "id": "fort-robinson",
@@ -742,7 +848,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/fort-robinson.webp",
+    "imageAlt": "Storybook drawing of Fort Robinson, historic barracks and stables around the parade ground at the foot of the bluffs."
   },
   {
     "id": "valentine",
@@ -755,7 +863,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/valentine.webp",
+    "imageAlt": "Storybook drawing of Valentine, outfitter cabins with canoes on the river at the edge of the Sandhills."
   },
   {
     "id": "joslyn",
@@ -768,7 +878,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/joslyn.webp",
+    "imageAlt": "Storybook drawing of the Joslyn Art Museum, the marble Art Deco building with fountains and sculpture gardens."
   },
   {
     "id": "golden-spike",
@@ -781,7 +893,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/golden-spike.webp",
+    "imageAlt": "Storybook drawing of the Golden Spike Tower, the observation tower looking over the vast Bailey Yard rail tracks."
   },
   {
     "id": "indian-cave",
@@ -794,7 +908,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/indian-cave.webp",
+    "imageAlt": "Storybook drawing of Indian Cave State Park, petroglyph carvings in the sandstone cave above the Missouri River bluffs."
   },
   {
     "id": "ashfall",
@@ -807,7 +923,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/ashfall.webp",
+    "imageAlt": "Storybook drawing of Ashfall Fossil Beds, rhino and horse skeletons uncovered under the barn-like shelter."
   },
   {
     "id": "toadstool",
@@ -820,7 +938,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/toadstool.webp",
+    "imageAlt": "Storybook drawing of Toadstool Geologic Park, mushroom-shaped clay formations along the badlands trail."
   },
   {
     "id": "chadron",
@@ -833,7 +953,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/chadron.webp",
+    "imageAlt": "Storybook drawing of Chadron, the college town at the edge of pine ridges with tipis and wagons at the fur-trade museum."
   },
   {
     "id": "niobrara",
@@ -846,7 +968,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/niobrara.webp",
+    "imageAlt": "Storybook drawing of the Niobrara River, the braided scenic river between sandstone bluffs with canoes drifting."
   },
   {
     "id": "white-house",
@@ -859,7 +983,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/white-house.webp",
+    "imageAlt": "Storybook drawing of the White House, the white limestone mansion with columns, fountain and gardens."
   },
   {
     "id": "golden-gate",
@@ -872,7 +998,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/golden-gate.webp",
+    "imageAlt": "Storybook drawing of the Golden Gate Bridge, the orange suspension bridge through fog with sailboats below."
   },
   {
     "id": "grand-canyon",
@@ -885,7 +1013,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/grand-canyon.webp",
+    "imageAlt": "Storybook drawing of the Grand Canyon, the vast gorge from the South Rim with rustic lodges and the winding river."
   },
   {
     "id": "old-faithful",
@@ -898,7 +1028,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/old-faithful.webp",
+    "imageAlt": "Storybook drawing of Old Faithful, the geyser erupting before crowds on the boardwalk among steaming pools."
   },
   {
     "id": "rushmore",
@@ -911,7 +1043,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/rushmore.webp",
+    "imageAlt": "Storybook drawing of Mount Rushmore, the four carved faces above the viewing terrace in the Black Hills."
   },
   {
     "id": "gateway-arch",
@@ -924,7 +1058,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/gateway-arch.webp",
+    "imageAlt": "Storybook drawing of the Gateway Arch, the stainless arch over the St. Louis riverfront with lawns and visitors."
   },
   {
     "id": "french-quarter",
@@ -937,7 +1073,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/french-quarter.webp",
+    "imageAlt": "Storybook drawing of Jackson Square, the lively French Quarter plaza facing St. Louis Cathedral with street musicians and a riverboat on the river."
   },
   {
     "id": "space-needle",
@@ -950,7 +1088,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/space-needle.webp",
+    "imageAlt": "Storybook drawing of the Space Needle, the saucer-topped tower over the Seattle Center park with visitors on the observation deck."
   },
   {
     "id": "niagara",
@@ -963,7 +1103,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/niagara.webp",
+    "imageAlt": "Storybook drawing of Niagara Falls, the American Falls pouring over the cliff with the curved Horseshoe Falls beyond and visitors in rain ponchos."
   },
   {
     "id": "alamo",
@@ -976,7 +1118,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/alamo.webp",
+    "imageAlt": "Storybook drawing of the Alamo, the old mission chapel with its famous facade and bell arch in a garden plaza."
   },
   {
     "id": "willis",
@@ -989,7 +1133,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/willis.webp",
+    "imageAlt": "Storybook drawing of Willis Tower, the black steel tower over Chicago with the Skydeck looking out over the lake."
   },
   {
     "id": "crater-lake",
@@ -1002,7 +1148,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/crater-lake.webp",
+    "imageAlt": "Storybook drawing of Crater Lake, the deep blue lake in the collapsed volcano with forested Wizard Island in the caldera."
   },
   {
     "id": "monument-valley",
@@ -1015,7 +1163,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/monument-valley.webp",
+    "imageAlt": "Storybook drawing of Monument Valley, the great sandstone buttes seen from the visitor-center overlook."
   },
   {
     "id": "pike-place",
@@ -1028,7 +1178,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/pike-place.webp",
+    "imageAlt": "Storybook drawing of Pike Place Market, the main arcade with colorful stalls of flowers, produce and fish above the waterfront."
   },
   {
     "id": "cadillac",
@@ -1041,7 +1193,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/cadillac.webp",
+    "imageAlt": "Storybook drawing of Cadillac Mountain, the granite summit where visitors watch the first sunrise over the Atlantic."
   },
   {
     "id": "denali",
@@ -1054,7 +1208,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/denali.webp",
+    "imageAlt": "Storybook drawing of Denali, the massive snow-covered summit rising from the Alaska Range with glaciers."
   },
   {
     "id": "everglades",
@@ -1067,7 +1223,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/everglades.webp",
+    "imageAlt": "Storybook drawing of the Everglades, the winding boardwalk into the sawgrass River of Grass with an alligator and wading birds."
   },
   {
     "id": "death-valley",
@@ -1080,7 +1238,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/death-valley.webp",
+    "imageAlt": "Storybook drawing of Badwater Basin, the vast salt flat below sea level with cracked polygons and heat waves."
   },
   {
     "id": "hoover",
@@ -1093,7 +1253,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/hoover.webp",
+    "imageAlt": "Storybook drawing of Hoover Dam, the concrete arch dam with a highway across its crest holding back Lake Mead."
   },
   {
     "id": "eiffel",
@@ -1106,7 +1268,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/eiffel.webp",
+    "imageAlt": "Storybook drawing of the Eiffel Tower, the iron lattice tower over Paris with gardens, fountains and picnickers at its feet."
   },
   {
     "id": "colosseum",
@@ -1119,7 +1283,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/colosseum.webp",
+    "imageAlt": "Storybook drawing of the Colosseum, the ancient arched amphitheater in Rome with the Forum ruins beyond."
   },
   {
     "id": "liberty",
@@ -1132,7 +1298,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/liberty.webp",
+    "imageAlt": "Storybook drawing of the Statue of Liberty, the copper figure with torch raised on her harbor island with ferries around."
   },
   {
     "id": "taj",
@@ -1190,7 +1358,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/sagrada.webp",
+    "imageAlt": "Storybook drawing of Sagrada Familia, Gaudi's soaring unfinished basilica with cranes still at work on its stone spires."
   },
   {
     "id": "giza",
@@ -1203,7 +1373,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/giza.webp",
+    "imageAlt": "Storybook drawing of the Great Pyramid of Giza, the largest pyramid for the pharaoh Khufu with the Sphinx, camels and visitors in the desert."
   },
   {
     "id": "cn-tower",
@@ -1216,7 +1388,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/cn-tower.webp",
+    "imageAlt": "Storybook drawing of the CN Tower, the tall communications tower with its observation pod over the Toronto skyline and lake."
   },
   {
     "id": "machu",
@@ -1229,7 +1403,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/machu.webp",
+    "imageAlt": "Storybook drawing of Machu Picchu, the Inca estate of stone terraces and houses on a ridge above the Urubamba River with llamas."
   },
   {
     "id": "fuji",
@@ -1242,7 +1418,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/fuji.webp",
+    "imageAlt": "Storybook drawing of Mount Fuji, the snow-capped volcano cone with cherry blossoms in the foreground."
   },
   {
     "id": "chichen",
@@ -1255,7 +1433,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/chichen.webp",
+    "imageAlt": "Storybook drawing of Chichen Itza, the El Castillo stepped pyramid with the serpent of light on its stair at equinox."
   },
   {
     "id": "stonehenge",
@@ -1268,7 +1448,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/stonehenge.webp",
+    "imageAlt": "Storybook drawing of Stonehenge, the ancient stone circle on Salisbury Plain with sheep grazing at sunrise."
   },
   {
     "id": "neuschwanstein",
@@ -1281,7 +1463,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/neuschwanstein.webp",
+    "imageAlt": "Storybook drawing of Neuschwanstein, the pale fairytale towers above a forest gorge in the Bavarian Alps with swans below."
   },
   {
     "id": "angkor",
@@ -1294,7 +1478,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/angkor.webp",
+    "imageAlt": "Storybook drawing of Angkor Wat, the great temple with its five towers reflected in the lotus pond at sunrise."
   },
   {
     "id": "petra",
@@ -1307,7 +1493,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/petra.webp",
+    "imageAlt": "Storybook drawing of Petra, the Treasury facade carved from the rose-red cliff at the end of the narrow canyon."
   },
   {
     "id": "table-mountain",
@@ -1320,7 +1508,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/table-mountain.webp",
+    "imageAlt": "Storybook drawing of Table Mountain, the flat-topped mountain over Cape Town with the cableway to the plateau."
   },
   {
     "id": "uluru",
@@ -1333,7 +1523,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/uluru.webp",
+    "imageAlt": "Storybook drawing of Uluru, the great red sandstone monolith glowing at sunset with visitors viewing from afar."
   },
   {
     "id": "victoria-falls",
@@ -1346,7 +1538,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/victoria-falls.webp",
+    "imageAlt": "Storybook drawing of Victoria Falls, the Zambezi dropping into the gorge with a huge curtain of spray and rainbows."
   },
   {
     "id": "fushimi",
@@ -1359,7 +1553,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/fushimi.webp",
+    "imageAlt": "Storybook drawing of Fushimi Inari, the tunnel of vermilion gates climbing the mountain with the main shrine at its base."
   },
   {
     "id": "iguazu",
@@ -1372,7 +1568,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/iguazu.webp",
+    "imageAlt": "Storybook drawing of Iguazu Falls, the chain of waterfalls with the Devil's Throat horseshoe at its heart."
   },
   {
     "id": "tongariki",
@@ -1385,7 +1583,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/tongariki.webp",
+    "imageAlt": "Storybook drawing of Ahu Tongariki, the fifteen moai standing in a row on their stone platform facing the sea."
   },
   {
     "id": "potala",
@@ -1398,7 +1598,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/potala.webp",
+    "imageAlt": "Storybook drawing of the Potala Palace, the great palace rising on its sacred hill above Lhasa with pilgrims below."
   },
   {
     "id": "timbuktu",
@@ -1411,7 +1613,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/timbuktu.webp",
+    "imageAlt": "Storybook drawing of Timbuktu, the ancient mud-brick mosques and manuscript library with a camel caravan in the desert."
   },
   {
     "id": "galapagos",
@@ -1424,7 +1628,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/galapagos.webp",
+    "imageAlt": "Storybook drawing of Puerto Ayora, the Galapagos harbor town with boats, giant tortoises and marine iguanas."
   }
 ];
 

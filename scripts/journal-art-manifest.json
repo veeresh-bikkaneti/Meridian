@@ -1,4 +1,340 @@
 {
+  "capitol": {
+    "image": "images/journal/capitol.webp",
+    "imageAlt": "Storybook drawing of the Nebraska State Capitol, its tall limestone tower and the Sower statue at the top, glowing in golden light above green lawns."
+  },
+  "memorial-stadium": {
+    "image": "images/journal/memorial-stadium.webp",
+    "imageAlt": "Storybook drawing of Memorial Stadium, the red-clad football bowl on a tree-lined autumn campus."
+  },
+  "haymarket": {
+    "image": "images/journal/haymarket.webp",
+    "imageAlt": "Storybook drawing of the Haymarket district, red-brick warehouses turned shops with a clock tower over a lamplit cobblestone street."
+  },
+  "pinnacle": {
+    "image": "images/journal/pinnacle.webp",
+    "imageAlt": "Storybook drawing of Pinnacle Bank Arena, its curved silvery roof beside old brick warehouses at dusk."
+  },
+  "27th-and-o": {
+    "image": "images/journal/27th-and-o.webp",
+    "imageAlt": "Storybook drawing of Lincoln's street grid from above, straight numbered avenues crossing lettered streets in neat leafy blocks."
+  },
+  "centennial-mall": {
+    "image": "images/journal/centennial-mall.webp",
+    "imageAlt": "Storybook drawing of Centennial Mall, fountains and gardens along the walk leading to the Capitol tower."
+  },
+  "sunken-gardens": {
+    "image": "images/journal/sunken-gardens.webp",
+    "imageAlt": "Storybook drawing of the Sunken Gardens, terraced flower beds and a small waterfall below street level, with butterflies."
+  },
+  "childrens-zoo": {
+    "image": "images/journal/childrens-zoo.webp",
+    "imageAlt": "Storybook drawing of the Lincoln Children's Zoo, children watching a giraffe and monkeys beside Antelope Creek."
+  },
+  "48th-and-o": {
+    "image": "images/journal/48th-and-o.webp",
+    "imageAlt": "Storybook drawing of a leafy suburban street crossing with a corner fountain park, children riding bicycles."
+  },
+  "holmes-lake": {
+    "image": "images/journal/holmes-lake.webp",
+    "imageAlt": "Storybook drawing of Holmes Lake, sailboats on the water, a walking trail, golfers on the hills, and the little observatory dome on the shore."
+  },
+  "pioneers-park": {
+    "image": "images/journal/pioneers-park.webp",
+    "imageAlt": "Storybook drawing of Pioneers Park, bison and elk grazing in the fenced prairie range by the nature center lodge."
+  },
+  "wilderness-park": {
+    "image": "images/journal/wilderness-park.webp",
+    "imageAlt": "Storybook drawing of Wilderness Park, a creek trail through tall cottonwoods with a wooden footbridge and a deer drinking."
+  },
+  "antelope-park": {
+    "image": "images/journal/antelope-park.webp",
+    "imageAlt": "Storybook drawing of Antelope Park, the winding creek with willows, footbridges, and children feeding ducks."
+  },
+  "oak-lake": {
+    "image": "images/journal/oak-lake.webp",
+    "imageAlt": "Storybook drawing of Oak Lake Park, a grandfather and child fishing from the wooden dock, with rail tracks and a plane overhead."
+  },
+  "wyuka": {
+    "image": "images/journal/wyuka.webp",
+    "imageAlt": "Storybook drawing of Wyuka Cemetery, curving drives through mature oaks and roses among old stone monuments."
+  },
+  "lincoln-airport": {
+    "image": "images/journal/lincoln-airport.webp",
+    "imageAlt": "Storybook drawing of Lincoln Airport on the prairie, a plane taking off over golden fields by the control tower and Oak Creek."
+  },
+  "union-plaza": {
+    "image": "images/journal/union-plaza.webp",
+    "imageAlt": "Storybook drawing of Union Plaza, children playing in the splash pad fountains where the old rail yards ran."
+  },
+  "gateway": {
+    "image": "images/journal/gateway.webp",
+    "imageAlt": "Storybook drawing of Gateway Mall, storefronts with striped awnings and a full parking lot under a wide prairie sky."
+  },
+  "southpointe": {
+    "image": "images/journal/southpointe.webp",
+    "imageAlt": "Storybook drawing of SouthPointe Pavilions, open-air shop pavilions with plantings where the city meets farmland."
+  },
+  "havelock": {
+    "image": "images/journal/havelock.webp",
+    "imageAlt": "Storybook drawing of Havelock, historic brick shopfronts with awnings along railroad tracks and a vintage water tower."
+  },
+  "college-view": {
+    "image": "images/journal/college-view.webp",
+    "imageAlt": "Storybook drawing of College View, red-brick college halls with white trim around a green quad and old shade trees."
+  },
+  "university-place": {
+    "image": "images/journal/university-place.webp",
+    "imageAlt": "Storybook drawing of University Place, a heritage streetcar passing a college campus and vintage commercial corner."
+  },
+  "near-south": {
+    "image": "images/journal/near-south.webp",
+    "imageAlt": "Storybook drawing of Near South, older porch houses along a tree-lined street with a winding creek and park."
+  },
+  "hyde": {
+    "image": "images/journal/hyde.webp",
+    "imageAlt": "Storybook drawing of Hyde Observatory, its dome open to a starry sky on the grassy shore of Holmes Lake at dusk."
+  },
+  "robbers-cave": {
+    "image": "images/journal/robbers-cave.webp",
+    "imageAlt": "Storybook drawing of Robber’s Cave, dark cave openings hollowed into sandstone bluffs under twisted trees."
+  },
+  "star-city-shores": {
+    "image": "images/journal/star-city-shores.webp",
+    "imageAlt": "Storybook drawing of Star City Shores water park, winding slides and sparkling pools full of swimmers on a sunny day."
+  },
+  "quilt-museum": {
+    "image": "images/journal/quilt-museum.webp",
+    "imageAlt": "Storybook drawing of the International Quilt Museum, its curved glass galleries hung with colorful patchwork quilts."
+  },
+  "woods-park": {
+    "image": "images/journal/woods-park.webp",
+    "imageAlt": "Storybook drawing of Woods Park, tennis players on the courts beneath big shade trees with children playing on the lawn."
+  },
+  "conestoga": {
+    "image": "images/journal/conestoga.webp",
+    "imageAlt": "Storybook drawing of Conestoga Lake, fishermen and picnickers along the shore with a rowboat at the boat ramp."
+  },
+  "branched-oak": {
+    "image": "images/journal/branched-oak.webp",
+    "imageAlt": "Storybook drawing of Branched Oak Lake, sailboats gliding past a sandy swimming beach with families."
+  },
+  "mahoney": {
+    "image": "images/journal/mahoney.webp",
+    "imageAlt": "Storybook drawing of Eugene T. Mahoney State Park, a timber lodge with a pool, trails, and tents above the river valley."
+  },
+  "sac-museum": {
+    "image": "images/journal/sac-museum.webp",
+    "imageAlt": "Storybook drawing of the Strategic Air Command & Aerospace Museum, vintage bombers on the grass before the big hangar with a rocket on the hill."
+  },
+  "seward": {
+    "image": "images/journal/seward.webp",
+    "imageAlt": "Storybook drawing of Seward, the courthouse square decked in Fourth of July bunting with families picnicking on the lawn."
+  },
+  "homestead": {
+    "image": "images/journal/homestead.webp",
+    "imageAlt": "Storybook drawing of Homestead National Historical Park, a log cabin in tallgrass prairie with wildflowers and garden beds."
+  },
+  "pawnee-lake": {
+    "image": "images/journal/pawnee-lake.webp",
+    "imageAlt": "Storybook drawing of Pawnee Lake, anglers and campers along the wooded arms of the reservoir on a summer day."
+  },
+  "platte-river-sp": {
+    "image": "images/journal/platte-river-sp.webp",
+    "imageAlt": "Storybook drawing of Platte River State Park, cabins and trails on wooded bluffs above the wide river valley."
+  },
+  "ashland": {
+    "image": "images/journal/ashland.webp",
+    "imageAlt": "Storybook drawing of Ashland, a small prairie city with church steeples and water towers near the Platte."
+  },
+  "wahoo": {
+    "image": "images/journal/wahoo.webp",
+    "imageAlt": "Storybook drawing of Wahoo, the courthouse with its clock tower anchoring a long main street of brick storefronts."
+  },
+  "wagon-train": {
+    "image": "images/journal/wagon-train.webp",
+    "imageAlt": "Storybook drawing of Wagon Train Lake, boats on calm water with picnic tables and a trail along the shore."
+  },
+  "spring-creek": {
+    "image": "images/journal/spring-creek.webp",
+    "imageAlt": "Storybook drawing of Spring Creek Prairie, hikers on a trail through native grasses, wildflowers, butterflies and birds."
+  },
+  "arbor-lodge": {
+    "image": "images/journal/arbor-lodge.webp",
+    "imageAlt": "Storybook drawing of Arbor Lodge, the grand mansion with its porches amid an arboretum of many trees above the river bluffs."
+  },
+  "beatrice": {
+    "image": "images/journal/beatrice.webp",
+    "imageAlt": "Storybook drawing of Beatrice, the courthouse square and downtown storefronts beside the Big Blue River."
+  },
+  "stagecoach": {
+    "image": "images/journal/stagecoach.webp",
+    "imageAlt": "Storybook drawing of Stagecoach Lake, a lone fisherman on a dock at evening on the quiet shore."
+  },
+  "grand-island": {
+    "image": "images/journal/grand-island.webp",
+    "imageAlt": "Storybook drawing of Grand Island, downtown storefronts and the domed county courthouse in the Platte valley."
+  },
+  "henry-doorly": {
+    "image": "images/journal/henry-doorly.webp",
+    "imageAlt": "Storybook drawing of the Henry Doorly Zoo, the giant desert dome above gardens with elephants, giraffes and families."
+  },
+  "old-market": {
+    "image": "images/journal/old-market.webp",
+    "imageAlt": "Storybook drawing of Omaha’s Old Market, brick warehouses with awnings and string lights over cobblestone cafe streets."
+  },
+  "chimney-rock": {
+    "image": "images/journal/chimney-rock.webp",
+    "imageAlt": "Storybook drawing of Chimney Rock, the tall spire above the valley with a covered wagon on the trail toward it."
+  },
+  "scotts-bluff": {
+    "image": "images/journal/scotts-bluff.webp",
+    "imageAlt": "Storybook drawing of Scotts Bluff, covered wagons at the foot of the massive bluff with a road climbing to the summit."
+  },
+  "archway": {
+    "image": "images/journal/archway.webp",
+    "imageAlt": "Storybook drawing of The Archway, the covered-bridge museum spanning the highway with wagon and trail exhibits inside."
+  },
+  "durham": {
+    "image": "images/journal/durham.webp",
+    "imageAlt": "Storybook drawing of the Durham Museum, the Art Deco great hall with chandeliers, exhibit cases and vintage trains beyond the tall windows."
+  },
+  "carhenge": {
+    "image": "images/journal/carhenge.webp",
+    "imageAlt": "Storybook drawing of Carhenge, a ring of gray-painted vintage cars standing in a field like an ancient monument."
+  },
+  "kingsley": {
+    "image": "images/journal/kingsley.webp",
+    "imageAlt": "Storybook drawing of Kingsley Dam, the great earthen dam with a road along its crest holding back Lake McConaughy."
+  },
+  "smith-falls": {
+    "image": "images/journal/smith-falls.webp",
+    "imageAlt": "Storybook drawing of Smith Falls, the tall waterfall pouring over a green bluff with a footbridge to its base."
+  },
+  "fort-robinson": {
+    "image": "images/journal/fort-robinson.webp",
+    "imageAlt": "Storybook drawing of Fort Robinson, historic barracks and stables around the parade ground at the foot of the bluffs."
+  },
+  "valentine": {
+    "image": "images/journal/valentine.webp",
+    "imageAlt": "Storybook drawing of Valentine, outfitter cabins with canoes on the river at the edge of the Sandhills."
+  },
+  "joslyn": {
+    "image": "images/journal/joslyn.webp",
+    "imageAlt": "Storybook drawing of the Joslyn Art Museum, the marble Art Deco building with fountains and sculpture gardens."
+  },
+  "golden-spike": {
+    "image": "images/journal/golden-spike.webp",
+    "imageAlt": "Storybook drawing of the Golden Spike Tower, the observation tower looking over the vast Bailey Yard rail tracks."
+  },
+  "indian-cave": {
+    "image": "images/journal/indian-cave.webp",
+    "imageAlt": "Storybook drawing of Indian Cave State Park, petroglyph carvings in the sandstone cave above the Missouri River bluffs."
+  },
+  "ashfall": {
+    "image": "images/journal/ashfall.webp",
+    "imageAlt": "Storybook drawing of Ashfall Fossil Beds, rhino and horse skeletons uncovered under the barn-like shelter."
+  },
+  "toadstool": {
+    "image": "images/journal/toadstool.webp",
+    "imageAlt": "Storybook drawing of Toadstool Geologic Park, mushroom-shaped clay formations along the badlands trail."
+  },
+  "chadron": {
+    "image": "images/journal/chadron.webp",
+    "imageAlt": "Storybook drawing of Chadron, the college town at the edge of pine ridges with tipis and wagons at the fur-trade museum."
+  },
+  "niobrara": {
+    "image": "images/journal/niobrara.webp",
+    "imageAlt": "Storybook drawing of the Niobrara River, the braided scenic river between sandstone bluffs with canoes drifting."
+  },
+  "white-house": {
+    "image": "images/journal/white-house.webp",
+    "imageAlt": "Storybook drawing of the White House, the white limestone mansion with columns, fountain and gardens."
+  },
+  "golden-gate": {
+    "image": "images/journal/golden-gate.webp",
+    "imageAlt": "Storybook drawing of the Golden Gate Bridge, the orange suspension bridge through fog with sailboats below."
+  },
+  "grand-canyon": {
+    "image": "images/journal/grand-canyon.webp",
+    "imageAlt": "Storybook drawing of the Grand Canyon, the vast gorge from the South Rim with rustic lodges and the winding river."
+  },
+  "old-faithful": {
+    "image": "images/journal/old-faithful.webp",
+    "imageAlt": "Storybook drawing of Old Faithful, the geyser erupting before crowds on the boardwalk among steaming pools."
+  },
+  "rushmore": {
+    "image": "images/journal/rushmore.webp",
+    "imageAlt": "Storybook drawing of Mount Rushmore, the four carved faces above the viewing terrace in the Black Hills."
+  },
+  "gateway-arch": {
+    "image": "images/journal/gateway-arch.webp",
+    "imageAlt": "Storybook drawing of the Gateway Arch, the stainless arch over the St. Louis riverfront with lawns and visitors."
+  },
+  "french-quarter": {
+    "image": "images/journal/french-quarter.webp",
+    "imageAlt": "Storybook drawing of Jackson Square, the lively French Quarter plaza facing St. Louis Cathedral with street musicians and a riverboat on the river."
+  },
+  "space-needle": {
+    "image": "images/journal/space-needle.webp",
+    "imageAlt": "Storybook drawing of the Space Needle, the saucer-topped tower over the Seattle Center park with visitors on the observation deck."
+  },
+  "niagara": {
+    "image": "images/journal/niagara.webp",
+    "imageAlt": "Storybook drawing of Niagara Falls, the American Falls pouring over the cliff with the curved Horseshoe Falls beyond and visitors in rain ponchos."
+  },
+  "alamo": {
+    "image": "images/journal/alamo.webp",
+    "imageAlt": "Storybook drawing of the Alamo, the old mission chapel with its famous facade and bell arch in a garden plaza."
+  },
+  "willis": {
+    "image": "images/journal/willis.webp",
+    "imageAlt": "Storybook drawing of Willis Tower, the black steel tower over Chicago with the Skydeck looking out over the lake."
+  },
+  "crater-lake": {
+    "image": "images/journal/crater-lake.webp",
+    "imageAlt": "Storybook drawing of Crater Lake, the deep blue lake in the collapsed volcano with forested Wizard Island in the caldera."
+  },
+  "monument-valley": {
+    "image": "images/journal/monument-valley.webp",
+    "imageAlt": "Storybook drawing of Monument Valley, the great sandstone buttes seen from the visitor-center overlook."
+  },
+  "pike-place": {
+    "image": "images/journal/pike-place.webp",
+    "imageAlt": "Storybook drawing of Pike Place Market, the main arcade with colorful stalls of flowers, produce and fish above the waterfront."
+  },
+  "cadillac": {
+    "image": "images/journal/cadillac.webp",
+    "imageAlt": "Storybook drawing of Cadillac Mountain, the granite summit where visitors watch the first sunrise over the Atlantic."
+  },
+  "denali": {
+    "image": "images/journal/denali.webp",
+    "imageAlt": "Storybook drawing of Denali, the massive snow-covered summit rising from the Alaska Range with glaciers."
+  },
+  "everglades": {
+    "image": "images/journal/everglades.webp",
+    "imageAlt": "Storybook drawing of the Everglades, the winding boardwalk into the sawgrass River of Grass with an alligator and wading birds."
+  },
+  "death-valley": {
+    "image": "images/journal/death-valley.webp",
+    "imageAlt": "Storybook drawing of Badwater Basin, the vast salt flat below sea level with cracked polygons and heat waves."
+  },
+  "hoover": {
+    "image": "images/journal/hoover.webp",
+    "imageAlt": "Storybook drawing of Hoover Dam, the concrete arch dam with a highway across its crest holding back Lake Mead."
+  },
+  "eiffel": {
+    "image": "images/journal/eiffel.webp",
+    "imageAlt": "Storybook drawing of the Eiffel Tower, the iron lattice tower over Paris with gardens, fountains and picnickers at its feet."
+  },
+  "colosseum": {
+    "image": "images/journal/colosseum.webp",
+    "imageAlt": "Storybook drawing of the Colosseum, the ancient arched amphitheater in Rome with the Forum ruins beyond."
+  },
+  "liberty": {
+    "image": "images/journal/liberty.webp",
+    "imageAlt": "Storybook drawing of the Statue of Liberty, the copper figure with torch raised on her harbor island with ferries around."
+  },
   "taj": {
     "image": "images/journal/taj.webp",
     "imageAlt": "Storybook drawing of the Taj Mahal, its white dome and towers beside a garden pool and the river."
@@ -10,5 +346,81 @@
   "redeemer": {
     "image": "images/journal/redeemer.webp",
     "imageAlt": "Storybook drawing of Christ the Redeemer on the forested summit of Corcovado, with the little cog railway and the city below."
+  },
+  "sagrada": {
+    "image": "images/journal/sagrada.webp",
+    "imageAlt": "Storybook drawing of Sagrada Familia, Gaudi's soaring unfinished basilica with cranes still at work on its stone spires."
+  },
+  "giza": {
+    "image": "images/journal/giza.webp",
+    "imageAlt": "Storybook drawing of the Great Pyramid of Giza, the largest pyramid for the pharaoh Khufu with the Sphinx, camels and visitors in the desert."
+  },
+  "cn-tower": {
+    "image": "images/journal/cn-tower.webp",
+    "imageAlt": "Storybook drawing of the CN Tower, the tall communications tower with its observation pod over the Toronto skyline and lake."
+  },
+  "machu": {
+    "image": "images/journal/machu.webp",
+    "imageAlt": "Storybook drawing of Machu Picchu, the Inca estate of stone terraces and houses on a ridge above the Urubamba River with llamas."
+  },
+  "fuji": {
+    "image": "images/journal/fuji.webp",
+    "imageAlt": "Storybook drawing of Mount Fuji, the snow-capped volcano cone with cherry blossoms in the foreground."
+  },
+  "chichen": {
+    "image": "images/journal/chichen.webp",
+    "imageAlt": "Storybook drawing of Chichen Itza, the El Castillo stepped pyramid with the serpent of light on its stair at equinox."
+  },
+  "stonehenge": {
+    "image": "images/journal/stonehenge.webp",
+    "imageAlt": "Storybook drawing of Stonehenge, the ancient stone circle on Salisbury Plain with sheep grazing at sunrise."
+  },
+  "neuschwanstein": {
+    "image": "images/journal/neuschwanstein.webp",
+    "imageAlt": "Storybook drawing of Neuschwanstein, the pale fairytale towers above a forest gorge in the Bavarian Alps with swans below."
+  },
+  "angkor": {
+    "image": "images/journal/angkor.webp",
+    "imageAlt": "Storybook drawing of Angkor Wat, the great temple with its five towers reflected in the lotus pond at sunrise."
+  },
+  "petra": {
+    "image": "images/journal/petra.webp",
+    "imageAlt": "Storybook drawing of Petra, the Treasury facade carved from the rose-red cliff at the end of the narrow canyon."
+  },
+  "table-mountain": {
+    "image": "images/journal/table-mountain.webp",
+    "imageAlt": "Storybook drawing of Table Mountain, the flat-topped mountain over Cape Town with the cableway to the plateau."
+  },
+  "uluru": {
+    "image": "images/journal/uluru.webp",
+    "imageAlt": "Storybook drawing of Uluru, the great red sandstone monolith glowing at sunset with visitors viewing from afar."
+  },
+  "victoria-falls": {
+    "image": "images/journal/victoria-falls.webp",
+    "imageAlt": "Storybook drawing of Victoria Falls, the Zambezi dropping into the gorge with a huge curtain of spray and rainbows."
+  },
+  "fushimi": {
+    "image": "images/journal/fushimi.webp",
+    "imageAlt": "Storybook drawing of Fushimi Inari, the tunnel of vermilion gates climbing the mountain with the main shrine at its base."
+  },
+  "iguazu": {
+    "image": "images/journal/iguazu.webp",
+    "imageAlt": "Storybook drawing of Iguazu Falls, the chain of waterfalls with the Devil's Throat horseshoe at its heart."
+  },
+  "tongariki": {
+    "image": "images/journal/tongariki.webp",
+    "imageAlt": "Storybook drawing of Ahu Tongariki, the fifteen moai standing in a row on their stone platform facing the sea."
+  },
+  "potala": {
+    "image": "images/journal/potala.webp",
+    "imageAlt": "Storybook drawing of the Potala Palace, the great palace rising on its sacred hill above Lhasa with pilgrims below."
+  },
+  "timbuktu": {
+    "image": "images/journal/timbuktu.webp",
+    "imageAlt": "Storybook drawing of Timbuktu, the ancient mud-brick mosques and manuscript library with a camel caravan in the desert."
+  },
+  "galapagos": {
+    "image": "images/journal/galapagos.webp",
+    "imageAlt": "Storybook drawing of Puerto Ayora, the Galapagos harbor town with boats, giant tortoises and marine iguanas."
   }
 }

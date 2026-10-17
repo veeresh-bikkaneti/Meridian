@@ -1,3 +1,122 @@
+## Wave-2 art — WAVE 6 complete (2026-10-17)
+
+18/18 wave-6 ids illustrated (backlog ids 86-103), QA-passed (all first try), post-processed (max width 1200, WebP q80, all < 200 KB), merged via scripts/journal-art-manifest.json + generator (byte-stable apart from new art fields; 106 art notes merged).
+
+| id | KB | id | KB |
+|---|---|---|---|
+| giza | 116 | cn-tower | 174 |
+| machu | 139 | fuji | 140 |
+| chichen | 190 | stonehenge | 137 |
+| neuschwanstein | 167 | angkor | 190 |
+| petra | 171 | table-mountain | 167 |
+| uluru | 154 | victoria-falls | 166 |
+| fushimi | 196 | iguazu | 163 |
+| tongariki | 128 | potala | 168 |
+| timbuktu | 156 | galapagos | 170 |
+
+Wave 6 ids (dataset order): giza, cn-tower, machu, fuji, chichen, stonehenge, neuschwanstein, angkor, petra, table-mountain, uluru, victoria-falls, fushimi, iguazu, tongariki, potala, timbuktu, galapagos.
+No notes skipped; no image failed QA twice.
+All 103 wave-2 notes now illustrated — 106/106 total across the journal.
+
+## Wave-2 art — WAVE 5 complete (2026-10-17)
+
+17/17 wave-5 ids illustrated (backlog ids 69-85), QA-passed (all first try), post-processed (max width 1200, WebP q80, all < 200 KB), merged via scripts/journal-art-manifest.json + generator (byte-stable apart from new art fields; 88 art notes merged).
+
+| id | KB | id | KB |
+|---|---|---|---|
+| french-quarter | 163 | space-needle | 175 |
+| niagara | 142 | alamo | 197 |
+| willis | 163 | crater-lake | 135 |
+| monument-valley | 160 | pike-place | 189 |
+| cadillac | 133 | denali | 124 |
+| everglades | 168 | death-valley | 120 |
+| hoover | 178 | eiffel | 132 |
+| colosseum | 172 | liberty | 151 |
+| sagrada | 160 |  |  |
+
+Wave 5 ids (dataset order): french-quarter, space-needle, niagara, alamo, willis, crater-lake, monument-valley, pike-place, cadillac, denali, everglades, death-valley, hoover, eiffel, colosseum, liberty, sagrada.
+No notes skipped; no image failed QA twice.
+
+## Wave-2 art — WAVE 4 complete (2026-10-17)
+
+17/17 wave-4 ids illustrated (backlog ids 52-68), QA-passed (all first try), post-processed (max width 1200, WebP q80, all < 200 KB), merged via scripts/journal-art-manifest.json + generator (byte-stable apart from new art fields; 71 art notes merged).
+
+| id | KB | id | KB |
+|---|---|---|---|
+| kingsley | 156 | smith-falls | 162 |
+| fort-robinson | 172 | valentine | 192 |
+| joslyn | 172 | golden-spike | 170 |
+| indian-cave | 193 | ashfall | 180 |
+| toadstool | 155 | chadron | 166 |
+| niobrara | 181 | white-house | 139 |
+| golden-gate | 75 | grand-canyon | 179 |
+| old-faithful | 155 | rushmore | 178 |
+| gateway-arch | 146 |  |  |
+
+Wave 4 ids (dataset order): kingsley, smith-falls, fort-robinson, valentine, joslyn, golden-spike, indian-cave, ashfall, toadstool, chadron, niobrara, white-house, golden-gate, grand-canyon, old-faithful, rushmore, gateway-arch.
+No notes skipped; no image failed QA twice.
+
+## Wave-2 art — WAVE 3 complete (2026-10-17)
+
+17/17 wave-3 ids illustrated (backlog ids 35-51), QA-passed (all first try), post-processed (max width 1200, WebP q80, all < 200 KB), merged via scripts/journal-art-manifest.json + generator (byte-stable apart from new art fields; 54 art notes merged). chimney-rock drawn like any other; its citation untouched.
+
+| id | KB | id | KB |
+|---|---|---|---|
+| pawnee-lake | 179 | platte-river-sp | 198 |
+| ashland | 132 | wahoo | 156 |
+| wagon-train | 123 | spring-creek | 166 |
+| arbor-lodge | 182 | beatrice | 179 |
+| stagecoach | 143 | grand-island | 168 |
+| henry-doorly | 196 | old-market | 193 |
+| chimney-rock | 122 | scotts-bluff | 175 |
+| archway | 188 | durham | 191 |
+| carhenge | 160 |  |  |
+
+Wave 3 ids (dataset order): pawnee-lake, platte-river-sp, ashland, wahoo, wagon-train, spring-creek, arbor-lodge, beatrice, stagecoach, grand-island, henry-doorly, old-market, chimney-rock, scotts-bluff, archway, durham, carhenge.
+No notes skipped; no image failed QA twice.
+
+## Wave-2 art — WAVE 2 complete (2026-10-17)
+
+17/17 wave-2 ids illustrated (backlog ids 18-34), QA-passed (all first try), post-processed (max width 1200, WebP q80, all < 200 KB), merged via scripts/journal-art-manifest.json + generator (byte-stable apart from new art fields; 37 art notes merged).
+
+| id | KB | id | KB |
+|---|---|---|---|
+| gateway | 140 | southpointe | 131 |
+| havelock | 160 | college-view | 196 |
+| university-place | 180 | near-south | 188 |
+| hyde | 125 | robbers-cave | 139 |
+| star-city-shores | 188 | quilt-museum | 171 |
+| woods-park | 177 | conestoga | 167 |
+| branched-oak | 143 | mahoney | 193 |
+| sac-museum | 142 | seward | 168 |
+| homestead | 143 |  |  |
+
+Wave 2 ids (dataset order): gateway, southpointe, havelock, college-view, university-place, near-south, hyde, robbers-cave, star-city-shores, quilt-museum, woods-park, conestoga, branched-oak, mahoney, sac-museum, seward, homestead.
+No notes skipped; no image failed QA twice.
+
+## Known nit (carried, owner has NOT ordered a regen)
+
+haymarket (wave 1): pretty and text-free, but reads as a generic European market street; the note’s warehouse-district/railyard character is missing. Kept as-is per mission; do not hold any wave for it.
+
+## Wave-2 art — WAVE 1 complete (2026-10-17)
+
+17/103 backlog ids illustrated, QA-passed, post-processed (max width 1200, WebP q80, all < 200 KB), merged via scripts/journal-art-manifest.json + generator (byte-stable apart from new art fields). One regeneration (centennial-mall: first pass drew a domed capitol; Nebraska's is a tower — regenerated with the tower, PASS).
+
+| id | KB | id | KB |
+|---|---|---|---|
+| capitol | 118 | memorial-stadium | 183 |
+| haymarket | 154 | pinnacle | 158 |
+| 27th-and-o | 185 | centennial-mall | 179 |
+| sunken-gardens | 183 | childrens-zoo | 165 |
+| 48th-and-o | 192 | holmes-lake | 148 |
+| pioneers-park | 165 | wilderness-park | 185 |
+| antelope-park | 170 | oak-lake | 156 |
+| wyuka | 159 | lincoln-airport | 140 |
+| union-plaza | 187 | |
+
+Wave 1 ids (dataset order): capitol, memorial-stadium, haymarket, pinnacle, 27th-and-o, centennial-mall, sunken-gardens, childrens-zoo, 48th-and-o, holmes-lake, pioneers-park, wilderness-park, antelope-park, oak-lake, wyuka, lincoln-airport, union-plaza.
+No notes skipped; no image failed QA twice. All 6 waves complete.
+
 # BRANCH_STATUS — feat/journal-consolidation
 
 **Mission (owner: Veeresh; directive + Phase 0 plan approved 2026-10-16):** ONE PR to main — Journal v2 (verified 106-note dataset, geography grouping, confidence votes, rotation with focus deferral) ported into main's journal, WITH PR #167's storybook art folded in. Priorities, in order: (1) no loss of work, (2) integrity of the live application, (3) the consolidation itself.
