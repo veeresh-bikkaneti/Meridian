@@ -1,0 +1,14 @@
+{
+  "taj": {
+    "image": "images/journal/taj.webp",
+    "imageAlt": "Storybook drawing of the Taj Mahal, its white dome and towers beside a garden pool and the river."
+  },
+  "opera-house": {
+    "image": "images/journal/opera-house.webp",
+    "imageAlt": "Storybook drawing of the Sydney Opera House's white sail-like shells on the harbour point, with ferries and sailboats on the water."
+  },
+  "redeemer": {
+    "image": "images/journal/redeemer.webp",
+    "imageAlt": "Storybook drawing of Christ the Redeemer on the forested summit of Corcovado, with the little cog railway and the city below."
+  }
+}

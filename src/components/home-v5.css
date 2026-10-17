@@ -404,6 +404,18 @@ body:has(.home-v5) {
   padding-top: 16px;
   border-top: 1px solid var(--hv5-line);
 }
+/* Journal storybook art: sits above the note title, full card width with
+   a fixed 3/2 box so the image can never shift the layout as it loads. */
+.home-v5 .hv5-entry-art {
+  margin: 0 0 12px;
+}
+.home-v5 .hv5-entry-art img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 16px;
+}
 .home-v5 .hv5-entry h3 {
   font-family: var(--hv5-display);
   font-size: 22px;
@@ -412,6 +424,35 @@ body:has(.home-v5) {
 .home-v5 .hv5-entry a {
   color: var(--hv5-brown-deep);
   font-weight: 700;
+}
+/* Journal v2 display additions (consolidation port): the card's quiet
+   current-set line, the section's set-geography header, the per-note
+   confidence line, and the entry/countdown footer. Add-only, scoped. */
+.home-v5 .hv5-card .hv5-journal-now {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--hv5-brown-deep);
+}
+.home-v5 .hv5-journal-geography {
+  font-family: var(--hv5-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--hv5-ink-soft);
+  margin-top: 10px;
+}
+.home-v5 .hv5-journal-confidence {
+  display: block;
+  margin-top: 2px;
+}
+.home-v5 .hv5-journal-footer {
+  border-top: 1px solid var(--hv5-line);
+  margin-top: 24px;
+  padding-top: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
 }
 .home-v5 .hv5-card {
   background: var(--hv5-card);

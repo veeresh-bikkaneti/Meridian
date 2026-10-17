@@ -77,7 +77,16 @@ import { RunSummaryCard } from "./run-summary";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
 import { CometEmblem } from "./comet-emblem";
 import { GrandpaCoffeeRun } from "./grandpa-coffee-run";
-import { notesForWindow } from "./home-journal";
+import {
+  confidenceText,
+  createJournalRotation,
+  journalImageUrl,
+  journalSetAt,
+  journalSetByIndex,
+  journalSetCount,
+  journalSetIndexAt,
+  nextEntryCountdown,
+} from "./home-journal";
 // Storyteller banner host (owner directive 2026-10-09): the Storyteller
 // sits IN THE BANNER beside the Meridian branding — always visible, mobile
 // and desktop. React.lazy — the host (and its copy chunk) never lands in
@@ -2154,13 +2163,62 @@ function Choose({
   // streak line. Read on mount (the menu remounts when the loop screen
   // closes, so this is always fresh on return).
   const [loopProgress] = useState(() => peekLoopProgress());
-  const [journalNow, setJournalNow] = useState(() => Date.now());
+  // Journal ("What the land remembers", docs/journal-spec.md §3/§5/§6):
+  // the displayed set index is state, driven by the auto-switch rotation
+  // (createJournalRotation in ./home-journal): a boundary timeout at the
+  // next window start + a 30s safety interval recompute it, as do
+  // visibilitychange (tab visible again) and focusin. A new index is
+  // DEFERRED while focus is inside the home Journal card or inside the
+  // inline journal section — content is never swapped under a reader
+  // (§6, focus-only per owner ruling Q3). The footer countdown ticks on
+  // its own 60s clock so it stays live without re-rendering the set.
+  const [journalIndex, setJournalIndex] = useState(() => journalSetIndexAt(Date.now()));
+  const [journalNowMs, setJournalNowMs] = useState(() => Date.now());
+  const focusInsideJournalCard = useCallback(() => {
+    const active = document.activeElement;
+    const card = document.querySelector('[data-testid="journal-card"]');
+    return !!active && !!card && card.contains(active);
+  }, []);
+  const focusInsideJournalSection = useCallback(() => {
+    const active = document.activeElement;
+    const section = document.getElementById("home-journal");
+    return !!active && !!section && section.contains(active);
+  }, []);
+  const [journalRotation] = useState(() =>
+    createJournalRotation({
+      initialIndex: journalIndex,
+      blockers: () => ({
+        focusInsideCard: focusInsideJournalCard(),
+        focusInsideSection: focusInsideJournalSection(),
+      }),
+      onApply: (index) => setJournalIndex(index),
+    }),
+  );
   useEffect(() => {
-    const wait = notesForWindow(journalNow).nextAt - Date.now();
-    const id = window.setTimeout(() => setJournalNow(Date.now()), Math.max(wait, 1000));
-    return () => window.clearTimeout(id);
-  }, [journalNow]);
-  const journalNotes = notesForWindow(journalNow).notes;
+    journalRotation.start();
+    const tick = window.setInterval(() => setJournalNowMs(Date.now()), 60_000);
+    const onVisibility = () => {
+      if (document.visibilityState === "visible") journalRotation.recompute();
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    const onFocusIn = () => {
+      // A deferred set lands once focus has left the card and the
+      // section — never while the reader is still in either place.
+      // Recompute from the clock rather than applying a stored pending
+      // index, so there is no stale-pending path: the pure deferral
+      // check inside the rotation decides for this focus position.
+      journalRotation.recompute();
+    };
+    document.addEventListener("focusin", onFocusIn);
+    return () => {
+      journalRotation.stop();
+      window.clearInterval(tick);
+      document.removeEventListener("visibilitychange", onVisibility);
+      document.removeEventListener("focusin", onFocusIn);
+    };
+  }, [journalRotation]);
+  const journalEntry = journalSetByIndex(journalIndex) ?? journalSetAt(Date.now());
+  const journalNotes = journalEntry?.notes ?? [];
   // Stagger order for the orchestrated entrance (110ms steps in CSS).
   // motionmaxxing M7: the atlas entrance cascade's stagger gaps, retuned
   // uneven (60–100ms) so the cards don't land on a metronome. Keyframes,
@@ -2518,8 +2576,11 @@ function Choose({
         ) : (
           <div aria-hidden="true" />
         )}
-        {/* Journal — the card jumps to the field notes below. */}
-        <article className="hv5-card hv5-spot hv5-journal home-rise" style={rise(7)}>
+        {/* Journal — the card names the currently-rotating set and
+            jumps to the field notes below; the set rotates every 2 hours,
+            deferred while focus is inside this card or the journal
+            section (spec §6). */}
+        <article className="hv5-card hv5-spot hv5-journal home-rise" style={rise(7)} data-testid="journal-card">
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -2529,7 +2590,14 @@ function Choose({
             </div>
             <h2>What the land remembers</h2>
             <p>Short field stories from the places on the map — the tales only landscapes keep.</p>
-            <button type="button" className="hv5-go" onClick={() => scrollTo("home-journal")}>
+            {journalEntry ? (
+              <p className="hv5-journal-now" data-testid="journal-now-showing">
+                {journalEntry.mixed
+                  ? "Now showing: Field Notes"
+                  : `Now showing: ${journalEntry.geography} · ${journalEntry.notes.length} field notes`}
+              </p>
+            ) : null}
+            <button type="button" className="hv5-go" data-testid="journal-open" onClick={() => scrollTo("home-journal")}>
               READ THE ENTRY
             </button>
           </div>
@@ -2568,12 +2636,24 @@ function Choose({
             locks a game.
           </p>
         </section>
-        <section id="home-journal" tabIndex={-1} className="hv5-card hv5-page" aria-labelledby="journal-title">
+        <section id="home-journal" tabIndex={-1} className="hv5-card hv5-page" aria-labelledby="journal-title" data-testid="journal-section">
           <span className="hv5-label">Journal</span>
           <h2 id="journal-title">What the land remembers</h2>
-          <p className="hv5-label" style={{ marginTop: 8 }}>New notes every 2 hours</p>
+          {journalEntry ? (
+            <p className="hv5-journal-geography" data-testid="journal-geography">{journalEntry.geography}</p>
+          ) : null}
           {journalNotes.map((note) => (
-            <article key={note.id} className="hv5-entry">
+            <article key={note.id} className="hv5-entry" data-testid="journal-note">
+              {note.image && note.imageAlt && (
+                <figure className="hv5-entry-art">
+                  <img
+                    src={journalImageUrl(note.image)}
+                    alt={note.imageAlt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              )}
               <h3>{note.place}</h3>
               <p className="hv5-label" style={{ marginTop: 4 }}>{note.where}</p>
               <p style={{ marginTop: 8 }}>{note.story}</p>
@@ -2581,9 +2661,15 @@ function Choose({
                 <a href={note.sourceHref} target="_blank" rel="noopener noreferrer">
                   {note.sourceLabel}
                 </a>
+                <span className="hv5-journal-confidence">{confidenceText(note)}</span>
               </p>
             </article>
           ))}
+          {journalEntry ? (
+            <p className="hv5-journal-footer" data-testid="journal-footer">
+              Entry {journalEntry.index + 1} of {journalSetCount()} · Next entry in {nextEntryCountdown(journalNowMs)}
+            </p>
+          ) : null}
         </section>
       </div>
 

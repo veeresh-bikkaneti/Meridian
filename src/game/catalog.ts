@@ -52,7 +52,7 @@ export const PLACES: Place[] = [
     shape: poly(disk(-96.71099, 40.81493, 0.28)),
     story:
       "West of downtown, the old warehouse district took its name from the public market that once filled these blocks. Brick buildings now hold shops, the Railyard, and the arena's front door.",
-    source: src("Lincoln Haymarket", "https://en.wikipedia.org/wiki/Haymarket_(Lincoln,_Nebraska)"),
+    source: src("Lincoln Haymarket", "https://en.wikipedia.org/wiki/Haymarket_District_(Lincoln,_Nebraska)"),
   },
   {
     id: "pinnacle",
@@ -311,7 +311,7 @@ export const PLACES: Place[] = [
     shape: point(-96.63623, 40.77787),
     story:
       "A public observatory stands on the south shore of Holmes Lake. Local astronomers open the dome for night programs, a quiet landmark beside the water.",
-    source: src("Hyde Observatory", "https://en.wikipedia.org/wiki/Holmes_Lake_(Nebraska)"),
+    source: src("Hyde Observatory", "https://www.hydeobservatory.info/"),
   },
   {
     id: "robbers-cave",
