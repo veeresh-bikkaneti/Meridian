@@ -6,6 +6,12 @@ export type JournalNote = {
   story: string;
   sourceLabel: string;
   sourceHref: string;
+  /** Optional storybook drawing for the note (path under public/, e.g.
+   *  "images/journal/taj.webp"). Notes without art render as before. */
+  image?: string;
+  /** One-sentence, kid-friendly description of the drawing (required
+   *  whenever image is set). */
+  imageAlt?: string;
 };
 
 export const JOURNAL_NOTES: JournalNote[] = [
@@ -687,7 +693,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "where": "World",
     "story": "The marble mausoleum in Agra was built in the 17th century for Mumtaz Mahal. It sits in a formal garden on the south bank of the Yamuna.",
     "sourceLabel": "Taj Mahal",
-    "sourceHref": "https://www.tajmahal.gov.in/"
+    "sourceHref": "https://www.tajmahal.gov.in/",
+    "image": "images/journal/taj.webp",
+    "imageAlt": "Storybook drawing of the Taj Mahal, its white dome and towers beside a garden pool and the river."
   },
   {
     "id": "opera-house",
@@ -695,7 +703,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "where": "World",
     "story": "Jørn Utzon's sail-like shells stand on a point in Sydney Harbour. The building opened in 1973 after a long and difficult construction.",
     "sourceLabel": "Sydney Opera House",
-    "sourceHref": "https://www.sydneyoperahouse.com/"
+    "sourceHref": "https://www.sydneyoperahouse.com/",
+    "image": "images/journal/opera-house.webp",
+    "imageAlt": "Storybook drawing of the Sydney Opera House's white sail-like shells on the harbour point, with ferries and sailboats on the water."
   },
   {
     "id": "redeemer",
@@ -703,7 +713,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "where": "World",
     "story": "The concrete statue looks over Rio de Janeiro from the summit of Corcovado. It was completed in 1931 and is reached by a cog railway through the forest.",
     "sourceLabel": "Christ the Redeemer",
-    "sourceHref": "https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)"
+    "sourceHref": "https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)",
+    "image": "images/journal/redeemer.webp",
+    "imageAlt": "Storybook drawing of Christ the Redeemer on the forested summit of Corcovado, with the little cog railway and the city below."
   },
   {
     "id": "sagrada",
