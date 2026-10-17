@@ -1,39 +1,25 @@
-# BRANCH_STATUS — fix/home-walk-audio (PR #165)
+# BRANCH_STATUS — feat/journal-consolidation
 
-**In review — fixed after a BLOCK verdict; awaiting fresh panel + owner merge word.**
-Owner merges. Never merge without Veeresh's explicit per-PR word.
+**Mission (owner: Veeresh; directive + Phase 0 plan approved 2026-10-16):** ONE PR to main — Journal v2 (verified 106-note dataset, geography grouping, confidence votes, rotation with focus deferral) ported into main's journal, WITH PR #167's storybook art folded in. Priorities, in order: (1) no loss of work, (2) integrity of the live application, (3) the consolidation itself.
 
-## What this branch delivers
+**Base:** `origin/main` @ `13347ae` (PR #165). Plan: Phase 0 port plan approved as submitted (Reality Checker blockers incorporated).
 
-- Grandpa walks the home strip once, stops mid-walk for the kettle pour, then settles on the bench; the pour lands and the mug stays filled into the finale.
-- Bento cards restored/evened: hero and expeditions cards share a bottom edge; cards sit in the new rail layout (editions card now lives in the rail block, above GeoDetective on mobile).
-- Home journal: 106 curated notes, rotating every 2 hours, https sources.
-- Storyteller and grandpa audio on the home page; globe draggable in its rail.
+**Owner rulings (2026-10-16):**
+- Q1 View: main's inline journal section is the host; v2 overlay not carried (its set header, confidence line, countdown footer port in).
+- Q2 Timer tests: add the spec §8 fake-timer unit tests in the port (F2 closes in this PR; §8 not amended).
+- Q3 Deferral: focus-only, spec-faithful; the scrolled-but-unfocused residual (R5) is accepted as disclosed.
+- Q4 Citation labels: leave verbatim; org-label/Wikipedia mismatches are a separate catalog mission later.
+- Q5 Art-manifest approved: `scripts/journal-art-manifest.json` as a generator input, hard-fail validation, losslessness test pinning the 6 art values (taj / opera-house / redeemer).
+- Q6 Chimney Rock citation: OWNER DECISION PENDING — carry the note as-is; PR body carries the marker; no substitute source.
+- Q7 Geography labels: adopt the ring labels; the build-phase where-diff proof must equal exactly the known 39-note set (14× "On the map" → "Lincoln Region, Nebraska"; 25× "World" → "The World"). Any diff beyond that set = stop and ask.
+- Q8 Catalog hrefs: carry the 2-line diff into main's `catalog.ts` (haymarket → Haymarket District article; hyde → hydeobservatory.info); the §4.7 full-field diff proof then expects empty.
 
-## Review history
+**Checkpoints:**
+- (a) Backup: dataset branch `feat/homepage-premium-v5` @ `9cbbdd2` pushed to origin unchanged — DONE, ls-remote proven (2026-10-16).
+- (b) Phase 1: this branch created off `origin/main` + PR #167 folded in intact — IN PROGRESS.
+- (c) Phase 2: Journal v2 port — waits for Chitti's confirmation of (b) + owner go.
+- (d) Phase 3: gates + PR — after (c).
 
-- 2026-10-16: full Scrum-team review **BLOCKED** this PR (4 of 5 squads). Fix list posted on the PR (issuecomment-6220695977): storyteller clips silently re-rendered against the pinned #137 voice ruling; coffee stop not delivered; mobile-overlap broadly red; figure-tap pause removed while its accessible label still promised it; focusable globe canvas inside `aria-hidden`; documented globe settle replaced with perpetual rotation.
-- Veeresh's direction (2026-10-16): the Scrum team fixes the branch rather than waiting on the builder. Branch rebased onto main `6cd3bc3` (post-#162) as a single commit, then fixed by squad:
+**Do-not-touch:** donation copy (locked verbatim), storyteller audio/voice track, homepage layout beyond what the journal port requires, branch protection/rulesets (never lifted). Nobody merges — the PR merges only on the owner's explicit word. PR #167 stays open until the owner says close it.
 
-## Fixes landed (by squad, one commit each)
-
-- **Squad A (voice + contract):** all 11 storyteller clips restored byte-for-byte from main (pinned am_fenrir @ 1.05 render per #137); provenance comment restored in `storyteller-lines.ts`; figure-tap pause/resume restored in `storyteller-home.tsx` so handler and accessible label agree; `grandpa-ask.ts` gains an honest provenance header and a shared lazy AudioContext.
-- **Squad B (globe + a11y):** `aria-hidden` removed from the interactive globe mount; WCAG 2.2.2 settle restored (~6s, drag never restarts auto-rotation); `touch-action: pan-y` replaces the scroll trap.
-- **Squad C (coffee + tour):** kettle hold lengthened and the pour made persistent (`data-filled`); quip updater purity and hover-audio throttle fixes; offline band collapses (168px → 0). **Tour repair:** #165's card move broke the tasting tour — the tour contract now follows page order (difficulty → editions → GeoDetective), `measureTour` emits stops in document order, and where the weave cannot cross (real editions→GeoDetective gap is 22px, below the 32px weave minimum — guard working as designed) the straight-trail fallback carries sip stops, so grandpa sips at every card on any layout.
-
-## Design consequence the owner should see
-
-The tasting tour's visit order now follows the page. Sides are positional, so the weave runs difficulty-right, editions-left, GeoDetective-right. If the old card order is ever restored, the tour order arrays flip back symmetrically.
-
-## Verification (orchestrator-run, on the fixed tree)
-
-- `npx tsc --noEmit` clean; unit suite 2095 tests, 0 failures; `build:pages` green; card lint gate passed.
-- Tasting tour E2E: **25/25 passed**. Grandpa mobile: 3/3. Storyteller tapstart J1 (the tap-pause contract): passed.
-- Coffee-stop behavior verified by direct DOM probes: walking → kettle at ~4.3s with travel paused → pour (kettle opacity 1, mug fill rises and persists) → seated. The desktop coffee spec still times out on this VM because its own pacing outruns the kettle window on a slow boot; the same spec fails on unmodified main at a different assertion. A faster runner is expected to pass it — flagged honestly rather than hidden.
-- Pre-existing red on unmodified main (baselined 2026-10-16, NOT this branch's regressions): `mobile-home-overlap` (a)/(b)/(b2)/(d), `grandpa-coffee-run.reduced` (boundingBox stall). They fail identically on main and belong on their own fix branch.
-
-## Merge notes
-
-- History was rewritten (rebase + fix commits): push is `--force-with-lease`.
-- Branch protection and the "protect main" ruleset must not be lifted or altered without Veeresh's explicit approval for this merge.
-- Donation copy untouched (locked strings verified present).
+**Content source of truth:** `origin/feat/homepage-premium-v5` @ `9cbbdd2` is READ-ONLY for this crew — flag content disputes to the owner, never silently edit the dataset. Note ids are load-bearing: never rename/remove an id; count stays 106.
