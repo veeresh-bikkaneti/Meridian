@@ -3,6 +3,20 @@
 **Status: LOCAL ONLY — not pushed (the parent agent pushes; a
 force-with-lease is expected, see base note). Not merged.**
 
+**Review status (2026-10-16, finisher run): NEEDS WORK — do not merge.**
+The full Scrum review is complete (7 specialists + fix loop +
+independent Reality Checker; verdict and evidence in the JOURNAL
+ADDENDUM of the scrum review report). Two blockers are owner
+decisions, not code defects: (1) `origin/main` has advanced to
+`13347ae` and now ships its OWN Journal (PR #165:
+`src/components/home-journal.ts` / `home-journal.data.ts` — inline
+section, flat sequential windows, no confidence vote); this branch no
+longer merges cleanly (merge-tree conflicts in
+`src/components/game-app.tsx` and this file), and which Journal
+survives is Liz's/Veeresh's call; (2) the chimney-rock citation
+replacement is still pending that same decision (below). Everything
+else in the review is fixed or disclosed in the Pending section.
+
 **Base note (2026-10-16):** PR #158 (the v5 homepage) was MERGED into
 `main` upstream (squash `e9bf739`, marked merged by #161; the two review
 cure commits verified present on main: `#efe3bc` focus outline,
@@ -61,9 +75,11 @@ provide citation and confidence vote on facts describing." Spec:
   against the built artifact.
 - Gates (2026-10-16, logs in `meridian-v5-scrum-review/journal-logs/`
   beside the scrum review): `npx tsc --noEmit` clean; `npm test` —
-  scripts 769 pass / 9 skipped / 0 fail, src 1335/1335 pass;
-  `node scripts/lint-cards.mjs` — GATE PASSED;
-  `npm run build:pages` — green.
+  scripts 769 pass / 9 skipped / 0 fail, src 1338/1338 pass (1335 in
+  the pre-fix-loop count, +3 journal pins from the fix loop; the
+  finisher's retest logs `final-*.log` / `final2-*.log` are
+  authoritative); `node scripts/lint-cards.mjs` — GATE PASSED;
+  `npm run build:pages` — green (final tip buildId stamped).
 - Scrum-review fix loop (2026-10-16, all 7 specialists; logs prefixed
   `fix-` in the same journal-logs folder):
   - Catalog source corrections (review URL sweep: 78 of 81 unique
@@ -104,10 +120,44 @@ provide citation and confidence vote on facts describing." Spec:
     (JOURNAL + READ THE ENTRY are live; ABOUT + search remain
     unmapped).
 
+- Finisher run (2026-10-16): every recorded specialist defect was
+  re-checked against the fix-loop diffs, the full gate set was re-run
+  at the branch tip (logs `final-*.log` at `2b85f32`, `final2-*.log`
+  at the final tip: tsc clean, lint-cards GATE PASSED, build green,
+  journal E2E 5/5, unit green), and an independent Reality Checker
+  re-verified the Journal against `docs/journal-spec.md` (dataset
+  truth, rotation, citation sample, dispositions — all confirmed,
+  none refuted). One residual the review left open was then closed:
+  `7e739df` adds the committed generator test file the Code Reviewer
+  asked for (`scripts/build-journal-dataset.test.mjs`, 15 tests)
+  and a second Reality Checker confirmed the closure first-hand.
+  Verdict: NEEDS WORK (below). Full record: JOURNAL ADDENDUM in the
+  scrum review report.
+
 ## Pending
 
-- Full Scrum review of the branch (build → test → rebase-check →
-  retest → spec verification) with an independent Reality Checker;
-  verdict + evidence appended to the scrum review report.
+- OWNER DECISION — which Journal ships: this branch's spec'd overlay
+  (geography sets, citations + confidence vote, focus deferral) vs
+  the Journal main already ships from PR #165 (inline section, flat
+  windows, no confidence). Until that is decided the branch cannot
+  be rebased/merged: merge-tree vs `origin/main` @ `13347ae` exits 1
+  (conflicts: `src/components/game-app.tsx`, `BRANCH_STATUS.md`).
+- OWNER DECISION — chimney-rock citation: the recorded NPS
+  `https://www.nps.gov/chro/` href 404s while the note displays
+  "Verified"; the `history.nebraska.gov/chimney-rock` candidate
+  redirects to a gift-shop page and was refused by the fix loop.
+  A replacement source needs Liz's/Veeresh's pick, then a one-line
+  catalog fix + regeneration.
+- Spec §8 vs tests (Code F2, partial): §8 asks for unit fake-timer
+  tests of the auto-switch wiring; the behaviour is pinned instead by
+  the pure deferral truth table plus two E2E deferral negatives.
+  Either add the unit tests or amend §8 — an owner/spec call.
+- Open minors, disclosed: Historian F4 (22 citation labels name an
+  organisation while linking Wikipedia — catalog-label decision);
+  Code F9 (footer countdown keeps counting while a swap is
+  deferred); Performance advisory (dataset ships eager in the routes
+  chunk, ~+12.8 KB gzip vs pristine main); Historian F5/F6
+  (spec-accepted rubric limitations: `.gov.in`/`.gov.au` score
+  "cited", some Verified citations are generic homepages).
 - Remaining from before (unchanged): live NVDA/VoiceOver pass on a real
   device stays Liz's/Veeresh's — disclosed, not claimed.
