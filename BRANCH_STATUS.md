@@ -17,7 +17,7 @@
 **Checkpoints:**
 - (a) Backup: dataset branch `feat/homepage-premium-v5` @ `9cbbdd2` pushed to origin unchanged — DONE, ls-remote proven (2026-10-16).
 - (b) Phase 1: this branch created off `origin/main` + PR #167 folded in intact — DONE locally (see Phase 1 record below); reported to the owner, awaiting Chitti's confirmation from origin before Phase 2.
-- (c) Phase 2: Journal v2 port — Stage A (work items 1–4: art manifest, catalog href fix, generator adaptation, regeneration + proofs) DONE locally (see Phase 2 Stage A record below). Stage B (work items 5–7: engine port, inline display port, E2E + Playwright project) DONE locally (see Phase 2 Stage B record below). Remaining Phase 2 work: the spec §§5/6/8 amendment + handbook paragraph (plan step 5a) and the wave-2 backlog (plan step 6) — a later stage, not started here.
+- (c) Phase 2: Journal v2 port — **Phase 2 complete locally — reported, awaiting Chitti's independent confirmation from origin + owner go for Phase 3** (Stages A, B and C all done locally — see the Phase 2 records below, including the wave-2 backlog in the Stage C record). Phase 3 has NOT started.
 - (d) Phase 3: gates + PR — after (c).
 
 **Do-not-touch:** donation copy (locked verbatim), storyteller audio/voice track, homepage layout beyond what the journal port requires, branch protection/rulesets (never lifted). Nobody merges — the PR merges only on the owner's explicit word. PR #167 stays open until the owner says close it.
@@ -42,5 +42,118 @@
 - R5 disclosure (Q3, accepted): deferral is FOCUS-ONLY — a reader who is merely scrolled to the journal section without focus inside the card or the section can still have the set swap under them at a window boundary; this residual is accepted per the owner's Q3 ruling and is not coded against.
 - Item 7 — E2E + Playwright project (commit `8294cba`): `tests/e2e/journal.spec.ts` adapted from v2's overlay spec to the inline surface (5 tests: current set renders with confidence lines + dataset-exact hrefs — `expectedNotes()` reads `src/components/home-journal.data.ts` and regexes `"id"`/`"sourceHref"`; READ THE ENTRY scrolls to + focuses the section; rotation advances at a window boundary under a controlled clock; focus-inside-section deferral blocks the swap until focus leaves; the 1-note remainder set renders as "Field Notes"). `playwright.config.ts` gains the `journal` project (plan item 4a; testMatch `/journal\.spec\.ts/`, 1440×900). #167's `tests/e2e/journal-art.desktop.spec.ts` received ONLY the disclosed clock pin (§1c): `page.clock` installed BEFORE `goto`, `runFor(1_000)` drain, pinned to set index 26, disclosed in a visible spec comment — no other change. Results against the built artifact, per-file, first run each: journal spec 5/5 passed (log `stageB-e2e-journal-run1.log`); journal-art spec 1/1 passed (log `stageB-e2e-journal-art-run1.log`). A throwaway probe (log `stageB-art-pin-probe.log`, not committed) confirmed the pin is non-vacuous: set 26 renders exactly the taj / opera-house / redeemer images, all decoded.
 - Stage B gates on the final tree (logs `stageB-gate-*.log`): `npx tsc --noEmit` clean; `node scripts/lint-cards.mjs` GATE PASSED; `npm test` FULL green — scripts 790 pass / 0 fail / 9 skipped (799 total), src 1351 pass / 0 fail (1324 at Stage A + 27 net from the test merge: 4 → 31 in home-journal.test.ts); `npm run build:pages` green. No stop conditions were hit; the do-not-touch list is untouched (donation copy, storyteller audio, homepage beyond the journal regions, rulesets).
+
+**Phase 2 — Stage C record (2026-10-16, local; logs: `~/workspace/your_files/journal-consolidation/phase2-logs/stageC-*`):**
+- Item 8a — Spec as adapted (commit `143a6be`): `docs/journal-spec.md` landed from the v2 branch (`origin/feat/homepage-premium-v5`), ADAPTED per plan item 1. An amendment note at the top states plainly that the original overlay description no longer matches what ships and that §§5/6/8 were rewritten for the inline host in the consolidation (owner-approved, plan Q1). §5 (view) now describes main's inline `<section id="home-journal">` in `game-app.tsx` — no dialog/overlay, no focus trap/Esc/focus-return machinery; §6 (blockers/deferral) now names the inline-host blockers (focus inside the card or inside the section; focus-only per Q3, R5 residual accepted); §8 (verification/E2E) is rewritten for the inline host — E2E surface = the section, not a view — while the unit fake-timer requirement is NOT weakened: it stays, and is now satisfied, the wiring mechanism being unit-tested via `createJournalRotation` in `src/components/home-journal.ts` with an injected fake timer host (Stage B; the §8 reading disclosure is in the Stage B record above). Everything else in the spec is the v2 text verbatim (dataset rules §§1–§4, set composition §3, confidence §4, §§7/9), except one path reference the port changed: §1's generator output is now `src/components/home-journal.data.ts` (was `src/game/journal-data.ts`). Diff vs the v2 spec: `stageC-spec-diff-vs-v2.log`.
+- Item 8b — Handbook (commit `56cbdd6`): in `docs/handbook/06-design-and-ux-decisions.md` (§7), the stale bullet describing nav JOURNAL and the Journal card's READ THE ENTRY as unmapped (`aria-disabled`) is rewritten to describe what now ships: the inline journal section (live since #165), the v2 port behavior (geography sets rotating every 2 hours, focus-only deferral, per-note confidence line, set-geography header + "Entry X of 36" footer, READ THE ENTRY scroll-jump + focus, storybook art on 3 notes). Nothing else in the file was touched. Diff: `stageC-handbook-diff.log`.
+- Item 9 — Wave-2 backlog: see the next section. The 103 note ids without drawings, derived mechanically from the generated dataset; this list is the wave-2 art worklist.
+- Phase 2 record completeness: Stage A (items 1–4), Stage B (items 5–7, including the §8 reading disclosure and the R5 disclosure), and Stage C (items 8–9) records are all in this file — the Phase 2 record is complete. Chimney Rock remains carried as-is (Q6, OWNER DECISION PENDING for the PR body in Phase 3).
+
+**Wave-2 backlog — notes without drawings (103, plan §6 step 6):**
+Derived mechanically from the generated `src/components/home-journal.data.ts` (notes lacking an `image` field) by `stageC-backlog-derive.mjs`; output in `stageC-backlog-derivation.log` (assertions passed: 106 notes total, 103 without image, ids unique). The ONLY ids absent from this list are the 3 notes that already carry storybook art: `taj`, `opera-house`, `redeemer`. Wave-2 art generation starts from this list, keyed by id, in dataset order:
+
+1. `capitol`
+2. `memorial-stadium`
+3. `haymarket`
+4. `pinnacle`
+5. `27th-and-o`
+6. `centennial-mall`
+7. `sunken-gardens`
+8. `childrens-zoo`
+9. `48th-and-o`
+10. `holmes-lake`
+11. `pioneers-park`
+12. `wilderness-park`
+13. `antelope-park`
+14. `oak-lake`
+15. `wyuka`
+16. `lincoln-airport`
+17. `union-plaza`
+18. `gateway`
+19. `southpointe`
+20. `havelock`
+21. `college-view`
+22. `university-place`
+23. `near-south`
+24. `hyde`
+25. `robbers-cave`
+26. `star-city-shores`
+27. `quilt-museum`
+28. `woods-park`
+29. `conestoga`
+30. `branched-oak`
+31. `mahoney`
+32. `sac-museum`
+33. `seward`
+34. `homestead`
+35. `pawnee-lake`
+36. `platte-river-sp`
+37. `ashland`
+38. `wahoo`
+39. `wagon-train`
+40. `spring-creek`
+41. `arbor-lodge`
+42. `beatrice`
+43. `stagecoach`
+44. `grand-island`
+45. `henry-doorly`
+46. `old-market`
+47. `chimney-rock`
+48. `scotts-bluff`
+49. `archway`
+50. `durham`
+51. `carhenge`
+52. `kingsley`
+53. `smith-falls`
+54. `fort-robinson`
+55. `valentine`
+56. `joslyn`
+57. `golden-spike`
+58. `indian-cave`
+59. `ashfall`
+60. `toadstool`
+61. `chadron`
+62. `niobrara`
+63. `white-house`
+64. `golden-gate`
+65. `grand-canyon`
+66. `old-faithful`
+67. `rushmore`
+68. `gateway-arch`
+69. `french-quarter`
+70. `space-needle`
+71. `niagara`
+72. `alamo`
+73. `willis`
+74. `crater-lake`
+75. `monument-valley`
+76. `pike-place`
+77. `cadillac`
+78. `denali`
+79. `everglades`
+80. `death-valley`
+81. `hoover`
+82. `eiffel`
+83. `colosseum`
+84. `liberty`
+85. `sagrada`
+86. `giza`
+87. `cn-tower`
+88. `machu`
+89. `fuji`
+90. `chichen`
+91. `stonehenge`
+92. `neuschwanstein`
+93. `angkor`
+94. `petra`
+95. `table-mountain`
+96. `uluru`
+97. `victoria-falls`
+98. `fushimi`
+99. `iguazu`
+100. `tongariki`
+101. `potala`
+102. `timbuktu`
+103. `galapagos`
 
 **Content source of truth:** `origin/feat/homepage-premium-v5` @ `9cbbdd2` is READ-ONLY for this crew — flag content disputes to the owner, never silently edit the dataset. Note ids are load-bearing: never rename/remove an id; count stays 106.
