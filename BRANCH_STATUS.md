@@ -1,39 +1,67 @@
-# BRANCH_STATUS — fix/home-walk-audio (PR #165)
+# BRANCH_STATUS — feat/journal-storybook-art
 
-**In review — fixed after a BLOCK verdict; awaiting fresh panel + owner merge word.**
-Owner merges. Never merge without Veeresh's explicit per-PR word.
+Wave 1 of the journal storybook-art feature (owner-requested via /bug, 2026-10-16).
+**DO NOT MERGE — owner merges on his explicit per-PR word only.**
 
-## What this branch delivers
+## What this branch does
+- Journal notes gain an OPTIONAL `image` (path under `public/`) + `imageAlt` field.
+- The journal section of the home page renders the drawing ABOVE the note
+  title when present (`figure.hv5-entry-art > img`, `loading="lazy"`,
+  `decoding="async"`). Notes without art render exactly as before.
+- Image URLs go through the same `assetBase()` seam the storyteller audio
+  URLs use (`journalImageUrl()` in `home-journal.ts`; `assetBase()` newly
+  exported from `storyteller-lines.ts`) — never a hardcoded deploy path.
+- CSS: full card width, `aspect-ratio: 3/2` + `object-fit: cover` (no layout
+  shift), `border-radius: 16px` (inside the 24px card), 12px bottom margin.
+- Wave 1 ships 3 drawings: `taj`, `opera-house`, `redeemer`
+  (`public/images/journal/*.webp`, 1200x800 q80, 125–164 KB each).
 
-- Grandpa walks the home strip once, stops mid-walk for the kettle pour, then settles on the bench; the pour lands and the mug stays filled into the finale.
-- Bento cards restored/evened: hero and expeditions cards share a bottom edge; cards sit in the new rail layout (editions card now lives in the rail block, above GeoDetective on mobile).
-- Home journal: 106 curated notes, rotating every 2 hours, https sources.
-- Storyteller and grandpa audio on the home page; globe draggable in its rail.
+## Owner decisions (Veeresh, 2026-10-16, his words in quotes)
+- **"Journey" = the Journal** (home journal), not the tasting tour (2026-10-16 19:39 CDT).
+- Each journal note gets a contextual drawing as a visual aid (his /bug ask).
+- **Drawings over photos** (his tap, 2026-10-16 19:39 CDT — over the
+  Wikimedia Commons real-photos option).
+- **Style approved: "Love the ones you generated"** (2026-10-16 19:41 CDT)
+  — warm storybook watercolor, cream/brown/gold, consistent across the set.
 
-## Review history
+## Art-direction prompt template (recorded verbatim for future waves)
+"Children's storybook illustration of <SUBJECT + the note's story details>.
+Warm gouache and watercolor picture-book style, soft cream and warm brown
+palette with gentle gold light, friendly and calm mood, wide landscape
+composition, no text, no words, no letters anywhere in the image."
+Production recipe: ffmpeg resize max width 1200 (keep aspect), webp q80,
+must stay under 200 KB. Sample full-size sources live in
+`~/workspace/journal-art-samples/` (not committed).
 
-- 2026-10-16: full Scrum-team review **BLOCKED** this PR (4 of 5 squads). Fix list posted on the PR (issuecomment-6220695977): storyteller clips silently re-rendered against the pinned #137 voice ruling; coffee stop not delivered; mobile-overlap broadly red; figure-tap pause removed while its accessible label still promised it; focusable globe canvas inside `aria-hidden`; documented globe settle replaced with perpetual rotation.
-- Veeresh's direction (2026-10-16): the Scrum team fixes the branch rather than waiting on the builder. Branch rebased onto main `6cd3bc3` (post-#162) as a single commit, then fixed by squad:
+## Done
+- [x] 3 sample drawings generated, owner-approved by eye
+- [x] Asset conversion + ffprobe decode verification (taj 134566 B,
+      opera-house 125076 B, redeemer 163992 B)
+- [x] Data model + 3 notes wired; render + CSS
+- [x] Unit tests (alt/path/file + journalImageUrl seam)
+- [x] E2E spec `tests/e2e/journal-art.desktop.spec.ts` (window-agnostic,
+      390px overflow check) — PASS
+- [x] Screenshots: `~/workspace/bench-wt/journal-art-shots/`
+      (journal-mobile.png, journal-desktop.png — real 2h window with art;
+      journal-art-desktop.png — forced clock to the taj/opera-house/redeemer
+      window, titles asserted)
+- [x] storyteller-tapstart.desktop.spec.ts (existing home spec) — see below
 
-## Fixes landed (by squad, one commit each)
+## Pending
+- [ ] Owner merge word (DO NOT MERGE without his explicit word)
+- [ ] Waves 2+: remaining 103 notes need drawings in the same template,
+      each batch eyeballed before landing (wave-by-wave delivery)
 
-- **Squad A (voice + contract):** all 11 storyteller clips restored byte-for-byte from main (pinned am_fenrir @ 1.05 render per #137); provenance comment restored in `storyteller-lines.ts`; figure-tap pause/resume restored in `storyteller-home.tsx` so handler and accessible label agree; `grandpa-ask.ts` gains an honest provenance header and a shared lazy AudioContext.
-- **Squad B (globe + a11y):** `aria-hidden` removed from the interactive globe mount; WCAG 2.2.2 settle restored (~6s, drag never restarts auto-rotation); `touch-action: pan-y` replaces the scroll trap.
-- **Squad C (coffee + tour):** kettle hold lengthened and the pour made persistent (`data-filled`); quip updater purity and hover-audio throttle fixes; offline band collapses (168px → 0). **Tour repair:** #165's card move broke the tasting tour — the tour contract now follows page order (difficulty → editions → GeoDetective), `measureTour` emits stops in document order, and where the weave cannot cross (real editions→GeoDetective gap is 22px, below the 32px weave minimum — guard working as designed) the straight-trail fallback carries sip stops, so grandpa sips at every card on any layout.
-
-## Design consequence the owner should see
-
-The tasting tour's visit order now follows the page. Sides are positional, so the weave runs difficulty-right, editions-left, GeoDetective-right. If the old card order is ever restored, the tour order arrays flip back symmetrically.
-
-## Verification (orchestrator-run, on the fixed tree)
-
-- `npx tsc --noEmit` clean; unit suite 2095 tests, 0 failures; `build:pages` green; card lint gate passed.
-- Tasting tour E2E: **25/25 passed**. Grandpa mobile: 3/3. Storyteller tapstart J1 (the tap-pause contract): passed.
-- Coffee-stop behavior verified by direct DOM probes: walking → kettle at ~4.3s with travel paused → pour (kettle opacity 1, mug fill rises and persists) → seated. The desktop coffee spec still times out on this VM because its own pacing outruns the kettle window on a slow boot; the same spec fails on unmodified main at a different assertion. A faster runner is expected to pass it — flagged honestly rather than hidden.
-- Pre-existing red on unmodified main (baselined 2026-10-16, NOT this branch's regressions): `mobile-home-overlap` (a)/(b)/(b2)/(d), `grandpa-coffee-run.reduced` (boundingBox stall). They fail identically on main and belong on their own fix branch.
-
-## Merge notes
-
-- History was rewritten (rebase + fix commits): push is `--force-with-lease`.
-- Branch protection and the "protect main" ruleset must not be lifted or altered without Veeresh's explicit approval for this merge.
-- Donation copy untouched (locked strings verified present).
+## Gate results (2026-10-16, branch head d413964+)
+- `npx tsc --noEmit` → clean
+- `npm test` → scripts: 778 tests / 769 pass / 0 fail; src: 1324 tests /
+  1324 pass / 0 fail
+- `node scripts/lint-cards.mjs` → GATE PASSED
+- `npm run build:pages` → green (dist carries images/journal/*.webp)
+- `journal-art.desktop.spec.ts` (desktop, --workers=1) → 1 passed
+- `storyteller-tapstart.desktop.spec.ts` → 3 passed / 7 failed —
+  the SAME 7 pre-existing failures baselined on unmodified main
+  (Veeresh's "Not a regression" ruling, 2026-10-14; assigned to their own
+  fix branch, out of scope here). Failures are `storyteller-narration`
+  element-not-found in the game flow — untouched by this branch's
+  journal-only render; the home page renders green per journal-art E2E.
