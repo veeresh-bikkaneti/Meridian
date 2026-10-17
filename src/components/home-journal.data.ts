@@ -563,7 +563,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/pawnee-lake.webp",
+    "imageAlt": "Storybook drawing of Pawnee Lake, anglers and campers along the wooded arms of the reservoir on a summer day."
   },
   {
     "id": "platte-river-sp",
@@ -576,7 +578,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/platte-river-sp.webp",
+    "imageAlt": "Storybook drawing of Platte River State Park, cabins and trails on wooded bluffs above the wide river valley."
   },
   {
     "id": "ashland",
@@ -589,7 +593,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/ashland.webp",
+    "imageAlt": "Storybook drawing of Ashland, a small prairie city with church steeples and water towers near the Platte."
   },
   {
     "id": "wahoo",
@@ -602,7 +608,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/wahoo.webp",
+    "imageAlt": "Storybook drawing of Wahoo, the courthouse with its clock tower anchoring a long main street of brick storefronts."
   },
   {
     "id": "wagon-train",
@@ -615,7 +623,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/wagon-train.webp",
+    "imageAlt": "Storybook drawing of Wagon Train Lake, boats on calm water with picnic tables and a trail along the shore."
   },
   {
     "id": "spring-creek",
@@ -628,7 +638,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/spring-creek.webp",
+    "imageAlt": "Storybook drawing of Spring Creek Prairie, hikers on a trail through native grasses, wildflowers, butterflies and birds."
   },
   {
     "id": "arbor-lodge",
@@ -641,7 +653,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/arbor-lodge.webp",
+    "imageAlt": "Storybook drawing of Arbor Lodge, the grand mansion with its porches amid an arboretum of many trees above the river bluffs."
   },
   {
     "id": "beatrice",
@@ -654,7 +668,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/beatrice.webp",
+    "imageAlt": "Storybook drawing of Beatrice, the courthouse square and downtown storefronts beside the Big Blue River."
   },
   {
     "id": "stagecoach",
@@ -667,7 +683,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/stagecoach.webp",
+    "imageAlt": "Storybook drawing of Stagecoach Lake, a lone fisherman on a dock at evening on the quiet shore."
   },
   {
     "id": "grand-island",
@@ -680,7 +698,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/grand-island.webp",
+    "imageAlt": "Storybook drawing of Grand Island, downtown storefronts and the domed county courthouse in the Platte valley."
   },
   {
     "id": "henry-doorly",
@@ -693,7 +713,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/henry-doorly.webp",
+    "imageAlt": "Storybook drawing of the Henry Doorly Zoo, the giant desert dome above gardens with elephants, giraffes and families."
   },
   {
     "id": "old-market",
@@ -706,7 +728,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/old-market.webp",
+    "imageAlt": "Storybook drawing of Omaha’s Old Market, brick warehouses with awnings and string lights over cobblestone cafe streets."
   },
   {
     "id": "chimney-rock",
@@ -719,7 +743,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/chimney-rock.webp",
+    "imageAlt": "Storybook drawing of Chimney Rock, the tall spire above the valley with a covered wagon on the trail toward it."
   },
   {
     "id": "scotts-bluff",
@@ -732,7 +758,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/scotts-bluff.webp",
+    "imageAlt": "Storybook drawing of Scotts Bluff, covered wagons at the foot of the massive bluff with a road climbing to the summit."
   },
   {
     "id": "archway",
@@ -745,7 +773,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/archway.webp",
+    "imageAlt": "Storybook drawing of The Archway, the covered-bridge museum spanning the highway with wagon and trail exhibits inside."
   },
   {
     "id": "durham",
@@ -758,7 +788,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/durham.webp",
+    "imageAlt": "Storybook drawing of the Durham Museum, the Art Deco great hall with chandeliers, exhibit cases and vintage trains beyond the tall windows."
   },
   {
     "id": "carhenge",
@@ -771,7 +803,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/carhenge.webp",
+    "imageAlt": "Storybook drawing of Carhenge, a ring of gray-painted vintage cars standing in a field like an ancient monument."
   },
   {
     "id": "kingsley",
