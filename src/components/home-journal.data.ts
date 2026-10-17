@@ -1073,7 +1073,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/french-quarter.webp",
+    "imageAlt": "Storybook drawing of Jackson Square, the lively French Quarter plaza facing St. Louis Cathedral with street musicians and a riverboat on the river."
   },
   {
     "id": "space-needle",
@@ -1086,7 +1088,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/space-needle.webp",
+    "imageAlt": "Storybook drawing of the Space Needle, the saucer-topped tower over the Seattle Center park with visitors on the observation deck."
   },
   {
     "id": "niagara",
@@ -1099,7 +1103,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/niagara.webp",
+    "imageAlt": "Storybook drawing of Niagara Falls, the American Falls pouring over the cliff with the curved Horseshoe Falls beyond and visitors in rain ponchos."
   },
   {
     "id": "alamo",
@@ -1112,7 +1118,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/alamo.webp",
+    "imageAlt": "Storybook drawing of the Alamo, the old mission chapel with its famous facade and bell arch in a garden plaza."
   },
   {
     "id": "willis",
@@ -1125,7 +1133,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/willis.webp",
+    "imageAlt": "Storybook drawing of Willis Tower, the black steel tower over Chicago with the Skydeck looking out over the lake."
   },
   {
     "id": "crater-lake",
@@ -1138,7 +1148,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/crater-lake.webp",
+    "imageAlt": "Storybook drawing of Crater Lake, the deep blue lake in the collapsed volcano with forested Wizard Island in the caldera."
   },
   {
     "id": "monument-valley",
@@ -1151,7 +1163,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/monument-valley.webp",
+    "imageAlt": "Storybook drawing of Monument Valley, the great sandstone buttes seen from the visitor-center overlook."
   },
   {
     "id": "pike-place",
@@ -1164,7 +1178,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/pike-place.webp",
+    "imageAlt": "Storybook drawing of Pike Place Market, the main arcade with colorful stalls of flowers, produce and fish above the waterfront."
   },
   {
     "id": "cadillac",
@@ -1177,7 +1193,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/cadillac.webp",
+    "imageAlt": "Storybook drawing of Cadillac Mountain, the granite summit where visitors watch the first sunrise over the Atlantic."
   },
   {
     "id": "denali",
@@ -1190,7 +1208,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/denali.webp",
+    "imageAlt": "Storybook drawing of Denali, the massive snow-covered summit rising from the Alaska Range with glaciers."
   },
   {
     "id": "everglades",
@@ -1203,7 +1223,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/everglades.webp",
+    "imageAlt": "Storybook drawing of the Everglades, the winding boardwalk into the sawgrass River of Grass with an alligator and wading birds."
   },
   {
     "id": "death-valley",
@@ -1216,7 +1238,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/death-valley.webp",
+    "imageAlt": "Storybook drawing of Badwater Basin, the vast salt flat below sea level with cracked polygons and heat waves."
   },
   {
     "id": "hoover",
@@ -1229,7 +1253,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/hoover.webp",
+    "imageAlt": "Storybook drawing of Hoover Dam, the concrete arch dam with a highway across its crest holding back Lake Mead."
   },
   {
     "id": "eiffel",
@@ -1242,7 +1268,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/eiffel.webp",
+    "imageAlt": "Storybook drawing of the Eiffel Tower, the iron lattice tower over Paris with gardens, fountains and picnickers at its feet."
   },
   {
     "id": "colosseum",
@@ -1255,7 +1283,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/colosseum.webp",
+    "imageAlt": "Storybook drawing of the Colosseum, the ancient arched amphitheater in Rome with the Forum ruins beyond."
   },
   {
     "id": "liberty",
@@ -1268,7 +1298,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/liberty.webp",
+    "imageAlt": "Storybook drawing of the Statue of Liberty, the copper figure with torch raised on her harbor island with ferries around."
   },
   {
     "id": "taj",
@@ -1326,7 +1358,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/sagrada.webp",
+    "imageAlt": "Storybook drawing of Sagrada Familia, Gaudi's soaring unfinished basilica with cranes still at work on its stone spires."
   },
   {
     "id": "giza",

@@ -1,3 +1,22 @@
+## Wave-2 art — WAVE 5 complete (2026-10-17)
+
+17/17 wave-5 ids illustrated (backlog ids 69-85), QA-passed (all first try), post-processed (max width 1200, WebP q80, all < 200 KB), merged via scripts/journal-art-manifest.json + generator (byte-stable apart from new art fields; 88 art notes merged).
+
+| id | KB | id | KB |
+|---|---|---|---|
+| french-quarter | 163 | space-needle | 175 |
+| niagara | 142 | alamo | 197 |
+| willis | 163 | crater-lake | 135 |
+| monument-valley | 160 | pike-place | 189 |
+| cadillac | 133 | denali | 124 |
+| everglades | 168 | death-valley | 120 |
+| hoover | 178 | eiffel | 132 |
+| colosseum | 172 | liberty | 151 |
+| sagrada | 160 |  |  |
+
+Wave 5 ids (dataset order): french-quarter, space-needle, niagara, alamo, willis, crater-lake, monument-valley, pike-place, cadillac, denali, everglades, death-valley, hoover, eiffel, colosseum, liberty, sagrada.
+No notes skipped; no image failed QA twice.
+
 ## Wave-2 art — WAVE 4 complete (2026-10-17)
 
 17/17 wave-4 ids illustrated (backlog ids 52-68), QA-passed (all first try), post-processed (max width 1200, WebP q80, all < 200 KB), merged via scripts/journal-art-manifest.json + generator (byte-stable apart from new art fields; 71 art notes merged).
@@ -76,7 +95,7 @@ haymarket (wave 1): pretty and text-free, but reads as a generic European market
 | union-plaza | 187 | |
 
 Wave 1 ids (dataset order): capitol, memorial-stadium, haymarket, pinnacle, 27th-and-o, centennial-mall, sunken-gardens, childrens-zoo, 48th-and-o, holmes-lake, pioneers-park, wilderness-park, antelope-park, oak-lake, wyuka, lincoln-airport, union-plaza.
-No notes skipped; no image failed QA twice. Waves 5-6 NOT started.
+No notes skipped; no image failed QA twice. Wave 6 NOT started.
 
 # BRANCH_STATUS — feat/journal-consolidation
 
