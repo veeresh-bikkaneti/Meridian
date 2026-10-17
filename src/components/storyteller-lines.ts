@@ -64,7 +64,7 @@ export const STORYTELLER_RETRY_HINT = "Tap the replay button to try again.";
 export const STORYTELLER_HOME_RETRY_HINT = "Tap me to try again.";
 
 /** Safe import.meta.env read (undefined under node --test — same seam as pwa.ts's viteEnv). */
-function assetBase(): string {
+export function assetBase(): string {
   const env = (import.meta as unknown as { env?: { BASE_URL?: string } }).env;
   const base = env?.BASE_URL ?? "/";
   return base.endsWith("/") ? base : `${base}/`;

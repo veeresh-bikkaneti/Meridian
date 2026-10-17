@@ -77,7 +77,7 @@ import { RunSummaryCard } from "./run-summary";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
 import { CometEmblem } from "./comet-emblem";
 import { GrandpaCoffeeRun } from "./grandpa-coffee-run";
-import { notesForWindow } from "./home-journal";
+import { journalImageUrl, notesForWindow } from "./home-journal";
 // Storyteller banner host (owner directive 2026-10-09): the Storyteller
 // sits IN THE BANNER beside the Meridian branding — always visible, mobile
 // and desktop. React.lazy — the host (and its copy chunk) never lands in
@@ -2574,6 +2574,16 @@ function Choose({
           <p className="hv5-label" style={{ marginTop: 8 }}>New notes every 2 hours</p>
           {journalNotes.map((note) => (
             <article key={note.id} className="hv5-entry">
+              {note.image && note.imageAlt && (
+                <figure className="hv5-entry-art">
+                  <img
+                    src={journalImageUrl(note.image)}
+                    alt={note.imageAlt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              )}
               <h3>{note.place}</h3>
               <p className="hv5-label" style={{ marginTop: 4 }}>{note.where}</p>
               <p style={{ marginTop: 8 }}>{note.story}</p>
