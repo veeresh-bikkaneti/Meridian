@@ -53,7 +53,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/capitol.webp",
+    "imageAlt": "Storybook drawing of the Nebraska State Capitol, its tall limestone tower and the Sower statue at the top, glowing in golden light above green lawns."
   },
   {
     "id": "memorial-stadium",
@@ -66,7 +68,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/memorial-stadium.webp",
+    "imageAlt": "Storybook drawing of Memorial Stadium, the red-clad football bowl on a tree-lined autumn campus."
   },
   {
     "id": "haymarket",
@@ -79,7 +83,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/haymarket.webp",
+    "imageAlt": "Storybook drawing of the Haymarket district, red-brick warehouses turned shops with a clock tower over a lamplit cobblestone street."
   },
   {
     "id": "pinnacle",
@@ -92,7 +98,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/pinnacle.webp",
+    "imageAlt": "Storybook drawing of Pinnacle Bank Arena, its curved silvery roof beside old brick warehouses at dusk."
   },
   {
     "id": "27th-and-o",
@@ -105,7 +113,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/27th-and-o.webp",
+    "imageAlt": "Storybook drawing of Lincoln's street grid from above, straight numbered avenues crossing lettered streets in neat leafy blocks."
   },
   {
     "id": "centennial-mall",
@@ -118,7 +128,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/centennial-mall.webp",
+    "imageAlt": "Storybook drawing of Centennial Mall, fountains and gardens along the walk leading to the Capitol tower."
   },
   {
     "id": "sunken-gardens",
@@ -131,7 +143,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/sunken-gardens.webp",
+    "imageAlt": "Storybook drawing of the Sunken Gardens, terraced flower beds and a small waterfall below street level, with butterflies."
   },
   {
     "id": "childrens-zoo",
@@ -144,7 +158,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/childrens-zoo.webp",
+    "imageAlt": "Storybook drawing of the Lincoln Children's Zoo, children watching a giraffe and monkeys beside Antelope Creek."
   },
   {
     "id": "48th-and-o",
@@ -157,7 +173,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/48th-and-o.webp",
+    "imageAlt": "Storybook drawing of a leafy suburban street crossing with a corner fountain park, children riding bicycles."
   },
   {
     "id": "holmes-lake",
@@ -170,7 +188,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/holmes-lake.webp",
+    "imageAlt": "Storybook drawing of Holmes Lake, sailboats on the water, a walking trail, golfers on the hills, and the little observatory dome on the shore."
   },
   {
     "id": "pioneers-park",
@@ -183,7 +203,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/pioneers-park.webp",
+    "imageAlt": "Storybook drawing of Pioneers Park, bison and elk grazing in the fenced prairie range by the nature center lodge."
   },
   {
     "id": "wilderness-park",
@@ -196,7 +218,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/wilderness-park.webp",
+    "imageAlt": "Storybook drawing of Wilderness Park, a creek trail through tall cottonwoods with a wooden footbridge and a deer drinking."
   },
   {
     "id": "antelope-park",
@@ -209,7 +233,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/antelope-park.webp",
+    "imageAlt": "Storybook drawing of Antelope Park, the winding creek with willows, footbridges, and children feeding ducks."
   },
   {
     "id": "oak-lake",
@@ -222,7 +248,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/oak-lake.webp",
+    "imageAlt": "Storybook drawing of Oak Lake Park, a grandfather and child fishing from the wooden dock, with rail tracks and a plane overhead."
   },
   {
     "id": "wyuka",
@@ -235,7 +263,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/wyuka.webp",
+    "imageAlt": "Storybook drawing of Wyuka Cemetery, curving drives through mature oaks and roses among old stone monuments."
   },
   {
     "id": "lincoln-airport",
@@ -248,7 +278,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/lincoln-airport.webp",
+    "imageAlt": "Storybook drawing of Lincoln Airport on the prairie, a plane taking off over golden fields by the control tower and Oak Creek."
   },
   {
     "id": "union-plaza",
@@ -261,7 +293,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/union-plaza.webp",
+    "imageAlt": "Storybook drawing of Union Plaza, children playing in the splash pad fountains where the old rail yards ran."
   },
   {
     "id": "gateway",

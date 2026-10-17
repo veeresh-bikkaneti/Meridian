@@ -1,3 +1,22 @@
+## Wave-2 art — WAVE 1 complete (2026-10-17)
+
+17/103 backlog ids illustrated, QA-passed, post-processed (max width 1200, WebP q80, all < 200 KB), merged via scripts/journal-art-manifest.json + generator (byte-stable apart from new art fields). One regeneration (centennial-mall: first pass drew a domed capitol; Nebraska's is a tower — regenerated with the tower, PASS).
+
+| id | KB | id | KB |
+|---|---|---|---|
+| capitol | 118 | memorial-stadium | 183 |
+| haymarket | 154 | pinnacle | 158 |
+| 27th-and-o | 185 | centennial-mall | 179 |
+| sunken-gardens | 183 | childrens-zoo | 165 |
+| 48th-and-o | 192 | holmes-lake | 148 |
+| pioneers-park | 165 | wilderness-park | 185 |
+| antelope-park | 170 | oak-lake | 156 |
+| wyuka | 159 | lincoln-airport | 140 |
+| union-plaza | 187 | |
+
+Wave 1 ids (dataset order): capitol, memorial-stadium, haymarket, pinnacle, 27th-and-o, centennial-mall, sunken-gardens, childrens-zoo, 48th-and-o, holmes-lake, pioneers-park, wilderness-park, antelope-park, oak-lake, wyuka, lincoln-airport, union-plaza.
+No notes skipped; no image failed QA twice. Waves 2-6 NOT started — awaiting owner/Chitti spot-check of wave 1.
+
 # BRANCH_STATUS — feat/journal-consolidation
 
 **Mission (owner: Veeresh; directive + Phase 0 plan approved 2026-10-16):** ONE PR to main — Journal v2 (verified 106-note dataset, geography grouping, confidence votes, rotation with focus deferral) ported into main's journal, WITH PR #167's storybook art folded in. Priorities, in order: (1) no loss of work, (2) integrity of the live application, (3) the consolidation itself.

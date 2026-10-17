@@ -10,5 +10,73 @@
   "redeemer": {
     "image": "images/journal/redeemer.webp",
     "imageAlt": "Storybook drawing of Christ the Redeemer on the forested summit of Corcovado, with the little cog railway and the city below."
+  },
+  "capitol": {
+    "image": "images/journal/capitol.webp",
+    "imageAlt": "Storybook drawing of the Nebraska State Capitol, its tall limestone tower and the Sower statue at the top, glowing in golden light above green lawns."
+  },
+  "memorial-stadium": {
+    "image": "images/journal/memorial-stadium.webp",
+    "imageAlt": "Storybook drawing of Memorial Stadium, the red-clad football bowl on a tree-lined autumn campus."
+  },
+  "haymarket": {
+    "image": "images/journal/haymarket.webp",
+    "imageAlt": "Storybook drawing of the Haymarket district, red-brick warehouses turned shops with a clock tower over a lamplit cobblestone street."
+  },
+  "pinnacle": {
+    "image": "images/journal/pinnacle.webp",
+    "imageAlt": "Storybook drawing of Pinnacle Bank Arena, its curved silvery roof beside old brick warehouses at dusk."
+  },
+  "27th-and-o": {
+    "image": "images/journal/27th-and-o.webp",
+    "imageAlt": "Storybook drawing of Lincoln's street grid from above, straight numbered avenues crossing lettered streets in neat leafy blocks."
+  },
+  "centennial-mall": {
+    "image": "images/journal/centennial-mall.webp",
+    "imageAlt": "Storybook drawing of Centennial Mall, fountains and gardens along the walk leading to the Capitol tower."
+  },
+  "sunken-gardens": {
+    "image": "images/journal/sunken-gardens.webp",
+    "imageAlt": "Storybook drawing of the Sunken Gardens, terraced flower beds and a small waterfall below street level, with butterflies."
+  },
+  "childrens-zoo": {
+    "image": "images/journal/childrens-zoo.webp",
+    "imageAlt": "Storybook drawing of the Lincoln Children's Zoo, children watching a giraffe and monkeys beside Antelope Creek."
+  },
+  "48th-and-o": {
+    "image": "images/journal/48th-and-o.webp",
+    "imageAlt": "Storybook drawing of a leafy suburban street crossing with a corner fountain park, children riding bicycles."
+  },
+  "holmes-lake": {
+    "image": "images/journal/holmes-lake.webp",
+    "imageAlt": "Storybook drawing of Holmes Lake, sailboats on the water, a walking trail, golfers on the hills, and the little observatory dome on the shore."
+  },
+  "pioneers-park": {
+    "image": "images/journal/pioneers-park.webp",
+    "imageAlt": "Storybook drawing of Pioneers Park, bison and elk grazing in the fenced prairie range by the nature center lodge."
+  },
+  "wilderness-park": {
+    "image": "images/journal/wilderness-park.webp",
+    "imageAlt": "Storybook drawing of Wilderness Park, a creek trail through tall cottonwoods with a wooden footbridge and a deer drinking."
+  },
+  "antelope-park": {
+    "image": "images/journal/antelope-park.webp",
+    "imageAlt": "Storybook drawing of Antelope Park, the winding creek with willows, footbridges, and children feeding ducks."
+  },
+  "oak-lake": {
+    "image": "images/journal/oak-lake.webp",
+    "imageAlt": "Storybook drawing of Oak Lake Park, a grandfather and child fishing from the wooden dock, with rail tracks and a plane overhead."
+  },
+  "wyuka": {
+    "image": "images/journal/wyuka.webp",
+    "imageAlt": "Storybook drawing of Wyuka Cemetery, curving drives through mature oaks and roses among old stone monuments."
+  },
+  "lincoln-airport": {
+    "image": "images/journal/lincoln-airport.webp",
+    "imageAlt": "Storybook drawing of Lincoln Airport on the prairie, a plane taking off over golden fields by the control tower and Oak Creek."
+  },
+  "union-plaza": {
+    "image": "images/journal/union-plaza.webp",
+    "imageAlt": "Storybook drawing of Union Plaza, children playing in the splash pad fountains where the old rail yards ran."
   }
 }
