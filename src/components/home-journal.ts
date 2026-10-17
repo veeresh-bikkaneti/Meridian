@@ -1,4 +1,5 @@
 import { JOURNAL_NOTES, type JournalNote } from "./home-journal.data.ts";
+import { assetBase } from "./storyteller-lines";
 
 /** How long one set of notes stays on the journal. */
 export const JOURNAL_WINDOW_MS = 2 * 60 * 60 * 1000;
@@ -7,6 +8,13 @@ export const JOURNAL_PAGE = 3;
 
 export function journalWindow(now: number): number {
   return Math.floor(now / JOURNAL_WINDOW_MS);
+}
+
+/** Public asset URL for a journal note's storybook drawing — the same
+ *  assetBase() seam the storyteller audio URLs use, never a hardcoded
+ *  deploy path. */
+export function journalImageUrl(image: string): string {
+  return `${assetBase()}${image}`;
 }
 
 /** The three notes for this 2-hour window. Same clock, same notes. */

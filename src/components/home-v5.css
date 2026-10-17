@@ -404,6 +404,18 @@ body:has(.home-v5) {
   padding-top: 16px;
   border-top: 1px solid var(--hv5-line);
 }
+/* Journal storybook art: sits above the note title, full card width with
+   a fixed 3/2 box so the image can never shift the layout as it loads. */
+.home-v5 .hv5-entry-art {
+  margin: 0 0 12px;
+}
+.home-v5 .hv5-entry-art img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 16px;
+}
 .home-v5 .hv5-entry h3 {
   font-family: var(--hv5-display);
   font-size: 22px;
