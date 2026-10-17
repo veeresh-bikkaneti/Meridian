@@ -1,5 +1,5 @@
 import { JOURNAL_NOTES, type JournalNote } from "./home-journal.data.ts";
-import { assetBase } from "./storyteller-lines";
+import { assetBase } from "./storyteller-lines.ts";
 
 /** How long one set of notes stays on the journal. */
 export const JOURNAL_WINDOW_MS = 2 * 60 * 60 * 1000;
