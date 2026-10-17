@@ -2,17 +2,18 @@ import { test, expect } from "playwright/test";
 import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
 
 /**
- * Journal storybook art (feat/journal-storybook-art, wave 1): notes that
- * carry an image render it above the title with alt text; notes without
- * art render exactly as before.
+ * Journal storybook art (feat/journal-storybook-art, waves 1-6): notes that
+ * carry an image render it above the title with alt text; all 106 notes
+ * are now illustrated.
  *
  * DISCLOSED CLOCK PIN (journal consolidation, plan §1c): under set
- * rotation the section shows one set of notes per 2-hour window, and
- * only one window in 36 shows all three art notes — so this spec pins
- * the browser clock (installed BEFORE goto, with a runFor(1_000) drain
- * for boot timers, the pattern the journal spec uses) to set index 26,
- * the only set containing all three art notes (taj, opera-house,
- * redeemer). The assertions below therefore exercise all 3 images.
+ * rotation the section shows one set of notes per 2-hour window. This
+ * spec pins the browser clock (installed BEFORE goto, with a
+ * runFor(1_000) drain for boot timers, the pattern the journal spec uses)
+ * to set index 26 so it always asserts against the same deterministic
+ * set (taj, opera-house, redeemer). The pin's original rationale — set 26
+ * being the only window whose notes all had art — is now stale: every
+ * note is illustrated. The pin itself stays for determinism.
  */
 test.setTimeout(240_000);
 
