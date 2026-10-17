@@ -1373,7 +1373,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/giza.webp",
+    "imageAlt": "Storybook drawing of the Great Pyramid of Giza, the largest pyramid for the pharaoh Khufu with the Sphinx, camels and visitors in the desert."
   },
   {
     "id": "cn-tower",
@@ -1386,7 +1388,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/cn-tower.webp",
+    "imageAlt": "Storybook drawing of the CN Tower, the tall communications tower with its observation pod over the Toronto skyline and lake."
   },
   {
     "id": "machu",
@@ -1399,7 +1403,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/machu.webp",
+    "imageAlt": "Storybook drawing of Machu Picchu, the Inca estate of stone terraces and houses on a ridge above the Urubamba River with llamas."
   },
   {
     "id": "fuji",
@@ -1412,7 +1418,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/fuji.webp",
+    "imageAlt": "Storybook drawing of Mount Fuji, the snow-capped volcano cone with cherry blossoms in the foreground."
   },
   {
     "id": "chichen",
@@ -1425,7 +1433,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/chichen.webp",
+    "imageAlt": "Storybook drawing of Chichen Itza, the El Castillo stepped pyramid with the serpent of light on its stair at equinox."
   },
   {
     "id": "stonehenge",
@@ -1438,7 +1448,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/stonehenge.webp",
+    "imageAlt": "Storybook drawing of Stonehenge, the ancient stone circle on Salisbury Plain with sheep grazing at sunrise."
   },
   {
     "id": "neuschwanstein",
@@ -1451,7 +1463,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/neuschwanstein.webp",
+    "imageAlt": "Storybook drawing of Neuschwanstein, the pale fairytale towers above a forest gorge in the Bavarian Alps with swans below."
   },
   {
     "id": "angkor",
@@ -1464,7 +1478,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/angkor.webp",
+    "imageAlt": "Storybook drawing of Angkor Wat, the great temple with its five towers reflected in the lotus pond at sunrise."
   },
   {
     "id": "petra",
@@ -1477,7 +1493,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/petra.webp",
+    "imageAlt": "Storybook drawing of Petra, the Treasury facade carved from the rose-red cliff at the end of the narrow canyon."
   },
   {
     "id": "table-mountain",
@@ -1490,7 +1508,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/table-mountain.webp",
+    "imageAlt": "Storybook drawing of Table Mountain, the flat-topped mountain over Cape Town with the cableway to the plateau."
   },
   {
     "id": "uluru",
@@ -1503,7 +1523,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/uluru.webp",
+    "imageAlt": "Storybook drawing of Uluru, the great red sandstone monolith glowing at sunset with visitors viewing from afar."
   },
   {
     "id": "victoria-falls",
@@ -1516,7 +1538,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/victoria-falls.webp",
+    "imageAlt": "Storybook drawing of Victoria Falls, the Zambezi dropping into the gorge with a huge curtain of spray and rainbows."
   },
   {
     "id": "fushimi",
@@ -1529,7 +1553,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/fushimi.webp",
+    "imageAlt": "Storybook drawing of Fushimi Inari, the tunnel of vermilion gates climbing the mountain with the main shrine at its base."
   },
   {
     "id": "iguazu",
@@ -1542,7 +1568,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/iguazu.webp",
+    "imageAlt": "Storybook drawing of Iguazu Falls, the chain of waterfalls with the Devil's Throat horseshoe at its heart."
   },
   {
     "id": "tongariki",
@@ -1555,7 +1583,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/tongariki.webp",
+    "imageAlt": "Storybook drawing of Ahu Tongariki, the fifteen moai standing in a row on their stone platform facing the sea."
   },
   {
     "id": "potala",
@@ -1568,7 +1598,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/potala.webp",
+    "imageAlt": "Storybook drawing of the Potala Palace, the great palace rising on its sacred hill above Lhasa with pilgrims below."
   },
   {
     "id": "timbuktu",
@@ -1581,7 +1613,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/timbuktu.webp",
+    "imageAlt": "Storybook drawing of Timbuktu, the ancient mud-brick mosques and manuscript library with a camel caravan in the desert."
   },
   {
     "id": "galapagos",
@@ -1594,7 +1628,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/galapagos.webp",
+    "imageAlt": "Storybook drawing of Puerto Ayora, the Galapagos harbor town with boats, giant tortoises and marine iguanas."
   }
 ];
 

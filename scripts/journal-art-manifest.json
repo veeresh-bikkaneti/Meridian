@@ -350,5 +350,77 @@
   "sagrada": {
     "image": "images/journal/sagrada.webp",
     "imageAlt": "Storybook drawing of Sagrada Familia, Gaudi's soaring unfinished basilica with cranes still at work on its stone spires."
+  },
+  "giza": {
+    "image": "images/journal/giza.webp",
+    "imageAlt": "Storybook drawing of the Great Pyramid of Giza, the largest pyramid for the pharaoh Khufu with the Sphinx, camels and visitors in the desert."
+  },
+  "cn-tower": {
+    "image": "images/journal/cn-tower.webp",
+    "imageAlt": "Storybook drawing of the CN Tower, the tall communications tower with its observation pod over the Toronto skyline and lake."
+  },
+  "machu": {
+    "image": "images/journal/machu.webp",
+    "imageAlt": "Storybook drawing of Machu Picchu, the Inca estate of stone terraces and houses on a ridge above the Urubamba River with llamas."
+  },
+  "fuji": {
+    "image": "images/journal/fuji.webp",
+    "imageAlt": "Storybook drawing of Mount Fuji, the snow-capped volcano cone with cherry blossoms in the foreground."
+  },
+  "chichen": {
+    "image": "images/journal/chichen.webp",
+    "imageAlt": "Storybook drawing of Chichen Itza, the El Castillo stepped pyramid with the serpent of light on its stair at equinox."
+  },
+  "stonehenge": {
+    "image": "images/journal/stonehenge.webp",
+    "imageAlt": "Storybook drawing of Stonehenge, the ancient stone circle on Salisbury Plain with sheep grazing at sunrise."
+  },
+  "neuschwanstein": {
+    "image": "images/journal/neuschwanstein.webp",
+    "imageAlt": "Storybook drawing of Neuschwanstein, the pale fairytale towers above a forest gorge in the Bavarian Alps with swans below."
+  },
+  "angkor": {
+    "image": "images/journal/angkor.webp",
+    "imageAlt": "Storybook drawing of Angkor Wat, the great temple with its five towers reflected in the lotus pond at sunrise."
+  },
+  "petra": {
+    "image": "images/journal/petra.webp",
+    "imageAlt": "Storybook drawing of Petra, the Treasury facade carved from the rose-red cliff at the end of the narrow canyon."
+  },
+  "table-mountain": {
+    "image": "images/journal/table-mountain.webp",
+    "imageAlt": "Storybook drawing of Table Mountain, the flat-topped mountain over Cape Town with the cableway to the plateau."
+  },
+  "uluru": {
+    "image": "images/journal/uluru.webp",
+    "imageAlt": "Storybook drawing of Uluru, the great red sandstone monolith glowing at sunset with visitors viewing from afar."
+  },
+  "victoria-falls": {
+    "image": "images/journal/victoria-falls.webp",
+    "imageAlt": "Storybook drawing of Victoria Falls, the Zambezi dropping into the gorge with a huge curtain of spray and rainbows."
+  },
+  "fushimi": {
+    "image": "images/journal/fushimi.webp",
+    "imageAlt": "Storybook drawing of Fushimi Inari, the tunnel of vermilion gates climbing the mountain with the main shrine at its base."
+  },
+  "iguazu": {
+    "image": "images/journal/iguazu.webp",
+    "imageAlt": "Storybook drawing of Iguazu Falls, the chain of waterfalls with the Devil's Throat horseshoe at its heart."
+  },
+  "tongariki": {
+    "image": "images/journal/tongariki.webp",
+    "imageAlt": "Storybook drawing of Ahu Tongariki, the fifteen moai standing in a row on their stone platform facing the sea."
+  },
+  "potala": {
+    "image": "images/journal/potala.webp",
+    "imageAlt": "Storybook drawing of the Potala Palace, the great palace rising on its sacred hill above Lhasa with pilgrims below."
+  },
+  "timbuktu": {
+    "image": "images/journal/timbuktu.webp",
+    "imageAlt": "Storybook drawing of Timbuktu, the ancient mud-brick mosques and manuscript library with a camel caravan in the desert."
+  },
+  "galapagos": {
+    "image": "images/journal/galapagos.webp",
+    "imageAlt": "Storybook drawing of Puerto Ayora, the Galapagos harbor town with boats, giant tortoises and marine iguanas."
   }
 }

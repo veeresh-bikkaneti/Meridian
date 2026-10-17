@@ -1,3 +1,23 @@
+## Wave-2 art — WAVE 6 complete (2026-10-17)
+
+18/18 wave-6 ids illustrated (backlog ids 86-103), QA-passed (all first try), post-processed (max width 1200, WebP q80, all < 200 KB), merged via scripts/journal-art-manifest.json + generator (byte-stable apart from new art fields; 106 art notes merged).
+
+| id | KB | id | KB |
+|---|---|---|---|
+| giza | 116 | cn-tower | 174 |
+| machu | 139 | fuji | 140 |
+| chichen | 190 | stonehenge | 137 |
+| neuschwanstein | 167 | angkor | 190 |
+| petra | 171 | table-mountain | 167 |
+| uluru | 154 | victoria-falls | 166 |
+| fushimi | 196 | iguazu | 163 |
+| tongariki | 128 | potala | 168 |
+| timbuktu | 156 | galapagos | 170 |
+
+Wave 6 ids (dataset order): giza, cn-tower, machu, fuji, chichen, stonehenge, neuschwanstein, angkor, petra, table-mountain, uluru, victoria-falls, fushimi, iguazu, tongariki, potala, timbuktu, galapagos.
+No notes skipped; no image failed QA twice.
+All 103 wave-2 notes now illustrated — 106/106 total across the journal.
+
 ## Wave-2 art — WAVE 5 complete (2026-10-17)
 
 17/17 wave-5 ids illustrated (backlog ids 69-85), QA-passed (all first try), post-processed (max width 1200, WebP q80, all < 200 KB), merged via scripts/journal-art-manifest.json + generator (byte-stable apart from new art fields; 88 art notes merged).
@@ -95,7 +115,7 @@ haymarket (wave 1): pretty and text-free, but reads as a generic European market
 | union-plaza | 187 | |
 
 Wave 1 ids (dataset order): capitol, memorial-stadium, haymarket, pinnacle, 27th-and-o, centennial-mall, sunken-gardens, childrens-zoo, 48th-and-o, holmes-lake, pioneers-park, wilderness-park, antelope-park, oak-lake, wyuka, lincoln-airport, union-plaza.
-No notes skipped; no image failed QA twice. Wave 6 NOT started.
+No notes skipped; no image failed QA twice. All 6 waves complete.
 
 # BRANCH_STATUS — feat/journal-consolidation
 
