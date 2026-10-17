@@ -1,3 +1,26 @@
+## Wave-2 art — WAVE 2 complete (2026-10-17)
+
+17/17 wave-2 ids illustrated (backlog ids 18-34), QA-passed (all first try), post-processed (max width 1200, WebP q80, all < 200 KB), merged via scripts/journal-art-manifest.json + generator (byte-stable apart from new art fields; 37 art notes merged).
+
+| id | KB | id | KB |
+|---|---|---|---|
+| gateway | 140 | southpointe | 131 |
+| havelock | 160 | college-view | 196 |
+| university-place | 180 | near-south | 188 |
+| hyde | 125 | robbers-cave | 139 |
+| star-city-shores | 188 | quilt-museum | 171 |
+| woods-park | 177 | conestoga | 167 |
+| branched-oak | 143 | mahoney | 193 |
+| sac-museum | 142 | seward | 168 |
+| homestead | 143 |  |  |
+
+Wave 2 ids (dataset order): gateway, southpointe, havelock, college-view, university-place, near-south, hyde, robbers-cave, star-city-shores, quilt-museum, woods-park, conestoga, branched-oak, mahoney, sac-museum, seward, homestead.
+No notes skipped; no image failed QA twice.
+
+## Known nit (carried, owner has NOT ordered a regen)
+
+haymarket (wave 1): pretty and text-free, but reads as a generic European market street; the note’s warehouse-district/railyard character is missing. Kept as-is per mission; do not hold any wave for it.
+
 ## Wave-2 art — WAVE 1 complete (2026-10-17)
 
 17/103 backlog ids illustrated, QA-passed, post-processed (max width 1200, WebP q80, all < 200 KB), merged via scripts/journal-art-manifest.json + generator (byte-stable apart from new art fields). One regeneration (centennial-mall: first pass drew a domed capitol; Nebraska's is a tower — regenerated with the tower, PASS).
@@ -15,7 +38,7 @@
 | union-plaza | 187 | |
 
 Wave 1 ids (dataset order): capitol, memorial-stadium, haymarket, pinnacle, 27th-and-o, centennial-mall, sunken-gardens, childrens-zoo, 48th-and-o, holmes-lake, pioneers-park, wilderness-park, antelope-park, oak-lake, wyuka, lincoln-airport, union-plaza.
-No notes skipped; no image failed QA twice. Waves 2-6 NOT started — awaiting owner/Chitti spot-check of wave 1.
+No notes skipped; no image failed QA twice. Waves 3-6 NOT started.
 
 # BRANCH_STATUS — feat/journal-consolidation
 

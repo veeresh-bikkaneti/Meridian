@@ -78,5 +78,73 @@
   "union-plaza": {
     "image": "images/journal/union-plaza.webp",
     "imageAlt": "Storybook drawing of Union Plaza, children playing in the splash pad fountains where the old rail yards ran."
+  },
+  "gateway": {
+    "image": "images/journal/gateway.webp",
+    "imageAlt": "Storybook drawing of Gateway Mall, storefronts with striped awnings and a full parking lot under a wide prairie sky."
+  },
+  "southpointe": {
+    "image": "images/journal/southpointe.webp",
+    "imageAlt": "Storybook drawing of SouthPointe Pavilions, open-air shop pavilions with plantings where the city meets farmland."
+  },
+  "havelock": {
+    "image": "images/journal/havelock.webp",
+    "imageAlt": "Storybook drawing of Havelock, historic brick shopfronts with awnings along railroad tracks and a vintage water tower."
+  },
+  "college-view": {
+    "image": "images/journal/college-view.webp",
+    "imageAlt": "Storybook drawing of College View, red-brick college halls with white trim around a green quad and old shade trees."
+  },
+  "university-place": {
+    "image": "images/journal/university-place.webp",
+    "imageAlt": "Storybook drawing of University Place, a heritage streetcar passing a college campus and vintage commercial corner."
+  },
+  "near-south": {
+    "image": "images/journal/near-south.webp",
+    "imageAlt": "Storybook drawing of Near South, older porch houses along a tree-lined street with a winding creek and park."
+  },
+  "hyde": {
+    "image": "images/journal/hyde.webp",
+    "imageAlt": "Storybook drawing of Hyde Observatory, its dome open to a starry sky on the grassy shore of Holmes Lake at dusk."
+  },
+  "robbers-cave": {
+    "image": "images/journal/robbers-cave.webp",
+    "imageAlt": "Storybook drawing of Robber’s Cave, dark cave openings hollowed into sandstone bluffs under twisted trees."
+  },
+  "star-city-shores": {
+    "image": "images/journal/star-city-shores.webp",
+    "imageAlt": "Storybook drawing of Star City Shores water park, winding slides and sparkling pools full of swimmers on a sunny day."
+  },
+  "quilt-museum": {
+    "image": "images/journal/quilt-museum.webp",
+    "imageAlt": "Storybook drawing of the International Quilt Museum, its curved glass galleries hung with colorful patchwork quilts."
+  },
+  "woods-park": {
+    "image": "images/journal/woods-park.webp",
+    "imageAlt": "Storybook drawing of Woods Park, tennis players on the courts beneath big shade trees with children playing on the lawn."
+  },
+  "conestoga": {
+    "image": "images/journal/conestoga.webp",
+    "imageAlt": "Storybook drawing of Conestoga Lake, fishermen and picnickers along the shore with a rowboat at the boat ramp."
+  },
+  "branched-oak": {
+    "image": "images/journal/branched-oak.webp",
+    "imageAlt": "Storybook drawing of Branched Oak Lake, sailboats gliding past a sandy swimming beach with families."
+  },
+  "mahoney": {
+    "image": "images/journal/mahoney.webp",
+    "imageAlt": "Storybook drawing of Eugene T. Mahoney State Park, a timber lodge with a pool, trails, and tents above the river valley."
+  },
+  "sac-museum": {
+    "image": "images/journal/sac-museum.webp",
+    "imageAlt": "Storybook drawing of the Strategic Air Command & Aerospace Museum, vintage bombers on the grass before the big hangar with a rocket on the hill."
+  },
+  "seward": {
+    "image": "images/journal/seward.webp",
+    "imageAlt": "Storybook drawing of Seward, the courthouse square decked in Fourth of July bunting with families picnicking on the lawn."
+  },
+  "homestead": {
+    "image": "images/journal/homestead.webp",
+    "imageAlt": "Storybook drawing of Homestead National Historical Park, a log cabin in tallgrass prairie with wildflowers and garden beds."
   }
 }

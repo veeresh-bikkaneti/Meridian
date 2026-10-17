@@ -308,7 +308,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/gateway.webp",
+    "imageAlt": "Storybook drawing of Gateway Mall, storefronts with striped awnings and a full parking lot under a wide prairie sky."
   },
   {
     "id": "southpointe",
@@ -321,7 +323,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/southpointe.webp",
+    "imageAlt": "Storybook drawing of SouthPointe Pavilions, open-air shop pavilions with plantings where the city meets farmland."
   },
   {
     "id": "havelock",
@@ -334,7 +338,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/havelock.webp",
+    "imageAlt": "Storybook drawing of Havelock, historic brick shopfronts with awnings along railroad tracks and a vintage water tower."
   },
   {
     "id": "college-view",
@@ -347,7 +353,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/college-view.webp",
+    "imageAlt": "Storybook drawing of College View, red-brick college halls with white trim around a green quad and old shade trees."
   },
   {
     "id": "university-place",
@@ -360,7 +368,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/university-place.webp",
+    "imageAlt": "Storybook drawing of University Place, a heritage streetcar passing a college campus and vintage commercial corner."
   },
   {
     "id": "near-south",
@@ -373,7 +383,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/near-south.webp",
+    "imageAlt": "Storybook drawing of Near South, older porch houses along a tree-lined street with a winding creek and park."
   },
   {
     "id": "hyde",
@@ -386,7 +398,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/hyde.webp",
+    "imageAlt": "Storybook drawing of Hyde Observatory, its dome open to a starry sky on the grassy shore of Holmes Lake at dusk."
   },
   {
     "id": "robbers-cave",
@@ -399,7 +413,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/robbers-cave.webp",
+    "imageAlt": "Storybook drawing of Robber’s Cave, dark cave openings hollowed into sandstone bluffs under twisted trees."
   },
   {
     "id": "star-city-shores",
@@ -412,7 +428,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/star-city-shores.webp",
+    "imageAlt": "Storybook drawing of Star City Shores water park, winding slides and sparkling pools full of swimmers on a sunny day."
   },
   {
     "id": "quilt-museum",
@@ -425,7 +443,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/quilt-museum.webp",
+    "imageAlt": "Storybook drawing of the International Quilt Museum, its curved glass galleries hung with colorful patchwork quilts."
   },
   {
     "id": "woods-park",
@@ -438,7 +458,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/woods-park.webp",
+    "imageAlt": "Storybook drawing of Woods Park, tennis players on the courts beneath big shade trees with children playing on the lawn."
   },
   {
     "id": "conestoga",
@@ -451,7 +473,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/conestoga.webp",
+    "imageAlt": "Storybook drawing of Conestoga Lake, fishermen and picnickers along the shore with a rowboat at the boat ramp."
   },
   {
     "id": "branched-oak",
@@ -464,7 +488,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/branched-oak.webp",
+    "imageAlt": "Storybook drawing of Branched Oak Lake, sailboats gliding past a sandy swimming beach with families."
   },
   {
     "id": "mahoney",
@@ -477,7 +503,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/mahoney.webp",
+    "imageAlt": "Storybook drawing of Eugene T. Mahoney State Park, a timber lodge with a pool, trails, and tents above the river valley."
   },
   {
     "id": "sac-museum",
@@ -490,7 +518,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/sac-museum.webp",
+    "imageAlt": "Storybook drawing of the Strategic Air Command & Aerospace Museum, vintage bombers on the grass before the big hangar with a rocket on the hill."
   },
   {
     "id": "seward",
@@ -503,7 +533,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "cited",
       "basis": "Named source recorded in the catalog"
-    }
+    },
+    "image": "images/journal/seward.webp",
+    "imageAlt": "Storybook drawing of Seward, the courthouse square decked in Fourth of July bunting with families picnicking on the lawn."
   },
   {
     "id": "homestead",
@@ -516,7 +548,9 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
-    }
+    },
+    "image": "images/journal/homestead.webp",
+    "imageAlt": "Storybook drawing of Homestead National Historical Park, a log cabin in tallgrass prairie with wildflowers and garden beds."
   },
   {
     "id": "pawnee-lake",
