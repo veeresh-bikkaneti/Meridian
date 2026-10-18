@@ -52,7 +52,7 @@ work as 131d7ba / 31ac00d before the rebase.)
   artifact: state spec 3/3 passed; scout spec 4/4 passed **on this run**
   (see the caveat below)
 
-## The one open item (test-side, not product)
+## The panel BLOCK (test-side, not product) — RESOLVED in this round
 
 The 12-role panel's Senior Dev BLOCK: the admin-1 assertion in
 `tests/e2e/scout-narrow-repro.zoom-space.spec.ts` watches the network
@@ -94,6 +94,14 @@ assumed otherwise, so the first swap failed with "received must not be
 null nor undefined"; fixed by capturing layers in an outer variable inside
 the poll callback. The spec comment documents this.
 
+**Owner disposition (2026-10-18):** the seam deviated from the fix
+prompt's "no new production seams" line, so it was flagged for the owner.
+The owner directed Chitti to take over the fix round and finish it ("Can
+you take over and fix", 2026-10-18). The seam stays as the accepted
+remedy: read-only, inert in production, mirrors the existing
+`__spotScreen`/`__project` seams, and verified end-to-end by Chitti's
+independent E2E run from origin.
+
 ## Gates (final head, 2026-10-18 fix round 2)
 
 - `npx tsc --noEmit` — clean
@@ -106,8 +114,10 @@ the poll callback. The spec comment documents this.
   variation-ring/line, region-fill/casing/outline — positive control
   present, `boundary-admin1` absent. The invariant holds on real map state.
 
-**Pending:** push to origin (remote auth broken from this VM — needs a
-fresh token); Chitti re-verifies from origin; owner merges only.
+**Push:** done — remote tip `b94903a`. **Chitti re-verified from origin
+(2026-10-18):** tsc clean, lint-cards GATE PASSED, npm test 1358 pass /
+0 fail, build green, E2E zoom-space 7/7 on his own independent run.
+Owner merges only.
 
 ## Docs swept (2026-10-18 fix round)
 
@@ -121,10 +131,11 @@ fresh token); Chitti re-verifies from origin; owner merges only.
 
 ## Pending
 
-1. Owner word on the E2E seam (see above).
-2. Then: assertion swap → E2E re-run → Chitti independent review from
-   origin → owner's merge call.
-3. Nobody merges — the PR merges only on the owner's explicit word.
+1. Owner's merge word. Everything else is done: the assertion swap
+   landed, the E2E re-run is green (builder's run and Chitti's
+   independent run from origin both 7/7), and Chitti's re-verification
+   is posted on PR #172.
+2. Nobody merges — the PR merges only on the owner's explicit word.
 
 **Do-not-touch:** donation copy (locked verbatim), storyteller audio/voice
 track, homepage layout, branch protection/rulesets (never lifted).
