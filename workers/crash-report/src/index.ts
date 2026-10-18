@@ -628,7 +628,7 @@ export async function renderDigest(
     }
 
     const from = new Date(prevStart).toISOString().slice(0, 16).replace("T", " ");
-    const to = new Date(prevStart + HOUR_MS).toISOString().slice(0, 16).replace("T", " ");
+    const to = new Date(prevStart + HOUR_MS).toISOString().slice(11, 16);
     return (
       `📊 Meridian telemetry — hourly digest\n` +
       `hour: ${from}–${to} UTC (${grandTotal} events)\n\n` +
