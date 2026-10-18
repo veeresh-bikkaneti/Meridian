@@ -11,7 +11,8 @@ The v1 worker is the older **logging-only** receiver: it validates events
 and writes one structured JSON log line per event (read via
 `wrangler tail`). This worker lives in a **new directory on purpose** —
 the old one is untouched. It accepts the same schema **plus
-`boot_failure`** and forwards alerts instead of logging the full event.
+`boot_failure` and `tile_failed`** and forwards alerts instead of
+logging the full event.
 
 Deploy **one** of them as the `observabilityEndpoint` target, not both.
 
@@ -51,7 +52,7 @@ env)` is exported pure for tests; the default export wires it as `fetch`.
   this the browser blocks the report POST.
 
 Accepted `type` values: `suspected_crash`, `boot_failure`, `js_error`,
-`unhandled_rejection`, `map_error`, `webgl_context_lost`. Required:
+`unhandled_rejection`, `map_error`, `webgl_context_lost`, `tile_failed`. Required:
 `type`, `ts` (finite number, epoch ms), `buildId` (non-empty string).
 Optional fields pass through; the forwarded alert uses only type,
 buildId, edition/region, lastMilestone, and a truncated error
@@ -60,7 +61,7 @@ name/message.
 ## Tests
 
 ```sh
-npm run test:worker        # 16 unit tests (validation, alert builder, rate limiter, CORS)
+npm run test:worker        # 18 unit tests (validation, alert builder, rate limiter, CORS)
 npm run typecheck:worker   # strict tsc on the worker sources
 ```
 
@@ -100,7 +101,11 @@ neither set, the worker accepts and acknowledges events without
 forwarding (`"forwarded":false`), so it is safe to deploy **before**
 secrets exist.
 
-## Go-live (repo owner step — NOT done from this branch)
+## Go-live — DONE (2026-10-17)
+
+The worker is live at `meridian-crash-report.knowledgetest.workers.dev`
+and `public/flags.json` on main points `observabilityEndpoint` at its
+`/ingest`. The procedure below is what was run:
 
 1. Deploy the worker and confirm `/health`.
 2. Set secrets (`wrangler secret put …`) as above.
@@ -115,8 +120,8 @@ secrets exist.
 }
 ```
 
-Until that field is set, the client transport is a complete no-op
-(fail-closed). Do **not** commit the Worker URL into this repo's code —
+The field is set in production (see above); without it, the client
+transport is a complete no-op (fail-closed). Do **not** commit the Worker URL into this repo's code —
 `flags.json` is the only place it belongs.
 
 ## Staging vs production
