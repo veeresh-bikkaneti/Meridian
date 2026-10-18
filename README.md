@@ -73,7 +73,7 @@ The home page carries a Journal: 106 place notes rotating in 36 sets over 2-hour
 
 ### The storyteller and Grandpa's tasting tour
 
-The home page opens with a storyteller mascot who greets visitors with a spoken line (a new greeting each day) and reacts when tapped. Grandpa runs a tasting tour of the home screen — a sip-sized walkthrough of the editions, the journal, and the storyteller for first-time visitors.
+The home page opens with a storyteller mascot who greets visitors with a spoken line (a new greeting each day) and reacts when tapped. Grandpa runs a tasting tour of the home screen — a sip-sized walkthrough of the difficulty picker, the edition cards, and GeoDetective for first-time visitors.
 
 ### Supporting the game
 
