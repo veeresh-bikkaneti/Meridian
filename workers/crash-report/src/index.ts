@@ -36,12 +36,6 @@
  * store COUNTS ONLY, keyed by (UTC hour × type × buildId × edition ×
  * region × os/form device bucket) — no event payloads, no identifiers.
  *
- * Privacy: the forwarded alert carries only type, buildId,
- * edition/region, lastMilestone, the coarse os/form device bucket, and a
- * truncated error name/message — NEVER full payloads, NEVER sessionId,
- * raw UA, precise device facts, coordinates, or stack traces. Log lines
- * carry only type/buildId/edition.
- *
  * CORS: the game is served from https://veeresh-bikkaneti.github.io while
  * this worker lives on workers.dev, so every report POST is cross-origin.
  * `content-type: application/json` is NOT a CORS-safelisted content type,
@@ -54,8 +48,8 @@
  * "send report" button becomes a no-op.
  *
  * Zero runtime dependencies. The pure handler is exported for unit tests
- * (no test file is committed for this worker; exercise it with
- * `npx wrangler dev` + curl, see README.md).
+ * (src/index.test.ts; also exercisable with `npx wrangler dev` + curl,
+ * see README.md).
  */
 
 /** Event types this worker accepts: the v1 set plus `boot_failure` and `tile_failed`. */
