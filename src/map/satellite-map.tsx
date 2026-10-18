@@ -11,7 +11,7 @@ import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-
 import { IMAGERY_NOTICE, imageryView } from "./imagery.ts";
 import { isTap, type PointerTapEndpoint } from "./pin-tap.ts";
 import { clearRegionHighlight, paintRegionHighlight } from "./region-highlight.ts";
-import { bandForZoom, clearBoundaryBands, paintBoundaryBand } from "./boundary-bands.ts";
+import { bandForMode, clearBoundaryBands, paintBoundaryBand } from "./boundary-bands.ts";
 import {
   buildRegionIndex,
   lookupRegion,
@@ -20,7 +20,7 @@ import {
 import { mountStarfield } from "./starfield.ts";
 import { buildScoutStyle } from "./scout-style.ts";
 import { ScoutFallbackMap } from "./scout-fallback.tsx";
-import { isCoarsePointer, mapOptionsForDevice, SCOUT_MAX_ZOOM_FLAT, SCOUT_MAX_ZOOM_GLOBE } from "./map-options.ts";
+import { isCoarsePointer, mapOptionsForDevice, settleZoomCap, SCOUT_MAX_ZOOM_FLAT, SCOUT_MAX_ZOOM_GLOBE } from "./map-options.ts";
 import type { MapMode } from "./capability.ts";
 import { emitTileFailed, emitWebglContextLost, recordMilestone, recordTileErrors } from "@/lib/observability";
 import { createTapTracker } from "./tap-tracker.ts";
@@ -211,8 +211,9 @@ function computeSettleZoom(
   map: Map,
   bounds: [number, number, number, number],
   edition: "state" | "country",
+  mapMode: MapMode,
 ): number {
-  const cap = edition === "state" ? 6.5 : 5.0;
+  const cap = settleZoomCap(edition, mapMode);
   map.resize();
   const el = map.getContainer();
   const pad = Math.max(0, Math.round(Math.min(el.clientWidth, el.clientHeight) * 0.15));
@@ -861,8 +862,8 @@ export function SatelliteMap(props: {
             },
       center: isRestore ? restoreView.center : [0, 0],
       zoom: isRestore ? restoreView.zoom : 1,
-      // PBI-2: Scout Map bounds zoom-space per projection (3 flat / 2 globe);
-      // full mode keeps the existing behavior exactly.
+      // PBI-2: Scout Map bounds zoom-space per projection (flat / globe caps
+      // from map-options.ts); full mode keeps the existing behavior exactly.
       maxZoom:
         mapMode === "scout"
           ? edition === "globe"
@@ -1478,8 +1479,12 @@ export function SatelliteMap(props: {
       setZoom(Math.round(map.getZoom()));
       // Progressive boundary reveal (F2): update the admin-boundary band
       // for the new zoom. Static — no transitions (reduced-motion safe).
+      // Scout Map never loads the admin-1 band: the ~1.6 MB of lazy
+      // admin-1 geometry would land on exactly the weak devices Scout
+      // exists for. Scout's own outline style already draws country
+      // borders, so "countries" is the finest band it ever paints.
       try {
-        paintBoundaryBand(map, bandForZoom(map.getZoom()));
+        paintBoundaryBand(map, bandForMode(map.getZoom(), mapMode));
       } catch (e) {
         // Style not ready yet — the band paints on the next zoomend.
         // Persistent failures (corrupt data, API misuse) are logged in dev.
@@ -1516,8 +1521,9 @@ export function SatelliteMap(props: {
       if (mapMode !== "scout") dispatchTile({ type: "map-load" });
       // Progressive boundary reveal (F2): paint the initial band for the
       // opening zoom. The style is parsed now, so addSource/addLayer are safe.
+      // (Scout clamp: see the zoomend handler above — no admin-1 in Scout.)
       try {
-        paintBoundaryBand(map, bandForZoom(map.getZoom()));
+        paintBoundaryBand(map, bandForMode(map.getZoom(), mapMode));
       } catch (e) {
         // Non-fatal — the band paints on the next zoomend. Log in dev.
         if (import.meta.env.DEV) {
@@ -1581,7 +1587,11 @@ export function SatelliteMap(props: {
       // highlight — the controller owns the whole beat.
       executeIntents(controller.requestNarrow(null, GLOBE_HOME.zoom));
     } else if (dto) {
-      const settleZoom = computeSettleZoom(map, dto.bounds, edition);
+      // The intro must target a zoom the camera can actually reach: in
+      // Scout Map the flat maxZoom is the mode cap (SCOUT_MAX_ZOOM_FLAT),
+      // so an uncapped settle zoom would clamp mid-flight, desync the
+      // zoom readout, and leave the + button dead at the cap.
+      const settleZoom = computeSettleZoom(map, dto.bounds, edition, mapMode);
       executeIntents(controller.requestNarrow(dto, settleZoom));
       // Paint-highlight is emitted by the controller at narrow completion
       // (not at 70% of the beat — one fewer timer input per the sibling
@@ -1761,7 +1771,9 @@ export function SatelliteMap(props: {
       data-zoom={zoom}
       data-map-mode={props.mapMode === "scout" ? "scout" : "full"}
       data-max-zoom={
-        props.mapMode === "scout" ? (props.mode === "flat" ? "3" : "2") : "8"
+        props.mapMode === "scout"
+          ? String(props.mode === "flat" ? SCOUT_MAX_ZOOM_FLAT : SCOUT_MAX_ZOOM_GLOBE)
+          : "8"
       }
       data-center-lng={center.lng.toFixed(4)}
       data-center-lat={center.lat.toFixed(4)}

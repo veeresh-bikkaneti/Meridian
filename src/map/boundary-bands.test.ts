@@ -144,3 +144,19 @@ test("clearBoundaryBands removes all layers and sources", async () => {
   assert.equal(map.layers.size, 0, "all layers removed");
   assert.equal(map.sources.size, 0, "all sources removed");
 });
+
+test("bandForMode: scout never paints admin-1 (no lazy geometry on weak devices)", async () => {
+  const { bandForMode } = await import("./boundary-bands.ts");
+  assert.equal(bandForMode(8, "scout"), "countries");
+  assert.equal(bandForMode(6, "scout"), "countries");
+  assert.equal(bandForMode(4, "scout"), "countries");
+  assert.equal(bandForMode(2, "scout"), "continents");
+});
+
+test("bandForMode: full mode unchanged", async () => {
+  const { bandForMode } = await import("./boundary-bands.ts");
+  assert.equal(bandForMode(8, "full"), "admin1");
+  assert.equal(bandForMode(6, "full"), "admin1");
+  assert.equal(bandForMode(4, "full"), "countries");
+  assert.equal(bandForMode(2, "full"), "continents");
+});
