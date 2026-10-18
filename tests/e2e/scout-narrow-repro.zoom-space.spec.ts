@@ -142,12 +142,27 @@ test("scout mode: globe reveal framing never exceeds the globe cap", async ({
   // Tap NEAR the true spot so the pin+spot framing wants to zoom IN past
   // the scout-globe cap: on the old code (reveal maxZoom 4) the target
   // exceeds the camera cap of 2 (mid-jump clamp + desync); fixed code
-  // clamps the framing to 2.
+  // clamps the framing to 2. Candidate offsets are probed for a point the
+  // tap actually hits on the map canvas (not the question bubble or a
+  // transient pill) — a blind tap there flaps, as tapHitsMap documents.
+  const { tapHitsMap } = await import("./helpers");
   const spot = await spotViewportPoint(page);
   console.log("SPOT:", spot);
-  const tx = spot ? spot.x + 40 : 80;
-  const ty = spot ? spot.y + 40 : 700;
-  await page.mouse.click(tx, ty);
+  let tapped = false;
+  if (spot) {
+    for (const [dx, dy] of [[40, 40], [-40, 40], [40, -40], [-40, -40], [60, 0], [0, 60]] as const) {
+      const tx = spot.x + dx;
+      const ty = spot.y + dy;
+      if (tx < 8 || tx > 382 || ty < 120 || ty > 800) continue;
+      if (await tapHitsMap(page, tx, ty)) {
+        await page.mouse.click(tx, ty);
+        tapped = true;
+        console.log("TAPPED AT:", tx, ty);
+        break;
+      }
+    }
+  }
+  expect(tapped, "found a near-spot tap point on the map canvas").toBe(true);
   const drop = page.getByRole("button", { name: /drop|place/i });
   await expect(drop).toBeEnabled({ timeout: 15_000 });
   await drop.click();
