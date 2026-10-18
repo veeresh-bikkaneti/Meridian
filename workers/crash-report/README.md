@@ -96,7 +96,7 @@ that type+hour — exactly one, even if the count keeps climbing:
 ```
 🚨 Meridian telemetry alert
 type: tile_failed crossed the hiccup threshold (20/hour across builds)
-hour: 2026-10-18 02 UTC · counts: 22 total (f331846 ×20, 50122c6 ×2)
+hour: 2026-10-18T02 UTC · counts: 22 total (f331846 ×20, 50122c6 ×2)
 one alert per type+hour — further events this hour only raise the counts
 ```
 
@@ -204,8 +204,16 @@ still open — do NOT change the release method here):
 3. Set secrets (`wrangler secret put …`) as above.
 4. Verify: send one `tile_failed` event — it must be counted and NOT
    forwarded individually (`{"ok":true,"forwarded":false,"counted":true}`);
-   the next hourly digest should include it. The existing production
+   the next hourly digest should include it. (`counted:true` requires
+   step 1's binding — if you skipped step 1, expect `counted:false`
+   until the binding is wired.) The existing production
    endpoint already set in `public/flags.json` does not change.
+
+**Rollback:** deploy the previous worker version (Cloudflare version
+history) or `git revert` + redeploy — hiccup-class events then resume
+individual forwarding, exactly the pre-Phase-1 behavior. The KV
+buckets are inert hour-keyed counters: they need no cleanup and can
+stay bound.
 
 Dry-run before deploy (catches validation mistakes locally):
 

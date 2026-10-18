@@ -205,6 +205,40 @@ test("counting: increments per dimension", async () => {
   assert.equal(js.builds["abc123"], 1);
 });
 
+test("telemetry: hostile event leaks nothing into bucket, threshold alert, or digest", async () => {
+  const { map, store } = memoryStore();
+  const t0 = Date.UTC(2026, 9, 18, 2, 30, 0); // 2026-10-18T02:30Z
+  const hostile = validEvent({
+    type: "tile_failed",
+    buildId: "f331846",
+    edition: "country",
+    regionId: "united-states",
+    sessionId: "SECRET-SESSION",
+    device: { os: "linux", form: "desktop", ua: "SECRET-UA", gpu: "SECRET-GPU" },
+    breadcrumb: { history: [{ name: "SECRET-TRAIL", at: 1 }] },
+    lat: "SECRET-COORDS",
+  });
+  const cfg = thresholdConfig({});
+  let alertText = "";
+  for (let i = 0; i < 10; i++) {
+    const r = await recordTelemetry(store, hostile as never, t0, cfg);
+    assert.equal(r.counted, true);
+    if (r.alertText) alertText = r.alertText;
+  }
+  // Non-vacuous: the per-build threshold fired and all three surfaces
+  // really do carry this event type's data.
+  assert.ok(alertText.includes("tile_failed"), "threshold alert fired");
+  const rawBucket = [...map.values()].join("\n");
+  assert.ok(rawBucket.includes('"total":10'), "bucket counted all 10");
+  const digest = await renderDigest(store, t0 + HOUR_MS + 15 * 60_000);
+  assert.ok(digest && digest.includes("tile_failed 10"), "digest rendered the counts");
+  for (const secret of ["SECRET-SESSION", "SECRET-UA", "SECRET-GPU", "SECRET-TRAIL", "SECRET-COORDS"]) {
+    assert.ok(!rawBucket.includes(secret), `bucket leaked: ${secret}`);
+    assert.ok(!alertText.includes(secret), `threshold alert leaked: ${secret}`);
+    assert.ok(!(digest ?? "").includes(secret), `digest leaked: ${secret}`);
+  }
+});
+
 test("crash-class event: counted AND forwarded immediately, unchanged format", async () => {
   const { map } = memoryStore();
   globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {

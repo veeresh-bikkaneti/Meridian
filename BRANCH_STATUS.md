@@ -5,9 +5,9 @@ telemetry upgrade — make the crash-report worker count events, tier
 severity, and post digests, so bursts are distinguishable from
 background noise without collecting any identity. Worker-side ONLY.
 
-**Base:** `origin/main` @ `f331846` (PR #169). Main has since advanced
-(PR #170 docs refresh, `6817186`); merge will need a rebase — note the
-MERGE NOTE below.
+**Base:** `origin/main` @ `6817186` (PR #170 docs refresh). The branch
+was rebased onto it mid-build (commit `a6a9aa9`; `6817186` is an
+ancestor of HEAD — verified by the review panel); no rebase is pending.
 
 **Scope:** `workers/crash-report/` only (code + README + wrangler.toml).
 NO client/app changes (`src/`, `public/` untouched). NO deployment —
@@ -51,10 +51,11 @@ question is NOT resolved here.
   tiering, counting per dimension, crash-forwards/hiccup-doesn't,
   threshold exact-once (both rules) + env override, digest renders /
   anomaly / silent-on-zero / no-webhook, fail-open ×2).
-- `npm run typecheck:worker` — pending (run before PR).
-- Root cross-impact (pending): `npx tsc --noEmit`, `npm test`,
-  `node scripts/lint-cards.mjs` — this branch touches no app code;
-  gates run as verification only.
+- `npm run typecheck:worker` — **clean.**
+- Root cross-impact — **all green**: `npx tsc --noEmit` clean,
+  `npm test` 0 failures (799 + 1351), `node scripts/lint-cards.mjs`
+  GATE PASSED, `npm run build:pages` green. (Independently reproduced
+  by Chitti and Scrum Squad 3 at tip `09d57d3`.)
 
 ## Deploy steps for the owner (after merge; PR body repeats this)
 
@@ -68,13 +69,12 @@ question is NOT resolved here.
 
 ## MERGE NOTE
 
-This branch replaces `BRANCH_STATUS.md` (the composite wave-2 log at
-this branch's base) with this branch record, per repo convention (each
-feature branch carries its own). Main has since cured that file (PR
-#170) — a rebase will conflict on it; resolution: keep THIS branch's
-record (the convention: the branch's BRANCH_STATUS describes the
-branch). On merge the file becomes this branch's record — the next
-branch rewrites it again.
+This branch replaces `BRANCH_STATUS.md` with this branch record, per
+repo convention (each feature branch carries its own). The mid-build
+rebase onto `6817186` conflicted on this file and the worker README;
+both were resolved toward this branch's record + PR #170's framing
+(commits `a6a9aa9`, `09d57d3`). On merge the file becomes this branch's
+record — the next branch rewrites it again.
 
 **Do-not-touch:** client code, `public/flags.json`, the release
 method, secrets. Nobody merges — owner merges on his word.

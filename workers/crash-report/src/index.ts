@@ -33,8 +33,9 @@
  * truncated error name/message — NEVER full payloads, NEVER sessionId,
  * raw UA, precise device facts, coordinates, or stack traces. Log lines
  * carry only type/buildId/edition. The Phase 1 counters (Workers KV)
- * store COUNTS ONLY, keyed by (UTC hour × type × buildId × edition ×
- * region × os/form device bucket) — no event payloads, no identifiers.
+ * store COUNTS ONLY in buckets keyed by (UTC hour × type), broken down
+ * inside the value by buildId × edition × region × os/form device
+ * bucket — no event payloads, no identifiers.
  *
  * CORS: the game is served from https://veeresh-bikkaneti.github.io while
  * this worker lives on workers.dev, so every report POST is cross-origin.
