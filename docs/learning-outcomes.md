@@ -1,13 +1,13 @@
 # Learning outcomes — design (Phase 1)
 
-**Status:** design doc; Phase 2 prototype implemented on `feat/learning-outcomes`
-behind the `learningOutcomes` flag (default `false`) — see `src/game/learning.ts`,
+**Status:** LIVE in production — `learningOutcomes: true` in
+`public/flags.json` (flipped on 2026-10-04, PR #45); the
+`feat/learning-outcomes` branch is merged and gone. See `src/game/learning.ts`,
 the hook in `onConfirm()` (`src/components/game-app.tsx`), and the growth
 surfaces (`ResultCard` growth line, `RunSummaryCard` "My growth" section).
 Decisions marked `[DECISION — Veeresh to rule]` were built at this doc's
 recommendations (coordinator directive, 2026-10-03); Veeresh's rulings may
 revise them.
-**Branch:** `feat/learning-outcomes` · **flag:** `learningOutcomes` (ships dark, default `false`).
 
 > **Product philosophy (Veeresh, 2026-10-03):** "user experience, user engagement,
 > and learning outcomes — not just the game. Our users are players who want to
@@ -309,6 +309,10 @@ with tests; violation is a merge-blocker:
 
 ## 8. Flag plan (follows `docs/feature-flags.md` exactly)
 
+> **Shipped 2026-10-04 (PR #45):** the plan below is executed history —
+> `learningOutcomes` is ON in production. The branch is merged and gone;
+> steps 1–4 are kept as the record of how it shipped.
+
 1. **Register:** add `"learningOutcomes"` to the `FlagName` union in
    `src/lib/flags.ts` and to `FLAG_DEFAULTS` with **`false`** — the default
    MUST equal current production behavior (no records, no growth UI), per the
@@ -363,8 +367,8 @@ behavior — no deletion required to make the app safe).
   and the signals — not fast statistics.
 - **Records are device-local.** A player on two devices has two learning
   histories. Merging is out of scope (no backend, by guarantee).
-- **The flag is the experiment.** Until Veeresh rules on the decisions above
-  and flips `learningOutcomes`, nothing here touches production behavior.
+- **The flag shipped ON 2026-10-04 (PR #45).** Players build per-place
+  learning records from their next boot; the growth surfaces are live.
 
 ---
 

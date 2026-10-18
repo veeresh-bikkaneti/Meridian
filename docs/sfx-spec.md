@@ -1,6 +1,7 @@
 # Meridian SFX Spec — 100% Web Audio, Zero Assets
 
 **Scope:** All sound synthesized at runtime via the Web Audio API. No audio files, no downloads, no CDN, no middleware, no music bed.
+This spec covers Web Audio **game SFX only** — the storyteller narration clips are a separate system (see handbook ch04).
 **Owner:** Game Audio Designer. **Implementer contract:** `src/game/audio/sfx.ts` (single module).
 
 ---

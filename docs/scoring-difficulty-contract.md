@@ -10,13 +10,23 @@ below governs the generated places.
 Difficulty is **recognizability within the edition pool**, scored with a
 MapTap-style multiplier on every place:
 
-| Tier | Name       | Multiplier | Meaning                                              |
-| ---- | ---------- | ---------- | ---------------------------------------------------- |
-| 1    | Easy       | 1x         | Known to most people in the country (world: globally) |
-| 2    | Moderate   | 1.25x      | Known to most people who follow the topic/region      |
-| 3    | Challenging| 1.5x       | Known within the state / nationally aware            |
-| 4    | Hard       | 2x         | Obscure even within the state                        |
-| 5    | Extreme    | 2.5x       | Deep cut — known only to locals or specialists        |
+| Tier | Name          | Multiplier | Meaning                                               |
+| ---- | ------------- | ---------- | ----------------------------------------------------- |
+| 1    | Famous        | 1x         | Known to most people in the country (world: globally) |
+| 2    | Well-known    | 1.25x      | Known to most people who follow the topic/region       |
+| 3    | Everyday      | 1.5x       | Known within the state / nationally aware             |
+| 4    | Lesser-known  | 2x         | Obscure even within the state                         |
+| 5    | Hidden        | 2.5x       | Deep cut — known only to locals or specialists         |
+
+Don't confuse these with the learning paths: Easy / Medium / Hard on the
+edition picker are **dealing paths** (Easy = tiers 1–2, Medium = tiers 2–4,
+Hard = tiers 4–5) — a different vocabulary from the five tier names above.
+
+## Score cap
+
+`src/game/scoring.ts`: `PLACE_SCORE_CAP = 400` — the cap applies to
+base × tier-multiplier × combo; the +15 region bonus is added on top, so
+the per-place max is 415.
 
 Calibration examples from the curated set: Mount Rushmore is tier 1 in the
 South Dakota pool and would be tier 1 anywhere; the Eiffel Tower is tier 1 in
@@ -28,7 +38,8 @@ That tier is used unchanged in every pool the place appears in (globe,
 country, state). The scoring module takes a single `difficulty` per place,
 so the pipeline emits a single number — never a per-edition table.
 
-Target mix across the whole catalog: roughly **15% / 25% / 35% / 20% / 5%**.
+Measured mix across all 124,690 places: **tier1 4.8% / tier2 13.2% /
+tier3 32.1% / tier4 29.7% / tier5 20.3%**.
 Per-pool rule (hard): **every region pool must contain at least one tier ≤ 2
 place** — no pool may open with an impossible question. (Locked by
 `starters.test.ts` for the curated set; the pipeline should assert the same
@@ -36,51 +47,28 @@ for generated pools.)
 
 ## Pipeline heuristic (generated places)
 
-Derive the tier from GeoNames fields, in this order:
+Shipped as `tierFor(pop, fcode)` in `scripts/build-geonames-dataset.mjs`,
+run once over the measured dump (124,690 kept rows):
 
-1. **Population** (primary signal for populated places):
-   - ≥ 1,000,000 → 1
-   - 200,000 – <1,000,000 → 2
-   - 50,000 – <200,000 → 3
-   - 10,000 – <50,000 → 4
-   - < 10,000 → 5
-2. **Admin / capital status** (bumps toward easier):
-   - National capital → 1 (always, regardless of population)
-   - First-order admin capital (state/province capital) → min(current, 2)
-3. **Prominence** (feature classes that punch above their weight):
-   - UNESCO World Heritage sites → 1 or 2 by fame (hand-list; see overrides)
-   - Major natural landmarks (Niagara-class waterfalls, Everest-class peaks,
-     famous canyons/deserts) → 1–2 by fame (hand-list; see overrides)
-   - National parks / monuments → 2
-   - Lighthouses, caves, minor waterfalls, small museums → 4
-4. **Default**: 3. When in doubt, tier 3 — the middle of the pool is the
-   safest place for an uncertain place.
+- `pop >= 100,000` **or** fcode `PPLC` (national capital) → tier 1
+- `pop >= 25,000` **or** fcode `PPLA` (first-order admin capital) → tier 2
+- `pop >= 6,000` → tier 3
+- `pop >= 2,500` → tier 4
+- otherwise → tier 5. Population 0 or missing lands here — fail-closed: a
+  place with no population signal should never deal as Easy.
+- fcode `PPLX` (section of a populated place) is floored at tier 3
+  regardless of population.
 
-Population figures go stale; prefer rank-stability over precision. When a
-place sits near a bracket boundary, prefer the tier matching its fame within
-its home pool.
+No hand-lists: there is no UNESCO/Niagara-style prominence list in the
+shipped pipeline — only the fcode rules above shape the heuristic.
 
-## Override file
+## Hand overrides
 
-`data/difficulty-overrides.json` (repo-root relative — in this
-`meridian-build` checkout; the pipeline must read it from there, not from its
-own working copy) — hand-reviewed corrections that always win over the
-heuristic:
-
-```json
-{
-  "comment": "place-id → difficulty 1-5. Reviewed by hand; pipeline must not overwrite.",
-  "france-eiffel": 1,
-  "globe-puerto-ayora": 5
-}
-```
-
-- Keys are stable place IDs; values are integers 1–5.
-- The pipeline reads this file at import time and applies it **after** the
-  heuristic. Unknown keys are a build error (fail closed: a typo must not
-  silently do nothing).
-- Additions need one human reviewer; the curated 327 are the reference for
-  what each tier feels like.
+There is no `data/difficulty-overrides.json` — the file does not exist.
+The real hand-override path is the **327 curated starters** in
+`src/game/starters.ts`, which carry hand-set `difficulty` values that the
+pipeline never re-derives. Additions need one human reviewer; the curated
+327 are the reference for what each tier feels like.
 
 ## What the pipeline must not do
 
