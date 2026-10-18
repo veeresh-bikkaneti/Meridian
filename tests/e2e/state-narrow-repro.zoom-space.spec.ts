@@ -13,12 +13,16 @@ import {
 } from "./helpers";
 
 /**
- * BUG REPRO: State Nebraska run — the map never zooms in to the edition.
- * Owner report (2026-10-17, live site): whole continent visible, Nebraska
- * gold-highlighted, zoom stuck around the projection-morph band instead of
- * narrowing to the state framing. This spec starts a real State/Nebraska run,
- * lets the intro settle, and reads the camera zoom + a screenshot as the
- * black-box verdict.
+ * BEHAVIOR PIN: State Nebraska run in full mode — the map zooms in to the
+ * edition and frames Nebraska. This runs in full mode and passes
+ * identically on old code (Senior Dev verified 2026-10-17), so it is a
+ * behavior pin, not a regression proof: it locks the framing that the
+ * Scout-mode regression spec (scout-narrow-repro) then checks Scout
+ * against. Owner report (2026-10-17, live site): whole continent visible,
+ * Nebraska gold-highlighted, zoom stuck around the projection-morph band
+ * instead of narrowing to the state framing. This spec starts a real
+ * State/Nebraska run, lets the intro settle, and reads the camera zoom +
+ * a screenshot as the black-box verdict.
  */
 
 test.use({

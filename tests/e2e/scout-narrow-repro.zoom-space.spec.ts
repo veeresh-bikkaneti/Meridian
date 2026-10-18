@@ -219,13 +219,38 @@ test("scout mode: zoom-in works from the settled intro zoom (the reported failur
   expect(afterOut).toBeLessThan(z);
   await page.screenshot({ path: "scout-nebraska-zoombuttons.png" });
 
-  // Scout must never pull the admin-1 boundary band: even at the cap, no
-  // lazy admin-1 geometry may load on weak devices. ne-50m-admin-1 is the
-  // unambiguous marker chunk — only the admin-1 band lazy-loads it.
-  // (states-10m is deliberately NOT matched: region-index shares that
-  // chunk for the intro's region lookup, so it legitimately loads in
-  // Scout; the band's incremental cost is ne-50m-admin-1 + the iso
-  // chunks, all gated by bandForMode.)
+  // What Scout forbids: painting the admin-1 boundary band (the map layer
+  // "boundary-admin1", src/map/boundary-bands.ts: ADMIN1_LAYER_ID). That is
+  // the real invariant — bandForMode() clamps Scout to "countries" at both
+  // paint sites (src/map/satellite-map.tsx:1492 and :1531), and the
+  // boundary-bands unit tests pin it.
+  //
+  // Trap for the next developer: the ne-50m-admin-1 JSON chunk is SHARED.
+  // The boundary band lazy-loads it for the map layer — but so does the
+  // game's reverse-geocoder (src/game/reverse-geocode.ts getNeAdmin1()),
+  // which preloadAdmin1Boundaries() warms on a 10-second timer after every
+  // run start, in every map mode, BY DESIGN (see game-app.tsx). So the
+  // chunk can load in Scout without any band ever painting, and the
+  // network buffer cannot tell the two apart.
+  //
+  // The assertion below watches that network buffer, and it is
+  // machine-speed dependent: fast machines finish the play under 10 s and
+  // pass; slower runs play past the warm tick and fail (4/4 on this VM —
+  // Senior Developer x2, Chitti x2; Chitti's run was 6/1 with every zoom
+  // assertion green and only this marker failing). It must not ship as-is.
+  // The prescribed replacement asserts MAP STATE instead — the
+  // boundary-admin1 source/layer is absent after the map is driven to the
+  // cap — which is timing-immune by construction: the warm preload never
+  // paints, so a run lasting well over 10 s still passes.
+  //
+  // PENDING OWNER WORD: that assertion needs a way to ask the map for its
+  // layers, and the satellite map exposes none today (no __loopMap-style
+  // seam on the wrapper; MapLibre v6 does not hang the map off the DOM).
+  // The fix is a tiny E2E seam on the wrapper element — the same inert
+  // pattern as __spotScreen/__project in satellite-map.tsx — which is a
+  // product-file change, so it is surfaced to the owner rather than made
+  // unilaterally. Until that lands, the network assertion below stays
+  // verbatim and is known to flake on slow machines.
   const admin1Loaded = await page.evaluate(() => {
     const entries = performance.getEntriesByType("resource") as PerformanceResourceTiming[];
     return entries.some((e) => /ne-50m-admin-1/i.test(e.name));

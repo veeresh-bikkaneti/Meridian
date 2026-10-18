@@ -20,18 +20,18 @@ export const COARSE_POINTER_PIXEL_RATIO_CAP = 1.5;
 export const SCOUT_PIXEL_RATIO_CAP = 1;
 /**
  * Scout flat maxZoom — 8, matching full mode's effective flat range. The
- * original lite-mode spec capped flat at 3, but a state edition needs ~5 on
+ * original scout spec capped flat at 3, but a state edition needs ~5 on
  * a phone to frame the region (Rhode Island's fit zoom is ~9); at 3 the
  * intro clamped mid-flight, the state never filled the screen, the zoom
  * readout desynced from the real camera, and the + button died at the cap —
  * the edition was unplayable in Scout Map. 8 doesn't reach every fit zoom,
  * and it doesn't need to: the intro settle cap is 6.5 anyway, and from a
- * framed 6.5 a kid can always zoom the rest of the way by hand. The lite
- * promise is kept by what the cap never touched: DPR 1, zero raster tiles,
- * no starfield, no motion. Raising the cap does NOT pull the admin-1
- * boundary band into Scout — paintBoundaryBand is clamped to "countries"
- * in scout mode (see satellite-map.tsx), so the ~1.6 MB of lazy admin-1
- * geometry never loads on weak devices.
+ * framed 6.5 the player can zoom the rest of the way by hand up to the cap
+ * of 8. Scout stays lightweight through what the cap never touched: DPR 1,
+ * zero raster tiles, no starfield, no motion. Raising the cap does NOT pull
+ * the admin-1 boundary band into Scout — paintBoundaryBand is clamped to
+ * "countries" in scout mode (see satellite-map.tsx), so the ~1.6 MB of
+ * lazy admin-1 geometry never loads on weak devices.
  */
 export const SCOUT_MAX_ZOOM_FLAT = 8;
 export const SCOUT_MAX_ZOOM_GLOBE = 2;
