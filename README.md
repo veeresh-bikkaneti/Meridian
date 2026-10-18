@@ -56,16 +56,16 @@ Sharing uses the device's native share sheet where available and falls back to t
 
 ### GeoDetective — the mystery edition
 
-A fourth edition alongside Globe → Country → State, mounted outside the run machine: **fully unlimited play** — no daily puzzle, no midnight-UTC reset. Mystery places are dealt from a shuffled deck over **387 human-reviewed, validated clue sets** (`public/loop/clues/`); when the deck is exhausted, it reshuffles. Each mystery gets five guesses. Clues unlock in a fixed ladder — Geography → Climate → History → Hook → Giveaway — one new clue per guess. Guesses are map taps: tap a labeled place to open the bottom-sheet confirm, and unlabeled or ocean taps are legitimate guesses too, scored as "Open Water". Every guess is answered with the distance, the direction toward the target, and warmer/colder against the previous guess. Solve streaks persist as `bestStreak`, and the share line shows `🔥 N best streak` when it reaches 2. Progress persists under `meridian.loop.v2` (the v1 daily-era archive is kept, untouched), so a reload mid-game restores the board; the endless-run state is never touched.
+A fourth edition alongside Globe → Country → State, sitting alongside the endless run: **fully unlimited play** — no daily puzzle, no midnight-UTC reset. Mystery places are dealt from a shuffled deck over **387 human-reviewed, validated clue sets** (`public/loop/clues/`); when the deck is exhausted, it reshuffles. Each mystery gets five guesses. Clues unlock in a fixed ladder — Geography → Climate → History → Hook → Giveaway — one new clue per guess. Guesses are map taps: tap a labeled place to open the bottom-sheet confirm, and unlabeled or ocean taps are legitimate guesses too, scored as "Open Water". Every guess is answered with the distance, the direction toward the target, and warmer/colder against the previous guess. Solve streaks persist as `bestStreak`, and the share line shows `🔥 N best streak` when it reaches 2. Progress persists under `meridian.loop.v2` (the v1 daily-era archive is kept, untouched), so a reload mid-game restores the board; the endless-run state is never touched.
 
 The share line reads `meridian geodetective <date>` with a proximity-graded emoji grid — no place names, no distances, no spoilers:
-
-Solving all 387 mysteries earns the full-collection celebration.
 ```
 meridian geodetective October 3
 https://meridian.knowledgetest.workers.dev/
 🟥🟩⬜⬜⬜ solved in 2 · 🔥 2 best streak
 ```
+
+Solving all 387 mysteries earns the full-collection celebration.
 
 ### The Journal
 
@@ -140,8 +140,9 @@ Direct pushes to `main` are blocked — all work goes through branches and pull 
 ```sh
 npx tsc --noEmit        # typecheck must be clean
 npm test                # unit + pipeline tests must pass
+node scripts/lint-cards.mjs  # card-content gate — must print GATE PASSED
 npm run build:pages     # production build must succeed
-npx playwright test     # full E2E suite must pass
+npx playwright test --workers=1  # full E2E suite must pass (serial — parallel runs flake)
 ```
 
 Every code change goes through two reviews: a technical-architecture review and a tone/docs/accessibility review. Nothing merges with a failing gate. Stage named files only (`git add -A` is banned while background jobs may be writing into the tree); push branches promptly — the VM is not durable storage for unpushed work.

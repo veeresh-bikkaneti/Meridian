@@ -23,9 +23,9 @@ Then pick one tiny OPEN issue (not a feature) and walk the full change flow belo
 - **`docs/`** — the permanent record: ADRs, specs, ops runbooks. When a decision gets made, it lands here.
 - **`BRANCH_STATUS.md`** — every feature branch carries one at the repo root. It's the branch's active work flag: done vs pending, updated as work lands, committed and pushed with the work. If you're picking up someone else's branch, read this first — then verify every claim in it independently (chapter 8, §5).
 - **`public/flags.json`** — feature flags. Experimental work must never break production code; flags exist for exactly that reason. (Tier split shipped as `globeTierSplit: true`.)
-- **This handbook** — `~/workspace/your_files/meridian-handbook/`.
+- **This handbook** — `docs/handbook/` in this repo (the copy you're reading). Chitti's VM also keeps a working copy at `~/workspace/your_files/meridian-handbook/`.
 - **Worktrees** — work happens in persistent checkouts under `~/workspace/bench-wt/` (one per branch/PR) and `~/workspace/ci-runner-fix` (ops checkout). Never in `/tmp` — a VM reboot wipes it.
-- **Memory** — `~/MEMORY.md` and `~/memory/` hold the durable record: decisions, dates, commitments, people. `~/memory/groups/scrum-team.md` and `~/memory/people/liz.md` are the relationship files for the two crews you'll interact with. Search them before asking questions that might already be answered.
+- **Memory (Chitti's VM only — not in a fresh clone)** — `~/MEMORY.md` and `~/memory/` hold the durable record: decisions, dates, commitments, people. The in-repo record is `docs/` plus this handbook. `~/memory/groups/scrum-team.md` and `~/memory/people/liz.md` are the relationship files for the two crews you'll interact with. Search them before asking questions that might already be answered.
 
 ---
 

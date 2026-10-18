@@ -115,7 +115,7 @@ the loop loads; navigation never waits for them):
 > "And so the tale ends! What. An. Adventure!"
 
 **Poke lines** (tap the figure → rotates through 5, then repeats; each has a
-`poke-0N.mp3` in the same voice as the greeting):
+`poke-0N.mp3` — assigned to the same voice as the greeting per the #137 ruling):
 
 > "Heh! That tickles my beard."
 > "Careful, explorer — I'm older than these mountains."
@@ -163,7 +163,7 @@ Two pieces of behavior a new agent must not break:
 | Character | Voice | Where used | Status |
 |---|---|---|---|
 | Storyteller | **TruthTeller** | Home greetings (greet-01…06.mp3) | Kept — Veeresh's decision 2026-10-11 (PR #137), zero new work |
-| Storyteller | **am_fenrir** (Kokoro-82M, en-us male) @ speed 1.05 | Story lines: reveal / hook / summary | Live; the game designer's 2026-10-08 pick ("trailer energy"). The poke lines ship in the greeting voice (TruthTeller) — see the poke section |
+| Storyteller | **am_fenrir** (Kokoro-82M, en-us male) @ speed 1.05 | Story lines: reveal / hook / summary | Live; the game designer's 2026-10-08 pick ("trailer energy"). The poke lines are assigned to the greeting voice (TruthTeller, per #137) — but the shipped clips are local Kokoro renders (open bug; see the poke section) |
 | Comet | **avocado_v2:casper** ("confident storyteller") | Comet's daily greetings (greet-01…12.mp3) | Live; original voice, never a celebrity impression |
 | Grandpa | *(no spoken lines — see §2)* | — | — |
 
