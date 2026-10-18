@@ -76,15 +76,38 @@ enforced in product by bandForMode at both paint sites and pinned by the
 boundary-bands unit tests. The E2E must observe map state (the
 `boundary-admin1` source/layer absent), not the network buffer.
 
-**Pending owner word:** the satellite map exposes no handle to its layers
-today — no `__loopMap`-style seam on the wrapper, and MapLibre v6 does not
-hang the map off the DOM. The prescribed map-state assertion needs a tiny
-E2E seam on the map wrapper (the same inert pattern as the existing
-`__spotScreen` / `__project` hooks in satellite-map.tsx). That is a
-product-file change, so it is surfaced rather than made unilaterally.
-Sequence once approved: add seam → swap the assertion (spec comment already
-rewritten with the full shared-chunk story) → re-run E2E → Chitti
-re-verifies from origin → owner merge word.
+**Done (architect fix list, 2026-10-18):** the senior architect reviewed
+clean-slate and approved the seam as the right remedy (no viable seam-free
+alternative; inert; reads ground truth via getStyle().layers). Added the
+`__boundaryBand` seam in src/map/satellite-map.tsx beside the existing
+`__spotScreen`/`__project` hooks (read-only, returns live layer ids, null
+when no map). Swapped the assertion to the poll-with-positive-control
+form: wait until `boundary-countries` is painted at cap 8 (proving the
+paint path ran), then assert `boundary-admin1` is absent — timing-immune
+by construction, since the warm preload never paints. Every other
+assertion in the file is byte-for-byte.
+
+One real bug caught in the swap: `expect.poll(...).not.toBeNull()`
+returns undefined in this repo's Playwright (1.63) — it does NOT hand back
+the polled value (proven empirically). The architect's proposed shape
+assumed otherwise, so the first swap failed with "received must not be
+null nor undefined"; fixed by capturing layers in an outer variable inside
+the poll callback. The spec comment documents this.
+
+## Gates (final head, 2026-10-18 fix round 2)
+
+- `npx tsc --noEmit` — clean
+- `npm test` (both suites: scripts + src) — **1358 pass / 0 fail**
+- `node scripts/lint-cards.mjs` — GATE PASSED
+- `npm run build:pages` — green (VITE_KOFI_URL baked in)
+- Playwright E2E, `zoom-space` project, `--workers=1`, against the built
+  artifact: **7/7 passed** (state 3/3, scout 4/4). The scout run's painted
+  layers: scout-borders, scout-coast, **boundary-countries**,
+  variation-ring/line, region-fill/casing/outline — positive control
+  present, `boundary-admin1` absent. The invariant holds on real map state.
+
+**Pending:** push to origin (remote auth broken from this VM — needs a
+fresh token); Chitti re-verifies from origin; owner merges only.
 
 ## Docs swept (2026-10-18 fix round)
 

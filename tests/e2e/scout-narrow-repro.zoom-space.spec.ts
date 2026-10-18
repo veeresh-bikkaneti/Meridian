@@ -221,40 +221,50 @@ test("scout mode: zoom-in works from the settled intro zoom (the reported failur
 
   // What Scout forbids: painting the admin-1 boundary band (the map layer
   // "boundary-admin1", src/map/boundary-bands.ts: ADMIN1_LAYER_ID). That is
-  // the real invariant — bandForMode() clamps Scout to "countries" at both
+  // the real invariant -- bandForMode() clamps Scout to "countries" at both
   // paint sites (src/map/satellite-map.tsx:1492 and :1531), and the
   // boundary-bands unit tests pin it.
   //
   // Trap for the next developer: the ne-50m-admin-1 JSON chunk is SHARED.
-  // The boundary band lazy-loads it for the map layer — but so does the
+  // The boundary band lazy-loads it for the map layer -- but so does the
   // game's reverse-geocoder (src/game/reverse-geocode.ts getNeAdmin1()),
   // which preloadAdmin1Boundaries() warms on a 10-second timer after every
-  // run start, in every map mode, BY DESIGN (see game-app.tsx). So the
-  // chunk can load in Scout without any band ever painting, and the
-  // network buffer cannot tell the two apart.
+  // run start, in every map mode, BY DESIGN
+  // (src/components/game-app.tsx:1453-1457). So the chunk can load in
+  // Scout without any band ever painting, and the network buffer cannot
+  // tell the two apart. An earlier version of this assertion watched that
+  // buffer and was machine-speed dependent: fast runs finished the play
+  // under 10 s and passed; slower runs played past the warm tick and failed
+  // 4/4 on the review VM. Do not regress to it.
   //
-  // The assertion below watches that network buffer, and it is
-  // machine-speed dependent: fast machines finish the play under 10 s and
-  // pass; slower runs play past the warm tick and fail (4/4 on this VM —
-  // Senior Developer x2, Chitti x2; Chitti's run was 6/1 with every zoom
-  // assertion green and only this marker failing). It must not ship as-is.
-  // The prescribed replacement asserts MAP STATE instead — the
-  // boundary-admin1 source/layer is absent after the map is driven to the
-  // cap — which is timing-immune by construction: the warm preload never
-  // paints, so a run lasting well over 10 s still passes.
+  // So this assertion reads MAP STATE instead, through the __boundaryBand
+  // E2E seam on the .satellite-map wrapper (same inert pattern as
+  // __spotScreen/__project in satellite-map.tsx). It polls until the
+  // positive control is present -- boundary-countries must paint at cap 8
+  // in Scout, proving the paint path ran -- and only then asserts
+  // boundary-admin1 is absent. That ordering matters: a single immediate
+  // read could land before the async paint and false-pass. It is
+  // timing-immune by construction: the warm preload never paints, so a
+  // run lasting well over 10 s still passes.
   //
-  // PENDING OWNER WORD: that assertion needs a way to ask the map for its
-  // layers, and the satellite map exposes none today (no __loopMap-style
-  // seam on the wrapper; MapLibre v6 does not hang the map off the DOM).
-  // The fix is a tiny E2E seam on the wrapper element — the same inert
-  // pattern as __spotScreen/__project in satellite-map.tsx — which is a
-  // product-file change, so it is surfaced to the owner rather than made
-  // unilaterally. Until that lands, the network assertion below stays
-  // verbatim and is known to flake on slow machines.
-  const admin1Loaded = await page.evaluate(() => {
-    const entries = performance.getEntriesByType("resource") as PerformanceResourceTiming[];
-    return entries.some((e) => /ne-50m-admin-1/i.test(e.name));
-  });
-  console.log("ADMIN1 CHUNK LOADED IN SCOUT:", admin1Loaded);
-  expect(admin1Loaded).toBe(false);
+  // Note: expect.poll().not.toBeNull() returns undefined in this repo's
+  // Playwright (1.63) -- it does NOT hand back the polled value -- so the
+  // layers land in an outer variable instead.
+  let layers: string[] | null = null;
+  await expect
+    .poll(async () => {
+      layers = await page.locator(".satellite-map").evaluate((el) => {
+        const hook = (
+          el as unknown as {
+            __boundaryBand?: () => { layers: string[] } | null;
+          }
+        ).__boundaryBand;
+        return hook?.()?.layers ?? null;
+      });
+      return layers;
+    }, { timeout: 30_000 })
+    .not.toBeNull();
+  console.log("PAINTED LAYERS IN SCOUT:", layers);
+  expect(layers).toContain("boundary-countries"); // paint path ran
+  expect(layers).not.toContain("boundary-admin1"); // the invariant
 });

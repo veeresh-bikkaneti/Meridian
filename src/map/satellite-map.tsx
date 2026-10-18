@@ -971,6 +971,23 @@ export function SatelliteMap(props: {
       };
     };
 
+    // E2E seam (mirrors __spotScreen): expose a read-only list of the live
+    // map's layer ids so specs can assert the painted boundary band without
+    // touching the network buffer. Returns null when the map is not up.
+    // Inert in production. Deliberately read-only: it reports actual map
+    // state via getStyle().layers and never recomputes which band *should*
+    // paint — that would test the seam, not the product.
+    (
+      wrapperEl as unknown as {
+        __boundaryBand?: () => { layers: string[] } | null;
+      }
+    ).__boundaryBand = () => {
+      const liveMap = mapRef.current;
+      if (!liveMap) return null;
+      const layers = liveMap.getStyle()?.layers.map((l) => l.id) ?? [];
+      return { layers };
+    };
+
     // Design §2: the starfield mounts behind the map container (first child
     // of the wrapper, own absolute positioning + dark fallback, canvases
     // pointer-events-none). The MapLibre canvas is alpha:true with no
