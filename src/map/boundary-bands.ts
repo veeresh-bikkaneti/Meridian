@@ -55,6 +55,18 @@ export function bandForZoom(zoom: number): BoundaryBand {
   return "admin1";
 }
 
+/**
+ * Mode-aware band: Scout Map never paints the admin-1 band — its ~1.6 MB of
+ * lazy geometry would land on exactly the weak devices Scout exists for.
+ * Scout's own outline style already draws country borders, so "countries"
+ * is the finest band it ever paints. Full mode is untouched.
+ * Pure function — unit-tested.
+ */
+export function bandForMode(zoom: number, mapMode: "full" | "scout"): BoundaryBand {
+  const band = bandForZoom(zoom);
+  return mapMode === "scout" && band === "admin1" ? "countries" : band;
+}
+
 // Layer IDs (prefixed to avoid collisions with the region highlight).
 const CONTINENTS_LAYER_ID = "boundary-continents";
 const COUNTRIES_LAYER_ID = "boundary-countries";
