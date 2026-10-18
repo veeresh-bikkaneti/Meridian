@@ -27,15 +27,30 @@ Chitti is Veeresh's personal AI agent and the orchestrator of this whole system.
 
 Chitti commits as `Chitti <57240576+veeresh-bikkaneti@users.noreply.github.com>` so commits attribute to Veeresh's GitHub account — this avoids the branch-protection trap where ruleset 24141972 demands extra approval for unattributed changes.
 
-### Liz — the content crew
+### Liz's crew — RETIRED 2026-10-17
 
-Liz runs delegated Meridian content work on her own VM with an AI-agent crew, relayed through chat. (Whether Liz is human or AI is not established.) Her delegation boundary is **content pipelines, not mode code**:
+Liz ran delegated Meridian content work on her own VM with an AI-agent crew, relayed through chat. (Whether Liz is human or AI is not established.) Final mission: the journal consolidation (PR #168), closed clean. Her delegation boundary was **content pipelines, not mode code**:
 
 - GeoDetective clue production (387 validated five-tier sets, landed 2026-10-05, PR #59).
 - Wikipedia enrichment (8,797 hooks, PRs #52/#53).
 - Per Veeresh's standing rules (2026-10-04): relay her instructions **verbatim** — paraphrases get misread; ship incrementally; blocked-means-wait; brief/build-plan/prompt updates keep locked rules untouched.
 
 Her reach has extended into product design: the repo record credits her with commissioning the v5 homepage redesign (2026-10-15), which Veeresh accepted with his explicit "Merge #158" on 2026-10-16. Some provenance claims in branch docs need Veeresh's citation (see §7 — branch docs are claims, not facts).
+
+### D's crew — delegated production crew
+
+D's crew took over delegated Meridian production work when Liz's crew
+retired (2026-10-17). First mission: the journal wave-2 storybook art —
+103 drawings, delivered as PR #169 and merged 2026-10-17 on Veeresh's
+word. The standing relay rules transfer in substance: relay instructions
+**verbatim**, ship incrementally, blocked-means-wait.
+
+**Checkpoint protocol (stamped 2026-10-17, the journal era):** delegated
+production missions run in waves with a checkpoint after each phase.
+Chitti verifies the checkpoint **from origin** — branch tip, tree
+contents, counts — before the next phase gets its go; the crew's "done"
+report is a claim until that verification lands. Nobody merges. Branch
+docs (`BRANCH_STATUS.md`) are claims, not facts.
 
 ### The Scrum team — the review panel
 
@@ -72,7 +87,7 @@ The standing playbook is `~/workspace/custom-skills/local-meridian-review-pipeli
 4. **Benchmarks** — build sizes, first load, FPS (target 60, floor 30). **Gate: ≤5% regression vs main on any metric; a regression is a BLOCK.**
 5. **Doc generation** — BRANCH_STATUS corrected if stale; new systems get Mermaid architecture diagrams; behavior changes get changelog entries.
 6. **Autoplan** — merge sequencing across open PRs (never #34), oldest first, dependency-aware, with predicted conflict files.
-7. **Merge (the dance)** — step 0 first: check required-context drift (see §5). Then, if needed, temp-lift protection → `gh pr merge <N> --squash` → restore → `git push origin --delete <branch>` → rebase the next PR if it conflicts.
+7. **Merge (the dance)** — step 0 first: check required-context drift (see §5). Merging requires the owner's explicit per-PR word. Branch protection is NEVER lifted, disabled, or changed without the owner's explicit approval for that specific merge (standing rule, 2026-10-16) — if blocked, stop and ask. The norm is NO lift: #162, #163, #165, #168, and #169 all merged with protection intact. Then: `gh pr merge <N> --squash` → `git push origin --delete <branch>` → rebase the next PR if it conflicts.
 8. **Comprehensive System Overview (post-merge)** — fresh main, conflict-marker grep, tsc, full tests, build, E2E on touched surfaces, `flags.json` validity. HEALTHY / ISSUES FOUND.
 9. **Land-and-deploy** — confirm CSO healthy; deploys auto via GitHub Pages; post-deploy `npm run smoke:crash`; verify live, no console errors.
 
@@ -126,7 +141,7 @@ These are enforced, not suggested. Every one has a story behind it — the story
 - **Package downloads need provenance first** (standing): what it's for, trusted source, security/CVE review via api.osv.dev, size — then explicit approve/deny. No bare approval cards; no approval without the groundwork.
 - **Skill/plugin installs go through the audit gate** (2026-10-05): manual audit trace (network calls, exfiltration, credential harvesting, obfuscation) **AND** NVIDIA SkillSpector static scan, fully local. HIGH/CRITICAL on the actual install surface blocks unless Veeresh overrides after seeing the breakdown. No auto-injection hooks without his explicit approval.
 - **Approval cards carry the why** (2026-09-29): before any approval request fires, explain what it is, where it comes from, why it's needed, and its size — inside the plan he approves, not after. A card without a preceding explanation is a bug. (2026-10-16: Chitti ran a package refresh before explaining it and owned the miss — explain first, always.)
-- **Branch protection is always restored.** After every temp-lift, verify byte-identical — don't assume.
+- **Branch protection is always restored.** In the rare case of an owner-approved lift for a specific merge, verify byte-identical afterward — don't assume. An unapproved lift is never an option.
 - **Flaky E2E:** if parallel runs fail but sequential (`--workers=1`) passes, it's VM flakiness, not a regression. Re-run sequential before declaring a BLOCK.
 - **Preserve the test wrapper** when resolving package.json conflicts — the explicit `node --test ...; S1=$?; ...` chain, in full.
 

@@ -1,5 +1,12 @@
 # Facts Ladder — Pilot Test Strategy
 
+> **Pilot record — NOT merged (2026-10-17).** This strategy tested facts
+> *embedded in the dataset chunks* (`scripts/facts-ladder.mjs` merging a
+> `fact` field per chunk place). Shipped chunks carry **0 embedded
+> facts** — the live fact surface is the separate fact ladder
+> (`factLadder()` in `src/game/generated-places.ts`, data under
+> `src/game/data/geonames/facts/`). Do not conflate the two.
+
 **Branch:** `feat/facts-ladder` · **Scope: PILOT ONLY**
 **Pilot:** 263 facts merged into 2 chunks — `australia.json` (3,299 places → 242 facts:
 172 hook + 70 wikitext) and `arkansas.json` (177 places → 21 facts:

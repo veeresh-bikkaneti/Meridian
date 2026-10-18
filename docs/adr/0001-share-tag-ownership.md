@@ -6,8 +6,10 @@
 
 ## Context
 Share previews (og:*, twitter:*) were missing on GitHub Pages and partial on Workers.
-Two emitters exist: `head()` in src/routes/__root.tsx (both builds) and the platform
-injector in server/middleware/grok-pwa.ts via scripts/grok-pwa-shared.mjs (Workers only).
+Two emitters exist: `src/lib/og/share-meta.ts` (emitting the 12 tags,
+wired into `head()` in `src/routes/__root.tsx`, both builds) and the
+platform injector in server/middleware/grok-pwa.ts via
+scripts/grok-pwa-shared.mjs (Workers only).
 The injector used to strip every share tag and re-inject its own from site.json, so
 Workers served 8 of 12 tags with og:type `x:game` and no og:url or twitter text tags.
 

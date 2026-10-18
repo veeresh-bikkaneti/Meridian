@@ -205,7 +205,7 @@ incl. ODbL share-alike for JP/EG). Rationale is pinned in
   adaptive Douglas-Peucker (≈300 verts/feature; genuine 50m measures
   108–1084, typically 130–260) → slim `{name, iso_a2, bbox}` → TopoJSON
   (topojson-server@3.0.1, OSV clean, quantization 1e4) →
-  `src/map/data/admin1/<iso2>.json` (≈531 KB total). The existing
+  `src/map/data/admin1/<iso2>.json` (672,347 B total (~657 KiB), measured 2026-10-17). The existing
   5-country file property-stripped in place (1.2 MB → 808 KB, geometry
   byte-identical). Build-time verification gate decodes every chunk
   (feature counts, finite bboxes, valid closed rings, vertices in bbox).

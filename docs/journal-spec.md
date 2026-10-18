@@ -119,8 +119,10 @@ matches what ships and is replaced by the inline host below.*
   dialog/overlay** — no `role="dialog"`, no `aria-modal`, no close
   button, and nothing to open or close. Content: eyebrow `Journal`,
   title "What the land remembers", the set's geography line, then the
-  set's notes in order, each: a storybook-art figure first when the
-  note carries one (3 notes carry art today), note title (heading),
+  set's notes in order, each: a storybook-art figure first (all 106 notes
+  carry art since 2026-10-17 — wave 2, PR #169, illustrated the remaining
+  103; art integrates only through `scripts/journal-art-manifest.json` +
+  the dataset generator, never hand-edited), note title (heading),
   its geography eyebrow (e.g. `Lincoln, Nebraska`), the story
   paragraph, and a source line: the citation label as an external
   link (`href` from the catalog, new tab, `rel="noopener noreferrer"`)

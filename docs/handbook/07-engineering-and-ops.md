@@ -42,7 +42,7 @@ Rules every engineer must internalize (`docs/feature-flags.md`):
 From the repo's `AGENTS.md`:
 
 1. `npx tsc --noEmit` — clean
-2. `npm test` — full unit suite green (src suite: 1315 tests; scripts suite: 778, of which 9 skipped, 0 failed — those counts are the standing baseline)
+2. `npm test` — full unit suite green. Report BOTH suite totals per run — counts rot with every test-adding PR, so no frozen number is the standing baseline. Measured at `f331846` (2026-10-17): scripts suite 799 tests (790 pass, 9 skipped, 0 fail); src suite 1351 tests (1351 pass, 0 fail).
 3. `node scripts/lint-cards.mjs` — must print **GATE PASSED** (card-content lint: locked copy, story rules, no hardcoded keys)
 4. `npm run build:pages` — production build green
 5. **Playwright E2E** — `tests/e2e/` specs against the *built artifact*, never dev mode
@@ -94,7 +94,7 @@ Also: **squash is the merge convention**; open the branch and push early/often; 
 ## 7. Known pre-existing issues (not regressions — do not "fix" them inside feature work)
 
 - **React error #418 (hydration mismatch) on slow boots** — found 2026-10-16 via a throttled-boot test (Slow-4G + 4× CPU). It fires on *every* throttled boot — proven on **unmodified main 2/2 and on a feature branch 3/3** — so it is pre-existing. The app recovers (React client-renders), but the prerender benefit is lost on exactly the slow connections that need it, and it's likely noise in the crash pipeline from real slow users. **Needs its own fix branch** (suspect: prerender-vs-client first-render divergence).
-- **7 `tapstart.desktop` E2E failures** — pre-existing on unmodified main (2026-10-13 baseline). Belong on their own fix branch.
+- **A `tapstart.desktop` E2E flake family of ~7–8 failures** that flips run-to-run under load — pre-existing on unmodified main; always baseline on main before adjudicating (re-measured 2026-10-17). Belong on their own fix branch.
 - **Vacuous opacity regex** in the entering-tap E2E spec family (open nit from #152).
 - **`mobile-home-overlap` fails on pristine main too** — environment-broken in this VM, not a branch defect.
 - **Stale `node_modules` shows 3–4 phantom tsc/test errors** (missing `react-test-renderer`); identical on main. Cure: fresh `npm ci`.

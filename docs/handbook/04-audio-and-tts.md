@@ -27,7 +27,7 @@ The decision wasn't made on paper. On **2026-09-29**, Veeresh *listened* to a Ko
 
 | Voice | Used for | Personality |
 |---|---|---|
-| **TruthTeller** | The Storyteller's home greetings (greet-01…06.mp3) — a *different* greeting line every day; the poke lines (poke-01…05.mp3) use this voice too | Warm, welcoming, documentary-narrator ease. Short, friendly, never salesy. |
+| **TruthTeller** | The Storyteller's home greetings (greet-01…06.mp3) — a *different* greeting line every day; the poke lines (poke-01…05.mp3) use this voice too per the #137 ruling — **but the shipped poke clips are 24 kHz mono local Kokoro renders, not the greeting voice (OPEN BUG, 2026-10-16; fix waits on the owner identifying the TruthTeller source)** | Warm, welcoming, documentary-narrator ease. Short, friendly, never salesy. |
 | **am_fenrir** | Story lines — story-card narration, clue hooks, reveal lines, summary lines | The same warm human narrator, now in *storytelling* register: unhurried, clear, kid-addressed. |
 | **avocado_v2:casper** (Comet — a separate casting, not part of #137) | Comet's daily home greetings (greet-01…12.mp3) | The excitable co-pilot: a 'confident storyteller' — suspense + excitement, movie-trailer energy (2026-10-06). An original voice; never present it as a celebrity impression. |
 

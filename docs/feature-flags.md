@@ -113,11 +113,17 @@ killed feature by a stale flags.json.
 
 ## Current catalog
 
+> **Graduated (2026-10):** `globeTierSplit` shipped ON in production
+> (PR #148, 2026-10-15) and `learningOutcomes` shipped ON (2026-10-04) —
+> `public/flags.json` carries both `true`. The Off-behavior column below
+> describes what flipping a flag off *would* change, not today's
+> production behavior.
+
 | Flag               | Default | Off behavior                                             |
 | ------------------ | ------- | -------------------------------------------------------- |
 | `pwaUpdateToast`   | `true`  | Unregisters any live SW; no registration, no update toast |
-| `learningOutcomes` | `false` | No learning records, no growth UI — today's app exactly |
-| `globeTierSplit`   | `false` | Globe loads all five fame-tier files and deals the full canonical pool (today's production); on = Easy t1+t2, Medium t2-t4, Hard t4+t5 only |
+| `learningOutcomes` | `false` | No learning records, no growth UI (disabling removes them) |
+| `globeTierSplit`   | `false` | Globe loads all five fame-tier files and deals the full canonical pool; on = Easy t1+t2, Medium t2-t4, Hard t4+t5 only |
 
 **`globeTierSplit` and offline play.** With the flag on, the Globe fetches only
 the fame-tier files of the learning path being played, and the service worker

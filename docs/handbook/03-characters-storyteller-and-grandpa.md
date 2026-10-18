@@ -115,13 +115,20 @@ the loop loads; navigation never waits for them):
 > "And so the tale ends! What. An. Adventure!"
 
 **Poke lines** (tap the figure → rotates through 5, then repeats; each has a
-`poke-0N.mp3` in the same voice as the greeting):
+`poke-0N.mp3` — assigned to the same voice as the greeting per the #137 ruling):
 
 > "Heh! That tickles my beard."
 > "Careful, explorer — I'm older than these mountains."
 > "Poke all you like. I've survived worse… have I told you about Troy? 😌"
 > "Hmm? Did the map just move, or was that you?"
 > "Alright, alright — pick a place and I'll tell you its tale."
+
+> **OPEN BUG (2026-10-16):** the #137 ruling — pokes in the TruthTeller
+> greeting voice — is recorded correctly above, but the SHIPPED
+> `poke-01…05.mp3` clips are 24 kHz mono local Kokoro renders, not the
+> greeting voice (same profile as the am_fenrir story lines, not the
+> 44.1 kHz stereo greeting renders). Fix = new TruthTeller renders of
+> the 5 poke lines; waiting on the owner identifying the source.
 
 **Smaller moments:**
 
@@ -156,7 +163,7 @@ Two pieces of behavior a new agent must not break:
 | Character | Voice | Where used | Status |
 |---|---|---|---|
 | Storyteller | **TruthTeller** | Home greetings (greet-01…06.mp3) | Kept — Veeresh's decision 2026-10-11 (PR #137), zero new work |
-| Storyteller | **am_fenrir** (Kokoro-82M, en-us male) @ speed 1.05 | Story lines: reveal / hook / summary | Live; the game designer's 2026-10-08 pick ("trailer energy"). The poke lines ship in the greeting voice (TruthTeller) — see the poke section |
+| Storyteller | **am_fenrir** (Kokoro-82M, en-us male) @ speed 1.05 | Story lines: reveal / hook / summary | Live; the game designer's 2026-10-08 pick ("trailer energy"). The poke lines are assigned to the greeting voice (TruthTeller, per #137) — but the shipped clips are local Kokoro renders (open bug; see the poke section) |
 | Comet | **avocado_v2:casper** ("confident storyteller") | Comet's daily greetings (greet-01…12.mp3) | Live; original voice, never a celebrity impression |
 | Grandpa | *(no spoken lines — see §2)* | — | — |
 
@@ -167,8 +174,10 @@ Two rules about audio are load-bearing for this project:
    engine is the Hugging Face **Kokoro-82M** model run fully locally and
    offline (`node scripts/render-storyteller-voice.mjs`; the script refuses to
    render unless its lines match the `text` fields character-for-character, so
-   captions can never drift from audio). Clips are mastered to −16 LUFS
-   integrated with true-peak limiting, 24 kHz mono mp3.
+   captions can never drift from audio). Greetings are 44.1 kHz stereo
+   cloud renders (greet-01 measures ≈ −16.9 LUFS integrated — a −17
+   target); the 24 kHz mono profile belongs to the am_fenrir story
+   lines.
 2. **If the lines change, the mp3s must be regenerated** — pairing is
    positional (index ↔ filename), same contract as Comet's greetings.
    Full synthesis details live in **Chapter 4 — Audio & TTS**.
@@ -240,12 +249,16 @@ The tour is Grandpa's hello on the home page — a first-run experience that
 teaches the page's layout by walking it.
 
 **The route.** He walks a dotted S-trail (2px, 6/6 dash, round caps, brass)
-down the page gutters. Stop order: **difficulty picker → GeoDetective card →
-edition cards.** At each stop he stops, turns to look at it, sips his coffee
+down the page gutters. Stop order: **difficulty picker → edition
+cards → GeoDetective card** (→ review). Since PR #165 the tour visits the
+page in top-down document order. At each stop he stops, turns to look at
+it, sips his coffee
 (**~0.8 s**), then walks on. The trail weaves *around* cards — never behind,
 never over — keeping ≥16px clearance from every interactive rect (a sampling
 gate in `grandpa-tour.ts` enforces this at runtime; violations step down the
-fallback ladder).
+fallback ladder). **But:** the weave requires ≥32px gaps, and on the shipped
+home the editions→GeoDetective gap is 22px — so the tour commonly runs the
+straight trail with sip stops instead (PR #165, 2026-10-16).
 
 **The timing.** Measured in-page: tour dwells run **≈780–810 ms** with ~0px
 drift at stops, and the sip samples inside an **800 ms window**. These numbers

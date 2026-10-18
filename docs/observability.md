@@ -23,9 +23,11 @@ fetch survives. Detection is therefore by **asymmetry at next boot**:
    `stampCleanExitDirty()` right at `run_start`, ahead of
    `await placesFor(...)`; `writeRun` re-stamps it at commit), so the
    covered kill windows are the **chunk load, map init, and gameplay**
-   — including a first-run kill during the 13.7 MB Globe chunk load,
-   which leaves no saved run behind (the crash-loop breaker clearing
-   the absent run and landing on the menu is harmless there).
+   — including a first-run kill during the globe data load, which
+   leaves no saved run behind (the crash-loop breaker clearing the
+   absent run and landing on the menu is harmless there). (Pre-tier-split
+   this was the single ~13.7 MB globe chunk; today production ships
+   per-tier files — see the follow-up note below.)
 3. On the next boot, **before** the trail is overwritten and before the
    crash-loop breaker consumes the flag, `initObservability()`
    (`src/lib/observability.ts`) checks: unclean flag **and** a previous
@@ -36,8 +38,11 @@ fetch survives. Detection is therefore by **asymmetry at next boot**:
    configuration below.
 
 The previous trail's `lastMilestone` is the funnel answer: if trails stop
-at `data_chunk_load_start` for Globe, sessions die loading the 13.7 MB
-chunk; if they stop at `map_init_start`, they die constructing the map.
+at `data_chunk_load_start` for Globe, sessions die loading the globe
+data. (Pre-tier-split this was the single ~13.7 MB chunk; with
+`globeTierSplit` ON, production loads per-tier files — the Easy path is
+≈456 KB on the wire.) If they stop at `map_init_start`, they die
+constructing the map.
 
 ## Event schema
 
@@ -100,17 +105,29 @@ explicitly configured (below).
 - Endpoint config lives in `public/flags.json` as a **top-level**
   `observabilityEndpoint` field (validated in `src/lib/flags.ts`:
   https URL or root-relative path only; anything else fails closed to
-  null). The shipped `flags.json` sets **no** endpoint, so production
-  behavior is unchanged until it is set.
+  null). The shipped `flags.json` on main sets this to the live
+  crash-report worker
+  (`https://meridian-crash-report.knowledgetest.workers.dev/ingest`), so
+  production sends events today.
 
-## How to enable
+## How to enable — already live in production (2026-10)
 
-1. Deploy the receiver: see `worker/observability/README.md`
-   (`wrangler deploy` — a separate, explicit step; nothing in this
-   system deploys itself).
+The receiver is deployed and `public/flags.json` on main points
+`observabilityEndpoint` at the crash-report worker's `/ingest`; the
+worker's Discord webhook forwarding is live. The steps below are the
+procedure that was run:
+
+1. Deploy the receiver: see `workers/crash-report/README.md` (a
+   separate, explicit step; nothing in this system deploys itself).
 2. Add `"observabilityEndpoint": "https://<worker-host>/ingest"` at the
    top level of `public/flags.json`.
 3. Redeploy the site (flags only — no client code release needed).
+
+> **Open owner item:** the crash receiver was deployed via manual
+> `version_upload` in October 2026, while the repo docs describe
+> `wrangler deploy` — the owner has not yet confirmed which is the
+> canonical deploy path. Neither description above is changed until
+> that ruling lands.
 
 ## How to read counts / the funnel
 
@@ -128,10 +145,10 @@ capped at **1.5** and `maxTileCacheSize` is set explicitly to **64**
 (`src/map/map-options.ts`, wired in `src/map/satellite-map.tsx`) —
 full-DPR WebGL buffers are part of the same jetsam budget.
 
-## Documented follow-up — NOT in this branch
+## Follow-up shipped — the Globe dataset is split
 
-**Split the Globe dataset.** The Globe chunk is a single ~13.7 MB JS
-module holding 59,423 places; paging it by country/continent box and
-fetching it as JSON remains the highest-impact payload fix and is
-deliberately a separate change — this branch only makes its cost
-measurable in the field.
+**Done via PR #148 (2026-10-15):** `globeTierSplit` is ON in production
+and the Globe edition ships per-difficulty-tier region files — the Easy
+path loads ≈456 KB on the wire — instead of the single ~13.7 MB JS
+module holding 59,423 places. The single-chunk description earlier in
+this doc is pre-split history.

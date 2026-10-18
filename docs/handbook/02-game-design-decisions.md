@@ -30,11 +30,11 @@ GeoDetective is the 4th edition (named by Veeresh, 2026-10-02): a **5-guess myst
 4. **The Hook** — a person, event, record, or quote; *if a kid can't retell it, the card failed*
 5. **Giveaway** — a landmark that names the place without naming it
 
-Clue files are pool-indexed and lazy-loaded (`public/loop/clues/{index}.json`); the file itself never contains the place name. Clues are produced by Liz's content team under **prompt v1 FINAL (reading age ≈ 10)**.
+Clue files are pool-indexed and lazy-loaded (`public/loop/clues/{index}.json`); the file itself never contains the place name. Clues were produced by Liz's content team under **prompt v1 FINAL (reading age ≈ 10)**; the crew retired on 2026-10-17, so future clue-production ownership is open.
 
 ### The big decision: unlimited, not daily
 
-The engineering design doc (`docs/geodetective.md`) describes a **one-mystery-per-day** design: new puzzle at midnight UTC, day index `Math.floor(Date.now() / 86400000) % manifest.size`, a `?loop-date=` E2E seam, and a 30-day archive in `localStorage` (`meridian.loop.v1`).
+The engineering design doc (`docs/geodetective.md`) originally described a **one-mystery-per-day** design (it was rewritten on 2026-10-17 for the unlimited model below): new puzzle at midnight UTC, day index `Math.floor(Date.now() / 86400000) % manifest.size`, a `?loop-date=` E2E seam, and a 30-day archive in `localStorage` (`meridian.loop.v1`).
 
 **Veeresh overruled this on 2026-10-06: GeoDetective is FULLY UNLIMITED.** His reasoning, in his words: *"1 mystery per day will kill the game."* The deck deals via a **shuffled-deck (Fisher–Yates, crypto RNG)** across all **387 validated clue files** (content gate cleared 2026-10-05, PR #59) — no daily gating, play as many cases as you want.
 

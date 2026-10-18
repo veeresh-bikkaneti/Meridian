@@ -54,25 +54,38 @@ https://veeresh-bikkaneti.github.io/Meridian/
 
 Sharing uses the device's native share sheet where available and falls back to the clipboard otherwise; the end-game summary screen shares session totals instead of the trail.
 
-### GeoDetective — the daily edition
+### GeoDetective — the mystery edition
 
-A fourth edition alongside Globe → Country → State, mounted outside the run machine: one mystery place per UTC day, five guesses. Clues unlock in a fixed ladder — Geography → Climate → History → Hook → Giveaway — one new clue per guess. Each guess is typed into a constrained typeahead (no free-text penalties: unknown or repeated picks never cost a guess) and answered with the distance, the direction toward the target, and warmer/colder against the previous guess. Progress persists per day under `meridian.loop.v1` (30-day archive), so a reload mid-game restores the board; the endless-run state is never touched.
+A fourth edition alongside Globe → Country → State, sitting alongside the endless run: **fully unlimited play** — no daily puzzle, no midnight-UTC reset. Mystery places are dealt from a shuffled deck over **387 human-reviewed, validated clue sets** (`public/loop/clues/`); when the deck is exhausted, it reshuffles. Each mystery gets five guesses. Clues unlock in a fixed ladder — Geography → Climate → History → Hook → Giveaway — one new clue per guess. Guesses are map taps: tap a labeled place to open the bottom-sheet confirm, and unlabeled or ocean taps are legitimate guesses too, scored as "Open Water". Every guess is answered with the distance, the direction toward the target, and warmer/colder against the previous guess. Solve streaks persist as `bestStreak`, and the share line shows `🔥 N best streak` when it reaches 2. Progress persists under `meridian.loop.v2` (the v1 daily-era archive is kept, untouched), so a reload mid-game restores the board; the endless-run state is never touched.
 
-The daily puzzle draws from **387 human-reviewed, validated clue sets** (`public/loop/clues/`, pool-indexed by UTC day). The share line reads `meridian geodetective <date>` with a proximity-graded emoji grid — no place names, no distances, no spoilers:
-
+The share line reads `meridian geodetective <date>` with a proximity-graded emoji grid — no place names, no distances, no spoilers:
 ```
 meridian geodetective October 3
-https://veeresh-bikkaneti.github.io/Meridian/
-🟥🟩⬜⬜⬜ solved in 2
+https://meridian.knowledgetest.workers.dev/
+🟥🟩⬜⬜⬜ solved in 2 · 🔥 2 best streak
 ```
+
+Solving all 387 mysteries earns the full-collection celebration.
+
+### The Journal
+
+The home page carries a Journal: 106 place notes rotating in 36 sets over 2-hour windows. Since 2026-10-17 every note is illustrated — each of the 106 places has its own storybook drawing (warm gouache-and-watercolor picture-book style, no text). Every note carries its source citation and a confidence label — **Verified** (government or university source) or **Cited** (named source recorded) — and the footer reads "Entry X of 36" with a countdown to the next set. Art integrates only through `scripts/journal-art-manifest.json` + the dataset generator (`scripts/build-journal-dataset.mjs`); the generated data file is never hand-edited.
+
+### The storyteller and Grandpa's tasting tour
+
+The home page opens with a storyteller mascot who greets visitors with a spoken line (a new greeting each day) and reacts when tapped. Grandpa runs a tasting tour of the home screen — a sip-sized walkthrough of the difficulty picker, the edition cards, and GeoDetective for first-time visitors.
+
+### Supporting the game
+
+Meridian is free for kids — no paywalls, no accounts. Grown-ups can buy the builder a coffee: **"Grown-ups — buy me a coffee? ☕"** — "Your support keeps Meridian free for kids". That copy is locked verbatim.
 
 ## Where the stories come from
 
-Story cards are built by pipelines, not written by hand at play time. Two are in flight:
+Story cards are built by pipelines, not written by hand at play time. Two feed the cards:
 
-**Wikipedia enrichment** (`scripts/enrich-wikipedia.mjs`, merged). A resumable, rate-limited crawler resolves each place to its Wikipedia article and extracts hook sentences matching the four principles — named-after stories, birthplaces, battles, foundings, firsts. Every candidate passes a no-fabrication validator: each content word must appear in the source extract, and coordinate/elevation/population/census patterns are banned outright. CLI: `node scripts/enrich-wikipedia.mjs <crawl [limit]|merge|report>`. Honest status: 285 places merged so far; the crawl is still running and further merges follow as it completes. Most cards still show the plain geographic blurb until then.
+**Wikipedia enrichment** (`scripts/enrich-wikipedia.mjs`, merged). A resumable, rate-limited crawler resolves each place to its Wikipedia article and extracts hook sentences matching the four principles — named-after stories, birthplaces, battles, foundings, firsts. Every candidate passes a no-fabrication validator: each content word must appear in the source extract, and coordinate/elevation/population/census patterns are banned outright. CLI: `node scripts/enrich-wikipedia.mjs <crawl [limit]|merge|report>`. Measured state: **8,797 of 124,690 places** carry enrichment content (`history`/`wiki`/`hook`) in the shipped dataset. Most cards still show the plain geographic blurb until enrichment reaches them.
 
-**Fact pipeline, Phase 1** (infrastructure on feature branches, not yet merged). Five tracks building the next layer: `feat/facts-qid-join` (map all 124,690 places to Wikidata IDs), `feat/facts-wikidata-extract` (pull referenced "named after" / "inception" statements via SPARQL), `feat/facts-wiki-text` (structured named-after/founded facts from article leads), `feat/facts-validator` (hardened no-fabrication gate: relational checks, hedge preservation, date-predicate binding), `feat/facts-eb1911` (1911 Encyclopaedia Britannica supplement for UK/IE places, public domain). Two independent research passes verified the bet: **Wikidata as the ID spine + Wikipedia text as the fact source** — with the honest caveat that structured facts cover only low single digits of small towns on a first pass, so a fallback fact ladder is part of the design.
+**Fact ladder** (merged, PR #104). The fact layer that enriches story cards with referenced facts: `factLadder()` in `src/game/generated-places.ts` reads per-region fact data (e.g. `src/game/data/geonames/facts/arkansas.json`) and adds 247 pilot facts to story cards. Two independent research passes verified the bet: **Wikidata as the ID spine + Wikipedia text as the fact source** — with the honest caveat that structured facts cover only low single digits of small towns on a first pass, so the fallback ladder is part of the design.
 
 ## Architecture
 
@@ -92,6 +105,10 @@ Nothing about a guess is stored on a server. The in-progress run lives in `sessi
 - **No repeats before pool exhaustion.** Per-session shuffle plus a persistent no-repeat history across visits.
 - **Missing on-device AI must never block question loading or reveal.** The Nano paths are strictly enhancement.
 - **Nothing deploys to production without thorough E2E testing.** Playwright specs in `tests/e2e/` are the gate.
+
+### Feature flags
+
+`public/flags.json` carries the production feature flags. Both graduated experiments are ON in production: `globeTierSplit` (the globe edition ships per-difficulty-tier region files, PR #148) and `learningOutcomes` (players build per-place learning records from their next boot, PR #45).
 
 ## Inspired by MapTap, not a copy
 
@@ -123,8 +140,9 @@ Direct pushes to `main` are blocked — all work goes through branches and pull 
 ```sh
 npx tsc --noEmit        # typecheck must be clean
 npm test                # unit + pipeline tests must pass
+node scripts/lint-cards.mjs  # card-content gate — must print GATE PASSED
 npm run build:pages     # production build must succeed
-npx playwright test     # full E2E suite must pass
+npx playwright test --workers=1  # full E2E suite must pass (serial — parallel runs flake)
 ```
 
 Every code change goes through two reviews: a technical-architecture review and a tone/docs/accessibility review. Nothing merges with a failing gate. Stage named files only (`git add -A` is banned while background jobs may be writing into the tree); push branches promptly — the VM is not durable storage for unpushed work.
@@ -132,6 +150,8 @@ Every code change goes through two reviews: a technical-architecture review and 
 ## Deployment
 
 The public site is GitHub Pages, from a static build. `GITHUB_PAGES=1` sets the asset and router base to `/Meridian/`, turns on a static shell, and skips the server. `.github/workflows/pages.yml` runs that build on `main`, copies the shell to `index.html` and `404.html`, and publishes it.
+
+The same production build also ships to [meridian.knowledgetest.workers.dev](https://meridian.knowledgetest.workers.dev/) via a Cloudflare Workers build and deploy — both URLs serve the live app.
 
 `npm run build` is a different path. It still produces the server build. The live preview uses that. Pages does not.
 

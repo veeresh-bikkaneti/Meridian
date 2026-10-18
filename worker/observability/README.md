@@ -3,7 +3,17 @@
 Receives the events emitted by `src/lib/observability.ts` (schema:
 `docs/observability.md`) and logs each one as a single structured JSON
 line. **This worker is NOT deployed by the client branch** — deploying it
-is a separate, explicit step for Liz/Veeresh.
+is a separate, explicit step for the owner (Veeresh).
+
+> **Production reality (2026-10-17):** the live receiver is the crash-report
+> worker in `workers/crash-report/` — `public/flags.json` on main sets
+> `observabilityEndpoint` to
+> `https://meridian-crash-report.knowledgetest.workers.dev/ingest`. This v1
+> logging-only receiver is the older sibling, kept for reference.
+
+The client event types the pipeline carries today include `tile_failed`
+(see `EVENT_TYPES` in `workers/crash-report/src/index.ts` for the full
+list of 7).
 
 ## Files
 
@@ -30,7 +40,9 @@ NOT inside `flags`) and redeploy the site (flags only — no code release):
   "observabilityEndpoint": "https://<your-worker-host>/ingest" }
 ```
 
-Until that field is set, the client transport is a complete no-op.
+Until that field is set, the client transport is a complete no-op. (In
+production the field IS set — see the note at the top — so the transport
+is live there.)
 
 ## Reading the logs
 

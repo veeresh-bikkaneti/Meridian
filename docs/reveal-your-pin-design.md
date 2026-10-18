@@ -4,6 +4,14 @@
 **Status:** Implemented — commit c705e7d; design contract holds. E2E + technical-architect/tone reviews pending.
 **Author:** DESIGN crew (software-architect persona)
 
+> **Dated design record (2026-10-04, implemented c705e7d).** Two parts
+> did not survive shipping: (1) the §4.2 globe "detail ok" city-level
+> row was NOT built — globe reveal naming shipped **symmetric
+> country-level** and city-level is parked
+> (see `docs/globe-naming-followup.md`); (2) §2.2's pool table predates
+> the tier split — the globe now ships 5 tier files (PR #148), not one
+> `globe` chunk.
+
 ## 0. Problem statement
 
 On a wrong answer, the reveal card must name BOTH locations ("Your pin: … · True
