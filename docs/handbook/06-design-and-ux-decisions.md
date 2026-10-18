@@ -73,6 +73,17 @@ After v5 went live, Veeresh judged the shipped layout **crowded** against the re
 
 Chitti built a bento-grid rework on `fix/home-bento-grid` (one modular grid, map card as tall spanning anchor, grown-ups as a full-width band). Veeresh rejected it (👎, "stop cooking"), said **Liz's Muse had already tried replicating the mock and failed miserably**, and asked **Grok** to take over the fix instead. That branch was **never pushed, never merged, never reached production** — the live site remains the #158 build. This is recorded factually: the rejection stands, and the mock-faithful layout remains an open design item.
 
+> **Superseded 2026-10-17:** the "live site remains the #158 build"
+> ending above is history —
+> - **#162 (2026-10-16):** the globe shipped contained in the bento grid
+>   (`.hv5-bento`), no protection lift.
+> - **#165 (2026-10-16):** tasting tour visits in page order; storyteller
+>   clips restored.
+> - **#168 (2026-10-17):** journal v2 consolidation (106 notes, 36 rotating
+>   sets, 49 verified / 57 cited).
+> - **#169 (2026-10-17):** wave-2 art — 103 drawings; all 106 notes
+>   illustrated; live is now the #169 build (`f331846`).
+
 ---
 
 ## 4. The Scout Map offer and the WS-4 satellite-failure fallback (D3)
@@ -110,7 +121,10 @@ There is a dedicated spec: `~/workspace/specs/meridian-place-accessibility-overh
 
 - **Focus-visible standard:** the blanket `:focus-visible` rule is 2px solid with 3px offset — and on every dark surface the ring must clear the **3:1 WCAG non-text contrast bar**. The v5 Expeditions card initially failed (1.37:1, #77591f on #33503f); the shipped cure is a scoped `#efe3bc` ring (**6.94:1** on the card's lightest gradient stop).
 - **Reduced motion** gets a static globe disc (zero canvases) — verified in E2E.
-- **Unmapped surfaces never fake affordance:** a surface with no destination yet (the search button) is `aria-disabled="true"` — focusable, inert, with an sr-only "Not yet available" description — never a fake `disabled` button that screen readers can't explain. Nav JOURNAL and the Journal card's READ THE ENTRY are no longer unmapped in that sense: both are live buttons that scroll-jump to the inline journal section (`#home-journal`) and move focus to it (nav ABOUT does the same for its section). The journal section has shipped inline since PR #165, and the Journal v2 port now runs in it: geography sets of catalog notes rotating every 2 hours, with focus-only deferral — a set never swaps while focus is inside the card or the section — a per-note confidence line, a set-geography header and an "Entry X of 36" footer, and storybook art on 3 notes.
+- **Unmapped surfaces never fake affordance:** a surface with no destination yet (the search button) is `aria-disabled="true"` — focusable, inert, with an sr-only "Not yet available" description — never a fake `disabled` button that screen readers can't explain. Nav JOURNAL and the Journal card's READ THE ENTRY are no longer unmapped in that sense: both are live buttons that scroll-jump to the inline journal section (`#home-journal`) and move focus to it (nav ABOUT does the same for its section). The journal section has shipped inline since PR #165, and the Journal v2 port now runs in it: geography sets of catalog notes rotating every 2 hours, with focus-only deferral — a set never swaps while focus is inside the card or the section — a per-note confidence line, a set-geography header and an "Entry X of 36" footer, and storybook art on
+**all 106 notes** (wave 2, PR #169, 2026-10-17: 103 drawings, 16,761 KiB of
+new art, all 36 sets fully illustrated; the haymarket drawing shipped as a
+known nit).
 - **Keyboard flow:** full tab order == the reading order (verified 29-stop traversal on the v5 home), nav jumps move real focus, the Grandpa tour exposes a skip control.
 - **The Orca session (2026-10-16)** is the strongest evidence: Scout dialog announced + focus-trapped with labeled buttons, toggles announced with pressed states, game question announced. **Still OPEN:** a literal NVDA/VoiceOver pass on a real device and a real-browser 400%-zoom pass.
 
