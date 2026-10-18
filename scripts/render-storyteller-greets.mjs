@@ -19,10 +19,11 @@
  *   - Kokoro-82M q8 ONNX model from the local HuggingFace cache
  *     (allowRemoteModels=false — the run fails loudly instead of
  *     downloading anything)
- *   - ffmpeg: silence trim (≤150 ms edges), ebur128-measured gain to
- *     −16 LUFS integrated, then a 4x-oversampled lookahead limiter
- *     (alimiter level=0) capping true peak at −1.5 dBTP, then 24 kHz
- *     mono MP3.
+ *   - ffmpeg: ebur128-measured gain to −16 LUFS integrated, then a
+ *     4x-oversampled lookahead limiter (alimiter level=0) capping true peak
+ *     at −1.5 dBTP, THEN edge trim via silencedetect+atrim (exact — never
+ *     silenceremove, whose start_duration hangover ate speech, bug
+ *     2026-10-18), then 24 kHz mono MP3.
  *
  * Usage:
  *   node scripts/render-storyteller-greets.mjs [--out <dir>]
@@ -210,11 +211,42 @@ async function main() {
   // ffmpeg's loudnorm is unreliable on 2–8 s micro-clips, so measure with
   // ebur128, apply the exact gain to -16 LUFS, then true-peak-limit at
   // -1.5 dBTP with a 4x-oversampled lookahead limiter.)
-  const TRIM =
-    "silenceremove=start_periods=1:start_duration=0.15:start_threshold=-45dB," +
-    "areverse," +
-    "silenceremove=start_periods=1:start_duration=0.15:start_threshold=-45dB," +
-    "areverse";
+  //
+  // TRIM ORDER AND METHOD MATTER (bug 2026-10-18): the trim MUST run AFTER
+  // the gain stage, never before — and it must be silencedetect+atrim
+  // (exact), NOT silenceremove. Two defects compounded: (1) trimming the
+  // quiet raw output at -45 dB treated audible speech as "silence" and ate
+  // ~1.1 s off summary-01 (2.98 s -> 1.92 s, tail cut mid-word); (2)
+  // silenceremove's start_duration=0.15 acts as a hangover that eats
+  // ~0.15-0.3 s of audible audio per edge even on normalized audio
+  // (measured). silencedetect finds the exact silence boundaries; atrim
+  // cuts precisely them; interior pauses are never touched.
+  const trimEdges = async (inPath, outPath, label) => {
+    const { stdout: durOut } = await execFileAsync("ffprobe", [
+      "-v", "error", "-show_entries", "format=duration",
+      "-of", "default=noprint_wrappers=1:nokey=1", inPath,
+    ]);
+    const preDur = parseFloat(durOut.trim());
+    const { stderr: sil } = await execFileAsync("ffmpeg", [
+      "-hide_banner", "-nostats", "-i", inPath,
+      "-af", "silencedetect=noise=-45dB:d=0.15", "-f", "null", "-",
+    ]);
+    let tStart = 0, tEnd = preDur;
+    for (const m of sil.matchAll(
+      /silence_start: ([\d.]+)[\s\S]*?silence_end: ([\d.]+) \| silence_duration: ([\d.]+)/g)) {
+      const sStart = parseFloat(m[1]), sEnd = parseFloat(m[2]);
+      if (sStart <= 0.05) tStart = Math.max(tStart, sEnd);
+      if (sEnd >= preDur - 0.05) tEnd = Math.min(tEnd, sStart);
+    }
+    if (preDur - (tEnd - tStart) > 1.0)
+      fail(`${label}: edge trim would remove ` +
+        `${(preDur - (tEnd - tStart)).toFixed(2)}s — not edge silence`);
+    await execFileAsync("ffmpeg", [
+      "-hide_banner", "-nostats", "-y", "-i", inPath,
+      "-af", `atrim=start=${tStart.toFixed(3)}:end=${tEnd.toFixed(3)},asetpts=PTS-STARTPTS`,
+      "-ar", "24000", "-ac", "1", outPath,
+    ]);
+  };
   const LIMIT = "0.8414"; // -1.5 dBTP as linear amplitude
   const measure = async (path) => {
     const { stderr } = await execFileAsync("ffmpeg", [
@@ -240,27 +272,28 @@ async function main() {
   const report = [];
   for (const c of CAPTIONS) {
     const key = c.file.replace(/\.mp3$/, "");
-    const trimmed = join(scratch, `${key}-trimmed.wav`);
+    // Normalize FIRST; the edge trim runs AFTER, on normalized audio — see
+    // the TRIM ORDER note in render-storyteller-voice.mjs. Trimming the
+    // quiet raw output at -45 dB ate speech (bug 2026-10-18).
+    const norm0 = join(scratch, `${key}-norm0.wav`);
     await execFileAsync("ffmpeg", [
       "-hide_banner",
       "-nostats",
       "-y",
       "-i",
       rawWavs[c.file],
-      "-af",
-      TRIM,
       "-ar",
       "24000",
       "-ac",
       "1",
-      trimmed,
+      norm0,
     ]);
     const outMp3 = join(outDir, c.file);
     // Iterative: the limiter shaves a little integrated level off the peaks,
     // so re-measure after limiting and correct the residual (converges in
     // 2-3 passes; each pass re-limits so true peak can never escape).
     const stage = (n) => join(scratch, `${key}-stage${n}.wav`);
-    let current = trimmed;
+    let current = norm0;
     let totalGain = 0;
     for (let pass = 0; pass < 3; pass++) {
       const m = await measure(current);
@@ -287,12 +320,29 @@ async function main() {
       ]);
       current = next;
     }
+    // Trim AFTER normalization, with the exact method (see TRIM note).
+    const trimmed = join(scratch, `${key}-trimmed.wav`);
+    await trimEdges(current, trimmed, c.file);
+    // Short fades so the file ends/starts at digital silence even though
+    // Kokoro's noise floor sits ~-30 dB after the normalization gain.
+    const trimmedDur = parseFloat(
+      (await execFileAsync("ffprobe", [
+        "-v", "error", "-show_entries", "format=duration",
+        "-of", "default=noprint_wrappers=1:nokey=1", trimmed,
+      ])).stdout.trim());
+    const faded = join(scratch, `${key}-faded.wav`);
+    await execFileAsync("ffmpeg", [
+      "-hide_banner", "-nostats", "-y", "-i", trimmed,
+      "-af",
+      `afade=t=in:st=0:d=0.015,afade=t=out:st=${(trimmedDur - 0.15).toFixed(3)}:d=0.15`,
+      "-ar", "24000", "-ac", "1", faded,
+    ]);
     await execFileAsync("ffmpeg", [
       "-hide_banner",
       "-nostats",
       "-y",
       "-i",
-      current,
+      faded,
       "-ac",
       "1",
       "-c:a",
@@ -322,6 +372,31 @@ async function main() {
     if (Math.abs(post.integ - TARGET_LUFS) > 1.0)
       fail(`${c.file}: integrated ${post.integ} LUFS is >1 dB from target ${TARGET_LUFS}`);
     if (post.tpk > -1.0) fail(`${c.file}: true peak ${post.tpk} dBTP exceeds -1.0 dBTP ceiling`);
+    // Anti-truncation (bug 2026-10-18): belt-and-braces behind trimEdges'
+    // 1.0 s guard — the mastered file must not be much shorter than raw.
+    const { stdout: rawProbe } = await execFileAsync("ffprobe", [
+      "-v",
+      "error",
+      "-show_entries",
+      "format=duration",
+      "-of",
+      "default=noprint_wrappers=1:nokey=1",
+      rawWavs[c.file],
+    ]);
+    const rawDur = parseFloat(rawProbe.trim());
+    if (dur < rawDur - 1.1)
+      fail(`${c.file}: mastered much shorter than raw (raw ${rawDur.toFixed(2)}s -> ` +
+        `mastered ${dur.toFixed(2)}s) — speech may be missing`);
+    // Tail decay (bug 2026-10-18): a file ending mid-word has a hot tail.
+    const { stderr: tailErr } = await execFileAsync("ffmpeg", [
+      "-hide_banner", "-sseof", "-0.1", "-i", outMp3,
+      "-af", "astats=metadata=1", "-f", "null", "-",
+    ]);
+    const tailM = tailErr.match(/Peak level dB:\s*([-\d.]+)/);
+    const tailPeak = tailM ? parseFloat(tailM[1]) : NaN;
+    if (!(tailPeak <= -35 || post.tpk - tailPeak >= 10))
+      fail(`${c.file}: tail does not decay (last 100ms peak ${tailPeak} dB, ` +
+        `overall ${post.tpk} dB) — file may end mid-word`);
     const { stderr: sil } = await execFileAsync("ffmpeg", [
       "-hide_banner",
       "-nostats",
