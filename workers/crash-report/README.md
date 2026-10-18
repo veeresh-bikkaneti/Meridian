@@ -163,7 +163,6 @@ ready. Corrupt buckets are treated as absent and replaced on next
 write.
 
 Accepted `type` values: `suspected_crash`, `boot_failure`, `js_error`,
-<<<<<<< HEAD
 `unhandled_rejection`, `map_error`, `tile_failed`, `webgl_context_lost`.
 Required: `type`, `ts` (finite number, epoch ms), `buildId`
 (non-empty string). Optional fields pass through; the forwarded alert
