@@ -8,6 +8,7 @@ import {
   waitForSpotSettle,
   readQuestion,
   startCountryRun,
+  spotViewportPoint,
   APP_NO_IDLE,
 } from "./helpers";
 import { seedManualMode, readMapMode } from "./scout-helpers";
@@ -88,6 +89,11 @@ test("scout mode: state Nebraska intro zooms into the state", async ({
   // The intro must frame the state the way full mode does (Nebraska
   // settles ~4-5 on a phone) — never strand the camera at a continent
   // view — and the mode cap must be the raised one.
+  // Honesty note: Scout forces reduced motion, so the intro is a jump-to
+  // and data-zoom is written from the intent target, not the camera. These
+  // intro zoom assertions are therefore cap-consistency checks; the
+  // mid-flight-clamp desync is caught by data-max-zoom (8, not 3) and by
+  // the zoom-in button test below, which drives the real camera.
   expect(mode).toBe("scout");
   expect(maxZoom).toBe(8);
   expect(zoom).toBeGreaterThanOrEqual(4);
@@ -113,6 +119,48 @@ test("scout mode: country France intro zooms into the country", async ({
   // France settles ~4-5 on a phone; must be framed, not continent-wide.
   expect(zoom).toBeGreaterThanOrEqual(4);
   expect(zoom).toBeLessThanOrEqual(await readMaxZoom(page));
+});
+
+test("scout mode: globe reveal framing never exceeds the globe cap", async ({
+  page,
+}: {
+  page: Page;
+}) => {
+  // Peer-review catch (PR #172): the reveal beat framed pin+spot with
+  // maxZoom 4, but scout-globe's camera caps at 2 — the same mid-jump
+  // clamp + desync + dead-+ failure as the intro bug. revealZoomCap
+  // clamps it to the mode cap.
+  await freshBoot(page);
+  await pickBand(page, "Easy");
+  await page.goto(APP_NO_IDLE);
+  await expect(page.getByRole("button", { name: "Globe" })).toBeVisible({ timeout: 30_000 });
+  await page.getByRole("button", { name: "Globe" }).click();
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 60_000 });
+  await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
+  expect(await readMapMode(page)).toBe("scout");
+
+  // Tap NEAR the true spot so the pin+spot framing wants to zoom IN past
+  // the scout-globe cap: on the old code (reveal maxZoom 4) the target
+  // exceeds the camera cap of 2 (mid-jump clamp + desync); fixed code
+  // clamps the framing to 2.
+  const spot = await spotViewportPoint(page);
+  console.log("SPOT:", spot);
+  const tx = spot ? spot.x + 40 : 80;
+  const ty = spot ? spot.y + 40 : 700;
+  await page.mouse.click(tx, ty);
+  const drop = page.getByRole("button", { name: /drop|place/i });
+  await expect(drop).toBeEnabled({ timeout: 15_000 });
+  await drop.click();
+  await expect
+    .poll(() => readPhase(page), { timeout: 30_000 })
+    .toMatch(/^(story|done)$/);
+
+  const zoom = await readZoom(page);
+  const maxZoom = await readMaxZoom(page);
+  console.log("SCOUT GLOBE REVEAL ZOOM:", zoom, "MAX:", maxZoom);
+  expect(maxZoom).toBe(2);
+  expect(zoom).toBeLessThanOrEqual(2);
+  await page.screenshot({ path: "scout-globe-reveal.png" });
 });
 
 test("scout mode: zoom-in works from the settled intro zoom (the reported failure)", async ({
@@ -158,10 +206,14 @@ test("scout mode: zoom-in works from the settled intro zoom (the reported failur
 
   // Scout must never pull the admin-1 boundary band: even at the cap, no
   // lazy admin-1 geometry may load on weak devices. ne-50m-admin-1 is the
-  // unambiguous marker chunk (only the admin-1 band lazy-loads it).
+  // unambiguous marker chunk — only the admin-1 band lazy-loads it.
+  // (states-10m is deliberately NOT matched: region-index shares that
+  // chunk for the intro's region lookup, so it legitimately loads in
+  // Scout; the band's incremental cost is ne-50m-admin-1 + the iso
+  // chunks, all gated by bandForMode.)
   const admin1Loaded = await page.evaluate(() => {
     const entries = performance.getEntriesByType("resource") as PerformanceResourceTiming[];
-    return entries.some((e) => /ne-50m-admin-1|data\/admin1\//i.test(e.name));
+    return entries.some((e) => /ne-50m-admin-1/i.test(e.name));
   });
   console.log("ADMIN1 CHUNK LOADED IN SCOUT:", admin1Loaded);
   expect(admin1Loaded).toBe(false);

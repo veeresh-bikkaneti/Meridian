@@ -21,15 +21,17 @@ export const SCOUT_PIXEL_RATIO_CAP = 1;
 /**
  * Scout flat maxZoom — 8, matching full mode's effective flat range. The
  * original lite-mode spec capped flat at 3, but a state edition needs ~5 on
- * a phone to frame the region (Rhode Island needs ~9); at 3 the intro
- * clamped mid-flight, the state never filled the screen, the zoom readout
- * desynced from the real camera, and the + button died at the cap — the
- * edition was unplayable in Scout Map. The lite promise is kept by what the
- * cap never touched: DPR 1, zero raster tiles, no starfield, no motion.
- * Raising the cap does NOT pull the admin-1 boundary band into Scout —
- * paintBoundaryBand is clamped to "countries" in scout mode (see
- * satellite-map.tsx), so the ~1.6 MB of lazy admin-1 geometry never loads
- * on weak devices.
+ * a phone to frame the region (Rhode Island's fit zoom is ~9); at 3 the
+ * intro clamped mid-flight, the state never filled the screen, the zoom
+ * readout desynced from the real camera, and the + button died at the cap —
+ * the edition was unplayable in Scout Map. 8 doesn't reach every fit zoom,
+ * and it doesn't need to: the intro settle cap is 6.5 anyway, and from a
+ * framed 6.5 a kid can always zoom the rest of the way by hand. The lite
+ * promise is kept by what the cap never touched: DPR 1, zero raster tiles,
+ * no starfield, no motion. Raising the cap does NOT pull the admin-1
+ * boundary band into Scout — paintBoundaryBand is clamped to "countries"
+ * in scout mode (see satellite-map.tsx), so the ~1.6 MB of lazy admin-1
+ * geometry never loads on weak devices.
  */
 export const SCOUT_MAX_ZOOM_FLAT = 8;
 export const SCOUT_MAX_ZOOM_GLOBE = 2;
@@ -50,6 +52,23 @@ export function settleZoomCap(edition: "state" | "country", mapMode: MapMode): n
   const editionCap = edition === "state" ? SETTLE_ZOOM_CAP_STATE : SETTLE_ZOOM_CAP_COUNTRY;
   if (mapMode !== "scout") return editionCap;
   return Math.min(editionCap, SCOUT_MAX_ZOOM_FLAT);
+}
+
+/** Reveal-beat framing caps per projection, before the map-mode cap applies. */
+export const REVEAL_ZOOM_CAP_GLOBE = 4;
+export const REVEAL_ZOOM_CAP_FLAT = 8;
+
+/**
+ * Effective reveal framing cap for a projection + map mode. Same invariant
+ * as settleZoomCap: the reveal beat (jump-to in Scout, which forces
+ * reduced motion) must target a zoom the camera can reach, or the camera
+ * clamps mid-jump, the zoom readout desyncs, and the + button dies at the
+ * cap. Full mode is unchanged.
+ */
+export function revealZoomCap(mode: "flat" | "globe", mapMode: MapMode): number {
+  const modeCap = mode === "globe" ? REVEAL_ZOOM_CAP_GLOBE : REVEAL_ZOOM_CAP_FLAT;
+  if (mapMode !== "scout") return modeCap;
+  return Math.min(modeCap, mode === "globe" ? SCOUT_MAX_ZOOM_GLOBE : SCOUT_MAX_ZOOM_FLAT);
 }
 
 export interface MapOptionsForDeviceInput {

@@ -20,7 +20,7 @@ import {
 import { mountStarfield } from "./starfield.ts";
 import { buildScoutStyle } from "./scout-style.ts";
 import { ScoutFallbackMap } from "./scout-fallback.tsx";
-import { isCoarsePointer, mapOptionsForDevice, settleZoomCap, SCOUT_MAX_ZOOM_FLAT, SCOUT_MAX_ZOOM_GLOBE } from "./map-options.ts";
+import { isCoarsePointer, mapOptionsForDevice, revealZoomCap, settleZoomCap, SCOUT_MAX_ZOOM_FLAT, SCOUT_MAX_ZOOM_GLOBE } from "./map-options.ts";
 import type { MapMode } from "./capability.ts";
 import { emitTileFailed, emitWebglContextLost, recordMilestone, recordTileErrors } from "@/lib/observability";
 import { createTapTracker } from "./tap-tracker.ts";
@@ -235,6 +235,7 @@ function buildRevealRequest(
   mode: "flat" | "globe",
   tileStatus: TileStatus,
   projection: "globe" | "mercator",
+  mapMode: MapMode,
 ): RevealRequest {
   // Antimeridian-aware longitude span: a pin/spot pair straddling ±180°
   // (Fiji, Tonga, the Aleutians) must frame the short way around, not the
@@ -259,7 +260,11 @@ function buildRevealRequest(
         left: REVEAL_EDGE_PADDING_PX,
         right: REVEAL_EDGE_PADDING_PX,
       },
-      maxZoom: mode === "globe" ? 4 : 8,
+      // The reveal framing must target a zoom the camera can reach — same
+      // invariant as the intro (settleZoomCap). In scout-globe the camera
+      // caps at 2; an unclamped target would clamp mid-jump, desync the
+      // zoom readout, and wedge the + button.
+      maxZoom: revealZoomCap(mode, mapMode),
     },
   );
   const fallbackCenter: [number, number] = [(westEdge + eastEdge) / 2, (southEdge + northEdge) / 2];
@@ -1732,6 +1737,7 @@ export function SatelliteMap(props: {
         props.mode,
         tileStatusRef.current,
         logicalProjection(),
+        mapModeRef.current,
       );
       executeIntentsRef.current(controller.requestReveal(request));
       if (request.tileFailed) {

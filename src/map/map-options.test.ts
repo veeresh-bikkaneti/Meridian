@@ -2,10 +2,14 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   MAX_TILE_CACHE_SIZE,
+  REVEAL_ZOOM_CAP_FLAT,
+  REVEAL_ZOOM_CAP_GLOBE,
   SCOUT_MAX_ZOOM_FLAT,
+  SCOUT_MAX_ZOOM_GLOBE,
   SETTLE_ZOOM_CAP_COUNTRY,
   SETTLE_ZOOM_CAP_STATE,
   mapOptionsForDevice,
+  revealZoomCap,
   settleZoomCap,
 } from "./map-options.ts";
 
@@ -45,10 +49,34 @@ test("scout flat maxZoom frames every state: cap 8, at full-mode parity", () => 
 });
 
 test("scout mode: settle zoom never exceeds the mode cap (no mid-flight clamp)", () => {
-  assert.equal(settleZoomCap("state", "scout"), SETTLE_ZOOM_CAP_STATE);
-  assert.equal(settleZoomCap("country", "scout"), SETTLE_ZOOM_CAP_COUNTRY);
+  // Pins the formula, not the current coincidence: the scout arm MUST be
+  // min(edition cap, flat cap) — deleting the clamp must fail this test.
+  assert.equal(
+    settleZoomCap("state", "scout"),
+    Math.min(SETTLE_ZOOM_CAP_STATE, SCOUT_MAX_ZOOM_FLAT),
+  );
+  assert.equal(
+    settleZoomCap("country", "scout"),
+    Math.min(SETTLE_ZOOM_CAP_COUNTRY, SCOUT_MAX_ZOOM_FLAT),
+  );
   assert.ok(settleZoomCap("state", "scout") <= SCOUT_MAX_ZOOM_FLAT);
   assert.ok(settleZoomCap("country", "scout") <= SCOUT_MAX_ZOOM_FLAT);
+});
+
+test("reveal framing cap: full mode unchanged, scout clamped to the camera cap", () => {
+  // Full mode keeps the historical reveal framing exactly.
+  assert.equal(revealZoomCap("globe", "full"), REVEAL_ZOOM_CAP_GLOBE);
+  assert.equal(revealZoomCap("flat", "full"), REVEAL_ZOOM_CAP_FLAT);
+  assert.equal(REVEAL_ZOOM_CAP_GLOBE, 4);
+  assert.equal(REVEAL_ZOOM_CAP_FLAT, 8);
+  // Scout: the reveal beat is a jump-to (reduced motion is forced), so an
+  // unreachable target clamps mid-jump, desyncs the zoom readout, and
+  // wedges the + button — the same failure this PR fixes on the intro.
+  // Scout-globe's camera caps at 2 (SCOUT_MAX_ZOOM_GLOBE), not 4.
+  assert.equal(revealZoomCap("globe", "scout"), SCOUT_MAX_ZOOM_GLOBE);
+  assert.equal(revealZoomCap("flat", "scout"), SCOUT_MAX_ZOOM_FLAT);
+  assert.ok(revealZoomCap("globe", "scout") <= SCOUT_MAX_ZOOM_GLOBE);
+  assert.ok(revealZoomCap("flat", "scout") <= SCOUT_MAX_ZOOM_FLAT);
 });
 
 test("scout mode: settle zoom actually frames a state (absolute property)", () => {
