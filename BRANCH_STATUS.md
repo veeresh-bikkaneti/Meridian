@@ -1,33 +1,80 @@
-# BRANCH_STATUS — main
+# BRANCH_STATUS — feat/telemetry-phase1-counts
 
-**Current state (2026-10-17):** `origin/main` @ `f331846`.
-PR #169 merged 2026-10-17 — all 106 journal notes are illustrated and live
-on workers.dev + GitHub Pages. Post-merge Node CI and Pages green.
-Branch protection intact (never lifted; required checks: GitGuardian Security Checks, build (22.x)).
+**Mission (owner: Veeresh; approved 2026-10-17):** Phase 1 of the
+telemetry upgrade — make the crash-report worker count events, tier
+severity, and post digests, so bursts are distinguishable from
+background noise without collecting any identity. Worker-side ONLY.
 
-## Recently merged
+**Base:** `origin/main` @ `6817186` (PR #170 docs refresh). The branch
+was rebased onto it mid-build (commit `a6a9aa9`; `6817186` is an
+ancestor of HEAD — verified by the review panel); no rebase is pending.
 
-- #162 — globe contained in the bento grid.
-- #163 — the Meridian handbook (`docs/handbook/`).
-- #165 — tasting-tour page order; storyteller clips restored.
-- #168 — journal v2 consolidation (106 notes, 36 rotating sets, 49 verified / 57 cited).
-- #169 — wave-2 art: 103 storybook drawings; all 36 journal sets illustrated.
+**Scope:** `workers/crash-report/` only (code + README + wrangler.toml).
+NO client/app changes (`src/`, `public/` untouched). NO deployment —
+deploy stays an owner step; the wrangler-vs-manual-version_upload
+question is NOT resolved here.
 
-## Open owner decisions
+## Design (claims — Chitti reviews before merge)
 
-- Chimney Rock citation (Q6): NPS link is dead (302 → 404); carried as-is, tier "Verified" — owner's pick pending.
-- Storyteller poke clips are in the wrong voice (open bug): the 5 poke lines are local Kokoro renders, but the ruling assigns them to TruthTeller — fix waits on the owner identifying the source.
-- haymarket journal drawing: shipped as a known nit (reads as a generic market street, not the warehouse/railyard district); no regen ordered.
-- `feat/homepage-premium-v5` branch (@9cbbdd2): delete or keep-as-archive.
+- **Store: Workers KV, one key per (UTC hour × event type).**
+  Rejected: Analytics Engine — its reads are eventual (minutes) and only
+  queryable via its SQL API, so it cannot drive the in-request threshold
+  check or the "current hour" digest reads. KV: read-your-writes in the
+  worker, one binding, free-tier safe (1 GET + 1 PUT per event), no new
+  paid services. Approximation accepted: read-modify-write races can lose
+  increments — signal, not billing.
+- **Severity tiers** (see README for the rationale):
 
-## Known pre-existing issues (not regressions)
+  | Tier | Types | Behavior |
+  |---|---|---|
+  | crash-class | `suspected_crash`, `boot_failure`, `js_error`, `unhandled_rejection`, `map_error` | Immediate Discord/email forward, unchanged format; also counted. |
+  | hiccup-class | `tile_failed`, `webgl_context_lost` | Counted only; no individual forward. Threshold alert + digest. |
 
-- React #418 hydration mismatch on throttled boots (Slow 4G + 4× CPU); the app recovers.
-- tapstart.desktop E2E flake family (~7–8, flips run-to-run under load) — pre-existing.
-- 768px horizontal overflow on the home page — pre-existing.
+- **Threshold:** 20 events/hour of one hiccup type across builds, or
+  10/hour from a single buildId — exactly one Discord alert per
+  type+hour (flag stored in the bucket; near-zero cross-isolate race
+  window documented in code). Env-overridable:
+  `TELEMETRY_THRESHOLD_PER_HOUR`, `TELEMETRY_THRESHOLD_PER_BUILD`.
+- **Hourly digest:** cron `15 * * * *` posts ONE Discord message for the
+  previous UTC hour (📊 header); zero events → posts nothing. Flags a
+  type at >3× its trailing-24h hourly average AND >3 events absolute.
+- **Fail-open (hard):** counting is best-effort try/catch; KV absent or
+  erroring never 500s the client and never blocks a crash-class
+  forward. Tests prove this with a "KV down" store.
+- **Privacy invariant preserved:** buckets hold COUNTS ONLY, keyed by
+  the coarse dimensions the alerts already carry. No sessionId, no UA,
+  no IPs, no payloads — forwarded, logged, or stored.
 
-## Convention
+## Gates
 
-Every active branch rewrites this file as its own status log; this main-level
-version was written by the docs-refresh PR (2026-10-17) from the completed
-merge records. Merged-branch working logs do not belong on main.
+- `npm run test:worker` — **32/32 pass** (18 existing + 14 new:
+  tiering, counting per dimension, crash-forwards/hiccup-doesn't,
+  threshold exact-once (both rules) + env override, digest renders /
+  anomaly / silent-on-zero / no-webhook, fail-open ×2).
+- `npm run typecheck:worker` — **clean.**
+- Root cross-impact — **all green**: `npx tsc --noEmit` clean,
+  `npm test` 0 failures (799 + 1351), `node scripts/lint-cards.mjs`
+  GATE PASSED, `npm run build:pages` green. (Independently reproduced
+  by Chitti and Scrum Squad 3 at tip `09d57d3`.)
+
+## Deploy steps for the owner (after merge; PR body repeats this)
+
+1. `npx wrangler kv namespace create TELEMETRY_COUNTS` → paste id into
+   the commented `[[kv_namespaces]]` block in `wrangler.toml`.
+2. Deploy the worker (existing release method — unchanged by this PR).
+3. Set secrets as in the README (unchanged); the `observabilityEndpoint`
+   in `public/flags.json` does not change.
+4. Verify: one `tile_failed` → `{"ok":true,"forwarded":false,
+   "counted":true}`; appears in the next hourly digest.
+
+## MERGE NOTE
+
+This branch replaces `BRANCH_STATUS.md` with this branch record, per
+repo convention (each feature branch carries its own). The mid-build
+rebase onto `6817186` conflicted on this file and the worker README;
+both were resolved toward this branch's record + PR #170's framing
+(commits `a6a9aa9`, `09d57d3`). On merge the file becomes this branch's
+record — the next branch rewrites it again.
+
+**Do-not-touch:** client code, `public/flags.json`, the release
+method, secrets. Nobody merges — owner merges on his word.
