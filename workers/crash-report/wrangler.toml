@@ -3,6 +3,19 @@
 # NO secrets in this file — secrets are set via `wrangler secret put`
 # (see README.md). There are no [vars]: everything configurable that is
 # not a secret lives in code defaults.
+#
+# Phase 1 telemetry: event counters live in a KV namespace bound as
+# TELEMETRY_COUNTS. The owner creates it once:
+#   npx wrangler kv namespace create TELEMETRY_COUNTS
+# then pastes the returned id below (uncomment the block). Until then the
+# worker runs counting-free (fail-open) — deploy is safe either way.
 name = "meridian-crash-report"
 main = "src/index.ts"
 compatibility_date = "2026-10-01"
+
+[triggers]
+crons = ["15 * * * *"]  # hourly digest, posted ~:15 for the previous UTC hour
+
+# [[kv_namespaces]]
+# binding = "TELEMETRY_COUNTS"
+# id = "PASTE_NAMESPACE_ID_HERE"
