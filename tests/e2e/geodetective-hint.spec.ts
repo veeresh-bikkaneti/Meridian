@@ -10,6 +10,8 @@ import { serveBuiltArtifact } from "./helpers";
  * - 8-10 ("one-per-round"): hint button visible; one hint per mystery —
  *   disables after use.
  * - 11-13 ("none"): NO hint button at all.
+ * - No profile set (the default): hints ON (owner 2026-10-20) — the deal
+ *   snapshot carries "one-per-round", so the bulb shows like 8-10.
  *
  * The hint itself is the same mechanical quadrant nudge as the quiz loops
  * (hint-logic.ts) — coarse, never pinpoints. Hints never touch points.
@@ -86,6 +88,29 @@ test("11-13: no hint button at all", async ({ page, context }) => {
   await expect(page.getByTestId("hint-button")).toHaveCount(0);
   await page.waitForTimeout(2000);
   await expect(page.getByTestId("hint-button")).toHaveCount(0);
+});
+
+test("no profile (default): hint button visible, shows a directional hint, then disables", async ({
+  page,
+}) => {
+  // Owner, 2026-10-20: hints on by default. NO seedProfile call — the
+  // deal snapshot minted for an unset profile carries "one-per-round",
+  // and LoopScreen reads the mystery's own dealBandConfig snapshot, so
+  // the bulb shows here exactly like the quiz loops.
+  await page.setViewportSize({ width: 390, height: 844 });
+  await openLoop(page);
+
+  const button = page.getByTestId("hint-button");
+  await expect(button).toBeVisible({ timeout: 15_000 });
+  await expect(button).toBeEnabled();
+
+  await button.click();
+  const message = page.getByTestId("hint-message");
+  await expect(message).toBeVisible({ timeout: 10_000 });
+  await expect(message).toHaveText(/northern|southern|eastern|western/i);
+
+  await expect(button).toBeDisabled();
+  await expect(button).toHaveAccessibleName(/Hint used/i);
 });
 
 for (const [w, h] of [[360, 740], [390, 844]] as const) {
