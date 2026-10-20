@@ -16,6 +16,14 @@ export type LngLat = [number, number];
 
 const EARTH_KM = 6371;
 
+/** A quarter of Earth's circumference (~10,007.5 km) — the largest ring
+ *  radius that still traces a loop around its own centre. */
+export const QUARTER_CIRCUMFERENCE_KM = (Math.PI / 2) * EARTH_KM;
+
+/** Half of Earth's circumference (~20,015 km) — the longest possible
+ *  distance between two points on the surface. */
+export const HALF_CIRCUMFERENCE_KM = Math.PI * EARTH_KM;
+
 /** Destination point: travel distKm from (lon, lat) on bearingDeg. */
 export function destination(lon: number, lat: number, bearingDeg: number, distKm: number): LngLat {
   const d = distKm / EARTH_KM;
@@ -43,8 +51,28 @@ export function destination(lon: number, lat: number, bearingDeg: number, distKm
  * a 350°+ jump that the tile worker silently drops (observed: an 8,764 km
  * ring produced zero features). The renderer wraps out-of-range
  * longitudes correctly.
+ *
+ * Rings wider than a quarter of the planet take the antipode reframe
+ * below instead of tracing from (lon, lat) directly.
  */
 export function ringPolygon(lon: number, lat: number, radiusKm: number, steps = 72): GeoJSON.Polygon {
+  if (radiusKm > QUARTER_CIRCUMFERENCE_KM) {
+    // Far-ring reframe (issue #166). A circle wider than a quarter of the
+    // planet is the SAME set of points as a small circle around the
+    // antipode — the spot exactly opposite on the globe — with radius
+    // HALF − radiusKm. Tracing the big circle from the guess makes the
+    // bearing walk loop around the antipode anyway, and its unwrapped
+    // longitudes strand that loop in a repeated world copy, half a planet
+    // from the tap. Tracing the small circle from the antipode draws the
+    // identical ring in the world copy where the target actually lives.
+    // (Distances arrive from geo.ts, which uses a hair larger Earth
+    // radius, so a near-perfect antipodal miss can land a few metres
+    // over HALF — clamp that residue to a 1 km loop, the honest picture
+    // of "the answer is basically the opposite side of the Earth".)
+    const antipodeLon = (((lon + 180) + 540) % 360) - 180;
+    const reframedKm = Math.max(HALF_CIRCUMFERENCE_KM - radiusKm, 1);
+    return ringPolygon(antipodeLon, -lat, reframedKm, steps);
+  }
   const ring: LngLat[] = [];
   let prevLon = lon;
   for (let i = 0; i <= steps; i++) {
