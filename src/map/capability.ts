@@ -259,9 +259,10 @@ export type ScoutOfferVariant = "prior-crash" | "probe" | "low-memory";
 
 export interface BootMapModePlan {
   /**
-   * The choice dialog to show, or null for none. A live stored assignment
-   * (manual, or auto inside its decay window) suppresses every offer path —
-   * the user's settled choice is never re-asked.
+   * The choice dialog to show, or null for none. This plan is only ever
+   * requested when no live stored assignment stands (the caller checks
+   * the stored record first), so a settled choice is never re-asked —
+   * the question is never posed.
    */
   offer: ScoutOfferVariant | null;
 }
@@ -270,6 +271,14 @@ export interface BootMapModePlan {
  * Pure boot plan for a fresh qualification (no live stored assignment):
  * which choice dialog to show, if any.
  *
+ * Caller contract: only ask when no live stored assignment stands.
+ * game-app's boot effect reads the stored record itself — it needs the
+ * stored mode either way — and calls this solely from its no-stored
+ * branch. That check is the one place the "a stored assignment
+ * suppresses every offer" rule lives; this function takes no stored
+ * parameter, so its type can't pretend otherwise (issue #154 item 3 —
+ * production always passed null, and the dead branch hid that).
+ *
  * Owner directive: a capability-detected weak device gets a CHOICE, never
  * a silent routing. The session always starts in full mode when an offer
  * is pending — scout applies only on accept (stored with `accepted: true`,
@@ -277,11 +286,7 @@ export interface BootMapModePlan {
  * it never decays and never re-prompts), and decline records the user's
  * explicit "full" choice as manual (never decays, never re-prompts).
  */
-export function planBootMapMode(
-  stored: StoredMapMode | null,
-  decision: MapModeDecision,
-): BootMapModePlan {
-  if (stored) return { offer: null };
+export function planBootMapMode(decision: MapModeDecision): BootMapModePlan {
   if (
     decision.source === "prior-crash" ||
     decision.source === "probe" ||

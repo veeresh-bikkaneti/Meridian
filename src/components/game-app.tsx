@@ -1165,8 +1165,11 @@ export function GameApp() {
     // Write policy (Q3): a live stored assignment (manual, or auto inside
     // its decay window) stands WITHOUT a rewrite — rewriting per boot
     // would refresh setAt and silently defeat decay. Nothing is written
-    // at boot for a fresh scout decision either: accept writes the auto
-    // scout (source preserved, decays), decline writes manual full.
+    // at boot for a fresh scout decision either. If the player answers
+    // the offer, the accept/decline handlers store that answer: a
+    // capability accept keeps the qualifying source and adds
+    // accepted: true, decline writes manual full — and a stored answer
+    // never decays, so the offer is never re-asked.
     // Q1 (offer, not force): a fresh "prior-crash", "probe", or
     // "low-memory" decision shows the choice dialog — the session stays
     // in full mode until the player accepts. Scout never applies silently.
@@ -1185,7 +1188,6 @@ export function GameApp() {
           typeof window !== "undefined" &&
           (window as unknown as Record<string, unknown>).__meridianSuppressScoutOffer === true;
         const plan = planBootMapMode(
-          null,
           qualifyMapMode({
             priorMapCrash: wasMapAttributedCrash(),
             webglProbeOk: probeWebGL(),

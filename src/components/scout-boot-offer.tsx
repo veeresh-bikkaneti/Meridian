@@ -112,13 +112,14 @@ export function ScoutBootOffer(props: {
         role="dialog"
         aria-modal="true"
         aria-labelledby="scout-boot-offer-title"
+        aria-describedby="scout-boot-offer-body"
         onClick={(event) => event.stopPropagation()}
         className="w-full max-w-sm rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.92)] p-6 text-white shadow-2xl backdrop-blur-[14px]"
       >
         <h2 id="scout-boot-offer-title" className="text-lg font-semibold">
           Try Scout Map?
         </h2>
-        <p className="mt-2 text-sm leading-relaxed text-white/80">{body}</p>
+        <p id="scout-boot-offer-body" className="mt-2 text-sm leading-relaxed text-white/80">{body}</p>
         <div className="mt-5 flex flex-col gap-2">
           <button
             ref={acceptRef}
