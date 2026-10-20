@@ -183,6 +183,26 @@ flowchart TD
 
 *Diagram in words: the picker (Globe → Country → State) feeds fail-closed dealing from the selected region's pool; each question runs guess → scoring → reveal with its story card, then the session share; GeoDetective and Cold Trail branch off the main deal as their own loops.*
 
+## 13. Hint policy — per age band, and ON by default (2026-10-20)
+
+Hints are a real feature (Veeresh, 2026-10-09): a lightbulb button in the game offers a coarse directional nudge ("the place is in the northern part…") — never the answer, never worth points. How often the bulb may be tapped is set by the player's age band:
+
+| Profile | Hint policy | What the player gets |
+|---|---|---|
+| 5-7 | free | Bulb always available; after 2 misses the mascot also *offers* a hint (opt-in, never an interruption) |
+| 8-10 | one-per-round | Bulb available; one hint per place, then it greys out until the next place |
+| 11-13 | none | No bulb at all — this band plays clean (and can earn the Clean Round badge) |
+
+**The default changed on 2026-10-20.** The game never checks the player's age — the band comes from a profile a parent may set, and most players never set one. Before this ruling, a player with no profile was quietly treated as 11-13, which meant **no hint bulb, ever, for almost every player** — Veeresh found this playing the live site himself. His ruling, in his words: *"Change the default so everyone gets the hint bulb"* — *"we dont check the age of the player, so we need the hints on by default."*
+
+What the ruling does (issue #182):
+
+- **No profile set → hint policy "one-per-round."** The bulb shows, one hint per place — the 8-10 shape. The mascot offer stays off (it belongs to the 5-7 "free" policy only).
+- **Explicitly chosen bands are untouched.** A profile a parent deliberately set to 11-13 still gets no bulb. The ruling changes the *default*, not a parent's choice.
+- **Nothing else about the default changes.** An unset profile still plays with the 11-13 numbers (round lengths, pin tolerance, clue counts), and the run still records its band as "11-13" — so the Clean Round badge works as before: it keys off the recorded band plus hints actually used. A default player who taps a hint has used a hint (no badge, same as anyone); a default player who never taps can still earn it.
+
+*Superseded:* the pre-2026-10-20 default — "no profile resolves to 11-13 for everything, hint policy included" — is replaced by the rule above. The per-band table itself is unchanged since 2026-10-09.
+
 ## Sources
 
 - `~/workspace/your_files/meridian-scoring-proposal.md` — scoring v3 design, formula, worked examples, display + share design, migration notes
@@ -191,3 +211,4 @@ flowchart TD
 - `~/workspace/specs/coldtrail-sighting-anchors.md` — the anchor problem, options A–D (DRAFT, awaiting Veeresh's pick), acceptance criteria
 - `~/workspace/your_files/game-review-recommendations.md` — Admin-1 narrow decision, symmetric country naming, pin-legend copy, top-10 improvement slate (recommendations; Veeresh decides)
 - `~/MEMORY.md` — slogan (2026-10-01), philosophy (2026-10-03), GeoDetective unlimited decision (2026-10-06), #130–#138 decisions (2026-10-11), reveal design (2026-09-30/10-01), share format, stale-deploy copy, blurb principles, Hyderabad rule (2026-09-30), dataset facts (2026-09-30), picker wording, learningOutcomes flag (2026-10-04)
+- GitHub issue #182 (2026-10-20) — the hidden-bulb bug report and Veeresh's hints-on-by-default ruling quoted in §13; the fix ships on branch `fix/hint-default-on`

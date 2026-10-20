@@ -1,220 +1,105 @@
-# BRANCH_STATUS.md — fix/hydration-418
+# BRANCH_STATUS.md — fix/hint-default-on
 
 ## What
+Issue #182: the hint bulb never appeared for any player who had not
+set an age profile — every fresh visitor. The unset profile resolved
+to the 11-13 band, whose hint policy is "none", so the hint panel
+rendered nothing and nobody was told hints exist.
 
-Fix React error **#418** (hydration mismatch) on boot. The bug is
-pre-existing — proven on unmodified main since 2026-10-16, and again by
-the /jury pilot on 2026-10-20 (desktop LCP 10,564 ms with the hero
-headline as the LCP element). When #418 fires, React throws away the
-prerendered HTML and re-renders the whole page from scratch — the
-prerender is wasted on exactly the slow devices that need it most.
+Owner decision, 2026-10-20: "Change the default so everyone gets the
+hint bulb." — "we dont check the age of the player, so we need the
+hints on by default"
 
-## Reproduction (before the fix)
+Fix: a run with NO age profile set now snapshots the hint policy
+"one-per-round" (the bulb shows, one hint per place — the 8-10 shape).
+Everything else about the default stays exactly as it was.
 
-Harness: serve the production `build:pages` artifact locally with
-Playwright route fulfillment (the same pattern the E2E suite's
-`serveBuiltArtifact` helper uses), boot it in headless Chromium,
-capture console errors / pageerrors verbatim, and observe LCP via a
-PerformanceObserver init script.
+## The bug, plainly
+- The game never checks the player's age. The "band" comes from a
+  parent-set profile stored on the device; most players never set one.
+- With no profile, the run config resolved through the 11-13 row of
+  the policy table — "none" — so `HintPanel` returned null. The bulb
+  was off by default for almost everyone, silently.
+- Found by the owner playing the live site; confirmed by a fresh-
+  profile inspection of production (Globe game: End game present,
+  no bulb anywhere).
 
-Results on unmodified main @ `84ac861`:
+## Done (2026-10-20)
+- `src/game/age-profile/run-config.ts`: new named constant
+  `DEFAULT_HINT_POLICY = "one-per-round"` with the owner's words and
+  the why in plain language. `getBandConfig(null)` now carries it;
+  `getBandConfig("11-13")` still carries "none" — an explicit 11-13
+  profile is a parent's deliberate choice and is NOT overridden.
+  The snapshot's `band` field still records "11-13" for unset runs,
+  and every other number (rounds, tolerance, clues, duel seconds)
+  is byte-identical to before.
+- Snapshot sites now pass the profile's RAW band (`loadProfile().band`,
+  null when unset) instead of the pre-resolved band, so the default
+  actually reaches the snapshot: `src/game/run.ts` (run start + the
+  pre-snapshot resume backfill) and `src/game/loop/store.ts`
+  (GeoDetective deal). For any explicitly set profile the snapshots
+  are unchanged, value for value.
+- `src/game/loop/LoopScreen.tsx`: GeoDetective now reads the hint
+  policy from the mystery's own persisted deal snapshot
+  (`puzzle.dealBandConfig.hintPolicy`) — the deal-time source the
+  #113 contract always intended — falling back to the old recompute
+  only for pre-snapshot puzzles. A no-profile player's GeoDetective
+  bulb therefore shows too; a mystery dealt BEFORE this fix keeps
+  the policy it was dealt with until the next deal (snapshot rules).
+- Consumer audit (each verified in code):
+  - `hintButtonState` / `canUseHint`: pure functions of the policy —
+    "one-per-round" gives visible → disabled-after-one-use. ✓
+  - `mascotOffersHint`: fires only for "free" (5-7) — the default
+    policy can never trigger the mascot offer. Proven by unit pin
+    at several miss counts. ✓
+  - Quiz dock (`game-app.tsx`): reads the run snapshot's policy —
+    the bulb now renders in the bottom-right dock during aim. ✓
+  - Clean Round badge (`passport/badges.ts`): keys off the snapshot
+    BAND field (still "11-13") + hints used + win — never the policy.
+    A default player who uses a hint gets no badge (same as any
+    hint user); one who never taps still earns it. No change needed
+    and none made; existing unit pins cover both cases. ✓
+  - Everything else that reads the band (`resolveBand` consumers:
+    loop locks, pin tolerance, read-aloud mode, story mapping,
+    GeoDetective clue/cap config): untouched — `resolveBand` itself
+    did not change, and the snapshot's band field did not change,
+    so the ONLY behavioral delta is hint availability for
+    unset-profile runs. ✓
+- Unit tests: run-config gate updated deliberately (the gate's own
+  header says intentional changes update it) — the unset contract is
+  now "production numbers + hintPolicy one-per-round"; new pins for
+  null-vs-explicit-11-13 (identical except the policy), bulb state
+  under the default, mascot-offer exclusion; startRun/resume snapshot
+  pins for unset (hints on) and explicit 11-13 (hints off); the loop
+  store snapshot pin now mirrors the production call. Mutation check:
+  reverting the one-line policy change fails 10 of the 20 tests in
+  the two config test files.
+- E2E: new tests in `tests/e2e/hint-button.spec.ts` (no profile →
+  bulb visible in the aim dock → tap → directional hint shows →
+  button disables) and `tests/e2e/geodetective-hint.spec.ts`
+  (no profile → same flow in GeoDetective). The explicit-11-13
+  "no bulb" pins already in both specs still stand.
+- Docs: this file; the stale comments in run-config.ts / run.ts /
+  loop store / LoopScreen / hint-panel now describe the default
+  honestly; handbook chapter 02 gained section 13 recording the
+  per-band hint policy (owner 2026-10-09) and the 2026-10-20 ruling
+  that supersedes its default behavior.
 
-- Instant (unthrottled) boots: **#418 fired on 1 of 3 runs** —
-  `Minified React error #418; args[]=HTML&args[]=` (the
-  "server rendered HTML didn't match the client" variant, with an
-  empty text arg). Flaky, not deterministic — a race.
-- Throttled boot (artificial Slow-4G-style latency + 4× CPU):
-  no #418 on the sampled run; LCP was a post-boot element
-  (scout-dialog text at 7,588 ms / hero H1 at 8,704 ms).
-- The /jury pilot saw the same signature: #418 on its desktop,
-  hover, and reduced-motion passes, not on its throttled mobile pass.
-- A dev-mode build (`NODE_ENV=development`) names the exact
-  mismatch: the client renders
+## Pending
+- Full review pipeline (panel) — runs after this PR opens.
+- Merge: owner's word only. Do not merge on green CI alone.
 
-  ```
-  <main className="mx-auto flex min-h-dvh max-w-3xl flex-col justify-end px-5 py-10">
-  ```
-
-  (GameApp's boot splash — "Daily geography" / "Meridian") where the
-  server left an empty `<Suspense>` boundary in its place.
-
-## Root cause
-
-Meridian builds two artifacts from one source:
-
-- the **live site** — a Worker SSRs each request, and its HTML for
-  `/` contains the fully rendered splash, match stream ids
-  `[__root__, /]`, both `ssr: true`;
-- **GitHub Pages** — a static **SPA shell** prerendered at build
-  time (`tanstackStart({ spa: { enabled: true } })` in
-  `vite.config.ts`, written to `dist/client/_shell.html`).
-
-The shell is prerendered with an `X-TSS_SHELL` header
-(`@tanstack/start-plugin-core` `post-build.ts`). Seeing it, the
-router renders **only the root route** and dehydrates only the root
-match (`matchesToDehydrate.slice(0, 1)` in router-core). The index
-route's outlet is left as an **empty, already-closed Suspense
-boundary** — `<!--$--><!--$--><!--/$--><!--/$-->` in the shell body.
-Calling the built server handler directly (no shell header) renders
-the splash and the index match correctly, so the app code itself
-renders fine; the shell is root-only **by framework design**.
-
-On the client, `StartClient` suspends on `hydrateStart()`. When the
-router first renders, whether the index match already has its
-component decides the outcome:
-
-- chunk still loading → the match renders its (empty) pending state
-  → matches the shell → clean hydration;
-- chunk already loaded (the shell **modulepreloads** the routes
-  chunk, so on a fast pipe it usually is) → the match renders the
-  splash **during the hydration pass**, where the server left an
-  empty boundary → React #418 → React discards the whole tree and
-  re-renders from scratch.
-
-So this is a race between route-chunk load timing and the hydration
-pass, at the router-match boundary — not a content divergence.
-
-**Ruled out** (checked, not assumed):
-
-- The Journal clock hypothesis: GameApp renders *only* the splash
-  until its `ready` state flips in an effect **after** hydration.
-  The journal's `Date.now()` initializers, streak/localStorage
-  reads, and the render-time date line all sit behind that gate, so
-  none of them can diverge during the hydration pass.
-- No app code mutates `documentElement` attributes before hydration
-  (grep-verified across `src/` and `scripts/`).
-- GameApp is not itself divergent: its first render is the splash on
-  both sides (`ready = useState(false)`, set only in effects).
-
-## Fix
-
-Three files, all at the source:
-
-- **`src/routes/index.tsx`** — the index route now declares
-  `ssr: false` and `pendingComponent: BootSplash`.
-  `ssr: false` is the router's own mechanism for a match that is
-  not server-rendered: the client wraps it in a `ClientOnly`
-  boundary that renders the **fallback** during hydration (via
-  React's server snapshot, so it cannot mismatch by construction)
-  and swaps in the real component right after mount. Chunk timing
-  is out of the equation, in both builds.
-- **`src/components/boot-splash.tsx`** (new) — the boot splash
-  ("Daily geography" / "Meridian"), extracted verbatim from
-  GameApp. It is now the single source of the splash markup: the
-  route's fallback paints it into the served HTML, and GameApp
-  renders the same component until its `ready` gate opens, so the
-  two painters can never drift apart.
-- **`src/components/game-app.tsx`** — the `!ready` branch renders
-  `<BootSplash />`; the now-unused `BRAND` import is removed.
-  No other GameApp behavior changes.
-
-Verified side effects, both intended:
-
-- The Pages shell body now carries the splash inside its
-  boundaries — the headline paints from the served HTML.
-- The live SSR build still serves the splash for `/` (handler
-  probe: 200, 3,607 bytes vs 3,590 before; the splash is now the
-  route's fallback instead of GameApp's SSR render — same markup,
-  same first paint).
-
-Explicitly **not** used: no `suppressHydrationWarning`, no error
-suppression, the prerender still runs and still produces the
-shell. The mismatch is removed by making the served HTML and the
-hydration render the same by construction.
-
-Also in this branch: handbook ch07's #418 entry is marked FIXED
-with the root cause, and a regression spec
-(`tests/e2e/hydration-boot.desktop.spec.ts`) pins both halves of
-the fix — the served shell must contain the splash headline, and a
-full boot to the ready signal must show no #418/hydration error.
-(The served-HTML half fails deterministically on the old build;
-the error half was a race there and is structural now.)
-
-## Proof
-
-Same harness as the repro (built Pages artifact, Playwright route
-fulfillment, headless Chromium, LCP via PerformanceObserver):
-
-**Before (unmodified main @ `84ac861`):**
-
-- Instant boots: #418 fired 1 of 3 (race).
-- Throttled boot: shell body contains **no headline at all** —
-  nothing paints until the client boots; hero H1 LCP 8,704 ms,
-  settle 10,151 ms.
-- /jury pilot (2026-10-20): #418 on desktop/hover/reduced passes;
-  desktop hero LCP 10,564 ms.
-
-**After (this branch, rebased on `a45674b`):**
-
-- **13 harness boots, zero #418, zero console errors** — instant
-  and throttled, before and after the rebase.
-- Instant boots: FCP 236–588 ms; the first LCP is the splash H1
-  "Meridian" in every run — painted from the served HTML.
-- Throttled boots: FCP ≈ 1.25–1.30 s with the splash H1 as first
-  LCP; the hero H1 (which still waits on the full game boot) lands
-  at 7,644–8,108 ms vs 8,704 ms before the fix.
-- Live-build handler probe: `/` still serves the splash in the
-  HTML (see Fix above).
-
-No journal 2-hour-boundary run was needed: the clock hypothesis
-was ruled out before fixing (the journal renders only behind
-GameApp's post-hydration `ready` gate, so build-clock vs
-player-clock cannot diverge during hydration). Journal rotation
-behavior is covered by the journal E2E suite below.
-
-## Gates
-
-All run at the rebased tip (on `a45674b`), `VITE_KOFI_URL` set at
-build and test time, E2E `--workers=1` under the VM-wide lock:
-
-- `npx tsc --noEmit` — **clean**
-- `npm test` — scripts **799 (790 pass / 9 skip / 0 fail)** + src
-  **1358 pass / 0 fail**
-- `node scripts/lint-cards.mjs` — **GATE PASSED**
-- `npm run build:pages` — **green** (shell verified to contain
-  the splash)
-- E2E vs the built artifact:
-  - `hydration-boot.desktop.spec.ts` (new) — **pass**
-  - `journal.spec.ts` + `journal-art.desktop.spec.ts` — **6/6
-    pass** (rotation, 2-hour window roll, remainder set)
-  - `scout-offer.desktop.spec.ts` +
-    `scout-capability-offer.desktop.spec.ts` — **16/16 pass**
-    (offer, fail-closed clean boot, manual override — first-visit
-    flow unchanged)
-  - `safari-launch.spec.ts` — the `?nosw=1` test **passes** (it
-    flaked once under parallel load with a navigation race; it
-    passes run alone on this branch and on main). The boot-JS
-    ceiling test **fails — a pre-existing condition on
-    unmodified main `a45674b`, where it fails identically;
-    cause not pinned.** The 3,496,753 B total (vs the 1,800,000 B
-    ceiling) was measured on this branch's `build:pages`
-    artifact. Not this branch's regression; flagged for the
-    owner, not fixed here (out of scope for the hydration fix).
-
-Behavior non-regressions are covered above: journal rotation
-(journal suite), streak/first-visit/scout offer (scout suites +
-the boot spec), and GameApp itself is untouched apart from
-rendering the shared splash component in its existing `!ready`
-branch.
-
-## Follow-ups (recorded, not built)
-
-Panel-recommended hardening for the regression guard, deliberately
-left out of this fix branch:
-
-- A mobile twin of the regression spec (390×844), and/or a
-  screenshot parity check on the splash first paint — the spec is
-  desktop-only today.
-- A spec pinning the **live-SSR hydration path**: the Worker build
-  hydrates a fully rendered `/`, a different code path from the
-  Pages shell the regression spec covers.
-
-## Status
-
-Ready for the owner's review pipeline. Nobody merges — the owner
-merges on his word.
-
-- Rebased a second time onto main `8432f75` on 2026-10-20, after
-  PRs #177/#178 merged; the only conflict was this file itself.
-  The parent re-ran the full gates + the hydration spec green on
-  the rebased tip `a72eeb3`.
+## Gates (2026-10-20, this branch)
+- `npx tsc --noEmit` — clean.
+- `npm test` — green: scripts suite 799 tests (790 pass, 9 skip,
+  0 fail); src suite 1,366 pass, 0 fail.
+- `node scripts/lint-cards.mjs` — GATE PASSED.
+- `npm run build:pages` — green.
+- Playwright (built artifact, --workers=1, VITE_KOFI_URL set):
+  hint-button (11) + geodetective-hint (5) + clean-round-badge (4)
+  combined run 20/20; age-profile-gate desktop spec 1/1;
+  geodetective main spec 18/18. One transient failure in an early
+  combined run (the new GeoDetective default test, post-tap button
+  state, under heavy VM load right after a service restart) passed
+  on the standalone re-run and in the clean combined re-run — the
+  known VM pacing flake family, not a code signal.
