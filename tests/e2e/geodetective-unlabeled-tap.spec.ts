@@ -1,5 +1,5 @@
 import { test, expect } from "playwright/test";
-import { serveBuiltArtifact } from "./helpers";
+import { serveBuiltArtifact, sourceFeatures } from "./helpers";
 
 /**
  * GeoDetective unlabeled-tap E2E (owner directive 2026-10-12).
@@ -50,10 +50,11 @@ async function jumpCamera(page: import("playwright/test").Page, lon: number, lat
 }
 
 /** Direction-arrow features on the deduction surface (mirrors geodetective.spec.ts).
- * NOTE: the gold distance ring is not asserted here — for a ~15,000 km miss
- * (Point Nemo → Ankara) the ring polygon wraps the globe and is a
- * degenerate render (pre-existing edge, any far guess does this). The
- * arrow is the visible direction feedback and is always drawn. */
+ * The gold distance ring for this ~17,900 km miss is asserted separately
+ * (ringPolygons below): since issue #166 it is reframed around the
+ * guess's antipode and must arrive as one coherent loop in the primary
+ * world copy — before the fix its raw longitudes sat at -333…-274 and
+ * the loop rendered half a planet from the tap. */
 async function arrowFeatureCount(page: import("playwright/test").Page): Promise<number> {
   const handle = await page.waitForFunction(
     () => {
@@ -75,6 +76,18 @@ async function arrowFeatureCount(page: import("playwright/test").Page): Promise<
     { timeout: 30_000 },
   );
   return (await handle.jsonValue()) as number;
+}
+
+/** Ring polygons on the deduction surface, read from the source's raw
+ * GeoJSON (sourceFeatures → GeoJSONSource.getData), so these are the
+ * coordinates LoopMap actually emitted — not tile-worker copies. */
+async function ringPolygons(
+  page: import("playwright/test").Page,
+): Promise<Array<Array<[number, number]>>> {
+  const features = await sourceFeatures(page, "loop-rings", 2);
+  return features
+    .filter((f) => (f.geometry as { type?: string }).type === "Polygon")
+    .map((f) => (f.geometry.coordinates as Array<Array<[number, number]>>)[0]!);
 }
 
 async function guessListCount(page: import("playwright/test").Page): Promise<number> {
@@ -105,6 +118,17 @@ test("tap on an unlabeled ocean spot opens the confirm sheet and registers the g
   await expect(page.getByText("Guess 2 of 5")).toBeVisible({ timeout: 15_000 });
   expect(await guessListCount(page)).toBe(1);
   expect(await arrowFeatureCount(page)).toBeGreaterThan(0); // shaft + head drawn (tile-splitting makes the exact count unreliable)
+  // Issue #166: the far ring IS drawn, as one coherent loop in the
+  // primary world copy — every raw longitude inside [-180, 180]. Before
+  // the antipode reframe, this polygon's longitudes ran -333…-274 and
+  // the loop rendered in a repeated world copy, away from the tap.
+  const rings = await ringPolygons(page);
+  expect(rings.length).toBeGreaterThan(0);
+  for (const ring of rings) {
+    for (const [lon] of ring) {
+      expect(Math.abs(lon)).toBeLessThanOrEqual(180);
+    }
+  }
   await expect(page.getByRole("article", { name: /Clue 2: Climate/ })).not.toContainText(
     "Unlocks after your next guess.",
   );
