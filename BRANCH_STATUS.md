@@ -175,10 +175,56 @@ E2E `--workers=1`:
   on every navigation (fixed in the harness — `seedManualMode` is
   write-once, matching write policy Q3).
 
+## Pipeline round 1 — NOT READY (4 BLOCKs); Block A cured here
+
+The full pipeline returned NOT READY with 4 BLOCKs. Blocks B and C
+are owner design-scope questions (warning styling/placement,
+explainer text, home notice, auto-switch notice/indicator) — NOT
+touched by this cure; the owner is scoping them separately.
+
+**Block A (WCAG 4.1.3 / 2.4.3) — cured.** Three seats converged: the
+toggle's sr-only live region was destroyed in the same commit that
+set its text (`flip()` called `onSelect` — whose `setRun(null)`
+unmounts Play — and only then `setAnnouncement`), so the switch
+announcement could never be announced; the header comment claiming
+"the live-region announces the change" was false on this path; and
+the activated switch was destroyed with no focus landing anywhere.
+The cure:
+
+- **Hoisted announcement** — the text state and the `role="status"`
+  region (`data-testid="map-mode-announcer"`) now live in GameApp,
+  rendered as the first child of every screen branch so the DOM node
+  survives the Play → home branch switch; `handleManualMapMode` sets
+  the text (the existing `scout-copy.ts` wording) as part of the exit.
+- **Focus landing** — the exit flags focus to move to the home h1
+  (`headingRef` threaded GameApp → Choose → h1, which also gains
+  `id="home-heading"`); the h1's stale comment (it cited the deleted
+  boot offer dialog) now cites the manual-switch landing.
+- **Toggle cleaned** — its announcement state, its dead live region,
+  and the false header claim are removed; the header now states
+  plainly that the toggle owns no live region and why.
+- **E2E pins** (`scout-toggle`) — after a manual switch, with home
+  displayed: (a) the hoisted region holds the announcement text, and
+  (b) `document.activeElement` is the home heading. Both fail on the
+  pre-cure structure by construction: the announcer element did not
+  exist, and nothing in the exit path ever moved focus.
+- **Doc nit from the same run** — `docs/scout-offer-policy.md` no
+  longer calls the toggle exit "the same exit as the Editions
+  button": Editions KEEPS the persisted run record (pause); the
+  toggle REMOVES it (the run is discarded for good).
+
+Cure gates (this tip): `tsc` clean; `npm test` scripts **790 pass /
+9 skip / 0 fail** + src **1363 pass / 0 fail**; lint-cards **GATE
+PASSED**; `build:pages` green; scout E2E family (9 spec files)
+**38/38 passed** (`--workers=1`, Ko-fi env set) — incl. the new
+Block A pin (toggle spec now 6 tests).
+
 ## Ready to merge?
 
-**NO — owner's review pipeline + merge word.** The full review
-pipeline runs next; nobody merges without the owner's word. (Expect
-a merge-time rebase: this branch is based on `89e474c` and a parallel
-hint-default build may land first — the surfaces are disjoint.)
+**NO — owner's review pipeline + merge word.** Block A is cured
+above; Blocks B and C still await the owner's design-scope call,
+and the cured tip needs its panel re-vote. Nobody merges without
+the owner's word. (Expect a merge-time rebase: this branch is based
+on `89e474c` and a parallel hint-default build may land first — the
+surfaces are disjoint.)
 

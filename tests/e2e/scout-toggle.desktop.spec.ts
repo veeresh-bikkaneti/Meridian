@@ -15,6 +15,13 @@
  * exactly that label, which is how the bug shipped green). These specs
  * therefore assert FEATURE-level truth on the new run's first mount —
  * starfield presence and satellite tile requests — never the label alone.
+ *
+ * The Block A pins extend that to the switch's accessibility landing:
+ * the announcement must sit in the GameApp-level live region that
+ * SURVIVES the Play unmount (data-testid="map-mode-announcer"), and
+ * focus must land on the home heading — pre-cure, the only region
+ * lived inside the toggle and died in the commit that set its text,
+ * and the destroyed switch stranded focus on <body>.
  */
 import { test, expect, type BrowserContext } from "playwright/test";
 import {
@@ -134,6 +141,42 @@ test("toggle during the FIRST place sends the player home; the new run's first p
   await expect(starfield(page)).toHaveCount(0);
   await page.waitForTimeout(3_000);
   expect(tiles.count()).toBe(0);
+});
+
+test("manual switch announces on the hoisted live region and lands focus on the home heading", async ({
+  page,
+}) => {
+  await page.goto(APP_NO_IDLE);
+  await startGlobeRun(page);
+
+  await flipMapModeToggle(page);
+
+  // Home is on screen: the picker is up and the run's map is gone.
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+  await expect(mapWrapper(page)).toHaveCount(0);
+
+  // (a) The announcement text sits in GameApp's hoisted live region,
+  // which survived the Play unmount. Pre-cure this element did not
+  // exist anywhere — the only region lived inside the toggle and was
+  // destroyed in the same commit that set its text (Block A).
+  await expect(page.getByTestId("map-mode-announcer")).toHaveText(
+    "Scout Map on — back home; your next game uses Scout Map",
+  );
+
+  // (b) Focus landed on the home heading instead of being stranded
+  // when the activated switch was destroyed (pre-cure: activeElement
+  // fell back to <body> and nothing ever moved it).
+  await expect
+    .poll(
+      () =>
+        page.evaluate(
+          () => document.activeElement?.getAttribute("data-testid") ?? null,
+        ),
+      { timeout: 10_000 },
+    )
+    .toBe("home-heading");
 });
 
 test("toggle back to full: the new run restores the full map's features", async ({

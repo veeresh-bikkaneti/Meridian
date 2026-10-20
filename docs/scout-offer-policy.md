@@ -37,9 +37,11 @@ that's the case we should force the user back to home page."
 The map is built once per game with the mode as a constructor input, so
 a new mode can only take effect in a new game. Flipping the toggle
 therefore: writes the manual record, applies the mode, and exits the
-current game to the home screen — the same exit as the Editions button,
-so the session (score, banked places) survives and only the in-progress
-run is discarded. The popover copy warns before the tap: "Switching
+current game to the home screen — the session (score, banked places)
+survives, but this is NOT the Editions exit: the Editions button keeps
+the persisted run record (switching editions only pauses the run),
+while the toggle removes that record, so the in-progress run is
+discarded for good. The popover copy warns before the tap: "Switching
 sends you back home — this game ends here. Your next game uses the new
 map."
 

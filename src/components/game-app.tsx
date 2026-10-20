@@ -65,7 +65,7 @@ import {
   setSoundEnabled,
 } from "@/game/audio/sfx";
 import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
-import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent, type ReactNode } from "react";
+import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent, type ReactNode, type RefObject } from "react";
 import { Button } from "@/components/ui/button";
 import { RunStartNotice } from "@/components/run-start-notice";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
@@ -874,6 +874,27 @@ export function GameApp() {
    * mode is settled.
    */
   const [bootQualified, setBootQualified] = useState(false);
+  /**
+   * The manual-switch announcement ("Scout Map on — back home; your
+   * next game uses Scout Map"). It lives HERE, not in the toggle:
+   * flipping the switch unmounts Play — and the toggle with it — in
+   * the same commit that lands the player home, so a live region
+   * inside the toggle is destroyed before any screen reader can speak
+   * its text (pipeline Block A). GameApp renders the region in every
+   * screen branch (mapModeAnnouncer below), so the node survives the
+   * Play → home switch and the text change is actually announced
+   * (WCAG 4.1.3).
+   */
+  const [mapModeAnnouncement, setMapModeAnnouncement] = useState("");
+  /**
+   * Focus landing for the manual switch's forced exit: the switch
+   * that had focus is destroyed with Play, so on landing home focus
+   * moves to the home h1 (WCAG 2.4.3). handleManualMapMode sets the
+   * flag; the effect below fires once Choose has mounted and
+   * attached the ref.
+   */
+  const homeHeadingRef = useRef<HTMLHeadingElement | null>(null);
+  const landHomeFocusRef = useRef(false);
 
   /**
    * Apply a runtime auto-switch: persist (Q3) + stamp crash reports +
@@ -1165,11 +1186,21 @@ export function GameApp() {
    * editions pauses the run; switching the map ends it). Any tutorial
    * beat state belongs to the discarded run and goes with it. The next
    * game the player starts builds its map with the new mode.
+   *
+   * The exit also carries the accessibility landing (Block A): it
+   * sets the hoisted announcement (the toggle's own region unmounts
+   * with Play and could never speak) and flags focus to move to the
+   * home heading once home renders (the switch that had focus is
+   * destroyed by this very exit).
    */
   const handleManualMapMode = useCallback((mode: MapMode) => {
     writeStoredMapMode(mode, "manual");
     setReportMapMode(mode);
     setMapMode(mode);
+    setMapModeAnnouncement(
+      mode === "scout" ? SCOUT_COPY.toggleAnnounceOn : SCOUT_COPY.toggleAnnounceOff,
+    );
+    landHomeFocusRef.current = true;
     setStartError(null);
     clearDrop();
     try {
@@ -1181,6 +1212,19 @@ export function GameApp() {
     setTutorial(null);
     setMenu(null);
   }, []);
+
+  // Block A: land focus on the home heading after a manual switch's
+  // forced exit. Runs after every commit while the flag is set — the
+  // exit commit and the home commit are one and the same, but the
+  // heading ref only exists once Choose has mounted, so the flag
+  // clears only when the focus actually moves.
+  useEffect(() => {
+    if (!landHomeFocusRef.current) return;
+    const heading = homeHeadingRef.current;
+    if (!heading) return;
+    landHomeFocusRef.current = false;
+    heading.focus({ preventScroll: true });
+  });
 
   useEffect(() => {
     if (ready) recordMilestone("boot_ready");
@@ -1699,6 +1743,18 @@ export function GameApp() {
       Still there? Your game ends after 2 minutes of no activity — do anything to keep playing.
     </div>
   ) : null;
+  // Block A: the manual-switch live region. Rendered as the FIRST
+  // child of every screen branch below, so React reconciles the same
+  // DOM node across the Play → home branch switch and the node
+  // survives holding the new text — a live region only announces when
+  // an existing node's text changes. (A region inside the toggle
+  // could never do this: it unmounted with Play in the very commit
+  // that set its text.)
+  const mapModeAnnouncer = (
+    <p className="sr-only" role="status" data-testid="map-mode-announcer">
+      {mapModeAnnouncement}
+    </p>
+  );
   // In-run run-start feedback. Only while a run is on screen: from the menu the
   // existing "Loading places" screen and loadNotice already cover it, and the
   // very first run (no run yet) never shows this. The status region inside is
@@ -1735,6 +1791,7 @@ export function GameApp() {
   if (run) {
     return (
       <>
+        {mapModeAnnouncer}
         <Play
           run={run}
           session={session}
@@ -1817,6 +1874,7 @@ export function GameApp() {
   if (loopOpen) {
     return (
       <>
+        {mapModeAnnouncer}
         <LoopScreen
           onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }}
           onCelebrate={(spec) => setCelebration(spec)}
@@ -1832,6 +1890,7 @@ export function GameApp() {
   if (coldTrailOpen) {
     return (
       <>
+        {mapModeAnnouncer}
         <TrailScreen onLeave={() => setColdTrailOpen(false)} />
         {celebrationOverlay}
         {idleToast}
@@ -1844,6 +1903,7 @@ export function GameApp() {
   if (starting) {
     return (
       <>
+      {mapModeAnnouncer}
       <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
         <p className="text-sm tracking-wide text-muted uppercase">Loading places</p>
         <h1 className="mt-2 font-display text-4xl text-fg">{starting.regionName}</h1>
@@ -1893,6 +1953,7 @@ export function GameApp() {
     const regions = COUNTRIES.filter((country) => poolSizeFor("country", country.id) > 0);
     return (
       <>
+      {mapModeAnnouncer}
       <RegionList
         title="Country"
         subtitle="Play a country whole — or drill into its states where available."
@@ -1927,6 +1988,7 @@ export function GameApp() {
     );
     return (
       <>
+      {mapModeAnnouncer}
       <RegionList
         title="State"
         subtitle="Choose a country, then one of its states."
@@ -1946,6 +2008,7 @@ export function GameApp() {
     const regions = ADMIN1_BY_COUNTRY[menu.countryId] ?? [];
     return (
       <>
+      {mapModeAnnouncer}
       <RegionList
         title={menu.countryName}
         subtitle={`Play the whole ${menu.countryName}, or pick a state.`}
@@ -1970,6 +2033,7 @@ export function GameApp() {
   const showTutorialInvite = !inviteDismissed && !hasSeenTutorial();
   return (
     <>
+    {mapModeAnnouncer}
     {/* While the grown-up gate/picker is open it is a full-viewport overlay:
         the home page underneath (incl. Comet's banner and the footer link)
         is inert — non-interactive and removed from the tab order. */}
@@ -2006,6 +2070,7 @@ export function GameApp() {
       suppressGreeting={!bootQualified}
       ageBand={ageBand}
       onGrownUpOpen={openAgeSettings}
+      headingRef={homeHeadingRef}
       notice={
         <>
           {idleNotice}
@@ -2079,6 +2144,7 @@ function Choose({
   suppressGreeting,
   ageBand,
   onGrownUpOpen,
+  headingRef,
 }: {
   onState: (e: ReactMouseEvent) => void;
   onCountry: (e: ReactMouseEvent) => void;
@@ -2104,7 +2170,10 @@ function Choose({
   /** Effective age band (parent-set; "11-13" when unset). */
   ageBand: AgeBandId;
   /** Open the grown-up gate (footer link + locked-tile link). */
-  onGrownUpOpen: () => void;}) {
+  onGrownUpOpen: () => void;
+  /** Ref for the home h1 — GameApp moves focus to it when a manual
+   * Scout Map switch lands the player home (Block A cure). */
+  headingRef?: RefObject<HTMLHeadingElement | null>;}) {
   // GeoDetective progress for the edition card: the resume variant and the
   // streak line. Read on mount (the menu remounts when the loop screen
   // closes, so this is always fresh on return).
@@ -2290,9 +2359,13 @@ function Choose({
               </StorytellerBannerBoundary>
             </span>
           </div>
-          {/* PBI-6: the h1 stays the focus target when the Scout Map boot
-              offer closes (data-testid="home-heading"). */}
-          <h1 className="hv5-h1" data-testid="home-heading" tabIndex={-1}>
+          {/* The home h1 is a focus landing (tabIndex={-1}): a manual
+              Scout Map switch destroys the switch that had focus when
+              it sends the player home, so GameApp moves focus here via
+              headingRef (Block A cure). It was originally the landing
+              for the boot offer dialog's close; that dialog is gone
+              (docs/scout-offer-policy.md). */}
+          <h1 ref={headingRef} id="home-heading" className="hv5-h1" data-testid="home-heading" tabIndex={-1}>
             <span className="sr-only">Meridian — </span>
             Explore. Understand.
             <br />

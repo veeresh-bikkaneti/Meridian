@@ -9,8 +9,15 @@
  * ends the current game and sends the player home (owner ruling,
  * 2026-10-20): the map is built once per game, so the new mode can only
  * take effect in a new game. The popover copy says this BEFORE the tap.
- * Escape closes the popover and returns focus to the button; the
- * live-region announces the change.
+ * Escape closes the popover and returns focus to the button.
+ *
+ * This component owns NO live region and moves NO focus on the flip:
+ * flipping unmounts it (with Play) in the very commit that lands the
+ * player home, so an announcement region here would be destroyed in
+ * the same commit that set its text and could never be spoken.
+ * GameApp therefore hosts the announcement in a hoisted live region
+ * that survives the exit, and lands focus on the home heading
+ * (pipeline Block A cure).
  */
 
 import { useCallback, useEffect, useRef, useState, type JSX, type KeyboardEvent } from "react";
@@ -24,7 +31,6 @@ export function MapModeToggle(props: {
 }): JSX.Element {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const [announcement, setAnnouncement] = useState("");
   const scout = props.mapMode === "scout";
 
   const close = useCallback(() => {
@@ -44,8 +50,10 @@ export function MapModeToggle(props: {
 
   const flip = useCallback(() => {
     const next: MapMode = scout ? "full" : "scout";
+    // onSelect IS the whole interaction: GameApp persists the mode,
+    // sets the hoisted announcement, and exits the run home. Nothing
+    // can run after it here — this component is about to unmount.
     props.onSelect(next);
-    setAnnouncement(next === "scout" ? SCOUT_COPY.toggleAnnounceOn : SCOUT_COPY.toggleAnnounceOff);
   }, [scout, props]);
 
   const onSwitchKey = useCallback(
@@ -98,9 +106,6 @@ export function MapModeToggle(props: {
           </p>
         </div>
       ) : null}
-      <p className="sr-only" role="status">
-        {announcement}
-      </p>
     </div>
   );
 }

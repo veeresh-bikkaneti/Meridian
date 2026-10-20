@@ -24,7 +24,10 @@ export const SCOUT_COPY = {
    * Live-region announcements for the settings toggle. Flipping the
    * switch sends the player home (owner ruling, 2026-10-20 — the map is
    * built once per game, so a new mode can only take effect in a new
-   * game); the announcement says so.
+   * game); the announcement says so. Hosted by GameApp's hoisted live
+   * region, NOT by the toggle: the flip unmounts the toggle with Play
+   * in the same commit, so a region inside it could never speak
+   * (Block A cure).
    */
   toggleAnnounceOn: "Scout Map on — back home; your next game uses Scout Map",
   toggleAnnounceOff: "Scout Map off — back home; your next game uses the full map",
