@@ -219,3 +219,61 @@ test("390x844: mascot offer never overlaps the open bubble", async ({
   await expect(offer).toBeVisible({ timeout: 15_000 });
   expect(await hintOverlapArea(page, "hint-offer", 390, 844)).toBe(0);
 });
+
+/**
+ * Bounding-box intersection area (px²) between the hint message pill and
+ * the End-game button in the bottom-right aim dock. Owner report
+ * 2026-10-19 (live site): the End-game pill overlapped the hint pill on
+ * short viewports — the old top-anchored hint cluster grew downward into
+ * the bottom-anchored button's lane. The dock stacks them in one flex
+ * column, so this must be 0px² by construction at every size.
+ */
+async function dockOverlapArea(
+  page: import("playwright/test").Page,
+  w: number,
+  h: number,
+): Promise<number> {
+  const msg = page.getByTestId("hint-message");
+  const btn = page.getByTestId("end-game-button");
+  await expect(msg).toBeVisible();
+  await expect(btn).toBeVisible();
+  const m = await msg.boundingBox();
+  const b = await btn.boundingBox();
+  if (!m || !b) throw new Error(`missing box @${w}x${h}`);
+  const ix = Math.max(0, Math.min(m.x + m.width, b.x + b.width) - Math.max(m.x, b.x));
+  const iy = Math.max(0, Math.min(m.y + m.height, b.y + b.height) - Math.max(m.y, b.y));
+  console.log(
+    `@${w}x${h} dock: msg=(${m.x.toFixed(1)},${m.y.toFixed(1)},${m.width.toFixed(1)}x${m.height.toFixed(1)}) ` +
+      `endgame=(${b.x.toFixed(1)},${b.y.toFixed(1)},${b.width.toFixed(1)}x${b.height.toFixed(1)}) ` +
+      `overlap=${(ix * iy).toFixed(1)}px²`,
+  );
+  return ix * iy;
+}
+
+test("360x640: hint message never overlaps the End-game pill (owner 2026-10-19)", async ({
+  page,
+  context,
+}) => {
+  // Short viewport reproduces the live-site overlap: the old top-anchored
+  // hint cluster grew down into the End-game lane.
+  await startSizedRun(page, context, 360, 640);
+
+  const button = page.getByTestId("hint-button");
+  await expect(button).toBeVisible();
+  await button.click();
+  await expect(page.getByTestId("hint-message")).toBeVisible();
+  expect(await dockOverlapArea(page, 360, 640)).toBe(0);
+});
+
+test("390x844: hint message never overlaps the End-game pill", async ({
+  page,
+  context,
+}) => {
+  await startSizedRun(page, context, 390, 844);
+
+  const button = page.getByTestId("hint-button");
+  await expect(button).toBeVisible();
+  await button.click();
+  await expect(page.getByTestId("hint-message")).toBeVisible();
+  expect(await dockOverlapArea(page, 390, 844)).toBe(0);
+});
