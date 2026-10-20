@@ -26,7 +26,7 @@ const runWorkers = MODE === "workers" || MODE === "both";
 const PAGES_ORIGIN = "https://veeresh-bikkaneti.github.io/Meridian/";
 const WORKERS_ORIGIN = "https://meridian.knowledgetest.workers.dev/";
 const SHARE_TITLE = "Meridian: guess the place, then read its story";
-const SHARE_IMAGE_ALT = "The word Meridian over a dark green world map with a location pin.";
+const SHARE_IMAGE_ALT = "The word Meridian and the line 'Explore the world, one pin at a time—where every guess unlocks a new story' over a dark green and gold world map with a gold location pin.";
 const OLD_DESCRIPTION = "Pin the place. The run lasts until the pin misses.";
 const PAGES_HOST = "veeresh-bikkaneti.github.io";
 const WORKERS_HOST = "meridian.knowledgetest.workers.dev";
@@ -36,10 +36,16 @@ const site = JSON.parse(
 );
 const SITE_DESCRIPTION = site.description;
 
-const ENTITIES = { "&amp;": "&", "&quot;": '"', "&#39;": "'" };
+// The built shell is React server-rendered HTML, and React escapes an
+// apostrophe as the hex entity &#x27; — so this decoder must know BOTH
+// apostrophe spellings: decimal &#39; and hex &#x27;. They look like
+// duplicates in the map below, but they are two different source strings.
+// Without the hex entry, any checked text containing an apostrophe (like
+// the share image's alt text) fails this built-artifact check.
+const ENTITIES = { "&amp;": "&", "&quot;": '"', "&#39;": "'", "&#x27;": "'" };
 
 function unescapeHtml(text) {
-  return text.replace(/&(amp|quot|#39);/g, (match) => ENTITIES[match]);
+  return text.replace(/&(amp|quot|#39|#x27);/g, (match) => ENTITIES[match]);
 }
 
 /** Parses every <meta> tag into { raw, property, name, content }. */

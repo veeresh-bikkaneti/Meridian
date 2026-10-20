@@ -12,7 +12,7 @@ export const SHARE_DESCRIPTION_MAX = 155;
 
 export const SHARE_TITLE = "Meridian: guess the place, then read its story";
 export const SHARE_DESCRIPTION: string = site.description;
-export const SHARE_IMAGE_ALT = "The word Meridian over a dark green world map with a location pin.";
+export const SHARE_IMAGE_ALT = "The word Meridian and the line 'Explore the world, one pin at a time—where every guess unlocks a new story' over a dark green and gold world map with a gold location pin.";
 
 /**
  * Vite sets base "/Meridian/" only for the GitHub Pages build, so the share

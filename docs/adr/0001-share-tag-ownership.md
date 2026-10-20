@@ -31,6 +31,6 @@ each with its own origin. Pages with no share tags still get the platform's set.
 - Watch: drift between the two emitters. Guarded by the built-output tests for both builds, which assert all 12 tags.
 
 ## Follow-ups
-1. [ ] New og.jpg (#156): it still says "FIVE PLACES".
+1. [x] New og.jpg (#156): replaced 2026-10-20 (PR #177) — the old image said "FIVE PLACES"; the new one is the gold repaint with the slogan and no place count.
 2. [ ] Optional: a test that both builds' tag values match except for origin.
 3. [ ] Revisit option C if the injector is removed from the platform.
