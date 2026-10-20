@@ -4016,21 +4016,38 @@ function PlayLoaded({
           )}
         </div>
       </div>
-      {/* Place-card redesign 2026-10-11: during the AIM phase the End-game
-          pill docks bottom-right, above the drop-pin lane: provably clear
-          of the card, the score cluster, and the centered drop-pin pill
-          (E2E asserts 0px² overlap). Gated to the aim phase so it never
-          floats over the result sheet; during story/done the pill stays in
-          the top-right score-stack slot above. The action (onEndGame) is
-          untouched. */}
+      {/* Bottom-right dock (aim phase): the hint cluster rides ABOVE the
+          End-game pill in a single flex column — 0px² overlap by
+          construction (flex layout, no absolute offsets between them).
+          Bottom-anchored at the End game's old 6.5rem slot: clears the
+          bottom zoom controls below and the top-anchored question bubble
+          above (#113). Owner 2026-10-19: hint button + pill move up off
+          the End-game lane. The action (onEndGame) is untouched. */}
       {run.phase === "aim" ? (
-        <button
-          type="button"
-          onClick={onEndGame}
-          className="pointer-events-auto absolute right-3 bottom-[max(6.5rem,calc(env(safe-area-inset-bottom)+5.5rem))] z-30 flex min-h-[44px] items-center rounded-full border border-white/10 bg-[rgba(10,12,16,0.72)] px-4 text-sm font-semibold text-white/70 backdrop-blur-[14px] transition-colors hover:text-white"
+        <div
+          className="pointer-events-none absolute right-3 bottom-[max(6.5rem,calc(env(safe-area-inset-bottom)+5.5rem))] z-30 flex w-[min(300px,calc(100vw-24px))] flex-col items-end gap-2"
+          data-testid="aim-dock"
         >
-          End game
-        </button>
+          {place ? (
+            <HintPanel
+              policy={run.bandConfig?.hintPolicy ?? "none"}
+              hintsUsedThisPlace={hintsUsedThisPlace}
+              missCount={run.results.filter((r) => !r.hit).length}
+              hintMessage={hintMessage}
+              offerDismissed={offerDismissed}
+              onUseHint={onUseHint}
+              onDismissOffer={() => setOfferDismissed(true)}
+            />
+          ) : null}
+          <button
+            type="button"
+            onClick={onEndGame}
+            data-testid="end-game-button"
+            className="pointer-events-auto flex min-h-[44px] items-center rounded-full border border-white/10 bg-[rgba(10,12,16,0.72)] px-4 text-sm font-semibold text-white/70 backdrop-blur-[14px] transition-colors hover:text-white"
+          >
+            End game
+          </button>
+        </div>
       ) : null}
       <p className="sr-only" aria-live="polite">
         {run.phase === "aim"
@@ -4058,25 +4075,10 @@ function PlayLoaded({
             view={bubble}
             onViewChange={setBubble}
           />
-          {/* Hint UI (follow-up Item A): the B1 hint policies get their
-              surface. 5-7 free + mascot offer after 2 misses; 8-10 one
-              per place; 11-13 no button (Clean Round stays earnable).
-              Right edge, BELOW the question bubble's lane: the bubble's
-              shell caps at min(38dvh, 20rem) from a 6rem top, so a 28rem
-              top keeps the cluster 0px² clear of the open bubble at both
-              360px and 390px widths (#113 overlap BLOCK — the old shared
-              top offset swallowed the bubble's "Hide question" taps). */}
-          <div className="pointer-events-none absolute top-[max(28rem,env(safe-area-inset-top))] right-2.5 z-20 w-[min(300px,calc(100vw-20px))]">
-            <HintPanel
-              policy={run.bandConfig?.hintPolicy ?? "none"}
-              hintsUsedThisPlace={hintsUsedThisPlace}
-              missCount={run.results.filter((r) => !r.hit).length}
-              hintMessage={hintMessage}
-              offerDismissed={offerDismissed}
-              onUseHint={onUseHint}
-              onDismissOffer={() => setOfferDismissed(true)}
-            />
-          </div>
+          {/* Hint UI now lives in the bottom-right aim dock (above the
+              End-game pill) — see the dock comment. Removed 2026-10-19:
+              the old top-anchored cluster (top-28rem) grew downward into
+              the bottom-anchored End-game pill on short viewports. */}
         </>
       ) : run.phase === "aim" && pool.length === 0 ? (
         <div
