@@ -1,4 +1,3 @@
-import { BRAND } from "@/game/brand";
 import { distanceKm } from "@/game/geo";
 import { formatLength, unitForEdition } from "@/game/units";
 import { isHit, radiusKm } from "@/game/radius";
@@ -45,6 +44,7 @@ import { resolveRunPool } from "@/game/pool";
 import { loadedForKey, placesLoadKey, type LoadedFor } from "@/game/places-load-key";
 import type { MapMark, MapVariation } from "@/map/satellite-map";
 import { MapErrorBoundary } from "./map-error-boundary";
+import { BootSplash } from "./boot-splash";
 import "./home-v5.css";
 import heroMountainUrl from "@/assets/home-v5/hero-mountain.webp";
 import globeFallbackUrl from "@/assets/home-v5/globe-fallback.webp";
@@ -1753,12 +1753,12 @@ export function GameApp() {
   ) : null;
 
   if (!ready) {
-    return (
-      <main className="mx-auto flex min-h-dvh max-w-3xl flex-col justify-end px-5 py-10">
-        <p className="text-sm tracking-wide text-muted uppercase">Daily geography</p>
-        <h1 className="mt-2 font-display text-5xl text-fg">{BRAND.name}</h1>
-      </main>
-    );
+    // The boot splash lives in boot-splash.tsx: the index route
+    // paints the very same component as its served-HTML fallback
+    // (the route is ssr:false — see src/routes/index.tsx), so the
+    // markup here and the markup in the prerender can never drift
+    // apart and trip a hydration mismatch.
+    return <BootSplash />;
   }
 
   if (run) {
