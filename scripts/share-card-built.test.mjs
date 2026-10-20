@@ -36,6 +36,12 @@ const site = JSON.parse(
 );
 const SITE_DESCRIPTION = site.description;
 
+// The built shell is React server-rendered HTML, and React escapes an
+// apostrophe as the hex entity &#x27; — so this decoder must know BOTH
+// apostrophe spellings: decimal &#39; and hex &#x27;. They look like
+// duplicates in the map below, but they are two different source strings.
+// Without the hex entry, any checked text containing an apostrophe (like
+// the share image's alt text) fails this built-artifact check.
 const ENTITIES = { "&amp;": "&", "&quot;": '"', "&#39;": "'", "&#x27;": "'" };
 
 function unescapeHtml(text) {

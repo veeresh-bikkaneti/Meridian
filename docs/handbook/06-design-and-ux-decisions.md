@@ -101,9 +101,9 @@ Two related decisions, often confused. They are separate:
 Social previews for shared sessions (WS-2):
 
 - `og:` / `twitter:` tags injected in `__root.tsx`'s `head()` (the single `src/lib/og/share-meta.ts` owns all tag values; the ADR-0001 decision: `head()` wins on Workers).
-- **Locked copy:** title "Meridian: guess the place, then read its story" (46 chars); description "Free geography game for kids, no account needed. Pin a named place on an unlabeled satellite map. Every answer shows a story card. Plays in a browser." (150 chars); alt "The word Meridian over a dark green world map with a location pin."
+- **Locked copy:** title "Meridian: guess the place, then read its story" (46 chars); description "Free geography game for kids, no account needed. Pin a named place on an unlabeled satellite map. Every answer shows a story card. Plays in a browser." (150 chars); alt "The word Meridian and the line 'Explore the world, one pin at a time—where every guess unlocks a new story' over a dark green and gold world map with a gold location pin."
 - The three-line share text is Wordle-inspired: date line, URL alone on its line, score summary with a spoiler-free per-place emoji strip; grade tiers 🎯300+ / 🏆200+ / 🌟120+ / 👏60+ / 🙂1+ / 💨 miss.
-- **OPEN — issue #156:** the share image `og.jpg` (1200×630, ~40 KB) still reads "MERIDIAN / FIVE PLACES" — a new image without the place count is still owed.
+- **CLOSED — issue #156 (2026-10-20, PR #177):** the share image `og.jpg` was replaced on the owner's pick — Veeresh, 2026-10-20: "Pick B — gold repaint, slogan added". The new image (1200×630, 135,153 B): the MERIDIAN wordmark over gold lamp-lit continents on deep green, the slogan as the only secondary text, one gold pin — no place count anywhere. The locked-copy alt above now describes this image.
 
 ---
 

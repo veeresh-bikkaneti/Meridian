@@ -5,8 +5,8 @@ the share image `public/og.jpg` (the picture chat apps show when the game
 link is shared) still read "MERIDIAN / FIVE PLACES", but the game is
 endless now, so the preview misdescribed it.
 
-**Owner's pick (Veeresh, 2026-10-20): Candidate B** — "gold repaint,
-slogan added." Two candidates were produced for the pick (rendered by
+**Owner's pick (Veeresh, 2026-10-20): Candidate B** — "Pick B — gold
+repaint, slogan added." Two candidates were produced for the pick (rendered by
 script from the game's own Natural Earth map data, so the continents are
 geographically true and the lettering is exact); the owner chose B: gold
 continents with a warm lamp-lit glow on deep green, the MERIDIAN
@@ -49,6 +49,16 @@ declare 1200×630, so no tag or code change was needed.
   `SHARE_CARD_BUILT=pages node --test scripts/share-card-built.test.mjs`
   — **passes**: the built Pages shell carries all 12 share tags exactly
   once, with the new alt text.
+
+**Docs cure (pipeline DevEx BLOCK, 2026-10-20):** the review pipeline
+approved the image, alt text, and code unanimously but blocked on stale
+docs. Cured in this branch: handbook ch06 §5 now carries the new alt as
+the locked copy and records issue #156 as CLOSED with the owner's pick
+quoted in full; ADR-0001's "New og.jpg (#156)" follow-up is ticked;
+the `&#x27;` decoder entry in `share-card-built.test.mjs` now has a
+comment explaining why it exists. Docs/comments only — zero behavior
+change. All gates above re-run green after the cure, including the
+built-artifact check.
 
 ## Pending
 
