@@ -20,7 +20,10 @@ import { BootSplash } from "@/components/boot-splash";
 // Pages shell or the live SSR build. `pendingComponent` keeps the
 // first paint identical to before: the game's boot splash (shared
 // with GameApp in boot-splash.tsx) is what the fallback paints, in
-// the served HTML and during any pending moment. The game itself is
+// the served HTML and during any pending moment. One consequence to
+// know before extending this route: `ssr: false` also makes any
+// future loader or `beforeLoad` added here client-only — it would
+// run in the browser after mount, never on the server. The game itself is
 // untouched — GameApp still shows the same splash until its ready
 // gate opens, then the home screen exactly as before.
 export const Route = createFileRoute("/")({

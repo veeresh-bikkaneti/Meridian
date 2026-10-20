@@ -168,7 +168,8 @@ All run at the rebased tip (on `a45674b`), `VITE_KOFI_URL` set at
 build and test time, E2E `--workers=1` under the VM-wide lock:
 
 - `npx tsc --noEmit` — **clean**
-- `npm test` — **1358/1358 pass** (both suites)
+- `npm test` — scripts **799 (790 pass / 9 skip / 0 fail)** + src
+  **1358 pass / 0 fail**
 - `node scripts/lint-cards.mjs` — **GATE PASSED**
 - `npm run build:pages` — **green** (shell verified to contain
   the splash)
@@ -183,17 +184,30 @@ build and test time, E2E `--workers=1` under the VM-wide lock:
   - `safari-launch.spec.ts` — the `?nosw=1` test **passes** (it
     flaked once under parallel load with a navigation race; it
     passes run alone on this branch and on main). The boot-JS
-    ceiling test **fails — identically on unmodified main
-    `a45674b`** (3,496,753 B vs the 1,800,000 B ceiling): a
-    pre-existing main condition from the #176 preload changes,
-    not this branch's regression; flagged for the owner, not
-    fixed here (out of scope for the hydration fix).
+    ceiling test **fails — a pre-existing condition on
+    unmodified main `a45674b`, where it fails identically;
+    cause not pinned.** The 3,496,753 B total (vs the 1,800,000 B
+    ceiling) was measured on this branch's `build:pages`
+    artifact. Not this branch's regression; flagged for the
+    owner, not fixed here (out of scope for the hydration fix).
 
 Behavior non-regressions are covered above: journal rotation
 (journal suite), streak/first-visit/scout offer (scout suites +
 the boot spec), and GameApp itself is untouched apart from
 rendering the shared splash component in its existing `!ready`
 branch.
+
+## Follow-ups (recorded, not built)
+
+Panel-recommended hardening for the regression guard, deliberately
+left out of this fix branch:
+
+- A mobile twin of the regression spec (390×844), and/or a
+  screenshot parity check on the splash first paint — the spec is
+  desktop-only today.
+- A spec pinning the **live-SSR hydration path**: the Worker build
+  hydrates a fully rendered `/`, a different code path from the
+  Pages shell the regression spec covers.
 
 ## Status
 
