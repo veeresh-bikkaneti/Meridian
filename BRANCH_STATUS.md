@@ -99,7 +99,9 @@ Everything else about the default stays exactly as it was.
   hint-button (11) + geodetective-hint (5) + clean-round-badge (4)
   combined run 20/20; age-profile-gate desktop spec 1/1;
   geodetective main spec 18/18. One transient failure in an early
-  combined run (the new GeoDetective default test, post-tap button
-  state, under heavy VM load right after a service restart) passed
-  on the standalone re-run and in the clean combined re-run — the
-  known VM pacing flake family, not a code signal.
+  combined run — the pre-existing "11-13: no hint button at all" test
+  failed inside the `startGlobeRun` setup helper (helpers.ts:156)
+  under heavy VM load immediately after a service restart; the clean
+  combined re-run passed 20/20, including that test. (Corrected
+  2026-10-20: an earlier draft of this note misattributed the flake
+  to the new GeoDetective default test.)
