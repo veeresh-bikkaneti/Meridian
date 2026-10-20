@@ -3,8 +3,9 @@
 ## What
 Issue #166: a GeoDetective miss wider than a quarter of the planet
 (> 10,007.5 km) drew its distance ring from geometry emitted in a
-repeated world copy. Fix = Option A (owner-approved 2026-10-20 after a
-10-role verification panel confirmed it 10/10): `ringPolygon` traces
+repeated world copy. Fix = Option A — owner, 2026-10-20: "Build ring
+option A (antipode reframe)" — after a 10-role verification panel
+confirmed it 10/10: `ringPolygon` traces
 the identical circle as a small ring around the guess's antipode —
 same points, same exact distances, target still on the ring.
 
@@ -66,7 +67,8 @@ same points, same exact distances, target still on the ring.
   fails — 8 pass / 1 fail. Full suite green with the fix in place.
 - Raw ranges measured on the real files in node:
   pre-fix `ringPolygon(Nemo, 17,895)` longitudes [−333.18, −273.62];
-  post-fix [26.79, 86.41].
+  post-fix [26.84, 86.38] (pipeline-measured; an earlier draft of this
+  file said [26.79, 86.41] — the panel's measurement stands).
 - E2E (reported straight): the updated spec was also run against a
   build with main's rings.ts swapped in, and it PASSES there.
   MapLibre canonicalizes both source reads and tiles (getData on the
@@ -92,10 +94,14 @@ same points, same exact distances, target still on the ring.
   tap-after-load race on this VM, unrelated to rings; re-runs green.
 
 ## Pending
-- Owner eyeball of the screenshot pairs + full-pipeline review.
-  Nobody merges without the owner's word.
-- Branch base is origin/main `84ac861`; main has since advanced
-  (#176, #175) — rebase before merge per pipeline. Neither PR touches
-  rings.ts / LoopMap.tsx, so no conflict is expected.
+- Full-pipeline review: READY (2026-10-20, zero BLOCKs, 12/12
+  approve-side + DevEx PASS).
+- Branch rebased onto origin/main `cc20d89` at merge time (PR #177
+  landed first, per the owner's merge order). Neither intervening PR
+  touches rings.ts / LoopMap.tsx, so no CODE conflict arose;
+  BRANCH_STATUS.md conflicted, as expected, and was resolved by
+  keeping this branch's record.
 
-## Ready to merge? NO — owner's review + merge word.
+## Ready to merge? YES — owner's merge word given 2026-10-20
+("Merge PR #178 (rebase + cure + retest first)"), conditional on
+#177 merging first — done. Merging after rebase + retest.
