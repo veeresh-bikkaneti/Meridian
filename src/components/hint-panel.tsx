@@ -10,6 +10,10 @@
  * - 8-10 ("one-per-round"): button visible; 1 hint per place — disables
  *   after use, re-enables on the next place.
  * - 11-13 ("none"): no button at all (Clean Round stays earnable).
+ * - No profile set: the run snapshot carries the default policy
+ *   ("one-per-round", owner 2026-10-20 — hints on by default, since the
+ *   game never checks the player's age), so the button shows exactly
+ *   like 8-10. Only an EXPLICIT 11-13 profile hides it.
  *
  * Hints NEVER touch points. The hint message itself comes from
  * hint-logic.ts (mechanical directional nudge — no fabrication).

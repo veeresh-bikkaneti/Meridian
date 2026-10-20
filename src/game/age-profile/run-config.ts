@@ -22,7 +22,10 @@ import { AGE_BANDS, AGE_BAND_IDS, FULL_ACCESS_BAND } from "./bands.ts";
  */
 export type HintPolicy = "free" | "one-per-round" | "none";
 
-/** The hint policy for each band. */
+/**
+ * The hint policy for each EXPLICITLY chosen band. The no-profile
+ * default is not this table's 11-13 row — see DEFAULT_HINT_POLICY.
+ */
 const HINT_POLICIES: Record<AgeBandId, HintPolicy> = {
   "5-7": "free",
   "8-10": "one-per-round",
@@ -30,9 +33,31 @@ const HINT_POLICIES: Record<AgeBandId, HintPolicy> = {
 };
 
 /**
+ * The hint policy for a run with NO age profile set (the `null` band).
+ *
+ * Why this exists: the game never checks the player's age — the band
+ * comes from a parent-set profile, and most players never set one.
+ * Resolving "no profile" through the 11-13 row above silently gave
+ * every one of those players the no-hints policy, so the hint bulb
+ * never appeared for them. Owner, 2026-10-20: "we dont check the age
+ * of the player, so we need the hints on by default" — "Change the
+ * default so everyone gets the hint bulb."
+ *
+ * The default is the middle policy: the bulb shows, one hint per
+ * place, and the 5-7 mascot offer stays off (it is "free"-only — see
+ * mascotOffersHint). A profile EXPLICITLY set to 11-13 still gets
+ * "none": that is a parent's deliberate choice, and this default
+ * must not override it.
+ */
+export const DEFAULT_HINT_POLICY: HintPolicy = "one-per-round";
+
+/**
  * The immutable per-run config snapshot. `band = null` (unset profile)
  * resolves to the "11-13" band: today's production numbers, byte-for-byte
- * (regression-gated per loop in run-config.test.ts).
+ * (regression-gated per loop in run-config.test.ts) — with ONE exception:
+ * the hint policy. An unset profile carries DEFAULT_HINT_POLICY instead
+ * of 11-13's "none" (owner, 2026-10-20: hints on by default). The
+ * `band` field below still records "11-13" for the unset case.
  */
 export interface BandRunConfig {
   /**
@@ -67,7 +92,10 @@ export interface BandRunConfig {
 /**
  * The run config for a band (follow-up Item A).
  * `null` (unset profile) → the "11-13" full-access values = today's
- * production numbers.
+ * production numbers, EXCEPT the hint policy: `null` carries
+ * DEFAULT_HINT_POLICY ("one-per-round") so the hint bulb shows for
+ * players who never set a profile (owner, 2026-10-20). An explicit
+ * "11-13" keeps "none".
  */
 export function getBandConfig(band: AgeBandId | null): BandRunConfig {
   const effective: AgeBandId = band ?? FULL_ACCESS_BAND;
@@ -78,7 +106,7 @@ export function getBandConfig(band: AgeBandId | null): BandRunConfig {
     terrainImages: d.terrainImages,
     capitalQs: d.capitalQuestions,
     duelSeconds: d.duelSecondsPerTurn,
-    hintPolicy: HINT_POLICIES[effective],
+    hintPolicy: band === null ? DEFAULT_HINT_POLICY : HINT_POLICIES[effective],
     pinTolerance: d.toleranceMultiplier,
     startingClues: d.startingClues,
     guessCap: d.guessCap,

@@ -6,6 +6,7 @@ import {
   hintButtonState,
   canUseHint,
   mascotOffersHint,
+  DEFAULT_HINT_POLICY,
   type BandRunConfig,
   type HintPolicy,
 } from "./run-config.ts";
@@ -17,6 +18,13 @@ import { AGE_BANDS } from "./bands.ts";
  * deep-equals TODAY's production numbers — the "11-13" full-access band —
  * byte-for-byte, per loop. If the band table retunes, these tests pin the
  * production contract: any intentional change must update the gate.
+ *
+ * Intentional change (owner, 2026-10-20 — "we dont check the age of the
+ * player, so we need the hints on by default"): the unset config now
+ * differs from the explicit 11-13 config in EXACTLY ONE field — the hint
+ * policy is "one-per-round" instead of "none", so the hint bulb shows
+ * for players who never set a profile. PRODUCTION_CONFIG below remains
+ * the explicit 11-13 contract; UNSET_CONFIG is the unset contract.
  */
 const PRODUCTION_CONFIG: BandRunConfig = {
   band: "11-13",
@@ -30,28 +38,34 @@ const PRODUCTION_CONFIG: BandRunConfig = {
   guessCap: 5,
 };
 
+/** The unset (null band) contract: production numbers + hints on. */
+const UNSET_CONFIG: BandRunConfig = {
+  ...PRODUCTION_CONFIG,
+  hintPolicy: "one-per-round",
+};
+
 test("quiz: unset config == today's production numbers (12 questions)", () => {
   const config = getBandConfig(null);
   assert.equal(config.quizQs, 12);
-  assert.deepEqual(config, PRODUCTION_CONFIG);
+  assert.deepEqual(config, UNSET_CONFIG);
 });
 
 test("terrain-detective: unset config == today's production numbers (8 images)", () => {
   const config = getBandConfig(null);
   assert.equal(config.terrainImages, 8);
-  assert.deepEqual(config, PRODUCTION_CONFIG);
+  assert.deepEqual(config, UNSET_CONFIG);
 });
 
 test("capital-quest: unset config == today's production numbers (12 questions)", () => {
   const config = getBandConfig(null);
   assert.equal(config.capitalQs, 12);
-  assert.deepEqual(config, PRODUCTION_CONFIG);
+  assert.deepEqual(config, UNSET_CONFIG);
 });
 
 test("duel: unset config == today's production numbers (60s turns)", () => {
   const config = getBandConfig(null);
   assert.equal(config.duelSeconds, 60);
-  assert.deepEqual(config, PRODUCTION_CONFIG);
+  assert.deepEqual(config, UNSET_CONFIG);
 });
 
 test("geodetective: unset config == today's production deal (1 clue, cap 5)", () => {
@@ -63,19 +77,19 @@ test("geodetective: unset config == today's production deal (1 clue, cap 5)", ()
   assert.ok(deal !== null);
   assert.equal(config.startingClues, deal.startingClues);
   assert.equal(config.guessCap, deal.guessCap);
-  assert.deepEqual(config, PRODUCTION_CONFIG);
+  assert.deepEqual(config, UNSET_CONFIG);
 });
 
 test("expedition-trails: unset config == full-access production numbers", () => {
   const config = getBandConfig(null);
   assert.ok(AGE_BANDS["11-13"].loops.includes("expedition-trails"));
-  assert.deepEqual(config, PRODUCTION_CONFIG);
+  assert.deepEqual(config, UNSET_CONFIG);
 });
 
 test("passport-stamps: unset config == full-access production numbers", () => {
   const config = getBandConfig(null);
   assert.ok(AGE_BANDS["11-13"].loops.includes("passport-stamps"));
-  assert.deepEqual(config, PRODUCTION_CONFIG);
+  assert.deepEqual(config, UNSET_CONFIG);
 });
 
 // --- per-band values ---
@@ -106,8 +120,30 @@ test("band values: 5-7 / 8-10 short rounds, free/limited hints", () => {
   assert.deepEqual(getBandConfig("11-13"), PRODUCTION_CONFIG);
 });
 
-test("null band and explicit 11-13 agree (unset == full-access default)", () => {
-  assert.deepEqual(getBandConfig(null), getBandConfig("11-13"));
+test("null band vs explicit 11-13: identical except the hint policy (owner 2026-10-20)", () => {
+  const unset = getBandConfig(null);
+  const explicit = getBandConfig("11-13");
+  // The ONLY delta: hints on by default for the unset profile.
+  assert.equal(unset.hintPolicy, "one-per-round");
+  assert.equal(explicit.hintPolicy, "none");
+  assert.deepEqual(unset, { ...explicit, hintPolicy: "one-per-round" });
+  // The snapshot's band field stays "11-13" either way (badge award keys
+  // off it — see the #113 BLOCK 1 test at the bottom of this file).
+  assert.equal(unset.band, "11-13");
+});
+
+test("default (unset) hint policy: bulb visible, one per place, no mascot offer", () => {
+  const policy = getBandConfig(null).hintPolicy;
+  assert.equal(policy, DEFAULT_HINT_POLICY);
+  assert.equal(policy, "one-per-round");
+  // Visible before use, disabled after the one hint — the 8-10 shape.
+  assert.equal(hintButtonState(policy, 0), "enabled");
+  assert.equal(hintButtonState(policy, 1), "disabled-used");
+  assert.equal(canUseHint(policy, 0), true);
+  assert.equal(canUseHint(policy, 1), false);
+  // The 5-7 mascot offer must NOT leak into the default, at any miss count.
+  assert.equal(mascotOffersHint(policy, 2), false);
+  assert.equal(mascotOffersHint(policy, 9), false);
 });
 
 // --- hint wiring ---

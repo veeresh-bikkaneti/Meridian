@@ -575,9 +575,11 @@ export function LoopScreen({
 
   const current = store?.current ?? null;
   const caseNo = store ? caseNumber(store) : 1;
-  // Deal-time band for the hint policy (never live): in-memory snapshot →
-  // persisted dealBandConfig.band (survives remount/resume) → "11-13"
-  // (fails closed: policy "none" hides the button).
+  // Deal-time band for the hint policy FALLBACK (never live): in-memory
+  // snapshot → persisted dealBandConfig.band (survives remount/resume) →
+  // "11-13" (fails closed: policy "none" hides the button). LoopGame
+  // prefers the mystery's own dealBandConfig.hintPolicy; this prop only
+  // serves pre-snapshot puzzles, which carry no policy of their own.
   const dealBandResolved: AgeBandId =
     dealBand ?? current?.dealBandConfig?.band ?? "11-13";
 
@@ -759,14 +761,20 @@ function LoopGame({
 
   // Hint UI for GeoDetective (follow-up Item B, owner 2026-10-09).
   // Policy comes from the DEAL-TIME band snapshot (never live): 8-10 gets
-  // one hint per mystery ("one-per-round"); 11-13 gets none ("none" hides
-  // the button); 5-7 can't reach this loop (locked in bands.ts). Hints
-  // NEVER touch points. The nudge is the same mechanical quadrant hint as
-  // the quiz loops (hint-logic.ts) — coarse, never pinpoints.
-  // Fallback chain: in-memory deal snapshot → persisted dealBandConfig.band
-  // (survives remount/resume) → "11-13" (fails closed: policy "none" hides
-  // the button). NEVER the live band.
-  const hintPolicy = getBandConfig(dealBand).hintPolicy;
+  // one hint per mystery ("one-per-round"); an explicit 11-13 gets none
+  // ("none" hides the button); 5-7 can't reach this loop (locked in
+  // bands.ts). Hints NEVER touch points. The nudge is the same mechanical
+  // quadrant hint as the quiz loops (hint-logic.ts) — coarse, never
+  // pinpoints.
+  // Source chain: the mystery's own persisted snapshot first
+  // (puzzle.dealBandConfig.hintPolicy, minted at deal time — for a player
+  // with no age profile set it carries the on-by-default policy, owner
+  // 2026-10-20; see run-config.ts DEFAULT_HINT_POLICY). Only a
+  // pre-snapshot puzzle (no dealBandConfig) falls back to recomputing
+  // from the deal band prop, whose chain fails closed at "11-13".
+  // NEVER the live band.
+  const hintPolicy =
+    puzzle.dealBandConfig?.hintPolicy ?? getBandConfig(dealBand).hintPolicy;
   const [hintMessage, setHintMessage] = useState<string | null>(null);
   const [hintsUsedThisMystery, setHintsUsedThisMystery] = useState(0);
   const [hintOfferDismissed, setHintOfferDismissed] = useState(false);
@@ -903,10 +911,11 @@ function LoopGame({
           Guess {puzzle.guesses.length + 1} of {dealConfig.guessCap}
           {guessesLeft <= 2 && !finished ? ` — ${guessesLeft} left` : ""}
         </p>
-        {/* Hint UI (follow-up Item B): 8-10 gets one hint per mystery;
-            11-13 renders nothing (policy "none" → HintPanel returns null);
-            hidden once the case is closed. Right-aligned, in-flow — never
-            overlapping the map or the guess input. */}
+        {/* Hint UI (follow-up Item B): 8-10 and no-profile runs get one
+            hint per mystery; an explicit 11-13 renders nothing (policy
+            "none" → HintPanel returns null); hidden once the case is
+            closed. Right-aligned, in-flow — never overlapping the map
+            or the guess input. */}
         {!finished ? (
           <HintPanel
             policy={hintPolicy}
