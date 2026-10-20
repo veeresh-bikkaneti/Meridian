@@ -213,3 +213,8 @@ left out of this fix branch:
 
 Ready for the owner's review pipeline. Nobody merges — the owner
 merges on his word.
+
+- Rebased a second time onto main `8432f75` on 2026-10-20, after
+  PRs #177/#178 merged; the only conflict was this file itself.
+  The parent re-ran the full gates + the hydration spec green on
+  the rebased tip `a72eeb3`.

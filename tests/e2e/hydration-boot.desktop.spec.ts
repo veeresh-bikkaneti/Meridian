@@ -77,6 +77,16 @@ test("boot hydrates clean: splash paints from the served HTML, no React #418", a
 
   // (b) No hydration mismatch fired on the way there.
   const allErrors = [...consoleErrors, ...pageErrors];
-  const hydrationErrors = allErrors.filter((e) => /42[0-9]|hydrat/i.test(e));
+  // This filter has to match the error text a production build
+  // actually prints. Minified React errors never say "hydration" —
+  // they read "Minified React error #418; visit
+  // https://react.dev/errors/418?…", so the match keys on the
+  // "React error #NNN" number (418/419, their 42x siblings, and the
+  // thrown companion #519); the "hydrat" arm covers dev-style
+  // messages. (A bare /42[0-9]/ missed #418 entirely — "418" has no
+  // "42" in it — and false-fired on text like "chunk 429 failed".)
+  const hydrationErrors = allErrors.filter((e) =>
+    /React error #(?:41[89]|42[0-9]|519)\b|hydrat/i.test(e),
+  );
   expect(hydrationErrors).toEqual([]);
 });
