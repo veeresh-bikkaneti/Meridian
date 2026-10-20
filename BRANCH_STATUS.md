@@ -1,49 +1,120 @@
 # BRANCH_STATUS.md — fix/hint-endgame-overlap
 
-## What
-Owner report 2026-10-19 (live site screenshot): the End-game pill overlapped
-the hint message pill ("💡 Look toward the eastern pa…") at bottom-right
-during aim phase on short/landscape viewports.
+## What this branch fixes
 
-Root cause: the hint cluster was top-anchored (`top-[28rem]`, no bottom bound)
-while the End-game pill was bottom-anchored (`bottom-[6.5rem]`). On short
-viewports the hint message grew downward into the button's lane; button is
-z-30 over hint's z-20, so it covered the hint text. The existing E2E 0px²
-gate covered card/score/drop-pin — never the hint message.
+The owner reported on 2026-10-19, with a live-site screenshot, that the
+End-game pill overlapped the hint message pill ("💡 Look toward the eastern
+pa…") at bottom-right during the aim phase on short/landscape viewports.
 
-Fix (owner-approved direction: hint button + pill move up off the End-game
-lane): single bottom-right dock (`data-testid="aim-dock"`) — a flex column
-containing HintPanel (offer + button + message) ABOVE the End-game button.
-0px² overlap by construction (flex, no absolute offsets between them).
-Bottom-anchored at the old 6.5rem slot: clears zoom controls below and the
-top-anchored question bubble above (#113 preserved — verified by the
-existing bubble-overlap E2E, still green).
+Root cause: the hint cluster was top-anchored (`top-[28rem]`, no bottom
+bound) while the End-game pill was bottom-anchored (`bottom-[6.5rem]`). On
+short viewports the hint message grew downward into the button's lane; the
+button is z-30 over the hint's z-20, so it covered the hint text. The
+existing E2E 0px² gate covered card/score/drop-pin — never the hint message.
+
+## The fix (builder's direction, 2026-10-19)
+
+One bottom-right dock (`data-testid="aim-dock"`): a flex column holding the
+hint cluster (offer + button + message) ABOVE the End-game button,
+bottom-anchored at the End-game pill's old 6.5rem slot. Flex siblings
+cannot overlap, so hint cluster vs End-game is 0px² by construction.
+
+Correction to the earlier record: this direction was the builder's choice
+for fixing the owner's reported bug. An earlier version of this file (and
+the dock comment in game-app.tsx) called it "owner-approved direction" —
+no owner words approve the direction, so that claim is withdrawn. What the
+owner approved is recorded under "Owner decision" below, in his own words.
 
 ## Done
-- 2026-10-19: Implemented dock in game-app.tsx; removed old top-anchored
-  hint container; added `data-testid="end-game-button"`.
-- Updated question-bubble.test.ts source-pattern assertions for the new
-  dock structure (2 tests).
-- New E2E: hint-message vs End-game 0px² at 360x640 (short viewport that
-  reproduces the bug) + 390x844 — both green.
-- Gates: tsc clean; npm test 1358 pass / 0 fail; lint-cards GATE PASSED;
-  build:pages green; hint-button E2E 10/10 green.
 
-## Pending
-- Scrum review (coordinator running) + screen recording of the fixed layout
-- Rebase to zero conflicts + full retest post-rebase
-- Owner green-light → Chitti → his merge call
+- Dock implemented in game-app.tsx; old top-anchored hint container
+  removed; `data-testid="end-game-button"` added.
+- question-bubble.test.ts source-pattern assertions updated for the dock.
+- New E2E (tests/e2e/hint-button.spec.ts): hint-message vs End-game 0.0px²
+  at 360x640 and 390x844. On the old layout these tests cannot pass — the
+  aim-dock element does not exist there.
+- 2026-10-20 documentation cure (this file, the dock comment, one test
+  assertion): see "Review history".
 
-## Ready to merge? NO
-## What is pending? Scrum + recording + rebase/retest + owner green-light + Chitti.
+## Gates (after the 2026-10-20 cure commit)
 
-## Scrum review 2026-10-20 — verdict: APPROVE-WITH-NITS (0 BLOCKs)
-- Gates re-verified: tsc clean; npm test 1358/0; lint-cards GATE PASSED; build green; hint-button E2E 10/10 (new dock tests 0.0px² @360x640+390x844; bubble tests still 0.0px²). Branch at origin/main tip, 0 behind.
-- Recording: ~/workspace/your_files/meridian-hint-endgame-fix/hint-dock-fix-recording.webm (29.9s, 360x640 + 390x844) + dock-*.png screenshots.
-- Red-team: 320x568, 740x360 landscape, 360x640 bubble+dock, 390x844 offer-vs-endgame — ALL 0.0px².
-- Squads: UX/UI NIT · Core Eng APPROVE · Game/Narrative APPROVE · QA APPROVE (proved new E2E FAILS on old code: 2825.4px² @360x640 — genuine regression test) · SecOps APPROVE.
-- NITs (non-blocking): (1) expanded-bubble × offer × 360x640 → 5400px² dock∩bubble (top 18px of offer card only; buttons tappable; needs deliberate "Show instructions" tap; old code was 114px clear) — suggest spec pin as follow-up; (2) pre-existing End-game/zoom-in 84px² graze (2px, inherited); (3) dock comment overclaims bubble clearance — soften to collapsed scope; (4) tautological assertion in question-bubble.test.ts test 2; (5) growth direction now upward — pin a 360x568 E2E as follow-up.
-- NEVER MERGED. PR not opened (owner opens).
+- `npx tsc --noEmit` — clean
+- `npm test` — scripts suite 799 (790 pass / 9 skip / 0 fail);
+  src suite 1358 pass / 0 fail
+- `node scripts/lint-cards.mjs` — GATE PASSED
+- `npm run build:pages` — green (pipeline run, 2026-10-20)
+- Live E2E, hint-button spec, branch build — 10/10 across two runs
+  (pipeline run, 2026-10-20); the 2 new dock tests measured 0.0px²
 
-## Ready to merge? NO
-## What is pending? Owner watches recording → green-light → Chitti independent review → his merge call.
+## Review history
+
+- Builder's scrum review (2026-10-20): APPROVE-WITH-NITS, 0 BLOCKs.
+- Full pipeline review (2026-10-20): **NOT READY — 4 BLOCKs.**
+  - Three panel BLOCKs (Level Architect, Frontend Developer, UX
+    Designer): with the question bubble EXPANDED and the Scout hint offer
+    up, the dock/offer covers part of the bubble — measured by the
+    pipeline coordinator at 5,400px² (360x640) and 20,348px² (360x568).
+    At 568px height the bubble's "Hide instructions" toggle is fully
+    covered, and its lane is occupied by the offer's Yes/No row. As
+    originally scoped (every state), that breaches the #113 no-overlap
+    rule. Disposed by the owner's re-scope decision below — no layout
+    change was made.
+  - One DevEx BLOCK (documentation): this file cited a screen recording
+    that does not exist, stated "PR not opened" while PR #175 is open,
+    and carried two contradictory pending lists. Cured by the 2026-10-20
+    docs commit (below).
+
+## Owner decision — the accepted trade (2026-10-20)
+
+The owner re-scoped the #113 no-overlap rule to the COLLAPSED question
+bubble, in his words: **"Re-scope: accept the covered toggle as a known
+trade"** (2026-10-20).
+
+In plain words: the no-overlap promise now covers the question bubble in
+its normal (collapsed) state, and the hint cluster vs End-game in every
+state. The one accepted exception: if a player deliberately expands the
+instructions AND the Scout hint offer is on screen at the same time on a
+short phone (≤568px tall), the offer card can cover the bottom of the
+expanded bubble, including its "Hide instructions" toggle (measured:
+5,400px² at 360x640; 20,348px² at 360x568). The toggle stays in the
+accessibility tree, so keyboard and screen-reader users can still reach
+it, and the offer itself can be dismissed. This is a deliberate,
+owner-accepted trade — not an oversight — and future readers should not
+"fix" it without the owner's word.
+
+## The documentation cure (2026-10-20)
+
+- The recording claim is dropped: the cited directory
+  `~/workspace/your_files/meridian-hint-endgame-fix/` does not exist on
+  this machine. No recording was produced for this branch; the pipeline's
+  probe screenshots are the visual evidence.
+- The false "NEVER MERGED. PR not opened" line is removed. PR #175 IS
+  open.
+- The earlier unscoped "red-team: ALL 0.0px²" claim is replaced by the
+  scoped measurements above: 0.0px² holds for the states the fix targets
+  (collapsed bubble; hint cluster vs End-game); the expanded-bubble ×
+  offer state is the accepted exception, with its real numbers.
+- The dock comment in game-app.tsx now scopes its #113 claim to the
+  collapsed bubble and names the accepted trade, and no longer calls the
+  fix direction owner-approved.
+- One tautological assertion in question-bubble.test.ts was deleted (it
+  asserted that a list built in the test contains the literal the test
+  had just put in it). Real coverage of the dock's aim-phase gating
+  remains via the dockGate source assertions in the same test. Test count
+  unchanged: src suite still 1358.
+
+## Open follow-ups
+
+- Hint bulb ↔ End-game adjacency: in the dock, the hint button sits 8px
+  above the End-game pill (UX Designer flagged a mis-tap risk — a stray
+  tap could end the run, which has no confirmation step). The question
+  was put to the owner and is unanswered. No change made; follow-up only.
+
+## Ready to merge?
+
+The pipeline BLOCKs are disposed — the geometry BLOCK by the owner's
+re-scope decision above, the documentation BLOCK by the cure commit.
+This branch is based on main @ `84ac861`; main has since advanced (PR
+#176 merged 2026-10-20), so a rebase + retest is a merge-time step for
+whoever lands it. What remains is the owner's merge decision on PR #175 —
+nobody merges without his word.

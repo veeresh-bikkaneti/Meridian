@@ -516,10 +516,6 @@ describe("redesign 2026-10-11 — compact default + End-game dock (game-app.tsx)
     );
     const conditions = ['run.phase === "aim"', ...pillGates];
     assert.ok(
-      conditions.includes('run.phase === "aim"'),
-      "the dock is aim-phase only",
-    );
-    assert.ok(
       conditions.includes('run.phase === "story" || run.phase === "done"'),
       "the score-stack pill is story/done only",
     );

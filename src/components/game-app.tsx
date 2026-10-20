@@ -4017,12 +4017,16 @@ function PlayLoaded({
         </div>
       </div>
       {/* Bottom-right dock (aim phase): the hint cluster rides ABOVE the
-          End-game pill in a single flex column — 0px² overlap by
-          construction (flex layout, no absolute offsets between them).
-          Bottom-anchored at the End game's old 6.5rem slot: clears the
-          bottom zoom controls below and the top-anchored question bubble
-          above (#113). Owner 2026-10-19: hint button + pill move up off
-          the End-game lane. The action (onEndGame) is untouched. */}
+          End-game pill in a single flex column, so the two can never
+          overlap (flex layout, no absolute offsets between them).
+          Bottom-anchored at the End game's old 6.5rem slot, clear of the
+          zoom controls below. #113's no-overlap rule holds for the
+          question bubble in its normal, collapsed state. One accepted
+          exception (owner, 2026-10-20): if a player expands the
+          instructions while the hint offer is up on a short screen, the
+          dock can cover the bubble's "Hide instructions" toggle — a
+          known trade, recorded in BRANCH_STATUS.md. The End-game action
+          (onEndGame) is untouched. */}
       {run.phase === "aim" ? (
         <div
           className="pointer-events-none absolute right-3 bottom-[max(6.5rem,calc(env(safe-area-inset-bottom)+5.5rem))] z-30 flex w-[min(300px,calc(100vw-24px))] flex-col items-end gap-2"
