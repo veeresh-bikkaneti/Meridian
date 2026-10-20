@@ -4,9 +4,11 @@
  * A 44×44 frosted round button beside the sound toggle. Opens a small
  * popover with the label, the explainer, and a role="switch" row.
  *
- * State contract (Phase A): the mode state is owned by GameApp and
- * threaded down as a prop — this component only calls onSelect. The
- * choice takes effect on the NEXT place mount; nothing remounts mid-round.
+ * State contract: the mode state is owned by GameApp and threaded down
+ * as a prop — this component only calls onSelect. Flipping the switch
+ * ends the current game and sends the player home (owner ruling,
+ * 2026-10-20): the map is built once per game, so the new mode can only
+ * take effect in a new game. The popover copy says this BEFORE the tap.
  * Escape closes the popover and returns focus to the button; the
  * live-region announces the change.
  */
@@ -91,7 +93,8 @@ export function MapModeToggle(props: {
             </span>
           </div>
           <p className="mt-2 text-[11px] leading-relaxed text-white/50">
-            Applies from the next place — never mid-round.
+            Switching sends you back home — this game ends here. Your next
+            game uses the new map.
           </p>
         </div>
       ) : null}

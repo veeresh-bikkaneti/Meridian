@@ -1,129 +1,184 @@
-# BRANCH_STATUS.md — fix/hint-default-on
+# BRANCH_STATUS.md — fix/scout-switch-honesty
 
 ## What
-Issue #182: the hint bulb never appeared for any player who had not
-set an age profile — every fresh visitor. The unset profile resolved
-to the 11-13 band, whose hint policy is "none", so the hint panel
-rendered nothing and nobody was told hints exist.
 
-Owner decision, 2026-10-20: "Change the default so everyone gets the
-hint bulb". — "we dont check the age of the player, so we need the
-hints on by default"
+Scout Map switching, made honest — both changes are the owner's
+rulings of **2026-10-20** (issue #183), after a Scrum investigation
+(code + live E2E, on main `8432f75`) answered his two questions:
 
-Fix: a run with NO age profile set now snapshots the hint policy
-"one-per-round" (the bulb shows, one hint per place — the 8-10 shape).
-Everything else about the default stays exactly as it was.
+1. **Q1 — does capability detection auto-switch?** It did not: it
+   produced a boot *offer*; the session started in full mode until the
+   player accepted, while the code carried a recorded directive ("a
+   capability-detected weak device gets a CHOICE, never a silent
+   routing") contradicting his decision. His ruling: **"Auto-switch
+   silently on weak devices (my decision stands)"** — "check the
+   device capability and auto switch; also allow user to manually
+   switch."
+2. **Q2 — does a manual switch take effect at the next place?** It did
+   not: `mapMode` is a constructor input (the map is built once per
+   run), so at the next place only the stored record, two DOM
+   attributes, and confetti changed — tiles, starfield, DPR cap, zoom
+   caps, admin-1 band, and camera motion never changed mid-run. The
+   popover's "Applies from the next place — never mid-round" was false
+   for every map feature, and the shipped toggle E2E asserted only the
+   attribute that does flip. His ruling: **"Force home on manual
+   switch (my remedy)"** — "when you manually switch you need to
+   reload the entire app to get all features enabled. if that's the
+   case we should force the user back to home page."
 
-## The bug, plainly
-- The game never checks the player's age. The "band" comes from a
-  parent-set profile stored on the device; most players never set one.
-- With no profile, the run config resolved through the 11-13 row of
-  the policy table — "none" — so `HintPanel` returned null. The bulb
-  was off by default for almost everyone, silently.
-- Found by the owner playing the live site; confirmed by a fresh-
-  profile inspection of production (Globe game: End game present,
-  no bulb anywhere).
+## The fix
 
-## Done (2026-10-20)
-- `src/game/age-profile/run-config.ts`: new named constant
-  `DEFAULT_HINT_POLICY = "one-per-round"` with the owner's words and
-  the why in plain language. `getBandConfig(null)` now carries it;
-  `getBandConfig("11-13")` still carries "none" — an explicit 11-13
-  profile is a parent's deliberate choice and is NOT overridden.
-  The snapshot's `band` field still records "11-13" for unset runs,
-  and every other number (rounds, tolerance, clues, duel seconds)
-  is byte-identical to before.
-- Snapshot sites now pass the profile's RAW band (`loadProfile().band`,
-  null when unset) instead of the pre-resolved band, so the default
-  actually reaches the snapshot: `src/game/run.ts` (run start + the
-  pre-snapshot resume backfill) and `src/game/loop/store.ts`
-  (GeoDetective deal). For any explicitly set profile the snapshots
-  are unchanged, value for value.
-- `src/game/loop/LoopScreen.tsx`: GeoDetective now reads the hint
-  policy from the mystery's own persisted deal snapshot
-  (`puzzle.dealBandConfig.hintPolicy`) — the deal-time source the
-  #113 contract always intended — falling back to the old recompute
-  only for pre-snapshot puzzles. A no-profile player's GeoDetective
-  bulb therefore shows too; a mystery dealt BEFORE this fix keeps
-  the policy it was dealt with until the next deal (snapshot rules).
-  The quiz follows the same snapshot rule: a run already in flight
-  when this deploys keeps the policy it started with, so for quiz
-  players the bulb appears from their next run.
-- Consumer audit (each verified in code):
-  - `hintButtonState` / `canUseHint`: pure functions of the policy —
-    "one-per-round" gives visible → disabled-after-one-use. ✓
-  - `mascotOffersHint`: fires only for "free" (5-7) — the default
-    policy can never trigger the mascot offer. Proven by unit pin
-    at several miss counts. ✓
-  - Quiz dock (`game-app.tsx`): reads the run snapshot's policy —
-    the bulb now renders in the bottom-right dock during aim. ✓
-  - Clean Round badge (`passport/badges.ts`): keys off the snapshot
-    BAND field (still "11-13") + hints used + win — never the policy.
-    A default player who uses a hint gets no badge (same as any
-    hint user); one who never taps still earns it. No change needed
-    and none made; existing unit pins cover both cases. ✓
-  - Everything else that reads the band (`resolveBand` consumers:
-    loop locks, pin tolerance, read-aloud mode, story mapping,
-    GeoDetective clue/cap config): untouched — `resolveBand` itself
-    did not change, and the snapshot's band field did not change,
-    so the ONLY behavioral delta is hint availability for
-    unset-profile runs. ✓
-- Unit tests: run-config gate updated deliberately (the gate's own
-  header says intentional changes update it) — the unset contract is
-  now "production numbers + hintPolicy one-per-round"; new pins for
-  null-vs-explicit-11-13 (identical except the policy), bulb state
-  under the default, mascot-offer exclusion; startRun/resume snapshot
-  pins for unset (hints on) and explicit 11-13 (hints off); the loop
-  store snapshot pin now mirrors the production call. Mutation check:
-  reverting the one-line policy change fails 10 of the 20 tests in
-  the two config test files.
-- E2E: new tests in `tests/e2e/hint-button.spec.ts` (no profile →
-  bulb visible in the aim dock → tap → directional hint shows →
-  button disables) and `tests/e2e/geodetective-hint.spec.ts`
-  (no profile → same flow in GeoDetective). The explicit-11-13
-  "no bulb" pins already in both specs still stand.
-- Docs: this file; the stale comments in run-config.ts / run.ts /
-  loop store / LoopScreen / hint-panel now describe the default
-  honestly; handbook chapter 02 gained section 13 recording the
-  per-band hint policy (owner 2026-10-09) and the 2026-10-20 ruling
-  that supersedes its default behavior.
+**Change 1 — silent auto-switch at boot** (`src/map/capability.ts`,
+boot effect in `src/components/game-app.tsx`):
 
-## Post-panel (2026-10-20)
-- Panel verdict: READY, zero BLOCKs. The owner chose the panel's
-  optional docs cure + a re-vote before merging: "Add the small docs
-  cure, re-vote, then merge".
-- Rebased onto origin/main `89e474c` (PR #179 landed after this
-  branch was cut): the only conflict was this file; resolved by
-  keeping this branch's record.
-- Docs cure applied: the stale `getBandConfig(resolveBand())`
-  headers corrected (run-config.ts, loop/types.ts) to describe the
-  raw-band snapshot; `DEFAULT_HINT_POLICY` re-exported from the
-  age-profile barrel; the quiz in-flight-run caveat added here and
-  in handbook §13; the owner's quoted words now contain exactly his
-  words (periods outside the quote marks) in this file, handbook
-  §13, and run-config.ts; §13's paraphrase-in-quotes replaced with
-  the real hint string ("Look toward the northern part of the
-  map!").
+- No stored record + fresh qualification = scout (prior-crash /
+  probe / low-memory) → the session starts in Scout, silently. No
+  dialog, no blocking notice; the layers toggle shows the state.
+- The decision is persisted as an **auto record** — qualifying source
+  kept, NOT manual, NOT accepted — so the existing 7-day decay in
+  `readStoredMapMode` re-qualifies the device later, and a device
+  that later probes clean returns to full. This matches the
+  contextlost record's persistence semantics (the recorded design
+  choice; no type change was needed: `planBootMapMode` now returns
+  `{ mode, persistSource }` instead of an offer variant).
+- A stored manual record still wins over everything and never
+  decays; a stored *accepted* record (written by the old dialog)
+  likewise. Boot never rewrites a standing record.
+- The boot offer is gone: `scout-boot-offer.tsx` deleted, the four
+  offer handlers deleted, the offer copy deleted,
+  `ScoutOfferVariant` deleted. `writeStoredMapMode` no longer takes
+  the `accepted` argument (nothing can write it anymore); the reader
+  still honors `accepted: true` on records already on players'
+  devices.
+- The recorded directive in `capability.ts` is marked **SUPERSEDED**
+  with the ruling quoted and dated — history kept, not deleted.
+- The `window.__meridianSuppressScoutOffer` seam now suppresses the
+  **auto-switch** instead of the dialog (without it, every harness
+  boot on the SwiftShader VM would silently start in Scout). It stays
+  wired exactly so the suite keeps working — see the flag below.
 
-## Pending
-- Rule-13 re-vote on this cured tip (panel). The owner's merge word
-  is GIVEN, conditional on that re-vote returning READY.
-- Merge after the re-vote.
+**Change 2 — manual switch forces home** (`game-app.tsx`,
+`map-mode-toggle.tsx`, `scout-copy.ts`):
 
-## Gates (2026-10-20, re-run on the rebased + cured tip `d7b84cb`)
-- `npx tsc --noEmit` — clean.
-- `npm test` — green: scripts suite 799 tests (790 pass, 9 skip,
-  0 fail); src suite 1,366 pass, 0 fail (1,363 from the new base +
-  this branch's 3).
-- `node scripts/lint-cards.mjs` — GATE PASSED.
-- `npm run build:pages` — green (VITE_KOFI_URL set).
-- Playwright (built artifact, --workers=1, VITE_KOFI_URL set at
-  build + test): hint-button (11) + geodetective-hint (5) +
-  clean-round-badge (4) combined run **20 passed, 0 failed** on
-  this tip. (The same family also passed 20/20 pre-rebase, after
-  one transient failure in an early run — the pre-existing
-  "11-13: no hint button at all" test failed inside the
-  `startGlobeRun` setup helper (helpers.ts:156) under heavy VM
-  load immediately after a service restart. Corrected 2026-10-20:
-  an earlier draft of this note misattributed that flake to the
-  new GeoDetective default test.)
+- A dedicated `handleManualMapMode` in GameApp: writes the manual
+  record, stamps the report mode, applies the mode **immediately**
+  (no queue), and exits the run — the session (score, banked places)
+  survives; the in-progress run is **discarded**. Discarding follows
+  the codebase's own pattern (`endTutorial` / `killIdleSession`):
+  the persisted run record is removed too, so a later reload cannot
+  resurrect a game the popover just said "ends here". (The Editions
+  exit deliberately keeps its record — switching editions pauses the
+  run; switching the map ends it. First E2E run caught the
+  resurrection; the toggle spec now pins reload-stays-home.)
+- The queue machinery (`queuedMapMode`, `queuedMapModeRef`,
+  `queueAppliedAtIndex`, the render-phase application block, the
+  `toggleMapMode` prop) is **removed**: after both changes no path
+  produces or consumes a queued mode — manual applies + exits,
+  contextlost applies immediately, boot applies pre-mount. The
+  queue's index-0 corner (a first-place toggle landing one place
+  late in the next run) dies with it.
+- `applyMapMode` remains for its one live caller, the
+  webglcontextlost tripwire (immediate, with remount).
+- Copy: popover footnote now reads "Switching sends you back home —
+  this game ends here. Your next game uses the new map." (the warning
+  shows *before* the tap); live-region announcements say "Scout Map
+  on/off — back home; your next game uses …". Donation copy untouched.
+
+## Fate of the offer-era artifacts
+
+| Artifact | Fate |
+| --- | --- |
+| `scout-boot-offer.tsx` (dialog) | **deleted** |
+| `acceptScoutOffer` / `acceptCapabilityOffer` / `declineScoutOffer` / `dismissScoutOffer` | **deleted** |
+| `SCOUT_COPY.bootOffer` / `capabilityOffer` | **deleted** |
+| `ScoutOfferVariant`, offer-shaped `planBootMapMode` | **replaced** by `{ mode, persistSource }` |
+| `writeStoredMapMode(…, accepted)` parameter | **removed** (read-side `accepted` honored for legacy records) |
+| `window.__meridianSuppressScoutOffer` seam | **kept, re-roled** — now suppresses the auto-switch; flagged below |
+| Manual-toggle queue | **removed** (no remaining producer/consumer) |
+| `scoutOffer` / `scoutOfferShownRef` state | **deleted** (`bootQualified` kept; greeting now waits only for qualification) |
+
+## ⚠ Flag for the owner — issue #154 item 1 is still owed
+
+The `window.__meridianSuppressScoutOffer` seam **now guards the
+silent auto-switch**: when the harness sets it, a weak-device boot
+stays in full mode and writes nothing. It no longer guards a dialog
+(there is none), but it still ships in the production bundle and
+still decides boot behavior. Keep-vs-test-only remains the owner's
+open call — this branch deliberately does not settle it.
+
+## Tests
+
+- **Unit** (`src/map/capability.test.ts`, rewritten sections):
+  `planBootMapMode` pins the silent-apply shape for all three
+  qualifying sources + the clean-boot null; the auto-switch record is
+  pinned as source-kept, **no `accepted` key**, decaying after 7
+  days; a source-reading pin replaces the old #154-item-7 accept
+  wiring pin (boot persists `plan.persistSource`; the dialog cannot
+  come back; the seam stays wired); legacy accepted/decline records
+  are pinned as raw-JSON seeds — the exact shape older builds left on
+  real devices.
+- **E2E, converted not deleted:**
+  - `scout-toggle` — the "next place mount" test is replaced by:
+    toggle during a run's **first place** → home → record written →
+    the new run's **first place** carries the new mode at **feature
+    level** (starfield absent, zero satellite tile requests — never
+    the `data-map-mode` label alone); the reverse direction restores
+    starfield + tiles; a session test pins that banked places and
+    score survive the trip home.
+  - `scout-offer` — prior-crash: silent scout + auto record, the
+    crash flag stays one-shot, the standing record is never
+    rewritten, clean boot writes nothing, manual beats the flag.
+  - `scout-capability-offer` — probe + low-memory silent switches,
+    manual-full-beats-probe, legacy accepted record stands at 400
+    days, decayed record re-qualifies on a weak device and returns
+    to full on a now-capable one, greeting arrives with no dialog,
+    and the WS-4 tile-failure interplay now runs off a settled
+    manual record.
+  - `scout-throttled` — SwiftShader + 6× CPU: silent switch, game
+    completes in scout.
+  - `scout-false-demotion` — goldens unchanged in behavior; the
+    vacuous "modal hidden" checks became a real pin (no record
+    written at boot on a capable device).
+
+## Docs
+
+- `docs/scout-offer-policy.md` — rewritten: silent-switch rules +
+  decay table, the force-home rule, the seam's new role; the old
+  offer/non-nag record kept under "Superseded" (filename kept for
+  link stability).
+- Handbook ch06 §4 — rewritten with both rulings quoted and dated;
+  the offer record marked superseded; the /jury fix #2 item (Scout
+  dialog gating the first visit) recorded as resolved by the ruling.
+  Ch09's Scout Map glossary entry updated to match.
+- `capability.ts` — the superseded directive is quoted and marked in
+  `planBootMapMode`'s docstring; `StoredMapMode.accepted` and
+  `writeStoredMapMode` docs explain the legacy flag.
+
+## Gates
+
+Run at the branch tip, `VITE_KOFI_URL` set at build and test time,
+E2E `--workers=1`:
+
+- `npx tsc --noEmit` — **clean**
+- `npm test` — scripts **799 (790 pass / 9 skip / 0 fail)** + src
+  **1363 pass / 0 fail**
+- `node scripts/lint-cards.mjs` — **GATE PASSED**
+- `npm run build:pages` — **green**
+- E2E vs the built artifact (`--workers=1`): scout-toggle **5/5**,
+  scout-offer **4/4**, scout-capability-offer **8/8**, scout-throttled
+  + scout-false-demotion + scout-context-lost + scout-switch-note +
+  ws4-tile-fallback **23/23** (one batch), scout-narrow-repro
+  (zoom-space) **4/4** — **44 passed, 0 failed** across every touched
+  or neighboring suite. Two first-run failures were test bugs, not
+  app bugs, and both are now pinned properly: the run-resurrection
+  (fixed in the app — see Change 2) and a seed helper that re-seeded
+  on every navigation (fixed in the harness — `seedManualMode` is
+  write-once, matching write policy Q3).
+
+## Ready to merge?
+
+**NO — owner's review pipeline + merge word.** The full review
+pipeline runs next; nobody merges without the owner's word. (Expect
+a merge-time rebase: this branch is based on `89e474c` and a parallel
+hint-default build may land first — the surfaces are disjoint.)
+

@@ -49,11 +49,13 @@ export interface StoredMapMode {
   setAt: number;
   /**
    * True when a person accepted this Scout assignment from the boot choice
-   * dialog. An accepted choice is the user's own answer, so — like a manual
-   * toggle — it never decays and is never re-offered ("an explicit answer is
-   * never re-asked"). `source` still records the qualifying signal (probe /
-   * low-memory) for telemetry. Absent on every auto assignment nobody
-   * answered, which still decay after MAP_MODE_DECAY_MS.
+   * dialog the app showed before 2026-10-20. The dialog is gone (weak
+   * devices now auto-switch silently — see planBootMapMode), so no new
+   * record is ever written with this flag; but records already on players'
+   * devices carry it, and an accepted choice is the user's own answer, so —
+   * like a manual toggle — it never decays. `source` still records the
+   * qualifying signal (probe / low-memory) for telemetry. Absent on every
+   * auto assignment, which still decays after MAP_MODE_DECAY_MS.
    */
   accepted?: true;
 }
@@ -149,27 +151,28 @@ export function readStoredMapMode(
 
 /**
  * Persist an assignment. Write policy (Q3): call ONLY on a new qualifying
- * event or an explicit state change — manual toggle (PBI-7), boot-offer
- * acceptance (PBI-6), webglcontextlost switch (PBI-5). NEVER rewrite on
- * every boot: a boot-time rewrite would refresh setAt and silently defeat
- * the 7-day decay. resolveMapMode() reads but never writes.
+ * event or an explicit state change — manual toggle, the boot auto-switch
+ * (a fresh qualification IS the qualifying event, so it writes once per
+ * qualifying boot), webglcontextlost switch. NEVER rewrite a standing
+ * record just because a boot happened: that would refresh setAt and
+ * silently defeat the 7-day decay. resolveMapMode() reads but never writes.
+ *
+ * New records never carry `accepted: true` — that flag belongs to the
+ * removed boot dialog (see StoredMapMode.accepted); the reader still
+ * honors it on records written by older builds.
  */
 export function writeStoredMapMode(
   mode: MapMode,
   source: Exclude<MapModeSource, "default">,
   storage?: Pick<Storage, "setItem"> | null,
   now: number = Date.now(),
-  /** Pass true only from the boot dialog's Accept: a person's answer, never decays. */
-  accepted: boolean = false,
 ): void {
   try {
     const store = storage ?? defaultLocalStorage();
     if (!store) return;
     store.setItem(
       MAP_MODE_STORAGE_KEY,
-      JSON.stringify(
-        (accepted ? { mode, source, setAt: now, accepted: true } : { mode, source, setAt: now }) satisfies StoredMapMode,
-      ),
+      JSON.stringify({ mode, source, setAt: now } satisfies StoredMapMode),
     );
   } catch {
     // Storage blocked/full — the session still qualifies correctly in memory.
@@ -254,47 +257,57 @@ export interface ResolveMapModeOptions {
   priorMapCrash?: boolean;
 }
 
-/** Which choice dialog the boot plan shows, if any. */
-export type ScoutOfferVariant = "prior-crash" | "probe" | "low-memory";
-
 export interface BootMapModePlan {
+  /** The mode the session starts in. */
+  mode: MapMode;
   /**
-   * The choice dialog to show, or null for none. This plan is only ever
-   * requested when no live stored assignment stands (the caller checks
-   * the stored record first), so a settled choice is never re-asked —
-   * the question is never posed.
+   * The qualifying source to persist as a fresh AUTO record, or null to
+   * write nothing. An auto record is nobody's answer, so it decays after
+   * MAP_MODE_DECAY_MS and the device is re-qualified on fresh signals —
+   * the same persistence semantics the webglcontextlost record has always
+   * had. Only a scout decision persists; a full ("default") decision
+   * writes nothing.
    */
-  offer: ScoutOfferVariant | null;
+  persistSource: "prior-crash" | "probe" | "low-memory" | null;
 }
 
 /**
  * Pure boot plan for a fresh qualification (no live stored assignment):
- * which choice dialog to show, if any.
+ * the mode the session starts in, and what to persist.
  *
  * Caller contract: only ask when no live stored assignment stands.
  * game-app's boot effect reads the stored record itself — it needs the
  * stored mode either way — and calls this solely from its no-stored
- * branch. That check is the one place the "a stored assignment
- * suppresses every offer" rule lives; this function takes no stored
+ * branch. That check is the one place the "a stored assignment stands
+ * over fresh signals" rule lives; this function takes no stored
  * parameter, so its type can't pretend otherwise (issue #154 item 3 —
  * production always passed null, and the dead branch hid that).
  *
- * Owner directive: a capability-detected weak device gets a CHOICE, never
- * a silent routing. The session always starts in full mode when an offer
- * is pending — scout applies only on accept (stored with `accepted: true`,
- * source preserved for telemetry; like decline it is a person's answer, so
- * it never decays and never re-prompts), and decline records the user's
- * explicit "full" choice as manual (never decays, never re-prompts).
+ * Owner ruling (2026-10-20): "Auto-switch silently on weak devices (my
+ * decision stands)" — his words: "check the device capability and auto
+ * switch; also allow user to manually switch." A fresh scout decision
+ * (prior-crash / probe / low-memory) therefore applies SILENTLY: the
+ * session starts in Scout Map, no dialog, and the auto record above is
+ * written so later boots stand on it until it decays.
+ *
+ * SUPERSEDED: the previous directive — "a capability-detected weak device
+ * gets a CHOICE, never a silent routing" — sent these same decisions to a
+ * boot choice dialog and kept the session in full mode until the player
+ * accepted. That behavior shipped until 2026-10-20 and is why stored
+ * records with `accepted: true` exist (see StoredMapMode.accepted). The
+ * owner's 2026-10-20 ruling above replaces it; this note stays so the
+ * history is not lost.
  */
 export function planBootMapMode(decision: MapModeDecision): BootMapModePlan {
   if (
-    decision.source === "prior-crash" ||
-    decision.source === "probe" ||
-    decision.source === "low-memory"
+    decision.mode === "scout" &&
+    (decision.source === "prior-crash" ||
+      decision.source === "probe" ||
+      decision.source === "low-memory")
   ) {
-    return { offer: decision.source };
+    return { mode: "scout", persistSource: decision.source };
   }
-  return { offer: null };
+  return { mode: "full", persistSource: null };
 }
 
 /**
@@ -303,11 +316,10 @@ export function planBootMapMode(decision: MapModeDecision): BootMapModePlan {
  * Guarded for SSR / no-window — returns `{ mode: "full", source: "default" }`
  * when no DOM is available. Never throws. Reads but never writes (Q3).
  *
- * Q1 (offer, not force): when the returned source is "prior-crash",
- * "probe", or "low-memory" and no stored assignment stands, the caller
- * MUST show the choice dialog (planBootMapMode) and keep the session in
- * full mode until the user accepts — a scout decision never applies
- * silently.
+ * When the returned source is "prior-crash", "probe", or "low-memory"
+ * and no stored assignment stands, the caller applies the decision
+ * silently and persists it as an auto record — see planBootMapMode for
+ * the owner's 2026-10-20 auto-switch ruling.
  */
 export function resolveMapMode(options: ResolveMapModeOptions = {}): MapModeDecision {
   try {

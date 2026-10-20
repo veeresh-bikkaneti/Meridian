@@ -1,24 +1,28 @@
 /**
- * Scout Map boot-offer E2E (PBI-6 + Phase A UX contract).
+ * Scout Map prior-crash boot E2E — CONVERTED 2026-10-20.
  *
- * Contract: data-testid="scout-boot-offer" fires ONLY when the
- * map-attributed prior-crash flag is set, once per boot. The explicit
- * decline button ("Keep full map") records a permanent manual full choice.
- * Esc / scrim click merely DISMISS the dialog without persisting anything
- * (a stray tap is not a choice) — the dialog may re-fire next boot.
- * Focus is trapped while open.
+ * This file pinned the PBI-6 boot OFFER dialog (data-testid=
+ * "scout-boot-offer": decline / Esc / scrim / focus-trap semantics).
+ * The owner's ruling — "Auto-switch silently on weak devices (my
+ * decision stands)" — removed the dialog entirely: a map-attributed
+ * prior crash now switches the session to Scout SILENTLY at boot and
+ * persists an auto record (source "prior-crash", never manual, never
+ * accepted) that decays after 7 days like every auto record.
  *
- * PBI-6 dependency: fails until the dev implements the offer modal.
+ * What survives from the old contract, re-pinned against the new one:
+ * the crash flag is one-shot, a standing record is never rewritten at
+ * boot, a clean boot writes nothing, and a manual record beats the
+ * crash flag. The dialog-specific tests (Esc/scrim/focus) are gone
+ * because the behavior they pinned no longer exists.
  */
 import { test, expect } from "playwright/test";
 import {
   serveBuiltArtifact,
   startGlobeRun,
-  readPhase,
   APP_NO_IDLE,
 } from "./helpers";
 import {
-  offerModal,
+  readMapMode,
   readStoredMapMode,
   seedCrashOffer,
   seedManualMode,
@@ -28,200 +32,93 @@ import {
 test.setTimeout(120_000);
 
 test.beforeEach(async ({ context }) => {
-  // This spec exercises the boot dialog itself — do NOT suppress it.
+  // Production boot behavior: do NOT suppress the auto-switch.
   await serveBuiltArtifact(context, { suppressScoutOffer: false });
 });
 
-test("offer modal appears exactly once per boot when the crash flag is set", async ({
+test("prior crash → silent scout at boot: auto record written, no dialog, scout mounts", async ({
   context,
 }) => {
   await seedCrashOffer(context);
   const page = await context.newPage();
   await page.goto(APP_NO_IDLE);
 
-  const modal = offerModal(page);
-  await expect(modal).toBeVisible({ timeout: 30_000 });
-  expect(await modal.count()).toBe(1);
+  // Home is directly usable — nothing modal gates the first visit.
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("scout-boot-offer")).toHaveCount(0);
 
-  // Decline via the "Keep full map" explicit choice.
-  await modal.getByRole("button", { name: "Keep full map" }).click();
-  await expect(modal).toBeHidden();
+  // The boot persisted an AUTO record: qualifying source kept, and it
+  // is nobody's answer (no accepted flag — it decays after 7 days).
+  const stored = await readStoredMapMode(page);
+  expect(stored).toMatchObject({ mode: "scout", source: "prior-crash" });
+  expect((stored as unknown as Record<string, unknown>)?.accepted).toBeUndefined();
 
-  // No re-fire within the same boot.
-  await page.waitForTimeout(3_000);
-  await expect(modal).toBeHidden();
-
-  // The decline retires the offer flag (see the decline-retires test):
-  // a fresh boot after declining shows no modal.
-  await page.reload();
-  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
-    timeout: 30_000,
-  });
-  await page.waitForTimeout(3_000);
-  await expect(modal).toBeHidden();
+  // And the session really is in Scout when a run starts.
+  await startGlobeRun(page);
+  await expect.poll(() => readMapMode(page), { timeout: 60_000 }).toBe("scout");
   await page.close();
 });
 
-test("Esc dismisses WITHOUT persisting (not a choice)", async ({ context }) => {
-  await seedCrashOffer(context);
-  const page = await context.newPage();
-  await page.goto(APP_NO_IDLE);
-
-  const modal = offerModal(page);
-  await expect(modal).toBeVisible({ timeout: 30_000 });
-  await page.keyboard.press("Escape");
-  await expect(modal).toBeHidden();
-
-  // Esc is a dismissal, not a choice: nothing is persisted.
-  expect(await readStoredMapMode(page)).toBeNull();
-
-  // The dialog may re-fire on the next boot (fresh crash flag).
-  await seedCrashOffer(context);
-  await page.reload();
-  await expect(modal).toBeVisible({ timeout: 30_000 });
-  await page.close();
-});
-
-test("scrim click dismisses WITHOUT persisting (not a choice)", async ({ context }) => {
-  await seedCrashOffer(context);
-  const page = await context.newPage();
-  await page.goto(APP_NO_IDLE);
-
-  const modal = offerModal(page);
-  await expect(modal).toBeVisible({ timeout: 30_000 });
-
-  // Click the overlay outside the dialog box itself: the dialog's
-  // bounding box subtracted from the overlay's; click the center of the
-  // leftover region. If the dialog fills the overlay there is no scrim
-  // to click and the contract's scrim-decline is untestable by click.
-  const clicked = await modal.evaluate((overlay) => {
-    const dialog =
-      overlay.querySelector('[role="dialog"]') ?? overlay;
-    const o = overlay.getBoundingClientRect();
-    const d = dialog.getBoundingClientRect();
-    // A strip above the dialog is scrim in the standard centered-modal
-    // layout; fall back to the overlay's top-left corner padding.
-    const y = d.top > o.top + 8 ? (o.top + d.top) / 2 : o.top + 4;
-    const x = (o.left + o.right) / 2;
-    const el = document.elementFromPoint(x, y);
-    if (el && (el === overlay || overlay.contains(el) && !dialog.contains(el))) {
-      (el as HTMLElement).click();
-      return true;
-    }
-    // Last resort: dispatch on the overlay itself at scrim coordinates —
-    // a correct implementation closes when the click target is the scrim.
-    overlay.dispatchEvent(
-      new MouseEvent("click", { bubbles: true, clientX: x, clientY: y }),
-    );
-    return true;
-  });
-  expect(clicked).toBe(true);
-  await expect(modal).toBeHidden({ timeout: 10_000 });
-
-  // Scrim click is a dismissal, not a choice: nothing is persisted.
-  expect(await readStoredMapMode(page)).toBeNull();
-
-  // The dialog may re-fire on the next boot (fresh crash flag).
-  await seedCrashOffer(context);
-  await page.reload();
-  await expect(modal).toBeVisible({ timeout: 30_000 });
-  await page.close();
-});
-
-test("focus is trapped inside the modal while open", async ({ context }) => {
-  await seedCrashOffer(context);
-  const page = await context.newPage();
-  await page.goto(APP_NO_IDLE);
-
-  const modal = offerModal(page);
-  await expect(modal).toBeVisible({ timeout: 30_000 });
-
-  // Initial focus lands inside the modal (poll: the focus effect runs
-  // just after first paint, so a single synchronous check can race it).
-  await expect
-    .poll(() => modal.evaluate((m) => m.contains(document.activeElement)), {
-      timeout: 10_000,
-    })
-    .toBe(true);
-
-  // Tab through more times than there are focusable elements: focus must
-  // never escape the modal.
-  for (let i = 0; i < 12; i++) {
-    await page.keyboard.press("Tab");
-    const inside = await modal.evaluate((m) => m.contains(document.activeElement));
-    expect(inside, `focus escaped the modal on Tab #${i + 1}`).toBe(true);
-  }
-
-  // Shift+Tab wraps too.
-  for (let i = 0; i < 4; i++) {
-    await page.keyboard.press("Shift+Tab");
-    const inside = await modal.evaluate((m) => m.contains(document.activeElement));
-    expect(inside, `focus escaped the modal on Shift+Tab #${i + 1}`).toBe(true);
-  }
-  await page.close();
-});
-
-test("declining retires the offer: no modal on the next boot", async ({
+test("the crash flag is one-shot: the next boot stands on the stored record, unrewritten", async ({
   context,
 }) => {
   await seedCrashOffer(context);
   const page = await context.newPage();
   await page.goto(APP_NO_IDLE);
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+  const first = await readStoredMapMode(page);
+  expect(first).toMatchObject({ mode: "scout", source: "prior-crash" });
 
-  const modal = offerModal(page);
-  await expect(modal).toBeVisible({ timeout: 30_000 });
-  await modal.getByRole("button", { name: "Keep full map" }).click();
-  await expect(modal).toBeHidden();
+  // Reload: the breadcrumb was consumed at the first boot, so no fresh
+  // qualification happens — the stored record stands and boot does NOT
+  // rewrite it (a rewrite would refresh setAt and defeat the decay).
+  await page.reload();
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+  const second = await readStoredMapMode(page);
+  expect(second).toMatchObject({ mode: "scout", source: "prior-crash" });
+  expect(second?.setAt).toBe(first?.setAt);
+  await page.close();
+});
 
-  // The decline must retire the offer — "Keep full map" must not nag on
-  // every subsequent boot. The decline is stored as the user's explicit
-  // manual "full" choice (dev's call per the contract): on a weak device
-  // the next boot's fresh probe would otherwise re-fire the dialog.
+test("fail-closed: a clean boot without the crash flag writes nothing and stays full", async ({
+  context,
+}) => {
+  // Spoof a capable device so "clean boot" genuinely means capable.
+  await spoofCapableDevice(context);
+  const page = await context.newPage();
+  await page.goto(APP_NO_IDLE);
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+  await page.waitForTimeout(3_000);
+  expect(await readStoredMapMode(page)).toBeNull();
+
+  await startGlobeRun(page);
+  expect(await readMapMode(page)).toBe("full");
+  await page.close();
+});
+
+test("manual override beats the crash flag", async ({ context }) => {
+  await seedManualMode(context, "full");
+  await seedCrashOffer(context);
+  const page = await context.newPage();
+  await page.goto(APP_NO_IDLE);
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+
+  // The stored manual choice stands; the crash flag changes nothing.
   expect(await readStoredMapMode(page)).toMatchObject({
     mode: "full",
     source: "manual",
   });
-
-  // Asserted behaviorally: no modal on the next boot.
-  await page.reload();
-  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
-    timeout: 30_000,
-  });
-  await page.waitForTimeout(3_000);
-  await expect(modal).toBeHidden();
-  await page.close();
-});
-
-test("fail-closed: NO offer on a clean boot without the crash flag", async ({
-  context,
-}) => {
-  // The harness VM reads as a weak device (SwiftShader) — spoof a capable
-  // device so "clean boot" genuinely means capable.
-  await spoofCapableDevice(context);
-  const page = await context.newPage();
-  await page.goto(APP_NO_IDLE);
-  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
-    timeout: 30_000,
-  });
-  // Settle: the offer fires at boot, so "never appears" needs a wait.
-  await page.waitForTimeout(5_000);
-  await expect(offerModal(page)).toBeHidden();
-
-  // And still none once a run is underway.
   await startGlobeRun(page);
-  await expect(offerModal(page)).toBeHidden();
-  expect(await readPhase(page)).toBe("aim");
-  await page.close();
-});
-
-test("manual override suppresses the offer path", async ({ context }) => {
-  await seedManualMode(context, "full");
-  const page = await context.newPage();
-  await page.goto(APP_NO_IDLE);
-  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
-    timeout: 30_000,
-  });
-  await page.waitForTimeout(5_000);
-  await expect(offerModal(page)).toBeHidden();
+  expect(await readMapMode(page)).toBe("full");
   await page.close();
 });

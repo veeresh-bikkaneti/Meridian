@@ -174,7 +174,6 @@ import {
 import type { MapMode, MapModeSource } from "@/map/capability";
 import {
   planBootMapMode,
-  type ScoutOfferVariant,
   probeWebGL,
   qualifyMapMode,
   readDeviceMemoryGB,
@@ -184,7 +183,6 @@ import {
 import type { ScoutRestoreView } from "@/map/satellite-map";
 import { SCOUT_COPY } from "./scout-copy.ts";
 import { TILE_FALLBACK_COPY } from "@/map/tile-fallback-copy.ts";
-import { ScoutBootOffer } from "./scout-boot-offer.tsx";
 import { MapModeToggle } from "./map-mode-toggle.tsx";
 import {
   TUTORIAL_EDITION,
@@ -862,102 +860,35 @@ export function GameApp() {
   const [run, setRun] = useState<Run | null>(null);
   const [menu, setMenu] = useState<Menu | null>(null);
   /**
-   * Scout Map (PBIs 5–7): the game map mode is owned HERE and threaded
-   * down as a prop — satellite-map unmounts on the webglcontextlost
-   * teardown (PBI-5), so the mode state can never live inside it.
-   * Full mode is the default; every assignment goes through
-   * applyMapMode (write policy Q3: only on a new qualifying event or an
-   * explicit state change — never rewritten per boot).
+   * Scout Map: the game map mode is owned HERE and threaded down as a
+   * prop — satellite-map unmounts on the webglcontextlost teardown, so
+   * the mode state can never live inside it. Full mode is the default;
+   * every assignment persists through writeStoredMapMode (write policy
+   * Q3: only on a new qualifying event or an explicit state change —
+   * never rewritten per boot).
    */
   const [mapMode, setMapMode] = useState<MapMode>("full");
   /**
-   * PBI-7: the manual toggle queues — it never applies mid-round. The
-   * queued choice is written to storage immediately (so a reload honors
-   * it) but the live mapMode only changes at the next place mount, so
-   * the current round (map, confetti, scoring) continues unchanged.
-   */
-  const [queuedMapMode, setQueuedMapMode] = useState<MapMode | null>(null);
-  const queuedMapModeRef = useRef<MapMode | null>(null);
-  /**
-   * PBI-7: tracks the run index the queued mode was last applied at, so
-   * the toggle takes effect exactly once per place change (render-phase
-   * adjustment below — no effect ordering hazards with the map mount).
-   */
-  const [queueAppliedAtIndex, setQueueAppliedAtIndex] = useState<number | null>(null);
-  /** The boot choice dialog (offer, not force) — variant, or null when hidden. Once per boot. */
-  const [scoutOffer, setScoutOffer] = useState<ScoutOfferVariant | null>(null);
-  const scoutOfferShownRef = useRef(false);
-  /**
    * True once the boot map-mode qualification has run. The storyteller
-   * greeting waits for this (plus offer resolution) so narration never
-   * starts under the choice dialog on a qualifying device.
+   * greeting waits for this so narration never starts before the boot
+   * mode is settled.
    */
   const [bootQualified, setBootQualified] = useState(false);
 
   /**
-   * Apply a map-mode assignment: persist (Q3) + stamp crash reports +
-   * update state. Sources: "manual" (settings toggle, boot-offer accept)
-   * — QUEUED, never applied mid-round; "contextlost" (the PBI-5 runtime
-   * tripwire — the only automatic switch) — applied immediately.
-   *
-   * PBI-7: the manual toggle queues. The queued choice is written to
-   * storage immediately (so a reload honors it) but the live mapMode
-   * only changes at the next place mount, so the current round (map,
-   * confetti, scoring) continues unchanged.
+   * Apply a runtime auto-switch: persist (Q3) + stamp crash reports +
+   * update state. The only caller is the webglcontextlost tripwire (the
+   * map is already gone, so the new mode applies immediately with the
+   * remount Play performs). Boot-time qualification and the manual
+   * toggle have their own paths — neither queues: the boot switch
+   * happens before any map exists, and a manual switch ends the game
+   * (force-home, below), so there is never a pending mode waiting for
+   * a later place.
    */
-  const applyMapMode = useCallback((mode: MapMode, source: Extract<MapModeSource, "manual" | "contextlost">) => {
+  const applyMapMode = useCallback((mode: MapMode, source: Extract<MapModeSource, "contextlost">) => {
     writeStoredMapMode(mode, source);
     setReportMapMode(mode);
-    if (source === "manual") {
-      queuedMapModeRef.current = mode;
-      setQueuedMapMode(mode);
-      return;
-    }
-    // contextlost: authoritative — clear any queued manual choice so the
-    // next mount can't flip back under the player.
-    queuedMapModeRef.current = null;
-    setQueuedMapMode(null);
     setMapMode(mode);
-  }, []);
-
-  // PBI-6 (prior-crash): accept is the user's explicit choice — manual
-  // scout, queued (never applied mid-round), never decays.
-  const acceptScoutOffer = useCallback(() => {
-    applyMapMode("scout", "manual");
-    setScoutOffer(null);
-  }, [applyMapMode]);
-
-  // Capability offer accept (probe / low-memory): scout with the
-  // qualifying source preserved for telemetry and `accepted: true`, so —
-  // like a decline or a manual toggle — it is the user's own answer: it
-  // never decays and the dialog is never re-offered. Applied immediately —
-  // the offer fires pre-mount, so there is no mid-round hazard.
-  const acceptCapabilityOffer = useCallback(() => {
-    const source = scoutOffer;
-    if (source === "probe" || source === "low-memory") {
-      writeStoredMapMode("scout", source, undefined, Date.now(), true);
-      setReportMapMode("scout");
-      setMapMode("scout");
-    }
-    setScoutOffer(null);
-  }, [scoutOffer]);
-
-  // Decline (any variant): the user's explicit choice of full mode —
-  // stored as manual, so it never decays and never re-prompts. (For
-  // prior-crash this also satisfies the no-nag contract: the consumed
-  // crash flag alone would let the next boot's fresh probe re-fire the
-  // dialog on a weak device.)
-  const declineScoutOffer = useCallback(() => {
-    writeStoredMapMode("full", "manual");
-    setReportMapMode("full");
-    setScoutOffer(null);
-  }, []);
-  // Dismiss (scrim tap / Escape): NOT a choice — closes the dialog without
-  // persisting anything, so a stray tap can never become a permanent
-  // "full" assignment. The dialog may re-fire on the next boot if the
-  // device still qualifies (UX review 2026-10-12, BLOCK 1).
-  const dismissScoutOffer = useCallback(() => {
-    setScoutOffer(null);
   }, []);
   // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v2 and never touches the
@@ -1160,31 +1091,36 @@ export function GameApp() {
     // null = transport disabled), then flush. Never throws.
     initObservability();
     installGlobalErrorHandlers();
-    // Scout Map boot qualification (PBI-1/PBI-6): resolve the mode
-    // pre-mount — before any map instance exists.
-    // Write policy (Q3): a live stored assignment (manual, or auto inside
-    // its decay window) stands WITHOUT a rewrite — rewriting per boot
-    // would refresh setAt and silently defeat decay. Nothing is written
-    // at boot for a fresh scout decision either. If the player answers
-    // the offer, the accept/decline handlers store that answer: a
-    // capability accept keeps the qualifying source and adds
-    // accepted: true, decline writes manual full — and a stored answer
-    // never decays, so the offer is never re-asked.
-    // Q1 (offer, not force): a fresh "prior-crash", "probe", or
-    // "low-memory" decision shows the choice dialog — the session stays
-    // in full mode until the player accepts. Scout never applies silently.
+    // Scout Map boot qualification: resolve the mode pre-mount — before
+    // any map instance exists.
+    // Write policy (Q3): a live stored assignment (manual forever, auto
+    // inside its decay window, a legacy accepted answer forever) stands
+    // WITHOUT a rewrite — rewriting per boot would refresh setAt and
+    // silently defeat decay.
+    // A fresh scout decision (prior-crash / probe / low-memory) applies
+    // SILENTLY (owner ruling, 2026-10-20: "Auto-switch silently on weak
+    // devices (my decision stands)"): the session starts in Scout and
+    // the decision is persisted as an AUTO record — qualifying source
+    // kept, never manual, never accepted — so the 7-day decay
+    // re-qualifies the device on later boots, and a device that later
+    // probes clean returns to full. (This replaced the boot choice
+    // dialog; see planBootMapMode's docstring for the superseded
+    // directive.)
     // E2E seam: the harness init script
     // (window.__meridianSuppressScoutOffer, set by serveBuiltArtifact)
-    // skips the dialog — the Playwright VM's SwiftShader renderer reads
-    // as a weak device, so unsuppressed every fresh boot would show the
-    // dialog and block unrelated specs.
+    // suppresses the auto-switch — the Playwright VM's SwiftShader
+    // renderer reads as a weak device, so unsuppressed every fresh boot
+    // would silently start in Scout and block unrelated specs. The seam
+    // now guards the auto-switch instead of the removed dialog; whether
+    // it should keep shipping in production is issue #154 item 1 — the
+    // owner's call, still owed.
     try {
       const stored = readStoredMapMode();
       if (stored) {
         setReportMapMode(stored.mode);
         setMapMode(stored.mode);
       } else {
-        const suppressOffer =
+        const suppressAutoSwitch =
           typeof window !== "undefined" &&
           (window as unknown as Record<string, unknown>).__meridianSuppressScoutOffer === true;
         const plan = planBootMapMode(
@@ -1194,21 +1130,56 @@ export function GameApp() {
             deviceMemoryGB: readDeviceMemoryGB(),
           }),
         );
-        setReportMapMode("full");
-        if (plan.offer !== null && !suppressOffer && !scoutOfferShownRef.current) {
-          scoutOfferShownRef.current = true;
-          setScoutOffer(plan.offer);
+        if (plan.mode === "scout" && !suppressAutoSwitch) {
+          if (plan.persistSource !== null) {
+            writeStoredMapMode("scout", plan.persistSource);
+          }
+          setReportMapMode("scout");
+          setMapMode("scout");
+        } else {
+          setReportMapMode("full");
         }
       }
     } catch {
       // Qualification never blocks boot — full mode is the default.
     }
-    // Boot qualification has settled (offer shown or not) — the storyteller
-    // greeting may now start once any open offer resolves.
+    // Boot qualification has settled — the storyteller greeting may start.
     setBootQualified(true);
     void loadFlags().then(() => {
       setObservabilityEndpoint(getObservabilityEndpoint());
     });
+  }, []);
+
+  /**
+   * Manual toggle (owner ruling, 2026-10-20: "Force home on manual
+   * switch (my remedy)"). The map is built once per game with the mode
+   * as a constructor input, so a new mode can only take effect in a new
+   * game — the old "applies from the next place" queue flipped only the
+   * labels while the map itself never changed. So: persist the manual
+   * record, apply the mode immediately, and exit the run — the SESSION
+   * (score, banked places) survives; the in-progress run is DISCARDED.
+   * Discarding follows the endTutorial / killIdleSession pattern: the
+   * persisted run record is removed too, so a later reload cannot
+   * resurrect a game the popover just told the player "ends here"
+   * (the Editions exit deliberately keeps its record — switching
+   * editions pauses the run; switching the map ends it). Any tutorial
+   * beat state belongs to the discarded run and goes with it. The next
+   * game the player starts builds its map with the new mode.
+   */
+  const handleManualMapMode = useCallback((mode: MapMode) => {
+    writeStoredMapMode(mode, "manual");
+    setReportMapMode(mode);
+    setMapMode(mode);
+    setStartError(null);
+    clearDrop();
+    try {
+      sessionStorage.removeItem(RUN_KEY);
+    } catch {
+      // Storage blocked; the in-memory run is dropped below regardless.
+    }
+    setRun(null);
+    setTutorial(null);
+    setMenu(null);
   }, []);
 
   useEffect(() => {
@@ -1507,7 +1478,7 @@ export function GameApp() {
   // it and is about to unmount). The result card's button is "Next place" in
   // the pinned bar and "Next place →" in the full card; neither has a ref or
   // test id, so find it by its label, as other code in this file does with
-  // document.querySelector (scout-boot-offer). requestAnimationFrame lets the
+  // document.querySelector. requestAnimationFrame lets the
   // unmount finish first.
   const dismissStartError = useCallback(() => {
     setStartError(null);
@@ -1762,20 +1733,6 @@ export function GameApp() {
   }
 
   if (run) {
-    // PBI-7: apply a queued manual toggle at the next place mount. Done
-    // during render (React's "adjust state during render" pattern): the
-    // re-render happens before commit, so the next SatelliteMap mounts
-    // with the new mode already as its prop. The finished round committed
-    // with the old mode and is untouched.
-    if (queueAppliedAtIndex !== run.index) {
-      setQueueAppliedAtIndex(run.index);
-      const queued = queuedMapModeRef.current;
-      if (queued !== null) {
-        queuedMapModeRef.current = null;
-        setQueuedMapMode(null);
-        setMapMode(queued);
-      }
-    }
     return (
       <>
         <Play
@@ -1811,7 +1768,7 @@ export function GameApp() {
           onReviewDeck={handleReviewDeck}
           onCleared={(info) => setCleared(info)}
           mapMode={mapMode}
-          toggleMapMode={queuedMapMode ?? mapMode}
+          onManualMapMode={handleManualMapMode}
           applyMapMode={applyMapMode}
           setSessionMapMode={setMapMode}
           celebrationOpen={cleared !== null}
@@ -2046,7 +2003,7 @@ export function GameApp() {
         ) : null
       }
       tutorialInviteVisible={showTutorialInvite}
-      suppressGreeting={scoutOffer !== null || !bootQualified}
+      suppressGreeting={!bootQualified}
       ageBand={ageBand}
       onGrownUpOpen={openAgeSettings}
       notice={
@@ -2073,19 +2030,6 @@ export function GameApp() {
     ) : null}
     {celebrationOverlay}
     {idleToast}
-    {/* The Scout Map boot choice dialog — dedicated modal (never Comet,
-        which auto-dismisses). Fires on the home render only, once per
-        boot, when a fresh scout decision has no live stored assignment:
-        prior-crash, or a capability-detected weak device (probe /
-        low-memory). Offer, not force. */}
-    {scoutOffer !== null ? (
-      <ScoutBootOffer
-        variant={scoutOffer}
-        onAccept={scoutOffer === "prior-crash" ? acceptScoutOffer : acceptCapabilityOffer}
-        onDecline={declineScoutOffer}
-        onDismiss={dismissScoutOffer}
-      />
-    ) : null}
     </>
   );
 }
@@ -2850,7 +2794,7 @@ function Play({
   onTutorialEnd,
   ageBand,
   mapMode,
-  toggleMapMode,
+  onManualMapMode,
   applyMapMode,
   setSessionMapMode,
 }: {
@@ -2893,20 +2837,20 @@ function Play({
   onTutorialAdvance: (beat: TutorialBeat) => void;
   /** Skip/finish the tutorial: tear down the practice round. */
   onTutorialEnd: () => void;
-  /** Scout Map (PBIs 5–7): the game map mode, owned by GameApp. */
+  /** Scout Map: the game map mode, owned by GameApp. */
   mapMode: MapMode;
   /**
-   * What the settings toggle displays: the queued manual choice if one
-   * is pending, otherwise the live mode. The live map is untouched until
-   * the next place mount.
+   * Manual settings-toggle switch. GameApp owns it: it persists the
+   * manual record, applies the mode, and sends the player home — the
+   * map is built once per game, so the new mode takes effect in the
+   * next game (owner ruling, 2026-10-20).
    */
-  toggleMapMode: MapMode;
+  onManualMapMode: (mode: MapMode) => void;
   /**
-   * Apply a mode assignment. The settings toggle passes "manual" (queued
-   * for the next place mount); the PBI-5 webglcontextlost tripwire passes
-   * "contextlost" (applied immediately).
+   * Apply a runtime auto-switch. Only the webglcontextlost tripwire
+   * calls this (applied immediately, with a remount).
    */
-  applyMapMode: (mode: MapMode, source: "manual" | "contextlost") => void;
+  applyMapMode: (mode: MapMode, source: "contextlost") => void;
   setSessionMapMode: (mode: MapMode) => void;
 }) {
   // The catalog is stored WITH the key it was loaded for and only used while
@@ -3043,7 +2987,7 @@ function Play({
       onTutorialEnd={onTutorialEnd}
       ageBand={ageBand}
       mapMode={mapMode}
-      toggleMapMode={toggleMapMode}
+      onManualMapMode={onManualMapMode}
       applyMapMode={applyMapMode}
       setSessionMapMode={setSessionMapMode}
     />
@@ -3069,7 +3013,7 @@ function PlayLoaded({
   onTutorialEnd,
   ageBand,
   mapMode,
-  toggleMapMode,
+  onManualMapMode,
   applyMapMode,
   setSessionMapMode,
 }: {
@@ -3115,20 +3059,20 @@ function PlayLoaded({
   onTutorialAdvance: (beat: TutorialBeat) => void;
   /** Skip/finish the tutorial: tear down the practice round. */
   onTutorialEnd: () => void;
-  /** Scout Map (PBIs 5–7): the game map mode, owned by GameApp. */
+  /** Scout Map: the game map mode, owned by GameApp. */
   mapMode: MapMode;
   /**
-   * What the settings toggle displays: the queued manual choice if one
-   * is pending, otherwise the live mode. The live map is untouched until
-   * the next place mount.
+   * Manual settings-toggle switch. GameApp owns it: it persists the
+   * manual record, applies the mode, and sends the player home — the
+   * map is built once per game, so the new mode takes effect in the
+   * next game (owner ruling, 2026-10-20).
    */
-  toggleMapMode: MapMode;
+  onManualMapMode: (mode: MapMode) => void;
   /**
-   * Apply a mode assignment. The settings toggle passes "manual" (queued
-   * for the next place mount); the PBI-5 webglcontextlost tripwire passes
-   * "contextlost" (applied immediately).
+   * Apply a runtime auto-switch. Only the webglcontextlost tripwire
+   * calls this (applied immediately, with a remount).
    */
-  applyMapMode: (mode: MapMode, source: "manual" | "contextlost") => void;
+  applyMapMode: (mode: MapMode, source: "contextlost") => void;
   setSessionMapMode: (mode: MapMode) => void;
 }) {
   // Review-deck session: a synthetic Run reusing this game loop. The deck
@@ -3290,7 +3234,8 @@ function PlayLoaded({
    * WS-4 Phase 1: satellite pictures failed after the one retry. Switch to
    * Scout Map for this visit only. Unlike the context-loss switch, this calls
    * no writeStoredMapMode: nothing is saved, and a reload returns to full.
-   * It does not clear a queued manual choice, so the toggle still wins.
+   * (No manual choice can be pending against it: a manual toggle now
+   * leaves the run entirely — see handleManualMapMode in GameApp.)
    */
   const handleTileFallback = useCallback(
     (view: ScoutRestoreView) => {
@@ -3909,11 +3854,11 @@ function PlayLoaded({
               testId="sound-toggle-game"
               className="pointer-events-auto rounded-md border border-line bg-surface px-2.5 py-2 text-fg transition-colors hover:text-white"
             />
-            {/* PBI-7: Scout Map settings toggle. The choice writes
-                meridian:map-mode and takes effect on the NEXT place mount
-                — the map never remounts mid-round. The toggle reflects the
-                queued choice immediately. */}
-            <MapModeToggle mapMode={toggleMapMode} onSelect={(mode) => applyMapMode(mode, "manual")} />
+            {/* Scout Map settings toggle. The choice writes
+                meridian:map-mode and sends the player home — the new
+                mode takes effect in the next game, because the map is
+                built once per game (owner ruling, 2026-10-20). */}
+            <MapModeToggle mapMode={mapMode} onSelect={onManualMapMode} />
           </div>
           {review ? (
             <p

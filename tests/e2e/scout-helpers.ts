@@ -3,11 +3,12 @@
  *
  * DOM/STORAGE CONTRACTS the specs assert (dev must implement to these):
  *  - localStorage `meridian:map-mode` holds a single JSON record:
- *      { mode: "full"|"scout", manual: boolean, offer?: boolean,
- *        assignedBy?: "crash-flag"|"probe"|"memory", assignedAt?: number }
- *  - boot offer modal: data-testid="scout-boot-offer"
+ *      { mode: "full"|"scout", source: "manual"|"prior-crash"|"probe"|
+ *        "low-memory"|"contextlost", setAt: number, accepted?: true }
+ *  - boot: there is NO boot dialog (owner ruling, 2026-10-20) — a weak
+ *    device auto-switches to Scout silently and stores an auto record
  *  - settings toggle: data-testid="map-mode-button", in the Play top bar,
- *    NOT inside .satellite-map
+ *    NOT inside .satellite-map; flipping it sends the player home
  *  - switch note: role="status", classes "fixed inset-x-4 top-16",
  *    sibling of the ResultCard, visible only in story phase after reveal
  *  - map wrapper: data-map-mode="full"|"scout" (proposed), data-zoom,
@@ -32,8 +33,8 @@ export interface StoredMapMode {
  * Seed a map-attributed prior crash BEFORE the app boots: the previous
  * session died (cleanExit "0") with the map mounted (breadcrumb at the
  * map_init_start milestone). This is the crash pipeline's input to the
- * `priorMapCrash` signal (capability.ts) — the realistic trigger for the
- * boot offer, not a hand-written mode record.
+ * `priorMapCrash` signal (capability.ts) — the realistic trigger for a
+ * prior-crash auto-switch, not a hand-written mode record.
  *
  * One-shot: the real app clears the breadcrumb at boot (exactly-once
  * rotation in observability.ts), so a reload must NOT re-seed — otherwise
@@ -52,12 +53,22 @@ export async function seedCrashOffer(context: BrowserContext): Promise<void> {
   });
 }
 
-/** Seed a manual override record BEFORE the app boots (dev's record shape). */
+/**
+ * Seed a manual override record BEFORE the app boots (dev's record shape).
+ *
+ * Write-once: the seed lands only when no record exists yet. An init
+ * script re-runs on EVERY navigation, and an unguarded re-seed would
+ * clobber a record the app itself wrote mid-test (e.g. a manual toggle
+ * flip) with a fresh setAt — the same reload trap seedCrashOffer's
+ * comment above describes. A real device record is never rewritten per
+ * boot (write policy Q3), so the harness record isn't either.
+ */
 export async function seedManualMode(
   context: BrowserContext,
   mode: "full" | "scout",
 ): Promise<void> {
   await context.addInitScript((m: "full" | "scout") => {
+    if (localStorage.getItem("meridian:map-mode")) return;
     localStorage.setItem(
       "meridian:map-mode",
       JSON.stringify({ mode: m, source: "manual", setAt: Date.now() }),
@@ -138,10 +149,6 @@ async function spoofDevice(context: BrowserContext, deviceMemoryGB: number): Pro
   }, deviceMemoryGB);
 }
 
-/** The offer modal locator per the Phase A contract. */
-export const offerModal = (page: Page) =>
-  page.getByTestId("scout-boot-offer");
-
 /** The settings toggle locator per the Phase A contract. */
 export const mapModeButton = (page: Page) =>
   page.getByTestId("map-mode-button");
@@ -162,6 +169,15 @@ export const switchNote = (page: Page) =>
 
 /** The map wrapper; data-map-mode carries the active mode (proposed). */
 export const mapWrapper = (page: Page) => page.locator(".satellite-map");
+
+/**
+ * The starfield layer — mounted behind the map ONLY by a full-mode
+ * construction (scout never mounts it). This is the feature-level signal
+ * the toggle specs assert on: unlike data-map-mode (a label that flips
+ * with the prop), the starfield exists only if a full map was actually
+ * built, and satellite tile requests likewise only happen in full mode.
+ */
+export const starfield = (page: Page) => page.locator(".meridian-starfield");
 
 export async function readMapMode(page: Page): Promise<string | null> {
   return mapWrapper(page).getAttribute("data-map-mode");
