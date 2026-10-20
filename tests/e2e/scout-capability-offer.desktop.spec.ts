@@ -12,11 +12,16 @@
  * - accepted choice, even 400 days old → the dialog never re-appears.
  * - decayed auto record nobody answered → the dialog re-appears (fresh
  *   re-qualification).
+ * - declined offer → WS-4 tile failure: the visit still switches to
+ *   scout after the failed retry, and the stored decline is untouched
+ *   (issue #154 item 6 — the WS-4 spec spoofs a capable device, so the
+ *   dialog can never appear in that file).
  */
 import { test, expect } from "playwright/test";
 import {
   serveBuiltArtifact,
   startGlobeRun,
+  commitMiss,
   readPhase,
   APP_NO_IDLE,
 } from "./helpers";
@@ -232,5 +237,53 @@ test("scrim dismiss writes nothing: dialog re-fires next boot (UX BLOCK 1)", asy
   await page.reload();
   await expect(modal).toBeVisible({ timeout: 30_000 });
   await expect(modal).toHaveAttribute("data-offer-source", "probe");
+  await page.close();
+});
+
+test("declined offer → WS-4 tile failure: visit switches to scout, decline record untouched", async ({
+  context,
+}) => {
+  test.setTimeout(240_000);
+  // WS-4 setup, mirroring ws4-tile-fallback.desktop.spec.ts: every
+  // satellite tile request fails.
+  await context.route("**/server.arcgisonline.com/**", (route) => route.abort());
+  const page = await context.newPage();
+  await page.goto(APP_NO_IDLE);
+
+  // The capability dialog appears (this VM IS the weak device) and the
+  // player declines: manual full is stored — a settled answer.
+  const modal = offerModal(page);
+  await expect(modal).toBeVisible({ timeout: 30_000 });
+  await modal.getByRole("button", { name: "Keep full map" }).click();
+  await expect(modal).toBeHidden();
+  expect(await readStoredMapMode(page)).toMatchObject({
+    mode: "full",
+    source: "manual",
+  });
+
+  // The run starts on the full map, the pictures fail, and the game
+  // offers its one "Try again" (WS-4 Phase 1, owner decision 2026-10-15).
+  await startGlobeRun(page, 0);
+  const card = page.getByRole("alert").filter({
+    hasText:
+      "The map pictures won't load right now. Check your internet, then tap Try again.",
+  });
+  await expect(card).toBeVisible({ timeout: 60_000 });
+
+  // The retry fails too, so this visit switches to Scout Map — but the
+  // WS-4 switch stores nothing, so a network failure never overwrites
+  // the player's declined choice.
+  await card.getByRole("button", { name: "Try again" }).click();
+  await expect.poll(() => readMapMode(page), { timeout: 90_000 }).toBe("scout");
+  expect(await readStoredMapMode(page)).toMatchObject({
+    mode: "full",
+    source: "manual",
+  });
+
+  // The switch note arrives at the next natural break, after the reveal.
+  await commitMiss(page);
+  await expect(
+    page.getByText("We switched to Scout Map so you can keep playing."),
+  ).toBeVisible({ timeout: 30_000 });
   await page.close();
 });
