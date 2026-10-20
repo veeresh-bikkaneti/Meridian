@@ -14,29 +14,29 @@ Base: `origin/main` @ `84ac861` (PR #174). Note: this branch may need a
 rebase if PR #175 lands first (it touches nearby UI) — rebase only if a
 conflict actually appears.
 
-## Items
-- [ ] **2. Stale decay comment** (game-app boot effect): said accept
+## Items (all done)
+- [x] **2. Stale decay comment** (game-app boot effect): said accept
   writes an auto scout that decays. Since #151 accept writes
   `accepted: true`, which never decays. Comment rewritten to tell the
   truth.
-- [ ] **3. Dead `stored` parameter** in `planBootMapMode`: production
+- [x] **3. Dead `stored` parameter** in `planBootMapMode`: production
   always passed `null` (game-app checks the stored record itself before
   calling), so the planner's `if (stored)` branch never ran outside
   tests. **Decision: drop the parameter** — see below.
-- [ ] **4. `aria-describedby`** on the scout boot-offer dialog, pointing
+- [x] **4. `aria-describedby`** on the scout boot-offer dialog, pointing
   at the body paragraph, so screen-reader users hear the reason, not
   just the title.
-- [ ] **5. Stale comment** in `tests/e2e/motionmaxxing.spec.ts`: said
+- [x] **5. Stale comment** in `tests/e2e/motionmaxxing.spec.ts`: said
   the VM "boots in scout map mode". Since #147 the failed probe raises
   the offer dialog and the session starts in full; the tests pin full
   mode. Comment rewritten.
-- [ ] **6. New E2E test**: declined capability offer (manual full
+- [x] **6. New E2E test**: declined capability offer (manual full
   stored) followed by a WS-4 tile failure — the retry still switches to
   Scout Map for the visit, and the switch stores nothing, so the
   player's declined record stands untouched. Lives in
   `scout-capability-offer.desktop.spec.ts` because the WS-4 spec's
   capable-device spoof makes the dialog unreachable in that file.
-- [ ] **7. New unit test**: pins that game-app's capability-accept
+- [x] **7. New unit test**: pins that game-app's capability-accept
   handler writes `accepted: true` (previously only E2E covered it).
 
 ## Item 3 decision (drop the parameter, don't pass `stored` through)
@@ -57,10 +57,23 @@ storage-contract tests keep asserting the fact that branch relies on:
 a stored answer (accepted or manual) still reads back, undecayed, on
 later boots.
 
-## Gates
-- [ ] `npx tsc --noEmit`
-- [ ] `npm test` (scripts + src suites)
-- [ ] `node scripts/lint-cards.mjs` — GATE PASSED
-- [ ] `npm run build:pages`
-- [ ] E2E (built artifact, `--workers=1`): scout-capability-offer,
-  motionmaxxing
+## Gates (run on this branch, 2026-10-20)
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm test` — scripts suite 799 tests (790 pass / 9 skip / 0 fail);
+  src suite **1358 pass / 0 fail**. Identical totals to unmodified main
+  (verified on a pristine `84ac861` worktree): item 3 removed one
+  planner test and item 7 added one wiring test, net zero.
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — green (Ko-fi env baked in)
+- [x] E2E `scout-capability-offer.desktop.spec.ts` (built artifact,
+  `--workers=1`, Ko-fi env): **8/8 passed**, including the new item-6
+  test.
+- [x] E2E `motionmaxxing.spec.ts` (touched by item 5, comment-only):
+  **6/6 failed — pre-existing on unmodified main, NOT this branch.**
+  Reproduced identically on a pristine `84ac861` worktree: every test
+  dies at boot on the error boundary with "Cannot read properties of
+  undefined (reading 'connect')" — an audio-graph crash (`.connect`
+  reads live in `src/game/audio/sfx.ts` / `grandpa-ask.ts`). The
+  capability-offer spec passes against the same build, and no change
+  in this branch touches audio. Flagged for the owner as a separate
+  main-branch problem; out of scope here.
