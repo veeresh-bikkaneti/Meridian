@@ -1,41 +1,66 @@
-# BRANCH_STATUS.md — feat/storyteller-santa-revoice
+# BRANCH_STATUS.md — fix/scout-offer-followups-154
 
 ## What
-Replace all 14 storyteller narration mp3s with Grok-generated Santa-style
-voice (owner's voice direction: deep bass-baritone 140–170 Hz, warm/jolly/
-happy/grandfatherly, slow unhurried pace, real chuckle, excitement for
-GeoDetective). Files delivered by owner as meridian-storyteller-audio.zip;
-mastered to game standard (-16 LUFS, true-peak -1.5 dBTP, 24 kHz mono).
+Fix round for issue #154 items 2–7 — the follow-ups from the #147 ARCH
+review of the Scout Map capability-offer flow. Small truth-telling fixes
+(stale comments, a dead parameter, a missing ARIA link) plus two coverage
+gaps closed (one E2E, one unit).
 
-## Done
-- 2026-10-18: Unzipped + audited all 14 (names exact, checksums unique,
-  24kHz/mono, pitch 134–160 Hz except hook-01 at 178 Hz [excitement — flagged],
-  all tails decay naturally [no truncation], loudness was -19…-23 LUFS).
-- Mastered: gain to -16 ±1 LUFS + alimiter true-peak -1.5 dBTP (gain only,
-  no performance changes). Staged in /tmp/grok-mastered/.
-- Copied into public/audio/storyteller/ (14 files modified, named staging only).
-- Gates: tsc clean (fixed broken @types/three in meridian-work node_modules —
-  was a partial dir without package.json; installed 0.160.0), npm test
-  1351 pass / 0 fail, lint-cards GATE PASSED, build:pages green.
-- No test pins audio durations (checked storyteller E2E specs).
+**Item 1 is NOT in this branch.** The production test seam
+(`window.__meridianSuppressScoutOffer`) is an owner decision (keep vs
+remove); this branch does not touch it.
 
-## Pending
-- Owner LISTEN: he is the ears — verify Santa voice, chuckle, emotion per take.
-- Caption check: if Grok rephrased any line ("my friend", "the tale of"),
-  captions in storyteller-lines.ts / storyteller-home-copy.ts must be updated
-  to match (caption==audio contract). Cannot verify from audio alone — owner
-  to confirm against his Grok session.
-- hook-01 at 178 Hz (8 Hz above the 170 target) — excitement lift; owner call
-  whether to keep or regenerate.
-- Relationship to PR #173 (fenrir truncation fix, open): this PR supersedes
-  #173's 8 files with the Santa voice. Owner decides: close #173 unmerged,
-  or merge #173 first then this.
-- Scrum review per workflow, then his green-light → Chitti → his merge call.
+Base: `origin/main` @ `84ac861` (PR #174). Note: this branch may need a
+rebase if PR #175 lands first (it touches nearby UI) — rebase only if a
+conflict actually appears.
 
-## Ready to merge? NO
-## What is pending? Owner listen + caption/rephrase confirmation + #173 decision + scrum + Chitti.
+## Items
+- [ ] **2. Stale decay comment** (game-app boot effect): said accept
+  writes an auto scout that decays. Since #151 accept writes
+  `accepted: true`, which never decays. Comment rewritten to tell the
+  truth.
+- [ ] **3. Dead `stored` parameter** in `planBootMapMode`: production
+  always passed `null` (game-app checks the stored record itself before
+  calling), so the planner's `if (stored)` branch never ran outside
+  tests. **Decision: drop the parameter** — see below.
+- [ ] **4. `aria-describedby`** on the scout boot-offer dialog, pointing
+  at the body paragraph, so screen-reader users hear the reason, not
+  just the title.
+- [ ] **5. Stale comment** in `tests/e2e/motionmaxxing.spec.ts`: said
+  the VM "boots in scout map mode". Since #147 the failed probe raises
+  the offer dialog and the session starts in full; the tests pin full
+  mode. Comment rewritten.
+- [ ] **6. New E2E test**: declined capability offer (manual full
+  stored) followed by a WS-4 tile failure — the retry still switches to
+  Scout Map for the visit, and the switch stores nothing, so the
+  player's declined record stands untouched. Lives in
+  `scout-capability-offer.desktop.spec.ts` because the WS-4 spec's
+  capable-device spoof makes the dialog unreachable in that file.
+- [ ] **7. New unit test**: pins that game-app's capability-accept
+  handler writes `accepted: true` (previously only E2E covered it).
 
-## Rebase 2026-10-18 ~17:15 CDT
-- Rebased onto origin/main 9aa74db (#172 merged). BRANCH_STATUS.md conflict resolved per convention (branch keeps its own record). 14 mp3s applied cleanly.
-- Post-rebase gates ALL GREEN: tsc clean; npm test 1358 pass / 0 fail; lint-cards GATE PASSED; build:pages green.
-- Independent squad verdict (owner-relayed): BLOCKED (NOT READY) — audio good, gates green, but: status file says NO / 😌 in caption unverified by ear (owner has since approved poke-03: "perfect") / Santa-supersedes-Homer unapproved / rebase needed (done).
+## Item 3 decision (drop the parameter, don't pass `stored` through)
+game-app's boot effect already branches on the stored record before the
+planner is consulted — it has to, because it needs `stored.mode` to set
+the map mode directly. Passing `stored` through would force the boot
+effect to also run a fresh qualification (WebGL probe + memory read) on
+every boot just to hand the planner a value it can only answer "no
+offer" to — new work for zero behavior change, and two places enforcing
+one rule, free to drift apart. Dropping the parameter makes the type say
+what production actually does: *the planner is only asked when no live
+stored assignment stands*, which its doc comment already claimed. The
+"stored assignment suppresses every offer" rule stays enforced in
+exactly one place — game-app's `if (stored)` branch — and the planner's
+unit tests now mirror the production call pattern (decision in, offer
+out) instead of testing a branch production never takes. The
+storage-contract tests keep asserting the fact that branch relies on:
+a stored answer (accepted or manual) still reads back, undecayed, on
+later boots.
+
+## Gates
+- [ ] `npx tsc --noEmit`
+- [ ] `npm test` (scripts + src suites)
+- [ ] `node scripts/lint-cards.mjs` — GATE PASSED
+- [ ] `npm run build:pages`
+- [ ] E2E (built artifact, `--workers=1`): scout-capability-offer,
+  motionmaxxing
