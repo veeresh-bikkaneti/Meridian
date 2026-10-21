@@ -8,7 +8,13 @@
  *  - boot: there is NO boot dialog (owner ruling, 2026-10-20) — a weak
  *    device auto-switches to Scout silently and stores an auto record
  *  - settings toggle: data-testid="map-mode-button", in the Play top bar,
- *    NOT inside .satellite-map; flipping it sends the player home
+ *    NOT inside .satellite-map; flipping it sends the player home. The
+ *    same control is ALSO hosted on Home (Block C) beside a visible
+ *    indicator (data-testid="map-mode-indicator", data-mode attr);
+ *    flipping it there just writes the manual record — no run exists
+ *  - home notices: data-testid="map-switched-notice" (after a manual
+ *    switch lands the player home, Block B) and
+ *    data-testid="scout-auto-notice" (this boot auto-switched, Block C)
  *  - switch note: role="status", classes "fixed inset-x-4 top-16",
  *    sibling of the ResultCard, visible only in story phase after reveal
  *  - map wrapper: data-map-mode="full"|"scout" (proposed), data-zoom,

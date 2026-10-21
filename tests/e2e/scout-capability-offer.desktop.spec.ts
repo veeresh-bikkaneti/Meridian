@@ -27,6 +27,8 @@ import {
   APP_NO_IDLE,
 } from "./helpers";
 import {
+  mapModeButton,
+  mapModeSwitch,
   readMapMode,
   readStoredMapMode,
   seedManualMode,
@@ -63,6 +65,75 @@ test("probe-weak → silent scout at boot (auto record, no dialog, no accepted f
   // The lighter trail actually mounts when a run starts.
   await startGlobeRun(page);
   await expect.poll(() => readMapMode(page), { timeout: 60_000 }).toBe("scout");
+  await page.close();
+});
+
+test("weak boot: home shows the auto-switch note + Scout indicator; flipping AT HOME costs no run (Block C)", async ({
+  context,
+}) => {
+  // No spoof: weak device (SwiftShader probe), auto-switch unsuppressed.
+  const page = await context.newPage();
+  await page.goto(APP_NO_IDLE);
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+
+  // Silent ≠ invisible: the one-time note says what happened, and the
+  // indicator shows the current mode — both reachable without a game.
+  const note = page.getByTestId("scout-auto-notice");
+  await expect(note).toBeVisible({ timeout: 10_000 });
+  await expect(note).toContainText("You're on Scout Map");
+  const indicator = page.getByTestId("map-mode-indicator");
+  await expect(indicator).toHaveAttribute("data-mode", "scout");
+  await expect(indicator).toContainText("Scout Map");
+
+  // Flip back from the Home control. The popover carries NO
+  // game-ending warning here — there is no game to end.
+  await mapModeButton(page).click();
+  await expect(page.getByTestId("map-mode-warning")).toHaveCount(0);
+  await expect(mapModeSwitch(page)).toHaveAttribute("aria-checked", "true");
+  await mapModeSwitch(page).click();
+
+  // A manual record was written and applied immediately; the boot
+  // note retired (the player's own choice superseded it); the
+  // announcement used the home wording (no "back home" clause).
+  await expect
+    .poll(() => readStoredMapMode(page), { timeout: 10_000 })
+    .toMatchObject({ mode: "full", source: "manual" });
+  await expect(indicator).toHaveAttribute("data-mode", "full");
+  await expect(note).toHaveCount(0);
+  await expect(page.getByTestId("map-mode-announcer")).toHaveText(
+    "Scout Map off — your next game uses the full map",
+  );
+
+  // No run was ever started, so nothing was discarded en route — the
+  // player is still on Home, and the next game builds the full map.
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible();
+  await startGlobeRun(page);
+  expect(await readMapMode(page)).toBe("full");
+  await expect(starfield(page)).toHaveCount(1);
+  await page.close();
+});
+
+test("capable boot: no auto-switch note, indicator reads Full map (Block C)", async ({
+  context,
+}) => {
+  await spoofCapableDevice(context);
+  const page = await context.newPage();
+  await page.goto(APP_NO_IDLE);
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+
+  // Nothing switched, so nothing is announced: no note, a Full
+  // indicator, and no record written.
+  await expect(page.getByTestId("scout-auto-notice")).toHaveCount(0);
+  const indicator = page.getByTestId("map-mode-indicator");
+  await expect(indicator).toHaveAttribute("data-mode", "full");
+  await expect(indicator).toContainText("Full map");
+  expect(await readStoredMapMode(page)).toBeNull();
   await page.close();
 });
 

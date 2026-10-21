@@ -13,9 +13,18 @@ Owner: **"Auto-switch silently on weak devices (my decision stands)"** —
 
 At boot, if no stored record stands, the device is qualified in order:
 prior map-attributed crash → WebGL probe → low memory. A scout result
-starts the session in Scout Map immediately — no dialog, no blocking
-notice (the in-game toggle shows the state) — and is stored as an AUTO
-record:
+starts the session in Scout Map immediately — no dialog, nothing
+blocks — and is stored as an AUTO record:
+
+Silent is not invisible (pipeline Block C, owner-approved 2026-10-20:
+"Yes — small notice + visible Scout indicator"): a boot that
+auto-switches shows a one-time, dismissible note on Home ("You're on
+Scout Map — the lighter map, picked for this device…"), and Home
+carries the same map-mode toggle as the game, beside a visible
+indicator of the current mode ("Scout Map" / "Full map"). Flipping
+the toggle on Home writes a manual record and applies it at once —
+no game is started or discarded, because there is no game yet. The
+in-game toggle keeps the force-home behavior below.
 
 | Event | Stored as | Decays? |
 | --- | --- | --- |
@@ -41,9 +50,16 @@ current game to the home screen — the session (score, banked places)
 survives, but this is NOT the Editions exit: the Editions button keeps
 the persisted run record (switching editions only pauses the run),
 while the toggle removes that record, so the in-progress run is
-discarded for good. The popover copy warns before the tap: "Switching
-sends you back home — this game ends here. Your next game uses the new
-map."
+discarded for good. The popover warns before the tap — the warning
+prints ABOVE the switch at reading size, not as fine print below it
+(pipeline Block B, owner-approved 2026-10-20: "Yes — make the
+warning unmissable + home notice"): "Switching sends you back home —
+this game ends here. Your next game uses the new map." The old
+explainer line ("Same game, same rounds") is gone — continuity
+wording over a game-ending action was dishonest. And the landing is
+acknowledged: Home shows a dismissible notice that the map was
+switched, that the next game uses the new map, and that the score
+was kept (the session surviving could otherwise read as lost).
 
 Test seam: the boot auto-switch is suppressed only by
 `window.__meridianSuppressScoutOffer === true` (set by the e2e harness

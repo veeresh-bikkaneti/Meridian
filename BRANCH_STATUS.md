@@ -219,12 +219,78 @@ PASSED**; `build:pages` green; scout E2E family (9 spec files)
 **38/38 passed** (`--workers=1`, Ko-fi env set) — incl. the new
 Block A pin (toggle spec now 6 tests).
 
+## Pipeline round 1 — Blocks B + C cured (owner-approved scope 2026-10-20)
+
+Owner approvals, verbatim, 2026-10-20:
+
+- Block B: "Yes — make the warning unmissable + home notice"
+- Block C: "Yes — small notice + visible Scout indicator"
+
+**Block B — the warning is unmissable, the copy is honest, home says
+what happened.** In `map-mode-toggle.tsx` the game-ending warning moved
+ABOVE the switch row at the explainer's size and contrast
+(`text-xs text-white/70`, `data-testid="map-mode-warning"`); it used to
+sit below the switch at 11px / 50% white. The explainer no longer says
+"Same game, same rounds" over a run-ending action — it now reads "A
+lighter outline map — easier on your phone." After a manual switch
+lands the player home, a dismissible notice (the idle-ended-note
+pattern, `data-testid="map-switched-notice"`) states the switch and the
+kept score: "You switched to Scout Map — your next game uses Scout Map.
+Your score is kept." (full-map twin in `scout-copy.ts`). The Block A
+announcer and this notice are siblings: the announcer speaks the moment
+for screen readers, the notice is the persistent visual record; both
+draw their words from `scout-copy.ts`.
+
+**Block C — silent is not invisible.** When boot silently applies
+Scout from a fresh qualification (no stored record), Home now shows a
+small dismissible note (`data-testid="scout-auto-notice"`): "You're on
+Scout Map — the lighter map, picked for this device so the game runs
+well. You can change it with the map button on this page." Stored-record
+boots and seam-suppressed boots do not show it. Home also hosts the map
+control itself: `MapModeToggle` gains a `context` prop, and on Home
+(`context="home"`) it sits beside the sound toggle with a visible mode
+pill (`data-testid="map-mode-indicator"`, "Scout Map" / "Full map").
+Picking a mode at home writes the manual record and applies at once —
+no run exists, so nothing is discarded and the popover shows no
+game-ending warning there; the announcer speaks "Scout Map off — your
+next game uses the full map" (home wording, also in `scout-copy.ts`).
+In-Play behavior is unchanged (force-home + warning). Design judgments,
+recorded: the home popover stays open after a flip so the switch
+visibly flips as feedback; the home notices render in the idle-note
+in-flow stack (with the other Home notices), not as the fixed dark
+toast the accident paths use.
+
+E2E pins added: popover DOM order (warning before the switch,
+`DOCUMENT_POSITION_FOLLOWING`) + the switched notice naming the kept
+score (toggle spec); weak-device boot shows the auto note + Scout
+indicator and a home flip writes the manual record, clears the note,
+and the next run builds full — no run discarded; capable-device boot
+shows no note and a Full indicator (capability spec). Docs updated:
+`docs/scout-offer-policy.md` and handbook ch06 §4 state the final
+behavior; `scout-copy.ts` remains the single copy home.
+
+Cure gates (B+C tip): `tsc` clean; `npm test` scripts **799 (790 pass /
+9 skip / 0 fail)** + src **1363 pass / 0 fail**; lint-cards **GATE
+PASSED**; `build:pages` green. Scout E2E family: the combined run under
+heavy VM load (load avg 7–12, other crews active) finished **35 passed
+/ 7 failed** — every failure a known `startGlobeRun`/`commitPin`
+pacing predicate, none at a new assertion. Adjudicated by standalone
+re-runs: capability-offer **10/10** (both new Block C tests pass),
+toggle **8/8** across re-runs (Block A pin + both new Block B tests
+pass), offer **4/4**, switch-note **6/6** (the 360px width test passes
+solo). One test remains environment-bound: `scout-throttled` (6× CPU
+throttle stacked on the loaded VM) failed twice solo at the `commitPin`
+20s predicate (helpers.ts:440) AFTER its boot/auto-switch assertions
+passed; it passed in the round-1 panel family run at the previous tip,
+and this cure touches no gameplay code — the re-vote run should
+re-exercise it.
+
 ## Ready to merge?
 
-**NO — owner's review pipeline + merge word.** Block A is cured
-above; Blocks B and C still await the owner's design-scope call,
-and the cured tip needs its panel re-vote. Nobody merges without
-the owner's word. (Expect a merge-time rebase: this branch is based
-on `89e474c` and a parallel hint-default build may land first — the
-surfaces are disjoint.)
+**NO — panel re-vote + owner's merge word.** Blocks A, B and C are
+cured above; the cured tip has not been re-voted. Per the owner's
+rule, the panel re-votes the final tip; merge only on READY + his
+per-PR word. Nobody merges without the owner's word. (Expect a
+merge-time rebase: this branch is based on `89e474c` and a parallel
+hint-default build may land first — the surfaces are disjoint.)
 

@@ -895,6 +895,24 @@ export function GameApp() {
    */
   const homeHeadingRef = useRef<HTMLHeadingElement | null>(null);
   const landHomeFocusRef = useRef(false);
+  /**
+   * The VISIBLE sibling of the announcement above (Block B cure): when
+   * a manual switch lands the player home, a dismissible notice in
+   * Home's notice slot (the idle note's pattern) records what happened
+   * — mode switched, next game uses the new map, score kept. Holds the
+   * mode that was switched TO; null = no notice. The announcement is
+   * spoken once and gone; this stays until dismissed.
+   */
+  const [mapSwitchedNote, setMapSwitchedNote] = useState<MapMode | null>(null);
+  /**
+   * Block C cure: set once by the boot effect when a FRESH
+   * qualification silently auto-switches this boot to Scout, so Home
+   * can show the non-blocking "You're on Scout Map" note for that
+   * boot. A stored-record boot does not set it (nothing new happened),
+   * and a manual flip from the Home control clears it (the player has
+   * taken over; the "picked for this device" note is stale).
+   */
+  const [autoScoutNote, setAutoScoutNote] = useState(false);
 
   /**
    * Apply a runtime auto-switch: persist (Q3) + stamp crash reports +
@@ -1157,6 +1175,9 @@ export function GameApp() {
           }
           setReportMapMode("scout");
           setMapMode("scout");
+          // Block C: silent is not invisible — flag the one-time
+          // non-blocking home note for this boot's auto-switch.
+          setAutoScoutNote(true);
         } else {
           setReportMapMode("full");
         }
@@ -1200,6 +1221,8 @@ export function GameApp() {
     setMapModeAnnouncement(
       mode === "scout" ? SCOUT_COPY.toggleAnnounceOn : SCOUT_COPY.toggleAnnounceOff,
     );
+    // Block B: the visible landing notice (the announcement's sibling).
+    setMapSwitchedNote(mode);
     landHomeFocusRef.current = true;
     setStartError(null);
     clearDrop();
@@ -1211,6 +1234,27 @@ export function GameApp() {
     setRun(null);
     setTutorial(null);
     setMenu(null);
+  }, []);
+
+  /**
+   * The same toggle, hosted on Home (Block C cure): the player can
+   * see the current mode and flip it WITHOUT starting a game. No run
+   * exists here, so there is nothing to force home FROM and nothing
+   * is discarded: write the manual record (a manual choice stands
+   * forever, like any manual toggle), apply the mode immediately —
+   * the next game builds its map with it — announce it on the hoisted
+   * region (home wording: no "back home" clause), and retire the
+   * boot auto-switch note, whose "picked for this device" framing the
+   * player's own choice has superseded.
+   */
+  const handleHomeMapMode = useCallback((mode: MapMode) => {
+    writeStoredMapMode(mode, "manual");
+    setReportMapMode(mode);
+    setMapMode(mode);
+    setMapModeAnnouncement(
+      mode === "scout" ? SCOUT_COPY.homeAnnounceOn : SCOUT_COPY.homeAnnounceOff,
+    );
+    setAutoScoutNote(false);
   }, []);
 
   // Block A: land focus on the home heading after a manual switch's
@@ -1948,6 +1992,43 @@ export function GameApp() {
     </div>
   ) : null;
 
+  // Block B: shown on the home screen after a manual map switch lands
+  // the player there — the deliberate switch gets at least the visible
+  // acknowledgement the idle kill above already had. Same pattern and
+  // slot as the idle notice; the text adds the fact the popover
+  // warning could not carry: the score was kept.
+  const mapSwitchedNotice = mapSwitchedNote ? (
+    <div
+      role="status"
+      data-testid="map-switched-notice"
+      className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-line bg-surface p-4 text-sm text-fg"
+    >
+      <p>
+        {mapSwitchedNote === "scout"
+          ? SCOUT_COPY.switchedNoticeOn
+          : SCOUT_COPY.switchedNoticeOff}
+      </p>
+      <Button type="button" variant="secondary" onClick={() => setMapSwitchedNote(null)}>
+        Dismiss
+      </Button>
+    </div>
+  ) : null;
+
+  // Block C: shown on the home screen when THIS boot silently
+  // auto-switched to Scout — non-blocking, dismissible, same slot.
+  const autoScoutNotice = autoScoutNote ? (
+    <div
+      role="status"
+      data-testid="scout-auto-notice"
+      className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-line bg-surface p-4 text-sm text-fg"
+    >
+      <p>{SCOUT_COPY.autoSwitchNote}</p>
+      <Button type="button" variant="secondary" onClick={() => setAutoScoutNote(false)}>
+        Dismiss
+      </Button>
+    </div>
+  ) : null;
+
   if (menu?.kind === "countries") {
     // Only countries with a playable pool — never a dead end.
     const regions = COUNTRIES.filter((country) => poolSizeFor("country", country.id) > 0);
@@ -2071,8 +2152,21 @@ export function GameApp() {
       ageBand={ageBand}
       onGrownUpOpen={openAgeSettings}
       headingRef={homeHeadingRef}
+      mapModeControl={
+        // Block C: the map-mode control lives on Home too, beside a
+        // visible indicator of the current mode — Scout is seeable and
+        // reversible without starting (and discarding) a game.
+        <span className="inline-flex items-center gap-2">
+          <MapModeToggle context="home" mapMode={mapMode} onSelect={handleHomeMapMode} />
+          <span className="hv5-pill" data-testid="map-mode-indicator" data-mode={mapMode}>
+            {mapMode === "scout" ? "Scout Map" : "Full map"}
+          </span>
+        </span>
+      }
       notice={
         <>
+          {mapSwitchedNotice}
+          {autoScoutNotice}
           {idleNotice}
           {loadNotice}
         </>
@@ -2145,6 +2239,7 @@ function Choose({
   ageBand,
   onGrownUpOpen,
   headingRef,
+  mapModeControl,
 }: {
   onState: (e: ReactMouseEvent) => void;
   onCountry: (e: ReactMouseEvent) => void;
@@ -2173,7 +2268,11 @@ function Choose({
   onGrownUpOpen: () => void;
   /** Ref for the home h1 — GameApp moves focus to it when a manual
    * Scout Map switch lands the player home (Block A cure). */
-  headingRef?: RefObject<HTMLHeadingElement | null>;}) {
+  headingRef?: RefObject<HTMLHeadingElement | null>;
+  /** The map-mode toggle + current-mode indicator, hosted in the
+   * hero's top row (Block C cure). GameApp owns the mode state and
+   * the handlers; Choose only places the control. */
+  mapModeControl?: ReactNode;}) {
   // GeoDetective progress for the edition card: the resume variant and the
   // streak line. Read on mount (the menu remounts when the loop screen
   // closes, so this is always fresh on return).
@@ -2345,6 +2444,7 @@ function Choose({
             </p>
             <CometEmblem />
             <SoundToggle testId="sound-toggle" className="atlas-sound-toggle" />
+            {mapModeControl}
             {/* Storyteller banner host (owner directive 2026-10-09): the
                 figure sits in the hero beside the branding — always visible,
                 mobile and desktop. The greeting rides in a popover below. */}

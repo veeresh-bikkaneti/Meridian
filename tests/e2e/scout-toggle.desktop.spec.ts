@@ -243,6 +243,55 @@ test("the session survives the trip home (banked places keep their score)", asyn
   expect(after.ended).toBe(false);
 });
 
+test("popover: the game-ending warning prints ABOVE the switch (Block B)", async ({
+  page,
+}) => {
+  await page.goto(APP_NO_IDLE);
+  await startGlobeRun(page);
+
+  await mapModeButton(page).click();
+  const warning = page.getByTestId("map-mode-warning");
+  await expect(warning).toBeVisible({ timeout: 10_000 });
+  await expect(warning).toHaveText(
+    "Switching sends you back home — this game ends here. Your next game uses the new map.",
+  );
+
+  // DOM order is the contract: the consequence precedes the control
+  // that ends the game (pre-cure the warning sat BELOW the switch in
+  // 11px/50% fine print). DOCUMENT_POSITION_FOLLOWING (4) set on the
+  // switch means the switch comes after the warning in the document.
+  const switchFollowsWarning = await warning.evaluate((el) => {
+    const sw = document.querySelector('[role="switch"]');
+    if (!sw) return false;
+    return (el.compareDocumentPosition(sw) & Node.DOCUMENT_POSITION_FOLLOWING) !== 0;
+  });
+  expect(switchFollowsWarning).toBe(true);
+});
+
+test("after an in-game switch, home shows the switched notice naming the kept score (Block B)", async ({
+  page,
+}) => {
+  await page.goto(APP_NO_IDLE);
+  await startGlobeRun(page);
+
+  await flipMapModeToggle(page);
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+
+  // The deliberate switch gets a visible record on Home — mode
+  // switched, next game on the new map, and the score was KEPT (the
+  // session survives; pre-cure the landing showed nothing at all).
+  const notice = page.getByTestId("map-switched-notice");
+  await expect(notice).toBeVisible({ timeout: 10_000 });
+  await expect(notice).toContainText("You switched to Scout Map");
+  await expect(notice).toContainText("Your score is kept.");
+
+  // Dismissible, like the idle notice whose pattern it reuses.
+  await notice.getByRole("button", { name: "Dismiss" }).click();
+  await expect(notice).toHaveCount(0);
+});
+
 test("manual toggle beats the weak-device probe (no demotion on override)", async ({
   context,
 }) => {
