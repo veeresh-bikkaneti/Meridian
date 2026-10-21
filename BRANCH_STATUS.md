@@ -1,8 +1,8 @@
 # BRANCH_STATUS — fix/154-seam-test-only (issue #154 item 1)
 
-**State: IN PROGRESS. Ready = NO — the full panel pipeline and the
-owner's merge word are still owed** (standing rule: the panel approves
-the final tip itself).
+**State: BUILD COMPLETE, all builder gates green (below). Ready = NO —
+the full panel pipeline and the owner's merge word are still owed**
+(standing rule: the panel approves the final tip itself).
 
 Base: `origin/main 33a28fe`. Removes the production test seam
 `window.__meridianSuppressScoutOffer` (issue #154 item 1 — the owner's
@@ -76,17 +76,51 @@ Chosen: the harness now fakes the *device*, not the decision.
 
 - [x] Census (above)
 - [x] Design chosen + recorded (this file)
+- [x] game-app.tsx: seam read + comment removed (`effcd43`)
+- [x] helpers.ts: capable-device spoof is the serve default (single
+      implementation, moved from scout-helpers.ts, which re-exports it);
+      the three auto-switch specs use `{ spoofCapableDevice: false }`;
+      new discriminating spec (`2aef86d`)
+- [x] capability.test.ts pin inverted
+- [x] docs/scout-offer-policy.md "Test seam" paragraph rewritten (`c2f1fbb`)
+
+## Gates (builder-run at the branch tip)
+
+- `npx tsc --noEmit` — clean
+- `npm test` — scripts suite + src suite green (src 1368 pass / 0 fail,
+  same count as main)
+- `node scripts/lint-cards.mjs` — GATE PASSED
+- `npm run build:pages` (Ko-fi env set) — green
+- **Bundle proof:** `grep -r __meridianSuppressScoutOffer dist/client/`
+  → **0 hits** (control: main's built bundle in a sibling worktree
+  contains the seam in 1 file, so the grep discriminates)
+- E2E `--workers=1`, Ko-fi env, against the built artifact:
+  - New pair `scout-harness-suppression.desktop.spec.ts` — **2/2 pass**
+    (default serve boots full on the weak VM; opted-out serve
+    auto-switches — the pair cannot pass vacuously)
+  - Scout family + GeoDetective batch (13 files, 73 tests) — **72/73**;
+    the one failure (geodetective-unlabeled-tap, "Guess Open Water?"
+    dialog wait > 15 s under full-batch load) **passed 2/2 on solo
+    re-run** — the known GeoDetective dialog-wait pacing flake, not
+    this change (boot qualification is the only production delta, and
+    GeoDetective does not use it)
+
+## Design risk for the panel
+
+- The serve-default spoof also sets `navigator.deviceMemory = 8` for
+  EVERY spec (previously only Scout specs spoofed). Other readers of
+  deviceMemory: confetti's low-end particle cap and home-globe's
+  low-memory fallback (both treat 8 as capable — the same reading the
+  real VM's Chromium already reports, capped at 8) and observability's
+  device stamp. The full Scout + GeoDetective batch above ran under
+  the new default; a full-suite E2E pass remains the panel's to run.
+- Init-script ordering: the serve-default spoof is registered when
+  `serveBuiltArtifact` is called; a spec that calls
+  `spoofLowMemoryDevice` afterwards still wins for deviceMemory
+  (configurable getter, later script redefines it) — pinned by the
+  low-memory test in scout-capability-offer passing in the batch.
 
 ## Pending
 
-- [ ] game-app.tsx: seam read + comment removed
-- [ ] helpers.ts: capable-device spoof becomes the serve default;
-      scout-helpers.ts imports it from helpers (single implementation)
-- [ ] The three auto-switch specs: option renamed to
-      `{ spoofCapableDevice: false }`
-- [ ] capability.test.ts pin inverted; new E2E suppression spec
-- [ ] docs/scout-offer-policy.md "Test seam" paragraph rewritten
-- [ ] Gates: tsc clean · npm test green · lint-cards GATE PASSED ·
-      build:pages green · dist grep for the seam name = 0 hits ·
-      Scout E2E family + GeoDetective specs green (--workers=1)
-- [ ] PR opened; panel pipeline; owner merges on his word
+- [ ] Panel pipeline (full) on the final tip
+- [ ] Owner's merge word
