@@ -16,13 +16,17 @@
  * entry in dist/server. `src/start.ts` adds the shared security headers to
  * worker-rendered responses, so:
  *
- *   - /api/contact is the one response only Worker code can produce (the
- *     handler always answers JSON), so it is the primary evidence: if it
+ *   - A POST to /api/contact with a bad Origin is the primary evidence (the
+ *     owner's probe, 2026-10-21). It is refused before it can reach any sink,
+ *     so it delivers nothing even on a wired worker. 403 with the handler's
+ *     JSON body = the route is live and answered by Worker code; 404, SPA
+ *     HTML or 405 = it is not. If that response
  *     carries EVERY header in src/lib/security-headers.ts, the start.ts
  *     middleware runs. A page like /privacy could be answered by the assets
  *     layer or an SPA fallback (which get headers from public/_headers), so
  *     pages alone never prove it; they are checked too, because those are
- *     what kids load.
+ *     what kids load. GET /api/contact is recorded for information only
+ *     (404 on the pre-#207 build, 405 on #207, {sink} once activation lands).
  *   - a static file (/flags.json) is the control: it carries the headers
  *     from public/_headers either way.
  *   - static has them but /api/contact does not → start.ts is not in the
@@ -40,10 +44,20 @@ import { SECURITY_HEADERS } from "../src/lib/security-headers.ts";
 
 /** Paths probed. Rendered = produced by Worker code; static = from the assets layer. */
 export const PROBES = [
-  { path: "/privacy", kind: "rendered" },
-  { path: "/", kind: "rendered" },
-  { path: "/api/contact", kind: "rendered", note: "GET: handler answer vs bare 404" },
-  { path: "/flags.json", kind: "static", note: "control: headers from _headers" },
+  { id: "page-privacy", path: "/privacy", kind: "rendered" },
+  { id: "page-root", path: "/", kind: "rendered" },
+  {
+    id: "api-post",
+    path: "/api/contact",
+    kind: "rendered",
+    method: "POST",
+    note: "POST with a bad Origin, refused before any sink: 403 JSON = route live",
+    // A refused-origin POST with no honeypot never reaches a sink, even when wired.
+    headers: { origin: "https://probe.invalid", "content-type": "application/json" },
+    body: JSON.stringify({ topic: "bug", message: "entry probe (refused before delivery)" }),
+  },
+  { id: "api-get", path: "/api/contact", kind: "rendered", note: "GET: information only" },
+  { id: "static-flags", path: "/flags.json", kind: "static", note: "control: headers from _headers" },
 ];
 
 /** Headers worth recording as evidence: the policy headers plus how the response was served. */
@@ -63,7 +77,12 @@ export async function probeEntry({ origin, fetchFn = fetch }) {
   const rows = [];
   for (const p of PROBES) {
     try {
-      const res = await fetchFn(`${base}${p.path}`, { method: "GET", redirect: "manual", headers: { accept: p.path === "/flags.json" ? "application/json" : "text/html" } });
+      const res = await fetchFn(`${base}${p.path}`, {
+        method: p.method ?? "GET",
+        redirect: "manual",
+        headers: p.headers ?? { accept: p.path === "/flags.json" ? "application/json" : "text/html" },
+        ...(p.body === undefined ? {} : { body: p.body }),
+      });
       const headers = Object.fromEntries([...res.headers.entries()].map(([k, v]) => [k.toLowerCase(), v]));
       const missing = [];
       const wrong = [];
@@ -72,9 +91,19 @@ export async function probeEntry({ origin, fetchFn = fetch }) {
         if (got === undefined) missing.push(name);
         else if (norm(got) !== norm(want)) wrong.push(name);
       }
-      rows.push({ ...p, status: res.status, headers, missing, wrong, error: null });
+      // Only the handler's own error string is kept from a body, never page content.
+      let bodyError = null;
+      if (p.id === "api-post" && /^application\/json/i.test(headers["content-type"] ?? "")) {
+        try {
+          const j = await res.json();
+          bodyError = typeof j?.error === "string" ? j.error : null;
+        } catch {
+          bodyError = null;
+        }
+      }
+      rows.push({ ...p, status: res.status, headers, missing, wrong, bodyError, error: null });
     } catch (err) {
-      rows.push({ ...p, status: null, headers: {}, missing: [], wrong: [], error: err instanceof Error ? err.message : String(err) });
+      rows.push({ ...p, status: null, headers: {}, missing: [], wrong: [], bodyError: null, error: err instanceof Error ? err.message : String(err) });
     }
   }
   return { base, rows, ...judge(rows) };
@@ -84,13 +113,14 @@ const healthy = (r) => r.error === null && r.status !== null && r.status < 400;
 const hasAll = (r) => healthy(r) && r.missing.length === 0 && r.wrong.length === 0;
 
 /**
- * `/api/contact` is the one response only Worker code can produce: the
- * handler always answers JSON (200 readiness, 405 on the pre-activation
- * build). A bare 404 or an HTML page there means the route is not mounted or
- * a static/SPA fallback answered, so it proves nothing about the server entry.
+ * The refused-origin POST is the one response only Worker code can produce:
+ * the handler answers 403 with a JSON body {"error":"origin not allowed"}. A
+ * bare 404, a 405, an HTML page or a Cloudflare error page there means the
+ * route is not live or a static/SPA fallback answered, so it proves nothing
+ * about the server entry.
  */
 const isWorkerProduced = (r) =>
-  r.error === null && r.status !== null && r.status !== 404 && r.status < 500 && /^application\/json/i.test(r.headers["content-type"] ?? "");
+  r.error === null && r.status === 403 && /^application\/json/i.test(r.headers["content-type"] ?? "") && r.bodyError === "origin not allowed";
 
 /**
  * Turn raw rows into the A1 answer. Pure, so it is unit-tested.
@@ -98,7 +128,8 @@ const isWorkerProduced = (r) =>
  * Verdicts (escalate = the owner must hear about it as its own item):
  *   - any request failed or answered 4xx/5xx on a page, or the control is
  *     unhealthy                          → INCONCLUSIVE
- *   - /api/contact not worker-produced  → INCONCLUSIVE (cannot tell the entry)
+ *   - the refused POST is not the handler's 403 JSON → INCONCLUSIVE (route not
+ *                                         live; cannot tell the entry)
  *   - api + both pages carry every header → LIVE
  *   - api carries them, a page does not → ESCALATE (middleware runs for the
  *                                         API but not for the HTML kids load)
@@ -109,10 +140,9 @@ const isWorkerProduced = (r) =>
 export function judge(rows) {
   const pages = rows.filter((r) => r.kind === "rendered" && r.path !== "/api/contact");
   const control = rows.find((r) => r.kind === "static");
-  const api = rows.find((r) => r.path === "/api/contact");
+  const api = rows.find((r) => r.id === "api-post");
   const apiMounted = Boolean(api) && isWorkerProduced(api);
   const staticOk = Boolean(control) && hasAll(control);
-  // The API may legitimately answer 405 (pre-activation handler); only its headers matter.
   const apiOk = apiMounted && api.missing.length === 0 && api.wrong.length === 0;
   const pagesOk = pages.length > 0 && pages.every(hasAll);
   const unhealthy = rows.some((r) => r.error !== null) || pages.some((r) => !healthy(r)) || !control || !healthy(control) || !api || api.error !== null;
@@ -123,7 +153,7 @@ export function judge(rows) {
   if (unhealthy) {
     verdict = "INCONCLUSIVE — a request failed or a page/control answered an error; fix that and re-run";
   } else if (!apiMounted) {
-    verdict = "INCONCLUSIVE — /api/contact did not answer like the contact handler (404 or not JSON), so no response is known to come from Worker code; the live build may predate #207";
+    verdict = "INCONCLUSIVE — a POST to /api/contact with a bad Origin did not get the handler's 403 JSON (404, 405, HTML or another error), so no response is known to come from Worker code; the route is not live (the live build may predate #207)";
   } else if (renderedOk) {
     verdict = "start.ts middleware IS live: the worker-produced /api/contact and the rendered pages all carry every security header";
   } else if (apiOk) {
@@ -146,14 +176,14 @@ export function exitCodeFor(result) {
 /** Raw evidence as a Markdown block, for the config record and BRANCH_STATUS.md. */
 export function renderReport(result) {
   const out = [`Probe A1 against ${result.base} — ${new Date().toISOString()}`, "", `**Verdict:** ${result.verdict}`, ""];
-  out.push(`- /api/contact answered like the contact handler (JSON, not 404): ${result.apiMounted ? "yes" : "NO"}`, "");
+  out.push(`- POST /api/contact (bad Origin) got the handler's 403 JSON (route live): ${result.apiMounted ? "yes" : "NO"}`, "");
   for (const r of result.rows) {
-    out.push(`### GET ${r.path}  (${r.kind}${r.note ? `, ${r.note}` : ""})`);
+    out.push(`### ${r.method ?? "GET"} ${r.path}  (${r.kind}${r.note ? `, ${r.note}` : ""})`);
     if (r.error) {
       out.push(`request failed: ${r.error}`, "");
       continue;
     }
-    out.push(`status ${r.status}; missing: ${r.missing.join(", ") || "none"}; wrong value: ${r.wrong.join(", ") || "none"}`, "```");
+    out.push(`status ${r.status}${r.bodyError ? ` (error: ${r.bodyError})` : ""}; missing: ${r.missing.join(", ") || "none"}; wrong value: ${r.wrong.join(", ") || "none"}`, "```");
     // Allowlist, not a dump: the report is pasted into committed files, so a
     // set-cookie or debug header from the live worker must never land in git.
     for (const [k, v] of Object.entries(r.headers).sort()) if (REPORTED_HEADERS.has(k)) out.push(`${k}: ${v}`);

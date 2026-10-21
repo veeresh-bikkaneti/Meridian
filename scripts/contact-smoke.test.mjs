@@ -165,3 +165,55 @@ test("a honeypot post that Discord actually received is not counted as delivered
   const r = await smoke({ CONTACT_DISCORD_WEBHOOK_URL: WEBHOOK });
   assert.equal(r.delivered, r.discordPosts.length);
 });
+
+// --- Parked mode (the owner's first smoke, before any secret exists) ---------
+
+import { spawnSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
+
+async function parkedRun(env, rewrite) {
+  resetContactStateForTests();
+  const w = workerWith(env);
+  const posts = [];
+  const wrapped = async (input, init) => {
+    if ((init?.method ?? "GET") === "POST") posts.push(1);
+    const res = await w.fetchFn(input, init);
+    return (rewrite && (await rewrite({ res, init }))) || res;
+  };
+  try {
+    const out = await runSmoke({ origin: ORIGIN, mode: "parked", fetchFn: wrapped, sleep: async () => {}, runId: "pk" });
+    return { ...out, posts: posts.length, discordPosts: w.discordPosts };
+  } finally {
+    w.restore();
+  }
+}
+
+test("parked mode against a parked worker: 403 / 413 / 429 / honeypot / NoopSink cases all pass and nothing reaches Discord", async () => {
+  const r = await parkedRun({});
+  assert.deepEqual(failed(r), []);
+  assert.equal(r.discordPosts.length, 0);
+  const names = r.results.map((x) => x.name);
+  for (const n of ["readiness: GET /api/contact reports the noop sink", "parked: a valid POST is accepted and discarded (stored:false)", "refusal: a real message with no Origin → 403", "refusal: an over-size body → 413"]) assert.ok(names.includes(n), n);
+  assert.ok(names.some((n) => n.startsWith("rate limit:")));
+  assert.equal(exitCodeFor(r.results), 0);
+});
+
+test("parked mode against a WIRED worker aborts before any POST, so it can never put test messages in the real channel", async () => {
+  const r = await parkedRun({ CONTACT_DISCORD_WEBHOOK_URL: WEBHOOK });
+  assert.ok(failed(r).includes("readiness: GET /api/contact reports the noop sink"));
+  assert.equal(r.posts, 0);
+  assert.equal(r.discordPosts.length, 0);
+  assert.equal(exitCodeFor(r.results), 1);
+});
+
+test("parked mode fails if the 'parked' worker claims it stored the message", async () => {
+  const r = await parkedRun({}, ({ res, init }) => init?.method === "POST" && !String(init.body).includes("website") && res.status === 200 && json(200, { ok: true, stored: true }));
+  assert.ok(failed(r).includes("parked: a valid POST is accepted and discarded (stored:false)"), failed(r).join("|"));
+});
+
+test("CLI: wired mode needs --yes-send-real-messages, --parked excludes it, and neither sends before the check", () => {
+  const SCRIPT = fileURLToPath(new URL("./contact-smoke.mjs", import.meta.url));
+  const run = (...a) => spawnSync(process.execPath, ["--no-warnings", SCRIPT, "--url", "https://example.invalid", ...a], { encoding: "utf8" });
+  assert.equal(run().status, 2);
+  assert.equal(run("--parked", "--yes-send-real-messages").status, 2);
+});

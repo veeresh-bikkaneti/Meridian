@@ -7,6 +7,26 @@ deploy, dashboard change and the final flag flip.
 Governing words (Veeresh, 2026-10-21): **"Adopt B — start the cure round"** —
 ship the scaffolding first, deliver nothing until the chain below is proven.
 
+## Sequence (owner direction, 2026-10-21)
+
+1. #207 finishes its cure round and final panel re-vote, then stops. It merges
+   **on the owner's word only**; no activation code goes into #207's branch.
+2. #207 deploys.
+3. **Probe A1 runs FIRST** (step 1 below), before anything else in this chain.
+4. This branch rebases onto the new `main`, goes through its own full review,
+   and the owner merges it. Only the owner merges.
+5. **Parked smoke** (step 4a): form off, secret not set. 403, 413, 429, honeypot
+   and the NoopSink case.
+6. **Owner sets the secret** (step 3), then the **Discord smoke** (step 4b)
+   against a private channel.
+7. **Owner flips `contactEndpoint`** (step 5).
+
+Before activation the kids' safeguards must be in. **They are not on this
+branch** (see `BRANCH_STATUS.md`): a "don't include personal info" note on the
+form, and stripping email addresses and phone numbers from the message text.
+The grown-up gate already exists (#207). The activation follow-up is owned by
+tinkabot once #207 merges.
+
 ## Where things stand
 
 | Piece | State |
@@ -27,15 +47,21 @@ node --experimental-strip-types scripts/entry-fingerprint-probe.mjs \
   --url https://meridian.knowledgetest.workers.dev
 ```
 
-It fetches two worker-rendered pages (`/privacy`, `/`), `/api/contact`, and a
-static control (`/flags.json`) and compares their headers with
-`src/lib/security-headers.ts`.
+It sends four GETs (`/privacy`, `/`, `/api/contact`, the static `/flags.json`
+control) and **one POST to `/api/contact` with a bad Origin and no honeypot**.
+That POST is refused before it can reach any sink, so it delivers nothing even
+on a wired worker. Headers are compared with `src/lib/security-headers.ts`.
+
+The decisive response is the refused POST: **403 with the handler's JSON body
+(`origin not allowed`)** means the route is live and answered by Worker code;
+404, SPA HTML or 405 means it is not (baseline measured on production before
+#207: no security headers on `/`, `GET /api/contact` = 404).
 
 | Result | Meaning | Next |
 | --- | --- | --- |
-| rendered pages carry every header | `src/start.ts` middleware is live, so TanStack's start entry is serving | continue to step 2 |
-| static control has the headers, rendered pages do not | the Nitro entry is serving; `start.ts` is dead code and the CSP, HSTS and friends are **not** reaching the HTML kids load | **STOP. Escalate to the owner as its own priority item**, ahead of contact wiring. Do not fold it into the wiring PR. |
-| anything failed or even the control lacks the headers | inconclusive | fix connectivity or investigate, re-run. Never treat as green. |
+| the refused POST is the handler's 403 JSON and it and the pages carry every header | `src/start.ts` middleware is live | continue; the wiring below still holds |
+| static control has the headers, the worker's 403 JSON does not | the Nitro entry is serving; `start.ts` is dead code and the CSP, HSTS and friends are **not** reaching the HTML kids load | **STOP. Escalate to the owner as its own priority item**, ahead of contact wiring. Do not fold it into the wiring PR. |
+| the refused POST is not the handler's 403 JSON, a request failed, or even the control lacks the headers | inconclusive | for a 404/405/HTML: the route is not live (build predates #207, or another entry serves) and the wiring design must be revisited. Never treat as green. |
 
 Paste the raw report into `config/cloudflare/meridian.wrangler.toml` (the
 "Probe A1 result" block) and `BRANCH_STATUS.md`. The Reality Checker re-runs
@@ -121,7 +147,23 @@ existence only.
    one exists. One secret, one store. *Readback:* Settings → Secrets and
    variables → Actions no longer lists `CONTACT_DISCORD_WEBHOOK_URL`.
 
-## Step 4 — Smoke (form still OFF)
+## Step 4 — Smoke
+
+### 4a. Parked smoke (before the secret exists; sends nothing anywhere)
+
+```
+node --experimental-strip-types scripts/contact-smoke.mjs \
+  --url https://meridian.knowledgetest.workers.dev --parked [--recovery]
+```
+
+Expects the noop sink and checks: a valid POST is accepted and discarded
+(`stored:false`); honeypot posts return a silent `200` (same-origin, no Origin,
+foreign Origin); a missing or foreign Origin gets `403`; an over-size body gets
+`413`; the rate limit trips with `429` and `Retry-After` (and, with
+`--recovery`, recovers). If the worker turns out to be wired it aborts before
+any POST, so it can never put test messages in the real channel.
+
+### 4b. Discord smoke (after the owner sets the secret; private channel)
 
 ```
 node --experimental-strip-types scripts/contact-smoke.mjs \

@@ -18,8 +18,19 @@ function site({ api = {}, pages = {}, flags = {}, fail = [], perPage = {} } = {}
   const defaults = { headers: true, status: 200, type: "text/html" };
   return async (url, init) => {
     const path = new URL(url).pathname;
+    const method = init?.method ?? "GET";
     if (fail.includes(path)) throw new Error("net down");
-    const base = path === "/api/contact" ? { ...defaults, type: "application/json", ...api } : path === "/flags.json" ? { ...defaults, type: "application/json", ...flags } : { ...defaults, ...pages, ...(perPage[path] ?? {}) };
+    if (path === "/api/contact") {
+      // The handler: POST with a refused Origin -> 403 JSON; GET -> 405 JSON
+      // (#207) . `api.status` overrides both; `api.type`/`api.body` model SPA
+      // HTML or an edge error page.
+      const status = api.status ?? (method === "POST" ? 403 : 405);
+      const type = api.type ?? "application/json";
+      const body = api.body ?? (type === "application/json" ? JSON.stringify({ error: method === "POST" ? "origin not allowed" : "method not allowed" }) : "<html>app</html>");
+      const headers = { "content-type": type, ...(api.headers === false ? {} : SECURITY_HEADERS) };
+      return new Response(body, { status, headers });
+    }
+    const base = path === "/flags.json" ? { ...defaults, type: "application/json", ...flags } : { ...defaults, ...pages, ...(perPage[path] ?? {}) };
     const headers = { "content-type": base.type, ...(base.headers ? SECURITY_HEADERS : {}) };
     return new Response("x", { status: base.status, headers });
   };
@@ -55,7 +66,7 @@ test("API has the headers but one rendered page does not → ESCALATE (mixed pag
 });
 
 test("/api/contact 404 or HTML (route not mounted / SPA fallback) → INCONCLUSIVE even if every other path has headers", async () => {
-  for (const api of [{ status: 404 }, { status: 200, type: "text/html" }]) {
+  for (const api of [{ status: 404 }, { status: 404, type: "text/html" }, { status: 200, type: "text/html" }]) {
     const r = await probe({ api });
     assert.equal(r.renderedOk, false, JSON.stringify(api));
     assert.equal(r.escalate, false);
@@ -65,10 +76,31 @@ test("/api/contact 404 or HTML (route not mounted / SPA fallback) → INCONCLUSI
   }
 });
 
-test("a 405 JSON answer (the pre-activation handler) counts as worker-produced", async () => {
+test("the refused POST must be the handler's own 403 JSON: a 405, a 200, an edge 403 page, or a 403 without the handler's error all mean 'route not live'", async () => {
+  const cases = [
+    { status: 405 },
+    { status: 200 },
+    { status: 403, type: "text/html", body: "<html>blocked</html>" },
+    { status: 403, body: JSON.stringify({ error: "something else" }) },
+    { status: 403, body: "not json at all" },
+  ];
+  for (const api of cases) {
+    const r = await probe({ api });
+    assert.equal(r.apiMounted, false, JSON.stringify(api));
+    assert.equal(r.renderedOk, false, JSON.stringify(api));
+    assert.match(r.verdict, /INCONCLUSIVE/, JSON.stringify(api));
+  }
+});
+
+test("the refused POST sends a bad Origin, carries no honeypot, and GET /api/contact is informational only", async () => {
+  const seen = [];
+  await probeEntry({ origin: "https://w.test", fetchFn: async (u, init) => { seen.push({ u, init }); return site()(u, init); } });
+  const post = seen.find((x) => x.init.method === "POST");
+  assert.equal(post.init.headers.origin, "https://probe.invalid");
+  assert.ok(!("website" in JSON.parse(post.init.body)), "a probe must never carry a honeypot or anything deliverable");
+  // GET 404 (the pre-#207 baseline) does not by itself decide the verdict when the POST is live
   const r = await probe({ api: { status: 405 } });
-  assert.equal(r.apiMounted, true);
-  assert.equal(r.renderedOk, true);
+  assert.equal(r.rows.find((x) => x.id === "api-get").status, 405);
 });
 
 test("a failed request, a 5xx or a 404 on any page, or an unhealthy control → INCONCLUSIVE, never ESCALATE or green", async () => {
@@ -98,27 +130,33 @@ test("no headers anywhere → INCONCLUSIVE (the control is broken)", async () =>
   assert.equal(r.escalate, false);
 });
 
-test("one header with a wrong value counts as not carrying the policy", async () => {
-  const fetchFn = async (url) => {
-    const path = new URL(url).pathname;
-    const h = { ...SECURITY_HEADERS, "content-type": path === "/api/contact" || path === "/flags.json" ? "application/json" : "text/html" };
-    if (path === "/api/contact") h["Content-Security-Policy"] = "default-src *";
-    return new Response("x", { status: 200, headers: h });
+test("one header with a wrong value on the worker response counts as not carrying the policy", async () => {
+  const good = site();
+  const fetchFn = async (url, init) => {
+    const res = await good(url, init);
+    if (new URL(url).pathname === "/api/contact" && init?.method === "POST") {
+      const h = new Headers(res.headers);
+      h.set("content-security-policy", "default-src *");
+      return new Response(await res.text(), { status: res.status, headers: h });
+    }
+    return res;
   };
   const r = await probeEntry({ origin: "https://w.test", fetchFn });
+  assert.equal(r.apiMounted, true, "the route is live, so the only reason to fail is the wrong value");
   assert.equal(r.renderedOk, false);
-  assert.ok(r.rows.find((x) => x.path === "/api/contact").wrong.includes("Content-Security-Policy"));
+  assert.ok(r.rows.find((x) => x.id === "api-post").wrong.includes("Content-Security-Policy"));
 });
 
-test("requests are GETs that do not follow redirects", async () => {
+test("requests do not follow redirects; exactly one is a POST (the refused-origin one)", async () => {
   const seen = [];
   await probeEntry({ origin: "https://w.test", fetchFn: async (u, init) => { seen.push(init); return site()(u, init); } });
-  assert.ok(seen.length === 4 && seen.every((i) => i.method === "GET" && i.redirect === "manual"));
+  assert.ok(seen.length === 5 && seen.every((i) => (i.method === "GET" || i.method === "POST") && i.redirect === "manual"));
+  assert.equal(seen.filter((i) => i.method === "POST").length, 1);
 });
 
 test("judge() is pure over rows and the report notes unmounted API", async () => {
   const r = await probe({ api: { status: 404 } });
-  assert.match(renderReport(r), /answered like the contact handler \(JSON, not 404\): NO/);
+  assert.match(renderReport(r), /route live\): NO/);
   assert.equal(judge([]).renderedOk, false);
 });
 

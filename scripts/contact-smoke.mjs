@@ -2,6 +2,14 @@
 /**
  * contact-smoke.mjs — activation smoke test for POST /api/contact (WI-4).
  *
+ * Two modes, in the owner's order:
+ *   --parked  FIRST, with the secret not set. Expects the noop sink; checks
+ *             403 / 413 / 429 / honeypot and that a valid POST is accepted
+ *             and discarded (stored:false). Sends nothing anywhere, and
+ *             aborts if the worker turns out to be wired.
+ *   (default) AFTER the secret is set, against a private Discord channel.
+ *             Needs --yes-send-real-messages.
+ *
  *   node --experimental-strip-types scripts/contact-smoke.mjs \
  *     --url https://meridian.knowledgetest.workers.dev --yes-send-real-messages [--recovery]
  *
@@ -44,7 +52,9 @@ const MAX_ATTEMPTS = 6;
  * it against an in-process worker (scripts/contact-smoke.test.mjs).
  * Returns [{ name, ok, detail }].
  */
-export async function runSmoke({ origin, fetchFn = fetch, sleep = (ms) => new Promise((r) => setTimeout(r, ms)), recovery = false, runId = randomBytes(4).toString("hex") }) {
+export async function runSmoke({ origin, mode = "wired", fetchFn = fetch, sleep = (ms) => new Promise((r) => setTimeout(r, ms)), recovery = false, runId = randomBytes(4).toString("hex") }) {
+  const parked = mode === "parked";
+  const wantSink = parked ? "noop" : "discord";
   const base = origin.replace(/\/+$/, "");
   const endpoint = `${base}/api/contact`;
   const results = [];
@@ -68,29 +78,34 @@ export async function runSmoke({ origin, fetchFn = fetch, sleep = (ms) => new Pr
   try {
     const res = await fetchFn(endpoint, { method: "GET" });
     const body = await asJson(res);
-    check("readiness: GET /api/contact reports the discord sink", res.status === 200 && body?.sink === "discord", `status ${res.status}, sink ${JSON.stringify(body?.sink)}`);
+    check(`readiness: GET /api/contact reports the ${wantSink} sink`, res.status === 200 && body?.sink === wantSink, `status ${res.status}, sink ${JSON.stringify(body?.sink)}`);
   } catch (err) {
-    check("readiness: GET /api/contact reports the discord sink", false, String(err));
+    check(`readiness: GET /api/contact reports the ${wantSink} sink`, false, String(err));
   }
 
-  // Stop here if the worker is not wired. Everything below sends POSTs, and a
-  // smoke run against a parked, mistyped or wrong-tenant URL must send nothing.
+  // Stop here if the worker is not in the state this mode expects. Everything
+  // below sends POSTs: a wired-mode run against a parked, mistyped or
+  // wrong-tenant URL must send nothing, and a parked-mode run against a
+  // WIRED worker must never push test messages into the real channel.
   if (!results[0].ok) {
     check("aborted: readiness failed, so no messages were sent", true, "nothing was posted");
     return { results, delivered: 0, runId };
   }
 
-  // 2. Delivery — message, then message with a reply-to.
+  // 2. Delivery. Wired: Discord itself must accept the message (stored:true).
+  // Parked: the NoopSink answers 200 with stored:false (accepted, discarded).
   const msg = (extra) => `[smoke ${runId}] activation test, please ignore${extra ?? ""}`;
   {
     const res = await post({ topic: "other", message: msg() });
     const body = await asJson(res);
-    check("delivery: gated POST is stored by Discord", res.status === 200 && body?.ok === true && body?.stored === true, `status ${res.status}, body ${JSON.stringify(body)}`);
+    if (parked) check("parked: a valid POST is accepted and discarded (stored:false)", res.status === 200 && body?.ok === true && body?.stored === false, `status ${res.status}, body ${JSON.stringify(body)}`);
+    else check("delivery: gated POST is stored by Discord", res.status === 200 && body?.ok === true && body?.stored === true, `status ${res.status}, body ${JSON.stringify(body)}`);
   }
   {
     const res = await post({ topic: "other", message: msg(" (with reply-to)"), replyTo: `smoke-${runId}@example.com` });
     const body = await asJson(res);
-    check("delivery: POST with a reply-to is stored by Discord", res.status === 200 && body?.stored === true, `status ${res.status}, body ${JSON.stringify(body)}`);
+    if (parked) check("parked: a valid POST with a reply-to is accepted and discarded", res.status === 200 && body?.stored === false, `status ${res.status}, body ${JSON.stringify(body)}`);
+    else check("delivery: POST with a reply-to is stored by Discord", res.status === 200 && body?.stored === true, `status ${res.status}, body ${JSON.stringify(body)}`);
   }
 
   // 3. Honeypot — silent 200, never delivered, with and without an Origin.
@@ -120,11 +135,11 @@ export async function runSmoke({ origin, fetchFn = fetch, sleep = (ms) => new Pr
 
   // 5. Rate limit — valid posts until the limiter says no.
   let limited = null;
-  let delivered = results.filter((r) => r.name.startsWith("delivery:") && r.ok).length;
+  let delivered = parked ? 0 : results.filter((r) => r.name.startsWith("delivery:") && r.ok).length;
   for (let i = 0; i < MAX_ATTEMPTS && !limited; i++) {
     const res = await post({ topic: "other", message: msg(` rate-limit probe ${i + 1}`) });
     if (res.status === 429) limited = res;
-    else if (res.status === 200 && (await asJson(res))?.stored === true) delivered++;
+    else if (!parked && res.status === 200 && (await asJson(res))?.stored === true) delivered++;
   }
   const retryAfter = Number(limited?.headers.get("retry-after"));
   // The handler's own 429 says "too many messages"; a Cloudflare edge/WAF 429
@@ -137,7 +152,7 @@ export async function runSmoke({ origin, fetchFn = fetch, sleep = (ms) => new Pr
     const res = await post({ topic: "other", message: msg(" recovery") });
     const body = await asJson(res);
     check("rate limit: recovers after Retry-After", res.status === 200, `status ${res.status}`);
-    if (body?.stored === true) delivered++;
+    if (!parked && body?.stored === true) delivered++;
   }
 
   return { results, delivered, runId };
@@ -153,20 +168,30 @@ async function main() {
   const urlAt = args.indexOf("--url");
   const url = urlAt === -1 ? "" : (args[urlAt + 1] ?? "");
   if (!/^(https:\/\/[^/]+|http:\/\/(127\.0\.0\.1|localhost)(:\d+)?)$/.test(url.replace(/\/+$/, ""))) {
-    console.error("usage: contact-smoke.mjs --url https://<origin> --yes-send-real-messages [--recovery]");
+    console.error("usage: contact-smoke.mjs --url https://<origin> (--parked | --yes-send-real-messages) [--recovery]");
     process.exit(2);
   }
-  if (!args.includes("--yes-send-real-messages")) {
+  const parked = args.includes("--parked");
+  if (!parked && !args.includes("--yes-send-real-messages")) {
     console.error(
       "This sends up to 3 REAL messages to the private Discord channel behind that URL.\n" +
-        "Re-run with --yes-send-real-messages once the owner has set the secret and the form is still OFF.",
+        "Re-run with --yes-send-real-messages once the owner has set the secret and the form is still OFF,\n" +
+        "or use --parked to check the 403/413/429/NoopSink behaviour before the secret exists.",
     );
     process.exit(2);
   }
-  const { results, delivered, runId } = await runSmoke({ origin: url, recovery: args.includes("--recovery") });
+  if (parked && args.includes("--yes-send-real-messages")) {
+    console.error("--parked and --yes-send-real-messages contradict each other.");
+    process.exit(2);
+  }
+  const { results, delivered, runId } = await runSmoke({ origin: url, mode: parked ? "parked" : "wired", recovery: args.includes("--recovery") });
   for (const r of results) console.log(`${r.ok ? "PASS" : "FAIL"}  ${r.name}${r.ok ? "" : `  — ${r.detail}`}`);
   const failed = results.filter((r) => !r.ok).length;
   console.log(`\n${results.length - failed}/${results.length} checks passed.`);
+  if (parked) {
+    console.log("Parked mode sent nothing to Discord. Next: the owner sets the secret, then re-run without --parked.");
+    process.exit(exitCodeFor(results));
+  }
   console.log(`In the private Discord channel, look for exactly ${delivered} message(s) starting "[smoke ${runId}]" and confirm by eye:`);
   console.log("  - the layout is right (topic, received time, fenced reply-to, fenced message, retention line)");
   console.log("  - nobody was pinged (no @mentions) and no link previews appeared");
