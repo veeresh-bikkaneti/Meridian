@@ -411,6 +411,12 @@ body:has(.home-v5) {
   grid-template-columns: 0.9fr 1.2fr;
   gap: 22px;
   margin-top: 22px;
+  /* Grid items stretch to the row height by default. The About card is
+     two short paragraphs beside the Journal's three full entries, so
+     stretching painted a tall white card with a void under its text
+     (owner report 2026-10-21: ~1,300–1,800px of empty card at desktop
+     widths). Each card now keeps its own height. */
+  align-items: start;
 }
 .home-v5 .hv5-page h2 {
   margin: 8px 0 10px;
