@@ -1,20 +1,20 @@
 # BRANCH_STATUS — ops/telemetry-phase1-deploy
 
-**State: config change for the owner's merge word — Ready: NO (merge
-word + the coordinated deploy window below are still the owner's).
-The Phase 1 deploy was ATTEMPTED 2026-10-21 on the owner's order
-("Enable deeper observability into crash reports") and is BLOCKED on
-one owner-only step (below). Production was restored to the exact
-pre-attempt state — no behavior change is live. Go-live readiness
-was re-verified end-to-end 2026-10-21 (see "Readiness re-verification"
-below): everything is staged; the window should take minutes.**
+**State: READY TO MERGE on the owner's order ("rebase-> test
+thoroughly->merge", 2026-10-21) — rebased onto current main (below).
+The coordinated window this branch waited for is COMPLETE:
+Telemetry Phase 1 went LIVE 2026-10-21 (deployment `9bd9f669` →
+version `e3dc6b3b`, code byte-identical to the staged `405db4b5`,
+bindings = `DISCORD_WEBHOOK_URL` secret_text + `TELEMETRY_COUNTS`
+KV; probe verified `forwarded:true` AND `counted:true`; digest
+cron `15 * * * *` in place). The blocked/restored narrative below
+is the historical record of the morning's attempts. This branch
+now lands only the config record — merging it deploys nothing.**
 
-Base: `origin/main cc23d30`. Files changed (2): `workers/crash-report/wrangler.toml`,
-this file. Drift vs current main (`33a28fe`, PRs #192/#195 — docs
-only): the `wrangler.toml` change applies cleanly (main never touched
-the file); `BRANCH_STATUS.md` will conflict at merge because main's
-copy is now PR #192's record — resolve by keeping this branch's own
-record (the standing pattern), then header-cure after landing.
+Base: `origin/main 157d215`. Files changed (2): `workers/crash-report/wrangler.toml`,
+this file. The rebase resolved the `BRANCH_STATUS.md` conflict by
+keeping this branch's own record (the standing pattern); the
+`wrangler.toml` change applied cleanly.
 
 ## What this branch changes
 
