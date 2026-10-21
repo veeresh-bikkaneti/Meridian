@@ -19,7 +19,7 @@ import { LOOP_STORAGE_KEY_V2, type LoopGuess, type LoopPuzzleProgress, type Loop
 import { submitGuess } from "./engine.ts";
 import { geodetectiveConfig } from "../age-profile/difficulty.ts";
 import { getBandConfig } from "../age-profile/run-config.ts";
-import { resolveBand } from "../age-profile/store.ts";
+import { loadProfile } from "../age-profile/store.ts";
 
 /** Minimal in-memory localStorage stand-in. */
 function installStorage(initial: Record<string, string> = {}) {
@@ -607,7 +607,10 @@ test("P0-2: pre-snapshot stores (no deal fields) still validate and fall back to
 
 test("Item A: freshLoopPuzzleState snapshots the band config once; hints start unused", () => {
   const state = freshLoopPuzzleState(3, 1, 1, 5);
-  assert.deepEqual(state.dealBandConfig, getBandConfig(resolveBand()));
+  // Mirrors the production call: the profile's RAW band (null when
+  // unset — no profile is seeded in this file, so the no-profile
+  // snapshot, hint policy included, is what gets pinned here).
+  assert.deepEqual(state.dealBandConfig, getBandConfig(loadProfile().band));
   assert.equal(state.hintsUsed, 0);
   // The deal-time clues/cap stay consistent with the snapshot.
   assert.equal(state.dealBandConfig!.startingClues, state.dealStartClues);

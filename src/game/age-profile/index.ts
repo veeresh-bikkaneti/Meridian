@@ -46,6 +46,7 @@ export {
 
 export {
   getBandConfig,
+  DEFAULT_HINT_POLICY,
   isBandRunConfig,
   hintButtonState,
   canUseHint,

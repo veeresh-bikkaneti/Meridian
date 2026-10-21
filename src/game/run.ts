@@ -7,7 +7,7 @@ import {
   isBandRunConfig,
   type BandRunConfig,
 } from "./age-profile/run-config.ts";
-import { resolveBand } from "./age-profile/store.ts";
+import { loadProfile } from "./age-profile/store.ts";
 
 export type Edition = "state" | "country" | "globe";
 export type RunPhase = "aim" | "story" | "done" | "summary";
@@ -92,9 +92,13 @@ export type Run = {
   prevLastId: string | null;
   /**
    * Immutable age-band config snapshot, captured ONCE at run start via
-   * getBandConfig(resolveBand()) (follow-up Item A). A mid-run band
-   * change structurally cannot warp this run — the run keeps its
-   * start-of-run lengths, hint policy, and tolerance.
+   * getBandConfig(loadProfile().band) (follow-up Item A). The profile's
+   * RAW band rides in (null when no profile is set) so the no-profile
+   * hint default (run-config.ts DEFAULT_HINT_POLICY, owner 2026-10-20)
+   * lands in the snapshot; every other value resolves exactly as the
+   * resolved band would. A mid-run band change structurally cannot
+   * warp this run — the run keeps its start-of-run lengths, hint
+   * policy, and tolerance.
    *
    * Optional only for backward compatibility: runs saved before the
    * snapshot (or built as manual literals) backfill via resumeRun. The
@@ -135,7 +139,7 @@ export function startRun(
     poolIds: [...poolIds],
     prevLastId,
     // Follow-up Item A: snapshot the band config once at run start.
-    bandConfig: getBandConfig(resolveBand()),
+    bandConfig: getBandConfig(loadProfile().band),
     hintsUsed: 0,
   };
 }
@@ -287,10 +291,12 @@ export function resumeRun(
       // first and startRun mints a fresh run instead.
       difficultyChoice: backfillDifficultyChoice(saved.difficultyChoice),
       // Runs saved before the band-config snapshot (follow-up Item A)
-      // backfill from the live band; hints default to unused.
+      // backfill from the live profile's raw band (null when unset —
+      // the no-profile defaults, hint policy included); hints default
+      // to unused.
       bandConfig: isBandRunConfig(saved.bandConfig)
         ? saved.bandConfig
-        : getBandConfig(resolveBand()),
+        : getBandConfig(loadProfile().band),
       hintsUsed: typeof saved.hintsUsed === "number" ? saved.hintsUsed : 0,
     };
   }

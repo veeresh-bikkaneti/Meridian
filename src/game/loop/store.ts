@@ -11,7 +11,7 @@ import {
 } from "./types.ts";
 import { maxGuessCap } from "../age-profile/difficulty.ts";
 import { getBandConfig, isBandRunConfig } from "../age-profile/run-config.ts";
-import { resolveBand } from "../age-profile/store.ts";
+import { loadProfile } from "../age-profile/store.ts";
 
 /**
  * localStorage persistence for the GeoDetective's unlimited mode,
@@ -196,9 +196,10 @@ export function freshLoopUnlimitedStore(poolSize: number): LoopUnlimitedStore {
  * Defaults preserve the shipped tuning.
  *
  * Follow-up Item A: the deal ALSO snapshots the full band run config
- * (getBandConfig(resolveBand()), called ONCE here) plus a zeroed
- * hintsUsed counter. A mid-mystery band change structurally cannot warp
- * this mystery.
+ * (getBandConfig(loadProfile().band) — the profile's RAW band, null
+ * when unset, so the no-profile hint default rides in the snapshot —
+ * called ONCE here) plus a zeroed hintsUsed counter. A mid-mystery
+ * band change structurally cannot warp this mystery.
  */
 export function freshLoopPuzzleState(
   index: number,
@@ -218,7 +219,7 @@ export function freshLoopPuzzleState(
     completedCycle: false,
     dealStartClues: dealtClues,
     dealMaxGuesses: maxGuesses,
-    dealBandConfig: getBandConfig(resolveBand()),
+    dealBandConfig: getBandConfig(loadProfile().band),
     hintsUsed: 0,
   };
 }

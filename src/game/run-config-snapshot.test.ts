@@ -106,3 +106,29 @@ test("a run saved before the snapshot backfills config from the live band", () =
     restoreLocalStorage();
   }
 });
+
+test("unset profile: startRun snapshot carries hints ON by default (owner 2026-10-20)", () => {
+  try {
+    seedProfileBand(null); // no age profile — the fresh-visitor case
+    const run = startRun(today, ["p1", "p2"]);
+    // The snapshot is the unset config: 11-13 numbers, band field
+    // "11-13", but the hint policy is the on-by-default one — the raw
+    // (null) band must reach getBandConfig, not the resolved band.
+    assert.deepEqual(run.bandConfig!, getBandConfig(null));
+    assert.equal(run.bandConfig!.band, "11-13");
+    assert.equal(run.bandConfig!.hintPolicy, "one-per-round");
+  } finally {
+    restoreLocalStorage();
+  }
+});
+
+test("explicit 11-13 profile: startRun snapshot keeps hints OFF (parent's choice)", () => {
+  try {
+    seedProfileBand("11-13");
+    const run = startRun(today, ["p1", "p2"]);
+    assert.deepEqual(run.bandConfig!, getBandConfig("11-13"));
+    assert.equal(run.bandConfig!.hintPolicy, "none");
+  } finally {
+    restoreLocalStorage();
+  }
+});

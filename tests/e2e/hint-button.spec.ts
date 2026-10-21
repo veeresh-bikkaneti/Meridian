@@ -9,6 +9,9 @@ import { serveBuiltArtifact, startGlobeRun } from "./helpers";
  * - 8-10 ("one-per-round"): button visible and enabled initially;
  *   disables after one use on the place.
  * - 11-13 ("none"): NO hint button at all (Clean Round stays earnable).
+ * - No profile set (the default): hints ON (owner 2026-10-20 — "we dont
+ *   check the age of the player, so we need the hints on by default").
+ *   The bulb shows with the "one-per-round" policy, like 8-10.
  * - 5-7 mascot offer: after 2 misses, an opt-in offer appears.
  */
 
@@ -139,6 +142,31 @@ test("11-13: no hint button at all", async ({ page, context }) => {
 
   await expect(page.getByTestId("hint-button")).toHaveCount(0);
   await expect(page.getByTestId("hint-panel")).toHaveCount(0);
+});
+
+test("no profile (default): hint button visible in the dock, one hint per place", async ({
+  page,
+}) => {
+  // Owner, 2026-10-20: "we dont check the age of the player, so we need
+  // the hints on by default". NO seedProfile call — a fresh context has
+  // no age profile at all: the fresh-visitor case that used to get no
+  // bulb (the unset profile resolved to the no-hints band). The run now
+  // snapshots the default policy ("one-per-round"): the bulb shows in
+  // the bottom-right aim dock, one hint per place, then disables.
+  await startGlobeRun(page);
+
+  const button = page.getByTestId("aim-dock").getByTestId("hint-button");
+  await expect(button).toBeVisible();
+  await expect(button).toBeEnabled();
+
+  await button.click();
+  const message = page.getByTestId("hint-message");
+  await expect(message).toBeVisible();
+  await expect(message).toContainText(/northern|southern|eastern|western/);
+
+  // One hint per place: the button disables after use.
+  await expect(button).toBeDisabled();
+  await expect(button).toHaveAccessibleName(/hint used/i);
 });
 
 test("5-7: mascot offer appears after 2 misses", async ({ page, context }) => {
