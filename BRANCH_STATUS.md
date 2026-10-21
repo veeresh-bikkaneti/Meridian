@@ -1,100 +1,113 @@
-# BRANCH_STATUS.md — fix/x-banner-180
+# BRANCH_STATUS — fix/grandpa-ask-connect-chain (issue #189)
 
-## What this branch fixes
+**State: fix built + gated. NOT ready to merge — the full review pipeline
+and the owner's merge word are still owed** (standing rule: the panel
+approves the final tip itself).
 
-Issue #180: the shipped X feed-card banner `public/x-banner.jpg` still
-read "MERIDIAN / FIVE PLACES" in the old dark-teal palette. Meridian is
-endless — there is no five-place count ("five" belongs to GeoDetective's
-five *guesses*). Found during PR #177's full-pipeline review (Office
-Hours seat), verified on main by the owner-side check, and filed as
-issue #180 on the owner's word. Issue #156 / PR #177 fixed the same
-problem on `og.jpg` only; this branch fixes the second share surface.
+Base: `origin/main 1ac7aaf`. Files changed (5): `src/components/grandpa-ask.ts`,
+`src/components/grandpa-ask.test.ts` (new), `tests/e2e/sfx-stub.ts` (comment
+only), `docs/handbook/04-audio-and-tts.md`, this file.
 
-## Owner decision
+## The bug
 
-Two candidates were rendered and put to the owner. He picked A —
-Veeresh, 2026-10-20: **"Pick A — classic layout, slogan on the dark
-field"**.
+`src/components/grandpa-ask.ts` `playCough()` wired its Web Audio graph with
+one chained expression:
 
-## The fix (one file)
+```ts
+src.connect(filter).connect(gain).connect(ctx.destination);
+```
 
-`public/x-banner.jpg` replaced with candidate A's exact bytes.
+`AudioNode.connect()` returns the destination node in modern browsers, but
+returns `undefined` on old Safari (WebKit bug 188834 — iOS/desktop Safari 11).
+A chain consumes that return value, so on old-Safari semantics the second
+`.connect` is called on `undefined` and throws
+`TypeError: Cannot read properties of undefined (reading 'connect')` —
+uncaught, from grandpa's walking effect, seconds after Home loads.
 
-- **What the new banner shows:** the old banner's layout in the
-  approved og.jpg gold treatment — cream MERIDIAN wordmark on the left
-  over a deep dark-green field, the locked slogan ("Explore the world,
-  one pin at a time—where every guess unlocks a new story") in gold
-  italic serif on two lines exactly where "FIVE PLACES" used to sit,
-  the gold lamp-lit world map spanning center/right, and one gold
-  location pin in the Indian Ocean south of Indonesia. No place count
-  anywhere; the only words are MERIDIAN and the slogan.
-- **Rendered, not generated:** script-rendered from the game's own
-  Natural Earth land-50m data through the issue #156 og pipeline
-  (typeset in Noto Serif Display, no AI lettering). Render script and
-  candidates record live outside the repo at
-  `~/workspace/your_files/xbanner180/` (note.md + work/render.py).
-- **Checksums (all three identical):** source candidate = the file in
-  this branch = the built `dist/client/x-banner.jpg` —
-  md5 `20414d49bda307f794ba40013995e451`, 1200×264 baseline JPEG,
-  68,552 B. (Old banner: md5 `d1798e62db7340829622fb09581d1e44`,
-  21,916 B.)
+- **Introduced by PR #165** (commit `13347ae`, 2026-10-16) — the file's
+  first commit; the first code ever to chain `connect()`.
+- **Census:** 52 `connect()` sites in `src/`; this was the ONLY one that
+  consumed the return value. `sfx.ts`'s 49 are unchained statements inside
+  try/catch-wrapped functions (fail-soft by construction).
+- `playCough()` also had **no try/catch**, and `getSharedCtx()` constructed
+  its context unguarded — the only audio code in the repo without the
+  fail-soft armor.
 
-## Documentation survey (the PR #177 lesson, applied)
+## Blast radius
 
-Grepped `docs/handbook/`, `docs/adr/`, `README.md`, and the standalone
-handbook source (`~/workspace/your_files/meridian-handbook/`) for
-"x-banner" and "FIVE PLACES" before calling this done:
+- **Modern browsers: unaffected** — proven during the investigation with an
+  unstubbed boot of the production build (zero page errors; native
+  `connect()` returns the destination node).
+- **Old Safari (iOS ≤11-era devices): real exposure.** The throw is uncaught
+  on Home; the observability handler captures it and reports a `js_error`
+  (payload verified in the investigation repro). Whether any real player has
+  hit it in prod is unverified (would need worker/Discord records).
 
-- **No living document describes the banner's content** — its palette,
-  words, or size appear in no doc, in the repo or the standalone
-  handbook. There was no stale banner description to update.
-- **The three "FIVE PLACES" hits in the repo are all about `og.jpg`,
-  not this banner**, and all three are left untouched here, on purpose:
-  1. `docs/handbook/06-design-and-ux-decisions.md` §5, the
-     "OPEN — issue #156" line — already cured on PR #177's branch
-     (same lines). #177 merges before this branch; editing them here
-     too would collide with that cure.
-  2. `docs/adr/0001-share-tag-ownership.md`, the unchecked follow-up
-     "[ ] New og.jpg (#156)" — ticked by PR #177's cure, same reason.
-  3. `docs/ops/specs/share-card-copy.md`, "Known issue found while
-     building: `public/og.jpg` still reads…" — a dated build-time
-     note; a historical record, left as one.
-- **`scripts/brand-check.mjs` — no change, confirmed:** it guards the
-  banner's presence and the 600 KB scraper budget (`MAX_CARD_BYTES`)
-  only — it does not verify the 1200×264 dimensions or the JPEG
-  format (confirmed by reading the script: an existence check plus a
-  size check; the dimensions in its messages are guidance text, not
-  a check). Its header describes path/format, which are unchanged
-  and still accurate. The new file (68,552 B) complies.
-- **Wiring — no change, confirmed:** `scripts/grok-pwa-shared.mjs`
-  stamps `site.banner` from the file's existence and the `x:game:image`
-  meta is path-based. No banner-specific alt text exists anywhere
-  (`SHARE_IMAGE_ALT` describes `og.jpg` only), so no alt update is
-  owed.
+## The fix (exactly the investigated proposal)
 
-## Gates
+1. **De-chained** the graph into three statements
+   (`src.connect(filter); filter.connect(gain); gain.connect(ctx.destination);`)
+   with a comment at the site: `connect()` returns undefined on old Safari —
+   never chain it.
+2. **Fail-soft hardening**, mirroring sfx.ts's house rule ("Audio
+   unavailable — every play call is a silent no-op"): `playCough()`'s body is
+   wrapped in try/catch; `getSharedCtx()`'s `new Ctx()` is guarded the same
+   way and returns null on failure. No behavior change on healthy browsers.
+3. **`tests/e2e/sfx-stub.ts`: comment only.** Its fake `connect()` returning
+   undefined is DELIBERATE — it simulates old-Safari semantics and is the
+   only reason this bug was caught. The comment says so, at the
+   FakeAudioContext class. Stub behavior unchanged.
+4. **New unit test** `src/components/grandpa-ask.test.ts` in the repo's
+   fake-context style: an old-Safari fake whose `connect()` returns
+   undefined; asserts `playCough`/`playTrail` do not throw and the source's
+   `start()` is called.
+5. **Handbook** `docs/handbook/04-audio-and-tts.md` §5: the "Never crashes,
+   never blocks" rule now names `grandpa-ask.ts` explicitly (it was written
+   for sfx only), plus a "Never chain `connect()`" rule recording the lesson.
 
-Run on the original branch tip, and re-run at the rebased tip
-(2026-10-21, on main `a8105ce`) before merging:
+## Discrimination evidence (the pins fail pre-fix, pass post-fix)
 
-- `node scripts/brand-check.mjs` — ok, no warnings
-- `npx tsc --noEmit` — clean
-- `npm test` — scripts 799 (790 pass / 9 skip / 0 fail) + src
-  1366 pass / 0 fail
-- `node scripts/lint-cards.mjs` — GATE PASSED
-- `npm run build:pages` (with `VITE_KOFI_URL`) — green; built artifact
-  checksum verified identical (above)
+- **Unit test:** pre-fix run — 2 tests, **0 pass / 2 fail**, both with the
+  exact production TypeError, stack pinned to `grandpa-ask.ts:93`
+  (`playCough ← playFile ← playTrail`). Post-fix: **2/2 pass**.
+- **E2E, pre-fix** (investigation, main `a8105ce`, first-hand):
+  motionmaxxing **6/6 failed**, cleared-mode applause pair **2/2 failed**,
+  all with the `.connect` signature in the traces.
+- **E2E, post-fix** (this branch's build, serial `--workers=1`, Ko-fi env):
+  - cleared-mode.spec.ts: **11/11 passed** — the applause pair (medium
+    applause Easy, grand fanfare Hard) is green with no spec changes.
+  - motionmaxxing.spec.ts: **5/6 passed**. The one failure is "tap storm"
+    (spec:145), and it is NOT the audio crash — see below.
 
-## Ready to merge? YES — merged on the owner's word
+### The tap-storm failure, adjudicated honestly
 
-- The full review pipeline ran on tip `9d0560a`: **READY, zero
-  BLOCKs, DevEx PASS**; benchmark +46,577 B (+0.07%).
-- The owner gave the merge word on 2026-10-21 ("Merge #181"). Per
-  the standing merge pattern the branch was rebased onto main
-  `a8105ce` (the #177 → #178 → #179 chain, plus #184 and #186, had
-  merged since the vote); the only conflict was this file, resolved
-  keeping this branch's own record. A mechanical rebase needs no
-  re-vote (rule 13). The panel's one wording nit — the brand-check
-  sentence above overstating what the script verifies — is cured in
-  the merge commit, and the gates were re-run at the rebased tip
-  (above).
+Tap storm failed 3× at the 90 s test timeout with a **fully rendered,
+healthy Home** in the failure snapshot and **zero** occurrences of the
+`.connect` signature in its error context. A timed probe replaying the
+test's exact steps (throwaway spec, since removed) **passed every one of
+the test's assertions** and showed where the budget goes: the first State
+click navigates in 1.1 s; clicks 2–12 then each burn their **full 5.0 s
+timeout** (the button is gone after navigation; the test catches and
+continues by design) = 55 s; the mascot phase repeats the pattern
+(~47 s). Total 109.2 s > the 90 s budget. The behavior the test asserts is
+correct; the test's redundant clicks deterministically consume their full
+timeouts on this VM, so the test cannot finish inside its own budget here.
+This is a pre-existing test-design fragility (the same pacing family as the
+documented tapstart flakes), NOT a regression of this fix — the diff
+touches only the cough's graph wiring, and the test could not pass pre-fix
+either (it died on the crash). Recorded here for the panel; the claim in
+this branch record is 5/6 + adjudication, not 6/6.
+
+## Gates (final tip, Ko-fi env at build + test, E2E serial under the lock)
+
+- `npx tsc --noEmit` — **clean**
+- `npm test` — scripts **799 (790 pass / 9 skip / 0 fail)** + src
+  **1368 pass / 0 fail** (1366 on main + the 2 new grandpa-ask tests)
+- `node scripts/lint-cards.mjs` — **GATE PASSED**
+- `npm run build:pages` — **green**
+- E2E — cleared-mode **11/11**; motionmaxxing **5/6** (tap storm adjudicated
+  above)
+
+## Ready to merge?
+
+**NO** — full review pipeline on this tip + the owner's word.
