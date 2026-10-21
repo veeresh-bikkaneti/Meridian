@@ -2,6 +2,16 @@
 /**
  * Render the Storyteller home greetings (greet-01…06.mp3) with LOCAL Kokoro TTS.
  *
+ * ⚠️ DO NOT RUN — SUPERSEDED (2026-10-21). ⚠️
+ * This script renders the greetings in am_fenrir. The shipped greetings are
+ * NOT am_fenrir renders, and NOT the TruthTeller cloud renders this script
+ * was written against: since PR #174 (merged 2026-10-19), all 14 storyteller
+ * clips — greetings included — are the Grok-generated Santa voice, and
+ * Veeresh accepted #174 as the storyteller voice on 2026-10-21 ("1 — Accept
+ * #174, close bug + docs cure"). Running this script would OVERWRITE the
+ * shipped Santa greetings with am_fenrir renders. The #137 voice split
+ * behind this script is history; the file is kept for the record only.
+ *
  * Voice: am_fenrir (Kokoro-82M, en-us male) @ speed 1.05 — the established
  * 2026-10-08 storyteller-sprint standard (trailer energy). This RETIRES the
  * TruthTeller cloud renders that shipped in #118 for the same 6 slots.

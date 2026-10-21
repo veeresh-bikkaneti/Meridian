@@ -15,8 +15,11 @@ export const GREET_01 =
 
 /**
  * §1 — daily greeting rotation. greet-01 is locked; greet-02…06 are the
- * design-agreed lines from the copy pack (verbatim). Text-first; mp3s land
- * later with the TruthTeller voice.
+ * design-agreed lines from the copy pack (verbatim). Text-first; the mp3s
+ * landed with the TruthTeller voice (PR #118/#137) and were re-voiced —
+ * with every other storyteller clip — in the Grok-generated Santa voice by
+ * PR #174 (2026-10-19), accepted by Veeresh's ruling of 2026-10-21. The
+ * TruthTeller/am_fenrir split is history; see handbook chapters 3–4.
  */
 export const GREETINGS: readonly string[] = [
   GREET_01,
@@ -58,7 +61,9 @@ export const SENDOFFS: Record<StorytellerLoopKey, string> = {
 
 /**
  * §2 — poke idle lines (verbatim). Tap the figure → rotating lines, 5 max
- * then repeat. Each line has poke-0N.mp3 (same voice as the greeting).
+ * then repeat. Each line has poke-0N.mp3 (same voice as the greeting —
+ * today that is the Santa voice: PR #174 re-voiced all 14 storyteller
+ * clips in it, closing the 2026-10-16 poke-voice bug).
  * Taps closer than 600ms are ignored (kid mashing ≠ 5 lines at once).
  */
 export const POKE_LINES: readonly string[] = [
