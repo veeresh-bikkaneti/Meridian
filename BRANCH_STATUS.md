@@ -1,10 +1,11 @@
 # BRANCH_STATUS — docs/stale-cleanup-oct21 (docs cleanup)
 
-**State: panel round 2 returned NOT READY (BLOCK ×2 — Frontend,
-Office Hours — DevEx FAIL); cure round 2 below addresses every
-item. NOT ready to merge — a rule-13 re-vote (round 3) on the cured
-tip and the owner's merge word are still owed** (standing rule:
-the panel approves the final tip itself).
+**State: MERGED 2026-10-21 — PR #192, squash `07c0d6e`, on the
+owner's merge word.** Panel round 3 (re-vote on the cured tip
+`83e4f41`) returned READY — APPROVE ×7 / APPROVE-WITH-NITS ×5 /
+BLOCK ×0, DevEx PASS-WITH-NITS — satisfying the standing rule that
+the panel approves the final tip itself. This header was cured by
+the follow-up branch-status PR; the rounds below are the record.
 
 Base: `origin/main cc23d30`. Docs/markdown only — 10 files. No code,
 no tests.
