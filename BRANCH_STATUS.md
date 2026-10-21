@@ -1,5 +1,36 @@
 # BRANCH_STATUS — perf/performance-tuning
 
+**State: MERGED 2026-10-21 — PR #203, squash `41e1121`, on the
+owner's order ("review and merge #203").** The full review panel
+voted READY on the mechanically rebased tip `68bcb74` (APPROVE
+×2 / APPROVE-WITH-NITS ×10 / BLOCK ×0; DevEx PASS-WITH-NITS;
+benchmark PASS — the claimed −64% initial preload transfer was
+reproduced by paired builds: 714,972 → 256,913 B brotli,
+−64.1%; total bundle +0.012%, no regression; the body table
+below shows the builder's own paired run, 715,229 → 255,299 B —
+a different measurement run with the same ≈−64% conclusion). Gates on the voted
+tip: tsc clean, unit scripts 790 + src 1,399 green, lint-cards
+GATE PASSED, build:pages green; live E2E 48 passed / 1 failed
+(the one failure, a PWA update-reload test, fails identically on
+unmodified main — pre-existing). Post-deploy probe on the live
+Cloudflare host: hashed assets serve the immutable rule and
+`/flags.json` serves `max-age=0, must-revalidate` as designed;
+the three carved-out mutable files serve **no Cache-Control
+header** (ETag only, so browsers still revalidate them), and
+the HTML serves **no Cache-Control and no validator at all**
+(no ETag, no Last-Modified — browsers re-fetch it in full) —
+the safety property holds (no mutable file is pinned
+immutable), but the `must-revalidate` the detach was expected
+to restore did not materialize; whether to add explicit header
+lines for those paths is the owner's pending call. Separately:
+open PR #207 also creates `public/_headers`, so whoever acts on
+that call must union the two files, not overwrite one with the
+other. The
+pre-merge "Ready to merge? NO / NEVER MERGE" line further down
+is this branch's own record from before the owner's order and is
+superseded by this header. This header was cured by the
+follow-up branch-status PR; the record below stands.
+
 **Mission (owner: Veeresh; ordered 2026-10-21):** build the performance
 tuning fixes from `~/workspace/your_files/meridian-performance-spec.md`
 as ONE cohesive change set on ONE branch, built by an orchestrated
@@ -114,7 +145,14 @@ QA nits disposition:
 - FOLLOW-UP: GameApp monolith split ("Cut 2", ~55 KB brotli toward
   the ≤200 KB direction) — tracked as the spec's Phase 2 follow-up.
 
-Gates on the final head of this round (`c7d37a7`, pushed): tsc clean;
+Gates on the final head of this round (`c7d37a7`, pushed — a
+mid-round head; the panel later voted on `68bcb74`, the same
+branch mechanically rebased onto main `25b3b68`, and re-ran the
+suite there with identical counts: src 1,399 / scripts 790; the
+tree difference between the two heads is this file only. The
+Status section's earlier set — src 1,392 / scripts 799 — was the
+post-rebase builder round on an earlier head; both sets are kept
+as round history): tsc clean;
 `npm test` — src 1,399 pass / 0 fail, scripts 790 pass / 0 fail (one
 mid-round failure set, 3 tests, traced to the new arrival-focus effect
 under react-test-renderer and fixed with a typeof guard — see commit
