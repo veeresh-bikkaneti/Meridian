@@ -484,7 +484,22 @@ test, E2E `--workers=1`): `tsc` clean; `npm test` scripts **799
 lint-cards **GATE PASSED**; `build:pages` green; scout E2E family
 (9 spec files incl. `ws4-tile-fallback`) **48 passed / 0 failed**
 in one serial run; `openRun` neighbors — full `cleared-mode`,
-`globe-band-switch`, `globe-promotion-offline` — ****28/29 in the batch** — cleared-mode (full) and globe-band-switch all passed; globe-promotion-offline’s “Try the Globe loads the full pool” test failed ONCE in the batch and the whole spec then passed **6/6** in a standalone rerun on the same build — the documented VM pacing family (a per-tier request-count measurement taken while the VM was loaded), recorded here, not buried**.
+`globe-band-switch`, `globe-promotion-offline` — **15 passed /
+3 failed in the batch**, the failures adjudicated by standalone
+reruns before this record was finalized: `globe-band-switch`
+passed **2/2** on this build (both tier-split variants, including
+the one that failed in the batch); the cleared-mode grand-fanfare
+applause passed standalone; the cleared-mode medium-applause
+(Easy) test failed standalone on this build **and failed
+identically on the pre-cure `cc5feba` build** — a setup timeout
+waiting for the difficulty picker under VM load, before any
+applause assertion — pre-existing and environment-bound, not a
+cure regression. The promotion spec also passed **6/6**
+standalone on this build. (Correction, same evening: the first
+version of this section carried a wrong batch figure — 28/29
+with a promotion failure that never happened — taken from an
+interim run summary that was not checked against the batch's
+terminal output. The terminal output is what stands above.)
 Main did not move during this round (still `11a95a7`); no rebase
 was needed. Pin discrimination, verified by the cure author
 against the pre-cure `cc5feba` build: BLOCK-A pin fails on the
