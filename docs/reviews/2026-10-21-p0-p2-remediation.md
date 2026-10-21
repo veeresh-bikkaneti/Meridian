@@ -137,15 +137,11 @@ who decided something has to be checkable.
    `contactEndpoint` flag is added to `public/flags.json` only at the
    end of the activation chain; until then, the form says it is not
    switched on.
-   *Update (activation wiring PR):* the handler now reads the worker's own
-   env first (`runtime-env.server.ts`) and uses `process.env` only as a
-   fallback, so the secret no longer depends on `nodejs_compat`. Before that
-   PR, `readContactEnv()` read only `process.env`, which on Workers needs
+   `readContactEnv()` reads `process.env`, which on Workers needs
    `nodejs_compat` with a compatibility date ≥ 2025-04-01 (or
-   `nodejs_compat_populate_process_env`); without it the handler fell back
-   to `NoopSink`, which fails safe. The five-step chain is in
-   `docs/contact-activation.md`. Optional: set `CONTACT_ALLOWED_ORIGINS` if
-   a custom domain replaces the Pages origin.
+   `nodejs_compat_populate_process_env`). Without it the handler falls
+   back to `NoopSink`, which fails safe. Optional: set
+   `CONTACT_ALLOWED_ORIGINS` if a custom domain replaces the Pages origin.
 4. **Contact delivery (activation follow-up, when a Discord server
    exists):** create a **new** channel and webhook, then set it as the
    secret `CONTACT_DISCORD_WEBHOOK_URL` on the **`meridian`** worker
