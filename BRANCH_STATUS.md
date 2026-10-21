@@ -110,19 +110,20 @@ Everything else about the default stays exactly as it was.
   is GIVEN, conditional on that re-vote returning READY.
 - Merge after the re-vote.
 
-## Gates (2026-10-20, this branch)
+## Gates (2026-10-20, re-run on the rebased + cured tip `d7b84cb`)
 - `npx tsc --noEmit` — clean.
 - `npm test` — green: scripts suite 799 tests (790 pass, 9 skip,
-  0 fail); src suite 1,366 pass, 0 fail.
+  0 fail); src suite 1,366 pass, 0 fail (1,363 from the new base +
+  this branch's 3).
 - `node scripts/lint-cards.mjs` — GATE PASSED.
-- `npm run build:pages` — green.
-- Playwright (built artifact, --workers=1, VITE_KOFI_URL set):
-  hint-button (11) + geodetective-hint (5) + clean-round-badge (4)
-  combined run 20/20; age-profile-gate desktop spec 1/1;
-  geodetective main spec 18/18. One transient failure in an early
-  combined run — the pre-existing "11-13: no hint button at all" test
-  failed inside the `startGlobeRun` setup helper (helpers.ts:156)
-  under heavy VM load immediately after a service restart; the clean
-  combined re-run passed 20/20, including that test. (Corrected
-  2026-10-20: an earlier draft of this note misattributed the flake
-  to the new GeoDetective default test.)
+- `npm run build:pages` — green (VITE_KOFI_URL set).
+- Playwright (built artifact, --workers=1, VITE_KOFI_URL set at
+  build + test): hint-button (11) + geodetective-hint (5) +
+  clean-round-badge (4) combined run **20 passed, 0 failed** on
+  this tip. (The same family also passed 20/20 pre-rebase, after
+  one transient failure in an early run — the pre-existing
+  "11-13: no hint button at all" test failed inside the
+  `startGlobeRun` setup helper (helpers.ts:156) under heavy VM
+  load immediately after a service restart. Corrected 2026-10-20:
+  an earlier draft of this note misattributed that flake to the
+  new GeoDetective default test.)
