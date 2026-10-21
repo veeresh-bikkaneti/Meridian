@@ -169,7 +169,7 @@ Meridian is directed to children, so every visitor is treated as a child. There 
 
 ### Security headers
 
-`public/_headers` sets CSP, `X-Frame-Options: DENY`, `frame-ancestors 'none'`, Referrer-Policy, Permissions-Policy (camera/mic/geolocation/payment denied), nosniff, COOP and HSTS on the Cloudflare build, plus `immutable` caching for hashed `/assets/*` and `no-cache` for `sw.js` / `flags.json`. See `docs/security-headers.md`.
+The security headers (CSP, `X-Frame-Options: DENY`, `frame-ancestors 'none'`, Referrer-Policy, Permissions-Policy denying camera/mic/geolocation/payment, nosniff, COOP, HSTS) come from one place: `src/lib/security-headers.ts`. They are delivered two ways. Server-rendered responses (every HTML page and `/api/contact` on the `meridian` worker) get them from the request middleware in `src/start.ts`. Cloudflare does **not** apply `public/_headers` to Worker-generated responses. Static assets get them from `public/_headers`, which also sets `immutable` caching for hashed `/assets/*` and `no-cache` for `sw.js` / `flags.json`. A unit test fails if the two drift apart. See `docs/security-headers.md`.
 
 ### Installable (PWA)
 
