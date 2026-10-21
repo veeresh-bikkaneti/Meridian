@@ -359,9 +359,24 @@ level and is unchanged. The scout-helpers contract comment records
 the notices' no-role rule and the popover testid.
 
 **Rebase:** main advanced while this cured (PR #184 merged; main
-`11a95a7`). The branch is rebased onto it — expected conflict is
-this file only; the rebase + full gate re-run are recorded in the
-Gates section once run.
+`11a95a7`). The branch was rebased onto it — the only conflict was
+this file, resolved by keeping the branch's own record — new tip
+`1e695f6`.
+
+**Cure round 2 gates** (at `1e695f6`, Ko-fi env at build + test,
+E2E `--workers=1`): `tsc` clean; `npm test` scripts **799 (790
+pass / 9 skip / 0 fail)** + src **1366 pass / 0 fail** (1366, not
+1363 — main's #184 tests joined in the rebase); lint-cards **GATE
+PASSED**; `build:pages` green; scout E2E family (9 spec files)
+**47 passed / 0 failed** in one serial run, `scout-throttled`
+included — no flake claims needed this time. Every new pin was
+first run against the pre-cure build (`30e1faf`) and failed there:
+BLOCK-1 at the auto-note count, BLOCK-2 on the stale notice,
+BLOCK-4 at "Home never renders after the flip", both nit pins on
+their assertions. (The BLOCK-1 pin's first form passed pre-cure —
+vacuously: `startGlobeRun` re-navigates, and the second boot reads
+the auto record the first boot wrote, retiring the note for an
+unrelated reason. The shipped pin runs the single-boot repro.)
 
 ## Ready to merge?
 
