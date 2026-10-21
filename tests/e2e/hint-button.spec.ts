@@ -148,7 +148,7 @@ test("no profile (default): hint button visible in the dock, one hint per place"
   page,
 }) => {
   // Owner, 2026-10-20: "we dont check the age of the player, so we need
-  // the hints on by default." NO seedProfile call — a fresh context has
+  // the hints on by default". NO seedProfile call — a fresh context has
   // no age profile at all: the fresh-visitor case that used to get no
   // bulb (the unset profile resolved to the no-hints band). The run now
   // snapshots the default policy ("one-per-round"): the bulb shows in
