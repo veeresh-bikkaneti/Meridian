@@ -185,7 +185,7 @@ flowchart TD
 
 ## 13. Hint policy — per age band, and ON by default (2026-10-20)
 
-Hints are a real feature (Veeresh, 2026-10-09): a lightbulb button in the game offers a coarse directional nudge ("the place is in the northern part…") — never the answer, never worth points. How often the bulb may be tapped is set by the player's age band:
+Hints are a real feature (Veeresh, 2026-10-09): a lightbulb button in the game offers a coarse directional nudge ("Look toward the northern part of the map!") — never the answer, never worth points. How often the bulb may be tapped is set by the player's age band:
 
 | Profile | Hint policy | What the player gets |
 |---|---|---|
@@ -193,13 +193,14 @@ Hints are a real feature (Veeresh, 2026-10-09): a lightbulb button in the game o
 | 8-10 | one-per-round | Bulb available; one hint per place, then it greys out until the next place |
 | 11-13 | none | No bulb at all — this band plays clean (and can earn the Clean Round badge) |
 
-**The default changed on 2026-10-20.** The game never checks the player's age — the band comes from a profile a parent may set, and most players never set one. Before this ruling, a player with no profile was quietly treated as 11-13, which meant **no hint bulb, ever, for almost every player** — Veeresh found this playing the live site himself. His ruling, in his words: *"Change the default so everyone gets the hint bulb"* — *"we dont check the age of the player, so we need the hints on by default."*
+**The default changed on 2026-10-20.** The game never checks the player's age — the band comes from a profile a parent may set, and most players never set one. Before this ruling, a player with no profile was quietly treated as 11-13, which meant **no hint bulb, ever, for almost every player** — Veeresh found this playing the live site himself. His ruling, in his words: *"Change the default so everyone gets the hint bulb"* — *"we dont check the age of the player, so we need the hints on by default".*
 
 What the ruling does (issue #182):
 
 - **No profile set → hint policy "one-per-round."** The bulb shows, one hint per place — the 8-10 shape. The mascot offer stays off (it belongs to the 5-7 "free" policy only).
 - **Explicitly chosen bands are untouched.** A profile a parent deliberately set to 11-13 still gets no bulb. The ruling changes the *default*, not a parent's choice.
 - **Nothing else about the default changes.** An unset profile still plays with the 11-13 numbers (round lengths, pin tolerance, clue counts), and the run still records its band as "11-13" — so the Clean Round badge works as before: it keys off the recorded band plus hints actually used. A default player who taps a hint has used a hint (no badge, same as anyone); a default player who never taps can still earn it.
+- **Runs already in flight keep their snapshot.** A quiz run or GeoDetective mystery already in progress when this ships finishes with the policy it was dealt — the bulb shows from each player's next run.
 
 *Superseded:* the pre-2026-10-20 default — "no profile resolves to 11-13 for everything, hint policy included" — is replaced by the rule above. The per-band table itself is unchanged since 2026-10-09.
 

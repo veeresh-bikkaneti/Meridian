@@ -7,7 +7,7 @@ to the 11-13 band, whose hint policy is "none", so the hint panel
 rendered nothing and nobody was told hints exist.
 
 Owner decision, 2026-10-20: "Change the default so everyone gets the
-hint bulb." — "we dont check the age of the player, so we need the
+hint bulb". — "we dont check the age of the player, so we need the
 hints on by default"
 
 Fix: a run with NO age profile set now snapshots the hint policy
@@ -46,6 +46,9 @@ Everything else about the default stays exactly as it was.
   only for pre-snapshot puzzles. A no-profile player's GeoDetective
   bulb therefore shows too; a mystery dealt BEFORE this fix keeps
   the policy it was dealt with until the next deal (snapshot rules).
+  The quiz follows the same snapshot rule: a run already in flight
+  when this deploys keeps the policy it started with, so for quiz
+  players the bulb appears from their next run.
 - Consumer audit (each verified in code):
   - `hintButtonState` / `canUseHint`: pure functions of the policy —
     "one-per-round" gives visible → disabled-after-one-use. ✓
@@ -85,9 +88,27 @@ Everything else about the default stays exactly as it was.
   per-band hint policy (owner 2026-10-09) and the 2026-10-20 ruling
   that supersedes its default behavior.
 
+## Post-panel (2026-10-20)
+- Panel verdict: READY, zero BLOCKs. The owner chose the panel's
+  optional docs cure + a re-vote before merging: "Add the small docs
+  cure, re-vote, then merge".
+- Rebased onto origin/main `89e474c` (PR #179 landed after this
+  branch was cut): the only conflict was this file; resolved by
+  keeping this branch's record.
+- Docs cure applied: the stale `getBandConfig(resolveBand())`
+  headers corrected (run-config.ts, loop/types.ts) to describe the
+  raw-band snapshot; `DEFAULT_HINT_POLICY` re-exported from the
+  age-profile barrel; the quiz in-flight-run caveat added here and
+  in handbook §13; the owner's quoted words now contain exactly his
+  words (periods outside the quote marks) in this file, handbook
+  §13, and run-config.ts; §13's paraphrase-in-quotes replaced with
+  the real hint string ("Look toward the northern part of the
+  map!").
+
 ## Pending
-- Full review pipeline (panel) — runs after this PR opens.
-- Merge: owner's word only. Do not merge on green CI alone.
+- Rule-13 re-vote on this cured tip (panel). The owner's merge word
+  is GIVEN, conditional on that re-vote returning READY.
+- Merge after the re-vote.
 
 ## Gates (2026-10-20, this branch)
 - `npx tsc --noEmit` — clean.

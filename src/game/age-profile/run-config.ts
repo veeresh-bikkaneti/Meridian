@@ -1,9 +1,13 @@
 /**
  * age-profile/run-config.ts — the per-run band config snapshot.
  *
- * Implements follow-up Item A (B1: run-config injection). Each loop's run
- * constructor calls `getBandConfig(resolveBand())` ONCE at run start and
- * snapshots the result into run state. The snapshot is immutable — a
+ * Implements follow-up Item A (B1: run-config injection). Each loop builds
+ * its snapshot ONCE at run start: the snapshot site hands `getBandConfig`
+ * the profile's RAW band (`loadProfile().band` — null when no profile is
+ * set, never the pre-resolved band) and snapshots the result into run
+ * state. The null case matters: it is how the default hint policy
+ * (DEFAULT_HINT_POLICY, below) reaches unset-profile runs. The snapshot
+ * is immutable — a
  * mid-run band change structurally cannot warp a live run (no rug-pull).
  *
  * PURITY CONTRACT: pure functions of the band (or run-state counters).
@@ -41,7 +45,7 @@ const HINT_POLICIES: Record<AgeBandId, HintPolicy> = {
  * every one of those players the no-hints policy, so the hint bulb
  * never appeared for them. Owner, 2026-10-20: "we dont check the age
  * of the player, so we need the hints on by default" — "Change the
- * default so everyone gets the hint bulb."
+ * default so everyone gets the hint bulb".
  *
  * The default is the middle policy: the bulb shows, one hint per
  * place, and the 5-7 mascot offer stays off (it is "free"-only — see

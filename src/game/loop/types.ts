@@ -74,7 +74,9 @@ export interface LoopPuzzleState extends LoopPuzzleProgress {
   dealMaxGuesses?: number;
   /**
    * Immutable age-band config snapshot, captured ONCE at deal via
-   * getBandConfig(resolveBand()) (follow-up Item A). A mid-mystery band
+   * getBandConfig on the profile's raw band (null when no profile is
+   * set — the unset case carries the default hint policy; follow-up
+   * Item A). A mid-mystery band
    * change structurally cannot warp this mystery — the deal-time lengths,
    * hint policy, and tolerance hold. Optional for backward compatibility:
    * mysteries dealt before the snapshot fall back to the live band
