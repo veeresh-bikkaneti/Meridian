@@ -3106,7 +3106,7 @@ function Choose({
             for the full detail. */}
         <p className="agep-footer-note" data-testid="kids-privacy-note">
           Made for kids: no accounts, no ads, no tracking cookies, and no
-          personal information collected.{" "}
+          personal information collected from players.{" "}
           <Link to="/privacy" data-testid="kids-privacy-note-link">
             How we protect privacy
           </Link>
