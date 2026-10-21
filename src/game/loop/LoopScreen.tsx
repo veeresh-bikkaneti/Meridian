@@ -15,7 +15,7 @@ import { calendarDate } from "@/game/daily";
 import { Button } from "@/components/ui/button";
 import { ShareButton } from "@/components/share-button";
 import { GuessInput } from "./guess-input";
-import { displayLoopName, fetchLoopIndex, isDuplicateGuess } from "./evaluate";
+import { displayLoopName, fetchLoopIndex, isDuplicateGuess, unlabeledSpotEntry } from "./evaluate";
 import { LoopMap, ringAnnouncement, type LoopMapHandle } from "./LoopMap";
 import { LoopMapBoundary, LoopMapOffLine } from "./loop-map-boundary";
 import { loopPuzzleFromSearch } from "./day";
@@ -436,10 +436,22 @@ export function LoopScreen({
     // against a mismatched deal is never submitted.
     if (load.phase !== "ready" || !s || !current || current.status !== "playing") return;
     if (load.index !== current.index) return;
-    if (isDuplicateGuess(entry.id, current.guesses)) {
+    // Core F-3: a map-tap entry (id "tap:…") was named synchronously by
+    // LoopMap at tap time via unlabeledSpotEntry — if the territory data
+    // had not loaded yet, that name is the fail-closed "open water" and
+    // would persist into the submitted guess (and its duplicate notice).
+    // Re-resolve tap entries HERE, at pick time, from the now-loaded
+    // state; the re-call rebuilds the same id from the same coordinates,
+    // so the duplicate check below keys identically. Index entries
+    // (typeahead / camera jump) carry real names and pass through
+    // untouched.
+    const picked = entry.id.startsWith("tap:")
+      ? unlabeledSpotEntry(entry.lon, entry.lat)
+      : entry;
+    if (isDuplicateGuess(picked.id, current.guesses)) {
       // A repeated pick is never a wasted guess: say so, announce it,
       // and leave the store untouched.
-      setPickNotice(`You already guessed ${displayLoopName(entry)} — try another place.`);
+      setPickNotice(`You already guessed ${displayLoopName(picked)} — try another place.`);
       return;
     }
     setPickNotice(null);
@@ -453,10 +465,10 @@ export function LoopScreen({
         current,
         buildLoopGuess(
           {
-            name: displayLoopName(entry),
-            placeId: entry.id,
-            lon: entry.lon,
-            lat: entry.lat,
+            name: displayLoopName(picked),
+            placeId: picked.id,
+            lon: picked.lon,
+            lat: picked.lat,
           },
           load.clue.target,
           prev,
