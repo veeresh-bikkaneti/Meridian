@@ -65,7 +65,7 @@ export function buildContactPayload(
 export type SendResult =
   /**
    * stored:false = the worker accepted it but no inbox is connected yet
-   * (NoopSink, owner decision 2026-10-21) — the page must say so.
+   * (NoopSink — delivery parked, path B 2026-10-21) — the page must say so.
    */
   | { status: "sent"; stored: boolean }
   | { status: "not-configured" }

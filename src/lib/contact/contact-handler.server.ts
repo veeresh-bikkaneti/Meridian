@@ -1,8 +1,8 @@
 /**
  * Grown-ups "Contact us" — server handler for `POST /api/contact` on the
  * main `meridian` worker (mounted by the TanStack Start server route in
- * src/routes/api/contact.ts). Owner decision 2026-10-21: no third worker;
- * the endpoint lives on the main site worker, but with its OWN secret
+ * src/routes/api/contact.ts). Team rationale: no third worker — the
+ * endpoint lives on the main site worker, but with its OWN secret
  * (CONTACT_DISCORD_WEBHOOK_URL) and no code shared with the crash-report
  * worker (workers/crash-report) or its DISCORD_WEBHOOK_URL.
  *
@@ -23,8 +23,9 @@
  *   free Workers Rate Limiting binding adds a per-client and a global limit
  *   that are shared across isolates. The raw IP is never stored, logged, or
  *   forwarded.
- * - Delivery goes through a small ContactSink interface (owner decision
- *   2026-10-21: the real target is parked, ship scaffolding only):
+ * - Delivery goes through a small ContactSink interface (delivery is
+ *   PARKED — path B, adopted by the owner 2026-10-21 with the words
+ *   "Adopt B — start the cure round": ship scaffolding only):
  *     NoopSink (default)        → accepts, stores nothing, reports
  *                                 `stored: false` so the page can say so
  *     DiscordWebhookSink        → wired ONLY when the
