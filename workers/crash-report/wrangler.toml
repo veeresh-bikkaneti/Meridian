@@ -5,10 +5,9 @@
 # not a secret lives in code defaults.
 #
 # Phase 1 telemetry: event counters live in a KV namespace bound as
-# TELEMETRY_COUNTS. The owner creates it once:
-#   npx wrangler kv namespace create TELEMETRY_COUNTS
-# then pastes the returned id below (uncomment the block). Until then the
-# worker runs counting-free (fail-open) — deploy is safe either way.
+# TELEMETRY_COUNTS. Created 2026-10-21 (title "TELEMETRY_COUNTS"); the
+# binding below is live. If the namespace is ever recreated, update the
+# id — a missing/unbound namespace only disables counting (fail-open).
 name = "meridian-crash-report"
 main = "src/index.ts"
 compatibility_date = "2026-10-01"
@@ -16,6 +15,6 @@ compatibility_date = "2026-10-01"
 [triggers]
 crons = ["15 * * * *"]  # hourly digest, posted ~:15 for the previous UTC hour
 
-# [[kv_namespaces]]
-# binding = "TELEMETRY_COUNTS"
-# id = "PASTE_NAMESPACE_ID_HERE"
+[[kv_namespaces]]
+binding = "TELEMETRY_COUNTS"
+id = "34884ed9aa46437f871278a517882e72"
