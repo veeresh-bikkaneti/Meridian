@@ -216,9 +216,7 @@ import { readLoopOpen, writeLoopOpen, peekLoopProgress } from "@/game/loop/store
 // SatelliteMap pattern below — so MapLibre loads on demand, behind
 // Suspense + MapErrorBoundary at the render sites. The screens have no
 // default export, so the lazy factories adapt their named exports (the
-// HomeGlobe idiom above). The raw loaders are shared with the prefetch
-// helpers below so an intent-prefetch and the render path resolve
-// through the same module cache entry.
+// HomeGlobe idiom above).
 const loadLoopScreen = () => import("@/game/loop/LoopScreen");
 const loadTrailScreen = () => import("@/game/coldtrail/TrailScreen");
 const LoopScreen = lazy(() =>
@@ -228,31 +226,21 @@ const TrailScreen = lazy(() =>
   loadTrailScreen().then((m) => ({ default: m.TrailScreen })),
 );
 /**
- * Prefetch on intent: hovering, focusing, or pressing a home case card
- * starts the screen's chunk download before the click commits, so the
- * lazy boundary is usually warm by the time the screen mounts.
- * Fire-and-forget: a rejection is swallowed here on purpose — if the
- * chunk genuinely cannot load, the render path's own lazy load surfaces
- * it through MapErrorBoundary (retry = reload), never a white screen.
- */
-function prefetchLoopScreen(): void {
-  void loadLoopScreen().catch(() => {});
-  // F2b: GeoDetective reads the lazy countries-50m data (unit + tap
-  // naming) — warm it on the same intent signal.
-  void preloadTerritory();
-}
-function prefetchTrailScreen(): void {
-  void loadTrailScreen().catch(() => {});
-  // F2b: Cold Trail ring labels read the hideout's territory — same
-  // intent warm-up as the Loop prefetch above.
-  void preloadTerritory();
-}
-/**
- * F2b intent prefetch for the main editions: hovering, focusing, or
- * pressing an edition card starts the countries-50m load (scorePlace's
- * region bonus + the reveal pin-compare read it). Fire-and-forget —
+ * F2b intent prefetch for the edition + case cards: hovering, focusing,
+ * or pressing a card starts the countries-50m load (scorePlace's region
+ * bonus + the reveal pin-compare read it). Fire-and-forget —
  * preloadTerritory never rejects, and openRun awaits it before any run
  * commits, so a cold prefetch never changes the outcome, only the wait.
+ *
+ * Deliberately NO component-chunk prefetch for Loop/Trail (Core F-4):
+ * the old helpers fired the screens' dynamic import() on this same
+ * intent signal, but a FAILED import() is negatively cached by the
+ * browser for the life of the document (see map-error-boundary.tsx) —
+ * a transient hover-time failure therefore guaranteed the click itself
+ * failed into the error card. The territory DATA prefetch is safe to
+ * keep by contrast: its loader evicts a failed load and retries on the
+ * next call, and a miss degrades fail-closed at the readers instead of
+ * surfacing an error card.
  */
 function prefetchTerritoryData(): void {
   void preloadTerritory();
@@ -1513,12 +1501,29 @@ export function GameApp() {
       // resumeRun always returns a new object, so reloads silently dropped
       // to the menu instead of resuming.)
       if (isResumable(resumable, today)) {
-        // F2b: a restored run resumes straight into gameplay (aim or
-        // reveal) without crossing openRun's awaited territory preload —
-        // start the lazy countries-50m load now so the first post-restore
-        // pin drop scores against the real data.
-        void preloadTerritory();
         const restored = resumeRun(resumable, today);
+        if (restored.phase === "aim") {
+          // Core F-2: an aim-phase restore resumes straight into
+          // gameplay without crossing openRun's awaited territory
+          // preload — so the commit waits for the preload here: the
+          // first post-restore pin drop must score against the real
+          // data, not the fail-closed default. preloadTerritory never
+          // rejects (a failed load fails closed at the readers), so
+          // deferring the commit on it cannot strand the boot; the
+          // splash stays up until it lands, then ready is set.
+          void preloadTerritory().then(() => {
+            commit(restored);
+            ensureSession(restored);
+            setReady(true);
+          });
+          return;
+        }
+        // Non-aim restore (reveal phases): the pin already scored
+        // before the reload, so no await is needed — the F2b
+        // fire-and-forget start below stands, and the ResultCard's own
+        // mount preload + re-render is the guarantee layer for its
+        // pin-compare.
+        void preloadTerritory();
         commit(restored);
         ensureSession(restored);
       }
@@ -2813,9 +2818,9 @@ function Choose({
               type="button"
               className="hv5-go"
               onClick={onLoop}
-              onPointerEnter={prefetchLoopScreen}
-              onPointerDown={prefetchLoopScreen}
-              onFocus={prefetchLoopScreen}
+              onPointerEnter={prefetchTerritoryData}
+              onPointerDown={prefetchTerritoryData}
+              onFocus={prefetchTerritoryData}
             >
               {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
             </button>
@@ -2847,9 +2852,9 @@ function Choose({
               type="button"
               className="hv5-go"
               onClick={onColdTrail}
-              onPointerEnter={prefetchTrailScreen}
-              onPointerDown={prefetchTrailScreen}
-              onFocus={prefetchTrailScreen}
+              onPointerEnter={prefetchTerritoryData}
+              onPointerDown={prefetchTerritoryData}
+              onFocus={prefetchTerritoryData}
             >
               ❄️ Start the trail
             </button>
@@ -4086,7 +4091,7 @@ function PlayLoaded({
 
   function onSummaryPlayAgain() {
     setSummary(null);
-    onReplay();
+    void onReplay();
   }
 
   // Play-again replay: the same resumeRun chain as openRun. A finished run
@@ -4094,7 +4099,7 @@ function PlayLoaded({
   // so the replayed run opens on a different first question. Local state is
   // reset explicitly because the [place?.id] effect below only fires when the
   // dealt place actually changes.
-  function onReplay() {
+  async function onReplay() {
     setAim(null);
     setAimAnnouncement(null);
     setDrop(null);
@@ -4143,6 +4148,13 @@ function PlayLoaded({
       replayPoolIds,
       replayPrevLastId,
     );
+    // Core F-2: the replayed run commits only after the territory
+    // preload lands — the same awaited funnel as openRun. A summary can
+    // be reached in a document where the countries-50m load failed or
+    // never started (its readers fail closed), and the replay's first
+    // pin drop must score against the real data. preloadTerritory
+    // never rejects, so this await cannot fail the replay.
+    await preloadTerritory();
     onRun(freshRun);
     // Play again after End game: the old session ended with the summary, so
     // the replay starts a brand-new session.

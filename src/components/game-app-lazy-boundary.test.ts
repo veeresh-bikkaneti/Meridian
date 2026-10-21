@@ -117,28 +117,48 @@ describe("F2 lazy boundary — restore path crosses Suspense + error boundary", 
   });
 });
 
-describe("F2 lazy boundary — prefetch on intent is fire-and-forget safe", () => {
-  it("prefetch helpers call the shared loaders and swallow rejections", () => {
+describe("Core F-4 — no component prefetch; territory-data prefetch kept", () => {
+  // The F2 component prefetches were REMOVED on purpose: a failed
+  // dynamic import() is negatively cached by the browser for the life
+  // of the document (see map-error-boundary.tsx), so a transient
+  // hover-time failure guaranteed the click itself failed into the
+  // error card. Swallowing the rejection in the helper could not help —
+  // the module map itself was poisoned. The territory-DATA prefetch
+  // stays: its loader evicts a failed load and retries, and a miss
+  // degrades fail-closed, never to an error card.
+  it("the component-prefetch helpers and their loader calls are gone", () => {
     assert.ok(
-      gameAppSource.includes("void loadLoopScreen().catch(() => {})"),
-      "loop prefetch must catch silently — the render path owns failures",
+      !gameAppSource.includes("prefetchLoopScreen"),
+      "prefetchLoopScreen must not exist (negative module caching, Core F-4)",
     );
     assert.ok(
-      gameAppSource.includes("void loadTrailScreen().catch(() => {})"),
-      "trail prefetch must catch silently — the render path owns failures",
+      !gameAppSource.includes("prefetchTrailScreen"),
+      "prefetchTrailScreen must not exist (negative module caching, Core F-4)",
+    );
+    assert.ok(
+      !gameAppSource.includes("void loadLoopScreen().catch"),
+      "no fire-and-forget component import may remain for Loop",
+    );
+    assert.ok(
+      !gameAppSource.includes("void loadTrailScreen().catch"),
+      "no fire-and-forget component import may remain for Trail",
     );
   });
 
-  it("the home case-card buttons prefetch on hover, focus, and pointerdown", () => {
-    for (const hook of [
-      "onPointerEnter={prefetchLoopScreen}",
-      "onPointerDown={prefetchLoopScreen}",
-      "onFocus={prefetchLoopScreen}",
-      "onPointerEnter={prefetchTrailScreen}",
-      "onPointerDown={prefetchTrailScreen}",
-      "onFocus={prefetchTrailScreen}",
-    ]) {
-      assert.ok(gameAppSource.includes(hook), `missing prefetch wiring: ${hook}`);
+  it("the home case-card buttons fire the territory-data prefetch on hover, focus, and pointerdown", () => {
+    const loopButton = segment(gameAppSource, "onClick={onLoop}", "</button>");
+    const trailButton = segment(gameAppSource, "onClick={onColdTrail}", "</button>");
+    for (const [name, button] of [
+      ["GeoDetective", loopButton],
+      ["Cold Trail", trailButton],
+    ] as const) {
+      for (const hook of [
+        "onPointerEnter={prefetchTerritoryData}",
+        "onPointerDown={prefetchTerritoryData}",
+        "onFocus={prefetchTerritoryData}",
+      ]) {
+        assert.ok(button.includes(hook), `${name} case card missing territory prefetch wiring: ${hook}`);
+      }
     }
   });
 });

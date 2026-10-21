@@ -81,3 +81,16 @@ test("preload loads exactly once; lookups then resolve and reuse it", async () =
 test("missingContinents still resolves against the lazy index", async () => {
   assert.deepEqual(await missingContinents(), []);
 });
+
+test("preloadTerritory resolves — the never-rejects contract its awaiters rely on", async () => {
+  // openRun, the boot restore, and onReplay all await preloadTerritory
+  // before a run commits; the contract they rely on is that the promise
+  // RESOLVES (a failed load degrades the sync readers fail-closed and
+  // the next call retries — the retry-eviction branch itself is pinned
+  // by shape in territory-lazy-boundary.test.ts, because this harness
+  // loads the real atlas file and has no seam to force a load failure
+  // without deforming production code).
+  await assert.doesNotReject(() => preloadTerritory());
+  await assert.doesNotReject(() => preloadTerritory());
+  assert.equal(territoryLoadRunsForTests(), 1, "repeat preloads still reuse the settled load");
+});
