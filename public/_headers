@@ -12,9 +12,7 @@
 #
 # Carve-outs (Core F-1): NOT every file under /assets/* is content-hashed.
 # Three files have stable names with mutable content and must never be
-# immutable — each gets an exact-path rule after the wildcard below,
-# setting Cache-Control back to the revalidate default (the exact path
-# is the more specific match; rules are listed specific-after-general):
+# immutable:
 #   - /assets/maplibre-gl-worker.mjs and /assets/maplibre-gl-shared.mjs
 #     are emitted verbatim from node_modules/maplibre-gl/dist by the
 #     maplibre-worker-files plugin in vite.config.ts — a MapLibre
@@ -22,6 +20,23 @@
 #   - /assets/storyteller/storyteller-assets.json is a build-generated
 #     manifest fetched at runtime by storyteller-home.tsx — its content
 #     changes whenever the storyteller asset set changes, same filename.
+#
+# How the carve-outs work — per Cloudflare's _headers documentation
+# (developers.cloudflare.com/pages/configuration/headers/ and
+# /workers/static-assets/headers/): an incoming request which matches
+# multiple rules' URL patterns will inherit all rules' headers, and if
+# a header is applied twice in the _headers file, the values are joined
+# with a comma separator. There is no most-specific-wins. So a second
+# Cache-Control set-line for an exact path would NOT override the
+# wildcard's immutable value — it would comma-join with it. The
+# documented remedy is the detach form used ALONE in each carved block
+# below: an indented `! Cache-Control` line removes the wildcard's
+# Cache-Control for that path, so no _headers Cache-Control applies
+# there and the platform default resumes (documented for Workers Static
+# Assets as Cache-Control: public, max-age=0, must-revalidate + ETag —
+# exactly the revalidate behaviour these stable-named files need).
+# Detach is used ALONE — never combined with a set-line in the same
+# block.
 #
 # Deliberately NOT immutable: everything else keeps Cloudflare's default
 # (public, max-age=0, must-revalidate). /flags.json, /audio/*, /icons/*,
@@ -34,10 +49,10 @@
   Cache-Control: public, max-age=31536000, immutable
 
 /assets/maplibre-gl-worker.mjs
-  Cache-Control: public, max-age=0, must-revalidate
+  ! Cache-Control
 
 /assets/maplibre-gl-shared.mjs
-  Cache-Control: public, max-age=0, must-revalidate
+  ! Cache-Control
 
 /assets/storyteller/storyteller-assets.json
-  Cache-Control: public, max-age=0, must-revalidate
+  ! Cache-Control
