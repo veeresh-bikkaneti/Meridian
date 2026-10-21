@@ -66,6 +66,14 @@ let overrides: Partial<Record<FlagName, boolean>> = {};
 let observabilityEndpointValue: string | null = null;
 
 /**
+ * Grown-ups contact-form endpoint from the top-level `contactEndpoint`
+ * field of flags.json (the /api/contact route on the main worker). Null =
+ * the form is not switched on yet: the /contact page says so instead of posting anywhere. Same
+ * validation as the observability endpoint (root-relative or https only).
+ */
+let contactEndpointValue: string | null = null;
+
+/**
  * Memoized production load promise: concurrent `loadFlags()` callers share
  * one fetch. Cleared when the load settles, so a later explicit call
  * re-fetches rather than returning a stale promise. The `testEnv` seam
@@ -80,6 +88,7 @@ let inflight: Promise<void> | null = null;
 export function resetFlags(): void {
   overrides = {};
   observabilityEndpointValue = null;
+  contactEndpointValue = null;
   inflight = null;
 }
 
@@ -106,6 +115,15 @@ export function isValidObservabilityEndpoint(value: unknown): value is string {
 export function getObservabilityEndpoint(): string | null {
   try {
     return observabilityEndpointValue;
+  } catch {
+    return null;
+  }
+}
+
+/** Current contact-form endpoint, or null when unset/invalid. Never throws. */
+export function getContactEndpoint(): string | null {
+  try {
+    return contactEndpointValue;
   } catch {
     return null;
   }
@@ -155,6 +173,7 @@ interface FlagsPayload {
   version?: unknown;
   flags?: unknown;
   observabilityEndpoint?: unknown;
+  contactEndpoint?: unknown;
 }
 
 /**
@@ -170,6 +189,10 @@ function applyPayload(data: unknown): void {
   const endpointCandidate = (data as FlagsPayload).observabilityEndpoint;
   observabilityEndpointValue = isValidObservabilityEndpoint(endpointCandidate)
     ? (endpointCandidate as string).trim()
+    : null;
+  const contactCandidate = (data as FlagsPayload).contactEndpoint;
+  contactEndpointValue = isValidObservabilityEndpoint(contactCandidate)
+    ? (contactCandidate as string).trim()
     : null;
   const flags = (data as FlagsPayload).flags;
   if (typeof flags !== "object" || flags === null) return;

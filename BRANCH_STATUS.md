@@ -1,192 +1,100 @@
-# BRANCH_STATUS — fix/home-mascot-position (home layout: mascot bubble off-screen + About card void)
+# BRANCH_STATUS — fix/review-p0-p2-kids-privacy-ux
 
-**State: PANEL FIX ROUND APPLIED — not merged. Ready: NO (panel
-round 1 returned NOT READY — BLOCK ×3 / NITS ×7 / APPROVE ×2; the
-cure below is applied, and a rule-13 panel re-vote on the cured tip
-+ the owner's merge word are still owed).**
+**State: PR #207 open. Review follow-ups (request-changes round) pushed; `origin/main` (with PR #203) merged in; rebased onto `4ef6875` (PR #206) on the owner's order, 2026-10-21.**
+Base: `origin/main f9fa7e4` (rebased; the work started from the live build `157d215`), then
+`origin/main 41e1121` (PR #203, perf) and then `b430d28` (PR #208, docs) **merged** in on 2026-10-21. They were merges, not rebases, so there was no force-push. The final step onto `4ef6875` WAS a rebase (owner-ordered, after PR #206 merged): the two conflicts were `BRANCH_STATUS.md` and `public/_headers`, both resolved to this branch's own versions — the `_headers` below is byte-identical to the merge-resolved file, and this file is the merge-resolved record with only this base paragraph updated.
+Full write-up: `docs/reviews/2026-10-21-p0-p2-remediation.md`.
 
-Base: `origin/main 41e1121` (rebased 2026-10-21 for the panel fix
-round — PR #203 had landed on top of `25b3b68`; earlier rebase onto
-`f9fa7e4` for panel review, pre-rebase tip `5b1698c` on base
-`157d215`). CSS changed: `src/components/home-v5.css` (the fixes)
-plus a comment-only cross-reference in
-`src/components/storyteller-home.css`; one new E2E spec
-(`tests/e2e/home-visual-layout.desktop.spec.ts`). No behavior, copy,
-dismissal-semantics, or game-logic changes.
+The previous records are in git history: ops/telemetry-phase1-deploy (PR #204)
+at `f9fa7e4:BRANCH_STATUS.md`, and perf/performance-tuning (PR #203) at
+`41e1121:BRANCH_STATUS.md`. The #203-landed header (PR #208) is at `b430d28:BRANCH_STATUS.md`.
 
-## Defect 1 (primary) — storyteller greeting bubble off-screen
+#203 merge conflicts:
+- `public/_headers` (add/add): kept #207's version. It is a superset: the
+  `/*` security block plus no-cache rules plus #203's F1 `/assets/*` immutable rule and its three
+  `! Cache-Control` detach carve-outs, text-identical. Nothing from #203 was lost.
+- `BRANCH_STATUS.md` (both merges): this branch's version, updated (repo convention).
+- Open PR #212 (explicit Cache-Control for the carved assets + HTML) also edits
+  `public/_headers` and will conflict with this file. Whichever lands second must union the two:
+  keep this branch's `/*` security block and #212's detach-plus-explicit-set carve-outs, and pick ONE
+  Cache-Control per path for `/flags.json` and `/`.
 
-**Owner's report (2026-10-21):** on the production home page the
-grandpa mascot sits at the hero card's far left and his speech bubble
-renders mostly off-screen to the left (only a sliver and the ✕
-visible); screenshot ~880px wide.
+## Done
+- [x] P0-1 Microsoft Clarity removed (code, env typing, Pages workflow)
+- [x] P0-2 Google Analytics removed entirely. Owner (2026-10-21): "I deleted clarity and ga4 from cloudflare account" — both IDs deleted from the `meridian` worker's Workers Builds variables, and the repo's GitHub Actions secrets deleted the same day (done and verified). Optional cookieless Cloudflare Web Analytics via `VITE_CF_BEACON_TOKEN`
+- [x] P0-3 `/privacy` page, linked from the footer and the For grown-ups card
+- [x] P1-4 PWA base path: manifest `./`, `sw.js` derives BASE from its own URL (+ test under both bases)
+- [x] P1-5 "Begin exploring" starts a Globe round at the picked difficulty
+- [x] P1-6 Easy curation (`src/game/easy-curation.ts`, rung fallback, min pool 25)
+- [x] P1-7 Prefer the Full map: a 2 GB reading with a clean WebGL probe stays Full
+- [x] P2-8/9 `public/_headers` + worker middleware (`src/start.ts`) from one source (`src/lib/security-headers.ts`) (+ drift test)
+- [x] P2-10 Gate strikes persist across close/reopen (cooldown can't be dodged)
+- [x] P2-11 "Take the tour" re-entry in the footer
+- [x] Crash telemetry coarsened (no memory/cores; screen bucket; rounded DPR)
+- [x] `/contact` page behind the math gate + `POST /api/contact` on the main `meridian` worker, with no third worker (validation, 4 KB cap, salted-hash rate limit, honeypot, `ContactSink` with `NoopSink` default, `DiscordWebhookSink` only with `CONTACT_DISCORD_WEBHOOK_URL`)
+- [x] Docs: README, handbook ch01/ch07, observability, scout policy, scoring contract, security-headers, remediation doc
 
-**Root cause (proven by reproduction, not guessed):** the bubble is
-the storyteller greeting popover (`.storyteller-banner-popover`). It
-is anchored `right: 0` to its 56px host (`.storyteller-banner`) and
-opens leftward at up to 320px wide — correct back when the host sat
-at the right end of the old full-width header banner (anchoring from
-PR #118). The homepage v5 redesign (PR #158) moved the host into
-`.hv5-hero-top`, a wrapping flex row. Above 680px nothing pushed the
-host to its line's right end (the `margin-left: auto` rescue existed
-only in the ≤680px phone block), so wherever the row wraps — hero-top
-needs 760px of content; the bento hero cell is 614–870px wide across
-viewport widths 768–1440 — the host lands at the LEFT of its new
-line and the popover opens off the left edge. Measured on the
-pre-fix build (fresh profile, figure tap): bubble x = −27 @768,
-−177 @880 (pixel-match with the owner's screenshot), −177 @1280,
-−97 @1440; fine @390 (phone block) and @1024 (row fits on one line).
+## Pending / owner actions
+- [x] `public/_headers` overlap with PR #203: resolved in the merge above
+- [x] Remove the GA/Clarity env vars from Cloudflare Workers Builds + GitHub secrets — DONE and verified 2026-10-21 (see the line above and remediation-doc decision 1)
+- [ ] Verify the `_headers` are live after deploy (`docs/security-headers.md`)
+- [ ] Contact activation is PARKED (path B) — do NOT smoke-test-and-flip as if the GitHub-side state were sufficient. Record correction (verified 2026-10-21): a GitHub **repo** secret named `CONTACT_DISCORD_WEBHOOK_URL` exists (added by the owner 2026-10-21) but **nothing reads it**; the handler expects a **worker runtime secret** on `meridian`. Activation (follow-up chain in the cure-round section below) sets it on the worker with a separate channel (never the crash `DISCORD_WEBHOOK_URL`), then deletes the GitHub secret — one secret, one store
+- [ ] Add the `[[ratelimits]]` blocks from `config/cloudflare/meridian.wrangler.toml` to the `meridian` worker config (free; optional, with an in-memory fallback)
+- [ ] Delete contact messages in Discord within 90 days (`docs/contact-rate-limiting.md`, `/privacy`)
+- [ ] P3 hardening (static CSP hashes, Easy first-run default) is stacked on branch `fix/review-p3-hardening` (no PR yet)
 
-**Fix (commit `b55d6d8`; originally `bd01abf`):** (1)
-`.hv5-storyteller { margin-left: auto }` moved from the phone block
-to the base rule, so the host sits at its line's right end at every
-width — the popover's right-anchored geometry then always opens
-inside the hero card. (2) Above 680px the popover's width is capped
-so it also clears the headline's wrapped text: 224px at 768px and
-up, 184px at 681–767px. The band cap arrived in the panel fix round
-(below): round 1's single 224px cap rested on a first-line model of
-the headline and overlapped its lower wrapped lines at 681–708px.
-Phones keep the shared cap and their unchanged layout.
+## Cure round (2026-10-21) — panel NOT READY → path B
 
-## Defect 2 — "How a round works" (About) card stretched, giant void
+- **Panel verdict: NOT READY** on tip `e361937` (voted pre-rebase; the content was carried to `3250f02`). The privacy posture was sound; the blocks were (a) contact delivery cannot work in production as shipped while docs/copy implied it does, and (b) record defects.
+- **Owner's adoption, verbatim (2026-10-21): "Adopt B — start the cure round"** — the Senior Architect's path B from the panel review: this PR lands with delivery honestly PARKED (form off, docs truthful); activation is a tracked follow-up filed the day this PR merges.
+- **Cure items and dispositions:**
+  1. *Truthfulness (delivery parked, everywhere)* — DONE: remediation doc states delivery is PARKED and qualifies every "works when the secret is set" claim (a); `/privacy` rewritten for the parked state — form off, future-tense delivery, server transit disclosed, reply-to-to-Discord disclosed, retention = manual deletion once resolved within 90 days, gate still described as a check that keeps kids out, NOT verified parental consent (b); footer line qualified to "…collected from players" (c); `/contact` carries a plain parked note and no longer promises "we read every message" (d).
+  2. *Readiness-check honesty* — DONE (built, none existed): searched package.json, `scripts/`, `src/lib/contact/`, docs and workflows — no readiness/delivery check existed in the tree. Added `evaluateContactReadiness` (`src/lib/contact/contact-readiness.ts`) + CLI `npm run check:contact` (`scripts/contact-readiness.mjs`): with no secret it prints "contact delivery: NOT configured (parked)" and exits 1. Pinning tests in `src/lib/contact/contact-readiness.test.ts` cover no-secret → not-configured and the strict-discord.com → Discord-sink-selected assertion for the follow-up. Sink selection, env reading, allowlist and honeypot untouched.
+  3. *Off-state completeness* — VERIFIED 2026-10-21: `public/flags.json` (source) carries **no** `contactEndpoint`; with no endpoint, `sendContact` returns not-configured and the page says "isn't switched on yet" (pinned by the E2E spec). The footer and the For grown-ups card link to `/contact`, whose page now presents the parked state plainly at the top; no surface presents `/contact` as live.
+  4. *Citations* — DONE: remediation-doc decision 1 cites the owner's actual words + the verified deletions; decision 4 cites the path-B adoption above; decisions 3 and 5 relabelled team rationale; decision 2 relabelled a code change; the "(owner decision: COPPA first)" gloss on the P0-2 line above replaced with the citable record; the same fixes applied to the matching code comments (`privacy.tsx`, `contact.tsx`, `contact-handler.server.ts`, `contact-form.ts`).
+  5. *Doc cures* — DONE: retired GA4/Clarity ID values scrubbed from the remediation doc; GA/Clarity deletion TODOs marked DONE (verified 2026-10-21); the stale TODO-2 remedy marked implemented by this PR (`src/start.ts` + `src/lib/security-headers.ts`); the fused 403/200 sentence split into two accurate sentences; `docs/observability.md` device-facts prose rewritten to the coarse buckets its own table states, and its stale deploy note replaced with the real flow (bindings ride with the version upload; `cf-version.py` ops helper outside the repo); `docs/contact-rate-limiting.md` gained the `cf-connecting-ip` trust assumption + the shared "unknown" fallback bucket; the `CONTACT_DISCORD_WEBHOOK_URL` record corrected in the remediation doc and in the Pending item above (GitHub repo secret exists, nothing reads it; worker runtime secret is what the handler expects).
+  6. *This section* — DONE (this record).
+- **Tracked docs follow-up (deferred, out of cure scope):** `workers/crash-report/README.md` still carries pre-live Phase 1 text, although Phase 1 went live on 2026-10-21 (deployment `9bd9f669`, version `e3dc6b3b`). The file itself is untouched in this cure round; the follow-up fixes that README later — this bullet only makes the tracking complete. Every surviving stale instance, named:
+  - The KV-states passage (~lines 243–255): it claims `wrangler.toml`'s `[[kv_namespaces]]` block "is still commented out with `PASTE_NAMESPACE_ID_HERE`" on main, "Binding recorded — on the ops branch above; **not yet on main**", and "Phase 1 live — **not yet**". All three are false now: the uncommented block with the real namespace id is on main via PR #204, and Phase 1 is live (2026-10-21; deployment `9bd9f669`, version `e3dc6b3b`).
+  - The Owner-step block (~lines 264–282), "Owner step — the Phase 1 unblock, in this order": the whole block frames a completed unblock as a pending owner procedure. Its step 2 (~lines 269–274) — "**Immediately** re-supply the Discord webhook (`cf.py secret DISCORD_WEBHOOK_URL …`)" and "This is the current Phase 1 deploy blocker" — carries the rejected re-set prescription; its heading, step 1 ("Put the Phase 1 version live") and step 3 (a verify procedure premised on the unblock, expecting `counted:false` after a bare `cf.py deploy`) are stale with it. The unblock happened on 2026-10-21: Phase 1 is live (deployment `9bd9f669`), bindings ride with the version upload, and there is no re-supply step after upload.
+  - The Secrets section (~lines 314–335): the `cf.py secret …` command prescriptions, and the closing rule "a fresh script upload does not inherit existing secrets — re-set them on the new version after every upload, or forwarding silently stops (the Phase 1 deploy blocker)". Superseded by the version-upload-bindings flow: naming a secret without a value is rejected (error 10021) and a script-level secret PUT is blocked (error 10215), so the re-set step is impossible as written.
+  - The go-live checklist line (~line 353): "Set secrets (`cf.py secret …`) as above." Same superseded `cf.py secret` prescription as the Secrets section.
+  - The release-procedure step 3 (~lines 227–228): "Re-set the secrets on the new version (see Secrets below) — a fresh upload does NOT inherit DISCORD_WEBHOOK_URL." The same platform-rejected re-set flow, sitting in the primary release steps (named by the re-vote #3 panel; this was the blocking omission in the tracked list).
+  - The Files section (~lines 36–41): describes `wrangler.toml` as carrying "a commented-out `TELEMETRY_COUNTS` KV binding block" with the binding "recorded on branch `ops/telemetry-phase1-deploy`, awaiting merge". Stale: the uncommented block carrying the real namespace id is on main via PR #204, and Phase 1 is live.
+  - The schedules passage (~lines 260–261): the cron "is inert until Phase 1 code … is the live version" — Phase 1 code is the live version now (deployment `9bd9f669`).
+  - The status passage (~lines 345–346): "the pre-Phase-1 code live today was last uploaded 2026-10-09" — superseded by the 2026-10-21 Phase 1 deployment.
+  This staleness is deferred to its own small docs PR.
+- **Follow-up chain after merge (committed next step, in order):**
+  1. Probe which server entry actually serves on the deployed worker (Nitro `.vercel/output` vs `dist/server` start entry) — if Nitro serves, the `start.ts` security-headers middleware is dead code TODAY and fixing that takes priority over contact wiring. Context: the Workers Builds log shows Nitro writing to `.vercel/output` — a Vercel preset — so `wrangler deploy` may not upload the TanStack/Nitro server at all. Baseline, measured by the owner on prod on 2026-10-21 (still pre-#207 main): `curl -sI /` shows NO security headers; `GET /api/contact` returns 404. Post-deploy probe spec (after #207 deploys): `curl -sI /` and check for CSP / X-Frame-Options / HSTS / COOP; then POST /api/contact with a bad Origin — 403 means the route is live; 404, SPA HTML, or 405 means it isn't. Root-cause fix if still missing: an explicit Cloudflare build target (Nitro `cloudflare-module` preset or the Cloudflare Vite plugin) with wrangler `main` pointing at it.
+  2. Set `CONTACT_DISCORD_WEBHOOK_URL` as a worker secret on `meridian` (plus optionally the `[[ratelimits]]` blocks), then delete the same-named GitHub repo secret.
+  3. Wiring PR: env read via runtime bindings (not `process.env`), production origin allowlisted or endpoint same-origin, honeypot silent-200 reordered ahead of the origin gate, readiness check asserts the Discord sink.
+  4. Post-deploy smoke with the form still off.
+  5. Only then add `contactEndpoint` to `flags.json`.
 
-**Root cause:** `.hv5-pages` is a two-column grid (About beside the
-tall Journal card). Grid items stretch to the row height by
-default, so the short About card was stretched to the Journal's
-height; the empty space below its two paragraphs measured 1336px
-@768, 1469px @1024, 1827px @1280 (only 28px — the card's own
-padding — @390, where a ≤680px media query stacks the sections in
-one column, so there is no row partner to stretch against).
+## Cure round 2 (2026-10-21) — re-vote NOT READY on one seat → docs-only cure
 
-**Fix (commit `fa2e10d`; originally `5d47825`):** `.hv5-pages {
-align-items: start }` — each card keeps its own height; the Journal
-is unchanged.
+- **Re-vote verdict: NOT READY** on tip `95cfa64` — on ONE seat's three blocks (Office Hours), all docs-only. Everything else from the first cure round stands cured: B2 fully; B3 per the owner's path-B adoption ("Adopt B — start the cure round", 2026-10-21); B4 in the cited files; all 8 mandatory checks PASS; gates green; `public/_headers` byte-identical (`git diff 95cfa64..HEAD -- public/_headers` is empty).
+- **Cure items and dispositions:**
+  1. *Remediation doc (`docs/reviews/2026-10-21-p0-p2-remediation.md`)* — DONE (`5eb23bd`): (a) the Remaining item now reads "given the no-email choice (team rationale — see decision 3)" instead of "given the no-email ruling" — decision 3 is the no-email decision, and it is team rationale, not an owner ruling; (b) the footer addendum heading no longer says "(owner request, …)" — no owner words exist for the footer note — it now reads "(added in this PR's review round, 2026-10-21)", and nothing else in that addendum changed; (c) the "#203 overlap" section is rewritten as a past-tense record: PR #203 landed first, the owner then merged `origin/main` into this branch and kept #207's `public/_headers` version (the superset — see the "#203 merge conflicts" record at the top of this file, which is unchanged). The expired five-step merge plan is replaced with a pointer: the still-open union work is PR #212's, and the live instructions live in this file (keep this branch's `/*` security block and #212's detach-plus-explicit-set carve-outs; pick ONE `Cache-Control` per path for `/flags.json` and `/`). With (a) and (b) done, the cure-round section's "Citations — DONE" claim above is now true as written; it is left as is.
+  2. *Handbook ch07 §4, "Worker:" bullet (`docs/handbook/07-engineering-and-ops.md`)* — DONE (`f5b001a`): the bullet no longer prescribes `cf.py deploy` / `cf.py secret` or calls the webhook re-set "the current Phase 1 deploy blocker". It now states the real flow, mirroring `docs/observability.md`'s "Deploy method — resolved" note: the receiver has only ever been deployed via manual API version upload; bindings ride with the version upload (a version that must carry the `DISCORD_WEBHOOK_URL` secret or the `TELEMETRY_COUNTS` KV binding gets them in its upload metadata); naming a secret without a value is rejected (error 10021) and a script-level secret PUT is blocked (error 10215), so there is no "upload first, set the secret afterwards" step; versions and deployments are managed with the ops helper `cf-version.py` (verbs: `list`, `get`, `deployments`, `deploy`), which lives outside the repo in the crash-report watchdog goal's files. Telemetry Phase 1 is stated as LIVE (went live 2026-10-21; deployment `9bd9f669`, version `e3dc6b3b`; the live version carries the webhook as a secret binding in the upload plus the KV binding), and the re-set "blocker" is recorded as historical, not current. The bullet's other true statements (API-history ground truth, `wrangler deploy` was never the mechanism, the game worker deploys through Workers Builds on main) are kept.
+  3. *Tracked-follow-up completeness (this file)* — DONE (`cbed4e8`): the "Tracked docs follow-up (deferred, out of cure scope)" bullet in the cure-round section above is widened to name every surviving stale instance in `workers/crash-report/README.md` — the KV-states passage (~lines 243–255), the go-live step 2 (~lines 269–274), the Secrets section (~lines 314–335), and the go-live checklist line (~line 353) — each with why it is stale (PR #204 put the uncommented KV block with the real namespace id on main; Phase 1 is live, 2026-10-21, deployment `9bd9f669`, version `e3dc6b3b`; bindings ride with the version upload, errors 10021/10215). The README itself is still untouched; the follow-up stays deferred to its own small docs PR.
+  4. *Rider — E2E copy pins (`tests/e2e/grownups-privacy-contact.desktop.spec.ts`)* — DONE (`6f599ad`): assertions only, no existing assertion weakened or altered. The footer test now asserts the kids-privacy note carries the "from players" qualifier (`toContainText(/from players/i)` on the existing `kids-privacy-note` element), and the contact test now asserts the parked note is visible by its testid (`contact-parked-note`) at the point it actually renders — as a sibling above the form, once the grown-up gate is passed (placement wording corrected by the re-vote #3 panel; verified by running the spec: 3/3 pass). A comment in the spec records why: the two assertions pin the cure-round copy, so a copy-only un-parking regression fails the suite.
+  5. *This record* — DONE (this section). The owner's own sections above (the "#203 merge conflicts" / `_headers` adjudication record) are preserved intact and were not edited in this round.
+- **Scope of this round:** docs plus the one E2E spec only — no code changes, and `public/_headers` untouched.
 
-## Checked, NOT a defect — the band below the Journal
+## Owner steer amendment (2026-10-21)
 
-The sweep also flagged a large empty map-background band between
-the Journal section and the grandpa coffee-run scene. Measured in
-document space @1280 with images settled: the space is occupied by
-(a) the ParentZone footer (100px, sits directly under the pages row
-by design) and (b) on a FIRST visit, the read-aloud preference
-prompt (312px, a real question card rendered in flow; it renders
-nothing after the kid answers). The remaining "emptiness" is the
-coffee scene's own transparent scenery over the atlas background.
-Not the grid-stretch problem; no change made.
+- The owner supplied his actual words in the 2026-10-21 brainstorm, which **SUPERSEDES** cure-round-2 item 1 (a) and (b) in the section above. The earlier rounds' records stand as history; this subsection is the supersession note.
+- Decision 3 in the remediation doc is restored as an **owner decision** with his quote: "i think we need to add a contact us page rather emails." (Veeresh, 2026-10-21). The Remaining item again calls it the no-email ruling, citing decision 3 where his words are quoted.
+- The footer addendum heading keeps "(owner request, 2026-10-21)", with his quote added as the citation directly under the heading: "can you add a note to home footer or somewhere that meridian is COPPA compliant etc.," (Veeresh, 2026-10-21) — implemented as factual wording, not a compliance claim. Rule 11 is satisfied by quoting.
+- This amendment also added the owner-measured baseline and the post-deploy probe spec to the follow-up chain item 1 above (server-entry probe, still first): baseline measured by the owner on prod on 2026-10-21 (still pre-#207 main), the probe spec for after #207 deploys, the Workers Builds / `.vercel/output` context, and the root-cause fix if the headers are still missing.
 
-## Visual E2E pin — `tests/e2e/home-visual-layout.desktop.spec.ts`
+## Cure round 3 (2026-10-21)
 
-Loads home in a FRESH first-visit profile (tutorial invite up; a
-figure tap dismisses it and starts the greeting — the owner's exact
-path) at 390/681/700/767/768/880/1024/1280/1440 and asserts the
-figure and the bubble lie fully inside the viewport, and (≥681px)
-that the bubble intersects no headline glyph box (Range rects of
-the actual text). About tests @390/768/1024/1280 assert the card's
-internal void ≤ 56px. At 390 the bubble transiently overlays the
-headline's first line — the popover's long-standing design (absolute
-overlay, never reflows the page), unchanged by this fix — so phones
-pin containment only; the spec header documents this.
+- Re-vote #3 on `cd8a3b5` returned NOT READY on ONE omission (Office Hours BLOCK; Senior Developer convergent HIGH): the tracked docs follow-up above claimed "every surviving stale instance, named" but missed four passages in `workers/crash-report/README.md`. All four are now added to the list above (release step 3 ~227–228; Files section ~36–41; schedules ~260–261; status ~345–346), so the claim is now true. The rider record's placement phrase was also corrected in this pass (the parked note renders as a sibling above the form, not inside it — re-vote #3 nit). Single-file change (this file only), applied by Chitti at the panel's exact prescription; `public/_headers` untouched. → Re-vote #4.
+- Merge-time note for the owner (re-vote #3, Senior Developer, endorsed by the panel): merge this PR with SQUASH. A pre-cure commit on this branch (`42ce239`) still contains a retired GA4/Clarity ID value; the tip scrub holds only under squash — a merge-commit or rebase merge would carry the value into main's history. (Re-vote #4 correction: `483e079`, named in the round-3 record, is the pre-rebase twin of `42ce239`, not an ancestor of this tip — `42ce239` alone makes squash mandatory.)
 
-**Discrimination (all runs executed):**
-- Pre-fix build: mascot tests FAIL @768/880/1280/1440 with
-  `bubble left` = −27/−177/−177/−97; PASS @390 and @1024. About
-  tests FAIL @768/1024/1280 (void 1336/1469/1827px); PASS @390.
-- Fixed build (round 1): **10/10 PASS.**
-- Panel fix round, extended pin (13 tests): on the PRE-CURE build
-  (224px cap only) the new @681/@700 tests FAIL on the
-  headline-overlap assertion (at 681: glyph right edge 425.4px vs
-  bubble left edge 396px); @767 passes (it pins the band's far edge).
-  On the cured build: **13/13 PASS.**
+## Cure round 4 (2026-10-21)
 
-## Panel fix round (2026-10-21) — panel round 1 verdict: NOT READY
-
-Panel on tip `e37a895`: NOT READY — BLOCK ×3 / APPROVE-WITH-NITS ×7
-/ APPROVE ×2, DevEx PASS-WITH-NITS, benchmark PASS. The cure,
-exactly as prescribed:
-
-- **Geometry BLOCK (Frontend Dev + Senior Dev,
-  coordinator-confirmed):** the 224px cap's "clear of the headline
-  at every width" claim failed at 681–~708px — the bubble intersected
-  the headline's LOWER wrapped lines, not line 1. Cured with a 184px
-  cap for 681–767px, chosen from a fresh glyph-level probe of the
-  real wrapped headline across the band: at 224px the overlap ran
-  from −2.4px @708 to −29.4px @681; at 184px every probed width
-  clears (worst +10.6px @681, +19.6 @690, +29.6 @700, +96.6 @767),
-  and ≥768px keeps 224px (measured +25.6px @768, +20.8 @1440). The
-  refuted trough claims (903–967, 1081–1150) were not chased — no
-  change there. Viewport containment (the owner's actual defect)
-  was already cured at every width and stays cured.
-- **Pin coverage:** MASCOT_WIDTHS gains 681, 700 and 767 (the band's
-  far edge; 768 already pinned the first 224px width). The extended
-  pin's discrimination is demonstrated above.
-- **Provenance BLOCK (Office Hours):** three shipped texts
-  overclaimed owner attribution (home-v5.css ×2, the spec header).
-  All three now state the verified record: the owner reported ONE
-  ~880px screenshot (the mascot, 2026-10-21); the width sweep and
-  the About void are the fixing crew's own findings.
-- **Comment wording:** the "clear at every width" claim is now true
-  and worded exactly; the freeze phrasing separates the page shell's
-  1280px cap from the headline font's growth to ~1444px; the phone
-  sentence matches the spec (the bubble overlays headline line 1 on
-  phones until dismissed); the spec's About rationale cites the real
-  `.hv5-card` padding (26px → the 56px threshold), not 40/32px.
-- **Convergent nits:** the fixed 1,200ms sleep is now a poll for the
-  bubble's settled box; the figure click carries the `force: true`
-  why-comment the precedent specs use; the spec header states the
-  pin's honest limit (pointer path only — no keyboard or
-  screen-reader coverage of the greeting path). One nit could not be
-  applied as written: the Senior Architect's "sync the documented
-  64–240px popover contract in storyteller-home-copy.ts" — that file
-  (read in full) holds copy strings and date helpers and documents
-  no width contract, and no 64–240px popover text exists anywhere in
-  the storyteller sources. The width contract that does exist — the
-  shared 320px cap in `storyteller-home.css` — gained a one-line
-  cross-reference to the v5 caps instead; no edit was fabricated for
-  the copy file.
-
-## Gates (on the cured tip)
-
-- `npx tsc --noEmit` — clean
-- `npm test` — green (scripts 790 pass / 9 skip / 0 fail; src 1399
-  pass / 0 fail — the src count rose from 1368 with PR #203 on the
-  new base; this branch adds no unit tests)
-- `node scripts/lint-cards.mjs` — GATE PASSED
-- `npm run build:pages` — green
-- Visual pin — 13/13 PASS on the cured build; discrimination vs the
-  pre-cure build demonstrated (above)
-- Regression spot-check (existing specs over the touched CSS):
-  dismiss-overlap.mobile, storyteller-home-greeting-watchdog.mobile
-  — green. `storyteller-home.desktop.spec.ts` has a PRE-EXISTING
-  flake on this VM: its "56x56" settle poll races the figure's
-  breathing animation; across three runs its two tests alternated
-  failing on BOTH the pre-fix and fixed builds (verified by
-  rebuilding with main's CSS and re-running) — not a regression
-  from this change.
-
-## Screenshots (kept with the crew's working files)
-
-- Before: `shots-before/home-{390,768,880,1024,1280}-bubble.png`,
-  `pages-{390,768,880,1024,1280}.png`, `band-*.png`
-  (in the crew worktree `~/workspace/bench-wt/mascot-fix/`).
-- After: same names under `shots-after/`.
-
-## Commits
-
-Original build: `bd01abf` / `5d47825`, tip `5b1698c` on base
-`157d215`. Rebased for panel review: `47a6c27` / `060136d` /
-`e37a895` on `f9fa7e4`. Rebased for the panel fix round onto
-`origin/main 41e1121`:
-
-- `b55d6d8` — fix(home): storyteller figure keeps the hero row's
-  right end (margin-left: auto at every width)
-- `fa2e10d` — fix(home): About card keeps its own height beside the
-  Journal (`.hv5-pages` top-aligned)
-- `f2354a8` — test(home): visual layout pin + this file
-- `826fd47` — fix(home): 184px bubble cap at 681–767px + comment
-  cures (panel fix round)
-- `b13037d` — test(home): pin extended into the band; settled-box
-  poll; wording cures (panel fix round)
-- this file's fix-round update
-
-**Pending:** rule-13 panel re-vote on the cured tip; owner's merge
-word. Do not merge from this branch's crew.
+- Re-vote #4 on `ba9815a`: NOT READY on a 10–3 interpretive split over ONE candidate — whether the README's Owner-step block (~264–282) is a distinct stale instance or already covered in substance by the step-2 entry (the round-3 blockers, Office Hours and the Senior Developer, ruled it covered and withdrew; three seats blocked for naming it). The bullet above now names the whole block and corrects its label, satisfying both readings. All other checks and gates passed on `ba9815a`; the four round-3 additions were verified verbatim, and no seat found any other stale instance. Single-file change (this file), applied by Chitti at the blocking seats' exact prescription. → Re-vote #5.
+- Activation-gate record (re-vote #4 secondary finding, UX Designer + UX Researcher): the parked form's UX/a11y follow-ups must be explicit items when the activation follow-up opens — the three form issues (inverted error/success hierarchy, ~40px tap targets below the app's 44px standard, stale result/fields staying editable mid-submit), the disabled-fieldset-while-parked suggestion, and the accessibility items (contact errors not field-associated and focus never moves; cooldown announced per-second in a live region and focus drops on entry; gate digit entry silent for screen-reader users) plus the missing cooldown/keypad/validation E2E journeys. Non-blocking only while parked; they gate activation, not this merge.

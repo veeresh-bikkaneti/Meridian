@@ -61,7 +61,7 @@ and rejected by the receiver above 8 KB.
 | `sessionId` | string ≤64 | Anonymous random id per tab session. For `suspected_crash`: the **previous** session's id. |
 | `edition` / `regionId` / `chunkId` | string ≤128 | Where known. For `suspected_crash`: the previous session's. |
 | `lastMilestone` | string ≤128 | Last milestone of the relevant trail. |
-| `device` | object | `ua` (≤300 chars), `dpr`, `screenW`, `screenH`, `deviceMemory?`, `hardwareConcurrency?` — coarse facts only. |
+| `device` | object | Outbound reports: `os` bucket, `form` (mobile/desktop), `dpr` (rounded 1–4), `screen` (short-side bucket `sm`/`md`/`lg`/`xl`). Never the UA string, exact screen size, `deviceMemory`, or `hardwareConcurrency` (removed 2026-10-21, COPPA coarsening). The in-tab breadcrumb may hold the raw UA locally; it is stripped before any send. |
 | `breadcrumb` | object | `suspected_crash` only: the full previous trail (sessionId, buildId, startedAt, lastMilestone, history ≤12, edition/regionId/chunkId, device). |
 | `error` | object | Live error events only: `name` (≤80) + `message` (≤300, truncated). **No stack traces.** |
 
@@ -80,10 +80,14 @@ and rejected by the receiver above 8 KB.
 Events contain **no PII, no precise location, no guess/place content, no
 coordinates, no stack traces, no user identifiers** — the session id is a
 random per-tab value that dies with the tab. Error payloads are name +
-message truncated to 300 chars. Device facts are the coarse class of the
-device (UA string, pixel ratio, screen size, core/memory counts where
-the browser exposes them). Nothing is sent at all until an endpoint is
-explicitly configured (below).
+message truncated to 300 chars. Device facts are coarse buckets only:
+the operating-system family and phone/desktop form, a short-side
+screen-size bucket, and pixel density rounded to a whole number (see
+the `device` row in the schema table above). No memory or core counts
+and no exact screen size ever leave the device. The raw browser (UA)
+string exists only in the in-tab `sessionStorage` breadcrumb and is
+stripped before anything is emitted. Nothing is sent at all until an
+endpoint is explicitly configured (below).
 
 ## Transport & configuration
 
@@ -124,16 +128,21 @@ procedure that was run:
 3. Redeploy the site (flags only — no client code release needed).
 
 > **Deploy method — resolved (API-verified 2026-10-21):** the crash
-> receiver has only ever been deployed via manual API script upload
+> receiver has only ever been deployed via manual API upload
 > (`version_upload` — every deployment in the Cloudflare API history
-> is `source: api`, `triggered_by: upload`), using the `cf.py` helper
-> (`~/workspace/skills/cloudflare/bin/cf.py deploy <script.js>`;
-> secrets via `cf.py secret <NAME>`). `wrangler deploy` was never
-> the mechanism; the older doc descriptions prescribing it were
-> wrong. Note: a fresh upload does **not** inherit the
-> `DISCORD_WEBHOOK_URL` secret — it must be re-set on the new
-> version after uploading, which is the current Phase 1 deploy
-> blocker.
+> is `source: api`, `triggered_by: upload`). `wrangler deploy` was
+> never the mechanism; the older doc descriptions prescribing it were
+> wrong. Bindings ride WITH the version upload: a version that must
+> carry the `DISCORD_WEBHOOK_URL` secret or the `TELEMETRY_COUNTS` KV
+> binding gets them in its upload metadata. Naming a secret without a
+> value is rejected (error 10021) and a script-level secret PUT is
+> blocked (error 10215), so there is no "upload first, set the secret
+> afterwards" step. Versions and deployments are managed with the ops
+> helper `cf-version.py` (verbs: `list`, `get`, `deployments`,
+> `deploy`), which lives outside this repo, in the crash-report
+> watchdog goal's files. Telemetry Phase 1 went live this way on
+> 2026-10-21: the live version carries the webhook as a secret binding
+> in the upload, plus the KV binding.
 
 ## How to read counts / the funnel
 

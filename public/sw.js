@@ -18,7 +18,7 @@
  *   (claiming does not reload pages).
  * - fetch:
  *   - navigations → network-first, fall back to cache, then offline.html
- *   - /Meridian/flags.json → network-first with a small versioned cache,
+ *   - <BASE>flags.json → network-first with a small versioned cache,
  *     fall back to the cached flags only when the network fails. A remote
  *     kill decision must propagate immediately — never serve a stale
  *     flags.json when the network works, even for clients whose SW update
@@ -28,7 +28,7 @@
  *     populating the cache on network hits (stale-while-revalidate would
  *     also work; cache-first keeps chunk URLs — which are content-hashed —
  *     stable and fast).
- *     Loop clue data (/Meridian/loop/, ~13 MB total) is cache-first at
+ *     Loop clue data (<BASE>loop/, ~13 MB total) is cache-first at
  *     RUNTIME only — the whole deck is deliberately NOT precached at install
  *     (too big for a background install, especially on the older devices
  *     this game targets). Only loop/manifest.json (60 bytes) is precached
@@ -49,27 +49,35 @@ const VERSION = "meridian-__BUILD_ID__";
 const SHELL_CACHE = `meridian-shell-${VERSION}`;
 const ASSET_CACHE = `meridian-assets-${VERSION}`;
 const FLAGS_CACHE = `meridian-flags-${VERSION}`;
-const OFFLINE_URL = "/Meridian/offline.html";
-const START_URL = "/Meridian/";
-const FLAGS_URL = "/Meridian/flags.json";
+// BASE is derived from where this file is served, never hardcoded: the
+// same sw.js ships in the GitHub Pages build (served at /Meridian/sw.js →
+// BASE "/Meridian/") and the Cloudflare Workers build (served at /sw.js →
+// BASE "/"). Registration (src/lib/pwa.ts) already uses BASE_URL for the
+// script URL and scope, so this always equals the app's base path.
+// A hardcoded "/Meridian/" here meant the Cloudflare build precached
+// 404s and never cached its own assets (review finding P1-4, 2026-10-21).
+const BASE = new URL("./", self.location.href).pathname;
+const OFFLINE_URL = `${BASE}offline.html`;
+const START_URL = BASE;
+const FLAGS_URL = `${BASE}flags.json`;
 
-const SHELL_URLS = [START_URL, OFFLINE_URL, "/Meridian/manifest.webmanifest"];
+const SHELL_URLS = [START_URL, OFFLINE_URL, `${BASE}manifest.webmanifest`];
 
 // Tiny loop bootstrap files precached at install so resume + search work
 // offline even before the loop screen is ever opened. Deliberately NOT the
-// whole /Meridian/loop/ deck: clues (~1.5 MB) and names.json (11.5 MB) are
+// whole <BASE>loop/ deck: clues (~1.5 MB) and names.json (11.5 MB) are
 // runtime-cached on first online use instead (see the strategy note above).
-const LOOP_PRECACHE_URLS = ["/Meridian/loop/manifest.json"];
+const LOOP_PRECACHE_URLS = [`${BASE}loop/manifest.json`];
 // Storyteller home handoff (H1): runtime-cache preferred over install
 // precache for oldest devices. Install-precache ONLY the idle pose +
 // greet-01 mp3; the pointing pose + greet-02…06 mp3s lazy-load via the
 // runtime cache-first static-asset handler below (isStaticAsset covers
-// /Meridian/audio/, /Meridian/images/ and /Meridian/assets/).
+// <BASE>audio/, <BASE>images/ and <BASE>assets/).
 // Each asset is added individually so one missing file (e.g. greet-01.mp3
 // before the TruthTeller voice lands) never blocks the others.
 const STORYTELLER_H1_PRECACHE_URLS = [
-  "/Meridian/images/storyteller/storyteller.jpg",
-  "/Meridian/audio/storyteller/greet-01.mp3",
+  `${BASE}images/storyteller/storyteller.jpg`,
+  `${BASE}audio/storyteller/greet-01.mp3`,
 ];
 
 self.addEventListener("install", (event) => {
@@ -138,26 +146,26 @@ function isSameOrigin(url) {
 
 function isStaticAsset(pathname) {
   return (
-    pathname.startsWith("/Meridian/assets/") ||
-    pathname.startsWith("/Meridian/icons/") ||
+    pathname.startsWith(`${BASE}assets/`) ||
+    pathname.startsWith(`${BASE}icons/`) ||
     // Home-page comet greeting TTS (synthesized SFX needs no caching —
     // only this TTS audio is a real file).
-    pathname.startsWith("/Meridian/audio/") ||
+    pathname.startsWith(`${BASE}audio/`) ||
     // Storyteller H1 poses + storyteller-assets.json manifest: runtime
     // cache-first (lazy-load; only the idle pose is install-precached).
-    pathname.startsWith("/Meridian/images/") ||
+    pathname.startsWith(`${BASE}images/`) ||
     // __grok PWA install-page assets.
-    pathname.startsWith("/Meridian/__grok/") ||
+    pathname.startsWith(`${BASE}__grok/`) ||
     // Loop edition data: runtime cache-first only (see install — the deck
     // itself is never precached; clues/names.json populate on first use).
     // NOTE: fetchJson uses `cache: "no-store"`; that does NOT bypass the
     // service worker — the fetch event still fires, caches.match() still
     // hits, and the network response is still cached. Verified by the
     // offline Playwright spec (tests/e2e/offline-content.spec.ts).
-    pathname.startsWith("/Meridian/loop/") ||
-    pathname === "/Meridian/favicon.svg" ||
-    pathname === "/Meridian/manifest.webmanifest" ||
-    pathname.startsWith("/Meridian/data/")
+    pathname.startsWith(`${BASE}loop/`) ||
+    pathname === `${BASE}favicon.svg` ||
+    pathname === `${BASE}manifest.webmanifest` ||
+    pathname.startsWith(`${BASE}data/`)
   );
 }
 

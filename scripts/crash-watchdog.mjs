@@ -213,11 +213,11 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
     getEndpoint(function (ep) {
       if (!ep) return;
       try {
-        // Coarse device facts only (COPPA): OS + form-factor buckets
-        // derived from the UA, never the UA string itself, never the
-        // GPU renderer string. No coordinates, no place/guess content,
-        // no PII. undefined fields are dropped by JSON.
-        var n = win.navigator || {},
+        // COPPA: OS/form buckets from the UA (never the UA or GPU
+        // string), DPR clamped to 1-4, short-side screen bucket; no memory or
+        // cores (2026-10-21). undefined fields are dropped by JSON.
+        var r,
+          n = win.navigator || {},
           w = win.screen || {},
           uaS = String(n.userAgent).toLowerCase(),
           os = /android/.test(uaS)
@@ -230,25 +230,27 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
                   ? "mac"
                   : /linux/.test(uaS)
                     ? "linux"
-                    : "other";
+                    : "other",
+          ss = Math.min(w.width, w.height);
         var dv = {
           os: os,
           form: os === "android" || os === "ios" ? "mobile" : "desktop",
-          deviceMemory: n.deviceMemory,
-          hardwareConcurrency: n.hardwareConcurrency,
-          dpr: win.devicePixelRatio,
-          screenW: w.width,
-          screenH: w.height,
+          // Same bucket as dprBucket() in src/lib/observability.ts: an
+          // integer clamped to 1-4, or undefined when the value is missing
+          // or bogus. Rounding alone let odd zoom values such as 7 through.
+          dpr: (r = win.devicePixelRatio) > 0 ? Math.min(4, Math.round(r)) || 1 : void 0,
+          screen: ss < 480 ? "sm" : ss < 768 ? "md" : ss < 1080 ? "lg" : ss ? "xl" : void 0,
           webgl1: g1,
-          webgl2: g2,
-          buildId: buildId,
+          // (No device.buildId: the top-level event already carries it,
+          // and dropping the copy keeps the script within its byte budget.)
+          webgl2: g2
         };
           var ev = {
             type: "boot_failure",
             ts: Date.now(),
             buildId: buildId,
             device: dv,
-            error: err0 || { name: "Error", message: "boot timeout" },
+            error: err0 || { name: "Error", message: "boot timeout" }
           };
           if (prev) {
             ev.sessionId = prev.sessionId;
@@ -286,7 +288,7 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
               if (ma)
                 ma.insertAdjacentHTML(
                   "beforeend",
-                  '<p role="status">Crash note sent, no personal info - helps fix this.</p>',
+                  '<p role="status">Crash note sent, no personal info - helps fix this.</p>'
                 );
             } catch (e) {
               /* best-effort */
@@ -305,14 +307,13 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
     "padding:16px;" +
     "padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) " +
     "max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}" +
-    "#mc{margin:auto;max-width:22rem;width:100%;background:#ffffff;" +
-    "color:#1b2a3d;border-radius:12px;padding:20px;" +
+    "#mc{margin:auto;max-width:22rem;width:100%;background:#fff;color:#1b2a3d;border-radius:12px;padding:20px;" +
     "font:16px/1.5 system-ui,sans-serif}" +
     "#mc h2{font-size:18px;margin:0 0 8px}" +
     "#mc p{margin:0 0 12px}" +
     "#ma button{display:block;width:100%;font:inherit;padding:11px;" +
     "margin:0 0 8px;border:2px solid #0b5fff;border-radius:8px;cursor:pointer;" +
-    "background:#0b5fff;color:#ffffff;font-weight:700}" +
+    "background:#0b5fff;color:#fff;font-weight:700}" +
     "#ma button:focus-visible,#mc a:focus-visible{" +
     "outline:3px solid #0b5fff;outline-offset:2px}" +
     "#mc a{color:#0b5fff;display:inline-block;min-height:44px;line-height:44px}" +

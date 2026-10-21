@@ -16,7 +16,8 @@ import { ADMIN1_BY_COUNTRY, COUNTRIES, greaterSideKm, type Region, type RegionBo
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
 import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, startRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
-import { filterByTier, isPickerDifficulty, type PickerDifficulty } from "@/game/tier-filter";
+import { isPickerDifficulty, type PickerDifficulty } from "@/game/tier-filter";
+import { dealingPoolFor } from "@/game/easy-curation";
 import {
   bankPlace,
   clearSession,
@@ -67,6 +68,7 @@ import {
 } from "@/game/audio/sfx";
 import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
 import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent, type ReactNode, type RefObject } from "react";
+import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { RunStartNotice } from "@/components/run-start-notice";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
@@ -1625,7 +1627,7 @@ export function GameApp() {
         recordMilestone("data_chunk_load_start", { edition, regionId, chunkId: regionId });
         // The learning path and the globeTierSplit flag ride along so the Globe
         // fetches only the fame tiers it deals from (flag on) or all five (flag
-        // off); filterByTier below still decides the pool.
+        // off); dealingPoolFor below still decides the pool.
         const tierSplit = await globeTierSplitFor(edition, regionId);
         if (gen !== runStartGenRef.current) return; // stale (BLOCK-A)
         // F2b: the countries-50m territory data loads in parallel with
@@ -1654,7 +1656,8 @@ export function GameApp() {
           poolIds = [TUTORIAL_PLACE_ID];
           prevLastId = null;
         } else {
-          const banded = filterByTier(places, choice);
+          // Easy also applies the famous-places curation (easy-curation.ts).
+          const banded = dealingPoolFor(places, choice);
           const started = poolForRunStart(banded, edition, regionId, choice);
           poolIds = started.poolIds;
           prevLastId = started.prevLastId;
@@ -2352,6 +2355,8 @@ export function GameApp() {
       onState={withCardTap("State", () => setMenu({ kind: "states" }))}
       onCountry={withCardTap("Country", () => setMenu({ kind: "countries" }))}
       onGlobe={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
+      onBegin={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
+      onTakeTour={onTakeTour}
       onLoop={withCardTap("mystery", () => {
         // Locked for young bands (age-profile): the dossier renders the
         // locked variant instead, so this guard is belt-and-braces.
@@ -2455,6 +2460,8 @@ function Choose({
   onState,
   onCountry,
   onGlobe,
+  onBegin,
+  onTakeTour,
   onLoop,
   onColdTrail,
   onReview,
@@ -2473,6 +2480,10 @@ function Choose({
   onState: (e: ReactMouseEvent) => void;
   onCountry: (e: ReactMouseEvent) => void;
   onGlobe: (e: ReactMouseEvent) => void;
+  /** Hero "Begin exploring": start a Globe round at the picked difficulty. */
+  onBegin: (e: ReactMouseEvent) => void;
+  /** Re-open the first-run tour (after "Not now" — finding P2-11). */
+  onTakeTour: () => void;
   /** Open the GeoDetective edition (unlimited mysteries). */
   onLoop: (e: ReactMouseEvent) => void;
   /** Open the Cold Trail vertical slice (smuggler triangulation). */
@@ -2744,7 +2755,15 @@ function Choose({
               type="button"
               className="hv5-btn hv5-btn-brown"
               style={{ padding: "16px 28px" }}
-              onClick={() => scrollTo("home-cases")}
+              data-testid="begin-exploring"
+              // Primary CTA STARTS PLAYING (review finding P1-5, 2026-10-21):
+              // it used to only scroll to the Cases section, so a child who
+              // pressed the biggest button on the page did not get a game.
+              // It now opens a Globe expedition at the difficulty picked just
+              // above it (Easy = famous places, see easy-curation.ts) — the
+              // same path as the Globe edition card, sound and all. The nav's
+              // EXPEDITIONS / CASES buttons still scroll for browsing.
+              onClick={onBegin}
             >
               BEGIN EXPLORING
               <svg width="15" height="11" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
@@ -2974,7 +2993,11 @@ function Choose({
               <span className="hv5-label">Get Involved</span>
             </div>
             <h2>For grown-ups</h2>
-            <p>How Meridian works, safety notes, and the read-aloud companion for younger explorers.</p>
+            <p>
+              How Meridian works, safety notes, and the read-aloud companion for younger explorers.
+              Read our <Link to="/privacy">privacy notice</Link> or{" "}
+              <Link to="/contact">contact us</Link>.
+            </p>
             <button type="button" className="hv5-btn hv5-btn-brown" onClick={onGrownUpOpen}>
               JOIN US
               <svg width="14" height="10" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
@@ -3054,6 +3077,40 @@ function Choose({
         >
           🔒 For grown-ups
         </button>
+        {/* Tour re-entry (review finding P2-11): "Not now" on the first-run
+            invite marks the tour seen forever, so without this a player who
+            dismissed it could never get the 30-second tour back. Kid-
+            reachable on purpose — it is help, not a setting. */}
+        <button
+          type="button"
+          className="agep-footer-link"
+          onClick={onTakeTour}
+          data-testid="take-tour-link"
+        >
+          🗺️ Take the tour
+        </button>
+        {/* Grown-ups info pages (review finding P0-3). Contact is gated by
+            the math question on its own page, so linking it here is safe. */}
+        <Link to="/privacy" className="agep-footer-link" data-testid="privacy-link">
+          Privacy
+        </Link>
+        <Link to="/contact" className="agep-footer-link" data-testid="contact-link">
+          Contact us (grown-ups)
+        </Link>
+        {/* Kids-privacy promise (owner 2026-10-21). Deliberately FACTUAL
+            statements, not a "COPPA compliant" badge: compliance is a legal
+            determination nobody has certified, and an unqualified claim on a
+            child-directed site is itself an FTC exposure. Every statement here
+            must stay true — if analytics, ads, or accounts are ever added,
+            update this line and /privacy in the same PR. Links to /privacy
+            for the full detail. */}
+        <p className="agep-footer-note" data-testid="kids-privacy-note">
+          Made for kids: no accounts, no ads, no tracking cookies, and no
+          personal information collected from players.{" "}
+          <Link to="/privacy" data-testid="kids-privacy-note-link">
+            How we protect privacy
+          </Link>
+        </p>
       </footer>
     </main>
     {/* Kid-set read-aloud preference (age-profile B3): asked once, never
@@ -4074,7 +4131,7 @@ function PlayLoaded({
     if (!review && justAnswered && !wasClearedCelebrated(run.edition, run.regionId, run.difficultyChoice)) {
       // The band catalog is the unfiltered region catalog narrowed by the
       // run's difficulty band — the same filter the replay path uses.
-      const bandCatalogIds = filterByTier(places, run.difficultyChoice).map(
+      const bandCatalogIds = dealingPoolFor(places, run.difficultyChoice).map(
         (place) => place.id,
       );
       if (bandCatalogIds.length > 0) {
@@ -4150,7 +4207,7 @@ function PlayLoaded({
     // the pool is re-filtered from run.difficultyChoice — never silently
     // widened back to the full catalog.
     const { poolIds: replayPoolIds, prevLastId: replayPrevLastId, cycleCompleted: replayCycleCompleted } = poolForRunStart(
-      filterByTier(places ?? [], run.difficultyChoice),
+      dealingPoolFor(places ?? [], run.difficultyChoice),
       run.edition,
       run.regionId,
       run.difficultyChoice,

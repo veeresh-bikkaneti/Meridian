@@ -582,9 +582,11 @@ test("send flow: flags.json fetched with cache-bust, event POSTed", () => {
   assert.equal(body.device.form, "mobile");
   assert.ok(!("ua" in body.device), "full UA string is never sent (COPPA)");
   assert.ok(!("gpu" in body.device), "GPU renderer string is never sent (COPPA)");
-  assert.equal(body.device.deviceMemory, 4);
-  assert.equal(body.device.hardwareConcurrency, 8);
-  assert.equal(body.device.screenW, 390);
+  // 2026-10-21 COPPA coarsening: memory/cores never sent, screen bucketed.
+  assert.ok(!("deviceMemory" in body.device), "deviceMemory is never sent");
+  assert.ok(!("hardwareConcurrency" in body.device), "hardwareConcurrency is never sent");
+  assert.ok(!("screenW" in body.device) && !("screenH" in body.device), "exact screen size is never sent");
+  assert.equal(body.device.screen, "sm");
   assert.equal(body.device.dpr, 3);
   assert.equal(body.error.name, "Error");
   assert.ok(Buffer.byteLength(post.body, "utf8") <= 8192, "payload within the 8192-byte cap");
@@ -836,4 +838,23 @@ test("shipped script runs the watchdog end-to-end in a vm", () => {
   assert.equal(store["meridian.crashwatchdogAsked"], "1");
   const veil = veilOf(host);
   assert.ok(veil.innerHTML.includes("The game couldn't start on this phone."));
+});
+
+test("send flow: dpr is clamped like dprBucket() (1-4, undefined when bogus)", () => {
+  for (const [raw, want] of [
+    [7, 4],
+    [0.4, 1],
+    [2.6, 3],
+    [0, undefined],
+    [undefined, undefined],
+  ]) {
+    const { host, calls, xhr } = fakeHost({
+      xhrOpts: { flagsText: JSON.stringify({ observabilityEndpoint: "https://obs.test/hook" }) },
+    });
+    host.devicePixelRatio = raw;
+    crashWatchdogMain(host, "b-dpr", isValidWatchdogEndpoint);
+    fireTimer(calls);
+    const body = JSON.parse(xhr.posts[0].body);
+    assert.equal(body.device.dpr, want, `devicePixelRatio ${raw}`);
+  }
 });

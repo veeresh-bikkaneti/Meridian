@@ -302,6 +302,13 @@ curl -X POST localhost:8787/ingest -H 'content-type: application/json' \
 
 ## Secrets
 
+> **Separation rule (2026-10-21):** these secrets belong to the crash
+> pipeline only. The grown-ups contact form is the `/api/contact` route
+> on the main `meridian` worker (`src/routes/api/contact.ts`). It has its
+> own secret on that worker, `CONTACT_DISCORD_WEBHOOK_URL`, pointing at a
+> different Discord channel. Never set `DISCORD_WEBHOOK_URL` on `meridian`
+> for contact, and never route contact messages through this worker.
+
 Secrets are set through the Cloudflare API secret endpoint, via the
 same `cf.py` helper. Two forms: pass the value as an argument, or
 omit it — with no value argument, `cf.py secret <NAME>` reads the
