@@ -12,6 +12,12 @@ import {
   regionBonusFor,
   scorePlace,
 } from "./scoring.ts";
+import { preloadTerritory } from "./territory.ts";
+
+// F2b: the countries-50m data behind scorePlace's region bonus is lazy
+// (territory.ts) — preload it once so the lookups below run against the
+// real data, not the fail-closed unloaded state.
+await preloadTerritory();
 
 const PARIS: [number, number] = [2.3522, 48.8566];
 const NEAR_ORLEANS: [number, number] = [2.3522, 47.7766]; // ~120 km south of Paris, still France

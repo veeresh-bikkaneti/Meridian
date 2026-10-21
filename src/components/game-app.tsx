@@ -4,6 +4,7 @@ import { isHit, radiusKm } from "@/game/radius";
 import { placesFor, poolSizeFor, storyForBand } from "@/game/generated-places";
 import { isNewBuildDeployed } from "@/game/build-staleness";
 import { preloadAdmin1Boundaries, preloadAdmin1ForCountry, admin1ChunkIso2ForRegion } from "@/game/reverse-geocode";
+import { preloadTerritory } from "@/game/territory";
 import {
   clearRunAfterUncleanShutdown,
   handlePageHide,
@@ -236,9 +237,25 @@ const TrailScreen = lazy(() =>
  */
 function prefetchLoopScreen(): void {
   void loadLoopScreen().catch(() => {});
+  // F2b: GeoDetective reads the lazy countries-50m data (unit + tap
+  // naming) — warm it on the same intent signal.
+  void preloadTerritory();
 }
 function prefetchTrailScreen(): void {
   void loadTrailScreen().catch(() => {});
+  // F2b: Cold Trail ring labels read the hideout's territory — same
+  // intent warm-up as the Loop prefetch above.
+  void preloadTerritory();
+}
+/**
+ * F2b intent prefetch for the main editions: hovering, focusing, or
+ * pressing an edition card starts the countries-50m load (scorePlace's
+ * region bonus + the reveal pin-compare read it). Fire-and-forget —
+ * preloadTerritory never rejects, and openRun awaits it before any run
+ * commits, so a cold prefetch never changes the outcome, only the wait.
+ */
+function prefetchTerritoryData(): void {
+  void preloadTerritory();
 }
 import {
   REVIEW_DECK_COPY,
@@ -1496,6 +1513,11 @@ export function GameApp() {
       // resumeRun always returns a new object, so reloads silently dropped
       // to the menu instead of resuming.)
       if (isResumable(resumable, today)) {
+        // F2b: a restored run resumes straight into gameplay (aim or
+        // reveal) without crossing openRun's awaited territory preload —
+        // start the lazy countries-50m load now so the first post-restore
+        // pin drop scores against the real data.
+        void preloadTerritory();
         const restored = resumeRun(resumable, today);
         commit(restored);
         ensureSession(restored);
@@ -1566,7 +1588,16 @@ export function GameApp() {
         // off); filterByTier below still decides the pool.
         const tierSplit = await globeTierSplitFor(edition, regionId);
         if (gen !== runStartGenRef.current) return; // stale (BLOCK-A)
-        const places = await placesFor(edition, regionId, choice, tierSplit);
+        // F2b: the countries-50m territory data loads in parallel with
+        // the places and is awaited before the run commits — scorePlace's
+        // region bonus and the reveal pin-compare read it synchronously,
+        // so a run must never start ahead of it. preloadTerritory never
+        // rejects (a failed load fails closed at the readers), so this
+        // await cannot fail the start.
+        const [places] = await Promise.all([
+          placesFor(edition, regionId, choice, tierSplit),
+          preloadTerritory(),
+        ]);
         if (gen !== runStartGenRef.current) return; // stale (BLOCK-A)
         recordMilestone("data_loaded", { edition, regionId, chunkId: regionId });
         const dateKey = trailDate();
@@ -1738,6 +1769,10 @@ export function GameApp() {
     // Fail closed: the entry points only render when due > 0, so this is
     // unreachable in practice — never start a run with an empty queue.
     if (due.length === 0) return;
+    // F2b: review runs skip openRun (and its awaited territory preload);
+    // start the load here — the ResultCard's own mount preload is the
+    // guarantee layer for its pin-compare ledger.
+    void preloadTerritory();
     const next = startRun(
       {
         edition: "globe",
@@ -2719,19 +2754,19 @@ function Choose({
             <path d="M248 97 C244 97 242 100 242 102.4 C242 106 248 110.6 248 110.6 C248 110.6 254 106 254 102.4 C254 100 252 97 248 97 Z" fill="#EFEAD6" />
           </svg>
           <div className="hv5-editions">
-            <button type="button" className="hv5-edition" onClick={onState}>
+            <button type="button" className="hv5-edition" onClick={onState} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryData}>
               <span className="hv5-idx">N° 01</span>
               <MapPin className="size-5" aria-hidden="true" />
               <span className="hv5-etitle">State</span>
               <span className="hv5-eaction">Choose a state</span>
             </button>
-            <button type="button" className="hv5-edition" onClick={onCountry}>
+            <button type="button" className="hv5-edition" onClick={onCountry} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryData}>
               <span className="hv5-idx">N° 02</span>
               <Flag className="size-5" aria-hidden="true" />
               <span className="hv5-etitle">Country</span>
               <span className="hv5-eaction">Choose a country</span>
             </button>
-            <button type="button" className="hv5-edition" onClick={onGlobe}>
+            <button type="button" className="hv5-edition" onClick={onGlobe} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryData}>
               <span className="hv5-idx">N° 03</span>
               <Globe2 className="size-5" aria-hidden="true" />
               <span className="hv5-etitle">Globe</span>

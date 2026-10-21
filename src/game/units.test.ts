@@ -10,6 +10,12 @@ import {
   unitForSessionSummary,
   USA_TERRITORY_KEY,
 } from "./units.ts";
+import { preloadTerritory } from "./territory.ts";
+
+// F2b: unitForLoopTarget reads the lazy countries-50m data (territory.ts)
+// — preload it once so the derivations below run against the real data,
+// not the fail-closed km default.
+await preloadTerritory();
 
 // Cartographer's Plate PR2 — Veeresh's ratified decision 4: USA plays
 // show miles, the rest of the world shows kilometers, derived from

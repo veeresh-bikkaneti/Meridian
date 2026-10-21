@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type JSX } from "react";
 import { clampLat, normalizeLon } from "@/game/geo";
 import { formatLength, unitForLoopTarget } from "@/game/units";
+import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
 import { playConfirmGuess, playLose, playWin } from "@/game/audio/sfx";
 import { playCelebrationSound } from "@/game/audio/play-guards";
@@ -44,6 +45,21 @@ import type { ColdTrailStore } from "./types";
  * index is fetched in this mode.
  */
 export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
+  // F2b: ring labels and the score read the hideout's territory
+  // (unitForLoopTarget), which reads the lazy countries-50m data
+  // (territory.ts) and fails closed to km until it lands. Start the load
+  // on mount and re-render when it resolves so a USA hideout never stays
+  // on the km default. (The tick value itself is unused.)
+  const [, setTerritoryTick] = useState(0);
+  useEffect(() => {
+    let live = true;
+    void preloadTerritory().then(() => {
+      if (live) setTerritoryTick((tick) => tick + 1);
+    });
+    return () => {
+      live = false;
+    };
+  }, []);
   const [store, setStore] = useState<ColdTrailStore>(loadColdtrail);
   const [pending, setPending] = useState<{ lon: number; lat: number } | null>(null);
   const [hint, setHint] = useState<string | null>(null);

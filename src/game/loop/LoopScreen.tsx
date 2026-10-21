@@ -3,6 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { useOnlineStatus } from "@/hooks/use-online-status";
 import { useAutoAnimate } from "@/hooks/use-auto-animate";
 import { formatLength, loopGradeBand, unitForLoopTarget } from "@/game/units";
+import { preloadTerritory } from "@/game/territory";
 import { nameTier } from "@/game/place-name";
 import { PlaceNameText } from "@/components/place-name";
 import { GradeChip } from "@/components/grade-chip";
@@ -254,6 +255,22 @@ export function LoopScreen({
   onCelebrate: (spec: CelebrationSpec) => void;
 }) {
   const reduced = usePrefersReducedMotion();
+  // F2b: this screen's distances read the mystery target's territory
+  // (unitForLoopTarget) and map taps are named via resolvePin — both read
+  // the lazy countries-50m data (territory.ts), which fails closed until
+  // loaded. Start the load on mount and re-render when it lands so a
+  // USA mystery never stays on the km default. (The state bump is the
+  // re-render trigger; the value itself is unused.)
+  const [, setTerritoryTick] = useState(0);
+  useEffect(() => {
+    let live = true;
+    void preloadTerritory().then(() => {
+      if (live) setTerritoryTick((tick) => tick + 1);
+    });
+    return () => {
+      live = false;
+    };
+  }, []);
   const [store, setStore] = useState<LoopUnlimitedStore | null>(null);
   // Ref mirror so event handlers always see the latest store without
   // stale closures (the deal/complete paths must be race-free).
