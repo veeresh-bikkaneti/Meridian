@@ -1,13 +1,20 @@
 # BRANCH_STATUS — ops/telemetry-phase1-deploy
 
-**State: config change for the owner's merge word. The Phase 1 deploy was
-ATTEMPTED 2026-10-21 on the owner's order ("Enable deeper observability
-into crash reports") and is BLOCKED on one owner-only step (below).
-Production was restored to the exact pre-attempt state — no behavior
-change is live.**
+**State: config change for the owner's merge word — Ready: NO (merge
+word + the coordinated deploy window below are still the owner's).
+The Phase 1 deploy was ATTEMPTED 2026-10-21 on the owner's order
+("Enable deeper observability into crash reports") and is BLOCKED on
+one owner-only step (below). Production was restored to the exact
+pre-attempt state — no behavior change is live. Go-live readiness
+was re-verified end-to-end 2026-10-21 (see "Readiness re-verification"
+below): everything is staged; the window should take minutes.**
 
 Base: `origin/main cc23d30`. Files changed (2): `workers/crash-report/wrangler.toml`,
-this file.
+this file. Drift vs current main (`33a28fe`, PRs #192/#195 — docs
+only): the `wrangler.toml` change applies cleanly (main never touched
+the file); `BRANCH_STATUS.md` will conflict at merge because main's
+copy is now PR #192's record — resolve by keeping this branch's own
+record (the standing pattern), then header-cure after landing.
 
 ## What this branch changes
 
@@ -53,8 +60,38 @@ kept as-is. After that: deploy the already-uploaded Phase 1 version,
 re-probe (`forwarded: true` AND `counted: true`), done — namespace and
 cron are already in place.
 
+## Readiness re-verification (2026-10-21, Cloudflare API, read-only)
+
+- **Live version:** current deployment `3613c1ad` (2026-10-21
+  09:45:56Z) routes 100% to version `cc323715` (pre-Phase-1,
+  uploaded 2026-10-09) — the known-good restore. Its only binding
+  is `DISCORD_WEBHOOK_URL` (secret_text). `/health` → `{"ok":true}`.
+- **Phase 1 version still staged:** `405db4b5` exists in version
+  history with the `TELEMETRY_COUNTS` KV binding in its metadata
+  (annotation: "Telemetry Phase 1 (PR #171)…"). Versions are
+  immutable snapshots — it is deployable as-is via a deployments
+  call; no re-upload is needed. (It carries no secret binding —
+  that is the known gap the window's step 2 closes.)
+- **KV + cron in place:** namespace `34884ed9…` (title
+  TELEMETRY_COUNTS) exists and still holds the probe bucket
+  `tel:counts:2026-10-21T09:js_error`; schedule `15 * * * *` is
+  still set on the worker (inert until Phase 1 code is live).
+- **Rollback path (proven 2026-10-21):** create a deployment
+  routing 100% to version `cc323715` (deployments API, strategy
+  "percentage") — exactly what deployment `3613c1ad` did. One call,
+  seconds to propagate; `cc323715` remains in version history.
+- **`wrangler.toml` header comments cured** (commit `3a527f7`):
+  the header no longer prescribes `wrangler secret put` /
+  `wrangler kv namespace create` — it now matches the merged docs
+  (PR #192): secrets via `cf.py secret` / API, namespace created
+  via the API, deploys by API script upload, and this file is the
+  human config record (`cf.py deploy` never reads it).
+
 ## Pending
 
 - Owner's merge word for this branch (config-only; no code change).
+- The coordinated go-live window (deploy `405db4b5` → owner
+  re-supplies `DISCORD_WEBHOOK_URL` → probe for `forwarded:true`
+  AND `counted:true`).
 - Threshold-alert path verified from code + config, not live (a live
   check would need 10+ synthetic events in one hour).
