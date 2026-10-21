@@ -1,53 +1,37 @@
-# Meridian — Cloudflare response headers (F1: immutable caching)
-# Deployed location: root of the static output (dist/client/_headers),
-# copied there by the build from public/_headers. Honoured by Cloudflare
-# Pages and Workers Static Assets, which serve the live site; GitHub Pages
-# ignores this file (harmless).
+# Cloudflare Workers static-assets response headers (review findings P2-8/9,
+# 2026-10-21). Cloudflare reads this file from the build output (Vite copies
+# public/ → dist/client/). GitHub Pages ignores it (it is served as a plain
+# file there and has no effect). Rationale + how to verify: docs/security-headers.md
 #
-# Scope: /assets/* — the Vite/Rolldown build output. MOST files there are
-# content-hashed (a content change produces a new filename/URL), so a
-# cached copy can never go stale and is safe to cache for a year as
-# immutable. This matches the rule the Nitro/Vercel build already emits
-# in .vercel/output/config.json for /assets/(.*).
+# The /* block below MUST stay identical to SECURITY_HEADERS in
+# src/lib/security-headers.ts (the single source of truth; CSP rationale is
+# documented there). src/lib/security-headers.test.ts fails on drift.
 #
-# Carve-outs (Core F-1): NOT every file under /assets/* is content-hashed.
-# Three files have stable names with mutable content and must never be
-# immutable:
-#   - /assets/maplibre-gl-worker.mjs and /assets/maplibre-gl-shared.mjs
-#     are emitted verbatim from node_modules/maplibre-gl/dist by the
-#     maplibre-worker-files plugin in vite.config.ts — a MapLibre
-#     upgrade replaces them under the SAME filenames.
-#   - /assets/storyteller/storyteller-assets.json is a build-generated
-#     manifest fetched at runtime by storyteller-home.tsx — its content
-#     changes whenever the storyteller asset set changes, same filename.
-#
-# How the carve-outs work — per Cloudflare's _headers documentation
-# (developers.cloudflare.com/pages/configuration/headers/ and
-# /workers/static-assets/headers/): an incoming request which matches
-# multiple rules' URL patterns will inherit all rules' headers, and if
-# a header is applied twice in the _headers file, the values are joined
-# with a comma separator. There is no most-specific-wins. So a second
-# Cache-Control set-line for an exact path would NOT override the
-# wildcard's immutable value — it would comma-join with it. The
-# documented remedy is the detach form used ALONE in each carved block
-# below: an indented `! Cache-Control` line removes the wildcard's
-# Cache-Control for that path, so no _headers Cache-Control applies
-# there and the platform default resumes (documented for Workers Static
-# Assets as Cache-Control: public, max-age=0, must-revalidate + ETag —
-# exactly the revalidate behaviour these stable-named files need).
-# Detach is used ALONE — never combined with a set-line in the same
-# block.
-#
-# Deliberately NOT immutable: everything else keeps Cloudflare's default
-# (public, max-age=0, must-revalidate). /flags.json, /audio/*, /icons/*,
-# /images/*, /loop/*, sw.js and HTML all have stable names with mutable
-# content (e.g. narration mp3s were replaced under the same filenames in
-# PR #174, and sw.js is re-fingerprinted every build), so they must keep
-# revalidating — no rule below touches them.
+# Scope: Cloudflare applies this file to STATIC ASSET responses only. It is
+# NOT applied to Worker-generated responses, and the live `meridian` worker
+# server-renders the HTML. Those responses get the same headers from the
+# request middleware in src/start.ts.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://server.arcgisonline.com; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://server.arcgisonline.com https://meridian-crash-report.knowledgetest.workers.dev https://cloudflareinsights.com; worker-src 'self' blob:; child-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=(), browsing-topics=()
+  Cross-Origin-Opener-Policy: same-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
 
+# Hashed build assets never change at a given URL → cache for a year.
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+# ...except the three UN-hashed files that live under /assets/ (stable names,
+# mutable content): the MapLibre worker copies (maplibre-worker-files plugin
+# in vite.config.ts) and the storyteller asset manifest. Cloudflare joins
+# headers from every matching rule (no most-specific-wins), so a second
+# Cache-Control set-line would comma-join with "immutable". The documented
+# remedy is a detach line used ALONE: the platform default
+# (public, max-age=0, must-revalidate + ETag) then applies. These blocks are
+# text-identical to PR #203 (perf, F1) on purpose, so the two merge cleanly.
 /assets/maplibre-gl-worker.mjs
   ! Cache-Control
 
@@ -56,3 +40,22 @@
 
 /assets/storyteller/storyteller-assets.json
   ! Cache-Control
+
+# The service worker and the files it treats as "latest" must revalidate
+# every time, or update detection (fingerprinted sw.js) and remote kill
+# switches (flags.json) stall.
+/sw.js
+  Cache-Control: no-cache
+/flags.json
+  Cache-Control: no-cache
+/build-meta.json
+  Cache-Control: no-cache
+/manifest.webmanifest
+  Cache-Control: no-cache
+
+# HTML entry points: short browser cache, edge may keep it briefly;
+# a deploy is visible within a minute.
+/
+  Cache-Control: public, max-age=0, s-maxage=60, must-revalidate
+/index.html
+  Cache-Control: public, max-age=0, s-maxage=60, must-revalidate

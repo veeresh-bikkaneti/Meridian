@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   FLAG_DEFAULTS,
   FLAGS_FETCH_TIMEOUT_MS,
+  getContactEndpoint,
   getObservabilityEndpoint,
   isEnabled,
   isValidObservabilityEndpoint,
@@ -446,5 +447,21 @@ describe("observabilityEndpoint", () => {
     }
     assert.equal(isValidObservabilityEndpoint("https://obs.example.com/ingest"), true);
     assert.equal(isValidObservabilityEndpoint("/ingest"), true);
+  });
+});
+
+describe("contactEndpoint (grown-ups contact form, /api/contact)", () => {
+  beforeEach(() => resetFlags());
+  it("defaults to null — the form stays off until flags.json names an endpoint", () => {
+    assert.equal(getContactEndpoint(), null);
+  });
+  it("accepts an https endpoint and rejects junk (fail closed)", async () => {
+    const a = fakeFetch(okResponse({ flags: {}, contactEndpoint: "https://contact.example.com/contact" }));
+    await loadFlags({ ...BASE, fetch: a.fn });
+    assert.equal(getContactEndpoint(), "https://contact.example.com/contact");
+    resetFlags();
+    const b = fakeFetch(okResponse({ flags: {}, contactEndpoint: "http://contact.example.com/contact" }));
+    await loadFlags({ ...BASE, fetch: b.fn });
+    assert.equal(getContactEndpoint(), null);
   });
 });

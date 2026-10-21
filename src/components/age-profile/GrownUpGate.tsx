@@ -11,13 +11,24 @@
  * resumes the live countdown instead of resetting it. One timestamp,
  * zero PII — COPPA-safe.
  *
+ * Strikes persist too (review finding P2-10): failed attempts are stored
+ * with a 15-minute window, so closing and reopening the gate no longer
+ * hands out three fresh tries — the cooldown can't be dodged with ×.
+ *
  * Telemetry (local-only): emits `grownup_gate.attempt` style payloads via
  * onAttempt(result, attempts) — the parent callback must never log the
  * answer value.
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { clearCooldown, readCooldown, writeCooldown } from "./cooldown.ts";
+import {
+  clearCooldown,
+  clearStrikes,
+  readCooldown,
+  readStrikes,
+  writeCooldown,
+  writeStrikes,
+} from "./cooldown.ts";
 
 const MAX_ATTEMPTS = 3;
 const COOLDOWN_SECONDS = 60;
@@ -46,7 +57,7 @@ function newQuestion(): GateQuestion {
 export function GrownUpGate({ onPass, onCancel, onAttempt }: GrownUpGateProps) {
   const [question, setQuestion] = useState<GateQuestion>(newQuestion);
   const [digits, setDigits] = useState("");
-  const [fails, setFails] = useState(0);
+  const [fails, setFails] = useState(() => readStrikes());
   const [error, setError] = useState<string | null>(null);
   // Resume a cooldown started before a remount (persisted deadline), or
   // start un-cooled. readCooldown() self-clears expired/malformed keys.
@@ -126,6 +137,7 @@ export function GrownUpGate({ onPass, onCancel, onAttempt }: GrownUpGateProps) {
     if (cooling || digits.length === 0) return;
     const given = Number(digits);
     if (given === answer) {
+      clearStrikes();
       onAttempt?.("pass", fails + 1);
       onPass();
       return;
@@ -137,10 +149,13 @@ export function GrownUpGate({ onPass, onCancel, onAttempt }: GrownUpGateProps) {
       // A 4th submit during cooldown is silently ignored: check() already
       // returns early when `cooling` — keep that guard.
       const until = Date.now() + COOLDOWN_SECONDS * 1000;
+      // The cooldown takes over from the strike record.
+      clearStrikes();
       writeCooldown(until);
       setCooldownUntil(until);
       setError(`Take a breath — try again in a minute.`);
     } else {
+      writeStrikes(nextFails);
       setError(`Not quite — try again. (${MAX_ATTEMPTS - nextFails} ${nextFails === MAX_ATTEMPTS - 1 ? "try" : "tries"} left)`);
       setDigits("");
     }

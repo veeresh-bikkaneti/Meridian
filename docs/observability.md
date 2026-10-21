@@ -61,7 +61,7 @@ and rejected by the receiver above 8 KB.
 | `sessionId` | string ≤64 | Anonymous random id per tab session. For `suspected_crash`: the **previous** session's id. |
 | `edition` / `regionId` / `chunkId` | string ≤128 | Where known. For `suspected_crash`: the previous session's. |
 | `lastMilestone` | string ≤128 | Last milestone of the relevant trail. |
-| `device` | object | `ua` (≤300 chars), `dpr`, `screenW`, `screenH`, `deviceMemory?`, `hardwareConcurrency?` — coarse facts only. |
+| `device` | object | Outbound reports: `os` bucket, `form` (mobile/desktop), `dpr` (rounded 1–4), `screen` (short-side bucket `sm`/`md`/`lg`/`xl`). Never the UA string, exact screen size, `deviceMemory`, or `hardwareConcurrency` (removed 2026-10-21, COPPA coarsening). The in-tab breadcrumb may hold the raw UA locally; it is stripped before any send. |
 | `breadcrumb` | object | `suspected_crash` only: the full previous trail (sessionId, buildId, startedAt, lastMilestone, history ≤12, edition/regionId/chunkId, device). |
 | `error` | object | Live error events only: `name` (≤80) + `message` (≤300, truncated). **No stack traces.** |
 

@@ -41,7 +41,7 @@ Points follow scoring v3: a distance-based base (MapTap's curve) multiplied by t
 
 ### Learning paths
 
-The edition picker asks "How do you want to grow your map today?" — three learning paths, not gamer difficulty. **Easy** deals famous places (tiers 1–2), the must-know spots every explorer starts with: world-famous cities and capitals, the curriculum core. **Medium** (tiers 2–4) mixes the familiar with the thought-provoking. **Hard** (tiers 4–5) opens the hidden corners of the world — small towns and neighborhoods most people have never heard of — for explorers ready to discover more. Within your path, famous places deal first: the mental map gets built before the obscure places attach to it. Your choice persists across editions and reloads; switching paths starts a fresh run.
+The edition picker asks "How do you want to grow your map today?" — three learning paths, not gamer difficulty. **Easy** deals famous places (tiers 1–2), the must-know spots every explorer starts with: world-famous cities and capitals, the curriculum core. **Medium** (tiers 2–4) mixes the familiar with the thought-provoking. **Hard** (tiers 4–5) opens the hidden corners of the world — small towns and neighborhoods most people have never heard of — for explorers ready to discover more. Within your path, famous places deal first: the mental map gets built before the obscure places attach to it. On Easy that rule is strict: the pool is hand-curated starters plus tier-1 places with a verified history hook, falling back to all tier-1 places and then the full 1–2 band only when a region is too small to fill a run (`src/game/easy-curation.ts`). The hero's **Begin exploring** button starts a Globe expedition at the path you picked — it no longer just scrolls the page. Your choice persists across editions and reloads; switching paths starts a fresh run.
 
 The share line carries the trail, not just a number:
 
@@ -163,8 +163,16 @@ npm test
 npm run build:pages
 ```
 
+### Privacy (kids first)
+
+Meridian is directed to children, so every visitor is treated as a child. There are no accounts, no personal questions, and no cookies or persistent identifiers for analytics. Google Analytics and Microsoft Clarity were removed on 2026-10-21; the only analytics is optional, cookieless **Cloudflare Web Analytics**, injected only when the build has `VITE_CF_BEACON_TOKEN` set. Crash reports go to our own worker with a per-session random ID and coarse device buckets only. The full notice is the in-app **/privacy** page (linked from the home footer and the For grown-ups card); grown-ups reach the owner through the math-gated **/contact** form, which posts to `POST /api/contact` on the main `meridian` worker (`src/routes/api/contact.ts`; there is no separate contact worker). **Deploy TODO:** delivery for that form is parked. The handler defaults to a `NoopSink` that accepts messages and stores nothing, and the page says so. It forwards to Discord only when the `meridian` worker has its *own* secret `CONTACT_DISCORD_WEBHOOK_URL`; that is never the crash worker's `DISCORD_WEBHOOK_URL`, and the two use different channels. The form stays off until `public/flags.json` gets a `contactEndpoint`. Background: `docs/reviews/2026-10-21-p0-p2-remediation.md`.
+
+### Security headers
+
+`public/_headers` sets CSP, `X-Frame-Options: DENY`, `frame-ancestors 'none'`, Referrer-Policy, Permissions-Policy (camera/mic/geolocation/payment denied), nosniff, COOP and HSTS on the Cloudflare build, plus `immutable` caching for hashed `/assets/*` and `no-cache` for `sw.js` / `flags.json`. See `docs/security-headers.md`.
+
 ### Installable (PWA)
 
-Meridian ships a web manifest, app icons, and an offline page, so it can be installed from the browser. Updates never interrupt play: when a new version is detected, a toast offers "Update now" (applies the update and reloads once) or "Later" (dismisses; the update applies on the next fresh load). The service worker registers in production builds only.
+Meridian ships a web manifest, app icons, and an offline page, so it can be installed from the browser. Updates never interrupt play: when a new version is detected, a toast offers "Update now" (applies the update and reloads once) or "Later" (dismisses; the update applies on the next fresh load). The service worker registers in production builds only. The manifest (`./` scope/start URL) and `sw.js` (base derived from its own URL) carry no hardcoded base path, so the same files work under `/Meridian/` on GitHub Pages and `/` on Cloudflare.
 
 Imagery: `Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community`. The imagery host sees the area on screen. Your pin stays on the device. Place data: GeoNames (CC-BY 4.0). Wikipedia-derived history notes: CC BY-SA, via the in-app source links.

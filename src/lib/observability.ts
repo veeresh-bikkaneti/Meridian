@@ -14,8 +14,9 @@
  * the trail, so the event fires exactly once even if transport fails.
  *
  * Privacy: events carry build id, milestone names, edition/region ids,
- * coarse device facts (OS/form buckets, DPR, screen size, memory, cores —
- * never the raw UA string) and truncated error name/message only.
+ * coarse device facts (OS/form buckets, a rounded DPR, and a screen-size
+ * BUCKET — never the raw UA string, exact screen size, memory, or core
+ * count; see coarseDeviceFacts) and truncated error name/message only.
  * NO guess/place content, NO coordinates, NO PII, NO stack traces.
  *
  * Transport is a complete no-op until an endpoint is configured (via the
@@ -88,8 +89,30 @@ export interface DeviceInfo {
   dpr?: number;
   screenW?: number;
   screenH?: number;
-  deviceMemory?: number;
-  hardwareConcurrency?: number;
+  /**
+   * Screen-size bucket sent in reports instead of exact pixels:
+   * "sm" (short side < 480), "md" (< 768), "lg" (< 1080), "xl".
+   */
+  screen?: ScreenBucket;
+}
+
+export type ScreenBucket = "sm" | "md" | "lg" | "xl";
+
+/**
+ * Bucket a screen by its SHORT side. Exact width × height (together with
+ * DPR and OS) narrows a device down far more than crash triage needs —
+ * kids' privacy wins (owner decision 2026-10-21).
+ */
+export function screenBucket(w: unknown, h: unknown): ScreenBucket | undefined {
+  if (typeof w !== "number" || typeof h !== "number" || !(w > 0) || !(h > 0)) return undefined;
+  const short = Math.min(w, h);
+  return short < 480 ? "sm" : short < 768 ? "md" : short < 1080 ? "lg" : "xl";
+}
+
+/** DPR rounded to the nearest whole number (1, 2, 3…), capped at 4. */
+export function dprBucket(dpr: unknown): number | undefined {
+  if (typeof dpr !== "number" || !(dpr > 0)) return undefined;
+  return Math.min(4, Math.max(1, Math.round(dpr)));
 }
 
 export interface MilestoneEntry {
@@ -194,9 +217,9 @@ export function collectDeviceInfo(): DeviceInfo {
   try {
     if (typeof navigator !== "undefined") {
       if (typeof navigator.userAgent === "string") d.ua = navigator.userAgent.slice(0, MAX_ERROR_CHARS);
-      const nav = navigator as Navigator & { deviceMemory?: number };
-      if (typeof nav.deviceMemory === "number") d.deviceMemory = nav.deviceMemory;
-      if (typeof navigator.hardwareConcurrency === "number") d.hardwareConcurrency = navigator.hardwareConcurrency;
+      // deviceMemory / hardwareConcurrency are deliberately NOT collected
+      // (2026-10-21, COPPA coarsening): they add fingerprint entropy and
+      // crash triage never needed them.
     }
     if (typeof window !== "undefined") {
       if (typeof window.devicePixelRatio === "number") d.dpr = window.devicePixelRatio;
@@ -221,8 +244,9 @@ function defaultRandomId(): string {
 /**
  * Coarse device facts for outbound crash reports — mirrors the watchdog's
  * COPPA posture (scripts/crash-watchdog.mjs): OS + form-factor buckets
- * derived from the UA, never the UA string itself. Numeric facts (DPR,
- * screen, memory, cores) pass through. Reads only live globals, never
+ * derived from the UA, never the UA string itself. DPR is rounded and the
+ * screen is reduced to a size bucket; memory and core counts are never
+ * sent (2026-10-21 COPPA coarsening). Reads only live globals, never
  * stored state, so a tainted stored UA cannot leak through this path.
  */
 export function coarseDeviceFacts(): DeviceInfo {
@@ -249,11 +273,8 @@ export function coarseDeviceFacts(): DeviceInfo {
   return {
     os,
     form: os === "android" || os === "ios" ? "mobile" : "desktop",
-    dpr: d.dpr,
-    screenW: d.screenW,
-    screenH: d.screenH,
-    deviceMemory: d.deviceMemory,
-    hardwareConcurrency: d.hardwareConcurrency,
+    dpr: dprBucket(d.dpr),
+    screen: screenBucket(d.screenW, d.screenH),
   };
 }
 

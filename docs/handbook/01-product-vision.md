@@ -36,7 +36,7 @@ There is no monetization target. No paywall will ever exist in Meridian. The sta
 > **"Grown-ups — buy me a coffee? ☕"**
 > **"Your support keeps Meridian free for kids"**
 
-The "Grown-ups" gate exists because the product must stay COPPA-safe: the donation path is for adults, never for kids. Analytics are likewise locked to a COPPA-safe config — no ad personalization, IP anonymization, no cross-site tracking — and measurement scope is still an open decision (GA4 remains the standing recommendation for usage stats only).
+The "Grown-ups" gate exists because the product must stay COPPA-safe: the donation path is for adults, never for kids. Analytics follow the same rule: since 2026-10-21 (owner decision, COPPA first) Google Analytics and Microsoft Clarity are removed entirely, and the only usage measurement is optional, cookieless Cloudflare Web Analytics (aggregate counts, no identifiers) — see `docs/reviews/2026-10-21-p0-p2-remediation.md`.
 
 ## Learning-outcomes instrumentation
 
@@ -55,7 +55,7 @@ Three guarantees that are non-negotiable:
 ## Kid-safety / COPPA posture
 
 - Analytics components **fail closed** when tracking IDs are unset — they simply do nothing.
-- Secrets and IDs are never hardcoded in source; they live in GitHub Actions secrets (`VITE_GA4_MEASUREMENT_ID`, `VITE_CLARITY_PROJECT_ID`, `VITE_KOFI_URL`), injected at build time.
+- Secrets and IDs are never hardcoded in source; they live in GitHub Actions secrets (`VITE_CF_BEACON_TOKEN`, `VITE_KOFI_URL`; the GA4/Clarity IDs were retired 2026-10-21), injected at build time.
 - The crash-reporting pipeline is always-on production monitoring: the `meridian-crash-report` worker receives crash events and forwards them to Discord. CORS is open (`*`) by explicit owner sign-off — acceptable because the endpoint carries **no cookies and no auth**.
 - Adult surfaces (donation, settings) are gated behind the "For grown-ups" path, never in the kid's flow.
 

@@ -66,3 +66,30 @@ test("clearCooldown deletes the key (cooldown over — expiry leaves no key behi
   assert.equal(backing.has(GROWNUP_COOLDOWN_KEY), false);
   assert.equal(readCooldown(NOW), null);
 });
+
+// --- Strikes persist across gate remounts (P2-10) ---
+
+import { readStrikes, writeStrikes, clearStrikes, GROWNUP_STRIKES_KEY, STRIKE_WINDOW_MS } from "./cooldown.ts";
+
+test("strikes survive a close/reopen of the gate", () => {
+  clear();
+  assert.equal(readStrikes(NOW), 0);
+  writeStrikes(2, NOW);
+  assert.equal(readStrikes(NOW + 5_000), 2, "reopening the gate keeps the two earlier strikes");
+});
+
+test("strikes expire after the window and the key is deleted", () => {
+  clear();
+  writeStrikes(2, NOW);
+  assert.equal(readStrikes(NOW + STRIKE_WINDOW_MS + 1), 0);
+  assert.equal(backing.has(GROWNUP_STRIKES_KEY), false);
+});
+
+test("malformed strike records read as 0; clearStrikes removes the key", () => {
+  clear();
+  backing.set(GROWNUP_STRIKES_KEY, "not json");
+  assert.equal(readStrikes(NOW), 0);
+  writeStrikes(1, NOW);
+  clearStrikes();
+  assert.equal(backing.has(GROWNUP_STRIKES_KEY), false);
+});

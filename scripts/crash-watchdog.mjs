@@ -213,10 +213,9 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
     getEndpoint(function (ep) {
       if (!ep) return;
       try {
-        // Coarse device facts only (COPPA): OS + form-factor buckets
-        // derived from the UA, never the UA string itself, never the
-        // GPU renderer string. No coordinates, no place/guess content,
-        // no PII. undefined fields are dropped by JSON.
+        // COPPA: OS/form buckets from the UA (never the UA or GPU
+        // string), rounded DPR, short-side screen bucket; no memory or
+        // cores (2026-10-21). undefined fields are dropped by JSON.
         var n = win.navigator || {},
           w = win.screen || {},
           uaS = String(n.userAgent).toLowerCase(),
@@ -230,15 +229,13 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
                   ? "mac"
                   : /linux/.test(uaS)
                     ? "linux"
-                    : "other";
+                    : "other",
+          ss = Math.min(w.width, w.height);
         var dv = {
           os: os,
           form: os === "android" || os === "ios" ? "mobile" : "desktop",
-          deviceMemory: n.deviceMemory,
-          hardwareConcurrency: n.hardwareConcurrency,
-          dpr: win.devicePixelRatio,
-          screenW: w.width,
-          screenH: w.height,
+          dpr: Math.round(win.devicePixelRatio),
+          screen: ss < 480 ? "sm" : ss < 768 ? "md" : ss < 1080 ? "lg" : ss ? "xl" : void 0,
           webgl1: g1,
           webgl2: g2,
           buildId: buildId,

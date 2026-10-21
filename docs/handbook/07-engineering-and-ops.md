@@ -71,8 +71,8 @@ Standing rules around those gates:
 
 ## 5. Analytics — COPPA-safe by default
 
-- **GA4** for usage stats, on a COPPA-safe configuration: no ad personalization, IP anonymization, no cross-site tracking. Nothing leaves the phone for the learning-outcome measurement (client-side only).
-- **No hardcoded IDs/keys in source.** GitHub Actions secrets inject them at build time: `VITE_GA4_MEASUREMENT_ID`, `VITE_CLARITY_PROJECT_ID`, `VITE_KOFI_URL`. Components **fail closed** when unset.
+- **Cloudflare Web Analytics only** (cookieless, aggregate; optional via `VITE_CF_BEACON_TOKEN`). GA4 and Microsoft Clarity were removed 2026-10-21 (COPPA — every visitor is treated as a child). Nothing leaves the phone for the learning-outcome measurement (client-side only).
+- **No hardcoded IDs/keys in source.** GitHub Actions secrets inject them at build time: `VITE_CF_BEACON_TOKEN`, `VITE_KOFI_URL`. Components **fail closed** when unset.
 - Measurement scope (what gets tracked long-term) is still undecided — OPEN.
 
 ---
