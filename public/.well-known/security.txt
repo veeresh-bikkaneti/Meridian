@@ -1,0 +1,9 @@
+# Meridian security contact (RFC 9116). Review item R7, 2026-10-21.
+# There is no email address on purpose: the owner publishes none. Reports go
+# through the grown-ups contact form, which keeps nothing server-side (see
+# /privacy). Renew "Expires" before it passes; scripts/static-wellknown.test.mjs
+# fails once it is in the past or more than a year out.
+Contact: https://meridian.knowledgetest.workers.dev/contact
+Expires: 2027-10-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://meridian.knowledgetest.workers.dev/.well-known/security.txt

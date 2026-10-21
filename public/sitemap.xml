@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Meridian's public pages (review R7). Keep in sync with src/routes/;
+     scripts/static-wellknown.test.mjs checks that every page route is listed. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://meridian.knowledgetest.workers.dev/</loc></url>
+  <url><loc>https://meridian.knowledgetest.workers.dev/privacy</loc></url>
+  <url><loc>https://meridian.knowledgetest.workers.dev/contact</loc></url>
+</urlset>
