@@ -58,10 +58,8 @@ F4/F5 data pipeline, F7 fonts, F9 rendering.
 - [x] Screenshots (home + game start, before/after, 1280 + 390) in
       ~/workspace/your_files/meridian-perf-tuning/screens-{before,after}/
       — visually identical, no layout change.
-- [ ] **PR NOT YET OPENED — BLOCKED on GitHub auth:** the stored token
-      is invalid (`git push` → "Invalid username or token"). Owner
-      pastes a fresh PAT → push + PR is a 1-minute step. Branch is
-      complete and committed locally (9 commits, 0 behind main).
+- [x] **PR OPENED 2026-10-21:** https://github.com/veeresh-bikkaneti/Meridian/pull/203
+      (owner pasted a fresh PAT; pushed + opened by the parent agent).
 - **Ready to merge? NO** (owner review → live curl check of carved
   paths post-deploy → Chitti → his merge call). NEVER MERGE.
 
