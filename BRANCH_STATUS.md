@@ -14,7 +14,7 @@ configured. Not opened as a PR.** Only the owner merges.
   `contactEndpoint`. The activation follow-up is owned by tinkabot after #207
   merges. Runbook: `docs/contact-activation.md`.
 
-## Files touched (16, relative to #207's tip)
+## Files touched (15, relative to #207's tip, listed below)
 
 | File | What |
 | --- | --- |
