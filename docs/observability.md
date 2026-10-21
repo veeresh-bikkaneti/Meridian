@@ -123,11 +123,17 @@ procedure that was run:
    top level of `public/flags.json`.
 3. Redeploy the site (flags only — no client code release needed).
 
-> **Open owner item:** the crash receiver was deployed via manual
-> `version_upload` in October 2026, while the repo docs describe
-> `wrangler deploy` — the owner has not yet confirmed which is the
-> canonical deploy path. Neither description above is changed until
-> that ruling lands.
+> **Deploy method — resolved (API-verified 2026-10-21):** the crash
+> receiver has only ever been deployed via manual API script upload
+> (`version_upload` — every deployment in the Cloudflare API history
+> is `source: api`, `triggered_by: upload`), using the `cf.py` helper
+> (`~/workspace/skills/cloudflare/bin/cf.py deploy <script.js>`;
+> secrets via `cf.py secret <NAME>`). `wrangler deploy` was never
+> the mechanism; the older doc descriptions prescribing it were
+> wrong. Note: a fresh upload does **not** inherit the
+> `DISCORD_WEBHOOK_URL` secret — it must be re-set on the new
+> version after uploading, which is the current Phase 1 deploy
+> blocker.
 
 ## How to read counts / the funnel
 

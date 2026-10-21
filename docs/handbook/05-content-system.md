@@ -47,6 +47,30 @@ Two build-time gates guard place integrity:
 - **The Hyderabad rule** (Veeresh's permanent hard gate, merged via PR #15): every place's coordinates must match its claimed location. A one-time audit of the 433-place catalog found zero mismatches; `src/game/validate-places.ts` + its test lock them in at build time.
 - **`validateGeneratedPlace`** on the dataset import path — generated places get the same treatment.
 
+### The fact ladder: one fact per place, chosen by precedence
+
+The history sentences above are also the bottom rung of the **fact ladder** — the system that picks the single best fact a card may lead with. "Ladder" is about *selection*, not stacking: **the build keeps exactly one fact per place.** There are four kinds of fact (the rungs, shallowest to deepest):
+
+1. **hook** — the place's own history sentence, exactly as its chunk already carries it. (The hook rung *is* the history sentence, not a separately written line.)
+2. **wikitext** — a verbatim sentence from the place's Wikipedia article.
+3. **eb1911** — a verbatim sentence from the 1911 Encyclopaedia Britannica (via Wikisource).
+4. **wikidata** — a sentence composed from referenced Wikidata statements.
+
+(A **chunk** is one region's place file in the shipped catalog — `src/game/data/geonames/chunks/<regionId>.json`. Places live in chunks; facts don't. The build writes facts into separate per-region files under `src/game/data/geonames/facts/`, and at load time `applyFactIndex` lays them over the catalog while `factLadder` — both in `src/game/generated-places.ts` — adapts the one stored fact into the one-entry ladder the card composer reads.)
+
+The pick happens at build time: `factForPlace()` in `scripts/facts-ladder.mjs` tries the sources in a fixed precedence — **wikidata, then wikitext, then eb1911, then hook** — and keeps the first one that passes the no-fabrication validator. First hit wins; the other sources are not stored. Two precisions about that order: it is a precedence, not a depth ranking (wikitext is tried before eb1911 even though eb1911 is the deeper rung), and the validator does not run on every rung — the composed rungs (wikidata / wikitext / eb1911) must each pass it, while the hook rung is taken verbatim with no re-validation (it is the chunk's own history sentence, already merge-gated when the chunk was enriched).
+
+**Coverage today is thin, and this chapter should say so plainly.** Only **two** region fact files ship — Arkansas (20 places) and Australia (227), 247 places in all. Most regions have no fact file yet, so most places have no ladder fact at all. Of the shipped facts, wikidata appears only in Arkansas (2 places) and wikitext in both files; **eb1911 contributes zero shipped facts** — its mined sentences cover UK/IE places only (rows flagged `needsReview` are excluded), and no UK/IE fact file ships yet.
+
+The card's story is composed when the chunk loads, not at card time: `toStarter` in `src/game/generated-places.ts` runs `mapStory` (`src/game/age-profile/rungs.ts`), which walks down from the band's ceiling (`CEILING_INDEX`: ages 5-7 stop at **hook**, 8-10 at **wikitext**, 11-13 may reach **wikidata**) and takes the first ladder entry at or below that ceiling. (If a staged band change lands mid-run, `storyForBand` in the same file re-composes the next card's story from the same parts under the new band.) With at most one entry in the ladder, two consequences follow:
+
+- **An in-ceiling ladder fact leads the card.** It outranks the chunk's `history` sentence in the composer's precedence — fact before the `history` field, which is a different sense of "first" from card principle 1 ("history first, modern identity second", about what the story leads with; a ladder fact honors that principle too, being itself a sourced, history-grade sentence); `history` is the fallback, and nothing is ever invented to fill a gap — a missing fact stays missing.
+- **A fact deeper than the ceiling is invisible to that band.** If a place's only fact is a wikidata sentence, a 5-7 player (ceiling: hook) gets *no* ladder fact for that place — the card falls back to `history`, then to the plain geography blurb. There is no friendlier rung waiting underneath, because there is only ever one fact.
+
+Either way, the plain geography blurb is **appended** to whichever sentence wins — it rides along on every card. The blurb stands alone only as the last resort, when neither a usable fact nor a history sentence exists.
+
+GeoDetective clues are written under the same discipline — every tier traces to a supplied source extract, and a tier that can't be sourced honestly rejects the whole set (§4).
+
 ---
 
 ## 4. GeoDetective clue production: the 387
@@ -58,8 +82,8 @@ GeoDetective is the 5-guess mystery-place edition (the 4th edition, named by Vee
 - **Prompt v1 FINAL** — the generation prompt, locked by Veeresh **2026-10-04** (`~/workspace/your_files/geodetective-generation-prompt-v1.md`). Do not alter without him.
 - **Reading age ≈ 10** — his locked ruling: "a 10-year-old can read each clue aloud without stumbling, and retell its point to a friend the next day."
 - **The ladder:** Geography → Climate → History → Hook → Giveaway. Each clue narrows the candidate set (region → sub-region → shortlist → near-decisive → convert). Tier 5 is a giveaway, never a summary. The four card principles (§2) apply as universal writing rules on every tier.
-- **Fail-closed:** if any tier can't be honestly filled, the *whole set* is rejected — never ship a 4-clue day.
-- **The name-leak ban:** substring + diacritic-folded name/alias ban, mechanically checkable. A leaked answer is game-over for that day; over-strict rejection is cheap by comparison.
+- **Fail-closed:** if any tier can't be honestly filled, the *whole set* is rejected — never ship a 4-clue set.
+- **The name-leak ban:** substring + diacritic-folded name/alias ban, mechanically checkable. A leaked answer is game-over for that set; over-strict rejection is cheap by comparison.
 - **Volume math:** the run delivered 388 sets; independent re-verification found 2 tier-5 violations the crew reviewer had missed — Palestina (tier 5 repeated tier 3) and Bremerhaven (tier 5 restated tiers 3+4) — which were rejected/recomposed, so the shipped count is **387**. The run report lives at `scripts/clues/production/tier2-run-report.md` on the clue branch.
 - **Delivery format:** pool-indexed lazy clue files — `public/loop/clues/*.json`, one file per mystery place, loaded on demand.
 - **The human gate stays Veeresh's:** 387 sets are *validated*, and he defines what counts as reviewed (expect sampling, not all 387).
