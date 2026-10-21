@@ -494,8 +494,10 @@ applause passed standalone; the cleared-mode medium-applause
 identically on the pre-cure `cc5feba` build** — a setup timeout
 waiting for the difficulty picker under VM load, before any
 applause assertion — pre-existing and environment-bound, not a
-cure regression. The promotion spec also passed **6/6**
-standalone on this build. (Correction, same evening: the first
+cure regression. The promotion spec also passed standalone on
+this build — **5/5** in the desktop project, verified from the
+rerun's terminal output (an earlier "6/6" for it was wrong too;
+the spec declares five tests there). (Correction, same evening: the first
 version of this section carried a wrong batch figure — 28/29
 with a promotion failure that never happened — taken from an
 interim run summary that was not checked against the batch's
