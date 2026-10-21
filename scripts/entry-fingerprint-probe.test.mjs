@@ -59,3 +59,11 @@ test("a failed request is inconclusive; a bare 404 on /api/contact is reported a
   assert.equal(r.apiMounted, false);
   assert.match(renderReport(r), /mounted \(any non-404 answer\): NO/);
 });
+
+test("the pasted report lists policy headers but never set-cookie or other response headers", async () => {
+  const fetchFn = async () =>
+    new Response("x", { status: 200, headers: { ...SECURITY_HEADERS, "set-cookie": "sid=SECRET; Path=/", "x-debug-token": "TOP-SECRET" } });
+  const text = renderReport(await probeEntry({ origin: "https://w.test", fetchFn }));
+  assert.ok(text.includes("content-security-policy:"));
+  assert.ok(!/set-cookie|SECRET|x-debug-token/i.test(text), text);
+});

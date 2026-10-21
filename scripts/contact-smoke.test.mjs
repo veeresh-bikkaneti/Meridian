@@ -46,13 +46,24 @@ test("wired worker: every check passes, and Discord got exactly the delivered me
   assert.ok(r.discordPosts.some((c) => c.includes("smoke-t1@example.com")), "reply-to missing from the message");
 });
 
-test("parked worker (NoopSink): readiness and both delivery checks FAIL — no false green", async () => {
-  const r = await smoke({});
-  const f = failed(r);
-  assert.ok(f.some((n) => n.startsWith("readiness")), f.join("|"));
-  assert.ok(f.some((n) => n === "delivery: gated POST is stored by Discord"));
-  assert.ok(f.some((n) => n === "delivery: POST with a reply-to is stored by Discord"));
-  assert.equal(r.discordPosts.length, 0);
+test("parked worker (NoopSink): readiness FAILS and the run stops before sending a single POST", async () => {
+  resetContactStateForTests();
+  const posts = [];
+  const w = workerWith({});
+  const counting = async (input, init) => {
+    if ((init?.method ?? "GET") === "POST") posts.push(String(input));
+    return w.fetchFn(input, init);
+  };
+  try {
+    const r = await runSmoke({ origin: ORIGIN, fetchFn: counting, sleep: async () => {}, runId: "t0" });
+    assert.ok(failed(r).some((n) => n.startsWith("readiness")));
+    assert.ok(r.results.some((x) => x.name.startsWith("aborted")));
+    assert.equal(posts.length, 0, "a parked run must not POST anything");
+    assert.equal(r.delivered, 0);
+    assert.equal(w.discordPosts.length, 0);
+  } finally {
+    w.restore();
+  }
 });
 
 test("Discord rejecting the webhook: delivery FAILS (502), not a silent success", async () => {
@@ -63,6 +74,7 @@ test("Discord rejecting the webhook: delivery FAILS (502), not a silent success"
 test("a look-alike webhook URL falls back to parked, so the smoke fails", async () => {
   const r = await smoke({ CONTACT_DISCORD_WEBHOOK_URL: "https://discord.com.evil.example/api/webhooks/1/x" });
   assert.ok(failed(r).some((n) => n.startsWith("readiness")));
+  assert.ok(r.results.some((x) => x.name.startsWith("aborted")));
   assert.equal(r.discordPosts.length, 0);
 });
 

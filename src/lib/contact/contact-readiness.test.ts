@@ -90,3 +90,23 @@ test("--url: every unexpected answer is NOT confirmed, never a green", async () 
     assert.match(r.line, /NOT confirmed/, label);
   }
 });
+
+test("--url: only the two known sink names are ever printed; a hostile string is NOT confirmed", async () => {
+  const hostile = (async () => new Response(JSON.stringify({ sink: "\u001b[2Jdiscord" }), { status: 200 })) as typeof fetch;
+  const r = await contactReadinessFromUrl("https://meridian.test", hostile);
+  assert.equal(r.configured, false);
+  assert.ok(!r.line.includes("\u001b"), "remote text must not reach the terminal");
+});
+
+test("--url: prints only the bare origin (no credentials/path) and never follows redirects", async () => {
+  let seen: RequestInit | undefined;
+  const spy = (async (_i: RequestInfo | URL, init?: RequestInit) => {
+    seen = init;
+    return new Response('{"sink":"noop"}', { status: 200 });
+  }) as typeof fetch;
+  const r = await contactReadinessFromUrl("https://user:pw@meridian.test/some/path?q=1", spy);
+  assert.ok(!r.line.includes("pw") && !r.line.includes("some/path"), r.line);
+  assert.equal(seen?.redirect, "error");
+  const bad = await contactReadinessFromUrl("not a url", spy);
+  assert.match(bad.line, /NOT confirmed/);
+});

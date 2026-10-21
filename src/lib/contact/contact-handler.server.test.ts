@@ -443,3 +443,19 @@ test("GET /api/contact reports which sink is selected — name only, no secret, 
   assert.deepEqual(JSON.parse(text), { sink: "discord" });
   assert.ok(!text.includes("discord.com"), "the webhook URL is never echoed");
 });
+
+test("honeypot on the refused-origin path writes no log line (unauthenticated, unthrottled branch)", async () => {
+  const lines: string[] = [];
+  const realLog = console.log;
+  console.log = (...a: unknown[]) => void lines.push(a.join(" "));
+  try {
+    const res = await handleRequest(
+      post({ topic: "bug", message: "x", website: "spam" }, { origin: "https://evil.example", "cf-connecting-ip": "203.0.113.40" }),
+      {},
+    );
+    assert.equal(res.status, 200);
+  } finally {
+    console.log = realLog;
+  }
+  assert.deepEqual(lines, []);
+});

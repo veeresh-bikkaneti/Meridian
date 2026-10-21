@@ -44,6 +44,16 @@ export const PROBES = [
   { path: "/flags.json", kind: "static", note: "control: headers from _headers" },
 ];
 
+/** Headers worth recording as evidence: the policy headers plus how the response was served. */
+const REPORTED_HEADERS = new Set([
+  ...Object.keys(SECURITY_HEADERS).map((h) => h.toLowerCase()),
+  "content-type",
+  "cache-control",
+  "server",
+  "vary",
+  "x-powered-by",
+]);
+
 const norm = (v) => v.replace(/\s+/g, " ").trim().toLowerCase();
 
 export async function probeEntry({ origin, fetchFn = fetch }) {
@@ -107,7 +117,9 @@ export function renderReport(result) {
       continue;
     }
     out.push(`status ${r.status}; missing: ${r.missing.join(", ") || "none"}; wrong value: ${r.wrong.join(", ") || "none"}`, "```");
-    for (const [k, v] of Object.entries(r.headers).sort()) out.push(`${k}: ${v}`);
+    // Allowlist, not a dump: the report is pasted into committed files, so a
+    // set-cookie or debug header from the live worker must never land in git.
+    for (const [k, v] of Object.entries(r.headers).sort()) if (REPORTED_HEADERS.has(k)) out.push(`${k}: ${v}`);
     out.push("```", "");
   }
   return out.join("\n");

@@ -70,16 +70,29 @@ export async function contactReadinessFromUrl(
   origin: string,
   fetchFn: typeof fetch = (input, init) => fetch(input, init),
 ): Promise<ContactReadiness> {
-  const where = origin.replace(/\/+$/, "");
+  // Print only the bare origin (no credentials, path or query) and never
+  // follow a redirect: this reads a remote answer and must not be steerable.
+  let where: string;
   try {
-    const res = await fetchFn(`${where}/api/contact`, { method: "GET", headers: { accept: "application/json" } });
+    where = new URL(origin).origin;
+  } catch {
+    return unreachable("(invalid url)", "not a valid URL");
+  }
+  try {
+    const res = await fetchFn(`${where}/api/contact`, {
+      method: "GET",
+      redirect: "error",
+      headers: { accept: "application/json" },
+    });
     if (!res.ok) return unreachable(where, `HTTP ${res.status}`);
     const body: unknown = await res.json();
     const sink = typeof body === "object" && body !== null ? (body as { sink?: unknown }).sink : undefined;
-    if (typeof sink !== "string" || sink.length === 0) return unreachable(where, "no sink field in the response");
+    // Only the two known names are ever printed; anything else is a remote
+    // string we refuse to echo (terminal escapes, lookalikes).
+    if (sink !== "discord" && sink !== "noop") return unreachable(where, "unexpected sink value in the response");
     return describeSink(sink, where);
   } catch (err) {
-    return unreachable(where, err instanceof Error ? err.message : "request failed");
+    return unreachable(where, "request failed");
   }
 }
 

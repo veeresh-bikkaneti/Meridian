@@ -35,8 +35,12 @@
  *   selectSink(). What any sink receives: topic, message, replyTo (if
  *   given), received-at timestamp. No IP, user agent, headers, or cookies.
  * - Origin: a POST MUST carry an Origin header (every browser sends one on
- *   a fetch POST). A request without one is refused with 403, so a bare
- *   script cannot skip the origin check. Allowed: same-origin, the live
+ *   a fetch POST). A request without one is refused with 403. NOTE: Origin
+ *   is a browser-side guard only (it stops other websites' pages from
+ *   posting here); any script can SET the header, so it is not
+ *   authentication. What actually limits abuse is the rate limiter, the
+ *   4 KB cap, validation and the fenced, mention-free Discord post.
+ *   Allowed: same-origin, the live
  *   production origin, plus the GitHub Pages mirror (or
  *   CONTACT_ALLOWED_ORIGINS). Never "*". One exception: a refused or
  *   missing Origin with a filled honeypot gets the same silent 200 as any
@@ -425,10 +429,9 @@ export async function handleContactRequest(
   // filled honeypot is dropped silently first: a bot must not learn from a
   // 403 that it was filtered.
   if (!request.headers.get("origin") || origin === null) {
-    if (await isHoneypotDrop(request)) {
-      log("honeypot-dropped");
-      return json(200, { ok: true }, null);
-    }
+    // No log line here: this branch is unauthenticated and unthrottled, so a
+    // log per hit would let anyone flood the logs. Nothing is delivered.
+    if (await isHoneypotDrop(request)) return json(200, { ok: true }, null);
     return json(403, { error: request.headers.get("origin") ? "origin not allowed" : "origin required" }, null);
   }
 

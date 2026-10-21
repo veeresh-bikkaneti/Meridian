@@ -3,8 +3,10 @@
  * contact-smoke.mjs — activation smoke test for POST /api/contact (WI-4).
  *
  *   node --experimental-strip-types scripts/contact-smoke.mjs \
- *     --url https://meridian.knowledgetest.workers.dev [--recovery]
+ *     --url https://meridian.knowledgetest.workers.dev --yes-send-real-messages [--recovery]
  *
+ * It refuses to run without --yes-send-real-messages, and it stops before
+ * sending anything if the readiness check does not say "discord".
  * RUN THIS ONLY AFTER the owner has set the worker secret, and only with the
  * form still OFF (no contactEndpoint in flags.json). It sends REAL messages:
  * up to 3 land in the private Discord channel, each starting "[smoke]" and
@@ -71,6 +73,13 @@ export async function runSmoke({ origin, fetchFn = fetch, sleep = (ms) => new Pr
     check("readiness: GET /api/contact reports the discord sink", false, String(err));
   }
 
+  // Stop here if the worker is not wired. Everything below sends POSTs, and a
+  // smoke run against a parked, mistyped or wrong-tenant URL must send nothing.
+  if (!results[0].ok) {
+    check("aborted: readiness failed, so no messages were sent", true, "nothing was posted");
+    return { results, delivered: 0, runId };
+  }
+
   // 2. Delivery — message, then message with a reply-to.
   const msg = (extra) => `[smoke ${runId}] activation test, please ignore${extra ?? ""}`;
   {
@@ -135,7 +144,14 @@ async function main() {
   const urlAt = args.indexOf("--url");
   const url = urlAt === -1 ? "" : (args[urlAt + 1] ?? "");
   if (!/^(https:\/\/[^/]+|http:\/\/(127\.0\.0\.1|localhost)(:\d+)?)$/.test(url.replace(/\/+$/, ""))) {
-    console.error("usage: contact-smoke.mjs --url https://<origin> [--recovery]");
+    console.error("usage: contact-smoke.mjs --url https://<origin> --yes-send-real-messages [--recovery]");
+    process.exit(2);
+  }
+  if (!args.includes("--yes-send-real-messages")) {
+    console.error(
+      "This sends up to 3 REAL messages to the private Discord channel behind that URL.\n" +
+        "Re-run with --yes-send-real-messages once the owner has set the secret and the form is still OFF.",
+    );
     process.exit(2);
   }
   const { results, delivered, runId } = await runSmoke({ origin: url, recovery: args.includes("--recovery") });

@@ -72,6 +72,28 @@ Tests: `src/lib/contact/*.test.ts`, `scripts/contact-smoke.test.mjs`,
 shown to fail against the parked #207 code and pass on this branch (see
 `BRANCH_STATUS.md`).
 
+## What the secret exposes (read before step 3)
+
+`Origin` is a browser-side guard: it stops other websites' pages from posting
+here. Any script can set that header, so it is **not authentication**. The
+moment the worker has the secret, `POST /api/contact` can deliver to Discord
+for anyone on the internet who sends a valid body, **even while the form is
+OFF** — `flags.json` only hides the page. What limits abuse is the rate limiter
+(3 per 10 minutes per sender and 60 per hour per isolate in memory; the
+binding adds a limit that is shared across isolates), the 4 KB cap,
+validation, and the fenced, mention-free Discord post. A flood could fill the
+private channel and push Discord's webhook limit, so real parents would then
+see "could not deliver".
+
+Recommendation (owner decision): adopt the binding-layer rate limiter
+(step 3.3) **before** the secret is set, rather than treating it as optional.
+If abuse still shows up, the next step is a human-check token on the form.
+
+Also known and accepted: `GET /api/contact` tells anyone whether the worker is
+wired (sink name only), and a honeypot drop looks slightly different from a
+real delivery (`{ok:true}` vs `{ok:true,stored:true}`), which the smoke test
+relies on.
+
 ## Step 3 — Owner configuration (the owner does this; the value stays with the owner)
 
 The webhook URL never goes into chat, a file, a commit or a log. Names and
@@ -86,7 +108,7 @@ existence only.
    *Readback:* the secret name is listed (value hidden). Then
    `npm run check:contact -- --url https://meridian.knowledgetest.workers.dev`
    must print `configured — sink is discord`.
-3. *Optional.* Adopt the binding-layer rate limiter: copy the two
+3. *Recommended — and best done BEFORE item 2 (see "What the secret exposes").* Adopt the binding-layer rate limiter: copy the two
    `[[ratelimits]]` blocks from `config/cloudflare/meridian.wrangler.toml`
    into the worker's wrangler config (Wrangler 4.36 or later; bindings cannot
    be added in the dashboard yet). *Readback:* none needed; the in-memory
@@ -99,9 +121,11 @@ existence only.
 
 ```
 node --experimental-strip-types scripts/contact-smoke.mjs \
-  --url https://meridian.knowledgetest.workers.dev [--recovery]
+  --url https://meridian.knowledgetest.workers.dev --yes-send-real-messages [--recovery]
 ```
 
+It refuses to run without `--yes-send-real-messages` and stops before sending
+anything if the readiness check does not say `discord`.
 Sends real messages: 2 to 3 land in the private channel, each starting
 `[smoke <runid>]`. It checks, over HTTP: the readiness answer is `discord`; a
 gated POST from the site's own origin is `stored: true` (true only when Discord
