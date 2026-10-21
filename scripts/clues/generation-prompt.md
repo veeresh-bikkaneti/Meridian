@@ -12,7 +12,7 @@
 
 ## 1. What this prompt is for
 
-GeoDetective is Meridian's mystery-place guessing edition: five guesses per mystery, clues revealed on a narrowing ladder. (At this prompt's writing the edition was planned as one mystery per day; since 2026-10-06 it is fully unlimited — see the model update above. The ladder and the five-guess contract did not change.) The player guesses by tapping a labeled place on the satellite map and confirming in a bottom sheet. (A typeahead still exists in the code, but only as an internal index — it is not the guessing surface.)
+GeoDetective is Meridian's mystery-place guessing edition: five guesses per mystery, clues revealed on a narrowing ladder. (At this prompt's writing the edition was planned as one mystery per day; since 2026-10-06 it is fully unlimited — see the model update above. The ladder and the five-guess contract did not change.) The player guesses by tapping the satellite map and confirming in a bottom sheet: a tap on a labeled place names that place, and a tap anywhere else still counts — it names the region it lands in (open ocean names the water). (The old typeahead picker no longer submits guesses — it survives as a "Search the map" camera-jump box over the same ~119k index: picking a result flies there and selects the place, and the bottom sheet still confirms.)
 
 **[SYNTHESIS]** — Unanimous finding #2: *"4 principles ≠ 4 clue tiers. Principle 4 ('short and story-like') is a style rule, not a content tier. The tiers must be a narrowing ladder (each clue shrinks the candidate set); the principles become universal writing rules applied to every clue."* This prompt therefore defines **5 narrowing tiers**, and applies Veeresh's 4 card rules as universal writing rules on every clue (§4).
 
@@ -150,7 +150,7 @@ GeoDetective is Meridian's mystery-place guessing edition: five guesses per myst
 
 ## 8. Difficulty + aliases
 
-**[SYNTHESIS]** — The rewritten prompt requires *"difficulty + aliases."* Workflow step E assembles *"difficulty-balanced weeks,"* so difficulty must be recorded per set.
+**[SYNTHESIS]** — The rewritten prompt requires *"difficulty + aliases."* Workflow step E assembled *"difficulty-balanced weeks,"* so difficulty must be recorded per set.
 
 **Difficulty [DRAFT CHOICE]** — integer **1–5**, defined as *guessability for the audience*:
 - 1 — world-famous; most players solve by clue 3 (e.g., Paris)

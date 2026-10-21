@@ -25,10 +25,18 @@ list of 7).
 
 ## Deploy (manual, when approved)
 
+This v1 worker is **not deployed** — the live receiver is
+`workers/crash-report/` (see "Production reality" above), and this
+directory is kept for reference. An earlier version of this block
+prescribed `npx wrangler deploy`; that was wrong — this project's
+workers have only ever been released by **direct API script upload**
+(the `cf.py` helper flow; see the Deploy section of
+`workers/crash-report/README.md`), never by `wrangler deploy`. If
+this worker were ever revived, it would ship the same way:
+`worker.js` is plain zero-dependency JavaScript (no bundle step), so
+it uploads as-is through the Workers scripts API, then:
+
 ```sh
-cd worker/observability
-cp wrangler.toml.example wrangler.toml   # edit: name / route or workers.dev subdomain
-npx wrangler deploy
 curl https://<your-worker-host>/health   # → {"ok":true}
 ```
 
