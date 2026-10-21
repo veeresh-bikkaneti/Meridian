@@ -23,11 +23,19 @@ The decision wasn't made on paper. On **2026-09-29**, Veeresh *listened* to a Ko
 
 **The pipeline philosophy is offline/baked:** synthesis happens at build time on the dev machine (Hugging Face model weights, pinned CPU-only PyTorch toolchain), and the app ships pre-made audio files plus word-timestamp manifests. Nothing is synthesized on the player's device. Two reasons: kids' phones are weak, and voice is the one place where the "zero assets" purity has to bend — you cannot synthesize a documentary narrator with Web Audio. The page mascot's audio greeting is explicitly documented as **the one exception to the no-assets rule**.
 
-### The two voice personas (locked, Veeresh 2026-10-11, decision #137)
+### The two voice personas (locked, Veeresh 2026-10-11, decision #137) — SUPERSEDED 2026-10-19
+
+> **Current truth (2026-10-21):** the two-persona split below is history.
+> Since PR #174 (merged 2026-10-19) the Storyteller has ONE voice — the
+> Grok-generated **Santa voice** Veeresh produced in a Grok session — across
+> all 14 clips (greetings, pokes, hook, reveal, summary), mastered to a
+> −16 LUFS target (measured −16.5…−17.4 across the set). Veeresh accepted
+> #174 as the resolution on 2026-10-21 (*"1 — Accept #174, close bug + docs
+> cure"*). The #137 table is kept as the decision record.
 
 | Voice | Used for | Personality |
 |---|---|---|
-| **TruthTeller** | The Storyteller's home greetings (greet-01…06.mp3) — a *different* greeting line every day; the poke lines (poke-01…05.mp3) use this voice too per the #137 ruling — **but the shipped poke clips are 24 kHz mono local Kokoro renders, not the greeting voice (OPEN BUG, 2026-10-16; fix waits on the owner identifying the TruthTeller source)** | Warm, welcoming, documentary-narrator ease. Short, friendly, never salesy. |
+| **TruthTeller** | The Storyteller's home greetings (greet-01…06.mp3) — a *different* greeting line every day; the poke lines (poke-01…05.mp3) were assigned to this voice too per the #137 ruling — **the shipped pokes were local Kokoro renders instead, which stood as an OPEN BUG from 2026-10-16 until PR #174 (2026-10-19) re-voiced all 14 clips in the Santa voice; Veeresh accepted #174 as the resolution on 2026-10-21, closing the bug. The pokes were never TruthTeller renders at any point in history, and the TruthTeller source was never recorded** | Warm, welcoming, documentary-narrator ease. Short, friendly, never salesy. |
 | **am_fenrir** | Story lines — story-card narration, clue hooks, reveal lines, summary lines | The same warm human narrator, now in *storytelling* register: unhurried, clear, kid-addressed. |
 | **avocado_v2:casper** (Comet — a separate casting, not part of #137) | Comet's daily home greetings (greet-01…12.mp3) | The excitable co-pilot: a 'confident storyteller' — suspense + excitement, movie-trailer energy (2026-10-06). An original voice; never present it as a celebrity impression. |
 
@@ -138,9 +146,9 @@ The second audio system. The design document is the source of truth: **`docs/sfx
 
 ---
 
-## 6. Live vs pending (as of 2026-10-16)
+## 6. Live vs pending (as of 2026-10-21)
 
-- **LIVE:** all Web Audio SFX above (editions + GeoDetective + celebrations); the sound toggle; the storyteller voice personas (TruthTeller greetings, am_fenrir story lines).
+- **LIVE:** all Web Audio SFX above (editions + GeoDetective + celebrations); the sound toggle; the storyteller voice (one Grok-generated Santa voice across all 14 clips since PR #174, 2026-10-19 — the #137 TruthTeller/am_fenrir personas are superseded history, §2).
 - **OPEN (tracked):** GeoDetective Web Audio SFX — the mode's own sound design still has an open issue against it.
 - **Open owner call (undecided, no recorded ruling):** sound default ON vs OFF for first-run quiet (one line to change; currently ON).
 - **Ongoing:** the "real game audio" goal — richer, more musical feedback layered over the SFX foundation — is still in progress, not a shipped feature. Don't present SFX as finished artistry.
@@ -154,4 +162,5 @@ The second audio system. The design document is the source of truth: **`docs/sfx
 - Memory 2026-09-29 — Kokoro proof narration ("This is what I wanted"), read-along visibility requirement, hybrid TTS plan, US+UK voice coverage.
 - Memory 2026-10-06 — SFX PRs #75/#78/#81, page-mascot voice decisions (pre-made audio = the one assets exception), sound-toggle behavior.
 - Memory 2026-10-11 — decisions #136 (hint wording), #137 (TruthTeller / am_fenrir), the sound default-ON question (open, unruled).
+- PR #174 (merged 2026-10-19) + owner ruling 2026-10-21 — Santa re-voice of all 14 storyteller clips; #174 accepted as the resolution of the poke-voice bug; the #137 split superseded.
 - `~/TOOLS.md` — the huggingface_hub / no_proxy / httpx quirk and its workarounds.
