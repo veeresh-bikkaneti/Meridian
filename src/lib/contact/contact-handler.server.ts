@@ -36,8 +36,18 @@
  *   given), received-at timestamp. No IP, user agent, headers, or cookies.
  * - Origin: a POST MUST carry an Origin header (every browser sends one on
  *   a fetch POST). A request without one is refused with 403, so a bare
- *   script cannot skip the origin check. Allowed: same-origin, plus the
- *   GitHub Pages mirror (or CONTACT_ALLOWED_ORIGINS). Never "*".
+ *   script cannot skip the origin check. Allowed: same-origin, the live
+ *   production origin, plus the GitHub Pages mirror (or
+ *   CONTACT_ALLOWED_ORIGINS). Never "*". One exception: a refused or
+ *   missing Origin with a filled honeypot gets the same silent 200 as any
+ *   other honeypot drop, so a bot never learns from a 403 that it was
+ *   filtered (nothing is delivered either way).
+ * - GET /api/contact is the readiness probe: it answers { sink: "discord" |
+ *   "noop" } — the sink NAME only, never the webhook — so
+ *   `npm run check:contact -- --url <origin>` can confirm what the live
+ *   worker was really given.
+ * - Config comes from the worker's own env (runtime-env.server.ts), with
+ *   process.env only as a fallback.
  * - Stores nothing server-side: no KV, no database, no cache, no message
  *   text in logs. Retention of the one delivered copy (Discord) is in
  *   retention.ts.
@@ -47,6 +57,7 @@
 
 import { CONTACT_MESSAGE_MAX, CONTACT_REPLY_TO_MAX, CONTACT_TOPICS as TOPIC_OPTIONS } from "./contact-form.ts";
 import { CONTACT_RETENTION_REMINDER } from "./retention.ts";
+import { readRuntimeString } from "./runtime-env.server.ts";
 import {
   readRateLimitBindings,
   resetRateLimitBindingLookupForTests,
@@ -157,8 +168,16 @@ export function resetContactStateForTests(): void {
 
 // --- Responses ---------------------------------------------------------
 
-/** The GitHub Pages mirror posts cross-origin to the workers.dev site. */
-export const DEFAULT_ALLOWED_ORIGINS = ["https://veeresh-bikkaneti.github.io"];
+/** The live site. Public hostname, not a secret. */
+export const PRODUCTION_ORIGIN = "https://meridian.knowledgetest.workers.dev";
+
+/**
+ * The GitHub Pages mirror posts cross-origin to the workers.dev site. The
+ * production origin is listed too, so the site's own form works even when
+ * the request URL the worker sees is not the page's origin (a proxy or a
+ * custom route). Same-origin is still checked first and always allowed.
+ */
+export const DEFAULT_ALLOWED_ORIGINS = ["https://veeresh-bikkaneti.github.io", PRODUCTION_ORIGIN];
 
 /**
  * CORS decision. Returns the value for access-control-allow-origin, ""
@@ -349,6 +368,26 @@ export async function readBodyCapped(request: Request, maxBytes: number): Promis
   return new TextDecoder().decode(all);
 }
 
+/**
+ * True when the body is a JSON object with a non-empty honeypot field. Used
+ * only on the refused-origin path, so it is deliberately loose (any other
+ * field may be wrong) and has the same size cap as a real message.
+ */
+async function isHoneypotDrop(request: Request): Promise<boolean> {
+  const declared = Number(request.headers.get("content-length") ?? "0");
+  if (Number.isFinite(declared) && declared > MAX_BODY_BYTES) return false;
+  try {
+    const body = await readBodyCapped(request, MAX_BODY_BYTES);
+    if (body === null) return false;
+    const parsed: unknown = JSON.parse(body);
+    if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) return false;
+    const website = (parsed as Record<string, unknown>).website;
+    return typeof website === "string" && website.trim().length > 0;
+  } catch {
+    return false;
+  }
+}
+
 // --- Handler -----------------------------------------------------------
 
 /**
@@ -375,11 +414,23 @@ export async function handleContactRequest(
       },
     });
   }
-  if (request.method !== "POST") return json(405, { error: "method not allowed" }, origin, { allow: "POST, OPTIONS" });
+  // GET is the readiness probe (scripts/contact-readiness.mjs --url): which
+  // sink the worker really selected, by name only. No secret, no CORS grant,
+  // never cached. It lets a person confirm production is wired without ever
+  // seeing the webhook URL.
+  if (request.method === "GET") return json(200, { sink: selectSink(env).name }, null);
+  if (request.method !== "POST") return json(405, { error: "method not allowed" }, origin, { allow: "POST, GET, OPTIONS" });
   // A browser always sends Origin on a fetch POST. No Origin means a
-  // non-browser client trying to skip the origin check, so refuse it.
-  if (!request.headers.get("origin")) return json(403, { error: "origin required" }, null);
-  if (origin === null) return json(403, { error: "origin not allowed" }, null);
+  // non-browser client trying to skip the origin check, so refuse it. But a
+  // filled honeypot is dropped silently first: a bot must not learn from a
+  // 403 that it was filtered.
+  if (!request.headers.get("origin") || origin === null) {
+    if (await isHoneypotDrop(request)) {
+      log("honeypot-dropped");
+      return json(200, { ok: true }, null);
+    }
+    return json(403, { error: request.headers.get("origin") ? "origin not allowed" : "origin required" }, null);
+  }
 
   const declared = Number(request.headers.get("content-length") ?? "0");
   if (Number.isFinite(declared) && declared > MAX_BODY_BYTES) return json(413, { error: "body too large" }, origin);
@@ -417,13 +468,15 @@ export async function handleContactRequest(
 }
 
 /**
- * Read the contact config (strings only) from the runtime. On the
- * Cloudflare `meridian` worker, secrets reach `process.env` only when the
- * worker runs with the `nodejs_compat` compatibility flag and a
- * compatibility date of 2025-04-01 or later (or with
- * `nodejs_compat_populate_process_env`). Without that, this returns {} and
- * the handler falls back to NoopSink and the default origins. That fails
- * safe, but no message would be delivered.
+ * Fallback config source: `process.env`. On the Cloudflare `meridian`
+ * worker, secrets reach `process.env` only with the `nodejs_compat` flag and
+ * a compatibility date of 2025-04-01 or later (or
+ * `nodejs_compat_populate_process_env`), which the repo cannot see or
+ * guarantee. So this is no longer the primary source: readContactRuntimeEnv
+ * reads the worker's own env first and falls back to this (local `npm run
+ * check:contact`, tests, and the Vercel/preview build). Once the deployed
+ * entry is known (docs/contact-activation.md, probe A1) this fallback can be
+ * dropped on the worker.
  */
 export function readContactEnv(): ContactEnv {
   try {
@@ -438,10 +491,23 @@ export function readContactEnv(): ContactEnv {
 }
 
 /**
- * Full runtime config for the route: the string config above, plus the
- * Workers Rate Limiting binding objects. Bindings never appear in
- * process.env (see readRateLimitBindings).
+ * Full runtime config for the route: the contact strings from the worker's
+ * own env (falling back to process.env), plus the Workers Rate Limiting
+ * binding objects. This is the single reader — the route and the readiness
+ * check both use it, so a readiness answer is what the handler will do.
+ * Only the two contact names are ever read; the crash worker's
+ * DISCORD_WEBHOOK_URL is never looked at.
  */
 export async function readContactRuntimeEnv(): Promise<ContactEnv> {
-  return { ...readContactEnv(), ...(await readRateLimitBindings()) };
+  const [webhook, origins, bindings] = await Promise.all([
+    readRuntimeString("CONTACT_DISCORD_WEBHOOK_URL"),
+    readRuntimeString("CONTACT_ALLOWED_ORIGINS"),
+    readRateLimitBindings(),
+  ]);
+  const fallback = readContactEnv();
+  return {
+    CONTACT_DISCORD_WEBHOOK_URL: webhook ?? fallback.CONTACT_DISCORD_WEBHOOK_URL,
+    CONTACT_ALLOWED_ORIGINS: origins ?? fallback.CONTACT_ALLOWED_ORIGINS,
+    ...bindings,
+  };
 }

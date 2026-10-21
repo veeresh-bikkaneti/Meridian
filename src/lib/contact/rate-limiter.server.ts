@@ -39,6 +39,8 @@
  *   still applies, so the endpoint is never left with no limit at all.
  */
 
+import { readRuntimeEnvSources, resetRuntimeEnvLookupForTests } from "./runtime-env.server.ts";
+
 export interface RateDecision {
   allowed: boolean;
   /** Seconds the client should wait (Retry-After). 0 when allowed. */
@@ -265,13 +267,9 @@ export function selectRateLimiter(env: RateLimitBindings, onError?: BindingError
 /**
  * Find the rate-limit bindings in the Workers runtime. Bindings are objects,
  * so `process.env`, which only carries string vars and secrets, never has
- * them. Two places are tried, and each is guarded:
- *   1. `globalThis.__env__`. Nitro's Cloudflare presets put the worker's
- *      `env` there.
- *   2. `import("cloudflare:workers")`. The official runtime module that
- *      exports `env`. It only exists on workerd. On Node, in tests, or in
- *      the Vercel/preview build, the import throws and we return {}.
- * Either way, a missing binding just means "in-memory only".
+ * them. They come from the runtime env sources in runtime-env.server.ts
+ * (`globalThis.__env__`, then `cloudflare:workers`); a missing binding just
+ * means "in-memory only".
  */
 let bindingLookup: Promise<RateLimitBindings> | null = null;
 
@@ -283,6 +281,7 @@ export function readRateLimitBindings(): Promise<RateLimitBindings> {
 /** Test-only: forget the cached lookup. */
 export function resetRateLimitBindingLookupForTests(): void {
   bindingLookup = null;
+  resetRuntimeEnvLookupForTests();
 }
 
 function pick(source: unknown): RateLimitBindings | null {
@@ -296,21 +295,9 @@ function pick(source: unknown): RateLimitBindings | null {
 }
 
 async function lookupBindings(): Promise<RateLimitBindings> {
-  try {
-    const fromNitro = pick((globalThis as { __env__?: unknown }).__env__);
-    if (fromNitro) return fromNitro;
-  } catch {
-    /* fall through */
-  }
-  try {
-    // The specifier is a variable so bundlers leave this import alone. It
-    // only resolves on Cloudflare's runtime.
-    const specifier = "cloudflare:workers";
-    const mod = (await import(/* @vite-ignore */ specifier)) as { env?: unknown };
-    const fromRuntime = pick(mod?.env);
-    if (fromRuntime) return fromRuntime;
-  } catch {
-    /* not on workerd → in-memory only */
+  for (const source of await readRuntimeEnvSources()) {
+    const found = pick(source);
+    if (found) return found;
   }
   return {};
 }

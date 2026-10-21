@@ -4,9 +4,12 @@
 import assert from "node:assert/strict";
 import test, { beforeEach } from "node:test";
 import { readFileSync } from "node:fs";
+import { resetRateLimitBindingLookupForTests } from "./rate-limiter.server.ts";
 import {
   handleContactRequest as handleRequest,
   readContactEnv,
+  readContactRuntimeEnv,
+  PRODUCTION_ORIGIN,
   validateContact,
   resetContactStateForTests,
   selectSink,
@@ -164,8 +167,8 @@ test("CORS: same-origin and the Pages mirror are allowed; anything else is refus
   assert.equal(override.status, 200);
 });
 
-test("only POST (and the OPTIONS preflight) are accepted", async () => {
-  const res = await handleRequest(new Request("https://meridian.test/api/contact"), {});
+test("only POST, the OPTIONS preflight and the GET readiness probe are accepted", async () => {
+  const res = await handleRequest(new Request("https://meridian.test/api/contact", { method: "PUT" }), {});
   assert.equal(res.status, 405);
   const pre = await handleRequest(
     new Request("https://meridian.test/api/contact", { method: "OPTIONS", headers: { origin: "https://veeresh-bikkaneti.github.io" } }),
@@ -305,4 +308,138 @@ test("rate limit: a throwing binding fails open to the in-memory floor", async (
     assert.equal((await handleRequest(post({ topic: "bug", message: `m${i}` }, { "cf-connecting-ip": "198.51.100.88" }), env, 1000)).status, 200);
   }
   assert.equal((await handleRequest(post({ topic: "bug", message: "m4" }, { "cf-connecting-ip": "198.51.100.88" }), env, 1000)).status, 429);
+});
+
+
+// --- Activation wiring (contact-activation follow-up to #207) -----------------
+// Each test below is written to FAIL on the parked build and pass on the wired one.
+
+const WEBHOOK = "https://discord.com/api/webhooks/1/x";
+
+/** Run `fn` with `globalThis.__env__` set (Nitro's Cloudflare presets put the worker env there). */
+async function withWorkerEnv<T>(env: Record<string, unknown>, fn: () => Promise<T>): Promise<T> {
+  const g = globalThis as { __env__?: unknown };
+  const saved = process.env;
+  process.env = {}; // prove the value came from the worker env, not process.env
+  g.__env__ = env;
+  resetRateLimitBindingLookupForTests();
+  try {
+    return await fn();
+  } finally {
+    delete g.__env__;
+    process.env = saved;
+    resetRateLimitBindingLookupForTests();
+  }
+}
+
+test("runtime env: the webhook secret on the worker env (not process.env) selects the Discord sink", async () => {
+  await withWorkerEnv({ CONTACT_DISCORD_WEBHOOK_URL: WEBHOOK }, async () => {
+    assert.ok(selectSink(await readContactRuntimeEnv()) instanceof DiscordWebhookSink);
+  });
+});
+
+test("runtime env: no secret anywhere → NoopSink; a binding object or the crash secret never wires the sink", async () => {
+  await withWorkerEnv({}, async () => {
+    assert.ok(selectSink(await readContactRuntimeEnv()) instanceof NoopSink);
+  });
+  await withWorkerEnv(
+    { CONTACT_DISCORD_WEBHOOK_URL: { not: "a string" }, DISCORD_WEBHOOK_URL: WEBHOOK },
+    async () => assert.ok(selectSink(await readContactRuntimeEnv()) instanceof NoopSink),
+  );
+});
+
+test("runtime env: process.env still works as the fallback when the worker env has no value", async () => {
+  const g = globalThis as { __env__?: unknown };
+  const saved = process.env;
+  process.env = { CONTACT_DISCORD_WEBHOOK_URL: WEBHOOK };
+  g.__env__ = {};
+  resetRateLimitBindingLookupForTests();
+  try {
+    assert.ok(selectSink(await readContactRuntimeEnv()) instanceof DiscordWebhookSink);
+  } finally {
+    delete g.__env__;
+    process.env = saved;
+    resetRateLimitBindingLookupForTests();
+  }
+});
+
+test("runtime env: CONTACT_ALLOWED_ORIGINS also comes from the worker env", async () => {
+  await withWorkerEnv({ CONTACT_ALLOWED_ORIGINS: "https://a.example, https://b.example" }, async () => {
+    assert.equal((await readContactRuntimeEnv()).CONTACT_ALLOWED_ORIGINS, "https://a.example, https://b.example");
+  });
+});
+
+test("origin: the production worker origin is accepted even when the request URL is not it", async () => {
+  // Behind a proxy or a custom route the request URL's origin may not be the
+  // page's origin; the site's own submissions must still land.
+  const req = new Request("https://internal.invalid/api/contact", {
+    method: "POST",
+    headers: { "content-type": "application/json", origin: PRODUCTION_ORIGIN, "cf-connecting-ip": "203.0.113.9" },
+    body: JSON.stringify({ topic: "bug", message: "x" }),
+  });
+  const res = await handleRequest(req, {});
+  assert.equal(res.status, 200);
+  assert.equal(res.headers.get("access-control-allow-origin"), PRODUCTION_ORIGIN);
+});
+
+test("origin: setting CONTACT_ALLOWED_ORIGINS never locks the site out of its own origin", async () => {
+  const res = await handleRequest(
+    post({ topic: "bug", message: "x" }, { origin: "https://meridian.test", "cf-connecting-ip": "198.51.100.30" }),
+    { CONTACT_ALLOWED_ORIGINS: "https://other.example" },
+  );
+  assert.equal(res.status, 200); // same-origin is checked before the list
+});
+
+test("honeypot: a bot drop stays silent (200) even with no Origin or a refused Origin; real messages there still get 403", async () => {
+  let delivered = 0;
+  const env: ContactEnv = { CONTACT_DISCORD_WEBHOOK_URL: WEBHOOK };
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = (async () => {
+    delivered++;
+    return new Response("{}", { status: 204 });
+  }) as typeof fetch;
+  try {
+    const bot = { topic: "bug", message: "buy now", website: "http://spam.example" };
+    const noOrigin = await handleRequest(
+      new Request("https://meridian.test/api/contact", { method: "POST", body: JSON.stringify(bot), headers: { "cf-connecting-ip": "203.0.113.20" } }),
+      env,
+    );
+    assert.equal(noOrigin.status, 200);
+    assert.deepEqual(await noOrigin.json(), { ok: true });
+    const badOrigin = await handleRequest(post(bot, { origin: "https://evil.example", "cf-connecting-ip": "203.0.113.21" }), env);
+    assert.equal(badOrigin.status, 200);
+    assert.equal(badOrigin.headers.get("access-control-allow-origin"), null, "a refused origin gets no CORS grant");
+    assert.equal(delivered, 0, "a honeypot drop never reaches the sink");
+
+    const human = { topic: "bug", message: "real message" };
+    const refused = await handleRequest(post(human, { origin: "https://evil.example", "cf-connecting-ip": "203.0.113.22" }), env);
+    assert.equal(refused.status, 403);
+    const missing = await handleRequest(
+      new Request("https://meridian.test/api/contact", { method: "POST", body: JSON.stringify(human) }),
+      env,
+    );
+    assert.equal(missing.status, 403);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});
+
+test("honeypot on the refused-origin path is still size-capped", async () => {
+  const res = await handleRequest(
+    post("x".repeat(MAX_BODY_BYTES + 1), { origin: "https://evil.example", "cf-connecting-ip": "203.0.113.23" }),
+    {},
+  );
+  assert.equal(res.status, 403);
+});
+
+test("GET /api/contact reports which sink is selected — name only, no secret, no CORS grant, not cached", async () => {
+  const parked = await handleRequest(new Request("https://meridian.test/api/contact"), {});
+  assert.equal(parked.status, 200);
+  assert.deepEqual(await parked.json(), { sink: "noop" });
+  assert.equal(parked.headers.get("cache-control"), "no-store");
+  assert.equal(parked.headers.get("access-control-allow-origin"), null);
+  const wired = await handleRequest(new Request("https://meridian.test/api/contact"), { CONTACT_DISCORD_WEBHOOK_URL: WEBHOOK });
+  const text = await wired.text();
+  assert.deepEqual(JSON.parse(text), { sink: "discord" });
+  assert.ok(!text.includes("discord.com"), "the webhook URL is never echoed");
 });

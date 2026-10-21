@@ -27,9 +27,20 @@
 
 name = "meridian"
 
-# The process.env config path (readContactEnv) also needs:
-#   compatibility_flags = ["nodejs_compat"]  with compatibility_date >= "2025-04-01"
-# Check that the Workers Builds config already has it before copying.
+# nodejs_compat is no longer needed for contact config: the handler reads the
+# worker's own env first (src/lib/contact/runtime-env.server.ts) and uses
+# process.env only as a fallback. Whether the fallback can be dropped depends
+# on probe A1 (docs/contact-activation.md, step 1).
+#
+# Contact secret (set in the dashboard as a SECRET, never in this file):
+#   CONTACT_DISCORD_WEBHOOK_URL  - a webhook for a NEW private channel; never
+#                                  the crash-report worker's DISCORD_WEBHOOK_URL.
+#
+# Probe A1 result (which server entry serves production) - NOT RUN YET, it
+# runs only after #207 has deployed from main. Paste the probe's report here:
+#   node --experimental-strip-types scripts/entry-fingerprint-probe.mjs \
+#     --url https://meridian.knowledgetest.workers.dev
+#   (pending)
 
 # Per sender (hashed key that changes every UTC day): 3 messages per 60 s.
 [[ratelimits]]

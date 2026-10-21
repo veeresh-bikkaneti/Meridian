@@ -1,63 +1,65 @@
-# BRANCH_STATUS — fix/review-p0-p2-kids-privacy-ux
+# BRANCH_STATUS — feat/contact-activation-wiring (contact activation, steps 1-2 prepared)
 
-**State: PR #207 open. Review follow-ups (request-changes round) pushed; `origin/main` (with PR #203) merged in; rebased onto `4ef6875` (PR #206) on the owner's order, 2026-10-21.**
-Base: `origin/main f9fa7e4` (rebased; the work started from the live build `157d215`), then
-`origin/main 41e1121` (PR #203, perf) and then `b430d28` (PR #208, docs) **merged** in on 2026-10-21. They were merges, not rebases, so there was no force-push. The final step onto `4ef6875` WAS a rebase (owner-ordered, after PR #206 merged): the two conflicts were `BRANCH_STATUS.md` and `public/_headers`, both resolved to this branch's own versions — the `_headers` below is byte-identical to the merge-resolved file, and this file is the merge-resolved record with only this base paragraph updated.
-Full write-up: `docs/reviews/2026-10-21-p0-p2-remediation.md`.
+**State: PREPARED, NOT OPEN FOR MERGE. Gate WI-0 has NOT cleared: PR #207 is
+still open (unmerged), so `main` has no contact code and production has not
+deployed it.** This branch is stacked on #207's head (`95cfa64`); it is pushed
+for safekeeping and gets a PR against `main` only after #207 merges. Nothing
+here has been probed, deployed, merged or configured.
 
-The previous records are in git history: ops/telemetry-phase1-deploy (PR #204)
-at `f9fa7e4:BRANCH_STATUS.md`, and perf/performance-tuning (PR #203) at
-`41e1121:BRANCH_STATUS.md`. The #203-landed header (PR #208) is at `b430d28:BRANCH_STATUS.md`.
+Governing words (Veeresh, 2026-10-21): "Adopt B — start the cure round".
+Runbook: `docs/contact-activation.md`.
 
-#203 merge conflicts:
-- `public/_headers` (add/add): kept #207's version. It is a superset: the
-  `/*` security block plus no-cache rules plus #203's F1 `/assets/*` immutable rule and its three
-  `! Cache-Control` detach carve-outs, text-identical. Nothing from #203 was lost.
-- `BRANCH_STATUS.md` (both merges): this branch's version, updated (repo convention).
-- Open PR #212 (explicit Cache-Control for the carved assets + HTML) also edits
-  `public/_headers` and will conflict with this file. Whichever lands second must union the two:
-  keep this branch's `/*` security block and #212's detach-plus-explicit-set carve-outs, and pick ONE
-  Cache-Control per path for `/flags.json` and `/`.
+## The five steps
+
+| # | Step | State |
+| --- | --- | --- |
+| 0 | Entry gate: #207 merged and `meridian` deployed from new `main` | **BLOCKED** — #207 open |
+| 1 | Probe A1: which server entry serves production | script + tests ready, **not run** (runs only after step 0) |
+| 2 | Wiring PR (this branch) | code + tests + docs done, unreviewed, unmerged |
+| 3 | Owner sets the worker secret | step sheet written; owner action |
+| 4 | Smoke with the form OFF | script + tests ready, **not run** (needs step 3) |
+| 5 | Flip `contactEndpoint` | owner's word only; one line, rollback written |
+
+## What this branch changes (step 2 scope, nothing else)
+
+- `runtime-env.server.ts` (new): the one place that finds the worker's `env`
+  (`globalThis.__env__`, then `cloudflare:workers`). The contact webhook, the
+  origin list and the rate-limit bindings all read through it; `process.env`
+  stays only as a fallback. `readContactRuntimeEnv()` is the single reader for
+  the route and the readiness check.
+- Origin gate: production origin on the default allowlist; a filled honeypot
+  gets a silent `200` even with a missing/refused Origin; real messages with a
+  bad Origin still get `403`.
+- Readiness: `check:contact` uses the same reader and says whose config it
+  checked; `check:contact -- --url <origin>` asks the live worker via the new
+  `GET /api/contact` → `{ "sink": "discord" | "noop" }` (name only). Anything
+  unexpected is NOT confirmed, exit 1.
+- `scripts/entry-fingerprint-probe.mjs` (step 1) and
+  `scripts/contact-smoke.mjs` (step 4), each with a test that proves it
+  discriminates.
+
+Not changed: what the form collects, rate-limit thresholds, retention, the
+gate, `ContactSink`, game code, dependencies.
 
 ## Done
-- [x] P0-1 Microsoft Clarity removed (code, env typing, Pages workflow)
-- [x] P0-2 Google Analytics removed entirely. Owner (2026-10-21): "I deleted clarity and ga4 from cloudflare account" — both IDs deleted from the `meridian` worker's Workers Builds variables, and the repo's GitHub Actions secrets deleted the same day (done and verified). Optional cookieless Cloudflare Web Analytics via `VITE_CF_BEACON_TOKEN`
-- [x] P0-3 `/privacy` page, linked from the footer and the For grown-ups card
-- [x] P1-4 PWA base path: manifest `./`, `sw.js` derives BASE from its own URL (+ test under both bases)
-- [x] P1-5 "Begin exploring" starts a Globe round at the picked difficulty
-- [x] P1-6 Easy curation (`src/game/easy-curation.ts`, rung fallback, min pool 25)
-- [x] P1-7 Prefer the Full map: a 2 GB reading with a clean WebGL probe stays Full
-- [x] P2-8/9 `public/_headers` + worker middleware (`src/start.ts`) from one source (`src/lib/security-headers.ts`) (+ drift test)
-- [x] P2-10 Gate strikes persist across close/reopen (cooldown can't be dodged)
-- [x] P2-11 "Take the tour" re-entry in the footer
-- [x] Crash telemetry coarsened (no memory/cores; screen bucket; rounded DPR)
-- [x] `/contact` page behind the math gate + `POST /api/contact` on the main `meridian` worker, with no third worker (validation, 4 KB cap, salted-hash rate limit, honeypot, `ContactSink` with `NoopSink` default, `DiscordWebhookSink` only with `CONTACT_DISCORD_WEBHOOK_URL`)
-- [x] Docs: README, handbook ch01/ch07, observability, scout policy, scoring contract, security-headers, remediation doc
 
-## Pending / owner actions
-- [x] `public/_headers` overlap with PR #203: resolved in the merge above
-- [x] Remove the GA/Clarity env vars from Cloudflare Workers Builds + GitHub secrets — DONE and verified 2026-10-21 (see the line above and remediation-doc decision 1)
-- [ ] Verify the `_headers` are live after deploy (`docs/security-headers.md`)
-- [ ] Contact activation is PARKED (path B) — do NOT smoke-test-and-flip as if the GitHub-side state were sufficient. Record correction (verified 2026-10-21): a GitHub **repo** secret named `CONTACT_DISCORD_WEBHOOK_URL` exists (added by the owner 2026-10-21) but **nothing reads it**; the handler expects a **worker runtime secret** on `meridian`. Activation (follow-up chain in the cure-round section below) sets it on the worker with a separate channel (never the crash `DISCORD_WEBHOOK_URL`), then deletes the GitHub secret — one secret, one store
-- [ ] Add the `[[ratelimits]]` blocks from `config/cloudflare/meridian.wrangler.toml` to the `meridian` worker config (free; optional, with an in-memory fallback)
-- [ ] Delete contact messages in Discord within 90 days (`docs/contact-rate-limiting.md`, `/privacy`)
-- [ ] P3 hardening (static CSP hashes, Easy first-run default) is stacked on branch `fix/review-p3-hardening` (no PR yet)
+- [x] Unit tests: `src/lib/contact/*.test.ts` 54/54; rate-limiter tests still 11/11
+- [x] Discrimination: against the parked #207 handler the new tests fail where
+      they should (5 of the handler tests: worker-env secret, worker-env
+      origins, production origin, honeypot-before-origin, GET readiness; the
+      readiness file fails on the missing `contactReadinessFromUrl` export).
+      The remaining new handler tests are guards that also pass on parked.
+- [x] `scripts/contact-smoke.test.mjs` 5/5 (parked, rejected-webhook and
+      look-alike runs FAIL; wired run passes and Discord receives no honeypot)
+- [x] `scripts/entry-fingerprint-probe.test.mjs` 5/5
+- [x] Docs: runbook, config record, remediation-record note
 
-## Cure round (2026-10-21) — panel NOT READY → path B
+## Pending
 
-- **Panel verdict: NOT READY** on tip `e361937` (voted pre-rebase; the content was carried to `3250f02`). The privacy posture was sound; the blocks were (a) contact delivery cannot work in production as shipped while docs/copy implied it does, and (b) record defects.
-- **Owner's adoption, verbatim (2026-10-21): "Adopt B — start the cure round"** — the Senior Architect's path B from the panel review: this PR lands with delivery honestly PARKED (form off, docs truthful); activation is a tracked follow-up filed the day this PR merges.
-- **Cure items and dispositions:**
-  1. *Truthfulness (delivery parked, everywhere)* — DONE: remediation doc states delivery is PARKED and qualifies every "works when the secret is set" claim (a); `/privacy` rewritten for the parked state — form off, future-tense delivery, server transit disclosed, reply-to-to-Discord disclosed, retention = manual deletion once resolved within 90 days, gate still described as a check that keeps kids out, NOT verified parental consent (b); footer line qualified to "…collected from players" (c); `/contact` carries a plain parked note and no longer promises "we read every message" (d).
-  2. *Readiness-check honesty* — DONE (built, none existed): searched package.json, `scripts/`, `src/lib/contact/`, docs and workflows — no readiness/delivery check existed in the tree. Added `evaluateContactReadiness` (`src/lib/contact/contact-readiness.ts`) + CLI `npm run check:contact` (`scripts/contact-readiness.mjs`): with no secret it prints "contact delivery: NOT configured (parked)" and exits 1. Pinning tests in `src/lib/contact/contact-readiness.test.ts` cover no-secret → not-configured and the strict-discord.com → Discord-sink-selected assertion for the follow-up. Sink selection, env reading, allowlist and honeypot untouched.
-  3. *Off-state completeness* — VERIFIED 2026-10-21: `public/flags.json` (source) carries **no** `contactEndpoint`; with no endpoint, `sendContact` returns not-configured and the page says "isn't switched on yet" (pinned by the E2E spec). The footer and the For grown-ups card link to `/contact`, whose page now presents the parked state plainly at the top; no surface presents `/contact` as live.
-  4. *Citations* — DONE: remediation-doc decision 1 cites the owner's actual words + the verified deletions; decision 4 cites the path-B adoption above; decisions 3 and 5 relabelled team rationale; decision 2 relabelled a code change; the "(owner decision: COPPA first)" gloss on the P0-2 line above replaced with the citable record; the same fixes applied to the matching code comments (`privacy.tsx`, `contact.tsx`, `contact-handler.server.ts`, `contact-form.ts`).
-  5. *Doc cures* — DONE: retired GA4/Clarity ID values scrubbed from the remediation doc; GA/Clarity deletion TODOs marked DONE (verified 2026-10-21); the stale TODO-2 remedy marked implemented by this PR (`src/start.ts` + `src/lib/security-headers.ts`); the fused 403/200 sentence split into two accurate sentences; `docs/observability.md` device-facts prose rewritten to the coarse buckets its own table states, and its stale deploy note replaced with the real flow (bindings ride with the version upload; `cf-version.py` ops helper outside the repo); `docs/contact-rate-limiting.md` gained the `cf-connecting-ip` trust assumption + the shared "unknown" fallback bucket; the `CONTACT_DISCORD_WEBHOOK_URL` record corrected in the remediation doc and in the Pending item above (GitHub repo secret exists, nothing reads it; worker runtime secret is what the handler expects).
-  6. *This section* — DONE (this record).
-- **Tracked docs follow-up (deferred, out of cure scope):** `workers/crash-report/README.md` still carries pre-live Phase 1 text — "Phase 1 live — not yet" (~line 253) and "current Phase 1 deploy blocker" / re-supply-the-webhook-after-upload (~lines 272, 329) — although Phase 1 went live on 2026-10-21; the file itself is untouched in this cure round and this staleness is deferred to its own small docs PR.
-- **Follow-up chain after merge (committed next step, in order):**
-  1. Probe which server entry actually serves on the deployed worker (Nitro `.vercel/output` vs `dist/server` start entry) — if Nitro serves, the `start.ts` security-headers middleware is dead code TODAY and fixing that takes priority over contact wiring.
-  2. Set `CONTACT_DISCORD_WEBHOOK_URL` as a worker secret on `meridian` (plus optionally the `[[ratelimits]]` blocks), then delete the same-named GitHub repo secret.
-  3. Wiring PR: env read via runtime bindings (not `process.env`), production origin allowlisted or endpoint same-origin, honeypot silent-200 reordered ahead of the origin gate, readiness check asserts the Discord sink.
-  4. Post-deploy smoke with the form still off.
-  5. Only then add `contactEndpoint` to `flags.json`.
+- [ ] Owner: merge #207 (WI-0). Then the coordinator records the deployed commit.
+- [ ] Probe A1, run by the Platform Engineer and re-run by the Reality Checker.
+      If the Nitro entry serves: escalate to the owner as its own item first.
+- [ ] Open the wiring PR against `main`; full 12-role review; owner's per-PR merge word.
+- [ ] Owner configuration (runbook step 3), then smoke (step 4), then the flip (step 5).
+- [ ] Gates not yet run on this branch: `npm test` (both suites), lint-cards,
+      `build:pages`, relevant E2E. See the status below once run.
