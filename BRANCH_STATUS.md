@@ -6,7 +6,7 @@ still owed** (standing rules: full pipeline always; the panel approves
 the final tip itself).
 
 Base: `origin/main 33a28fe`. Docs + comments only — no audio, no code
-behavior, no player-facing strings.
+behavior, no player-facing strings. **PR: #196.**
 
 ## Why this branch exists
 
@@ -86,10 +86,10 @@ Method: repo-wide greps for `TruthTeller`, `am_fenrir`, `OPEN BUG`,
 
 ## Gates (on this tip)
 
-- `npx tsc --noEmit` — PENDING
-- `npm test` — PENDING
-- `node scripts/lint-cards.mjs` — PENDING
-- `npm run build:pages` — PENDING
+- `npx tsc --noEmit` — CLEAN
+- `npm test` — GREEN (exit 0; src suite 1368/1368)
+- `node scripts/lint-cards.mjs` — GATE PASSED
+- `npm run build:pages` — GREEN
 
 ## Ready
 
