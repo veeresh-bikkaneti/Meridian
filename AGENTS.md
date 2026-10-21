@@ -17,6 +17,22 @@ map; every reveal shows a kid-friendly story card.
 
 If a task cannot be done within these rules, stop and ask first.
 
+## Agent council — match the process to the task
+
+Routine work does not convene a council.
+
+| Tier | Scope | Process |
+| :--- | :--- | :--- |
+| **0 — Direct** | Docs, `BRANCH_STATUS.md`, copy, config, a typo | Make the change, run the gates. |
+| **1 — Solo TDD** | One bug, one function, a clear repro | Failing test first, then the minimal fix. |
+| **2 — Council** | New feature or module, 3+ files, API/storage/schema, anything under `src/game/data/`, security or privacy | Full protocol: `docs/ops/agent-council-protocol.md` |
+
+Unsure which tier → Tier 2. An owner-set tier overrides this table.
+
+**Tier 2 in one line:** no implementation code until a signed Consensus
+Manifest exists (ATDD scenarios → TDD contracts → adversarial challenge →
+Chair sign-off), then RED, minimal GREEN, gates, unified diff.
+
 ## Quality gates (all mandatory for a PR)
 
 - `npx tsc --noEmit` — clean
