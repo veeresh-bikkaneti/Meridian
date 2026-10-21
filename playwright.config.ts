@@ -1,4 +1,17 @@
+import { existsSync } from "node:fs";
 import { defineConfig } from "playwright/test";
+
+/**
+ * Which Chromium to launch (review follow-up, 2026-10-21):
+ * 1. PLAYWRIGHT_CHROMIUM_EXECUTABLE, when set (any machine).
+ * 2. /opt/meta-chromium/chrome, when it exists (this dev VM; see below).
+ * 3. Otherwise undefined → Playwright's bundled Chromium. GitHub Actions
+ *    uses this path, after `npx playwright install --with-deps chromium`.
+ */
+const VM_CHROME = "/opt/meta-chromium/chrome";
+const chromiumExecutable =
+  process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?.trim() ||
+  (existsSync(VM_CHROME) ? VM_CHROME : undefined);
 
 /**
  * E2E suite for PBI P0-02 (gesture model) / P0-03 (game chrome rework).
@@ -13,9 +26,10 @@ import { defineConfig } from "playwright/test";
  * (see tests/e2e/helpers.ts `serveBuiltArtifact`). External hosts (imagery
  * tiles) are passed through untouched.
  *
- * Browser: /opt/meta-chromium (Chromium 152.0.7977.82) via executablePath.
- * Playwright's bundled-Chromium download stalled on this VM's throttled
- * egress (cdn.playwright.dev ~18 B/s), so no new package was installed.
+ * Browser: /opt/meta-chromium (Chromium 152.0.7977.82) via executablePath
+ * on this VM. Playwright's bundled-Chromium download stalled on its
+ * throttled egress (cdn.playwright.dev ~18 B/s). Elsewhere, such as CI, the
+ * bundled Chromium is used (see chromiumExecutable above).
  */
 export default defineConfig({
   testDir: "./tests/e2e",
@@ -31,7 +45,7 @@ export default defineConfig({
     // `flock ~/workspace/.e2e.lock` with --workers=1; never run two suites
     // concurrently.
     launchOptions: {
-      executablePath: "/opt/meta-chromium/chrome",
+      executablePath: chromiumExecutable,
       args: ["--disable-dev-shm-usage"],
     },
     screenshot: "only-on-failure",
