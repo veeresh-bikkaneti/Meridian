@@ -62,10 +62,11 @@ against the production asset-worker source (cloudflare/workers-sdk,
 | `/assets/maplibre-gl-worker.mjs` | wildcard set → carved detach+set | **none** (ETag only) | `public, max-age=0, must-revalidate` (sole value) |
 | `/assets/maplibre-gl-shared.mjs` | wildcard set → carved detach+set | **none** (ETag only) | `public, max-age=0, must-revalidate` (sole value) |
 | `/assets/storyteller/storyteller-assets.json` | wildcard set → carved detach+set | **none** (ETag only) | `public, max-age=0, must-revalidate` (sole value) |
-| `/flags.json` | own set (first set) | `public, max-age=0, must-revalidate` (platform default) | unchanged value, now **explicit** in the file |
+| `/flags.json` | own set (first set) | `public, max-age=0, must-revalidate` (platform default) | `no-cache` — main's explicit rule wins in the union (stricter; a kill switch must never be served stale) |
 | `/` (root document) | own set | **none**, no ETag/Last-Modified | rule present — see honesty note below; probe decides |
-| `/offline`, `/offline.html`, `/_shell.html` | own sets | platform default `must-revalidate` (asset-served; `/offline.html` 307s to `/offline`) | unchanged value, now explicit |
-| Everything else — `/build-meta.json`, `/audio/*`, `/icons/*`, `/images/*`, `/loop/*`, `/__grok/*`, `sw.js`, `favicon.svg`, `manifest.webmanifest`, `og.jpg`, `x-banner.jpg`, `scout-fallback.svg` | **no rule** | platform default `public, max-age=0, must-revalidate` + ETag (samples live-verified) | unchanged — deliberately no rule (see the file's comments) |
+| `/offline`, `/offline.html` | own sets | platform default `must-revalidate` (asset-served; `/offline.html` 307s to `/offline`) | unchanged value, now explicit |
+| `/_shell.html` | own set | **404 from the app server** (live probe 2026-10-21 — no ETag, no CF-Cache-Status; the same signature as `/`) | rule kept as **policy of record**; expected-inert until the path is asset-served (see Acceptance) |
+| Everything else — `/audio/*`, `/icons/*`, `/images/*`, `/loop/*`, `/__grok/*`, `favicon.svg`, `og.jpg`, `x-banner.jpg`, `scout-fallback.svg` | **no rule** | platform default `public, max-age=0, must-revalidate` + ETag (samples live-verified) | unchanged — deliberately no rule (see the file's comments). (`/sw.js`, `/build-meta.json` and `/manifest.webmanifest` are NOT in this class: they carry main's explicit `no-cache` rules, kept by the union.) |
 
 **Honesty note on `/`:** the root document is currently rendered by the
 app server, not served as a static asset — its live response carries
@@ -76,6 +77,12 @@ asset-served root, but it likely cannot reach the server-rendered
 document on the Cloudflare host today. The post-merge probe decides:
 if `/` is still bare after this lands, the remainder is a **server-side
 header**, which is out of this PR's scope and flagged for the owner.
+
+**Honesty note on `/_shell.html`:** the file exists in the build
+output, but the live path is answered by the app server with a 404 —
+`_headers` cannot reach it today, the same limitation as `/`. The rule
+stays as policy of record, and the Acceptance probe below defines a
+bare/404 result for it as expected-inert.
 
 ## Probe findings recorded for the owner (no action in this PR)
 
@@ -113,6 +120,23 @@ the "deliberately no rule" list no longer names `/sw.js`,
 no-cache rules), and the carved-blocks comment no longer repeats the
 disproven "detach alone, platform default then applies" theory.
 
+## Cure round (panel round 1 on `18bcd45`: NOT READY, BLOCK ×1)
+
+Office Hours blocked on a record defect: this file's table and the
+`_headers` comment claimed `/_shell.html` was asset-served and
+covered, but live it answers 404 from the app server (like `/`), and
+the Acceptance definition had no pass/fail meaning for that path.
+The construction itself verified completely — the comma-join
+derivation was re-derived from the asset-worker source by the
+coordinator and three seats, and no served path's final value is
+joined, doubled, or wrong. Cure (docs/comments only, no rule
+change): the `/_shell.html` honesty is now mirrored in the
+`_headers` comment and the table above, the Acceptance definition
+gained the expected-inert rule for it, and the PR #207 note was
+strengthened from "union" to per-pattern adjudication (plus the
+union warning now lives inside `_headers` itself). The cured tip
+returned for a rule-13 panel re-vote, which returned READY.
+
 ## Gates (this branch, 2026-10-21)
 
 - [x] `npx tsc --noEmit` — clean
@@ -127,7 +151,9 @@ disproven "detach alone, platform default then applies" theory.
 
 ## Acceptance — post-merge live probe (the hard gate)
 
-- [ ] Panel review of this PR → READY
+- [x] Panel review of this PR → READY (rule-13 re-vote on the cured
+      tip; the 2026-10-22 rebase applied that vote's pre-adjudicated
+      union — see State, above)
 - [ ] Owner's merge word
 - [ ] After deploy, probe **every path class** on
       https://meridian.knowledgetest.workers.dev and record verbatim
@@ -138,5 +164,10 @@ disproven "detach alone, platform default then applies" theory.
       max-age=0, must-revalidate` as a **single value** (no comma-join,
       no `immutable` remnant), hashed assets still immutable, and the
       `/` result decides whether a server-side follow-up is needed.
+      For `/_shell.html`, a 404 or header-less response is
+      **expected-inert (a pass)** — the app server answers that path
+      today, so the rule cannot take effect until it is asset-served;
+      only an asset-served `/_shell.html` would be judged on its
+      Cache-Control value.
       **The fix is not done until this probe is reported.**
 - [ ] Header-cure update to this file after merge (standard pattern)
