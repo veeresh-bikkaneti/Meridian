@@ -83,9 +83,9 @@ Memorize these. Each one has happened, and each one is still an open invitation 
 
 **Case file.** A GeoDetective play session ("Case #1", "Case #001"): satellite + labels guess surface, clue cards, distance rings and direction arrows on misses.
 
-**Scout Map.** The session-only lightweight map fallback shown when the satellite tiles fail (one retry, then the dialog offers it). Veeresh's D3 decision ("Keep it", 2026-10-15) — it was the gamestudio-subagents crew's recommendation first. The choice dialog is PR #147 (OPEN).
+**Scout Map.** The lightweight outline map for weak devices. Since Veeresh's rulings of 2026-10-20: a weak device auto-switches to it silently at boot (no dialog), flipping the in-game toggle sends the player home so the next game uses the new map, and the tile-failure fallback (one retry, then this visit switches — Veeresh's D3 decision "Keep it", 2026-10-15, a gamestudio-subagents crew recommendation first) still runs session-only. See ch06 §4.
 
-**Tier split.** The tier split (`globeTierSplit` in `flags.json`): the Globe loads only the fame-tier files for the selected difficulty (Easy t1+t2, Medium t2–t4, Hard t4+t5) instead of all five. Shipped live by PR #148 (2026-10-15). (Low-GPU devices get the separate Scout Map offer — see ch06.)
+**Tier split.** The tier split (`globeTierSplit` in `flags.json`): the Globe loads only the fame-tier files for the selected difficulty (Easy t1+t2, Medium t2–t4, Hard t4+t5) instead of all five. Shipped live by PR #148 (2026-10-15). (Low-GPU devices get the separate Scout Map — see ch06.)
 
 **WS-\*.** The workstream program. The ones you'll see referenced: WS-0 test harness (recommended first), WS-2 social previews (shipped via #155 — the `og:`/`twitter:` share tags), WS-3 Scout toggle regression test, WS-4 satellite-failure phase 1 (shipped via #148), WS-5 home weight (the 377 kB `grandpa-directions.webp`).
 

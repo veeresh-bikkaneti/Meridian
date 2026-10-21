@@ -7,9 +7,10 @@
  *   2. crash-resume-to-menu (previous kill state, lands on menu)
  *   3. idle-kill return (session killed, new run from home)
  *
- * Goldens: no scout-boot-offer modal without the crash flag, no scout
- * mode on the map, satellite tiles ARE requested (scout loads none),
- * maxZoom stays 8 (data-max-zoom contract).
+ * Goldens: no auto record written at boot (a capable device is never
+ * silently switched), no scout mode on the map, satellite tiles ARE
+ * requested (scout loads none), maxZoom stays 8 (data-max-zoom
+ * contract).
  *
  * The capable spoof is required because this VM's real Chromium reports
  * a SwiftShader renderer (it would — correctly — qualify scout).
@@ -23,8 +24,8 @@ import {
 } from "./helpers";
 import {
   spoofCapableDevice,
-  offerModal,
   readMapMode,
+  readStoredMapMode,
   mapWrapper,
 } from "./scout-helpers";
 
@@ -57,9 +58,10 @@ async function serveWithTileCounter(
 }
 
 async function expectFullMode(page: Page, tileRequests: () => number): Promise<void> {
-  // No offer without the crash flag (settle: the offer fires at boot).
+  // No silent switch at boot (settle: qualification runs at boot) —
+  // a capable device gets NO stored record at all.
   await page.waitForTimeout(5_000);
-  await expect(offerModal(page)).toBeHidden();
+  expect(await readStoredMapMode(page)).toBeNull();
 
   // Map mounts in full mode.
   await expect(mapWrapper(page)).toBeVisible({ timeout: 60_000 });
@@ -115,9 +117,9 @@ test("crash-resume-to-menu: capable device never demotes", async ({
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
     timeout: 60_000,
   });
-  await expect(offerModal(page)).toBeHidden();
+  expect(await readStoredMapMode(page)).toBeNull();
 
-  // Start a run from the menu: still full, still no offer.
+  // Start a run from the menu: still full, still no record.
   await startGlobeRun(page);
   await expectFullMode(page, tileRequests);
   await page.close();
@@ -141,7 +143,7 @@ test("idle-kill return: capable device never demotes", async ({ context }) => {
   // Return: the kill already happened in this context (no crash flag was
   // set — the idle kill is orderly). Navigate fresh WITHOUT the
   // ?idle-ms= seam (it would kill the return run 4 s in) and start a new
-  // run: no offer, no demotion.
+  // run: no record, no demotion.
   await page.goto(APP_NO_IDLE);
   await page.getByRole("button", { name: "Play the globe" }).click();
   await expect.poll(() => readPhase(page), { timeout: 60_000 }).toBe("aim");

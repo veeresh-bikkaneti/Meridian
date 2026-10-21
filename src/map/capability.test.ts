@@ -15,9 +15,10 @@
  * Fail-closed: unavailable signals never demote. No UA string read.
  *
  * OPEN SEMANTIC QUESTIONS for the coordinator (not asserted here):
- *  Q1. prior-crash → scout at this layer; the APP must show the offer modal
- *      (data-testid="scout-boot-offer") when source === "prior-crash" rather
- *      than forcing scout — spec says offer, not force.
+ *  Q1. prior-crash → scout at this layer; the app originally had to show
+ *      the offer modal rather than forcing scout ("offer, not force").
+ *      SUPERSEDED by the owner's 2026-10-20 ruling — the app now applies a
+ *      fresh scout decision silently and persists it as an auto record.
  *  Q2. A FRESH auto record (e.g. probe-assigned yesterday) passed as `manual`
  *      re-demotes today with no fresh signal — 7-day hysteresis vs the
  *      spec's "never demoted twice in a row without a fresh qualifying event".
@@ -188,10 +189,10 @@ test("manual toggle wins over every other signal", () => {
   assert.deepEqual(r2, { mode: "scout", source: "manual" });
 });
 
-test("prior-crash flag → scout with source prior-crash (app must OFFER, not force — see Q1)", () => {
+test("prior-crash flag → scout with source prior-crash (the app applies it silently — see Q1)", () => {
   const r = qualifyMapMode({ priorMapCrash: true });
   assert.deepEqual(r, { mode: "scout", source: "prior-crash" });
-  // The source tag is what lets the app layer show the offer modal.
+  // The source tag is what the app layer persists on the auto record.
   assert.equal(r.source, "prior-crash");
 });
 
@@ -374,107 +375,130 @@ test("capability.ts never references the user agent string", () => {
 });
 
 // ---------------------------------------------------------------------------
-// planBootMapMode — the boot choice dialog (owner directive: capability-
-// detected weak devices get a CHOICE, never a silent routing).
+// planBootMapMode — the silent boot auto-switch (owner ruling, 2026-10-20:
+// "Auto-switch silently on weak devices (my decision stands)"). This
+// replaced the boot choice dialog: a fresh scout decision now starts the
+// session in Scout and persists an AUTO record (qualifying source, never
+// manual, never accepted), so the 7-day decay re-qualifies the device.
 // ---------------------------------------------------------------------------
 
-test("planBootMapMode: probe scout decision → probe offer (never silent)", () => {
+test("planBootMapMode: probe scout decision → silent scout + persist the probe source", () => {
   const decision = qualifyMapMode({ webglProbeOk: false });
   assert.deepEqual(decision, { mode: "scout", source: "probe" });
-  assert.deepEqual(planBootMapMode(decision), { offer: "probe" });
+  assert.deepEqual(planBootMapMode(decision), { mode: "scout", persistSource: "probe" });
 });
 
-test("planBootMapMode: low-memory scout decision → low-memory offer (never silent)", () => {
+test("planBootMapMode: low-memory scout decision → silent scout + persist the low-memory source", () => {
   const decision = qualifyMapMode({ webglProbeOk: true, deviceMemoryGB: 1 });
   assert.deepEqual(decision, { mode: "scout", source: "low-memory" });
-  assert.deepEqual(planBootMapMode(decision), { offer: "low-memory" });
+  assert.deepEqual(planBootMapMode(decision), { mode: "scout", persistSource: "low-memory" });
 });
 
-test("planBootMapMode: prior-crash → prior-crash offer (unchanged)", () => {
+test("planBootMapMode: prior-crash decision → silent scout + persist the prior-crash source", () => {
   const decision = qualifyMapMode({ priorMapCrash: true });
-  assert.deepEqual(planBootMapMode(decision), { offer: "prior-crash" });
+  assert.deepEqual(planBootMapMode(decision), { mode: "scout", persistSource: "prior-crash" });
 });
 
-// Suppression ("a live stored assignment suppresses every offer") is not
-// tested here: it is not the planner's job. game-app's boot effect reads
-// the stored record itself and only calls planBootMapMode from its
-// no-stored branch (issue #154 item 3 — the planner's old `stored`
-// parameter was dead in production, so it was dropped). The
-// storage-contract tests below assert the fact that branch relies on —
-// a stored answer still reads back, undecayed, on later boots — and the
-// E2E specs (scout-capability-offer) pin the visible no-re-prompt
-// behavior.
+// Suppression ("a live stored assignment stands over fresh signals") is
+// not the planner's job. game-app's boot effect reads the stored record
+// itself and only calls planBootMapMode from its no-stored branch (issue
+// #154 item 3 — the planner's old `stored` parameter was dead in
+// production, so it was dropped). The storage-contract tests below assert
+// the facts that branch relies on: a stored record reads back, and an
+// auto record decays while a manual (or legacy accepted) one never does.
 
-test("planBootMapMode: clean boot → no offer", () => {
+test("planBootMapMode: clean boot → full, nothing persisted", () => {
   assert.deepEqual(
     planBootMapMode(qualifyMapMode({ webglProbeOk: true, deviceMemoryGB: 8 })),
-    { offer: null },
+    { mode: "full", persistSource: null },
   );
 });
 
-test("storage contract: accept capability offer → scout stored with source, never decays, never re-offered", () => {
-  // Boot 1: weak probe, no stored assignment → probe offer.
-  const s = fakeStorage();
-  assert.deepEqual(
-    planBootMapMode(qualifyMapMode({ webglProbeOk: false })),
-    { offer: "probe" },
-  );
-  // The user accepts: app writes scout with the qualifying source preserved
-  // and accepted: true — the person's own answer.
-  writeStoredMapMode("scout", "probe", s, NOW, true);
-  assert.deepEqual(readStoredMapMode(s, NOW), {
-    mode: "scout",
-    source: "probe",
-    setAt: NOW,
-    accepted: true,
-  });
-  // Next day, 8 days later (past the old decay), and a year later on a still
-  // weak device: the accepted choice stands. game-app reads this record
-  // first on every boot and never reaches the planner while it stands —
-  // that is what "never re-offered" means in production (the E2E specs
-  // pin the visible no-dialog behavior).
-  for (const days of [1, 8, 30, 365]) {
-    const later = NOW + days * 24 * 60 * 60 * 1000;
-    const stored = readStoredMapMode(s, later);
-    assert.ok(stored, `accepted record must survive ${days} days`);
-    assert.equal(stored.mode, "scout");
-  }
-});
-
-test("game-app wiring: capability-offer accept writes accepted=true (issue #154 item 7)", () => {
-  // The storage contract above proves what `accepted: true` DOES. This
-  // pins that game-app's accept handler actually writes it — until now
-  // only the slow E2E specs covered that wiring, so an edit dropping the
-  // flag would have failed late or not at all. game-app.tsx is a large
-  // component with no unit-render harness in this repo, so the wiring is
-  // pinned by reading the source — the same pattern as the userAgent
-  // check on capability.ts above.
-  const src = readFileSync(
-    new URL("../components/game-app.tsx", import.meta.url),
-    "utf8",
-  );
-  const start = src.indexOf("const acceptCapabilityOffer");
-  assert.ok(start >= 0, "acceptCapabilityOffer must exist in game-app.tsx");
-  const handler = src.slice(start, start + 800);
-  assert.match(
-    handler,
-    /writeStoredMapMode\("scout", source, undefined, Date\.now\(\), true\)/,
-    "capability accept must write scout with accepted: true",
-  );
-});
-
-test("accepted flag: strict true only; writes without it are unchanged (backward compatible)", () => {
+test("auto-switch record: qualifying source, NO accepted flag, decays after 7 days", () => {
+  // This is the exact write game-app's boot effect performs when the
+  // planner says persist (writeStoredMapMode with the persistSource).
   const s = fakeStorage();
   writeStoredMapMode("scout", "probe", s, NOW);
+  // The stored JSON is a plain auto record — no `accepted` key at all.
   assert.deepEqual(JSON.parse(s.getItem(MAP_MODE_STORAGE_KEY)!), {
     mode: "scout",
     source: "probe",
     setAt: NOW,
   });
   assert.deepEqual(readStoredMapMode(s, NOW), { mode: "scout", source: "probe", setAt: NOW });
-  // An auto record nobody answered still decays.
+  // Nobody answered anything, so the record decays: after the window the
+  // device is re-qualified on fresh signals (and a clean probe returns
+  // it to full — pinned at the qualify layer by the P0 golden above).
   assert.equal(readStoredMapMode(s, NOW + MAP_MODE_DECAY_MS + 1), null);
-  // A hand-edited / corrupt flag does not exempt a record from decay.
+});
+
+test("game-app wiring: boot applies the plan's persistSource as an auto record", () => {
+  // Pins that game-app's boot effect actually writes what the planner
+  // returns — the successor of the issue #154 item 7 accept-wiring pin
+  // (the accept handler it guarded is gone with the dialog). game-app.tsx
+  // is a large component with no unit-render harness in this repo, so the
+  // wiring is pinned by reading the source — the same pattern as the
+  // userAgent check on capability.ts above.
+  const src = readFileSync(
+    new URL("../components/game-app.tsx", import.meta.url),
+    "utf8",
+  );
+  const start = src.indexOf("planBootMapMode(");
+  assert.ok(start >= 0, "boot effect must plan via planBootMapMode");
+  const boot = src.slice(start, start + 1200);
+  assert.match(
+    boot,
+    /writeStoredMapMode\("scout", plan\.persistSource\)/,
+    "boot must persist the planned source as the auto record",
+  );
+  // And the dialog era is fully gone from the component.
+  assert.ok(!src.includes("ScoutBootOffer"), "the boot offer dialog must not come back");
+  assert.ok(
+    src.includes("__meridianSuppressScoutOffer"),
+    "the harness seam stays wired — it now suppresses the auto-switch (issue #154 item 1)",
+  );
+});
+
+test("legacy accepted record (written by the pre-2026-10-20 dialog) never decays", () => {
+  // Players' devices still hold records the removed dialog wrote on
+  // accept: { mode: scout, source: <signal>, accepted: true }. The reader
+  // must keep honoring them — an accepted choice is the person's own
+  // answer. Seeded as raw JSON because current code can no longer write
+  // this shape (exactly the production situation after the update).
+  const s = fakeStorage({
+    [MAP_MODE_STORAGE_KEY]: JSON.stringify({
+      mode: "scout",
+      source: "probe",
+      setAt: NOW,
+      accepted: true,
+    }),
+  });
+  assert.deepEqual(readStoredMapMode(s, NOW), {
+    mode: "scout",
+    source: "probe",
+    setAt: NOW,
+    accepted: true,
+  });
+  for (const days of [1, 8, 30, 365]) {
+    const later = NOW + days * 24 * 60 * 60 * 1000;
+    const stored = readStoredMapMode(s, later);
+    assert.ok(stored, `accepted record must survive ${days} days`);
+    assert.equal(stored.mode, "scout");
+  }
+  // The qualifying source is preserved, so telemetry can still tell an
+  // accepted probe record from an accepted low-memory one.
+  const s2 = fakeStorage({
+    [MAP_MODE_STORAGE_KEY]: JSON.stringify({
+      mode: "scout",
+      source: "low-memory",
+      setAt: NOW,
+      accepted: true,
+    }),
+  });
+  assert.equal(readStoredMapMode(s2, NOW + 400 * 24 * 60 * 60 * 1000)?.source, "low-memory");
+});
+
+test("accepted flag on read: strict true only — corrupt values do not stop decay", () => {
   for (const bad of ["true", 1, "yes", false, null]) {
     const stale = {
       mode: "scout",
@@ -488,15 +512,17 @@ test("accepted flag: strict true only; writes without it are unchanged (backward
       `accepted=${JSON.stringify(bad)} must not stop decay`,
     );
   }
-  // The qualifying source is preserved, so telemetry can still tell
-  // an accepted probe offer from an accepted low-memory offer.
-  writeStoredMapMode("scout", "low-memory", s, NOW, true);
-  assert.equal(readStoredMapMode(s, NOW + 400 * 24 * 60 * 60 * 1000)?.source, "low-memory");
 });
 
-test("an accepted choice is replaced by a later manual toggle (still the user's to change)", () => {
-  const s = fakeStorage();
-  writeStoredMapMode("scout", "probe", s, NOW, true);
+test("a legacy accepted choice is replaced by a later manual toggle", () => {
+  const s = fakeStorage({
+    [MAP_MODE_STORAGE_KEY]: JSON.stringify({
+      mode: "scout",
+      source: "probe",
+      setAt: NOW,
+      accepted: true,
+    }),
+  });
   writeStoredMapMode("full", "manual", s, NOW + 1000);
   assert.deepEqual(readStoredMapMode(s, NOW + 1000), {
     mode: "full",
@@ -505,43 +531,26 @@ test("an accepted choice is replaced by a later manual toggle (still the user's 
   });
 });
 
-test("storage contract: decline capability offer → manual full, never re-prompts", () => {
-  // Boot 1: low-memory signal, no stored assignment → low-memory offer.
-  const s = fakeStorage();
-  assert.deepEqual(
-    planBootMapMode(qualifyMapMode({ webglProbeOk: true, deviceMemoryGB: 1 })),
-    { offer: "low-memory" },
-  );
-  // The user declines: explicit choice of full mode, stored as manual.
-  writeStoredMapMode("full", "manual", s, NOW);
-  assert.deepEqual(readStoredMapMode(s, NOW), {
-    mode: "full",
-    source: "manual",
-    setAt: NOW,
+test("legacy decline record (manual full from the old dialog) stands on a weak device forever", () => {
+  // The old dialog's decline wrote { mode: full, source: manual }. That
+  // record is why a player who once said "Keep full map" is never
+  // auto-switched today: the stored record stands, so game-app's boot
+  // check never reaches fresh qualification.
+  const s = fakeStorage({
+    [MAP_MODE_STORAGE_KEY]: JSON.stringify({ mode: "full", source: "manual", setAt: NOW }),
   });
-  // Boot 2 (a year later, still weak): manual never decays — the stored
-  // full still reads back, so game-app's boot check stands on it and the
-  // planner is never reached. The dialog never re-fires.
   const nextYear = NOW + 365 * 24 * 60 * 60 * 1000;
   const stored = readStoredMapMode(s, nextYear);
   assert.ok(stored);
   assert.equal(stored.mode, "full");
-});
-
-test("storage contract: decline retires the prior-crash offer on a weak device", () => {
-  // Boot 1: prior crash → prior-crash offer; the user declines.
-  const s = fakeStorage();
+  // Even with every weak signal firing, qualification stands on it.
   assert.deepEqual(
-    planBootMapMode(qualifyMapMode({ priorMapCrash: true })),
-    { offer: "prior-crash" },
+    qualifyMapMode({
+      manual: stored,
+      priorMapCrash: true,
+      webglProbeOk: false,
+      deviceMemoryGB: 1,
+    }),
+    { mode: "full", source: "manual" },
   );
-  writeStoredMapMode("full", "manual", s, NOW);
-  // Boot 2: crash flag consumed, probe still weak — but the stored manual
-  // full still reads back, so game-app's boot check never reaches the
-  // planner and the probe offer can't fire either. No nag.
-  assert.deepEqual(readStoredMapMode(s, NOW), {
-    mode: "full",
-    source: "manual",
-    setAt: NOW,
-  });
 });

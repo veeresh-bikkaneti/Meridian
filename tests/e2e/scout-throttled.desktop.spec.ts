@@ -1,12 +1,16 @@
 /**
- * Scout Map throttled-device E2E (PBI-9a).
+ * Scout Map throttled-device E2E (PBI-9a) — CONVERTED 2026-10-20.
  *
  * This VM's Chromium already reports a SwiftShader software renderer
- * (verified 2026-10-08), so the harness IS the weak device the probe must
- * catch. 6x CPU throttling (CDP) simulates the old-phone main thread.
- * Expectation: the boot probe qualifies scout and a full game completes.
+ * (verified 2026-10-08), so the harness IS the weak device the probe
+ * must catch. 6x CPU throttling (CDP) simulates the old-phone main
+ * thread.
  *
- * PBI-1..3 dependency: fails until capability.ts + scout rendering land.
+ * The spec used to walk the capability DIALOG (the weak renderer got a
+ * choice). The owner's 2026-10-20 ruling — "Auto-switch silently on
+ * weak devices (my decision stands)" — removed the dialog: the boot
+ * probe now switches the session to Scout silently, stores an AUTO
+ * record (source "probe", no accepted flag), and the game completes.
  */
 import { test, expect } from "playwright/test";
 import {
@@ -17,7 +21,7 @@ import {
   readPhase,
   APP_NO_IDLE,
 } from "./helpers";
-import { offerModal, readMapMode, readStoredMapMode } from "./scout-helpers";
+import { readMapMode, readStoredMapMode } from "./scout-helpers";
 
 test.setTimeout(300_000);
 // Reduced motion makes the map's intro dive an instant jump-to, which is
@@ -26,11 +30,11 @@ test.setTimeout(300_000);
 test.use({ reducedMotion: "reduce" });
 
 test.beforeEach(async ({ context }) => {
-  // This spec exercises the capability dialog itself — do NOT suppress it.
+  // Production boot behavior: do NOT suppress the auto-switch.
   await serveBuiltArtifact(context, { suppressScoutOffer: false });
 });
 
-test("SwiftShader + 6x CPU throttle: scout qualifies and the game completes", async ({
+test("SwiftShader + 6x CPU throttle: scout auto-switches silently and the game completes", async ({
   context,
 }) => {
   const page = await context.newPage();
@@ -53,24 +57,16 @@ test("SwiftShader + 6x CPU throttle: scout qualifies and the game completes", as
     timeout: 90_000,
   });
 
-  // The weak renderer now gets a CHOICE, not a silent routing: the
-  // capability dialog appears with the probe copy.
-  const modal = offerModal(page);
-  await expect(modal).toBeVisible({ timeout: 30_000 });
-  await expect(modal).toContainText("may struggle with the full map");
-  await modal.getByRole("button", { name: "Use Scout Map" }).click();
-  await expect(modal).toBeHidden();
-
-  // Accepting stores the scout assignment (source preserved, accepted: true).
-  expect(await readStoredMapMode(page)).toMatchObject({
-    mode: "scout",
-    source: "probe",
-    accepted: true,
-  });
+  // No dialog: the weak renderer was switched silently at boot, and the
+  // auto record is stored — qualifying source kept, no accepted flag.
+  await expect(page.getByTestId("scout-boot-offer")).toHaveCount(0);
+  const stored = await readStoredMapMode(page);
+  expect(stored).toMatchObject({ mode: "scout", source: "probe" });
+  expect((stored as unknown as Record<string, unknown>)?.accepted).toBeUndefined();
 
   await page.getByRole("button", { name: "Play the globe" }).click();
 
-  // The boot probe qualifies scout on the weak renderer.
+  // The session is in scout from the first mount.
   await expect
     .poll(() => readMapMode(page), { timeout: 60_000 })
     .toBe("scout");
