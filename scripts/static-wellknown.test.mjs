@@ -22,9 +22,12 @@ function fields(text) {
   return out;
 }
 
-test("security.txt: contact is the /contact page (https, no email)", () => {
+test("security.txt: contacts are the /contact page and the GitHub advisory page (https, no email)", () => {
   const f = fields(read("public/.well-known/security.txt"));
-  assert.deepEqual(f.get("contact"), [`${SITE}/contact`]);
+  assert.deepEqual(f.get("contact"), [
+    `${SITE}/contact`,
+    "https://github.com/veeresh-bikkaneti/Meridian/security/advisories/new",
+  ]);
   assert.doesNotMatch(read("public/.well-known/security.txt"), /mailto:|@[a-z0-9-]+\.[a-z]/i);
   assert.deepEqual(f.get("canonical"), [`${SITE}/.well-known/security.txt`]);
 });
