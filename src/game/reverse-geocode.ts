@@ -23,7 +23,10 @@
  * `preloadAdmin1ForCountry()` — never at module top level (the Safari
  * jetsam lesson from territory.ts applies here too). `resolvePin` never
  * triggers loading: if the caches aren't populated it returns a
- * country-only result, and it never throws.
+ * country-only result, and it never throws. The country source follows
+ * the same rule since F2b: `territoryAt` (territory.ts) is null until
+ * `preloadTerritory()` lands, so before that preload `resolvePin`
+ * returns null outright — still fail-closed, still never throwing.
  */
 import { geoBounds, geoContains } from "d3-geo";
 import { feature } from "topojson-client";

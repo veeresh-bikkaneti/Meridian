@@ -3,6 +3,12 @@ import { test } from "node:test";
 import { effectiveRadius } from "./engine.ts";
 import { buildEvidenceOverlays, nudgeDirection, tripleOverlap, wrapLonDelta } from "./placement.ts";
 import { freshProgress } from "./store.ts";
+import { preloadTerritory } from "../territory.ts";
+
+// F2b: buildEvidenceOverlays derives its ring-label unit from the
+// hideout's territory, whose countries-50m data is lazy (territory.ts) —
+// preload it once so the overlays below are built in the loaded state.
+await preloadTerritory();
 import type { ColdTrailCase, ColdTrailProgress, ColdTrailSighting } from "./types.ts";
 
 /**

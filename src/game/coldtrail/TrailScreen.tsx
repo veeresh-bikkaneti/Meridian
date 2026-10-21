@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type JSX } from "react";
 import { clampLat, normalizeLon } from "@/game/geo";
 import { formatLength, unitForLoopTarget } from "@/game/units";
+import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
 import { playConfirmGuess, playLose, playWin } from "@/game/audio/sfx";
 import { playCelebrationSound } from "@/game/audio/play-guards";
@@ -44,6 +45,21 @@ import type { ColdTrailStore } from "./types";
  * index is fetched in this mode.
  */
 export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
+  // F2b: ring labels and the score read the hideout's territory
+  // (unitForLoopTarget), which reads the lazy countries-50m data
+  // (territory.ts) and fails closed to km until it lands. Start the load
+  // on mount and re-render when it resolves so a USA hideout never stays
+  // on the km default. (The tick value itself is unused.)
+  const [, setTerritoryTick] = useState(0);
+  useEffect(() => {
+    let live = true;
+    void preloadTerritory().then(() => {
+      if (live) setTerritoryTick((tick) => tick + 1);
+    });
+    return () => {
+      live = false;
+    };
+  }, []);
   const [store, setStore] = useState<ColdTrailStore>(loadColdtrail);
   const [pending, setPending] = useState<{ lon: number; lat: number } | null>(null);
   const [hint, setHint] = useState<string | null>(null);
@@ -85,6 +101,16 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     }
     prevCaseIndexRef.current = caseIndexNow;
   }, [revealedNow, caseIndexNow]);
+
+  // Arrival focus (PR #203 panel): this screen mounts behind the lazy
+  // boundary, announced by the session loading fallback — land focus on
+  // the case heading on first mount too (the effect above only follows
+  // case changes), so focus is never stranded on the fallback.
+  useEffect(() => {
+    // typeof guard: non-DOM renderers hand back refs without focus.
+    const el = caseHeadingRef.current;
+    if (el && typeof el.focus === "function") el.focus();
+  }, []);
 
   // One-time notice after a v1 save migrates (auto-placed rings are gone).
   useEffect(() => {

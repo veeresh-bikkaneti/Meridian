@@ -20,6 +20,7 @@ import { splitLede } from "./story-lede";
 import { useAiSportsTeams, withSportsLine } from "@/game/sports-ai";
 import { useAiStory, AI_STORY_BADGE } from "@/game/story-ai";
 import { revealPinCompare } from "@/game/reverse-geocode";
+import { preloadTerritory } from "@/game/territory";
 import { ScrollCue, useMoreBelow } from "@/components/scroll-cue";
 import { ReadAloudButton } from "./age-profile/ReadAloudButton";
 import { audioMode, resolveBand } from "@/game/age-profile";
@@ -257,6 +258,23 @@ export function ResultCard({
   // NOTE: poolPlaces is the full dealing pool passed by reference (no copy).
   // The nearest-match scan must not allocate new module-level data — Safari
   // jetsam budget (see design §7). Keep this prop a pass-through reference.
+  // F2b: the pin-compare ledger reads the lazy countries-50m data
+  // (territory.ts) through revealPinCompare, which fails closed to null
+  // until the data lands. A run normally crosses openRun's awaited
+  // preload first — but a session restored on boot (or a review run) can
+  // mount this card ahead of it, so the card starts the load itself and
+  // re-renders when it resolves. preloadTerritory never rejects.
+  const [territoryTick, setTerritoryTick] = useState(0);
+  useEffect(() => {
+    let live = true;
+    void preloadTerritory().then(() => {
+      if (live) setTerritoryTick((tick) => tick + 1);
+    });
+    return () => {
+      live = false;
+    };
+  }, []);
+
   const pinCompare = useMemo(() => {
     if (!drop || !place) return null;
     return revealPinCompare({
@@ -266,7 +284,8 @@ export function ResultCard({
       truth: place,
       pool: poolPlaces ?? [],
     });
-  }, [drop, place, run.edition, poolPlaces]);
+    // territoryTick: recompute once the lazy territory data lands.
+  }, [drop, place, run.edition, poolPlaces, territoryTick]);
 
   // Length unit for every distance on this card: USA country/state plays
   // read miles, the rest of the world reads kilometers — derived from the

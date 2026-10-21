@@ -3,6 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { useOnlineStatus } from "@/hooks/use-online-status";
 import { useAutoAnimate } from "@/hooks/use-auto-animate";
 import { formatLength, loopGradeBand, unitForLoopTarget } from "@/game/units";
+import { preloadTerritory } from "@/game/territory";
 import { nameTier } from "@/game/place-name";
 import { PlaceNameText } from "@/components/place-name";
 import { GradeChip } from "@/components/grade-chip";
@@ -14,7 +15,7 @@ import { calendarDate } from "@/game/daily";
 import { Button } from "@/components/ui/button";
 import { ShareButton } from "@/components/share-button";
 import { GuessInput } from "./guess-input";
-import { displayLoopName, fetchLoopIndex, isDuplicateGuess } from "./evaluate";
+import { displayLoopName, fetchLoopIndex, isDuplicateGuess, unlabeledSpotEntry } from "./evaluate";
 import { LoopMap, ringAnnouncement, type LoopMapHandle } from "./LoopMap";
 import { LoopMapBoundary, LoopMapOffLine } from "./loop-map-boundary";
 import { loopPuzzleFromSearch } from "./day";
@@ -254,6 +255,33 @@ export function LoopScreen({
   onCelebrate: (spec: CelebrationSpec) => void;
 }) {
   const reduced = usePrefersReducedMotion();
+  // F2b: this screen's distances read the mystery target's territory
+  // (unitForLoopTarget) and map taps are named via resolvePin — both read
+  // the lazy countries-50m data (territory.ts), which fails closed until
+  // loaded. Start the load on mount and re-render when it lands so a
+  // USA mystery never stays on the km default. (The state bump is the
+  // re-render trigger; the value itself is unused.)
+  const [, setTerritoryTick] = useState(0);
+  useEffect(() => {
+    let live = true;
+    void preloadTerritory().then(() => {
+      if (live) setTerritoryTick((tick) => tick + 1);
+    });
+    return () => {
+      live = false;
+    };
+  }, []);
+  // Arrival focus (PR #203 panel): this screen mounts behind the lazy
+  // boundary, announced by the session loading fallback — land keyboard
+  // and screen-reader focus on the heading when it arrives so focus is
+  // never stranded on the fallback or the card that opened the screen.
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
+  useEffect(() => {
+    // typeof guard: non-DOM renderers (react-test-renderer) hand back
+    // ref objects without a focus method.
+    const el = headingRef.current;
+    if (el && typeof el.focus === "function") el.focus();
+  }, []);
   const [store, setStore] = useState<LoopUnlimitedStore | null>(null);
   // Ref mirror so event handlers always see the latest store without
   // stale closures (the deal/complete paths must be race-free).
@@ -419,10 +447,22 @@ export function LoopScreen({
     // against a mismatched deal is never submitted.
     if (load.phase !== "ready" || !s || !current || current.status !== "playing") return;
     if (load.index !== current.index) return;
-    if (isDuplicateGuess(entry.id, current.guesses)) {
+    // Core F-3: a map-tap entry (id "tap:…") was named synchronously by
+    // LoopMap at tap time via unlabeledSpotEntry — if the territory data
+    // had not loaded yet, that name is the fail-closed "open water" and
+    // would persist into the submitted guess (and its duplicate notice).
+    // Re-resolve tap entries HERE, at pick time, from the now-loaded
+    // state; the re-call rebuilds the same id from the same coordinates,
+    // so the duplicate check below keys identically. Index entries
+    // (typeahead / camera jump) carry real names and pass through
+    // untouched.
+    const picked = entry.id.startsWith("tap:")
+      ? unlabeledSpotEntry(entry.lon, entry.lat)
+      : entry;
+    if (isDuplicateGuess(picked.id, current.guesses)) {
       // A repeated pick is never a wasted guess: say so, announce it,
       // and leave the store untouched.
-      setPickNotice(`You already guessed ${displayLoopName(entry)} — try another place.`);
+      setPickNotice(`You already guessed ${displayLoopName(picked)} — try another place.`);
       return;
     }
     setPickNotice(null);
@@ -436,10 +476,10 @@ export function LoopScreen({
         current,
         buildLoopGuess(
           {
-            name: displayLoopName(entry),
-            placeId: entry.id,
-            lon: entry.lon,
-            lat: entry.lat,
+            name: displayLoopName(picked),
+            placeId: picked.id,
+            lon: picked.lon,
+            lat: picked.lat,
           },
           load.clue.target,
           prev,
@@ -592,7 +632,7 @@ export function LoopScreen({
         <p className="text-sm text-muted">Case #{caseNo}</p>
       </div>
       <header className="mt-4">
-        <h1 className="font-display text-5xl text-fg">GeoDetective</h1>
+        <h1 ref={headingRef} tabIndex={-1} className="font-display text-5xl text-fg">GeoDetective</h1>
         <p className="mt-3 max-w-md text-lg text-muted">
           Five guesses, one mystery place. Each guess unlocks another clue — and tells you how
           far off you were, and in which direction.
@@ -972,7 +1012,18 @@ function LoopGame({
 
       {selected && !finished ? (
         <PlaceSheet
-          entry={selected}
+          // Core F-3 (sheet path): a tap entry was named synchronously at
+          // tap time — if the territory data had not loaded yet, it carries
+          // the fail-closed "open water" snapshot. Re-derive it HERE, at
+          // sheet render, from the same coordinates, so the sheet shows
+          // the name the guess will actually record under (onPick
+          // re-resolves at submit; the rebuilt id is identical, so the
+          // two always agree). Index entries pass through untouched.
+          entry={
+            selected.id.startsWith("tap:")
+              ? unlabeledSpotEntry(selected.lon, selected.lat)
+              : selected
+          }
           onConfirm={onConfirmSelected}
           onCancel={() => setSelected(null)}
         />

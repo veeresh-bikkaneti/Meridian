@@ -4,6 +4,7 @@ import { isHit, radiusKm } from "@/game/radius";
 import { placesFor, poolSizeFor, storyForBand } from "@/game/generated-places";
 import { isNewBuildDeployed } from "@/game/build-staleness";
 import { preloadAdmin1Boundaries, preloadAdmin1ForCountry, admin1ChunkIso2ForRegion } from "@/game/reverse-geocode";
+import { preloadTerritory } from "@/game/territory";
 import {
   clearRunAfterUncleanShutdown,
   handlePageHide,
@@ -205,9 +206,46 @@ import {
   writeLearningStore,
   type LearningStore,
 } from "@/game/learning";
-import { LoopScreen } from "@/game/loop/LoopScreen";
 import { readLoopOpen, writeLoopOpen, peekLoopProgress } from "@/game/loop/store";
-import { TrailScreen } from "@/game/coldtrail/TrailScreen";
+import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
+// F2 bundle split: GeoDetective (Loop) and Cold Trail are play-intent
+// screens — they render only when the player opens them (or when a saved
+// loopOpen flag restores GeoDetective on boot). Both screens statically
+// import LoopMap, which value-imports maplibre-gl (~1.1 MB) and its
+// stylesheet, so a static import here pulled the whole map library into
+// the preloaded route chunk. They are React.lazy instead — the
+// SatelliteMap pattern below — so MapLibre loads on demand, behind
+// Suspense + MapErrorBoundary at the render sites. The screens have no
+// default export, so the lazy factories adapt their named exports (the
+// HomeGlobe idiom above).
+const loadLoopScreen = () => import("@/game/loop/LoopScreen");
+const loadTrailScreen = () => import("@/game/coldtrail/TrailScreen");
+const LoopScreen = lazy(() =>
+  loadLoopScreen().then((m) => ({ default: m.LoopScreen })),
+);
+const TrailScreen = lazy(() =>
+  loadTrailScreen().then((m) => ({ default: m.TrailScreen })),
+);
+/**
+ * F2b intent prefetch for the edition + case cards: hovering, focusing,
+ * or pressing a card starts the countries-50m load (scorePlace's region
+ * bonus + the reveal pin-compare read it). Fire-and-forget —
+ * preloadTerritory never rejects, and openRun awaits it before any run
+ * commits, so a cold prefetch never changes the outcome, only the wait.
+ *
+ * Deliberately NO component-chunk prefetch for Loop/Trail (Core F-4):
+ * the old helpers fired the screens' dynamic import() on this same
+ * intent signal, but a FAILED import() is negatively cached by the
+ * browser for the life of the document (see map-error-boundary.tsx) —
+ * a transient hover-time failure therefore guaranteed the click itself
+ * failed into the error card. The territory DATA prefetch is safe to
+ * keep by contrast: its loader evicts a failed load and retries on the
+ * next call, and a miss degrades fail-closed at the readers instead of
+ * surfacing an error card.
+ */
+function prefetchTerritoryData(): void {
+  void preloadTerritory();
+}
 import {
   REVIEW_DECK_COPY,
   REVIEW_DECK_REGION_ID,
@@ -391,6 +429,36 @@ function MapLoadingFallback() {
         Loading map&hellip;
       </div>
     </div>
+  );
+}
+
+/**
+ * Suspense fallback while a play-intent screen chunk (GeoDetective /
+ * Cold Trail) downloads — PR #203 panel (Design BLOCK): the boot splash
+ * it replaces is bottom-anchored brand markup with no status role, so
+ * in-session it was silent to screen readers and visually unrelated to
+ * the top-anchored screens it precedes. This clone of MapLoadingFallback's
+ * pill sits at the top of the same shell the destination screens render
+ * (reserved header space, no layout jump on arrival), NAMES the
+ * destination, and announces via role="status". BootSplash remains only
+ * at the boot !ready gate. Focus is not stranded: the destination
+ * screens focus their heading on mount.
+ */
+function SessionLoadingFallback({ label }: { label: string }) {
+  return (
+    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
+      <div
+        role="status"
+        data-testid="session-loading"
+        className="flex items-center gap-2.5 self-start rounded-full border border-line bg-surface py-2.5 pr-5 pl-3.5 text-sm font-medium text-fg"
+      >
+        <span
+          aria-hidden="true"
+          className="meridian-spinner block h-4 w-4 rounded-full border-2 border-muted/40 border-t-fg"
+        />
+        {label}
+      </div>
+    </main>
   );
 }
 
@@ -976,9 +1044,12 @@ export function GameApp() {
   // after a reload so a mid-game refresh resumes the mystery, not the menu.
   const [loopOpen, setLoopOpen] = useState<boolean>(() => readLoopOpen());
   // Cold Trail (vertical slice): its own screen outside the run machine,
-  // persisted under meridian.coldtrail.v1. No open-flag: the slice always
-  // starts from the menu; in-progress cases resume from the store.
-  const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(false);
+  // persisted under meridian.coldtrail.v2. The open flag
+  // (meridian.coldtrail.open) restores the screen after a reload — PR
+  // #203 panel: without it, the error boundary's reload-retry ("Your
+  // game is safe") returned a Trail player home while a GeoDetective
+  // player resumed. In-progress cases resume from the store.
+  const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(() => readColdTrailOpen());
   // Age profile (parent-set band). The profile object lives in state and
   // refreshes via the `ageprofile:changed` event — game screens never
   // touch the store directly. The settings screen (lazy) is the only
@@ -1315,6 +1386,7 @@ export function GameApp() {
     // onLeave, which clears state and persisted flag together.
     writeLoopOpen(false);
     setLoopOpen(false);
+    writeColdTrailOpen(false);
     setColdTrailOpen(false);
     setStarting(null);
   }, []);
@@ -1465,6 +1537,28 @@ export function GameApp() {
       // to the menu instead of resuming.)
       if (isResumable(resumable, today)) {
         const restored = resumeRun(resumable, today);
+        if (restored.phase === "aim") {
+          // Core F-2: an aim-phase restore resumes straight into
+          // gameplay without crossing openRun's awaited territory
+          // preload — so the commit waits for the preload here: the
+          // first post-restore pin drop must score against the real
+          // data, not the fail-closed default. preloadTerritory never
+          // rejects (a failed load fails closed at the readers), so
+          // deferring the commit on it cannot strand the boot; the
+          // splash stays up until it lands, then ready is set.
+          void preloadTerritory().then(() => {
+            commit(restored);
+            ensureSession(restored);
+            setReady(true);
+          });
+          return;
+        }
+        // Non-aim restore (reveal phases): the pin already scored
+        // before the reload, so no await is needed — the F2b
+        // fire-and-forget start below stands, and the ResultCard's own
+        // mount preload + re-render is the guarantee layer for its
+        // pin-compare.
+        void preloadTerritory();
         commit(restored);
         ensureSession(restored);
       }
@@ -1534,7 +1628,16 @@ export function GameApp() {
         // off); filterByTier below still decides the pool.
         const tierSplit = await globeTierSplitFor(edition, regionId);
         if (gen !== runStartGenRef.current) return; // stale (BLOCK-A)
-        const places = await placesFor(edition, regionId, choice, tierSplit);
+        // F2b: the countries-50m territory data loads in parallel with
+        // the places and is awaited before the run commits — scorePlace's
+        // region bonus and the reveal pin-compare read it synchronously,
+        // so a run must never start ahead of it. preloadTerritory never
+        // rejects (a failed load fails closed at the readers), so this
+        // await cannot fail the start.
+        const [places] = await Promise.all([
+          placesFor(edition, regionId, choice, tierSplit),
+          preloadTerritory(),
+        ]);
         if (gen !== runStartGenRef.current) return; // stale (BLOCK-A)
         recordMilestone("data_loaded", { edition, regionId, chunkId: regionId });
         const dateKey = trailDate();
@@ -1706,6 +1809,10 @@ export function GameApp() {
     // Fail closed: the entry points only render when due > 0, so this is
     // unreachable in practice — never start a run with an empty queue.
     if (due.length === 0) return;
+    // F2b: review runs skip openRun (and its awaited territory preload);
+    // start the load here — the ResultCard's own mount preload is the
+    // guarantee layer for its pin-compare ledger.
+    void preloadTerritory();
     const next = startRun(
       {
         edition: "globe",
@@ -2026,10 +2133,14 @@ export function GameApp() {
     return (
       <>
         {mapModeAnnouncer}
-        <LoopScreen
-          onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }}
-          onCelebrate={(spec) => setCelebration(spec)}
-        />
+        <MapErrorBoundary>
+          <Suspense fallback={<SessionLoadingFallback label="Loading GeoDetective…" />}>
+            <LoopScreen
+              onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }}
+              onCelebrate={(spec) => setCelebration(spec)}
+            />
+          </Suspense>
+        </MapErrorBoundary>
         {celebrationOverlay}
         {idleToast}
       </>
@@ -2037,12 +2148,17 @@ export function GameApp() {
   }
 
   // Cold Trail lives next to the loop edition: its own screen, its own
-  // storage namespace. A mid-case reload resumes from meridian.coldtrail.v1.
+  // storage namespace. A mid-case reload resumes from meridian.coldtrail.v2,
+  // and the persisted open flag restores the screen itself (PR #203).
   if (coldTrailOpen) {
     return (
       <>
         {mapModeAnnouncer}
-        <TrailScreen onLeave={() => setColdTrailOpen(false)} />
+        <MapErrorBoundary>
+          <Suspense fallback={<SessionLoadingFallback label="Loading Cold Trail…" />}>
+            <TrailScreen onLeave={() => { writeColdTrailOpen(false); setColdTrailOpen(false); }} />
+          </Suspense>
+        </MapErrorBoundary>
         {celebrationOverlay}
         {idleToast}
       </>
@@ -2251,7 +2367,7 @@ export function GameApp() {
         writeLoopOpen(true);
         setLoopOpen(true);
       })}
-      onColdTrail={withCardTap("coldtrail", () => setColdTrailOpen(true))}      onReview={startReview}
+      onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
       deck={deckStatus}
       difficultyChoice={difficultyChoice}
       onDifficultyChoice={setDifficultyChoice}
@@ -2679,19 +2795,19 @@ function Choose({
             <path d="M248 97 C244 97 242 100 242 102.4 C242 106 248 110.6 248 110.6 C248 110.6 254 106 254 102.4 C254 100 252 97 248 97 Z" fill="#EFEAD6" />
           </svg>
           <div className="hv5-editions">
-            <button type="button" className="hv5-edition" onClick={onState}>
+            <button type="button" className="hv5-edition" onClick={onState} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryData}>
               <span className="hv5-idx">N° 01</span>
               <MapPin className="size-5" aria-hidden="true" />
               <span className="hv5-etitle">State</span>
               <span className="hv5-eaction">Choose a state</span>
             </button>
-            <button type="button" className="hv5-edition" onClick={onCountry}>
+            <button type="button" className="hv5-edition" onClick={onCountry} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryData}>
               <span className="hv5-idx">N° 02</span>
               <Flag className="size-5" aria-hidden="true" />
               <span className="hv5-etitle">Country</span>
               <span className="hv5-eaction">Choose a country</span>
             </button>
-            <button type="button" className="hv5-edition" onClick={onGlobe}>
+            <button type="button" className="hv5-edition" onClick={onGlobe} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryData}>
               <span className="hv5-idx">N° 03</span>
               <Globe2 className="size-5" aria-hidden="true" />
               <span className="hv5-etitle">Globe</span>
@@ -2734,7 +2850,14 @@ function Choose({
             {/* Owner 2026-10-09: earned badges show on the home page card —
                 no separate Passport page. Clean Round is earned in this loop. */}
             <EarnedBadgeRow />
-            <button type="button" className="hv5-go" onClick={onLoop}>
+            <button
+              type="button"
+              className="hv5-go"
+              onClick={onLoop}
+              onPointerEnter={prefetchTerritoryData}
+              onPointerDown={prefetchTerritoryData}
+              onFocus={prefetchTerritoryData}
+            >
               {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
             </button>
           </div>
@@ -2761,7 +2884,14 @@ function Choose({
               A smuggler moves between cities. Three sightings, three rings — tap where
               they cross to make the interception.
             </p>
-            <button type="button" className="hv5-go" onClick={onColdTrail}>
+            <button
+              type="button"
+              className="hv5-go"
+              onClick={onColdTrail}
+              onPointerEnter={prefetchTerritoryData}
+              onPointerDown={prefetchTerritoryData}
+              onFocus={prefetchTerritoryData}
+            >
               ❄️ Start the trail
             </button>
           </div>
@@ -3997,7 +4127,7 @@ function PlayLoaded({
 
   function onSummaryPlayAgain() {
     setSummary(null);
-    onReplay();
+    void onReplay();
   }
 
   // Play-again replay: the same resumeRun chain as openRun. A finished run
@@ -4005,7 +4135,7 @@ function PlayLoaded({
   // so the replayed run opens on a different first question. Local state is
   // reset explicitly because the [place?.id] effect below only fires when the
   // dealt place actually changes.
-  function onReplay() {
+  async function onReplay() {
     setAim(null);
     setAimAnnouncement(null);
     setDrop(null);
@@ -4054,6 +4184,13 @@ function PlayLoaded({
       replayPoolIds,
       replayPrevLastId,
     );
+    // Core F-2: the replayed run commits only after the territory
+    // preload lands — the same awaited funnel as openRun. A summary can
+    // be reached in a document where the countries-50m load failed or
+    // never started (its readers fail closed), and the replay's first
+    // pin drop must score against the real data. preloadTerritory
+    // never rejects, so this await cannot fail the replay.
+    await preloadTerritory();
     onRun(freshRun);
     // Play again after End game: the old session ended with the summary, so
     // the replay starts a brand-new session.
