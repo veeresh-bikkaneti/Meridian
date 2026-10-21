@@ -60,19 +60,39 @@ plus a `scheduled` handler for the hourly digest.
   digest** to Discord: one compact message per hour summarizing the
   PREVIOUS UTC hour. Zero events → nothing posted (silence is the
   healthy signal).
-- Per-IP fixed-window rate limit: **10 requests / 60 s** per
-  `CF-Connecting-IP` → `429` with a `Retry-After` header. (The map is
-  in-memory per isolate — fine at this event volume; a true distributed
-  limiter is overkill for rare crash reports.)
+- **Origin allowlist (review S4, 2026-10-21):** ingest POSTs must carry
+  `Origin: https://meridian.knowledgetest.workers.dev` or
+  `Origin: https://veeresh-bikkaneti.github.io` (`ALLOWED_ORIGINS` in
+  `src/index.ts`). Anything else, or no Origin at all, gets `403`. Browsers
+  send Origin on every cross-origin POST, `navigator.sendBeacon` included,
+  so real reports are unaffected. `curl` tests must add
+  `-H 'origin: https://meridian.knowledgetest.workers.dev'`.
+- Rate limit: **10 requests / 60 s** per client → `429` with a
+  `Retry-After` header. Two layers:
+  - always: an in-memory, per-isolate fixed window keyed by a salted hash of
+    `CF-Connecting-IP` (the raw IP is never kept);
+  - when bound: the free **Workers Rate Limiting** binding
+    `CRASH_RATE_LIMITER`, which counts across isolates in a Cloudflare
+    location. Its key is a daily-rotating hash of the IP. If the binding
+    is missing, malformed, or throws, it fails open and the in-memory layer
+    still applies.
+- Body cap: **8 KB**, enforced while streaming (a chunked upload is
+  cancelled at the cap, never buffered whole) → `413`. The app's own
+  events are capped at 4 KB, and the boot watchdog's at 8 KB.
+- Schema: the documented fields with type and length caps; `device` and
+  `breadcrumb.device` limited to the coarse bucket fields (`os`, `form`,
+  `screen`, `dpr`, `webgl1/2`, legacy `ua` ≤ 300); `breadcrumb.history`
+  ≤ 32 entries; any other top-level field must be a short primitive; at
+  most 24 fields; `ts` between 2020-01-01 and one day in the future.
 - Forwarding is fire-and-collect via `Promise.allSettled`: one forwarder
   failing never fails the request. Each forwarder has a 5 s timeout.
 - Log lines carry only type/buildId/edition — never PII, never the
   forwarded secrets, never full payloads.
-- CORS: the game posts from `https://veeresh-bikkaneti.github.io` to this
-  worker's `*.workers.dev` origin. `OPTIONS` → `204` with
-  `access-control-allow-origin: *` (safe: no cookies/auth on this
-  endpoint), and every response carries the allow-origin header. Without
-  this the browser blocks the report POST.
+- CORS: `OPTIONS` from an allow-listed origin → `204`, echoing that
+  origin in `access-control-allow-origin` with `Vary: Origin`. Any other
+  origin, or none, → `403` with no CORS headers, so the browser never sends
+  the POST. Responses to allowed POSTs echo the origin, never `*`.
+  `/health` carries no CORS headers (it is for curl and monitors).
 
 ## Severity tiers
 
@@ -175,8 +195,8 @@ truncated error name/message.
 ## Tests
 
 ```sh
-npm run test:worker        # 33 unit tests (validation, alert builder, rate limiter, CORS,
-                           #  Phase 1: tiering, counting, threshold exact-once, digest, fail-open)
+npm run test:worker        # 42 unit tests (validation, alert builder, rate limiter, CORS + Origin allowlist,
+                           #  S4: streamed cap, schema, binding; Phase 1: tiering, counting, threshold, digest, fail-open)
 npm run typecheck:worker   # strict tsc on the worker sources
 ```
 
@@ -227,6 +247,23 @@ curl https://meridian-crash-report.knowledgetest.workers.dev/health   # → {"ok
 # 3. Re-set the secrets on the new version (see Secrets below) — a
 #    fresh upload does NOT inherit DISCORD_WEBHOOK_URL.
 ```
+
+### Rate-limit binding (review S4, optional, free)
+
+`wrangler.toml` records a `[[ratelimits]]` binding named
+`CRASH_RATE_LIMITER` (namespace `72073`, 10 per 60 s). The Workers Rate
+Limiting API has no plan gate and no billing line in Cloudflare's docs
+(checked 2026-10-21). Like the KV binding, it only exists on a version
+whose upload metadata carries it. In the API upload, add this to
+`metadata.bindings`, next to the KV binding:
+
+```json
+{ "type": "ratelimit", "name": "CRASH_RATE_LIMITER", "namespace_id": "72073",
+  "simple": { "limit": 10, "period": 60 } }
+```
+
+Without it, the worker runs on the in-memory limiter alone, which is the
+behavior before S4. Nothing breaks.
 
 ### What an upload does NOT carry: bindings and triggers
 
@@ -296,6 +333,7 @@ fetches it), a full local run also works:
 ```sh
 npx wrangler dev
 curl -X POST localhost:8787/ingest -H 'content-type: application/json' \
+  -H 'origin: https://meridian.knowledgetest.workers.dev' \
   -d '{"type":"suspected_crash","ts":1728300000000,"buildId":"test","edition":"globe","lastMilestone":"boot_ready"}'
 # → {"ok":true,"forwarded":false}  (no secrets in dev = no-op mode)
 ```
@@ -387,7 +425,8 @@ release, not abuse. The Workers free tier allows 100k requests/day —
 more than enough headroom. Still, set up a Cloudflare notification
 (Dashboards → Notifications → add: **Workers → Requests**) so an
 unexpected flood (bug loop, someone replaying events) pages you before
-it matters. The per-IP rate limiter caps any single client at 10/min.
+it matters. The rate limiter caps any single client at 10/min, and
+foreign origins are refused outright (S4).
 
 ## Privacy
 

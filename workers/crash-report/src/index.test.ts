@@ -27,11 +27,18 @@ import {
   tierOf,
   validateEvent,
   MAX_BODY_BYTES,
+  ALLOWED_ORIGINS,
+  RATE_LIMIT_BINDING,
+  bindingClientKey,
+  readBodyCapped,
   type CrashReportEnv,
   type CrashReportEvent,
   type KvLike,
   type TelemetryStore,
 } from "./index.ts";
+
+/** An allow-listed origin (review S4). Every browser POST carries one. */
+const GAME_ORIGIN = "https://meridian.knowledgetest.workers.dev";
 
 function validEvent(overrides: Record<string, unknown> = {}): Record<string, unknown> {
   return {
@@ -49,7 +56,7 @@ function postEvent(
 ): Request {
   return new Request(`https://worker.test${path}`, {
     method: "POST",
-    headers: { "content-type": "application/json", ...headers },
+    headers: { "content-type": "application/json", origin: GAME_ORIGIN, ...headers },
     body: typeof body === "string" ? body : JSON.stringify(body),
   });
 }
@@ -511,10 +518,10 @@ afterEach(() => {
   globalThis.fetch = realFetch;
 });
 
-test("GET /health returns 200 with CORS headers", async () => {
+test("GET /health returns 200 (no CORS: it is for curl and monitors)", async () => {
   const res = await handleRequest(new Request("https://worker.test/health"), {});
   assert.equal(res.status, 200);
-  assert.equal(res.headers.get("access-control-allow-origin"), "*");
+  assert.equal(res.headers.get("access-control-allow-origin"), null);
   assert.deepEqual(await res.json(), { ok: true });
 });
 
@@ -528,22 +535,183 @@ test("non-POST on ingest path returns 405", async () => {
   assert.equal(res.status, 405);
 });
 
-test("OPTIONS preflight returns 204 with CORS headers", async () => {
+test("OPTIONS preflight from an allowed origin returns 204 echoing that origin", async () => {
   const res = await handleRequest(
-    new Request("https://worker.test/ingest", { method: "OPTIONS" }),
+    new Request("https://worker.test/ingest", { method: "OPTIONS", headers: { origin: GAME_ORIGIN } }),
     {},
   );
   assert.equal(res.status, 204);
-  assert.equal(res.headers.get("access-control-allow-origin"), "*");
+  assert.equal(res.headers.get("access-control-allow-origin"), GAME_ORIGIN);
+  assert.equal(res.headers.get("vary"), "Origin");
   assert.ok((res.headers.get("access-control-allow-methods") ?? "").includes("POST"));
   assert.ok(
     (res.headers.get("access-control-allow-headers") ?? "").includes("content-type"),
   );
 });
 
-test("POST responses carry the CORS allow-origin header", async () => {
-  const res = await handleRequest(postEvent(validEvent()), {});
-  assert.equal(res.headers.get("access-control-allow-origin"), "*");
+test("POST responses echo the allowed origin (never *)", async () => {
+  for (const origin of ALLOWED_ORIGINS) {
+    resetRateLimitsForTests();
+    const res = await handleRequest(postEvent(validEvent(), "/ingest", { origin }), {});
+    assert.equal(res.status, 200, origin);
+    assert.equal(res.headers.get("access-control-allow-origin"), origin);
+    assert.equal(res.headers.get("vary"), "Origin");
+  }
+  assert.deepEqual([...ALLOWED_ORIGINS], [
+    "https://meridian.knowledgetest.workers.dev",
+    "https://veeresh-bikkaneti.github.io",
+  ]);
+});
+
+// --- Review S4: Origin allowlist, streamed cap, schema, binding -------------
+
+test("S4: preflight from another origin, or with none, is 403 with no CORS headers", async () => {
+  for (const headers of [{ origin: "https://evil.example" }, { origin: "null" }, {}] as Record<string, string>[]) {
+    const res = await handleRequest(
+      new Request("https://worker.test/ingest", { method: "OPTIONS", headers }),
+      {},
+    );
+    assert.equal(res.status, 403, JSON.stringify(headers));
+    assert.equal(res.headers.get("access-control-allow-origin"), null);
+  }
+});
+
+test("S4: POST from a foreign origin or with no Origin is 403 and never forwarded", async () => {
+  let calls = 0;
+  globalThis.fetch = (async () => {
+    calls += 1;
+    return new Response("{}", { status: 204 });
+  }) as typeof fetch;
+  const env: CrashReportEnv = { DISCORD_WEBHOOK_URL: "https://discord.example/hook" };
+  for (const origin of ["https://evil.example", "https://meridian.knowledgetest.workers.dev.evil.example", "http://meridian.knowledgetest.workers.dev", "null", ""]) {
+    const req = origin
+      ? postEvent(validEvent(), "/ingest", { origin })
+      : new Request("https://worker.test/ingest", { method: "POST", body: JSON.stringify(validEvent()) });
+    const res = await handleRequest(req, env);
+    assert.equal(res.status, 403, origin || "(none)");
+    assert.equal(res.headers.get("access-control-allow-origin"), null);
+  }
+  assert.equal(calls, 0);
+});
+
+test("S4: a sendBeacon-style text/plain POST from the game is accepted (no preflight needed)", async () => {
+  const res = await handleRequest(
+    new Request("https://worker.test/ingest", {
+      method: "POST",
+      headers: { "content-type": "text/plain;charset=UTF-8", origin: "https://veeresh-bikkaneti.github.io" },
+      body: JSON.stringify(validEvent()),
+    }),
+    {},
+  );
+  assert.equal(res.status, 200);
+  assert.deepEqual(await res.json(), { ok: true, forwarded: false, counted: false });
+});
+
+test("S4: a chunked body over the cap is cancelled mid-stream with 413", async () => {
+  let pulled = 0;
+  let cancelled = false;
+  const stream = new ReadableStream<Uint8Array>({
+    pull(controller) {
+      pulled += 1;
+      controller.enqueue(new Uint8Array(1024).fill(0x20));
+      if (pulled > 64) controller.close();
+    },
+    cancel() {
+      cancelled = true;
+    },
+  });
+  const req = new Request("https://worker.test/ingest", {
+    method: "POST",
+    headers: { origin: GAME_ORIGIN },
+    body: stream,
+    duplex: "half",
+  } as RequestInit & { duplex: "half" });
+  const res = await handleRequest(req, {});
+  assert.equal(res.status, 413);
+  assert.ok(cancelled, "stream cancelled at the cap");
+  assert.ok(pulled <= Math.ceil(MAX_BODY_BYTES / 1024) + 2, `read ${pulled} KB, more than the cap`);
+});
+
+test("S4: readBodyCapped returns the text under the cap and null over it", async () => {
+  const small = new Request("https://worker.test/", { method: "POST", body: "héllo" });
+  assert.equal(await readBodyCapped(small, 16), "héllo");
+  const big = new Request("https://worker.test/", { method: "POST", body: "x".repeat(17) });
+  assert.equal(await readBodyCapped(big, 16), null);
+});
+
+test("S4: schema rejects nested junk, oversized extras, bad device fields and absurd timestamps", () => {
+  assert.deepEqual(validateEvent(validEvent({ device: { os: "ios", form: "mobile", dpr: 2, screen: "sm", webgl1: true, webgl2: false } })), []);
+  assert.deepEqual(validateEvent(validEvent({ breadcrumb: { sessionId: "s", history: [{ name: "boot", at: 1 }], device: { os: "mac" } } })), []);
+  assert.deepEqual(validateEvent(validEvent({ tileErrors: 3, trigger: "replay" })), []);
+  const bad: Record<string, unknown>[] = [
+    { extra: { nested: true } },
+    { extra: "x".repeat(257) },
+    { device: { os: "x".repeat(25) } },
+    { device: { dpr: "2" } },
+    { device: { webgl1: "yes" } },
+    { breadcrumb: { history: new Array(33).fill({ name: "m", at: 1 }) } },
+    { ts: 0 },
+    { ts: Date.now() + 2 * 86_400_000 },
+    Object.fromEntries(Array.from({ length: 30 }, (_, i) => [`k${i}`, 1])),
+  ];
+  for (const b of bad) {
+    assert.ok(validateEvent(validEvent(b)).length > 0, JSON.stringify(b).slice(0, 80));
+  }
+});
+
+test("S4: the rate-limit binding is consulted with a daily pseudonymous key and can refuse", async () => {
+  const keys: string[] = [];
+  const env: CrashReportEnv = {
+    CRASH_RATE_LIMITER: {
+      async limit({ key }) {
+        keys.push(key);
+        return { success: keys.length < 2 };
+      },
+    },
+  };
+  const req = () => postEvent(validEvent(), "/ingest", { "cf-connecting-ip": "203.0.113.9" });
+  assert.equal((await handleRequest(req(), env)).status, 200);
+  const res = await handleRequest(req(), env);
+  assert.equal(res.status, 429);
+  assert.equal(res.headers.get("retry-after"), "60");
+  assert.equal(keys.length, 2);
+  assert.match(keys[0], /^c:[0-9a-f]{16}$/);
+  assert.ok(!keys[0].includes("203.0.113.9"), "raw IP never reaches the binding");
+  // Same day → same key; a different day → a different key.
+  const now = Date.UTC(2026, 9, 21, 12);
+  assert.equal(await bindingClientKey("203.0.113.9", now), await bindingClientKey("203.0.113.9", now + 3_600_000));
+  assert.notEqual(await bindingClientKey("203.0.113.9", now), await bindingClientKey("203.0.113.9", now + 86_400_000));
+});
+
+test("S4: a throwing or malformed binding fails open; the in-memory limit still applies", async () => {
+  const throwing: CrashReportEnv = {
+    CRASH_RATE_LIMITER: {
+      async limit() {
+        throw new Error("binding down");
+      },
+    },
+  };
+  const malformed = { CRASH_RATE_LIMITER: { limit: "nope" } } as unknown as CrashReportEnv;
+  for (const env of [throwing, malformed]) {
+    resetRateLimitsForTests();
+    const statuses: number[] = [];
+    for (let i = 0; i < 11; i++) {
+      const res = await handleRequest(postEvent(validEvent(), "/ingest", { "cf-connecting-ip": "198.51.100.7" }), env);
+      statuses.push(res.status);
+    }
+    assert.deepEqual(statuses.slice(0, 10), new Array(10).fill(200));
+    assert.equal(statuses[10], 429, "in-memory floor still caps at 10/min");
+  }
+});
+
+test("S4: wrangler.toml records the CRASH_RATE_LIMITER binding (free, 10 per 60 s)", async () => {
+  const { readFileSync } = await import("node:fs");
+  const toml = readFileSync(new URL("../wrangler.toml", import.meta.url), "utf8");
+  const block = /\[\[ratelimits\]\]\s*\n([\s\S]*?)(?:\n\s*\n|\n\[|$)/.exec(toml)?.[1] ?? "";
+  assert.match(block, /name\s*=\s*"CRASH_RATE_LIMITER"/);
+  assert.match(block, /namespace_id\s*=\s*"\d+"/);
+  assert.match(toml, /simple\s*=\s*\{\s*limit\s*=\s*10\s*,\s*period\s*=\s*60\s*\}/);
+  assert.equal(RATE_LIMIT_BINDING, "CRASH_RATE_LIMITER");
 });
 
 test("invalid JSON returns 400", async () => {
