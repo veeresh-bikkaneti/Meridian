@@ -1,10 +1,15 @@
 # BRANCH_STATUS — docs/storyteller-voice-174-accepted (storyteller voice docs cure)
 
-**State: round-1 panel NOT READY (BLOCK ×11, DevEx PASS-WITH-NITS) on
-tip `b5fd6a2`; cure round applied (below), gates green. NOT ready to
-merge — a panel re-vote on the cured tip and the owner's merge word are
-still owed** (standing rules: full pipeline always; the panel approves
-the final tip itself).
+**State: MERGED 2026-10-21 — PR #196, squash `df9d63a`, on the
+owner's merge word.** Round 1 on tip `b5fd6a2` returned NOT READY
+(BLOCK ×11 — the ruling misquoted at two sites, and handbook ch04
+§2 unlabelled pre-#174 history); the cure round (tip `99b4506`,
+rebased to `d30267c`) was re-voted under the standing rule that
+the panel approves the final tip itself: READY — APPROVE ×3 /
+APPROVE-WITH-NITS ×9 / BLOCK ×0, DevEx PASS-WITH-NITS, benchmark
+−40 B. The one deferred item (the `storyteller-lines.ts` header)
+is tracked as issue #199. This header was cured by the follow-up
+branch-status PR; the record below stands.
 
 Base: `origin/main 5948f8c`. Docs + comments only — no audio, no code
 behavior, no player-facing strings. **PR: #196.**
