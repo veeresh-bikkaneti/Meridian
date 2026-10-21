@@ -61,6 +61,17 @@ acknowledged: Home shows a dismissible notice that the map was
 switched, that the next game uses the new map, and that the score
 was kept (the session surviving could otherwise read as lost).
 
+Two rules keep that landing honest (panel re-vote fixes, 2026-10-20).
+First, the exit always lands on Home: if a GeoDetective or Cold
+Trail visit was left open (GeoDetective remembers its open/closed
+state between visits), the switch closes it too — the player never
+flips the toggle and lands back in the mystery screen instead of
+Home. Second, Home shows at most one map notice at a time: any
+later flip — at home or in a game — retires the notice an earlier
+switch left behind, so a notice never describes a switch that has
+already been undone. The notices are visual only; a screen reader
+hears the switch once, from the app's single announcement region.
+
 Test seam: the boot auto-switch is suppressed only by
 `window.__meridianSuppressScoutOffer === true` (set by the e2e harness
 init script — the Playwright VM's SwiftShader renderer reads as a weak

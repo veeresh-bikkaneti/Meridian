@@ -1213,6 +1213,19 @@ export function GameApp() {
    * with Play and could never speak) and flags focus to move to the
    * home heading once home renders (the switch that had focus is
    * destroyed by this very exit).
+   *
+   * And the exit must be the ONLY thing standing between the player
+   * and Home (re-vote BLOCK-4 + BLOCK-1): it retires this boot's
+   * auto-switch note (the switched notice below supersedes it — Home
+   * must never show both, stacked and contradicting each other), and
+   * it closes every other full-screen state, because the render
+   * branches below run in precedence order and ANY lurking flag
+   * would render its screen instead of Home. loopOpen is the sharp
+   * case: it rehydrates from a persisted flag, and the Editions exit
+   * keeps the run record, so a restored run can sit on top of a
+   * persisted GeoDetective flag — without the clears, the flip would
+   * drop the run and land on LoopScreen, stranding the focus landing
+   * and hiding the notice.
    */
   const handleManualMapMode = useCallback((mode: MapMode) => {
     writeStoredMapMode(mode, "manual");
@@ -1234,6 +1247,17 @@ export function GameApp() {
     setRun(null);
     setTutorial(null);
     setMenu(null);
+    // BLOCK-1: retire this boot's auto-switch note — the switched
+    // notice set above supersedes it (see the docstring).
+    setAutoScoutNote(false);
+    // BLOCK-4: close every other full-screen state so the render
+    // precedence below cannot hand the landing to a lurking flag
+    // (see the docstring). writeLoopOpen mirrors LoopScreen's own
+    // onLeave, which clears state and persisted flag together.
+    writeLoopOpen(false);
+    setLoopOpen(false);
+    setColdTrailOpen(false);
+    setStarting(null);
   }, []);
 
   /**
@@ -1246,6 +1270,12 @@ export function GameApp() {
    * region (home wording: no "back home" clause), and retire the
    * boot auto-switch note, whose "picked for this device" framing the
    * player's own choice has superseded.
+   *
+   * It also retires the visible switched notice (re-vote BLOCK-2):
+   * that notice describes the PREVIOUS in-game switch, and this flip
+   * supersedes it — left standing, its "your next game uses the full
+   * map" would outlive the flip back to Scout and resurface, stale,
+   * on a later Home render.
    */
   const handleHomeMapMode = useCallback((mode: MapMode) => {
     writeStoredMapMode(mode, "manual");
@@ -1255,6 +1285,8 @@ export function GameApp() {
       mode === "scout" ? SCOUT_COPY.homeAnnounceOn : SCOUT_COPY.homeAnnounceOff,
     );
     setAutoScoutNote(false);
+    // BLOCK-2: this flip supersedes any earlier switched notice.
+    setMapSwitchedNote(null);
   }, []);
 
   // Block A: land focus on the home heading after a manual switch's
@@ -1997,9 +2029,14 @@ export function GameApp() {
   // acknowledgement the idle kill above already had. Same pattern and
   // slot as the idle notice; the text adds the fact the popover
   // warning could not carry: the score was kept.
+  //
+  // Deliberately NO role="status" here (re-vote BLOCK-3): the manual
+  // handler sets the hoisted announcer's text in the same commit that
+  // mounts this notice, so a second live region would announce the
+  // same event twice on some screen readers. The announcer is the
+  // sole speaker; this notice is the persistent visual record only.
   const mapSwitchedNotice = mapSwitchedNote ? (
     <div
-      role="status"
       data-testid="map-switched-notice"
       className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-line bg-surface p-4 text-sm text-fg"
     >
@@ -2016,9 +2053,10 @@ export function GameApp() {
 
   // Block C: shown on the home screen when THIS boot silently
   // auto-switched to Scout — non-blocking, dismissible, same slot.
+  // No role="status" either (re-vote BLOCK-3): the hoisted announcer
+  // is the screen's one speaking region for map-mode events.
   const autoScoutNotice = autoScoutNote ? (
     <div
-      role="status"
       data-testid="scout-auto-notice"
       className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-line bg-surface p-4 text-sm text-fg"
     >

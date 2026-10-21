@@ -7,7 +7,10 @@
  *   same control with a brass-outline button to match the home theme,
  *   beside a visible mode indicator GameApp renders next to it — a
  *   player can SEE they are on Scout Map and flip back without
- *   starting (and discarding) a game first.
+ *   starting (and discarding) a game first. The button's accessible
+ *   name carries the current mode ("Map mode settings — currently
+ *   Scout Map"), so a screen-reader player hears the state the
+ *   sighted player reads off the indicator pill (re-vote nit).
  *
  * Both hosts open the same popover: label, explainer, role="switch"
  * row. The copy adapts to the host. In Play, flipping ends the current
@@ -44,6 +47,9 @@ export function MapModeToggle(props: {
   context?: "play" | "home";
 }): JSX.Element {
   const [open, setOpen] = useState(false);
+  // Home popover placement, measured at open time (see the popover
+  // render below for why neither CSS anchor survives the hero wrap).
+  const [homePos, setHomePos] = useState<{ top: number; left: number } | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const scout = props.mapMode === "scout";
   const atHome = props.context === "home";
@@ -52,6 +58,23 @@ export function MapModeToggle(props: {
     setOpen(false);
     buttonRef.current?.focus();
   }, []);
+
+  const toggleOpen = useCallback(() => {
+    if (!open && atHome) {
+      const rect = buttonRef.current?.getBoundingClientRect();
+      if (rect) {
+        // Clamp the 256px (w-64) popover inside the viewport with an
+        // 8px margin on both sides, preferring the button's own left.
+        const width = 256;
+        const left = Math.min(
+          Math.max(8, rect.left),
+          Math.max(8, window.innerWidth - width - 8),
+        );
+        setHomePos({ top: rect.bottom + 8, left });
+      }
+    }
+    setOpen((v) => !v);
+  }, [open, atHome]);
 
   // Escape closes the popover and returns focus to the button.
   useEffect(() => {
@@ -90,8 +113,12 @@ export function MapModeToggle(props: {
         type="button"
         data-testid="map-mode-button"
         aria-expanded={open}
-        aria-label="Map mode settings"
-        onClick={() => setOpen((v) => !v)}
+        aria-label={
+          atHome
+            ? `Map mode settings — currently ${scout ? "Scout Map" : "Full map"}`
+            : "Map mode settings"
+        }
+        onClick={toggleOpen}
         className={
           atHome
             ? // Home theme: brass outline, matching the sound toggle
@@ -103,7 +130,28 @@ export function MapModeToggle(props: {
         <Layers aria-hidden="true" size={20} />
       </button>
       {open ? (
-        <div className="pointer-events-auto absolute top-full left-0 z-40 mt-2 w-64 rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.92)] p-4 text-white shadow-xl backdrop-blur-[14px]">
+        // Placement differs by host. In Play the button sits in the
+        // top bar's left cluster, so the popover anchors under it
+        // (absolute, left-0) and always fits. On Home the button sits
+        // in the hero's wrapping top row, whose wrap point moves with
+        // the viewport: measured on the real page, left-0 pushed the
+        // 256px popover off the right edge at 340px wide (and past
+        // the hero's overflow:hidden edge at 360px), while right-0
+        // would push it off the LEFT edge at 320px, where the button
+        // wraps to the row's start. Neither anchor survives the wrap,
+        // so on Home the popover is fixed-positioned from the
+        // button's measured rect, clamped inside the viewport
+        // (toggleOpen above) — it overlays the page like the Play
+        // popover and is never clipped by the hero.
+        <div
+          data-testid="map-mode-popover"
+          style={atHome && homePos ? { top: homePos.top, left: homePos.left } : undefined}
+          className={
+            atHome
+              ? "pointer-events-auto fixed z-40 w-64 rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.92)] p-4 text-white shadow-xl backdrop-blur-[14px]"
+              : "pointer-events-auto absolute top-full left-0 z-40 mt-2 w-64 rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.92)] p-4 text-white shadow-xl backdrop-blur-[14px]"
+          }
+        >
           <p className="text-sm font-semibold">{SCOUT_COPY.toggle.label}</p>
           <p className="mt-1 text-xs leading-relaxed text-white/70">
             {atHome ? SCOUT_COPY.toggle.homeExplainer : SCOUT_COPY.toggle.explainer}

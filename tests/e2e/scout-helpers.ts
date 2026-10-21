@@ -14,7 +14,13 @@
  *    flipping it there just writes the manual record — no run exists
  *  - home notices: data-testid="map-switched-notice" (after a manual
  *    switch lands the player home, Block B) and
- *    data-testid="scout-auto-notice" (this boot auto-switched, Block C)
+ *    data-testid="scout-auto-notice" (this boot auto-switched, Block C).
+ *    Neither carries role="status" (re-vote BLOCK-3): GameApp's hoisted
+ *    announcer (data-testid="map-mode-announcer") is the sole speaker
+ *    for map-mode events. The toggle popover is
+ *    data-testid="map-mode-popover"; on Home the button's aria-label
+ *    carries the current mode and the popover is fixed-positioned,
+ *    clamped inside the viewport
  *  - switch note: role="status", classes "fixed inset-x-4 top-16",
  *    sibling of the ResultCard, visible only in story phase after reveal
  *  - map wrapper: data-map-mode="full"|"scout" (proposed), data-zoom,

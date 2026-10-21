@@ -27,8 +27,10 @@ import {
   APP_NO_IDLE,
 } from "./helpers";
 import {
+  flipMapModeToggle,
   mapModeButton,
   mapModeSwitch,
+  mapWrapper,
   readMapMode,
   readStoredMapMode,
   seedManualMode,
@@ -134,6 +136,50 @@ test("capable boot: no auto-switch note, indicator reads Full map (Block C)", as
   await expect(indicator).toHaveAttribute("data-mode", "full");
   await expect(indicator).toContainText("Full map");
   expect(await readStoredMapMode(page)).toBeNull();
+  await page.close();
+});
+
+test("weak boot + in-game flip: home shows ONLY the switched notice — the auto note retires (BLOCK-1)", async ({
+  context,
+}) => {
+  // No spoof: weak device, auto-switch unsuppressed (beforeEach).
+  const page = await context.newPage();
+  await page.goto(APP_NO_IDLE);
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+
+  // Precondition: this boot auto-switched and its note is up,
+  // undismissed — the flagship Block C flow.
+  await expect(page.getByTestId("scout-auto-notice")).toBeVisible({
+    timeout: 10_000,
+  });
+
+  // Start the run WITHOUT navigating again. startGlobeRun would
+  // goto() a second time, and the second boot reads the auto record
+  // the first boot just wrote — a stored-record boot, which never
+  // sets the note, so the note would vanish for a reason unrelated
+  // to the flip and this pin would pass vacuously (it did, in its
+  // first form, against the pre-cure build). The panel's repro is
+  // ONE boot: note up → into a run → flip in Play.
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  await expect(mapWrapper(page)).toBeVisible({ timeout: 30_000 });
+  await expect.poll(() => readMapMode(page), { timeout: 60_000 }).toBe("scout");
+
+  // Flip in Play (scout → full). The manual handler must retire the
+  // boot's note: pre-cure it never did, so Home rendered BOTH notices
+  // stacked — "You switched to the full map…" directly over "You're
+  // on Scout Map — the lighter map, picked for this device…" — while
+  // the indicator read Full map.
+  await flipMapModeToggle(page);
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+
+  const switched = page.getByTestId("map-switched-notice");
+  await expect(switched).toBeVisible({ timeout: 10_000 });
+  await expect(switched).toContainText("You switched to the full map");
+  await expect(page.getByTestId("scout-auto-notice")).toHaveCount(0);
   await page.close();
 });
 
@@ -330,5 +376,63 @@ test("settled manual full → WS-4 tile failure: visit switches to scout, manual
   await expect(
     page.getByText("We switched to Scout Map so you can keep playing."),
   ).toBeVisible({ timeout: 30_000 });
+  await page.close();
+});
+
+test("home map-mode button's accessible name carries the current mode (re-vote nit)", async ({
+  context,
+}) => {
+  await spoofCapableDevice(context);
+  const page = await context.newPage();
+  await page.goto(APP_NO_IDLE);
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+
+  // Pre-cure the name was the bare "Map mode settings" in both modes:
+  // a screen-reader player heard the control but never the state the
+  // sighted player reads off the indicator pill beside it.
+  await expect
+    .poll(() => mapModeButton(page).getAttribute("aria-label"), {
+      timeout: 10_000,
+    })
+    .toContain("Full map");
+
+  // Flip at Home — the name follows the mode.
+  await flipMapModeToggle(page);
+  await expect
+    .poll(() => mapModeButton(page).getAttribute("aria-label"), {
+      timeout: 10_000,
+    })
+    .toContain("Scout Map");
+  await page.close();
+});
+
+test("home popover stays fully inside the viewport at narrow widths (re-vote nit)", async ({
+  context,
+}) => {
+  await spoofCapableDevice(context);
+  const page = await context.newPage();
+  // Measured pre-cure (absolute left-0, w-64, inside the hero's
+  // overflow:hidden): at 340px the popover ran 141→397 in a 340px
+  // viewport (fully clipped); at 360px it fit the viewport but the
+  // hero clipped it; 320px and 390px passed only by wrap luck. The
+  // home popover is now fixed-positioned from the button's measured
+  // rect, clamped to the viewport — assert exactly that, at the
+  // widths that failed and the ones that squeaked by.
+  for (const width of [320, 340, 360, 390]) {
+    await page.setViewportSize({ width, height: 640 });
+    await page.goto(APP_NO_IDLE);
+    await expect(mapModeButton(page)).toBeVisible({ timeout: 30_000 });
+    await mapModeButton(page).click();
+    const popover = page.getByTestId("map-mode-popover");
+    await expect(popover).toBeVisible({ timeout: 10_000 });
+    const box = await popover.boundingBox();
+    expect(box, `popover has a box at ${width}px`).not.toBeNull();
+    expect(box!.x).toBeGreaterThanOrEqual(0);
+    expect(box!.x + box!.width).toBeLessThanOrEqual(width);
+    await page.keyboard.press("Escape");
+    await expect(popover).toHaveCount(0);
+  }
   await page.close();
 });

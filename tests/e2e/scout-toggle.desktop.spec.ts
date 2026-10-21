@@ -305,3 +305,102 @@ test("manual toggle beats the weak-device probe (no demotion on override)", asyn
   expect(await readMapMode(page)).not.toBe("scout");
   await page.close();
 });
+
+test("a home flip retires the stale switched notice from an earlier in-game flip (BLOCK-2)", async ({
+  page,
+  context,
+}) => {
+  // Start settled in Scout, then flip IN GAME to full: the landing
+  // shows the switched notice ("…full map"), correctly.
+  await seedManualMode(context, "scout");
+  await page.goto(APP_NO_IDLE);
+  await startGlobeRun(page);
+  await expect.poll(() => readMapMode(page), { timeout: 20_000 }).toBe("scout");
+
+  await flipMapModeToggle(page);
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+  const notice = page.getByTestId("map-switched-notice");
+  await expect(notice).toBeVisible({ timeout: 10_000 });
+  await expect(notice).toContainText("You switched to the full map");
+
+  // Flip back to Scout AT HOME. The home handler supersedes the
+  // earlier switch — pre-cure it never cleared the notice, so the
+  // stale "your next game uses the full map" stayed on screen (and
+  // could resurface on any later Home render) while the indicator
+  // already read Scout Map.
+  await flipMapModeToggle(page);
+  await expect(notice).toHaveCount(0);
+  await expect(page.getByTestId("map-mode-indicator")).toHaveAttribute(
+    "data-mode",
+    "scout",
+  );
+  await expect(page.getByTestId("map-mode-announcer")).toHaveText(
+    "Scout Map on — your next game uses Scout Map",
+  );
+});
+
+test("manual switch lands HOME even with a persisted GeoDetective flag under the restored run (BLOCK-4)", async ({
+  page,
+}) => {
+  await page.goto(APP_NO_IDLE);
+  await startGlobeRun(page);
+  // The live run persists its record — the fact the repro stands on.
+  expect(
+    await page.evaluate(() => sessionStorage.getItem("meridian.run")),
+  ).not.toBeNull();
+
+  // Editions exit: back to the picker WITHOUT ending the game — the
+  // persisted run record deliberately survives (pause semantics).
+  await page.getByRole("button", { name: "Editions" }).click();
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+  expect(
+    await page.evaluate(() => sessionStorage.getItem("meridian.run")),
+  ).not.toBeNull();
+
+  // Enter GeoDetective: its open flag persists alongside the run.
+  await page.getByRole("button", { name: "🔎 Solve a mystery" }).click();
+  await expect(
+    page.getByRole("heading", { name: "GeoDetective" }),
+  ).toBeVisible({ timeout: 30_000 });
+  expect(
+    await page.evaluate(() => localStorage.getItem("meridian.loop.open")),
+  ).toBe("1");
+
+  // A reload restores BOTH — and branch precedence renders the run on
+  // top of the lurking flag (Play on screen, LoopScreen not).
+  await page.reload();
+  await expect(mapWrapper(page)).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("loop-screen")).toHaveCount(0);
+
+  // Flip the toggle. Pre-cure the exit dropped the run but cleared
+  // nothing else, so the persisted flag won the next render:
+  // LoopScreen instead of Home — no heading for the focus landing,
+  // no notice, and "back home" copy falsified. Post-cure the exit
+  // clears the flag too, and Home is deterministic:
+  await flipMapModeToggle(page);
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("loop-screen")).toHaveCount(0);
+  await expect(page.getByTestId("map-switched-notice")).toBeVisible({
+    timeout: 10_000,
+  });
+  await expect
+    .poll(
+      () =>
+        page.evaluate(
+          () => document.activeElement?.getAttribute("data-testid") ?? null,
+        ),
+      { timeout: 10_000 },
+    )
+    .toBe("home-heading");
+  // The persisted flag went with the exit — a later reload cannot
+  // resurrect the loop over Home either.
+  expect(
+    await page.evaluate(() => localStorage.getItem("meridian.loop.open")),
+  ).toBeNull();
+});

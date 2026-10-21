@@ -175,12 +175,14 @@ E2E `--workers=1`:
   on every navigation (fixed in the harness — `seedManualMode` is
   write-once, matching write policy Q3).
 
-## Pipeline round 1 — NOT READY (4 BLOCKs); Block A cured here
+## Pipeline round 1 — NOT READY; Block A cured here
 
-The full pipeline returned NOT READY with 4 BLOCKs. Blocks B and C
-are owner design-scope questions (warning styling/placement,
-explainer text, home notice, auto-switch notice/indicator) — NOT
-touched by this cure; the owner is scoping them separately.
+The full pipeline returned NOT READY. The blocks, as itemized in
+this record: **A** (the switch announcement could never be spoken +
+focus stranded), **B** (warning styling/placement, explainer text,
+home notice) and **C** (auto-switch notice/indicator). Blocks B and
+C are owner design-scope questions — NOT touched by the Block A
+cure; the owner scoped them separately (next section).
 
 **Block A (WCAG 4.1.3 / 2.4.3) — cured.** Three seats converged: the
 toggle's sr-only live region was destroyed in the same commit that
@@ -285,12 +287,97 @@ passed; it passed in the round-1 panel family run at the previous tip,
 and this cure touches no gameplay code — the re-vote run should
 re-exercise it.
 
+## Panel re-vote at `30e1faf` — NOT READY again; cure round 2 here
+
+The re-vote judged the A+B+C tip: tally **APPROVE ×1 /
+APPROVE-WITH-NITS ×4 / BLOCK ×7**, DevEx PASS-WITH-NITS. Blocks A
+and B verified CURED (B's score-kept claim proven from the code:
+banking happens at pin-commit and the handler never touches the
+session store). Block C's visible parts all work — but its notice
+lifecycle failed, and one structural catch sat in the force-home
+exit itself. Four new BLOCKs, each cured below with the blocking
+seats' own specified fix:
+
+1. **BLOCK-1 — an in-game flip never retired the auto-switch note**
+   (6 seats). `handleManualMapMode` set the switched notice but not
+   `setAutoScoutNote(false)` — a weak-device boot (note up,
+   undismissed) → run → flip in Play landed Home with BOTH notices
+   stacked and contradicting each other. **Cured:** the manual
+   handler retires the auto note, mirroring the home handler; pin in
+   `scout-capability-offer`: *"weak boot + in-game flip: home shows
+   ONLY the switched notice — the auto note retires (BLOCK-1)"*.
+2. **BLOCK-2 — a home flip never invalidated the switched notice.**
+   Play-flip to full, then home-flip back to Scout left the stale
+   "your next game uses the full map" standing. **Cured:**
+   `handleHomeMapMode` now clears `mapSwitchedNote`; pin in
+   `scout-toggle`: *"a home flip retires the stale switched notice
+   from an earlier in-game flip (BLOCK-2)"*.
+3. **BLOCK-3 — one event, two live regions.** The manual handler
+   sets the announcer AND mounts the switched notice in one commit;
+   both were `role="status"`, so some screen readers would announce
+   the switch twice. **Cured:** `role="status"` dropped from both
+   VISIBLE notices (map-switched + scout-auto); the hoisted
+   announcer is the sole speaker. Existing pins already asserted
+   the notices by testid/text, so none needed re-aiming.
+4. **BLOCK-4 — force-home did not deterministically land Home
+   (structural).** The exit cleared run/menu/tutorial but never
+   `loopOpen` / `coldTrailOpen` / `starting`, and render precedence
+   lets a lurking flag win. Reachable, not theoretical: Editions
+   exit keeps the run record → enter GeoDetective (its open flag
+   persists) → reload restores both → flip → the run dropped and
+   **LoopScreen rendered, not Home** — stranding Block A's focus
+   flag and hiding Block B's notice. **Cured:** the exit also clears
+   `loopOpen` (+ `writeLoopOpen(false)`), `coldTrailOpen`, and
+   `starting`; pin in `scout-toggle`: *"manual switch lands HOME
+   even with a persisted GeoDetective flag under the restored run
+   (BLOCK-4)"* — it walks the exact repro (real run → Editions →
+   GeoDetective → reload → flip) and asserts Home, the notice, the
+   h1 focus landing, and the persisted flag gone.
+
+Two panel nits absorbed in the same round:
+
+- **Indicator pill not programmatically linked** (UX Researcher,
+  Major nit): the Home button's accessible name now carries the
+  current mode ("Map mode settings — currently Scout Map" / "…
+  Full map") — the same words the pill shows. Pin in
+  `scout-capability-offer`.
+- **Home popover clipped at narrow widths** (Frontend, HIGH nit):
+  measured pre-cure on the real page — at 340px the left-anchored
+  256px popover ran off the viewport entirely; at 360px the hero's
+  `overflow: hidden` clipped it; right-anchoring would break 320px
+  instead (the button wraps to the row's start there). **Cured:**
+  on Home the popover is fixed-positioned from the button's
+  measured rect, clamped inside the viewport; the Play popover is
+  byte-for-byte the old anchor. Pin in `scout-capability-offer`
+  asserts the popover box lies inside the viewport at 320/340/360/
+  390px.
+
+Docs this round: `docs/scout-offer-policy.md` gained the two
+landing rules (deterministic Home + one notice at a time, visual
+only) in plain words; the handbook's §4 statement stays true at its
+level and is unchanged. The scout-helpers contract comment records
+the notices' no-role rule and the popover testid.
+
+**Rebase:** main advanced while this cured (PR #184 merged; main
+`11a95a7`). The branch is rebased onto it — expected conflict is
+this file only; the rebase + full gate re-run are recorded in the
+Gates section once run.
+
 ## Ready to merge?
 
-**NO — panel re-vote + owner's merge word.** Blocks A, B and C are
-cured above; the cured tip has not been re-voted. Per the owner's
-rule, the panel re-votes the final tip; merge only on READY + his
-per-PR word. Nobody merges without the owner's word. (Expect a
-merge-time rebase: this branch is based on `89e474c` and a parallel
-hint-default build may land first — the surfaces are disjoint.)
+**NO — panel re-vote round 3 on the final tip + Veeresh's word.**
+Per the owner's rule the panel approves the final tip itself;
+merge only on READY + his per-PR word. Two caveats ride at this
+decision point, neither settled by this branch:
+
+- **Issue #154 item 1 is still owed** (see the flag section
+  above): the production test seam `window.__meridianSuppress
+  ScoutOffer` now guards the silent auto-switch. Keep-vs-test-only
+  is the owner's open call.
+- **`scout-throttled` is environment-bound on this VM:** the
+  panel's calm-VM re-run of the full scout family passed 39/39
+  including it; under load its `commitPin` 20s wall-clock poll can
+  still trip on any branch. A harness follow-up, not a branch
+  defect — the family result recorded for this tip says which
+  conditions it ran under.
 
