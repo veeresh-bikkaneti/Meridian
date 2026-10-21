@@ -57,6 +57,19 @@ value is in not having written the thing it reviews.
 3. **Cite and declare confidence.** Every external assertion carries its source
    URL. Every proposal carries a confidence level of High, Medium or Low. Below
    High, name the exact missing fact that would raise it.
+4. **Know which lever you are pulling.** The seat models in §1 control *cost per
+   token*; they do not reduce the token count. Token count is controlled by the
+   tier gate in `AGENTS.md` (do not convene a council the task does not need),
+   by narrow context resolution (rule 1 above), and by delegation — a worker's
+   reading stays in the worker's context and only its conclusion returns to the
+   Chair. Ranked by saving: tier gate, then narrow context, then delegation,
+   then model tier.
+5. **A council is not free.** Every seat re-pays the task setup, so four seats
+   pay it four times. Below Tier 2 a council costs more total tokens than doing
+   the work directly, whatever model the seats run. Cheap councilors make that
+   waste cheaper; only the tier gate prevents it. The Chair stays on `opus`
+   because it reads summaries rather than bulk files and makes the binding
+   architecture and security calls, where a cheap mistake is dearest.
 
 ---
 

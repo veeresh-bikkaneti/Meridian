@@ -5,7 +5,7 @@
 ## Done
 - `AGENTS.md`: new "Constitution" section above "Quality gates": (1) do not refactor existing working code; (2) do not create new branches or duplicate files; (3) edit only the targeted functions, in place; (4) output only unified git diffs when showing code changes.
 - `AGENTS.md`: new "Agent council" section — a 3-tier table deciding when the TDD/ATDD council convenes (Tier 0 direct / Tier 1 solo TDD / Tier 2 council), plus a one-line summary of Tier 2. 16 lines; the protocol itself is not in this always-loaded file.
-- `docs/ops/agent-council-protocol.md` (new, 161 lines): the Tier 2 protocol — four seats with model tiers, four phases, the Signed Consensus Manifest, and the post-token execution loop.
+- `docs/ops/agent-council-protocol.md` (new): the Tier 2 protocol — four seats with model tiers, four phases, the Signed Consensus Manifest, and the post-token execution loop. §3 rules 4-5 separate the two levers the draft conflated: seat models cut cost per token, while the tier gate / narrow context / delegation cut the token count — and a council below Tier 2 costs more than doing the work directly, whatever model the seats run.
 
 ## Where the council protocol departs from the owner's draft
 Each is reversible; say the word and it goes back.
