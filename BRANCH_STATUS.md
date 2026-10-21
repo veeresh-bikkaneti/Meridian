@@ -10,11 +10,14 @@ LIVE 2026-10-21 (deployment `9bd9f669` → version `e3dc6b3b`, code
 byte-identical to the staged `405db4b5`, bindings =
 `DISCORD_WEBHOOK_URL` secret_text + `TELEMETRY_COUNTS` KV; probe
 verified `forwarded:true` AND `counted:true`; digest cron
-`15 * * * *` in place). Merge mechanics note: GitGuardian was
-silent on this PR (no check run across open/reopen/synchronize);
-on the owner's explicit word it was temporarily removed from the
-required contexts, the PR merged, and protection was restored and
-readback-verified identical to the pre-drop state. The
+`15 * * * *` in place). Merge mechanics note: GitGuardian
+showed no check run in any checks read across open/reopen/
+synchronize over ~10 minutes; on the owner's explicit word it
+was temporarily removed from the required contexts and the PR
+merged; a heavily delayed GitGuardian run in fact completed
+successfully at 14:55:06Z, seven minutes before the merge at
+15:02:12Z; protection was restored and readback-verified
+identical to the pre-drop state. The
 blocked/restored narrative below is the historical record of the
 morning's attempts. This header was cured by the follow-up
 branch-status PR; the record below stands.**
