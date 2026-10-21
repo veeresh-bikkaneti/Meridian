@@ -121,7 +121,8 @@ The second audio system. The design document is the source of truth: **`docs/sfx
 ### Architecture rules (the ones that protect the player)
 
 - **Lazy AudioContext** — created on the first user gesture only (autoplay policy); `webkitAudioContext` fallback; idempotent init (React StrictMode double-effects).
-- **Never crashes, never blocks** — every play function guards and no-ops silently in SSR/jsdom; sounds are fire-and-forget, never awaited, never gating gameplay.
+- **Never crashes, never blocks** — every play function guards and no-ops silently in SSR/jsdom; sounds are fire-and-forget, never awaited, never gating gameplay. The rule covers **every** Web Audio call site, not just `sfx.ts`: grandpa's cough synth in `src/components/grandpa-ask.ts` guards its context creation and wraps the graph the same way.
+- **Never chain `connect()`** — `a.connect(b)` returns the destination node in modern browsers but `undefined` on old Safari (WebKit bug 188834), so `a.connect(b).connect(c)` throws on the second call there. Wire each connection as its own statement. Learned the hard way in #189: PR #165 chained it in the cough, and the only check that caught it was the E2E audio stub — whose `connect()` deliberately returns `undefined` to mimic old Safari. That stub behavior is a feature; never "fix" it.
 - **Enhancement only** — every sound has a visual equivalent on screen. Sound is never the sole signal (this is a hard product rule).
 - **Persisted toggle** — `localStorage` key `meridian.sound`, speaker icon in the home header. **Default: ON** — whether it stays ON for first-run is an **open owner call** (not traced to a recorded ruling; flipping to OFF first-run is a one-line change).
 - **Reduced motion does NOT mute sound** — motion and sound are orthogonal; the sound toggle is the "reduced sound" control. That was the audio designer's documented call.
