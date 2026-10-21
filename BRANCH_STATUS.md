@@ -1,9 +1,13 @@
 # BRANCH_STATUS — fix/chimney-rock-citation (Journal Q6 citation fix)
 
-**State: built and gated locally; NOT ready to merge — the full
-panel pipeline verdict on this tip and the owner's merge word are
-still owed** (standing rule: the panel approves the final tip
-itself).
+**State: MERGED 2026-10-21 — PR #198, squash `0c73aee`, on the
+owner's merge word.** The full panel pipeline on the final tip
+`6c1fb58` returned READY — APPROVE ×12 / BLOCK ×0, DevEx
+PASS-WITH-NITS — satisfying the standing rule that the panel
+approves the final tip itself. The panel's one MAJOR DevEx nit
+(the journal generator's one-line `src()` parser gotcha) was
+filed as issue #200 on the owner's instruction. This header was
+cured by the follow-up branch-status PR; the record below stands.
 
 Base: `origin/main 33a28fe`. Scope: one citation href in
 `src/game/catalog.ts` + the regenerated journal dataset
