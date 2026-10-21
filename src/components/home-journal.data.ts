@@ -739,7 +739,7 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "where": "Nebraska",
     "story": "The spire in western Nebraska was the landmark Oregon Trail emigrants watched for days. It still stands above the North Platte valley near Bayard.",
     "sourceLabel": "National Park Service",
-    "sourceHref": "https://www.nps.gov/chro/",
+    "sourceHref": "https://www.nps.gov/places/000/chimney-rock-national-historic-site.htm",
     "confidence": {
       "tier": "verified",
       "basis": "Government or university source"
