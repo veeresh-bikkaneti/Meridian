@@ -33,9 +33,12 @@ Deploy **one** of them as the `observabilityEndpoint` target, not both.
 - `src/index.ts` — zero-runtime-dependency Worker. `handleRequest(request,
 env)` is exported pure for tests; the default export wires it as `fetch`
 plus a `scheduled` handler for the hourly digest.
-- `wrangler.toml` — worker name, entry point, compatibility date, the
-  hourly cron trigger, and a commented-out `TELEMETRY_COUNTS` KV binding
-  (the owner creates the namespace once and pastes its id — see Deploy).
+- `wrangler.toml` — the **human config record**: worker name, entry
+  point, compatibility date, the hourly cron trigger, and a
+  commented-out `TELEMETRY_COUNTS` KV binding block. The deploy path
+  never reads this file (see Deploy) — the KV namespace exists
+  (created 2026-10-21), and the binding block carrying its real id is
+  recorded on branch `ops/telemetry-phase1-deploy`, awaiting merge.
   Contains **no secrets** and no `[vars]`.
 - `tsconfig.json` — editor-only strict config. The root `tsconfig.json`
   includes only `src` and `server`, so root `npx tsc --noEmit` ignores
@@ -172,7 +175,7 @@ truncated error name/message.
 ## Tests
 
 ```sh
-npm run test:worker        # 32 unit tests (validation, alert builder, rate limiter, CORS,
+npm run test:worker        # 33 unit tests (validation, alert builder, rate limiter, CORS,
                            #  Phase 1: tiering, counting, threshold exact-once, digest, fail-open)
 npm run typecheck:worker   # strict tsc on the worker sources
 ```
@@ -189,40 +192,92 @@ This worker has **only ever been deployed by direct API script
 upload** — every deployment in the Cloudflare API history is
 `source: api`, `triggered_by: upload` (ground truth API-verified
 2026-10-21). `wrangler deploy` was never the mechanism; do not use
-it for releases (wrangler remains fine for the local dry-run below).
-The release path is the `cf.py` helper, which uploads a single-file
-JS build of the worker to the Workers scripts endpoint:
+it for releases (wrangler remains fine for local dev — see the
+dry-run below).
+
+Two tools do the work:
+
+- **`cf.py`** — `~/workspace/skills/cloudflare/bin/cf.py`, a helper
+  that lives on this VM, **outside this repo**. It authenticates
+  with the stored Cloudflare credential and PUTs one JavaScript
+  file to the Workers scripts endpoint. **Off this VM** there is no
+  cf.py: use the Cloudflare dashboard, or the same API endpoints
+  with your own API token, instead.
+- **The TypeScript compiler** already in this repo's root
+  dependencies. `src/index.ts` is a single self-contained module
+  (no imports, no runtime dependencies), so the "bundle" is one
+  `tsc` emit — there is no bundler step and no build script.
+
+### The release, step by step
 
 ```sh
-# 1. Once: create the Phase 1 KV namespace via the Cloudflare API
-#    (accounts/{id}/storage/kv/namespaces) and paste the returned id
-#    into the [[kv_namespaces]] block in wrangler.toml (uncomment
-#    it). Done 2026-10-21.
-# 2. Build/bundle src/index.ts into a single JS module file, then:
-python3 ~/workspace/skills/cloudflare/bin/cf.py deploy <built-script.js>
+# 1. Bundle src/index.ts into a single JS module (from the repo root).
+#    Tested on this VM: this produces exactly one file,
+#    dist-worker/index.js, and the emitted module answers
+#    /health with 200 {"ok":true}.
+npx tsc workers/crash-report/src/index.ts --outDir dist-worker \
+  --module esnext --target es2022 --moduleResolution bundler --skipLibCheck
+
+# 2. Upload it. This replaces the live script — and ONLY the script:
+#    cf.py's upload metadata carries no bindings and no triggers
+#    (see the next section for what that means).
+python3 ~/workspace/skills/cloudflare/bin/cf.py deploy dist-worker/index.js
 curl https://meridian-crash-report.knowledgetest.workers.dev/health   # → {"ok":true}
-# 3. Re-set the secrets on the new version (see Secrets) — a fresh
-#    upload does NOT inherit DISCORD_WEBHOOK_URL.
+
+# 3. Re-set the secrets on the new version (see Secrets below) — a
+#    fresh upload does NOT inherit DISCORD_WEBHOOK_URL.
 ```
 
-**Owner step, in this order** (the worker's live deploy is a
-repo-owner step):
+### What an upload does NOT carry: bindings and triggers
 
-1. Create the KV namespace via the API (above) and paste the id into
-   `wrangler.toml`; the cron trigger needs no extra setup.
-2. Upload the worker (`cf.py deploy`, above) and confirm `/health`.
-3. Set secrets (`cf.py secret …`) as above — **after** the upload,
-   every time: a fresh upload does not inherit the previous version's
-   `DISCORD_WEBHOOK_URL` secret, and a version uploaded without it
-   runs with forwarding silently off. (This is the current Phase 1
-   deploy blocker: the webhook value lives only in the platform
-   secret store and cannot be read back, so it must be re-supplied
-   when the Phase 1 version is deployed.)
-4. Verify: send one `tile_failed` event — it must be counted and NOT
-   forwarded individually (`{"ok":true,"forwarded":false,"counted":true}`);
-   the next hourly digest should include it. (`counted:true` requires
-   step 1's binding — if you skipped step 1, expect `counted:false`
-   until the binding is wired.) The existing production
+Bindings and cron triggers are **version metadata on the upload**,
+not properties of the script file — and `cf.py deploy` sends
+neither (its metadata is only the main-module name, the
+compatibility date, and `workers_dev`). Two consequences:
+
+- **KV binding (`TELEMETRY_COUNTS`).** The Phase 1 version was
+  uploaded through the API version-upload path **with the binding
+  in its upload metadata**, and counting was probe-verified live
+  (2026-10-21). A bare `cf.py deploy` produces a version **without**
+  the binding — the worker then runs counting-free (fail-open, by
+  design). `wrangler.toml`'s role is the **human config record** of
+  the intended setup: on `main` its `[[kv_namespaces]]` block is
+  still commented out with `PASTE_NAMESPACE_ID_HERE`, while the
+  same block carrying the real id is recorded on branch
+  `ops/telemetry-phase1-deploy`, awaiting the owner's merge word.
+  Keep the three states separate:
+  - *Namespace created* — **done** 2026-10-21 via the API
+    (id `34884ed9aa46437f871278a517882e72`).
+  - *Binding recorded* — on the ops branch above; **not yet on
+    main**.
+  - *Phase 1 live* — **not yet**: pending the coordinated deploy
+    window (the already-uploaded Phase 1 version goes live, then
+    the owner re-supplies the webhook — below).
+- **Cron (`15 * * * *`).** The schedule was set once, on
+  2026-10-21, through the Workers **schedules endpoint**
+  (`PUT /accounts/{id}/workers/scripts/meridian-crash-report/schedules`),
+  not by any deploy step, and it persists across uploads. It is
+  inert until Phase 1 code (which has the `scheduled` handler) is
+  the live version. `wrangler.toml`'s `[triggers]` block is the
+  record of it.
+
+**Owner step — the Phase 1 unblock, in this order** (the worker's
+live deploy is a repo-owner step):
+
+1. Put the Phase 1 version live (the already-uploaded version, or
+   a fresh upload carrying the KV binding in its metadata).
+2. **Immediately** re-supply the Discord webhook
+   (`cf.py secret DISCORD_WEBHOOK_URL …`, see Secrets): a fresh
+   version runs with forwarding silently off until this is done.
+   This is the current Phase 1 deploy blocker — the webhook value
+   lives only in the platform secret store and cannot be read
+   back, so the owner must re-supply it in the same window.
+3. Verify: send one `tile_failed` event — it must be counted and
+   NOT forwarded individually
+   (`{"ok":true,"forwarded":false,"counted":true}`); the next
+   hourly digest should include it. (`counted:true` requires the
+   live version to carry the KV binding — after a bare
+   `cf.py deploy`, expect `counted:false`.) The production
    endpoint already set in `public/flags.json` does not change.
 
 **Rollback:** re-upload the previous worker version's script
@@ -231,7 +286,12 @@ individual forwarding, exactly the pre-Phase-1 behavior. The KV
 buckets are inert hour-keyed counters: they need no cleanup and can
 stay bound.
 
-Dry-run before deploy (catches validation mistakes locally):
+Dry-run before deploy (catches validation mistakes locally): the
+unit suite (`npm run test:worker`, from the repo root) exercises
+the pure handlers with KV, Discord, and Resend mocked — no install
+and no live calls. If you have wrangler available (it is this
+directory's pinned devDependency; `npm install` in this directory
+fetches it), a full local run also works:
 
 ```sh
 npx wrangler dev
@@ -243,20 +303,27 @@ curl -X POST localhost:8787/ingest -H 'content-type: application/json' \
 ## Secrets
 
 Secrets are set through the Cloudflare API secret endpoint, via the
-same `cf.py` helper (the value goes as the second argument, or on
-stdin):
+same `cf.py` helper. Two forms: pass the value as an argument, or
+omit it — with no value argument, `cf.py secret <NAME>` reads the
+value from **stdin** (it waits on stdin until EOF, so pipe the
+value in or type it and end with Ctrl-D):
 
 ```sh
-python3 ~/workspace/skills/cloudflare/bin/cf.py secret DISCORD_WEBHOOK_URL   # Discord channel → Integrations → Webhooks → New Webhook
-python3 ~/workspace/skills/cloudflare/bin/cf.py secret RESEND_API_KEY        # https://resend.com/api-keys
-python3 ~/workspace/skills/cloudflare/bin/cf.py secret REPORT_EMAIL          # recipient, e.g. you@example.com
+python3 ~/workspace/skills/cloudflare/bin/cf.py secret DISCORD_WEBHOOK_URL <value>   # Discord: Server Settings → Integrations → Webhooks
+printf '%s' "<value>" | python3 ~/workspace/skills/cloudflare/bin/cf.py secret DISCORD_WEBHOOK_URL   # the same secret, via stdin
+python3 ~/workspace/skills/cloudflare/bin/cf.py secret RESEND_API_KEY <value>        # https://resend.com/api-keys
+python3 ~/workspace/skills/cloudflare/bin/cf.py secret REPORT_EMAIL <value>          # recipient, e.g. you@example.com
 # Optional (non-secret, but contains an address — use a secret anyway):
-python3 ~/workspace/skills/cloudflare/bin/cf.py secret REPORT_FROM           # verified sender; default is Resend's onboarding@resend.dev test domain
+python3 ~/workspace/skills/cloudflare/bin/cf.py secret REPORT_FROM <value>           # verified sender; default is Resend's onboarding@resend.dev test domain
 ```
 
 Remember: a fresh script upload does **not** inherit existing
 secrets — re-set them on the new version after every upload, or
-forwarding silently stops (the Phase 1 deploy blocker).
+forwarding silently stops (the Phase 1 deploy blocker). This is a
+platform rule, not a cf.py quirk: a new version cannot inherit a
+secret by naming it — a value-less `secret_text` binding is
+rejected (**error 10021**) — and the stored value cannot be read
+back from the platform, so only the owner can re-supply it.
 
 Discord and email are independent: configure either or both. With
 neither set, the worker accepts and acknowledges events without
@@ -294,12 +361,17 @@ transport is a complete no-op (fail-closed). Do **not** commit the Worker URL in
 
 ## Staging vs production
 
-Simplest reliable split: deploy the same code twice under different
-names — e.g. `meridian-crash-report-staging` (secrets point at a
-test Discord channel / your own inbox) and `meridian-crash-report`
-(production). Point a staging flags deploy at the staging worker.
-Alternative: wrangler environments (`[env.staging]`) — not configured
-here; add only if you outgrow the two-deploy approach.
+**Not set up today** — this section describes the intended split,
+which does not exist yet. Simplest reliable split, when it's
+needed: deploy the same code twice under different names — e.g.
+`meridian-crash-report-staging` (secrets point at a test Discord
+channel / your own inbox) and `meridian-crash-report`
+(production) — and point a staging flags deploy at the staging
+worker. Note `cf.py` is hardcoded to the production script name, so
+a staging upload would go through the dashboard/API (or a copy of
+the helper with the name changed). Alternative: wrangler
+environments (`[env.staging]`) — likewise not configured here; add
+only if you outgrow the two-deploy approach.
 
 ## Volume-spike alerting
 
