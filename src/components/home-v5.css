@@ -287,7 +287,33 @@ body:has(.home-v5) {
 .home-v5 .hv5-storyteller {
   position: relative;
   flex: none;
-  margin-left: 10px;
+  /* The greeting popover anchors to this host's RIGHT edge and opens
+     leftward (see storyteller-home.css) — that only works while the host
+     sits at the right end of its row. The hero-top row wraps, and a
+     wrapped host used to land at the LEFT of its new line, so the popover
+     opened off the left edge of the screen and covered the headline
+     (owner report 2026-10-21: broken at 768/880/1280/1440, fine at 1024
+     where the row happens not to wrap). margin-left: auto keeps the host
+     at the right end of whatever line it lands on, at every width. The
+     ≤680px block below used to carry this rule for phones only; it is
+     universal now. */
+  margin-left: auto;
+}
+/* Greeting popover width in the v5 hero (≥681px): the shared cap is
+   320px, but beside the wide v5 headline that no longer fits. The
+   headline's first line reaches ~2/3 across the hero card while the
+   popover hangs from the card's right edge — the slot between the
+   headline's end and the card edge is only ~245px once the hero cell
+   stops growing (≥1280px) and ~250px at 768px. A 224px cap keeps the
+   bubble ~20px clear of the headline text at every width; the visual
+   pin in tests/e2e/home-visual-layout.desktop.spec.ts measures the real
+   glyph boxes so a future copy or font change that eats the clearance
+   fails loudly. Phones (≤680px) keep the shared 320px cap — there the
+   bubble hangs above the headline, not beside it. */
+@media (min-width: 681px) {
+  .home-v5 .storyteller-banner-popover {
+    max-width: 224px;
+  }
 }
 /* Difficulty — the repo's real labeled group + live hint, v5 pill skin. */
 .home-v5 .hv5-diff-cap {
@@ -780,13 +806,10 @@ body:has(.home-v5) {
   .home-v5 .hv5-nav {
     flex-wrap: wrap;
   }
-  /* On phones the storyteller host returns to the row's right end: its
-     greeting popover opens leftward from the host and would leave the
-     viewport if the host sat in the left cluster. The globe is in-flow
-     below the hero here, so the right end is free. */
-  .home-v5 .hv5-storyteller {
-    margin-left: auto;
-  }
+  /* The storyteller host sits at the row's right end at EVERY width —
+     that rule now lives on the base .hv5-storyteller above (its greeting
+     popover opens leftward from the host). On phones the globe is
+     in-flow below the hero, so the right end is free here too. */
   .home-v5 .hv5-nav nav {
     display: flex;
     order: 3;
