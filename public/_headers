@@ -1,0 +1,21 @@
+# Meridian — Cloudflare response headers (F1: immutable caching)
+# Deployed location: root of the static output (dist/client/_headers),
+# copied there by the build from public/_headers. Honoured by Cloudflare
+# Pages and Workers Static Assets, which serve the live site; GitHub Pages
+# ignores this file (harmless).
+#
+# Scope: ONLY /assets/* — the Vite/Rolldown build output. Every file there
+# is content-hashed (a content change produces a new filename/URL), so a
+# cached copy can never go stale and is safe to cache for a year as
+# immutable. This matches the rule the Nitro/Vercel build already emits
+# in .vercel/output/config.json for /assets/(.*).
+#
+# Deliberately NOT immutable: everything else keeps Cloudflare's default
+# (public, max-age=0, must-revalidate). /flags.json, /audio/*, /icons/*,
+# /images/*, /loop/*, sw.js and HTML all have stable names with mutable
+# content (e.g. narration mp3s were replaced under the same filenames in
+# PR #174, and sw.js is re-fingerprinted every build), so they must keep
+# revalidating — no rule below touches them.
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
