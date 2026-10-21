@@ -197,7 +197,7 @@ Hints are a real feature (Veeresh, 2026-10-09): a lightbulb button in the game o
 
 What the ruling does (issue #182):
 
-- **No profile set → hint policy "one-per-round."** The bulb shows, one hint per place — the 8-10 shape. The mascot offer stays off (it belongs to the 5-7 "free" policy only).
+- **No profile set → hint policy "one-per-round".** The bulb shows, one hint per place — the 8-10 shape. The mascot offer stays off (it belongs to the 5-7 "free" policy only).
 - **Explicitly chosen bands are untouched.** A profile a parent deliberately set to 11-13 still gets no bulb. The ruling changes the *default*, not a parent's choice.
 - **Nothing else about the default changes.** An unset profile still plays with the 11-13 numbers (round lengths, pin tolerance, clue counts), and the run still records its band as "11-13" — so the Clean Round badge works as before: it keys off the recorded band plus hints actually used. A default player who taps a hint has used a hint (no badge, same as anyone); a default player who never taps can still earn it.
 - **Runs already in flight keep their snapshot.** A quiz run or GeoDetective mystery already in progress when this ships finishes with the policy it was dealt — the bulb shows from each player's next run.

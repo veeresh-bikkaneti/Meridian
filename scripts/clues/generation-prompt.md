@@ -6,17 +6,19 @@
 
 > **How to read this document:** Rules quoted or cited from the synthesis are marked **[SYNTHESIS]**. Choices marked **[LOCKED — Veeresh 2026-10-04]** are his binding rulings. Remaining **[DRAFT CHOICE]** marks are the author's choices that stand for this production run unless Veeresh overrules them.
 
+> **Model update (Veeresh, 2026-10-06 — read this first):** this prompt was written when GeoDetective was planned as a daily game. That model is gone. By Veeresh's ruling — *"1 mystery per day will kill the game"* — GeoDetective is **fully unlimited**: the shipped game deals mysteries from a shuffled deck (Fisher–Yates, `src/game/loop/store.ts`) across the **387 shipped clue files** in `public/loop/clues/`, reshuffling when the deck runs out. There is no daily case, no day key, and no weekly assembly in play. The clue-writing rules below (tiers, leak ban, rejection path, reading level) are unchanged — only the daily framing is superseded, and daily-era wording left inside quoted synthesis text is historical.
+
 ---
 
 ## 1. What this prompt is for
 
-GeoDetective is Meridian's daily guessing edition: one mystery place per day (UTC day key), five guesses, clues revealed on a narrowing ladder. The player guesses via a constrained typeahead picker.
+GeoDetective is Meridian's mystery-place guessing edition: five guesses per mystery, clues revealed on a narrowing ladder. (At this prompt's writing the edition was planned as one mystery per day; since 2026-10-06 it is fully unlimited — see the model update above. The ladder and the five-guess contract did not change.) The player guesses via a constrained typeahead picker.
 
 **[SYNTHESIS]** — Unanimous finding #2: *"4 principles ≠ 4 clue tiers. Principle 4 ('short and story-like') is a style rule, not a content tier. The tiers must be a narrowing ladder (each clue shrinks the candidate set); the principles become universal writing rules applied to every clue."* This prompt therefore defines **5 narrowing tiers**, and applies Veeresh's 4 card rules as universal writing rules on every clue (§4).
 
 **[SYNTHESIS]** — Delta review: *"Content's rewritten 5-tier generation prompt (with name-leak bans, extract-as-only-source, per-clue source fields, rejection path, reading level, difficulty + aliases) is the minimum viable replacement — generate nothing until adopted."* Those seven components are exactly §§5–9 below.
 
-**[SYNTHESIS]** — Unanimous finding #5: the content is the real blocker (5 tiers × 365 days = **1,825 clue strings** minimum). Unanimous finding #3: the pool is a **curated famous-place pool** (500–2,000 guessable places), not the 124k catalog. This prompt assumes the input place comes from that curated pool with substantive source extracts (workflow step A), but the rejection path (§7) still applies per tier.
+**[SYNTHESIS]** — Unanimous finding #5: the content is the real blocker (5 tiers × 365 days = **1,825 clue strings** minimum, on the daily plan of the time — the shipped unlimited pool is 387 sets; see the model update above). Unanimous finding #3: the pool is a **curated famous-place pool** (500–2,000 guessable places), not the 124k catalog. This prompt assumes the input place comes from that curated pool with substantive source extracts (workflow step A), but the rejection path (§7) still applies per tier.
 
 ---
 
@@ -118,7 +120,7 @@ GeoDetective is Meridian's daily guessing edition: one mystery place per day (UT
 
 **[SYNTHESIS]** — Workflow step B: *"rejection path for thin places."* Delta review R4/R5: the missing rejection path combined with the climate tier is *"the highest fabrication risk of any tier."*
 
-**The rule:** if any tier cannot be written from the supplied extracts without inventing, **reject the entire clue set** — do not emit a partial set, do not weaken the tier, do not substitute a generic clue. A 4-clue day breaks the 5-guess contract; a thin place simply isn't a GeoDetective place.
+**The rule:** if any tier cannot be written from the supplied extracts without inventing, **reject the entire clue set** — do not emit a partial set, do not weaken the tier, do not substitute a generic clue. A 4-clue set breaks the 5-guess contract; a thin place simply isn't a GeoDetective place.
 
 **Rejection record (emit instead of clues):**
 ```json
@@ -150,7 +152,7 @@ GeoDetective is Meridian's daily guessing edition: one mystery place per day (UT
 
 **[SYNTHESIS]** — The rewritten prompt requires *"difficulty + aliases."* Workflow step E assembles *"difficulty-balanced weeks,"* so difficulty must be recorded per set.
 
-**Difficulty [DRAFT CHOICE]** — integer **1–5**, defined as *guessability for the daily audience*:
+**Difficulty [DRAFT CHOICE]** — integer **1–5**, defined as *guessability for the audience*:
 - 1 — world-famous; most players solve by clue 3 (e.g., Paris)
 - 2 — famous; most solve by clue 4
 - 3 — known; the full ladder is usually needed
@@ -230,7 +232,7 @@ Rejected sets: the §6 rejection record (same `schema`, `"status": "rejected"`, 
 
 **Field notes:**
 - `narrowing` **[DRAFT CHOICE]** — one line per clue stating what it rules out. Reasoning: it makes the narrowing test (§2) auditable by the validator and the human reviewer instead of vibes-based. Cheap to write, expensive to fake.
-- `answer` block: internal pipeline identity. **[DRAFT CHOICE]** — the published per-day file (`public/loop/clues/{index}.json`) is assembled by **stripping `answer.name`, `answer.aliases`, and region tags**, keeping only target coords + the five clue texts + source links, per the tech lens: *"Clue files contain target coords + 4 clues + source link; NEVER the place name or region tags"* (five clues in the evolved ladder). The generator emits the full record; assembly strips it. This keeps validation (which needs the name for the leak scan) and publication (which must never leak it) from sharing a format.
+- `answer` block: internal pipeline identity. **[DRAFT CHOICE]** — the published clue file (`public/loop/clues/{index}.json`) is assembled by **stripping `answer.name`, `answer.aliases`, and region tags**, keeping only target coords + the five clue texts + source links, per the tech lens: *"Clue files contain target coords + 4 clues + source link; NEVER the place name or region tags"* (five clues in the evolved ladder). The generator emits the full record; assembly strips it. This keeps validation (which needs the name for the leak scan) and publication (which must never leak it) from sharing a format.
 - `schema` version string: so the validator can refuse records written against a different prompt version.
 
 ---
@@ -262,4 +264,4 @@ Place: Paris. *Every line below is illustrative; a real set would carry verbatim
 | 9 | Assembly strips identity | Stands as drafted |
 | 10 | Narrowing test extended to tiers 2/4/5 | Stands as drafted |
 
-**Explicit non-goals (per synthesis):** guess mechanic, day scheme, share grammar, and mode code are specified elsewhere — this prompt covers clue content only.
+**Explicit non-goals (per synthesis):** guess mechanic, dealing scheme, share grammar, and mode code are specified elsewhere — this prompt covers clue content only.

@@ -151,6 +151,6 @@ Live check: fetch `https://meridian.knowledgetest.workers.dev/sw.js` and read th
 - Repo `AGENTS.md` (gates, stage-named-files), workspace `~/AGENTS.md` (standing rules: download audits, SkillSpector, push-early, stop-means-stop).
 - `docs/feature-flags.md` — one-purpose rule (Veeresh 2026-10-03), adopter pattern, catalog, boot-time semantics.
 - `docs/observability.md` — breadcrumb/next-boot crash detection, event types, privacy, endpoint config.
-- `docs/scout-offer-policy.md` — Scout offer rules.
+- `docs/scout-offer-policy.md` — Scout Map switching rules (the file keeps its offer-era name for link stability; the offer itself is gone, and its record is preserved inside, marked superseded).
 - `docs/learning-outcomes.md` — learning-outcome instrumentation design (LIVE flag `learningOutcomes` — code default off, shipped on since PR #45).
 - Memory record: dual hosting, Workers deploy method, crash pipeline verification, COPPA-safe analytics, branch-protection state + merge traps (#148/#155/#157), PR #34 rule, pre-existing issues (#418 2026-10-16, tapstart ×7, stale node_modules), secrets follow-ups, review lessons (byte-level escapes, branch docs are claims).

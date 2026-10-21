@@ -47,6 +47,22 @@ Two build-time gates guard place integrity:
 - **The Hyderabad rule** (Veeresh's permanent hard gate, merged via PR #15): every place's coordinates must match its claimed location. A one-time audit of the 433-place catalog found zero mismatches; `src/game/validate-places.ts` + its test lock them in at build time.
 - **`validateGeneratedPlace`** on the dataset import path — generated places get the same treatment.
 
+### The fact ladder: which fact leads the card, and how deep it goes
+
+The hooks above are the raw material. The **fact ladder** decides which fact actually opens a card. A place can carry up to four ranked facts — its rungs, shallowest to deepest:
+
+1. **hook** — the place's own curated hook sentence (§3 above).
+2. **wikitext** — a verbatim sentence from the place's Wikipedia article.
+3. **eb1911** — a verbatim sentence from the 1911 Encyclopaedia Britannica (via Wikisource).
+4. **wikidata** — a sentence composed from referenced Wikidata statements.
+
+The ladder is built ahead of time by `scripts/facts-ladder.mjs` into per-region files (`src/game/data/geonames/facts/`) and laid over the catalog when the game loads. Two rules make it work:
+
+- **A ladder fact outranks the history hook.** When a place has a ladder fact, that fact leads the card (principle 1: history first); the chunk's `history` sentence is the fallback, and the plain geography blurb is the last resort. Nothing is ever invented to fill a gap — a missing fact stays missing.
+- **Each age band has a ceiling.** The card shows the deepest rung the band may see, and never deeper: ages 5-7 stop at **hook**, 8-10 at **wikitext**, 11-13 may reach **wikidata** (`mapStory` in `src/game/age-profile/rungs.ts` walks down from the ceiling). Younger kids get the friendliest fact; older kids get the deeper sources.
+
+GeoDetective clues are written under the same discipline — every tier traces to a supplied source extract, and a tier that can't be sourced honestly rejects the whole set (§4).
+
 ---
 
 ## 4. GeoDetective clue production: the 387
