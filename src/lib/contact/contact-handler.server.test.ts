@@ -424,12 +424,35 @@ test("honeypot: a bot drop stays silent (200) even with no Origin or a refused O
   }
 });
 
-test("honeypot on the refused-origin path is still size-capped", async () => {
+test("honeypot on the refused-origin path is still size-capped: an over-cap body with the honeypot filled gets 403, not the silent 200", async () => {
+  const big = JSON.stringify({ topic: "bug", message: "x".repeat(MAX_BODY_BYTES + 100), website: "spam" });
+  const viaHeader = await handleRequest(post(big, { origin: "https://evil.example", "cf-connecting-ip": "203.0.113.23" }), {});
+  assert.equal(viaHeader.status, 403);
+  // Chunked: no content-length, so only the streaming cap can stop it.
+  const chunked = new Request("https://meridian.test/api/contact", {
+    method: "POST",
+    headers: { origin: "https://evil.example", "cf-connecting-ip": "203.0.113.24" },
+    body: new ReadableStream({
+      start(c) {
+        c.enqueue(new TextEncoder().encode(big));
+        c.close();
+      },
+    }),
+    duplex: "half",
+  } as RequestInit);
+  assert.equal((await handleRequest(chunked, {})).status, 403);
+});
+
+test("honeypot: a whitespace-only value is not a honeypot (refused-origin path stays 403)", async () => {
   const res = await handleRequest(
-    post("x".repeat(MAX_BODY_BYTES + 1), { origin: "https://evil.example", "cf-connecting-ip": "203.0.113.23" }),
+    post({ topic: "bug", message: "x", website: "   " }, { origin: "https://evil.example", "cf-connecting-ip": "203.0.113.25" }),
     {},
   );
   assert.equal(res.status, 403);
+});
+
+test("the production origin constant is the live worker's hostname", () => {
+  assert.equal(PRODUCTION_ORIGIN, "https://meridian.knowledgetest.workers.dev");
 });
 
 test("GET /api/contact reports which sink is selected — name only, no secret, no CORS grant, not cached", async () => {
@@ -438,6 +461,10 @@ test("GET /api/contact reports which sink is selected — name only, no secret, 
   assert.deepEqual(await parked.json(), { sink: "noop" });
   assert.equal(parked.headers.get("cache-control"), "no-store");
   assert.equal(parked.headers.get("access-control-allow-origin"), null);
+  // Even from a foreign page, the readiness answer carries no CORS grant, so no other site can read it.
+  const foreign = await handleRequest(new Request("https://meridian.test/api/contact", { headers: { origin: "https://evil.example" } }), {});
+  assert.equal(foreign.status, 200);
+  assert.equal(foreign.headers.get("access-control-allow-origin"), null);
   const wired = await handleRequest(new Request("https://meridian.test/api/contact"), { CONTACT_DISCORD_WEBHOOK_URL: WEBHOOK });
   const text = await wired.text();
   assert.deepEqual(JSON.parse(text), { sink: "discord" });

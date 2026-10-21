@@ -43,15 +43,29 @@ gate, `ContactSink`, game code, dependencies.
 
 ## Done
 
-- [x] Unit tests: `src/lib/contact/*.test.ts` 54/54; rate-limiter tests still 11/11
-- [x] Discrimination: against the parked #207 handler the new tests fail where
-      they should (5 of the handler tests: worker-env secret, worker-env
-      origins, production origin, honeypot-before-origin, GET readiness; the
-      readiness file fails on the missing `contactReadinessFromUrl` export).
-      The remaining new handler tests are guards that also pass on parked.
-- [x] `scripts/contact-smoke.test.mjs` 5/5 (parked, rejected-webhook and
-      look-alike runs FAIL; wired run passes and Discord receives no honeypot)
-- [x] `scripts/entry-fingerprint-probe.test.mjs` 5/5
+- [x] Unit tests: `src/lib/contact/*.test.ts` 60/60; rate-limiter tests unchanged (11/11)
+- [x] Discrimination vs the parked #207 handler: five new handler tests fail
+      there (worker-env secret, worker-env origins, production origin,
+      honeypot-before-origin, GET readiness). Caveat: the old handler lacks the
+      `PRODUCTION_ORIGIN` export, so the check needs a one-line shim; without
+      it the whole test file fails at import.
+- [x] Smoke (`scripts/contact-smoke.test.mjs`, 9 tests): every check is shown
+      to fail when its one behaviour is broken (no-Origin, foreign Origin,
+      over-size, three honeypot variants, 429 absent / edge 429 / no
+      Retry-After, recovery); a parked or look-alike run stops before any POST.
+- [x] Probe (`scripts/entry-fingerprint-probe.test.mjs`, 12 tests): verdict
+      keys on the worker-produced `/api/contact`; mixed pages, 404/5xx, failed
+      requests, SPA-fallback HTML and a broken control are never green.
+- [x] `scripts/contact-readiness.test.mjs`: unknown or mistyped arguments exit 2
+- [x] Independent reviews, round 1 (fresh agents given only the diff):
+      Security & Privacy: no BLOCK, no secret exposure; fixed the smoke
+      guard (`--yes-send-real-messages`, abort before POST), readiness output
+      sanitising, probe header allowlist, honeypot log flood, Origin wording.
+      Reality Checker: NEEDS WORK; fixed `--url=` falling through to the shell
+      check, probe verdict ignoring `/api/contact`, "will be delivered"
+      overclaim, vacuous size-cap test, always-pass smoke checks, doc claims.
+      Open owner decision from review: adopt the binding rate limiter BEFORE
+      the secret is set (`docs/contact-activation.md`, "What the secret exposes").
 - [x] Docs: runbook, config record, remediation-record note
 
 ## Pending
@@ -61,5 +75,5 @@ gate, `ContactSink`, game code, dependencies.
       If the Nitro entry serves: escalate to the owner as its own item first.
 - [ ] Open the wiring PR against `main`; full 12-role review; owner's per-PR merge word.
 - [ ] Owner configuration (runbook step 3), then smoke (step 4), then the flip (step 5).
-- [ ] Gates not yet run on this branch: `npm test` (both suites), lint-cards,
-      `build:pages`, relevant E2E. See the status below once run.
+- [ ] Round 2 of the independent reviews on the final diff, after #207 merges and
+      this is rebased/opened against `main`.

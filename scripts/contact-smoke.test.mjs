@@ -103,3 +103,65 @@ test("--recovery: after Retry-After the next post is accepted again", async () =
     w.restore();
   }
 });
+
+// --- Every check must be able to fail -------------------------------------
+// Each case wraps a really wired worker and breaks ONE behaviour; the smoke
+// must name exactly that check as failed.
+
+import { exitCodeFor } from "./contact-smoke.mjs";
+
+async function tampered(rewrite, { recovery = false } = {}) {
+  resetContactStateForTests();
+  const w = workerWith({ CONTACT_DISCORD_WEBHOOK_URL: WEBHOOK });
+  const wrapped = async (input, init) => {
+    const res = await w.fetchFn(input, init);
+    const body = typeof init?.body === "string" && init.body.startsWith("{") ? JSON.parse(init.body) : null;
+    const hasOrigin = Boolean(init?.headers?.origin);
+    return (await rewrite({ res, input, init, body, hasOrigin })) || res;
+  };
+  try {
+    return await runSmoke({ origin: ORIGIN, fetchFn: wrapped, sleep: async () => {}, recovery, runId: "tm" });
+  } finally {
+    w.restore();
+  }
+}
+const json = (status, obj, headers = {}) => new Response(JSON.stringify(obj), { status, headers: { "content-type": "application/json", ...headers } });
+
+test("each check fails when its one behaviour breaks", async () => {
+  const cases = [
+    ["refusal: a real message with no Origin → 403", ({ init, hasOrigin, body }) => init?.method === "POST" && !hasOrigin && body && !body.website && body.message.includes("no-origin") && json(200, { ok: true, stored: true })],
+    ["refusal: a real message from a foreign Origin → 403", ({ init, body }) => init?.headers?.origin === "https://evil.example" && body && !body.website && json(200, { ok: true, stored: true })],
+    ["refusal: an over-size body → 413", ({ init }) => typeof init?.body === "string" && init.body.length === 5000 && json(200, { ok: true })],
+    ["honeypot (same-origin): silent 200, nothing delivered", ({ body, hasOrigin, init }) => body?.website && init?.headers?.origin === ORIGIN && json(200, { ok: true, stored: true })],
+    ["honeypot (no Origin): silent 200, nothing delivered", ({ body, hasOrigin }) => body?.website && !hasOrigin && json(403, { error: "origin required" })],
+    ["honeypot (foreign Origin): silent 200, nothing delivered", ({ body, init }) => body?.website && init?.headers?.origin === "https://evil.example" && json(200, { ok: true, stored: true })],
+    ["rate limit: the handler trips with 429 and a Retry-After", ({ res }) => res.status === 429 && json(200, { ok: true, stored: true })],
+    ["rate limit: the handler trips with 429 and a Retry-After", ({ res }) => res.status === 429 && json(429, { error: "edge" }, { "retry-after": "30" })],
+    ["rate limit: the handler trips with 429 and a Retry-After", ({ res }) => res.status === 429 && json(429, { error: "too many messages" })],
+  ];
+  for (const [name, rewrite] of cases) {
+    const r = await tampered(rewrite);
+    assert.ok(failed(r).includes(name), `${name} did not fail; failed: ${failed(r).join(" | ")}`);
+    assert.equal(exitCodeFor(r.results), 1);
+  }
+});
+
+test("recovery check fails when the limiter never recovers", async () => {
+  let blocked = false;
+  const r = await tampered(({ res, body }) => {
+    if (res.status === 429) blocked = true;
+    return blocked && body?.message?.includes("recovery") && json(429, { error: "too many messages" }, { "retry-after": "5" });
+  }, { recovery: true });
+  assert.ok(failed(r).includes("rate limit: recovers after Retry-After"), failed(r).join("|"));
+});
+
+test("exitCodeFor: 0 only for a non-empty all-pass list", () => {
+  assert.equal(exitCodeFor([]), 1);
+  assert.equal(exitCodeFor([{ ok: true }, { ok: false }]), 1);
+  assert.equal(exitCodeFor([{ ok: true }]), 0);
+});
+
+test("a honeypot post that Discord actually received is not counted as delivered", async () => {
+  const r = await smoke({ CONTACT_DISCORD_WEBHOOK_URL: WEBHOOK });
+  assert.equal(r.delivered, r.discordPosts.length);
+});

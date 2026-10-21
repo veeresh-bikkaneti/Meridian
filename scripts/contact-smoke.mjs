@@ -127,7 +127,11 @@ export async function runSmoke({ origin, fetchFn = fetch, sleep = (ms) => new Pr
     else if (res.status === 200 && (await asJson(res))?.stored === true) delivered++;
   }
   const retryAfter = Number(limited?.headers.get("retry-after"));
-  check("rate limit: trips with 429 and a Retry-After", limited !== null && Number.isFinite(retryAfter) && retryAfter > 0, limited ? `retry-after ${limited.headers.get("retry-after")}s` : `no 429 within ${MAX_ATTEMPTS} extra posts`);
+  // The handler's own 429 says "too many messages"; a Cloudflare edge/WAF 429
+  // would not, and must not count as the app's limiter.
+  const limitedBody = limited ? await asJson(limited) : null;
+  const fromHandler = typeof limitedBody?.error === "string" && /too many/i.test(limitedBody.error);
+  check("rate limit: the handler trips with 429 and a Retry-After", limited !== null && fromHandler && Number.isFinite(retryAfter) && retryAfter > 0, limited ? `retry-after ${limited.headers.get("retry-after")}s, body ${JSON.stringify(limitedBody)}` : `no 429 within ${MAX_ATTEMPTS} extra posts`);
   if (recovery && limited && Number.isFinite(retryAfter)) {
     await sleep((retryAfter + 1) * 1000);
     const res = await post({ topic: "other", message: msg(" recovery") });
@@ -137,6 +141,11 @@ export async function runSmoke({ origin, fetchFn = fetch, sleep = (ms) => new Pr
   }
 
   return { results, delivered, runId };
+}
+
+/** 0 only when there is at least one check and every check passed. */
+export function exitCodeFor(results) {
+  return results.length > 0 && results.every((r) => r.ok) ? 0 : 1;
 }
 
 async function main() {
@@ -164,7 +173,7 @@ async function main() {
   console.log("  - the reply-to line shows smoke-" + runId + "@example.com on the 'with reply-to' message");
   console.log("  - NO message contains the word 'honeypot' (those must never arrive)");
   console.log("Then delete the [smoke] messages. Any FAIL above means go back to the wiring/config step, never forward.");
-  process.exit(failed === 0 ? 0 : 1);
+  process.exit(exitCodeFor(results));
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

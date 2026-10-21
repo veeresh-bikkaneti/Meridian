@@ -11,8 +11,8 @@ ship the scaffolding first, deliver nothing until the chain below is proven.
 
 | Piece | State |
 | --- | --- |
-| `/contact` page behind the grown-up gate | merged with #207 |
-| `POST /api/contact` handler (validation, 4 KB cap, honeypot, rate limit) | merged with #207 |
+| `/contact` page behind the grown-up gate | added by #207 (open, not merged, as of 2026-10-21) |
+| `POST /api/contact` handler (validation, 4 KB cap, honeypot, rate limit) | added by #207 (same) |
 | Delivery sink | `NoopSink` until the worker has the secret. Accepts and discards. |
 | `flags.json` `contactEndpoint` | absent. The form is OFF. |
 | `/privacy` and the remediation record | say "parked", truthfully |
@@ -45,11 +45,15 @@ the probe independently.
 
 What changed, and why:
 
-- **Config is read from the worker's own env**, not `process.env`
+- **Config is read from the worker's own env** first, not only `process.env`
   (`src/lib/contact/runtime-env.server.ts`). `process.env` only carries
   secrets under `nodejs_compat`, a flag the repo cannot see or guarantee. The
   webhook, the origin list and the rate-limit bindings now go through one
-  reader. `process.env` stays as a fallback (local runs, tests, preview); once
+  reader. *Expected to work, not yet proven on production:* only the
+  `globalThis.__env__` source is unit-tested; the `cloudflare:workers` source
+  cannot run on Node. Probe A1 and the step 4 smoke are what prove it. If both
+  sources fail, the sink stays noop, which fails safe and shows in the
+  readiness check. `process.env` stays as a fallback (local runs, tests, preview); once
   step 1 shows which entry serves, it can be dropped on the worker.
 - **Origin gate.** The live origin (`https://meridian.knowledgetest.workers.dev`)
   is on the default allowlist next to the GitHub Pages mirror, so the site's
@@ -107,7 +111,7 @@ existence only.
    (type: Secret). Deploy when prompted.
    *Readback:* the secret name is listed (value hidden). Then
    `npm run check:contact -- --url https://meridian.knowledgetest.workers.dev`
-   must print `configured — sink is discord`.
+   must print `sink selected: discord`. That proves a Discord-shaped webhook is set, not that Discord accepts it; step 4 proves that.
 3. *Recommended — and best done BEFORE item 2 (see "What the secret exposes").* Adopt the binding-layer rate limiter: copy the two
    `[[ratelimits]]` blocks from `config/cloudflare/meridian.wrangler.toml`
    into the worker's wrangler config (Wrangler 4.36 or later; bindings cannot
@@ -159,8 +163,10 @@ the allowlist). `src/lib/flags.ts` accepts an absolute `https:` URL or a
 root-relative path and rejects anything else, so a bad edit fails closed to
 "form off".
 
-**Rollback:** delete that one line and deploy. `flags.json` is served
-`no-cache`, so clients pick the change up on their next load. Do not delete
+**Rollback:** delete that one line and deploy. On the worker `flags.json` is
+served `no-cache`, so clients pick the change up on their next load. The
+GitHub Pages mirror ignores `_headers` and uses GitHub's own caching, so it can
+lag by minutes. Do not delete
 the secret as a rollback; remove the flag first.
 
 In the **same change**, update the public wording from "parked" to live:

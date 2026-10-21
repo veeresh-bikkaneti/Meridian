@@ -16,19 +16,21 @@
  * entry in dist/server. `src/start.ts` adds the shared security headers to
  * worker-rendered responses, so:
  *
- *   - a worker-rendered page (/privacy, /) that carries EVERY header in
- *     src/lib/security-headers.ts proves the start.ts middleware runs;
- *   - a static file (/flags.json) carries them from public/_headers either
- *     way, so it is the control: it shows `_headers` works while the
- *     rendered page shows whether the middleware does.
- *   - static has them but rendered pages do not → start.ts is not in the
+ *   - /api/contact is the one response only Worker code can produce (the
+ *     handler always answers JSON), so it is the primary evidence: if it
+ *     carries EVERY header in src/lib/security-headers.ts, the start.ts
+ *     middleware runs. A page like /privacy could be answered by the assets
+ *     layer or an SPA fallback (which get headers from public/_headers), so
+ *     pages alone never prove it; they are checked too, because those are
+ *     what kids load.
+ *   - a static file (/flags.json) is the control: it carries the headers
+ *     from public/_headers either way.
+ *   - static has them but /api/contact does not → start.ts is not in the
  *     serving path. That is an ESCALATION, not a note: the CSP, HSTS and
- *     friends are not applying to the pages kids load. It goes to the owner
+ *     friends are not applying to worker responses. It goes to the owner
  *     as its own item before any contact wiring (docs/contact-activation.md).
- *
- * /api/contact while unconfigured is the second fingerprint: any handler
- * answer (200/405) means the route is mounted; a bare 404 means it is not
- * (the live build predates #207, or a different entry is serving).
+ *   - a bare 404 or HTML on /api/contact → INCONCLUSIVE (the route is not
+ *     mounted, e.g. the live build predates #207).
  *
  * Exit 0 = rendered pages carry every header (start.ts live). Exit 1 = they
  * do not, or the probe could not tell — never a default green.
@@ -78,38 +80,73 @@ export async function probeEntry({ origin, fetchFn = fetch }) {
   return { base, rows, ...judge(rows) };
 }
 
-const hasAll = (r) => r.error === null && r.status !== null && r.status < 500 && r.missing.length === 0 && r.wrong.length === 0;
+const healthy = (r) => r.error === null && r.status !== null && r.status < 400;
+const hasAll = (r) => healthy(r) && r.missing.length === 0 && r.wrong.length === 0;
 
-/** Turn raw rows into the A1 answer. Pure, so it is unit-tested. */
+/**
+ * `/api/contact` is the one response only Worker code can produce: the
+ * handler always answers JSON (200 readiness, 405 on the pre-activation
+ * build). A bare 404 or an HTML page there means the route is not mounted or
+ * a static/SPA fallback answered, so it proves nothing about the server entry.
+ */
+const isWorkerProduced = (r) =>
+  r.error === null && r.status !== null && r.status !== 404 && r.status < 500 && /^application\/json/i.test(r.headers["content-type"] ?? "");
+
+/**
+ * Turn raw rows into the A1 answer. Pure, so it is unit-tested.
+ *
+ * Verdicts (escalate = the owner must hear about it as its own item):
+ *   - any request failed or answered 4xx/5xx on a page, or the control is
+ *     unhealthy                          → INCONCLUSIVE
+ *   - /api/contact not worker-produced  → INCONCLUSIVE (cannot tell the entry)
+ *   - api + both pages carry every header → LIVE
+ *   - api carries them, a page does not → ESCALATE (middleware runs for the
+ *                                         API but not for the HTML kids load)
+ *   - api lacks them, control has them  → ESCALATE (start.ts is not in the
+ *                                         serving path)
+ *   - nothing carries them              → INCONCLUSIVE (the control is broken)
+ */
 export function judge(rows) {
-  const rendered = rows.filter((r) => r.kind === "rendered" && r.path !== "/api/contact");
+  const pages = rows.filter((r) => r.kind === "rendered" && r.path !== "/api/contact");
   const control = rows.find((r) => r.kind === "static");
   const api = rows.find((r) => r.path === "/api/contact");
-  const unreachable = rows.some((r) => r.error !== null);
-  const staticOk = control ? hasAll(control) : false;
-  const renderedOk = rendered.length > 0 && rendered.every(hasAll);
-  const apiMounted = api ? api.status !== null && api.status !== 404 : false;
-
+  const apiMounted = Boolean(api) && isWorkerProduced(api);
+  const staticOk = Boolean(control) && hasAll(control);
+  // The API may legitimately answer 405 (pre-activation handler); only its headers matter.
+  const apiOk = apiMounted && api.missing.length === 0 && api.wrong.length === 0;
+  const pagesOk = pages.length > 0 && pages.every(hasAll);
+  const unhealthy = rows.some((r) => r.error !== null) || pages.some((r) => !healthy(r)) || !control || !healthy(control) || !api || api.error !== null;
+  // LIVE only on a clean read: a failed control or page means the run proves nothing.
+  const renderedOk = !unhealthy && apiOk && pagesOk;
   let verdict;
   let escalate = false;
-  if (unreachable) {
-    verdict = "INCONCLUSIVE — at least one request failed; fix connectivity and re-run";
-    escalate = false;
+  if (unhealthy) {
+    verdict = "INCONCLUSIVE — a request failed or a page/control answered an error; fix that and re-run";
+  } else if (!apiMounted) {
+    verdict = "INCONCLUSIVE — /api/contact did not answer like the contact handler (404 or not JSON), so no response is known to come from Worker code; the live build may predate #207";
   } else if (renderedOk) {
-    verdict = "start.ts middleware IS live: worker-rendered pages carry every security header";
+    verdict = "start.ts middleware IS live: the worker-produced /api/contact and the rendered pages all carry every security header";
+  } else if (apiOk) {
+    verdict = "ESCALATE — the worker-produced /api/contact carries the security headers but a rendered HTML page does NOT: the pages kids load are not passing through src/start.ts.";
+    escalate = true;
   } else if (staticOk) {
-    verdict = "ESCALATE — static files carry the headers (from _headers) but worker-rendered pages do NOT: src/start.ts is not in the serving path (the Nitro entry is serving). The security headers are not applying to the HTML kids load.";
+    verdict = "ESCALATE — static files carry the headers (from _headers) but the worker-produced /api/contact does NOT: src/start.ts is not in the serving path (the Nitro entry is serving). The security headers are not applying to worker responses.";
     escalate = true;
   } else {
-    verdict = "INCONCLUSIVE — even the static control lacks the headers; the control is broken, so the rendered result proves nothing";
+    verdict = "INCONCLUSIVE — even the static control lacks the headers; the control is broken, so the result proves nothing";
   }
   return { verdict, escalate, renderedOk, staticOk, apiMounted };
+}
+
+/** CLI exit code: 0 only for the LIVE verdict. Anything else, including inconclusive, is 1. */
+export function exitCodeFor(result) {
+  return result.renderedOk ? 0 : 1;
 }
 
 /** Raw evidence as a Markdown block, for the config record and BRANCH_STATUS.md. */
 export function renderReport(result) {
   const out = [`Probe A1 against ${result.base} — ${new Date().toISOString()}`, "", `**Verdict:** ${result.verdict}`, ""];
-  out.push(`- /api/contact mounted (any non-404 answer): ${result.apiMounted ? "yes" : "NO"}`, "");
+  out.push(`- /api/contact answered like the contact handler (JSON, not 404): ${result.apiMounted ? "yes" : "NO"}`, "");
   for (const r of result.rows) {
     out.push(`### GET ${r.path}  (${r.kind}${r.note ? `, ${r.note}` : ""})`);
     if (r.error) {
@@ -135,7 +172,7 @@ async function main() {
   }
   const result = await probeEntry({ origin: url });
   console.log(renderReport(result));
-  process.exit(result.renderedOk ? 0 : 1);
+  process.exit(exitCodeFor(result));
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

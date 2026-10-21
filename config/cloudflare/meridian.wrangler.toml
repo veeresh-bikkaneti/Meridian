@@ -27,7 +27,8 @@
 
 name = "meridian"
 
-# nodejs_compat is no longer needed for contact config: the handler reads the
+# nodejs_compat is EXPECTED to be unnecessary for contact config (pending probe
+# A1 and the activation smoke): the handler reads the
 # worker's own env first (src/lib/contact/runtime-env.server.ts) and uses
 # process.env only as a fallback. Whether the fallback can be dropped depends
 # on probe A1 (docs/contact-activation.md, step 1).

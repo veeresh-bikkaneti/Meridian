@@ -110,3 +110,10 @@ test("--url: prints only the bare origin (no credentials/path) and never follows
   const bad = await contactReadinessFromUrl("not a url", spy);
   assert.match(bad.line, /NOT confirmed/);
 });
+
+test("--url: a non-OK status is NOT confirmed even when the body says discord", async () => {
+  const lying = (async () => new Response('{"sink":"discord"}', { status: 404 })) as typeof fetch;
+  const r = await contactReadinessFromUrl("https://meridian.test", lying);
+  assert.equal(r.configured, false);
+  assert.match(r.line, /HTTP 404/);
+});

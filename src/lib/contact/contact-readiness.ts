@@ -40,7 +40,7 @@ export function describeSink(sinkName: string, where: string): ContactReadiness 
     return {
       configured: true,
       sink: sinkName,
-      line: `contact delivery (${where}): configured — sink is discord; messages will be delivered`,
+      line: `contact delivery (${where}): sink selected: discord (a Discord-shaped webhook is set; only scripts/contact-smoke.mjs proves Discord accepts it)`,
     };
   }
   return {
