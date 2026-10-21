@@ -39,8 +39,7 @@ who decided something has to be checkable.
    applies to the app (`coarseDeviceFacts`) and the inline boot watchdog.
    Crash triage only ever used the os/form buckets, and the extra numbers
    were fingerprint entropy.
-3. **No email address on the privacy page.** *Team rationale (no owner
-   words on record):* a published address on a child-directed site
+3. **No email address on the privacy page.** *Owner decision — Veeresh (2026-10-21): "i think we need to add a contact us page rather emails."* A published address on a child-directed site
    invites spam and mail from children, and there is no inbox staffed to
    receive it. Grown-ups use a **Contact us** page (`/contact`) that
    sits behind the existing grown-up math gate.
@@ -198,7 +197,7 @@ and `/`.
   Moscow), need curation or fact-ladder hooks to join it.
 - The full COPPA notice requirements (operator name and postal contact)
   need the owner's decision on what to publish, given the no-email
-  choice (team rationale — see decision 3).
+  ruling (owner decision — see decision 3, where his words are quoted).
 - E2E coverage for `/privacy`, `/contact`, Begin exploring, and the tour
   re-entry (unit-covered here; Playwright specs were not added).
 - CI (`.github/workflows/node.js.yml`) runs only on Node 22.x: app
@@ -207,7 +206,9 @@ and `/`.
   including `grownups-privacy-contact.desktop.spec.ts`. Run e2e locally
   after `npm run build:pages`.
 
-## Addendum: footer kids-privacy note (added in this PR's review round, 2026-10-21)
+## Addendum: footer kids-privacy note (owner request, 2026-10-21)
+
+Owner's words (Veeresh, 2026-10-21): "can you add a note to home footer or somewhere that meridian is COPPA compliant etc.," — implemented as the factual wording below, not a compliance claim.
 
 The home footer now carries a one-line promise linking to `/privacy`:
 "Made for kids: no accounts, no ads, no tracking cookies, and no personal
