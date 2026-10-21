@@ -36,7 +36,7 @@ There is no monetization target. No paywall will ever exist in Meridian. The sta
 > **"Grown-ups — buy me a coffee? ☕"**
 > **"Your support keeps Meridian free for kids"**
 
-The "Grown-ups" gate exists because the product must stay COPPA-safe: the donation path is for adults, never for kids. Analytics follow the same rule: since 2026-10-21 (owner decision, COPPA first) Google Analytics and Microsoft Clarity are removed entirely, and the only usage measurement is optional, cookieless Cloudflare Web Analytics (aggregate counts, no identifiers) — see `docs/reviews/2026-10-21-p0-p2-remediation.md`.
+The "Grown-ups" gate exists because the product must stay COPPA-safe: the donation path is for adults, never for kids. Analytics follow the same rule: since 2026-10-21 Google Analytics and Microsoft Clarity are removed entirely — owner decision, cited: "I deleted clarity and ga4 from cloudflare account" (2026-10-21), when the owner deleted both IDs from the `meridian` worker's Workers Builds variables and ordered the repo's GitHub Actions secrets deleted (done and verified the same day) — and the only usage measurement is optional, cookieless Cloudflare Web Analytics (aggregate counts, no identifiers) — see `docs/reviews/2026-10-21-p0-p2-remediation.md`.
 
 ## Learning-outcomes instrumentation
 

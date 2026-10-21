@@ -101,7 +101,8 @@ export type ScreenBucket = "sm" | "md" | "lg" | "xl";
 /**
  * Bucket a screen by its SHORT side. Exact width × height (together with
  * DPR and OS) narrows a device down far more than crash triage needs —
- * kids' privacy wins (owner decision 2026-10-21).
+ * kids' privacy wins (crash-telemetry coarsening — a code change in
+ * this PR, not an owner decision; see remediation doc decision 2).
  */
 export function screenBucket(w: unknown, h: unknown): ScreenBucket | undefined {
   if (typeof w !== "number" || typeof h !== "number" || !(w > 0) || !(h > 0)) return undefined;

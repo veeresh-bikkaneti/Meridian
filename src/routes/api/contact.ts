@@ -3,7 +3,7 @@ import { handleContactRequest, readContactRuntimeEnv } from "@/lib/contact/conta
 
 /**
  * POST /api/contact — server-only route on the main `meridian` worker
- * (owner decision 2026-10-21: no separate contact worker).
+ * (team rationale, no owner words on record: no separate contact worker).
  *
  * All logic lives in src/lib/contact/contact-handler.server.ts; this file
  * only mounts it. Separation from crash reporting is by construction: the

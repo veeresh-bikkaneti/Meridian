@@ -1,7 +1,11 @@
 /**
  * Site analytics policy — Cloudflare Web Analytics only, optional, cookieless.
  *
- * WHY (owner decision 2026-10-21, COPPA first): Meridian is directed to
+ * WHY (owner decision, cited: "I deleted clarity and ga4 from
+ * cloudflare account", 2026-10-21 — that day both IDs were deleted
+ * from the `meridian` worker's Workers Builds variables and the
+ * repo's GitHub Actions secrets were deleted on the owner's order,
+ * done and verified the same day): Meridian is directed to
  * children, so every visitor is treated as a child. Google Analytics
  * (gtag) and Microsoft Clarity were removed outright — not consent-gated —
  * because both set cookies / persistent identifiers and Clarity records
