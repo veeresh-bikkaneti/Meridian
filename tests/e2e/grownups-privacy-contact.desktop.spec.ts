@@ -20,6 +20,12 @@ test.beforeEach(async ({ context }) => {
 test("footer links reach the privacy notice and the tour stays reachable", async ({ page }) => {
   await page.goto(APP_NO_IDLE);
   await expect(page.getByTestId("take-tour-link")).toBeVisible();
+  // Footer kids-privacy promise: factual claims only, never a "COPPA
+  // compliant" badge (see the comment in game-app.tsx).
+  const note = page.getByTestId("kids-privacy-note");
+  await expect(note).toBeVisible();
+  await expect(note).toContainText(/no tracking cookies/i);
+  await expect(note).not.toContainText(/compliant/i);
   await page.getByTestId("privacy-link").click();
   await expect(page).toHaveURL(/\/privacy$/);
   // The COPPA posture is the headline claim; lock the wording a parent reads.

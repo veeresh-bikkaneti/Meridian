@@ -3097,6 +3097,20 @@ function Choose({
         <Link to="/contact" className="agep-footer-link" data-testid="contact-link">
           Contact us (grown-ups)
         </Link>
+        {/* Kids-privacy promise (owner 2026-10-21). Deliberately FACTUAL
+            statements, not a "COPPA compliant" badge: compliance is a legal
+            determination nobody has certified, and an unqualified claim on a
+            child-directed site is itself an FTC exposure. Every statement here
+            must stay true — if analytics, ads, or accounts are ever added,
+            update this line and /privacy in the same PR. Links to /privacy
+            for the full detail. */}
+        <p className="agep-footer-note" data-testid="kids-privacy-note">
+          Made for kids: no accounts, no ads, no tracking cookies, and no
+          personal information collected.{" "}
+          <Link to="/privacy" data-testid="kids-privacy-note-link">
+            How we protect privacy
+          </Link>
+        </p>
       </footer>
     </main>
     {/* Kid-set read-aloud preference (age-profile B3): asked once, never

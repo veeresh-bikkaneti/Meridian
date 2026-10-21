@@ -153,3 +153,21 @@ Merge plan for whichever PR lands second:
 - Rate limiting is in-memory per isolate (and per instance of the main
   worker). Use a Durable Object or
   Cloudflare rate-limiting binding if abuse appears.
+
+## Addendum: footer kids-privacy note (owner request, 2026-10-21)
+
+The home footer now carries a one-line promise linking to `/privacy`:
+"Made for kids: no accounts, no ads, no tracking cookies, and no personal
+information collected."
+
+It deliberately does **not** say "COPPA compliant". Compliance is a legal
+determination that no one (for example an FTC-approved Safe Harbor such as
+kidSAFE or PRIVO) has certified, and an unqualified claim on a child-directed
+site is itself a deceptive-practice risk. Factual statements are safe as long
+as they stay true, so:
+
+- If analytics, ads, accounts, or any data collection are ever added, update
+  this line and `/privacy` in the same PR.
+- `tests/e2e/grownups-privacy-contact.desktop.spec.ts` asserts the note is
+  visible, mentions tracking cookies, and never contains the word "compliant".
+- If the project later earns a Safe Harbor certification, the note can name it.
