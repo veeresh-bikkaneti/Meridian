@@ -17,8 +17,10 @@ decision:
 
 **Base:** `origin/main` @ `33a28fe` at branch creation; rebased onto
 `5948f8c` (PRs #198/#201), then **rebased onto `origin/main` @ `f9fa7e4`**
-(PR #204) on 2026-10-21 for the panel fix round — BRANCH_STATUS.md was
-the only conflict (resolved per branch convention); all code replayed
+(PR #204) on 2026-10-21 for the panel fix round, and **mechanically
+rebased onto `origin/main` @ `25b3b68`** (PR #205) on 2026-10-21 for
+the owner's review-and-merge pipeline — BRANCH_STATUS.md was the only
+conflict each time (resolved per branch convention); all code replayed
 clean. Full gate suite re-run on the final head (below).
 
 **Out of scope (do not start):** F3 analytics (owner decision pending),
@@ -111,6 +113,14 @@ QA nits disposition:
   hangs openRun/restore fail-closed but indefinitely.
 - FOLLOW-UP: GameApp monolith split ("Cut 2", ~55 KB brotli toward
   the ≤200 KB direction) — tracked as the spec's Phase 2 follow-up.
+
+Gates on the final head of this round (`c7d37a7`, pushed): tsc clean;
+`npm test` — src 1,399 pass / 0 fail, scripts 790 pass / 0 fail (one
+mid-round failure set, 3 tests, traced to the new arrival-focus effect
+under react-test-renderer and fixed with a typeof guard — see commit
+`c7d37a7`); lint-cards GATE PASSED; build:pages green; E2E (built
+artifact, flock, workers=1): hint-button 11, geodetective 18,
+geodetective-unlabeled-tap 2, geodetective-hint 5 — 36 passed, 0 failed.
 
 ## Measured results (built artifact, same method both sides)
 
