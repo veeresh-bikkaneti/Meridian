@@ -1,5 +1,6 @@
 import { describe, it, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import {
   FLAG_DEFAULTS,
   FLAGS_FETCH_TIMEOUT_MS,
@@ -7,6 +8,7 @@ import {
   getObservabilityEndpoint,
   isEnabled,
   isValidObservabilityEndpoint,
+  OBSERVABILITY_INGEST_HOSTS,
   loadFlags,
   resetFlags,
   type FlagName,
@@ -27,6 +29,8 @@ import {
  */
 
 type FakeJson = () => Promise<unknown>;
+
+const CRASH_INGEST = "https://meridian-crash-report.knowledgetest.workers.dev/ingest";
 
 function okResponse(payload: unknown): Response {
   const json: FakeJson = async () => {
@@ -428,10 +432,10 @@ describe("observabilityEndpoint", () => {
   it("defaults to null (transport disabled — shipped behavior)", async () => {
     assert.equal(getObservabilityEndpoint(), null);
   });
-  it("accepts https and root-relative endpoints", async () => {
-    const a = fakeFetch(okResponse({ flags: {}, observabilityEndpoint: "https://obs.example.com/ingest" }));
+  it("accepts the pinned crash-report host and root-relative endpoints", async () => {
+    const a = fakeFetch(okResponse({ flags: {}, observabilityEndpoint: CRASH_INGEST }));
     await loadFlags({ ...BASE, fetch: a.fn });
-    assert.equal(getObservabilityEndpoint(), "https://obs.example.com/ingest");
+    assert.equal(getObservabilityEndpoint(), CRASH_INGEST);
     resetFlags();
     const b = fakeFetch(okResponse({ flags: {}, observabilityEndpoint: "/api/observability" }));
     await loadFlags({ ...BASE, fetch: b.fn });
@@ -445,8 +449,30 @@ describe("observabilityEndpoint", () => {
       assert.equal(getObservabilityEndpoint(), null, `bad endpoint ${JSON.stringify(bad)} must be rejected`);
       assert.equal(isValidObservabilityEndpoint(bad), false);
     }
-    assert.equal(isValidObservabilityEndpoint("https://obs.example.com/ingest"), true);
+    assert.equal(isValidObservabilityEndpoint(CRASH_INGEST), true);
     assert.equal(isValidObservabilityEndpoint("/ingest"), true);
+  });
+  it("S3: rejects https endpoints off the ingest-host allowlist (fail closed to null)", async () => {
+    for (const bad of [
+      "https://obs.example.com/ingest",
+      "https://evil.example/ingest",
+      "https://meridian-crash-report.knowledgetest.workers.dev.evil.example/ingest",
+      "https://evil-meridian-crash-report.knowledgetest.workers.dev/ingest",
+      "http://meridian-crash-report.knowledgetest.workers.dev/ingest",
+    ]) {
+      resetFlags();
+      const f = fakeFetch(okResponse({ flags: {}, observabilityEndpoint: bad }));
+      await loadFlags({ ...BASE, fetch: f.fn });
+      assert.equal(getObservabilityEndpoint(), null, bad);
+      assert.equal(isValidObservabilityEndpoint(bad), false, bad);
+    }
+    assert.deepEqual([...OBSERVABILITY_INGEST_HOSTS], ["meridian-crash-report.knowledgetest.workers.dev"]);
+    // Case is normalized by the URL parser, so this is the same host.
+    assert.equal(isValidObservabilityEndpoint("https://Meridian-Crash-Report.knowledgetest.workers.dev/ingest"), true);
+  });
+  it("the shipped public/flags.json endpoint passes the pin", () => {
+    const shipped = JSON.parse(readFileSync(new URL("../../public/flags.json", import.meta.url), "utf8"));
+    assert.equal(isValidObservabilityEndpoint(shipped.observabilityEndpoint), true);
   });
 });
 

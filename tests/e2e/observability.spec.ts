@@ -16,7 +16,10 @@ import { serveBuiltArtifact } from "./helpers";
  */
 
 const APP_URL = "http://127.0.0.1:4123/Meridian/";
-const ENDPOINT = "https://obs.example.test/ingest";
+// The pinned crash-report host (review S3): flags.json endpoints off
+// OBSERVABILITY_INGEST_HOSTS are rejected. context.route() intercepts it,
+// so the test never touches the real worker.
+const ENDPOINT = "https://meridian-crash-report.knowledgetest.workers.dev/ingest";
 
 test.setTimeout(240_000);
 

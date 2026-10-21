@@ -93,19 +93,58 @@ export function resetFlags(): void {
 }
 
 /**
+ * Hosts allowed to receive crash/telemetry beacons (review S3, 2026-10-21).
+ *
+ * flags.json is remote config. Before this pin, any https URL in its
+ * `observabilityEndpoint` was accepted, so a bad or compromised flags
+ * deploy could quietly send children's crash reports to a third party.
+ * Now an absolute endpoint must be on this list, and the only entry is our
+ * own `meridian-crash-report` worker. The CSP `connect-src` in
+ * src/lib/security-headers.ts names the same host.
+ *
+ * Keep in sync with OBSERVABILITY_INGEST_HOSTS in scripts/crash-watchdog.mjs
+ * (the inline boot watchdog cannot import this module). Drift is caught by
+ * scripts/crash-watchdog.test.mjs.
+ */
+export const OBSERVABILITY_INGEST_HOSTS: readonly string[] = Object.freeze([
+  "meridian-crash-report.knowledgetest.workers.dev",
+]);
+
+/**
  * Validate an observability endpoint candidate: a string of at most 2048
  * chars that is either a root-relative path ("/…", never protocol-relative
- * "//…") or an absolute https: URL. Anything else is rejected so a bad
- * flags.json deploy fails closed to "no endpoint" (transport disabled).
+ * "//…") on the game's own origin, or an absolute https: URL whose host is
+ * in OBSERVABILITY_INGEST_HOSTS (an exact hostname match, so look-alike
+ * prefixes and suffixes fail).
+ * Anything else is rejected, so a bad flags.json deploy fails closed to
+ * "no endpoint" (transport disabled).
  */
 export function isValidObservabilityEndpoint(value: unknown): value is string {
+  if (!isValidEndpointShape(value)) return false;
+  const v = value.trim();
+  if (v.startsWith("/")) return true;
+  try {
+    const url = new URL(v);
+    return OBSERVABILITY_INGEST_HOSTS.includes(url.hostname);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Shape check shared by every flags.json endpoint: a string of at most
+ * 2048 chars with no whitespace or control chars that is either a
+ * root-relative single-slash path or an absolute https: URL. The contact
+ * endpoint uses only this. The observability endpoint adds the host pin
+ * above.
+ */
+export function isValidEndpointShape(value: unknown): value is string {
   if (typeof value !== "string") return false;
   const v = value.trim();
   if (!v || v.length > 2048 || /[\s\u0000-\u001f]/.test(v)) return false;
   if (v.startsWith("/")) return !v.startsWith("//");
   try {
-    const url = new URL(v);
-    return url.protocol === "https:";
+    return new URL(v).protocol === "https:";
   } catch {
     return false;
   }
@@ -191,7 +230,7 @@ function applyPayload(data: unknown): void {
     ? (endpointCandidate as string).trim()
     : null;
   const contactCandidate = (data as FlagsPayload).contactEndpoint;
-  contactEndpointValue = isValidObservabilityEndpoint(contactCandidate)
+  contactEndpointValue = isValidEndpointShape(contactCandidate)
     ? (contactCandidate as string).trim()
     : null;
   const flags = (data as FlagsPayload).flags;
