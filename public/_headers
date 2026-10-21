@@ -20,6 +20,86 @@
   Cross-Origin-Opener-Policy: same-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
+# Carve-outs (Core F-1): NOT every file under /assets/* is content-hashed.
+# Three files have stable names with mutable content and must never be
+# immutable:
+#   - /assets/maplibre-gl-worker.mjs and /assets/maplibre-gl-shared.mjs
+#     are emitted verbatim from node_modules/maplibre-gl/dist by the
+#     maplibre-worker-files plugin in vite.config.ts — a MapLibre
+#     upgrade replaces them under the SAME filenames.
+#   - /assets/storyteller/storyteller-assets.json is a build-generated
+#     manifest fetched at runtime by storyteller-home.tsx — its content
+#     changes whenever the storyteller asset set changes, same filename.
+#
+# How the rules combine — the semantics below are Cloudflare's documented
+# behaviour (developers.cloudflare.com/workers/static-assets/headers/),
+# confirmed against the production asset-worker's source
+# (cloudflare/workers-sdk, asset-worker/src/utils/headers.ts,
+# attachCustomHeaders) and live probes of the deployed site:
+#   - A request inherits the headers of EVERY rule whose pattern it
+#     matches. Matched rules are applied in file order, and within one
+#     rule all detachments run before all sets.
+#   - The FIRST Cache-Control set from this file REPLACES whatever the
+#     response already carries (including the platform default). A SECOND
+#     set of the same header from this file APPENDS instead — the values
+#     comma-join. There is no most-specific-wins, so ordering and
+#     detachment are the only tools; that is what the blocks below use.
+#   - A detach line (`! Cache-Control`) DELETES the response's current
+#     Cache-Control at the point its rule is applied. PR #203 used
+#     detach ALONE for the carved files, expecting the platform default
+#     to resume underneath — it does not: the default is part of the
+#     response being edited, so the detach removed it too, and the
+#     carved files shipped with NO Cache-Control at all (live-verified
+#     2026-10-21: ETag present, Cache-Control absent). Each carved block
+#     therefore pairs the detach with an explicit set in the SAME block:
+#     the wildcard's immutable value is deleted first, then the set
+#     stands alone as the path's only Cache-Control value. One block per
+#     path — the platform keys rules by their URL pattern, so a second
+#     block for the same path would not be a separate rule.
+#
+# HTML, /flags.json and the sw.js group: every one gets an explicit
+# line below, so this file — not an undocumented platform default —
+# is the caching contract of record for them. Each is the first and
+# only Cache-Control set matching its path, so each simply replaces
+# the platform default.
+# One honesty note: the root document at / is currently rendered by the
+# app server, not served as a static asset (live probe 2026-10-21: the
+# / response carries neither the ETag nor the CF-Cache-Status header
+# the asset server always adds), so the / rule below cannot reach it on
+# the Cloudflare host today. It is kept so the policy lives in one place
+# and takes effect for any asset-served root; the post-merge live probe
+# is the check, and if / is still bare afterwards the remaining fix is
+# a server-side header, not another line here. /offline.html is served
+# as an asset at its canonical path /offline (the .html URL 307-redirects
+# there), so it IS covered. /_shell.html is different: it exists in the
+# build output, but a live probe (2026-10-21) shows GET /_shell.html
+# answering 404 from the app server — the same signature as / — so the
+# rule below cannot reach it today either. It is kept as policy of
+# record, and a bare or 404 probe result for it is expected-inert, not
+# a failure (see the Acceptance definition in BRANCH_STATUS.md).
+#
+# Unioned with main 2026-10-22 (#207/#222 landed first, adding the /*
+# security block and the no-cache / s-maxage blocks below). Where the
+# two files set the same path, MAIN'S VALUE WINS and appears exactly
+# once: /flags.json is no-cache (stricter than the max-age=0 line this
+# branch proposed — a kill switch must never be served stale) and / is
+# main's s-maxage=60 edge line. What this branch contributes is the
+# detach+set form on the three carved /assets/ paths and the
+# /offline, /offline.html and /_shell.html rules.
+#
+# Deliberately NO rule: everything not listed below is already served
+# with the platform default (Cache-Control: public, max-age=0,
+# must-revalidate, plus an ETag) — live-verified 2026-10-21 for
+# /audio/*, /icons/*, /images/*, /loop/*, favicon.svg and og.jpg. Those
+# paths have stable names with mutable content (narration mp3s were
+# replaced under the same filenames in PR #174), so revalidation is
+# exactly right for them, and adding set lines would only create
+# comma-join surface if a broader rule ever lands above them. They must
+# NEVER become immutable. (The other stable-named files — /sw.js,
+# /flags.json, /build-meta.json, /manifest.webmanifest — DO carry
+# explicit no-cache rules below; update detection and kill switches are
+# too important to leave to a default.)
+
 # Hashed build assets never change at a given URL → cache for a year.
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
@@ -28,18 +108,22 @@
 # mutable content): the MapLibre worker copies (maplibre-worker-files plugin
 # in vite.config.ts) and the storyteller asset manifest. Cloudflare joins
 # headers from every matching rule (no most-specific-wins), so a second
-# Cache-Control set-line would comma-join with "immutable". The documented
-# remedy is a detach line used ALONE: the platform default
-# (public, max-age=0, must-revalidate + ETag) then applies. These blocks are
-# text-identical to PR #203 (perf, F1) on purpose, so the two merge cleanly.
+# Cache-Control set-line would comma-join with "immutable". Each block
+# therefore pairs a detach line with an explicit set in the SAME block:
+# the detach deletes the wildcard's immutable value, then the set stands
+# alone (see "How the rules combine" above — PR #203's detach ALONE shipped
+# these files with no Cache-Control at all, live-verified 2026-10-21).
 /assets/maplibre-gl-worker.mjs
   ! Cache-Control
+  Cache-Control: public, max-age=0, must-revalidate
 
 /assets/maplibre-gl-shared.mjs
   ! Cache-Control
+  Cache-Control: public, max-age=0, must-revalidate
 
 /assets/storyteller/storyteller-assets.json
   ! Cache-Control
+  Cache-Control: public, max-age=0, must-revalidate
 
 # The service worker and the files it treats as "latest" must revalidate
 # every time, or update detection (fingerprinted sw.js) and remote kill
@@ -59,3 +143,14 @@
   Cache-Control: public, max-age=0, s-maxage=60, must-revalidate
 /index.html
   Cache-Control: public, max-age=0, s-maxage=60, must-revalidate
+
+# Served as assets and not covered above. /offline.html is reachable at
+# its canonical path /offline (the .html URL 307-redirects there);
+# /_shell.html is in the build output but currently answers 404 from the
+# app server, so its rule is policy of record and expected-inert today.
+/offline
+  Cache-Control: public, max-age=0, must-revalidate
+/offline.html
+  Cache-Control: public, max-age=0, must-revalidate
+/_shell.html
+  Cache-Control: public, max-age=0, must-revalidate
