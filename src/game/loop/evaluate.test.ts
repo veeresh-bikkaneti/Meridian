@@ -14,6 +14,12 @@ import {
 } from "./evaluate.ts";
 import type { FetchLike } from "./evaluate.ts";
 import { preloadAdmin1Boundaries } from "../reverse-geocode.ts";
+import { preloadTerritory } from "../territory.ts";
+
+// F2b: unlabeledSpotEntry names taps via resolvePin → territoryAt, whose
+// countries-50m data is lazy (territory.ts) — preload it once so the tap
+// names below come from the real data, not the fail-closed null.
+await preloadTerritory();
 import { submitGuess } from "./engine.ts";
 import { freshLoopPuzzleState } from "./store.ts";
 import type { LoopGuess, LoopNameEntry } from "./types.ts";

@@ -100,6 +100,13 @@ export async function installSfxStub(context: BrowserContext): Promise<void> {
       };
     };
 
+    // DELIBERATE: every fake node's connect() below is a no-op that
+    // returns undefined. Modern browsers return the destination node,
+    // but old Safari returned undefined (WebKit bug 188834) — this stub
+    // simulates the old semantics on purpose. It is the only reason the
+    // chained-connect() crash in grandpa-ask.ts (#189) was caught: code
+    // that survives this stub survives old Safari. Do NOT "fix" these
+    // connect()s to return a node; that would mask the whole bug class.
     class FakeAudioContext {
       currentTime = 0;
       state = "running";

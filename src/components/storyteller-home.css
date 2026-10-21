@@ -297,7 +297,10 @@
 }
 
 /* Greeting popover: below the banner row, above the tagline. Transient —
- * absolute positioning means it never reflows the page. */
+ * absolute positioning means it never reflows the page. Width: the
+ * shared cap is 320px (below); the v5 hero narrows it — 224px, and
+ * 184px at 681–767px — so the bubble clears the wrapped headline there
+ * (see home-v5.css). */
 .storyteller-banner-popover {
   position: absolute;
   top: calc(100% + 8px);

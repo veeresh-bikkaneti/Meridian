@@ -1,129 +1,192 @@
-# BRANCH_STATUS.md — fix/hint-default-on
+# BRANCH_STATUS — fix/home-mascot-position (home layout: mascot bubble off-screen + About card void)
 
-## What
-Issue #182: the hint bulb never appeared for any player who had not
-set an age profile — every fresh visitor. The unset profile resolved
-to the 11-13 band, whose hint policy is "none", so the hint panel
-rendered nothing and nobody was told hints exist.
+**State: PANEL FIX ROUND APPLIED — not merged. Ready: NO (panel
+round 1 returned NOT READY — BLOCK ×3 / NITS ×7 / APPROVE ×2; the
+cure below is applied, and a rule-13 panel re-vote on the cured tip
++ the owner's merge word are still owed).**
 
-Owner decision, 2026-10-20: "Change the default so everyone gets the
-hint bulb". — "we dont check the age of the player, so we need the
-hints on by default"
+Base: `origin/main 41e1121` (rebased 2026-10-21 for the panel fix
+round — PR #203 had landed on top of `25b3b68`; earlier rebase onto
+`f9fa7e4` for panel review, pre-rebase tip `5b1698c` on base
+`157d215`). CSS changed: `src/components/home-v5.css` (the fixes)
+plus a comment-only cross-reference in
+`src/components/storyteller-home.css`; one new E2E spec
+(`tests/e2e/home-visual-layout.desktop.spec.ts`). No behavior, copy,
+dismissal-semantics, or game-logic changes.
 
-Fix: a run with NO age profile set now snapshots the hint policy
-"one-per-round" (the bulb shows, one hint per place — the 8-10 shape).
-Everything else about the default stays exactly as it was.
+## Defect 1 (primary) — storyteller greeting bubble off-screen
 
-## The bug, plainly
-- The game never checks the player's age. The "band" comes from a
-  parent-set profile stored on the device; most players never set one.
-- With no profile, the run config resolved through the 11-13 row of
-  the policy table — "none" — so `HintPanel` returned null. The bulb
-  was off by default for almost everyone, silently.
-- Found by the owner playing the live site; confirmed by a fresh-
-  profile inspection of production (Globe game: End game present,
-  no bulb anywhere).
+**Owner's report (2026-10-21):** on the production home page the
+grandpa mascot sits at the hero card's far left and his speech bubble
+renders mostly off-screen to the left (only a sliver and the ✕
+visible); screenshot ~880px wide.
 
-## Done (2026-10-20)
-- `src/game/age-profile/run-config.ts`: new named constant
-  `DEFAULT_HINT_POLICY = "one-per-round"` with the owner's words and
-  the why in plain language. `getBandConfig(null)` now carries it;
-  `getBandConfig("11-13")` still carries "none" — an explicit 11-13
-  profile is a parent's deliberate choice and is NOT overridden.
-  The snapshot's `band` field still records "11-13" for unset runs,
-  and every other number (rounds, tolerance, clues, duel seconds)
-  is byte-identical to before.
-- Snapshot sites now pass the profile's RAW band (`loadProfile().band`,
-  null when unset) instead of the pre-resolved band, so the default
-  actually reaches the snapshot: `src/game/run.ts` (run start + the
-  pre-snapshot resume backfill) and `src/game/loop/store.ts`
-  (GeoDetective deal). For any explicitly set profile the snapshots
-  are unchanged, value for value.
-- `src/game/loop/LoopScreen.tsx`: GeoDetective now reads the hint
-  policy from the mystery's own persisted deal snapshot
-  (`puzzle.dealBandConfig.hintPolicy`) — the deal-time source the
-  #113 contract always intended — falling back to the old recompute
-  only for pre-snapshot puzzles. A no-profile player's GeoDetective
-  bulb therefore shows too; a mystery dealt BEFORE this fix keeps
-  the policy it was dealt with until the next deal (snapshot rules).
-  The quiz follows the same snapshot rule: a run already in flight
-  when this deploys keeps the policy it started with, so for quiz
-  players the bulb appears from their next run.
-- Consumer audit (each verified in code):
-  - `hintButtonState` / `canUseHint`: pure functions of the policy —
-    "one-per-round" gives visible → disabled-after-one-use. ✓
-  - `mascotOffersHint`: fires only for "free" (5-7) — the default
-    policy can never trigger the mascot offer. Proven by unit pin
-    at several miss counts. ✓
-  - Quiz dock (`game-app.tsx`): reads the run snapshot's policy —
-    the bulb now renders in the bottom-right dock during aim. ✓
-  - Clean Round badge (`passport/badges.ts`): keys off the snapshot
-    BAND field (still "11-13") + hints used + win — never the policy.
-    A default player who uses a hint gets no badge (same as any
-    hint user); one who never taps still earns it. No change needed
-    and none made; existing unit pins cover both cases. ✓
-  - Everything else that reads the band (`resolveBand` consumers:
-    loop locks, pin tolerance, read-aloud mode, story mapping,
-    GeoDetective clue/cap config): untouched — `resolveBand` itself
-    did not change, and the snapshot's band field did not change,
-    so the ONLY behavioral delta is hint availability for
-    unset-profile runs. ✓
-- Unit tests: run-config gate updated deliberately (the gate's own
-  header says intentional changes update it) — the unset contract is
-  now "production numbers + hintPolicy one-per-round"; new pins for
-  null-vs-explicit-11-13 (identical except the policy), bulb state
-  under the default, mascot-offer exclusion; startRun/resume snapshot
-  pins for unset (hints on) and explicit 11-13 (hints off); the loop
-  store snapshot pin now mirrors the production call. Mutation check:
-  reverting the one-line policy change fails 10 of the 20 tests in
-  the two config test files.
-- E2E: new tests in `tests/e2e/hint-button.spec.ts` (no profile →
-  bulb visible in the aim dock → tap → directional hint shows →
-  button disables) and `tests/e2e/geodetective-hint.spec.ts`
-  (no profile → same flow in GeoDetective). The explicit-11-13
-  "no bulb" pins already in both specs still stand.
-- Docs: this file; the stale comments in run-config.ts / run.ts /
-  loop store / LoopScreen / hint-panel now describe the default
-  honestly; handbook chapter 02 gained section 13 recording the
-  per-band hint policy (owner 2026-10-09) and the 2026-10-20 ruling
-  that supersedes its default behavior.
+**Root cause (proven by reproduction, not guessed):** the bubble is
+the storyteller greeting popover (`.storyteller-banner-popover`). It
+is anchored `right: 0` to its 56px host (`.storyteller-banner`) and
+opens leftward at up to 320px wide — correct back when the host sat
+at the right end of the old full-width header banner (anchoring from
+PR #118). The homepage v5 redesign (PR #158) moved the host into
+`.hv5-hero-top`, a wrapping flex row. Above 680px nothing pushed the
+host to its line's right end (the `margin-left: auto` rescue existed
+only in the ≤680px phone block), so wherever the row wraps — hero-top
+needs 760px of content; the bento hero cell is 614–870px wide across
+viewport widths 768–1440 — the host lands at the LEFT of its new
+line and the popover opens off the left edge. Measured on the
+pre-fix build (fresh profile, figure tap): bubble x = −27 @768,
+−177 @880 (pixel-match with the owner's screenshot), −177 @1280,
+−97 @1440; fine @390 (phone block) and @1024 (row fits on one line).
 
-## Post-panel (2026-10-20)
-- Panel verdict: READY, zero BLOCKs. The owner chose the panel's
-  optional docs cure + a re-vote before merging: "Add the small docs
-  cure, re-vote, then merge".
-- Rebased onto origin/main `89e474c` (PR #179 landed after this
-  branch was cut): the only conflict was this file; resolved by
-  keeping this branch's record.
-- Docs cure applied: the stale `getBandConfig(resolveBand())`
-  headers corrected (run-config.ts, loop/types.ts) to describe the
-  raw-band snapshot; `DEFAULT_HINT_POLICY` re-exported from the
-  age-profile barrel; the quiz in-flight-run caveat added here and
-  in handbook §13; the owner's quoted words now contain exactly his
-  words (periods outside the quote marks) in this file, handbook
-  §13, and run-config.ts; §13's paraphrase-in-quotes replaced with
-  the real hint string ("Look toward the northern part of the
-  map!").
+**Fix (commit `b55d6d8`; originally `bd01abf`):** (1)
+`.hv5-storyteller { margin-left: auto }` moved from the phone block
+to the base rule, so the host sits at its line's right end at every
+width — the popover's right-anchored geometry then always opens
+inside the hero card. (2) Above 680px the popover's width is capped
+so it also clears the headline's wrapped text: 224px at 768px and
+up, 184px at 681–767px. The band cap arrived in the panel fix round
+(below): round 1's single 224px cap rested on a first-line model of
+the headline and overlapped its lower wrapped lines at 681–708px.
+Phones keep the shared cap and their unchanged layout.
 
-## Pending
-- Rule-13 re-vote on this cured tip (panel). The owner's merge word
-  is GIVEN, conditional on that re-vote returning READY.
-- Merge after the re-vote.
+## Defect 2 — "How a round works" (About) card stretched, giant void
 
-## Gates (2026-10-20, re-run on the rebased + cured tip `d7b84cb`)
-- `npx tsc --noEmit` — clean.
-- `npm test` — green: scripts suite 799 tests (790 pass, 9 skip,
-  0 fail); src suite 1,366 pass, 0 fail (1,363 from the new base +
-  this branch's 3).
-- `node scripts/lint-cards.mjs` — GATE PASSED.
-- `npm run build:pages` — green (VITE_KOFI_URL set).
-- Playwright (built artifact, --workers=1, VITE_KOFI_URL set at
-  build + test): hint-button (11) + geodetective-hint (5) +
-  clean-round-badge (4) combined run **20 passed, 0 failed** on
-  this tip. (The same family also passed 20/20 pre-rebase, after
-  one transient failure in an early run — the pre-existing
-  "11-13: no hint button at all" test failed inside the
-  `startGlobeRun` setup helper (helpers.ts:156) under heavy VM
-  load immediately after a service restart. Corrected 2026-10-20:
-  an earlier draft of this note misattributed that flake to the
-  new GeoDetective default test.)
+**Root cause:** `.hv5-pages` is a two-column grid (About beside the
+tall Journal card). Grid items stretch to the row height by
+default, so the short About card was stretched to the Journal's
+height; the empty space below its two paragraphs measured 1336px
+@768, 1469px @1024, 1827px @1280 (only 28px — the card's own
+padding — @390, where a ≤680px media query stacks the sections in
+one column, so there is no row partner to stretch against).
+
+**Fix (commit `fa2e10d`; originally `5d47825`):** `.hv5-pages {
+align-items: start }` — each card keeps its own height; the Journal
+is unchanged.
+
+## Checked, NOT a defect — the band below the Journal
+
+The sweep also flagged a large empty map-background band between
+the Journal section and the grandpa coffee-run scene. Measured in
+document space @1280 with images settled: the space is occupied by
+(a) the ParentZone footer (100px, sits directly under the pages row
+by design) and (b) on a FIRST visit, the read-aloud preference
+prompt (312px, a real question card rendered in flow; it renders
+nothing after the kid answers). The remaining "emptiness" is the
+coffee scene's own transparent scenery over the atlas background.
+Not the grid-stretch problem; no change made.
+
+## Visual E2E pin — `tests/e2e/home-visual-layout.desktop.spec.ts`
+
+Loads home in a FRESH first-visit profile (tutorial invite up; a
+figure tap dismisses it and starts the greeting — the owner's exact
+path) at 390/681/700/767/768/880/1024/1280/1440 and asserts the
+figure and the bubble lie fully inside the viewport, and (≥681px)
+that the bubble intersects no headline glyph box (Range rects of
+the actual text). About tests @390/768/1024/1280 assert the card's
+internal void ≤ 56px. At 390 the bubble transiently overlays the
+headline's first line — the popover's long-standing design (absolute
+overlay, never reflows the page), unchanged by this fix — so phones
+pin containment only; the spec header documents this.
+
+**Discrimination (all runs executed):**
+- Pre-fix build: mascot tests FAIL @768/880/1280/1440 with
+  `bubble left` = −27/−177/−177/−97; PASS @390 and @1024. About
+  tests FAIL @768/1024/1280 (void 1336/1469/1827px); PASS @390.
+- Fixed build (round 1): **10/10 PASS.**
+- Panel fix round, extended pin (13 tests): on the PRE-CURE build
+  (224px cap only) the new @681/@700 tests FAIL on the
+  headline-overlap assertion (at 681: glyph right edge 425.4px vs
+  bubble left edge 396px); @767 passes (it pins the band's far edge).
+  On the cured build: **13/13 PASS.**
+
+## Panel fix round (2026-10-21) — panel round 1 verdict: NOT READY
+
+Panel on tip `e37a895`: NOT READY — BLOCK ×3 / APPROVE-WITH-NITS ×7
+/ APPROVE ×2, DevEx PASS-WITH-NITS, benchmark PASS. The cure,
+exactly as prescribed:
+
+- **Geometry BLOCK (Frontend Dev + Senior Dev,
+  coordinator-confirmed):** the 224px cap's "clear of the headline
+  at every width" claim failed at 681–~708px — the bubble intersected
+  the headline's LOWER wrapped lines, not line 1. Cured with a 184px
+  cap for 681–767px, chosen from a fresh glyph-level probe of the
+  real wrapped headline across the band: at 224px the overlap ran
+  from −2.4px @708 to −29.4px @681; at 184px every probed width
+  clears (worst +10.6px @681, +19.6 @690, +29.6 @700, +96.6 @767),
+  and ≥768px keeps 224px (measured +25.6px @768, +20.8 @1440). The
+  refuted trough claims (903–967, 1081–1150) were not chased — no
+  change there. Viewport containment (the owner's actual defect)
+  was already cured at every width and stays cured.
+- **Pin coverage:** MASCOT_WIDTHS gains 681, 700 and 767 (the band's
+  far edge; 768 already pinned the first 224px width). The extended
+  pin's discrimination is demonstrated above.
+- **Provenance BLOCK (Office Hours):** three shipped texts
+  overclaimed owner attribution (home-v5.css ×2, the spec header).
+  All three now state the verified record: the owner reported ONE
+  ~880px screenshot (the mascot, 2026-10-21); the width sweep and
+  the About void are the fixing crew's own findings.
+- **Comment wording:** the "clear at every width" claim is now true
+  and worded exactly; the freeze phrasing separates the page shell's
+  1280px cap from the headline font's growth to ~1444px; the phone
+  sentence matches the spec (the bubble overlays headline line 1 on
+  phones until dismissed); the spec's About rationale cites the real
+  `.hv5-card` padding (26px → the 56px threshold), not 40/32px.
+- **Convergent nits:** the fixed 1,200ms sleep is now a poll for the
+  bubble's settled box; the figure click carries the `force: true`
+  why-comment the precedent specs use; the spec header states the
+  pin's honest limit (pointer path only — no keyboard or
+  screen-reader coverage of the greeting path). One nit could not be
+  applied as written: the Senior Architect's "sync the documented
+  64–240px popover contract in storyteller-home-copy.ts" — that file
+  (read in full) holds copy strings and date helpers and documents
+  no width contract, and no 64–240px popover text exists anywhere in
+  the storyteller sources. The width contract that does exist — the
+  shared 320px cap in `storyteller-home.css` — gained a one-line
+  cross-reference to the v5 caps instead; no edit was fabricated for
+  the copy file.
+
+## Gates (on the cured tip)
+
+- `npx tsc --noEmit` — clean
+- `npm test` — green (scripts 790 pass / 9 skip / 0 fail; src 1399
+  pass / 0 fail — the src count rose from 1368 with PR #203 on the
+  new base; this branch adds no unit tests)
+- `node scripts/lint-cards.mjs` — GATE PASSED
+- `npm run build:pages` — green
+- Visual pin — 13/13 PASS on the cured build; discrimination vs the
+  pre-cure build demonstrated (above)
+- Regression spot-check (existing specs over the touched CSS):
+  dismiss-overlap.mobile, storyteller-home-greeting-watchdog.mobile
+  — green. `storyteller-home.desktop.spec.ts` has a PRE-EXISTING
+  flake on this VM: its "56x56" settle poll races the figure's
+  breathing animation; across three runs its two tests alternated
+  failing on BOTH the pre-fix and fixed builds (verified by
+  rebuilding with main's CSS and re-running) — not a regression
+  from this change.
+
+## Screenshots (kept with the crew's working files)
+
+- Before: `shots-before/home-{390,768,880,1024,1280}-bubble.png`,
+  `pages-{390,768,880,1024,1280}.png`, `band-*.png`
+  (in the crew worktree `~/workspace/bench-wt/mascot-fix/`).
+- After: same names under `shots-after/`.
+
+## Commits
+
+Original build: `bd01abf` / `5d47825`, tip `5b1698c` on base
+`157d215`. Rebased for panel review: `47a6c27` / `060136d` /
+`e37a895` on `f9fa7e4`. Rebased for the panel fix round onto
+`origin/main 41e1121`:
+
+- `b55d6d8` — fix(home): storyteller figure keeps the hero row's
+  right end (margin-left: auto at every width)
+- `fa2e10d` — fix(home): About card keeps its own height beside the
+  Journal (`.hv5-pages` top-aligned)
+- `f2354a8` — test(home): visual layout pin + this file
+- `826fd47` — fix(home): 184px bubble cap at 681–767px + comment
+  cures (panel fix round)
+- `b13037d` — test(home): pin extended into the band; settled-box
+  poll; wording cures (panel fix round)
+- this file's fix-round update
+
+**Pending:** rule-13 panel re-vote on the cured tip; owner's merge
+word. Do not merge from this branch's crew.

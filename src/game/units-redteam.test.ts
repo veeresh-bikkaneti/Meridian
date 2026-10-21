@@ -1,6 +1,12 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { formatLength, unitForLoopTarget, unitForSessionSummary } from "./units.ts";
+import { preloadTerritory } from "./territory.ts";
+
+// F2b: unitForLoopTarget reads the lazy countries-50m data (territory.ts)
+// — preload it once so the Puerto Rico case below is decided by the real
+// territory key (630), not by the fail-closed unloaded default.
+await preloadTerritory();
 
 describe("red-team edge cases — distance units", () => {
   it("US territory (Puerto Rico, key 630) reads km under the territory-key rule", () => {

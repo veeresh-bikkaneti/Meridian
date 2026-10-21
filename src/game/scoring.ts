@@ -17,6 +17,10 @@ import type { LonLat, RingId } from "./types.ts";
  *
  * Pure module: no DOM, no storage, no network. All geography lookups are
  * synchronous data (region bounding boxes, bundled country polygons).
+ * The country polygons are lazy (territory.ts, F2b): the region bonus
+ * reads them through `territoryAt`, which fails closed to "no match"
+ * until `preloadTerritory()` has landed — game-app's openRun awaits it
+ * before any run commits, so scoring in a real run always sees the data.
  */
 export const SCORING_VERSION = 3 as const;
 

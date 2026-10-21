@@ -64,37 +64,54 @@ function getSharedCtx(): AudioContext | null {
       window.AudioContext ??
       (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
     if (!Ctx) return null;
-    sharedCtx = new Ctx();
+    try {
+      sharedCtx = new Ctx();
+    } catch {
+      // Audio unavailable — every play call is a silent no-op. The same
+      // fail-soft rule sfx.ts lives by: sound never takes the game down.
+      return null;
+    }
   }
   return sharedCtx;
 }
 
-/** Two short rough bursts. Never a spoken word. */
+/** Two short rough bursts. Never a spoken word. Fail-soft like every
+ * sfx.ts play function: if anything in the graph throws, the cough is
+ * a silent no-op — sound is an enhancement, never a crash. */
 export function playCough(): void {
   if (!soundOn() || typeof window === "undefined") return;
-  const ctx = getSharedCtx();
-  if (!ctx) return;
-  const length = Math.floor(ctx.sampleRate * 0.45);
-  const buffer = ctx.createBuffer(1, length, ctx.sampleRate);
-  const data = buffer.getChannelData(0);
-  for (let i = 0; i < length; i++) {
-    const t = i / ctx.sampleRate;
-    const hit = t < 0.07 || (t > 0.14 && t < 0.22);
-    data[i] = hit ? (Math.random() * 2 - 1) * Math.exp(-t * 6) * 0.9 : 0;
+  try {
+    const ctx = getSharedCtx();
+    if (!ctx) return;
+    const length = Math.floor(ctx.sampleRate * 0.45);
+    const buffer = ctx.createBuffer(1, length, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < length; i++) {
+      const t = i / ctx.sampleRate;
+      const hit = t < 0.07 || (t > 0.14 && t < 0.22);
+      data[i] = hit ? (Math.random() * 2 - 1) * Math.exp(-t * 6) * 0.9 : 0;
+    }
+    const src = ctx.createBufferSource();
+    src.buffer = buffer;
+    const filter = ctx.createBiquadFilter();
+    filter.type = "bandpass";
+    filter.frequency.value = 480;
+    filter.Q.value = 0.7;
+    const gain = ctx.createGain();
+    gain.gain.value = 0.45;
+    // Never chain connect(): modern browsers return the destination
+    // node, but old Safari returns undefined (WebKit bug 188834), and
+    // a chain throws on it. Three plain statements wire the same graph.
+    src.connect(filter);
+    filter.connect(gain);
+    gain.connect(ctx.destination);
+    // The shared context stays open; a suspended one resumes here (no-op
+    // if already running).
+    void ctx.resume();
+    src.start();
+  } catch {
+    // Audio unavailable — the cough is a silent no-op from here.
   }
-  const src = ctx.createBufferSource();
-  src.buffer = buffer;
-  const filter = ctx.createBiquadFilter();
-  filter.type = "bandpass";
-  filter.frequency.value = 480;
-  filter.Q.value = 0.7;
-  const gain = ctx.createGain();
-  gain.gain.value = 0.45;
-  src.connect(filter).connect(gain).connect(ctx.destination);
-  // The shared context stays open; a suspended one resumes here (no-op
-  // if already running).
-  void ctx.resume();
-  src.start();
 }
 
 function playFile(file: string): void {

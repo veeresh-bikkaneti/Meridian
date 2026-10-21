@@ -1,14 +1,38 @@
 /**
- * Scout Map settings toggle (PBI-7) — Play top-bar left cluster.
+ * Scout Map settings toggle (PBI-7) — hosted in two places:
  *
- * A 44×44 frosted round button beside the sound toggle. Opens a small
- * popover with the label, the explainer, and a role="switch" row.
+ * - In the Play top-bar left cluster (context "play", the original
+ *   host): a 44×44 frosted round button beside the sound toggle.
+ * - On Home, in the hero's top row (context "home", Block C cure): the
+ *   same control with a brass-outline button to match the home theme,
+ *   beside a visible mode indicator GameApp renders next to it — a
+ *   player can SEE they are on Scout Map and flip back without
+ *   starting (and discarding) a game first. The button's accessible
+ *   name carries the current mode ("Map mode settings — currently
+ *   Scout Map"), so a screen-reader player hears the state the
+ *   sighted player reads off the indicator pill (re-vote nit).
  *
- * State contract (Phase A): the mode state is owned by GameApp and
- * threaded down as a prop — this component only calls onSelect. The
- * choice takes effect on the NEXT place mount; nothing remounts mid-round.
- * Escape closes the popover and returns focus to the button; the
- * live-region announces the change.
+ * Both hosts open the same popover: label, explainer, role="switch"
+ * row. The copy adapts to the host. In Play, flipping ends the current
+ * game (owner ruling, 2026-10-20 — the map is built once per game, so
+ * the new mode can only take effect in a new game), so the popover
+ * prints the game-ending warning ABOVE the switch at reading size:
+ * the consequence is read before the tap target (Block B cure). On
+ * Home there is no game to end, so the explainer talks about the next
+ * game instead and there is no warning.
+ *
+ * State contract: the mode state is owned by GameApp and threaded down
+ * as a prop — this component only calls onSelect, and GameApp's handler
+ * differs per host (force-home in Play; write-and-apply on Home).
+ * Escape closes the popover and returns focus to the button.
+ *
+ * This component owns NO live region and moves NO focus on the flip:
+ * in Play the flip unmounts it (with Play) in the very commit that
+ * lands the player home, so an announcement region here would be
+ * destroyed in the same commit that set its text and could never be
+ * spoken. GameApp therefore hosts the announcement in a hoisted live
+ * region that survives the exit, and lands focus on the home heading
+ * (pipeline Block A cure).
  */
 
 import { useCallback, useEffect, useRef, useState, type JSX, type KeyboardEvent } from "react";
@@ -19,16 +43,38 @@ import { SCOUT_COPY } from "./scout-copy.ts";
 export function MapModeToggle(props: {
   mapMode: MapMode;
   onSelect: (mode: MapMode) => void;
+  /** Host context: "play" (default) or "home" — see the header. */
+  context?: "play" | "home";
 }): JSX.Element {
   const [open, setOpen] = useState(false);
+  // Home popover placement, measured at open time (see the popover
+  // render below for why neither CSS anchor survives the hero wrap).
+  const [homePos, setHomePos] = useState<{ top: number; left: number } | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const [announcement, setAnnouncement] = useState("");
   const scout = props.mapMode === "scout";
+  const atHome = props.context === "home";
 
   const close = useCallback(() => {
     setOpen(false);
     buttonRef.current?.focus();
   }, []);
+
+  const toggleOpen = useCallback(() => {
+    if (!open && atHome) {
+      const rect = buttonRef.current?.getBoundingClientRect();
+      if (rect) {
+        // Clamp the 256px (w-64) popover inside the viewport with an
+        // 8px margin on both sides, preferring the button's own left.
+        const width = 256;
+        const left = Math.min(
+          Math.max(8, rect.left),
+          Math.max(8, window.innerWidth - width - 8),
+        );
+        setHomePos({ top: rect.bottom + 8, left });
+      }
+    }
+    setOpen((v) => !v);
+  }, [open, atHome]);
 
   // Escape closes the popover and returns focus to the button.
   useEffect(() => {
@@ -42,8 +88,12 @@ export function MapModeToggle(props: {
 
   const flip = useCallback(() => {
     const next: MapMode = scout ? "full" : "scout";
+    // onSelect IS the whole interaction: GameApp persists the mode and
+    // sets the hoisted announcement; in Play it also exits the run
+    // home, so nothing can run after it there — this component is
+    // about to unmount. (On Home the component survives and the
+    // popover simply re-renders showing the new state.)
     props.onSelect(next);
-    setAnnouncement(next === "scout" ? SCOUT_COPY.toggleAnnounceOn : SCOUT_COPY.toggleAnnounceOff);
   }, [scout, props]);
 
   const onSwitchKey = useCallback(
@@ -63,16 +113,57 @@ export function MapModeToggle(props: {
         type="button"
         data-testid="map-mode-button"
         aria-expanded={open}
-        aria-label="Map mode settings"
-        onClick={() => setOpen((v) => !v)}
-        className="pointer-events-auto flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[rgba(10,12,16,0.72)] text-white/80 backdrop-blur-[14px] transition-colors hover:text-white"
+        aria-label={
+          atHome
+            ? `Map mode settings — currently ${scout ? "Scout Map" : "Full map"}`
+            : "Map mode settings"
+        }
+        onClick={toggleOpen}
+        className={
+          atHome
+            ? // Home theme: brass outline, matching the sound toggle
+              // beside it (styles.css .atlas-sound-toggle).
+              "pointer-events-auto flex h-11 w-11 items-center justify-center rounded-full border border-[var(--atlas-card-line)] bg-transparent text-[var(--atlas-brass)] transition-colors hover:border-[var(--atlas-brass)]"
+            : "pointer-events-auto flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[rgba(10,12,16,0.72)] text-white/80 backdrop-blur-[14px] transition-colors hover:text-white"
+        }
       >
         <Layers aria-hidden="true" size={20} />
       </button>
       {open ? (
-        <div className="pointer-events-auto absolute top-full left-0 z-40 mt-2 w-64 rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.92)] p-4 text-white shadow-xl backdrop-blur-[14px]">
+        // Placement differs by host. In Play the button sits in the
+        // top bar's left cluster, so the popover anchors under it
+        // (absolute, left-0) and always fits. On Home the button sits
+        // in the hero's wrapping top row, whose wrap point moves with
+        // the viewport: measured on the real page, left-0 pushed the
+        // 256px popover off the right edge at 340px wide (and past
+        // the hero's overflow:hidden edge at 360px), while right-0
+        // would push it off the LEFT edge at 320px, where the button
+        // wraps to the row's start. Neither anchor survives the wrap,
+        // so on Home the popover is fixed-positioned from the
+        // button's measured rect, clamped inside the viewport
+        // (toggleOpen above) — it overlays the page like the Play
+        // popover and is never clipped by the hero.
+        <div
+          data-testid="map-mode-popover"
+          style={atHome && homePos ? { top: homePos.top, left: homePos.left } : undefined}
+          className={
+            atHome
+              ? "pointer-events-auto fixed z-40 w-64 rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.92)] p-4 text-white shadow-xl backdrop-blur-[14px]"
+              : "pointer-events-auto absolute top-full left-0 z-40 mt-2 w-64 rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.92)] p-4 text-white shadow-xl backdrop-blur-[14px]"
+          }
+        >
           <p className="text-sm font-semibold">{SCOUT_COPY.toggle.label}</p>
-          <p className="mt-1 text-xs leading-relaxed text-white/70">{SCOUT_COPY.toggle.explainer}</p>
+          <p className="mt-1 text-xs leading-relaxed text-white/70">
+            {atHome ? SCOUT_COPY.toggle.homeExplainer : SCOUT_COPY.toggle.explainer}
+          </p>
+          {atHome ? null : (
+            // Block B: the consequence prints ABOVE the switch, at the
+            // explainer's size and contrast — never as fine print
+            // below the control that ends the game.
+            <p data-testid="map-mode-warning" className="mt-2 text-xs leading-relaxed text-white/70">
+              {SCOUT_COPY.toggle.warning}
+            </p>
+          )}
           <div
             role="switch"
             aria-checked={scout}
@@ -90,14 +181,8 @@ export function MapModeToggle(props: {
               <span className="h-5 w-5 rounded-full bg-white shadow" />
             </span>
           </div>
-          <p className="mt-2 text-[11px] leading-relaxed text-white/50">
-            Applies from the next place — never mid-round.
-          </p>
         </div>
       ) : null}
-      <p className="sr-only" role="status">
-        {announcement}
-      </p>
     </div>
   );
 }

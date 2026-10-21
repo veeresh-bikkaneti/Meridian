@@ -100,6 +100,7 @@ test("a pin inside a neighborhood scores as a direct hit", () => {
   assert.equal(pointInRing(havelock.reveal, havelock.shape.coordinates), true);
 });
 
-test("every continent has at least one country", () => {
-  assert.deepEqual(missingContinents(), []);
+test("every continent has at least one country", async () => {
+  // F2b: missingContinents is async — it awaits the lazy territory load.
+  assert.deepEqual(await missingContinents(), []);
 });
