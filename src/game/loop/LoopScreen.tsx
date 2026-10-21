@@ -277,7 +277,10 @@ export function LoopScreen({
   // never stranded on the fallback or the card that opened the screen.
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   useEffect(() => {
-    headingRef.current?.focus();
+    // typeof guard: non-DOM renderers (react-test-renderer) hand back
+    // ref objects without a focus method.
+    const el = headingRef.current;
+    if (el && typeof el.focus === "function") el.focus();
   }, []);
   const [store, setStore] = useState<LoopUnlimitedStore | null>(null);
   // Ref mirror so event handlers always see the latest store without

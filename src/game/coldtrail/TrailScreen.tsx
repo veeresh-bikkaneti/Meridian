@@ -107,7 +107,9 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   // the case heading on first mount too (the effect above only follows
   // case changes), so focus is never stranded on the fallback.
   useEffect(() => {
-    caseHeadingRef.current?.focus();
+    // typeof guard: non-DOM renderers hand back refs without focus.
+    const el = caseHeadingRef.current;
+    if (el && typeof el.focus === "function") el.focus();
   }, []);
 
   // One-time notice after a v1 save migrates (auto-placed rings are gone).
