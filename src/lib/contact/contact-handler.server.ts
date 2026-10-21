@@ -14,12 +14,15 @@
  *   optional grown-up email (≤ 254 chars, shape-checked), `website` is a
  *   honeypot that humans never see. A filled honeypot gets a normal-
  *   looking 200 and the message is silently dropped (no signal to bots).
- * - Body cap: MAX_BODY_BYTES, checked on content-length AND actual bytes.
- * - Rate limit: per-client fixed window, keyed by a SALTED SHA-256 of the
- *   connecting IP. The raw IP is never stored, logged, forwarded, or kept
- *   in memory past the hash; the salt is random per isolate, so the keys
- *   are useless outside this process. Plus a global per-isolate cap so a
- *   distributed flood cannot fill the inbox.
+ * - Body cap: MAX_BODY_BYTES. A declared content-length over the cap is
+ *   refused up front, and the body is read as a STREAM with a hard cap: the
+ *   read is cancelled the moment it passes 4 KB, so a chunked upload with
+ *   no content-length is never fully buffered.
+ * - Rate limit: see rate-limiter.server.ts. An in-memory floor (salted,
+ *   per-isolate keys) is always on. When the binding is configured, the
+ *   free Workers Rate Limiting binding adds a per-client and a global limit
+ *   that are shared across isolates. The raw IP is never stored, logged, or
+ *   forwarded.
  * - Delivery goes through a small ContactSink interface (owner decision
  *   2026-10-21: the real target is parked, ship scaffolding only):
  *     NoopSink (default)        → accepts, stores nothing, reports
@@ -30,13 +33,26 @@
  *   A future KV / email sink just implements ContactSink and is chosen in
  *   selectSink(). What any sink receives: topic, message, replyTo (if
  *   given), received-at timestamp. No IP, user agent, headers, or cookies.
- * - CORS: same-origin always; cross-origin only for the GitHub Pages
- *   mirror (or CONTACT_ALLOWED_ORIGINS). Never "*".
+ * - Origin: a POST MUST carry an Origin header (every browser sends one on
+ *   a fetch POST). A request without one is refused with 403, so a bare
+ *   script cannot skip the origin check. Allowed: same-origin, plus the
+ *   GitHub Pages mirror (or CONTACT_ALLOWED_ORIGINS). Never "*".
+ * - Stores nothing server-side: no KV, no database, no cache, no message
+ *   text in logs. Retention of the one delivered copy (Discord) is in
+ *   retention.ts.
  * - Logs: one structured line per outcome with the topic only — never the
  *   message, never the reply-to, never the IP.
  */
 
 import { CONTACT_MESSAGE_MAX, CONTACT_REPLY_TO_MAX, CONTACT_TOPICS as TOPIC_OPTIONS } from "./contact-form.ts";
+import { CONTACT_RETENTION_REMINDER } from "./retention.ts";
+import {
+  readRateLimitBindings,
+  resetRateLimitBindingLookupForTests,
+  selectRateLimiter,
+  sharedInMemoryLimiterForTests,
+  type RateLimitBindings,
+} from "./rate-limiter.server.ts";
 
 /** Topic values — one source of truth shared with the page (contact-form.ts). */
 export const CONTACT_TOPICS: readonly string[] = TOPIC_OPTIONS.map((t) => t.value);
@@ -46,15 +62,11 @@ export const MAX_MESSAGE_CHARS = CONTACT_MESSAGE_MAX;
 export const MAX_REPLY_TO_CHARS = CONTACT_REPLY_TO_MAX;
 export const MAX_BODY_BYTES = 4096;
 
-const RATE_LIMIT_MAX = 3;
-const RATE_LIMIT_WINDOW_MS = 10 * 60_000;
-const GLOBAL_LIMIT_MAX = 60;
-const GLOBAL_LIMIT_WINDOW_MS = 60 * 60_000;
 const FORWARD_TIMEOUT_MS = 5_000;
 /** Discord rejects message content over 2000 characters. */
 const DISCORD_MAX_CONTENT = 2000;
 
-export interface ContactEnv {
+export interface ContactEnv extends RateLimitBindings {
   /**
    * Discord channel webhook URL for CONTACT messages (secret, optional —
    * DEPLOY TODO). Unset → NoopSink. Never hard-code it.
@@ -86,9 +98,11 @@ export type ValidationResult =
   | { ok: true; value: ContactMessage; honeypot: boolean }
   | { ok: false; problems: string[] };
 
-// Control chars except tab/newline/carriage return.
+// Control chars except tab/newline/carriage return, plus every Unicode
+// "format" char (\p{Cf}): zero-width spaces/joiners, bidi overrides (which
+// can visually reorder text in the reader's client), soft hyphens, BOMs.
 // eslint-disable-next-line no-control-regex -- stripping control chars is the point
-const CONTROL_CHARS = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g;
+const CONTROL_CHARS = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]|\p{Cf}/gu;
 const EMAIL_SHAPE = /^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[^\s@<>()",;:]{2,}$/;
 
 /** Pure validation — the server never trusts the page's checks. */
@@ -99,7 +113,8 @@ export function validateContact(input: unknown): ValidationResult {
   const o = input as Record<string, unknown>;
   const problems: string[] = [];
   const allowed = new Set(["topic", "message", "replyTo", "website"]);
-  for (const k of Object.keys(o)) if (!allowed.has(k)) problems.push(`unexpected field ${k}`);
+  // Never echo the caller's field names back (no reflection of input).
+  if (Object.keys(o).some((k) => !allowed.has(k))) problems.push("unexpected fields");
 
   const topic = o.topic;
   if (typeof topic !== "string" || !CONTACT_TOPICS.includes(topic)) {
@@ -113,7 +128,7 @@ export function validateContact(input: unknown): ValidationResult {
   if (o.replyTo !== undefined && o.replyTo !== null && o.replyTo !== "") {
     if (typeof o.replyTo !== "string") problems.push("replyTo must be a string");
     else {
-      const r = o.replyTo.trim();
+      const r = o.replyTo.replace(CONTROL_CHARS, "").trim();
       if (r.length > MAX_REPLY_TO_CHARS || !EMAIL_SHAPE.test(r)) problems.push("replyTo must be an email address");
       else replyTo = r;
     }
@@ -129,48 +144,14 @@ export function validateContact(input: unknown): ValidationResult {
   };
 }
 
-// --- Rate limiting (in-memory, hashed keys) ---------------------------
+// --- Rate limiting -------------------------------------------------------
+// Lives in rate-limiter.server.ts (in-memory floor + optional Workers Rate
+// Limiting binding).
 
-interface Window {
-  start: number;
-  count: number;
-}
-const perClient = new Map<string, Window>();
-let globalWindow: Window = { start: 0, count: 0 };
-let salt: string | null = null;
-
-/** Test-only reset. */
+/** Test-only reset of the per-isolate state (rate-limit windows, salt, binding lookup). */
 export function resetContactStateForTests(): void {
-  perClient.clear();
-  globalWindow = { start: 0, count: 0 };
-  salt = null;
-}
-
-/** Salted SHA-256 of the client IP; the raw IP goes no further than this. */
-export async function clientKey(ip: string): Promise<string> {
-  if (salt === null) {
-    const bytes = new Uint8Array(16);
-    crypto.getRandomValues(bytes);
-    salt = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
-  }
-  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`${salt}:${ip}`));
-  return Array.from(new Uint8Array(digest).slice(0, 12), (b) => b.toString(16).padStart(2, "0")).join("");
-}
-
-function takeSlot(key: string, now: number): { allowed: boolean; retryAfterSec: number } {
-  for (const [k, w] of perClient) if (now - w.start >= RATE_LIMIT_WINDOW_MS) perClient.delete(k);
-  if (now - globalWindow.start >= GLOBAL_LIMIT_WINDOW_MS) globalWindow = { start: now, count: 0 };
-  if (globalWindow.count >= GLOBAL_LIMIT_MAX) {
-    return { allowed: false, retryAfterSec: Math.ceil((globalWindow.start + GLOBAL_LIMIT_WINDOW_MS - now) / 1000) };
-  }
-  const w = perClient.get(key);
-  if (w && w.count >= RATE_LIMIT_MAX) {
-    return { allowed: false, retryAfterSec: Math.max(1, Math.ceil((w.start + RATE_LIMIT_WINDOW_MS - now) / 1000)) };
-  }
-  if (w) w.count += 1;
-  else perClient.set(key, { start: now, count: 1 });
-  globalWindow.count += 1;
-  return { allowed: true, retryAfterSec: 0 };
+  sharedInMemoryLimiterForTests().reset();
+  resetRateLimitBindingLookupForTests();
 }
 
 // --- Responses ---------------------------------------------------------
@@ -185,7 +166,7 @@ export const DEFAULT_ALLOWED_ORIGINS = ["https://veeresh-bikkaneti.github.io"];
  */
 function corsOrigin(request: Request, env: ContactEnv): string | null {
   const origin = request.headers.get("origin");
-  if (!origin) return ""; // same-origin navigation/fetch or non-browser client
+  if (!origin) return ""; // no CORS header needed; POST without Origin is refused in the handler
   if (origin === new URL(request.url).origin) return "";
   const configured = env.CONTACT_ALLOWED_ORIGINS?.split(",").map((s) => s.trim()).filter(Boolean) ?? [];
   const list = configured.length > 0 ? configured : DEFAULT_ALLOWED_ORIGINS;
@@ -246,11 +227,28 @@ export class NoopSink implements ContactSink {
   }
 }
 
+/** The only webhook URL shape accepted. Anything else stays on NoopSink. */
+export const DISCORD_WEBHOOK_PREFIX = "https://discord.com/api/webhooks/";
+
+/** Discord message flag SUPPRESS_EMBEDS (1 << 2): no link previews/unfurls. */
+export const DISCORD_FLAG_SUPPRESS_EMBEDS = 4;
+
 /**
- * Forwards to a private Discord channel webhook. Stub-level on purpose:
- * plain text, mentions disabled (a message can't @everyone), truncated to
- * Discord's limit, 5 s timeout. Failure → ok:false so the page can ask the
- * grown-up to try again.
+ * User text goes inside a ```text fence, so Discord shows it literally:
+ * no markdown, no links, no masked links. Backticks in the text are
+ * swapped for U+02CB (ˋ) so the text cannot close the fence early.
+ */
+function fenceSafe(text: string): string {
+  return text.replace(/`/g, "\u02cb");
+}
+
+/**
+ * Forwards to a private Discord channel webhook. Plain on purpose. Every
+ * mention is disabled (allowed_mentions.parse is empty, so no @everyone),
+ * embeds are suppressed (flags: 4), user text is code-fenced, the message
+ * is cut to Discord's limit with the fence still closed, and there is a 5 s
+ * timeout. Failure → ok:false so the page can ask the grown-up to try
+ * again.
  */
 export class DiscordWebhookSink implements ContactSink {
   readonly name = "discord";
@@ -264,11 +262,16 @@ export class DiscordWebhookSink implements ContactSink {
   }
 
   static format(record: ContactRecord): string {
-    const text =
-      `**Meridian contact** — ${record.topic}\n` +
-      `Reply-to (grown-up, optional): ${record.replyTo ?? "—"}\n` +
-      `Received: ${record.receivedAt}\n\n${record.message}`;
-    return text.length > DISCORD_MAX_CONTENT ? `${text.slice(0, DISCORD_MAX_CONTENT - 1)}…` : text;
+    const head =
+      `**Meridian contact** · topic: ${record.topic}\n` +
+      `Received: ${record.receivedAt}\n` +
+      `Reply-to (grown-up, optional):\n\`\`\`text\n${fenceSafe(record.replyTo ?? "-")}\n\`\`\`\n` +
+      "Message:\n```text\n";
+    const tail = `\n\`\`\`\n_${CONTACT_RETENTION_REMINDER}_`;
+    const room = DISCORD_MAX_CONTENT - head.length - tail.length;
+    const body = fenceSafe(record.message);
+    const fitted = body.length > room ? `${body.slice(0, Math.max(0, room - 1))}…` : body;
+    return head + fitted + tail;
   }
 
   async deliver(record: ContactRecord): Promise<DeliveryResult> {
@@ -279,7 +282,11 @@ export class DiscordWebhookSink implements ContactSink {
         method: "POST",
         signal: ctrl.signal,
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ content: DiscordWebhookSink.format(record), allowed_mentions: { parse: [] } }),
+        body: JSON.stringify({
+          content: DiscordWebhookSink.format(record),
+          allowed_mentions: { parse: [] },
+          flags: DISCORD_FLAG_SUPPRESS_EMBEDS,
+        }),
       });
       return { ok: res.ok, stored: res.ok };
     } catch {
@@ -290,11 +297,55 @@ export class DiscordWebhookSink implements ContactSink {
   }
 }
 
-/** Pick the sink from config: Discord only when its secret is set. */
+/**
+ * Pick the sink from config. Discord is used only when the secret is a
+ * https://discord.com/api/webhooks/... URL. Any other host (including a
+ * typo or a look-alike) falls back to NoopSink, so a mis-set secret can
+ * never send parents' messages somewhere else.
+ */
 export function selectSink(env: ContactEnv): ContactSink {
   const url = env.CONTACT_DISCORD_WEBHOOK_URL?.trim();
-  if (url && /^https:\/\//.test(url)) return new DiscordWebhookSink(url);
+  if (url && isDiscordWebhookUrl(url)) return new DiscordWebhookSink(url);
   return new NoopSink();
+}
+
+export function isDiscordWebhookUrl(url: string): boolean {
+  if (!url.startsWith(DISCORD_WEBHOOK_PREFIX)) return false;
+  try {
+    const u = new URL(url);
+    return u.protocol === "https:" && u.hostname === "discord.com" && !u.username && !u.password && !u.port;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Read the body as a stream, stopping at maxBytes. Returns null as soon as
+ * the cap is passed, and cancels the stream so the rest is never read or
+ * buffered. This covers chunked uploads that have no content-length.
+ */
+export async function readBodyCapped(request: Request, maxBytes: number): Promise<string | null> {
+  if (!request.body) return "";
+  const reader = request.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > maxBytes) {
+      await reader.cancel().catch(() => {});
+      return null;
+    }
+    chunks.push(value);
+  }
+  const all = new Uint8Array(total);
+  let at = 0;
+  for (const c of chunks) {
+    all.set(c, at);
+    at += c.byteLength;
+  }
+  return new TextDecoder().decode(all);
 }
 
 // --- Handler -----------------------------------------------------------
@@ -324,16 +375,20 @@ export async function handleContactRequest(
     });
   }
   if (request.method !== "POST") return json(405, { error: "method not allowed" }, origin, { allow: "POST, OPTIONS" });
+  // A browser always sends Origin on a fetch POST. No Origin means a
+  // non-browser client trying to skip the origin check, so refuse it.
+  if (!request.headers.get("origin")) return json(403, { error: "origin required" }, null);
   if (origin === null) return json(403, { error: "origin not allowed" }, null);
 
   const declared = Number(request.headers.get("content-length") ?? "0");
   if (Number.isFinite(declared) && declared > MAX_BODY_BYTES) return json(413, { error: "body too large" }, origin);
-  const body = await request.text();
-  if (new TextEncoder().encode(body).length > MAX_BODY_BYTES) return json(413, { error: "body too large" }, origin);
+  const body = await readBodyCapped(request, MAX_BODY_BYTES);
+  if (body === null) return json(413, { error: "body too large" }, origin);
 
   // Rate-limit before parsing so junk floods are cheap to refuse.
   const ip = request.headers.get("cf-connecting-ip")?.trim() || "unknown";
-  const slot = takeSlot(await clientKey(ip), now);
+  const limiter = selectRateLimiter(env, (binding) => log(`rate-limit-binding-error:${binding}`));
+  const slot = await limiter.take(ip, now);
   if (!slot.allowed) {
     log("rate-limited");
     return json(429, { error: "too many messages — try again later" }, origin, { "retry-after": String(slot.retryAfterSec) });
@@ -361,10 +416,13 @@ export async function handleContactRequest(
 }
 
 /**
- * Read the contact config from the runtime. On the Cloudflare `meridian`
- * worker, secrets reach `process.env` when the worker runs with the
- * `nodejs_compat` flag (compatibility date ≥ 2025-04-01). Anything missing
- * → empty config → NoopSink: the safe default.
+ * Read the contact config (strings only) from the runtime. On the
+ * Cloudflare `meridian` worker, secrets reach `process.env` only when the
+ * worker runs with the `nodejs_compat` compatibility flag and a
+ * compatibility date of 2025-04-01 or later (or with
+ * `nodejs_compat_populate_process_env`). Without that, this returns {} and
+ * the handler falls back to NoopSink and the default origins. That fails
+ * safe, but no message would be delivered.
  */
 export function readContactEnv(): ContactEnv {
   try {
@@ -376,4 +434,13 @@ export function readContactEnv(): ContactEnv {
   } catch {
     return {};
   }
+}
+
+/**
+ * Full runtime config for the route: the string config above, plus the
+ * Workers Rate Limiting binding objects. Bindings never appear in
+ * process.env (see readRateLimitBindings).
+ */
+export async function readContactRuntimeEnv(): Promise<ContactEnv> {
+  return { ...readContactEnv(), ...(await readRateLimitBindings()) };
 }

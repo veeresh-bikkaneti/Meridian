@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { handleContactRequest, readContactEnv } from "@/lib/contact/contact-handler.server";
+import { handleContactRequest, readContactRuntimeEnv } from "@/lib/contact/contact-handler.server";
 
 /**
  * POST /api/contact — server-only route on the main `meridian` worker
@@ -10,6 +10,10 @@ import { handleContactRequest, readContactEnv } from "@/lib/contact/contact-hand
  * crash pipeline is a different worker (workers/crash-report) with its own
  * DISCORD_WEBHOOK_URL; this route reads only CONTACT_DISCORD_WEBHOOK_URL.
  *
+ * readContactRuntimeEnv() adds the optional Workers Rate Limiting bindings
+ * (CONTACT_RATE_LIMITER / CONTACT_GLOBAL_RATE_LIMITER) to the string config.
+ * If they are missing, the in-memory limiter still applies.
+ *
  * The static GitHub Pages build has no server, so this route only exists
  * on the Cloudflare (and preview) builds; the Pages mirror posts here
  * cross-origin via flags.json `contactEndpoint`.
@@ -17,9 +21,9 @@ import { handleContactRequest, readContactEnv } from "@/lib/contact/contact-hand
 export const Route = createFileRoute("/api/contact")({
   server: {
     handlers: {
-      POST: ({ request }) => handleContactRequest(request, readContactEnv()),
-      OPTIONS: ({ request }) => handleContactRequest(request, readContactEnv()),
-      GET: ({ request }) => handleContactRequest(request, readContactEnv()),
+      POST: async ({ request }) => handleContactRequest(request, await readContactRuntimeEnv()),
+      OPTIONS: async ({ request }) => handleContactRequest(request, await readContactRuntimeEnv()),
+      GET: async ({ request }) => handleContactRequest(request, await readContactRuntimeEnv()),
     },
   },
 });
