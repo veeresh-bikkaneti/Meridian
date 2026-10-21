@@ -60,29 +60,41 @@ handbook source (`~/workspace/your_files/meridian-handbook/`) for
      building: `public/og.jpg` still reads…" — a dated build-time
      note; a historical record, left as one.
 - **`scripts/brand-check.mjs` — no change, confirmed:** it guards the
-  banner's presence, its 1200×264-JPEG format, and the 600 KB scraper
-  budget (`MAX_CARD_BYTES`) only; its header describes path/format,
-  which are unchanged and still accurate. The new file (68,552 B)
-  complies.
+  banner's presence and the 600 KB scraper budget (`MAX_CARD_BYTES`)
+  only — it does not verify the 1200×264 dimensions or the JPEG
+  format (confirmed by reading the script: an existence check plus a
+  size check; the dimensions in its messages are guidance text, not
+  a check). Its header describes path/format, which are unchanged
+  and still accurate. The new file (68,552 B) complies.
 - **Wiring — no change, confirmed:** `scripts/grok-pwa-shared.mjs`
   stamps `site.banner` from the file's existence and the `x:game:image`
   meta is path-based. No banner-specific alt text exists anywhere
   (`SHARE_IMAGE_ALT` describes `og.jpg` only), so no alt update is
   owed.
 
-## Gates (run on this branch)
+## Gates
 
+Run on the original branch tip, and re-run at the rebased tip
+(2026-10-21, on main `a8105ce`) before merging:
+
+- `node scripts/brand-check.mjs` — ok, no warnings
 - `npx tsc --noEmit` — clean
 - `npm test` — scripts 799 (790 pass / 9 skip / 0 fail) + src
-  1358 pass / 0 fail
+  1366 pass / 0 fail
 - `node scripts/lint-cards.mjs` — GATE PASSED
 - `npm run build:pages` (with `VITE_KOFI_URL`) — green; built artifact
   checksum verified identical (above)
 
-## Ready to merge? NO
+## Ready to merge? YES — merged on the owner's word
 
-- The full review pipeline (owner's standing rule) has not run on
-  this PR yet.
-- Merging is the owner's word alone. This branch is based on main
-  `a45674b`; the owner's 2026-10-20 merge order runs #177 → #178 →
-  #179 first, so a rebase + retest at merge time is expected.
+- The full review pipeline ran on tip `9d0560a`: **READY, zero
+  BLOCKs, DevEx PASS**; benchmark +46,577 B (+0.07%).
+- The owner gave the merge word on 2026-10-21 ("Merge #181"). Per
+  the standing merge pattern the branch was rebased onto main
+  `a8105ce` (the #177 → #178 → #179 chain, plus #184 and #186, had
+  merged since the vote); the only conflict was this file, resolved
+  keeping this branch's own record. A mechanical rebase needs no
+  re-vote (rule 13). The panel's one wording nit — the brand-check
+  sentence above overstating what the script verifies — is cured in
+  the merge commit, and the gates were re-run at the rebased tip
+  (above).
