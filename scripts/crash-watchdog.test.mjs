@@ -839,3 +839,22 @@ test("shipped script runs the watchdog end-to-end in a vm", () => {
   const veil = veilOf(host);
   assert.ok(veil.innerHTML.includes("The game couldn't start on this phone."));
 });
+
+test("send flow: dpr is clamped like dprBucket() (1-4, undefined when bogus)", () => {
+  for (const [raw, want] of [
+    [7, 4],
+    [0.4, 1],
+    [2.6, 3],
+    [0, undefined],
+    [undefined, undefined],
+  ]) {
+    const { host, calls, xhr } = fakeHost({
+      xhrOpts: { flagsText: JSON.stringify({ observabilityEndpoint: "https://obs.test/hook" }) },
+    });
+    host.devicePixelRatio = raw;
+    crashWatchdogMain(host, "b-dpr", isValidWatchdogEndpoint);
+    fireTimer(calls);
+    const body = JSON.parse(xhr.posts[0].body);
+    assert.equal(body.device.dpr, want, `devicePixelRatio ${raw}`);
+  }
+});
