@@ -1,11 +1,12 @@
 # BRANCH_STATUS — docs/stale-cleanup-oct21 (docs cleanup)
 
-**State: panel round 1 returned NOT READY (2 BLOCKs + convergent
-nits); the cure round below addresses every item. NOT ready to merge —
-a rule-13 re-vote on the cured tip and the owner's merge word are
-still owed** (standing rule: the panel approves the final tip itself).
+**State: panel round 2 returned NOT READY (BLOCK ×2 — Frontend,
+Office Hours — DevEx FAIL); cure round 2 below addresses every
+item. NOT ready to merge — a rule-13 re-vote (round 3) on the cured
+tip and the owner's merge word are still owed** (standing rule:
+the panel approves the final tip itself).
 
-Base: `origin/main cc23d30`. Docs/markdown only — 9 files. No code,
+Base: `origin/main cc23d30`. Docs/markdown only — 10 files. No code,
 no tests.
 
 ## Panel verdict (round 1, on tip `4a90a39`)
@@ -60,7 +61,9 @@ before writing:
 - generation-prompt §1: "The player guesses via a constrained
   typeahead picker" was wrong — the shipped surface is tap-a-labeled-
   place → bottom-sheet confirm (`src/game/loop/LoopScreen.tsx`); the
-  typeahead survives only as an internal index. Sentence fixed. The
+  typeahead survives only as an internal index. Sentence fixed.
+  (This round-1 cure itself overcorrected — panel round-2 BLOCK-A;
+  superseded by cure round 2 below.) The
   two LOW author-voice daily remnants are reworded model-true:
   "even on days they lose" → "even when they lose the mystery"
   (~:77); "what week-balancing needs" → "what pool balancing needs"
@@ -95,12 +98,18 @@ The crash-report worker has ONLY ever been deployed by direct API
 script upload — all deployments in the Cloudflare API history are
 `source: api`, `triggered_by: upload` (the cf.py / version_upload
 path); `wrangler deploy` was never the mechanism. The "Flagged, NOT
-fixed" item below is therefore RESOLVED, and the three docs now
-describe the real flow (cf.py helper: `cf.py deploy <script.js>`,
-secrets via `cf.py secret <NAME>` — the API secret endpoint),
-including the known constraint that a fresh upload does NOT inherit
-the `DISCORD_WEBHOOK_URL` secret (it must be re-set on the new
-version — the current Phase 1 deploy blocker):
+fixed" question is therefore settled **for the three docs this
+branch rewrites** — `workers/crash-report/README.md`, handbook
+ch07, and `docs/observability.md` now describe the real flow
+(cf.py helper: `cf.py deploy <script.js>`, secrets via
+`cf.py secret <NAME>` — the API secret endpoint), including the
+known constraint that a fresh upload does NOT inherit the
+`DISCORD_WEBHOOK_URL` secret (it must be re-set on the new
+version — the current Phase 1 deploy blocker). Cure round 2
+extended the same correction to `worker/observability/README.md`;
+the two `wrangler.toml` header comments that still prescribe the
+old flow are listed under "Flagged, NOT fixed" below — they are
+the only known remnants:
 
 - `workers/crash-report/README.md` — Deploy + owner-step + Secrets
   rewritten to the cf.py flow; the "Go-live — DONE (2026-10-17)"
@@ -124,6 +133,113 @@ version — the current Phase 1 deploy blocker):
 (it still describes the facts ladder as living "on the facts-ladder
 branch") was filed as **issue #193** — a code-comment fix, outside
 this branch's docs-only scope.
+
+## Panel verdict (round 2, on tip `e0fb108`) — NOT READY
+
+Tally: APPROVE ×2 / APPROVE-WITH-NITS ×8 / BLOCK ×2 (Frontend,
+Office Hours), DevEx **FAIL**. Round-1 BLOCK-1 + BLOCK-2 were
+verified CURED by the panel and are undisturbed. The new findings:
+
+- **BLOCK-A (Frontend)** — cure round 1's §1 sentence for
+  generation-prompt.md overcorrected: "the typeahead survives only
+  as an internal index — it is not the guessing surface" is
+  half-false (a player-visible "Search the map" combobox ships on
+  every unfinished mystery). Companions: "tapping a labeled place"
+  omitted region-named guesses from unlabeled taps; ch05's "At card
+  time, mapStory" misplaced the composition; §8's framing verb
+  "assembles" was present-tense outside the [SYNTHESIS] quotes.
+- **BLOCK-B (Office Hours, rule 11)** — this record declared the
+  deploy conflict "RESOLVED" while two prescribing leftovers were
+  nowhere listed: `worker/observability/README.md`'s
+  `wrangler deploy` block and `workers/crash-report/wrangler.toml`'s
+  header comments.
+- **DevEx FAIL** — the rewritten Deploy page
+  (`workers/crash-report/README.md`) was not executable and not
+  internally consistent: no bundle command at all, the KV step
+  still implied "paste the id into wrangler.toml", the cron "needs
+  no extra setup", error 10021 absent, the test count said 32
+  (the suite is 33), a wrong-way "as above" (Secrets is BELOW
+  Deploy), and an unreconciled staging aside.
+- **Nit cluster** — ch05's "deepest-first" gloss and its
+  "(fact before history; principle 1: history first)" collision;
+  ch06's split bullet missing its bold lead-in + "Only the score
+  survives both exits"; an uncited owner paraphrase in this file's
+  flags.ts item (rule 11).
+
+## Cure round 2 (this tip)
+
+- **BLOCK-A — cured.** generation-prompt §1 now reads: a tap on a
+  labeled place names that place, "and a tap anywhere else still
+  counts — it names the region it lands in (open ocean names the
+  water). (The old typeahead picker no longer submits guesses — it
+  survives as a "Search the map" camera-jump box over the same
+  ~119k index: picking a result flies there and selects the place,
+  and the bottom sheet still confirms.)" Verified against
+  `src/game/loop/guess-input.tsx` (label "Search the map",
+  `role="combobox"`, placeholder "Type a place to fly there…"; its
+  header: picking "never submits a guess… The bottom sheet confirms
+  the guess"; `propose()`: "the pick only selects; the bottom
+  sheet commits the guess"), its mount at `LoopScreen.tsx` (~:948),
+  and the region-named unlabeled-tap path (LoopScreen comments;
+  owner directive 2026-10-12). §8: "assembles" → "assembled" (one
+  word, historical framing; the quoted words are untouched). Ch05:
+  composition runs at chunk load via `toStarter`, re-mapped via
+  `storyForBand` — now stated as such.
+- **BLOCK-B — cured.** (1) `worker/observability/README.md`'s
+  Deploy block now states the v1 worker is not deployed and that
+  this project's workers ship by direct API script upload, never
+  `wrangler deploy`. (2) The `wrangler.toml` header comments are
+  listed under "Flagged, NOT fixed" below, with their owner and
+  the reason. (3) The RESOLVED claims (Deploy-docs section above,
+  Flagged section below) are reworded to the exact scope — the
+  three named docs describe the real flow; the `wrangler.toml`
+  remnants remain open. No unqualified "RESOLVED" survives.
+- **DevEx FAIL — cured.** Ground truth established first-hand
+  before writing: `cf.py` read end-to-end (deploy PUTs one JS file
+  with metadata {main_module, compatibility_date, workers_dev} —
+  no bindings, no triggers, never reads `wrangler.toml`; `secret`
+  PUTs to the script's secrets endpoint, value as argument or read
+  from stdin); the ops branch record (`ops/telemetry-phase1-deploy`
+  — namespace created + cron set via the schedules endpoint,
+  2026-10-21); the worker's own build setup (no bundler, no build
+  script — one self-contained TS module). The Deploy/Secrets
+  passages now give: the literal bundle command
+  (`npx tsc workers/crash-report/src/index.ts --outDir dist-worker
+  --module esnext --target es2022 --moduleResolution bundler
+  --skipLibCheck`) — **TESTED on this VM**: exactly one file out
+  (`index.js`, 26,376 B), and the emitted module answers /health
+  with 200 `{"ok":true}` when loaded under node; how the KV
+  binding actually travels (version-upload metadata — a bare
+  `cf.py deploy` carries none, so counting stays fail-open off);
+  wrangler.toml's true role (the human config record; on main its
+  KV block is still commented with `PASTE_NAMESPACE_ID_HERE`); the
+  three KV states kept separate (namespace **CREATED** 2026-10-21,
+  id `34884ed9…`; binding **RECORDED** on
+  `ops/telemetry-phase1-deploy`, awaiting the owner's merge word;
+  Phase 1 **LIVE** pending the webhook re-supply); the cron's real
+  mechanism (schedules endpoint, set 2026-10-21, persists across
+  uploads — replacing "needs no extra setup"); cf.py named as a
+  VM-local helper OUTSIDE the repo (off this VM: dashboard/API
+  with your own token); error **10021** in the secret warning;
+  both `cf.py secret` forms (argument / stdin) documented as
+  implemented; test count 32 → **33** (suite run first-hand:
+  33 pass); the wrong-way "as above" removed in the rewrite;
+  staging marked **not set up today** (`cf.py` is hardcoded to
+  the production script name).
+- **Nit cluster — absorbed.** Ch05: the precedence is no longer
+  glossed "deepest-first" — wikitext is tried before the deeper
+  eb1911, and the hook rung does no re-validation, both now stated
+  as `scripts/facts-ladder.mjs` has them (its header: composed
+  kinds MUST pass the validator; `hookRung`: "No re-validation
+  needed"); the "(fact before history; principle 1…)"
+  parenthetical is rewritten so the composer's field precedence
+  and the card principle's story sense no longer collide. Ch06:
+  the split bullet gained the bold lead-in its siblings have
+  ("**The toggle ends the run outright.**") and "Only the score
+  survives both exits" → "Only the session survives both exits
+  (the whole session state carries over; it is the run that
+  ends)". This file: the flags.ts item's uncited owner paraphrase
+  is cut (rule 11).
 
 ## Fixes (original round, each verified against the code / truth)
 
@@ -199,17 +315,29 @@ this branch's docs-only scope.
   describe the baked-in defaults / the `learningOutcomes` false state as
   "today's behavior", but production has run `learningOutcomes` ON since
   2026-10-04 (PR #45, remote `flags.json` flip) — the baked default is
-  the fail-closed fallback, not today's behavior. The owner reserved
-  this wording as his own call in the 2026-10-17 docs-refresh
-  follow-ups; not edited (also outside this branch's docs-only scope).
-- (Resolved in the cure round: the crash-receiver deploy-method
-  conflict — see "Deploy-docs correction" above. The ground truth
-  landed 2026-10-21, so the docs now state the verified mechanism.)
+  the fail-closed fallback, not today's behavior. Not edited: the
+  wording decision is deferred (recorded as an open follow-up since
+  the 2026-10-17 docs refresh), and the file is code — outside this
+  branch's docs-only scope.
+- **`workers/crash-report/wrangler.toml` header comments (lines 3
+  and 9).** They still prescribe the old flow — line 3: "secrets are
+  set via `wrangler secret put`"; line 9: "`npx wrangler kv namespace
+  create TELEMETRY_COUNTS`" — while the verified mechanism is the API
+  upload path (cf.py / version upload; secrets via the API secret
+  endpoint; the namespace was created via the API, 2026-10-21). NOT
+  fixed here: that file is owned by branch
+  `ops/telemetry-phase1-deploy` (it carries the KV binding commit),
+  and this docs branch does not edit non-markdown files. The header
+  correction rides that branch or a follow-up.
 
 ## Gates
 
 - `node scripts/lint-cards.mjs` — **GATE PASSED** (run at the cured
   tip).
-- `git diff --stat origin/main` — 9 files, docs/markdown only (this
-  file included); zero code files, so the benchmark step is a no-op
-  (no build inputs changed).
+- `git diff --stat origin/main` — 10 files, docs/markdown only
+  (this file included; cure round 2 adds
+  `worker/observability/README.md`); zero code files, so the
+  benchmark step is a no-op (no build inputs changed).
+- `npm run test:worker` — 33 pass (run first-hand in cure round 2
+  to verify the README's corrected test count; the branch changes
+  no worker code).
