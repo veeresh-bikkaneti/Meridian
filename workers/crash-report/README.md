@@ -185,23 +185,39 @@ forwards still fire.
 
 ## Deploy
 
+This worker has **only ever been deployed by direct API script
+upload** — every deployment in the Cloudflare API history is
+`source: api`, `triggered_by: upload` (ground truth API-verified
+2026-10-21). `wrangler deploy` was never the mechanism; do not use
+it for releases (wrangler remains fine for the local dry-run below).
+The release path is the `cf.py` helper, which uploads a single-file
+JS build of the worker to the Workers scripts endpoint:
+
 ```sh
-cd workers/crash-report
-npm install          # once, on the machine you deploy from
-npx wrangler kv namespace create TELEMETRY_COUNTS   # Phase 1 counters (once)
-# → paste the returned id into the [[kv_namespaces]] block in wrangler.toml (uncomment it)
-npx wrangler deploy
-curl https://<your-worker-host>/health   # → {"ok":true}
+# 1. Once: create the Phase 1 KV namespace via the Cloudflare API
+#    (accounts/{id}/storage/kv/namespaces) and paste the returned id
+#    into the [[kv_namespaces]] block in wrangler.toml (uncomment
+#    it). Done 2026-10-21.
+# 2. Build/bundle src/index.ts into a single JS module file, then:
+python3 ~/workspace/skills/cloudflare/bin/cf.py deploy <built-script.js>
+curl https://meridian-crash-report.knowledgetest.workers.dev/health   # → {"ok":true}
+# 3. Re-set the secrets on the new version (see Secrets) — a fresh
+#    upload does NOT inherit DISCORD_WEBHOOK_URL.
 ```
 
-**Owner step, in this order** (the worker's live deploy is a repo-owner
-step, and the wrangler-deploy vs manual-version_upload question is
-still open — do NOT change the release method here):
+**Owner step, in this order** (the worker's live deploy is a
+repo-owner step):
 
-1. Create the KV namespace (command above) and paste the id into
+1. Create the KV namespace via the API (above) and paste the id into
    `wrangler.toml`; the cron trigger needs no extra setup.
-2. Deploy the worker and confirm `/health`.
-3. Set secrets (`wrangler secret put …`) as above.
+2. Upload the worker (`cf.py deploy`, above) and confirm `/health`.
+3. Set secrets (`cf.py secret …`) as above — **after** the upload,
+   every time: a fresh upload does not inherit the previous version's
+   `DISCORD_WEBHOOK_URL` secret, and a version uploaded without it
+   runs with forwarding silently off. (This is the current Phase 1
+   deploy blocker: the webhook value lives only in the platform
+   secret store and cannot be read back, so it must be re-supplied
+   when the Phase 1 version is deployed.)
 4. Verify: send one `tile_failed` event — it must be counted and NOT
    forwarded individually (`{"ok":true,"forwarded":false,"counted":true}`);
    the next hourly digest should include it. (`counted:true` requires
@@ -209,8 +225,8 @@ still open — do NOT change the release method here):
    until the binding is wired.) The existing production
    endpoint already set in `public/flags.json` does not change.
 
-**Rollback:** deploy the previous worker version (Cloudflare version
-history) or `git revert` + redeploy — hiccup-class events then resume
+**Rollback:** re-upload the previous worker version's script
+(Cloudflare version history) or `git revert` + re-upload — hiccup-class events then resume
 individual forwarding, exactly the pre-Phase-1 behavior. The KV
 buckets are inert hour-keyed counters: they need no cleanup and can
 stay bound.
@@ -226,28 +242,41 @@ curl -X POST localhost:8787/ingest -H 'content-type: application/json' \
 
 ## Secrets
 
+Secrets are set through the Cloudflare API secret endpoint, via the
+same `cf.py` helper (the value goes as the second argument, or on
+stdin):
+
 ```sh
-cd workers/crash-report
-npx wrangler secret put DISCORD_WEBHOOK_URL   # Discord channel → Integrations → Webhooks → New Webhook
-npx wrangler secret put RESEND_API_KEY        # https://resend.com/api-keys
-npx wrangler secret put REPORT_EMAIL          # recipient, e.g. you@example.com
+python3 ~/workspace/skills/cloudflare/bin/cf.py secret DISCORD_WEBHOOK_URL   # Discord channel → Integrations → Webhooks → New Webhook
+python3 ~/workspace/skills/cloudflare/bin/cf.py secret RESEND_API_KEY        # https://resend.com/api-keys
+python3 ~/workspace/skills/cloudflare/bin/cf.py secret REPORT_EMAIL          # recipient, e.g. you@example.com
 # Optional (non-secret, but contains an address — use a secret anyway):
-npx wrangler secret put REPORT_FROM           # verified sender; default is Resend's onboarding@resend.dev test domain
+python3 ~/workspace/skills/cloudflare/bin/cf.py secret REPORT_FROM           # verified sender; default is Resend's onboarding@resend.dev test domain
 ```
+
+Remember: a fresh script upload does **not** inherit existing
+secrets — re-set them on the new version after every upload, or
+forwarding silently stops (the Phase 1 deploy blocker).
 
 Discord and email are independent: configure either or both. With
 neither set, the worker accepts and acknowledges events without
 forwarding (`"forwarded":false`), so it is safe to deploy **before**
 secrets exist.
 
-## Go-live — DONE (2026-10-17)
+## Go-live — DONE (worker live by API upload; pipeline verified 2026-10-10)
 
 The worker is live at `meridian-crash-report.knowledgetest.workers.dev`
 and `public/flags.json` on main points `observabilityEndpoint` at its
-`/ingest`. The procedure below is what was run:
+`/ingest`. It got there by the API script-upload flow in Deploy
+above — the pre-Phase-1 code live today was last uploaded
+2026-10-09, and the Game → Worker → Discord pipeline was verified
+live on 2026-10-10. (An earlier version of this section dated
+go-live 2026-10-17; no worker deployment happened that day —
+2026-10-17 was the Phase 1 code merge, PR #171, on the flags/repo
+side.) The procedure below is what was run:
 
-1. Deploy the worker and confirm `/health`.
-2. Set secrets (`wrangler secret put …`) as above.
+1. Upload the worker (`cf.py deploy`) and confirm `/health`.
+2. Set secrets (`cf.py secret …`) as above.
 3. Add the Worker URL as the **top-level** `observabilityEndpoint` in
    `public/flags.json` (NOT inside `flags`) and redeploy the site:
 
