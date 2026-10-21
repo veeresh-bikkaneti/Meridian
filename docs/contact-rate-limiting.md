@@ -19,6 +19,16 @@ The binding closes that gap within a location. A strict worldwide limit
 would need a Durable Object. That is not needed at this traffic level and is
 not part of this change.
 
+## Who the limit trusts
+
+The per-sender limit keys on the `cf-connecting-ip` header. That is safe
+on the real deploy because Cloudflare's edge sets the header itself, so a
+visitor cannot override it. On a non-Cloudflare adapter the same header
+is just text a client can write, so the per-sender limit would be
+spoofable there. And when the header is missing entirely, every such
+client shares one `unknown` fallback bucket — 3 messages per 10 minutes
+collectively, not each.
+
 ## Is the binding free? (owner rule: free options only)
 
 Yes, as far as Cloudflare's docs show (checked 2026-10-21):
