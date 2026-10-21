@@ -55,5 +55,13 @@ test("hashed /assets/* are immutable; sw.js and flags.json always revalidate", (
   for (const p of ["/sw.js", "/flags.json"]) {
     assert.ok((rules.get(p) ?? []).some((l) => /no-cache/.test(l)), p);
   }
-  assert.ok((rules.get("/assets/maplibre-gl-*") ?? []).includes("! Cache-Control"));
+  // Un-hashed files under /assets/ detach the immutable header, and use the
+  // detach line ALONE: a second set-line would comma-join, not override.
+  for (const p of [
+    "/assets/maplibre-gl-worker.mjs",
+    "/assets/maplibre-gl-shared.mjs",
+    "/assets/storyteller/storyteller-assets.json",
+  ]) {
+    assert.deepEqual(rules.get(p), ["! Cache-Control"], p);
+  }
 });

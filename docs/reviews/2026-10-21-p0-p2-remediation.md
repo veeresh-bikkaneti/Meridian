@@ -116,6 +116,27 @@ progress (recorded below).
 | `CONTACT_DISCORD_WEBHOOK_URL` | `meridian` (main site, `/api/contact`) | grown-ups contact messages (new, optional, separate channel) |
 | `CONTACT_ALLOWED_ORIGINS` | `meridian` | optional comma list of cross-origin callers. Default is the GitHub Pages origin |
 
+## Overlap with PR #203 (perf, F1 immutable caching)
+
+PR #203 also adds `public/_headers`, containing only the `/assets/*`
+immutable rule and three detach-only carve-outs. This branch aligned its
+`/assets` blocks to be **text-identical** to #203's. It had used a
+wildcard `! Cache-Control` + set-line pair, which #203 rightly avoids
+because Cloudflare comma-joins duplicate headers across matching rules.
+Merge plan for whichever PR lands second:
+
+1. Keep one file. Use #203's long header comment for the `/assets` section
+   (it cites the Cloudflare docs), and keep this branch's CSP comment above `/*`.
+2. Keep this branch's `/*` security block. #203 has no equivalent.
+3. Keep the shared `/assets/*` + three carve-out blocks once (already identical).
+4. Keep this branch's `no-cache` blocks (`/sw.js`, `/flags.json`,
+   `/build-meta.json`, `/manifest.webmanifest`) and the HTML `s-maxage=60`
+   blocks. None of them overlaps an `/assets` path, so nothing comma-joins.
+   #203's comment says these paths "keep the platform default". Edit that
+   sentence to point at the explicit blocks.
+5. Run `node --test scripts/security-headers.test.mjs` plus #203's own
+   header test, if it has one.
+
 ## Remaining (P3+, not in this branch)
 
 - CSP still allows `'unsafe-inline'` scripts. Move to hashes or nonces for

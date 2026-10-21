@@ -55,7 +55,7 @@ frame-ancestors 'none'; upgrade-insecure-requests
 | Path | Cache-Control | Why |
 | --- | --- | --- |
 | `/assets/*` | `public, max-age=31536000, immutable` | content-hashed file names |
-| `/assets/maplibre-gl-*`, `/assets/storyteller/*` | `public, max-age=0, must-revalidate` (`! Cache-Control` drops the immutable header first) | fixed names, so they must revalidate |
+| `/assets/maplibre-gl-worker.mjs`, `/assets/maplibre-gl-shared.mjs`, `/assets/storyteller/storyteller-assets.json` | `! Cache-Control` only, so the platform default `public, max-age=0, must-revalidate` + ETag applies | fixed names with mutable content. Cloudflare comma-joins duplicate headers from overlapping rules, so the detach line stands alone (same blocks as PR #203) |
 | `/sw.js`, `/flags.json`, `/build-meta.json`, `/manifest.webmanifest` | `no-cache` | update detection and remote kill switches must see changes immediately |
 | `/`, `/index.html` | `public, max-age=0, s-maxage=60, must-revalidate` | browsers revalidate. The edge may hold HTML for up to 60 s |
 
