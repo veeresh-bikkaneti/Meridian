@@ -205,9 +205,41 @@ import {
   writeLearningStore,
   type LearningStore,
 } from "@/game/learning";
-import { LoopScreen } from "@/game/loop/LoopScreen";
 import { readLoopOpen, writeLoopOpen, peekLoopProgress } from "@/game/loop/store";
-import { TrailScreen } from "@/game/coldtrail/TrailScreen";
+// F2 bundle split: GeoDetective (Loop) and Cold Trail are play-intent
+// screens — they render only when the player opens them (or when a saved
+// loopOpen flag restores GeoDetective on boot). Both screens statically
+// import LoopMap, which value-imports maplibre-gl (~1.1 MB) and its
+// stylesheet, so a static import here pulled the whole map library into
+// the preloaded route chunk. They are React.lazy instead — the
+// SatelliteMap pattern below — so MapLibre loads on demand, behind
+// Suspense + MapErrorBoundary at the render sites. The screens have no
+// default export, so the lazy factories adapt their named exports (the
+// HomeGlobe idiom above). The raw loaders are shared with the prefetch
+// helpers below so an intent-prefetch and the render path resolve
+// through the same module cache entry.
+const loadLoopScreen = () => import("@/game/loop/LoopScreen");
+const loadTrailScreen = () => import("@/game/coldtrail/TrailScreen");
+const LoopScreen = lazy(() =>
+  loadLoopScreen().then((m) => ({ default: m.LoopScreen })),
+);
+const TrailScreen = lazy(() =>
+  loadTrailScreen().then((m) => ({ default: m.TrailScreen })),
+);
+/**
+ * Prefetch on intent: hovering, focusing, or pressing a home case card
+ * starts the screen's chunk download before the click commits, so the
+ * lazy boundary is usually warm by the time the screen mounts.
+ * Fire-and-forget: a rejection is swallowed here on purpose — if the
+ * chunk genuinely cannot load, the render path's own lazy load surfaces
+ * it through MapErrorBoundary (retry = reload), never a white screen.
+ */
+function prefetchLoopScreen(): void {
+  void loadLoopScreen().catch(() => {});
+}
+function prefetchTrailScreen(): void {
+  void loadTrailScreen().catch(() => {});
+}
 import {
   REVIEW_DECK_COPY,
   REVIEW_DECK_REGION_ID,
@@ -2026,10 +2058,14 @@ export function GameApp() {
     return (
       <>
         {mapModeAnnouncer}
-        <LoopScreen
-          onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }}
-          onCelebrate={(spec) => setCelebration(spec)}
-        />
+        <MapErrorBoundary>
+          <Suspense fallback={<BootSplash />}>
+            <LoopScreen
+              onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }}
+              onCelebrate={(spec) => setCelebration(spec)}
+            />
+          </Suspense>
+        </MapErrorBoundary>
         {celebrationOverlay}
         {idleToast}
       </>
@@ -2042,7 +2078,11 @@ export function GameApp() {
     return (
       <>
         {mapModeAnnouncer}
-        <TrailScreen onLeave={() => setColdTrailOpen(false)} />
+        <MapErrorBoundary>
+          <Suspense fallback={<BootSplash />}>
+            <TrailScreen onLeave={() => setColdTrailOpen(false)} />
+          </Suspense>
+        </MapErrorBoundary>
         {celebrationOverlay}
         {idleToast}
       </>
@@ -2734,7 +2774,14 @@ function Choose({
             {/* Owner 2026-10-09: earned badges show on the home page card —
                 no separate Passport page. Clean Round is earned in this loop. */}
             <EarnedBadgeRow />
-            <button type="button" className="hv5-go" onClick={onLoop}>
+            <button
+              type="button"
+              className="hv5-go"
+              onClick={onLoop}
+              onPointerEnter={prefetchLoopScreen}
+              onPointerDown={prefetchLoopScreen}
+              onFocus={prefetchLoopScreen}
+            >
               {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
             </button>
           </div>
@@ -2761,7 +2808,14 @@ function Choose({
               A smuggler moves between cities. Three sightings, three rings — tap where
               they cross to make the interception.
             </p>
-            <button type="button" className="hv5-go" onClick={onColdTrail}>
+            <button
+              type="button"
+              className="hv5-go"
+              onClick={onColdTrail}
+              onPointerEnter={prefetchTrailScreen}
+              onPointerDown={prefetchTrailScreen}
+              onFocus={prefetchTrailScreen}
+            >
               ❄️ Start the trail
             </button>
           </div>
