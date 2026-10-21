@@ -271,6 +271,14 @@ export function LoopScreen({
       live = false;
     };
   }, []);
+  // Arrival focus (PR #203 panel): this screen mounts behind the lazy
+  // boundary, announced by the session loading fallback — land keyboard
+  // and screen-reader focus on the heading when it arrives so focus is
+  // never stranded on the fallback or the card that opened the screen.
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
+  useEffect(() => {
+    headingRef.current?.focus();
+  }, []);
   const [store, setStore] = useState<LoopUnlimitedStore | null>(null);
   // Ref mirror so event handlers always see the latest store without
   // stale closures (the deal/complete paths must be race-free).
@@ -621,7 +629,7 @@ export function LoopScreen({
         <p className="text-sm text-muted">Case #{caseNo}</p>
       </div>
       <header className="mt-4">
-        <h1 className="font-display text-5xl text-fg">GeoDetective</h1>
+        <h1 ref={headingRef} tabIndex={-1} className="font-display text-5xl text-fg">GeoDetective</h1>
         <p className="mt-3 max-w-md text-lg text-muted">
           Five guesses, one mystery place. Each guess unlocks another clue — and tells you how
           far off you were, and in which direction.
@@ -1001,7 +1009,18 @@ function LoopGame({
 
       {selected && !finished ? (
         <PlaceSheet
-          entry={selected}
+          // Core F-3 (sheet path): a tap entry was named synchronously at
+          // tap time — if the territory data had not loaded yet, it carries
+          // the fail-closed "open water" snapshot. Re-derive it HERE, at
+          // sheet render, from the same coordinates, so the sheet shows
+          // the name the guess will actually record under (onPick
+          // re-resolves at submit; the rebuilt id is identical, so the
+          // two always agree). Index entries pass through untouched.
+          entry={
+            selected.id.startsWith("tap:")
+              ? unlabeledSpotEntry(selected.lon, selected.lat)
+              : selected
+          }
           onConfirm={onConfirmSelected}
           onCancel={() => setSelected(null)}
         />

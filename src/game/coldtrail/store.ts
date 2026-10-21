@@ -24,6 +24,33 @@ import type {
 export const COLDTRAIL_STORAGE_KEY = "meridian.coldtrail.v2";
 /** Previous-generation key: read once for migration, then deleted. */
 const LEGACY_STORAGE_KEY = "meridian.coldtrail.v1";
+/**
+ * Whether the Cold Trail screen was open when the tab last closed or
+ * reloaded (PR #203 panel: recovery parity with the loop's open flag).
+ * The MapErrorBoundary retry reloads the page under "Your game is safe"
+ * copy — without this flag a Trail player landed home while a
+ * GeoDetective player resumed. Mirrors readLoopOpen/writeLoopOpen.
+ */
+export const COLDTRAIL_OPEN_KEY = "meridian.coldtrail.open";
+
+/** Whether the Cold Trail screen was open at last close/reload. */
+export function readColdTrailOpen(): boolean {
+  try {
+    return localStorage.getItem(COLDTRAIL_OPEN_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+/** Record the Cold Trail screen's open state (fail-silent when storage is blocked). */
+export function writeColdTrailOpen(open: boolean): void {
+  try {
+    if (open) localStorage.setItem(COLDTRAIL_OPEN_KEY, "1");
+    else localStorage.removeItem(COLDTRAIL_OPEN_KEY);
+  } catch {
+    /* private-mode storage: the trail screen still works for the session */
+  }
+}
 
 let legacyMigrated = false;
 

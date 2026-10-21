@@ -15,10 +15,11 @@ decision:
   initial JS transfer from ~833 KB toward ≤200 KB; tap-to-play must
   not visibly regress.
 
-**Base:** `origin/main` @ `33a28fe` at branch creation; **rebased onto
-`origin/main` @ `5948f8c`** (PRs #198/#201) on 2026-10-21 — 0 behind,
-0 conflicts after the rebase (BRANCH_STATUS.md resolved per branch
-convention). Full gate suite re-run post-rebase (below).
+**Base:** `origin/main` @ `33a28fe` at branch creation; rebased onto
+`5948f8c` (PRs #198/#201), then **rebased onto `origin/main` @ `f9fa7e4`**
+(PR #204) on 2026-10-21 for the panel fix round — BRANCH_STATUS.md was
+the only conflict (resolved per branch convention); all code replayed
+clean. Full gate suite re-run on the final head (below).
 
 **Out of scope (do not start):** F3 analytics (owner decision pending),
 F4/F5 data pipeline, F7 fonts, F9 rendering.
@@ -62,6 +63,54 @@ F4/F5 data pipeline, F7 fonts, F9 rendering.
       (owner pasted a fresh PAT; pushed + opened by the parent agent).
 - **Ready to merge? NO** (owner review → live curl check of carved
   paths post-deploy → Chitti → his merge call). NEVER MERGE.
+
+## Panel fix round (2026-10-21) — independent panel verdict was NOT READY
+
+Panel ran clean-context on submitted head `c87ecc2`; its 3 BLOCKs are
+fixed here, exactly as prescribed:
+
+- **Eng BLOCK (F-3 sheet remnant):** the confirm sheet rendered the
+  frozen `selected` snapshot, so a pre-load land tap showed "Open
+  Water" while the guess recorded under the correct name. Fix:
+  LoopScreen derives the PlaceSheet entry via
+  `unlabeledSpotEntry(selected.lon, selected.lat)` for `tap:` ids at
+  render — sheet and submit now always agree. The F-3 source-pin test
+  is extended to the sheet path (territory-lazy-boundary.test.ts).
+- **Design BLOCK (loading fallback):** `<BootSplash />` (bottom-anchored,
+  no status role) replaced as the Suspense fallback at both lazy sites
+  by `SessionLoadingFallback` — cloned from MapLoadingFallback,
+  top-anchored in the destination shell, destination-named text
+  ("Loading GeoDetective…" / "Loading Cold Trail…"), `role="status"`,
+  `.meridian-spinner`. BootSplash remains ONLY at the boot `!ready`
+  gate (source-pinned). Arrival focus: LoopScreen's heading and
+  TrailScreen's case heading take focus on mount.
+- **Design BLOCK (Trail recovery asymmetry):** `coldTrailOpen` is now
+  persisted (`meridian.coldtrail.open`, read/writeColdTrailOpen in
+  coldtrail/store.ts, mirroring the loop flag) — the error boundary's
+  reload-retry now restores a Trail player to the Trail screen, like
+  GeoDetective, instead of home. Wired at open, leave, and the boot
+  reset path; unit tests cover round-trip + fail-silent storage.
+- **Product BLOCK (PR body):** corrected in the PR body — the false
+  "Zero conflicts" claim restated against the rebased pushed head;
+  F1's host scope stated plainly (dual-hosted; `_headers` inert on
+  GitHub Pages, effective on the Cloudflare host pending the probe);
+  spec cited as a workspace doc; GameApp-split follow-up noted; the
+  post-deploy header probe recorded as a HARD acceptance gate.
+
+QA nits disposition:
+- Headline metric relabeled "initial preload transfer (JS+CSS)" in the
+  PR body. DONE.
+- Executed failure test for the territory import: DONE —
+  `territory-failure.test.ts` exercises fail-closed + never-rejects +
+  retry-eviction + recovery end-to-end via the new
+  `territoryImporterForTests` seam (the never-rejects test in
+  territory.test.ts now points at it).
+- FOLLOW-UP: throttled Loop/Trail cold-click timing (tap-to-play
+  regression currently unmeasured).
+- FOLLOW-UP: the territory load has no timeout — a stalled import
+  hangs openRun/restore fail-closed but indefinitely.
+- FOLLOW-UP: GameApp monolith split ("Cut 2", ~55 KB brotli toward
+  the ≤200 KB direction) — tracked as the spec's Phase 2 follow-up.
 
 ## Measured results (built artifact, same method both sides)
 

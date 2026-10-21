@@ -231,4 +231,29 @@ describe("Core F-3 — GeoDetective tap names are re-resolved at pick time", () 
       "the re-resolution must happen before the duplicate check (same id, fresh name)",
     );
   });
+
+  it("the confirm sheet re-derives tap entries at render (no frozen snapshot)", () => {
+    // PR #203 panel, Eng BLOCK: onPick's re-resolution fixed the RECORDED
+    // name, but the PlaceSheet still rendered the frozen `selected`
+    // snapshot — a pre-load land tap showed "Open Water" in the sheet
+    // while the guess recorded under the correct name. The sheet's entry
+    // must be re-derived from the selected coordinates for tap: ids.
+    const sheet = segment(
+      loopScreenSource,
+      "{selected && !finished ? (",
+      "<section aria-label=\"Clues\"",
+    );
+    assert.ok(
+      sheet.includes('selected.id.startsWith("tap:")'),
+      "the sheet render must discriminate tap entries by their tap: id",
+    );
+    assert.ok(
+      sheet.includes("unlabeledSpotEntry(selected.lon, selected.lat)"),
+      "the sheet entry must be re-derived from the selected coordinates at render",
+    );
+    assert.ok(
+      !sheet.includes("entry={selected}"),
+      "the sheet must not render the frozen selected snapshot directly",
+    );
+  });
 });

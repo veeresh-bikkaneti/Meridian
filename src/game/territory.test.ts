@@ -86,10 +86,8 @@ test("preloadTerritory resolves — the never-rejects contract its awaiters rely
   // openRun, the boot restore, and onReplay all await preloadTerritory
   // before a run commits; the contract they rely on is that the promise
   // RESOLVES (a failed load degrades the sync readers fail-closed and
-  // the next call retries — the retry-eviction branch itself is pinned
-  // by shape in territory-lazy-boundary.test.ts, because this harness
-  // loads the real atlas file and has no seam to force a load failure
-  // without deforming production code).
+  // the next call retries — the failure path itself is executed
+  // end-to-end in territory-failure.test.ts via the importer seam).
   await assert.doesNotReject(() => preloadTerritory());
   await assert.doesNotReject(() => preloadTerritory());
   assert.equal(territoryLoadRunsForTests(), 1, "repeat preloads still reuse the settled load");

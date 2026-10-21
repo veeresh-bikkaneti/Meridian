@@ -207,6 +207,7 @@ import {
   type LearningStore,
 } from "@/game/learning";
 import { readLoopOpen, writeLoopOpen, peekLoopProgress } from "@/game/loop/store";
+import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
 // F2 bundle split: GeoDetective (Loop) and Cold Trail are play-intent
 // screens — they render only when the player opens them (or when a saved
 // loopOpen flag restores GeoDetective on boot). Both screens statically
@@ -428,6 +429,36 @@ function MapLoadingFallback() {
         Loading map&hellip;
       </div>
     </div>
+  );
+}
+
+/**
+ * Suspense fallback while a play-intent screen chunk (GeoDetective /
+ * Cold Trail) downloads — PR #203 panel (Design BLOCK): the boot splash
+ * it replaces is bottom-anchored brand markup with no status role, so
+ * in-session it was silent to screen readers and visually unrelated to
+ * the top-anchored screens it precedes. This clone of MapLoadingFallback's
+ * pill sits at the top of the same shell the destination screens render
+ * (reserved header space, no layout jump on arrival), NAMES the
+ * destination, and announces via role="status". BootSplash remains only
+ * at the boot !ready gate. Focus is not stranded: the destination
+ * screens focus their heading on mount.
+ */
+function SessionLoadingFallback({ label }: { label: string }) {
+  return (
+    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
+      <div
+        role="status"
+        data-testid="session-loading"
+        className="flex items-center gap-2.5 self-start rounded-full border border-line bg-surface py-2.5 pr-5 pl-3.5 text-sm font-medium text-fg"
+      >
+        <span
+          aria-hidden="true"
+          className="meridian-spinner block h-4 w-4 rounded-full border-2 border-muted/40 border-t-fg"
+        />
+        {label}
+      </div>
+    </main>
   );
 }
 
@@ -1013,9 +1044,12 @@ export function GameApp() {
   // after a reload so a mid-game refresh resumes the mystery, not the menu.
   const [loopOpen, setLoopOpen] = useState<boolean>(() => readLoopOpen());
   // Cold Trail (vertical slice): its own screen outside the run machine,
-  // persisted under meridian.coldtrail.v1. No open-flag: the slice always
-  // starts from the menu; in-progress cases resume from the store.
-  const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(false);
+  // persisted under meridian.coldtrail.v2. The open flag
+  // (meridian.coldtrail.open) restores the screen after a reload — PR
+  // #203 panel: without it, the error boundary's reload-retry ("Your
+  // game is safe") returned a Trail player home while a GeoDetective
+  // player resumed. In-progress cases resume from the store.
+  const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(() => readColdTrailOpen());
   // Age profile (parent-set band). The profile object lives in state and
   // refreshes via the `ageprofile:changed` event — game screens never
   // touch the store directly. The settings screen (lazy) is the only
@@ -1352,6 +1386,7 @@ export function GameApp() {
     // onLeave, which clears state and persisted flag together.
     writeLoopOpen(false);
     setLoopOpen(false);
+    writeColdTrailOpen(false);
     setColdTrailOpen(false);
     setStarting(null);
   }, []);
@@ -2099,7 +2134,7 @@ export function GameApp() {
       <>
         {mapModeAnnouncer}
         <MapErrorBoundary>
-          <Suspense fallback={<BootSplash />}>
+          <Suspense fallback={<SessionLoadingFallback label="Loading GeoDetective…" />}>
             <LoopScreen
               onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }}
               onCelebrate={(spec) => setCelebration(spec)}
@@ -2113,14 +2148,15 @@ export function GameApp() {
   }
 
   // Cold Trail lives next to the loop edition: its own screen, its own
-  // storage namespace. A mid-case reload resumes from meridian.coldtrail.v1.
+  // storage namespace. A mid-case reload resumes from meridian.coldtrail.v2,
+  // and the persisted open flag restores the screen itself (PR #203).
   if (coldTrailOpen) {
     return (
       <>
         {mapModeAnnouncer}
         <MapErrorBoundary>
-          <Suspense fallback={<BootSplash />}>
-            <TrailScreen onLeave={() => setColdTrailOpen(false)} />
+          <Suspense fallback={<SessionLoadingFallback label="Loading Cold Trail…" />}>
+            <TrailScreen onLeave={() => { writeColdTrailOpen(false); setColdTrailOpen(false); }} />
           </Suspense>
         </MapErrorBoundary>
         {celebrationOverlay}
@@ -2331,7 +2367,7 @@ export function GameApp() {
         writeLoopOpen(true);
         setLoopOpen(true);
       })}
-      onColdTrail={withCardTap("coldtrail", () => setColdTrailOpen(true))}      onReview={startReview}
+      onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
       deck={deckStatus}
       difficultyChoice={difficultyChoice}
       onDifficultyChoice={setDifficultyChoice}

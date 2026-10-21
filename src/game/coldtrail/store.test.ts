@@ -2,11 +2,14 @@ import { strict as assert } from "node:assert";
 import { test } from "node:test";
 import { STARTING_STARS } from "./engine.ts";
 import {
+  COLDTRAIL_OPEN_KEY,
   COLDTRAIL_STORAGE_KEY,
   freshProgress,
   loadColdtrail,
+  readColdTrailOpen,
   saveColdtrail,
   takeLegacyMigrationNotice,
+  writeColdTrailOpen,
 } from "./store.ts";
 import type { ColdTrailProgress, ColdTrailStore } from "./types.ts";
 
@@ -343,5 +346,43 @@ test("a v1 blob under the v2 key fails closed (never silently accepted)", () => 
     assert.equal(s.stars, STARTING_STARS);
   } finally {
     restore();
+  }
+});
+
+// PR #203 panel — the open flag (reload-retry parity with GeoDetective):
+// the error boundary's reload must restore the Trail screen, not home.
+test("cold trail open flag round-trips through storage", () => {
+  const { data, restore } = stubStorage();
+  try {
+    assert.equal(readColdTrailOpen(), false, "absent flag reads closed");
+    writeColdTrailOpen(true);
+    assert.equal(data[COLDTRAIL_OPEN_KEY], "1");
+    assert.equal(readColdTrailOpen(), true);
+    writeColdTrailOpen(false);
+    assert.equal(COLDTRAIL_OPEN_KEY in data, false, "closing removes the key");
+    assert.equal(readColdTrailOpen(), false);
+  } finally {
+    restore();
+  }
+});
+
+test("cold trail open flag fails silent when storage throws", () => {
+  const { restore } = stubStorage({}, true);
+  try {
+    writeColdTrailOpen(true); // must not throw
+    assert.equal(readColdTrailOpen(), false, "throwing storage reads closed");
+  } finally {
+    restore();
+  }
+});
+
+test("cold trail open flag is a no-op without localStorage", () => {
+  const prev = (globalThis as Record<string, unknown>).localStorage;
+  delete (globalThis as Record<string, unknown>).localStorage;
+  try {
+    writeColdTrailOpen(true); // must not throw
+    assert.equal(readColdTrailOpen(), false);
+  } finally {
+    (globalThis as Record<string, unknown>).localStorage = prev;
   }
 });

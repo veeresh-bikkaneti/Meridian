@@ -7,8 +7,10 @@
  * game-app imported the two screens statically, the whole map library
  * landed in the preloaded route chunk and every home visit paid for it.
  * The screens are play-intent only, so they load through React.lazy —
- * the SatelliteMap pattern — behind Suspense (BootSplash fallback) and
- * MapErrorBoundary (chunk failure → reload-retry, never a white screen).
+ * the SatelliteMap pattern — behind Suspense (SessionLoadingFallback:
+ * a destination-named role="status" fallback; PR #203 panel replaced
+ * the silent BootSplash here) and MapErrorBoundary (chunk failure →
+ * reload-retry, never a white screen).
  *
  * game-app.tsx is a large component with no unit-render harness in this
  * repo, so — like the boot-wiring pin in src/map/capability.test.ts —
@@ -91,8 +93,8 @@ describe("F2 lazy boundary — restore path crosses Suspense + error boundary", 
     const branch = segment(gameAppSource, "if (loopOpen) {", "if (coldTrailOpen) {");
     assert.ok(branch.includes("<MapErrorBoundary>"), "loop branch needs the chunk-failure boundary");
     assert.ok(
-      branch.includes("<Suspense fallback={<BootSplash />}>"),
-      "loop branch must show the BootSplash while the chunk loads (restore first paint)",
+      branch.includes('<Suspense fallback={<SessionLoadingFallback label="Loading GeoDetective…" />}>'),
+      "loop branch must show the destination-named session fallback while the chunk loads",
     );
     assert.ok(branch.includes("<LoopScreen"), "loop branch must render LoopScreen");
     // Boundary outside Suspense, mirroring the SatelliteMap render site.
@@ -110,10 +112,47 @@ describe("F2 lazy boundary — restore path crosses Suspense + error boundary", 
     );
     assert.ok(branch.includes("<MapErrorBoundary>"), "trail branch needs the chunk-failure boundary");
     assert.ok(
-      branch.includes("<Suspense fallback={<BootSplash />}>"),
-      "trail branch must show the BootSplash while the chunk loads",
+      branch.includes('<Suspense fallback={<SessionLoadingFallback label="Loading Cold Trail…" />}>'),
+      "trail branch must show the destination-named session fallback while the chunk loads",
     );
     assert.ok(branch.includes("<TrailScreen"), "trail branch must render TrailScreen");
+  });
+
+  it("BootSplash survives ONLY at the boot !ready gate (PR #203 panel)", () => {
+    assert.ok(
+      !gameAppSource.includes("fallback={<BootSplash />}"),
+      "no Suspense boundary may fall back to the silent boot splash in-session",
+    );
+    assert.ok(
+      gameAppSource.includes('if (!ready) {') &&
+        gameAppSource.includes("return <BootSplash />;"),
+      "the boot !ready gate keeps the BootSplash",
+    );
+    const fallback = segment(
+      gameAppSource,
+      "function SessionLoadingFallback",
+      "export type Drop = {",
+    );
+    assert.ok(fallback.includes('role="status"'), "the session fallback must announce");
+    assert.ok(
+      fallback.includes("meridian-spinner"),
+      "the session fallback reuses the existing spinner styling",
+    );
+  });
+
+  it("coldTrailOpen persists like loopOpen (PR #203 panel: reload-retry parity)", () => {
+    assert.ok(
+      gameAppSource.includes("useState<boolean>(() => readColdTrailOpen())"),
+      "coldTrailOpen must initialize from the persisted flag so a reload restores the screen",
+    );
+    assert.ok(
+      gameAppSource.includes("writeColdTrailOpen(true); setColdTrailOpen(true);"),
+      "opening Cold Trail must persist the flag",
+    );
+    assert.ok(
+      gameAppSource.includes("writeColdTrailOpen(false); setColdTrailOpen(false);"),
+      "leaving/resetting Cold Trail must clear the persisted flag with the state",
+    );
   });
 });
 

@@ -102,6 +102,14 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     prevCaseIndexRef.current = caseIndexNow;
   }, [revealedNow, caseIndexNow]);
 
+  // Arrival focus (PR #203 panel): this screen mounts behind the lazy
+  // boundary, announced by the session loading fallback — land focus on
+  // the case heading on first mount too (the effect above only follows
+  // case changes), so focus is never stranded on the fallback.
+  useEffect(() => {
+    caseHeadingRef.current?.focus();
+  }, []);
+
   // One-time notice after a v1 save migrates (auto-placed rings are gone).
   useEffect(() => {
     if (takeLegacyMigrationNotice()) {
