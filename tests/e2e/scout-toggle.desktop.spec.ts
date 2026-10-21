@@ -404,3 +404,78 @@ test("manual switch lands HOME even with a persisted GeoDetective flag under the
     await page.evaluate(() => localStorage.getItem("meridian.loop.open")),
   ).toBeNull();
 });
+
+test("a runtime tile-failure switch retires the stale switched notice (BLOCK-B)", async ({
+  page,
+  context,
+}) => {
+  test.setTimeout(300_000);
+  // Every satellite tile request fails from the start (registered
+  // after serveBuiltArtifact, so it wins for the tile host). Run #1
+  // below is Scout and never requests tiles; run #2 is full and hits
+  // the WS-4 failure path: one "Try again", then the runtime switch.
+  await context.route("**/server.arcgisonline.com/**", (route) => route.abort());
+  const TRY_AGAIN_COPY =
+    "The map pictures won't load right now. Check your internet, then tap Try again.";
+
+  // Settled in Scout (seeded manual record). Flip IN GAME to full:
+  // the landing notice stands on Home, correctly describing the
+  // switch — "your next game uses the full map".
+  await seedManualMode(context, "scout");
+  await startGlobeRun(page);
+  await expect.poll(() => readMapMode(page), { timeout: 20_000 }).toBe("scout");
+
+  await flipMapModeToggle(page);
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+  const notice = page.getByTestId("map-switched-notice");
+  await expect(notice).toBeVisible({ timeout: 10_000 });
+  await expect(notice).toContainText("You switched to the full map");
+  await expect(page.getByTestId("map-mode-indicator")).toHaveAttribute(
+    "data-mode",
+    "full",
+  );
+
+  // Start the next game WITHOUT navigating: a goto would reload the
+  // document and wipe the in-memory notice, passing vacuously (the
+  // BLOCK-1 pin's lesson). The notice stays standing, undismissed.
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  await expect(mapWrapper(page)).toBeVisible({ timeout: 30_000 });
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+  await expect.poll(() => readMapMode(page), { timeout: 20_000 }).toBe("full");
+
+  // Tiles fail; the one retry fails too — the runtime switch drops
+  // the session to Scout (session-only: nothing is stored).
+  const card = page.getByRole("alert").filter({ hasText: TRY_AGAIN_COPY });
+  await expect(card).toBeVisible({ timeout: 60_000 });
+  await card.getByRole("button", { name: "Try again" }).click();
+  await expect.poll(() => readMapMode(page), { timeout: 90_000 }).toBe("scout");
+
+  // End the run and go home. Pre-cure, the runtime switch went
+  // through the raw setMapMode prop and never touched the notice
+  // lifecycle: Home showed the pill reading "Scout Map" directly
+  // under the stale "You switched to the full map — your next game
+  // uses the full map. Your score is kept." — false on every surface
+  // (the stored record is the manual full one; the session mode is
+  // Scout). Post-cure the GameApp-owned runtime switch retires the
+  // notice it falsified.
+  await page.getByRole("button", { name: "End game" }).click();
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible({ timeout: 15_000 });
+  await dialog.getByRole("button", { name: "Done" }).click();
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+
+  await expect(page.getByTestId("map-mode-indicator")).toHaveAttribute(
+    "data-mode",
+    "scout",
+  );
+  await expect(page.getByTestId("map-switched-notice")).toHaveCount(0);
+  // The runtime switch stored nothing: the manual record stands.
+  expect(await readStoredMapMode(page)).toMatchObject({
+    mode: "full",
+    source: "manual",
+  });
+});

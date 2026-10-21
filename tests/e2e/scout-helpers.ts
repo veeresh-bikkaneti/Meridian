@@ -17,7 +17,17 @@
  *    data-testid="scout-auto-notice" (this boot auto-switched, Block C).
  *    Neither carries role="status" (re-vote BLOCK-3): GameApp's hoisted
  *    announcer (data-testid="map-mode-announcer") is the sole speaker
- *    for map-mode events. The toggle popover is
+ *    for map-mode events.
+ *  - runtime switches (webglcontextlost, WS-4 tile fallback) reconcile
+ *    the home notices in GameApp (applyMapMode / applySessionMapMode —
+ *    Play never receives the raw setter): a standing switched notice
+ *    retires, because its text names a mode the switch just changed
+ *    (re-vote round 3, BLOCK-B). They never speak on the announcer
+ *    (device switches are silent) and the tile path stores nothing
+ *  - a manual flip while a run start is still loading CANCELS the
+ *    start (generation guard in openRun): the cancelled start never
+ *    commits, never re-persists `meridian.run`, and never parks a
+ *    start error on Home (re-vote round 3, BLOCK-A). The toggle popover is
  *    data-testid="map-mode-popover"; on Home the button's aria-label
  *    carries the current mode and the popover is fixed-positioned,
  *    clamped inside the viewport

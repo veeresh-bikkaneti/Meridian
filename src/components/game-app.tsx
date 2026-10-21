@@ -923,11 +923,52 @@ export function GameApp() {
    * happens before any map exists, and a manual switch ends the game
    * (force-home, below), so there is never a pending mode waiting for
    * a later place.
+   *
+   * It also retires the visible switched notice (re-vote round 3,
+   * BLOCK-B): that notice asserts a mode for "your next game", and
+   * this switch falsifies it — the reconciliation lives in these
+   * GameApp-owned paths so no switch can bypass it. The finer points
+   * of the reconciliation (what does NOT retire or speak, and why)
+   * are recorded on applySessionMapMode below.
    */
   const applyMapMode = useCallback((mode: MapMode, source: Extract<MapModeSource, "contextlost">) => {
     writeStoredMapMode(mode, source);
     setReportMapMode(mode);
     setMapMode(mode);
+    setMapSwitchedNote(null);
+  }, []);
+
+  /**
+   * Apply a runtime SESSION-ONLY switch (the tile-fallback path in
+   * Play): update state without persisting — nothing is stored, and a
+   * reload returns to the stored mode. GameApp owns this callback so
+   * the notice lifecycle is reconciled in exactly one place: Play
+   * receives THIS, never the raw setMapMode (re-vote round 3,
+   * BLOCK-B — the raw setter let a mid-run tile failure flip the mode
+   * to Scout while Home still showed the stale "You switched to the
+   * full map" notice from an earlier manual flip, the two
+   * contradicting each other under an indicator reading Scout).
+   *
+   * The reconciliation, and its deliberate limits:
+   * - The switched notice RETIRES (here and in applyMapMode): its
+   *   text names the mode the next game uses, and this switch just
+   *   changed that mode.
+   * - The boot auto-switch note does NOT retire here: it can only be
+   *   standing when this boot itself auto-switched to Scout, and in
+   *   that state both runtime paths early-return (they fire only
+   *   from full) — so it is never standing when a runtime switch
+   *   runs. Its text would also remain TRUE after a switch to Scout.
+   *   (Manual flips clear it for a different reason: the player's own
+   *   choice supersedes the "picked for this device" framing.)
+   * - Nothing is ANNOUNCED: device-driven switches are silent (owner
+   *   ruling, 2026-10-20), the announcer's texts are manual-switch
+   *   wording ("back home; your next game…") that would be false
+   *   mid-run, and Play already shows its own deferred switch note
+   *   at the next natural break for exactly these events.
+   */
+  const applySessionMapMode = useCallback((mode: MapMode) => {
+    setMapMode(mode);
+    setMapSwitchedNote(null);
   }, []);
   // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v2 and never touches the
@@ -1051,6 +1092,20 @@ export function GameApp() {
     regionName: string;
     choice: PickerDifficulty;
   } | null>(null);
+  // Run-start generation (re-vote round 3, BLOCK-A): openRun is async —
+  // the chunk load it awaits can outlive the start it belongs to. A
+  // manual map-mode switch mid-load ends the game and lands the player
+  // home, but the parked load used to resolve afterwards and commit
+  // its run anyway: the discarded run resurrected, its record was
+  // re-persisted (undoing the exit's deliberate removal), and Home
+  // unmounted under the player's focus. This counter stamps each
+  // start; the manual switch (and each new start) bumps it, and
+  // openRun checks it after every await — a stale start bails
+  // silently, in the commit path AND the startError catch (a stale
+  // failure must not park an error on the Home the player chose
+  // instead), and its finally must not clear a NEWER start's
+  // loading state.
+  const runStartGenRef = useRef(0);
   // Session score: survives edition switches until End game or the idle
   // timeout. The HUD and the summary read from here, never from the run.
   const { session, update: updateSession, replace: replaceSession, get: getSession } = useSessionState();
@@ -1228,6 +1283,10 @@ export function GameApp() {
    * and hiding the notice.
    */
   const handleManualMapMode = useCallback((mode: MapMode) => {
+    // BLOCK-A: cancel any in-flight run start. Bumping the generation
+    // makes the parked openRun stale, so when its chunk load resolves
+    // it bails instead of committing the run this exit just ended.
+    runStartGenRef.current += 1;
     writeStoredMapMode(mode, "manual");
     setReportMapMode(mode);
     setMapMode(mode);
@@ -1437,6 +1496,11 @@ export function GameApp() {
       // backstop — the tour is unscored practice, never a real run.
       opts?: { fresh?: boolean; tutorial?: boolean },
     ) => {
+      // BLOCK-A: stamp this start (see runStartGenRef). A manual
+      // map-mode switch — or a newer start — bumps the generation and
+      // makes this one stale; the checks after the awaits below then
+      // bail instead of committing a run nobody is waiting for.
+      const gen = ++runStartGenRef.current;
       // Edition entrance fanfare: the player is making their grand arrival
       // into an edition (gladiator-into-the-arena energy). Not for the
       // tutorial (quiet practice round).
@@ -1469,7 +1533,9 @@ export function GameApp() {
         // fetches only the fame tiers it deals from (flag on) or all five (flag
         // off); filterByTier below still decides the pool.
         const tierSplit = await globeTierSplitFor(edition, regionId);
+        if (gen !== runStartGenRef.current) return; // stale (BLOCK-A)
         const places = await placesFor(edition, regionId, choice, tierSplit);
+        if (gen !== runStartGenRef.current) return; // stale (BLOCK-A)
         recordMilestone("data_loaded", { edition, regionId, chunkId: regionId });
         const dateKey = trailDate();
         // The picker's difficulty band narrows the catalog BEFORE the dealer
@@ -1549,6 +1615,11 @@ export function GameApp() {
           if (chunkIso2) void preloadAdmin1ForCountry(chunkIso2);
         }, 10000);
       } catch (err) {
+        // BLOCK-A: a stale start fails silently — the player already
+        // cancelled it (map flip) or superseded it (a newer start).
+        // Parking a start error on the screen they chose instead
+        // would report a failure for a start they never made.
+        if (gen !== runStartGenRef.current) return;
         // Fail closed: no chunk, no run. The player stays on the menu with
         // an explanation instead of starting with a partial/missing pool.
         // If the tab predates the current deploy (old hashed chunk URLs 404),
@@ -1563,6 +1634,8 @@ export function GameApp() {
         } catch {
           staleBuild = false;
         }
+        // The switch can also land during the stale-build probe above.
+        if (gen !== runStartGenRef.current) return;
         setStartError({
           message: staleBuild ? message : `We couldn't open ${regionId === "globe" ? "the Globe" : regionName} right now. Check that you're online, then tap Play again.`,
           staleBuild,
@@ -1580,7 +1653,9 @@ export function GameApp() {
           error: sanitizeError(new Error(message)),
         });
       } finally {
-        setStarting(null);
+        // Only the current start owns the loading state (BLOCK-A): a
+        // stale start's finally must not clear a newer start's notice.
+        if (gen === runStartGenRef.current) setStarting(null);
       }
     },
     [commit, ensureSession],
@@ -1903,7 +1978,7 @@ export function GameApp() {
           mapMode={mapMode}
           onManualMapMode={handleManualMapMode}
           applyMapMode={applyMapMode}
-          setSessionMapMode={setMapMode}
+          applySessionMapMode={applySessionMapMode}
           celebrationOpen={cleared !== null}
           ageBand={ageBand}
         />
@@ -3007,7 +3082,7 @@ function Play({
   mapMode,
   onManualMapMode,
   applyMapMode,
-  setSessionMapMode,
+  applySessionMapMode,
 }: {
   run: Run;
   session: Session | null;
@@ -3062,7 +3137,12 @@ function Play({
    * calls this (applied immediately, with a remount).
    */
   applyMapMode: (mode: MapMode, source: "contextlost") => void;
-  setSessionMapMode: (mode: MapMode) => void;
+  /**
+   * Apply a runtime SESSION-ONLY switch (tile fallback). GameApp owns
+   * it so the home notices are reconciled there — never the raw state
+   * setter (BLOCK-B).
+   */
+  applySessionMapMode: (mode: MapMode) => void;
 }) {
   // The catalog is stored WITH the key it was loaded for and only used while
   // that key is the current run's key. Play stays mounted across run changes
@@ -3200,7 +3280,7 @@ function Play({
       mapMode={mapMode}
       onManualMapMode={onManualMapMode}
       applyMapMode={applyMapMode}
-      setSessionMapMode={setSessionMapMode}
+      applySessionMapMode={applySessionMapMode}
     />
   );
 }
@@ -3226,7 +3306,7 @@ function PlayLoaded({
   mapMode,
   onManualMapMode,
   applyMapMode,
-  setSessionMapMode,
+  applySessionMapMode,
 }: {
   run: Run;
   places: Starter[];
@@ -3284,7 +3364,12 @@ function PlayLoaded({
    * calls this (applied immediately, with a remount).
    */
   applyMapMode: (mode: MapMode, source: "contextlost") => void;
-  setSessionMapMode: (mode: MapMode) => void;
+  /**
+   * Apply a runtime SESSION-ONLY switch (tile fallback). GameApp owns
+   * it so the home notices are reconciled there — never the raw state
+   * setter (BLOCK-B).
+   */
+  applySessionMapMode: (mode: MapMode) => void;
 }) {
   // Review-deck session: a synthetic Run reusing this game loop. The deck
   // queue (due order) is the pool; review answers never bank into the
@@ -3447,17 +3532,20 @@ function PlayLoaded({
    * no writeStoredMapMode: nothing is saved, and a reload returns to full.
    * (No manual choice can be pending against it: a manual toggle now
    * leaves the run entirely — see handleManualMapMode in GameApp.)
+   * The mode itself goes through GameApp's applySessionMapMode, which
+   * reconciles the home notices this switch would otherwise falsify
+   * (BLOCK-B) — this handler never touches the raw setter.
    */
   const handleTileFallback = useCallback(
     (view: ScoutRestoreView) => {
       if (mapModeRef.current !== "full") return;
       setReportMapMode("scout");
-      setSessionMapMode("scout");
+      applySessionMapMode("scout");
       setScoutSwitchView(view);
       setMapRemountNonce((n) => n + 1);
       if (place) setTileSwitchNote({ placeId: place.id });
     },
-    [place],
+    [applySessionMapMode, place],
   );
 
   // The switch viewport is consumed by the remount it triggers; clear it

@@ -8,6 +8,7 @@ import {
   clickNextPlace,
 } from "./helpers";
 import { installSfxStub, oscRecords } from "./sfx-stub";
+import { flipMapModeToggle, spoofCapableDevice } from "./scout-helpers";
 import type { Page } from "playwright/test";
 
 /**
@@ -470,6 +471,90 @@ test("cleared dialog plays the grand fanfare on open (Hard)", async ({
   // Grand fanfare: G4 392 → C5 523.25 → E5 659.25 → G5 783.99 + the 1568 Hz
   // shimmer on the final note.
   await expectTriad(page, before, [392, 523.25, 659.25, 783.99, 1568]);
+});
+
+test("mid-load map flip: the cancelled promotion start never resurrects its run (BLOCK-A)", async ({
+  page,
+  context,
+}) => {
+  // Start FULL (capable spoof): the flip below goes full → scout.
+  await spoofCapableDevice(context);
+  // Rhode Island Hard clear → the celebration offers "Try Connecticut".
+  // Play stays mounted under the dialog the whole time.
+  await driveBandClear(page, "rhode-island", "hard");
+
+  // Hold the Connecticut chunk at the network edge: the promotion's
+  // openRun parks on its awaited chunk import until the test releases
+  // it, however long that takes. Registered only now, so the Rhode
+  // Island run above loaded unimpeded. The release FULFILLS from disk
+  // (the exact bytes the artifact server serves) — a held-then-
+  // continued request failed downstream in this harness (ERR_FAILED),
+  // which made the load reject instead of completing, and a rejected
+  // load cannot resurrect anything: the pin passed vacuously in that
+  // form. The resurrection needs the load to SUCCEED after the flip.
+  let releaseChunk!: () => void;
+  const chunkGate = new Promise<void>((resolve) => {
+    releaseChunk = resolve;
+  });
+  let chunkHeld = false;
+  await context.route("**/assets/connecticut-*.js", async (route) => {
+    chunkHeld = true;
+    await chunkGate;
+    const file = route.request().url().split("/").pop() as string;
+    await route.fulfill({
+      status: 200,
+      contentType: "application/javascript",
+      body: readFileSync(`dist/client/assets/${file}`),
+    });
+  });
+
+  await celebration(page).getByRole("button", { name: "Try Connecticut" }).click();
+
+  // The start is provably in flight: the chunk request is being held
+  // and the in-run loading notice is up. The run branch outranks the
+  // starting branch in GameApp's render precedence, so Play — and its
+  // map-mode toggle — stay live under the notice; that is exactly the
+  // reachability the panel flagged.
+  await expect.poll(() => chunkHeld, { timeout: 30_000 }).toBe(true);
+  await expect(page.getByText(/Getting .* ready…/)).toBeVisible({
+    timeout: 15_000,
+  });
+
+  // Flip the toggle mid-load. The manual switch forces home and
+  // discards the run — it must also cancel the in-flight start.
+  await flipMapModeToggle(page);
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("map-switched-notice")).toBeVisible({
+    timeout: 10_000,
+  });
+
+  // Let the held load finish, and give its continuation every chance
+  // to do the wrong thing.
+  releaseChunk();
+  await page.waitForTimeout(5_000);
+
+  // Post-cure: the stale start bails on the generation check — Home
+  // persists, the discarded run's record is NOT re-persisted, no map
+  // mounts, the landing notice still stands, and no start error leaks
+  // onto Home. Pre-cure, openRun committed the Connecticut run
+  // unconditionally when its load resolved: meridian.run came back
+  // and Play replaced Home under the player's focus (the first
+  // assertion below is the one that fails there).
+  expect(
+    await page.evaluate(() => sessionStorage.getItem("meridian.run")),
+  ).toBeNull();
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible();
+  await expect(page.locator(".satellite-map")).toHaveCount(0);
+  await expect(page.getByTestId("map-switched-notice")).toBeVisible();
+  // No start error in either of its wordings (the in-run box's "needs
+  // the internet" / Home's loadNotice "We couldn't open …").
+  await expect(
+    page.getByText(/needs the internet|We couldn't open/),
+  ).toHaveCount(0);
 });
 
 test.describe("reduced motion", () => {

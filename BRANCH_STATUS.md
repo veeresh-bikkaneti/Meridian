@@ -378,9 +378,123 @@ vacuously: `startGlobeRun` re-navigates, and the second boot reads
 the auto record the first boot wrote, retiring the note for an
 unrelated reason. The shipped pin runs the single-boot repro.)
 
+## Panel re-vote round 3 at `cc5feba` — NOT READY; cure round 3 here
+
+The re-vote judged the rebased A+B+C + cure-round-2 tip: tally
+**APPROVE ×3 / APPROVE-WITH-NITS ×7 / BLOCK ×2**, DevEx
+PASS-WITH-NITS. Everything rounds 1–2 specified verified CURED —
+BLOCK-1, BLOCK-2, BLOCK-3, BLOCK-4's GeoDetective and Cold Trail
+limbs, and both absorbed nits — with the coordinator independently
+re-running the new pins against the pre-cure build (they fail
+there, pass at the tip). Two BLOCKs remained, one failure family
+in two producers the earlier cures never reached:
+
+1. **BLOCK-A — the `starting` limb of BLOCK-4 was flag-only**
+   (Senior Developer; Senior Architect concurring). The round-2
+   exit cleared the `starting` flag, but the async `openRun` behind
+   it had no generation or staleness check: flip the toggle
+   mid-chunk-load (the celebration's "Try <band>" start — Play
+   stays mounted and the toggle stays live under the loading
+   notice) and the exit landed Home correctly, then the load
+   resolved and `openRun` committed its run unconditionally —
+   the discarded run resurrected, `meridian.run` was re-persisted
+   (undoing the exit's deliberate removal), Home unmounted under
+   the player's focus, the switched notice was stranded, and a
+   rejecting load parked a stale start error on Home instead.
+   **Cured:** a run-start generation counter (`runStartGenRef`).
+   `openRun` stamps its generation at entry; `handleManualMapMode`
+   and each new start bump it; `openRun` checks it after every
+   await and bails silently when stale — in the commit path AND
+   the `startError` catch (checked again after the stale-build
+   probe's own await) — and a stale start's `finally` no longer
+   clears a newer start's loading state. Pin in `cleared-mode`:
+   *"mid-load map flip: the cancelled promotion start never
+   resurrects its run (BLOCK-A)"* — it drives a real Rhode Island
+   Hard clear, holds the Connecticut chunk at the network edge,
+   flips mid-load, releases, and asserts Home persists, the run
+   record stays absent, no map mounts, the notice stands, and no
+   start error appears in either wording. **Pin discipline note:**
+   the pin's first form passed pre-cure VACUOUSLY — a held request
+   released with `route.continue()` failed downstream
+   (ERR_FAILED), so the load rejected and a rejected load cannot
+   resurrect anything. The shipped pin fulfills the released chunk
+   from disk (the exact served bytes); against the pre-cure build
+   it then fails at the first assertion, on the fully-formed
+   Connecticut run record the cancelled start re-persisted.
+2. **BLOCK-B — runtime map-mode switches bypassed the notice
+   lifecycle** (Senior Architect). `mapMode` had five writers; the
+   reconciliations covered only the two toggle handlers. The
+   webglcontextlost tripwire (`applyMapMode`) and Play's tile
+   fallback — which switched through the RAW state setter passed
+   straight through as a prop (`setSessionMapMode={setMapMode}`) —
+   touched neither notice. Reachable contradiction, the flagship
+   weak-device path: flip to full in Play → Home, switched notice
+   standing → new run → tiles fail twice → mode silently Scout →
+   end the run → Home showed the pill reading "Scout Map" directly
+   under the stale "You switched to the full map" notice. It also
+   violated this branch's own policy invariant ("any later flip —
+   at home or in a game — retires the notice"). **Cured:** both
+   runtime switches now go through GameApp-owned callbacks that
+   retire the switched notice — `applyMapMode` (context-lost)
+   reconciles in place, and the tile path gets a new
+   `applySessionMapMode` callback; the raw-setter prop is gone, so
+   any future Play-side switch inherits the reconciliation. Pin in
+   `scout-toggle`: *"a runtime tile-failure switch retires the
+   stale switched notice (BLOCK-B)"* — the full repro above,
+   entering the second run by clicking "Play the globe" on the
+   already-loaded Home (a `startGlobeRun` goto would reload the
+   document and wipe the in-memory notice — the BLOCK-1 vacuity
+   lesson); it fails pre-cure at the notice count, with the stale
+   notice standing under a Scout indicator.
+
+   **Runtime-switch semantics, decided and recorded:** the
+   switched notice retires; the boot auto-switch note does NOT —
+   it can only be standing when this boot itself auto-switched to
+   Scout, and in that state both runtime paths early-return (they
+   fire only from full), so it is never standing when a runtime
+   switch runs, and its text would remain true after a switch to
+   Scout anyway. And nothing is announced: device-driven switches
+   are silent (owner ruling, 2026-10-20), the announcer's texts
+   are manual-switch wording that would be false mid-run, and
+   Play already shows its own deferred switch note at the next
+   natural break for exactly these events.
+
+**Known LOW residuals (unchanged, recorded, not cured):** the
+boot auto-switch is unspoken by the announcer — a conscious trade
+(round-3 panel), mitigated by the notice being first in reading
+order and the mode-carrying button name. The Home popover's
+position is an open-time snapshot: a scroll/resize while it is
+open can detach it, and a tap inside the hero's ~0.86s entrance
+animation can still misplace it. This round did NOT absorb the
+popover item: the safe fix is not trivial (re-measuring on resize
+plus the animation-window containing-block problem), and the
+Play popover must stay byte-identical — it stays recorded here
+for a future round rather than being half-fixed.
+
+**Docs this round:** `docs/scout-offer-policy.md` gained the two
+round-3 honesty rules in plain words (device switches reconcile
+the notice; a mid-load flip cancels the start); the
+scout-helpers contract comment records both new contracts. The
+GitHub PR body — two rounds stale — was rewritten to the branch's
+current reality.
+
+**Cure round 3 gates** (at the cured tip, Ko-fi env at build +
+test, E2E `--workers=1`): `tsc` clean; `npm test` scripts **799
+(790 pass / 9 skip / 0 fail)** + src **1366 pass / 0 fail**;
+lint-cards **GATE PASSED**; `build:pages` green; scout E2E family
+(9 spec files incl. `ws4-tile-fallback`) **48 passed / 0 failed**
+in one serial run; `openRun` neighbors — full `cleared-mode`,
+`globe-band-switch`, `globe-promotion-offline` — ****28/29 in the batch** — cleared-mode (full) and globe-band-switch all passed; globe-promotion-offline’s “Try the Globe loads the full pool” test failed ONCE in the batch and the whole spec then passed **6/6** in a standalone rerun on the same build — the documented VM pacing family (a per-tier request-count measurement taken while the VM was loaded), recorded here, not buried**.
+Main did not move during this round (still `11a95a7`); no rebase
+was needed. Pin discrimination, verified by the cure author
+against the pre-cure `cc5feba` build: BLOCK-A pin fails on the
+re-persisted Connecticut run record; BLOCK-B pin fails on the
+stale switched notice standing under the Scout indicator.
+
+
 ## Ready to merge?
 
-**NO — panel re-vote round 3 on the final tip + Veeresh's word.**
+**NO — panel re-vote round 4 on the final tip + Veeresh's word.**
 Per the owner's rule the panel approves the final tip itself;
 merge only on READY + his per-PR word. Two caveats ride at this
 decision point, neither settled by this branch:

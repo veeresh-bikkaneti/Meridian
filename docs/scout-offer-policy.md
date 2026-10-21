@@ -72,6 +72,20 @@ switch left behind, so a notice never describes a switch that has
 already been undone. The notices are visual only; a screen reader
 hears the switch once, from the app's single announcement region.
 
+Two more honesty rules ride with those (panel re-vote round 3,
+2026-10-20). A switch the DEVICE makes mid-game — the graphics
+context is lost, or the satellite pictures fail twice — goes
+through the same app-owned switch paths as every other switch, so
+it retires a standing switched notice too: the notice names the
+mode the next game uses, and the device just changed it. Device
+switches stay silent (no announcement is spoken for them), and the
+tile-failure one still stores nothing — a reload returns to the
+stored mode. And a flip that lands while a new game is still
+loading cancels that load's start: the places may finish
+downloading, but the game never starts, its record is never saved,
+and no "couldn't load" error appears for a start the player
+already cancelled.
+
 Test seam: the boot auto-switch is suppressed only by
 `window.__meridianSuppressScoutOffer === true` (set by the e2e harness
 init script — the Playwright VM's SwiftShader renderer reads as a weak
