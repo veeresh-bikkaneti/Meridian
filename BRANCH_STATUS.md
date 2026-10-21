@@ -6,19 +6,26 @@ voted READY on the mechanically rebased tip `68bcb74` (APPROVE
 ×2 / APPROVE-WITH-NITS ×10 / BLOCK ×0; DevEx PASS-WITH-NITS;
 benchmark PASS — the claimed −64% initial preload transfer was
 reproduced by paired builds: 714,972 → 256,913 B brotli,
-−64.1%; total bundle +0.012%, no regression). Gates on the voted
+−64.1%; total bundle +0.012%, no regression; the body table
+below shows the builder's own paired run, 715,229 → 255,299 B —
+a different measurement run with the same ≈−64% conclusion). Gates on the voted
 tip: tsc clean, unit scripts 790 + src 1,399 green, lint-cards
 GATE PASSED, build:pages green; live E2E 48 passed / 1 failed
 (the one failure, a PWA update-reload test, fails identically on
 unmodified main — pre-existing). Post-deploy probe on the live
 Cloudflare host: hashed assets serve the immutable rule and
 `/flags.json` serves `max-age=0, must-revalidate` as designed;
-the three carved-out mutable files and the HTML serve **no
-Cache-Control header at all** (ETag only, so browsers still
-revalidate) — the safety property holds (no mutable file is
-pinned immutable), but the `must-revalidate` the detach was
-expected to restore did not materialize; whether to add explicit
-header lines for those paths is the owner's pending call. The
+the three carved-out mutable files serve **no Cache-Control
+header** (ETag only, so browsers still revalidate them), and
+the HTML serves **no Cache-Control and no validator at all**
+(no ETag, no Last-Modified — browsers re-fetch it in full) —
+the safety property holds (no mutable file is pinned
+immutable), but the `must-revalidate` the detach was expected
+to restore did not materialize; whether to add explicit header
+lines for those paths is the owner's pending call. Separately:
+open PR #207 also creates `public/_headers`, so whoever acts on
+that call must union the two files, not overwrite one with the
+other. The
 pre-merge "Ready to merge? NO / NEVER MERGE" line further down
 is this branch's own record from before the owner's order and is
 superseded by this header. This header was cured by the
