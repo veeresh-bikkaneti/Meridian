@@ -1,6 +1,6 @@
 # GeoDetective — 5-Tier Clue Generation Prompt, v1 (FINAL)
 
-**Status:** FINAL — locked by Veeresh 2026-10-04. This is the production prompt for the 365-set generation run. Do not alter without Veeresh.
+**Status:** FINAL — locked by Veeresh 2026-10-04. This is the production prompt for the 365-set generation run (the daily plan of the time — the shipped game is fully unlimited; see the model update below). Do not alter without Veeresh.
 **Date:** 2026-10-04
 **Implements:** `~/workspace/meridian-loop-brainstorm/synthesis.md` — the unanimous findings, the delta review's "minimum viable replacement" requirements, and the evolved 5-tier ladder.
 
@@ -12,7 +12,7 @@
 
 ## 1. What this prompt is for
 
-GeoDetective is Meridian's mystery-place guessing edition: five guesses per mystery, clues revealed on a narrowing ladder. (At this prompt's writing the edition was planned as one mystery per day; since 2026-10-06 it is fully unlimited — see the model update above. The ladder and the five-guess contract did not change.) The player guesses via a constrained typeahead picker.
+GeoDetective is Meridian's mystery-place guessing edition: five guesses per mystery, clues revealed on a narrowing ladder. (At this prompt's writing the edition was planned as one mystery per day; since 2026-10-06 it is fully unlimited — see the model update above. The ladder and the five-guess contract did not change.) The player guesses by tapping a labeled place on the satellite map and confirming in a bottom sheet. (A typeahead still exists in the code, but only as an internal index — it is not the guessing surface.)
 
 **[SYNTHESIS]** — Unanimous finding #2: *"4 principles ≠ 4 clue tiers. Principle 4 ('short and story-like') is a style rule, not a content tier. The tiers must be a narrowing ladder (each clue shrinks the candidate set); the principles become universal writing rules applied to every clue."* This prompt therefore defines **5 narrowing tiers**, and applies Veeresh's 4 card rules as universal writing rules on every clue (§4).
 
@@ -74,7 +74,7 @@ GeoDetective is Meridian's mystery-place guessing edition: five guesses per myst
 
 **[DRAFT CHOICE]** — Clue length: **1–2 sentences, roughly 15–40 words** per clue. Reasoning: the synthesis demands "short" but never quantifies; the card rules' "short and story-like" plus a 5-clue reveal budget argues for tight clues, and 40 words is about the most a child will re-read while guessing. Veeresh can tighten or loosen.
 
-**Product philosophy (standing):** players are learners who want to grow — clues teach, not just test. Every tier should leave the player knowing something reusable (a region, a climate mechanism, a founding story), even on days they lose.
+**Product philosophy (standing):** players are learners who want to grow — clues teach, not just test. Every tier should leave the player knowing something reusable (a region, a climate mechanism, a founding story), even when they lose the mystery.
 
 ---
 
@@ -159,7 +159,7 @@ GeoDetective is Meridian's mystery-place guessing edition: five guesses per myst
 - 4 — niche-famous; typically needs the giveaway
 - 5 — obscure-but-fair; a triumph at clue 5, never unfair before it
 
-Reasoning: the synthesis doesn't define the scale; guessability (not population, not "importance") is what week-balancing needs, and it aligns with Meridian's existing 1–5 difficulty vocabulary. A place whose difficulty can't be honestly placed is a candidate for rejection, not a guess.
+Reasoning: the synthesis doesn't define the scale; guessability (not population, not "importance") is what pool balancing needs, and it aligns with Meridian's existing 1–5 difficulty vocabulary. A place whose difficulty can't be honestly placed is a candidate for rejection, not a guess.
 
 **Aliases [DRAFT CHOICE]** — record every name the validator must enforce the leak ban against *and* the typeahead matcher must accept: canonical name, historical names (Bombay), widely-known native/colloquial names, common English variants. Do **not** exhaustively transliterate; if it isn't in the extracts or the curated record, it isn't an alias, it's a guess. Each alias needs a source (extract quote or curated-record citation) — an unsourced alias is a leak-ban hole.
 

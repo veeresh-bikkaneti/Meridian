@@ -199,7 +199,7 @@ What the ruling does (issue #182):
 
 - **No profile set → hint policy "one-per-round".** The bulb shows, one hint per place — the 8-10 shape. The mascot offer stays off (it belongs to the 5-7 "free" policy only).
 - **Explicitly chosen bands are untouched.** A profile a parent deliberately set to 11-13 still gets no bulb. The ruling changes the *default*, not a parent's choice.
-- **Nothing else about the default changes.** An unset profile still plays with the 11-13 numbers (round lengths, pin tolerance, clue counts), and the run still records its band as "11-13" — so the Clean Round badge works as before: it keys off the recorded band plus hints actually used. A default player who taps a hint has used a hint (no badge, same as anyone); a default player who never taps can still earn it.
+- **Nothing else about the default changes.** An unset profile still plays with the 11-13 numbers (round lengths, pin tolerance, clue counts), and the run still records its band as "11-13" — so the Clean Round badge works as before: it keys off the recorded band plus hints actually used — and, as always, only a won round can earn it. A default player who taps a hint has used a hint (no badge, same as anyone); a default player who never taps and wins can still earn it.
 - **Runs already in flight keep their snapshot.** A quiz run or GeoDetective mystery already in progress when this ships finishes with the policy it was dealt — the bulb shows from each player's next run.
 
 *Superseded:* the pre-2026-10-20 default — "no profile resolves to 11-13 for everything, hint policy included" — is replaced by the rule above. The per-band table itself is unchanged since 2026-10-09.
@@ -208,8 +208,8 @@ What the ruling does (issue #182):
 
 - `~/workspace/your_files/meridian-scoring-proposal.md` — scoring v3 design, formula, worked examples, display + share design, migration notes
 - `~/workspace/bench-wt/bento/docs/scoring-difficulty-contract.md` — tier definitions, pipeline heuristic, override file, per-pool anchor rule, mix targets
-- `~/workspace/bench-wt/bento/docs/geodetective.md` — clue ladder, day-index math, persistence, share format, accessibility, content gate (387 sets)
+- `~/workspace/bench-wt/bento/docs/geodetective.md` — clue ladder, persistence, share format, accessibility, content gate (387 sets)
 - `~/workspace/specs/coldtrail-sighting-anchors.md` — the anchor problem, options A–D (DRAFT, awaiting Veeresh's pick), acceptance criteria
 - `~/workspace/your_files/game-review-recommendations.md` — Admin-1 narrow decision, symmetric country naming, pin-legend copy, top-10 improvement slate (recommendations; Veeresh decides)
 - `~/MEMORY.md` — slogan (2026-10-01), philosophy (2026-10-03), GeoDetective unlimited decision (2026-10-06), #130–#138 decisions (2026-10-11), reveal design (2026-09-30/10-01), share format, stale-deploy copy, blurb principles, Hyderabad rule (2026-09-30), dataset facts (2026-09-30), picker wording, learningOutcomes flag (2026-10-04)
-- GitHub issue #182 (2026-10-20) — the hidden-bulb bug report and Veeresh's hints-on-by-default ruling quoted in §13; the fix ships on branch `fix/hint-default-on`
+- GitHub issue #182 (2026-10-20) — the hidden-bulb bug report and Veeresh's hints-on-by-default ruling quoted in §13; the fix merged as PR #184 (2026-10-20, squash `11a95a7`)
