@@ -59,7 +59,7 @@ progress (recorded below).
 ### P1 — Functional / UX
 | # | Finding | Change |
 | --- | --- | --- |
-| 4 | PWA hardcoded `/Meridian/` (broken on the Cloudflare `/` build) | `manifest.webmanifest` uses `./` for id/scope/start_url. `sw.js` derives `BASE` from its own URL. `scripts/pwa-base-path.test.mjs` runs the SW under both bases |
+| 4 | PWA hardcoded `/Meridian/` (broken on the Cloudflare `/` build) | `manifest.webmanifest` uses `./` for scope/start_url and omits `id` (review follow-up: a relative `id` resolves against the origin, so `"./"` became the github.io root; with no `id` it defaults to the resolved `start_url`). `sw.js` derives `BASE` from its own URL. `scripts/pwa-base-path.test.mjs` runs the SW under both bases |
 | 5 | "Begin exploring" only scrolled | It now starts a Globe expedition at the difficulty picked above it, through the same path as the Globe card. The nav buttons still scroll |
 | 6 | Easy pulled obscure GeoNames suburbs | `src/game/easy-curation.ts` builds the Easy pool in rungs: curated starters + tier-1 places with a verified history hook → all tier-1 → the full 1–2 band, falling back only below 25 places. Every pool decision goes through `dealingPoolFor`. Documented in `docs/scoring-difficulty-contract.md` |
 | 7 | Scout forced too aggressively | A 2 GB `deviceMemory` reading no longer demotes a device whose WebGL probe passes cleanly. ≤ 1 GB still demotes, and the crash/probe/contextlost safety nets are unchanged. Documented in `docs/scout-offer-policy.md` |
