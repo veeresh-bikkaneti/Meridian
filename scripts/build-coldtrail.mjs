@@ -33,14 +33,15 @@ import {
   octantOf,
 } from "../src/game/geo.ts";
 import { continentForIso2 } from "../src/game/data/iso-continents.ts";
+import { unpackNameIndex } from "../src/game/loop/names-codec.ts";
 
 const SCRIPTS_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = dirname(SCRIPTS_DIR);
 const CHUNKS_DIR = join(ROOT, "src/game/data/geonames/chunks");
-// Population comes from the loop guess index (public/loop/names.json, built
+// Population comes from the loop guess index (public/loop/names.v2.json, built
 // by scripts/build-loop.mjs from the same GeoNames dump): chunk ids are
 // "gn-<n>" and index ids "geonames:<n>", joined on the numeric part.
-const NAMES_INDEX = join(ROOT, "public/loop/names.json");
+const NAMES_INDEX = join(ROOT, "public/loop/names.v2.json");
 const OUT_DIR = join(ROOT, "src/game/coldtrail");
 const OUT_FILE = join(OUT_DIR, "cases.generated.json");
 
@@ -199,7 +200,7 @@ function fmtTimestamp(baseDay, offsetDays, hour, minute) {
 
 /** Population by numeric GeoNames id, from the loop guess index. */
 function loadPopulations() {
-  const index = JSON.parse(readFileSync(NAMES_INDEX, "utf8"));
+  const index = unpackNameIndex(JSON.parse(readFileSync(NAMES_INDEX, "utf8")));
   const pops = new Map();
   for (const entry of index) {
     const num = String(entry.id).split(":")[1];

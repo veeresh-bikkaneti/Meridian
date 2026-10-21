@@ -72,7 +72,7 @@ test("place list not cached while offline: the existing designed error, no crash
 }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await context.route("**/loop/names.json", (route) => route.abort());
+  await context.route("**/loop/names.v2.json", (route) => route.abort());
   await openLoop(page);
   // The place list loads when the search box is first used.
   await page.getByRole("combobox", { name: "Search the map" }).click();

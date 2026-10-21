@@ -152,7 +152,7 @@ export interface LoopManifest {
   generatedAt: string;
 }
 
-/** Entries of public/loop/names.json (lazy-loaded guess index). */
+/** Entries of public/loop/names.v2.json (lazy-loaded guess index). */
 export interface LoopNameEntry {
   /** Normalized name: lowercase, NFD diacritics stripped, punctuation removed. */
   n: string;

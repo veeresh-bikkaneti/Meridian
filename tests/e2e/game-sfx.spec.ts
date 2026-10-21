@@ -6,6 +6,8 @@ import {
   commitPin,
   readPhase,
   dismissTileOverlayIfPresent,
+  loopNameIndex,
+  openMysteryPlaceId,
 } from "./helpers";
 import {
   installSfxStub,
@@ -94,15 +96,8 @@ async function lastGuessDistKm(page: import("playwright/test").Page): Promise<nu
 }
 
 async function targetEntry(page: import("playwright/test").Page) {
-  return page.evaluate(async () => {
-    const store = JSON.parse(localStorage.getItem("meridian.loop.v2")!);
-    const clue = await fetch(`loop/clues/${store.current.index}.json`).then((r) => r.json());
-    const names = await fetch("loop/names.json").then((r) => r.json());
-    return names.find((e: { id: string }) => e.id === clue.placeId) as {
-      n: string;
-      id: string;
-    };
-  });
+  const placeId = await openMysteryPlaceId(page);
+  return loopNameIndex().find((e) => e.id === placeId)!;
 }
 
 async function guessTarget(
@@ -119,25 +114,16 @@ async function guessTarget(
   await page.getByRole("button", { name: "Guess this place" }).click();
 }
 
-async function wrongQueries(
-  page: import("playwright/test").Page,
-  targetId: string,
-  count = 5,
-): Promise<string[]> {
-  return page.evaluate(
-    async ({ targetId, count }: { targetId: string; count: number }) => {
-      const names = await fetch("loop/names.json").then((r) => r.json());
-      const cands = ["paris", "tokyo", "sydney", "cairo", "new york", "london", "moscow", "beijing"];
-      const out: string[] = [];
-      for (const q of cands) {
-        const e = names.find((x: { n: string }) => x.n === q);
-        if (e && e.id !== targetId) out.push(q);
-        if (out.length === count) break;
-      }
-      return out;
-    },
-    { targetId, count },
-  );
+function wrongQueries(targetId: string, count = 5): string[] {
+  const names = loopNameIndex();
+  const cands = ["paris", "tokyo", "sydney", "cairo", "new york", "london", "moscow", "beijing"];
+  const out: string[] = [];
+  for (const q of cands) {
+    const e = names.find((x) => x.n === q);
+    if (e && e.id !== targetId) out.push(q);
+    if (out.length === count) break;
+  }
+  return out;
 }
 
 test("home: card tap fires on gesture-created context; toggle persists and silences", async ({
@@ -267,7 +253,7 @@ test("geodetective: lose sting after five misses; next-case deal snaps", async (
   test.slow(); // five sequential guesses; the name index loads once
   await openLoop(page, "218");
   const entry = await targetEntry(page);
-  const queries = await wrongQueries(page, entry.id, 5);
+  const queries = wrongQueries(entry.id, 5);
   expect(queries).toHaveLength(5);
 
   for (let i = 0; i < queries.length; i++) {
