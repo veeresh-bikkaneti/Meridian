@@ -166,24 +166,27 @@ who decided something has to be checkable.
 
 ## Overlap with PR #203 (perf, F1 immutable caching)
 
-PR #203 also adds `public/_headers`, containing only the `/assets/*`
-immutable rule and three detach-only carve-outs. This branch aligned its
-`/assets` blocks to be **text-identical** to #203's. It had used a
+PR #203 also added `public/_headers`, containing only the `/assets/*`
+immutable rule and three detach-only carve-outs. This branch had aligned
+its `/assets` blocks to be **text-identical** to #203's. It had used a
 wildcard `! Cache-Control` + set-line pair, which #203 rightly avoids
 because Cloudflare comma-joins duplicate headers across matching rules.
-Merge plan for whichever PR lands second:
 
-1. Keep one file. Use #203's long header comment for the `/assets` section
-   (it cites the Cloudflare docs), and keep this branch's CSP comment above `/*`.
-2. Keep this branch's `/*` security block. #203 has no equivalent.
-3. Keep the shared `/assets/*` + three carve-out blocks once (already identical).
-4. Keep this branch's `no-cache` blocks (`/sw.js`, `/flags.json`,
-   `/build-meta.json`, `/manifest.webmanifest`) and the HTML `s-maxage=60`
-   blocks. None of them overlaps an `/assets` path, so nothing comma-joins.
-   #203's comment says these paths "keep the platform default". Edit that
-   sentence to point at the explicit blocks.
-5. Run `node --test scripts/security-headers.test.mjs` plus #203's own
-   header test, if it has one.
+That overlap is now resolved, and this is the record of what happened:
+PR #203 landed first. The owner then merged `origin/main` into this
+branch and kept #207's `public/_headers` version. That version is the
+superset: the `/*` security block plus the no-cache rules plus #203's
+F1 `/assets/*` immutable rule and its three `! Cache-Control` detach
+carve-outs, text-identical — nothing from #203 was lost. This is
+exactly as recorded in `BRANCH_STATUS.md`'s "#203 merge conflicts"
+section.
+
+The forward-looking merge plan that used to sit here has expired, so
+it is gone. The union work that is still open belongs to PR #212, and
+the live instructions for it live in `BRANCH_STATUS.md`: keep this
+branch's `/*` security block and #212's detach-plus-explicit-set
+carve-outs, and pick ONE `Cache-Control` per path for `/flags.json`
+and `/`.
 
 ## Remaining (P3+, not in this branch)
 
@@ -194,7 +197,8 @@ Merge plan for whichever PR lands second:
   cities that the Globe tier files lack, or that lack a hook (e.g. Lagos,
   Moscow), need curation or fact-ladder hooks to join it.
 - The full COPPA notice requirements (operator name and postal contact)
-  need the owner's decision on what to publish, given the no-email ruling.
+  need the owner's decision on what to publish, given the no-email
+  choice (team rationale — see decision 3).
 - E2E coverage for `/privacy`, `/contact`, Begin exploring, and the tour
   re-entry (unit-covered here; Playwright specs were not added).
 - CI (`.github/workflows/node.js.yml`) runs only on Node 22.x: app
@@ -203,7 +207,7 @@ Merge plan for whichever PR lands second:
   including `grownups-privacy-contact.desktop.spec.ts`. Run e2e locally
   after `npm run build:pages`.
 
-## Addendum: footer kids-privacy note (owner request, 2026-10-21)
+## Addendum: footer kids-privacy note (added in this PR's review round, 2026-10-21)
 
 The home footer now carries a one-line promise linking to `/privacy`:
 "Made for kids: no accounts, no ads, no tracking cookies, and no personal
