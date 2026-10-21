@@ -2,14 +2,27 @@
 
 Branch: `fix/review-p0-p2-kids-privacy-ux` (from `main` @ `157d215`, the live build).
 Scope: the P0 privacy, P1 functional/UX, and P2 hardening findings from the
-2026-10-21 review, plus the owner decisions made while the work was in
-progress (recorded below).
+2026-10-21 review, plus the decisions and rationale recorded below.
 
-## Owner decisions taken during this branch
+## Decisions and rationale recorded during this branch
 
-1. **Analytics: COPPA first.** Google Analytics (gtag, `G-NYKKMLQSN5`,
-   `VITE_GA4_MEASUREMENT_ID`) and Microsoft Clarity (`ytspaudpvs`,
-   `VITE_CLARITY_PROJECT_ID`) are **removed entirely**, not consent-gated.
+Citation rule (cure round, 2026-10-21): an item below is called an
+**owner decision** only when the owner's actual words are on record,
+quoted with the date. Everything else is **team rationale** and is
+labelled that way — a branch doc is a set of claims, and a claim about
+who decided something has to be checkable.
+
+1. **Analytics: COPPA first — GA and Clarity removed entirely.**
+   Owner's words (2026-10-21): "I deleted clarity and ga4 from
+   cloudflare account". That day the owner deleted both identifiers —
+   the retired GA4 measurement ID and the retired Clarity project ID —
+   from the `meridian` worker's Workers Builds variables, and ordered
+   the repo's GitHub Actions secrets (`VITE_GA4_MEASUREMENT_ID`,
+   `VITE_CLARITY_PROJECT_ID`) deleted; both deletions were done and
+   verified the same day. (The retired ID values themselves are not
+   printed in this doc.) The code change is this PR: Google Analytics
+   (gtag) and Microsoft Clarity are **removed entirely**, not
+   consent-gated.
    *Rationale:* Meridian is directed to children, so every visitor is
    treated as a child. GA sets cookies and identifiers, and Clarity
    records sessions. A grown-up consent toggle would still put third-party
@@ -19,22 +32,36 @@ progress (recorded below).
    aggregate counts only, and injected **only** when the build sets
    `VITE_CF_BEACON_TOKEN`. No consent UI is needed because nothing is
    stored on the device.
-2. **Crash telemetry coarsened.** Outbound reports no longer carry
+2. **Crash telemetry coarsened** *(code change in this PR, not an owner
+   decision)*. Outbound reports no longer carry
    `deviceMemory` or `hardwareConcurrency`. Exact `screenW`/`screenH` became
    a short-side bucket (`sm`/`md`/`lg`/`xl`) and DPR is rounded. This
    applies to the app (`coarseDeviceFacts`) and the inline boot watchdog.
    Crash triage only ever used the os/form buckets, and the extra numbers
    were fingerprint entropy.
-3. **No email address on the privacy page.** Grown-ups use a **Contact us**
-   page (`/contact`) that sits behind the existing grown-up math gate.
-4. **Contact delivery parked, scaffolding only.** The contact handler
+3. **No email address on the privacy page.** *Team rationale (no owner
+   words on record):* a published address on a child-directed site
+   invites spam and mail from children, and there is no inbox staffed to
+   receive it. Grown-ups use a **Contact us** page (`/contact`) that
+   sits behind the existing grown-up math gate.
+4. **Contact delivery PARKED, scaffolding only.** Owner's words
+   (2026-10-21): "Adopt B — start the cure round" — adopting the Senior
+   Architect's path-B ruling from this PR's panel review. Path B means:
+   **delivery is parked**. This PR lands the scaffolding with the form
+   off; nothing delivers today, and activation is a tracked follow-up
+   filed the day this PR merges (the chain is recorded in
+   `BRANCH_STATUS.md`). The contact handler
    (`src/lib/contact/contact-handler.server.ts`) sends messages through a
    `ContactSink` interface.
    The default is `NoopSink`, which accepts a message, stores nothing, and
    returns `stored:false` so the page can say nobody can read it yet.
-   `DiscordWebhookSink` is wired only when the secret
-   `CONTACT_DISCORD_WEBHOOK_URL` is set. No URL is hard-coded.
-5. **No third worker; contact and crash stay separate.** The owner runs
+   In code, `DiscordWebhookSink` is selected only when the secret
+   `CONTACT_DISCORD_WEBHOOK_URL` is a strict discord.com webhook URL —
+   but in production the secret cannot reach the handler yet (the runtime
+   wiring is follow-up work), so setting it today changes nothing. No URL
+   is hard-coded.
+5. **No third worker; contact and crash stay separate.** *Team rationale
+   (no owner words on record):* the owner runs
    two Cloudflare workers, `meridian` (the site) and
    `meridian-crash-report`. The contact endpoint is the TanStack server
    route **`/api/contact` on the main `meridian` worker**
@@ -79,41 +106,62 @@ progress (recorded below).
 - The GitHub Pages mirror is static, so it has no `/api/contact` of its own. It posts cross-origin to the worker's absolute URL, which is why `contactEndpoint` is a full https URL rather than a root-relative path.
 - The `.server.ts` handler is server-only. A `build:pages` client bundle grep for `CONTACT_DISCORD` / `handleContactRequest` comes back empty.
 
-## Deploy TODOs for the owner (none are done by this branch)
+## Deploy TODOs for the owner
 
-1. **Cloudflare Workers Builds env:** delete `VITE_GA4_MEASUREMENT_ID` and
-   `VITE_CLARITY_PROJECT_ID` from the `meridian` build settings. They are now
-   ignored, but should not linger. Optionally add `VITE_CF_BEACON_TOKEN`
-   after enabling Web Analytics for the site. Do the same in GitHub
-   Actions secrets.
+1. **Cloudflare Workers Builds env + GitHub secrets — DONE (done and
+   verified 2026-10-21).** The owner deleted `VITE_GA4_MEASUREMENT_ID`
+   and `VITE_CLARITY_PROJECT_ID` from the `meridian` worker's Workers
+   Builds variables and from the repo's GitHub Actions secrets (owner
+   decision 1, above). Still open, and optional: add
+   `VITE_CF_BEACON_TOKEN` after enabling Web Analytics for the site —
+   until then the beacon stays off.
 2. **Verify headers** after the next deploy (commands in
-   `docs/security-headers.md`). If they are missing, the build is not
-   served as static assets, and the headers must move into the game worker.
-3. **Switch the contact form on:** the route ships with the normal
-   `meridian` deploy, and nothing new needs uploading. Check after
-   deploy: `curl -i -X POST https://meridian.knowledgetest.workers.dev/api/contact -H 'origin: https://meridian.knowledgetest.workers.dev' -H 'content-type: application/json' -d '{"topic":"bug","message":"test"}'`. The `origin` header is required, and a POST without it gets 403
-   should return `200 {"ok":true,"stored":false}`. Then add
-   `"contactEndpoint": "https://meridian.knowledgetest.workers.dev/api/contact"`
-   to `public/flags.json`. Until then, the form says it is not switched on.
+   `docs/security-headers.md`). The remedy this item used to prescribe —
+   moving the headers into the game worker if `_headers` does not reach
+   a response — is **already implemented by this PR's own follow-ups**:
+   `src/start.ts` request middleware adds the headers from the single
+   source `src/lib/security-headers.ts` to every worker response. What
+   remains is the post-deploy verification itself.
+3. **Contact form activation — PARKED. This is follow-up work, not a
+   step this PR completes.** The route ships with the normal `meridian`
+   deploy, and nothing new needs uploading — but shipping the route does
+   not switch delivery on: the handler cannot see the secret yet (see
+   the `process.env` note below), so every message still lands on
+   `NoopSink`. The full activation chain is recorded in
+   `BRANCH_STATUS.md`. The parked endpoint's expected behavior,
+   checkable after deploy with:
+   `curl -i -X POST https://meridian.knowledgetest.workers.dev/api/contact -H 'origin: https://meridian.knowledgetest.workers.dev' -H 'content-type: application/json' -d '{"topic":"bug","message":"test"}'`.
+   A POST without an `Origin` header gets `403`. A valid POST gets
+   `200 {"ok":true,"stored":false}` — `stored:false` is the parked
+   truth: accepted, then discarded, readable by nobody. The
+   `contactEndpoint` flag is added to `public/flags.json` only at the
+   end of the activation chain; until then, the form says it is not
+   switched on.
    `readContactEnv()` reads `process.env`, which on Workers needs
    `nodejs_compat` with a compatibility date ≥ 2025-04-01 (or
    `nodejs_compat_populate_process_env`). Without it the handler falls
    back to `NoopSink`, which fails safe. Optional: set
    `CONTACT_ALLOWED_ORIGINS` if a custom domain replaces the Pages origin.
-4. **Contact delivery (when a Discord server exists):** create a **new**
-   channel and webhook, then set it as the secret
-   `CONTACT_DISCORD_WEBHOOK_URL` on the **`meridian`** worker
+4. **Contact delivery (activation follow-up, when a Discord server
+   exists):** create a **new** channel and webhook, then set it as the
+   secret `CONTACT_DISCORD_WEBHOOK_URL` on the **`meridian`** worker
    (`wrangler secret put CONTACT_DISCORD_WEBHOOK_URL --name meridian`, or
    the dashboard). Never reuse the crash worker's `DISCORD_WEBHOOK_URL`,
    and never put that name on `meridian`. Update the privacy page's
    contact paragraph in the same change.
+   **Record correction (verified 2026-10-21):** a GitHub **repo** secret
+   named `CONTACT_DISCORD_WEBHOOK_URL` exists (added by the owner
+   2026-10-21), but **nothing reads it** — GitHub secrets feed Actions
+   runs, not the worker. The handler expects a **worker runtime secret**
+   on the `meridian` worker. Activation sets it on the worker and then
+   deletes the same-named GitHub repo secret: one secret, one store.
 5. **Crash worker:** no change needed. It accepts the coarser device
    object as-is (only `os`/`form` are read).
 
 | Secret | Worker | Purpose |
 | --- | --- | --- |
 | `DISCORD_WEBHOOK_URL` | `meridian-crash-report` | crash alerts and digests (existing) |
-| `CONTACT_DISCORD_WEBHOOK_URL` | `meridian` (main site, `/api/contact`) | grown-ups contact messages (new, optional, separate channel) |
+| `CONTACT_DISCORD_WEBHOOK_URL` | `meridian` (main site, `/api/contact`) | grown-ups contact messages (new, optional, separate channel). **Worker runtime secret** — the same-named GitHub repo secret is read by nothing (see TODO 4) |
 | `CONTACT_ALLOWED_ORIGINS` | `meridian` | optional comma list of cross-origin callers. Default is the GitHub Pages origin |
 
 ## Overlap with PR #203 (perf, F1 immutable caching)
@@ -159,7 +207,9 @@ Merge plan for whichever PR lands second:
 
 The home footer now carries a one-line promise linking to `/privacy`:
 "Made for kids: no accounts, no ads, no tracking cookies, and no personal
-information collected."
+information collected from players." (The "from players" qualifier was
+added in the cure round: grown-ups who use the contact form do send a
+message — the promise is about players.)
 
 It deliberately does **not** say "COPPA compliant". Compliance is a legal
 determination that no one (for example an FTC-approved Safe Harbor such as
@@ -200,8 +250,29 @@ as they stay true, so:
 2. **Webhook URL:** `CONTACT_DISCORD_WEBHOOK_URL` must start with
    `https://discord.com/api/webhooks/`. A `discordapp.com` or
    `canary.`/`ptb.` URL is ignored, and the form then reports
-   "not connected". Re-copy it from Discord if needed.
+   "not connected". Re-copy it from Discord if needed. (This is the
+   sink-selection rule in code; setting the secret in production is part
+   of the parked activation follow-up — the GitHub repo secret of this
+   name is read by nothing. See Deploy TODO 4.)
 3. **Verify headers on both paths** after deploy (`docs/security-headers.md`):
    `/` (worker) and a hashed `/assets/*` file (static).
 4. **Retention:** delete each contact post in Discord once it is resolved,
    and within 90 days at the latest. The privacy notice promises this.
+
+## Cure round (panel NOT READY → path B, 2026-10-21)
+
+The 12-role panel returned **NOT READY** on tip `e361937` (voted
+pre-rebase; the content was carried to `3250f02`): the privacy posture
+was sound, but contact delivery could not work in production as shipped
+while docs and copy implied it did, and the record had defects. The
+owner adopted path B — "Adopt B — start the cure round" (2026-10-21):
+this PR lands with delivery honestly **PARKED** (form off, docs
+truthful), and activation is a tracked follow-up filed the day this PR
+merges. The cure round changed: parked-state copy on `/privacy`,
+`/contact`, and the footer (now "…collected from players"); an honest
+readiness check (`npm run check:contact`) that reports NOT configured
+and fails while the sink is `NoopSink`; the citation fixes at the top
+of this doc (retired IDs scrubbed, non-owner items relabelled as team
+rationale or code changes, the `CONTACT_DISCORD_WEBHOOK_URL` record
+corrected); and the observability / rate-limit doc fixes. The full
+cure record and the activation chain are in `BRANCH_STATUS.md`.
