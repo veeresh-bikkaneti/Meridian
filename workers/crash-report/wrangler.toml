@@ -1,13 +1,22 @@
 # Meridian crash-report worker (Cloudflare Workers).
 #
-# NO secrets in this file — secrets are set via `wrangler secret put`
-# (see README.md). There are no [vars]: everything configurable that is
-# not a secret lives in code defaults.
+# NO secrets in this file — secrets are set through the Cloudflare
+# API (`cf.py secret <NAME>`; see README.md, Deploy/Secrets). This
+# worker ships by direct API script upload, never `wrangler deploy`.
+# There are no [vars]: everything configurable that is not a secret
+# lives in code defaults.
+#
+# This file is the human config record of the intended setup —
+# `cf.py deploy` never reads it. Bindings and triggers take effect
+# as version metadata on an upload, not from this file.
 #
 # Phase 1 telemetry: event counters live in a KV namespace bound as
-# TELEMETRY_COUNTS. Created 2026-10-21 (title "TELEMETRY_COUNTS"); the
-# binding below is live. If the namespace is ever recreated, update the
-# id — a missing/unbound namespace only disables counting (fail-open).
+# TELEMETRY_COUNTS. The namespace was created 2026-10-21 via the
+# Cloudflare API (title "TELEMETRY_COUNTS"); the block below records
+# its id. A version counts only when its upload metadata carries
+# this binding — a missing/unbound namespace only disables counting
+# (fail-open). The digest cron below was likewise set via the API
+# schedules endpoint (2026-10-21); this block is its record.
 name = "meridian-crash-report"
 main = "src/index.ts"
 compatibility_date = "2026-10-01"
