@@ -453,9 +453,15 @@ test("game-app wiring: boot applies the plan's persistSource as an auto record",
   );
   // And the dialog era is fully gone from the component.
   assert.ok(!src.includes("ScoutBootOffer"), "the boot offer dialog must not come back");
+  // Issue #154 item 1: the E2E harness seam must NOT come back either.
+  // Production once read window.__meridianSuppressScoutOffer to skip the
+  // auto-switch — a test bypass shipped to every player, settable by any
+  // page script. The harness now spoofs the device signals instead
+  // (tests/e2e/helpers.ts), so the app needs no bypass; if the seam name
+  // ever reappears in this component, this pin fails.
   assert.ok(
-    src.includes("__meridianSuppressScoutOffer"),
-    "the harness seam stays wired — it now suppresses the auto-switch (issue #154 item 1)",
+    !src.includes("__meridianSuppressScoutOffer"),
+    "the production test seam must stay removed — the harness spoofs device signals instead (issue #154 item 1)",
   );
 });
 
