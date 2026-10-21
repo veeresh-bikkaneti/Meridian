@@ -59,4 +59,10 @@ Chair sign-off), then RED, minimal GREEN, gates, unified diff.
 - **Push early and often** — the VM is not durable storage for unpushed work.
 - Every feature branch carries `BRANCH_STATUS.md` at the repo root tracking
   done vs pending; update and push it with the work.
+- **A merged branch is deleted, not left behind.** Cleanup is part of the task,
+  not a follow-up someone has to ask for. Keep *Settings -> General -> Pull
+  Requests -> Automatically delete head branches* switched on so this happens
+  with nobody's attention. An agent in the cloud container cannot do it by hand
+  — the proxy refuses ref deletion with HTTP 403 — so it names the leftover
+  branch in its final report rather than going quiet.
 - Do not touch `.scratch/` (gitignored crawl cache) or other branches' worktrees.
