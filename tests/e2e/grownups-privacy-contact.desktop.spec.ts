@@ -25,6 +25,10 @@ test("footer links reach the privacy notice and the tour stays reachable", async
   const note = page.getByTestId("kids-privacy-note");
   await expect(note).toBeVisible();
   await expect(note).toContainText(/no tracking cookies/i);
+  // Cure-round copy pin (see the contact test below): the promise is
+  // about players only — grown-ups using the contact form do send a
+  // message — so the "from players" qualifier must stay in the copy.
+  await expect(note).toContainText(/from players/i);
   await expect(note).not.toContainText(/compliant/i);
   await page.getByTestId("privacy-link").click();
   await expect(page).toHaveURL(/\/privacy$/);
@@ -61,6 +65,11 @@ test("contact form sits behind the grown-up gate and fails closed until switched
 
   const form = page.getByTestId("contact-form");
   await expect(form).toBeVisible();
+  // Cure-round copy pins: this assertion and the footer "from players"
+  // assertion above pin the cure-round copy, so a copy-only un-parking
+  // regression (removing the parked note, or the qualifier) fails the
+  // suite. The parked note renders inside the form, after the gate.
+  await expect(page.getByTestId("contact-parked-note")).toBeVisible();
   await expect(page.getByTestId("contact-kid-note")).toBeVisible();
   await form.locator("select").selectOption("bug");
   await form.locator("textarea").fill("The map froze on level 2");
