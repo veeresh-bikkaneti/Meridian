@@ -287,7 +287,54 @@ body:has(.home-v5) {
 .home-v5 .hv5-storyteller {
   position: relative;
   flex: none;
-  margin-left: 10px;
+  /* The greeting popover anchors to this host's RIGHT edge and opens
+     leftward (see storyteller-home.css) — that only works while the host
+     sits at the right end of its row. The hero-top row wraps, and a
+     wrapped host used to land at the LEFT of its new line, so the popover
+     opened off the left edge of the screen and covered the headline.
+     (The owner reported this from an ~880px screenshot on 2026-10-21;
+     the fixing crew's reproduction sweep found the same break at
+     768/1280/1440 and a clean render at 1024, where the row happens
+     not to wrap.) margin-left: auto keeps the host at the right end of
+     whatever line it lands on, at every width. The ≤680px block below
+     used to carry this rule for phones only; it is universal now. */
+  margin-left: auto;
+}
+/* Greeting popover width in the v5 hero (≥681px). The shared cap is
+   320px (storyteller-home.css), but the popover hangs below the
+   hero-top row, over the headline — and the headline wraps, so its
+   lower lines can reach further right than its first line. The bubble
+   has to clear EVERY line, not just line 1. Two caps, both set from
+   measurements of the real glyph boxes (the visual pin in
+   tests/e2e/home-visual-layout.desktop.spec.ts re-measures them on
+   every run, so a future copy or font change that eats the clearance
+   fails loudly):
+   — 681–767px: 184px. In this band the hero spans the full page width
+     while the headline is already at its 36px font floor in a box
+     capped at 12em — the wrapped lines reach nearly as far right as
+     they ever do, while the card (and with it the bubble's right
+     anchor) is still narrow. Measured at 681px: a 224px bubble
+     overlapped the lower headline lines by ~29px; 184px clears them
+     by ~11px, the tightest point in the band.
+   — 768px and up: 224px. Measured clearance ~26px at 768px, and the
+     pin passes at every wider width it checks. Two different freezes
+     shape the wide end: the page shell stops growing at its 1280px
+     max-width, while the headline font keeps growing until ~1444px,
+     where 3.6vw reaches its 52px cap.
+   Phones (≤680px) keep the shared 320px cap: there the host wraps to
+   its own line above the headline, and the bubble hangs over the
+   headline's first line until dismissed — the popover's long-standing
+   absolute-overlay design. The pin checks phones for viewport
+   containment only. */
+@media (min-width: 681px) {
+  .home-v5 .storyteller-banner-popover {
+    max-width: 224px;
+  }
+}
+@media (min-width: 681px) and (max-width: 767px) {
+  .home-v5 .storyteller-banner-popover {
+    max-width: 184px;
+  }
 }
 /* Difficulty — the repo's real labeled group + live hint, v5 pill skin. */
 .home-v5 .hv5-diff-cap {
@@ -385,6 +432,13 @@ body:has(.home-v5) {
   grid-template-columns: 0.9fr 1.2fr;
   gap: 22px;
   margin-top: 22px;
+  /* Grid items stretch to the row height by default. The About card is
+     two short paragraphs beside the Journal's three full entries, so
+     stretching painted a tall white card with a void under its text —
+     ~1,300–1,800px of empty card at desktop widths (found in the fixing
+     crew's 2026-10-21 layout sweep; the owner did not report this one).
+     Each card now keeps its own height. */
+  align-items: start;
 }
 .home-v5 .hv5-page h2 {
   margin: 8px 0 10px;
@@ -780,13 +834,10 @@ body:has(.home-v5) {
   .home-v5 .hv5-nav {
     flex-wrap: wrap;
   }
-  /* On phones the storyteller host returns to the row's right end: its
-     greeting popover opens leftward from the host and would leave the
-     viewport if the host sat in the left cluster. The globe is in-flow
-     below the hero here, so the right end is free. */
-  .home-v5 .hv5-storyteller {
-    margin-left: auto;
-  }
+  /* The storyteller host sits at the row's right end at EVERY width —
+     that rule now lives on the base .hv5-storyteller above (its greeting
+     popover opens leftward from the host). On phones the globe is
+     in-flow below the hero, so the right end is free here too. */
   .home-v5 .hv5-nav nav {
     display: flex;
     order: 3;
