@@ -30,6 +30,13 @@ test("footer links reach the privacy notice and the tour stays reachable", async
   await expect(page).toHaveURL(/\/privacy$/);
   // The COPPA posture is the headline claim; lock the wording a parent reads.
   await expect(page.getByText(/every visitor as a child/i).first()).toBeVisible();
+  // Contact-message disclosures (review follow-up on #207): the processor
+  // is named, retention is stated, the server keeps nothing, and the gate
+  // is NOT presented as verified parental consent.
+  await expect(page.getByText(/Discord receives the message/i)).toBeVisible();
+  await expect(page.getByText(/within 90 days/i).first()).toBeVisible();
+  await expect(page.getByText(/Our server keeps nothing/i)).toBeVisible();
+  await expect(page.getByText(/not a parental-consent mechanism/i)).toBeVisible();
   await expect(page.getByRole("link", { name: "Contact us" }).first()).toBeVisible();
 });
 

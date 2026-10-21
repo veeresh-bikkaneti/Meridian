@@ -20,8 +20,9 @@ import "@/components/age-profile/age-profile.css";
  * WHY gated: owner decision 2026-10-21 — no email address is published;
  * grown-ups use this form instead, and the arithmetic gate (the same one
  * that guards the age setting, with its 3-strike cooldown) keeps children
- * from landing on a free-text box by accident. The gate is not stored as
- * "passed": every visit asks again.
+ * from landing on a free-text box by accident. It is a speed bump, NOT a
+ * verified parental-consent mechanism, and /privacy says so. The gate is
+ * not stored as "passed": every visit asks again.
  *
  * ssr: false — the gate reads its cooldown from localStorage, so this page
  * is client-only (same reasoning as the "/" route).
@@ -82,7 +83,7 @@ function ContactForm() {
       <p>
         For parents, carers, and teachers. Questions about privacy, a request about your data, or a
         bug report — we read every message. See our <Link to="/privacy">privacy notice</Link> for
-        what this form sends.
+        what this form sends, where messages go (a private Discord channel), and how long they are kept.
       </p>
       <p
         className="rounded-lg border border-line bg-surface p-4 text-base font-medium"

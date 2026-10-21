@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { InfoPage } from "@/components/grownups/info-page";
+import { CONTACT_RETENTION_DAYS } from "@/lib/contact/retention";
 
 /**
  * /privacy — the plain-language privacy notice for grown-ups.
@@ -14,6 +15,11 @@ import { InfoPage } from "@/components/grownups/info-page";
  *   The only analytics is optional, cookieless Cloudflare Web Analytics.
  * - No contact email is published (owner decision); grown-ups reach us
  *   through the gated /contact form instead.
+ * - Contact messages: Discord is named as the processor that holds them,
+ *   the server stores nothing, and retention is CONTACT_RETENTION_DAYS
+ *   (src/lib/contact/retention.ts). The grown-up gate is described
+ *   honestly as a check that keeps kids out of the form, NOT as
+ *   verified parental consent.
  */
 export const Route = createFileRoute("/privacy")({
   head: () => ({ meta: [{ title: "Privacy — Meridian" }] }),
@@ -82,15 +88,43 @@ function PrivacyPage() {
 
       <h2>Contact form (grown-ups only)</h2>
       <p>
-        The <Link to="/contact">Contact us</Link> page sits behind a grown-up question so children
-        don&rsquo;t reach it by accident. It sends only the topic you pick, your message (up to 1,000
-        characters), and — only if you choose to give it — a reply-to email address for a grown-up.
-        We never store or forward your IP address with the message. Right now the form&rsquo;s inbox is
-        not connected yet, so messages are accepted and then discarded — the page tells you when that
-        happens. When an inbox is connected, messages will go to a private channel read only by the
-        Meridian developer, be kept only as long as needed to answer them, and never be shared; this
-        notice will be updated first.
+        The <Link to="/contact">Contact us</Link> page sits behind a short grown-up question (a math
+        problem). That question is only a simple check to keep young children from reaching a
+        free-text form by accident. It does <strong>not</strong> verify who you are or that you are a
+        parent, and it is not a parental-consent mechanism. Children should not use the form.
       </p>
+      <p>
+        The form sends only the topic you pick, your message (up to 1,000 characters), and, only if
+        you choose to give it, a reply-to email address for a grown-up. We never store or forward
+        your IP address with the message.
+      </p>
+      <h3>Where messages go and how long they are kept</h3>
+      <ul>
+        <li>
+          <strong>Our server keeps nothing.</strong> The Meridian site checks the message and passes
+          it on. It has no database, keeps no copy, and never writes your message or email address to
+          its logs.
+        </li>
+        <li>
+          <strong>Discord receives the message.</strong> When the inbox is switched on, each message
+          is posted to a private channel in <strong>Discord</strong> (Discord Inc.) that only the
+          Meridian developer can read. Discord is the service that holds the message, under{" "}
+          <a href="https://discord.com/privacy" target="_blank" rel="noopener noreferrer">
+            Discord&rsquo;s privacy policy
+          </a>
+          . Messages are never shared or used for anything except answering you.
+        </li>
+        <li>
+          <strong>Deleted once resolved, within {CONTACT_RETENTION_DAYS} days.</strong> We delete the
+          Discord message once your question or request is resolved, and in any case within{" "}
+          {CONTACT_RETENTION_DAYS} days of receiving it. You can ask us to delete it sooner through the
+          same form.
+        </li>
+        <li>
+          Until the inbox is switched on, messages are accepted and then discarded right away, and the
+          page tells you when that happens.
+        </li>
+      </ul>
 
       <h2>Leaving Meridian</h2>
       <p>
