@@ -17,7 +17,7 @@ import "@/components/age-profile/age-profile.css";
 /**
  * /contact — "Contact us" for grown-ups, behind the existing math gate.
  *
- * WHY gated: owner decision 2026-10-21 — no email address is published;
+ * WHY gated: team rationale — no email address is published, so
  * grown-ups use this form instead, and the arithmetic gate (the same one
  * that guards the age setting, with its 3-strike cooldown) keeps children
  * from landing on a free-text box by accident. It is a speed bump, NOT a
@@ -81,9 +81,20 @@ function ContactForm() {
   return (
     <InfoPage title="Contact us">
       <p>
-        For parents, carers, and teachers. Questions about privacy, a request about your data, or a
-        bug report — we read every message. See our <Link to="/privacy">privacy notice</Link> for
-        what this form sends, where messages go (a private Discord channel), and how long they are kept.
+        For parents, carers, and teachers — questions about privacy, a request about your data, or a
+        bug report.
+      </p>
+      <p
+        className="rounded-lg border border-line bg-surface p-4 text-base font-medium"
+        role="note"
+        data-testid="contact-parked-note"
+      >
+        ⏸️ This form isn&rsquo;t switched on yet. Our contact inbox isn&rsquo;t connected, so a
+        message sent here can&rsquo;t reach us or be answered yet — and the form will tell you the
+        same thing if you try to send. Please check back soon. Our{" "}
+        <Link to="/privacy">privacy notice</Link> explains how delivery will work once it is on:
+        what the form will send, where messages will go (a private Discord channel), and how long
+        they will be kept.
       </p>
       <p
         className="rounded-lg border border-line bg-surface p-4 text-base font-medium"
