@@ -32,6 +32,13 @@ effort escaping weakness rather than proving the app survives it.
 | PR #217 | `314b66b` | pass | **fail** (job 119608941564) |
 | PR #212 | `04e3f8a` | — | **fail** (job 119610150891) |
 | PR #197 | `6b11c4c` | pass | pass (job 119608300852) |
+| PR #219 | `aefd80a` | — | **fail** (job 119625304756) |
+
+PR #219 is the decisive case: its entire diff against `main` is **two
+markdown files** (`AGENTS.md` and this document). A docs-only change cannot
+influence a Globe chunk request, and it turned `e2e` red. (The specific
+failing test could not be read back — the log API's tail window reaches
+only the job's cleanup steps — but the diff settles the question of cause.)
 
 The same spec failed on `main` itself. PR #212's diff is `public/_headers`,
 `BRANCH_STATUS.md` and one assertion in `scripts/security-headers.test.mjs`
@@ -219,7 +226,8 @@ either the runner improves or the assertion is made render-independent.
    or onto this branch. The owner's call.
 
 4. **Is `main` being red an incident?** It will fail PRs at random until
-   5.1 lands. Recommend treating it as blocking.
+   5.1 lands. Four branches have now been hit, including a docs-only PR.
+   Recommend treating it as blocking.
 
 ---
 
