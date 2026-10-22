@@ -29,7 +29,7 @@ Verify each before starting; if any is false, the plan may need rework.
 | :--- | :--- |
 | `main` was at `1ca4c04` with `e2e` **red** — **now fixed** by PR #226 (merged 2026-10-22); `main` green at `05916f8`, run 39761267966 | `gh run list --branch main` |
 | `main`'s `build (22.x)` is **green** | same run |
-| **#197's `e2e` is GREEN** (job 119608300852) | The red ones were #212, #217 and #219, each failing *only* at `observability.spec.ts:238`. #219's diff is two `.md` files, so the cause was never any PR. |
+| **#197's `e2e` is GREEN** (job 119608300852) | The red ones were #212, #217 and #219, each failing *only* at `observability.spec.ts:238`. #219's diff was two `.md` files when it went red at `aefd80a` (three now, after the cure rounds), so the cause was never any PR. |
 | All four branches are 0 commits behind `main`, no conflicts | `git merge-tree --write-tree origin/<branch> origin/main` |
 | "Workers Builds: meridian" fails on every branch | **Owner has ruled this ignorable.** Do not try to fix it. |
 
@@ -140,14 +140,23 @@ on branch `fix/154-seam-test-only` (PR #197). It has two tests:
 `.github/workflows/node.js.yml`, the `e2e` job (line 52), step at line 64:
 
 ```diff
++    # The scout spec's test 1 mounts the 3D map, which this runner cannot
++    # render reliably, so it is tagged @local-only and excluded here. Only
++    # test 2 — the weak-device degradation check — runs in CI, and the
++    # runner MUST STAY WEAK: do not "fix" the VM to make test 1 pass.
      - run: >-
          npx playwright test
          tests/e2e/grownups-privacy-contact.desktop.spec.ts
          tests/e2e/hydration-boot.desktop.spec.ts
          tests/e2e/observability.spec.ts
 +        tests/e2e/scout-harness-suppression.desktop.spec.ts
++        --grep-invert @local-only
          --workers=1 --reporter=line
 ```
+
+Both added lines are required. **The spec line without `--grep-invert`
+runs test 1 in CI** — the exact opposite of Change C. Verify with
+`playwright test --list` before and after, and put that output in the PR.
 
 ### The ordering problem — read this
 
@@ -217,8 +226,10 @@ Plus the Playwright runs from §1.
 
 1. **Do not refactor working code.** Both changes are additive/one-line.
 2. **Do not create new branches or duplicate files.** Work on the branch
-   you are assigned. If Change A genuinely needs its own branch, **ask the
-   owner first** — this is an open question in the review doc (§7 Q3).
+   you are assigned. (Change A was the one exception: the owner granted a
+   rule-2 waiver so it could ship as its own tiny PR — #226, merged. That
+   is settled, not a precedent; anything else needing its own branch is a
+   fresh ask.)
 3. **Edit only the targeted block, in place.**
 4. **Show changes as unified git diffs**, never whole-file pastes.
 5. **Stage named files only — never `git add -A`.**
@@ -238,9 +249,11 @@ Plus the Playwright runs from §1.
 - **`npm install` can crash** with `TypeError [ERR_INVALID_ARG_TYPE]: The
   "from" argument must be of type string` inside arborist's reify.
   `--package-lock-only` avoids it.
-- **Branch deletion is impossible from the cloud container** — the proxy
-  refuses ref deletion with HTTP 403. Name leftover branches in your report
-  and let the owner delete them in the GitHub UI.
+- **Branch deletion may be refused** — in the cloud container the proxy
+  returns HTTP 403 for ref deletion; from an ordinary VM it works. Try
+  `git push origin --delete <branch>`, and if it is refused, name the
+  leftover branch in your report and let the owner delete it in the GitHub
+  UI. (Matches the cured `AGENTS.md` rule: try, then report.)
 - **`https://meridian.knowledgetest.workers.dev` is unreachable** from the
   container (proxy 403), so live header/behaviour probes cannot be re-run.
   Do not claim live verification you did not perform.
@@ -248,8 +261,8 @@ Plus the Playwright runs from §1.
   the cleanup steps. To see a failing assertion, download the
   `playwright-report` artifact instead.
 - **Scout specs take ~3.3 min locally** for all 22. Budget for it.
-- **Visual testing is delegated to a `haiku` subagent** per `AGENTS.md` —
-  never done inline.
+- **Visual testing goes to a `haiku` subagent by default** per `AGENTS.md`.
+  Do it inline only when delegation is genuinely impossible, and say so.
 
 ---
 
@@ -269,21 +282,24 @@ Plus the Playwright runs from §1.
 Answered 2026-10-22, "Adopt all". Do not re-decide these. Full wording in
 the posture doc's §7.
 
-1. **Where should Change A land?** → Its own tiny PR, Constitution rule-2
-   waiver granted and recorded in that PR's body. **Done: PR #226.**
-2. **Does the capable-device spoof now hide too much?** → Targeted
-   weak-device coverage is enough. **No second all-weak CI lane.** The
-   residual exposure is accepted, not overlooked.
-3. **Option 1 or Option 2 for §2?** → **Option 1** (tag + `--grep-invert`),
-   with the workflow comment, the `--list` evidence, and the `expect.poll`
-   wrap. See §2.
-4. **Is red `main` an incident?** → Yes, blocking — a CI-integrity
-   incident. Now resolved by #226. **Do not add `e2e` to required checks.**
-5. **The #197 docstring question** → Amend `serveBuiltArtifact`'s docstring
-   (spoof fakes probe + memory only; a stored record wins first, then a
-   seeded prior-map crash; crash-seeding specs pass
-   `spoofCapableDevice: false` unless the crash is the subject). No runtime
-   guard. Rides with the #197 work.
+Numbered to match the posture doc's §7, so a cross-reference means the
+same thing in both files.
+
+- **Q1 — Does the capable-device spoof now hide too much?** → Targeted
+  weak-device coverage is enough. **No second all-weak CI lane.** The
+  residual exposure is accepted, not overlooked.
+- **Q2 — The #197 docstring question.** → Amend `serveBuiltArtifact`'s
+  docstring (the spoof fakes probe + memory only; a stored record wins
+  first, then a seeded prior-map crash; crash-seeding specs pass
+  `spoofCapableDevice: false` unless the crash is the subject). No runtime
+  guard. Rides with the #197 work.
+- **Q3 — Where should Change A land?** → Its own tiny PR, Constitution
+  rule-2 waiver granted and recorded in that PR's body. **Done: PR #226.**
+- **Q4 — Is red `main` an incident?** → Yes, blocking — a CI-integrity
+  incident. Now resolved by #226. **Do not add `e2e` to required checks.**
+- **Q5 — Option 1 or Option 2 for §2?** → **Option 1** (tag +
+  `--grep-invert`), with the workflow comment, the `--list` evidence, and
+  the `expect.poll` wrap. See §2.
 
 ---
 
@@ -294,7 +310,7 @@ the posture doc's §7.
 - [ ] Change B pushed (Option 1 mechanism per §2); CI runs the weak-device
       test on every PR, with `--list` evidence in that PR.
 - [ ] Test 2's stored-record read wrapped in `expect.poll`.
-- [ ] `serveBuiltArtifact`'s docstring amended per ruling 5.
+- [ ] `serveBuiltArtifact`'s docstring amended per ruling **Q2**.
 - [ ] Test 1 still exists, tagged `@local-only`, still runs locally.
 - [ ] Change B's cost measured and the posture doc's §5.2 estimate replaced
       with the real number.

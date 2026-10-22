@@ -1,4 +1,4 @@
-# E2E posture on a weak VM — proposal for panel review
+# E2E posture on a weak VM — decision record
 
 **Date:** 2026-10-22
 **Author:** Claude (Opus 5), at the owner's direction
@@ -41,9 +41,11 @@ effort escaping weakness rather than proving the app survives it.
 | PR #197 | `6b11c4c` | pass | pass (job 119608300852) |
 | PR #219 | `aefd80a` | — | **fail** (job 119625304756) |
 
-PR #219 is the decisive case: its entire diff against `main` is **two
-markdown files** (`AGENTS.md` and this document). A docs-only change cannot
-influence a Globe chunk request, and it turned `e2e` red. (The specific
+PR #219 is the decisive case. At tip `aefd80a`, when it went red, its
+entire diff against `main` was **two markdown files** (`AGENTS.md` and this
+document); the PR has since grown to three as the cure rounds landed. A
+docs-only change cannot influence a Globe chunk request, and it turned
+`e2e` red. (The specific
 failing test could not be read back — the log API's tail window reaches
 only the job's cleanup steps — but the diff settles the question of cause.)
 
@@ -102,12 +104,12 @@ PR #197 adds `tests/e2e/scout-harness-suppression.desktop.spec.ts`, a
 deliberately discriminating pair:
 
 - **Test 1** — default serve (capable-device spoof installed): the weak VM
-  boots the full map, writes no stored record, shows no auto-switch note,
+  boots the full map, writes no stored record, shows no auto-switch notice,
   and the starfield mounts.
 - **Test 2** — `serveBuiltArtifact(context, { spoofCapableDevice: false })`:
   the *real* SwiftShader VM is left weak, and the app is asserted to
   degrade correctly — auto-switch to Scout, a `probe` auto record, a
-  visible "You're on Scout Map" note, indicator reading `scout`.
+  visible "You're on Scout Map" notice, indicator reading `scout`.
 
 Test 2 is precisely "the app works when the device is weak," executed
 against a genuinely weak device. Neither test runs in CI.
@@ -123,7 +125,7 @@ against a genuinely weak device. Neither test runs in CI.
   worker-role rule). Keep two things apart here:
   - *Seen in screenshots* (indicative only): default boot shows the
     starfield and a "Full map" pill; opted-out boot shows no starfield, a
-    "Scout Map" pill and the auto-switch note. The two *map* screenshots
+    "Scout Map" pill and the auto-switch notice. The two *map* screenshots
     came from Playwright failure captures after a screenshot timeout — real
     images of the map, but not taken at the intended moment.
   - *Asserted by the spec* (the actual gate): mode `scout`, a `probe` auto
@@ -162,7 +164,8 @@ is written and passing, and runs nowhere automatic.
 
 ## 5. Proposal
 
-Three changes, smallest first. **None are implemented.**
+Three changes, smallest first. **Change A has shipped** (§5.1 — PR #226,
+merged 2026-10-22). **Changes B and C are not yet built.**
 
 ### 5.1 Fix the race (unbreaks `main`)
 
