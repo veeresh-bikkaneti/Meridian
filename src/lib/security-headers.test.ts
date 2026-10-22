@@ -65,6 +65,42 @@ test("withHtmlCacheControl leaves a non-HTML response untouched", () => {
   assert.equal(res.headers.get("cache-control"), null);
 });
 
+test("withHtmlCacheControl matches the content type case-insensitively", () => {
+  // Content-Type values are case-insensitive (RFC 9110), and Node's
+  // Headers preserve the sender's casing, so "Text/HTML" must match.
+  const res = withHtmlCacheControl(
+    new Response("<!doctype html>", { headers: { "content-type": "Text/HTML; charset=utf-8" } }),
+  );
+  assert.equal(res.headers.get("cache-control"), HTML_CACHE_CONTROL);
+});
+
+test("withHtmlCacheControl copies a response whose headers are immutable", async () => {
+  // Undici offers no way to build an HTML response with immutable
+  // headers (Response.redirect is the only immutable source, and it
+  // carries no content type), so simulate the immutable guard the way
+  // it behaves in production: the first set() on the original headers
+  // throws a TypeError, later sets (on the helper's copy) succeed.
+  const frozen = new Response("<!doctype html>", { headers: { "content-type": "text/html" } });
+  const originalSet = Headers.prototype.set;
+  let thrown = false;
+  Headers.prototype.set = function (...args: [string, string]) {
+    if (!thrown) {
+      thrown = true;
+      throw new TypeError("immutable headers");
+    }
+    return originalSet.apply(this, args);
+  };
+  try {
+    const res = withHtmlCacheControl(frozen);
+    assert.equal(res.status, 200);
+    assert.equal(res.headers.get("content-type"), "text/html");
+    assert.equal(res.headers.get("cache-control"), HTML_CACHE_CONTROL);
+    assert.equal(await res.text(), "<!doctype html>");
+  } finally {
+    Headers.prototype.set = originalSet;
+  }
+});
+
 test("withSecurityHeaders copies a response whose headers are immutable", async () => {
   const frozen = Response.redirect("https://meridian.test/", 302);
   const res = withSecurityHeaders(frozen);

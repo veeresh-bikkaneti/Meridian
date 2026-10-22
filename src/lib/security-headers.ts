@@ -106,15 +106,19 @@ export function withSecurityHeaders(response: Response): Response {
  *
  * Only rendered documents get the default: a response whose content
  * type starts with `text/html` and which has no Cache-Control yet.
- * Anything else is returned untouched — JSON, API and error responses
- * (for example `/api/contact`'s `no-store`) must stay exactly as their
- * routes set them, and an existing Cache-Control is never overridden.
- * If the response's headers are immutable, a copy is returned instead.
+ * HTML responses — including HTML error pages, such as the 404 page —
+ * get the default unless they already carry a Cache-Control. Non-HTML
+ * responses are returned untouched: JSON and API responses (for
+ * example `/api/contact`'s `no-store`) stay exactly as their routes
+ * set them, and an existing Cache-Control is never overridden.
+ * Content-Type values are case-insensitive (RFC 9110), so the check
+ * lowercases before comparing. If the response's headers are
+ * immutable, a copy is returned instead.
  */
 export function withHtmlCacheControl(response: Response): Response {
   try {
     if (
-      (response.headers.get("content-type") ?? "").startsWith("text/html") &&
+      (response.headers.get("content-type") ?? "").toLowerCase().startsWith("text/html") &&
       !response.headers.has("cache-control")
     ) {
       response.headers.set("cache-control", HTML_CACHE_CONTROL);
@@ -122,7 +126,7 @@ export function withHtmlCacheControl(response: Response): Response {
     return response;
   } catch {
     const headers = new Headers(response.headers);
-    if ((headers.get("content-type") ?? "").startsWith("text/html") && !headers.has("cache-control")) {
+    if ((headers.get("content-type") ?? "").toLowerCase().startsWith("text/html") && !headers.has("cache-control")) {
       headers.set("cache-control", HTML_CACHE_CONTROL);
     }
     return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
