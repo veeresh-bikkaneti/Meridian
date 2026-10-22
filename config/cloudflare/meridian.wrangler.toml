@@ -36,6 +36,13 @@ name = "meridian"
 # The process.env config path (readContactEnv) also needs:
 #   compatibility_flags = ["nodejs_compat"]  with compatibility_date >= "2025-04-01"
 # Check that the Workers Builds config already has it before copying.
+# Live-read note (2026-10-22): the meridian script settings, read
+# through the Cloudflare API, report compatibility_flags = [] (an
+# empty flag set) with compatibility_date 2026-10-19 — so the live
+# config does NOT show nodejs_compat today, and /api/contact answers
+# 400 regardless. What the Builds generated configuration contains
+# is not directly readable from this repo; see
+# docs/reviews/2026-10-22-serverfn-server-entry.md before assuming.
 
 # Per sender (hashed key that changes every UTC day): 3 messages per 60 s.
 [[ratelimits]]

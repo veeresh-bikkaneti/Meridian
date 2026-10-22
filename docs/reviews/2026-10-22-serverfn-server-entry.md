@@ -5,6 +5,24 @@ Branch: `fix/serverfn-server-entry` — this PR. Based on `main` at
 field in a Cloudflare dashboard configuration, edited by the owner.
 No code changes, no Cloudflare state changes by any agent.
 
+**Status: PENDING — owner action not yet taken** (2026-10-22). When
+the owner has taken the steps below and a deploy has carried them,
+this line becomes: **DONE — \<date\>, deploy \<the completed deploy in
+the Builds deployments list\>, verification output posted on PR
+#229.** The verifier is Chitti: after the change, Chitti runs the
+post-change probes in this document and records the real output on
+PR #229.
+
+**In plain language:** the *entry* (or *entrypoint*) is the first
+file run for every request — it decides what handles the request.
+Production currently runs a default entry file supplied by the
+framework instead of this repo's own entry file, `src/server.ts`.
+**WI-19** is this work item: get production running `src/server.ts`.
+**S5** is the review item from PR #222 that added the
+server-function guard (`src/lib/server/server-fn-guard.ts`) inside
+that entry — the guard is what answers `/_serverFn/` probes with a
+clean 404/405.
+
 Origin: PR #222 (review item S5) added `src/server.ts` and
 `src/lib/server/server-fn-guard.ts` so probes of `/_serverFn/` get a
 clean 404/405 instead of an unhandled 500. The code merged; production
@@ -60,9 +78,13 @@ everything in `src/start.ts` works fine.
 
 A Cloudflare-style build run under `wrangler dev` reproduces
 production exactly: 500 on `/_serverFn/`, 403 on `/_serverFn/abc`,
-and a 500 "Server function info not found" with same-origin headers.
-None of the guard's strings (`serverFnGuard`, `functionsInUse`) are
-in that bundle. They **are** in the repo's own `npm run build` output
+and — the differing condition — a 500 "Server function info not
+found" when the request carries same-origin headers (an `Origin`
+matching the host, which gets past the CSRF origin check, after
+which the default handler fails on the missing server-function
+payload). None of the guard's strings (`serverFnGuard`,
+`functionsInUse`) are in that bundle (the *bundle* is the single
+built file Cloudflare actually runs). They **are** in the repo's own `npm run build` output
 — which uses Nitro's `vercel` preset (`vite.config.ts:275`) — but
 production does not use that output. With `main` set to
 `src/server.ts` in the Wrangler configuration, the guard is in the
@@ -90,12 +112,23 @@ One field, in one place, changed by the owner:
 2. Open **Settings > Build**. This is the screen Cloudflare's Workers
    Builds documentation names for a project's build settings
    ("Build settings can be found by navigating to **Settings** >
-   **Build** within your Worker"). The Builds project's **Wrangler
-   configuration** — the configuration Builds generated for this
-   project — is part of that project's configuration. (Not **Settings
-   > Variables & Secrets**: that screen holds runtime variables and
-   is the wrong place; and not a file in this repo: adding one is
-   path (b).)
+   **Build** within your Worker"). On that screen, open the Builds
+   project's **Wrangler configuration** — the configuration Builds
+   generated for this project, the one its deploy command
+   (`npx wrangler deploy`) runs with; it is the text containing
+   `"main"`. Honest flag: the cited docs name the **Settings >
+   Build** screen and its settings, but they do not spell out the
+   exact on-screen hop from that screen to the configuration text —
+   that hop is **inferred** from the Builds UI and is unverified.
+
+   > **Not: Settings > Variables & Secrets.** That screen holds
+   > runtime variables, not the build configuration. Editing it does
+   > not change the entry, and it is the wrong screen for this step.
+   > (And not a file in this repo: adding one is path (b).)
+
+   **Stop condition: if you cannot find a configuration containing
+   "main", stop and report — do not improvise, do not edit Variables
+   & Secrets, do not create a root file (that is path (b)).**
 3. In that Wrangler configuration, change exactly one field:
 
    ```diff
@@ -113,30 +146,62 @@ One field, in one place, changed by the owner:
    build settings, the updated settings will be applied to your
    *next* build." The edit therefore takes effect on the **next
    Workers Builds deploy after the edit** — the next push to `main`,
-   or an owner-triggered redeploy of the current commit from the
-   Builds deployments list. Until that deploy finishes, production
-   still runs the default entry and `/_serverFn/` still 500s; that
-   is expected, not a failed edit.
+   or a redeploy. A *redeploy* means telling Workers Builds to build
+   and deploy the current `main` again without any new commit; the
+   owner triggers it from the `meridian` worker's **Deployments**
+   list in the dashboard (retry/deploy the latest build). Until that
+   deploy finishes, production still runs the default entry and
+   `/_serverFn/` still 500s; that is expected, not a failed edit.
 
 ## Rollback
 
 Set `main` back to `"@tanstack/react-start/server-entry"` in the
-same screen (step 2 above) and redeploy (next build, or an
-owner-triggered redeploy). One field, same as the change. No code
-revert is involved on either side.
+same screen (step 2 above) and redeploy. A *redeploy* is telling
+Workers Builds to build and deploy the current `main` again without
+any new commit, triggered from the `meridian` worker's
+**Deployments** list (retry/deploy the latest build) — or simply
+wait for the next build, since saved build settings apply to the
+*next* build, so the revert also lags by one deploy. One field, same
+as the change. No code revert is involved on either side. Rolling
+back restores the known baseline exactly: `/_serverFn/` 500,
+`/_serverFn/abc` 403.
 
 ## Post-change verification
 
-After the first deploy that follows the edit, confirm
-`/build-meta.json` is serving the new build, then run:
+**Readiness check first — is the new deploy actually serving?**
+Run this *before* the edit (step 1 of the change) and again after
+the deploy:
+
+```sh
+curl -s https://meridian.knowledgetest.workers.dev/build-meta.json
+# today (2026-10-22, before the change): {"buildId": "76630ba"}
+```
+
+The `buildId` derives from the commit SHA (`scripts/build-id.mjs`),
+so what "ready" looks like depends on how the deploy happened:
+
+- **The deploy carries a new commit** (for example the push that
+  merges this PR): the `buildId` must be **different** from the one
+  captured before. A different buildId is the readiness signal.
+- **The owner redeployed the same commit**: the `buildId` is
+  **identical** — that is correct, not a failed deploy. There, the
+  readiness signal is the Builds **deployments list** showing that
+  deploy completed after the edit.
+
+Only run the checks below once one of those two signals holds.
 
 ```sh
 B=https://meridian.knowledgetest.workers.dev
 curl -si $B/_serverFn/ | head -20
 curl -si $B/_serverFn/abc | head -20
 curl -si -X OPTIONS $B/_serverFn/x | head -5
-curl -sI $B/ | grep -iE "^(HTTP|content-security-policy|strict-transport)"
-curl -s -o /dev/null -w '%{http_code}\n' -X POST $B/api/contact -H 'content-type: application/json' -H "Origin: $B" -d '{}'   # expect 400 validation, not 500
+curl -sI $B/ | grep -iE "^(HTTP|content-type|content-security-policy|strict-transport)"
+curl -s $B/ | head -c 100   # expect real HTML: "<!doctype html..." — a non-empty body
+curl -sI $B/privacy | grep -iE "^(HTTP|content-security-policy|strict-transport)"
+curl -sI $B/does-not-exist | grep -iE "^(HTTP|content-security-policy|strict-transport)"   # the 404 page
+curl -s $B/ | grep -oE '/assets/[A-Za-z0-9._-]+\.js' | head -1   # note one hashed asset path, then:
+curl -sI $B/assets/<that-file> | grep -iE "^(HTTP|cache-control)"   # expect the immutable year-long value
+curl -s -o /dev/null -w '%{http_code}\n' -X POST $B/api/contact -H 'content-type: application/json' -H "Origin: $B" -d '{}'   # expect 400, as today
 ```
 
 Expected results:
@@ -146,19 +211,45 @@ Expected results:
 | `GET /_serverFn/` | **404** JSON, `Cache-Control: no-store`, security headers present |
 | `GET /_serverFn/abc` | **404** JSON, `no-store`, security headers present |
 | `OPTIONS /_serverFn/x` | **405** |
-| `GET /` | **200** with Content-Security-Policy and Strict-Transport-Security (unchanged) |
-| `POST /api/contact` (empty JSON) | **400** validation — not 500 |
+| `GET /` | **200**, `Content-Type: text/html`, non-empty HTML body, Content-Security-Policy and Strict-Transport-Security present (unchanged) |
+| `GET /privacy` | **200** with the security headers (unchanged) |
+| `GET /does-not-exist` | **404** page with the security headers (unchanged) |
+| One hashed `/assets/*` file | **200**, `Cache-Control: public, max-age=31536000, immutable` (unchanged) |
+| `POST /api/contact` (empty JSON) | **400** — unchanged from today; see the caveat below |
 
-One caveat on the last row: `/api/contact`'s env path also needs
-`compatibility_flags = ["nodejs_compat"]` with
-`compatibility_date >= "2025-04-01"` in the Builds configuration
-(see the header of `config/cloudflare/meridian.wrangler.toml`; the
-generated TanStack Start configuration includes `nodejs_compat`, and
-the live script settings report compatibility_date 2026-10-19). If
-the POST returns something other than 400, record the real output on
-the PR — it points at the contact config, not at this entry change.
-The `/_serverFn/` rows are the proof of the entry change. Post the
-real output on this PR.
+**Players and parents should notice nothing at all.** Pages, the
+map, and static files behave exactly as before. If anything looks
+different to a player after the deploy, that is a failure — roll
+back (below).
+
+**Caveat on the contact row — a 400 proves pass-through only.**
+`POST /api/contact` returns 400 **today**, before this change
+(live-probed 2026-10-22: `400 {"error":"invalid message", …}`), so a
+post-change 400 is expected either way. It proves only that the
+route still answers behind the new entry — **not** that the entry
+change worked, and **not** end-to-end contact delivery (the contact
+form stays parked; its activation is issue #220). The
+`/_serverFn/` rows are the proof of the entry change. One honesty
+note behind this: the header of
+`config/cloudflare/meridian.wrangler.toml` says `/api/contact`'s
+`process.env` path needs `compatibility_flags = ["nodejs_compat"]`
+with `compatibility_date >= "2025-04-01"`, but the live script
+settings — read through the Cloudflare API on 2026-10-22 — report
+**`compatibility_flags = []`** with compatibility_date 2026-10-19:
+an **empty** flag set. So do not assume the live configuration has
+`nodejs_compat`; what the Builds generated configuration contains
+is not directly readable from this repo, and the observed behavior
+(the route answering 400 today) is the ground truth either way. If
+the POST returns something other than 400 after the change, record
+the real output on the PR — it points at the contact path, not at
+this entry change.
+
+**Failure branch.** If `/_serverFn/` still returns **500 after a
+deploy has completed** (per the readiness check above — not merely
+while a deploy is still running): **stop.** Do not improvise further
+changes. Report the full output on PR #229 and escalate to the
+owner. The rollback below restores the known baseline
+(`/_serverFn/` 500, `/_serverFn/abc` 403).
 
 ### Smoke coverage: PR #225 already checks the core signal
 
@@ -182,19 +273,28 @@ belongs with #225's owner; this PR deliberately adds no script.
 
 - **The custom entry runs in production for the first time.**
   `src/server.ts` wraps the unchanged TanStack handler
-  (`createStartHandler(defaultStreamHandler)`) with one addition in
-  front: `ServerFnGuard.check()`. The guard is unit-tested
+  (`createStartHandler(defaultStreamHandler)` — the standard
+  TanStack request handler, untouched) with one addition in front:
+  `ServerFnGuard.check()`. The guard is unit-tested
   (`src/lib/server/server-fn-guard.test.ts`) and
   `SERVER_FUNCTIONS_IN_USE` is `false`, so every `/_serverFn/*` id
   is impossible by construction and is answered by the guard; every
   other request — pages, assets, `/api/contact` — passes through to
-  the same handler production runs today, still behind `start.ts`'s
-  CSRF and security-header middleware. Guard responses get the same
-  security headers applied directly in `src/server.ts`.
+  the same handler production runs today, behind `start.ts`'s
+  security-headers middleware. (The CSRF middleware in the same
+  file is *not* a general shield: its filter
+  (`src/start.ts:20-22`) engages only for `handlerType ===
+  "serverFn"` requests, so pages and `/api/contact` were never
+  behind CSRF — only behind the security-headers middleware.)
+  Guard responses get the same security headers applied directly in
+  `src/server.ts`.
 - **Expected behavior changes are narrow**: `/_serverFn/*` answers
   (today's 500/403 → 404/405 JSON with `no-store` and the security
-  headers) and the entry wrapper itself. HTML and static files are
-  unchanged per the local reproduction.
+  headers) and the entry wrapper itself. In the local reproduction,
+  HTML and static files behaved exactly as before; the production
+  proof is the extended verification above (`/`, `/privacy`, a 404
+  route, one hashed asset) — that, not the local run, is the
+  deciding evidence.
 - **If anything else misbehaves after the deploy**, the rollback is
   the one-field revert above — no code change, no repo revert.
 - The local `wrangler dev` behavior cited here was established
@@ -204,7 +304,8 @@ belongs with #225's owner; this PR deliberately adds no script.
 
 ## Deferred: path (b) — a root `wrangler.jsonc` in the repo
 
-Ruled a follow-up by the owner (2026-10-22). Path (b) commits a root
+Ruled a follow-up by the owner (2026-10-22) and filed as **issue
+#228**. Path (b) commits a root
 `wrangler.jsonc` with `"main": "src/server.ts"`. Committing a root
 config turns **off** the automatic setup, so the file has to
 deliberately redeclare everything the automatic setup supplies
@@ -214,8 +315,16 @@ today:
 - the `@cloudflare/vite-plugin` setup in `vite.config.ts` (the repo
   build currently wires Nitro instead — `vite.config.ts:275`,
   `preset: "vercel"` — and has no Cloudflare plugin wiring);
-- `compatibility_flags: ["nodejs_compat"]`, which `/api/contact`'s
-  `process.env` path needs;
+- the compatibility flags, resolved deliberately. The record file
+  says `/api/contact`'s `process.env` path needs
+  `compatibility_flags: ["nodejs_compat"]`, but the live script
+  settings — read through the Cloudflare API on 2026-10-22 —
+  report **`compatibility_flags = []`**: an empty flag set, and
+  `/api/contact` answers 400 today anyway. What the Builds
+  generated configuration contains is not directly readable from
+  this repo, so path (b) must not copy a presumed flag set as fact:
+  it either declares `nodejs_compat` and proves `/api/contact`
+  still answers 400, or establishes why the route works without it;
 - the compatibility date (the live script settings report
   2026-10-19);
 - the assets directory and binding;
@@ -234,6 +343,13 @@ project and the repo kept only the human record. Path (b) reverses
 that trade deliberately, and must also show the GitHub Pages build
 (`npm run build:pages`) and the repo's own build are unaffected. No
 implementation in this PR.
+
+**Supersede obligation, recorded so it is not lost:** when path
+(b) lands (#228), this document's framing — "the repository has no
+root Wrangler configuration file" (Root cause, above) and the
+dashboard-steps model of path (a) — becomes history, and the
+pointer comment in `config/cloudflare/meridian.wrangler.toml` must
+be updated in the same PR. Updating both is part of #228's job.
 
 ## Files in this PR
 
