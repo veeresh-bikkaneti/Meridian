@@ -2,17 +2,21 @@
 # for POST /api/contact (review follow-up on #207, 2026-10-21).
 #
 # CONFIG RECORD, NOT READ BY ANY BUILD. The `meridian` worker deploys through
-# Cloudflare Workers Builds, and its wrangler config lives with that project,
-# not in this repo. This file is deliberately NOT at the repo root: a root
-# wrangler config would change what `wrangler deploy` uploads. Copy the two
-# [[ratelimits]] blocks below into the `meridian` worker's wrangler config
-# (needs Wrangler 4.36.0 or later). Rate limiting bindings cannot be added
-# in the dashboard yet.
+# Cloudflare Workers Builds. Its deploy config is the root `wrangler.jsonc`
+# in this repo (WI-19b, issue #228). This file is deliberately NOT that
+# config: it is the human record of the two [[ratelimits]] blocks below.
+# Copying them into the root `wrangler.jsonc` is the recorded follow-up
+# (needs Wrangler 4.36.0 or later). Rate limiting bindings cannot be
+# added in the dashboard.
 #
-# Entry point (WI-19, 2026-10-22): production must run src/server.ts
-# (the S5 server entry from PR #222). That is the Builds project's
-# `main` setting in that same dashboard-side config, not this file —
-# owner steps, rollback, and verification:
+# Entry point (WI-19, 2026-10-22): production runs src/server.ts (the S5
+# server entry from PR #222) because the root `wrangler.jsonc` says so —
+# `main` there, set by the WI-19b PR together with the Cloudflare Vite
+# plugin wiring in vite.config.ts. The earlier idea of editing a
+# dashboard-side Builds config was investigated and does not exist (no
+# dashboard or API surface exposes that config). Record:
+# docs/reviews/2026-10-22-wrangler-config-entry.md; the superseded
+# dashboard-steps document is
 # docs/reviews/2026-10-22-serverfn-server-entry.md.
 #
 # Cost: none. The Rate Limiting API has no plan gate and no billing line
