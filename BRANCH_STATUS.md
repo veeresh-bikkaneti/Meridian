@@ -1,7 +1,7 @@
 # BRANCH_STATUS — fix/wave2-build-stamp
 
 **State: PR #225 open. Engineering Lead verdict: READY (round 1, 6 non-blocking nits — 3 fixed in the nit round, 3 deferred in the PR comment). Next: Chitti — only the owner merges.**
-Base: `origin/main 1ca4c04` (PR #222 merge commit).
+Base: `origin/main d77ee52` (rebased 2026-10-22 after #226, #212, #229 and #230 landed; original base was the PR #222 merge commit `1ca4c04`). Only conflict was this file, resolved per convention (the branch's own status wins).
 Full write-up: `docs/reviews/2026-10-21-wave2-build-stamp.md`.
 
 ## What this branch does
