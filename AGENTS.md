@@ -17,6 +17,27 @@ map; every reveal shows a kid-friendly story card.
 
 If a task cannot be done within these rules, stop and ask first.
 
+## Worker roles run on the cheapest capable model
+
+Orchestrate; do not do every role yourself. Any role whose job is to **run
+something and report what happened** is delegated to a subagent on the
+cheapest model that can do it (`haiku` first, `sonnet` only if `haiku`
+cannot):
+
+- developer
+- tester
+- pen tester
+- UAT tester
+- **visual tester** — never done inline, always a `haiku` subagent
+- workflow tester
+
+The orchestrator stays on `opus` and reads conclusions, not bulk output.
+Delegation is what saves tokens: the worker's reading stays in the worker's
+context. Give each worker a brief that names the branch, what is already
+built, the exact commands, and what to report — it has no other context.
+Model tier is the smallest of the savings levers; see
+`docs/ops/agent-council-protocol.md` §3.
+
 ## Agent council — match the process to the task
 
 Routine work does not convene a council.
