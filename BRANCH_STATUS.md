@@ -1,189 +1,95 @@
-# BRANCH_STATUS — fix/headers-explicit-cache
+# BRANCH_STATUS — fix/serverfn-server-entry
 
-**State: REBASED onto current main (2026-10-22) with the `_headers`
-union applied (below). The panel re-vote on the pre-rebase tip was
-READY, with this union pre-adjudicated in that vote; awaiting the
-owner's merge word. The fix is not called done until the post-merge
-live probe (Acceptance, below) passes with verbatim results.**
+**State: DOCS-ONLY PR open for review. The fix itself is an owner
+dashboard action (one field in the Workers Builds configuration);
+this branch only documents it. Not merged by any agent — the owner
+merges. Owner action status: PENDING — the dashboard change has not
+been taken yet (2026-10-22).**
 
-**Base:** origin/main @ `05916f8` (after #207, #222 and #226 merged) —
-rebased 2026-10-22 by Chitti on the owner's explicit order (rebase +
-force-push, the #207 exception pattern). Conflicts: `public/_headers`
-and this file. This file was resolved by keeping this branch's own
-record and updating this section. (An earlier mechanical rebase
-during the 2026-10-21 panel pipeline, from `41e1121` onto `b430d28`,
-is superseded by this one.)
+**Base:** origin/main @ `76630ba` (PR #212's merge). Branch created
+2026-10-22 for WI-19 path (a), per the owner's ruling below.
 
-**Owner ruling (Veeresh, 2026-10-21, verbatim): "Fix with explicit
-header lines"** — his decision on the PR #203 post-deploy probe caveat.
+**Owner ruling (Veeresh, 2026-10-22): "19a now, 19b as follow-up"**
+— path (a) dashboard now; path (b) root `wrangler.jsonc` deferred.
 
-## What this fixes
+## What this branch does
 
-PR #203 gave content-hashed `/assets/*` an immutable Cache-Control rule
-and carved the three stable-named mutable files out of it with
-Cloudflare's `! Cache-Control` detach, on the theory that the platform
-default (`public, max-age=0, must-revalidate`) would resume for them.
-The post-deploy probe disproved the theory: the detach deletes the
-response's Cache-Control outright — the platform default is part of the
-response being edited — so the three carved files shipped with **no
-Cache-Control at all** (ETag only), and the HTML at `/` served no
-Cache-Control and no validator. This branch reworks `public/_headers`
-so the carved files and the HTML documents carry **explicit**
-`Cache-Control: public, max-age=0, must-revalidate` lines that actually
-take effect, while hashed `/assets/*` keep exactly the immutable rule.
+- [x] `docs/reviews/2026-10-22-serverfn-server-entry.md` — the full
+      record: root cause (Builds automatic configuration set
+      `main` to TanStack's default entry `@tanstack/react-start/server-entry`,
+      which loads `src/start.ts` but never `src/server.ts`, so the
+      S5 guard from PR #222 is not in the production bundle), the
+      three live signals, the exact owner steps for path (a)
+      (`main` → `src/server.ts` in the Builds project's Wrangler
+      configuration, Workers & Pages → `meridian` → Settings > Build),
+      the one-field rollback, post-change verification commands with
+      expected results, the PR #225 smoke-coverage finding
+      (`scripts/prod-smoke.mjs` already checks `GET /_serverFn/ → 404`),
+      risk notes, and the deferred path (b) inventory.
+- [x] `config/cloudflare/meridian.wrangler.toml` — one header
+      comment pointing at the review doc (comments only; the
+      `[[ratelimits]]` blocks and binding names untouched).
+- [x] This file, replacing main's #212 record on this branch.
 
-## Why the construction cannot comma-join
+## Cure round 1 (panel re-vote fixes, 2026-10-22)
 
-Semantics — Cloudflare Workers docs
-(developers.cloudflare.com/workers/static-assets/headers/), confirmed
-against the production asset-worker source (cloudflare/workers-sdk,
-`asset-worker/src/utils/headers.ts` `attachCustomHeaders` +
-`utils/rules-engine.ts`) and the 2026-10-21 live probes:
+Round-1 panel verdict: **NOT READY** (BLOCK ×2, DevEx FAIL) — the
+root-cause record was called airtight; the blocks were about the
+owner steps being followable and the live-state record being
+complete. Cures applied on this branch (docs/comments only):
+`compatibility_flags = []` stated honestly (live API read) in the
+verification caveat, the path-(b) inventory, and the config record;
+the step-2 locator named with the inferred hop flagged, a bold
+**Not:** callout for the wrong screen, and a verbatim stop
+condition; a checkable `/build-meta.json` readiness step (capture
+before; new buildId only when the deploy carries a new commit —
+same-commit redeploys keep the buildId and readiness is the
+deployments list); "redeploy" explained in plain words in the steps
+and the rollback; a durable Status line (PENDING → DONE form) with
+Chitti named as verifier and issue #228 cited for path (b); a
+failure branch (still 500 after a completed deploy → stop, report
+on the PR, escalate); plain-language openings (entry = the first
+file run for every request; WI-19 and S5 defined at first use);
+verification extended to `/privacy`, a 404 route, and one hashed
+asset; the Risks CSRF sentence narrowed to what `src/start.ts`
+actually does; and a supersede note for when path (b) lands.
 
-- A request inherits the headers of **every** matching rule; rules are
-  stored keyed by URL pattern (so **one block per path** — a second
-  block for the same path is not a separate rule) and applied **in file
-  order**; **within one rule, detachments run before sets**.
-- The **first** Cache-Control set from the file **replaces** the
-  response's current value (which is how the wildcard's set replaces
-  the platform default today — live-verified: hashed assets serve
-  `immutable` alone). A **second** set **appends** (comma-join) — unless
-  a detach has emptied the header in between.
-- Each carved block therefore pairs `! Cache-Control` with the explicit
-  set in the **same block**: the wildcard's immutable value is deleted
-  first, and the set then stands alone as the path's only Cache-Control
-  value. No other rule in the file sets Cache-Control for those paths.
+## What this branch deliberately does NOT do
 
-## Effective Cache-Control by path class
+- No code changes. `src/server.ts` and
+  `src/lib/server/server-fn-guard.ts` are already on main (PR #222).
+- No root `wrangler.jsonc` — that is path (b), the ruled follow-up.
+- No `scripts/` smoke script — PR #225's `prod-smoke.mjs` covers
+  `/_serverFn/`; extending it is #225's owner's work.
+- No Cloudflare state changes. The dashboard edit is the owner's.
 
-| Path class | Rules matched | Before (live probe, 2026-10-21, build `41e1121`) | After this PR (derived) |
-|---|---|---|---|
-| Hashed `/assets/*` (JS/CSS/fonts) | `/assets/*` set | `public, max-age=31536000, immutable` ✓ | unchanged — `public, max-age=31536000, immutable` |
-| `/assets/maplibre-gl-worker.mjs` | wildcard set → carved detach+set | **none** (ETag only) | `public, max-age=0, must-revalidate` (sole value) |
-| `/assets/maplibre-gl-shared.mjs` | wildcard set → carved detach+set | **none** (ETag only) | `public, max-age=0, must-revalidate` (sole value) |
-| `/assets/storyteller/storyteller-assets.json` | wildcard set → carved detach+set | **none** (ETag only) | `public, max-age=0, must-revalidate` (sole value) |
-| `/flags.json` | own set (first set) | `public, max-age=0, must-revalidate` (platform default) | `no-cache` — main's explicit rule wins in the union (stricter; a kill switch must never be served stale) |
-| `/` (root document) | own set | **none**, no ETag/Last-Modified | rule present — see honesty note below; probe decides |
-| `/offline`, `/offline.html` | own sets | platform default `must-revalidate` (asset-served; `/offline.html` 307s to `/offline`) | unchanged value, now explicit |
-| `/_shell.html` | own set | **404 from the app server** (live probe 2026-10-21 — no ETag, no CF-Cache-Status; the same signature as `/`) | rule kept as **policy of record**; expected-inert until the path is asset-served (see Acceptance) |
-| Everything else — `/audio/*`, `/icons/*`, `/images/*`, `/loop/*`, `/__grok/*`, `favicon.svg`, `og.jpg`, `x-banner.jpg`, `scout-fallback.svg` | **no rule** | platform default `public, max-age=0, must-revalidate` + ETag (samples live-verified) | unchanged — deliberately no rule (see the file's comments). (`/sw.js`, `/build-meta.json` and `/manifest.webmanifest` are NOT in this class: they carry main's explicit `no-cache` rules, kept by the union.) |
+## Owner action (after merge, or any time — the doc is the record)
 
-**Honesty note on `/`:** the root document is currently rendered by the
-app server, not served as a static asset — its live response carries
-neither the ETag nor the CF-Cache-Status header the asset server always
-adds, and `_headers` only attaches to asset responses. The `/` rule is
-included so the policy lives in one place and takes effect for any
-asset-served root, but it likely cannot reach the server-rendered
-document on the Cloudflare host today. The post-merge probe decides:
-if `/` is still bare after this lands, the remainder is a **server-side
-header**, which is out of this PR's scope and flagged for the owner.
+1. Workers & Pages → `meridian` → Settings > Build → the Builds
+   project's Wrangler configuration: set
+   `main` from `"@tanstack/react-start/server-entry"` to
+   `"src/server.ts"`. Save.
+2. Let the next Workers Builds deploy run (or trigger a redeploy).
+3. Run the verification block in
+   `docs/reviews/2026-10-22-serverfn-server-entry.md` and post the
+   real output on the PR. Expected: `/_serverFn/` 404,
+   `/_serverFn/abc` 404, OPTIONS 405, `/` 200 with security
+   headers, POST `/api/contact` 400. Caveat on that last one: the
+   contact POST returns 400 **today**, before the change, so a 400
+   after it proves pass-through only — that the route still
+   answers — not the entry change and not end-to-end contact
+   delivery (the form stays parked; activation is issue #220).
+4. Rollback if needed: set `main` back and redeploy. One field.
 
-**Honesty note on `/_shell.html`:** the file exists in the build
-output, but the live path is answered by the app server with a 404 —
-`_headers` cannot reach it today, the same limitation as `/`. The rule
-stays as policy of record, and the Acceptance probe below defines a
-bare/404 result for it as expected-inert.
-
-## Probe findings recorded for the owner (no action in this PR)
-
-- **`/audio/*` and `/icons/*` do NOT share the no-header condition.**
-  Samples probed live 2026-10-21 (`/audio/storyteller/greet-01.mp3`,
-  `/icons/icon-192.png`): `Cache-Control: public, max-age=0,
-  must-revalidate` + ETag, CF-Cache-Status HIT — the platform default
-  reaches them because no rule ever detached it. Nothing touched; they
-  must never become immutable (stable names, mutable content).
-- Correction to the #203-era record: `/flags.json`'s correct header was
-  the **platform default**, not an explicit line — the old file had no
-  flags rule. It has one now (same value, made explicit).
-
-## Test pins
-
-Searched `src/`, `tests/`, `scripts/`, `workers/` and `vite.config.ts`
-for `_headers` / `Cache-Control` pins: **none exist** — nothing to
-update. No new pin added; the post-merge live probe is the acceptance
-mechanism.
-
-## PR #207 collision — RESOLVED by the 2026-10-22 union
-
-#207 landed first (squash `36bad5e`), then #222 (`1ca4c04`) and #226
-(`05916f8`). The rebase above unioned the two `_headers` files on the
-panel re-vote's pre-adjudicated terms: the `/*` security block is
-byte-identical to main's; where both files set the same path, **main's
-value wins and appears exactly once** (`/flags.json` is `no-cache` —
-a kill switch must never be served stale; `/` and `/index.html` keep
-main's `s-maxage=60` edge line); this branch contributes the
-**detach+set form** on the three carved `/assets/` paths and the
-`/offline`, `/offline.html` and `/_shell.html` rules. Two comment
-corrections the re-vote ordered were applied in the same resolution:
-the "deliberately no rule" list no longer names `/sw.js`,
-`/build-meta.json` or `/manifest.webmanifest` (they carry explicit
-no-cache rules), and the carved-blocks comment no longer repeats the
-disproven "detach alone, platform default then applies" theory.
-One mechanical casualty, restored: Rock's union was merge commit
-`04e3f8a`, which the rebase linearized — its
-`scripts/security-headers.test.mjs` hunk (the carved blocks pinned to
-detach+set; the old detach-alone assertion was the #203 bug stated as
-a test) is restored byte-identical as the tip commit.
-
-## Cure round (panel round 1 on `18bcd45`: NOT READY, BLOCK ×1)
-
-Office Hours blocked on a record defect: this file's table and the
-`_headers` comment claimed `/_shell.html` was asset-served and
-covered, but live it answers 404 from the app server (like `/`), and
-the Acceptance definition had no pass/fail meaning for that path.
-The construction itself verified completely — the comma-join
-derivation was re-derived from the asset-worker source by the
-coordinator and three seats, and no served path's final value is
-joined, doubled, or wrong. Cure (docs/comments only, no rule
-change): the `/_shell.html` honesty is now mirrored in the
-`_headers` comment and the table above, the Acceptance definition
-gained the expected-inert rule for it, and the PR #207 note was
-strengthened from "union" to per-pattern adjudication (plus the
-union warning now lives inside `_headers` itself). The cured tip
-returned for a rule-13 panel re-vote, which returned READY.
-
-## Gates (this branch, 2026-10-21)
-
-- [x] `npx tsc --noEmit` — clean
-- [x] `npm test` — scripts **790 pass / 0 fail / 9 skip** (799 tests);
-      src **1,399 pass / 0 fail** — baseline-exact
-- [x] `node scripts/lint-cards.mjs` — **GATE PASSED**
-- [x] `npm run build:pages` — green; `dist/client/_headers`
-      byte-identical to the new `public/_headers` (diff-verified);
-      dist enumeration confirms the only non-hashed files under
-      `/assets` are the three carved files, and the only HTML documents
-      in the output are `_shell.html` and `offline.html`
-
-## Gates after the 2026-10-22 rebase (rebased tip)
+## Gates (this branch, 2026-10-22; re-run on the cure tip)
 
 - [x] `npx tsc --noEmit` — clean
 - [x] `npm test` — scripts **808 pass / 0 fail**; src **1,473 pass /
-      0 fail** — main-exact baselines; the restored
-      `scripts/security-headers.test.mjs` passes 3/3 against the
-      unioned file
+      0 fail** — main-exact baselines (the `rate-limiter.server.test.ts`
+      check on the config record is in the src suite: green)
 - [x] `node scripts/lint-cards.mjs` — **GATE PASSED**
-- [x] `npm run build:pages` — green; `dist/client/_headers`
-      byte-identical to `public/_headers` (diff-verified)
-
-## Acceptance — post-merge live probe (the hard gate)
-
-- [x] Panel review of this PR → READY (rule-13 re-vote on the cured
-      tip; the 2026-10-22 rebase applied that vote's pre-adjudicated
-      union — see State, above)
-- [ ] Owner's merge word
-- [ ] After deploy, probe **every path class** on
-      https://meridian.knowledgetest.workers.dev and record verbatim
-      results: a hashed asset, all three carved files, `/flags.json`,
-      `/`, `/offline`, `/offline.html`, `/_shell.html`,
-      `/build-meta.json`, one `/audio/*`, one `/icons/*`, `/sw.js`.
-      Pass = carved files show exactly `Cache-Control: public,
-      max-age=0, must-revalidate` as a **single value** (no comma-join,
-      no `immutable` remnant), hashed assets still immutable, and the
-      `/` result decides whether a server-side follow-up is needed.
-      For `/_shell.html`, a 404 or header-less response is
-      **expected-inert (a pass)** — the app server answers that path
-      today, so the rule cannot take effect until it is asset-served;
-      only an asset-served `/_shell.html` would be judged on its
-      Cache-Control value.
-      **The fix is not done until this probe is reported.**
-- [ ] Header-cure update to this file after merge (standard pattern)
+- [x] `npm run build:pages` — green
+- Playwright E2E — **N/A for this branch**: docs-only, no code or
+  behavior change, so there is nothing for E2E to exercise. The
+  post-change *production* probes are the verification (see the
+  review doc), run by Chitti after the owner's dashboard action.
