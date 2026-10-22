@@ -323,6 +323,18 @@ test("isValidWatchdogEndpoint mirrors flags.ts validation", () => {
   assert.equal(isValidWatchdogEndpoint(`${OK}/\u0000x`, H), false, "control chars rejected");
 });
 
+test("isValidWatchdogEndpoint rejects backslash endpoints (WHATWG treats \\ as / in special schemes)", () => {
+  const H = OBSERVABILITY_INGEST_HOSTS;
+  for (const bad of [
+    "/\\evil.com",
+    "/\\/evil.com",
+    "/\\\\evil.com",
+    "https://meridian-crash-report.knowledgetest.workers.dev/\\evil",
+  ]) {
+    assert.equal(isValidWatchdogEndpoint(bad, H), false, bad);
+  }
+});
+
 test("S3: isValidWatchdogEndpoint pins absolute endpoints to the ingest hosts", () => {
   const H = OBSERVABILITY_INGEST_HOSTS;
   for (const bad of [

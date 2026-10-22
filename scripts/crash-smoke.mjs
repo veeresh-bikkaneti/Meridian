@@ -60,6 +60,12 @@ function isValidEndpoint(value) {
   if (typeof value !== "string") return false;
   const v = value.trim();
   if (!v || v.length > 2048 || /[\s\u0000-\u001f]/.test(v)) return false;
+  // Reject any backslash before the slash/protocol branches below: WHATWG
+  // URL parsing treats "\" as "/" in special schemes, so "/\host" is a
+  // protocol-relative URL in disguise (it resolves to host "host"), and a
+  // "\" inside an absolute URL can likewise rewrite its path. Endpoints
+  // never legitimately contain a backslash.
+  if (v.includes("\\")) return false;
   if (v.startsWith("/")) return !v.startsWith("//");
   try {
     const url = new URL(v);

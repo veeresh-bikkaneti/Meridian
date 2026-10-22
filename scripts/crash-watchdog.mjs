@@ -57,10 +57,12 @@ export const OBSERVABILITY_INGEST_HOSTS = Object.freeze([
 /**
  * Endpoint validation mirroring isValidObservabilityEndpoint in
  * src/lib/flags.ts, written ES5-only so it can ship inline: a string of
- * <= 2048 chars with no whitespace/control chars that is either a
- * root-relative single-slash path or an https: URL whose hostname is one
- * of `hosts`. Without `hosts`, every absolute URL is rejected (fail
- * closed).
+ * <= 2048 chars with no whitespace/control chars or backslashes that is
+ * either a root-relative single-slash path or an https: URL whose
+ * hostname is one of `hosts`. Backslashes are rejected because WHATWG
+ * URL parsing treats "\" as "/" in special schemes, so "/\host" is a
+ * protocol-relative URL in disguise. Without `hosts`, every absolute
+ * URL is rejected (fail closed).
  */
 export function isValidWatchdogEndpoint(value, hosts) {
   // Loose != / == below compare strings with strings only, so they behave
@@ -69,7 +71,7 @@ export function isValidWatchdogEndpoint(value, hosts) {
   if (typeof value != "string") return false;
   var v = value.replace(/^\s+|\s+$/g, "");
   // eslint-disable-next-line no-control-regex -- intentional: control chars are rejected
-  if (v.length > 2048 || /[\s\u0000-\u001f]/.test(v)) return false;
+  if (v.length > 2048 || /[\s\u0000-\u001f\\]/.test(v)) return false;
   if (v[0] === "/") return v[1] !== "/";
   try {
     // "" throws here, and so does a missing `hosts` list (no .indexOf), so

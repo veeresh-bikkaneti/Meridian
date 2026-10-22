@@ -133,15 +133,21 @@ export function isValidObservabilityEndpoint(value: unknown): value is string {
 
 /**
  * Shape check shared by every flags.json endpoint: a string of at most
- * 2048 chars with no whitespace or control chars that is either a
- * root-relative single-slash path or an absolute https: URL. The contact
- * endpoint uses only this. The observability endpoint adds the host pin
- * above.
+ * 2048 chars with no whitespace, control chars or backslashes that is
+ * either a root-relative single-slash path or an absolute https: URL.
+ * The contact endpoint uses only this. The observability endpoint adds
+ * the host pin above.
  */
 export function isValidEndpointShape(value: unknown): value is string {
   if (typeof value !== "string") return false;
   const v = value.trim();
   if (!v || v.length > 2048 || /[\s\u0000-\u001f]/.test(v)) return false;
+  // Reject any backslash before the slash/protocol branches below: WHATWG
+  // URL parsing treats "\" as "/" in special schemes, so "/\host" is a
+  // protocol-relative URL in disguise (it resolves to host "host"), and a
+  // "\" inside an absolute URL can likewise rewrite its path. Endpoints
+  // never legitimately contain a backslash.
+  if (v.includes("\\")) return false;
   if (v.startsWith("/")) return !v.startsWith("//");
   try {
     return new URL(v).protocol === "https:";

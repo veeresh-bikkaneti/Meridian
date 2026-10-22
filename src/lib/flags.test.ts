@@ -8,6 +8,7 @@ import {
   getObservabilityEndpoint,
   isEnabled,
   isValidObservabilityEndpoint,
+  isValidEndpointShape,
   OBSERVABILITY_INGEST_HOSTS,
   loadFlags,
   resetFlags,
@@ -469,6 +470,25 @@ describe("observabilityEndpoint", () => {
     assert.deepEqual([...OBSERVABILITY_INGEST_HOSTS], ["meridian-crash-report.knowledgetest.workers.dev"]);
     // Case is normalized by the URL parser, so this is the same host.
     assert.equal(isValidObservabilityEndpoint("https://Meridian-Crash-Report.knowledgetest.workers.dev/ingest"), true);
+  });
+  it("rejects backslash endpoints: WHATWG treats \\ as / in special schemes, so /\\host is protocol-relative in disguise", async () => {
+    for (const bad of [
+      "/\\evil.com",
+      "/\\/evil.com",
+      "/\\\\evil.com",
+      "https://meridian-crash-report.knowledgetest.workers.dev/\\evil",
+    ]) {
+      assert.equal(isValidObservabilityEndpoint(bad), false, bad);
+      assert.equal(isValidEndpointShape(bad), false, bad);
+      resetFlags();
+      const f = fakeFetch(okResponse({ flags: {}, observabilityEndpoint: bad }));
+      await loadFlags({ ...BASE, fetch: f.fn });
+      assert.equal(getObservabilityEndpoint(), null, bad);
+      resetFlags();
+      const c = fakeFetch(okResponse({ flags: {}, contactEndpoint: bad }));
+      await loadFlags({ ...BASE, fetch: c.fn });
+      assert.equal(getContactEndpoint(), null, bad);
+    }
   });
   it("the shipped public/flags.json endpoint passes the pin", () => {
     const shipped = JSON.parse(readFileSync(new URL("../../public/flags.json", import.meta.url), "utf8"));
