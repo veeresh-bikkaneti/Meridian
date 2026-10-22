@@ -154,6 +154,17 @@ returned for a rule-13 panel re-vote, which returned READY.
       `/assets` are the three carved files, and the only HTML documents
       in the output are `_shell.html` and `offline.html`
 
+## Gates after the 2026-10-22 rebase (rebased tip)
+
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm test` — scripts **808 pass / 0 fail**; src **1,473 pass /
+      0 fail** — main-exact baselines; the restored
+      `scripts/security-headers.test.mjs` passes 3/3 against the
+      unioned file
+- [x] `node scripts/lint-cards.mjs` — **GATE PASSED**
+- [x] `npm run build:pages` — green; `dist/client/_headers`
+      byte-identical to `public/_headers` (diff-verified)
+
 ## Acceptance — post-merge live probe (the hard gate)
 
 - [x] Panel review of this PR → READY (rule-13 re-vote on the cured
