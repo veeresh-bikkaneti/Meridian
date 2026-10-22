@@ -2860,8 +2860,8 @@ function Choose({
               GeoDetective<span className="hv5-chip">Open</span>
             </h2>
             <p>
-              Five guesses, one mystery place. Each guess unlocks a clue — solve as many cases as
-              you can.
+              Five guesses, one mystery place, on the detective&apos;s labeled map. Each guess
+              unlocks a clue — solve as many cases as you can.
             </p>
             {loopProgress.streak > 0 ? (
               <p className="hv5-streak">🔥 Streak: {loopProgress.streak}</p>
@@ -3013,8 +3013,10 @@ function Choose({
           <h2 id="about-title">How a round works</h2>
           <p>
             A place name, then one pin on an unlabeled map. Right or wrong, the round opens a short
-            story about that place. Pick the globe, a country, or a state. Your score keeps adding
-            up until you end the game, or after 2 minutes with nothing tapped.
+            story about that place. GeoDetective cases are different: the detective&apos;s map
+            shows place labels. Use them to find the mystery place. Pick the globe, a country, or
+            a state. Your score keeps adding up until you end the game, or after 2 minutes with
+            nothing tapped.
           </p>
           <p>
             No account. The run stays in this browser. A coffee for Grandpa is optional and never
