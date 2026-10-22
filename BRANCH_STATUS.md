@@ -1,114 +1,69 @@
-# BRANCH_STATUS — fix/review-remaining-hardening-v2
+# Branch Status — fix/observability-chunk-race
 
-**State: PR #222 open. Cure round pushed; awaiting Chitti's crew re-vote on the cured tip. Only the owner merges.**
-Base: `origin/main 36bad5e5` (the PR #207 merge commit).
-Full write-up: `docs/reviews/2026-10-21-remaining.md`.
+**Branch:** `fix/observability-chunk-race`
+**Base:** `1ca4c04` (main, after PR #222 merged)
+**Purpose:** Fix one flaky end-to-end test. The D1 test in
+`tests/e2e/observability.spec.ts` sometimes failed on slow machines even
+though the app itself was working correctly. This branch makes that one
+assertion wait for the thing it checks, instead of assuming it already
+happened.
 
-## What this PR does
+## Why this branch is allowed to exist (rule-2 waiver)
 
-- **S3** — crash-endpoint host pin: `observabilityEndpoint` from
-  `flags.json` is accepted only as a root-relative path or an https
-  URL whose host is on the ingest allowlist.
-- **S4** — worker ingest hardening: Origin allowlist, streamed 8 KB
-  cap, stricter schema, and an optional rate-limit binding
-  (`CRASH_RATE_LIMITER`) on the crash-report worker.
-- **S5** — clean 404/405 for server functions: a custom server entry
-  answers bare or unknown `/_serverFn/` requests instead of an
-  unhandled 500.
-- **P6** — the Ko-fi link sits behind the `GrownUpGate`.
-- **R7** — `security.txt`, `robots.txt`, and `sitemap.xml` added.
-- **S10** — dead cookie config removed.
-- Stable Playwright e2e specs wired into CI (a new `e2e` job in
-  GitHub Actions).
+The repo constitution's rule 2 normally says: do not create new branches.
+The owner made one exception for this fix. The review panel recommended
+(Q3) that this fix land as its own tiny PR, and the owner adopted that
+recommendation ("Adopt all", 2026-10-21). The waiver covers this one named
+branch only and expires when this branch merges. The panel also ruled (Q4)
+that a red `main` is a blocking CI-integrity incident, so this PR sits at
+the head of the merge queue.
 
-## Files
+## The problem, in plain words
 
-Original PR files (`git diff --name-only 36bad5e5..27a03596`), plus
-the cure-round files listed after:
+The D1 test watches the app start a Globe game. The app writes a breadcrumb
+milestone ("chunk load started") and *then* loads the Globe code chunk.
+The old test checked "the chunk request was made" immediately after seeing
+the milestone — with no waiting. On a slow machine, the milestone can be
+visible a moment before the request actually goes out, so the check failed
+by timing alone. In CI, `main` itself, the docs-only PR #219, and PRs #212
+and #217 each failed at exactly this one assertion (line 238) and nothing
+else.
 
-- `.github/workflows/node.js.yml`
-- `docs/observability.md`
-- `docs/reviews/2026-10-21-remaining.md`
-- `docs/security-headers.md`
-- `playwright.config.ts`
-- `public/.well-known/security.txt`
-- `public/robots.txt`
-- `public/sitemap.xml`
-- `scripts/crash-smoke.mjs`
-- `scripts/crash-watchdog.mjs`
-- `scripts/crash-watchdog.test.mjs`
-- `scripts/static-wellknown.test.mjs`
-- `src/components/grandpa-coffee-run.tsx`
-- `src/game/brand.test.ts`
-- `src/game/brand.ts`
-- `src/lib/flags.test.ts`
-- `src/lib/flags.ts`
-- `src/lib/server/server-fn-guard.test.ts`
-- `src/lib/server/server-fn-guard.ts`
-- `src/server.ts`
-- `tests/e2e/crash-watchdog.spec.ts`
-- `tests/e2e/grandpa-coffee-run.desktop.spec.ts`
-- `tests/e2e/grandpa-tasting-tour.spec.ts`
-- `tests/e2e/helpers.ts`
-- `tests/e2e/kofi-persistent-cloud.mobile.spec.ts`
-- `tests/e2e/observability.spec.ts`
-- `workers/crash-report/README.md`
-- `workers/crash-report/src/index.test.ts`
-- `workers/crash-report/src/index.ts`
-- `workers/crash-report/wrangler.toml`
+## Reproduction evidence
 
-Cure-round files:
+**UNREPRODUCED locally.** Before changing anything, the test was run 10
+times on this machine (46 executions of the D1 test in total), including
+runs repeated 3–10 times back-to-back and runs with the CPUs deliberately
+kept busy to slow the machine down. The line-238 failure never appeared
+locally. The race is proven by the CI failures listed above and by reading
+the code: `src/components/game-app.tsx` records the milestone before the
+awaits that issue the chunk import, so the window the test fell into is
+real. The fix was made anyway because the mechanism is proven, not because
+a local failure was captured.
 
-- `src/lib/flags.ts`
-- `src/lib/flags.test.ts`
-- `scripts/crash-watchdog.mjs`
-- `scripts/crash-watchdog.test.mjs`
-- `scripts/crash-smoke.mjs`
-- `public/.well-known/security.txt`
-- `scripts/static-wellknown.test.mjs`
-- `docs/reviews/2026-10-21-remaining.md`
-- `workers/crash-report/README.md`
-- `BRANCH_STATUS.md`
+## The fix
 
-## Review record
+One change in `tests/e2e/observability.spec.ts` (the D1 test only): the
+bare assertion is replaced with a Playwright poll that waits up to 15
+seconds for the Globe chunk request count to reach 1, with a comment above
+it explaining why. No app code (`src/`) was touched. No other test file was
+touched.
 
-- Full crew review first returned **MERGE-READY** (2026-10-21).
-- That verdict was **superseded by an external review: NOT READY —
-  3 blocks**:
-  1. **Block 1** — backslash bypass in the endpoint validators: a
-     `/\evil.com`-style value could slip past the shape check and
-     resolve to a third-party host.
-  2. **Block 2** — platform-rejected deploy instructions: the docs
-     prescribed an upload-then-re-set-the-secret flow that
-     Cloudflare rejects (errors 10021 / 10215).
-  3. **Block 3** — `security.txt` contact pointing at the parked
-     `/contact` form while private vulnerability reporting was off.
+## Verification (after the fix)
 
-## Cure round (2026-10-21)
+- Observability spec on its own: 5 full runs, all green (3 passed each),
+  including one run under deliberate CPU load.
+- Full CI spec list in one run (grownups privacy/contact + hydration boot
+  + observability): 7 passed, 0 failed.
 
-- **Block 1** — backslash rejection added to all 3 validator copies,
-  with regression tests and fail-before / pass-after proof.
-- **Block 2** — deploy docs rewritten to the version-upload flow:
-  bindings (the `DISCORD_WEBHOOK_URL` secret with its value, and
-  the `TELEMETRY_COUNTS` KV binding) ride with the version upload;
-  there is no re-set step afterwards. This file is part of that
-  rewrite.
-- **Block 3** — commit `679b268` folded in: a GitHub advisory
-  `Contact:` was added to `security.txt`; private vulnerability
-  reporting was enabled by the owner and verified on.
-- **Status:** cure pushed, awaiting Chitti's crew re-vote on the
-  cured tip; only the owner merges.
+## Gates (verbatim results)
 
-## Nits noticed, not fixed
+- `npx tsc --noEmit` — clean (exit 0)
+- `npm test` — scripts: 808 pass / 9 skipped / 0 fail; src: 1473 pass / 0 fail
+- `node scripts/lint-cards.mjs` — GATE PASSED
+- `npm run build:pages` — green (run before the fix; the fix changes only a
+  test file, so no rebuild was needed)
 
-- `workers/crash-report/README.md`, Files section (~line 38): still
-  describes `wrangler.toml` as carrying a commented-out
-  `TELEMETRY_COUNTS` KV binding block recorded on branch
-  `ops/telemetry-phase1-deploy`, awaiting merge. That is stale
-  (the uncommented block with the real namespace id is on `main`
-  via PR #204, and Phase 1 is live), but the Files section was
-  outside this round's touched sections — it belongs to the
-  issue-#221 README rewrite.
-- `workers/crash-report/README.md`, Staging section (~line 447):
-  still says "`cf.py` is hardcoded to the production script name".
-  Also outside this round's touched sections; same #221 follow-up.
+## Status
+
+Done and pushed. Awaiting Chitti's panel review; only the owner merges.
