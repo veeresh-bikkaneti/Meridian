@@ -1,100 +1,114 @@
-# BRANCH_STATUS — fix/review-p0-p2-kids-privacy-ux
+# BRANCH_STATUS — fix/review-remaining-hardening-v2
 
-**State: PR #207 open. Review follow-ups (request-changes round) pushed; `origin/main` (with PR #203) merged in; rebased onto `4ef6875` (PR #206) on the owner's order, 2026-10-21.**
-Base: `origin/main f9fa7e4` (rebased; the work started from the live build `157d215`), then
-`origin/main 41e1121` (PR #203, perf) and then `b430d28` (PR #208, docs) **merged** in on 2026-10-21. They were merges, not rebases, so there was no force-push. The final step onto `4ef6875` WAS a rebase (owner-ordered, after PR #206 merged): the two conflicts were `BRANCH_STATUS.md` and `public/_headers`, both resolved to this branch's own versions — the `_headers` below is byte-identical to the merge-resolved file, and this file is the merge-resolved record with only this base paragraph updated.
-Full write-up: `docs/reviews/2026-10-21-p0-p2-remediation.md`.
+**State: PR #222 open. Cure round pushed; awaiting Chitti's crew re-vote on the cured tip. Only the owner merges.**
+Base: `origin/main 36bad5e5` (the PR #207 merge commit).
+Full write-up: `docs/reviews/2026-10-21-remaining.md`.
 
-The previous records are in git history: ops/telemetry-phase1-deploy (PR #204)
-at `f9fa7e4:BRANCH_STATUS.md`, and perf/performance-tuning (PR #203) at
-`41e1121:BRANCH_STATUS.md`. The #203-landed header (PR #208) is at `b430d28:BRANCH_STATUS.md`.
+## What this PR does
 
-#203 merge conflicts:
-- `public/_headers` (add/add): kept #207's version. It is a superset: the
-  `/*` security block plus no-cache rules plus #203's F1 `/assets/*` immutable rule and its three
-  `! Cache-Control` detach carve-outs, text-identical. Nothing from #203 was lost.
-- `BRANCH_STATUS.md` (both merges): this branch's version, updated (repo convention).
-- Open PR #212 (explicit Cache-Control for the carved assets + HTML) also edits
-  `public/_headers` and will conflict with this file. Whichever lands second must union the two:
-  keep this branch's `/*` security block and #212's detach-plus-explicit-set carve-outs, and pick ONE
-  Cache-Control per path for `/flags.json` and `/`.
+- **S3** — crash-endpoint host pin: `observabilityEndpoint` from
+  `flags.json` is accepted only as a root-relative path or an https
+  URL whose host is on the ingest allowlist.
+- **S4** — worker ingest hardening: Origin allowlist, streamed 8 KB
+  cap, stricter schema, and an optional rate-limit binding
+  (`CRASH_RATE_LIMITER`) on the crash-report worker.
+- **S5** — clean 404/405 for server functions: a custom server entry
+  answers bare or unknown `/_serverFn/` requests instead of an
+  unhandled 500.
+- **P6** — the Ko-fi link sits behind the `GrownUpGate`.
+- **R7** — `security.txt`, `robots.txt`, and `sitemap.xml` added.
+- **S10** — dead cookie config removed.
+- Stable Playwright e2e specs wired into CI (a new `e2e` job in
+  GitHub Actions).
 
-## Done
-- [x] P0-1 Microsoft Clarity removed (code, env typing, Pages workflow)
-- [x] P0-2 Google Analytics removed entirely. Owner (2026-10-21): "I deleted clarity and ga4 from cloudflare account" — both IDs deleted from the `meridian` worker's Workers Builds variables, and the repo's GitHub Actions secrets deleted the same day (done and verified). Optional cookieless Cloudflare Web Analytics via `VITE_CF_BEACON_TOKEN`
-- [x] P0-3 `/privacy` page, linked from the footer and the For grown-ups card
-- [x] P1-4 PWA base path: manifest `./`, `sw.js` derives BASE from its own URL (+ test under both bases)
-- [x] P1-5 "Begin exploring" starts a Globe round at the picked difficulty
-- [x] P1-6 Easy curation (`src/game/easy-curation.ts`, rung fallback, min pool 25)
-- [x] P1-7 Prefer the Full map: a 2 GB reading with a clean WebGL probe stays Full
-- [x] P2-8/9 `public/_headers` + worker middleware (`src/start.ts`) from one source (`src/lib/security-headers.ts`) (+ drift test)
-- [x] P2-10 Gate strikes persist across close/reopen (cooldown can't be dodged)
-- [x] P2-11 "Take the tour" re-entry in the footer
-- [x] Crash telemetry coarsened (no memory/cores; screen bucket; rounded DPR)
-- [x] `/contact` page behind the math gate + `POST /api/contact` on the main `meridian` worker, with no third worker (validation, 4 KB cap, salted-hash rate limit, honeypot, `ContactSink` with `NoopSink` default, `DiscordWebhookSink` only with `CONTACT_DISCORD_WEBHOOK_URL`)
-- [x] Docs: README, handbook ch01/ch07, observability, scout policy, scoring contract, security-headers, remediation doc
+## Files
 
-## Pending / owner actions
-- [x] `public/_headers` overlap with PR #203: resolved in the merge above
-- [x] Remove the GA/Clarity env vars from Cloudflare Workers Builds + GitHub secrets — DONE and verified 2026-10-21 (see the line above and remediation-doc decision 1)
-- [ ] Verify the `_headers` are live after deploy (`docs/security-headers.md`)
-- [ ] Contact activation is PARKED (path B) — do NOT smoke-test-and-flip as if the GitHub-side state were sufficient. Record correction (verified 2026-10-21): a GitHub **repo** secret named `CONTACT_DISCORD_WEBHOOK_URL` exists (added by the owner 2026-10-21) but **nothing reads it**; the handler expects a **worker runtime secret** on `meridian`. Activation (follow-up chain in the cure-round section below) sets it on the worker with a separate channel (never the crash `DISCORD_WEBHOOK_URL`), then deletes the GitHub secret — one secret, one store
-- [ ] Add the `[[ratelimits]]` blocks from `config/cloudflare/meridian.wrangler.toml` to the `meridian` worker config (free; optional, with an in-memory fallback)
-- [ ] Delete contact messages in Discord within 90 days (`docs/contact-rate-limiting.md`, `/privacy`)
-- [ ] P3 hardening (static CSP hashes, Easy first-run default) is stacked on branch `fix/review-p3-hardening` (no PR yet)
+Original PR files (`git diff --name-only 36bad5e5..27a03596`), plus
+the cure-round files listed after:
 
-## Cure round (2026-10-21) — panel NOT READY → path B
+- `.github/workflows/node.js.yml`
+- `docs/observability.md`
+- `docs/reviews/2026-10-21-remaining.md`
+- `docs/security-headers.md`
+- `playwright.config.ts`
+- `public/.well-known/security.txt`
+- `public/robots.txt`
+- `public/sitemap.xml`
+- `scripts/crash-smoke.mjs`
+- `scripts/crash-watchdog.mjs`
+- `scripts/crash-watchdog.test.mjs`
+- `scripts/static-wellknown.test.mjs`
+- `src/components/grandpa-coffee-run.tsx`
+- `src/game/brand.test.ts`
+- `src/game/brand.ts`
+- `src/lib/flags.test.ts`
+- `src/lib/flags.ts`
+- `src/lib/server/server-fn-guard.test.ts`
+- `src/lib/server/server-fn-guard.ts`
+- `src/server.ts`
+- `tests/e2e/crash-watchdog.spec.ts`
+- `tests/e2e/grandpa-coffee-run.desktop.spec.ts`
+- `tests/e2e/grandpa-tasting-tour.spec.ts`
+- `tests/e2e/helpers.ts`
+- `tests/e2e/kofi-persistent-cloud.mobile.spec.ts`
+- `tests/e2e/observability.spec.ts`
+- `workers/crash-report/README.md`
+- `workers/crash-report/src/index.test.ts`
+- `workers/crash-report/src/index.ts`
+- `workers/crash-report/wrangler.toml`
 
-- **Panel verdict: NOT READY** on tip `e361937` (voted pre-rebase; the content was carried to `3250f02`). The privacy posture was sound; the blocks were (a) contact delivery cannot work in production as shipped while docs/copy implied it does, and (b) record defects.
-- **Owner's adoption, verbatim (2026-10-21): "Adopt B — start the cure round"** — the Senior Architect's path B from the panel review: this PR lands with delivery honestly PARKED (form off, docs truthful); activation is a tracked follow-up filed the day this PR merges.
-- **Cure items and dispositions:**
-  1. *Truthfulness (delivery parked, everywhere)* — DONE: remediation doc states delivery is PARKED and qualifies every "works when the secret is set" claim (a); `/privacy` rewritten for the parked state — form off, future-tense delivery, server transit disclosed, reply-to-to-Discord disclosed, retention = manual deletion once resolved within 90 days, gate still described as a check that keeps kids out, NOT verified parental consent (b); footer line qualified to "…collected from players" (c); `/contact` carries a plain parked note and no longer promises "we read every message" (d).
-  2. *Readiness-check honesty* — DONE (built, none existed): searched package.json, `scripts/`, `src/lib/contact/`, docs and workflows — no readiness/delivery check existed in the tree. Added `evaluateContactReadiness` (`src/lib/contact/contact-readiness.ts`) + CLI `npm run check:contact` (`scripts/contact-readiness.mjs`): with no secret it prints "contact delivery: NOT configured (parked)" and exits 1. Pinning tests in `src/lib/contact/contact-readiness.test.ts` cover no-secret → not-configured and the strict-discord.com → Discord-sink-selected assertion for the follow-up. Sink selection, env reading, allowlist and honeypot untouched.
-  3. *Off-state completeness* — VERIFIED 2026-10-21: `public/flags.json` (source) carries **no** `contactEndpoint`; with no endpoint, `sendContact` returns not-configured and the page says "isn't switched on yet" (pinned by the E2E spec). The footer and the For grown-ups card link to `/contact`, whose page now presents the parked state plainly at the top; no surface presents `/contact` as live.
-  4. *Citations* — DONE: remediation-doc decision 1 cites the owner's actual words + the verified deletions; decision 4 cites the path-B adoption above; decisions 3 and 5 relabelled team rationale; decision 2 relabelled a code change; the "(owner decision: COPPA first)" gloss on the P0-2 line above replaced with the citable record; the same fixes applied to the matching code comments (`privacy.tsx`, `contact.tsx`, `contact-handler.server.ts`, `contact-form.ts`).
-  5. *Doc cures* — DONE: retired GA4/Clarity ID values scrubbed from the remediation doc; GA/Clarity deletion TODOs marked DONE (verified 2026-10-21); the stale TODO-2 remedy marked implemented by this PR (`src/start.ts` + `src/lib/security-headers.ts`); the fused 403/200 sentence split into two accurate sentences; `docs/observability.md` device-facts prose rewritten to the coarse buckets its own table states, and its stale deploy note replaced with the real flow (bindings ride with the version upload; `cf-version.py` ops helper outside the repo); `docs/contact-rate-limiting.md` gained the `cf-connecting-ip` trust assumption + the shared "unknown" fallback bucket; the `CONTACT_DISCORD_WEBHOOK_URL` record corrected in the remediation doc and in the Pending item above (GitHub repo secret exists, nothing reads it; worker runtime secret is what the handler expects).
-  6. *This section* — DONE (this record).
-- **Tracked docs follow-up (deferred, out of cure scope):** `workers/crash-report/README.md` still carries pre-live Phase 1 text, although Phase 1 went live on 2026-10-21 (deployment `9bd9f669`, version `e3dc6b3b`). The file itself is untouched in this cure round; the follow-up fixes that README later — this bullet only makes the tracking complete. Every surviving stale instance, named:
-  - The KV-states passage (~lines 243–255): it claims `wrangler.toml`'s `[[kv_namespaces]]` block "is still commented out with `PASTE_NAMESPACE_ID_HERE`" on main, "Binding recorded — on the ops branch above; **not yet on main**", and "Phase 1 live — **not yet**". All three are false now: the uncommented block with the real namespace id is on main via PR #204, and Phase 1 is live (2026-10-21; deployment `9bd9f669`, version `e3dc6b3b`).
-  - The Owner-step block (~lines 264–282), "Owner step — the Phase 1 unblock, in this order": the whole block frames a completed unblock as a pending owner procedure. Its step 2 (~lines 269–274) — "**Immediately** re-supply the Discord webhook (`cf.py secret DISCORD_WEBHOOK_URL …`)" and "This is the current Phase 1 deploy blocker" — carries the rejected re-set prescription; its heading, step 1 ("Put the Phase 1 version live") and step 3 (a verify procedure premised on the unblock, expecting `counted:false` after a bare `cf.py deploy`) are stale with it. The unblock happened on 2026-10-21: Phase 1 is live (deployment `9bd9f669`), bindings ride with the version upload, and there is no re-supply step after upload.
-  - The Secrets section (~lines 314–335): the `cf.py secret …` command prescriptions, and the closing rule "a fresh script upload does not inherit existing secrets — re-set them on the new version after every upload, or forwarding silently stops (the Phase 1 deploy blocker)". Superseded by the version-upload-bindings flow: naming a secret without a value is rejected (error 10021) and a script-level secret PUT is blocked (error 10215), so the re-set step is impossible as written.
-  - The go-live checklist line (~line 353): "Set secrets (`cf.py secret …`) as above." Same superseded `cf.py secret` prescription as the Secrets section.
-  - The release-procedure step 3 (~lines 227–228): "Re-set the secrets on the new version (see Secrets below) — a fresh upload does NOT inherit DISCORD_WEBHOOK_URL." The same platform-rejected re-set flow, sitting in the primary release steps (named by the re-vote #3 panel; this was the blocking omission in the tracked list).
-  - The Files section (~lines 36–41): describes `wrangler.toml` as carrying "a commented-out `TELEMETRY_COUNTS` KV binding block" with the binding "recorded on branch `ops/telemetry-phase1-deploy`, awaiting merge". Stale: the uncommented block carrying the real namespace id is on main via PR #204, and Phase 1 is live.
-  - The schedules passage (~lines 260–261): the cron "is inert until Phase 1 code … is the live version" — Phase 1 code is the live version now (deployment `9bd9f669`).
-  - The status passage (~lines 345–346): "the pre-Phase-1 code live today was last uploaded 2026-10-09" — superseded by the 2026-10-21 Phase 1 deployment.
-  This staleness is deferred to its own small docs PR.
-- **Follow-up chain after merge (committed next step, in order):**
-  1. Probe which server entry actually serves on the deployed worker (Nitro `.vercel/output` vs `dist/server` start entry) — if Nitro serves, the `start.ts` security-headers middleware is dead code TODAY and fixing that takes priority over contact wiring. Context: the Workers Builds log shows Nitro writing to `.vercel/output` — a Vercel preset — so `wrangler deploy` may not upload the TanStack/Nitro server at all. Baseline, measured by the owner on prod on 2026-10-21 (still pre-#207 main): `curl -sI /` shows NO security headers; `GET /api/contact` returns 404. Post-deploy probe spec (after #207 deploys): `curl -sI /` and check for CSP / X-Frame-Options / HSTS / COOP; then POST /api/contact with a bad Origin — 403 means the route is live; 404, SPA HTML, or 405 means it isn't. Root-cause fix if still missing: an explicit Cloudflare build target (Nitro `cloudflare-module` preset or the Cloudflare Vite plugin) with wrangler `main` pointing at it.
-  2. Set `CONTACT_DISCORD_WEBHOOK_URL` as a worker secret on `meridian` (plus optionally the `[[ratelimits]]` blocks), then delete the same-named GitHub repo secret.
-  3. Wiring PR: env read via runtime bindings (not `process.env`), production origin allowlisted or endpoint same-origin, honeypot silent-200 reordered ahead of the origin gate, readiness check asserts the Discord sink.
-  4. Post-deploy smoke with the form still off.
-  5. Only then add `contactEndpoint` to `flags.json`.
+Cure-round files:
 
-## Cure round 2 (2026-10-21) — re-vote NOT READY on one seat → docs-only cure
+- `src/lib/flags.ts`
+- `src/lib/flags.test.ts`
+- `scripts/crash-watchdog.mjs`
+- `scripts/crash-watchdog.test.mjs`
+- `scripts/crash-smoke.mjs`
+- `public/.well-known/security.txt`
+- `scripts/static-wellknown.test.mjs`
+- `docs/reviews/2026-10-21-remaining.md`
+- `workers/crash-report/README.md`
+- `BRANCH_STATUS.md`
 
-- **Re-vote verdict: NOT READY** on tip `95cfa64` — on ONE seat's three blocks (Office Hours), all docs-only. Everything else from the first cure round stands cured: B2 fully; B3 per the owner's path-B adoption ("Adopt B — start the cure round", 2026-10-21); B4 in the cited files; all 8 mandatory checks PASS; gates green; `public/_headers` byte-identical (`git diff 95cfa64..HEAD -- public/_headers` is empty).
-- **Cure items and dispositions:**
-  1. *Remediation doc (`docs/reviews/2026-10-21-p0-p2-remediation.md`)* — DONE (`5eb23bd`): (a) the Remaining item now reads "given the no-email choice (team rationale — see decision 3)" instead of "given the no-email ruling" — decision 3 is the no-email decision, and it is team rationale, not an owner ruling; (b) the footer addendum heading no longer says "(owner request, …)" — no owner words exist for the footer note — it now reads "(added in this PR's review round, 2026-10-21)", and nothing else in that addendum changed; (c) the "#203 overlap" section is rewritten as a past-tense record: PR #203 landed first, the owner then merged `origin/main` into this branch and kept #207's `public/_headers` version (the superset — see the "#203 merge conflicts" record at the top of this file, which is unchanged). The expired five-step merge plan is replaced with a pointer: the still-open union work is PR #212's, and the live instructions live in this file (keep this branch's `/*` security block and #212's detach-plus-explicit-set carve-outs; pick ONE `Cache-Control` per path for `/flags.json` and `/`). With (a) and (b) done, the cure-round section's "Citations — DONE" claim above is now true as written; it is left as is.
-  2. *Handbook ch07 §4, "Worker:" bullet (`docs/handbook/07-engineering-and-ops.md`)* — DONE (`f5b001a`): the bullet no longer prescribes `cf.py deploy` / `cf.py secret` or calls the webhook re-set "the current Phase 1 deploy blocker". It now states the real flow, mirroring `docs/observability.md`'s "Deploy method — resolved" note: the receiver has only ever been deployed via manual API version upload; bindings ride with the version upload (a version that must carry the `DISCORD_WEBHOOK_URL` secret or the `TELEMETRY_COUNTS` KV binding gets them in its upload metadata); naming a secret without a value is rejected (error 10021) and a script-level secret PUT is blocked (error 10215), so there is no "upload first, set the secret afterwards" step; versions and deployments are managed with the ops helper `cf-version.py` (verbs: `list`, `get`, `deployments`, `deploy`), which lives outside the repo in the crash-report watchdog goal's files. Telemetry Phase 1 is stated as LIVE (went live 2026-10-21; deployment `9bd9f669`, version `e3dc6b3b`; the live version carries the webhook as a secret binding in the upload plus the KV binding), and the re-set "blocker" is recorded as historical, not current. The bullet's other true statements (API-history ground truth, `wrangler deploy` was never the mechanism, the game worker deploys through Workers Builds on main) are kept.
-  3. *Tracked-follow-up completeness (this file)* — DONE (`cbed4e8`): the "Tracked docs follow-up (deferred, out of cure scope)" bullet in the cure-round section above is widened to name every surviving stale instance in `workers/crash-report/README.md` — the KV-states passage (~lines 243–255), the go-live step 2 (~lines 269–274), the Secrets section (~lines 314–335), and the go-live checklist line (~line 353) — each with why it is stale (PR #204 put the uncommented KV block with the real namespace id on main; Phase 1 is live, 2026-10-21, deployment `9bd9f669`, version `e3dc6b3b`; bindings ride with the version upload, errors 10021/10215). The README itself is still untouched; the follow-up stays deferred to its own small docs PR.
-  4. *Rider — E2E copy pins (`tests/e2e/grownups-privacy-contact.desktop.spec.ts`)* — DONE (`6f599ad`): assertions only, no existing assertion weakened or altered. The footer test now asserts the kids-privacy note carries the "from players" qualifier (`toContainText(/from players/i)` on the existing `kids-privacy-note` element), and the contact test now asserts the parked note is visible by its testid (`contact-parked-note`) at the point it actually renders — as a sibling above the form, once the grown-up gate is passed (placement wording corrected by the re-vote #3 panel; verified by running the spec: 3/3 pass). A comment in the spec records why: the two assertions pin the cure-round copy, so a copy-only un-parking regression fails the suite.
-  5. *This record* — DONE (this section). The owner's own sections above (the "#203 merge conflicts" / `_headers` adjudication record) are preserved intact and were not edited in this round.
-- **Scope of this round:** docs plus the one E2E spec only — no code changes, and `public/_headers` untouched.
+## Review record
 
-## Owner steer amendment (2026-10-21)
+- Full crew review first returned **MERGE-READY** (2026-10-21).
+- That verdict was **superseded by an external review: NOT READY —
+  3 blocks**:
+  1. **Block 1** — backslash bypass in the endpoint validators: a
+     `/\evil.com`-style value could slip past the shape check and
+     resolve to a third-party host.
+  2. **Block 2** — platform-rejected deploy instructions: the docs
+     prescribed an upload-then-re-set-the-secret flow that
+     Cloudflare rejects (errors 10021 / 10215).
+  3. **Block 3** — `security.txt` contact pointing at the parked
+     `/contact` form while private vulnerability reporting was off.
 
-- The owner supplied his actual words in the 2026-10-21 brainstorm, which **SUPERSEDES** cure-round-2 item 1 (a) and (b) in the section above. The earlier rounds' records stand as history; this subsection is the supersession note.
-- Decision 3 in the remediation doc is restored as an **owner decision** with his quote: "i think we need to add a contact us page rather emails." (Veeresh, 2026-10-21). The Remaining item again calls it the no-email ruling, citing decision 3 where his words are quoted.
-- The footer addendum heading keeps "(owner request, 2026-10-21)", with his quote added as the citation directly under the heading: "can you add a note to home footer or somewhere that meridian is COPPA compliant etc.," (Veeresh, 2026-10-21) — implemented as factual wording, not a compliance claim. Rule 11 is satisfied by quoting.
-- This amendment also added the owner-measured baseline and the post-deploy probe spec to the follow-up chain item 1 above (server-entry probe, still first): baseline measured by the owner on prod on 2026-10-21 (still pre-#207 main), the probe spec for after #207 deploys, the Workers Builds / `.vercel/output` context, and the root-cause fix if the headers are still missing.
+## Cure round (2026-10-21)
 
-## Cure round 3 (2026-10-21)
+- **Block 1** — backslash rejection added to all 3 validator copies,
+  with regression tests and fail-before / pass-after proof.
+- **Block 2** — deploy docs rewritten to the version-upload flow:
+  bindings (the `DISCORD_WEBHOOK_URL` secret with its value, and
+  the `TELEMETRY_COUNTS` KV binding) ride with the version upload;
+  there is no re-set step afterwards. This file is part of that
+  rewrite.
+- **Block 3** — commit `679b268` folded in: a GitHub advisory
+  `Contact:` was added to `security.txt`; private vulnerability
+  reporting was enabled by the owner and verified on.
+- **Status:** cure pushed, awaiting Chitti's crew re-vote on the
+  cured tip; only the owner merges.
 
-- Re-vote #3 on `cd8a3b5` returned NOT READY on ONE omission (Office Hours BLOCK; Senior Developer convergent HIGH): the tracked docs follow-up above claimed "every surviving stale instance, named" but missed four passages in `workers/crash-report/README.md`. All four are now added to the list above (release step 3 ~227–228; Files section ~36–41; schedules ~260–261; status ~345–346), so the claim is now true. The rider record's placement phrase was also corrected in this pass (the parked note renders as a sibling above the form, not inside it — re-vote #3 nit). Single-file change (this file only), applied by Chitti at the panel's exact prescription; `public/_headers` untouched. → Re-vote #4.
-- Merge-time note for the owner (re-vote #3, Senior Developer, endorsed by the panel): merge this PR with SQUASH. A pre-cure commit on this branch (`42ce239`) still contains a retired GA4/Clarity ID value; the tip scrub holds only under squash — a merge-commit or rebase merge would carry the value into main's history. (Re-vote #4 correction: `483e079`, named in the round-3 record, is the pre-rebase twin of `42ce239`, not an ancestor of this tip — `42ce239` alone makes squash mandatory.)
+## Nits noticed, not fixed
 
-## Cure round 4 (2026-10-21)
-
-- Re-vote #4 on `ba9815a`: NOT READY on a 10–3 interpretive split over ONE candidate — whether the README's Owner-step block (~264–282) is a distinct stale instance or already covered in substance by the step-2 entry (the round-3 blockers, Office Hours and the Senior Developer, ruled it covered and withdrew; three seats blocked for naming it). The bullet above now names the whole block and corrects its label, satisfying both readings. All other checks and gates passed on `ba9815a`; the four round-3 additions were verified verbatim, and no seat found any other stale instance. Single-file change (this file), applied by Chitti at the blocking seats' exact prescription. → Re-vote #5.
-- Activation-gate record (re-vote #4 secondary finding, UX Designer + UX Researcher): the parked form's UX/a11y follow-ups must be explicit items when the activation follow-up opens — the three form issues (inverted error/success hierarchy, ~40px tap targets below the app's 44px standard, stale result/fields staying editable mid-submit), the disabled-fieldset-while-parked suggestion, and the accessibility items (contact errors not field-associated and focus never moves; cooldown announced per-second in a live region and focus drops on entry; gate digit entry silent for screen-reader users) plus the missing cooldown/keypad/validation E2E journeys. Non-blocking only while parked; they gate activation, not this merge.
+- `workers/crash-report/README.md`, Files section (~line 38): still
+  describes `wrangler.toml` as carrying a commented-out
+  `TELEMETRY_COUNTS` KV binding block recorded on branch
+  `ops/telemetry-phase1-deploy`, awaiting merge. That is stale
+  (the uncommented block with the real namespace id is on `main`
+  via PR #204, and Phase 1 is live), but the Files section was
+  outside this round's touched sections — it belongs to the
+  issue-#221 README rewrite.
+- `workers/crash-report/README.md`, Staging section (~line 447):
+  still says "`cf.py` is hardcoded to the production script name".
+  Also outside this round's touched sections; same #221 follow-up.

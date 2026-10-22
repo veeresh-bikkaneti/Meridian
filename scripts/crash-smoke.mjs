@@ -34,6 +34,8 @@
  * Exit 0 = all checks pass, non-zero = at least one failed.
  */
 
+import { OBSERVABILITY_INGEST_HOSTS } from "./crash-watchdog.mjs";
+
 const [workerBase, gameBase] = process.argv.slice(2);
 
 /** fetch with a hard timeout so a hung endpoint can't hang the script. */
@@ -50,16 +52,24 @@ async function fetchT(url, init) {
 /**
  * Endpoint validation mirroring isValidObservabilityEndpoint in
  * src/lib/flags.ts EXACTLY (trim, 2048 chars, no whitespace/control chars,
- * root-relative single-slash path or https: URL). A looser check here
- * would green-light an endpoint the app itself rejects (fail-closed).
+ * root-relative single-slash path, or an https: URL on the pinned ingest
+ * host list from review S3). A looser check here would green-light an
+ * endpoint the app itself rejects (fail-closed).
  */
 function isValidEndpoint(value) {
   if (typeof value !== "string") return false;
   const v = value.trim();
   if (!v || v.length > 2048 || /[\s\u0000-\u001f]/.test(v)) return false;
+  // Reject any backslash before the slash/protocol branches below: WHATWG
+  // URL parsing treats "\" as "/" in special schemes, so "/\host" is a
+  // protocol-relative URL in disguise (it resolves to host "host"), and a
+  // "\" inside an absolute URL can likewise rewrite its path. Endpoints
+  // never legitimately contain a backslash.
+  if (v.includes("\\")) return false;
   if (v.startsWith("/")) return !v.startsWith("//");
   try {
-    return new URL(v).protocol === "https:";
+    const url = new URL(v);
+    return url.protocol === "https:" && OBSERVABILITY_INGEST_HOSTS.includes(url.hostname);
   } catch {
     return false;
   }
@@ -98,9 +108,11 @@ async function main() {
   // the same routes/shapes, and only the v2 forwarding worker knows the
   // tile_failed type — this is what distinguishes a correct deploy.
   try {
+    // The worker refuses POSTs without an allow-listed Origin (review S4),
+    // so send the game's own origin, as a browser would.
     const res = await fetchT(`${worker}/ingest`, {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: { "content-type": "application/json", origin: new URL(game).origin },
       body: JSON.stringify({ nope: true }),
     });
     const body = await res.json().catch(() => null);

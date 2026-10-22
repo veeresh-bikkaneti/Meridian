@@ -45,20 +45,40 @@
  */
 
 /**
+ * Hosts allowed to receive the boot-failure report (review S3,
+ * 2026-10-21). This MUST equal OBSERVABILITY_INGEST_HOSTS in
+ * src/lib/flags.ts. The inline script cannot import that module, so
+ * scripts/crash-watchdog.test.mjs fails on drift.
+ */
+export const OBSERVABILITY_INGEST_HOSTS = Object.freeze([
+  "meridian-crash-report.knowledgetest.workers.dev",
+]);
+
+/**
  * Endpoint validation mirroring isValidObservabilityEndpoint in
  * src/lib/flags.ts, written ES5-only so it can ship inline: a string of
- * <= 2048 chars with no whitespace/control chars that is either a
- * root-relative single-slash path or an https: URL.
+ * <= 2048 chars with no whitespace/control chars or backslashes that is
+ * either a root-relative single-slash path or an https: URL whose
+ * hostname is one of `hosts`. Backslashes are rejected because WHATWG
+ * URL parsing treats "\" as "/" in special schemes, so "/\host" is a
+ * protocol-relative URL in disguise. Without `hosts`, every absolute
+ * URL is rejected (fail closed).
  */
-export function isValidWatchdogEndpoint(value) {
-  if (typeof value !== "string") return false;
+export function isValidWatchdogEndpoint(value, hosts) {
+  // Loose != / == below compare strings with strings only, so they behave
+  // exactly like !== / ===. They each save a byte of the inline budget.
+  // eslint-disable-next-line eqeqeq
+  if (typeof value != "string") return false;
   var v = value.replace(/^\s+|\s+$/g, "");
-  if (v === "" || v.length > 2048) return false;
   // eslint-disable-next-line no-control-regex -- intentional: control chars are rejected
-  if (/[\s\u0000-\u001f]/.test(v)) return false;
+  if (v.length > 2048 || /[\s\u0000-\u001f\\]/.test(v)) return false;
   if (v[0] === "/") return v[1] !== "/";
   try {
-    return new URL(v).protocol === "https:";
+    // "" throws here, and so does a missing `hosts` list (no .indexOf), so
+    // both fail closed through the catch.
+    var u = new URL(v);
+    // eslint-disable-next-line eqeqeq
+    return u.protocol == "https:" && hosts.indexOf(u.hostname) >= 0;
   } catch (e) {
     return false;
   }
@@ -71,7 +91,7 @@ export function isValidWatchdogEndpoint(value) {
  * renderCrashWatchdogScript(). Everything in here is ES5-only (see the
  * module docstring) and deliberately terse to hold the 5120-byte budget.
  */
-export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
+export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts) {
   var ASKED = "meridian.crashwatchdogAsked",
     CRUMB = "meridian.breadcrumb",
     CLEAN = "meridian.cleanExit",
@@ -196,7 +216,7 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
       try {
         if (st >= 200 && st < 300 && text) {
           var c = JSON.parse(text).observabilityEndpoint;
-          if (isValidEndpointFn(c)) ep = String(c).trim();
+          if (isValidEndpointFn(c, ingestHosts)) ep = String(c).trim();
         }
       } catch (e) {
         /* best-effort */
@@ -402,7 +422,7 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
       } catch (e) {
         /* best-effort */
       }
-      if (t.indexOf(STALE) === -1) show();
+      if (t.indexOf(STALE) < 0) show();
     } catch (e2) {
       /* best-effort */
     }
@@ -424,6 +444,11 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
 // regexes — so semantics are preserved exactly.
 const RENAME = {
   isValidEndpointFn: "ok",
+  ingestHosts: "ih",
+  hosts: "hs",
+  value: "a",
+  host: "H",
+  text: "tx",
   isValidWatchdogEndpoint: "vv",
   getEndpoint: "ge",
   epCache: "ec",
@@ -550,6 +575,7 @@ export function minifyEmbedded(src) {
   let out = "";
   let pendingSpace = false;
   let prev = null; // last significant token [kind, value]
+  let prev2 = null; // the one before it
   for (const [kind, val] of toks) {
     if (kind === "ws") {
       pendingSpace = true;
@@ -563,11 +589,31 @@ export function minifyEmbedded(src) {
     ) {
       v = RENAME[val];
     }
+    // Fold `"a" + "b"` into `"ab"` (double-quoted literals only). String
+    // concatenation is associative, and the embedded sources never apply
+    // a member access or a higher-precedence operator to the right-hand
+    // literal, so the value is unchanged. It saves 3 bytes per join in the
+    // multi-line CSS string.
+    if (
+      kind === "str" &&
+      v[0] === '"' &&
+      prev && prev[0] === "punc" && prev[1] === "+" &&
+      prev2 && prev2[0] === "str" && prev2[1][0] === '"'
+    ) {
+      out = out.slice(0, -2) + v.slice(1); // drop the closing quote and "+"
+      prev2 = null;
+      prev = ["str", '"' + v.slice(1)];
+      pendingSpace = false;
+      continue;
+    }
     if (pendingSpace) {
       pendingSpace = false;
-      if (prev && prev[0] === "word" && kind === "word") out += " ";
+      // A space survives only between two word characters (renames such
+      // as "!1" start with punctuation, so "return !1" becomes "return!1").
+      if (prev && _isWordCh(out[out.length - 1]) && _isWordCh(v[0])) out += " ";
     }
     out += v;
+    prev2 = prev;
     prev = [kind, v];
   }
   return out.replace(/;}/g, "}");
@@ -587,6 +633,8 @@ export function renderCrashWatchdogScript(buildId) {
     JSON.stringify(buildId) +
     "," +
     minifyEmbedded(isValidWatchdogEndpoint.toString()) +
+    "," +
+    JSON.stringify(OBSERVABILITY_INGEST_HOSTS) +
     ");";
   return "<script>/*meridian-crash-watchdog*/try{" + body + "}catch(e){}</script>";
 }

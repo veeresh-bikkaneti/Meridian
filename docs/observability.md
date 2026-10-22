@@ -108,8 +108,11 @@ endpoint is explicitly configured (below).
   cannot silently evict a queued crash report.
 - Endpoint config lives in `public/flags.json` as a **top-level**
   `observabilityEndpoint` field (validated in `src/lib/flags.ts`:
-  https URL or root-relative path only; anything else fails closed to
-  null). The shipped `flags.json` on main sets this to the live
+  a root-relative path, or an https URL whose host is in
+  `OBSERVABILITY_INGEST_HOSTS`, which lists only the crash-report worker
+  (review S3, 2026-10-21). Anything else fails closed to null. The inline
+  boot watchdog (`scripts/crash-watchdog.mjs`) and `scripts/crash-smoke.mjs`
+  apply the same pin, and a drift test keeps the lists equal). The shipped `flags.json` on main sets this to the live
   crash-report worker
   (`https://meridian-crash-report.knowledgetest.workers.dev/ingest`), so
   production sends events today.
@@ -124,7 +127,10 @@ procedure that was run:
 1. Deploy the receiver: see `workers/crash-report/README.md` (a
    separate, explicit step; nothing in this system deploys itself).
 2. Add `"observabilityEndpoint": "https://<worker-host>/ingest"` at the
-   top level of `public/flags.json`.
+   top level of `public/flags.json`. A new worker host must ALSO be added
+   to `OBSERVABILITY_INGEST_HOSTS` (src/lib/flags.ts and
+   scripts/crash-watchdog.mjs) and to the CSP `connect-src`. Otherwise
+   the client refuses it.
 3. Redeploy the site (flags only — no client code release needed).
 
 > **Deploy method — resolved (API-verified 2026-10-21):** the crash

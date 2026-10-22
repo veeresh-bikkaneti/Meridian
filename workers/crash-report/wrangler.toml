@@ -27,3 +27,18 @@ crons = ["15 * * * *"]  # hourly digest, posted ~:15 for the previous UTC hour
 [[kv_namespaces]]
 binding = "TELEMETRY_COUNTS"
 id = "34884ed9aa46437f871278a517882e72"
+
+# Review S4 (2026-10-21): optional per-client rate limit shared across
+# isolates. It uses the Workers Rate Limiting API, which is free: no plan
+# gate and no billing line in Cloudflare's docs, GA 2025-09-19. Like the KV
+# binding above, it takes effect only when it is in a version's upload
+# metadata (see README, "What an upload does NOT carry"). Without it, the
+# worker's in-memory per-isolate limiter (10 / 60 s per client) still
+# applies, and a throwing binding fails open to that limiter.
+# namespace_id is any positive integer unique in the account ("72071"/
+# "72072" are taken by the meridian contact-form limiters). period must be
+# 10 or 60.
+[[ratelimits]]
+name = "CRASH_RATE_LIMITER"
+namespace_id = "72073"
+simple = { limit = 10, period = 60 }

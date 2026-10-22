@@ -69,6 +69,8 @@ frame-ancestors 'none'; upgrade-insecure-requests
   governs, not this CSP: Pages serves no `_headers`.
 - If `observabilityEndpoint` or `contactEndpoint` in `flags.json` ever
   points at a different host, add that host to `connect-src` in the same PR.
+  For `observabilityEndpoint`, also add it to `OBSERVABILITY_INGEST_HOSTS`
+  (review S3): the client refuses any ingest host not on that list.
 - `frame-ancestors 'none'` also blocks embedding the *production* site in
   preview tools. Dev previews run on the Vite server and are unaffected.
 

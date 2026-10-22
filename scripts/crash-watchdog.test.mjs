@@ -11,11 +11,17 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import vm from "node:vm";
+import { readFileSync } from "node:fs";
 import {
+  OBSERVABILITY_INGEST_HOSTS,
   crashWatchdogMain,
   isValidWatchdogEndpoint,
+  minifyEmbedded,
   renderCrashWatchdogScript,
 } from "./crash-watchdog.mjs";
+
+/** The pinned crash-report ingest URL (review S3). */
+const INGEST = "https://meridian-crash-report.knowledgetest.workers.dev/ingest";
 
 // ---------------------------------------------------------------------------
 // Fake browser host
@@ -298,33 +304,67 @@ test("minified output still parses as valid JavaScript", () => {
 // ---------------------------------------------------------------------------
 
 test("isValidWatchdogEndpoint mirrors flags.ts validation", () => {
-  assert.equal(isValidWatchdogEndpoint("/api/obs"), true);
-  assert.equal(isValidWatchdogEndpoint("/"), true);
-  assert.equal(isValidWatchdogEndpoint("https://example.com/hook"), true);
-  assert.equal(
-    isValidWatchdogEndpoint("  https://example.com/hook  "),
-    true,
-    "surrounding whitespace is trimmed",
-  );
-  assert.equal(isValidWatchdogEndpoint("//evil.com/x"), false);
-  assert.equal(isValidWatchdogEndpoint("http://example.com/hook"), false);
-  assert.equal(isValidWatchdogEndpoint("https://example.com/a b"), false);
-  assert.equal(isValidWatchdogEndpoint("javascript:alert(1)"), false);
-  assert.equal(isValidWatchdogEndpoint(""), false);
-  assert.equal(isValidWatchdogEndpoint("   "), false);
-  assert.equal(isValidWatchdogEndpoint(null), false);
-  assert.equal(isValidWatchdogEndpoint(undefined), false);
-  assert.equal(isValidWatchdogEndpoint(42), false);
-  assert.equal(
-    isValidWatchdogEndpoint("https://example.com/" + "x".repeat(2030)),
-    false,
-    "over 2048 chars rejected",
-  );
-  assert.equal(
-    isValidWatchdogEndpoint("https://example.com/\u0000x"),
-    false,
-    "control chars rejected",
-  );
+  const H = OBSERVABILITY_INGEST_HOSTS;
+  const OK = "https://meridian-crash-report.knowledgetest.workers.dev/ingest";
+  assert.equal(isValidWatchdogEndpoint("/api/obs", H), true);
+  assert.equal(isValidWatchdogEndpoint("/", H), true);
+  assert.equal(isValidWatchdogEndpoint(OK, H), true);
+  assert.equal(isValidWatchdogEndpoint(`  ${OK}  `, H), true, "surrounding whitespace is trimmed");
+  assert.equal(isValidWatchdogEndpoint("//evil.com/x", H), false);
+  assert.equal(isValidWatchdogEndpoint(OK.replace("https:", "http:"), H), false);
+  assert.equal(isValidWatchdogEndpoint(`${OK}/a b`, H), false);
+  assert.equal(isValidWatchdogEndpoint("javascript:alert(1)", H), false);
+  assert.equal(isValidWatchdogEndpoint("", H), false);
+  assert.equal(isValidWatchdogEndpoint("   ", H), false);
+  assert.equal(isValidWatchdogEndpoint(null, H), false);
+  assert.equal(isValidWatchdogEndpoint(undefined, H), false);
+  assert.equal(isValidWatchdogEndpoint(42, H), false);
+  assert.equal(isValidWatchdogEndpoint(`${OK}/${"x".repeat(2030)}`, H), false, "over 2048 chars rejected");
+  assert.equal(isValidWatchdogEndpoint(`${OK}/\u0000x`, H), false, "control chars rejected");
+});
+
+test("isValidWatchdogEndpoint rejects backslash endpoints (WHATWG treats \\ as / in special schemes)", () => {
+  const H = OBSERVABILITY_INGEST_HOSTS;
+  for (const bad of [
+    "/\\evil.com",
+    "/\\/evil.com",
+    "/\\\\evil.com",
+    "https://meridian-crash-report.knowledgetest.workers.dev/\\evil",
+  ]) {
+    assert.equal(isValidWatchdogEndpoint(bad, H), false, bad);
+  }
+});
+
+test("S3: isValidWatchdogEndpoint pins absolute endpoints to the ingest hosts", () => {
+  const H = OBSERVABILITY_INGEST_HOSTS;
+  for (const bad of [
+    "https://example.com/hook",
+    "https://meridian-crash-report.knowledgetest.workers.dev.evil.example/ingest",
+    "https://evil-meridian-crash-report.knowledgetest.workers.dev/ingest",
+  ]) {
+    assert.equal(isValidWatchdogEndpoint(bad, H), false, bad);
+  }
+  // No host list → every absolute URL fails closed; same-origin paths still pass.
+  assert.equal(isValidWatchdogEndpoint("https://meridian-crash-report.knowledgetest.workers.dev/ingest"), false);
+  assert.equal(isValidWatchdogEndpoint("/ingest"), true);
+});
+
+test("S3: the watchdog's ingest-host list equals OBSERVABILITY_INGEST_HOSTS in src/lib/flags.ts", () => {
+  const src = readFileSync(new URL("../src/lib/flags.ts", import.meta.url), "utf8");
+  const m = /OBSERVABILITY_INGEST_HOSTS[^=]*=\s*Object\.freeze\(\[([\s\S]*?)\]\)/.exec(src);
+  assert.ok(m, "OBSERVABILITY_INGEST_HOSTS not found in src/lib/flags.ts");
+  const fromTs = [...m[1].matchAll(/"([^"]+)"/g)].map((x) => x[1]);
+  assert.deepEqual([...OBSERVABILITY_INGEST_HOSTS], fromTs);
+  // The rendered script carries the list.
+  assert.ok(renderCrashWatchdogScript("abcdef0").includes(JSON.stringify(OBSERVABILITY_INGEST_HOSTS)));
+});
+
+test("minifyEmbedded folds adjacent double-quoted literals without changing the value", () => {
+  const out = minifyEmbedded('function f(){var a="x"+"y"+"z";var b=1+"q"+"r";var c=\'s\'+"t";return a+b+c}');
+  assert.match(out, /"xyz"/);
+  assert.match(out, /1\+"qr"/);
+  // eslint-disable-next-line no-new-func
+  assert.equal(new Function(`return (${out})()`)(), "xyz1qrst");
 });
 
 // ---------------------------------------------------------------------------
@@ -333,7 +373,7 @@ test("isValidWatchdogEndpoint mirrors flags.ts validation", () => {
 
 test("timer fires → fallback UI inserted, asked flag set", () => {
   const { host, calls, store, body } = fakeHost();
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   const veil = veilOf({ body });
   assert.ok(veil, "overlay inserted into body");
@@ -345,7 +385,7 @@ test("timer fires → fallback UI inserted, asked flag set", () => {
 
 test("no UI when the app signalled ready before the timer fires", () => {
   const { host, calls, body } = fakeHost({ ready: true });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.equal(veilOf({ body }), undefined);
 });
@@ -354,7 +394,7 @@ test("no UI when the document is hidden", () => {
   const { host, calls, body } = fakeHost({
     docOpts: { hidden: true },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.equal(veilOf({ body }), undefined);
 });
@@ -363,7 +403,7 @@ test("no UI when the document has not settled", () => {
   const { host, calls, body } = fakeHost({
     docOpts: { readyState: "loading" },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.equal(veilOf({ body }), undefined);
 });
@@ -372,7 +412,7 @@ test("no UI when the build-staleness refresh prompt is showing", () => {
   const { host, calls, body } = fakeHost({
     docOpts: { bodyText: "… A new version of Meridian is available. …" },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.equal(veilOf({ body }), undefined);
 });
@@ -389,7 +429,7 @@ test("the watchdog's own inline source does not stand it down", () => {
       bodyInnerText: "… rendered page text with no stale-build prompt …",
     },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.ok(veilOf({ body }), "fallback UI must appear");
 });
@@ -406,7 +446,7 @@ test("empty innerText (blocked boot: body holds only scripts) still shows the UI
       bodyInnerText: "",
     },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.ok(veilOf({ body }), "fallback UI must appear");
 });
@@ -415,7 +455,7 @@ test("no UI twice in one session (asked flag)", () => {
   const { host, calls, body, store } = fakeHost({
     store: { "meridian.crashwatchdogAsked": "1" },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.equal(veilOf({ body }), undefined);
   assert.equal(store["meridian.crashwatchdogAsked"], "1");
@@ -423,7 +463,7 @@ test("no UI twice in one session (asked flag)", () => {
 
 test("second timer fire does not duplicate the UI", () => {
   const { host, calls, body } = fakeHost();
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   assert.equal(calls.timers.length, 1);
   calls.timers[0].fn();
   calls.timers[0].fn();
@@ -437,7 +477,7 @@ test("second timer fire does not duplicate the UI", () => {
 
 test("fallback copy: default heading, Try again, focus on heading", () => {
   const { host, calls, nodes } = fakeHost();
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   const veil = veilOf(host);
   const html = veil.innerHTML;
@@ -452,7 +492,7 @@ test("fallback copy: default heading, Try again, focus on heading", () => {
 
 test("fallback copy: WebGL-unavailable variant", () => {
   const { host, calls } = fakeHost({ docOpts: { webgl: false } });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   const veil = veilOf(host);
   assert.ok(veil.innerHTML.includes("This phone can't run the 3D map."), "tailored WebGL heading");
@@ -460,7 +500,7 @@ test("fallback copy: WebGL-unavailable variant", () => {
 
 test("Try again reloads the page", () => {
   const { host, calls } = fakeHost();
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   const veil = veilOf(host);
   veil.onclick({ target: { id: "ag" } });
@@ -469,7 +509,7 @@ test("Try again reloads the page", () => {
 
 test("extra links: Reload points at the current URL, ?nosw=1 link built", () => {
   const { host, calls } = fakeHost();
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   const veil = veilOf(host);
   const links = veil.getElementsByTagName("a");
@@ -486,11 +526,11 @@ test("endpoint is prefetched at init, before the timer fires", () => {
   const { host, calls, xhr } = fakeHost({
     xhrOpts: {
       flagsText: JSON.stringify({
-        observabilityEndpoint: "https://obs.test/hook",
+        observabilityEndpoint: INGEST,
       }),
     },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   // NOTE: timer NOT fired.
   assert.equal(xhr.gets.length, 1, "flags.json fetched at init");
   assert.equal(xhr.posts.length, 0, "nothing sent before the fallback shows");
@@ -501,12 +541,12 @@ test("no confirmation when the POST itself fails (fail-closed)", () => {
   const { host, calls, xhr } = fakeHost({
     xhrOpts: {
       flagsText: JSON.stringify({
-        observabilityEndpoint: "https://obs.test/hook",
+        observabilityEndpoint: INGEST,
       }),
       postStatus: 500,
     },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.equal(xhr.posts.length, 1, "the attempt is still made");
   const ma = host.document.getElementById("ma");
@@ -520,12 +560,12 @@ test("prefetch race: GET still in flight at show time → exactly one POST", () 
   const { host, calls, xhr } = fakeHost({
     xhrOpts: {
       flagsText: JSON.stringify({
-        observabilityEndpoint: "https://obs.test/hook",
+        observabilityEndpoint: INGEST,
       }),
       deferGet: true,
     },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   assert.equal(xhr.gets.length, 1, "prefetch GET issued at init");
   fireTimer(calls);
   assert.equal(xhr.gets.length, 2, "send() issues its own GET while prefetch is in flight");
@@ -538,11 +578,11 @@ test("report auto-sends when the fallback shows, no tap needed", () => {
   const { host, calls, xhr } = fakeHost({
     xhrOpts: {
       flagsText: JSON.stringify({
-        observabilityEndpoint: "https://obs.test/hook",
+        observabilityEndpoint: INGEST,
       }),
     },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.equal(xhr.posts.length, 1, "POST fired automatically on show");
   const ma = host.document.getElementById("ma");
@@ -560,18 +600,18 @@ test("send flow: flags.json fetched with cache-bust, event POSTed", () => {
   const { host, calls, xhr } = fakeHost({
     xhrOpts: {
       flagsText: JSON.stringify({
-        observabilityEndpoint: "https://obs.test/hook",
+        observabilityEndpoint: INGEST,
       }),
     },
   });
-  crashWatchdogMain(host, "build-9", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "build-9", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.equal(xhr.gets.length, 1);
   assert.ok(xhr.gets[0].includes("flags.json"), "fetches flags.json");
   assert.ok(xhr.gets[0].includes("?t="), "cache-busting query");
   assert.equal(xhr.posts.length, 1);
   const post = xhr.posts[0];
-  assert.equal(post.url, "https://obs.test/hook");
+  assert.equal(post.url, INGEST);
   assert.equal(post.headers["Content-Type"], "application/json");
   const body = JSON.parse(post.body);
   assert.equal(body.type, "boot_failure");
@@ -599,11 +639,11 @@ test("send flow: no fingerprinting material leaves the device (COPPA)", () => {
   const { host, calls, xhr } = fakeHost({
     xhrOpts: {
       flagsText: JSON.stringify({
-        observabilityEndpoint: "https://obs.test/hook",
+        observabilityEndpoint: INGEST,
       }),
     },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   const body = JSON.parse(xhr.posts[0].body);
   const raw = xhr.posts[0].body;
@@ -618,7 +658,7 @@ test("send flow: fail-closed with no endpoint configured", () => {
   const { host, calls, xhr } = fakeHost({
     xhrOpts: { flagsText: JSON.stringify({}) },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.equal(xhr.gets.length, 2, "prefetch + one show-time retry (no suppression)");
   assert.equal(xhr.posts.length, 0, "nothing POSTed without an endpoint");
@@ -635,7 +675,7 @@ test("send flow: invalid endpoint is rejected, stays silent", () => {
       flagsText: JSON.stringify({ observabilityEndpoint: "//evil.test/x" }),
     },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.equal(xhr.posts.length, 0);
   assert.equal(host.document.getElementById("ms"), null);
@@ -645,7 +685,7 @@ test("send flow: flags.json network failure is fail-closed", () => {
   const { host, calls, xhr } = fakeHost({
     xhrOpts: { flagsStatus: 500, flagsText: "oops" },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.equal(xhr.gets.length, 2, "prefetch + one show-time retry, then gives up");
   assert.equal(xhr.posts.length, 0);
@@ -656,12 +696,12 @@ test("prefetch failure does not suppress the report: show-time retries", () => {
   const { host, calls, xhr } = fakeHost({
     xhrOpts: { flagsStatus: 500, flagsText: "oops" },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   assert.equal(xhr.gets.length, 1, "prefetch GET issued at init");
   // The endpoint recovers before the fallback shows.
   xhr.setFlags(
     200,
-    JSON.stringify({ observabilityEndpoint: "https://obs.test/hook" }),
+    JSON.stringify({ observabilityEndpoint: INGEST }),
   );
   fireTimer(calls);
   assert.equal(xhr.gets.length, 2, "show-time retries a fresh GET after prefetch failure");
@@ -681,11 +721,11 @@ test("first window error is captured and truncated in the report", () => {
   const { host, calls, listeners, xhr } = fakeHost({
     xhrOpts: {
       flagsText: JSON.stringify({
-        observabilityEndpoint: "https://obs.test/hook",
+        observabilityEndpoint: INGEST,
       }),
     },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   listeners.error({ error: { name: "TypeError", message: "x".repeat(500) } });
   listeners.error({ error: { name: "Later", message: "ignored" } });
   fireTimer(calls);
@@ -699,11 +739,11 @@ test("unhandledrejection reason is captured", () => {
   const { host, calls, listeners, xhr } = fakeHost({
     xhrOpts: {
       flagsText: JSON.stringify({
-        observabilityEndpoint: "https://obs.test/hook",
+        observabilityEndpoint: INGEST,
       }),
     },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   listeners.unhandledrejection({ reason: "promise blew up" });
   fireTimer(calls);
   const body = JSON.parse(xhr.posts[0].body);
@@ -725,11 +765,11 @@ test("unclean previous boot attaches sessionId, breadcrumb and lastMilestone", (
     },
     xhrOpts: {
       flagsText: JSON.stringify({
-        observabilityEndpoint: "https://obs.test/hook",
+        observabilityEndpoint: INGEST,
       }),
     },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   const body = JSON.parse(xhr.posts[0].body);
   assert.equal(body.sessionId, "prev-session-1");
@@ -758,11 +798,11 @@ test("breadcrumb device sub-object (raw UA) is stripped before auto-send", () =>
     },
     xhrOpts: {
       flagsText: JSON.stringify({
-        observabilityEndpoint: "https://obs.test/hook",
+        observabilityEndpoint: INGEST,
       }),
     },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.equal(xhr.posts.length, 1);
   const raw = xhr.posts[0].body;
@@ -791,11 +831,11 @@ test("clean previous boot: no breadcrumb attached", () => {
     },
     xhrOpts: {
       flagsText: JSON.stringify({
-        observabilityEndpoint: "https://obs.test/hook",
+        observabilityEndpoint: INGEST,
       }),
     },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   const body = JSON.parse(xhr.posts[0].body);
   assert.equal(body.sessionId, "prev-session-2");
@@ -807,11 +847,11 @@ test("corrupt breadcrumb is ignored defensively", () => {
     store: { "meridian.breadcrumb": "{not json" },
     xhrOpts: {
       flagsText: JSON.stringify({
-        observabilityEndpoint: "https://obs.test/hook",
+        observabilityEndpoint: INGEST,
       }),
     },
   });
-  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint);
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   const body = JSON.parse(xhr.posts[0].body);
   assert.equal(body.sessionId, undefined);
@@ -849,12 +889,21 @@ test("send flow: dpr is clamped like dprBucket() (1-4, undefined when bogus)", (
     [undefined, undefined],
   ]) {
     const { host, calls, xhr } = fakeHost({
-      xhrOpts: { flagsText: JSON.stringify({ observabilityEndpoint: "https://obs.test/hook" }) },
+      xhrOpts: { flagsText: JSON.stringify({ observabilityEndpoint: INGEST }) },
     });
     host.devicePixelRatio = raw;
-    crashWatchdogMain(host, "b-dpr", isValidWatchdogEndpoint);
+    crashWatchdogMain(host, "b-dpr", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
     fireTimer(calls);
     const body = JSON.parse(xhr.posts[0].body);
     assert.equal(body.device.dpr, want, `devicePixelRatio ${raw}`);
   }
+});
+
+test("S3: an off-allowlist endpoint in flags.json sends nothing (fail closed)", () => {
+  const { host, calls, xhr } = fakeHost({
+    xhrOpts: { flagsText: JSON.stringify({ observabilityEndpoint: "https://obs.example.test/hook" }) },
+  });
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
+  calls.timers[0].fn();
+  assert.equal(xhr.posts.length, 0, "no report leaves for a host that is not pinned");
 });
