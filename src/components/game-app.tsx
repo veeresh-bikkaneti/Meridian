@@ -2609,7 +2609,7 @@ function Choose({
   };
   return (
     <>
-    <main className="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-5 py-8 md:px-9">
+    <main className="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-5 py-8 md:px-9" data-age-band={ageBand}>
       <AtlasBackdrop />
       <svg className="hv5-sprig" viewBox="0 0 120 150" fill="none" stroke="#8FA382" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
         <path d="M14 148 C20 100 34 60 62 22" strokeOpacity=".7" />
@@ -4297,7 +4297,7 @@ function PlayLoaded({
   }
 
   return (
-    <main className="relative h-dvh bg-bg">
+    <main className="relative h-dvh bg-bg" data-age-band={ageBand}>
       <div className="absolute inset-0">
         <MapErrorBoundary>
           <Suspense fallback={<MapLoadingFallback />}>
@@ -4530,6 +4530,7 @@ function PlayLoaded({
         </div>
       ) : null}
       {run.phase !== "aim" && run.phase !== "summary" && revealDone ? (
+        <div className="w2-result-scope" style={{ display: "contents" }}>
         <ResultCard
           run={displayRun}
           place={place}
@@ -4558,6 +4559,7 @@ function PlayLoaded({
               : null
           }
         />
+        </div>
       ) : null}
       {/* WS-4 Phase 1: the same deferred break as the note below, for the
           satellite-failure switch. Its own copy and its own dismiss. */}
@@ -4628,6 +4630,7 @@ function PlayLoaded({
         />
       ) : null}
       {run.phase === "summary" && summary ? (
+        <div className="w2-summary-scope" style={{ display: "contents" }}>
         <RunSummaryCard
           summary={summary}
           regionName={run.regionName}
@@ -4642,6 +4645,7 @@ function PlayLoaded({
           onReview={onReviewDeck}
           reviewDueCount={reviewDueCount}
         />
+        </div>
       ) : null}
     </main>
   );

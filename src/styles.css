@@ -1878,3 +1878,19 @@
     display: none;
   }
 }
+
+/* WI-9 (Branch 2): 5–7 band readability floor for result text. GameApp
+   sets data-age-band on the Play <main> from the active age profile and
+   wraps the result card / run summary in .w2-result-scope /
+   .w2-summary-scope (display: contents — layout-neutral). The score
+   itself (text-5xl) is already large and is not matched here. Other
+   bands are untouched. */
+[data-age-band="5-7"] .result-story,
+[data-age-band="5-7"] .result-note,
+[data-age-band="5-7"] .result-source,
+[data-age-band="5-7"] .w2-result-scope .growth-line,
+[data-age-band="5-7"] .w2-result-scope .share-pre,
+[data-age-band="5-7"] .w2-summary-scope .text-sm,
+[data-age-band="5-7"] .w2-summary-scope .text-\[11px\] {
+  font-size: 16px;
+}

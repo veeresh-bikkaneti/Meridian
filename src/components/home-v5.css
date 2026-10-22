@@ -95,19 +95,17 @@ body:has(.home-v5) {
   letter-spacing: 0.13em;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   padding: 6px 2px;
   min-height: 44px;
+  min-width: 44px;
   color: var(--hv5-ink);
   background: none;
   border: none;
 }
-.home-v5 .hv5-nav nav button:hover:not([aria-disabled="true"]) {
+.home-v5 .hv5-nav nav button:hover {
   color: var(--hv5-brown);
-}
-.home-v5 .hv5-nav nav button[aria-disabled="true"] {
-  opacity: 0.45;
-  cursor: default;
 }
 .home-v5 .hv5-nav .hv5-actions {
   display: flex;
@@ -119,6 +117,9 @@ body:has(.home-v5) {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  /* WI-9: pill buttons are tap targets — never shorter than 44px
+     (JOIN THE JOURNEY measured 39px tall before this floor). */
+  min-height: 44px;
   border: none;
   border-radius: 999px;
   font-family: var(--hv5-body);
@@ -230,6 +231,23 @@ body:has(.home-v5) {
   letter-spacing: 0.005em;
   margin: 20px 0 14px;
   max-width: 12em;
+}
+/* WI-9 (Branch 2): while Homer's greeting bubble is open, the headline
+   moves down out of its way. The bubble keeps its absolute overlay
+   anchor (top: 100% + 8px under the banner row); the storyteller
+   measures the open bubble and publishes its height as
+   --w2-bubble-clear on the hero (storyteller-home.tsx), and the h1's
+   top margin becomes exactly that value — bubble height + hang gap +
+   air — so clearance holds for every greeting, the audio-failed
+   fallback line, the 5–7 band's larger caption, and every width. The
+   128px fallback covers the first frame before measurement (and
+   browsers without :has(), Safari < 15.4, keep the previous overlay
+   behavior — no worse than before). Before this rule the bubble
+   covered the headline's first line(s) at phone widths and clipped
+   its layout box at desktop widths (measured 17,608px² of overlap at
+   320px, 1,374px² at 1280px). */
+.home-v5 .hv5-hero:has(.storyteller-banner-popover) .hv5-h1 {
+  margin-top: var(--w2-bubble-clear, 128px);
 }
 .home-v5 .hv5-sub {
   font-size: 16.5px;
@@ -892,4 +910,27 @@ body:has(.home-v5) {
     transform: none;
     filter: none;
   }
+}
+
+/* ---------- WI-9 (Branch 2): 5–7 band readability floors ----------
+   Youngest readers get a 16px floor on the text they actually read:
+   section paragraphs (About, editions, case cards, get-involved),
+   journal entry stories, the hero's difficulty prompt + hint, the
+   storyteller's own words, and the footer privacy note. GameApp sets
+   data-age-band on the home <main> from the active age profile; other
+   bands are untouched. UI chrome (labels, eyebrows, status lines) is
+   not body text and keeps its sizes — it is governed by the 44px tap
+   floor and the 4.5:1 contrast rule instead. */
+.home-v5[data-age-band="5-7"] :is(#home-about, #home-editions, #home-cases, #home-involved) p,
+.home-v5[data-age-band="5-7"] .hv5-entry p {
+  font-size: 16px;
+}
+.home-v5[data-age-band="5-7"] .hv5-diff-cap,
+.home-v5[data-age-band="5-7"] .hv5-hint,
+.home-v5[data-age-band="5-7"] .agep-footer-note {
+  font-size: 16px;
+}
+.home-v5[data-age-band="5-7"] .storyteller-caption-text,
+.home-v5[data-age-band="5-7"] .storyteller-fallback {
+  font-size: 1rem;
 }

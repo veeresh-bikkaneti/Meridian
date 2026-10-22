@@ -239,6 +239,38 @@ export default function StorytellerHomeHost({
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const pokeAudioRef = useRef<HTMLAudioElement | null>(null);
+  // WI-9 (Branch 2): while the greeting bubble is open it hangs over the
+  // hero's headline zone. The bubble's ref callback measures its real
+  // height and publishes it to the hero as --w2-bubble-clear; home-v5.css
+  // turns that into the headline's top margin, so the headline is clear
+  // of the bubble by construction — every greeting in the rotation, the
+  // audio-failed fallback line, the 5–7 band's larger caption, and every
+  // viewport width. A ResizeObserver keeps the value current when the
+  // fallback line arrives late or the viewport changes.
+  const bubbleHeroRef = useRef<HTMLElement | null>(null);
+  const bubbleObserverRef = useRef<ResizeObserver | null>(null);
+  const handleBubbleRef = useCallback((node: HTMLDivElement | null) => {
+    bubbleObserverRef.current?.disconnect();
+    bubbleObserverRef.current = null;
+    if (bubbleHeroRef.current) {
+      bubbleHeroRef.current.style.removeProperty("--w2-bubble-clear");
+      bubbleHeroRef.current = null;
+    }
+    if (!node) return;
+    const hero = node.closest<HTMLElement>(".hv5-hero");
+    if (!hero) return;
+    bubbleHeroRef.current = hero;
+    const update = () => {
+      // 28 = the 8px hang gap under the banner row + 20px of air.
+      hero.style.setProperty("--w2-bubble-clear", `${node.offsetHeight + 28}px`);
+    };
+    update();
+    if (typeof ResizeObserver !== "undefined") {
+      const ro = new ResizeObserver(update);
+      ro.observe(node);
+      bubbleObserverRef.current = ro;
+    }
+  }, []);
   const bubbleTimer = useRef(0);
   const capTimer = useRef(0);
   const soundWatch = useRef(0);
@@ -993,6 +1025,7 @@ export default function StorytellerHomeHost({
       </span>
       {bubble !== null && started ? (
         <div
+          ref={handleBubbleRef}
           className="storyteller-banner-popover"
           data-testid="storyteller-home-bubble"
           role="status"
