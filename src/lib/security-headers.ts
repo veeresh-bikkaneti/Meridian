@@ -12,7 +12,9 @@
  *    Start, so the HTML only gets these headers if the worker adds them.
  *    `src/start.ts` registers `securityHeadersMiddleware` (below), which
  *    adds them to every response from the TanStack handler: SSR HTML,
- *    `/api/contact`, and redirects.
+ *    `/api/contact`, and redirects. The middleware also adds the default
+ *    Cache-Control to rendered HTML (see `HTML_CACHE_CONTROL` below),
+ *    because `_headers` never reaches those Worker responses either.
  *
  * `src/lib/security-headers.test.ts` parses `public/_headers` and fails if
  * its `/*` block drifts from SECURITY_HEADERS. Edit both together.
@@ -63,6 +65,22 @@ export const SECURITY_HEADERS: Readonly<Record<string, string>> = Object.freeze(
 });
 
 /**
+ * The Cache-Control every rendered HTML page should carry.
+ *
+ * Rendered HTML never passes through `public/_headers` — Cloudflare only
+ * applies that file to static assets — so the Worker itself has to send
+ * this, from the request middleware in `src/start.ts`.
+ *
+ * ADR note: this is deliberately the plain value, with no `s-maxage`.
+ * Rendered pages can carry per-request state, and letting an edge cache
+ * hold them needs the owner's explicit say-so. The owner chose the plain
+ * value on 2026-10-22 (WI-18). The `_headers` `/` rule's `s-maxage=60`
+ * only ever applied to an asset-served copy of the document, which
+ * production does not serve.
+ */
+export const HTML_CACHE_CONTROL = "public, max-age=0, must-revalidate";
+
+/**
  * Add the security headers to a response. A header the route already set
  * is left alone, so a route can opt into something stricter. If the
  * response's headers are immutable (for example a fetch() passthrough), a
@@ -78,6 +96,34 @@ export function withSecurityHeaders(response: Response): Response {
     const headers = new Headers(response.headers);
     for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
       if (!headers.has(name)) headers.set(name, value);
+    }
+    return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+  }
+}
+
+/**
+ * Add the default Cache-Control to a rendered HTML response.
+ *
+ * Only rendered documents get the default: a response whose content
+ * type starts with `text/html` and which has no Cache-Control yet.
+ * Anything else is returned untouched — JSON, API and error responses
+ * (for example `/api/contact`'s `no-store`) must stay exactly as their
+ * routes set them, and an existing Cache-Control is never overridden.
+ * If the response's headers are immutable, a copy is returned instead.
+ */
+export function withHtmlCacheControl(response: Response): Response {
+  try {
+    if (
+      (response.headers.get("content-type") ?? "").startsWith("text/html") &&
+      !response.headers.has("cache-control")
+    ) {
+      response.headers.set("cache-control", HTML_CACHE_CONTROL);
+    }
+    return response;
+  } catch {
+    const headers = new Headers(response.headers);
+    if ((headers.get("content-type") ?? "").startsWith("text/html") && !headers.has("cache-control")) {
+      headers.set("cache-control", HTML_CACHE_CONTROL);
     }
     return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
   }

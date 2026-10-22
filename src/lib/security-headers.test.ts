@@ -5,7 +5,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync } from "node:fs";
-import { SECURITY_HEADERS, withSecurityHeaders } from "./security-headers.ts";
+import { HTML_CACHE_CONTROL, SECURITY_HEADERS, withHtmlCacheControl, withSecurityHeaders } from "./security-headers.ts";
 
 function globalBlock(): Map<string, string> {
   const text = readFileSync(new URL("../../public/_headers", import.meta.url), "utf8");
@@ -37,6 +37,32 @@ test("withSecurityHeaders adds every header to a worker response", () => {
 test("withSecurityHeaders keeps a header the route already set", () => {
   const res = withSecurityHeaders(new Response("x", { headers: { "x-frame-options": "SAMEORIGIN" } }));
   assert.equal(res.headers.get("x-frame-options"), "SAMEORIGIN");
+});
+
+test("HTML_CACHE_CONTROL is exactly the owner-ruled plain value", () => {
+  assert.equal(HTML_CACHE_CONTROL, "public, max-age=0, must-revalidate");
+});
+
+test("withHtmlCacheControl adds the default to an HTML response without cache-control", () => {
+  const res = withHtmlCacheControl(
+    new Response("<!doctype html>", { headers: { "content-type": "text/html; charset=utf-8" } }),
+  );
+  assert.equal(res.headers.get("cache-control"), HTML_CACHE_CONTROL);
+  assert.equal(res.headers.get("cache-control"), "public, max-age=0, must-revalidate");
+});
+
+test("withHtmlCacheControl keeps a cache-control the route already set", () => {
+  const res = withHtmlCacheControl(
+    new Response("<!doctype html>", {
+      headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" },
+    }),
+  );
+  assert.equal(res.headers.get("cache-control"), "no-store");
+});
+
+test("withHtmlCacheControl leaves a non-HTML response untouched", () => {
+  const res = withHtmlCacheControl(new Response("{}", { headers: { "content-type": "application/json" } }));
+  assert.equal(res.headers.get("cache-control"), null);
 });
 
 test("withSecurityHeaders copies a response whose headers are immutable", async () => {
