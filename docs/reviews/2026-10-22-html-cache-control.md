@@ -57,8 +57,11 @@ What that means, piece by piece:
 - `public` — anyone (browser or shared cache) may store it.
 - `max-age=0` — it is stale the moment it arrives…
 - `must-revalidate` — …so the browser must check with the server
-  before reusing it. A fresh deploy is seen right away, and the
-  check itself is cheap (an unchanged page answers "not modified").
+  before reusing it. A fresh deploy is seen right away. One honest
+  limit: this change sets no `ETag` or `Last-Modified` validator for
+  rendered pages (nothing in `src/` does), so that check re-downloads
+  the page in full — the win is the freshness guarantee, not a cheap
+  "not modified" answer.
 
 **Deliberately no `s-maxage`.** `s-maxage` would let the *edge*
 (Cloudflare's shared cache) keep a rendered page and serve it to
@@ -81,16 +84,18 @@ Worker, at $0 cost.
 
 ## The change
 
-Four code/comment surfaces, nothing else:
+The changed files:
 
 | File | What changed |
 | --- | --- |
 | `src/lib/security-headers.ts` | New constant `HTML_CACHE_CONTROL` and new helper `withHtmlCacheControl(response)`. |
 | `src/start.ts` | The existing request middleware now runs the response through `withHtmlCacheControl` as well as `withSecurityHeaders`. Nothing else in the file changed — the CSRF middleware is untouched. |
-| `src/lib/security-headers.test.ts` | Four new unit tests (see Acceptance, item 4). |
+| `src/lib/security-headers.test.ts` | New unit tests (see Acceptance, item 4). |
 | `public/_headers` | **Comments only.** No rule line or value changed, and the `/*` security block is byte-identical. The comments now tell the truth: the `/` rules cover asset-served copies only, and rendered HTML gets its header from the middleware. |
+| `scripts/security-headers.test.mjs` | One new test (panel cure round): pins the asset-served `/` + `/index.html` rules to their literal `s-maxage=60` value, so the deliberate divergence from `HTML_CACHE_CONTROL` cannot silently drift. |
+| `docs/security-headers.md` | The canonical headers doc, brought current (panel cure round): the delivery table credits the middleware with the HTML Cache-Control; the caching table gains the rendered-HTML row, marks `/` + `/index.html` asset-served only, and states the carved-assets detach **+ set** truth (PR #212). |
 
-Plus documentation: this file, one or two sentences in the README's
+Plus documentation: this file, one sentence in the README's
 "Security headers" section, and `BRANCH_STATUS.md`.
 
 ### How the rule works
@@ -103,18 +108,21 @@ instead of failing.
 
 It sets the header only when **both** are true:
 
-1. The response's content type starts with `text/html` — it really
-   is a rendered document.
+1. The response's content type starts with `text/html` (matched
+   case-insensitively — Content-Type values are case-insensitive) —
+   it really is a rendered document.
 2. The response has **no** `Cache-Control` yet.
 
 And it never overrides. That restraint is the point:
 
 - A route that already chose a value keeps it. For example, an HTML
   response carrying `no-store` stays `no-store`.
-- Non-HTML responses are returned untouched. JSON, API and error
-  responses must stay exactly as their routes set them — for
-  example `/api/contact` answers with `no-store`, and this helper
-  does not go near it (it is not HTML in the first place).
+- HTML error pages are documents too: the 404 page gets the default,
+  like any other rendered page, unless it already carries a value.
+- Non-HTML responses are returned untouched. JSON and API responses
+  stay exactly as their routes set them — for example
+  `/api/contact` answers with `no-store`, and this helper does not
+  go near it (it is not HTML in the first place).
 
 ## Acceptance criteria — how each one is met
 
@@ -131,29 +139,35 @@ The five criteria from the WI-18 handoff:
    `/*` block is byte-identical, and the built
    `dist/client/_headers` is byte-identical to `public/_headers`.
    The drift test (`src/lib/security-headers.test.ts`) and
-   `scripts/security-headers.test.mjs` (3/3) still pass.
+   `scripts/security-headers.test.mjs` (4/4 — the cure round added
+   the `/` + `/index.html` drift pin) still pass.
 3. **Non-HTML responses are untouched.** The helper checks the
    content type first and returns anything that is not `text/html`
    exactly as it arrived; a unit test pins this.
-4. **Unit tests cover the new behaviour.** Four new tests in
-   `src/lib/security-headers.test.ts`: the constant equals the
-   literal `public, max-age=0, must-revalidate`; an HTML response
-   (`text/html; charset=utf-8`) without a value gets exactly that
-   value; an HTML response with `no-store` keeps `no-store`; a JSON
-   response without a value still has none afterwards. The existing
-   drift test passes unchanged.
-5. **Build and end-to-end stay green.** `npm run build:pages` is
-   green on this branch (see Gates). The Playwright E2E suite runs
-   against the built artifact in the normal pipeline; this change is
-   additive response-header logic with no page, route or content
-   change, and the post-merge live probe below is the end-to-end
-   check on the real Worker.
+4. **Unit tests cover the new behaviour.** Six tests in
+   `src/lib/security-headers.test.ts` cover the helper: the constant
+   equals the literal `public, max-age=0, must-revalidate`; an HTML
+   response (`text/html; charset=utf-8`) without a value gets
+   exactly that value; an HTML response with `no-store` keeps
+   `no-store`; a JSON response without a value still has none
+   afterwards; a mixed-case content type (`Text/HTML`) still
+   matches; and a response whose headers refuse changes is copied,
+   not crashed (the last two came from the panel cure round). The
+   existing drift test passes unchanged.
+5. **Build green; the E2E that ran stayed green.** `npm run
+   build:pages` is green on this branch (see Gates). Playwright E2E
+   against the built artifact:
+   `grownups-privacy-contact.desktop.spec.ts` — 3/3 passed. This
+   change is additive response-header logic with no page, route or
+   content change, and the post-merge live probe below is the
+   end-to-end check on the real Worker.
 
 ### Gates on this branch (run 2026-10-22)
 
 - `npx tsc --noEmit` — clean
-- `npm test` — scripts **808 pass / 0 fail / 9 skip** (817 tests);
-  src **1477 pass / 0 fail** (1473 on main + the 4 new tests)
+- `npm test` — scripts **809 pass / 0 fail / 9 skip** (818 tests;
+  808 on main + the cure-round drift pin);
+  src **1479 pass / 0 fail** (1473 on main + the 6 new tests)
 - `node scripts/lint-cards.mjs` — **GATE PASSED**
 - `npm run build:pages` — green; `dist/client/_headers`
   byte-identical to `public/_headers` (diff-verified)

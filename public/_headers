@@ -58,13 +58,12 @@
 #     block for the same path would not be a separate rule.
 #
 # HTML, /flags.json and the sw.js group: every one gets an explicit
-# line below, so this file — not an undocumented platform default —
-# is the caching contract of record for them, with one exception:
-# for rendered HTML the contract of record is the Worker middleware
-# (see the honesty note below); this file's HTML lines only cover an
-# asset-served copy. Each is the first and
-# only Cache-Control set matching its path, so each simply replaces
-# the platform default.
+# line below. This file — not an undocumented platform default — is
+# the caching contract of record for them. One exception: for
+# rendered HTML the contract of record is the Worker middleware (see
+# the honesty note below), and this file's HTML lines only cover an
+# asset-served copy. Each listed path has exactly one Cache-Control
+# set in this file, so that set simply replaces the platform default.
 # One honesty note: the root document at / is currently rendered by the
 # app server, not served as a static asset (live probe 2026-10-21: the
 # / response carries neither the ETag nor the CF-Cache-Status header
