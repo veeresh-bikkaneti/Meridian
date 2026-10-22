@@ -1,0 +1,61 @@
+# Cloudflare Workers static-assets response headers (review findings P2-8/9,
+# 2026-10-21). Cloudflare reads this file from the build output (Vite copies
+# public/ → dist/client/). GitHub Pages ignores it (it is served as a plain
+# file there and has no effect). Rationale + how to verify: docs/security-headers.md
+#
+# The /* block below MUST stay identical to SECURITY_HEADERS in
+# src/lib/security-headers.ts (the single source of truth; CSP rationale is
+# documented there). src/lib/security-headers.test.ts fails on drift.
+#
+# Scope: Cloudflare applies this file to STATIC ASSET responses only. It is
+# NOT applied to Worker-generated responses, and the live `meridian` worker
+# server-renders the HTML. Those responses get the same headers from the
+# request middleware in src/start.ts.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://server.arcgisonline.com; font-src 'self' data:; media-src 'self' data: blob:; connect-src 'self' https://server.arcgisonline.com https://meridian-crash-report.knowledgetest.workers.dev https://cloudflareinsights.com; worker-src 'self' blob:; child-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=(), browsing-topics=()
+  Cross-Origin-Opener-Policy: same-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Hashed build assets never change at a given URL → cache for a year.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ...except the three UN-hashed files that live under /assets/ (stable names,
+# mutable content): the MapLibre worker copies (maplibre-worker-files plugin
+# in vite.config.ts) and the storyteller asset manifest. Cloudflare joins
+# headers from every matching rule (no most-specific-wins), so a second
+# Cache-Control set-line would comma-join with "immutable". The documented
+# remedy is a detach line used ALONE: the platform default
+# (public, max-age=0, must-revalidate + ETag) then applies. These blocks are
+# text-identical to PR #203 (perf, F1) on purpose, so the two merge cleanly.
+/assets/maplibre-gl-worker.mjs
+  ! Cache-Control
+
+/assets/maplibre-gl-shared.mjs
+  ! Cache-Control
+
+/assets/storyteller/storyteller-assets.json
+  ! Cache-Control
+
+# The service worker and the files it treats as "latest" must revalidate
+# every time, or update detection (fingerprinted sw.js) and remote kill
+# switches (flags.json) stall.
+/sw.js
+  Cache-Control: no-cache
+/flags.json
+  Cache-Control: no-cache
+/build-meta.json
+  Cache-Control: no-cache
+/manifest.webmanifest
+  Cache-Control: no-cache
+
+# HTML entry points: short browser cache, edge may keep it briefly;
+# a deploy is visible within a minute.
+/
+  Cache-Control: public, max-age=0, s-maxage=60, must-revalidate
+/index.html
+  Cache-Control: public, max-age=0, s-maxage=60, must-revalidate

@@ -45,20 +45,40 @@
  */
 
 /**
+ * Hosts allowed to receive the boot-failure report (review S3,
+ * 2026-10-21). This MUST equal OBSERVABILITY_INGEST_HOSTS in
+ * src/lib/flags.ts. The inline script cannot import that module, so
+ * scripts/crash-watchdog.test.mjs fails on drift.
+ */
+export const OBSERVABILITY_INGEST_HOSTS = Object.freeze([
+  "meridian-crash-report.knowledgetest.workers.dev",
+]);
+
+/**
  * Endpoint validation mirroring isValidObservabilityEndpoint in
  * src/lib/flags.ts, written ES5-only so it can ship inline: a string of
- * <= 2048 chars with no whitespace/control chars that is either a
- * root-relative single-slash path or an https: URL.
+ * <= 2048 chars with no whitespace/control chars or backslashes that is
+ * either a root-relative single-slash path or an https: URL whose
+ * hostname is one of `hosts`. Backslashes are rejected because WHATWG
+ * URL parsing treats "\" as "/" in special schemes, so "/\host" is a
+ * protocol-relative URL in disguise. Without `hosts`, every absolute
+ * URL is rejected (fail closed).
  */
-export function isValidWatchdogEndpoint(value) {
-  if (typeof value !== "string") return false;
+export function isValidWatchdogEndpoint(value, hosts) {
+  // Loose != / == below compare strings with strings only, so they behave
+  // exactly like !== / ===. They each save a byte of the inline budget.
+  // eslint-disable-next-line eqeqeq
+  if (typeof value != "string") return false;
   var v = value.replace(/^\s+|\s+$/g, "");
-  if (v === "" || v.length > 2048) return false;
   // eslint-disable-next-line no-control-regex -- intentional: control chars are rejected
-  if (/[\s\u0000-\u001f]/.test(v)) return false;
+  if (v.length > 2048 || /[\s\u0000-\u001f\\]/.test(v)) return false;
   if (v[0] === "/") return v[1] !== "/";
   try {
-    return new URL(v).protocol === "https:";
+    // "" throws here, and so does a missing `hosts` list (no .indexOf), so
+    // both fail closed through the catch.
+    var u = new URL(v);
+    // eslint-disable-next-line eqeqeq
+    return u.protocol == "https:" && hosts.indexOf(u.hostname) >= 0;
   } catch (e) {
     return false;
   }
@@ -71,7 +91,7 @@ export function isValidWatchdogEndpoint(value) {
  * renderCrashWatchdogScript(). Everything in here is ES5-only (see the
  * module docstring) and deliberately terse to hold the 5120-byte budget.
  */
-export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
+export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts) {
   var ASKED = "meridian.crashwatchdogAsked",
     CRUMB = "meridian.breadcrumb",
     CLEAN = "meridian.cleanExit",
@@ -196,7 +216,7 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
       try {
         if (st >= 200 && st < 300 && text) {
           var c = JSON.parse(text).observabilityEndpoint;
-          if (isValidEndpointFn(c)) ep = String(c).trim();
+          if (isValidEndpointFn(c, ingestHosts)) ep = String(c).trim();
         }
       } catch (e) {
         /* best-effort */
@@ -213,11 +233,11 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
     getEndpoint(function (ep) {
       if (!ep) return;
       try {
-        // Coarse device facts only (COPPA): OS + form-factor buckets
-        // derived from the UA, never the UA string itself, never the
-        // GPU renderer string. No coordinates, no place/guess content,
-        // no PII. undefined fields are dropped by JSON.
-        var n = win.navigator || {},
+        // COPPA: OS/form buckets from the UA (never the UA or GPU
+        // string), DPR clamped to 1-4, short-side screen bucket; no memory or
+        // cores (2026-10-21). undefined fields are dropped by JSON.
+        var r,
+          n = win.navigator || {},
           w = win.screen || {},
           uaS = String(n.userAgent).toLowerCase(),
           os = /android/.test(uaS)
@@ -230,25 +250,27 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
                   ? "mac"
                   : /linux/.test(uaS)
                     ? "linux"
-                    : "other";
+                    : "other",
+          ss = Math.min(w.width, w.height);
         var dv = {
           os: os,
           form: os === "android" || os === "ios" ? "mobile" : "desktop",
-          deviceMemory: n.deviceMemory,
-          hardwareConcurrency: n.hardwareConcurrency,
-          dpr: win.devicePixelRatio,
-          screenW: w.width,
-          screenH: w.height,
+          // Same bucket as dprBucket() in src/lib/observability.ts: an
+          // integer clamped to 1-4, or undefined when the value is missing
+          // or bogus. Rounding alone let odd zoom values such as 7 through.
+          dpr: (r = win.devicePixelRatio) > 0 ? Math.min(4, Math.round(r)) || 1 : void 0,
+          screen: ss < 480 ? "sm" : ss < 768 ? "md" : ss < 1080 ? "lg" : ss ? "xl" : void 0,
           webgl1: g1,
-          webgl2: g2,
-          buildId: buildId,
+          // (No device.buildId: the top-level event already carries it,
+          // and dropping the copy keeps the script within its byte budget.)
+          webgl2: g2
         };
           var ev = {
             type: "boot_failure",
             ts: Date.now(),
             buildId: buildId,
             device: dv,
-            error: err0 || { name: "Error", message: "boot timeout" },
+            error: err0 || { name: "Error", message: "boot timeout" }
           };
           if (prev) {
             ev.sessionId = prev.sessionId;
@@ -286,7 +308,7 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
               if (ma)
                 ma.insertAdjacentHTML(
                   "beforeend",
-                  '<p role="status">Crash note sent, no personal info - helps fix this.</p>',
+                  '<p role="status">Crash note sent, no personal info - helps fix this.</p>'
                 );
             } catch (e) {
               /* best-effort */
@@ -305,14 +327,13 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
     "padding:16px;" +
     "padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) " +
     "max(16px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}" +
-    "#mc{margin:auto;max-width:22rem;width:100%;background:#ffffff;" +
-    "color:#1b2a3d;border-radius:12px;padding:20px;" +
+    "#mc{margin:auto;max-width:22rem;width:100%;background:#fff;color:#1b2a3d;border-radius:12px;padding:20px;" +
     "font:16px/1.5 system-ui,sans-serif}" +
     "#mc h2{font-size:18px;margin:0 0 8px}" +
     "#mc p{margin:0 0 12px}" +
     "#ma button{display:block;width:100%;font:inherit;padding:11px;" +
     "margin:0 0 8px;border:2px solid #0b5fff;border-radius:8px;cursor:pointer;" +
-    "background:#0b5fff;color:#ffffff;font-weight:700}" +
+    "background:#0b5fff;color:#fff;font-weight:700}" +
     "#ma button:focus-visible,#mc a:focus-visible{" +
     "outline:3px solid #0b5fff;outline-offset:2px}" +
     "#mc a{color:#0b5fff;display:inline-block;min-height:44px;line-height:44px}" +
@@ -401,7 +422,7 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
       } catch (e) {
         /* best-effort */
       }
-      if (t.indexOf(STALE) === -1) show();
+      if (t.indexOf(STALE) < 0) show();
     } catch (e2) {
       /* best-effort */
     }
@@ -423,6 +444,11 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn) {
 // regexes — so semantics are preserved exactly.
 const RENAME = {
   isValidEndpointFn: "ok",
+  ingestHosts: "ih",
+  hosts: "hs",
+  value: "a",
+  host: "H",
+  text: "tx",
   isValidWatchdogEndpoint: "vv",
   getEndpoint: "ge",
   epCache: "ec",
@@ -549,6 +575,7 @@ export function minifyEmbedded(src) {
   let out = "";
   let pendingSpace = false;
   let prev = null; // last significant token [kind, value]
+  let prev2 = null; // the one before it
   for (const [kind, val] of toks) {
     if (kind === "ws") {
       pendingSpace = true;
@@ -562,11 +589,31 @@ export function minifyEmbedded(src) {
     ) {
       v = RENAME[val];
     }
+    // Fold `"a" + "b"` into `"ab"` (double-quoted literals only). String
+    // concatenation is associative, and the embedded sources never apply
+    // a member access or a higher-precedence operator to the right-hand
+    // literal, so the value is unchanged. It saves 3 bytes per join in the
+    // multi-line CSS string.
+    if (
+      kind === "str" &&
+      v[0] === '"' &&
+      prev && prev[0] === "punc" && prev[1] === "+" &&
+      prev2 && prev2[0] === "str" && prev2[1][0] === '"'
+    ) {
+      out = out.slice(0, -2) + v.slice(1); // drop the closing quote and "+"
+      prev2 = null;
+      prev = ["str", '"' + v.slice(1)];
+      pendingSpace = false;
+      continue;
+    }
     if (pendingSpace) {
       pendingSpace = false;
-      if (prev && prev[0] === "word" && kind === "word") out += " ";
+      // A space survives only between two word characters (renames such
+      // as "!1" start with punctuation, so "return !1" becomes "return!1").
+      if (prev && _isWordCh(out[out.length - 1]) && _isWordCh(v[0])) out += " ";
     }
     out += v;
+    prev2 = prev;
     prev = [kind, v];
   }
   return out.replace(/;}/g, "}");
@@ -586,6 +633,8 @@ export function renderCrashWatchdogScript(buildId) {
     JSON.stringify(buildId) +
     "," +
     minifyEmbedded(isValidWatchdogEndpoint.toString()) +
+    "," +
+    JSON.stringify(OBSERVABILITY_INGEST_HOSTS) +
     ");";
   return "<script>/*meridian-crash-watchdog*/try{" + body + "}catch(e){}</script>";
 }

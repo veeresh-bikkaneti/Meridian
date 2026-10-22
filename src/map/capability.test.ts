@@ -560,3 +560,19 @@ test("legacy decline record (manual full from the old dialog) stands on a weak d
     { mode: "full", source: "manual" },
   );
 });
+
+test("P1-7: a clean WebGL probe keeps a 2 GB device on the Full map; 1 GB still demotes", () => {
+  assert.deepEqual(qualifyMapMode({ webglProbeOk: true, deviceMemoryGB: 2 }), {
+    mode: "full",
+    source: "default",
+  });
+  assert.deepEqual(qualifyMapMode({ webglProbeOk: true, deviceMemoryGB: 1 }), {
+    mode: "scout",
+    source: "low-memory",
+  });
+  // Probe unavailable: 2 GB still counts (tiebreaker), as before.
+  assert.deepEqual(qualifyMapMode({ webglProbeOk: null, deviceMemoryGB: 2 }), {
+    mode: "scout",
+    source: "low-memory",
+  });
+});

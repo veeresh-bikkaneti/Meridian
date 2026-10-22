@@ -33,7 +33,10 @@ import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
  */
 
 const APP_URL = "http://127.0.0.1:4123/Meridian/";
-const ENDPOINT = "https://obs.example.test/ingest";
+// The pinned crash-report host (review S3): flags.json endpoints off
+// OBSERVABILITY_INGEST_HOSTS are rejected. context.route() intercepts it,
+// so the test never touches the real worker.
+const ENDPOINT = "https://meridian-crash-report.knowledgetest.workers.dev/ingest";
 const GENERIC_HEADING = "The game couldn't start on this phone.";
 const NOWEBGL_HEADING = "This phone can't run the 3D map.";
 const REFRESH_COPY = "A new version of Meridian is available.";

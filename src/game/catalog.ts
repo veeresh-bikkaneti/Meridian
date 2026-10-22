@@ -564,7 +564,7 @@ export const PLACES: Place[] = [
     shape: point(-103.34833, 41.70361),
     story:
       "The spire in western Nebraska was the landmark Oregon Trail emigrants watched for days. It still stands above the North Platte valley near Bayard.",
-    source: src("National Park Service", "https://www.nps.gov/chro/"),
+    source: src("National Park Service", "https://www.nps.gov/places/000/chimney-rock-national-historic-site.htm"),
   },
   {
     id: "scotts-bluff",

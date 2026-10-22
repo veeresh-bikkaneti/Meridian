@@ -1,5 +1,5 @@
 import { test, expect, type Page } from "playwright/test";
-import { serveBuiltArtifact } from "./helpers";
+import { passGrownUpGate, serveBuiltArtifact } from "./helpers";
 
 /**
  * Grandpa's Tasting Tour E2E — mobile-only screenplay (≤1023.5px).
@@ -510,6 +510,11 @@ test("settle: faint trail, Game Designer cloud copy, gate workflow", async ({
   await expect(gate).toBeVisible();
   await expect(gate).toContainText("You're leaving Meridian to visit Ko-fi. Ask a grown-up!");
   await page.getByTestId("grandpa-cloud-continue").click();
+  // P6: Continue opens the grown-up gate. Nothing has left Meridian yet.
+  expect(
+    await page.evaluate(() => (window as unknown as { __opened: unknown[] }).__opened),
+  ).toHaveLength(0);
+  await passGrownUpGate(page);
   const opened = await page.evaluate(
     () => (window as unknown as { __opened: unknown[] }).__opened,
   );

@@ -2,6 +2,15 @@
 /**
  * Render the Storyteller mascot's 3 narration mp3s with LOCAL Kokoro TTS.
  *
+ * ⚠️ DO NOT RUN against the shipped narration clips — SUPERSEDED
+ * (2026-10-21). ⚠️ The hook/reveal/summary mp3s in public/audio/storyteller/
+ * are no longer am_fenrir renders: PR #174 (merged 2026-10-19) replaced all
+ * 14 storyteller clips with the Grok-generated Santa voice, accepted by
+ * Veeresh on 2026-10-21 ("1 — Accept #174, close bug + docs cure"). Running
+ * this script would OVERWRITE the shipped Santa narration with am_fenrir
+ * renders. Kept for the record only; it no longer describes how the shipped
+ * clips are made.
+ *
  * Voice: am_fenrir (Kokoro-82M, en-us male) @ speed 1.05 — the game
  * designer's 2026-10-08 pick (trailer energy; retires the old cloud
  * `tts` CLI path per the standing no-cloud/no-key/no-spend rules).

@@ -3,7 +3,9 @@
  *
  * Covers the Worker A contract for the reveal pin-compare feature:
  * - importing the module parses NO admin-1 JSONs (Safari jetsam rule);
- * - resolvePin degrades to country-only before preload and never throws;
+ * - resolvePin fails closed (null) before the territory preload (F2b:
+ *   the countries-50m data is lazy too), degrades to country-only after
+ *   it — before the admin-1 preload — and never throws;
  * - preloadAdmin1Boundaries() is idempotent (no double parse);
  * - known coordinates encode what the vendored data REALLY says
  *   (verified by hand against us-atlas / ne-50m / world-atlas);
@@ -29,6 +31,10 @@ import {
   type PoolPlace,
   type ResolvedPin,
 } from "./reverse-geocode.ts";
+import {
+  preloadTerritory,
+  territoryLoadRunsForTests,
+} from "./territory.ts";
 
 test("importing the module parses no admin-1 boundaries", () => {
   assert.deepEqual(
@@ -36,9 +42,28 @@ test("importing the module parses no admin-1 boundaries", () => {
     { us: 0, ne: 0 },
     "importing reverse-geocode.ts must not load the admin-1 JSONs",
   );
+  assert.equal(
+    territoryLoadRunsForTests(),
+    0,
+    "importing reverse-geocode.ts must not load the countries-50m data",
+  );
 });
 
-test("resolvePin is country-only before preload and never triggers loading", () => {
+test("resolvePin fails closed before the territory preload and never triggers it", () => {
+  // F2b: territoryAt is null until preloadTerritory() lands, so the pin
+  // is unresolvable (the reveal card renders no ledger — fail closed).
+  assert.equal(resolvePin(40.8126, -96.7026), null);
+  assert.equal(territoryLoadRunsForTests(), 0, "resolvePin must never start the territory load");
+  assert.deepEqual(
+    admin1LoadRunsForTests(),
+    { us: 0, ne: 0 },
+    "resolvePin must never start an admin-1 load",
+  );
+});
+
+test("resolvePin is country-only after the territory preload, before the admin-1 preload", async () => {
+  await preloadTerritory();
+  assert.equal(territoryLoadRunsForTests(), 1);
   const lincoln = resolvePin(40.8126, -96.7026);
   assert.deepEqual(lincoln, { admin1: null, country: "United States of America" });
   assert.deepEqual(

@@ -12,7 +12,15 @@ Owner: **"Auto-switch silently on weak devices (my decision stands)"** —
 "check the device capability and auto switch; also allow user to manually switch."
 
 At boot, if no stored record stands, the device is qualified in order:
-prior map-attributed crash → WebGL probe → low memory. A scout result
+prior map-attributed crash → WebGL probe → low memory.
+
+**Low-memory relaxed (2026-10-21, review finding P1-7 — prefer the Full
+map).** `deviceMemory ≤ 1 GB` still demotes on its own. A `2 GB` reading
+now demotes only when the WebGL probe did *not* pass cleanly (failed or
+unavailable). Chrome reports 2 GB for many mid-range phones that draw the
+satellite map fine. The safety nets are unchanged: a prior map crash, a
+failed probe, and the mid-game `webglcontextlost` tripwire still switch to
+Scout, and the player can always switch manually. A scout result
 starts the session in Scout Map immediately — no dialog, nothing
 blocks — and is stored as an AUTO record:
 

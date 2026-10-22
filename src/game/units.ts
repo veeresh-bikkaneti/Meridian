@@ -57,7 +57,9 @@ export function unitForSessionSummary(
 /**
  * Unit for a GeoDetective mystery, from the target's territory. Fail
  * closed: an unresolvable territory (ocean-adjacent targets) reads km —
- * the edition default.
+ * the edition default. The territory data is lazy (territory.ts, F2b),
+ * so "unresolvable" also covers "not loaded yet"; the Loop / Trail
+ * screens preload it on mount and re-render when it lands.
  */
 export function unitForLoopTarget(target: LonLat): LengthUnit {
   try {

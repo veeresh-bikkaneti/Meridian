@@ -840,3 +840,21 @@ export async function readAudioProbe(page: Page): Promise<AudioProbeState | null
     };
   });
 }
+
+/**
+ * Pass the arithmetic GrownUpGate (src/components/age-profile/GrownUpGate.tsx)
+ * the way a grown-up would: read "What is A × B?", type the product, and
+ * press Check answer. It is used wherever the gate guards an exit, such as
+ * the Ko-fi donation link (review P6) and /contact.
+ */
+export async function passGrownUpGate(page: Page): Promise<void> {
+  const gate = page.getByTestId("grownup-gate");
+  await expect(gate).toBeVisible();
+  const question = await gate.locator(".agep-question").textContent();
+  const m = question?.match(/What is (\d+) × (\d+)\?/);
+  expect(m, `unexpected gate question: ${question}`).not.toBeNull();
+  const answer = String(Number(m![1]) * Number(m![2]));
+  for (const d of answer) await gate.getByRole("button", { name: `Digit ${d}`, exact: true }).click();
+  await gate.getByTestId("gate-check").click();
+  await expect(gate).toBeHidden();
+}

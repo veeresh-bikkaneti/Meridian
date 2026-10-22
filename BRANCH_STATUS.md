@@ -4,7 +4,7 @@
 the full panel pipeline and the owner's merge word are still owed**
 (standing rule: the panel approves the final tip itself).
 
-Base: `origin/main 33a28fe`. Removes the production test seam
+Base: `origin/main 1ca4c04` (merged in 2026-10-22, after #218/#206/#207/#222). Removes the production test seam
 `window.__meridianSuppressScoutOffer` (issue #154 item 1 — the owner's
 standing recommendation: remove it from production; the build was
 authorized 2026-10-21).

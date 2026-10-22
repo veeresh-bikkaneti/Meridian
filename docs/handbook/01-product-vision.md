@@ -36,7 +36,7 @@ There is no monetization target. No paywall will ever exist in Meridian. The sta
 > **"Grown-ups — buy me a coffee? ☕"**
 > **"Your support keeps Meridian free for kids"**
 
-The "Grown-ups" gate exists because the product must stay COPPA-safe: the donation path is for adults, never for kids. Analytics are likewise locked to a COPPA-safe config — no ad personalization, IP anonymization, no cross-site tracking — and measurement scope is still an open decision (GA4 remains the standing recommendation for usage stats only).
+The "Grown-ups" gate exists because the product must stay COPPA-safe: the donation path is for adults, never for kids. Analytics follow the same rule: since 2026-10-21 Google Analytics and Microsoft Clarity are removed entirely — owner decision, cited: "I deleted clarity and ga4 from cloudflare account" (2026-10-21), when the owner deleted both IDs from the `meridian` worker's Workers Builds variables and ordered the repo's GitHub Actions secrets deleted (done and verified the same day) — and the only usage measurement is optional, cookieless Cloudflare Web Analytics (aggregate counts, no identifiers) — see `docs/reviews/2026-10-21-p0-p2-remediation.md`.
 
 ## Learning-outcomes instrumentation
 
@@ -55,7 +55,7 @@ Three guarantees that are non-negotiable:
 ## Kid-safety / COPPA posture
 
 - Analytics components **fail closed** when tracking IDs are unset — they simply do nothing.
-- Secrets and IDs are never hardcoded in source; they live in GitHub Actions secrets (`VITE_GA4_MEASUREMENT_ID`, `VITE_CLARITY_PROJECT_ID`, `VITE_KOFI_URL`), injected at build time.
+- Secrets and IDs are never hardcoded in source; they live in GitHub Actions secrets (`VITE_CF_BEACON_TOKEN`, `VITE_KOFI_URL`; the GA4/Clarity IDs were retired 2026-10-21), injected at build time.
 - The crash-reporting pipeline is always-on production monitoring: the `meridian-crash-report` worker receives crash events and forwards them to Discord. CORS is open (`*`) by explicit owner sign-off — acceptable because the endpoint carries **no cookies and no auth**.
 - Adult surfaces (donation, settings) are gated behind the "For grown-ups" path, never in the kid's flow.
 
@@ -63,7 +63,7 @@ Three guarantees that are non-negotiable:
 
 Meridian has named characters with locked voices — because the tone is the teaching tool.
 
-- **The Storyteller** — the narrator who greets and reads with the kid. Voice work decided 2026-10-11 (PR #137 context): **TruthTeller for greetings, `am_fenrir` (HuggingFace, natural-tone TTS) for story lines.** The TTS must sound like a human reading aloud, never robotic — the bar is a warm, natural read-along. Standing hint wordings, approved 2026-10-11: story card — *"The words are right here — read along with me. Tap the replay button to try again."*; home banner — *"Tap me to try again."*
+- **The Storyteller** — the narrator who greets and reads with the kid. Voice work decided 2026-10-11 (PR #137: TruthTeller for greetings, `am_fenrir` for story lines) — **superseded 2026-10-19 by PR #174: all 14 storyteller clips (greetings, pokes, hook, reveal, summary) are now one Grok-generated Santa voice**, produced by Veeresh in a Grok session and accepted as the storyteller voice by his ruling of 2026-10-21. The voice must sound like a human reading aloud, never robotic — the bar is a warm, natural read-along. Standing hint wordings, approved 2026-10-11: story card — *"The words are right here — read along with me. Tap the replay button to try again."*; home banner — *"Tap me to try again."*
 - **Grandpa** — the Coffee Run character and the tasting-tour guide. Folksy, warm, a little funny; he is the face of the donation ask (which is why the donation copy lives next to him, not in the game). His tour ("Grandpa's tasting tour") is the first-run onboarding: the walker, the sip animation, the stop cards — all tuned so the tour never blocks play (it is skippable and timing-hardened for real-world slow devices).
 
 Both characters speak to kids first and grown-ups second — playful, never condescending. Anything condescending fails the brand check.

@@ -1,5 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import "./grandpa-coffee-run.css";
+import "./age-profile/age-profile.css";
 import { TRAIL_QUIPS, playAsk, playTrail } from "./grandpa-ask";
 import { BODY as COMET_BODY, BODY_LIGHT as COMET_BODY_LIGHT } from "./comet-mascot";
 import {
@@ -41,9 +43,20 @@ import {
  *     trail fades to ~18% over ~2s. The donation cloud fades in with
  *     Veeresh's locked copy ("Grown-ups — buy me a coffee? ☕" /
  *     "Your support keeps Meridian free for kids"). Tapping grandpa OR the
- *     cloud opens the "ask a grown-up" gate INSIDE THE SAME CLOUD — Continue
- *     opens Ko-fi in a new tab and the cloud reverts; Cancel/Esc reverts
- *     too. The ask shows once per session (sessionStorage).
+ *     cloud opens the "ask a grown-up" gate INSIDE THE SAME CLOUD. Continue
+ *     opens the arithmetic GrownUpGate (the same one /contact and the age
+ *     settings use); only a correct answer opens Ko-fi in a new tab, and
+ *     the cloud then reverts. Cancel/Esc (in the cloud) or × (in the gate)
+ *     reverts too, opening nothing. The ask shows once per session
+ *     (sessionStorage).
+ *
+ * Grown-up gate on the donation exit (review P6, 2026-10-21): the review
+ * found that a plain Continue tap is not a parental gate, and a child can
+ * tap through it. The Ko-fi link now sits behind the same two-digit
+ * multiplication question (with strikes and cooldown) that guards the
+ * contact form. The gate is portaled to <body> because the walker and the
+ * cloud live inside transformed/animated ancestors, where `position:
+ * fixed` would not cover the viewport.
  *
  * Return visits (same calendar day): faint trail, grandpa already seated,
  * no replay — tracked via localStorage `meridian.grandpaTour.lastDate`
@@ -66,13 +79,18 @@ import {
  * - zero imports from the audio system (no sfx.ts) — silent
  * - zero analytics calls (no gtag) — Game Designer's COPPA call stands
  * - URL from VITE_KOFI_URL build env; unset/empty → renders nothing
- * - plain window.open with noopener/noreferrer, never the router <Link>
+ * - plain window.open with noopener/noreferrer, never the router <Link>,
+ *   and ONLY from GrownUpGate's onPass (never straight from a kid's tap)
  * - hidden while offline
  * - never gates gameplay; no perks, no tiers UI
  * - prefers-reduced-motion: settled scene ONLY — no trail, no walker
  * - the trail layer never intercepts input (pointer-events: none)
  */
 const KOFI_URL = import.meta.env.VITE_KOFI_URL?.trim() || undefined;
+
+const GrownUpGate = lazy(() =>
+  import("./age-profile/GrownUpGate.tsx").then((m) => ({ default: m.GrownUpGate })),
+);
 
 // Slow stroll across the dotted path (the kettle pause freezes the
 // timeline on top of this). Veeresh 2026-10-07: "he is going too fast" —
@@ -1470,8 +1488,20 @@ export function GrandpaCoffeeRun() {
     if (refocusWalker) walkerRef.current?.focus();
   }, []);
 
+  // P6: Continue no longer leaves Meridian by itself. It opens the
+  // arithmetic grown-up gate; only onPass opens Ko-fi. The click on "Check
+  // answer" (or Enter) is the user activation that window.open needs.
+  const [grownUpCheck, setGrownUpCheck] = useState(false);
   const onContinue = useCallback(() => {
+    setGrownUpCheck(true);
+  }, []);
+  const onGrownUpPass = useCallback(() => {
+    setGrownUpCheck(false);
     window.open(KOFI_URL, "_blank", "noopener,noreferrer");
+    closeCloudGate();
+  }, [closeCloudGate]);
+  const onGrownUpCancel = useCallback(() => {
+    setGrownUpCheck(false);
     closeCloudGate();
   }, [closeCloudGate]);
 
@@ -1523,6 +1553,14 @@ export function GrandpaCoffeeRun() {
 
   return (
     <>
+      {grownUpCheck && typeof document !== "undefined"
+        ? createPortal(
+            <Suspense fallback={null}>
+              <GrownUpGate onPass={onGrownUpPass} onCancel={onGrownUpCancel} />
+            </Suspense>,
+            document.body,
+          )
+        : null}
       {tour && (
         <TourLayer
           key="grandpa-tour-layer"
