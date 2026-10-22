@@ -30,4 +30,6 @@ jobs:
         with:
           node-version: 22
       - name: Run production smoke checks
-        run: node scripts/prod-smoke.mjs "${{ inputs.base_url }}"
+        env:
+          BASE_URL: ${{ inputs.base_url }}
+        run: node scripts/prod-smoke.mjs "$BASE_URL"

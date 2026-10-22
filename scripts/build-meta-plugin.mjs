@@ -5,11 +5,15 @@
  * runs only from the npm `prebuild` / `prebuild:pages` lifecycle hooks.
  * If vite is invoked directly — a Cloudflare Workers Builds deploy
  * command, a CI script, `npx vite build` — the hooks are bypassed and
- * the deployed site serves no build-meta.json (fresh checkouts don't
- * have one: the file is gitignored) or a stale one left in `public/`
- * by an earlier local build. The in-app staleness check
- * (src/game/build-staleness.ts) then compares against the wrong build
- * and every chunk error offers a refresh that can never clear.
+ * the deployed site serves no build-meta.json at all (fresh checkouts
+ * don't have one: the file is gitignored). The in-app staleness check
+ * (src/game/build-staleness.ts) then has nothing to compare against.
+ * One nuance: the shared BUILD_ID still comes from buildIdForBundle(),
+ * which prefers an existing `public/build-meta.json` — so a direct
+ * build in a DIRTY worktree stamps the stale id, consistently across
+ * all three copies (scripts/verify-build-stamp.mjs catches that via
+ * its HEAD-prefix check). Fresh checkouts — every real deploy — have
+ * no stale file to prefer.
  *
  * The fingerprint-sw plugin (scripts/fingerprint-sw-plugin.mjs) solved
  * the identical problem for sw.js in PR #145; this is the same pattern

@@ -17,9 +17,10 @@ function fullHeaders() {
 }
 
 /** A fetch stub serving a fully healthy production surface. */
-function healthyFetch(calls) {
-  return async (url) => {
+function healthyFetch(calls, inits) {
+  return async (url, init) => {
     calls?.push(String(url));
+    inits?.push(init);
     const u = String(url);
     if (u === `${BASE}/`) {
       return { status: 200, headers: fullHeaders(), json: async () => ({}) };
@@ -50,12 +51,20 @@ function healthyFetch(calls) {
 
 test("runProdSmoke passes a healthy surface and uses GET only", async () => {
   const calls = [];
-  const { ok, results } = await runProdSmoke(BASE, healthyFetch(calls));
+  const inits = [];
+  const { ok, results } = await runProdSmoke(BASE, healthyFetch(calls, inits));
   assert.equal(ok, true);
   assert.equal(results.length, 5);
   assert.ok(results.every((r) => r.ok));
   // start_url "./" resolved against the base and fetched.
   assert.ok(calls.includes(`${BASE}/`));
+  // GET only, proven: no call sets a method (fetch defaults to GET)
+  // and no call carries a body.
+  assert.ok(inits.length >= 5);
+  for (const init of inits) {
+    assert.ok(!init || init.method === undefined, "no method may be set");
+    assert.ok(!init || init.body === undefined, "no body may be sent");
+  }
 });
 
 test("runProdSmoke fails when a security header is missing", async () => {

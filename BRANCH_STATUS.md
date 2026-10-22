@@ -1,6 +1,6 @@
 # BRANCH_STATUS — fix/wave2-build-stamp
 
-**State: PR open. Awaiting Engineering Lead verdict, then Chitti — only the owner merges.**
+**State: PR #225 open. Engineering Lead verdict: READY (round 1, 6 non-blocking nits — 3 fixed in the nit round, 3 deferred in the PR comment). Next: Chitti — only the owner merges.**
 Base: `origin/main 1ca4c04` (PR #222 merge commit).
 Full write-up: `docs/reviews/2026-10-21-wave2-build-stamp.md`.
 
@@ -66,7 +66,7 @@ branch's file list.
 
 ## Pending
 
-- Engineering Lead verdict → Chitti → owner's merge call.
+- Chitti → owner's merge call. ("Ready to merge? NO" until both.)
 - After the owner merges: run `node scripts/prod-smoke.mjs` against
   production and post the real output on the PR (it will keep
   failing the `/_serverFn/` check until the S5-prod follow-up lands).
