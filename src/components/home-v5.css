@@ -143,22 +143,6 @@ body:has(.home-v5) {
 .home-v5 .hv5-btn-brown:hover {
   background: #5f4418;
 }
-.home-v5 .hv5-icon-btn {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  border: 1px solid var(--hv5-line-warm);
-  background: rgba(253, 251, 243, 0.7);
-  display: grid;
-  place-items: center;
-  transition:
-    background 0.3s,
-    transform 0.45s var(--hv5-ease);
-}
-.home-v5 .hv5-icon-btn[aria-disabled="true"] {
-  opacity: 0.55;
-  cursor: default;
-}
 
 /* ---------- bento: hero beside a globe + expeditions rail ---------- */
 .home-v5 .hv5-bento {

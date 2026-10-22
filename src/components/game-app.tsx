@@ -2623,11 +2623,8 @@ function Choose({
       {notice}
       {tutorialInvite}
       {/* v5 top nav. ABOUT and JOURNAL jump to the sections at the bottom
-          of the home page. Search has no surface yet. */}
+          of the home page. */}
       <header className="hv5-nav home-rise" style={rise(0)}>
-        <span id="hv5-unmapped-note" className="sr-only">
-          Not yet available
-        </span>
         <button
           type="button"
           className="hv5-brand"
@@ -2638,29 +2635,25 @@ function Choose({
           <span className="hv5-word">MERIDIAN</span>
         </button>
         <nav aria-label="Primary">
-          <button type="button" onClick={() => scrollTo("home-editions")}>
+          <button type="button" onClick={() => scrollTo("home-editions")} aria-label="Jump to the expeditions section">
             EXPEDITIONS
-            <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
           </button>
-          <button type="button" onClick={() => scrollTo("home-cases")}>
+          <button type="button" onClick={() => scrollTo("home-cases")} aria-label="Jump to the case files section">
             CASES
-            <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
           </button>
-          <button type="button" onClick={() => scrollTo("home-about")}>ABOUT</button>
-          <button type="button" onClick={() => scrollTo("home-journal")}>JOURNAL</button>
-          <button type="button" onClick={() => scrollTo("home-involved")}>GET INVOLVED</button>
+          <button type="button" onClick={() => scrollTo("home-about")} aria-label="Jump to the about section">ABOUT</button>
+          <button type="button" onClick={() => scrollTo("home-journal")} aria-label="Jump to the journal section">JOURNAL</button>
+          <button type="button" onClick={() => scrollTo("home-involved")} aria-label="Jump to the get involved section">GET INVOLVED</button>
         </nav>
         <div className="hv5-actions">
           <button
             type="button"
             className="hv5-btn hv5-btn-brown"
+            aria-label="Jump to the case files section"
             onClick={() => scrollTo("home-cases")}
           >
             JOIN THE JOURNEY
             <svg width="15" height="11" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
-          </button>
-          <button type="button" className="hv5-icon-btn" aria-label="Search" aria-disabled="true" aria-describedby="hv5-unmapped-note">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#33302A" strokeWidth="2" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="M15.5 15.5L21 21" strokeLinecap="round" /></svg>
           </button>
         </div>
       </header>
