@@ -163,6 +163,14 @@ import {
   shouldArmRevealWatchdog,
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
+import {
+  readScreenState,
+  screenStateFor,
+  screenForRunPhase,
+  sameScreenState,
+  type MenuSnapshot,
+  type ScreenState,
+} from "@/lib/screen-history";
 import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
   emitEvent,
@@ -1052,6 +1060,185 @@ export function GameApp() {
   // game is safe") returned a Trail player home while a GeoDetective
   // player resumed. In-progress cases resume from the store.
   const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(() => readColdTrailOpen());
+
+  // ── WI-8 (Branch 2): browser Back walks the app's screens ──────────
+  // Screens are React state, not routes, so Back support is a thin
+  // layer over history state (src/lib/screen-history.ts): forward moves
+  // between home → picker → round → result push same-URL entries, and
+  // popstate drives the state back. Back from home is the browser's own
+  // (no entry was ever pushed from home). GeoDetective / Cold Trail
+  // screens are unmanaged here — while either is open, nothing pushes
+  // and popstate is ignored. Refresh-resume is untouched: the run still
+  // restores from sessionStorage exactly as before; the boot effect
+  // below only rebuilds the history stack underneath it.
+  const histStateRef = useRef<ScreenState>({ screen: "home" });
+  const histBootRef = useRef(false);
+  const handlingPopRef = useRef(false);
+  const lastMenuRef = useRef<Menu | null>(null);
+  if (menu) lastMenuRef.current = menu;
+  const unmanagedRef = useRef(false);
+  unmanagedRef.current = loopOpen || coldTrailOpen;
+
+  const menuSnapshot = (m: Menu): MenuSnapshot =>
+    m.kind === "admin1"
+      ? { kind: "admin1", countryId: m.countryId, countryName: m.countryName, from: m.from }
+      : { kind: m.kind };
+  const menuFromSnapshot = (snap: MenuSnapshot): Menu =>
+    snap.kind === "admin1"
+      ? {
+          kind: "admin1",
+          countryId: snap.countryId ?? "",
+          countryName: snap.countryName ?? "",
+          from: snap.from ?? "countries",
+        }
+      : { kind: snap.kind };
+
+  // Boot (once, when the app first becomes ready): the current entry
+  // becomes "home"; a refresh-restored run gets its picker + round
+  // entries rebuilt on top, so Back from a resumed round still lands
+  // on the picker instead of leaving the game. The restored run's
+  // original picker is approximated from its edition — the run itself
+  // (the part refresh-resume promises) is exact either way.
+  useEffect(() => {
+    if (!ready || histBootRef.current) return;
+    histBootRef.current = true;
+    window.history.replaceState(screenStateFor("home"), "");
+    let current: ScreenState = { screen: "home" };
+    if (!loopOpen && !coldTrailOpen) {
+      if (menu) {
+        const snap = menuSnapshot(menu);
+        window.history.pushState(screenStateFor("picker", snap), "");
+        current = { screen: "picker", menu: snap };
+      } else if (run) {
+        const restoredPicker: MenuSnapshot | null =
+          run.edition === "country"
+            ? { kind: "countries" }
+            : run.edition === "state"
+              ? { kind: "states" }
+              : null;
+        if (restoredPicker) {
+          window.history.pushState(screenStateFor("picker", restoredPicker), "");
+        }
+        const rs: ScreenState = { screen: screenForRunPhase(run.phase) };
+        window.history.pushState(screenStateFor(rs.screen), "");
+        current = rs;
+      }
+    }
+    histStateRef.current = current;
+    // Runs once when `ready` first flips; the values it reads are the
+    // boot-restored ones by construction (restore precedes ready).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ready]);
+
+  // Forward navigation: when the derived screen moves (and the move
+  // did not come from popstate), record it. The result REPLACES the
+  // round's entry — a finished run cannot be un-ended, so Back from
+  // the summary lands on the picker, never a dead round.
+  useEffect(() => {
+    if (!ready || !histBootRef.current || loopOpen || coldTrailOpen) return;
+    const derived: ScreenState = run
+      ? { screen: screenForRunPhase(run.phase) }
+      : menu
+        ? { screen: "picker", menu: menuSnapshot(menu) }
+        : { screen: "home" };
+    if (handlingPopRef.current) {
+      handlingPopRef.current = false;
+      histStateRef.current = derived;
+      return;
+    }
+    const prev = histStateRef.current;
+    if (sameScreenState(prev, derived)) return;
+    if (prev.screen === "round" && derived.screen === "result") {
+      window.history.replaceState(screenStateFor("result"), "");
+    } else {
+      window.history.pushState(screenStateFor(derived.screen, derived.menu), "");
+    }
+    histStateRef.current = derived;
+    // menuSnapshot is a stable per-render closure over literals only.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ready, run, menu, loopOpen, coldTrailOpen]);
+
+  // Back/Forward: drive the app to the popped entry's screen. The
+  // handler lives in a ref so the once-registered listener always
+  // calls the current closure.
+  const applyHistoryTargetRef = useRef<(target: ScreenState) => void>(() => {});
+  applyHistoryTargetRef.current = (target: ScreenState) => {
+    // Leaving a run mirrors the in-app exits: setStartError + clearDrop
+    // + drop the saved run; leaving a FINISHED run also drops the ended
+    // session (Play's onSummaryDone does replaceSession(null)); leaving
+    // mid-run keeps the session alive (Play's onEditions).
+    const leaveRunTo = (dest: ScreenState) => {
+      if (run) {
+        setStartError(null);
+        clearDrop();
+        try {
+          sessionStorage.removeItem(RUN_KEY);
+        } catch {
+          // Storage blocked; the in-memory run is dropped regardless.
+        }
+        if (run.phase === "summary") replaceSession(null);
+        setRun(null);
+      }
+      setMenu(
+        dest.screen === "picker"
+          ? menuFromSnapshot(
+              dest.menu ??
+                (lastMenuRef.current
+                  ? menuSnapshot(lastMenuRef.current)
+                  : { kind: "countries" }),
+            )
+          : null,
+      );
+      histStateRef.current = dest;
+    };
+    // The entry names a screen the app no longer has (a finished or
+    // already-left run). Land on the picker the player came from (or
+    // home) and rewrite the entry so the stack stays truthful.
+    const fallback = () => {
+      const dest: ScreenState = lastMenuRef.current
+        ? { screen: "picker", menu: menuSnapshot(lastMenuRef.current) }
+        : { screen: "home" };
+      window.history.replaceState(screenStateFor(dest.screen, dest.menu), "");
+      leaveRunTo(dest);
+    };
+    switch (target.screen) {
+      case "home":
+        if (run || menu) leaveRunTo({ screen: "home" });
+        else histStateRef.current = { screen: "home" };
+        break;
+      case "picker":
+        if (run) leaveRunTo(target);
+        else if (target.menu) {
+          setMenu(menuFromSnapshot(target.menu));
+          histStateRef.current = target;
+        }
+        break;
+      case "round":
+        if (run && run.phase !== "summary") histStateRef.current = { screen: "round" };
+        else fallback();
+        break;
+      case "result":
+        if (run?.phase === "summary") histStateRef.current = { screen: "result" };
+        else fallback();
+        break;
+    }
+  };
+
+  useEffect(() => {
+    const onPopState = (event: PopStateEvent) => {
+      if (unmanagedRef.current) return; // GeoDetective / Cold Trail own their screens.
+      handlingPopRef.current = true;
+      applyHistoryTargetRef.current(readScreenState(event.state) ?? { screen: "home" });
+      // If the target needed no state change, the navigation effect
+      // never runs to consume the flag — clear it next frame instead.
+      requestAnimationFrame(() => {
+        handlingPopRef.current = false;
+      });
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+  // ── end WI-8 ────────────────────────────────────────────────────────
   // Age profile (parent-set band). The profile object lives in state and
   // refreshes via the `ageprofile:changed` event — game screens never
   // touch the store directly. The settings screen (lazy) is the only
@@ -2601,7 +2788,10 @@ function Choose({
     el.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
     el.focus({ preventScroll: true });
     const next = `#${id}`;
-    if (window.location.hash !== next) history.replaceState(null, "", next);
+    // Preserve the WI-8 screen state on the current history entry —
+    // replaceState with a null state would erase which screen this
+    // entry belongs to and break the next Back press.
+    if (window.location.hash !== next) history.replaceState(history.state, "", next);
   };
   const scrollTop = () => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
