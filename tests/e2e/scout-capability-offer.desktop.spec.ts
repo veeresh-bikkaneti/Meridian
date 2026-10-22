@@ -43,7 +43,7 @@ test.setTimeout(120_000);
 
 test.beforeEach(async ({ context }) => {
   // Production boot behavior: do NOT suppress the auto-switch.
-  await serveBuiltArtifact(context, { suppressScoutOffer: false });
+  await serveBuiltArtifact(context, { spoofCapableDevice: false });
 });
 
 test("probe-weak → silent scout at boot (auto record, no dialog, no accepted flag)", async ({

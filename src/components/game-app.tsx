@@ -1273,23 +1273,19 @@ export function GameApp() {
     // probes clean returns to full. (This replaced the boot choice
     // dialog; see planBootMapMode's docstring for the superseded
     // directive.)
-    // E2E seam: the harness init script
-    // (window.__meridianSuppressScoutOffer, set by serveBuiltArtifact)
-    // suppresses the auto-switch — the Playwright VM's SwiftShader
-    // renderer reads as a weak device, so unsuppressed every fresh boot
-    // would silently start in Scout and block unrelated specs. The seam
-    // now guards the auto-switch instead of the removed dialog; whether
-    // it should keep shipping in production is issue #154 item 1 — the
-    // owner's call, still owed.
+    // There is deliberately NO test bypass here (issue #154 item 1):
+    // the E2E harness used to set a window flag to suppress this
+    // auto-switch on its SwiftShader VM, which reads as a weak device.
+    // That flag shipped in production, where any page script could set
+    // it. The harness now spoofs the device signals themselves
+    // (tests/e2e/helpers.ts), so this boot path is the only one that
+    // exists — in production and in tests alike.
     try {
       const stored = readStoredMapMode();
       if (stored) {
         setReportMapMode(stored.mode);
         setMapMode(stored.mode);
       } else {
-        const suppressAutoSwitch =
-          typeof window !== "undefined" &&
-          (window as unknown as Record<string, unknown>).__meridianSuppressScoutOffer === true;
         const plan = planBootMapMode(
           qualifyMapMode({
             priorMapCrash: wasMapAttributedCrash(),
@@ -1297,7 +1293,7 @@ export function GameApp() {
             deviceMemoryGB: readDeviceMemoryGB(),
           }),
         );
-        if (plan.mode === "scout" && !suppressAutoSwitch) {
+        if (plan.mode === "scout") {
           if (plan.persistSource !== null) {
             writeStoredMapMode("scout", plan.persistSource);
           }
