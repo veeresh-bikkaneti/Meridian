@@ -1,8 +1,9 @@
 # Remaining review items: hardening pass (2026-10-21)
 
-Branch: `fix/review-remaining-hardening`, stacked on
-`fix/review-p0-p2-kids-privacy-ux` (PR #207, head `e361937`). No PR yet:
-it gets rebased or merged onto `main` after #207 lands.
+Branch: `fix/review-remaining-hardening-v2` — PR #222. It is based on
+`main` at `36bad5e5` (the PR #207 merge commit). The earlier
+`fix/review-remaining-hardening` branch is superseded by this one and
+left untouched.
 
 Source: the original review (`TECHNICAL_REPORT.md`, 2026-10-21) and the
 "Remaining" section of `docs/reviews/2026-10-21-p0-p2-remediation.md`.
@@ -222,8 +223,8 @@ Specs that need map taps fail in headless Chromium without a GPU (the
 `difficulty-picker` tier tests fail identically on unmodified `main` in
 this VM), so they stay out of CI.
 
-The job has not been run yet: this branch has no PR, so Actions does not
-trigger. It will run on the first PR or push to `main`.
+The job has run: the `e2e` job ran and passed on PR #222 (GitHub
+Actions run 39677435305).
 
 ## Deferred, with recommendations
 
@@ -320,21 +321,43 @@ list of major cities, with the existing pool tests extended.**
 
 ## Owner deploy steps (this branch)
 
-1. **`meridian-crash-report` (API upload, not Workers Builds):**
-   - Redeploy the worker so S4 is live. Follow the README "Deploy"
-     section: `tsc` emit, then `cf.py deploy`, then re-set
-     `DISCORD_WEBHOOK_URL`.
-   - Keep the KV binding in the version metadata.
-   - Optional and free: add the rate-limit binding to
-     `metadata.bindings`:
-     `{ "type": "ratelimit", "name": "CRASH_RATE_LIMITER", "namespace_id": "72073", "simple": { "limit": 10, "period": 60 } }`.
-     Without it, the in-memory limiter applies, as before.
+1. **`meridian-crash-report` (manual API version upload only — not Workers Builds, and not a bare script upload):**
+   - Why this way: this worker has only ever been deployed by manual
+     API version upload (every deployment in the Cloudflare API
+     history is `source: api`). Bindings ride **with** the version
+     upload, so the upload itself must carry them. There is no
+     "upload first, set the secret afterwards" step — naming a
+     secret without a value is rejected (error 10021), and a
+     script-level secret PUT is blocked (error 10215).
+   - Build the worker (`tsc` emit — see the README "Deploy"
+     section), then upload a new version whose upload metadata
+     carries these bindings:
+     - `DISCORD_WEBHOOK_URL` as `secret_text` **with its value**
+     - `TELEMETRY_COUNTS` KV namespace `34884ed9aa46437f871278a517882e72`
+     - Optional and free: `CRASH_RATE_LIMITER`:
+       `{ "type": "ratelimit", "name": "CRASH_RATE_LIMITER", "namespace_id": "72073", "simple": { "limit": 10, "period": 60 } }`.
+       Without it, the in-memory limiter applies, as before.
+   - Deploy that version. Versions and deployments are managed with
+     the ops helper `cf-version.py` (verbs: `list`, `get`,
+     `deployments`, `deploy`), which lives outside this repo, in
+     the crash-report watchdog goal's files.
+   - ⚠️ **Warning:** followed literally, the old instructions produce
+     a live version with `TELEMETRY_COUNTS` unbound and
+     `DISCORD_WEBHOOK_URL` absent — crash reporting silently blind
+     while `/health` stays 200. A bare `cf.py deploy` produces
+     exactly that blind version: a version without bindings and
+     triggers.
    - Deploy order: there is no client change that depends on the worker,
      and today's app already sends Origin. You can deploy the worker
      before or after the site.
-   - Verify:
+   - Verify — `/health` alone is not enough, because it stays green
+     on a blind version:
+     - `curl https://meridian-crash-report.knowledgetest.workers.dev/health`
+       → 200 `{"ok":true}`.
      - `curl -i -X POST https://meridian-crash-report.knowledgetest.workers.dev/ingest -d '{}'`
        → 403 (no Origin).
+     - Send one event with an allowed Origin and check the response
+       says `"counted":true` — that proves the KV binding is live.
      - `node scripts/crash-smoke.mjs <worker> https://meridian.knowledgetest.workers.dev`
        → passes (it sends Origin).
 2. **`meridian`:** the normal Workers Builds deploy after merge. Verify:
@@ -343,6 +366,7 @@ list of major cities, with the existing pool tests extended.**
    - `/robots.txt` and `/sitemap.xml` → 200
 3. **Before 2027-10-01:** renew `Expires` in `security.txt`. CI fails
    once it lapses.
-4. **CI:** the new `e2e` job runs automatically on the first PR. If
-   ubuntu runners turn out flaky for any of the three specs, drop that
-   spec from the job rather than adding retries.
+4. **CI:** the new `e2e` job already ran and passed on PR #222
+   (GitHub Actions run 39677435305). If ubuntu runners turn out flaky
+   for any of the three specs, drop that spec from the job rather
+   than adding retries.
