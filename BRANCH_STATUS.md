@@ -87,7 +87,8 @@ invisibly is now visible and deterministic.
   binding list empty, assets → `.vercel/output/static`.
 - `npx wrangler deploy --dry-run` (wrangler **4.152.0**) —
   exit 0; **Read 699 files** (production's number); Total Upload
-  45,636.62 KiB; **No bindings found.**
+  ≈45,636.6 KiB (varies by a few bytes with the checkout path
+  length); **No bindings found.**
 - `npx wrangler dev` probes — `/` 200 + security headers + HTML
   Cache-Control; `/_serverFn/` and `/abc` **404** JSON `no-store`;
   OPTIONS **405**; `POST /api/contact` **400** with a body

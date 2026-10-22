@@ -162,7 +162,12 @@ No bindings found.
 699 is production's own asset-read number (build log, 2026-10-22)
 and W1's. (A plain file count of the assets directory shows 682 —
 wrangler's read count is the deploy-relevant invariant and it
-matches across the production log, W1, and this branch.)
+matches across the production log, W1, and this branch.) The
+quoted Total Upload is from this worktree's run; a fresh-checkout
+reproduction printed 45,636.63 KiB / gzip 6,083.76 KiB — the
+~0.01–0.03 KiB wobble is the absolute checkout path embedded in
+the bundle, not a content difference (every other byte count in
+this document matched the reproduction exactly).
 
 **`npx wrangler dev`** — the full probe set, all as expected:
 
