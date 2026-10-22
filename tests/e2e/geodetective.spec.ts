@@ -1,5 +1,5 @@
 import { test, expect } from "playwright/test";
-import { serveBuiltArtifact } from "./helpers";
+import { loopNameIndex, openMysteryPlaceId, serveBuiltArtifact } from "./helpers";
 
 /**
  * GeoDetective unlimited-mode deploy-gate E2E.
@@ -77,16 +77,8 @@ async function loopStore(page: import("playwright/test").Page) {
 
 /** Resolve the open mystery's target entry from the guess index. */
 async function targetEntry(page: import("playwright/test").Page) {
-  return page.evaluate(async () => {
-    const store = JSON.parse(localStorage.getItem("meridian.loop.v2")!);
-    const clue = await fetch(`loop/clues/${store.current.index}.json`).then((r) => r.json());
-    const names = await fetch("loop/names.json").then((r) => r.json());
-    return names.find((e: { id: string }) => e.id === clue.placeId) as {
-      n: string;
-      id: string;
-      r: string;
-    };
-  });
+  const placeId = await openMysteryPlaceId(page);
+  return loopNameIndex().find((e) => e.id === placeId)!;
 }
 
 /**
@@ -111,36 +103,16 @@ async function guessTarget(
 }
 
 /** Famous-place queries guaranteed not to be the target (by place id). */
-async function wrongQueries(
-  page: import("playwright/test").Page,
-  targetId: string,
-  count = 5,
-): Promise<string[]> {
-  return page.evaluate(
-    async ({ targetId, count }: { targetId: string; count: number }) => {
-      const names = await fetch("loop/names.json").then((r) => r.json());
-      const cands = [
-        "paris",
-        "tokyo",
-        "sydney",
-        "cairo",
-        "new york",
-        "london",
-        "moscow",
-        "beijing",
-        "mumbai",
-        "lagos",
-      ];
-      const out: string[] = [];
-      for (const q of cands) {
-        const e = names.find((x: { n: string }) => x.n === q);
-        if (e && e.id !== targetId) out.push(q);
-        if (out.length === count) break;
-      }
-      return out;
-    },
-    { targetId, count },
-  );
+function wrongQueries(targetId: string, count = 5): string[] {
+  const names = loopNameIndex();
+  const cands = ["paris", "tokyo", "sydney", "cairo", "new york", "london", "moscow", "beijing", "mumbai", "lagos"];
+  const out: string[] = [];
+  for (const q of cands) {
+    const e = names.find((x) => x.n === q);
+    if (e && e.id !== targetId) out.push(q);
+    if (out.length === count) break;
+  }
+  return out;
 }
 
 /** Drive the map camera deterministically through the E2E seam. */
@@ -307,7 +279,7 @@ test("real deck deal: loss path, streak reset, Next mystery deals a different pu
 
   // Five wrong guesses, none of which can be the target.
   const entry = await targetEntry(page);
-  for (const q of await wrongQueries(page, entry.id)) {
+  for (const q of wrongQueries(entry.id)) {
     await guessViaMap(page, q);
   }
 

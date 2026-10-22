@@ -32,8 +32,8 @@
  *     RUNTIME only — the whole deck is deliberately NOT precached at install
  *     (too big for a background install, especially on the older devices
  *     this game targets). Only loop/manifest.json (60 bytes) is precached
- *     so resume + search always work offline; clues and loop/names.json
- *     (11.5 MB) populate the cache on first online use and are then fully
+ *     so resume + search always work offline; clues and loop/names.v2.json
+ *     (5.2 MB) populate the cache on first online use and are then fully
  *     playable offline.
  *   - everything else (map tiles, cross-origin) → pass through untouched
  *   - same-origin non-asset, non-flags requests (build-meta.json, API-ish)
@@ -65,7 +65,7 @@ const SHELL_URLS = [START_URL, OFFLINE_URL, `${BASE}manifest.webmanifest`];
 
 // Tiny loop bootstrap files precached at install so resume + search work
 // offline even before the loop screen is ever opened. Deliberately NOT the
-// whole <BASE>loop/ deck: clues (~1.5 MB) and names.json (11.5 MB) are
+// whole <BASE>loop/ deck: clues (~1.5 MB) and names.v2.json (5.2 MB) are
 // runtime-cached on first online use instead (see the strategy note above).
 const LOOP_PRECACHE_URLS = [`${BASE}loop/manifest.json`];
 // Storyteller home handoff (H1): runtime-cache preferred over install
@@ -157,7 +157,7 @@ function isStaticAsset(pathname) {
     // __grok PWA install-page assets.
     pathname.startsWith(`${BASE}__grok/`) ||
     // Loop edition data: runtime cache-first only (see install — the deck
-    // itself is never precached; clues/names.json populate on first use).
+    // itself is never precached; clues/names.v2.json populate on first use).
     // NOTE: fetchJson uses `cache: "no-store"`; that does NOT bypass the
     // service worker — the fetch event still fires, caches.match() still
     // hits, and the network response is still cached. Verified by the
