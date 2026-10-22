@@ -9,6 +9,12 @@
 # (needs Wrangler 4.36.0 or later). Rate limiting bindings cannot be added
 # in the dashboard yet.
 #
+# Entry point (WI-19, 2026-10-22): production must run src/server.ts
+# (the S5 server entry from PR #222). That is the Builds project's
+# `main` setting in that same dashboard-side config, not this file —
+# owner steps, rollback, and verification:
+# docs/reviews/2026-10-22-serverfn-server-entry.md.
+#
 # Cost: none. The Rate Limiting API has no plan gate and no billing line
 # (docs: workers/runtime-apis/bindings/rate-limit and
 # workers/platform/pricing, checked 2026-10-21; GA 2025-09-19). It only
