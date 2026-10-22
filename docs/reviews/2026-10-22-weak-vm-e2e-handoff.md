@@ -7,8 +7,17 @@ file is the *how*, that one is the *why*.
 **Repo:** `veeresh-bikkaneti/Meridian`
 **Written:** 2026-10-22, by Claude (Opus 5), from direct observation.
 
-Committed alongside the review doc so the implementer has it in the repo.
-Remove it once both changes have landed and the work is done.
+**The owner has ruled on every open question** (2026-10-22, "Adopt all").
+The rulings are in §8 and in the posture doc's §7 — read them before
+implementing; do not re-decide anything they settle.
+
+**Change A has already shipped** (PR #226, merged 2026-10-22). Do not
+rebuild it. What remains is Change B and Change C.
+
+Lifecycle: the posture doc is the permanent record. This file is working
+material — delete it in the same PR that lands the last remaining change,
+and move §6's durable pitfalls into `AGENTS.md` or `docs/ops/` at that
+point.
 
 ---
 
@@ -18,15 +27,20 @@ Verify each before starting; if any is false, the plan may need rework.
 
 | Fact | How to check |
 | :--- | :--- |
-| `main` is at `1ca4c04` and its `e2e` job is **red** | `gh run list --branch main` → run 39712092461 |
+| `main` was at `1ca4c04` with `e2e` **red** — **now fixed** by PR #226 (merged 2026-10-22); `main` green at `05916f8`, run 39761267966 | `gh run list --branch main` |
 | `main`'s `build (22.x)` is **green** | same run |
-| PRs #197, #212, #217, #219 all have `e2e` red | #219's diff is two `.md` files, so the cause is not any PR |
+| **#197's `e2e` is GREEN** (job 119608300852) | The red ones were #212, #217 and #219, each failing *only* at `observability.spec.ts:238`. #219's diff is two `.md` files, so the cause was never any PR. |
 | All four branches are 0 commits behind `main`, no conflicts | `git merge-tree --write-tree origin/<branch> origin/main` |
 | "Workers Builds: meridian" fails on every branch | **Owner has ruled this ignorable.** Do not try to fix it. |
 
 ---
 
-## 1. Change A — fix the racing assertion (do this first)
+## 1. Change A — fix the racing assertion — **SHIPPED, do not redo**
+
+> Landed as **PR #226, merged 2026-10-22**, in the form below with the
+> assertion message preserved. `main`'s `e2e` is green (run 39761267966).
+> Kept here as the record of what was done and why. Owner ruling Q3: do
+> not rebuild Change A on the docs branch.
 
 ### The bug
 
@@ -40,7 +54,7 @@ It polls up to 30 s for the `data_chunk_load_start` milestone, then asserts
 expect(globeRequests).toBeGreaterThanOrEqual(1, "the real Globe chunk request was made (and is held)");
 ```
 
-But in `src/components/game-app.tsx:1623` the milestone is recorded
+But in `src/components/game-app.tsx:1627` the milestone is recorded
 *before* the awaits that actually issue the import:
 
 ```ts
@@ -67,14 +81,13 @@ Do not "fix" `game-app.tsx`.
 +    // when the poll resolves. Wait for it rather than assuming it is here;
 +    // a bare assertion makes this test a coin flip on slow machines.
 +    await expect
-+      .poll(() => globeRequests, { timeout: 15_000 })
++      .poll(() => globeRequests, { timeout: 15_000, message: "the real Globe chunk request was made (and is held)" })
 +      .toBeGreaterThanOrEqual(1);
 ```
 
 Notes:
-- `expect.poll(...)` does **not** accept the message second argument that
-  `expect(...)` does. Dropping the message is intentional — put it in the
-  comment, as above.
+- `expect.poll(...)` takes the assertion message as its `message` option
+  (Playwright 1.63). Keep it — it is what the reader sees on failure.
 - The route handler holds the request open regardless, so nothing else in
   the test changes.
 - Keep `await`. Without it the assertion silently never runs.
@@ -138,17 +151,23 @@ on branch `fix/154-seam-test-only` (PR #197). It has two tests:
 
 ### The ordering problem — read this
 
-Adding the file runs **both** tests, and test 1 is the one we want to keep
-out. Pick one:
+Adding the file runs **both** tests, and test 1 is the one to keep out.
 
-- **Option 1 (preferred):** mark test 1 so CI skips it. Give it a
-  grep-able tag in its title (e.g. append `@local-only`) and add
+**The owner ruled Option 1** (2026-10-22). Do not use Option 2.
+
+- **Option 1 — RULED.** Tag test 1 `@local-only` in its title and add
   `--grep-invert @local-only` to the CI command. Self-documenting, and the
-  test stays runnable locally.
-- **Option 2:** split test 2 into its own spec file. Cleaner CI line, but
-  it breaks the discriminating pair's co-location, which is the whole point
-  of that file's design (test 2 proves test 1's pass is real). If you take
-  this route, leave a comment in each file pointing at the other.
+  test stays runnable locally. Required with it:
+  - a comment on the workflow step stating the convention, why it exists,
+    and that **the runner must stay weak** (do not "fix" the VM to make
+    test 1 pass in CI);
+  - `playwright test --list` output, with and without the invert, in the
+    implementing PR as evidence that exactly test 2 runs;
+  - wrap that spec's stored-record read in `expect.poll` — it is the same
+    class of race as Change A.
+- **Option 2 — rejected.** Splitting test 2 into its own file breaks the
+  discriminating pair's co-location, which is the point of that file's
+  design (test 2 proves test 1's pass is real).
 
 **Do not** delete or `test.skip()` test 1. It is a real gate; it just needs
 a machine that can render.
@@ -245,28 +264,43 @@ Plus the Playwright runs from §1.
 
 ---
 
-## 8. Open questions the owner has not yet answered
+## 8. Owner rulings — all settled
 
-Do not guess these; ask.
+Answered 2026-10-22, "Adopt all". Do not re-decide these. Full wording in
+the posture doc's §7.
 
-1. **Where should Change A land?** Own PR (needs a rule-2 waiver), folded
-   into #197, or onto `claude/hopeful-darwin-dp7ket`?
-2. **Does the capable-device spoof now hide too much?** Every other spec
-   runs with it on, so the app could be failing on weak devices in ways
-   nothing catches. Is a second CI lane — whole suite run weak — worth it?
-3. **Option 1 or Option 2** for the §2 ordering problem?
-4. **Is red `main` an incident?** It fails PRs at random until Change A
-   lands.
+1. **Where should Change A land?** → Its own tiny PR, Constitution rule-2
+   waiver granted and recorded in that PR's body. **Done: PR #226.**
+2. **Does the capable-device spoof now hide too much?** → Targeted
+   weak-device coverage is enough. **No second all-weak CI lane.** The
+   residual exposure is accepted, not overlooked.
+3. **Option 1 or Option 2 for §2?** → **Option 1** (tag + `--grep-invert`),
+   with the workflow comment, the `--list` evidence, and the `expect.poll`
+   wrap. See §2.
+4. **Is red `main` an incident?** → Yes, blocking — a CI-integrity
+   incident. Now resolved by #226. **Do not add `e2e` to required checks.**
+5. **The #197 docstring question** → Amend `serveBuiltArtifact`'s docstring
+   (spoof fakes probe + memory only; a stored record wins first, then a
+   seeded prior-map crash; crash-seeding specs pass
+   `spoofCapableDevice: false` unless the crash is the subject). No runtime
+   guard. Rides with the #197 work.
 
 ---
 
 ## 9. Definition of done
 
-- [ ] Change A pushed; the original failure reproduced before the fix and
-      gone after (or honestly labelled unreproduced).
-- [ ] `main`'s `e2e` green again.
-- [ ] Change B pushed; CI runs the weak-device test on every PR.
-- [ ] Test 1 still exists and still runs locally.
+- [x] Change A pushed — **PR #226, merged 2026-10-22**.
+- [x] `main`'s `e2e` green again — run 39761267966 on `05916f8`.
+- [ ] Change B pushed (Option 1 mechanism per §2); CI runs the weak-device
+      test on every PR, with `--list` evidence in that PR.
+- [ ] Test 2's stored-record read wrapped in `expect.poll`.
+- [ ] `serveBuiltArtifact`'s docstring amended per ruling 5.
+- [ ] Test 1 still exists, tagged `@local-only`, still runs locally.
+- [ ] Change B's cost measured and the posture doc's §5.2 estimate replaced
+      with the real number.
 - [ ] All gates in §4 green.
 - [ ] `BRANCH_STATUS.md` updated on whichever branch carried the work.
-- [ ] This file (`docs/reviews/2026-10-22-weak-vm-e2e-handoff.md`) deleted.
+- [ ] **Lifecycle close-out, in the PR that lands the last change:** stamp
+      the posture doc's Status line as complete (it stays as the permanent
+      record), move §6's durable pitfalls into `AGENTS.md` or `docs/ops/`,
+      and delete this handoff file.

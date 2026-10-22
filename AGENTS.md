@@ -24,19 +24,33 @@ something and report what happened** is delegated to a subagent on the
 cheapest model that can do it (`haiku` first, `sonnet` only if `haiku`
 cannot):
 
-- developer
 - tester
 - pen tester
 - UAT tester
-- **visual tester** — never done inline, always a `haiku` subagent
+- **visual tester** — delegated by default; do it inline only when
+  delegation is impossible, and say so
 - workflow tester
+- **developer**, only for execution-shaped work: applying an agreed patch,
+  running a scripted change, a mechanical edit with a known answer.
+  Authoring is not execution — design, non-obvious implementation and
+  anything needing judgement about *what* to build stays with the
+  orchestrator.
+
+**Not worker roles.** Review, verdict and design roles — code review, a
+panel seat, architecture calls, security judgement — are not delegated on
+cost grounds. They turn on judgement, and a cheap mistake there is the
+dearest kind.
 
 The orchestrator stays on `opus` and reads conclusions, not bulk output.
-Delegation is what saves tokens: the worker's reading stays in the worker's
-context. Give each worker a brief that names the branch, what is already
-built, the exact commands, and what to report — it has no other context.
-Model tier is the smallest of the savings levers; see
-`docs/ops/agent-council-protocol.md` §3.
+Give each worker a brief that names the branch, what is already built, the
+exact commands, and what to report — it has no other context. Match the
+model to the size of the job: a one-command check does not need `sonnet`,
+and a long multi-step run on `haiku` that has to be redone saves nothing.
+
+Delegation helps because the worker's reading stays in the worker's
+context, but it is the **third** of four savings levers — after the tier
+gate and narrow context resolution, and ahead of model tier. See
+`docs/ops/agent-council-protocol.md` §3 for the full ranking.
 
 ## Agent council — match the process to the task
 
@@ -83,7 +97,10 @@ Chair sign-off), then RED, minimal GREEN, gates, unified diff.
 - **A merged branch is deleted, not left behind.** Cleanup is part of the task,
   not a follow-up someone has to ask for. Keep *Settings -> General -> Pull
   Requests -> Automatically delete head branches* switched on so this happens
-  with nobody's attention. An agent in the cloud container cannot do it by hand
-  — the proxy refuses ref deletion with HTTP 403 — so it names the leftover
-  branch in its final report rather than going quiet.
+  with nobody's attention — note it applies to future merges only and does
+  **not** retroactively remove branches already left behind. Delete by hand
+  where you can (`git push origin --delete <branch>`); this works from an
+  ordinary VM. Some environments cannot: in the cloud container the proxy
+  refuses ref deletion with HTTP 403. Try it, and if it is refused, name the
+  leftover branch in your final report rather than going quiet.
 - Do not touch `.scratch/` (gitignored crawl cache) or other branches' worktrees.

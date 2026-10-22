@@ -2,7 +2,13 @@
 
 **Date:** 2026-10-22
 **Author:** Claude (Opus 5), at the owner's direction
-**Status:** PROPOSAL — not implemented. Nothing in section 5 has been built.
+**Status:** RULED. The owner answered every open question on 2026-10-22
+("Adopt all"); the rulings are recorded in §7 against each question.
+**Change A (§5.1) has shipped** — PR #226, merged 2026-10-22; `main`'s `e2e`
+is green again. Changes B and C (§5.2, §5.3) are **not yet built**.
+This document is the permanent record of the decision; the companion
+`2026-10-22-weak-vm-e2e-handoff.md` is working material and is deleted with
+the PR that lands the last change.
 **Owner's framing (verbatim, 2026-10-22):** *"your vm is week and our app
 should work even when vm is week"*
 
@@ -10,10 +16,11 @@ should work even when vm is week"*
 
 ## 1. Why this document exists
 
-Within twenty minutes on 2026-10-22, three CI results were all explicable
-as "the Playwright VM is weak." They are not the same problem, and only one
-of them is about the app. Treating them as one bucket is how a real gap
-stayed invisible, so this separates them and proposes a change of posture.
+On 2026-10-22 four branches went red on `e2e`, all explicable as "the
+Playwright VM is weak." They turned out to be three distinct problems, and
+**the app was at fault in none of them**. Treating them as one bucket is how
+a real gap stayed invisible, so this separates them and proposes a change of
+posture.
 
 The owner's sentence above is the whole argument in one line. Meridian
 targets children's and hand-me-down devices. A weak device is not an
@@ -57,7 +64,7 @@ expect(globeRequests).toBeGreaterThanOrEqual(1, "the real Globe chunk request wa
 
 The test first polls (30 s, generous) for the `data_chunk_load_start`
 milestone, then asserts — **without retry** — that the chunk request has
-already arrived. But in `src/components/game-app.tsx:1623` the milestone is
+already arrived. But in `src/components/game-app.tsx:1627` the milestone is
 recorded *before* the calls that trigger the dynamic import:
 
 ```ts
@@ -113,13 +120,18 @@ against a genuinely weak device. Neither test runs in CI.
   passed in 3.3 min (`scout-harness-suppression`, `scout-offer`,
   `scout-capability-offer`, `scout-false-demotion`).
 - **Visual pass** (delegated to a `haiku` subagent, per the AGENTS.md
-  worker-role rule): default boot shows the starfield and a "Full map"
-  pill; opted-out boot shows no starfield, a "Scout Map" pill and the
-  auto-switch banner. The two *map* screenshots were taken from Playwright
-  failure captures after a screenshot timeout — real images of the map, but
-  not captured at the intended moment. Treat them as indicative, not
-  rigorous. One pre-existing blank gap in the Journal panel appears in
-  **both** states and is not caused by #197.
+  worker-role rule). Keep two things apart here:
+  - *Seen in screenshots* (indicative only): default boot shows the
+    starfield and a "Full map" pill; opted-out boot shows no starfield, a
+    "Scout Map" pill and the auto-switch note. The two *map* screenshots
+    came from Playwright failure captures after a screenshot timeout — real
+    images of the map, but not taken at the intended moment.
+  - *Asserted by the spec* (the actual gate): mode `scout`, a `probe` auto
+    record in storage, and the auto-switch notice element present. Those
+    assertions passed; the screenshots corroborate, they do not prove.
+
+  One pre-existing blank gap in the Journal panel appears in **both** states
+  and is not caused by #197.
 - **Qualification order confirmed** at `src/map/capability.ts:104-129`:
   `manual` → `priorMapCrash` → `webglProbeOk` → memory.
 
@@ -161,13 +173,18 @@ Three changes, smallest first. **None are implemented.**
      armedSessionId = armed;
 -    expect(globeRequests).toBeGreaterThanOrEqual(1, "the real Globe chunk request was made (and is held)");
 +    await expect
-+      .poll(() => globeRequests, { timeout: 15_000 })
++      .poll(() => globeRequests, { timeout: 15_000, message: "the real Globe chunk request was made (and is held)" })
 +      .toBeGreaterThanOrEqual(1);
 ```
 
-Waits for the request instead of assuming it already fired. The route
-handler holds the request open regardless, so the rest of the test is
-unchanged. This is a test correction, not a product change.
+Waits for the request instead of assuming it already fired, keeping the
+original assertion message via `poll`'s `message` option (Playwright 1.63
+accepts it). The route handler holds the request open regardless, so the
+rest of the test is unchanged. This is a test correction, not a product
+change.
+
+**Shipped.** This landed as PR #226, merged 2026-10-22, in this form.
+`main`'s `e2e` is green again (run 39761267966).
 
 **Why it matters beyond this one test:** it is the same class of bug the
 whole suite is exposed to. A fixed-duration assumption is a latent failure
@@ -178,10 +195,25 @@ on every slow machine, including the users' machines.
 Add `tests/e2e/scout-harness-suppression.desktop.spec.ts` **test 2** to the
 `e2e` job's spec list.
 
-- It performs no map taps and needs no WebGL rendering — it reads
+**The spec does not exist on `main`.** It lives only on branch
+`fix/154-seam-test-only` (PR #197), so this change lands inside #197 or
+after it — never before.
+
+**Mechanism (owner ruling, Q5: Option 1).** Tag test 1 `@local-only` in its
+title and add `--grep-invert @local-only` to the CI command, so the file can
+be listed while only test 2 runs. The workflow step carries a comment
+stating the convention, why it exists, and that the runner must stay weak.
+The implementing PR shows `playwright test --list` output with and without
+the invert as evidence. When this lands, also wrap that spec's stored-record
+read in `expect.poll` — same class of race as §5.1.
+
+- Test 2 performs no map taps and needs no WebGL rendering — it reads
   `sessionStorage`, the mode indicator attribute and the notice element.
-- Estimated cost: a few seconds. (Estimate, not measured — the full
-  22-spec local run was 3.3 min, but that includes map-mounting specs.)
+- **Cost:** the pair (tests 1 + 2) measured ~46 s locally. Test 2 alone is a
+  fraction of that, but has not been timed in isolation, and CI runners are
+  slower than this VM. An earlier draft of this document estimated "a few
+  seconds"; that was roughly an order of magnitude optimistic. Budget tens
+  of seconds and measure in the implementing PR.
 - Effect: every PR proves the app degrades correctly on a weak device.
 
 ### 5.3 Keep test 1 out of CI, for now
@@ -199,35 +231,55 @@ either the runner improves or the assertion is made render-independent.
 | Risk | Assessment |
 | :--- | :--- |
 | 5.1 masks a real app bug by waiting longer | The 15 s poll fails if the request never fires. It converts "assert instantly" into "assert within a bound" — strictly more honest, not more permissive. |
-| 5.2 makes CI slower | A few seconds against a currently-unguarded user path. If measured cost exceeds ~30 s, reconsider. |
+| 5.2 makes CI slower | Test 2 only, with test 1 held out by `--grep-invert @local-only`. The pair measured ~46 s locally; test 2 alone was not timed in isolation. Measure it in the implementing PR, and reconsider if test 2 alone exceeds ~30 s. |
 | 5.2 is itself flaky on a loaded runner | Possible. It asserts state transitions with explicit waits and no rendering, which is the low-risk end. Mitigation: if it flakes once, fix the wait, do not quarantine it. |
-| The spoof hides real weak-device failures from every other spec | **Real, and unresolved.** See section 7. |
+| The spoof hides real weak-device failures from every other spec | **Real, and accepted.** The owner ruled (Q1) that targeted coverage is enough and declined a second all-weak CI lane. The exposure stands; it is a known, chosen limit rather than an oversight. |
 
 ---
 
-## 7. Open questions for the panel
+## 7. Questions, and the owner's rulings
+
+All five were answered by the owner on 2026-10-22 ("Adopt all"). The
+question is kept with its ruling so the reasoning stays legible.
 
 1. **Does the capable-device spoof now hide too much?** Every other spec
-   runs with it on. The app may be failing on genuinely weak devices in
+   runs with it on, so the app may be failing on genuinely weak devices in
    ways no spec would catch. Is a second CI lane — the whole suite run
    weak — worth its cost, or is targeted coverage (5.2) enough?
+   > **RULED:** targeted weak-device coverage is enough. No second
+   > all-weak CI lane.
 
 2. **Behavioural change in #197 worth recording?** The old seam suppressed
    the auto-switch for *every* reason. The new spoof only neutralises probe
-   and memory; `priorMapCrash` is checked first and still wins. No current
-   spec breaks (only `scout-offer` seeds crashes, and it opts out). But a
-   future spec that induces a real map crash and reloads under the default
-   serve will boot Scout where it previously would not. Should this be a
-   comment in `serveBuiltArtifact`'s docstring, or a louder guard?
+   and memory; `priorMapCrash` is checked first and still wins. A future
+   spec that induces a real map crash and reloads under the default serve
+   will boot Scout where it previously would not. Docstring, or a louder
+   guard?
+   > **RULED:** amend `serveBuiltArtifact`'s docstring — the spoof fakes
+   > probe and memory only; a stored record wins first, then a seeded
+   > prior-map crash. Crash-seeding specs serve with
+   > `spoofCapableDevice: false` unless the crash itself is the subject.
+   > No runtime guard. Rides with the #197 work.
 
-3. **Where should 5.1 land?** It is a one-line fix to a spec none of the
-   three in-flight PRs touch. Options: its own PR (needs a Constitution
-   rule 2 waiver), folded into #197 (which already owns E2E harness work),
-   or onto this branch. The owner's call.
+3. **Where should 5.1 land?** Its own PR (needs a Constitution rule 2
+   waiver), folded into #197, or onto this branch?
+   > **RULED:** its own tiny PR, rule-2 waiver granted and recorded in that
+   > PR's body. **Done — PR #226, merged 2026-10-22.** Do not rebuild
+   > Change A on this branch.
 
-4. **Is `main` being red an incident?** It will fail PRs at random until
-   5.1 lands. Four branches have now been hit, including a docs-only PR.
-   Recommend treating it as blocking.
+4. **Is `main` being red an incident?** Four branches were hit, including a
+   docs-only PR.
+   > **RULED:** yes — blocking, a CI-integrity incident. Docs PRs could
+   > merge with the flake named as pre-existing. Now moot: #226 fixed it.
+   > `e2e` is **not** to be added to required checks.
+
+5. **How should test 1 be held out of CI** — tag it, or split the file?
+   > **RULED:** Option 1. Tag test 1 `@local-only`, add
+   > `--grep-invert @local-only` to the CI command, comment the workflow
+   > step (convention, why, runner must stay weak), and show
+   > `playwright test --list` with and without the invert in the
+   > implementing PR. Also wrap that spec's stored-record read in
+   > `expect.poll` when Change B lands.
 
 ---
 
