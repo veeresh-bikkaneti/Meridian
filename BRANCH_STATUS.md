@@ -119,6 +119,11 @@ the "deliberately no rule" list no longer names `/sw.js`,
 `/build-meta.json` or `/manifest.webmanifest` (they carry explicit
 no-cache rules), and the carved-blocks comment no longer repeats the
 disproven "detach alone, platform default then applies" theory.
+One mechanical casualty, restored: Rock's union was merge commit
+`04e3f8a`, which the rebase linearized — its
+`scripts/security-headers.test.mjs` hunk (the carved blocks pinned to
+detach+set; the old detach-alone assertion was the #203 bug stated as
+a test) is restored byte-identical as the tip commit.
 
 ## Cure round (panel round 1 on `18bcd45`: NOT READY, BLOCK ×1)
 
