@@ -1,0 +1,33 @@
+# Manually triggered production smoke check (WI-7b, 2026-10-21).
+#
+# Runs scripts/prod-smoke.mjs against the deployed site: security
+# headers on /, a clean 404 for /_serverFn/, security.txt, the PWA
+# manifest start_url, and the build stamp. GET requests only.
+#
+# Deliberately workflow_dispatch ONLY — no schedule. The owner runs
+# it after a deploy (Actions → "Production smoke" → Run workflow).
+
+name: Production smoke
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "Base URL to smoke-check"
+        required: false
+        default: "https://meridian.knowledgetest.workers.dev"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    timeout-minutes: 5
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run production smoke checks
+        run: node scripts/prod-smoke.mjs "${{ inputs.base_url }}"

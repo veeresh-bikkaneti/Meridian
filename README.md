@@ -157,6 +157,27 @@ The Worker deploy shape is committed in this repo: a root `wrangler.jsonc` sets 
 
 `npm run build` is a different path. It still produces the server build. The live preview uses that. Pages does not.
 
+### Build version stamping
+
+Every build carries one build id — the deployed commit's short SHA (`scripts/build-id.mjs`: `GITHUB_SHA` on GitHub Actions, else `git rev-parse --short HEAD`, else a `local-<timestamp>` fallback for tarball builds). It appears in three places that must always agree: baked into the bundle (the staleness check in `src/game/build-staleness.ts`), as `VERSION` in the built `sw.js`, and served as `/build-meta.json`. The stamping runs **inside** the Vite build, not only in npm lifecycle hooks: `vite.config.ts` computes the id once (`BUILD_ID`) and passes it to `scripts/fingerprint-sw-plugin.mjs` (sw.js) and `scripts/build-meta-plugin.mjs` (writes `build-meta.json` into the output, including the Nitro `.vercel/output/static` tree). That matters because the Workers Builds deploy invokes the build directly, bypassing the `prebuild` hook that runs `scripts/write-build-meta.mjs` — on a fresh checkout there is no `public/build-meta.json` (it is gitignored), so the hook alone would leave the Workers site with no stamp. The Pages mirror under `/Meridian/` stamps the same way. Verify any built tree with:
+
+```sh
+node scripts/verify-build-stamp.mjs   # or: npm run verify:build-stamp
+```
+
+Production today proves the point and shows the host difference: the Workers site stamps the 7-char git short SHA, the Pages mirror the 12-char `GITHUB_SHA` prefix — each equals its own deployed commit, and within any one deploy all three copies agree.
+
+### Production smoke check
+
+After a deploy, run the owner smoke script against the live site:
+
+```sh
+node scripts/prod-smoke.mjs            # defaults to https://meridian.knowledgetest.workers.dev
+node scripts/prod-smoke.mjs <baseUrl>  # any base URL; the checks describe the Workers surface
+```
+
+It uses only GET requests and exits non-zero on any failure. It checks: `/` returns 200 with the full security-header set (CSP, `X-Frame-Options`, Referrer-Policy, Permissions-Policy, `X-Content-Type-Options`, COOP, HSTS); `/_serverFn/` returns 404; `/.well-known/security.txt` returns 200; the manifest's `start_url` resolves to a 200; and `/build-meta.json` carries a `buildId`. The same script runs manually from GitHub Actions (**Actions → Production smoke → Run workflow**) — there is no schedule; the owner triggers it.
+
 MapLibre's worker is a sibling file the bundler would otherwise drop. The Pages build copies `maplibre-gl-worker.mjs` and `maplibre-gl-shared.mjs` into `assets/` so the map can start. Without those files the canvas is blank.
 
 ```sh
