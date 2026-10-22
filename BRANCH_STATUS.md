@@ -2,7 +2,7 @@
 
 **State: READY FOR OWNER REVIEW — not merged.** Owner merges.
 
-Base: `origin/main 4ef6875`. Full write-up, numbers and ADR:
+Base: `origin/main 1ca4c04` (merged in 2026-10-22, after #218/#207/#222). Full write-up, numbers and ADR:
 `docs/reviews/2026-10-21-wi1-load-speed.md`.
 
 ## What this does (plain language)

@@ -476,6 +476,23 @@
   text-underline-offset: 4px;
 }
 
+/* Kids-privacy promise line (owner 2026-10-21). Full-width so it wraps
+   under the footer links; uses --fg, not --muted, because the review
+   flagged low-contrast small text as hard for young readers. */
+.agep-footer-note {
+  flex-basis: 100%;
+  margin: 8px 16px 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--fg);
+  text-align: center;
+}
+
+.agep-footer-note a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 /* --- Read-aloud row on the story card --- */
 
 .agep-listen-row {

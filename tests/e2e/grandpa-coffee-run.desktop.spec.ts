@@ -1,5 +1,5 @@
 import { test, expect, type Page } from "playwright/test";
-import { serveBuiltArtifact } from "./helpers";
+import { passGrownUpGate, serveBuiltArtifact } from "./helpers";
 
 /**
  * Grandpa's Coffee Run E2E — animated donation scene on the Chart Room home
@@ -298,6 +298,11 @@ test("Continue opens Ko-fi in a new tab and the cloud reverts", async ({
   await waitForSeated(page);
   await page.getByTestId("grandpa-bubble-ask").click();
   await page.getByTestId("grandpa-cloud-continue").click();
+  // P6: Continue opens the grown-up gate. Nothing has left Meridian yet.
+  expect(
+    await page.evaluate(() => (window as unknown as { __opened: unknown[] }).__opened),
+  ).toHaveLength(0);
+  await passGrownUpGate(page);
   const opened = await page.evaluate(
     () => (window as unknown as { __opened: unknown[] }).__opened,
   );
@@ -310,6 +315,35 @@ test("Continue opens Ko-fi in a new tab and the cloud reverts", async ({
   const bubble = page.getByTestId("grandpa-donation-bubble");
   await expect(bubble).toHaveAttribute("data-cloud", "ask");
   await expect(bubble).toContainText("Grown-ups — buy me a coffee? ☕");
+  expect(page.url()).toBe(APP);
+  expectCleanConsole(errors);
+});
+
+test("P6: Continue alone never opens Ko-fi; a wrong answer or × keeps the child in Meridian", async ({ page }) => {
+  await page.addInitScript(() => {
+    (window as unknown as { __opened: unknown[] }).__opened = [];
+    window.open = (() => {
+      (window as unknown as { __opened: unknown[] }).__opened.push(1);
+      return null;
+    }) as typeof window.open;
+  });
+  const errors = await loadHome(page);
+  await waitForSeated(page);
+  await page.getByTestId("grandpa-bubble-ask").click();
+  await page.getByTestId("grandpa-cloud-continue").click();
+  const gate = page.getByTestId("grownup-gate");
+  await expect(gate).toBeVisible();
+  // A tap-through guess is not enough.
+  await gate.getByRole("button", { name: "Digit 1", exact: true }).click();
+  await gate.getByTestId("gate-check").click();
+  await expect(gate.getByRole("alert")).toContainText("Not quite");
+  // × backs out: the gate closes, the cloud reverts, and nothing opened.
+  await gate.getByRole("button", { name: "Cancel and go back" }).click();
+  await expect(gate).toBeHidden();
+  await expect(page.getByTestId("grandpa-donation-bubble")).toHaveAttribute("data-cloud", "ask");
+  expect(
+    await page.evaluate(() => (window as unknown as { __opened: unknown[] }).__opened),
+  ).toHaveLength(0);
   expect(page.url()).toBe(APP);
   expectCleanConsole(errors);
 });

@@ -6,6 +6,7 @@ import { registerServiceWorker, unregisterServiceWorker, type PwaUpdateHandle } 
 import { isEnabled, loadFlags } from "@/lib/flags";
 import { SHARE_DESCRIPTION, SHARE_TITLE, shareMetaTags, shareOrigin } from "@/lib/og/share-meta";
 import { useEffect, useState } from "react";
+import { cfBeaconScript } from "@/lib/web-analytics";
 import appCss from "../styles.css?url";
 
 const APP_NAME = BRAND.name;
@@ -100,53 +101,17 @@ function PwaUpdateToast() {
 }
 
 /**
- * Analytics tags, fail-closed on missing build env.
+ * Site analytics — Cloudflare Web Analytics only, cookieless, optional.
  *
- * Veeresh 2026-10-07: no hardcoded key details in source. IDs come from
- * build-time env (GitHub Secrets → Actions → VITE_*). When an ID is
- * unset/empty, its tag does not render at all — no broken script tags.
- * Local dev builds fine without any of these set.
+ * COPPA decision (owner, 2026-10-21): Google Analytics and Microsoft
+ * Clarity were removed entirely; see src/lib/web-analytics.ts for the
+ * rationale. The beacon renders only when VITE_CF_BEACON_TOKEN is set at
+ * build time — unset/invalid → nothing renders (fail-closed). Privacy
+ * page: src/routes/privacy.tsx.
  */
 function AnalyticsTags() {
-  const ga4Id = import.meta.env.VITE_GA4_MEASUREMENT_ID?.trim() || undefined;
-  const clarityId = import.meta.env.VITE_CLARITY_PROJECT_ID?.trim() || undefined;
-  return (
-    <>
-      {ga4Id ? (
-        <>
-          {/* Google Analytics 4 — COPPA-safe: IP anonymized, no ad personalization, no Google signals */}
-          <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`} />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', ${JSON.stringify(ga4Id)}, {
-                'anonymize_ip': true,
-                'allow_google_signals': false,
-                'allow_ad_personalization_signals': false
-              });
-            `,
-            }}
-          />
-        </>
-      ) : null}
-      {clarityId ? (
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", ${JSON.stringify(clarityId)});
-            `,
-          }}
-        />
-      ) : null}
-    </>
-  );
+  const beacon = cfBeaconScript(import.meta.env.VITE_CF_BEACON_TOKEN);
+  return beacon ? <script {...beacon} /> : null;
 }
 
 export const Route = createRootRoute({

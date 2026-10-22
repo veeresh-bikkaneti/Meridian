@@ -1,5 +1,5 @@
 import { test, expect, type Page } from "playwright/test";
-import { serveBuiltArtifact } from "./helpers";
+import { passGrownUpGate, serveBuiltArtifact } from "./helpers";
 
 /**
  * Ko-fi persistent-cloud E2E — the owner's 2026-10-10 product call, updated
@@ -248,6 +248,11 @@ test("no floating cloud at page top; thought bubble next to grandpa at the strip
   await page.getByTestId("grandpa-bubble-ask").tap();
   await expect(page.getByTestId("grandpa-cloud-gate")).toBeVisible();
   await page.getByTestId("grandpa-cloud-continue").click();
+  // P6: Continue opens the grown-up gate. Nothing has left Meridian yet.
+  expect(
+    await page.evaluate(() => (window as unknown as { __opened: unknown[] }).__opened),
+  ).toHaveLength(0);
+  await passGrownUpGate(page);
   const opened = await page.evaluate(
     () => (window as unknown as { __opened: unknown[] }).__opened,
   );
@@ -319,6 +324,11 @@ test("gate Continue opens Ko-fi in a new tab (stubbed) and the cloud reverts", a
   await page.getByTestId("grandpa-bubble-ask").tap();
   await expect(page.getByTestId("grandpa-cloud-gate")).toBeVisible();
   await page.getByTestId("grandpa-cloud-continue").click();
+  // P6: Continue opens the grown-up gate. Nothing has left Meridian yet.
+  expect(
+    await page.evaluate(() => (window as unknown as { __opened: unknown[] }).__opened),
+  ).toHaveLength(0);
+  await passGrownUpGate(page);
   const opened = await page.evaluate(
     () => (window as unknown as { __opened: unknown[] }).__opened,
   );

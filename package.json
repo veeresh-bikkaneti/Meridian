@@ -17,6 +17,7 @@
     "preview:stop": "node scripts/preview.mjs stop",
     "typecheck": "tsc --noEmit",
     "check:auth": "node scripts/check-auth-invariant.mjs",
+    "check:contact": "node --experimental-strip-types scripts/contact-readiness.mjs",
     "test": "node --test 'scripts/**/*.test.mjs'; S1=$?; node --experimental-strip-types --test 'src/**/*.test.ts'; S2=$?; test $S1 -eq 0 -a $S2 -eq 0",
     "format": "prettier --write .",
     "prebuild": "node scripts/write-build-meta.mjs && node --experimental-strip-types scripts/check-generated-places.mjs && node scripts/lint-cards.mjs",

@@ -6,7 +6,8 @@
  *   2. Map-attributed prior-crash flag — a previous session crashed with the map mounted.
  *   3. Boot WebGL probe — offscreen canvas with `failIfMajorPerformanceCaveat`;
  *      failure or a known-weak (software) renderer means scout.
- *   4. Low-memory signal — `navigator.deviceMemory <= 2` (coarse, anonymous).
+ *   4. Low-memory signal — `navigator.deviceMemory <= 1` always; `<= 2` only
+ *      when the WebGL probe did NOT come back clean (see qualifyMapMode).
  *
  * Hard rule: full mode is the default; scout only activates through one of
  * the checks above. A signal that is unavailable is ignored (fail-closed:
@@ -30,8 +31,17 @@ export const MAP_MODE_STORAGE_KEY = "meridian:map-mode";
 /** Auto-assigned modes older than this decay back to unassigned. */
 export const MAP_MODE_DECAY_MS = 7 * 24 * 60 * 60 * 1000;
 
-/** deviceMemory at or below this (GB) qualifies as a low-memory device. */
+/**
+ * deviceMemory at or below this (GB) qualifies as low-memory — but only as
+ * a TIEBREAKER when the WebGL probe is not a clean pass (see below).
+ */
 export const LOW_MEMORY_GB = 2;
+
+/**
+ * deviceMemory at or below this (GB) demotes to Scout on its own, even with
+ * a clean probe: 1 GB-class phones genuinely cannot hold the satellite map.
+ */
+export const VERY_LOW_MEMORY_GB = 1;
 
 export type MapModeSource = "manual" | "prior-crash" | "probe" | "low-memory" | "contextlost" | "default";
 
@@ -107,9 +117,20 @@ export function qualifyMapMode(signals: CapabilitySignals = {}): MapModeDecision
   if (signals.webglProbeOk === false) {
     return { mode: "scout", source: "probe" };
   }
+  // Prefer the Full map (review finding P1-7, 2026-10-21). Chrome buckets
+  // deviceMemory coarsely (0.25/0.5/1/2/4/8) and reports 2 on plenty of
+  // mid-range phones that render the satellite map fine, so "≤ 2 GB" alone
+  // demoted capable devices to Scout. Now: a hardware-accelerated probe
+  // pass (no major performance caveat, not a software renderer) outranks
+  // a 2 GB reading; only ≤ 1 GB demotes regardless. Low-end safety nets
+  // are unchanged — prior-crash, a failed probe, and the mid-game
+  // webglcontextlost tripwire all still switch to Scout.
   const mem = signals.deviceMemoryGB;
-  if (typeof mem === "number" && Number.isFinite(mem) && mem <= LOW_MEMORY_GB) {
-    return { mode: "scout", source: "low-memory" };
+  if (typeof mem === "number" && Number.isFinite(mem)) {
+    const probeClean = signals.webglProbeOk === true;
+    if (mem <= VERY_LOW_MEMORY_GB || (mem <= LOW_MEMORY_GB && !probeClean)) {
+      return { mode: "scout", source: "low-memory" };
+    }
   }
   return { mode: "full", source: "default" };
 }

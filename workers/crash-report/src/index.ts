@@ -21,9 +21,14 @@
  *                         threshold alert + hourly digest). → 200
  *                         { ok, forwarded, counted }.
  * - Non-POST on an ingest path → 405. Unknown paths → 404.
- * - Bodies over 8 KB → 413. Invalid JSON / schema violations → 400.
- * - Per-IP fixed-window rate limit (10 requests / 60 s on ingest POSTs)
- *   → 429 with a Retry-After header.
+ * - POST without an allow-listed Origin → 403 (review S4; see CORS).
+ * - Bodies over 8 KB → 413, enforced while streaming (a chunked body is
+ *   cancelled at the cap, never buffered whole). Invalid JSON / schema
+ *   violations → 400.
+ * - Rate limit (10 requests / 60 s per client on ingest POSTs) → 429 with
+ *   a Retry-After header. An in-memory per-isolate limiter always runs;
+ *   the free Workers Rate Limiting binding CRASH_RATE_LIMITER adds a
+ *   limit shared across isolates when it is bound (fail-open if it errors).
  * - No forwarding secrets configured → 200 { ok: true, forwarded: false }
  *   (no-op mode, safe to deploy before secrets exist).
  * - Cron (scheduled)   → posts the hourly digest to Discord.
@@ -37,16 +42,28 @@
  * inside the value by buildId × edition × region × os/form device
  * bucket — no event payloads, no identifiers.
  *
- * CORS: the game is served from https://veeresh-bikkaneti.github.io while
- * this worker lives on workers.dev, so every report POST is cross-origin.
- * `content-type: application/json` is NOT a CORS-safelisted content type,
- * so the browser sends a preflight OPTIONS request first. The handler
- * answers OPTIONS with 204 + CORS headers, and every response carries
- * `access-control-allow-origin: *`. `*` is safe here: the endpoint takes
- * no cookies/auth, so there is nothing credentialed to protect; locking
- * the origin down would only break reports from preview deployments.
- * Without this, the browser silently blocks the report POST and the
- * "send report" button becomes a no-op.
+ * CORS and Origin allowlist (review S4, 2026-10-21): the game is served
+ * from https://meridian.knowledgetest.workers.dev and from
+ * https://veeresh-bikkaneti.github.io (GitHub Pages), and this worker is a
+ * different origin, so every report is cross-origin. Before S4 the worker
+ * answered `access-control-allow-origin: *` and took POSTs from anywhere.
+ * Now ALLOWED_ORIGINS is the whole list:
+ *
+ * - `fetch` POSTs with `content-type: application/json` (the app's
+ *   fallback transport and the inline boot watchdog's XHR) are preflighted.
+ *   OPTIONS from an allowed origin → 204 echoing that origin (+ `Vary:
+ *   Origin`). Any other origin, or none, → 403 with no CORS headers, so
+ *   the browser blocks the POST.
+ * - `navigator.sendBeacon(url, string)` sends `text/plain`, a CORS-
+ *   safelisted type, so there is NO preflight. But browsers attach
+ *   `Origin` to every cross-origin POST, beacons included, so the POST
+ *   itself is checked: an allowed origin → normal handling, anything else
+ *   → 403. The body is read as text whatever its content-type, so beacons
+ *   keep working unchanged.
+ * - A POST without any Origin (curl, scripts) → 403. A non-browser client
+ *   can forge Origin, so this is not authentication. It stops other sites
+ *   from making visitors' browsers post junk here, and the rate limit and
+ *   schema handle the rest.
  *
  * Zero runtime dependencies. The pure handler is exported for unit tests
  * (src/index.test.ts; also exercisable with `npx wrangler dev` + curl,
@@ -67,6 +84,20 @@ export const EVENT_TYPES = [
 export type CrashReportEventType = (typeof EVENT_TYPES)[number];
 
 export const MAX_BODY_BYTES = 8192;
+
+/**
+ * Origins allowed to report (review S4). Exact `scheme://host` matches,
+ * with no wildcards: a Workers preview URL or a fork's Pages site is
+ * refused on purpose. A preview that needs reporting should use its own
+ * staging worker (README, "Staging vs production").
+ */
+export const ALLOWED_ORIGINS: readonly string[] = Object.freeze([
+  "https://meridian.knowledgetest.workers.dev",
+  "https://veeresh-bikkaneti.github.io",
+]);
+
+/** Name of the optional Workers Rate Limiting binding (wrangler.toml). */
+export const RATE_LIMIT_BINDING = "CRASH_RATE_LIMITER";
 
 const RATE_LIMIT_MAX = 10;
 const RATE_LIMIT_WINDOW_MS = 60_000;
@@ -91,6 +122,9 @@ export interface CrashReportEnv {
   /** Phase 1: hiccup threshold overrides (strings parsed as positive ints). */
   TELEMETRY_THRESHOLD_PER_HOUR?: string;
   TELEMETRY_THRESHOLD_PER_BUILD?: string;
+  /** Review S4: optional Workers Rate Limiting binding (free; see
+   *  wrangler.toml). Absent = the in-memory limiter alone applies. */
+  CRASH_RATE_LIMITER?: RateLimitBinding;
 }
 
 export interface CrashReportEvent {
@@ -153,48 +187,280 @@ export function validateEvent(event: unknown): string[] {
         problems.push("error.message must be a string ≤300 chars");
     }
   }
-  if (event.device !== undefined && !isPlainObject(event.device)) {
-    problems.push("device must be an object");
+  problems.push(...validateDevice(event.device, "device"));
+  if (event.breadcrumb !== undefined) {
+    if (!isPlainObject(event.breadcrumb)) {
+      problems.push("breadcrumb must be an object");
+    } else {
+      problems.push(...validateDevice(event.breadcrumb.device, "breadcrumb.device"));
+      const history = event.breadcrumb.history;
+      if (history !== undefined && (!Array.isArray(history) || history.length > MAX_BREADCRUMB_HISTORY)) {
+        problems.push(`breadcrumb.history must be an array of ≤${MAX_BREADCRUMB_HISTORY} entries`);
+      }
+    }
   }
-  if (event.breadcrumb !== undefined && !isPlainObject(event.breadcrumb)) {
-    problems.push("breadcrumb must be an object");
+  // Review S4: anything else at the top level must be a small primitive.
+  // Real events carry only the fields above (src/lib/observability.ts).
+  // This keeps junk posts from smuggling large or nested payloads.
+  const extra = Object.keys(event).filter((k) => !KNOWN_TOP_LEVEL.has(k));
+  if (Object.keys(event).length > MAX_TOP_LEVEL_KEYS) {
+    problems.push(`event must have ≤${MAX_TOP_LEVEL_KEYS} fields`);
+  }
+  if (extra.some((k) => k.length > 64 || !isSmallPrimitive(event[k]))) {
+    problems.push("extra fields must be short strings, numbers, booleans or null");
+  }
+  if (typeof event.ts === "number" && Number.isFinite(event.ts)) {
+    if (event.ts < EARLIEST_TS || event.ts > Date.now() + MAX_CLOCK_SKEW_MS) {
+      problems.push("ts is outside the accepted window");
+    }
   }
   return problems;
 }
 
-// --- Per-IP fixed-window rate limiting (in-memory) ---------------------
+/** Top-level fields the client schema defines (docs/observability.md). */
+const KNOWN_TOP_LEVEL = new Set([
+  "type", "ts", "buildId", "sessionId", "edition", "regionId", "chunkId",
+  "lastMilestone", "error", "device", "breadcrumb",
+]);
+const MAX_TOP_LEVEL_KEYS = 24;
+const MAX_BREADCRUMB_HISTORY = 32; // the client keeps 12 (MAX_HISTORY)
+/** 2020-01-01T00:00:00Z: nothing older is a real report from this game. */
+const EARLIEST_TS = 1_577_836_800_000;
+/** Allow a day of device clock skew into the future. */
+const MAX_CLOCK_SKEW_MS = 86_400_000;
+
+function isSmallPrimitive(value: unknown): boolean {
+  if (value === null || typeof value === "boolean") return true;
+  if (typeof value === "number") return Number.isFinite(value);
+  return typeof value === "string" && value.length <= 256;
+}
+
+/**
+ * The coarse device bucket (COPPA): os/form/screen labels, a DPR number,
+ * and WebGL booleans. `ua` is tolerated (≤300 chars) because older app
+ * builds still put it in the breadcrumb, but it is never forwarded or
+ * counted (buildAlert / deviceBucketOf read os/form only).
+ */
+function validateDevice(device: unknown, label: string): string[] {
+  if (device === undefined) return [];
+  if (!isPlainObject(device)) return [`${label} must be an object`];
+  const problems: string[] = [];
+  for (const [k, v] of Object.entries(device)) {
+    const ok =
+      k === "ua" ? isCappedString(v, 300)
+      : k === "os" || k === "form" || k === "screen" ? isCappedString(v, 24)
+      : k === "dpr" || k === "screenW" || k === "screenH" ? typeof v === "number" && Number.isFinite(v)
+      : k === "webgl1" || k === "webgl2" ? typeof v === "boolean"
+      : isSmallPrimitive(v) && k.length <= 32;
+    if (!ok) problems.push(`${label}.${k.slice(0, 32)} has an invalid value`);
+  }
+  if (Object.keys(device).length > 16) problems.push(`${label} has too many fields`);
+  return problems;
+}
+
+// --- Rate limiting (review S4) -------------------------------------------
+//
+// Same small-interface shape as the contact form's limiter
+// (src/lib/contact/rate-limiter.server.ts), but self-contained because this
+// worker ships as one file with no imports:
+//
+//   InMemoryRateLimiter   → always on. Fixed 60 s window per client,
+//                           per isolate. Keys are a SALTED SHA-256 of the
+//                           IP (random per-isolate salt), so the raw IP is
+//                           never held in memory.
+//   BindingRateLimiter    → added only when CRASH_RATE_LIMITER is bound.
+//                           The Workers Rate Limiting API counts across
+//                           isolates in a Cloudflare location. It is free:
+//                           no plan gate and no billing line in Cloudflare's
+//                           docs (checked 2026-10-21; GA 2025-09-19).
+//   LayeredRateLimiter    → asks each layer in order; the first "no" wins.
+//
+// Fail-open by design: a missing, malformed, or throwing binding never
+// blocks a crash report by itself (losing crash reports is the failure this
+// worker exists to prevent), and the in-memory layer still applies.
+
+export interface RateDecision {
+  allowed: boolean;
+  retryAfterSec: number;
+}
+
+export interface IngestRateLimiter {
+  check(ip: string, now: number): Promise<RateDecision>;
+}
+
+/** Structural type of a Workers Rate Limiting binding. */
+export interface RateLimitBinding {
+  limit(options: { key: string }): Promise<{ success: boolean }>;
+}
+
+const ALLOW: RateDecision = { allowed: true, retryAfterSec: 0 };
+
+async function sha256Hex(input: string): Promise<string> {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(input));
+  return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
+}
 
 interface RateEntry {
   windowStart: number;
   count: number;
 }
 
-const rateLimits = new Map<string, RateEntry>();
+export class InMemoryRateLimiter implements IngestRateLimiter {
+  private readonly entries = new Map<string, RateEntry>();
+  // Created on first use: Workers forbid generating random values at
+  // global scope, and the shared instance below is built at module load.
+  private salt: string | null = null;
+  private readonly max: number;
+  private readonly windowMs: number;
+
+  constructor(max = RATE_LIMIT_MAX, windowMs = RATE_LIMIT_WINDOW_MS) {
+    this.max = max;
+    this.windowMs = windowMs;
+  }
+
+  reset(): void {
+    this.entries.clear();
+  }
+
+  async check(ip: string, now: number): Promise<RateDecision> {
+    // Opportunistic prune so the map cannot grow unboundedly across windows.
+    for (const [key, entry] of this.entries) {
+      if (now - entry.windowStart >= this.windowMs) this.entries.delete(key);
+    }
+    this.salt ??= crypto.randomUUID();
+    const key = (await sha256Hex(`${this.salt}:${ip}`)).slice(0, 32);
+    const entry = this.entries.get(key);
+    if (!entry) {
+      this.entries.set(key, { windowStart: now, count: 1 });
+      return ALLOW;
+    }
+    if (entry.count >= this.max) {
+      const retryAfterSec = Math.max(1, Math.ceil((entry.windowStart + this.windowMs - now) / 1000));
+      return { allowed: false, retryAfterSec };
+    }
+    entry.count += 1;
+    return ALLOW;
+  }
+}
+
+/**
+ * Key for the shared binding. It must be the same in every isolate, so it
+ * cannot use the per-isolate salt. Instead the UTC day is part of the
+ * hashed input: the pseudonym changes daily and cannot link one day's
+ * client to the next, and the counter lives only in Cloudflare's
+ * rate-limit cache for its 60 s period.
+ */
+export async function bindingClientKey(ip: string, now: number): Promise<string> {
+  const day = new Date(now).toISOString().slice(0, 10);
+  return `c:${(await sha256Hex(`meridian-crash-rl:v1:${day}:${ip}`)).slice(0, 16)}`;
+}
+
+export class BindingRateLimiter implements IngestRateLimiter {
+  private readonly binding: RateLimitBinding;
+
+  constructor(binding: RateLimitBinding) {
+    this.binding = binding;
+  }
+
+  async check(ip: string, now: number): Promise<RateDecision> {
+    try {
+      const { success } = await this.binding.limit({ key: await bindingClientKey(ip, now) });
+      return success ? ALLOW : { allowed: false, retryAfterSec: RATE_LIMIT_WINDOW_MS / 1000 };
+    } catch (err) {
+      logLine("rate-limit binding failed (fail-open)", err instanceof Error ? err.name : "unknown");
+      return ALLOW;
+    }
+  }
+}
+
+export class LayeredRateLimiter implements IngestRateLimiter {
+  private readonly layers: readonly IngestRateLimiter[];
+
+  constructor(layers: readonly IngestRateLimiter[]) {
+    this.layers = layers;
+  }
+
+  async check(ip: string, now: number): Promise<RateDecision> {
+    for (const layer of this.layers) {
+      const decision = await layer.check(ip, now);
+      if (!decision.allowed) return decision;
+    }
+    return ALLOW;
+  }
+}
+
+function isRateLimitBinding(value: unknown): value is RateLimitBinding {
+  return typeof (value as { limit?: unknown } | null | undefined)?.limit === "function";
+}
+
+/** One in-memory limiter per isolate, shared by every request. */
+const inMemoryLimiter = new InMemoryRateLimiter();
+
+/** The limiter for this request: in-memory, plus the binding when bound. */
+export function selectRateLimiter(env: CrashReportEnv): IngestRateLimiter {
+  const binding = env.CRASH_RATE_LIMITER;
+  return isRateLimitBinding(binding)
+    ? new LayeredRateLimiter([inMemoryLimiter, new BindingRateLimiter(binding)])
+    : inMemoryLimiter;
+}
 
 /** Test-only: clear in-memory rate-limit state between test cases. */
 export function resetRateLimitsForTests(): void {
-  rateLimits.clear();
+  inMemoryLimiter.reset();
 }
 
-function checkRateLimit(ip: string, now: number): { allowed: boolean; retryAfterSec: number } {
-  // Opportunistic prune so the map cannot grow unboundedly across windows.
-  for (const [key, entry] of rateLimits) {
-    if (now - entry.windowStart >= RATE_LIMIT_WINDOW_MS) rateLimits.delete(key);
+// --- Origin policy (review S4) -----------------------------------------------
+
+export class OriginPolicy {
+  private readonly allowed: readonly string[];
+
+  constructor(allowed: readonly string[] = ALLOWED_ORIGINS) {
+    this.allowed = allowed;
   }
-  const entry = rateLimits.get(ip);
-  if (!entry) {
-    rateLimits.set(ip, { windowStart: now, count: 1 });
-    return { allowed: true, retryAfterSec: 0 };
+
+  /** The request's Origin when it is allow-listed, else null. */
+  allowedOrigin(request: Request): string | null {
+    const origin = request.headers.get("origin");
+    return origin !== null && this.allowed.includes(origin) ? origin : null;
   }
-  if (entry.count >= RATE_LIMIT_MAX) {
-    const retryAfterSec = Math.max(
-      1,
-      Math.ceil((entry.windowStart + RATE_LIMIT_WINDOW_MS - now) / 1000),
-    );
-    return { allowed: false, retryAfterSec };
+
+  /** CORS headers for an allowed origin. Always varies on Origin. */
+  corsHeaders(origin: string | null): Record<string, string> {
+    return origin ? { "access-control-allow-origin": origin, vary: "Origin" } : { vary: "Origin" };
   }
-  entry.count += 1;
-  return { allowed: true, retryAfterSec: 0 };
+}
+
+const originPolicy = new OriginPolicy();
+
+// --- Streamed body read with a hard cap ----------------------------------------
+
+/**
+ * Read the body as UTF-8 text, cancelling the stream as soon as it passes
+ * `max` bytes. Returns null when over the cap. A chunked upload without a
+ * Content-Length is never buffered beyond the cap.
+ */
+export async function readBodyCapped(request: Request, max: number): Promise<string | null> {
+  if (!request.body) return "";
+  const reader = request.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > max) {
+      await reader.cancel().catch(() => {});
+      return null;
+    }
+    chunks.push(value);
+  }
+  const bytes = new Uint8Array(total);
+  let offset = 0;
+  for (const c of chunks) {
+    bytes.set(c, offset);
+    offset += c.byteLength;
+  }
+  return new TextDecoder().decode(bytes);
 }
 
 // --- Compact, PII-free alert -------------------------------------------
@@ -667,18 +933,24 @@ function jsonResponse(
     status,
     headers: {
       "content-type": "application/json",
-      "access-control-allow-origin": "*",
       ...extraHeaders,
     },
   });
 }
 
-/** CORS preflight: the browser asks before POSTing application/json. */
-function optionsResponse(): Response {
+/**
+ * CORS preflight: the browser asks before POSTing application/json. Only
+ * an allow-listed origin gets the go-ahead. Anything else gets a 403 with
+ * no CORS headers, so the browser never sends the POST.
+ */
+function optionsResponse(origin: string | null): Response {
+  if (!origin) {
+    return new Response(null, { status: 403, headers: { vary: "Origin" } });
+  }
   return new Response(null, {
     status: 204,
     headers: {
-      "access-control-allow-origin": "*",
+      ...originPolicy.corsHeaders(origin),
       "access-control-allow-methods": "POST, OPTIONS",
       "access-control-allow-headers": "content-type",
       "access-control-max-age": "86400",
@@ -693,46 +965,51 @@ function optionsResponse(): Response {
 export async function handleRequest(request: Request, env: CrashReportEnv): Promise<Response> {
   const url = new URL(request.url);
   const path = url.pathname;
+  const origin = originPolicy.allowedOrigin(request);
+  const cors = originPolicy.corsHeaders(origin);
 
   // CORS preflight must be answered before any method/path checks.
-  if (request.method === "OPTIONS") return optionsResponse();
+  if (request.method === "OPTIONS") return optionsResponse(origin);
 
   if (path === "/health") {
+    // Health is for humans and monitors (curl), not browsers: no CORS.
     if (request.method !== "GET") return jsonResponse(405, { error: "method not allowed" });
     return jsonResponse(200, { ok: true });
   }
 
   if (path === "/" || path === "/ingest") {
-    if (request.method !== "POST") return jsonResponse(405, { error: "method not allowed" });
+    if (request.method !== "POST") return jsonResponse(405, { error: "method not allowed" }, cors);
+
+    // Review S4: only the game's own origins may report. Beacons carry
+    // Origin too (see the CORS note at the top of this file).
+    if (!origin) return jsonResponse(403, { error: "origin not allowed" }, cors);
 
     const ip = request.headers.get("cf-connecting-ip")?.trim() || "unknown";
-    const rl = checkRateLimit(ip, Date.now());
+    const rl = await selectRateLimiter(env).check(ip, Date.now());
     if (!rl.allowed) {
       return jsonResponse(
         429,
         { error: "rate limit exceeded" },
-        { "retry-after": String(rl.retryAfterSec) },
+        { ...cors, "retry-after": String(rl.retryAfterSec) },
       );
     }
 
     const declared = Number(request.headers.get("content-length") ?? "0");
     if (Number.isFinite(declared) && declared > MAX_BODY_BYTES) {
-      return jsonResponse(413, { error: "body too large" });
+      return jsonResponse(413, { error: "body too large" }, cors);
     }
-    const body = await request.text();
-    if (new TextEncoder().encode(body).length > MAX_BODY_BYTES) {
-      return jsonResponse(413, { error: "body too large" });
-    }
+    const body = await readBodyCapped(request, MAX_BODY_BYTES);
+    if (body === null) return jsonResponse(413, { error: "body too large" }, cors);
 
     let event: unknown;
     try {
       event = JSON.parse(body);
     } catch {
-      return jsonResponse(400, { error: "invalid JSON" });
+      return jsonResponse(400, { error: "invalid JSON" }, cors);
     }
     const problems = validateEvent(event);
     if (problems.length > 0) {
-      return jsonResponse(400, { error: "invalid event", problems });
+      return jsonResponse(400, { error: "invalid event", problems }, cors);
     }
     const valid = event as CrashReportEvent;
 
@@ -774,7 +1051,7 @@ export async function handleRequest(request: Request, env: CrashReportEnv): Prom
         valid.buildId,
         valid.edition ?? "—",
       );
-      return jsonResponse(200, { ok: true, forwarded: false, counted: tele.counted });
+      return jsonResponse(200, { ok: true, forwarded: false, counted: tele.counted }, cors);
     }
 
     // One forwarder failing must not fail the request (or the other).
@@ -784,7 +1061,7 @@ export async function handleRequest(request: Request, env: CrashReportEnv): Prom
       results[attempts[i].channel] = s.status === "fulfilled" && s.value === true;
     });
     logLine("forwarded", valid.type, valid.buildId, valid.edition ?? "—", results);
-    return jsonResponse(200, { ok: true, forwarded: true, counted: tele.counted, results });
+    return jsonResponse(200, { ok: true, forwarded: true, counted: tele.counted, results }, cors);
   }
 
   return jsonResponse(404, { error: "not found" });
