@@ -1,3 +1,50 @@
+# BRANCH_STATUS — veer-c/adoring-volta-ql18ja
+
+**State: DRAFT — docs-only (Tier 0). Adds the owner's ARCHETYPE v3.0 "law"
+verbatim as `docs/ops/ARCHETYPE_law.md`. No source, test, config or
+`AGENTS.md` is touched. Awaiting the owner's word on how it sits beside the
+Constitution and `agent-council-protocol.md` (Pending, below).**
+
+**Base:** origin/main @ `62b960a` (PR #229's merge), 0 behind. Owner's choice
+(2026-10-22): "Adopt as governing law + commit". The text is committed
+byte-for-byte as pasted, with its `{{YOUR_TASK}}` CONFIG placeholders unfilled:
+they are a template slot to fill per task.
+
+## Done
+- [x] `docs/ops/ARCHETYPE_law.md` added, verbatim (70 lines; key rules spot-checked).
+- [x] Gates, run on the `62b960a` tip: `npx tsc --noEmit` clean · `npm test`
+      scripts **808 pass / 0 fail / 9 skip**, src **1,473 pass / 0 fail** ·
+      `node scripts/lint-cards.mjs` **GATE PASSED** · `npm run build:pages` green
+      (no tracked file dirtied by the build).
+- [x] Not run: Playwright E2E. The change has no source surface, and
+      protocol §6 scopes Playwright to "the specs that cover the changed surface".
+
+## Pending — the owner's call
+- [ ] **Where the law sits.** This PR does not edit `AGENTS.md` or
+      `docs/ops/agent-council-protocol.md`. In this repo the protocol says "the
+      Constitution in `AGENTS.md` governs throughout", which I read as the law's
+      own "System Invariants" tier. Replace, sit beside, or fold in is undecided.
+- [ ] **Overlaps with the existing protocol** (read from both files, not assumed):
+      - Seats: the law adds Councilor D (Historian) and a Layer-3 execution team;
+        protocol §1 has Chair + A/B/C only, requires C to be a separate agent,
+        and fixes models (opus Chair, sonnet/haiku councilors).
+      - Tiers: law T1/T2/T3 are **risk**-based (security/payments/auth);
+        `AGENTS.md` Tier 0/1/2 are **scope**-based and convene a council only at Tier 2.
+      - Budget: law caps `MAX_TOKENS: 15k/task`; protocol §3 controls cost with the
+        tier gate and sets no cap.
+      - Manifest: law has "Scoped Files (max 3)" and Token GRANTED/DENIED;
+        protocol §5 has protected files, "max +/- N lines" and `AUTH_RUN_TDD_IMPLEMENTATION`.
+      - Versioning: the law's Loop 3 mutates to "Archetype v1.1"; versioned
+        copies would collide with Constitution rule 2 (no duplicate files).
+- [ ] An earlier, different "ARCHETYPE v3.0" (seats A-E, 7 phases, per-tier token
+      budgets 6000/3000/1500) was pasted in the same session. It is superseded by
+      the owner's choice above and is **not** committed here.
+
+---
+
+*The record below is for `fix/serverfn-server-entry` (shipped as #229). It is kept
+unmodified for history; this branch's own record is the section above.*
+
 # BRANCH_STATUS — fix/serverfn-server-entry
 
 **State: DOCS-ONLY PR open for review. The fix itself is an owner
