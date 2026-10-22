@@ -74,3 +74,19 @@ test("hashed /assets/* are immutable; sw.js and flags.json always revalidate", (
     );
   }
 });
+
+test("asset-served / and /index.html keep their literal s-maxage value (drift pin)", () => {
+  // These two rules only ever reach an ASSET-SERVED copy of the document;
+  // the live site's HTML is rendered by the Worker, which sends
+  // HTML_CACHE_CONTROL ("public, max-age=0, must-revalidate", NO s-maxage)
+  // from src/start.ts instead. The divergence is deliberate and
+  // owner-ruled (WI-18, 2026-10-22) — pin the asset literal so an edit
+  // here cannot silently drift the two values together or apart.
+  for (const p of ["/", "/index.html"]) {
+    assert.deepEqual(
+      rules.get(p),
+      ["Cache-Control: public, max-age=0, s-maxage=60, must-revalidate"],
+      p,
+    );
+  }
+});

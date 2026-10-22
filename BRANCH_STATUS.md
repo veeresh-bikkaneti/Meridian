@@ -1,95 +1,119 @@
-# BRANCH_STATUS — fix/serverfn-server-entry
+# BRANCH_STATUS — fix/html-cache-control
 
-**State: DOCS-ONLY PR open for review. The fix itself is an owner
-dashboard action (one field in the Workers Builds configuration);
-this branch only documents it. Not merged by any agent — the owner
-merges. Owner action status: PENDING — the dashboard change has not
-been taken yet (2026-10-22).**
+**Branch:** `fix/html-cache-control`
+**Base:** origin/main @ `76630ba` (PR #212 merge)
+**State: BUILT + PANEL CURE APPLIED — awaiting panel re-vote, then
+owner review / merge.** Round-1 panel: NOT READY on record accuracy
+only (code approved unanimously; benchmark PASS). The cure round
+(canonical-doc currency, "errors untouched" wording, the validator
+honesty fix, casing + fallback tests, the `/` drift pin) is applied
+on this tip. All gates below are green. The fix is not called done
+until the post-merge live probe (Acceptance, below) passes with
+verbatim results posted on the PR after the owner merges and the
+Worker deploys.
 
-**Base:** origin/main @ `76630ba` (PR #212's merge). Branch created
-2026-10-22 for WI-19 path (a), per the owner's ruling below.
+**Owner ruling (Veeresh, 2026-10-22): "18 go (plain value)"** — WI-18
+proceeds, with the plain Cache-Control value and no `s-maxage`.
+This branch closes issue #227.
 
-**Owner ruling (Veeresh, 2026-10-22): "19a now, 19b as follow-up"**
-— path (a) dashboard now; path (b) root `wrangler.jsonc` deferred.
+## What this fixes, and why
 
-## What this branch does
+Cloudflare never applies `public/_headers` to Worker-rendered
+responses. Every HTML page on the live `meridian` worker is
+server-rendered by TanStack, so `/`, `/privacy` and the 404 page
+served **no Cache-Control at all** (live-verified 2026-10-22: all 7
+security headers present, Cache-Control absent — proof the
+`src/start.ts` middleware runs live; it just never set this header).
+Static files already carry theirs from `_headers` and are unchanged.
 
-- [x] `docs/reviews/2026-10-22-serverfn-server-entry.md` — the full
-      record: root cause (Builds automatic configuration set
-      `main` to TanStack's default entry `@tanstack/react-start/server-entry`,
-      which loads `src/start.ts` but never `src/server.ts`, so the
-      S5 guard from PR #222 is not in the production bundle), the
-      three live signals, the exact owner steps for path (a)
-      (`main` → `src/server.ts` in the Builds project's Wrangler
-      configuration, Workers & Pages → `meridian` → Settings > Build),
-      the one-field rollback, post-change verification commands with
-      expected results, the PR #225 smoke-coverage finding
-      (`scripts/prod-smoke.mjs` already checks `GET /_serverFn/ → 404`),
-      risk notes, and the deferred path (b) inventory.
-- [x] `config/cloudflare/meridian.wrangler.toml` — one header
-      comment pointing at the review doc (comments only; the
-      `[[ratelimits]]` blocks and binding names untouched).
-- [x] This file, replacing main's #212 record on this branch.
+The middleware now also sends, for rendered HTML only:
 
-## Cure round 1 (panel re-vote fixes, 2026-10-22)
+```
+Cache-Control: public, max-age=0, must-revalidate
+```
 
-Round-1 panel verdict: **NOT READY** (BLOCK ×2, DevEx FAIL) — the
-root-cause record was called airtight; the blocks were about the
-owner steps being followable and the live-state record being
-complete. Cures applied on this branch (docs/comments only):
-`compatibility_flags = []` stated honestly (live API read) in the
-verification caveat, the path-(b) inventory, and the config record;
-the step-2 locator named with the inferred hop flagged, a bold
-**Not:** callout for the wrong screen, and a verbatim stop
-condition; a checkable `/build-meta.json` readiness step (capture
-before; new buildId only when the deploy carries a new commit —
-same-commit redeploys keep the buildId and readiness is the
-deployments list); "redeploy" explained in plain words in the steps
-and the rollback; a durable Status line (PENDING → DONE form) with
-Chitti named as verifier and issue #228 cited for path (b); a
-failure branch (still 500 after a completed deploy → stop, report
-on the PR, escalate); plain-language openings (entry = the first
-file run for every request; WI-19 and S5 defined at first use);
-verification extended to `/privacy`, a 404 route, and one hashed
-asset; the Risks CSRF sentence narrowed to what `src/start.ts`
-actually does; and a supersede note for when path (b) lands.
+Deliberately **no `s-maxage`**: rendered pages can carry per-request
+state, and edge caching them needs the owner's explicit say-so. The
+`_headers` `/` rule's `s-maxage=60` only ever applied to an
+asset-served copy, which production does not serve.
 
-## What this branch deliberately does NOT do
+How it works: `withHtmlCacheControl` (new, in
+`src/lib/security-headers.ts`, next to the new `HTML_CACHE_CONTROL`
+constant) sets the header only when the response's content type
+starts with `text/html` (case-insensitive) **and** it has no
+Cache-Control yet. It never overrides an existing value. HTML
+responses — including HTML error pages, such as the 404 — get the
+default unless they already carry a Cache-Control; non-HTML
+responses (e.g. `/api/contact`'s JSON `no-store`) are returned
+untouched.
 
-- No code changes. `src/server.ts` and
-  `src/lib/server/server-fn-guard.ts` are already on main (PR #222).
-- No root `wrangler.jsonc` — that is path (b), the ruled follow-up.
-- No `scripts/` smoke script — PR #225's `prod-smoke.mjs` covers
-  `/_serverFn/`; extending it is #225's owner's work.
-- No Cloudflare state changes. The dashboard edit is the owner's.
+Full write-up: `docs/reviews/2026-10-22-html-cache-control.md`.
 
-## Owner action (after merge, or any time — the doc is the record)
+## Files touched
 
-1. Workers & Pages → `meridian` → Settings > Build → the Builds
-   project's Wrangler configuration: set
-   `main` from `"@tanstack/react-start/server-entry"` to
-   `"src/server.ts"`. Save.
-2. Let the next Workers Builds deploy run (or trigger a redeploy).
-3. Run the verification block in
-   `docs/reviews/2026-10-22-serverfn-server-entry.md` and post the
-   real output on the PR. Expected: `/_serverFn/` 404,
-   `/_serverFn/abc` 404, OPTIONS 405, `/` 200 with security
-   headers, POST `/api/contact` 400. Caveat on that last one: the
-   contact POST returns 400 **today**, before the change, so a 400
-   after it proves pass-through only — that the route still
-   answers — not the entry change and not end-to-end contact
-   delivery (the form stays parked; activation is issue #220).
-4. Rollback if needed: set `main` back and redeploy. One field.
+- `src/lib/security-headers.ts` — `HTML_CACHE_CONTROL` constant +
+  `withHtmlCacheControl` helper (mirrors `withSecurityHeaders`,
+  including the immutable-headers copy fallback); top doc note.
+  Cure round: docstring states the gate positively (HTML error
+  pages included); the content-type check is case-insensitive.
+- `src/start.ts` — middleware body now
+  `withHtmlCacheControl(withSecurityHeaders(result.response))`;
+  header comment extended. CSRF middleware untouched.
+- `src/lib/security-headers.test.ts` — 6 new tests (constant equals
+  the literal value; HTML without a value gets it; HTML with
+  `no-store` keeps it; JSON without a value stays without one;
+  mixed-case content type matches; immutable-headers copy fallback).
+  The existing drift test is unchanged and still passes.
+- `scripts/security-headers.test.mjs` — cure round: one new test
+  pinning the asset-served `/` + `/index.html` rules to their
+  literal `s-maxage=60` value (drift pin for the deliberate
+  divergence from `HTML_CACHE_CONTROL`).
+- `public/_headers` — **comments only.** No rule line or value
+  changes; the `/*` block is byte-identical. The `/` + `/index.html`
+  comment, the honesty note, and the contract-of-record paragraph
+  now state that those rules cover asset-served copies only and that
+  rendered HTML gets its header from the middleware.
+- `docs/security-headers.md` — cure round: the canonical doc brought
+  current (delivery table credits the middleware with the HTML
+  Cache-Control; caching table gains the rendered-HTML row, marks
+  `/` + `/index.html` asset-served only, and states the carved-files
+  detach **+ set** truth from PR #212).
+- `docs/reviews/2026-10-22-html-cache-control.md` — NEW review/ADR
+  doc (problem, live evidence, decision, acceptance mapping,
+  risks/rollback, post-merge probe); cure round corrected the
+  "cheap 304" claim (no validator is set) and the error-page wording.
+- `README.md` — "Security headers" section only: one added sentence
+  on the middleware's HTML Cache-Control.
+- `BRANCH_STATUS.md` — this file (replaces main's #212 record).
 
-## Gates (this branch, 2026-10-22; re-run on the cure tip)
+Not touched (per brief): `src/server.ts`,
+`src/lib/server/server-fn-guard.ts`, any wrangler/Cloudflare config.
+
+## Gates (this branch, run 2026-10-22)
 
 - [x] `npx tsc --noEmit` — clean
-- [x] `npm test` — scripts **808 pass / 0 fail**; src **1,473 pass /
-      0 fail** — main-exact baselines (the `rate-limiter.server.test.ts`
-      check on the config record is in the src suite: green)
+- [x] `npm test` — scripts **809 pass / 0 fail / 9 skip** (818 tests;
+      main baseline 808 + the cure-round drift pin);
+      src **1479 pass / 0 fail** (main baseline 1473 + 6 new tests)
 - [x] `node scripts/lint-cards.mjs` — **GATE PASSED**
-- [x] `npm run build:pages` — green
-- Playwright E2E — **N/A for this branch**: docs-only, no code or
-  behavior change, so there is nothing for E2E to exercise. The
-  post-change *production* probes are the verification (see the
-  review doc), run by Chitti after the owner's dashboard action.
+- [x] `npm run build:pages` — green; `dist/client/_headers`
+      byte-identical to `public/_headers` (diff-verified);
+      `scripts/security-headers.test.mjs` passes 4/4 against the
+      comment-updated `_headers`
+
+## Acceptance — post-merge live probe (still owed)
+
+- [ ] Owner's review + merge word
+- [ ] After deploy, probe https://meridian.knowledgetest.workers.dev
+      and post the verbatim output on the PR (commands in
+      `docs/reviews/2026-10-22-html-cache-control.md`):
+      `/`, `/privacy` and a 404 path must each show exactly one
+      `Cache-Control: public, max-age=0, must-revalidate` alongside
+      the 7 security headers, and a static file (e.g. `/flags.json`,
+      `no-cache`) must be unchanged.
+      `/_shell.html` is **expected-inert** in this probe (definition
+      carried from the #212 record, which `public/_headers` cites):
+      it exists in the build output, but the app server answers 404
+      for it today — the same signature `/` had — so a bare or 404
+      result for it is expected, not a failure.
+      **The fix is not done until this probe is reported.**

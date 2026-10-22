@@ -1,11 +1,12 @@
 # Security headers and caching (Cloudflare build)
 
-**Single source of truth:** `src/lib/security-headers.ts` (`SECURITY_HEADERS`).
+**Single source of truth:** `src/lib/security-headers.ts` (`SECURITY_HEADERS`;
+`HTML_CACHE_CONTROL` for the rendered-HTML caching header — see Caching).
 They are delivered on two paths:
 
 | Response | Who sets the headers |
 | --- | --- |
-| Worker-generated: every server-rendered HTML page (`/`, `/privacy`, …) and `/api/contact` | request middleware in `src/start.ts` (`withSecurityHeaders`) |
+| Worker-generated: every server-rendered HTML page (`/`, `/privacy`, …) and `/api/contact` | request middleware in `src/start.ts` (`withSecurityHeaders`); the same middleware also sets the rendered-HTML `Cache-Control` (`withHtmlCacheControl`, see Caching) |
 | Static assets (`/assets/*`, `sw.js`, `flags.json`, `offline.html`, images, …) | `public/_headers`, which Vite copies into `dist/client/` |
 
 Why two paths: Cloudflare documents that "custom headers defined in the
@@ -79,9 +80,10 @@ frame-ancestors 'none'; upgrade-insecure-requests
 | Path | Cache-Control | Why |
 | --- | --- | --- |
 | `/assets/*` | `public, max-age=31536000, immutable` | content-hashed file names |
-| `/assets/maplibre-gl-worker.mjs`, `/assets/maplibre-gl-shared.mjs`, `/assets/storyteller/storyteller-assets.json` | `! Cache-Control` only, so the platform default `public, max-age=0, must-revalidate` + ETag applies | fixed names with mutable content. Cloudflare comma-joins duplicate headers from overlapping rules, so the detach line stands alone (same blocks as PR #203) |
+| `/assets/maplibre-gl-worker.mjs`, `/assets/maplibre-gl-shared.mjs`, `/assets/storyteller/storyteller-assets.json` | `! Cache-Control` (detach) **plus** `Cache-Control: public, max-age=0, must-revalidate` in the same block | fixed names with mutable content. The detach deletes the wildcard's `immutable` value, then the set stands alone as the path's only Cache-Control. Detach ALONE (PR #203) also deleted the platform default, so these files shipped with no Cache-Control at all — PR #212 fixed that by pairing the detach with the set |
 | `/sw.js`, `/flags.json`, `/build-meta.json`, `/manifest.webmanifest` | `no-cache` | update detection and remote kill switches must see changes immediately |
-| `/`, `/index.html` | `public, max-age=0, s-maxage=60, must-revalidate` | browsers revalidate. The edge may hold HTML for up to 60 s |
+| Rendered HTML on the Worker (`/`, `/privacy`, the 404 page, …) | `public, max-age=0, must-revalidate` | set by the request middleware (`HTML_CACHE_CONTROL` in `src/lib/security-headers.ts`) — the plain value with **no `s-maxage`**, owner-ruled 2026-10-22 (WI-18). `_headers` never reaches Worker-rendered pages, so this row — not the one below — is the live contract for rendered pages |
+| `/`, `/index.html` (asset-served copies only) | `public, max-age=0, s-maxage=60, must-revalidate` | policy of record for an asset-served root (e.g. a static host serving the built document). The live site's pages are Worker-rendered and use the row above, so this rule never reaches them |
 
 ## Verify after deploy
 
