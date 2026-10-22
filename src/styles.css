@@ -1888,6 +1888,8 @@
 [data-age-band="5-7"] .result-story,
 [data-age-band="5-7"] .result-note,
 [data-age-band="5-7"] .result-source,
+[data-age-band="5-7"] .result-subscript,
+[data-age-band="5-7"] .result-subscript .text-sm,
 [data-age-band="5-7"] .w2-result-scope .growth-line,
 [data-age-band="5-7"] .w2-result-scope .share-pre,
 [data-age-band="5-7"] .w2-summary-scope .text-sm,

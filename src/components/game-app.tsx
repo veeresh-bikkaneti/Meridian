@@ -4556,7 +4556,7 @@ function PlayLoaded({
                 aria-controls="session-score-breakdown"
                 aria-label={`Session score ${sessionTotal.toLocaleString("en-US")}. Toggle score breakdown by edition and difficulty.`}
                 onClick={() => setShowBreakdown((v) => !v)}
-                className="pointer-events-auto rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold tabular-nums text-fg"
+                className="pointer-events-auto rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold tabular-nums text-fg min-h-[44px] inline-flex items-center"
               >
                 SCORE {sessionTotal.toLocaleString("en-US")}
               </button>
@@ -4630,7 +4630,7 @@ function PlayLoaded({
               <button
                 type="button"
                 onClick={onEndGame}
-                className="pointer-events-auto rounded-md border border-white/10 bg-[rgba(10,12,16,0.72)] px-3 py-1.5 text-xs text-white/70 backdrop-blur-[14px] transition-colors hover:text-white"
+                className="pointer-events-auto inline-flex min-h-[44px] items-center rounded-md border border-white/10 bg-[rgba(10,12,16,0.72)] px-3 py-1.5 text-xs text-white/70 backdrop-blur-[14px] transition-colors hover:text-white"
               >
                 End game
               </button>

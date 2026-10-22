@@ -139,6 +139,7 @@ body:has(.home-v5) {
   color: #fbf7ea;
   font-size: 12.5px;
   padding: 14px 24px;
+  min-height: 44px; /* WI-9: guarantee the 44px tap-target floor on the class default padding (nav CTA) */
   box-shadow: 0 10px 22px -10px rgba(119, 89, 31, 0.55);
 }
 .home-v5 .hv5-btn-brown:hover {

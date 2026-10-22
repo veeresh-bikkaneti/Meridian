@@ -1,83 +1,57 @@
-# BRANCH_STATUS — fix/footer-row-alignment
+# BRANCH_STATUS — feat/wave2-kid-ux-shell
 
-**Branch:** `fix/footer-row-alignment`
-**Base:** origin/main @ `d2b643e`
-**State: CURED — panel round 1 returned NOT READY on a records
-contradiction (this file's E2E bullet vs the PR body); the
-bullet now carries the terminal record, verified below.
-Awaiting the panel re-vote and the owner's merge word.** One
-CSS file changed; no DOM, copy, or component changes. It
-supersedes the previous contents of this file (the
-`docs/232-verification-record` branch record, whose history
-lives on its own PR).
+**State: build complete locally; awaiting push via the owner route, then the Engineering Lead verdict (READY / NOT READY). Only the owner merges.**
+Base: `origin/main 55ff0b50` (rebased 2026-10-23: #230 + #232 + #235 in).
+Full write-up: `docs/reviews/2026-10-21-wave2-kid-ux-shell.md`.
 
-## The bug
+## What this branch does (Branch 2 of the wave-2 kid-UX track)
 
-On the home footer link row, the two `<button>` items
-("🔒 For grown-ups", "🗺️ Take the tour") rendered their text
-~11.5px lower than the two `<a>` items ("Privacy",
-"Contact us (grown-ups)"), even though all four boxes were
-perfectly aligned. Owner screenshot; verified on the
-production build (buildId `d2b643e`).
+- **WI-8** — Browser Back walks home → mode picker → round → result
+  and never exits from inside a round. Same-URL history entries
+  (new `src/lib/screen-history.ts` + GameApp wiring); the result
+  replaces the round's entry; refresh-resume unchanged, with the
+  stack rebuilt under a resumed run.
+- **WI-9** — The storyteller's greeting bubble no longer overlaps the
+  headline (measured 17,608px² at 320px before → 0px² at
+  320/375/768/1280 after; the bubble's measured height drives the
+  headline's margin via `--w2-bubble-clear`). 5–7 band: body and
+  result text floored at 16px via `data-age-band`; tap targets ≥44px.
+- **WI-10** — Top nav honesty: the dead Search button is removed
+  (hidden, not disabled), its orphaned CSS deleted, and every nav
+  item is labeled for the section jump it performs.
+- **WI-11** — Map wording (copy only): the share description, the
+  About section, and the GeoDetective case card now say the
+  detective's map is labeled, while the endless modes keep the
+  unlabeled-map wording that is true for them.
 
-## Root cause (measured, not guessed)
+## Commits
 
-Computed styles on the production build were **identical** for
-buttons and links — font-family Karla, font-size 14px,
-line-height 21px, padding 0 16px — and all four boxes sat at the
-same y with height 44px. The difference was inside the box:
-Chromium vertically centers a `<button>`'s content on its own
-(text rect +13.5px from the box top = exactly centered in
-44px), while a link's line box rides at the top of the 44px
-min-height box (text rect +2.0px). `.agep-footer-link` set the
-shared box but never normalized how the content sits in it.
+- `51c419f` WI-11: honest map wording
+- `3a223ea` WI-10: top nav honesty
+- `c197709` WI-9: bubble clearance + readability floors
+- `c217536` WI-8: Back/history + the three new e2e specs
 
-## The fix
+## Gates (final head)
 
-`src/components/age-profile/age-profile.css` — `.agep-footer-link`
-only: added `display: inline-flex; align-items: center;
-justify-content: center;` (with an explanatory comment), so
-both element types center their text identically in the 44px
-box. Nothing else touched.
+- `npx tsc --noEmit` — clean
+- `npm test` — 1480 pass / 0 fail (includes 7 new screen-history tests)
+- `node scripts/lint-cards.mjs` — GATE PASSED
+- `npm run build:pages` — green
+- Playwright (new): wave2-history 2/2, wave2-nav 1/1,
+  wave2-readability 6/6 — plus the neighboring regression set
+  (see the review doc for the full list and counts).
 
-## Measurements (Playwright, built artifact, serveBuiltArtifact)
+## Not in this branch (by file ownership)
 
-1280px, pre-fix → post-fix (box y / text-rect y):
+- GeoDetective / Cold Trail screen layouts (Branch 3) — including
+  two WI-11 follow-ups: the in-mode copy in `LoopScreen.tsx` and the
+  ambiguous "unlabeled spot" aria-label in `LoopMap.tsx:910`.
+- Result/story card content (Branch 4). Security headers (#212).
 
-| item | box y | text y pre | text y post |
-| :--- | :--- | :--- | :--- |
-| grown-ups (button) | 407.08 | 420.58 | 420.58 |
-| take-tour (button) | 407.08 | 420.58 | 420.58 |
-| privacy (link) | 407.08 | 409.08 | 420.58 |
-| contact (link) | 407.08 | 409.08 | 420.58 |
+## Environment notes
 
-Pre-fix text spread 11.5px → post-fix spread **0.0px**.
-
-390px (row wraps 2+2, as before): text offset from each box
-top was +13.5px (buttons) vs +2.0px (links) pre-fix; post-fix
-**+13.5px on all four**.
-
-768px horizontal overflow: scrollWidth 824 vs innerWidth 768
-**both pre- and post-fix** — pre-existing on main, not worse.
-
-## Gates (this branch)
-
-- `npx tsc --noEmit` — clean.
-- `npm test` — scripts **810 pass / 0 fail**, src **1479 pass /
-  0 fail** — the main baselines.
-- `node scripts/lint-cards.mjs` — **GATE PASSED**.
-- `VITE_KOFI_URL=… npm run build:pages` — green.
-- E2E (`--workers=1`, `VITE_KOFI_URL` at build + test time):
-  batch 1 (grownups-privacy-contact, age-profile-gate,
-  home-visual-layout) — **17 passed**; grandpa-coffee-run
-  desktop/mobile/reduced + mobile-home-overlap — passed;
-  home-badges-readaloud's batch — terminal record **exit 0,
-  22 passed**; home-badges-readaloud solo — **8/8 green on
-  this branch's build and 8/8 on unmodified main** (solo run
-  re-verified 8/8 on this branch's build during the cure
-  round).
-
-## Pending
-
-- Panel re-vote on the cured tip.
-- Owner's merge word. Only the owner merges.
+- Built on Node v24.20.0 (the brief's Node 22 is not installed on
+  this machine — deviation recorded in the review doc).
+- This machine cannot push (HTTPS 401 / SSH reset) and `gh` is
+  unauthenticated: delivery is git bundle + format-patch + a
+  paste-ready PR body via the owner route.
