@@ -132,6 +132,15 @@ numbers are under Verification below.
    the assets directory (`.vercel/output/static`), W1-proven. No
    bindings and no vars: the live version has none.
 
+   One side effect of a root config to know: Wrangler finds
+   configuration by walking up from the working directory, and
+   filename priority (`wrangler.json` > `wrangler.jsonc` >
+   `wrangler.toml`) beats directory proximity — so this root
+   `wrangler.jsonc` shadows descendant `wrangler.toml` configs for
+   wrangler invocations run inside those subdirectories, which is
+   why `workers/crash-report`'s documented dev command now passes
+   `-c wrangler.toml` explicitly.
+
 ## Verification on this branch (all run 2026-10-22)
 
 **`npm run build`** (the Builds build command) — exit 0. Module
