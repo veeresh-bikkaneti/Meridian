@@ -153,6 +153,8 @@ The public site is GitHub Pages, from a static build. `GITHUB_PAGES=1` sets the 
 
 The same production build also ships to [meridian.knowledgetest.workers.dev](https://meridian.knowledgetest.workers.dev/) via a Cloudflare Workers build and deploy — both URLs serve the live app.
 
+The Worker deploy shape is committed in this repo: a root `wrangler.jsonc` sets `main` to `src/server.ts`, Workers Builds deploys with that config, and the `@cloudflare/vite-plugin` wiring in `vite.config.ts` produces the bundle the deploy follows. The full record is [docs/reviews/2026-10-22-wrangler-config-entry.md](docs/reviews/2026-10-22-wrangler-config-entry.md).
+
 `npm run build` is a different path. It still produces the server build. The live preview uses that. Pages does not.
 
 MapLibre's worker is a sibling file the bundler would otherwise drop. The Pages build copies `maplibre-gl-worker.mjs` and `maplibre-gl-shared.mjs` into `assets/` so the map can start. Without those files the canvas is blank.

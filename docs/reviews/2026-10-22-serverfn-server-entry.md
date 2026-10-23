@@ -13,11 +13,11 @@ investigation proved no dashboard or API surface exposes that
 config — it is generated inside the Builds workspace on every
 build and discarded. The steps below are kept as history, exactly
 as the supersede note at the end of this document required. WI-19
-is delivered by **path (b)** instead: the #228 PR (root
+is to be delivered by **path (b)** instead: the #228 PR (root
 `wrangler.jsonc` + Cloudflare Vite plugin wiring). Live record:
 `docs/reviews/2026-10-22-wrangler-config-entry.md`.
 
-**Status: DELIVERED BY THE WI-19b PR (issue #228) — pending merge
+**Status: TO BE DELIVERED BY THE WI-19b PR (issue #228) — pending merge
 and post-merge verification** (2026-10-22). When the #228 PR has
 merged and a Builds deploy has carried it, this line becomes:
 **DONE — \<date\>, deploy \<the completed deploy in the Builds

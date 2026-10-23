@@ -11,6 +11,8 @@
   // (/_serverFn/ answered an unhandled 500). Committing this config
   // stops automatic configuration and makes the entry explicit.
   // Full record: docs/reviews/2026-10-22-wrangler-config-entry.md.
+  // Deploys go through Workers Builds / git — never run a local
+  // `wrangler deploy` against production.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "meridian",
   // THE fix: run the repo's real server entry (guard + TanStack handler).

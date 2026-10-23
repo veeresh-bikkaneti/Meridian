@@ -73,7 +73,8 @@ evidence.
 `@cloudflare/vite-plugin` imported in `vite.config.ts`
 (`cloudflare({ viteEnvironment: { name: "ssr" } })` before
 `tanstackStart(...)` — Cloudflare's documented TanStack Start
-recipe), the production build shape appears locally: 2,299 ssr
+recipe; `ssr` is server-side rendering, the environment that
+renders pages on the server), the production build shape appears locally: 2,299 ssr
 modules transformed (production log: 2,297), the plugin emits
 `node_modules/.nitro/vite/services/ssr/wrangler.json` (the
 *redirect* config wrangler follows: the plugin-built bundle as the
@@ -141,6 +142,13 @@ numbers are under Verification below.
    why `workers/crash-report`'s documented dev command now passes
    `-c wrangler.toml` explicitly.
 
+**Bumping the pins:** when `@cloudflare/vite-plugin` or
+`wrangler` is bumped, bump them together, and re-run the full
+check set — `npm run build`, the `wrangler deploy --dry-run`,
+the dev probes, and `npm run build:pages` — before merging the
+bump. The two packages move together upstream, and the proofs in
+this document only hold for the pair that was actually run.
+
 ## Verification on this branch (all run 2026-10-22)
 
 **`npm run build`** (the Builds build command) — exit 0. Module
@@ -174,9 +182,16 @@ wrangler's read count is the deploy-relevant invariant and it
 matches across the production log, W1, and this branch.) The
 quoted Total Upload is from this worktree's run; a fresh-checkout
 reproduction printed 45,636.63 KiB / gzip 6,083.76 KiB — the
-~0.01–0.03 KiB wobble is the absolute checkout path embedded in
+~0.01–0.03 KiB wobble is attributed to the absolute checkout path embedded in
 the bundle, not a content difference (every other byte count in
 this document matched the reproduction exactly).
+
+**Stale-artifact warning:** a tree that has run the plugin build
+carries `node_modules/.nitro/vite/services/ssr/wrangler.json` and
+`.wrangler/deploy/config.json`, and wrangler follows that leftover
+redirect — so before re-testing config behavior, clean those
+artifacts (or use a clean tree); results from a tree still
+carrying them can lie about which config governed.
 
 **`npx wrangler dev`** — the full probe set, all as expected:
 
@@ -226,13 +241,29 @@ so the panel judges it with eyes open.
 
 **Full gates** — `npx tsc --noEmit` clean; `npm test`:
 scripts **809 pass / 0 fail** (9 skipped), src **1479 pass /
-0 fail** — both exactly the pristine-main baselines;
+0 fail** — both exactly the pristine-main baselines (cure round:
+scripts **810 pass / 0 fail** — the +1 is a new plugin-ordering
+test in `scripts/grok-pwa-plugin.test.mjs` pinning
+`cloudflare(...)` before `tanstackStart(...)` in
+`vite.config.ts`);
 `node scripts/lint-cards.mjs` **GATE PASSED**. Tests that
 notice the change: no test reads `package.json`; one test
 (`scripts/grok-pwa-plugin.test.mjs`) reads `vite.config.ts` and
 passes. The rate-limiter test that checks
 `config/cloudflare/meridian.wrangler.toml` passes (11/11) —
 that file's edit in this PR is comments only.
+
+**Dev and preview smokes (cure round, 2026-10-22).** With the
+plugin wired, `npm run dev` (Vite dev server, port 8080) started
+and served the app: `GET /` answered 200 with the app HTML, and
+`GET /_serverFn/` answered 404 JSON with `Cache-Control:
+no-store` — the guard's answer, not a plugin-caused breakage.
+`npm run preview` (Vite preview, port 8081, serving the existing
+production build) behaved the same: `GET /` 200 with the app
+HTML, `GET /_serverFn/` 404 JSON `no-store`. Both servers were
+stopped cleanly after the probes. Neither mode needed a
+conditional plugin gate — the plugin works as-is in dev and
+preview.
 
 ## Deliberate omissions
 
@@ -272,7 +303,9 @@ deciding test**: the Builds workspace is Cloudflare's, not this
 machine. If that deploy fails or the post-merge probes fail, the
 rollback is reverting this one PR: the root config, the plugin
 wiring, and the two devDependencies go away together, and
-automatic configuration resumes on the next deploy — the exact
+automatic configuration resumes on the next deploy *because the
+committed config file is gone* (automatic configuration triggers
+only when no root config exists) — the exact
 behavior production runs today. A failed build promotes nothing,
 so the site keeps serving the current version while the revert
 is made.
@@ -288,16 +321,28 @@ completes; real output posted on this PR:
    committed config (redirect to the emitted ssr config naming
    `wrangler.jsonc` as the original user configuration; no
    automatic-configuration regeneration), asset read in the 699
-   class.
+   class. At verification time, paste the deploy's emitted
+   (redirect) config verbatim into the verification record on
+   the PR.
 3. The probe set against production: `/_serverFn/` → 404 JSON
    `no-store` + security headers; `/_serverFn/abc` → 404;
    `OPTIONS /_serverFn/x` → 405; `/` → 200 with the security
    headers and the HTML Cache-Control; `POST /api/contact` →
    400 with the same body as before; one hashed asset,
-   `/flags.json`, `/sw.js`, one storyteller MP3 → 200.
+   `/flags.json`, `/sw.js`, one storyteller MP3, one region
+   chunk, and one GeoDetective clue file → 200. The storyteller
+   MP3 probe also asserts `Content-Type: audio/mpeg` **and** a
+   `Cache-Control` header. The served `/sw.js` carries a
+   `VERSION` line equal to the merge buildId from item 1, with
+   no literal `__BUILD_ID__` placeholder left.
 4. The WI-19 status line in
    `docs/reviews/2026-10-22-serverfn-server-entry.md` flips to
    its DONE form (date, deploy, where this output was posted).
+5. One distinction to keep straight while verifying: Workers
+   observability (this config's `observability.enabled`) is
+   platform-side logging for the Worker itself; it is not the
+   client crash telemetry, which is the separate crash-report
+   pipeline (`workers/crash-report`).
 
 ## Files in this PR
 
@@ -314,6 +359,12 @@ completes; real output posted on this PR:
 - `config/cloudflare/meridian.wrangler.toml` — pointer comment
   corrected to the root config (comments only; `[[ratelimits]]`
   blocks untouched).
+- `scripts/grok-pwa-plugin.test.mjs` — one added test pinning
+  the `cloudflare(...)`-before-`tanstackStart(...)` ordering in
+  `vite.config.ts` (cure round).
+- `workers/crash-report/README.md`, `README.md` — the crash
+  worker's explicit `-c wrangler.toml` dev command, and the
+  Deployment section naming this deploy shape (cure round).
 - `BRANCH_STATUS.md` — this branch's record.
 
 Only the owner merges.

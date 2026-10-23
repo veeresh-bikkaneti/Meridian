@@ -591,6 +591,21 @@ test("vite config keeps the nitro serverDir wiring", () => {
   assert.match(viteConfig, /grokPwaPlugin\(\)/);
 });
 
+// WI-19b (issue #228): the Cloudflare plugin must be registered before
+// tanstackStart in the plugins list, or the deploy build shape breaks.
+test("vite config registers the Cloudflare plugin before tanstackStart", () => {
+  const viteConfig = readFileSync(join(TEMPLATE_ROOT, "vite.config.ts"), "utf8");
+  assert.match(viteConfig, /from "@cloudflare\/vite-plugin"/);
+  const cloudflareIdx = viteConfig.indexOf("cloudflare({");
+  const tanstackIdx = viteConfig.indexOf("tanstackStart(");
+  assert.ok(cloudflareIdx !== -1, "cloudflare(...) plugin call present");
+  assert.ok(tanstackIdx !== -1, "tanstackStart(...) plugin call present");
+  assert.ok(
+    cloudflareIdx < tanstackIdx,
+    "cloudflare(...) must be registered before tanstackStart(...)",
+  );
+});
+
 test("nitro middleware and its bundled assets exist", () => {
   const middleware = readFileSync(join(TEMPLATE_ROOT, "server/middleware/grok-pwa.ts"), "utf8");
   assert.match(middleware, /install-page\.html\?raw/);

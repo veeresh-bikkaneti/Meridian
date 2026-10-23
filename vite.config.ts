@@ -260,7 +260,11 @@ export default defineConfig(({ command, isPreview }) => ({
     // entry is src/server.ts — see the root wrangler.jsonc) and writes
     // the config that deploy follows. Scoped to the ssr environment
     // only, so the client build and the GitHub Pages build are
-    // untouched. Must be registered before tanstackStart.
+    // unchanged in substance — the only exceptions are an inert
+    // `.assetsignore` (+24 B), `_shell.html` +282 B (its embedded
+    // router manifest now also lists the home route), and growth
+    // in the unpublished `dist/server` build intermediate.
+    // Must be registered before tanstackStart.
     // Why: docs/reviews/2026-10-22-wrangler-config-entry.md (WI-19b).
     cloudflare({ viteEnvironment: { name: "ssr" } }),
     tanstackStart(githubPages ? { spa: { enabled: true } } : undefined),
