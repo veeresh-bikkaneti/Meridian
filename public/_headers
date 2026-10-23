@@ -58,18 +58,23 @@
 #     block for the same path would not be a separate rule.
 #
 # HTML, /flags.json and the sw.js group: every one gets an explicit
-# line below, so this file — not an undocumented platform default —
-# is the caching contract of record for them. Each is the first and
-# only Cache-Control set matching its path, so each simply replaces
-# the platform default.
+# line below. This file — not an undocumented platform default — is
+# the caching contract of record for them. One exception: for
+# rendered HTML the contract of record is the Worker middleware (see
+# the honesty note below), and this file's HTML lines only cover an
+# asset-served copy. Each listed path has exactly one Cache-Control
+# set in this file, so that set simply replaces the platform default.
 # One honesty note: the root document at / is currently rendered by the
 # app server, not served as a static asset (live probe 2026-10-21: the
 # / response carries neither the ETag nor the CF-Cache-Status header
 # the asset server always adds), so the / rule below cannot reach it on
 # the Cloudflare host today. It is kept so the policy lives in one place
-# and takes effect for any asset-served root; the post-merge live probe
-# is the check, and if / is still bare afterwards the remaining fix is
-# a server-side header, not another line here. /offline.html is served
+# and takes effect for any asset-served root. The server-side header
+# that note once called for now exists (WI-18, 2026-10-22): the request
+# middleware in src/start.ts sends the rendered pages' Cache-Control
+# itself, so a post-merge live probe of / should show the middleware's
+# value (public, max-age=0, must-revalidate); the _headers rule remains
+# for asset-served roots only. /offline.html is served
 # as an asset at its canonical path /offline (the .html URL 307-redirects
 # there), so it IS covered. /_shell.html is different: it exists in the
 # build output, but a live probe (2026-10-21) shows GET /_shell.html
@@ -137,8 +142,13 @@
 /manifest.webmanifest
   Cache-Control: no-cache
 
-# HTML entry points: short browser cache, edge may keep it briefly;
-# a deploy is visible within a minute.
+# HTML entry points: these two rules only ever reach an ASSET-SERVED
+# copy of the document. The live site's HTML is rendered by the Worker,
+# which sends Cache-Control: public, max-age=0, must-revalidate from
+# the request middleware in src/start.ts (constant HTML_CACHE_CONTROL
+# in src/lib/security-headers.ts) — deliberately WITHOUT s-maxage,
+# since rendered pages can carry per-request state. These rules are
+# kept as the policy of record for any asset-served root.
 /
   Cache-Control: public, max-age=0, s-maxage=60, must-revalidate
 /index.html
