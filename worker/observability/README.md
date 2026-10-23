@@ -54,9 +54,21 @@ is live there.)
 
 ## Reading the logs
 
+Run from this directory, naming this worker's own config
+explicitly (after the one-time copy in Files, above):
+
 ```sh
-npx wrangler tail --format json
+npx wrangler tail -c wrangler.toml --format json
 ```
+
+Never run a bare `npx wrangler tail` here: since PR #232 the
+repo root carries a `wrangler.jsonc`, and wrangler's config
+search walks up the tree with filename priority over directory
+proximity — a bare command would attach to the main `meridian`
+worker instead of this receiver. (Mitigants, for the record:
+this receiver is undeployed/reference-only today, and `tail` is
+read-only — the explicit `-c` is about reading the right
+worker's logs, not about preventing damage.)
 
 Each accepted event logs one line like:
 

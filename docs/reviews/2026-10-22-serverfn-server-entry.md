@@ -17,14 +17,24 @@ is to be delivered by **path (b)** instead: the #228 PR (root
 `wrangler.jsonc` + Cloudflare Vite plugin wiring). Live record:
 `docs/reviews/2026-10-22-wrangler-config-entry.md`.
 
-**Status: TO BE DELIVERED BY THE WI-19b PR (issue #228) — pending merge
-and post-merge verification** (2026-10-22). When the #228 PR has
-merged and a Builds deploy has carried it, this line becomes:
-**DONE — \<date\>, deploy \<the completed deploy in the Builds
-deployments list\>, verification output posted on the #228 PR.**
-The verifier is Chitti: after the deploy, Chitti runs the
-post-change probes in the WI-19b record and posts the real output
-on the #228 PR.
+**Status: DONE — 2026-10-23, deploy: Workers Builds build
+`691c3bf7` (success), deployed version `b5de3350`, buildId
+`d15e191`; verification output posted on PR #232**
+([comment 6358078391](https://github.com/veeresh-bikkaneti/Meridian/pull/232#issuecomment-6358078391)).
+Delivered by PR #232 (the WI-19b PR, issue #228), squash-merged
+on the owner's word as `d15e191` after the round-2 panel re-vote
+voted READY. The build log shows the deploy followed the
+committed config — "Using redirected Wrangler configuration —
+Original user's configuration: `wrangler.jsonc`", 699 files read
+from `.vercel/output/static`, Total Upload 45,680.03 KiB — and
+the live probes passed: `/_serverFn/` → 404
+`{"error":"not found"}` + `no-store` + the full security header
+set (the pre-merge unhandled 500 is gone), `/_serverFn/abc` →
+404, OPTIONS → 405. (This status line was flipped to DONE by the
+status-flip docs PR that followed the merge; before that, at
+PR #232's own merge time, it read TO BE DELIVERED BY THE WI-19b
+PR — exactly as the earlier version of this paragraph
+prescribed.)
 
 **In plain language:** the *entry* (or *entrypoint*) is the first
 file run for every request — it decides what handles the request.

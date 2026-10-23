@@ -3,11 +3,15 @@
 Branch: `fix/228-root-wrangler-config` — this PR. Based on `main` at
 `d77ee52` (the PR #230 merge). Closes issue #228.
 
-**Status: BUILT AND PROVEN LOCALLY — awaiting panel review and the
-owner's merge word.** The fix is not called done until the
-post-merge verification at the end of this document passes against
-production, with the real output posted on this PR. Verifier:
-Chitti.
+**Status: DONE — merged and verified.** Panel round 1 voted
+NOT READY (one BLOCK, cured docs-only); the round-2 re-vote on
+the cured tip `9c25452` voted **READY** (APPROVE ×5 ·
+APPROVE-WITH-NITS ×7 · BLOCK ×0 · DevEx PASS-WITH-NITS). The
+owner merged on his word: squash `d15e191`, 2026-10-23. The
+post-merge verification at the end of this document **PASSED**
+against production — full output posted on PR #232
+([comment 6358078391](https://github.com/veeresh-bikkaneti/Meridian/pull/232#issuecomment-6358078391)).
+Issue #228 is closed by the merge.
 
 **In plain language:** every request to the site is handled by an
 *entry* file — the first file run. Production has never run this
@@ -140,7 +144,17 @@ numbers are under Verification below.
    `wrangler.jsonc` shadows descendant `wrangler.toml` configs for
    wrangler invocations run inside those subdirectories, which is
    why `workers/crash-report`'s documented dev command now passes
-   `-c wrangler.toml` explicitly.
+   `-c wrangler.toml` explicitly. One honest limit, recorded so
+   nobody misattributes it to this PR: the cured `-c` command
+   *selects* the right worker (proven three ways in the panel
+   record), but a full local *boot* of the crash worker is
+   separately blocked by a pre-existing defect — issue **#234**:
+   `workers/crash-report/src/index.ts` exports the constant
+   `ANOMALY_MIN_COUNT` as a named export, and workerd rejects
+   non-handler named exports. That export is byte-identical on
+   main before this PR, and production is unaffected: the crash
+   worker deploys by direct API upload, never by wrangler, and
+   the live worker is healthy.
 
 **Bumping the pins:** when `@cloudflare/vite-plugin` or
 `wrangler` is bumped, bump them together, and re-run the full
@@ -240,11 +254,11 @@ CI builds will spend the extra seconds and disk; recorded here
 so the panel judges it with eyes open.
 
 **Full gates** — `npx tsc --noEmit` clean; `npm test`:
-scripts **809 pass / 0 fail** (9 skipped), src **1479 pass /
-0 fail** — both exactly the pristine-main baselines (cure round:
-scripts **810 pass / 0 fail** — the +1 is a new plugin-ordering
-test in `scripts/grok-pwa-plugin.test.mjs` pinning
-`cloudflare(...)` before `tanstackStart(...)` in
+scripts **810 pass / 0 fail** (9 skipped), src **1479 pass /
+0 fail** — the cure-round numbers. (The pre-cure run was 809
+scripts pass, exactly the pristine-main baseline; the +1 is a
+new plugin-ordering test in `scripts/grok-pwa-plugin.test.mjs`
+pinning `cloudflare(...)` before `tanstackStart(...)` in
 `vite.config.ts`);
 `node scripts/lint-cards.mjs` **GATE PASSED**. Tests that
 notice the change: no test reads `package.json`; one test
@@ -310,39 +324,57 @@ behavior production runs today. A failed build promotes nothing,
 so the site keeps serving the current version while the revert
 is made.
 
-## Post-merge verification (still owed)
+## Post-merge verification — EXECUTED 2026-10-23, PASSED
 
-Run by Chitti after the owner merges and the Builds deploy
-completes; real output posted on this PR:
+Run by Chitti after the owner merged (squash `d15e191`) and the
+Builds deploy completed; real output posted on PR #232
+([comment 6358078391](https://github.com/veeresh-bikkaneti/Meridian/pull/232#issuecomment-6358078391)).
+Workers Builds build `691c3bf7` — success; deployed version
+`b5de3350`. Every checklist item below was executed:
 
-1. `/build-meta.json` shows the merge commit's buildId (the new
-   deploy is the live one).
-2. The Builds build log for that deploy: the deploy followed the
-   committed config (redirect to the emitted ssr config naming
-   `wrangler.jsonc` as the original user configuration; no
-   automatic-configuration regeneration), asset read in the 699
-   class. At verification time, paste the deploy's emitted
-   (redirect) config verbatim into the verification record on
-   the PR.
-3. The probe set against production: `/_serverFn/` → 404 JSON
-   `no-store` + security headers; `/_serverFn/abc` → 404;
-   `OPTIONS /_serverFn/x` → 405; `/` → 200 with the security
-   headers and the HTML Cache-Control; `POST /api/contact` →
-   400 with the same body as before; one hashed asset,
-   `/flags.json`, `/sw.js`, one storyteller MP3, one region
-   chunk, and one GeoDetective clue file → 200. The storyteller
-   MP3 probe also asserts `Content-Type: audio/mpeg` **and** a
-   `Cache-Control` header. The served `/sw.js` carries a
-   `VERSION` line equal to the merge buildId from item 1, with
-   no literal `__BUILD_ID__` placeholder left.
-4. The WI-19 status line in
-   `docs/reviews/2026-10-22-serverfn-server-entry.md` flips to
-   its DONE form (date, deploy, where this output was posted).
-5. One distinction to keep straight while verifying: Workers
+1. **BuildId — PASSED.** `/build-meta.json` shows buildId
+   `d15e191`, the merge commit (the new deploy is the live one).
+2. **Build log — PASSED.** The deploy followed the committed
+   config: "Using redirected Wrangler configuration — Original
+   user's configuration: `wrangler.jsonc`" (no
+   automatic-configuration regeneration), "Read 699 files from
+   the assets directory `.vercel/output/static`", Total Upload
+   45,680.03 KiB. The emitted (redirect) config itself was
+   pasted into the PR record as reproduced locally from the
+   identical merged tree, labeled as such (the Builds workspace
+   files are discarded): `configPath` → root `wrangler.jsonc`,
+   `main: "index.js"`, `no_bundle: true`, assets →
+   `.vercel/output/static`, compatibility flags `[]`.
+3. **Probe set — PASSED.** `/_serverFn/` → 404
+   `{"error":"not found"}` + `no-store` + the full security
+   header set (the pre-merge 500 is gone); `/_serverFn/abc` →
+   404; `OPTIONS /_serverFn/` → 405; `/`, `/privacy` → 200 and
+   the 404 page → 404, each with exactly one WI-18
+   Cache-Control (`public, max-age=0, must-revalidate`) + the
+   security set; `POST /api/contact` → 400 with an Origin
+   header, byte-parity with pre-merge behavior (without Origin,
+   the handler's own 403 origin gate); `/flags.json` and
+   `/sw.js` → `no-cache`, and the served `sw.js` carries
+   `VERSION = "meridian-d15e191"` with no `__BUILD_ID__`
+   placeholder; the storyteller MP3 probe asserted
+   `Content-Type: audio/mpeg` and recorded its Cache-Control
+   (`public, max-age=0, must-revalidate`, the carved value);
+   clue file `/loop/clues/0.json` → 200 `application/json`;
+   a hashed JS chunk → 200 `immutable`. (No separately-named
+   region chunk is served — boundary geometry rides the tile
+   service; the chunk classes that exist were verified, and
+   this was recorded in the PR comment.)
+4. **#229 document flip — DONE by the companion status-flip
+   docs PR.** The WI-19 status line in
+   `docs/reviews/2026-10-22-serverfn-server-entry.md` now reads
+   DONE (2026-10-23, Builds build `691c3bf7` / version
+   `b5de3350`, verification output on PR #232).
+5. **Distinction kept — recorded in the PR comment.** Workers
    observability (this config's `observability.enabled`) is
    platform-side logging for the Worker itself; it is not the
    client crash telemetry, which is the separate crash-report
-   pipeline (`workers/crash-report`).
+   pipeline (`workers/crash-report`) — untouched by this change
+   and still live.
 
 ## Files in this PR
 
