@@ -2,9 +2,10 @@
 
 **Branch:** `fix/228-root-wrangler-config`
 **Base:** origin/main @ `d77ee52` (PR #230 merge)
-**State: BUILT + PROVEN LOCALLY — awaiting the full panel review,
-then the owner's merge word.** All gates below are green and every
-proof was reproduced on this branch (numbers in
+**State: CURED — awaiting panel re-vote.** Panel round 1 voted
+NOT READY (BLOCK ×1 / NITS ×10 / APPROVE ×1 / DevEx PASS-WITH-NITS);
+the cure round below addresses every item. All gates below are
+green and every proof was reproduced on this branch (numbers in
 `docs/reviews/2026-10-22-wrangler-config-entry.md`). The fix is
 not called done until the post-merge production verification
 (Acceptance, below) passes with verbatim results posted on the PR
@@ -12,7 +13,7 @@ after the owner merges and Workers Builds deploys.
 
 **This branch closes issue #228 (WI-19b).**
 
-## Owner ruling trail (Veeresh, all 2026-10-22, quoted)
+## Owner ruling trail (Veeresh, all 2026-10-22, quoted where quotation marks appear; items 2, 4, 6 summarized)
 
 1. **"18 go (plain value), 19a now, 19b as follow-up"** — WI-19
    path (a) (a dashboard edit to the Builds-generated config)
@@ -77,6 +78,14 @@ invisibly is now visible and deterministic.
 - `config/cloudflare/meridian.wrangler.toml` — pointer comment
   corrected to the root config (comments only; `[[ratelimits]]`
   untouched; its test passes 11/11).
+- Cure round (panel round 1): `workers/crash-report/README.md`
+  (dev command now passes `-c wrangler.toml` explicitly),
+  `README.md` (Deployment names the Worker deploy shape),
+  `scripts/grok-pwa-plugin.test.mjs` (one added test pinning
+  `cloudflare(...)` before `tanstackStart(...)`), plus
+  comment/record corrections in `vite.config.ts`,
+  `wrangler.jsonc`, `config/cloudflare/meridian.wrangler.toml`,
+  and both review docs.
 - `BRANCH_STATUS.md` — this record.
 
 ## Gates (2026-10-22, this branch)
@@ -106,7 +115,33 @@ invisibly is now visible and deterministic.
 - `npx tsc --noEmit` — clean.
 - `npm test` — scripts **809 pass / 0 fail** (9 skipped), src
   **1479 pass / 0 fail** — exactly the main baselines.
+  Cure round: scripts **810 pass / 0 fail** (the +1 is the new
+  plugin-ordering test), src **1479 pass / 0 fail**;
+  `npx tsc --noEmit` clean; rate-limiter test 11/11.
 - `node scripts/lint-cards.mjs` — **GATE PASSED**.
+- Cure-round smokes — `npm run dev` (port 8080) and
+  `npm run preview` (port 8081): both started, `GET /` 200 with
+  the app HTML, `GET /_serverFn/` 404 JSON `no-store`, both
+  stopped cleanly. No plugin gate needed — the plugin works
+  as-is in dev and preview.
+
+## Panel round 1 + cure (2026-10-22)
+
+Round 1 verdict: **NOT READY — BLOCK ×1 / NITS ×10 /
+APPROVE ×1 / DevEx PASS-WITH-NITS.** The BLOCK: the root
+`wrangler.jsonc` shadows `workers/crash-report/wrangler.toml`
+for wrangler commands run inside that directory (find-up,
+filename priority), so the crash worker's documented
+`npx wrangler dev` silently targeted the main worker. Cured:
+the documented command passes `-c wrangler.toml` explicitly,
+and the review doc records the shadowing rule. The nits —
+vite.config comment accuracy, TOML tense, #229-doc tense,
+dev/preview smokes, README deploy shape, pin-bump and
+stale-artifact notes, rollback reasoning, post-merge probe
+hardenings (mirrored in Acceptance below), the previews
+unknown made explicit (Unresolved, below) — are all cured in
+the cure-round commits. **State: cured — awaiting panel
+re-vote.**
 
 ## Acceptance (still owed after merge)
 
@@ -116,14 +151,30 @@ and the Builds deploy completes:
 1. `/build-meta.json` buildId = the merge commit.
 2. The deploy's build log: the committed config governed (no
    automatic-configuration regeneration), asset read in the 699
-   class.
+   class; the deploy's emitted (redirect) config pasted verbatim
+   into the verification record on the PR.
 3. Production probes: `/_serverFn/` → 404 JSON `no-store` +
    security headers; `/_serverFn/abc` → 404; OPTIONS → 405;
    `/` → 200 + headers + HTML Cache-Control; `POST /api/contact`
    → 400, same body; hashed asset, `/flags.json`, `/sw.js`, one
-   storyteller MP3 → 200.
+   storyteller MP3, one region chunk, and one GeoDetective clue
+   file → 200. The storyteller MP3 probe also asserts
+   `Content-Type: audio/mpeg` and a `Cache-Control` header. The
+   served `/sw.js` `VERSION` line equals the merge buildId, with
+   no literal `__BUILD_ID__` placeholder left.
 4. The WI-19 status line in the #229 document flips to DONE
    (date, deploy, where the output was posted).
+5. Keep the distinction straight while verifying: Workers
+   observability (the config's `observability.enabled`,
+   platform-side Worker logs) is not the client crash telemetry
+   (the separate crash-report pipeline).
+
+## Unresolved
+
+- **Previews untested:** the branch Builds `npx wrangler preview`
+  path has never been exercised. The first PR-branch Builds run
+  after merge shows whether it works; non-blocking per the
+  owner's 2026-10-15 ruling.
 
 **Rollback:** revert this PR — root config, plugin wiring, and
 devDependencies leave together and automatic configuration
