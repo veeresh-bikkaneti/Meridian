@@ -2,11 +2,14 @@
 
 **Branch:** `fix/footer-row-alignment`
 **Base:** origin/main @ `d2b643e`
-**State: BUILT + GATED — awaiting the full panel review and the
-owner's merge word.** One CSS file changed; no DOM, copy, or
-component changes. It supersedes the previous contents of this
-file (the `docs/232-verification-record` branch record, whose
-history lives on its own PR).
+**State: CURED — panel round 1 returned NOT READY on a records
+contradiction (this file's E2E bullet vs the PR body); the
+bullet now carries the terminal record, verified below.
+Awaiting the panel re-vote and the owner's merge word.** One
+CSS file changed; no DOM, copy, or component changes. It
+supersedes the previous contents of this file (the
+`docs/232-verification-record` branch record, whose history
+lives on its own PR).
 
 ## The bug
 
@@ -21,7 +24,7 @@ production build (buildId `d2b643e`).
 
 Computed styles on the production build were **identical** for
 buttons and links — font-family Karla, font-size 14px,
-line-height 21px, padding 0 — and all four boxes sat at the
+line-height 21px, padding 0 16px — and all four boxes sat at the
 same y with height 44px. The difference was inside the box:
 Chromium vertically centers a `<button>`'s content on its own
 (text rect +13.5px from the box top = exactly centered in
@@ -65,18 +68,16 @@ top was +13.5px (buttons) vs +2.0px (links) pre-fix; post-fix
 - `node scripts/lint-cards.mjs` — **GATE PASSED**.
 - `VITE_KOFI_URL=… npm run build:pages` — green.
 - E2E (`--workers=1`, `VITE_KOFI_URL` at build + test time):
-  grownups-privacy-contact, age-profile-gate,
-  home-visual-layout (10 passed); grandpa-coffee-run
-  desktop/mobile/reduced + mobile-home-overlap (passed);
-  home-badges-readaloud — 2 failures in one batch run under
-  heavy VM load (a 90s beforeEach timeout + a tour-overlay
-  clone duplicate), then **8/8 green solo on this branch's
-  build and 8/8 on unmodified main** — classified as VM-pacing
-  flakes, not caused by this change (a `display` property
-  cannot duplicate a DOM node).
+  batch 1 (grownups-privacy-contact, age-profile-gate,
+  home-visual-layout) — **17 passed**; grandpa-coffee-run
+  desktop/mobile/reduced + mobile-home-overlap — passed;
+  home-badges-readaloud's batch — terminal record **exit 0,
+  22 passed**; home-badges-readaloud solo — **8/8 green on
+  this branch's build and 8/8 on unmodified main** (solo run
+  re-verified 8/8 on this branch's build during the cure
+  round).
 
 ## Pending
 
-- Full 12-role panel review of this branch (pipeline rule).
-- Independent Reality Checker verification.
+- Panel re-vote on the cured tip.
 - Owner's merge word. Only the owner merges.
