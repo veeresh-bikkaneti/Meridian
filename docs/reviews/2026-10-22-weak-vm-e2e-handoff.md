@@ -7,7 +7,9 @@ file is the *how*, that one is the *why*.
 **Repo:** `veeresh-bikkaneti/Meridian`
 **Written:** 2026-10-22, by Claude (Opus 5), from direct observation.
 
-**The owner has ruled on every open question** (2026-10-22, "Adopt all").
+**The owner has ruled on every open question** (2026-10-21, "Adopt all";
+the session ran through midnight, and the panel comment recording the
+rulings was posted 2026-10-22).
 The rulings are in §8 and in the posture doc's §7 — read them before
 implementing; do not re-decide anything they settle.
 
@@ -162,7 +164,7 @@ runs test 1 in CI** — the exact opposite of Change C. Verify with
 
 Adding the file runs **both** tests, and test 1 is the one to keep out.
 
-**The owner ruled Option 1** (2026-10-22). Do not use Option 2.
+**The owner ruled Option 1** (2026-10-21). Do not use Option 2.
 
 - **Option 1 — RULED.** Tag test 1 `@local-only` in its title and add
   `--grep-invert @local-only` to the CI command. Self-documenting, and the
@@ -279,7 +281,7 @@ Plus the Playwright runs from §1.
 
 ## 8. Owner rulings — all settled
 
-Answered 2026-10-22, "Adopt all". Do not re-decide these. Full wording in
+Answered 2026-10-21, "Adopt all". Do not re-decide these. Full wording in
 the posture doc's §7.
 
 Numbered to match the posture doc's §7, so a cross-reference means the

@@ -2,8 +2,10 @@
 
 **Date:** 2026-10-22
 **Author:** Claude (Opus 5), at the owner's direction
-**Status:** RULED. The owner answered every open question on 2026-10-22
-("Adopt all"); the rulings are recorded in §7 against each question.
+**Status:** RULED. The owner answered every open question on 2026-10-21
+("Adopt all"; the session ran through midnight, and the panel comment
+recording the rulings was posted 2026-10-22); the rulings are recorded
+in §7 against each question.
 **Change A (§5.1) has shipped** — PR #226, merged 2026-10-22; `main`'s `e2e`
 is green again. Changes B and C (§5.2, §5.3) are **not yet built**.
 This document is the permanent record of the decision; the companion
@@ -242,7 +244,7 @@ either the runner improves or the assertion is made render-independent.
 
 ## 7. Questions, and the owner's rulings
 
-All five were answered by the owner on 2026-10-22 ("Adopt all"). The
+All five were answered by the owner on 2026-10-21 ("Adopt all"). The
 question is kept with its ruling so the reasoning stays legible.
 
 1. **Does the capable-device spoof now hide too much?** Every other spec
