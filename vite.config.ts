@@ -16,6 +16,8 @@ import { crashWatchdogPlugin } from "./scripts/crash-watchdog-plugin.mjs";
 // @ts-expect-error JS plugin alongside the TS vite config
 import { fingerprintSwPlugin } from "./scripts/fingerprint-sw-plugin.mjs";
 // @ts-expect-error JS plugin alongside the TS vite config
+import { buildMetaPlugin } from "./scripts/build-meta-plugin.mjs";
+// @ts-expect-error JS plugin alongside the TS vite config
 import { appEnvPlugin } from "./scripts/app-env-plugin.mjs";
 // @ts-expect-error JS module alongside the TS vite config
 import { resolveBuildId } from "./scripts/build-id.mjs";
@@ -39,6 +41,15 @@ function buildIdForBundle(): string {
   }
   return resolveBuildId();
 }
+
+/**
+ * The ONE build id for this vite invocation (WI-7a). Computed once and
+ * shared by the bundle `define`, the fingerprint-sw plugin and the
+ * build-meta plugin, so the baked id, the sw.js VERSION and the served
+ * build-meta.json are the same string by construction — two separate
+ * buildIdForBundle() calls could diverge on the timestamp fallback.
+ */
+const BUILD_ID = buildIdForBundle();
 import { isMigrationFile } from "./scripts/migration-plan.mjs";
 
 /** The files `src/lib/db.ts` globs — same directory, same non-recursive scope. */
@@ -233,7 +244,7 @@ export default defineConfig(({ command, isPreview }) => ({
   base: githubPages ? "/Meridian/" : "/",
   define: {
     // Baked-in build identity for deploy-awareness (see src/game/build-staleness.ts).
-    __MERIDIAN_BUILD_ID__: JSON.stringify(buildIdForBundle()),
+    __MERIDIAN_BUILD_ID__: JSON.stringify(BUILD_ID),
   },
   server: {
     host: "0.0.0.0",
@@ -280,7 +291,13 @@ export default defineConfig(({ command, isPreview }) => ({
     // build so it works even when vite is invoked directly (bypassing npm
     // lifecycle hooks). Idempotent — safe alongside postbuild hooks.
     // See scripts/fingerprint-sw-plugin.mjs.
-    fingerprintSwPlugin(),
+    fingerprintSwPlugin(BUILD_ID),
+    // Write build-meta.json into the build output with the SAME id.
+    // The npm prebuild hooks write public/build-meta.json, but a direct
+    // vite invocation (the Workers Builds path) bypasses them — before
+    // this plugin, that path served no meta file at all on a fresh
+    // checkout. See scripts/build-meta-plugin.mjs.
+    buildMetaPlugin(BUILD_ID),
     ...(githubPages
       ? []
       : command === "build" || isPreview
