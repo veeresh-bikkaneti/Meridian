@@ -1,17 +1,30 @@
 # WI-19: make production run `src/server.ts` so `/_serverFn/` returns 404
 
 Branch: `fix/serverfn-server-entry` — this PR. Based on `main` at
-`76630ba` (the PR #212 merge). **Docs only**: the fix itself is one
-field in a Cloudflare dashboard configuration, edited by the owner.
-No code changes, no Cloudflare state changes by any agent.
+`76630ba` (the PR #212 merge). **Docs only**: as written, the fix was
+one field in a Cloudflare dashboard configuration, edited by the
+owner. No code changes, no Cloudflare state changes by any agent.
 
-**Status: PENDING — owner action not yet taken** (2026-10-22). When
-the owner has taken the steps below and a deploy has carried them,
-this line becomes: **DONE — \<date\>, deploy \<the completed deploy in
-the Builds deployments list\>, verification output posted on PR
-#229.** The verifier is Chitti: after the change, Chitti runs the
-post-change probes in this document and records the real output on
-PR #229.
+**SUPERSEDED (2026-10-22): the path-(a) dashboard steps in this
+document describe a configuration editor that does not exist.** The
+owner went to the screen (screenshot, 2026-10-22) and found no
+Wrangler configuration and no `main` field; a follow-up
+investigation proved no dashboard or API surface exposes that
+config — it is generated inside the Builds workspace on every
+build and discarded. The steps below are kept as history, exactly
+as the supersede note at the end of this document required. WI-19
+is to be delivered by **path (b)** instead: the #228 PR (root
+`wrangler.jsonc` + Cloudflare Vite plugin wiring). Live record:
+`docs/reviews/2026-10-22-wrangler-config-entry.md`.
+
+**Status: TO BE DELIVERED BY THE WI-19b PR (issue #228) — pending merge
+and post-merge verification** (2026-10-22). When the #228 PR has
+merged and a Builds deploy has carried it, this line becomes:
+**DONE — \<date\>, deploy \<the completed deploy in the Builds
+deployments list\>, verification output posted on the #228 PR.**
+The verifier is Chitti: after the deploy, Chitti runs the
+post-change probes in the WI-19b record and posts the real output
+on the #228 PR.
 
 **In plain language:** the *entry* (or *entrypoint*) is the first
 file run for every request — it decides what handles the request.
@@ -104,6 +117,10 @@ Veeresh, 2026-10-22: **"19a now, 19b as follow-up"** (from "18 go
   `wrangler.jsonc`. Deferred; see the last section.
 
 ## The change (path (a)) — exact owner steps
+
+> **Superseded — do not follow these steps.** The configuration
+> editor they describe does not exist; see the banner at the top
+> of this document. Kept as history.
 
 One field, in one place, changed by the owner:
 
@@ -350,6 +367,20 @@ root Wrangler configuration file" (Root cause, above) and the
 dashboard-steps model of path (a) — becomes history, and the
 pointer comment in `config/cloudflare/meridian.wrangler.toml` must
 be updated in the same PR. Updating both is part of #228's job.
+
+**Implemented (2026-10-22):** the #228 PR lands path (b) — with
+one shape change the experiments forced: a committed root config
+ALONE was proven unable to deploy (wrangler's own bundler cannot
+resolve TanStack Start's plugin-injected virtual modules), so the
+PR also wires `@cloudflare/vite-plugin` into `vite.config.ts`
+and pins `wrangler` as a devDependency. The shipped inventory
+follows the locally proven shape — no assets key and no bindings
+in the root config; the plugin's emitted config supplies both —
+which differs from the speculative inventory above. The WI-19b
+record is the authority:
+`docs/reviews/2026-10-22-wrangler-config-entry.md`. Both
+supersede updates named above (this document's framing and the
+TOML pointer comment) are made in that same PR, as required.
 
 ## Files in this PR
 

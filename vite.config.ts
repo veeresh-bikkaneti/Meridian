@@ -6,6 +6,7 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { nitro } from "nitro/vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
 // @ts-expect-error JS plugin alongside the TS vite config
 import { grokPwaPlugin } from "./scripts/grok-pwa-plugin.mjs";
 // @ts-expect-error JS plugin alongside the TS vite config
@@ -254,6 +255,18 @@ export default defineConfig(({ command, isPreview }) => ({
     // PWA head + ?install=1 tutorial page; runs before Start/Nitro.
     grokPwaPlugin(),
     tailwindcss(),
+    // Cloudflare deploy shape for the production Worker: builds the
+    // "ssr" environment into the bundle `wrangler deploy` uploads (the
+    // entry is src/server.ts — see the root wrangler.jsonc) and writes
+    // the config that deploy follows. Scoped to the ssr environment
+    // only, so the client build and the GitHub Pages build are
+    // unchanged in substance — the only exceptions are an inert
+    // `.assetsignore` (+24 B), `_shell.html` +282 B (its embedded
+    // router manifest now also lists the home route), and growth
+    // in the unpublished `dist/server` build intermediate.
+    // Must be registered before tanstackStart.
+    // Why: docs/reviews/2026-10-22-wrangler-config-entry.md (WI-19b).
+    cloudflare({ viteEnvironment: { name: "ssr" } }),
     tanstackStart(githubPages ? { spa: { enabled: true } } : undefined),
     // ?nosw=1 escape hatch AFTER tanstackStart: its buildApp post hook must
     // run after TanStack's prerender wrote _shell.html (same post order +

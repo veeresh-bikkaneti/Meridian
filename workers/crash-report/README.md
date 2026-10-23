@@ -351,7 +351,7 @@ directory's pinned devDependency; `npm install` in this directory
 fetches it), a full local run also works:
 
 ```sh
-npx wrangler dev
+npx wrangler dev -c wrangler.toml
 curl -X POST localhost:8787/ingest -H 'content-type: application/json' \
   -H 'origin: https://meridian.knowledgetest.workers.dev' \
   -d '{"type":"suspected_crash","ts":1728300000000,"buildId":"test","edition":"globe","lastMilestone":"boot_ready"}'
