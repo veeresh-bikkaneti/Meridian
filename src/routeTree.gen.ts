@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CreditsRouteImport } from './routes/credits'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ApiContactRouteImport } from './routes/api/contact'
 
@@ -22,6 +23,11 @@ const IndexRoute = IndexRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreditsRoute = CreditsRouteImport.update({
+  id: '/credits',
+  path: '/credits',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -38,12 +44,14 @@ const ApiContactRoute = ApiContactRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
+  '/credits': typeof CreditsRoute
   '/privacy': typeof PrivacyRoute
   '/api/contact': typeof ApiContactRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
+  '/credits': typeof CreditsRoute
   '/privacy': typeof PrivacyRoute
   '/api/contact': typeof ApiContactRoute
 }
@@ -51,20 +59,22 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
+  '/credits': typeof CreditsRoute
   '/privacy': typeof PrivacyRoute
   '/api/contact': typeof ApiContactRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/privacy' | '/api/contact'
+  fullPaths: '/' | '/contact' | '/credits' | '/privacy' | '/api/contact'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/privacy' | '/api/contact'
-  id: '__root__' | '/' | '/contact' | '/privacy' | '/api/contact'
+  to: '/' | '/contact' | '/credits' | '/privacy' | '/api/contact'
+  id: '__root__' | '/' | '/contact' | '/credits' | '/privacy' | '/api/contact'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
+  CreditsRoute: typeof CreditsRoute
   PrivacyRoute: typeof PrivacyRoute
   ApiContactRoute: typeof ApiContactRoute
 }
@@ -83,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/credits': {
+      id: '/credits'
+      path: '/credits'
+      fullPath: '/credits'
+      preLoaderRoute: typeof CreditsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -105,6 +122,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactRoute: ContactRoute,
+  CreditsRoute: CreditsRoute,
   PrivacyRoute: PrivacyRoute,
   ApiContactRoute: ApiContactRoute,
 }
