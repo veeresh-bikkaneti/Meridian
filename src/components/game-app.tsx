@@ -3423,10 +3423,10 @@ function Play({
 
   if (poolError) {
     return (
-      <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
-        <p className="text-sm tracking-wide text-muted uppercase">Couldn&rsquo;t load places</p>
-        <h1 className="mt-2 font-display text-4xl text-fg">{run.regionName}</h1>
-        <p role="alert" className="mt-4 max-w-md text-lg text-muted">
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+        <p className="name-eyebrow">Couldn&rsquo;t load places</p>
+        <h1 className="mode-title mt-2 text-4xl text-fg">{run.regionName}</h1>
+        <p role="alert" className="mt-4 max-w-md text-lg text-fg">
           {poolError} The run was not started with a partial pool — pick the region again to retry.
         </p>
         <div className="mt-6">
@@ -3438,10 +3438,10 @@ function Play({
 
   if (!places) {
     return (
-      <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
-        <p className="text-sm tracking-wide text-muted uppercase">Loading places</p>
-        <h1 className="mt-2 font-display text-4xl text-fg">{run.regionName}</h1>
-        <p className="mt-4 max-w-md text-lg text-muted" role="status">
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+        <p className="name-eyebrow">Loading places</p>
+        <h1 className="mode-title mt-2 text-4xl text-fg">{run.regionName}</h1>
+        <p className="mt-4 max-w-md text-lg text-fg" role="status">
           Fetching this region&rsquo;s places&hellip;
         </p>
       </main>
@@ -4348,7 +4348,7 @@ function PlayLoaded({
                 all play calls go through the isSoundEnabled() gate. */}
             <SoundToggle
               testId="sound-toggle-game"
-              className="pointer-events-auto rounded-md border border-line bg-surface px-2.5 py-2 text-fg transition-colors hover:text-white"
+              className="pointer-events-auto rounded-md border border-line bg-surface px-2.5 py-2 text-fg transition-colors"
             />
             {/* Scout Map settings toggle. The choice writes
                 meridian:map-mode and sends the player home — the new
@@ -4359,7 +4359,7 @@ function PlayLoaded({
           {review ? (
             <p
               data-testid="review-progress"
-              className="pointer-events-auto rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold text-fg"
+              className="game-chrome pointer-events-auto rounded-md px-3 py-2 text-sm font-semibold"
             >
               {REVIEW_DECK_COPY.progressOf} {Math.min(run.index + 1, pool.length)} of{" "}
               {pool.length}
@@ -4374,7 +4374,7 @@ function PlayLoaded({
                 aria-controls="session-score-breakdown"
                 aria-label={`Session score ${sessionTotal.toLocaleString("en-US")}. Toggle score breakdown by edition and difficulty.`}
                 onClick={() => setShowBreakdown((v) => !v)}
-                className="pointer-events-auto rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold tabular-nums text-fg"
+                className="game-chrome pointer-events-auto rounded-md px-3 py-2 text-sm font-semibold tabular-nums"
               >
                 SCORE {sessionTotal.toLocaleString("en-US")}
               </button>
@@ -4424,7 +4424,7 @@ function PlayLoaded({
               // edition. Both labels are honest about what they measure.
               <p
                 data-testid="streak-flame"
-                className="rounded-md border border-line bg-surface px-3 py-1.5 text-sm tabular-nums text-fg"
+                className="game-chrome rounded-md px-3 py-1.5 text-sm tabular-nums"
               >
                 <span role="img" aria-label={`${run.streak}-place streak`}>
                   🔥
@@ -4432,7 +4432,7 @@ function PlayLoaded({
                 {run.streak}
               </p>
             ) : null}
-            <p className="rounded-md border border-line bg-surface px-3 py-2 text-sm text-fg">
+            <p className="game-chrome rounded-md px-3 py-2 text-sm">
               {/* Session-scoped places (not this run's): switching editions
                   no longer drops the counter back to 0. */}
               {session?.hits ?? run.hits} placed
@@ -4448,7 +4448,7 @@ function PlayLoaded({
               <button
                 type="button"
                 onClick={onEndGame}
-                className="pointer-events-auto rounded-md border border-white/10 bg-[rgba(10,12,16,0.72)] px-3 py-1.5 text-xs text-white/70 backdrop-blur-[14px] transition-colors hover:text-white"
+                className="game-chrome pointer-events-auto rounded-md px-3 py-1.5 text-xs"
               >
                 End game
               </button>
@@ -4488,7 +4488,7 @@ function PlayLoaded({
             type="button"
             onClick={onEndGame}
             data-testid="end-game-button"
-            className="pointer-events-auto flex min-h-[44px] items-center rounded-full border border-white/10 bg-[rgba(10,12,16,0.72)] px-4 text-sm font-semibold text-white/70 backdrop-blur-[14px] transition-colors hover:text-white"
+            className="game-chrome pointer-events-auto flex min-h-[44px] items-center rounded-full px-4 text-sm font-semibold"
           >
             End game
           </button>
@@ -4575,13 +4575,13 @@ function PlayLoaded({
           role="status"
           className="pointer-events-none fixed inset-x-4 top-16 z-50"
         >
-          <div className="pointer-events-auto mx-auto flex max-w-md items-center gap-3 rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.85)] p-4 pl-5 text-white shadow-xl backdrop-blur-[14px]">
+          <div className="game-chrome pointer-events-auto mx-auto flex max-w-md items-center gap-3 rounded-2xl p-4 pl-5 shadow-xl">
             <p className="m-0 flex-1 text-sm leading-snug">{TILE_FALLBACK_COPY.switchNote}</p>
             <button
               type="button"
               aria-label="Dismiss"
               onClick={() => setTileSwitchNote(null)}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 text-lg leading-none text-white/70 transition-colors hover:text-white"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--game-chrome-line)] text-lg leading-none text-[var(--atlas-muted)] transition-colors hover:text-[var(--atlas-ink)]"
             >
               <span aria-hidden="true">×</span>
             </button>
@@ -4602,13 +4602,13 @@ function PlayLoaded({
           role="status"
           className="pointer-events-none fixed inset-x-4 top-16 z-50"
         >
-          <div className="pointer-events-auto mx-auto flex max-w-md items-center gap-3 rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.85)] p-4 pl-5 text-white shadow-xl backdrop-blur-[14px]">
+          <div className="game-chrome pointer-events-auto mx-auto flex max-w-md items-center gap-3 rounded-2xl p-4 pl-5 shadow-xl">
             <p className="m-0 flex-1 text-sm leading-snug">{SCOUT_COPY.switchNote}</p>
             <button
               type="button"
               aria-label="Dismiss"
               onClick={() => setScoutSwitchNote(null)}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 text-lg leading-none text-white/70 transition-colors hover:text-white"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--game-chrome-line)] text-lg leading-none text-[var(--atlas-muted)] transition-colors hover:text-[var(--atlas-ink)]"
             >
               <span aria-hidden="true">×</span>
             </button>
