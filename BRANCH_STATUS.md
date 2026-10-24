@@ -59,10 +59,11 @@ Builds ONLY items A–D below; everything else in the manifest is HELD.
   shared form keeps both game cards behaving identically. Consequence
   to record: with badges earned, GeoDetective has 1 card stop + 1
   stop per badge chip (pre-existing, required); with no badges, exactly
-  1 stop. CTA text stays its accessible name; card articles carry no
-  competing `aria-labelledby` name (removed from GD/CT); Review keeps
-  its region name via `aria-labelledby` to the `h2` (existing E2E
-  relies on `region "Review my misses"`).
+  1 stop. CTA text stays its accessible name; GD/CT card articles ARE
+  labelled by their headings via `aria-labelledby` (F4 restoration in
+  0df59fe — the earlier removal sentence was pre-F4 and is corrected
+  here); Review keeps its region name via `aria-labelledby` to the
+  `h2` (existing E2E relies on `region "Review my misses"`).
 
 ## Parity account (measured, same Playwright harness, baseline = this branch pre-change)
 
@@ -89,7 +90,9 @@ consequence of the specified rule (art keeps 3/2 at full width), not a
 deviation from it — panel should confirm the taller journal art is
 acceptable before merge.
 
-## Commits (8, on top of base `d327dd3`)
+## Commits (4, on top of base `fa9f36b`)
+
+Chain: three rebased commits (`dc45d01` → `0df59fe` → `7f3bd8f`) plus this docs commit.
 
 - `tests/e2e/card-redesign.desktop.spec.ts` (new, 10 tests): JOIN
   heights; GD/CT split order + image/heading/paragraph/corner clicks;
@@ -134,14 +137,14 @@ padding; 768 orphan reparenting; comparison-page housekeeping
 
 ## Pending
 
-- Coordinator: panel review + rebase; push + PR (NOT done by this branch).
+- Coordinator: panel review (done in the fix track) + rebase (DONE onto `fa9f36b`); push + PR (NOT done by this branch — push withheld: the rebased branch needs a force-push, explicitly forbidden; owner decision owed).
   Form S is FINAL (coordinator's pick, above) — no longer pending.
 - Chitti independent review (not yet done).
-- Owner watch + green-light on the screen recordings (not yet done).
+- Owner watch + green-light on the NEW head's screen recordings (the 00be8d3 green-light does not cover the rebased head; fresh post-rebase recordings delivered with the fix track).
 - 768px @ 400% zoom globe-mount follow-up (NOT this branch's defect):
   home-v5.css:877 fixed-200px `.hv5-globe-zone`, 28px horizontal scroll
   at 192px layout, pre-existing home chrome.
-- Comparison 699 run + threshold justification + purpose analysis.
+- Comparison 699 run: DONE in the fix track (real run: stacks at 699, side-by-side at 700; first zoomed-hero row stacks at 390px wide via inline max-width — evidence-page quirk, not an app defect). Threshold justification + purpose analysis still owed if the owner wants them.
 - Panel confirmation: taller full-width journal art (see parity
   account) and the 768 orphan reparenting design are still open.
 - Still owed from the council (§7, not built here): scan watch,
