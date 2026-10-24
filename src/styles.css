@@ -1883,3 +1883,42 @@
     display: none;
   }
 }
+
+/* =====================================================================
+ * Mode screens (WI-12)
+ * Atlas token parity for the quiz play, GeoDetective and Cold Trail
+ * screens. Built only from existing tokens — no token definition is
+ * added or changed here.
+ * ===================================================================== */
+
+.mode-screen {
+  position: relative;
+  color: var(--atlas-ink);
+  font-family: var(--font-atlas-body);
+}
+
+.mode-screen::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(110% 70% at 50% -10%, var(--atlas-glow), transparent 60%),
+    linear-gradient(180deg, var(--atlas-bg-1) 0%, var(--atlas-bg-2) 100%);
+}
+
+.mode-title {
+  font-family: var(--font-atlas-display);
+}
+
+.mode-card {
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 18px;
+}
+
+.mode-surface {
+  background: var(--atlas-card);
+  border-color: var(--atlas-card-line);
+}
