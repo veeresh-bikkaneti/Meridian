@@ -56,6 +56,7 @@ import {
   type PlaceFacts,
 } from "./age-profile/index.ts";
 import type { Difficulty } from "./scoring.ts";
+import { kidStoryVersion } from "./kid-story.ts";
 // Import attribute: required by Node's module loader (unit tests run under
 // node --experimental-strip-types); bundlers accept it as well. The manifest
 // is ~7 KB — the only generated-data file in the initial bundle.
@@ -328,6 +329,13 @@ function toStarter(
  * the blurb (truthful fallback — never invents text).
  */
 export function storyForBand(place: Starter, band: AgeBandId): string {
+  // Curated starters (WI-14): the hand-written story IS the reviewed card
+  // text — there are no rung parts to re-map. Bands 8-10 / 11-13 get it
+  // whole; band 5-7 gets the sentence-shortened kid version derived from
+  // that same text (kid-story.ts — shortening only, never new text).
+  if (place.curated === true) {
+    return band === "5-7" ? kidStoryVersion(place.story) : place.story;
+  }
   const hookText = place.fact ?? place.history ?? "";
   const blurb =
     hookText.length > 0 && place.story.startsWith(hookText)
