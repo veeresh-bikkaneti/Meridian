@@ -417,7 +417,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   const placingNow = placing !== null;
 
   return (
-    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8" data-testid="coldtrail-screen">
+    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8 lg:max-w-6xl" data-testid="coldtrail-screen">
       <header>
         <div className="flex items-start justify-between gap-3">
           <Button type="button" variant="ghost" onClick={onLeave} className="min-h-[44px] px-2">
@@ -436,7 +436,8 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
         </p>
       </header>
 
-      <section aria-label="Sightings" className="mt-6 flex flex-col gap-3">
+      <div className="ct-layout mt-6">
+      <section aria-label="Sightings" className="ct-sightings flex flex-col gap-3">
         {caseData.sightings.map((s, i) => (
           <SightingCard
             key={s.id}
@@ -463,7 +464,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
         ))}
       </section>
 
-      <section aria-label="Trail map" className="mt-6 flex flex-col gap-3">
+      <section aria-label="Trail map" className="ct-map flex flex-col gap-3">
         {/* Plain text, not a live region: the hint below (role="status") is
             the single announcer — two live regions were double-announcing
             the same sentences (e.g. "All 3 rings are down"). Every state
@@ -524,21 +525,6 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             </>
           ) : null}
         </div>
-        {!revealed ? (
-          <p className="text-xs text-muted" aria-hidden="true">
-            <span className="text-gold-ink">gold ring</span>&thinsp;=&thinsp;{theme.map.legendRing}
-            {placingNow ? (
-              <>
-                &ensp;·&ensp;<span className="text-gold-ink">dashed ring</span>&thinsp;=&thinsp;{theme.map.legendDraft}
-              </>
-            ) : null}
-            &ensp;·&ensp;{allRingsPlaced && !evidenceOverlap?.polygon ? (
-              <>{theme.map.legendNoCross}</>
-            ) : (
-              <>{theme.map.legendCross}</>
-            )}
-          </p>
-        ) : null}
         {hint ? (
           <div className="flex items-center justify-between gap-3">
             <p role="status" data-testid="map-hint" className="text-sm text-fg">
@@ -558,6 +544,23 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
           </div>
         ) : null}
       </section>
+      </div>
+
+      {!revealed ? (
+        <p className="mode-surface mt-6 rounded-[18px] border px-3 py-2 text-xs text-muted" aria-hidden="true">
+          <span className="text-gold-ink">gold ring</span>&thinsp;=&thinsp;{theme.map.legendRing}
+          {placingNow ? (
+            <>
+              &ensp;·&ensp;<span className="text-gold-ink">dashed ring</span>&thinsp;=&thinsp;{theme.map.legendDraft}
+            </>
+          ) : null}
+          &ensp;·&ensp;{allRingsPlaced && !evidenceOverlap?.polygon ? (
+            <>{theme.map.legendNoCross}</>
+          ) : (
+            <>{theme.map.legendCross}</>
+          )}
+        </p>
+      ) : null}
 
       {pending && !revealed ? (
         <InterceptConfirm theme={theme} onConfirm={onConfirmIntercept} onCancel={() => setPending(null)} />
