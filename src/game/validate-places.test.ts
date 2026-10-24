@@ -72,7 +72,7 @@ test("generated-place gate passes matching imports", () => {
   assert.deepEqual(violations, []);
 });
 
-test("all 327 starters pass coordinate validation (Hyderabad rule)", () => {
+test("all 331 starters pass coordinate validation (Hyderabad rule)", () => {
   const allViolations: string[] = [];
   for (const starter of STARTERS) {
     allViolations.push(...validateStarterCoordinates(starter));

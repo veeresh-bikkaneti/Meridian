@@ -1,106 +1,120 @@
-# BRANCH_STATUS — fix/a11y-confirmed-findings
+# BRANCH_STATUS — feat/wave2-content-quality
 
-**Branch:** `fix/a11y-confirmed-findings`
-**Base:** origin/main @ `c9cba12` ("docs: on-device AI story text decision
-memo (WI-5) (#216)")
-**State: FIXES COMPLETE — gates re-verified by the PR #240 review
-pipeline; the branch is ON ORIGIN and PR #240 is OPEN (see Push
-status).** Fixes for the axe-confirmed accessibility findings from the
-2026-10-24 launch audit + live axe scan (reports:
-`meridian-launch-technical-audit-2026-10-24.md`,
-`meridian-scan-a11y-axe-2026-10-24.md`). It supersedes the previous
-contents of this file (the `fix/footer-row-alignment` branch record,
-whose history lives on its own PR).
+**Branch:** `feat/wave2-content-quality`
+**Base:** `main` at `d327dd3` (includes the PR #240 merge)
+**State: WORK COMPLETE — all gates green at code head `aa7c8c1`,
+independently re-verified by the QA re-verification pass
+(`logs/qa-rerun.log`: PASS); this paperwork docs commit follows on
+top. Peer Reviewer verdict after the loop-1 re-review: APPROVE WITH
+FIXES (paperwork), F-1 closed — this commit closes P-1/P-2. The branch
+is LOCAL ONLY — not pushed, no PR yet (see Push status).** Wave 2
+content-quality work: WI-14 rich story card after every pin, WI-15
+`/credits` page, WI-16 globe deck continent balance, WI-17
+`lint:content` in CI. It supersedes the previous contents of this file
+(the `fix/a11y-confirmed-findings` branch record, whose history lives
+on its own PR #240).
 
 ## Scope (exactly this — no drive-by changes)
 
-1. **F1 contrast (WCAG 1.4.3)** — the contact form's validation error
-   list uses `text-red-700` (#b91c1c): 2.66:1 on the dark `--surface`
-   (audit, source tokens), 2.92:1 measured live on `--bg`. Fix: a
-   theme-aware `--error` token following the `--gold-ink` pattern —
-   dark `#f1948a` (the value `age-profile.css` already uses for gate
-   errors under `[data-theme="night"]`), light `#b91c1c` (the current
-   value; already ≥4.5:1 on every light surface, so light rendering is
-   unchanged). `contact.tsx` switches to `text-error`.
-2. **listitem** — `<ul role="alert">` strips the list role, so its
-   `<li>` children trip axe's `listitem` rule in the same error state.
-   Fix: the alert role moves to a wrapping `<div>`; the `<ul>` stays a
-   list. (Codebase pattern: `role="alert"` lives on `<p>`/block
-   wrappers, never on a list.)
-3. **label-content-name-mismatch (home, WCAG 2.5.3)** — the grandpa
-   bubble-ask button's `aria-label` omits its second visible line,
-   "Your support keeps Meridian free for kids". Fix: the accessible
-   name now contains both visible lines verbatim, in order, keeping the
-   existing trailing guidance sentence.
-4. **Investigation only** — GrownUpGate's "×" cancel button was marked
-   `label-content-name-mismatch` *incomplete* ×1 by axe on /contact's
-   gate state. Determination + evidence in the delivery report
-   (`meridian-a11y-fixes-2026-10-24.md`); no code change.
+1. **WI-14 story card parity** — every curated place shows its reviewed
+   story on hit and on miss; the 5–7 band gets a shorter kid version
+   derived from that same reviewed text by sentence-prefix shortening
+   only (`src/game/kid-story.ts`, no new text, no on-device AI). The
+   miss card also gains the hit card's read-aloud row (B-UX-1: spoken
+   parity for the 5–7 band). Plain fallback stays for uncurated
+   GeoNames places only.
+2. **WI-15 `/credits`** — a `/credits` route crediting GeoNames
+   (CC BY 4.0), Wikipedia text (CC BY-SA), Esri imagery (the on-map
+   attribution string, imported from the shared constant, never
+   retyped), and the bundled open-source libraries (list checked by
+   test against `package.json` dependencies). One footer link. No
+   trackers, no form, no email, no certification claim.
+3. **WI-16 deck balance** — the globe landmark deck grows 12 → 16 with
+   exactly four additions (Statue of Liberty, Chichén Itzá, Eiffel
+   Tower, Sydney Opera House), so every inhabited continent meets the
+   Product Owner's proposed floor of `max(2, ⌈size ÷ 8⌉)`. No existing
+   landmark deleted or moved. Starters total 327 → 331.
+4. **WI-17 `lint:content`** — the runtime's banned-pattern rules run in
+   CI over the clue files, starter stories, and catalog stories,
+   importing the rule code from the runtime module (one source, no
+   drift). The 6 violations measured in today's content are baselined
+   individually and listed in the PR as owner-decision items; none was
+   edited on this branch. The Peer Reviewer's adversarial pass found
+   the lint's first-match blindness (F-1) — it recorded only the first
+   match per rule per record, hiding `279.json#c5`'s second measurement
+   ("69 km"); a follow-up commit fixes it with enumerate-all matching,
+   occurrence-aware baseline keys, and regression tests, and baselines
+   the "69 km" item.
 
-## TDD record
+## Commits (8, on top of base `d327dd3`)
 
-- `src/a11y-regressions.test.ts` (new; source-guard idiom of
-  `security-headers.test.ts` / `bounded-text.test.ts`): **RED on the
-  base — 10 tests, 1 pass / 9 fail.** The only pre-fix pass is "the ask
-  button has an aria-label".
-- After the fixes: **GREEN — 10 tests, 10 pass / 0 fail.**
+- `d5b128b` feat(lint): WI-17 lint:content — runtime clue-quality rules in CI
+- `48c0e25` feat(credits): WI-15 /credits page — GeoNames, Wikipedia, Esri and bundled OSS credits
+- `596d586` feat(deck): WI-16 four globe landmarks — every inhabited continent at the floor
+- `586725d` feat(story): WI-14 rich story card after every pin — band-correct curated story on hit and miss
+- `881f8a5` fix(branch): register /credits in sitemap and update globe count in question-label test
+- `67cc839` docs(branch): wave2 content quality review doc and branch status
+- `aa7c8c1` fix(lint): WI-17 enumerate every match per record — sixth violation (279#c5 '69 km') baselined (peer review F-1)
+- docs(branch): paperwork corrections after peer re-review (P-1/P-2) — this commit
 
-## Gates (this branch; run at the local fix head `a91b844`, and
-re-verified at remote head `8e9cae8` by the PR #240 review pipeline
-with identical results — logs in `~/workspace/meridian-pr240-review/logs/`)
+The `881f8a5` commit fixes two branch-introduced fallouts found by WI-14's
+full-suite run and proven present on the pre-WI-14 head (not baseline,
+not WI-14 regressions): the sitemap was missing the `/credits` entry
+WI-15 added a route for, and a question-label test still asserted the
+old 12-landmark globe count after WI-16 grew the deck.
 
-- `npx tsc --noEmit` — exit 0, no output.
-- `npm test` — exit 0. Scripts suite: 834 tests, 825 pass / 0 fail /
-  9 skipped. Src suite: 1489 tests, 1489 pass / 0 fail (includes the
-  10 new a11y-regression guards).
+## Gates (this branch; run at code head `aa7c8c1`, logs in
+`~/workspace/meridian-wave2-b4/logs/`; fix log `logs/wi17-fix.log`;
+QA re-verification in `logs/qa-rerun.log` re-ran the full set
+independently with identical totals — PASS)
+
+- `npm run typecheck` — clean, exit 0.
+- `npm test` — exit 0. Scripts suite: 841 tests, 832 pass / 0 fail /
+  9 skipped. Src suite: 1502 tests, 1502 pass / 0 fail. (Baseline at
+  `d327dd3`: scripts 834 tests / 825 pass; src 1489 / 1489.)
 - `node scripts/lint-cards.mjs` — exit 0, prints `GATE PASSED`.
-- `npm run build:pages` — exit 0 (also exit 0 with `VITE_KOFI_URL`
-  set, as the E2E specs require).
-- Playwright E2E, targeted specs only (`grownups-privacy-contact`
-  desktop + grandpa-coffee-run desktop/mobile/reduced; 17 tests):
-  **15 passed, 2 failed.** Both failures are animation-timing
-  timeouts in the grandpa walk specs (desktop: scene beat never
-  reached "kettle" within 12 s; reduced: `comet-mascot` bounding box
-  timeout at 180 s). **Baseline check: the identical 2 tests fail
-  the same way on pristine base `c9cba12`** (9 passed / same 2 failed
-  in the two-file run) — pre-existing failures on this VM, not
-  regressions from this branch. First E2E attempt aborted at spec
-  load because `VITE_KOFI_URL` was unset; the runs above set it for
-  both build and test, per the specs' own header.
-- Full gate detail: delivery report `meridian-a11y-fixes-2026-10-24.md`.
+- `npm run lint:content` — exit 0, `GATE PASSED`; scanned clues=1935,
+  starters=331, catalog=106; violations=6, all baselined (owner
+  decision pending), 0 new, 0 stale.
+- Peer Reviewer re-review (loop 1) — APPROVE WITH FIXES (paperwork),
+  F-1 closed; this docs commit closes the two paperwork fixes
+  (P-1/P-2).
+- `npm run build:pages` — exit 0 (with `VITE_KOFI_URL` set, as the E2E
+  specs require); `/credits` artefacts present in the build.
+- Playwright E2E, targeted specs only: credits 2 passed; result-story-
+  parity 2 passed; hit-story 1 passed; grownups-privacy-contact
+  3 passed; result-card-overflow (mobile) 13 passed / 4 skipped /
+  0 failed (the skips are the spec's own by-design cases). 24 QA
+  screenshots captured and inspected.
+- Environment note: gates ran on this VM under Node v24; CI uses
+  Node 22.x — the CI run is still to confirm.
 
-## Push status — ON ORIGIN (via GitHub API replay)
+Full detail: `docs/reviews/2026-10-21-wave2-content-quality.md` and
+the persona sections in the PR body.
 
-- Direct `git push` from the build VM still fails (`remote: Invalid
-  username or token. Password authentication is not supported for Git
-  operations.` — the VM's stored `gh` token is invalid and SSH is
-  reset by the egress proxy). That part of the original record was
-  accurate; the "local-only / no PR" conclusion is superseded by what
-  follows.
-- On 2026-10-24 the owner supplied a fine-grained PAT through the
-  Secure Vault (the `custom.github` API connector; the token never
-  passed through chat), and the four commits were replayed onto
-  `c9cba12` through the GitHub API with identical content, messages
-  and authorship. Remote commits: `7285b93` (test), `c8f5a31`
-  (F1+F2), `6994296` (F3), `8e9cae8` (docs) — corresponding to local
-  originals `8b816f2`, `c898023`, `a91b844`, `9f24fda`. All five
-  changed files were verified byte-identical to the local head.
-- **PR #240 is OPEN**, based on `main` @ `c9cba12` (still the latest
-  main — no rebase was needed). **No merge, no deploy** — those wait
-  for the owner's separate approval.
+## Push status — LOCAL ONLY
+
+- The crew did not push and did not open a PR. The parent agent
+  replays the branch onto origin through the GitHub API (the route
+  used for PR #240) and opens the PR with the assembled description.
+- **No merge, no deploy** — those wait for the owner's separate word.
+  Only the owner merges.
 
 ## Pending
 
-- Owner's review/merge word on PR #240.
-- This status correction is a docs commit prepared in the PR #240
-  review clone (`~/workspace/meridian-pr240-review/repo`); it reaches
-  origin via the same API-replay route, and its hash is recorded in
-  the review report (`meridian-pr240-review-2026-10-24.md`).
-- Still owed (unchanged): a live screen-reader pass (NVDA/VoiceOver),
-  zoom and forced-colours checks, and device testing on the live site.
-- Process note for the owner: the PR #240 review's Code Reviewer
-  ruled this fix unit **Tier 2** under the council table's "3+ files"
-  trigger — the fixes were executed as per-fix Tier 1 Solo TDD, and
-  no owner-set override is on record. The ruling and its reasoning
-  are in the review report for the owner's call; that seat required
-  no code changes beyond this status correction.
+- Owner's review and merge decision on the PR (not yet opened; opened
+  by the parent via API replay).
+- Owner decisions carried in the PR: the 6 baselined `lint:content`
+  violations — including `279.json#c5` "69 km", added after the Peer
+  Reviewer's F-1 pass (fix the text, keep the baseline, or retire the
+  clue/place); ratification of the WI-16 continent floor as a standing
+  rule; the Esri licensing/account items in
+  `docs/reviews/esri-tiles-licensing.md` §6.
+- Still owed (unchanged): a real screen-reader pass (NVDA/VoiceOver),
+  device speech testing, and zoom / forced-colours checks for the new
+  surfaces.
+- Process disclosure (in the review doc and PR): `AGENTS.md` calls
+  this Tier 2 council work; the crew's PO + Architect passes served as
+  the council-equivalent, with the manifest assembled as PR sections
+  rather than one signed document and the adversarial challenge run
+  post-code by the Peer Reviewer seat.

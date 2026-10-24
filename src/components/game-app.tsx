@@ -3097,6 +3097,9 @@ function Choose({
         <Link to="/contact" className="agep-footer-link" data-testid="contact-link">
           Contact us (grown-ups)
         </Link>
+        <Link to="/credits" className="agep-footer-link" data-testid="credits-link">
+          Credits
+        </Link>
         {/* Kids-privacy promise (owner 2026-10-21). Deliberately FACTUAL
             statements, not a "COPPA compliant" badge: compliance is a legal
             determination nobody has certified, and an unqualified claim on a
