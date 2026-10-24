@@ -66,9 +66,9 @@ test("region context: every sighting names its continent + country", async ({ pa
   await page.getByTestId("loop-map").click({ position: { x: 350, y: 280 } });
   await page.getByTestId("intercept-confirm-btn").click();
   const reveal = page.getByTestId("coldtrail-reveal");
-  await expect(reveal).toContainText("The hideout was", { timeout: 10_000 });
+  await expect(reveal).toContainText("The trail led to", { timeout: 10_000 });
   const hideoutName = (await reveal.textContent())
-    ?.match(/The hideout was ([^.]+)/)?.[1]
+    ?.match(/The trail led to ([^.]+)/)?.[1]
     ?.trim();
   expect(hideoutName).toBeTruthy();
   for (const line of await regions.allTextContents()) {
@@ -125,7 +125,7 @@ test("full slice: place 3 rings → tap → confirm → score reveal", async ({ 
   await page.getByTestId("intercept-confirm-btn").click();
   const reveal = page.getByTestId("coldtrail-reveal");
   await expect(reveal).toBeVisible({ timeout: 10_000 });
-  await expect(reveal).toContainText("The hideout was");
+  await expect(reveal).toContainText("The trail led to");
   await expect(reveal).toContainText("km");
 
   // Next case deals a fresh case (rings reset).
@@ -256,7 +256,7 @@ test("paid informant tightens one ring for a star", async ({ page }) => {
   await placeAndLockRing(page, { x: 200, y: 200 });
   await page.getByTestId("informant-btn").first().click();
   await expect(stars).toContainText("⭐ 1");
-  await expect(page.getByTestId("map-hint")).toContainText("informant tightened");
+  await expect(page.getByTestId("map-hint")).toContainText("Guide tightened");
 });
 
 test("placement mode: map canvas shows crosshair cursor", async ({ page }) => {

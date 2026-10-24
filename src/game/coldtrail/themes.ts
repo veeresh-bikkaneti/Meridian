@@ -1,5 +1,5 @@
 import type { AgeBandId } from "../age-profile/types.ts";
-import type { ColdTrailVerdict } from "./engine.ts";
+import { scoreBand, type ColdTrailVerdict } from "./engine.ts";
 import type { ColdTrailSighting } from "./types.ts";
 
 /**
@@ -93,18 +93,8 @@ function octantWord(octant: string): string {
   return OCTANT_WORDS[octant] ?? octant;
 }
 
-// Commit 1 only: local copy of the score cut points (<=100/<=300/<=800).
-// Commit 2 replaces this with engine.scoreBand as part of the engine
-// split, leaving no duplicated thresholds in the final state.
-function scoreBandLocal(scoreKm: number): 0 | 1 | 2 | 3 {
-  if (scoreKm <= 100) return 0;
-  if (scoreKm <= 300) return 1;
-  if (scoreKm <= 800) return 2;
-  return 3;
-}
-
 export function verdictForTheme(theme: ColdTrailTheme, scoreKm: number): ColdTrailVerdict {
-  const band = scoreBandLocal(scoreKm);
+  const band = scoreBand(scoreKm);
   const verdict = theme.verdicts[band]!;
   return { title: verdict.title, line: verdict.line, caught: band <= 1 };
 }

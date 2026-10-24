@@ -3,11 +3,12 @@ import { test } from "node:test";
 import {
   effectiveRadius,
   INFORMANT_COST,
+  scoreBand,
   scoreIntercept,
   SOLVE_REWARD,
   STARTING_STARS,
-  verdictFor,
 } from "./engine.ts";
+import { THEMES, verdictForTheme } from "./themes.ts";
 import type { ColdTrailSighting } from "./types.ts";
 
 const sighting = (radiusKm: number): ColdTrailSighting => ({
@@ -35,16 +36,25 @@ test("scoreIntercept is 0 on the hideout and ~306 km Denver-area to Boston", () 
   assert.ok(nycBoston >= 300 && nycBoston <= 315, `nyc->bos ${nycBoston}`);
 });
 
-test("verdictFor bands: caught under 300 km", () => {
-  assert.equal(verdictFor(0).caught, true);
-  assert.equal(verdictFor(100).caught, true);
-  assert.equal(verdictFor(101).caught, true);
-  assert.equal(verdictFor(300).caught, true);
-  assert.equal(verdictFor(301).caught, false);
-  assert.equal(verdictFor(800).caught, false);
-  assert.equal(verdictFor(801).caught, false);
-  assert.match(verdictFor(50).title, /Caught red-handed/);
-  assert.match(verdictFor(5000).title, /vanished/);
+test("scoreBand boundaries: caught under 300 km (bands 0-1)", () => {
+  assert.equal(scoreBand(0), 0);
+  assert.equal(scoreBand(100), 0);
+  assert.equal(scoreBand(101), 1);
+  assert.equal(scoreBand(300), 1);
+  assert.equal(scoreBand(301), 2);
+  assert.equal(scoreBand(800), 2);
+  assert.equal(scoreBand(801), 3);
+  // Caught equivalence via verdictForTheme, for each shipped theme
+  // (per-theme title assertions live in themes.test.ts).
+  for (const theme of Object.values(THEMES)) {
+    assert.equal(verdictForTheme(theme, 0).caught, true);
+    assert.equal(verdictForTheme(theme, 100).caught, true);
+    assert.equal(verdictForTheme(theme, 101).caught, true);
+    assert.equal(verdictForTheme(theme, 300).caught, true);
+    assert.equal(verdictForTheme(theme, 301).caught, false);
+    assert.equal(verdictForTheme(theme, 800).caught, false);
+    assert.equal(verdictForTheme(theme, 801).caught, false);
+  }
 });
 
 test("economy constants are sane", () => {

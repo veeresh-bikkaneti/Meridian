@@ -2,7 +2,8 @@ import { strict as assert } from "node:assert";
 import { test } from "node:test";
 import { distanceKm, initialBearing, octantOf } from "../geo.ts";
 import { coldtrailCaseCount, getColdtrailCase } from "./cases.ts";
-import { effectiveRadius, scoreIntercept, verdictFor } from "./engine.ts";
+import { effectiveRadius, scoreBand, scoreIntercept } from "./engine.ts";
+import { THEMES, verdictForTheme } from "./themes.ts";
 import type { ColdTrailSighting } from "./types.ts";
 
 const mkSighting = (over: Partial<ColdTrailSighting>): ColdTrailSighting => ({
@@ -27,17 +28,18 @@ test("scoreIntercept across the antimeridian is the short way around", () => {
   assert.equal(scoreIntercept(179, 0, 179, 0), 0);
 });
 
-// --- Edge 2: exact verdict band boundaries ---
-test("verdictFor exact boundaries and titles", () => {
-  assert.equal(verdictFor(100).title, "Caught red-handed!");
-  assert.equal(verdictFor(101).caught, true);
-  assert.equal(verdictFor(300).title, "Warm trail — so close!");
-  assert.equal(verdictFor(301).title, "The trail went cold.");
-  assert.equal(verdictFor(800).title, "The trail went cold.");
-  assert.equal(verdictFor(801).title, "The smuggler vanished.");
+// --- Edge 2: exact score band boundaries ---
+test("scoreBand exact boundaries", () => {
+  assert.equal(scoreBand(100), 0);
+  assert.equal(scoreBand(101), 1);
+  assert.equal(verdictForTheme(THEMES["11-13"], 101).caught, true);
+  assert.equal(scoreBand(300), 1);
+  assert.equal(scoreBand(301), 2);
+  assert.equal(scoreBand(800), 2);
+  assert.equal(scoreBand(801), 3);
   // Negative scores are impossible; huge scores still classify.
-  assert.equal(verdictFor(0).caught, true);
-  assert.equal(verdictFor(20_000).caught, false);
+  assert.equal(verdictForTheme(THEMES["11-13"], 0).caught, true);
+  assert.equal(verdictForTheme(THEMES["11-13"], 20_000).caught, false);
 });
 
 // --- Edge 3: halving is exact on odd radii (no integer truncation) ---

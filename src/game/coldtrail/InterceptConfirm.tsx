@@ -1,5 +1,6 @@
 import { useEffect, useRef, type JSX } from "react";
 import { Button } from "@/components/ui/button";
+import type { ColdTrailTheme } from "./themes.ts";
 
 /**
  * The interception commit sheet: the player tapped the map; this confirms
@@ -7,9 +8,11 @@ import { Button } from "@/components/ui/button";
  * edition's PlaceSheet dialog idiom (Escape cancels, backdrop cancels).
  */
 export function InterceptConfirm({
+  theme,
   onConfirm,
   onCancel,
 }: {
+  theme: ColdTrailTheme;
   onConfirm: () => void;
   onCancel: () => void;
 }): JSX.Element {
@@ -31,7 +34,7 @@ export function InterceptConfirm({
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Confirm interception"
+      aria-label={theme.confirm.ariaLabel}
       data-testid="intercept-confirm"
       className="fixed inset-0 z-50 flex items-end justify-center"
     >
@@ -50,11 +53,10 @@ export function InterceptConfirm({
         </div>
         <div className="flex min-h-0 flex-1 flex-col justify-end">
           <div className="px-6 pt-2">
-            <p className="text-[11px] tracking-wider text-muted uppercase">Interception</p>
-            <h2 ref={headingRef} tabIndex={-1} className="mt-1 text-xl font-semibold text-fg">Send the team here?</h2>
+            <p className="text-[11px] tracking-wider text-muted uppercase">{theme.confirm.eyebrow}</p>
+            <h2 ref={headingRef} tabIndex={-1} className="mt-1 text-xl font-semibold text-fg">{theme.confirm.heading}</h2>
             <p className="mt-1 text-sm text-muted">
-              One shot — the smuggler moves on after this. Score is your distance
-              from the true hideout.
+              {theme.confirm.body}
             </p>
           </div>
           <div
@@ -71,7 +73,7 @@ export function InterceptConfirm({
                 onClick={onConfirm}
                 className="min-h-[48px] w-full text-base"
               >
-                🚨 Intercept here
+                {theme.confirm.button}
               </Button>
               <Button
                 type="button"

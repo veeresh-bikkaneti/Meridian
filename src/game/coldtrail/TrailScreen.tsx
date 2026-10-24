@@ -5,6 +5,7 @@ import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
 import { playConfirmGuess, playLose, playWin } from "@/game/audio/sfx";
 import { playCelebrationSound } from "@/game/audio/play-guards";
+import { resolveBand, type AgeBandId } from "@/game/age-profile";
 import { LoopMap } from "../loop/LoopMap";
 import { coldtrailCaseCount, getColdtrailCase } from "./cases";
 import {
@@ -12,8 +13,8 @@ import {
   effectiveRadius,
   scoreIntercept,
   SOLVE_REWARD,
-  verdictFor,
 } from "./engine";
+import { themeForBand, verdictForTheme } from "./themes";
 import {
   buildEvidenceOverlays,
   nudgeDirection,
@@ -60,6 +61,10 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
       live = false;
     };
   }, []);
+  // WI-13 band theme: snapshot at mount, refreshed in onNextCase only —
+  // a mid-case profile change never re-themes an open case.
+  const [band, setBand] = useState<AgeBandId>(() => resolveBand());
+  const theme = themeForBand(band);
   const [store, setStore] = useState<ColdTrailStore>(loadColdtrail);
   const [pending, setPending] = useState<{ lon: number; lat: number } | null>(null);
   const [hint, setHint] = useState<string | null>(null);
@@ -253,9 +258,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
       });
       const freshOverlap = tripleOverlap(freshLocked);
       setHint(
-        freshOverlap?.polygon
-          ? "All 3 rings are down — tap where they cross to set your interception."
-          : "All 3 rings are down, but they don't cross — use ↩ Move on a ring to shift it closer.",
+        freshOverlap?.polygon ? theme.map.hintAllCross : theme.map.hintAllNoCross,
       );
     } else {
       setHint(`Ring ${i + 1} locked. ${3 - locked} to go — tap 📍 Place ring on the next sighting.`);
@@ -362,7 +365,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     };
     next.informantOn[i] = true;
     commit({ ...store, stars: store.stars - INFORMANT_COST, current: next });
-    setHint("🎙️ The informant tightened that ring to half its radius.");
+    setHint(theme.helper.hint);
   };
 
   // Map tap: the interception guess (only once all 3 rings are locked).
@@ -383,7 +386,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     if (!pending || revealed) return;
     playConfirmGuess();
     const scoreKm = scoreIntercept(pending.lon, pending.lat, caseData.hideout.lon, caseData.hideout.lat);
-    const verdict = verdictFor(scoreKm);
+    const verdict = verdictForTheme(theme, scoreKm);
     if (verdict.caught) playWin();
     else playLose();
     const next = {
@@ -402,6 +405,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   };
 
   const onNextCase = () => {
+    setBand(resolveBand());
     setPending(null);
     setHint(null);
     setPlacing(null);
@@ -409,7 +413,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     commit({ ...store, caseIndex: store.caseIndex + 1, current: freshProgress() });
   };
 
-  const verdict = progress.scoreKm !== null ? verdictFor(progress.scoreKm) : null;
+  const verdict = progress.scoreKm !== null ? verdictForTheme(theme, progress.scoreKm) : null;
   const placingNow = placing !== null;
 
   return (
@@ -423,13 +427,12 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             ⭐ {store.stars}
           </p>
         </div>
-        <p className="name-eyebrow mt-4">❄️ Cold Trail · Case file</p>
+        <p className="name-eyebrow mt-4">{theme.eyebrow}</p>
         <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-1 text-3xl text-fg">
-          Case #{String(caseData.caseNo).padStart(3, "0")}
+          {theme.heading(caseData.caseNo)}
         </h1>
         <p className="mt-2 text-fg">
-          A smuggler is moving between cities. Three sightings, three rings — triangulate
-          the hideout and tap your interception.
+          {theme.intro}
         </p>
       </header>
 
@@ -438,6 +441,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
           <SightingCard
             key={s.id}
             sighting={s}
+            theme={theme}
             index={i}
             unit={hideoutUnit}
             ringPlaced={progress.ringsPlaced[i]!}
@@ -466,11 +470,11 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             shown here is also announced via the hint or a focus move. */}
         <p className="text-sm text-fg">
           {revealed
-            ? "Case closed — the gold star marks the hideout."
+            ? theme.map.statusDone
             : allRingsPlaced
               ? evidenceOverlap?.polygon
-                ? "All 3 rings are down — tap where they cross to set your interception."
-                : "All 3 rings are down, but they don't cross — use ↩ Move on a ring to shift it closer."
+                ? theme.map.statusReadyCross
+                : theme.map.statusReadyNoCross
               : `Rings placed: ${ringsPlacedCount} of 3`}
         </p>
         <div className="relative">
@@ -487,7 +491,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             mapLabel={
               placingNow
                 ? `Cold Trail map — placing the ring for sighting ${placing! + 1}. Tap the map where you think the ring goes, or press Enter to plant it at the map center, then use arrow keys to move it.`
-                : "Cold Trail map. Place each sighting ring where you think the witness saw the smuggler, then tap where the rings cross to set your interception."
+                : theme.map.ariaLabel
             }
             placementActive={placingNow}
             onPlacementTap={onPlacementTap}
@@ -522,16 +526,16 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
         </div>
         {!revealed ? (
           <p className="text-xs text-muted" aria-hidden="true">
-            <span className="text-gold-ink">gold ring</span>&thinsp;=&thinsp;witness sighting radius
+            <span className="text-gold-ink">gold ring</span>&thinsp;=&thinsp;{theme.map.legendRing}
             {placingNow ? (
               <>
-                &ensp;·&ensp;<span className="text-gold-ink">dashed ring</span>&thinsp;=&thinsp;your draft — not locked yet
+                &ensp;·&ensp;<span className="text-gold-ink">dashed ring</span>&thinsp;=&thinsp;{theme.map.legendDraft}
               </>
             ) : null}
             &ensp;·&ensp;{allRingsPlaced && !evidenceOverlap?.polygon ? (
-              <>use ↩ Move on a sighting card to shift a ring closer</>
+              <>{theme.map.legendNoCross}</>
             ) : (
-              <>tap where the rings cross to intercept</>
+              <>{theme.map.legendCross}</>
             )}
           </p>
         ) : null}
@@ -556,7 +560,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
       </section>
 
       {pending && !revealed ? (
-        <InterceptConfirm onConfirm={onConfirmIntercept} onCancel={() => setPending(null)} />
+        <InterceptConfirm theme={theme} onConfirm={onConfirmIntercept} onCancel={() => setPending(null)} />
       ) : null}
 
       {revealed && verdict && progress.scoreKm !== null ? (
@@ -565,26 +569,22 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
           data-testid="coldtrail-reveal"
           className="mode-card mt-6 p-5"
         >
-          <p className="text-[11px] tracking-wider text-muted uppercase">Case closed</p>
+          <p className="text-[11px] tracking-wider text-muted uppercase">{theme.reveal.eyebrow}</p>
           <h2 ref={resultHeadingRef} tabIndex={-1} className="mode-title mt-1 text-2xl font-semibold text-fg">{verdict.title}</h2>
           <p className="mt-2 text-fg">
-            The hideout was <strong>{caseData.hideout.name}</strong>.
+            {theme.reveal.targetLine(caseData.hideout.name)}
           </p>
           <p className="mt-1 text-muted">
-            Your intercept missed by{" "}
-            <strong className="text-fg">
-              {formatLength(progress.scoreKm, hideoutUnit)}
-            </strong>
-            . {verdict.line}
+            {theme.reveal.missLine(formatLength(progress.scoreKm, hideoutUnit))} {verdict.line}
           </p>
-          <p className="mt-2 text-sm text-muted">+{SOLVE_REWARD}⭐ for closing the case</p>
+          <p className="mt-2 text-sm text-muted">{theme.reveal.closing}</p>
           <Button
             type="button"
             data-testid="next-case-btn"
             onClick={onNextCase}
             className="mt-4 min-h-[48px] w-full text-base"
           >
-            🔎 Next case
+            {theme.reveal.nextButton}
           </Button>
         </section>
       ) : null}
