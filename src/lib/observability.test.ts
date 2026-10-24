@@ -11,7 +11,10 @@ import {
   BREADCRUMB_KEY,
   MAX_HISTORY,
   MAX_PAYLOAD_BYTES,
+  coarseDeviceFacts,
   createObservability,
+  dprBucket,
+  screenBucket,
   truncateEventToCap,
   type ObsStorage,
   type ObsTransport,
@@ -123,7 +126,7 @@ test("COPPA: suspected_crash never carries the raw UA — canary in stored devic
   const CANARY = "CANARY-UA-9f3k7zq2-do-not-send";
   const store = makeStorage({
     [BREADCRUMB_KEY]: prevBreadcrumbJson({
-      device: { ua: CANARY, dpr: 3, screenW: 390, screenH: 844, deviceMemory: 8, hardwareConcurrency: 6 },
+      device: { ua: CANARY, dpr: 3, screenW: 390, screenH: 844 },
     }),
   });
   const { transport, beacons } = makeTransport(true);
@@ -609,4 +612,19 @@ test("visibility: a backgrounded trail classifies the next-boot suspected_crash"
   assert.equal(event.type, "suspected_crash");
   assert.equal(event.lastMilestone, "backgrounded", "background kill is classified, not mistaken for a foreground crash");
   assert.equal(event.edition, "globe");
+});
+
+test("COPPA coarsening: reports carry a screen bucket and rounded DPR, never exact pixels, memory, or cores", () => {
+  assert.equal(screenBucket(390, 844), "sm");
+  assert.equal(screenBucket(820, 1180), "lg");
+  assert.equal(screenBucket(1920, 1080), "xl");
+  assert.equal(screenBucket(600, 1024), "md");
+  assert.equal(screenBucket(undefined, 5), undefined);
+  assert.equal(dprBucket(2.625), 3);
+  assert.equal(dprBucket(1.25), 1);
+  assert.equal(dprBucket(9), 4);
+  const facts = coarseDeviceFacts();
+  for (const k of ["screenW", "screenH", "deviceMemory", "hardwareConcurrency", "ua"]) {
+    assert.ok(!(k in facts) || (facts as Record<string, unknown>)[k] === undefined, `${k} must not be reported`);
+  }
 });

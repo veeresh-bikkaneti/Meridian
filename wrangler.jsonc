@@ -1,0 +1,32 @@
+{
+  // Meridian production Worker config (WI-19b, issue #228).
+  //
+  // Why this file exists: Workers Builds deploys this repo with
+  // `wrangler deploy`. With NO root config, wrangler's automatic
+  // configuration generates one per build, and the generated config
+  // points `main` at TanStack Start's DEFAULT entry
+  // ("@tanstack/react-start/server-entry"), which loads src/start.ts
+  // but never src/server.ts — so the S5 server-function guard in
+  // src/server.ts (PR #222) never ran in production
+  // (/_serverFn/ answered an unhandled 500). Committing this config
+  // stops automatic configuration and makes the entry explicit.
+  // Full record: docs/reviews/2026-10-22-wrangler-config-entry.md.
+  // Deploys go through Workers Builds / git — never run a local
+  // `wrangler deploy` against production.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "meridian",
+  // THE fix: run the repo's real server entry (guard + TanStack handler).
+  "main": "src/server.ts",
+  // Same date the auto-generated config used (build log, 2026-10-22).
+  "compatibility_date": "2026-10-19",
+  // Deliberately NO "compatibility_flags": the live Worker's flag set
+  // is empty (read via the API, 2026-10-22), and the generated config
+  // carried none. In particular nodejs_compat is NOT added on
+  // presumption — the /api/contact env question belongs to issue #220.
+  // Deliberately NO bindings and NO vars: the live version has none
+  // (the Builds project's CONTACT_DISCORD_WEBHOOK_URL / VITE_KOFI_URL
+  // are build-time variables, not runtime bindings).
+  "observability": {
+    "enabled": true
+  }
+}

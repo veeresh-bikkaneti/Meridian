@@ -1,0 +1,7 @@
+# Meridian is a public kids' geography game: no accounts, no personal pages.
+# Everything here may be crawled. Cloudflare may prepend its managed
+# content-signals block above these lines on the live host.
+User-agent: *
+Allow: /
+
+Sitemap: https://meridian.knowledgetest.workers.dev/sitemap.xml

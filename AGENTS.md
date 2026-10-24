@@ -3,6 +3,71 @@
 Geography quiz game (Vite + React + TypeScript). Guess places on a satellite
 map; every reveal shows a kid-friendly story card.
 
+## Constitution (standing rules for every agent — Veeresh, 2026-10-21)
+
+1. **Do not refactor existing working code.**
+2. **Do not create new branches or duplicate files.** Work on the branch you
+   were assigned (or the one already checked out) and edit existing files in
+   place. `main` stays protected, so the work still ships as a PR from that
+   one branch.
+3. **Edit only the targeted functions, in place.** Touch nothing outside the
+   function or block the task names.
+4. **Output only unified git diffs** when showing code changes — no whole-file
+   rewrites, no pasted full files.
+
+If a task cannot be done within these rules, stop and ask first.
+
+## Worker roles run on the cheapest capable model
+
+Orchestrate; do not do every role yourself. Any role whose job is to **run
+something and report what happened** is delegated to a subagent on the
+cheapest model that can do it (`haiku` first, `sonnet` only if `haiku`
+cannot):
+
+- tester
+- pen tester
+- UAT tester
+- **visual tester** — delegated by default; do it inline only when
+  delegation is impossible, and say so
+- workflow tester
+- **developer**, only for execution-shaped work: applying an agreed patch,
+  running a scripted change, a mechanical edit with a known answer.
+  Authoring is not execution — design, non-obvious implementation and
+  anything needing judgement about *what* to build stays with the
+  orchestrator.
+
+**Not worker roles.** Review, verdict and design roles — code review, a
+panel seat, architecture calls, security judgement — are not delegated on
+cost grounds. They turn on judgement, and a cheap mistake there is the
+dearest kind.
+
+The orchestrator stays on `opus` and reads conclusions, not bulk output.
+Give each worker a brief that names the branch, what is already built, the
+exact commands, and what to report — it has no other context. Match the
+model to the size of the job: a one-command check does not need `sonnet`,
+and a long multi-step run on `haiku` that has to be redone saves nothing.
+
+Delegation helps because the worker's reading stays in the worker's
+context, but it is the **third** of four savings levers — after the tier
+gate and narrow context resolution, and ahead of model tier. See
+`docs/ops/agent-council-protocol.md` §3 for the full ranking.
+
+## Agent council — match the process to the task
+
+Routine work does not convene a council.
+
+| Tier | Scope | Process |
+| :--- | :--- | :--- |
+| **0 — Direct** | Docs, `BRANCH_STATUS.md`, copy, config, a typo | Make the change, run the gates. |
+| **1 — Solo TDD** | One bug, one function, a clear repro | Failing test first, then the minimal fix. |
+| **2 — Council** | New feature or module, 3+ files, API/storage/schema, anything under `src/game/data/`, security or privacy | Full protocol: `docs/ops/agent-council-protocol.md` |
+
+Unsure which tier → Tier 2. An owner-set tier overrides this table.
+
+**Tier 2 in one line:** no implementation code until a signed Consensus
+Manifest exists (ATDD scenarios → TDD contracts → adversarial challenge →
+Chair sign-off), then RED, minimal GREEN, gates, unified diff.
+
 ## Quality gates (all mandatory for a PR)
 
 - `npx tsc --noEmit` — clean
@@ -29,4 +94,13 @@ map; every reveal shows a kid-friendly story card.
 - **Push early and often** — the VM is not durable storage for unpushed work.
 - Every feature branch carries `BRANCH_STATUS.md` at the repo root tracking
   done vs pending; update and push it with the work.
+- **A merged branch is deleted, not left behind.** Cleanup is part of the task,
+  not a follow-up someone has to ask for. Keep *Settings -> General -> Pull
+  Requests -> Automatically delete head branches* switched on so this happens
+  with nobody's attention — note it applies to future merges only and does
+  **not** retroactively remove branches already left behind. Delete by hand
+  where you can (`git push origin --delete <branch>`); this works from an
+  ordinary VM. Some environments cannot: in the cloud container the proxy
+  refuses ref deletion with HTTP 403. Try it, and if it is refused, name the
+  leftover branch in your final report rather than going quiet.
 - Do not touch `.scratch/` (gitignored crawl cache) or other branches' worktrees.

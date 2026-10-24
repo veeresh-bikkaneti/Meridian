@@ -41,7 +41,7 @@ Points follow scoring v3: a distance-based base (MapTap's curve) multiplied by t
 
 ### Learning paths
 
-The edition picker asks "How do you want to grow your map today?" — three learning paths, not gamer difficulty. **Easy** deals famous places (tiers 1–2), the must-know spots every explorer starts with: world-famous cities and capitals, the curriculum core. **Medium** (tiers 2–4) mixes the familiar with the thought-provoking. **Hard** (tiers 4–5) opens the hidden corners of the world — small towns and neighborhoods most people have never heard of — for explorers ready to discover more. Within your path, famous places deal first: the mental map gets built before the obscure places attach to it. Your choice persists across editions and reloads; switching paths starts a fresh run.
+The edition picker asks "How do you want to grow your map today?" — three learning paths, not gamer difficulty. **Easy** deals famous places (tiers 1–2), the must-know spots every explorer starts with: world-famous cities and capitals, the curriculum core. **Medium** (tiers 2–4) mixes the familiar with the thought-provoking. **Hard** (tiers 4–5) opens the hidden corners of the world — small towns and neighborhoods most people have never heard of — for explorers ready to discover more. Within your path, famous places deal first: the mental map gets built before the obscure places attach to it. On Easy that rule is strict: the pool is hand-curated starters plus tier-1 places with a verified history hook, falling back to all tier-1 places and then the full 1–2 band only when a region is too small to fill a run (`src/game/easy-curation.ts`). The hero's **Begin exploring** button starts a Globe expedition at the path you picked — it no longer just scrolls the page. Your choice persists across editions and reloads; switching paths starts a fresh run.
 
 The share line carries the trail, not just a number:
 
@@ -153,7 +153,30 @@ The public site is GitHub Pages, from a static build. `GITHUB_PAGES=1` sets the 
 
 The same production build also ships to [meridian.knowledgetest.workers.dev](https://meridian.knowledgetest.workers.dev/) via a Cloudflare Workers build and deploy — both URLs serve the live app.
 
+The Worker deploy shape is committed in this repo: a root `wrangler.jsonc` sets `main` to `src/server.ts`, Workers Builds deploys with that config, and the `@cloudflare/vite-plugin` wiring in `vite.config.ts` produces the bundle the deploy follows. The full record is [docs/reviews/2026-10-22-wrangler-config-entry.md](docs/reviews/2026-10-22-wrangler-config-entry.md).
+
 `npm run build` is a different path. It still produces the server build. The live preview uses that. Pages does not.
+
+### Build version stamping
+
+Every build carries one build id — the deployed commit's short SHA (`scripts/build-id.mjs`: `GITHUB_SHA` on GitHub Actions, else `git rev-parse --short HEAD`, else a `local-<timestamp>` fallback for tarball builds). It appears in three places that must always agree: baked into the bundle (the staleness check in `src/game/build-staleness.ts`), as `VERSION` in the built `sw.js`, and served as `/build-meta.json`. The stamping runs **inside** the Vite build, not only in npm lifecycle hooks: `vite.config.ts` computes the id once (`BUILD_ID`) and passes it to `scripts/fingerprint-sw-plugin.mjs` (sw.js) and `scripts/build-meta-plugin.mjs` (writes `build-meta.json` into the output, including the Nitro `.vercel/output/static` tree). That matters because the Workers Builds deploy invokes the build directly, bypassing the `prebuild` hook that runs `scripts/write-build-meta.mjs` — on a fresh checkout there is no `public/build-meta.json` (it is gitignored), so the hook alone would leave the Workers site with no stamp. The Pages mirror under `/Meridian/` stamps the same way. Verify any built tree with:
+
+```sh
+node scripts/verify-build-stamp.mjs   # or: npm run verify:build-stamp
+```
+
+Production today proves the point and shows the host difference: the Workers site stamps the 7-char git short SHA, the Pages mirror the 12-char `GITHUB_SHA` prefix — each equals its own deployed commit, and within any one deploy all three copies agree.
+
+### Production smoke check
+
+After a deploy, run the owner smoke script against the live site:
+
+```sh
+node scripts/prod-smoke.mjs            # defaults to https://meridian.knowledgetest.workers.dev
+node scripts/prod-smoke.mjs <baseUrl>  # any base URL; the checks describe the Workers surface
+```
+
+It uses only GET requests and exits non-zero on any failure. It checks: `/` returns 200 with the full security-header set (CSP, `X-Frame-Options`, Referrer-Policy, Permissions-Policy, `X-Content-Type-Options`, COOP, HSTS); `/_serverFn/` returns 404; `/.well-known/security.txt` returns 200; the manifest's `start_url` resolves to a 200; and `/build-meta.json` carries a `buildId`. The same script runs manually from GitHub Actions (**Actions → Production smoke → Run workflow**) — there is no schedule; the owner triggers it.
 
 MapLibre's worker is a sibling file the bundler would otherwise drop. The Pages build copies `maplibre-gl-worker.mjs` and `maplibre-gl-shared.mjs` into `assets/` so the map can start. Without those files the canvas is blank.
 
@@ -163,8 +186,16 @@ npm test
 npm run build:pages
 ```
 
+### Privacy (kids first)
+
+Meridian is directed to children, so every visitor is treated as a child. There are no accounts, no personal questions, and no cookies or persistent identifiers for analytics. Google Analytics and Microsoft Clarity were removed on 2026-10-21; the only analytics is optional, cookieless **Cloudflare Web Analytics**, injected only when the build has `VITE_CF_BEACON_TOKEN` set. Crash reports go to our own worker with a per-session random ID and coarse device buckets only. The full notice is the in-app **/privacy** page (linked from the home footer and the For grown-ups card); grown-ups reach the owner through the math-gated **/contact** form, which posts to `POST /api/contact` on the main `meridian` worker (`src/routes/api/contact.ts`; there is no separate contact worker). **Deploy TODO:** delivery for that form is parked. The handler defaults to a `NoopSink` that accepts messages and stores nothing, and the page says so. It forwards to Discord only when the `meridian` worker has its *own* secret `CONTACT_DISCORD_WEBHOOK_URL`; that is never the crash worker's `DISCORD_WEBHOOK_URL`, and the two use different channels. The form stays off until `public/flags.json` gets a `contactEndpoint`. Background: `docs/reviews/2026-10-21-p0-p2-remediation.md`.
+
+### Security headers
+
+The security headers (CSP, `X-Frame-Options: DENY`, `frame-ancestors 'none'`, Referrer-Policy, Permissions-Policy denying camera/mic/geolocation/payment, nosniff, COOP, HSTS) come from one place: `src/lib/security-headers.ts`. They are delivered two ways. Server-rendered responses (every HTML page and `/api/contact` on the `meridian` worker) get them from the request middleware in `src/start.ts`. Cloudflare does **not** apply `public/_headers` to Worker-generated responses. Static assets get them from `public/_headers`, which also sets `immutable` caching for hashed `/assets/*` and `no-cache` for `sw.js` / `flags.json`. Server-rendered HTML also gets `Cache-Control: public, max-age=0, must-revalidate` from the same `src/start.ts` middleware (the constant `HTML_CACHE_CONTROL` in `src/lib/security-headers.ts`), because `_headers` never reaches Worker-rendered pages. A unit test fails if the two drift apart. See `docs/security-headers.md`.
+
 ### Installable (PWA)
 
-Meridian ships a web manifest, app icons, and an offline page, so it can be installed from the browser. Updates never interrupt play: when a new version is detected, a toast offers "Update now" (applies the update and reloads once) or "Later" (dismisses; the update applies on the next fresh load). The service worker registers in production builds only.
+Meridian ships a web manifest, app icons, and an offline page, so it can be installed from the browser. Updates never interrupt play: when a new version is detected, a toast offers "Update now" (applies the update and reloads once) or "Later" (dismisses; the update applies on the next fresh load). The service worker registers in production builds only. The manifest (`./` scope/start URL) and `sw.js` (base derived from its own URL) carry no hardcoded base path, so the same files work under `/Meridian/` on GitHub Pages and `/` on Cloudflare.
 
 Imagery: `Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community`. The imagery host sees the area on screen. Your pin stays on the device. Place data: GeoNames (CC-BY 4.0). Wikipedia-derived history notes: CC BY-SA, via the in-app source links.

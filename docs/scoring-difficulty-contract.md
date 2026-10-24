@@ -22,6 +22,16 @@ Don't confuse these with the learning paths: Easy / Medium / Hard on the
 edition picker are **dealing paths** (Easy = tiers 1–2, Medium = tiers 2–4,
 Hard = tiers 4–5) — a different vocabulary from the five tier names above.
 
+**Easy curation (2026-10-21, review finding P1-6).** Population-derived
+tiers 1–2 still include big-but-unknown suburbs on large pools (the Globe
+above all), so Easy deals from the first of these rungs that holds at
+least `EASY_MIN_POOL` (25) places: (1) curated starters + tier-1 places
+with a verified history hook; (2) curated starters + all tier-1 places;
+(3) the plain tier 1–2 band. Small regions therefore never starve, and
+the pool is never widened past the band. Code: `src/game/easy-curation.ts`
+(`dealingPoolFor` — the one function every run-start, Play-again, and
+cleared-band check uses). Medium and Hard are unchanged.
+
 ## Score cap
 
 `src/game/scoring.ts`: `PLACE_SCORE_CAP = 400` — the cap applies to

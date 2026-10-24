@@ -24,7 +24,7 @@ const SW_FILE = "sw.js";
 // Matches an already-stamped version: meridian-<7-40 hex chars>
 const STAMPED_RE = /meridian-[0-9a-f]{7,40}/;
 
-function stampSwFile(dir) {
+function stampSwFile(dir, pinnedBuildId) {
   if (!dir) return false;
   const swPath = join(dir, SW_FILE);
   let source;
@@ -37,7 +37,10 @@ function stampSwFile(dir) {
     return false; // already stamped or not ours — skip
   }
   try {
-    const buildId = fingerprintSw(swPath);
+    // A pinned id (vite.config passes the one buildIdForBundle() value)
+    // wins so sw.js, build-meta.json and the bundle can never diverge;
+    // undefined keeps the old resolveBuildId() default.
+    const buildId = fingerprintSw(swPath, pinnedBuildId);
     console.log(`[fingerprint-sw-plugin] stamped buildId=${buildId} into ${swPath}`);
     return true;
   } catch (err) {
@@ -46,19 +49,21 @@ function stampSwFile(dir) {
   }
 }
 
-export function fingerprintSwPlugin() {
+export function fingerprintSwPlugin(buildId) {
+  const pinned =
+    typeof buildId === "string" && buildId.length > 0 ? buildId : undefined;
   return {
     name: "meridian:fingerprint-sw",
     // Run after all files are written to disk.
     writeBundle(options) {
-      stampSwFile(options.dir);
+      stampSwFile(options.dir, pinned);
     },
     // Nitro (non-Pages builds) copies assets to .vercel/output/static/
     // AFTER vite's writeBundle. Catch it here as a safety net.
     closeBundle() {
       try {
         const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-        stampSwFile(join(root, ".vercel", "output", "static"));
+        stampSwFile(join(root, ".vercel", "output", "static"), pinned);
       } catch {
         // Best-effort; the npm postbuild hook is the primary path.
       }

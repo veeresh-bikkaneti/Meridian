@@ -1,0 +1,71 @@
+# Meridian main site worker (`meridian`): Workers Rate Limiting bindings
+# for POST /api/contact (review follow-up on #207, 2026-10-21).
+#
+# CONFIG RECORD, NOT READ BY ANY BUILD. The `meridian` worker deploys through
+# Cloudflare Workers Builds. Its deploy config is the root `wrangler.jsonc`
+# in this repo (WI-19b, issue #228). This file is deliberately NOT that
+# config: it is the human record of the two [[ratelimits]] blocks below.
+# Copying them into the root `wrangler.jsonc` is the recorded follow-up
+# (needs Wrangler 4.36.0 or later). Rate limiting bindings cannot be
+# added in the dashboard.
+#
+# Entry point (WI-19, 2026-10-22): production will run src/server.ts
+# (the S5 server entry from PR #222) because the root `wrangler.jsonc`
+# says so — `main` there, set by the WI-19b PR together with the
+# Cloudflare Vite plugin wiring in vite.config.ts — but only once the
+# WI-19b PR has merged AND the first Workers Builds deploy carrying
+# the merged config has completed. Until then production still runs
+# the default entry. The earlier idea of editing a
+# dashboard-side Builds config was investigated and does not exist (no
+# dashboard or API surface exposes that config). Record:
+# docs/reviews/2026-10-22-wrangler-config-entry.md; the superseded
+# dashboard-steps document is
+# docs/reviews/2026-10-22-serverfn-server-entry.md.
+#
+# Cost: none. The Rate Limiting API has no plan gate and no billing line
+# (docs: workers/runtime-apis/bindings/rate-limit and
+# workers/platform/pricing, checked 2026-10-21; GA 2025-09-19). It only
+# uses the worker's normal request CPU, so it works on the Workers Free plan.
+#
+# Without these bindings, the handler keeps its in-memory limiter only
+# (3 per 10 min per sender, 60 per hour per isolate). That fails safe.
+# With them, the limits below also apply across isolates in each
+# Cloudflare location. Counts are approximate and per location.
+#
+# The binding names must match CLIENT_LIMITER_BINDING /
+# GLOBAL_LIMITER_BINDING in src/lib/contact/rate-limiter.server.ts.
+# src/lib/contact/rate-limiter.server.test.ts checks this file.
+# namespace_id is any integer unique in the Cloudflare account. The
+# crash-report worker uses none.
+
+name = "meridian"
+
+# The process.env config path (readContactEnv) also needs:
+#   compatibility_flags = ["nodejs_compat"]  with compatibility_date >= "2025-04-01"
+# Check that the Workers Builds config already has it before copying.
+# Live-read note (2026-10-22): the meridian script settings, read
+# through the Cloudflare API, report compatibility_flags = [] (an
+# empty flag set) with compatibility_date 2026-10-19 — so the live
+# config does NOT show nodejs_compat today, and /api/contact answers
+# 400 regardless. What the Builds generated configuration contains
+# is not directly readable from this repo; see
+# docs/reviews/2026-10-22-serverfn-server-entry.md before assuming.
+
+# Per sender (hashed key that changes every UTC day): 3 messages per 60 s.
+[[ratelimits]]
+name = "CONTACT_RATE_LIMITER"
+namespace_id = "72071"
+
+  [ratelimits.simple]
+  limit = 3
+  period = 60
+
+# Everyone together: 10 messages per 60 s per location. This caps a
+# distributed flood well under Discord's webhook rate limit.
+[[ratelimits]]
+name = "CONTACT_GLOBAL_RATE_LIMITER"
+namespace_id = "72072"
+
+  [ratelimits.simple]
+  limit = 10
+  period = 60
