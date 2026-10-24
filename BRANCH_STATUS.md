@@ -4,8 +4,10 @@
 **Base:** `main` at `fa9f36b` (includes the PR #241 merge)
 **State: WORK COMPLETE at code head `76d2b21` — all local gates green
 (QA pass, logs in `~/workspace/meridian-wave2-b3/logs/qa-*.log`); the
-evidence + paperwork commits follow on top. The branch is LOCAL ONLY —
-not pushed, no PR yet (see Push status).** Wave 2 mode-screens work:
+evidence + paperwork commits follow on top, then the Peer Reviewer
+(pass 10) verdict APPROVE WITH FIXES with its fixes landed (test pin
++ paperwork; re-run gates in `logs/peer-*.log`, src suite 1510/1510).
+The branch is LOCAL ONLY — not pushed, no PR yet (see Push status).** Wave 2 mode-screens work:
 WI-12 State, Country, GeoDetective and Cold Trail screens onto the
 existing shared (Atlas) design tokens, WI-13 Cold Trail sticky map +
 kid-safe band themes. It supersedes the previous contents of this file
@@ -74,7 +76,12 @@ on its own PR #241).
 
 ### Pending (not this branch's to finish)
 
-- [ ] Peer Reviewer pass (pass 10) + Engineering Lead verdict.
+- [x] Peer Reviewer pass (pass 10): APPROVE WITH FIXES — F-2 exact
+  theme-string pin test landed (`136627b`); F-1 shared-strings gate
+  gap recorded for a Child Safety ruling by ID (see review doc);
+  G-1 runtime host capture identical per mode on branch vs base;
+  G-2 End-game pill pin verified present in `question-bubble.test.ts`.
+- [ ] Engineering Lead verdict.
 - [ ] CI on Node 22.x — has not run; the PR is not opened yet. Local
   gates ran on Node v24.22.1.
 - [ ] Owner's merge decision. **Not merged — only the owner merges.**
@@ -99,6 +106,8 @@ on its own PR #241).
 - `76d2b21` feat(wi-13): Cold Trail sticky map layout (.ct-layout/.ct-map, legend out, measured scroll-margins)
 - test(e2e): WI-12/WI-13 evidence specs and screenshots — this paperwork series
 - docs(branch): wave2 mode screens review doc and branch status — this commit
+- `136627b` test(coldtrail): pin every rendered theme string to the gate-approved text (peer review F-2)
+- docs(branch): peer reviewer pass-10 record — review doc + branch status corrections (this commit)
 
 Deviations recorded in the review doc: the End-game pill keeps
 `text-xs` (pinned by `question-bubble.test.ts`) against UX A5's ≥14px
@@ -113,8 +122,9 @@ not owned by this branch).
 
 - `npx tsc --noEmit` — clean, exit 0 (baseline: clean).
 - `npm test` — exit 0. Scripts suite: 832 pass / 0 fail / 9 skipped
-  (baseline: same). Src suite: 1509 pass / 0 fail (baseline: 1502;
-  +7 = the new `themes.test.ts`).
+  (baseline: same). Src suite: 1510 pass / 0 fail (baseline: 1502;
+  +8 = the new `themes.test.ts`, incl. the Peer Reviewer's pin test;
+  re-run after the peer fixes in `logs/peer-test.log`).
 - `node scripts/lint-cards.mjs` — GATE PASSED, exit 0.
 - `npm run build:pages` — exit 0, green.
 - Security-headers tests — 14 pass / 0 fail; `src/lib/security-headers.ts`

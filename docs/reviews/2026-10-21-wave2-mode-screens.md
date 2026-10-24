@@ -46,7 +46,7 @@ Four new classes are appended to `src/styles.css` as pure additions — no token
 | AC-12.3 spacing & buttons | PASS | Shared `Button` throughout; tap targets measured ≥44px, 0 below (`logs/qa-layout.log`) |
 | AC-12.4 screenshots 32 | PASS | `mode-screens-shots/before/` 16 + `after/` 16, harness-captured, byte-verified copies |
 | AC-12.5 no new fonts | PASS | Security audit: no `@font-face`, font file or font link in added lines |
-| AC-12.6 no new hosts/requests | PASS (diff proof) | Security audit: no `fetch`/XHR/WebSocket/beacon, no `http(s)://` URL in any added line. This is a diff audit, not a runtime network capture — see Untested |
+| AC-12.6 no new hosts/requests | PASS (diff proof + runtime capture) | Security audit of the code diff: no `fetch`/XHR/WebSocket/beacon, no new outbound URL in any added code line (the only `http://` URLs in the final full diff are the loopback harness address `127.0.0.1:4123` in the two evidence specs). Runtime proof added by the Peer Reviewer (G-1, below): per-mode request-host sets identical on branch and base builds |
 | AC-12.7 existing e2e passes | PASS | §Gate table: 54/59 on branch, all 5 failures identical on unmodified base; Cold Trail 14/14, GeoDetective 26/26 |
 | AC-12.8 repo gates | PASS | §Gate table (`logs/qa-*.log`) |
 | AC-12.9 tokens consumed, never edited | PASS | `styles.css` diff is pure additions (new `.mode-*`/`.ct-*` blocks); Security confirms no token-definition file in the diff |
@@ -61,17 +61,17 @@ Four new classes are appended to `src/styles.css` as pure additions — no token
 | AC-13.9 Child Safety approves every string | PASS | Gate record: 66 IDs ruled; confirmation pass closed F-B/F-C |
 | AC-13.10 reading level & tone | PASS | Gate §3 rulings per band, incl. the two 5–7 spoken-wording edits |
 | AC-13.11 existing checks pass | PASS | §Gate table |
-| AC-13.12 no new requests/hosts/data | PASS (diff proof) + post-merge check pending | Security §1–§2; the production 5–7 round is an owner post-merge step, not claimable pre-merge |
+| AC-13.12 no new requests/hosts/data | PASS (diff proof + runtime capture) + post-merge check pending | Security §1–§2; Peer Reviewer G-1 runtime host capture (below); the production 5–7 round is an owner post-merge step, not claimable pre-merge |
 
 ## Gate table — baseline vs final
 
-Baseline is pristine base `fa9f36b` (`logs/baseline-summary.md`, `logs/baseline-npm-test.log`). Final is code head `76d2b21` (QA pass, `logs/qa-*.log`).
+Baseline is pristine base `fa9f36b` (`logs/baseline-summary.md`, `logs/baseline-npm-test.log`). Final is code head `76d2b21` (QA pass, `logs/qa-*.log`), plus the Peer Reviewer's test-only fix commit on top (src suite 1510; re-run gates in `logs/peer-*.log`).
 
 | Gate | Baseline (`fa9f36b`) | Final (`76d2b21`) |
 |---|---|---|
 | `npx tsc --noEmit` | clean, exit 0 | clean, exit 0 |
 | `npm test` — scripts suite | 841 tests, 832 pass / 0 fail / 9 skipped | 832 pass / 0 fail / 9 skipped |
-| `npm test` — src suite | 1502 tests, 1502 pass / 0 fail | 1509 tests, 1509 pass / 0 fail (+7 = new `themes.test.ts`) |
+| `npm test` — src suite | 1502 tests, 1502 pass / 0 fail | 1510 tests, 1510 pass / 0 fail (+8 = new `themes.test.ts`, incl. the Peer Reviewer's exact-string pin test) |
 | `node scripts/lint-cards.mjs` | GATE PASSED | GATE PASSED, exit 0 |
 | `npm run build:pages` | exit 0 | exit 0, green |
 | Security-headers tests | — | 14 pass / 0 fail; headers pair still matched |
@@ -112,8 +112,19 @@ This crew ran the charter's Scrum passes with the Product Owner + Architect pass
 
 ## Untested / still owed
 
-- **No runtime network capture.** AC-12.6 / AC-13.12 are evidenced by the Security seat's full-diff audit (no new URL, request API, host, font or dependency in any added line), not by a before/after runtime request-host capture per mode. The diff proof is strong — there is no code path that could issue a new request — but it is not the capture the PO criteria pictured, and this record does not dress it up as one.
+- **Runtime network capture — now done (Peer Reviewer G-1).** AC-12.6 / AC-13.12 were originally evidenced by the Security seat's diff audit only. The Peer Reviewer ran the pictured capture: each of the four modes played briefly on the branch build and on the unmodified base worktree build under `serveBuiltArtifact`, logging every initiated request host (`logs/host-capture-branch.log`, `logs/host-capture-base.log`, raw TSVs alongside, diff in `logs/host-capture-diff.log`). Host sets are **identical per mode** — `{127.0.0.1, server.arcgisonline.com}` on both builds, empty diff in both directions. The capture observes requests at initiation, before route stubbing (the Esri tile host appears in it), so it is a real runtime proof, and the Security diff audit now stands corroborated rather than alone.
 - **No real screen-reader pass** (VoiceOver / NVDA / JAWS / TalkBack) on the restyled screens. Focus/SR order is evidenced by the E5 tab-order logs and code inspection; that is not a screen-reader test. Zoom is evidenced at the 200%-equivalent layout check only; forced-colours and device passes were not performed.
 - **No device speech testing**, and Cold Trail has no in-screen read-aloud control to test (see WI-13 evidence note).
 - **CI has not run** (Node 22.x) — see the Node version note above.
 - **Post-merge production verification** (charter) is pending the owner's merge: open each of the four modes at phone width on production with screenshots, then play a Cold Trail round in the 5–7 band and confirm the kid-safe theme — with the C-4 caveat that the home picker card will still show the old smuggler copy until OD-1 is fixed elsewhere.
+
+## Peer Reviewer (pass 10, adversarial) — APPROVE WITH FIXES
+
+Full record: `~/workspace/meridian-wave2-b3/personas/peer-review.md`. The whole diff was re-read as a stranger; every factual claim in the PR description was checked against code and logs. Fixes landed as commits on this branch (test-only + this paperwork); gates re-run green after the fixes (`logs/peer-tsc.log`, `logs/peer-test.log`, `logs/peer-lint.log`, `logs/peer-build.log`: tsc clean; scripts 832/0/9; src 1510/1510; lint-cards GATE PASSED; build exit 0).
+
+- **F-1 (Medium, paperwork — owner/Child Safety follow-up, not a code defect).** A family of pre-existing, band-neutral shared strings on the Cold Trail screen was never ruled by ID in the Child Safety gate: the placement/flow hints in `TrailScreen` (e.g. "Ring planted — move it with arrow keys…", "Placement canceled — no ring placed."), the `SightingCard` action labels and status suffixes ("📍 Place ring on map", "✓ Ring placed", "Yes, keep it", "Ring radius:", " — not on the map yet"), and `InterceptConfirm`'s "Not yet". They are unchanged from base, contain no banned lexicon, and are not theme strings — but the gate's "every string by name" claim does not cover them. They need a shared-strings ruling by ID (same treatment the gate gave `SHARED-mapLabel-placing` / `SHARED-confirmCancel-aria`) before AC-13.9 is claimed without qualification.
+- **F-2 (Low — FIXED).** `themes.test.ts` checked the rendered strings against the banned lexicon but pinned none of them exactly, so an approved wording could drift without a test failing (the ADR's "per-theme title assertions move to themes.test.ts" had not actually happened). Fixed by an exact character-for-character pin of all 48 rendered strings per band, each verified first-hand against the gate record (all 3 edited + all 12 rewritten IDs included).
+- **F-3 (Low, evidence quality).** The paper-theme captures for Cold Trail and GeoDetective (`after/*-375-paper.png`) are byte-identical to the non-paper 375px captures (md5-verified). That is consistent with the gate's own finding that the light-media and paper Atlas token values are identical, and the spec asserts `data-theme="paper"` at capture — but as evidence the two files are duplicates, not independent captures. The PlayHUD paper shot has no non-paper twin.
+- **F-4 (Low, paperwork — fixed in this commit).** The Security seat's counts (13 files, +894/−160) describe the code diff before the two evidence specs were committed; the final text diff is 17 files, +1744/−271. The AC-12.6 row's "no http(s):// URL in any added line" was overbroad for the final diff (loopback harness URLs in the evidence specs) and is corrected above.
+- **G-2 (deviation verified TRUE).** The End-game pill's `text-xs` pin exists: `src/components/question-bubble.test.ts` asserts the score-stack pill's classes include `rounded-md` and `px-3 py-1.5 text-xs`. Changing the pill to `text-sm` would break that test. The deviation's stated reason is correct and the deviation stands.
+- **G-1 (runtime host proof).** See the Untested section above: per-mode host sets identical on branch and base builds; AC-12.6/AC-13.12 now rest on runtime evidence as well as the diff audit.
