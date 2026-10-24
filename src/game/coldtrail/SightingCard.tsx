@@ -67,9 +67,9 @@ export function SightingCard({
     <article
       aria-label={`Sighting ${index + 1}: ${sighting.cityName}`}
       data-testid="sighting-card"
-      className="rounded-xl border border-line bg-surface p-4"
+      className="mode-card p-4"
     >
-      <p className="text-[11px] tracking-wider text-muted uppercase">
+      <p className="name-eyebrow">
         🕵️ Sighting {index + 1} · {sighting.timestamp}
       </p>
       <p className="mt-1 text-fg">{sighting.text}</p>

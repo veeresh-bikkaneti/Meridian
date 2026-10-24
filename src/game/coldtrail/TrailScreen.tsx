@@ -126,8 +126,8 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   if (!caseData) {
     // Fail closed: a corrupt or empty deck never starts a broken case.
     return (
-      <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8" data-testid="coldtrail-screen">
-        <h1 className="font-display text-3xl text-fg">❄️ Cold Trail</h1>
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8" data-testid="coldtrail-screen">
+        <h1 className="mode-title text-3xl text-fg">❄️ Cold Trail</h1>
         <p className="mt-4 text-fg" role="alert">
           The case files didn&rsquo;t load. No case to play right now.
         </p>
@@ -413,21 +413,21 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   const placingNow = placing !== null;
 
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8" data-testid="coldtrail-screen">
+    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8" data-testid="coldtrail-screen">
       <header>
         <div className="flex items-start justify-between gap-3">
           <Button type="button" variant="ghost" onClick={onLeave} className="min-h-[44px] px-2">
             ← All games
           </Button>
-          <p data-testid="coldtrail-stars" className="text-sm text-muted" aria-label={`${store.stars} stars`}>
+          <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
             ⭐ {store.stars}
           </p>
         </div>
-        <p className="mt-4 text-[11px] tracking-wider text-muted uppercase">❄️ Cold Trail · Case file</p>
-        <h1 ref={caseHeadingRef} tabIndex={-1} className="font-display mt-1 text-3xl text-fg">
+        <p className="name-eyebrow mt-4">❄️ Cold Trail · Case file</p>
+        <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-1 text-3xl text-fg">
           Case #{String(caseData.caseNo).padStart(3, "0")}
         </h1>
-        <p className="mt-2 text-muted">
+        <p className="mt-2 text-fg">
           A smuggler is moving between cities. Three sightings, three rings — triangulate
           the hideout and tap your interception.
         </p>
@@ -464,7 +464,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             the single announcer — two live regions were double-announcing
             the same sentences (e.g. "All 3 rings are down"). Every state
             shown here is also announced via the hint or a focus move. */}
-        <p className="text-sm text-muted">
+        <p className="text-sm text-fg">
           {revealed
             ? "Case closed — the gold star marks the hideout."
             : allRingsPlaced
@@ -541,14 +541,15 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
               {hint}
             </p>
             {placingNow ? (
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 data-testid="cancel-placement-banner-btn"
                 onClick={onCancelPlacement}
-                className="min-h-[44px] shrink-0 px-3 text-sm text-muted underline"
+                className="min-h-[44px] shrink-0 px-3 text-sm underline"
               >
                 Cancel
-              </button>
+              </Button>
             ) : null}
           </div>
         ) : null}
@@ -562,10 +563,10 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
         <section
           aria-label="Case result"
           data-testid="coldtrail-reveal"
-          className="mt-6 rounded-xl border border-line bg-surface p-5"
+          className="mode-card mt-6 p-5"
         >
           <p className="text-[11px] tracking-wider text-muted uppercase">Case closed</p>
-          <h2 ref={resultHeadingRef} tabIndex={-1} className="mt-1 text-2xl font-semibold text-fg">{verdict.title}</h2>
+          <h2 ref={resultHeadingRef} tabIndex={-1} className="mode-title mt-1 text-2xl font-semibold text-fg">{verdict.title}</h2>
           <p className="mt-2 text-fg">
             The hideout was <strong>{caseData.hideout.name}</strong>.
           </p>

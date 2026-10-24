@@ -42,7 +42,7 @@ export function InterceptConfirm({
         className="absolute inset-0 cursor-default bg-black/60"
       />
       <div
-        className="relative flex w-full max-w-md flex-col rounded-t-3xl border border-line bg-surface"
+        className="mode-surface relative flex w-full max-w-md flex-col rounded-t-3xl border"
         style={{ maxHeight: "min(45dvh, 20rem)", overscrollBehavior: "contain" }}
       >
         <div className="shrink-0 px-6 pt-3">
