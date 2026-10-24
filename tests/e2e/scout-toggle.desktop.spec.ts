@@ -362,7 +362,7 @@ test("manual switch lands HOME even with a persisted GeoDetective flag under the
   ).not.toBeNull();
 
   // Enter GeoDetective: its open flag persists alongside the run.
-  await page.getByRole("button", { name: "🔎 Solve a mystery" }).click();
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(
     page.getByRole("heading", { name: "GeoDetective" }),
   ).toBeVisible({ timeout: 30_000 });

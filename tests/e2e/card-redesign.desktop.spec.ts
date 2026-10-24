@@ -150,6 +150,44 @@ async function stretchRingColor(page: Page, buttonSelector: string) {
   }, buttonSelector);
 }
 
+/** F1: sample the stretched ring WHILE focus is held on the button —
+ * sampling after focus moves reads the unfocused style (a false
+ * reading that bit a previous pass). Returns the ::after ring style,
+ * its geometry vs the card, and the button's own fallback outline. */
+async function ringWhileFocused(page: Page, cardSelector: string) {
+  return page.evaluate((sel) => {
+    const card = document.querySelector(sel) as HTMLElement | null;
+    const btn = card?.querySelector("button.hv5-go") as HTMLElement | null;
+    if (!card || !btn) return null;
+    const after = getComputedStyle(btn, "::after");
+    const btnStyle = getComputedStyle(btn);
+    const cardBox = card.getBoundingClientRect();
+    const img = card.querySelector("img.hv5-pic") as HTMLElement | null;
+    const imgBox = img ? img.getBoundingClientRect() : null;
+    return {
+      focused: document.activeElement === btn,
+      borderColor: after.borderColor,
+      boxShadow: after.boxShadow,
+      // ::after inset:0 against the card (its offsetParent) = the ring
+      // box IS the card box, so the ring perimeter crosses the photo.
+      offsetParentIsCard: btn.offsetParent === card,
+      top: after.top,
+      left: after.left,
+      right: after.right,
+      bottom: after.bottom,
+      fallbackOutlineWidth: btnStyle.outlineWidth,
+      fallbackOutlineColor: btnStyle.outlineColor,
+      // Photo sits strictly inside the card box the ring encloses.
+      photoInsideCard: imgBox
+        ? imgBox.top >= cardBox.top - 1 &&
+          imgBox.left >= cardBox.left - 1 &&
+          imgBox.bottom <= cardBox.bottom + 1 &&
+          imgBox.right <= cardBox.right + 1
+        : false,
+    };
+  }, cardSelector);
+}
+
 /** Click points inside a card: image, heading, paragraph, corner inset. */
 async function cardPoints(page: Page, cardSelector: string) {
   const card = page.locator(cardSelector);
@@ -240,10 +278,72 @@ test("B: one focus stop per game card, ring around the whole card", async ({ pag
   expect(await stretchRingColor(page, '[data-testid="tour-stop-geodetective"] button.hv5-go')).toBe(
     "rgb(119, 89, 31)",
   );
+  // F1, sampled WHILE focus is held: two-tone ring (brown border +
+  // cream halo + brown outer band, inset so card overflow:hidden
+  // cannot clip it), geometry = whole card, fallback outline present.
+  const gdRing = await ringWhileFocused(page, '[data-testid="tour-stop-geodetective"]');
+  expect(gdRing?.focused).toBe(true);
+  expect(gdRing?.borderColor).toBe("rgb(119, 89, 31)");
+  expect(gdRing?.boxShadow).toContain("rgb(253, 251, 243)");
+  expect(gdRing?.boxShadow).toContain("rgb(119, 89, 31)");
+  expect(gdRing?.boxShadow).toContain("inset");
+  expect(gdRing?.offsetParentIsCard).toBe(true);
+  expect(gdRing?.top).toBe("0px");
+  expect(gdRing?.left).toBe("0px");
+  expect(gdRing?.right).toBe("0px");
+  expect(gdRing?.bottom).toBe("0px");
+  expect(gdRing?.photoInsideCard).toBe(true);
+  expect(gdRing?.fallbackOutlineWidth).not.toBe("0px");
+  expect(gdRing?.fallbackOutlineColor).toBe("rgb(119, 89, 31)");
 
   const ctHandle = await page.locator(".hv5-dispatch button.hv5-go").elementHandle();
   expect(await tabTo(page, ctHandle)).toBe(true);
   expect(await stretchRingColor(page, ".hv5-dispatch button.hv5-go")).toBe("rgb(119, 89, 31)");
+  const ctRing = await ringWhileFocused(page, ".hv5-dispatch");
+  expect(ctRing?.focused).toBe(true);
+  expect(ctRing?.borderColor).toBe("rgb(119, 89, 31)");
+  expect(ctRing?.boxShadow).toContain("rgb(253, 251, 243)");
+  expect(ctRing?.boxShadow).toContain("rgb(119, 89, 31)");
+  expect(ctRing?.offsetParentIsCard).toBe(true);
+  expect(ctRing?.photoInsideCard).toBe(true);
+  expect(ctRing?.fallbackOutlineWidth).not.toBe("0px");
+});
+
+test("F: CTA accessible names carry the card name; articles labelled; due outline darkened", async ({ page, browser }) => {
+  await gotoHome(page, 1280);
+  // F2: accessible name prefixes the card name; visible text stays a
+  // substring (2.5.3 Label in Name); emoji is aria-hidden, not in name.
+  const gd = page.getByRole("button", { name: "GeoDetective: Solve a mystery" });
+  await expect(gd).toBeVisible();
+  expect(await gd.getAttribute("aria-label")).toBe("GeoDetective: Solve a mystery");
+  expect(await gd.textContent()).toContain("Solve a mystery");
+  expect(await gd.textContent()).not.toContain("GeoDetective");
+  const ct = page.getByRole("button", { name: "Cold Trail: Start the trail" });
+  await expect(ct).toBeVisible();
+  expect(await ct.getAttribute("aria-label")).toBe("Cold Trail: Start the trail");
+  expect(await ct.textContent()).toContain("Start the trail");
+  // F4: articles reference their h2 ids again.
+  expect(await page.getByTestId("tour-stop-geodetective").getAttribute("aria-labelledby")).toBe(
+    "geodetective-title",
+  );
+  expect(await page.locator(".hv5-dispatch").getAttribute("aria-labelledby")).toBe("coldtrail-title");
+  // F2 (Review) + F3 (due outline #8a6d2f) on a seeded due deck.
+  const { context, page: fresh } = await freshHome(browser, 1280, deckSeed(0));
+  try {
+    const review = fresh.getByRole("button", { name: "Review my misses: Start review" });
+    await expect(review).toBeVisible();
+    expect(await review.getAttribute("aria-label")).toBe("Review my misses: Start review");
+    expect(await review.textContent()).toContain("Start review");
+    const outline = await fresh.evaluate(() => {
+      const section = document.querySelector('[data-testid="tour-stop-review"]') as HTMLElement | null;
+      if (!section) return "";
+      const s = getComputedStyle(section);
+      return `${s.outlineColor} ${s.outlineWidth} ${s.outlineStyle}`;
+    });
+    expect(outline).toBe("rgb(138, 109, 47) 3px solid");
+  } finally {
+    await context.close();
+  }
 });
 
 test("C: Review due → tap anywhere opens review, REVIEW → cue present", async ({ page, browser }) => {
@@ -252,7 +352,7 @@ test("C: Review due → tap anywhere opens review, REVIEW → cue present", asyn
   const section = page.getByTestId("tour-stop-review");
   await expect(section).toBeVisible();
   await expect(section.locator(".hv5-review-cue")).toHaveText("REVIEW →");
-  await expect(page.getByRole("button", { name: "Start review" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Review my misses: Start review" })).toBeVisible();
   expect(await focusableCount(page, '[data-testid="tour-stop-review"]')).toBe(1);
 
   for (const point of ["heading", "paragraph", "cue", "corner"] as const) {
@@ -287,7 +387,7 @@ test("C: Review empty and caught-up → not focusable, not clickable, no cue", a
       const section = fresh.getByTestId("tour-stop-review");
       await expect(section).toBeVisible();
       await expect(section).toContainText("Miss a place and it'll land here for review.");
-      await expect(fresh.getByRole("button", { name: "Start review" })).toHaveCount(0);
+      await expect(fresh.getByRole("button", { name: "Review my misses: Start review" })).toHaveCount(0);
       await expect(section.locator(".hv5-review-cue")).toHaveCount(0);
       expect(await focusableCount(fresh, '[data-testid="tour-stop-review"]')).toBe(0);
       const box = await section.boundingBox();
@@ -304,7 +404,7 @@ test("C: Review empty and caught-up → not focusable, not clickable, no cue", a
     try {
       const section = fresh.getByTestId("tour-stop-review");
       await expect(section).toContainText("All caught up!");
-      await expect(fresh.getByRole("button", { name: "Start review" })).toHaveCount(0);
+      await expect(fresh.getByRole("button", { name: "Review my misses: Start review" })).toHaveCount(0);
       await expect(section.locator(".hv5-review-cue")).toHaveCount(0);
       expect(await focusableCount(fresh, '[data-testid="tour-stop-review"]')).toBe(0);
     } finally {

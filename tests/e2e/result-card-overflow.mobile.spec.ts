@@ -328,7 +328,7 @@ async function setupVariant(
 ): Promise<void> {
   if (variant === "geodetective-reveal") {
     await page.goto("http://127.0.0.1:4123/Meridian/?loop-puzzle=218");
-    await page.getByRole("button", { name: "🔎 Solve a mystery" }).click();
+    await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
     await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
       timeout: 30_000,
     });

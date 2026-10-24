@@ -24,7 +24,7 @@ test.beforeEach(async ({ context }) => {
 
 async function openLoop(page: Page): Promise<void> {
   await page.goto(`${BASE}?loop-puzzle=${PUZZLE}`);
-  await page.getByRole("button", { name: "🔎 Solve a mystery" }).click();
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
     timeout: 60_000,
   });

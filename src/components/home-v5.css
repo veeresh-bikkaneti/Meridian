@@ -8,7 +8,7 @@
   --hv5-card: #fdfbf3;
   --hv5-ink: #33302a;
   --hv5-ink-soft: #5c564a;
-  --hv5-brass: #b8932f;
+  --hv5-brass: #8a6d2f;
   --hv5-brown: #8a6d2f;
   --hv5-brown-deep: #77591f;
   --hv5-forest: #33503f;
@@ -957,11 +957,26 @@ body:has(.home-v5) {
   border: 3px solid transparent;
   border-radius: 24px;
 }
+/* F1: the ::after ring alone is outline:none on the button, so if the
+   ::after ever fails there is no ring at all. Fallback: a real outline
+   on the button itself (around the CTA text) that always renders on
+   :focus-visible; the whole-card ::after ring renders alongside it
+   when the ::after works. */
 .home-v5 .hv5-stretch:focus-visible {
-  outline: none;
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 2px;
 }
+/* F1 two-tone ring: brown border + cream halo + brown outer band, all
+   INSET — the card has overflow:hidden, so outset box-shadows would be
+   clipped at the card edge and never render. Inset, the bands sit on
+   top of the full-bleed photo at the card perimeter: on any photo
+   pixel, at least one band contrasts (cream #fdfbf3 on dark pixels,
+   brown #77591f on light ones). */
 .home-v5 .hv5-stretch:focus-visible::after {
   border-color: var(--hv5-brown-deep);
+  box-shadow:
+    inset 0 0 0 2px #fdfbf3,
+    inset 0 0 0 5px var(--hv5-brown-deep);
 }
 /* Review exception: .hv5-spot .hv5-txt is position:relative; z-index:1
    (so text sits above the spot art), which would otherwise swallow taps
@@ -1011,6 +1026,30 @@ body:has(.home-v5) {
 }
 .home-v5 .hv5-review-empty h2 {
   color: var(--hv5-ink-soft);
+}
+
+/* F7 — forced colors: the two-tone ring, the due outline, and the
+   REVIEW → cue all restate in system colors so none of them vanishes
+   or goes low-contrast when the UA overrides author colors. Static
+   verification only here; a live forced-colors pass is a later step. */
+@media (forced-colors: active) {
+  .home-v5 .hv5-stretch:focus-visible {
+    outline-color: CanvasText;
+  }
+  .home-v5 .hv5-stretch:focus-visible::after {
+    border-color: CanvasText;
+    box-shadow:
+      inset 0 0 0 2px Canvas,
+      inset 0 0 0 5px CanvasText;
+  }
+  .home-v5 .hv5-review-due {
+    outline-color: CanvasText;
+  }
+  .home-v5 .hv5-review-cue {
+    background: ButtonText;
+    color: ButtonFace;
+    forced-color-adjust: none;
+  }
 }
 
 /* D — Grid band, row-stretch only: both .hv5-pages children span the full

@@ -2853,6 +2853,7 @@ function Choose({
           className="hv5-card hv5-split hv5-stack hv5-case home-rise"
           style={rise(5)}
           data-testid="tour-stop-geodetective"
+          aria-labelledby="geodetective-title"
         >
           {/* Card-redesign Variant A: picture first in DOM order (not CSS
               order), so scanning, screen-reader, and tab order all start
@@ -2887,8 +2888,13 @@ function Choose({
               onPointerEnter={prefetchTerritoryData}
               onPointerDown={prefetchTerritoryData}
               onFocus={prefetchTerritoryData}
+              aria-label={loopProgress.inProgress ? "GeoDetective: Resume your case" : "GeoDetective: Solve a mystery"}
             >
-              {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
+              {loopProgress.inProgress ? (
+                <><span aria-hidden="true">▶️</span>{" "}Resume your case</>
+              ) : (
+                <><span aria-hidden="true">🔎</span>{" "}Solve a mystery</>
+              )}
             </button>
           </div>
         </article>
@@ -2897,6 +2903,7 @@ function Choose({
         <article
           className="hv5-card hv5-split hv5-stack hv5-dispatch home-rise"
           style={rise(5)}
+          aria-labelledby="coldtrail-title"
         >
           {/* Variant A, same as GeoDetective: image first in DOM order;
               whole-card action via the stretched CTA (Form S, shared form
@@ -2923,8 +2930,9 @@ function Choose({
               onPointerEnter={prefetchTerritoryData}
               onPointerDown={prefetchTerritoryData}
               onFocus={prefetchTerritoryData}
+              aria-label="Cold Trail: Start the trail"
             >
-              ❄️ Start the trail
+              <span aria-hidden="true">❄️</span>{" "}Start the trail
             </button>
           </div>
         </article>
@@ -2958,7 +2966,7 @@ function Choose({
                       the card via .hv5-stretch; the REVIEW → pill is the
                       visible discoverability cue (aria-hidden, pointer-
                       events none — taps pass through to the CTA). */}
-                  <button type="button" className="hv5-go hv5-stretch" onClick={onReview}>
+                  <button type="button" className="hv5-go hv5-stretch" onClick={onReview} aria-label="Review my misses: Start review">
                     {REVIEW_DECK_COPY.startReview}
                   </button>
                   <span className="hv5-review-cue" aria-hidden="true">REVIEW →</span>
