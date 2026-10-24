@@ -78,7 +78,8 @@ on its own PR #241).
 
 - [x] Peer Reviewer pass (pass 10): APPROVE WITH FIXES — F-2 exact
   theme-string pin test landed (`136627b`); F-1 shared-strings gate
-  gap recorded for a Child Safety ruling by ID (see review doc);
+  gap recorded for a Child Safety ruling by ID (see review doc).
+  RESOLVED 2026-10-24 — Child Safety supplementary ruling approved all 31 shared-string IDs (T-SHARED-*), zero edits; AC-13.9 fully closed (102 IDs total).
   G-1 runtime host capture identical per mode on branch vs base;
   G-2 End-game pill pin verified present in `question-bubble.test.ts`.
 - [ ] Engineering Lead verdict.
@@ -108,6 +109,7 @@ on its own PR #241).
 - docs(branch): wave2 mode screens review doc and branch status — this commit
 - `136627b` test(coldtrail): pin every rendered theme string to the gate-approved text (peer review F-2)
 - docs(branch): peer reviewer pass-10 record — review doc + branch status corrections (this commit)
+- docs(wave2): record F-1 resolution — Child Safety supplementary ruling closes AC-13.9 (this commit)
 
 Deviations recorded in the review doc: the End-game pill keeps
 `text-xs` (pinned by `question-bubble.test.ts`) against UX A5's ≥14px
