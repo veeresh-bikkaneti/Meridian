@@ -1,72 +1,83 @@
-# BRANCH_STATUS — fix/wave2-build-stamp
+# BRANCH_STATUS — fix/footer-row-alignment
 
-**State: PR #225 open. Engineering Lead verdict: READY (round 1, 6 non-blocking nits — 3 fixed in the nit round, 3 deferred in the PR comment). Next: Chitti — only the owner merges.**
-Base: `origin/main d2b643e` (rebased 2026-10-23 after #232, #235 and #219 landed; original base was the PR #222 merge commit `1ca4c04`). Only conflict was this file, resolved per convention (the branch's own status wins).
-Full write-up: `docs/reviews/2026-10-21-wave2-build-stamp.md`.
+**Branch:** `fix/footer-row-alignment`
+**Base:** origin/main @ `d2b643e`
+**State: CURED — panel round 1 returned NOT READY on a records
+contradiction (this file's E2E bullet vs the PR body); the
+bullet now carries the terminal record, verified below.
+Awaiting the panel re-vote and the owner's merge word.** One
+CSS file changed; no DOM, copy, or component changes. It
+supersedes the previous contents of this file (the
+`docs/232-verification-record` branch record, whose history
+lives on its own PR).
 
-## What this branch does
+## The bug
 
-- **WI-7a — build stamping for the Workers build.** One build id,
-  computed once in `vite.config.ts` (`BUILD_ID`), is shared by the
-  bundle define, the sw.js fingerprint plugin and the new build-meta
-  plugin, which writes `build-meta.json` into the build output
-  inside the Vite build itself. Before this, build-meta.json was
-  generated only by npm `prebuild` hooks, so a direct `vite build`
-  (the Workers Builds shape) on a fresh checkout served none.
-  `scripts/verify-build-stamp.mjs` proves meta == sw.js VERSION ==
-  a prefix of HEAD for any built tree.
-- **WI-7b — production smoke script.** `node scripts/prod-smoke.mjs
-  [baseUrl]` (GET only, non-zero exit on failure) checks the live
-  site's security headers, `/_serverFn/` 404, security.txt, manifest
-  start_url and the build stamp. Documented in the README Deployment
-  section; a manual-only GitHub Actions workflow runs it
-  (`workflow_dispatch`, no schedule).
+On the home footer link row, the two `<button>` items
+("🔒 For grown-ups", "🗺️ Take the tour") rendered their text
+~11.5px lower than the two `<a>` items ("Privacy",
+"Contact us (grown-ups)"), even though all four boxes were
+perfectly aligned. Owner screenshot; verified on the
+production build (buildId `d2b643e`).
 
-## Context finding (WI-7a)
+## Root cause (measured, not guessed)
 
-Production's earlier `36bad5e` stamp was real, not coincidence:
-`resolveBuildId()` uses the 12-char `GITHUB_SHA` prefix on GitHub
-Actions (Pages) and falls back to the 7-char `git rev-parse --short
-HEAD` on Workers Builds. Details and the divergence gaps in the
-review doc.
+Computed styles on the production build were **identical** for
+buttons and links — font-family Karla, font-size 14px,
+line-height 21px, padding 0 16px — and all four boxes sat at the
+same y with height 44px. The difference was inside the box:
+Chromium vertically centers a `<button>`'s content on its own
+(text rect +13.5px from the box top = exactly centered in
+44px), while a link's line box rides at the top of the 44px
+min-height box (text rect +2.0px). `.agep-footer-link` set the
+shared box but never normalized how the content sits in it.
 
-## Finding (not this branch's files)
+## The fix
 
-The smoke script fails ONE check against current production:
-`GET /_serverFn/` returns TanStack's unhandled 500, not the 404
-PR #222's ServerFnGuard produces on main. The guard is not effective
-in the deployed Workers/Nitro build. Needs an owner-assigned
-follow-up branch (server-entry wiring); `src/` is outside this
-branch's file list.
+`src/components/age-profile/age-profile.css` — `.agep-footer-link`
+only: added `display: inline-flex; align-items: center;
+justify-content: center;` (with an explanatory comment), so
+both element types center their text identically in the 44px
+box. Nothing else touched.
 
-## Files
+## Measurements (Playwright, built artifact, serveBuiltArtifact)
 
-- `scripts/build-meta-plugin.mjs` (new)
-- `scripts/build-meta-plugin.test.mjs` (new)
-- `scripts/verify-build-stamp.mjs` (new)
-- `scripts/prod-smoke.mjs` (new)
-- `scripts/prod-smoke.test.mjs` (new)
-- `scripts/fingerprint-sw-plugin.mjs` (optional pinned build id)
-- `vite.config.ts` (one shared BUILD_ID; build-meta plugin registered)
-- `package.json` (`smoke:prod`, `verify:build-stamp` scripts)
-- `.github/workflows/prod-smoke.yml` (new, manual only)
-- `README.md` (Deployment: stamping + smoke subsections)
-- `docs/reviews/2026-10-21-wave2-build-stamp.md` (new)
-- `BRANCH_STATUS.md` (this file)
+1280px, pre-fix → post-fix (box y / text-rect y):
 
-## Gates
+| item | box y | text y pre | text y post |
+| :--- | :--- | :--- | :--- |
+| grown-ups (button) | 407.08 | 420.58 | 420.58 |
+| take-tour (button) | 407.08 | 420.58 | 420.58 |
+| privacy (link) | 407.08 | 409.08 | 420.58 |
+| contact (link) | 407.08 | 409.08 | 420.58 |
 
-- typecheck clean · npm test green (scripts 831, src 1473, 0 fail)
-- lint-cards GATE PASSED
-- `npm run build`, `npm run build:pages`, direct `npx vite build`
-  all green; `verify-build-stamp` PASS on both output trees
-- Playwright hydration-boot against the built artifact: 1/1
-- prod-smoke vs live production: 4 PASS / 1 FAIL (the S5-prod
-  finding above — pre-existing, not this branch)
+Pre-fix text spread 11.5px → post-fix spread **0.0px**.
+
+390px (row wraps 2+2, as before): text offset from each box
+top was +13.5px (buttons) vs +2.0px (links) pre-fix; post-fix
+**+13.5px on all four**.
+
+768px horizontal overflow: scrollWidth 824 vs innerWidth 768
+**both pre- and post-fix** — pre-existing on main, not worse.
+
+## Gates (this branch)
+
+- `npx tsc --noEmit` — clean.
+- `npm test` — scripts **810 pass / 0 fail**, src **1479 pass /
+  0 fail** — the main baselines.
+- `node scripts/lint-cards.mjs` — **GATE PASSED**.
+- `VITE_KOFI_URL=… npm run build:pages` — green.
+- E2E (`--workers=1`, `VITE_KOFI_URL` at build + test time):
+  batch 1 (grownups-privacy-contact, age-profile-gate,
+  home-visual-layout) — **17 passed**; grandpa-coffee-run
+  desktop/mobile/reduced + mobile-home-overlap — passed;
+  home-badges-readaloud's batch — terminal record **exit 0,
+  22 passed**; home-badges-readaloud solo — **8/8 green on
+  this branch's build and 8/8 on unmodified main** (solo run
+  re-verified 8/8 on this branch's build during the cure
+  round).
 
 ## Pending
 
-- Chitti → owner's merge call. ("Ready to merge? NO" until both.)
-- After the owner merges: run `node scripts/prod-smoke.mjs` against
-  production and post the real output on the PR (it will keep
-  failing the `/_serverFn/` check until the S5-prod follow-up lands).
+- Panel re-vote on the cured tip.
+- Owner's merge word. Only the owner merges.
