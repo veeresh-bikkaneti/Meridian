@@ -1,83 +1,106 @@
-# BRANCH_STATUS — fix/footer-row-alignment
+# BRANCH_STATUS — fix/a11y-confirmed-findings
 
-**Branch:** `fix/footer-row-alignment`
-**Base:** origin/main @ `d2b643e`
-**State: CURED — panel round 1 returned NOT READY on a records
-contradiction (this file's E2E bullet vs the PR body); the
-bullet now carries the terminal record, verified below.
-Awaiting the panel re-vote and the owner's merge word.** One
-CSS file changed; no DOM, copy, or component changes. It
-supersedes the previous contents of this file (the
-`docs/232-verification-record` branch record, whose history
-lives on its own PR).
+**Branch:** `fix/a11y-confirmed-findings`
+**Base:** origin/main @ `c9cba12` ("docs: on-device AI story text decision
+memo (WI-5) (#216)")
+**State: FIXES COMPLETE — gates re-verified by the PR #240 review
+pipeline; the branch is ON ORIGIN and PR #240 is OPEN (see Push
+status).** Fixes for the axe-confirmed accessibility findings from the
+2026-10-24 launch audit + live axe scan (reports:
+`meridian-launch-technical-audit-2026-10-24.md`,
+`meridian-scan-a11y-axe-2026-10-24.md`). It supersedes the previous
+contents of this file (the `fix/footer-row-alignment` branch record,
+whose history lives on its own PR).
 
-## The bug
+## Scope (exactly this — no drive-by changes)
 
-On the home footer link row, the two `<button>` items
-("🔒 For grown-ups", "🗺️ Take the tour") rendered their text
-~11.5px lower than the two `<a>` items ("Privacy",
-"Contact us (grown-ups)"), even though all four boxes were
-perfectly aligned. Owner screenshot; verified on the
-production build (buildId `d2b643e`).
+1. **F1 contrast (WCAG 1.4.3)** — the contact form's validation error
+   list uses `text-red-700` (#b91c1c): 2.66:1 on the dark `--surface`
+   (audit, source tokens), 2.92:1 measured live on `--bg`. Fix: a
+   theme-aware `--error` token following the `--gold-ink` pattern —
+   dark `#f1948a` (the value `age-profile.css` already uses for gate
+   errors under `[data-theme="night"]`), light `#b91c1c` (the current
+   value; already ≥4.5:1 on every light surface, so light rendering is
+   unchanged). `contact.tsx` switches to `text-error`.
+2. **listitem** — `<ul role="alert">` strips the list role, so its
+   `<li>` children trip axe's `listitem` rule in the same error state.
+   Fix: the alert role moves to a wrapping `<div>`; the `<ul>` stays a
+   list. (Codebase pattern: `role="alert"` lives on `<p>`/block
+   wrappers, never on a list.)
+3. **label-content-name-mismatch (home, WCAG 2.5.3)** — the grandpa
+   bubble-ask button's `aria-label` omits its second visible line,
+   "Your support keeps Meridian free for kids". Fix: the accessible
+   name now contains both visible lines verbatim, in order, keeping the
+   existing trailing guidance sentence.
+4. **Investigation only** — GrownUpGate's "×" cancel button was marked
+   `label-content-name-mismatch` *incomplete* ×1 by axe on /contact's
+   gate state. Determination + evidence in the delivery report
+   (`meridian-a11y-fixes-2026-10-24.md`); no code change.
 
-## Root cause (measured, not guessed)
+## TDD record
 
-Computed styles on the production build were **identical** for
-buttons and links — font-family Karla, font-size 14px,
-line-height 21px, padding 0 16px — and all four boxes sat at the
-same y with height 44px. The difference was inside the box:
-Chromium vertically centers a `<button>`'s content on its own
-(text rect +13.5px from the box top = exactly centered in
-44px), while a link's line box rides at the top of the 44px
-min-height box (text rect +2.0px). `.agep-footer-link` set the
-shared box but never normalized how the content sits in it.
+- `src/a11y-regressions.test.ts` (new; source-guard idiom of
+  `security-headers.test.ts` / `bounded-text.test.ts`): **RED on the
+  base — 10 tests, 1 pass / 9 fail.** The only pre-fix pass is "the ask
+  button has an aria-label".
+- After the fixes: **GREEN — 10 tests, 10 pass / 0 fail.**
 
-## The fix
+## Gates (this branch; run at the local fix head `a91b844`, and
+re-verified at remote head `8e9cae8` by the PR #240 review pipeline
+with identical results — logs in `~/workspace/meridian-pr240-review/logs/`)
 
-`src/components/age-profile/age-profile.css` — `.agep-footer-link`
-only: added `display: inline-flex; align-items: center;
-justify-content: center;` (with an explanatory comment), so
-both element types center their text identically in the 44px
-box. Nothing else touched.
+- `npx tsc --noEmit` — exit 0, no output.
+- `npm test` — exit 0. Scripts suite: 834 tests, 825 pass / 0 fail /
+  9 skipped. Src suite: 1489 tests, 1489 pass / 0 fail (includes the
+  10 new a11y-regression guards).
+- `node scripts/lint-cards.mjs` — exit 0, prints `GATE PASSED`.
+- `npm run build:pages` — exit 0 (also exit 0 with `VITE_KOFI_URL`
+  set, as the E2E specs require).
+- Playwright E2E, targeted specs only (`grownups-privacy-contact`
+  desktop + grandpa-coffee-run desktop/mobile/reduced; 17 tests):
+  **15 passed, 2 failed.** Both failures are animation-timing
+  timeouts in the grandpa walk specs (desktop: scene beat never
+  reached "kettle" within 12 s; reduced: `comet-mascot` bounding box
+  timeout at 180 s). **Baseline check: the identical 2 tests fail
+  the same way on pristine base `c9cba12`** (9 passed / same 2 failed
+  in the two-file run) — pre-existing failures on this VM, not
+  regressions from this branch. First E2E attempt aborted at spec
+  load because `VITE_KOFI_URL` was unset; the runs above set it for
+  both build and test, per the specs' own header.
+- Full gate detail: delivery report `meridian-a11y-fixes-2026-10-24.md`.
 
-## Measurements (Playwright, built artifact, serveBuiltArtifact)
+## Push status — ON ORIGIN (via GitHub API replay)
 
-1280px, pre-fix → post-fix (box y / text-rect y):
-
-| item | box y | text y pre | text y post |
-| :--- | :--- | :--- | :--- |
-| grown-ups (button) | 407.08 | 420.58 | 420.58 |
-| take-tour (button) | 407.08 | 420.58 | 420.58 |
-| privacy (link) | 407.08 | 409.08 | 420.58 |
-| contact (link) | 407.08 | 409.08 | 420.58 |
-
-Pre-fix text spread 11.5px → post-fix spread **0.0px**.
-
-390px (row wraps 2+2, as before): text offset from each box
-top was +13.5px (buttons) vs +2.0px (links) pre-fix; post-fix
-**+13.5px on all four**.
-
-768px horizontal overflow: scrollWidth 824 vs innerWidth 768
-**both pre- and post-fix** — pre-existing on main, not worse.
-
-## Gates (this branch)
-
-- `npx tsc --noEmit` — clean.
-- `npm test` — scripts **810 pass / 0 fail**, src **1479 pass /
-  0 fail** — the main baselines.
-- `node scripts/lint-cards.mjs` — **GATE PASSED**.
-- `VITE_KOFI_URL=… npm run build:pages` — green.
-- E2E (`--workers=1`, `VITE_KOFI_URL` at build + test time):
-  batch 1 (grownups-privacy-contact, age-profile-gate,
-  home-visual-layout) — **17 passed**; grandpa-coffee-run
-  desktop/mobile/reduced + mobile-home-overlap — passed;
-  home-badges-readaloud's batch — terminal record **exit 0,
-  22 passed**; home-badges-readaloud solo — **8/8 green on
-  this branch's build and 8/8 on unmodified main** (solo run
-  re-verified 8/8 on this branch's build during the cure
-  round).
+- Direct `git push` from the build VM still fails (`remote: Invalid
+  username or token. Password authentication is not supported for Git
+  operations.` — the VM's stored `gh` token is invalid and SSH is
+  reset by the egress proxy). That part of the original record was
+  accurate; the "local-only / no PR" conclusion is superseded by what
+  follows.
+- On 2026-10-24 the owner supplied a fine-grained PAT through the
+  Secure Vault (the `custom.github` API connector; the token never
+  passed through chat), and the four commits were replayed onto
+  `c9cba12` through the GitHub API with identical content, messages
+  and authorship. Remote commits: `7285b93` (test), `c8f5a31`
+  (F1+F2), `6994296` (F3), `8e9cae8` (docs) — corresponding to local
+  originals `8b816f2`, `c898023`, `a91b844`, `9f24fda`. All five
+  changed files were verified byte-identical to the local head.
+- **PR #240 is OPEN**, based on `main` @ `c9cba12` (still the latest
+  main — no rebase was needed). **No merge, no deploy** — those wait
+  for the owner's separate approval.
 
 ## Pending
 
-- Panel re-vote on the cured tip.
-- Owner's merge word. Only the owner merges.
+- Owner's review/merge word on PR #240.
+- This status correction is a docs commit prepared in the PR #240
+  review clone (`~/workspace/meridian-pr240-review/repo`); it reaches
+  origin via the same API-replay route, and its hash is recorded in
+  the review report (`meridian-pr240-review-2026-10-24.md`).
+- Still owed (unchanged): a live screen-reader pass (NVDA/VoiceOver),
+  zoom and forced-colours checks, and device testing on the live site.
+- Process note for the owner: the PR #240 review's Code Reviewer
+  ruled this fix unit **Tier 2** under the council table's "3+ files"
+  trigger — the fixes were executed as per-fix Tier 1 Solo TDD, and
+  no owner-set override is on record. The ruling and its reasoning
+  are in the review report for the owner's call; that seat required
+  no code changes beyond this status correction.
