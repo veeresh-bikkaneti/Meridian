@@ -1,151 +1,77 @@
-# BRANCH_STATUS — feat/card-redesign-build
+# BRANCH_STATUS — fix/storyteller-pending-tap
 
-**Branch:** `feat/card-redesign-build`
-**Base:** origin/main @ `28c5fea` (PR #245 merged; rebased from `a59ee4c` — BRANCH_STATUS conflict resolved by keeping this branch's record, #245's record lives on main via #245)
-**State: PANEL-REVIEWED, local head only — NOT merged. PR #242 OPEN (remote head `17ef7fc`); local head unpushed, push needs the owner's fresh force-with-lease authorization.**
-
-Council-decided card redesign (CARD-REDESIGN-MANIFEST.md, Chair-decided;
-verdict mockups in `council-evidence/card-redesign-debate/mockups/`).
-Builds ONLY items A–D below; everything else in the manifest is HELD.
+**Branch:** `fix/storyteller-pending-tap`
+**Base:** origin/main @ `ddb6d28c` (PR #242 merged; includes #241 merged as
+`fa9f36b`, #244 as `a59ee4c9`, #245 as `28c5fea0` — all untouched by
+this branch)
+**State: PORT COMPLETE — branch pushed, PR #243 open; this head rebased
+onto `ddb6d28c`, local only, pending owner-route landing.** It
+supersedes the previous contents of this file. PRs #241, #244, #245
+and #242 are merged, and untouched by this branch.
 
 ## Scope (exactly this — no drive-by changes)
 
-- **A. JOIN button** — nav "JOIN THE JOURNEY" (`.hv5-actions
-  .hv5-btn-brown`): `min-height: 46px` inside the ≤1080px media query
-  only. Measured 38.5px → 46px at 390/1080px; 46.8px at 1280px untouched;
-  768px already 55px (wrapped nav) — the floor does not shrink it.
-  Map-lines hero background untouched.
-- **B. Split cards (Variant A), GeoDetective + Cold Trail** — `<img>`
-  moved before `.hv5-txt` in JSX (DOM order, not CSS order); the
-  `.hv5-split` row disabled for these cards only (`.hv5-stack`);
-  full-width top image, 16/9, full-bleed to the card edges (replaces
-  the 120px GD strip and the 238px CT bleed). Production art reused
-  (desert-ruins, Patagonia peaks — the mockup's recognisable scene).
-  Badge chip unchanged: dark #77591f on #efe3bc = 5.07:1 (the
-  proposal's 1.28:1 pale-on-pale chip is NOT shipped). Locked
-  GeoDetective tile untouched. Form: **S for both cards** (stretched
-  CTA; see below).
-- **C. Review my misses** — whole-card clickable ONLY when due > 0,
-  via the stretched "Start review" CTA, plus the visible `REVIEW →`
-  cue pill (aria-hidden, click-through). Empty/caught-up: no button,
-  no cue, muted heading, not focusable/clickable. Duplicate
-  `aria-label` + `h2` resolved via `aria-labelledby="review-title"`.
-  `startReview` still fails closed on empty queues; `deck.enabled =
-  false` still renders no card (unchanged).
-- **D. Grid band, row-stretch only** — `.hv5-pages > .hv5-page`
-  `grid-column: 1 / -1`. No-op at 390px and ≤680px (already single
-  column). The 768 `.hv5-grid3` orphan is NOT built (separate /
-  conditional). At 1280, About going full-width is band mechanics,
-  not a claimed improvement (D-α). Sizing rule: journal entry art
-  keeps its fixed 3/2 box (scales with the band); About paragraphs
-  capped at 72ch.
-- **E. Cold Trail deactivated = absent — SKIPPED, switch spec owed.**
-  Verified absent: `src/game/coldtrail/store.ts` holds only `{v,
-  caseIndex, stars, solved, current}` + the `meridian.coldtrail.open`
-  screen-open flag; the card is unconditional; `coldTrailOpen` =
-  screen-open-now, not deactivation. No switch was invented.
+One mechanism, ported from the certified (but superseded) branch
+`fix/storyteller-narration-lifecycle` @ `08fef62`: the pending-tap
+intent (`tapStartPendingRef`). A figure tap that lands while the
+greeting is pending in `greeting_text` and the asset manifest is still
+in flight is remembered, and the greeting starts when `greetAudio`
+resolves. The 2026-10-16 settled check
+(`SETTLED-CHECK-2026-10-16.md`) proved this is the one piece of that
+fix still missing from main; everything else was superseded by #152
+(entering watchdog — main's `ENTER_HANG_MS`) and #153 (dismissed-
+greeting protection, rapid-tap guard, "Hear again"), and none of it is
+reintroduced here. `shouldForceEnterAdvance` is NOT ported.
 
-## Form S — FINAL (coordinator's final pick)
+## Commits
 
-- **Form S for GeoDetective, Cold Trail, and Review-due alike — FINAL.**
-  Reasoning: (1) a `<button>` cannot contain the `<h2>` — Form R
-  would force dropping real heading semantics or using a
-  `role="heading"` span; (2) GeoDetective has a genuine nested-
-  interactive conflict that FORCES Form S: `EarnedBadgeRow` renders
-  real badge `<button>`s (tap-to-expand blurbs) that must stay
-  independently tappable — nesting them in a card-`<button>` is
-  invalid and would fire the card action on chip taps; (3) one
-  shared form keeps both game cards behaving identically. Consequence
-  to record: with badges earned, GeoDetective has 1 card stop + 1
-  stop per badge chip (pre-existing, required); with no badges, exactly
-  1 stop. CTA text stays its accessible name; GD/CT card articles ARE
-  labelled by their headings via `aria-labelledby` (F4 restoration in
-  923b268 — the earlier removal sentence was pre-F4 and is corrected
-  here); Review keeps its region name via `aria-labelledby` to the
-  `h2` (existing E2E relies on `region "Review my misses"`).
+1. `ba666bd` — test: repro spec ported verbatim from the certified
+   branch (`tests/e2e/storyteller-narration-tap-pending.desktop.spec.ts`).
+2. `bdc093d` — fix: the mechanism, `src/components/storyteller-home.tsx`
+   only (+94/−1): intent registration in `handleFigureTap`, the
+   tap-start effect, intent cleared on dismiss / yield / phase exit /
+   unmount.
+3. This docs commit.
 
-## Parity account (measured, same Playwright harness, baseline = this branch pre-change)
+All commits authored `veeresh bikkaneti
+<57240576+veeresh-bikkaneti@users.noreply.github.com>`.
 
-1280 AFTER: grid2 GeoDetective | Cold Trail (593×561 each); grid3
-Review | journal-card | For grown-ups (388×356 each, even row); then
-About band 1208×251; then JOURNAL band 1208×3068; footer at y5380.
-768 AFTER: grid2 337×440 each; grid3 Review | journal-card 337×396
-+ orphan For grown-ups 337×378 (STILL THERE — not built); About band
-696×251; JOURNAL band 696×2111; footer at y5471.
+## Evidence
 
-Page-length deltas, full document height (band + split + JOIN effects
-combined): 390: 6388 → 6363 (−25; band itself no-op — pages heights
-unchanged 341/1653); 768: 5469 → 5981 (+512); 1280: 4335 → 5869 (+1534).
-Decomposition vs the council's minimal-band estimates (+363 @768 /
-+296 @1280, which held journal height constant): the band mechanics
-alone are +363/+296 only if journal height is frozen — but it is not:
-full-width entries scale their 3/2 art, so JOURNAL grows 1627→2111
-@768 (+484) and 2074→3068 @1280 (+994). Band totals: @768
-251+22+2111 = 2384 vs before max(341,1627) = 1627 (+757); @1280
-251+22+3068 = 3341 vs before max(274,2074) = 2074 (+1267). Remaining
-doc delta: GD/CT split heights (684→440 @768, −244/row; 294→561 @1280,
-+267/row) and JOIN +7.5px at 390/1080. The extra length is a
-consequence of the specified rule (art keeps 3/2 at full width), not a
-deviation from it — panel should confirm the taller journal art is
-acceptable before merge.
+- **Absence re-check (on d327dd3, first-hand):** `tapStartPending` /
+  pending-tap grep over `src/` + `tests/` empty; a `greeting_text` tap
+  with `greetAudio === null` falls through `decideEnteringFigureTap`
+  ("pass"), the replay guard (not attempted), to a poke — and the
+  first-gesture window listener only attaches once `greetAudio` is
+  non-null, so the tap is forgotten.
+- **RED (pre-fix):** Test R failed with the certified signature —
+  `greetRequests` stayed 0 through the 15 s poll; Test W passed
+  (main's #152 watchdog). **GREEN (post-fix):** R + W pass.
+- **#153 composition:** intent is registered only after the one-shot is
+  consumed, so the consumed one-shot is this path's rapid-tap guard;
+  `dismissBubble` and the phase-exit effect clear the intent, so a
+  dismissed greeting stays dismissed and "Hear again" is unaffected;
+  the effect re-verifies phase/mode/yield/sound at start time, and a
+  mute in the interim releases the one-shot unconsumed.
 
-## Commits (4, on top of base `28c5fea`)
+## Gates
 
-Chain: three rebased commits (`4884f0c` → `923b268` → `b3e1073`) plus this docs commit.
-
-- `tests/e2e/card-redesign.desktop.spec.ts` (new, 10 tests): JOIN
-  heights; GD/CT split order + image/heading/paragraph/corner clicks;
-  one focus stop + whole-card focus ring per game card; CTA accessible
-  names + article labels + Review-due outline (test F, fix round);
-  seeded-badge chip toggle without opening the game + card taps with
-  badges present + chip-before-CTA tab order (2 tests, panel-nit round);
-  Review due clicks (heading/paragraph/cue/corner) + cue; Review
-  empty/caught-up non-focusable/non-clickable; grid band geometry at
-  390/680/768/1280. Count history: 7 original tests, + test F in the
-  fix round (= 8 at panel review), + 2 seeded-badge tests in this
-  panel-nit round (= 10).
-- Two real bugs found by the tests and fixed in this branch: (1)
-  `.hv5-spot .hv5-txt` is `position:relative; z-index:1`, which put
-  Review text above the stretch layer — fixed with a scoped
-  `z-index:2` on the Review stretch layer; (2) that same relative
-  `.hv5-txt` made the stretch `::after` size to the 62% text column
-  instead of the card, so corner taps missed — fixed by scoping
-  `.hv5-review-due .hv5-txt` to `position:static` (due state only).
-
-## Gates (this branch, final head)
-
-- `npx tsc --noEmit` — exit 0, no output.
-- `npm test` — exit 0 (verified on `d47cc1d` 2026-10-25). Scripts suite: 841 tests, 832 pass / 0 fail /
-  9 skipped. Src suite: 1539 tests, 1539 pass / 0 fail (src +29 vs `17ef7fc` = exactly #245's `chunk-recovery.test.ts` blocks).
-- `node scripts/lint-cards.mjs` — exit 0, prints `GATE PASSED`.
-- `npm run build:pages` — exit 0.
-- Playwright E2E, new spec only (`card-redesign.desktop.spec.ts`,
-  desktop project): **10 passed, 0 failed** on `d47cc1d` (earlier runs
-  6/7 exposed the two Review stretch bugs above, both fixed). Seeded-badge
-  `--repeat-each=10` determinism run (**20 passed, 0 failed, zero retries**)
-  was run on the `17ef7fc` head, not re-run on `d47cc1d`.
-
-## HELD — not built (per brief)
-
-Journal merge/rename/drop or anything journal-structural; footer
-sentence link; Get Involved hide-empty; phone nav wrap; image
-placeholder design; JOIN US card fate; splash orbs; anything
-gradient-blend; anything stripping the map-lines theme or link
-padding; 768 orphan reparenting; comparison-page housekeeping
-(coordinator handles F separately — files live outside this repo).
+- `npx tsc --noEmit` — clean.
+- `npm test` — scripts 825 pass / 0 fail; src 1489 pass / 0 fail.
+- `node scripts/lint-cards.mjs` — GATE PASSED.
+- `npm run build:pages` — green (incl. the canonical
+  `VITE_KOFI_URL=…` build the e2e specs require).
+- Playwright (targeted): the repro spec passes (above). The 17
+  storyteller spec files: 47 passed / 14 failed on this branch; the
+  same failing files on a pristine `d327dd3` checkout in the same
+  environment: 13 of those 14 fail identically (desktop audio specs
+  timing out at 37–60 s under load — the VM rebooted mid-run), and the
+  one remaining failure (tapstart R2) passed on a branch re-run, whose
+  failure set then matched the baseline's test-for-test. No new E2E
+  failure is attributable to this change.
 
 ## Pending
 
-- Coordinator: panel reviews DONE (2026-10-24 full panel + 2026-10-25 supplementary panel on `17ef7fc`; 2026-10-25 panel on `d47cc1d`, verdict YES) + rebase DONE onto `28c5fea`; push of the local head NOT done — needs the owner's fresh force-with-lease authorization.
-  Form S is FINAL (coordinator's pick, above) — no longer pending.
-- Chitti independent review of the local head (not yet done; owner arranges it himself).
-- Owner watch + green-light on the local head's screen recordings (`review-242-panel-d47cc1d/visual/`; the 2026-10-24 green-light covered `00be8d3` only).
-- 768px @ 400% zoom globe-mount follow-up (NOT this branch's defect):
-  home-v5.css:877 fixed-200px `.hv5-globe-zone`, 28px horizontal scroll
-  at 192px layout, pre-existing home chrome.
-- Comparison 699 run: DONE in the fix track (real run: stacks at 699, side-by-side at 700; first zoomed-hero row stacks at 390px wide via inline max-width — evidence-page quirk, not an app defect). Threshold justification + purpose analysis still owed if the owner wants them.
-- Panel confirmation: taller full-width journal art (see parity
-  account) and the 768 orphan reparenting design are still open.
-- Still owed from the council (§7, not built here): scan watch,
-  per-card name pins beyond CTA text, Cold Trail switch spec +
-  reflow rule, journal usage data, 768 orphan design.
+- Owner-route landing of the rebased head (force-push onto the existing branch or a new branch/PR, owner's call). Merge: owner only.
+- Post-merge live check of the pending-tap path on
+  meridian.knowledgetest.workers.dev is the owner's step.
