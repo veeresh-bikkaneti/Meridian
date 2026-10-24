@@ -3,9 +3,9 @@
 **Branch:** `fix/a11y-confirmed-findings`
 **Base:** origin/main @ `c9cba12` ("docs: on-device AI story text decision
 memo (WI-5) (#216)")
-**State: FIXES COMPLETE — all gates run; push BLOCKED on auth (see
-below).** Tier 1 Solo
-TDD fixes for the axe-confirmed accessibility findings from the
+**State: FIXES COMPLETE — gates re-verified by the PR #240 review
+pipeline; the branch is ON ORIGIN and PR #240 is OPEN (see Push
+status).** Fixes for the axe-confirmed accessibility findings from the
 2026-10-24 launch audit + live axe scan (reports:
 `meridian-launch-technical-audit-2026-10-24.md`,
 `meridian-scan-a11y-axe-2026-10-24.md`). It supersedes the previous
@@ -45,7 +45,9 @@ whose history lives on its own PR).
   button has an aria-label".
 - After the fixes: **GREEN — 10 tests, 10 pass / 0 fail.**
 
-## Gates (this branch, run at head `a91b844`)
+## Gates (this branch; run at the local fix head `a91b844`, and
+re-verified at remote head `8e9cae8` by the PR #240 review pipeline
+with identical results — logs in `~/workspace/meridian-pr240-review/logs/`)
 
 - `npx tsc --noEmit` — exit 0, no output.
 - `npm test` — exit 0. Scripts suite: 834 tests, 825 pass / 0 fail /
@@ -67,17 +69,38 @@ whose history lives on its own PR).
   both build and test, per the specs' own header.
 - Full gate detail: delivery report `meridian-a11y-fixes-2026-10-24.md`.
 
-## Push status — BLOCKED
+## Push status — ON ORIGIN (via GitHub API replay)
 
-- `git push -u origin fix/a11y-confirmed-findings` fails:
-  `remote: Invalid username or token. Password authentication is not
-  supported for Git operations.` The `gh` token on this VM is invalid
-  and SSH is reset by the egress proxy. The branch is **local-only**
-  in `~/workspace/meridian-a11y-fixes/` until the owner supplies a
-  fresh one-time token. All commits are safe locally.
+- Direct `git push` from the build VM still fails (`remote: Invalid
+  username or token. Password authentication is not supported for Git
+  operations.` — the VM's stored `gh` token is invalid and SSH is
+  reset by the egress proxy). That part of the original record was
+  accurate; the "local-only / no PR" conclusion is superseded by what
+  follows.
+- On 2026-10-24 the owner supplied a fine-grained PAT through the
+  Secure Vault (the `custom.github` API connector; the token never
+  passed through chat), and the four commits were replayed onto
+  `c9cba12` through the GitHub API with identical content, messages
+  and authorship. Remote commits: `7285b93` (test), `c8f5a31`
+  (F1+F2), `6994296` (F3), `8e9cae8` (docs) — corresponding to local
+  originals `8b816f2`, `c898023`, `a91b844`, `9f24fda`. All five
+  changed files were verified byte-identical to the local head.
+- **PR #240 is OPEN**, based on `main` @ `c9cba12` (still the latest
+  main — no rebase was needed). **No merge, no deploy** — those wait
+  for the owner's separate approval.
 
 ## Pending
 
-- Push (blocked on auth, above).
-- Owner's review word. No PR, no merge, no deploy from this branch —
-  those wait for the owner.
+- Owner's review/merge word on PR #240.
+- This status correction is a docs commit prepared in the PR #240
+  review clone (`~/workspace/meridian-pr240-review/repo`); it reaches
+  origin via the same API-replay route, and its hash is recorded in
+  the review report (`meridian-pr240-review-2026-10-24.md`).
+- Still owed (unchanged): a live screen-reader pass (NVDA/VoiceOver),
+  zoom and forced-colours checks, and device testing on the live site.
+- Process note for the owner: the PR #240 review's Code Reviewer
+  ruled this fix unit **Tier 2** under the council table's "3+ files"
+  trigger — the fixes were executed as per-fix Tier 1 Solo TDD, and
+  no owner-set override is on record. The ruling and its reasoning
+  are in the review report for the owner's call; that seat required
+  no code changes beyond this status correction.
