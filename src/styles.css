@@ -66,6 +66,7 @@
   --line: color-mix(in oklab, var(--fg) 14%, transparent);
   --accent: #d7ddd9;
   --accent-fg: #101211;
+  --error: #f1948a; /* error text on dark surfaces */
   --font-body: "Avenir Next", "Segoe UI", sans-serif;
   --font-display-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
   /* ---- Atlas home design tokens (chart-room identity; home screen only for now) ---- */
@@ -124,6 +125,7 @@
     --accent: #1c2420;
     --accent-fg: #f4f1ea;
     --gold-ink: #8a6410; /* gold text on light surfaces */
+    --error: #b91c1c; /* error text on light surfaces */
     /* ---- Atlas home: expedition journal (light) ---- */
     --atlas-bg-1: #f8f2df;
     --atlas-bg-2: #eadfc3;
@@ -177,6 +179,7 @@
   --accent: #1c2420;
   --accent-fg: #f4f1ea;
   --gold-ink: #8a6410; /* gold text on light surfaces */
+  --error: #b91c1c; /* error text on light surfaces */
   /* ---- Atlas home: expedition journal (paper) ---- */
   --atlas-bg-1: #f8f2df;
   --atlas-bg-2: #eadfc3;
@@ -244,6 +247,7 @@
   --map-arc: #f4f1ea;
   --map-cross: #d7ddd9;
   --gold-ink: #f2c14e; /* gold text on dark surfaces */
+  --error: #f1948a; /* error text on dark surfaces */
   color-scheme: dark;
 }
 
@@ -258,6 +262,7 @@
   --color-accent: var(--accent);
   --color-accent-fg: var(--accent-fg);
   --color-gold-ink: var(--gold-ink);
+  --color-error: var(--error);
   --font-sans: var(--font-body);
   --font-display: var(--font-display-family);
   --radius-sm: 8px;
