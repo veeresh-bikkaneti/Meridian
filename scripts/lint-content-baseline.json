@@ -5,35 +5,48 @@
       "locator": "101.json#c1",
       "rule": "\\b\\d[\\d,]*\\s*-?\\s*(kilometers?|kilometres?|km|miles?|mi|feet|ft|meters?|metres?|m)\\b",
       "matchedText": "119 km",
-      "note": "OWNER DECISION — baselined per PO ruling, WI-17; not fixed in this branch."
+      "note": "OWNER DECISION — baselined per PO ruling, WI-17; not fixed in this branch.",
+      "occurrence": 0
     },
     {
       "corpus": "clues",
       "locator": "223.json#c1",
       "rule": "\\b\\d[\\d,]*\\s*-?\\s*(kilometers?|kilometres?|km|miles?|mi|feet|ft|meters?|metres?|m)\\b",
       "matchedText": "500 kilometres",
-      "note": "OWNER DECISION — baselined per PO ruling, WI-17; not fixed in this branch."
+      "note": "OWNER DECISION — baselined per PO ruling, WI-17; not fixed in this branch.",
+      "occurrence": 0
     },
     {
       "corpus": "clues",
       "locator": "279.json#c5",
       "rule": "\\b\\d[\\d,]*\\s*-?\\s*(kilometers?|kilometres?|km|miles?|mi|feet|ft|meters?|metres?|m)\\b",
       "matchedText": "54 km",
-      "note": "OWNER DECISION — baselined per PO ruling, WI-17; not fixed in this branch."
+      "note": "OWNER DECISION — baselined per PO ruling, WI-17; not fixed in this branch.",
+      "occurrence": 0
+    },
+    {
+      "corpus": "clues",
+      "locator": "279.json#c5",
+      "rule": "\\b\\d[\\d,]*\\s*-?\\s*(kilometers?|kilometres?|km|miles?|mi|feet|ft|meters?|metres?|m)\\b",
+      "matchedText": "69 km",
+      "note": "OWNER DECISION — baselined per PO ruling, WI-17; not fixed in this branch.",
+      "occurrence": 0
     },
     {
       "corpus": "clues",
       "locator": "66.json#c5",
       "rule": "\\b\\d[\\d,]*\\s*-?\\s*(kilometers?|kilometres?|km|miles?|mi|feet|ft|meters?|metres?|m)\\b",
       "matchedText": "145 kilometres",
-      "note": "OWNER DECISION — baselined per PO ruling, WI-17; not fixed in this branch."
+      "note": "OWNER DECISION — baselined per PO ruling, WI-17; not fixed in this branch.",
+      "occurrence": 0
     },
     {
       "corpus": "catalog",
       "locator": "capitol",
       "rule": "\\b\\d[\\d,]*\\s*-?\\s*(kilometers?|kilometres?|km|miles?|mi|feet|ft|meters?|metres?|m)\\b",
       "matchedText": "400 feet",
-      "note": "OWNER DECISION — baselined per PO ruling, WI-17; not fixed in this branch."
+      "note": "OWNER DECISION — baselined per PO ruling, WI-17; not fixed in this branch.",
+      "occurrence": 0
     }
   ]
 }

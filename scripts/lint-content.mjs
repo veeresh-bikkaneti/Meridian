@@ -20,12 +20,15 @@
  * BASELINE: violations that already ship are listed individually in
  * scripts/lint-content-baseline.json as OWNER DECISION items (PO ruling,
  * WI-17: baselined, not fixed in this branch). A baseline key is the exact
- * JSON tuple [corpus, locator, ruleSource, matchedText] — no wildcards, no
- * whole-file suppressions. Baselined violations are printed as KNOWN on
- * every run, never hidden. A violation that is not in the baseline fails;
- * a baseline entry that no longer matches a real violation also fails
- * (STALE BASELINE), so the baseline is self-expiring: fixing a violation
- * without removing its entry turns CI red with instructions.
+ * JSON tuple [corpus, locator, ruleSource, matchedText, occurrence] — no
+ * wildcards, no whole-file suppressions. Occurrence is the 0-based index
+ * of prior occurrences of the same matchedText under the same rule in
+ * the same record, so repeated matches in one record stay distinct.
+ * Baselined violations are printed as KNOWN on every run, never hidden.
+ * A violation that is not in the baseline fails; a baseline entry that
+ * no longer matches a real violation also fails (STALE BASELINE), so the
+ * baseline is self-expiring: fixing a violation without removing its
+ * entry turns CI red with instructions.
  *
  * FIXTURE GATE (every run, mirroring lint-cards.mjs): before any corpus
  * result, a deliberately bad fixture must be caught by the measurement
@@ -67,17 +70,30 @@ const CLEAN_FIXTURE =
   "The tower was built long ago, and children still climb its winding stairs.";
 
 /**
- * Every rule that matches a text, in checkBanned's order — one record per
- * matching pattern, with the pattern's matched text and its `source` as
- * the rule id. checkBanned alone returns only the first match (truncated),
- * which is fine for the runtime but too lossy for a baseline key, so the
- * lint iterates the shared patterns itself.
+ * Every match of every rule in a text, in checkBanned's order — one
+ * record per match occurrence, with the pattern's matched text, its
+ * `source` as the rule id, and an occurrence index counting prior
+ * occurrences of the same matchedText under the same rule in this
+ * record. checkBanned alone returns only the first match (truncated),
+ * which is fine for the runtime but too lossy for a baseline key, so
+ * the lint iterates the shared patterns itself. Each pattern is cloned
+ * with the global flag for enumeration; the shared imported RegExp
+ * objects are never mutated and never gain /g.
  */
 export function findViolations(text) {
   const found = [];
   for (const re of RULES) {
-    const match = re.exec(text);
-    if (match) found.push({ rule: re.source, matchedText: match[0] });
+    const globalRe = new RegExp(
+      re.source,
+      re.flags.includes("g") ? re.flags : re.flags + "g",
+    );
+    const priorByMatchedText = new Map();
+    for (const match of text.matchAll(globalRe)) {
+      const matchedText = match[0];
+      const occurrence = priorByMatchedText.get(matchedText) ?? 0;
+      priorByMatchedText.set(matchedText, occurrence + 1);
+      found.push({ rule: re.source, matchedText, occurrence });
+    }
   }
   return found;
 }
@@ -100,17 +116,56 @@ function checkFixtures() {
   return failures;
 }
 
-/** Clue records: every *.json in the clues dir, one record per clue string. */
+/**
+ * Clue records: every *.json in the clues dir, one record per clue
+ * string. Malformed JSON and malformed shape are hard failures, never a
+ * silent under-scan: a parse failure names its file, and a file whose
+ * clues field is not an array, whose length is not exactly 5 (the
+ * shipped shape, verified across all 387 files), or that contains a
+ * non-string entry yields a SHAPE failure naming the file and defect.
+ */
 function loadClueRecords(cluesDir) {
   const records = [];
+  const failures = [];
   const files = readdirSync(cluesDir)
     .filter((f) => f.endsWith(".json"))
     .sort();
   for (const file of files) {
-    const parsed = JSON.parse(readFileSync(join(cluesDir, file), "utf8"));
-    const clues = Array.isArray(parsed.clues) ? parsed.clues : [];
-    clues.forEach((clue, i) => {
-      if (typeof clue !== "string") return;
+    let parsed;
+    try {
+      parsed = JSON.parse(readFileSync(join(cluesDir, file), "utf8"));
+    } catch (err) {
+      failures.push({
+        kind: "parse",
+        file,
+        message: `${file}: malformed JSON: ${err.message}`,
+      });
+      continue;
+    }
+    if (!Array.isArray(parsed.clues)) {
+      failures.push({
+        kind: "shape",
+        file,
+        message: `${file}: clues is not an array`,
+      });
+      continue;
+    }
+    if (parsed.clues.length !== 5) {
+      failures.push({
+        kind: "shape",
+        file,
+        message: `${file}: clues length is ${parsed.clues.length}, expected 5`,
+      });
+    }
+    parsed.clues.forEach((clue, i) => {
+      if (typeof clue !== "string") {
+        failures.push({
+          kind: "shape",
+          file,
+          message: `${file}: clues[${i}] is not a string`,
+        });
+        return;
+      }
       records.push({
         corpus: "clues",
         // 1-based locator, e.g. "101.json#c1" — the record a reviewer opens.
@@ -120,12 +175,12 @@ function loadClueRecords(cluesDir) {
       });
     });
   }
-  return records;
+  return { records, failures };
 }
 
 /** A violation's / baseline entry's exact identity — no wildcards. */
-function keyOf({ corpus, locator, rule, matchedText }) {
-  return JSON.stringify([corpus, locator, rule, matchedText]);
+function keyOf({ corpus, locator, rule, matchedText, occurrence }) {
+  return JSON.stringify([corpus, locator, rule, matchedText, occurrence ?? 0]);
 }
 
 /** Baseline entries from disk; a missing file reads as an empty baseline. */
@@ -135,9 +190,10 @@ function loadBaseline(baselinePath) {
   return Array.isArray(parsed.entries) ? parsed.entries : [];
 }
 
-function formatRecord({ corpus, locator, placeId, rule, matchedText }) {
+function formatRecord({ corpus, locator, placeId, rule, matchedText, occurrence }) {
   const place = placeId ? ` placeId=${placeId}` : "";
-  return `${corpus} ${locator}${place} rule=${rule} match=${JSON.stringify(matchedText)}`;
+  const occ = (occurrence ?? 0) > 0 ? ` occurrence=${occurrence}` : "";
+  return `${corpus} ${locator}${place} rule=${rule} match=${JSON.stringify(matchedText)}${occ}`;
 }
 
 function resolvePath(value, fallback) {
@@ -197,10 +253,12 @@ export function runLint(options = {}) {
   // Scan the selected corpora into { corpus, locator, text } records.
   const records = [];
   const counts = {};
+  const loadFailures = [];
   if (selected.includes("clues")) {
-    const clueRecords = loadClueRecords(cluesDir);
-    counts.clues = clueRecords.length;
-    records.push(...clueRecords);
+    const clueResult = loadClueRecords(cluesDir);
+    counts.clues = clueResult.records.length;
+    records.push(...clueResult.records);
+    loadFailures.push(...clueResult.failures);
   }
   if (selected.includes("starters")) {
     const starterRecords = STARTERS.map((s) => ({
@@ -257,9 +315,17 @@ export function runLint(options = {}) {
     log(`VIOLATION ${formatRecord(v)}`);
   }
   for (const e of stale) {
+    const occ = (e.occurrence ?? 0) > 0 ? ` occurrence=${e.occurrence}` : "";
     log(
-      `STALE BASELINE ${e.corpus} ${e.locator} rule=${e.rule} match=${JSON.stringify(e.matchedText)} — remove this entry`,
+      `STALE BASELINE ${e.corpus} ${e.locator} rule=${e.rule} match=${JSON.stringify(e.matchedText)}${occ} — remove this entry`,
     );
+  }
+  for (const f of loadFailures) {
+    if (f.kind === "shape") {
+      log(`SHAPE ${f.message}`);
+    } else {
+      log(`ERROR ${f.message}`);
+    }
   }
   for (const r of drift) {
     log(
@@ -281,6 +347,7 @@ export function runLint(options = {}) {
     newViolations.length === 0 &&
     stale.length === 0 &&
     drift.length === 0 &&
+    loadFailures.length === 0 &&
     emptyCorpora.length === 0;
   if (ok) {
     log("lint-content: GATE PASSED");
@@ -295,6 +362,7 @@ export function runLint(options = {}) {
     newViolations,
     stale,
     drift,
+    loadFailures,
   };
 }
 

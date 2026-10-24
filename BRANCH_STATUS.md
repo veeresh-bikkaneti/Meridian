@@ -34,9 +34,14 @@ on its own PR #240).
 4. **WI-17 `lint:content`** — the runtime's banned-pattern rules run in
    CI over the clue files, starter stories, and catalog stories,
    importing the rule code from the runtime module (one source, no
-   drift). The 5 violations measured in today's content are baselined
+   drift). The 6 violations measured in today's content are baselined
    individually and listed in the PR as owner-decision items; none was
-   edited on this branch.
+   edited on this branch. The Peer Reviewer's adversarial pass found
+   the lint's first-match blindness (F-1) — it recorded only the first
+   match per rule per record, hiding `279.json#c5`'s second measurement
+   ("69 km"); a follow-up commit fixes it with enumerate-all matching,
+   occurrence-aware baseline keys, and regression tests, and baselines
+   the "69 km" item.
 
 ## Commits (5, on top of base `d327dd3`)
 
@@ -62,7 +67,7 @@ independently with identical totals)
   `d327dd3`: scripts 834 tests / 825 pass; src 1489 / 1489.)
 - `node scripts/lint-cards.mjs` — exit 0, prints `GATE PASSED`.
 - `npm run lint:content` — exit 0, `GATE PASSED`; scanned clues=1935,
-  starters=331, catalog=106; violations=5, all baselined (owner
+  starters=331, catalog=106; violations=6, all baselined (owner
   decision pending), 0 new, 0 stale.
 - `npm run build:pages` — exit 0 (with `VITE_KOFI_URL` set, as the E2E
   specs require); `/credits` artefacts present in the build.
@@ -89,8 +94,9 @@ the persona sections in the PR body.
 
 - Owner's review and merge decision on the PR (not yet opened; opened
   by the parent via API replay).
-- Owner decisions carried in the PR: the 5 baselined `lint:content`
-  violations (fix the text, keep the baseline, or retire the
+- Owner decisions carried in the PR: the 6 baselined `lint:content`
+  violations — including `279.json#c5` "69 km", added after the Peer
+  Reviewer's F-1 pass (fix the text, keep the baseline, or retire the
   clue/place); ratification of the WI-16 continent floor as a standing
   rule; the Esri licensing/account items in
   `docs/reviews/esri-tiles-licensing.md` §6.

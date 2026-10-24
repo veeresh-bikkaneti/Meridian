@@ -13,8 +13,9 @@ All numbers in this document come from the crew's log files on disk (`logs/basel
 ### WI-17 — `lint:content` in CI (`d5b128b`)
 
 - `scripts/lint-content.mjs` applies the runtime's own banned-pattern rules to the clue files, the curated starter stories, and the Journal catalog stories. It imports `checkBanned`, `BANNED_PATTERNS`, and `MEASUREMENT_RE` from `src/game/story-ai.ts` — the runtime module is the single source of the rules, so the lint and the runtime cannot drift apart (ADR-17).
-- `scripts/lint-content-baseline.json` holds exactly the 5 measured violations, one entry per violation, keyed to file/record/rule/matched text. The lint fails on any unbaselined violation, on a stale baseline entry, and on an empty scan; baselined violations are printed as `KNOWN` lines on every run.
-- Acceptance evidence (`logs/wi17-dev.log`): `npm run lint:content` exits 0 with `scanned clues=1935 starters=327 catalog=106` (327 starters at that commit — WI-16 later raises this to 331), `violations=5 (baselined 5, new 0, stale 0)`, `GATE PASSED`. `scripts/lint-content.test.mjs`: 3 tests, 3 pass — real corpora pass, a seeded bad fixture fails and names the file, record, and rule, and a stale baseline entry fails. CI runs the lint as its own step in `.github/workflows/node.js.yml`; `package.json` gains exactly one scripts line and no dependency.
+- `scripts/lint-content-baseline.json` holds exactly the 6 measured violations, one entry per violation occurrence, keyed to file/record/rule/matched text/occurrence. The lint fails on any unbaselined violation, on a stale baseline entry, and on an empty scan; baselined violations are printed as `KNOWN` lines on every run. The owner-decision list is: `101.json#c1` "119 km", `223.json#c1` "500 kilometres", `279.json#c5` "54 km", `279.json#c5` "69 km", `66.json#c5` "145 kilometres", and catalog `capitol` "400 feet".
+- Acceptance evidence (`logs/wi17-dev.log`): `npm run lint:content` exits 0 with `scanned clues=1935 starters=327 catalog=106` (327 starters at that commit — WI-16 later raises this to 331), `violations=6 (baselined 6, new 0, stale 0)`, `GATE PASSED`. `scripts/lint-content.test.mjs`: 7 tests, 7 pass — real corpora pass, a seeded bad fixture fails and names the file, record, and rule, a stale baseline entry fails, and regression tests cover two different measurements in one clue, a partially baselined pair, the same measurement twice (occurrence-aware keys), and a malformed-shape clue file. CI runs the lint as its own step in `.github/workflows/node.js.yml`; `package.json` gains exactly one scripts line and no dependency.
+- **Peer-review fix (F-1):** the Peer Reviewer's adversarial pass found the lint's first-match blindness — it recorded only the first match per rule per record, so `279.json#c5`'s second measurement ("69 km") shipped unbaselined and unlisted, and the true count was 6 occurrences across 5 records, not 5. A follow-up commit fixes it: the lint now enumerates every match per record with occurrence-aware baseline keys, the "69 km" entry is baselined above, and regression tests lock the behaviour in.
 
 ### WI-15 — `/credits` page (`48c0e25`)
 
@@ -56,7 +57,7 @@ Baseline is pristine base `d327dd3` (`logs/baseline-gates.log`). Final is head `
 | `npm test` — src suite | 1489 tests, 1489 pass / 0 fail | 1502 tests, 1502 pass / 0 fail |
 | `npm run typecheck` (`tsc --noEmit`) | clean | clean, exit 0 |
 | `node scripts/lint-cards.mjs` | GATE PASSED | GATE PASSED (chunk audit: 124,690 records, 8,802 with hook, 0 curated-note violations) |
-| `npm run lint:content` | — (did not exist) | GATE PASSED — scanned clues=1935, starters=331, catalog=106; violations=5 (baselined 5, new 0, stale 0) |
+| `npm run lint:content` | — (did not exist) | GATE PASSED — scanned clues=1935, starters=331, catalog=106; violations=6 (baselined 6, new 0, stale 0) |
 | `npm run build:pages` | exit 0 | exit 0; credits route artefacts present in `dist/client` and `dist/client/sitemap.xml` contains `credits` (QA artefact check, `logs/qa-gates.log`) |
 
 Targeted Playwright E2E on the built artifact (`logs/qa-gates.log`, QA pass):
