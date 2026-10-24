@@ -8,7 +8,7 @@
   --hv5-card: #fdfbf3;
   --hv5-ink: #33302a;
   --hv5-ink-soft: #5c564a;
-  --hv5-brass: #8a6d2f;
+  --hv5-brass: #8a6d2f; /* Used exactly once: the Review-due outline — not a shared token. */
   --hv5-brown: #8a6d2f;
   --hv5-brown-deep: #77591f;
   --hv5-forest: #33503f;

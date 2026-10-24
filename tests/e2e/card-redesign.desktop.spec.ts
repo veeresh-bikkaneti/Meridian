@@ -28,6 +28,15 @@ import { serveBuiltArtifact } from "./helpers";
  * Click loops use a fresh browser context per iteration: a started run
  * or a rescheduled deck persists in localStorage, so re-using the page
  * would resume the game instead of showing a fresh picker.
+ *
+ * Seeded-badge tests (panel nit 🟡3): badges are seeded with the repo's
+ * own fixture — meridian.passport.badges.v1 = [{ id: "clean-round",
+ * earnedAt: "2026-10-09T12:00:00.000Z", schemaVersion: 1 }] (the same
+ * seed tests/e2e/home-badges-readaloud.spec.ts uses). They cover the
+ * highest-risk interaction, previously checked only by a live visual
+ * pass: chip taps toggle the blurb without opening the game, card taps
+ * still open the game with badges present, and the chip stop precedes
+ * the CTA stop in tab order with the CTA remaining one stop.
  */
 
 test.setTimeout(240_000);
@@ -35,6 +44,7 @@ test.setTimeout(240_000);
 const APP_URL = "http://127.0.0.1:4123/Meridian/";
 const FLAGS_PATTERN = "**/flags.json";
 const DECK_KEY = "meridian:review-deck:v1";
+const BADGES_KEY = "meridian.passport.badges.v1";
 
 async function setupContext(context: BrowserContext) {
   await serveBuiltArtifact(context);
@@ -92,12 +102,29 @@ async function seedDeckOn(page: Page, seed: unknown) {
   );
 }
 
+/** Seed earned badges with the repo's own fixture (see header note). */
+async function seedBadgesOn(page: Page) {
+  await page.addInitScript(
+    ({ key }) => {
+      if (!localStorage.getItem(key))
+        localStorage.setItem(
+          key,
+          JSON.stringify([
+            { id: "clean-round", earnedAt: "2026-10-09T12:00:00.000Z", schemaVersion: 1 },
+          ]),
+        );
+    },
+    { key: BADGES_KEY },
+  );
+}
+
 /** Fresh context + page on the home picker at the given width. */
-async function freshHome(browser: Browser, width: number, seed?: unknown) {
+async function freshHome(browser: Browser, width: number, seed?: unknown, badges = false) {
   const context = await browser.newContext();
   await setupContext(context);
   const page = await context.newPage();
   if (seed !== undefined) await seedDeckOn(page, seed);
+  if (badges) await seedBadgesOn(page);
   await page.setViewportSize({ width, height: 900 });
   await page.goto(APP_URL);
   await expect(page.getByTestId("home-heading")).toBeVisible({ timeout: 20_000 });
@@ -307,6 +334,84 @@ test("B: one focus stop per game card, ring around the whole card", async ({ pag
   expect(ctRing?.offsetParentIsCard).toBe(true);
   expect(ctRing?.photoInsideCard).toBe(true);
   expect(ctRing?.fallbackOutlineWidth).not.toBe("0px");
+});
+
+test("B: seeded badge chip toggles its blurb and never opens the game; card taps still open it", async ({ browser }) => {
+  // (a) Chip: independently tappable — tap toggles the blurb, game stays closed.
+  const { context, page: badged } = await freshHome(browser, 1280, undefined, true);
+  try {
+    const card = badged.getByTestId("tour-stop-geodetective");
+    await expect(card).toBeVisible();
+    const chip = badged.getByTestId("badge-chip-clean-round");
+    await expect(chip).toBeVisible();
+    await expect(chip).toContainText("Clean Round");
+    // With badges present the card has exactly two stops: chip + CTA.
+    expect(await focusableCount(badged, '[data-testid="tour-stop-geodetective"]')).toBe(2);
+    await expect(badged.getByTestId("badge-blurb-clean-round")).toHaveCount(0);
+    await chip.click();
+    await expect(badged.getByTestId("badge-blurb-clean-round")).toBeVisible();
+    await expect(badged.getByTestId("badge-blurb-clean-round")).toHaveText(
+      "A whole round without a single hint — nice figuring it out yourself!",
+    );
+    expect(await chip.getAttribute("aria-expanded")).toBe("true");
+    // Tapping the chip did NOT open the game: picker and card still here.
+    await expect(badged.getByTestId("home-heading")).toBeVisible();
+    await expect(card).toBeVisible();
+    // Second tap collapses the blurb, still no game.
+    await chip.click();
+    await expect(badged.getByTestId("badge-blurb-clean-round")).toHaveCount(0);
+    expect(await chip.getAttribute("aria-expanded")).toBe("false");
+    await expect(badged.getByTestId("home-heading")).toBeVisible();
+  } finally {
+    await context.close();
+  }
+
+  // (b) Card taps (picture, heading, corner inset) still open the game
+  // with badges present — the badge row must not swallow card taps.
+  for (const point of ["image", "heading", "corner"] as const) {
+    const { context: ctx, page: fresh } = await freshHome(browser, 1280, undefined, true);
+    try {
+      const freshCard = fresh.getByTestId("tour-stop-geodetective");
+      await expect(fresh.getByTestId("badge-chip-clean-round")).toBeVisible();
+      await freshCard.scrollIntoViewIfNeeded();
+      const pt = (await cardPoints(fresh, '[data-testid="tour-stop-geodetective"]'))[point];
+      await fresh.mouse.click(pt.x, pt.y);
+      await expect(freshCard).toHaveCount(0, { timeout: 20_000 });
+      await expect(fresh.getByTestId("home-heading")).toHaveCount(0);
+    } finally {
+      await ctx.close();
+    }
+  }
+});
+
+test("B: seeded badges — chip stop precedes the CTA stop, CTA stays one stop", async ({ browser }) => {
+  const { context, page: badged } = await freshHome(browser, 1280, undefined, true);
+  try {
+    const card = badged.getByTestId("tour-stop-geodetective");
+    await expect(card.getByTestId("earned-badges")).toBeVisible();
+    expect(await focusableCount(badged, '[data-testid="tour-stop-geodetective"]')).toBe(2);
+
+    const chipHandle = await badged.getByTestId("badge-chip-clean-round").elementHandle();
+    expect(await tabTo(badged, chipHandle)).toBe(true);
+    // The very next Tab lands on the CTA: chip precedes CTA.
+    await badged.keyboard.press("Tab");
+    const ctaFocused = await badged.evaluate(() => {
+      const btn = document.querySelector(
+        '[data-testid="tour-stop-geodetective"] button.hv5-go',
+      );
+      return document.activeElement === btn;
+    });
+    expect(ctaFocused).toBe(true);
+    // The stop after the CTA has left the card: the CTA is one stop, not two.
+    await badged.keyboard.press("Tab");
+    const stillOnCard = await badged.evaluate(() => {
+      const cardEl = document.querySelector('[data-testid="tour-stop-geodetective"]');
+      return !!cardEl?.contains(document.activeElement);
+    });
+    expect(stillOnCard).toBe(false);
+  } finally {
+    await context.close();
+  }
 });
 
 test("F: CTA accessible names carry the card name; articles labelled; due outline darkened", async ({ page, browser }) => {

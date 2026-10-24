@@ -46,9 +46,9 @@ Builds ONLY items A–D below; everything else in the manifest is HELD.
   screen-open flag; the card is unconditional; `coldTrailOpen` =
   screen-open-now, not deactivation. No switch was invented.
 
-## Form R/S recommendation (coordinator makes the final pick)
+## Form S — FINAL (coordinator's final pick)
 
-- **Form S for GeoDetective, Cold Trail, and Review-due alike.**
+- **Form S for GeoDetective, Cold Trail, and Review-due alike — FINAL.**
   Reasoning: (1) a `<button>` cannot contain the `<h2>` — Form R
   would force dropping real heading semantics or using a
   `role="heading"` span; (2) GeoDetective has a genuine nested-
@@ -91,11 +91,17 @@ acceptable before merge.
 
 ## Commits (8, on top of base `d327dd3`)
 
-- `tests/e2e/card-redesign.desktop.spec.ts` (new, 7 tests): JOIN
+- `tests/e2e/card-redesign.desktop.spec.ts` (new, 10 tests): JOIN
   heights; GD/CT split order + image/heading/paragraph/corner clicks;
-  one focus stop + whole-card focus ring per game card; Review due
-  clicks (heading/paragraph/cue/corner) + cue; Review empty/caught-up
-  non-focusable/non-clickable; grid band geometry at 390/680/768/1280.
+  one focus stop + whole-card focus ring per game card; CTA accessible
+  names + article labels + Review-due outline (test F, fix round);
+  seeded-badge chip toggle without opening the game + card taps with
+  badges present + chip-before-CTA tab order (2 tests, panel-nit round);
+  Review due clicks (heading/paragraph/cue/corner) + cue; Review
+  empty/caught-up non-focusable/non-clickable; grid band geometry at
+  390/680/768/1280. Count history: 7 original tests, + test F in the
+  fix round (= 8 at panel review), + 2 seeded-badge tests in this
+  panel-nit round (= 10).
 - Two real bugs found by the tests and fixed in this branch: (1)
   `.hv5-spot .hv5-txt` is `position:relative; z-index:1`, which put
   Review text above the stretch layer — fixed with a scoped
@@ -112,8 +118,10 @@ acceptable before merge.
 - `node scripts/lint-cards.mjs` — exit 0, prints `GATE PASSED`.
 - `npm run build:pages` — exit 0.
 - Playwright E2E, new spec only (`card-redesign.desktop.spec.ts`,
-  desktop project): **7 passed, 0 failed** (final run; earlier runs
-  6/7 exposed the two Review stretch bugs above, both fixed).
+  desktop project): **10 passed, 0 failed** (final run; earlier runs
+  6/7 exposed the two Review stretch bugs above, both fixed). New
+  seeded-badge tests additionally run `--repeat-each=10`: **20 passed,
+  0 failed, zero retries** (determinism run).
 
 ## HELD — not built (per brief)
 
@@ -126,8 +134,14 @@ padding; 768 orphan reparenting; comparison-page housekeeping
 
 ## Pending
 
-- Coordinator: Form R/S final pick (recommendation: S, above);
-  panel review + rebase; push + PR (NOT done by this branch).
+- Coordinator: panel review + rebase; push + PR (NOT done by this branch).
+  Form S is FINAL (coordinator's pick, above) — no longer pending.
+- Chitti independent review (not yet done).
+- Owner watch + green-light on the screen recordings (not yet done).
+- 768px @ 400% zoom globe-mount follow-up (NOT this branch's defect):
+  home-v5.css:877 fixed-200px `.hv5-globe-zone`, 28px horizontal scroll
+  at 192px layout, pre-existing home chrome.
+- Comparison 699 run + threshold justification + purpose analysis.
 - Panel confirmation: taller full-width journal art (see parity
   account) and the 768 orphan reparenting design are still open.
 - Still owed from the council (§7, not built here): scan watch,
