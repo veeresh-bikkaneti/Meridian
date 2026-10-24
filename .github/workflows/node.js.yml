@@ -33,6 +33,7 @@ jobs:
     - run: npm run typecheck
     - run: npm run build --if-present
     - run: npm test
+    - run: npm run lint:content
     - run: npm run test:worker
     - run: npm run typecheck:worker
 
