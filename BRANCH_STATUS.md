@@ -2,8 +2,11 @@
 
 **Branch:** `feat/wave2-content-quality`
 **Base:** `main` at `d327dd3` (includes the PR #240 merge)
-**State: WORK COMPLETE — all gates green at head `881f8a5`, independently
-re-verified by the QA/SDET pass; docs commit follows on top. The branch
+**State: WORK COMPLETE — all gates green at code head `aa7c8c1`,
+independently re-verified by the QA re-verification pass
+(`logs/qa-rerun.log`: PASS); this paperwork docs commit follows on
+top. Peer Reviewer verdict after the loop-1 re-review: APPROVE WITH
+FIXES (paperwork), F-1 closed — this commit closes P-1/P-2. The branch
 is LOCAL ONLY — not pushed, no PR yet (see Push status).** Wave 2
 content-quality work: WI-14 rich story card after every pin, WI-15
 `/credits` page, WI-16 globe deck continent balance, WI-17
@@ -43,32 +46,39 @@ on its own PR #240).
    occurrence-aware baseline keys, and regression tests, and baselines
    the "69 km" item.
 
-## Commits (5, on top of base `d327dd3`)
+## Commits (8, on top of base `d327dd3`)
 
 - `d5b128b` feat(lint): WI-17 lint:content — runtime clue-quality rules in CI
 - `48c0e25` feat(credits): WI-15 /credits page — GeoNames, Wikipedia, Esri and bundled OSS credits
 - `596d586` feat(deck): WI-16 four globe landmarks — every inhabited continent at the floor
 - `586725d` feat(story): WI-14 rich story card after every pin — band-correct curated story on hit and miss
 - `881f8a5` fix(branch): register /credits in sitemap and update globe count in question-label test
+- `67cc839` docs(branch): wave2 content quality review doc and branch status
+- `aa7c8c1` fix(lint): WI-17 enumerate every match per record — sixth violation (279#c5 '69 km') baselined (peer review F-1)
+- docs(branch): paperwork corrections after peer re-review (P-1/P-2) — this commit
 
-The last commit fixes two branch-introduced fallouts found by WI-14's
+The `881f8a5` commit fixes two branch-introduced fallouts found by WI-14's
 full-suite run and proven present on the pre-WI-14 head (not baseline,
 not WI-14 regressions): the sitemap was missing the `/credits` entry
 WI-15 added a route for, and a question-label test still asserted the
 old 12-landmark globe count after WI-16 grew the deck.
 
-## Gates (this branch; run at head `881f8a5`, logs in
-`~/workspace/meridian-wave2-b4/logs/`; QA pass re-ran the full set
-independently with identical totals)
+## Gates (this branch; run at code head `aa7c8c1`, logs in
+`~/workspace/meridian-wave2-b4/logs/`; fix log `logs/wi17-fix.log`;
+QA re-verification in `logs/qa-rerun.log` re-ran the full set
+independently with identical totals — PASS)
 
 - `npm run typecheck` — clean, exit 0.
-- `npm test` — exit 0. Scripts suite: 837 tests, 828 pass / 0 fail /
+- `npm test` — exit 0. Scripts suite: 841 tests, 832 pass / 0 fail /
   9 skipped. Src suite: 1502 tests, 1502 pass / 0 fail. (Baseline at
   `d327dd3`: scripts 834 tests / 825 pass; src 1489 / 1489.)
 - `node scripts/lint-cards.mjs` — exit 0, prints `GATE PASSED`.
 - `npm run lint:content` — exit 0, `GATE PASSED`; scanned clues=1935,
   starters=331, catalog=106; violations=6, all baselined (owner
   decision pending), 0 new, 0 stale.
+- Peer Reviewer re-review (loop 1) — APPROVE WITH FIXES (paperwork),
+  F-1 closed; this docs commit closes the two paperwork fixes
+  (P-1/P-2).
 - `npm run build:pages` — exit 0 (with `VITE_KOFI_URL` set, as the E2E
   specs require); `/credits` artefacts present in the build.
 - Playwright E2E, targeted specs only: credits 2 passed; result-story-

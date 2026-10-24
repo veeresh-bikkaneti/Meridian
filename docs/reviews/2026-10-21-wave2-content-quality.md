@@ -2,11 +2,11 @@
 
 **Branch:** `feat/wave2-content-quality`
 **Base:** `main` at `d327dd3`
-**Head reviewed:** `881f8a5` (before this docs commit)
+**Head reviewed:** code head `aa7c8c1` (final gates; the `881f8a5` checkpoint below was the head before the `67cc839` docs commit and the `aa7c8c1` F-1 fix; this paperwork docs commit follows on top)
 **Work items:** WI-14 (rich story card after every pin), WI-15 (`/credits` page), WI-16 (globe deck continent balance), WI-17 (`lint:content` in CI)
-**Commits:** `d5b128b` (WI-17) · `48c0e25` (WI-15) · `596d586` (WI-16) · `586725d` (WI-14) · `881f8a5` (branch-fallout fixes)
+**Commits:** `d5b128b` (WI-17) · `48c0e25` (WI-15) · `596d586` (WI-16) · `586725d` (WI-14) · `881f8a5` (branch-fallout fixes) · `67cc839` (docs) · `aa7c8c1` (F-1 fix) · docs(branch): paperwork corrections after peer re-review (P-1/P-2) — this commit
 
-All numbers in this document come from the crew's log files on disk (`logs/baseline-gates.log`, `logs/wi17-dev.log`, `logs/wi15-dev.log`, `logs/wi16-dev.log`, `logs/wi14-dev.log`, `logs/branch-fixes.log`, `logs/qa-gates.log`, `logs/qa-shots.log`) and the persona passes in the PR body. No number is taken from a summary.
+All numbers in this document come from the crew's log files on disk (`logs/baseline-gates.log`, `logs/wi17-dev.log`, `logs/wi15-dev.log`, `logs/wi16-dev.log`, `logs/wi14-dev.log`, `logs/branch-fixes.log`, `logs/qa-gates.log`, `logs/qa-shots.log`, `logs/wi17-fix.log`, `logs/qa-rerun.log`) and the persona passes in the PR body. No number is taken from a summary.
 
 ## What shipped, per work item
 
@@ -14,8 +14,10 @@ All numbers in this document come from the crew's log files on disk (`logs/basel
 
 - `scripts/lint-content.mjs` applies the runtime's own banned-pattern rules to the clue files, the curated starter stories, and the Journal catalog stories. It imports `checkBanned`, `BANNED_PATTERNS`, and `MEASUREMENT_RE` from `src/game/story-ai.ts` — the runtime module is the single source of the rules, so the lint and the runtime cannot drift apart (ADR-17).
 - `scripts/lint-content-baseline.json` holds exactly the 6 measured violations, one entry per violation occurrence, keyed to file/record/rule/matched text/occurrence. The lint fails on any unbaselined violation, on a stale baseline entry, and on an empty scan; baselined violations are printed as `KNOWN` lines on every run. The owner-decision list is: `101.json#c1` "119 km", `223.json#c1` "500 kilometres", `279.json#c5` "54 km", `279.json#c5` "69 km", `66.json#c5` "145 kilometres", and catalog `capitol` "400 feet".
-- Acceptance evidence (`logs/wi17-dev.log`): `npm run lint:content` exits 0 with `scanned clues=1935 starters=327 catalog=106` (327 starters at that commit — WI-16 later raises this to 331), `violations=6 (baselined 6, new 0, stale 0)`, `GATE PASSED`. `scripts/lint-content.test.mjs`: 7 tests, 7 pass — real corpora pass, a seeded bad fixture fails and names the file, record, and rule, a stale baseline entry fails, and regression tests cover two different measurements in one clue, a partially baselined pair, the same measurement twice (occurrence-aware keys), and a malformed-shape clue file. CI runs the lint as its own step in `.github/workflows/node.js.yml`; `package.json` gains exactly one scripts line and no dependency.
+- Acceptance evidence — original run (`logs/wi17-dev.log`, at commit `d5b128b`): `npm run lint:content` exits 0 with `scanned clues=1935 starters=327 catalog=106` (327 starters at that commit — WI-16 later raises this to 331), `violations=5 (baselined 5, new 0, stale 0)`, `GATE PASSED`. `scripts/lint-content.test.mjs`: 3 tests, 3 pass — real corpora pass, a seeded bad fixture fails and names the file, record, and rule, and a stale baseline entry fails. CI runs the lint as its own step in `.github/workflows/node.js.yml`; `package.json` gains exactly one scripts line and no dependency.
+- Acceptance evidence — corrected final run (`logs/wi17-fix.log` and `logs/qa-rerun.log`, at code head `aa7c8c1`): `npm run lint:content` exits 0 with `scanned clues=1935 starters=331 catalog=106`, `violations=6 (baselined 6, new 0, stale 0)` — including `279.json#c5` "69 km" — `GATE PASSED`. `scripts/lint-content.test.mjs`: 7 tests, 7 pass — real corpora pass, a seeded bad fixture fails and names the file, record, and rule, a stale baseline entry fails, and regression tests cover two different measurements in one clue, a partially baselined pair, the same measurement twice (occurrence-aware keys), and a malformed-shape clue file. Full `npm test` at that head: scripts 841 tests / 832 pass / 0 fail / 9 skipped; src 1502 / 1502 pass.
 - **Peer-review fix (F-1):** the Peer Reviewer's adversarial pass found the lint's first-match blindness — it recorded only the first match per rule per record, so `279.json#c5`'s second measurement ("69 km") shipped unbaselined and unlisted, and the true count was 6 occurrences across 5 records, not 5. A follow-up commit fixes it: the lint now enumerates every match per record with occurrence-aware baseline keys, the "69 km" entry is baselined above, and regression tests lock the behaviour in.
+- **Peer-review sequence:** first pass REJECT (F-1 blocker) → fix `aa7c8c1` → loop-1 re-review APPROVE WITH FIXES (paperwork), F-1 closed → this paperwork docs commit closes P-1/P-2.
 
 ### WI-15 — `/credits` page (`48c0e25`)
 
@@ -49,11 +51,11 @@ Evidence (`logs/branch-fixes.log`): targeted runs pass — static-wellknown 4/4,
 
 ## Gate table — baseline vs final
 
-Baseline is pristine base `d327dd3` (`logs/baseline-gates.log`). Final is head `881f8a5` (`logs/branch-fixes.log` for the full-suite run after the fallout fixes; `logs/qa-gates.log` for QA's independent rerun, which reproduced the same totals).
+Baseline is pristine base `d327dd3` (`logs/baseline-gates.log`). Final is code head `aa7c8c1` (`logs/wi17-fix.log` for the full-suite run after the F-1 fix; `logs/qa-rerun.log` for QA's independent re-verification, which reproduced the same totals — PASS). Historical checkpoint at `881f8a5` (labelled as such, not the final head): `logs/branch-fixes.log` / `logs/qa-gates.log` recorded scripts 837 tests / 828 pass and src 1502 / 1502 at that checkpoint, before the F-1 fix added the 4 lint regression tests.
 
-| Gate | Baseline (`d327dd3`) | Final (`881f8a5`) |
+| Gate | Baseline (`d327dd3`) | Final (`aa7c8c1`) |
 |---|---|---|
-| `npm test` — scripts suite | 834 tests, 825 pass / 0 fail / 9 skipped | 837 tests, 828 pass / 0 fail / 9 skipped |
+| `npm test` — scripts suite | 834 tests, 825 pass / 0 fail / 9 skipped | 841 tests, 832 pass / 0 fail / 9 skipped |
 | `npm test` — src suite | 1489 tests, 1489 pass / 0 fail | 1502 tests, 1502 pass / 0 fail |
 | `npm run typecheck` (`tsc --noEmit`) | clean | clean, exit 0 |
 | `node scripts/lint-cards.mjs` | GATE PASSED | GATE PASSED (chunk audit: 124,690 records, 8,802 with hook, 0 curated-note violations) |
