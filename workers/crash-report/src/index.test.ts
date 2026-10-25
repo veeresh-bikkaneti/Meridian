@@ -13,6 +13,8 @@ import test, { beforeEach, afterEach } from "node:test";
 import {
   buildAlert,
   buildThresholdAlert,
+  classifyCrashVerdict,
+  type CrashVerdictFacts,
   bucketKey,
   emptyBucket,
   handleRequest,
@@ -246,7 +248,7 @@ test("telemetry: hostile event leaks nothing into bucket, threshold alert, or di
   }
 });
 
-test("crash-class event: counted AND forwarded immediately, unchanged format", async () => {
+test("crash-class event: counted AND forwarded immediately, verdict-first format (Slice 1)", async () => {
   const { map } = memoryStore();
   globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
     fetchCalls.push({ url: String(url), init });
@@ -260,7 +262,10 @@ test("crash-class event: counted AND forwarded immediately, unchanged format", a
   assert.equal(json.counted, true);
   assert.equal(fetchCalls.length, 1);
   const sent = JSON.parse((fetchCalls[0].init as { body: string }).body).content as string;
-  assert.ok(sent.startsWith("🚨 Meridian crash report"), "same individual alert format");
+  // Slice 1: the verdict line is FIRST. This event carries no stamps and
+  // no error, so it fails closed to "can't tell" (design §2.2/F8) — and
+  // Slice 1 changes no forwarding policy, so it still forwards.
+  assert.ok(sent.startsWith("❔ WAIT — Can't tell from this report"), "verdict line first, fail closed without stamps");
 });
 
 test("hiccup-class event: counted but NOT forwarded individually", async () => {
@@ -763,4 +768,337 @@ test("forwarding: Discord webhook called, 200 forwarded:true", async () => {
   assert.equal(body.forwarded, true);
   assert.equal(fetchCalls.length, 1);
   assert.equal(fetchCalls[0].url, "https://discord.test/hook");
+});
+
+// --- Slice 1: crash-report verdicts (Consensus Manifest 2026-10-25) ------
+//
+// The classifier fixture table below mirrors src/lib/observability.test.ts
+// verbatim (deliberate duplication across the client/worker boundary).
+// The worker re-derives the verdict from the stamped facts and renders
+// its own derivation — a client-stamped verdict is never rendered (§2.5).
+
+const CLASSIFIER_TABLE: Array<{
+  name: string;
+  facts: CrashVerdictFacts;
+  verdict: string;
+  whyKey: string;
+}> = [
+  {
+    name: "shape A — terminal backgrounded, no error → not_a_real_issue/bg_close",
+    facts: { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, buildReplaced: false, trailStuck: false, lcV: "1" },
+    verdict: "not_a_real_issue",
+    whyKey: "bg_close",
+  },
+  {
+    name: "shape A non-visibility tail — a milestone recorded while still backgrounded does not break shape A",
+    facts: { type: "suspected_crash", lastMilestone: "data_loaded", bgTerminal: true, buildReplaced: false, trailStuck: false, lcV: "1" },
+    verdict: "not_a_real_issue",
+    whyKey: "bg_close",
+  },
+  {
+    name: "shape A-stuck — start-without-ready before backgrounding → insufficient_evidence/bg_stuck, never benign",
+    facts: { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, buildReplaced: false, trailStuck: true, lcV: "1" },
+    verdict: "insufficient_evidence",
+    whyKey: "bg_stuck",
+  },
+  {
+    name: "shape B/E — backgrounded mid-session is never evidence; foregrounded then gameplay on current build → developer_needed",
+    facts: { type: "suspected_crash", lastMilestone: "game_loaded", bgTerminal: false, buildReplaced: false, trailStuck: false, lcV: "1" },
+    verdict: "developer_needed",
+    whyKey: "fg_kill_current",
+  },
+  {
+    name: "shape B/D — foregrounded then gameplay on replaced build → insufficient_evidence/fg_kill_replaced",
+    facts: { type: "suspected_crash", lastMilestone: "game_loaded", bgTerminal: false, buildReplaced: true, trailStuck: false, lcV: "1" },
+    verdict: "insufficient_evidence",
+    whyKey: "fg_kill_replaced",
+  },
+  {
+    name: "shape C — ends at foregrounded, no later progress, no error → insufficient_evidence/fg_vanished",
+    facts: { type: "suspected_crash", lastMilestone: "foregrounded", bgTerminal: false, buildReplaced: false, trailStuck: false, lcV: "1" },
+    verdict: "insufficient_evidence",
+    whyKey: "fg_vanished",
+  },
+  {
+    name: "shape D — gameplay ending on replaced build → insufficient_evidence, softened why",
+    facts: { type: "suspected_crash", lastMilestone: "map_ready", bgTerminal: false, buildReplaced: true, trailStuck: false, lcV: "1" },
+    verdict: "insufficient_evidence",
+    whyKey: "fg_kill_replaced",
+  },
+  {
+    name: "shape E — gameplay ending on current build → developer_needed/fg_kill_current",
+    facts: { type: "suspected_crash", lastMilestone: "data_loaded", bgTerminal: false, buildReplaced: false, trailStuck: false, lcV: "1" },
+    verdict: "developer_needed",
+    whyKey: "fg_kill_current",
+  },
+  {
+    name: "shape F — a captured error defeats the backgrounded pattern → developer_needed/captured_error",
+    facts: { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, buildReplaced: false, trailStuck: false, lcV: "1", error: { name: "TypeError", message: "boom" } },
+    verdict: "developer_needed",
+    whyKey: "captured_error",
+  },
+  {
+    name: "precedence — a captured error defeats replaced-build softening (shape D + error)",
+    facts: { type: "suspected_crash", lastMilestone: "map_ready", bgTerminal: false, buildReplaced: true, trailStuck: false, lcV: "1", error: { name: "Error", message: "boom" } },
+    verdict: "developer_needed",
+    whyKey: "captured_error",
+  },
+  {
+    name: "precedence — captured-error evidence defeats missing stamps (js_error, no stamps)",
+    facts: { type: "js_error", error: { name: "TypeError", message: "boom" } },
+    verdict: "developer_needed",
+    whyKey: "captured_error",
+  },
+  {
+    name: "boot_failure — classified developer_needed by type alone (watchdog-emitted, never carries stamps)",
+    facts: { type: "boot_failure" },
+    verdict: "developer_needed",
+    whyKey: "captured_error",
+  },
+];
+
+for (const row of CLASSIFIER_TABLE) {
+  test(`classifier: ${row.name}`, () => {
+    assert.deepEqual(classifyCrashVerdict(row.facts), { verdict: row.verdict, whyKey: row.whyKey });
+  });
+}
+
+test("classifier: captured-error types → developer_needed/captured_error", () => {
+  for (const type of ["js_error", "unhandled_rejection", "map_error"] as const) {
+    assert.deepEqual(
+      classifyCrashVerdict({ type, error: { name: "Error", message: "boom" }, lastMilestone: "game_loaded" }),
+      { verdict: "developer_needed", whyKey: "captured_error" },
+      type,
+    );
+  }
+});
+
+test("classifier: shape C variant — ends at boot_start or boot_ready, no error → insufficient_evidence", () => {
+  for (const lastMilestone of ["boot_start", "boot_ready"]) {
+    assert.deepEqual(
+      classifyCrashVerdict({ type: "suspected_crash", lastMilestone, bgTerminal: false, buildReplaced: false, trailStuck: false, lcV: "1" }),
+      { verdict: "insufficient_evidence", whyKey: "fg_vanished" },
+      lastMilestone,
+    );
+  }
+});
+
+test("classifier: missing fields — absent stamps always → insufficient_evidence/missing_fields, never benign", () => {
+  const cases: CrashVerdictFacts[] = [
+    { type: "suspected_crash", lastMilestone: "backgrounded" },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, buildReplaced: false, trailStuck: false },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, buildReplaced: false, lcV: "1" },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, trailStuck: false, lcV: "1" },
+  ];
+  for (const facts of cases) {
+    assert.deepEqual(
+      classifyCrashVerdict(facts),
+      { verdict: "insufficient_evidence", whyKey: "missing_fields" },
+      JSON.stringify(facts),
+    );
+  }
+});
+
+test("classifier: the Slice 1 table never yields auto_fixed", () => {
+  for (const row of CLASSIFIER_TABLE) {
+    assert.notEqual(classifyCrashVerdict(row.facts).verdict, "auto_fixed", row.name);
+  }
+});
+
+// --- Slice 1: validation guards for the new stamps ------------------------
+
+test("validateEvent: verdict stamps ride the extra-primitive rule, and the full client key set stays within the top-level cap", () => {
+  // Exactly the key set the Slice 1 client emits for suspected_crash
+  // (11 pre-existing + mapMode counted in the 11, plus 7 new stamps = 18).
+  const full = validEvent({
+    type: "suspected_crash",
+    sessionId: "s-1",
+    edition: "state",
+    regionId: "nebraska",
+    chunkId: "chunk-1",
+    lastMilestone: "backgrounded",
+    device: { os: "android", form: "mobile" },
+    breadcrumb: { history: [{ name: "backgrounded", at: 1 }] },
+    mapMode: "full",
+    bgTerminal: true,
+    buildReplaced: false,
+    trailStuck: false,
+    storageOk: true,
+    lcV: "1",
+    verdict: "not_a_real_issue",
+    whyKey: "bg_close",
+  });
+  assert.equal(Object.keys(full).length, 18, "fixture carries the full Slice 1 key set");
+  assert.deepEqual(validateEvent(full), []);
+  assert.ok(validateEvent(validEvent({ lcV: "x".repeat(257) })).length > 0, "oversized stamp string rejected");
+});
+
+test("validateEvent: recovery_outcome is still rejected in Slice 1 (no new event type)", () => {
+  assert.ok(validateEvent(validEvent({ type: "recovery_outcome" })).length > 0);
+});
+
+// --- Slice 1: buildAlert rendering ----------------------------------------
+
+function shapeAEvent(overrides: Record<string, unknown> = {}): CrashReportEvent {
+  return {
+    type: "suspected_crash",
+    ts: 1_729_000_000_000,
+    buildId: "28c5fea",
+    edition: "state",
+    regionId: "nebraska",
+    lastMilestone: "backgrounded",
+    device: { os: "android", form: "mobile" },
+    bgTerminal: true,
+    buildReplaced: false,
+    trailStuck: false,
+    storageOk: true,
+    lcV: "1",
+    ...overrides,
+  } as CrashReportEvent;
+}
+
+test("buildAlert: verdict line is the first line of discord for shape A — ✅ IGNORE, with the why-line stating the limit", () => {
+  const alert = buildAlert(shapeAEvent());
+  const lines = alert.discord.split("\n");
+  assert.equal(lines[0], "✅ IGNORE — No action needed");
+  assert.equal(lines[1], "🚨 Meridian crash report");
+  assert.ok(alert.discord.includes("verdict: no action needed"), "verdict line present");
+  const why = lines.find((l) => l.startsWith("why: ")) ?? "";
+  assert.ok(why.includes("background"), "why names the background-close pattern");
+  assert.ok(why.includes("would look the same"), "why states the F1 limit — a background crash looks identical");
+  assert.ok(alert.discord.includes("last step: in the background (app switched away)"), "plain-language last step");
+  assert.ok(!alert.discord.includes("action: "), "no action line on the ignore class");
+});
+
+test("buildAlert: email subject and body carry the verdict for shape A (subject per §5.4, body verdict+why under the title)", () => {
+  const alert = buildAlert(shapeAEvent());
+  assert.equal(alert.emailSubject, "[Meridian] ✅ IGNORE — No action needed · suspected_crash · build 28c5fea · state");
+  const bodyLines = alert.emailBody.split("\n");
+  assert.equal(bodyLines[0], "Meridian crash report");
+  assert.ok(alert.emailBody.includes("verdict: no action needed"));
+  assert.ok(alert.emailBody.includes("why: "));
+  assert.ok(alert.emailBody.includes("last step:       in the background (app switched away)") || alert.emailBody.includes("last step:"), "email uses last-step wording");
+});
+
+test("buildAlert: developer_needed rendering — 🚨 FIX first line, why names the captured error, action line present", () => {
+  const alert = buildAlert({
+    type: "js_error",
+    ts: 1_729_000_000_000,
+    buildId: "28c5fea",
+    edition: "state",
+    regionId: "nebraska",
+    lastMilestone: "game_loaded",
+    error: { name: "TypeError", message: "Cannot read properties of undefined (reading 'style')" },
+    device: { os: "android", form: "mobile" },
+  } as CrashReportEvent);
+  const lines = alert.discord.split("\n");
+  assert.equal(lines[0], "🚨 FIX — Developer action needed");
+  const why = lines.find((l) => l.startsWith("why: ")) ?? "";
+  assert.ok(why.includes("TypeError"), "why names the captured error");
+  assert.ok(alert.discord.includes("action: Read the error below."), "action line on this class only");
+  assert.ok(alert.discord.includes("last step: playing — map on screen"), "last-step value translated");
+  assert.equal(alert.emailSubject, "[Meridian] 🚨 FIX — Developer action needed · js_error · build 28c5fea · state");
+});
+
+test("buildAlert: insufficient_evidence rendering — ❔ WAIT first line, no action line", () => {
+  const alert = buildAlert(shapeAEvent({ lastMilestone: "foregrounded", bgTerminal: false }));
+  const lines = alert.discord.split("\n");
+  assert.equal(lines[0], "❔ WAIT — Can't tell from this report");
+  assert.ok(alert.discord.includes("verdict: can't tell from this report"));
+  assert.ok(!alert.discord.includes("action: "), "no action line on the can't-tell class");
+  assert.equal(alert.emailSubject, "[Meridian] ❔ WAIT — Can't tell from this report · suspected_crash · build 28c5fea · state");
+});
+
+test("buildAlert: an event with missing stamps renders ❔ WAIT, never ✅ IGNORE", () => {
+  const alert = buildAlert({
+    type: "suspected_crash",
+    ts: 1_729_000_000_000,
+    buildId: "oldbuild",
+    lastMilestone: "backgrounded",
+  } as CrashReportEvent);
+  assert.equal(alert.discord.split("\n")[0], "❔ WAIT — Can't tell from this report");
+});
+
+test("buildAlert: worker re-derives the verdict and never renders a client-stamped verdict", () => {
+  const lyingBenign = buildAlert({
+    type: "js_error",
+    ts: 1_729_000_000_000,
+    buildId: "28c5fea",
+    error: { name: "Error", message: "boom" },
+    verdict: "not_a_real_issue",
+    whyKey: "bg_close",
+  } as unknown as CrashReportEvent);
+  assert.equal(lyingBenign.discord.split("\n")[0], "🚨 FIX — Developer action needed");
+  const lyingFix = buildAlert(shapeAEvent({ verdict: "developer_needed", whyKey: "captured_error" }));
+  assert.equal(lyingFix.discord.split("\n")[0], "✅ IGNORE — No action needed");
+});
+
+test("buildAlert: reader text uses 'last step' and no banned word in worker-authored text", () => {
+  const alerts = [
+    buildAlert(shapeAEvent()),
+    buildAlert(shapeAEvent({ lastMilestone: "foregrounded", bgTerminal: false })),
+    buildAlert({
+      type: "js_error",
+      ts: 1_729_000_000_000,
+      buildId: "28c5fea",
+      lastMilestone: "game_loaded",
+      error: { name: "TypeError", message: "boom" },
+    } as CrashReportEvent),
+  ];
+  for (const alert of alerts) {
+    const combined = `${alert.discord}\n${alert.emailSubject}\n${alert.emailBody}`;
+    assert.ok(combined.includes("last step"), "last-step wording present");
+    // The literal type token `suspected_crash` prints as a code (design
+    // §5.1 keeps it), not as a label — strip it before the banned scan.
+    const stripped = combined.replaceAll("suspected_crash", "");
+    for (const banned of ["milestone", "jetsam", "unclean", "signature", "episode", "suspected"]) {
+      assert.ok(!stripped.toLowerCase().includes(banned), `banned word in reader text: ${banned}`);
+    }
+  }
+});
+
+test("buildAlert: existing fields are kept below the verdict and no identifying material reaches the new lines", () => {
+  const alert = buildAlert(shapeAEvent({ sessionId: "SECRET-SESSION", device: { os: "android", form: "mobile", ua: "SECRET-UA" } }));
+  const combined = `${alert.discord}\n${alert.emailSubject}\n${alert.emailBody}`;
+  assert.ok(alert.discord.includes("type: suspected_crash · build: 28c5fea"));
+  assert.ok(alert.discord.includes("device: android/mobile"));
+  assert.ok(alert.discord.includes("edition: state · region: nebraska"));
+  assert.ok(alert.discord.includes("error: none captured"), "no-error line in plain words");
+  for (const secret of ["SECRET-SESSION", "SECRET-UA"]) {
+    assert.ok(!combined.includes(secret), `leaked: ${secret}`);
+  }
+});
+
+test("handleRequest: a shape A suspected_crash is still forwarded individually in Slice 1 and the Discord payload starts with the verdict line", async () => {
+  const { map } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const res = await handleRequest(
+    postEvent({
+      type: "suspected_crash",
+      ts: Date.now(),
+      buildId: "28c5fea",
+      edition: "state",
+      regionId: "nebraska",
+      lastMilestone: "backgrounded",
+      device: { os: "android", form: "mobile" },
+      bgTerminal: true,
+      buildReplaced: false,
+      trailStuck: false,
+      storageOk: true,
+      lcV: "1",
+    }),
+    env,
+  );
+  assert.equal(res.status, 200);
+  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
+  assert.equal(json.forwarded, true, "Slice 1 changes no forwarding policy");
+  assert.equal(json.counted, true);
+  assert.equal(fetchCalls.length, 1);
+  const sent = JSON.parse((fetchCalls[0].init as { body: string }).body).content as string;
+  assert.ok(sent.startsWith("✅ IGNORE — No action needed"), "Discord payload starts with the verdict line");
 });
