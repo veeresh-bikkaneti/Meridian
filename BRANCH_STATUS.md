@@ -2,7 +2,8 @@
 
 **Branch:** `feat/crash-report-verdicts`
 **Base:** `main` at `28c5fea` (includes the PR #245 merge)
-**State: IN PROGRESS — Tier 2 council manifest signed, RED phase next.
+**State: BUILD COMPLETE — all gates run, independent Reality Checker
+gate pending. State below is the coordinator's record, not a verdict.
 The branch is LOCAL ONLY — not pushed, no PR, not merged, not deployed
 (Liz's authorization 2026-10-25 covers Slice 1 build + local commits only;
 the parent replays via the GitHub API helper after the independent gate).**
@@ -62,7 +63,20 @@ mismatch surfacing is Slice 3, not Slice 1.
   lint-cards GATE PASSED; build:pages green; crash E2E specs 7 passed /
   1 failed — `crash-watchdog.spec.ts` "stale build" spec fails on
   pristine main too (pre-existing, not a Slice 1 regression).
-- Branch numbers: pending (filled in at gate time from log files).
+- Branch numbers (logs in `~/workspace/meridian-crash-verdicts/logs/branch/`):
+  tsc clean; npm test scripts 832 pass / 0 fail (identical to baseline),
+  src 1563/1563 (1539 baseline + 24 new Slice 1 tests); worker 69/69
+  (42 baseline + 27 new); lint-cards GATE PASSED; build:pages green —
+  the built entry bundle contains the `bgTerminal` stamp and the
+  classifier why-keys. Playwright (built artifact, crash surfaces):
+  11 passed / 2 failed. Both failures are baseline-matched: the
+  crash-watchdog "stale build" spec fails on pristine main in the same
+  environment, and the crash-classification visibility spec fails solo
+  on a pristine-main worktree build with the identical signature
+  (`storyteller_ready` races past `backgrounded` — it passed in the
+  first baseline batch run, failed in the RED run on the baseline
+  artifact, and fails on pristine main solo; pre-existing timing race,
+  untouched code path). The 2 new Slice 1 stamp journeys pass.
 
 ## Push status
 
