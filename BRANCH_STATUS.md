@@ -2,8 +2,7 @@
 
 **Branch:** `feat/card-redesign-build`
 **Base:** origin/main @ `28c5fea` (PR #245 merged; rebased from `a59ee4c` — BRANCH_STATUS conflict resolved by keeping this branch's record, #245's record lives on main via #245)
-**State: BUILD COMPLETE, local commit only — NOT pushed, NOT merged, NO PR
-(coordinator handles push/PR after panel review + rebase).**
+**State: PANEL-REVIEWED, local head only — NOT merged. PR #242 OPEN (remote head `17ef7fc`); local head unpushed, push needs the owner's fresh force-with-lease authorization.**
 
 Council-decided card redesign (CARD-REDESIGN-MANIFEST.md, Chair-decided;
 verdict mockups in `council-evidence/card-redesign-debate/mockups/`).
@@ -61,7 +60,7 @@ Builds ONLY items A–D below; everything else in the manifest is HELD.
   stop per badge chip (pre-existing, required); with no badges, exactly
   1 stop. CTA text stays its accessible name; GD/CT card articles ARE
   labelled by their headings via `aria-labelledby` (F4 restoration in
-  0df59fe — the earlier removal sentence was pre-F4 and is corrected
+  923b268 — the earlier removal sentence was pre-F4 and is corrected
   here); Review keeps its region name via `aria-labelledby` to the
   `h2` (existing E2E relies on `region "Review my misses"`).
 
@@ -90,9 +89,9 @@ consequence of the specified rule (art keeps 3/2 at full width), not a
 deviation from it — panel should confirm the taller journal art is
 acceptable before merge.
 
-## Commits (4, on top of base `fa9f36b`)
+## Commits (4, on top of base `28c5fea`)
 
-Chain: three rebased commits (`dc45d01` → `0df59fe` → `7f3bd8f`) plus this docs commit.
+Chain: three rebased commits (`4884f0c` → `923b268` → `b3e1073`) plus this docs commit.
 
 - `tests/e2e/card-redesign.desktop.spec.ts` (new, 10 tests): JOIN
   heights; GD/CT split order + image/heading/paragraph/corner clicks;
@@ -116,15 +115,15 @@ Chain: three rebased commits (`dc45d01` → `0df59fe` → `7f3bd8f`) plus this d
 ## Gates (this branch, final head)
 
 - `npx tsc --noEmit` — exit 0, no output.
-- `npm test` — exit 0. Scripts suite: 834 tests, 825 pass / 0 fail /
-  9 skipped. Src suite: 1489 tests, 1489 pass / 0 fail.
+- `npm test` — exit 0 (verified on `d47cc1d` 2026-10-25). Scripts suite: 841 tests, 832 pass / 0 fail /
+  9 skipped. Src suite: 1539 tests, 1539 pass / 0 fail (src +29 vs `17ef7fc` = exactly #245's `chunk-recovery.test.ts` blocks).
 - `node scripts/lint-cards.mjs` — exit 0, prints `GATE PASSED`.
 - `npm run build:pages` — exit 0.
 - Playwright E2E, new spec only (`card-redesign.desktop.spec.ts`,
-  desktop project): **10 passed, 0 failed** (final run; earlier runs
-  6/7 exposed the two Review stretch bugs above, both fixed). New
-  seeded-badge tests additionally run `--repeat-each=10`: **20 passed,
-  0 failed, zero retries** (determinism run).
+  desktop project): **10 passed, 0 failed** on `d47cc1d` (earlier runs
+  6/7 exposed the two Review stretch bugs above, both fixed). Seeded-badge
+  `--repeat-each=10` determinism run (**20 passed, 0 failed, zero retries**)
+  was run on the `17ef7fc` head, not re-run on `d47cc1d`.
 
 ## HELD — not built (per brief)
 
@@ -137,10 +136,10 @@ padding; 768 orphan reparenting; comparison-page housekeeping
 
 ## Pending
 
-- Coordinator: panel review (done in the fix track) + rebase (DONE onto `fa9f36b`); push + PR (NOT done by this branch — push withheld: the rebased branch needs a force-push, explicitly forbidden; owner decision owed).
+- Coordinator: panel reviews DONE (2026-10-24 full panel + 2026-10-25 supplementary panel on `17ef7fc`; 2026-10-25 panel on `d47cc1d`, verdict YES) + rebase DONE onto `28c5fea`; push of the local head NOT done — needs the owner's fresh force-with-lease authorization.
   Form S is FINAL (coordinator's pick, above) — no longer pending.
-- Chitti independent review (not yet done).
-- Owner watch + green-light on the NEW head's screen recordings (the 00be8d3 green-light does not cover the rebased head; fresh post-rebase recordings delivered with the fix track).
+- Chitti independent review of the local head (not yet done; owner arranges it himself).
+- Owner watch + green-light on the local head's screen recordings (`review-242-panel-d47cc1d/visual/`; the 2026-10-24 green-light covered `00be8d3` only).
 - 768px @ 400% zoom globe-mount follow-up (NOT this branch's defect):
   home-v5.css:877 fixed-200px `.hv5-globe-zone`, 28px horizontal scroll
   at 192px layout, pre-existing home chrome.
