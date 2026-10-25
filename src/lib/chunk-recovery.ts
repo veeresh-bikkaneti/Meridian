@@ -22,6 +22,31 @@
  * it reload. (Pinned by tests/e2e/crash-watchdog.spec.ts: "the app's
  * refresh UI wins".)
  *
+ * Announcement dwell: when the failure lands in MapErrorBoundary,
+ * its role="alert" card is focused and announced, and a reload
+ * 1_500 ms later would cut that announcement short and destroy the
+ * focus the boundary just set (PR #245 review, A11Y-2). So when that
+ * card is already on screen at the decision point, the reload
+ * defers once by CHUNK_ANNOUNCE_DWELL_MS, giving the card at least
+ * that much additional dwell before navigation; the deferred
+ * decision re-checks the stale offer, the episode latch, and the
+ * card itself — if the card has gone (the player recovered during
+ * the dwell) the reload stands down. The deferral applies
+ * only to a map error card already on screen at the decision point;
+ * a card that appears after the decision point does not defer the
+ * reload.
+ *
+ * Post-reload notice: every auto-reload — and the boundary's manual
+ * "Try again", via markChunkReloadNotice() — first writes a
+ * timestamped flag (CHUNK_RELOAD_NOTICE_KEY). The next boot
+ * consumes it exactly once (consumeChunkReloadNotice) and shows a
+ * role="status" notice that Meridian reloaded, so the change of
+ * context is explained after the fact (A11Y-1/A11Y-4; a mitigation,
+ * not a cure — the reload is still not user-initiated). The
+ * post-reload notice is promised only where session
+ * storage is writable; where storage is blocked the reload still
+ * happens and no notice is shown.
+ *
  * Two further guards keep it bounded:
  * - Signature: it reacts only to the bundler's `vite:preloadError`
  *   event (dispatched solely for failed chunk preloads) or to an error
@@ -84,6 +109,26 @@ export const CHUNK_EPISODE_MAX_AGE_MS = 900_000;
 export const CHUNK_RECOVERY_DELAY_MS = 1_500;
 
 /**
+ * How long the reload defers, once, when the map error card is on
+ * screen at the decision point — the announcement dwell. Sized for
+ * the card's ~20 words at a slow child screen-reader rate (~120 wpm).
+ */
+export const CHUNK_ANNOUNCE_DWELL_MS = 10_000;
+
+/** sessionStorage key holding the post-reload notice timestamp. */
+export const CHUNK_RELOAD_NOTICE_KEY = "meridian.chunkReloadNotice";
+
+/** A notice flag older than this at consume time is stale: cleared, never shown. */
+export const CHUNK_RELOAD_NOTICE_MAX_AGE_MS = 900_000;
+
+/**
+ * The MapErrorBoundary card's heading copy (map-error-boundary.tsx).
+ * The dwell probe scans rendered text for this string — the same
+ * arrangement as STALE_OFFER_COPY and the crash watchdog; keep in sync.
+ */
+export const MAP_ERROR_CARD_COPY = "Couldn't load the map.";
+
+/**
  * The app's confirmed-stale offer copy, rendered by game-app.tsx,
  * run-start-notice.tsx and LoopScreen.tsx when isNewBuildDeployed()
  * confirms the deploy moved. The inline crash watchdog
@@ -127,6 +172,8 @@ export interface ChunkRecoveryHost {
   setTimeout: (fn: () => void, ms: number) => void;
   /** True when the app's confirmed-stale offer is on screen. */
   staleOfferVisible: () => boolean;
+  /** True when MapErrorBoundary's error card is on screen. */
+  mapErrorCardVisible: () => boolean;
 }
 
 function defaultStaleOfferVisible(): boolean {
@@ -139,6 +186,19 @@ function defaultStaleOfferVisible(): boolean {
     // the scan match itself and stand recovery down on every failure.
     const text = body.innerText ?? body.textContent ?? "";
     return text.includes(STALE_OFFER_COPY);
+  } catch {
+    return false;
+  }
+}
+
+function defaultMapErrorCardVisible(): boolean {
+  try {
+    const body = document.body;
+    if (!body) return false;
+    // innerText for the same reason as defaultStaleOfferVisible:
+    // rendered text only, never this module's own bundled copy string.
+    const text = body.innerText ?? body.textContent ?? "";
+    return text.includes(MAP_ERROR_CARD_COPY);
   } catch {
     return false;
   }
@@ -163,6 +223,7 @@ function defaultHost(): ChunkRecoveryHost | null {
       window.setTimeout(fn, ms);
     },
     staleOfferVisible: defaultStaleOfferVisible,
+    mapErrorCardVisible: defaultMapErrorCardVisible,
   };
 }
 
@@ -228,6 +289,25 @@ export function installChunkLoadRecovery(hostArg?: ChunkRecoveryHost): void {
     }
   };
 
+  // The post-reload notice flag: same timestamp as the stamp, in its
+  // own guarded write — a blocked store loses the notice, never the
+  // reload (14-U2).
+  const writeNotice = (at: number): void => {
+    try {
+      host.storage?.setItem(CHUNK_RELOAD_NOTICE_KEY, String(at));
+    } catch {
+      // Storage unavailable — the reload proceeds without a notice.
+    }
+  };
+
+  const cardVisibleSafe = (): boolean => {
+    try {
+      return host.mapErrorCardVisible();
+    } catch {
+      return false;
+    }
+  };
+
   const clearStamp = (): void => {
     memoryStamp = null;
     try {
@@ -275,18 +355,46 @@ export function installChunkLoadRecovery(hostArg?: ChunkRecoveryHost): void {
     }
   }
 
-  const decide = (): void => {
-    decisionPending = false;
+  const decide = (deferred: boolean): void => {
     try {
       // The app's confirmed-stale offer owns the screen — stand down
       // and let the player's Refresh tap (or dismissal) decide.
-      if (host.staleOfferVisible()) return;
+      // Re-checked at the deferred decision (11-U7).
+      if (host.staleOfferVisible()) {
+        decisionPending = false;
+        return;
+      }
       // An active, uncleared episode never reloads and never rewrites
-      // the stamp.
-      if (episodeActive()) return;
-      writeStamp(host.now());
+      // the stamp. Re-checked at the deferred decision (11-U8).
+      if (episodeActive()) {
+        decisionPending = false;
+        return;
+      }
+      if (!deferred && cardVisibleSafe()) {
+        // The map error card is on screen and being announced: defer
+        // once so it gets the full announcement dwell. The decision
+        // stays pending across the dwell, so a burst of failures
+        // cannot schedule an earlier decision (11-U5).
+        try {
+          host.setTimeout(() => decide(true), CHUNK_ANNOUNCE_DWELL_MS);
+        } catch {
+          decisionPending = false;
+        }
+        return;
+      }
+      if (deferred && !cardVisibleSafe()) {
+        // Cancellation: the card left during the dwell — the player
+        // recovered in place. Never yank a healthy screen (11-U4).
+        decisionPending = false;
+        return;
+      }
+      decisionPending = false;
+      const at = host.now();
+      writeStamp(at);
+      writeNotice(at);
       host.reload();
     } catch {
+      decisionPending = false;
       // Recovery is best-effort: a failure here must never become a
       // second error on top of the one being recovered from. The manual
       // recovery UI remains the fallback.
@@ -306,7 +414,7 @@ export function installChunkLoadRecovery(hostArg?: ChunkRecoveryHost): void {
     if (decisionPending) return;
     decisionPending = true;
     try {
-      host.setTimeout(decide, CHUNK_RECOVERY_DELAY_MS);
+      host.setTimeout(() => decide(false), CHUNK_RECOVERY_DELAY_MS);
     } catch {
       decisionPending = false;
     }
@@ -330,4 +438,62 @@ export function installChunkLoadRecovery(hostArg?: ChunkRecoveryHost): void {
     const e = event as { reason?: unknown };
     recover(isChunkLoadError(e?.reason));
   });
+}
+
+/**
+ * Record that a reload is about to happen, so the next boot can
+ * explain it (the post-reload notice). Called by the auto-reload
+ * path (via the install closure's own write) and by
+ * MapErrorBoundary's manual "Try again". Best-effort: never throws,
+ * and a blocked store simply means no notice.
+ */
+export function markChunkReloadNotice(): void {
+  try {
+    if (typeof window === "undefined") return;
+    window.sessionStorage.setItem(CHUNK_RELOAD_NOTICE_KEY, String(Date.now()));
+  } catch {
+    // Storage unavailable — the reload proceeds without a notice.
+  }
+}
+
+/**
+ * Consume the post-reload notice flag at boot. Returns true exactly
+ * once per fresh flag: a present value is always removed
+ * (best-effort), and stale, malformed, or future values return
+ * false after being cleared, so a flag can never surface on a wrong
+ * later boot. Never throws.
+ */
+export function consumeChunkReloadNotice(
+  hostArg?: Pick<ChunkRecoveryHost, "storage" | "now">,
+): boolean {
+  let storage: ChunkRecoveryHost["storage"] = null;
+  let now: () => number = () => Date.now();
+  if (hostArg) {
+    storage = hostArg.storage;
+    now = hostArg.now;
+  } else {
+    if (typeof window === "undefined") return false;
+    try {
+      storage = window.sessionStorage;
+    } catch {
+      return false;
+    }
+  }
+  let raw: string | null;
+  try {
+    raw = storage?.getItem(CHUNK_RELOAD_NOTICE_KEY) ?? null;
+  } catch {
+    return false;
+  }
+  if (raw === null) return false;
+  try {
+    storage?.removeItem(CHUNK_RELOAD_NOTICE_KEY);
+  } catch {
+    // Best-effort: a surviving flag is judged again at the next
+    // boot under the same age rule.
+  }
+  const parsed = Number(raw);
+  if (!Number.isFinite(parsed)) return false;
+  const age = now() - parsed;
+  return age >= 0 && age <= CHUNK_RELOAD_NOTICE_MAX_AGE_MS;
 }

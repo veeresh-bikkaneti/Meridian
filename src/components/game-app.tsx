@@ -163,7 +163,7 @@ import {
   shouldArmRevealWatchdog,
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
-import { installChunkLoadRecovery } from "@/lib/chunk-recovery";
+import { consumeChunkReloadNotice, installChunkLoadRecovery } from "@/lib/chunk-recovery";
 import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
   emitEvent,
@@ -1062,6 +1062,11 @@ export function GameApp() {
   const ageBand: AgeBandId = resolveBand(ageProfile);
   const [ageSettingsOpen, setAgeSettingsOpen] = useState(false);
   const [ageToast, setAgeToast] = useState<string | null>(null);
+  // Post-reload notice (chunk-recovery): set once at boot when the
+  // previous page's reload left a notice flag. Deliberately NO
+  // auto-dismiss timer (unlike ageToast above): a timed status can be
+  // deleted before a screen reader reaches it. Close button only.
+  const [chunkReloadNotice, setChunkReloadNotice] = useState(false);
   useEffect(() => {
     if (ageToast === null) return;
     const id = window.setTimeout(() => setAgeToast(null), 3500);
@@ -1264,6 +1269,10 @@ export function GameApp() {
     // reloads the tab once onto the current build instead of stranding
     // the player on a chunk-404 error card (see src/lib/chunk-recovery.ts).
     installChunkLoadRecovery();
+    // If the previous page auto-reloaded (or the player tapped the
+    // error card's "Try again"), explain the reload now that the new
+    // page is up: consume the one-shot notice flag (chunk-recovery).
+    if (consumeChunkReloadNotice()) setChunkReloadNotice(true);
     // Scout Map boot qualification: resolve the mode pre-mount — before
     // any map instance exists.
     // Write policy (Q3): a live stored assignment (manual forever, auto
@@ -2425,6 +2434,19 @@ export function GameApp() {
     {ageToast ? (
       <div className="agep-toast" role="status" data-testid="agep-toast">
         {ageToast}
+      </div>
+    ) : null}
+    {chunkReloadNotice && !ageToast ? (
+      <div className="agep-toast" role="status" data-testid="chunk-reload-notice">
+        {"Meridian had to reload. You're back! Keep playing!"}
+        <button
+          type="button"
+          aria-label="Close"
+          className="ml-3 font-bold"
+          onClick={() => setChunkReloadNotice(false)}
+        >
+          ✕
+        </button>
       </div>
     ) : null}
     {celebrationOverlay}
