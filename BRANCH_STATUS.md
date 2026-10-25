@@ -1,15 +1,15 @@
 # BRANCH_STATUS — feat/crash-report-verdicts
 
 **Branch:** `feat/crash-report-verdicts`
-**Base:** `main` at `28c5fea` (includes the PR #245 merge)
-**State: FIX ROUND COMPLETE — the independent Reality Checker's single
-blocker (bgTerminal inferred from lastMilestone when a trail records no
-visibility entry) is fixed at 71bc9b3 with new fail-closed tests; all
-gates re-run (logs/fixround/); re-review by the same checker pending.
-State below is the coordinator's record, not a verdict.
-The branch is LOCAL ONLY — not pushed, no PR, not merged, not deployed
-(Liz's authorization 2026-10-25 covers Slice 1 build + local commits only;
-the parent replays via the GitHub API helper after the independent gate).**
+**Base:** `main` at `d26b90a` (rebased 2026-10-25 after PR #243 merged;
+originally built on `28c5fea`, the PR #245 merge)
+**State: READY — the independent Reality Checker's round-1 blocker
+(bgTerminal inferred from lastMilestone when a trail records no
+visibility entry) was fixed, and a fresh independent re-review returned
+READY with no blockers. After the rebase onto `d26b90a` all gates were
+re-run by the parent (logs/rebase/) with identical results (below).
+Liz authorized push + PR on 2026-10-25; the parent replays the commits
+via the GitHub API helper. Not merged, not deployed.**
 It supersedes the previous contents of this file (the
 `fix/chunk-load-recovery` branch record, whose history lives on PR #245).
 
@@ -91,8 +91,19 @@ mismatch surfacing is Slice 3, not Slice 1.
   GATE PASSED; build:pages green; Playwright 12 passed / 2 failed —
   the same two baseline-matched failures, all 3 Slice 1 journeys pass.
 
+- Rebase re-run (parent, after rebase onto main `d26b90a` — PR #243
+  merged by another team; the only rebase conflict was this file,
+  resolved by keeping this branch's record; logs in
+  `~/workspace/meridian-crash-verdicts/logs/rebase/`): tsc clean;
+  npm test scripts 832 pass / 0 fail, src 1564/1564; worker 69/69;
+  lint-cards GATE PASSED; build:pages green; Playwright crash surfaces
+  12 passed / 2 failed — the same two baseline-matched failures
+  (crash-watchdog "stale build"; crash-classification visibility race),
+  all 3 Slice 1 journeys pass.
+
 ## Push status
 
-LOCAL ONLY. Not pushed, no PR opened, not merged, not deployed — per
-Liz's Slice 1 authorization. (The repo convention "push early and often"
-is overridden here by the owner's explicit instruction for this branch.)
+Push + PR authorized by Liz 2026-10-25. The parent replays the local
+commits onto the remote branch via the GitHub API helper (SHAs may
+differ from the local ones; content, messages and authorship are the
+same). Not merged, not deployed.
