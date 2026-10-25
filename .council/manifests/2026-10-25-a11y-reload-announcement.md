@@ -370,3 +370,18 @@ functions, no additional files. The maximum for
 is recorded here rather than absorbed silently. All other files are
 inside their maxima (test +494/−12 of +700/−60; game-app +23/−1 of
 +50/−5; map-error-boundary +5/−1 of +12/−2).
+
+## Gate-round defect record (Chair)
+
+First Playwright gate run: 11-E failed with dwell Received 1364 —
+the deferral never fired in the built artifact. Root cause, found
+first-hand: `MAP_ERROR_CARD_COPY` used an ASCII apostrophe while
+`MapErrorBoundary` renders `&rsquo;` (U+2019), so the probe could
+never match in production — while unit 12-Ua passed, its stub text
+mirroring the same wrong character. Repairs, same footprint:
+constant corrected to U+2019; 11-U0 extended to pin the constant
+codepoint-for-codepoint against the boundary's rendered copy;
+12-Ua's stub text is now built from the constant so the chain
+constant → probe → stub cannot drift into a self-mirror again.
+This is the round's own B1-pattern catch (a test pinning a path
+production never takes), found by the e2e oracle doing its job.
