@@ -385,3 +385,14 @@ codepoint-for-codepoint against the boundary's rendered copy;
 constant → probe → stub cannot drift into a self-mirror again.
 This is the round's own B1-pattern catch (a test pinning a path
 production never takes), found by the e2e oracle doing its job.
+
+## Errata (Reality Checker fix round)
+
+- D2's statement of the card copy used an ASCII apostrophe; the
+  boundary renders U+2019 and the shipped constant matches it
+  (see the gate-round defect record). D2 is otherwise unchanged.
+- The notice claim is scoped as the header now states it:
+  show-once holds where the flag's removal succeeds; removal is
+  best-effort (13-Uf). Any "exactly once" phrasing for the notice
+  in this manifest's scenario list (S9) reads subject to that
+  scope.

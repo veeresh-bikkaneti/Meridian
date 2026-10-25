@@ -39,13 +39,16 @@
  * Post-reload notice: every auto-reload — and the boundary's manual
  * "Try again", via markChunkReloadNotice() — first writes a
  * timestamped flag (CHUNK_RELOAD_NOTICE_KEY). The next boot
- * consumes it exactly once (consumeChunkReloadNotice) and shows a
+ * consumes it (consumeChunkReloadNotice) and shows a
  * role="status" notice that Meridian reloaded, so the change of
  * context is explained after the fact (A11Y-1/A11Y-4; a mitigation,
  * not a cure — the reload is still not user-initiated). The
  * post-reload notice is promised only where session
  * storage is writable; where storage is blocked the reload still
- * happens and no notice is shown.
+ * happens and no notice is shown. Show-once holds where the flag's
+ * removal succeeds; removal is best-effort, so a flag whose removal
+ * failed can show the notice once more at a later boot inside its
+ * freshness window (pinned, knowingly, by 13-Uf).
  *
  * Two further guards keep it bounded:
  * - Signature: it reacts only to the bundler's `vite:preloadError`
@@ -457,11 +460,13 @@ export function markChunkReloadNotice(): void {
 }
 
 /**
- * Consume the post-reload notice flag at boot. Returns true exactly
- * once per fresh flag: a present value is always removed
- * (best-effort), and stale, malformed, or future values return
- * false after being cleared, so a flag can never surface on a wrong
- * later boot. Never throws.
+ * Consume the post-reload notice flag at boot. Returns true once
+ * per fresh flag whose removal succeeds: a present value is always
+ * removed (best-effort — a flag whose removal failed is judged
+ * again at the next boot and can return true once more inside its
+ * freshness window, 13-Uf), and stale, malformed, or future values
+ * return false after being cleared, so a flag can never surface on
+ * a wrong later boot. Never throws.
  */
 export function consumeChunkReloadNotice(
   hostArg?: Pick<ChunkRecoveryHost, "storage" | "now">,

@@ -31,9 +31,12 @@ knowingly-accept of review items A11Y-2/A11Y-1/A11Y-4:
 2. **Post-reload notice** — every auto-reload, and the boundary's
    manual "Try again" (`map-error-boundary.tsx`), writes a
    timestamped flag (`meridian.chunkReloadNotice`); the next boot
-   consumes it exactly once (`game-app.tsx`) and shows a
-   `role="status"` notice — "Meridian had to reload. You're back!
-   Keep playing!" — with a Close button and no auto-dismiss timer.
+   consumes it (`game-app.tsx`), which shows a `role="status"`
+   notice — "Meridian had to reload. You're back! Keep playing!" —
+   with a Close button and no auto-dismiss timer. Show-once holds
+   where the flag's removal succeeds; removal is best-effort, so a
+   surviving flag can show the notice once more at a later boot
+   inside its freshness window (pinned, knowingly, by unit 13-Uf).
 
 Preserved, pinned by the existing contracts: episode latch,
 stale-offer stand-down, idempotent install, unrelated errors never
@@ -56,8 +59,11 @@ the real SatelliteMap path — 11-E is the primary variant.
 ## Commits
 
 1. `e51478d` — docs(council): signed manifest
-2. `128558f` — test(recovery): RED contracts (unit file: 29 failing
-   of 58 with the predicted signatures; log `red-unit.log`)
+2. `128558f` — test(recovery): RED contracts (unit file: **28
+   failing of 58** in the full-file RED run, log `red-unit.log`,
+   with the predicted signatures; a 29th contract, 11-U3, was
+   strengthened immediately after that run and verified failing in
+   a targeted run before implementation)
 3. `59dba35` — fix(recovery): dwell + notice implementation;
    game-app consume/render; boundary retry flag
 4. `d4b7163` — docs(council): footprint revision recorded
@@ -87,6 +93,14 @@ and 12-Ua builds its stub text from the constant.
 | Playwright observability | **3 passed / 0 failed** (`gate2-pw-observability.log`) |
 | Playwright safari-launch | **4 passed / 0 failed** (`gate2-pw-safari-launch.log`) — incl. the manual Try again card path |
 | Playwright crash-watchdog | **3 passed / 1 failed** (`gate2-pw-crash-watchdog.log`) — the one failure is the proven pre-existing stale-build breadcrumb assertion (spec L217, expected `data_chunk_load_start`, got `storyteller_ready`), identical on pristine `a59ee4c`; baseline-matched, not a regression, not worse |
+
+Gate-log timing note (Reality Checker fix round): the `gate-tsc.log`
+and `gate-npm-test.log` runs predate the U+2019 fix commit
+(`d8fa834`, a one-string change). Both gates were re-run at the
+final head by the independent Reality Checker with identical
+results (tsc clean; scripts 832/0/9, src 1568/0), and the
+chunk-recovery unit file was re-run by the crew at `d8fa834`
+(58/58) and again in this fix round.
 
 ## Mutation record
 

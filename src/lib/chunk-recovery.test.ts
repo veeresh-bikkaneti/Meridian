@@ -1083,4 +1083,8 @@ test("15-U: the module source pins both scoped sentences verbatim and bans the o
   assert.equal(src.includes(DWELL_SCOPED_SENTENCE), true); // RED pre-fix
   assert.equal(src.includes("announcement not truncated"), false);
   assert.equal(src.includes("fully announced"), false);
+  // Show-once is removal-dependent (13-Uf): the unqualified claim is
+  // banned in either of its wordings (Reality Checker B2, fix round).
+  assert.equal(src.includes("consumes it exactly once"), false);
+  assert.equal(src.includes("true exactly once"), false);
 });
