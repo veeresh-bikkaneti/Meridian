@@ -356,3 +356,17 @@ the same way (pristine `28c5fea`/`d26b90a` comparison).
 - This manifest authorizes local commits on
   `fix/a11y-reload-announcement` only. No push, no PR, no merge:
   those remain Liz's separate steps.
+
+## Footprint revision (Chair, recorded post-GREEN per C finding 9)
+
+`src/lib/chunk-recovery.ts` landed at +173/−7 against the table's
++140 maximum. The overrun is the two exported functions the
+contracts require (D5/D6/D9: `markChunkReloadNotice`,
+`consumeChunkReloadNotice`, ~75 lines with their doc comments) plus
+the D10/D11 header wording the source pin (15-U) makes load-bearing
+— the estimate undercounted both. No scope change: same file, same
+functions, no additional files. The maximum for
+`src/lib/chunk-recovery.ts` is revised to +185/−40 and the overrun
+is recorded here rather than absorbed silently. All other files are
+inside their maxima (test +494/−12 of +700/−60; game-app +23/−1 of
++50/−5; map-error-boundary +5/−1 of +12/−2).
