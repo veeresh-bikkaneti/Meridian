@@ -21,6 +21,9 @@ import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
  */
 
 const GUARD_KEY = "meridian.chunkReloadAt";
+const NOTICE_KEY = "meridian.chunkReloadNotice";
+/** CHUNK_ANNOUNCE_DWELL_MS in src/lib/chunk-recovery.ts (manifest D3). */
+const DWELL_MS = 10_000;
 const REFRESH_COPY = "A new version of Meridian is available.";
 
 async function bootAndMark(page: import("playwright/test").Page): Promise<void> {
@@ -222,6 +225,225 @@ test("6-E: the app's own new-version offer on screen stands recovery down — no
   expect(await markerGone(page)).toBe(false);
   const stamp = await page.evaluate((key) => sessionStorage.getItem(key), GUARD_KEY);
   expect(stamp).toBeNull();
+
+  await page.close();
+});
+
+/**
+ * A11Y announcement round (manifest 2026-10-25-a11y-reload-announcement).
+ *
+ * Spike record (pre-fix build, 2026-10-25, temporary probe spec, log
+ * spike-run2.log): the safari-launch recipe below produced the real
+ * MapErrorBoundary card at alertAtMs=5532 after the click and a
+ * recovery navigation at navAtMs=6887 with the guard stamp present —
+ * Branch A: recovery DOES engage on the SatelliteMap path, ~1.4 s
+ * after the card. 11-E is therefore the primary variant, not 11-E'.
+ */
+
+test("11-E: the real map error card gets the full announcement dwell before the recovery navigation", async ({
+  context,
+}) => {
+  await serveBuiltArtifact(context);
+  // Navigation recorder: on every document start, if the alert record
+  // already exists in sessionStorage (it survives the reload) and no
+  // navigation has been stamped yet, stamp it. First boot: no alert
+  // record, no-op. The reload's document start is the navigation time.
+  await context.addInitScript(() => {
+    try {
+      if (
+        sessionStorage.getItem("__crA11yAlert") &&
+        !sessionStorage.getItem("__crA11yNavAt")
+      ) {
+        sessionStorage.setItem("__crA11yNavAt", String(Date.now()));
+      }
+    } catch {
+      // Recorder is best-effort; the assertions below fail loudly if
+      // the records are missing.
+    }
+  });
+  // The real chunk failure: abort the satellite-map chunk on the
+  // context (SW-initiated fetches are invisible to page.route —
+  // safari-launch precedent). Registered after serveBuiltArtifact so
+  // it wins for this chunk.
+  await context.route("**/satellite-map*.js", (route) => route.abort("failed"));
+
+  const page = await context.newPage();
+  await bootAndMark(page);
+
+  // Alert recorder: capture the FIRST role=alert whose text is the
+  // map error card, with its full rendered text and timestamp, in
+  // sessionStorage — the evidence is recorded in-page, before any
+  // navigation, not reconstructed after the reload.
+  await page.evaluate(() => {
+    const obs = new MutationObserver(() => {
+      const cards = Array.from(document.querySelectorAll('[role="alert"]'));
+      const card = cards.find((e) => (e.textContent ?? "").includes("load the map"));
+      if (card) {
+        sessionStorage.setItem(
+          "__crA11yAlert",
+          JSON.stringify({ at: Date.now(), text: card.textContent ?? "" }),
+        );
+        obs.disconnect();
+      }
+    });
+    obs.observe(document.body, { childList: true, subtree: true, characterData: true });
+  });
+
+  await page.getByRole("button", { name: "Play the globe" }).click();
+
+  // 1. The full production card was present before navigation.
+  await expect
+    .poll(
+      () => page.evaluate(() => sessionStorage.getItem("__crA11yAlert")),
+      { timeout: 30_000 },
+    )
+    .not.toBeNull();
+  const alertRec = JSON.parse(
+    (await page.evaluate(() => sessionStorage.getItem("__crA11yAlert"))) as string,
+  ) as { at: number; text: string };
+  expect(alertRec.text).toContain("load the map.");
+  expect(alertRec.text).toContain("Your game is safe");
+  expect(alertRec.text).toContain("Check your connection, then try again.");
+  expect(alertRec.text).toContain("Try again");
+
+  // 2. The recovery navigation follows (guard stamp proves it was
+  // the recovery reload, not some other navigation).
+  await expect.poll(() => markerGone(page), { timeout: 30_000 }).toBe(true);
+  const stamp = await page.evaluate((key) => sessionStorage.getItem(key), GUARD_KEY);
+  expect(stamp).not.toBeNull();
+
+  // 3. Timing oracle: the card dwelt at least DWELL_MS before the
+  // navigation. RED pre-fix: navAt - alertAt ≈ 1_200–1_450 (reload at
+  // failure+1_500, card rendered ε after the failure). The upper bound
+  // is an anti-hang bound only, labelled as such.
+  await expect
+    .poll(
+      () => page.evaluate(() => sessionStorage.getItem("__crA11yNavAt")),
+      { timeout: 30_000 },
+    )
+    .not.toBeNull();
+  const navAt = Number(await page.evaluate(() => sessionStorage.getItem("__crA11yNavAt")));
+  const dwell = navAt - alertRec.at;
+  expect(dwell).toBeGreaterThanOrEqual(DWELL_MS);
+  expect(dwell).toBeLessThanOrEqual(1_500 + DWELL_MS + 15_000);
+
+  await page.close();
+});
+
+test("13-E: after a recovery reload the explanation notice shows exactly once", async ({
+  context,
+}) => {
+  await serveBuiltArtifact(context);
+  const page = await context.newPage();
+  await bootAndMark(page);
+
+  await page
+    .evaluate(() => {
+      window.dispatchEvent(new Event("vite:preloadError"));
+    })
+    .catch(() => {
+      // Navigation cuts the evaluate short.
+    });
+  await expect.poll(() => markerGone(page), { timeout: 30_000 }).toBe(true);
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
+    timeout: 60_000,
+  });
+
+  // The notice: exactly one, a status region, visible, with the copy.
+  // RED pre-fix: this visibility leg times out — the element is never
+  // rendered. (The key-null assert below would pass vacuously
+  // pre-fix — the key is never written — so it is only a guard leg in
+  // combination with this one.)
+  const notice = page.getByTestId("chunk-reload-notice");
+  await expect(notice).toBeVisible({ timeout: 30_000 });
+  expect(await page.getByTestId("chunk-reload-notice").count()).toBe(1);
+  expect(await notice.getAttribute("role")).toBe("status");
+  expect((await notice.textContent()) ?? "").toContain("Meridian had to reload.");
+  const noticeKey = await page.evaluate((key) => sessionStorage.getItem(key), NOTICE_KEY);
+  expect(noticeKey).toBeNull(); // consumed at boot
+
+  // Show-once across boots: a further manual reload shows no notice.
+  await page.reload();
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
+    timeout: 60_000,
+  });
+  expect(await page.getByTestId("chunk-reload-notice").count()).toBe(0);
+
+  await page.close();
+});
+
+test("14-E: no card on screen means no deferral — the fast reload still leaves the notice", async ({
+  context,
+}) => {
+  await serveBuiltArtifact(context);
+  const page = await context.newPage();
+  await bootAndMark(page);
+
+  // Precondition, asserted not assumed: the menu has no alert.
+  expect(await page.getByRole("alert").count()).toBe(0);
+
+  const dispatchAt = await page.evaluate(() => {
+    const at = Date.now();
+    window.dispatchEvent(new Event("vite:preloadError"));
+    return at;
+  });
+  await expect.poll(() => markerGone(page), { timeout: 30_000 }).toBe(true);
+
+  // The stamp is written at the decision instant on the page clock,
+  // so it times the decision precisely (no boot-lag noise): the plain
+  // 1_500 decision, with ≥1 s margin below the deferred time. A
+  // defer-unconditionally implementation fails this leg.
+  const stamp = Number(
+    await page.evaluate((key) => sessionStorage.getItem(key), GUARD_KEY),
+  );
+  expect(Number.isFinite(stamp)).toBe(true);
+  expect(stamp - dispatchAt).toBeGreaterThanOrEqual(1_000);
+  expect(stamp - dispatchAt).toBeLessThan(1_500 + DWELL_MS - 1_000);
+
+  // And the fast path still explains itself after the reload.
+  await expect(page.getByTestId("chunk-reload-notice")).toBeVisible({
+    timeout: 30_000,
+  });
+
+  await page.close();
+});
+
+test("6-E2: the stale offer stands recovery down across the whole dwell window — no reload, no stamp, no notice", async ({
+  context,
+}) => {
+  await serveBuiltArtifact(context);
+  await context.route("**/assets/globe-*.js", (route) => route.abort());
+  await context.route("**/build-meta.json", async (route) => {
+    return route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ buildId: "e2e-different-build" }),
+    });
+  });
+
+  const page = await context.newPage();
+  await page.goto(APP_NO_IDLE);
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
+    timeout: 60_000,
+  });
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  await expect(page.getByText(REFRESH_COPY, { exact: true })).toBeVisible({
+    timeout: 30_000,
+  });
+  await expect(page.getByRole("button", { name: "Refresh" })).toBeVisible();
+
+  await setMarker(page);
+  await page.evaluate(() => {
+    window.dispatchEvent(new Event("vite:preloadError"));
+  });
+  // 6-E's wait extended across the full possible dwell: a deferred
+  // decision that ignored the offer would fire inside this window.
+  await page.waitForTimeout(1_500 + DWELL_MS + 2_000);
+  expect(await markerGone(page)).toBe(false);
+  const stamp = await page.evaluate((key) => sessionStorage.getItem(key), GUARD_KEY);
+  expect(stamp).toBeNull();
+  const notice = await page.evaluate((key) => sessionStorage.getItem(key), NOTICE_KEY);
+  expect(notice).toBeNull();
 
   await page.close();
 });
