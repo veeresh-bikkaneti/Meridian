@@ -501,7 +501,7 @@ test("5B: two throwing-storage hosts each reload once per simulated page load", 
 });
 
 test("5B-SRC-U: the module source pins the storage-blocked claim verbatim and bans the never-loop strings", () => {
-  const src = readFileSync(new URL("./chunk-recovery.ts", import.meta.url), "utf8").replace(/\s+/g, " ");
+  const src = readFileSync(new URL("./chunk-recovery.ts", import.meta.url), "utf8").replace(/^\s*\* ?/gm, " ").replace(/\s+/g, " ");
   assert.equal(src.includes(BLOCKED_SENTENCE), true);
   assert.equal(src.includes("never loop"), false);
   assert.equal(src.includes("can never loop"), false);

@@ -22,19 +22,36 @@
  * it reload. (Pinned by tests/e2e/crash-watchdog.spec.ts: "the app's
  * refresh UI wins".)
  *
- * Two further guards keep it from ever looping:
+ * Two further guards keep it bounded:
  * - Signature: it reacts only to the bundler's `vite:preloadError`
  *   event (dispatched solely for failed chunk preloads) or to an error
  *   whose message is one of the known dynamic-import failure strings
  *   (the backstop listeners below). Unrelated errors never reload.
- * - Window: a sessionStorage timestamp caps auto-reloads to one per
- *   CHUNK_RELOAD_WINDOW_MS in a tab session. If the chunk is genuinely
- *   missing (a bad deploy, not a stale tab), the post-reload failure
- *   lands inside the window, no second reload fires, and the manual
- *   recovery UI stays in charge. After the window the recovery
- *   re-arms: a later deploy deserves a later recovery. An in-memory
- *   stamp backs the storage one up, so storage-blocked browsers still
- *   get same-page protection.
+ * - Episode latch:
+ * Reloads at most once per episode. An episode begins when an auto-reload
+ * writes its timestamp to sessionStorage. At install, a readable stamp
+ * whose age is at most CHUNK_EPISODE_MAX_AGE_MS (900_000 ms) starts an
+ * episode on this page; an older stamp is stale, is cleared best-effort,
+ * and starts no episode. While an episode is active this handler does not
+ * reload again and does not rewrite the stamp. The episode ends after
+ * CHUNK_EPISODE_CLEAR_MS (30_000 ms) of continuous failure-free time on a
+ * page where the episode is active, counted from when the episode became
+ * active on this page (install, when install started it) or from the most
+ * recent chunk-failure observation on this page, whichever is later: the
+ * stamp is then removed (best-effort) and recovery re-arms on that page.
+ * A page that writes the stamp reloads immediately, so its own episode is
+ * judged by the next page's install; if a removal failed, the surviving
+ * stamp is judged again at that next install under the same age rule.
+ * That limit is demand-driven: a chunk that is never requested cannot
+ * fail; an idle page can end an episode without the broken chunk being
+ * retried — recovery then re-arms for the player's next attempt. When
+ * session storage is blocked, auto-recovery promises at most one
+ * auto-reload per page load when session storage is blocked, and it makes
+ * no promise that a later page load will be prevented from auto-reloading
+ * once again if the same chunk is still missing. The stand-down for the
+ * app's own recovery applies only to an offer already on screen at the
+ * decision point, CHUNK_RECOVERY_DELAY_MS after the failure; an offer
+ * that appears after that point does not stand this handler down.
  *
  * Scope: recovery only. Reporting is untouched — the observability
  * pipeline (src/lib/observability.ts) hears the same errors through
@@ -51,8 +68,14 @@
 /** sessionStorage key holding the last auto-reload time (ms epoch). */
 export const CHUNK_RELOAD_KEY = "meridian.chunkReloadAt";
 
-/** At most one auto-reload per this window in a tab session. */
-export const CHUNK_RELOAD_WINDOW_MS = 30_000;
+/**
+ * How long an active episode must see no chunk failure, on a page
+ * where it is active, before it clears and recovery re-arms.
+ */
+export const CHUNK_EPISODE_CLEAR_MS = 30_000;
+
+/** A stamp older than this at install is stale: it starts no episode. */
+export const CHUNK_EPISODE_MAX_AGE_MS = 900_000;
 
 /**
  * How long a chunk failure waits before the auto-reload decision, so
@@ -92,30 +115,12 @@ export function isChunkLoadError(error: unknown): boolean {
   return typeof message === "string" && messageMatches(message);
 }
 
-export interface ChunkRecoveryDecision {
-  /** The failure carried the chunk-load signature. */
-  signature: boolean;
-  /** Current time (ms epoch). */
-  now: number;
-  /** When the last auto-reload happened in this session, if ever. */
-  lastReloadAt: number | null;
-  /** Override for tests; defaults to CHUNK_RELOAD_WINDOW_MS. */
-  windowMs?: number;
-}
-
-/** Pure decision: reload only for chunk failures, at most once per window. */
-export function shouldAutoReloadChunk(decision: ChunkRecoveryDecision): boolean {
-  if (!decision.signature) return false;
-  if (decision.lastReloadAt === null) return true;
-  const windowMs = decision.windowMs ?? CHUNK_RELOAD_WINDOW_MS;
-  return decision.now - decision.lastReloadAt >= windowMs;
-}
-
 export interface ChunkRecoveryHost {
   addEventListener: (type: string, listener: (event: unknown) => void) => void;
   storage: {
     getItem: (key: string) => string | null;
     setItem: (key: string, value: string) => void;
+    removeItem: (key: string) => void;
   } | null;
   reload: () => void;
   now: () => number;
@@ -162,20 +167,36 @@ function defaultHost(): ChunkRecoveryHost | null {
 }
 
 const installedHosts = new WeakSet<object>();
+const installedWindows = new WeakSet<object>();
 
 /**
  * Register the recovery listeners on `host` (default: the window).
- * Idempotent per host. No-op outside a browser. Never throws.
+ * Idempotent per host; default installs are guarded per window.
  */
 export function installChunkLoadRecovery(hostArg?: ChunkRecoveryHost): void {
   const host = hostArg ?? defaultHost();
-  if (!host || installedHosts.has(host)) return;
-  installedHosts.add(host);
+  if (!host) return;
+  if (hostArg) {
+    if (installedHosts.has(host)) return;
+    installedHosts.add(host);
+  } else {
+    // Default host: defaultHost() builds a fresh host object per call,
+    // so the guard is keyed on the window object instead (D4).
+    const win = (globalThis as { window?: object }).window;
+    if (!win) return;
+    if (installedWindows.has(win)) return;
+    installedWindows.add(win);
+  }
 
   // Same-page backstop for when sessionStorage is blocked: after a
   // reload this resets, but the storage stamp (when writable) is the
   // cross-reload guard; this one only has to outlive the current page.
   let memoryStamp: number | null = null;
+  // Episode latch (D2): all of this state is per-install closure
+  // state; the only module-level state is the two install guards.
+  let episodeCleared = false;
+  let installStale = false;
+  let clearGeneration = 0;
   // One decision in flight at a time: a burst of chunk failures from
   // the same incident collapses into a single deferred decision.
   let decisionPending = false;
@@ -196,6 +217,10 @@ export function installChunkLoadRecovery(hostArg?: ChunkRecoveryHost): void {
 
   const writeStamp = (at: number): void => {
     memoryStamp = at;
+    // Any stamp write begins a new episode on this page (D6 S3); the
+    // write itself never arms the clear countdown.
+    episodeCleared = false;
+    installStale = false;
     try {
       host.storage?.setItem(CHUNK_RELOAD_KEY, String(at));
     } catch {
@@ -203,15 +228,63 @@ export function installChunkLoadRecovery(hostArg?: ChunkRecoveryHost): void {
     }
   };
 
+  const clearStamp = (): void => {
+    memoryStamp = null;
+    try {
+      host.storage?.removeItem(CHUNK_RELOAD_KEY);
+    } catch {
+      // Best-effort: a surviving stamp is judged again at the next
+      // install under the normal age rule (D6 S2).
+    }
+  };
+
+  const episodeActive = (): boolean => !episodeCleared && !installStale && readStamp() !== null;
+
+  // Arm-or-restart the clear countdown. The host timer returns void,
+  // so restarts use a generation token: a firing timer clears only if
+  // its generation is current and the deadline has been reached.
+  const armClearCountdown = (observedAt: number): void => {
+    clearGeneration += 1;
+    const generation = clearGeneration;
+    const deadline = observedAt + CHUNK_EPISODE_CLEAR_MS;
+    try {
+      host.setTimeout(() => {
+        if (generation !== clearGeneration) return;
+        if (host.now() < deadline) return;
+        clearStamp();
+        episodeCleared = true;
+      }, CHUNK_EPISODE_CLEAR_MS);
+    } catch {
+      // Recovery is best-effort; a timer failure must never throw.
+    }
+  };
+
+  // Install-time eligibility (D2): a readable stamp whose age is at
+  // most CHUNK_EPISODE_MAX_AGE_MS starts an episode on this page and
+  // arms its clear countdown; an older stamp is stale — cleared
+  // best-effort, no latch (authoritative for this page, D6 S1).
+  {
+    const stamp = readStamp();
+    if (stamp !== null) {
+      if (host.now() - stamp <= CHUNK_EPISODE_MAX_AGE_MS) {
+        armClearCountdown(host.now());
+      } else {
+        installStale = true;
+        clearStamp();
+      }
+    }
+  }
+
   const decide = (): void => {
     decisionPending = false;
     try {
       // The app's confirmed-stale offer owns the screen — stand down
       // and let the player's Refresh tap (or dismissal) decide.
       if (host.staleOfferVisible()) return;
-      const now = host.now();
-      if (!shouldAutoReloadChunk({ signature: true, now, lastReloadAt: readStamp() })) return;
-      writeStamp(now);
+      // An active, uncleared episode never reloads and never rewrites
+      // the stamp.
+      if (episodeActive()) return;
+      writeStamp(host.now());
       host.reload();
     } catch {
       // Recovery is best-effort: a failure here must never become a
@@ -221,7 +294,16 @@ export function installChunkLoadRecovery(hostArg?: ChunkRecoveryHost): void {
   };
 
   const recover = (signature: boolean): void => {
-    if (!signature || decisionPending) return;
+    if (!signature) return;
+    // Observation hook: after the signature check, before the
+    // decision-pending check — an observation while an episode is
+    // active arms-or-restarts the clear countdown (D2, D6 S3).
+    try {
+      if (episodeActive()) armClearCountdown(host.now());
+    } catch {
+      // Best-effort: observation bookkeeping must never throw.
+    }
+    if (decisionPending) return;
     decisionPending = true;
     try {
       host.setTimeout(decide, CHUNK_RECOVERY_DELAY_MS);
