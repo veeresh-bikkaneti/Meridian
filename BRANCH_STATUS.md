@@ -73,6 +73,23 @@ on its own PR #241).
   `~/workspace/meridian-wave2-b3/logs/`.
 - [x] Feel gate: all 3 rings placed + finishing tap at 320×568 with
   no page zoom; reveal heading unoccluded at 375px.
+- [x] **B-1 fix (2026-10-24, clean-context review blocker):** the
+  ≥1024px grid children set `grid-column` but no `grid-row`, and
+  `.ct-map`'s `order: -1` dropped the sightings column into row 2 —
+  on desktop the clues rendered below the map (1280×900, scroll 0:
+  sightings y=745.5 vs map bottom 721.5). Fix: `grid-row: 1` on both
+  children (`src/styles.css` only). New geometry regression test in
+  `tests/e2e/coldtrail.spec.ts` (RED pre-fix with the review's exact
+  numbers, GREEN after: sightings y=204.5 = map y=204.5, first card
+  fully in the first viewport). 1280px screenshots re-shot
+  (`after/coldtrail-1280.png`, `wi13-layout/coldtrail-1280-top.png`,
+  `wi13-layout/coldtrail-1280-card3.png`). Commits `8acda40` (test)
+  + `bdd95cb` (fix + re-shots). Full gates re-run on the final head:
+  tsc clean, exit 0; `npm test` scripts 832 pass / 0 fail / 9 skipped,
+  src 1510/1510; lint-cards GATE PASSED; `build:pages` exit 0;
+  Playwright coldtrail + geodetective suites 34 passed / 0 failed.
+  Logs: `logs/b1-*.log`. Mobile layout
+  untouched. Full note: review doc, "B-1 fix" section.
 
 ### Pending (not this branch's to finish)
 
@@ -110,6 +127,9 @@ on its own PR #241).
 - `136627b` test(coldtrail): pin every rendered theme string to the gate-approved text (peer review F-2)
 - docs(branch): peer reviewer pass-10 record — review doc + branch status corrections (this commit)
 - docs(wave2): record F-1 resolution — Child Safety supplementary ruling closes AC-13.9 (this commit)
+- `8acda40` test(coldtrail): B-1 geometry regression — sightings beside map at 1280 scroll 0 (RED pre-fix)
+- `bdd95cb` fix(coldtrail): B-1 — grid-row 1 on both desktop grid children; sightings beside the map again (1280 re-shots)
+- docs(branch): B-1 fix note — review doc + branch status (this commit)
 
 Deviations recorded in the review doc: the End-game pill keeps
 `text-xs` (pinned by `question-bubble.test.ts`) against UX A5's ≥14px
