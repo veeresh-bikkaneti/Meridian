@@ -126,7 +126,7 @@ export const CHUNK_RELOAD_NOTICE_MAX_AGE_MS = 900_000;
  * The dwell probe scans rendered text for this string — the same
  * arrangement as STALE_OFFER_COPY and the crash watchdog; keep in sync.
  */
-export const MAP_ERROR_CARD_COPY = "Couldn't load the map.";
+export const MAP_ERROR_CARD_COPY = "Couldn’t load the map.";
 
 /**
  * The app's confirmed-stale offer copy, rendered by game-app.tsx,

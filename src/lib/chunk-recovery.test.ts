@@ -649,6 +649,12 @@ test("11-U0: the dwell constant is pinned at 10000 and exceeds the decision dela
   assert.ok(
     chunkRecovery.CHUNK_ANNOUNCE_DWELL_MS > chunkRecovery.CHUNK_RECOVERY_DELAY_MS,
   );
+  // The card copy is pinned codepoint-for-codepoint: the boundary
+  // renders a typographic apostrophe (&rsquo; in
+  // map-error-boundary.tsx), and an ASCII look-alike here would make
+  // the probe silently never match in production — e2e 11-E caught
+  // exactly that in this round's first gate run.
+  assert.equal(chunkRecovery.MAP_ERROR_CARD_COPY, "Couldn’t load the map.");
 });
 
 test("11-U: card visible at the decision defers once — nothing written, reload at T0+1500+DWELL", () => {
@@ -858,7 +864,10 @@ function stubStorageMap() {
 
 test("12-Ua: the default probe sees the boundary card copy in rendered body text — defer, then reload", () => {
   const { ss } = stubStorageMap();
-  const w = stubWindow(ss, "Couldn't load the map. Your game is safe — try again.");
+  // Stub text is built FROM the exported constant (whose exact
+  // codepoints 11-U0 pins against the boundary's rendered copy), so
+  // this probe test can never drift into an ASCII self-mirror.
+  const w = stubWindow(ss, `${chunkRecovery.MAP_ERROR_CARD_COPY} Your game is safe — try again.`);
   installChunkLoadRecovery();
   w.dispatch("vite:preloadError");
   const recorded = w.timers.map((t) => t.ms);
