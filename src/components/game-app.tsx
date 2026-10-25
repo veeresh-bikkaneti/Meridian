@@ -163,6 +163,7 @@ import {
   shouldArmRevealWatchdog,
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
+import { installChunkLoadRecovery } from "@/lib/chunk-recovery";
 import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
   emitEvent,
@@ -1258,6 +1259,11 @@ export function GameApp() {
     // null = transport disabled), then flush. Never throws.
     initObservability();
     installGlobalErrorHandlers();
+    // Stale-chunk auto-recovery: registered at boot, before any lazy
+    // screen import can fire, so a deploy that lands mid-session
+    // reloads the tab once onto the current build instead of stranding
+    // the player on a chunk-404 error card (see src/lib/chunk-recovery.ts).
+    installChunkLoadRecovery();
     // Scout Map boot qualification: resolve the mode pre-mount — before
     // any map instance exists.
     // Write policy (Q3): a live stored assignment (manual forever, auto
