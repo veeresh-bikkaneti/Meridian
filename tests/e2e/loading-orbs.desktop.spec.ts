@@ -233,9 +233,9 @@ test("masked blob: card-image orb renders inside the masked .hv5-art shape", asy
     return cs.maskImage || cs.webkitMaskImage || "";
   });
   expect(mask).toContain("radial-gradient");
-  // Screenshot the held state FIRST so the evidence exists even though the
-  // visibility assertion below fails (see report: wrapper is 0-height
-  // while the art is held, so the DOM-present orb paints nothing).
+  // Screenshot the held state FIRST so the evidence exists: the wrapper
+  // now has a pre-load box (aspect-ratio fix, bf4f8d7), so the held orb
+  // paints inside the masked shape and the assertion below passes.
   await card.screenshot({ path: EVIDENCE });
   // With the art held, the orb is visible inside that masked wrapper.
   await expect(wrapper.locator(".hv5-lazy-orb")).toBeVisible();
