@@ -11,11 +11,13 @@ import {
   BREADCRUMB_KEY,
   MAX_HISTORY,
   MAX_PAYLOAD_BYTES,
+  classifyCrashVerdict,
   coarseDeviceFacts,
   createObservability,
   dprBucket,
   screenBucket,
   truncateEventToCap,
+  type CrashVerdictFacts,
   type ObsStorage,
   type ObsTransport,
   type ObservabilityEvent,
@@ -627,4 +629,362 @@ test("COPPA coarsening: reports carry a screen bucket and rounded DPR, never exa
   for (const k of ["screenW", "screenH", "deviceMemory", "hardwareConcurrency", "ua"]) {
     assert.ok(!(k in facts) || (facts as Record<string, unknown>)[k] === undefined, `${k} must not be reported`);
   }
+});
+
+// --- Slice 1: crash-report verdicts (Consensus Manifest 2026-10-25) ------
+//
+// Classifier table + evidence stamps. The classifier fixtures below are
+// mirrored verbatim in workers/crash-report/src/index.test.ts (deliberate
+// duplication across the client/worker boundary — the worker re-derives
+// the verdict from the same stamped facts, design §2.5/§4).
+
+const CLASSIFIER_TABLE: Array<{
+  name: string;
+  facts: CrashVerdictFacts;
+  verdict: string;
+  whyKey: string;
+}> = [
+  {
+    name: "shape A — terminal backgrounded, no error → not_a_real_issue/bg_close",
+    facts: { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, buildReplaced: false, trailStuck: false, lcV: "1" },
+    verdict: "not_a_real_issue",
+    whyKey: "bg_close",
+  },
+  {
+    name: "shape A non-visibility tail — a milestone recorded while still backgrounded does not break shape A",
+    facts: { type: "suspected_crash", lastMilestone: "data_loaded", bgTerminal: true, buildReplaced: false, trailStuck: false, lcV: "1" },
+    verdict: "not_a_real_issue",
+    whyKey: "bg_close",
+  },
+  {
+    name: "shape A-stuck — start-without-ready before backgrounding → insufficient_evidence/bg_stuck, never benign",
+    facts: { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, buildReplaced: false, trailStuck: true, lcV: "1" },
+    verdict: "insufficient_evidence",
+    whyKey: "bg_stuck",
+  },
+  {
+    name: "shape B/E — backgrounded mid-session is never evidence; foregrounded then gameplay on current build → developer_needed",
+    facts: { type: "suspected_crash", lastMilestone: "game_loaded", bgTerminal: false, buildReplaced: false, trailStuck: false, lcV: "1" },
+    verdict: "developer_needed",
+    whyKey: "fg_kill_current",
+  },
+  {
+    name: "shape B/D — foregrounded then gameplay on replaced build → insufficient_evidence/fg_kill_replaced",
+    facts: { type: "suspected_crash", lastMilestone: "game_loaded", bgTerminal: false, buildReplaced: true, trailStuck: false, lcV: "1" },
+    verdict: "insufficient_evidence",
+    whyKey: "fg_kill_replaced",
+  },
+  {
+    name: "shape C — ends at foregrounded, no later progress, no error → insufficient_evidence/fg_vanished",
+    facts: { type: "suspected_crash", lastMilestone: "foregrounded", bgTerminal: false, buildReplaced: false, trailStuck: false, lcV: "1" },
+    verdict: "insufficient_evidence",
+    whyKey: "fg_vanished",
+  },
+  {
+    name: "shape D — gameplay ending on replaced build → insufficient_evidence, softened why",
+    facts: { type: "suspected_crash", lastMilestone: "map_ready", bgTerminal: false, buildReplaced: true, trailStuck: false, lcV: "1" },
+    verdict: "insufficient_evidence",
+    whyKey: "fg_kill_replaced",
+  },
+  {
+    name: "shape E — gameplay ending on current build → developer_needed/fg_kill_current",
+    facts: { type: "suspected_crash", lastMilestone: "data_loaded", bgTerminal: false, buildReplaced: false, trailStuck: false, lcV: "1" },
+    verdict: "developer_needed",
+    whyKey: "fg_kill_current",
+  },
+  {
+    name: "shape F — a captured error defeats the backgrounded pattern → developer_needed/captured_error",
+    facts: { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, buildReplaced: false, trailStuck: false, lcV: "1", error: { name: "TypeError", message: "boom" } },
+    verdict: "developer_needed",
+    whyKey: "captured_error",
+  },
+  {
+    name: "precedence — a captured error defeats replaced-build softening (shape D + error)",
+    facts: { type: "suspected_crash", lastMilestone: "map_ready", bgTerminal: false, buildReplaced: true, trailStuck: false, lcV: "1", error: { name: "Error", message: "boom" } },
+    verdict: "developer_needed",
+    whyKey: "captured_error",
+  },
+  {
+    name: "precedence — captured-error evidence defeats missing stamps (js_error, no stamps)",
+    facts: { type: "js_error", error: { name: "TypeError", message: "boom" } },
+    verdict: "developer_needed",
+    whyKey: "captured_error",
+  },
+  {
+    name: "boot_failure — classified developer_needed by type alone (watchdog-emitted, never carries stamps)",
+    facts: { type: "boot_failure" },
+    verdict: "developer_needed",
+    whyKey: "captured_error",
+  },
+];
+
+for (const row of CLASSIFIER_TABLE) {
+  test(`classifier: ${row.name}`, () => {
+    assert.deepEqual(classifyCrashVerdict(row.facts), { verdict: row.verdict, whyKey: row.whyKey });
+  });
+}
+
+test("classifier: captured-error types → developer_needed/captured_error", () => {
+  for (const type of ["js_error", "unhandled_rejection", "map_error"] as const) {
+    assert.deepEqual(
+      classifyCrashVerdict({ type, error: { name: "Error", message: "boom" }, lastMilestone: "game_loaded" }),
+      { verdict: "developer_needed", whyKey: "captured_error" },
+      type,
+    );
+  }
+});
+
+test("classifier: shape C variant — ends at boot_start or boot_ready, no error → insufficient_evidence", () => {
+  for (const lastMilestone of ["boot_start", "boot_ready"]) {
+    assert.deepEqual(
+      classifyCrashVerdict({ type: "suspected_crash", lastMilestone, bgTerminal: false, buildReplaced: false, trailStuck: false, lcV: "1" }),
+      { verdict: "insufficient_evidence", whyKey: "fg_vanished" },
+      lastMilestone,
+    );
+  }
+});
+
+test("classifier: missing fields — absent stamps always → insufficient_evidence/missing_fields, never benign", () => {
+  const cases: CrashVerdictFacts[] = [
+    { type: "suspected_crash", lastMilestone: "backgrounded" },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, buildReplaced: false, trailStuck: false },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, buildReplaced: false, lcV: "1" },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, trailStuck: false, lcV: "1" },
+  ];
+  for (const facts of cases) {
+    assert.deepEqual(
+      classifyCrashVerdict(facts),
+      { verdict: "insufficient_evidence", whyKey: "missing_fields" },
+      JSON.stringify(facts),
+    );
+  }
+});
+
+test("classifier: the Slice 1 table never yields auto_fixed", () => {
+  for (const row of CLASSIFIER_TABLE) {
+    assert.notEqual(classifyCrashVerdict(row.facts).verdict, "auto_fixed", row.name);
+  }
+  // No recovery facts exist in Slice 1, so no facts shape can earn it —
+  // not even a backgrounded trail carrying every stamp.
+  assert.notEqual(
+    classifyCrashVerdict({ type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, buildReplaced: true, trailStuck: false, lcV: "1" }).verdict,
+    "auto_fixed",
+  );
+});
+
+// --- Slice 1 stamps through the real init/emit production path -----------
+
+function seededCrashPayload(prevOver: Record<string, unknown>, runningBuild = "b2"): ObservabilityEvent {
+  const store = makeStorage({ [BREADCRUMB_KEY]: prevBreadcrumbJson(prevOver) });
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: store, transport, endpoint: "https://example.com/ingest",
+    now: () => 9000, randomId: () => "new-session", device: DEVICE, buildId: runningBuild, isUnclean: () => true,
+  });
+  obs.init();
+  assert.equal(beacons.length, 1, "one suspected_crash sent");
+  return JSON.parse(beacons[0].body) as ObservabilityEvent;
+}
+
+const HIST = (...names: string[]) => names.map((name, i) => ({ name, at: 1000 + i }));
+
+test("stamps: suspected_crash via init carries bgTerminal=true when the last visibility milestone is backgrounded, even when a non-visibility milestone is lastMilestone", () => {
+  const payload = seededCrashPayload({
+    buildId: "prev-build",
+    lastMilestone: "data_loaded",
+    history: HIST("boot_start", "run_start", "game_loaded", "backgrounded", "data_loaded"),
+  });
+  assert.equal(payload.bgTerminal, true);
+  assert.equal(payload.trailStuck, false);
+  assert.equal(payload.buildReplaced, true, "prev build differs from the running build");
+  assert.equal(payload.storageOk, true);
+  assert.equal(payload.lcV, "1");
+  assert.equal(payload.verdict, "not_a_real_issue");
+  assert.equal(payload.whyKey, "bg_close");
+});
+
+test("stamps: suspected_crash via init carries bgTerminal=false when the trail backgrounded then foregrounded, and buildReplaced=false when the build is unchanged", () => {
+  const payload = seededCrashPayload(
+    {
+      buildId: "b2",
+      lastMilestone: "game_loaded",
+      history: HIST("boot_start", "backgrounded", "foregrounded", "game_loaded"),
+    },
+    "b2",
+  );
+  assert.equal(payload.bgTerminal, false);
+  assert.equal(payload.buildReplaced, false);
+  assert.equal(payload.verdict, "developer_needed");
+  assert.equal(payload.whyKey, "fg_kill_current");
+});
+
+test("stamps: a start-without-ready before backgrounding stamps trailStuck=true and classifies insufficient_evidence, never benign", () => {
+  const payload = seededCrashPayload({
+    buildId: "prev-build",
+    lastMilestone: "backgrounded",
+    history: HIST("boot_start", "run_start", "map_init_start", "backgrounded"),
+  });
+  assert.equal(payload.bgTerminal, true);
+  assert.equal(payload.trailStuck, true);
+  assert.equal(payload.verdict, "insufficient_evidence");
+  assert.equal(payload.whyKey, "bg_stuck");
+});
+
+test("stamps: a trail with no visibility entry omits bgTerminal entirely — the verdict fails closed to insufficient_evidence/missing_fields, never benign", () => {
+  // Reality Checker blocker (2026-10-25): bgTerminal must come from a
+  // visibility entry in the stored history, never from lastMilestone.
+  // A session that recorded no visibility transition has an UNKNOWN
+  // terminal visibility state, so the stamp is absent and the
+  // classifier's missing-fields rule applies — even when the trail ends
+  // at a gameplay milestone, and even for a foreign trail whose
+  // lastMilestone claims "backgrounded" with no such history entry.
+  const gameplay = seededCrashPayload({
+    buildId: "prev-build",
+    lastMilestone: "game_loaded",
+    history: HIST("boot_start", "run_start", "game_loaded"),
+  });
+  assert.ok(!("bgTerminal" in gameplay), "no bgTerminal stamp without a visibility entry");
+  assert.equal(gameplay.verdict, "insufficient_evidence");
+  assert.equal(gameplay.whyKey, "missing_fields");
+
+  const foreign = seededCrashPayload({
+    buildId: "prev-build",
+    lastMilestone: "backgrounded",
+    history: HIST("boot_start", "run_start"),
+  });
+  assert.ok(!("bgTerminal" in foreign), "lastMilestone alone never fabricates bgTerminal");
+  assert.equal(foreign.verdict, "insufficient_evidence");
+  assert.equal(foreign.whyKey, "missing_fields");
+});
+
+test("stamps: only suspected_crash carries bgTerminal/buildReplaced/trailStuck — a live js_error via emit carries storageOk, lcV and the provisional verdict, and none of the trail stamps", () => {
+  const store = makeStorage();
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: store, transport, endpoint: "https://example.com/ingest",
+    now: () => 1000, randomId: () => "s", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.init();
+  obs.emit({ type: "js_error", ts: 1000, buildId: "b", error: { name: "TypeError", message: "boom" } });
+  assert.equal(beacons.length, 1);
+  const payload = JSON.parse(beacons[0].body) as ObservabilityEvent;
+  assert.equal(payload.storageOk, true);
+  assert.equal(payload.lcV, "1");
+  assert.equal(payload.verdict, "developer_needed");
+  assert.equal(payload.whyKey, "captured_error");
+  assert.ok(!("bgTerminal" in payload), "no bgTerminal on a live error event");
+  assert.ok(!("buildReplaced" in payload), "no buildReplaced on a live error event");
+  assert.ok(!("trailStuck" in payload), "no trailStuck on a live error event");
+});
+
+test("stamps: a hiccup event carries storageOk and lcV but never a verdict", () => {
+  const store = makeStorage();
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: store, transport, endpoint: "https://example.com/ingest",
+    now: () => 1000, randomId: () => "s", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.init();
+  obs.emitTileFailed();
+  assert.equal(beacons.length, 1);
+  const payload = JSON.parse(beacons[0].body) as ObservabilityEvent;
+  assert.equal(payload.storageOk, true);
+  assert.equal(payload.lcV, "1");
+  assert.ok(!("verdict" in payload), "hiccup-class events are counted only — no verdict in Slice 1");
+  assert.ok(!("whyKey" in payload));
+});
+
+test("stamps: storageOk=false is stamped at the emit choke point when storage throws", () => {
+  // getItem works, setItem throws (quota / partially blocked storage):
+  // the trail cannot persist, so every event this session emits must say
+  // storageOk=false. (A fully blocked session emits no suspected_crash at
+  // all — F4; the false branch is proven here on the live-error path.)
+  const raw = new Map<string, string>();
+  const throwingSet: ObsStorage = {
+    getItem: (k: string) => (raw.has(k) ? (raw.get(k) as string) : null),
+    setItem: () => {
+      throw new Error("quota");
+    },
+    removeItem: (k: string) => void raw.delete(k),
+  };
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: throwingSet, transport, endpoint: "https://example.com/ingest",
+    now: () => 1000, randomId: () => "s", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.init();
+  obs.emitMapError(new Error("map boom"));
+  assert.equal(beacons.length, 1);
+  const payload = JSON.parse(beacons[0].body) as ObservabilityEvent;
+  assert.equal(payload.type, "map_error");
+  assert.equal(payload.storageOk, false);
+  assert.equal(payload.lcV, "1");
+});
+
+test("stamps: stamps survive the queued path — init with no endpoint, then setEndpoint flushes exactly one suspected_crash carrying all stamps", () => {
+  const store = makeStorage({
+    [BREADCRUMB_KEY]: prevBreadcrumbJson({
+      buildId: "prev-build",
+      lastMilestone: "backgrounded",
+      history: HIST("boot_start", "run_start", "game_loaded", "backgrounded"),
+    }),
+  });
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: store, transport, endpoint: null,
+    now: () => 9000, randomId: () => "new-session", device: DEVICE, buildId: "b2", isUnclean: () => true,
+  });
+  obs.init();
+  assert.equal(obs.getQueueLength(), 1);
+  obs.setEndpoint("https://example.com/ingest");
+  assert.equal(beacons.length, 1, "queued event flushed once");
+  const payload = JSON.parse(beacons[0].body) as ObservabilityEvent;
+  assert.equal(payload.bgTerminal, true);
+  assert.equal(payload.buildReplaced, true);
+  assert.equal(payload.trailStuck, false);
+  assert.equal(payload.storageOk, true);
+  assert.equal(payload.lcV, "1");
+  assert.equal(payload.verdict, "not_a_real_issue");
+  assert.equal(payload.whyKey, "bg_close");
+});
+
+test("stamps: stamps still present after truncateEventToCap on a max-history (12-entry) trail at the 4096-byte cap", () => {
+  const event: ObservabilityEvent = {
+    type: "suspected_crash",
+    ts: 9000,
+    buildId: "prev-build",
+    sessionId: "prev-session",
+    edition: "globe",
+    regionId: "globe",
+    chunkId: "c".repeat(1200),
+    lastMilestone: "backgrounded",
+    bgTerminal: true,
+    buildReplaced: true,
+    trailStuck: false,
+    storageOk: true,
+    lcV: "1",
+    verdict: "not_a_real_issue",
+    whyKey: "bg_close",
+    error: { name: "Error", message: "x".repeat(300) },
+    breadcrumb: {
+      sessionId: "prev-session",
+      buildId: "prev-build",
+      startedAt: 1000,
+      lastMilestone: "backgrounded",
+      history: HIST("boot_start", "run_start", "data_chunk_load_start", "data_loaded", "map_init_start", "map_ready", "game_loaded", "storyteller_ready", "backgrounded", "data_loaded", "backgrounded", "data_loaded"),
+      edition: "globe",
+      regionId: "globe",
+    },
+  };
+  const body = truncateEventToCap(event, MAX_PAYLOAD_BYTES);
+  assert.ok(new TextEncoder().encode(body).length <= MAX_PAYLOAD_BYTES, "cap holds");
+  const parsed = JSON.parse(body) as ObservabilityEvent;
+  assert.equal(parsed.bgTerminal, true);
+  assert.equal(parsed.buildReplaced, true);
+  assert.equal(parsed.trailStuck, false);
+  assert.equal(parsed.storageOk, true);
+  assert.equal(parsed.lcV, "1");
+  assert.equal(parsed.verdict, "not_a_real_issue");
+  assert.equal(parsed.whyKey, "bg_close");
 });

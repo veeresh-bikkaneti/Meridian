@@ -1,77 +1,109 @@
-# BRANCH_STATUS — fix/storyteller-pending-tap
+# BRANCH_STATUS — feat/crash-report-verdicts
 
-**Branch:** `fix/storyteller-pending-tap`
-**Base:** origin/main @ `ddb6d28c` (PR #242 merged; includes #241 merged as
-`fa9f36b`, #244 as `a59ee4c9`, #245 as `28c5fea0` — all untouched by
-this branch)
-**State: PORT COMPLETE — branch pushed, PR #243 open; this head rebased
-onto `ddb6d28c`, local only, pending owner-route landing.** It
-supersedes the previous contents of this file. PRs #241, #244, #245
-and #242 are merged, and untouched by this branch.
+**Branch:** `feat/crash-report-verdicts`
+**Base:** `main` at `d26b90a` (rebased 2026-10-25 after PR #243 merged;
+originally built on `28c5fea`, the PR #245 merge)
+**State: READY — the independent Reality Checker's round-1 blocker
+(bgTerminal inferred from lastMilestone when a trail records no
+visibility entry) was fixed, and a fresh independent re-review returned
+READY with no blockers. After the rebase onto `d26b90a` all gates were
+re-run by the parent (logs/rebase/) with identical results (below).
+Liz authorized push + PR on 2026-10-25; the parent replays the commits
+via the GitHub API helper. Not merged, not deployed.**
+It supersedes the previous contents of this file (the
+`fix/chunk-load-recovery` branch record, whose history lives on PR #245).
 
-## Scope (exactly this — no drive-by changes)
+## Scope (exactly this — Slice 1 of the crash-report verdicts design)
 
-One mechanism, ported from the certified (but superseded) branch
-`fix/storyteller-narration-lifecycle` @ `08fef62`: the pending-tap
-intent (`tapStartPendingRef`). A figure tap that lands while the
-greeting is pending in `greeting_text` and the asset manifest is still
-in flight is remembered, and the greeting starts when `greetAudio`
-resolves. The 2026-10-16 settled check
-(`SETTLED-CHECK-2026-10-16.md`) proved this is the one piece of that
-fix still missing from main; everything else was superseded by #152
-(entering watchdog — main's `ENTER_HANG_MS`) and #153 (dismissed-
-greeting protection, rapid-tap guard, "Hear again"), and none of it is
-reintroduced here. `shouldForceEnterAdvance` is NOT ported.
+Design: `meridian-crash-report-verdicts-design-2026-10-25.md` §6 Slice 1
+(A1+A2+A3). Reader wording: Liz-approved samples 2026-10-25
+(✅ IGNORE — No action needed / 🔧 IGNORE — Fixed itself (confirmed) /
+🚨 FIX — Developer action needed / ❔ WAIT — Can't tell from this report).
+Consensus Manifest: `~/workspace/meridian-crash-verdicts/CONSENSUS-MANIFEST-slice1.md`
+(signed, execution token issued; Councilor C's CHALLENGE resolved by the
+manifest's binding constraints, none waived).
 
-## Commits
+1. **Client stamps** (`src/lib/observability.ts`, in place): a pure
+   classifier `classifyCrashVerdict(facts) → { verdict, whyKey }` plus
+   evidence stamps — `bgTerminal` / `buildReplaced` / `trailStuck`
+   (booleans, `suspected_crash` only, derived at `init()` from the stored
+   trail before any payload trimming), `storageOk` (boolean, every event,
+   at the single `emit()` choke point) and `lcV` (classifier version
+   string, every event). Crash-class events also carry the client's
+   provisional `verdict` / `whyKey`.
+2. **Worker verdicts** (`workers/crash-report/src/index.ts`, in place):
+   the mirrored classifier re-derives the verdict from the stamped facts
+   at ingest (a client-stamped verdict is never rendered), and
+   `buildAlert` renders verdict line first (Discord), verdict in the
+   email subject, verdict + why in the email body, `action:` line on
+   developer-needed only, existing fields kept below with "last step"
+   wording and plain-language last-step values.
+3. **Tests**: classifier table on both sides (trail shapes A–F +
+   precedence + fail-closed missing fields + never `auto_fixed` in
+   Slice 1), stamp tests through the real `createObservability`
+   init/emit path, cap-survival, worker rendering/subject/banned-word
+   tests, and a Playwright journey in
+   `tests/e2e/crash-classification.mobile.spec.ts` (backgrounded kill →
+   next boot → emitted `suspected_crash` carries the stamps).
 
-1. `ba666bd` — test: repro spec ported verbatim from the certified
-   branch (`tests/e2e/storyteller-narration-tap-pending.desktop.spec.ts`).
-2. `bdc093d` — fix: the mechanism, `src/components/storyteller-home.tsx`
-   only (+94/−1): intent registration in `handleFigureTap`, the
-   tap-start effect, intent cleared on dismiss / yield / phase exit /
-   unmount.
-3. This docs commit.
+Not in scope (later slices, not built here): no new event type
+(`recovery_outcome` stays rejected), no recovery marker, no
+`afterRecovery` stamp, no digest regrouping, no alerting-policy change,
+no signature counters, no KV TTL, no build-currency fetch. `auto_fixed`
+is structurally unreachable in Slice 1 — Slice 1 renders three verdicts.
 
-All commits authored `veeresh bikkaneti
-<57240576+veeresh-bikkaneti@users.noreply.github.com>`.
+Known limitations carried from the design (§3.5): a fully storage-blocked
+session emits no `suspected_crash` at all, so `storageOk` cannot size
+that blind spot (F4); the worker's re-derivation is a consistency check
+over client-stamped facts, not independent verification (F9); verdict
+mismatch surfacing is Slice 3, not Slice 1.
 
-## Evidence
+## Verification (local, this branch)
 
-- **Absence re-check (on d327dd3, first-hand):** `tapStartPending` /
-  pending-tap grep over `src/` + `tests/` empty; a `greeting_text` tap
-  with `greetAudio === null` falls through `decideEnteringFigureTap`
-  ("pass"), the replay guard (not attempted), to a poke — and the
-  first-gesture window listener only attaches once `greetAudio` is
-  non-null, so the tap is forgotten.
-- **RED (pre-fix):** Test R failed with the certified signature —
-  `greetRequests` stayed 0 through the 15 s poll; Test W passed
-  (main's #152 watchdog). **GREEN (post-fix):** R + W pass.
-- **#153 composition:** intent is registered only after the one-shot is
-  consumed, so the consumed one-shot is this path's rapid-tap guard;
-  `dismissBubble` and the phase-exit effect clear the intent, so a
-  dismissed greeting stays dismissed and "Hear again" is unaffected;
-  the effect re-verifies phase/mode/yield/sound at start time, and a
-  mute in the interim releases the one-shot unconsumed.
+- Baseline (pristine main @ 28c5fea, same environment, logs in
+  `~/workspace/meridian-crash-verdicts/logs/baseline/`): tsc clean;
+  npm test scripts 832 pass / 0 fail, src 1539/1539; worker 42/42;
+  lint-cards GATE PASSED; build:pages green; crash E2E specs 7 passed /
+  1 failed — `crash-watchdog.spec.ts` "stale build" spec fails on
+  pristine main too (pre-existing, not a Slice 1 regression).
+- Branch numbers (logs in `~/workspace/meridian-crash-verdicts/logs/branch/`):
+  tsc clean; npm test scripts 832 pass / 0 fail (identical to baseline),
+  src 1563/1563 (1539 baseline + 24 new Slice 1 tests); worker 69/69
+  (42 baseline + 27 new); lint-cards GATE PASSED; build:pages green —
+  the built entry bundle contains the `bgTerminal` stamp and the
+  classifier why-keys. Playwright (built artifact, crash surfaces):
+  11 passed / 2 failed. Both failures are baseline-matched: the
+  crash-watchdog "stale build" spec fails on pristine main in the same
+  environment, and the crash-classification visibility spec fails solo
+  on a pristine-main worktree build with the identical signature
+  (`storyteller_ready` races past `backgrounded` — it passed in the
+  first baseline batch run, failed in the RED run on the baseline
+  artifact, and fails on pristine main solo; pre-existing timing race,
+  untouched code path). The 2 new Slice 1 stamp journeys pass.
+- Fix round (Reality Checker blocker, logs in
+  `~/workspace/meridian-crash-verdicts/logs/fixround/`): `bgTerminal` is
+  now OMITTED when the stored trail records no visibility transition
+  (`terminalBackgrounded` returns undefined; `init()` stamps
+  conditionally) — never inferred from `lastMilestone`; the verdict
+  fails closed to `insufficient_evidence/missing_fields`. New unit stamp
+  test + a third Playwright journey pin it. Re-run: tsc clean; npm test
+  scripts 832 pass / 0 fail, src 1564/1564; worker 69/69; lint-cards
+  GATE PASSED; build:pages green; Playwright 12 passed / 2 failed —
+  the same two baseline-matched failures, all 3 Slice 1 journeys pass.
 
-## Gates
+- Rebase re-run (parent, after rebase onto main `d26b90a` — PR #243
+  merged by another team; the only rebase conflict was this file,
+  resolved by keeping this branch's record; logs in
+  `~/workspace/meridian-crash-verdicts/logs/rebase/`): tsc clean;
+  npm test scripts 832 pass / 0 fail, src 1564/1564; worker 69/69;
+  lint-cards GATE PASSED; build:pages green; Playwright crash surfaces
+  12 passed / 2 failed — the same two baseline-matched failures
+  (crash-watchdog "stale build"; crash-classification visibility race),
+  all 3 Slice 1 journeys pass.
 
-- `npx tsc --noEmit` — clean.
-- `npm test` — scripts 825 pass / 0 fail; src 1489 pass / 0 fail.
-- `node scripts/lint-cards.mjs` — GATE PASSED.
-- `npm run build:pages` — green (incl. the canonical
-  `VITE_KOFI_URL=…` build the e2e specs require).
-- Playwright (targeted): the repro spec passes (above). The 17
-  storyteller spec files: 47 passed / 14 failed on this branch; the
-  same failing files on a pristine `d327dd3` checkout in the same
-  environment: 13 of those 14 fail identically (desktop audio specs
-  timing out at 37–60 s under load — the VM rebooted mid-run), and the
-  one remaining failure (tapstart R2) passed on a branch re-run, whose
-  failure set then matched the baseline's test-for-test. No new E2E
-  failure is attributable to this change.
+## Push status
 
-## Pending
-
-- Owner-route landing of the rebased head (force-push onto the existing branch or a new branch/PR, owner's call). Merge: owner only.
-- Post-merge live check of the pending-tap path on
-  meridian.knowledgetest.workers.dev is the owner's step.
+Push + PR authorized by Liz 2026-10-25. The parent replays the local
+commits onto the remote branch via the GitHub API helper (SHAs may
+differ from the local ones; content, messages and authorship are the
+same). Not merged, not deployed.
