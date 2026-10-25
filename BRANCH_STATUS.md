@@ -1,109 +1,113 @@
-# BRANCH_STATUS — feat/crash-report-verdicts
+# BRANCH_STATUS — fix/a11y-reload-announcement
 
-**Branch:** `feat/crash-report-verdicts`
-**Base:** `main` at `d26b90a` (rebased 2026-10-25 after PR #243 merged;
-originally built on `28c5fea`, the PR #245 merge)
-**State: READY — the independent Reality Checker's round-1 blocker
-(bgTerminal inferred from lastMilestone when a trail records no
-visibility entry) was fixed, and a fresh independent re-review returned
-READY with no blockers. After the rebase onto `d26b90a` all gates were
-re-run by the parent (logs/rebase/) with identical results (below).
-Liz authorized push + PR on 2026-10-25; the parent replays the commits
-via the GitHub API helper. Not merged, not deployed.**
-It supersedes the previous contents of this file (the
-`fix/chunk-load-recovery` branch record, whose history lives on PR #245).
+**Branch:** `fix/a11y-reload-announcement` (pushed via API replay;
+PR #248 open — merge remains Liz's word)
+**Base:** origin/main @ `5f6164b` (rebased 2026-10-25 after PR #247
+merged; originally built on `d26b90a`, with PR #245's squash
+`28c5fea` a verified ancestor — #242/#243 landed after it; the
+in-scope files are byte-identical between `28c5fea` and `d26b90a`)
+**State: BUILD COMPLETE — all five gates run; awaiting the
+independent Reality Checker gate.** It supersedes the previous
+contents of this file (the `fix/storyteller-pending-tap` branch
+record, whose history lives on its own PR).
 
-## Scope (exactly this — Slice 1 of the crash-report verdicts design)
+## Scope (exactly this — no drive-by changes)
 
-Design: `meridian-crash-report-verdicts-design-2026-10-25.md` §6 Slice 1
-(A1+A2+A3). Reader wording: Liz-approved samples 2026-10-25
-(✅ IGNORE — No action needed / 🔧 IGNORE — Fixed itself (confirmed) /
-🚨 FIX — Developer action needed / ❔ WAIT — Can't tell from this report).
-Consensus Manifest: `~/workspace/meridian-crash-verdicts/CONSENSUS-MANIFEST-slice1.md`
-(signed, execution token issued; Councilor C's CHALLENGE resolved by the
-manifest's binding constraints, none waived).
+Tier 2 council round (manifest
+`.council/manifests/2026-10-25-a11y-reload-announcement.md`, signed
+before any production code) fixing the two PR #245 follow-ups Liz
+approved on 2026-10-25 ("Yes fix them both"), reversing the earlier
+knowingly-accept of review items A11Y-2/A11Y-1/A11Y-4:
 
-1. **Client stamps** (`src/lib/observability.ts`, in place): a pure
-   classifier `classifyCrashVerdict(facts) → { verdict, whyKey }` plus
-   evidence stamps — `bgTerminal` / `buildReplaced` / `trailStuck`
-   (booleans, `suspected_crash` only, derived at `init()` from the stored
-   trail before any payload trimming), `storageOk` (boolean, every event,
-   at the single `emit()` choke point) and `lcV` (classifier version
-   string, every event). Crash-class events also carry the client's
-   provisional `verdict` / `whyKey`.
-2. **Worker verdicts** (`workers/crash-report/src/index.ts`, in place):
-   the mirrored classifier re-derives the verdict from the stamped facts
-   at ingest (a client-stamped verdict is never rendered), and
-   `buildAlert` renders verdict line first (Discord), verdict in the
-   email subject, verdict + why in the email body, `action:` line on
-   developer-needed only, existing fields kept below with "last step"
-   wording and plain-language last-step values.
-3. **Tests**: classifier table on both sides (trail shapes A–F +
-   precedence + fail-closed missing fields + never `auto_fixed` in
-   Slice 1), stamp tests through the real `createObservability`
-   init/emit path, cap-survival, worker rendering/subject/banned-word
-   tests, and a Playwright journey in
-   `tests/e2e/crash-classification.mobile.spec.ts` (backgrounded kill →
-   next boot → emitted `suspected_crash` carries the stamps).
+1. **Announcement dwell** — `src/lib/chunk-recovery.ts`: when
+   MapErrorBoundary's error card is already on screen at the 1_500 ms
+   decision point, the auto-reload defers once by
+   `CHUNK_ANNOUNCE_DWELL_MS` (10_000), giving the card at least that
+   much additional dwell before navigation. The deferred decision
+   re-checks the stale offer, the episode latch, and the card
+   itself; if the card has gone, the reload stands down. The probe
+   matches the boundary's own copy (`MAP_ERROR_CARD_COPY`), never a
+   generic alert.
+2. **Post-reload notice** — every auto-reload, and the boundary's
+   manual "Try again" (`map-error-boundary.tsx`), writes a
+   timestamped flag (`meridian.chunkReloadNotice`); the next boot
+   consumes it exactly once (`game-app.tsx`) and shows a
+   `role="status"` notice — "Meridian had to reload. You're back!
+   Keep playing!" — with a Close button and no auto-dismiss timer.
 
-Not in scope (later slices, not built here): no new event type
-(`recovery_outcome` stays rejected), no recovery marker, no
-`afterRecovery` stamp, no digest regrouping, no alerting-policy change,
-no signature counters, no KV TTL, no build-currency fetch. `auto_fixed`
-is structurally unreachable in Slice 1 — Slice 1 renders three verdicts.
+Preserved, pinned by the existing contracts: episode latch,
+stale-offer stand-down, idempotent install, unrelated errors never
+reload. No new dependencies, no game-logic changes.
 
-Known limitations carried from the design (§3.5): a fully storage-blocked
-session emits no `suspected_crash` at all, so `storageOk` cannot size
-that blind spot (F4); the worker's re-derivation is a consistency check
-over client-stamped facts, not independent verification (F9); verdict
-mismatch surfacing is Slice 3, not Slice 1.
+Claim discipline (manifest D10): the claim is *additional dwell*,
+not that any announcement is guaranteed complete; WCAG 3.2.5 remains
+AAA-unmet (mitigated, not cured). Race pin (D1): a card that renders
+after the decision point gets no deferral — a documented non-fix,
+stated in the module header verbatim.
 
-## Verification (local, this branch)
+## Spike (Branch A — B's mandatory pre-11-E gate)
 
-- Baseline (pristine main @ 28c5fea, same environment, logs in
-  `~/workspace/meridian-crash-verdicts/logs/baseline/`): tsc clean;
-  npm test scripts 832 pass / 0 fail, src 1539/1539; worker 42/42;
-  lint-cards GATE PASSED; build:pages green; crash E2E specs 7 passed /
-  1 failed — `crash-watchdog.spec.ts` "stale build" spec fails on
-  pristine main too (pre-existing, not a Slice 1 regression).
-- Branch numbers (logs in `~/workspace/meridian-crash-verdicts/logs/branch/`):
-  tsc clean; npm test scripts 832 pass / 0 fail (identical to baseline),
-  src 1563/1563 (1539 baseline + 24 new Slice 1 tests); worker 69/69
-  (42 baseline + 27 new); lint-cards GATE PASSED; build:pages green —
-  the built entry bundle contains the `bgTerminal` stamp and the
-  classifier why-keys. Playwright (built artifact, crash surfaces):
-  11 passed / 2 failed. Both failures are baseline-matched: the
-  crash-watchdog "stale build" spec fails on pristine main in the same
-  environment, and the crash-classification visibility spec fails solo
-  on a pristine-main worktree build with the identical signature
-  (`storyteller_ready` races past `backgrounded` — it passed in the
-  first baseline batch run, failed in the RED run on the baseline
-  artifact, and fails on pristine main solo; pre-existing timing race,
-  untouched code path). The 2 new Slice 1 stamp journeys pass.
-- Fix round (Reality Checker blocker, logs in
-  `~/workspace/meridian-crash-verdicts/logs/fixround/`): `bgTerminal` is
-  now OMITTED when the stored trail records no visibility transition
-  (`terminalBackgrounded` returns undefined; `init()` stamps
-  conditionally) — never inferred from `lastMilestone`; the verdict
-  fails closed to `insufficient_evidence/missing_fields`. New unit stamp
-  test + a third Playwright journey pin it. Re-run: tsc clean; npm test
-  scripts 832 pass / 0 fail, src 1564/1564; worker 69/69; lint-cards
-  GATE PASSED; build:pages green; Playwright 12 passed / 2 failed —
-  the same two baseline-matched failures, all 3 Slice 1 journeys pass.
+Pre-fix build, safari-launch recipe (context-abort
+`**/satellite-map*.js`, no synthetic dispatch): card at
+alertAtMs=5532 after the click, recovery navigation at navAtMs=6887,
+guard stamp present (log `spike-run2.log`). Recovery DOES engage on
+the real SatelliteMap path — 11-E is the primary variant.
 
-- Rebase re-run (parent, after rebase onto main `d26b90a` — PR #243
-  merged by another team; the only rebase conflict was this file,
-  resolved by keeping this branch's record; logs in
-  `~/workspace/meridian-crash-verdicts/logs/rebase/`): tsc clean;
-  npm test scripts 832 pass / 0 fail, src 1564/1564; worker 69/69;
-  lint-cards GATE PASSED; build:pages green; Playwright crash surfaces
-  12 passed / 2 failed — the same two baseline-matched failures
-  (crash-watchdog "stale build"; crash-classification visibility race),
-  all 3 Slice 1 journeys pass.
+## Commits
 
-## Push status
+1. `e51478d` — docs(council): signed manifest
+2. `128558f` — test(recovery): RED contracts (unit file: 29 failing
+   of 58 with the predicted signatures; log `red-unit.log`)
+3. `59dba35` — fix(recovery): dwell + notice implementation;
+   game-app consume/render; boundary retry flag
+4. `d4b7163` — docs(council): footprint revision recorded
+   (chunk-recovery.ts +173 vs +140 estimate; same files/functions)
+5. `d8fa834` — fix(recovery): card copy U+2019 (see Defect record)
+6. `b2e0f0a` — docs(council): gate-round defect record
+7. `58b4023` — test(e2e): 11-E / 13-E / 14-E / 6-E2
 
-Push + PR authorized by Liz 2026-10-25. The parent replays the local
-commits onto the remote branch via the GitHub API helper (SHAs may
-differ from the local ones; content, messages and authorship are the
-same). Not merged, not deployed.
+## Defect record (found by this round's own oracle)
+
+First Playwright run: 11-E failed, dwell Received 1364 — the probe
+never matched in production because `MAP_ERROR_CARD_COPY` used an
+ASCII apostrophe and the boundary renders `&rsquo;` (U+2019); unit
+12-Ua passed against a stub mirroring the same wrong character.
+Fixed in `d8fa834`; 11-U0 now pins the copy codepoint-for-codepoint
+and 12-Ua builds its stub text from the constant.
+
+## Gates (logs in `~/workspace/meridian-a11y-announce/logs/`)
+
+| Gate | Result |
+| :--- | :--- |
+| `npx tsc --noEmit` | clean, exit 0 (`gate-tsc.log`) |
+| `npm test` | scripts **832 pass / 0 fail / 9 skipped**; src **1568 pass / 0 fail** (`gate-npm-test.log`) — chunk-recovery file 58/58 (29 prior + 29 new/amended) |
+| `node scripts/lint-cards.mjs` | **GATE PASSED**, exit 0 (`gate-lint.log`) |
+| `npm run build:pages` | green, exit 0 (`gate2-build.log`) |
+| Playwright chunk-recovery (desktop) | **9 passed / 0 failed** (`gate2-pw-chunk-recovery.log`) — 5 prior + 11-E, 13-E, 14-E, 6-E2 |
+| Playwright observability | **3 passed / 0 failed** (`gate2-pw-observability.log`) |
+| Playwright safari-launch | **4 passed / 0 failed** (`gate2-pw-safari-launch.log`) — incl. the manual Try again card path |
+| Playwright crash-watchdog | **3 passed / 1 failed** (`gate2-pw-crash-watchdog.log`) — the one failure is the proven pre-existing stale-build breadcrumb assertion (spec L217, expected `data_chunk_load_start`, got `storyteller_ready`), identical on pristine `a59ee4c`; baseline-matched, not a regression, not worse |
+
+## Mutation record
+
+- Unit: deferral disabled → 10 failures; cancellation re-check
+  disabled → 11-U4 fails; notice write removed → 14-U1 + 11-U fail
+  (logs `mutation-1-nodefer.log`, `mutation-2-nocancel.log`,
+  `mutation-3-nonotice.log`). Restored file: 58/58.
+- E2E: deferral disabled → rebuild → 11-E FAILS (Expected
+  ≥ 10_000, Received 1579; log `mut-e2e-11e.log`); revert +
+  rebuild + full chunk-recovery spec re-run: 9 passed (log
+  `gate3-pw-chunk-recovery.log`).
+
+## Untested / not claimed
+
+- No live screen-reader pass (NVDA/JAWS/VoiceOver/TalkBack) — the
+  dwell is a timing guarantee measured by the oracles, not a
+  heard-announcement observation. This untested item stays open.
+- No throttled-network run; full Playwright suite not run
+  (targeted specs only, per the round's scope).
+- Notice render coverage: the main GameApp return only (manifest
+  D7); early-return error screens do not show it, though the flag
+  is still consumed at boot.
+- Councilor A's Scenario 8 (card renders after the decision point)
+  is a recorded unresolved objection + documented non-fix (D1).
