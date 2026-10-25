@@ -463,6 +463,156 @@ export async function readBodyCapped(request: Request, max: number): Promise<str
   return new TextDecoder().decode(bytes);
 }
 
+// --- Crash-report verdicts (Slice 1, 2026-10-25) -------------------------
+//
+// The classifier below MIRRORS src/lib/observability.ts (deliberate
+// duplication across the client/worker boundary, design §4): the client
+// stamps the evidence facts and a provisional verdict; this worker
+// re-derives the verdict from the stamped facts at ingest and renders
+// its own derivation — a client-stamped verdict field is never read
+// here. That re-derivation is a consistency check over client-stamped
+// facts, not independent verification (design F9). Absent stamps (older
+// builds in the fleet) fail closed to insufficient_evidence, never to
+// benign (F8). `auto_fixed` is never returned in Slice 1: no
+// recovery-outcome facts exist yet (Slice 2), and an attempt alone
+// never earns it.
+
+export type CrashVerdict =
+  | "not_a_real_issue"
+  | "auto_fixed"
+  | "developer_needed"
+  | "insufficient_evidence";
+
+export type CrashWhyKey =
+  | "bg_close"
+  | "bg_stuck"
+  | "fg_vanished"
+  | "fg_kill_replaced"
+  | "fg_kill_current"
+  | "captured_error"
+  | "missing_fields";
+
+export interface CrashVerdictFacts {
+  type: string;
+  error?: { name: string; message: string };
+  lastMilestone?: string;
+  bgTerminal?: boolean;
+  buildReplaced?: boolean;
+  trailStuck?: boolean;
+  lcV?: string;
+}
+
+/** Types whose presence alone is a captured failure (design §2.2). */
+const CAPTURED_ERROR_TYPES = new Set([
+  "js_error",
+  "unhandled_rejection",
+  "map_error",
+  "boot_failure",
+]);
+
+/** Last-step values that mean the session was in active play (shapes D/E). */
+const GAMEPLAY_MILESTONES = new Set([
+  "run_start",
+  "data_chunk_load_start",
+  "data_loaded",
+  "map_init_start",
+  "map_ready",
+  "game_loaded",
+  "storyteller_ready",
+]);
+
+/**
+ * Classify one report from its stamped facts. Precedence (design §2.3):
+ * a captured error defeats every benign pattern and every missing-stamp
+ * gap; developer-needed evidence defeats insufficient-evidence; benign
+ * is the last resort, reachable only with its full evidence pattern.
+ */
+export function classifyCrashVerdict(
+  facts: CrashVerdictFacts,
+): { verdict: CrashVerdict; whyKey: CrashWhyKey } {
+  if (facts.error || CAPTURED_ERROR_TYPES.has(facts.type)) {
+    return { verdict: "developer_needed", whyKey: "captured_error" };
+  }
+  if (facts.type !== "suspected_crash") {
+    return { verdict: "insufficient_evidence", whyKey: "missing_fields" };
+  }
+  // Fail closed (design F8): any absent stamp → can't tell, never benign.
+  if (
+    typeof facts.bgTerminal !== "boolean" ||
+    typeof facts.buildReplaced !== "boolean" ||
+    typeof facts.trailStuck !== "boolean" ||
+    typeof facts.lcV !== "string" ||
+    facts.lcV.length === 0
+  ) {
+    return { verdict: "insufficient_evidence", whyKey: "missing_fields" };
+  }
+  if (facts.bgTerminal) {
+    return facts.trailStuck
+      ? { verdict: "insufficient_evidence", whyKey: "bg_stuck" }
+      : { verdict: "not_a_real_issue", whyKey: "bg_close" };
+  }
+  if (facts.lastMilestone && GAMEPLAY_MILESTONES.has(facts.lastMilestone)) {
+    return facts.buildReplaced
+      ? { verdict: "insufficient_evidence", whyKey: "fg_kill_replaced" }
+      : { verdict: "developer_needed", whyKey: "fg_kill_current" };
+  }
+  return { verdict: "insufficient_evidence", whyKey: "fg_vanished" };
+}
+
+/**
+ * Reader-facing verdict text. The headlines are Liz's approved sample
+ * wordings (2026-10-25); a headline is a disposition, never a fact claim
+ * about an event nobody saw (design §3.1).
+ */
+const VERDICT_PRESENTATION: Record<CrashVerdict, { headline: string; label: string }> = {
+  not_a_real_issue: { headline: "✅ IGNORE — No action needed", label: "no action needed" },
+  auto_fixed: { headline: "🔧 IGNORE — Fixed itself (confirmed)", label: "automatically fixed (confirmed)" },
+  developer_needed: { headline: "🚨 FIX — Developer action needed", label: "developer action needed" },
+  insufficient_evidence: { headline: "❔ WAIT — Can't tell from this report", label: "can't tell from this report" },
+};
+
+/** One plain-language why-line per why-key: evidence + its limit (§5). */
+function whyLineFor(whyKey: CrashWhyKey, event: CrashReportEvent): string {
+  switch (whyKey) {
+    case "bg_close":
+      return "The app was in the background when the phone closed it. No error was captured. (A crash while in the background would look the same from here — this pattern is the usual harmless one.)";
+    case "bg_stuck":
+      return "The player backgrounded an app that appeared stuck, and the phone later closed it; no error was captured.";
+    case "fg_vanished":
+      return "The session ended with no error captured, and it does not match the background-close pattern.";
+    case "fg_kill_replaced":
+      return "Session ended mid-game with no error captured, on a build that has since been replaced.";
+    case "fg_kill_current":
+      return "App stopped mid-game on the current build; no error was captured, so the cause is unknown.";
+    case "captured_error":
+      return event.error
+        ? `The app hit a real error and did not recover from it. Error captured: ${truncate(event.error.name, 60)} — ${truncate(event.error.message, 140)}.`
+        : "The app failed to start; that failure was captured and it did not recover.";
+    case "missing_fields":
+      return "This report is missing the evidence needed to classify it, so it can't be called harmless.";
+  }
+}
+
+/** Plain-language last-step values (reader text never says "milestone"). */
+const LAST_STEP_WORDS: Record<string, string> = {
+  boot_start: "starting up",
+  boot_ready: "ready",
+  run_start: "starting a game",
+  data_chunk_load_start: "loading game data",
+  data_loaded: "game data loaded",
+  map_init_start: "map loading",
+  map_ready: "map on screen",
+  game_loaded: "playing — map on screen",
+  storyteller_ready: "story ready",
+  backgrounded: "in the background (app switched away)",
+  foregrounded: "back in the foreground",
+};
+
+function lastStepWords(rawMilestone: string | undefined): string {
+  if (!rawMilestone) return "—";
+  return LAST_STEP_WORDS[rawMilestone] ?? truncate(rawMilestone, 80);
+}
+
 // --- Compact, PII-free alert -------------------------------------------
 
 function truncate(value: string | undefined, max: number): string {
@@ -488,31 +638,57 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
   const buildId = truncate(event.buildId, 64);
   const edition = truncate(event.edition, 64);
   const region = truncate(event.regionId, 64);
-  const milestone = truncate(event.lastMilestone, 80);
+  const lastStep = lastStepWords(event.lastMilestone);
   const errorLine = event.error
     ? `${truncate(event.error.name, 60)} — ${truncate(event.error.message, 140)}`
-    : "—";
+    : "none captured";
   // Coarse device bucket only (COPPA): os/form, never raw UA or precise facts.
   // Derivation is shared with the Phase 1 counters (deviceBucketOf).
   const deviceLine = deviceBucketOf(event);
 
+  // Slice 1: the authoritative verdict, re-derived here from the
+  // event's stamped facts. A verdict/whyKey stamped by the client is an
+  // untrusted cross-check and is never rendered (design §2.5/F9).
+  const { verdict, whyKey } = classifyCrashVerdict({
+    type,
+    error: event.error,
+    lastMilestone: event.lastMilestone,
+    bgTerminal: typeof event.bgTerminal === "boolean" ? event.bgTerminal : undefined,
+    buildReplaced: typeof event.buildReplaced === "boolean" ? event.buildReplaced : undefined,
+    trailStuck: typeof event.trailStuck === "boolean" ? event.trailStuck : undefined,
+    lcV: typeof event.lcV === "string" ? event.lcV : undefined,
+  });
+  const presentation = VERDICT_PRESENTATION[verdict];
+  const why = whyLineFor(whyKey, event);
+  const actionLine = verdict === "developer_needed" ? "action: Read the error below.\n" : "";
+  // The 🚨 stays in the no-action title for findability (design §5.1) —
+  // the verdict line above it carries the real signal.
+  const title = verdict === "not_a_real_issue" ? "🚨 Meridian crash report" : "Meridian crash report";
+
   const discord =
-    `🚨 Meridian crash report\n` +
+    `${presentation.headline}\n` +
+    `${title}\n` +
+    `verdict: ${presentation.label}\n` +
+    `why: ${why}\n` +
+    actionLine +
     `type: ${type} · build: ${buildId}\n` +
     `device: ${deviceLine}\n` +
     `edition: ${edition} · region: ${region}\n` +
-    `last milestone: ${milestone}\n` +
+    `last step: ${lastStep}\n` +
     `error: ${errorLine}`;
   const discordContent = discord.length > 1500 ? `${discord.slice(0, 1499)}…` : discord;
 
-  const emailSubject = `[Meridian] ${type} · build ${buildId} · ${edition}`;
+  const emailSubject = `[Meridian] ${presentation.headline} · ${type} · build ${buildId} · ${edition}`;
   const emailBody =
     `Meridian crash report\n\n` +
+    `verdict: ${presentation.label}\n` +
+    `why: ${why}\n` +
+    actionLine +
     `type:            ${type}\n` +
     `build:           ${buildId}\n` +
     `edition:         ${edition}\n` +
     `region:          ${region}\n` +
-    `last milestone:  ${milestone}\n` +
+    `last step:       ${lastStep}\n` +
     `error:           ${errorLine}\n` +
     `event time:      ${new Date(event.ts).toISOString()}\n\n` +
     `(Compact alert — full event payloads are never forwarded.)`;
