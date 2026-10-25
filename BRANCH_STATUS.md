@@ -68,6 +68,32 @@ logic, security headers/CSP, dependencies.
   — the milestone is overwritten by the storyteller re-readying after
   the failed start, on base and branch alike.
 
+## Fix round — PR #245 clean-review blockers B1/B2 (2026-10-25)
+
+Run under the signed Consensus Manifest at
+`.council/manifests/2026-10-25-pr245-chunk-recovery-fix-round.md`
+(strict TDD: RED contracts first, then minimal GREEN).
+
+- **B1 fixed** — the default-host install guard is now keyed on the
+  window object (module-level WeakSet of windows; the host-keyed
+  WeakSet is retained for explicit hosts), so repeat no-arg installs
+  and GameApp remounts register exactly one listener set.
+- **B2 fixed** — the 30 s stamp-age window is replaced by an episode
+  latch (eligibility 900_000 ms at install; the episode clears after
+  30_000 ms of continuous failure-free time, armed at install and
+  armed-or-restarted at signature-failure observations), and the
+  module header now carries the manifest's re-scoped claim wording
+  verbatim; stand-down and unrelated-error behaviour now have unit
+  and e2e oracles (6-E, 8-E, 3A-E, B1-EXT).
+- Fix round run as Tier 2 per Liz's follow-AGENTS.md direction 2026-10-25; the original build's Tier 1 provenance is unverifiable from disk.
+- Verification (fix round, local): `npx tsc --noEmit` clean;
+  `npm test` — scripts 832 pass / 0 fail / 9 skipped, src 1539/1539;
+  `node scripts/lint-cards.mjs` — GATE PASSED; `npm run build:pages`
+  green; Playwright — chunk-recovery 5/5, observability 3/3,
+  crash-watchdog 3/4 with only the known pre-existing "stale build"
+  breadcrumb failure above. Logs under
+  `~/workspace/meridian-chunk-recovery/logs/fix-round-*.log`.
+
 ## Push status
 
 Local only. The parent agent replays the commits onto GitHub via the
