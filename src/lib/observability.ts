@@ -324,7 +324,9 @@ export function isBenignBrowserNoise(message: string): boolean {
 //   `suspected_crash` only, derived at init() from the STORED trail
 //   before any payload trimming (a raw last-milestone test is wrong: a
 //   non-visibility milestone can be recorded while the tab is still
-//   backgrounded, so bgTerminal comes from the last VISIBILITY entry).
+//   backgrounded, so bgTerminal comes from the last VISIBILITY entry —
+//   and is OMITTED when the trail records no visibility transition at
+//   all, so the classifier fails closed instead of guessing).
 // - `storageOk`: boolean stamped on every event at the emit() choke
 //   point. It records whether this session's storage reads/writes have
 //   succeeded so far. It cannot size the storage-blocked blind spot: a
@@ -433,17 +435,21 @@ export function classifyCrashVerdict(
  * Terminal visibility state of a stored trail: true when the session
  * ended backgrounded — the last VISIBILITY entry in its history is
  * "backgrounded" (a later non-visibility entry does not change that;
- * the tab was still in the background when it was recorded). With no
- * visibility entry at all, fall back to the trail's own lastMilestone.
+ * the tab was still in the background when it was recorded); false when
+ * that entry is "foregrounded". With NO visibility entry at all the
+ * state is unknown and this returns undefined — the stamp is then
+ * omitted and the classifier fails closed (design §4 A1: a raw
+ * last-milestone test is wrong; C3 binding constraint). Never inferred
+ * from lastMilestone.
  */
-export function terminalBackgrounded(prev: Breadcrumb): boolean {
+export function terminalBackgrounded(prev: Breadcrumb): boolean | undefined {
   const history = Array.isArray(prev.history) ? prev.history : [];
   for (let i = history.length - 1; i >= 0; i--) {
     const name = history[i]?.name;
     if (name === "backgrounded") return true;
     if (name === "foregrounded") return false;
   }
-  return prev.lastMilestone === "backgrounded";
+  return undefined;
 }
 
 /** Start milestones whose matching ready/loaded step never arrived. */
@@ -461,7 +467,7 @@ const START_MILESTONES = new Set([
  * before any trimming, like terminalBackgrounded.
  */
 export function trailWasStuck(prev: Breadcrumb): boolean {
-  if (!terminalBackgrounded(prev)) return false;
+  if (terminalBackgrounded(prev) !== true) return false;
   const history = Array.isArray(prev.history) ? prev.history : [];
   let bgIdx = -1;
   for (let i = history.length - 1; i >= 0; i--) {
@@ -782,6 +788,10 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
         // regardless, so it never persists past this boot.
         const prevCopy: Breadcrumb = { ...prev };
         delete prevCopy.device;
+        // bgTerminal is stamped only when the stored history actually
+        // records a visibility transition — absent means unknown, and
+        // the classifier fails closed on it (never benign).
+        const bgTerminal = terminalBackgrounded(prev);
         const event: ObservabilityEvent = {
           type: "suspected_crash",
           ts: now(),
@@ -797,7 +807,7 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
           // — the only moment the full, untrimmed history is in hand
           // (design §4 A1/F7). emit() adds storageOk/lcV and the
           // provisional verdict computed from these same facts.
-          bgTerminal: terminalBackgrounded(prev),
+          ...(bgTerminal !== undefined ? { bgTerminal } : {}),
           buildReplaced: (prev.buildId || buildId) !== buildId,
           trailStuck: trailWasStuck(prev),
         };

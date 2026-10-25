@@ -125,7 +125,7 @@ test("next boot after a backgrounded kill emits suspected_crash carrying the Sli
 test("next boot after a foreground gameplay kill emits suspected_crash with bgTerminal=false and the replaced-build verdict", async ({ context }) => {
   const ingested = await seedKillAndCollect(context, {
     lastMilestone: "game_loaded",
-    history: HIST("boot_start", "run_start", "game_loaded"),
+    history: HIST("boot_start", "backgrounded", "foregrounded", "run_start", "game_loaded"),
   });
   const page = await context.newPage();
   await page.goto(APP);
@@ -139,6 +139,30 @@ test("next boot after a foreground gameplay kill emits suspected_crash with bgTe
   expect(crash.lcV).toBe("1");
   expect(crash.verdict).toBe("insufficient_evidence");
   expect(crash.whyKey).toBe("fg_kill_replaced");
+  await page.close();
+});
+
+test("next boot after a kill with no visibility record emits suspected_crash with bgTerminal absent and the can't-tell verdict", async ({ context }) => {
+  // Fail closed (Reality Checker blocker, 2026-10-25): a trail that
+  // records no visibility transition has an unknown terminal visibility
+  // state — the stamp is omitted, never inferred from lastMilestone,
+  // and the provisional verdict is missing_fields, never benign.
+  const ingested = await seedKillAndCollect(context, {
+    lastMilestone: "game_loaded",
+    history: HIST("boot_start", "run_start", "game_loaded"),
+  });
+  const page = await context.newPage();
+  await page.goto(APP);
+  await expect
+    .poll(() => ingested.filter((e) => e.type === "suspected_crash").length, { timeout: 20_000 })
+    .toBe(1);
+  const crash = ingested.find((e) => e.type === "suspected_crash") as Record<string, unknown>;
+  expect(crash.bgTerminal).toBeUndefined();
+  expect(crash.buildReplaced).toBe(true);
+  expect(crash.storageOk).toBe(true);
+  expect(crash.lcV).toBe("1");
+  expect(crash.verdict).toBe("insufficient_evidence");
+  expect(crash.whyKey).toBe("missing_fields");
   await page.close();
 });
 

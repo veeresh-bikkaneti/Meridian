@@ -831,6 +831,33 @@ test("stamps: a start-without-ready before backgrounding stamps trailStuck=true 
   assert.equal(payload.whyKey, "bg_stuck");
 });
 
+test("stamps: a trail with no visibility entry omits bgTerminal entirely — the verdict fails closed to insufficient_evidence/missing_fields, never benign", () => {
+  // Reality Checker blocker (2026-10-25): bgTerminal must come from a
+  // visibility entry in the stored history, never from lastMilestone.
+  // A session that recorded no visibility transition has an UNKNOWN
+  // terminal visibility state, so the stamp is absent and the
+  // classifier's missing-fields rule applies — even when the trail ends
+  // at a gameplay milestone, and even for a foreign trail whose
+  // lastMilestone claims "backgrounded" with no such history entry.
+  const gameplay = seededCrashPayload({
+    buildId: "prev-build",
+    lastMilestone: "game_loaded",
+    history: HIST("boot_start", "run_start", "game_loaded"),
+  });
+  assert.ok(!("bgTerminal" in gameplay), "no bgTerminal stamp without a visibility entry");
+  assert.equal(gameplay.verdict, "insufficient_evidence");
+  assert.equal(gameplay.whyKey, "missing_fields");
+
+  const foreign = seededCrashPayload({
+    buildId: "prev-build",
+    lastMilestone: "backgrounded",
+    history: HIST("boot_start", "run_start"),
+  });
+  assert.ok(!("bgTerminal" in foreign), "lastMilestone alone never fabricates bgTerminal");
+  assert.equal(foreign.verdict, "insufficient_evidence");
+  assert.equal(foreign.whyKey, "missing_fields");
+});
+
 test("stamps: only suspected_crash carries bgTerminal/buildReplaced/trailStuck — a live js_error via emit carries storageOk, lcV and the provisional verdict, and none of the trail stamps", () => {
   const store = makeStorage();
   const { transport, beacons } = makeTransport(true);
