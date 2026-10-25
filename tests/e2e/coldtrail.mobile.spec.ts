@@ -17,7 +17,7 @@ test.beforeEach(async ({ context }) => {
 
 async function openColdTrail(page: import("playwright/test").Page) {
   await page.goto(BASE);
-  await page.getByRole("button", { name: "❄️ Start the trail" }).click();
+  await page.getByRole("button", { name: "Cold Trail: Start the trail" }).click();
   await expect(page.getByTestId("coldtrail-screen")).toBeVisible({ timeout: 30_000 });
   await expect(page.getByTestId("sighting-card")).toHaveCount(3, { timeout: 30_000 });
   await expect(page.getByTestId("loop-map")).toBeVisible({ timeout: 30_000 });

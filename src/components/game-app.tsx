@@ -2850,11 +2850,17 @@ function Choose({
           <LockedLoop title="GeoDetective" onGrownUpOpen={onGrownUpOpen} />
         ) : (
         <article
-          aria-labelledby="geodetective-title"
-          className="hv5-card hv5-split hv5-case home-rise"
+          className="hv5-card hv5-split hv5-stack hv5-case home-rise"
           style={rise(5)}
           data-testid="tour-stop-geodetective"
+          aria-labelledby="geodetective-title"
         >
+          {/* Card-redesign Variant A: picture first in DOM order (not CSS
+              order), so scanning, screen-reader, and tab order all start
+              with the image. The card action is the stretched CTA below
+              (Form S): the card itself cannot be the <button> because
+              EarnedBadgeRow renders real badge <button>s inside it. */}
+          <img className="hv5-pic" loading="lazy" decoding="async" src={desertRuinsUrl} alt="" aria-hidden="true" />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -2877,24 +2883,32 @@ function Choose({
             <EarnedBadgeRow />
             <button
               type="button"
-              className="hv5-go"
+              className="hv5-go hv5-stretch"
               onClick={onLoop}
               onPointerEnter={prefetchTerritoryData}
               onPointerDown={prefetchTerritoryData}
               onFocus={prefetchTerritoryData}
+              aria-label={loopProgress.inProgress ? "GeoDetective: Resume your case" : "GeoDetective: Solve a mystery"}
             >
-              {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
+              {loopProgress.inProgress ? (
+                <><span aria-hidden="true">▶️</span>{" "}Resume your case</>
+              ) : (
+                <><span aria-hidden="true">🔎</span>{" "}Solve a mystery</>
+              )}
             </button>
           </div>
-          <img className="hv5-pic" loading="lazy" decoding="async" src={desertRuinsUrl} alt="" aria-hidden="true" />
         </article>
         )}
         {/* Cold Trail vertical slice: 3 sightings, 3 rings, one interception. */}
         <article
-          aria-labelledby="coldtrail-title"
-          className="hv5-card hv5-split hv5-dispatch home-rise"
+          className="hv5-card hv5-split hv5-stack hv5-dispatch home-rise"
           style={rise(5)}
+          aria-labelledby="coldtrail-title"
         >
+          {/* Variant A, same as GeoDetective: image first in DOM order;
+              whole-card action via the stretched CTA (Form S, shared form
+              so both game cards behave identically). */}
+          <img className="hv5-pic" loading="lazy" decoding="async" src={patagoniaUrl} alt="" aria-hidden="true" />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -2911,16 +2925,16 @@ function Choose({
             </p>
             <button
               type="button"
-              className="hv5-go"
+              className="hv5-go hv5-stretch"
               onClick={onColdTrail}
               onPointerEnter={prefetchTerritoryData}
               onPointerDown={prefetchTerritoryData}
               onFocus={prefetchTerritoryData}
+              aria-label="Cold Trail: Start the trail"
             >
-              ❄️ Start the trail
+              <span aria-hidden="true">❄️</span>{" "}Start the trail
             </button>
           </div>
-          <img className="hv5-pic" loading="lazy" decoding="async" src={patagoniaUrl} alt="" aria-hidden="true" />
         </article>
       </div>
       </div>
@@ -2928,8 +2942,8 @@ function Choose({
       <div className="hv5-grid3">
         {deck.enabled ? (
           <section
-            aria-label={REVIEW_DECK_COPY.pickerTitle}
-            className="hv5-card hv5-spot home-rise"
+            aria-labelledby="review-title"
+            className={`hv5-card hv5-spot home-rise${deck.due > 0 ? " hv5-review-due" : " hv5-review-empty"}`}
             style={rise(7)}
             data-testid="tour-stop-review"
             id="home-review"
@@ -2941,16 +2955,21 @@ function Choose({
                 </span>
                 <span className="hv5-label">Cases</span>
               </div>
-              <h2>{REVIEW_DECK_COPY.pickerTitle}</h2>
+              <h2 id="review-title">{REVIEW_DECK_COPY.pickerTitle}</h2>
               {deck.due > 0 ? (
                 <>
                   <p>{REVIEW_DECK_COPY.pickerDueLine}</p>
                   <p style={{ fontWeight: 700, color: "var(--hv5-ink)" }} data-testid="deck-due-count">
                     {deck.due} {deck.due === 1 ? "card" : "cards"} due
                   </p>
-                  <button type="button" className="hv5-go" onClick={onReview}>
+                  {/* Whole-card action (Form S): the CTA stretches over
+                      the card via .hv5-stretch; the REVIEW → pill is the
+                      visible discoverability cue (aria-hidden, pointer-
+                      events none — taps pass through to the CTA). */}
+                  <button type="button" className="hv5-go hv5-stretch" onClick={onReview} aria-label="Review my misses: Start review">
                     {REVIEW_DECK_COPY.startReview}
                   </button>
+                  <span className="hv5-review-cue" aria-hidden="true">REVIEW →</span>
                 </>
               ) : deck.total > 0 ? (
                 <p>{REVIEW_DECK_COPY.pickerCaughtUp}</p>
