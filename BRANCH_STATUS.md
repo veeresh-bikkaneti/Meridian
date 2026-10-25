@@ -2,8 +2,11 @@
 
 **Branch:** `feat/crash-report-verdicts`
 **Base:** `main` at `28c5fea` (includes the PR #245 merge)
-**State: BUILD COMPLETE — all gates run, independent Reality Checker
-gate pending. State below is the coordinator's record, not a verdict.
+**State: FIX ROUND COMPLETE — the independent Reality Checker's single
+blocker (bgTerminal inferred from lastMilestone when a trail records no
+visibility entry) is fixed at 71bc9b3 with new fail-closed tests; all
+gates re-run (logs/fixround/); re-review by the same checker pending.
+State below is the coordinator's record, not a verdict.
 The branch is LOCAL ONLY — not pushed, no PR, not merged, not deployed
 (Liz's authorization 2026-10-25 covers Slice 1 build + local commits only;
 the parent replays via the GitHub API helper after the independent gate).**
@@ -77,6 +80,16 @@ mismatch surfacing is Slice 3, not Slice 1.
   first baseline batch run, failed in the RED run on the baseline
   artifact, and fails on pristine main solo; pre-existing timing race,
   untouched code path). The 2 new Slice 1 stamp journeys pass.
+- Fix round (Reality Checker blocker, logs in
+  `~/workspace/meridian-crash-verdicts/logs/fixround/`): `bgTerminal` is
+  now OMITTED when the stored trail records no visibility transition
+  (`terminalBackgrounded` returns undefined; `init()` stamps
+  conditionally) — never inferred from `lastMilestone`; the verdict
+  fails closed to `insufficient_evidence/missing_fields`. New unit stamp
+  test + a third Playwright journey pin it. Re-run: tsc clean; npm test
+  scripts 832 pass / 0 fail, src 1564/1564; worker 69/69; lint-cards
+  GATE PASSED; build:pages green; Playwright 12 passed / 2 failed —
+  the same two baseline-matched failures, all 3 Slice 1 journeys pass.
 
 ## Push status
 
