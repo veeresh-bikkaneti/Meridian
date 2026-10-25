@@ -310,6 +310,176 @@ export function isBenignBrowserNoise(message: string): boolean {
   }
 }
 
+// --- Crash-report verdicts (Slice 1, 2026-10-25) --------------------------
+//
+// Every crash-class report carries a verdict, derived from evidence
+// stamps on the event. The classifier is a pure function of the stamped
+// facts; it is MIRRORED in workers/crash-report/src/index.ts, where the
+// receiver re-derives the verdict authoritatively and renders it (the
+// client stamp below is provisional only). Keep the two copies in step —
+// the fixture tables in both test files are identical on purpose.
+//
+// Evidence stamps (design §4 A1, Consensus Manifest 2026-10-25):
+// - `bgTerminal` / `buildReplaced` / `trailStuck`: booleans stamped on
+//   `suspected_crash` only, derived at init() from the STORED trail
+//   before any payload trimming (a raw last-milestone test is wrong: a
+//   non-visibility milestone can be recorded while the tab is still
+//   backgrounded, so bgTerminal comes from the last VISIBILITY entry).
+// - `storageOk`: boolean stamped on every event at the emit() choke
+//   point. It records whether this session's storage reads/writes have
+//   succeeded so far. It cannot size the storage-blocked blind spot: a
+//   fully blocked session emits no suspected_crash at all (design F4).
+// - `lcV`: this classifier's logic version, stamped on every event.
+//   Absent stamps (older builds in the fleet) fail closed — see the
+//   classifier's missing-fields rule.
+
+/** Classifier logic version stamped on every event as `lcV`. */
+export const CLASSIFIER_VERSION = "1";
+
+export type CrashVerdict =
+  | "not_a_real_issue"
+  | "auto_fixed"
+  | "developer_needed"
+  | "insufficient_evidence";
+
+export type CrashWhyKey =
+  | "bg_close"
+  | "bg_stuck"
+  | "fg_vanished"
+  | "fg_kill_replaced"
+  | "fg_kill_current"
+  | "captured_error"
+  | "missing_fields";
+
+export interface CrashVerdictFacts {
+  type: string;
+  error?: { name: string; message: string };
+  lastMilestone?: string;
+  bgTerminal?: boolean;
+  buildReplaced?: boolean;
+  trailStuck?: boolean;
+  lcV?: string;
+}
+
+/** Types whose presence alone is a captured failure (design §2.2). */
+const CAPTURED_ERROR_TYPES = new Set([
+  "js_error",
+  "unhandled_rejection",
+  "map_error",
+  "boot_failure",
+]);
+
+/** Types that carry a verdict at all in Slice 1 (hiccup/funnel: never). */
+const CRASH_CLASS_TYPES = new Set([
+  "suspected_crash",
+  "boot_failure",
+  "js_error",
+  "unhandled_rejection",
+  "map_error",
+]);
+
+/** Last-step values that mean the session was in active play (shapes D/E). */
+const GAMEPLAY_MILESTONES = new Set([
+  "run_start",
+  "data_chunk_load_start",
+  "data_loaded",
+  "map_init_start",
+  "map_ready",
+  "game_loaded",
+  "storyteller_ready",
+]);
+
+/**
+ * Classify one report from its stamped facts. Precedence (design §2.3):
+ * a captured error defeats every benign pattern and every missing-stamp
+ * gap; developer-needed evidence defeats insufficient-evidence; benign
+ * is the last resort, reachable only with its full evidence pattern.
+ * `auto_fixed` is never returned in Slice 1: no recovery-outcome facts
+ * exist yet (that loop is Slice 2), and an attempt alone never earns it.
+ */
+export function classifyCrashVerdict(
+  facts: CrashVerdictFacts,
+): { verdict: CrashVerdict; whyKey: CrashWhyKey } {
+  if (facts.error || CAPTURED_ERROR_TYPES.has(facts.type)) {
+    return { verdict: "developer_needed", whyKey: "captured_error" };
+  }
+  if (facts.type !== "suspected_crash") {
+    return { verdict: "insufficient_evidence", whyKey: "missing_fields" };
+  }
+  // Fail closed (design F8): any absent stamp → can't tell, never benign.
+  if (
+    typeof facts.bgTerminal !== "boolean" ||
+    typeof facts.buildReplaced !== "boolean" ||
+    typeof facts.trailStuck !== "boolean" ||
+    typeof facts.lcV !== "string" ||
+    facts.lcV.length === 0
+  ) {
+    return { verdict: "insufficient_evidence", whyKey: "missing_fields" };
+  }
+  if (facts.bgTerminal) {
+    return facts.trailStuck
+      ? { verdict: "insufficient_evidence", whyKey: "bg_stuck" }
+      : { verdict: "not_a_real_issue", whyKey: "bg_close" };
+  }
+  if (facts.lastMilestone && GAMEPLAY_MILESTONES.has(facts.lastMilestone)) {
+    return facts.buildReplaced
+      ? { verdict: "insufficient_evidence", whyKey: "fg_kill_replaced" }
+      : { verdict: "developer_needed", whyKey: "fg_kill_current" };
+  }
+  return { verdict: "insufficient_evidence", whyKey: "fg_vanished" };
+}
+
+/**
+ * Terminal visibility state of a stored trail: true when the session
+ * ended backgrounded — the last VISIBILITY entry in its history is
+ * "backgrounded" (a later non-visibility entry does not change that;
+ * the tab was still in the background when it was recorded). With no
+ * visibility entry at all, fall back to the trail's own lastMilestone.
+ */
+export function terminalBackgrounded(prev: Breadcrumb): boolean {
+  const history = Array.isArray(prev.history) ? prev.history : [];
+  for (let i = history.length - 1; i >= 0; i--) {
+    const name = history[i]?.name;
+    if (name === "backgrounded") return true;
+    if (name === "foregrounded") return false;
+  }
+  return prev.lastMilestone === "backgrounded";
+}
+
+/** Start milestones whose matching ready/loaded step never arrived. */
+const START_MILESTONES = new Set([
+  "run_start",
+  "data_chunk_load_start",
+  "map_init_start",
+]);
+
+/**
+ * Shape A-stuck: the session ended backgrounded, but the last progress
+ * step before that backgrounding was a start-without-ready — the player
+ * backgrounded an app that appeared stuck, so the background-close
+ * pattern must not whitewash it (design §2.3). Reads the stored history
+ * before any trimming, like terminalBackgrounded.
+ */
+export function trailWasStuck(prev: Breadcrumb): boolean {
+  if (!terminalBackgrounded(prev)) return false;
+  const history = Array.isArray(prev.history) ? prev.history : [];
+  let bgIdx = -1;
+  for (let i = history.length - 1; i >= 0; i--) {
+    if (history[i]?.name === "backgrounded") {
+      bgIdx = i;
+      break;
+    }
+    if (history[i]?.name === "foregrounded") break;
+  }
+  if (bgIdx < 0) return false;
+  for (let i = bgIdx - 1; i >= 0; i--) {
+    const name = history[i]?.name;
+    if (name === "backgrounded" || name === "foregrounded") continue;
+    return START_MILESTONES.has(name);
+  }
+  return false;
+}
+
 function byteLength(s: string): number {
   try {
     return new TextEncoder().encode(s).length;
@@ -424,12 +594,21 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
   let visibilityTracked = false;
   /** PBI-6: set once in init() — the previous page died with the map mounted. */
   let mapAttributedCrash = false;
+  /** Slice 1: false once any storage read/write in this session throws. */
+  let storageOk = true;
   const queue: ObservabilityEvent[] = [];
 
   function readStoredBreadcrumb(): Breadcrumb | null {
+    let raw: string | null = null;
     try {
-      const raw = storage?.getItem(BREADCRUMB_KEY);
-      if (!raw) return null;
+      raw = storage?.getItem(BREADCRUMB_KEY) ?? null;
+    } catch {
+      // A throwing read is the storageOk probe failing (Slice 1).
+      storageOk = false;
+      return null;
+    }
+    if (!raw) return null;
+    try {
       const parsed = JSON.parse(raw) as Breadcrumb;
       if (typeof parsed !== "object" || parsed === null || typeof parsed.sessionId !== "string") return null;
       return parsed;
@@ -443,6 +622,7 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       if (breadcrumb) storage?.setItem(BREADCRUMB_KEY, JSON.stringify(breadcrumb));
     } catch {
       // Storage blocked/full — trail lives in memory only.
+      storageOk = false;
     }
   }
 
@@ -490,7 +670,29 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
         // PBI-8: every event (including crash reports) carries the game
         // map mode — the Scout adoption / crash-delta signal.
         mapMode: event.mapMode ?? reportMapMode,
+        // Slice 1 evidence stamps, at this single choke point so every
+        // event carries them (design §4 A1): whether this session's
+        // storage has worked so far, and the classifier logic version.
+        storageOk,
+        lcV: CLASSIFIER_VERSION,
       };
+      // Slice 1: the provisional verdict for crash-class events. The
+      // receiver re-derives it from these same stamped facts and renders
+      // its own derivation — this stamp is a cross-check, never the
+      // rendered text (design §2.5). Hiccup/funnel events carry none.
+      if (enriched.verdict === undefined && CRASH_CLASS_TYPES.has(enriched.type)) {
+        const derived = classifyCrashVerdict({
+          type: enriched.type,
+          error: enriched.error,
+          lastMilestone: enriched.lastMilestone,
+          bgTerminal: typeof enriched.bgTerminal === "boolean" ? enriched.bgTerminal : undefined,
+          buildReplaced: typeof enriched.buildReplaced === "boolean" ? enriched.buildReplaced : undefined,
+          trailStuck: typeof enriched.trailStuck === "boolean" ? enriched.trailStuck : undefined,
+          lcV: CLASSIFIER_VERSION,
+        });
+        enriched.verdict = derived.verdict;
+        enriched.whyKey = derived.whyKey;
+      }
       if (!endpoint) {
         queue.push(enriched);
         // Bounded queue with suspected_crash protection (D3): evict the
@@ -591,6 +793,13 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
           lastMilestone: prev.lastMilestone,
           device: coarseDeviceFacts(),
           breadcrumb: prevCopy,
+          // Slice 1 evidence stamps, derived HERE from the stored trail
+          // — the only moment the full, untrimmed history is in hand
+          // (design §4 A1/F7). emit() adds storageOk/lcV and the
+          // provisional verdict computed from these same facts.
+          bgTerminal: terminalBackgrounded(prev),
+          buildReplaced: (prev.buildId || buildId) !== buildId,
+          trailStuck: trailWasStuck(prev),
         };
         try {
           storage?.removeItem(BREADCRUMB_KEY);
@@ -598,6 +807,7 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
           // Even if removal fails, the in-memory trail below is fresh;
           // a stale stored copy could re-fire — storage failure is the
           // documented best-effort limit of exactly-once.
+          storageOk = false;
         }
         emit(event);
       }
