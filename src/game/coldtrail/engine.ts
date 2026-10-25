@@ -38,32 +38,12 @@ export interface ColdTrailVerdict {
   caught: boolean;
 }
 
-/** Score bands: the smuggler is "caught" under 300 km. */
-export function verdictFor(scoreKm: number): ColdTrailVerdict {
-  if (scoreKm <= 100) {
-    return {
-      title: "Caught red-handed!",
-      line: "The intercept team was waiting at the hideout door.",
-      caught: true,
-    };
-  }
-  if (scoreKm <= 300) {
-    return {
-      title: "Warm trail — so close!",
-      line: "You had the right neighborhood. One more ring would have done it.",
-      caught: true,
-    };
-  }
-  if (scoreKm <= 800) {
-    return {
-      title: "The trail went cold.",
-      line: "You closed in, but the smuggler slipped the net.",
-      caught: false,
-    };
-  }
-  return {
-    title: "The smuggler vanished.",
-    line: "Wrong part of the map entirely. Study the rings and try the next case.",
-    caught: false,
-  };
+/** Score band for a score in km: the guess "catches" in bands 0–1 (≤300 km).
+ * Cut points are verbatim from the old verdictFor; the per-theme verdict
+ * strings live in themes.ts (verdictForTheme). */
+export function scoreBand(scoreKm: number): 0 | 1 | 2 | 3 {
+  if (scoreKm <= 100) return 0;
+  if (scoreKm <= 300) return 1;
+  if (scoreKm <= 800) return 2;
+  return 3;
 }

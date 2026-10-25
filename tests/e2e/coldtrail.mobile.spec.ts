@@ -47,7 +47,7 @@ test("mobile: full placement loop with touch taps", async ({ page }) => {
   await page.getByTestId("loop-map").click({ position: { x: 180, y: 300 } });
   await expect(page.getByTestId("intercept-confirm")).toBeVisible({ timeout: 10_000 });
   await page.getByTestId("intercept-confirm-btn").click();
-  await expect(page.getByTestId("coldtrail-reveal")).toContainText("The hideout was", {
+  await expect(page.getByTestId("coldtrail-reveal")).toContainText("The trail led to", {
     timeout: 10_000,
   });
 });

@@ -66,9 +66,9 @@ test("region context: every sighting names its continent + country", async ({ pa
   await page.getByTestId("loop-map").click({ position: { x: 350, y: 280 } });
   await page.getByTestId("intercept-confirm-btn").click();
   const reveal = page.getByTestId("coldtrail-reveal");
-  await expect(reveal).toContainText("The hideout was", { timeout: 10_000 });
+  await expect(reveal).toContainText("The trail led to", { timeout: 10_000 });
   const hideoutName = (await reveal.textContent())
-    ?.match(/The hideout was ([^.]+)/)?.[1]
+    ?.match(/The trail led to ([^.]+)/)?.[1]
     ?.trim();
   expect(hideoutName).toBeTruthy();
   for (const line of await regions.allTextContents()) {
@@ -125,7 +125,7 @@ test("full slice: place 3 rings → tap → confirm → score reveal", async ({ 
   await page.getByTestId("intercept-confirm-btn").click();
   const reveal = page.getByTestId("coldtrail-reveal");
   await expect(reveal).toBeVisible({ timeout: 10_000 });
-  await expect(reveal).toContainText("The hideout was");
+  await expect(reveal).toContainText("The trail led to");
   await expect(reveal).toContainText("km");
 
   // Next case deals a fresh case (rings reset).
@@ -256,7 +256,7 @@ test("paid informant tightens one ring for a star", async ({ page }) => {
   await placeAndLockRing(page, { x: 200, y: 200 });
   await page.getByTestId("informant-btn").first().click();
   await expect(stars).toContainText("⭐ 1");
-  await expect(page.getByTestId("map-hint")).toContainText("informant tightened");
+  await expect(page.getByTestId("map-hint")).toContainText("Guide tightened");
 });
 
 test("placement mode: map canvas shows crosshair cursor", async ({ page }) => {
@@ -308,4 +308,36 @@ test("disjoint rings: no centroid dot, hint says they don't cross", async ({ pag
 
   // No pulse fires at a fake center either.
   await expect(page.locator(".ct-overlap-pulse")).toHaveCount(0);
+});
+
+test("desktop layout (1280x900): sightings column beside the map at scroll 0 (B-1)", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openColdTrail(page);
+  await page.evaluate(() => window.scrollTo(0, 0));
+  expect(await page.evaluate(() => window.scrollY)).toBe(0);
+
+  const sightings = await page.locator(".ct-sightings").boundingBox();
+  const map = await page.locator(".ct-map").boundingBox();
+  const firstCard = await page.getByTestId("sighting-card").first().boundingBox();
+  expect(sightings, ".ct-sightings must have a layout box").not.toBeNull();
+  expect(map, ".ct-map must have a layout box").not.toBeNull();
+  expect(firstCard, "first sighting card must have a layout box").not.toBeNull();
+  // Geometry record for the B-1 fix evidence (printed to the run log).
+  console.log(
+    `B1-GEOMETRY sightings={x:${sightings!.x},y:${sightings!.y},w:${sightings!.width},h:${sightings!.height}} ` +
+      `map={x:${map!.x},y:${map!.y},w:${map!.width},h:${map!.height},bottom:${map!.y + map!.height}} ` +
+      `firstCard={y:${firstCard!.y},bottom:${firstCard!.y + firstCard!.height}}`,
+  );
+  // Same grid row: the sightings column starts above the map's bottom edge.
+  // Pre-fix B-1 measured sightings y=745.5 vs map bottom 721.5 — the whole
+  // column dropped into row 2 below the map, zero clue cards at load.
+  expect(sightings!.y).toBeLessThan(map!.y + map!.height);
+  // Side by side: the sightings column (grid column 1) ends at or before
+  // the map column (grid column 2) begins.
+  expect(sightings!.x + sightings!.width).toBeLessThanOrEqual(map!.x + 1);
+  // At least one clue card is visible in the first viewport at scroll 0.
+  expect(firstCard!.y).toBeLessThan(900);
+  expect(firstCard!.y + firstCard!.height).toBeGreaterThan(0);
 });
