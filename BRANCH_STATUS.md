@@ -1,14 +1,23 @@
 # BRANCH_STATUS — feat/loading-orbs
 
 **Branch:** `feat/loading-orbs`
-**Base:** origin/main @ `ddb6d28` (PR #242 merged 2026-10-25 11:22 CDT; verified unmoved at panel close-out — `git fetch` shows origin/main == `ddb6d28`, so no rebase was needed)
-**Head at last panel run:** `e0df8e5` (spec commit); this refresh + the spec comment fix ride in the docs commit on top of it.
-**State: PANEL-REVIEWED. Push + PR are the Chair's close-out step (this file is part of that step).**
-**Remote branch:** does NOT exist yet (verified at build time; push pending).
+**Base:** origin/main @ `d26b90a` (PR #243 merged 2026-10-25 15:44 CDT; PR #242 merged 2026-10-25 11:22 CDT)
+**Rebased head:** `9a402e1af2f12f37e03892d93a876b45c27561a8` (`9a402e1` — the rebased equivalent of the panel docs commit `5f434a5`; see Rebase section below). This docs correction rides on top of `9a402e1`.
+**State: PANEL-REVIEWED, REBASED onto `d26b90a`, LOCAL ONLY — NOT pushed.**
+**Remote branch:** EXISTS — `origin/feat/loading-orbs` is pushed through `5f434a5`. PR #246 is OPEN at head `5f434a5`. The rebased head `9a402e1` (and this docs commit on top of it) is committed locally and NOT pushed; push awaits the owner's word.
 
 This branch replaces the stale record that used to live here (old
 card-redesign branch, base `28c5fea`, PR #242 OPEN). That record is
 superseded: #242 is merged, and this branch starts from its merge.
+
+## Rebase onto d26b90a (2026-10-25, frontend seat)
+
+- Old head: `5f434a54ce7d5cddfd17e5aff8a947d97cdef718` (`5f434a5`); old base `ddb6d28`; new base `origin/main` = `d26b90ab0defc5609f3dc452e1ded685572aa8d0` (`d26b90a`, "Merge pull request #243").
+- Rebased chain (same messages, new SHAs): `dc8ad13` (feat, ex-`1ccc1fb`), `a40ebff` (fix, ex-`bf4f8d7`), `675880a` (test, ex-`e0df8e5`), `9a402e1` (docs, ex-`5f434a5`).
+- Conflicts: BRANCH_STATUS.md ONLY, at the first replayed commit (`1ccc1fb`). Two hunks, both resolved by keeping this branch's record (the `1ccc1fb` version of the file, verbatim — verified byte-identical to `1ccc1fb:BRANCH_STATUS.md`): hunk 1, header (storyteller-pending-tap record from #243 vs orb record); hunk 2, scope/commits/evidence/gates/pending body (same sides). The #243 record is not lost — it lives on main at `d26b90a`. No code conflicts: `game-app.tsx`, `home-globe.tsx`, `home-v5.css`, `home-loading-orbs.test.ts`, `lazy-home-image.tsx` all auto-merged, and the replayed commits after the first applied with no further conflict.
+- Code check after rebase: tree diff old head `5f434a5` → rebased head `9a402e1`, excluding BRANCH_STATUS.md, is exactly #243's two files (`src/components/storyteller-home.tsx` +95/−1, `tests/e2e/storyteller-narration-tap-pending.desktop.spec.ts` +220) — no orb code gained or lost, no silent side taken.
+- Live PR state at rebase time: PR #246 OPEN, head `5f434a5`, mergeStateStatus DIRTY (conflicting) before the rebase. This rebased head is local only and NOT pushed; the remote still reads `5f434a5` until the owner orders a push.
+- Stale lines corrected by this commit: base `ddb6d28` → `d26b90a`; "remote does NOT exist / push pending" and "none pushed yet" (panel-time wording — the branch was in fact pushed through `5f434a5` before this rebase); "Head at last panel run: `e0df8e5`" → rebased head `9a402e1` above. No feature or src changes in this commit (BRANCH_STATUS.md only).
 
 ## Scope (exactly this — owner-decided, no expansion)
 
@@ -147,12 +156,13 @@ and deserves its own ticket.
   any orb release — far below the 0.1 "good" threshold).
   Reduced-motion CLS was NOT measured; no real-device CLS exists.
 
-## Commits (all landed, none pushed yet)
+## Commits (pre-rebase chain — push state: see Rebase section)
 
 - `1ccc1fb` — feat(home): loading orbs for globe zone + lazy card images
 - `bf4f8d7` — fix(home): pre-load height for .hv5-art spot wrappers so card orbs paint during wait
 - `e0df8e5` — test(home): E2E spec for loading orbs (globe + lazy card images) — spec-only, 244 insertions. NOTE (honest record): this commit was made by a panel seat during the panel run, against its brief (it was told not to commit). The Chair verified it spec-only via `git show --stat` and kept it; no further panel-seat commits were authorized.
 - Docs commit (this refresh + the spec comment fix) lands on top of `e0df8e5` as part of Chair close-out; the Chair re-runs gates + the spec on the docs head before pushing.
+- Rebase note (2026-10-25): the pre-rebase chain above WAS pushed through `5f434a5` (PR #246 OPEN); see the Rebase section at the top of this file for the rebased chain and push state.
 
 ## Panel verdicts (all seats, head e0df8e5 unless noted)
 
@@ -234,9 +244,7 @@ and deserves its own ticket.
 
 ## Pending
 
-- Push this branch (Chair close-out) and open the PR — the docs
-  commit on top of `e0df8e5` is re-verified (gates + spec) before
-  pushing. No force-push, no rewriting, no merge by the Chair.
+- Push of the rebased head (`9a402e1` + this docs commit) to `origin/feat/loading-orbs` — OWNER'S CALL ONLY; not pushed by the rebase seat. Until then the remote still reads `5f434a5` and PR #246 still shows its pre-rebase head. No force-push, no rewriting beyond this rebase, no merge.
 - Owner green-light / Chitti review path for this branch (per
   standing Meridian flow), then the owner's merge call.
 - Owner follow-ups (NOT PR blockers — see Known limits): static
