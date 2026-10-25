@@ -735,6 +735,12 @@ body:has(.home-v5) {
   right: 6px;
   bottom: 2px;
   width: 172px;
+  /* Pre-load height for the loading orb: while the art is pending the
+     wrapper's height came from the loaded image alone, so it was 0px
+     tall and overflow:hidden clipped the orb entirely. The ratio is
+     the art's intrinsic ratio (archive-tools 400x269), so the loaded
+     box is unchanged: the img fills the same box it sized before. */
+  aspect-ratio: 400 / 269;
   pointer-events: none;
   -webkit-mask-image: radial-gradient(closest-side, #000 62%, transparent 98%);
   mask-image: radial-gradient(closest-side, #000 62%, transparent 98%);
@@ -753,6 +759,8 @@ body:has(.home-v5) {
   width: 148px;
   right: 16px;
   bottom: 16px;
+  /* Pre-load height, as above: journal-tree is 360x360 (square). */
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   -webkit-mask-image: radial-gradient(closest-side, #000 68%, transparent 99%);
   mask-image: radial-gradient(closest-side, #000 68%, transparent 99%);
@@ -763,6 +771,8 @@ body:has(.home-v5) {
 .home-v5 .hv5-involved .hv5-art {
   width: 178px;
   right: 2px;
+  /* Pre-load height, as above: binoculars-hat is 400x400 (square). */
+  aspect-ratio: 1 / 1;
 }
 .home-v5 .hv5-involved .hv5-txt {
   max-width: 57%;
